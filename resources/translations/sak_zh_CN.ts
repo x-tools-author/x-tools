@@ -577,12 +577,12 @@
     <message>
         <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="83"/>
         <source>Read</source>
-        <translation>读取</translation>
+        <translation>读特征值</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="142"/>
         <source>Characteristic</source>
-        <translation>特征值</translation>
+        <translation>特征列表</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="51"/>
@@ -933,155 +933,174 @@
 <context>
     <name>SAKEmitterTool</name>
     <message>
-        <location filename="../../src/tools/SAKEmitterTool.cc" line="74"/>
-        <source>Enable</source>
-        <translation>使能</translation>
-    </message>
-    <message>
         <location filename="../../src/tools/SAKEmitterTool.cc" line="76"/>
-        <source>Description</source>
-        <translation>描述</translation>
+        <source>Enable</source>
+        <translation>使能标志</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKEmitterTool.cc" line="78"/>
+        <source>Description</source>
+        <translation>消息描述</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="80"/>
         <source>Format</source>
         <translation>数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKEmitterTool.cc" line="80"/>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="82"/>
         <source>Escape Character</source>
         <translation>转义字符</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKEmitterTool.cc" line="82"/>
-        <source>Prefix</source>
-        <translation>前缀</translation>
-    </message>
-    <message>
         <location filename="../../src/tools/SAKEmitterTool.cc" line="84"/>
-        <source>Suffix</source>
-        <translation>后缀</translation>
+        <source>Prefix</source>
+        <translation>消息前缀</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKEmitterTool.cc" line="86"/>
-        <source>Interval</source>
-        <translation>发射间隔</translation>
+        <source>Suffix</source>
+        <translation>消息后缀</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKEmitterTool.cc" line="88"/>
-        <source>Append CRC</source>
-        <translation>追加CRC数据</translation>
+        <source>Interval</source>
+        <translation>消息间隔</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKEmitterTool.cc" line="90"/>
-        <source>Algorithm</source>
-        <translation>算法模型</translation>
+        <source>Append CRC</source>
+        <translation>数据校验</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKEmitterTool.cc" line="92"/>
+        <source>Big Endian</source>
+        <translation>大端字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="94"/>
+        <source>Algorithm</source>
+        <translation>校验算法</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="96"/>
         <source>Start Index</source>
         <translation>开始字节</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKEmitterTool.cc" line="94"/>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="98"/>
         <source>End Index</source>
         <translation>结束字节</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKEmitterTool.cc" line="96"/>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="100"/>
         <source>Data</source>
-        <translation>数据</translation>
+        <translation>消息数据</translation>
     </message>
 </context>
 <context>
     <name>SAKEmitterToolUiEditor</name>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="20"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="285"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="40"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="292"/>
         <source>Apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="47"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="20"/>
         <source>Parameters</source>
-        <translation>参数</translation>
+        <translation>消息参数设置</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="76"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="236"/>
+        <source>Append CRC data</source>
+        <translation>数据校验</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="249"/>
         <source>The CRC start index is start form header, the first byte is 0.</source>
         <translation>CRC开始索引从左边开始，第一字节为0.</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="96"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="32"/>
         <source>Format</source>
         <translation>数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="106"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="153"/>
         <source>The CRC end index is from tail, the last byte of data is 0.</source>
         <translation>CRC结束字节从右边开始，第一字节为0.</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="129"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="196"/>
         <source>Data</source>
-        <translation>数据</translation>
+        <translation>消息数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="136"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="203"/>
+        <source>Big endian byte order</source>
+        <translation>大端字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="229"/>
         <source>Start index</source>
         <translation>开始字节</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="143"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="262"/>
+        <source>Note:</source>
+        <translation>注意：</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="48"/>
         <source>Algorithm</source>
-        <translation>算法</translation>
+        <translation>校验算法</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="150"/>
         <source>CRC enable</source>
-        <translation>追加CRC数据</translation>
+        <translation type="vanished">数据校验</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="157"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="166"/>
         <source>Escape</source>
-        <translation>转义</translation>
+        <translation>转义字符</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="167"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="136"/>
         <source>Enable</source>
         <translation>使能</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="174"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="61"/>
         <source>Prefix</source>
-        <translation>前缀</translation>
+        <translation>消息前缀</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="181"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="87"/>
         <source>Interval</source>
-        <translation>发射间隔</translation>
+        <translation>消息间隔</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="188"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="216"/>
         <source>Sufix</source>
         <translation>消息后缀</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="195"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="119"/>
         <source>End index</source>
         <translation>结束字节</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="205"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="106"/>
         <source>Description</source>
-        <translation>描述</translation>
+        <translation>消息描述</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="212"/>
+        <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="143"/>
         <source>If the parameters of CRC is set error, all bytes of data will be calculcated.</source>
         <translation>如果参数设置错误，所有数据字节用于计算CRC.</translation>
     </message>
@@ -1092,7 +1111,7 @@
     <message>
         <location filename="../../src/toolsui/SAKEmitterToolUiEditor.cc" line="20"/>
         <source>Emitter Item Editor</source>
-        <translation>发射器编辑器</translation>
+        <translation>自动发送消息编辑器</translation>
     </message>
 </context>
 <context>
@@ -1157,7 +1176,7 @@
     <message>
         <location filename="../../src/logui/SAKLogUi.ui" line="25"/>
         <source>Pause</source>
-        <translation>暂停</translation>
+        <translation>暂停输出</translation>
     </message>
     <message>
         <location filename="../../src/logui/SAKLogUi.ui" line="39"/>
@@ -1227,7 +1246,7 @@
     <message>
         <location filename="../../src/logui/SAKLogUi.ui" line="130"/>
         <source>Clear</source>
-        <translation>清空</translation>
+        <translation>清空输出</translation>
     </message>
     <message>
         <location filename="../../src/logui/SAKLogUi.cc" line="25"/>
@@ -2075,120 +2094,130 @@
 <context>
     <name>SAKPrestorerTool</name>
     <message>
-        <location filename="../../src/tools/SAKPrestorerTool.cc" line="197"/>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="203"/>
         <source>Description</source>
-        <translation>描述</translation>
+        <translation>消息描述</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKPrestorerTool.cc" line="199"/>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="205"/>
         <source>Format</source>
         <translation>数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKPrestorerTool.cc" line="201"/>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="207"/>
         <source>Escape</source>
         <translation>转义字符</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKPrestorerTool.cc" line="203"/>
-        <source>Prefix</source>
-        <translation>前缀</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/SAKPrestorerTool.cc" line="205"/>
-        <source>Suffix</source>
-        <translation>后缀</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/SAKPrestorerTool.cc" line="207"/>
-        <source>CrcEnable</source>
-        <translation>追加CRC数据</translation>
-    </message>
-    <message>
         <location filename="../../src/tools/SAKPrestorerTool.cc" line="209"/>
-        <source>Algorithm</source>
-        <translation>算法模型</translation>
+        <source>Prefix</source>
+        <translation>消息前缀</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKPrestorerTool.cc" line="211"/>
+        <source>Suffix</source>
+        <translation>消息后缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="213"/>
+        <source>CrcEnable</source>
+        <translation>数据校验</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="215"/>
+        <source>BigEndian</source>
+        <translation>大端字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="217"/>
+        <source>Algorithm</source>
+        <translation>校验算法</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="219"/>
         <source>Start</source>
         <translation>开始字节</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKPrestorerTool.cc" line="213"/>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="221"/>
         <source>End</source>
         <translation>结束字节</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKPrestorerTool.cc" line="215"/>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="223"/>
         <source>Data</source>
-        <translation>数据</translation>
+        <translation>消息数据</translation>
     </message>
 </context>
 <context>
     <name>SAKPrestorerToolUiEditor</name>
     <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="20"/>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="212"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="27"/>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="219"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="47"/>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="20"/>
         <source>Parameters</source>
-        <translation>参数</translation>
+        <translation>消息参数设置</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="53"/>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="48"/>
         <source>Format</source>
         <translation>数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="60"/>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="120"/>
         <source>Suffix</source>
         <translation>消息后缀</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="67"/>
-        <source>Algorithm</source>
-        <translation>算法</translation>
-    </message>
-    <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="77"/>
-        <source>Data</source>
-        <translation>数据</translation>
-    </message>
-    <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="93"/>
-        <source>Escape</source>
-        <translation>转义</translation>
-    </message>
-    <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="100"/>
-        <source>Description</source>
-        <translation>描述</translation>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="168"/>
+        <source>Big endian byte order</source>
+        <translation>大端字节</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="107"/>
+        <source>Algorithm</source>
+        <translation>校验算法</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="94"/>
+        <source>Data</source>
+        <translation>消息数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="146"/>
+        <source>Escape</source>
+        <translation>转义字符</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="186"/>
+        <source>Description</source>
+        <translation>消息描述</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="133"/>
         <source>Prefix</source>
         <translation>消息前缀</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="117"/>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="161"/>
         <source>Append CRC data</source>
-        <translation>追加CRC数据</translation>
+        <translation>数据校验</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="124"/>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="81"/>
         <source>Start index</source>
         <translation>开始字节</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="138"/>
+        <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="32"/>
         <source>End index</source>
         <translation>结束字节</translation>
     </message>
@@ -2307,12 +2336,12 @@
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="390"/>
         <source>RefCrcEnable</source>
-        <translation>追加CRC数据</translation>
+        <translation>参考数据校验</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="392"/>
         <source>RefAlgorithm</source>
-        <translation>算法模型</translation>
+        <translation>参考数据校验算法</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="394"/>
@@ -2357,12 +2386,12 @@
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="410"/>
         <source>ResCrcEnable</source>
-        <translation>追加CRC数据</translation>
+        <translation>应答数据校验</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="412"/>
         <source>ResAlgorithm</source>
-        <translation>算法模型</translation>
+        <translation>应答数据校验算法</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="414"/>
@@ -3590,7 +3619,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/assistants/floatassistant/src/SAKToolFloatAssistant.ui" line="79"/>
         <source>Big endian</source>
-        <translation>大端顺</translation>
+        <translation>大端字节</translation>
     </message>
     <message>
         <location filename="../../src/assistants/floatassistant/src/SAKToolFloatAssistant.ui" line="86"/>
@@ -4018,7 +4047,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerInputPreprocessor.qml" line="27"/>
         <source>Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">消息前缀</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerInputPreprocessor.qml" line="35"/>
