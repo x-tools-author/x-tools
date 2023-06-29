@@ -15,7 +15,6 @@
 #include <QJsonDocument>
 #include <QAbstractTableModel>
 
-#include "SAKResponserTool.hh"
 #include "SAKResponserToolUi.hh"
 #include "SAKResponserToolUiEditor.hh"
 
