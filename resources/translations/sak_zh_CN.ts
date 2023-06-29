@@ -1361,7 +1361,7 @@
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="282"/>
         <source>Main Window</source>
-        <translation>主窗口</translation>
+        <translation>退出操作</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="283"/>
@@ -1400,7 +1400,7 @@
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="353"/>
         <source>HDPI Policy</source>
-        <translation>高分屏适配策略</translation>
+        <translation>适配策略</translation>
     </message>
     <message>
         <source>Round up for .5 and above.</source>
@@ -2299,112 +2299,127 @@
 <context>
     <name>SAKResponserTool</name>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="376"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="402"/>
         <source>Enable</source>
         <translation>使能</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="378"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="404"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="380"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="406"/>
         <source>Option</source>
         <translation>选项</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="382"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="408"/>
         <source>RefFormat</source>
         <translation>参考数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="384"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="410"/>
         <source>RefEscape</source>
         <translation>参考数据转义</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="386"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="412"/>
         <source>RefPrefix</source>
         <translation>参考数据前缀</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="388"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="414"/>
         <source>RefSuffix</source>
         <translation>参考数据后缀</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="390"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="416"/>
         <source>RefCrcEnable</source>
         <translation>参考数据校验</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="392"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="418"/>
+        <source>RefCrcBigEndian</source>
+        <translation>参考数据大端字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="420"/>
         <source>RefAlgorithm</source>
         <translation>参考数据校验算法</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="394"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="422"/>
         <source>RefStart</source>
-        <translation>开始字节</translation>
+        <translation>参考数据校验开始字节</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="396"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="424"/>
         <source>RefEnd</source>
-        <translation>结束字节</translation>
+        <translation>参考数据校验结束字节</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="398"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="426"/>
         <source>ReferenceData</source>
         <translation>参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="400"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="428"/>
         <source>ResFormat</source>
         <translation>应答数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="402"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="430"/>
         <source>Escape</source>
         <translation>应答数据转义</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="404"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="432"/>
         <source>ResPrefix</source>
         <translation>应答数据前缀</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="406"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="434"/>
         <source>ResSuffix</source>
         <translation>应答数据后缀</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="408"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="436"/>
         <source>ResInterval</source>
         <translation>应答数据延时</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="410"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="438"/>
         <source>ResCrcEnable</source>
         <translation>应答数据校验</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="412"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="440"/>
+        <source>ResCrcBigEndian</source>
+        <translation>应答数据大端字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="442"/>
         <source>ResAlgorithm</source>
         <translation>应答数据校验算法</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="414"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="444"/>
         <source>ResStart</source>
-        <translation>开始字节</translation>
+        <translation>应答数据校验开始字节</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="416"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="446"/>
         <source>ResEnd</source>
-        <translation>结束字节</translation>
+        <translation>应答数据校验结束字节</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="418"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="448"/>
+        <source>ResDelay</source>
+        <translation>应答延时</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="450"/>
         <source>ResponseData</source>
         <translation>应答数据</translation>
     </message>
@@ -2427,89 +2442,100 @@
         <translation>参数</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="72"/>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="273"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="117"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="425"/>
+        <source>Big endian byte order</source>
+        <translation type="unfinished">大端字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="132"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="181"/>
         <source>End index</source>
         <translation>结束字节</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="82"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="152"/>
         <source>Reference data</source>
         <translation>参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="99"/>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="190"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="268"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="362"/>
         <source>Prefix</source>
         <translation>消息前缀</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="106"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="434"/>
+        <source>Delay(ms)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="75"/>
         <source>Enable</source>
         <translation>使能</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="113"/>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="266"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="209"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="333"/>
         <source>Suffix</source>
         <translation>消息后缀</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="120"/>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="252"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="88"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="389"/>
         <source>Start index</source>
         <translation>开始字节</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="130"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="320"/>
         <source>Reference</source>
         <translation>参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="140"/>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="290"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="101"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="307"/>
         <source>Escape</source>
         <translation>转义字符</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="147"/>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="228"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="222"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="248"/>
         <source>Algorithm</source>
         <translation>校验算法</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="154"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="369"/>
         <source>Response data</source>
         <translation>应答数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="167"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="168"/>
         <source>Format</source>
         <translation>数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="174"/>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="214"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="110"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="418"/>
         <source>Append CRC data</source>
         <translation>数据校验</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="207"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="145"/>
         <source>Fromat</source>
         <translation>数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="242"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="68"/>
         <source>Description</source>
         <translation>应答描述</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="259"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="288"/>
         <source>Response</source>
         <translation>应答数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="283"/>
+        <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="346"/>
         <source>Option</source>
         <translation>应答选项</translation>
     </message>
@@ -2986,58 +3012,58 @@
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="261"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="270"/>
         <source>Please Select an Item</source>
         <translation>未选中</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="262"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="271"/>
         <source>Please select an tiem first, then try again!</source>
         <translation>请指定要删除的行后再重新尝试！</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="279"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="288"/>
         <source>Invalid Parameter</source>
         <translation>非法参数</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="280"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="289"/>
         <source>The value of mTableModelTool is nullptr, you must called initialize() first!</source>
         <translation>请先初始化后重试！</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="308"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="317"/>
         <source>Clear Data</source>
         <translation>清空数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="309"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="318"/>
         <source>The data will be empty from settings file, please confrim the operation!</source>
         <translation>数据将会被清楚，请确认该操作！</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="325"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="334"/>
         <source>Delete Data</source>
         <translation>删除数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="326"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="335"/>
         <source>The data will be delete from settings file, please confrim the operation!</source>
         <translation>数据将被删除，请确认操作！</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="348"/>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="375"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="357"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="384"/>
         <source>Import data</source>
         <translation>导入数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="350"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="359"/>
         <source>JSON (*.json);;All (*)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="377"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="386"/>
         <source>JSON (*.json);;All (*); </source>
         <translation></translation>
     </message>
