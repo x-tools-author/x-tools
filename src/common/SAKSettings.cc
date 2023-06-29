@@ -38,7 +38,7 @@ int SAKSettings::hdpiPolicy()
     int ret = value(mSettingsKey.hdpiPolicy).toInt();
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     if ((ret < 1) || (ret > 5)) {
-        if (ret != 999) {
+        if (ret != SAKDataStructure::HdpiPolicySystem) {
             ret = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
         }
     }
@@ -50,7 +50,7 @@ void SAKSettings::setHdpiPolicy(int policy)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     if ((policy < 1) || (policy > 5)) {
-        if (policy != 999) {
+        if (policy != SAKDataStructure::HdpiPolicySystem) {
             policy = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
         }
     }

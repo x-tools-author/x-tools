@@ -10,6 +10,7 @@
 #ifndef SAKDATASTRUCTURE_HH
 #define SAKDATASTRUCTURE_HH
 
+#include <Qt>
 #include <QObject>
 
 class SAKDataStructure : public QObject
@@ -57,6 +58,26 @@ public:
     };
     Q_ENUM(EDEnumResponseOptions)
 
+    enum SAKEnumPalette {
+        PaletteSystem,
+        PaletteLight,
+        PaletteDark,
+        PaletteCustom
+    };
+    Q_ENUM(SAKEnumPalette)
+
+    enum SAKHdpiPolicy {
+        HdpiPolicyRound = int(Qt::HighDpiScaleFactorRoundingPolicy::Round),
+        HdpiPolicyCeil = int(Qt::HighDpiScaleFactorRoundingPolicy::Ceil),
+        HdpiPolicyFloor = int(Qt::HighDpiScaleFactorRoundingPolicy::Floor),
+        HdpiPolicyRoundPreferFloor
+        = int(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor),
+        HdpiPolicyPassThrough
+        = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough),
+        HdpiPolicySystem = 999
+    };
+    Q_ENUM(SAKHdpiPolicy)
+
     struct EDStructDataItem {
         int itemTextFormat;
         int itemTextEscapeChracter;
@@ -69,14 +90,6 @@ public:
         int itemCrcStartIndex;
         int itemCrcEndIndex;
     };
-
-    enum SAKEnumPalette {
-        PaletteSystem,
-        PaletteLight,
-        PaletteDark,
-        PaletteCustom
-    };
-    Q_ENUM(SAKEnumPalette)
 
 public:
     static QString affixesName(int affixes);

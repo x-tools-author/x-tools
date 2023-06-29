@@ -68,6 +68,8 @@
 
 #include "ui_SAKMainWindow.h"
 
+#define SAK_QT_CONF qApp->applicationDirPath() + "/qt.conf"
+
 QString palettePath()
 {
     QString fileName = SAKSettings::instance()->fileName();
@@ -357,14 +359,14 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
     QAction *rpfAction = new QAction(tr("Round up for .75 and above"), this);
     QAction *passThroughAction = new QAction(tr("Don't round"), this);
 
-    auto round = Qt::HighDpiScaleFactorRoundingPolicy::Round;
-    auto ceil = Qt::HighDpiScaleFactorRoundingPolicy::Ceil;
-    auto floor = Qt::HighDpiScaleFactorRoundingPolicy::Floor;
-    auto rpf = Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor;
-    auto passThrough = Qt::HighDpiScaleFactorRoundingPolicy::PassThrough;
+    int round = SAKDataStructure::HdpiPolicyRound;
+    int ceil = SAKDataStructure::HdpiPolicyCeil;
+    int floor = SAKDataStructure::HdpiPolicyFloor;
+    int preferFloor = SAKDataStructure::HdpiPolicyRoundPreferFloor;
+    int passThrough = SAKDataStructure::HdpiPolicyPassThrough;
+    int sysScale = SAKDataStructure::HdpiPolicySystem;
 
-    QString fileName = qApp->applicationDirPath();
-    fileName += "/qt.conf";
+    QString fileName = SAK_QT_CONF;
     auto triggered = [=](int policy){
         if (QFile::remove(fileName)) {
             qCInfo(mLoggingCategory) << fileName << "was removed!";
@@ -386,7 +388,7 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
         triggered(int(floor));
     });
     connect(rpfAction, &QAction::triggered, this, [=](){
-        triggered(int(rpf));
+        triggered(int(preferFloor));
     });
     connect(passThroughAction, &QAction::triggered, this, [=](){
         triggered(int(passThrough));
@@ -409,7 +411,7 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
         ceilAction->setChecked(true);
     } else if (SAKSettings::instance()->hdpiPolicy() == int(floor)) {
         floorAction->setChecked(true);
-    } else if (SAKSettings::instance()->hdpiPolicy() == int(rpf)) {
+    } else if (SAKSettings::instance()->hdpiPolicy() == int(preferFloor)) {
         rpfAction->setChecked(true);
     } else if (SAKSettings::instance()->hdpiPolicy() == int(passThrough)) {
         passThroughAction->setChecked(true);
@@ -424,26 +426,14 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
     ag->addAction(systemAction);
     menu->addSeparator();
     menu->addAction(systemAction);
-    auto createQtConf = [=](){
-        QFile file(fileName);
-        if (file.open(QFile::WriteOnly|QFile::Text|QFile::Truncate)) {
-            QTextStream out(&file);
-            out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
-            file.close();
-        } else {
-            qCWarning(mLoggingCategory) << fileName;
-            qCWarning(mLoggingCategory) << "can not open file:"
-                                        << file.errorString();
-        }
-    };
     connect(systemAction, &QAction::triggered, this, [=](){
         createQtConf();
 
-        SAKSettings::instance()->setHdpiPolicy(999);
+        SAKSettings::instance()->setHdpiPolicy(sysScale);
         rebootRequestion();
     });
 
-    if (SAKSettings::instance()->hdpiPolicy() == 999) {
+    if (SAKSettings::instance()->hdpiPolicy() == sysScale) {
         systemAction->setChecked(true);
         if (!QFile::exists(fileName)) {
             createQtConf();
@@ -958,6 +948,21 @@ void SAKMainWindow::showDonation()
     dialog.layout()->addWidget(label);
     dialog.show();
     dialog.exec();
+}
+
+void SAKMainWindow::createQtConf()
+{
+    QString fileName = SAK_QT_CONF;
+    QFile file(fileName);
+    if (file.open(QFile::WriteOnly|QFile::Text|QFile::Truncate)) {
+        QTextStream out(&file);
+        out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
+        file.close();
+    } else {
+        qCWarning(mLoggingCategory) << fileName;
+        qCWarning(mLoggingCategory) << "can not open file:"
+                                    << file.errorString();
+    }
 }
 
 void SAKMainWindow::onImportActionTriggered()

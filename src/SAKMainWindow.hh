@@ -76,6 +76,7 @@ private:
     void showHistory();
     void showQrCode();
     void showDonation();
+    void createQtConf();
 
 private slots:
     void onImportActionTriggered();
