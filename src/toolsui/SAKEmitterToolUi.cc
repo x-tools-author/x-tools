@@ -7,14 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include <QFile>
-#include <QJsonArray>
-#include <QTableView>
-#include <QHeaderView>
-#include <QJsonDocument>
-#include <QStandardItemModel>
-
 #include "SAKEmitterToolUi.hh"
+#include "SAKTableModelTool.hh"
 
 SAKEmitterToolUi::SAKEmitterToolUi(QWidget *parent)
     : SAKTableModelToolUi{"sak.emittertoolui", parent}
@@ -33,8 +27,24 @@ void SAKEmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     SAKTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
 
     QList<int> columns;
-    columns << 11;
+    columns << 12;
     setStretchSections(columns);
+}
+
+QList<int> SAKEmitterToolUi::defaultHideColumns()
+{
+    QList<int> list;
+    auto tb = mTableModelTool->tableModel().value<QAbstractTableModel*>();
+    for (int i = 0; i < tb->columnCount(); i++) {
+        list.append(i);
+    }
+
+    list.removeAll(0);
+    list.removeAll(1);
+    list.removeAll(4);
+    list.removeAll(12);
+
+    return list;
 }
 
 QDialog *SAKEmitterToolUi::itemEditor()

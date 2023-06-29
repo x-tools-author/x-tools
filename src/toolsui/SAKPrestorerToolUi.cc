@@ -60,6 +60,24 @@ void SAKPrestorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     setStretchSections(list);
 }
 
+QList<int> SAKPrestorerToolUi::defaultHideColumns()
+{
+    QList<int> list;
+    auto tb = mTableModelTool->tableModel().value<QAbstractTableModel*>();
+    for (int i = 0; i < tb->columnCount(); i++) {
+        list.append(i);
+    }
+
+    list.removeAll(0);
+    list.removeAll(1);
+    list.removeAll(2);
+    list.removeAll(3);
+    list.removeAll(4);
+    list.removeAll(10);
+
+    return list;
+}
+
 QDialog *SAKPrestorerToolUi::itemEditor()
 {
     return mEditor;
