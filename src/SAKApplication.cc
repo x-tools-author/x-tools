@@ -74,18 +74,21 @@ SAKApplication::SAKApplication(int argc, char **argv)
     } else {
         QString customPalette = SAKSettings::instance()->customPalette();
         QFile file(customPalette);
-        if (file.open(QFile::ReadOnly)) {
-            QDataStream out(&file);
-            QPalette p;
-            out >> p;
-            file.close();
-            setPalette(p);
-            qCInfo(mLoggingCategory) << "current palete:" << customPalette;
+        if (!customPalette.isEmpty()) {
+            if (file.open(QFile::ReadOnly)) {
+                QDataStream out(&file);
+                QPalette p;
+                out >> p;
+                file.close();
+                setPalette(p);
+                qCInfo(mLoggingCategory) << "current palete:" << customPalette;
+            } else {
+                qCWarning(mLoggingCategory) << "open palette file error:"
+                                            << file.errorString();
+            }
         } else {
-            qCWarning(mLoggingCategory) << "open palette file error:"
-                                        << file.errorString();
+            qCInfo(mLoggingCategory) << "current palete: system";
         }
-        qCInfo(mLoggingCategory) << "current palete: system";
     }
 
     // Setup ui language.
