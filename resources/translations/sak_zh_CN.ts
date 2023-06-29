@@ -2952,12 +2952,12 @@
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="45"/>
         <source>Save tx</source>
-        <translation>保存接收</translation>
+        <translation>保存发送</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="38"/>
         <source>Save rx</source>
-        <translation>保存发送</translation>
+        <translation>保存接收</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="66"/>
