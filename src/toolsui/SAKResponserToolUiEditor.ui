@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>386</width>
-    <height>483</height>
+    <width>637</width>
+    <height>474</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -53,50 +53,19 @@
       <string>Parameters</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="4">
-       <widget class="SAKResponseOptionComboBox" name="comboBoxOption"/>
-      </item>
-      <item row="10" column="4">
-       <widget class="QSpinBox" name="spinBoxResEnd">
-        <property name="maximum">
-         <number>1024</number>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="SAKEscapeCharacterComboBox" name="comboBoxRefEscape"/>
-      </item>
-      <item row="10" column="3">
-       <widget class="QLabel" name="label_18">
-        <property name="text">
-         <string>End index</string>
-        </property>
-       </widget>
-      </item>
-      <item row="12" column="0" colspan="2">
-       <widget class="QLineEdit" name="lineEditRefData"/>
-      </item>
-      <item row="11" column="0" colspan="2">
-       <widget class="QLabel" name="label_19">
-        <property name="text">
-         <string>Reference data</string>
-        </property>
-       </widget>
-      </item>
       <item row="6" column="4">
        <widget class="SAKAffixesComboBox" name="comboBoxResSuffix"/>
       </item>
-      <item row="9" column="1">
-       <widget class="QSpinBox" name="spinBoxRefStart">
-        <property name="maximum">
-         <number>1024</number>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_9">
         <property name="text">
-         <string>Prefix</string>
+         <string>Description</string>
         </property>
        </widget>
       </item>
@@ -107,89 +76,329 @@
         </property>
        </widget>
       </item>
-      <item row="6" column="3">
-       <widget class="QLabel" name="label_12">
-        <property name="text">
-         <string>Suffix</string>
+      <item row="9" column="0">
+       <widget class="QLabel" name="label_15">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-       </widget>
-      </item>
-      <item row="9" column="3">
-       <widget class="QLabel" name="label_17">
         <property name="text">
          <string>Start index</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
-       <widget class="SAKAffixesComboBox" name="comboBoxRefPrefix"/>
-      </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="QLabel" name="label_3">
+      <item row="4" column="3">
+       <widget class="QLabel" name="label_8">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>Reference</string>
+         <string>Escape</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QCheckBox" name="checkBoxRefCrcEnable">
+          <property name="text">
+           <string>Append CRC data</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBoxRefBigEndian">
+          <property name="text">
+           <string>Big endian byte order</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="10" column="3">
+       <widget class="QLabel" name="label_18">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>End index</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLabel" name="label_6">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Fromat</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0" colspan="2">
+       <widget class="QLabel" name="label_19">
+        <property name="text">
+         <string>Reference data</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
        <widget class="SAKTextFormatComboBox" name="comboBoxRefFormat"/>
       </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_7">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>Escape</string>
+         <string>Format</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="label_16">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>End index</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0" colspan="2">
+       <widget class="QLineEdit" name="lineEditRefData"/>
+      </item>
+      <item row="8" column="4">
+       <widget class="SAKCrcAlgorithmComboBox" name="comboBoxResAlgorithm"/>
+      </item>
+      <item row="5" column="4">
+       <widget class="SAKAffixesComboBox" name="comboBoxResPrefix"/>
+      </item>
+      <item row="13" column="3" colspan="2">
+       <widget class="QLineEdit" name="lineEditResData"/>
+      </item>
+      <item row="1" column="4">
+       <widget class="SAKResponseOptionComboBox" name="comboBoxOption"/>
+      </item>
+      <item row="6" column="3">
+       <widget class="QLabel" name="label_12">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Suffix</string>
         </property>
        </widget>
       </item>
       <item row="8" column="3">
        <widget class="QLabel" name="label_14">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Algorithm</string>
         </property>
        </widget>
       </item>
-      <item row="11" column="3" colspan="2">
+      <item row="3" column="4">
+       <widget class="SAKTextFormatComboBox" name="comboBoxResFormat"/>
+      </item>
+      <item row="10" column="4">
+       <widget class="QSpinBox" name="spinBoxResEnd">
+        <property name="maximum">
+         <number>1024</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="SAKAffixesComboBox" name="comboBoxRefSuffix"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Algorithm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="4">
+       <widget class="QSpinBox" name="spinBoxResStart">
+        <property name="maximum">
+         <number>1024</number>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QLabel" name="label_11">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Prefix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QSpinBox" name="spinBoxRefStart">
+        <property name="maximum">
+         <number>1024</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3" colspan="2">
+       <widget class="QLabel" name="label_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Response</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="SAKAffixesComboBox" name="comboBoxRefPrefix"/>
+      </item>
+      <item row="8" column="1">
+       <widget class="SAKCrcAlgorithmComboBox" name="comboBoxRefAlgorithm"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Escape</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QLabel" name="label_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Reference</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Suffix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Option</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="4">
+       <widget class="SAKEscapeCharacterComboBox" name="comboBoxResEscape"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Prefix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="3" colspan="2">
        <widget class="QLabel" name="label_20">
         <property name="text">
          <string>Response data</string>
         </property>
        </widget>
       </item>
-      <item row="8" column="4">
-       <widget class="SAKCrcAlgorithmComboBox" name="comboBoxResAlgorithm"/>
-      </item>
-      <item row="3" column="4">
-       <widget class="SAKTextFormatComboBox" name="comboBoxResFormat"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Format</string>
+      <item row="10" column="1">
+       <widget class="QSpinBox" name="spinBoxRefEnd">
+        <property name="maximum">
+         <number>1024</number>
         </property>
        </widget>
       </item>
-      <item row="7" column="0" colspan="2">
-       <widget class="QCheckBox" name="checkBoxRefCrcEnable">
+      <item row="9" column="3">
+       <widget class="QLabel" name="label_17">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>Append CRC data</string>
+         <string>Start index</string>
         </property>
        </widget>
       </item>
-      <item row="8" column="1">
-       <widget class="SAKCrcAlgorithmComboBox" name="comboBoxRefAlgorithm"/>
-      </item>
-      <item row="5" column="4">
-       <widget class="SAKAffixesComboBox" name="comboBoxResPrefix"/>
-      </item>
-      <item row="4" column="4">
-       <widget class="SAKEscapeCharacterComboBox" name="comboBoxResEscape"/>
-      </item>
-      <item row="5" column="3">
-       <widget class="QLabel" name="label_11">
-        <property name="text">
-         <string>Prefix</string>
+      <item row="2" column="2" rowspan="12">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
         </property>
        </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="SAKEscapeCharacterComboBox" name="comboBoxRefEscape"/>
       </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="lineEditDescription">
@@ -201,100 +410,35 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="3">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Fromat</string>
-        </property>
-       </widget>
-      </item>
       <item row="7" column="3" colspan="2">
-       <widget class="QCheckBox" name="checkBoxResCrcEnable">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QCheckBox" name="checkBoxResCrcEnable">
+          <property name="text">
+           <string>Append CRC data</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBoxResBigEndian">
+          <property name="text">
+           <string>Big endian byte order</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="11" column="3">
+       <widget class="QLabel" name="label_21">
         <property name="text">
-         <string>Append CRC data</string>
+         <string>Delay(ms)</string>
         </property>
        </widget>
       </item>
-      <item row="9" column="4">
-       <widget class="QSpinBox" name="spinBoxResStart">
+      <item row="11" column="4">
+       <widget class="QSpinBox" name="spinBoxResDelay">
         <property name="maximum">
-         <number>1024</number>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="label_13">
-        <property name="text">
-         <string>Algorithm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="1">
-       <widget class="QSpinBox" name="spinBoxRefEnd">
-        <property name="maximum">
-         <number>1024</number>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Description</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="SAKAffixesComboBox" name="comboBoxRefSuffix"/>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="label_15">
-        <property name="text">
-         <string>Start index</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3" colspan="2">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Response</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>Suffix</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="0">
-       <widget class="QLabel" name="label_16">
-        <property name="text">
-         <string>End index</string>
-        </property>
-       </widget>
-      </item>
-      <item row="12" column="3" colspan="2">
-       <widget class="QLineEdit" name="lineEditResData"/>
-      </item>
-      <item row="1" column="3">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Option</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="3">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>Escape</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2" rowspan="11">
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <number>10000</number>
         </property>
        </widget>
       </item>
@@ -305,14 +449,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKTextFormatComboBox</class>
-   <extends>QComboBox</extends>
-   <header location="global">SAKTextFormatComboBox.hh</header>
-  </customwidget>
-  <customwidget>
    <class>SAKEscapeCharacterComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">SAKEscapeCharacterComboBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKTextFormatComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKTextFormatComboBox.hh</header>
   </customwidget>
   <customwidget>
    <class>SAKAffixesComboBox</class>
