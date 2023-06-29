@@ -21,6 +21,7 @@ class SAKTransmitterTool : public SAKTableModelTool
 public:
     explicit SAKTransmitterTool(const char *logCategory,
                                 QObject *parent = nullptr);
+    SAKCommunicationTool *communicationTool(int index);
 
 protected:
     virtual void run() override {exec();}

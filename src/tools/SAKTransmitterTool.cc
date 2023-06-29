@@ -17,6 +17,18 @@ SAKTransmitterTool::SAKTransmitterTool(const char *logCategory, QObject *parent)
             this, &SAKTransmitterTool::onDataChanged);
 }
 
+SAKCommunicationTool *SAKTransmitterTool::communicationTool(int index)
+{
+    SAKCommunicationTool *tool = Q_NULLPTR;
+    mToolVectorMutex.lock();
+    if (index >= 0 && index < mToolVector.count()) {
+        tool = mToolVector.at(index);
+    }
+    mToolVectorMutex.unlock();
+
+    return tool;
+}
+
 int SAKTransmitterTool::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
