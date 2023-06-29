@@ -104,9 +104,11 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     QHeaderView *headerView = tableView->horizontalHeader();
     int columnCount = mTableModel->columnCount();
     QStringList headers;
+    QStringList rawHeaders;
     for (int i = 0; i < columnCount; i++) {
         auto orientation = Qt::Orientation::Horizontal;
         QString str = mTableModel->headerData(i, orientation).toString();
+        rawHeaders.append(str);
         str = mTableModelTool->cookHeaderString(str);
         headers.append(str);
     }
@@ -132,13 +134,13 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
             } else {
                 tableView->hideColumn(i);
             }
-            settings->setValue(settingGroup + "/" + headers.at(i),
+            settings->setValue(settingGroup + "/" + rawHeaders.at(i),
                                ret->isChecked());
 
         });
         ret->setCheckable(true);
 
-        QVariant var = settings->value(settingGroup + "/" + headers.at(i));
+        QVariant var = settings->value(settingGroup + "/" + rawHeaders.at(i));
         if (var.isValid()) {
             if (!var.toBool()) {
                 tableView->hideColumn(i);
