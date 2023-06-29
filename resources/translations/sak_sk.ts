@@ -2195,34 +2195,59 @@
 <context>
     <name>SAKResponseOptionComboBox</name>
     <message>
-        <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="16"/>
+        <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="17"/>
         <source>Disable</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="17"/>
-        <source>Echo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="18"/>
-        <source>Always</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="19"/>
-        <source>RxEqualReference</source>
-        <translation type="unfinished"></translation>
+        <source>Echo</source>
+        <comment>widget</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
-        <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="20"/>
-        <source>RxContainReference</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="21"/>
+        <source>Always</source>
+        <comment>widget</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="23"/>
+        <source>RxEqualReference</source>
+        <comment>widget</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="25"/>
+        <source>RxContainReference</source>
+        <comment>widget</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="27"/>
         <source>RxDiscontainReference</source>
-        <translation type="unfinished"></translation>
+        <comment>widget</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -2256,127 +2281,122 @@
 <context>
     <name>SAKResponserTool</name>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="402"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="394"/>
         <source>Enable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="404"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="396"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="406"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="398"/>
         <source>Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="408"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="400"/>
         <source>RefFormat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="410"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="402"/>
         <source>RefEscape</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="412"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="404"/>
         <source>RefPrefix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="414"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="406"/>
         <source>RefSuffix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="416"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="408"/>
         <source>RefCrcEnable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="418"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="410"/>
         <source>RefCrcBigEndian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="420"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="412"/>
         <source>RefAlgorithm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="422"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="414"/>
         <source>RefStart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="424"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="416"/>
         <source>RefEnd</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="426"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="418"/>
         <source>ReferenceData</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="428"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="420"/>
         <source>ResFormat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="430"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="422"/>
         <source>Escape</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="432"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="424"/>
         <source>ResPrefix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="434"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="426"/>
         <source>ResSuffix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="436"/>
-        <source>ResInterval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="438"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="428"/>
         <source>ResCrcEnable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="440"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="430"/>
         <source>ResCrcBigEndian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="442"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="432"/>
         <source>ResAlgorithm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="444"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="434"/>
         <source>ResStart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="446"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="436"/>
         <source>ResEnd</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="448"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="438"/>
         <source>ResDelay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKResponserTool.cc" line="450"/>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="440"/>
         <source>ResponseData</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2965,58 +2985,58 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="270"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="282"/>
         <source>Please Select an Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="271"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="283"/>
         <source>Please select an tiem first, then try again!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="288"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="300"/>
         <source>Invalid Parameter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="289"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="301"/>
         <source>The value of mTableModelTool is nullptr, you must called initialize() first!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="317"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="329"/>
         <source>Clear Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="318"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="330"/>
         <source>The data will be empty from settings file, please confrim the operation!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="334"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="346"/>
         <source>Delete Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="335"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="347"/>
         <source>The data will be delete from settings file, please confrim the operation!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="357"/>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="384"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="369"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="396"/>
         <source>Import data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="359"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="371"/>
         <source>JSON (*.json);;All (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="386"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="398"/>
         <source>JSON (*.json);;All (*); </source>
         <translation type="unfinished"></translation>
     </message>
