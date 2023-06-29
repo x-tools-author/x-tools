@@ -82,7 +82,7 @@ void SAKSettings::setUiType(int type)
 
 QString SAKSettings::appStyle()
 {
-    return value(mSettingsKey.appStyle).toString();
+    return value(mSettingsKey.appStyle, SAK_STYLE_DEFAULT).toString();
 }
 
 void SAKSettings::setAppStyle(const QString &style)
