@@ -34,7 +34,7 @@ void SAKResponserToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
 {
     SAKTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
     QList<int> columns;
-    columns << 12 << 24;
+    columns << 12 << 23;
     setStretchSections(columns);
 }
 
@@ -50,7 +50,7 @@ QList<int> SAKResponserToolUi::defaultHideColumns()
     list.removeAll(1);
     list.removeAll(2);
     list.removeAll(12);
-    list.removeAll(24);
+    list.removeAll(23);
 
     return list;
 }
