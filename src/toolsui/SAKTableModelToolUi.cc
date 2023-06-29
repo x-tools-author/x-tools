@@ -126,6 +126,7 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     mMenu = new SAKMenu(ui->pushButtonVisible);
     ui->pushButtonVisible->setMenu(mMenu);
     auto settings = SAKSettings::instance();
+    auto hideColumns = defaultHideColumns();
     for (int i = 0; i < headers.count(); i++) {
         QAction *ret = mMenu->addAction(headers.at(i));
         connect(ret, &QAction::triggered, this, [=](){
@@ -147,7 +148,12 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
             }
             ret->setChecked(var.toBool());
         } else {
-            ret->setChecked(true);
+            if (hideColumns.contains(i)) {
+                tableView->hideColumn(i);
+                ret->setChecked(false);
+            } else {
+                ret->setChecked(true);
+            }
         }
     }
 
@@ -155,6 +161,12 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     QString items = settings->value(mItemsKey).toString();
     QByteArray json = QByteArray::fromHex(items.toLatin1());
     importFromJson(QJsonDocument::fromJson(json).toJson());
+}
+
+QList<int> SAKTableModelToolUi::defaultHideColumns()
+{
+    QList<int> list;
+    return list;
 }
 
 void SAKTableModelToolUi::clear()
