@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
     return app.exec();
 #else
     SAKSettings::instance()->setUiType(SAKSettings::UiTypeWidget);
-    qCInfo(lc) << "please using Qt 6.4.0 or later!";
+    qCInfo(lc) << "to using qml ui, please using qt 6.4.0 or later!";
     return 0;
 #endif
 }
