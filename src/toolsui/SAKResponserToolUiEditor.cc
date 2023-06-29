@@ -98,28 +98,30 @@ void SAKResponserToolUiEditor::setParameters(const QJsonObject &params)
     QString description = params.value(keys.itemDescription).toString();
     int option = params.value(keys.itemOption).toInt();
 
-    int     refFormat       = params.value(keys.itemReferenceTextFormat).toInt();
-    int     refEscape       = params.value(keys.itemReferenceEscapeCharacter).toInt();
-    int     refPrefix       = params.value(keys.itemReferencePrefix).toInt();
-    int     refSuffix       = params.value(keys.itemReferenceSuffix).toInt();
-    bool    refCrcEnable    = params.value(keys.itemReferenceCrcEnable).toBool();
-    bool    refCrcBigEndian = params.value(keys.itemReferenceCrcBigEndian).toBool();
-    int     refAlgorithm    = params.value(keys.itemReferenceCrcAlgorithm).toInt();
-    int     refStart        = params.value(keys.itemReferenceCrcStartIndex).toInt();
-    int     refEnd          = params.value(keys.itemReferenceCrcEndIndex).toInt();
-    QString refData         = params.value(keys.itemReferenceText).toString();
+    int refFormat = params.value(keys.itemReferenceTextFormat).toInt();
+    int refEscape = params.value(keys.itemReferenceEscapeCharacter).toInt();
+    int refPrefix = params.value(keys.itemReferencePrefix).toInt();
+    int refSuffix = params.value(keys.itemReferenceSuffix).toInt();
+    bool refCrcEnable = params.value(keys.itemReferenceCrcEnable).toBool();
+    bool refCrcBigEndian =
+        params.value(keys.itemReferenceCrcBigEndian).toBool();
+    int refAlgorithm = params.value(keys.itemReferenceCrcAlgorithm).toInt();
+    int refStart = params.value(keys.itemReferenceCrcStartIndex).toInt();
+    int refEnd = params.value(keys.itemReferenceCrcEndIndex).toInt();
+    QString refData = params.value(keys.itemReferenceText).toString();
 
-    int     resFormat       = params.value(keys.itemResponseTextFormat).toInt();
-    int     resEscape       = params.value(keys.itemResponseEscapeCharacter).toInt();
-    int     resPrefix       = params.value(keys.itemResponsePrefix).toInt();
-    int     resSuffix       = params.value(keys.itemResponseSuffix).toInt();
-    bool    resCrcEnable    = params.value(keys.itemResponseCrcEnable).toBool();
-    bool    resCrcBigEndian = params.value(keys.itemResponseCrcBigEndian).toBool();
-    int     resAlgorithm    = params.value(keys.itemResponseCrcAlgorithm).toInt();
-    int     resStart        = params.value(keys.itemResponseCrcStartIndex).toInt();
-    int     resEnd          = params.value(keys.itemResponseCrcEndIndex).toInt();
-    int     resDelay        = params.value(keys.itemResponseDelay).toInt();
-    QString resData         = params.value(keys.itemResponseText).toString();
+    int resFormat = params.value(keys.itemResponseTextFormat).toInt();
+    int resEscape = params.value(keys.itemResponseEscapeCharacter).toInt();
+    int resPrefix = params.value(keys.itemResponsePrefix).toInt();
+    int resSuffix = params.value(keys.itemResponseSuffix).toInt();
+    bool resCrcEnable = params.value(keys.itemResponseCrcEnable).toBool();
+    bool resCrcBigEndian =
+        params.value(keys.itemResponseCrcBigEndian).toBool();
+    int resAlgorithm = params.value(keys.itemResponseCrcAlgorithm).toInt();
+    int resStart = params.value(keys.itemResponseCrcStartIndex).toInt();
+    int resEnd = params.value(keys.itemResponseCrcEndIndex).toInt();
+    int resDelay = params.value(keys.itemResponseDelay).toInt();
+    QString resData = params.value(keys.itemResponseText).toString();
 
     ui->checkBoxEnable->setChecked(enable);
     ui->lineEditDescription->setText(description);
