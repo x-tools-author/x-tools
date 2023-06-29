@@ -492,7 +492,7 @@
     <message>
         <location filename="../../src/toolsui/SAKAnalyzerToolUi.ui" line="64"/>
         <source>Enable</source>
-        <translation>使能帧分析器</translation>
+        <translation>使能</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKAnalyzerToolUi.ui" line="71"/>
