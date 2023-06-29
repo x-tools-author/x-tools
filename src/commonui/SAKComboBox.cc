@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -16,8 +16,6 @@ SAKComboBox::SAKComboBox(QWidget *parent)
 {
     connect(this, &SAKComboBox::currentTextChanged,
             this, &SAKComboBox::writeToSettingsFile);
-//    connect(this, &SAKComboBox::editTextChanged,
-//            this, &SAKComboBox::writeToSettingsFile);
 }
 
 void SAKComboBox::setCurrentIndexFromData(const QVariant &data)
@@ -35,9 +33,7 @@ void SAKComboBox::setGroupKey(const QString &group,
     mKey = group + "/" + key;
     mIsIndex = isIndex;
 
-    blockSignals(true);
     readFromSettingsFile();
-    blockSignals(false);
 }
 
 
