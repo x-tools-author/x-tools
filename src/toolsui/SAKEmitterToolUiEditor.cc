@@ -40,6 +40,7 @@ QJsonObject SAKEmitterToolUiEditor::parameters()
     int suffix = ui->comboBoxSufix->currentData().toInt();
     int interval = ui->spinBoxInterval->value();
     bool crcEnable = ui->checkBoxCrcEnable->isChecked();
+    bool crcBigEndian = ui->checkBoxBigEndian->isChecked();
     int algotirhm = ui->comboBoxAlgorithm->currentData().toInt();
     int start = ui->spinBoxStartIndex->value();
     int end = ui->spinBoxEndIndex->value();
@@ -55,6 +56,7 @@ QJsonObject SAKEmitterToolUiEditor::parameters()
     params.insert(keys.itemSuffix, suffix);
     params.insert(keys.itemInterval, interval);
     params.insert(keys.itemCrcEnable, crcEnable);
+    params.insert(keys.itemCrcBigEndian, crcBigEndian);
     params.insert(keys.itemCrcAlgorithm, algotirhm);
     params.insert(keys.itemCrcStartIndex, start);
     params.insert(keys.itemCrcEndIndex, end);
@@ -73,6 +75,7 @@ void SAKEmitterToolUiEditor::setParameters(const QJsonObject &params)
     int suffix = params.value(keys.itemSuffix).toInt();
     int interval = params.value(keys.itemInterval).toInt();
     bool crcEnable = params.value(keys.itemCrcEnable).toBool();
+    bool crcBigEndian = params.value(keys.itemCrcBigEndian).toBool();
     int algotirhm = params.value(keys.itemCrcAlgorithm).toInt();
     int start = params.value(keys.itemCrcStartIndex).toInt();
     int end = params.value(keys.itemCrcEndIndex).toInt();
@@ -86,6 +89,7 @@ void SAKEmitterToolUiEditor::setParameters(const QJsonObject &params)
     ui->comboBoxSufix->setCurrentIndexFromData(suffix);
     ui->spinBoxInterval->setValue(interval);
     ui->checkBoxCrcEnable->setChecked(crcEnable);
+    ui->checkBoxBigEndian->setChecked(crcBigEndian);
     ui->comboBoxAlgorithm->setCurrentIndexFromData(algotirhm);
     ui->spinBoxStartIndex->setValue(start);
     ui->spinBoxEndIndex->setValue(end);

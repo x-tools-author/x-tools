@@ -43,6 +43,7 @@ QVariant SAKEmitterTool::itemContext(int index)
         ctx.insert(itemPrefix(), item.data.itemPrefix);
         ctx.insert(itemSuffix(), item.data.itemSuffix);
         ctx.insert(itemCrcEnable(), item.data.itemCrcEnable);
+        ctx.insert(itemCrcBigEndian(), item.data.itemCrcBigEndian);
         ctx.insert(itemCrcAlgorithm(), item.data.itemCrcAlgorithm);
         ctx.insert(itemCrcStartIndex(), item.data.itemCrcStartIndex);
         ctx.insert(itemCrcEndIndex(), item.data.itemCrcEndIndex);
@@ -57,6 +58,7 @@ QVariant SAKEmitterTool::itemContext(int index)
         ctx.insert(itemPrefix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemSuffix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemCrcEnable(), false);
+        ctx.insert(itemCrcBigEndian(), false);
         ctx.insert(itemCrcAlgorithm(), SAKCrcInterface::CRC_8);
         ctx.insert(itemCrcStartIndex(), 0);
         ctx.insert(itemCrcEndIndex(), 0);
@@ -86,6 +88,8 @@ QString SAKEmitterTool::cookHeaderString(const QString &str)
         return tr("Interval");
     } else if (str == keys.itemCrcEnable) {
         return tr("Append CRC");
+    } else if (str == keys.itemCrcBigEndian) {
+        return tr("Big Endian");
     } else if (str == keys.itemCrcAlgorithm) {
         return tr("Algorithm");
     } else if (str == keys.itemCrcStartIndex) {
@@ -152,6 +156,8 @@ bool SAKEmitterTool::setData(const QModelIndex &index,
                 item.data.itemSuffix = value.toInt();
             } else if (dataKey == mDataKeys.itemCrcEnable) {
                 item.data.itemCrcEnable = value.toBool();
+            } else if (dataKey == mDataKeys.itemCrcBigEndian) {
+                item.data.itemCrcBigEndian = value.toBool();
             } else if (dataKey == mDataKeys.itemCrcAlgorithm) {
                 item.data.itemCrcAlgorithm = value.toInt();
             } else if (dataKey == mDataKeys.itemCrcStartIndex) {
@@ -209,10 +215,11 @@ QVariant SAKEmitterTool::headerData(int section,
         case 5: return mDataKeys.itemPrefix;
         case 6: return mDataKeys.itemSuffix;
         case 7: return mDataKeys.itemCrcEnable;
-        case 8: return mDataKeys.itemCrcAlgorithm;
-        case 9: return mDataKeys.itemCrcStartIndex;
-        case 10: return mDataKeys.itemCrcEndIndex;
-        case 11: return mDataKeys.itemText;
+        case 8: return mDataKeys.itemCrcBigEndian;
+        case 9: return mDataKeys.itemCrcAlgorithm;
+        case 10: return mDataKeys.itemCrcStartIndex;
+        case 11: return mDataKeys.itemCrcEndIndex;
+        case 12: return mDataKeys.itemText;
         default: return "";
         }
     }
@@ -260,16 +267,17 @@ QByteArray SAKEmitterTool::itemBytes(const SAKEmitterTool::Data &item)
     QString text = item.itemText;
     text = SAKDataStructure::cookedString(item.itemEscapeCharacter, text);
     bytes = SAKInterface::string2array(text, item.itemTextFormat);
-    SAKCrcInterface sakCrc;
-    QByteArray crcBytes = sakCrc.calculateBytes(bytes,
-                                               item.itemCrcAlgorithm,
-                                               item.itemCrcStartIndex,
-                                               item.itemCrcEndIndex);
     QByteArray prefix = SAKDataStructure::affixesData(item.itemPrefix);
     QByteArray suffix = SAKDataStructure::affixesData(item.itemSuffix);
 
     bytes.prepend(prefix);
     if (item.itemCrcEnable) {
+        SAKCrcInterface sakCrc;
+        QByteArray crcBytes = sakCrc.calculateBytes(bytes,
+                                                    item.itemCrcAlgorithm,
+                                                    item.itemCrcStartIndex,
+                                                    item.itemCrcEndIndex,
+                                                    item.itemCrcBigEndian);
         bytes.append(crcBytes);
     }
     bytes.append(suffix);
@@ -288,25 +296,27 @@ QVariant SAKEmitterTool::columnDisplayRoleData(
             return item.data.itemEnable;
         } else if (dataKey == mDataKeys.itemDescription) {
             return item.data.itemDescription;
-        }  else if (dataKey == mDataKeys.itemTextFormat) {
+        } else if (dataKey == mDataKeys.itemTextFormat) {
             return item.data.itemEscapeCharacter;
-        }  else if (dataKey == mDataKeys.itemEscapeCharacter) {
+        } else if (dataKey == mDataKeys.itemEscapeCharacter) {
             return item.data.itemEscapeCharacter;
-        }  else if (dataKey == mDataKeys.itemInterval) {
+        } else if (dataKey == mDataKeys.itemInterval) {
             return item.data.itemInterval;
-        }  else if (dataKey == mDataKeys.itemPrefix) {
+        } else if (dataKey == mDataKeys.itemPrefix) {
             return item.data.itemPrefix;
-        }  else if (dataKey == mDataKeys.itemSuffix) {
+        } else if (dataKey == mDataKeys.itemSuffix) {
             return item.data.itemSuffix;
-        }  else if (dataKey == mDataKeys.itemCrcEnable) {
+        } else if (dataKey == mDataKeys.itemCrcEnable) {
             return item.data.itemCrcEnable;
-        }  else if (dataKey == mDataKeys.itemCrcAlgorithm) {
+        } else if (dataKey == mDataKeys.itemCrcBigEndian) {
+            return item.data.itemCrcBigEndian;
+        } else if (dataKey == mDataKeys.itemCrcAlgorithm) {
             return item.data.itemCrcAlgorithm;
-        }  else if (dataKey == mDataKeys.itemCrcStartIndex) {
+        } else if (dataKey == mDataKeys.itemCrcStartIndex) {
             return item.data.itemCrcStartIndex;
-        }  else if (dataKey == mDataKeys.itemCrcEndIndex) {
+        } else if (dataKey == mDataKeys.itemCrcEndIndex) {
             return item.data.itemCrcEndIndex;
-        }  else if (dataKey == mDataKeys.itemText) {
+        } else if (dataKey == mDataKeys.itemText) {
             return item.data.itemText;
         } else {
             outputMessage(QtWarningMsg, "Unknown data key:" + dataKey);
@@ -355,6 +365,11 @@ QString SAKEmitterTool::itemSuffix()
 QString SAKEmitterTool::itemCrcEnable()
 {
     return mDataKeys.itemCrcEnable;
+}
+
+QString SAKEmitterTool::itemCrcBigEndian()
+{
+    return mDataKeys.itemCrcBigEndian;
 }
 
 QString SAKEmitterTool::itemCrcAlgorithm()

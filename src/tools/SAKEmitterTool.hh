@@ -28,6 +28,7 @@ class SAKEmitterTool : public SAKTableModelTool
     Q_PROPERTY(QString itemPrefix READ itemPrefix CONSTANT)
     Q_PROPERTY(QString itemSuffix READ itemSuffix CONSTANT)
     Q_PROPERTY(QString itemCrcEnable READ itemCrcEnable CONSTANT)
+    Q_PROPERTY(QString itemCrcBigEndian READ itemCrcBigEndian CONSTANT)
     Q_PROPERTY(QString itemCrcAlgorithm READ itemCrcAlgorithm CONSTANT)
     Q_PROPERTY(QString itemCrcStartIndex READ itemCrcStartIndex CONSTANT)
     Q_PROPERTY(QString itemCrcEndIndex READ itemCrcEndIndex CONSTANT)
@@ -42,6 +43,7 @@ public:
         const QString itemSuffix{"Suffix"};
         const QString itemInterval{"Interval"};
         const QString itemCrcEnable{"CrcEnable"};
+        const QString itemCrcBigEndian{"BigEndian"};
         const QString itemCrcAlgorithm{"Algorithm"};
         const QString itemCrcStartIndex{"Start"};
         const QString itemCrcEndIndex{"End"};
@@ -60,6 +62,7 @@ public:
         int itemInterval;
 
         bool itemCrcEnable;
+        bool itemCrcBigEndian;
         int itemCrcAlgorithm;
         int itemCrcStartIndex;
         int itemCrcEndIndex;
@@ -108,7 +111,7 @@ private:
     const int mFormatColumnIndex{1};
     const int mItemTextColumnIndex{2};
     DataKeys mDataKeys;
-    const int mTableColumnCount{12};
+    const int mTableColumnCount{13};
     QTimer *mEmittingTimer;
     const int mScanInterval{5};
 
@@ -126,6 +129,7 @@ private:
     QString itemPrefix();
     QString itemSuffix();
     QString itemCrcEnable();
+    QString itemCrcBigEndian();
     QString itemCrcAlgorithm();
     QString itemCrcStartIndex();
     QString itemCrcEndIndex();
