@@ -25,6 +25,7 @@ public:
 protected:
     virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
                                          const QString &settingGroup) override;
+    virtual QList<int> defaultHideColumns() override;
     virtual QDialog *itemEditor() override;
 
 private:

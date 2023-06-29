@@ -15,6 +15,7 @@
 #include <QJsonDocument>
 #include <QAbstractTableModel>
 
+#include "SAKTableModelTool.hh"
 #include "SAKResponserToolUi.hh"
 
 SAKResponserToolUi::SAKResponserToolUi(QWidget *parent)
@@ -35,6 +36,23 @@ void SAKResponserToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     QList<int> columns;
     columns << 12 << 24;
     setStretchSections(columns);
+}
+
+QList<int> SAKResponserToolUi::defaultHideColumns()
+{
+    QList<int> list;
+    auto tb = mTableModelTool->tableModel().value<QAbstractTableModel*>();
+    for (int i = 0; i < tb->columnCount(); i++) {
+        list.append(i);
+    }
+
+    list.removeAll(0);
+    list.removeAll(1);
+    list.removeAll(2);
+    list.removeAll(12);
+    list.removeAll(24);
+
+    return list;
 }
 
 QDialog *SAKResponserToolUi::itemEditor()
