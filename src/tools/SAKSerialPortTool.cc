@@ -140,10 +140,7 @@ void SAKSerialPortTool::readBytes()
             QString msg = QString::fromLatin1(hex);
             msg = QString("%1<-%2").arg(mParameters.portName, msg);
             outputMessage(QtInfoMsg, msg);
-            QJsonObject jsonObj;
-            jsonObj.insert("flag", "rx");
-            QVariant context = QVariant::fromValue(jsonObj);
-            emit bytesOutputted(bytes, context);
+            emit bytesOutputted(bytes, rxJsonObject());
         }
     }
 }

@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -183,18 +183,37 @@ void SAKStorerTool::write2file()
                 } else {
                     dtStr = dt.toString("yyyy-MM-dd hh:mm:ss ");
                 }
-            } else if (mParameters.saveDate) {
-                dtStr = dt.toString("yyyy-MM-dd ");
-            } else if (mParameters.saveTime) {
-                if (mParameters.saveMs) {
-                    dtStr = dt.toString("hh:mm:ss.zzz ");
+            } else {
+                if (mParameters.saveDate) {
+                    dtStr = dt.toString("yyyy-MM-dd ");
                 } else {
-                    dtStr = dt.toString("hh:mm:ss ");
+                    if (mParameters.saveMs) {
+                        dtStr = dt.toString("hh:mm:ss.zzz ");
+                    } else {
+                        if (mParameters.saveTime) {
+                            dtStr = dt.toString("hh:mm:ss ");
+                        }
+                    }
                 }
             }
 
+            const QString txFlag = "Tx: ";
+            const QString rxFlag = "Rx: ";
             QString flag = context.toJsonObject().value("flag").toString();
-            flag = (flag == "tx" ? "Tx: " : "Rx: ");
+            flag = (flag == "rx" ? rxFlag : txFlag);
+
+            if (flag == txFlag) {
+                if (!mParameters.saveTx) {
+                    continue;
+                }
+            }
+
+            if (flag == rxFlag) {
+                if (!mParameters.saveRx) {
+                    continue;
+                }
+            }
+            qDebug() << mParameters.saveRx << mParameters.saveTx << flag;
             str = dtStr + flag + str;
             outStream << str << "\n";
         }

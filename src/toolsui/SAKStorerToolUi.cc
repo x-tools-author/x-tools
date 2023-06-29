@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -31,15 +31,6 @@ SAKStorerToolUi::~SAKStorerToolUi()
 void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
                              const QString &settingsGroup)
 {
-    ui->checkBoxEnable->setGroupKey(settingsGroup, "enable");
-    ui->checkBoxDate->setGroupKey(settingsGroup, "date");
-    ui->checkBoxTime->setGroupKey(settingsGroup, "time");
-    ui->checkBoxMs->setGroupKey(settingsGroup, "ms");
-    ui->checkBoxRx->setGroupKey(settingsGroup, "rx");
-    ui->checkBoxTx->setGroupKey(settingsGroup, "tx");
-    ui->comboBoxFormat->setGroupKey(settingsGroup, "format");
-    ui->lineEditStorerPath->setGroupKey(settingsGroup, "path");
-
     if (!tool) {
         qCWarning((*mLoggingCategory)) << "The tool value is nullptr!";
         return;
@@ -51,23 +42,14 @@ void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
         return;
     }
 
-    cookedTool->setEnable(ui->checkBoxEnable->isChecked());
-    cookedTool->setSaveTx(ui->checkBoxTx->isChecked());
-    cookedTool->setSaveRx(ui->checkBoxRx->isChecked());
-    cookedTool->setSaveDate(ui->checkBoxDate->isChecked());
-    cookedTool->setSaveTime(ui->checkBoxTime->isChecked());
-    cookedTool->setSaveMs(ui->checkBoxMs->isChecked());
-    cookedTool->setSaveFormat(ui->comboBoxFormat->currentData().toInt());
-    cookedTool->setFileName(ui->lineEditStorerPath->text());
-
     connect(ui->checkBoxEnable, &QCheckBox::clicked, this, [=](){
         cookedTool->setEnable(ui->checkBoxEnable->isChecked());
     });
     connect(ui->checkBoxRx, &QCheckBox::clicked, this, [=](){
-        cookedTool->setSaveRx(ui->checkBoxDate->isChecked());
+        cookedTool->setSaveRx(ui->checkBoxRx->isChecked());
     });
     connect(ui->checkBoxTx, &QCheckBox::clicked, this, [=](){
-        cookedTool->setSaveTx(ui->checkBoxDate->isChecked());
+        cookedTool->setSaveTx(ui->checkBoxTx->isChecked());
     });
     connect(ui->checkBoxDate, &QCheckBox::clicked, this, [=](){
         cookedTool->setSaveDate(ui->checkBoxDate->isChecked());
@@ -87,12 +69,30 @@ void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     connect(ui->lineEditStorerPath, &SAKLineEdit::textChanged, this, [=](){
         cookedTool->setFileName(ui->lineEditStorerPath->text());
     });
+
+    ui->checkBoxEnable->setGroupKey(settingsGroup, "enable");
+    ui->checkBoxDate->setGroupKey(settingsGroup, "date");
+    ui->checkBoxTime->setGroupKey(settingsGroup, "time");
+    ui->checkBoxMs->setGroupKey(settingsGroup, "ms");
+    ui->checkBoxRx->setGroupKey(settingsGroup, "rx");
+    ui->checkBoxTx->setGroupKey(settingsGroup, "tx");
+    ui->comboBoxFormat->setGroupKey(settingsGroup, "format");
+    ui->lineEditStorerPath->setGroupKey(settingsGroup, "path");
+
+    cookedTool->setEnable(ui->checkBoxEnable->isChecked());
+    cookedTool->setSaveTx(ui->checkBoxTx->isChecked());
+    cookedTool->setSaveRx(ui->checkBoxRx->isChecked());
+    cookedTool->setSaveDate(ui->checkBoxDate->isChecked());
+    cookedTool->setSaveTime(ui->checkBoxTime->isChecked());
+    cookedTool->setSaveMs(ui->checkBoxMs->isChecked());
+    cookedTool->setSaveFormat(ui->comboBoxFormat->currentData().toInt());
+    cookedTool->setFileName(ui->lineEditStorerPath->text());
 }
 
 void SAKStorerToolUi::onPushButtonSelectFileClicked()
 {
-    auto str = QFileDialog::getSaveFileName(this, tr("Save file"),
-                                            ".", tr("txt (*.txt); all (*)"));
+    auto str = QFileDialog::getSaveFileName(Q_NULLPTR, tr("Save file"),
+                                            ".", tr("txt (*.txt);;All (*)"));
     if (!str.isEmpty()) {
         ui->lineEditStorerPath->setText(str);
     }
