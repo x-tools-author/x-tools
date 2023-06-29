@@ -35,7 +35,9 @@ void SAKComboBox::setGroupKey(const QString &group,
     mKey = group + "/" + key;
     mIsIndex = isIndex;
 
+    blockSignals(true);
     readFromSettingsFile();
+    blockSignals(false);
 }
 
 
@@ -45,24 +47,28 @@ void SAKComboBox::readFromSettingsFile()
         return;
     }
 
-    blockSignals(true);
     QVariant var = SAKSettings::instance()->value(mKey);
+    if (!var.isValid()) {
+        return;
+    }
+
     if (mIsIndex) {
         int index = var.toInt();
         if (index >= 0 && index < count()) {
             setCurrentIndex(index);
         }
-    } else {
-        int index = findData(var);
-        if (index >= 0 && index < count()) {
-            setCurrentIndex(index);
-        } else {
-            if (isEditable()) {
-                setCurrentText(var.toString());
-            }
-        }
+        return;
     }
-    blockSignals(false);
+
+    int index = findData(var);
+    if (index >= 0 && index < count()) {
+        setCurrentIndex(index);
+        return;
+    }
+
+    if (isEditable()) {
+        setCurrentText(var.toString());
+    }
 }
 
 void SAKComboBox::writeToSettingsFile()
