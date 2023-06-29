@@ -533,7 +533,7 @@
     <message>
         <location filename="../../src/assistants/SAKAssistantsFactory.cc" line="41"/>
         <source>CRC Assistant</source>
-        <translation>CRC计算助手</translation>
+        <translation>冗余校验助手</translation>
     </message>
     <message>
         <location filename="../../src/assistants/SAKAssistantsFactory.cc" line="42"/>
@@ -543,22 +543,22 @@
     <message>
         <location filename="../../src/assistants/SAKAssistantsFactory.cc" line="43"/>
         <source>ASCII Assistant</source>
-        <translation>ASCII参考助手</translation>
+        <translation>标准字符助手</translation>
     </message>
     <message>
         <location filename="../../src/assistants/SAKAssistantsFactory.cc" line="44"/>
         <source>Float Assistant</source>
-        <translation>浮点数助手</translation>
+        <translation>数值查看助手</translation>
     </message>
     <message>
         <location filename="../../src/assistants/SAKAssistantsFactory.cc" line="45"/>
         <source>String Assistant</source>
-        <translation>字符串助手</translation>
+        <translation>字符查看助手</translation>
     </message>
     <message>
         <location filename="../../src/assistants/SAKAssistantsFactory.cc" line="46"/>
         <source>Broadcast Assistant</source>
-        <translation>广播助手</translation>
+        <translation>网络广播助手</translation>
     </message>
 </context>
 <context>
@@ -1472,7 +1472,7 @@
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="599"/>
         <source>Donate</source>
-        <translation>点赞</translation>
+        <translation>支持点赞</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="834"/>
@@ -1534,7 +1534,7 @@
         <location filename="../../src/SAKMainWindow.cc" line="594"/>
         <location filename="../../src/SAKMainWindow.cc" line="910"/>
         <source>QR Code</source>
-        <translation>二维码</translation>
+        <translation>扫码入群</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="605"/>
