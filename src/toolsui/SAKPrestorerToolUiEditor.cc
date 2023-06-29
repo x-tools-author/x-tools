@@ -38,6 +38,7 @@ QJsonObject SAKPrestorerToolUiEditor::parameters()
     int prefix = ui->comboBoxPrefix->currentData().toInt();
     int suffix = ui->comboBoxSuffix->currentData().toInt();
     bool crcEnable = ui->checkBoxCrc->isChecked();
+    bool bigEndian = ui->checkBoxBigEndian->isChecked();
     int start = ui->spinBoxStart->value();
     int end = ui->spinBoxEnd->value();
     int algorithm = ui->comboBoxAlgorithm->currentData().toInt();
@@ -51,6 +52,7 @@ QJsonObject SAKPrestorerToolUiEditor::parameters()
     params.insert(keys.itemPrefix, prefix);
     params.insert(keys.itemSuffix, suffix);
     params.insert(keys.itemCrcEnable, crcEnable);
+    params.insert(keys.itemCrcBigEndian, bigEndian);
     params.insert(keys.itemCrcStartIndex, start);
     params.insert(keys.itemCrcEndIndex, end);
     params.insert(keys.itemCrcAlgorithm, algorithm);
@@ -68,6 +70,7 @@ void SAKPrestorerToolUiEditor::setParameters(const QJsonObject &params)
     int prefix = params.value(keys.itemPrefix).toInt();
     int suffix = params.value(keys.itemSuffix).toInt();
     bool crcEnable = params.value(keys.itemCrcEnable).toBool();
+    bool crcBigEndian = params.value(keys.itemCrcBigEndian).toBool();
     int start = params.value(keys.itemCrcStartIndex).toInt();
     int end = params.value(keys.itemCrcEndIndex).toInt();
     QString data = params.value(keys.itemText).toString();
@@ -78,6 +81,7 @@ void SAKPrestorerToolUiEditor::setParameters(const QJsonObject &params)
     ui->comboBoxPrefix->setCurrentIndexFromData(prefix);
     ui->comboBoxSuffix->setCurrentIndexFromData(suffix);
     ui->checkBoxCrc->setChecked(crcEnable);
+    ui->checkBoxBigEndian->setChecked(crcBigEndian);
     ui->spinBoxStart->setValue(start);
     ui->spinBoxEnd->setValue(end);
     ui->lineEditData->setText(data);

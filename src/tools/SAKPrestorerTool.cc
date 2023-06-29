@@ -71,7 +71,9 @@ bool SAKPrestorerTool::setData(const QModelIndex &index,
                 item.itemSuffix = value.toInt();
             } else if (dataKey == mDataKeys.itemCrcEnable) {
                 item.itemCrcEnable = value.toBool();
-            } else if (dataKey == mDataKeys.itemCrcAlgorithm) {
+            } else if (dataKey == mDataKeys.itemCrcBigEndian) {
+                item.itemCrxBigEndian = value.toBool();
+            }  else if (dataKey == mDataKeys.itemCrcAlgorithm) {
                 item.itemCrcAlgorithm = value.toInt();
             } else if (dataKey == mDataKeys.itemCrcStartIndex) {
                 item.itemCrcStartIndex = value.toInt();
@@ -122,10 +124,11 @@ QVariant SAKPrestorerTool::headerData(int section,
         case 3: return mDataKeys.itemPrefix;
         case 4: return mDataKeys.itemSuffix;
         case 5: return mDataKeys.itemCrcEnable;
-        case 6: return mDataKeys.itemCrcAlgorithm;
-        case 7: return mDataKeys.itemCrcStartIndex;
-        case 8: return mDataKeys.itemCrcEndIndex;
-        case 9: return mDataKeys.itemText;
+        case 6: return mDataKeys.itemCrcBigEndian;
+        case 7: return mDataKeys.itemCrcAlgorithm;
+        case 8: return mDataKeys.itemCrcStartIndex;
+        case 9: return mDataKeys.itemCrcEndIndex;
+        case 10: return mDataKeys.itemText;
         default: return "";
         }
     }
@@ -146,9 +149,10 @@ QByteArray SAKPrestorerTool::itemBytes(const Item &item)
 
     if (item.itemCrcEnable) {
         crcBytes = sakCrc.calculateBytes(bytes,
-                                        item.itemCrcAlgorithm,
-                                        item.itemCrcStartIndex,
-                                        item.itemCrcEndIndex);
+                                         item.itemCrcAlgorithm,
+                                         item.itemCrcStartIndex,
+                                         item.itemCrcEndIndex,
+                                         item.itemCrxBigEndian);
     }
 
     bytes.prepend(prefix);
@@ -174,7 +178,9 @@ QVariant SAKPrestorerTool::columnDisplayRoleData(const Item &item, int column) c
             return item.itemSuffix;
         } else if (dataKey == mDataKeys.itemCrcEnable) {
             return item.itemCrcEnable;
-        } else if (dataKey == mDataKeys.itemCrcAlgorithm) {
+        } else if (dataKey == mDataKeys.itemCrcBigEndian) {
+            return item.itemCrxBigEndian;
+        }  else if (dataKey == mDataKeys.itemCrcAlgorithm) {
             return item.itemCrcAlgorithm;
         } else if (dataKey == mDataKeys.itemCrcStartIndex) {
             return item.itemCrcStartIndex;
@@ -205,6 +211,8 @@ QString SAKPrestorerTool::cookHeaderString(const QString &str)
         return tr("Suffix");
     } else if (str == keys.itemCrcEnable) {
         return tr("CrcEnable");
+    } else if (str == keys.itemCrcBigEndian) {
+        return tr("BigEndian");
     } else if (str == keys.itemCrcAlgorithm) {
         return tr("Algorithm");
     } else if (str == keys.itemCrcStartIndex) {
@@ -230,6 +238,7 @@ QVariant SAKPrestorerTool::itemContext(int index)
         ctx.insert(itemPrefix(), item.itemPrefix);
         ctx.insert(itemSuffix(), item.itemSuffix);
         ctx.insert(itemCrcEnable(), item.itemCrcEnable);
+        ctx.insert(itemCrcBigEndian(), item.itemCrxBigEndian);
         ctx.insert(itemCrcAlgorithm(), item.itemCrcAlgorithm);
         ctx.insert(itemCrcStartIndex(), item.itemCrcStartIndex);
         ctx.insert(itemCrcEndIndex(), item.itemCrcEndIndex);
@@ -242,6 +251,7 @@ QVariant SAKPrestorerTool::itemContext(int index)
         ctx.insert(itemPrefix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemSuffix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemCrcEnable(), false);
+        ctx.insert(itemCrcBigEndian(), false);
         ctx.insert(itemCrcAlgorithm(), SAKCrcInterface::CRC_8);
         ctx.insert(itemCrcStartIndex(), 0);
         ctx.insert(itemCrcEndIndex(), 0);
@@ -268,7 +278,8 @@ void SAKPrestorerTool::send(int index)
     }
 }
 
-void SAKPrestorerTool::inputBYtes(const QByteArray &bytes, const QVariant *context)
+void SAKPrestorerTool::inputBytes(const QByteArray &bytes,
+                                  const QVariant &context)
 {
     Q_UNUSED(bytes);
     Q_UNUSED(context);
@@ -336,6 +347,11 @@ QString SAKPrestorerTool::itemSuffix()
 QString SAKPrestorerTool::itemCrcEnable()
 {
     return mDataKeys.itemCrcEnable;
+}
+
+QString SAKPrestorerTool::itemCrcBigEndian()
+{
+    return mDataKeys.itemCrcBigEndian;
 }
 
 QString SAKPrestorerTool::itemCrcAlgorithm()

@@ -54,6 +54,10 @@ void SAKPrestorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     connect(model, &QAbstractTableModel::dataChanged,
             this, &SAKPrestorerToolUi::updateMenu);
     updateMenu();
+
+    QList<int> list;
+    list << 10;
+    setStretchSections(list);
 }
 
 QDialog *SAKPrestorerToolUi::itemEditor()

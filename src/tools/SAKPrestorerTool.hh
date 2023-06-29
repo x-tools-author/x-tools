@@ -29,6 +29,7 @@ class SAKPrestorerTool : public SAKTableModelTool
     Q_PROPERTY(QString itemPrefix READ itemPrefix CONSTANT)
     Q_PROPERTY(QString itemSuffix READ itemSuffix CONSTANT)
     Q_PROPERTY(QString itemCrcEnable READ itemCrcEnable CONSTANT)
+    Q_PROPERTY(QString itemCrcBigEndian READ itemCrcBigEndian CONSTANT)
     Q_PROPERTY(QString itemCrcAlgorithm READ itemCrcAlgorithm CONSTANT)
     Q_PROPERTY(QString itemCrcStartIndex READ itemCrcStartIndex CONSTANT)
     Q_PROPERTY(QString itemCrcEndIndex READ itemCrcEndIndex CONSTANT)
@@ -45,6 +46,7 @@ public:
         int itemSuffix;
 
         bool itemCrcEnable;
+        bool itemCrxBigEndian;
         int itemCrcAlgorithm;
         int itemCrcStartIndex;
         int itemCrcEndIndex;
@@ -57,6 +59,7 @@ public:
         const QString itemPrefix{"Prefix"};
         const QString itemSuffix{"Suffix"};
         const QString itemCrcEnable{"CrcEnable"};
+        const QString itemCrcBigEndian{"BigEndian"};
         const QString itemCrcAlgorithm{"Algorithm"};
         const QString itemCrcStartIndex{"Start"};
         const QString itemCrcEndIndex{"End"};
@@ -72,16 +75,24 @@ public:
     Q_INVOKABLE void send(int index);
 
 protected:
-    virtual void inputBYtes(const QByteArray &bytes, const QVariant *context) final;
+    virtual void inputBytes(const QByteArray &bytes,
+                            const QVariant &context) final;
     void run() final;
 
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-    virtual bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
-    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
-    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
-    virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+    virtual int rowCount(const QModelIndex &parent
+                         = QModelIndex()) const override;
+    virtual int columnCount(const QModelIndex &parent
+                            = QModelIndex()) const override;
+    virtual QVariant data(const QModelIndex &index,
+                          int role = Qt::DisplayRole) const override;
+    virtual bool setData(const QModelIndex &index, const QVariant &value,
+                         int role = Qt::EditRole) override;
+    virtual bool insertRows(int row, int count,
+                            const QModelIndex &parent = QModelIndex()) override;
+    virtual bool removeRows(int row, int count,
+                            const QModelIndex &parent = QModelIndex()) override;
+    virtual QVariant headerData(int section, Qt::Orientation orientation,
+                                int role = Qt::DisplayRole) const override;
 
 private:
     void try2send();
@@ -94,7 +105,7 @@ private:
     QVector<Item> mItems;
     QMutex mItemsMutex;
     struct ItemKeys mDataKeys;
-    const int mTableColumnCount{10};
+    const int mTableColumnCount{11};
 
 private:
     QByteArray itemBytes(const Item &item);
@@ -107,6 +118,7 @@ private:
     QString itemPrefix();
     QString itemSuffix();
     QString itemCrcEnable();
+    QString itemCrcBigEndian();
     QString itemCrcAlgorithm();
     QString itemCrcStartIndex();
     QString itemCrcEndIndex();
