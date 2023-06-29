@@ -35,7 +35,7 @@ class SAKResponserTool : public SAKTableModelTool
     SAK_STR_PROPERTY(itemReferenceCrcEnable)
     SAK_STR_PROPERTY(itemReferenceCrcBigEndian)
     SAK_STR_PROPERTY(itemReferenceCrcAlgorithm)
-    SAK_STR_PROPERTY(itemReferenceCrcStartIndexe)
+    SAK_STR_PROPERTY(itemReferenceCrcStartIndex)
     SAK_STR_PROPERTY(itemReferenceCrcEndIndex)
     SAK_STR_PROPERTY(itemReferenceText)
 
