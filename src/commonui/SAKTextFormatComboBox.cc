@@ -19,5 +19,9 @@ SAKTextFormatComboBox::SAKTextFormatComboBox(QWidget *parent)
     addItem("Hex", SAKDataStructure::TextFormatHex);
     addItem("Ascii", SAKDataStructure::TextFormatAscii);
     addItem("Utf8", SAKDataStructure::TextFormatUtf8);
+
+    blockSignals(true);
+    setCurrentIndex(5);
+    blockSignals(false);
 }
 
