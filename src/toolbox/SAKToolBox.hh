@@ -56,6 +56,7 @@ class SAKToolBox : public QObject
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
 public:
     explicit SAKToolBox(QObject *parent = nullptr);
+    ~SAKToolBox();
 
     /// You must call the interface before useing.
     Q_INVOKABLE void initialize(int type);

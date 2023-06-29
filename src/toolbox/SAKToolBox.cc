@@ -84,6 +84,21 @@ SAKToolBox::SAKToolBox(QObject *parent)
     });
 }
 
+SAKToolBox::~SAKToolBox()
+{
+    if (mComunicationTool) {
+        mComunicationTool->exit();
+        mComunicationTool->wait();
+        mComunicationTool->deleteLater();
+    }
+
+    for (auto tool : mToolList) {
+        tool->exit();
+        tool->wait();
+        tool->deleteLater();
+    }
+}
+
 void SAKToolBox::initialize(int type)
 {
     if (mComunicationTool) {
