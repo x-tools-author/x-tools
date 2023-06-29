@@ -61,6 +61,13 @@ void SAKTableModelToolUi::setStretchSections(QList<int>columns)
     }
 }
 
+void SAKTableModelToolUi::setSectionResizeModeToStretch()
+{
+    QTableView *tableView = ui->tableView;
+    QHeaderView *headerView = tableView->horizontalHeader();
+    headerView->setSectionResizeMode(QHeaderView::Stretch);
+}
+
 void SAKTableModelToolUi::setColumnVisible(int column, bool visible)
 {
     QTableView *tableView = ui->tableView;

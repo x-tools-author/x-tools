@@ -25,11 +25,7 @@ void SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(
     SAKBaseTool *tool, const QString &settingGroup)
 {
     SAKTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
-
-    QList<int> columns;
-    columns << 5;
-    setStretchSections(columns);
     setColumnVisible(4, false);
-
+    setSectionResizeModeToStretch();
     mEditor->setWebSocketContextVisible(false);
 }

@@ -19,10 +19,7 @@ void SAKSerialPortTransmitterToolUi::onBaseToolUiInitialized(
     SAKBaseTool *tool, const QString &settingGroup)
 {
     SAKTransmitterToolUi::SAKTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
-
-    QList<int> columns;
-    columns << 6;
-    setStretchSections(columns);
+    setSectionResizeModeToStretch();
 }
 
 QDialog *SAKSerialPortTransmitterToolUi::itemEditor()
