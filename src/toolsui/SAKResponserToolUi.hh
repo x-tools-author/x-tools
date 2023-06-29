@@ -11,10 +11,10 @@
 #define SAKRESPONSERTOOLUI_HH
 
 #include <QWidget>
-#include "SAKTableModelToolUi.hh"
 
-class SAKResponserTool;
-class SAKResponserToolUiEditor;
+#include "SAKTableModelToolUi.hh"
+#include "SAKResponserToolUiEditor.hh"
+
 class SAKResponserToolUi : public SAKTableModelToolUi
 {
     Q_OBJECT

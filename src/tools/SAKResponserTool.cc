@@ -79,6 +79,8 @@ bool SAKResponserTool::setData(const QModelIndex &index,
                 item.data.itemReferenceSuffix = value.toInt();
             } else if (dataKey == mDataKeys.itemReferenceCrcEnable) {
                 item.data.itemReferenceCrcEnable = value.toBool();
+            } else if (dataKey == mDataKeys.itemReferenceCrcBigEndian) {
+                item.data.itemReferenceCrcBigEndian = value.toBool();
             } else if (dataKey == mDataKeys.itemReferenceCrcAlgorithm) {
                 item.data.itemReferenceCrcAlgorithm = value.toInt();
             } else if (dataKey == mDataKeys.itemReferenceCrcStartIndex) {
@@ -99,12 +101,16 @@ bool SAKResponserTool::setData(const QModelIndex &index,
                 item.data.itemResponseSuffix = value.toInt();
             } else if (dataKey == mDataKeys.itemResponseCrcEnable) {
                 item.data.itemResponseCrcEnable = value.toBool();
+            } else if (dataKey == mDataKeys.itemResponseCrcBigEndian) {
+                item.data.itemResponseCrcBigEndian = value.toBool();
             } else if (dataKey == mDataKeys.itemResponseCrcAlgorithm) {
                 item.data.itemResponseCrcAlgorithm = value.toInt();
             } else if (dataKey == mDataKeys.itemResponseCrcStartIndex) {
                 item.data.itemResponseCrcStartIndex = value.toInt();
             } else if (dataKey == mDataKeys.itemResponseCrcEndIndex) {
                 item.data.itemResponseCrcEndIndex = value.toInt();
+            } else if (dataKey == mDataKeys.itemResponseDelay) {
+                item.data.itemResponseDelay = value.toInt();
             } else if (dataKey == mDataKeys.itemResponseText) {
                 item.data.itemResponseText = value.toString();
             } else {
@@ -154,20 +160,23 @@ QVariant SAKResponserTool::headerData(int section,
         case 5:  return mDataKeys.itemReferencePrefix;
         case 6:  return mDataKeys.itemReferenceSuffix;
         case 7:  return mDataKeys.itemReferenceCrcEnable;
-        case 8:  return mDataKeys.itemReferenceCrcAlgorithm;
-        case 9:  return mDataKeys.itemReferenceCrcStartIndex;
-        case 10: return mDataKeys.itemReferenceCrcEndIndex;
-        case 11: return mDataKeys.itemReferenceText;
-        case 12: return mDataKeys.itemResponseTextFormat;
-        case 13: return mDataKeys.itemResponseEscapeCharacter;
-        case 14: return mDataKeys.itemResponseInterval;
-        case 15: return mDataKeys.itemResponsePrefix;
-        case 16: return mDataKeys.itemResponseSuffix;
-        case 17: return mDataKeys.itemResponseCrcEnable;
-        case 18: return mDataKeys.itemResponseCrcAlgorithm;
-        case 19: return mDataKeys.itemResponseCrcStartIndex;
-        case 20: return mDataKeys.itemResponseCrcEndIndex;
-        case 21: return mDataKeys.itemResponseText;
+        case 8:  return mDataKeys.itemReferenceCrcBigEndian;
+        case 9:  return mDataKeys.itemReferenceCrcAlgorithm;
+        case 10:  return mDataKeys.itemReferenceCrcStartIndex;
+        case 11: return mDataKeys.itemReferenceCrcEndIndex;
+        case 12: return mDataKeys.itemReferenceText;
+        case 13: return mDataKeys.itemResponseTextFormat;
+        case 14: return mDataKeys.itemResponseEscapeCharacter;
+        case 15: return mDataKeys.itemResponseInterval;
+        case 16: return mDataKeys.itemResponsePrefix;
+        case 17: return mDataKeys.itemResponseSuffix;
+        case 18: return mDataKeys.itemResponseCrcEnable;
+        case 19: return mDataKeys.itemResponseCrcBigEndian;
+        case 20: return mDataKeys.itemResponseCrcAlgorithm;
+        case 21: return mDataKeys.itemResponseCrcStartIndex;
+        case 22: return mDataKeys.itemResponseCrcEndIndex;
+        case 23: return mDataKeys.itemResponseDelay;
+        case 24: return mDataKeys.itemResponseText;
         default: return "";
         }
     }
@@ -196,6 +205,8 @@ QVariant SAKResponserTool::columnDisplayRoleData(
             return item.data.itemReferenceSuffix;
         } else if (dataKey == mDataKeys.itemReferenceCrcEnable) {
             return item.data.itemReferenceCrcEnable;
+        } else if (dataKey == mDataKeys.itemReferenceCrcBigEndian) {
+            return item.data.itemReferenceCrcBigEndian;
         } else if (dataKey == mDataKeys.itemReferenceCrcAlgorithm) {
             return item.data.itemReferenceCrcAlgorithm;
         } else if (dataKey == mDataKeys.itemReferenceCrcStartIndex) {
@@ -216,12 +227,16 @@ QVariant SAKResponserTool::columnDisplayRoleData(
             return item.data.itemResponseSuffix;
         } else if (dataKey == mDataKeys.itemResponseCrcEnable) {
             return item.data.itemResponseCrcEnable;
+        } else if (dataKey == mDataKeys.itemResponseCrcBigEndian) {
+            return item.data.itemResponseCrcBigEndian;
         } else if (dataKey == mDataKeys.itemResponseCrcAlgorithm) {
             return item.data.itemResponseCrcAlgorithm;
         } else if (dataKey == mDataKeys.itemResponseCrcStartIndex) {
             return item.data.itemResponseCrcStartIndex;
         } else if (dataKey == mDataKeys.itemResponseCrcEndIndex) {
             return item.data.itemResponseCrcEndIndex;
+        } else if (dataKey == mDataKeys.itemResponseDelay) {
+            return item.data.itemResponseDelay;
         } else if (dataKey == mDataKeys.itemResponseText) {
             return item.data.itemResponseText;
         } else {
@@ -247,7 +262,8 @@ QByteArray SAKResponserTool::referenceBytes(const ResponserItem &item) const
         SAKCrcInterface sakCrc;
         QByteArray crcBytes = sakCrc.calculateBytes(
             bytes, item.itemReferenceCrcAlgorithm,
-            item.itemReferenceCrcStartIndex, item.itemReferenceCrcEndIndex);
+            item.itemReferenceCrcStartIndex, item.itemReferenceCrcEndIndex,
+            item.itemReferenceCrcBigEndian);
         bytes.append(crcBytes);
     }
     bytes.append(suffix);
@@ -270,7 +286,8 @@ QByteArray SAKResponserTool::responseBytes(const ResponserItem &item) const
         SAKCrcInterface sakCrc;
         QByteArray crcBytes = sakCrc.calculateBytes(
             bytes, item.itemResponseCrcAlgorithm,
-            item.itemResponseCrcStartIndex, item.itemResponseCrcEndIndex);
+            item.itemResponseCrcStartIndex, item.itemResponseCrcEndIndex,
+            item.itemResponseCrcBigEndian);
         bytes.append(crcBytes);
     }
     bytes.append(suffix);
@@ -298,6 +315,8 @@ QVariant SAKResponserTool::itemContext(int index)
                        item.data.itemReferenceSuffix);
             ctx.insert(itemReferenceCrcEnable(),
                        item.data.itemReferenceCrcEnable);
+            ctx.insert(itemReferenceCrcBigEndian(),
+                       item.data.itemReferenceCrcBigEndian);
             ctx.insert(itemReferenceCrcAlgorithm(),
                        item.data.itemReferenceCrcAlgorithm);
             ctx.insert(itemReferenceCrcStartIndex(),
@@ -319,12 +338,16 @@ QVariant SAKResponserTool::itemContext(int index)
                        item.data.itemResponseSuffix);
             ctx.insert(itemResponseCrcEnable(),
                        item.data.itemResponseCrcEnable);
+            ctx.insert(itemResponseCrcBigEndian(),
+                       item.data.itemResponseCrcBigEndian);
             ctx.insert(itemResponseCrcAlgorithm(),
                        item.data.itemResponseCrcAlgorithm);
             ctx.insert(itemResponseCrcStartIndex(),
                        item.data.itemResponseCrcStartIndex);
             ctx.insert(itemResponseCrcEndIndex(),
                        item.data.itemResponseCrcEndIndex);
+            ctx.insert(itemResponseDelay(),
+                       item.data.itemResponseDelay);
             ctx.insert(itemResponseText(),
                        item.data.itemResponseText);
         } else {
@@ -340,6 +363,7 @@ QVariant SAKResponserTool::itemContext(int index)
             ctx.insert(itemReferencePrefix(), SAKDataStructure::AffixesNone);
             ctx.insert(itemReferenceSuffix(), SAKDataStructure::AffixesNone);
             ctx.insert(itemReferenceCrcEnable(), false);
+            ctx.insert(itemReferenceCrcBigEndian(), false);
             ctx.insert(itemReferenceCrcAlgorithm(), SAKCrcInterface::CRC_8);
             ctx.insert(itemReferenceCrcStartIndex(), 0);
             ctx.insert(itemReferenceCrcEndIndex(), 0);
@@ -353,9 +377,11 @@ QVariant SAKResponserTool::itemContext(int index)
             ctx.insert(itemResponsePrefix(), SAKDataStructure::AffixesNone);
             ctx.insert(itemResponseSuffix(), SAKDataStructure::AffixesNone);
             ctx.insert(itemResponseCrcEnable(), false);
+            ctx.insert(itemResponseCrcBigEndian(), false);
             ctx.insert(itemResponseCrcAlgorithm(), SAKCrcInterface::CRC_8);
             ctx.insert(itemResponseCrcStartIndex(), 0);
             ctx.insert(itemResponseCrcEndIndex(), 0);
+            ctx.insert(itemResponseDelay(), 0);
             ctx.insert(itemResponseText(), "Response data.");
         }
 
@@ -388,6 +414,8 @@ QString SAKResponserTool::cookHeaderString(const QString &str)
         return tr("RefSuffix");
     } else if (str == keys.itemReferenceCrcEnable) {
         return tr("RefCrcEnable");
+    } else if (str == keys.itemReferenceCrcBigEndian) {
+        return tr("RefCrcBigEndian");
     } else if (str == keys.itemReferenceCrcAlgorithm) {
         return tr("RefAlgorithm");
     } else if (str == keys.itemReferenceCrcStartIndex) {
@@ -408,12 +436,16 @@ QString SAKResponserTool::cookHeaderString(const QString &str)
         return tr("ResInterval");
     } else if (str == keys.itemResponseCrcEnable) {
         return tr("ResCrcEnable");
+    } else if (str == keys.itemResponseCrcBigEndian) {
+        return tr("ResCrcBigEndian");
     } else if (str == keys.itemResponseCrcAlgorithm) {
         return tr("ResAlgorithm");
     } else if (str == keys.itemResponseCrcStartIndex) {
         return tr("ResStart");
     } else if (str == keys.itemResponseCrcEndIndex) {
         return tr("ResEnd");
+    } else if (str == keys.itemResponseDelay) {
+        return tr("ResDelay");
     } else if (str == keys.itemResponseText) {
         return tr("ResponseData");
     }
@@ -546,6 +578,11 @@ QString SAKResponserTool::itemReferenceCrcEnable()
     return mDataKeys.itemReferenceCrcEnable;
 }
 
+QString SAKResponserTool::itemReferenceCrcBigEndian()
+{
+    return mDataKeys.itemReferenceCrcBigEndian;
+}
+
 QString SAKResponserTool::itemReferenceCrcAlgorithm()
 {
     return mDataKeys.itemReferenceCrcAlgorithm;
@@ -596,6 +633,11 @@ QString SAKResponserTool::itemResponseCrcEnable()
     return mDataKeys.itemResponseCrcEnable;
 }
 
+QString SAKResponserTool::itemResponseCrcBigEndian()
+{
+    return mDataKeys.itemResponseCrcBigEndian;
+}
+
 QString SAKResponserTool::itemResponseCrcAlgorithm()
 {
     return mDataKeys.itemResponseCrcAlgorithm;
@@ -609,6 +651,11 @@ QString SAKResponserTool::itemResponseCrcStartIndex()
 QString SAKResponserTool::itemResponseCrcEndIndex()
 {
     return mDataKeys.itemResponseCrcEndIndex;
+}
+
+QString SAKResponserTool::itemResponseDelay()
+{
+    return mDataKeys.itemResponseDelay;
 }
 
 QString SAKResponserTool::itemResponseText()

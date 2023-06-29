@@ -112,7 +112,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBoxRefBigEndian">
+         <widget class="QCheckBox" name="checkBoxRefCrcBigEndian">
           <property name="text">
            <string>Big endian byte order</string>
           </property>
@@ -420,7 +420,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBoxResBigEndian">
+         <widget class="QCheckBox" name="checkBoxResCrcBigEndian">
           <property name="text">
            <string>Big endian byte order</string>
           </property>

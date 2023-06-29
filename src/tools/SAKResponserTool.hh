@@ -16,6 +16,8 @@
 
 #include "SAKTableModelTool.hh"
 
+#define SAK_STR_PROPERTY(name) Q_PROPERTY(QString name READ name CONSTANT)
+
 class SAKResponserTool : public SAKTableModelTool
 {
     Q_OBJECT
@@ -31,6 +33,7 @@ class SAKResponserTool : public SAKTableModelTool
     Q_PROPERTY(QString itemReferencePrefix READ itemReferencePrefix CONSTANT)
     Q_PROPERTY(QString itemReferenceSuffix READ itemReferenceSuffix CONSTANT)
     Q_PROPERTY(QString itemReferenceCrcEnable READ itemReferenceCrcEnable CONSTANT)
+    Q_PROPERTY(QString itemReferenceCrcBigEndian READ itemReferenceCrcBigEndian CONSTANT)
     Q_PROPERTY(QString itemReferenceCrcAlgorithm READ itemReferenceCrcAlgorithm CONSTANT)
     Q_PROPERTY(QString itemReferenceCrcStartIndex READ itemReferenceCrcStartIndex CONSTANT)
     Q_PROPERTY(QString itemReferenceCrcEndIndex READ itemReferenceCrcEndIndex CONSTANT)
@@ -42,9 +45,11 @@ class SAKResponserTool : public SAKTableModelTool
     Q_PROPERTY(QString itemResponsePrefix READ itemResponsePrefix CONSTANT)
     Q_PROPERTY(QString itemResponseSuffix READ itemResponseSuffix CONSTANT)
     Q_PROPERTY(QString itemResponseCrcEnable READ itemResponseCrcEnable CONSTANT)
+    Q_PROPERTY(QString itemResponseCrcBigEndian READ itemResponseCrcBigEndian CONSTANT)
     Q_PROPERTY(QString itemResponseCrcAlgorithm READ itemResponseCrcAlgorithm CONSTANT)
     Q_PROPERTY(QString itemResponseCrcStartIndex READ itemResponseCrcStartIndex CONSTANT)
     Q_PROPERTY(QString itemResponseCrcEndIndex READ itemResponseCrcEndIndex CONSTANT)
+    Q_PROPERTY(QString itemResponseDelay READ itemResponseDelay CONSTANT)
     Q_PROPERTY(QString itemResponseText READ itemResponseText CONSTANT)
 public:
     struct ResponserItem {
@@ -58,6 +63,7 @@ public:
         QString itemReferenceText;
         int itemReferenceSuffix;
         bool itemReferenceCrcEnable;
+        bool itemReferenceCrcBigEndian;
         int itemReferenceCrcAlgorithm;
         int itemReferenceCrcStartIndex;
         int itemReferenceCrcEndIndex;
@@ -69,9 +75,11 @@ public:
         int itemResponseSuffix;
         int itemResponseInterval;
         bool itemResponseCrcEnable;
+        bool itemResponseCrcBigEndian;
         int itemResponseCrcAlgorithm;
         int itemResponseCrcStartIndex;
         int itemResponseCrcEndIndex;
+        int itemResponseDelay;
     };
 
     struct ResponserData {
@@ -88,6 +96,7 @@ public:
         const QString itemReferencePrefix{"RefPrefix"};
         const QString itemReferenceSuffix{"RefSuffix"};
         const QString itemReferenceCrcEnable{"RefCrcEnable"};
+        const QString itemReferenceCrcBigEndian{"RefCrcBigEndian"};
         const QString itemReferenceCrcAlgorithm{"RefAlgorithm"};
         const QString itemReferenceCrcStartIndex{"RefStart"};
         const QString itemReferenceCrcEndIndex{"RefEnd"};
@@ -98,9 +107,11 @@ public:
         const QString itemResponseSuffix{"ResSuffix"};
         const QString itemResponseInterval{"ResInterval"};
         const QString itemResponseCrcEnable{"ResCrcEnable"};
+        const QString itemResponseCrcBigEndian{"ResCrcBigEndian"};
         const QString itemResponseCrcAlgorithm{"ResAlgorithm"};
         const QString itemResponseCrcStartIndex{"ResStart"};
         const QString itemResponseCrcEndIndex{"ResEnd"};
+        const QString itemResponseDelay{"ResDelay"};
         const QString itemResponseText{"ResponseData"};
     };
 
@@ -147,7 +158,7 @@ private:
     const int mFormatColumnIndex{1};
     const int mItemTextColumnIndex{2};
     struct ResponserItemKeys mDataKeys;
-    const int mTableColumnCount{22};
+    const int mTableColumnCount{25};
 
 private:
     QVariant columnDisplayRoleData(const ResponserData &item, int column) const;
@@ -165,6 +176,7 @@ private:
     QString itemReferencePrefix();
     QString itemReferenceSuffix();
     QString itemReferenceCrcEnable();
+    QString itemReferenceCrcBigEndian();
     QString itemReferenceCrcAlgorithm();
     QString itemReferenceCrcStartIndex();
     QString itemReferenceCrcEndIndex();
@@ -176,9 +188,11 @@ private:
     QString itemResponsePrefix();
     QString itemResponseSuffix();
     QString itemResponseCrcEnable();
+    QString itemResponseCrcBigEndian();
     QString itemResponseCrcAlgorithm();
     QString itemResponseCrcStartIndex();
     QString itemResponseCrcEndIndex();
+    QString itemResponseDelay();
     QString itemResponseText();
 };
 

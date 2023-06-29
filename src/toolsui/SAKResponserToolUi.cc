@@ -16,10 +16,9 @@
 #include <QAbstractTableModel>
 
 #include "SAKResponserToolUi.hh"
-#include "SAKResponserToolUiEditor.hh"
 
 SAKResponserToolUi::SAKResponserToolUi(QWidget *parent)
-    : SAKTableModelToolUi{"SAK.ResponserToolUi", parent}
+    : SAKTableModelToolUi{"sak.responsertoolui", parent}
 {
     mEditor = new SAKResponserToolUiEditor(this);
 }
@@ -34,7 +33,7 @@ void SAKResponserToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
 {
     SAKTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
     QList<int> columns;
-    columns << 11 << 21;
+    columns << 12 << 24;
     setStretchSections(columns);
 }
 
