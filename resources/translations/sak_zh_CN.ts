@@ -1018,7 +1018,7 @@
     <message>
         <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="236"/>
         <source>Append CRC data</source>
-        <translation>数据校验</translation>
+        <translation>追加CRC数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="249"/>
@@ -1043,7 +1043,7 @@
     <message>
         <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="203"/>
         <source>Big endian byte order</source>
-        <translation>大端字节</translation>
+        <translation>CRC数据为大端字节序</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="229"/>
@@ -2179,7 +2179,7 @@
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="168"/>
         <source>Big endian byte order</source>
-        <translation>大端字节</translation>
+        <translation>CRC数据为大端字节序</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="107"/>
@@ -2209,7 +2209,7 @@
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="161"/>
         <source>Append CRC data</source>
-        <translation>数据校验</translation>
+        <translation>追加CRC数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="81"/>
@@ -2479,7 +2479,7 @@
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="117"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="425"/>
         <source>Big endian byte order</source>
-        <translation>大端字节</translation>
+        <translation>CRC数据为大端字节序</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="132"/>
@@ -2551,7 +2551,7 @@
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="110"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="418"/>
         <source>Append CRC data</source>
-        <translation>数据校验</translation>
+        <translation>追加CRC数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="145"/>
