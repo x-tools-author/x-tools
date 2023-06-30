@@ -27,8 +27,8 @@ SAKLinuxDeployQtAppRun {
 
     !exists($${OUT_PWD}/bin/$$TARGET) {
         QMAKE_POST_LINK += 'mkdir qsak/bin $$escape_expand(\\n\\t)'
-        QMAKE_POST_LINK += 'cp $${OUT_PWD}/$$TARGET $${OUT_PWD}/qsak/bin $$escape_expand(\\n\\t)'
+        QMAKE_POST_LINK += 'cp $${OUT_PWD}/bin/$$TARGET $${OUT_PWD}/qsak/bin $$escape_expand(\\n\\t)'
     }
 
-    QMAKE_POST_LINK += 'AppRun $${OUT_PWD}/qsak/share/applications/QtSwissArmyKnife.desktop -verbose=2 -appimage $$escape_expand(\\n\\t)'
+    QMAKE_POST_LINK += 'AppRun $${OUT_PWD}/qsak/share/applications/QtSwissArmyKnife.desktop -qmake=$${QMAKE_QMAKE} -verbose=2 -appimage $$escape_expand(\\n\\t)'
 }
