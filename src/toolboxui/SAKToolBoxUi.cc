@@ -201,7 +201,7 @@ void SAKToolBoxUi::try2send()
     mToolBox->getTxAnalyzerTool()->inputBytes(bytes, QJsonObject());
 }
 
-QString SAKToolBoxUi::dateTimeContext()
+QString SAKToolBoxUi::dateTimeFormat()
 {
     static QString dateFormat = QLocale::system().dateFormat();
 
@@ -209,6 +209,11 @@ QString SAKToolBoxUi::dateTimeContext()
     bool d = ui->checkBoxOutputDate->isChecked();
     bool t = ui->checkBoxOutputTime->isChecked();
     bool m = ui->checkBoxOutputMs->isChecked();
+
+    if ((!d) && (!t) && (!m)) {
+        return QString("");
+    }
+
     if (d && t && m) {
         dateTimeFormat = dateFormat + " hh:mm:ss.zzz";
     } else if (d && t) {
@@ -235,14 +240,19 @@ void SAKToolBoxUi::output2ui(const QByteArray &bytes,
     Q_UNUSED(context);
     int format = ui->comboBoxOutputFormat->currentData().toInt();
     QString str = SAKInterface::arrayToString(bytes, format);
-    QString dt = dateTimeContext();
+    QString dt = dateTimeFormat();
     QString flag = isRx ? "Rx" : "Tx";
     QString color = isRx ? "red" : "blue";
 
     flag = QString("<font color=%1>%2</font>").arg(color, flag);
-    dt = QString("<font color=silver>%1</font>").arg(dt);
+    QString info;
+    if (dt.isEmpty()) {
+        info = QString("[%1]").arg(flag);
+    } else {
+        dt = QString("<font color=silver>%1</font>").arg(dt);
+        info = QString("[%1 %2]").arg(dt, flag);
+    }
 
-    QString info = QString("[%1 %2]").arg(dt, flag);
     info = QString("<font color=silver>%1</font>").arg(info);
 
     ui->textBrowserOutput->append(info + " " + str);

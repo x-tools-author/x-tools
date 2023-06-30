@@ -75,7 +75,7 @@ private:
 private:
     SAKCommunicationToolUi *communiticationToolUi(int type);
     void try2send();
-    QString dateTimeContext();
+    QString dateTimeFormat();
     void output2ui(const QByteArray &bytes, const QVariant &context, bool isRx);
     QString settingsGroup();
     QByteArray calculateCrc(const QByteArray &bytes = QByteArray(),
