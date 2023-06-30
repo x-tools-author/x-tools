@@ -406,15 +406,15 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
         a->setCheckable(true);
     }
 
-    if (SAKSettings::instance()->hdpiPolicy() == int(round)) {
+    if (SAKSettings::instance()->hdpiPolicy() == round) {
         roundAction->setChecked(true);
-    } else if (SAKSettings::instance()->hdpiPolicy() == int(ceil)) {
+    } else if (SAKSettings::instance()->hdpiPolicy() == ceil) {
         ceilAction->setChecked(true);
-    } else if (SAKSettings::instance()->hdpiPolicy() == int(floor)) {
+    } else if (SAKSettings::instance()->hdpiPolicy() == floor) {
         floorAction->setChecked(true);
-    } else if (SAKSettings::instance()->hdpiPolicy() == int(preferFloor)) {
+    } else if (SAKSettings::instance()->hdpiPolicy() == preferFloor) {
         rpfAction->setChecked(true);
-    } else if (SAKSettings::instance()->hdpiPolicy() == int(passThrough)) {
+    } else if (SAKSettings::instance()->hdpiPolicy() == passThrough) {
         passThroughAction->setChecked(true);
     }
 
@@ -440,6 +440,8 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
             createQtConf();
         }
     }
+#else
+    Q_UNUSED(sysScale)
 #endif
 }
 #endif
