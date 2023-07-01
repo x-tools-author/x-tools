@@ -26,6 +26,8 @@ SAKTableModelToolUi::SAKTableModelToolUi(const char *lg, QWidget *parent)
     , ui(new Ui::SAKTableModelToolUi)
 {
     ui->setupUi(this);
+    QHeaderView *vHeaderView = ui->tableView->verticalHeader();
+    vHeaderView->hide();
 
     connect(ui->pushButtonEdit, &QPushButton::clicked,
             this, &SAKTableModelToolUi::onPushButtonEditClicked);

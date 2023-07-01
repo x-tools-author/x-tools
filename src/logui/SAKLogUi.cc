@@ -39,6 +39,8 @@ SAKLogUi::SAKLogUi(QWidget *parent) :
     QAbstractTableModel *tableModel = SAKLog::instance()->tableModel();
     QTableView *tableView = ui->tableView;
     QHeaderView *headerView = tableView->horizontalHeader();
+    QHeaderView *vHeaderView = tableView->verticalHeader();
+    vHeaderView->hide();
     tableView->setModel(tableModel);
     tableView->setAlternatingRowColors(true);
 
