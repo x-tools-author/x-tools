@@ -71,14 +71,12 @@ bool SAKTcpServerTool::initialize(QString &errStr)
                 static_cast<SOCKET_ERROR_SIG>(&QAbstractSocket::error),
 #endif
                 client, [=](QAbstractSocket::SocketError err){
-            if (err == QAbstractSocket::RemoteHostClosedError) {
-                return;
-            }
-
             this->mTcpSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
-            outputMessage(QtInfoMsg, QString("Error Occurred: %1")
-                                         .arg(client->errorString()));
+            if (err != QAbstractSocket::RemoteHostClosedError) {
+                outputMessage(QtInfoMsg, QString("Error Occurred: %1")
+                                             .arg(client->errorString()));
+            }
             emit clientsChanged();
         });
     });
