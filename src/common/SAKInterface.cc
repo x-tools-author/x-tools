@@ -17,8 +17,10 @@
 #include <QJsonDocument>
 #include <QTextDocument>
 #include <QGuiApplication>
+#ifdef SAK_IMPORT_MODULE_QML
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
 #include <QQuickTextDocument>
+#endif
 #endif
 #include <QAbstractTableModel>
 
@@ -36,11 +38,13 @@ void SAKInterface::setMaximumBlockCount(QVariant doc, int maximum)
     auto obj = doc.value<QObject*>();
     if (obj) {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
+#ifdef SAK_IMPORT_MODULE_QML
         auto quickTextDoc = qobject_cast<QQuickTextDocument*>(obj);
         if (quickTextDoc) {
             auto textDoc = quickTextDoc->textDocument();
             textDoc->setMaximumBlockCount(maximum);
         }
+#endif
 #else
         Q_UNUSED(doc)
         Q_UNUSED(maximum)

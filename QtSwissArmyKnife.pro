@@ -139,14 +139,17 @@ SOURCES += \
     src/SAKSystemTrayIcon.cc \
     src/main.cc
 
-greaterThan(QT_MAJOR_VERSION, 5) {
-    greaterThan(QT_MINOR_VERSION, 3) {
-        QT += quick quickcontrols2
+SAKQmlUi {
+    DEFINES += SAK_IMPORT_MODULE_QML
+    greaterThan(QT_MAJOR_VERSION, 5) {
+        greaterThan(QT_MINOR_VERSION, 3) {
+            QT += quick quickcontrols2
 
-        HEADERS += src/SAKGuiApplication.hh
-        SOURCES += src/SAKGuiApplication.cc
-        RESOURCES += SAKQmlResources.qrc
+            HEADERS += src/SAKGuiApplication.hh
+            SOURCES += src/SAKGuiApplication.cc
+            RESOURCES += SAKQmlResources.qrc
+        }
+    } else {
+        message("If you want to using QML UI, you must use Qt6.4.0 or later.")
     }
-} else {
-    message("If you want to using QML UI, you must use Qt6.4.0 or later.")
 }

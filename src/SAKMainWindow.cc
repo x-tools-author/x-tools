@@ -223,7 +223,7 @@ void SAKMainWindow::initOptionMenu()
     initOptionMenuMainWindowMenu(optionMenu);
 #endif
     initOptionMenuSettingsMenu(optionMenu);
-#ifdef QT_DEBUG
+#ifdef SAK_IMPORT_MODULE_QML
     initOptionMenuUiType(optionMenu);
 #endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)

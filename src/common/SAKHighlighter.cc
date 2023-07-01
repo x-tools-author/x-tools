@@ -4,8 +4,10 @@
 #include <QDebug>
 #include <QTextDocument>
 #include <QRegularExpression>
+#ifdef SAK_IMPORT_MODULE_QML
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
 #include <QQuickTextDocument>
+#endif
 #endif
 
 #include "SAKHighlighter.hh"
@@ -19,11 +21,13 @@ SAKHighlighter::SAKHighlighter(QObject *parent)
 void SAKHighlighter::setDoc(QVariant doc)
 {
     auto obj = doc.value<QObject*>();
+#ifdef SAK_IMPORT_MODULE_QML
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
     if (obj->inherits("QQuickTextDocument")) {
         setDocument(doc.value<QQuickTextDocument*>()->textDocument());
         return;
     }
+#endif
 #endif
     if (obj->inherits("QTextDocument")) {
         setDocument(doc.value<QTextDocument*>());

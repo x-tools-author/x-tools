@@ -53,7 +53,7 @@
 
 contains(CONFIG, static){
     # Static compilation does not require deployment
-}else{
+} else {
     # Windows platform(only for x86 architecture)
     win32 {
         DEPLOY_TOOL = $${dirname(QMAKE_QMAKE)}/windeployqt.exe
@@ -67,8 +67,12 @@ contains(CONFIG, static){
 
         DEPLOY_TARGET=$$replace(DEPLOY_TARGET, /, \\)
         msvc {
-            QMAKE_POST_LINK+=$${DEPLOY_TOOL} $${DEPLOY_TARGET} --no-translations --qmldir $$PWD/qml $$escape_expand(\\n)
-        }else{
+            contains(CONFIG, SAKQmlUi) {
+                QMAKE_POST_LINK+=$${DEPLOY_TOOL} $${DEPLOY_TARGET} --no-translations --qmldir $$PWD/qml $$escape_expand(\\n)
+            } else {
+                QMAKE_POST_LINK+=$${DEPLOY_TOOL} $${DEPLOY_TARGET} --no-translations $$escape_expand(\\n)
+            }
+        } else {
             QMAKE_POST_LINK+='$$escape_expand("\\n\\t") $${DEPLOY_TOOL} $${DEPLOY_TARGET} --force --no-translations $$escape_expand("\\n\\t")'
         }
     }
