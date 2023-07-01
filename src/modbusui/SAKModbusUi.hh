@@ -159,7 +159,6 @@ private:
     void onDataBitsChanged();
     void onStopBistChanged();
     void onInvokeRefresh();
-    void onCustomBaudRateChanged();
     void onClientTimeoutChanged();
     void onClientRepeatTimeChanged();
     void onServerIsBusyChanged();

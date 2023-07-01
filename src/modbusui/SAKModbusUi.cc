@@ -275,17 +275,8 @@ void SAKModbusUi::initSettingsSerialPort()
     index = mSettings->value(mSettingsKeyCtx.parity).toInt();
     setComboBoxIndex(index, ui->parityComboBox);
 
-    bool customBR = mSettings->value(mSettingsKeyCtx.customBaudRate).toBool();
-    ui->baudRateComboBox->setEditable(customBR);
-    ui->customBaudRateCheckBox->setChecked(customBR);
-
     QString bd = mSettings->value(mSettingsKeyCtx.baudRate).toString();
-    index = ui->baudRateComboBox->findText(bd);
-    if (customBR) {
-        ui->baudRateComboBox->lineEdit()->setText(bd);
-    } else {
-        setComboBoxIndex(index, ui->baudRateComboBox);
-    }
+    ui->baudRateComboBox->setCurrentText(bd);
 
     index = mSettings->value(mSettingsKeyCtx.dataBits).toInt();
     setComboBoxIndex(index, ui->dataBitsComboBox);
@@ -395,10 +386,6 @@ void SAKModbusUi::initSignalsSerialPort()
     connect(ui->stopBitsComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKModbusUi::onStopBistChanged);
-    connect(ui->customBaudRateCheckBox, &QCheckBox::clicked,
-            this, &SAKModbusUi::onCustomBaudRateChanged);
-    connect(ui->refreshPpushButton, &QPushButton::clicked,
-            this, &SAKModbusUi::onInvokeRefresh);
 }
 
 void SAKModbusUi::initSignalsClient()
@@ -480,14 +467,12 @@ void SAKModbusUi::onDeviceTypeChanged()
     if (isClient) {
         ui->serverGroupBox->setHidden(true);
         ui->registersGroupBox->setHidden(true);
-        ui->clientGroupBox->setHidden(false);
         ui->clientOperationsGroupBox->setHidden(false);
         ui->clientCustomCommandGroupBox->setHidden(false);
         ui->clientRegistersGroupBox->setHidden(false);
     } else {
         ui->clientCustomCommandGroupBox->setHidden(true);
         ui->clientRegistersGroupBox->setHidden(true);
-        ui->clientGroupBox->setHidden(true);
         ui->clientOperationsGroupBox->setHidden(true);
         ui->serverGroupBox->setHidden(false);
         ui->registersGroupBox->setHidden(false);
@@ -626,13 +611,6 @@ void SAKModbusUi::onStopBistChanged()
 void SAKModbusUi::onInvokeRefresh()
 {
     initComponentPortName();
-}
-
-void SAKModbusUi::onCustomBaudRateChanged()
-{
-    mSettings->setValue(mSettingsKeyCtx.customBaudRate,
-                        ui->customBaudRateCheckBox->isChecked());
-    ui->baudRateComboBox->setEditable(ui->customBaudRateCheckBox->isChecked());
 }
 
 void SAKModbusUi::onClientTimeoutChanged()
