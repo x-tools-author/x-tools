@@ -213,7 +213,6 @@ void SAKStorerTool::write2file()
                     continue;
                 }
             }
-            qDebug() << mParameters.saveRx << mParameters.saveTx << flag;
             str = dtStr + flag + str;
             outStream << str << "\n";
         }
