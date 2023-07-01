@@ -47,7 +47,7 @@ include(src/preferencesui/SAKPreferencesUi.pri)
 include(src/assistants/SAKAssistants.pri)
 include(src/assistantsui/SAKAssistantsUi.pri)
 
-!contains(CONFIG, SAKRelease) {
+!contains(CONFIG, SAKReleaseForAppStore) {
     include(src/canbus/SAKCanBus.pri)
     include(src/canbusui/SAKCanBusUi.pri)
 
