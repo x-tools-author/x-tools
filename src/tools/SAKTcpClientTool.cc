@@ -94,6 +94,7 @@ void SAKTcpClientTool::writeBytes(const QByteArray &bytes,
 void SAKTcpClientTool::uninitialize()
 {
     mTcpSocket->disconnectFromHost();
+    mTcpSocket->close();
     mTcpSocket->deleteLater();
     mTcpSocket = nullptr;
 }
