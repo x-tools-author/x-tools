@@ -104,13 +104,18 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
 #else
-
-    QString title = QString(tr("Qt Swiss Army Knife"));
+    QString title = QString("QSAK");
+#ifndef SAK_RELEASE_FOR_APP_STORE
     title.append(QString(" "));
     title.append(QString("v"));
     title.append(qobject_cast<SAKApplication*>(qApp)->applicationVersion());
     title.append(" ");
     title.append(SAK_EDITION);
+    title.append("(D)");
+#endif
+#ifdef SAK_RELEASE_FOR_APP_STORE
+    title.append("(R)");
+#endif
     setWindowTitle(title);
     setWindowIcon(QIcon(":/resources/images/SAKLogo.png"));
 #endif
@@ -133,8 +138,10 @@ void SAKMainWindow::initMenuBar()
     initToolMenu();
     initOptionMenu();
     initLanguageMenu();
+#ifndef SAK_RELEASE_FOR_APP_STORE
     initLinksMenu();
     initDemoMenu();
+#endif
     initHelpMenu();
 }
 
@@ -566,7 +573,7 @@ void SAKMainWindow::initHelpMenu()
     helpMenu->addAction(aboutAction);
     connect(aboutAction, &QAction::triggered,
             this, &SAKMainWindow::aboutSoftware);
-
+#ifndef SAK_RELEASE_FOR_APP_STORE
     QMenu *srcMenu = new QMenu(tr("Get Source"), this);
     helpMenu->addMenu(srcMenu);
     QAction *visitGitHubAction =
@@ -592,13 +599,13 @@ void SAKMainWindow::initHelpMenu()
     helpMenu->addAction(releaseHistoryAction);
     connect(releaseHistoryAction, &QAction::triggered,
             this, &SAKMainWindow::showHistory);
-
+#endif
     helpMenu->addSeparator();
     QAction *qrCodeAction = new QAction(tr("QR Code"), this);
     helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered,
             this, &SAKMainWindow::showQrCode);
-#ifndef SAK_RELEASE
+#ifndef SAK_RELEASE_FOR_APP_STORE
     helpMenu->addAction(tr("Donate"), this, &SAKMainWindow::showDonation);
 #endif
 }
@@ -816,10 +823,8 @@ void SAKMainWindow::aboutSoftware()
     };
 
     QString format = QLocale::system().dateFormat();
-    QString buildTimeString = SAKInterface::buildDateTime("hh:mm:ss");
-    auto dateTimeString = SAKInterface::buildDateTime(format);
-    dateTimeString = dateTimeString.append(" ");
-    dateTimeString = dateTimeString.append(buildTimeString);
+    format = format + " " + QLocale::system().timeFormat();
+    QString dateTimeString = SAKInterface::buildDateTime(format);
     QList<Info> infoList;
     infoList << Info{tr("Version"),
                 QString(qApp->applicationVersion()), false}
@@ -829,10 +834,12 @@ void SAKMainWindow::aboutSoftware()
              << Info{tr("QQ"), QString("QQ:2869470394"), false}
              << Info{tr("QQ Group"), QString("QQ:952218522"), false}
              << Info{tr("Build Time"), dateTimeString, false}
+#ifndef SAK_RELEASE_FOR_APP_STORE
              << Info{tr("Gitee Url"), QString("<a href=%1>%1</a>")
                 .arg(SAK_GITEE_REPOSITORY_URL), true}
              << Info{tr("Gitbub Url"), QString("<a href=%1>%1</a>")
                 .arg(SAK_GITHUB_REPOSITORY_URL), true}
+#endif
              << Info{tr("Copyright"),
                 tr("Copyright 2018-%1 Qsaker(qsaker@foxmail.com)."
                    " All rights reserved.")

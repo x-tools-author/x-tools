@@ -47,11 +47,13 @@ include(src/preferencesui/SAKPreferencesUi.pri)
 include(src/assistants/SAKAssistants.pri)
 include(src/assistantsui/SAKAssistantsUi.pri)
 
-include(src/canbus/SAKCanBus.pri)
-include(src/canbusui/SAKCanBusUi.pri)
+!contains(CONFIG, SAKRelease) {
+    include(src/canbus/SAKCanBus.pri)
+    include(src/canbusui/SAKCanBusUi.pri)
 
-include(src/modbus/SAKModbus.pri)
-include(src/modbusui/SAKModbusUi.pri)
+    include(src/modbus/SAKModbus.pri)
+    include(src/modbusui/SAKModbusUi.pri)
+}
 
 #------------------------------------------------------------------------------
 # Android settings
@@ -139,6 +141,21 @@ SOURCES += \
     src/SAKSystemTrayIcon.cc \
     src/main.cc
 
+#-------------------------------------------------------------------------------
+# If you add the parameter CONFIG+=SAKReleaseForAppStore for qmake, some
+# unstable module will be disable. Some information will be hiden, such as
+# github url, gitee url and so on. Usually, the parameter is used to control to
+# release an edition for real users, not developers. In fact, You can use the
+# parameter to release an edition for some app store, such as Microsoft app
+# store, Apple app store and so on.
+SAKReleaseForAppStore {
+    DEFINES += SAK_RELEASE_FOR_APP_STORE
+}
+
+#-------------------------------------------------------------------------------
+# If you want to have a qml ui, you can add thre parameter CONFIG+=SAKQmlUi for
+# qmake. The qml ui has less function than the classical ui. It seem to be a lite
+# edition. Take care the menu "Options >> Ui Type"
 SAKQmlUi {
     DEFINES += SAK_IMPORT_MODULE_QML
     greaterThan(QT_MAJOR_VERSION, 5) {
