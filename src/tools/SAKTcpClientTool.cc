@@ -39,7 +39,7 @@ bool SAKTcpClientTool::initialize(QString &errStr)
     QString ip = mTcpSocket->localAddress().toString();
     QString port = QString::number(mTcpSocket->localPort());
     mBindingIpPort = ip + ":" + port;
-    outputMessage(QtInfoMsg, mBindingIpPort);
+    outputMessage(QtInfoMsg, "Client address and port: " + mBindingIpPort);
     emit bindingIpPortChanged();
 
     connect(mTcpSocket,

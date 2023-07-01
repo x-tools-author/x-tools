@@ -35,7 +35,7 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
     connect(mWebSocket, &QWebSocket::disconnected, mWebSocket, [=](){
         QString errStr = mWebSocket->errorString();
         if (!errStr.isEmpty()) {
-            errStr = "disconected:" + errStr;
+            errStr = "Disconected from server:" + errStr;
             outputMessage(QtInfoMsg, errStr);
         }
 
@@ -67,7 +67,7 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
     });
 
     QString address = "ws://" + mServerIp + ":" + QString::number(mServerPort);
-    qCDebug(mLoggingCategory) << address;
+    qCDebug(mLoggingCategory) << "Server url: " + address;
     mWebSocket->open(address);
 
     return true;

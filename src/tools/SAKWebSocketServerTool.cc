@@ -32,7 +32,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
     }
 
     QString mBindingIpPort = QString("%1:%2").arg(mServerIp).arg(mServerPort);
-    outputMessage(QtInfoMsg, mBindingIpPort);
+    outputMessage(QtInfoMsg, "Server url: " + mBindingIpPort);
 
     connect(mWebSocketServer, &QWebSocketServer::serverError,
             mWebSocketServer, [=](QWebSocketProtocol::CloseCode closeCode){
@@ -82,9 +82,9 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
         connect(client, &QWebSocket::disconnected, client, [=](){
             this->mWebSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
-            outputMessage(QtInfoMsg, QString("Connection(%1) disconnected:%2")
-                                         .arg(mBindingIpPort,
-                                              client->errorString()));
+            outputMessage(QtInfoMsg,
+                          QString("Connection(%1) has been disconnected: %2")
+                              .arg(mBindingIpPort, client->errorString()));
             emit clientsChanged();
         });
 
@@ -93,7 +93,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
             Q_UNUSED(err);
             this->mWebSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
-            outputMessage(QtInfoMsg, QString("Error occurred:%1")
+            outputMessage(QtInfoMsg, QString("Error occurred: %1")
                                          .arg(client->errorString()));
             emit clientsChanged();
         });

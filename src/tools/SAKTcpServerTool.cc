@@ -27,11 +27,7 @@ bool SAKTcpServerTool::initialize(QString &errStr)
     }
 
     mBindingIpPort = QString("%1:%2").arg(mServerIp).arg(mServerPort);
-    outputMessage(QtInfoMsg, mBindingIpPort);
-
-    connect(mTcpServer, &QTcpServer::acceptError, mTcpServer, [=](){
-        emit errorOccured(mTcpServer->errorString());
-    });
+    outputMessage(QtInfoMsg, "Server ip and port: " + mBindingIpPort);
 
     connect(mTcpServer, &QTcpServer::newConnection, mTcpServer, [=](){
         QTcpSocket *client = mTcpServer->nextPendingConnection();
@@ -54,6 +50,7 @@ bool SAKTcpServerTool::initialize(QString &errStr)
         });
 
         connect(client, &QTcpSocket::disconnected, client, [=](){
+            client->deleteLater();
             this->mTcpSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
             outputMessage(QtInfoMsg,
@@ -69,13 +66,11 @@ bool SAKTcpServerTool::initialize(QString &errStr)
 #else
                 static_cast<SOCKET_ERROR_SIG>(&QAbstractSocket::error),
 #endif
-                client, [=](QAbstractSocket::SocketError err){
+                client, [=](){
             this->mTcpSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
-            if (err != QAbstractSocket::RemoteHostClosedError) {
-                outputMessage(QtInfoMsg, QString("Error Occurred: %1")
-                                             .arg(client->errorString()));
-            }
+            outputMessage(QtInfoMsg, QString("Error occurred: %1")
+                                         .arg(client->errorString()));
             emit clientsChanged();
         });
     });
