@@ -52,6 +52,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mSplashScreen->show();
     processEvents();
 
+
     // Palete
     int ret = SAKSettings::instance()->palette();
     if ((ret == SAKDataStructure::PaletteDark)
@@ -59,37 +60,16 @@ SAKApplication::SAKApplication(int argc, char **argv)
         QString fileName = (ret == SAKDataStructure::PaletteLight
                                 ? ":/resources/palette/SAKAppPaletteLight"
                                 : ":/resources/palette/SAKAppPaletteDark");
-        QFile file(fileName);
-        if (file.open(QFile::ReadOnly)) {
-            QDataStream out(&file);
-            QPalette p;
-            out >> p;
-            file.close();
-            setPalette(p);
-            qCInfo(mLoggingCategory) << "Current palete:" << fileName;
-        } else {
-            qCWarning(mLoggingCategory) << "Open palette file error:"
-                                        << file.errorString();
-        }
+        setupPalette(fileName);
     } else {
         QString customPalette = SAKSettings::instance()->customPalette();
-        QFile file(customPalette);
-        if (!customPalette.isEmpty()) {
-            if (file.open(QFile::ReadOnly)) {
-                QDataStream out(&file);
-                QPalette p;
-                out >> p;
-                file.close();
-                setPalette(p);
-                qCInfo(mLoggingCategory) << "Current palete:" << customPalette;
-            } else {
-                qCWarning(mLoggingCategory) << "Open palette file error:"
-                                            << file.errorString();
-            }
-        } else {
+        if (customPalette.isEmpty()) {
             qCInfo(mLoggingCategory) << "Current palete: system";
+        } else {
+            setupPalette(customPalette);
         }
     }
+
 
     // Setup ui language.
     QString language = SAKSettings::instance()->language();
@@ -101,6 +81,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     QObject::connect(this, &SAKApplication::activeMainWindow,
                      mainWindow, &SAKMainWindow::activateWindow);
     mainWindow->show();
+
 
 #ifdef Q_OS_WIN
     // Setup system tray icon.
@@ -148,4 +129,20 @@ QSplashScreen *SAKApplication::splashScreen()
 void SAKApplication::showSplashScreenMessage(QString msg)
 {
     mSplashScreen->showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
+}
+
+void SAKApplication::setupPalette(const QString &fileName)
+{
+    QFile file(fileName);
+    if (file.open(QFile::ReadOnly)) {
+        QDataStream out(&file);
+        QPalette p;
+        out >> p;
+        file.close();
+        setPalette(p);
+        qCInfo(mLoggingCategory) << "Current palete:" << fileName;
+    } else {
+        qCWarning(mLoggingCategory) << "Open palette file error:"
+                                    << file.errorString();
+    }
 }

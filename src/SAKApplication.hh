@@ -30,6 +30,9 @@ private:
     QSplashScreen *mSplashScreen;
     const QLoggingCategory mLoggingCategory{"sak.application"};
 
+private:
+    void setupPalette(const QString &fileName);
+
 signals:
     void activeMainWindow();
 };
