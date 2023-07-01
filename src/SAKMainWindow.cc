@@ -161,6 +161,7 @@ void SAKMainWindow::initFileMenu()
     QMenu *fileMenu = new QMenu(tr("&File"), this);
     menuBar()->addMenu(fileMenu);
 
+    // Tool box
     QMenu *windowMenu = new QMenu(tr("New Window"), this);
     fileMenu->addMenu(windowMenu);
     QList<int> toolTypeList = SAKToolBoxUi::supportedCommuniticationTools();
@@ -176,6 +177,30 @@ void SAKMainWindow::initFileMenu()
             w->show();
         });
     }
+
+    // Other tools
+#ifdef SAK_IMPORT_MODULE_MODBUS
+    QAction *modbusAction = new QAction("Modbus Studio", this);
+    connect(modbusAction, &QAction::triggered, this, [=](){
+        SAKModbusUi *w = new SAKModbusUi();
+        w->setContentsMargins(9, 9, 9, 9);
+        w->setAttribute(Qt::WA_DeleteOnClose, true);
+        w->resize(1024, 480);
+        w->show();
+    });
+    windowMenu->addAction(modbusAction);
+#endif
+#ifdef SAK_IMPORT_MODULE_MODBUS
+    QAction *canbusAction = new QAction("CANBus Studio", this);
+    connect(canbusAction, &QAction::triggered, this, [=](){
+        SAKCanBusUi *w = new SAKCanBusUi();
+        w->setContentsMargins(9, 9, 9, 9);
+        w->setAttribute(Qt::WA_DeleteOnClose, true);
+         w->resize(1024, 480);
+        w->show();
+    });
+    windowMenu->addAction(canbusAction);
+#endif
 
     fileMenu->addSeparator();
     QAction *importAction = new QAction(tr("Import Palette"), fileMenu);
@@ -722,14 +747,16 @@ void SAKMainWindow::initNav()
     tb->addSeparator();
 
 #ifdef SAK_IMPORT_MODULE_MODBUS
+    SAKModbusUi *modbus = new SAKModbusUi(this);
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconModbus.svg")),
-            "Modbus Studio", new SAKModbusUi(), tb);
+            "Modbus Studio", modbus, tb);
 #endif
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
+    SAKCanBusUi *canbus = new SAKCanBusUi(this);
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconCanBus.svg")),
-            "CAN Bus Studio", new SAKCanBusUi(), tb);
+            "CANBus Studio", canbus, tb);
 #endif
 
 
