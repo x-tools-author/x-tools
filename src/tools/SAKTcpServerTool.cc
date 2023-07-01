@@ -57,7 +57,6 @@ bool SAKTcpServerTool::initialize(QString &errStr)
                           QString("Connection(%1) has been disconnected: %2")
                               .arg(ipPort, client->errorString()));
             emit clientsChanged();
-            exit();
         });
 
         connect(client,
