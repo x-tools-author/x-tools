@@ -26,7 +26,6 @@ bool SAKTcpClientTool::initialize(QString &errStr)
     if (mSpecifyClientIpPort) {
         if (!mTcpSocket->bind(QHostAddress(mClientIp), mClientPort)) {
             errStr = "Binding error: " + mTcpSocket->errorString();
-            outputMessage(QtWarningMsg, errStr);
             return false;
         }
     }
@@ -34,7 +33,6 @@ bool SAKTcpClientTool::initialize(QString &errStr)
     mTcpSocket->connectToHost(QHostAddress(mServerIp), mServerPort);
     if (!mTcpSocket->waitForConnected()) {
         errStr = "Connect to host error: " + mTcpSocket->errorString();
-        outputMessage(QtWarningMsg, errStr);
         return false;
     }
 

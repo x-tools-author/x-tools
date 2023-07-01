@@ -23,7 +23,6 @@ bool SAKTcpServerTool::initialize(QString &errStr)
     mTcpServer = new QTcpServer();
     if (!mTcpServer->listen(QHostAddress(mServerIp), mServerPort)) {
         errStr = "Error occurred: " + mTcpServer->errorString();
-        outputMessage(QtWarningMsg, errStr);
         return false;
     }
 
