@@ -143,7 +143,6 @@ QString SAKInterface::buildDateTime(const QString &format)
         date = QDate::fromString(str, "MMM  d yyyy");
     }
     QTime time = QTime::fromString(__TIME__, "hh:mm:ss");
-    qDebug() << str;
     return QDateTime(date, time).toString(format);
 }
 
