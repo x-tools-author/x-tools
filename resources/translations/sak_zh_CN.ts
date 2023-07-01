@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>MainWindow</name>
     <message>
@@ -114,7 +114,7 @@
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="44"/>
-        <source><byte value="xd"/></source>
+        <source></source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -125,14 +125,14 @@
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="46"/>
-        <source><byte value="xd"/>
+        <source>
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="47"/>
         <source>
-<byte value="xd"/></source>
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -453,7 +453,7 @@
     <name>QObject</name>
     <message>
         <source>Initializing main window...</source>
-        <translation type="vanished">初始化主窗口...</translation>
+        <translation>初始化主窗口...</translation>
     </message>
 </context>
 <context>
@@ -773,7 +773,7 @@
     </message>
     <message>
         <source>Interface name</source>
-        <translation type="vanished">接口名称</translation>
+        <translation>接口名称</translation>
     </message>
     <message>
         <location filename="../../src/canbusui/SAKCanBusUi.ui" line="282"/>
@@ -1062,7 +1062,7 @@
     </message>
     <message>
         <source>CRC enable</source>
-        <translation type="vanished">数据校验</translation>
+        <translation>数据校验</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="166"/>
@@ -1106,7 +1106,7 @@
     </message>
     <message>
         <source> If the parameters of CRC is set error, all bytes of data will be calculcated.</source>
-        <translation type="vanished">如果参数设置错误，所有数据字节用于计算CRC.</translation>
+        <translation>如果参数设置错误，所有数据字节用于计算CRC.</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKEmitterToolUiEditor.cc" line="20"/>
@@ -1395,7 +1395,7 @@
     </message>
     <message>
         <source>Modern</source>
-        <translation type="vanished">现代</translation>
+        <translation>现代</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="353"/>
@@ -1404,23 +1404,23 @@
     </message>
     <message>
         <source>Round up for .5 and above.</source>
-        <translation type="vanished">缩放至x.5被。</translation>
+        <translation>缩放至x.5被。</translation>
     </message>
     <message>
         <source>Always round up.</source>
-        <translation type="vanished">总是放大。</translation>
+        <translation>总是放大。</translation>
     </message>
     <message>
         <source>Always round down.</source>
-        <translation type="vanished">总是缩小。</translation>
+        <translation>总是缩小。</translation>
     </message>
     <message>
         <source>Round up for .75 and above.</source>
-        <translation type="vanished">缩放至x.75被。</translation>
+        <translation>缩放至x.75被。</translation>
     </message>
     <message>
         <source>Don&apos;t round.</source>
-        <translation type="vanished">不缩放。</translation>
+        <translation>不缩放。</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="424"/>
@@ -2284,23 +2284,23 @@
     </message>
     <message>
         <source>Echo</source>
-        <translation type="vanished">回显</translation>
+        <translation>回显</translation>
     </message>
     <message>
         <source>Always</source>
-        <translation type="vanished">总是</translation>
+        <translation>总是</translation>
     </message>
     <message>
         <source>RxEqualReference</source>
-        <translation type="vanished">接收数据等于参考数据</translation>
+        <translation>接收数据等于参考数据</translation>
     </message>
     <message>
         <source>RxContainReference</source>
-        <translation type="vanished">接收数据包含参考数据</translation>
+        <translation>接收数据包含参考数据</translation>
     </message>
     <message>
         <source>RxDiscontainReference</source>
-        <translation type="vanished">接收数据不包含参考数据</translation>
+        <translation>接收数据不包含参考数据</translation>
     </message>
 </context>
 <context>
@@ -2420,7 +2420,7 @@
     </message>
     <message>
         <source>ResInterval</source>
-        <translation type="vanished">应答数据延时</translation>
+        <translation>应答数据延时</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="428"/>
@@ -2896,7 +2896,7 @@
     </message>
     <message>
         <source>send to client</source>
-        <translation type="vanished">发送目标设备</translation>
+        <translation>发送目标设备</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.cc" line="98"/>
@@ -3282,7 +3282,7 @@
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="316"/>
         <source>Close</source>
-        <translation>关闭</translation>
+        <translation>关闭设备</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="411"/>
