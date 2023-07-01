@@ -137,8 +137,13 @@ QString SAKInterface::hexString2String(const QString &str)
 
 QString SAKInterface::buildDateTime(const QString &format)
 {
-    QDate date = QDate::fromString(__DATE__, "MMM dd yyyy");
+    QString str = QString(__DATE__);
+    QDate date = QDate::fromString(str, "MMM d yyyy");
+    if (!date.isValid()) {
+        date = QDate::fromString(str, "MMM  d yyyy");
+    }
     QTime time = QTime::fromString(__TIME__, "hh:mm:ss");
+    qDebug() << str;
     return QDateTime(date, time).toString(format);
 }
 
