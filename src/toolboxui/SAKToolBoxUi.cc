@@ -318,9 +318,11 @@ void SAKToolBoxUi::setDefaultText()
 void SAKToolBoxUi::onIsWorkingChanged()
 {
     bool isWorking = mToolBox->isWorking();
-    ui->pushButtonCommunicationOpen->setEnabled(true);
     ui->pushButtonInputSend->setEnabled(isWorking);
     ui->comboBoxInputIntervel->setEnabled(isWorking);
+    QTimer::singleShot(1000, this, [=](){
+        ui->pushButtonCommunicationOpen->setEnabled(true);
+    });
 
     if (isWorking) {
         ui->pushButtonCommunicationOpen->setText(tr("Close"));
