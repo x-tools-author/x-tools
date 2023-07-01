@@ -5,6 +5,7 @@ HEADERS += \
     $$PWD/SAKCommonCrcInterface.hh \
     $$PWD/SAKCommonDataStructure.hh \
     $$PWD/SAKCommonInterface.hh \
+    $$PWD/SAKCompatibility.hh \
     $$PWD/SAKCrcInterface.hh \
     $$PWD/SAKDataStructure.hh \
     $$PWD/SAKHighlighter.hh \
