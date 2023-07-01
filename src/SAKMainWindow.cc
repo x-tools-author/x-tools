@@ -54,7 +54,6 @@
 #include "SAKToolBoxUi.hh"
 #include "SAKMainWindow.hh"
 #include "SAKTranslator.hh"
-#include "SAKApplication.hh"
 #include "SAKDataStructure.hh"
 #include "SAKAssistantsFactory.hh"
 
@@ -104,22 +103,22 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
 #else
+
+#ifdef SAK_RELEASE_FOR_APP_STORE
     QString title = QString("QSAK");
-#ifndef SAK_RELEASE_FOR_APP_STORE
+#else
+    QString title = QString("Qt Swiss Army Knife");
+#endif
     title.append(QString(" "));
     title.append(QString("v"));
-    title.append(qobject_cast<SAKApplication*>(qApp)->applicationVersion());
+    title.append(qApp->applicationVersion());
+#ifndef SAK_RELEASE_FOR_APP_STORE
     title.append(" ");
     title.append(SAK_EDITION);
-    title.append("(D)");
-#endif
-#ifdef SAK_RELEASE_FOR_APP_STORE
-    title.append("(R)");
 #endif
     setWindowTitle(title);
     setWindowIcon(QIcon(":/resources/images/SAKLogo.png"));
 #endif
-
     initMenuBar();
     initNav();
     initStatusBar();
@@ -573,6 +572,15 @@ void SAKMainWindow::initHelpMenu()
     helpMenu->addAction(aboutAction);
     connect(aboutAction, &QAction::triggered,
             this, &SAKMainWindow::aboutSoftware);
+#ifdef Q_OS_WIN
+    QString tips = tr("Buy from Microsoft App Store");
+    QAction *microsoft = new QAction(tips);
+    helpMenu->addAction(microsoft);
+    connect(microsoft, &QAction::triggered, this, [](){
+        QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
+        QDesktopServices::openUrl(url);
+    });
+#endif
 #ifndef SAK_RELEASE_FOR_APP_STORE
     QMenu *srcMenu = new QMenu(tr("Get Source"), this);
     helpMenu->addMenu(srcMenu);
@@ -599,13 +607,13 @@ void SAKMainWindow::initHelpMenu()
     helpMenu->addAction(releaseHistoryAction);
     connect(releaseHistoryAction, &QAction::triggered,
             this, &SAKMainWindow::showHistory);
-#endif
+
     helpMenu->addSeparator();
     QAction *qrCodeAction = new QAction(tr("QR Code"), this);
     helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered,
             this, &SAKMainWindow::showQrCode);
-#ifndef SAK_RELEASE_FOR_APP_STORE
+
     helpMenu->addAction(tr("Donate"), this, &SAKMainWindow::showDonation);
 #endif
 }
