@@ -44,6 +44,9 @@ void SAKInterface::setMaximumBlockCount(QVariant doc, int maximum)
             auto textDoc = quickTextDoc->textDocument();
             textDoc->setMaximumBlockCount(maximum);
         }
+#else
+        Q_UNUSED(doc)
+        Q_UNUSED(maximum)
 #endif
 #else
         Q_UNUSED(doc)
