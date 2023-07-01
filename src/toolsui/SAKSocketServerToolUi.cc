@@ -31,6 +31,7 @@ SAKSocketServerToolUi::SAKSocketServerToolUi(QWidget *parent)
             this, &SAKSocketServerToolUi::onComboBoxMessageTypeIndexChanged);
     connect(ui->checkBoxSpecifyIpAndPort, &QCheckBox::clicked,
             this, &SAKSocketServerToolUi::onCheckBoxSpecifyIpAndPortClicked);
+    ui->pushButtonClear->hide();
 }
 
 SAKSocketServerToolUi::~SAKSocketServerToolUi()
