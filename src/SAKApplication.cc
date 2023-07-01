@@ -66,9 +66,9 @@ SAKApplication::SAKApplication(int argc, char **argv)
             out >> p;
             file.close();
             setPalette(p);
-            qCInfo(mLoggingCategory) << "current palete:" << fileName;
+            qCInfo(mLoggingCategory) << "Current palete:" << fileName;
         } else {
-            qCWarning(mLoggingCategory) << "open palette file error:"
+            qCWarning(mLoggingCategory) << "Open palette file error:"
                                         << file.errorString();
         }
     } else {
@@ -81,13 +81,13 @@ SAKApplication::SAKApplication(int argc, char **argv)
                 out >> p;
                 file.close();
                 setPalette(p);
-                qCInfo(mLoggingCategory) << "current palete:" << customPalette;
+                qCInfo(mLoggingCategory) << "Current palete:" << customPalette;
             } else {
-                qCWarning(mLoggingCategory) << "open palette file error:"
+                qCWarning(mLoggingCategory) << "Open palette file error:"
                                             << file.errorString();
             }
         } else {
-            qCInfo(mLoggingCategory) << "current palete: system";
+            qCInfo(mLoggingCategory) << "Current palete: system";
         }
     }
 
@@ -115,25 +115,22 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
 
     // Move the window to the screen central.
+#ifndef Q_OS_ANDROID
+    mainWindow->resize(mainWindow->height() * 1.732, mainWindow->height());
+#endif
     QRect screenRect = QGuiApplication::primaryScreen()->geometry();
     bool tooWidth = (mainWindow->width() > screenRect.width());
     bool tooHeight = (mainWindow->height() > screenRect.height());
-
-#ifndef Q_OS_ANDROID
-    if (!(tooHeight || tooWidth)) {
-        mainWindow->resize(mainWindow->height() * 1.732, mainWindow->height());
-    }
-#endif
-
-    if (tooWidth && tooHeight) {
+    if (tooWidth || tooHeight) {
         mainWindow->showMaximized();
+        qCInfo(mLoggingCategory) << "Too small screen";
     } else {
         mainWindow->move((screenRect.width() - mainWindow->width())/2,
                          (screenRect.height() - mainWindow->height())/2);
     }
     showSplashScreenMessage(tr("Finished..."));
 
-    QString msg = QString("the size of main window is: %1x%2")
+    QString msg = QString("The size of main window is: %1x%2")
                       .arg(mainWindow->width()).arg(mainWindow->height());
     qCInfo(mLoggingCategory) << qPrintable(msg);
 }
