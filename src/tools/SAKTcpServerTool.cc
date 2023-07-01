@@ -22,7 +22,7 @@ bool SAKTcpServerTool::initialize(QString &errStr)
 {
     mTcpServer = new QTcpServer();
     if (!mTcpServer->listen(QHostAddress(mServerIp), mServerPort)) {
-        errStr = "error occurred:" + mTcpServer->errorString();
+        errStr = "Error occurred: " + mTcpServer->errorString();
         outputMessage(QtWarningMsg, errStr);
         return false;
     }
@@ -42,7 +42,7 @@ bool SAKTcpServerTool::initialize(QString &errStr)
         quint16 port = client->peerPort();
         QString ipPort = QString("%1:%2").arg(ip).arg(port);
         mClients.append(ipPort);
-        outputMessage(QtInfoMsg, "new connection:" + ipPort);
+        outputMessage(QtInfoMsg, "New connection:" + ipPort);
         emit clientsChanged();
 
         connect(client, &QTcpSocket::readyRead, client, [=](){
@@ -57,8 +57,9 @@ bool SAKTcpServerTool::initialize(QString &errStr)
         connect(client, &QTcpSocket::disconnected, client, [=](){
             this->mTcpSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
-            outputMessage(QtInfoMsg, QString("connection(%1) disconnected: %2")
-                                         .arg(ipPort, client->errorString()));
+            outputMessage(QtInfoMsg,
+                          QString("Connection(%1) has been disconnected: %2")
+                              .arg(ipPort, client->errorString()));
             emit clientsChanged();
             exit();
         });
@@ -76,7 +77,7 @@ bool SAKTcpServerTool::initialize(QString &errStr)
 
             this->mTcpSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
-            outputMessage(QtInfoMsg, QString("error occurred:%1")
+            outputMessage(QtInfoMsg, QString("Error Occurred: %1")
                                          .arg(client->errorString()));
             emit clientsChanged();
         });

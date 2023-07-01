@@ -25,7 +25,7 @@ bool SAKTcpClientTool::initialize(QString &errStr)
     mTcpSocket = new QTcpSocket();
     if (mSpecifyClientIpPort) {
         if (!mTcpSocket->bind(QHostAddress(mClientIp), mClientPort)) {
-            errStr = "Binding error:" + mTcpSocket->errorString();
+            errStr = "Binding error: " + mTcpSocket->errorString();
             outputMessage(QtWarningMsg, errStr);
             return false;
         }
@@ -33,7 +33,7 @@ bool SAKTcpClientTool::initialize(QString &errStr)
 
     mTcpSocket->connectToHost(QHostAddress(mServerIp), mServerPort);
     if (!mTcpSocket->waitForConnected()) {
-        errStr = "Connect to host error:" + mTcpSocket->errorString();
+        errStr = "Connect to host error: " + mTcpSocket->errorString();
         outputMessage(QtWarningMsg, errStr);
         return false;
     }
@@ -53,7 +53,7 @@ bool SAKTcpClientTool::initialize(QString &errStr)
             mTcpSocket, [=](QAbstractSocket::SocketError err){
         Q_UNUSED(err);
 
-        QString info = "Error occurred:" + mTcpSocket->errorString();
+        QString info = "Error occurred: " + mTcpSocket->errorString();
         outputMessage(QtWarningMsg, info);
         emit errorOccured(mTcpSocket->errorString());
     });
@@ -93,6 +93,7 @@ void SAKTcpClientTool::writeBytes(const QByteArray &bytes,
 
 void SAKTcpClientTool::uninitialize()
 {
+    mTcpSocket->disconnectFromHost();
     mTcpSocket->deleteLater();
     mTcpSocket = nullptr;
 }
