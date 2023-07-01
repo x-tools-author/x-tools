@@ -10,9 +10,8 @@
 #include <QHostAddress>
 
 #include "SAKInterface.hh"
+#include "SAKCompatibility.hh"
 #include "SAKTcpClientTool.hh"
-
-#define SOCKET_ERROR_SIG void(QAbstractSocket::*)(QAbstractSocket::SocketError)
 
 SAKTcpClientTool::SAKTcpClientTool(QObject *parent)
     : SAKSocketClientTool{"sak.tcpclienttool", parent}
@@ -42,15 +41,7 @@ bool SAKTcpClientTool::initialize(QString &errStr)
     outputMessage(QtInfoMsg, "Client address and port: " + mBindingIpPort);
     emit bindingIpPortChanged();
 
-    connect(mTcpSocket,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-            &QTcpSocket::errorOccurred,
-#else
-            static_cast<SOCKET_ERROR_SIG>(&QAbstractSocket::error),
-#endif
-            mTcpSocket, [=](QAbstractSocket::SocketError err){
-        Q_UNUSED(err);
-
+    connect(mTcpSocket, SAK_SOCKET_ERROR, mTcpSocket, [=](){
         QString info = "Error occurred: " + mTcpSocket->errorString();
         outputMessage(QtWarningMsg, info);
         emit errorOccured(mTcpSocket->errorString());
@@ -62,16 +53,6 @@ bool SAKTcpClientTool::initialize(QString &errStr)
 
     connect(mTcpSocket, &QTcpSocket::readyRead, mTcpSocket, [=](){
         readBytes();
-    });
-
-    connect(mTcpSocket,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-        &QTcpSocket::errorOccurred,
-#else
-        static_cast<SOCKET_ERROR_SIG>(&QAbstractSocket::error),
-#endif
-        mTcpSocket, [=](){
-            emit errorOccured(mTcpSocket->errorString());
     });
 
     return true;

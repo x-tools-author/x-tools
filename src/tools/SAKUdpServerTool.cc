@@ -8,9 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKInterface.hh"
+#include "SAKCompatibility.hh"
 #include "SAKUdpServerTool.hh"
-
-#define SOCKET_ERROR_SIG void(QAbstractSocket::*)(QAbstractSocket::SocketError)
 
 SAKUdpServerTool::SAKUdpServerTool(QObject *parent)
     : SAKSocketServerTool{"sak.udpservertool", parent}
@@ -42,13 +41,9 @@ bool SAKUdpServerTool::initialize(QString &errStr)
 
     connect(mUdpSocket, &QUdpSocket::readyRead,
             mUdpSocket, [=](){readBytes();});
-    connect(mUdpSocket,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-            &QUdpSocket::errorOccurred,
-#else
-            static_cast<SOCKET_ERROR_SIG>(&QAbstractSocket::error),
-#endif
-            this, [=](){emit errorOccured(mUdpSocket->errorString());});
+    connect(mUdpSocket, SAK_SOCKET_ERROR, this, [=](){
+        emit errorOccured(mUdpSocket->errorString());
+    });
 
     return true;
 }

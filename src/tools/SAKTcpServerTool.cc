@@ -8,9 +8,9 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QTcpSocket>
-#include "SAKTcpServerTool.hh"
 
-#define SOCKET_ERROR_SIG void(QAbstractSocket::*)(QAbstractSocket::SocketError)
+#include "SAKCompatibility.hh"
+#include "SAKTcpServerTool.hh"
 
 SAKTcpServerTool::SAKTcpServerTool(QObject *parent)
     : SAKSocketServerTool{"sak.tcpservertool", parent}
@@ -31,7 +31,9 @@ bool SAKTcpServerTool::initialize(QString &errStr)
 
     connect(mTcpServer, &QTcpServer::newConnection, mTcpServer, [=](){
         QTcpSocket *client = mTcpServer->nextPendingConnection();
-        mTcpSocketList.append(client);
+        this->mTcpSocketListMutex.lock();
+        this->mTcpSocketList.append(client);
+        this->mTcpSocketListMutex.unlock();
 
         QString ip = client->peerAddress().toString();
         quint16 port = client->peerPort();
@@ -51,7 +53,9 @@ bool SAKTcpServerTool::initialize(QString &errStr)
 
         connect(client, &QTcpSocket::disconnected, client, [=](){
             client->deleteLater();
+            this->mTcpSocketListMutex.lock();
             this->mTcpSocketList.removeOne(client);
+            this->mTcpSocketListMutex.unlock();
             this->mClients.removeOne(ipPort);
             outputMessage(QtInfoMsg,
                           QString("Connection(%1) has been disconnected: %2")
@@ -59,14 +63,10 @@ bool SAKTcpServerTool::initialize(QString &errStr)
             emit clientsChanged();
         });
 
-        connect(client,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-                &QTcpSocket::errorOccurred,
-#else
-                static_cast<SOCKET_ERROR_SIG>(&QAbstractSocket::error),
-#endif
-                client, [=](){
+        connect(client, SAK_SOCKET_ERROR, client, [=](){
+            this->mTcpSocketListMutex.lock();
             this->mTcpSocketList.removeOne(client);
+            this->mTcpSocketListMutex.unlock();
             this->mClients.removeOne(ipPort);
             outputMessage(QtInfoMsg, QString("Error occurred: %1")
                                          .arg(client->errorString()));

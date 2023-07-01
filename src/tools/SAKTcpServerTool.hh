@@ -10,6 +10,7 @@
 #ifndef SAKTCPSERVERTOOL_HH
 #define SAKTCPSERVERTOOL_HH
 
+#include <QMutex>
 #include <QTcpServer>
 #include "SAKSocketServerTool.hh"
 
@@ -32,6 +33,7 @@ private:
 private:
     QTcpServer *mTcpServer{nullptr};
     QList<QTcpSocket*> mTcpSocketList;
+    QMutex mTcpSocketListMutex;
 };
 
 #endif // SAKTCPSERVERTOOL_H
