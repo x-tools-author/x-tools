@@ -574,7 +574,8 @@ void SAKMainWindow::initHelpMenu()
             this, &SAKMainWindow::aboutSoftware);
 #ifdef Q_OS_WIN
     QString tips = tr("Buy from Microsoft App Store");
-    QAction *microsoft = new QAction(tips);
+    QIcon buy(":/resources/icon/IconBuy.svg");
+    QAction *microsoft = new QAction(buy, tips);
     helpMenu->addAction(microsoft);
     connect(microsoft, &QAction::triggered, this, [](){
         QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
