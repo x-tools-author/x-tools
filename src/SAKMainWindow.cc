@@ -61,7 +61,7 @@
 #include "SAKCanBusUi.hh"
 #endif
 
-#ifdef SAK_IMPORT_MODULE_MODBUSUI
+#ifdef SAK_IMPORT_MODULE_MODBUS
 #include "SAKModbusUi.hh"
 #endif
 

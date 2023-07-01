@@ -1,28 +1,11 @@
-isEqual(QT_MAJOR_VERSION, 5) {
-    !lessThan(QT_MINOR_VERSION, 7) {
-        qtHaveModule(serialbus){
-            QT  += serialbus
-            DEFINES+=SAK_IMPORT_MODULE_MODBUSUI
-        }
-    }
-} else {
-    qtHaveModule(serialbus){
-        QT  += serialbus
-        DEFINES+=SAK_IMPORT_MODULE_MODBUSUI
-    }
-}
-
-contains(DEFINES, SAK_IMPORT_MODULE_MODBUSUI) {
-    FORMS += \
+FORMS += \
     $$PWD/SAKModbusUi.ui
 
-    HEADERS += \
+HEADERS += \
     $$PWD/SAKModbusUi.hh
 
-    SOURCES += \
+SOURCES += \
     $$PWD/SAKModbusUi.cc
 
-    INCLUDEPATH += \
-        $$PWD
-}
-
+INCLUDEPATH += \
+    $$PWD

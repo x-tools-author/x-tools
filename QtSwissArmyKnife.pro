@@ -51,8 +51,7 @@ include(src/assistantsui/SAKAssistantsUi.pri)
     include(src/canbus/SAKCanBus.pri)
     include(src/canbusui/SAKCanBusUi.pri)
 
-    include(src/modbus/SAKModbus.pri)
-    include(src/modbusui/SAKModbusUi.pri)
+    include(src/SAKModbus.pri)
 }
 
 #------------------------------------------------------------------------------

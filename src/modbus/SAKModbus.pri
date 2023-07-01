@@ -1,25 +1,20 @@
-isEqual(QT_MAJOR_VERSION, 5) {
-    !lessThan(QT_MINOR_VERSION, 7) {
-        qtHaveModule(serialbus){
-            QT  += serialbus
-            DEFINES+=SAK_IMPORT_MODULE_MODBUS
-        }
-    }
-} else {
-    qtHaveModule(serialbus){
-        QT  += serialbus
-        DEFINES+=SAK_IMPORT_MODULE_MODBUS
-    }
-}
+HEADERS += \
+    $$PWD/SAKModbusClient.hh \
+    $$PWD/SAKModbusDevice.hh \
+    $$PWD/SAKModbusFactory.hh \
+    $$PWD/SAKModbusRtuSerialClient.hh \
+    $$PWD/SAKModbusRtuSerialServer.hh \
+    $$PWD/SAKModbusServer.hh \
+    $$PWD/SAKModbusTcpClient.hh \
+    $$PWD/SAKModbusTcpServer.hh
 
-contains(DEFINES, SAK_IMPORT_MODULE_MODBUS) {
-    HEADERS += \
-    $$PWD/SAKModbus.hh
-
-    SOURCES += \
-    $$PWD/SAKModbus.cc
-
-    INCLUDEPATH += \
-        $$PWD
-}
+SOURCES += \
+    $$PWD/SAKModbusClient.cc \
+    $$PWD/SAKModbusDevice.cc \
+    $$PWD/SAKModbusFactory.cc \
+    $$PWD/SAKModbusRtuSerialClient.cc \
+    $$PWD/SAKModbusRtuSerialServer.cc \
+    $$PWD/SAKModbusServer.cc \
+    $$PWD/SAKModbusTcpClient.cc \
+    $$PWD/SAKModbusTcpServer.cc
 

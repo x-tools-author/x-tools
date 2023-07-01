@@ -8,15 +8,33 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 
-#include "SAKModbus.hh"
+#include "SAKModbusFactory.hh"
 
-SAKModbus::SAKModbus(QObject *parent)
-    : QThread(parent)
+SAKModbusFactory::SAKModbusFactory(QObject *parent)
+    : QObject(parent)
 {
 
 }
 
-SAKModbus::~SAKModbus()
+SAKModbusFactory::~SAKModbusFactory()
 {
 
+}
+
+const QString SAKModbusFactory::typeName(int type)
+{
+    if (type == ModbusRtuSerialClient) {
+        return tr("RTU Client");
+    } else if (type == ModbusRtuSerialServer) {
+        return tr("RTU Server");
+    } else if (type == ModbusTcpServer) {
+        return tr("TCP Client");
+    } else if (type == ModbusTcpClient) {
+        return tr("TCP Server");
+    }
+
+    Q_ASSERT_X(false, __FUNCTION__, "Unknown modebus device type");
+    qCWarning(mLoggingCategory) << "Unknown modebus device type";
+
+    return "Unknown";
 }
