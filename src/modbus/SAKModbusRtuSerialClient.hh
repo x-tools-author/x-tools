@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -17,6 +17,9 @@ class SAKModbusRtuSerialClient : public SAKModbusClient
     Q_OBJECT
 public:
     explicit SAKModbusRtuSerialClient(QObject *parent = Q_NULLPTR);
+
+protected:
+    virtual QModbusClient *createClient() final;
 };
 
 #endif // SAKMODBUSRTUSERIALCLIENT_HH

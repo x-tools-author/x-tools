@@ -12,7 +12,8 @@
 SAKModbusClient::SAKModbusClient(const char *lc, QObject *parent)
     : SAKModbusDevice(lc, parent)
 {
-
+    mClientParameters.numberOfRetries = 3;
+    mClientParameters.timeout = 1000;
 }
 
 void SAKModbusClient::sendRawRequest(const QModbusRequest &request,
@@ -93,7 +94,19 @@ void SAKModbusClient::onInvokeSendRawRequest(const QModbusRequest &request,
         return;
     }
 
-    mClient->sendRawRequest(request, serverAddress);
+    QModbusReply *reply = mClient->sendRawRequest(request, serverAddress);
+    if (!reply) {
+        return;
+    }
+
+    connect(reply, &QModbusReply::finished, this, [=](){
+        if (reply->error() != QModbusDevice::NoError) {
+            outputLog(reply->errorString(), QtWarningMsg);
+            return;
+        }
+
+        reply->rawResult().data();
+    });
 }
 
 void SAKModbusClient::onInvokeSendReadRequest(const QModbusDataUnit &read,
@@ -103,7 +116,17 @@ void SAKModbusClient::onInvokeSendReadRequest(const QModbusDataUnit &read,
         return;
     }
 
-    mClient->sendReadRequest(read, serverAddress);
+    QModbusReply *reply = mClient->sendReadRequest(read, serverAddress);
+    if (!reply) {
+        return;
+    }
+
+    connect(reply, &QModbusReply::finished, this, [=](){
+        if (reply->error() != QModbusDevice::NoError) {
+            outputLog(reply->errorString(), QtWarningMsg);
+            return;
+        }
+    });
 }
 
 void SAKModbusClient::onInvokeSendReadWriteRequest(const QModbusDataUnit &read,
@@ -114,7 +137,18 @@ void SAKModbusClient::onInvokeSendReadWriteRequest(const QModbusDataUnit &read,
         return;
     }
 
-    mClient->sendReadWriteRequest(read, write, serverAddress);
+    QModbusReply *reply = mClient->sendReadWriteRequest(read, write,
+                                                        serverAddress);
+    if (!reply) {
+        return;
+    }
+
+    connect(reply, &QModbusReply::finished, this, [=](){
+        if (reply->error() != QModbusDevice::NoError) {
+            outputLog(reply->errorString(), QtWarningMsg);
+            return;
+        }
+    });
 }
 
 void SAKModbusClient::onInvokeSendWriteRequest(const QModbusDataUnit &write,
@@ -124,7 +158,17 @@ void SAKModbusClient::onInvokeSendWriteRequest(const QModbusDataUnit &write,
         return;
     }
 
-    mClient->sendWriteRequest(write, serverAddress);
+    QModbusReply *reply = mClient->sendWriteRequest(write, serverAddress);
+    if (!reply) {
+        return;
+    }
+
+    connect(reply, &QModbusReply::finished, this, [=](){
+        if (reply->error() != QModbusDevice::NoError) {
+            outputLog(reply->errorString(), QtWarningMsg);
+            return;
+        }
+    });
 }
 
 int SAKModbusClient::numberOfRetries()

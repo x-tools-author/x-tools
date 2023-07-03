@@ -17,6 +17,9 @@ class SAKModbusTcpClient : public SAKModbusClient
     Q_OBJECT
 public:
     explicit SAKModbusTcpClient(QObject *parent = nullptr);
+
+protected:
+    virtual QModbusClient *createClient() final;
 };
 
 #endif // SAKMODBUSTCPCLIENT_HH

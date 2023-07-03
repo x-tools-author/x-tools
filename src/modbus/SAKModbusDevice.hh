@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -17,11 +17,16 @@
 class SAKModbusDevice : public QThread
 {
     Q_OBJECT
-    Q_PROPERTY(QString portName READ portName WRITE setPortName NOTIFY portNameChanged FINAL)
-    Q_PROPERTY(int parity READ parity WRITE setParity NOTIFY parityChanged FINAL)
-    Q_PROPERTY(int baudRate READ baudRate WRITE setBaudRate NOTIFY baudRateChanged FINAL)
-    Q_PROPERTY(int dataBits READ dataBits WRITE setDataBits NOTIFY dataBitsChanged FINAL)
-    Q_PROPERTY(int stopBits READ stopBits WRITE setStopBits NOTIFY stopBitsChanged FINAL)
+    Q_PROPERTY(QString portName READ portName WRITE setPortName
+                   NOTIFY portNameChanged FINAL)
+    Q_PROPERTY(int parity READ parity WRITE setParity
+                   NOTIFY parityChanged FINAL)
+    Q_PROPERTY(int baudRate READ baudRate WRITE setBaudRate
+                   NOTIFY baudRateChanged FINAL)
+    Q_PROPERTY(int dataBits READ dataBits WRITE setDataBits
+                   NOTIFY dataBitsChanged FINAL)
+    Q_PROPERTY(int stopBits READ stopBits WRITE setStopBits
+                   NOTIFY stopBitsChanged FINAL)
 
     Q_PROPERTY(QString ip READ ip WRITE setIp NOTIFY ipChanged FINAL)
     Q_PROPERTY(int port READ port WRITE setPort NOTIFY portChanged FINAL)

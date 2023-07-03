@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,13 +7,20 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QSerialPort>
 #include "SAKModbusDevice.hh"
 
 SAKModbusDevice::SAKModbusDevice(const char *lc, QObject *parent)
     : QThread{parent}
     , mLoggingCategory(new QLoggingCategory(lc))
 {
+    mConnectParameters.serialport.baudRate = QSerialPort::Baud9600;
+    mConnectParameters.serialport.dataBits = QSerialPort::Data8;
+    mConnectParameters.serialport.stopBits = QSerialPort::OneStop;
+    mConnectParameters.serialport.parity = QSerialPort::NoParity;
 
+    mConnectParameters.network.ip = QString("127.0.0.1");
+    mConnectParameters.network.port = 502;
 }
 
 SAKModbusDevice::~SAKModbusDevice()
