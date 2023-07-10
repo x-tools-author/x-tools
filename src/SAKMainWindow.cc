@@ -585,13 +585,14 @@ void SAKMainWindow::initHelpMenu()
 {
     QMenu *helpMenu = new QMenu(tr("&Help"), this);
     menuBar()->addMenu(helpMenu);
-
+#ifndef SAK_RELEASE_FOR_APP_STORE
     QAction *aboutQtAction = new QAction(tr("About Qt"), this);
     helpMenu->addAction(aboutQtAction);
     connect(aboutQtAction,
             &QAction::triggered,
             this,
             [=](){QMessageBox::aboutQt(this, tr("About Qt"));});
+#endif
 
     QAction *aboutAction = new QAction(tr("About QtSwissArmyKnife"), this);
     helpMenu->addAction(aboutAction);
