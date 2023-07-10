@@ -148,6 +148,7 @@ SOURCES += \
 # parameter to release an edition for some app store, such as Microsoft app
 # store, Apple app store and so on.
 SAKReleaseForAppStore {
+    include(SAKPrivate.pri)
     DEFINES += SAK_RELEASE_FOR_APP_STORE
 }
 
