@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     // Initialize some information about application.
     QCoreApplication::setOrganizationName(QString("Qsaker"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
-#ifdef SAKReleaseForAppStore
+#ifdef SAK_RELEASE_FOR_APP_STORE
     QCoreApplication::setApplicationName(QString("QtSwissArmyKnife"));
 #else
     QCoreApplication::setApplicationName(QString("QtSwissArmyKnife(Community)"));
