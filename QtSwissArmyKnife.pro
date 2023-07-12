@@ -32,25 +32,15 @@ CONFIG += c++11
 #------------------------------------------------------------------------------
 # Sub project, take cate the including order
 include(SAKProject.pri)
-include(src/common/SAKCommon.pri)
-include(src/commonui/SAKCommonUi.pri)
+include(src/SAKCommon.pri)
 
-include(src/log/SAKLog.pri)
-include(src/logui/SAKLogUi.pri)
-include(src/tools/SAKTools.pri)
-include(src/toolsui/SAKToolsUi.pri)
-include(src/toolbox/SAKToolBox.pri)
-include(src/toolboxui/SAKToolBoxUi.pri)
-include(src/preferences/SAKPreferences.pri)
-include(src/preferencesui/SAKPreferencesUi.pri)
-
-include(src/assistants/SAKAssistants.pri)
-include(src/assistantsui/SAKAssistantsUi.pri)
+include(src/SAKLog.pri)
+include(src/SAKTools.pri)
+include(src/SAKToolBox.pri)
+include(src/SAKAssistants.pri)
 
 !contains(CONFIG, SAKReleaseForAppStore) {
-    include(src/canbus/SAKCanBus.pri)
-    include(src/canbusui/SAKCanBusUi.pri)
-
+    include(src/SAKCanBus.pri)
     include(src/SAKModbus.pri)
 }
 
