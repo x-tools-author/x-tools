@@ -1,3 +1,5 @@
+INCLUDEPATH += $$PWD
+
 HEADERS += \
     $$PWD/SAKModbusClient.hh \
     $$PWD/SAKModbusDevice.hh \
