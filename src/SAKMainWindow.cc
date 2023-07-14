@@ -54,6 +54,7 @@
 #include "SAKToolBoxUi.hh"
 #include "SAKMainWindow.hh"
 #include "SAKTranslator.hh"
+#include "SAKUiInterface.hh"
 #include "SAKDataStructure.hh"
 #include "SAKAssistantsFactory.hh"
 
@@ -63,6 +64,11 @@
 
 #ifdef SAK_IMPORT_MODULE_MODBUS
 #include "SAKModbusUi.hh"
+#endif
+
+#ifdef SAK_IMPORT_MODULE_PRIVATE_MODBUS
+#include "SAKPrivateModbusClient.hh"
+#include "SAKPrivateModbusServer.hh"
 #endif
 
 #include "ui_SAKMainWindow.h"
@@ -715,16 +721,6 @@ void SAKMainWindow::initDemoMenu()
     }
 }
 
-QIcon cookedIcon(const QIcon &icon)
-{
-    QPixmap pixmap = icon.pixmap(QSize(128, 128));
-    QPainter painter(&pixmap);
-    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-    painter.fillRect(pixmap.rect(), qApp->palette().windowText().color());
-    QIcon colorIcon = QIcon(pixmap);
-    return colorIcon;
-}
-
 void SAKMainWindow::initNav()
 {
     QToolBar *tb = new QToolBar(this);
@@ -741,7 +737,8 @@ void SAKMainWindow::initNav()
         SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
         toolBoxUi->initialize(type);
 
-        initNav(&navButtonGroup, cookedIcon(toolBoxUi->windowIcon()),
+        initNav(&navButtonGroup,
+                SAKUiInterface::cookedIcon(toolBoxUi->windowIcon()),
                 toolBoxUi->windowTitle(), toolBoxUi, tb);
     }
 
@@ -749,14 +746,28 @@ void SAKMainWindow::initNav()
 
 #ifdef SAK_IMPORT_MODULE_MODBUS
     SAKModbusUi *modbus = new SAKModbusUi(this);
+    QString path = ":/resources/icon/IconModbus.svg";
     initNav(&navButtonGroup,
-            cookedIcon(QIcon(":/resources/icon/IconModbus.svg")),
+            SAKUiInterface::cookedIcon(QIcon(path)),
             "Modbus Studio", modbus, tb);
+#ifdef SAK_IMPORT_MODULE_PRIVATE_MODBUS
+    SAKPrivateModbusClient *modbusClient = new SAKPrivateModbusClient(this);
+    SAKPrivateModbusServer *modbusServer = new SAKPrivateModbusServer(this);
+    path = ":/resources/icon/IconModbus.svg";
+    initNav(&navButtonGroup,
+            SAKUiInterface::cookedIcon(QIcon(path)),
+            "Modbus Master", modbusClient, tb);
+    path = ":/resources/icon/IconModbus.svg";
+    initNav(&navButtonGroup,
+            SAKUiInterface::cookedIcon(QIcon(path)),
+            "Modbus Slave", modbusServer, tb);
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
     SAKCanBusUi *canbus = new SAKCanBusUi(this);
+    path = ":/resources/icon/IconCanBus.svg";
     initNav(&navButtonGroup,
-            cookedIcon(QIcon(":/resources/icon/IconCanBus.svg")),
+            SAKUiInterface::cookedIcon(QIcon(path)),
             "CANBus Studio", canbus, tb);
 #endif
 
@@ -772,7 +783,8 @@ void SAKMainWindow::initNav()
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon
                                   : Qt::ToolButtonIconOnly;
     QToolButton *tbt = new QToolButton(this);
-    tbt->setIcon(cookedIcon(QIcon(":/resources/icon/IconListWithIcon.svg")));
+    path = ":/resources/icon/IconListWithIcon.svg";
+    tbt->setIcon(SAKUiInterface::cookedIcon(QIcon(path)));
     tbt->setCheckable(true);
     tbt->setText(" " + tr("Hide Text"));
     tbt->setToolTip(tr("Click to show(hide) nav text"));
@@ -799,11 +811,12 @@ void SAKMainWindow::initNav()
 
 
     initNav(&navButtonGroup,
-            cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
+            SAKUiInterface::cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
             tr("Log Viewer"), new SAKLogUi(this), tb);
 #if 0
+    path = ":/resources/icon/IconSettings.svg";
     initNav(&navButtonGroup,
-            cookedIcon(QIcon(":/resources/icon/IconSettings.svg")),
+            SAKUiInterface::cookedIcon(QIcon(path)),
             tr("Preferences"), new SAKPreferencesUi(this), tb);
 #endif
 }

@@ -8,6 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QMap>
+#include <QPainter>
+#include <QGuiApplication>
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
 
@@ -53,4 +55,14 @@ void SAKUiInterface::setValidator(QLineEdit *le, int textFormat)
     }
 
     le->clear();
+}
+
+QIcon SAKUiInterface::cookedIcon(const QIcon &icon)
+{
+    QPixmap pixmap = icon.pixmap(QSize(128, 128));
+    QPainter painter(&pixmap);
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    painter.fillRect(pixmap.rect(), qApp->palette().windowText().color());
+    QIcon colorIcon = QIcon(pixmap);
+    return colorIcon;
 }

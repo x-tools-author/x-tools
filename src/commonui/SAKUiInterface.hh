@@ -20,6 +20,7 @@ public:
     explicit SAKUiInterface(QObject *parent = nullptr);
 
     static void setValidator(QLineEdit *le, int textFormat);
+    static QIcon cookedIcon(const QIcon &icon);
 };
 
 #endif // SAKUIINTERFACE_HH
