@@ -34,10 +34,10 @@ public:
     explicit SAKModbusDevice(const char *lc, QObject *parent = Q_NULLPTR);
     ~SAKModbusDevice();
 
-protected:
-    void outputLog(const QString &log, int type);
+signals:
+    void errorOccurred(const QString &errStr);
 
-private:
+protected:
     struct ConnectionParameters {
         struct {
             QString portName;
@@ -52,6 +52,9 @@ private:
         } network;
     } mConnectParameters;
     QMutex mConnectParametersMutex;
+
+protected:
+    void outputLog(const QString &log, int type);
 
 private:
     QLoggingCategory *mLoggingCategory;
