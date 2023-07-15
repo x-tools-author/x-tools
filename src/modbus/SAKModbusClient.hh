@@ -10,6 +10,8 @@
 #ifndef SAKMODBUSCLIENT_HH
 #define SAKMODBUSCLIENT_HH
 
+#include <QLoggingCategory>
+
 #include <QModbusClient>
 #include <QModbusRequest>
 #include <QModbusDataUnit>
@@ -32,7 +34,6 @@ public:
     void sendWriteRequest(const QModbusDataUnit &write, int serverAddress);
 
 signals:
-    void errorOccurred(const QString &errStr);
     void stateChanged(int state);
 
 protected:

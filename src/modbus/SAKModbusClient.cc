@@ -42,6 +42,19 @@ void SAKModbusClient::sendWriteRequest(const QModbusDataUnit &write,
 
 void SAKModbusClient::run()
 {
+    mConnectParametersMutex.lock();
+    ConnectionParameters ctx = mConnectParameters;
+    mConnectParametersMutex.unlock();
+    QString clientParameters;
+    clientParameters += "portName:" + ctx.serialport.portName + "; ";
+    clientParameters += "baudRate:" + QString::number(ctx.serialport.baudRate) + "; ";
+    clientParameters += "stopBits:" + QString::number(ctx.serialport.stopBits) + "; ";
+    clientParameters += "dataBits:" + QString::number(ctx.serialport.dataBits) + "; ";
+    clientParameters += "parity:" +  QString::number(ctx.serialport.parity) + "; ";
+    clientParameters += "ip:" + ctx.network.ip+ "; ";
+    clientParameters += "port:" +  QString::number(ctx.network.port);
+    outputLog(clientParameters, QtInfoMsg);
+
     mClient = createClient();
     if (!mClient) {
         outputLog("Invalid client", QtWarningMsg);
