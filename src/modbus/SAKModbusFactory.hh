@@ -13,6 +13,8 @@
 #include <QObject>
 #include <QLoggingCategory>
 
+#include "SAKModbusDevice.hh"
+
 class SAKModbusFactory : public QObject
 {
     Q_OBJECT
@@ -25,11 +27,15 @@ public:
     };
     Q_ENUM(ModbusDeviceType)
 
-public:
+private:
     SAKModbusFactory(QObject *parent = Q_NULLPTR);
+
+public:
     ~SAKModbusFactory();
 
+    static SAKModbusFactory *instance();
     const QString typeName(int type);
+    SAKModbusDevice *createDevice(int type);
 
 private:
     const QLoggingCategory mLoggingCategory{"sak.modbus.factory"};
