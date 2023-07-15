@@ -13,7 +13,6 @@
 #include <QJsonArray>
 #include <QMessageBox>
 #include <QJsonObject>
-#include <QWidgetAction>
 #include <QJsonDocument>
 #include <QRegularExpression>
 
