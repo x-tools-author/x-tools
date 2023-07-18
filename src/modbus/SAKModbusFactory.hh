@@ -11,9 +11,8 @@
 #define SAKMODBUSFACTORY_HH
 
 #include <QObject>
+#include <QModbusDevice>
 #include <QLoggingCategory>
-
-#include "SAKModbusDevice.hh"
 
 class SAKModbusFactory : public QObject
 {
@@ -35,7 +34,7 @@ public:
 
     static SAKModbusFactory *instance();
     const QString typeName(int type);
-    SAKModbusDevice *createDevice(int type);
+    QModbusDevice *createDevice(int type);
 
 private:
     const QLoggingCategory mLoggingCategory{"sak.modbus.factory"};

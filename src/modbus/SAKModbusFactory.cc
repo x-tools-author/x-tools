@@ -8,11 +8,12 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 
+#include <QModbusTcpClient>
+#include <QModbusTcpServer>
+#include <QModbusRtuSerialClient>
+#include <QModbusRtuSerialServer>
+
 #include "SAKModbusFactory.hh"
-#include "SAKModbusTcpClient.hh"
-#include "SAKModbusTcpServer.hh"
-#include "SAKModbusRtuSerialClient.hh"
-#include "SAKModbusRtuSerialServer.hh"
 
 SAKModbusFactory::SAKModbusFactory(QObject *parent)
     : QObject(parent)
@@ -49,20 +50,20 @@ const QString SAKModbusFactory::typeName(int type)
     return "Unknown";
 }
 
-SAKModbusDevice *SAKModbusFactory::createDevice(int type)
+QModbusDevice *SAKModbusFactory::createDevice(int type)
 {
     if (type == ModbusRtuSerialClient) {
         qCInfo(mLoggingCategory) << "create rtu serial master";
-        return new SAKModbusRtuSerialClient();
+        return new QModbusRtuSerialClient();
     } else if (type == ModbusRtuSerialServer) {
         qCInfo(mLoggingCategory) << "create rtu serial slave";
-        return new SAKModbusRtuSerialServer();
+        return new QModbusRtuSerialServer();
     } else if (type == ModbusTcpClient) {
         qCInfo(mLoggingCategory) << "create rtu tcp client";
-        return new SAKModbusTcpClient();
+        return new QModbusTcpClient();
     } else if (type == ModbusTcpServer) {
         qCInfo(mLoggingCategory) << "create rtu tcp server";
-        return new SAKModbusTcpServer();
+        return new QModbusTcpServer();
     }
 
     Q_ASSERT_X(false, __FUNCTION__, "Unknown modebus device type");
