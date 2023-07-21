@@ -137,9 +137,15 @@ SOURCES += \
 # release an edition for real users, not developers. In fact, You can use the
 # parameter to release an edition for some app store, such as Microsoft app
 # store, Apple app store and so on.
+include(SAKPrivate.pri)
 SAKReleaseForAppStore {
-    include(SAKPrivate.pri)
+    #include(SAKPrivate.pri)
     DEFINES += SAK_RELEASE_FOR_APP_STORE
+    contains(CONFIG, debug, debug|release) {
+        TARGET = Qsakerd
+    } else {
+        TARGET = Qsaker
+    }
 }
 
 #-------------------------------------------------------------------------------
