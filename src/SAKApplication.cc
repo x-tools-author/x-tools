@@ -64,7 +64,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     } else {
         QString customPalette = SAKSettings::instance()->customPalette();
         if (customPalette.isEmpty()) {
-            qCInfo(mLoggingCategory) << "Current palete: system";
+            qCInfo(mLoggingCategory) << "current palete: system";
         } else {
             setupPalette(customPalette);
         }
@@ -104,14 +104,14 @@ SAKApplication::SAKApplication(int argc, char **argv)
     bool tooHeight = (mainWindow->height() > screenRect.height());
     if (tooWidth || tooHeight) {
         mainWindow->showMaximized();
-        qCInfo(mLoggingCategory) << "Too small screen";
+        qCInfo(mLoggingCategory) << "too small screen";
     } else {
         mainWindow->move((screenRect.width() - mainWindow->width())/2,
                          (screenRect.height() - mainWindow->height())/2);
     }
     showSplashScreenMessage(tr("Finished..."));
 
-    QString msg = QString("The size of main window is: %1x%2")
+    QString msg = QString("the size of main window is: %1x%2")
                       .arg(mainWindow->width()).arg(mainWindow->height());
     qCInfo(mLoggingCategory) << qPrintable(msg);
 }
@@ -140,9 +140,9 @@ void SAKApplication::setupPalette(const QString &fileName)
         out >> p;
         file.close();
         setPalette(p);
-        qCInfo(mLoggingCategory) << "Current palete:" << fileName;
+        qCInfo(mLoggingCategory) << "current palete:" << fileName;
     } else {
-        qCWarning(mLoggingCategory) << "Open palette file error:"
+        qCWarning(mLoggingCategory) << "open palette file error:"
                                     << file.errorString();
     }
 }
