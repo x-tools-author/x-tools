@@ -761,6 +761,8 @@ void SAKMainWindow::initNav()
     initNav(&navButtonGroup,
             SAKUiInterface::cookedIcon(QIcon(path)),
             "Modbus Slave", modbusServer, tb);
+    modbusClient->importProject();
+    modbusServer->importProject();
 #endif
 #endif
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
