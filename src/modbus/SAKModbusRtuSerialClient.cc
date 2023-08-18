@@ -8,7 +8,11 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QVariant>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
 #include <QModbusRtuSerialClient>
+#else
+#include <QModbusRtuSerialMaster>
+#endif
 #include "SAKModbusRtuSerialClient.hh"
 
 SAKModbusRtuSerialClient::SAKModbusRtuSerialClient(QObject *parent)
@@ -19,8 +23,11 @@ SAKModbusRtuSerialClient::SAKModbusRtuSerialClient(QObject *parent)
 
 QModbusClient *SAKModbusRtuSerialClient::createClient()
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
     QModbusRtuSerialClient *client = new QModbusRtuSerialClient();
-
+#else
+    QModbusRtuSerialMaster *client = new QModbusRtuSerialMaster();
+#endif
     client->setConnectionParameter(QModbusClient::SerialPortNameParameter,
                                    QVariant::fromValue(portName()));
     client->setConnectionParameter(QModbusClient::SerialBaudRateParameter,

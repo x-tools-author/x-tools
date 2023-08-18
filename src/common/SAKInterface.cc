@@ -67,14 +67,18 @@ void SAKInterface::setClipboardText(const QString &text)
 
 bool SAKInterface::isQtHighDpiScalePolicy(int policy)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     QList<int> policyList;
     policyList << int(Qt::HighDpiScaleFactorRoundingPolicy::Round)
                << int(Qt::HighDpiScaleFactorRoundingPolicy::Ceil)
                << int(Qt::HighDpiScaleFactorRoundingPolicy::Floor)
                << int(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor)
                << int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
-
     return policyList.contains(policy);
+#else
+    Q_UNUSED(false)
+    return false;
+#endif
 }
 
 QString SAKInterface::arrayToString(const QByteArray &array, int format)

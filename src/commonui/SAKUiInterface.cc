@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QMap>
+#include <QIcon>
 #include <QPainter>
 #include <QGuiApplication>
 #include <QRegularExpression>

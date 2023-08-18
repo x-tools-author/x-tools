@@ -106,7 +106,7 @@ bool SAKTransmitterTool::insertRows(int row, int count,
 
 void SAKTransmitterTool::onDataChanged(const QModelIndex &topLeft,
                                        const QModelIndex &bottomRight,
-                                       const QList<int> &roles)
+                                       const QVector<int> &roles)
 {
     Q_UNUSED(bottomRight)
     Q_UNUSED(roles)

@@ -46,7 +46,7 @@ protected:
 private:
     void onDataChanged(const QModelIndex &topLeft,
                        const QModelIndex &bottomRight,
-                       const QList<int> &roles = QList<int>());
+                       const QVector<int> &roles = QVector<int>());
 };
 
 #endif // SAKTRANSMITTERTOOL_HH

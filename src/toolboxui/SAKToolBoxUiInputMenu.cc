@@ -68,7 +68,8 @@ SAKToolBoxUiInputMenu::SAKToolBoxUiInputMenu(const QString &settingsGroup,
     ui->spinBoxStartIndex->setGroupKey(settingsGroup + "/input",
                                        "startIndex");
     mParameters.startIndex = ui->spinBoxStartIndex->value();
-    connect(ui->spinBoxStartIndex, &QSpinBox::valueChanged, this, [=](){
+    connect(ui->spinBoxStartIndex, QOverload<int>::of(&QSpinBox::valueChanged),
+            this, [=](int){
         this->mParameters.startIndex = ui->spinBoxStartIndex->value();
         emit parametersChanged();
     });
@@ -76,7 +77,8 @@ SAKToolBoxUiInputMenu::SAKToolBoxUiInputMenu(const QString &settingsGroup,
     ui->spinBoxEndIndex->setGroupKey(settingsGroup + "/input",
                                      "endIndex");
     mParameters.endIndex = ui->spinBoxEndIndex->value();
-    connect(ui->spinBoxEndIndex, &QSpinBox::valueChanged, this, [=](){
+    connect(ui->spinBoxEndIndex, QOverload<int>::of(&QSpinBox::valueChanged),
+            this, [=](){
         this->mParameters.endIndex = ui->spinBoxEndIndex->value();
         emit parametersChanged();
     });

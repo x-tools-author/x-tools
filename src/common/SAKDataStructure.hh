@@ -65,7 +65,7 @@ public:
         PaletteCustom
     };
     Q_ENUM(SAKEnumPalette)
-
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     enum SAKHdpiPolicy {
         HdpiPolicyRound = int(Qt::HighDpiScaleFactorRoundingPolicy::Round),
         HdpiPolicyCeil = int(Qt::HighDpiScaleFactorRoundingPolicy::Ceil),
@@ -77,6 +77,7 @@ public:
         HdpiPolicySystem = 999
     };
     Q_ENUM(SAKHdpiPolicy)
+#endif
 
     struct EDStructDataItem {
         int itemTextFormat;
