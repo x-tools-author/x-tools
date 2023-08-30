@@ -26,6 +26,7 @@ namespace Ui {
     class SAKModbusUi;
 }
 
+class SAKModbusRegisterView;
 class SAKModbusUi : public QWidget
 {
     Q_OBJECT
@@ -108,12 +109,18 @@ private:
         const QString sendHistoryIndex = "SAKModbus/sendHistoryIndex";
         const QString pdu = "pdu";
     } mSettingsKeyCtx;
+
 private:
     Ui::SAKModbusUi *ui;
     QModbusDevice *mModbusDevice{nullptr};
     const QLoggingCategory mLoggingCategory{nullptr};
     QSettings *mSettings{nullptr};
     QStandardItemModel *mRegisterModel{nullptr};
+    SAKModbusRegisterView *coils_view_;
+    SAKModbusRegisterView *discrete_input_view_;
+    SAKModbusRegisterView *holding_register_view_;
+    SAKModbusRegisterView *input_register_view_;
+
 private:
     void initComponents();
     void initComponentDevices();

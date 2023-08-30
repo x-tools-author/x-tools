@@ -42,6 +42,8 @@
 
 #include "SAKSettings.hh"
 #include "SAKModbusUi.hh"
+#include "sakmodbusregisterview.h"
+
 #include "ui_SAKModbusUi.h"
 
 #define RXCOLOR "green"
@@ -82,6 +84,15 @@ SAKModbusUi::SAKModbusUi(QWidget *parent)
     onDeviceTypeChanged();
     clientUpdateTable();
     clientUpdateRWBtState();
+
+    coils_view_ = new SAKModbusRegisterView(this);
+    discrete_input_view_ = new SAKModbusRegisterView(this);
+    holding_register_view_ = new SAKModbusRegisterView(this);
+    input_register_view_ = new SAKModbusRegisterView(this);
+    ui->tabWidget->addTab(coils_view_, tr("Coils"));
+    ui->tabWidget->addTab(discrete_input_view_, tr("DiscreteInputs"));
+    ui->tabWidget->addTab(holding_register_view_, tr("HoldingRegisters"));
+    ui->tabWidget->addTab(input_register_view_, tr("InputRegisters"));
 }
 
 SAKModbusUi::~SAKModbusUi()
