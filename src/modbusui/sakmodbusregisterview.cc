@@ -136,7 +136,7 @@ void SAKModbusRegisterView::SetValues(const QList<quint16> &values) {
         } else {
             item = new QTableWidgetItem();
             item->setText(txt);
-            table_widget->setItem(row, 1, item);
+            table_widget->setItem(i, 1, item);
         }
     }
 }
