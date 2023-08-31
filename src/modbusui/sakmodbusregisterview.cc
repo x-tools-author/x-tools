@@ -21,15 +21,6 @@ SAKModbusRegisterView::SAKModbusRegisterView(QWidget *parent)
     , modbus_server_(Q_NULLPTR){
     ui_->setupUi(this);
 
-    QStringList labels;
-    labels << tr("Address") << tr("Value") << tr("Description");
-    ui_->register_table_widget_->setColumnCount(3);
-    ui_->register_table_widget_->setHorizontalHeaderLabels(labels);
-    QHeaderView *h_view = ui_->register_table_widget_->horizontalHeader();
-    h_view->setStretchLastSection(true);
-    QHeaderView *v_view = ui_->register_table_widget_->verticalHeader();
-    v_view->hide();
-
     ui_->auto_send_combo_box_->addItem(tr("Disable"), -1);
     for (int i = 100; i <= 1000; i+= 100) {
         ui_->auto_send_combo_box_->addItem(QString::number(i), i);
@@ -57,6 +48,8 @@ SAKModbusRegisterView::SAKModbusRegisterView(QWidget *parent)
             this, &SAKModbusRegisterView::OnAddressChanged);
     connect(ui_->quantity_spin_box_, &QSpinBox::valueChanged,
             this, &SAKModbusRegisterView::OnQuantityChanged);
+
+    UpdateTableWidget();
 }
 
 SAKModbusRegisterView::~SAKModbusRegisterView() {
@@ -94,18 +87,43 @@ void SAKModbusRegisterView::SetUiEnable(bool enable) {
 void SAKModbusRegisterView::ResetServer(QModbusDevice *device) {
     SetUiVisible(false);
     modbus_server_ = qobject_cast<QModbusServer*>(device);
+    ui_->address_spin_box_->setRange(0, 65535);
+    ui_->quantity_spin_box_->setRange(1, 65536);
 }
 
 void SAKModbusRegisterView::ResetClient(QModbusDevice *device) {
     SetUiVisible(true);
     modbus_client_ = qobject_cast<QModbusClient*>(device);
+    ui_->address_spin_box_->setRange(0, 65535);
+    ui_->quantity_spin_box_->setRange(1, 250);
 }
 
 void SAKModbusRegisterView::SendRequest() {
-    if (!modbus_client_) {
-        qWarning() << "unsupported operation, ignored the operation.";
+    if (modbus_server_) {
         return;
     }
+
+    if (!modbus_client_) {
+        qWarning() << "Unsupported operation, ignored the operation.";
+        return;
+    }
+
+    int function_code = ui_->function_combo_box_->currentData().toInt();
+    if (IsReadOperation(function_code)) {
+        SendReadRequest();
+    } else if (IsWriteOperation(function_code)) {
+        SendWriteRequest();
+    } else {
+        qCWarning(logging_category_) << "Unknown operation!";
+    }
+}
+
+void SAKModbusRegisterView::SendReadRequest() {
+
+}
+
+void SAKModbusRegisterView::SendWriteRequest() {
+
 }
 
 QList<quint16> SAKModbusRegisterView::GetValues() {
@@ -141,9 +159,62 @@ void SAKModbusRegisterView::SetValues(const QList<quint16> &values) {
     }
 }
 
-void SAKModbusRegisterView::UpdateTableWidget()
-{
+void SAKModbusRegisterView::UpdateTableWidget() {
+    int address = ui_->address_spin_box_->value();
+    int quantity = ui_->quantity_spin_box_->value();
 
+    QTableWidget *tw = ui_->register_table_widget_;
+    tw->clear();
+    tw->setRowCount(quantity);
+    tw->setColumnCount(3);
+    QStringList labels;
+    labels << tr("Address") << tr("Value") << tr("Description");
+    tw->setHorizontalHeaderLabels(labels);
+    QHeaderView *h_view = tw->horizontalHeader();
+    h_view->setStretchLastSection(true);
+    QHeaderView *v_view = tw->verticalHeader();
+    v_view->hide();
+
+    for (int row = 0; row < quantity; row++) {
+        QTableWidgetItem *item = new QTableWidgetItem();
+        item->setText(QString::number(row + address));
+        tw->setItem(row, 0, item);
+
+        item = new QTableWidgetItem();
+        item->setText("0");
+        tw->setItem(row, 1, item);
+
+        item = new QTableWidgetItem();
+        tw->setItem(row, 2, item);
+    }
+}
+
+void SAKModbusRegisterView::UpdateValueFormat(int format) {
+    Q_UNUSED(format)
+}
+
+bool SAKModbusRegisterView::IsReadOperation(int function_code) {
+    switch (function_code) {
+    case QModbusPdu::ReadCoils:
+    case QModbusPdu::ReadDiscreteInputs:
+    case QModbusPdu::ReadHoldingRegisters:
+    case QModbusPdu::ReadInputRegisters:
+        return true;
+    default:
+        return false;
+    }
+}
+
+bool SAKModbusRegisterView::IsWriteOperation(int function_code) {
+    switch (function_code) {
+    case QModbusPdu::WriteSingleCoil:
+    case QModbusPdu::WriteMultipleCoils:
+    case QModbusPdu::WriteSingleRegister:
+    case QModbusPdu::WriteMultipleRegisters:
+        return true;
+    default:
+        return false;
+    }
 }
 
 void SAKModbusRegisterView::OnAutoSendComboBoxActived() {
@@ -167,8 +238,14 @@ void SAKModbusRegisterView::OnSendPushButtonClicked() {
 
 void SAKModbusRegisterView::OnAddressChanged(int address) {
     Q_UNUSED(address)
+    UpdateTableWidget();
 }
 
 void SAKModbusRegisterView::OnQuantityChanged(int quantity) {
     Q_UNUSED(quantity)
+    UpdateTableWidget();
+}
+
+void SAKModbusRegisterView::OnTextFormatChanged(int format) {
+    UpdateValueFormat(format);
 }

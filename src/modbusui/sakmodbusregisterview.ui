@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>666</width>
+    <width>742</width>
     <height>118</height>
    </rect>
   </property>
@@ -14,8 +14,22 @@
    <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="12">
-    <widget class="QTableWidget" name="register_table_widget_"/>
+   <item row="1" column="10">
+    <widget class="QLabel" name="auto_send_label_">
+     <property name="text">
+      <string>Auto send</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QSpinBox" name="quantity_spin_box_"/>
+   </item>
+   <item row="1" column="4">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Server</string>
+     </property>
+    </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="address_label_">
@@ -24,8 +38,12 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QSpinBox" name="address_spin_box_"/>
+   <item row="1" column="6">
+    <widget class="QLabel" name="function_label_">
+     <property name="text">
+      <string>Function</string>
+     </property>
+    </widget>
    </item>
    <item row="1" column="2">
     <widget class="QLabel" name="quantity_label_">
@@ -34,40 +52,27 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="3">
-    <widget class="QSpinBox" name="quantity_spin_box_"/>
-   </item>
-   <item row="1" column="4">
-    <widget class="QLabel" name="function_label_">
+   <item row="1" column="13">
+    <widget class="QPushButton" name="send_push_button_">
      <property name="text">
-      <string>Function</string>
+      <string>Send</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="5">
-    <widget class="QComboBox" name="function_combo_box_"/>
-   </item>
-   <item row="1" column="6">
+   <item row="1" column="8">
     <widget class="QLabel" name="format_label_">
      <property name="text">
       <string>Format</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="7">
-    <widget class="QComboBox" name="format_combo_box_"/>
-   </item>
-   <item row="1" column="8">
-    <widget class="QLabel" name="auto_send_label_">
-     <property name="text">
-      <string>Auto send</string>
-     </property>
-    </widget>
+   <item row="1" column="1">
+    <widget class="QSpinBox" name="address_spin_box_"/>
    </item>
    <item row="1" column="9">
-    <widget class="QComboBox" name="auto_send_combo_box_"/>
+    <widget class="QComboBox" name="format_combo_box_"/>
    </item>
-   <item row="1" column="10">
+   <item row="1" column="12">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -80,12 +85,17 @@
      </property>
     </spacer>
    </item>
+   <item row="1" column="7">
+    <widget class="QComboBox" name="function_combo_box_"/>
+   </item>
    <item row="1" column="11">
-    <widget class="QPushButton" name="send_push_button_">
-     <property name="text">
-      <string>Send</string>
-     </property>
-    </widget>
+    <widget class="QComboBox" name="auto_send_combo_box_"/>
+   </item>
+   <item row="0" column="0" colspan="14">
+    <widget class="QTableWidget" name="register_table_widget_"/>
+   </item>
+   <item row="1" column="5">
+    <widget class="QSpinBox" name="server_spin_box"/>
    </item>
   </layout>
  </widget>

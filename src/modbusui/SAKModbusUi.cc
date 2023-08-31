@@ -575,6 +575,11 @@ void SAKModbusUi::onInvokeOpen()
                            + errStr
                            + tr(". Please check the parameters and try again!"));
     }
+
+    coils_view_->ResetModbusDevice(mModbusDevice);
+    discrete_input_view_->ResetModbusDevice(mModbusDevice);
+    holding_register_view_->ResetModbusDevice(mModbusDevice);
+    input_register_view_->ResetModbusDevice(mModbusDevice);
 }
 
 void SAKModbusUi::onAddressChanged()

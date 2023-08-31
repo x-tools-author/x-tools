@@ -44,15 +44,21 @@ private:
     void ResetServer(QModbusDevice *device);
     void ResetClient(QModbusDevice *device);
     void SendRequest();
+    void SendReadRequest();
+    void SendWriteRequest();
     QList<quint16> GetValues();
     void SetValues(const QList<quint16> &values);
     void UpdateTableWidget();
+    void UpdateValueFormat(int format);
+    bool IsReadOperation(int function_code);
+    bool IsWriteOperation(int function_code);
 
     void OnAutoSendComboBoxActived();
     void OnAutoSendTimerTimtout();
     void OnSendPushButtonClicked();
     void OnAddressChanged(int address);
     void OnQuantityChanged(int quantity);
+    void OnTextFormatChanged(int format);
 };
 
 #endif // SAKMODBUSREGISTERVIEW_H
