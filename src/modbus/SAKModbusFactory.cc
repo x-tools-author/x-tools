@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-
+#include <QCoreApplication>
 #include <QModbusTcpClient>
 #include <QModbusTcpServer>
 #include <QModbusRtuSerialClient>
@@ -28,7 +28,7 @@ SAKModbusFactory::~SAKModbusFactory()
 
 SAKModbusFactory *SAKModbusFactory::instance()
 {
-    static SAKModbusFactory f;
+    static SAKModbusFactory f(qApp);
     return &f;
 }
 
