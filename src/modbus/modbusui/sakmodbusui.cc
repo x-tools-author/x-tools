@@ -102,10 +102,10 @@ void SAKModbusUi::InitComponents() {
 }
 
 void SAKModbusUi::InitComponentDevices() {
-    ui->devicesComboBox->addItem(tr("RtuClient"), ModbusDeviceRtuSerialClient);
-    ui->devicesComboBox->addItem(tr("RtuServer"), ModbusDeviceRtuSerialServer);
-    ui->devicesComboBox->addItem(tr("TcpClient"), ModbusDeviceTcpClient);
-    ui->devicesComboBox->addItem(tr("TcpServer"), ModbusDeviceTcpServer);
+    ui->device_list->addItem(tr("RtuClient"), ModbusDeviceRtuSerialClient);
+    ui->device_list->addItem(tr("RtuServer"), ModbusDeviceRtuSerialServer);
+    ui->device_list->addItem(tr("TcpClient"), ModbusDeviceTcpClient);
+    ui->device_list->addItem(tr("TcpServer"), ModbusDeviceTcpServer);
 }
 
 void SAKModbusUi::InitComponentAddress() {
@@ -226,8 +226,8 @@ void SAKModbusUi::InitSettings() {
 
 void SAKModbusUi::InitSettingsDevice() {
     int deviceIndex = mSettings->value(mSettingsKeyCtx.deviceIndex).toInt();
-    if (deviceIndex >= 0 && deviceIndex < ui->devicesComboBox->count()) {
-        ui->devicesComboBox->setCurrentIndex(deviceIndex);
+    if (deviceIndex >= 0 && deviceIndex < ui->device_list->count()) {
+        ui->device_list->setCurrentIndex(deviceIndex);
     }
 }
 
@@ -329,7 +329,7 @@ void SAKModbusUi::InitSignals() {
 }
 
 void SAKModbusUi::InitSignalsDevice() {
-    connect(ui->devicesComboBox,
+    connect(ui->device_list,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKModbusUi::OnDeviceTypeChanged);
     connect(ui->openDevicePushButton, &QPushButton::clicked,
@@ -415,7 +415,7 @@ void SAKModbusUi::OnErrorOccurred() {
 }
 
 void SAKModbusUi::OnDeviceTypeChanged() {
-    int type = ui->devicesComboBox->currentData().toInt();
+    int type = ui->device_list->currentData().toInt();
     bool isSerial =
         (type == ModbusDeviceRtuSerialClient
          || type == ModbusDeviceRtuSerialServer);
@@ -470,7 +470,7 @@ void SAKModbusUi::OnInvokeOpen() {
         mModbusDevice = Q_NULLPTR;
     }
 
-    int type = ui->devicesComboBox->currentData().toInt();
+    int type = ui->device_list->currentData().toInt();
     if (type == ModbusDeviceRtuSerialClient
         || type == ModbusDeviceRtuSerialServer) {
         QString portName = ui->portNameComboBox->currentText();
@@ -633,7 +633,7 @@ void SAKModbusUi::OnAddressNumberChanged() {
 }
 
 void SAKModbusUi::UpdateUiState(bool opened) {
-    ui->devicesComboBox->setEnabled(!opened);
+    ui->device_list->setEnabled(!opened);
     ui->closeDevicePushButton->setEnabled(opened);
     ui->openDevicePushButton->setEnabled(!opened);
     ui->networkGroupBox->setEnabled(!opened);
@@ -726,8 +726,8 @@ void SAKModbusUi::SynchronizationRegister(QModbusDevice *server) {
 }
 
 bool SAKModbusUi::WriteSettingsArray(const QString &group, const QString &key,
-                                   const QString &value, int index,
-                                   int maxIndex) {
+                                     const QString &value, int index,
+                                     int maxIndex) {
     mSettings->beginWriteArray(group);
     for (int i = 0; i < maxIndex; i++) {
         mSettings->setArrayIndex(i);
