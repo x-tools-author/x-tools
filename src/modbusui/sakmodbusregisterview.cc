@@ -84,6 +84,15 @@ void SAKModbusRegisterView::SetUiEnable(bool enable) {
     ui_->send_push_button_->setEnabled(enable);
 }
 
+void SAKModbusRegisterView::AddFunctionCode(const QString &description,
+                                            int function_code) {
+    ui_->function_combo_box_->addItem(description, function_code);
+}
+
+void SAKModbusRegisterView::ClearFunctionCode() {
+    ui_->function_combo_box_->clear();
+}
+
 void SAKModbusRegisterView::ResetServer(QModbusDevice *device) {
     SetUiVisible(false);
     modbus_server_ = qobject_cast<QModbusServer*>(device);

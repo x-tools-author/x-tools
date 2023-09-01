@@ -31,6 +31,8 @@ public:
     void ResetModbusDevice(QModbusDevice *device);
     void SetUiVisible(bool is_client);
     void SetUiEnable(bool enable);
+    void AddFunctionCode(const QString &description, int function_code);
+    void ClearFunctionCode();
 
 private:
     const QLoggingCategory logging_category_{"sak.modbus.registerview"};

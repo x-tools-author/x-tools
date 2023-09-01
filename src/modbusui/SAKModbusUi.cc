@@ -89,6 +89,21 @@ SAKModbusUi::SAKModbusUi(QWidget *parent)
     discrete_input_view_ = new SAKModbusRegisterView(this);
     holding_register_view_ = new SAKModbusRegisterView(this);
     input_register_view_ = new SAKModbusRegisterView(this);
+
+    const QString str_0x01 = tr("0x01-ReadCoils");
+    const QString str_0x02 = tr("0x02-ReadDiscreteInputs");
+    const QString str_0x03 = tr("0x03-ReadHoldingRegisters");
+    const QString str_0x04 = tr("0x04-ReadInputRegisters");
+    const QString str_0x05 = tr("0x05-WriteSingleCoil");
+    const QString str_0x06 = tr("0x06-WriteSingleRegister");
+    const QString str_0x0f = tr("0x0f-WriteMultipleCoils");
+    const QString str_0x10 = tr("0x10-WriteMultipleRegisters");
+
+    coils_view_->AddFunctionCode(str_0x01, QModbusPdu::ReadCoils);
+    coils_view_->AddFunctionCode(str_0x05, QModbusPdu::WriteSingleCoil);
+    coils_view_->AddFunctionCode(str_0x06, QModbusPdu::WriteMultipleCoils);
+
+
     ui->tabWidget->addTab(coils_view_, tr("Coils"));
     ui->tabWidget->addTab(discrete_input_view_, tr("DiscreteInputs"));
     ui->tabWidget->addTab(holding_register_view_, tr("HoldingRegisters"));
