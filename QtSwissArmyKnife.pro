@@ -41,7 +41,7 @@ include(src/SAKAssistants.pri)
 
 !contains(CONFIG, SAKReleaseForAppStore) {
     include(src/SAKCanBus.pri)
-    include(src/SAKModbus.pri)
+    include(src/modbus/sakmodbus.pri)
 }
 
 #------------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/SAKModbusFactory.hh
+    $$PWD/sakmodbusfactory.hh
 
 SOURCES += \
-    $$PWD/SAKModbusFactory.cc
+    $$PWD/sakmodbusfactory.cc
 

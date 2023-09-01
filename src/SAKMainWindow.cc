@@ -63,7 +63,7 @@
 #endif
 
 #ifdef SAK_IMPORT_MODULE_MODBUS
-#include "SAKModbusUi.hh"
+#include "sakmodbusui.hh"
 #endif
 
 #ifdef SAK_IMPORT_MODULE_PRIVATE_MODBUS

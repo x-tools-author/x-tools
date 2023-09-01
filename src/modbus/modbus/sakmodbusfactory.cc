@@ -13,61 +13,56 @@
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
 
-#include "SAKModbusFactory.hh"
+#include "sakmodbusfactory.hh"
 
 SAKModbusFactory::SAKModbusFactory(QObject *parent)
-    : QObject(parent)
-{
+    : QObject(parent) {
 
 }
 
-SAKModbusFactory::~SAKModbusFactory()
-{
+SAKModbusFactory::~SAKModbusFactory() {
 
 }
 
-SAKModbusFactory *SAKModbusFactory::instance()
-{
+SAKModbusFactory *SAKModbusFactory::Instance() {
     static SAKModbusFactory f(qApp);
     return &f;
 }
 
-const QString SAKModbusFactory::typeName(int type)
-{
-    if (type == ModbusRtuSerialClient) {
+const QString SAKModbusFactory::TypeName(int type) {
+    if (type == kModbusRtuSerialClient) {
         return tr("RTU Client");
-    } else if (type == ModbusRtuSerialServer) {
+    } else if (type == kModbusRtuSerialServer) {
         return tr("RTU Server");
-    } else if (type == ModbusTcpClient) {
+    } else if (type == kModbusTcpClient) {
         return tr("TCP Client");
-    } else if (type == ModbusTcpServer) {
+    } else if (type == kModbusTcpServer) {
         return tr("TCP Server");
     }
 
     Q_ASSERT_X(false, __FUNCTION__, "Unknown modebus device type");
-    qCWarning(mLoggingCategory) << "Unknown modebus device type";
+    qCWarning(kLoggingCategory) << "Unknown modebus device type";
 
     return "Unknown";
 }
 
-QModbusDevice *SAKModbusFactory::createDevice(int type)
-{
-    if (type == ModbusRtuSerialClient) {
-        qCInfo(mLoggingCategory) << "create rtu serial master";
+QModbusDevice *SAKModbusFactory::CreateDevice(int type) {
+    if (type == kModbusRtuSerialClient) {
+        qCInfo(kLoggingCategory) << "create rtu serial master";
         return new QModbusRtuSerialClient();
-    } else if (type == ModbusRtuSerialServer) {
-        qCInfo(mLoggingCategory) << "create rtu serial slave";
+    } else if (type == kModbusRtuSerialServer) {
+        qCInfo(kLoggingCategory) << "create rtu serial slave";
         return new QModbusRtuSerialServer();
-    } else if (type == ModbusTcpClient) {
-        qCInfo(mLoggingCategory) << "create rtu tcp client";
+    } else if (type == kModbusTcpClient) {
+        qCInfo(kLoggingCategory) << "create rtu tcp client";
         return new QModbusTcpClient();
-    } else if (type == ModbusTcpServer) {
-        qCInfo(mLoggingCategory) << "create rtu tcp server";
+    } else if (type == kModbusTcpServer) {
+        qCInfo(kLoggingCategory) << "create rtu tcp server";
         return new QModbusTcpServer();
     }
 
     Q_ASSERT_X(false, __FUNCTION__, "Unknown modebus device type");
-    qCWarning(mLoggingCategory) << "Unknown modebus device type";
+    qCWarning(kLoggingCategory) << "Unknown modebus device type";
 
     return Q_NULLPTR;
 }

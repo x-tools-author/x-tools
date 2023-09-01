@@ -41,10 +41,8 @@
 #endif
 
 #include "SAKSettings.hh"
-#include "SAKModbusUi.hh"
-#include "sakmodbusregisterview.h"
-
-#include "ui_SAKModbusUi.h"
+#include "sakmodbusui.hh"
+#include "ui_sakmodbusui.h"
 
 #define RXCOLOR "green"
 #define TXCOLOR "blue"
@@ -84,30 +82,6 @@ SAKModbusUi::SAKModbusUi(QWidget *parent)
     onDeviceTypeChanged();
     clientUpdateTable();
     clientUpdateRWBtState();
-
-    coils_view_ = new SAKModbusRegisterView(this);
-    discrete_input_view_ = new SAKModbusRegisterView(this);
-    holding_register_view_ = new SAKModbusRegisterView(this);
-    input_register_view_ = new SAKModbusRegisterView(this);
-
-    const QString str_0x01 = tr("0x01-ReadCoils");
-    const QString str_0x02 = tr("0x02-ReadDiscreteInputs");
-    const QString str_0x03 = tr("0x03-ReadHoldingRegisters");
-    const QString str_0x04 = tr("0x04-ReadInputRegisters");
-    const QString str_0x05 = tr("0x05-WriteSingleCoil");
-    const QString str_0x06 = tr("0x06-WriteSingleRegister");
-    const QString str_0x0f = tr("0x0f-WriteMultipleCoils");
-    const QString str_0x10 = tr("0x10-WriteMultipleRegisters");
-
-    coils_view_->AddFunctionCode(str_0x01, QModbusPdu::ReadCoils);
-    coils_view_->AddFunctionCode(str_0x05, QModbusPdu::WriteSingleCoil);
-    coils_view_->AddFunctionCode(str_0x06, QModbusPdu::WriteMultipleCoils);
-
-
-    ui->tabWidget->addTab(coils_view_, tr("Coils"));
-    ui->tabWidget->addTab(discrete_input_view_, tr("DiscreteInputs"));
-    ui->tabWidget->addTab(holding_register_view_, tr("HoldingRegisters"));
-    ui->tabWidget->addTab(input_register_view_, tr("InputRegisters"));
 }
 
 SAKModbusUi::~SAKModbusUi()
@@ -590,11 +564,6 @@ void SAKModbusUi::onInvokeOpen()
                            + errStr
                            + tr(". Please check the parameters and try again!"));
     }
-
-    coils_view_->ResetModbusDevice(mModbusDevice);
-    discrete_input_view_->ResetModbusDevice(mModbusDevice);
-    holding_register_view_->ResetModbusDevice(mModbusDevice);
-    input_register_view_->ResetModbusDevice(mModbusDevice);
 }
 
 void SAKModbusUi::onAddressChanged()
@@ -1195,27 +1164,20 @@ QTableView *SAKModbusUi::tableViewInit(int rowCount, QTableView *tv)
     QHeaderView *hv = tv->horizontalHeader();
     QStandardItemModel *model = new QStandardItemModel(tv);
     QStringList labels =
-        QStringList() << tr("Address") << tr("Bin") << tr("Dec") << tr("Hex")
-                      << tr("Bin(BE)") << tr("Dec(BE)") << tr("Hex(BE)");
+        QStringList() << tr("Address") << tr("Value") << tr("Description");
     model->setHorizontalHeaderLabels(labels);
-    model->setColumnCount(7);
+    model->setColumnCount(3);
     model->setRowCount(rowCount);
     tv->setModel(model);
     tv->verticalHeader()->hide();
     tv->setItemDelegateForColumn(0, new ReadOnlyDelegate(tv));
-    tv->setItemDelegateForColumn(4, new ReadOnlyDelegate(tv));
-    tv->setItemDelegateForColumn(5, new ReadOnlyDelegate(tv));
-    tv->setItemDelegateForColumn(6, new ReadOnlyDelegate(tv));
     tableViewUpdateAddress(tv, 0);
+    hv->setStretchLastSection(true);
 
-    for (int column = 1; column < model->columnCount(); column++) {
-        hv->setSectionResizeMode(column, QHeaderView::Stretch);
-    }
-
-#if 0
+#if 1
     // Set the default value to 0.
     for (int row = 0; row < rowCount; row++) {
-        QModelIndex index = model->index(row, 3);
+        QModelIndex index = model->index(row, 1);
         QMap<int, QVariant> roles;
         roles.insert(Qt::DisplayRole, "0");
         model->setItemData(index, roles);
@@ -1231,8 +1193,7 @@ QTableView *SAKModbusUi::tableViewInit(int rowCount, QTableView *tv)
     return tv;
 }
 
-QVector<quint16> SAKModbusUi::tableValues(QTableView *tv, int row,
-                                                      int count)
+QVector<quint16> SAKModbusUi::tableValues(QTableView *tv, int row, int count)
 {
     if (!tv) {
         qCWarning(mLoggingCategory) << __FUNCTION__
@@ -1243,7 +1204,7 @@ QVector<quint16> SAKModbusUi::tableValues(QTableView *tv, int row,
     auto *model = qobject_cast<QStandardItemModel*>(tv->model());
     QVector<quint16> values;
     for (int i = row; i < count; i++) {
-        QStandardItem *item = model->item(i, 3);
+        QStandardItem *item = model->item(i, 1);
         if (item) {
             QString text = item->text();
             values.append(text.toInt(Q_NULLPTR, 16));

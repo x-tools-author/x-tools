@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKMODBUSUI_HH
-#define SAKMODBUSUI_HH
+#ifndef SAKMODBUSUI_H
+#define SAKMODBUSUI_H
 
 #include <QWidget>
 #include <QVector>
@@ -26,7 +26,6 @@ namespace Ui {
     class SAKModbusUi;
 }
 
-class SAKModbusRegisterView;
 class SAKModbusUi : public QWidget
 {
     Q_OBJECT
@@ -116,10 +115,6 @@ private:
     const QLoggingCategory mLoggingCategory{nullptr};
     QSettings *mSettings{nullptr};
     QStandardItemModel *mRegisterModel{nullptr};
-    SAKModbusRegisterView *coils_view_;
-    SAKModbusRegisterView *discrete_input_view_;
-    SAKModbusRegisterView *holding_register_view_;
-    SAKModbusRegisterView *input_register_view_;
 
 private:
     void initComponents();
@@ -252,4 +247,4 @@ private:
             const QByteArray &data);
 };
 
-#endif // SAKMODBUSUI_HH
+#endif // SAKMODBUSUI_H

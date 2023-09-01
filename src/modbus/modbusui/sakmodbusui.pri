@@ -1,14 +1,11 @@
 FORMS += \
-    $$PWD/SAKModbusUi.ui \
-    $$PWD/sakmodbusregisterview.ui
+    $$PWD/sakmodbusui.ui
 
 HEADERS += \
-    $$PWD/SAKModbusUi.hh \
-    $$PWD/sakmodbusregisterview.h
+    $$PWD/sakmodbusui.hh
 
 SOURCES += \
-    $$PWD/SAKModbusUi.cc \
-    $$PWD/sakmodbusregisterview.cc
+    $$PWD/sakmodbusui.cc
 
 INCLUDEPATH += \
     $$PWD

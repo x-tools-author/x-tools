@@ -13,6 +13,6 @@ isEqual(QT_MAJOR_VERSION, 5) {
 }
 
 contains(DEFINES, SAK_IMPORT_MODULE_MODBUS) {
-    include($$PWD/modbus/SAKModbus.pri)
-    include($$PWD/modbusui/SAKModbusUi.pri)
+    include($$PWD/modbus/sakmodbus.pri)
+    include($$PWD/modbusui/sakmodbusui.pri)
 }
