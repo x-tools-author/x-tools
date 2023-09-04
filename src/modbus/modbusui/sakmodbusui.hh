@@ -111,11 +111,11 @@ private:
     } mSettingsKeyCtx;
 
 private:
-    Ui::SAKModbusUi *ui;
-    QModbusDevice *mModbusDevice{nullptr};
-    const QLoggingCategory mLoggingCategory{nullptr};
-    QSettings *mSettings{nullptr};
-    QStandardItemModel *mRegisterModel{nullptr};
+    Ui::SAKModbusUi *ui_;
+    QModbusDevice *modbus_device_{nullptr};
+    QSettings *settings_{nullptr};
+    QStandardItemModel *register_model{nullptr};
+    const QLoggingCategory logging_category_;
 
 private:
     void InitComponents();
