@@ -34,6 +34,8 @@ public:
     static SAKModbusFactory *Instance();
     const QString TypeName(int type);
     QModbusDevice *CreateDevice(int type);
+    bool IsTcpDevice(QVariant modbus_device);
+    bool IsRtuSerialDevice(QVariant modbus_device);
 
 private:
     const QLoggingCategory kLoggingCategory{"sak.modbus.factory"};

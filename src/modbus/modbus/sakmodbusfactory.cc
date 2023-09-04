@@ -66,3 +66,29 @@ QModbusDevice *SAKModbusFactory::CreateDevice(int type) {
 
     return Q_NULLPTR;
 }
+
+bool SAKModbusFactory::IsTcpDevice(QVariant modbus_device) {
+    QModbusDevice *device = modbus_device.value<QModbusDevice*>();
+    if (device) {
+        if (qobject_cast<QModbusTcpClient*>(device)) {
+            return true;
+        } else if (qobject_cast<QModbusTcpClient*>(device)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool SAKModbusFactory::IsRtuSerialDevice(QVariant modbus_device) {
+    QModbusDevice *device = modbus_device.value<QModbusDevice*>();
+    if (device) {
+        if (qobject_cast<QModbusRtuSerialClient*>(device)) {
+            return true;
+        } else if (qobject_cast<QModbusRtuSerialServer*>(device)) {
+            return true;
+        }
+    }
+
+    return false;
+}
