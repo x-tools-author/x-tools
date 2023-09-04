@@ -13,7 +13,7 @@
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
 
-#include "sakmodbusfactory.hh"
+#include "sakmodbusfactory.h"
 
 SAKModbusFactory::SAKModbusFactory(QObject *parent)
     : QObject(parent) {

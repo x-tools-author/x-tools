@@ -2,7 +2,7 @@ FORMS += \
     $$PWD/sakmodbusui.ui
 
 HEADERS += \
-    $$PWD/sakmodbusui.hh
+    $$PWD/sakmodbusui.h
 
 SOURCES += \
     $$PWD/sakmodbusui.cc

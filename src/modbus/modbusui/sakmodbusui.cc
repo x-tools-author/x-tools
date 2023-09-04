@@ -41,7 +41,7 @@
 #endif
 
 #include "SAKSettings.hh"
-#include "sakmodbusui.hh"
+#include "sakmodbusui.h"
 #include "ui_sakmodbusui.h"
 
 #define RXCOLOR "green"
