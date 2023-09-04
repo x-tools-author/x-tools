@@ -66,7 +66,7 @@ SAKModbusUi::SAKModbusUi(QWidget *parent)
     : QWidget{parent}
     , ui_(new Ui::SAKModbusUi)
     , modbus_device_(Q_NULLPTR)
-    , register_model(Q_NULLPTR)
+    , register_model_(Q_NULLPTR)
     , logging_category_ ("SAK.Modbus"){
     if (!settings_) {
         settings_ = SAKSettings::instance();
@@ -102,62 +102,62 @@ void SAKModbusUi::InitComponents() {
 }
 
 void SAKModbusUi::InitComponentDevices() {
-    ui_->device_list->addItem(tr("RtuClient"), ModbusDeviceRtuSerialClient);
-    ui_->device_list->addItem(tr("RtuServer"), ModbusDeviceRtuSerialServer);
-    ui_->device_list->addItem(tr("TcpClient"), ModbusDeviceTcpClient);
-    ui_->device_list->addItem(tr("TcpServer"), ModbusDeviceTcpServer);
+    ui_->device_list_->addItem(tr("RtuClient"), ModbusDeviceRtuSerialClient);
+    ui_->device_list_->addItem(tr("RtuServer"), ModbusDeviceRtuSerialServer);
+    ui_->device_list_->addItem(tr("TcpClient"), ModbusDeviceTcpClient);
+    ui_->device_list_->addItem(tr("TcpServer"), ModbusDeviceTcpServer);
 }
 
 void SAKModbusUi::InitComponentAddress() {
-    ui_->addressComboBox->clear();
+    ui_->address_combo_box->clear();
     QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
     for (QHostAddress &address : addresses) {
         if (address.protocol() == QAbstractSocket::IPv4Protocol) {
-            ui_->addressComboBox->addItem(address.toString());
+            ui_->address_combo_box->addItem(address.toString());
         }
     }
 }
 
 void SAKModbusUi::InitComponentPortName() {
-    ui_->portNameComboBox->clear();
+    ui_->port_name_->clear();
     QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();
     for (QSerialPortInfo &info : infos) {
-        ui_->portNameComboBox->addItem(info.portName());
+        ui_->port_name_->addItem(info.portName());
     }
 }
 
 void SAKModbusUi::InitComponnetBaudRate() {
-    ui_->baudRateComboBox->clear();
+    ui_->baud_rate_->clear();
     QList<qint32> bds = QSerialPortInfo::standardBaudRates();
     for (qint32 &bd : bds) {
-        ui_->baudRateComboBox->addItem(QString::number(bd), bd);
+        ui_->baud_rate_->addItem(QString::number(bd), bd);
     }
 }
 
 void SAKModbusUi::InitComponnetDataBits() {
-    ui_->dataBitsComboBox->clear();
-    ui_->dataBitsComboBox->addItem("8", QSerialPort::Data8);
-    ui_->dataBitsComboBox->addItem("7", QSerialPort::Data7);
-    ui_->dataBitsComboBox->addItem("6", QSerialPort::Data6);
-    ui_->dataBitsComboBox->addItem("5", QSerialPort::Data5);
+    ui_->data_bits_->clear();
+    ui_->data_bits_->addItem("8", QSerialPort::Data8);
+    ui_->data_bits_->addItem("7", QSerialPort::Data7);
+    ui_->data_bits_->addItem("6", QSerialPort::Data6);
+    ui_->data_bits_->addItem("5", QSerialPort::Data5);
 }
 
 void SAKModbusUi::InitComponnetStopBits() {
-    ui_->stopBitsComboBox->clear();
-    ui_->stopBitsComboBox->addItem("1", QSerialPort::OneStop);
+    ui_->stop_bits_->clear();
+    ui_->stop_bits_->addItem("1", QSerialPort::OneStop);
 #ifdef Q_OS_WIN
     ui->stopBitsComboBox->addItem("1.5", QSerialPort::OneAndHalfStop);
 #endif
-    ui_->stopBitsComboBox->addItem("2", QSerialPort::TwoStop);
+    ui_->stop_bits_->addItem("2", QSerialPort::TwoStop);
 }
 
 void SAKModbusUi::InitComponnetParity() {
-    ui_->parityComboBox->clear();
-    ui_->parityComboBox->addItem(tr("NoParity"), QSerialPort::NoParity);
-    ui_->parityComboBox->addItem(tr("EvenParity"), QSerialPort::EvenParity);
-    ui_->parityComboBox->addItem(tr("OddParity"), QSerialPort::OddParity);
-    ui_->parityComboBox->addItem(tr("SpaceParity"), QSerialPort::SpaceParity);
-    ui_->parityComboBox->addItem(tr("MarkParity"), QSerialPort::MarkParity);
+    ui_->parity_->clear();
+    ui_->parity_->addItem(tr("NoParity"), QSerialPort::NoParity);
+    ui_->parity_->addItem(tr("EvenParity"), QSerialPort::EvenParity);
+    ui_->parity_->addItem(tr("OddParity"), QSerialPort::OddParity);
+    ui_->parity_->addItem(tr("SpaceParity"), QSerialPort::SpaceParity);
+    ui_->parity_->addItem(tr("MarkParity"), QSerialPort::MarkParity);
 }
 
 void SAKModbusUi::InitComponentFunctionCode() {
@@ -179,31 +179,31 @@ void SAKModbusUi::InitComponentFunctionCode() {
     int func0x0f = QModbusDataUnit::Coils;
     int func0x10 = QModbusDataUnit::HoldingRegisters;
 
-    ui_->functionCodeComboBox->addItem(str0x01, func0x01);
-    ui_->functionCodeComboBox->addItem(str0x02, func0x02);
-    ui_->functionCodeComboBox->addItem(str0x03, func0x03);
-    ui_->functionCodeComboBox->addItem(str0x04, func0x04);
-    ui_->functionCodeComboBox->addItem(str0x05, func0x05);
-    ui_->functionCodeComboBox->addItem(str0x06, func0x06);
-    ui_->functionCodeComboBox->addItem(str0x0f, func0x0f);
-    ui_->functionCodeComboBox->addItem(str0x10, func0x10);
+    ui_->function_code_->addItem(str0x01, func0x01);
+    ui_->function_code_->addItem(str0x02, func0x02);
+    ui_->function_code_->addItem(str0x03, func0x03);
+    ui_->function_code_->addItem(str0x04, func0x04);
+    ui_->function_code_->addItem(str0x05, func0x05);
+    ui_->function_code_->addItem(str0x06, func0x06);
+    ui_->function_code_->addItem(str0x0f, func0x0f);
+    ui_->function_code_->addItem(str0x10, func0x10);
 }
 
 void SAKModbusUi::InitComponentRegisterTableView() {
-    QTableView *tv = TableViewInit(1, ui_->registerTableView);
-    register_model = reinterpret_cast<QStandardItemModel*>(tv->model());
+    QTableView *tv = TableViewInit(1, ui_->client_registers_);
+    register_model_ = reinterpret_cast<QStandardItemModel*>(tv->model());
 }
 
 void SAKModbusUi::InitComponentInput() {
     QRegularExpression re("([0-9a-fA-F][0-9a-fA-F][ ])*");
-    QLineEdit *le = ui_->pduComboBox->lineEdit();
+    QLineEdit *le = ui_->pdu_->lineEdit();
     QRegularExpressionValidator *rev = new QRegularExpressionValidator(re, le);
     le->setValidator(rev);
     le->clear();
 }
 
 void SAKModbusUi::InitComponentRegisterTabWidget() {
-    QTabWidget *tw = ui_->registerTabWidget;
+    QTabWidget *tw = ui_->server_registers_;
     QStringList titles;
     titles << tr("DiscreteInputs") << tr("Coils")
            << tr("InputRegisters") << tr("HoldingRegisters");
@@ -226,21 +226,21 @@ void SAKModbusUi::InitSettings() {
 
 void SAKModbusUi::InitSettingsDevice() {
     int deviceIndex = settings_->value(mSettingsKeyCtx.deviceIndex).toInt();
-    if (deviceIndex >= 0 && deviceIndex < ui_->device_list->count()) {
-        ui_->device_list->setCurrentIndex(deviceIndex);
+    if (deviceIndex >= 0 && deviceIndex < ui_->device_list_->count()) {
+        ui_->device_list_->setCurrentIndex(deviceIndex);
     }
 }
 
 void SAKModbusUi::InitSettingsNetwork() {
     QString address = settings_->value(mSettingsKeyCtx.address).toString();
-    ui_->addressComboBox->setCurrentText(address);
+    ui_->address_combo_box->setCurrentText(address);
 
     QVariant portValiant = settings_->value(mSettingsKeyCtx.port);
     int port = portValiant.toInt();
     if (portValiant.isNull()) {
         port = 502;
     }
-    ui_->portSpinBox->setValue(port);
+    ui_->port_spin_box->setValue(port);
 }
 
 void SAKModbusUi::InitSettingsSerialPort() {
@@ -251,72 +251,72 @@ void SAKModbusUi::InitSettingsSerialPort() {
     };
 
     QString portName = settings_->value(mSettingsKeyCtx.portName).toString();
-    int index = ui_->portNameComboBox->findText(portName);
-    setComboBoxIndex(index, ui_->portNameComboBox);
+    int index = ui_->port_name_->findText(portName);
+    setComboBoxIndex(index, ui_->port_name_);
 
     index = settings_->value(mSettingsKeyCtx.parity).toInt();
-    setComboBoxIndex(index, ui_->parityComboBox);
+    setComboBoxIndex(index, ui_->parity_);
 
     QString bd = settings_->value(mSettingsKeyCtx.baudRate).toString();
-    ui_->baudRateComboBox->setCurrentText(bd);
+    ui_->baud_rate_->setCurrentText(bd);
 
     index = settings_->value(mSettingsKeyCtx.dataBits).toInt();
-    setComboBoxIndex(index, ui_->dataBitsComboBox);
+    setComboBoxIndex(index, ui_->data_bits_);
 
     index = settings_->value(mSettingsKeyCtx.stopBits).toInt();
-    setComboBoxIndex(index, ui_->stopBitsComboBox);
+    setComboBoxIndex(index, ui_->stop_bits_);
 }
 
 void SAKModbusUi::InitSettingsClient() {
     int timeout = settings_->value(mSettingsKeyCtx.clientTimeout).toInt();
-    ui_->clientTimeoutSpinBox->setValue(timeout < 100 ? 100 : timeout);
+    ui_->timeout_->setValue(timeout < 100 ? 100 : timeout);
 
     int repeatTimes =
         settings_->value(mSettingsKeyCtx.clientRepeatTime).toInt();
-    ui_->clientRepeatTimeSpinBox->setValue(repeatTimes);
+    ui_->repeat_time_->setValue(repeatTimes);
 }
 
 void SAKModbusUi::InitSettingsServer() {
     bool isBusy = settings_->value(mSettingsKeyCtx.serverIsBusy).toBool();
-    ui_->serverIsBusyCheckBox->setChecked(isBusy);
+    ui_->is_busy_->setChecked(isBusy);
 
     bool justListen = settings_->value(mSettingsKeyCtx.serverJustListen).toBool();
-    ui_->serverJustListenCheckBox->setChecked(justListen);
+    ui_->just_listen_->setChecked(justListen);
 
     int address = settings_->value(mSettingsKeyCtx.serverAddress).toInt();
-    ui_->serverAddressSpinBox->setValue(address);
+    ui_->server_address->setValue(address);
 }
 
 void SAKModbusUi::InitSettingsClientOperations() {
     int index = settings_->value(mSettingsKeyCtx.functionCode).toInt();
-    if (index >= 0 && index < ui_->functionCodeComboBox->count()) {
-        ui_->functionCodeComboBox->setCurrentIndex(index);
+    if (index >= 0 && index < ui_->function_code_->count()) {
+        ui_->function_code_->setCurrentIndex(index);
     }
 
     int address = settings_->value(mSettingsKeyCtx.targetAddress).toInt();
-    ui_->targetAddressSpinBox->setValue(address);
+    ui_->device_address_->setValue(address);
 
     int start = settings_->value(mSettingsKeyCtx.startAddress).toInt();
-    ui_->startAddressSpinBox->setValue(start);
+    ui_->start_address_->setValue(start);
 
     int number = settings_->value(mSettingsKeyCtx.addressNumber).toInt();
-    ui_->addressNumberSpinBox->setValue(number);
+    ui_->quantity_->setValue(number);
 }
 
 void SAKModbusUi::InitSettingsInput() {
-    ui_->pduComboBox->clear();
+    ui_->pdu_->clear();
     settings_->beginReadArray(mSettingsKeyCtx.sendHistory);
     for (int i = 0; i < 10; i++) {
         settings_->setArrayIndex(i);
         QString text = settings_->value(mSettingsKeyCtx.pdu).toString();
         if (!text.isEmpty()) {
-            ui_->pduComboBox->addItem(text);
+            ui_->pdu_->addItem(text);
         }
     }
     settings_->endArray();
 
     int index = settings_->value(mSettingsKeyCtx.sendHistoryIndex).toInt();
-    ui_->pduComboBox->setCurrentIndex(index - 1);
+    ui_->pdu_->setCurrentIndex(index - 1);
 }
 
 void SAKModbusUi::InitSignals() {
@@ -329,76 +329,76 @@ void SAKModbusUi::InitSignals() {
 }
 
 void SAKModbusUi::InitSignalsDevice() {
-    connect(ui_->device_list,
+    connect(ui_->device_list_,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKModbusUi::OnDeviceTypeChanged);
-    connect(ui_->openDevicePushButton, &QPushButton::clicked,
-            this, &SAKModbusUi::OnInvokeOpen);
-    connect(ui_->closeDevicePushButton, &QPushButton::clicked,
+    connect(ui_->open_button_, &QPushButton::clicked,
+            this, &SAKModbusUi::OnOpenClicked);
+    connect(ui_->cloese_button_, &QPushButton::clicked,
             this, &SAKModbusUi::OnInvokeClose);
 
 }
 
 void SAKModbusUi::InitSignalsNetworking() {
-    connect(ui_->addressComboBox, &QComboBox::currentTextChanged,
+    connect(ui_->address_combo_box, &QComboBox::currentTextChanged,
             this, &SAKModbusUi::OnAddressChanged);
-    connect(ui_->portSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+    connect(ui_->port_spin_box, QOverload<int>::of(&QSpinBox::valueChanged),
             this, &SAKModbusUi::OnPortChanged);
 }
 
 void SAKModbusUi::InitSignalsSerialPort() {
-    connect(ui_->portNameComboBox, &QComboBox::currentTextChanged,
+    connect(ui_->port_name_, &QComboBox::currentTextChanged,
             this, &SAKModbusUi::OnPortNameChanged);
-    connect(ui_->parityComboBox,
+    connect(ui_->parity_,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKModbusUi::OnParityChanged);
-    connect(ui_->baudRateComboBox, &QComboBox::currentTextChanged,
+    connect(ui_->baud_rate_, &QComboBox::currentTextChanged,
             this, &SAKModbusUi::OnBaudRateChanged);
-    connect(ui_->dataBitsComboBox,
+    connect(ui_->data_bits_,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKModbusUi::OnDataBitsChanged);
-    connect(ui_->stopBitsComboBox,
+    connect(ui_->stop_bits_,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKModbusUi::OnStopBistChanged);
 }
 
 void SAKModbusUi::InitSignalsClient() {
-    connect(ui_->clientTimeoutSpinBox,
+    connect(ui_->timeout_,
             QOverload<int>::of(&QSpinBox::valueChanged),
             this, &SAKModbusUi::OnClientTimeoutChanged);
-    connect(ui_->clientRepeatTimeSpinBox,
+    connect(ui_->repeat_time_,
             QOverload<int>::of(&QSpinBox::valueChanged),
             this, &SAKModbusUi::OnClientRepeatTimeChanged);
 }
 
 void SAKModbusUi::InitSignalsServer() {
-    connect(ui_->serverIsBusyCheckBox, &QCheckBox::clicked,
+    connect(ui_->is_busy_, &QCheckBox::clicked,
             this, &SAKModbusUi::OnServerIsBusyChanged);
-    connect(ui_->serverJustListenCheckBox, &QCheckBox::clicked,
+    connect(ui_->just_listen_, &QCheckBox::clicked,
             this, &SAKModbusUi::OnServerJustListenChanged);
-    connect(ui_->serverAddressSpinBox,
+    connect(ui_->server_address,
             QOverload<int>::of(&QSpinBox::valueChanged),
             this, &SAKModbusUi::OnServerAddressChanged);
 }
 
 void SAKModbusUi::InitSignalsClientOperations() {
-    connect(ui_->functionCodeComboBox, &QComboBox::currentTextChanged,
+    connect(ui_->function_code_, &QComboBox::currentTextChanged,
             this, &SAKModbusUi::OnFunctionCodeChanged);
-    connect(ui_->targetAddressSpinBox,
+    connect(ui_->device_address_,
             QOverload<int>::of(&QSpinBox::valueChanged),
             this, &SAKModbusUi::OnTargetAddressChanged);
-    connect(ui_->startAddressSpinBox,
+    connect(ui_->start_address_,
             QOverload<int>::of(&QSpinBox::valueChanged),
             this, &SAKModbusUi::OnStartAddressChanged);
-    connect(ui_->addressNumberSpinBox,
+    connect(ui_->quantity_,
             QOverload<int>::of(&QSpinBox::valueChanged),
             this, &SAKModbusUi::OnAddressNumberChanged);
-    connect(ui_->readPushButton, &QPushButton::clicked,
-            this, &SAKModbusUi::ClientRead);
-    connect(ui_->writePushButton, &QPushButton::clicked,
-            this, &SAKModbusUi::ClientWrite);
-    connect(ui_->sendPushButton, &QPushButton::clicked,
-            this, &SAKModbusUi::ClientSend);
+    connect(ui_->read_, &QPushButton::clicked,
+            this, &SAKModbusUi::OnReadClicked);
+    connect(ui_->write_, &QPushButton::clicked,
+            this, &SAKModbusUi::OnWriteClicked);
+    connect(ui_->send_, &QPushButton::clicked,
+            this, &SAKModbusUi::OnSendClicked);
 }
 
 void SAKModbusUi::OnErrorOccurred() {
@@ -415,7 +415,7 @@ void SAKModbusUi::OnErrorOccurred() {
 }
 
 void SAKModbusUi::OnDeviceTypeChanged() {
-    int type = ui_->device_list->currentData().toInt();
+    int type = ui_->device_list_->currentData().toInt();
     bool isSerial =
         (type == ModbusDeviceRtuSerialClient
          || type == ModbusDeviceRtuSerialServer);
@@ -462,32 +462,41 @@ void SAKModbusUi::OnInvokeClose() {
     UpdateUiState(false);
 }
 
-void SAKModbusUi::OnInvokeOpen() {
-    ui_->openDevicePushButton->setEnabled(false);
+void SAKModbusUi::OnOpenClicked() {
+    ui_->open_button_->setEnabled(false);
     if (modbus_device_) {
         modbus_device_->disconnectDevice();
         modbus_device_->deleteLater();
         modbus_device_ = Q_NULLPTR;
     }
 
-    int type = ui_->device_list->currentData().toInt();
+    int type = ui_->device_list_->currentData().toInt();
     if (type == ModbusDeviceRtuSerialClient
         || type == ModbusDeviceRtuSerialServer) {
-        QString portName = ui_->portNameComboBox->currentText();
-        int parity = ui_->parityComboBox->currentData().toInt();
-        int baudRate = ui_->baudRateComboBox->currentData().toInt();
-        int dataBits = ui_->dataBitsComboBox->currentData().toInt();
-        int stopBits = ui_->stopBitsComboBox->currentData().toInt();
-        modbus_device_ = CreateRtuSerialDevice(
-                    type, portName, parity, baudRate, dataBits, stopBits);
+        QString portName = ui_->port_name_->currentText();
+        int parity = ui_->parity_->currentData().toInt();
+        int baudRate = ui_->baud_rate_->currentData().toInt();
+        int dataBits = ui_->data_bits_->currentData().toInt();
+        int stopBits = ui_->stop_bits_->currentData().toInt();
+
+        qCInfo(logging_category_) << "[RTU Parameters]port name:" << portName
+                                  << "parity" << parity
+                                  << "baud rate:" << baudRate
+                                  << "data bits:" << dataBits
+                                  << "stop bits" << stopBits;
+        modbus_device_ = CreateRtuSerialDevice(type, portName, parity,
+                                               baudRate, dataBits, stopBits);
     } else {
-        QString address = ui_->addressComboBox->currentText();
-        int port = ui_->portSpinBox->value();
+        QString address = ui_->address_combo_box->currentText();
+        int port = ui_->port_spin_box->value();
+
+        qCInfo(logging_category_) << "[TCP Parameters]ip address:" << address
+                                  << "port" << port;
         modbus_device_ = CreateTcpDevice(type, address, port);
     }
 
     if (!modbus_device_) {
-        ui_->openDevicePushButton->setEnabled(true);
+        ui_->open_button_->setEnabled(true);
         qCWarning(logging_category_) << "Can not create modbus devices!";
         return;
     }
@@ -498,21 +507,22 @@ void SAKModbusUi::OnInvokeOpen() {
             return;
         }
 
-        bool isBusy = ui_->serverIsBusyCheckBox->isChecked();
-        bool listenOnly = ui_->serverJustListenCheckBox->isChecked();
-        int address = ui_->serverAddressSpinBox->value();
-        SetServerParameters(
-            modbus_device_, QModbusServer::DeviceBusy, isBusy);
-        SetServerParameters(
-            modbus_device_, QModbusServer::ListenOnlyMode, listenOnly);
+        bool is_busy = ui_->is_busy_->isChecked();
+        bool listen_only = ui_->just_listen_->isChecked();
+        int address = ui_->server_address->value();
+        qCInfo(logging_category_) << "[TCP Parameters]is busy:" << is_busy
+                                  << "listen_only" << listen_only
+                                  << "server address:" << address;
+        SetServerParameters(modbus_device_, QModbusServer::DeviceBusy,
+                            is_busy);
+        SetServerParameters(modbus_device_, QModbusServer::ListenOnlyMode,
+                            listen_only);
 
         QModbusServer *server = qobject_cast<QModbusServer*>(modbus_device_);
         server->setServerAddress(address);
         SynchronizationRegister(server);
-        connect(server, &QModbusServer::dataWritten, this,
-                [=](QModbusDataUnit::RegisterType table, int address, int size){
-            TableViewUpdateData(table, address, size);
-        });
+        connect(server, &QModbusServer::dataWritten,
+                this, &SAKModbusUi::OnDateWritten);
     }
 
     if (IsClient(modbus_device_)) {
@@ -527,45 +537,45 @@ void SAKModbusUi::OnInvokeOpen() {
     if (!opened) {
         QString errStr = ModbuseDeviceErrorString(modbus_device_);
         ShowMessageBox(tr("Can not open device"),
-                       tr("Can not open device: ")
-                           + errStr
-                           + tr(". Please check the parameters and try again!"));
+                       tr("Can not open device: %1."
+                          " Please check the parameters and try again!")
+                           .arg(errStr));
     }
 }
 
 void SAKModbusUi::OnAddressChanged() {
     settings_->setValue(mSettingsKeyCtx.address,
-                        ui_->addressComboBox->currentText());
+                        ui_->address_combo_box->currentText());
 }
 
 void SAKModbusUi::OnPortChanged() {
     settings_->setValue(mSettingsKeyCtx.port,
-                        ui_->portSpinBox->value());
+                        ui_->port_spin_box->value());
 }
 
 void SAKModbusUi::OnPortNameChanged() {
     settings_->setValue(mSettingsKeyCtx.portName,
-                        ui_->portNameComboBox->currentText());
+                        ui_->port_name_->currentText());
 }
 
 void SAKModbusUi::OnParityChanged() {
     settings_->setValue(mSettingsKeyCtx.parity,
-                        ui_->parityComboBox->currentIndex());
+                        ui_->parity_->currentIndex());
 }
 
 void SAKModbusUi::OnBaudRateChanged() {
     settings_->setValue(mSettingsKeyCtx.baudRate,
-                        ui_->baudRateComboBox->currentText());
+                        ui_->baud_rate_->currentText());
 }
 
 void SAKModbusUi::OnDataBitsChanged() {
     settings_->setValue(mSettingsKeyCtx.dataBits,
-                        ui_->dataBitsComboBox->currentIndex());
+                        ui_->data_bits_->currentIndex());
 }
 
 void SAKModbusUi::OnStopBistChanged() {
     settings_->setValue(mSettingsKeyCtx.stopBits,
-                        ui_->stopBitsComboBox->currentIndex());
+                        ui_->stop_bits_->currentIndex());
 }
 
 void SAKModbusUi::OnInvokeRefresh() {
@@ -574,68 +584,230 @@ void SAKModbusUi::OnInvokeRefresh() {
 
 void SAKModbusUi::OnClientTimeoutChanged() {
     settings_->setValue(mSettingsKeyCtx.clientTimeout,
-                        ui_->clientTimeoutSpinBox->value());
+                        ui_->timeout_->value());
     ClientUpdateParameters();
 }
 
 void SAKModbusUi::OnClientRepeatTimeChanged() {
     settings_->setValue(mSettingsKeyCtx.clientRepeatTime,
-                        ui_->clientRepeatTimeSpinBox->value());
+                        ui_->repeat_time_->value());
     ClientUpdateParameters();
 }
 
 void SAKModbusUi::OnServerIsBusyChanged() {
     settings_->setValue(mSettingsKeyCtx.serverIsBusy,
-                        ui_->serverIsBusyCheckBox->isChecked());
+                        ui_->is_busy_->isChecked());
     if (IsServer(modbus_device_)) {
         SetServerParameters(modbus_device_, QModbusServer::DeviceBusy,
-                                    ui_->serverIsBusyCheckBox->isChecked());
+                                    ui_->is_busy_->isChecked());
     }
 }
 
 void SAKModbusUi::OnServerJustListenChanged() {
     settings_->setValue(mSettingsKeyCtx.serverJustListen,
-                        ui_->serverJustListenCheckBox->isChecked());
+                        ui_->just_listen_->isChecked());
     SetServerParameters(modbus_device_, QModbusServer::ListenOnlyMode,
-                        ui_->serverJustListenCheckBox->isChecked());
+                        ui_->just_listen_->isChecked());
 }
 
 void SAKModbusUi::OnServerAddressChanged() {
     settings_->setValue(mSettingsKeyCtx.serverAddress,
-                        ui_->serverAddressSpinBox->value());
+                        ui_->server_address->value());
     if (IsServer(modbus_device_)) {
         QModbusServer *server = qobject_cast<QModbusServer*>(modbus_device_);
-        server->setServerAddress(ui_->serverAddressSpinBox->value());
+        server->setServerAddress(ui_->server_address->value());
     }
 }
 
 void SAKModbusUi::OnFunctionCodeChanged() {
     settings_->setValue(mSettingsKeyCtx.functionCode,
-                        ui_->functionCodeComboBox->currentIndex());
+                        ui_->function_code_->currentIndex());
     ClientUpdateRWBtState();
 }
 
 void SAKModbusUi::OnTargetAddressChanged() {
     settings_->setValue(mSettingsKeyCtx.targetAddress,
-                        ui_->targetAddressSpinBox->value());
+                        ui_->device_address_->value());
 }
 
 void SAKModbusUi::OnStartAddressChanged() {
     settings_->setValue(mSettingsKeyCtx.startAddress,
-                        ui_->startAddressSpinBox->value());
+                        ui_->start_address_->value());
     ClientUpdateTable();
 }
 
 void SAKModbusUi::OnAddressNumberChanged() {
     settings_->setValue(mSettingsKeyCtx.addressNumber,
-                        ui_->addressNumberSpinBox->value());
+                        ui_->quantity_->value());
     ClientUpdateTable();
 }
 
+void SAKModbusUi::OnReadClicked()
+{
+    if (!IsReady()) {
+        return;
+    }
+
+    int registerType = ui_->function_code_->currentData().toInt();
+    quint16 startAddress = ui_->start_address_->value();
+    quint16 addressNumber = ui_->quantity_->value();
+    quint16 targetAddress = ui_->device_address_->value();
+    quint8 functionCode = this->ClientFunctionCode();
+    QModbusReply *reply = SendReadRequest(modbus_device_, registerType,
+                                          startAddress, addressNumber,
+                                          targetAddress);
+    if (IsValidModbusReply(QVariant::fromValue(reply))) {
+        connect(reply, &QModbusReply::finished, this, [=](){
+            OutputModbusReply(reply, functionCode);
+            if (reply->error() == QModbusDevice::NoError) {
+                QJsonArray result = ModbusReplyResult(reply);
+                ClientSetRegisterValue(result);
+                reply->deleteLater();
+            }
+        });
+
+        OutputModbusRequestRead(targetAddress, functionCode,
+                                startAddress, addressNumber);
+    }
+}
+
+void SAKModbusUi::OnWriteClicked() {
+    if (!IsReady()) {
+        return;
+    }
+
+    int registerType = ui_->function_code_->currentData().toInt();
+    int startAddress = ui_->start_address_->value();
+    int targetAddress = ui_->device_address_->value();
+    int addressNumber = ui_->quantity_->value();
+    quint8 functionCode = this->ClientFunctionCode();
+    QJsonArray values = ClientRegisterValue();
+    QModbusReply *reply = SendWriteRequest(
+        modbus_device_, registerType, startAddress, values, targetAddress);
+    if (IsValidModbusReply(QVariant::fromValue(reply))) {
+        connect(reply, &QModbusReply::finished, this, [=](){
+            OutputModbusReply(reply, functionCode);
+            reply->deleteLater();
+        });
+
+        OutputModbusRequestWrite(targetAddress, functionCode, startAddress,
+                                 addressNumber, values);
+    }
+}
+
+void SAKModbusUi::OnSendClicked() {
+    if (!IsReady()) {
+        return;
+    }
+
+    quint8 serverAddress = ui_->device_address_->value();
+    QByteArray pdu = ClientPdu();
+    QByteArray data = pdu.length()
+                          ? QByteArray(pdu.data() + 1, pdu.length() - 1)
+                          : QByteArray();
+    int functionCode = pdu.count() ? pdu.at(0) : int(QModbusDataUnit::Invalid);
+    QModbusReply *reply = SendRawRequest(
+        modbus_device_, serverAddress, functionCode, data);
+
+    qCWarning(logging_category_) << "address:" << serverAddress
+                                 << "function code:" << functionCode
+                                 << "data:" << QString(pdu.toHex(' '));
+
+    if (IsValidModbusReply(QVariant::fromValue(reply))) {
+        connect(reply, &QModbusReply::finished, this, [=](){
+            OutputModbusReply(reply, functionCode);
+            reply->deleteLater();
+        });
+
+        OutputModbusRequestSend(serverAddress, pdu);
+    }
+
+    // Update settings data.
+    int index = settings_->value(mSettingsKeyCtx.sendHistoryIndex).toInt();
+    bool ret = WriteSettingsArray(
+        mSettingsKeyCtx.sendHistory, mSettingsKeyCtx.pdu,
+        QString(pdu.toHex(' ')), index, MAX_HISTORY_INDEX);
+    if (ret) {
+        if (index > ui_->pdu_->count()) {
+            ui_->pdu_->addItem(QString(pdu.toHex(' ')));
+        } else {
+            ui_->pdu_->insertItem(index, QString(pdu.toHex(' ')));
+        }
+        settings_->setValue(mSettingsKeyCtx.sendHistoryIndex,
+                            index + 1 > MAX_HISTORY_INDEX ? 0 : index + 1);
+    }
+}
+
+void SAKModbusUi::OnDateWritten(QModbusDataUnit::RegisterType table,
+                                int address, int size) {
+    qCInfo(logging_category_) << "Data written, table:" << table
+                              << ", start address:" << address
+                              << ", size:" << size << ".";
+    QTableView *tv = TableView(RegisterType(table));
+    QStandardItemModel *model =
+        qobject_cast<QStandardItemModel*>(tv->model());
+    QModbusServer *server = qobject_cast<QModbusServer*>(modbus_device_);
+
+
+    QJsonArray data = ServerValues(server, table, address, size);
+    size = qMin<int>(data.count(), size);
+    for (int i = 0; i < size; i++) {
+        int row = address + i;
+        int base = 10;
+        int width = base == 2 ? 16 : (base == 10 ? 5 : 4);
+        int value = data.at(i).toInt();
+        QString cookedStr = QString::number(value, base)
+                                .rightJustified(width, '0', true);
+
+        QMap<int, QVariant> roles;
+        roles.insert(Qt::DisplayRole, cookedStr);
+        QModelIndex index = model->index(row, 2);
+        model->setItemData(index, roles);
+
+        QStandardItem *itemTemp = model->item(row, 2);
+        if (itemTemp) {
+            itemTemp->setTextAlignment(Qt::AlignCenter);
+        }
+    }
+
+    tv->viewport()->update();
+}
+
+
+void SAKModbusUi::OnItemChanged(QStandardItem *item) {
+    if (!item) {
+        return;
+    }
+
+    if (item->column() != 1) {
+        return;
+    }
+
+    if (IsServer(modbus_device_)) {
+        int address = item->row();
+        int currentIndex = ui_->server_registers_->currentIndex();
+        QModbusDataUnit::RegisterType table = QModbusDataUnit::Invalid;
+        if (currentIndex == 0) {
+            table = QModbusDataUnit::DiscreteInputs;
+        } else if (currentIndex == 1) {
+            table = QModbusDataUnit::Coils;
+        }  else if (currentIndex == 2) {
+            table = QModbusDataUnit::InputRegisters;
+        }  else if (currentIndex == 3) {
+            table = QModbusDataUnit::HoldingRegisters;
+        } else {
+            Q_ASSERT_X(false, __FUNCTION__, "Unknow table type!");
+        }
+
+        quint16 value = item->text().toInt(Q_NULLPTR, 16);
+        SetServerData(modbus_device_, table, address, value);
+    }
+}
+
 void SAKModbusUi::UpdateUiState(bool opened) {
-    ui_->device_list->setEnabled(!opened);
-    ui_->closeDevicePushButton->setEnabled(opened);
-    ui_->openDevicePushButton->setEnabled(!opened);
+    ui_->device_list_->setEnabled(!opened);
+    ui_->cloese_button_->setEnabled(opened);
+    ui_->open_button_->setEnabled(!opened);
     ui_->networkGroupBox->setEnabled(!opened);
     ui_->serialPortGroupBox->setEnabled(!opened);
 #if 0
@@ -697,7 +869,7 @@ quint16 SAKModbusUi::CookedRegisterString(QString text, int base) {
 
 void SAKModbusUi::SynchronizationRegister(QModbusDevice *server) {
     for (int i = 0; i < 4; i++) {
-        QWidget *widget = ui_->registerTabWidget->widget(i);
+        QWidget *widget = ui_->server_registers_->widget(i);
         QTableView *tv = qobject_cast<QTableView*>(widget);
         auto *model = reinterpret_cast<QStandardItemModel*>(tv->model());
         for (int row = 0; row < model->rowCount(); row++) {
@@ -719,7 +891,9 @@ void SAKModbusUi::SynchronizationRegister(QModbusDevice *server) {
                 quint16 value = item->text().toInt(Q_NULLPTR, 16);
                 QModbusDataUnit::RegisterType table =
                     static_cast<QModbusDataUnit::RegisterType>(type);
-                SetServerData(server, table, row, value);
+                if (!SetServerData(server, table, row, value)) {
+                    qCWarning(logging_category_) << "Set server data error!";
+                }
             }
         }
     }
@@ -759,148 +933,35 @@ QModbusDataUnit::RegisterType SAKModbusUi::RegisterType(int type) {
     }
 }
 
-void SAKModbusUi::ClientRead()
-{
-    if (!modbus_device_) {
-        ShowMessageBoxDeviceIsNotReady();
-        return;
-    }
-
-    int registerType = ui_->functionCodeComboBox->currentData().toInt();
-    quint16 startAddress = ui_->startAddressSpinBox->value();
-    quint16 addressNumber = ui_->addressNumberSpinBox->value();
-    quint16 targetAddress = ui_->targetAddressSpinBox->value();
-    quint8 functionCode = this->ClientFunctionCode();
-    QModbusReply *reply = SendReadRequest(modbus_device_, registerType,
-                                          startAddress, addressNumber,
-                                          targetAddress);
-
-    if (IsValidModbusReply(QVariant::fromValue(reply))) {
-        connect(reply, &QModbusReply::finished, this, [=](){
-            OutputModbusReply(reply, functionCode);
-
-            if (reply->error() == QModbusDevice::NoError) {
-                QJsonArray result = ModbusReplyResult(reply);
-                ClientSetRegisterValue(result);
-                reply->deleteLater();
-            }
-        });
-
-        OutputModbusRequestRead(targetAddress, functionCode,
-                                startAddress, addressNumber);
-    }
-}
-
-void SAKModbusUi::ClientWrite() {
-    if (!modbus_device_) {
-        ShowMessageBoxDeviceIsNotReady();
-        return;
-    }
-
-    int registerType = ui_->functionCodeComboBox->currentData().toInt();
-    int startAddress = ui_->startAddressSpinBox->value();
-    int targetAddress = ui_->targetAddressSpinBox->value();
-    int addressNumber = ui_->addressNumberSpinBox->value();
-    quint8 functionCode = this->ClientFunctionCode();
-    QJsonArray values = ClientRegisterValue();
-    QModbusReply *reply = SendWriteRequest(
-        modbus_device_, registerType, startAddress, values, targetAddress);
-    if (IsValidModbusReply(QVariant::fromValue(reply))) {
-        connect(reply, &QModbusReply::finished, this, [=](){
-            OutputModbusReply(reply, functionCode);
-            reply->deleteLater();
-        });
-
-        OutputModbusRequestWrite(targetAddress, functionCode, startAddress,
-                                 addressNumber, values);
-    }
-}
-
-void SAKModbusUi::ClientSend() {
-    if (!modbus_device_) {
-        ShowMessageBoxDeviceIsNotReady();
-        return;
-    }
-
-    quint8 serverAddress = ui_->targetAddressSpinBox->value();
-    QByteArray pdu = ClientPdu();
-    QByteArray data = pdu.length()
-            ? QByteArray(pdu.data() + 1, pdu.length() - 1)
-            : QByteArray();
-    int functionCode = pdu.count() ? pdu.at(0) : int(QModbusDataUnit::Invalid);
-    QModbusReply *reply = SendRawRequest(
-        modbus_device_, serverAddress, functionCode, data);
-
-    qCWarning(logging_category_) << "address:" << serverAddress
-                                << "function code:" << functionCode
-                                << "data:" << QString(pdu.toHex(' '));
-
-    if (IsValidModbusReply(QVariant::fromValue(reply))) {
-        connect(reply, &QModbusReply::finished, this, [=](){
-            OutputModbusReply(reply, functionCode);
-            reply->deleteLater();
-        });
-
-        OutputModbusRequestSend(serverAddress, pdu);
-    }
-
-    // Update settings data.
-    int index = settings_->value(mSettingsKeyCtx.sendHistoryIndex).toInt();
-    bool ret = WriteSettingsArray(
-        mSettingsKeyCtx.sendHistory, mSettingsKeyCtx.pdu,
-        QString(pdu.toHex(' ')), index, MAX_HISTORY_INDEX);
-    if (ret) {
-        if (index > ui_->pduComboBox->count()) {
-            ui_->pduComboBox->addItem(QString(pdu.toHex(' ')));
-        } else {
-            ui_->pduComboBox->insertItem(index, QString(pdu.toHex(' ')));
-        }
-        settings_->setValue(mSettingsKeyCtx.sendHistoryIndex,
-                            index + 1 > MAX_HISTORY_INDEX ? 0 : index + 1);
-    }
-}
-
 void SAKModbusUi::ClientUpdateTable() {
-    int number = ui_->addressNumberSpinBox->value();
-    int rowCount = register_model->rowCount();
+    int number = ui_->quantity_->value();
+    int rowCount = register_model_->rowCount();
     if (number > rowCount) {
-        register_model->insertRows(rowCount, number - rowCount);
+        register_model_->insertRows(rowCount, number - rowCount);
     } else if (number < rowCount) {
-        register_model->removeRows(number, rowCount - number);
+        register_model_->removeRows(number, rowCount - number);
     }
 
     // Update address.
-    int startAddress = ui_->startAddressSpinBox->value();
-    TableViewUpdateAddress(ui_->registerTableView, startAddress);
+    int startAddress = ui_->start_address_->value();
+    TableViewUpdateAddress(ui_->client_registers_, startAddress);
 }
 
-void SAKModbusUi::ClientSetRegisterValue(QJsonArray values) {
-    int columnCount = register_model->columnCount();
+void SAKModbusUi::ClientSetRegisterValue(const QJsonArray &values) {
     for (int row = 0; row < values.count(); row++) {
-        for (int column = 1; column < columnCount; column++) {
-            int value = values.at(row).toInt();
-            int base = (column < 4)
-                           ? (column == 1 ? 2 : (column == 2 ? 10 : 16))
-                           : (column == 4 ? 2 : (column == 5 ? 10 : 16));
-            quint16 valueBE = qToBigEndian<quint16>(value);
-            quint16 cookedValue =  column < 4 ? value : valueBE;
-
-            QModelIndex index = register_model->index(row, column);
-            QMap<int, QVariant> roles;
-            int width = base == 2 ? 16 : (base == 10 ? 5 : 4);
-            QString cookedStr = QString::number(cookedValue, base)
-                                    .rightJustified(width, '0', true);
-            roles.insert(Qt::DisplayRole, cookedStr);
-            register_model->setItemData(index, roles);
-        }
+        int value = values.at(row).toInt();
+        QModelIndex index = register_model_->index(row, 1);
+        QMap<int, QVariant> roles;
+        roles.insert(Qt::DisplayRole, QString::number(value));
+        register_model_->setItemData(index, roles);
     }
 
     // Refresh the view, or the new value will not be show.
-    ui_->registerTableView->viewport()->update();
+    ui_->client_registers_->viewport()->update();
 }
 
 void SAKModbusUi::ClientUpdateRWBtState() {
-    QStringList list = ui_->functionCodeComboBox->currentText().split('-');
+    QStringList list = ui_->function_code_->currentText().split('-');
     int code = list.length() ? list.first().toInt(Q_NULLPTR, 16) : 0;
     bool isReadingOperation = false;
     if (code == 0x01 || code == 0x02 || code == 0x03 || code == 0x04) {
@@ -908,23 +969,23 @@ void SAKModbusUi::ClientUpdateRWBtState() {
     }
 
     if (code == 0x05 || code == 0x06) {
-        ui_->addressNumberSpinBox->setValue(1);
+        ui_->quantity_->setValue(1);
     }
 
-    ui_->readPushButton->setEnabled(isReadingOperation);
-    ui_->writePushButton->setEnabled(!isReadingOperation);
+    ui_->read_->setEnabled(isReadingOperation);
+    ui_->write_->setEnabled(!isReadingOperation);
 }
 
 void SAKModbusUi::ClientUpdateParameters() {
     if (IsClient(modbus_device_)) {
-        int timeout = ui_->clientTimeoutSpinBox->value();
-        int repeatTime = ui_->clientRepeatTimeSpinBox->value();
+        int timeout = ui_->timeout_->value();
+        int repeatTime = ui_->repeat_time_->value();
         SetClientParameters(modbus_device_, timeout, repeatTime);
     }
 }
 
 quint8 SAKModbusUi::ClientFunctionCode() {
-    QStringList list = ui_->functionCodeComboBox->currentText().split('-');
+    QStringList list = ui_->function_code_->currentText().split('-');
     if (list.length()) {
         return list.first().toInt();
     }
@@ -934,9 +995,8 @@ quint8 SAKModbusUi::ClientFunctionCode() {
 
 QJsonArray SAKModbusUi::ClientRegisterValue() {
     QJsonArray array;
-    for (int row = 0; row < register_model->rowCount(); row++) {
-        // Get data from hex column.
-        QStandardItem *item = register_model->item(row, 3);
+    for (int row = 0; row < register_model_->rowCount(); row++) {
+        QStandardItem *item = register_model_->item(row, 1);
         if (item) {
             QString text = item->text();
             array.append(text.toInt(Q_NULLPTR, 16));
@@ -949,7 +1009,7 @@ QJsonArray SAKModbusUi::ClientRegisterValue() {
 }
 
 QByteArray SAKModbusUi::ClientPdu() {
-    QString text = ui_->pduComboBox->currentText();
+    QString text = ui_->pdu_->currentText();
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QStringList valueList = text.split(' ', QString::SkipEmptyParts);
 #else
@@ -973,23 +1033,41 @@ void SAKModbusUi::ShowMessageBoxDeviceIsNotReady() {
                       " please open the device then try again."));
 }
 
-void SAKModbusUi::OutputModbusReply(QModbusReply *reply, int functionCode) {
+void SAKModbusUi::OutputModbusReply(QModbusReply *reply, int function_code) {
     if (reply->error() != QModbusDevice::NoError) {
         OutputMessage(reply->errorString(), true, "", "error");
-        this->ShowMessageBox(tr("Error occured"),
-                             reply->errorString());
+        QMessageBox::warning(this, tr("Error occured"), reply->errorString());
         return;
     }
 
-    int serverAddress = reply->serverAddress();
-    QByteArray data = reply->rawResult().data();
-    data.prepend(char(functionCode));
-    data.prepend(char(serverAddress));
-    quint16 crc = CalculateModbusCrc(data);
-    data.append(reinterpret_cast<char*>(&crc), 2);
-    QString msg = QString::fromLatin1(data.toHex(' '));
-    OutputMessage(msg, false, RXCOLOR,
-                  RXFLAG + QString::number(serverAddress));
+    int server_address = reply->serverAddress();
+    int start_address = reply->result().startAddress();
+    QList<quint16> values = reply->result().values();
+
+    QString info = QString("Rx(address:%1, function code:%2)")
+                       .arg(server_address).arg(function_code);
+    info += "\n";
+    for (int i = start_address; i < values.length(); i++) {
+        QString address = QString("%1").arg(QString::number(i), 5, '0');
+        QString value_str = QString::number(values.at(i - start_address), 16);
+        QString value = QString("%1").arg(value_str, 4, '0');
+        info += QString("%1:%2").arg(address, value);
+
+        if (i != (i + start_address + values.length() - 1)) {
+            info.append("\n");
+        }
+    }
+
+    ui_->text_browser_->append(info);
+
+//    QByteArray data = reply->rawResult().data();
+//    data.prepend(char(functionCode));
+//    data.prepend(char(server_address));
+//    quint16 crc = CalculateModbusCrc(data);
+//    data.append(reinterpret_cast<char*>(&crc), 2);
+//    QString msg = QString::fromLatin1(data.toHex(' '));
+//    OutputMessage(msg, false, RXCOLOR,
+//                  RXFLAG + QString::number(server_address));
 }
 
 void SAKModbusUi::OutputModbusRequestSend(int serverAddress,
@@ -1060,21 +1138,21 @@ void SAKModbusUi::OutputMessage(const QString &msg, bool isError,
             ? ""
             : QString("<font color=%1>[%2]</font> ").arg(cookedColor, flag);
     cookedMsg += msg;
-    ui_->textBrowser->append(cookedMsg);
+    ui_->text_browser_->append(cookedMsg);
 }
 
 QTableView *SAKModbusUi::TableView(QModbusDataUnit::RegisterType table) {
     QWidget *tv = Q_NULLPTR;
     if (table == QModbusDataUnit::DiscreteInputs) {
-        tv = ui_->registerTabWidget->widget(0);
+        tv = ui_->server_registers_->widget(0);
     } else if (table == QModbusDataUnit::Coils) {
-        tv = ui_->registerTabWidget->widget(1);
+        tv = ui_->server_registers_->widget(1);
     } else if (table == QModbusDataUnit::InputRegisters) {
-        tv = ui_->registerTabWidget->widget(2);
+        tv = ui_->server_registers_->widget(2);
     } else if (table == QModbusDataUnit::HoldingRegisters) {
-        tv = ui_->registerTabWidget->widget(3);
+        tv = ui_->server_registers_->widget(3);
     } else {
-        tv = ui_->registerTabWidget->widget(3);
+        tv = ui_->server_registers_->widget(3);
         qCWarning(logging_category_)
                 << "Get table view failed: unknow register type!";
     }
@@ -1109,24 +1187,28 @@ QTableView *SAKModbusUi::TableViewInit(int rowCount, QTableView *tv) {
         model->setItemData(index, roles);
 
         QStandardItem *item = model->item(row, 3);
-        TableViewUpdateRow(item);
+        OnItemChanged(item);
     }
 #endif
 
     connect(model, &QStandardItemModel::itemChanged,
-            this, &SAKModbusUi::TableViewUpdateRow);
+            this, &SAKModbusUi::OnItemChanged);
 
     return tv;
 }
 
 QVector<quint16> SAKModbusUi::TableValues(QTableView *tv, int row, int count) {
     if (!tv) {
-        qCWarning(logging_category_) << __FUNCTION__
-                                    << ": tv can not be null!";
+        qCWarning(logging_category_) << "Table view can not be null!";
         return QVector<quint16>();
     }
 
     auto *model = qobject_cast<QStandardItemModel*>(tv->model());
+    if (!model) {
+        qCWarning(logging_category_) << "Model can not be null!";
+        return QVector<quint16>();
+    }
+
     QVector<quint16> values;
     for (int i = row; i < count; i++) {
         QStandardItem *item = model->item(i, 1);
@@ -1141,8 +1223,7 @@ QVector<quint16> SAKModbusUi::TableValues(QTableView *tv, int row, int count) {
     return values;
 }
 
-void SAKModbusUi::TableViewUpdateAddress(QTableView *tv,
-                                               int startAddress) {
+void SAKModbusUi::TableViewUpdateAddress(QTableView *tv, int startAddress) {
     QStandardItemModel *model =
             reinterpret_cast<QStandardItemModel*>(tv->model());
     int number = model->rowCount();
@@ -1158,101 +1239,6 @@ void SAKModbusUi::TableViewUpdateAddress(QTableView *tv,
             itemTemp->setTextAlignment(Qt::AlignCenter);
         }
     }
-}
-
-void SAKModbusUi::TableViewUpdateRow(QStandardItem *item) {
-    if (!item) {
-        return;
-    }
-
-    if (item->column() == 0) {
-        return;
-    }
-
-    QStandardItemModel *model = item->model();
-    model->blockSignals(true);
-    int row = item->row();
-    int column = item->column();
-    QString text = item->text();
-
-    int columnCount = model->columnCount();
-    int base = (column == 1) ? 2 : (column == 2 ? 10 : 16);
-    quint16 value = CookedRegisterString(text, base);
-    for (int column = 1; column < columnCount; column++) {
-        int base = column < 4
-                       ? (column == 1 ? 2 : (column == 2 ? 10 : 16))
-                       : (column == 4 ? 2 : (column == 5 ? 10 : 16));
-        quint16 valueBE = qToBigEndian<quint16>(value);
-        quint16 cookedValue =  column < 4 ? value : valueBE;
-
-        QModelIndex index = model->index(row, column);
-        QMap<int, QVariant> roles;
-        int width = base == 2 ? 16 : (base == 10 ? 5 : 4);
-        QString cookedStr = QString::number(cookedValue, base)
-                                .rightJustified(width, '0', true);
-        roles.insert(Qt::DisplayRole, cookedStr);
-        model->setItemData(index, roles);
-
-        QStandardItem *itemTemp = model->item(row, column);
-        if (itemTemp) {
-            itemTemp->setTextAlignment(Qt::AlignCenter);
-        }
-    }
-
-    model->blockSignals(false);
-
-    if (IsServer(modbus_device_)) {
-        int address = item->row();
-        int currentIndex = ui_->registerTabWidget->currentIndex();
-        QModbusDataUnit::RegisterType table = QModbusDataUnit::Invalid;
-        if (currentIndex == 0) {
-            table = QModbusDataUnit::DiscreteInputs;
-        } else if (currentIndex == 1) {
-            table = QModbusDataUnit::Coils;
-        }  else if (currentIndex == 2) {
-            table = QModbusDataUnit::InputRegisters;
-        }  else if (currentIndex == 3) {
-            table = QModbusDataUnit::HoldingRegisters;
-        } else {
-            Q_ASSERT_X(false, __FUNCTION__, "Unknow table type!");
-        }
-
-        SetServerData(modbus_device_, table, address, value);
-    }
-}
-
-void SAKModbusUi::TableViewUpdateData(int table, int address, int size) {
-    qCInfo(logging_category_) << "Data written, table:" << table
-                             << ", start address:" << address
-                             << ", size:" << size << ".";
-    QTableView *tv = TableView(RegisterType(table));
-    QStandardItemModel *model =
-            qobject_cast<QStandardItemModel*>(tv->model());
-    QModbusServer *server = qobject_cast<QModbusServer*>(modbus_device_);
-
-
-    QJsonArray data = ServerValues(server, table, address, size);
-    size = qMin<int>(data.count(), size);
-    for (int i = 0; i < size; i++) {
-        int row = address + i;
-        int base = 10;
-        int width = base == 2 ? 16 : (base == 10 ? 5 : 4);
-        int value = data.at(i).toInt();
-        QString cookedStr = QString::number(value, base)
-                                .rightJustified(width, '0', true);
-
-        QMap<int, QVariant> roles;
-        roles.insert(Qt::DisplayRole, cookedStr);
-        QModelIndex index = model->index(row, 2);
-        model->setItemData(index, roles);
-
-        QStandardItem *itemTemp = model->item(row, 2);
-        if (itemTemp) {
-            itemTemp->setTextAlignment(Qt::AlignCenter);
-        }
-    }
-
-    tv->viewport()->update();
 }
 
 QModbusDevice *SAKModbusUi::CreateRtuSerialDevice(
@@ -1313,10 +1299,8 @@ QModbusDevice *SAKModbusUi::CreateTcpDevice(
 }
 
 bool SAKModbusUi::IsClient(QModbusDevice *device) {
-    if (device) {
-        if (device->inherits("QModbusClient")) {
-            return true;
-        }
+    if (device && qobject_cast<QModbusClient*>(device)) {
+        return true;
     }
 
     return false;
@@ -1347,6 +1331,9 @@ bool SAKModbusUi::ResetServerMap(QModbusDevice *server) {
                     reinterpret_cast<QModbusServer*>(server);
             return modbusServer->setMap(map);
         }
+    } else {
+        qWarning(logging_category_) << "Not a modbus server!";
+        return false;
     }
 
     return false;
@@ -1401,14 +1388,15 @@ QString SAKModbusUi::ModbuseDeviceErrorString(QModbusDevice *device) {
     return QString("Invalid modbus device!");
 }
 
-bool SAKModbusUi::SetServerData(
-        QModbusDevice *server, QModbusDataUnit::RegisterType table,
-        quint16 address, quint16 data) {
-    if (server) {
-        if (server->inherits("QModbusServer")) {
-            QModbusServer *modbusServer = qobject_cast<QModbusServer*>(server);
-            return modbusServer->setData(table, address, data);
-        }
+bool SAKModbusUi::SetServerData(QModbusDevice *server,
+                                QModbusDataUnit::RegisterType table,
+                                quint16 address, quint16 data) {
+    if (server && qobject_cast<QModbusServer*>(server)) {
+        QModbusServer *modbusServer = qobject_cast<QModbusServer*>(server);
+        qCInfo(logging_category_) << "[Set table value]table:" << table
+                                  << "address:" << address
+                                  << "data:" << data;
+        return modbusServer->setData(table, address, data);
     }
 
     return false;
@@ -1418,27 +1406,30 @@ QModbusReply *SAKModbusUi::SendReadRequest(
         QModbusDevice *device, int registerType, int startAddress,
         int size, int serverAddress) {
     if (device && IsClient(device)) {
-        qCInfo(logging_category_) << "register-type:" << registerType
-                                 << " start-address:" << startAddress
-                                 << " register-number:" << size
-                                 << " serverAddress:" << serverAddress;
+        qCInfo(logging_category_) << "[Send read request]register type:" << registerType << " "
+                                  << "start address:" << startAddress << " "
+                                  << "register number:" << size << " "
+                                  << "server address:" << serverAddress;
         QModbusClient *client = qobject_cast<QModbusClient*>(device);
         QModbusDataUnit::RegisterType cookedRegisterType
             = static_cast<QModbusDataUnit::RegisterType>(registerType);
         QModbusDataUnit dataUnit(cookedRegisterType, startAddress, size);
         QModbusReply *reply = client->sendReadRequest(dataUnit, serverAddress);
         return reply;
+    } else {
+        qCWarning(logging_category_) << "Not a modbus client!";
+        return Q_NULLPTR;
     }
 
     return Q_NULLPTR;
 }
 
-QJsonArray SAKModbusUi::ServerValues(
-        QModbusServer *server, int registerType, int address, int size) {
+QJsonArray SAKModbusUi::ServerValues(QModbusServer *server, int registerType,
+                                     int address, int size) {
     QJsonArray values;
     if (server) {
-        QModbusDataUnit::RegisterType table =
-                static_cast<QModbusDataUnit::RegisterType>(registerType);
+        typedef QModbusDataUnit::RegisterType Table;
+        Table table = static_cast<Table>(registerType);
         for (int i = address; i < size; i++) {
             quint16 value;
             if (server->data(table, i, &value)) {
@@ -1455,12 +1446,14 @@ QJsonArray SAKModbusUi::ServerValues(
     return values;
 }
 
-QModbusReply *SAKModbusUi::SendWriteRequest(
-        QModbusDevice *device, int registerType, int startAddress,
-        QJsonArray values, int serverAddress) {
+QModbusReply *SAKModbusUi::SendWriteRequest(QModbusDevice *device,
+                                            int registerType,
+                                            int startAddress,
+                                            QJsonArray values,
+                                            int serverAddress) {
     if (device && IsClient(device)) {
-        QModbusDataUnit::RegisterType cookedRegisterType
-            = static_cast<QModbusDataUnit::RegisterType>(registerType);
+        typedef QModbusDataUnit::RegisterType Type;
+        Type cookedRegisterType = static_cast<Type>(registerType);
         QVector<quint16> registerValues;
         for (int i = 0; i < values.count(); i++) {
             registerValues.append(values.at(i).toInt());
@@ -1487,17 +1480,15 @@ QModbusReply *SAKModbusUi::SendWriteRequest(
 }
 
 bool SAKModbusUi::IsValidModbusReply(QVariant reply) {
-    if (reply.canConvert<QModbusReply*>()) {
-        QModbusReply *modbusReply = reply.value<QModbusReply*>();
-        if (!modbusReply) {
-            qCWarning(logging_category_) << "QModbusReply is null!";
-            return false;
-        } else if (modbusReply->isFinished()) {
-            qCWarning(logging_category_) << "QModbusReply is finished!";
-            return false;
-        } else {
-            return true;
-        }
+    QModbusReply *modbusReply = reply.value<QModbusReply*>();
+    if (!modbusReply) {
+        qCWarning(logging_category_) << "QModbusReply is null!";
+        return false;
+    } else if (modbusReply->isFinished()) {
+        qCWarning(logging_category_) << "QModbusReply is finished!";
+        return false;
+    } else {
+        return true;
     }
 
     return false;
@@ -1551,4 +1542,19 @@ QModbusReply *SAKModbusUi::SendRawRequest(
     }
 
     return Q_NULLPTR;
+}
+
+bool SAKModbusUi::IsReady() {
+    if (modbus_device_) {
+        if (modbus_device_->state() == QModbusDevice::ConnectedState) {
+            return true;
+        }
+    }
+
+    QMessageBox::warning(this,
+                         tr("Device is not Ready"),
+                         tr("The modbus device is not ready, "
+                            "please check settings and try again later!"));
+
+    return false;
 }

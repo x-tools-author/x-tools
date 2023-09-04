@@ -112,9 +112,9 @@ private:
 
 private:
     Ui::SAKModbusUi *ui_;
-    QModbusDevice *modbus_device_{nullptr};
-    QSettings *settings_{nullptr};
-    QStandardItemModel *register_model{nullptr};
+    QModbusDevice *modbus_device_{Q_NULLPTR};
+    QSettings *settings_{Q_NULLPTR};
+    QStandardItemModel *register_model_{Q_NULLPTR};
     const QLoggingCategory logging_category_;
 
 private:
@@ -152,7 +152,7 @@ private:
     void OnErrorOccurred();
     void OnDeviceTypeChanged();
     void OnInvokeClose();
-    void OnInvokeOpen();
+    void OnOpenClicked();
     void OnAddressChanged();
     void OnPortChanged();
     void OnCustomAddressChanged();
@@ -172,6 +172,15 @@ private:
     void OnStartAddressChanged();
     void OnAddressNumberChanged();
 
+
+    void OnReadClicked();
+    void OnWriteClicked();
+    void OnSendClicked();
+
+    void OnDateWritten(QModbusDataUnit::RegisterType table,
+                       int address, int size);
+    void OnItemChanged(QStandardItem *item);
+
 private:
     void UpdateUiState(bool opened);
     quint16 CalculateModbusCrc(const QByteArray &data);
@@ -182,11 +191,8 @@ private:
     QModbusDataUnit::RegisterType RegisterType(int type);
 
     // The interfaces of modbus client operations.
-    void ClientRead();
-    void ClientWrite();
-    void ClientSend();
     void ClientUpdateTable();
-    void ClientSetRegisterValue(QJsonArray values);
+    void ClientSetRegisterValue(const QJsonArray &values);
     void ClientUpdateRWBtState();
     void ClientUpdateParameters();
     quint8 ClientFunctionCode();
@@ -198,7 +204,7 @@ private:
     void ShowMessageBoxDeviceIsNotReady();
 
     // Output info to ui.
-    void OutputModbusReply(QModbusReply *reply, int functionCode);
+    void OutputModbusReply(QModbusReply *reply, int function_code);
     void OutputModbusRequestSend(int serverAddress, const QByteArray &pdu);
     void OutputModbusRequestRead(int serverAddress, int functionCode,
                                  int startAddress, int addressNumber);
@@ -214,8 +220,6 @@ private:
     QTableView *TableViewInit(int rowCount, QTableView *tv);
     QVector<quint16> TableValues(QTableView *tv, int row, int count);
     void TableViewUpdateAddress(QTableView *tv, int startAddress);
-    void TableViewUpdateRow(QStandardItem *item);
-    void TableViewUpdateData(int table, int address, int size);
 
     QModbusDevice *CreateRtuSerialDevice(
             int deviceType, const QString &portName, int parity, int baudRate,
@@ -247,6 +251,7 @@ private:
     QModbusReply *SendRawRequest(
             QModbusDevice *device, int serverAddress, int functionCode,
             const QByteArray &data);
+    bool IsReady();
 };
 
 #endif // SAKMODBUSUI_H

@@ -53,7 +53,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QSpinBox" name="clientRepeatTimeSpinBox">
+       <widget class="QSpinBox" name="repeat_time_">
         <property name="minimum">
          <number>0</number>
         </property>
@@ -63,7 +63,7 @@
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QSpinBox" name="addressNumberSpinBox">
+       <widget class="QSpinBox" name="quantity_">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -79,7 +79,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QSpinBox" name="clientTimeoutSpinBox">
+       <widget class="QSpinBox" name="timeout_">
         <property name="minimum">
          <number>500</number>
         </property>
@@ -95,7 +95,7 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QSpinBox" name="startAddressSpinBox">
+       <widget class="QSpinBox" name="start_address_">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -162,14 +162,14 @@
       <item row="7" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QPushButton" name="readPushButton">
+         <widget class="QPushButton" name="read_">
           <property name="text">
            <string>Read</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="writePushButton">
+         <widget class="QPushButton" name="write_">
           <property name="text">
            <string>Write</string>
           </property>
@@ -178,7 +178,7 @@
        </layout>
       </item>
       <item row="3" column="1">
-       <widget class="QComboBox" name="functionCodeComboBox">
+       <widget class="QComboBox" name="function_code_">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -207,7 +207,7 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QSpinBox" name="targetAddressSpinBox">
+       <widget class="QSpinBox" name="device_address_">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -249,7 +249,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="device_list"/>
+       <widget class="QComboBox" name="device_list_"/>
       </item>
       <item row="1" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -266,14 +266,14 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QPushButton" name="closeDevicePushButton">
+         <widget class="QPushButton" name="cloese_button_">
           <property name="text">
            <string>CloseDevice</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="openDevicePushButton">
+         <widget class="QPushButton" name="open_button_">
           <property name="text">
            <string>OpenDevice</string>
           </property>
@@ -291,14 +291,14 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0" colspan="2">
-       <widget class="QCheckBox" name="serverIsBusyCheckBox">
+       <widget class="QCheckBox" name="is_busy_">
         <property name="text">
          <string>Server is busy</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0" colspan="2">
-       <widget class="QCheckBox" name="serverJustListenCheckBox">
+       <widget class="QCheckBox" name="just_listen_">
         <property name="text">
          <string>Just listen</string>
         </property>
@@ -312,7 +312,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QSpinBox" name="serverAddressSpinBox">
+       <widget class="QSpinBox" name="server_address">
         <property name="maximum">
          <number>265</number>
         </property>
@@ -341,14 +341,14 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QSpinBox" name="portSpinBox">
+       <widget class="QSpinBox" name="port_spin_box">
         <property name="maximum">
          <number>65535</number>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="addressComboBox">
+       <widget class="QComboBox" name="address_combo_box">
         <property name="editable">
          <bool>true</bool>
         </property>
@@ -390,7 +390,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="portNameComboBox"/>
+       <widget class="QComboBox" name="port_name_"/>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_9">
@@ -406,7 +406,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QComboBox" name="baudRateComboBox">
+       <widget class="QComboBox" name="baud_rate_">
         <property name="editable">
          <bool>true</bool>
         </property>
@@ -426,7 +426,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QComboBox" name="dataBitsComboBox"/>
+       <widget class="QComboBox" name="data_bits_"/>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_11">
@@ -442,7 +442,7 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QComboBox" name="stopBitsComboBox"/>
+       <widget class="QComboBox" name="stop_bits_"/>
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="label_12">
@@ -458,7 +458,7 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QComboBox" name="parityComboBox"/>
+       <widget class="QComboBox" name="parity_"/>
       </item>
      </layout>
     </widget>
@@ -490,7 +490,7 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QTextBrowser" name="textBrowser"/>
+         <widget class="QTextBrowser" name="text_browser_"/>
         </item>
        </layout>
       </widget>
@@ -508,7 +508,7 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_7">
         <item row="0" column="0" colspan="2">
-         <widget class="QTableView" name="registerTableView"/>
+         <widget class="QTableView" name="client_registers_"/>
         </item>
        </layout>
       </widget>
@@ -527,7 +527,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="pduComboBox">
+         <widget class="QComboBox" name="pdu_">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -540,7 +540,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="sendPushButton">
+         <widget class="QPushButton" name="send_">
           <property name="text">
            <string>Send</string>
           </property>
@@ -568,7 +568,7 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_9">
         <item row="0" column="0">
-         <widget class="QTabWidget" name="registerTabWidget">
+         <widget class="QTabWidget" name="server_registers_">
           <property name="currentIndex">
            <number>-1</number>
           </property>
