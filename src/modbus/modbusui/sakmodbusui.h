@@ -206,11 +206,15 @@ private:
     // Output info to ui.
     void OutputModbusReply(QModbusReply *reply, int function_code);
     void OutputModbusRequestSend(int server_address, const QByteArray &pdu);
-    void OutputModbusRequestRead(int server_address, int function_code,
-                                 int start_address, int address_number);
-    void OutputModbusRequestWrite(int serverAddress, int functionCode,
-                                  int startAddress, int addressNumber,
-                                  QJsonArray values);
+    QByteArray ReadRequestApplicationDataUnit(int server_address,
+                                              int function_code,
+                                              int start_address,
+                                              int quantity);
+    QByteArray WriteRequestApplicationDataUnit(int server_address,
+                                               int function_code,
+                                               int start_address,
+                                               int quantity,
+                                               QJsonArray values);
     void OutputMessage(const QString &msg, bool isError,
                        const QString &color = QString(),
                        const QString &flag = QString());

@@ -679,8 +679,12 @@ void SAKModbusUi::OnReadClicked()
         return;
     }
 
-    QString info = QString("(to device:%1, function code:%2)")
-                       .arg(server_address) .arg(function_code);
+    QByteArray tx = ReadRequestApplicationDataUnit(server_address,
+                                                   function_code,
+                                                   start_address,
+                                                   quantity);
+    QString info = QString("%1:%2").arg(ui_->function_code_->currentText(),
+                                        QString::fromLatin1(tx.toHex(' ')));
     OutputMessage(info, false, TXCOLOR, TXFLAG);
 
     connect(reply, &QModbusReply::finished, this, [=](){
@@ -730,8 +734,13 @@ void SAKModbusUi::OnWriteClicked() {
             }
         }
 
-        OutputModbusRequestWrite(server_address, function_code, start_address,
-                                 quantity, values);
+        QByteArray tx = WriteRequestApplicationDataUnit(server_address,
+                                                        function_code,
+                                                        start_address,
+                                                        quantity,
+                                                        values);
+        OutputMessage(QString(tx.toHex(' ')), false, TXCOLOR,
+                      TXFLAG + QString::number(server_address));
     }
 }
 
@@ -1080,9 +1089,7 @@ void SAKModbusUi::OutputModbusReply(QModbusReply *reply, int function_code) {
 
     int server_address = reply->serverAddress();
     int start_address = reply->result().startAddress();
-    int value_count = reply->result().valueCount();
     QList<quint16> values = reply->result().values();
-    qDebug() << "value_count:" << value_count << values;
 
     if (reply->type() == QModbusReply::ReplyType::Raw) {
         QByteArray data = reply->rawResult().data();
@@ -1094,14 +1101,29 @@ void SAKModbusUi::OutputModbusReply(QModbusReply *reply, int function_code) {
                            .arg(QString::fromLatin1(data.toHex(' ')));
         OutputMessage(info, false, RXCOLOR, RXFLAG);
     } else if (reply->type() == QModbusReply::ReplyType::Common) {
-        QString info = QString("(from address:%1, "
-                               "function code:%2)")
-                           .arg(server_address)
-                           .arg(function_code);
+#if 0
+        QByteArray raw_data_unit;
+        raw_data_unit.append(char(server_address));
+        quint16 be_function_code = function_code;
+        be_function_code = qToBigEndian<quint16>(be_function_code);
+        raw_data_unit.append((char*)(&be_function_code), 2);
+        quint16 be_value_count = values.count();
+        be_value_count = qToBigEndian<quint16>(be_value_count);
+        raw_data_unit.append((char*)(&be_value_count), 2);
+        for (int i = 0; i < values.count(); i++) {
+            quint16 value = values.at(i);
+            quint16 big_endian_value = qToBigEndian<quint16>(value);
+            raw_data_unit.append((char*)(&big_endian_value), 2);
+        }
+        quint16 crc = CalculateModbusCrc(raw_data_unit);
+        raw_data_unit.append((char*)(&crc), 2);
+        QString info = QString("%1: %2")
+                           .arg(ui_->function_code_->currentText(),
+                                QString::fromLatin1(raw_data_unit.toHex(' ')));
         OutputMessage(info, false, RXCOLOR, RXFLAG);
-
+#endif
         info = "";
-        for (int i = 0; i < value_count; i++) {
+        for (int i = 0; i < values.count(); i++) {
             QString address = QString::number(i + start_address);
             address = QString("%1").arg(address, 5, '0');
 
@@ -1110,7 +1132,7 @@ void SAKModbusUi::OutputModbusReply(QModbusReply *reply, int function_code) {
             QString value = QString("%1").arg(value_str, 4, '0');
             info += QString("%1:%2").arg(address, value);
 
-            if (i != (value_count - 1)) {
+            if (i != (values.count() - 1)) {
                 info.append("\n");
             }
         }
@@ -1129,45 +1151,45 @@ void SAKModbusUi::OutputModbusRequestSend(int server_address,
                   TXFLAG + QString::number(server_address));
 }
 
-void SAKModbusUi::OutputModbusRequestRead(int server_address,
-                                          int function_code,
-                                          int start_address,
-                                          int address_number) {
+QByteArray SAKModbusUi::ReadRequestApplicationDataUnit(int server_address,
+                                                       int function_code,
+                                                       int start_address,
+                                                       int quantity) {
     QByteArray tx;
-    quint16 startAddressBE = qToBigEndian<quint16>(start_address);
-    quint16 addressNumberBE = qToBigEndian<quint16>(address_number);
+    quint16 big_endian_start_address = qToBigEndian<quint16>(start_address);
+    quint16 big_endian_quantity = qToBigEndian<quint16>(quantity);
     tx.append(char(server_address));
     tx.append(char(function_code));
-    tx.append(reinterpret_cast<char*>(&startAddressBE), 2);
-    tx.append(reinterpret_cast<char*>(&addressNumberBE), 2);
+    tx.append(reinterpret_cast<char*>(&big_endian_start_address), 2);
+    tx.append(reinterpret_cast<char*>(&big_endian_quantity), 2);
     quint16 crc = CalculateModbusCrc(tx);
     tx.append(reinterpret_cast<char*>(&crc), 2);
-    OutputMessage(QString(tx.toHex(' ')), false, TXCOLOR,
-                  TXFLAG + QString::number(server_address));
+    return tx;
 }
 
-void SAKModbusUi::OutputModbusRequestWrite(int serverAddress, int functionCode,
-                                         int startAddress, int addressNumber,
-                                         QJsonArray values) {
+QByteArray SAKModbusUi::WriteRequestApplicationDataUnit(int server_address,
+                                                        int function_code,
+                                                        int start_address,
+                                                        int quantity,
+                                                        QJsonArray values) {
     QByteArray bytes;
     for (int i = 0; i < values.count(); i++) {
-        quint16 v = values.at(i).toInt();
-        quint16 vBE = qToBigEndian<quint16>(v);
-        bytes.append(reinterpret_cast<char*>(&vBE), 2);
+        quint16 value = values.at(i).toInt();
+        quint16 big_endian_value = qToBigEndian<quint16>(value);
+        bytes.append(reinterpret_cast<char*>(&big_endian_value), 2);
     }
 
     QByteArray tx;
-    quint16 startAddressBE = qToBigEndian<quint16>(startAddress);
-    quint16 addressNumberBE = qToBigEndian<quint16>(addressNumber);
-    tx.append(char(serverAddress));
-    tx.append(char(functionCode));
-    tx.append(reinterpret_cast<char*>(&startAddressBE), 2);
-    tx.append(reinterpret_cast<char*>(&addressNumberBE), 2);
+    quint16 big_endian_start_address = qToBigEndian<quint16>(start_address);
+    quint16 big_endian_quantity = qToBigEndian<quint16>(quantity);
+    tx.append(char(server_address));
+    tx.append(char(function_code));
+    tx.append(reinterpret_cast<char*>(&big_endian_start_address), 2);
+    tx.append(reinterpret_cast<char*>(&big_endian_quantity), 2);
     tx.append(bytes);
     quint16 crc = CalculateModbusCrc(tx);
     tx.append(reinterpret_cast<char*>(&crc), 2);
-    OutputMessage(QString(tx.toHex(' ')), false, TXCOLOR,
-                  TXFLAG + QString::number(serverAddress));
+    return tx;
 }
 
 void SAKModbusUi::OutputMessage(const QString &msg, bool isError,
