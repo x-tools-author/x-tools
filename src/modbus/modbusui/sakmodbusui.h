@@ -187,7 +187,7 @@ private:
     quint16 CookedRegisterString(QString text, int base);
     void SynchronizationRegister(QModbusDevice *server);
     bool WriteSettingsArray(const QString &group, const QString &key,
-                            const QString &value, int index, int maxIndex);
+                            const QString &value, int index, int max_index);
     QModbusDataUnit::RegisterType RegisterType(int type);
 
     // The interfaces of modbus client operations.
@@ -205,9 +205,9 @@ private:
 
     // Output info to ui.
     void OutputModbusReply(QModbusReply *reply, int function_code);
-    void OutputModbusRequestSend(int serverAddress, const QByteArray &pdu);
-    void OutputModbusRequestRead(int serverAddress, int functionCode,
-                                 int startAddress, int addressNumber);
+    void OutputModbusRequestSend(int server_address, const QByteArray &pdu);
+    void OutputModbusRequestRead(int server_address, int function_code,
+                                 int start_address, int address_number);
     void OutputModbusRequestWrite(int serverAddress, int functionCode,
                                   int startAddress, int addressNumber,
                                   QJsonArray values);
@@ -238,9 +238,6 @@ private:
     bool SetServerData(
             QModbusDevice *server, QModbusDataUnit::RegisterType table,
             quint16 address, quint16 data);
-    QModbusReply *SendReadRequest(
-            QModbusDevice *device, int registerType, int startAddress,
-            int size, int serverAddress);
     QJsonArray ServerValues(
             QModbusServer *server, int registerType, int address, int size);
     QModbusReply *SendWriteRequest(
@@ -252,6 +249,7 @@ private:
             QModbusDevice *device, int serverAddress, int functionCode,
             const QByteArray &data);
     bool IsReady();
+    QByteArray ApplicationDataUnit(const QModbusRequest &request, bool is_tcp);
 };
 
 #endif // SAKMODBUSUI_H
