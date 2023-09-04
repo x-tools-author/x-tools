@@ -649,16 +649,16 @@ void SAKModbusUi::OnReadClicked()
     }
 
     int registerType = ui_->function_code_->currentData().toInt();
-    quint16 startAddress = ui_->start_address_->value();
-    quint16 addressNumber = ui_->quantity_->value();
-    quint16 targetAddress = ui_->device_address_->value();
-    quint8 functionCode = this->ClientFunctionCode();
+    quint16 start_address = ui_->start_address_->value();
+    quint16 quantity = ui_->quantity_->value();
+    quint16 server_address = ui_->device_address_->value();
+    quint8 function_code = this->ClientFunctionCode();
     QModbusReply *reply = SendReadRequest(modbus_device_, registerType,
-                                          startAddress, addressNumber,
-                                          targetAddress);
+                                          start_address, quantity,
+                                          server_address);
     if (IsValidModbusReply(QVariant::fromValue(reply))) {
         connect(reply, &QModbusReply::finished, this, [=](){
-            OutputModbusReply(reply, functionCode);
+            OutputModbusReply(reply, function_code);
             if (reply->error() == QModbusDevice::NoError) {
                 QJsonArray result = ModbusReplyResult(reply);
                 ClientSetRegisterValue(result);
@@ -666,8 +666,12 @@ void SAKModbusUi::OnReadClicked()
             }
         });
 
-        OutputModbusRequestRead(targetAddress, functionCode,
-                                startAddress, addressNumber);
+        QString info = QString("(to device:%1, function code:%2)")
+                           .arg(server_address).arg(function_code);
+        OutputMessage(info, false, TXCOLOR, TXFLAG);
+
+        OutputModbusRequestRead(server_address, function_code,
+                                start_address, quantity);
     }
 }
 
@@ -677,20 +681,37 @@ void SAKModbusUi::OnWriteClicked() {
     }
 
     int registerType = ui_->function_code_->currentData().toInt();
-    int startAddress = ui_->start_address_->value();
-    int targetAddress = ui_->device_address_->value();
+    int start_address = ui_->start_address_->value();
+    int server_address = ui_->device_address_->value();
     int addressNumber = ui_->quantity_->value();
-    quint8 functionCode = this->ClientFunctionCode();
+    quint8 function_code = this->ClientFunctionCode();
     QJsonArray values = ClientRegisterValue();
     QModbusReply *reply = SendWriteRequest(
-        modbus_device_, registerType, startAddress, values, targetAddress);
+        modbus_device_, registerType, start_address, values, server_address);
     if (IsValidModbusReply(QVariant::fromValue(reply))) {
         connect(reply, &QModbusReply::finished, this, [=](){
-            OutputModbusReply(reply, functionCode);
+            OutputModbusReply(reply, function_code);
             reply->deleteLater();
         });
 
-        OutputModbusRequestWrite(targetAddress, functionCode, startAddress,
+        QString info = QString("(to device:%1, function code:%2)")
+                           .arg(server_address).arg(function_code);
+        OutputMessage(info, false, TXCOLOR, TXFLAG);
+
+        info = "";
+        for (int i = start_address; i < values.count(); i++) {
+            QString address = QString("%1").arg(QString::number(i), 5, '0');
+            int temp = values.at(i - start_address).toInt();
+            QString value_str = QString::number(temp, 16);
+            QString value = QString("%1").arg(value_str, 4, '0');
+            info += QString("%1:%2").arg(address, value);
+
+            if (i != (i + start_address + values.count() - 1)) {
+                info.append("\n");
+            }
+        }
+
+        OutputModbusRequestWrite(server_address, function_code, start_address,
                                  addressNumber, values);
     }
 }
@@ -1044,9 +1065,11 @@ void SAKModbusUi::OutputModbusReply(QModbusReply *reply, int function_code) {
     int start_address = reply->result().startAddress();
     QList<quint16> values = reply->result().values();
 
-    QString info = QString("Rx(address:%1, function code:%2)")
+    QString info = QString("(from address:%1, function code:%2)")
                        .arg(server_address).arg(function_code);
-    info += "\n";
+    OutputMessage(info, false, RXCOLOR, RXFLAG);
+
+    info = "";
     for (int i = start_address; i < values.length(); i++) {
         QString address = QString("%1").arg(QString::number(i), 5, '0');
         QString value_str = QString::number(values.at(i - start_address), 16);
@@ -1057,17 +1080,7 @@ void SAKModbusUi::OutputModbusReply(QModbusReply *reply, int function_code) {
             info.append("\n");
         }
     }
-
     ui_->text_browser_->append(info);
-
-//    QByteArray data = reply->rawResult().data();
-//    data.prepend(char(functionCode));
-//    data.prepend(char(server_address));
-//    quint16 crc = CalculateModbusCrc(data);
-//    data.append(reinterpret_cast<char*>(&crc), 2);
-//    QString msg = QString::fromLatin1(data.toHex(' '));
-//    OutputMessage(msg, false, RXCOLOR,
-//                  RXFLAG + QString::number(server_address));
 }
 
 void SAKModbusUi::OutputModbusRequestSend(int serverAddress,
@@ -1121,7 +1134,7 @@ void SAKModbusUi::OutputModbusRequestWrite(int serverAddress, int functionCode,
 }
 
 void SAKModbusUi::OutputMessage(const QString &msg, bool isError,
-                              const QString &color, const QString &flag) {
+                                const QString &color, const QString &flag) {
     QString cookedMsg = QDateTime::currentDateTime().toString("hh:mm:ss.zzz");
     cookedMsg = QString("<font color=silver>%1 </font>").arg(cookedMsg);
 
@@ -1402,11 +1415,14 @@ bool SAKModbusUi::SetServerData(QModbusDevice *server,
     return false;
 }
 
-QModbusReply *SAKModbusUi::SendReadRequest(
-        QModbusDevice *device, int registerType, int startAddress,
-        int size, int serverAddress) {
+QModbusReply *SAKModbusUi::SendReadRequest(QModbusDevice *device,
+                                           int registerType,
+                                           int startAddress,
+                                           int size,
+                                           int serverAddress) {
     if (device && IsClient(device)) {
-        qCInfo(logging_category_) << "[Send read request]register type:" << registerType << " "
+        qCInfo(logging_category_) << "[Send read request]register type:"
+                                  << registerType << " "
                                   << "start address:" << startAddress << " "
                                   << "register number:" << size << " "
                                   << "server address:" << serverAddress;
