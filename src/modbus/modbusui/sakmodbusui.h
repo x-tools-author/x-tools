@@ -80,35 +80,35 @@ signals:
 
 private:
     struct {
-        const QString deviceIndex = "SAKModbus/deviceIndex";
+        const QString device_index = "SAKModbus/deviceIndex";
 
-        const QString portName = "SAKModbus/portName";
+        const QString port_name = "SAKModbus/portName";
         const QString parity = "SAKModbus/parity";
-        const QString baudRate = "SAKModbus/baudRate";
-        const QString dataBits = "SAKModbus/dataBits";
-        const QString stopBits = "SAKModbus/stopBits";
-        const QString customBaudRate = "SAKModbus/customBaudRate";
+        const QString baud_rate = "SAKModbus/baudRate";
+        const QString data_bits = "SAKModbus/dataBits";
+        const QString stop_bits = "SAKModbus/stopBits";
+        const QString custom_baud_rate = "SAKModbus/customBaudRate";
 
         const QString address = "SAKModbus/address";
         const QString port = "SAKModbus/port";
-        const QString customAddress = "SAKModbus/customAddress";
+        const QString custom_address = "SAKModbus/customAddress";
 
-        const QString clientTimeout = "SAKModbus/clientTimeout";
-        const QString clientRepeatTime= "SAKModbus/clientRepeatTime";
+        const QString client_timeout = "SAKModbus/clientTimeout";
+        const QString client_repeat_time= "SAKModbus/clientRepeatTime";
 
-        const QString serverIsBusy = "SAKModbus/serverIsBusy";
-        const QString serverJustListen= "SAKModbus/serverJustListen";
-        const QString serverAddress= "SAKModbus/serverAddress";
+        const QString server_is_busy = "SAKModbus/serverIsBusy";
+        const QString server_just_listen= "SAKModbus/serverJustListen";
+        const QString server_address= "SAKModbus/serverAddress";
 
-        const QString functionCode = "SAKModbus/functionCode";
-        const QString targetAddress = "SAKModbus/targetAddress";
-        const QString startAddress = "SAKModbus/startAddress";
-        const QString addressNumber = "SAKModbus/addressNumber";
+        const QString function_code = "SAKModbus/functionCode";
+        const QString target_address = "SAKModbus/targetAddress";
+        const QString start_address = "SAKModbus/startAddress";
+        const QString address_number = "SAKModbus/addressNumber";
 
-        const QString sendHistory = "SAKModbus/sendHistory";
-        const QString sendHistoryIndex = "SAKModbus/sendHistoryIndex";
+        const QString send_history = "SAKModbus/sendHistory";
+        const QString send_history_index = "SAKModbus/sendHistoryIndex";
         const QString pdu = "pdu";
-    } mSettingsKeyCtx;
+    } key_ctx_;
 
 private:
     Ui::SAKModbusUi *ui_;

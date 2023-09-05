@@ -38,7 +38,7 @@ public:
     bool IsRtuSerialDevice(QVariant modbus_device);
 
 private:
-    const QLoggingCategory kLoggingCategory{"sak.modbus.factory"};
+    const QLoggingCategory kLoggingCategory{"SAK.Modbus.Factory"};
 };
 
 #endif // SAKMODBUSFACTORY_H
