@@ -321,11 +321,11 @@ void SAKModbusUi::InitSettingsClient() {
 
 void SAKModbusUi::InitSettingsServer() {
     bool isBusy = settings_->value(key_ctx_->server_is_busy).toBool();
-    ui_->is_busy_->setChecked(isBusy);
+    ui_->device_busy_->setChecked(isBusy);
 
     QString key = key_ctx_->server_just_listen;
     bool just_listen = settings_->value(key).toBool();
-    ui_->just_listen_->setChecked(just_listen);
+    ui_->listen_only_mode_->setChecked(just_listen);
 
     int address = settings_->value(key_ctx_->server_address).toInt();
     ui_->server_address->setValue(address);
@@ -415,9 +415,9 @@ void SAKModbusUi::InitSignalsClient() {
 }
 
 void SAKModbusUi::InitSignalsServer() {
-    connect(ui_->is_busy_, &QCheckBox::clicked,
+    connect(ui_->device_busy_, &QCheckBox::clicked,
             this, &SAKModbusUi::OnServerIsBusyChanged);
-    connect(ui_->just_listen_, &QCheckBox::clicked,
+    connect(ui_->listen_only_mode_, &QCheckBox::clicked,
             this, &SAKModbusUi::OnServerJustListenChanged);
     connect(ui_->server_address,
             QOverload<int>::of(&QSpinBox::valueChanged),
@@ -589,13 +589,13 @@ void SAKModbusUi::OnClientRepeatTimeChanged() {
 
 void SAKModbusUi::OnServerIsBusyChanged() {
     settings_->setValue(key_ctx_->server_is_busy,
-                        ui_->is_busy_->isChecked());
+                        ui_->device_busy_->isChecked());
     UpdateServerParameters();
 }
 
 void SAKModbusUi::OnServerJustListenChanged() {
     settings_->setValue(key_ctx_->server_just_listen,
-                        ui_->just_listen_->isChecked());
+                        ui_->listen_only_mode_->isChecked());
     UpdateServerParameters();
 }
 
@@ -975,13 +975,13 @@ void SAKModbusUi::UpdateClientTableViewAddress(QTableView *view,
 }
 
 void SAKModbusUi::UpdateServerParameters() {
-    bool is_busy = ui_->is_busy_->isChecked();
-    bool listen_only = ui_->just_listen_->isChecked();
+    bool device_busy = ui_->device_busy_->isChecked();
+    bool listen_only_mode = ui_->listen_only_mode_->isChecked();
     int address = ui_->server_address->value();
     SAKModbusFactory::Instance()->SetServerDeviceParameters(modbus_device_,
                                                             address,
-                                                            is_busy,
-                                                            listen_only);
+                                                            device_busy,
+                                                            listen_only_mode);
 }
 
 bool SAKModbusUi::UpdateServerMap(QModbusDevice *server) {
@@ -1160,9 +1160,8 @@ void SAKModbusUi::OutputMessage(const QString &msg, bool isError,
         }
     }
 
-    cookedMsg += flag.isEmpty()
-                     ? ""
-                     : QString("<font color=%1>[%2]</font> ").arg(cookedColor, flag);
+    cookedMsg += flag.isEmpty() ? "" : QString("<font color=%1>[%2]</font> ")
+                                           .arg(cookedColor, flag);
     cookedMsg += msg;
     ui_->text_browser_->append(cookedMsg);
 }

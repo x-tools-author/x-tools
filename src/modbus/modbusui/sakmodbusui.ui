@@ -291,16 +291,16 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0" colspan="2">
-       <widget class="QCheckBox" name="is_busy_">
+       <widget class="QCheckBox" name="device_busy_">
         <property name="text">
-         <string>Server is busy</string>
+         <string>Device busy</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0" colspan="2">
-       <widget class="QCheckBox" name="just_listen_">
+       <widget class="QCheckBox" name="listen_only_mode_">
         <property name="text">
-         <string>Just listen</string>
+         <string>Listen only mode</string>
         </property>
        </widget>
       </item>
