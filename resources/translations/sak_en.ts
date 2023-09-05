@@ -661,7 +661,7 @@
     <name>SAKCanBusUi</name>
     <message>
         <location filename="../../src/canbusui/SAKCanBusUi.ui" line="14"/>
-        <source>CAN Studio</source>
+        <source>CANBus Studio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1273,363 +1273,363 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="161"/>
+        <location filename="../../src/SAKMainWindow.cc" line="167"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="164"/>
+        <location filename="../../src/SAKMainWindow.cc" line="171"/>
         <source>New Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="181"/>
+        <location filename="../../src/SAKMainWindow.cc" line="212"/>
         <source>Import Palette</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="989"/>
-        <location filename="../../src/SAKMainWindow.cc" line="1028"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1033"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1072"/>
         <source>Save Palette</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="990"/>
-        <location filename="../../src/SAKMainWindow.cc" line="1029"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1034"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1073"/>
         <source>All (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="1004"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1048"/>
         <source>File Exists</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="1005"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1049"/>
         <source>The file is exists, import operaion failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="186"/>
+        <location filename="../../src/SAKMainWindow.cc" line="217"/>
         <source>Export Palette</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="192"/>
+        <location filename="../../src/SAKMainWindow.cc" line="223"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="199"/>
+        <location filename="../../src/SAKMainWindow.cc" line="230"/>
         <source>&amp;Tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="224"/>
+        <location filename="../../src/SAKMainWindow.cc" line="255"/>
         <source>&amp;Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="250"/>
+        <location filename="../../src/SAKMainWindow.cc" line="281"/>
         <source>Application Style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="289"/>
+        <location filename="../../src/SAKMainWindow.cc" line="320"/>
         <source>Main Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="290"/>
+        <location filename="../../src/SAKMainWindow.cc" line="321"/>
         <source>Exit to Sysytem Tray</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="309"/>
+        <location filename="../../src/SAKMainWindow.cc" line="340"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="312"/>
+        <location filename="../../src/SAKMainWindow.cc" line="343"/>
         <source>Clear Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="316"/>
+        <location filename="../../src/SAKMainWindow.cc" line="347"/>
         <source>Open configuration floder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="328"/>
+        <location filename="../../src/SAKMainWindow.cc" line="359"/>
         <source>UI Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="330"/>
+        <location filename="../../src/SAKMainWindow.cc" line="361"/>
         <source>Classical</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="360"/>
+        <location filename="../../src/SAKMainWindow.cc" line="391"/>
         <source>HDPI Policy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="431"/>
-        <location filename="../../src/SAKMainWindow.cc" line="458"/>
+        <location filename="../../src/SAKMainWindow.cc" line="462"/>
+        <location filename="../../src/SAKMainWindow.cc" line="489"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="459"/>
+        <location filename="../../src/SAKMainWindow.cc" line="490"/>
         <source>Light</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="460"/>
+        <location filename="../../src/SAKMainWindow.cc" line="491"/>
         <source>Dark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="461"/>
+        <location filename="../../src/SAKMainWindow.cc" line="492"/>
         <source>Palette</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="497"/>
+        <location filename="../../src/SAKMainWindow.cc" line="528"/>
         <source>Custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="532"/>
+        <location filename="../../src/SAKMainWindow.cc" line="563"/>
         <source>&amp;Languages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="561"/>
+        <location filename="../../src/SAKMainWindow.cc" line="592"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="564"/>
-        <location filename="../../src/SAKMainWindow.cc" line="569"/>
+        <location filename="../../src/SAKMainWindow.cc" line="595"/>
+        <location filename="../../src/SAKMainWindow.cc" line="600"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="571"/>
+        <location filename="../../src/SAKMainWindow.cc" line="603"/>
         <source>About QtSwissArmyKnife</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="617"/>
+        <location filename="../../src/SAKMainWindow.cc" line="650"/>
         <source>Donate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="852"/>
+        <location filename="../../src/SAKMainWindow.cc" line="896"/>
         <source>Copyright 2018-%1 Qsaker(qsaker@foxmail.com). All rights reserved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="585"/>
+        <location filename="../../src/SAKMainWindow.cc" line="618"/>
         <source>Get Source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="337"/>
+        <location filename="../../src/SAKMainWindow.cc" line="368"/>
         <source>Modern(Just for Preview)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="363"/>
+        <location filename="../../src/SAKMainWindow.cc" line="394"/>
         <source>Round up for .5 and above</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="364"/>
+        <location filename="../../src/SAKMainWindow.cc" line="395"/>
         <source>Always round up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="365"/>
+        <location filename="../../src/SAKMainWindow.cc" line="396"/>
         <source>Always round down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="366"/>
+        <location filename="../../src/SAKMainWindow.cc" line="397"/>
         <source>Round up for .75 and above</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="367"/>
+        <location filename="../../src/SAKMainWindow.cc" line="398"/>
         <source>Don&apos;t round</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="576"/>
+        <location filename="../../src/SAKMainWindow.cc" line="608"/>
         <source>Buy from Microsoft App Store</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="589"/>
+        <location filename="../../src/SAKMainWindow.cc" line="622"/>
         <source>GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="598"/>
+        <location filename="../../src/SAKMainWindow.cc" line="631"/>
         <source>Gitee</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="606"/>
-        <location filename="../../src/SAKMainWindow.cc" line="909"/>
+        <location filename="../../src/SAKMainWindow.cc" line="639"/>
+        <location filename="../../src/SAKMainWindow.cc" line="953"/>
         <source>Release History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="612"/>
-        <location filename="../../src/SAKMainWindow.cc" line="929"/>
+        <location filename="../../src/SAKMainWindow.cc" line="645"/>
+        <location filename="../../src/SAKMainWindow.cc" line="973"/>
         <source>QR Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="623"/>
+        <location filename="../../src/SAKMainWindow.cc" line="656"/>
         <source>&amp;Links</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="633"/>
+        <location filename="../../src/SAKMainWindow.cc" line="666"/>
         <source>Qt Official Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="637"/>
+        <location filename="../../src/SAKMainWindow.cc" line="670"/>
         <source>Qt Official Blog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="640"/>
+        <location filename="../../src/SAKMainWindow.cc" line="673"/>
         <source>Qt Official Release</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="643"/>
+        <location filename="../../src/SAKMainWindow.cc" line="676"/>
         <source>Download SAK from Github</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="646"/>
+        <location filename="../../src/SAKMainWindow.cc" line="679"/>
         <source>Download SAK from Gitee</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="649"/>
+        <location filename="../../src/SAKMainWindow.cc" line="682"/>
         <source>Office Web Site</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="666"/>
+        <location filename="../../src/SAKMainWindow.cc" line="699"/>
         <source>&amp;Demo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="676"/>
+        <location filename="../../src/SAKMainWindow.cc" line="709"/>
         <source>Qt SerialPort Demo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="748"/>
+        <location filename="../../src/SAKMainWindow.cc" line="791"/>
         <source>Hide Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="749"/>
+        <location filename="../../src/SAKMainWindow.cc" line="792"/>
         <source>Click to show(hide) nav text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="774"/>
+        <location filename="../../src/SAKMainWindow.cc" line="817"/>
         <source>Log Viewer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="778"/>
+        <location filename="../../src/SAKMainWindow.cc" line="822"/>
         <source>Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="837"/>
+        <location filename="../../src/SAKMainWindow.cc" line="881"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="839"/>
+        <location filename="../../src/SAKMainWindow.cc" line="883"/>
         <source>Edition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="840"/>
+        <location filename="../../src/SAKMainWindow.cc" line="884"/>
         <source>Author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="841"/>
+        <location filename="../../src/SAKMainWindow.cc" line="885"/>
         <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="842"/>
+        <location filename="../../src/SAKMainWindow.cc" line="886"/>
         <source>QQ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="843"/>
+        <location filename="../../src/SAKMainWindow.cc" line="887"/>
         <source>QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="844"/>
+        <location filename="../../src/SAKMainWindow.cc" line="888"/>
         <source>Build Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="846"/>
+        <location filename="../../src/SAKMainWindow.cc" line="890"/>
         <source>Gitee Url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="848"/>
+        <location filename="../../src/SAKMainWindow.cc" line="892"/>
         <source>Gitbub Url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="851"/>
+        <location filename="../../src/SAKMainWindow.cc" line="895"/>
         <source>Copyright</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="857"/>
+        <location filename="../../src/SAKMainWindow.cc" line="901"/>
         <source>About QSAK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="894"/>
+        <location filename="../../src/SAKMainWindow.cc" line="938"/>
         <source>Reboot application to effective</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="895"/>
+        <location filename="../../src/SAKMainWindow.cc" line="939"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="937"/>
+        <location filename="../../src/SAKMainWindow.cc" line="981"/>
         <source>User QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="939"/>
+        <location filename="../../src/SAKMainWindow.cc" line="983"/>
         <source>Qt QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1653,357 +1653,335 @@
     </message>
 </context>
 <context>
-    <name>SAKModbusUi</name>
+    <name>SAKModbusFactory</name>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="14"/>
-        <source>Form</source>
+        <location filename="../../src/modbus/modbus/sakmodbusfactory.cc" line="44"/>
+        <source>RTU Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="20"/>
+        <location filename="../../src/modbus/modbus/sakmodbusfactory.cc" line="46"/>
+        <source>RTU Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbus/sakmodbusfactory.cc" line="48"/>
+        <source>TCP Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbus/sakmodbusfactory.cc" line="50"/>
+        <source>TCP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusUi</name>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="327"/>
         <source>Network settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="32"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="339"/>
         <source>Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="59"/>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1189"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="366"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="860"/>
         <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="69"/>
-        <source>Client parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="81"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="205"/>
         <source>Timeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="110"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="51"/>
         <source>Repeat times</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="134"/>
-        <source>General</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="146"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="489"/>
         <source>Colsole</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="164"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="507"/>
         <source>Client registers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="176"/>
-        <source>Custom command)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="182"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="525"/>
         <source>Protocol data unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="202"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="541"/>
+        <source>pdu(no server address, no crc, such read 2 coils: 01 00 00 00 01)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="548"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="224"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="570"/>
         <source>Server registers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="257"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="290"/>
         <source>Server parameters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="263"/>
-        <source>Server is busy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="270"/>
-        <source>Just listen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="277"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="310"/>
         <source>Server address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="294"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="376"/>
         <source>Serial port settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="306"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="424"/>
         <source>Data bits</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="319"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="388"/>
         <source>Port name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="338"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="296"/>
+        <source>Device busy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="303"/>
+        <source>Listen only mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="440"/>
         <source>Stop bits</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="351"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="456"/>
         <source>Parity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="364"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="519"/>
+        <source>Custom command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="404"/>
         <source>Baud rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="377"/>
-        <source>Custom address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="387"/>
-        <source>Refresh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="397"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="235"/>
         <source>Device operations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="409"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="247"/>
         <source>Device list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="433"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="271"/>
         <source>CloseDevice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="440"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="278"/>
         <source>OpenDevice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="458"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="39"/>
         <source>Client operaions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="486"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="119"/>
         <source>Target address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="512"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="158"/>
         <source>Start address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="538"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="145"/>
         <source>Address number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="563"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="167"/>
         <source>Read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="570"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="174"/>
         <source>Write</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="470"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="132"/>
         <source>Function code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="109"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="143"/>
         <source>RtuClient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="110"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="145"/>
         <source>RtuServer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="111"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="147"/>
         <source>TcpClient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="112"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="149"/>
         <source>TcpServer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="166"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="198"/>
         <source>NoParity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="167"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="199"/>
         <source>EvenParity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="168"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="200"/>
         <source>OddParity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="169"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="201"/>
         <source>SpaceParity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="170"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="202"/>
         <source>MarkParity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="175"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="206"/>
         <source>0x01-ReadCoils</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="176"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="207"/>
         <source>0x02-ReadDiscreteInputs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="177"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="208"/>
         <source>0x03-ReadHoldingRegisters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="178"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="209"/>
         <source>0x04-ReadInputRegisters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="179"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="210"/>
         <source>0x05-WriteSingleCoil</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="180"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="211"/>
         <source>0x06-WriteSingleRegister</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="181"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="212"/>
         <source>0x0f-WriteMultipleCoils</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="182"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="213"/>
         <source>0x10-WriteMultipleRegisters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="222"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="250"/>
         <source>DiscreteInputs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="222"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="861"/>
+        <source>Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="862"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="1175"/>
+        <source>Device is not Ready</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="1176"/>
+        <source>The modbus device is not ready, please check settings and try again later!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="249"/>
         <source>Coils</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="223"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="251"/>
         <source>InputRegisters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="223"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="252"/>
         <source>HoldingRegisters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="452"/>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1069"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="452"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="1129"/>
         <source>Error occured</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="577"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="530"/>
+        <source>Can not open device: %1.Please check the parameters and try again!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="533"/>
         <source>Can not open device</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="578"/>
-        <source>Can not open device: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="580"/>
-        <source>. Please check the parameters and try again!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1060"/>
-        <source>Device is not ready</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1061"/>
-        <source>The device is not ready, please open the device then try again.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1189"/>
-        <source>Bin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1189"/>
-        <source>Dec</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1189"/>
-        <source>Hex</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1190"/>
-        <source>Bin(BE)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1190"/>
-        <source>Dec(BE)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1190"/>
-        <source>Hex(BE)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2032,19 +2010,6 @@
     <message>
         <location filename="../../src/commonui/SAKParityComboBox.cc" line="20"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKPreferencesUi</name>
-    <message>
-        <location filename="../../src/preferencesui/SAKPreferencesUi.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/preferencesui/SAKPreferencesUi.ui" line="35"/>
-        <source>Palette</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3077,7 +3042,7 @@
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="97"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="330"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="329"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3174,57 +3139,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="84"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="83"/>
         <source>SerialPort</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="86"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="85"/>
         <source>UDP Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="88"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="87"/>
         <source>UDP Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="90"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="89"/>
         <source>TCP Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="92"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="91"/>
         <source>TCP Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="94"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="93"/>
         <source>WebSocket Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="96"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="95"/>
         <source>WebSocket Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="98"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="97"/>
         <source>BLE Central</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="328"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="327"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="423"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="422"/>
         <source>Disable</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="603"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="602"/>
         <source>SerialPort</source>
         <comment>Transmitter</comment>
         <translation type="unfinished">
@@ -3233,22 +3198,22 @@
         </translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="605"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="604"/>
         <source>UDP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="607"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="606"/>
         <source>TCP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="609"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="608"/>
         <source>WebSocket</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="626"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="625"/>
         <source>Error Occured</source>
         <translation type="unfinished"></translation>
     </message>

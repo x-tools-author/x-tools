@@ -667,9 +667,13 @@
 <context>
     <name>SAKCanBusUi</name>
     <message>
-        <location filename="../../src/canbusui/SAKCanBusUi.ui" line="14"/>
         <source>CAN Studio</source>
-        <translation>CAN Studio</translation>
+        <translation type="vanished">CAN Studio</translation>
+    </message>
+    <message>
+        <location filename="../../src/canbusui/SAKCanBusUi.ui" line="14"/>
+        <source>CANBus Studio</source>
+        <translation>CANBus Studio</translation>
     </message>
     <message>
         <location filename="../../src/canbusui/SAKCanBusUi.ui" line="20"/>
@@ -1296,99 +1300,99 @@
         <translation type="vanished">瑞士军刀</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="161"/>
+        <location filename="../../src/SAKMainWindow.cc" line="167"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="164"/>
+        <location filename="../../src/SAKMainWindow.cc" line="171"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="181"/>
+        <location filename="../../src/SAKMainWindow.cc" line="212"/>
         <source>Import Palette</source>
         <translation>导入配色方案</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="989"/>
-        <location filename="../../src/SAKMainWindow.cc" line="1028"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1033"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1072"/>
         <source>Save Palette</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="990"/>
-        <location filename="../../src/SAKMainWindow.cc" line="1029"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1034"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1073"/>
         <source>All (*)</source>
         <translation>所有文件 (*)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="1004"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1048"/>
         <source>File Exists</source>
         <translation>文件已存在</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="1005"/>
+        <location filename="../../src/SAKMainWindow.cc" line="1049"/>
         <source>The file is exists, import operaion failed</source>
         <translation>文件已存在，导入操作失败</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="186"/>
+        <location filename="../../src/SAKMainWindow.cc" line="217"/>
         <source>Export Palette</source>
         <translation>导出配色方案</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="192"/>
+        <location filename="../../src/SAKMainWindow.cc" line="223"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="199"/>
+        <location filename="../../src/SAKMainWindow.cc" line="230"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="224"/>
+        <location filename="../../src/SAKMainWindow.cc" line="255"/>
         <source>&amp;Options</source>
         <translation>选项(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="250"/>
+        <location filename="../../src/SAKMainWindow.cc" line="281"/>
         <source>Application Style</source>
         <translation>软件风格</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="289"/>
+        <location filename="../../src/SAKMainWindow.cc" line="320"/>
         <source>Main Window</source>
         <translation>退出操作</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="290"/>
+        <location filename="../../src/SAKMainWindow.cc" line="321"/>
         <source>Exit to Sysytem Tray</source>
         <translation>退出至系统托盘</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="309"/>
+        <location filename="../../src/SAKMainWindow.cc" line="340"/>
         <source>Settings</source>
         <translation>配置内容</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="312"/>
+        <location filename="../../src/SAKMainWindow.cc" line="343"/>
         <source>Clear Configuration</source>
         <translation>清空配置</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="316"/>
+        <location filename="../../src/SAKMainWindow.cc" line="347"/>
         <source>Open configuration floder</source>
         <translation>打开配置目录</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="328"/>
+        <location filename="../../src/SAKMainWindow.cc" line="359"/>
         <source>UI Type</source>
         <translation>界面类型</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="330"/>
+        <location filename="../../src/SAKMainWindow.cc" line="361"/>
         <source>Classical</source>
         <translation>经典</translation>
     </message>
@@ -1397,7 +1401,7 @@
         <translation type="vanished">现代</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="360"/>
+        <location filename="../../src/SAKMainWindow.cc" line="391"/>
         <source>HDPI Policy</source>
         <translation>适配策略</translation>
     </message>
@@ -1422,261 +1426,261 @@
         <translation type="vanished">不缩放。</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="431"/>
-        <location filename="../../src/SAKMainWindow.cc" line="458"/>
+        <location filename="../../src/SAKMainWindow.cc" line="462"/>
+        <location filename="../../src/SAKMainWindow.cc" line="489"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="459"/>
+        <location filename="../../src/SAKMainWindow.cc" line="490"/>
         <source>Light</source>
         <translation>亮色主题</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="460"/>
+        <location filename="../../src/SAKMainWindow.cc" line="491"/>
         <source>Dark</source>
         <translation>暗色主题</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="461"/>
+        <location filename="../../src/SAKMainWindow.cc" line="492"/>
         <source>Palette</source>
         <translation>配色方案</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="497"/>
+        <location filename="../../src/SAKMainWindow.cc" line="528"/>
         <source>Custom</source>
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="532"/>
+        <location filename="../../src/SAKMainWindow.cc" line="563"/>
         <source>&amp;Languages</source>
         <translation>语言(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="561"/>
+        <location filename="../../src/SAKMainWindow.cc" line="592"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="564"/>
-        <location filename="../../src/SAKMainWindow.cc" line="569"/>
+        <location filename="../../src/SAKMainWindow.cc" line="595"/>
+        <location filename="../../src/SAKMainWindow.cc" line="600"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="571"/>
+        <location filename="../../src/SAKMainWindow.cc" line="603"/>
         <source>About QtSwissArmyKnife</source>
         <translation>关于软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="617"/>
+        <location filename="../../src/SAKMainWindow.cc" line="650"/>
         <source>Donate</source>
         <translation>支持点赞</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="852"/>
+        <location filename="../../src/SAKMainWindow.cc" line="896"/>
         <source>Copyright 2018-%1 Qsaker(qsaker@foxmail.com). All rights reserved.</source>
         <translation>版权声明 2018-%1 Qsaker(qsaker@foxmail.com)。保留所有版权。</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="585"/>
+        <location filename="../../src/SAKMainWindow.cc" line="618"/>
         <source>Get Source</source>
         <translation>获取源码</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="337"/>
+        <location filename="../../src/SAKMainWindow.cc" line="368"/>
         <source>Modern(Just for Preview)</source>
         <translation>现代（仅供预览体验）</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="363"/>
+        <location filename="../../src/SAKMainWindow.cc" line="394"/>
         <source>Round up for .5 and above</source>
         <translation>缩放至x.5倍</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="364"/>
+        <location filename="../../src/SAKMainWindow.cc" line="395"/>
         <source>Always round up</source>
         <translation>总是放大</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="365"/>
+        <location filename="../../src/SAKMainWindow.cc" line="396"/>
         <source>Always round down</source>
         <translation>总是缩小</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="366"/>
+        <location filename="../../src/SAKMainWindow.cc" line="397"/>
         <source>Round up for .75 and above</source>
         <translation>缩放至x.75倍</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="367"/>
+        <location filename="../../src/SAKMainWindow.cc" line="398"/>
         <source>Don&apos;t round</source>
         <translation>不缩放</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="576"/>
+        <location filename="../../src/SAKMainWindow.cc" line="608"/>
         <source>Buy from Microsoft App Store</source>
         <translation>从微软商店购买</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="589"/>
+        <location filename="../../src/SAKMainWindow.cc" line="622"/>
         <source>GitHub</source>
         <translation>GitHub</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="598"/>
+        <location filename="../../src/SAKMainWindow.cc" line="631"/>
         <source>Gitee</source>
         <translation>Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="606"/>
-        <location filename="../../src/SAKMainWindow.cc" line="909"/>
+        <location filename="../../src/SAKMainWindow.cc" line="639"/>
+        <location filename="../../src/SAKMainWindow.cc" line="953"/>
         <source>Release History</source>
         <translation>发布历史</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="612"/>
-        <location filename="../../src/SAKMainWindow.cc" line="929"/>
+        <location filename="../../src/SAKMainWindow.cc" line="645"/>
+        <location filename="../../src/SAKMainWindow.cc" line="973"/>
         <source>QR Code</source>
         <translation>扫码入群</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="623"/>
+        <location filename="../../src/SAKMainWindow.cc" line="656"/>
         <source>&amp;Links</source>
         <translation>链接(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="633"/>
+        <location filename="../../src/SAKMainWindow.cc" line="666"/>
         <source>Qt Official Download</source>
         <translation>Qt官方下载</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="637"/>
+        <location filename="../../src/SAKMainWindow.cc" line="670"/>
         <source>Qt Official Blog</source>
         <translation>Qt官方博客</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="640"/>
+        <location filename="../../src/SAKMainWindow.cc" line="673"/>
         <source>Qt Official Release</source>
         <translation>Qt官方发布</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="643"/>
+        <location filename="../../src/SAKMainWindow.cc" line="676"/>
         <source>Download SAK from Github</source>
         <translation>从github下载</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="646"/>
+        <location filename="../../src/SAKMainWindow.cc" line="679"/>
         <source>Download SAK from Gitee</source>
         <translation>从Gitee下载</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="649"/>
+        <location filename="../../src/SAKMainWindow.cc" line="682"/>
         <source>Office Web Site</source>
         <translation>“官方网站”</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="666"/>
+        <location filename="../../src/SAKMainWindow.cc" line="699"/>
         <source>&amp;Demo</source>
         <translation>示例(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="676"/>
+        <location filename="../../src/SAKMainWindow.cc" line="709"/>
         <source>Qt SerialPort Demo</source>
         <translation>Qt串口编程示例</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="748"/>
+        <location filename="../../src/SAKMainWindow.cc" line="791"/>
         <source>Hide Text</source>
         <translation>隐藏文本</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="749"/>
+        <location filename="../../src/SAKMainWindow.cc" line="792"/>
         <source>Click to show(hide) nav text</source>
         <translation>点击显示/隐藏导航按钮文本</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="774"/>
+        <location filename="../../src/SAKMainWindow.cc" line="817"/>
         <source>Log Viewer</source>
         <translation>日志预览</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="778"/>
+        <location filename="../../src/SAKMainWindow.cc" line="822"/>
         <source>Preferences</source>
         <translation>偏好设置</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="837"/>
+        <location filename="../../src/SAKMainWindow.cc" line="881"/>
         <source>Version</source>
         <translation>软件版本</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="839"/>
+        <location filename="../../src/SAKMainWindow.cc" line="883"/>
         <source>Edition</source>
         <translation>软件类型</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="840"/>
+        <location filename="../../src/SAKMainWindow.cc" line="884"/>
         <source>Author</source>
         <translation>作者名称</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="841"/>
+        <location filename="../../src/SAKMainWindow.cc" line="885"/>
         <source>Email</source>
         <translation>作者邮箱</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="842"/>
+        <location filename="../../src/SAKMainWindow.cc" line="886"/>
         <source>QQ</source>
         <translation>联系作者</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="843"/>
+        <location filename="../../src/SAKMainWindow.cc" line="887"/>
         <source>QQ Group</source>
         <translation>用户交流</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="844"/>
+        <location filename="../../src/SAKMainWindow.cc" line="888"/>
         <source>Build Time</source>
         <translation>构建时间</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="846"/>
+        <location filename="../../src/SAKMainWindow.cc" line="890"/>
         <source>Gitee Url</source>
         <translation>Gitee地址</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="848"/>
+        <location filename="../../src/SAKMainWindow.cc" line="892"/>
         <source>Gitbub Url</source>
         <translation>Github地址</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="851"/>
+        <location filename="../../src/SAKMainWindow.cc" line="895"/>
         <source>Copyright</source>
         <translation>版本声明</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="857"/>
+        <location filename="../../src/SAKMainWindow.cc" line="901"/>
         <source>About QSAK</source>
         <translation>关于软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="894"/>
+        <location filename="../../src/SAKMainWindow.cc" line="938"/>
         <source>Reboot application to effective</source>
         <translation>重启软件生效配置</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="895"/>
+        <location filename="../../src/SAKMainWindow.cc" line="939"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation>需要重启软件，确定现在重启软件来生效配置吗？</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="937"/>
+        <location filename="../../src/SAKMainWindow.cc" line="981"/>
         <source>User QQ Group</source>
         <translation>用户QQ交流群</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="939"/>
+        <location filename="../../src/SAKMainWindow.cc" line="983"/>
         <source>Qt QQ Group</source>
         <translation>Qt技术交流群</translation>
     </message>
@@ -1700,358 +1704,404 @@
     </message>
 </context>
 <context>
-    <name>SAKModbusUi</name>
+    <name>SAKModbusFactory</name>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="14"/>
-        <source>Form</source>
-        <translation></translation>
+        <location filename="../../src/modbus/modbus/sakmodbusfactory.cc" line="44"/>
+        <source>RTU Client</source>
+        <translation>RTU客户端</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="20"/>
+        <location filename="../../src/modbus/modbus/sakmodbusfactory.cc" line="46"/>
+        <source>RTU Server</source>
+        <translation>RTU服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbus/sakmodbusfactory.cc" line="48"/>
+        <source>TCP Client</source>
+        <translation>TCP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbus/sakmodbusfactory.cc" line="50"/>
+        <source>TCP Server</source>
+        <translation>TCP服务器</translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusUi</name>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="327"/>
         <source>Network settings</source>
         <translation>网络配置</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="32"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="339"/>
         <source>Port</source>
         <translation>端口</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="59"/>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1189"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="366"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="860"/>
         <source>Address</source>
         <translation>地址</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="69"/>
         <source>Client parameters</source>
-        <translation>客户端参数</translation>
+        <translation type="vanished">客户端参数</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="81"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="205"/>
         <source>Timeout</source>
         <translation>超时时间</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="110"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="51"/>
         <source>Repeat times</source>
         <translation>重试次数</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="134"/>
         <source>General</source>
-        <translation>通用</translation>
+        <translation type="vanished">通用</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="146"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="489"/>
         <source>Colsole</source>
         <translation>终端</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="164"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="507"/>
         <source>Client registers</source>
         <translation>客户端寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="176"/>
         <source>Custom command)</source>
-        <translation>自定义帧</translation>
+        <translation type="vanished">自定义帧</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="182"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="525"/>
         <source>Protocol data unit</source>
         <translation>PDU</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="202"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="541"/>
+        <source>pdu(no server address, no crc, such read 2 coils: 01 00 00 00 01)</source>
+        <translation>PDU</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="548"/>
         <source>Send</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="224"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="570"/>
         <source>Server registers</source>
         <translation>服务器寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="257"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="290"/>
         <source>Server parameters</source>
         <translation>服务器参数</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="263"/>
         <source>Server is busy</source>
-        <translation>服务器繁忙</translation>
+        <translation type="vanished">服务器繁忙</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="270"/>
         <source>Just listen</source>
-        <translation>仅监听</translation>
+        <translation type="vanished">仅监听</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="277"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="310"/>
         <source>Server address</source>
         <translation>服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="294"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="376"/>
         <source>Serial port settings</source>
         <translation>串口配置</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="306"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="424"/>
         <source>Data bits</source>
         <translation>数据位</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="319"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="388"/>
         <source>Port name</source>
         <translation>设备名</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="338"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="296"/>
+        <source>Device busy</source>
+        <translation>设备繁忙</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="303"/>
+        <source>Listen only mode</source>
+        <translation>监听模式</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="440"/>
         <source>Stop bits</source>
         <translation>停止位</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="351"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="456"/>
         <source>Parity</source>
         <translation>校验位</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="364"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="519"/>
+        <source>Custom command</source>
+        <translation>自定义数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="404"/>
         <source>Baud rate</source>
         <translation>波特率</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="377"/>
         <source>Custom address</source>
-        <translation>自定义波特率</translation>
+        <translation type="vanished">自定义波特率</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="387"/>
         <source>Refresh</source>
-        <translation>刷新</translation>
+        <translation type="vanished">刷新</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="397"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="235"/>
         <source>Device operations</source>
         <translation>设备选项</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="409"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="247"/>
         <source>Device list</source>
         <translation>设备列表</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="433"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="271"/>
         <source>CloseDevice</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="440"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="278"/>
         <source>OpenDevice</source>
         <translation>打开设备</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="458"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="39"/>
         <source>Client operaions</source>
         <translation>客户端选项</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="486"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="119"/>
         <source>Target address</source>
         <translation>目标地址</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="512"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="158"/>
         <source>Start address</source>
         <translation>开始地址</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="538"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="145"/>
         <source>Address number</source>
         <translation>地址数据</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="563"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="167"/>
         <source>Read</source>
         <translation>读取</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="570"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="174"/>
         <source>Write</source>
         <translation>写入</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.ui" line="470"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.ui" line="132"/>
         <source>Function code</source>
         <translation>功能码</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="109"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="143"/>
         <source>RtuClient</source>
         <translation>RTU主机</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="110"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="145"/>
         <source>RtuServer</source>
         <translation>RTU从机</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="111"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="147"/>
         <source>TcpClient</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="112"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="149"/>
         <source>TcpServer</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="166"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="198"/>
         <source>NoParity</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="167"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="199"/>
         <source>EvenParity</source>
         <translation>偶校验</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="168"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="200"/>
         <source>OddParity</source>
         <translation>奇校验</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="169"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="201"/>
         <source>SpaceParity</source>
         <translation>空格校验</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="170"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="202"/>
         <source>MarkParity</source>
         <translation>标志校验</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="175"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="206"/>
         <source>0x01-ReadCoils</source>
         <translation>0x01-读线圈</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="176"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="207"/>
         <source>0x02-ReadDiscreteInputs</source>
         <translation>0x02-读离散输入</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="177"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="208"/>
         <source>0x03-ReadHoldingRegisters</source>
         <translation>0x03-读保持寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="178"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="209"/>
         <source>0x04-ReadInputRegisters</source>
         <translation>0x04-读输入寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="179"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="210"/>
         <source>0x05-WriteSingleCoil</source>
         <translation>0x05-写单个线圈</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="180"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="211"/>
         <source>0x06-WriteSingleRegister</source>
-        <translation>写单个寄存器</translation>
+        <translation>0x06-写单个寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="181"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="212"/>
         <source>0x0f-WriteMultipleCoils</source>
         <translation>0x0f-写过个线圈</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="182"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="213"/>
         <source>0x10-WriteMultipleRegisters</source>
         <translation>0x10-写多个寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="222"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="250"/>
         <source>DiscreteInputs</source>
         <translation>离散输入</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="222"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="861"/>
+        <source>Value</source>
+        <translation>取值</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="862"/>
+        <source>Description</source>
+        <translation>描述</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="1175"/>
+        <source>Device is not Ready</source>
+        <translation>设备未就绪</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="1176"/>
+        <source>The modbus device is not ready, please check settings and try again later!</source>
+        <translation>设备未就绪，请检查设置后重试！</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="249"/>
         <source>Coils</source>
         <translation>线圈</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="223"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="251"/>
         <source>InputRegisters</source>
         <translation>输入寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="223"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="252"/>
         <source>HoldingRegisters</source>
         <translation>保持寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="452"/>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1069"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="452"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="1129"/>
         <source>Error occured</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="577"/>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="530"/>
+        <source>Can not open device: %1.Please check the parameters and try again!</source>
+        <translation>无法连接设备：%1。请检查参数后重试！</translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/modbusui/sakmodbusui.cc" line="533"/>
         <source>Can not open device</source>
         <translation>无法打开设备</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="578"/>
         <source>Can not open device: </source>
-        <translation>无法打开设备: </translation>
+        <translation type="vanished">无法打开设备: </translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="580"/>
         <source>. Please check the parameters and try again!</source>
-        <translation>. 请检查参数后重新尝试!</translation>
+        <translation type="vanished">. 请检查参数后重新尝试!</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1060"/>
         <source>Device is not ready</source>
-        <translation>设备未就绪</translation>
+        <translation type="vanished">设备未就绪</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1061"/>
         <source>The device is not ready, please open the device then try again.</source>
-        <translation>设备未就绪，请打开设备后重新尝试。</translation>
+        <translation type="vanished">设备未就绪，请打开设备后重新尝试。</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1189"/>
         <source>Bin</source>
-        <translation>二进制</translation>
+        <translation type="vanished">二进制</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1189"/>
         <source>Dec</source>
-        <translation>十进制</translation>
+        <translation type="vanished">十进制</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1189"/>
         <source>Hex</source>
-        <translation>16进制</translation>
+        <translation type="vanished">16进制</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1190"/>
         <source>Bin(BE)</source>
-        <translation>二进制（大端）</translation>
+        <translation type="vanished">二进制（大端）</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1190"/>
         <source>Dec(BE)</source>
-        <translation>10进制（大端）</translation>
+        <translation type="vanished">10进制（大端）</translation>
     </message>
     <message>
-        <location filename="../../src/modbusui/SAKModbusUi.cc" line="1190"/>
         <source>Hex(BE)</source>
-        <translation>16进制（大端）</translation>
+        <translation type="vanished">16进制（大端）</translation>
     </message>
 </context>
 <context>
@@ -2085,14 +2135,12 @@
 <context>
     <name>SAKPreferencesUi</name>
     <message>
-        <location filename="../../src/preferencesui/SAKPreferencesUi.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../../src/preferencesui/SAKPreferencesUi.ui" line="35"/>
         <source>Palette</source>
-        <translation>配色</translation>
+        <translation type="vanished">配色</translation>
     </message>
 </context>
 <context>
@@ -3151,7 +3199,7 @@
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="97"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="330"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="329"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -3248,57 +3296,57 @@
         <translation>预设数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="84"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="83"/>
         <source>SerialPort</source>
         <translation>串口设备</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="86"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="85"/>
         <source>UDP Client</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="88"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="87"/>
         <source>UDP Server</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="90"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="89"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="92"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="91"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="94"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="93"/>
         <source>WebSocket Client</source>
         <translation>WS客户端</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="96"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="95"/>
         <source>WebSocket Server</source>
         <translation>WS服务器</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="98"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="97"/>
         <source>BLE Central</source>
         <translation>BLE中心设备</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="328"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="327"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="423"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="422"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
     <message numerus="yes">
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="603"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="602"/>
         <source>SerialPort</source>
         <comment>Transmitter</comment>
         <translatorcomment>转发</translatorcomment>
@@ -3307,22 +3355,22 @@
         </translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="605"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="604"/>
         <source>UDP</source>
         <translation>UDP转发</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="607"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="606"/>
         <source>TCP</source>
         <translation>TCP转发</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="609"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="608"/>
         <source>WebSocket</source>
         <translation>WebSocket转发</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="626"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="625"/>
         <source>Error Occured</source>
         <translation>出现错误</translation>
     </message>
