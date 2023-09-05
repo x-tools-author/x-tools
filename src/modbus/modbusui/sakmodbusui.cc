@@ -52,6 +52,37 @@
 #define TXFLAG "tx:"
 #define MAX_HISTORY_INDEX 9
 
+struct SAKModbusUiSettingKeys {
+    const QString device_index = "SAKModbus/deviceIndex";
+
+    const QString port_name = "SAKModbus/portName";
+    const QString parity = "SAKModbus/parity";
+    const QString baud_rate = "SAKModbus/baudRate";
+    const QString data_bits = "SAKModbus/dataBits";
+    const QString stop_bits = "SAKModbus/stopBits";
+    const QString custom_baud_rate = "SAKModbus/customBaudRate";
+
+    const QString address = "SAKModbus/address";
+    const QString port = "SAKModbus/port";
+    const QString custom_address = "SAKModbus/customAddress";
+
+    const QString client_timeout = "SAKModbus/clientTimeout";
+    const QString client_repeat_time= "SAKModbus/clientRepeatTime";
+
+    const QString server_is_busy = "SAKModbus/serverIsBusy";
+    const QString server_just_listen= "SAKModbus/serverJustListen";
+    const QString server_address= "SAKModbus/serverAddress";
+
+    const QString function_code = "SAKModbus/functionCode";
+    const QString target_address = "SAKModbus/targetAddress";
+    const QString start_address = "SAKModbus/startAddress";
+    const QString address_number = "SAKModbus/addressNumber";
+
+    const QString send_history = "SAKModbus/sendHistory";
+    const QString send_history_index = "SAKModbus/sendHistoryIndex";
+    const QString pdu = "pdu";
+};
+
 class ReadOnlyDelegate: public QItemDelegate {
   public:
     ReadOnlyDelegate(QWidget *parent = Q_NULLPTR) : QItemDelegate(parent) {
@@ -72,7 +103,7 @@ SAKModbusUi::SAKModbusUi(QWidget *parent)
     , ui_(new Ui::SAKModbusUi)
     , modbus_device_(Q_NULLPTR)
     , register_model_(Q_NULLPTR)
-    , kLoggingCategory ("SAK.Modbus"){
+    , key_ctx_(new SAKModbusUiSettingKeys){
     if (!settings_) {
         settings_ = SAKSettings::instance();
     }
@@ -236,17 +267,17 @@ void SAKModbusUi::InitSettings() {
 }
 
 void SAKModbusUi::InitSettingsDevice() {
-    int deviceIndex = settings_->value(key_ctx_.device_index).toInt();
+    int deviceIndex = settings_->value(key_ctx_->device_index).toInt();
     if (deviceIndex >= 0 && deviceIndex < ui_->device_list_->count()) {
         ui_->device_list_->setCurrentIndex(deviceIndex);
     }
 }
 
 void SAKModbusUi::InitSettingsNetwork() {
-    QString address = settings_->value(key_ctx_.address).toString();
+    QString address = settings_->value(key_ctx_->address).toString();
     ui_->address_combo_box->setCurrentText(address);
 
-    QVariant portValiant = settings_->value(key_ctx_.port);
+    QVariant portValiant = settings_->value(key_ctx_->port);
     int port = portValiant.toInt();
     if (portValiant.isNull()) {
         port = 502;
@@ -261,73 +292,73 @@ void SAKModbusUi::InitSettingsSerialPort() {
         }
     };
 
-    QString portName = settings_->value(key_ctx_.port_name).toString();
+    QString portName = settings_->value(key_ctx_->port_name).toString();
     int index = ui_->port_name_->findText(portName);
     SetComboBoxIndex(index, ui_->port_name_);
 
-    index = settings_->value(key_ctx_.parity).toInt();
+    index = settings_->value(key_ctx_->parity).toInt();
     SetComboBoxIndex(index, ui_->parity_);
 
-    QString bd = settings_->value(key_ctx_.baud_rate).toString();
+    QString bd = settings_->value(key_ctx_->baud_rate).toString();
     ui_->baud_rate_->setCurrentText(bd);
 
-    index = settings_->value(key_ctx_.data_bits).toInt();
+    index = settings_->value(key_ctx_->data_bits).toInt();
     SetComboBoxIndex(index, ui_->data_bits_);
 
-    index = settings_->value(key_ctx_.stop_bits).toInt();
+    index = settings_->value(key_ctx_->stop_bits).toInt();
     SetComboBoxIndex(index, ui_->stop_bits_);
 }
 
 void SAKModbusUi::InitSettingsClient() {
-    int timeout = settings_->value(key_ctx_.client_timeout).toInt();
+    int timeout = settings_->value(key_ctx_->client_timeout).toInt();
     ui_->timeout_->setValue(timeout < 100 ? 100 : timeout);
 
-    const QString key = key_ctx_.client_repeat_time;
+    const QString key = key_ctx_->client_repeat_time;
     int repeatTimes =settings_->value(key).toInt();
     ui_->repeat_time_->setValue(repeatTimes);
 }
 
 void SAKModbusUi::InitSettingsServer() {
-    bool isBusy = settings_->value(key_ctx_.server_is_busy).toBool();
+    bool isBusy = settings_->value(key_ctx_->server_is_busy).toBool();
     ui_->is_busy_->setChecked(isBusy);
 
-    QString key = key_ctx_.server_just_listen;
+    QString key = key_ctx_->server_just_listen;
     bool just_listen = settings_->value(key).toBool();
     ui_->just_listen_->setChecked(just_listen);
 
-    int address = settings_->value(key_ctx_.server_address).toInt();
+    int address = settings_->value(key_ctx_->server_address).toInt();
     ui_->server_address->setValue(address);
 }
 
 void SAKModbusUi::InitSettingsClientOperations() {
-    int index = settings_->value(key_ctx_.function_code).toInt();
+    int index = settings_->value(key_ctx_->function_code).toInt();
     if (index >= 0 && index < ui_->function_code_->count()) {
         ui_->function_code_->setCurrentIndex(index);
     }
 
-    int address = settings_->value(key_ctx_.target_address).toInt();
+    int address = settings_->value(key_ctx_->target_address).toInt();
     ui_->device_address_->setValue(address);
 
-    int start = settings_->value(key_ctx_.start_address).toInt();
+    int start = settings_->value(key_ctx_->start_address).toInt();
     ui_->start_address_->setValue(start);
 
-    int number = settings_->value(key_ctx_.address_number).toInt();
+    int number = settings_->value(key_ctx_->address_number).toInt();
     ui_->quantity_->setValue(number);
 }
 
 void SAKModbusUi::InitSettingsInput() {
     ui_->pdu_->clear();
-    settings_->beginReadArray(key_ctx_.send_history);
+    settings_->beginReadArray(key_ctx_->send_history);
     for (int i = 0; i < 10; i++) {
         settings_->setArrayIndex(i);
-        QString text = settings_->value(key_ctx_.pdu).toString();
+        QString text = settings_->value(key_ctx_->pdu).toString();
         if (!text.isEmpty()) {
             ui_->pdu_->addItem(text);
         }
     }
     settings_->endArray();
 
-    int index = settings_->value(key_ctx_.send_history_index).toInt();
+    int index = settings_->value(key_ctx_->send_history_index).toInt();
     ui_->pdu_->setCurrentIndex(index - 1);
 }
 
@@ -454,7 +485,7 @@ void SAKModbusUi::OnDeviceTypeChanged() {
         ui_->registersGroupBox->setHidden(false);
     }
 
-    settings_->setValue(key_ctx_.device_index, type);
+    settings_->setValue(key_ctx_->device_index, type);
 }
 
 void SAKModbusUi::OnCloseClicked() {
@@ -505,37 +536,37 @@ void SAKModbusUi::OnOpenClicked() {
 }
 
 void SAKModbusUi::OnAddressChanged() {
-    settings_->setValue(key_ctx_.address,
+    settings_->setValue(key_ctx_->address,
                         ui_->address_combo_box->currentText());
 }
 
 void SAKModbusUi::OnPortChanged() {
-    settings_->setValue(key_ctx_.port,
+    settings_->setValue(key_ctx_->port,
                         ui_->port_spin_box->value());
 }
 
 void SAKModbusUi::OnPortNameChanged() {
-    settings_->setValue(key_ctx_.port_name,
+    settings_->setValue(key_ctx_->port_name,
                         ui_->port_name_->currentText());
 }
 
 void SAKModbusUi::OnParityChanged() {
-    settings_->setValue(key_ctx_.parity,
+    settings_->setValue(key_ctx_->parity,
                         ui_->parity_->currentIndex());
 }
 
 void SAKModbusUi::OnBaudRateChanged() {
-    settings_->setValue(key_ctx_.baud_rate,
+    settings_->setValue(key_ctx_->baud_rate,
                         ui_->baud_rate_->currentText());
 }
 
 void SAKModbusUi::OnDataBitsChanged() {
-    settings_->setValue(key_ctx_.data_bits,
+    settings_->setValue(key_ctx_->data_bits,
                         ui_->data_bits_->currentIndex());
 }
 
 void SAKModbusUi::OnStopBistChanged() {
-    settings_->setValue(key_ctx_.stop_bits,
+    settings_->setValue(key_ctx_->stop_bits,
                         ui_->stop_bits_->currentIndex());
 }
 
@@ -544,54 +575,54 @@ void SAKModbusUi::OnInvokeRefresh() {
 }
 
 void SAKModbusUi::OnClientTimeoutChanged() {
-    settings_->setValue(key_ctx_.client_timeout,
+    settings_->setValue(key_ctx_->client_timeout,
                         ui_->timeout_->value());
     UpdateClientParameters();
 }
 
 void SAKModbusUi::OnClientRepeatTimeChanged() {
-    settings_->setValue(key_ctx_.client_repeat_time,
+    settings_->setValue(key_ctx_->client_repeat_time,
                         ui_->repeat_time_->value());
     UpdateClientParameters();
 }
 
 void SAKModbusUi::OnServerIsBusyChanged() {
-    settings_->setValue(key_ctx_.server_is_busy,
+    settings_->setValue(key_ctx_->server_is_busy,
                         ui_->is_busy_->isChecked());
     UpdateServerParameters();
 }
 
 void SAKModbusUi::OnServerJustListenChanged() {
-    settings_->setValue(key_ctx_.server_just_listen,
+    settings_->setValue(key_ctx_->server_just_listen,
                         ui_->just_listen_->isChecked());
     UpdateServerParameters();
 }
 
 void SAKModbusUi::OnServerAddressChanged() {
-    settings_->setValue(key_ctx_.server_address,
+    settings_->setValue(key_ctx_->server_address,
                         ui_->server_address->value());
     UpdateServerParameters();
 }
 
 void SAKModbusUi::OnFunctionCodeChanged() {
-    settings_->setValue(key_ctx_.function_code,
+    settings_->setValue(key_ctx_->function_code,
                         ui_->function_code_->currentIndex());
     UpdateClientReadWriteButtonState();
 }
 
 void SAKModbusUi::OnTargetAddressChanged() {
-    settings_->setValue(key_ctx_.target_address,
+    settings_->setValue(key_ctx_->target_address,
                         ui_->device_address_->value());
 }
 
 void SAKModbusUi::OnStartAddressChanged() {
-    settings_->setValue(key_ctx_.start_address,
+    settings_->setValue(key_ctx_->start_address,
                         ui_->start_address_->value());
     UpdateClientTableView();
 }
 
 void SAKModbusUi::OnAddressNumberChanged() {
-    settings_->setValue(key_ctx_.address_number,
+    settings_->setValue(key_ctx_->address_number,
                         ui_->quantity_->value());
     UpdateClientTableView();
 }
@@ -704,9 +735,9 @@ void SAKModbusUi::OnSendClicked() {
     }
 
     // Update settings data.
-    int index = settings_->value(key_ctx_.send_history_index).toInt();
-    bool ret = WriteSettingsArray(key_ctx_.send_history,
-                                  key_ctx_.pdu,
+    int index = settings_->value(key_ctx_->send_history_index).toInt();
+    bool ret = WriteSettingsArray(key_ctx_->send_history,
+                                  key_ctx_->pdu,
                                   QString(pdu.toHex(' ')),
                                   index,
                                   MAX_HISTORY_INDEX);
@@ -721,7 +752,7 @@ void SAKModbusUi::OnSendClicked() {
     }
 
     index = index + 1 > MAX_HISTORY_INDEX ? 0 : index + 1;
-    settings_->setValue(key_ctx_.send_history_index, index);
+    settings_->setValue(key_ctx_->send_history_index, index);
 }
 
 void SAKModbusUi::OnDateWritten(QModbusDataUnit::RegisterType table,
