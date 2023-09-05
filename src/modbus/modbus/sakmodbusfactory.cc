@@ -30,8 +30,13 @@ SAKModbusFactory::~SAKModbusFactory() {
 }
 
 SAKModbusFactory *SAKModbusFactory::Instance() {
-    static SAKModbusFactory f(qApp);
-    return &f;
+    static SAKModbusFactory *factory = Q_NULLPTR;
+
+    if (!factory) {
+        factory = new SAKModbusFactory(qApp);
+    }
+
+    return factory;
 }
 
 const QString SAKModbusFactory::TypeName(int type) {
