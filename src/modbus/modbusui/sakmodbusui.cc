@@ -7,6 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "sakmodbusui.h"
+
 #include <QtEndian>
 #include <QSpinBox>
 #include <QLineEdit>
@@ -40,7 +42,6 @@
 #include <QModbusRtuSerialServer>
 #endif
 
-#include "sakmodbusui.h"
 #include "SAKSettings.hh"
 #include "sakmodbusfactory.h"
 
