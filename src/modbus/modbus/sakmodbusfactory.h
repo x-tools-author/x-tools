@@ -12,11 +12,12 @@
 
 #include <QObject>
 #include <QModbusDevice>
+#include <QModbusDataUnit>
 #include <QLoggingCategory>
 
 class SAKModbusFactory : public QObject {
     Q_OBJECT
-public:
+  public:
     enum ModbusDeviceType {
         kModbusRtuSerialClient,
         kModbusRtuSerialServer,
@@ -25,19 +26,52 @@ public:
     };
     Q_ENUM(ModbusDeviceType)
 
-private:
+  private:
     SAKModbusFactory(QObject *parent = Q_NULLPTR);
 
-public:
+  public:
     ~SAKModbusFactory();
-
     static SAKModbusFactory *Instance();
+
+  public:
     const QString TypeName(int type);
     QModbusDevice *CreateDevice(int type);
-    bool IsTcpDevice(QVariant modbus_device);
-    bool IsRtuSerialDevice(QVariant modbus_device);
+    bool IsTcpDevice(QModbusDevice *modbus_device);
+    bool IsRtuSerialDevice(QModbusDevice *modbus_device);
+    bool IsTcpDeviceType(int type);
+    bool IsRtuSerialDeviceType(int type);
+    bool IsServerDevice(QModbusDevice *modbus_device);
+    bool IsClientDevice(QModbusDevice *modbus_device);
+    bool ConnectDeivce(QModbusDevice *modbus_device);
+    bool SetServerData(QModbusDevice *server,
+                       QModbusDataUnit::RegisterType table,
+                       int address,
+                       int data,
+                       bool enable_log = true);
+    QList<quint16> GetServerData(QModbusDevice *server,
+                                 QModbusDataUnit::RegisterType table,
+                                 int address,
+                                 int quantity);
+    void DeleteModbusDevuce(QModbusDevice **modbus_device);
 
-private:
+    QModbusDevice *CreateRtuSerialDevice(int type,
+                                         const QString &port_name,
+                                         int parity,
+                                         int baud_rate,
+                                         int data_bits,
+                                         int stop_bits);
+    QModbusDevice *CreateTcpDevice(int deviceType,
+                                   QString address,
+                                   int port);
+    void SetClientDeviceParameters(QModbusDevice *client,
+                                   int timeout,
+                                   int number_of_retries);
+    void SetServerDeviceParameters(QModbusDevice *server,
+                                   int address,
+                                   bool device_busy,
+                                   bool listen_only_mode);
+
+  private:
     const QLoggingCategory kLoggingCategory{"SAK.Modbus.Factory"};
 };
 

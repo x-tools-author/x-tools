@@ -28,15 +28,7 @@ class SAKModbusUi;
 
 class SAKModbusUi : public QWidget {
     Q_OBJECT
-public:
-    enum SAKEnumModbusDevice {
-        ModbusDeviceRtuSerialClient,
-        ModbusDeviceRtuSerialServer,
-        ModbusDeviceTcpClient,
-        ModbusDeviceTcpServer
-    };
-    Q_ENUM(SAKEnumModbusDevice)
-
+  public:
     enum SAKEnumRegisterType {
         DiscreteInputs = QModbusDataUnit::DiscreteInputs,
         Coils = QModbusDataUnit::Coils,
@@ -71,14 +63,14 @@ public:
     };
     Q_ENUM(SAKEnumFunctionCode)
 
-public:
+  public:
     explicit SAKModbusUi(QWidget *parent = Q_NULLPTR);
     ~SAKModbusUi();
 
-signals:
+  signals:
     void deviceChanged(QModbusDevice *device);
 
-private:
+  private:
     struct {
         const QString device_index = "SAKModbus/deviceIndex";
 
@@ -110,14 +102,14 @@ private:
         const QString pdu = "pdu";
     } key_ctx_;
 
-private:
+  private:
     Ui::SAKModbusUi *ui_;
     QModbusDevice *modbus_device_{Q_NULLPTR};
     QSettings *settings_{Q_NULLPTR};
     QStandardItemModel *register_model_{Q_NULLPTR};
-    const QLoggingCategory logging_category_;
+    const QLoggingCategory kLoggingCategory;
 
-private:
+  private:
     void InitComponents();
     void InitComponentDevices();
     void InitComponentAddress();
@@ -151,7 +143,7 @@ private:
 
     void OnErrorOccurred();
     void OnDeviceTypeChanged();
-    void OnInvokeClose();
+    void OnCloseClicked();
     void OnOpenClicked();
     void OnAddressChanged();
     void OnPortChanged();
@@ -181,8 +173,9 @@ private:
                        int address, int size);
     void OnItemChanged(QStandardItem *item);
 
-private:
-    void UpdateUiState(bool opened);
+  private:
+    void CreateModbusDevice();
+    void UpdateUiState(bool connected);
     quint16 CalculateModbusCrc(const QByteArray &data);
     quint16 CookedRegisterString(QString text, int base);
     void SynchronizationRegister(QModbusDevice *server);
@@ -194,66 +187,41 @@ private:
     void ClientUpdateTable();
     void ClientSetRegisterValue(const QJsonArray &values);
     void ClientUpdateRWBtState();
-    void ClientUpdateParameters();
+    void UpdateClientParameters();
+    void UpdateServerParameters();
     quint8 ClientFunctionCode();
     QJsonArray ClientRegisterValue();
     QByteArray ClientPdu();
 
-    // Show message box.
-    void ShowMessageBox(const QString &title, const QString &msg);
-    void ShowMessageBoxDeviceIsNotReady();
-
     // Output info to ui.
     void OutputModbusReply(QModbusReply *reply, int function_code);
-    void OutputModbusRequestSend(int server_address, const QByteArray &pdu);
-    QByteArray ReadRequestApplicationDataUnit(int server_address,
-                                              int function_code,
-                                              int start_address,
-                                              int quantity);
-    QByteArray WriteRequestApplicationDataUnit(int server_address,
-                                               int function_code,
-                                               int start_address,
-                                               int quantity,
-                                               QJsonArray values);
     void OutputMessage(const QString &msg, bool isError,
                        const QString &color = QString(),
                        const QString &flag = QString());
 
     // Table view operations.
-    QTableView *TableView(QModbusDataUnit::RegisterType table);
-    QTableView *TableViewInit(int rowCount, QTableView *tv);
-    QVector<quint16> TableValues(QTableView *tv, int row, int count);
-    void TableViewUpdateAddress(QTableView *tv, int startAddress);
+    QTableView *GetTableView(QModbusDataUnit::RegisterType table);
+    QTableView *CreateTableView(int row_count, QTableView *table_view);
+    QList<quint16> GetTableValues(QTableView *table_view, int row, int count);
+    void UpdateTableViewAddress(QTableView *table_view, int start_address);
 
-    QModbusDevice *CreateRtuSerialDevice(
-            int deviceType, const QString &portName, int parity, int baudRate,
-            int dataBits, int stopBits);
-    QModbusDevice *CreateTcpDevice(
-            int deviceType, QString address, int port);
-    bool IsClient(QModbusDevice *device);
-    bool IsServer(QModbusDevice *device);
     bool ResetServerMap(QModbusDevice *server);
-    bool SetClientParameters(
-            QModbusDevice *device, int timeout, int numberOfRetries);
-    bool SetServerParameters(
-            QModbusDevice *device, int option, QVariant value);
-    bool OpenDevice(QModbusDevice *device);
     QString ModbuseDeviceErrorString(QModbusDevice *device);
-    bool SetServerData(
-            QModbusDevice *server, QModbusDataUnit::RegisterType table,
-            quint16 address, quint16 data);
-    QJsonArray ServerValues(
-            QModbusServer *server, int registerType, int address, int size);
-    QModbusReply *SendWriteRequest(
-            QModbusDevice *device, int registerType, int startAddress,
-            QJsonArray values, int serverAddress);
+    QJsonArray ServerValues(QModbusServer *server,
+                            int registerType,
+                            int address, int size);
+    QModbusReply *SendWriteRequest(QModbusDevice *device,
+                                   int registerType,
+                                   int startAddress,
+                                   QJsonArray values,
+                                   int serverAddress);
     bool IsValidModbusReply(QVariant reply);
     QJsonArray ModbusReplyResult(QModbusReply *reply);
-    QModbusReply *SendRawRequest(
-            QModbusDevice *device, int serverAddress, int functionCode,
-            const QByteArray &data);
+    QModbusReply *SendRawRequest(QModbusDevice *device,
+                                 int serverAddress,
+                                 int functionCode,
+                                 const QByteArray &data);
     bool IsReady();
-    QByteArray ApplicationDataUnit(const QModbusRequest &request, bool is_tcp);
 };
 
 #endif // SAKMODBUSUI_H
