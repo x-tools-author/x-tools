@@ -188,7 +188,7 @@ void SAKModbusUi::InitComponnetStopBits() {
     ui_->stop_bits_->clear();
     ui_->stop_bits_->addItem("1", QSerialPort::OneStop);
 #ifdef Q_OS_WIN
-    ui->stopBitsComboBox->addItem("1.5", QSerialPort::OneAndHalfStop);
+    ui_->stop_bits_->addItem("1.5", QSerialPort::OneAndHalfStop);
 #endif
     ui_->stop_bits_->addItem("2", QSerialPort::TwoStop);
 }
