@@ -142,6 +142,24 @@ bool SAKModbusFactory::ConnectDeivce(QModbusDevice *modbus_device) {
     return false;
 }
 
+bool SAKModbusFactory::IsConnected(QModbusDevice *modbus_device) {
+    if (modbus_device) {
+        if (modbus_device->state() == QModbusDevice::ConnectedState) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool SAKModbusFactory::IsValidModbusReply(QModbusReply *reply) {
+    if (reply && !reply->isFinished()) {
+        return true;
+    }
+
+    return false;
+}
+
 bool SAKModbusFactory::SetServerData(QModbusDevice *server,
                                      QModbusDataUnit::RegisterType table,
                                      int address,
@@ -278,4 +296,44 @@ void SAKModbusFactory::SetServerDeviceParameters(QModbusDevice *server,
         cooked_server->setValue(QModbusServer::ListenOnlyMode,
                                 listen_only_mode);
     }
+}
+
+QModbusReply *SAKModbusFactory::SendWriteRequest(QModbusDevice *modbus_device,
+                                                 int register_type,
+                                                 int start_address,
+                                                 QList<quint16> values,
+                                                 int server_address) {
+    if (modbus_device && IsClientDevice(modbus_device)) {
+        auto cooked_type = QModbusDataUnit::RegisterType(register_type);
+        QModbusDataUnit dataUnit(cooked_type, start_address, values);
+        if (dataUnit.isValid()) {
+            qCInfo(kLoggingCategory) << "register-type:" << register_type
+                                     << " start-address:" << start_address
+                                     << " serverAddress:" << server_address
+                                     << " values:" << values;
+
+            auto *client = qobject_cast<QModbusClient*>(modbus_device);
+            QModbusReply *reply = client->sendWriteRequest(dataUnit,
+                                                           server_address);
+            return reply;
+        } else {
+            qCWarning(kLoggingCategory) << "Unvalid data unit!";
+        }
+    }
+
+    return Q_NULLPTR;
+}
+
+QModbusReply *SAKModbusFactory::SendRawRequest(QModbusDevice *modbus_device,
+                                               int server_address,
+                                               int function_code,
+                                               const QByteArray &data) {
+    auto cooked_function_code = QModbusPdu::FunctionCode(function_code);
+    QModbusRequest request(cooked_function_code, data);
+    if (IsClientDevice(modbus_device)) {
+        QModbusClient *client = qobject_cast<QModbusClient*>(modbus_device);
+        return client->sendRawRequest(request, server_address);
+    }
+
+    return Q_NULLPTR;
 }

@@ -11,6 +11,7 @@
 #define SAKMODBUSFACTORY_H
 
 #include <QObject>
+#include <QModbusReply>
 #include <QModbusDevice>
 #include <QModbusDataUnit>
 #include <QLoggingCategory>
@@ -43,6 +44,8 @@ class SAKModbusFactory : public QObject {
     bool IsServerDevice(QModbusDevice *modbus_device);
     bool IsClientDevice(QModbusDevice *modbus_device);
     bool ConnectDeivce(QModbusDevice *modbus_device);
+    bool IsConnected(QModbusDevice *modbus_device);
+    bool IsValidModbusReply(QModbusReply *reply);
     bool SetServerData(QModbusDevice *server,
                        QModbusDataUnit::RegisterType table,
                        int address,
@@ -70,6 +73,15 @@ class SAKModbusFactory : public QObject {
                                    int address,
                                    bool device_busy,
                                    bool listen_only_mode);
+    QModbusReply *SendWriteRequest(QModbusDevice *modbus_device,
+                                   int register_type,
+                                   int start_address,
+                                   QList<quint16> values,
+                                   int server_address);
+    QModbusReply *SendRawRequest(QModbusDevice *modbus_device,
+                                 int server_address,
+                                 int function_code,
+                                 const QByteArray &data);
 
   private:
     const QLoggingCategory kLoggingCategory{"SAK.Modbus.Factory"};

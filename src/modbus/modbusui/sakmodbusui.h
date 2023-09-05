@@ -174,54 +174,32 @@ class SAKModbusUi : public QWidget {
     void OnItemChanged(QStandardItem *item);
 
   private:
-    void CreateModbusDevice();
+    QModbusDevice *CreateModbusDevice();
+    QTableView *CreateTableView(int row_count, QTableView *table_view);
+
     void UpdateUiState(bool connected);
-    quint16 CalculateModbusCrc(const QByteArray &data);
-    quint16 CookedRegisterString(QString text, int base);
-    void SynchronizationRegister(QModbusDevice *server);
-    bool WriteSettingsArray(const QString &group, const QString &key,
-                            const QString &value, int index, int max_index);
-    QModbusDataUnit::RegisterType RegisterType(int type);
-
-    // The interfaces of modbus client operations.
-    void ClientUpdateTable();
-    void ClientSetRegisterValue(const QJsonArray &values);
-    void ClientUpdateRWBtState();
+    void UpdateClientTableView();
+    void UpdateClientTableViewData(const QList<quint16> &values);
+    void UpdateClientReadWriteButtonState();
     void UpdateClientParameters();
+    void UpdateClientTableViewAddress(QTableView *view, int start_address);
     void UpdateServerParameters();
-    quint8 ClientFunctionCode();
-    QJsonArray ClientRegisterValue();
-    QByteArray ClientPdu();
+    bool UpdateServerMap(QModbusDevice *server);
+    void UpdateServerRegistersData();
 
-    // Output info to ui.
+    quint8 GetClientFunctionCode();
+    QList<quint16> GetClientRegisterValue();
+    QByteArray GetClientPdu();
+    QTableView *GetTableView(QModbusDataUnit::RegisterType table);
+    QList<quint16> GetTableValues(QTableView *table_view, int row, int count);
+
     void OutputModbusReply(QModbusReply *reply, int function_code);
     void OutputMessage(const QString &msg, bool isError,
                        const QString &color = QString(),
                        const QString &flag = QString());
-
-    // Table view operations.
-    QTableView *GetTableView(QModbusDataUnit::RegisterType table);
-    QTableView *CreateTableView(int row_count, QTableView *table_view);
-    QList<quint16> GetTableValues(QTableView *table_view, int row, int count);
-    void UpdateTableViewAddress(QTableView *table_view, int start_address);
-
-    bool ResetServerMap(QModbusDevice *server);
-    QString ModbuseDeviceErrorString(QModbusDevice *device);
-    QJsonArray ServerValues(QModbusServer *server,
-                            int registerType,
-                            int address, int size);
-    QModbusReply *SendWriteRequest(QModbusDevice *device,
-                                   int registerType,
-                                   int startAddress,
-                                   QJsonArray values,
-                                   int serverAddress);
-    bool IsValidModbusReply(QVariant reply);
-    QJsonArray ModbusReplyResult(QModbusReply *reply);
-    QModbusReply *SendRawRequest(QModbusDevice *device,
-                                 int serverAddress,
-                                 int functionCode,
-                                 const QByteArray &data);
-    bool IsReady();
+    bool IsConnected();
+    bool WriteSettingsArray(const QString &group, const QString &key,
+                            const QString &value, int index, int max_index);
 };
 
 #endif // SAKMODBUSUI_H
