@@ -9,7 +9,7 @@
  */
 
 #include <QImage>
-#include "SAKToolAsciiAssistant.hh"
+#include "SAKToolAsciiAssistant.h"
 #include "ui_SAKToolAsciiAssistant.h"
 
 SAKToolAsciiAssistant::SAKToolAsciiAssistant(QWidget *parent)

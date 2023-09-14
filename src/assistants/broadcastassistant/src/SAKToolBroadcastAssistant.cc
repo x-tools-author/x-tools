@@ -12,7 +12,7 @@
 #include <QNetworkAddressEntry>
 
 #include "SAKCommonDataStructure.hh"
-#include "SAKToolBroadcastAssistant.hh"
+#include "SAKToolBroadcastAssistant.h"
 #include "ui_SAKToolBroadcastAssistant.h"
 
 SAKToolBroadcastAssistant::SAKToolBroadcastAssistant(QWidget *parent)

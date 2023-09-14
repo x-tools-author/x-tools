@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
  * the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKTOOLBROADCASTTHREAD_HH
-#define SAKTOOLBROADCASTTHREAD_HH
+#ifndef SAKTOOLBROADCASTTHREAD_H
+#define SAKTOOLBROADCASTTHREAD_H
 
 #include <QMutex>
 #include <QThread>
@@ -41,4 +41,4 @@ private:
     QMutex mParametersMutext;
 };
 
-#endif // SAKTOOLBROADCASTTHREAD_HH
+#endif // SAKTOOLBROADCASTTHREAD_H

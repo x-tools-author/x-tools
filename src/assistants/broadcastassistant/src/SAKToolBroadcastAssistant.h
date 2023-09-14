@@ -7,11 +7,11 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
  * the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKTOOLBROADCASTASSISTANT_HH
-#define SAKTOOLBROADCASTASSISTANT_HH
+#ifndef SAKTOOLBROADCASTASSISTANT_H
+#define SAKTOOLBROADCASTASSISTANT_H
 
 #include <QDialog>
-#include "SAKToolBroadcastThread.hh"
+#include "SAKToolBroadcastThread.h"
 
 namespace Ui
 {
@@ -39,4 +39,4 @@ private:
     void onBroadcastPushButtonClicked();
 };
 
-#endif // SAKTOOLBROADCASTASSISTANT_HH
+#endif // SAKTOOLBROADCASTASSISTANT_H

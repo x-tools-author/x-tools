@@ -9,7 +9,7 @@
  *****************************************************************************/
 #include <QTimer>
 #include <QUdpSocket>
-#include "SAKToolBroadcastThread.hh"
+#include "SAKToolBroadcastThread.h"
 
 SAKToolBroadcastThread::SAKToolBroadcastThread(QObject *parent)
     : QThread{parent}
