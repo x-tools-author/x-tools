@@ -130,10 +130,7 @@ set(SAK_APP_SOURCES
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(QtSwissArmyKnife
-        MANUAL_FINALIZATION
-        ${SAK_APP_SOURCES}
-    )
+    qt_add_executable(QtSwissArmyKnife MANUAL_FINALIZATION ${SAK_APP_SOURCES})
 else()
     if(ANDROID)
         add_library(QtSwissArmyKnife SHARED ${SAK_APP_SOURCES})
@@ -170,14 +167,12 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(QtSwissArmyKnife)
 endif()
 
-# 执行Git命令获取最后一次提交的信息
 execute_process(
     COMMAND git log -1 --pretty=%H
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     OUTPUT_VARIABLE GIT_COMMIT
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
-# 打印最后一次提交的信息
 message(STATUS "Last commit: ${GIT_COMMIT}")
 
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
@@ -187,8 +182,4 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
     add_custom_command(TARGET QtSwissArmyKnife POST_BUILD
         COMMAND ${WIN_DEPLOY_QT} "${CMAKE_BINARY_DIR}/QtSwissArmyKnife.exe"
     )
-    # COMMAND ${CMAKE_COMMAND} -E copy_if_different "${compiler_path}/VCRUNTIME140.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-    if("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
-        # Nothing to do yet.
-    endif()
 endif()
