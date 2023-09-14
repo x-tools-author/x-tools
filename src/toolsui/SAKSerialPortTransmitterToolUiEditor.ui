@@ -170,32 +170,32 @@
   <customwidget>
    <class>SAKPortNameComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKPortNameComboBox.hh</header>
+   <header location="global">SAKPortNameComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKBaudRateComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKBaudRateComboBox.hh</header>
+   <header location="global">SAKBaudRateComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKDataBitsComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKDataBitsComboBox.hh</header>
+   <header location="global">SAKDataBitsComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKStopBitsComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKStopBitsComboBox.hh</header>
+   <header location="global">SAKStopBitsComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKParityComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKParityComboBox.hh</header>
+   <header location="global">SAKParityComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKFlowControlComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKFlowControlComboBox.hh</header>
+   <header location="global">SAKFlowControlComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

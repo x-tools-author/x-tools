@@ -177,7 +177,7 @@
   <customwidget>
    <class>SAKBluetoothDeviceInfoComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKBluetoothDeviceInfoComboBox.hh</header>
+   <header location="global">SAKBluetoothDeviceInfoComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

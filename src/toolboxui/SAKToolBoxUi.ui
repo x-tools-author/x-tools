@@ -506,28 +506,28 @@
   <customwidget>
    <class>SAKCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">SAKCheckBox.hh</header>
+   <header location="global">SAKCheckBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKTextFormatComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKTextFormatComboBox.hh</header>
+   <header location="global">SAKTextFormatComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKComboBox.hh</header>
+   <header location="global">SAKComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKVelometerToolUi</class>
    <extends>QWidget</extends>
-   <header location="global">SAKVelometerToolUi.hh</header>
+   <header location="global">SAKVelometerToolUi.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>SAKStatisticianToolUi</class>
    <extends>QWidget</extends>
-   <header location="global">SAKStatisticianToolUi.hh</header>
+   <header location="global">SAKStatisticianToolUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

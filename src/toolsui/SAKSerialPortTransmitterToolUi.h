@@ -10,8 +10,8 @@
 #ifndef SAKSERIALPORTTRANSMITTERTOOLUI_HH
 #define SAKSERIALPORTTRANSMITTERTOOLUI_HH
 
-#include "SAKTransmitterToolUi.hh"
-#include "SAKSerialPortTransmitterToolUiEditor.hh"
+#include "SAKTransmitterToolUi.h"
+#include "SAKSerialPortTransmitterToolUiEditor.h"
 
 class SAKSerialPortTransmitterToolUi : public SAKTransmitterToolUi
 {

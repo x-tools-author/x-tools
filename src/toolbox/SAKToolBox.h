@@ -13,20 +13,20 @@
 #include <QObject>
 #include <QVariant>
 
-#include "SAKBaseTool.hh"
-#include "SAKMaskerTool.hh"
-#include "SAKStorerTool.hh"
-#include "SAKEmitterTool.hh"
-#include "SAKAnalyzerTool.hh"
-#include "SAKPrestorerTool.hh"
-#include "SAKResponserTool.hh"
-#include "SAKVelometerTool.hh"
-#include "SAKStatisticianTool.hh"
-#include "SAKCommunicationTool.hh"
-#include "SAKUdpTransmitterTool.hh"
-#include "SAKTcpTransmitterTool.hh"
-#include "SAKWebSocketTransmitterTool.hh"
-#include "SAKSerialPortTransmitterTool.hh"
+#include "SAKBaseTool.h"
+#include "SAKMaskerTool.h"
+#include "SAKStorerTool.h"
+#include "SAKEmitterTool.h"
+#include "SAKAnalyzerTool.h"
+#include "SAKPrestorerTool.h"
+#include "SAKResponserTool.h"
+#include "SAKVelometerTool.h"
+#include "SAKStatisticianTool.h"
+#include "SAKCommunicationTool.h"
+#include "SAKUdpTransmitterTool.h"
+#include "SAKTcpTransmitterTool.h"
+#include "SAKWebSocketTransmitterTool.h"
+#include "SAKSerialPortTransmitterTool.h"
 
 class SAKToolBox : public QObject
 {

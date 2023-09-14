@@ -11,7 +11,7 @@
 #define SAKPRESTORERTOOLUI_HH
 
 #include <QMenu>
-#include "SAKTableModelToolUi.hh"
+#include "SAKTableModelToolUi.h"
 
 class SAKPrestorerTool;
 class SAKPrestorerToolUiEditor;

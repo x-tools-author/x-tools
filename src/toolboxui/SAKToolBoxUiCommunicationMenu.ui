@@ -35,19 +35,19 @@
   <customwidget>
    <class>SAKAnalyzerToolUi</class>
    <extends>QWidget</extends>
-   <header location="global">SAKAnalyzerToolUi.hh</header>
+   <header location="global">SAKAnalyzerToolUi.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>SAKMaskerToolUi</class>
    <extends>QWidget</extends>
-   <header location="global">SAKMaskerToolUi.hh</header>
+   <header location="global">SAKMaskerToolUi.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>SAKStorerToolUi</class>
    <extends>QWidget</extends>
-   <header location="global">SAKStorerToolUi.hh</header>
+   <header location="global">SAKStorerToolUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

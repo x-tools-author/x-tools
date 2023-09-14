@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKSerialPortTool.hh"
-#include "SAKSerialPortToolUi.hh"
+#include "SAKSerialPortTool.h"
+#include "SAKSerialPortToolUi.h"
 #include "ui_SAKSerialPortToolUi.h"
 
 SAKSerialPortToolUi::SAKSerialPortToolUi(QWidget *parent)

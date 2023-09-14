@@ -13,7 +13,7 @@
 #include <QMutex>
 #include <QVector>
 
-#include "SAKTransmitterTool.hh"
+#include "SAKTransmitterTool.h"
 
 class SAKSerialPortTransmitterTool : public SAKTransmitterTool
 {

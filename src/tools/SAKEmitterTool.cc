@@ -10,7 +10,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 
-#include "SAKEmitterTool.hh"
+#include "SAKEmitterTool.h"
 
 #include "SAKCrcInterface.h"
 #include "SAKInterface.h"

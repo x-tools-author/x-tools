@@ -14,9 +14,9 @@
 #include <QWidgetAction>
 #include <QLowEnergyCharacteristic>
 
-#include "SAKSpinBox.hh"
-#include "SAKLineEdit.hh"
-#include "SAKBleCentralToolUi.hh"
+#include "SAKSpinBox.h"
+#include "SAKLineEdit.h"
+#include "SAKBleCentralToolUi.h"
 #include "ui_SAKBleCentralToolUi.h"
 
 #define SAK_CB_I_C &QComboBox::currentIndexChanged

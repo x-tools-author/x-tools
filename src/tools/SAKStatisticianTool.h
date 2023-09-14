@@ -10,7 +10,7 @@
 #ifndef SAKSTATISTICIANTOOL_HH
 #define SAKSTATISTICIANTOOL_HH
 
-#include "SAKBaseTool.hh"
+#include "SAKBaseTool.h"
 
 class SAKStatisticianTool : public SAKBaseTool
 {

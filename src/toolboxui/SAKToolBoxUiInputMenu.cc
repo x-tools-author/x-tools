@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QWidgetAction>
-#include "SAKToolBoxUiInputMenu.hh"
+#include "SAKToolBoxUiInputMenu.h"
 #include "ui_SAKToolBoxUiInputMenu.h"
 
 #define SAK_CB_ACTIVATED static_cast<void(QComboBox::*)\

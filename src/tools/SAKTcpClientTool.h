@@ -11,7 +11,7 @@
 #define SAKTCPCLIENTTOOL_HH
 
 #include <QTcpSocket>
-#include "SAKSocketClientTool.hh"
+#include "SAKSocketClientTool.h"
 
 class SAKTcpClientTool : public SAKSocketClientTool
 {

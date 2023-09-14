@@ -10,7 +10,7 @@
 #include <QTimer>
 
 #include "SAKInterface.h"
-#include "SAKMaskerTool.hh"
+#include "SAKMaskerTool.h"
 
 SAKMaskerTool::SAKMaskerTool(QObject *parent)
     : SAKBaseTool{"sak.masktool", parent}

@@ -176,12 +176,12 @@
   <customwidget>
    <class>SAKIpComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKIpComboBox.hh</header>
+   <header location="global">SAKIpComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKWebSocketMessageTypeComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKWebSocketMessageTypeComboBox.hh</header>
+   <header location="global">SAKWebSocketMessageTypeComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

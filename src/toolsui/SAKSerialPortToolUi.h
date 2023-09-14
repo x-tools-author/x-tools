@@ -11,7 +11,7 @@
 #define SAKSERIALPORTTOOLBOXUI_HH
 
 #include <QLoggingCategory>
-#include "SAKCommunicationToolUi.hh"
+#include "SAKCommunicationToolUi.h"
 
 namespace Ui {
 class SAKSerialPortToolUi;

@@ -10,7 +10,7 @@
 #ifndef SAKTABLEVIEWTOOLUI_HH
 #define SAKTABLEVIEWTOOLUI_HH
 
-#include "SAKBaseToolUi.hh"
+#include "SAKBaseToolUi.h"
 #include "SAKTableModel.h"
 
 class SAKTableViewToolUi : public SAKBaseToolUi

@@ -10,7 +10,7 @@
 #ifndef SAKSOCKETCLIENTTOOL_HH
 #define SAKSOCKETCLIENTTOOL_HH
 
-#include "SAKCommunicationTool.hh"
+#include "SAKCommunicationTool.h"
 
 class SAKSocketClientTool : public SAKCommunicationTool
 {

@@ -10,7 +10,7 @@
 #include <QDir>
 #include <QMenu>
 #include <QAction>
-#include "SAKSystemTrayIcon.hh"
+#include "SAKSystemTrayIcon.h"
 
 SAKSystemTrayIcon::SAKSystemTrayIcon(QObject *parent)
     : QSystemTrayIcon(parent)

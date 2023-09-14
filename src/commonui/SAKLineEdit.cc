@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKLineEdit.hh"
+#include "SAKLineEdit.h"
 #include "SAKSettings.h"
 
 SAKLineEdit::SAKLineEdit(QWidget *parent)

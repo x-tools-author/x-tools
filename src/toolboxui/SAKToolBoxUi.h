@@ -16,8 +16,8 @@
 #include <QWidget>
 #include <QLoggingCategory>
 
-#include "SAKToolBox.hh"
-#include "SAKCommunicationToolUi.hh"
+#include "SAKToolBox.h"
+#include "SAKCommunicationToolUi.h"
 
 namespace Ui {
 class SAKToolBoxUi;

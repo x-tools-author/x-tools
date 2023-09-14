@@ -12,7 +12,7 @@
 
 #include <QMutex>
 #include <QTcpServer>
-#include "SAKSocketServerTool.hh"
+#include "SAKSocketServerTool.h"
 
 class SAKTcpServerTool : public SAKSocketServerTool
 {

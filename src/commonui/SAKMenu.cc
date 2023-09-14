@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QMouseEvent>
-#include "SAKMenu.hh"
+#include "SAKMenu.h"
 
 SAKMenu::SAKMenu(const QString &title, QWidget *parent)
     : QMenu(title, parent)

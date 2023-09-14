@@ -9,8 +9,8 @@
  *****************************************************************************/
 #include <QMessageBox>
 
-#include "SAKSocketClientTool.hh"
-#include "SAKSocketClientToolUi.hh"
+#include "SAKSocketClientTool.h"
+#include "SAKSocketClientToolUi.h"
 #include "ui_SAKSocketClientToolUi.h"
 
 SAKSocketClientToolUi::SAKSocketClientToolUi(QWidget *parent)

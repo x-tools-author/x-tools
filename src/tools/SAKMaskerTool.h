@@ -13,7 +13,7 @@
 #include <atomic>
 #include <QMutex>
 
-#include "SAKBaseTool.hh"
+#include "SAKBaseTool.h"
 
 class SAKMaskerTool : public SAKBaseTool
 {

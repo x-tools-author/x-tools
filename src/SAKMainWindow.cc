@@ -48,18 +48,18 @@
 #include <QJsonParseError>
 #include <QDesktopServices>
 
-#include "SAKLogUi.hh"
+#include "SAKLogUi.h"
 #include "SAKSettings.h"
 #include "SAKInterface.h"
-#include "SAKToolBoxUi.hh"
-#include "SAKMainWindow.hh"
+#include "SAKToolBoxUi.h"
+#include "SAKMainWindow.h"
 #include "SAKTranslator.h"
-#include "SAKUiInterface.hh"
+#include "SAKUiInterface.h"
 #include "SAKDataStructure.h"
 #include "SAKAssistantsFactory.h"
 
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
-#include "SAKCanBusUi.hh"
+#include "SAKCanBusUi.h"
 #endif
 
 #ifdef SAK_IMPORT_MODULE_MODBUS
@@ -67,8 +67,8 @@
 #endif
 
 #ifdef SAK_IMPORT_MODULE_PRIVATE_MODBUS
-#include "SAKPrivateModbusClient.hh"
-#include "SAKPrivateModbusServer.hh"
+#include "SAKPrivateModbusClient.h"
+#include "SAKPrivateModbusServer.h"
 #endif
 
 #include "ui_SAKMainWindow.h"

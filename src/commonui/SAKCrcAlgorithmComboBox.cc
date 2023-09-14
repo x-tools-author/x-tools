@@ -9,7 +9,7 @@
  *****************************************************************************/
 #include <QMetaEnum>
 #include "SAKCrcInterface.h"
-#include "SAKCrcAlgorithmComboBox.hh"
+#include "SAKCrcAlgorithmComboBox.h"
 
 SAKCrcAlgorithmComboBox::SAKCrcAlgorithmComboBox(QWidget *parent)
     : SAKComboBox(parent)

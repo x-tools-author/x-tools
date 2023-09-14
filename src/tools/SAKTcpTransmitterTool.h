@@ -10,7 +10,7 @@
 #ifndef SAKTCPTRANSMITTERTOOL_HH
 #define SAKTCPTRANSMITTERTOOL_HH
 
-#include "SAKSocketClientTransmitterTool.hh"
+#include "SAKSocketClientTransmitterTool.h"
 
 class SAKTcpTransmitterTool : public SAKSocketClientTransmitterTool
 {

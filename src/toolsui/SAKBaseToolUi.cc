@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKBaseTool.hh"
-#include "SAKBaseToolUi.hh"
+#include "SAKBaseTool.h"
+#include "SAKBaseToolUi.h"
 
 SAKBaseToolUi::SAKBaseToolUi(QWidget *parent)
     : QWidget{parent}

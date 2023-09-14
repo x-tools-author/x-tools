@@ -10,7 +10,7 @@
 #ifndef SAKPORTNAMECOMBOBOX_HH
 #define SAKPORTNAMECOMBOBOX_HH
 
-#include "SAKComboBox.hh"
+#include "SAKComboBox.h"
 
 class SAKPortNameComboBox : public SAKComboBox
 {

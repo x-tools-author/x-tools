@@ -12,7 +12,7 @@
 
 #include <QObject>
 
-#include "SAKBaseTool.hh"
+#include "SAKBaseTool.h"
 
 class SAKToolFactory : public QObject
 {

@@ -10,7 +10,7 @@
 #ifndef SAKCOMMUNICATIONTOOLUI_HH
 #define SAKCOMMUNICATIONTOOLUI_HH
 
-#include "SAKBaseToolUi.hh"
+#include "SAKBaseToolUi.h"
 
 class SAKCommunicationTool;
 class SAKCommunicationToolUi : public SAKBaseToolUi

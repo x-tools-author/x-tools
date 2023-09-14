@@ -11,14 +11,14 @@
 #include <QStyleFactory>
 #include <QLoggingCategory>
 
-#include "SAKLog.hh"
+#include "SAKLog.h"
 #include "SAKSettings.h"
 #include "SAKInterface.h"
-#include "SAKApplication.hh"
+#include "SAKApplication.h"
 
 #ifdef SAK_IMPORT_MODULE_QML
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
-#include "SAKGuiApplication.hh"
+#include "SAKGuiApplication.h"
 #endif
 #endif
 

@@ -10,7 +10,7 @@
 #ifndef SAKFLOWCONTROLCOMBOBOX_HH
 #define SAKFLOWCONTROLCOMBOBOX_HH
 
-#include "SAKComboBox.hh"
+#include "SAKComboBox.h"
 
 class SAKFlowControlComboBox : public SAKComboBox
 {

@@ -11,7 +11,7 @@
 #define SAKVELOMETERTOOLUI_HH
 
 #include <QLoggingCategory>
-#include "SAKBaseToolUi.hh"
+#include "SAKBaseToolUi.h"
 
 namespace Ui {
 class SAKVelometerToolUi;

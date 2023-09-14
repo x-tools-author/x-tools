@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKToolBox.hh"
-#include "SAKToolFactory.hh"
+#include "SAKToolBox.h"
+#include "SAKToolFactory.h"
 
 SAKToolBox::SAKToolBox(QObject *parent)
     : QObject{parent}

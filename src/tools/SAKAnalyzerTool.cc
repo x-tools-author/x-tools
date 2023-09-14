@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKInterface.h"
-#include "SAKAnalyzerTool.hh"
+#include "SAKAnalyzerTool.h"
 
 SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
     : SAKBaseTool{"sak.analyzertool", parent}

@@ -10,7 +10,7 @@
 #ifndef SAKPARITYCOMBOBOX_HH
 #define SAKPARITYCOMBOBOX_HH
 
-#include "SAKComboBox.hh"
+#include "SAKComboBox.h"
 
 class SAKParityComboBox : public SAKComboBox
 {

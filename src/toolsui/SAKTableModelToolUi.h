@@ -18,7 +18,7 @@
 #include <QLoggingCategory>
 #include <QAbstractTableModel>
 
-#include "SAKBaseToolUi.hh"
+#include "SAKBaseToolUi.h"
 
 namespace Ui {
 class SAKTableModelToolUi;

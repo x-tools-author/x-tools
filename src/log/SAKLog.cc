@@ -16,7 +16,7 @@
 #include <QFileInfoList>
 #include <QStandardPaths>
 
-#include "SAKLog.hh"
+#include "SAKLog.h"
 #include "SAKSettings.h"
 
 QVector<SAKLog::LogContext> SAKLog::mLogContextVector;

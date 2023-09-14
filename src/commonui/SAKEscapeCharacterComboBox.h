@@ -10,7 +10,7 @@
 #ifndef SAKESCAPECHARACTERCOMBOBOX_HH
 #define SAKESCAPECHARACTERCOMBOBOX_HH
 
-#include "SAKComboBox.hh"
+#include "SAKComboBox.h"
 
 class SAKEscapeCharacterComboBox : public SAKComboBox
 {

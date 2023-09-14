@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKInterface.h"
-#include "SAKSerialPortTool.hh"
+#include "SAKSerialPortTool.h"
 
 SAKSerialPortTool::SAKSerialPortTool(QObject *parent)
     : SAKCommunicationTool("sak.serialporttool", parent)

@@ -12,8 +12,8 @@
 
 #include <QMutex>
 
-#include "SAKTableModelTool.hh"
-#include "SAKCommunicationTool.hh"
+#include "SAKTableModelTool.h"
+#include "SAKCommunicationTool.h"
 
 class SAKTransmitterTool : public SAKTableModelTool
 {

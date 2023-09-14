@@ -10,7 +10,7 @@
 #ifndef SAKWEBSOCKETMESSAGETYPECOMBOBOX_HH
 #define SAKWEBSOCKETMESSAGETYPECOMBOBOX_HH
 
-#include "SAKComboBox.hh"
+#include "SAKComboBox.h"
 
 class SAKWebSocketMessageTypeComboBox : public SAKComboBox
 {

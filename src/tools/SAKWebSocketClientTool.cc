@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKInterface.h"
-#include "SAKWebSocketClientTool.hh"
+#include "SAKWebSocketClientTool.h"
 
 #define WS_ERR_SIGNAL void(QWebSocket::*)(QAbstractSocket::SocketError)
 

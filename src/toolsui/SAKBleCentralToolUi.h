@@ -12,8 +12,8 @@
 
 #include <QLowEnergyDescriptor>
 
-#include "SAKBleCentralTool.hh"
-#include "SAKCommunicationToolUi.hh"
+#include "SAKBleCentralTool.h"
+#include "SAKCommunicationToolUi.h"
 
 namespace Ui {
 class SAKBleCentralToolUi;

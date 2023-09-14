@@ -10,7 +10,7 @@
 #ifndef SAKTEXTFORMATCOMBOBOX_HH
 #define SAKTEXTFORMATCOMBOBOX_HH
 
-#include "SAKComboBox.hh"
+#include "SAKComboBox.h"
 
 class SAKTextFormatComboBox : public SAKComboBox
 {

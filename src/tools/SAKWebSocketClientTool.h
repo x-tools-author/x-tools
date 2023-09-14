@@ -11,7 +11,7 @@
 #define SAKWEBSOCKETCLIENTTOOL_H
 
 #include <QWebSocket>
-#include "SAKSocketClientTool.hh"
+#include "SAKSocketClientTool.h"
 
 
 class SAKWebSocketClientTool : public SAKSocketClientTool

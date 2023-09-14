@@ -14,10 +14,10 @@
 #include <QJsonDocument>
 #include <QStandardItemModel>
 
-#include "SAKMenu.hh"
+#include "SAKMenu.h"
 #include "SAKSettings.h"
-#include "SAKTableModelTool.hh"
-#include "SAKTableModelToolUi.hh"
+#include "SAKTableModelTool.h"
+#include "SAKTableModelToolUi.h"
 #include "ui_SAKTableModelToolUi.h"
 
 SAKTableModelToolUi::SAKTableModelToolUi(const char *lg, QWidget *parent)

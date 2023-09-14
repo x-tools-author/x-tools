@@ -10,7 +10,7 @@
 #include <QtGlobal>
 #include <QDateTime>
 
-#include "SAKBaseTool.hh"
+#include "SAKBaseTool.h"
 
 SAKBaseTool::SAKBaseTool(const char *logCategory, QObject *parent)
     : QThread{parent}

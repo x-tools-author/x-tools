@@ -139,7 +139,7 @@
   <customwidget>
    <class>SAKComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKComboBox.hh</header>
+   <header location="global">SAKComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKInterface.h"
-#include "SAKSerialPortTool.hh"
-#include "SAKSerialPortTransmitterTool.hh"
+#include "SAKSerialPortTool.h"
+#include "SAKSerialPortTransmitterTool.h"
 
 SAKSerialPortTransmitterTool::SAKSerialPortTransmitterTool(QObject *parent)
     : SAKTransmitterTool{"sak.serialporttransmittertool", parent}

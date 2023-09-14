@@ -10,8 +10,8 @@
 #ifndef SAKSOCKETCLIENTTRANSMITTERTOOLUI_HH
 #define SAKSOCKETCLIENTTRANSMITTERTOOLUI_HH
 
-#include "SAKTransmitterToolUi.hh"
-#include "SAKSocketClientTransmitterToolUiEditor.hh"
+#include "SAKTransmitterToolUi.h"
+#include "SAKSocketClientTransmitterToolUiEditor.h"
 
 class SAKSocketClientTransmitterToolUi : public SAKTransmitterToolUi
 {

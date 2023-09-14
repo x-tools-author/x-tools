@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QWidgetAction>
-#include "SAKToolBox.hh"
-#include "SAKToolBoxUiCommunicationMenu.hh"
+#include "SAKToolBox.h"
+#include "SAKToolBoxUiCommunicationMenu.h"
 #include "ui_SAKToolBoxUiCommunicationMenu.h"
 
 SAKToolBoxUiCommunicationMenu::SAKToolBoxUiCommunicationMenu(QWidget *parent)

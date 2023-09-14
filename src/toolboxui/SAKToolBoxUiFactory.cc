@@ -7,18 +7,18 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKToolFactory.hh"
-#include "SAKToolBoxUiFactory.hh"
+#include "SAKToolFactory.h"
+#include "SAKToolBoxUiFactory.h"
 #if 0
-#include "SAKTcpClientToolBoxUi.hh"
-#include "SAKTcpServerToolBoxUi.hh"
-#include "SAKUdpClientToolBoxUi.hh"
-#include "SAKUdpServerToolBoxUi.hh"
-#include "SAKSerialPortToolBoxUi.hh"
-#include "SAKBleCentralToolBoxUi.hh"
-#include "SAKBlePeripheralToolBoxUi.hh"
-#include "SAKWebSocketClientToolBoxUi.hh"
-#include "SAKWebSocketServerToolBoxUi.hh"
+#include "SAKTcpClientToolBoxUi.h"
+#include "SAKTcpServerToolBoxUi.h"
+#include "SAKUdpClientToolBoxUi.h"
+#include "SAKUdpServerToolBoxUi.h"
+#include "SAKSerialPortToolBoxUi.h"
+#include "SAKBleCentralToolBoxUi.h"
+#include "SAKBlePeripheralToolBoxUi.h"
+#include "SAKWebSocketClientToolBoxUi.h"
+#include "SAKWebSocketServerToolBoxUi.h"
 #endif
 
 SAKToolBoxUiFactory::SAKToolBoxUiFactory(QObject *parent)

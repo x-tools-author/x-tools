@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKEmitterToolUi.hh"
-#include "SAKTableModelTool.hh"
+#include "SAKEmitterToolUi.h"
+#include "SAKTableModelTool.h"
 
 SAKEmitterToolUi::SAKEmitterToolUi(QWidget *parent)
     : SAKTableModelToolUi{"sak.emittertoolui", parent}

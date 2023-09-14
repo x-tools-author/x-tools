@@ -12,7 +12,7 @@
 
 #include <atomic>
 #include <QMutex>
-#include "SAKBaseTool.hh"
+#include "SAKBaseTool.h"
 
 class SAKCommunicationTool : public SAKBaseTool
 {

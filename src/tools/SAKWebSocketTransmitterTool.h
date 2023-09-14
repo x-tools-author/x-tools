@@ -10,7 +10,7 @@
 #ifndef SAKWEBSOCKETTRANSMITTERTOOL_HH
 #define SAKWEBSOCKETTRANSMITTERTOOL_HH
 
-#include "SAKSocketClientTransmitterTool.hh"
+#include "SAKSocketClientTransmitterTool.h"
 
 class SAKWebSocketTransmitterTool : public SAKSocketClientTransmitterTool
 {

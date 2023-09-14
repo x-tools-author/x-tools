@@ -10,7 +10,7 @@
 #ifndef SAKCRCALGORITHMCOMBOBOX_HH
 #define SAKCRCALGORITHMCOMBOBOX_HH
 
-#include "SAKComboBox.hh"
+#include "SAKComboBox.h"
 
 class SAKCrcAlgorithmComboBox : public SAKComboBox
 {

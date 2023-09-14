@@ -127,17 +127,17 @@
   <customwidget>
    <class>SAKCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">SAKCheckBox.hh</header>
+   <header location="global">SAKCheckBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKSpinBox</class>
    <extends>QSpinBox</extends>
-   <header location="global">SAKSpinBox.hh</header>
+   <header location="global">SAKSpinBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKLineEdit</class>
    <extends>QLineEdit</extends>
-   <header location="global">SAKLineEdit.hh</header>
+   <header location="global">SAKLineEdit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

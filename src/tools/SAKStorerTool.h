@@ -13,7 +13,7 @@
 #include <QTimer>
 #include <QMutex>
 
-#include "SAKBaseTool.hh"
+#include "SAKBaseTool.h"
 
 class SAKStorerTool : public SAKBaseTool
 {

@@ -16,7 +16,7 @@
 #include <QLowEnergyController>
 #include <QBluetoothDeviceInfo>
 
-#include "SAKCommunicationTool.hh"
+#include "SAKCommunicationTool.h"
 
 class SAKBleCentralTool : public SAKCommunicationTool
 {

@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKDataStructure.h"
-#include "SAKResponseOptionComboBox.hh"
+#include "SAKResponseOptionComboBox.h"
 
 SAKResponseOptionComboBox::SAKResponseOptionComboBox(QWidget *parent)
     : SAKComboBox(parent)

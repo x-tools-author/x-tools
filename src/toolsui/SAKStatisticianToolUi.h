@@ -10,7 +10,7 @@
 #ifndef SAKSTATISTICIANTOOLUI_HH
 #define SAKSTATISTICIANTOOLUI_HH
 
-#include "SAKBaseToolUi.hh"
+#include "SAKBaseToolUi.h"
 
 namespace Ui {
 class SAKStatisticianToolUi;

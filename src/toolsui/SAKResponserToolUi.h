@@ -12,8 +12,8 @@
 
 #include <QWidget>
 
-#include "SAKTableModelToolUi.hh"
-#include "SAKResponserToolUiEditor.hh"
+#include "SAKTableModelToolUi.h"
+#include "SAKResponserToolUiEditor.h"
 
 class SAKResponserToolUi : public SAKTableModelToolUi
 {

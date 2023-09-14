@@ -13,7 +13,7 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-#include "SAKCommunicationTool.hh"
+#include "SAKCommunicationTool.h"
 
 class SAKSerialPortTool : public SAKCommunicationTool
 {

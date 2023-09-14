@@ -11,7 +11,7 @@
 #include <QSerialPortInfo>
 #include <QStandardItemModel>
 
-#include "SAKPortNameComboBox.hh"
+#include "SAKPortNameComboBox.h"
 
 SAKPortNameComboBox::SAKPortNameComboBox(QWidget *parent)
     : SAKComboBox(parent)

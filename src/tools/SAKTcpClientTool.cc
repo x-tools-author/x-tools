@@ -11,7 +11,7 @@
 
 #include "SAKInterface.h"
 #include "SAKCompatibility.h"
-#include "SAKTcpClientTool.hh"
+#include "SAKTcpClientTool.h"
 
 SAKTcpClientTool::SAKTcpClientTool(QObject *parent)
     : SAKSocketClientTool{"sak.tcpclienttool", parent}

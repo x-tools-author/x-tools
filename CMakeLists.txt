@@ -99,11 +99,11 @@ file(GLOB_RECURSE TOOLS_UI_SOURCES "src/toolsui/*h" "src/toolsui/*.cc" "src/tool
 include_directories(src)
 set(APP_SOURCES
     src/main.cc 
-    src/SAKApplication.hh 
+    src/SAKApplication.h
     src/SAKApplication.cc 
-    src/SAKMainWindow.hh
+    src/SAKMainWindow.h
     src/SAKMainWindow.cc
-    src/SAKSystemTrayIcon.hh
+    src/SAKSystemTrayIcon.h
     src/SAKSystemTrayIcon.cc
     SAKResources.qrc
 )

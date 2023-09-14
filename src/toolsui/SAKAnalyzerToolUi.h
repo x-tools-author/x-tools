@@ -10,7 +10,7 @@
 #ifndef SAKANALYZERTOOLUI_HH
 #define SAKANALYZERTOOLUI_HH
 
-#include "SAKBaseToolUi.hh"
+#include "SAKBaseToolUi.h"
 
 namespace Ui {
 class SAKAnalyzerToolUi;

@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKDataStructure.h"
-#include "SAKEscapeCharacterComboBox.hh"
+#include "SAKEscapeCharacterComboBox.h"
 
 SAKEscapeCharacterComboBox::SAKEscapeCharacterComboBox(QWidget *parent)
     : SAKComboBox(parent)

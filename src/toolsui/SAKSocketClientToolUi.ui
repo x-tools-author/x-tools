@@ -180,22 +180,22 @@
   <customwidget>
    <class>SAKCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">SAKCheckBox.hh</header>
+   <header location="global">SAKCheckBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKIpComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKIpComboBox.hh</header>
+   <header location="global">SAKIpComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKWebSocketMessageTypeComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKWebSocketMessageTypeComboBox.hh</header>
+   <header location="global">SAKWebSocketMessageTypeComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKSpinBox</class>
    <extends>QSpinBox</extends>
-   <header location="global">SAKSpinBox.hh</header>
+   <header location="global">SAKSpinBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

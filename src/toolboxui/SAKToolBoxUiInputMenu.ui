@@ -141,27 +141,27 @@
   <customwidget>
    <class>SAKCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">SAKCheckBox.hh</header>
+   <header location="global">SAKCheckBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKSpinBox</class>
    <extends>QSpinBox</extends>
-   <header location="global">SAKSpinBox.hh</header>
+   <header location="global">SAKSpinBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKEscapeCharacterComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKEscapeCharacterComboBox.hh</header>
+   <header location="global">SAKEscapeCharacterComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKAffixesComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKAffixesComboBox.hh</header>
+   <header location="global">SAKAffixesComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKCrcAlgorithmComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKCrcAlgorithmComboBox.hh</header>
+   <header location="global">SAKCrcAlgorithmComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

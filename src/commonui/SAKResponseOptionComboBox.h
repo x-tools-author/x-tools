@@ -10,7 +10,7 @@
 #ifndef SAKRESPONSEOPTIONCOMBOBOX_HH
 #define SAKRESPONSEOPTIONCOMBOBOX_HH
 
-#include "SAKComboBox.hh"
+#include "SAKComboBox.h"
 
 class SAKResponseOptionComboBox : public SAKComboBox
 {

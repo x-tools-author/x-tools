@@ -10,7 +10,7 @@
 #ifndef SAKTRANSMITTERTOOLUI_HH
 #define SAKTRANSMITTERTOOLUI_HH
 
-#include "SAKTableModelToolUi.hh"
+#include "SAKTableModelToolUi.h"
 
 class SAKTransmitterToolUi : public SAKTableModelToolUi
 {

@@ -14,10 +14,10 @@
 #include <QJsonDocument>
 #include <QStandardItemModel>
 
-#include "SAKMenu.hh"
-#include "SAKPrestorerTool.hh"
-#include "SAKPrestorerToolUi.hh"
-#include "SAKPrestorerToolUiEditor.hh"
+#include "SAKMenu.h"
+#include "SAKPrestorerTool.h"
+#include "SAKPrestorerToolUi.h"
+#include "SAKPrestorerToolUiEditor.h"
 
 SAKPrestorerToolUi::SAKPrestorerToolUi(QWidget *parent)
     : SAKTableModelToolUi{"SAK.PrestorerToolUi", parent}

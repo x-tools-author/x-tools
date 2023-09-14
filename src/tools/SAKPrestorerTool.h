@@ -15,7 +15,7 @@
 #include <QVariant>
 #include <QAbstractTableModel>
 
-#include "SAKTableModelTool.hh"
+#include "SAKTableModelTool.h"
 
 class SAKPrestorerTool : public SAKTableModelTool
 {

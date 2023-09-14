@@ -10,8 +10,8 @@
 #include <QLineEdit>
 #include <QFileDialog>
 
-#include "SAKStorerTool.hh"
-#include "SAKStorerToolUi.hh"
+#include "SAKStorerTool.h"
+#include "SAKStorerToolUi.h"
 #include "ui_SAKStorerToolUi.h"
 
 SAKStorerToolUi::SAKStorerToolUi(QWidget *parent)

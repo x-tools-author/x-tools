@@ -38,7 +38,7 @@
   <customwidget>
    <class>SAKTableController</class>
    <extends>QWidget</extends>
-   <header location="global">SAKTableController.hh</header>
+   <header location="global">SAKTableController.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

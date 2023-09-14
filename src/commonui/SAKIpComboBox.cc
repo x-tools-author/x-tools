@@ -10,7 +10,7 @@
 #include <QNetworkInterface>
 #include <QNetworkAddressEntry>
 
-#include "SAKIpComboBox.hh"
+#include "SAKIpComboBox.h"
 
 SAKIpComboBox::SAKIpComboBox(QWidget *parent)
     : SAKComboBox(parent)

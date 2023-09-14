@@ -8,10 +8,10 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKInterface.h"
-#include "SAKUiInterface.hh"
-#include "SAKAnalyzerTool.hh"
+#include "SAKUiInterface.h"
+#include "SAKAnalyzerTool.h"
 #include "SAKDataStructure.h"
-#include "SAKAnalyzerToolUi.hh"
+#include "SAKAnalyzerToolUi.h"
 #include "ui_SAKAnalyzerToolUi.h"
 
 SAKAnalyzerToolUi::SAKAnalyzerToolUi(QWidget *parent)

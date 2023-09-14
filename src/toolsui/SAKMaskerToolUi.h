@@ -10,7 +10,7 @@
 #ifndef SAKMASKERTOOLUI_HH
 #define SAKMASKERTOOLUI_HH
 
-#include "SAKBaseToolUi.hh"
+#include "SAKBaseToolUi.h"
 
 namespace Ui {
 class SAKMaskerToolUi;

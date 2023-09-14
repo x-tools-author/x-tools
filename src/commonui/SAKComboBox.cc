@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QLineEdit>
-#include "SAKComboBox.hh"
+#include "SAKComboBox.h"
 #include "SAKSettings.h"
 
 SAKComboBox::SAKComboBox(QWidget *parent)

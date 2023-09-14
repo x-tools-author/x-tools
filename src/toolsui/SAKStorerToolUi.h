@@ -10,7 +10,7 @@
 #ifndef SAKSTORERTOOLUI_HH
 #define SAKSTORERTOOLUI_HH
 
-#include "SAKBaseToolUi.hh"
+#include "SAKBaseToolUi.h"
 
 namespace Ui {
 class SAKStorerToolUi;

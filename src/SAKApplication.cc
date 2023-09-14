@@ -29,10 +29,10 @@
 
 #include "SAKSettings.h"
 #include "SAKTranslator.h"
-#include "SAKMainWindow.hh"
-#include "SAKApplication.hh"
+#include "SAKMainWindow.h"
+#include "SAKApplication.h"
 #include "SAKDataStructure.h"
-#include "SAKSystemTrayIcon.hh"
+#include "SAKSystemTrayIcon.h"
 
 QDate buildDate = QLocale(QLocale::English).toDate(
             QString(__DATE__).replace("  ", " 0"),

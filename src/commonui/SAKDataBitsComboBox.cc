@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QSerialPort>
-#include "SAKDataBitsComboBox.hh"
+#include "SAKDataBitsComboBox.h"
 
 SAKDataBitsComboBox::SAKDataBitsComboBox(QWidget *parent)
     : SAKComboBox(parent)

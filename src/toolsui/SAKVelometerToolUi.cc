@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKVelometerTool.hh"
-#include "SAKVelometerToolUi.hh"
+#include "SAKVelometerTool.h"
+#include "SAKVelometerToolUi.h"
 #include "ui_SAKVelometerToolUi.h"
 
 SAKVelometerToolUi::SAKVelometerToolUi(QWidget *parent)

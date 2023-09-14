@@ -11,7 +11,7 @@
 #define SAKUDPCLIENTTOOL_H
 
 #include <QUdpSocket>
-#include "SAKSocketClientTool.hh"
+#include "SAKSocketClientTool.h"
 
 class SAKUdpClientTool : public SAKSocketClientTool
 {

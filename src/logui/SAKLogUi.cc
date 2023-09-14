@@ -12,8 +12,8 @@
 #include <QDesktopServices>
 #include <QStandardItemModel>
 
-#include "SAKLog.hh"
-#include "SAKLogUi.hh"
+#include "SAKLog.h"
+#include "SAKLogUi.h"
 
 #include "ui_SAKLogUi.h"
 

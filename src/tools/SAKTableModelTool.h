@@ -10,7 +10,7 @@
 #ifndef SAKTABLEMODELTOOL_HH
 #define SAKTABLEMODELTOOL_HH
 
-#include "SAKBaseTool.hh"
+#include "SAKBaseTool.h"
 #include "SAKTableModel.h"
 
 class SAKTableModelTool : public SAKBaseTool

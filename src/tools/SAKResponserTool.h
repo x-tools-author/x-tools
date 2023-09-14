@@ -14,7 +14,7 @@
 #include <QVariant>
 #include <QAbstractTableModel>
 
-#include "SAKTableModelTool.hh"
+#include "SAKTableModelTool.h"
 
 #define SAK_STR_PROPERTY(name) Q_PROPERTY(QString name READ name CONSTANT)
 

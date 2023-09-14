@@ -10,7 +10,7 @@
 #include <QWebSocket>
 
 #include "SAKInterface.h"
-#include "SAKWebSocketServerTool.hh"
+#include "SAKWebSocketServerTool.h"
 
 #define WS_ERR_SIGNAL void(QWebSocket::*)(QAbstractSocket::SocketError)
 

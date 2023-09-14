@@ -11,7 +11,7 @@
 
 #include "SAKSettings.h"
 #include "SAKHighlighter.h"
-#include "SAKToolBoxUiOutputMenu.hh"
+#include "SAKToolBoxUiOutputMenu.h"
 #include "ui_SAKToolBoxUiOutputMenu.h"
 
 SAKToolBoxUiOutputMenu::SAKToolBoxUiOutputMenu(const QString &settingsGroup,

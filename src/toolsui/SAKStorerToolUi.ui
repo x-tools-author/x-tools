@@ -123,17 +123,17 @@
   <customwidget>
    <class>SAKCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">SAKCheckBox.hh</header>
+   <header location="global">SAKCheckBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKTextFormatComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKTextFormatComboBox.hh</header>
+   <header location="global">SAKTextFormatComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKLineEdit</class>
    <extends>QLineEdit</extends>
-   <header location="global">SAKLineEdit.hh</header>
+   <header location="global">SAKLineEdit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

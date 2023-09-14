@@ -18,7 +18,7 @@
 #include "SAKInterface.h"
 #include "SAKCrcInterface.h"
 #include "SAKDataStructure.h"
-#include "SAKResponserTool.hh"
+#include "SAKResponserTool.h"
 
 SAKResponserTool::SAKResponserTool(QObject *parent)
     : SAKTableModelTool{"sak.responsertool", parent}

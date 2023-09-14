@@ -11,7 +11,7 @@
 
 #include "SAKInterface.h"
 #include "SAKCompatibility.h"
-#include "SAKUdpClientTool.hh"
+#include "SAKUdpClientTool.h"
 
 SAKUdpClientTool::SAKUdpClientTool(QObject *parent)
     : SAKSocketClientTool{"sak.udpclienttool", parent}

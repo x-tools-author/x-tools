@@ -12,7 +12,7 @@
 
 #include <QList>
 #include <QMutex>
-#include "SAKBaseTool.hh"
+#include "SAKBaseTool.h"
 
 class SAKVelometerTool : public SAKBaseTool
 {

@@ -13,7 +13,7 @@
 
 #include "SAKInterface.h"
 #include "SAKCrcInterface.h"
-#include "SAKPrestorerTool.hh"
+#include "SAKPrestorerTool.h"
 #include "SAKDataStructure.h"
 
 SAKPrestorerTool::SAKPrestorerTool(QObject *parent)

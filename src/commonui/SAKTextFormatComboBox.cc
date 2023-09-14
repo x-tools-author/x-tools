@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKDataStructure.h"
-#include "SAKTextFormatComboBox.hh"
+#include "SAKTextFormatComboBox.h"
 
 SAKTextFormatComboBox::SAKTextFormatComboBox(QWidget *parent)
     : SAKComboBox(parent)
