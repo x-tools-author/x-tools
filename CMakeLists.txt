@@ -68,7 +68,7 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Gui Widgets WebSockets Ne
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Widgets WebSockets Network SerialPort SerialBus Bluetooth)
 
 if (${QT_VERSION} VERSION_LESS "6.5")
-    message(SEND_ERROR "The Qt version is too old, please using Qt6.5 or later.")
+    message(WARNING "The Qt version is too old, please using Qt6.5 or later.")
 endif ()
 
 # Assistant module
@@ -120,8 +120,8 @@ file(GLOB APP_SOURCES
     src/SAKSystemTrayIcon.cc
     SAKResources.qrc
 )
-    
-qt_add_executable(QtSwissArmyKnife MANUAL_FINALIZATION
+
+set(SAK_SOURCES
     ${ASSISTANT_SOURCES}
     ${ASSISTANT_UI_SOURCES}
     ${COMMON_SOURCES}
@@ -136,6 +136,16 @@ qt_add_executable(QtSwissArmyKnife MANUAL_FINALIZATION
     ${TOOLS_UI_SOURCES}
     ${APP_SOURCES}
 )
+
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    qt_add_executable(QtSwissArmyKnife MANUAL_FINALIZATION ${SAK_SOURCES})
+else()
+    if(ANDROID)
+        add_library(QtSwissArmyKnife SHARED ${SAK_SOURCES})
+    else()
+        add_executable(QtSwissArmyKnife ${SAK_SOURCES})
+    endif()
+endif()
 
 target_link_libraries(QtSwissArmyKnife PRIVATE
     Qt${QT_VERSION_MAJOR}::Widgets
