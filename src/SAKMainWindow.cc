@@ -196,7 +196,7 @@ void SAKMainWindow::initFileMenu()
     });
     windowMenu->addAction(modbusAction);
 #endif
-#ifdef SAK_IMPORT_MODULE_MODBUS
+#ifdef SAK_IMPORT_MODULE_CANBUSUI
     QAction *canbusAction = new QAction("CANBus Studio", this);
     connect(canbusAction, &QAction::triggered, this, [=](){
         SAKCanBusUi *w = new SAKCanBusUi();
