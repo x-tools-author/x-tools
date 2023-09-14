@@ -9,6 +9,7 @@
  *****************************************************************************/
 #include "SAKToolFactory.hh"
 #include "SAKToolBoxUiFactory.hh"
+#if 0
 #include "SAKTcpClientToolBoxUi.hh"
 #include "SAKTcpServerToolBoxUi.hh"
 #include "SAKUdpClientToolBoxUi.hh"
@@ -18,6 +19,7 @@
 #include "SAKBlePeripheralToolBoxUi.hh"
 #include "SAKWebSocketClientToolBoxUi.hh"
 #include "SAKWebSocketServerToolBoxUi.hh"
+#endif
 
 SAKToolBoxUiFactory::SAKToolBoxUiFactory(QObject *parent)
     : QObject{parent}
@@ -41,13 +43,14 @@ QList<int> SAKToolBoxUiFactory::supportedTools()
          << SAKToolFactory::TcpServerTool
          << SAKToolFactory::WebSocketClientTool
          << SAKToolFactory::WebSocketServerTool
-         << SAKToolFactory::BleCentral
+         << SAKToolFactory::BleCentralTool
          << SAKToolFactory::BlePeriheral;
     return list;
 }
 
 SAKToolBoxUi *SAKToolBoxUiFactory::createToolBoxUi(int type)
 {
+#if 0
     if (type == SAKToolFactory::SerialportTool) {
         return new SAKSerialPortToolBoxUi();
     } else if (type == SAKToolFactory::BleCentral) {
@@ -67,6 +70,7 @@ SAKToolBoxUi *SAKToolBoxUiFactory::createToolBoxUi(int type)
     } else if (type == SAKToolFactory::WebSocketServerTool) {
         return new SAKWebSocketServerToolBoxUi();
     }
+#endif
 
     return Q_NULLPTR;
 }
