@@ -1,34 +1,34 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/SAKAnalyzerTool.hh \
-    $$PWD/SAKBaseTool.hh \
-    $$PWD/SAKBleCentralTool.hh \
-    $$PWD/SAKCommunicationTool.hh \
-    $$PWD/SAKEmitterTool.hh \
-    $$PWD/SAKMaskerTool.hh \
-    $$PWD/SAKPrestorerTool.hh \
-    $$PWD/SAKResponserTool.hh \
-    $$PWD/SAKSerialPortTool.hh \
-    $$PWD/SAKSerialPortTransmitterTool.hh \
-    $$PWD/SAKSocketClientTool.hh \
-    $$PWD/SAKSocketClientTransmitterTool.hh \
-    $$PWD/SAKSocketServerTool.hh \
-    $$PWD/SAKStatisticianTool.hh \
-    $$PWD/SAKStorerTool.hh \
-    $$PWD/SAKTableModelTool.hh \
-    $$PWD/SAKTcpClientTool.hh \
-    $$PWD/SAKTcpServerTool.hh \
-    $$PWD/SAKTcpTransmitterTool.hh \
-    $$PWD/SAKToolFactory.hh \
-    $$PWD/SAKTransmitterTool.hh \
-    $$PWD/SAKUdpClientTool.hh \
-    $$PWD/SAKUdpServerTool.hh \
-    $$PWD/SAKUdpTransmitterTool.hh \
-    $$PWD/SAKVelometerTool.hh \
-    $$PWD/SAKWebSocketClientTool.hh \
-    $$PWD/SAKWebSocketServerTool.hh \
-    $$PWD/SAKWebSocketTransmitterTool.hh
+    $$PWD/SAKAnalyzerTool.h \
+    $$PWD/SAKBaseTool.h \
+    $$PWD/SAKBleCentralTool.h \
+    $$PWD/SAKCommunicationTool.h \
+    $$PWD/SAKEmitterTool.h \
+    $$PWD/SAKMaskerTool.h \
+    $$PWD/SAKPrestorerTool.h \
+    $$PWD/SAKResponserTool.h \
+    $$PWD/SAKSerialPortTool.h \
+    $$PWD/SAKSerialPortTransmitterTool.h \
+    $$PWD/SAKSocketClientTool.h \
+    $$PWD/SAKSocketClientTransmitterTool.h \
+    $$PWD/SAKSocketServerTool.h \
+    $$PWD/SAKStatisticianTool.h \
+    $$PWD/SAKStorerTool.h \
+    $$PWD/SAKTableModelTool.h \
+    $$PWD/SAKTcpClientTool.h \
+    $$PWD/SAKTcpServerTool.h \
+    $$PWD/SAKTcpTransmitterTool.h \
+    $$PWD/SAKToolFactory.h \
+    $$PWD/SAKTransmitterTool.h \
+    $$PWD/SAKUdpClientTool.h \
+    $$PWD/SAKUdpServerTool.h \
+    $$PWD/SAKUdpTransmitterTool.h \
+    $$PWD/SAKVelometerTool.h \
+    $$PWD/SAKWebSocketClientTool.h \
+    $$PWD/SAKWebSocketServerTool.h \
+    $$PWD/SAKWebSocketTransmitterTool.h
 
 SOURCES += \
     $$PWD/SAKAnalyzerTool.cc \

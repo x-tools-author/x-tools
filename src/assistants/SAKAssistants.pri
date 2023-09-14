@@ -6,8 +6,8 @@ include($$PWD/filecheckassistant/SAKToolFileCheckAssistant.pri)
 include($$PWD/broadcastassistant/SAKToolBroadcastAssistant.pri)
 
 HEADERS += \
-    $$PWD/SAKAssistantsFactory.hh \
-    $$PWD/SAKBaseAssistant.hh
+    $$PWD/SAKAssistantsFactory.h \
+    $$PWD/SAKBaseAssistant.h
 
 SOURCES += \
     $$PWD/SAKAssistantsFactory.cc \

@@ -120,9 +120,9 @@ FORMS += \
     src/SAKMainWindow.ui
 
 HEADERS += \
-    src/SAKApplication.hh \
-    src/SAKMainWindow.hh \
-    src/SAKSystemTrayIcon.hh
+    src/SAKApplication.h \
+    src/SAKMainWindow.h \
+    src/SAKSystemTrayIcon.h
 
 SOURCES += \
     src/SAKApplication.cc \
@@ -157,7 +157,7 @@ SAKQmlUi {
         greaterThan(QT_MINOR_VERSION, 3) {
             QT += quick quickcontrols2
 
-            HEADERS += src/SAKGuiApplication.hh
+            HEADERS += src/SAKGuiApplication.h
             SOURCES += src/SAKGuiApplication.cc
             RESOURCES += SAKQmlResources.qrc
         }

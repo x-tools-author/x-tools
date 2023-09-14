@@ -1,7 +1,7 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/SAKToolBox.hh
+    $$PWD/SAKToolBox.h
 
 SOURCES += \
     $$PWD/SAKToolBox.cc

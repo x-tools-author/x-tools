@@ -2,8 +2,8 @@ DEFINES += SAK_IMPORT_MODULE_BROADCASTASSISTANT
 INCLUDEPATH += $$PWD/src
 
 HEADERS += \
-    $$PWD/src/SAKToolBroadcastAssistant.hh \
-    $$PWD/src/SAKToolBroadcastThread.hh
+    $$PWD/src/SAKToolBroadcastAssistant.h \
+    $$PWD/src/SAKToolBroadcastThread.h
 
 SOURCES += \
     $$PWD/src/SAKToolBroadcastAssistant.cc \

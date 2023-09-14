@@ -9,8 +9,8 @@ contains(DEFINES, SAK_IMPORT_MODULE_FILECHECKASSISTANT){
         $$PWD/src/SAKToolFileCheckAssistant.ui
 
     HEADERS += \
-        $$PWD/src/QtCryptographicHashCalculator.hh \
-        $$PWD/src/SAKToolFileCheckAssistant.hh
+        $$PWD/src/QtCryptographicHashCalculator.h \
+        $$PWD/src/SAKToolFileCheckAssistant.h
 
     SOURCES += \
         $$PWD/src/QtCryptographicHashCalculator.cc \

@@ -4,7 +4,7 @@ INCLUDEPATH += \
     $$PWD/src
 
 HEADERS += \
-    $$PWD/src/SAKToolAsciiAssistant.hh
+    $$PWD/src/SAKToolAsciiAssistant.h
 
 SOURCES += \
     $$PWD/src/SAKToolAsciiAssistant.cc

@@ -4,7 +4,7 @@ FORMS += \
     $$PWD/SAKLogUi.ui
 
 HEADERS += \
-    $$PWD/SAKLogUi.hh
+    $$PWD/SAKLogUi.h
 
 SOURCES += \
     $$PWD/SAKLogUi.cc

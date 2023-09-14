@@ -7,10 +7,10 @@ FORMS += \
     $$PWD/SAKToolBoxUiOutputMenu.ui
 
 HEADERS += \
-    $$PWD/SAKToolBoxUi.hh \
-    $$PWD/SAKToolBoxUiCommunicationMenu.hh \
-    $$PWD/SAKToolBoxUiInputMenu.hh \
-    $$PWD/SAKToolBoxUiOutputMenu.hh
+    $$PWD/SAKToolBoxUi.h \
+    $$PWD/SAKToolBoxUiCommunicationMenu.h \
+    $$PWD/SAKToolBoxUiInputMenu.h \
+    $$PWD/SAKToolBoxUiOutputMenu.h
 
 SOURCES += \
     $$PWD/SAKToolBoxUi.cc \

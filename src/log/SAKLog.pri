@@ -1,7 +1,7 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/SAKLog.hh
+    $$PWD/SAKLog.h
 
 SOURCES += \
     $$PWD/SAKLog.cc

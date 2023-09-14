@@ -15,7 +15,7 @@ isEqual(QT_MAJOR_VERSION, 5){
 
 contains(DEFINES, SAK_IMPORT_MODULE_CANBUS) {
     HEADERS += \
-    $$PWD/SAKCanBus.hh
+    $$PWD/SAKCanBus.h
 
     SOURCES += \
     $$PWD/SAKCanBus.cc

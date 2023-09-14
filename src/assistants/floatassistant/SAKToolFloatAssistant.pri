@@ -7,7 +7,7 @@ FORMS += \
     $$PWD/src/SAKToolFloatAssistant.ui
 
 HEADERS += \
-    $$PWD/src/SAKToolFloatAssistant.hh
+    $$PWD/src/SAKToolFloatAssistant.h
 
 SOURCES += \
     $$PWD/src/SAKToolFloatAssistant.cc

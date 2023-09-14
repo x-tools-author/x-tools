@@ -1,32 +1,32 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/SAKAnalyzerToolUi.hh \
-    $$PWD/SAKBaseToolUi.hh \
-    $$PWD/SAKBleCentralToolUi.hh \
-    $$PWD/SAKCommunicationToolUi.hh \
-    $$PWD/SAKEmitterToolUi.hh \
-    $$PWD/SAKEmitterToolUiEditor.hh \
-    $$PWD/SAKMaskerToolUi.hh \
-    $$PWD/SAKPrestorerToolUi.hh \
-    $$PWD/SAKPrestorerToolUiEditor.hh \
-    $$PWD/SAKResponserToolUi.hh \
-    $$PWD/SAKResponserToolUiEditor.hh \
-    $$PWD/SAKSerialPortToolUi.hh \
-    $$PWD/SAKSerialPortTransmitterToolUi.hh \
-    $$PWD/SAKSerialPortTransmitterToolUiEditor.hh \
-    $$PWD/SAKSocketClientToolUi.hh \
-    $$PWD/SAKSocketClientTransmitterToolUi.hh \
-    $$PWD/SAKSocketClientTransmitterToolUiEditor.hh \
-    $$PWD/SAKSocketServerToolUi.hh \
-    $$PWD/SAKStatisticianToolUi.hh \
-    $$PWD/SAKStorerToolUi.hh \
-    $$PWD/SAKTableModelToolUi.hh \
-    $$PWD/SAKTcpTransmitterToolUi.hh \
-    $$PWD/SAKTransmitterToolUi.hh \
-    $$PWD/SAKUdpTransmitterToolUi.hh \
-    $$PWD/SAKVelometerToolUi.hh \
-    $$PWD/SAKWebSocketTransmitterToolUi.hh
+    $$PWD/SAKAnalyzerToolUi.h \
+    $$PWD/SAKBaseToolUi.h \
+    $$PWD/SAKBleCentralToolUi.h \
+    $$PWD/SAKCommunicationToolUi.h \
+    $$PWD/SAKEmitterToolUi.h \
+    $$PWD/SAKEmitterToolUiEditor.h \
+    $$PWD/SAKMaskerToolUi.h \
+    $$PWD/SAKPrestorerToolUi.h \
+    $$PWD/SAKPrestorerToolUiEditor.h \
+    $$PWD/SAKResponserToolUi.h \
+    $$PWD/SAKResponserToolUiEditor.h \
+    $$PWD/SAKSerialPortToolUi.h \
+    $$PWD/SAKSerialPortTransmitterToolUi.h \
+    $$PWD/SAKSerialPortTransmitterToolUiEditor.h \
+    $$PWD/SAKSocketClientToolUi.h \
+    $$PWD/SAKSocketClientTransmitterToolUi.h \
+    $$PWD/SAKSocketClientTransmitterToolUiEditor.h \
+    $$PWD/SAKSocketServerToolUi.h \
+    $$PWD/SAKStatisticianToolUi.h \
+    $$PWD/SAKStorerToolUi.h \
+    $$PWD/SAKTableModelToolUi.h \
+    $$PWD/SAKTcpTransmitterToolUi.h \
+    $$PWD/SAKTransmitterToolUi.h \
+    $$PWD/SAKUdpTransmitterToolUi.h \
+    $$PWD/SAKVelometerToolUi.h \
+    $$PWD/SAKWebSocketTransmitterToolUi.h
 
 SOURCES += \
     $$PWD/SAKAnalyzerToolUi.cc \

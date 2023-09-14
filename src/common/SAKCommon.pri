@@ -1,23 +1,23 @@
 INCLUDEPATH += src/common
 
 HEADERS += \
-    $$PWD/SAKBleScanner.hh \
-    $$PWD/SAKCommonCrcInterface.hh \
-    $$PWD/SAKCommonDataStructure.hh \
-    $$PWD/SAKCommonInterface.hh \
-    $$PWD/SAKCompatibility.hh \
-    $$PWD/SAKCrcInterface.hh \
-    $$PWD/SAKDataStructure.hh \
-    $$PWD/SAKHighlighter.hh \
-    $$PWD/SAKInterface.hh \
-    $$PWD/SAKNetworkInterfaceScanner.hh \
-    $$PWD/SAKSerialPortScanner.hh \
-    $$PWD/SAKSettings.hh \
-    $$PWD/SAKTableModel.hh \
-    $$PWD/SAKTranslator.hh
+    $$PWD/SAKBleScanner.h \
+    $$PWD/SAKCommonCrcInterface.h \
+    $$PWD/SAKCommonDataStructure.h \
+    $$PWD/SAKCommonInterface.h \
+    $$PWD/SAKCompatibility.h \
+    $$PWD/SAKCrcInterface.h \
+    $$PWD/SAKDataStructure.h \
+    $$PWD/SAKHighlighter.h \
+    $$PWD/SAKInterface.h \
+    $$PWD/SAKNetworkInterfaceScanner.h \
+    $$PWD/SAKSerialPortScanner.h \
+    $$PWD/SAKSettings.h \
+    $$PWD/SAKTableModel.h \
+    $$PWD/SAKTranslator.h
 
 SOURCES += \
-    $$PWD/SAKBleScanner.cpp \
+    $$PWD/SAKBleScanner.cc \
     $$PWD/SAKCommonCrcInterface.cc \
     $$PWD/SAKCommonDataStructure.cc \
     $$PWD/SAKCommonInterface.cc \

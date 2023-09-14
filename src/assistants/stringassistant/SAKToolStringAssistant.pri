@@ -7,7 +7,7 @@ FORMS += \
     $$PWD/src/SAKToolStringAssistant.ui
 
 HEADERS += \
-    $$PWD/src/SAKToolStringAssistant.hh
+    $$PWD/src/SAKToolStringAssistant.h
 
 SOURCES += \
     $$PWD/src/SAKToolStringAssistant.cc
