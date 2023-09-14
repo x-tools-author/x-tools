@@ -10,7 +10,7 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-#include "SAKBaudRateComboBox.hh"
+#include "SAKBaudRateComboBox.h"
 
 SAKBaudRateComboBox::SAKBaudRateComboBox(QWidget *parent)
     : SAKComboBox(parent)

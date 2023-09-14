@@ -23,4 +23,4 @@ private:
     QStringList mKeyWords;
 };
 
-#endif // SAKHIGHLIGHTER_HH
+#endif // SAKHIGHLIGHTER_H

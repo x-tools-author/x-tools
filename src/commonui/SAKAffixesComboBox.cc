@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKDataStructure.hh"
-#include "SAKAffixesComboBox.hh"
+#include "SAKDataStructure.h"
+#include "SAKAffixesComboBox.h"
 
 SAKAffixesComboBox::SAKAffixesComboBox(QWidget *parent)
     : SAKComboBox(parent)

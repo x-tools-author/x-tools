@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKTABLEMODEL_HH
-#define SAKTABLEMODEL_HH
+#ifndef SAKTABLEMODEL_H
+#define SAKTABLEMODEL_H
 
 #include <QAbstractTableModel>
 
@@ -63,4 +63,4 @@ signals:
                              int role = Qt::DisplayRole);
 };
 
-#endif // SAKTABLEMODEL_HH
+#endif // SAKTABLEMODEL_H

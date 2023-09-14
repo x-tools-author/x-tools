@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKInterface.hh"
+#include "SAKInterface.h"
 #include "SAKUiInterface.hh"
 #include "SAKAnalyzerTool.hh"
-#include "SAKDataStructure.hh"
+#include "SAKDataStructure.h"
 #include "SAKAnalyzerToolUi.hh"
 #include "ui_SAKAnalyzerToolUi.h"
 

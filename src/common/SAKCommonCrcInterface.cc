@@ -11,7 +11,7 @@
 #ifndef SAK_IMPORT_MODULE_TESTLIB
 #include <QStandardItemModel>
 #endif
-#include "SAKCommonCrcInterface.hh"
+#include "SAKCommonCrcInterface.h"
 
 SAKCommonCrcInterface::SAKCommonCrcInterface(QObject *parent)
     :QObject (parent)

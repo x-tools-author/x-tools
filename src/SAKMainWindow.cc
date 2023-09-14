@@ -49,13 +49,13 @@
 #include <QDesktopServices>
 
 #include "SAKLogUi.hh"
-#include "SAKSettings.hh"
-#include "SAKInterface.hh"
+#include "SAKSettings.h"
+#include "SAKInterface.h"
 #include "SAKToolBoxUi.hh"
 #include "SAKMainWindow.hh"
-#include "SAKTranslator.hh"
+#include "SAKTranslator.h"
 #include "SAKUiInterface.hh"
-#include "SAKDataStructure.hh"
+#include "SAKDataStructure.h"
 #include "SAKAssistantsFactory.h"
 
 #ifdef SAK_IMPORT_MODULE_CANBUSUI

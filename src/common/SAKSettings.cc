@@ -10,8 +10,8 @@
 #include <QStandardPaths>
 #include <QCoreApplication>
 
-#include "SAKSettings.hh"
-#include "SAKDataStructure.hh"
+#include "SAKSettings.h"
+#include "SAKDataStructure.h"
 
 static const QString fileName()
 {

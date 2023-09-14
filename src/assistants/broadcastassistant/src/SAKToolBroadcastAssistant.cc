@@ -11,7 +11,7 @@
 #include <QNetworkInterface>
 #include <QNetworkAddressEntry>
 
-#include "SAKCommonDataStructure.hh"
+#include "SAKCommonDataStructure.h"
 #include "SAKToolBroadcastAssistant.h"
 #include "ui_SAKToolBroadcastAssistant.h"
 

@@ -12,7 +12,7 @@
 #include <QDesktopServices>
 #include <QLoggingCategory>
 
-#include "SAKCommonCrcInterface.hh"
+#include "SAKCommonCrcInterface.h"
 #include "SAKToolCRCAssistant.h"
 #include "ui_SAKToolCRCAssistant.h"
 

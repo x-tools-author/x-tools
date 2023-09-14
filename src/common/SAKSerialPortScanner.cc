@@ -3,7 +3,7 @@
  *****************************************************************************/
 #include <QSerialPort>
 #include <QSerialPortInfo>
-#include "SAKSerialPortScanner.hh"
+#include "SAKSerialPortScanner.h"
 
 SAKSerialPortScanner::SAKSerialPortScanner(QObject *parent)
     : QObject{parent}

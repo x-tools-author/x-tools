@@ -12,7 +12,7 @@
 #include <QStandardItemModel>
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
-#include "SAKCommonDataStructure.hh"
+#include "SAKCommonDataStructure.h"
 
 SAKCommonDataStructure::SAKCommonDataStructure(QObject* parent)
     :QObject (parent)

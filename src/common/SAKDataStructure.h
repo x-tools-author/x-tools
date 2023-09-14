@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKDATASTRUCTURE_HH
-#define SAKDATASTRUCTURE_HH
+#ifndef SAKDATASTRUCTURE_H
+#define SAKDATASTRUCTURE_H
 
 #include <Qt>
 #include <QObject>
@@ -100,4 +100,4 @@ public:
     Q_INVOKABLE static QString cookEscapeCharacter(int option, const QString &str);
 };
 
-#endif // SAKDATASTRUCTURE_HH
+#endif // SAKDATASTRUCTURE_H

@@ -15,7 +15,7 @@
 #include <QStandardItemModel>
 
 #include "SAKMenu.hh"
-#include "SAKSettings.hh"
+#include "SAKSettings.h"
 #include "SAKTableModelTool.hh"
 #include "SAKTableModelToolUi.hh"
 #include "ui_SAKTableModelToolUi.h"

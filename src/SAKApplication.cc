@@ -27,11 +27,11 @@
 #include <QSplashScreen>
 #include <QStandardPaths>
 
-#include "SAKSettings.hh"
-#include "SAKTranslator.hh"
+#include "SAKSettings.h"
+#include "SAKTranslator.h"
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
-#include "SAKDataStructure.hh"
+#include "SAKDataStructure.h"
 #include "SAKSystemTrayIcon.hh"
 
 QDate buildDate = QLocale(QLocale::English).toDate(

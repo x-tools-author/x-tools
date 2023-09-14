@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKCRCINTERFACE_HH
-#define SAKCRCINTERFACE_HH
+#ifndef SAKCRCINTERFACE_H
+#define SAKCRCINTERFACE_H
 
 #include <QObject>
 #include <QStringList>

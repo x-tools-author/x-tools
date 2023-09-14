@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKToolStringAssistant.h"
-#include "SAKCommonDataStructure.hh"
+#include "SAKCommonDataStructure.h"
 #include "ui_SAKToolStringAssistant.h"
 
 SAKToolStringAssistant::SAKToolStringAssistant(QWidget *parent)

@@ -1,4 +1,4 @@
-﻿/******************************************************************************
+/******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,13 +7,13 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKBLUETOOTHDEVICEINFOCOMBOBOX_HH
-#define SAKBLUETOOTHDEVICEINFOCOMBOBOX_HH
+#ifndef SAKBLUETOOTHDEVICEINFOCOMBOBOX_H
+#define SAKBLUETOOTHDEVICEINFOCOMBOBOX_H
 
 #include <QEvent>
 
 #include "SAKComboBox.hh"
-#include "SAKBleScanner.hh"
+#include "SAKBleScanner.h"
 
 class SAKBluetoothDeviceInfoComboBox : public SAKComboBox
 {
@@ -43,4 +43,4 @@ private slots:
     void onErrorOccurred(const QString &errStr);
 };
 
-#endif // SAKBLUETOOTHDEVICEINFOCOMBOBOX_HH
+#endif // SAKBLUETOOTHDEVICEINFOCOMBOBOX_H

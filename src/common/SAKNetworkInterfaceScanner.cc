@@ -4,7 +4,7 @@
 #include <QHostAddress>
 #include <QNetworkInterface>
 
-#include "SAKNetworkInterfaceScanner.hh"
+#include "SAKNetworkInterfaceScanner.h"
 
 SAKNetworkInterfaceScanner::SAKNetworkInterfaceScanner(QObject *parent)
     : QObject{parent}

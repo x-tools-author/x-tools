@@ -15,7 +15,7 @@
 #include <QRegularExpressionValidator>
 
 #include "SAKUiInterface.hh"
-#include "SAKDataStructure.hh"
+#include "SAKDataStructure.h"
 
 SAKUiInterface::SAKUiInterface(QObject *parent)
     : QObject{parent}

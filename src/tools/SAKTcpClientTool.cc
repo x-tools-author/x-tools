@@ -9,8 +9,8 @@
  *****************************************************************************/
 #include <QHostAddress>
 
-#include "SAKInterface.hh"
-#include "SAKCompatibility.hh"
+#include "SAKInterface.h"
+#include "SAKCompatibility.h"
 #include "SAKTcpClientTool.hh"
 
 SAKTcpClientTool::SAKTcpClientTool(QObject *parent)

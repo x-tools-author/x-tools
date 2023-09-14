@@ -1,8 +1,8 @@
 /******************************************************************************
  * Copyright 2023 wuuhaii(qsaker@foxmail.com). All rights reserved.
  *****************************************************************************/
-#ifndef SAKSERIALPORTSCANNER_HH
-#define SAKSERIALPORTSCANNER_HH
+#ifndef SAKSERIALPORTSCANNER_H
+#define SAKSERIALPORTSCANNER_H
 
 #include <QTimer>
 #include <QObject>

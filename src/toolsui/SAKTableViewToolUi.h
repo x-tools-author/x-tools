@@ -11,7 +11,7 @@
 #define SAKTABLEVIEWTOOLUI_HH
 
 #include "SAKBaseToolUi.hh"
-#include "SAKTableModel.hh"
+#include "SAKTableModel.h"
 
 class SAKTableViewToolUi : public SAKBaseToolUi
 {

@@ -15,7 +15,7 @@
 #include <QtGlobal>
 #include <QLoggingCategory>
 
-#include "SAKTableModel.hh"
+#include "SAKTableModel.h"
 
 class SAKLog : public QThread
 {

@@ -12,8 +12,8 @@
 #include <QLoggingCategory>
 
 #include "SAKLog.hh"
-#include "SAKSettings.hh"
-#include "SAKInterface.hh"
+#include "SAKSettings.h"
+#include "SAKInterface.h"
 #include "SAKApplication.hh"
 
 #ifdef SAK_IMPORT_MODULE_QML

@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKLineEdit.hh"
-#include "SAKSettings.hh"
+#include "SAKSettings.h"
 
 SAKLineEdit::SAKLineEdit(QWidget *parent)
     : QLineEdit(parent)

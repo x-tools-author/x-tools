@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKTRANSLATOR_HH
-#define SAKTRANSLATOR_HH
+#ifndef SAKTRANSLATOR_H
+#define SAKTRANSLATOR_H
 
 #include <QMap>
 #include <QObject>
@@ -39,4 +39,4 @@ signals:
     void languageChanged();
 };
 
-#endif // SAKTRANSLATOR_HH
+#endif // SAKTRANSLATOR_H

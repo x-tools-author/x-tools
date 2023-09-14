@@ -21,8 +21,8 @@
 #include <QSerialPortInfo>
 #endif
 
-#include "SAKCommonInterface.hh"
-#include "SAKCommonCrcInterface.hh"
+#include "SAKCommonInterface.h"
+#include "SAKCommonCrcInterface.h"
 
 SAKCommonInterface::SAKCommonInterface(QObject *parent)
     :QObject (parent)

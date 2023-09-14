@@ -13,7 +13,7 @@
 #include <QJsonDocument>
 #include <QCoreApplication>
 
-#include "SAKTranslator.hh"
+#include "SAKTranslator.h"
 
 SAKTranslator::SAKTranslator(QObject *parent)
     : QObject{parent}

@@ -1,4 +1,4 @@
-﻿/****************************************************************************************
+/****************************************************************************************
  * Copyright 2018-2021 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ***************************************************************************************/
-#ifndef SAKCOMMONCRCINTERFACE_HH
-#define SAKCOMMONCRCINTERFACE_HH
+#ifndef SAKCOMMONCRCINTERFACE_H
+#define SAKCOMMONCRCINTERFACE_H
 
 #include <QObject>
 #ifndef SAK_IMPORT_MODULE_TESTLIB

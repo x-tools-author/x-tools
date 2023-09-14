@@ -9,7 +9,7 @@
  *****************************************************************************/
 #include <QMessageBox>
 #include <QBluetoothDeviceInfo>
-#include "SAKBluetoothDeviceInfoComboBox.hh"
+#include "SAKBluetoothDeviceInfoComboBox.h"
 
 SAKBluetoothDeviceInfoComboBox::SAKBluetoothDeviceInfoComboBox(QWidget *parent)
     : SAKComboBox(parent)

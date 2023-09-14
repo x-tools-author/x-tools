@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKSpinBox.hh"
-#include "SAKSettings.hh"
+#include "SAKSettings.h"
 
 SAKSpinBox::SAKSpinBox(QWidget *parent)
     : QSpinBox(parent)

@@ -12,9 +12,9 @@
 
 #include "SAKEmitterTool.hh"
 
-#include "SAKCrcInterface.hh"
-#include "SAKInterface.hh"
-#include "SAKDataStructure.hh"
+#include "SAKCrcInterface.h"
+#include "SAKInterface.h"
+#include "SAKDataStructure.h"
 
 SAKEmitterTool::SAKEmitterTool(QObject *parent)
     : SAKTableModelTool{"sak.emittertool", parent}

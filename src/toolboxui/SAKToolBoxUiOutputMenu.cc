@@ -9,8 +9,8 @@
  *****************************************************************************/
 #include <QWidgetAction>
 
-#include "SAKSettings.hh"
-#include "SAKHighlighter.hh"
+#include "SAKSettings.h"
+#include "SAKHighlighter.h"
 #include "SAKToolBoxUiOutputMenu.hh"
 #include "ui_SAKToolBoxUiOutputMenu.h"
 

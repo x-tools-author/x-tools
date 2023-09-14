@@ -7,9 +7,9 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKCrcInterface.hh"
-#include "SAKInterface.hh"
-#include "SAKDataStructure.hh"
+#include "SAKCrcInterface.h"
+#include "SAKInterface.h"
+#include "SAKDataStructure.h"
 
 SAKDataStructure::SAKDataStructure(QObject *parent)
     : QObject{parent}

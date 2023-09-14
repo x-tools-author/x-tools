@@ -9,7 +9,7 @@
  *****************************************************************************/
 #include <QLineEdit>
 #include "SAKComboBox.hh"
-#include "SAKSettings.hh"
+#include "SAKSettings.h"
 
 SAKComboBox::SAKComboBox(QWidget *parent)
     : QComboBox(parent)

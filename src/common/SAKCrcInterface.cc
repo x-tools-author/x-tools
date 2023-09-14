@@ -9,7 +9,7 @@
  *****************************************************************************/
 #include <QMetaEnum>
 
-#include "SAKCrcInterface.hh"
+#include "SAKCrcInterface.h"
 
 SAKCrcInterface::SAKCrcInterface(QObject *parent)
     :QObject (parent)

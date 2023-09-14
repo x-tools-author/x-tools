@@ -11,7 +11,7 @@
 #define SAKTABLEMODELTOOL_HH
 
 #include "SAKBaseTool.hh"
-#include "SAKTableModel.hh"
+#include "SAKTableModel.h"
 
 class SAKTableModelTool : public SAKBaseTool
 {

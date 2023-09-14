@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
-#include "SAKInterface.hh"
-#include "SAKCommonInterface.hh"
+#include "SAKInterface.h"
+#include "SAKCommonInterface.h"
 #include "SAKToolFloatAssistant.h"
 #include "ui_SAKToolFloatAssistant.h"
 

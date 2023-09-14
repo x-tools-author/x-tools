@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKTableModel.hh"
+#include "SAKTableModel.h"
 
 SAKTableModel::SAKTableModel(QObject *parent)
     : QAbstractTableModel{parent}

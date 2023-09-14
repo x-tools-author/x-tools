@@ -1,8 +1,8 @@
 /******************************************************************************
  * Copyright 2023 wuuhaii(qsaker@foxmail.com). All rights reserved.
  *****************************************************************************/
-#ifndef SAKNETWORKINTERFACESCANNER_HH
-#define SAKNETWORKINTERFACESCANNER_HH
+#ifndef SAKNETWORKINTERFACESCANNER_H
+#define SAKNETWORKINTERFACESCANNER_H
 
 #include <QTimer>
 #include <QObject>
@@ -44,4 +44,4 @@ private:
     Q_SIGNAL void enableAutoRefreshChanged();
 };
 
-#endif // SAKNETWORKINTERFACESCANNER_HH
+#endif // SAKNETWORKINTERFACESCANNER_H

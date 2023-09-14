@@ -15,9 +15,9 @@
 #include <QJsonDocument>
 #include <QStandardItemModel>
 
-#include "SAKInterface.hh"
-#include "SAKCrcInterface.hh"
-#include "SAKDataStructure.hh"
+#include "SAKInterface.h"
+#include "SAKCrcInterface.h"
+#include "SAKDataStructure.h"
 #include "SAKResponserTool.hh"
 
 SAKResponserTool::SAKResponserTool(QObject *parent)

@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKCHECKBOX_HH
-#define SAKCHECKBOX_HH
+#ifndef SAKCHECKBOX_H
+#define SAKCHECKBOX_H
 
 #include <QCheckBox>
 
@@ -28,4 +28,4 @@ private:
     void writeToSettingsFile();
 };
 
-#endif // SAKCHECKBOX_HH
+#endif // SAKCHECKBOX_H
