@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2020 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKTOOLSTRINGASSISTANT_HH
-#define SAKTOOLSTRINGASSISTANT_HH
+#ifndef SAKTOOLSTRINGASSISTANT_H
+#define SAKTOOLSTRINGASSISTANT_H
 
 #include <QDialog>
 
@@ -30,4 +30,4 @@ private slots:
     void on_outputFormatComboBox_currentTextChanged(const QString &arg1);
 };
 
-#endif // SAKTOOLSTRINGASSISTANT_HH
+#endif // SAKTOOLSTRINGASSISTANT_H

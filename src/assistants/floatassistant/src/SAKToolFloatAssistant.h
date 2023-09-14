@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2020 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKTOOLFLOATASSISTANT_HH
-#define SAKTOOLFLOATASSISTANT_HH
+#ifndef SAKTOOLFLOATASSISTANT_H
+#define SAKTOOLFLOATASSISTANT_H
 
 #include <QDialog>
 
@@ -37,4 +37,4 @@ private slots:
     void on_doubleRadioButton_clicked();
 };
 
-#endif // SAKTOOLFLOATASSISTANT_HH
+#endif // SAKTOOLFLOATASSISTANT_H

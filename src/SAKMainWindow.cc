@@ -56,7 +56,7 @@
 #include "SAKTranslator.hh"
 #include "SAKUiInterface.hh"
 #include "SAKDataStructure.hh"
-#include "SAKAssistantsFactory.hh"
+#include "SAKAssistantsFactory.h"
 
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
 #include "SAKCanBusUi.hh"

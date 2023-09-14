@@ -12,8 +12,8 @@
 #include <QDateTime>
 #include <QApplication>
 
-#include "QtCryptographicHashCalculator.hh"
-#include "SAKToolFileCheckAssistant.hh"
+#include "QtCryptographicHashCalculator.h"
+#include "SAKToolFileCheckAssistant.h"
 QtCryptographicHashCalculator::QtCryptographicHashCalculator(SAKToolFileCheckAssistant *controller, QObject *parent)
     :QThread (parent)
     ,mCryptographicHashController (controller)

@@ -11,8 +11,8 @@
 #include <QMetaEnum>
 #include <QFileDialog>
 
-#include "QtCryptographicHashCalculator.hh"
-#include "SAKToolFileCheckAssistant.hh"
+#include "QtCryptographicHashCalculator.h"
+#include "SAKToolFileCheckAssistant.h"
 #include "ui_SAKToolFileCheckAssistant.h"
 
 SAKToolFileCheckAssistant::SAKToolFileCheckAssistant(QWidget *parent)

@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKBASEASSISTANT_HH
-#define SAKBASEASSISTANT_HH
+#ifndef SAKBASEASSISTANT_H
+#define SAKBASEASSISTANT_H
 
 #include <QThread>
 #include <QLoggingCategory>
@@ -20,4 +20,4 @@ public:
     explicit SAKBaseAssistant(QObject *parent = nullptr);
 };
 
-#endif // SAKBASEASSISTANT_HH
+#endif // SAKBASEASSISTANT_H

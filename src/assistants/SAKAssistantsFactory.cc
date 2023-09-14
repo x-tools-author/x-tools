@@ -7,24 +7,24 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
  * the root of the source code directory.
  *****************************************************************************/
-#include "SAKAssistantsFactory.hh"
+#include "SAKAssistantsFactory.h"
 
 #include <QCoreApplication>
 
 #ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
-#include "SAKToolFileCheckAssistant.hh"
+#include "SAKToolFileCheckAssistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_CRCASSISTANT
-#include "SAKToolCRCAssistant.hh"
+#include "SAKToolCRCAssistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_QRCODEASSISTANT
 #include "SAKToolQRCodeCreator.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
-#include "SAKToolFloatAssistant.hh"
+#include "SAKToolFloatAssistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
-#include "SAKToolStringAssistant.hh"
+#include "SAKToolStringAssistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_ATASSISTANT
 #include "SAKAtAssistant.hh"

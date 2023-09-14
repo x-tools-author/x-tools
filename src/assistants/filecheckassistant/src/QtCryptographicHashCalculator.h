@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2018-2020 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef QTCRYPTOGRAPHICHASHCALCULATOR_HH
-#define QTCRYPTOGRAPHICHASHCALCULATOR_HH
+#ifndef QTCRYPTOGRAPHICHASHCALCULATOR_H
+#define QTCRYPTOGRAPHICHASHCALCULATOR_H
 
 #include <QThread>
 

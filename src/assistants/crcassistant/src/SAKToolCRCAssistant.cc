@@ -13,7 +13,7 @@
 #include <QLoggingCategory>
 
 #include "SAKCommonCrcInterface.hh"
-#include "SAKToolCRCAssistant.hh"
+#include "SAKToolCRCAssistant.h"
 #include "ui_SAKToolCRCAssistant.h"
 
 SAKToolCRCAssistant::SAKToolCRCAssistant(QWidget* parent)

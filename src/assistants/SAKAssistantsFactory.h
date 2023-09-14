@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
  * the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKASSISTANTSFACTORY_HH
-#define SAKASSISTANTSFACTORY_HH
+#ifndef SAKASSISTANTSFACTORY_H
+#define SAKASSISTANTSFACTORY_H
 
 #include <QMap>
 #include <QObject>

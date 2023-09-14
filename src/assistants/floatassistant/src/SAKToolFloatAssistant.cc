@@ -10,7 +10,7 @@
 #include <QDebug>
 #include "SAKInterface.hh"
 #include "SAKCommonInterface.hh"
-#include "SAKToolFloatAssistant.hh"
+#include "SAKToolFloatAssistant.h"
 #include "ui_SAKToolFloatAssistant.h"
 
 SAKToolFloatAssistant::SAKToolFloatAssistant(QWidget *parent)
