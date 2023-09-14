@@ -97,16 +97,7 @@ file(GLOB_RECURSE TOOLS_UI_SOURCES "src/toolsui/*h" "src/toolsui/*.cc" "src/tool
 # App(QtSwissArmyKnife)
 # Tools module
 include_directories(src)
-set(APP_SOURCES
-    src/main.cc 
-    src/SAKApplication.h
-    src/SAKApplication.cc 
-    src/SAKMainWindow.h
-    src/SAKMainWindow.cc
-    src/SAKSystemTrayIcon.h
-    src/SAKSystemTrayIcon.cc
-    SAKResources.qrc
-)
+file(GLOB APP_SOURCES "src/*.h" "src/*.cc")
 
 add_definitions(
     -DSAK_HOST_ADDRESS_ANY="Any"
@@ -135,6 +126,7 @@ set(SAK_APP_SOURCES
     ${TOOLS_SOURCES}
     ${TOOLS_UI_SOURCES}
     ${APP_SOURCES}
+    SAKResources.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
