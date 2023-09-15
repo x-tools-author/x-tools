@@ -40,7 +40,7 @@ include(src/SAKToolBox.pri)
 include(src/SAKAssistants.pri)
 
 !contains(CONFIG, SAKReleaseForAppStore) {
-    include(src/SAKCanBus.pri)
+    include(src/canbus/sakcanbus.pri)
     include(src/modbus/sakmodbus.pri)
 }
 
@@ -165,3 +165,5 @@ SAKQmlUi {
         message("If you want to using QML UI, you must use Qt6.4.0 or later.")
     }
 }
+
+warning("CMake is the future, please using CMmke!")

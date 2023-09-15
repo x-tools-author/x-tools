@@ -64,6 +64,12 @@ include_directories(src/assistantsui)
 file(GLOB_RECURSE ASSISTANT_SOURCES "src/assistants/*h" "src/assistants/*.cc")
 file(GLOB_RECURSE ASSISTANT_UI_SOURCES "src/assistantsui/*h" "src/assistantsui/*.cc" "src/assistantsui/*.ui")
 
+# CAN bus module
+include_directories(src/canbus/canbus)
+include_directories(src/canbus/canbusui)
+file(GLOB_RECURSE CANBUS_SOURCES "src/canbus/canbus/*h" "src/canbus/canbus/*.cc")
+file(GLOB_RECURSE CANBUS_UI_SOURCES "src/canbus/canbusui/*h" "src/canbus/canbusui/*.cc" "src/canbus/canbusui/*.ui")
+
 # Commom module
 include_directories(src/common)
 include_directories(src/commonui)
@@ -110,11 +116,14 @@ add_definitions(
     -DSAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/QtSwissArmyKnife"
     -DSAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/QtSwissArmyKnife"
     -DSAK_IMPORT_MODULE_MODBUS
+    -DSAK_IMPORT_MODULE_CANBUSUI
 )
 
 set(SAK_APP_SOURCES
     ${ASSISTANT_SOURCES}
     ${ASSISTANT_UI_SOURCES}
+    ${CANBUS_SOURCES}
+    ${CANBUS_UI_SOURCES}
     ${COMMON_SOURCES}
     ${COMMON_UI_SOURCES}
     ${LOG_SOURCES}
