@@ -163,18 +163,19 @@ if(SAK_MODBUS)
 endif()
 
 # ToolBox module
-include_directories(src/toolbox)
-include_directories(src/toolboxui)
-file(GLOB_RECURSE TOOLBOX_SOURCES "src/toolbox/*h" "src/toolbox/*.cc")
-file(GLOB_RECURSE TOOLBOX_UI_SOURCES "src/toolboxui/*h" "src/toolboxui/*.cc"
-     "src/toolboxui/*.ui")
+include_directories(src/toolbox/toolbox)
+include_directories(src/toolbox/toolboxui)
+file(GLOB_RECURSE TOOLBOX_SOURCES "src/toolbox/toolbox/*h"
+     "src/toolbox/toolbox/*.cc")
+file(GLOB_RECURSE TOOLBOX_UI_SOURCES "src/toolbox/toolboxui/*h"
+     "src/toolbox/toolboxui/*.cc" "src/toolbox/toolboxui/*.ui")
 
 # Tools module
-include_directories(src/tools)
-include_directories(src/toolsui)
-file(GLOB_RECURSE TOOLS_SOURCES "src/tools/*h" "src/tools/*.cc")
-file(GLOB_RECURSE TOOLS_UI_SOURCES "src/toolsui/*h" "src/toolsui/*.cc"
-     "src/toolsui/*.ui")
+include_directories(src/tools/tools)
+include_directories(src/tools/toolsui)
+file(GLOB_RECURSE TOOLS_SOURCES "src/tools/tools/*h" "src/tools/tools/*.cc")
+file(GLOB_RECURSE TOOLS_UI_SOURCES "src/tools/toolsui/*h"
+     "src/tools/toolsui/*.cc" "src/tools/toolsui/*.ui")
 
 # App(QtSwissArmyKnife) Tools module
 include_directories(src)
@@ -234,7 +235,6 @@ set_target_properties(
              ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
              ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
              ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
-# cmake-format on
 
 include(GNUInstallDirs)
 install(
@@ -254,7 +254,7 @@ execute_process(
   OUTPUT_STRIP_TRAILING_WHITESPACE)
 message(STATUS "Last commit: ${GIT_COMMIT}")
 
-option(SAK_AUTO_DEPLOY "" OFF)
+option(SAK_AUTO_DEPLOY "" ON)
 if(CMAKE_SYSTEM_NAME MATCHES "Windows" AND SAK_AUTO_DEPLOY)
   set(WIN_DEPLOY_QT "${Qt${QT_VERSION_MAJOR}_DIR}/../../../bin/windeployqt.exe")
   message(STATUS ${Qt${QT_VERSION_MAJOR}_WIN_DEPLOY_QT})
