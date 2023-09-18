@@ -33,6 +33,11 @@ find_package(
              SerialBus
              Bluetooth)
 
+option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
+if(SAK_FOR_APP_SOTRE)
+  add_definitions(-DSAK_RELEASE_FOR_APP_STORE)
+endif()
+
 if(${QT_VERSION} VERSION_LESS "6.5")
   message(WARNING "The Qt version is too old, please using Qt6.5 or later.")
 endif()
