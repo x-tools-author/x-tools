@@ -63,7 +63,12 @@ class SAKModbusFactory : public QObject {
                                  bool device_busy, bool listen_only_mode);
   QModbusReply *SendWriteRequest(QModbusDevice *modbus_device,
                                  int register_type, int start_address,
-                                 QList<quint16> values, int server_address);
+#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
+                                 QVector<quint16> values,
+#else
+                                 QList<quint16> values,
+#endif
+                                 int server_address);
   QModbusReply *SendRawRequest(QModbusDevice *modbus_device, int server_address,
                                int function_code, const QByteArray &data);
 

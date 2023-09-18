@@ -1039,16 +1039,16 @@ QList<quint16> SAKModbusUi::GetTableValues(QTableView *table_view, int row,
                                            int count) {
   if (!table_view) {
     qCWarning(kLoggingCategory) << "Table view can not be null!";
-    return QVector<quint16>();
+    return QList<quint16>();
   }
 
   auto *model = qobject_cast<QStandardItemModel *>(table_view->model());
   if (!model) {
     qCWarning(kLoggingCategory) << "Model can not be null!";
-    return QVector<quint16>();
+    return QList<quint16>();
   }
 
-  QVector<quint16> values;
+  QList<quint16> values;
   for (int i = row; i < count; i++) {
     QStandardItem *item = model->item(i, 1);
     if (item) {

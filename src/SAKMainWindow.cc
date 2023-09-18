@@ -303,7 +303,7 @@ void SAKMainWindow::initOptionMenuAppStyleMenu(QMenu *optionMenu)
         return;
     }
 
-    for (QAction *action : gActionGroup.actions()){
+    for (QAction *&action : gActionGroup.actions()){
         if (action->objectName() == style){
             action->setChecked(true);
             break;
@@ -744,9 +744,9 @@ void SAKMainWindow::initNav()
 
     tb->addSeparator();
 
+  QString path = ":/resources/icon/IconModbus.svg";
 #ifdef SAK_IMPORT_MODULE_MODBUS
     SAKModbusUi *modbus = new SAKModbusUi(this);
-    QString path = ":/resources/icon/IconModbus.svg";
     initNav(&navButtonGroup,
             SAKUiInterface::cookedIcon(QIcon(path)),
             "Modbus Studio", modbus, tb);
@@ -764,7 +764,6 @@ void SAKMainWindow::initNav()
     modbusClient->importProject();
     modbusServer->importProject();
 #endif
-#endif
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
     SAKCanBusUi *canbus = new SAKCanBusUi(this);
     path = ":/resources/icon/IconCanBus.svg";
@@ -772,7 +771,7 @@ void SAKMainWindow::initNav()
             SAKUiInterface::cookedIcon(QIcon(path)),
             "CANBus Studio", canbus, tb);
 #endif
-
+#endif
 
     QLabel *lb = new QLabel(" ");
     tb->addWidget(lb);

@@ -94,9 +94,17 @@ bool SAKModbusFactory::IsTcpDevice(QModbusDevice *modbus_device) {
 
 bool SAKModbusFactory::IsRtuSerialDevice(QModbusDevice *modbus_device) {
   if (modbus_device) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
     if (qobject_cast<QModbusRtuSerialClient *>(modbus_device)) {
+#else
+    if (qobject_cast<QModbusRtuSerialMaster *>(modbus_device)) {
+#endif
       return true;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
     } else if (qobject_cast<QModbusRtuSerialServer *>(modbus_device)) {
+#else
+    } else if (qobject_cast<QModbusRtuSerialSlave *>(modbus_device)) {
+#endif
       return true;
     }
   }
@@ -285,7 +293,11 @@ void SAKModbusFactory::SetServerDeviceParameters(QModbusDevice *server,
 QModbusReply *SAKModbusFactory::SendWriteRequest(QModbusDevice *modbus_device,
                                                  int register_type,
                                                  int start_address,
+#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
+                                                 QVector<quint16> values,
+#else
                                                  QList<quint16> values,
+#endif
                                                  int server_address) {
   if (modbus_device && IsClientDevice(modbus_device)) {
     auto cooked_type = QModbusDataUnit::RegisterType(register_type);

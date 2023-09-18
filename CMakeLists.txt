@@ -108,13 +108,18 @@ file(GLOB_RECURSE LOG_SOURCES "src/log/*h" "src/log/*.cc")
 file(GLOB_RECURSE LOG_UI_SOURCES "src/logui/*h" "src/logui/*.cc"
      "src/logui/*.ui")
 
+
 # Modbus module
+option(SAK_MODBUS "" ON)
+if(SAK_MODBUS)
 include_directories(src/modbus/modbus)
 include_directories(src/modbus/modbusui)
 file(GLOB_RECURSE MODBUS_SOURCES "src/modbus/modbus/*h"
      "src/modbus/modbus/*.cc")
 file(GLOB_RECURSE MODBUS_UI_SOURCES "src/modbus/modbusui/*h"
      "src/modbus/modbusui/*.cc" "src/modbus/modbusui/*.ui")
+add_definitions(-DSAK_IMPORT_MODULE_MODBUS)
+endif()
 
 # ToolBox module
 include_directories(src/toolbox)
@@ -144,7 +149,6 @@ add_definitions(
   -DSAK_AUTHOR_EMAIL="qsaker@foxmail.com"
   -DSAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/QtSwissArmyKnife"
   -DSAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/QtSwissArmyKnife"
-  -DSAK_IMPORT_MODULE_MODBUS
   -DSAK_IMPORT_MODULE_CANBUSUI)
 
 set(SAK_APP_SOURCES
