@@ -1,8 +1,8 @@
 ﻿file(GLOB NUMBER_ASSISTANT_SOURCES "src/*.h" "src/*.cc" "src/*.ui")
 set(APP_NUMBER_ASSISTANT_SOURCES
-    ${NUMBER_ASSISTANT_SOURCES} ../../common/SAKInterface.h
-    ../../common/SAKInterface.cc ../../common/SAKCommonInterface.h
-    ../../common/SAKCommonInterface.cc main.cc)
+    ${NUMBER_ASSISTANT_SOURCES} ../../common/common/SAKInterface.h
+    ../../common/common/SAKInterface.cc ../../common/common/SAKCommonInterface.h
+    ../../common/common/SAKCommonInterface.cc main.cc)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

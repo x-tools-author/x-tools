@@ -1,7 +1,7 @@
 ﻿file(GLOB BROADCAST_ASSISTANT_SOURCES "src/*.h" "src/*.cc" "src/*.ui")
 set(APP_BROADCAST_ASSISTANT_SOURCES
-    ${BROADCAST_ASSISTANT_SOURCES} ../../common/SAKCommonDataStructure.h
-    ../../common/SAKCommonDataStructure.cc main.cc)
+    ${BROADCAST_ASSISTANT_SOURCES} ../../common/common/SAKCommonDataStructure.h
+    ../../common/common/SAKCommonDataStructure.cc main.cc)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -136,11 +136,12 @@ if(SAK_CANBUS)
 endif()
 
 # Commom module
-include_directories(src/common)
-include_directories(src/commonui)
-file(GLOB_RECURSE COMMON_SOURCES "src/common/*h" "src/common/*.cc")
-file(GLOB_RECURSE COMMON_UI_SOURCES "src/commonui/*h" "src/commonui/*.cc"
-     "src/commonui/*.ui")
+include_directories(src/common/common)
+include_directories(src/common/commonui)
+file(GLOB_RECURSE COMMON_SOURCES "src/common/common/*h"
+     "src/common/common/*.cc")
+file(GLOB_RECURSE COMMON_UI_SOURCES "src/common/commonui/*h"
+     "src/common/commonui/*.cc" "src/common/commonui/*.ui")
 
 # Log module
 include_directories(src/log)

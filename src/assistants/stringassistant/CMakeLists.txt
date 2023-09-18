@@ -1,7 +1,7 @@
 ﻿file(GLOB STRING_ASSISTANT_SOURCES "src/*.h" "src/*.cc" "src/*.ui")
 set(APP_STRING_ASSISTANT_SOURCES
-    ${STRING_ASSISTANT_SOURCES} ../../common/SAKCommonDataStructure.h
-    ../../common/SAKCommonDataStructure.cc main.cc)
+    ${STRING_ASSISTANT_SOURCES} ../../common/common/SAKCommonDataStructure.h
+    ../../common/common/SAKCommonDataStructure.cc main.cc)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

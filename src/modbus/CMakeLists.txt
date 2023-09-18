@@ -6,8 +6,8 @@
   "modbusui/*.h"
   "modbusui/*.cc"
   "modbusui/*.ui")
-set(APP_MODBUS_STUDIO_SOURCES ${MODBUS_STUDIO_SOURCES} ../common/SAKSettings.h
-                              ../common/SAKSettings.cc main.cc)
+set(APP_MODBUS_STUDIO_SOURCES ${MODBUS_STUDIO_SOURCES} ../common/common/SAKSettings.h
+                              ../common/common/SAKSettings.cc main.cc)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
