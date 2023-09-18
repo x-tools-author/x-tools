@@ -10,77 +10,76 @@
 #ifndef MAINWINDOW_HH
 #define MAINWINDOW_HH
 
-#include <QMenu>
-#include <QLabel>
 #include <QAction>
-#include <QSettings>
-#include <QMetaEnum>
-#include <QTabWidget>
-#include <QMessageBox>
-#include <QHBoxLayout>
-#include <QMainWindow>
-#include <QTranslator>
 #include <QButtonGroup>
-#include <QStackedWidget>
+#include <QHBoxLayout>
+#include <QLabel>
 #include <QLoggingCategory>
+#include <QMainWindow>
+#include <QMenu>
+#include <QMessageBox>
+#include <QMetaEnum>
+#include <QSettings>
+#include <QStackedWidget>
+#include <QTabWidget>
+#include <QTranslator>
 
 namespace Ui {
-    class SAKMainWindow;
+class SAKMainWindow;
 }
 
-class SAKMainWindow : public QMainWindow
-{
-    Q_OBJECT
-public:
-    explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
-    ~SAKMainWindow();
+class SAKMainWindow : public QMainWindow {
+  Q_OBJECT
+ public:
+  explicit SAKMainWindow(QWidget* parent = Q_NULLPTR);
+  ~SAKMainWindow();
 
 #ifdef Q_OS_WIN
-protected:
-    void closeEvent(QCloseEvent *event);
+ protected:
+  void closeEvent(QCloseEvent* event);
 #endif
 
-private:
-    struct SettingsKeyContext {
-        const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
-    } mSettingsKey;
-    const QLoggingCategory mLoggingCategory{"sak.mainwindow"};
-    Ui::SAKMainWindow *ui;
+ private:
+  struct SettingsKeyContext {
+    const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
+  } mSettingsKey;
+  const QLoggingCategory mLoggingCategory{"sak.mainwindow"};
+  Ui::SAKMainWindow* ui;
 
-private:
-    void initMenuBar();
-    void initFileMenu();
-    void initToolMenu();
-    void initOptionMenu();
-    void initOptionMenuAppStyleMenu(QMenu *optionMenu);
-    void initOptionMenuMainWindowMenu(QMenu *optionMenu);
-    void initOptionMenuSettingsMenu(QMenu *optionMenu);
-    void initOptionMenuUiType(QMenu *optionMenu);
+ private:
+  void initMenuBar();
+  void initFileMenu();
+  void initToolMenu();
+  void initOptionMenu();
+  void initOptionMenuAppStyleMenu(QMenu* optionMenu);
+  void initOptionMenuMainWindowMenu(QMenu* optionMenu);
+  void initOptionMenuSettingsMenu(QMenu* optionMenu);
+  void initOptionMenuUiType(QMenu* optionMenu);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    void initOptionMenuHdpiPolicy(QMenu *optionMenu);
+  void initOptionMenuHdpiPolicy(QMenu* optionMenu);
 #endif
-    void initOptionMenuPalette(QMenu *optionMenu);
-    void initWindowMenu();
-    void initLanguageMenu();
-    void initHelpMenu();
-    void initLinksMenu();
-    void initDemoMenu();
-    void initNav();
-    void initNav(QButtonGroup *bg, const QIcon &icon,
-                 const QString &name, QWidget *page, QToolBar *tb);
-    void initStatusBar();
+  void initOptionMenuPalette(QMenu* optionMenu);
+  void initWindowMenu();
+  void initLanguageMenu();
+  void initHelpMenu();
+  void initLinksMenu();
+  void initDemoMenu();
+  void initNav();
+  void initNav(QButtonGroup* bg, const QIcon& icon, const QString& name,
+               QWidget* page, QToolBar* tb);
+  void initStatusBar();
 
-    void aboutSoftware();
-    void clearConfiguration();
-    void rebootRequestion();
-    void showHistory();
-    void showQrCode();
-    void showDonation();
-    void createQtConf();
+  void aboutSoftware();
+  void clearConfiguration();
+  void rebootRequestion();
+  void showHistory();
+  void showQrCode();
+  void showDonation();
+  void createQtConf();
 
-private slots:
-    void onImportActionTriggered();
-    void onExportActionTriggered();
+ private slots:
+  void onImportActionTriggered();
+  void onExportActionTriggered();
 };
 
-#endif // MAINWINDOW_H
+#endif  // MAINWINDOW_H
