@@ -47,6 +47,16 @@ if(SAK_CRCASSISTANT)
        "src/assistants/crcassistant/src/*.cc")
 endif()
 
+# Base64Assistant
+option(SAK_BASE64ASSISTANT "" ON)
+if(SAK_BASE64ASSISTANT)
+  include_directories(src/assistants/base64assistant/src)
+  add_definitions(-DSAK_IMPORT_MODULE_BASE64ASSISTANT)
+  file(GLOB_RECURSE SAK_BASE64ASSISTANT_SOURCE
+       "src/assistants/base64assistant/src/*h"
+       "src/assistants/base64assistant/src/*.cc")
+endif()
+
 # FileCheckAssistant
 option(SAK_FILECHECKASSISTANT "" ON)
 if(SAK_FILECHECKASSISTANT)
@@ -101,14 +111,15 @@ endif()
 include_directories(src/assistants)
 include_directories(src/assistantsui)
 set(ASSISTANT_SOURCES
+    ${SAK_ASCIIASSISTANT_SOURCE}
+    ${SAK_BASE64ASSISTANT_SOURCE}
+    ${SAK_BROCASTASSISTANT_SOURCE}
     ${SAK_CRCASSISTANT_SOURCE}
     ${SAK_FILECHECKASSISTANT_SOURCE}
-    ${SAK_ASCIIASSISTANT_SOURCE}
-    ${SAK_BROCASTASSISTANT_SOURCE}
     ${SAK_NUMBERASSISTANT_SOURCE}
     ${SAK_STRINGASSISTANT_SOURCE}
-    src/assistants/SAKAssistantsFactory.h
-    src/assistants/SAKAssistantsFactory.cc)
+    src/assistants/sakassistantsfactory.h
+    src/assistants/sakassistantsfactory.cc)
 file(GLOB_RECURSE ASSISTANT_UI_SOURCES "src/assistantsui/*h"
      "src/assistantsui/*.cc" "src/assistantsui/*.ui")
 
@@ -272,6 +283,7 @@ if(CMAKE_SYSTEM_NAME MATCHES "Windows" AND SAK_AUTO_DEPLOY)
 endif()
 
 add_subdirectory(src/assistants/asciiassistant)
+add_subdirectory(src/assistants/base64assistant)
 add_subdirectory(src/assistants/broadcastassistant)
 add_subdirectory(src/assistants/crcassistant)
 add_subdirectory(src/assistants/filecheckassistant)
