@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
  * the root of the source code directory.
  *****************************************************************************/
+
 #include "SAKAssistantsFactory.h"
 
 #include <QCoreApplication>
@@ -36,7 +37,7 @@
 #include "SAKToolBroadcastAssistant.h"
 #endif
 
-SAKAssistantsFactory::SAKAssistantsFactory(QObject *parent) : QObject(parent) {
+SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent) : QObject(parent) {
   mTypeNameMap.insert(AssistantCrc, tr("CRC Assistant"));
   mTypeNameMap.insert(AssistantFile, tr("File Assistant"));
   mTypeNameMap.insert(AssistantAscii, tr("ASCII Assistant"));
@@ -65,12 +66,12 @@ QString SAKAssistantsFactory::assistantName(int type) const {
   return name;
 }
 
-SAKAssistantsFactory *SAKAssistantsFactory::instance() {
+SAKAssistantsFactory* SAKAssistantsFactory::instance() {
   static SAKAssistantsFactory f;
   return &f;
 }
 
-QWidget *SAKAssistantsFactory::newAssistant(int type) {
+QWidget* SAKAssistantsFactory::newAssistant(int type) {
   if (type == AssistantCrc) {
     return new SAKToolCRCAssistant();
   } else if (type == AssistantFile) {

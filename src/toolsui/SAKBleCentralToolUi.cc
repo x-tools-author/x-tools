@@ -22,7 +22,7 @@
 
 #define SAK_CB_I_C &QComboBox::currentIndexChanged
 
-SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
+SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget* parent)
     : SAKCommunicationToolUi{parent},
       ui(new Ui::SAKBleCentralToolUi),
       mBleTool(Q_NULLPTR) {
@@ -65,13 +65,15 @@ SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
   ui->labelUnsupported->setStyleSheet("QLabel{color:red}");
 }
 
-SAKBleCentralToolUi::~SAKBleCentralToolUi() { delete ui; }
+SAKBleCentralToolUi::~SAKBleCentralToolUi() {
+  delete ui;
+}
 
 void SAKBleCentralToolUi::onBaseToolUiInitialized(
-    SAKBaseTool *tool, const QString &settingsGroup) {
+    SAKBaseTool* tool, const QString& settingsGroup) {
   SAKCommunicationToolUi::onBaseToolUiInitialized(tool, settingsGroup);
 
-  mBleTool = qobject_cast<SAKBleCentralTool *>(mTool);
+  mBleTool = qobject_cast<SAKBleCentralTool*>(mTool);
   if (!mBleTool) {
     QByteArray msg("invalid SAKBleCentralTool tool");
     qCWarning(mLoggingCategory) << QString::fromLatin1(msg);
@@ -92,14 +94,14 @@ void SAKBleCentralToolUi::onIsWorkingChanged(bool isWorking) {
   }
 }
 
-void SAKBleCentralToolUi::initSettingsMenu(const QString &settingsGroup) {
-  QWidget *w = new QWidget(this);
-  QGridLayout *gl = new QGridLayout();
+void SAKBleCentralToolUi::initSettingsMenu(const QString& settingsGroup) {
+  QWidget* w = new QWidget(this);
+  QGridLayout* gl = new QGridLayout();
   w->setLayout(gl);
 
   int rowIndex = 0;
   gl->addWidget(new QLabel(tr("Timeout interval(S)"), w), rowIndex, 0, 1, 1);
-  SAKSpinBox *sp = new SAKSpinBox(w);
+  SAKSpinBox* sp = new SAKSpinBox(w);
   sp->setMinimum(10);
   sp->setMaximum(120);
   sp->setValue(120);
@@ -115,22 +117,22 @@ void SAKBleCentralToolUi::initSettingsMenu(const QString &settingsGroup) {
 
   rowIndex += 1;
   gl->addWidget(new QLabel(tr("Name filtter"), w), rowIndex, 0, 1, 1);
-  SAKLineEdit *le = new SAKLineEdit(w);
+  SAKLineEdit* le = new SAKLineEdit(w);
   le->setGroupKey(settingsGroup, "nameFiltter");
   gl->addWidget(le, rowIndex, 1, 1, 1);
-  connect(le, &SAKLineEdit::textChanged, this, [=](const QString &text) {
+  connect(le, &SAKLineEdit::textChanged, this, [=](const QString& text) {
     ui->comboBoxDevices->setNameFiltter(text);
   });
 
   rowIndex += 1;
-  QMenu *menu = new QMenu(this);
-  QPushButton *bt = new QPushButton(tr("OK"));
+  QMenu* menu = new QMenu(this);
+  QPushButton* bt = new QPushButton(tr("OK"));
   connect(bt, &QPushButton::clicked, menu, &QMenu::close);
   gl->addWidget(bt, rowIndex, 1, 1, 1);
 
-  QWidgetAction *a = new QWidgetAction(this);
+  QWidgetAction* a = new QWidgetAction(this);
   a->setDefaultWidget(w);
-  ;
+
   menu->addAction(a);
   ui->pushButtonSettings->setMenu(menu);
 
@@ -154,24 +156,23 @@ void SAKBleCentralToolUi::onServiceDiscoveryStarted() {
 void SAKBleCentralToolUi::onServiceDiscoveryFinished() {
   ui->comboBoxServices->clear();
   auto services = mBleTool->services();
-  for (auto &service : services) {
-    auto cookedSerivce = service.value<QLowEnergyService *>();
+  for (auto& service : services) {
+    auto cookedSerivce = service.value<QLowEnergyService*>();
     ui->comboBoxServices->addItem(cookedSerivce->serviceName(), service);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
-    QOverload<const QString &>::of(&QSpinBox::valueChanged),
-        connect(cookedSerivce, &QLowEnergyService::stateChanged, this,
-                [=](QLowEnergyService::ServiceState state) {
-                  if (state == QLowEnergyService::RemoteServiceDiscovered) {
-                    onComboBoxServicesCurrentIndexChanged();
-                  }
-                });
+    connect(cookedSerivce, &QLowEnergyService::stateChanged, this,
+            [=](QLowEnergyService::ServiceState state) {
+              if (state == QLowEnergyService::RemoteServiceDiscovered) {
+                onComboBoxServicesCurrentIndexChanged();
+              }
+            });
 #endif
   }
   ui->progressBar->hide();
 }
 
 void SAKBleCentralToolUi::onDescriptorWritten(
-    const QLowEnergyDescriptor &descriptor, const QByteArray &newValue) {
+    const QLowEnergyDescriptor& descriptor, const QByteArray& newValue) {
   Q_UNUSED(descriptor)
   Q_UNUSED(newValue)
   onComboBoxCharacteristicsActived();
@@ -194,7 +195,7 @@ void SAKBleCentralToolUi::onComboBoxDevicesActived() {
 void SAKBleCentralToolUi::onComboBoxServicesCurrentIndexChanged() {
   mBleTool->setServiceIndex(ui->comboBoxServices->currentIndex());
   auto service = ui->comboBoxServices->currentData();
-  auto cookedSerivce = service.value<QLowEnergyService *>();
+  auto cookedSerivce = service.value<QLowEnergyService*>();
   auto chs = cookedSerivce->characteristics();
   ui->comboBoxCharacteristics->clear();
   for (int i = 0; i < chs.count(); i++) {
