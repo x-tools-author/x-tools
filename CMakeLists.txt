@@ -207,7 +207,8 @@ set(SAK_APP_SOURCES
     ${TOOLS_SOURCES}
     ${TOOLS_UI_SOURCES}
     ${APP_SOURCES}
-    SAKResources.qrc)
+    SAKResources.qrc
+    windows.rc)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -228,11 +229,12 @@ target_link_libraries(
 
 set_target_properties(
   QtSwissArmyKnife
-  PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
+  PROPERTIES MACOSX_BUNDLE TRUE
+             WIN32_EXECUTABLE TRUE
+             ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
              ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
-             ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
-             TRUE WIN32_EXECUTABLE
-             TRUE)
+             ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
+# cmake-format on
 
 include(GNUInstallDirs)
 install(
