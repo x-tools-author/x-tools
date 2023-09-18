@@ -199,32 +199,6 @@ add_definitions(
   -DSAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/QtSwissArmyKnife"
   -DSAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/QtSwissArmyKnife")
 
-set(SAK_TS_FILE
-    resources/translations/sak_en.ts
-    resources/translations/sak_zh_CN.ts
-    resources/translations/sak_ar.ts
-    resources/translations/sak_cs.ts
-    resources/translations/sak_da.ts
-    resources/translations/sak_de.ts
-    resources/translations/sak_en.ts
-    resources/translations/sak_es.ts
-    resources/translations/sak_fa.ts
-    resources/translations/sak_fi.ts
-    resources/translations/sak_fr.ts
-    resources/translations/sak_he.ts
-    resources/translations/sak_uk.ts
-    resources/translations/sak_it.ts
-    resources/translations/sak_ja.ts
-    resources/translations/sak_ko.ts
-    resources/translations/sak_lt.ts
-    resources/translations/sak_pl.ts
-    resources/translations/sak_pt.ts
-    resources/translations/sak_ru.ts
-    resources/translations/sak_sk.ts
-    resources/translations/sak_sl.ts
-    resources/translations/sak_sv.ts
-    123.ts)
-
 set(SAK_APP_SOURCES
     ${ASSISTANT_SOURCES}
     ${ASSISTANT_UI_SOURCES}
@@ -253,13 +227,6 @@ else()
   else()
     add_executable(QtSwissArmyKnife ${SAK_APP_SOURCES})
   endif(ANDROID)
-endif()
-
-qt_add_translations(QtSwissArmyKnife TS_FILES ${SAK_TS_FILES})
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-  qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${SAK_TS_FILES})
-else()
-  qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${SAK_TS_FILES})
 endif()
 
 target_link_libraries(
@@ -293,6 +260,12 @@ execute_process(
   OUTPUT_VARIABLE GIT_COMMIT
   OUTPUT_STRIP_TRAILING_WHITESPACE)
 message(STATUS "Last commit: ${GIT_COMMIT}")
+
+# set(LUPDATE "${Qt${QT_VERSION_MAJOR}_DIR}/../../../bin/lupdate.exe")
+# set(LUPDATE_CMD
+# "${CMAKE_SOURCE_DIR}/resources/translations/update.bat ${LUPDATE}")
+# message(STATUS ${LUPDATE_CMD}) add_custom_command( TARGET QtSwissArmyKnife
+# PRE_BUILD COMMAND ${LUPDATE_CMD})
 
 option(SAK_AUTO_DEPLOY "" ON)
 if(CMAKE_SYSTEM_NAME MATCHES "Windows" AND SAK_AUTO_DEPLOY)
