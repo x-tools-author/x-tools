@@ -33,10 +33,7 @@ find_package(
              SerialBus
              Bluetooth)
 
-option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
-if(SAK_FOR_APP_SOTRE)
-  add_definitions(-DSAK_RELEASE_FOR_APP_STORE)
-endif()
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS LinguistTools)
 
 if(${QT_VERSION} VERSION_LESS "6.5")
   message(WARNING "The Qt version is too old, please using Qt6.5 or later.")
@@ -186,16 +183,47 @@ file(GLOB_RECURSE TOOLS_UI_SOURCES "src/tools/toolsui/*h"
 include_directories(src)
 file(GLOB APP_SOURCES "src/*.h" "src/*.cc")
 
+option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
+if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
+  add_definitions(-DSAK_RELEASE_FOR_APP_STORE)
+endif()
+
 add_definitions(
   -DSAK_HOST_ADDRESS_ANY="Any"
   -DSAK_CLEAR_MESSAGE_INTERVAL=8000
   -DSAK_STYLE_DEFAULT="Fusion"
   -DSAK_EDITION="beta1"
-  -DSAK_VERSION="5.0.0"
+  -DSAK_VERSION="5.1.0"
   -DSAK_AUTHOR="Qsaker"
   -DSAK_AUTHOR_EMAIL="qsaker@foxmail.com"
   -DSAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/QtSwissArmyKnife"
   -DSAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/QtSwissArmyKnife")
+
+set(SAK_TS_FILE
+    resources/translations/sak_en.ts
+    resources/translations/sak_zh_CN.ts
+    resources/translations/sak_ar.ts
+    resources/translations/sak_cs.ts
+    resources/translations/sak_da.ts
+    resources/translations/sak_de.ts
+    resources/translations/sak_en.ts
+    resources/translations/sak_es.ts
+    resources/translations/sak_fa.ts
+    resources/translations/sak_fi.ts
+    resources/translations/sak_fr.ts
+    resources/translations/sak_he.ts
+    resources/translations/sak_uk.ts
+    resources/translations/sak_it.ts
+    resources/translations/sak_ja.ts
+    resources/translations/sak_ko.ts
+    resources/translations/sak_lt.ts
+    resources/translations/sak_pl.ts
+    resources/translations/sak_pt.ts
+    resources/translations/sak_ru.ts
+    resources/translations/sak_sk.ts
+    resources/translations/sak_sl.ts
+    resources/translations/sak_sv.ts
+    123.ts)
 
 set(SAK_APP_SOURCES
     ${ASSISTANT_SOURCES}
@@ -225,6 +253,13 @@ else()
   else()
     add_executable(QtSwissArmyKnife ${SAK_APP_SOURCES})
   endif(ANDROID)
+endif()
+
+qt_add_translations(QtSwissArmyKnife TS_FILES ${SAK_TS_FILES})
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+  qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${SAK_TS_FILES})
+else()
+  qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${SAK_TS_FILES})
 endif()
 
 target_link_libraries(

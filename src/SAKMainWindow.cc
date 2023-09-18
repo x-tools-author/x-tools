@@ -725,6 +725,8 @@ void SAKMainWindow::initNav() {
   modbusClient->importProject();
   modbusServer->importProject();
 #endif
+#endif
+#ifndef SAK_RELEASE_FOR_APP_STORE
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
   SAKCanBusUi* canbus = new SAKCanBusUi(this);
   path = ":/resources/icon/IconCanBus.svg";
@@ -732,7 +734,6 @@ void SAKMainWindow::initNav() {
           "CANBus Studio", canbus, tb);
 #endif
 #endif
-
   QLabel* lb = new QLabel(" ");
   tb->addWidget(lb);
   lb->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
@@ -833,7 +834,9 @@ void SAKMainWindow::aboutSoftware() {
   QString dateTimeString = SAKInterface::buildDateTime(format);
   QList<Info> infoList;
   infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
+#ifndef SAK_RELEASE_FOR_APP_STORE
            << Info{tr("Edition"), SAK_EDITION, false}
+#endif
            << Info{tr("Author"), QString(SAK_AUTHOR), false}
            << Info{tr("Email"), QString(SAK_AUTHOR_EMAIL), false}
            << Info{tr("QQ"), QString("QQ:2869470394"), false}
