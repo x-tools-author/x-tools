@@ -69,7 +69,7 @@ QList<int> SAKAssistantsFactory::SupportedAssistants() {
   return type_name_map_.keys();
 }
 
-QString SAKAssistantsFactory::AssistantName(int type) const {
+QString SAKAssistantsFactory::GetAssistantName(int type) const {
   if (type_name_map_.contains(type)) {
     return type_name_map_.value(type);
   }

@@ -33,7 +33,7 @@ class SAKAssistantsFactory : QObject {
   static SAKAssistantsFactory* Instance();
 
   QList<int> SupportedAssistants();
-  QString AssistantName(int type) const;
+  QString GetAssistantName(int type) const;
   QWidget* NewAssistant(int type);
 
  private:

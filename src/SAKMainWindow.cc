@@ -230,7 +230,7 @@ void SAKMainWindow::initToolMenu()
     menuBar()->addMenu(toolMenu);
 
     for (auto &t : SAKAssistantsFactory::Instance()->SupportedAssistants()) {
-        QString name = SAKAssistantsFactory::Instance()->AssistantName(t);
+        QString name = SAKAssistantsFactory::Instance()->GetAssistantName(t);
         QAction *action = new QAction(name, this);
         QWidget *w = SAKAssistantsFactory::Instance()->NewAssistant(t);
 
