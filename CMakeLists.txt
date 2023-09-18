@@ -144,11 +144,11 @@ file(GLOB_RECURSE COMMON_UI_SOURCES "src/common/commonui/*h"
      "src/common/commonui/*.cc" "src/common/commonui/*.ui")
 
 # Log module
-include_directories(src/log)
-include_directories(src/logui)
-file(GLOB_RECURSE LOG_SOURCES "src/log/*h" "src/log/*.cc")
-file(GLOB_RECURSE LOG_UI_SOURCES "src/logui/*h" "src/logui/*.cc"
-     "src/logui/*.ui")
+include_directories(src/log/log)
+include_directories(src/log/logui)
+file(GLOB_RECURSE LOG_SOURCES "src/log/log/*h" "src/log/log/*.cc")
+file(GLOB_RECURSE LOG_UI_SOURCES "src/log/logui/*h" "src/log/logui/*.cc"
+     "src/log/logui/*.ui")
 
 # Modbus module
 option(SAK_MODBUS "" ON)
