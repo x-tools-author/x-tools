@@ -187,6 +187,7 @@ void SAKMainWindow::initFileMenu() {
   });
   windowMenu->addAction(modbusAction);
 #endif
+#ifndef SAK_RELEASE_FOR_APP_STORE
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
   QAction* canbusAction = new QAction("CANBus Studio", this);
   connect(canbusAction, &QAction::triggered, this, [=]() {
@@ -197,6 +198,7 @@ void SAKMainWindow::initFileMenu() {
     w->show();
   });
   windowMenu->addAction(canbusAction);
+#endif
 #endif
 
   fileMenu->addSeparator();
