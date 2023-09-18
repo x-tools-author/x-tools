@@ -17,3 +17,15 @@ endif()
 
 target_link_libraries(BroadcastAssistant PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
                                                  Qt${QT_VERSION_MAJOR}::Network)
+
+set_target_properties(
+  BroadcastAssistant
+  PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
+             ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
+             ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
+             TRUE WIN32_EXECUTABLE
+             TRUE)
+
+if(QT_VERSION_MAJOR EQUAL 6)
+  qt_finalize_executable(BroadcastAssistant)
+endif()
