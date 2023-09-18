@@ -18,17 +18,11 @@
 #ifdef SAK_IMPORT_MODULE_CRCASSISTANT
 #include "SAKToolCRCAssistant.h"
 #endif
-#ifdef SAK_IMPORT_MODULE_QRCODEASSISTANT
-#include "SAKToolQRCodeCreator.h"
-#endif
 #ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
 #include "SAKToolFloatAssistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
 #include "SAKToolStringAssistant.h"
-#endif
-#ifdef SAK_IMPORT_MODULE_ATASSISTANT
-#include "SAKAtAssistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
 #include "SAKToolAsciiAssistant.h"
@@ -41,23 +35,38 @@
 #endif
 
 SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent) : QObject(parent) {
-  type_name_map_.insert(kCrcAssistant, tr("CRC Assistant"));
-  type_name_map_.insert(kFileCheckAssistant, tr("File Assistant"));
-  type_name_map_.insert(kAsciiAssistant, tr("ASCII Assistant"));
-  type_name_map_.insert(kNumberAssistant, tr("Float Assistant"));
-  type_name_map_.insert(kStringAssistant, tr("String Assistant"));
-  type_name_map_.insert(kBroadcastAssistant, tr("Broadcast Assistant"));
-  type_name_map_.insert(kBase64Assistant, tr("Base64 Assistant"));
+#ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
+  RegisterAssistantMetaType<SAKToolCRCAssistant>(kCrcAssistant,
+                                                 tr("CRC Assistant"));
+#endif
+#ifdef SAK_IMPORT_MODULE_CRCASSISTANT
+  RegisterAssistantMetaType<SAKToolFileCheckAssistant>(
+      kFileCheckAssistant, tr("File Check Assistant"));
+#endif
+#ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
+  RegisterAssistantMetaType<SAKToolAsciiAssistant>(kAsciiAssistant,
+                                                   tr("ASCII Assistant"));
+#endif
+#ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
+  RegisterAssistantMetaType<SAKToolFloatAssistant>(kFileCheckAssistant,
+                                                   tr("Number Assistant"));
+#endif
+#ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
+  RegisterAssistantMetaType<SAKToolStringAssistant>(kStringAssistant,
+                                                    tr("String Assistant"));
+#endif
+#ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
+  RegisterAssistantMetaType<SAKToolBroadcastAssistant>(
+      kBroadcastAssistant, tr("Broadcast Assistant"));
+#endif
+#ifdef SAK_IMPORT_MODULE_BASE64ASSISTANT
+  RegisterAssistantMetaType<SAKBase64Assisatnt>(kBase64Assistant,
+                                                tr("Base64 Assistant"));
+#endif
 }
 
 QList<int> SAKAssistantsFactory::SupportedAssistants() {
-  QList<int> ret = type_name_map_.keys();
-  QList<int> cooked;
-  for (int i = 0; i < ret.count(); i++) {
-    cooked.append(ret.at(i));
-  }
-
-  return cooked;
+  return type_name_map_.keys();
 }
 
 QString SAKAssistantsFactory::AssistantName(int type) const {
@@ -79,21 +88,11 @@ SAKAssistantsFactory* SAKAssistantsFactory::Instance() {
 }
 
 QWidget* SAKAssistantsFactory::NewAssistant(int type) {
-  if (type == kCrcAssistant) {
-    return new SAKToolCRCAssistant();
-  } else if (type == kFileCheckAssistant) {
-    return new SAKToolFileCheckAssistant();
-  } else if (type == kAsciiAssistant) {
-    return new SAKToolAsciiAssistant;
-  } else if (type == kNumberAssistant) {
-    return new SAKToolFloatAssistant;
-  } else if (type == kStringAssistant) {
-    return new SAKToolStringAssistant;
-  } else if (type == kBroadcastAssistant) {
-    return new SAKToolBroadcastAssistant;
-  } else if (type == kBase64Assistant) {
-    return new SAKBase64Assisatnt;
-  } else {
-    return nullptr;
+  if (meta_object_map_.contains(type)) {
+    const QMetaObject meta_obj = meta_object_map_.value(type);
+    QObject* obj = meta_obj.newInstance();
+    return qobject_cast<QWidget*>(obj);
   }
+
+  return Q_NULLPTR;
 }

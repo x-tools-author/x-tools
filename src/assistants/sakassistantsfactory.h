@@ -38,6 +38,14 @@ class SAKAssistantsFactory : QObject {
 
  private:
   QMap<int, QString> type_name_map_;
+  QMap<int, QMetaObject> meta_object_map_;
+
+ private:
+  template <typename T>
+  void RegisterAssistantMetaType(int type, const QString& assistant_name) {
+    type_name_map_.insert(type, assistant_name);
+    meta_object_map_.insert(type, T::staticMetaObject);
+  }
 };
 
 #endif  // SAKASSISTANTSFACTORY_H
