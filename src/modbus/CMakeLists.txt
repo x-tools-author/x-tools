@@ -1,0 +1,27 @@
+﻿file(
+  GLOB
+  MODBUS_STUDIO_SOURCES
+  "modbus/*.h"
+  "modbus/*.cc"
+  "modbusui/*.h"
+  "modbusui/*.cc"
+  "modbusui/*.ui")
+set(APP_MODBUS_STUDIO_SOURCES ${MODBUS_STUDIO_SOURCES} ../common/SAKSettings.h
+                              ../common/SAKSettings.cc main.cc)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+  qt_add_executable(ModbusStudio MANUAL_FINALIZATION
+                    ${APP_MODBUS_STUDIO_SOURCES})
+else()
+  if(ANDROID)
+    add_library(ModbusStudio SHARED ${APP_MODBUS_STUDIO_SOURCES})
+  else()
+    add_executable(ModbusStudio ${APP_MODBUS_STUDIO_SOURCES})
+  endif(ANDROID)
+endif()
+
+target_link_libraries(
+  ModbusStudio
+  PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::SerialPort
+          Qt${QT_VERSION_MAJOR}::SerialBus Qt${QT_VERSION_MAJOR}::Network)
