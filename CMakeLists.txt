@@ -261,12 +261,6 @@ execute_process(
   OUTPUT_STRIP_TRAILING_WHITESPACE)
 message(STATUS "Last commit: ${GIT_COMMIT}")
 
-# set(LUPDATE "${Qt${QT_VERSION_MAJOR}_DIR}/../../../bin/lupdate.exe")
-# set(LUPDATE_CMD
-# "${CMAKE_SOURCE_DIR}/resources/translations/update.bat ${LUPDATE}")
-# message(STATUS ${LUPDATE_CMD}) add_custom_command( TARGET QtSwissArmyKnife
-# PRE_BUILD COMMAND ${LUPDATE_CMD})
-
 option(SAK_AUTO_DEPLOY "" ON)
 if(CMAKE_SYSTEM_NAME MATCHES "Windows" AND SAK_AUTO_DEPLOY)
   set(WIN_DEPLOY_QT "${Qt${QT_VERSION_MAJOR}_DIR}/../../../bin/windeployqt.exe")
