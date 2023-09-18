@@ -30,7 +30,7 @@ class SAKAssistantsFactory : QObject {
   };
 
  public:
-  static SAKAssistantsFactory* instance();
+  static SAKAssistantsFactory* Instance();
 
   QList<int> SupportedAssistants();
   QString AssistantName(int type) const;

@@ -69,7 +69,7 @@ QString SAKAssistantsFactory::AssistantName(int type) const {
   return name;
 }
 
-SAKAssistantsFactory* SAKAssistantsFactory::instance() {
+SAKAssistantsFactory* SAKAssistantsFactory::Instance() {
   static SAKAssistantsFactory* factory = nullptr;
   if (!factory) {
     factory = new SAKAssistantsFactory(qApp);

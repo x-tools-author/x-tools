@@ -229,10 +229,10 @@ void SAKMainWindow::initToolMenu()
     QMenu *toolMenu = new QMenu(tr("&Tools"));
     menuBar()->addMenu(toolMenu);
 
-    for (auto &t : SAKAssistantsFactory::instance()->SupportedAssistants()) {
-        QString name = SAKAssistantsFactory::instance()->AssistantName(t);
+    for (auto &t : SAKAssistantsFactory::Instance()->SupportedAssistants()) {
+        QString name = SAKAssistantsFactory::Instance()->AssistantName(t);
         QAction *action = new QAction(name, this);
-        QWidget *w = SAKAssistantsFactory::instance()->NewAssistant(t);
+        QWidget *w = SAKAssistantsFactory::Instance()->NewAssistant(t);
 
         Q_ASSERT_X(action, __FUNCTION__, "A null action!");
         Q_ASSERT_X(w, __FUNCTION__, "A null assistant widget!");
