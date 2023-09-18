@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2022-2023 Qsaker(qsaker@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
@@ -13,31 +13,31 @@
 #include <QMap>
 #include <QObject>
 
-class SAKAssistantsFactory : QObject
-{
-    Q_OBJECT
-private:
-    SAKAssistantsFactory(QObject *parent = Q_NULLPTR);
+class SAKAssistantsFactory : QObject {
+  Q_OBJECT
+ private:
+  SAKAssistantsFactory(QObject* parent = Q_NULLPTR);
 
-private:
-    enum Assistants {
-        AssistantCrc,
-        AssistantFile,
-        AssistantAscii,
-        AssistantFloat,
-        AssistantString,
-        AssistantBroadcast
-    };
+ private:
+  enum Assistants {
+    kCrcAssistant,
+    kFileCheckAssistant,
+    kAsciiAssistant,
+    kNumberAssistant,
+    kStringAssistant,
+    kBroadcastAssistant,
+    kBase64Assistant
+  };
 
-public:
-    static SAKAssistantsFactory *instance();
+ public:
+  static SAKAssistantsFactory* instance();
 
-    QVector<int> supportedAssistants();
-    QString assistantName(int type) const;
-    QWidget *newAssistant(int type);
+  QList<int> SupportedAssistants();
+  QString AssistantName(int type) const;
+  QWidget* NewAssistant(int type);
 
-private:
-    QMap<int, QString> mTypeNameMap;
+ private:
+  QMap<int, QString> type_name_map_;
 };
 
-#endif // SAKASSISTANTSFACTORY_H
+#endif  // SAKASSISTANTSFACTORY_H

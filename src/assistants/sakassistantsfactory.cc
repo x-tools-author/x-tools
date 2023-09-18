@@ -8,7 +8,7 @@
  * the root of the source code directory.
  *****************************************************************************/
 
-#include "SAKAssistantsFactory.h"
+#include "sakassistantsfactory.h"
 
 #include <QCoreApplication>
 
@@ -36,20 +36,23 @@
 #ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
 #include "SAKToolBroadcastAssistant.h"
 #endif
+#ifdef SAK_IMPORT_MODULE_BASE64ASSISTANT
+#include "sakbase64assistant.h"
+#endif
 
 SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent) : QObject(parent) {
-  mTypeNameMap.insert(AssistantCrc, tr("CRC Assistant"));
-  mTypeNameMap.insert(AssistantFile, tr("File Assistant"));
-  mTypeNameMap.insert(AssistantAscii, tr("ASCII Assistant"));
-  mTypeNameMap.insert(AssistantFloat, tr("Float Assistant"));
-  mTypeNameMap.insert(AssistantString, tr("String Assistant"));
-  mTypeNameMap.insert(AssistantBroadcast, tr("Broadcast Assistant"));
+  type_name_map_.insert(kCrcAssistant, tr("CRC Assistant"));
+  type_name_map_.insert(kFileCheckAssistant, tr("File Assistant"));
+  type_name_map_.insert(kAsciiAssistant, tr("ASCII Assistant"));
+  type_name_map_.insert(kNumberAssistant, tr("Float Assistant"));
+  type_name_map_.insert(kStringAssistant, tr("String Assistant"));
+  type_name_map_.insert(kBroadcastAssistant, tr("Broadcast Assistant"));
+  type_name_map_.insert(kBase64Assistant, tr("Base64 Assistant"));
 }
 
-QVector<int> SAKAssistantsFactory::supportedAssistants() {
-  // QList is not same as QVector in some Qt version.
-  QList<int> ret = mTypeNameMap.keys();
-  QVector<int> cooked;
+QList<int> SAKAssistantsFactory::SupportedAssistants() {
+  QList<int> ret = type_name_map_.keys();
+  QList<int> cooked;
   for (int i = 0; i < ret.count(); i++) {
     cooked.append(ret.at(i));
   }
@@ -57,9 +60,9 @@ QVector<int> SAKAssistantsFactory::supportedAssistants() {
   return cooked;
 }
 
-QString SAKAssistantsFactory::assistantName(int type) const {
-  if (mTypeNameMap.contains(type)) {
-    return mTypeNameMap.value(type);
+QString SAKAssistantsFactory::AssistantName(int type) const {
+  if (type_name_map_.contains(type)) {
+    return type_name_map_.value(type);
   }
 
   QString name = QString("UnknowType(%1)").arg(type);
@@ -67,23 +70,29 @@ QString SAKAssistantsFactory::assistantName(int type) const {
 }
 
 SAKAssistantsFactory* SAKAssistantsFactory::instance() {
-  static SAKAssistantsFactory f;
-  return &f;
+  static SAKAssistantsFactory* factory = nullptr;
+  if (!factory) {
+    factory = new SAKAssistantsFactory(qApp);
+  }
+
+  return factory;
 }
 
-QWidget* SAKAssistantsFactory::newAssistant(int type) {
-  if (type == AssistantCrc) {
+QWidget* SAKAssistantsFactory::NewAssistant(int type) {
+  if (type == kCrcAssistant) {
     return new SAKToolCRCAssistant();
-  } else if (type == AssistantFile) {
+  } else if (type == kFileCheckAssistant) {
     return new SAKToolFileCheckAssistant();
-  } else if (type == AssistantAscii) {
+  } else if (type == kAsciiAssistant) {
     return new SAKToolAsciiAssistant;
-  } else if (type == AssistantFloat) {
+  } else if (type == kNumberAssistant) {
     return new SAKToolFloatAssistant;
-  } else if (type == AssistantString) {
+  } else if (type == kStringAssistant) {
     return new SAKToolStringAssistant;
-  } else if (type == AssistantBroadcast) {
+  } else if (type == kBroadcastAssistant) {
     return new SAKToolBroadcastAssistant;
+  } else if (type == kBase64Assistant) {
+    return new SAKBase64Assisatnt;
   } else {
     return nullptr;
   }

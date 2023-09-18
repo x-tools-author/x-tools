@@ -56,7 +56,7 @@
 #include "SAKTranslator.h"
 #include "SAKUiInterface.h"
 #include "SAKDataStructure.h"
-#include "SAKAssistantsFactory.h"
+#include "sakassistantsfactory.h"
 
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
 #include "SAKCanBusUi.h"
@@ -229,10 +229,10 @@ void SAKMainWindow::initToolMenu()
     QMenu *toolMenu = new QMenu(tr("&Tools"));
     menuBar()->addMenu(toolMenu);
 
-    for (auto &t : SAKAssistantsFactory::instance()->supportedAssistants()) {
-        QString name = SAKAssistantsFactory::instance()->assistantName(t);
+    for (auto &t : SAKAssistantsFactory::instance()->SupportedAssistants()) {
+        QString name = SAKAssistantsFactory::instance()->AssistantName(t);
         QAction *action = new QAction(name, this);
-        QWidget *w = SAKAssistantsFactory::instance()->newAssistant(t);
+        QWidget *w = SAKAssistantsFactory::instance()->NewAssistant(t);
 
         Q_ASSERT_X(action, __FUNCTION__, "A null action!");
         Q_ASSERT_X(w, __FUNCTION__, "A null assistant widget!");
