@@ -166,7 +166,6 @@ void SAKMainWindow::initFileMenu()
 {
     QMenu *fileMenu = new QMenu(tr("&File"), this);
     menuBar()->addMenu(fileMenu);
-
     // Tool box
     QMenu *windowMenu = new QMenu(tr("New Window"), this);
     fileMenu->addMenu(windowMenu);
