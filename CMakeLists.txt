@@ -42,6 +42,9 @@ option(SAK_CRCASSISTANT "Enable CRCAssistant for QtSwissArmyKnife" ON)
 if(SAK_CRCASSISTANT)
   include_directories(src/assistants/crcassistant/src)
   add_definitions(-DSAK_IMPORT_MODULE_CRCASSISTANT)
+  file(GLOB_RECURSE SAK_CRCASSISTANT_SOURCE
+       "src/assistants/crcassistant/src/*h"
+       "src/assistants/crcassistant/src/*.cc")
 endif()
 
 # FileCheckAssistant
@@ -49,6 +52,9 @@ option(SAK_FILECHECKASSISTANT "" ON)
 if(SAK_FILECHECKASSISTANT)
   include_directories(src/assistants/filecheckassistant/src)
   add_definitions(-DSAK_IMPORT_MODULE_FILECHECKASSISTANT)
+  file(GLOB_RECURSE SAK_FILECHECKASSISTANT_SOURCE
+       "src/assistants/filecheckassistant/src/*h"
+       "src/assistants/filecheckassistant/src/*.cc")
 endif()
 
 # AsciiAssistant
@@ -56,6 +62,9 @@ option(SAK_ASCIIASSISTANT "" ON)
 if(SAK_ASCIIASSISTANT)
   include_directories(src/assistants/asciiassistant/src)
   add_definitions(-DSAK_IMPORT_MODULE_ASCIIASSISTANT)
+  file(GLOB_RECURSE SAK_ASCIIASSISTANT_SOURCE
+       "src/assistants/asciiassistant/src/*h"
+       "src/assistants/asciiassistant/src/*.cc")
 endif()
 
 # BroadcastAssistant
@@ -63,6 +72,9 @@ option(SAK_BROCASTASSISTANT "" ON)
 if(SAK_BROCASTASSISTANT)
   include_directories(src/assistants/broadcastassistant/src)
   add_definitions(-DSAK_IMPORT_MODULE_BROADCASTASSISTANT)
+  file(GLOB_RECURSE SAK_BROCASTASSISTANT_SOURCE
+       "src/assistants/broadcastassistant/src/*h"
+       "src/assistants/broadcastassistant/src/*.cc")
 endif()
 
 # NumberAssistant
@@ -70,6 +82,9 @@ option(SAK_NUMBERASSISTANT "" ON)
 if(SAK_NUMBERASSISTANT)
   include_directories(src/assistants/floatassistant/src)
   add_definitions(-DSAK_IMPORT_MODULE_FLOATASSISTANT)
+  file(GLOB_RECURSE SAK_NUMBERASSISTANT_SOURCE
+       "src/assistants/floatassistant/src/*h"
+       "src/assistants/floatassistant/src/*.cc")
 endif()
 
 # StringAssistant
@@ -77,12 +92,23 @@ option(SAK_STRINGASSISTANT "" ON)
 if(SAK_STRINGASSISTANT)
   include_directories(src/assistants/stringassistant/src)
   add_definitions(-DSAK_IMPORT_MODULE_STRINGASSISTANT)
+  file(GLOB_RECURSE SAK_STRINGASSISTANT_SOURCE
+       "src/assistants/stringassistant/src/*h"
+       "src/assistants/stringassistant/src/*.cc")
 endif()
 
 # Assistant module
 include_directories(src/assistants)
 include_directories(src/assistantsui)
-file(GLOB_RECURSE ASSISTANT_SOURCES "src/assistants/*h" "src/assistants/*.cc")
+set(ASSISTANT_SOURCES
+    ${SAK_CRCASSISTANT_SOURCE}
+    ${SAK_FILECHECKASSISTANT_SOURCE}
+    ${SAK_ASCIIASSISTANT_SOURCE}
+    ${SAK_BROCASTASSISTANT_SOURCE}
+    ${SAK_NUMBERASSISTANT_SOURCE}
+    ${SAK_STRINGASSISTANT_SOURCE}
+    src/assistants/SAKAssistantsFactory.h
+    src/assistants/SAKAssistantsFactory.cc)
 file(GLOB_RECURSE ASSISTANT_UI_SOURCES "src/assistantsui/*h"
      "src/assistantsui/*.cc" "src/assistantsui/*.ui")
 
@@ -171,6 +197,7 @@ set(SAK_APP_SOURCES
     ${APP_SOURCES}
     SAKResources.qrc)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_executable(QtSwissArmyKnife MANUAL_FINALIZATION ${SAK_APP_SOURCES})
 else()
@@ -213,12 +240,43 @@ execute_process(
   OUTPUT_STRIP_TRAILING_WHITESPACE)
 message(STATUS "Last commit: ${GIT_COMMIT}")
 
-if(CMAKE_SYSTEM_NAME MATCHES "Windows")
+option(SAK_AUTO_DEPLOY "" OFF)
+if(CMAKE_SYSTEM_NAME MATCHES "Windows" AND SAK_AUTO_DEPLOY)
   set(WIN_DEPLOY_QT "${Qt${QT_VERSION_MAJOR}_DIR}/../../../bin/windeployqt.exe")
   message(STATUS ${Qt${QT_VERSION_MAJOR}_WIN_DEPLOY_QT})
   cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH compiler_path)
   add_custom_command(
     TARGET QtSwissArmyKnife
     POST_BUILD
-    COMMAND ${WIN_DEPLOY_QT} "${CMAKE_BINARY_DIR}/QtSwissArmyKnife.exe")
+    COMMAND ${WIN_DEPLOY_QT}
+            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/QtSwissArmyKnife.exe")
+  if("${CMAKE_BUILD_TYPE}" STREQUAL "Release" AND MSVC)
+    add_custom_command(
+      TARGET ${PROJECT_NAME}
+      POST_BUILD
+      COMMAND
+        ${CMAKE_COMMAND} -E copy_if_different
+        "${compiler_path}/VCRUNTIME140.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+      COMMAND
+        ${CMAKE_COMMAND} -E copy_if_different
+        "${compiler_path}/VCRUNTIME140_1.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              "${compiler_path}/MSVCP140.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+      COMMAND
+        ${CMAKE_COMMAND} -E copy_if_different "${compiler_path}/MSVCP140_1.dll"
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+      COMMAND
+        ${CMAKE_COMMAND} -E copy_if_different "${compiler_path}/MSVCP140_2.dll"
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+  endif()
 endif()
+
+add_subdirectory(src/assistants/asciiassistant)
+add_subdirectory(src/assistants/broadcastassistant)
+add_subdirectory(src/assistants/crcassistant)
+add_subdirectory(src/assistants/filecheckassistant)
+add_subdirectory(src/assistants/floatassistant)
+add_subdirectory(src/assistants/stringassistant)
+
+add_subdirectory(src/modbus)
+add_subdirectory(src/canbus)
