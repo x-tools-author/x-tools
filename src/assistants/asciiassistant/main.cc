@@ -9,12 +9,12 @@
  */
 
 #include <QApplication>
-#include "SAKToolAsciiAssistant.h"
+#include "sakasciiassistant.h"
 
 int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
 
-  SAKToolAsciiAssistant assistant;
+  SAKAsciiAssistant assistant;
   assistant.show();
 
   return app.exec();

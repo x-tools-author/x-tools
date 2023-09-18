@@ -1,6 +1,6 @@
 ﻿file(GLOB ASCII_ASSISTANT_SOURCES "src/*.h" "src/*.cc" "src/*.ui")
 set(APP_ASCII_ASSISTANT_SOURCES ${ASCII_ASSISTANT_SOURCES} main.cc
-                                SAKToolAsciiAssistant.qrc)
+                                sakasciiassistant.qrc)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

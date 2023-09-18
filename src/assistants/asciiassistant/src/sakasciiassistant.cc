@@ -1,27 +1,27 @@
-/*
- * Copyright 2022 Qter(qsaker@qq.com. All rights reserved.
+﻿/*******************************************************************************
+ * Copyright 2022-2023 Qsaker(qsaker@outlook.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part
- * of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
+ * project(https://github.com/qsaker/QtSwissArmyKnife).
  *
- * QtSwissArmyKnife is licensed according to the terms in
- * the file LICENCE in the root of the source code directory.
- */
+ * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
+ * the root of the source code directory.
+ ******************************************************************************/
+
+#include "sakasciiassistant.h"
 
 #include <QImage>
-#include "SAKToolAsciiAssistant.h"
-#include "ui_SAKToolAsciiAssistant.h"
 
-SAKToolAsciiAssistant::SAKToolAsciiAssistant(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::SAKToolAsciiAssistant)
-{
-    ui->setupUi(this);
-    const QPixmap pixmap = QPixmap::fromImage(QImage(":/resources/ASCII.png"));
-    ui->labelImage->setPixmap(pixmap);
+#include "ui_sakasciiassistant.h"
+
+SAKAsciiAssistant::SAKAsciiAssistant(QWidget* parent)
+    : QDialog(parent), ui_(new Ui::SAKAsciiAssistant) {
+  ui_->setupUi(this);
+
+  const QPixmap pixmap = QPixmap::fromImage(QImage(":/resources/ASCII.png"));
+  ui_->image_->setPixmap(pixmap);
 }
 
-SAKToolAsciiAssistant::~SAKToolAsciiAssistant()
-{
-    delete ui;
+SAKAsciiAssistant::~SAKAsciiAssistant() {
+  delete ui_;
 }

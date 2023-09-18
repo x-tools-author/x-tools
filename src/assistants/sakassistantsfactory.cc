@@ -25,7 +25,7 @@
 #include "SAKToolStringAssistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
-#include "SAKToolAsciiAssistant.h"
+#include "sakasciiassistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
 #include "SAKToolBroadcastAssistant.h"
@@ -44,7 +44,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent) : QObject(parent) {
       kFileCheckAssistant, tr("File Check Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
-  RegisterAssistantMetaType<SAKToolAsciiAssistant>(kAsciiAssistant,
+  RegisterAssistantMetaType<SAKAsciiAssistant>(kAsciiAssistant,
                                                    tr("ASCII Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
