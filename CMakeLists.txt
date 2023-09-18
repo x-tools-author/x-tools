@@ -80,11 +80,11 @@ endif()
 # NumberAssistant
 option(SAK_NUMBERASSISTANT "" ON)
 if(SAK_NUMBERASSISTANT)
-  include_directories(src/assistants/floatassistant/src)
+  include_directories(src/assistants/numberassistant/src)
   add_definitions(-DSAK_IMPORT_MODULE_FLOATASSISTANT)
   file(GLOB_RECURSE SAK_NUMBERASSISTANT_SOURCE
-       "src/assistants/floatassistant/src/*h"
-       "src/assistants/floatassistant/src/*.cc")
+       "src/assistants/numberassistant/src/*h"
+       "src/assistants/numberassistant/src/*.cc")
 endif()
 
 # StringAssistant
@@ -275,7 +275,7 @@ add_subdirectory(src/assistants/asciiassistant)
 add_subdirectory(src/assistants/broadcastassistant)
 add_subdirectory(src/assistants/crcassistant)
 add_subdirectory(src/assistants/filecheckassistant)
-add_subdirectory(src/assistants/floatassistant)
+add_subdirectory(src/assistants/numberassistant)
 add_subdirectory(src/assistants/stringassistant)
 
 add_subdirectory(src/modbus)
