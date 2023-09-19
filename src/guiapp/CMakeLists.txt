@@ -1,14 +1,4 @@
-﻿find_package(
-  Qt6 REQUIRED
-  COMPONENTS Core
-             Gui
-             Widgets
-             WebSockets
-             Network
-             SerialPort
-             Bluetooth
-             Qml
-             QuickControls2)
+﻿find_package(Qt6 REQUIRED COMPONENTS Qml QuickControls2)
 
 file(
   GLOB
