@@ -14,8 +14,7 @@
 
 int main(int argc, char* argv[]) {
   QApplication* app = CreateAssistant<SAKToolBroadcastAssistant>(
-      argc, argv, QString("SAKBroadcastAssistant"),
-      "SAK.SAKBroadcastAssistant");
+      argc, argv, QObject::tr("Broadcast Assistant"), "SAK.BroadcastAssistant");
   int ret = app->exec();
   app->deleteLater();
 

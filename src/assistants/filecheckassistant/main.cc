@@ -14,7 +14,8 @@
 
 int main(int argc, char* argv[]) {
   QApplication* app = CreateAssistant<SAKToolFileCheckAssistant>(
-      argc, argv, QString("SAKFileCheckAssistant"), "SAK.FileCheckAssistant");
+      argc, argv, QObject::tr("File Check Assistant"),
+      "SAK.FileCheckAssistant");
   int ret = app->exec();
   app->deleteLater();
 

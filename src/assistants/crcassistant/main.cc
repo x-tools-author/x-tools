@@ -14,7 +14,7 @@
 
 int main(int argc, char* argv[]) {
   QApplication* app = CreateAssistant<SAKToolCRCAssistant>(
-      argc, argv, QString("SAKToolCRCAssistant"), "SAK.SAKToolCRCAssistant");
+      argc, argv, QObject::tr("CRC Assistant"), "SAK.CRCAssistant");
   int ret = app->exec();
   app->deleteLater();
 

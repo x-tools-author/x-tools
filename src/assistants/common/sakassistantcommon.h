@@ -20,11 +20,11 @@
 #include "sakcommonmainwindow.h"
 
 template <typename T>
-QApplication* CreateAssistant(int argc, char* argv[], const QString& app_name,
+QApplication* CreateAssistant(int argc, char* argv[], const QString& title,
                               const char* logging_category_path) {
   QCoreApplication::setOrganizationName(QString("Qsaker"));
   QCoreApplication::setOrganizationDomain(QString("IT"));
-  QCoreApplication::setApplicationName(app_name);
+  QCoreApplication::setApplicationName(QString(title).remove(" "));
 
   // Application style.
   QLoggingCategory logging_category(logging_category_path);
@@ -47,7 +47,7 @@ QApplication* CreateAssistant(int argc, char* argv[], const QString& app_name,
 
   SAKCommonMainWindow* main_window = new SAKCommonMainWindow();
   T* assistant = new T(main_window);
-  main_window->setWindowTitle(assistant->windowTitle());
+  main_window->setWindowTitle(title);
   main_window->setCentralWidget(assistant);
   main_window->resize(main_window->height() * 1.732, main_window->height());
   main_window->show();

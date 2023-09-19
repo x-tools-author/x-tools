@@ -14,7 +14,7 @@
 
 int main(int argc, char* argv[]) {
   QApplication* app = CreateAssistant<SAKBase64Assisatnt>(
-      argc, argv, QString("SAKBase64Assisatnt"), "SAK.SAKBase64Assisatnt");
+      argc, argv, QObject::tr("Base64 Assisatnt"), "SAK.Base64Assisatnt");
   int ret = app->exec();
   app->deleteLater();
 

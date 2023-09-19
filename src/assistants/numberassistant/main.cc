@@ -14,7 +14,7 @@
 
 int main(int argc, char* argv[]) {
   QApplication* app = CreateAssistant<SAKToolFloatAssistant>(
-      argc, argv, QString("SAKNumberAssistant"), "SAK.NumberAssistant");
+      argc, argv, QObject::tr("Number Assistant"), "SAK.NumberAssistant");
   int ret = app->exec();
   app->deleteLater();
 
