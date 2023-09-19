@@ -11,13 +11,13 @@
 #ifndef SAKASCIIASSISTANT_H
 #define SAKASCIIASSISTANT_H
 
-#include <QDialog>
+#include <QWidget>
 
 namespace Ui {
 class SAKAsciiAssistant;
 }
 
-class SAKAsciiAssistant : public QDialog {
+class SAKAsciiAssistant : public QWidget {
   Q_OBJECT
  public:
   Q_INVOKABLE SAKAsciiAssistant(QWidget* parent = Q_NULLPTR);

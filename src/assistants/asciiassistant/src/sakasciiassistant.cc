@@ -15,10 +15,11 @@
 #include "ui_sakasciiassistant.h"
 
 SAKAsciiAssistant::SAKAsciiAssistant(QWidget* parent)
-    : QDialog(parent), ui_(new Ui::SAKAsciiAssistant) {
+    : QWidget(parent), ui_(new Ui::SAKAsciiAssistant) {
   ui_->setupUi(this);
 
   const QPixmap pixmap = QPixmap::fromImage(QImage(":/resources/ASCII.png"));
+  resize(pixmap.size());
   ui_->image_->setPixmap(pixmap);
 }
 

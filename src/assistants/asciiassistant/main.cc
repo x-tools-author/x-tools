@@ -8,13 +8,15 @@
  * the root of the source code directory.
  ******************************************************************************/
 #include <QApplication>
+
 #include "sakasciiassistant.h"
+#include "sakassistantcommon.h"
 
 int main(int argc, char* argv[]) {
-  QApplication app(argc, argv);
+  QApplication* app = CreateAssistant<SAKAsciiAssistant>(
+      argc, argv, QString("SAKAsciiAssistant"), "SAK.SAKAsciiAssistant");
+  int ret = app->exec();
+  app->deleteLater();
 
-  SAKAsciiAssistant assistant;
-  assistant.show();
-
-  return app.exec();
+  return ret;
 }

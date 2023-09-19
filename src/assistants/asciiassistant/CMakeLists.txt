@@ -1,7 +1,20 @@
 ﻿file(GLOB ASCII_ASSISTANT_SOURCES "src/*.h" "src/*.cc" "src/*.ui")
-set(APP_ASCII_ASSISTANT_SOURCES ${ASCII_ASSISTANT_SOURCES} main.cc
-                                sakasciiassistant.qrc)
+set(APP_ASCII_ASSISTANT_SOURCES
+    ${ASCII_ASSISTANT_SOURCES}
+    ../../common/commonui/sakcommonmainwindow.h
+    ../../common/commonui/sakcommonmainwindow.cc
+    ../../common/common/SAKInterface.h
+    ../../common/common/SAKInterface.cc
+    ../../common/common/SAKTranslator.h
+    ../../common/common/SAKTranslator.cc
+    ../../common/common/SAKSettings.h
+    ../../common/common/SAKSettings.cc
+    ../common/sakassistantcommon.h
+    main.cc
+    sakasciiassistant.qrc
+    ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
 
+include_directories(../common)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_executable(ASCIIAssistant MANUAL_FINALIZATION
