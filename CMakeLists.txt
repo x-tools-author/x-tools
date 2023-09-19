@@ -33,8 +33,6 @@ find_package(
              SerialBus
              Bluetooth)
 
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS LinguistTools)
-
 if(${QT_VERSION} VERSION_LESS "6.5")
   message(WARNING "The Qt version is too old, please using Qt6.5 or later.")
 endif()

@@ -12,8 +12,8 @@ Window {
     id: mainWindow
     title: qsTr("EasyDebug")
     visible: true
-    width: 1024
-    height: 768
+    width: 1280
+    height: 720
     color: "#00000000"
     flags: Qt.FramelessWindowHint | Qt.Window
 
@@ -27,6 +27,7 @@ Window {
         var theme = sakSettings.value(settingKeys.materialTheme)
 
         if (theme === Material.Dark) {
+
             //edMaterialAccent = Material.color(edMaterialAccent, Material.Shade200)
         }
 
@@ -36,7 +37,7 @@ Window {
             return Material.System
         }
     }
-    property string edMaterialAccent:  {
+    property string edMaterialAccent: {
         if (!sakSettings) {
             return Material.color(Material.Pink)
         }
@@ -48,7 +49,7 @@ Window {
             return Material.color(Material.Pink)
         }
     }
-    property string edMaterialPrimary:  {
+    property string edMaterialPrimary: {
         if (!sakSettings) {
             return Material.color(Material.Pink)
         }
@@ -64,19 +65,19 @@ Window {
     onEdMaterialThemeChanged: {
         if (sakSettings) {
             sakSettings.setValue(settingKeys.materialTheme,
-                                    String(edMaterialTheme))
+                                 String(edMaterialTheme))
         }
     }
     onEdMaterialAccentChanged: {
         if (sakSettings) {
-             sakSettings.setValue(settingKeys.materialAccent,
-                                     String(edMaterialAccent))
+            sakSettings.setValue(settingKeys.materialAccent,
+                                 String(edMaterialAccent))
         }
     }
     onEdMaterialPrimaryChanged: {
         if (sakSettings) {
             sakSettings.setValue(settingKeys.materialPrimary,
-                                    String(edMaterialPrimary))
+                                 String(edMaterialPrimary))
         }
     }
 
@@ -110,7 +111,7 @@ Window {
                 cursorShape = Qt.SizeVerCursor
             }
         }
-        onPressed: function (mouse){
+        onPressed: function (mouse) {
             if (mouse.x < 4) {
                 mainWindow.startSystemResize(Qt.LeftEdge)
             } else if (mouse.x > mainWindow.width - 4) {
@@ -137,7 +138,7 @@ Window {
             color: Material.background
             layer.effect: DropShadow {
                 antialiasing: true
-                samples: mainWindowPaneBackgroundRectangle.radius*2
+                samples: mainWindowPaneBackgroundRectangle.radius * 2
                 radius: mainWindowPaneBackgroundRectangle.radius
             }
         }
@@ -146,9 +147,12 @@ Window {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            onPageIndexChanged: sakSettings.setValue(settingKeys.pageIndex, pageIndex)
+            onPageIndexChanged: sakSettings.setValue(settingKeys.pageIndex,
+                                                     pageIndex)
             onInvokeAddPage: function (qmlFile) {
-                pageRepeaterListModel.append({page: "qrc:/qml/" + qmlFile})
+                pageRepeaterListModel.append({
+                                                 "page": "qrc:/qml/" + qmlFile
+                                             })
             }
             onInvokeRemovePage: function (pageIndex) {
                 var i = pageIndex - fixedpage
@@ -164,7 +168,9 @@ Window {
                     pageIndex = index > (fixedpage - 1) ? 0 : index
                 }
             }
-            SAKVerticalLine { anchors.right: parent.right }
+            SAKVerticalLine {
+                anchors.right: parent.right
+            }
         }
         MainWindowTitleBar {
             id: titleBar

@@ -64,7 +64,7 @@ ToolBar {
             }
         }
         ToolButton {
-            icon.source: "qrc:/res/icon/IconAdd.svg"
+            icon.source: "qrc:/resources/icon/IconAdd.svg"
             onClicked: optionMenu.open()
             visible: false
             Menu {

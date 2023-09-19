@@ -7,45 +7,48 @@ import "../common"
 SAKPopup {
     id: root
 
-    readonly property string itemEnable:        responserTool.itemEnable
-    readonly property string itemDescription:   responserTool.itemDescription
-    readonly property string itemOption:        responserTool.itemOption
+    readonly property string itemEnable: responserTool.itemEnable
+    readonly property string itemDescription: responserTool.itemDescription
+    readonly property string itemOption: responserTool.itemOption
 
-    readonly property string itemReferenceEscapeCharacter:  responserTool.itemReferenceEscapeCharacter
-    readonly property string itemReferenceTextFormat:       responserTool.itemReferenceTextFormat
-    readonly property string itemReferencePrefix:           responserTool.itemReferencePrefix
-    readonly property string itemReferenceSuffix:           responserTool.itemReferenceSuffix
-    readonly property string itemReferenceInterval:         "itemReferenceInterval"
-    readonly property string itemReferenceText:             responserTool.itemReferenceText
-    readonly property string itemReferenceCrcEnable:        responserTool.itemReferenceCrcEnable
-    readonly property string itemReferenceCrcAlgorithm:     responserTool.itemReferenceCrcAlgorithm
-    readonly property string itemReferenceCrcStartIndex:    responserTool.itemReferenceCrcStartIndex
-    readonly property string itemReferenceCrcEndIndex:      responserTool.itemReferenceCrcEndIndex
+    readonly property string itemReferenceEscapeCharacter: responserTool.itemReferenceEscapeCharacter
+    readonly property string itemReferenceTextFormat: responserTool.itemReferenceTextFormat
+    readonly property string itemReferencePrefix: responserTool.itemReferencePrefix
+    readonly property string itemReferenceSuffix: responserTool.itemReferenceSuffix
+    readonly property string itemReferenceInterval: "itemReferenceInterval"
+    readonly property string itemReferenceText: responserTool.itemReferenceText
+    readonly property string itemReferenceCrcEnable: responserTool.itemReferenceCrcEnable
+    readonly property string itemReferenceCrcAlgorithm: responserTool.itemReferenceCrcAlgorithm
+    readonly property string itemReferenceCrcStartIndex: responserTool.itemReferenceCrcStartIndex
+    readonly property string itemReferenceCrcEndIndex: responserTool.itemReferenceCrcEndIndex
 
-    readonly property string itemResponseEscapeCharacter:   responserTool.itemResponseEscapeCharacter
-    readonly property string itemResponseTextFormat:        responserTool.itemResponseTextFormat
-    readonly property string itemResponsePrefix:            responserTool.itemResponsePrefix
-    readonly property string itemResponseSuffix:            responserTool.itemResponseSuffix
-    readonly property string itemResponseInterval:          responserTool.itemResponseInterval
-    readonly property string itemResponseText:              responserTool.itemResponseText
-    readonly property string itemResponseCrcEnable:         responserTool.itemResponseCrcEnable
-    readonly property string itemResponseCrcAlgorithm:      responserTool.itemResponseCrcAlgorithm
-    readonly property string itemResponseCrcStartIndex:     responserTool.itemResponseCrcStartIndex
-    readonly property string itemResponseCrcEndIndex:       responserTool.itemResponseCrcEndIndex
+    readonly property string itemResponseEscapeCharacter: responserTool.itemResponseEscapeCharacter
+    readonly property string itemResponseTextFormat: responserTool.itemResponseTextFormat
+    readonly property string itemResponsePrefix: responserTool.itemResponsePrefix
+    readonly property string itemResponseSuffix: responserTool.itemResponseSuffix
+    readonly property string itemResponseInterval: responserTool.itemResponseDelay
+    readonly property string itemResponseText: responserTool.itemResponseText
+    readonly property string itemResponseCrcEnable: responserTool.itemResponseCrcEnable
+    readonly property string itemResponseCrcAlgorithm: responserTool.itemResponseCrcAlgorithm
+    readonly property string itemResponseCrcStartIndex: responserTool.itemResponseCrcStartIndex
+    readonly property string itemResponseCrcEndIndex: responserTool.itemResponseCrcEndIndex
 
-    readonly property string itemEscapeCharacter:   parameterIndex === 0 ? itemReferenceEscapeCharacter : itemResponseEscapeCharacter
-    readonly property string itemTextFormat:        parameterIndex === 0 ? itemReferenceTextFormat      : itemResponseTextFormat
-    readonly property string itemPrefix:            parameterIndex === 0 ? itemReferencePrefix          : itemResponsePrefix
-    readonly property string itemSuffix:            parameterIndex === 0 ? itemReferenceSuffix          : itemResponseSuffix
-    readonly property string itemInterval:          parameterIndex === 0 ? itemReferenceInterval        : itemResponseInterval
-    readonly property string itemText:              parameterIndex === 0 ? itemReferenceText            : itemResponseText
-    readonly property string itemCrcEnable:         parameterIndex === 0 ? itemReferenceCrcEnable       : itemResponseCrcEnable
-    readonly property string itemCrcAlgorithm:      parameterIndex === 0 ? itemReferenceCrcAlgorithm    : itemResponseCrcAlgorithm
-    readonly property string itemCrcStartIndex:     parameterIndex === 0 ? itemReferenceCrcStartIndex   : itemResponseCrcStartIndex
-    readonly property string itemCrcEndIndex:       parameterIndex === 0 ? itemReferenceCrcEndIndex     : itemResponseCrcEndIndex
+    readonly property string itemEscapeCharacter: parameterIndex === 0 ? itemReferenceEscapeCharacter : itemResponseEscapeCharacter
+    readonly property string itemTextFormat: parameterIndex === 0 ? itemReferenceTextFormat : itemResponseTextFormat
+    readonly property string itemPrefix: (parameterIndex
+                                          === 0 ? itemReferencePrefix : itemResponsePrefix)
+    readonly property string itemSuffix: parameterIndex
+                                         === 0 ? itemReferenceSuffix : itemResponseSuffix
+    readonly property string itemInterval: parameterIndex
+                                           === 0 ? itemReferenceInterval : itemResponseInterval
+    readonly property string itemText: parameterIndex === 0 ? itemReferenceText : itemResponseText
+    readonly property string itemCrcEnable: parameterIndex
+                                            === 0 ? itemReferenceCrcEnable : itemResponseCrcEnable
+    readonly property string itemCrcAlgorithm: parameterIndex === 0 ? itemReferenceCrcAlgorithm : itemResponseCrcAlgorithm
+    readonly property string itemCrcStartIndex: parameterIndex === 0 ? itemReferenceCrcStartIndex : itemResponseCrcStartIndex
+    readonly property string itemCrcEndIndex: parameterIndex === 0 ? itemReferenceCrcEndIndex : itemResponseCrcEndIndex
 
     property int parameterIndex: 0
-
 
     contentItem: ColumnLayout {
         GridLayout {
@@ -174,27 +177,33 @@ SAKPopup {
                         }
 
                         function setParameters(parameters) {
-                            var ret = itemTextFormatComboBox.indexOfValue(parameters[itemTextFormat])
+                            var ret = itemTextFormatComboBox.indexOfValue(
+                                        parameters[itemTextFormat])
                             if (ret >= 0) {
                                 itemTextFormatComboBox.currentIndex = ret
                             }
-                            ret = itemEscapeCharacterComboBox.indexOfValue(parameters[itemEscapeCharacter])
+                            ret = itemEscapeCharacterComboBox.indexOfValue(
+                                        parameters[itemEscapeCharacter])
                             if (ret >= 0) {
                                 itemEscapeCharacterComboBox.currentIndex = ret
                             }
-                            ret = itemPrefixComboBox.indexOfValue(parameters[itemPrefix])
+                            ret = itemPrefixComboBox.indexOfValue(
+                                        parameters[itemPrefix])
                             if (ret >= 0) {
                                 itemPrefixComboBox.currentIndex = ret
                             }
-                            ret = itemSuffixComboBox.indexOfValue(parameters[itemSuffix])
+                            ret = itemSuffixComboBox.indexOfValue(
+                                        parameters[itemSuffix])
                             if (ret >= 0) {
                                 itemSuffixComboBox.currentIndex = ret
                             }
-                            itemIntervalSpinBox.value = parameters[itemInterval] ? parameters[itemInterval] : 1000
+                            itemIntervalSpinBox.value
+                                    = parameters[itemInterval] ? parameters[itemInterval] : 1000
                             itemTextTextField.text = parameters[itemText]
 
                             itemCrcEnableCheckBox.checked = parameters[itemCrcEnable]
-                            ret = itemCrcArithmeticComboBox.indexOfValue(parameters[itemCrcAlgorithm])
+                            ret = itemCrcArithmeticComboBox.indexOfValue(
+                                        parameters[itemCrcAlgorithm])
                             if (ret >= 0) {
                                 itemCrcArithmeticComboBox.currentIndex = ret
                             }
@@ -204,7 +213,8 @@ SAKPopup {
 
                         function getParameters() {
                             var parameters = {}
-                            parameters[itemEscapeCharacter] = itemEscapeCharacterComboBox.currentValue
+                            parameters[itemEscapeCharacter]
+                                    = itemEscapeCharacterComboBox.currentValue
                             parameters[itemTextFormat] = itemTextFormatComboBox.currentValue
                             parameters[itemPrefix] = itemPrefixComboBox.currentValue
                             parameters[itemSuffix] = itemSuffixComboBox.currentValue
@@ -248,7 +258,7 @@ SAKPopup {
                 model: [qsTr("Cancle"), qsTr("Apply")]
                 SAKButton {
                     text: modelData
-                    width: Math.round((parent.width - parent.spacing)/2)
+                    width: Math.round((parent.width - parent.spacing) / 2)
                     onClicked: {
                         if (index === 0) {
                             root.rejected()

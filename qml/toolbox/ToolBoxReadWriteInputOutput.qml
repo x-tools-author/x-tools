@@ -99,11 +99,11 @@ Item {
                     settingKey: groupName + "outputTextFromat"
                 }
                 SAKButton {
-                    icon.source: "qrc:/res/icon/IconClear.svg"
+                    icon.source: "qrc:/resources/icon/IconClear.svg"
                     onClicked: outputTextArea.clear()
                 }
                 SAKButton {
-                    icon.source: "qrc:/res/icon/IconSettings.svg"
+                    icon.source: "qrc:/resources/icon/IconSettings.svg"
                     onClicked: root.invokeOpenDrawer(1)
                 }
             }
@@ -215,7 +215,7 @@ Item {
                     }
                 }
                 SAKButton {
-                    icon.source: "qrc:/res/icon/IconList.svg"
+                    icon.source: "qrc:/resources/icon/IconList.svg"
                     onClicked: menu.resetMenu()
                     Menu {
                         id: menu
@@ -231,7 +231,7 @@ Item {
                     }
                 }
                 SAKButton {
-                    icon.source: "qrc:/res/icon/IconSettings.svg"
+                    icon.source: "qrc:/resources/icon/IconSettings.svg"
                     onClicked: root.invokeOpenDrawer(2)
                 }
                 SAKButton {

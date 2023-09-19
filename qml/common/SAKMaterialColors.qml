@@ -58,7 +58,7 @@ GridLayout {
 
     ToolButton {
         id: addButton
-        icon.source: "qrc:/res/icon/IconAdd.svg"
+        icon.source: "qrc:/resources/icon/IconAdd.svg"
         onClicked: colorDialog.open()
         property string bgColor: "white"
         Layout.alignment: Qt.AlignHCenter|Qt.AlignVCenter
