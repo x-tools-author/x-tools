@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(qsaker@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
@@ -10,33 +10,31 @@
 #ifndef SAKTOOLBROADCASTASSISTANT_H
 #define SAKTOOLBROADCASTASSISTANT_H
 
-#include <QDialog>
+#include <QWidget>
 #include "SAKToolBroadcastThread.h"
 
-namespace Ui
-{
-    class SAKToolBroadcastAssistant;
+namespace Ui {
+class SAKBroadcastAssistant;
 }
 
-class SAKToolBroadcastAssistant : public QDialog
-{
-    Q_OBJECT
-public:
-    Q_INVOKABLE SAKToolBroadcastAssistant(QWidget *parent = Q_NULLPTR);
-    ~SAKToolBroadcastAssistant();
+class SAKToolBroadcastAssistant : public QWidget {
+  Q_OBJECT
+ public:
+  Q_INVOKABLE SAKToolBroadcastAssistant(QWidget* parent = Q_NULLPTR);
+  ~SAKToolBroadcastAssistant();
 
-private:
-    Ui::SAKToolBroadcastAssistant *ui;
-    SAKToolBroadcastThread *mBroadcastThread;
+ private:
+  Ui::SAKBroadcastAssistant* ui;
+  SAKToolBroadcastThread* mBroadcastThread;
 
-private:
-    void initUi();
-    void initUiBroadcastAddress();
-    void initUiBroadcastInterval();
-    void updateUiState(bool started);
-    QByteArray packetData();
+ private:
+  void initUi();
+  void initUiBroadcastAddress();
+  void initUiBroadcastInterval();
+  void updateUiState(bool started);
+  QByteArray packetData();
 
-    void onBroadcastPushButtonClicked();
+  void onBroadcastPushButtonClicked();
 };
 
-#endif // SAKTOOLBROADCASTASSISTANT_H
+#endif  // SAKTOOLBROADCASTASSISTANT_H
