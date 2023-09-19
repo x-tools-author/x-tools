@@ -293,3 +293,4 @@ if(CMAKE_SYSTEM_NAME MATCHES "Windows" AND SAK_AUTO_DEPLOY)
 endif()
 
 add_subdirectory(src)
+add_subdirectory(resources/translations)
