@@ -10,10 +10,10 @@
 #include <QApplication>
 
 #include "sakasciiassistant.h"
-#include "sakassistantcommon.h"
+#include "sakcommonmainwindow.h"
 
 int main(int argc, char* argv[]) {
-  QApplication* app = CreateAssistant<SAKAsciiAssistant>(
+  QApplication* app = CreateCommonMainWindowApplication<SAKAsciiAssistant>(
       argc, argv, QObject::tr("Ascii Assistant"), "SAK.AsciiAssistant");
   int ret = app->exec();
   app->deleteLater();

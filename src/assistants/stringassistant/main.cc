@@ -10,11 +10,10 @@
 #include <QApplication>
 
 #include "SAKToolStringAssistant.h"
-
-#include "sakassistantcommon.h"
+#include "sakcommonmainwindow.h"
 
 int main(int argc, char* argv[]) {
-  QApplication* app = CreateAssistant<SAKToolStringAssistant>(
+  QApplication* app = CreateCommonMainWindowApplication<SAKToolStringAssistant>(
       argc, argv, QObject::tr("String Assistant"), "SAK.StringAssistant");
   int ret = app->exec();
   app->deleteLater();

@@ -10,12 +10,13 @@
 #include <QApplication>
 
 #include "SAKToolFileCheckAssistant.h"
-#include "sakassistantcommon.h"
+#include "sakcommonmainwindow.h"
 
 int main(int argc, char* argv[]) {
-  QApplication* app = CreateAssistant<SAKToolFileCheckAssistant>(
-      argc, argv, QObject::tr("File Check Assistant"),
-      "SAK.FileCheckAssistant");
+  QApplication* app =
+      CreateCommonMainWindowApplication<SAKToolFileCheckAssistant>(
+          argc, argv, QObject::tr("File Check Assistant"),
+          "SAK.FileCheckAssistant");
   int ret = app->exec();
   app->deleteLater();
 

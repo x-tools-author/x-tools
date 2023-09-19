@@ -11,11 +11,9 @@ set(APP_CRC_ASSISTANT_SOURCES
     ../../common/common/SAKTranslator.cc
     ../../common/common/SAKSettings.h
     ../../common/common/SAKSettings.cc
-    ../common/sakassistantcommon.h
     main.cc
     ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
 
-include_directories(../common)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_executable(CRCAssistant MANUAL_FINALIZATION
