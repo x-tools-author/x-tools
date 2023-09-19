@@ -269,36 +269,6 @@ execute_process(
 message(STATUS "Last commit time: ${LAST_COMMIT_DATE}")
 add_compile_definitions(SAK_COMMIT_DATE="${LAST_COMMIT_DATE}")
 
-option(SAK_AUTO_DEPLOY "" ON)
-if(CMAKE_SYSTEM_NAME MATCHES "Windows" AND SAK_AUTO_DEPLOY)
-  set(WIN_DEPLOY_QT "${Qt${QT_VERSION_MAJOR}_DIR}/../../../bin/windeployqt.exe")
-  message(STATUS ${Qt${QT_VERSION_MAJOR}_WIN_DEPLOY_QT})
-  cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH compiler_path)
-  add_custom_command(
-    TARGET QtSwissArmyKnife
-    POST_BUILD
-    COMMAND ${WIN_DEPLOY_QT}
-            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/QtSwissArmyKnife.exe")
-  if("${CMAKE_BUILD_TYPE}" STREQUAL "Release" AND MSVC)
-    add_custom_command(
-      TARGET ${PROJECT_NAME}
-      POST_BUILD
-      COMMAND
-        ${CMAKE_COMMAND} -E copy_if_different
-        "${compiler_path}/VCRUNTIME140.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-      COMMAND
-        ${CMAKE_COMMAND} -E copy_if_different
-        "${compiler_path}/VCRUNTIME140_1.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different
-              "${compiler_path}/MSVCP140.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-      COMMAND
-        ${CMAKE_COMMAND} -E copy_if_different "${compiler_path}/MSVCP140_1.dll"
-        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-      COMMAND
-        ${CMAKE_COMMAND} -E copy_if_different "${compiler_path}/MSVCP140_2.dll"
-        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-  endif()
-endif()
-
 add_subdirectory(src)
+add_subdirectory(deploy)
 add_subdirectory(resources/translations)
