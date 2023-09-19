@@ -215,7 +215,7 @@ set(SAK_APP_SOURCES
     ${TOOLS_SOURCES}
     ${TOOLS_UI_SOURCES}
     ${APP_SOURCES}
-    SAKResources.qrc
+    qtswissarmyknife.qrc
     windows.rc)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
@@ -260,6 +260,14 @@ execute_process(
   OUTPUT_VARIABLE GIT_COMMIT
   OUTPUT_STRIP_TRAILING_WHITESPACE)
 message(STATUS "Last commit: ${GIT_COMMIT}")
+add_compile_definitions(SAK_GIT_COMMIT="${GIT_COMMIT}")
+execute_process(
+  COMMAND git log -1 --format=%ci
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  OUTPUT_VARIABLE LAST_COMMIT_DATE
+  OUTPUT_STRIP_TRAILING_WHITESPACE)
+message(STATUS "Last commit time: ${LAST_COMMIT_DATE}")
+add_compile_definitions(SAK_COMMIT_DATE="${LAST_COMMIT_DATE}")
 
 option(SAK_AUTO_DEPLOY "" ON)
 if(CMAKE_SYSTEM_NAME MATCHES "Windows" AND SAK_AUTO_DEPLOY)

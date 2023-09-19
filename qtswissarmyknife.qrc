@@ -67,5 +67,6 @@
         <file>resources/palette/SAKAppPaletteLight</file>
         <file>resources/palette/SAKAppPaletteDark</file>
         <file>resources/icon/IconBuy.svg</file>
+        <file>resources/icon/IconQQ.svg</file>
     </qresource>
 </RCC>

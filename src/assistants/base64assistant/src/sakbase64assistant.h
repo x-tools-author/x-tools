@@ -10,13 +10,13 @@
 #ifndef SAKBASE64ASSISTANT_H
 #define SAKBASE64ASSISTANT_H
 
-#include <QDialog>
+#include <QWidget>
 
 namespace Ui {
 class SAKBase64Assisatnt;
 }
 
-class SAKBase64Assisatnt : public QDialog {
+class SAKBase64Assisatnt : public QWidget {
   Q_OBJECT
  public:
   Q_INVOKABLE SAKBase64Assisatnt(QWidget* parent = Q_NULLPTR);

@@ -18,7 +18,7 @@
 #include "ui_sakbase64assistant.h"
 
 SAKBase64Assisatnt::SAKBase64Assisatnt(QWidget* parent)
-    : QDialog(parent), ui_(new Ui::SAKBase64Assisatnt) {
+    : QWidget(parent), ui_(new Ui::SAKBase64Assisatnt) {
   ui_->setupUi(this);
   connect(ui_->image_, &QPushButton::clicked, this,
           &SAKBase64Assisatnt::OnImageClicked);
