@@ -6,8 +6,18 @@
   "canbusui/*.h"
   "canbusui/*.cc"
   "canbusui/*.ui")
-set(APP_CANBUS_STUDIO_SOURCES ${CANBUS_STUDIO_SOURCES} ../common/common/SAKSettings.h
-                              ../common/common/SAKSettings.cc main.cc)
+set(APP_CANBUS_STUDIO_SOURCES
+    ${CANBUS_STUDIO_SOURCES}
+    ../common/common/SAKSettings.h
+    ../common/common/SAKSettings.cc
+    ../common/commonui/sakcommonmainwindow.h
+    ../common/commonui/sakcommonmainwindow.cc
+    ../common/common/SAKInterface.h
+    ../common/common/SAKInterface.cc
+    ../common/common/SAKTranslator.h
+    ../common/common/SAKTranslator.cc
+    main.cc
+    ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
