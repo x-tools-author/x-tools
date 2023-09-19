@@ -14,7 +14,7 @@
 
 int main(int argc, char* argv[]) {
   QApplication* app = CreateAssistant<SAKAsciiAssistant>(
-      argc, argv, QString("SAKAsciiAssistant"), "SAK.SAKAsciiAssistant");
+      argc, argv, QString("SAKAsciiAssistant"), "SAK.AsciiAssistant");
   int ret = app->exec();
   app->deleteLater();
 

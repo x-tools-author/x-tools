@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2020 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -10,31 +10,33 @@
 #ifndef SAKTOOLFLOATASSISTANT_H
 #define SAKTOOLFLOATASSISTANT_H
 
-#include <QDialog>
+#include <QWidget>
 
 namespace Ui {
-    class SAKToolFloatAssistant;
+class SAKNumberAssistant;
 }
 class SAKCommonInterface;
-class SAKToolFloatAssistant : public QDialog
-{
-    Q_OBJECT
-public:
-    Q_INVOKABLE SAKToolFloatAssistant(QWidget *parent = Q_NULLPTR);
-    ~SAKToolFloatAssistant();
-private:
-    SAKCommonInterface *mCommonInterface;
-private:
-    void fixedLength(QStringList &stringList);
-private:
-    Ui::SAKToolFloatAssistant *ui;
-private slots:
-    void on_hexRawDataCheckBox_clicked();
-    void on_createPushButton_clicked();
-    void on_rawDataLineEdit_textChanged(const QString &arg1);
-    void on_bigEndianCheckBox_clicked();
-    void on_floatRadioButton_clicked();
-    void on_doubleRadioButton_clicked();
+class SAKToolFloatAssistant : public QWidget {
+  Q_OBJECT
+ public:
+  Q_INVOKABLE SAKToolFloatAssistant(QWidget* parent = Q_NULLPTR);
+  ~SAKToolFloatAssistant();
+
+ private:
+  SAKCommonInterface* mCommonInterface;
+
+ private:
+  void fixedLength(QStringList& stringList);
+
+ private:
+  Ui::SAKNumberAssistant* ui;
+ private slots:
+  void on_hexRawDataCheckBox_clicked();
+  void on_createPushButton_clicked();
+  void on_rawDataLineEdit_textChanged(const QString& arg1);
+  void on_bigEndianCheckBox_clicked();
+  void on_floatRadioButton_clicked();
+  void on_doubleRadioButton_clicked();
 };
 
-#endif // SAKTOOLFLOATASSISTANT_H
+#endif  // SAKTOOLFLOATASSISTANT_H
