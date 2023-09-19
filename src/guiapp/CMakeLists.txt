@@ -53,10 +53,10 @@ target_link_libraries(
 set_target_properties(
   CANBusStudio
   PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
+             MACOSX_BUNDLE TRUE
+             WIN32_EXECUTABLE TRUE
              ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
-             ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
-             TRUE WIN32_EXECUTABLE
-             TRUE)
+             ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 
 if(QT_VERSION_MAJOR EQUAL 6)
   qt_finalize_executable(CANBusStudio)

@@ -33,8 +33,8 @@ find_package(
              SerialBus
              Bluetooth)
 
-if(${QT_VERSION} VERSION_LESS "6.5")
-  message(WARNING "The Qt version is too old, please using Qt6.5 or later.")
+if(${QT_VERSION} VERSION_LESS "6.4")
+  message(WARNING "The Qt version is too old, please using Qt6.4 or later.")
 endif()
 
 # CRCAssistant
@@ -235,9 +235,9 @@ target_link_libraries(
 
 set_target_properties(
   QtSwissArmyKnife
-  PROPERTIES MACOSX_BUNDLE TRUE
+  PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
+             MACOSX_BUNDLE TRUE
              WIN32_EXECUTABLE TRUE
-             ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
              ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
              ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 
