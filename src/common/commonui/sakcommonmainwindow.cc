@@ -96,7 +96,7 @@ void SAKCommonMainWindow::InitMenuHelp() {
                         &SAKCommonMainWindow::OnGithubActionTriggered);
   help_menu_->addAction(QIcon(":/resources/images/Gitee.png"), "Gitee", this,
                         &SAKCommonMainWindow::OnGiteeActionTriggered);
-  help_menu_->addAction(QIcon(":/resources/icon/IconQQ.svg"),
+  help_menu_->addAction(QIcon(":/resources/icon/IconQQGray.svg"),
                         tr("User QQ Group"), this,
                         &SAKCommonMainWindow::OnUserQqGroupTriggerd);
   help_menu_->addAction(tr("&About"), this,
