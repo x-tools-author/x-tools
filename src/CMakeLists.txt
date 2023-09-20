@@ -1,3 +1,3 @@
 ﻿add_subdirectory(assistants)
 add_subdirectory(modbus)
-add_subdirectory(canbus)
+add_subdirectory(canbusstudio)

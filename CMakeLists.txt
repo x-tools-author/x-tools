@@ -129,12 +129,13 @@ file(GLOB_RECURSE ASSISTANT_UI_SOURCES "src/assistantsui/*h"
 # CAN bus module
 option(SAK_CANBUS "" ON)
 if(SAK_CANBUS)
-  include_directories(src/canbus/canbus)
-  include_directories(src/canbus/canbusui)
-  file(GLOB_RECURSE CANBUS_SOURCES "src/canbus/canbus/*h"
-       "src/canbus/canbus/*.cc")
-  file(GLOB_RECURSE CANBUS_UI_SOURCES "src/canbus/canbusui/*h"
-       "src/canbus/canbusui/*.cc" "src/canbus/canbusui/*.ui")
+  include_directories(src/canbusstudio/canbusstudio)
+  include_directories(src/canbusstudio/canbusstudioui)
+  file(GLOB_RECURSE CANBUS_SOURCES "src/canbusstudio/canbusstudio/*h"
+       "src/canbusstudio/canbusstudio/*.cc")
+  file(GLOB_RECURSE CANBUS_UI_SOURCES "src/canbusstudio/canbusstudioui/*h"
+       "src/canbusstudio/canbusstudioui/*.cc"
+       "src/canbusstudio/canbusstudioui/*.ui")
   add_definitions(-DSAK_IMPORT_MODULE_CANBUSUI)
 endif()
 

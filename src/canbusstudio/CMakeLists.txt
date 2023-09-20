@@ -1,11 +1,11 @@
 ﻿file(
   GLOB
   CANBUS_STUDIO_SOURCES
-  "canbus/*.h"
-  "canbus/*.cc"
-  "canbusui/*.h"
-  "canbusui/*.cc"
-  "canbusui/*.ui")
+  "canbusstudio/*.h"
+  "canbusstudio/*.cc"
+  "canbusstudioui/*.h"
+  "canbusstudioui/*.cc"
+  "canbusstudioui/*.ui")
 set(APP_CANBUS_STUDIO_SOURCES
     ${CANBUS_STUDIO_SOURCES}
     ../common/common/SAKSettings.h
