@@ -71,7 +71,7 @@ Qt 5.12.12, other versions may be available, you can have a try.
 
 ## Have a Look
 
-![MainWindow.png](MainWindow.png)
+![MainWindow.png](mainwindow.png)
 
 ## About the Project
 
