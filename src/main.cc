@@ -16,12 +16,6 @@
 #include "SAKLog.h"
 #include "SAKSettings.h"
 
-#ifdef SAK_IMPORT_MODULE_QML
-#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
-#include "SAKGuiApplication.h"
-#endif
-#endif
-
 int main(int argc, char* argv[]) {
 #ifndef QT_DEBUG
   qInstallMessageHandler(SAKLog::messageOutput);
@@ -64,35 +58,13 @@ int main(int argc, char* argv[]) {
   }
 #endif
 
-#ifdef SAK_IMPORT_MODULE_QML
-  int uiType = SAKSettings::instance()->uiType();
-#else
-  int ui_type = SAKSettings::UiTypeWidget;
-#endif
-
-  // Startup application.
-  if (ui_type == SAKSettings::UiTypeWidget) {
-    QString style = SAKSettings::instance()->appStyle();
-    if (!style.isEmpty() && QStyleFactory::keys().contains(style)) {
-      qCInfo(lc) << "App style:" << style;
-      QApplication::setStyle(QStyleFactory::create(style));
-    }
-
-    SAKApplication app(argc, argv);
-    SAKLog::instance()->start();
-    return app.exec();
+  QString style = SAKSettings::instance()->appStyle();
+  if (!style.isEmpty() && QStyleFactory::keys().contains(style)) {
+    qCInfo(lc) << "App style:" << style;
+    QApplication::setStyle(QStyleFactory::create(style));
   }
 
-#ifdef SAK_IMPORT_MODULE_QML
-#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
-  SAKGuiApplication app(argc, argv);
+  SAKApplication app(argc, argv);
   SAKLog::instance()->start();
   return app.exec();
-#else
-  SAKSettings::instance()->setUiType(SAKSettings::UiTypeWidget);
-  qCInfo(lc) << "To using qml ui, please using qt 6.4.0 or later!";
-  return 0;
-#endif
-#endif
-  return 0;
 }

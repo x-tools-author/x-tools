@@ -54,7 +54,6 @@ class SAKMainWindow : public QMainWindow {
   void initOptionMenuAppStyleMenu(QMenu* optionMenu);
   void initOptionMenuMainWindowMenu(QMenu* optionMenu);
   void initOptionMenuSettingsMenu(QMenu* optionMenu);
-  void initOptionMenuUiType(QMenu* optionMenu);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
   void initOptionMenuHdpiPolicy(QMenu* optionMenu);
 #endif

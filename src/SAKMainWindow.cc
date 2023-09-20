@@ -7,6 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
+#include "SAKMainWindow.h"
+
 #include <QAction>
 #include <QActionGroup>
 #include <QButtonGroup>
@@ -50,7 +52,6 @@
 #include "SAKDataStructure.h"
 #include "SAKInterface.h"
 #include "SAKLogUi.h"
-#include "SAKMainWindow.h"
 #include "SAKSettings.h"
 #include "SAKToolBoxUi.h"
 #include "SAKTranslator.h"
@@ -126,9 +127,7 @@ SAKMainWindow::SAKMainWindow(QWidget* parent)
   initStatusBar();
 }
 
-SAKMainWindow::~SAKMainWindow() {
-  delete ui;
-}
+SAKMainWindow::~SAKMainWindow() { delete ui; }
 
 void SAKMainWindow::initMenuBar() {
   menuBar()->setPalette(qApp->palette());
@@ -251,9 +250,6 @@ void SAKMainWindow::initOptionMenu() {
   initOptionMenuMainWindowMenu(optionMenu);
 #endif
   initOptionMenuSettingsMenu(optionMenu);
-#ifdef SAK_IMPORT_MODULE_QML
-  initOptionMenuUiType(optionMenu);
-#endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
   initOptionMenuHdpiPolicy(optionMenu);
 #endif
@@ -340,36 +336,6 @@ void SAKMainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu) {
     QString floderUrl = fileName.remove(fileUrl.fileName());
     QDesktopServices::openUrl(floderUrl);
   });
-}
-
-void SAKMainWindow::initOptionMenuUiType(QMenu* optionMenu) {
-  QMenu* menu = new QMenu(tr("UI Type"));
-  QActionGroup* ag = new QActionGroup(this);
-  QAction* classicalAction = new QAction(tr("Classical"), this);
-  classicalAction->setCheckable(true);
-  connect(classicalAction, &QAction::triggered, this, [=]() {
-    SAKSettings::instance()->setUiType(SAKSettings::UiTypeWidget);
-    rebootRequestion();
-  });
-
-  QAction* modernAction = new QAction(tr("Modern(Just for Preview)"), this);
-  modernAction->setCheckable(true);
-  connect(modernAction, &QAction::triggered, this, [=]() {
-    SAKSettings::instance()->setUiType(SAKSettings::UiTypeQml);
-    rebootRequestion();
-  });
-
-  ag->addAction(classicalAction);
-  ag->addAction(modernAction);
-  if (SAKSettings::instance()->uiType() == SAKSettings::UiTypeQml) {
-    modernAction->setChecked(true);
-  } else {
-    classicalAction->setChecked(true);
-  }
-
-  menu->addAction(classicalAction);
-  menu->addAction(modernAction);
-  optionMenu->addMenu(menu);
 }
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
