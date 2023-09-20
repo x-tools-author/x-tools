@@ -28,7 +28,7 @@
 #include "sakasciiassistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
-#include "SAKToolBroadcastAssistant.h"
+#include "sakbroadcastassistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_BASE64ASSISTANT
 #include "sakbase64assistant.h"
@@ -56,7 +56,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent) : QObject(parent) {
                                                     tr("String Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
-  RegisterAssistantMetaType<SAKToolBroadcastAssistant>(
+  RegisterAssistantMetaType<SAKBroadcastAssistant>(
       kBroadcastAssistant, tr("Broadcast Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_BASE64ASSISTANT
