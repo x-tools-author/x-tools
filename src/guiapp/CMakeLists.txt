@@ -41,13 +41,13 @@ target_link_libraries(
           Qt${QT_VERSION_MAJOR}::Widgets)
 
 set_target_properties(
-  CANBusStudio
+  EasyDebug
   PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
-             MACOSX_BUNDLE TRUE
-             WIN32_EXECUTABLE TRUE
              ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
-             ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
+             ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
+             TRUE WIN32_EXECUTABLE
+             TRUE)
 
 if(QT_VERSION_MAJOR EQUAL 6)
-  qt_finalize_executable(CANBusStudio)
+  qt_finalize_executable(EasyDebug)
 endif()
