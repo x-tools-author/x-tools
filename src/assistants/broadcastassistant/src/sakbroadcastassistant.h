@@ -16,6 +16,7 @@ namespace Ui {
 class SAKBroadcastAssistant;
 }
 
+class SAKBroadcastThread;
 class SAKBroadcastAssistant : public QWidget {
   Q_OBJECT
  public:
@@ -23,17 +24,17 @@ class SAKBroadcastAssistant : public QWidget {
   ~SAKBroadcastAssistant();
 
  private:
-  Ui::SAKBroadcastAssistant* ui;
-  SAKBroadcastThread* mBroadcastThread;
+  Ui::SAKBroadcastAssistant* ui_;
+  SAKBroadcastThread* broadcast_thread_;
 
  private:
-  void initUi();
-  void initUiBroadcastAddress();
-  void initUiBroadcastInterval();
-  void updateUiState(bool started);
-  QByteArray packetData();
+  void InitUi();
+  void InitUiBroadcastAddress();
+  void InitUiBroadcastInterval();
+  void UpdateUiState(bool started);
+  QByteArray PacketData();
 
-  void onBroadcastPushButtonClicked();
+  void OnBroadcastPushButtonClicked();
 };
 
 #endif  // SAKBROADCASTASSISTANT_H
