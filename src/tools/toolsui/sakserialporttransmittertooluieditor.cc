@@ -10,8 +10,8 @@
 #include <QJsonObject>
 
 #include "sakserialporttransmittertool.h"
-#include "SAKSerialPortTransmitterToolUiEditor.h"
-#include "ui_SAKSerialPortTransmitterToolUiEditor.h"
+#include "sakserialporttransmittertooluieditor.h"
+#include "ui_sakserialporttransmittertooluieditor.h"
 
 SAKSerialPortTransmitterToolUiEditor::
     SAKSerialPortTransmitterToolUiEditor(QWidget *parent)

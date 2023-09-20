@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include "saksocketclienttransmittertool.h"
-#include "SAKSocketClientTransmitterToolUiEditor.h"
-#include "ui_SAKSocketClientTransmitterToolUiEditor.h"
+#include "saksocketclienttransmittertooluieditor.h"
+#include "ui_saksocketclienttransmittertooluieditor.h"
 
 SAKSocketClientTransmitterToolUiEditor::SAKSocketClientTransmitterToolUiEditor(QWidget *parent)
     : QDialog(parent)

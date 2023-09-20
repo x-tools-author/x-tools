@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,11 +7,11 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKSOCKETCLIENTTRANSMITTERTOOLUI_HH
-#define SAKSOCKETCLIENTTRANSMITTERTOOLUI_HH
+#ifndef SAKSOCKETCLIENTTRANSMITTERTOOLUI_H
+#define SAKSOCKETCLIENTTRANSMITTERTOOLUI_H
 
-#include "SAKTransmitterToolUi.h"
-#include "SAKSocketClientTransmitterToolUiEditor.h"
+#include "saktransmittertoolui.h"
+#include "saksocketclienttransmittertooluieditor.h"
 
 class SAKSocketClientTransmitterToolUi : public SAKTransmitterToolUi
 {
@@ -27,4 +27,4 @@ protected:
     SAKSocketClientTransmitterToolUiEditor *mEditor{nullptr};
 };
 
-#endif // SAKSOCKETCLIENTTRANSMITTERTOOLUI_HH
+#endif // SAKSOCKETCLIENTTRANSMITTERTOOLUI_H

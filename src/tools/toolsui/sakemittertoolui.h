@@ -7,11 +7,11 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKEMITTERTOOLUI_HH
-#define SAKEMITTERTOOLUI_HH
+#ifndef SAKEMITTERTOOLUI_H
+#define SAKEMITTERTOOLUI_H
 
-#include "SAKEmitterToolUiEditor.h"
-#include "SAKTableModelToolUi.h"
+#include "sakemittertooluieditor.h"
+#include "saktablemodeltoolui.h"
 
 class SAKEmitterToolUi : public SAKTableModelToolUi
 {
@@ -30,4 +30,4 @@ private:
     SAKEmitterToolUiEditor *mEditor{nullptr};
 };
 
-#endif // SAKEMITTERTOOLUI_HH
+#endif // SAKEMITTERTOOLUI_H

@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKWEBSOCKETTRANSMITTERTOOLUI_HH
-#define SAKWEBSOCKETTRANSMITTERTOOLUI_HH
+#ifndef SAKWEBSOCKETTRANSMITTERTOOLUI_H
+#define SAKWEBSOCKETTRANSMITTERTOOLUI_H
 
-#include "SAKSocketClientTransmitterToolUi.h"
+#include "saksocketclienttransmittertoolui.h"
 
 class SAKWebSocketTransmitterToolUi : public SAKSocketClientTransmitterToolUi
 {
@@ -23,4 +23,4 @@ protected:
                                          const QString &settingGroup) override;
 };
 
-#endif // SAKWEBSOCKETTRANSMITTERTOOLUI_HH
+#endif // SAKWEBSOCKETTRANSMITTERTOOLUI_H

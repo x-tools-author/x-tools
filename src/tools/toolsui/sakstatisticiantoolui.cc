@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include "sakstatisticiantool.h"
-#include "SAKStatisticianToolUi.h"
-#include "ui_SAKStatisticianToolUi.h"
+#include "sakstatisticiantoolui.h"
+#include "ui_sakstatisticiantoolui.h"
 
 SAKStatisticianToolUi::SAKStatisticianToolUi(QWidget *parent)
     : SAKBaseToolUi{parent}

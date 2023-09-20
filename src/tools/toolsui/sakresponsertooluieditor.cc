@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include "sakresponsertool.h"
-#include "SAKResponserToolUiEditor.h"
-#include "ui_SAKResponserToolUiEditor.h"
+#include "sakresponsertooluieditor.h"
+#include "ui_sakresponsertooluieditor.h"
 
 SAKResponserToolUiEditor::SAKResponserToolUiEditor(QWidget *parent)
     : QDialog{parent}

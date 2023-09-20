@@ -16,8 +16,8 @@
 
 #include "sakmenu.h"
 #include "sakprestorertool.h"
-#include "SAKPrestorerToolUi.h"
-#include "SAKPrestorerToolUiEditor.h"
+#include "sakprestorertoolui.h"
+#include "sakprestorertooluieditor.h"
 
 SAKPrestorerToolUi::SAKPrestorerToolUi(QWidget *parent)
     : SAKTableModelToolUi{"SAK.PrestorerToolUi", parent}

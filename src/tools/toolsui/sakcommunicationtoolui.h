@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKCOMMUNICATIONTOOLUI_HH
-#define SAKCOMMUNICATIONTOOLUI_HH
+#ifndef SAKCOMMUNICATIONTOOLUI_H
+#define SAKCOMMUNICATIONTOOLUI_H
 
-#include "SAKBaseToolUi.h"
+#include "sakbasetoolui.h"
 
 class SAKCommunicationTool;
 class SAKCommunicationToolUi : public SAKBaseToolUi
@@ -21,4 +21,4 @@ public:
     virtual void onIsWorkingChanged(bool isWorking) override;
 };
 
-#endif // SAKCOMMUNICATIONTOOLUI_HH
+#endif // SAKCOMMUNICATIONTOOLUI_H

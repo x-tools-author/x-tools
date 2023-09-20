@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include "sakserialporttool.h"
-#include "SAKSerialPortToolUi.h"
-#include "ui_SAKSerialPortToolUi.h"
+#include "sakserialporttoolui.h"
+#include "ui_sakserialporttoolui.h"
 
 SAKSerialPortToolUi::SAKSerialPortToolUi(QWidget *parent)
     : SAKCommunicationToolUi{parent}

@@ -16,7 +16,7 @@
 #include <QAbstractTableModel>
 
 #include "saktablemodeltool.h"
-#include "SAKResponserToolUi.h"
+#include "sakresponsertoolui.h"
 
 SAKResponserToolUi::SAKResponserToolUi(QWidget *parent)
     : SAKTableModelToolUi{"sak.responsertoolui", parent}

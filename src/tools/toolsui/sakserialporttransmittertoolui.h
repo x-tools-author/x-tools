@@ -7,11 +7,11 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKSERIALPORTTRANSMITTERTOOLUI_HH
-#define SAKSERIALPORTTRANSMITTERTOOLUI_HH
+#ifndef SAKSERIALPORTTRANSMITTERTOOLUI_H
+#define SAKSERIALPORTTRANSMITTERTOOLUI_H
 
-#include "SAKTransmitterToolUi.h"
-#include "SAKSerialPortTransmitterToolUiEditor.h"
+#include "saktransmittertoolui.h"
+#include "sakserialporttransmittertooluieditor.h"
 
 class SAKSerialPortTransmitterToolUi : public SAKTransmitterToolUi
 {
@@ -28,4 +28,4 @@ private:
     SAKSerialPortTransmitterToolUiEditor *mEditor;
 };
 
-#endif // SAKSERIALPORTTRANSMITTERTOOLUI_HH
+#endif // SAKSERIALPORTTRANSMITTERTOOLUI_H

@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKPRESTORERTOOLUIEDITOR_HH
-#define SAKPRESTORERTOOLUIEDITOR_HH
+#ifndef SAKPRESTORERTOOLUIEDITOR_H
+#define SAKPRESTORERTOOLUIEDITOR_H
 
 #include <QDialog>
 #include <QJsonObject>
@@ -31,4 +31,4 @@ private:
     Ui::SAKPrestorerToolUiEditor *ui{nullptr};
 };
 
-#endif // SAKPRESTORERTOOLUIEDITOR_HH
+#endif // SAKPRESTORERTOOLUIEDITOR_H

@@ -17,8 +17,8 @@
 #include "sakmenu.h"
 #include "saksettings.h"
 #include "saktablemodeltool.h"
-#include "SAKTableModelToolUi.h"
-#include "ui_SAKTableModelToolUi.h"
+#include "saktablemodeltoolui.h"
+#include "ui_saktablemodeltoolui.h"
 
 SAKTableModelToolUi::SAKTableModelToolUi(const char *lg, QWidget *parent)
     : SAKBaseToolUi{parent}

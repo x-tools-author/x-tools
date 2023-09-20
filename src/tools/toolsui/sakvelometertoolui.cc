@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include "sakvelometertool.h"
-#include "SAKVelometerToolUi.h"
-#include "ui_SAKVelometerToolUi.h"
+#include "sakvelometertoolui.h"
+#include "ui_sakvelometertoolui.h"
 
 SAKVelometerToolUi::SAKVelometerToolUi(QWidget *parent)
     : SAKBaseToolUi(parent)

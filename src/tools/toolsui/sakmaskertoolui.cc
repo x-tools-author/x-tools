@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include "sakmaskertool.h"
-#include "SAKMaskerToolUi.h"
-#include "ui_SAKMaskerToolUi.h"
+#include "sakmaskertoolui.h"
+#include "ui_sakmaskertoolui.h"
 
 SAKMaskerToolUi::SAKMaskerToolUi(QWidget *parent)
     : SAKBaseToolUi(parent)

@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include "sakbasetool.h"
-#include "SAKBaseToolUi.h"
+#include "sakbasetoolui.h"
 
 SAKBaseToolUi::SAKBaseToolUi(QWidget *parent)
     : QWidget{parent}

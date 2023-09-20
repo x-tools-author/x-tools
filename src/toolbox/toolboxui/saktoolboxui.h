@@ -17,7 +17,7 @@
 #include <QLoggingCategory>
 
 #include "saktoolbox.h"
-#include "SAKCommunicationToolUi.h"
+#include "sakcommunicationtoolui.h"
 
 namespace Ui {
 class SAKToolBoxUi;

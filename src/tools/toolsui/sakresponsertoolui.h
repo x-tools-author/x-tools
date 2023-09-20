@@ -7,13 +7,13 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKRESPONSERTOOLUI_HH
-#define SAKRESPONSERTOOLUI_HH
+#ifndef SAKRESPONSERTOOLUI_H
+#define SAKRESPONSERTOOLUI_H
 
 #include <QWidget>
 
-#include "SAKTableModelToolUi.h"
-#include "SAKResponserToolUiEditor.h"
+#include "saktablemodeltoolui.h"
+#include "sakresponsertooluieditor.h"
 
 class SAKResponserToolUi : public SAKTableModelToolUi
 {

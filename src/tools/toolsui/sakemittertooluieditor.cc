@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include "sakemittertool.h"
-#include "SAKEmitterToolUiEditor.h"
-#include "ui_SAKEmitterToolUiEditor.h"
+#include "sakemittertooluieditor.h"
+#include "ui_sakemittertooluieditor.h"
 
 SAKEmitterToolUiEditor::SAKEmitterToolUiEditor(QWidget *parent)
     : QDialog{parent}

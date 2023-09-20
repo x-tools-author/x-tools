@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include "saktransmittertool.h"
-#include "SAKTransmitterToolUi.h"
+#include "saktransmittertoolui.h"
 
 SAKTransmitterToolUi::SAKTransmitterToolUi(const char *lg, QWidget *parent)
     : SAKTableModelToolUi{lg, parent}

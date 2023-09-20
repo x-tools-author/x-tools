@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKBleCentralToolUi.h"
+#include "sakblecentraltoolui.h"
 
 #include <QGridLayout>
 #include <QLabel>
@@ -18,7 +18,7 @@
 
 #include "saklineedit.h"
 #include "sakspinbox.h"
-#include "ui_SAKBleCentralToolUi.h"
+#include "ui_sakblecentraltoolui.h"
 
 #define SAK_CB_I_C &QComboBox::currentIndexChanged
 

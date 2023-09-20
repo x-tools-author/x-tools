@@ -11,8 +11,8 @@
 #include <QFileDialog>
 
 #include "sakstorertool.h"
-#include "SAKStorerToolUi.h"
-#include "ui_SAKStorerToolUi.h"
+#include "sakstorertoolui.h"
+#include "ui_sakstorertoolui.h"
 
 SAKStorerToolUi::SAKStorerToolUi(QWidget *parent)
     : SAKBaseToolUi{parent}
