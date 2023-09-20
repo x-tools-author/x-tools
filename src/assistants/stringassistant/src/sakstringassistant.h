@@ -1,33 +1,34 @@
-﻿/*
- * Copyright 2020 Qsaker(qsaker@foxmail.com). All rights reserved.
+﻿/*******************************************************************************
+ * Copyright 2020-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part
- * of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
+ * project(https://github.com/qsaker/QtSwissArmyKnife).
  *
- * QtSwissArmyKnife is licensed according to the terms in
- * the file LICENCE in the root of the source code directory.
- */
-#ifndef SAKTOOLSTRINGASSISTANT_H
-#define SAKTOOLSTRINGASSISTANT_H
+ * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
+ * the root of the source code directory.
+ ******************************************************************************/
+#ifndef SAKSTRINGASSISTANT_H
+#define SAKSTRINGASSISTANT_H
 
 #include <QWidget>
 
 namespace Ui {
 class SAKStringAssistant;
 }
-class SAKToolStringAssistant : public QWidget {
+class SAKStringAssistant : public QWidget {
   Q_OBJECT
  public:
-  Q_INVOKABLE SAKToolStringAssistant(QWidget* parent = Q_NULLPTR);
-  ~SAKToolStringAssistant();
+  Q_INVOKABLE SAKStringAssistant(QWidget* parent = Q_NULLPTR);
+  ~SAKStringAssistant();
 
  private:
-  Ui::SAKStringAssistant* ui;
+  Ui::SAKStringAssistant* ui_;
+
  private slots:
-  void on_textEdit_textChanged();
-  void on_inputFormatComboBox_currentIndexChanged(int index);
-  void on_createPushButton_clicked();
-  void on_outputFormatComboBox_currentTextChanged(const QString& arg1);
+  void OnTextEditTextChanged();
+  void OnInputFormatComboBoxCurrentIndexChanged(int index);
+  void OnCreatePushButtonClicked();
+  void OnOutputFormatComboBoxCurrentTextChanged(const QString& text);
 };
 
-#endif  // SAKTOOLSTRINGASSISTANT_H
+#endif  // SAKSTRINGASSISTANT_H

@@ -1,34 +1,46 @@
-﻿/*
- * Copyright 2020 Qsaker(qsaker@foxmail.com). All rights reserved.
+﻿/*******************************************************************************
+ * Copyright 2020-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part
- * of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
+ * project(https://github.com/qsaker/QtSwissArmyKnife).
  *
- * QtSwissArmyKnife is licensed according to the terms in
- * the file LICENCE in the root of the source code directory.
- */
-#include "SAKToolFloatAssistant.h"
-#include <QDebug>
+ * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
+ * the root of the source code directory.
+ ******************************************************************************/
+#include "saknumberassistant.h"
+
 #include "SAKCommonInterface.h"
 #include "SAKInterface.h"
-#include "ui_SAKToolFloatAssistant.h"
+#include "ui_saknumberassistant.h"
 
-SAKToolFloatAssistant::SAKToolFloatAssistant(QWidget* parent)
-    : QWidget(parent), ui(new Ui::SAKNumberAssistant) {
-  ui->setupUi(this);
-  mCommonInterface = new SAKCommonInterface(this);
-  mCommonInterface->setLineEditValidator(ui->rawDataLineEdit,
-                                         SAKCommonInterface::ValidatorFloat);
-  on_createPushButton_clicked();
+SAKNumberAssistant::SAKNumberAssistant(QWidget* parent)
+    : QWidget(parent), ui_(new Ui::SAKNumberAssistant) {
+  ui_->setupUi(this);
+  common_interface_ = new SAKCommonInterface(this);
+  common_interface_->setLineEditValidator(ui_->rawDataLineEdit,
+                                          SAKCommonInterface::ValidatorFloat);
+
+  connect(ui_->hexRawDataCheckBox, &QCheckBox::clicked, this,
+          &SAKNumberAssistant::OnHexRawDataCheckBoxClicked);
+  connect(ui_->createPushButton, &QPushButton::clicked, this,
+          &SAKNumberAssistant::OnCreatePushButtonClicked);
+  connect(ui_->rawDataLineEdit, &QLineEdit::textChanged, this,
+          &SAKNumberAssistant::OnRawDataLineEditTextChanged);
+  connect(ui_->bigEndianCheckBox, &QCheckBox::clicked, this,
+          &SAKNumberAssistant::OnBigEndianCheckBoxClicked);
+  connect(ui_->floatRadioButton, &QRadioButton::clicked, this,
+          &SAKNumberAssistant::OnFloatRadioButtonClicked);
+  connect(ui_->doubleRadioButton, &QRadioButton::clicked, this,
+          &SAKNumberAssistant::OnDoubleRadioButtonClicked);
+
+  OnCreatePushButtonClicked();
 }
 
-SAKToolFloatAssistant::~SAKToolFloatAssistant() {
-  delete ui;
-}
+SAKNumberAssistant::~SAKNumberAssistant() { delete ui_; }
 
-void SAKToolFloatAssistant::fixedLength(QStringList& stringList) {
-  if (ui->bigEndianCheckBox->isChecked()) {
-    if (ui->floatRadioButton->isChecked()) {
+void SAKNumberAssistant::FixedLength(QStringList& stringList) {
+  if (ui_->bigEndianCheckBox->isChecked()) {
+    if (ui_->floatRadioButton->isChecked()) {
       if (stringList.length() < int(sizeof(float))) {
         int len = int(sizeof(float)) - stringList.length();
         for (int i = 0; i < len; i++) {
@@ -44,7 +56,7 @@ void SAKToolFloatAssistant::fixedLength(QStringList& stringList) {
       }
     }
   } else {
-    if (ui->floatRadioButton->isChecked()) {
+    if (ui_->floatRadioButton->isChecked()) {
       if (stringList.length() < int(sizeof(float))) {
         int len = int(sizeof(float)) - stringList.length();
         for (int i = 0; i < len; i++) {
@@ -62,28 +74,28 @@ void SAKToolFloatAssistant::fixedLength(QStringList& stringList) {
   }
 }
 
-void SAKToolFloatAssistant::on_hexRawDataCheckBox_clicked() {
-  ui->rawDataLineEdit->clear();
-  if (ui->hexRawDataCheckBox->isChecked()) {
-    mCommonInterface->setLineEditValidator(ui->rawDataLineEdit,
-                                           SAKCommonInterface::ValidatorHex);
+void SAKNumberAssistant::OnHexRawDataCheckBoxClicked() {
+  ui_->rawDataLineEdit->clear();
+  if (ui_->hexRawDataCheckBox->isChecked()) {
+    common_interface_->setLineEditValidator(ui_->rawDataLineEdit,
+                                            SAKCommonInterface::ValidatorHex);
   } else {
-    mCommonInterface->setLineEditValidator(ui->rawDataLineEdit,
-                                           SAKCommonInterface::ValidatorFloat);
+    common_interface_->setLineEditValidator(ui_->rawDataLineEdit,
+                                            SAKCommonInterface::ValidatorFloat);
   }
 }
 
-void SAKToolFloatAssistant::on_createPushButton_clicked() {
-  if (ui->hexRawDataCheckBox->isChecked()) {
-    ui->rawDataLineEdit->setMaxLength(ui->floatRadioButton->isChecked() ? 11
-                                                                        : 23);
-    QString rawDataString = ui->rawDataLineEdit->text().trimmed();
+void SAKNumberAssistant::OnCreatePushButtonClicked() {
+  if (ui_->hexRawDataCheckBox->isChecked()) {
+    ui_->rawDataLineEdit->setMaxLength(ui_->floatRadioButton->isChecked() ? 11
+                                                                          : 23);
+    QString rawDataString = ui_->rawDataLineEdit->text().trimmed();
     QStringList rawDataStringList = rawDataString.split(' ');
-    fixedLength(rawDataStringList);
+    FixedLength(rawDataStringList);
 
     QByteArray data;
     for (int i = 0; i < rawDataStringList.length(); i++) {
-      bool isBigEndian = ui->bigEndianCheckBox->isChecked();
+      bool isBigEndian = ui_->bigEndianCheckBox->isChecked();
       quint8 value =
           quint8(rawDataStringList
                      .at(isBigEndian ? i : rawDataStringList.length() - 1 - i)
@@ -91,23 +103,23 @@ void SAKToolFloatAssistant::on_createPushButton_clicked() {
       data.append(reinterpret_cast<char*>(&value), 1);
     }
 
-    if (ui->floatRadioButton->isChecked()) {
+    if (ui_->floatRadioButton->isChecked()) {
       float* f = reinterpret_cast<float*>(data.data());
-      ui->friendlyCookedDataLineEdit->setText(QString("%1").arg(*f));
+      ui_->friendlyCookedDataLineEdit->setText(QString("%1").arg(*f));
       data = SAKInterface::arrayToHex(data, ' ');
-      ui->hexCookedDataLineEdit->setText(QString(data));
+      ui_->hexCookedDataLineEdit->setText(QString(data));
     } else {
       double* d = reinterpret_cast<double*>(data.data());
-      ui->friendlyCookedDataLineEdit->setText(QString("%1").arg(*d));
+      ui_->friendlyCookedDataLineEdit->setText(QString("%1").arg(*d));
       data = SAKInterface::arrayToHex(data, ' ');
-      ui->hexCookedDataLineEdit->setText(QString(data));
+      ui_->hexCookedDataLineEdit->setText(QString(data));
     }
   } else {
     QByteArray data;
-    ui->rawDataLineEdit->setMaxLength(INT_MAX);
-    if (ui->floatRadioButton->isChecked()) {
-      float value = ui->rawDataLineEdit->text().trimmed().toFloat();
-      if (ui->bigEndianCheckBox->isChecked()) {
+    ui_->rawDataLineEdit->setMaxLength(INT_MAX);
+    if (ui_->floatRadioButton->isChecked()) {
+      float value = ui_->rawDataLineEdit->text().trimmed().toFloat();
+      if (ui_->bigEndianCheckBox->isChecked()) {
         // To big endian
         float temp = value;
         quint8* ptr = reinterpret_cast<quint8*>(&value);
@@ -117,8 +129,8 @@ void SAKToolFloatAssistant::on_createPushButton_clicked() {
       }
       data.append(reinterpret_cast<char*>(&value), sizeof(value));
     } else {
-      double value = ui->rawDataLineEdit->text().trimmed().toFloat();
-      if (ui->bigEndianCheckBox->isChecked()) {
+      double value = ui_->rawDataLineEdit->text().trimmed().toFloat();
+      if (ui_->bigEndianCheckBox->isChecked()) {
         // To big endian
         double temp = value;
         quint8* ptr = reinterpret_cast<quint8*>(&value);
@@ -128,26 +140,25 @@ void SAKToolFloatAssistant::on_createPushButton_clicked() {
       }
       data.append(reinterpret_cast<char*>(&value), sizeof(value));
     }
-    ui->friendlyCookedDataLineEdit->setText(ui->rawDataLineEdit->text());
+    ui_->friendlyCookedDataLineEdit->setText(ui_->rawDataLineEdit->text());
     data = SAKInterface::arrayToHex(data, ' ');
-    ui->hexCookedDataLineEdit->setText(QString(data));
+    ui_->hexCookedDataLineEdit->setText(QString(data));
   }
 }
 
-void SAKToolFloatAssistant::on_rawDataLineEdit_textChanged(
-    const QString& arg1) {
-  Q_UNUSED(arg1);
-  on_createPushButton_clicked();
+void SAKNumberAssistant::OnRawDataLineEditTextChanged(const QString& text) {
+  Q_UNUSED(text);
+  OnCreatePushButtonClicked();
 }
 
-void SAKToolFloatAssistant::on_bigEndianCheckBox_clicked() {
-  on_createPushButton_clicked();
+void SAKNumberAssistant::OnBigEndianCheckBoxClicked() {
+  OnCreatePushButtonClicked();
 }
 
-void SAKToolFloatAssistant::on_floatRadioButton_clicked() {
-  on_createPushButton_clicked();
+void SAKNumberAssistant::OnFloatRadioButtonClicked() {
+  OnCreatePushButtonClicked();
 }
 
-void SAKToolFloatAssistant::on_doubleRadioButton_clicked() {
-  on_createPushButton_clicked();
+void SAKNumberAssistant::OnDoubleRadioButtonClicked() {
+  OnCreatePushButtonClicked();
 }

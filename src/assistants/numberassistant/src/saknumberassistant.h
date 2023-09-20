@@ -1,42 +1,44 @@
-﻿/*
- * Copyright 2020 Qsaker(qsaker@foxmail.com). All rights reserved.
+﻿/*******************************************************************************
+ * Copyright 2020-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part
- * of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
+ * project(https://github.com/qsaker/QtSwissArmyKnife).
  *
- * QtSwissArmyKnife is licensed according to the terms in
- * the file LICENCE in the root of the source code directory.
- */
-#ifndef SAKTOOLFLOATASSISTANT_H
-#define SAKTOOLFLOATASSISTANT_H
+ * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
+ * the root of the source code directory.
+ ******************************************************************************/
+#ifndef SAKNUMBERASSISTANT_H
+#define SAKNUMBERASSISTANT_H
 
 #include <QWidget>
 
 namespace Ui {
 class SAKNumberAssistant;
 }
+
 class SAKCommonInterface;
-class SAKToolFloatAssistant : public QWidget {
+class SAKNumberAssistant : public QWidget {
   Q_OBJECT
  public:
-  Q_INVOKABLE SAKToolFloatAssistant(QWidget* parent = Q_NULLPTR);
-  ~SAKToolFloatAssistant();
+  Q_INVOKABLE SAKNumberAssistant(QWidget* parent = Q_NULLPTR);
+  ~SAKNumberAssistant();
 
  private:
-  SAKCommonInterface* mCommonInterface;
+  SAKCommonInterface* common_interface_;
 
  private:
-  void fixedLength(QStringList& stringList);
+  void FixedLength(QStringList& stringList);
 
  private:
-  Ui::SAKNumberAssistant* ui;
+  Ui::SAKNumberAssistant* ui_;
+
  private slots:
-  void on_hexRawDataCheckBox_clicked();
-  void on_createPushButton_clicked();
-  void on_rawDataLineEdit_textChanged(const QString& arg1);
-  void on_bigEndianCheckBox_clicked();
-  void on_floatRadioButton_clicked();
-  void on_doubleRadioButton_clicked();
+  void OnHexRawDataCheckBoxClicked();
+  void OnCreatePushButtonClicked();
+  void OnRawDataLineEditTextChanged(const QString& text);
+  void OnBigEndianCheckBoxClicked();
+  void OnFloatRadioButtonClicked();
+  void OnDoubleRadioButtonClicked();
 };
 
-#endif  // SAKTOOLFLOATASSISTANT_H
+#endif  // SAKNUMBERASSISTANT_H

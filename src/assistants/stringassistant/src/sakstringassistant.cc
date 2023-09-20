@@ -1,68 +1,76 @@
-﻿/*
- * Copyright 2020 Qsaker(qsaker@foxmail.com). All rights reserved.
+﻿/*******************************************************************************
+ * Copyright 2020-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part
- * of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
+ * project(https://github.com/qsaker/QtSwissArmyKnife).
  *
- * QtSwissArmyKnife is licensed according to the terms in
- * the file LICENCE in the root of the source code directory.
- */
-#include "SAKToolStringAssistant.h"
+ * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
+ * the root of the source code directory.
+ ******************************************************************************/
+#include "sakstringassistant.h"
+
 #include "SAKCommonDataStructure.h"
-#include "ui_SAKToolStringAssistant.h"
+#include "ui_sakstringassistant.h"
 
-SAKToolStringAssistant::SAKToolStringAssistant(QWidget* parent)
-    : QWidget(parent), ui(new Ui::SAKStringAssistant) {
-  ui->setupUi(this);
-  SAKCommonDataStructure::setComboBoxTextInputFormat(ui->inputFormatComboBox);
-  SAKCommonDataStructure::setComboBoxTextOutputFormat(ui->outputFormatComboBox);
+SAKStringAssistant::SAKStringAssistant(QWidget* parent)
+    : QWidget(parent), ui_(new Ui::SAKStringAssistant) {
+  ui_->setupUi(this);
+  SAKCommonDataStructure::setComboBoxTextInputFormat(ui_->inputFormatComboBox);
+  SAKCommonDataStructure::setComboBoxTextOutputFormat(
+      ui_->outputFormatComboBox);
+
+  connect(ui_->textEdit, &QTextEdit::textChanged, this,
+          &SAKStringAssistant::OnTextEditTextChanged);
+  connect(ui_->inputFormatComboBox, &QComboBox::currentIndexChanged, this,
+          &SAKStringAssistant::OnInputFormatComboBoxCurrentIndexChanged);
+  connect(ui_->createPushButton, &QPushButton::clicked, this,
+          &SAKStringAssistant::OnCreatePushButtonClicked);
+  connect(ui_->outputFormatComboBox, &QComboBox::currentTextChanged, this,
+          &SAKStringAssistant::OnOutputFormatComboBoxCurrentTextChanged);
 }
 
-SAKToolStringAssistant::~SAKToolStringAssistant() {
-  delete ui;
-}
+SAKStringAssistant::~SAKStringAssistant() { delete ui_; }
 
-void SAKToolStringAssistant::on_textEdit_textChanged() {
-  if (!ui->textEdit->blockSignals(true)) {
-    QString inputString = ui->textEdit->toPlainText();
+void SAKStringAssistant::OnTextEditTextChanged() {
+  if (!ui_->textEdit->blockSignals(true)) {
+    QString inputString = ui_->textEdit->toPlainText();
     auto inputFormat =
         static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(
-            ui->inputFormatComboBox->currentData().toInt());
+            ui_->inputFormatComboBox->currentData().toInt());
     QString cookedString =
         SAKCommonDataStructure::formattingString(inputString, inputFormat);
-    ui->textEdit->setText(cookedString);
-    ui->textEdit->moveCursor(QTextCursor::End);
-    ui->textEdit->blockSignals(false);
-    on_createPushButton_clicked();
+    ui_->textEdit->setText(cookedString);
+    ui_->textEdit->moveCursor(QTextCursor::End);
+    ui_->textEdit->blockSignals(false);
+    OnCreatePushButtonClicked();
   } else {
     Q_ASSERT_X(false, __FUNCTION__, "Oh, No!");
   }
 }
 
-void SAKToolStringAssistant::on_inputFormatComboBox_currentIndexChanged(
-    int index) {
+void SAKStringAssistant::OnInputFormatComboBoxCurrentIndexChanged(int index) {
   Q_UNUSED(index);
-  ui->textEdit->clear();
-  on_createPushButton_clicked();
+  ui_->textEdit->clear();
+  OnCreatePushButtonClicked();
 }
 
-void SAKToolStringAssistant::on_createPushButton_clicked() {
-  QString inputString = ui->textEdit->toPlainText();
+void SAKStringAssistant::OnCreatePushButtonClicked() {
+  QString inputString = ui_->textEdit->toPlainText();
   auto inputFormat =
       static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(
-          ui->inputFormatComboBox->currentData().toInt());
+          ui_->inputFormatComboBox->currentData().toInt());
   QByteArray inputArray =
       SAKCommonDataStructure::stringToByteArray(inputString, inputFormat);
   auto outputFormat =
       static_cast<SAKCommonDataStructure::SAKEnumTextFormatOutput>(
-          ui->outputFormatComboBox->currentData().toInt());
+          ui_->outputFormatComboBox->currentData().toInt());
   auto outputString =
       SAKCommonDataStructure::byteArrayToString(inputArray, outputFormat);
-  ui->textBrowser->setText(outputString);
+  ui_->textBrowser->setText(outputString);
 }
 
-void SAKToolStringAssistant::on_outputFormatComboBox_currentTextChanged(
-    const QString& arg1) {
-  Q_UNUSED(arg1);
-  on_createPushButton_clicked();
+void SAKStringAssistant::OnOutputFormatComboBoxCurrentTextChanged(
+    const QString& text) {
+  Q_UNUSED(text);
+  OnCreatePushButtonClicked();
 }

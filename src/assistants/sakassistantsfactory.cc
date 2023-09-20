@@ -1,5 +1,5 @@
 ﻿/******************************************************************************
- * Copyright 2022-2023 Qsaker(qsaker@outlook.com). All rights reserved.
+ * Copyright 2022-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
  * project(https://github.com/qsaker/QtSwissArmyKnife).
@@ -13,16 +13,16 @@
 #include <QCoreApplication>
 
 #ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
-#include "SAKToolFileCheckAssistant.h"
+#include "sakfilecheckassistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_CRCASSISTANT
 #include "sakcrcassistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
-#include "SAKToolFloatAssistant.h"
+#include "saknumberassistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
-#include "SAKToolStringAssistant.h"
+#include "sakstringassistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
 #include "sakasciiassistant.h"
@@ -36,28 +36,28 @@
 
 SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent) : QObject(parent) {
 #ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
-    RegisterAssistantMetaType<SAKCRCAssistant>(kCrcAssistant,
-                                                 tr("CRC Assistant"));
+  RegisterAssistantMetaType<SAKCRCAssistant>(kCrcAssistant,
+                                             tr("CRC Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_CRCASSISTANT
-  RegisterAssistantMetaType<SAKToolFileCheckAssistant>(
-      kFileCheckAssistant, tr("File Check Assistant"));
+  RegisterAssistantMetaType<SAKFileCheckAssistant>(kFileCheckAssistant,
+                                                   tr("File Check Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
   RegisterAssistantMetaType<SAKAsciiAssistant>(kAsciiAssistant,
-                                                   tr("ASCII Assistant"));
+                                               tr("ASCII Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
-  RegisterAssistantMetaType<SAKToolFloatAssistant>(kFileCheckAssistant,
-                                                   tr("Number Assistant"));
+  RegisterAssistantMetaType<SAKNumberAssistant>(kFileCheckAssistant,
+                                                tr("Number Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
-  RegisterAssistantMetaType<SAKToolStringAssistant>(kStringAssistant,
-                                                    tr("String Assistant"));
+  RegisterAssistantMetaType<SAKStringAssistant>(kStringAssistant,
+                                                tr("String Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
-  RegisterAssistantMetaType<SAKBroadcastAssistant>(
-      kBroadcastAssistant, tr("Broadcast Assistant"));
+  RegisterAssistantMetaType<SAKBroadcastAssistant>(kBroadcastAssistant,
+                                                   tr("Broadcast Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_BASE64ASSISTANT
   RegisterAssistantMetaType<SAKBase64Assisatnt>(kBase64Assistant,
