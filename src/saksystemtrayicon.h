@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * 版权声明 2022 小猎隼(qsaker@foxmail.com)。保留所有版权。
  *
  * 本文件使用“utf8 with bom”格式编码, 它是“小猎隼多功能调试工具软件”项目的一部分（项目曾
@@ -8,8 +8,8 @@
  *
  * “小猎隼多功能调试软件”项目授权协议请查看根目录的LICENCE文件。
  ******************************************************************************/
-#ifndef SAKSYSTEMTRAYICON_HH
-#define SAKSYSTEMTRAYICON_HH
+#ifndef SAKSYSTEMTRAYICON_H
+#define SAKSYSTEMTRAYICON_H
 
 #include <QSystemTrayIcon>
 
@@ -24,4 +24,4 @@ signals:
     void invokeShowMainWindow();
 };
 
-#endif // SAKSYSTEMTRAYICON_HH
+#endif // SAKSYSTEMTRAYICON_H

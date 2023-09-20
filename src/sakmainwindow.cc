@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKMainWindow.h"
+#include "sakmainwindow.h"
 
 #include <QAction>
 #include <QActionGroup>
@@ -71,7 +71,7 @@
 #include "SAKPrivateModbusServer.h"
 #endif
 
-#include "ui_SAKMainWindow.h"
+#include "ui_sakmainwindow.h"
 
 #define SAK_QT_CONF qApp->applicationDirPath() + "/qt.conf"
 

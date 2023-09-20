@@ -30,9 +30,9 @@
 #include <QUrl>
 
 #include "SAKDataStructure.h"
-#include "SAKMainWindow.h"
+#include "sakmainwindow.h"
 #include "SAKSettings.h"
-#include "SAKSystemTrayIcon.h"
+#include "saksystemtrayicon.h"
 #include "SAKTranslator.h"
 
 QDate buildDate =

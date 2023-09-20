@@ -184,7 +184,7 @@ file(GLOB_RECURSE TOOLS_UI_SOURCES "src/tools/toolsui/*h"
 
 # App(QtSwissArmyKnife) Tools module
 include_directories(src)
-file(GLOB APP_SOURCES "src/*.h" "src/*.cc")
+file(GLOB APP_SOURCES "src/*.h" "src/*.cc" "src/*.ui")
 
 option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
 if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
