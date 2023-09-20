@@ -7,39 +7,32 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKCheckBox.h"
-#include "SAKSettings.h"
+#include "sakcheckbox.h"
 
-SAKCheckBox::SAKCheckBox(QWidget *parent)
-    : QCheckBox(parent)
-{
-    connect(this, &SAKCheckBox::clicked,
-            this, &SAKCheckBox::writeToSettingsFile);
+#include "saksettings.h"
+
+SAKCheckBox::SAKCheckBox(QWidget* parent) : QCheckBox(parent) {
+  connect(this, &SAKCheckBox::clicked, this, &SAKCheckBox::writeToSettingsFile);
 }
 
-void SAKCheckBox::setGroupKey(const QString &group,
-                              const QString &key)
-{
-    mKey = group + "/" + key;
-    readFromSettingsFile();
+void SAKCheckBox::setGroupKey(const QString& group, const QString& key) {
+  mKey = group + "/" + key;
+  readFromSettingsFile();
 }
 
+void SAKCheckBox::readFromSettingsFile() {
+  if (mKey.isEmpty()) {
+    return;
+  }
 
-void SAKCheckBox::readFromSettingsFile()
-{
-    if (mKey.isEmpty()) {
-        return;
-    }
-
-    bool ret = SAKSettings::instance()->value(mKey).toBool();
-    setChecked(ret);
+  bool ret = SAKSettings::instance()->value(mKey).toBool();
+  setChecked(ret);
 }
 
-void SAKCheckBox::writeToSettingsFile()
-{
-    if (mKey.isEmpty()) {
-        return;
-    }
+void SAKCheckBox::writeToSettingsFile() {
+  if (mKey.isEmpty()) {
+    return;
+  }
 
-    SAKSettings::instance()->setValue(mKey, isChecked());
+  SAKSettings::instance()->setValue(mKey, isChecked());
 }

@@ -14,7 +14,7 @@
 #include <QLoggingCategory>
 #include <QMetaEnum>
 
-#include "SAKCommonCrcInterface.h"
+#include "sakcommoncrcinterface.h"
 #include "ui_sakcrcassistant.h"
 
 SAKCRCAssistant::SAKCRCAssistant(QWidget* parent)

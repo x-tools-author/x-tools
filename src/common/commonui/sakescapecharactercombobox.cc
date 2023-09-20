@@ -7,17 +7,16 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKDataStructure.h"
-#include "SAKEscapeCharacterComboBox.h"
+#include "sakescapecharactercombobox.h"
 
-SAKEscapeCharacterComboBox::SAKEscapeCharacterComboBox(QWidget *parent)
-    : SAKComboBox(parent)
-{
-    addItem(tr("None"), SAKDataStructure::EscapeCharacterOptionNone);
-    addItem("\\r", SAKDataStructure::EscapeCharacterOptionR);
-    addItem("\\n", SAKDataStructure::EscapeCharacterOptionN);
-    addItem("\\r\\n", SAKDataStructure::EscapeCharacterOptionRN);
-    addItem("\\n\\r", SAKDataStructure::EscapeCharacterOptionNR);
-    addItem("\\r + \\n", SAKDataStructure::EscapeCharacterOptionRAndN);
+#include "sakdatastructure.h"
+
+SAKEscapeCharacterComboBox::SAKEscapeCharacterComboBox(QWidget* parent)
+    : SAKComboBox(parent) {
+  addItem(tr("None"), SAKDataStructure::EscapeCharacterOptionNone);
+  addItem("\\r", SAKDataStructure::EscapeCharacterOptionR);
+  addItem("\\n", SAKDataStructure::EscapeCharacterOptionN);
+  addItem("\\r\\n", SAKDataStructure::EscapeCharacterOptionRN);
+  addItem("\\n\\r", SAKDataStructure::EscapeCharacterOptionNR);
+  addItem("\\r + \\n", SAKDataStructure::EscapeCharacterOptionRAndN);
 }
-

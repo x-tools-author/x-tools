@@ -9,8 +9,8 @@
  ******************************************************************************/
 #include "saknumberassistant.h"
 
-#include "SAKCommonInterface.h"
-#include "SAKInterface.h"
+#include "sakcommoninterface.h"
+#include "sakinterface.h"
 #include "ui_saknumberassistant.h"
 
 SAKNumberAssistant::SAKNumberAssistant(QWidget* parent)

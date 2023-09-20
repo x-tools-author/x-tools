@@ -7,16 +7,17 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QMetaEnum>
-#include "SAKCrcInterface.h"
-#include "SAKCrcAlgorithmComboBox.h"
+#include "sakcrcalgorithmcombobox.h"
 
-SAKCrcAlgorithmComboBox::SAKCrcAlgorithmComboBox(QWidget *parent)
-    : SAKComboBox(parent)
-{
-    QMetaEnum metaEnum =
-        QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();
-    for (int i = 0; i < metaEnum.keyCount(); i++) {
-        addItem(metaEnum.key(i), metaEnum.value(i));
-    }
+#include <QMetaEnum>
+
+#include "sakcrcinterface.h"
+
+SAKCrcAlgorithmComboBox::SAKCrcAlgorithmComboBox(QWidget* parent)
+    : SAKComboBox(parent) {
+  QMetaEnum metaEnum =
+      QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();
+  for (int i = 0; i < metaEnum.keyCount(); i++) {
+    addItem(metaEnum.key(i), metaEnum.value(i));
+  }
 }

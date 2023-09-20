@@ -17,7 +17,7 @@
 #include <QMessageBox>
 #include <QVector>
 
-#include "SAKSettings.h"
+#include "saksettings.h"
 #include "ui_SAKCanBusUi.h"
 
 const QLoggingCategory gLC("sak.canstudio");

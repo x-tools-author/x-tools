@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKLINEEDIT_HH
-#define SAKLINEEDIT_HH
+#ifndef SAKLINEEDIT_H
+#define SAKLINEEDIT_H
 
 #include <QLineEdit>
 
@@ -28,4 +28,4 @@ private:
     void writeToSettingsFile();
 };
 
-#endif // SAKLINEEDIT_HH
+#endif // SAKLINEEDIT_H

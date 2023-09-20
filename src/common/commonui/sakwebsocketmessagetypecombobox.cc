@@ -7,11 +7,11 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKWebSocketMessageTypeComboBox.h"
+#include "sakwebsocketmessagetypecombobox.h"
 
-SAKWebSocketMessageTypeComboBox::SAKWebSocketMessageTypeComboBox(QWidget *parent)
-    : SAKComboBox{parent}
-{
-    addItem("Bin", 0);
-    addItem("Text", 1);
+sakwebsocketmessagetypecombobox::sakwebsocketmessagetypecombobox(
+    QWidget* parent)
+    : SAKComboBox{parent} {
+  addItem("Bin", 0);
+  addItem("Text", 1);
 }

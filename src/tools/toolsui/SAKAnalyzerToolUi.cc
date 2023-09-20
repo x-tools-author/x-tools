@@ -10,9 +10,9 @@
 #include "SAKAnalyzerToolUi.h"
 
 #include "SAKAnalyzerTool.h"
-#include "SAKDataStructure.h"
-#include "SAKInterface.h"
-#include "SAKUiInterface.h"
+#include "sakdatastructure.h"
+#include "sakinterface.h"
+#include "sakuiinterface.h"
 #include "ui_SAKAnalyzerToolUi.h"
 
 SAKAnalyzerToolUi::SAKAnalyzerToolUi(QWidget *parent)

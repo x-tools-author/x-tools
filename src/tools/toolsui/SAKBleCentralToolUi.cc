@@ -16,8 +16,8 @@
 #include <QWidget>
 #include <QWidgetAction>
 
-#include "SAKLineEdit.h"
-#include "SAKSpinBox.h"
+#include "saklineedit.h"
+#include "sakspinbox.h"
 #include "ui_SAKBleCentralToolUi.h"
 
 #define SAK_CB_I_C &QComboBox::currentIndexChanged

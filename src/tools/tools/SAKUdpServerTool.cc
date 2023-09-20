@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKInterface.h"
-#include "SAKCompatibility.h"
+#include "sakinterface.h"
+#include "sakcompatibility.h"
 #include "SAKUdpServerTool.h"
 
 SAKUdpServerTool::SAKUdpServerTool(QObject *parent)

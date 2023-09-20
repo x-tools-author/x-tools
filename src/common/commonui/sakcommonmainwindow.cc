@@ -1,5 +1,5 @@
 ﻿/*******************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -24,10 +24,10 @@
 #include <QStyle>
 #include <QStyleFactory>
 
-#include "SAKDataStructure.h"
-#include "SAKInterface.h"
-#include "SAKSettings.h"
-#include "SAKTranslator.h"
+#include "sakdatastructure.h"
+#include "sakinterface.h"
+#include "saksettings.h"
+#include "saktranslator.h"
 
 SAKCommonMainWindow::SAKCommonMainWindow(QWidget* parent)
     : QMainWindow(parent) {
@@ -40,9 +40,7 @@ SAKCommonMainWindow::SAKCommonMainWindow(QWidget* parent)
 
 SAKCommonMainWindow::~SAKCommonMainWindow() {}
 
-void SAKCommonMainWindow::Init() {
-  InitMenu();
-}
+void SAKCommonMainWindow::Init() { InitMenu(); }
 
 void SAKCommonMainWindow::InitMenu() {
   InitMenuFile();

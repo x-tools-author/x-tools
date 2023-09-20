@@ -9,7 +9,7 @@
  ******************************************************************************/
 #include "sakstringassistant.h"
 
-#include "SAKCommonDataStructure.h"
+#include "sakcommondatastructure.h"
 #include "ui_sakstringassistant.h"
 
 SAKStringAssistant::SAKStringAssistant(QWidget* parent)

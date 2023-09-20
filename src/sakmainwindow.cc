@@ -49,13 +49,13 @@
 #include <QToolButton>
 #include <QVariant>
 
-#include "SAKDataStructure.h"
-#include "SAKInterface.h"
+#include "sakdatastructure.h"
+#include "sakinterface.h"
 #include "SAKLogUi.h"
-#include "SAKSettings.h"
+#include "saksettings.h"
 #include "SAKToolBoxUi.h"
-#include "SAKTranslator.h"
-#include "SAKUiInterface.h"
+#include "saktranslator.h"
+#include "sakuiinterface.h"
 #include "sakassistantsfactory.h"
 
 #ifdef SAK_IMPORT_MODULE_CANBUSUI

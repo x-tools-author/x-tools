@@ -7,31 +7,24 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
+#include "sakmenu.h"
+
 #include <QMouseEvent>
-#include "SAKMenu.h"
 
-SAKMenu::SAKMenu(const QString &title, QWidget *parent)
-    : QMenu(title, parent)
-{
+SAKMenu::SAKMenu(const QString& title, QWidget* parent)
+    : QMenu(title, parent) {}
 
-}
+SAKMenu::SAKMenu(QWidget* parent) : QMenu{parent} {}
 
-SAKMenu::SAKMenu(QWidget *parent)
-    : QMenu{parent}
-{
-
-}
-
-void SAKMenu::mouseReleaseEvent(QMouseEvent *e)
-{
-    auto p = QCursor::pos();
-    if (geometry().contains(p)) {
-        QAction *a = actionAt(e->pos());
-        if (a) {
-            a->activate(QAction::Trigger);
-            return;
-        }
+void SAKMenu::mouseReleaseEvent(QMouseEvent* e) {
+  auto p = QCursor::pos();
+  if (geometry().contains(p)) {
+    QAction* a = actionAt(e->pos());
+    if (a) {
+      a->activate(QAction::Trigger);
+      return;
     }
+  }
 
-    QMenu::mouseReleaseEvent(e);
+  QMenu::mouseReleaseEvent(e);
 }

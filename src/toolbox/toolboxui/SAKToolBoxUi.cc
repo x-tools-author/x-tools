@@ -16,14 +16,14 @@
 #include <QJsonDocument>
 #include <QRegularExpression>
 
-#include "SAKSettings.h"
+#include "saksettings.h"
 #include "SAKToolBoxUi.h"
-#include "SAKInterface.h"
-#include "SAKUiInterface.h"
+#include "sakinterface.h"
+#include "sakuiinterface.h"
 #include "SAKToolFactory.h"
-#include "SAKCrcInterface.h"
+#include "sakcrcinterface.h"
 #include "SAKEmitterToolUi.h"
-#include "SAKDataStructure.h"
+#include "sakdatastructure.h"
 #include "SAKResponserToolUi.h"
 #include "SAKPrestorerToolUi.h"
 #include "SAKBleCentralToolUi.h"

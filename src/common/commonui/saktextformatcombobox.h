@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKTEXTFORMATCOMBOBOX_HH
-#define SAKTEXTFORMATCOMBOBOX_HH
+#ifndef SAKTEXTFORMATCOMBOBOX_H
+#define SAKTEXTFORMATCOMBOBOX_H
 
-#include "SAKComboBox.h"
+#include "sakcombobox.h"
 
 class SAKTextFormatComboBox : public SAKComboBox
 {
@@ -19,4 +19,4 @@ public:
     SAKTextFormatComboBox(QWidget *parent = nullptr);
 };
 
-#endif // SAKTEXTFORMATCOMBOBOX_HH
+#endif // SAKTEXTFORMATCOMBOBOX_H

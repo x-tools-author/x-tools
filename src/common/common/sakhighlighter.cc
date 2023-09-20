@@ -10,7 +10,7 @@
 #endif
 #endif
 
-#include "SAKHighlighter.h"
+#include "sakhighlighter.h"
 
 SAKHighlighter::SAKHighlighter(QObject *parent)
     : QSyntaxHighlighter(parent)

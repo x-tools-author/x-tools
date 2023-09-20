@@ -7,14 +7,13 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QMessageBox>
-#include <QBluetoothDeviceInfo>
-#include "SAKBluetoothDeviceInfoComboBox.h"
+#include "sakbluetoothdeviceInfocombobox.h"
 
-SAKBluetoothDeviceInfoComboBox::SAKBluetoothDeviceInfoComboBox(QWidget *parent)
-    : SAKComboBox(parent)
-    , mScanner(Q_NULLPTR)
-{
+#include <QBluetoothDeviceInfo>
+#include <QMessageBox>
+
+SAKBluetoothDeviceInfoComboBox::SAKBluetoothDeviceInfoComboBox(QWidget* parent)
+    : SAKComboBox(parent), mScanner(Q_NULLPTR) {
 #if 0
     mScanner = new SAKBleScanner(this);
     connect(mScanner, &SAKBleScanner::finished,
@@ -28,83 +27,73 @@ SAKBluetoothDeviceInfoComboBox::SAKBluetoothDeviceInfoComboBox(QWidget *parent)
 #endif
 }
 
-SAKBluetoothDeviceInfoComboBox::~SAKBluetoothDeviceInfoComboBox()
-{
+SAKBluetoothDeviceInfoComboBox::~SAKBluetoothDeviceInfoComboBox() {
 #if 0
     mScanner->stopDiscover();
 #endif
 }
 
-void SAKBluetoothDeviceInfoComboBox::startDiscover()
-{
+void SAKBluetoothDeviceInfoComboBox::startDiscover() {
 #if 0
     clear();
     mScanner->startDiscover();
 #endif
 }
 
-void SAKBluetoothDeviceInfoComboBox::stopDiscover()
-{
+void SAKBluetoothDeviceInfoComboBox::stopDiscover() {
 #if 0
     mScanner->stopDiscover();
 #endif
 }
 
-bool SAKBluetoothDeviceInfoComboBox::isActive()
-{
+bool SAKBluetoothDeviceInfoComboBox::isActive() {
 #if 0
     return mScanner->isActive();
 #endif
-    return false;
+  return false;
 }
 
-void SAKBluetoothDeviceInfoComboBox::setTimeoutInterval(int interval)
-{
+void SAKBluetoothDeviceInfoComboBox::setTimeoutInterval(int interval) {
 #if 0
     mScanner->setTimeoutInterval(interval);
 #endif
 }
 
-void SAKBluetoothDeviceInfoComboBox::setNameFiltter(const QString &filtter)
-{
-//    mScanner->setNameFiltter(filtter);
+void SAKBluetoothDeviceInfoComboBox::setNameFiltter(const QString& filtter) {
+  //    mScanner->setNameFiltter(filtter);
 }
 
-void SAKBluetoothDeviceInfoComboBox::changeEvent(QEvent *event)
-{
-    SAKComboBox::changeEvent(event);
-    if ((event->type() == QEvent::EnabledChange) && isEnabled()) {
-        onFinished();
-    }
+void SAKBluetoothDeviceInfoComboBox::changeEvent(QEvent* event) {
+  SAKComboBox::changeEvent(event);
+  if ((event->type() == QEvent::EnabledChange) && isEnabled()) {
+    onFinished();
+  }
 }
 
-void SAKBluetoothDeviceInfoComboBox::onFinished()
-{
-    // if (!isEnabled()) {
-    //     return;
-    // }
+void SAKBluetoothDeviceInfoComboBox::onFinished() {
+  // if (!isEnabled()) {
+  //     return;
+  // }
 
-    // clear();
-    // auto infos = mScanner->devicesInfoList();
-    // for (auto &info : infos) {
-    //     QString name = mScanner->deviceName(info);
-    //     addItem(name, info);
-    // }
+  // clear();
+  // auto infos = mScanner->devicesInfoList();
+  // for (auto &info : infos) {
+  //     QString name = mScanner->deviceName(info);
+  //     addItem(name, info);
+  // }
 
-    // emit finished();
+  // emit finished();
 }
 
 void SAKBluetoothDeviceInfoComboBox::onDeviceDiscovered(
-    const QBluetoothDeviceInfo &info)
-{
-    if (!isEnabled()) {
-        return;
-    }
+    const QBluetoothDeviceInfo& info) {
+  if (!isEnabled()) {
+    return;
+  }
 
-    addItem(info.name(), QVariant::fromValue(info));
+  addItem(info.name(), QVariant::fromValue(info));
 }
 
-void SAKBluetoothDeviceInfoComboBox::onErrorOccurred(const QString &errStr)
-{
-    QMessageBox::warning(this, tr("Error Occurred"), errStr);
+void SAKBluetoothDeviceInfoComboBox::onErrorOccurred(const QString& errStr) {
+  QMessageBox::warning(this, tr("Error Occurred"), errStr);
 }

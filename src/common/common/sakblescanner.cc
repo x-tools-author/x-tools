@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKBleScanner.h"
+#include "sakblescanner.h"
 
 #include <QBluetoothDeviceInfo>
 #include <QDebug>
@@ -17,7 +17,7 @@
   void (QBluetoothDeviceDiscoveryAgent::*)( \
       QBluetoothDeviceDiscoveryAgent::Error)
 
-SAKBleScanner::SAKBleScanner(QObject *parent)
+SAKBleScanner::SAKBleScanner(QObject* parent)
     : QThread(parent), mDiscover(Q_NULLPTR) {}
 
 SAKBleScanner::~SAKBleScanner() {}
@@ -39,7 +39,7 @@ QVariant SAKBleScanner::deviceInfo(int index) {
   return QVariant();
 }
 
-QString SAKBleScanner::deviceName(const QVariant &deviceInfo) {
+QString SAKBleScanner::deviceName(const QVariant& deviceInfo) {
   auto cookedInfo = deviceInfo.value<QBluetoothDeviceInfo>();
   return cookedInfo.name();
 }
@@ -88,7 +88,7 @@ void SAKBleScanner::onDiscoveryErrorOccurred(
 }
 
 void SAKBleScanner::onDiscoveryDeviceDiscovered(
-    const QBluetoothDeviceInfo &info) {
+    const QBluetoothDeviceInfo& info) {
   const QString name = info.name();
   qCInfo(mLoggingCategory) << "new ble device:" << name;
 
@@ -108,7 +108,7 @@ void SAKBleScanner::onDiscoveryDeviceDiscovered(
 QVariantList SAKBleScanner::devicesInfoList() {
   QVariantList list;
   mDeviceInfoListMutex.lock();
-  for (auto &info : mDeviceInfoList) {
+  for (auto& info : mDeviceInfoList) {
     list.append(QVariant::fromValue(info));
   }
   mDeviceInfoListMutex.unlock();
@@ -125,7 +125,7 @@ void SAKBleScanner::setTimeoutInterval(int interval) {
 
 QString SAKBleScanner::namefiltter() { return mNameFiltter; }
 
-void SAKBleScanner::setNameFiltter(const QString &flag) {
+void SAKBleScanner::setNameFiltter(const QString& flag) {
   mNameFiltter = flag;
   emit filtterNameChanged();
 }

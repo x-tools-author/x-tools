@@ -1,4 +1,4 @@
-﻿/*****************************************************************************************
+﻿/*******************************************************************************
  * Copyright 2018-2021 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- ***************************************************************************************/
+ ******************************************************************************/
 #include <QMap>
 #include <QMetaEnum>
 #include <QComboBox>
@@ -21,8 +21,8 @@
 #include <QSerialPortInfo>
 #endif
 
-#include "SAKCommonInterface.h"
-#include "SAKCommonCrcInterface.h"
+#include "sakcommoninterface.h"
+#include "sakcommoncrcinterface.h"
 
 SAKCommonInterface::SAKCommonInterface(QObject *parent)
     :QObject (parent)

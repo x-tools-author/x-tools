@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKSPINBOX_HH
-#define SAKSPINBOX_HH
+#ifndef SAKSPINBOX_H
+#define SAKSPINBOX_H
 
 #include <QSpinBox>
 
@@ -28,4 +28,4 @@ private:
     void writeToSettingsFile();
 };
 
-#endif // SAKSPINBOX_HH
+#endif // SAKSPINBOX_H

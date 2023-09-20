@@ -39,7 +39,7 @@
 #include <QModbusRtuSerialServer>
 #endif
 
-#include "SAKSettings.h"
+#include "saksettings.h"
 #include "sakmodbusfactory.h"
 #include "ui_sakmodbusui.h"
 

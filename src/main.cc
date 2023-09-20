@@ -12,9 +12,9 @@
 #include <QStyleFactory>
 
 #include "sakapplication.h"
-#include "SAKInterface.h"
+#include "sakinterface.h"
 #include "SAKLog.h"
-#include "SAKSettings.h"
+#include "saksettings.h"
 
 int main(int argc, char* argv[]) {
 #ifndef QT_DEBUG

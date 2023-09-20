@@ -8,14 +8,14 @@
   "modbusstudioui/*.ui")
 set(APP_MODBUS_STUDIO_SOURCES
     ${MODBUS_STUDIO_SOURCES}
-    ../common/common/SAKSettings.h
-    ../common/common/SAKSettings.cc
+    ../common/common/saksettings.h
+    ../common/common/saksettings.cc
     ../common/commonui/sakcommonmainwindow.h
     ../common/commonui/sakcommonmainwindow.cc
-    ../common/common/SAKInterface.h
-    ../common/common/SAKInterface.cc
-    ../common/common/SAKTranslator.h
-    ../common/common/SAKTranslator.cc
+    ../common/common/sakinterface.h
+    ../common/common/sakinterface.cc
+    ../common/common/saktranslator.h
+    ../common/common/saktranslator.cc
     main.cc
     ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
 

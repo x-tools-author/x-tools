@@ -10,7 +10,7 @@
 #ifndef SAKAFFIXESCOMBOBOX_H
 #define SAKAFFIXESCOMBOBOX_H
 
-#include "SAKComboBox.h"
+#include "sakcombobox.h"
 
 class SAKAffixesComboBox : public SAKComboBox
 {

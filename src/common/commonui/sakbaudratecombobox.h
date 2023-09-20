@@ -10,7 +10,7 @@
 #ifndef SAKBAUDRATECOMBOBOX_H
 #define SAKBAUDRATECOMBOBOX_H
 
-#include "SAKComboBox.h"
+#include "sakcombobox.h"
 
 class SAKBaudRateComboBox : public SAKComboBox
 {

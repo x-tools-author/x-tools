@@ -14,7 +14,7 @@
 #include <QJsonDocument>
 #include <QStandardItemModel>
 
-#include "SAKMenu.h"
+#include "sakmenu.h"
 #include "SAKPrestorerTool.h"
 #include "SAKPrestorerToolUi.h"
 #include "SAKPrestorerToolUiEditor.h"

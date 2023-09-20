@@ -17,7 +17,7 @@
 #include <QStandardPaths>
 
 #include "SAKLog.h"
-#include "SAKSettings.h"
+#include "saksettings.h"
 
 QVector<SAKLog::LogContext> SAKLog::mLogContextVector;
 QMutex SAKLog::mLogContextVectorMutex;

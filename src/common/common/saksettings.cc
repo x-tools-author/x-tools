@@ -10,8 +10,8 @@
 #include <QCoreApplication>
 #include <QStandardPaths>
 
-#include "SAKDataStructure.h"
-#include "SAKSettings.h"
+#include "sakdatastructure.h"
+#include "saksettings.h"
 
 static const QString fileName() {
   QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;

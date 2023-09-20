@@ -152,7 +152,7 @@
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="SAKWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
+    <widget class="sakwebsocketmessagetypecombobox" name="comboBoxMessageType"/>
    </item>
    <item row="8" column="1">
     <widget class="SAKSpinBox" name="spinBoxServerPort">
@@ -180,22 +180,22 @@
   <customwidget>
    <class>SAKCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">SAKCheckBox.h</header>
+   <header location="global">sakcheckbox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKIpComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKIpComboBox.h</header>
+   <header location="global">sakipcombobox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKWebSocketMessageTypeComboBox</class>
+   <class>sakwebsocketmessagetypecombobox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKWebSocketMessageTypeComboBox.h</header>
+   <header location="global">sakwebsocketmessagetypecombobox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKSpinBox</class>
    <extends>QSpinBox</extends>
-   <header location="global">SAKSpinBox.h</header>
+   <header location="global">sakspinbox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

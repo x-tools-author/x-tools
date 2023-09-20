@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKUIINTERFACE_HH
-#define SAKUIINTERFACE_HH
+#ifndef SAKUIINTERFACE_H
+#define SAKUIINTERFACE_H
 
 #include <QObject>
 #include <QLineEdit>
@@ -23,4 +23,4 @@ public:
     static QIcon cookedIcon(const QIcon &icon);
 };
 
-#endif // SAKUIINTERFACE_HH
+#endif // SAKUIINTERFACE_H

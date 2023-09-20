@@ -13,7 +13,7 @@
 #include <QNetworkAddressEntry>
 #include <QNetworkInterface>
 
-#include "SAKCommonDataStructure.h"
+#include "sakcommondatastructure.h"
 #include "sakbroadcastthread.h"
 #include "ui_sakbroadcastassistant.h"
 

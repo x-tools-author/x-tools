@@ -9,8 +9,8 @@
  ******************************************************************************/
 #include <QHostAddress>
 
-#include "SAKInterface.h"
-#include "SAKCompatibility.h"
+#include "sakinterface.h"
+#include "sakcompatibility.h"
 #include "SAKUdpClientTool.h"
 
 SAKUdpClientTool::SAKUdpClientTool(QObject *parent)

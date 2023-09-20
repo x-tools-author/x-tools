@@ -7,39 +7,33 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKSpinBox.h"
-#include "SAKSettings.h"
+#include "sakspinbox.h"
 
-SAKSpinBox::SAKSpinBox(QWidget *parent)
-    : QSpinBox(parent)
-{
-    connect(this, static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
-            this, &SAKSpinBox::writeToSettingsFile);
+#include "saksettings.h"
+
+SAKSpinBox::SAKSpinBox(QWidget* parent) : QSpinBox(parent) {
+  connect(this, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SAKSpinBox::writeToSettingsFile);
 }
 
-void SAKSpinBox::setGroupKey(const QString &group,
-                              const QString &key)
-{
-    mKey = group + "/" + key;
-    readFromSettingsFile();
+void SAKSpinBox::setGroupKey(const QString& group, const QString& key) {
+  mKey = group + "/" + key;
+  readFromSettingsFile();
 }
 
+void SAKSpinBox::readFromSettingsFile() {
+  if (mKey.isEmpty()) {
+    return;
+  }
 
-void SAKSpinBox::readFromSettingsFile()
-{
-    if (mKey.isEmpty()) {
-        return;
-    }
-
-    int value = SAKSettings::instance()->value(mKey).toInt();
-    setValue(value);
+  int value = SAKSettings::instance()->value(mKey).toInt();
+  setValue(value);
 }
 
-void SAKSpinBox::writeToSettingsFile()
-{
-    if (mKey.isEmpty()) {
-        return;
-    }
+void SAKSpinBox::writeToSettingsFile() {
+  if (mKey.isEmpty()) {
+    return;
+  }
 
-    SAKSettings::instance()->setValue(mKey, value());
+  SAKSettings::instance()->setValue(mKey, value());
 }

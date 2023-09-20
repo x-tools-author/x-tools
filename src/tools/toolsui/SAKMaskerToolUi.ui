@@ -75,12 +75,12 @@
   <customwidget>
    <class>SAKCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">SAKCheckBox.h</header>
+   <header location="global">sakcheckbox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKSpinBox</class>
    <extends>QSpinBox</extends>
-   <header location="global">SAKSpinBox.h</header>
+   <header location="global">sakspinbox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

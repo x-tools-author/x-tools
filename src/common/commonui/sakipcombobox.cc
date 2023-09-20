@@ -7,18 +7,16 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QNetworkInterface>
+#include "sakipcombobox.h"
+
 #include <QNetworkAddressEntry>
+#include <QNetworkInterface>
 
-#include "SAKIpComboBox.h"
-
-SAKIpComboBox::SAKIpComboBox(QWidget *parent)
-    : SAKComboBox(parent)
-{
-    auto addresses = QNetworkInterface::allAddresses();
-    for (auto &address : addresses) {
-        if (address.protocol() == QAbstractSocket::IPv4Protocol) {
-            addItem(address.toString());
-        }
+SAKIpComboBox::SAKIpComboBox(QWidget* parent) : SAKComboBox(parent) {
+  auto addresses = QNetworkInterface::allAddresses();
+  for (auto& address : addresses) {
+    if (address.protocol() == QAbstractSocket::IPv4Protocol) {
+      addItem(address.toString());
     }
+  }
 }

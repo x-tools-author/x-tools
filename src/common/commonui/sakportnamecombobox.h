@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKPORTNAMECOMBOBOX_HH
-#define SAKPORTNAMECOMBOBOX_HH
+#ifndef SAKPORTNAMECOMBOBOX_H
+#define SAKPORTNAMECOMBOBOX_H
 
-#include "SAKComboBox.h"
+#include "sakcombobox.h"
 
 class SAKPortNameComboBox : public SAKComboBox
 {

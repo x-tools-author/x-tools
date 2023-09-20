@@ -1,16 +1,16 @@
 ﻿file(GLOB STRING_ASSISTANT_SOURCES "src/*.h" "src/*.cc" "src/*.ui")
 set(APP_STRING_ASSISTANT_SOURCES
     ${STRING_ASSISTANT_SOURCES}
-    ../../common/common/SAKCommonDataStructure.h
-    ../../common/common/SAKCommonDataStructure.cc
+    ../../common/common/sakcommondatastructure.h
+    ../../common/common/sakcommondatastructure.cc
     ../../common/commonui/sakcommonmainwindow.h
     ../../common/commonui/sakcommonmainwindow.cc
-    ../../common/common/SAKInterface.h
-    ../../common/common/SAKInterface.cc
-    ../../common/common/SAKTranslator.h
-    ../../common/common/SAKTranslator.cc
-    ../../common/common/SAKSettings.h
-    ../../common/common/SAKSettings.cc
+    ../../common/common/sakinterface.h
+    ../../common/common/sakinterface.cc
+    ../../common/common/saktranslator.h
+    ../../common/common/saktranslator.cc
+    ../../common/common/saksettings.h
+    ../../common/common/saksettings.cc
     main.cc
     ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
 

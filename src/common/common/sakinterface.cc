@@ -24,8 +24,8 @@
 #endif
 #include <QAbstractTableModel>
 
-#include "SAKDataStructure.h"
-#include "SAKInterface.h"
+#include "sakdatastructure.h"
+#include "sakinterface.h"
 
 SAKInterface::SAKInterface(QObject* parent) : QObject{parent} {}
 

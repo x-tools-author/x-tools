@@ -141,7 +141,7 @@
     </layout>
    </item>
    <item row="3" column="1">
-    <widget class="SAKWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
+    <widget class="sakwebsocketmessagetypecombobox" name="comboBoxMessageType"/>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label">
@@ -176,12 +176,12 @@
   <customwidget>
    <class>SAKIpComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKIpComboBox.h</header>
+   <header location="global">sakipcombobox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKWebSocketMessageTypeComboBox</class>
+   <class>sakwebsocketmessagetypecombobox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKWebSocketMessageTypeComboBox.h</header>
+   <header location="global">sakwebsocketmessagetypecombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -1,5 +1,5 @@
 ﻿/*******************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -17,8 +17,8 @@
 #include <QMenu>
 #include <QStyleFactory>
 
-#include "SAKInterface.h"
-#include "SAKSettings.h"
+#include "sakinterface.h"
+#include "saksettings.h"
 
 class SAKCommonMainWindow : public QMainWindow {
  public:

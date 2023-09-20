@@ -29,11 +29,11 @@
 #include <QTranslator>
 #include <QUrl>
 
-#include "SAKDataStructure.h"
+#include "sakdatastructure.h"
 #include "sakmainwindow.h"
-#include "SAKSettings.h"
+#include "saksettings.h"
 #include "saksystemtrayicon.h"
-#include "SAKTranslator.h"
+#include "saktranslator.h"
 
 QDate buildDate =
     QLocale(QLocale::English)

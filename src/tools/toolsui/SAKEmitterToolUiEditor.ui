@@ -299,22 +299,22 @@
   <customwidget>
    <class>SAKEscapeCharacterComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKEscapeCharacterComboBox.h</header>
+   <header location="global">sakescapecharactercombobox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKTextFormatComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKTextFormatComboBox.h</header>
+   <header location="global">saktextformatcombobox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKAffixesComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKAffixesComboBox.h</header>
+   <header location="global">sakaffixescombobox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKCrcAlgorithmComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">SAKCrcAlgorithmComboBox.h</header>
+   <header location="global">sakcrcalgorithmcombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

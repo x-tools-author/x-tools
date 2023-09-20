@@ -13,7 +13,7 @@
 #include <QFileInfoList>
 #include <QJsonDocument>
 
-#include "SAKTranslator.h"
+#include "saktranslator.h"
 
 SAKTranslator::SAKTranslator(QObject* parent) : QObject{parent} {
   mFlagNameMap.insert("zh_CN", "简体中文");

@@ -11,10 +11,10 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 
-#include "SAKInterface.h"
-#include "SAKCrcInterface.h"
+#include "sakinterface.h"
+#include "sakcrcinterface.h"
 #include "SAKPrestorerTool.h"
-#include "SAKDataStructure.h"
+#include "sakdatastructure.h"
 
 SAKPrestorerTool::SAKPrestorerTool(QObject *parent)
     : SAKTableModelTool{"sak.prestorertool", parent}

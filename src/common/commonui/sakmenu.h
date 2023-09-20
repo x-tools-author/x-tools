@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKMENU_HH
-#define SAKMENU_HH
+#ifndef SAKMENU_H
+#define SAKMENU_H
 
 #include <QMenu>
 
@@ -22,4 +22,4 @@ protected:
     virtual void mouseReleaseEvent(QMouseEvent *e) override;
 };
 
-#endif // SAKMENU_HH
+#endif // SAKMENU_H

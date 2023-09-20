@@ -14,8 +14,8 @@
 #include <QJsonDocument>
 #include <QStandardItemModel>
 
-#include "SAKMenu.h"
-#include "SAKSettings.h"
+#include "sakmenu.h"
+#include "saksettings.h"
 #include "SAKTableModelTool.h"
 #include "SAKTableModelToolUi.h"
 #include "ui_SAKTableModelToolUi.h"
