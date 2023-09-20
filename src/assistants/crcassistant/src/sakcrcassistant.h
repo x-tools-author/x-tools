@@ -42,6 +42,8 @@ class SAKCRCAssistant : public QWidget {
 
  private:
   void InitParameterModel();
+
+ private slots:
   void Calculate();
   void TextFormatControl();
   void ChangedParameterModel(int index);
