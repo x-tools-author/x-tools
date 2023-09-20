@@ -1,5 +1,8 @@
 ﻿cmake_minimum_required(VERSION 3.16)
 
+include(.cmake/deploy.cmake)
+say_hello_world()
+
 project(
   QtSwissArmyKnife
   VERSION 0.1
