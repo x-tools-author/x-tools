@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include <QTimer>
-#include "SAKVelometerTool.h"
+#include "sakvelometertool.h"
 
 SAKVelometerTool::SAKVelometerTool(QObject *parent)
     : SAKBaseTool{"sak.velometertool", parent}

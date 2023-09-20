@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -11,7 +11,7 @@
 #define SAKUDPCLIENTTOOL_H
 
 #include <QUdpSocket>
-#include "SAKSocketClientTool.h"
+#include "saksocketclienttool.h"
 
 class SAKUdpClientTool : public SAKSocketClientTool
 {

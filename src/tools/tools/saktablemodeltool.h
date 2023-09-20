@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKTABLEMODELTOOL_HH
-#define SAKTABLEMODELTOOL_HH
+#ifndef SAKTABLEMODELTOOL_H
+#define SAKTABLEMODELTOOL_H
 
-#include "SAKBaseTool.h"
+#include "sakbasetool.h"
 #include "saktablemodel.h"
 
 class SAKTableModelTool : public SAKBaseTool
@@ -75,4 +75,4 @@ private:
                                int role = Qt::DisplayRole);
 };
 
-#endif // SAKTABLEMODELTOOL_HH
+#endif // SAKTABLEMODELTOOL_H

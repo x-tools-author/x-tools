@@ -9,7 +9,7 @@
  ******************************************************************************/
 #include <QJsonObject>
 
-#include "SAKSerialPortTransmitterTool.h"
+#include "sakserialporttransmittertool.h"
 #include "SAKSerialPortTransmitterToolUiEditor.h"
 #include "ui_SAKSerialPortTransmitterToolUiEditor.h"
 

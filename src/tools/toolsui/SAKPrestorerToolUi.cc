@@ -15,7 +15,7 @@
 #include <QStandardItemModel>
 
 #include "sakmenu.h"
-#include "SAKPrestorerTool.h"
+#include "sakprestorertool.h"
 #include "SAKPrestorerToolUi.h"
 #include "SAKPrestorerToolUiEditor.h"
 

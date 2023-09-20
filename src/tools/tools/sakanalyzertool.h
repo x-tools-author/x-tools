@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,13 +7,13 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKANALYZERTOOL_HH
-#define SAKANALYZERTOOL_HH
+#ifndef SAKANALYZERTOOL_H
+#define SAKANALYZERTOOL_H
 
 #include <QTimer>
 #include <QMutex>
 
-#include "SAKBaseTool.h"
+#include "sakbasetool.h"
 
 class SAKAnalyzerTool : public SAKBaseTool
 {

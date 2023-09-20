@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,26 +7,26 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKTOOLBOX_HH
-#define SAKTOOLBOX_HH
+#ifndef SAKTOOLBOX_H
+#define SAKTOOLBOX_H
 
 #include <QObject>
 #include <QVariant>
 
-#include "SAKBaseTool.h"
-#include "SAKMaskerTool.h"
-#include "SAKStorerTool.h"
-#include "SAKEmitterTool.h"
-#include "SAKAnalyzerTool.h"
-#include "SAKPrestorerTool.h"
-#include "SAKResponserTool.h"
-#include "SAKVelometerTool.h"
-#include "SAKStatisticianTool.h"
-#include "SAKCommunicationTool.h"
-#include "SAKUdpTransmitterTool.h"
-#include "SAKTcpTransmitterTool.h"
-#include "SAKWebSocketTransmitterTool.h"
-#include "SAKSerialPortTransmitterTool.h"
+#include "sakbasetool.h"
+#include "sakmaskertool.h"
+#include "sakstorertool.h"
+#include "sakemittertool.h"
+#include "sakanalyzertool.h"
+#include "sakprestorertool.h"
+#include "sakresponsertool.h"
+#include "sakvelometertool.h"
+#include "sakstatisticiantool.h"
+#include "sakcommunicationtool.h"
+#include "sakudptransmittertool.h"
+#include "saktcptransmittertool.h"
+#include "sakwebsockettransmittertool.h"
+#include "sakserialporttransmittertool.h"
 
 class SAKToolBox : public QObject
 {

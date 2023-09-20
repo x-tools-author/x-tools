@@ -12,7 +12,7 @@
 
 #include "SAKGuiApplication.h"
 #include "sakinterface.h"
-#include "SAKLog.h"
+#include "saklog.h"
 #include "saksettings.h"
 
 int main(int argc, char* argv[]) {

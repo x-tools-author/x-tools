@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include "SAKEmitterToolUi.h"
-#include "SAKTableModelTool.h"
+#include "saktablemodeltool.h"
 
 SAKEmitterToolUi::SAKEmitterToolUi(QWidget *parent)
     : SAKTableModelToolUi{"sak.emittertoolui", parent}

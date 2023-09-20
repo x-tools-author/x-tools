@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,15 +7,15 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKPRESTORERTOOL_HH
-#define SAKPRESTORERTOOL_HH
+#ifndef SAKPRESTORERTOOL_H
+#define SAKPRESTORERTOOL_H
 
 #include <QTimer>
 #include <QMutex>
 #include <QVariant>
 #include <QAbstractTableModel>
 
-#include "SAKTableModelTool.h"
+#include "saktablemodeltool.h"
 
 class SAKPrestorerTool : public SAKTableModelTool
 {

@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKSOCKETSERVERTOOL_HH
-#define SAKSOCKETSERVERTOOL_HH
+#ifndef SAKSOCKETSERVERTOOL_H
+#define SAKSOCKETSERVERTOOL_H
 
-#include "SAKCommunicationTool.h"
+#include "sakcommunicationtool.h"
 
 class SAKSocketServerTool : public SAKCommunicationTool
 {
@@ -59,4 +59,4 @@ signals:
     void messageTypeChanged();
 };
 
-#endif // SAKSOCKETSERVERTOOL_HH
+#endif // SAKSOCKETSERVERTOOL_H

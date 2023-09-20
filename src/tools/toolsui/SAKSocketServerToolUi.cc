@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include <QMessageBox>
-#include "SAKSocketServerTool.h"
+#include "saksocketservertool.h"
 #include "SAKSocketServerToolUi.h"
 #include "ui_SAKSocketServerToolUi.h"
 

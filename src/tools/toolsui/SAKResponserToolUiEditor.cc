@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKResponserTool.h"
+#include "sakresponsertool.h"
 #include "SAKResponserToolUiEditor.h"
 #include "ui_SAKResponserToolUiEditor.h"
 

@@ -9,8 +9,8 @@
  ******************************************************************************/
 #include <QJsonObject>
 
-#include "SAKUdpClientTool.h"
-#include "SAKUdpTransmitterTool.h"
+#include "sakudpclienttool.h"
+#include "sakudptransmittertool.h"
 
 SAKUdpTransmitterTool::SAKUdpTransmitterTool(QObject *parent)
     : SAKSocketClientTransmitterTool{"sak.udptransmittertool", parent}

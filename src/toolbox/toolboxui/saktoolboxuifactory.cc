@@ -7,49 +7,39 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKToolFactory.h"
-#include "SAKToolBoxUiFactory.h"
+#include "saktoolboxuifactory.h"
+
+#include "saktoolfactory.h"
 #if 0
+#include "SAKBleCentralToolBoxUi.h"
+#include "SAKBlePeripheralToolBoxUi.h"
+#include "SAKSerialPortToolBoxUi.h"
 #include "SAKTcpClientToolBoxUi.h"
 #include "SAKTcpServerToolBoxUi.h"
 #include "SAKUdpClientToolBoxUi.h"
 #include "SAKUdpServerToolBoxUi.h"
-#include "SAKSerialPortToolBoxUi.h"
-#include "SAKBleCentralToolBoxUi.h"
-#include "SAKBlePeripheralToolBoxUi.h"
 #include "SAKWebSocketClientToolBoxUi.h"
 #include "SAKWebSocketServerToolBoxUi.h"
 #endif
 
-SAKToolBoxUiFactory::SAKToolBoxUiFactory(QObject *parent)
-    : QObject{parent}
-{
+SAKToolBoxUiFactory::SAKToolBoxUiFactory(QObject* parent) : QObject{parent} {}
 
+SAKToolBoxUiFactory* SAKToolBoxUiFactory::instance() {
+  static SAKToolBoxUiFactory factory;
+  return &factory;
 }
 
-SAKToolBoxUiFactory *SAKToolBoxUiFactory::instance()
-{
-    static SAKToolBoxUiFactory factory;
-    return &factory;
+QList<int> SAKToolBoxUiFactory::supportedTools() {
+  QList<int> list;
+  list << SAKToolFactory::SerialportTool << SAKToolFactory::UdpClientTool
+       << SAKToolFactory::UdpServerTool << SAKToolFactory::TcpClientTool
+       << SAKToolFactory::TcpServerTool << SAKToolFactory::WebSocketClientTool
+       << SAKToolFactory::WebSocketServerTool << SAKToolFactory::BleCentralTool
+       << SAKToolFactory::BlePeriheral;
+  return list;
 }
 
-QList<int> SAKToolBoxUiFactory::supportedTools()
-{
-    QList<int> list;
-    list << SAKToolFactory::SerialportTool
-         << SAKToolFactory::UdpClientTool
-         << SAKToolFactory::UdpServerTool
-         << SAKToolFactory::TcpClientTool
-         << SAKToolFactory::TcpServerTool
-         << SAKToolFactory::WebSocketClientTool
-         << SAKToolFactory::WebSocketServerTool
-         << SAKToolFactory::BleCentralTool
-         << SAKToolFactory::BlePeriheral;
-    return list;
-}
-
-SAKToolBoxUi *SAKToolBoxUiFactory::createToolBoxUi(int type)
-{
+SAKToolBoxUi* SAKToolBoxUiFactory::createToolBoxUi(int type) {
 #if 0
     if (type == SAKToolFactory::SerialportTool) {
         return new SAKSerialPortToolBoxUi();
@@ -72,5 +62,5 @@ SAKToolBoxUi *SAKToolBoxUiFactory::createToolBoxUi(int type)
     }
 #endif
 
-    return Q_NULLPTR;
+  return Q_NULLPTR;
 }

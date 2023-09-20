@@ -9,7 +9,7 @@
  ******************************************************************************/
 #include "SAKAnalyzerToolUi.h"
 
-#include "SAKAnalyzerTool.h"
+#include "sakanalyzertool.h"
 #include "sakdatastructure.h"
 #include "sakinterface.h"
 #include "sakuiinterface.h"

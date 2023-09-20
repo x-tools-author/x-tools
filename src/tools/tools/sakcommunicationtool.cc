@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include <QTimer>
-#include "SAKCommunicationTool.h"
+#include "sakcommunicationtool.h"
 
 SAKCommunicationTool::SAKCommunicationTool(const char *logCategory,
                                            QObject *parent)

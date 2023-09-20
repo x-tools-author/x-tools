@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKCANBUSUI_HH
-#define SAKCANBUSUI_HH
+#ifndef SAKCANBUSSTUDIOUI_H
+#define SAKCANBUSSTUDIOUI_H
 
 #include <QWidget>
 #include <QVector>
@@ -105,4 +105,4 @@ private:
     QVector<ConfigurationItem> configurationItems();
 };
 
-#endif // SAKCANBUSUI_HH
+#endif // SAKCANBUSSTUDIOUI_H

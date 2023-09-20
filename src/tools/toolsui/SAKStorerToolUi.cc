@@ -10,7 +10,7 @@
 #include <QLineEdit>
 #include <QFileDialog>
 
-#include "SAKStorerTool.h"
+#include "sakstorertool.h"
 #include "SAKStorerToolUi.h"
 #include "ui_SAKStorerToolUi.h"
 

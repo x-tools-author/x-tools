@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKSocketServerTool.h"
+#include "saksocketservertool.h"
 
 SAKSocketServerTool::SAKSocketServerTool(const char *log, QObject *parent)
     : SAKCommunicationTool{log, parent}

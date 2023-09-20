@@ -10,7 +10,7 @@
 #include <QTcpSocket>
 
 #include "sakcompatibility.h"
-#include "SAKTcpServerTool.h"
+#include "saktcpservertool.h"
 
 SAKTcpServerTool::SAKTcpServerTool(QObject *parent)
     : SAKSocketServerTool{"sak.tcpservertool", parent}

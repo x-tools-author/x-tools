@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,13 +7,13 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKSERIALPORTTRANSMITTERTOOL_HH
-#define SAKSERIALPORTTRANSMITTERTOOL_HH
+#ifndef SAKSERIALPORTTRANSMITTERTOOL_H
+#define SAKSERIALPORTTRANSMITTERTOOL_H
 
 #include <QMutex>
 #include <QVector>
 
-#include "SAKTransmitterTool.h"
+#include "saktransmittertool.h"
 
 class SAKSerialPortTransmitterTool : public SAKTransmitterTool
 {
@@ -50,4 +50,4 @@ protected:
     virtual SAKCommunicationTool *createTool() override;
 };
 
-#endif // SAKSERIALPORTTRANSMITTERTOOL_HH
+#endif // SAKSERIALPORTTRANSMITTERTOOL_H

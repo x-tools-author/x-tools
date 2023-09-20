@@ -12,7 +12,7 @@
 
 #include <QLowEnergyDescriptor>
 
-#include "SAKBleCentralTool.h"
+#include "sakblecentraltool.h"
 #include "SAKCommunicationToolUi.h"
 
 namespace Ui {

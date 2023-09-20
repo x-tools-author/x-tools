@@ -10,7 +10,7 @@
 #include <QMetaObject>
 #include <QBluetoothDeviceInfo>
 
-#include "SAKBleCentralTool.h"
+#include "sakblecentraltool.h"
 
 #define BLE_ERR_SIG QLowEnergyController::Error
 

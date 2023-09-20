@@ -7,12 +7,12 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKVELOMETERTOOL_HH
-#define SAKVELOMETERTOOL_HH
+#ifndef SAKVELOMETERTOOL_H
+#define SAKVELOMETERTOOL_H
 
 #include <QList>
 #include <QMutex>
-#include "SAKBaseTool.h"
+#include "sakbasetool.h"
 
 class SAKVelometerTool : public SAKBaseTool
 {

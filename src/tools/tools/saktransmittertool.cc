@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include <QTimer>
-#include "SAKTransmitterTool.h"
+#include "saktransmittertool.h"
 
 SAKTransmitterTool::SAKTransmitterTool(const char *logCategory, QObject *parent)
     : SAKTableModelTool{logCategory, parent}

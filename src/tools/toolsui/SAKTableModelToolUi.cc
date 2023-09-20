@@ -16,7 +16,7 @@
 
 #include "sakmenu.h"
 #include "saksettings.h"
-#include "SAKTableModelTool.h"
+#include "saktablemodeltool.h"
 #include "SAKTableModelToolUi.h"
 #include "ui_SAKTableModelToolUi.h"
 

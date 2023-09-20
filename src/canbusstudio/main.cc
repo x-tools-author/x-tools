@@ -9,7 +9,7 @@
  ******************************************************************************/
 #include <QApplication>
 
-#include "SAKCanBusUi.h"
+#include "sakcanbusstudioui.h"
 #include "sakcommonmainwindow.h"
 
 int main(int argc, char* argv[]) {

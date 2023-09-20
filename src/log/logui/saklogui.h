@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKLOGUI_HH
-#define SAKLOGUI_HH
+#ifndef SAKLOGUI_H
+#define SAKLOGUI_H
 
 #include <QWidget>
 
@@ -34,4 +34,4 @@ private slots:
     void onCheckBoxPauseClicked();
 };
 
-#endif // SAKLOGUI_HH
+#endif // SAKLOGUI_H

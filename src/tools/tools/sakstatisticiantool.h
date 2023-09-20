@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKSTATISTICIANTOOL_HH
-#define SAKSTATISTICIANTOOL_HH
+#ifndef SAKSTATISTICIANTOOL_H
+#define SAKSTATISTICIANTOOL_H
 
-#include "SAKBaseTool.h"
+#include "sakbasetool.h"
 
 class SAKStatisticianTool : public SAKBaseTool
 {
@@ -39,4 +39,4 @@ signals:
     void bytesChanged(int bytes);
 };
 
-#endif // SAKSTATISTICIANTOOL_HH
+#endif // SAKSTATISTICIANTOOL_H

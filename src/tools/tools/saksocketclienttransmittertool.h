@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKSOCKETCLIENTTRANSMITTERTOOL_HH
-#define SAKSOCKETCLIENTTRANSMITTERTOOL_HH
+#ifndef SAKSOCKETCLIENTTRANSMITTERTOOL_H
+#define SAKSOCKETCLIENTTRANSMITTERTOOL_H
 
-#include "SAKTransmitterTool.h"
+#include "saktransmittertool.h"
 
 class SAKSocketClientTransmitterTool : public SAKTransmitterTool
 {
@@ -46,4 +46,4 @@ protected:
                                 int role = Qt::DisplayRole) const override;
 };
 
-#endif // SAKSOCKETCLIENTTRANSMITTERTOOL_HH
+#endif // SAKSOCKETCLIENTTRANSMITTERTOOL_H

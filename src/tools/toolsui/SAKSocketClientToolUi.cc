@@ -9,7 +9,7 @@
  ******************************************************************************/
 #include <QMessageBox>
 
-#include "SAKSocketClientTool.h"
+#include "saksocketclienttool.h"
 #include "SAKSocketClientToolUi.h"
 #include "ui_SAKSocketClientToolUi.h"
 

@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "SAKCanBusUi.h"
+#include "sakcanbusstudioui.h"
 
 #include <QCanBus>
 #include <QCheckBox>
@@ -18,11 +18,11 @@
 #include <QVector>
 
 #include "saksettings.h"
-#include "ui_SAKCanBusUi.h"
+#include "ui_sakcanbusstudioui.h"
 
 const QLoggingCategory gLC("sak.canstudio");
 
-SAKCanBusUi::SAKCanBusUi(QWidget *parent)
+SAKCanBusUi::SAKCanBusUi(QWidget* parent)
     : QWidget{parent}, ui(new Ui::SAKCanBusUi), mDevice(Q_NULLPTR) {
   if (!mSettings) {
     mSettings = SAKSettings::instance();
@@ -201,7 +201,7 @@ void SAKCanBusUi::onConnectClicked() {
           &SAKCanBusUi::onFrameWritten);
 
   auto items = configurationItems();
-  for (const ConfigurationItem &item : items) {
+  for (const ConfigurationItem& item : items) {
     mDevice->setConfigurationParameter(item.first, item.second);
   }
 
@@ -364,7 +364,7 @@ void SAKCanBusUi::onFrameWritten(qint64 framesCount) {
   qCInfo(gLC) << framesCount;
 }
 
-void SAKCanBusUi::setOptions(QComboBox *cb, bool usingUnspecified) {
+void SAKCanBusUi::setOptions(QComboBox* cb, bool usingUnspecified) {
   if (cb) {
     cb->clear();
     if (usingUnspecified) {
@@ -375,14 +375,14 @@ void SAKCanBusUi::setOptions(QComboBox *cb, bool usingUnspecified) {
   }
 }
 
-void SAKCanBusUi::setCurrentIndex(QComboBox *cb, const QString &key) {
+void SAKCanBusUi::setCurrentIndex(QComboBox* cb, const QString& key) {
   int index = mSettings->value(key).toInt();
   if (index >= 0 && index <= cb->count() - 1) {
     cb->setCurrentIndex(index);
   }
 }
 
-void SAKCanBusUi::setChecked(QCheckBox *cb, const QString &key) {
+void SAKCanBusUi::setChecked(QCheckBox* cb, const QString& key) {
   if (cb) {
     bool checked = mSettings->value(key).toBool();
     cb->setChecked(checked);
@@ -400,14 +400,14 @@ void SAKCanBusUi::setCustomConfigurationEnable(bool enable) {
   ui->customDataBitrateCheckBox->setEnabled(enable);
 }
 
-void SAKCanBusUi::outputMessage(const QString &msg) {
+void SAKCanBusUi::outputMessage(const QString& msg) {
   QString datetimeString =
 #if 0
             QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss.zzz");
 #else
       QDateTime::currentDateTime().toString("hh:mm:ss.zzz");
 #endif
-  QString cookedMsg;
+      QString cookedMsg;
   cookedMsg = QString("<font color=silver>%1 </font>").arg(datetimeString);
   cookedMsg += msg;
 
@@ -466,7 +466,7 @@ QVector<SAKCanBusUi::ConfigurationItem> SAKCanBusUi::configurationItems() {
   return items;
 }
 
-void SAKCanBusUi::setBitRates(QComboBox *cb, bool isFlexibleDataRateEnable) {
+void SAKCanBusUi::setBitRates(QComboBox* cb, bool isFlexibleDataRateEnable) {
   if (!cb) {
     return;
   }

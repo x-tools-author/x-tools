@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKTOOLBOXUIINPUTMENU_HH
-#define SAKTOOLBOXUIINPUTMENU_HH
+#ifndef SAKTOOLBOXUIINPUTMENU_H
+#define SAKTOOLBOXUIINPUTMENU_H
 
 #include <QMenu>
 
@@ -50,4 +50,4 @@ private:
     Ui::SAKToolBoxUiInputMenu *ui;
 };
 
-#endif // SAKTOOLBOXUIINPUTMENU_HH
+#endif // SAKTOOLBOXUIINPUTMENU_H

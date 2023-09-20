@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,14 +7,14 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKRESPONSERTOOL_HH
-#define SAKRESPONSERTOOL_HH
+#ifndef SAKRESPONSERTOOL_H
+#define SAKRESPONSERTOOL_H
 
 #include <QMutex>
 #include <QVariant>
 #include <QAbstractTableModel>
 
-#include "SAKTableModelTool.h"
+#include "saktablemodeltool.h"
 
 #define SAK_STR_PROPERTY(name) Q_PROPERTY(QString name READ name CONSTANT)
 

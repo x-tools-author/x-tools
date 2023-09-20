@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKLOG_HH
-#define SAKLOG_HH
+#ifndef SAKLOG_H
+#define SAKLOG_H
 
 #include <QMutex>
 #include <QThread>
@@ -106,4 +106,4 @@ private:
     QString logTypeFlag(int type);
 };
 
-#endif // SAKLOG_HH
+#endif // SAKLOG_H

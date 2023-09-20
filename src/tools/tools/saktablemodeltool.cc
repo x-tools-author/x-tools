@@ -9,7 +9,7 @@
  ******************************************************************************/
 #include <QJsonArray>
 #include <QJsonDocument>
-#include "SAKTableModelTool.h"
+#include "saktablemodeltool.h"
 
 SAKTableModelTool::SAKTableModelTool(const char *logCategory, QObject *parent)
     : SAKBaseTool{logCategory, parent}

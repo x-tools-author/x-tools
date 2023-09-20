@@ -9,7 +9,7 @@
  ******************************************************************************/
 #include "sakinterface.h"
 #include "sakcompatibility.h"
-#include "SAKUdpServerTool.h"
+#include "sakudpservertool.h"
 
 SAKUdpServerTool::SAKUdpServerTool(QObject *parent)
     : SAKSocketServerTool{"sak.udpservertool", parent}

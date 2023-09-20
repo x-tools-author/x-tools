@@ -51,15 +51,15 @@
 
 #include "sakdatastructure.h"
 #include "sakinterface.h"
-#include "SAKLogUi.h"
+#include "saklogui.h"
 #include "saksettings.h"
-#include "SAKToolBoxUi.h"
+#include "saktoolboxui.h"
 #include "saktranslator.h"
 #include "sakuiinterface.h"
 #include "sakassistantsfactory.h"
 
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
-#include "SAKCanBusUi.h"
+#include "sakcanbusstudioui.h"
 #endif
 
 #ifdef SAK_IMPORT_MODULE_MODBUS

@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -11,7 +11,7 @@
 #define SAKWEBSOCKETCLIENTTOOL_H
 
 #include <QWebSocket>
-#include "SAKSocketClientTool.h"
+#include "saksocketclienttool.h"
 
 
 class SAKWebSocketClientTool : public SAKSocketClientTool

@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#ifndef SAKTOOLBOXUI_HH
-#define SAKTOOLBOXUI_HH
+#ifndef SAKTOOLBOXUI_H
+#define SAKTOOLBOXUI_H
 
 #include <QIcon>
 #include <QList>
@@ -16,7 +16,7 @@
 #include <QWidget>
 #include <QLoggingCategory>
 
-#include "SAKToolBox.h"
+#include "saktoolbox.h"
 #include "SAKCommunicationToolUi.h"
 
 namespace Ui {
@@ -125,4 +125,4 @@ private:
     void onCheckBoxOutputWrapClicked();
 };
 
-#endif // SAKTOOLBOXUI_HH
+#endif // SAKTOOLBOXUI_H

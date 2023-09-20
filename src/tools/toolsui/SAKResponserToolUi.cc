@@ -15,7 +15,7 @@
 #include <QJsonDocument>
 #include <QAbstractTableModel>
 
-#include "SAKTableModelTool.h"
+#include "saktablemodeltool.h"
 #include "SAKResponserToolUi.h"
 
 SAKResponserToolUi::SAKResponserToolUi(QWidget *parent)
