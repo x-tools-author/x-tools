@@ -521,13 +521,13 @@
   <customwidget>
    <class>SAKVelometerToolUi</class>
    <extends>QWidget</extends>
-   <header location="global">SAKVelometerToolUi.h</header>
+   <header location="global">sakvelometertoolui.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>SAKStatisticianToolUi</class>
    <extends>QWidget</extends>
-   <header location="global">SAKStatisticianToolUi.h</header>
+   <header location="global">sakstatisticiantoolui.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

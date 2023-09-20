@@ -17,7 +17,7 @@
 #include "sakcrcinterface.h"
 #include "sakdatastructure.h"
 #include "sakemittertool.h"
-#include "SAKGuiApplication.h"
+#include "sakguiapplication.h"
 #include "sakhighlighter.h"
 #include "sakinterface.h"
 #include "sakmaskertool.h"

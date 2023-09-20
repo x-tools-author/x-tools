@@ -10,7 +10,7 @@
 #include <QFile>
 #include <QLoggingCategory>
 
-#include "SAKGuiApplication.h"
+#include "sakguiapplication.h"
 #include "sakinterface.h"
 #include "saklog.h"
 #include "saksettings.h"

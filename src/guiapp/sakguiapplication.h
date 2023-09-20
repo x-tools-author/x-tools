@@ -1,5 +1,5 @@
-#ifndef SAKGUIAPPLICATION_HH
-#define SAKGUIAPPLICATION_HH
+#ifndef SAKGUIAPPLICATION_H
+#define SAKGUIAPPLICATION_H
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
@@ -15,4 +15,4 @@ private:
     QQmlApplicationEngine mQmlAppEngine;
 };
 
-#endif // SAKGUIAPPLICATION_HH
+#endif // SAKGUIAPPLICATION_H
