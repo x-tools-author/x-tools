@@ -157,12 +157,13 @@ file(GLOB_RECURSE LOG_UI_SOURCES "src/log/logui/*h" "src/log/logui/*.cc"
 # Modbus module
 option(SAK_MODBUS "" ON)
 if(SAK_MODBUS)
-  include_directories(src/modbus/modbus)
-  include_directories(src/modbus/modbusui)
-  file(GLOB_RECURSE MODBUS_SOURCES "src/modbus/modbus/*h"
-       "src/modbus/modbus/*.cc")
-  file(GLOB_RECURSE MODBUS_UI_SOURCES "src/modbus/modbusui/*h"
-       "src/modbus/modbusui/*.cc" "src/modbus/modbusui/*.ui")
+  include_directories(src/modbusstudio/modbusstudio)
+  include_directories(src/modbusstudio/modbusstudioui)
+  file(GLOB_RECURSE MODBUS_SOURCES "src/modbusstudio/modbusstudio/*h"
+       "src/modbusstudio/modbusstudio/*.cc")
+  file(GLOB_RECURSE MODBUS_UI_SOURCES "src/modbusstudio/modbusstudioui/*h"
+       "src/modbusstudio/modbusstudioui/*.cc"
+       "src/modbusstudio/modbusstudioui/*.ui")
   add_definitions(-DSAK_IMPORT_MODULE_MODBUS)
 endif()
 

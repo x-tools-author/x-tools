@@ -1,11 +1,11 @@
 ﻿file(
   GLOB
   MODBUS_STUDIO_SOURCES
-  "modbus/*.h"
-  "modbus/*.cc"
-  "modbusui/*.h"
-  "modbusui/*.cc"
-  "modbusui/*.ui")
+  "modbusstudio/*.h"
+  "modbusstudio/*.cc"
+  "modbusstudioui/*.h"
+  "modbusstudioui/*.cc"
+  "modbusstudioui/*.ui")
 set(APP_MODBUS_STUDIO_SOURCES
     ${MODBUS_STUDIO_SOURCES}
     ../common/common/SAKSettings.h
