@@ -9,11 +9,11 @@
  ******************************************************************************/
 #include <QApplication>
 
-#include "SAKToolCRCAssistant.h"
+#include "sakcrcassistant.h"
 #include "sakcommonmainwindow.h"
 
 int main(int argc, char* argv[]) {
-  QApplication* app = CreateCommonMainWindowApplication<SAKToolCRCAssistant>(
+    QApplication* app = CreateCommonMainWindowApplication<SAKCRCAssistant>(
       argc, argv, QObject::tr("CRC Assistant"), "SAK.CRCAssistant");
   int ret = app->exec();
   app->deleteLater();

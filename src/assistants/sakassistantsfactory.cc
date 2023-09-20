@@ -16,7 +16,7 @@
 #include "SAKToolFileCheckAssistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_CRCASSISTANT
-#include "SAKToolCRCAssistant.h"
+#include "sakcrcassistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
 #include "SAKToolFloatAssistant.h"
@@ -36,7 +36,7 @@
 
 SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent) : QObject(parent) {
 #ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
-  RegisterAssistantMetaType<SAKToolCRCAssistant>(kCrcAssistant,
+    RegisterAssistantMetaType<SAKCRCAssistant>(kCrcAssistant,
                                                  tr("CRC Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_CRCASSISTANT
