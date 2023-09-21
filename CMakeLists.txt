@@ -200,15 +200,26 @@ endif()
 # ##############################################################################
 
 # ##############################################################################
-# Custom build target
-option(APP_EABLE_ASSISTANTS "Enable build assistants to executable file." ON)
+# Custom build target.
+option(APP_EABLE_ASSISTANTS "Enable to build assistants." ON)
 if(APP_EABLE_ASSISTANTS)
   add_subdirectory(${CMAKE_SOURCE_DIR}/src/assistants)
 endif()
 
-add_subdirectory(${CMAKE_SOURCE_DIR}/src/canbusstudio)
-add_subdirectory(${CMAKE_SOURCE_DIR}/src/modbusstudio)
-add_subdirectory(${CMAKE_SOURCE_DIR}/src/easydebug)
+option(APP_EABLE_CANBUSSTUDIO "Enable to build CANBusStudio." ON)
+if(APP_EABLE_CANBUSSTUDIO)
+  add_subdirectory(${CMAKE_SOURCE_DIR}/src/canbusstudio)
+endif()
+
+option(APP_EABLE_MODBUSSTUDIO "Enable to build ModbusStudio." ON)
+if(APP_EABLE_MODBUSSTUDIO)
+  add_subdirectory(${CMAKE_SOURCE_DIR}/src/modbusstudio)
+endif()
+
+# For Qt6.4 and later.
+if(QT_VERSION_MAJOR EQUAL 6 AND QT_VERSION_MINOR GREATER_EQUAL 4)
+  add_subdirectory(${CMAKE_SOURCE_DIR}/src/easydebug)
+endif()
 
 include(${CMAKE_SOURCE_DIR}/.cmake/deploy.cmake)
 sak_add_deploy()

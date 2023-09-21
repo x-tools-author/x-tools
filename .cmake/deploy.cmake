@@ -15,27 +15,17 @@ function(sak_add_deploy)
               "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/QtSwissArmyKnife.exe"
       VERBATIM)
 
-    if(MSVC)
-      add_custom_target(
-        sak_copy140
-        COMMAND
-          ${CMAKE_COMMAND} -E copy_if_different
-          "${compiler_path}/VCRUNTIME140.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-        COMMAND
-          ${CMAKE_COMMAND} -E copy_if_different
-          "${compiler_path}/VCRUNTIME140_1.dll"
-          ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-        COMMAND
-          ${CMAKE_COMMAND} -E copy_if_different "${compiler_path}/MSVCP140.dll"
-          ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-        COMMAND
-          ${CMAKE_COMMAND} -E copy_if_different
-          "${compiler_path}/MSVCP140_1.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-        COMMAND
-          ${CMAKE_COMMAND} -E copy_if_different
-          "${compiler_path}/MSVCP140_2.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-        VERBATIM)
-    endif()
+    # if(MSVC) add_custom_target( sak_copy140 COMMAND ${CMAKE_COMMAND} -E
+    # copy_if_different "${compiler_path}/VCRUNTIME140.dll"
+    # ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} COMMAND ${CMAKE_COMMAND} -E
+    # copy_if_different "${compiler_path}/VCRUNTIME140_1.dll"
+    # ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} COMMAND ${CMAKE_COMMAND} -E
+    # copy_if_different "${compiler_path}/MSVCP140.dll"
+    # ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} COMMAND ${CMAKE_COMMAND} -E
+    # copy_if_different "${compiler_path}/MSVCP140_1.dll"
+    # ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} COMMAND ${CMAKE_COMMAND} -E
+    # copy_if_different "${compiler_path}/MSVCP140_2.dll"
+    # ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} VERBATIM) endif()
   endif(WIN32)
 
   if(WIN32)
@@ -48,11 +38,9 @@ function(sak_add_deploy)
 
   if(WIN32)
     # Auto deploy for Windows platform.
-    option(SAK_AUTO_DEPLOY_WIN "" OFF)
+    option(SAK_AUTO_DEPLOY_WIN "" ON)
     if(SAK_AUTO_DEPLOY_WIN)
-      add_custom_target(sak_auto_deploy_win ALL)
-      add_dependencies(sak_auto_deploy_win qtswissarmyknife_deploy_win
-                       easydebug_deploy_win)
+
     endif()
   endif()
 endfunction()
