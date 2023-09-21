@@ -58,11 +58,11 @@
 #include "sakuiinterface.h"
 #include "sakassistantsfactory.h"
 
-#ifdef SAK_IMPORT_MODULE_CANBUSUI
+#ifdef SAK_IMPORT_MODULE_CANBUSSTUDIO
 #include "sakcanbusstudioui.h"
 #endif
 
-#ifdef SAK_IMPORT_MODULE_MODBUS
+#ifdef SAK_IMPORT_MODULE_MODBUSSTUDIO
 #include "sakmodbusui.h"
 #endif
 
@@ -175,7 +175,7 @@ void SAKMainWindow::initFileMenu() {
   }
 
   // Other tools
-#ifdef SAK_IMPORT_MODULE_MODBUS
+#ifdef SAK_IMPORT_MODULE_MODBUSSTUDIO
   QAction* modbusAction = new QAction("Modbus Studio", this);
   connect(modbusAction, &QAction::triggered, this, [=]() {
     SAKModbusUi* w = new SAKModbusUi();
@@ -187,7 +187,7 @@ void SAKMainWindow::initFileMenu() {
   windowMenu->addAction(modbusAction);
 #endif
 #ifndef SAK_RELEASE_FOR_APP_STORE
-#ifdef SAK_IMPORT_MODULE_CANBUSUI
+#ifdef SAK_IMPORT_MODULE_CANBUSSTUDIO
   QAction* canbusAction = new QAction("CANBus Studio", this);
   connect(canbusAction, &QAction::triggered, this, [=]() {
     SAKCanBusUi* w = new SAKCanBusUi();
@@ -675,7 +675,7 @@ void SAKMainWindow::initNav() {
   tb->addSeparator();
 
   QString path = ":/resources/icon/IconModbus.svg";
-#ifdef SAK_IMPORT_MODULE_MODBUS
+#ifdef SAK_IMPORT_MODULE_MODBUSSTUDIO
   SAKModbusUi* modbus = new SAKModbusUi(this);
   initNav(&navButtonGroup, SAKUiInterface::cookedIcon(QIcon(path)),
           "Modbus Studio", modbus, tb);
@@ -693,7 +693,7 @@ void SAKMainWindow::initNav() {
 #endif
 #endif
 #ifndef SAK_RELEASE_FOR_APP_STORE
-#ifdef SAK_IMPORT_MODULE_CANBUSUI
+#ifdef SAK_IMPORT_MODULE_CANBUSSTUDIO
   SAKCanBusUi* canbus = new SAKCanBusUi(this);
   path = ":/resources/icon/IconCanBus.svg";
   initNav(&navButtonGroup, SAKUiInterface::cookedIcon(QIcon(path)),
