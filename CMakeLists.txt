@@ -159,6 +159,7 @@ file(GLOB APP_SOURCES "src/*.h" "src/*.cc" "src/*.ui" ".cmake/*.cmake")
 option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
 if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
   add_definitions(-DSAK_RELEASE_FOR_APP_STORE)
+  set(SAK_IMPORT_MODULE_CANBUSSTUDIO OFF)
 endif()
 
 set(SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES}
