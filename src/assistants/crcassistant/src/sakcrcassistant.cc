@@ -62,14 +62,14 @@ SAKCRCAssistant::SAKCRCAssistant(QWidget* parent)
 
   InitParameterModel();
   connect(mParameterComboBox, SIGNAL(currentIndexChanged(int)), this,
-          SLOT(changedParameterModel(int)));
-  connect(mCalculatedBt, SIGNAL(clicked()), this, SLOT(calculate()));
+          SLOT(ChangedParameterModel(int)));
+  connect(mCalculatedBt, SIGNAL(clicked()), this, SLOT(Calculate()));
   connect(mInputTextEdit, SIGNAL(textChanged()), this,
-          SLOT(textFormatControl()));
+          SLOT(TextFormatControl()));
 }
 
 SAKCRCAssistant::~SAKCRCAssistant() {
-    QLoggingCategory category(log_category_);
+  QLoggingCategory category(log_category_);
   qCInfo(category) << "Goodbye CRCCalculator";
   delete crc_interface_;
   delete mUi;
@@ -134,19 +134,19 @@ void SAKCRCAssistant::Calculate() {
   QString crcBinString = "error";
 
   if (bitsWidth == 8) {
-      uint8_t crc = crc_interface_->crcCalculate<uint8_t>(
+    uint8_t crc = crc_interface_->crcCalculate<uint8_t>(
         reinterpret_cast<uint8_t*>(inputArray.data()),
         static_cast<uint64_t>(inputArray.length()), model);
     crcHexString = QString("0x%1").arg(QString::number(crc, 16), 2, '0');
     crcBinString = QString("%1").arg(QString::number(crc, 2), 8, '0');
   } else if (bitsWidth == 16) {
-      uint16_t crc = crc_interface_->crcCalculate<uint16_t>(
+    uint16_t crc = crc_interface_->crcCalculate<uint16_t>(
         reinterpret_cast<uint8_t*>(inputArray.data()),
         static_cast<uint64_t>(inputArray.length()), model);
     crcHexString = QString("0x%1").arg(QString::number(crc, 16), 4, '0');
     crcBinString = QString("%1").arg(QString::number(crc, 2), 16, '0');
   } else if (bitsWidth == 32) {
-      uint32_t crc = crc_interface_->crcCalculate<uint32_t>(
+    uint32_t crc = crc_interface_->crcCalculate<uint32_t>(
         reinterpret_cast<uint8_t*>(inputArray.data()),
         static_cast<uint64_t>(inputArray.length()), model);
     crcHexString = QString("0x%1").arg(QString::number(crc, 16), 8, '0');
@@ -194,7 +194,7 @@ void SAKCRCAssistant::ChangedParameterModel(int index) {
   if (ok) {
     model = static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(ret);
   } else {
-      QLoggingCategory category(log_category_);
+    QLoggingCategory category(log_category_);
     qCWarning(category) << "Unknown parameter model!";
     Q_ASSERT_X(false, __FUNCTION__, "Unknown parameter model!");
     return;
@@ -204,13 +204,14 @@ void SAKCRCAssistant::ChangedParameterModel(int index) {
   mWidthComboBox->setCurrentIndex(
       mWidthComboBox->findText(QString::number(bitsWidth)));
   mPolyLineEdit->setText(QString("0x%1").arg(
-                             QString::number(static_cast<int>(crc_interface_->poly(model)), 16),
+      QString::number(static_cast<int>(crc_interface_->poly(model)), 16),
       bitsWidth / 4, '0'));
   mInitLineEdit->setText(QString("0x%1").arg(
-                             QString::number(static_cast<int>(crc_interface_->initialValue(model)), 16),
+      QString::number(static_cast<int>(crc_interface_->initialValue(model)),
+                      16),
       bitsWidth / 4, '0'));
   mXorLineEdit->setText(QString("0x%1").arg(
-                            QString::number(static_cast<int>(crc_interface_->xorValue(model)), 16),
+      QString::number(static_cast<int>(crc_interface_->xorValue(model)), 16),
       bitsWidth / 4, '0'));
   mRefinCheckBox->setChecked(crc_interface_->isInputReversal(model));
   mRefoutCheckBox->setChecked(crc_interface_->isOutputReversal(model));
