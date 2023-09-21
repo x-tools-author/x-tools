@@ -21,7 +21,8 @@ SAKStringAssistant::SAKStringAssistant(QWidget* parent)
 
   connect(ui_->textEdit, &QTextEdit::textChanged, this,
           &SAKStringAssistant::OnTextEditTextChanged);
-  connect(ui_->inputFormatComboBox, &QComboBox::currentIndexChanged, this,
+  connect(ui_->inputFormatComboBox,
+          QOverload<int>::of(&QComboBox::currentIndexChanged), this,
           &SAKStringAssistant::OnInputFormatComboBoxCurrentIndexChanged);
   connect(ui_->createPushButton, &QPushButton::clicked, this,
           &SAKStringAssistant::OnCreatePushButtonClicked);

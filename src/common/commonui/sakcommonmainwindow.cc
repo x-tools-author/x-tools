@@ -23,6 +23,7 @@
 #include <QProcess>
 #include <QStyle>
 #include <QStyleFactory>
+#include <QUrl>
 
 #include "sakdatastructure.h"
 #include "sakinterface.h"
@@ -112,7 +113,9 @@ void SAKCommonMainWindow::InitOptionMenuAppStyleMenu() {
   QStringList keys = QStyleFactory::keys();
   QString style = SAKSettings::instance()->appStyle();
   if (style.isEmpty()) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 1, 0)
     style = qApp->style()->name();
+#endif
   }
 
   for (QString& key : keys) {
