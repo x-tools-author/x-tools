@@ -14,8 +14,11 @@ file(
   "${CMAKE_SOURCE_DIR}/src/easydebug/*.h"
   "${CMAKE_SOURCE_DIR}/src/easydebug/*.cc"
   "${CMAKE_SOURCE_DIR}/qtswissarmyknifeqml.qrc"
-  "${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc"
-  "${CMAKE_SOURCE_DIR}/qtswissarmyknifeqml.qrc")
+  "${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc")
+
+if(WIN32)
+  list(APPEND EASY_DEBUG_SOURCES "${CMAKE_SOURCE_DIR}/windows.rc")
+endif()
 
 set(EASY_DEBUG_APP_SOURCES ${EASY_DEBUG_SOURCES})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/EasyDebug")
