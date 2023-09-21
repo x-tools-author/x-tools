@@ -13,11 +13,11 @@ file(
   "${CMAKE_SOURCE_DIR}/src/log/log/*.cc"
   "${CMAKE_SOURCE_DIR}/src/easydebug/*.h"
   "${CMAKE_SOURCE_DIR}/src/easydebug/*.cc"
-  ${CMAKE_SOURCE_DIR}/qtswissarmyknifeqml.qrc
-  ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
+  "${CMAKE_SOURCE_DIR}/qtswissarmyknifeqml.qrc"
+  "${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc"
+  "${CMAKE_SOURCE_DIR}/qtswissarmyknifeqml.qrc")
 
-set(EASY_DEBUG_APP_SOURCES ${EASY_DEBUG_SOURCES}
-                           ${CMAKE_SOURCE_DIR/qtswissarmyknifeqml.qrc})
+set(EASY_DEBUG_APP_SOURCES ${EASY_DEBUG_SOURCES})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/EasyDebug")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_executable(EasyDebug MANUAL_FINALIZATION ${EASY_DEBUG_APP_SOURCES})
