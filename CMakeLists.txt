@@ -200,10 +200,20 @@ endif()
 # ##############################################################################
 
 # ##############################################################################
-# Assistants
+# Custom build target
 option(APP_EABLE_ASSISTANTS "Enable build assistants to executable file." ON)
-if(APP_ASSISTANT)
-  include(${CMAKE_SOURCE_DIR}/.cmake/addassistantapp.cmake)
-  add_assistant_apps()
+if(APP_EABLE_ASSISTANTS)
+  add_subdirectory(${CMAKE_SOURCE_DIR}/src/assistants)
 endif()
+
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/canbusstudio)
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/modbusstudio)
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/guiapp)
+
+include(${CMAKE_SOURCE_DIR}/.cmake/deploy.cmake)
+deploy_wind()
+
+include(${CMAKE_SOURCE_DIR}/.cmake/internationalization.cmake)
+sak_add_lupdate()
+sak_add_lrelease()
 # ##############################################################################
