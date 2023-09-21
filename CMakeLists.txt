@@ -1,8 +1,5 @@
 ﻿cmake_minimum_required(VERSION 3.16)
 
-include(.cmake/deploy.cmake)
-say_hello_world()
-
 project(
   QtSwissArmyKnife
   VERSION 0.1
@@ -40,157 +37,8 @@ if(${QT_VERSION} VERSION_LESS "6.4")
   message(WARNING "The Qt version is too old, please using Qt6.4 or later.")
 endif()
 
-# CRCAssistant
-option(SAK_CRCASSISTANT "Enable CRCAssistant for QtSwissArmyKnife" ON)
-if(SAK_CRCASSISTANT)
-  include_directories(src/assistants/crcassistant/src)
-  add_definitions(-DSAK_IMPORT_MODULE_CRCASSISTANT)
-  file(GLOB_RECURSE SAK_CRCASSISTANT_SOURCE
-       "src/assistants/crcassistant/src/*h"
-       "src/assistants/crcassistant/src/*.cc")
-endif()
-
-# Base64Assistant
-option(SAK_BASE64ASSISTANT "" ON)
-if(SAK_BASE64ASSISTANT)
-  include_directories(src/assistants/base64assistant/src)
-  add_definitions(-DSAK_IMPORT_MODULE_BASE64ASSISTANT)
-  file(GLOB_RECURSE SAK_BASE64ASSISTANT_SOURCE
-       "src/assistants/base64assistant/src/*h"
-       "src/assistants/base64assistant/src/*.cc")
-endif()
-
-# FileCheckAssistant
-option(SAK_FILECHECKASSISTANT "" ON)
-if(SAK_FILECHECKASSISTANT)
-  include_directories(src/assistants/filecheckassistant/src)
-  add_definitions(-DSAK_IMPORT_MODULE_FILECHECKASSISTANT)
-  file(GLOB_RECURSE SAK_FILECHECKASSISTANT_SOURCE
-       "src/assistants/filecheckassistant/src/*h"
-       "src/assistants/filecheckassistant/src/*.cc")
-endif()
-
-# AsciiAssistant
-option(SAK_ASCIIASSISTANT "" ON)
-if(SAK_ASCIIASSISTANT)
-  include_directories(src/assistants/asciiassistant/src)
-  add_definitions(-DSAK_IMPORT_MODULE_ASCIIASSISTANT)
-  file(GLOB_RECURSE SAK_ASCIIASSISTANT_SOURCE
-       "src/assistants/asciiassistant/src/*h"
-       "src/assistants/asciiassistant/src/*.cc")
-endif()
-
-# BroadcastAssistant
-option(SAK_BROCASTASSISTANT "" ON)
-if(SAK_BROCASTASSISTANT)
-  include_directories(src/assistants/broadcastassistant/src)
-  add_definitions(-DSAK_IMPORT_MODULE_BROADCASTASSISTANT)
-  file(GLOB_RECURSE SAK_BROCASTASSISTANT_SOURCE
-       "src/assistants/broadcastassistant/src/*h"
-       "src/assistants/broadcastassistant/src/*.cc")
-endif()
-
-# NumberAssistant
-option(SAK_NUMBERASSISTANT "" ON)
-if(SAK_NUMBERASSISTANT)
-  include_directories(src/assistants/numberassistant/src)
-  add_definitions(-DSAK_IMPORT_MODULE_FLOATASSISTANT)
-  file(GLOB_RECURSE SAK_NUMBERASSISTANT_SOURCE
-       "src/assistants/numberassistant/src/*h"
-       "src/assistants/numberassistant/src/*.cc")
-endif()
-
-# StringAssistant
-option(SAK_STRINGASSISTANT "" ON)
-if(SAK_STRINGASSISTANT)
-  include_directories(src/assistants/stringassistant/src)
-  add_definitions(-DSAK_IMPORT_MODULE_STRINGASSISTANT)
-  file(GLOB_RECURSE SAK_STRINGASSISTANT_SOURCE
-       "src/assistants/stringassistant/src/*h"
-       "src/assistants/stringassistant/src/*.cc")
-endif()
-
-# Assistant module
-include_directories(src/assistants)
-include_directories(src/assistantsui)
-set(ASSISTANT_SOURCES
-    ${SAK_ASCIIASSISTANT_SOURCE}
-    ${SAK_BASE64ASSISTANT_SOURCE}
-    ${SAK_BROCASTASSISTANT_SOURCE}
-    ${SAK_CRCASSISTANT_SOURCE}
-    ${SAK_FILECHECKASSISTANT_SOURCE}
-    ${SAK_NUMBERASSISTANT_SOURCE}
-    ${SAK_STRINGASSISTANT_SOURCE}
-    src/assistants/sakassistantsfactory.h
-    src/assistants/sakassistantsfactory.cc)
-file(GLOB_RECURSE ASSISTANT_UI_SOURCES "src/assistantsui/*h"
-     "src/assistantsui/*.cc" "src/assistantsui/*.ui")
-
-# CAN bus module
-option(SAK_CANBUS "" ON)
-if(SAK_CANBUS)
-  include_directories(src/canbusstudio/canbusstudio)
-  include_directories(src/canbusstudio/canbusstudioui)
-  file(GLOB_RECURSE CANBUS_SOURCES "src/canbusstudio/canbusstudio/*h"
-       "src/canbusstudio/canbusstudio/*.cc")
-  file(GLOB_RECURSE CANBUS_UI_SOURCES "src/canbusstudio/canbusstudioui/*h"
-       "src/canbusstudio/canbusstudioui/*.cc"
-       "src/canbusstudio/canbusstudioui/*.ui")
-  add_definitions(-DSAK_IMPORT_MODULE_CANBUSUI)
-endif()
-
-# Commom module
-include_directories(src/common/common)
-include_directories(src/common/commonui)
-file(GLOB_RECURSE COMMON_SOURCES "src/common/common/*h"
-     "src/common/common/*.cc")
-file(GLOB_RECURSE COMMON_UI_SOURCES "src/common/commonui/*h"
-     "src/common/commonui/*.cc" "src/common/commonui/*.ui")
-
-# Log module
-include_directories(src/log/log)
-include_directories(src/log/logui)
-file(GLOB_RECURSE LOG_SOURCES "src/log/log/*h" "src/log/log/*.cc")
-file(GLOB_RECURSE LOG_UI_SOURCES "src/log/logui/*h" "src/log/logui/*.cc"
-     "src/log/logui/*.ui")
-
-# Modbus module
-option(SAK_MODBUS "" ON)
-if(SAK_MODBUS)
-  include_directories(src/modbusstudio/modbusstudio)
-  include_directories(src/modbusstudio/modbusstudioui)
-  file(GLOB_RECURSE MODBUS_SOURCES "src/modbusstudio/modbusstudio/*h"
-       "src/modbusstudio/modbusstudio/*.cc")
-  file(GLOB_RECURSE MODBUS_UI_SOURCES "src/modbusstudio/modbusstudioui/*h"
-       "src/modbusstudio/modbusstudioui/*.cc"
-       "src/modbusstudio/modbusstudioui/*.ui")
-  add_definitions(-DSAK_IMPORT_MODULE_MODBUS)
-endif()
-
-# ToolBox module
-include_directories(src/toolbox/toolbox)
-include_directories(src/toolbox/toolboxui)
-file(GLOB_RECURSE TOOLBOX_SOURCES "src/toolbox/toolbox/*h"
-     "src/toolbox/toolbox/*.cc")
-file(GLOB_RECURSE TOOLBOX_UI_SOURCES "src/toolbox/toolboxui/*h"
-     "src/toolbox/toolboxui/*.cc" "src/toolbox/toolboxui/*.ui")
-
-# Tools module
-include_directories(src/tools/tools)
-include_directories(src/tools/toolsui)
-file(GLOB_RECURSE TOOLS_SOURCES "src/tools/tools/*h" "src/tools/tools/*.cc")
-file(GLOB_RECURSE TOOLS_UI_SOURCES "src/tools/toolsui/*h"
-     "src/tools/toolsui/*.cc" "src/tools/toolsui/*.ui")
-
-# App(QtSwissArmyKnife) Tools module
-include_directories(src)
-file(GLOB APP_SOURCES "src/*.h" "src/*.cc" "src/*.ui")
-
-option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
-if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
-  add_definitions(-DSAK_RELEASE_FOR_APP_STORE)
-endif()
-
+# ##############################################################################
+# Common definitioin
 add_definitions(
   -DSAK_HOST_ADDRESS_ANY="Any"
   -DSAK_CLEAR_MESSAGE_INTERVAL=8000
@@ -201,25 +49,120 @@ add_definitions(
   -DSAK_AUTHOR_EMAIL="qsaker@foxmail.com"
   -DSAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/QtSwissArmyKnife"
   -DSAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/QtSwissArmyKnife")
+# ##############################################################################
 
-set(SAK_APP_SOURCES
-    ${ASSISTANT_SOURCES}
-    ${ASSISTANT_UI_SOURCES}
-    ${CANBUS_SOURCES}
-    ${CANBUS_UI_SOURCES}
-    ${COMMON_SOURCES}
-    ${COMMON_UI_SOURCES}
-    ${LOG_SOURCES}
-    ${LOG_UI_SOURCES}
-    ${MODBUS_SOURCES}
-    ${MODBUS_UI_SOURCES}
-    ${TOOLBOX_SOURCES}
-    ${TOOLBOX_UI_SOURCES}
-    ${TOOLS_SOURCES}
-    ${TOOLS_UI_SOURCES}
-    ${APP_SOURCES}
-    qtswissarmyknife.qrc
-    windows.rc)
+# ##############################################################################
+# Git information
+execute_process(
+  COMMAND git log -1 --pretty=%H
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  OUTPUT_VARIABLE GIT_COMMIT
+  OUTPUT_STRIP_TRAILING_WHITESPACE)
+message(STATUS "Last commit: ${GIT_COMMIT}")
+add_compile_definitions(SAK_GIT_COMMIT="${GIT_COMMIT}")
+execute_process(
+  COMMAND git log -1 --format=%ci
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  OUTPUT_VARIABLE LAST_COMMIT_DATE
+  OUTPUT_STRIP_TRAILING_WHITESPACE)
+message(STATUS "Last commit time: ${LAST_COMMIT_DATE}")
+add_compile_definitions(SAK_COMMIT_DATE="${LAST_COMMIT_DATE}")
+# ##############################################################################
+
+# ##############################################################################
+# Assistant module
+include_directories(src/assistants)
+include_directories(src/assistantsui)
+list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.h
+     src/assistants/sakassistantsfactory.cc)
+
+macro(sak_import_assistant assistant_dir_name)
+  string(TOUPPER ${assistant_dir_name} upper_name)
+  option(SAK_IMPORT_MODULE_${upper_name} "" ON)
+  if(SAK_IMPORT_MODULE_${upper_name})
+    include_directories(
+      ${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src)
+    add_compile_definitions(SAK_IMPORT_MODULE_${upper_name})
+    file(
+      GLOB_RECURSE
+      ASSISTANT_SOURCE
+      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*h"
+      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*.cc"
+      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*.ui")
+    list(APPEND SAK_ASSISTANT_SOURCES ${ASSISTANT_SOURCE})
+  endif()
+endmacro()
+
+sak_import_assistant("asciiassistant")
+sak_import_assistant("base64assistant")
+sak_import_assistant("broadcastassistant")
+sak_import_assistant("crcassistant")
+sak_import_assistant("filecheckassistant")
+sak_import_assistant("numberassistant")
+sak_import_assistant("stringassistant")
+# ##############################################################################
+
+# ##############################################################################
+# QtSwissArmyKnife src files
+macro(sak_add_src src_dir_name)
+  set(SRC_PRE ${CMAKE_SOURCE_DIR}/src/${src_dir_name})
+  include_directories(${SRC_PRE}/${src_dir_name})
+  include_directories(${SRC_PRE}/${src_dir_name}ui)
+  file(
+    GLOB_RECURSE
+    SRC_SOURCE
+    "${SRC_PRE}/${src_dir_name}/*h"
+    "${SRC_PRE}/${src_dir_name}/*.cc"
+    "${SRC_PRE}/${src_dir_name}ui/*.h"
+    "${SRC_PRE}/${src_dir_name}ui/*.cc"
+    "${SRC_PRE}/${src_dir_name}ui/*.ui")
+  list(APPEND SAK_SRC_SOURCES ${SRC_SOURCE})
+endmacro()
+
+sak_add_src("common")
+sak_add_src("log")
+sak_add_src("toolbox")
+sak_add_src("tools")
+# ##############################################################################
+
+# ##############################################################################
+# QtSwissArmyKnife module files
+macro(sak_import_module src_dir_name)
+  string(TOUPPER ${src_dir_name} upper_dir_name)
+  option(SAK_IMPORT_MODULE_${upper_dir_name} "" ON)
+  if(SAK_IMPORT_MODULE_${upper_dir_name})
+    set(SRC_PRE ${CMAKE_SOURCE_DIR}/src/${src_dir_name})
+    include_directories(${SRC_PRE}/${src_dir_name})
+    include_directories(${SRC_PRE}/${src_dir_name}ui)
+    add_compile_definitions(SAK_IMPORT_MODULE_${upper_dir_name})
+    file(
+      GLOB_RECURSE
+      SRC_SOURCE
+      "${SRC_PRE}/${src_dir_name}/*h"
+      "${SRC_PRE}/${src_dir_name}/*.cc"
+      "${SRC_PRE}/${src_dir_name}ui/*.h"
+      "${SRC_PRE}/${src_dir_name}ui/*.cc"
+      "${SRC_PRE}/${src_dir_name}ui/*.ui")
+    list(APPEND SAK_SRC_SOURCES ${SRC_SOURCE})
+  endif()
+endmacro()
+
+sak_import_module("canbusstudio")
+sak_import_module("modbusstudio")
+# ##############################################################################
+
+# ##############################################################################
+# QtSwissArmyKnife)
+include_directories(src)
+file(GLOB APP_SOURCES "src/*.h" "src/*.cc" "src/*.ui" ".cmake/*.cmake")
+
+option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
+if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
+  add_definitions(-DSAK_RELEASE_FOR_APP_STORE)
+endif()
+
+set(SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES}
+                    qtswissarmyknife.qrc windows.rc)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -245,8 +188,6 @@ set_target_properties(
              WIN32_EXECUTABLE TRUE
              ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
              ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
-
-include(GNUInstallDirs)
 install(
   TARGETS QtSwissArmyKnife
   BUNDLE DESTINATION .
@@ -256,22 +197,13 @@ install(
 if(QT_VERSION_MAJOR EQUAL 6)
   qt_finalize_executable(QtSwissArmyKnife)
 endif()
+# ##############################################################################
 
-execute_process(
-  COMMAND git log -1 --pretty=%H
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-  OUTPUT_VARIABLE GIT_COMMIT
-  OUTPUT_STRIP_TRAILING_WHITESPACE)
-message(STATUS "Last commit: ${GIT_COMMIT}")
-add_compile_definitions(SAK_GIT_COMMIT="${GIT_COMMIT}")
-execute_process(
-  COMMAND git log -1 --format=%ci
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-  OUTPUT_VARIABLE LAST_COMMIT_DATE
-  OUTPUT_STRIP_TRAILING_WHITESPACE)
-message(STATUS "Last commit time: ${LAST_COMMIT_DATE}")
-add_compile_definitions(SAK_COMMIT_DATE="${LAST_COMMIT_DATE}")
-
-add_subdirectory(src)
-add_subdirectory(deploy)
-add_subdirectory(resources/translations)
+# ##############################################################################
+# Assistants
+option(APP_EABLE_ASSISTANTS "Enable build assistants to executable file." ON)
+if(APP_ASSISTANT)
+  include(${CMAKE_SOURCE_DIR}/.cmake/addassistantapp.cmake)
+  add_assistant_apps()
+endif()
+# ##############################################################################
