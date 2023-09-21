@@ -15,17 +15,27 @@ function(sak_add_deploy)
               "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/QtSwissArmyKnife.exe"
       VERBATIM)
 
-    # if(MSVC) add_custom_target( sak_copy140 COMMAND ${CMAKE_COMMAND} -E
-    # copy_if_different "${compiler_path}/VCRUNTIME140.dll"
-    # ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} COMMAND ${CMAKE_COMMAND} -E
-    # copy_if_different "${compiler_path}/VCRUNTIME140_1.dll"
-    # ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} COMMAND ${CMAKE_COMMAND} -E
-    # copy_if_different "${compiler_path}/MSVCP140.dll"
-    # ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} COMMAND ${CMAKE_COMMAND} -E
-    # copy_if_different "${compiler_path}/MSVCP140_1.dll"
-    # ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} COMMAND ${CMAKE_COMMAND} -E
-    # copy_if_different "${compiler_path}/MSVCP140_2.dll"
-    # ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} VERBATIM) endif()
+    if(MSVC)
+      add_custom_target(
+        sak_copy140
+        COMMAND
+          ${CMAKE_COMMAND} -E copy_if_different
+          "${compiler_path}/VCRUNTIME140.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+        COMMAND
+          ${CMAKE_COMMAND} -E copy_if_different
+          "${compiler_path}/VCRUNTIME140_1.dll"
+          ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+        COMMAND
+          ${CMAKE_COMMAND} -E copy_if_different "${compiler_path}/MSVCP140.dll"
+          ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+        COMMAND
+          ${CMAKE_COMMAND} -E copy_if_different
+          "${compiler_path}/MSVCP140_1.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+        COMMAND
+          ${CMAKE_COMMAND} -E copy_if_different
+          "${compiler_path}/MSVCP140_2.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+        VERBATIM)
+    endif()
   endif(WIN32)
 
   if(WIN32)
