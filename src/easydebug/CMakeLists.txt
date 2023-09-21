@@ -11,8 +11,8 @@ file(
   "${CMAKE_SOURCE_DIR}/src/tools/tools/*.cc"
   "${CMAKE_SOURCE_DIR}/src/log/log/*.hh"
   "${CMAKE_SOURCE_DIR}/src/log/log/*.cc"
-  "${CMAKE_SOURCE_DIR}/src/guiapp/*.h"
-  "${CMAKE_SOURCE_DIR}/src/guiapp/*.cc"
+  "${CMAKE_SOURCE_DIR}/src/easydebug/*.h"
+  "${CMAKE_SOURCE_DIR}/src/easydebug/*.cc"
   ${CMAKE_SOURCE_DIR}/qtswissarmyknifeqml.qrc
   ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
 

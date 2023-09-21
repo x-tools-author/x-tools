@@ -208,11 +208,10 @@ endif()
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/src/canbusstudio)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src/modbusstudio)
-add_subdirectory(${CMAKE_SOURCE_DIR}/src/guiapp)
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/easydebug)
 
 include(${CMAKE_SOURCE_DIR}/.cmake/deploy.cmake)
-deploy_wind()
-
+sak_add_deploy()
 include(${CMAKE_SOURCE_DIR}/.cmake/internationalization.cmake)
 sak_add_lupdate()
 sak_add_lrelease()

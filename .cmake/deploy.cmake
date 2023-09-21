@@ -2,7 +2,7 @@
   message(STATUS "Hello wrold.")
 endfunction()
 
-function(deploy_wind)
+function(sak_add_deploy)
   if(WIN32)
     set(WIN_DEPLOY_QT
         "${Qt${QT_VERSION_MAJOR}_DIR}/../../../bin/windeployqt.exe")
