@@ -4,3 +4,4 @@ build*
 /SAKCustomConfigure.pri
 out
 private
+.vscode
