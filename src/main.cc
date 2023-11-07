@@ -16,55 +16,56 @@
 #include "saklog.h"
 #include "saksettings.h"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
 #ifndef QT_DEBUG
-  qInstallMessageHandler(SAKLog::messageOutput);
+    qInstallMessageHandler(SAKLog::messageOutput);
 #endif
 
-  // Initialize some information about application.
-  QCoreApplication::setOrganizationName(QString("Qsaker"));
-  QCoreApplication::setOrganizationDomain(QString("IT"));
+    // Initialize some information about application.
+    QCoreApplication::setOrganizationName(QString("Qsaker"));
+    QCoreApplication::setOrganizationDomain(QString("IT"));
 #ifdef SAK_RELEASE_FOR_APP_STORE
-  QCoreApplication::setApplicationName(QString("QtSwissArmyKnife"));
+    QCoreApplication::setApplicationName(QString("QtSwissArmyKnife"));
 #else
-  QCoreApplication::setApplicationName(QString("QtSwissArmyKnife(Community)"));
+    QCoreApplication::setApplicationName(QString("QtSwissArmyKnife(Community)"));
 #endif
 #ifdef SAK_VERSION
-  QCoreApplication::setApplicationVersion(SAK_VERSION);
+    QCoreApplication::setApplicationVersion(SAK_VERSION);
 #else
-  QCoreApplication::setApplicationVersion("0.0.0");
+    QCoreApplication::setApplicationVersion("0.0.0");
 #endif
 
-  QLoggingCategory lc{"SAK.Main"};
+    QLoggingCategory lc{"SAK.Main"};
 
-  // Remove settings file and database
-  if (SAKSettings::instance()->clearSettings()) {
-    SAKSettings::instance()->setClearSettings(false);
-    if (QFile::remove(SAKSettings::instance()->fileName())) {
-      qCInfo(lc) << "Remove settings file successfully.";
-    } else {
-      qCWarning(lc) << "Remove settings file failed!";
+    // Remove settings file and database
+    if (SAKSettings::instance()->clearSettings()) {
+        SAKSettings::instance()->setClearSettings(false);
+        if (QFile::remove(SAKSettings::instance()->fileName())) {
+            qCInfo(lc) << "Remove settings file successfully.";
+        } else {
+            qCWarning(lc) << "Remove settings file failed!";
+        }
     }
-  }
 
-  qCInfo(lc) << "Supported style:" << QStyleFactory::keys();
+    qCInfo(lc) << "Supported style:" << QStyleFactory::keys();
 
-  // High dpi settings.
+    // High dpi settings.
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-  int policy = SAKSettings::instance()->hdpiPolicy();
-  if (SAKInterface::isQtHighDpiScalePolicy(policy)) {
-    auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
-  }
+    int policy = SAKSettings::instance()->hdpiPolicy();
+    if (SAKInterface::isQtHighDpiScalePolicy(policy)) {
+        auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
+        QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
+    }
 #endif
 
-  QString style = SAKSettings::instance()->appStyle();
-  if (!style.isEmpty() && QStyleFactory::keys().contains(style)) {
-    qCInfo(lc) << "App style:" << style;
-    QApplication::setStyle(QStyleFactory::create(style));
-  }
+    QString style = SAKSettings::instance()->appStyle();
+    if (!style.isEmpty() && QStyleFactory::keys().contains(style)) {
+        qCInfo(lc) << "App style:" << style;
+        QApplication::setStyle(QStyleFactory::create(style));
+    }
 
-  SAKApplication app(argc, argv);
-  SAKLog::instance()->start();
-  return app.exec();
+    SAKApplication app(argc, argv);
+    SAKLog::instance()->start();
+    return app.exec();
 }
