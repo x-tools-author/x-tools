@@ -12,12 +12,12 @@
 
 #include <QIcon>
 #include <QList>
+#include <QLoggingCategory>
 #include <QTimer>
 #include <QWidget>
-#include <QLoggingCategory>
 
-#include "saktoolbox.h"
 #include "sakcommunicationtoolui.h"
+#include "saktoolbox.h"
 
 namespace Ui {
 class SAKToolBoxUi;
@@ -66,7 +66,8 @@ private:
     SAKToolBoxUiInputMenu *mInputMenu{nullptr};
     SAKToolBoxUiOutputMenu *mOutputMenu{nullptr};
 
-    struct {
+    struct
+    {
         QString tabIndex;
         QString items;
         QString transmitterTabIndex;
@@ -78,8 +79,7 @@ private:
     QString dateTimeFormat();
     void output2ui(const QByteArray &bytes, const QVariant &context, bool isRx);
     QString settingsGroup();
-    QByteArray calculateCrc(const QByteArray &bytes = QByteArray(),
-                            bool fixedOriginOrder = false);
+    QByteArray calculateCrc(const QByteArray &bytes = QByteArray(), bool fixedOriginOrder = false);
     void setDefaultText();
 
 private slots:

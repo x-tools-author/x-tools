@@ -11,8 +11,8 @@
 #define SAKTOOLBOXUIOUTPUTMENU_H
 
 #include <QMenu>
-#include <QWidget>
 #include <QTextDocument>
+#include <QWidget>
 
 namespace Ui {
 class SAKToolBoxUiOutputMenu;
@@ -27,6 +27,7 @@ public:
                                     QTextDocument *doc,
                                     QWidget *parent = nullptr);
     ~SAKToolBoxUiOutputMenu();
+    QString filter();
 
 private:
     Ui::SAKToolBoxUiOutputMenu *ui;

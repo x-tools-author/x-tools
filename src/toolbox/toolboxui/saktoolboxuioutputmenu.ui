@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>219</width>
-    <height>66</height>
+    <width>224</width>
+    <height>114</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,6 +15,20 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Filter</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLineEdit" name="keyword">
+     <property name="placeholderText">
+      <string>Such as:hello;world</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>High light key words(separator is' ;')</string>
@@ -22,11 +36,7 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QLineEdit" name="lineEdit">
-     <property name="placeholderText">
-      <string>Such as:hello;world</string>
-     </property>
-    </widget>
+    <widget class="QLineEdit" name="filter"/>
    </item>
   </layout>
  </widget>
