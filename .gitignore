@@ -5,3 +5,4 @@ build*
 out
 private
 .vscode
+/.cache
