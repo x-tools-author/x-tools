@@ -8,7 +8,6 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include <QFile>
-#include <QLoggingCategory>
 #include <QStyleFactory>
 
 #include "sakapplication.h"
@@ -16,7 +15,7 @@
 #include "saklog.h"
 #include "saksettings.h"
 
-int main(int argc, char* argv[])
+int main(const int argc, char* argv[])
 {
 #ifndef QT_DEBUG
     qInstallMessageHandler(SAKLog::messageOutput);
@@ -36,6 +35,9 @@ int main(int argc, char* argv[])
     QCoreApplication::setApplicationVersion("0.0.0");
 #endif
 
+    // echo hello world
+    qDebug() << "Hello world!";
+
     QLoggingCategory lc{"SAK.Main"};
 
     // Remove settings file and database
@@ -52,20 +54,20 @@ int main(int argc, char* argv[])
 
     // High dpi settings.
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    int policy = SAKSettings::instance()->hdpiPolicy();
-    if (SAKInterface::isQtHighDpiScalePolicy(policy)) {
-        auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
+    if (int policy = SAKSettings::instance()->hdpiPolicy();
+        SAKInterface::isQtHighDpiScalePolicy(policy)) {
+        const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
         QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
     }
 #endif
 
-    QString style = SAKSettings::instance()->appStyle();
-    if (!style.isEmpty() && QStyleFactory::keys().contains(style)) {
+    if (const QString style = SAKSettings::instance()->appStyle();
+        SAKSettings::instance()->appStyle().isEmpty() && QStyleFactory::keys().contains(style)) {
         qCInfo(lc) << "App style:" << style;
         QApplication::setStyle(QStyleFactory::create(style));
     }
-
-    SAKApplication app(argc, argv);
+    const SAKApplication app(argc, argv);
+    Q_UNUSED(app)
     SAKLog::instance()->start();
-    return app.exec();
+    return SAKApplication::exec();
 }

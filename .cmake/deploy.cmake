@@ -1,5 +1,5 @@
 ﻿function(say_hello_world)
-  message(STATUS "Hello wrold.")
+  message(STATUS "Hello world.")
 endfunction()
 
 function(sak_add_deploy)
