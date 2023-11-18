@@ -69,8 +69,7 @@ QList<int> SAKToolBoxUi::supportedCommuniticationTools()
     list << SAKToolFactory::SerialportTool << SAKToolFactory::BleCentralTool
          << SAKToolFactory::UdpClientTool << SAKToolFactory::UdpServerTool
          << SAKToolFactory::TcpClientTool << SAKToolFactory::TcpServerTool
-         << SAKToolFactory::WebSocketClientTool
-         << SAKToolFactory::WebSocketServerTool;
+         << SAKToolFactory::WebSocketClientTool << SAKToolFactory::WebSocketServerTool;
     return list;
 }
 
@@ -111,7 +110,7 @@ QIcon SAKToolBoxUi::communiticationToolIcon(int type)
     } else if (type == SAKToolFactory::TcpServerTool) {
         fileName = ":/resources/icon/IconTcpServer.svg";
     } else if (type == SAKToolFactory::WebSocketClientTool) {
-        fileName = ":/resources/icon/IconWebScoketClient.svg";
+        fileName = ":/resources/icon/IconWebSocketClient.svg";
     } else if (type == SAKToolFactory::WebSocketServerTool) {
         fileName = ":/resources/icon/IconWebSocketServer.svg";
     } else if (type == SAKToolFactory::BleCentralTool) {
@@ -147,7 +146,7 @@ void SAKToolBoxUi::initialize(int type)
     init();
 }
 
-SAKCommunicationToolUi* SAKToolBoxUi::communiticationToolUi(int type)
+SAKCommunicationToolUi* SAKToolBoxUi::communicationToolUi(int type)
 {
     SAKCommunicationToolUi* w = nullptr;
     if (type == SAKToolFactory::SerialportTool) {
@@ -229,9 +228,7 @@ QString SAKToolBoxUi::dateTimeFormat()
     return QDateTime::currentDateTime().toString(dateTimeFormat);
 }
 
-void SAKToolBoxUi::output2ui(const QByteArray& bytes,
-                             const QVariant& context,
-                             bool isRx)
+void SAKToolBoxUi::output2ui(const QByteArray& bytes, const QVariant& context, bool isRx)
 {
     Q_UNUSED(context);
     int format = ui->comboBoxOutputFormat->currentData().toInt();
@@ -278,14 +275,13 @@ QString SAKToolBoxUi::settingsGroup()
     } else if (mCommunicationToolType == SAKToolFactory::BleCentralTool) {
         return "BleCentralToolBox";
     } else {
-        qCWarning(mLoggingCategory) << "unknow type of communication tool ui:"
-                                    << mCommunicationToolType;
+        qCWarning(mLoggingCategory)
+            << "unknow type of communication tool ui:" << mCommunicationToolType;
         return "UnknowToolBox";
     }
 }
 
-QByteArray SAKToolBoxUi::calculateCrc(const QByteArray& bytes,
-                                      bool fixedOriginOrder)
+QByteArray SAKToolBoxUi::calculateCrc(const QByteArray& bytes, bool fixedOriginOrder)
 {
     auto ctx = mInputMenu->parameters();
     QByteArray inputBytes = bytes;
@@ -303,11 +299,7 @@ QByteArray SAKToolBoxUi::calculateCrc(const QByteArray& bytes,
     int endIndex = ctx.endIndex;
     bool bigEndian = fixedOriginOrder ? true : ctx.bigEndian;
     SAKCrcInterface crci;
-    QByteArray crc = crci.calculateBytes(inputBytes,
-                                         algorithm,
-                                         startIndex,
-                                         endIndex,
-                                         bigEndian);
+    QByteArray crc = crci.calculateBytes(inputBytes, algorithm, startIndex, endIndex, bigEndian);
     return crc;
 }
 
@@ -324,9 +316,7 @@ void SAKToolBoxUi::onIsWorkingChanged()
     bool isWorking = mToolBox->isWorking();
     ui->pushButtonInputSend->setEnabled(isWorking);
     ui->comboBoxInputIntervel->setEnabled(isWorking);
-    QTimer::singleShot(1000, this, [=]() {
-        ui->pushButtonCommunicationOpen->setEnabled(true);
-    });
+    QTimer::singleShot(1000, this, [=]() { ui->pushButtonCommunicationOpen->setEnabled(true); });
 
     if (isWorking) {
         ui->pushButtonCommunicationOpen->setText(tr("Close"));
@@ -339,8 +329,7 @@ void SAKToolBoxUi::onIsWorkingChanged()
     }
 }
 
-void SAKToolBoxUi::onBytesWritten(const QByteArray& bytes,
-                                  const QVariant& context)
+void SAKToolBoxUi::onBytesWritten(const QByteArray& bytes, const QVariant& context)
 {
     if (!ui->checkBoxOutputTx->isChecked()) {
         return;
@@ -399,7 +388,7 @@ void SAKToolBoxUi::initUi()
 void SAKToolBoxUi::initUiCommunication()
 {
     // Setup communication tool.
-    mCommunicationToolUi = communiticationToolUi(mCommunicationToolType);
+    mCommunicationToolUi = communicationToolUi(mCommunicationToolType);
     if (!mCommunicationToolUi) {
         qCWarning(mLoggingCategory) << "mCommunicationToolUi is nullptr";
         return;
@@ -579,20 +568,17 @@ void SAKToolBoxUi::initTools()
     mEmitterToolUi = new SAKEmitterToolUi();
     ui->tabEmiter->setLayout(new QVBoxLayout());
     ui->tabEmiter->layout()->addWidget(mEmitterToolUi);
-    mEmitterToolUi->initialize(mToolBox->getEmitterTool(),
-                               settingsGroup() + "/emitter");
+    mEmitterToolUi->initialize(mToolBox->getEmitterTool(), settingsGroup() + "/emitter");
 
     mResponserToolUi = new SAKResponserToolUi();
     ui->tabResponser->setLayout(new QVBoxLayout());
     ui->tabResponser->layout()->addWidget(mResponserToolUi);
-    mResponserToolUi->initialize(mToolBox->getResponserTool(),
-                                 settingsGroup() + "/responser");
+    mResponserToolUi->initialize(mToolBox->getResponserTool(), settingsGroup() + "/responser");
 
     mPrestorerToolUi = new SAKPrestorerToolUi();
     ui->tabPrestorer->setLayout(new QVBoxLayout());
     ui->tabPrestorer->layout()->addWidget(mPrestorerToolUi);
-    mPrestorerToolUi->initialize(mToolBox->getPrestorerTool(),
-                                 settingsGroup() + "/prestorer");
+    mPrestorerToolUi->initialize(mToolBox->getPrestorerTool(), settingsGroup() + "/prestorer");
 
     mTcpTransmitterToolUi = new SAKTcpTransmitterToolUi(this);
     mTcpTransmitterToolUi->initialize(mToolBox->getTcpTransmitterTool(),
@@ -601,13 +587,11 @@ void SAKToolBoxUi::initTools()
     mUdpTransmitterToolUi->initialize(mToolBox->getUdpTransmitterTool(),
                                       settingsGroup() + "/udpTransmitter");
     mWebSocketTransmitterToolUi = new SAKWebSocketTransmitterToolUi(this);
-    mWebSocketTransmitterToolUi
-        ->initialize(mToolBox->getWebSocketTransmitterTool(),
-                     settingsGroup() + "/webSocketTransmitter");
+    mWebSocketTransmitterToolUi->initialize(mToolBox->getWebSocketTransmitterTool(),
+                                            settingsGroup() + "/webSocketTransmitter");
     mSerialPortTransmitterToolUi = new SAKSerialPortTransmitterToolUi(this);
-    mSerialPortTransmitterToolUi
-        ->initialize(mToolBox->getSerialPortTransmitterTool(),
-                     settingsGroup() + "/serialPortTransmitter");
+    mSerialPortTransmitterToolUi->initialize(mToolBox->getSerialPortTransmitterTool(),
+                                             settingsGroup() + "/serialPortTransmitter");
 
     mTcpTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
     mUdpTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
@@ -619,8 +603,7 @@ void SAKToolBoxUi::initTools()
                                      tr("SerialPort", "Transmitter", __LINE__));
     ui->tabWidgetTransmitter->addTab(mUdpTransmitterToolUi, tr("UDP"));
     ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi, tr("TCP"));
-    ui->tabWidgetTransmitter->addTab(mWebSocketTransmitterToolUi,
-                                     tr("WebSocket"));
+    ui->tabWidgetTransmitter->addTab(mWebSocketTransmitterToolUi, tr("WebSocket"));
 
     const QString key = mSettingsKey.transmitterTabIndex;
     int tabIndex = SAKSettings::instance()->value(key).toInt();
@@ -628,15 +611,11 @@ void SAKToolBoxUi::initTools()
         ui->tabWidgetTransmitter->setCurrentIndex(tabIndex);
     }
 
-    connect(ui->tabWidgetTransmitter,
-            &QTabWidget::currentChanged,
-            this,
-            [=](int index) { SAKSettings::instance()->setValue(key, index); });
+    connect(ui->tabWidgetTransmitter, &QTabWidget::currentChanged, this, [=](int index) {
+        SAKSettings::instance()->setValue(key, index);
+    });
 
-    connect(mToolBox,
-            &SAKToolBox::isWorkingChanged,
-            this,
-            &SAKToolBoxUi::onIsWorkingChanged);
+    connect(mToolBox, &SAKToolBox::isWorkingChanged, this, &SAKToolBoxUi::onIsWorkingChanged);
     connect(mToolBox, &SAKToolBox::errorOccurred, this, [=](const QString& err) {
         QMessageBox::warning(this, tr("Error Occured"), err);
     });
@@ -647,10 +626,7 @@ void SAKToolBoxUi::initTools()
             &SAKToolBoxUi::onBytesWritten);
 
     auto outputAnalyzer = mToolBox->getRxAnalyzerTool();
-    connect(outputAnalyzer,
-            &SAKAnalyzerTool::bytesOutputted,
-            this,
-            &::SAKToolBoxUi::onBytesRead);
+    connect(outputAnalyzer, &SAKAnalyzerTool::bytesOutputted, this, &::SAKToolBoxUi::onBytesRead);
 
     ui->pushButtonPrestorer->setMenu(mPrestorerToolUi->menu());
 }
@@ -736,8 +712,7 @@ void SAKToolBoxUi::onComboBoxInputIntervelActivated()
 {
     int interval = ui->comboBoxInputIntervel->currentText().toInt();
     interval = interval < 10 ? 10 : interval;
-    qCInfo(mLoggingCategory)
-        << "start sending automatically, the interval is:" << interval;
+    qCInfo(mLoggingCategory) << "start sending automatically, the interval is:" << interval;
 
     if (ui->comboBoxInputIntervel->currentIndex() == 0) {
         mCycleSendingTimer->stop();

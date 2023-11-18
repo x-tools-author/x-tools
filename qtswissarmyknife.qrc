@@ -34,7 +34,7 @@
         <file>resources/icon/IconTcpServer.svg</file>
         <file>resources/icon/IconUdpClient.svg</file>
         <file>resources/icon/IconUdpServer.svg</file>
-        <file>resources/icon/IconWebScoketClient.svg</file>
+        <file>resources/icon/IconWebSocketClient.svg</file>
         <file>resources/icon/IconWebSocketServer.svg</file>
         <file>resources/icon/IconWindowed.svg</file>
         <file>resources/icon/IconLanguage.svg</file>

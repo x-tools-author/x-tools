@@ -74,7 +74,7 @@ private:
     } mSettingsKey;
 
 private:
-    SAKCommunicationToolUi *communiticationToolUi(int type);
+    SAKCommunicationToolUi *communicationToolUi(int type);
     void try2send();
     QString dateTimeFormat();
     void output2ui(const QByteArray &bytes, const QVariant &context, bool isRx);
