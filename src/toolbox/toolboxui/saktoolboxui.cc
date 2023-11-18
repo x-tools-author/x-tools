@@ -63,7 +63,7 @@ SAKToolBoxUi::~SAKToolBoxUi()
     delete ui;
 }
 
-QList<int> SAKToolBoxUi::supportedCommuniticationTools()
+QList<int> SAKToolBoxUi::supportedCommunicationTools()
 {
     QList<int> list;
     list << SAKToolFactory::SerialportTool << SAKToolFactory::BleCentralTool
@@ -73,7 +73,7 @@ QList<int> SAKToolBoxUi::supportedCommuniticationTools()
     return list;
 }
 
-QString SAKToolBoxUi::communiticationToolName(int type)
+QString SAKToolBoxUi::communicationToolName(int type)
 {
     if (type == SAKToolFactory::SerialportTool) {
         return tr("SerialPort");
@@ -96,7 +96,7 @@ QString SAKToolBoxUi::communiticationToolName(int type)
     }
 }
 
-QIcon SAKToolBoxUi::communiticationToolIcon(int type)
+QIcon SAKToolBoxUi::communicationToolIcon(int type)
 {
     QString fileName;
     if (type == SAKToolFactory::SerialportTool) {
@@ -131,8 +131,8 @@ void SAKToolBoxUi::initialize(int type)
     mToolBox->initialize(type);
     mCommunicationToolType = type;
 
-    QString toolName = communiticationToolName(type);
-    QIcon icon = communiticationToolIcon(type);
+    QString toolName = communicationToolName(type);
+    QIcon icon = communicationToolIcon(type);
     setWindowTitle(toolName);
     setWindowIcon(icon);
 

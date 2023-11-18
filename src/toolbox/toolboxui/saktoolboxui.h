@@ -40,11 +40,11 @@ class SAKToolBoxUi : public QWidget
     Q_OBJECT
 public:
     explicit SAKToolBoxUi(QWidget *parent = nullptr);
-    ~SAKToolBoxUi();
+    ~SAKToolBoxUi() override;
 
-    static QList<int> supportedCommuniticationTools();
-    static QString communiticationToolName(int type);
-    static QIcon communiticationToolIcon(int type);
+    static QList<int> supportedCommunicationTools();
+    static QString communicationToolName(int type);
+    static QIcon communicationToolIcon(int type);
 
     void initialize(int type);
 
@@ -59,7 +59,7 @@ private:
     SAKUdpTransmitterToolUi *mUdpTransmitterToolUi{nullptr};
     SAKWebSocketTransmitterToolUi *mWebSocketTransmitterToolUi{nullptr};
     SAKSerialPortTransmitterToolUi *mSerialPortTransmitterToolUi{nullptr};
-    QLoggingCategory mLoggingCategory{"sak.toolboxui"};
+    QLoggingCategory mLoggingCategory{"sak.toolbox.ui"};
     QTimer *mCycleSendingTimer{nullptr};
     int mCommunicationToolType;
     SAKToolBoxUiCommunicationMenu *mCommunicationMenu{nullptr};
