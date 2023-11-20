@@ -11,15 +11,38 @@
 
 #include "sakapplication.h"
 #include "sakinterface.h"
-#include "saklog.h"
 #include "saksettings.h"
 
-int main(const int argc, char* argv[])
+void qtLogToGlog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
-#ifndef QT_DEBUG
-    qInstallMessageHandler(SAKLog::messageOutput);
-#endif
+    QByteArray localMsg = msg.toUtf8();
+    const char *file = context.file ? context.file : "";
+    const int line = context.line;
 
+#ifdef SAK_USING_GLOG
+    switch (type) {
+    case QtWarningMsg:
+        google::LogMessage(file, line, google::GLOG_WARNING).stream() << localMsg.data();
+        break;
+    case QtCriticalMsg:
+        google::LogMessage(file, line, google::GLOG_ERROR).stream() << localMsg.data();
+        break;
+    case QtFatalMsg:
+        google::LogMessage(file, line, google::GLOG_FATAL).stream() << localMsg.data();
+        break;
+    default:
+        google::LogMessage(file, line, google::GLOG_INFO).stream() << localMsg.data();
+        break;
+    }
+#else
+    Q_UNUSED(localMsg)
+    Q_UNUSED(file)
+    Q_UNUSED(line)
+#endif
+}
+
+static void sakInitApp()
+{
     // Initialize some information about application.
     QCoreApplication::setOrganizationName(QString("Qsaker"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
@@ -28,16 +51,24 @@ int main(const int argc, char* argv[])
 #ifndef SAK_IMPORT_MODULE_PRIVATE
     appName += QObject::tr("(Community)");
 #endif
+    QCoreApplication::setApplicationName(appName);
 
 #ifdef SAK_VERSION
     QCoreApplication::setApplicationVersion(SAK_VERSION);
 #else
     QCoreApplication::setApplicationVersion("0.0.0");
 #endif
+}
 
-    SAKApplication app(argc, argv);
-    SAKLog::instance()->start();
+static void sakInstallMessageHandler()
+{
+#ifndef QT_DEBUG
+    qInstallMessageHandler(qtLogToGlog);
+#endif
+}
 
+static void sakTryToClearSettings()
+{
     // Remove settings file and database
     if (SAKSettings::instance()->clearSettings()) {
         SAKSettings::instance()->setClearSettings(false);
@@ -47,7 +78,11 @@ int main(const int argc, char* argv[])
             qWarning() << "Remove settings file failed!";
         }
     }
+}
 
+static void sakInitHdpi()
+{
+    // qputenv("QT_SCALE_FACTOR", "1.5");
     // High dpi settings.
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     if (int policy = SAKSettings::instance()->hdpiPolicy();
@@ -56,14 +91,26 @@ int main(const int argc, char* argv[])
         QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
     }
 #endif
+}
 
-    // Application style.
+static void sakInitAppStyle()
+{
     qInfo() << "Supported style:" << QStyleFactory::keys();
     if (const QString style = SAKSettings::instance()->appStyle();
         QStyleFactory::keys().contains(style)) {
         qInfo() << "App style:" << style;
         QApplication::setStyle(QStyleFactory::create(style));
     }
+}
 
+int main(const int argc, char* argv[])
+{
+    sakInitApp();
+    sakInstallMessageHandler();
+    sakTryToClearSettings();
+    sakInitHdpi();
+    sakInitAppStyle();
+
+    SAKApplication app(argc, argv);
     return app.exec();
 }
