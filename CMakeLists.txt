@@ -52,13 +52,13 @@ macro(sak_import_assistant assistant_dir_name)
   endif()
 endmacro()
 
-sak_import_assistant("asciiassistant")
-sak_import_assistant("base64assistant")
-sak_import_assistant("broadcastassistant")
-sak_import_assistant("crcassistant")
-sak_import_assistant("filecheckassistant")
-sak_import_assistant("numberassistant")
-sak_import_assistant("stringassistant")
+sak_import_assistant("AsciiAssistant")
+sak_import_assistant("Base64Assistant")
+sak_import_assistant("BroadcastAssistant")
+sak_import_assistant("CrcAssistant")
+sak_import_assistant("FileCheckAssistant")
+sak_import_assistant("NumberAssistant")
+sak_import_assistant("StringAssistant")
 
 # QtSwissArmyKnife src files
 macro(sak_add_src src_dir_name)
@@ -134,8 +134,8 @@ install(
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # Custom build target.
-option(APP_EABLE_ASSISTANTS "Enable to build Assistants." ON)
-if(APP_EABLE_ASSISTANTS)
+option(SAK_EABLE_APP_ASSISTANTS "Enable to build Assistants." ON)
+if(SAK_EABLE_APP_ASSISTANTS)
   add_subdirectory(${CMAKE_SOURCE_DIR}/src/Assistants)
 endif()
 

@@ -1,15 +1,15 @@
 macro(sak_add_assistant app_name)
   string(TOLOWER ${app_name} lower_app_name)
   string(TOUPPER ${app_name} upper_app_name)
-  option(APP_${upper_app_name} "" ON)
-  if(APP_${upper_app_name})
+  option(SAK_ENABLE_APP_${upper_app_name} "" ON)
+  if(SAK_ENABLE_APP_${upper_app_name})
     file(
       GLOB_RECURSE
       ASSISTANT_SOURCES
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${lower_app_name}/*.h"
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${lower_app_name}/*.cc"
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${lower_app_name}/*.ui"
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${lower_app_name}/*.qrc")
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${app_name}/*.h"
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${app_name}/*.cc"
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${app_name}/*.ui"
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${app_name}/*.qrc")
     set(APP_ASSISTANT_SOURCES
         ${CMAKE_SOURCE_DIR}/src/common/common/sakinterface.h
         ${CMAKE_SOURCE_DIR}/src/common/common/sakinterface.cc
@@ -29,10 +29,10 @@ macro(sak_add_assistant app_name)
   endif()
 endmacro()
 
-add_subdirectory(asciiassistant)
-add_subdirectory(base64assistant)
-add_subdirectory(broadcastassistant)
-add_subdirectory(crcassistant)
-add_subdirectory(filecheckassistant)
-add_subdirectory(numberassistant)
-add_subdirectory(stringassistant)
+add_subdirectory(AsciiAssistant)
+add_subdirectory(Base64Assistant)
+add_subdirectory(BroadcastAssistant)
+add_subdirectory(CrcAssistant)
+add_subdirectory(FileCheckAssistant)
+add_subdirectory(NumberAssistant)
+add_subdirectory(StringAssistant)
