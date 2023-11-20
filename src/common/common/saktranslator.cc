@@ -18,7 +18,7 @@
 SAKTranslator::SAKTranslator(QObject* parent) : QObject{parent} {
   mFlagNameMap.insert("zh_CN", "简体中文");
   mFlagNameMap.insert("en", "English");
-#ifdef QT_DEBUG
+#if 0
   mFlagNameMap.insert("zh_TW", "繁體中文");
   mFlagNameMap.insert("ar", "العربية");
   mFlagNameMap.insert("cs", "Čeština");
