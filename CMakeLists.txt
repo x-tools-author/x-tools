@@ -119,18 +119,12 @@ list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SO
 list(APPEND SAK_APP_SOURCES qtswissarmyknife.qrc windows.rc)
 sak_add_executable("QtSwissArmyKnife" ${SAK_APP_SOURCES})
 sak_auto_execute_deployqt(QtSwissArmyKnife)
+sak_set_target_properties(QtSwissArmyKnife)
 target_link_libraries(
   QtSwissArmyKnife
   PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
           Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort
           Qt${QT_VERSION_MAJOR}::SerialBus Qt${QT_VERSION_MAJOR}::Bluetooth)
-set_target_properties(
-  QtSwissArmyKnife
-  PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
-             MACOSX_BUNDLE TRUE
-             WIN32_EXECUTABLE TRUE
-             ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
-             ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 install(
   TARGETS QtSwissArmyKnife
   BUNDLE DESTINATION .

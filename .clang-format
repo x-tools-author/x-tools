@@ -1,4 +1,5 @@
 ---
+BasedOnStyle:  WebKit
 Language:        Cpp
 AccessModifierOffset: -4
 AlignAfterOpenBracket: Align

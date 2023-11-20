@@ -63,11 +63,21 @@ function(sak_add_executable target sources)
 
   set(INDEX 0)
   while(INDEX LESS ${ARGC})
-      math(EXPR INDEX "${INDEX} + 1")
-      target_sources(${target} PRIVATE ${ARGV${INDEX}})
+    math(EXPR INDEX "${INDEX} + 1")
+    target_sources(${target} PRIVATE ${ARGV${INDEX}})
   endwhile()
 
   if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(${target})
   endif()
+endfunction()
+
+function(sak_set_target_properties target)
+  set_target_properties(
+    ${target}
+    PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
+               MACOSX_BUNDLE TRUE
+               WIN32_EXECUTABLE TRUE
+               ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
+               ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 endfunction()
