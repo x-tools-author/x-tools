@@ -160,4 +160,4 @@ sak_add_lupdate()
 sak_add_lrelease()
 
 # The private module is not open source.
-include(${CMAKE_SOURCE_DIR}/Private/Private.cmake)
+include(${CMAKE_SOURCE_DIR}/private/private.cmake)
