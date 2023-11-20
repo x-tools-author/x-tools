@@ -11,7 +11,7 @@ function(sak_auto_execute_windeployqt target)
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${WINDEPLOYQT_EXECUTABLE} --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/qml"
+      COMMAND ${WINDEPLOYQT_EXECUTABLE} --qmldir "${CMAKE_SOURCE_DIR}/qml"
               $<TARGET_FILE:${target}> DEPENDS ${depends_dll}
       COMMENT "Running windeployqt...")
   endif()

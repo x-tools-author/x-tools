@@ -18,27 +18,9 @@
       ${CMAKE_SOURCE_DIR}/src/common/common/saktranslator.cc
       ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
 
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
-  if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(${studio_name} MANUAL_FINALIZATION ${STUDIO_APP_SOURCES})
-  else()
-    if(ANDROID)
-      add_library(${studio_name} SHARED ${STUDIO_APP_SOURCES})
-    else()
-      add_executable(${studio_name} ${STUDIO_APP_SOURCES})
-    endif(ANDROID)
-  endif()
+  sak_add_executable(${studio_name} ${STUDIO_APP_SOURCES})
+  sak_set_target_properties(${studio_name})
+  sak_auto_execute_windeployqt(${studio_name})
 
   target_link_libraries(${studio_name} PRIVATE ${STUDIO_APP_LIBS})
-  set_target_properties(
-    ${studio_name}
-    PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
-               ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
-               ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
-               TRUE WIN32_EXECUTABLE
-               TRUE)
-
-  if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(${studio_name})
-  endif()
 endmacro()

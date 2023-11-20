@@ -120,16 +120,16 @@ endif()
 
 list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES})
 list(APPEND SAK_APP_SOURCES qtswissarmyknife.qrc windows.rc)
-sak_add_executable("QtSwissArmyKnife" ${SAK_APP_SOURCES})
-sak_auto_execute_deployqt(QtSwissArmyKnife)
-sak_set_target_properties(QtSwissArmyKnife)
+sak_add_executable("SwissArmyKnife" ${SAK_APP_SOURCES})
+sak_auto_execute_deployqt(SwissArmyKnife)
+sak_set_target_properties(SwissArmyKnife)
 target_link_libraries(
-  QtSwissArmyKnife
+  SwissArmyKnife
   PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
           Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort
           Qt${QT_VERSION_MAJOR}::SerialBus Qt${QT_VERSION_MAJOR}::Bluetooth)
 install(
-  TARGETS QtSwissArmyKnife
+  TARGETS SwissArmyKnife
   BUNDLE DESTINATION .
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
