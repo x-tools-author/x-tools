@@ -2,7 +2,7 @@
 
 project(
   QtSwissArmyKnife
-  VERSION 0.1
+  VERSION 1.0
   LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
@@ -227,4 +227,8 @@ sak_add_deploy()
 include(${CMAKE_SOURCE_DIR}/.cmake/internationalization.cmake)
 sak_add_lupdate()
 sak_add_lrelease()
-# ##############################################################################
+
+# The private module is not open source.
+if(EXISTS ${CMAKE_SOURCE_DIR}/private/private/Private.cmake)
+  include(${CMAKE_SOURCE_DIR}/private/private/Private.cmake)
+endif()
