@@ -31,23 +31,23 @@ sak_get_last_commit(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 sak_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 
 # Assistant module
-include_directories(src/assistants)
+include_directories(src/Assistants)
 include_directories(src/assistantsui)
-list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.h
-     src/assistants/sakassistantsfactory.cc)
+list(APPEND SAK_ASSISTANT_SOURCES src/Assistants/sakassistantsfactory.h
+     src/Assistants/sakassistantsfactory.cc)
 
 macro(sak_import_assistant assistant_dir_name)
   string(TOUPPER ${assistant_dir_name} upper_name)
   option(SAK_IMPORT_MODULE_${upper_name} "" ON)
   if(SAK_IMPORT_MODULE_${upper_name})
-    include_directories(${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src)
+    include_directories(${CMAKE_SOURCE_DIR}/src/Assistants/${assistant_dir_name}/src)
     add_compile_definitions(SAK_IMPORT_MODULE_${upper_name})
     file(
       GLOB_RECURSE
       ASSISTANT_SOURCE
-      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*h"
-      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*.cc"
-      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*.ui")
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${assistant_dir_name}/src/*h"
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${assistant_dir_name}/src/*.cc"
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${assistant_dir_name}/src/*.ui")
     list(APPEND SAK_ASSISTANT_SOURCES ${ASSISTANT_SOURCE})
   endif()
 endmacro()
@@ -134,9 +134,9 @@ install(
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # Custom build target.
-option(APP_EABLE_ASSISTANTS "Enable to build assistants." ON)
+option(APP_EABLE_ASSISTANTS "Enable to build Assistants." ON)
 if(APP_EABLE_ASSISTANTS)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/src/assistants)
+  add_subdirectory(${CMAKE_SOURCE_DIR}/src/Assistants)
 endif()
 
 if(NOT Qt6_VERSION VERSION_LESS "6.5.0")

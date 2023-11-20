@@ -6,10 +6,10 @@ macro(sak_add_assistant app_name)
     file(
       GLOB_RECURSE
       ASSISTANT_SOURCES
-      "${CMAKE_SOURCE_DIR}/src/assistants/${lower_app_name}/*.h"
-      "${CMAKE_SOURCE_DIR}/src/assistants/${lower_app_name}/*.cc"
-      "${CMAKE_SOURCE_DIR}/src/assistants/${lower_app_name}/*.ui"
-      "${CMAKE_SOURCE_DIR}/src/assistants/${lower_app_name}/*.qrc")
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${lower_app_name}/*.h"
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${lower_app_name}/*.cc"
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${lower_app_name}/*.ui"
+      "${CMAKE_SOURCE_DIR}/src/Assistants/${lower_app_name}/*.qrc")
     set(APP_ASSISTANT_SOURCES
         ${CMAKE_SOURCE_DIR}/src/common/common/sakinterface.h
         ${CMAKE_SOURCE_DIR}/src/common/common/sakinterface.cc
