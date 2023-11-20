@@ -112,7 +112,7 @@ SAKMainWindow::SAKMainWindow(QWidget* parent)
 
     QString title = QString("Qt Swiss Army Knife");
 #ifndef SAK_IMPORT_MODULE_PRIVATE
-    QString title = tr("(Community)");
+    title.append(tr("(Community)"));
 #endif
     title.append(QString(" "));
     title.append(QString("v"));

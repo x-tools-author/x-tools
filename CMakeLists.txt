@@ -102,8 +102,10 @@ macro(sak_import_module src_dir_name)
   endif()
 endmacro()
 
-sak_import_module("canbusstudio")
-sak_import_module("modbusstudio")
+if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
+  sak_import_module("canbusstudio")
+  sak_import_module("modbusstudio")
+endif()
 
 # QtSwissArmyKnife)
 include_directories(src)
@@ -137,14 +139,15 @@ if(APP_EABLE_ASSISTANTS)
   add_subdirectory(${CMAKE_SOURCE_DIR}/src/assistants)
 endif()
 
+if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
 option(APP_EABLE_CANBUSSTUDIO "Enable to build CANBusStudio." ON)
 if(APP_EABLE_CANBUSSTUDIO)
   add_subdirectory(${CMAKE_SOURCE_DIR}/src/canbusstudio)
 endif()
-
 option(APP_EABLE_MODBUSSTUDIO "Enable to build ModbusStudio." ON)
 if(APP_EABLE_MODBUSSTUDIO)
   add_subdirectory(${CMAKE_SOURCE_DIR}/src/modbusstudio)
+endif()
 endif()
 
 # For Qt6.4 and later.
