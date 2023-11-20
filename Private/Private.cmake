@@ -1,0 +1,8 @@
+﻿file(GLOB dirs LIST_DIRECTORIES true "${CMAKE_SOURCE_DIR}/Private/*")
+foreach(dir ${dirs})
+  if(IS_DIRECTORY ${dir})
+    file(RELATIVE_PATH cooked_dir ${CMAKE_SOURCE_DIR} ${dir})
+    add_subdirectory(${cooked_dir})
+    message(STATUS "Subdirectory: ${dir} ${cooked_dir}")
+  endif()
+endforeach()
