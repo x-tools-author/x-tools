@@ -108,23 +108,22 @@ SAKMainWindow::SAKMainWindow(QWidget* parent)
     scrollArea->setWidgetResizable(true);
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
-#else
+#endif
 
-#ifdef SAK_RELEASE_FOR_APP_STORE
-    QString title = QString("QSAK");
-#else
     QString title = QString("Qt Swiss Army Knife");
+#ifndef SAK_IMPORT_MODULE_PRIVATE
+    QString title = tr("(Community)");
 #endif
     title.append(QString(" "));
     title.append(QString("v"));
     title.append(qApp->applicationVersion());
-#ifndef SAK_RELEASE_FOR_APP_STORE
+#ifndef SAK_IMPORT_MODULE_PRIVATE
     title.append(" ");
-    title.append(SAK_EDITION);
+    title.append("Beta1");
 #endif
     setWindowTitle(title);
     setWindowIcon(QIcon(":/resources/images/SAKLogo.png"));
-#endif
+
     initMenuBar();
     initNav();
     initStatusBar();
@@ -143,10 +142,8 @@ void SAKMainWindow::initMenuBar()
     initToolMenu();
     initOptionMenu();
     initLanguageMenu();
-#ifndef SAK_RELEASE_FOR_APP_STORE
     initLinksMenu();
     initDemoMenu();
-#endif
     initHelpMenu();
 }
 
@@ -545,13 +542,11 @@ void SAKMainWindow::initHelpMenu()
 {
     QMenu* helpMenu = new QMenu(tr("&Help"), this);
     menuBar()->addMenu(helpMenu);
-#ifndef SAK_RELEASE_FOR_APP_STORE
     QAction* aboutQtAction = new QAction(tr("About Qt"), this);
     helpMenu->addAction(aboutQtAction);
     connect(aboutQtAction, &QAction::triggered, this, [=]() {
         QMessageBox::aboutQt(this, tr("About Qt"));
     });
-#endif
 
     QAction* aboutAction = new QAction(tr("About QtSwissArmyKnife"), this);
     helpMenu->addAction(aboutAction);
@@ -566,7 +561,6 @@ void SAKMainWindow::initHelpMenu()
         QDesktopServices::openUrl(url);
     });
 #endif
-#ifndef SAK_RELEASE_FOR_APP_STORE
     QMenu* srcMenu = new QMenu(tr("Get Source"), this);
     helpMenu->addMenu(srcMenu);
     QAction* visitGitHubAction = new QAction(QIcon(":/resources/images/GitHub.png"),
@@ -594,7 +588,7 @@ void SAKMainWindow::initHelpMenu()
     QAction* qrCodeAction = new QAction(tr("QR Code"), this);
     helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered, this, &SAKMainWindow::showQrCode);
-
+#ifndef SAK_IMPORT_MODULE_PRIVATE
     helpMenu->addAction(tr("Donate"), this, &SAKMainWindow::showDonation);
 #endif
 }

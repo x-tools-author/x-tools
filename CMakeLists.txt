@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.16)
 
 project(
   QtSwissArmyKnife
@@ -12,64 +12,24 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(
-  QT NAMES Qt6 Qt5 REQUIRED
-  COMPONENTS Core
-             Gui
-             Widgets
-             WebSockets
-             Network
-             SerialPort
-             SerialBus
-             Bluetooth)
-find_package(
-  Qt${QT_VERSION_MAJOR} REQUIRED
-  COMPONENTS Core
-             Gui
-             Widgets
-             WebSockets
-             Network
-             SerialPort
-             SerialBus
-             Bluetooth)
+set(SAK_QT_COMPONENTS
+    Core
+    Gui
+    Widgets
+    WebSockets
+    Network
+    SerialPort
+    SerialBus
+    Bluetooth)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
 
-if(${QT_VERSION} VERSION_LESS "6.4")
-  message(WARNING "The Qt version is too old, please using Qt6.4 or later.")
-endif()
+include(.cmake/sak_common.cmake)
+include(.cmake/sak_common_deploy.cmake)
 
-# ##############################################################################
-# Common definitioin
-add_definitions(
-  -DSAK_HOST_ADDRESS_ANY="Any"
-  -DSAK_CLEAR_MESSAGE_INTERVAL=8000
-  -DSAK_STYLE_DEFAULT="Fusion"
-  -DSAK_EDITION="beta1"
-  -DSAK_VERSION="5.1.0"
-  -DSAK_AUTHOR="Qsaker"
-  -DSAK_AUTHOR_EMAIL="qsaker@foxmail.com"
-  -DSAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/QtSwissArmyKnife"
-  -DSAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/QtSwissArmyKnife")
-# ##############################################################################
+sak_get_last_commit(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
+sak_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 
-# ##############################################################################
-# Git information
-execute_process(
-  COMMAND git log -1 --pretty=%H
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-  OUTPUT_VARIABLE GIT_COMMIT
-  OUTPUT_STRIP_TRAILING_WHITESPACE)
-message(STATUS "Last commit: ${GIT_COMMIT}")
-add_compile_definitions(SAK_GIT_COMMIT="${GIT_COMMIT}")
-execute_process(
-  COMMAND git log -1 --format=%ci
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-  OUTPUT_VARIABLE LAST_COMMIT_DATE
-  OUTPUT_STRIP_TRAILING_WHITESPACE)
-message(STATUS "Last commit time: ${LAST_COMMIT_DATE}")
-add_compile_definitions(SAK_COMMIT_DATE="${LAST_COMMIT_DATE}")
-# ##############################################################################
-
-# ##############################################################################
 # Assistant module
 include_directories(src/assistants)
 include_directories(src/assistantsui)
@@ -80,8 +40,7 @@ macro(sak_import_assistant assistant_dir_name)
   string(TOUPPER ${assistant_dir_name} upper_name)
   option(SAK_IMPORT_MODULE_${upper_name} "" ON)
   if(SAK_IMPORT_MODULE_${upper_name})
-    include_directories(
-      ${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src)
+    include_directories(${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src)
     add_compile_definitions(SAK_IMPORT_MODULE_${upper_name})
     file(
       GLOB_RECURSE
@@ -100,9 +59,7 @@ sak_import_assistant("crcassistant")
 sak_import_assistant("filecheckassistant")
 sak_import_assistant("numberassistant")
 sak_import_assistant("stringassistant")
-# ##############################################################################
 
-# ##############################################################################
 # QtSwissArmyKnife src files
 macro(sak_add_src src_dir_name)
   set(SRC_PRE ${CMAKE_SOURCE_DIR}/src/${src_dir_name})
@@ -123,9 +80,7 @@ sak_add_src("common")
 sak_add_src("log")
 sak_add_src("toolbox")
 sak_add_src("tools")
-# ##############################################################################
 
-# ##############################################################################
 # QtSwissArmyKnife module files
 macro(sak_import_module src_dir_name)
   string(TOUPPER ${src_dir_name} upper_dir_name)
@@ -149,9 +104,7 @@ endmacro()
 
 sak_import_module("canbusstudio")
 sak_import_module("modbusstudio")
-# ##############################################################################
 
-# ##############################################################################
 # QtSwissArmyKnife)
 include_directories(src)
 file(GLOB APP_SOURCES "src/*.h" "src/*.cc" "src/*.ui" ".cmake/*.cmake")
@@ -162,26 +115,15 @@ if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
   set(SAK_IMPORT_MODULE_CANBUSSTUDIO OFF)
 endif()
 
-set(SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES}
-                    qtswissarmyknife.qrc windows.rc)
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/QtSwissArmyKnife")
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-  qt_add_executable(QtSwissArmyKnife MANUAL_FINALIZATION ${SAK_APP_SOURCES})
-else()
-  if(ANDROID)
-    add_library(QtSwissArmyKnife SHARED ${SAK_APP_SOURCES})
-  else()
-    add_executable(QtSwissArmyKnife ${SAK_APP_SOURCES})
-  endif(ANDROID)
-endif()
-
+list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES})
+list(APPEND SAK_APP_SOURCES qtswissarmyknife.qrc windows.rc)
+sak_add_executable("QtSwissArmyKnife" ${SAK_APP_SOURCES})
+sak_auto_execute_deployqt(QtSwissArmyKnife)
 target_link_libraries(
   QtSwissArmyKnife
   PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
           Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort
           Qt${QT_VERSION_MAJOR}::SerialBus Qt${QT_VERSION_MAJOR}::Bluetooth)
-
 set_target_properties(
   QtSwissArmyKnife
   PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
@@ -195,12 +137,6 @@ install(
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-if(QT_VERSION_MAJOR EQUAL 6)
-  qt_finalize_executable(QtSwissArmyKnife)
-endif()
-# ##############################################################################
-
-# ##############################################################################
 # Custom build target.
 option(APP_EABLE_ASSISTANTS "Enable to build assistants." ON)
 if(APP_EABLE_ASSISTANTS)
@@ -222,8 +158,6 @@ if(QT_VERSION_MAJOR EQUAL 6 AND QT_VERSION_MINOR GREATER_EQUAL 4)
   add_subdirectory(${CMAKE_SOURCE_DIR}/src/easydebug)
 endif()
 
-include(${CMAKE_SOURCE_DIR}/.cmake/deploy.cmake)
-sak_add_deploy()
 include(${CMAKE_SOURCE_DIR}/.cmake/internationalization.cmake)
 sak_add_lupdate()
 sak_add_lrelease()

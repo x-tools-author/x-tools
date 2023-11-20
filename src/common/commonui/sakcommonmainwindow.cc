@@ -254,7 +254,7 @@ void SAKCommonMainWindow::OnAboutActionTriggered() {
   info += "\n";
   info += tr("Commit: ") + SAK_GIT_COMMIT;
   info += "\n";
-  info += tr("Date: ") + SAK_COMMIT_DATE;
+  info += tr("Date: ") + SAK_GIT_COMMIT_TIME;
   info += "\n";
   info += tr("Copyright 2023-%1 Qsaker(qsaker@foxmail.com). "
              "All rights reserved.")
