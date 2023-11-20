@@ -1,4 +1,4 @@
 ﻿set(APP_ASSISITANT_OWN_SOURCE "")
 set(APP_ASSISITANT_OWN_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
 
-sak_add_assistant("Base64Assistant")
+sak_add_assistant("base64" "Base64Assistant")

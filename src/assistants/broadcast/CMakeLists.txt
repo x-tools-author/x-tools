@@ -4,4 +4,4 @@
 set(APP_ASSISITANT_OWN_LIBS Qt${QT_VERSION_MAJOR}::Widgets
                             Qt${QT_VERSION_MAJOR}::Network)
 
-sak_add_assistant("BroadcastAssistant")
+sak_add_assistant("broadcast" "BroadcastAssistant")

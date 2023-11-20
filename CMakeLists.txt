@@ -31,34 +31,35 @@ sak_get_last_commit(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 sak_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 
 # Assistant module
-include_directories(src/Assistants)
+include_directories(src/assistants)
 include_directories(src/assistantsui)
-list(APPEND SAK_ASSISTANT_SOURCES src/Assistants/sakassistantsfactory.h
-     src/Assistants/sakassistantsfactory.cc)
+list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.h
+     src/assistants/sakassistantsfactory.cc)
 
 macro(sak_import_assistant assistant_dir_name)
   string(TOUPPER ${assistant_dir_name} upper_name)
-  option(SAK_IMPORT_MODULE_${upper_name} "" ON)
-  if(SAK_IMPORT_MODULE_${upper_name})
-    include_directories(${CMAKE_SOURCE_DIR}/src/Assistants/${assistant_dir_name}/src)
-    add_compile_definitions(SAK_IMPORT_MODULE_${upper_name})
+  set(SAK_IMPORT_MODULE_NAME SAK_IMPORT_MODULE_${upper_name}ASSISTANT)
+  option(${SAK_IMPORT_MODULE_NAME} "" ON)
+  if(${SAK_IMPORT_MODULE_NAME})
+    include_directories(${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src)
+    add_compile_definitions(${SAK_IMPORT_MODULE_NAME})
     file(
       GLOB_RECURSE
       ASSISTANT_SOURCE
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${assistant_dir_name}/src/*h"
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${assistant_dir_name}/src/*.cc"
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${assistant_dir_name}/src/*.ui")
+      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*h"
+      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*.cc"
+      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*.ui")
     list(APPEND SAK_ASSISTANT_SOURCES ${ASSISTANT_SOURCE})
   endif()
 endmacro()
 
-sak_import_assistant("AsciiAssistant")
-sak_import_assistant("Base64Assistant")
-sak_import_assistant("BroadcastAssistant")
-sak_import_assistant("CrcAssistant")
-sak_import_assistant("FileCheckAssistant")
-sak_import_assistant("NumberAssistant")
-sak_import_assistant("StringAssistant")
+sak_import_assistant("crc")
+sak_import_assistant("ascii")
+sak_import_assistant("base64")
+sak_import_assistant("number")
+sak_import_assistant("string")
+sak_import_assistant("broadcast")
+sak_import_assistant("filecheck")
 
 # QtSwissArmyKnife src files
 macro(sak_add_src src_dir_name)
@@ -134,9 +135,9 @@ install(
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # Custom build target.
-option(SAK_EABLE_APP_ASSISTANTS "Enable to build Assistants." ON)
+option(SAK_EABLE_APP_ASSISTANTS "Enable to build assistants." ON)
 if(SAK_EABLE_APP_ASSISTANTS)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/src/Assistants)
+  add_subdirectory(${CMAKE_SOURCE_DIR}/src/assistants)
 endif()
 
 if(NOT Qt6_VERSION VERSION_LESS "6.5.0")

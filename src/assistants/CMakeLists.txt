@@ -1,15 +1,14 @@
-macro(sak_add_assistant app_name)
-  string(TOLOWER ${app_name} lower_app_name)
+macro(sak_add_assistant dir_name app_name)
   string(TOUPPER ${app_name} upper_app_name)
   option(SAK_ENABLE_APP_${upper_app_name} "" ON)
   if(SAK_ENABLE_APP_${upper_app_name})
     file(
       GLOB_RECURSE
       ASSISTANT_SOURCES
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${app_name}/*.h"
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${app_name}/*.cc"
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${app_name}/*.ui"
-      "${CMAKE_SOURCE_DIR}/src/Assistants/${app_name}/*.qrc")
+      "${CMAKE_SOURCE_DIR}/src/assistants/${dir_name}/*.h"
+      "${CMAKE_SOURCE_DIR}/src/assistants/${dir_name}/*.cc"
+      "${CMAKE_SOURCE_DIR}/src/assistants/${dir_name}/*.ui"
+      "${CMAKE_SOURCE_DIR}/src/assistants/${dir_name}/*.qrc")
     set(APP_ASSISTANT_SOURCES
         ${CMAKE_SOURCE_DIR}/src/common/common/sakinterface.h
         ${CMAKE_SOURCE_DIR}/src/common/common/sakinterface.cc
@@ -22,6 +21,7 @@ macro(sak_add_assistant app_name)
         ${APP_ASSISITANT_OWN_SOURCE}
         ${ASSISTANT_SOURCES}
         ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
+
     sak_add_executable(${app_name} ${APP_ASSISTANT_SOURCES})
     sak_auto_execute_deployqt(${app_name})
     sak_set_target_properties(${app_name})
@@ -29,10 +29,10 @@ macro(sak_add_assistant app_name)
   endif()
 endmacro()
 
-add_subdirectory(AsciiAssistant)
-add_subdirectory(Base64Assistant)
-add_subdirectory(BroadcastAssistant)
-add_subdirectory(CrcAssistant)
-add_subdirectory(FileCheckAssistant)
-add_subdirectory(NumberAssistant)
-add_subdirectory(StringAssistant)
+add_subdirectory(crc)
+add_subdirectory(ascii)
+add_subdirectory(base64)
+add_subdirectory(number)
+add_subdirectory(string)
+add_subdirectory(broadcast)
+add_subdirectory(filecheck)

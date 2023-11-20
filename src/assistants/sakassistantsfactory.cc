@@ -10,6 +10,7 @@
 
 #include "sakassistantsfactory.h"
 
+#include <QWidget>
 #include <QCoreApplication>
 
 #ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
@@ -18,7 +19,7 @@
 #ifdef SAK_IMPORT_MODULE_CRCASSISTANT
 #include "sakcrcassistant.h"
 #endif
-#ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
+#ifdef SAK_IMPORT_MODULE_NUMBERASSISTANT
 #include "saknumberassistant.h"
 #endif
 #ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
