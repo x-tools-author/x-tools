@@ -35,7 +35,7 @@ jobs:
         run: sudo apt-get install make -y
       - name: Install Qt
         id: InstallQt
-        run: sudo apt-get install qt5-* libqt5websockets5* libqt5serialport5* libqt5bluetooth5* libqt5charts5* -y
+        run: sudo apt-get install qt5-default libqt5websockets5* libqt5serialport5* libqt5bluetooth5* libqt5charts5* -y
       # - name: Install QtCharts
         # id: InstallQtCharts
         # Qt 5.5 has no charts module.
@@ -46,5 +46,5 @@ jobs:
           fetch-depth: 1
       - name: Build project
         id: BuildPorject
-        run: cmake -DCMAKE_BUILD_TYPE="Release" && make
+        run: cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make -j2
 
