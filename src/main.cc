@@ -158,6 +158,8 @@ int main(const int argc, char *argv[])
     sakInitHdpi();
     sakInitAppStyle();
 
+    // Text github action.
+
     SAKLog::instance()->start();
     SAKApplication app(argc, argv);
     sakShutdownGoogleLogging();
