@@ -22,7 +22,7 @@ set(SAK_QT_COMPONENTS
     SerialBus)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Bluetooth)
+find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Bluetooth)
 if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
   message(STATUS "Qt${QT_VERSION_MAJOR}::Bluetooth found.")
   option(SAK_IMPORT_MODULE_BLUETOOTH "Import Bluetooth module." ON)
