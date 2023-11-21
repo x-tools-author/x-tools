@@ -26,21 +26,18 @@ jobs:
         run: |
           sudo apt-get update --fix-missing -y
           sudo apt-get install libgl1-mesa-dev -y
-          sudo apt-get install qt5-default -y
+          sudo apt-get install qtbase5-dev -y
           sudo apt-get install libqt5charts5 libqt5charts5-dev -y
           sudo apt-get install libqt5serialbus5 libqt5serialbus5-dev -y
           sudo apt-get install libqt5serialport5 libqt5serialport5-dev -y
           sudo apt-get install libqt5websockets5 libqt5websockets5-dev -y
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
       - name: Build with Qt5
         id: BuildWithQt5
         run: |
           mkdir build && cd build
           cmake --version
           cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make -j2
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-      - name: Build project
-        id: BuildPorject
-        run: cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make -j2
 
