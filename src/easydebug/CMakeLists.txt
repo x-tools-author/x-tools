@@ -23,6 +23,18 @@ endif()
 set(EASY_DEBUG_APP_SOURCES ${EASY_DEBUG_SOURCES})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/sak/EasyDebug")
 
+if(SAK_IMPORT_MODULE_BLUETOOTH)
+  message(STATUS "EasyDebug: Bluetooth is supportted")
+
+  include_directories(${CMAKE_SOURCE_DIR}/src/optional/bluetooth)
+  set(EASY_DEBUG_BLUETOOTH_SOURCES
+      ${CMAKE_SOURCE_DIR}/src/optional/bluetooth/sakblecentraltool.h
+      ${CMAKE_SOURCE_DIR}/src/optional/bluetooth/sakblecentraltool.cc
+      ${CMAKE_SOURCE_DIR}/src/optional/bluetooth/sakblescanner.h
+      ${CMAKE_SOURCE_DIR}/src/optional/bluetooth/sakblescanner.cc)
+  list(APPEND EASY_DEBUG_APP_SOURCES ${EASY_DEBUG_BLUETOOTH_SOURCES})
+endif()
+
 sak_add_executable(EasyDebug ${EASY_DEBUG_APP_SOURCES})
 sak_set_target_properties(EasyDebug)
 sak_auto_execute_windeployqt(EasyDebug)
@@ -36,3 +48,6 @@ target_link_libraries(
           Qt${QT_VERSION_MAJOR}::QuickControls2
           Qt${QT_VERSION_MAJOR}::WebSockets
           Qt${QT_VERSION_MAJOR}::Widgets)
+if(SAK_IMPORT_MODULE_BLUETOOTH)
+  target_link_libraries(EasyDebug PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
+endif()

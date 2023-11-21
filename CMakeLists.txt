@@ -22,13 +22,13 @@ set(SAK_QT_COMPONENTS
     SerialBus)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Bluetooth QUIET)
-
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Bluetooth)
 if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
+  message(STATUS "Qt${QT_VERSION_MAJOR}::Bluetooth found.")
   option(SAK_IMPORT_MODULE_BLUETOOTH "Import Bluetooth module." ON)
   add_compile_definitions(SAK_IMPORT_MODULE_BLUETOOTH)
 else()
-  message(STATUS "QtBluetooth not found.")
+  message(STATUS "Qt${QT_VERSION_MAJOR}::Bluetooth not found.")
 endif()
 
 set(BUILD_TESTING OFF)
@@ -143,10 +143,11 @@ endif()
 
 list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES})
 list(APPEND SAK_APP_SOURCES qtswissarmyknife.qrc windows.rc)
-if(DEFINED SAK_IMPORT_MODULE_BLUETOOTH)
-  file(GLOB APP_BLUETOOTH_SOURCES "src/optional/bluetooth/*.h" "src/optional/bluetooth/*.cc"
+if(SAK_IMPORT_MODULE_BLUETOOTH)
+  file(GLOB SAK_BLUETOOTH_SOURCES "src/optional/bluetooth/*.h" "src/optional/bluetooth/*.cc"
        "src/optional/bluetooth/*.ui")
-  list(APPEND SAK_APP_SOURCES ${APP_BLUETOOTH_SOURCES})
+  list(APPEND SAK_APP_SOURCES ${SAK_BLUETOOTH_SOURCES})
+  include_directories(src/optional/bluetooth)
 endif()
 
 sak_add_executable("SwissArmyKnife" ${SAK_APP_SOURCES})
@@ -157,7 +158,7 @@ target_link_libraries(
   PRIVATE glog::glog Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
           Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort
           Qt${QT_VERSION_MAJOR}::SerialBus)
-if(DEFINED SAK_IMPORT_MODULE_BLUETOOTH)
+if(SAK_IMPORT_MODULE_BLUETOOTH)
   target_link_libraries(SwissArmyKnife PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 endif()
 
