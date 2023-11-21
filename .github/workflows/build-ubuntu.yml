@@ -19,7 +19,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-22.04]
+        os: [ubuntu-20.04, ubuntu-22.04]
     steps:
       - name: Install tools
         id: UpdateTools
@@ -27,6 +27,7 @@ jobs:
           sudo apt-get update --fix-missing -y
           sudo apt-get install libgl1-mesa-dev -y
           sudo apt-get install qtbase5-dev -y
+          qmake -v
           sudo apt-get install libqt5charts5 libqt5charts5-dev -y
           sudo apt-get install libqt5serialbus5 libqt5serialbus5-dev -y
           sudo apt-get install libqt5serialport5 libqt5serialport5-dev -y
