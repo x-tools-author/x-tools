@@ -24,13 +24,13 @@ jobs:
       - name: Install tools
         id: UpdateTools
         run: |
-          apt-get update --fix-missing -y
-          apt-get install libgl1-mesa-dev -y
-          apt-get install qt5-default -y
-          apt-get install libqt5charts5 libqt5charts5-dev -y
-          apt-get install libqt5serialbus5 libqt5serialbus5-dev -y
-          apt-get install libqt5serialport5 libqt5serialport5-dev -y
-          apt-get install libqt5websockets5 libqt5websockets5-dev -y
+          sudo apt-get update --fix-missing -y
+          sudo apt-get install libgl1-mesa-dev -y
+          sudo apt-get install qt5-default -y
+          sudo apt-get install libqt5charts5 libqt5charts5-dev -y
+          sudo apt-get install libqt5serialbus5 libqt5serialbus5-dev -y
+          sudo apt-get install libqt5serialport5 libqt5serialport5-dev -y
+          sudo apt-get install libqt5websockets5 libqt5websockets5-dev -y
       - name: Build with Qt5
         id: BuildWithQt5
         run: |
