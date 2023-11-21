@@ -16,7 +16,7 @@
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
 #define SAK_SIG_SOCKETERROROCCURRED &QAbstractSocket::errorOccurred
 #else
-#define SAK_SOCKET_ERROR \
+#define SAK_SIG_SOCKETERROROCCURRED \
     static_cast<void (QAbstractSocket::*)(QAbstractSocket::SocketError)>(&QAbstractSocket::error)
 #endif
 
