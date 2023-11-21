@@ -26,9 +26,11 @@ stages:
           - apt-get install libqt5websockets5 libqt5websockets5-dev -y
           - apt-get install libqt5serialport5 libqt5serialport5-dev -y
           - apt-get install libqt5charts5 libqt5charts5-dev -y
+          - apt-get install qttools5-dev* -y
+          - apt-get install qttools5-private-dev -y
           - 'mkdir build && cd build '
           - '# 生成Unix平台的makefiles文件并执行构建'
-          - cmake -G 'Unix Makefiles' ../ && make -j
+          - cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -G 'Unix Makefiles' ../ && make -j2
         artifacts:
           - name: BUILD_ARTIFACT
             path:
