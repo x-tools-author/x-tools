@@ -1,0 +1,34 @@
+version: '1.0'
+name: daily_build
+displayName: daily_build
+triggers:
+  trigger: auto
+  push:
+    branches:
+      precise:
+        - master
+stages:
+  - name: stage-c55b27b6
+    displayName: InstallQt
+    strategy: naturally
+    trigger: auto
+    executor:
+      - qsaker
+    steps:
+      - step: build@gcc
+        name: build_gcc
+        displayName: GCC 构建
+        gccVersion: '9.4'
+        commands:
+          - '# 新建build目录，切换到build目录'
+          - 'mkdir build && cd build '
+          - '# 生成Unix平台的makefiles文件并执行构建'
+          - cmake -G 'Unix Makefiles' ../ && make -j
+        artifacts:
+          - name: BUILD_ARTIFACT
+            path:
+              - ./bin
+        caches: []
+        notify: []
+        strategy:
+          retry: '0'
