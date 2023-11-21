@@ -189,6 +189,7 @@ void SAKCommonMainWindow::InitOptionMenuHdpiPolicy() {
 #endif
 
 #ifdef Q_OS_WIN
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
   QAction* system_action = new QAction(tr("System"), this);
   system_action->setCheckable(true);
   action_group->addAction(system_action);
@@ -204,6 +205,7 @@ void SAKCommonMainWindow::InitOptionMenuHdpiPolicy() {
     CreateQtConf();
     TryToReboot();
   });
+#endif
 #endif
 }
 
