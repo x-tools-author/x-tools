@@ -6,17 +6,16 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "sakguiapplication.h"
+
 #include <QQmlContext>
 #include <QQuickStyle>
 
 #include "sakanalyzertool.h"
 #include "sakbasetool.h"
-#include "sakblecentraltool.h"
-#include "sakblescanner.h"
 #include "sakcrcinterface.h"
 #include "sakdatastructure.h"
 #include "sakemittertool.h"
-#include "sakguiapplication.h"
 #include "sakhighlighter.h"
 #include "sakinterface.h"
 #include "sakmaskertool.h"
@@ -38,6 +37,11 @@
 #include "sakwebsocketclienttool.h"
 #include "sakwebsocketservertool.h"
 
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
+#include "sakblecentraltool.h"
+#include "sakblescanner.h"
+#endif
+
 SAKGuiApplication::SAKGuiApplication(int argc, char* argv[])
     : QGuiApplication(argc, argv)
 {
@@ -56,13 +60,17 @@ SAKGuiApplication::SAKGuiApplication(int argc, char* argv[])
     const QString reason = "Uncreatable type!";
     qmlRegisterType<SAKToolBox>("SAK.Custom", 1, 0, "SAKDevice");
     qmlRegisterType<SAKSettings>("SAK.Custom", 1, 0, "SAKSettings");
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
     qmlRegisterType<SAKBleScanner>("SAK.Custom", 1, 0, "SAKBleScanner");
+#endif
     qmlRegisterType<SAKHighlighter>("SAK.Custom", 1, 0, "SAKHighlighter");
     qmlRegisterType<SAKCrcInterface>("SAK.Custom", 1, 0, "SAKCrcInterface");
     qmlRegisterType<SAKSerialPortScanner>("SAK.Custom", 1, 0, "SAKSerialPortScanner");
     qmlRegisterType<SAKNetworkInterfaceScanner>("SAK.Custom", 1, 0, "SAKNetworkInterfaceScanner");
 
+    // clang-format off
     qmlRegisterUncreatableType<SAKBaseTool>("SAK.Custom", 1, 0, "SAKBaseTool", reason);
+    qmlRegisterUncreatableType<SAKInterface>("SAK.Custom", 1, 0, "SAKInterface", reason);
     qmlRegisterUncreatableType<SAKMaskerTool>("SAK.Custom", 1, 0, "SAKMaskerTool", reason);
     qmlRegisterUncreatableType<SAKStorerTool>("SAK.Custom", 1, 0, "SAKStorerTool", reason);
     qmlRegisterUncreatableType<SAKEmitterTool>("SAK.Custom", 1, 0, "SAKEmitterTool", reason);
@@ -74,27 +82,16 @@ SAKGuiApplication::SAKGuiApplication(int argc, char* argv[])
     qmlRegisterUncreatableType<SAKUdpServerTool>("SAK.Custom", 1, 0, "SAKUdpServerTool", reason);
     qmlRegisterUncreatableType<SAKTcpClientTool>("SAK.Custom", 1, 0, "SAKTcpClientTool", reason);
     qmlRegisterUncreatableType<SAKTcpServerTool>("SAK.Custom", 1, 0, "SAKTcpServerTool", reason);
+    qmlRegisterUncreatableType<SAKDataStructure>("SAK.Custom", 1, 0, "SAKDataStructure", reason);
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
     qmlRegisterUncreatableType<SAKBleCentralTool>("SAK.Custom", 1, 0, "SAKBleCentralTool", reason);
+#endif
     qmlRegisterUncreatableType<SAKSerialPortTool>("SAK.Custom", 1, 0, "SAKSerialportTool", reason);
     qmlRegisterUncreatableType<SAKTableModelTool>("SAK.Custom", 1, 0, "SAKTabelModelTool", reason);
-    qmlRegisterUncreatableType<SAKCommunicationTool>("SAK.Custom",
-                                                     1,
-                                                     0,
-                                                     "SAKCommunicationTool",
-                                                     reason);
-    qmlRegisterUncreatableType<SAKWebSocketServerTool>("SAK.Custom",
-                                                       1,
-                                                       0,
-                                                       "SAKWebSocketServerTool",
-                                                       reason);
-    qmlRegisterUncreatableType<SAKWebSocketClientTool>("SAK.Custom",
-                                                       1,
-                                                       0,
-                                                       "SAKWebSocketClientTool",
-                                                       reason);
-
-    qmlRegisterUncreatableType<SAKInterface>("SAK.Custom", 1, 0, "SAKInterface", reason);
-    qmlRegisterUncreatableType<SAKDataStructure>("SAK.Custom", 1, 0, "SAKDataStructure", reason);
+    qmlRegisterUncreatableType<SAKCommunicationTool>("SAK.Custom", 1, 0, "SAKCommunicationTool", reason);
+    qmlRegisterUncreatableType<SAKWebSocketServerTool>("SAK.Custom", 1, 0, "SAKWebSocketServerTool", reason);
+    qmlRegisterUncreatableType<SAKWebSocketClientTool>("SAK.Custom", 1, 0, "SAKWebSocketClientTool", reason);
+    // clang-format on
 
     mQmlAppEngine.rootContext()->setContextProperty("sakCrc", sakCrc);
     mQmlAppEngine.rootContext()->setContextProperty("sakI18n", sakI18n);

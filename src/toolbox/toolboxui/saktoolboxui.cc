@@ -17,7 +17,6 @@
 #include <QMetaEnum>
 #include <QRegularExpression>
 
-#include "sakblecentraltoolui.h"
 #include "sakcommunicationtool.h"
 #include "sakcrcinterface.h"
 #include "sakdatastructure.h"
@@ -39,6 +38,10 @@
 #include "sakuiinterface.h"
 #include "sakwebsockettransmittertoolui.h"
 #include "ui_saktoolboxui.h"
+
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
+#include "sakblecentraltoolui.h"
+#endif
 
 SAKToolBoxUi::SAKToolBoxUi(QWidget* parent)
     : QWidget{parent}
@@ -65,7 +68,10 @@ SAKToolBoxUi::~SAKToolBoxUi()
 QList<int> SAKToolBoxUi::supportedCommunicationTools()
 {
     QList<int> list;
-    list << SAKToolFactory::SerialportTool << SAKToolFactory::BleCentralTool
+    list << SAKToolFactory::SerialportTool
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
+         << SAKToolFactory::BleCentralTool
+#endif
          << SAKToolFactory::UdpClientTool << SAKToolFactory::UdpServerTool
          << SAKToolFactory::TcpClientTool << SAKToolFactory::TcpServerTool
          << SAKToolFactory::WebSocketClientTool << SAKToolFactory::WebSocketServerTool;
@@ -162,9 +168,13 @@ SAKCommunicationToolUi* SAKToolBoxUi::communicationToolUi(int type)
         w = new SAKSocketClientToolUi();
     } else if (type == SAKToolFactory::WebSocketServerTool) {
         w = new SAKSocketServerToolUi();
-    } else if (type == SAKToolFactory::BleCentralTool) {
+    }
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
+    else if (type == SAKToolFactory::BleCentralTool) {
         w = new SAKBleCentralToolUi();
-    } else {
+    }
+#endif
+    else {
         qCWarning(mLoggingCategory) << "unknow type of communication tool ui!";
     }
 

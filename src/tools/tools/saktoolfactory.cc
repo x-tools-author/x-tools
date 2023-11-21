@@ -7,8 +7,10 @@
  * code directory.
  **************************************************************************************************/
 #include "saktoolfactory.h"
+
+#include <QMetaEnum>
+
 #include "sakanalyzertool.h"
-#include "sakblecentraltool.h"
 #include "sakemittertool.h"
 #include "sakmaskertool.h"
 #include "sakprestorertool.h"
@@ -27,7 +29,10 @@
 #include "sakwebsocketclienttool.h"
 #include "sakwebsocketservertool.h"
 #include "sakwebsockettransmittertool.h"
-#include <QMetaEnum>
+
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
+#include "sakblecentraltool.h"
+#endif
 
 SAKToolFactory::SAKToolFactory(QObject *parent)
     : QObject{parent}
@@ -70,9 +75,13 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
         tool = new SAKWebSocketClientTool();
     } else if (WebSocketServerTool == type) {
         tool = new SAKWebSocketServerTool();
-    } else if (BleCentralTool == type) {
+    }
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
+    else if (BleCentralTool == type) {
         tool = new SAKBleCentralTool();
-    } else if (StatistiticianTool == type) {
+    }
+#endif
+    else if (StatistiticianTool == type) {
         tool = new SAKStatisticianTool();
     } else if (SerialPortTransmitterTool == type) {
         tool = new SAKSerialPortTransmitterTool();

@@ -19,10 +19,17 @@ set(SAK_QT_COMPONENTS
     WebSockets
     Network
     SerialPort
-    SerialBus
-    Bluetooth)
+    SerialBus)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Bluetooth QUIET)
+
+if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
+  option(SAK_IMPORT_MODULE_BLUETOOTH "Import Bluetooth module." ON)
+  add_compile_definitions(SAK_IMPORT_MODULE_BLUETOOTH)
+else()
+  message(STATUS "QtBluetooth not found.")
+endif()
 
 set(BUILD_TESTING OFF)
 include(.cmake/sak_common.cmake)
@@ -136,6 +143,12 @@ endif()
 
 list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES})
 list(APPEND SAK_APP_SOURCES qtswissarmyknife.qrc windows.rc)
+if(DEFINED SAK_IMPORT_MODULE_BLUETOOTH)
+  file(GLOB APP_BLUETOOTH_SOURCES "src/optional/bluetooth/*.h" "src/optional/bluetooth/*.cc"
+       "src/optional/bluetooth/*.ui")
+  list(APPEND SAK_APP_SOURCES ${APP_BLUETOOTH_SOURCES})
+endif()
+
 sak_add_executable("SwissArmyKnife" ${SAK_APP_SOURCES})
 sak_auto_execute_deployqt(SwissArmyKnife)
 sak_set_target_properties(SwissArmyKnife)
@@ -143,7 +156,11 @@ target_link_libraries(
   SwissArmyKnife
   PRIVATE glog::glog Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
           Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort
-          Qt${QT_VERSION_MAJOR}::SerialBus Qt${QT_VERSION_MAJOR}::Bluetooth)
+          Qt${QT_VERSION_MAJOR}::SerialBus)
+if(DEFINED SAK_IMPORT_MODULE_BLUETOOTH)
+  target_link_libraries(SwissArmyKnife PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
+endif()
+
 install(
   TARGETS SwissArmyKnife
   BUNDLE DESTINATION .
@@ -157,14 +174,14 @@ if(SAK_EABLE_APP_ASSISTANTS)
 endif()
 
 if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-option(APP_EABLE_CANBUSSTUDIO "Enable to build CANBusStudio." ON)
-if(APP_EABLE_CANBUSSTUDIO)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/src/canbusstudio)
-endif()
-option(APP_EABLE_MODBUSSTUDIO "Enable to build ModbusStudio." ON)
-if(APP_EABLE_MODBUSSTUDIO)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/src/modbusstudio)
-endif()
+  option(APP_EABLE_CANBUSSTUDIO "Enable to build CANBusStudio." ON)
+  if(APP_EABLE_CANBUSSTUDIO)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/src/canbusstudio)
+  endif()
+  option(APP_EABLE_MODBUSSTUDIO "Enable to build ModbusStudio." ON)
+  if(APP_EABLE_MODBUSSTUDIO)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/src/modbusstudio)
+  endif()
 endif()
 
 # For Qt6.4 and later.
