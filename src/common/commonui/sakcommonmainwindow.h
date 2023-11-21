@@ -21,6 +21,7 @@
 
 class SAKCommonMainWindow : public QMainWindow
 {
+    Q_OBJECT
 public:
     SAKCommonMainWindow(QWidget* parent = Q_NULLPTR);
     ~SAKCommonMainWindow();
