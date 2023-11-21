@@ -54,6 +54,9 @@ macro(sak_import_assistant assistant_dir_name)
   endif()
 endmacro()
 
+list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.h)
+list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.cc)
+
 sak_import_assistant("crc")
 sak_import_assistant("ascii")
 sak_import_assistant("base64")
@@ -119,8 +122,6 @@ if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
   set(SAK_IMPORT_MODULE_CANBUSSTUDIO OFF)
 endif()
 
-list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.h
-     src/assistants/sakassistantsfactory.cc)
 list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES})
 list(APPEND SAK_APP_SOURCES qtswissarmyknife.qrc windows.rc)
 sak_add_executable("SwissArmyKnife" ${SAK_APP_SOURCES})
