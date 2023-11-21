@@ -10,9 +10,9 @@
 #ifndef SAKTCPSERVERTOOL_H
 #define SAKTCPSERVERTOOL_H
 
+#include "saksocketservertool.h"
 #include <QMutex>
 #include <QTcpServer>
-#include "saksocketservertool.h"
 
 class SAKTcpServerTool : public SAKSocketServerTool
 {
@@ -22,17 +22,17 @@ public:
 
 protected:
     virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
     virtual void uninitialize() final;
 
 private:
-    void writeBytesInner(QTcpSocket *client, const QByteArray &bytes,
+    void writeBytesInner(QTcpSocket *client,
+                         const QByteArray &bytes,
                          const QVariant &context = QJsonObject());
 
 private:
     QTcpServer *mTcpServer{nullptr};
-    QList<QTcpSocket*> mTcpSocketList;
+    QList<QTcpSocket *> mTcpSocketList;
     QMutex mTcpSocketListMutex;
 };
 

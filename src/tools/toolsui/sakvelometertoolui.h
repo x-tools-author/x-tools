@@ -10,8 +10,8 @@
 #ifndef SAKVELOMETERTOOLUI_H
 #define SAKVELOMETERTOOLUI_H
 
-#include <QLoggingCategory>
 #include "sakbasetoolui.h"
+#include <QLoggingCategory>
 
 namespace Ui {
 class SAKVelometerToolUi;
@@ -25,8 +25,7 @@ public:
     ~SAKVelometerToolUi();
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingsGroup) final;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) final;
 
 private:
     const QLoggingCategory mLoggingCategory{"sak.velometertoolui"};

@@ -24,8 +24,7 @@ public:
     ~SAKStatisticianToolUi();
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingsGroup) final;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) final;
 
 private:
     Ui::SAKStatisticianToolUi *ui;

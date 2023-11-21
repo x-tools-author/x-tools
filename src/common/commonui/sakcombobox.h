@@ -18,9 +18,7 @@ public:
     SAKComboBox(QWidget *parent = nullptr);
 
     void setCurrentIndexFromData(const QVariant &data);
-    void setGroupKey(const QString &group,
-                     const QString &key,
-                     bool isIndex = true);
+    void setGroupKey(const QString &group, const QString &key, bool isIndex = true);
 
 private:
     QString mKey;

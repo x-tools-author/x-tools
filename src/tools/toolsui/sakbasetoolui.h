@@ -10,8 +10,8 @@
 #ifndef SAKBASETOOLUI_H
 #define SAKBASETOOLUI_H
 
-#include <QWidget>
 #include <QLoggingCategory>
+#include <QWidget>
 
 class SAKBaseTool;
 class SAKBaseToolUi : public QWidget
@@ -26,8 +26,7 @@ public:
 
 protected:
     virtual void onIsWorkingChanged(bool isWorking);
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingsGroup);
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup);
 
 protected:
     QLoggingCategory *mLoggingCategory{nullptr};

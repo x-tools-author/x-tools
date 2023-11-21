@@ -19,7 +19,8 @@ class SAKSerialPortTransmitterTool : public SAKTransmitterTool
 {
     Q_OBJECT
 public:
-    struct ItemContextKey {
+    struct ItemContextKey
+    {
         const QString enable{"enable"};
         const QString portName{"portName"};
         const QString baudRate{"baudRate"};
@@ -29,6 +30,7 @@ public:
         const QString flowControl{"flowControl"};
         const QString description{"description"};
     };
+
 public:
     explicit SAKSerialPortTransmitterTool(QObject *parent = nullptr);
     virtual QString cookHeaderString(const QString &str) override;
@@ -37,10 +39,8 @@ public:
                             const QVariant &context = QJsonObject()) override;
 
 protected:
-    virtual int columnCount(const QModelIndex &parent
-                            = QModelIndex()) const override;
-    virtual QVariant data(const QModelIndex &index,
-                          int role = Qt::DisplayRole) const override;
+    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     virtual bool setData(const QModelIndex &index,
                          const QVariant &value,
                          int role = Qt::EditRole) override;

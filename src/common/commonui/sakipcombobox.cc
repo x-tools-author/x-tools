@@ -12,11 +12,13 @@
 #include <QNetworkAddressEntry>
 #include <QNetworkInterface>
 
-SAKIpComboBox::SAKIpComboBox(QWidget* parent) : SAKComboBox(parent) {
-  auto addresses = QNetworkInterface::allAddresses();
-  for (auto& address : addresses) {
-    if (address.protocol() == QAbstractSocket::IPv4Protocol) {
-      addItem(address.toString());
+SAKIpComboBox::SAKIpComboBox(QWidget* parent)
+    : SAKComboBox(parent)
+{
+    auto addresses = QNetworkInterface::allAddresses();
+    for (auto& address : addresses) {
+        if (address.protocol() == QAbstractSocket::IPv4Protocol) {
+            addItem(address.toString());
+        }
     }
-  }
 }

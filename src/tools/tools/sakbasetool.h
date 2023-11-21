@@ -11,9 +11,9 @@
 #define SAKBASETOOL_H
 
 #include <atomic>
-#include <QThread>
 #include <QJsonObject>
 #include <QLoggingCategory>
+#include <QThread>
 
 class SAKBaseTool : public QThread
 {
@@ -23,16 +23,15 @@ class SAKBaseTool : public QThread
 public:
     explicit SAKBaseTool(const char *logCategory, QObject *parent = Q_NULLPTR);
     virtual ~SAKBaseTool();
-    QString toolName(){return mToolName;}
-    void setToolName(const QString &name){mToolName = name;}
+    QString toolName() { return mToolName; }
+    void setToolName(const QString &name) { mToolName = name; }
 
     /**
      * @brief inputBytes: The entrance of data.
      * @param bytes: The bytes input.
      * @param context: The extension parameters.
      */
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject());
+    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject());
 
 signals:
     void bytesInputted(const QByteArray &bytes, const QVariant &context);
@@ -47,9 +46,13 @@ protected:
     void outputMessage(int type, const QString &info) const;
 
 public:
-    bool isWorking(){return mIsWorking;}
-    bool enable(){return mEnable;}
-    void setEnable(bool enable){mEnable = enable; emit enableChanged();}
+    bool isWorking() { return mIsWorking; }
+    bool enable() { return mEnable; }
+    void setEnable(bool enable)
+    {
+        mEnable = enable;
+        emit enableChanged();
+    }
 
 protected:
     std::atomic_bool mIsWorking{false};

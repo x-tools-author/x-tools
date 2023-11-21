@@ -7,14 +7,16 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QTimer>
 #include "saktransmittertool.h"
+#include <QTimer>
 
 SAKTransmitterTool::SAKTransmitterTool(const char *logCategory, QObject *parent)
     : SAKTableModelTool{logCategory, parent}
 {
-    connect(mTableModel, &QAbstractTableModel::dataChanged,
-            this, &SAKTransmitterTool::onDataChanged);
+    connect(mTableModel,
+            &QAbstractTableModel::dataChanged,
+            this,
+            &SAKTransmitterTool::onDataChanged);
 }
 
 SAKCommunicationTool *SAKTransmitterTool::communicationTool(int index)
@@ -36,8 +38,7 @@ int SAKTransmitterTool::rowCount(const QModelIndex &parent) const
     return ret;
 }
 
-bool SAKTransmitterTool::removeRows(int row, int count,
-                                    const QModelIndex &parent)
+bool SAKTransmitterTool::removeRows(int row, int count, const QModelIndex &parent)
 {
     if (mToolVector.isEmpty()) {
         return true;
@@ -65,27 +66,24 @@ bool SAKTransmitterTool::removeRows(int row, int count,
     return true;
 }
 
-
-bool SAKTransmitterTool::insertRows(int row, int count,
-                                    const QModelIndex &parent)
+bool SAKTransmitterTool::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent)
 
-    auto initTool = [=](SAKCommunicationTool* tool){
+    auto initTool = [=](SAKCommunicationTool *tool) {
         tool->setParent(this);
-        connect(this, &SAKCommunicationTool::bytesInputted,
-                tool, &SAKCommunicationTool::inputBytes);
-        connect(tool, &SAKCommunicationTool::bytesOutputted,
-                this, &SAKCommunicationTool::bytesOutputted);
-        connect(this, &SAKCommunicationTool::started,
-                tool, [=](){tool->start();});
-        connect(this, &SAKCommunicationTool::finished,
-                tool, [=](){tool->exit();});
+        connect(this, &SAKCommunicationTool::bytesInputted, tool, &SAKCommunicationTool::inputBytes);
+        connect(tool,
+                &SAKCommunicationTool::bytesOutputted,
+                this,
+                &SAKCommunicationTool::bytesOutputted);
+        connect(this, &SAKCommunicationTool::started, tool, [=]() { tool->start(); });
+        connect(this, &SAKCommunicationTool::finished, tool, [=]() { tool->exit(); });
 
-        connect(tool, &SAKCommunicationTool::finished, this, [=](){
+        connect(tool, &SAKCommunicationTool::finished, this, [=]() {
             // Reboot the transmitter thread if tool box is wroking.
             if (this->isRunning()) {
-                QTimer::singleShot(1*1000, tool, [=](){
+                QTimer::singleShot(1 * 1000, tool, [=]() {
                     qCDebug(mLoggingCategory) << "reboot...";
                     tool->start();
                 });

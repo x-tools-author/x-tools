@@ -10,8 +10,8 @@
 #ifndef SAKUDPSERVERTOOL_H
 #define SAKUDPSERVERTOOL_H
 
-#include <QUdpSocket>
 #include "saksocketservertool.h"
+#include <QUdpSocket>
 
 class SAKUdpServerTool : public SAKSocketServerTool
 {
@@ -21,8 +21,7 @@ public:
 
 protected:
     virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
     virtual void uninitialize() final;
     void readBytes();
 
@@ -30,8 +29,10 @@ private:
     QUdpSocket *mUdpSocket{nullptr};
 
 private:
-    void writeDatagram(const QByteArray &bytes, const QVariant &context,
-                       const QString &ip, quint16 port);
+    void writeDatagram(const QByteArray &bytes,
+                       const QVariant &context,
+                       const QString &ip,
+                       quint16 port);
 };
 
 #endif // SAKUDPSERVERTOOL_H

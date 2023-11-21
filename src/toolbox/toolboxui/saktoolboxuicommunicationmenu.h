@@ -10,9 +10,9 @@
 #ifndef SAKTOOLBOXUICOMMUNICATIONMENU_H
 #define SAKTOOLBOXUICOMMUNICATIONMENU_H
 
+#include <QLoggingCategory>
 #include <QMenu>
 #include <QTextDocument>
-#include <QLoggingCategory>
 
 namespace Ui {
 class SAKToolBoxUiCommunicationMenu;

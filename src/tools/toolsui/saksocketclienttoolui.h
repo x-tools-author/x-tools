@@ -10,8 +10,8 @@
 #ifndef SAKSOCKETCLIENTTOOLUI_H
 #define SAKSOCKETCLIENTTOOLUI_H
 
-#include <QLoggingCategory>
 #include "sakcommunicationtoolui.h"
+#include <QLoggingCategory>
 
 namespace Ui {
 class SAKSocketClientToolUi;
@@ -25,8 +25,7 @@ public:
     explicit SAKSocketClientToolUi(QWidget *parent = nullptr);
     ~SAKSocketClientToolUi();
     virtual void onIsWorkingChanged(bool isWorking) final;
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingsGroup) final;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) final;
 
 private:
     const QLoggingCategory mLoggingCategory{"sak.socketclienttoolui"};

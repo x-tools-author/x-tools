@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QLineEdit>
 #include <QFileDialog>
+#include <QLineEdit>
 
 #include "sakstorertool.h"
 #include "sakstorertoolui.h"
@@ -19,8 +19,10 @@ SAKStorerToolUi::SAKStorerToolUi(QWidget *parent)
     , ui(new Ui::SAKStorerToolUi)
 {
     ui->setupUi(this);
-    connect(ui->pushButtonSelectFile, &QPushButton::clicked,
-            this, &SAKStorerToolUi::onPushButtonSelectFileClicked);
+    connect(ui->pushButtonSelectFile,
+            &QPushButton::clicked,
+            this,
+            &SAKStorerToolUi::onPushButtonSelectFileClicked);
 }
 
 SAKStorerToolUi::~SAKStorerToolUi()
@@ -28,45 +30,45 @@ SAKStorerToolUi::~SAKStorerToolUi()
     delete ui;
 }
 
-void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
-                             const QString &settingsGroup)
+void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
 {
     if (!tool) {
         qCWarning((*mLoggingCategory)) << "The tool value is nullptr!";
         return;
     }
 
-    SAKStorerTool *cookedTool = qobject_cast<SAKStorerTool*>(tool);
+    SAKStorerTool *cookedTool = qobject_cast<SAKStorerTool *>(tool);
     if (!cookedTool) {
         qCWarning((*mLoggingCategory)) << "The cookedTool value is nullptr!";
         return;
     }
 
-    connect(ui->checkBoxEnable, &QCheckBox::clicked, this, [=](){
+    connect(ui->checkBoxEnable, &QCheckBox::clicked, this, [=]() {
         cookedTool->setEnable(ui->checkBoxEnable->isChecked());
     });
-    connect(ui->checkBoxRx, &QCheckBox::clicked, this, [=](){
+    connect(ui->checkBoxRx, &QCheckBox::clicked, this, [=]() {
         cookedTool->setSaveRx(ui->checkBoxRx->isChecked());
     });
-    connect(ui->checkBoxTx, &QCheckBox::clicked, this, [=](){
+    connect(ui->checkBoxTx, &QCheckBox::clicked, this, [=]() {
         cookedTool->setSaveTx(ui->checkBoxTx->isChecked());
     });
-    connect(ui->checkBoxDate, &QCheckBox::clicked, this, [=](){
+    connect(ui->checkBoxDate, &QCheckBox::clicked, this, [=]() {
         cookedTool->setSaveDate(ui->checkBoxDate->isChecked());
     });
-    connect(ui->checkBoxDate, &QCheckBox::clicked, this, [=](){
+    connect(ui->checkBoxDate, &QCheckBox::clicked, this, [=]() {
         cookedTool->setSaveTime(ui->checkBoxTime->isChecked());
     });
-    connect(ui->checkBoxMs, &QCheckBox::clicked, this, [=](){
+    connect(ui->checkBoxMs, &QCheckBox::clicked, this, [=]() {
         cookedTool->setSaveMs(ui->checkBoxMs->isChecked());
     });
     connect(ui->comboBoxFormat,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, [=](){
-        int format = ui->comboBoxFormat->currentData().toInt();
-        cookedTool->setSaveFormat(format);
-    });
-    connect(ui->lineEditStorerPath, &SAKLineEdit::textChanged, this, [=](){
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::activated),
+            this,
+            [=]() {
+                int format = ui->comboBoxFormat->currentData().toInt();
+                cookedTool->setSaveFormat(format);
+            });
+    connect(ui->lineEditStorerPath, &SAKLineEdit::textChanged, this, [=]() {
         cookedTool->setFileName(ui->lineEditStorerPath->text());
     });
 
@@ -91,8 +93,10 @@ void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
 
 void SAKStorerToolUi::onPushButtonSelectFileClicked()
 {
-    auto str = QFileDialog::getSaveFileName(Q_NULLPTR, tr("Save file"),
-                                            ".", tr("txt (*.txt);;All (*)"));
+    auto str = QFileDialog::getSaveFileName(Q_NULLPTR,
+                                            tr("Save file"),
+                                            ".",
+                                            tr("txt (*.txt);;All (*)"));
     if (!str.isEmpty()) {
         ui->lineEditStorerPath->setText(str);
     }

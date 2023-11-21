@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "sakvelometertool.h"
 #include "sakvelometertoolui.h"
+#include "sakvelometertool.h"
 #include "ui_sakvelometertoolui.h"
 
 SAKVelometerToolUi::SAKVelometerToolUi(QWidget *parent)
@@ -23,8 +23,7 @@ SAKVelometerToolUi::~SAKVelometerToolUi()
     delete ui;
 }
 
-void SAKVelometerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
-                                                 const QString &settingsGroup)
+void SAKVelometerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
 {
     Q_UNUSED(settingsGroup)
 
@@ -39,14 +38,13 @@ void SAKVelometerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
         return;
     }
 
-    auto cookedTool = qobject_cast<SAKVelometerTool*>(tool);
+    auto cookedTool = qobject_cast<SAKVelometerTool *>(tool);
     if (!cookedTool) {
         qCWarning(mLoggingCategory) << "Invalid tool!";
         return;
     }
 
-    connect(cookedTool, &SAKVelometerTool::velocityChanged,
-            this, [=](const QString &v){
+    connect(cookedTool, &SAKVelometerTool::velocityChanged, this, [=](const QString &v) {
         ui->labelVelocity->setText(v);
     });
 }

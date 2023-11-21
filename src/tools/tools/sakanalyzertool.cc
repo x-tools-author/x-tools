@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "sakinterface.h"
 #include "sakanalyzertool.h"
+#include "sakinterface.h"
 
 SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
     : SAKBaseTool{"sak.analyzertool", parent}
@@ -44,12 +44,12 @@ void SAKAnalyzerTool::setMaxTempBytes(int maxBytes)
     mParametersMutex.unlock();
 }
 
-void SAKAnalyzerTool::inputBytes(const QByteArray &bytes,
-                                 const QVariant &context)
+void SAKAnalyzerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     if (bytes.isEmpty()) {
-        outputMessage(QtInfoMsg, "Empty input bytes, "
-                                 "the operation will be ignored!");
+        outputMessage(QtInfoMsg,
+                      "Empty input bytes, "
+                      "the operation will be ignored!");
         return;
     }
 
@@ -77,7 +77,7 @@ void SAKAnalyzerTool::run()
     QTimer *handleTimer = new QTimer();
     handleTimer->setInterval(5);
     handleTimer->setSingleShot(true);
-    connect(handleTimer, &QTimer::timeout, handleTimer, [=](){
+    connect(handleTimer, &QTimer::timeout, handleTimer, [=]() {
         if (mEnable) {
             mInputtedBytesMutex.lock();
             analyze();
@@ -126,8 +126,7 @@ void SAKAnalyzerTool::analyzeFixed()
     mParametersMutex.unlock();
 
     while (mInputtedBytes.length() >= ctx.frameBytes) {
-        QByteArray frame(mInputtedBytes.data(),
-                         ctx.frameBytes);
+        QByteArray frame(mInputtedBytes.data(), ctx.frameBytes);
         mInputtedBytes.remove(0, ctx.frameBytes);
 
         QByteArray ba = SAKInterface::arrayToHex(frame, ' ');

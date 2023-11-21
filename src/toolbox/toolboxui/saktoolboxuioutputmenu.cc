@@ -58,7 +58,7 @@ SAKToolBoxUiOutputMenu::SAKToolBoxUiOutputMenu(const QString& settingsGroup,
     const QString fillterKey = settingsGroup + "/fillter";
     txt = SAKSettings::instance()->value(fillterKey).toString();
     ui->filter->setText(txt);
-    connect(ui->filter, &QLineEdit::editingFinished, this, [=](){
+    connect(ui->filter, &QLineEdit::editingFinished, this, [=]() {
         SAKSettings::instance()->setValue(fillterKey, ui->filter->text().trimmed());
     });
 }

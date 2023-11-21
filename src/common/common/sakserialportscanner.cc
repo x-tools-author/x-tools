@@ -1,9 +1,9 @@
 /*******************************************************************************
  * Copyright 2023 wuuhaii(qsaker@foxmail.com). All rights reserved.
  ******************************************************************************/
+#include "sakserialportscanner.h"
 #include <QSerialPort>
 #include <QSerialPortInfo>
-#include "sakserialportscanner.h"
 
 SAKSerialPortScanner::SAKSerialPortScanner(QObject *parent)
     : QObject{parent}
@@ -11,7 +11,7 @@ SAKSerialPortScanner::SAKSerialPortScanner(QObject *parent)
     nAutoUpdatePortNamesTimer = new QTimer(this);
     nAutoUpdatePortNamesTimer->setInterval(1000);
     nAutoUpdatePortNamesTimer->setSingleShot(true);
-    connect(nAutoUpdatePortNamesTimer, &QTimer::timeout, this, [=](){
+    connect(nAutoUpdatePortNamesTimer, &QTimer::timeout, this, [=]() {
         refresh();
         nAutoUpdatePortNamesTimer->start();
     });
@@ -88,4 +88,3 @@ bool SAKSerialPortScanner::isBusy(const QString &portName)
     sp.close();
     return busy;
 }
-

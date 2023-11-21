@@ -9,8 +9,7 @@
  ******************************************************************************/
 #include "saksocketclienttransmittertoolui.h"
 
-SAKSocketClientTransmitterToolUi::SAKSocketClientTransmitterToolUi(
-    const char *lg, QWidget *parent)
+SAKSocketClientTransmitterToolUi::SAKSocketClientTransmitterToolUi(const char *lg, QWidget *parent)
     : SAKTransmitterToolUi(lg, parent)
 {
     mEditor = new SAKSocketClientTransmitterToolUiEditor(this);
@@ -21,8 +20,8 @@ QDialog *SAKSocketClientTransmitterToolUi::itemEditor()
     return mEditor;
 }
 
-void SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(
-    SAKBaseTool *tool, const QString &settingGroup)
+void SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+                                                               const QString &settingGroup)
 {
     SAKTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
     setColumnVisible(4, false);

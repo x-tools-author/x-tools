@@ -11,15 +11,12 @@
 
 SAKWebSocketTransmitterToolUi::SAKWebSocketTransmitterToolUi(QWidget *parent)
     : SAKSocketClientTransmitterToolUi("SAK.WebSocketTransmitterToolUi", parent)
-{
+{}
 
-}
-
-void SAKWebSocketTransmitterToolUi::onBaseToolUiInitialized(
-    SAKBaseTool *tool, const QString &settingGroup)
+void SAKWebSocketTransmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+                                                            const QString &settingGroup)
 {
-    SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(tool,
-                                                              settingGroup);
+    SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
 
     setColumnVisible(4, true);
     mEditor->setWebSocketContextVisible(true);

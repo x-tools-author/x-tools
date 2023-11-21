@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QMessageBox>
-#include "saksocketservertool.h"
 #include "saksocketservertoolui.h"
+#include "saksocketservertool.h"
 #include "ui_saksocketservertoolui.h"
+#include <QMessageBox>
 
 SAKSocketServerToolUi::SAKSocketServerToolUi(QWidget *parent)
     : SAKCommunicationToolUi{parent}
@@ -18,19 +18,25 @@ SAKSocketServerToolUi::SAKSocketServerToolUi(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->comboBoxServerIp,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, &SAKSocketServerToolUi::onComboBoxServerIpActived);
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::activated),
+            this,
+            &SAKSocketServerToolUi::onComboBoxServerIpActived);
     connect(ui->spinBoxServerPort,
-            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
-            this, &SAKSocketServerToolUi::onSpinBoxServerPortValueChanged);
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this,
+            &SAKSocketServerToolUi::onSpinBoxServerPortValueChanged);
     connect(ui->comboBoxClientList,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-            this, &SAKSocketServerToolUi::onComboBoxClientsIndexChanged);
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            this,
+            &SAKSocketServerToolUi::onComboBoxClientsIndexChanged);
     connect(ui->comboBoxMessageType,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-            this, &SAKSocketServerToolUi::onComboBoxMessageTypeIndexChanged);
-    connect(ui->checkBoxSpecifyIpAndPort, &QCheckBox::clicked,
-            this, &SAKSocketServerToolUi::onCheckBoxSpecifyIpAndPortClicked);
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            this,
+            &SAKSocketServerToolUi::onComboBoxMessageTypeIndexChanged);
+    connect(ui->checkBoxSpecifyIpAndPort,
+            &QCheckBox::clicked,
+            this,
+            &SAKSocketServerToolUi::onCheckBoxSpecifyIpAndPortClicked);
     ui->pushButtonClear->hide();
 }
 
@@ -46,8 +52,7 @@ void SAKSocketServerToolUi::onIsWorkingChanged(bool isWorking)
     ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
 }
 
-void SAKSocketServerToolUi::onBaseToolUiInitialized(
-    SAKBaseTool *tool, const QString &settingsGroup)
+void SAKSocketServerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
 {
     if (!tool) {
         return;
@@ -70,7 +75,7 @@ void SAKSocketServerToolUi::onBaseToolUiInitialized(
         ui->checkBoxSpecifyIpAndPort->hide();
     }
 
-    mTool = qobject_cast<SAKSocketServerTool*>(tool);
+    mTool = qobject_cast<SAKSocketServerTool *>(tool);
     if (!mTool) {
         qCWarning(mLoggingCategory) << "qobject_cast<>() return nullptr";
         return;
@@ -79,26 +84,26 @@ void SAKSocketServerToolUi::onBaseToolUiInitialized(
     ui->comboBoxServerIp->setGroupKey(settingsGroup, "serverIp");
     ui->spinBoxServerPort->setGroupKey(settingsGroup, "port");
     ui->comboBoxMessageType->setGroupKey(settingsGroup, "messageType");
-    ui->checkBoxSpecifyIpAndPort->setGroupKey(settingsGroup,
-                                              "specifiedIpAndPort");
+    ui->checkBoxSpecifyIpAndPort->setGroupKey(settingsGroup, "specifiedIpAndPort");
 
     QString ip = ui->comboBoxServerIp->currentText();
     int port = ui->spinBoxServerPort->value();
     bool specified = ui->checkBoxSpecifyIpAndPort->isChecked();
     int messageType = ui->comboBoxMessageType->currentData().toInt();
-    mTool->setServerIp(ip);;
+    mTool->setServerIp(ip);
+    ;
     mTool->setServerPort(port);
     mTool->setSpecifyIpAndPort(specified);
     mTool->setMessageType(messageType);
 
-    connect(mTool, &SAKSocketServerTool::bindingIpPortChanged, this, [=](){
+    connect(mTool, &SAKSocketServerTool::bindingIpPortChanged, this, [=]() {
         QString ipport = mTool->bindingIpPort();
         ui->labelBindingInfo->setText(ipport);
     });
-    connect(mTool, &SAKSocketServerTool::finished, this, [=](){
+    connect(mTool, &SAKSocketServerTool::finished, this, [=]() {
         ui->labelBindingInfo->setText(tr("Closed"));
     });
-    connect(mTool, &SAKSocketServerTool::clientsChanged, this, [=](){
+    connect(mTool, &SAKSocketServerTool::clientsChanged, this, [=]() {
         int index = ui->comboBoxClientList->currentIndex();
         QString first = ui->comboBoxClientList->itemText(0);
         QStringList clients = mTool->clients();

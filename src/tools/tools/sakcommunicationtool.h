@@ -10,21 +10,20 @@
 #ifndef SAKCOMMUNICATIONTOOL_H
 #define SAKCOMMUNICATIONTOOL_H
 
+#include "sakbasetool.h"
 #include <atomic>
 #include <QMutex>
-#include "sakbasetool.h"
 
 class SAKCommunicationTool : public SAKBaseTool
 {
     Q_OBJECT
 public:
-    explicit SAKCommunicationTool(const char *logCategory,
-                                  QObject *parent = nullptr);
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    explicit SAKCommunicationTool(const char *logCategory, QObject *parent = nullptr);
+    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
 
 protected:
-    struct InputDataContext {
+    struct InputDataContext
+    {
         QByteArray bytes;
         QVariant context;
     };
@@ -33,8 +32,7 @@ protected:
     virtual void run() final;
 
     virtual bool initialize(QString &errStr) = 0;
-    virtual void writeBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) = 0;
+    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) = 0;
     virtual void uninitialize() = 0;
 
     QJsonObject rxJsonObject() const;

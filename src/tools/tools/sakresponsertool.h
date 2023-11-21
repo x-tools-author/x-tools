@@ -10,9 +10,9 @@
 #ifndef SAKRESPONSERTOOL_H
 #define SAKRESPONSERTOOL_H
 
+#include <QAbstractTableModel>
 #include <QMutex>
 #include <QVariant>
-#include <QAbstractTableModel>
 
 #include "saktablemodeltool.h"
 
@@ -51,7 +51,8 @@ class SAKResponserTool : public SAKTableModelTool
     SAK_STR_PROPERTY(itemResponseDelay)
     SAK_STR_PROPERTY(itemResponseText)
 public:
-    struct ResponserItem {
+    struct ResponserItem
+    {
         bool itemEnable;
         QString itemDescription{"Demo"};
         int itemOption;
@@ -80,12 +81,14 @@ public:
         int itemResponseDelay;
     };
 
-    struct ResponserData {
+    struct ResponserData
+    {
         ResponserItem data;
         int elapsedTime{0};
     };
 
-    struct ResponserItemKeys {
+    struct ResponserItemKeys
+    {
         const QString itemEnable{"Enable"};
         const QString itemDescription{"Description"};
         const QString itemOption{"Option"};
@@ -116,31 +119,26 @@ public:
     explicit SAKResponserTool(QObject *parent = nullptr);
     Q_INVOKABLE virtual QVariant itemContext(int index) final;
     virtual QString cookHeaderString(const QString &str) override;
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
 
 protected:
     virtual void run() final;
 
-    virtual int rowCount(const QModelIndex &parent
-                         = QModelIndex()) const final;
-    virtual int columnCount(const QModelIndex &parent
-                            = QModelIndex()) const final;
-    virtual QVariant data(const QModelIndex &index,
-                          int role = Qt::DisplayRole) const final;
+    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const final;
+    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const final;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const final;
     virtual bool setData(const QModelIndex &index,
                          const QVariant &value,
                          int role = Qt::EditRole) final;
-    virtual bool insertRows(int row, int count,
-                            const QModelIndex &parent = QModelIndex()) final;
-    virtual bool removeRows(int row, int count,
-                            const QModelIndex &parent = QModelIndex()) final;
+    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) final;
+    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) final;
     virtual QVariant headerData(int section,
                                 Qt::Orientation orientation,
                                 int role = Qt::DisplayRole) const final;
 
 private:
-    struct InputContext {
+    struct InputContext
+    {
         QByteArray bytes;
         QVariant context;
     };

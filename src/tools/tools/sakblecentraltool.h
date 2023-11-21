@@ -10,11 +10,11 @@
 #ifndef EDBLECENTRAL_HH
 #define EDBLECENTRAL_HH
 
-#include <QVariantList>
-#include <QBluetoothUuid>
-#include <QLowEnergyService>
-#include <QLowEnergyController>
 #include <QBluetoothDeviceInfo>
+#include <QBluetoothUuid>
+#include <QLowEnergyController>
+#include <QLowEnergyService>
+#include <QVariantList>
 
 #include "sakcommunicationtool.h"
 
@@ -23,13 +23,10 @@ class SAKBleCentralTool : public SAKCommunicationTool
     Q_OBJECT
     Q_PROPERTY(QVariant info READ info WRITE setInfo NOTIFY infoChanged)
     Q_PROPERTY(QVariantList services READ services NOTIFY servicesChanged)
-    Q_PROPERTY(int serviceIndex READ serviceIndex WRITE setServiceIndex
-               NOTIFY serviceIndexChanged)
-    Q_PROPERTY(int characteristicIndex READ characteristicIndex
-               WRITE setCharacteristicIndex
-               NOTIFY characteristicIndexChanged)
-    Q_PROPERTY(int writeModel READ writeModel WRITE setWriteModel
-               NOTIFY writeModelChanged)
+    Q_PROPERTY(int serviceIndex READ serviceIndex WRITE setServiceIndex NOTIFY serviceIndexChanged)
+    Q_PROPERTY(int characteristicIndex READ characteristicIndex WRITE setCharacteristicIndex NOTIFY
+                   characteristicIndexChanged)
+    Q_PROPERTY(int writeModel READ writeModel WRITE setWriteModel NOTIFY writeModelChanged)
 public:
     SAKBleCentralTool(QObject *parent = nullptr);
     ~SAKBleCentralTool();
@@ -44,15 +41,13 @@ public:
     Q_INVOKABLE bool isNotified(QVariant characteristic);
 
 signals:
-    void descriptorWritten(const QLowEnergyDescriptor &descriptor,
-                           const QByteArray &newValue);
+    void descriptorWritten(const QLowEnergyDescriptor &descriptor, const QByteArray &newValue);
     void serviceDiscoveryStarted();
     void serviceDiscoveryFinished();
 
 protected:
     virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
     virtual void readBytes() final;
     virtual void uninitialize() final;
 
@@ -68,8 +63,8 @@ private:
     void onServiceObjectStateChanged(QLowEnergyService *service,
                                      QLowEnergyService::ServiceState newState);
 
-//↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-//Properties
+    //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    //Properties
 public:
     Q_INVOKABLE QVariant info();
     Q_INVOKABLE void setInfo(QVariant info);
@@ -91,7 +86,7 @@ signals:
 
 private:
     QBluetoothDeviceInfo mBluetoothDeviceInfo;
-    QVector<QLowEnergyService*> mServices;
+    QVector<QLowEnergyService *> mServices;
     int mServiceIndex{-1};
     int mCharacteristicIndex{-1};
     int mWriteModel;

@@ -10,15 +10,15 @@
 #ifndef SAKCRCINTERFACE_H
 #define SAKCRCINTERFACE_H
 
+#include <QLoggingCategory>
 #include <QObject>
 #include <QStringList>
-#include <QLoggingCategory>
 
 class SAKCrcInterface : public QObject
 {
     Q_OBJECT
 public:
-    enum SAKEnumCrcAlgorithm{
+    enum SAKEnumCrcAlgorithm {
         CRC_8,
         CRC_8_ITU,
         CRC_8_ROHC,
@@ -60,35 +60,34 @@ public:
 
 public:
     template<typename T>
-    T crcCalculate(uint8_t *input,
-                   uint64_t length,
-                   SAKCrcInterface::SAKEnumCrcAlgorithm model){
+    T crcCalculate(uint8_t *input, uint64_t length, SAKCrcInterface::SAKEnumCrcAlgorithm model)
+    {
         T crcReg = static_cast<T>(initialValue(model));
         T rawPoly = static_cast<T>(poly(model));
         uint8_t byte = 0;
 
         T temp = 1;
-        while (length--){
+        while (length--) {
             byte = *(input++);
-            if (isInputReversal(model)){
-                reverseInt(byte,byte);
+            if (isInputReversal(model)) {
+                reverseInt(byte, byte);
             }
 
-            crcReg ^= static_cast<T>((byte << 8*(sizeof (T)-1)));
-            for(int i = 0;i < 8;i++){
-                if(crcReg & (temp << (sizeof (T)*8-1))){
+            crcReg ^= static_cast<T>((byte << 8 * (sizeof(T) - 1)));
+            for (int i = 0; i < 8; i++) {
+                if (crcReg & (temp << (sizeof(T) * 8 - 1))) {
                     crcReg = static_cast<T>((crcReg << 1) ^ rawPoly);
-                }else {
+                } else {
                     crcReg = static_cast<T>(crcReg << 1);
                 }
             }
         }
 
-        if (isOutputReversal(model)){
-            reverseInt(crcReg,crcReg);
+        if (isOutputReversal(model)) {
+            reverseInt(crcReg, crcReg);
         }
 
-        T crc = (crcReg ^ static_cast<T>(xorValue(model))) ;
+        T crc = (crcReg ^ static_cast<T>(xorValue(model)));
         return crc;
     }
 
@@ -98,13 +97,14 @@ private:
 
 private:
     template<typename T>
-    bool reverseInt(const T &input, T &output){
-        int bitsWidth = sizeof (input)*8;
+    bool reverseInt(const T &input, T &output)
+    {
+        int bitsWidth = sizeof(input) * 8;
         QString inputStr = QString("%1").arg(QString::number(input, 2), bitsWidth, '0');
         QString outputStr;
         outputStr.resize(bitsWidth);
-        for (int i = 0; i < bitsWidth; i++){
-            outputStr.replace(i, 1, inputStr.at(bitsWidth-1-i));
+        for (int i = 0; i < bitsWidth; i++) {
+            outputStr.replace(i, 1, inputStr.at(bitsWidth - 1 - i));
         }
 
         bool ok;

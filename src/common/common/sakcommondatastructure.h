@@ -10,10 +10,10 @@
 #ifndef SAKCOMMONDATASTRUCTURE_H
 #define SAKCOMMONDATASTRUCTURE_H
 
+#include <QComboBox>
 #include <QMap>
 #include <QObject>
 #include <QTextEdit>
-#include <QComboBox>
 
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include <QSerialPort>
@@ -27,11 +27,11 @@
 
 /// @brief The class define some data structure of the project.
 /// Also, It provides some interface about these data structure.
-class SAKCommonDataStructure:public QObject
+class SAKCommonDataStructure : public QObject
 {
     Q_OBJECT
 public:
-    SAKCommonDataStructure(QObject* parent = Q_NULLPTR);
+    SAKCommonDataStructure(QObject *parent = Q_NULLPTR);
     ~SAKCommonDataStructure();
 
     // Input text format
@@ -75,17 +75,12 @@ public:
     };
     Q_ENUM(SAKEmnuSuffixType);
 
-    enum SAKEnumPrefixType {
-        PrefixTypeNone,
-        PrefixTypeR,
-        PrefixTypeN,
-        PrefixTypeRN,
-        PrefixTypeNR
-    };
+    enum SAKEnumPrefixType { PrefixTypeNone, PrefixTypeR, PrefixTypeN, PrefixTypeRN, PrefixTypeNR };
     Q_ENUM(SAKEnumPrefixType);
 
 #ifdef SAK_IMPORT_MODULE_TEST
-    struct SAKStructTestParametersContext {
+    struct SAKStructTestParametersContext
+    {
         bool openFailed;
         bool readCircularly;
         int readInterval;
@@ -98,7 +93,8 @@ public:
 #endif
 
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
-    struct SAKStructSerialPortParametersContext {
+    struct SAKStructSerialPortParametersContext
+    {
         QString portName;
         qint32 baudRate;
         QSerialPort::DataBits dataBits;
@@ -112,7 +108,8 @@ public:
 
 #ifdef SAK_IMPORT_MODULE_UDP
 #ifdef SAK_IMPORT_MODULE_UDP_CLIENT
-    struct SAKStructUdpClientParametersContext {
+    struct SAKStructUdpClientParametersContext
+    {
         QString peerHost;
         quint16 peerPort;
         QString localHost;
@@ -120,7 +117,8 @@ public:
         bool specifyLocalInfo;
         bool pauseSending;
     };
-    struct SAKStructUdpServerParametersContext {
+    struct SAKStructUdpServerParametersContext
+    {
         QString serverHost;
         quint16 serverPort;
 
@@ -133,7 +131,8 @@ public:
 
 #ifdef SAK_IMPORT_MODULE_TCP
 #ifdef SAK_IMPORT_MODULE_TCP_CLIENT
-    struct SAKStructTcpClientParametersContext {
+    struct SAKStructTcpClientParametersContext
+    {
         QString localHost;
         quint16 localPort;
         QString serverHost;
@@ -143,7 +142,8 @@ public:
     };
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP_SERVER
-    struct SAKStructTcpServerParametersContext {
+    struct SAKStructTcpServerParametersContext
+    {
         QString serverHost;
         quint16 serverPort;
         QString currentClientHost;
@@ -153,13 +153,15 @@ public:
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
-    struct SAKStructWSClientParametersContext {
+    struct SAKStructWSClientParametersContext
+    {
         QString serverAddress;
         quint32 sendingType;
     };
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
-    struct SAKStructWSServerParametersContext {
+    struct SAKStructWSServerParametersContext
+    {
         QString serverHost;
         quint16 serverPort;
         QString currentClientHost;
@@ -170,7 +172,8 @@ public:
 #endif
 #ifdef SAK_IMPORT_MODULE_BLE
 #ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
-    struct SAKStructBleCentralParametersContext {
+    struct SAKStructBleCentralParametersContext
+    {
         QBluetoothDeviceInfo info;
         QString uuid;
     };
@@ -200,8 +203,7 @@ public:
      * @param textEdit: Target text edit.
      * @param format: See SAKEnumTextInputFormat for more information.
      */
-    static QString formattingString(QString &origingString,
-                                    SAKEnumTextFormatInput format);
+    static QString formattingString(QString &origingString, SAKEnumTextFormatInput format);
 
     /**
      * @brief stringToByteArray: Transmit a QString to a QByteArray.
@@ -209,8 +211,7 @@ public:
      * @param format: See SAKEnumTextInputFormat for more information.
      * @return A QByteArray.
      */
-    static QByteArray stringToByteArray(QString &origingString,
-                                        SAKEnumTextFormatInput format);
+    static QByteArray stringToByteArray(QString &origingString, SAKEnumTextFormatInput format);
     static QByteArray stringToByteArray(QString &origingString, int format);
 
     /**
@@ -219,16 +220,14 @@ public:
      * @param format: See SAKEnumTextOutputFormat for more information.
      * @return A QString.
      */
-    static QString byteArrayToString(QByteArray &origingData,
-                                     SAKEnumTextFormatOutput format);
+    static QString byteArrayToString(QByteArray &origingData, SAKEnumTextFormatOutput format);
 
     /**
      * @brief setLineEditTextFormat: Formating input
      * @param lineEdit: Target component
      * @param format: (SAKEnumTextInputFormat)
      */
-    static void setLineEditTextFormat(QLineEdit *lineEdit,
-                                      SAKEnumTextFormatInput format);
+    static void setLineEditTextFormat(QLineEdit *lineEdit, SAKEnumTextFormatInput format);
     static void setLineEditTextFormat(QLineEdit *lineEdit, int format);
 
     static QString suffix(SAKEmnuSuffixType type);
@@ -239,6 +238,7 @@ public:
     static void setupSuffix(QComboBox *comboBox);
 
     static void formattingInputText(QTextEdit *textEdit, int model);
+
 private:
     static void setComboBoxItems(QComboBox *comboBox,
                                  QMap<int, QString> &formatMap,

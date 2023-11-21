@@ -12,11 +12,15 @@
 #include "sakcommonmainwindow.h"
 #include "saknumberassistant.h"
 
-int main(int argc, char* argv[]) {
-  QApplication* app = CreateCommonMainWindowApplication<SAKNumberAssistant>(
-      argc, argv, QObject::tr("Number Assistant"), "SAK.NumberAssistant");
-  int ret = app->exec();
-  app->deleteLater();
+int main(int argc, char* argv[])
+{
+    QApplication* app
+        = CreateCommonMainWindowApplication<SAKNumberAssistant>(argc,
+                                                                argv,
+                                                                QObject::tr("Number Assistant"),
+                                                                "SAK.NumberAssistant");
+    int ret = app->exec();
+    app->deleteLater();
 
-  return ret;
+    return ret;
 }

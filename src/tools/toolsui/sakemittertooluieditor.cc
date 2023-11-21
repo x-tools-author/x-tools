@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "sakemittertool.h"
 #include "sakemittertooluieditor.h"
+#include "sakemittertool.h"
 #include "ui_sakemittertooluieditor.h"
 
 SAKEmitterToolUiEditor::SAKEmitterToolUiEditor(QWidget *parent)
@@ -19,10 +19,8 @@ SAKEmitterToolUiEditor::SAKEmitterToolUiEditor(QWidget *parent)
     setModal(true);
     setWindowTitle(tr("Emitter Item Editor"));
 
-    connect(ui->pushButtonApply, &QPushButton::clicked,
-            this, &SAKEmitterToolUiEditor::accept);
-    connect(ui->pushButtonCancel, &QPushButton::clicked,
-            this, &SAKEmitterToolUiEditor::reject);
+    connect(ui->pushButtonApply, &QPushButton::clicked, this, &SAKEmitterToolUiEditor::accept);
+    connect(ui->pushButtonCancel, &QPushButton::clicked, this, &SAKEmitterToolUiEditor::reject);
 }
 
 SAKEmitterToolUiEditor::~SAKEmitterToolUiEditor()

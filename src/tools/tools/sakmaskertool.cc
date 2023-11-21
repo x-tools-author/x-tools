@@ -28,8 +28,7 @@ void SAKMaskerTool::setMaskCode(qint8 maskCode)
     mMask = maskCode;
 }
 
-void SAKMaskerTool::inputBytes(const QByteArray &bytes,
-                               const QVariant &context)
+void SAKMaskerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     emit bytesInputted(bytes, context);
 
@@ -46,7 +45,7 @@ void SAKMaskerTool::run()
     QTimer *timer = new QTimer();
     timer->setInterval(5);
     timer->setSingleShot(true);
-    connect(timer, &QTimer::timeout, timer, [=](){
+    connect(timer, &QTimer::timeout, timer, [=]() {
         QByteArray bytes;
         QVariant context;
         this->mInputParametersListMutex.lock();
@@ -60,27 +59,24 @@ void SAKMaskerTool::run()
         if (!bytes.isEmpty()) {
             QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
             QString hex = QString::fromLatin1(ba);
-            outputMessage(QtInfoMsg,
-                          QString("%1<-%2").arg(mToolName, hex));
+            outputMessage(QtInfoMsg, QString("%1<-%2").arg(mToolName, hex));
 
             if (this->enable()) {
                 QByteArray cookedBytes;
                 for (int i = 0; i < bytes.length(); i++) {
                     quint8 value = quint8(bytes.at(i));
                     value ^= mMask;
-                    cookedBytes.append(reinterpret_cast<char*>(&value), 1);
+                    cookedBytes.append(reinterpret_cast<char *>(&value), 1);
                 }
 
                 ba = SAKInterface::arrayToHex(cookedBytes, ' ');
                 QString hex = QString::fromLatin1(ba);
-                outputMessage(QtInfoMsg,
-                              QString("%1->%2").arg(mToolName, hex));
+                outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
                 emit bytesOutputted(cookedBytes, context);
             } else {
                 ba = SAKInterface::arrayToHex(bytes, ' ');
                 QString hex = QString::fromLatin1(ba);
-                outputMessage(QtInfoMsg,
-                              QString("%1->%2").arg(mToolName, hex));
+                outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
                 emit bytesOutputted(bytes, context);
             }
         }

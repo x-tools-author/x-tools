@@ -22,24 +22,29 @@
 #include "SAKWebSocketServerToolBoxUi.h"
 #endif
 
-SAKToolBoxUiFactory::SAKToolBoxUiFactory(QObject* parent) : QObject{parent} {}
+SAKToolBoxUiFactory::SAKToolBoxUiFactory(QObject* parent)
+    : QObject{parent}
+{}
 
-SAKToolBoxUiFactory* SAKToolBoxUiFactory::instance() {
-  static SAKToolBoxUiFactory factory;
-  return &factory;
+SAKToolBoxUiFactory* SAKToolBoxUiFactory::instance()
+{
+    static SAKToolBoxUiFactory factory;
+    return &factory;
 }
 
-QList<int> SAKToolBoxUiFactory::supportedTools() {
-  QList<int> list;
-  list << SAKToolFactory::SerialportTool << SAKToolFactory::UdpClientTool
-       << SAKToolFactory::UdpServerTool << SAKToolFactory::TcpClientTool
-       << SAKToolFactory::TcpServerTool << SAKToolFactory::WebSocketClientTool
-       << SAKToolFactory::WebSocketServerTool << SAKToolFactory::BleCentralTool
-       << SAKToolFactory::BlePeriheral;
-  return list;
+QList<int> SAKToolBoxUiFactory::supportedTools()
+{
+    QList<int> list;
+    list << SAKToolFactory::SerialportTool << SAKToolFactory::UdpClientTool
+         << SAKToolFactory::UdpServerTool << SAKToolFactory::TcpClientTool
+         << SAKToolFactory::TcpServerTool << SAKToolFactory::WebSocketClientTool
+         << SAKToolFactory::WebSocketServerTool << SAKToolFactory::BleCentralTool
+         << SAKToolFactory::BlePeriheral;
+    return list;
 }
 
-SAKToolBoxUi* SAKToolBoxUiFactory::createToolBoxUi(int type) {
+SAKToolBoxUi* SAKToolBoxUiFactory::createToolBoxUi(int type)
+{
 #if 0
     if (type == SAKToolFactory::SerialportTool) {
         return new SAKSerialPortToolBoxUi();
@@ -62,5 +67,5 @@ SAKToolBoxUi* SAKToolBoxUiFactory::createToolBoxUi(int type) {
     }
 #endif
 
-  return Q_NULLPTR;
+    return Q_NULLPTR;
 }

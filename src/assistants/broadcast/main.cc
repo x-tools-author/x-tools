@@ -12,11 +12,12 @@
 #include "sakbroadcastassistant.h"
 #include "sakcommonmainwindow.h"
 
-int main(int argc, char* argv[]) {
-  QApplication* app = CreateCommonMainWindowApplication<SAKBroadcastAssistant>(
-      argc, argv, QObject::tr("Broadcast Assistant"), "SAK.BroadcastAssistant");
-  int ret = app->exec();
-  app->deleteLater();
+int main(int argc, char* argv[])
+{
+    QApplication* app = CreateCommonMainWindowApplication<SAKBroadcastAssistant>(
+        argc, argv, QObject::tr("Broadcast Assistant"), "SAK.BroadcastAssistant");
+    int ret = app->exec();
+    app->deleteLater();
 
-  return ret;
+    return ret;
 }

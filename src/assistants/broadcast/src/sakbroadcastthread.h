@@ -13,31 +13,35 @@
 #include <QMutex>
 #include <QThread>
 
-class SAKBroadcastThread : public QThread {
-  Q_OBJECT
- public:
-  explicit SAKBroadcastThread(QObject* parent = Q_NULLPTR);
-  ~SAKBroadcastThread();
+class SAKBroadcastThread : public QThread
+{
+    Q_OBJECT
+public:
+    explicit SAKBroadcastThread(QObject* parent = Q_NULLPTR);
+    ~SAKBroadcastThread();
 
-  void SetBroadcastInformation(const QString& address, quint16 port,
-                               int interval, const QByteArray& data);
+    void SetBroadcastInformation(const QString& address,
+                                 quint16 port,
+                                 int interval,
+                                 const QByteArray& data);
 
- signals:
-  void BytesWritten(const QByteArray& bytes);
+signals:
+    void BytesWritten(const QByteArray& bytes);
 
- protected:
-  void run() final;
+protected:
+    void run() final;
 
- private:
-  struct Parameters {
-    QString address;
-    quint16 port;
-    int interval;
-    QByteArray data;
-  } parameters_;
+private:
+    struct Parameters
+    {
+        QString address;
+        quint16 port;
+        int interval;
+        QByteArray data;
+    } parameters_;
 
- private:
-  QMutex parameters_mutext_;
+private:
+    QMutex parameters_mutext_;
 };
 
-#endif  // SAKBROADCASTTHREAD_H
+#endif // SAKBROADCASTTHREAD_H

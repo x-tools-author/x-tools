@@ -10,8 +10,8 @@
 #ifndef SAKSERIALPORTTRANSMITTERTOOLUI_H
 #define SAKSERIALPORTTRANSMITTERTOOLUI_H
 
-#include "saktransmittertoolui.h"
 #include "sakserialporttransmittertooluieditor.h"
+#include "saktransmittertoolui.h"
 
 class SAKSerialPortTransmitterToolUi : public SAKTransmitterToolUi
 {
@@ -20,8 +20,7 @@ public:
     SAKSerialPortTransmitterToolUi(QWidget *parent = nullptr);
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
     virtual QDialog *itemEditor() override;
 
 private:

@@ -10,9 +10,9 @@
 #include "SAKPreferencesUi.hh"
 #include "ui_SAKPreferencesUi.h"
 
-SAKPreferencesUi::SAKPreferencesUi(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::SAKPreferencesUi)
+SAKPreferencesUi::SAKPreferencesUi(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::SAKPreferencesUi)
 {
     ui->setupUi(this);
 }

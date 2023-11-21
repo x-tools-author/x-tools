@@ -10,8 +10,8 @@
 #ifndef SAKSTORERTOOL_H
 #define SAKSTORERTOOL_H
 
-#include <QTimer>
 #include <QMutex>
+#include <QTimer>
 
 #include "sakbasetool.h"
 
@@ -29,8 +29,7 @@ public:
     explicit SAKStorerTool(QObject *parent = nullptr);
     ~SAKStorerTool();
 
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
 
 public:
     int saveFormat();
@@ -61,7 +60,8 @@ protected:
     virtual void run() final;
 
 private:
-    struct Parameters {
+    struct Parameters
+    {
         QString file;
         int format;
         bool saveRx;
@@ -72,7 +72,8 @@ private:
     } mParameters;
     QMutex mParametersMutex;
 
-    struct InputContext {
+    struct InputContext
+    {
         QByteArray bytes;
         QVariant context;
     };

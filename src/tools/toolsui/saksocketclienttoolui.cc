@@ -20,19 +20,25 @@ SAKSocketClientToolUi::SAKSocketClientToolUi(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->comboBoxClientAddress,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, &SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::activated),
+            this,
+            &SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
     connect(ui->spinBoxClientPort,
-            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
-            this, &SAKSocketClientToolUi::onSpinBoxClientPortValueChanged);
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this,
+            &SAKSocketClientToolUi::onSpinBoxClientPortValueChanged);
     connect(ui->comboBoxServerAddress,
-            static_cast<void(QComboBox::*)(const QString &)>(&QComboBox::currentTextChanged),
-            this, &SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
+            static_cast<void (QComboBox::*)(const QString &)>(&QComboBox::currentTextChanged),
+            this,
+            &SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
     connect(ui->spinBoxServerPort,
-            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
-            this, &SAKSocketClientToolUi::onSpinBoxServerPortValueChanged);
-    connect(ui->checkBoxSpecifyIpAndPort, &QCheckBox::clicked,
-            this, &SAKSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked);
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this,
+            &SAKSocketClientToolUi::onSpinBoxServerPortValueChanged);
+    connect(ui->checkBoxSpecifyIpAndPort,
+            &QCheckBox::clicked,
+            this,
+            &SAKSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked);
 }
 
 SAKSocketClientToolUi::~SAKSocketClientToolUi()
@@ -47,8 +53,7 @@ void SAKSocketClientToolUi::onIsWorkingChanged(bool isWorking)
     ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
 }
 
-void SAKSocketClientToolUi::onBaseToolUiInitialized(
-    SAKBaseTool *tool, const QString &settingsGroup)
+void SAKSocketClientToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
 {
     if (!tool) {
         return;
@@ -65,7 +70,7 @@ void SAKSocketClientToolUi::onBaseToolUiInitialized(
         ui->comboBoxMessageType->hide();
     }
 
-    mTool = qobject_cast<SAKSocketClientTool*>(tool);
+    mTool = qobject_cast<SAKSocketClientTool *>(tool);
     if (!mTool) {
         qCWarning(mLoggingCategory) << "qobject_cast<>() return nullptr";
         return;
@@ -73,8 +78,7 @@ void SAKSocketClientToolUi::onBaseToolUiInitialized(
 
     ui->comboBoxClientAddress->setGroupKey(settingsGroup, "clientAddress");
     ui->spinBoxClientPort->setGroupKey(settingsGroup, "clientPort");
-    ui->checkBoxSpecifyIpAndPort->setGroupKey(settingsGroup,
-                                              "specifyIpAndPort");
+    ui->checkBoxSpecifyIpAndPort->setGroupKey(settingsGroup, "specifyIpAndPort");
     ui->comboBoxServerAddress->setGroupKey(settingsGroup, "serverAddress");
     ui->spinBoxServerPort->setGroupKey(settingsGroup, "serverPort");
     ui->comboBoxMessageType->setGroupKey(settingsGroup, "messageType");
@@ -85,11 +89,11 @@ void SAKSocketClientToolUi::onBaseToolUiInitialized(
     mTool->setServerPort(ui->spinBoxServerPort->value());
     mTool->setSpecifyClientIpPort(ui->checkBoxSpecifyIpAndPort->isChecked());
 
-    connect(mTool, &SAKSocketClientTool::bindingIpPortChanged, this, [=](){
+    connect(mTool, &SAKSocketClientTool::bindingIpPortChanged, this, [=]() {
         QString ipport = mTool->bindingIpPort();
         ui->labelContext->setText(ipport);
     });
-    connect(mTool, &SAKSocketClientTool::finished, this, [=](){
+    connect(mTool, &SAKSocketClientTool::finished, this, [=]() {
         ui->labelContext->setText(tr("Closed"));
     });
 }

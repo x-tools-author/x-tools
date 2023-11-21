@@ -12,11 +12,14 @@
 #include "sakcommonmainwindow.h"
 #include "sakmodbusui.h"
 
-int main(int argc, char* argv[]) {
-  QApplication* app = CreateCommonMainWindowApplication<SAKModbusUi>(
-      argc, argv, QObject::tr("Modbus Studio"), "SAK.ModbusStudio");
-  int ret = app->exec();
-  app->deleteLater();
+int main(int argc, char* argv[])
+{
+    QApplication* app = CreateCommonMainWindowApplication<SAKModbusUi>(argc,
+                                                                       argv,
+                                                                       QObject::tr("Modbus Studio"),
+                                                                       "SAK.ModbusStudio");
+    int ret = app->exec();
+    app->deleteLater();
 
-  return ret;
+    return ret;
 }

@@ -10,10 +10,10 @@
 #ifndef SAKPRESTORERTOOL_H
 #define SAKPRESTORERTOOL_H
 
-#include <QTimer>
-#include <QMutex>
-#include <QVariant>
 #include <QAbstractTableModel>
+#include <QMutex>
+#include <QTimer>
+#include <QVariant>
 
 #include "saktablemodeltool.h"
 
@@ -37,7 +37,8 @@ class SAKPrestorerTool : public SAKTableModelTool
 
     Q_PROPERTY(QStringList descriptions READ descriptions NOTIFY descriptionsChanged)
 public:
-    struct Item {
+    struct Item
+    {
         QString itemDescription{"Demo"};
         int itemTextFormat;
         int itemEscapeCharacter;
@@ -52,7 +53,8 @@ public:
         int itemCrcEndIndex;
     };
 
-    struct ItemKeys {
+    struct ItemKeys
+    {
         const QString itemDescription{"Description"};
         const QString itemTextFormat{"Format"};
         const QString itemEscapeCharacter{"Escape"};
@@ -75,23 +77,19 @@ public:
     Q_INVOKABLE void send(int index);
 
 protected:
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context) final;
+    virtual void inputBytes(const QByteArray &bytes, const QVariant &context) final;
     void run() final;
 
-    virtual int rowCount(const QModelIndex &parent
-                         = QModelIndex()) const override;
-    virtual int columnCount(const QModelIndex &parent
-                            = QModelIndex()) const override;
-    virtual QVariant data(const QModelIndex &index,
-                          int role = Qt::DisplayRole) const override;
-    virtual bool setData(const QModelIndex &index, const QVariant &value,
+    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    virtual bool setData(const QModelIndex &index,
+                         const QVariant &value,
                          int role = Qt::EditRole) override;
-    virtual bool insertRows(int row, int count,
-                            const QModelIndex &parent = QModelIndex()) override;
-    virtual bool removeRows(int row, int count,
-                            const QModelIndex &parent = QModelIndex()) override;
-    virtual QVariant headerData(int section, Qt::Orientation orientation,
+    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
+    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
+    virtual QVariant headerData(int section,
+                                Qt::Orientation orientation,
                                 int role = Qt::DisplayRole) const override;
 
 private:
@@ -101,6 +99,7 @@ private:
     const int mScanInterval{5};
     QList<int> mIndexs;
     QMutex mIndexsMutex;
+
 private:
     QVector<Item> mItems;
     QMutex mItemsMutex;

@@ -19,8 +19,7 @@ class SAKTableModelTool : public SAKBaseTool
     Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
     Q_PROPERTY(QStringList headers READ headers CONSTANT)
 public:
-    explicit SAKTableModelTool(const char *logCategory,
-                               QObject *parent = nullptr);
+    explicit SAKTableModelTool(const char *logCategory, QObject *parent = nullptr);
     QVariant tableModel();
     QStringList headers() const;
 
@@ -31,22 +30,16 @@ public:
 
 protected:
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const = 0;
-    virtual int columnCount(const QModelIndex &parent
-                            = QModelIndex()) const = 0;
-    virtual QVariant data(const QModelIndex &index,
-                          int role = Qt::DisplayRole) const = 0;
-    virtual bool setData(const QModelIndex &index,
-                         const QVariant &value,
-                         int role = Qt::EditRole) = 0;
-    virtual bool insertRows(int row,
-                            int count,
-                            const QModelIndex &parent = QModelIndex()) = 0;
-    virtual bool removeRows(int row,
-                            int count,
-                            const QModelIndex &parent = QModelIndex()) = 0;
+    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const = 0;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const = 0;
+    virtual bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole)
+        = 0;
+    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) = 0;
+    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) = 0;
     virtual QVariant headerData(int section,
                                 Qt::Orientation orientation,
-                                int role = Qt::DisplayRole) const = 0;
+                                int role = Qt::DisplayRole) const
+        = 0;
 
 protected:
     SAKTableModel *mTableModel;
@@ -54,9 +47,7 @@ protected:
 private:
     void onInvokeGetRowCount(int &count);
     void onInvokeGetColumnCount(int &count);
-    void onInvokeGetData(QVariant &data,
-                         const QModelIndex &index,
-                         int role = Qt::DisplayRole);
+    void onInvokeGetData(QVariant &data, const QModelIndex &index, int role = Qt::DisplayRole);
     void onInvokeSetData(bool &result,
                          const QModelIndex &index,
                          const QVariant &value,

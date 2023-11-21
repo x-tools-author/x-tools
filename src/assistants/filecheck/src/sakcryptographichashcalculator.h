@@ -13,24 +13,24 @@
 #include <QThread>
 
 class SAKFileCheckAssistant;
-class SAKCryptographicHashCalculator : public QThread {
-  Q_OBJECT
- public:
-        SAKCryptographicHashCalculator(SAKFileCheckAssistant* controller,
-                                 QObject* parent = Q_NULLPTR);
+class SAKCryptographicHashCalculator : public QThread
+{
+    Q_OBJECT
+public:
+    SAKCryptographicHashCalculator(SAKFileCheckAssistant* controller, QObject* parent = Q_NULLPTR);
 
- private:
-        SAKFileCheckAssistant* mCryptographicHashController;
-  QList<qint64> consumeTimeList;
+private:
+    SAKFileCheckAssistant* mCryptographicHashController;
+    QList<qint64> consumeTimeList;
 
- private:
-  void run() final;
- signals:
-  void outputMessage(QString msg, bool isErrMsg);
-  void updateResult(QByteArray result);
-  void progressBarMaxValueChanged(qint64 value);
-  void updateProgressBar(qint64 currentValue);
-  void remainTimeChanged(QString remainTime);
+private:
+    void run() final;
+signals:
+    void outputMessage(QString msg, bool isErrMsg);
+    void updateResult(QByteArray result);
+    void progressBarMaxValueChanged(qint64 value);
+    void updateProgressBar(qint64 currentValue);
+    void remainTimeChanged(QString remainTime);
 };
 
 #endif

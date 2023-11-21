@@ -10,8 +10,8 @@
 #ifndef SAKWEBSOCKETSERVERTOOL_H
 #define SAKWEBSOCKETSERVERTOOL_H
 
-#include <QWebSocketServer>
 #include "saksocketservertool.h"
+#include <QWebSocketServer>
 
 class SAKWebSocketServerTool : public SAKSocketServerTool
 {
@@ -21,17 +21,17 @@ public:
 
 protected:
     virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
     virtual void uninitialize() final;
 
 private:
-    void writeBytesInner(QWebSocket *client, const QByteArray &bytes,
+    void writeBytesInner(QWebSocket *client,
+                         const QByteArray &bytes,
                          const QVariant &context = QJsonObject());
 
 private:
     QWebSocketServer *mWebSocketServer{nullptr};
-    QList<QWebSocket*> mWebSocketList;
+    QList<QWebSocket *> mWebSocketList;
 };
 
 #endif // SAKWEBSOCKETSERVERTOOL_H

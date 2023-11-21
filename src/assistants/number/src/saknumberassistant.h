@@ -17,28 +17,29 @@ class SAKNumberAssistant;
 }
 
 class SAKCommonInterface;
-class SAKNumberAssistant : public QWidget {
-  Q_OBJECT
- public:
-  Q_INVOKABLE SAKNumberAssistant(QWidget* parent = Q_NULLPTR);
-  ~SAKNumberAssistant();
+class SAKNumberAssistant : public QWidget
+{
+    Q_OBJECT
+public:
+    Q_INVOKABLE SAKNumberAssistant(QWidget* parent = Q_NULLPTR);
+    ~SAKNumberAssistant();
 
- private:
-  SAKCommonInterface* common_interface_;
+private:
+    SAKCommonInterface* common_interface_;
 
- private:
-  void FixedLength(QStringList& stringList);
+private:
+    void FixedLength(QStringList& stringList);
 
- private:
-  Ui::SAKNumberAssistant* ui_;
+private:
+    Ui::SAKNumberAssistant* ui_;
 
- private slots:
-  void OnHexRawDataCheckBoxClicked();
-  void OnCreatePushButtonClicked();
-  void OnRawDataLineEditTextChanged(const QString& text);
-  void OnBigEndianCheckBoxClicked();
-  void OnFloatRadioButtonClicked();
-  void OnDoubleRadioButtonClicked();
+private slots:
+    void OnHexRawDataCheckBoxClicked();
+    void OnCreatePushButtonClicked();
+    void OnRawDataLineEditTextChanged(const QString& text);
+    void OnBigEndianCheckBoxClicked();
+    void OnFloatRadioButtonClicked();
+    void OnDoubleRadioButtonClicked();
 };
 
-#endif  // SAKNUMBERASSISTANT_H
+#endif // SAKNUMBERASSISTANT_H

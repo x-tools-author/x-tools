@@ -13,26 +13,25 @@
 #include <QObject>
 #include <QVariant>
 
-#include "sakbasetool.h"
-#include "sakmaskertool.h"
-#include "sakstorertool.h"
-#include "sakemittertool.h"
 #include "sakanalyzertool.h"
+#include "sakbasetool.h"
+#include "sakcommunicationtool.h"
+#include "sakemittertool.h"
+#include "sakmaskertool.h"
 #include "sakprestorertool.h"
 #include "sakresponsertool.h"
-#include "sakvelometertool.h"
-#include "sakstatisticiantool.h"
-#include "sakcommunicationtool.h"
-#include "sakudptransmittertool.h"
-#include "saktcptransmittertool.h"
-#include "sakwebsockettransmittertool.h"
 #include "sakserialporttransmittertool.h"
+#include "sakstatisticiantool.h"
+#include "sakstorertool.h"
+#include "saktcptransmittertool.h"
+#include "sakudptransmittertool.h"
+#include "sakvelometertool.h"
+#include "sakwebsockettransmittertool.h"
 
 class SAKToolBox : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant communicaton READ communicaton
-                   NOTIFY communicatonChanged)
+    Q_PROPERTY(QVariant communicaton READ communicaton NOTIFY communicatonChanged)
     Q_PROPERTY(QVariant txMasker READ txMasker CONSTANT)
     Q_PROPERTY(QVariant rxMasker READ rxMasker CONSTANT)
     Q_PROPERTY(QVariant txAnalyzer READ txAnalyzer CONSTANT)
@@ -48,14 +47,12 @@ class SAKToolBox : public QObject
 
     Q_PROPERTY(QVariant udpTransmitter READ udpTransmitter CONSTANT)
     Q_PROPERTY(QVariant tcpTransmitter READ tcpTransmitter CONSTANT)
-    Q_PROPERTY(QVariant webSocketTransmitter READ webSocketTransmitter
-                   CONSTANT)
-    Q_PROPERTY(QVariant serialPortTransmitter READ serialPortTransmitter
-                   CONSTANT)
+    Q_PROPERTY(QVariant webSocketTransmitter READ webSocketTransmitter CONSTANT)
+    Q_PROPERTY(QVariant serialPortTransmitter READ serialPortTransmitter CONSTANT)
 
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
 public:
-    explicit SAKToolBox(QObject *parent = nullptr);
+    explicit SAKToolBox(QObject* parent = nullptr);
     ~SAKToolBox();
 
     /// You must call the interface before useing.
@@ -63,8 +60,7 @@ public:
 
     Q_INVOKABLE void open();
     Q_INVOKABLE void close();
-    Q_INVOKABLE void send(const QByteArray &bytes,
-                          const QVariant &context = QJsonObject());
+    Q_INVOKABLE void send(const QByteArray& bytes, const QVariant& context = QJsonObject());
     bool isWorking();
 
     SAKCommunicationTool* getCommunicationTool();
@@ -80,22 +76,22 @@ public:
     SAKVelometerTool* getTxVelometerTool();
     SAKStatisticianTool* getRxStatisticianTool();
     SAKStatisticianTool* getTxStatisticianTool();
-    SAKUdpTransmitterTool * getUdpTransmitterTool();
-    SAKTcpTransmitterTool * getTcpTransmitterTool();
+    SAKUdpTransmitterTool* getUdpTransmitterTool();
+    SAKTcpTransmitterTool* getTcpTransmitterTool();
     SAKWebSocketTransmitterTool* getWebSocketTransmitterTool();
     SAKSerialPortTransmitterTool* getSerialPortTransmitterTool();
 
 signals:
-    void errorOccurred(const QString &errorString);
+    void errorOccurred(const QString& errorString);
 
-private:   
+private:
     QList<SAKBaseTool*> mToolList;
     const QLoggingCategory mLoggingCategory{"sak.toolbox"};
 
 private:
     void uninitializedTips();
 
-// Properties ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    // Properties ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 private:
     SAKCommunicationTool* mComunicationTool{nullptr};
     SAKMaskerTool* mTxMaskerTool{nullptr};

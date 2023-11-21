@@ -8,10 +8,10 @@
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
 #include <QFile>
-#include <QJsonArray>
-#include <QMessageBox>
 #include <QFileDialog>
+#include <QJsonArray>
 #include <QJsonDocument>
+#include <QMessageBox>
 #include <QStandardItemModel>
 
 #include "sakmenu.h"
@@ -29,21 +29,32 @@ SAKTableModelToolUi::SAKTableModelToolUi(const char *lg, QWidget *parent)
     QHeaderView *vHeaderView = ui->tableView->verticalHeader();
     vHeaderView->hide();
 
-    connect(ui->pushButtonEdit, &QPushButton::clicked,
-            this, &SAKTableModelToolUi::onPushButtonEditClicked);
-    connect(ui->pushButtonClear, &QPushButton::clicked,
-            this, &SAKTableModelToolUi::onPushButtonClearClicked);
-    connect(ui->pushButtonDelete, &QPushButton::clicked,
-            this, &SAKTableModelToolUi::onPushButtonDeleteClicked);
-    connect(ui->pushButtonImport, &QPushButton::clicked,
-            this, &SAKTableModelToolUi::onPushButtonImportClicked);
-    connect(ui->pushButtonExport, &QPushButton::clicked,
-            this, &SAKTableModelToolUi::onPushButtonExportClicked);
-    connect(ui->pushButtonAppend, &QPushButton::clicked,
-            this, &SAKTableModelToolUi::onPushButtonAppendClicked);
+    connect(ui->pushButtonEdit,
+            &QPushButton::clicked,
+            this,
+            &SAKTableModelToolUi::onPushButtonEditClicked);
+    connect(ui->pushButtonClear,
+            &QPushButton::clicked,
+            this,
+            &SAKTableModelToolUi::onPushButtonClearClicked);
+    connect(ui->pushButtonDelete,
+            &QPushButton::clicked,
+            this,
+            &SAKTableModelToolUi::onPushButtonDeleteClicked);
+    connect(ui->pushButtonImport,
+            &QPushButton::clicked,
+            this,
+            &SAKTableModelToolUi::onPushButtonImportClicked);
+    connect(ui->pushButtonExport,
+            &QPushButton::clicked,
+            this,
+            &SAKTableModelToolUi::onPushButtonExportClicked);
+    connect(ui->pushButtonAppend,
+            &QPushButton::clicked,
+            this,
+            &SAKTableModelToolUi::onPushButtonAppendClicked);
 
-    connect(ui->tableView, &QTableView::doubleClicked,
-            this, [=](const QModelIndex &index){
+    connect(ui->tableView, &QTableView::doubleClicked, this, [=](const QModelIndex &index) {
         Q_UNUSED(index)
         onPushButtonEditClicked();
     });
@@ -54,7 +65,7 @@ SAKTableModelToolUi::~SAKTableModelToolUi()
     delete ui;
 }
 
-void SAKTableModelToolUi::setStretchSections(QList<int>columns)
+void SAKTableModelToolUi::setStretchSections(QList<int> columns)
 {
     QTableView *tableView = ui->tableView;
     QHeaderView *headerView = tableView->horizontalHeader();
@@ -80,8 +91,7 @@ void SAKTableModelToolUi::setColumnVisible(int column, bool visible)
     }
 }
 
-void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
-                                                  const QString &settingGroup)
+void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup)
 {
     if (!tool) {
         qCWarning(mLoggingCategory) << "The value of tool is nullptr!";
@@ -89,19 +99,17 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     }
 
     if (!tool->inherits("SAKTableModelTool")) {
-        qCWarning(mLoggingCategory)
-            << "The tool does not inherits SAKTableModelTool!";
+        qCWarning(mLoggingCategory) << "The tool does not inherits SAKTableModelTool!";
         return;
     }
 
-    mTableModelTool = qobject_cast<SAKTableModelTool*>(tool);
+    mTableModelTool = qobject_cast<SAKTableModelTool *>(tool);
     if (!mTableModelTool) {
-        qCWarning(mLoggingCategory)
-            << "The value of mTableModelTool is nullptr!";
+        qCWarning(mLoggingCategory) << "The value of mTableModelTool is nullptr!";
         return;
     }
 
-    mTableModel = mTableModelTool->tableModel().value<QAbstractTableModel*>();
+    mTableModel = mTableModelTool->tableModel().value<QAbstractTableModel *>();
     QTableView *tableView = ui->tableView;
     QHeaderView *headerView = tableView->horizontalHeader();
     int columnCount = mTableModel->columnCount();
@@ -131,15 +139,13 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     auto hideColumns = defaultHideColumns();
     for (int i = 0; i < headers.count(); i++) {
         QAction *ret = mMenu->addAction(headers.at(i));
-        connect(ret, &QAction::triggered, this, [=](){
+        connect(ret, &QAction::triggered, this, [=]() {
             if (ret->isChecked()) {
                 tableView->showColumn(i);
             } else {
                 tableView->hideColumn(i);
             }
-            settings->setValue(settingGroup + "/" + rawHeaders.at(i),
-                               ret->isChecked());
-
+            settings->setValue(settingGroup + "/" + rawHeaders.at(i), ret->isChecked());
         });
         ret->setCheckable(true);
 
@@ -223,8 +229,7 @@ void SAKTableModelToolUi::edit(const QModelIndex &index)
                               Qt::DirectConnection,
                               ret,
                               Q_ARG(QJsonObject, jsonObj));
-    qCInfo(mLoggingCategory) << "the parameter of setParameters() is:"
-                             << jsonObj;
+    qCInfo(mLoggingCategory) << "the parameter of setParameters() is:" << jsonObj;
     Q_UNUSED(ret);
     editor->show();
 
@@ -234,8 +239,7 @@ void SAKTableModelToolUi::edit(const QModelIndex &index)
                                   "parameters",
                                   Qt::DirectConnection,
                                   Q_RETURN_ARG(QJsonObject, params));
-        qCInfo(mLoggingCategory) << "the parameter of parameters() is:"
-                                 << params;
+        qCInfo(mLoggingCategory) << "the parameter of parameters() is:" << params;
         QJsonDocument jsonDoc;
         jsonDoc.setObject(params);
         QString str = QString::fromUtf8(jsonDoc.toJson());
@@ -255,8 +259,7 @@ bool SAKTableModelToolUi::append()
                               Qt::DirectConnection,
                               ret,
                               Q_ARG(QJsonObject, jsonObj));
-    qCInfo(mLoggingCategory) << "the parameter of setParameters() is:"
-                             << jsonObj;
+    qCInfo(mLoggingCategory) << "the parameter of setParameters() is:" << jsonObj;
     Q_UNUSED(ret);
 
     editor->show();
@@ -268,8 +271,7 @@ bool SAKTableModelToolUi::append()
                               "parameters",
                               Qt::DirectConnection,
                               Q_RETURN_ARG(QJsonObject, jsonObj));
-    qCInfo(mLoggingCategory) << "the parameter of parameters() is:"
-                             << jsonObj;
+    qCInfo(mLoggingCategory) << "the parameter of parameters() is:" << jsonObj;
     QJsonDocument jsonDoc;
     jsonDoc.setObject(jsonObj);
     QString str = QString::fromUtf8(jsonDoc.toJson());
@@ -292,8 +294,7 @@ QModelIndex SAKTableModelToolUi::currentIndex()
 void SAKTableModelToolUi::writeToSettingsFile()
 {
     QByteArray json = exportAsJson();
-    SAKSettings::instance()->setValue(mItemsKey,
-                                      QString::fromLatin1(json.toHex()));
+    SAKSettings::instance()->setValue(mItemsKey, QString::fromLatin1(json.toHex()));
 }
 
 bool SAKTableModelToolUi::isInitialized()
@@ -332,7 +333,7 @@ void SAKTableModelToolUi::onPushButtonClearClicked()
                                    tr("Clear Data"),
                                    tr("The data will be empty from settings file, "
                                       "please confrim the operation!"),
-                                   QMessageBox::Cancel|QMessageBox::Ok);
+                                   QMessageBox::Cancel | QMessageBox::Ok);
     if (ret == QMessageBox::Ok) {
         clear();
         writeToSettingsFile();
@@ -349,7 +350,7 @@ void SAKTableModelToolUi::onPushButtonDeleteClicked()
                                    tr("Delete Data"),
                                    tr("The data will be delete from settings file, "
                                       "please confrim the operation!"),
-                                   QMessageBox::Cancel|QMessageBox::Ok);
+                                   QMessageBox::Cancel | QMessageBox::Ok);
 
     if (ret != QMessageBox::Ok) {
         return;
@@ -379,13 +380,13 @@ void SAKTableModelToolUi::onPushButtonImportClicked()
     QFile file(fileName);
     if (file.open(QFile::ReadOnly)) {
         QByteArray json = file.readAll();
-        file.close();;
+        file.close();
+        ;
 
         importFromJson(json);
         writeToSettingsFile();
     } else {
-        qCWarning(mLoggingCategory) <<  "Can not open file:"
-                                    << file.errorString();
+        qCWarning(mLoggingCategory) << "Can not open file:" << file.errorString();
     }
 }
 
@@ -409,8 +410,7 @@ void SAKTableModelToolUi::onPushButtonExportClicked()
         out << exportAsJson();
         file.close();
     } else {
-        qCWarning(mLoggingCategory) <<  "Can not open file:"
-                                    << file.errorString();
+        qCWarning(mLoggingCategory) << "Can not open file:" << file.errorString();
     }
 }
 

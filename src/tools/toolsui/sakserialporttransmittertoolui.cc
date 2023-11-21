@@ -15,8 +15,8 @@ SAKSerialPortTransmitterToolUi::SAKSerialPortTransmitterToolUi(QWidget *parent)
     mEditor = new SAKSerialPortTransmitterToolUiEditor(this);
 }
 
-void SAKSerialPortTransmitterToolUi::onBaseToolUiInitialized(
-    SAKBaseTool *tool, const QString &settingGroup)
+void SAKSerialPortTransmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+                                                             const QString &settingGroup)
 {
     SAKTransmitterToolUi::SAKTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
     setSectionResizeModeToStretch();

@@ -10,23 +10,20 @@
 #ifndef SAKBLESCANNER_H
 #define SAKBLESCANNER_H
 
+#include <QBluetoothDeviceDiscoveryAgent>
+#include <QBluetoothDeviceInfo>
+#include <QLoggingCategory>
 #include <QMutex>
 #include <QThread>
 #include <QVariant>
-#include <QLoggingCategory>
-#include <QBluetoothDeviceInfo>
-#include <QBluetoothDeviceDiscoveryAgent>
-
 
 class SAKBleScanner : public QThread
 {
     Q_OBJECT
-    Q_PROPERTY(QVariantList deviceInfoList READ devicesInfoList
-               NOTIFY devicesInfoListChanged)
-    Q_PROPERTY(int timeoutInterval READ timeoutInterval
-               WRITE setTimeoutInterval NOTIFY timeoutIntervalChanged)
-    Q_PROPERTY(QString namefiltter READ namefiltter WRITE setNameFiltter
-               NOTIFY filtterNameChanged)
+    Q_PROPERTY(QVariantList deviceInfoList READ devicesInfoList NOTIFY devicesInfoListChanged)
+    Q_PROPERTY(int timeoutInterval READ timeoutInterval WRITE setTimeoutInterval NOTIFY
+                   timeoutIntervalChanged)
+    Q_PROPERTY(QString namefiltter READ namefiltter WRITE setNameFiltter NOTIFY filtterNameChanged)
 public:
     explicit SAKBleScanner(QObject *parent = nullptr);
     ~SAKBleScanner();
@@ -56,8 +53,8 @@ private:
     void onDiscoveryErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error);
     void onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo &info);
 
-//↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-//Properties
+    //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    //Properties
 public:
     QVariantList devicesInfoList();
     int timeoutInterval();

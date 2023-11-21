@@ -9,9 +9,9 @@
  ******************************************************************************/
 #include "sakwebsocketmessagetypecombobox.h"
 
-sakwebsocketmessagetypecombobox::sakwebsocketmessagetypecombobox(
-    QWidget* parent)
-    : SAKComboBox{parent} {
-  addItem("Bin", 0);
-  addItem("Text", 1);
+sakwebsocketmessagetypecombobox::sakwebsocketmessagetypecombobox(QWidget* parent)
+    : SAKComboBox{parent}
+{
+    addItem("Bin", 0);
+    addItem("Text", 1);
 }

@@ -27,43 +27,44 @@ class SAKCRCAssistant;
 }
 
 class SAKCommonCrcInterface;
-class SAKCRCAssistant : public QWidget {
-  Q_OBJECT
- public:
-  Q_INVOKABLE SAKCRCAssistant(QWidget* parent = Q_NULLPTR);
-  ~SAKCRCAssistant();
+class SAKCRCAssistant : public QWidget
+{
+    Q_OBJECT
+public:
+    Q_INVOKABLE SAKCRCAssistant(QWidget* parent = Q_NULLPTR);
+    ~SAKCRCAssistant();
 
- protected:
-  bool eventFilter(QObject* watched, QEvent* event);
+protected:
+    bool eventFilter(QObject* watched, QEvent* event);
 
- private:
-  const char* log_category_;
-  SAKCommonCrcInterface* crc_interface_;
+private:
+    const char* log_category_;
+    SAKCommonCrcInterface* crc_interface_;
 
- private:
-  void InitParameterModel();
+private:
+    void InitParameterModel();
 
- private slots:
-  void Calculate();
-  void TextFormatControl();
-  void ChangedParameterModel(int index);
+private slots:
+    void Calculate();
+    void TextFormatControl();
+    void ChangedParameterModel(int index);
 
- private:
-  Ui::SAKCRCAssistant* mUi;
-  QComboBox* mWidthComboBox;
-  QComboBox* mParameterComboBox;
-  QCheckBox* mRefinCheckBox;
-  QCheckBox* mRefoutCheckBox;
-  QLineEdit* mPolyLineEdit;
-  QLineEdit* mInitLineEdit;
-  QLineEdit* mXorLineEdit;
-  QRadioButton* mHexRadioBt;
-  QRadioButton* mAsciiRadioBt;
-  QLineEdit* mHexCRCOutput;
-  QLineEdit* mBinCRCOutput;
-  QTextEdit* mInputTextEdit;
-  QPushButton* mCalculatedBt;
-  QLabel* mLabelPolyFormula;
-  QLabel* mLabelInfo;
+private:
+    Ui::SAKCRCAssistant* mUi;
+    QComboBox* mWidthComboBox;
+    QComboBox* mParameterComboBox;
+    QCheckBox* mRefinCheckBox;
+    QCheckBox* mRefoutCheckBox;
+    QLineEdit* mPolyLineEdit;
+    QLineEdit* mInitLineEdit;
+    QLineEdit* mXorLineEdit;
+    QRadioButton* mHexRadioBt;
+    QRadioButton* mAsciiRadioBt;
+    QLineEdit* mHexCRCOutput;
+    QLineEdit* mBinCRCOutput;
+    QTextEdit* mInputTextEdit;
+    QPushButton* mCalculatedBt;
+    QLabel* mLabelPolyFormula;
+    QLabel* mLabelInfo;
 };
 #endif

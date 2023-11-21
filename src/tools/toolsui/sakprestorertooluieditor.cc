@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "sakprestorertool.h"
 #include "sakprestorertooluieditor.h"
+#include "sakprestorertool.h"
 #include "ui_sakprestorertooluieditor.h"
 
 SAKPrestorerToolUiEditor::SAKPrestorerToolUiEditor(QWidget *parent)
@@ -19,10 +19,8 @@ SAKPrestorerToolUiEditor::SAKPrestorerToolUiEditor(QWidget *parent)
     setModal(true);
     setWindowTitle(tr("Prestorer Item Editor"));
 
-    connect(ui->pushButtonOk, &QPushButton::clicked,
-            this, &SAKPrestorerToolUiEditor::accept);
-    connect(ui->pushButtonCancel, &QPushButton::clicked,
-            this, &SAKPrestorerToolUiEditor::reject);
+    connect(ui->pushButtonOk, &QPushButton::clicked, this, &SAKPrestorerToolUiEditor::accept);
+    connect(ui->pushButtonCancel, &QPushButton::clicked, this, &SAKPrestorerToolUiEditor::reject);
 }
 
 SAKPrestorerToolUiEditor::~SAKPrestorerToolUiEditor()

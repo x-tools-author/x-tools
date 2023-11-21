@@ -25,7 +25,6 @@ public:
     SAKToolBoxUi *createToolBoxUi(int type);
 
 private:
-
 };
 
 #endif // SAKTOOLBOXUIFACTORY_H

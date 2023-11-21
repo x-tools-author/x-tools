@@ -17,8 +17,7 @@ class SAKCheckBox : public QCheckBox
     Q_OBJECT
 public:
     SAKCheckBox(QWidget *parent = nullptr);
-    void setGroupKey(const QString &group,
-                     const QString &key);
+    void setGroupKey(const QString &group, const QString &key);
 
 private:
     QString mKey;

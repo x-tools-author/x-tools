@@ -7,35 +7,49 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
+#include "saktablemodeltool.h"
 #include <QJsonArray>
 #include <QJsonDocument>
-#include "saktablemodeltool.h"
 
 SAKTableModelTool::SAKTableModelTool(const char *logCategory, QObject *parent)
     : SAKBaseTool{logCategory, parent}
 {
     mTableModel = new SAKTableModel(this);
 
-    connect(mTableModel, &SAKTableModel::invokeGetRowCount,
-            this, &SAKTableModelTool::onInvokeGetRowCount,
+    connect(mTableModel,
+            &SAKTableModel::invokeGetRowCount,
+            this,
+            &SAKTableModelTool::onInvokeGetRowCount,
             Qt::DirectConnection);
-    connect(mTableModel, &SAKTableModel::invokeGetColumnCount,
-            this, &SAKTableModelTool::onInvokeGetColumnCount,
+    connect(mTableModel,
+            &SAKTableModel::invokeGetColumnCount,
+            this,
+            &SAKTableModelTool::onInvokeGetColumnCount,
             Qt::DirectConnection);
-    connect(mTableModel, &SAKTableModel::invokeGetData,
-            this, &SAKTableModelTool::onInvokeGetData,
+    connect(mTableModel,
+            &SAKTableModel::invokeGetData,
+            this,
+            &SAKTableModelTool::onInvokeGetData,
             Qt::DirectConnection);
-    connect(mTableModel, &SAKTableModel::invokeSetData,
-            this, &SAKTableModelTool::onInvokeSetData,
+    connect(mTableModel,
+            &SAKTableModel::invokeSetData,
+            this,
+            &SAKTableModelTool::onInvokeSetData,
             Qt::DirectConnection);
-    connect(mTableModel, &SAKTableModel::invokeInsertRows,
-            this, &SAKTableModelTool::onInvokeInsertRows,
+    connect(mTableModel,
+            &SAKTableModel::invokeInsertRows,
+            this,
+            &SAKTableModelTool::onInvokeInsertRows,
             Qt::DirectConnection);
-    connect(mTableModel, &SAKTableModel::invokeRemoveRows,
-            this, &SAKTableModelTool::onInvokeRemoveRows,
+    connect(mTableModel,
+            &SAKTableModel::invokeRemoveRows,
+            this,
+            &SAKTableModelTool::onInvokeRemoveRows,
             Qt::DirectConnection);
-    connect(mTableModel, &SAKTableModel::invokeGetHeaderData,
-            this, &SAKTableModelTool::onInvokeGetHeaderData,
+    connect(mTableModel,
+            &SAKTableModel::invokeGetHeaderData,
+            this,
+            &SAKTableModelTool::onInvokeGetHeaderData,
             Qt::DirectConnection);
 }
 
@@ -74,8 +88,7 @@ void SAKTableModelTool::addItem(const QString &jsonCtx, int index)
         auto key = headers().at(i);
         auto modelIndex = mTableModel->index(index, i);
         mTableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);
-        qCInfo(mLoggingCategory) << qPrintable(QString("set %1 as").arg(key))
-                                 << jsonObj.value(key);
+        qCInfo(mLoggingCategory) << qPrintable(QString("set %1 as").arg(key)) << jsonObj.value(key);
     }
 }
 
@@ -105,9 +118,7 @@ void SAKTableModelTool::onInvokeGetColumnCount(int &count)
     count = columnCount();
 }
 
-void SAKTableModelTool::onInvokeGetData(QVariant &data,
-                                        const QModelIndex &index,
-                                        int role)
+void SAKTableModelTool::onInvokeGetData(QVariant &data, const QModelIndex &index, int role)
 {
     data = this->data(index, role);
 }
@@ -115,7 +126,7 @@ void SAKTableModelTool::onInvokeGetData(QVariant &data,
 void SAKTableModelTool::onInvokeSetData(bool &result,
                                         const QModelIndex &index,
                                         const QVariant &value,
-                                        int role )
+                                        int role)
 {
     result = setData(index, value, role);
 }

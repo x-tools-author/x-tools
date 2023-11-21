@@ -11,6 +11,4 @@
 
 SAKPreferences::SAKPreferences(QObject *parent)
     : QObject{parent}
-{
-
-}
+{}

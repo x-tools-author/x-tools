@@ -49,7 +49,6 @@ private:
 public:
     static SAKToolFactory *instance();
     SAKBaseTool *createTool(int type);
-
 };
 
 #endif // SAKTOOLFACTORY_H

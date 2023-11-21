@@ -17,7 +17,7 @@ SAKBaudRateComboBox::SAKBaudRateComboBox(QWidget *parent)
 {
     clear();
     QList<qint32> bd = QSerialPortInfo::standardBaudRates();
-    for (auto &var:bd) {
+    for (auto &var : bd) {
         addItem(QString::number(var), QVariant::fromValue(var));
     }
 

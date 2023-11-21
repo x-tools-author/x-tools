@@ -16,19 +16,20 @@ namespace Ui {
 class SAKBase64Assisatnt;
 }
 
-class SAKBase64Assisatnt : public QWidget {
-  Q_OBJECT
- public:
-  Q_INVOKABLE SAKBase64Assisatnt(QWidget* parent = Q_NULLPTR);
-  ~SAKBase64Assisatnt();
+class SAKBase64Assisatnt : public QWidget
+{
+    Q_OBJECT
+public:
+    Q_INVOKABLE SAKBase64Assisatnt(QWidget* parent = Q_NULLPTR);
+    ~SAKBase64Assisatnt();
 
- private:
-  Ui::SAKBase64Assisatnt* ui_;
+private:
+    Ui::SAKBase64Assisatnt* ui_;
 
- private:
-  void OnImageClicked();
-  void OnEncryptClicked();
-  void OnDecryptClicked();
+private:
+    void OnImageClicked();
+    void OnEncryptClicked();
+    void OnDecryptClicked();
 };
 
-#endif  // SAKBASE64ASSISTANT_H
+#endif // SAKBASE64ASSISTANT_H

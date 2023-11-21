@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QMetaObject>
 #include <QBluetoothDeviceInfo>
+#include <QMetaObject>
 
 #include "sakblecentraltool.h"
 
@@ -16,19 +16,14 @@
 
 SAKBleCentralTool::SAKBleCentralTool(QObject *parent)
     : SAKCommunicationTool("sak.blecentral", parent)
-{
+{}
 
-}
-
-SAKBleCentralTool::~SAKBleCentralTool()
-{
-
-}
+SAKBleCentralTool::~SAKBleCentralTool() {}
 
 QString SAKBleCentralTool::serviceName(QVariant service)
 {
-    QObject *obj = service.value<QObject*>();
-    auto cookedService = qobject_cast<QLowEnergyService*>(obj);
+    QObject *obj = service.value<QObject *>();
+    auto cookedService = qobject_cast<QLowEnergyService *>(obj);
     if (cookedService) {
         return cookedService->serviceName();
     } else {
@@ -41,11 +36,11 @@ QString SAKBleCentralTool::serviceName(QVariant service)
 QVariantList SAKBleCentralTool::characteristics(QVariant service)
 {
     QVariantList list;
-    if (service.canConvert<QLowEnergyService*>()) {
+    if (service.canConvert<QLowEnergyService *>()) {
         return list;
     }
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
-    auto cookedService = service.value<QLowEnergyService*>();
+    auto cookedService = service.value<QLowEnergyService *>();
     if (cookedService) {
         auto characteristics = cookedService->characteristics();
         for (auto &characteristic : characteristics) {
@@ -90,15 +85,13 @@ void SAKBleCentralTool::readCharacteristic()
 
 void SAKBleCentralTool::changeNotify()
 {
-    if (!((mServiceIndex >= 0)
-          && (mServiceIndex < mServices.length()))) {
+    if (!((mServiceIndex >= 0) && (mServiceIndex < mServices.length()))) {
         return;
     }
 
     auto service = mServices.at(mServiceIndex);
     auto characteristics = service->characteristics();
-    if (!((mCharacteristicIndex >= 0)
-          && (mCharacteristicIndex < characteristics.length()))) {
+    if (!((mCharacteristicIndex >= 0) && (mCharacteristicIndex < characteristics.length()))) {
         return;
     }
 
@@ -160,12 +153,11 @@ bool SAKBleCentralTool::initialize(QString &errStr)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
     mServices.clear();
     mBleCentral = QLowEnergyController::createCentral(mBluetoothDeviceInfo);
-    connect(mBleCentral, &QLowEnergyController::serviceDiscovered, mBleCentral,
-            [=](const QBluetoothUuid &newService){
-        onServiceDiscovered(newService);
-    });
-    connect(mBleCentral, &QLowEnergyController::discoveryFinished,
-            mBleCentral, [=](){
+    connect(mBleCentral,
+            &QLowEnergyController::serviceDiscovered,
+            mBleCentral,
+            [=](const QBluetoothUuid &newService) { onServiceDiscovered(newService); });
+    connect(mBleCentral, &QLowEnergyController::discoveryFinished, mBleCentral, [=]() {
         onServiceDiscoveryFinished();
     });
     connect(mBleCentral,
@@ -175,13 +167,13 @@ bool SAKBleCentralTool::initialize(QString &errStr)
             QOverload<BLE_ERR_SIG>::of(&QLowEnergyController::error),
 #endif
             mBleCentral,
-            [=](QLowEnergyController::Error err){
-        onBleCentralErrorOccuured(err);
+            [=](QLowEnergyController::Error err) { onBleCentralErrorOccuured(err); });
+    connect(mBleCentral, &QLowEnergyController::connected, mBleCentral, [=]() {
+        onBleCentralConnected();
     });
-    connect(mBleCentral, &QLowEnergyController::connected,
-            mBleCentral, [=](){onBleCentralConnected();});
-    connect(mBleCentral, &QLowEnergyController::disconnected,
-            mBleCentral, [=](){onBleCentralDisconnected();});
+    connect(mBleCentral, &QLowEnergyController::disconnected, mBleCentral, [=]() {
+        onBleCentralDisconnected();
+    });
 
     mBleCentral->connectToDevice();
     emit serviceDiscoveryStarted();
@@ -193,8 +185,7 @@ bool SAKBleCentralTool::initialize(QString &errStr)
 
 void SAKBleCentralTool::readBytes()
 {
-    if (!((mServiceIndex >= 0)
-          && (mServiceIndex < mServices.length()))) {
+    if (!((mServiceIndex >= 0) && (mServiceIndex < mServices.length()))) {
         return;
     }
 
@@ -204,8 +195,7 @@ void SAKBleCentralTool::readBytes()
     service->readCharacteristic(characteristic);
 }
 
-void SAKBleCentralTool::writeBytes(const QByteArray &bytes,
-                                   const QVariant &context)
+void SAKBleCentralTool::writeBytes(const QByteArray &bytes, const QVariant &context)
 {
     Q_UNUSED(context);
     if (!((mServiceIndex >= 0) && (mServiceIndex < mServices.length()))) {
@@ -217,15 +207,13 @@ void SAKBleCentralTool::writeBytes(const QByteArray &bytes,
     auto characteristics = service->characteristics();
     auto characteristic = characteristics.at(mCharacteristicIndex);
     if (mWriteModel == 0) {
-        if (!hasFlag(QVariant::fromValue(characteristic),
-                     QLowEnergyCharacteristic::Write)) {
+        if (!hasFlag(QVariant::fromValue(characteristic), QLowEnergyCharacteristic::Write)) {
             QString str = "QLowEnergyService::WriteWithResponse";
             qCWarning(mLoggingCategory) << "unsupported write model: " + str;
             return;
         }
 
-        qCInfo(mLoggingCategory) << "try to write bytes:"
-                                 << QString::fromLatin1(bytes.toHex());
+        qCInfo(mLoggingCategory) << "try to write bytes:" << QString::fromLatin1(bytes.toHex());
         service->writeCharacteristic(characteristic, bytes);
     } else {
         if (!hasFlag(QVariant::fromValue(characteristic),
@@ -251,16 +239,14 @@ void SAKBleCentralTool::uninitialize()
 
 void SAKBleCentralTool::onServiceDiscovered(const QBluetoothUuid &newService)
 {
-    outputMessage(QtInfoMsg, "new ble service discovered:"
-                                 + newService.toString());
+    outputMessage(QtInfoMsg, "new ble service discovered:" + newService.toString());
 }
 
 void SAKBleCentralTool::onServiceDiscoveryFinished()
 {
     outputMessage(QtInfoMsg, "ble service discovery finished.");
     QList<QBluetoothUuid> uuids = mBleCentral->services();
-    outputMessage(QtInfoMsg, "service count:"
-                                 + QString::number(uuids.length()));
+    outputMessage(QtInfoMsg, "service count:" + QString::number(uuids.length()));
 
     for (auto &uuid : uuids) {
         auto service = mBleCentral->createServiceObject(uuid);
@@ -268,30 +254,37 @@ void SAKBleCentralTool::onServiceDiscoveryFinished()
             continue;
         }
 
-        connect(service, &QLowEnergyService::characteristicChanged, service,
-                [=](const QLowEnergyCharacteristic &info,
-                    const QByteArray &value){
-            emit bytesOutputted(value, QVariant());
-            Q_UNUSED(info);
-        });
-        connect(service, &QLowEnergyService::characteristicRead, service,
-                [=](const QLowEnergyCharacteristic &info,
-                    const QByteArray &value){
-            emit bytesOutputted(value, QVariant());
-            Q_UNUSED(info);
-        });
-        connect(service, &QLowEnergyService::characteristicWritten, service,
-                [=](const QLowEnergyCharacteristic &info,
-                    const QByteArray &value){
-            emit bytesInputted(value, QVariant());
-            Q_UNUSED(info);
-        });
-        connect(service, &QLowEnergyService::stateChanged, service,
-                [=](QLowEnergyService::ServiceState newState){
+        connect(service,
+                &QLowEnergyService::characteristicChanged,
+                service,
+                [=](const QLowEnergyCharacteristic &info, const QByteArray &value) {
+                    emit bytesOutputted(value, QVariant());
+                    Q_UNUSED(info);
+                });
+        connect(service,
+                &QLowEnergyService::characteristicRead,
+                service,
+                [=](const QLowEnergyCharacteristic &info, const QByteArray &value) {
+                    emit bytesOutputted(value, QVariant());
+                    Q_UNUSED(info);
+                });
+        connect(service,
+                &QLowEnergyService::characteristicWritten,
+                service,
+                [=](const QLowEnergyCharacteristic &info, const QByteArray &value) {
+                    emit bytesInputted(value, QVariant());
+                    Q_UNUSED(info);
+                });
+        connect(service,
+                &QLowEnergyService::stateChanged,
+                service,
+                [=](QLowEnergyService::ServiceState newState) {
                     onServiceObjectStateChanged(service, newState);
-        });
-        connect(service, &QLowEnergyService::descriptorWritten,
-                this, &SAKBleCentralTool::descriptorWritten);
+                });
+        connect(service,
+                &QLowEnergyService::descriptorWritten,
+                this,
+                &SAKBleCentralTool::descriptorWritten);
 
         mServices.append(service);
         service->discoverDetails();
@@ -300,15 +293,13 @@ void SAKBleCentralTool::onServiceDiscoveryFinished()
     emit serviceDiscoveryFinished();
 }
 
-void SAKBleCentralTool::onBleCentralErrorOccuured(
-    QLowEnergyController::Error err)
+void SAKBleCentralTool::onBleCentralErrorOccuured(QLowEnergyController::Error err)
 {
     if (err == QLowEnergyController::UnknownError) {
-        return ;
+        return;
     }
 
-    outputMessage(QtWarningMsg, "new ble service error:"
-                                    + mBleCentral->errorString());
+    outputMessage(QtWarningMsg, "new ble service error:" + mBleCentral->errorString());
     exit();
 }
 
@@ -325,8 +316,8 @@ void SAKBleCentralTool::onBleCentralDisconnected()
     emit errorOccured(msg);
 }
 
-void SAKBleCentralTool::onServiceObjectStateChanged(
-    QLowEnergyService *service, QLowEnergyService::ServiceState newState)
+void SAKBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *service,
+                                                    QLowEnergyService::ServiceState newState)
 {
     Q_UNUSED(service);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)

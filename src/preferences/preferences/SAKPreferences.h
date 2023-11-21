@@ -19,7 +19,6 @@ public:
     explicit SAKPreferences(QObject *parent = nullptr);
 
 signals:
-
 };
 
 #endif // SAKPREFERENCES_HH

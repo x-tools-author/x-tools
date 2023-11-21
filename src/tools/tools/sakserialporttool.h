@@ -56,13 +56,13 @@ signals:
 
 protected:
     virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
     virtual void readBytes() final;
     virtual void uninitialize() final;
 
 private:
-    struct {
+    struct
+    {
         QString portName{""};
         int baudRate{9600};
         int dataBits{QSerialPort::Data8};

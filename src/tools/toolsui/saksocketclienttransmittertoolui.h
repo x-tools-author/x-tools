@@ -10,8 +10,8 @@
 #ifndef SAKSOCKETCLIENTTRANSMITTERTOOLUI_H
 #define SAKSOCKETCLIENTTRANSMITTERTOOLUI_H
 
-#include "saktransmittertoolui.h"
 #include "saksocketclienttransmittertooluieditor.h"
+#include "saktransmittertoolui.h"
 
 class SAKSocketClientTransmitterToolUi : public SAKTransmitterToolUi
 {
@@ -20,8 +20,7 @@ public:
     virtual QDialog *itemEditor() override;
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
 
 protected:
     SAKSocketClientTransmitterToolUiEditor *mEditor{nullptr};

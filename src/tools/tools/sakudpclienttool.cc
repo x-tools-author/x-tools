@@ -9,15 +9,13 @@
  ******************************************************************************/
 #include <QHostAddress>
 
-#include "sakinterface.h"
 #include "sakcompatibility.h"
+#include "sakinterface.h"
 #include "sakudpclienttool.h"
 
 SAKUdpClientTool::SAKUdpClientTool(QObject *parent)
     : SAKSocketClientTool{"sak.udpclienttool", parent}
-{
-
-}
+{}
 
 bool SAKUdpClientTool::initialize(QString &errStr)
 {
@@ -43,8 +41,7 @@ bool SAKUdpClientTool::initialize(QString &errStr)
     outputMessage(QtInfoMsg, info);
     emit bindingIpPortChanged();
 
-    connect(mUdpSocket, &QUdpSocket::readyRead,
-            mUdpSocket, [=](){readBytes();});
+    connect(mUdpSocket, &QUdpSocket::readyRead, mUdpSocket, [=]() { readBytes(); });
     connect(mUdpSocket, SAK_SIG_SOCKETERROROCCURRED, this, [=]() {
         emit errorOccured(mUdpSocket->errorString());
     });
@@ -52,16 +49,13 @@ bool SAKUdpClientTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKUdpClientTool::writeBytes(const QByteArray &bytes,
-                                  const QVariant &context)
+void SAKUdpClientTool::writeBytes(const QByteArray &bytes, const QVariant &context)
 {
     if (mServerIp.isEmpty()) {
         return;
     }
 
-    qint64 ret = mUdpSocket->writeDatagram(bytes,
-                                           QHostAddress(mServerIp),
-                                           mServerPort);
+    qint64 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(mServerIp), mServerPort);
     if (ret == -1) {
         QString ipport = mServerIp + ":" + QString::number(mServerPort);
         QString str = mUdpSocket->errorString();
@@ -95,9 +89,7 @@ void SAKUdpClientTool::readBytes()
         QByteArray bytes(len, 0);
         QHostAddress address;
         quint16 port;
-        qint64 ret = mUdpSocket->readDatagram(bytes.data(),
-                                              bytes.length(),
-                                              &address, &port);
+        qint64 ret = mUdpSocket->readDatagram(bytes.data(), bytes.length(), &address, &port);
         if (ret == -1) {
             outputMessage(QtWarningMsg, mUdpSocket->errorString());
         } else {

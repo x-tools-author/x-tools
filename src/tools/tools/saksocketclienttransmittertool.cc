@@ -7,15 +7,13 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "saksocketclienttool.h"
 #include "saksocketclienttransmittertool.h"
+#include "saksocketclienttool.h"
 
-SAKSocketClientTransmitterTool::SAKSocketClientTransmitterTool(
-    const char *logCategory, QObject *parent)
+SAKSocketClientTransmitterTool::SAKSocketClientTransmitterTool(const char *logCategory,
+                                                               QObject *parent)
     : SAKTransmitterTool{logCategory, parent}
-{
-
-}
+{}
 
 QString SAKSocketClientTransmitterTool::cookHeaderString(const QString &str)
 {
@@ -44,8 +42,7 @@ QVariant SAKSocketClientTransmitterTool::itemContext(int index)
     QJsonObject obj;
     ItemContextKeys keys;
     if (index >= 0 && index < mToolVector.count()) {
-        SAKSocketClientTool *tool =
-            qobject_cast<SAKSocketClientTool*>(mToolVector.value(index));
+        SAKSocketClientTool *tool = qobject_cast<SAKSocketClientTool *>(mToolVector.value(index));
         obj.insert(keys.enable, tool->enable());
         obj.insert(keys.clientIp, tool->clientIp());
         obj.insert(keys.clientPort, tool->clientPort());
@@ -66,22 +63,19 @@ QVariant SAKSocketClientTransmitterTool::itemContext(int index)
     return obj;
 }
 
-int SAKSocketClientTransmitterTool::columnCount(
-    const QModelIndex &parent) const
+int SAKSocketClientTransmitterTool::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     return 7;
 }
 
-QVariant SAKSocketClientTransmitterTool::data(const QModelIndex &index,
-                                              int role) const
+QVariant SAKSocketClientTransmitterTool::data(const QModelIndex &index, int role) const
 {
     if (role != Qt::DisplayRole) {
         return QVariant();
     }
 
-    auto tool =
-        qobject_cast<SAKSocketClientTool*>(mToolVector.value(index.row()));
+    auto tool = qobject_cast<SAKSocketClientTool *>(mToolVector.value(index.row()));
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKeys keys;
     if (key == keys.enable) {
@@ -108,14 +102,15 @@ QVariant SAKSocketClientTransmitterTool::data(const QModelIndex &index,
 }
 
 bool SAKSocketClientTransmitterTool::setData(const QModelIndex &index,
-                                    const QVariant &value, int role)
+                                             const QVariant &value,
+                                             int role)
 {
     if (role != Qt::EditRole) {
         return false;
     }
 
     auto baseTool = mToolVector.value(index.row());
-    auto tool = qobject_cast<SAKSocketClientTool*>(baseTool);
+    auto tool = qobject_cast<SAKSocketClientTool *>(baseTool);
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKeys keys;
     if (key == keys.enable) {
@@ -141,8 +136,8 @@ bool SAKSocketClientTransmitterTool::setData(const QModelIndex &index,
 }
 
 QVariant SAKSocketClientTransmitterTool::headerData(int section,
-                                           Qt::Orientation orientation,
-                                           int role) const
+                                                    Qt::Orientation orientation,
+                                                    int role) const
 {
     if (role != Qt::DisplayRole || orientation != Qt::Horizontal) {
         return "--";

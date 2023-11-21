@@ -25,67 +25,68 @@ class SAKFileCheckAssistant;
 }
 
 class SAKCryptographicHashCalculator;
-class SAKFileCheckAssistant : public QWidget {
-  Q_OBJECT
- public:
-  Q_INVOKABLE SAKFileCheckAssistant(QWidget* parent = Q_NULLPTR);
-  ~SAKFileCheckAssistant();
+class SAKFileCheckAssistant : public QWidget
+{
+    Q_OBJECT
+public:
+    Q_INVOKABLE SAKFileCheckAssistant(QWidget* parent = Q_NULLPTR);
+    ~SAKFileCheckAssistant();
 
-  void setUiEnable(bool enable);
-  QString fileName();
-  QCryptographicHash::Algorithm algorithm();
-  void updateResult(QByteArray result);
-  void outputMessage(QString msg, bool isErrMsg = false);
-  void updateProgressBar(int currentValue);
-  void changeRemainTime(QString remainTime);
+    void setUiEnable(bool enable);
+    QString fileName();
+    QCryptographicHash::Algorithm algorithm();
+    void updateResult(QByteArray result);
+    void outputMessage(QString msg, bool isErrMsg = false);
+    void updateProgressBar(int currentValue);
+    void changeRemainTime(QString remainTime);
 #if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
-  // The QtCryptographicHashCalculator::Algorithm enum is not export with Q_ENUM
-  // in Qt5.6.0
-  enum Algorithm {
+    // The QtCryptographicHashCalculator::Algorithm enum is not export with Q_ENUM
+    // in Qt5.6.0
+    enum Algorithm {
 #ifndef QT_CRYPTOGRAPHICHASH_ONLY_SHA1
-    Md4,
-    Md5,
+        Md4,
+        Md5,
 #endif
-    Sha1 = 2,
+        Sha1 = 2,
 #ifndef QT_CRYPTOGRAPHICHASH_ONLY_SHA1
-    Sha224,
-    Sha256,
-    Sha384,
-    Sha512,
-    Sha3_224,
-    Sha3_256,
-    Sha3_384,
-    Sha3_512
+        Sha224,
+        Sha256,
+        Sha384,
+        Sha512,
+        Sha3_224,
+        Sha3_256,
+        Sha3_384,
+        Sha3_512
 #endif
-  };
-  Q_ENUM(Algorithm)
+    };
+    Q_ENUM(Algorithm)
 #endif
- private:
-  void finished();
-  void clearMessage();
+private:
+    void finished();
+    void clearMessage();
 
- private:
-  QString mFileName;
-  QCryptographicHash::Algorithm mAlgorithm;
-  SAKCryptographicHashCalculator* mCalculator;
-  QTimer mClearMessageTimer;
+private:
+    QString mFileName;
+    QCryptographicHash::Algorithm mAlgorithm;
+    SAKCryptographicHashCalculator* mCalculator;
+    QTimer mClearMessageTimer;
 
- private:
-  Ui::SAKFileCheckAssistant* mUi;
-  QLineEdit* mFilePathlineEdit;
-  QComboBox* mAlgorithmComboBox;
-  QLineEdit* mResultLineEdit;
-  QProgressBar* mCalculatorProgressBar;
-  QPushButton* mOpenPushButton;
-  QPushButton* mStartStopPushButton;
-  QCheckBox* mUpperCheckBox;
-  QLabel* mMessageLabel;
-  QLabel* mRemainTimeLabel;
- private slots:
-  void on_openPushButton_clicked();
-  void on_algorithmComboBox_currentIndexChanged(int index);
-  void on_startStopPushButton_clicked();
-  void on_upperCheckBox_clicked();
+private:
+    Ui::SAKFileCheckAssistant* mUi;
+    QLineEdit* mFilePathlineEdit;
+    QComboBox* mAlgorithmComboBox;
+    QLineEdit* mResultLineEdit;
+    QProgressBar* mCalculatorProgressBar;
+    QPushButton* mOpenPushButton;
+    QPushButton* mStartStopPushButton;
+    QCheckBox* mUpperCheckBox;
+    QLabel* mMessageLabel;
+    QLabel* mRemainTimeLabel;
+private slots:
+    void on_openPushButton_clicked();
+    void on_algorithmComboBox_currentIndexChanged(int index);
+    void on_startStopPushButton_clicked();
+    void on_upperCheckBox_clicked();
 };
 
 #endif

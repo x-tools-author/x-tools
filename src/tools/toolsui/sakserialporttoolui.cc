@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "sakserialporttool.h"
 #include "sakserialporttoolui.h"
+#include "sakserialporttool.h"
 #include "ui_sakserialporttoolui.h"
 
 SAKSerialPortToolUi::SAKSerialPortToolUi(QWidget *parent)
@@ -23,15 +23,14 @@ SAKSerialPortToolUi::~SAKSerialPortToolUi()
     delete ui;
 }
 
-void SAKSerialPortToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
-                                                  const QString &settingsGroup)
+void SAKSerialPortToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
 {
     if (!(tool && tool->inherits("SAKSerialPortTool"))) {
         qCWarning(mLoggingCategory) << "Invalid type of communication tool!";
         return;
     }
 
-    mTool = qobject_cast<SAKSerialPortTool*>(tool);
+    mTool = qobject_cast<SAKSerialPortTool *>(tool);
     mTool->setPortName(ui->comboBoxPortNames->currentText());
     mTool->setBaudRate(ui->comboBoxBaudRate->currentData().toInt());
     mTool->setDataBits(ui->comboBoxDataBits->currentData().toInt());
@@ -39,23 +38,30 @@ void SAKSerialPortToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     mTool->setParity(ui->comboBoxParity->currentData().toInt());
     mTool->setFlowControl(ui->comboBoxFlowControl->currentData().toInt());
 
-    connect(ui->comboBoxPortNames, &QComboBox::currentTextChanged,
-            this, &SAKSerialPortToolUi::onComboBoxPortNamesCurrentTextChanged);
+    connect(ui->comboBoxPortNames,
+            &QComboBox::currentTextChanged,
+            this,
+            &SAKSerialPortToolUi::onComboBoxPortNamesCurrentTextChanged);
     connect(ui->comboBoxBaudRate,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-            this, &SAKSerialPortToolUi::onComboBoxBaudRateCurrentIndexChanged);
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            this,
+            &SAKSerialPortToolUi::onComboBoxBaudRateCurrentIndexChanged);
     connect(ui->comboBoxDataBits,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-            this, &SAKSerialPortToolUi::onComboBoxDataBitsCurrentIndexChanged);
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            this,
+            &SAKSerialPortToolUi::onComboBoxDataBitsCurrentIndexChanged);
     connect(ui->comboBoxStopBits,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-            this, &SAKSerialPortToolUi::onComboBoxStopBitsCurrentIndexChanged);
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            this,
+            &SAKSerialPortToolUi::onComboBoxStopBitsCurrentIndexChanged);
     connect(ui->comboBoxParity,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-            this, &SAKSerialPortToolUi::onComboBoxParityCurrentIndexChanged);
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            this,
+            &SAKSerialPortToolUi::onComboBoxParityCurrentIndexChanged);
     connect(ui->comboBoxFlowControl,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-            this, &SAKSerialPortToolUi::onComboBoxFlowControlCurrentIndexChanged);
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            this,
+            &SAKSerialPortToolUi::onComboBoxFlowControlCurrentIndexChanged);
 
     ui->comboBoxPortNames->setGroupKey(settingsGroup, "portName");
     ui->comboBoxBaudRate->setGroupKey(settingsGroup, "baudRate", false);

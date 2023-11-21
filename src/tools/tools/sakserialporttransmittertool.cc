@@ -7,22 +7,20 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
+#include "sakserialporttransmittertool.h"
 #include "sakinterface.h"
 #include "sakserialporttool.h"
-#include "sakserialporttransmittertool.h"
 
 SAKSerialPortTransmitterTool::SAKSerialPortTransmitterTool(QObject *parent)
     : SAKTransmitterTool{"sak.serialporttransmittertool", parent}
-{
-
-}
+{}
 
 QString SAKSerialPortTransmitterTool::cookHeaderString(const QString &str)
 {
     ItemContextKey keys;
     if (str == keys.enable) {
         return tr("enable");
-    }  else if (str == keys.portName) {
+    } else if (str == keys.portName) {
         return tr("portName");
     } else if (str == keys.baudRate) {
         return tr("baudRate");
@@ -46,8 +44,7 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
     QJsonObject obj;
     ItemContextKey ctx;
     if (index >= 0 && index < mToolVector.count()) {
-        SAKSerialPortTool *tool =
-            qobject_cast<SAKSerialPortTool*>(mToolVector.value(index));
+        SAKSerialPortTool *tool = qobject_cast<SAKSerialPortTool *>(mToolVector.value(index));
         obj.insert(ctx.baudRate, tool->baudRate());
         obj.insert(ctx.dataBits, tool->dataBits());
         obj.insert(ctx.enable, tool->enable());
@@ -69,8 +66,7 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
     return obj;
 }
 
-void SAKSerialPortTransmitterTool::inputBytes(const QByteArray &bytes,
-                                              const QVariant &context)
+void SAKSerialPortTransmitterTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
     QString hex = QString::fromLatin1(ba);
@@ -89,14 +85,13 @@ int SAKSerialPortTransmitterTool::columnCount(const QModelIndex &parent) const
     return 7;
 }
 
-QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index,
-                                            int role) const
+QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index, int role) const
 {
     if (role != Qt::DisplayRole) {
         return QVariant();
     }
 
-    auto ret = qobject_cast<SAKSerialPortTool*>(mToolVector.value(index.row()));
+    auto ret = qobject_cast<SAKSerialPortTool *>(mToolVector.value(index.row()));
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKey ctx;
     if (key == ctx.enable) {
@@ -122,15 +117,13 @@ QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index,
     return true;
 }
 
-bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index,
-                                           const QVariant &value,
-                                           int role)
+bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (role != Qt::EditRole) {
         return false;
     }
 
-    auto ret = qobject_cast<SAKSerialPortTool*>(mToolVector.value(index.row()));
+    auto ret = qobject_cast<SAKSerialPortTool *>(mToolVector.value(index.row()));
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKey ctx;
     if (key == ctx.enable) {

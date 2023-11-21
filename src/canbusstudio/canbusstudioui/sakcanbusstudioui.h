@@ -10,27 +10,32 @@
 #ifndef SAKCANBUSSTUDIOUI_H
 #define SAKCANBUSSTUDIOUI_H
 
-#include <QWidget>
-#include <QVector>
-#include <QSettings>
-#include <QComboBox>
-#include <QCheckBox>
-#include <QCanBusFrame>
 #include <QCanBusDevice>
+#include <QCanBusFrame>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QSettings>
+#include <QVector>
+#include <QWidget>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class SAKCanBusUi; }
+namespace Ui {
+class SAKCanBusUi;
+}
 QT_END_NAMESPACE
 
 class SAKCanBusUi : public QWidget
 {
     Q_OBJECT
     typedef QPair<QCanBusDevice::ConfigurationKey, QVariant> ConfigurationItem;
+
 public:
     Q_INVOKABLE SAKCanBusUi(QWidget *parent = Q_NULLPTR);
     ~SAKCanBusUi();
+
 private:
-    struct {
+    struct
+    {
         const QString pluginIndex = "CANStudio/pluginIndex";
 
         const QString interfaceName = "CANStudio/interfaceName";
@@ -48,10 +53,12 @@ private:
         const QString flexibleDataRate = "CANStudio/fleibleDataRate";
         const QString bitrateSwitch = "CANStudio/bitrateSwitch";
     } mSettingKeyCtx;
+
 private:
     Ui::SAKCanBusUi *ui;
     QSettings *mSettings{nullptr};
     QCanBusDevice *mDevice{nullptr};
+
 private:
     void initUi();
     void initUiSelectPlugin();
@@ -59,13 +66,11 @@ private:
     void initUiCanFrame();
     void initUiSendCanFrame();
 
-
     void initSetting();
     void initSettingSelectPlugin();
     void initSettingSpecifyConfiguration();
     void initSettingCanFrame();
     void initSettingSendCanFrame();
-
 
     // These are slots.
     void onPluginChanged();
@@ -86,14 +91,13 @@ private:
     void onFlexibleDataRateChanged();
     void onBitrateSwitchChanged();
 
-
     void onSendButtonClicked();
-
 
     // Slots about CAN bus device
     void onErrorOccure(QCanBusDevice::CanBusError error);
     void onFrameReceived();
     void onFrameWritten(qint64 framesCount);
+
 private:
     void setOptions(QComboBox *cb, bool usingUnspecified);
     void setCurrentIndex(QComboBox *cb, const QString &key);

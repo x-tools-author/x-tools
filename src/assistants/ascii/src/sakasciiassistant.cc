@@ -15,14 +15,17 @@
 #include "ui_sakasciiassistant.h"
 
 SAKAsciiAssistant::SAKAsciiAssistant(QWidget* parent)
-    : QWidget(parent), ui_(new Ui::SAKAsciiAssistant) {
-  ui_->setupUi(this);
+    : QWidget(parent)
+    , ui_(new Ui::SAKAsciiAssistant)
+{
+    ui_->setupUi(this);
 
-  const QPixmap pixmap = QPixmap::fromImage(QImage(":/resources/ASCII.png"));
-  resize(pixmap.size());
-  ui_->image_->setPixmap(pixmap);
+    const QPixmap pixmap = QPixmap::fromImage(QImage(":/resources/ASCII.png"));
+    resize(pixmap.size());
+    ui_->image_->setPixmap(pixmap);
 }
 
-SAKAsciiAssistant::~SAKAsciiAssistant() {
-  delete ui_;
+SAKAsciiAssistant::~SAKAsciiAssistant()
+{
+    delete ui_;
 }

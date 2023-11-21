@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "saksocketclienttransmittertool.h"
 #include "saksocketclienttransmittertooluieditor.h"
+#include "saksocketclienttransmittertool.h"
 #include "ui_saksocketclienttransmittertooluieditor.h"
 
 SAKSocketClientTransmitterToolUiEditor::SAKSocketClientTransmitterToolUiEditor(QWidget *parent)
@@ -16,10 +16,14 @@ SAKSocketClientTransmitterToolUiEditor::SAKSocketClientTransmitterToolUiEditor(Q
     , ui(new Ui::SAKSocketClientTransmitterToolUiEditor)
 {
     ui->setupUi(this);
-    connect(ui->pushButtonApply, &QPushButton::clicked,
-            this, &SAKSocketClientTransmitterToolUiEditor::accept);
-    connect(ui->pushButtonCancel, &QPushButton::clicked,
-            this, &SAKSocketClientTransmitterToolUiEditor::reject);
+    connect(ui->pushButtonApply,
+            &QPushButton::clicked,
+            this,
+            &SAKSocketClientTransmitterToolUiEditor::accept);
+    connect(ui->pushButtonCancel,
+            &QPushButton::clicked,
+            this,
+            &SAKSocketClientTransmitterToolUiEditor::reject);
 }
 
 SAKSocketClientTransmitterToolUiEditor::~SAKSocketClientTransmitterToolUiEditor()
@@ -43,8 +47,7 @@ QJsonObject SAKSocketClientTransmitterToolUiEditor::parameters()
     bool enable = ui->checkBoxEnable->isChecked();
     QString clientIp = ui->comboBoxClientIp->currentText();
     int clientPort = ui->spinBoxClientPort->value();
-    bool specifiedClientIpPort =
-        ui->checkBoxSpecifiedClientIpAndPort->isChecked();
+    bool specifiedClientIpPort = ui->checkBoxSpecifiedClientIpAndPort->isChecked();
     QString serverIp = ui->comboBoxServerIp->currentText();
     int serverPort = ui->spinBoxServerPort->value();
     int messageType = ui->comboBoxMessageType->currentData().toInt();
@@ -67,8 +70,7 @@ void SAKSocketClientTransmitterToolUiEditor::setParameters(const QJsonObject &pa
     bool enable = params.value(keys.enable).toBool();
     QString clientIp = params.value(keys.clientIp).toString();
     int clientPort = params.value(keys.clientPort).toInt();
-    bool specifiedClientIpPort =
-        params.value(keys.specifiedClientIpPort).toBool();
+    bool specifiedClientIpPort = params.value(keys.specifiedClientIpPort).toBool();
     QString serverIp = params.value(keys.serverIp).toString();
     int serverPort = params.value(keys.serverPort).toInt();
     int messageType = params.value(keys.messageType).toInt();

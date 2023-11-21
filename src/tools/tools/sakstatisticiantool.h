@@ -20,8 +20,7 @@ class SAKStatisticianTool : public SAKBaseTool
 public:
     explicit SAKStatisticianTool(QObject *parent = nullptr);
 
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
 
 protected:
     virtual void run() final;
@@ -31,8 +30,8 @@ private:
     int mBytes{0};
 
 private:
-    int frames(){return mFrames;}
-    int bytes(){return mBytes;}
+    int frames() { return mFrames; }
+    int bytes() { return mBytes; }
 
 signals:
     void framesChanged(int frames);

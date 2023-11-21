@@ -12,9 +12,10 @@
 #include <QSerialPort>
 
 SAKDataBitsComboBox::SAKDataBitsComboBox(QWidget* parent)
-    : SAKComboBox(parent) {
-  addItem("8", QSerialPort::Data8);
-  addItem("7", QSerialPort::Data7);
-  addItem("6", QSerialPort::Data6);
-  addItem("5", QSerialPort::Data5);
+    : SAKComboBox(parent)
+{
+    addItem("8", QSerialPort::Data8);
+    addItem("7", QSerialPort::Data7);
+    addItem("6", QSerialPort::Data6);
+    addItem("5", QSerialPort::Data5);
 }

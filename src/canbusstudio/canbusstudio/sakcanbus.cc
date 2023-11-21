@@ -9,6 +9,8 @@
  ******************************************************************************/
 #include "sakcanbus.h"
 
-SAKCanBus::SAKCanBus(QObject* parent) : QThread(parent) {}
+SAKCanBus::SAKCanBus(QObject* parent)
+    : QThread(parent)
+{}
 
 SAKCanBus::~SAKCanBus() {}

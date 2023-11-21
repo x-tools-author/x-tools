@@ -7,14 +7,12 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "sakinterface.h"
 #include "sakserialporttool.h"
+#include "sakinterface.h"
 
 SAKSerialPortTool::SAKSerialPortTool(QObject *parent)
     : SAKCommunicationTool("sak.serialporttool", parent)
-{
-
-}
+{}
 
 QString SAKSerialPortTool::portName()
 {
@@ -91,12 +89,12 @@ bool SAKSerialPortTool::initialize(QString &errStr)
 
     QString info = QString("portName:%1, baudRate:%2, dataBits:%3, "
                            "stopBits:%4, parity:%5, flowControl: %6")
-            .arg(mParameters.portName,
-                 QString::number(mParameters.baudRate),
-                 QString::number(mParameters.dataBits),
-                 QString::number(mParameters.stopBits),
-                 QString::number(mParameters.parity),
-                 QString::number(mParameters.flowControl));
+                       .arg(mParameters.portName,
+                            QString::number(mParameters.baudRate),
+                            QString::number(mParameters.dataBits),
+                            QString::number(mParameters.stopBits),
+                            QString::number(mParameters.parity),
+                            QString::number(mParameters.flowControl));
     outputMessage(QtInfoMsg, info);
 
     if (!mSerialPort->open(QSerialPort::ReadWrite)) {
@@ -107,15 +105,12 @@ bool SAKSerialPortTool::initialize(QString &errStr)
         return false;
     }
 
-    connect(mSerialPort, &QSerialPort::readyRead, mSerialPort, [=](){
-        readBytes();
-    });
+    connect(mSerialPort, &QSerialPort::readyRead, mSerialPort, [=]() { readBytes(); });
 
     return true;
 }
 
-void SAKSerialPortTool::writeBytes(const QByteArray &bytes,
-                                   const QVariant &context)
+void SAKSerialPortTool::writeBytes(const QByteArray &bytes, const QVariant &context)
 {
     if (mSerialPort && mSerialPort->isOpen()) {
         qint64 ret = mSerialPort->write(bytes);

@@ -10,8 +10,8 @@
 #ifndef SAKUDPCLIENTTOOL_H
 #define SAKUDPCLIENTTOOL_H
 
-#include <QUdpSocket>
 #include "saksocketclienttool.h"
+#include <QUdpSocket>
 
 class SAKUdpClientTool : public SAKSocketClientTool
 {
@@ -21,8 +21,7 @@ public:
 
 protected:
     virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
     virtual void uninitialize() final;
     void readBytes();
 

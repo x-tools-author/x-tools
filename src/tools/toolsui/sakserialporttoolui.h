@@ -10,8 +10,8 @@
 #ifndef SAKSERIALPORTTOOLBOXUI_HH
 #define SAKSERIALPORTTOOLBOXUI_HH
 
-#include <QLoggingCategory>
 #include "sakcommunicationtoolui.h"
+#include <QLoggingCategory>
 
 namespace Ui {
 class SAKSerialPortToolUi;
@@ -24,8 +24,7 @@ class SAKSerialPortToolUi : public SAKCommunicationToolUi
 public:
     explicit SAKSerialPortToolUi(QWidget *parent = nullptr);
     ~SAKSerialPortToolUi();
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingsGroup) final;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) final;
 
 private:
     SAKSerialPortTool *mTool{nullptr};

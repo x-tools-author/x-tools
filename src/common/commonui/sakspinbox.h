@@ -17,8 +17,7 @@ class SAKSpinBox : public QSpinBox
     Q_OBJECT
 public:
     SAKSpinBox(QWidget *parent = nullptr);
-    void setGroupKey(const QString &group,
-                     const QString &key);
+    void setGroupKey(const QString &group, const QString &key);
 
 private:
     QString mKey;

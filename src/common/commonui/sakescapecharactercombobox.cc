@@ -12,11 +12,12 @@
 #include "sakdatastructure.h"
 
 SAKEscapeCharacterComboBox::SAKEscapeCharacterComboBox(QWidget* parent)
-    : SAKComboBox(parent) {
-  addItem(tr("None"), SAKDataStructure::EscapeCharacterOptionNone);
-  addItem("\\r", SAKDataStructure::EscapeCharacterOptionR);
-  addItem("\\n", SAKDataStructure::EscapeCharacterOptionN);
-  addItem("\\r\\n", SAKDataStructure::EscapeCharacterOptionRN);
-  addItem("\\n\\r", SAKDataStructure::EscapeCharacterOptionNR);
-  addItem("\\r + \\n", SAKDataStructure::EscapeCharacterOptionRAndN);
+    : SAKComboBox(parent)
+{
+    addItem(tr("None"), SAKDataStructure::EscapeCharacterOptionNone);
+    addItem("\\r", SAKDataStructure::EscapeCharacterOptionR);
+    addItem("\\n", SAKDataStructure::EscapeCharacterOptionN);
+    addItem("\\r\\n", SAKDataStructure::EscapeCharacterOptionRN);
+    addItem("\\n\\r", SAKDataStructure::EscapeCharacterOptionNR);
+    addItem("\\r + \\n", SAKDataStructure::EscapeCharacterOptionRAndN);
 }

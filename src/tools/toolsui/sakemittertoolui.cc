@@ -16,13 +16,9 @@ SAKEmitterToolUi::SAKEmitterToolUi(QWidget *parent)
     mEditor = new SAKEmitterToolUiEditor(this);
 }
 
-SAKEmitterToolUi::~SAKEmitterToolUi()
-{
+SAKEmitterToolUi::~SAKEmitterToolUi() {}
 
-}
-
-void SAKEmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
-                                               const QString &settingGroup)
+void SAKEmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup)
 {
     SAKTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
 
@@ -34,7 +30,7 @@ void SAKEmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
 QList<int> SAKEmitterToolUi::defaultHideColumns()
 {
     QList<int> list;
-    auto tb = mTableModelTool->tableModel().value<QAbstractTableModel*>();
+    auto tb = mTableModelTool->tableModel().value<QAbstractTableModel *>();
     for (int i = 0; i < tb->columnCount(); i++) {
         list.append(i);
     }

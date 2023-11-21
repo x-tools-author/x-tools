@@ -11,9 +11,7 @@
 
 SAKSocketServerTool::SAKSocketServerTool(const char *log, QObject *parent)
     : SAKCommunicationTool{log, parent}
-{
-
-}
+{}
 
 QString SAKSocketServerTool::serverIp()
 {
@@ -33,7 +31,8 @@ int SAKSocketServerTool::serverPort()
 
 void SAKSocketServerTool::setServerPort(int port)
 {
-    mServerPort = port; emit serverPortChanged();
+    mServerPort = port;
+    emit serverPortChanged();
 }
 
 bool SAKSocketServerTool::specifyIpAndPort()
@@ -75,5 +74,6 @@ int SAKSocketServerTool::messageType()
 
 void SAKSocketServerTool::setMessageType(int type)
 {
-    mMessageType = type; emit messageTypeChanged();
+    mMessageType = type;
+    emit messageTypeChanged();
 }

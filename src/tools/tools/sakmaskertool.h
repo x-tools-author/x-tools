@@ -24,14 +24,14 @@ public:
 
     Q_INVOKABLE void setMaskCode(qint8 maskCode);
 
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
 
 protected:
     void run();
 
 private:
-    struct InputParameters {
+    struct InputParameters
+    {
         QByteArray bytes;
         QVariant context;
     };

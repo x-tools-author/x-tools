@@ -17,14 +17,15 @@ namespace Ui {
 class SAKAsciiAssistant;
 }
 
-class SAKAsciiAssistant : public QWidget {
-  Q_OBJECT
- public:
-  Q_INVOKABLE SAKAsciiAssistant(QWidget* parent = Q_NULLPTR);
-  ~SAKAsciiAssistant();
+class SAKAsciiAssistant : public QWidget
+{
+    Q_OBJECT
+public:
+    Q_INVOKABLE SAKAsciiAssistant(QWidget* parent = Q_NULLPTR);
+    ~SAKAsciiAssistant();
 
- private:
-  Ui::SAKAsciiAssistant* ui_;
+private:
+    Ui::SAKAsciiAssistant* ui_;
 };
 
-#endif  // SAKASCIIASSISTANT_H
+#endif // SAKASCIIASSISTANT_H

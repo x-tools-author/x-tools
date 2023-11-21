@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QtGlobal>
 #include <QDateTime>
+#include <QtGlobal>
 
 #include "sakbasetool.h"
 
@@ -16,17 +16,15 @@ SAKBaseTool::SAKBaseTool(const char *logCategory, QObject *parent)
     : QThread{parent}
     , mLoggingCategory(logCategory)
 {
-    connect(this, &SAKBaseTool::started, this, [=](){
+    connect(this, &SAKBaseTool::started, this, [=]() {
         this->mIsWorking = true;
         emit this->isWorkingChanged();
     });
-    connect(this, &SAKBaseTool::finished, this, [=](){
+    connect(this, &SAKBaseTool::finished, this, [=]() {
         this->mIsWorking = false;
         emit this->isWorkingChanged();
     });
-    connect(this, &SAKBaseTool::errorOccured, this, [=](){
-        exit();
-    });
+    connect(this, &SAKBaseTool::errorOccured, this, [=]() { exit(); });
 }
 
 SAKBaseTool::~SAKBaseTool()

@@ -26,8 +26,7 @@ public:
     ~SAKBleCentralToolUi();
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingsGroup) override;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) override;
 
     virtual void onIsWorkingChanged(bool isWorking) final;
 
@@ -42,8 +41,7 @@ private:
 private slots:
     void onServiceDiscoveryStarted();
     void onServiceDiscoveryFinished();
-    void onDescriptorWritten(const QLowEnergyDescriptor &descriptor,
-                             const QByteArray &newValue);
+    void onDescriptorWritten(const QLowEnergyDescriptor &descriptor, const QByteArray &newValue);
 
     void onPushButtonScanClicked();
     void onComboBoxDevicesActived();

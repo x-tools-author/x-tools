@@ -12,11 +12,15 @@
 #include "sakcanbusstudioui.h"
 #include "sakcommonmainwindow.h"
 
-int main(int argc, char* argv[]) {
-  QApplication* app = CreateCommonMainWindowApplication<SAKCanBusUi>(
-      argc, argv, QObject::tr("CAN Bus Studio"), "SAK.CanBusStudio");
-  int ret = app->exec();
-  app->deleteLater();
+int main(int argc, char* argv[])
+{
+    QApplication* app = CreateCommonMainWindowApplication<SAKCanBusUi>(argc,
+                                                                       argv,
+                                                                       QObject::tr(
+                                                                           "CAN Bus Studio"),
+                                                                       "SAK.CanBusStudio");
+    int ret = app->exec();
+    app->deleteLater();
 
-  return ret;
+    return ret;
 }

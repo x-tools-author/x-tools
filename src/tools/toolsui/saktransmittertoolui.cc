@@ -7,19 +7,17 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "saktransmittertool.h"
 #include "saktransmittertoolui.h"
+#include "saktransmittertool.h"
 
 SAKTransmitterToolUi::SAKTransmitterToolUi(const char *lg, QWidget *parent)
     : SAKTableModelToolUi{lg, parent}
-{
-
-}
+{}
 
 void SAKTransmitterToolUi::afterRowEdited(int row)
 {
     SAKTransmitterTool *cookedTool = Q_NULLPTR;
-    cookedTool = qobject_cast<SAKTransmitterTool*>(mTool);
+    cookedTool = qobject_cast<SAKTransmitterTool *>(mTool);
     if (!cookedTool) {
         return;
     }

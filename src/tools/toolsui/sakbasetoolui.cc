@@ -7,14 +7,12 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "sakbasetool.h"
 #include "sakbasetoolui.h"
+#include "sakbasetool.h"
 
 SAKBaseToolUi::SAKBaseToolUi(QWidget *parent)
     : QWidget{parent}
-{
-
-}
+{}
 
 void SAKBaseToolUi::initialize(SAKBaseTool *tool,
                                const QString &settingsGroup,
@@ -33,7 +31,7 @@ void SAKBaseToolUi::initialize(SAKBaseTool *tool,
         return;
     }
 
-    connect(tool, &SAKBaseTool::isWorkingChanged, this, [=](){
+    connect(tool, &SAKBaseTool::isWorkingChanged, this, [=]() {
         onIsWorkingChanged(tool->isWorking());
     });
 
@@ -45,8 +43,7 @@ void SAKBaseToolUi::onIsWorkingChanged(bool isWorking)
     Q_UNUSED(isWorking)
 }
 
-void SAKBaseToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
-                             const QString &settingsGroup)
+void SAKBaseToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
 {
     Q_UNUSED(tool)
     Q_UNUSED(settingsGroup)

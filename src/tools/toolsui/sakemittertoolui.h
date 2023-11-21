@@ -21,8 +21,7 @@ public:
     ~SAKEmitterToolUi();
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
     virtual QList<int> defaultHideColumns() override;
     virtual QDialog *itemEditor() override;
 

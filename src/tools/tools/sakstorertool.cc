@@ -7,21 +7,18 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <Qt>
+#include <QDateTime>
 #include <QDir>
 #include <QFile>
-#include <QDateTime>
 #include <QTextStream>
-#include <QTextStream>
+#include <Qt>
 
 #include "sakinterface.h"
 #include "sakstorertool.h"
 
 SAKStorerTool::SAKStorerTool(QObject *parent)
     : SAKBaseTool{"sak.storertool", parent}
-{
-
-}
+{}
 
 SAKStorerTool::~SAKStorerTool()
 {
@@ -30,8 +27,7 @@ SAKStorerTool::~SAKStorerTool()
     mInputContextListMutex.unlock();
 }
 
-void SAKStorerTool::inputBytes(const QByteArray &bytes,
-                              const QVariant &context)
+void SAKStorerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     if (enable()) {
         mInputContextListMutex.lock();
@@ -122,7 +118,7 @@ void SAKStorerTool::run()
     QTimer *writeTimer = new QTimer();
     writeTimer->setInterval(2000);
     writeTimer->setSingleShot(true);
-    connect(writeTimer, &QTimer::timeout, writeTimer, [=](){
+    connect(writeTimer, &QTimer::timeout, writeTimer, [=]() {
         this->write2file();
         writeTimer->start();
     });
@@ -145,9 +141,9 @@ void SAKStorerTool::write2file()
     }
 
     QString path = mParameters.file;
-    QFile file (path);
+    QFile file(path);
     if (file.exists()) {
-        if (file.size() > 1024*1024) {
+        if (file.size() > 1024 * 1024) {
             const QString format = QString("yyyy-MM-dd-hh-mm-ss_");
             auto dt = QDateTime::currentDateTime().toString(format);
             QDir dir(path);
@@ -156,15 +152,14 @@ void SAKStorerTool::write2file()
             pathTemp = pathTemp.remove(fileNameTemp);
             QString newFileName = pathTemp + dt + fileNameTemp;
             file.copy(newFileName);
-            file.open(QFile::WriteOnly|QFile::Truncate);
+            file.open(QFile::WriteOnly | QFile::Truncate);
             file.close();
         }
     } else {
-        outputMessage(QtWarningMsg,
-                      QString("the file(%1) is not exist").arg(path));
+        outputMessage(QtWarningMsg, QString("the file(%1) is not exist").arg(path));
     }
 
-    if (file.open(QFile::WriteOnly|QFile::Text|QFile::Append)) {
+    if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)) {
         QTextStream outStream(&file);
         while (!mInputContextList.isEmpty()) {
             auto ctx = mInputContextList.takeFirst();

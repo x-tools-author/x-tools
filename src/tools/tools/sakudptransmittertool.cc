@@ -14,9 +14,7 @@
 
 SAKUdpTransmitterTool::SAKUdpTransmitterTool(QObject *parent)
     : SAKSocketClientTransmitterTool{"sak.udptransmittertool", parent}
-{
-
-}
+{}
 
 SAKCommunicationTool *SAKUdpTransmitterTool::createTool()
 {

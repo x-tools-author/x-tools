@@ -17,24 +17,25 @@ class SAKBroadcastAssistant;
 }
 
 class SAKBroadcastThread;
-class SAKBroadcastAssistant : public QWidget {
-  Q_OBJECT
- public:
-  Q_INVOKABLE SAKBroadcastAssistant(QWidget* parent = Q_NULLPTR);
-  ~SAKBroadcastAssistant();
+class SAKBroadcastAssistant : public QWidget
+{
+    Q_OBJECT
+public:
+    Q_INVOKABLE SAKBroadcastAssistant(QWidget* parent = Q_NULLPTR);
+    ~SAKBroadcastAssistant();
 
- private:
-  Ui::SAKBroadcastAssistant* ui_;
-  SAKBroadcastThread* broadcast_thread_;
+private:
+    Ui::SAKBroadcastAssistant* ui_;
+    SAKBroadcastThread* broadcast_thread_;
 
- private:
-  void InitUi();
-  void InitUiBroadcastAddress();
-  void InitUiBroadcastInterval();
-  void UpdateUiState(bool started);
-  QByteArray PacketData();
+private:
+    void InitUi();
+    void InitUiBroadcastAddress();
+    void InitUiBroadcastInterval();
+    void UpdateUiState(bool started);
+    QByteArray PacketData();
 
-  void OnBroadcastPushButtonClicked();
+    void OnBroadcastPushButtonClicked();
 };
 
-#endif  // SAKBROADCASTASSISTANT_H
+#endif // SAKBROADCASTASSISTANT_H

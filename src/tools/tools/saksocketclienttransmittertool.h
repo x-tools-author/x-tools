@@ -16,13 +16,13 @@ class SAKSocketClientTransmitterTool : public SAKTransmitterTool
 {
     Q_OBJECT
 public:
-    explicit SAKSocketClientTransmitterTool(const char *logCategory,
-                                            QObject *parent = nullptr);
+    explicit SAKSocketClientTransmitterTool(const char *logCategory, QObject *parent = nullptr);
     virtual QString cookHeaderString(const QString &str) override;
     Q_INVOKABLE virtual QVariant itemContext(int index) override;
 
 public:
-    struct ItemContextKeys {
+    struct ItemContextKeys
+    {
         const QString enable{"Enable"};
         const QString clientIp{"ClientIp"};
         const QString clientPort{"ClientPort"};
@@ -34,10 +34,8 @@ public:
     };
 
 protected:
-    virtual int columnCount(const QModelIndex &parent
-                            = QModelIndex()) const override;
-    virtual QVariant data(const QModelIndex &index,
-                          int role = Qt::DisplayRole) const override;
+    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     virtual bool setData(const QModelIndex &index,
                          const QVariant &value,
                          int role = Qt::EditRole) override;

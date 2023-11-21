@@ -12,19 +12,23 @@
 #include <QMouseEvent>
 
 SAKMenu::SAKMenu(const QString& title, QWidget* parent)
-    : QMenu(title, parent) {}
+    : QMenu(title, parent)
+{}
 
-SAKMenu::SAKMenu(QWidget* parent) : QMenu{parent} {}
+SAKMenu::SAKMenu(QWidget* parent)
+    : QMenu{parent}
+{}
 
-void SAKMenu::mouseReleaseEvent(QMouseEvent* e) {
-  auto p = QCursor::pos();
-  if (geometry().contains(p)) {
-    QAction* a = actionAt(e->pos());
-    if (a) {
-      a->activate(QAction::Trigger);
-      return;
+void SAKMenu::mouseReleaseEvent(QMouseEvent* e)
+{
+    auto p = QCursor::pos();
+    if (geometry().contains(p)) {
+        QAction* a = actionAt(e->pos());
+        if (a) {
+            a->activate(QAction::Trigger);
+            return;
+        }
     }
-  }
 
-  QMenu::mouseReleaseEvent(e);
+    QMenu::mouseReleaseEvent(e);
 }

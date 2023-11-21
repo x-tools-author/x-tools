@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include "sakresponsertool.h"
 #include "sakresponsertooluieditor.h"
+#include "sakresponsertool.h"
 #include "ui_sakresponsertooluieditor.h"
 
 SAKResponserToolUiEditor::SAKResponserToolUiEditor(QWidget *parent)
@@ -19,10 +19,8 @@ SAKResponserToolUiEditor::SAKResponserToolUiEditor(QWidget *parent)
     setModal(true);
     setWindowTitle(tr("Responser Item Editor"));
 
-    connect(ui->pushButtonOk, &QPushButton::clicked,
-            this, &SAKResponserToolUiEditor::accept);
-    connect(ui->pushButtonCancel, &QPushButton::clicked,
-            this, &SAKResponserToolUiEditor::reject);
+    connect(ui->pushButtonOk, &QPushButton::clicked, this, &SAKResponserToolUiEditor::accept);
+    connect(ui->pushButtonCancel, &QPushButton::clicked, this, &SAKResponserToolUiEditor::reject);
 }
 
 SAKResponserToolUiEditor::~SAKResponserToolUiEditor()
@@ -36,28 +34,28 @@ QJsonObject SAKResponserToolUiEditor::parameters()
     QString description = ui->lineEditDescription->text().trimmed();
     int option = ui->comboBoxOption->currentData().toInt();
 
-    int     refFormat       = ui->comboBoxRefFormat->currentData().toInt();
-    int     refEscape       = ui->comboBoxRefEscape->currentData().toInt();
-    int     refPrefix       = ui->comboBoxRefPrefix->currentData().toInt();
-    int     refSuffix       = ui->comboBoxRefSuffix->currentData().toInt();
-    bool    refCrcEnable    = ui->checkBoxRefCrcEnable->isChecked();
-    bool    refCrcBigEndian = ui->checkBoxRefCrcBigEndian->isChecked();
-    int     refAlgorithm    = ui->comboBoxRefAlgorithm->currentData().toInt();
-    int     refStart        = ui->spinBoxRefStart->value();
-    int     refEnd          = ui->spinBoxRefEnd->value();
-    QString refData         = ui->lineEditRefData->text();
+    int refFormat = ui->comboBoxRefFormat->currentData().toInt();
+    int refEscape = ui->comboBoxRefEscape->currentData().toInt();
+    int refPrefix = ui->comboBoxRefPrefix->currentData().toInt();
+    int refSuffix = ui->comboBoxRefSuffix->currentData().toInt();
+    bool refCrcEnable = ui->checkBoxRefCrcEnable->isChecked();
+    bool refCrcBigEndian = ui->checkBoxRefCrcBigEndian->isChecked();
+    int refAlgorithm = ui->comboBoxRefAlgorithm->currentData().toInt();
+    int refStart = ui->spinBoxRefStart->value();
+    int refEnd = ui->spinBoxRefEnd->value();
+    QString refData = ui->lineEditRefData->text();
 
-    int     resFormat       = ui->comboBoxResFormat->currentData().toInt();
-    int     resEscape       = ui->comboBoxResEscape->currentData().toInt();
-    int     resPrefix       = ui->comboBoxResPrefix->currentData().toInt();
-    int     resSuffix       = ui->comboBoxResSuffix->currentData().toInt();
-    bool    resCrcEnable    = ui->checkBoxResCrcEnable->isChecked();
-    bool    resCrcBigEndian = ui->checkBoxResCrcBigEndian->isChecked();
-    int     resAlgorithm    = ui->comboBoxResAlgorithm->currentData().toInt();
-    int     resStart        = ui->spinBoxResStart->value();
-    int     resEnd          = ui->spinBoxResEnd->value();
-    int     resDelay        = ui->spinBoxResDelay->value();
-    QString resData         = ui->lineEditResData->text();
+    int resFormat = ui->comboBoxResFormat->currentData().toInt();
+    int resEscape = ui->comboBoxResEscape->currentData().toInt();
+    int resPrefix = ui->comboBoxResPrefix->currentData().toInt();
+    int resSuffix = ui->comboBoxResSuffix->currentData().toInt();
+    bool resCrcEnable = ui->checkBoxResCrcEnable->isChecked();
+    bool resCrcBigEndian = ui->checkBoxResCrcBigEndian->isChecked();
+    int resAlgorithm = ui->comboBoxResAlgorithm->currentData().toInt();
+    int resStart = ui->spinBoxResStart->value();
+    int resEnd = ui->spinBoxResEnd->value();
+    int resDelay = ui->spinBoxResDelay->value();
+    QString resData = ui->lineEditResData->text();
 
     SAKResponserTool::ResponserItemKeys keys;
     QJsonObject jsonObj;
@@ -103,8 +101,7 @@ void SAKResponserToolUiEditor::setParameters(const QJsonObject &params)
     int refPrefix = params.value(keys.itemReferencePrefix).toInt();
     int refSuffix = params.value(keys.itemReferenceSuffix).toInt();
     bool refCrcEnable = params.value(keys.itemReferenceCrcEnable).toBool();
-    bool refCrcBigEndian =
-        params.value(keys.itemReferenceCrcBigEndian).toBool();
+    bool refCrcBigEndian = params.value(keys.itemReferenceCrcBigEndian).toBool();
     int refAlgorithm = params.value(keys.itemReferenceCrcAlgorithm).toInt();
     int refStart = params.value(keys.itemReferenceCrcStartIndex).toInt();
     int refEnd = params.value(keys.itemReferenceCrcEndIndex).toInt();
@@ -115,8 +112,7 @@ void SAKResponserToolUiEditor::setParameters(const QJsonObject &params)
     int resPrefix = params.value(keys.itemResponsePrefix).toInt();
     int resSuffix = params.value(keys.itemResponseSuffix).toInt();
     bool resCrcEnable = params.value(keys.itemResponseCrcEnable).toBool();
-    bool resCrcBigEndian =
-        params.value(keys.itemResponseCrcBigEndian).toBool();
+    bool resCrcBigEndian = params.value(keys.itemResponseCrcBigEndian).toBool();
     int resAlgorithm = params.value(keys.itemResponseCrcAlgorithm).toInt();
     int resStart = params.value(keys.itemResponseCrcStartIndex).toInt();
     int resEnd = params.value(keys.itemResponseCrcEndIndex).toInt();

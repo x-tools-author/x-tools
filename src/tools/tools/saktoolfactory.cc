@@ -7,34 +7,32 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QMetaEnum>
-#include "sakmaskertool.h"
-#include "sakstorertool.h"
 #include "saktoolfactory.h"
-#include "sakemittertool.h"
 #include "sakanalyzertool.h"
+#include "sakblecentraltool.h"
+#include "sakemittertool.h"
+#include "sakmaskertool.h"
 #include "sakprestorertool.h"
 #include "sakresponsertool.h"
-#include "sakudpclienttool.h"
-#include "sakudpservertool.h"
+#include "sakserialporttool.h"
+#include "sakserialporttransmittertool.h"
+#include "sakstatisticiantool.h"
+#include "sakstorertool.h"
 #include "saktcpclienttool.h"
 #include "saktcpservertool.h"
-#include "sakvelometertool.h"
-#include "sakblecentraltool.h"
-#include "sakserialporttool.h"
-#include "sakstatisticiantool.h"
 #include "saktcptransmittertool.h"
+#include "sakudpclienttool.h"
+#include "sakudpservertool.h"
 #include "sakudptransmittertool.h"
+#include "sakvelometertool.h"
 #include "sakwebsocketclienttool.h"
 #include "sakwebsocketservertool.h"
 #include "sakwebsockettransmittertool.h"
-#include "sakserialporttransmittertool.h"
+#include <QMetaEnum>
 
 SAKToolFactory::SAKToolFactory(QObject *parent)
     : QObject{parent}
-{
-
-}
+{}
 
 SAKToolFactory *SAKToolFactory::instance()
 {
@@ -97,7 +95,6 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
         Q_UNUSED(msg);
         Q_ASSERT_X(false, __FUNCTION__, msg.toLatin1().data());
     }
-
 
     return tool;
 }

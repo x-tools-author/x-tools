@@ -22,6 +22,10 @@ macro(sak_add_assistant dir_name app_name)
         ${ASSISTANT_SOURCES}
         ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
 
+    if(WIN32)
+        list(APPEND APP_ASSISTANT_SOURCES ${CMAKE_SOURCE_DIR}/windows.rc)
+    endif()
+
     sak_add_executable(${app_name} ${APP_ASSISTANT_SOURCES})
     sak_auto_execute_deployqt(${app_name})
     sak_set_target_properties(${app_name})

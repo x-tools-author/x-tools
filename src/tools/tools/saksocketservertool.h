@@ -17,7 +17,8 @@ class SAKSocketServerTool : public SAKCommunicationTool
     Q_OBJECT
     Q_PROPERTY(QString serverIp READ serverIp WRITE setServerIp NOTIFY serverIpChanged)
     Q_PROPERTY(int serverPort READ serverPort WRITE setServerPort NOTIFY serverPortChanged)
-    Q_PROPERTY(bool specifyIpAndPort READ specifyIpAndPort WRITE setSpecifyIpAndPort NOTIFY specifyIpAndPortChanged)
+    Q_PROPERTY(bool specifyIpAndPort READ specifyIpAndPort WRITE setSpecifyIpAndPort NOTIFY
+                   specifyIpAndPortChanged)
     Q_PROPERTY(QStringList clients READ clients NOTIFY clientsChanged)
     Q_PROPERTY(int clientIndex READ clientIndex WRITE setClientIndex NOTIFY clientIndexChanged)
     Q_PROPERTY(QString bindingIpPort READ bindingIpPort NOTIFY bindingIpPortChanged)

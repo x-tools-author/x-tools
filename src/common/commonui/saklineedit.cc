@@ -11,29 +11,33 @@
 
 #include "saksettings.h"
 
-SAKLineEdit::SAKLineEdit(QWidget* parent) : QLineEdit(parent) {
-  connect(this, &SAKLineEdit::textChanged, this,
-          &SAKLineEdit::writeToSettingsFile);
+SAKLineEdit::SAKLineEdit(QWidget* parent)
+    : QLineEdit(parent)
+{
+    connect(this, &SAKLineEdit::textChanged, this, &SAKLineEdit::writeToSettingsFile);
 }
 
-void SAKLineEdit::setGroupKey(const QString& group, const QString& key) {
-  mKey = group + "/" + key;
-  readFromSettingsFile();
+void SAKLineEdit::setGroupKey(const QString& group, const QString& key)
+{
+    mKey = group + "/" + key;
+    readFromSettingsFile();
 }
 
-void SAKLineEdit::readFromSettingsFile() {
-  if (mKey.isEmpty()) {
-    return;
-  }
+void SAKLineEdit::readFromSettingsFile()
+{
+    if (mKey.isEmpty()) {
+        return;
+    }
 
-  QString txt = SAKSettings::instance()->value(mKey).toString();
-  setText(txt);
+    QString txt = SAKSettings::instance()->value(mKey).toString();
+    setText(txt);
 }
 
-void SAKLineEdit::writeToSettingsFile() {
-  if (mKey.isEmpty()) {
-    return;
-  }
+void SAKLineEdit::writeToSettingsFile()
+{
+    if (mKey.isEmpty()) {
+        return;
+    }
 
-  SAKSettings::instance()->setValue(mKey, text());
+    SAKSettings::instance()->setValue(mKey, text());
 }

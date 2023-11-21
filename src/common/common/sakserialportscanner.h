@@ -4,8 +4,8 @@
 #ifndef SAKSERIALPORTSCANNER_H
 #define SAKSERIALPORTSCANNER_H
 
-#include <QTimer>
 #include <QObject>
+#include <QTimer>
 
 class SAKSerialPortScanner : public QObject
 {
@@ -30,11 +30,11 @@ private:
 
 private:
     QStringList mPortNames;
-    QStringList portNames(){return mPortNames;}
+    QStringList portNames() { return mPortNames; }
     Q_SIGNAL void portNamesChanged();
 
     QStringList mBaudRates;
-    QStringList baudRates(){return mBaudRates;}
+    QStringList baudRates() { return mBaudRates; }
     Q_SIGNAL void baudRatesChanged();
 };
 

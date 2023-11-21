@@ -12,35 +12,27 @@
 
 #include <QMutex>
 
-#include "saktablemodeltool.h"
 #include "sakcommunicationtool.h"
+#include "saktablemodeltool.h"
 
 class SAKTransmitterTool : public SAKTableModelTool
 {
     Q_OBJECT
 public:
-    explicit SAKTransmitterTool(const char *logCategory,
-                                QObject *parent = nullptr);
+    explicit SAKTransmitterTool(const char *logCategory, QObject *parent = nullptr);
     SAKCommunicationTool *communicationTool(int index);
 
 protected:
-    virtual void run() override {exec();}
+    virtual void run() override { exec(); }
 
 protected:
-    virtual int rowCount(const QModelIndex &parent
-                         = QModelIndex()) const override;
-    virtual bool removeRows(int row,
-                            int count,
-                            const QModelIndex &parent
-                            = QModelIndex()) override;
-    virtual bool insertRows(int row,
-                            int count,
-                            const QModelIndex &parent
-                            = QModelIndex()) override;
+    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
+    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
     virtual SAKCommunicationTool *createTool() = 0;
 
 protected:
-    QVector<SAKCommunicationTool*> mToolVector;
+    QVector<SAKCommunicationTool *> mToolVector;
     QMutex mToolVectorMutex;
 
 private:

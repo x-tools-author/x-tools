@@ -10,8 +10,8 @@
 #ifndef SAKUIINTERFACE_H
 #define SAKUIINTERFACE_H
 
-#include <QObject>
 #include <QLineEdit>
+#include <QObject>
 
 class SAKUiInterface : public QObject
 {

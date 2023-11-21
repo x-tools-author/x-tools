@@ -7,15 +7,13 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
+#include "sakdatastructure.h"
 #include "sakcrcinterface.h"
 #include "sakinterface.h"
-#include "sakdatastructure.h"
 
 SAKDataStructure::SAKDataStructure(QObject *parent)
     : QObject{parent}
-{
-
-}
+{}
 
 QString SAKDataStructure::affixesName(int affixes)
 {
@@ -51,7 +49,6 @@ QByteArray SAKDataStructure::affixesData(int affixes)
     return QByteArray("");
 }
 
-
 QString SAKDataStructure::cookedString(int escapeCharacter, const QString &str)
 {
     return SAKDataStructure::cookEscapeCharacter(escapeCharacter, str);
@@ -65,9 +62,9 @@ QByteArray SAKDataStructure::dataItemBytes(const EDStructDataItem &item)
     bytes = SAKInterface::string2array(text, item.itemTextFormat);
     SAKCrcInterface sakCrc;
     QByteArray crcBytes = sakCrc.calculateBytes(bytes,
-                                               item.itemCrcAlgorithm,
-                                               item.itemCrcStartIndex,
-                                               item.itemCrcEndIndex);
+                                                item.itemCrcAlgorithm,
+                                                item.itemCrcStartIndex,
+                                                item.itemCrcEndIndex);
     QByteArray prefix = SAKDataStructure::affixesData(item.itemPrefix);
     QByteArray suffix = SAKDataStructure::affixesData(item.itemSuffix);
 
@@ -96,4 +93,3 @@ QString SAKDataStructure::cookEscapeCharacter(int option, const QString &str)
 
     return newStr;
 }
-

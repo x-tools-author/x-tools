@@ -11,6 +11,4 @@
 
 SAKUdpTransmitterToolUi::SAKUdpTransmitterToolUi(QWidget *parent)
     : SAKSocketClientTransmitterToolUi("SAK.SocketClientTransmitterToolUi", parent)
-{
-
-}
+{}

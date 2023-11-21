@@ -7,23 +7,20 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QJsonObject>
 #include <QJsonDocument>
+#include <QJsonObject>
 
 #include "sakemittertool.h"
 
 #include "sakcrcinterface.h"
-#include "sakinterface.h"
 #include "sakdatastructure.h"
+#include "sakinterface.h"
 
 SAKEmitterTool::SAKEmitterTool(QObject *parent)
     : SAKTableModelTool{"sak.emittertool", parent}
-{
+{}
 
-}
-
-void SAKEmitterTool::inputBytes(const QByteArray &bytes,
-                                const QVariant &context)
+void SAKEmitterTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     Q_UNUSED(bytes)
     Q_UNUSED(context)
@@ -52,8 +49,7 @@ QVariant SAKEmitterTool::itemContext(int index)
         ctx.insert(itemEnable(), true);
         ctx.insert(itemDescription(), "Demo");
         ctx.insert(itemTextFormat(), SAKDataStructure::TextFormatAscii);
-        ctx.insert(itemEscapeCharacter(),
-                   SAKDataStructure::EscapeCharacterOptionNone);
+        ctx.insert(itemEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
         ctx.insert(itemInterval(), 1000);
         ctx.insert(itemPrefix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemSuffix(), SAKDataStructure::AffixesNone);
@@ -129,9 +125,7 @@ QVariant SAKEmitterTool::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool SAKEmitterTool::setData(const QModelIndex &index,
-                             const QVariant &value,
-                             int role)
+bool SAKEmitterTool::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     Q_UNUSED(role);
     int row = index.row();
@@ -177,9 +171,7 @@ bool SAKEmitterTool::setData(const QModelIndex &index,
     return true;
 }
 
-bool SAKEmitterTool::insertRows(int row,
-                                int count,
-                                const QModelIndex &parent)
+bool SAKEmitterTool::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
     Data ctx;
@@ -200,27 +192,39 @@ bool SAKEmitterTool::removeRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-QVariant SAKEmitterTool::headerData(int section,
-                                    Qt::Orientation orientation,
-                                    int role) const
+QVariant SAKEmitterTool::headerData(int section, Qt::Orientation orientation, int role) const
 {
     Q_UNUSED(role);
     if (orientation == Qt::Horizontal) {
         switch (section) {
-        case 0: return mDataKeys.itemEnable;
-        case 1: return mDataKeys.itemDescription;
-        case 2: return mDataKeys.itemTextFormat;
-        case 3: return mDataKeys.itemEscapeCharacter;
-        case 4: return mDataKeys.itemInterval;
-        case 5: return mDataKeys.itemPrefix;
-        case 6: return mDataKeys.itemSuffix;
-        case 7: return mDataKeys.itemCrcEnable;
-        case 8: return mDataKeys.itemCrcBigEndian;
-        case 9: return mDataKeys.itemCrcAlgorithm;
-        case 10: return mDataKeys.itemCrcStartIndex;
-        case 11: return mDataKeys.itemCrcEndIndex;
-        case 12: return mDataKeys.itemText;
-        default: return "";
+        case 0:
+            return mDataKeys.itemEnable;
+        case 1:
+            return mDataKeys.itemDescription;
+        case 2:
+            return mDataKeys.itemTextFormat;
+        case 3:
+            return mDataKeys.itemEscapeCharacter;
+        case 4:
+            return mDataKeys.itemInterval;
+        case 5:
+            return mDataKeys.itemPrefix;
+        case 6:
+            return mDataKeys.itemSuffix;
+        case 7:
+            return mDataKeys.itemCrcEnable;
+        case 8:
+            return mDataKeys.itemCrcBigEndian;
+        case 9:
+            return mDataKeys.itemCrcAlgorithm;
+        case 10:
+            return mDataKeys.itemCrcStartIndex;
+        case 11:
+            return mDataKeys.itemCrcEndIndex;
+        case 12:
+            return mDataKeys.itemText;
+        default:
+            return "";
         }
     }
 
@@ -232,9 +236,7 @@ void SAKEmitterTool::run()
     mEmittingTimer = new QTimer();
     mEmittingTimer->setInterval(mScanInterval);
     mEmittingTimer->setSingleShot(true);
-    connect(mEmittingTimer, &QTimer::timeout, mEmittingTimer, [=](){
-        try2emit();
-    });
+    connect(mEmittingTimer, &QTimer::timeout, mEmittingTimer, [=]() { try2emit(); });
     mEmittingTimer->start();
 
     exec();
@@ -285,11 +287,11 @@ QByteArray SAKEmitterTool::itemBytes(const SAKEmitterTool::Data &item)
     return bytes;
 }
 
-QVariant SAKEmitterTool::columnDisplayRoleData(
-    const SAKEmitterTool::EmiterItem &item, int column) const
+QVariant SAKEmitterTool::columnDisplayRoleData(const SAKEmitterTool::EmiterItem &item,
+                                               int column) const
 {
     DataKeys keys;
-    QStringList hs = const_cast<SAKEmitterTool*>(this)->headers();
+    QStringList hs = const_cast<SAKEmitterTool *>(this)->headers();
     if (column >= 0 && column < hs.count()) {
         const QString dataKey = hs.at(column);
         if (dataKey == mDataKeys.itemEnable) {

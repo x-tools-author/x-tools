@@ -10,13 +10,13 @@
 #ifndef SAKTABLEMODELTOOLUI_H
 #define SAKTABLEMODELTOOLUI_H
 
-#include <QMenu>
-#include <QWidget>
-#include <QJsonObject>
-#include <QModelIndex>
-#include <QActionGroup>
-#include <QLoggingCategory>
 #include <QAbstractTableModel>
+#include <QActionGroup>
+#include <QJsonObject>
+#include <QLoggingCategory>
+#include <QMenu>
+#include <QModelIndex>
+#include <QWidget>
 
 #include "sakbasetoolui.h"
 
@@ -31,13 +31,12 @@ class SAKTableModelToolUi : public SAKBaseToolUi
 public:
     explicit SAKTableModelToolUi(const char *lg, QWidget *parent = nullptr);
     ~SAKTableModelToolUi();
-    void setStretchSections(QList<int>columns);
+    void setStretchSections(QList<int> columns);
     void setSectionResizeModeToStretch();
     void setColumnVisible(int column, bool visible);
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
     virtual QList<int> defaultHideColumns();
     virtual void afterRowEdited(int row);
     virtual QDialog *itemEditor() = 0;

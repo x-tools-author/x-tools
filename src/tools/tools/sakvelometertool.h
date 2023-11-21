@@ -10,9 +10,9 @@
 #ifndef SAKVELOMETERTOOL_H
 #define SAKVELOMETERTOOL_H
 
+#include "sakbasetool.h"
 #include <QList>
 #include <QMutex>
-#include "sakbasetool.h"
 
 class SAKVelometerTool : public SAKBaseTool
 {
@@ -21,14 +21,14 @@ class SAKVelometerTool : public SAKBaseTool
 public:
     explicit SAKVelometerTool(QObject *parent = nullptr);
 
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
 
 protected:
     void run();
 
 private:
-    struct InputBytesContext {
+    struct InputBytesContext
+    {
         QByteArray bytes;
         QVariant context;
     };

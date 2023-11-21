@@ -12,11 +12,15 @@
 #include "sakbase64assistant.h"
 #include "sakcommonmainwindow.h"
 
-int main(int argc, char* argv[]) {
-  QApplication* app = CreateCommonMainWindowApplication<SAKBase64Assisatnt>(
-      argc, argv, QObject::tr("Base64 Assisatnt"), "SAK.Base64Assisatnt");
-  int ret = app->exec();
-  app->deleteLater();
+int main(int argc, char* argv[])
+{
+    QApplication* app
+        = CreateCommonMainWindowApplication<SAKBase64Assisatnt>(argc,
+                                                                argv,
+                                                                QObject::tr("Base64 Assisatnt"),
+                                                                "SAK.Base64Assisatnt");
+    int ret = app->exec();
+    app->deleteLater();
 
-  return ret;
+    return ret;
 }

@@ -10,8 +10,8 @@
 #ifndef SAKANALYZERTOOL_H
 #define SAKANALYZERTOOL_H
 
-#include <QTimer>
 #include <QMutex>
+#include <QTimer>
 
 #include "sakbasetool.h"
 
@@ -26,14 +26,14 @@ public:
     Q_INVOKABLE void setSeparationMark(const QByteArray &mark);
     Q_INVOKABLE void setMaxTempBytes(int maxBytes);
 
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
 
 protected:
     virtual void run() final;
 
 private:
-    struct Parameters {
+    struct Parameters
+    {
         bool fixed;
         int frameBytes;
         QByteArray separationMark;

@@ -149,7 +149,7 @@ static void sakInitAppStyle()
     }
 }
 
-int main(const int argc, char* argv[])
+int main(const int argc, char *argv[])
 {
     sakInitApp();
     sakInitGoogleLogging(argv[0]);

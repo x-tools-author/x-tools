@@ -13,16 +13,19 @@
 #include "sakserialporttransmittertooluieditor.h"
 #include "ui_sakserialporttransmittertooluieditor.h"
 
-SAKSerialPortTransmitterToolUiEditor::
-    SAKSerialPortTransmitterToolUiEditor(QWidget *parent)
+SAKSerialPortTransmitterToolUiEditor::SAKSerialPortTransmitterToolUiEditor(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::SAKSerialPortTransmitterToolUiEditor)
 {
     ui->setupUi(this);
-    connect(ui->pushButtonApply, &QPushButton::clicked,
-            this, &SAKSerialPortTransmitterToolUiEditor::accept);
-    connect(ui->pushButtonCancel, &QPushButton::clicked,
-            this, &SAKSerialPortTransmitterToolUiEditor::reject);
+    connect(ui->pushButtonApply,
+            &QPushButton::clicked,
+            this,
+            &SAKSerialPortTransmitterToolUiEditor::accept);
+    connect(ui->pushButtonCancel,
+            &QPushButton::clicked,
+            this,
+            &SAKSerialPortTransmitterToolUiEditor::reject);
 }
 
 SAKSerialPortTransmitterToolUiEditor::~SAKSerialPortTransmitterToolUiEditor()
@@ -52,7 +55,6 @@ QJsonObject SAKSerialPortTransmitterToolUiEditor::parameters()
     obj.insert(keys.flowControl, flowControl);
 
     return obj;
-
 }
 
 void SAKSerialPortTransmitterToolUiEditor::setParameters(const QJsonObject &params)

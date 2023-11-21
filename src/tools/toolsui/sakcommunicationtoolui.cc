@@ -11,9 +11,7 @@
 
 SAKCommunicationToolUi::SAKCommunicationToolUi(QWidget *parent)
     : SAKBaseToolUi{parent}
-{
-
-}
+{}
 
 void SAKCommunicationToolUi::onIsWorkingChanged(bool isWorking)
 {

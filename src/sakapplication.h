@@ -11,12 +11,12 @@
 #define SAKAPPLICATION_H
 
 #include <QApplication>
-#include <QSplashScreen>
 #include <QLoggingCategory>
+#include <QSplashScreen>
 
 #define sakApp (static_cast<SAKApplication *>(QCoreApplication::instance()))
 
-class SAKApplication:public QApplication
+class SAKApplication : public QApplication
 {
     Q_OBJECT
 public:

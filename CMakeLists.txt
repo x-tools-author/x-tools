@@ -24,6 +24,7 @@ set(SAK_QT_COMPONENTS
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
 
+set(BUILD_TESTING OFF)
 include(.cmake/sak_common.cmake)
 include(.cmake/sak_common_deploy.cmake)
 
@@ -44,7 +45,6 @@ if(SAK_USING_GLOG)
 
   set(WITH_GTEST OFF)
   set(WITH_GFLAGS OFF)
-  set(BUILD_TESTING OFF)
 
   sak_add_subdiretory("glog-master")
 endif()

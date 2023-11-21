@@ -15,20 +15,21 @@
 namespace Ui {
 class SAKStringAssistant;
 }
-class SAKStringAssistant : public QWidget {
-  Q_OBJECT
- public:
-  Q_INVOKABLE SAKStringAssistant(QWidget* parent = Q_NULLPTR);
-  ~SAKStringAssistant();
+class SAKStringAssistant : public QWidget
+{
+    Q_OBJECT
+public:
+    Q_INVOKABLE SAKStringAssistant(QWidget* parent = Q_NULLPTR);
+    ~SAKStringAssistant();
 
- private:
-  Ui::SAKStringAssistant* ui_;
+private:
+    Ui::SAKStringAssistant* ui_;
 
- private slots:
-  void OnTextEditTextChanged();
-  void OnInputFormatComboBoxCurrentIndexChanged(int index);
-  void OnCreatePushButtonClicked();
-  void OnOutputFormatComboBoxCurrentTextChanged(const QString& text);
+private slots:
+    void OnTextEditTextChanged();
+    void OnInputFormatComboBoxCurrentIndexChanged(int index);
+    void OnCreatePushButtonClicked();
+    void OnOutputFormatComboBoxCurrentTextChanged(const QString& text);
 };
 
-#endif  // SAKSTRINGASSISTANT_H
+#endif // SAKSTRINGASSISTANT_H

@@ -19,8 +19,7 @@ public:
     SAKWebSocketTransmitterToolUi(QWidget *parent = nullptr);
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
-                                         const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
 };
 
 #endif // SAKWEBSOCKETTRANSMITTERTOOLUI_H

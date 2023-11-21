@@ -12,7 +12,7 @@
 SAKStatisticianTool::SAKStatisticianTool(QObject *parent)
     : SAKBaseTool{"sak.statisticiantool", parent}
 {
-    connect(this, &SAKStatisticianTool::started, this, [=](){
+    connect(this, &SAKStatisticianTool::started, this, [=]() {
         this->mFrames = 0;
         this->mBytes = 0;
 
@@ -21,8 +21,7 @@ SAKStatisticianTool::SAKStatisticianTool(QObject *parent)
     });
 }
 
-void SAKStatisticianTool::inputBytes(const QByteArray &bytes,
-                                     const QVariant &context)
+void SAKStatisticianTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     Q_UNUSED(context)
 

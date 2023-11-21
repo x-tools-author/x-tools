@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
+#include "saksystemtrayicon.h"
+#include <QAction>
 #include <QDir>
 #include <QMenu>
-#include <QAction>
-#include "saksystemtrayicon.h"
 
 SAKSystemTrayIcon::SAKSystemTrayIcon(QObject *parent)
     : QSystemTrayIcon(parent)
@@ -19,10 +19,9 @@ SAKSystemTrayIcon::SAKSystemTrayIcon(QObject *parent)
     setToolTip(tr("Qt Swiss Army Knife"));
 
     QMenu *menu = new QMenu();
-    menu->addAction(tr("Open main window"), this,
-                    [=](){emit invokeShowMainWindow();});
+    menu->addAction(tr("Open main window"), this, [=]() { emit invokeShowMainWindow(); });
     menu->addSeparator();
-    menu->addAction(tr("Exit program"), this, [=](){emit invokeExit();});
+    menu->addAction(tr("Exit program"), this, [=]() { emit invokeExit(); });
     setContextMenu(menu);
 }
 

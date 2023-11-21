@@ -15,9 +15,11 @@
 
 #include "saktranslator.h"
 
-SAKTranslator::SAKTranslator(QObject* parent) : QObject{parent} {
-  mFlagNameMap.insert("zh_CN", "简体中文");
-  mFlagNameMap.insert("en", "English");
+SAKTranslator::SAKTranslator(QObject* parent)
+    : QObject{parent}
+{
+    mFlagNameMap.insert("zh_CN", "简体中文");
+    mFlagNameMap.insert("en", "English");
 #if 0
   mFlagNameMap.insert("zh_TW", "繁體中文");
   mFlagNameMap.insert("ar", "العربية");
@@ -43,40 +45,43 @@ SAKTranslator::SAKTranslator(QObject* parent) : QObject{parent} {
 #endif
 }
 
-SAKTranslator* SAKTranslator::instance() {
-  static SAKTranslator* translator = Q_NULLPTR;
-  if (!translator) {
-    translator = new SAKTranslator(qApp);
-  }
+SAKTranslator* SAKTranslator::instance()
+{
+    static SAKTranslator* translator = Q_NULLPTR;
+    if (!translator) {
+        translator = new SAKTranslator(qApp);
+    }
 
-  return translator;
+    return translator;
 }
 
-QStringList SAKTranslator::languanges() {
-  return mFlagNameMap.values();
+QStringList SAKTranslator::languanges()
+{
+    return mFlagNameMap.values();
 }
 
-void SAKTranslator::setupLanguage(const QString& language) {
-  QCoreApplication::removeTranslator(&mTranslator);
+void SAKTranslator::setupLanguage(const QString& language)
+{
+    QCoreApplication::removeTranslator(&mTranslator);
 
-  QString key = mFlagNameMap.key(language);
-  if (language.isEmpty()) {
-    qCWarning(mLoggingCategory) << "language is not specified,"
-                                   " system language will be used";
-    key = QLocale::system().name();
-  }
+    QString key = mFlagNameMap.key(language);
+    if (language.isEmpty()) {
+        qCWarning(mLoggingCategory) << "language is not specified,"
+                                       " system language will be used";
+        key = QLocale::system().name();
+    }
 
-  if (key.isEmpty()) {
-    qCWarning(mLoggingCategory) << "unsupported language, "
-                                   "english will be used";
-    key = "en";
-  }
+    if (key.isEmpty()) {
+        qCWarning(mLoggingCategory) << "unsupported language, "
+                                       "english will be used";
+        key = "en";
+    }
 
-  QString fileName = ":/resources/translations/sak_" + key + ".qm";
-  if (mTranslator.load(fileName)) {
-    QCoreApplication::installTranslator(&mTranslator);
-    qCInfo(mLoggingCategory) << mFlagNameMap.value(key) << " has been setup!";
-  } else {
-    qCWarning(mLoggingCategory) << "Load file failed: " << fileName;
-  }
+    QString fileName = ":/resources/translations/sak_" + key + ".qm";
+    if (mTranslator.load(fileName)) {
+        QCoreApplication::installTranslator(&mTranslator);
+        qCInfo(mLoggingCategory) << mFlagNameMap.value(key) << " has been setup!";
+    } else {
+        qCWarning(mLoggingCategory) << "Load file failed: " << fileName;
+    }
 }

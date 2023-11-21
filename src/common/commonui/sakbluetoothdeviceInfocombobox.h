@@ -12,8 +12,8 @@
 
 #include <QEvent>
 
-#include "sakcombobox.h"
 #include "sakblescanner.h"
+#include "sakcombobox.h"
 
 class SAKBluetoothDeviceInfoComboBox : public SAKComboBox
 {

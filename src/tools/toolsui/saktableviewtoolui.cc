@@ -11,6 +11,4 @@
 
 SAKTableViewToolUi::SAKTableViewToolUi(QWidget *parent)
     : SAKBaseToolUi(parent)
-{
-
-}
+{}

@@ -7,18 +7,14 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QTimer>
 #include "sakcommunicationtool.h"
+#include <QTimer>
 
-SAKCommunicationTool::SAKCommunicationTool(const char *logCategory,
-                                           QObject *parent)
+SAKCommunicationTool::SAKCommunicationTool(const char *logCategory, QObject *parent)
     : SAKBaseTool{logCategory, parent}
-{
+{}
 
-}
-
-void SAKCommunicationTool::inputBytes(const QByteArray &bytes,
-                                      const QVariant &context)
+void SAKCommunicationTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     if (!enable()) {
         return;
@@ -59,7 +55,7 @@ void SAKCommunicationTool::run()
     QTimer *txTimer = new QTimer();
     txTimer->setInterval(5);
     txTimer->setSingleShot(true);
-    connect(txTimer, &QTimer::timeout, txTimer, [=](){
+    connect(txTimer, &QTimer::timeout, txTimer, [=]() {
         this->mInputDataMutex.lock();
         if (!mInputDataList.isEmpty()) {
             InputDataContext dataCtx = mInputDataList.takeFirst();

@@ -10,13 +10,13 @@
 #ifndef SAKTRANSLATOR_H
 #define SAKTRANSLATOR_H
 
-#include <QMap>
-#include <QObject>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QLoggingCategory>
+#include <QMap>
+#include <QObject>
 #include <QTranslator>
 #include <QVariantList>
-#include <QLoggingCategory>
 
 class SAKTranslator : public QObject
 {
@@ -26,7 +26,7 @@ private:
     explicit SAKTranslator(QObject *parent = nullptr);
 
 public:
-    static SAKTranslator* instance();
+    static SAKTranslator *instance();
     QStringList languanges();
     void setupLanguage(const QString &language);
 

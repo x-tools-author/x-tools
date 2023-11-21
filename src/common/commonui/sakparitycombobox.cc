@@ -11,10 +11,12 @@
 
 #include <QSerialPort>
 
-SAKParityComboBox::SAKParityComboBox(QWidget* parent) : SAKComboBox(parent) {
-  addItem(tr("No"), QSerialPort::NoParity);
-  addItem(tr("Even"), QSerialPort::EvenParity);
-  addItem(tr("Odd"), QSerialPort::OddParity);
-  addItem(tr("Space"), QSerialPort::SpaceParity);
-  addItem(tr("Mark"), QSerialPort::MarkParity);
+SAKParityComboBox::SAKParityComboBox(QWidget* parent)
+    : SAKComboBox(parent)
+{
+    addItem(tr("No"), QSerialPort::NoParity);
+    addItem(tr("Even"), QSerialPort::EvenParity);
+    addItem(tr("Odd"), QSerialPort::OddParity);
+    addItem(tr("Space"), QSerialPort::SpaceParity);
+    addItem(tr("Mark"), QSerialPort::MarkParity);
 }

@@ -7,20 +7,18 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QTimer>
-#include <QJsonObject>
 #include <QJsonDocument>
+#include <QJsonObject>
+#include <QTimer>
 
-#include "sakinterface.h"
 #include "sakcrcinterface.h"
-#include "sakprestorertool.h"
 #include "sakdatastructure.h"
+#include "sakinterface.h"
+#include "sakprestorertool.h"
 
 SAKPrestorerTool::SAKPrestorerTool(QObject *parent)
     : SAKTableModelTool{"sak.prestorertool", parent}
-{
-
-}
+{}
 
 int SAKPrestorerTool::rowCount(const QModelIndex &parent) const
 {
@@ -48,9 +46,7 @@ QVariant SAKPrestorerTool::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool SAKPrestorerTool::setData(const QModelIndex &index,
-                                     const QVariant &value,
-                                     int role)
+bool SAKPrestorerTool::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     Q_UNUSED(role);
     int row = index.row();
@@ -73,7 +69,7 @@ bool SAKPrestorerTool::setData(const QModelIndex &index,
                 item.itemCrcEnable = value.toBool();
             } else if (dataKey == mDataKeys.itemCrcBigEndian) {
                 item.itemCrxBigEndian = value.toBool();
-            }  else if (dataKey == mDataKeys.itemCrcAlgorithm) {
+            } else if (dataKey == mDataKeys.itemCrcAlgorithm) {
                 item.itemCrcAlgorithm = value.toInt();
             } else if (dataKey == mDataKeys.itemCrcStartIndex) {
                 item.itemCrcStartIndex = value.toInt();
@@ -82,7 +78,6 @@ bool SAKPrestorerTool::setData(const QModelIndex &index,
             } else if (dataKey == mDataKeys.itemText) {
                 item.itemText = value.toString();
             } else {
-
             }
 
             mItems.replace(row, item);
@@ -92,8 +87,7 @@ bool SAKPrestorerTool::setData(const QModelIndex &index,
     return true;
 }
 
-bool SAKPrestorerTool::insertRows(int row, int count,
-                                        const QModelIndex &parent)
+bool SAKPrestorerTool::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
     Item item{};
@@ -111,25 +105,35 @@ bool SAKPrestorerTool::removeRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-QVariant SAKPrestorerTool::headerData(int section,
-                                            Qt::Orientation orientation,
-                                            int role) const
+QVariant SAKPrestorerTool::headerData(int section, Qt::Orientation orientation, int role) const
 {
     Q_UNUSED(role);
     if (orientation == Qt::Horizontal) {
         switch (section) {
-        case 0: return mDataKeys.itemDescription;
-        case 1: return mDataKeys.itemTextFormat;
-        case 2: return mDataKeys.itemEscapeCharacter;
-        case 3: return mDataKeys.itemPrefix;
-        case 4: return mDataKeys.itemSuffix;
-        case 5: return mDataKeys.itemCrcEnable;
-        case 6: return mDataKeys.itemCrcBigEndian;
-        case 7: return mDataKeys.itemCrcAlgorithm;
-        case 8: return mDataKeys.itemCrcStartIndex;
-        case 9: return mDataKeys.itemCrcEndIndex;
-        case 10: return mDataKeys.itemText;
-        default: return "";
+        case 0:
+            return mDataKeys.itemDescription;
+        case 1:
+            return mDataKeys.itemTextFormat;
+        case 2:
+            return mDataKeys.itemEscapeCharacter;
+        case 3:
+            return mDataKeys.itemPrefix;
+        case 4:
+            return mDataKeys.itemSuffix;
+        case 5:
+            return mDataKeys.itemCrcEnable;
+        case 6:
+            return mDataKeys.itemCrcBigEndian;
+        case 7:
+            return mDataKeys.itemCrcAlgorithm;
+        case 8:
+            return mDataKeys.itemCrcStartIndex;
+        case 9:
+            return mDataKeys.itemCrcEndIndex;
+        case 10:
+            return mDataKeys.itemText;
+        default:
+            return "";
         }
     }
 
@@ -180,7 +184,7 @@ QVariant SAKPrestorerTool::columnDisplayRoleData(const Item &item, int column) c
             return item.itemCrcEnable;
         } else if (dataKey == mDataKeys.itemCrcBigEndian) {
             return item.itemCrxBigEndian;
-        }  else if (dataKey == mDataKeys.itemCrcAlgorithm) {
+        } else if (dataKey == mDataKeys.itemCrcAlgorithm) {
             return item.itemCrcAlgorithm;
         } else if (dataKey == mDataKeys.itemCrcStartIndex) {
             return item.itemCrcStartIndex;
@@ -231,7 +235,7 @@ QVariant SAKPrestorerTool::itemContext(int index)
     QJsonObject ctx;
     mItemsMutex.lock();
     if (index >= 0 && index < mItems.count()) {
-        auto item =  mItems.at(index);
+        auto item = mItems.at(index);
         ctx.insert(itemDescription(), item.itemDescription);
         ctx.insert(itemTextFormat(), item.itemTextFormat);
         ctx.insert(itemEscapeCharacter(), item.itemEscapeCharacter);
@@ -246,8 +250,7 @@ QVariant SAKPrestorerTool::itemContext(int index)
     } else {
         ctx.insert(itemDescription(), "Demo");
         ctx.insert(itemTextFormat(), SAKDataStructure::TextFormatAscii);
-        ctx.insert(itemEscapeCharacter(),
-                   SAKDataStructure::EscapeCharacterOptionNone);
+        ctx.insert(itemEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
         ctx.insert(itemPrefix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemSuffix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemCrcEnable(), false);
@@ -278,8 +281,7 @@ void SAKPrestorerTool::send(int index)
     }
 }
 
-void SAKPrestorerTool::inputBytes(const QByteArray &bytes,
-                                  const QVariant &context)
+void SAKPrestorerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     Q_UNUSED(bytes);
     Q_UNUSED(context);
@@ -290,7 +292,7 @@ void SAKPrestorerTool::run()
     QTimer *sendTimer = new QTimer();
     sendTimer->setInterval(mScanInterval);
     sendTimer->setSingleShot(true);
-    connect(sendTimer, &QTimer::timeout, sendTimer, [=](){
+    connect(sendTimer, &QTimer::timeout, sendTimer, [=]() {
         try2send();
         sendTimer->start();
     });
@@ -387,4 +389,3 @@ QStringList SAKPrestorerTool::descriptions()
 
     return list;
 }
-

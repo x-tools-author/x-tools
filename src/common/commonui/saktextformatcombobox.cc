@@ -12,15 +12,16 @@
 #include "sakdatastructure.h"
 
 SAKTextFormatComboBox::SAKTextFormatComboBox(QWidget* parent)
-    : SAKComboBox(parent) {
-  addItem("Bin", SAKDataStructure::TextFormatBin);
-  addItem("Oct", SAKDataStructure::TextFormatOct);
-  addItem("Dec", SAKDataStructure::TextFormatDec);
-  addItem("Hex", SAKDataStructure::TextFormatHex);
-  addItem("Ascii", SAKDataStructure::TextFormatAscii);
-  addItem("Utf8", SAKDataStructure::TextFormatUtf8);
+    : SAKComboBox(parent)
+{
+    addItem("Bin", SAKDataStructure::TextFormatBin);
+    addItem("Oct", SAKDataStructure::TextFormatOct);
+    addItem("Dec", SAKDataStructure::TextFormatDec);
+    addItem("Hex", SAKDataStructure::TextFormatHex);
+    addItem("Ascii", SAKDataStructure::TextFormatAscii);
+    addItem("Utf8", SAKDataStructure::TextFormatUtf8);
 
-  blockSignals(true);
-  setCurrentIndex(5);
-  blockSignals(false);
+    blockSignals(true);
+    setCurrentIndex(5);
+    blockSignals(false);
 }

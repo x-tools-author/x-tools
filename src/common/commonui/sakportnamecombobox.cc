@@ -14,19 +14,21 @@
 #include <QStandardItemModel>
 
 SAKPortNameComboBox::SAKPortNameComboBox(QWidget* parent)
-    : SAKComboBox(parent) {
-  refresh();
+    : SAKComboBox(parent)
+{
+    refresh();
 }
 
-void SAKPortNameComboBox::refresh() {
-  clear();
-  QList<QSerialPortInfo> coms = QSerialPortInfo::availablePorts();
-  QStandardItemModel* itemModel = new QStandardItemModel(this);
-  for (auto& var : coms) {
-    QStandardItem* item = new QStandardItem(var.portName());
-    item->setToolTip(var.description());
-    itemModel->appendRow(item);
-  }
+void SAKPortNameComboBox::refresh()
+{
+    clear();
+    QList<QSerialPortInfo> coms = QSerialPortInfo::availablePorts();
+    QStandardItemModel* itemModel = new QStandardItemModel(this);
+    for (auto& var : coms) {
+        QStandardItem* item = new QStandardItem(var.portName());
+        item->setToolTip(var.description());
+        itemModel->appendRow(item);
+    }
 
-  setModel(itemModel);
+    setModel(itemModel);
 }

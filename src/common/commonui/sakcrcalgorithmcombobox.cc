@@ -14,10 +14,10 @@
 #include "sakcrcinterface.h"
 
 SAKCrcAlgorithmComboBox::SAKCrcAlgorithmComboBox(QWidget* parent)
-    : SAKComboBox(parent) {
-  QMetaEnum metaEnum =
-      QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();
-  for (int i = 0; i < metaEnum.keyCount(); i++) {
-    addItem(metaEnum.key(i), metaEnum.value(i));
-  }
+    : SAKComboBox(parent)
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();
+    for (int i = 0; i < metaEnum.keyCount(); i++) {
+        addItem(metaEnum.key(i), metaEnum.value(i));
+    }
 }

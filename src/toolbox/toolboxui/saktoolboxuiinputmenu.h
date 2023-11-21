@@ -20,11 +20,11 @@ class SAKToolBoxUiInputMenu : public QMenu
 {
     Q_OBJECT
 public:
-    explicit SAKToolBoxUiInputMenu(const QString &settingsGroup,
-                                   QWidget *parent = nullptr);
+    explicit SAKToolBoxUiInputMenu(const QString &settingsGroup, QWidget *parent = nullptr);
     ~SAKToolBoxUiInputMenu();
 
-    struct Parameters {
+    struct Parameters
+    {
         int prefix;
         int suffix;
         int escapeCharacter;

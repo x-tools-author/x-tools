@@ -14,9 +14,7 @@
 
 SAKUdpServerTool::SAKUdpServerTool(QObject *parent)
     : SAKSocketServerTool{"sak.udpservertool", parent}
-{
-
-}
+{}
 
 bool SAKUdpServerTool::initialize(QString &errStr)
 {
@@ -40,8 +38,7 @@ bool SAKUdpServerTool::initialize(QString &errStr)
     outputMessage(QtInfoMsg, mBindingIpPort);
     emit bindingIpPortChanged();
 
-    connect(mUdpSocket, &QUdpSocket::readyRead,
-            mUdpSocket, [=](){readBytes();});
+    connect(mUdpSocket, &QUdpSocket::readyRead, mUdpSocket, [=]() { readBytes(); });
     connect(mUdpSocket, SAK_SIG_SOCKETERROROCCURRED, this, [=]() {
         emit errorOccured(mUdpSocket->errorString());
     });
@@ -49,8 +46,7 @@ bool SAKUdpServerTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKUdpServerTool::writeBytes(const QByteArray &bytes,
-                                  const QVariant &context)
+void SAKUdpServerTool::writeBytes(const QByteArray &bytes, const QVariant &context)
 {
     if (mClientIndex >= 0 && mClientIndex < mClients.length()) {
         QString ipPort = mClients.at(mClientIndex);
@@ -85,8 +81,7 @@ void SAKUdpServerTool::readBytes()
         QByteArray bytes(len, 0);
         QHostAddress address;
         quint16 port;
-        qint64 ret = mUdpSocket->readDatagram(bytes.data(), bytes.length(),
-                                              &address, &port);
+        qint64 ret = mUdpSocket->readDatagram(bytes.data(), bytes.length(), &address, &port);
         if (ret == -1) {
             outputMessage(QtWarningMsg, mUdpSocket->errorString());
             break;
@@ -94,10 +89,8 @@ void SAKUdpServerTool::readBytes()
 
         QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
         QString hex = QString::fromLatin1(ba);
-        QString info =
-            QString("%1:%2").arg(address.toString()).arg(port);
-        QString msg =
-            QString("%1<-%2:%3").arg(mBindingIpPort, info, hex);
+        QString info = QString("%1:%2").arg(address.toString()).arg(port);
+        QString msg = QString("%1<-%2:%3").arg(mBindingIpPort, info, hex);
         outputMessage(QtInfoMsg, msg);
 
         if (!mClients.contains(info)) {
@@ -111,15 +104,15 @@ void SAKUdpServerTool::readBytes()
 
 void SAKUdpServerTool::writeDatagram(const QByteArray &bytes,
                                      const QVariant &context,
-                                     const QString &ip, quint16 port)
+                                     const QString &ip,
+                                     quint16 port)
 {
     qint64 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(ip), port);
     if (ret == -1) {
         outputMessage(QtWarningMsg, mUdpSocket->errorString());
     } else {
         QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
-        outputMessage(QtInfoMsg,
-                      QString("%1<-%2").arg(mBindingIpPort, hex));
+        outputMessage(QtInfoMsg, QString("%1<-%2").arg(mBindingIpPort, hex));
         emit bytesInputted(bytes, context);
     }
 }

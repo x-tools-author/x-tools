@@ -7,17 +7,14 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ******************************************************************************/
-#include <QTimer>
 #include "sakvelometertool.h"
+#include <QTimer>
 
 SAKVelometerTool::SAKVelometerTool(QObject *parent)
     : SAKBaseTool{"sak.velometertool", parent}
-{
+{}
 
-}
-
-void SAKVelometerTool::inputBytes(const QByteArray &bytes,
-                                  const QVariant &context)
+void SAKVelometerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     if (isRunning()) {
         InputBytesContext ctx;
@@ -35,7 +32,7 @@ void SAKVelometerTool::run()
     QTimer *timer = new QTimer();
     timer->setInterval(1000);
     timer->setSingleShot(true);
-    connect(timer, &QTimer::timeout, timer, [=](){
+    connect(timer, &QTimer::timeout, timer, [=]() {
         this->mInputBytesContextListMutex.lock();
         auto list = this->mInputBytesContextList;
         this->mInputBytesContextList.clear();
@@ -49,10 +46,10 @@ void SAKVelometerTool::run()
         QString cookedVelocity;
         if (v < 1024) {
             cookedVelocity = QString("%1Bytes/s").arg(v);
-        } else if (v < 1024*1024) {
-            cookedVelocity = QString("%1KB/s").arg(v/1024);
+        } else if (v < 1024 * 1024) {
+            cookedVelocity = QString("%1KB/s").arg(v / 1024);
         } else {
-            cookedVelocity = QString("%1MB/s").arg(v/(1024*1024));
+            cookedVelocity = QString("%1MB/s").arg(v / (1024 * 1024));
         }
 
         this->mVelocityMutex.lock();
