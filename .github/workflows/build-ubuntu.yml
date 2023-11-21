@@ -19,7 +19,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
+        os: [ubuntu-22.04]
     steps:
       - name: Update system
         id: UpdateSystem
@@ -46,5 +46,5 @@ jobs:
           fetch-depth: 1
       - name: Build project
         id: BuildPorject
-        run: qmake && make
+        run: cmake -DCMAKE_BUILD_TYPE="Release" && make
 
