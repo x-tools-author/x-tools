@@ -1,13 +1,11 @@
-﻿/*******************************************************************************
- * 版权声明 2022 小猎隼(qsaker@foxmail.com)。保留所有版权。
+﻿/***************************************************************************************************
+ * Copyright 2022-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
- * 本文件使用“utf8 with bom”格式编码, 它是“小猎隼多功能调试工具软件”项目的一部分（项目曾
- * 用名：瑞士军刀）。详情可查看
- * 连接：
- * https://gitee.com/qsaker/QtSwissArmyKnife.git
+ * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
- * “小猎隼多功能调试软件”项目授权协议请查看根目录的LICENCE文件。
- ******************************************************************************/
+ * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the
+ * source code directory.
+ **************************************************************************************************/
 #ifndef SAKSYSTEMTRAYICON_H
 #define SAKSYSTEMTRAYICON_H
 
