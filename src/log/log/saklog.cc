@@ -17,6 +17,7 @@
 #include <QTimer>
 #include <QUrl>
 
+#include "sakcompatibility.h"
 #include "saksettings.h"
 
 QVector<SAKLog::LogContext> SAKLog::mLogContextVector;
@@ -429,11 +430,7 @@ void SAKLog::clearLog()
     QDir dir(logPath());
     QFileInfoList infoList = dir.entryInfoList(QDir::Files | QDir::NoDotAndDotDot);
     for (auto& info : infoList) {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
-        qint64 dateTime = info.birthTime().toMSecsSinceEpoch();
-#else
-        qint64 dateTime = info.created().toMSecsSinceEpoch();
-#endif
+        qint64 dateTime = sakBirthTimeOfFile(info);
         mParametersMutex.lock();
         int logLifeCycle = mParameters.logLifeCycle;
         mParametersMutex.unlock();

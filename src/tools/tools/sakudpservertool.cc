@@ -41,7 +41,7 @@ bool SAKUdpServerTool::initialize(QString &errStr)
 
     connect(mUdpSocket, &QUdpSocket::readyRead,
             mUdpSocket, [=](){readBytes();});
-    connect(mUdpSocket, SAK_SOCKET_ERROR, this, [=](){
+    connect(mUdpSocket, SAK_SIG_SOCKETERROROCCURRED, this, [=]() {
         emit errorOccured(mUdpSocket->errorString());
     });
 

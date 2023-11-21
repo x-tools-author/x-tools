@@ -38,10 +38,10 @@ bool SAKTcpClientTool::initialize(QString& errStr) {
   outputMessage(QtInfoMsg, "Client address and port: " + mBindingIpPort);
   emit bindingIpPortChanged();
 
-  connect(mTcpSocket, SAK_SOCKET_ERROR, mTcpSocket, [=]() {
-    QString info = "Error occurred: " + mTcpSocket->errorString();
-    outputMessage(QtWarningMsg, info);
-    emit errorOccured(mTcpSocket->errorString());
+  connect(mTcpSocket, SAK_SIG_SOCKETERROROCCURRED, mTcpSocket, [=]() {
+      QString info = "Error occurred: " + mTcpSocket->errorString();
+      outputMessage(QtWarningMsg, info);
+      emit errorOccured(mTcpSocket->errorString());
   });
 
   connect(mTcpSocket, &QTcpSocket::disconnected, mTcpSocket, [=]() { exit(); });

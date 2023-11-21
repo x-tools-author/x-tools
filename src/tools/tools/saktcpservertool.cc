@@ -63,7 +63,7 @@ bool SAKTcpServerTool::initialize(QString &errStr)
             emit clientsChanged();
         });
 
-        connect(client, SAK_SOCKET_ERROR, client, [=](){
+        connect(client, SAK_SIG_SOCKETERROROCCURRED, client, [=]() {
             this->mTcpSocketListMutex.lock();
             this->mTcpSocketList.removeOne(client);
             this->mTcpSocketListMutex.unlock();
