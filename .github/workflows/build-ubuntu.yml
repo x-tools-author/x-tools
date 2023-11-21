@@ -21,8 +21,8 @@ jobs:
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
     steps:
-      - name: Install tools
-        id: UpdateTools
+      - uses: actions/checkout@v1
+      - name: Install Tools for Qt5
         run: |
           sudo apt-get update --fix-missing -y
           sudo apt-get install libgl1-mesa-dev -y
@@ -32,11 +32,7 @@ jobs:
           sudo apt-get install libqt5serialbus5 libqt5serialbus5-dev -y
           sudo apt-get install libqt5serialport5 libqt5serialport5-dev -y
           sudo apt-get install libqt5websockets5 libqt5websockets5-dev -y
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
       - name: Build with Qt5
-        id: BuildWithQt5
         run: |
           mkdir build && cd build
           cmake --version
