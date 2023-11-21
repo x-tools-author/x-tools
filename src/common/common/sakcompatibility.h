@@ -9,6 +9,7 @@
 #ifndef SAKCOMPATIBILITY_H
 #define SAKCOMPATIBILITY_H
 
+#include <QDateTime>
 #include <QFileInfo>
 #include <QtGlobal>
 

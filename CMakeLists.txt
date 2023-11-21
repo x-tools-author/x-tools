@@ -41,6 +41,11 @@ sak_add_lrelease()
 option(SAK_USING_GLOG "Using glog module." ON)
 if(SAK_USING_GLOG)
   add_compile_definitions(SAK_USING_GLOG)
+
+  set(WITH_GTEST OFF)
+  set(WITH_GFLAGS OFF)
+  set(BUILD_TESTING OFF)
+
   sak_add_subdiretory("glog-master")
 endif()
 
