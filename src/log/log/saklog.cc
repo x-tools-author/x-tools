@@ -205,7 +205,9 @@ void SAKLog::run()
     clearTimer->setInterval(10 * 1000);
     clearTimer->setSingleShot(true);
     connect(clearTimer, &QTimer::timeout, clearTimer, [=]() {
+#if 0
         clearLog();
+#endif
         clearTimer->start();
     });
 
