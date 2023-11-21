@@ -21,6 +21,7 @@ stages:
         gccVersion: '9.4'
         commands:
           - '# 新建build目录，切换到build目录'
+          - apt-get update --fix-missing -y
           - apt-get install libgl1-mesa-dev -y
           - apt-get install qt5-default -y
           - apt-get install libqt5websockets5 libqt5websockets5-dev -y
