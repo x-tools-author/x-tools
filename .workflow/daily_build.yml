@@ -23,7 +23,7 @@ stages:
           - apt-get update --fix-missing -y
           - apt-get install libgl1-mesa-dev -y
           - '# -------------------------------------------------------------'
-          - apt-get install qt5-default -y
+          - apt-get install qtbase5-dev -y
           - qmake -v
           - '# -------------------------------------------------------------'
           - apt-get install libqt5charts5 libqt5charts5-dev -y
