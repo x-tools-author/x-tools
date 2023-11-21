@@ -21,6 +21,7 @@ stages:
         gccVersion: '9.4'
         commands:
           - apt-get update --fix-missing -y
+          - apt-get install g++ -y
           - apt-get install libgl1-mesa-dev -y
           - '# -------------------------------------------------------------'
           - apt-get install qtbase5-dev -y
