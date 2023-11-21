@@ -30,12 +30,19 @@ include(.cmake/sak_common_deploy.cmake)
 sak_get_last_commit(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 sak_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 
-# Assistant module
+# Assistant module.
 include_directories(src/assistants)
 include_directories(src/assistantsui)
 include(${CMAKE_SOURCE_DIR}/.cmake/sak_i18n.cmake)
 sak_add_lupdate()
 sak_add_lrelease()
+
+# Glog module.
+option(SAK_USING_GLOG "Using glog module." ON)
+if(SAK_USING_GLOG)
+  add_compile_definitions(SAK_USING_GLOG)
+  sak_add_subdiretory("glog-master")
+endif()
 
 macro(sak_import_assistant assistant_dir_name)
   string(TOUPPER ${assistant_dir_name} upper_name)
@@ -129,7 +136,7 @@ sak_auto_execute_deployqt(SwissArmyKnife)
 sak_set_target_properties(SwissArmyKnife)
 target_link_libraries(
   SwissArmyKnife
-  PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
+  PRIVATE glog::glog Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
           Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort
           Qt${QT_VERSION_MAJOR}::SerialBus Qt${QT_VERSION_MAJOR}::Bluetooth)
 install(

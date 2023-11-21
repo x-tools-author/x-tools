@@ -1,22 +1,22 @@
-/*******************************************************************************
+/***************************************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part
- * of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
- * QtSwissArmyKnife is licensed according to the terms in
- * the file LICENCE in the root of the source code directory.
- ******************************************************************************/
+ * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
+ * code directory.
+ **************************************************************************************************/
 #ifndef SAKSETTINGS_H
 #define SAKSETTINGS_H
 
-#include <Qt>
-#include <QSettings>
 #include <QLoggingCategory>
+#include <QSettings>
+#include <Qt>
 
 class SAKSettings : public QSettings
 {
     Q_OBJECT
+    // clang-format off
     Q_PROPERTY(int hdpiPolicy READ hdpiPolicy WRITE setHdpiPolicy NOTIFY hdpiPolicyChanged)
     Q_PROPERTY(int uiType READ uiType WRITE setUiType NOTIFY uiTypeChanged)
     Q_PROPERTY(bool clearSettings READ clearSettings WRITE setClearSettings NOTIFY clearSettingsChanged)
@@ -24,6 +24,7 @@ class SAKSettings : public QSettings
     Q_PROPERTY(bool isTextBesideIcon READ isTextBesideIcon WRITE setIsTextBesideIcon NOTIFY isTextBesideIconChanged)
     Q_PROPERTY(int palette READ palette WRITE setPalette NOTIFY paletteChanged)
     Q_PROPERTY(QString customPalette READ customPalette WRITE setCustomPalette NOTIFY customPaletteChanged)
+    // clang-format on
 public:
     enum UiType {
         UiTypeWidget,
@@ -36,6 +37,8 @@ private:
 
 public:
     static SAKSettings *instance();
+
+    QString settingsPath();
 
     int hdpiPolicy();
     void setHdpiPolicy(int policy);
@@ -74,13 +77,12 @@ signals:
     void customPaletteChanged();
 
 public:
-    Q_INVOKABLE QVariant value(const QString &key,
-                               const QVariant &defaultValue
-                               = QVariant()) const;
+    Q_INVOKABLE QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const;
     Q_INVOKABLE void setValue(const QString &key, const QVariant &value);
 
 private:
-    struct {
+    struct
+    {
         const QString hdpiPolicy{"hdpiPolicy"};
         const QString uiType{"uiType"};
         const QString appStyle{"appStyle"};

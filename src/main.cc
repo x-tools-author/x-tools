@@ -6,12 +6,56 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the
  * source code directory.
  **************************************************************************************************/
+#include <QDir>
 #include <QFile>
 #include <QStyleFactory>
 
+#ifdef SAK_USING_GLOG
+#include "glog/logging.h"
+#endif
+
 #include "sakapplication.h"
 #include "sakinterface.h"
+#include "saklog.h"
 #include "saksettings.h"
+
+#ifdef SAK_USING_GLOG
+
+void sakInitGoogleLogging(char *argv0)
+{
+    QString logPath = SAKSettings::instance()->settingsPath();
+    logPath += "/log";
+    QDir dir(SAKSettings::instance()->settingsPath());
+    if (!dir.exists(logPath) && !dir.mkpath(logPath)) {
+        qWarning() << "Make log directory failed";
+    }
+
+    google::SetLogFilenameExtension(".log");  // The suffix of log file.
+    google::EnableLogCleaner(30);             // Keep the log file for 30 days.
+    google::SetApplicationFingerprint("SAK"); // (It seem to be no use.)
+
+    fLB::FLAGS_logtostdout = false;
+    fLB::FLAGS_logtostderr = false;
+    fLS::FLAGS_log_dir = logPath.toUtf8().data(); // The path of log.
+    fLI::FLAGS_logbufsecs = 0;                    //
+    fLU::FLAGS_max_log_size = 10;                 // The max size(MB) of log file.
+    fLB::FLAGS_stop_logging_if_full_disk = true;  //
+    fLB::FLAGS_alsologtostderr = false;           //
+
+#ifndef QT_DEBUG
+    google::InitGoogleLogging(argv0);
+#endif
+    qInfo() << "The logging path is:" << qPrintable(logPath);
+}
+
+void sakShutdownGoogleLogging()
+{
+#ifndef QT_DEBUG
+    google::ShutdownGoogleLogging();
+#endif
+}
+
+#endif
 
 void qtLogToGlog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -39,6 +83,8 @@ void qtLogToGlog(QtMsgType type, const QMessageLogContext &context, const QStrin
     Q_UNUSED(file)
     Q_UNUSED(line)
 #endif
+
+    SAKLog::messageOutput(type, context, msg);
 }
 
 static void sakInitApp()
@@ -106,11 +152,13 @@ static void sakInitAppStyle()
 int main(const int argc, char* argv[])
 {
     sakInitApp();
+    sakInitGoogleLogging(argv[0]);
     sakInstallMessageHandler();
     sakTryToClearSettings();
     sakInitHdpi();
     sakInitAppStyle();
 
     SAKApplication app(argc, argv);
+    sakShutdownGoogleLogging();
     return app.exec();
 }
