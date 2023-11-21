@@ -26,7 +26,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
 
 set(BUILD_TESTING OFF)
 include(.cmake/sak_common.cmake)
-include(.cmake/sak_common_deploy.cmake)
+include(.cmake/sak_deploy.cmake)
 
 sak_get_last_commit(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 sak_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
