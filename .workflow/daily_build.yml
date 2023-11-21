@@ -24,6 +24,8 @@ stages:
           - apt-get install libgl1-mesa-dev -y
           - '# -------------------------------------------------------------'
           - apt-get install qt5-default -y
+          - qmake -v
+          - '# -------------------------------------------------------------'
           - apt-get install libqt5charts5 libqt5charts5-dev -y
           - apt-get install libqt5serialbus5 libqt5serialbus5-dev -y
           - apt-get install libqt5serialport5 libqt5serialport5-dev -y
