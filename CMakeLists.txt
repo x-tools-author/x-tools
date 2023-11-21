@@ -33,8 +33,9 @@ sak_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 # Assistant module
 include_directories(src/assistants)
 include_directories(src/assistantsui)
-list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.h
-     src/assistants/sakassistantsfactory.cc)
+include(${CMAKE_SOURCE_DIR}/.cmake/sak_i18n.cmake)
+sak_add_lupdate()
+sak_add_lrelease()
 
 macro(sak_import_assistant assistant_dir_name)
   string(TOUPPER ${assistant_dir_name} upper_name)
@@ -118,6 +119,8 @@ if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
   set(SAK_IMPORT_MODULE_CANBUSSTUDIO OFF)
 endif()
 
+list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.h
+     src/assistants/sakassistantsfactory.cc)
 list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES})
 list(APPEND SAK_APP_SOURCES qtswissarmyknife.qrc windows.rc)
 sak_add_executable("SwissArmyKnife" ${SAK_APP_SOURCES})
@@ -155,10 +158,6 @@ endif()
 if(QT_VERSION_MAJOR EQUAL 6 AND QT_VERSION_MINOR GREATER_EQUAL 4)
   add_subdirectory(${CMAKE_SOURCE_DIR}/src/easydebug)
 endif()
-
-include(${CMAKE_SOURCE_DIR}/.cmake/internationalization.cmake)
-sak_add_lupdate()
-sak_add_lrelease()
 
 # The private module is not open source.
 include(${CMAKE_SOURCE_DIR}/private/private.cmake)
