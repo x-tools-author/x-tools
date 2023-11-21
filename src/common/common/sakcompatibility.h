@@ -24,7 +24,7 @@
 #define SAK_SIG_WEBSOCKETERROROCCURRED &QWebSocket::errorOccurred
 #else
 #define SAK_SIG_WEBSOCKETERROROCCURRED \
-    static_cast<void (QWebSocket::*)(QWebSocket::error)>(QWebSocket::SocketError)
+    static_cast<void (QWebSocket::*)(QWebSocket::error)>(QAbstractSocket::SocketError)
 #endif
 
 static qint64 sakBirthTimeOfFile(const QFileInfo &info)
