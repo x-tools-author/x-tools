@@ -83,8 +83,8 @@ void qtLogToGlog(QtMsgType type, const QMessageLogContext &context, const QStrin
     Q_UNUSED(file)
     Q_UNUSED(line)
 #endif
-
-    SAKLog::messageOutput(type, context, msg);
+    // Show the log on ui.
+    SAKLog::instance()->appendLog(type, context, msg);
 }
 
 static void sakInitApp()
@@ -158,6 +158,7 @@ int main(const int argc, char* argv[])
     sakInitHdpi();
     sakInitAppStyle();
 
+    SAKLog::instance()->start();
     SAKApplication app(argc, argv);
     sakShutdownGoogleLogging();
     return app.exec();
