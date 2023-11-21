@@ -196,10 +196,6 @@ void SAKLog::run()
     writeTimer->setInterval(1000);
     writeTimer->setSingleShot(true);
     connect(writeTimer, &QTimer::timeout, writeTimer, [=]() {
-#if 0
-        QDateTime dt = QDateTime::currentDateTime();
-        qDebug() << dt.toString("yyyy-MM-dd hh:mm:ss");
-#endif
         writeLog();
         writeTimer->start();
     });
@@ -356,7 +352,7 @@ void SAKLog::writeLog()
     if (logCtxVector.isEmpty()) {
         return;
     }
-#if 0
+#ifndef SAK_USING_GLOG
     const QDateTime dt = QDateTime::currentDateTime();
     const QString fileName = logPath() + "/sak_log_" + dt.toString("yyyy_MM_dd");
     const QString suffix = ".log";
