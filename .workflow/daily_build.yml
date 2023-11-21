@@ -32,7 +32,7 @@ stages:
           - apt-get install libqt5websockets5 libqt5websockets5-dev -y
           - '# -------------------------------------------------------------'
           - mkdir build && cd build
-          - cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYLE="Release" -G 'Unix Makefiles' ../ && make -j2
+          - cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" -G 'Unix Makefiles' ../ && make -j2
         artifacts:
           - name: BUILD_ARTIFACT
             path:
