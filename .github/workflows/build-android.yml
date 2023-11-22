@@ -16,7 +16,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu22.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         arch: [android_armv7, android_arm64_v8a, android_x86, android_x86_64]
