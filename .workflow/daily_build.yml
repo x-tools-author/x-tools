@@ -20,7 +20,7 @@ stages:
         displayName: Build
         gccVersion: '9.4'
         commands:
-          - sudo apt-get update --fix-missing -y
+          - apt-get update --fix-missing -y
           - apt-get install libgl1-mesa-dev -y
           - apt-get install qt5-base-dev -y
           - qmake -v
@@ -32,7 +32,7 @@ stages:
           - cd buildqt5
           - ls /usr/lib/x86_64-linux-gnu/cmake/
           - cmake --version
-          - sudo cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make
+          - cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make
         artifacts:
           - name: BUILD_ARTIFACT
             path:
