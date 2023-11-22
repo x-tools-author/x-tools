@@ -2,14 +2,21 @@ name: build-daily
 on: push
 
 jobs:
-  create-release:
+  new-release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    - name: Delete Release
+      run: |
+        curl -X DELETE \
+        -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        "https://api.github.com/repos/qsaker/QtSwissArmyKnife/releases/continuous"
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
+        allowUpdates: true
         tag: continuous
+ 

@@ -1,5 +1,4 @@
 name: update-continuous-tag
-
 on: 
   schedule:
     - cron: '0 23 * * *'
@@ -11,7 +10,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Update continuous tag
         env:
-          GH_TOKEN: ${{ secrets.SAK_ACTIONS_SECRETS }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "qsaker@foxmail.com"
           git config --global user.name "Qsaker"
