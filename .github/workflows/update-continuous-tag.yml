@@ -18,3 +18,8 @@ jobs:
           git config --global user.name "Qsaker"
           git tag -fa continuous -m "chore: update to latest commit"
           git push origin continuous -f
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          force: true
+          tags: true
