@@ -20,7 +20,19 @@ stages:
         displayName: Build
         gccVersion: '9.4'
         commands:
-          - ./buildqt5.sh
+          - sudo apt-get update --fix-missing -y
+          - apt-get install libgl1-mesa-dev -y
+          - apt-get install qt5-base-dev -y
+          - qmake -v
+          - apt-get install libqt5charts5* -y
+          - apt-get install libqt5serialbus5* -y
+          - apt-get install libqt5websockets5* -y
+          - apt-get install libqt5serialport5* -y
+          - mkdir buildqt5
+          - cd buildqt5
+          - lsb_release -a
+          - cmake --version
+          - cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make
         artifacts:
           - name: BUILD_ARTIFACT
             path:
