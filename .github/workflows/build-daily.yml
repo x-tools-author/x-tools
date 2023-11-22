@@ -14,11 +14,7 @@ jobs:
       with:
         script: |
           const { owner, repo } = context.repo
-          const releases = await github.repos.listReleases({ owner, repo })
-          const release = releases.data.find(release => release.tag_name === 'continuous')
-          if (release) {
-            await github.repos.deleteRelease({ owner, repo, release_id: release.id })
-          }
+          await github.repos.deleteRelease({ owner, repo, release_id: continuous })
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
