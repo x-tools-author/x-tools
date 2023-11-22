@@ -1,11 +1,10 @@
 # Qt Swiss Army Knife
 
-![build-windows-msvc](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-msvc/badge.svg)
-![build-windows-mingw](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-mingw/badge.svg)
+[![build-windows](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-windows.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-windows.yml)
 [![build-ubuntu](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ubuntu.yml)
-![build-macos](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-macos/badge.svg)
-![build-ios](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-ios/badge.svg)
-![build-android](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-android/badge.svg)
+[![build-android](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-android.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-android.yml)
+[![build-macos](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-macos.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-macos.yml)
+[![build-ios](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ios.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ios.yml)
 
 The *Qt Swiss Army Knife* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (recommended version: Qt6.5). It offers extensive support for SerialPort, BLE, UDP, TCP, WebSocket, Modbus and CANBus debugging functionalities. Here are some notable features:
 
