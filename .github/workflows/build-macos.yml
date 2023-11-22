@@ -29,9 +29,9 @@ jobs:
             cmake-prefix-path: 'lib/cmake/Qt6'
             moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v3
-      - name: Install Qt
+      - name: install qt
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{ matrix.version }}
