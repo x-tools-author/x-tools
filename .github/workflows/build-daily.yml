@@ -10,11 +10,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Delete Release
-      uses: actions/github-script@v4
+      uses: liudonghua123/delete-release-action@v1
       with:
-        script: |
-          const { owner, repo } = context.repo
-          await github.repos.deleteRelease({ owner, repo, release_id: 'continuous' })
+        release_name: 'continuous'
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
