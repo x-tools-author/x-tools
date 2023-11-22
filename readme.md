@@ -68,16 +68,3 @@ cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt6 -DQt6_DIR=/usr/lib/x86_64-lin
 * Qt Technology Communication：723516989 (QQ Group)
 * Gitee: <https://gitee.com/qsaker/QtSwissArmyKnife>
 * GitHub: <https://github.com/qsaker/QtSwissArmyKnife>
-
-***
-
-```txt
-    ______     ________     __       __   ___  _______   _______   
-   /    " \   /"       )   /""\     |/"| /  ")/"     "| /"      \  
-  // ____  \ (:   \___/   /    \    (: |/   /(: ______)|:        | 
- /  /    )  ) \___  \    /' /\  \   |    __/  \/    |  |_____/   ) 
-(: (____/ //   __/  \\  //  __'  \  (// _  \  // ___)_  //      /  
- \         \  /" \   :)/   /  \\  \ |: | \  \(:      "||:  __   \  
-  \"____/\__\(_______/(___/    \___)(__|  \__)\_______)|__|  \___) 
-                                                                   
-```
