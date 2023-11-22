@@ -10,7 +10,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Delete Release
-      uses: actions/github-script@v5
+      uses: actions/github-script@v4
       with:
         script: |
           const { owner, repo } = context.repo
