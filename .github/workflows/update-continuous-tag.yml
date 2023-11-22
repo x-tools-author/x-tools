@@ -17,6 +17,4 @@ jobs:
           git config --global user.email "qsaker@foxmail.com"
           git config --global user.name "Qsaker"
           git tag -fa continuous -m "chore: update to latest commit"
-          git push origin :refs/tags/continuous
-          git commit --allow-empty -m "Trigger GitHub Actions"
-          git push origin continuous
+          git push origin continuous -f
