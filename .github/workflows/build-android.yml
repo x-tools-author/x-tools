@@ -26,12 +26,13 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: '6.5.3'
-          target: 'android'
+          aqtversion: '==3.1.*'
+          version: '6.4.3'
           host: 'linux'
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+          target: 'android'
           arch: ${{ matrix.arch }}
-      - name: Build for Android(${{ matrix.arch }})
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+      - name: Build for Android
         run: |
           mkdir build
           cd build
