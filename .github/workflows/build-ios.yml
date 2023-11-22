@@ -1,4 +1,4 @@
-name: build-ios
+name: build-macos
 on:
   push:
     branches:
@@ -16,30 +16,35 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: macos-10.15
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        qt_ver: [5.12.10, 5.15.2]
-        qt_target: [ios]
+        os: [macos-11, macos-12]
+        version: [5.15.2, 6.5.3]
+        arch: [ios]
+        include:
+          - version: 5.15.2
+            cmake-prefix-path: 'lib/cmake/Qt5'
+            modules: 'qtcharts'
+          - version: 6.5.3
+            cmake-prefix-path: 'lib/cmake/Qt6'
+            moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
     steps:
-      #- name: Cache Qt
-      #  id: MacosCacheQt
-      #  uses: actions/cache@v1
-      #  with:
-      #    path: ../Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}
-      #    key: ${{ runner.os }}-Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}   
-      - name: Install Qt
-        # if: steps.cacheqt.outputs.cache-hit != 'true'
-        uses: jurplel/install-qt-action@v2
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: install qt
+        uses: jurplel/install-qt-action@v3
         with:
-          # Version of Qt to install
-          version: ${{ matrix.qt_ver }}
-          # Target platform for build
-          target: ${{ matrix.qt_target }}
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-      - name: build ios
+          aqtversion: '==3.1.*'
+          version: ${{ matrix.version }}
+          target: 'ios'
+          arch: ${{ matrix.arch }}
+          dir: ${{ github.workspace }}
+          host: 'mac'
+          modules: ${{ matrix['moudles']}}
+      - name: build for macos
         run: |
-          qmake -r -spec macx-ios-clang CONFIG+=release CONFIG+=iphoneos
+          mkdir build
+          cd build
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
           make

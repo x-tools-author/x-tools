@@ -35,6 +35,7 @@ jobs:
       - name: install qt
         uses: jurplel/install-qt-action@v3
         with:
+          aqtversion: '==3.1.*'
           version: ${{ matrix.version }}
           target: 'desktop'
           arch: ${{ matrix.arch }}
