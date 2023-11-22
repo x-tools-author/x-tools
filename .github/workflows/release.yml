@@ -6,7 +6,7 @@ on:
 env:
   OUTPUT_FILE: QtSwissArmyKnife
   RELEASE_NAME: qtswissarmyknife
-  GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   create-release:
