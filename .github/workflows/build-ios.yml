@@ -32,7 +32,17 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-      - name: install qt
+      - name: install qt for desktop
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: '==3.1.*'
+          host: 'mac'
+          target: 'desktop'
+          arch: 'clang_64'
+          dir: ${{ github.workspace }}
+          version: ${{ matrix.version }}
+          modules: ${{ matrix['moudles']}}
+      - name: install qt for ios
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
