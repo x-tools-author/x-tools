@@ -17,7 +17,7 @@
 int main(int argc, char* argv[])
 {
 #ifndef QT_DEBUG
-    qInstallMessageHandler(SAKLog::messageOutput);
+    //qInstallMessageHandler(SAKLog::messageOutput);
 #endif
 
     // Initialize some information about application.

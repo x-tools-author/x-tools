@@ -16,34 +16,31 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
-        qt_arch: [android_x86, android_armv7, android_arm64_v8a]
-        qt_ver: [5.12.10]
-        qt_target: [android]
+        #arch: [android_armv7, android_arm64_v8a, android_x86, android_x86_64]
+        arch: [android_x86_64]
+        version: [6.5.3]
     steps:
-      - name: Cache Qt
-        id: UbuntuCacheQt
-        uses: actions/cache@v1
-        with:
-          path: ../Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}
-          key: ${{ runner.os }}-Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}   
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
-          # Version of Qt to install
-          version: ${{ matrix.qt_ver }}
-          # Target platform for build
-          target: ${{ matrix.qt_target }}
-          # Architecture for Windows/Android
-          arch: ${{ matrix.qt_arch }}
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-      - name: build android
+          aqtversion: '==3.1.*'
+          host: 'linux'
+          target: 'android'
+          version: ${{ matrix.version }}
+          arch: ${{ matrix.arch }}
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+          dir: ${{ github.workspace }}
+      - name: Build for Android
+        env: 
+          JAVA_HOME: $JAVA_HOME_11_X64
         run: |
-          export ANDROID_SDK_ROOT=$ANDROID_HOME
-          export ANDROID_NDK_ROOT=$ANDROID_HOME/ndk-bundle
-          qmake -spec android-clang
+          mkdir build
+          cd build
+          cmake -DQT_DIR='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DQt6_DIR='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
           make
+

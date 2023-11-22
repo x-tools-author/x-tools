@@ -1,94 +1,70 @@
-# Swiss Army Knife
+# Qt Swiss Army Knife
 
-![build-windows-msvc](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-msvc/badge.svg)
-![build-windows-mingw](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-mingw/badge.svg)
-![build-ubuntu](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-ubuntu/badge.svg)
-![build-macos](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-macos/badge.svg)
-![build-ios](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-ios/badge.svg)
-![build-android](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-android/badge.svg)
+[![build-windows](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-windows.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-windows.yml)
+[![build-ubuntu](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ubuntu.yml)
+[![build-macos](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-macos.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-macos.yml)
+[![build-ios](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ios.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ios.yml)
+[![build-android](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-android.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-android.yml)
 
-|Workflows|\[build platform\]-\[target-platform\]-\[qt version\]\(_edition\)|
-|----|----|
-|build-windows-msvc|windows2019-windows-qt5.9.9_msvc2017_64</br>windows2019-windows-qt5.12.10_msvc2017</br>windows2019-windows-qt5.12.10_msvc2017_64</br>windows2019-windows-qt5.15.2_msvc2019</br>windows2019-windows-qt5.15.2_msvc2019_64|
-|build-windows-mingw|windows2019-windows-qt5.12.10_mingw73_64</br> windows2019-windows-qt5.15.2_mingw81_64|
-|build-ubuntu|ubuntu18.04-linux-qt5.9.5</br>ubuntu20.04-linux-qt5.12.8|
-|build-macos|macos10.15-macos-qt5.9.9</br>macos10.15-macos-qt5.12.10</br>macos10.15-macos-qt5.15.2|
-|build-ios|macos10.15-ios-qt5.12.10</br>macos10.15-ios-qt5.15.2|
-|build-android|ubuntu18.04-android_x86-qt5.12.10</br>ubuntu18.04-android_armv7-qt5.12.10</br>ubuntu18.04-android_arm64_v8a-qt5.12.10|
+The *Qt Swiss Army Knife* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (recommended version: Qt6.5). It offers extensive support for SerialPort, BLE, UDP, TCP, WebSocket, Modbus and CANBus debugging functionalities. Here are some notable features:
 
-[中文](./doc/zh_CN/README.md)
-***************
+1. Data Reading and Writing: This serves as the fundamental function across all tools.
+2. Timed Sending: Enables scheduled transmission of "Hello" to the device every second.
+3. Auto Response: Automatically responds with "Hi" when receiving "Hello" from the device.
+4. Data Transmitting: Facilitates forwarding data received from a SerialPort device to a BLE device.
+5. Multiple Text Formats: Show text as bin, otc, dec, hex, ascii or urf8 etc..
+6. (etc.)
 
-## How to Build the Project
-
-### Using Qt Creator (for Windows, Linux and macOS)
-
-1. Download Qt Install it.
-2. Using QtCreator to open the QtSwissArmyKnife.pro file and build it.
-
-### Using command line (just for ubuntu)
-
-#### Install the Environment
-
-```(shell)
-sudo apt-get update --fix-missing -y
-sudo apt-get install gcc g++ -y
-sudo apt-get install make git -y
-sudo apt-get install libgl1-mesa-dev -y
-sudo apt-get install qt5-default -y
-sudo apt-get install libqt5websockets5 libqt5websockets5-dev -y
-sudo apt-get install libqt5serialport5 libqt5serialport5-dev -y
-sudo apt-get install libqt5charts5 libqt5charts5-dev -y
-```
-
-Note: QCharts module can not be identified when building from command line.
-
-#### Get the Source
-
-From github:
-
-```(shell)
-git clone https://github.com/qsaker/QtSwissArmyKnife.git
-```
-
-or from git gitee:
-
-```(shell)
-git clone https://gitee.com/qsaker/QtSwissArmyKnife.git
-```
-
-#### Build the project:
-
-```(shell)
-cd QtSwissArmyKnife
-qmake
-make
-```
-
-## Recommended Development Environment
-
-Qt 5.12.12, other versions may be available, you can have a try.
-
-## Have a Look
+> You can get *Qt Swiss Army Knife* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).
 
 ![MainWindow.png](mainwindow.png)
 
+## Build with Qt5
+
+> See *buildwithqt5.sh* for more information.
+
+```shell
+#!/bin/sh
+apt-get update --fix-missing -y
+apt install qt5-base-dev -y
+apt install libqt5charts5-dev -y
+apt install libqt5serialbus5-dev -y
+apt install libqt5websockets5-dev -y
+apt install libqt5serialport5-dev -y
+mkdir buildqt5
+cd buildqt5
+cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make
+```
+
+## Build with Qt6
+
+> See *buildwithqt6.sh* for more information.
+
+```shell
+#!/bin/sh
+apt-get update --fix-missing -y
+apt install qt6-base-dev -y
+apt install libqt6charts6-dev -y
+apt install libqt6serialbus6-dev -y
+apt install libqt6websockets6-dev -y
+apt install libqt6serialport6-dev -y
+mkdir buildqt6
+cd buildqt6
+cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt6 -DQt6_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt6 -DCMAKE_BUILD_TYPE="Release" ../ && make
+```
+
 ## About the Project
 
-* Author：Qter
-* E-mail：qsaker@qq.com
+<!--https://sdpro.top/blog/html/article/1016.html-->
+[![stars](https://img.shields.io/github/stars/qsaker/QtSwissArmyKnife?style=social)](https://img.shields.io/github/stars/qsaker/QtSwissArmyKnife?style=social)
+[![forks](https://img.shields.io/github/forks/qsaker/QtSwissArmyKnife?style=social)](https://img.shields.io/github/forks/qsaker/QtSwissArmyKnife?style=social)
+[![watchers](https://img.shields.io/github/watchers/qsaker/QtSwissArmyKnife?style=social)](https://img.shields.io/github/watchers/qsaker/QtSwissArmyKnife?style=social)
+[![star](https://gitee.com/qsaker/QtSwissArmyKnife/badge/star.svg?theme=dark)](https://gitee.com/qsaker/QtSwissArmyKnife/stargazers)
+[![fork](https://gitee.com/qsaker/QtSwissArmyKnife/badge/fork.svg?theme=dark)](https://gitee.com/qsaker/QtSwissArmyKnife/members)
+
+* Author：Qsaker
+* E-mail：<qsaker@foxmail.com>
 * User Communication: 952218522 (QQ Group)
 * Qt Technology Communication：723516989 (QQ Group)
 * Gitee: <https://gitee.com/qsaker/QtSwissArmyKnife>
 * GitHub: <https://github.com/qsaker/QtSwissArmyKnife>
-
-***************
-
-```txt
-   ____  __
-  / __ \/ /____  _____
- / / / / __/ _ \/ ___/
-/ /_/ / /_/  __/ /
-\___\_\__/\___/_/
-
-```

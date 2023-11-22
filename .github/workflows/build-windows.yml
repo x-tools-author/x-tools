@@ -1,4 +1,4 @@
-name: build-macos
+﻿name: build-windows
 on:
   push:
     branches:
@@ -12,16 +12,16 @@ on:
     paths-ignore:
       - 'doc/**'
       - '*.md'
-
+  
 jobs:
   build:
     name: Build
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-2019
     strategy:
       matrix:
-        os: [macos-11, macos-12]
+        target: [desktop]
+        arch: [win64_msvc2019_64]
         version: [5.15.2, 6.5.3]
-        arch: [clang_64]
         include:
           - version: 5.15.2
             cmake-prefix-path: 'lib/cmake/Qt5'
@@ -30,21 +30,21 @@ jobs:
             cmake-prefix-path: 'lib/cmake/Qt6'
             moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - name: install qt
+      - name: Pull code
+        uses: actions/checkout@v1
+      - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          aqtversion: '==3.1.*'
           version: ${{ matrix.version }}
-          target: 'desktop'
+          target: ${{ matrix.target }}
           arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
-          host: 'mac'
           modules: ${{ matrix['moudles']}}
-      - name: build for macos
+      - name: build-msvc
+        shell: cmd
         run: |
           mkdir build
           cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
-          make
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+          nmake
