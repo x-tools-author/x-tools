@@ -30,9 +30,9 @@ stages:
           - apt-get install libqt5serialport5* -y
           - mkdir buildqt5
           - cd buildqt5
-          - lsb_release -a
+          - ls /usr/lib/x86_64-linux-gnu/cmake/
           - cmake --version
-          - cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make
+          - sudo cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make
         artifacts:
           - name: BUILD_ARTIFACT
             path:
