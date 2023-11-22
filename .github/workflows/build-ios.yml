@@ -28,7 +28,7 @@ jobs:
             modules: 'qtcharts'
           - version: 6.5.3
             cmake-prefix-path: 'lib/cmake/Qt6'
-            moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
+            moudles: 'qtcharts qtserialbus qtwebsockets'
     steps:
       - name: checkout
         uses: actions/checkout@v3
