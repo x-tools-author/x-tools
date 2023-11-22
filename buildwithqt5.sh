@@ -1,7 +1,7 @@
 #!/bin/sh
 apt-get update --fix-missing -y
 apt-get install libgl1-mesa-dev -y
-apt-get install qt5-base-dev -y
+apt-get install qtbase5-dev -y
 apt-get install libqt5charts5* -y
 apt-get install libqt5serialbus5* -y
 apt-get install libqt5websockets5* -y
