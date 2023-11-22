@@ -28,7 +28,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
-          version: '6.4.3'
+          version: '6.5.3'
           host: 'linux'
           target: 'android'
           arch: ${{ matrix.arch }}
