@@ -21,6 +21,7 @@ jobs:
       matrix:
         #arch: [android_armv7, android_arm64_v8a, android_x86, android_x86_64]
         arch: [android_armv7]
+        version: [6.5.3]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -28,17 +29,15 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
-          version: '6.5.3'
           host: 'linux'
           target: 'android'
+          version: ${{ matrix.version }}
           arch: ${{ matrix.arch }}
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: Build for Android
         run: |
           mkdir build
           cd build
-          export ANDROID_SDK_ROOT=$ANDROID_HOME
-          export ANDROID_NDK_ROOT=$ANDROID_HOME/ndk-bundle
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
           make
 
