@@ -5,7 +5,7 @@ on:
     branches:
       - master
 jobs:
-  build:
+  update-continuous-tag:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
