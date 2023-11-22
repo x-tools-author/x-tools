@@ -2,7 +2,7 @@
 
 ![build-windows-msvc](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-msvc/badge.svg)
 ![build-windows-mingw](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-mingw/badge.svg)
-![build-ubuntu](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-ubuntu/badge.svg)
+[![build-ubuntu](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ubuntu.yml)
 ![build-macos](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-macos/badge.svg)
 ![build-ios](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-ios/badge.svg)
 ![build-android](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-android/badge.svg)
