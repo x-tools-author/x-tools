@@ -34,6 +34,7 @@ jobs:
           version: ${{ matrix.version }}
           arch: ${{ matrix.arch }}
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+          dir: ${{ github.workspace }}
       - name: Build for Android
         env: 
           JAVA_HOME: $JAVA_HOME_11_X64
