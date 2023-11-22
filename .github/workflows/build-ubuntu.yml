@@ -20,14 +20,14 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
-        qt: [5, 6]
+        qt: [qt5, qt6]
         exclude:
           - os: ubuntu-20.04
-            qt: 6
+            qt: qt6
     steps:
       - uses: actions/checkout@v1
       - name: Call buildwithqt5.sh
         run: |
-          sudo chmod +x buildwithqt${{ matrix.qt }}.sh
-          sudo ./buildwithqt${{ matrix.qt }}.sh
+          sudo chmod +x buildwith${{ matrix.qt }}.sh
+          sudo ./buildwith${{ matrix.qt }}.sh
 
