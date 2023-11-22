@@ -19,19 +19,18 @@ jobs:
     runs-on: ubuntu22.04
     strategy:
       matrix:
-        version: [6.5.3]
         arch: [android_armv7, android_arm64_v8a, android_x86, android_x86_64]
-        target: [android]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: ${{ matrix.version }}
-          target: ${{ matrix.target }}
-          arch: ${{ matrix.arch }}
+          version: '6.5.3'
+          target: 'android'
+          host: 'linux'
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+          arch: ${{ matrix.arch }}
       - name: Build for Android(${{ matrix.arch }})
         run: |
           mkdir build
