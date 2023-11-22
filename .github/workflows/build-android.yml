@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         version: [6.5.3]
-        arch: [android_x86, android_armv7, android_arm64_v8a]
+        arch: [android_armv7, android_arm64_v8a, android_x86, android_x86_64]
         target: [android]
     steps:
       - name: Checkout
@@ -31,7 +31,8 @@ jobs:
           version: ${{ matrix.version }}
           target: ${{ matrix.target }}
           arch: ${{ matrix.arch }}
-      - name: Build for Android
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+      - name: Build for Android(${{ matrix.arch }})
         run: |
           mkdir build
           cd build
