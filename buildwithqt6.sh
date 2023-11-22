@@ -1,6 +1,6 @@
 #!/bin/sh
 apt-get update --fix-missing -y
-apt install qt6-base* -y
+apt install qt6-base-dev -y
 apt install libqt6charts6* -y
 apt install libqt6serialbus6* -y
 apt install libqt6websockets6* -y

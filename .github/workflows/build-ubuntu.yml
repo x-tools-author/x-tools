@@ -26,7 +26,7 @@ jobs:
             qt: qt6
     steps:
       - uses: actions/checkout@v1
-      - name: Call buildwithqt5.sh
+      - name: Call buildwithqtx.sh
         run: |
           sudo chmod +x buildwith${{ matrix.qt }}.sh
           sudo ./buildwith${{ matrix.qt }}.sh
