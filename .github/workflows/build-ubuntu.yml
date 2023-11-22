@@ -20,21 +20,14 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
+        qt: [5, 6]
+        exclude:
+          - os: ubuntu-20.04
+            qt: 6
     steps:
       - uses: actions/checkout@v1
-      - name: Install Tools for Qt5
+      - name: Call buildwithqt5.sh
         run: |
-          sudo apt-get update --fix-missing -y
-          sudo apt-get install libgl1-mesa-dev -y
-          sudo apt-get install qtbase5-dev -y
-          qmake -v
-          sudo apt-get install libqt5charts5 libqt5charts5-dev -y
-          sudo apt-get install libqt5serialbus5 libqt5serialbus5-dev -y
-          sudo apt-get install libqt5serialport5 libqt5serialport5-dev -y
-          sudo apt-get install libqt5websockets5 libqt5websockets5-dev -y
-      - name: Build with Qt5
-        run: |
-          mkdir build && cd build
-          cmake --version
-          cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make -j2
+          sudo chmod +x buildwithqt${{ matrix.qt }}.sh
+          sudo ./buildwithqt${{ matrix.qt }}.sh
 

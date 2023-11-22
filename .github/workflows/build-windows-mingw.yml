@@ -53,5 +53,6 @@ jobs:
       - name: build-mingw
         shell: cmd
         run: |
-          qmake
-          make
+          mkdir buildmsvc
+          cd buildmsvc
+          cmake -DCMAKE_BUILD_TYPE=Release -G "MSVC Makefiles" ..
