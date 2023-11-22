@@ -20,7 +20,7 @@ stages:
         displayName: Build
         gccVersion: '9.4'
         commands:
-          - ./buildwithqt5.sh
+          - sudo ./buildwithqt5.sh
         artifacts:
           - name: BUILD_ARTIFACT
             path:
