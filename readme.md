@@ -15,9 +15,9 @@ The *Qt Swiss Army Knife* is a user-friendly, open-source, cross-platform debugg
 5. Multiple Text Formats: Show text as bin, otc, dec, hex, ascii or urf8 etc..
 6. (etc.)
 
-![MainWindow.png](mainwindow.png)
-
 > You can get *Qt Swiss Army Knife* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).
+
+![MainWindow.png](mainwindow.png)
 
 ## Build with Qt5
 
@@ -53,13 +53,14 @@ cd buildqt6
 cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt6 -DQt6_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt6 -DCMAKE_BUILD_TYPE="Release" ../ && make
 ```
 
-## Get the Source
+## About the Project
 
---[![Fork me on Gitee](https://gitee.com/qsaker/QtSwissArmyKnife/widgets/widget_6.svg)](https://gitee.com/qsaker/QtSwissArmyKnife)-- </br>
+<!--https://sdpro.top/blog/html/article/1016.html-->
+[![stars](https://img.shields.io/github/stars/qsaker/QtSwissArmyKnife?style=social)](https://img.shields.io/github/stars/qsaker/QtSwissArmyKnife?style=social)
+[![forks](https://img.shields.io/github/forks/qsaker/QtSwissArmyKnife?style=social)](https://img.shields.io/github/forks/qsaker/QtSwissArmyKnife?style=social)
+[![watchers](https://img.shields.io/github/watchers/qsaker/QtSwissArmyKnife?style=social)](https://img.shields.io/github/watchers/qsaker/QtSwissArmyKnife?style=social)
 [![star](https://gitee.com/qsaker/QtSwissArmyKnife/badge/star.svg?theme=dark)](https://gitee.com/qsaker/QtSwissArmyKnife/stargazers)
 [![fork](https://gitee.com/qsaker/QtSwissArmyKnife/badge/fork.svg?theme=dark)](https://gitee.com/qsaker/QtSwissArmyKnife/members)
-
-## About the Project
 
 * Author：Qsaker
 * E-mail：<qsaker@foxmail.com>
