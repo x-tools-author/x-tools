@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  create:
 jobs:
   update-continuous-tag:
     runs-on: ubuntu-latest
@@ -18,9 +19,3 @@ jobs:
           git config --global user.name "Qsaker"
           git tag -fa continuous -m "chore: update to latest commit"
           git push origin continuous -f
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.SAK_ACTIONS_SECRETS }}
-          force: true
-          tags: true
