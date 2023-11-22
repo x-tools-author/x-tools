@@ -35,6 +35,8 @@ jobs:
           arch: ${{ matrix.arch }}
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: Build for Android
+        env: 
+          JAVA_HOME: $JAVA_HOME_11_X64
         run: |
           mkdir build
           cd build
