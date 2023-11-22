@@ -13,14 +13,9 @@ jobs:
     name: Create release
     runs-on: ubuntu-20.04
     steps:
-      # Pull code
-      - name: Pull code
-        uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-      # Create release
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Create Release
-        id: create_release
         uses: actions/create-release@v1
         with:
           tag_name: ${{ github.ref }}
@@ -28,330 +23,57 @@ jobs:
           body: 'The version is ready. You can see the changed log: https://github.com/qsaker/QtSwissArmyKnife/blob/master/resources/files/History.txt'
           draft: false
           prerelease: false
-    
-
   build-for-windows:
     needs: [create-release]
     name: Build for Windows
     runs-on: windows-2019
     strategy:
       matrix:
-        qt_ver: [5.15.2]
-        qt_target: [desktop]
-        qt_arch: [win32_msvc2019, win64_msvc2019_64]
-        include:
-          - qt_arch: win32_msvc2019
-            msvc_arch: x86
-            qt_arch_install: msvc2019
-            target_arch: x86
-          - qt_arch: win64_msvc2019_64
-            msvc_arch: x64
-            qt_arch_install: msvc2019_64
-            target_arch: x86_64
+        version: [6.5.3]
+        target: [desktop]
+        arch: [win64_msvc2019_64]
     steps:
-      # Cache Qt
-      - name: cacheQt
-        id: WindowsCacheQt
-        uses: actions/cache@v1
-        with:
-          path: ../Qt/${{matrix.qt_ver}}/${{matrix.qt_arch_install}}
-          key: ${{ runner.os }}-Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}
-      # Install Qt
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
-          version: ${{ matrix.qt_ver }}
-          target: ${{ matrix.qt_target }}
-          arch: ${{ matrix.qt_arch }}
-          cached: ${{steps.WindowsCacheQt.outputs.cache-hit }}
-          modules: qtcharts
-      # Pull code and checkout.
+          version: ${{ matrix.version }}
+          target: ${{ matrix.target }}
+          arch: ${{ matrix.arch }}
+          host: 'windows'
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: Pull code
-        uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-      # Build the project
+        uses: actions/checkout@v3
       - name: build-msvc
         shell: cmd
         env:
-          vc_arch: ${{ matrix.msvc_arch }}
+          vc_arch: ${{ matrix.arch }}
         run: |
-          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" %vc_arch%
-          qmake
+          mkdir build
+          cd build
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
           nmake
-          dir
-
       - name: Gets latest created release info
         id: latest_release_info
-        uses: jossef/action-latest-release-info@v1.1.0
-          
+        uses: jossef/action-latest-release-info@v1
       - name: Rename directory
-        id: rename_operation
         env:
-          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.target_arch }}
+          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.arch }}
         run: |
           mkdir ${{ env.zip_derectory }}
           xcopy /e release ${{ env.zip_derectory }}
-          
       - name: To zip
         env:
-          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.target_arch }}
+          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.arch }}
         run: |
           7z.exe a ${{ env.zip_derectory }}.zip ${{ env.zip_derectory }}/*
           dir
-        
       - name: Upload Release Asset
-        id: upload-release-asset 
         uses: actions/upload-release-asset@v1
         env:
-          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.target_arch }}
+          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.arch }}
         with:
           upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
           asset_path: ${{ env.zip_derectory }}.zip
           asset_name: ${{ env.zip_derectory }}.zip
-          asset_content_type: application/zip
-
-
-  build-for-android:
-    needs: [create-release]
-    name: Build for Android
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        qt_arch: [android_x86, android_armv7, android_arm64_v8a]
-        qt_ver: [5.12.10]
-        qt_target: [android]
-    steps:
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-        with:
-          # Version of Qt to install
-          version: ${{ matrix.qt_ver }}
-          # Target platform for build
-          target: ${{ matrix.qt_target }}
-          # Architecture for Windows/Android
-          arch: ${{ matrix.qt_arch }}
-          modules: qtcharts
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-      - name: build android
-        # https://doc.qt.io/qt-5/deployment-android.html
-        #  deploy command line: androiddeployqt --verbose --output release/ --input $(ls *.json) --android-platform android-29 --jdk $JAVA_HOME --gradle
-        run: |
-          export JAVA_HOME=$JAVA_HOME_8_X64
-          export ANDROID_SDK_ROOT=$ANDROID_HOME
-          export ANDROID_NDK_ROOT=$ANDROID_HOME/ndk-bundle
-          echo $ANDROID_HOME $ANDROID_HOME
-          qmake
-          make install INSTALL_ROOT="./release"
-          echo $JAVA_HOME_8_X64
-          echo $JAVA_HOME_11_X64
-          echo $PATH
-          androiddeployqt --verbose --output release/ --input $(ls *.json) --android-platform android-29 --jdk $JAVA_HOME --gradle
-      
-      - name: Gets latest created release info
-        id: latest_release_info
-        uses: jossef/action-latest-release-info@v1.1.0
-      
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
-          asset_path: release/build/outputs/apk/debug/release-debug.apk
-          asset_name: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-${{ matrix.qt_arch }}.apk
-          asset_content_type: application/zip
-
-
-  build-for-macos:
-    needs: [create-release]
-    name: Build dor macOS
-    runs-on: macos-10.15
-    strategy:
-      matrix:
-        #qt_ver: [5.9.9, 5.12.10, 5.15.2]
-        qt_ver: [5.15.2]
-        qt_arch: [clang_64]
-    steps:
-      - name: cacheQt
-        id: MacosCacheQt
-        uses: actions/cache@v1
-        with:
-          path: ../Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}
-          key: ${{ runner.os }}-Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}   
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-        with:
-          version: ${{ matrix.qt_ver }}
-          cached: ${{ steps.MacosCacheQt.outputs.cache-hit }}
-          modules: qtcharts
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-      - name: build macos
-        run: |
-          qmake
-          make
-          ls -l
-      
-      - name: Deploy app
-        run: |
-          macdeployqt ${{ env.OUTPUT_FILE }}.app -dmg
-          ls -l
-
-      - name: Gets latest created release info
-        id: latest_release_info
-        uses: jossef/action-latest-release-info@v1.1.0
-      
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
-          asset_path: ${{ env.RELEASE_NAME }}.dmg
-          asset_name: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-macos.dmg
-          asset_content_type: application/zip
-
-
-  build-for-ios:
-    needs: [create-release]
-    name: Build for ios
-    runs-on: macos-10.15
-    strategy:
-      matrix:
-        #qt_ver: [5.12.10, 5.15.2]
-        qt_ver: [5.15.2]
-        qt_target: [ios]
-    steps:
-      - name: Install Qt
-        # if: steps.cacheqt.outputs.cache-hit != 'true'
-        uses: jurplel/install-qt-action@v2
-        with:
-          # Version of Qt to install
-          version: ${{ matrix.qt_ver }}
-          # Target platform for build
-          target: ${{ matrix.qt_target }}
-          modules: qtcharts
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-
-      - name: build ios
-        run: |
-          qmake -r -spec macx-ios-clang CONFIG+=release CONFIG+=iphoneos
-          make
-          ls
-
-      - name: Create ipa
-        run: |
-          mkdir Payload
-          cp -R Release-iphonesimulator/${{ env.OUTPUT_FILE }}.app Payload/
-          zip -q -r ${{ env.RELEASE_NAME }}.zip Payload
-          mv ${{ env.RELEASE_NAME }}.zip ${{ env.RELEASE_NAME }}.ipa
-          ls -l
-      
-      - name: Gets latest created release info
-        id: latest_release_info
-        uses: jossef/action-latest-release-info@v1.1.0
-      
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
-          asset_path: ${{ env.RELEASE_NAME }}.ipa
-          asset_name: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-ios.ipa
-          asset_content_type: application/zip
-    
-    
-  build-for-linux:
-    needs: [create-release]
-    name: Build for Linux
-    runs-on: ubuntu-16.04
-    steps:
-      - name: Update System
-        run: sudo apt-get update --fix-missing -y
-        
-      - name: Install Environment
-        run: sudo apt-get install gcc g++ libgl1-mesa-dev make wget -y
-      
-      - name: Cache Qt
-        id: cache-qt
-        uses: actions/cache@v1
-        with:
-          path: ../Qt
-          key: ${{ runner.os }}-QtCache
-
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2.11.1
-        with:
-          cached: ${{ steps.cache-qt.outputs.cache-hit }}
-          version: 5.12.10
-          target: desktop
-          modules: qtcharts
-      
-      - name: Pull Repositories
-        uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-
-      - name: Build Project
-        run: |
-          qmake
-          make
-          ls -l
-      - name: Gets latest created release info
-        id: latest_release_info
-        uses: jossef/action-latest-release-info@v1.1.0
-      
-      - name: Make directory
-        run: |
-          mkdir appDir
-          mkdir appDir/usr
-          mkdir appDir/usr/bin
-          mkdir appDir/usr/lib
-          mkdir appDir/usr/share
-          mkdir appDir/usr/share/applications
-          mkdir appDir/usr/share/icons
-          mkdir appDir/usr/share/icons/hicolor
-          mkdir appDir/usr/share/icons/hicolor/256x256
-          mkdir appDir/usr/share/icons/hicolor/256x256/apps
-
-      - name: Copy file
-        run: |
-          cp Logo.png appDir/usr/share/icons/hicolor/256x256/apps/
-          cp ${{ env.OUTPUT_FILE }} appDir/usr/bin/
-          cp resources/files/${{ env.OUTPUT_FILE }}.desktop appDir/usr/share/applications/
-
-      - name: Deploy
-        continue-on-error: true
-        env:
-          outputdir: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-linux-x64
-          linuxdeployqt_url: https://github.com/probonopd/linuxdeployqt/releases/download/7/linuxdeployqt-7-x86_64.AppImage
-          linuxdeployqt: linuxdeployqt-7-x86_64.AppImage
-          applimagetool_url: https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage
-          applimagetool: appimagetool-x86_64.AppImage
-        run: |
-          wget ${{ env.linuxdeployqt_url }}
-          chmod a+x ${{ env.linuxdeployqt }}
-          ./${{ env.linuxdeployqt }} appDir/usr/share/applications/${{ env.OUTPUT_FILE }}.desktop -verbose=2
-          wget ${{ env.applimagetool_url }}
-          chmod a+x ${{ env.applimagetool }}
-          ./${{ env.applimagetool }} appDir
-          
-      #- name: Packet with tar
-      #  env:
-      #    outputdir: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-linux-x64
-      #  run: |
-      #      tar -zcvf ${{ env.RELEASE_NAME }}.tar.gz ${{ env.outputdir }}
-      #      ls -l
-      
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
-          asset_path: ${{ env.OUTPUT_FILE }}-x86_64.AppImage
-          asset_name: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-linux-x86_64.AppImage
           asset_content_type: application/zip
