@@ -1,28 +1,48 @@
 name: build-daily
-on: 
+on:
   schedule:
-    - cron: '0 0 * * *'
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
-
+    - cron: '0 0 * * *' # 每天准时执行
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Build
-        run: echo ${{ github.sha }} > Release.txt
-      - name: Test
-        run: cat Release.txt
-      - name: Release
-        uses: softprops/action-gh-release@v1
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build project
+        run: make
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old release
+        uses: actions/github-script@v5
         with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const { owner, repo } = context.repo
+            const tag_name = 'your-tag-name' // 请替换为你的标签名
+            let release = null
+            try {
+              release = await github.repos.getReleaseByTag({
+                owner,
+                repo,
+                tag: tag_name
+              })
+            } catch (error) {
+              if (error.status !== 404) {
+                throw error
+              }
+            }
+            if (release) {
+              await github.repos.deleteRelease({
+                owner,
+                repo,
+                release_id: release.data.id
+              })
+            }
+      - name: Create new release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "release.tar.gz,foo/*.txt"
+          bodyFile: "body.md"
           token: ${{ secrets.SAK_ACTIONS_SECRETS }}
-          files: |
-            Release.txt
-            LICENSE

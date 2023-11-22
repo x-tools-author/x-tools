@@ -1,0 +1,21 @@
+name: update-continuous-tag
+
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Update continuous tag
+        run: |
+          git config --global user.email "qsaker@foxmail.com"
+          git config --global user.name "Qsaker"
+          git tag -fa continuous -m "Update to latest commit"
+          git push origin :refs/tags/continuous
+          git push origin continuous
+        env:
+          GH_TOKEN: ${{ secrets.SAK_ACTIONS_SECRETS }}
