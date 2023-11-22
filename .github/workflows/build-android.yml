@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         #arch: [android_armv7, android_arm64_v8a, android_x86, android_x86_64]
-        arch: [android_armv7]
+        arch: [android_x86_64]
         version: [6.5.3]
     steps:
       - name: Checkout
@@ -39,7 +39,6 @@ jobs:
         env: 
           JAVA_HOME: $JAVA_HOME_11_X64
         run: |
-          aqt install-qt linux desktop ${{ matrix.version }} gcc_64
           mkdir build
           cd build
           cmake -DQT_DIR='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DQt6_DIR='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
