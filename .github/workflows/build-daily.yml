@@ -23,7 +23,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          token: ${{ secrets.GITHUBTOKEN }}
+          token: ${{ secrets.SAK_ACTIONS_SECRETS }}
           files: |
             Release.txt
             LICENSE
