@@ -39,9 +39,9 @@ jobs:
           target: 'desktop'
           arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
-          host: 'macos'
+          host: 'mac'
           modules: ${{ matrix['moudles']}}
-      - name: build macos
+      - name: build for macos
         run: |
           mkdir build
           cd build
