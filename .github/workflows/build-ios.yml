@@ -41,7 +41,7 @@ jobs:
           arch: 'clang_64'
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
-          modules: ${{ matrix['moudles']}}
+          modules: ${{ matrix['moudles']}} qtserialport
       - name: install qt for ios
         uses: jurplel/install-qt-action@v3
         with:
