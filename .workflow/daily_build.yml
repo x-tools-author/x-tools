@@ -33,7 +33,7 @@ stages:
           - ls /usr/lib/x86_64-linux-gnu/cmake/
           - strip --remove-section=.note.ABI-tag /usr/lib64/libQt5Core.so.5
           - cmake --version
-          - cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE="Release" ../ && make
+          - cmake -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE=Release ../ && make
         artifacts:
           - name: BUILD_ARTIFACT
             path:
