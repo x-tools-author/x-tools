@@ -3,6 +3,9 @@ on:
   push:
     tags:
       - 'continuous'
+  # 凌晨12点半执行
+  schedule:
+    - cron: '30 16 * * *'
   create:
 jobs:
   build:
