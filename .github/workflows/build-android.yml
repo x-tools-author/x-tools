@@ -41,6 +41,6 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
+          cmake -DQT_DIR='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DQt6_DIR='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
           make
 
