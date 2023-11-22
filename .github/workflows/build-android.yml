@@ -16,23 +16,27 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu22.04
     strategy:
       matrix:
-        qt_arch: [android_x86, android_armv7, android_arm64_v8a]
-        qt_ver: [5.12.10]
-        qt_target: [android]
+        version: [6.5.3]
+        arch: [android_x86, android_armv7, android_arm64_v8a]
+        target: [android]
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: ${{ matrix.qt_ver }}
-          target: ${{ matrix.qt_target }}
-          arch: ${{ matrix.qt_arch }}
-      - uses: actions/checkout@v3
-      - name: build android
+          version: ${{ matrix.version }}
+          target: ${{ matrix.target }}
+          arch: ${{ matrix.arch }}
+      - name: Build for Android
         run: |
+          mkdir build
+          cd build
           export ANDROID_SDK_ROOT=$ANDROID_HOME
           export ANDROID_NDK_ROOT=$ANDROID_HOME/ndk-bundle
-          qmake -spec android-clang
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
           make
+
