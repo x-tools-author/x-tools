@@ -16,9 +16,10 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: macos-lastest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [macos-11, macos-12]
         version: [5.15.2, 6.5.3]
         arch: [clang_64]
         include:
@@ -38,6 +39,7 @@ jobs:
           target: 'desktop'
           arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
+          host: 'macos'
           modules: ${{ matrix['moudles']}}
       - name: build macos
         run: |
