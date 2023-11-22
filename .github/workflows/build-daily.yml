@@ -9,10 +9,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Delete Release
-      uses: liudonghua123/delete-release-action@v1
-      with:
-        release_name: 'continuous'
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
