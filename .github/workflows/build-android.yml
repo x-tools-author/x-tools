@@ -39,6 +39,7 @@ jobs:
         env: 
           JAVA_HOME: $JAVA_HOME_11_X64
         run: |
+          aqt install-qt linux desktop ${{ matrix.version }} gcc_64
           mkdir build
           cd build
           cmake -DQT_DIR='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DQt6_DIR='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
