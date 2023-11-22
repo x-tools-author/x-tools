@@ -1,0 +1,47 @@
+﻿name: build-windows
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'doc/**'
+      - '*.md'
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - 'doc/**'
+      - '*.md'
+  
+jobs:
+  build-test:
+    name: Build
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        target: [desktop]
+        arch: [win64_msvc2019_64]
+        version: [5.15.2, 6.5.3]
+        include:
+          - version: 5.15.2
+            cmake-prefix-path: 'lib/cmake/Qt5'
+          - version: 6.5.3
+            cmake-prefix-path: 'lib/cmake/Qt6'
+    steps:
+      - name: Pull code
+        uses: actions/checkout@v1
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{ matrix.version }}
+          target: ${{ matrix.target }}
+          arch: ${{ matrix.arch }}
+          dir: '${{ github.workspace }}'
+      - name: build-msvc
+        shell: cmd
+        run: |
+          mkdir build
+          cd build
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+          nmake
