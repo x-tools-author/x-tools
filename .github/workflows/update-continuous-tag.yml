@@ -8,18 +8,14 @@ jobs:
   update-continuous-tag:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Git
-        run: |
-          git config --global user.email "qsaker@foxmail.com"
-          git config --global user.name "Qsaker"
       - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.SAK_ACTIONS_SECRETS }}
+        uses: actions/checkout@v3
       - name: Update continuous tag
         env:
           GH_TOKEN: ${{ secrets.SAK_ACTIONS_SECRETS }}
         run: |
+          git config --global user.email "qsaker@foxmail.com"
+          git config --global user.name "Qsaker"
           git tag -fa continuous -m "chore: update to latest commit"
           git push origin :refs/tags/continuous
           git push origin continuous -f
