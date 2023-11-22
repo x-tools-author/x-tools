@@ -47,10 +47,10 @@ jobs:
         with:
           aqtversion: '==3.1.*'
           version: ${{ matrix.version }}
+          host: 'mac'
+          dir: ${{ github.workspace }}
           target: 'ios'
           arch: ${{ matrix.arch }}
-          dir: ${{ github.workspace }}
-          host: 'mac'
           modules: ${{ matrix['moudles']}}
       - name: build for macos
         run: |
