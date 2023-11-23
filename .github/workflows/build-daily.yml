@@ -4,24 +4,32 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  new-release:
+  release-delete:
     runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Delete continuous release
+      uses: larryjoelane/delete-release-action@1.0.24
+      with:
+        release-name: continuous
+        token: ${{ secrets.GITHUB_TOKEN }}
+  release-new:
+    runs-on: ubuntu-latest
+    needs: release-delete
     permissions:
       contents: write
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Delete old release
-      uses: liudonghua123/delete-release-action@v1
-      with:
-        release_name: 'continuous'
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
         tag: 'continuous'
         allowUpdates: true
-  build-for-windows:
+  release-for-windows:
     runs-on: windows-2019
+    needs: release-new
     steps:
     - name: Checkout
       uses: actions/checkout@v3
