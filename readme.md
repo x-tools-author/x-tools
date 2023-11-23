@@ -15,13 +15,13 @@ The *Qt Swiss Army Knife* is a user-friendly, open-source, cross-platform debugg
 5. Multiple Text Formats: Show text as bin, otc, dec, hex, ascii or urf8 etc..
 6. (etc.)
 
-> You can get *Qt Swiss Army Knife* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).
+> **You can get *Qt Swiss Army Knife* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
 
-![MainWindow.png](mainwindow.png)
+![MainWindow.png](resources/images/mainwindow.png)
 
 ## Build with Qt5
 
-> See *buildwithqt5.sh* for more information.
+> See *resources/scripts/buildwithqt5.sh* for more information.
 
 ```shell
 #!/bin/sh
@@ -38,7 +38,7 @@ cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5_DIR=/usr/lib/x86_64-lin
 
 ## Build with Qt6
 
-> See *buildwithqt6.sh* for more information.
+> See *resources/scripts/buildwithqt6.sh* for more information.
 
 ```shell
 #!/bin/sh
