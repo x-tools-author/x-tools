@@ -70,6 +70,12 @@ QList<int> SAKPrestorerToolUi::defaultHideColumns()
     return list;
 }
 
+void SAKPrestorerToolUi::afterRowEdited(int row)
+{
+    SAKTableModelToolUi::afterRowEdited(row);
+    updateMenu();
+}
+
 QDialog *SAKPrestorerToolUi::itemEditor()
 {
     return mEditor;
