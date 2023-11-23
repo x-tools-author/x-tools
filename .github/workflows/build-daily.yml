@@ -34,6 +34,7 @@ jobs:
         dir: ${{ github.workspace }}
         modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
     - name: Build for Windows
+      shell: cmd
       run: |
         mkdir build
         cd build
