@@ -9,9 +9,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    - name: Delete old release
+      uses: liudonghua123/delete-release-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        release_name: 'continuous'
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
+        tag: 'continuous'
         allowUpdates: true
-        tag: continuous
  
