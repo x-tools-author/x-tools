@@ -38,8 +38,8 @@ jobs:
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
         cmake build . --target QtSwissArmyKnife
         dir
-        dir ./sak
-        dir ./sak/QtSwissArmyKnife
+        dir .\sak
+        dir .\sak\QtSwissArmyKnife
     - name: Upload Release Asset for Windnows
       run: |
-        gh release upload continuous 'sak/qtswissarmyknife-windows-amd64.zip'
+        gh release upload continuous 'sak\qtswissarmyknife-windows-amd64.zip'
