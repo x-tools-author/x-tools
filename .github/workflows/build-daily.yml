@@ -14,7 +14,7 @@ jobs:
         gh release delete continuous -y
     - name: Create Release
       run: |
-        gh release create continuous --title "Continuous Build" --notes "Daily build of QtSwissArmyKnife"
+        gh release create continuous --title "Continuous Build" --notes "Daily build of QtSwissArmyKnife" -y
   release-for-windows:
     runs-on: windows-2019
     needs: update-release
@@ -40,4 +40,4 @@ jobs:
         dir
     - name: Upload Release Asset for Windnows
       run: |
-        gh release upload continuous 'build/sak/qtswissarmyknife-windows-amd64.zip'
+        gh release upload continuous 'build/sak/qtswissarmyknife-windows-amd64.zip' -y
