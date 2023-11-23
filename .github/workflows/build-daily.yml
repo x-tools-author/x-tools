@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Delete Release
       run: |
-        gh release delete continuous -y
+        gh release delete continuous -y || true
     - name: Create Release
       run: |
         gh release create continuous --title "Continuous Build" --notes "Daily build of QtSwissArmyKnife"
