@@ -12,6 +12,8 @@ on:
     paths-ignore:
       - 'doc/**'
       - '*.md'
+env:
+  qt-cmake-path: '/usr/lib/x86_64-linux-gnu/cmake'
 
 jobs:
   build:
@@ -20,14 +22,37 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
-        qt: [qt5, qt6]
+        qt: [Qt5, Qt6]
         exclude:
           - os: ubuntu-20.04
-            qt: qt6
+            qt: Qt6
     steps:
-      - uses: actions/checkout@v1
-      - name: Call buildwithqtx.sh
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build with Qt5
+        if: matrix.qt == 'Qt5'
         run: |
-          sudo chmod +x buildwith${{ matrix.qt }}.sh
-          sudo ./buildwith${{ matrix.qt }}.sh
+          apt-get update --fix-missing -y
+          apt-get install libgl1-mesa-dev -y
+          apt-get install qtbase5-dev -y
+          apt-get install libqt5charts5* -y
+          apt-get install libqt5serialbus5* -y
+          apt-get install libqt5websockets5* -y
+          apt-get install libqt5serialport5* -y
+          mkdir buildqt5
+          cd buildqt5
+          cmake -DCMAKE_PREFIX_PATH='${{ env.qt-cmake-path }}/${{ matrix.qt }}' -DCMAKE_BUILD_TYPE="Release" ../ && make
+      - name: Build with Qt6
+        if: matrix.qt == 'Qt6'
+        run: |
+          apt-get update --fix-missing -y
+          apt-get install libgl1-mesa-dev -y
+          apt-get install qt6-base-dev -y
+          apt-get install libqt6charts6* -y
+          apt-get install libqt6serialbus6* -y
+          apt-get install libqt6websockets6* -y
+          apt-get install libqt6serialport6* -y
+          mkdir buildqt6
+          cd buildqt6
+          cmake -DCMAKE_PREFIX_PATH='${{ env.qt-cmake-path }}/${{ matrix.qt }}' -DCMAKE_BUILD_TYPE="Release" ../ && make
 
