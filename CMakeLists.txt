@@ -131,7 +131,7 @@ if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
   sak_import_module("modbusstudio")
 endif()
 
-# QtSwissArmyKnife)
+# QtSwissArmyKnife
 include_directories(src)
 file(GLOB APP_SOURCES "src/*.h" "src/*.cc" "src/*.ui" ".cmake/*.cmake")
 
