@@ -40,4 +40,4 @@ jobs:
         dir
     - name: Upload Release Asset for Windnows
       run: |
-        gh release upload continuous 'build/sak/qtswissarmyknife-windows-amd64.zip'
+        gh release upload continuous 'sak/qtswissarmyknife-windows-amd64.zip'
