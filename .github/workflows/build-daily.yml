@@ -43,7 +43,7 @@ jobs:
         cmake build . --target QtSwissArmyKnife
         dir
     - name: Upload Release Asset for Windnows
-      uses: Shopify/upload-to-release@v2.0.0
+      uses: Shopify/upload-to-release@v1.0.1
       with:
         name: 'continuous'
         path: 'build/sak/qtswissarmyknife-windows-amd64.zip'
