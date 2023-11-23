@@ -9,13 +9,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - uses: actions/github-script@v5
-      with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-          const { owner, repo } = context.repo
-          const { data: { id } } = await github.repos.getLatestRelease({ owner, repo })
-          await github.repos.deleteRelease({ owner, repo, release_id: id })
+    - name: Delete Release
+      run: |
+        gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+        gh release delete continuous -y
   release-new:
     runs-on: ubuntu-latest
     needs: release-delete
