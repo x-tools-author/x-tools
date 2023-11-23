@@ -1,5 +1,7 @@
 name: build-daily
 on: push
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   new-release:
@@ -11,8 +13,6 @@ jobs:
       uses: actions/checkout@v3
     - name: Delete old release
       uses: liudonghua123/delete-release-action@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         release_name: 'continuous'
     - name: Create Release
@@ -20,4 +20,29 @@ jobs:
       with:
         tag: 'continuous'
         allowUpdates: true
- 
+  build-for-windows:
+    runs-on: windows-2019
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.5.3'
+        target: 'desktop'
+        arch: 'win64_msvc2019_64'
+        dir: ${{ github.workspace }}
+        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+    - name: Build for Windows
+      run: |
+        mkdir build
+        cd build
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+        nmake
+    - name: Upload Release Asset for Windnows
+      uses: Shopify/upload-to-release@v1
+      with:
+        name: 'continuous'
+        path: 'build/sak/qtswissarmyknife-windows-amd64.zip'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}

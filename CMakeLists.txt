@@ -150,20 +150,21 @@ if(SAK_IMPORT_MODULE_BLUETOOTH)
   include_directories(src/optional/bluetooth)
 endif()
 
-sak_add_executable("SwissArmyKnife" ${SAK_APP_SOURCES})
-sak_auto_execute_deployqt(SwissArmyKnife)
-sak_set_target_properties(SwissArmyKnife)
+sak_add_executable("QtSwissArmyKnife" ${SAK_APP_SOURCES})
+sak_auto_execute_deployqt(QtSwissArmyKnife)
+sak_tar_target(QtSwissArmyKnife)
+sak_set_target_properties(QtSwissArmyKnife)
 target_link_libraries(
-  SwissArmyKnife
+  QtSwissArmyKnife
   PRIVATE glog::glog Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
           Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort
           Qt${QT_VERSION_MAJOR}::SerialBus)
 if(SAK_IMPORT_MODULE_BLUETOOTH)
-  target_link_libraries(SwissArmyKnife PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
+  target_link_libraries(QtSwissArmyKnife PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 endif()
 
 install(
-  TARGETS SwissArmyKnife
+  TARGETS QtSwissArmyKnife
   BUNDLE DESTINATION .
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

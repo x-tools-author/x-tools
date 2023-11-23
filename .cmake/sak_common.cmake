@@ -8,6 +8,8 @@ add_compile_definitions(SAK_AUTHOR_EMAIL="qsaker@foxmail.com")
 add_compile_definitions(SAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/QtSwissArmyKnife")
 add_compile_definitions(SAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/QtSwissArmyKnife")
 
+set(SAK_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/sak)
+
 # Set the suffix of the library.
 if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
 
@@ -48,9 +50,18 @@ macro(sak_find_qt_package modules)
   find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${modules})
 endmacro()
 
+function(sak_copy_glog target)
+add_custom_command(
+  TARGET ${target}
+  POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different
+          $<TARGET_FILE:glog::glog> 
+          ${SAK_RUNTIME_OUTPUT_DIRECTORY}/${target}/$<TARGET_FILE_NAME:glog::glog>)
+endfunction()
+
 # Add executable. It can be used by Qt5 and Qt6.
 function(sak_add_executable target sources)
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/sak/${target}")
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${SAK_RUNTIME_OUTPUT_DIRECTORY}/${target}")
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${target} MANUAL_FINALIZATION)
   else()
@@ -67,6 +78,8 @@ function(sak_add_executable target sources)
     target_sources(${target} PRIVATE ${ARGV${INDEX}})
   endwhile()
 
+  sak_copy_glog(${target})
+
   if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(${target})
   endif()
@@ -80,4 +93,16 @@ function(sak_set_target_properties target)
                ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
                TRUE WIN32_EXECUTABLE
                TRUE)
+endfunction()
+
+function(sak_tar_target target)
+  string(TOLOWER ${target} lower_target)
+  string(TOLOWER ${CMAKE_HOST_SYSTEM_NAME} lower_system_name)
+  string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} lower_system_processor)
+  set(TAR_FILE_NAME ${lower_target}-${lower_system_name}-${lower_system_processor})
+  add_custom_command(
+    TARGET ${target}
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E tar "cf" ${TAR_FILE_NAME}.zip --format=zip ${target}
+    WORKING_DIRECTORY ${SAK_RUNTIME_OUTPUT_DIRECTORY})
 endfunction()
