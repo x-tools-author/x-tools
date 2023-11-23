@@ -4,7 +4,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  release-delete:
+  update-release:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -12,22 +12,12 @@ jobs:
     - name: Delete Release
       run: |
         gh release delete continuous -y
-  release-new:
-    runs-on: ubuntu-latest
-    needs: release-delete
-    permissions:
-      contents: write
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
     - name: Create Release
-      uses: ncipollo/release-action@v1
-      with:
-        tag: 'continuous'
-        allowUpdates: true
+      run: |
+        gh release create continuous --title "Continuous Build" --notes "Daily build of QtSwissArmyKnife"
   release-for-windows:
     runs-on: windows-2019
-    needs: release-new
+    needs: update-release
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -49,8 +39,5 @@ jobs:
         cmake build . --target QtSwissArmyKnife
         dir
     - name: Upload Release Asset for Windnows
-      uses: Shopify/upload-to-release@v1.0.1
-      with:
-        name: 'continuous'
-        path: 'build/sak/qtswissarmyknife-windows-amd64.zip'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release upload continuous 'build/sak/qtswissarmyknife-windows-amd64.zip'
