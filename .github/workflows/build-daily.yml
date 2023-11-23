@@ -41,7 +41,7 @@ jobs:
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
         nmake
     - name: Upload Release Asset for Windnows
-      uses: Shopify/upload-to-release@v1
+      uses: Shopify/upload-to-release@v2.0.0
       with:
         name: 'continuous'
         path: 'build/sak/qtswissarmyknife-windows-amd64.zip'
