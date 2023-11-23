@@ -10,7 +10,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Delete continuous release
-      uses: larryjoelane/delete-release-action@1.0.24
+      uses: larryjoelane/delete-release-action
       with:
         release-name: continuous
         token: ${{ secrets.GITHUB_TOKEN }}
