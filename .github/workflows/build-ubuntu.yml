@@ -32,26 +32,26 @@ jobs:
       - name: Build with Qt5
         if: matrix.qt == 'Qt5'
         run: |
-          apt-get update --fix-missing -y
-          apt-get install libgl1-mesa-dev -y
-          apt-get install qtbase5-dev -y
-          apt-get install libqt5charts5* -y
-          apt-get install libqt5serialbus5* -y
-          apt-get install libqt5websockets5* -y
-          apt-get install libqt5serialport5* -y
+          sudo apt-get update --fix-missing -y
+          sudo apt-get install libgl1-mesa-dev -y
+          sudo apt-get install qtbase5-dev -y
+          sudo apt-get install libqt5charts5* -y
+          sudo apt-get install libqt5serialbus5* -y
+          sudo apt-get install libqt5websockets5* -y
+          sudo apt-get install libqt5serialport5* -y
           mkdir buildqt5
           cd buildqt5
           cmake -DCMAKE_PREFIX_PATH='${{ env.qt-cmake-path }}/${{ matrix.qt }}' -DCMAKE_BUILD_TYPE="Release" ../ && make
       - name: Build with Qt6
         if: matrix.qt == 'Qt6'
         run: |
-          apt-get update --fix-missing -y
-          apt-get install libgl1-mesa-dev -y
-          apt-get install qt6-base-dev -y
-          apt-get install libqt6charts6* -y
-          apt-get install libqt6serialbus6* -y
-          apt-get install libqt6websockets6* -y
-          apt-get install libqt6serialport6* -y
+          sudo apt-get update --fix-missing -y
+          sudo apt-get install libgl1-mesa-dev -y
+          sudo apt-get install qt6-base-dev -y
+          sudo apt-get install libqt6charts6* -y
+          sudo apt-get install libqt6serialbus6* -y
+          sudo apt-get install libqt6websockets6* -y
+          sudo apt-get install libqt6serialport6* -y
           mkdir buildqt6
           cd buildqt6
           cmake -DCMAKE_PREFIX_PATH='${{ env.qt-cmake-path }}/${{ matrix.qt }}' -DCMAKE_BUILD_TYPE="Release" ../ && make
