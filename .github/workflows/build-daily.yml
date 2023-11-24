@@ -99,6 +99,11 @@ jobs:
         modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
     - name: Build for macOS
       run: |
+        brew install postgresql
+        psql --version
+        brew unlink unixodbc
+        brew install libiodbc
+        ls /Applications
         mkdir build
         cd build
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles" ../
