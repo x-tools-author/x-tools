@@ -33,7 +33,6 @@ jobs:
   release-for-windows:
     runs-on: windows-2019
     needs: update-release
-    if: false
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -60,7 +59,6 @@ jobs:
   release-for-linux:
     runs-on: ubuntu-20.04
     needs: update-release
-    if: false
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -104,8 +102,7 @@ jobs:
       # brew unlink unixodbc
       # brew install libiodbc
       # ERROR: no file at "/Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib"
-      # brew install tree
-      # tree /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14 -L 2
+      # ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
       run: |
         brew unlink unixodbc
         brew install libiodbc
