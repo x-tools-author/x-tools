@@ -18,7 +18,7 @@ stages:
       - step: build@gcc
         name: build_gcc
         displayName: Build
-        gccVersion: '10.3'
+        gccVersion: '9.4'
         commands:
           - apt-get update --fix-missing -y
           - apt-get install libgl1-mesa-dev -y
