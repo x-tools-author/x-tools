@@ -103,7 +103,7 @@ jobs:
       # brew install libiodbc
       # ERROR: no file at "/Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib"
       run: |
-        echo "[fix]ERROR: no file at "/usr/local/opt/libiodbc/lib/libiodbc.2.dylib"
+        echo "[fix]ERROR: no file at /usr/local/opt/libiodbc/lib/libiodbc.2.dylib"
         brew unlink unixodbc
         brew install libiodbc
         mkdir build
