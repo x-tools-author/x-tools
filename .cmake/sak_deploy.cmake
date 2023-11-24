@@ -14,8 +14,59 @@ function(sak_auto_execute_windeployqt target)
   endif()
 endfunction()
 
+function(sak_auto_execute_linuxdeployqt target)
+  if(NOT ${target} STREQUAL "QtSwissArmyKnife")
+    return()
+  endif()
+
+  if(NOT ${SAK_ENABLE_LINUXDEPLOYQT})
+    return()
+  endif()
+  
+  find_program(SAK_QMAKE NAMES qmake PATHS ${QT_DIR}/../../../bin)
+  set(APP_DIR ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir)
+  add_custom_command(
+    TARGET ${target}
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/platform/unix/QtSwissArmyKnife ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${target}> ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin
+    COMMAND ${SAK_BIN_LINUXDEPLOYQT} "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/share/applications/QtSwissArmyKnife.desktop" -verbose=0 -appimage -qmake=${SAK_QMAKE}
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR} COMMENT "Running creating appimage file..." VERBATIM)
+
+    if(${BUILD_SHARED_LIBS})
+      add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:glog::glog> ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/$<TARGET_FILE_NAME:glog::glog>
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR} COMMENT "Copy glog to QtSwissArmyKnifeAppDir/lib..." VERBATIM)
+      add_custom_command(
+       TARGET ${target}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/$<TARGET_FILE_NAME:glog::glog> 
+                ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/libglog.so.1
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR} COMMENT "Copy glog and rename" VERBATIM)
+    endif()
+
+    add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND sh -c "ls *.AppImage > AppImages.txt"
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR} COMMENT "Scan AppImage file" VERBATIM)
+
+    add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND sh -c "rm qtswissarmyknife-linux-x86_64.AppImage || true"
+        COMMAND sh -c "cat AppImages.txt | xargs -I {} mv {} qtswissarmyknife-linux-x86_64.AppImage"
+        COMMAND sh -c "rm AppImages.txt || true"
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR} COMMENT "Rename old AppImage file" VERBATIM)
+endfunction()
+
 function(sak_auto_execute_deployqt target)
   if(WIN32)
     sak_auto_execute_windeployqt(${target})
+  elseif (UNIX AND NOT APPLE)
+    sak_auto_execute_linuxdeployqt(${target})
   endif()
 endfunction()

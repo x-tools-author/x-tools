@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+﻿cmake_minimum_required(VERSION 3.21)
 
 project(
   QtSwissArmyKnife
@@ -32,7 +32,9 @@ else()
 endif()
 
 set(BUILD_TESTING OFF)
+set(BUILD_SHARED_LIBS OFF)
 include(.cmake/sak_common.cmake)
+include(.cmake/sak_environment.cmake)
 include(.cmake/sak_deploy.cmake)
 
 sak_get_last_commit(${CMAKE_CURRENT_SOURCE_DIR} "SAK")

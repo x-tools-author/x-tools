@@ -1,12 +1,12 @@
 name: build-daily
-on:
-  schedule:
-    - cron: '0 0 * * *'
+on: push
+#  schedule:
+#    - cron: '0 0 * * *'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  update-release:
+  update-tag:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -18,6 +18,12 @@ jobs:
         git tag -fa continuous -m "chore: update to latest commit"
         git push origin :refs/tags/continuous
         git push origin continuous -f
+  update-release:
+    runs-on: ubuntu-latest
+    needs: update-tag
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Delete Release
       run: |
         gh release delete continuous -y || true
@@ -50,3 +56,27 @@ jobs:
     - name: Upload Release Asset for Windnows
       run: |
         dir && gh release upload continuous 'build\sak\qtswissarmyknife-windows-amd64.zip'
+  release-for-linux:
+    runs-on: ubuntu-latest
+    needs: update-release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.5.3'
+        target: 'desktop'
+        arch: 'gcc_64'
+        dir: ${{ github.workspace }}
+        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+    - name: Build for Linux
+      run: |
+        mkdir build
+        cd build
+        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -DSAK_ENABLE_LINUXDEPLOYQT=NO -DSAK_ENABLE_APPIMAGE=NO -DSAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD=NO
+        cmake --build . --target QtSwissArmyKnife
+        dir && dir ./sak && dir ./sak/QtSwissArmyKnife
+    - name: Upload Release Asset for Linux
+      run: |
+        dir && gh release upload continuous 'build/qtswissarmyknife-linux-x86_64.AppImage'

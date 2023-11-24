@@ -8,7 +8,7 @@ add_compile_definitions(SAK_AUTHOR_EMAIL="qsaker@foxmail.com")
 add_compile_definitions(SAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/QtSwissArmyKnife")
 add_compile_definitions(SAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/QtSwissArmyKnife")
 
-set(SAK_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/sak)
+set(SAK_BINARY_DIR ${CMAKE_BINARY_DIR}/sak)
 
 # Set the suffix of the library.
 if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
@@ -51,17 +51,17 @@ macro(sak_find_qt_package modules)
 endmacro()
 
 function(sak_copy_glog target)
-add_custom_command(
-  TARGET ${target}
-  POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different
-          $<TARGET_FILE:glog::glog> 
-          ${SAK_RUNTIME_OUTPUT_DIRECTORY}/${target}/$<TARGET_FILE_NAME:glog::glog>)
+  if(${BUILD_SHARED_LIBS})
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:glog::glog> ${SAK_BINARY_DIR}/${target}/$<TARGET_FILE_NAME:glog::glog>)
+  endif()
 endfunction()
 
 # Add executable. It can be used by Qt5 and Qt6.
 function(sak_add_executable target sources)
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${SAK_RUNTIME_OUTPUT_DIRECTORY}/${target}")
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${SAK_BINARY_DIR}/${target}")
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${target} MANUAL_FINALIZATION)
   else()
@@ -104,5 +104,5 @@ function(sak_tar_target target)
     TARGET ${target}
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E tar "cf" ${TAR_FILE_NAME}.zip --format=zip ${target}
-    WORKING_DIRECTORY ${SAK_RUNTIME_OUTPUT_DIRECTORY})
+    WORKING_DIRECTORY ${SAK_BINARY_DIR})
 endfunction()
