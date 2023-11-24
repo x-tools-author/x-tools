@@ -111,7 +111,7 @@ jobs:
         brew unlink unixodbc
         brew install libiodbc
         brew install tree
-        tree /usr/local/Cellar -L 3
+        tree /usr/local/opt -L 3
         mkdir build
         cd build
         ls / || true
