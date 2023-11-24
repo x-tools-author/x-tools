@@ -57,7 +57,7 @@ jobs:
       run: |
         dir && gh release upload continuous 'build\sak\qtswissarmyknife-windows-amd64.zip'
   release-for-linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: update-release
     steps:
     - name: Checkout
@@ -74,7 +74,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -DSAK_ENABLE_LINUXDEPLOYQT=NO -DSAK_ENABLE_APPIMAGE=NO -DSAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD=NO
+        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -DSAK_ENABLE_LINUXDEPLOYQT:BOOL=TRUE -DSAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD:BOOL=TRUE -G "Unix Makefiles"
         cmake --build . --target QtSwissArmyKnife
         dir && dir ./sak && dir ./sak/QtSwissArmyKnife
     - name: Upload Release Asset for Linux
