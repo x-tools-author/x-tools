@@ -111,8 +111,9 @@ jobs:
         brew unlink unixodbc
         brew install libiodbc
         brew install tree
-        tree /usr/local/opt -L 3
         tree /usr/local/Cellar -L 3
+        tree /usr/local/Cellar/postgresql/14.10 -L 3
+        tree /usr/local/Cellar/postgresql@14 -L 3
         mkdir build
         cd build
         ls / || true
