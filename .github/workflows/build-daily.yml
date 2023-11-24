@@ -90,8 +90,10 @@ jobs:
     needs: update-release
     steps:
     - name: Checkout
+      if: false
       uses: actions/checkout@v3
     - name: Install Qt
+      if: false
       uses: jurplel/install-qt-action@v3
       with:
         version: '6.5.3'
@@ -110,6 +112,7 @@ jobs:
         brew install libiodbc
         mkdir build
         cd build
+        tree
         ls / || true
         ls /opt
         ls /Applications || true
