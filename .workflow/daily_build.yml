@@ -33,7 +33,8 @@ stages:
           - ls /usr/lib/x86_64-linux-gnu/cmake/
           - strip --remove-section=.note.ABI-tag /usr/lib64/libQt5Core.so.5
           - cmake --version
-          - cmake -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE=Release ../ && make
+          - cmake -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE:STRING=Release -G "CodeBlocks - Unix Makefiles" ../ -G "Unix Makefiles"
+          - cmake --build . --target QtSwissArmyKnife
         artifacts:
           - name: BUILD_ARTIFACT
             path:
