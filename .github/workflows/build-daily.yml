@@ -111,7 +111,7 @@ jobs:
         brew unlink unixodbc
         brew install libiodbc
         brew install tree
-        tree /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14-L 2
+        tree /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14 -L 2
         mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
         ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
         mkdir build
