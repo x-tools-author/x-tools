@@ -14,6 +14,37 @@ function(sak_auto_execute_windeployqt target)
   endif()
 endfunction()
 
+function(sak_auto_execute_macdeployqt target)
+  if(NOT ${target} STREQUAL "QtSwissArmyKnife")
+    return()
+  endif()
+
+  if(NOT APPLE)
+    return()
+  endif()
+  
+  set(SAK_MACDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/macdeployqt")
+  add_custom_command(
+    TARGET ${target}
+    POST_BUILD
+    COMMAND ${SAK_MACDEPLOYQT_EXECUTABLE} ${SAK_BINARY_DIR}/${target}/${target}.app -qmldir=${CMAKE_SOURCE_DIR}/qml -dmg
+    COMMENT "Running macdeployqt..." VERBATIM)
+
+  add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND sh -c "ls *.dmg > dmgs.txt"
+      WORKING_DIRECTORY ${SAK_BINARY_DIR}/${target} COMMENT "Scan dmg file" VERBATIM)
+
+  add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND sh -c "rm qtswissarmyknife-macos-11.dmg || true"
+      COMMAND sh -c "cat dmgs.txt | xargs -I {} mv {} qtswissarmyknife-macos-11.dmg"
+      COMMAND sh -c "rm dmgs.txt || true"
+      WORKING_DIRECTORY ${SAK_BINARY_DIR}/${target} COMMENT "Rename old dmg file" VERBATIM)
+endfunction()
+
 function(sak_auto_execute_linuxdeployqt target)
   if(NOT ${target} STREQUAL "QtSwissArmyKnife")
     return()
@@ -68,5 +99,7 @@ function(sak_auto_execute_deployqt target)
     sak_auto_execute_windeployqt(${target})
   elseif (UNIX AND NOT APPLE)
     sak_auto_execute_linuxdeployqt(${target})
+  elseif(APPLE)
+    sak_auto_execute_macdeployqt(${target})
   endif()
 endfunction()

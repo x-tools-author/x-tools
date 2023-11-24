@@ -83,3 +83,27 @@ jobs:
     - name: Upload Release Asset for Linux
       run: |
         dir && gh release upload continuous 'build/qtswissarmyknife-linux-x86_64.AppImage'
+  release-for-macos:
+    runs-on: macos-11
+    needs: update-release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.5.3'
+        target: 'desktop'
+        arch: 'clang_64'
+        dir: ${{ github.workspace }}
+        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+    - name: Build for macOS
+      run: |
+        mkdir build
+        cd build
+        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles" ../
+        cmake --build . --target QtSwissArmyKnife
+        dir && dir ./sak && dir ./sak/QtSwissArmyKnife
+    - name: Upload Release Asset for macOS
+      run: |
+        dir && gh release upload continuous 'build/sak/QtSwissArmyKnife/qtswissarmyknife-macos-11.dmg'
