@@ -118,4 +118,4 @@ jobs:
         ls && ls ./sak && ls ./sak/QtSwissArmyKnife
     - name: Upload Release Asset for macOS
       run: |
-        dir && gh release upload continuous 'build/sak/QtSwissArmyKnife/qtswissarmyknife-macos-11.dmg'
+        ls && gh release upload continuous 'build/sak/QtSwissArmyKnife/qtswissarmyknife-macos-11.dmg'
