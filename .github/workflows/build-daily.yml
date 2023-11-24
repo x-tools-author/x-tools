@@ -110,9 +110,9 @@ jobs:
         echo "[fix]ERROR: no file at /usr/local/opt/libiodbc/lib/libiodbc.2.dylib"
         brew unlink unixodbc
         brew install libiodbc
+        tree /
         mkdir build
         cd build
-        tree /
         ls / || true
         ls /opt
         ls /Applications || true
