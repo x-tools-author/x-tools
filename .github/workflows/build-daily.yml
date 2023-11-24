@@ -112,7 +112,7 @@ jobs:
         brew install libiodbc
         mkdir build
         cd build
-        tree
+        tree /
         ls / || true
         ls /opt
         ls /Applications || true
