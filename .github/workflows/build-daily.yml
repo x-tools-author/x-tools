@@ -160,13 +160,14 @@ jobs:
       - name: Build for Android
         shell: cmd
         run: |
-          cd build\armeabi_v7a
-          cmake --build . --target QtSwissArmyKnife --config Release
+          cmake --build build\armeabi_v7a --target QtSwissArmyKnife --config Release
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-QtSwissArmyKnife-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-34 ^
+          --sign ${{ github.workspace }}\resources\android\android_release.keystore.keystore --storepass QtSwissArmyKnife --keypass QtSwissArmyKnife^
           --jdk %JAVA_HOME% --gradle --release
       - name: Upload Release Asset for macOS
         run: |
-          ls && tree build/armeabi_v7a && gh release upload continuous 'build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-unsigned.apk'
+          cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk qtswissarmyknife-android-armeabi_v7a.apk
+          ls && tree build/armeabi_v7a && gh release upload continuous qtswissarmyknife-android-armeabi_v7a.apk
