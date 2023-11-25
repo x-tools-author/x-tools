@@ -39,6 +39,7 @@ jobs:
           -S . ^
           -B "build\armeabi_v7a" ^
           -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64" ^
+          -DCMAKE_BUILD_TYPE:STRING=Release ^
           -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
           -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
           -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%"
