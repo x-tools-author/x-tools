@@ -65,6 +65,13 @@ function(sak_add_executable target sources)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${SAK_BINARY_DIR}/${target}")
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${target} MANUAL_FINALIZATION)
+
+    if(${target} STREQUAL "QtSwissArmyKnife")
+      set_property(
+        TARGET ${target}
+        APPEND
+        PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
+    endif()
   else()
     if(ANDROID)
       add_library(${target} SHARED)
