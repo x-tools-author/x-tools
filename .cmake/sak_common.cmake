@@ -55,7 +55,8 @@ function(sak_copy_glog target)
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:glog::glog> ${SAK_BINARY_DIR}/${target}/$<TARGET_FILE_NAME:glog::glog>)
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:glog::glog>
+              "${SAK_BINARY_DIR}/${target}/$<TARGET_FILE_NAME:glog::glog>")
   endif()
 endfunction()
 
@@ -96,13 +97,15 @@ function(sak_set_target_properties target)
 endfunction()
 
 function(sak_tar_target target)
-  string(TOLOWER ${target} lower_target)
-  string(TOLOWER ${CMAKE_HOST_SYSTEM_NAME} lower_system_name)
-  string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} lower_system_processor)
-  set(TAR_FILE_NAME ${lower_target}-${lower_system_name}-${lower_system_processor})
-  add_custom_command(
-    TARGET ${target}
-    POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E tar "cf" ${TAR_FILE_NAME}.zip --format=zip ${target}
-    WORKING_DIRECTORY ${SAK_BINARY_DIR})
+  if(WIN32)
+    string(TOLOWER ${target} lower_target)
+    string(TOLOWER ${CMAKE_HOST_SYSTEM_NAME} lower_system_name)
+    string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} lower_system_processor)
+    set(TAR_FILE_NAME ${lower_target}-${lower_system_name}-${lower_system_processor})
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E tar "cf" ${TAR_FILE_NAME}.zip "--format=zip ${target}"
+      WORKING_DIRECTORY ${SAK_BINARY_DIR})
+  endif()
 endfunction()
