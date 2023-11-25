@@ -1,8 +1,6 @@
 name: build-release
 on:
-  push:
-    tags:
-      - v*
+  create
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
