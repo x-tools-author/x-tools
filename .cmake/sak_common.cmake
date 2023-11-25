@@ -79,6 +79,14 @@ function(sak_add_executable target sources)
     target_sources(${target} PRIVATE ${ARGV${INDEX}})
   endwhile()
 
+  if(ANDROID)
+      add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_FILE:${target}>"
+                "${SAK_BINARY_DIR}/${target}/android-build/libs/${ANDROID_ABI}/$<TARGET_FILE_NAME:${target}>")
+  endif()
+
   sak_copy_glog(${target})
 
   if(QT_VERSION_MAJOR EQUAL 6)
