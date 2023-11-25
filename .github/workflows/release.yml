@@ -1,76 +1,105 @@
-name: release
+name: build-daily
 on:
-  push:
-    tags:
-      - v*
+  schedule:
+    - cron: '0 0 * * *'
 env:
-  OUTPUT_FILE: QtSwissArmyKnife
-  RELEASE_NAME: qtswissarmyknife
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  create-release:
-    name: Create release
-    runs-on: ubuntu-20.04
+  update-release:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Create Release
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: 'The version is ready. You can see the changed log: https://github.com/qsaker/QtSwissArmyKnife/blob/master/resources/files/History.txt'
-          draft: false
-          prerelease: false
-  build-for-windows:
-    needs: [create-release]
-    name: Build for Windows
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Delete Release
+      run: |
+        gh release delete ${{ github.ref }} -y || true
+    - name: Create Release
+      run: |
+        gh release create ${{ github.ref }} --title "Release ${{ github.ref }}" --notes "The version is ready. You can see the changed log: https://github.com/qsaker/QtSwissArmyKnife/blob/master/resources/files/History.txt"
+  release-for-windows:
     runs-on: windows-2019
-    strategy:
-      matrix:
-        version: [6.5.3]
-        target: [desktop]
-        arch: [win64_msvc2019_64]
+    needs: update-release
     steps:
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          version: ${{ matrix.version }}
-          target: ${{ matrix.target }}
-          arch: ${{ matrix.arch }}
-          host: 'windows'
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-      - name: Pull code
-        uses: actions/checkout@v3
-      - name: build-msvc
-        shell: cmd
-        env:
-          vc_arch: ${{ matrix.arch }}
-        run: |
-          mkdir build
-          cd build
-          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
-          nmake
-      - name: Rename directory
-        env:
-          zip_derectory: ${{ env.RELEASE_NAME }}-${{ github.ref }}-for-windows-${{ matrix.arch }}
-        run: |
-          mkdir ${{ env.zip_derectory }}
-          xcopy /e release ${{ env.zip_derectory }}
-      - name: To zip
-        env:
-          zip_derectory: ${{ env.RELEASE_NAME }}-${{ github.ref }}-for-windows-${{ matrix.arch }}
-        run: |
-          7z.exe a ${{ env.zip_derectory }}.zip ${{ env.zip_derectory }}/*
-          dir
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          zip_derectory: ${{ env.RELEASE_NAME }}-${{ github.ref }}-for-windows-${{ matrix.arch }}
-        with:
-          upload_url: ${{ github.ref }}
-          asset_path: ${{ env.zip_derectory }}.zip
-          asset_name: ${{ env.zip_derectory }}.zip
-          asset_content_type: application/zip
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.5.3'
+        target: 'desktop'
+        arch: 'win64_msvc2019_64'
+        dir: ${{ github.workspace }}
+        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+    - name: Build for Windows
+      shell: cmd
+      run: |
+        mkdir build
+        cd build
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+        cmake --build . --target QtSwissArmyKnife
+        dir && dir .\sak && dir .\sak\QtSwissArmyKnife
+    - name: Upload Release Asset for Windnows
+      run: |
+        dir && gh release upload ${{ github.ref }} 'build\sak\qtswissarmyknife-windows-amd64.zip'
+  release-for-linux:
+    runs-on: ubuntu-20.04
+    needs: update-release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.5.3'
+        target: 'desktop'
+        arch: 'gcc_64'
+        dir: ${{ github.workspace }}
+        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+    - name: install-dependencies
+      run: |
+        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev
+    - name: Build for Linux
+      run: |
+        mkdir build
+        cd build
+        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -DSAK_ENABLE_LINUXDEPLOYQT:BOOL=TRUE -DSAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD:BOOL=TRUE -G "Unix Makefiles"
+        cmake --build . --target QtSwissArmyKnife
+        dir && dir ./sak && dir ./sak/QtSwissArmyKnife
+    - name: Upload Release Asset for Linux
+      run: |
+        dir && gh release upload ${{ github.ref }} 'build/qtswissarmyknife-linux-x86_64.AppImage'
+  release-for-macos:
+    runs-on: macos-11
+    needs: update-release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.5.3'
+        target: 'desktop'
+        arch: 'clang_64'
+        dir: ${{ github.workspace }}
+        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+    - name: Build for macOS
+      # 278ERROR: no file at "/usr/local/opt/libiodbc/lib/libiodbc.2.dylib" 
+      # brew unlink unixodbc
+      # brew install libiodbc
+      # ERROR: no file at "/Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib"
+      # ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
+      run: |
+        brew unlink unixodbc
+        brew install libiodbc
+        mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
+        ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
+        mkdir build
+        cd build
+        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
+        cmake --build . --target QtSwissArmyKnife
+        ls && ls ./sak && ls ./sak/QtSwissArmyKnife
+    - name: Upload Release Asset for macOS
+      run: |
+        ls && gh release upload ${{ github.ref }} 'build/sak/QtSwissArmyKnife/qtswissarmyknife-macos-11.dmg'
