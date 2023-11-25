@@ -1,16 +1,19 @@
 name: build-android
-on:
-  schedule:
-    - cron: '0 0 * * *'
+on: push
+#  schedule:
+#    - cron: '0 0 * * *'
+env:
+  JAVA_HOME: $JAVA_HOME_11_X64
+  CMAKE_MAKE_PROGRAM: ${{ github.workspace }}/resources/tools/ninja.exe
 
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-22.04
+    runs-on: windows-2019
     strategy:
       matrix:
-        #arch: [android_armv7, android_arm64_v8a, android_x86, android_x86_64]
-        arch: [android_x86_64]
+        target: [android]
+        arch: [android_armv7]
         version: [6.5.3]
     steps:
       - name: Checkout
@@ -18,19 +21,20 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          aqtversion: '==3.1.*'
-          host: 'linux'
-          target: 'android'
           version: ${{ matrix.version }}
-          arch: ${{ matrix.arch }}
+          target: ${{ matrix.target }}
+          arch: 'android_armv7'
+          dir: ${{ matrix.arch }}
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-          dir: ${{ github.workspace }}
       - name: Build for Android
-        env: 
-          JAVA_HOME: $JAVA_HOME_11_X64
+        shell: cmd
         run: |
-          mkdir build
-          cd build
-          cmake -DQT_DIR='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DQt6_DIR='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
-          make
-
+          ${{ matrix.version }}\Qt\${{matrix.version}}\${{matrix.arch}}\bin\qt-cmake.bat ^
+          -G Ninja ^
+          -S . ^
+          -B "build\armeabi_v7a" ^
+          -DCMAKE_BUILD_TYPE:STRING=Release ^
+          -DCMAKE_MAKE_PROGRAM:FILEPATH="$CMAKE_MAKE_PROGRAM" ^
+          -DCMAKE_CXX_COMPILER:FILEPATH="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
+          -DANDROID_SDK_ROOT:PATH="$ANDROID_SDK_ROOT" ^
+          -DANDROID_NDK_ROOT="$ANDROID_NDK_ROOT"
