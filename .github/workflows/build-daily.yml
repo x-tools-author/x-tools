@@ -144,7 +144,7 @@ jobs:
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
           version: "${{env.QT_VERSION}}"
-      - name: Build for Android
+      - name: Generate for Android
         shell: cmd
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
@@ -157,7 +157,11 @@ jobs:
           -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
           -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
           -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%"
-          cmake --build build\armeabi_v7a --target QtSwissArmyKnife --config Release
+      - name: Build for Android
+        shell: cmd
+        run: |
+          cd build\armeabi_v7a
+          cmake --build . --target QtSwissArmyKnife --config Release
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-QtSwissArmyKnife-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
