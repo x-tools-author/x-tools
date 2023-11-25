@@ -33,7 +33,7 @@ jobs:
       - name: Build for Android
         shell: cmd
         run: |
-          -DJAVA_HOME=%JAVA_HOME_11_X64% ^
+          -JAVA_HOME=%JAVA_HOME_11_X64% ^
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat ^
           -G "MinGW Makefiles" ^
           -S . ^
