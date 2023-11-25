@@ -5,6 +5,7 @@ on:
       - 'v*'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  TAG_NAME: ${GITHUB_REF#refs/tags/}
 
 jobs:
   update-release:
@@ -14,10 +15,10 @@ jobs:
       uses: actions/checkout@v3
     - name: Delete Release
       run: |
-        gh release delete ${{ github.ref }} -y || true
+        gh release delete $TAG_NAME -y || true
     - name: Create Release
       run: |
-        gh release create ${{ github.ref }} --title "Release ${{ github.ref }}" --notes "The version is ready. You can see the changed log: https://github.com/qsaker/QtSwissArmyKnife/blob/master/resources/files/History.txt"
+        gh release create $TAG_NAME --title "Release $TAG_NAME" --notes "The version is ready. You can see the changed log: https://github.com/qsaker/QtSwissArmyKnife/blob/master/resources/files/History.txt"
   release-for-windows:
     runs-on: windows-2019
     needs: update-release
@@ -43,7 +44,7 @@ jobs:
         dir && dir .\sak && dir .\sak\QtSwissArmyKnife
     - name: Upload Release Asset for Windnows
       run: |
-        dir && gh release upload ${{ github.ref }} 'build\sak\qtswissarmyknife-windows-amd64.zip'
+        dir && gh release upload $TAG_NAME 'build\sak\qtswissarmyknife-windows-amd64.zip'
   release-for-linux:
     runs-on: ubuntu-20.04
     needs: update-release
@@ -70,7 +71,7 @@ jobs:
         dir && dir ./sak && dir ./sak/QtSwissArmyKnife
     - name: Upload Release Asset for Linux
       run: |
-        dir && gh release upload ${{ github.ref }} 'build/qtswissarmyknife-linux-x86_64.AppImage'
+        dir && gh release upload $TAG_NAME 'build/qtswissarmyknife-linux-x86_64.AppImage'
   release-for-macos:
     runs-on: macos-11
     needs: update-release
@@ -103,4 +104,4 @@ jobs:
         ls && ls ./sak && ls ./sak/QtSwissArmyKnife
     - name: Upload Release Asset for macOS
       run: |
-        ls && gh release upload ${{ github.ref }} 'build/sak/QtSwissArmyKnife/qtswissarmyknife-macos-11.dmg'
+        ls && gh release upload $TAG_NAME 'build/sak/QtSwissArmyKnife/qtswissarmyknife-macos-11.dmg'
