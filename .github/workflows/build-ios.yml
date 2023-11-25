@@ -33,7 +33,7 @@ jobs:
           version:  ${{ env.QT_VERSION }}
       - name: generate for ios
         run: |
-          ${{ github.workspace }}/Qt/${{env.QT_VERSION}}/ios/bin/qt-cmake -G "MinGW Makefiles" -S . -B "build/ios" \
+          ${{ github.workspace }}/Qt/${{env.QT_VERSION}}/ios/bin/qt-cmake -G "Xcode" -S . -B "build/ios" \
           -DCMAKE_BUILD_TYPE=Release \
           -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\macos"
       - name: build for ios
