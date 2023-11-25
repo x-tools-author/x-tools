@@ -101,12 +101,14 @@ SAKMainWindow::SAKMainWindow(QWidget* parent)
         }
     }
 
+#if 0
 #ifdef Q_OS_ANDROID
     setWindowFlags(Qt::FramelessWindowHint);
     QScrollArea* scrollArea = new QScrollArea(this);
     scrollArea->setWidgetResizable(true);
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
+#endif
 #endif
 
     QString title = QString("Qt Swiss Army Knife");
