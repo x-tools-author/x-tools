@@ -162,7 +162,7 @@ jobs:
         run: |
           cd build\armeabi_v7a
           cmake --build . --target QtSwissArmyKnife --config Release
-          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\androiddeployqt.exe ^
+          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-QtSwissArmyKnife-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-34 ^
