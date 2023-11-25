@@ -33,4 +33,5 @@ jobs:
       - name: Build for Android
         shell: cmd
         run: |
+          set MAKE_MAKE_PROGRAM="${{ github.workspace }}\resources\tools\ninja.exe"
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat -G Ninja -S . -B "build\armeabi_v7a" -DJAVA_HOME=%JAVA_HOME_11_X64% -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\win64_mingw" -DCMAKE_BUILD_TYPE:STRING=Release -CMAKE_MAKE_PROGRAM:FILEPATH="${{ github.workspace }}\resources\tools\ninja.exe" -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%"
