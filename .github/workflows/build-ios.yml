@@ -4,7 +4,6 @@ on: push
 #    - cron: '0 0 * * *'
 env:
   QT_VERSION: 6.5.3
-  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   build:
     name: Build
@@ -20,8 +19,7 @@ jobs:
           target: 'desktop'
           arch: 'clang_64'
           dir: ${{ github.workspace }}
-          version:  ${{ env.QT_MODULES }}
-          modules: ${{ env.QT_MODULES }}
+          version:  ${{ env.QT_VERSION }}
       - name: install qt for ios
         uses: jurplel/install-qt-action@v3
         with:
@@ -30,10 +28,9 @@ jobs:
           target: 'ios'
           arch: 'ios'
           dir: ${{ github.workspace }}
-          version:  ${{ env.QT_MODULES }}
-          modules: ${{ env.QT_MODULES }}
+          version:  ${{ env.QT_VERSION }}
       - name: build for macos
         run: |
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\ios\bin\qt-cmake -G "MinGW Makefiles" -S . -B "build/ios" -DCMAKE_BUILD_TYPE=Release
-          cmake --build "build/ios" --config Release --target QtSwissArmyKnife
+          cmake --build "build/ios" --config Release --target StringAssistant
           tree build/ios
