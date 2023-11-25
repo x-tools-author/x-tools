@@ -165,7 +165,7 @@ jobs:
           --input build\armeabi_v7a\android-QtSwissArmyKnife-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-34 ^
-          --sign ${{ github.workspace }}\resources\android\android_release.keystore.keystore --storepass QtSwissArmyKnife --keypass QtSwissArmyKnife^
+          --sign ${{ github.workspace }}\resources\android\android_release.keystore.keystore QtSwissArmyKnife --storepass QtSwissArmyKnife --keypass QtSwissArmyKnife^
           --jdk %JAVA_HOME% --gradle --release
       - name: Upload Release Asset for macOS
         run: |
