@@ -84,7 +84,7 @@ function(sak_add_executable target sources)
         TARGET ${target}
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_FILE:${target}>"
-                "${SAK_BINARY_DIR}/${target}/android-build/libs/${ANDROID_ABI}/$<TARGET_FILE_NAME:${target}>")
+                "${CMAKE_BINARY_DIR}/android-build/libs/${ANDROID_ABI}/$<TARGET_FILE_NAME:${target}>")
   endif()
 
   sak_copy_glog(${target})
