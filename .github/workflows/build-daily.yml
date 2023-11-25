@@ -160,6 +160,7 @@ jobs:
       - name: Build for Android
         shell: cmd
         run: |
+          set JAVA_HOME=%JAVA_HOME_11_X64%
           cmake --build build\armeabi_v7a --target QtSwissArmyKnife --config Release
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-QtSwissArmyKnife-deployment-settings.json ^
