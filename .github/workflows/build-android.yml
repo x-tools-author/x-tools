@@ -29,7 +29,7 @@ jobs:
       - name: Build for Android
         shell: cmd
         run: |
-          ${{ github.workspace }}\${{ matrix.version }}\Qt\${{matrix.version}}\${{matrix.arch}}\bin\qt-cmake.bat ^
+          ${{ github.workspace }}\Qt\${{matrix.version}}\${{matrix.arch}}\bin\qt-cmake.bat ^
           -G Ninja ^
           -S . ^
           -B "build\armeabi_v7a" ^
