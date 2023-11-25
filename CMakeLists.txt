@@ -164,7 +164,7 @@ target_link_libraries(
 if(SAK_IMPORT_MODULE_BLUETOOTH)
   target_link_libraries(QtSwissArmyKnife PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 endif()
-message(STATUS "123123${QT_HOST_PATH}")
+message(STATUS "123123${CMAKE_MAKE_PROGRAM}")
 install(
   TARGETS QtSwissArmyKnife
   BUNDLE DESTINATION .

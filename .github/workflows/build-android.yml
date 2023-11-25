@@ -1,13 +1,13 @@
 name: build-android
-on: push
-#  schedule:
-#    - cron: '0 0 * * *'
+on:
+  schedule:
+    - cron: '0 0 * * *'
 env:
   QT_VERSION: 6.5.3
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   build:
-    name: Build
+    name: Build for Android
     runs-on: windows-2019
     steps:
       - name: Checkout

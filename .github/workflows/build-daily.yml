@@ -4,7 +4,8 @@ on:
     - cron: '0 0 * * *'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+  QT_VERSION: 6.5.3
+  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   update-tag:
     runs-on: ubuntu-latest
@@ -33,6 +34,7 @@ jobs:
   release-for-windows:
     runs-on: windows-2019
     needs: update-release
+    if: false
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -59,6 +61,7 @@ jobs:
   release-for-linux:
     runs-on: ubuntu-20.04
     needs: update-release
+    if: false
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -86,6 +89,7 @@ jobs:
   release-for-macos:
     runs-on: macos-11
     needs: update-release
+    if: false
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -116,3 +120,48 @@ jobs:
     - name: Upload Release Asset for macOS
       run: |
         ls && gh release upload continuous 'build/sak/QtSwissArmyKnife/qtswissarmyknife-macos-11.dmg'
+  release-for-android:
+    runs-on: windows-2019
+    needs: update-release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Qt for Android
+        uses: jurplel/install-qt-action@v3
+        with:
+          target: android
+          arch: android_armv7
+          host: windows
+          dir: ${{ github.workspace }}
+          modules: ${{env.QT_MODULES}}
+          version: ${{env.QT_VERSION}}
+      - name: Install Qt for Desktop(mingw)
+        uses: jurplel/install-qt-action@v3
+        with:
+          target: desktop
+          arch: win64_mingw
+          host: windows
+          dir: ${{ github.workspace }}
+          modules: ${{env.QT_MODULES}}
+          version: "${{env.QT_VERSION}}"
+      - name: Build for Android
+        shell: cmd
+        run: |
+          set JAVA_HOME=%JAVA_HOME_11_X64%
+          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat ^
+          -G "MinGW Makefiles" ^
+          -S . ^
+          -B "build\armeabi_v7a" ^
+          -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64" ^
+          -DCMAKE_BUILD_TYPE:STRING=Release ^
+          -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
+          -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
+          -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%"
+          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\androiddeployqt.exe ^
+          --input build\armeabi_v7a\android-QtSwissArmyKnife-deployment-settings.json ^
+          --output build\armeabi_v7a\android-build ^
+          --android-platform android-34 ^
+          --jdk %JAVA_HOME% --gradle --release
+      - name: Upload Release Asset for macOS
+        run: |
+          ls &&  && ls build/armeabi_v7a/android-build/ -L 4 && gh release upload continuous 'build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-unsigned.apk'
