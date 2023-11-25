@@ -33,6 +33,7 @@ jobs:
       - name: Build for Android
         shell: cmd
         run: |
+          set CMAKE_MAKE_PROGRAM=${{ github.workspace }}/resources/tools/ninja.exe
           set JAVA_HOME=%JAVA_HOME_11_X64%
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat ^
           -G Ninja ^
