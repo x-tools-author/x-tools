@@ -1,24 +1,14 @@
 name: build-ios
-on:
-  schedule:
-    - cron: '0 0 * * *'
-
+on: push
+#  schedule:
+#    - cron: '0 0 * * *'
+env:
+  QT_VERSION: 6.5.3
+  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   build:
     name: Build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-11, macos-12]
-        version: [5.15.2, 6.5.3]
-        arch: [ios]
-        include:
-          - version: 5.15.2
-            cmake-prefix-path: 'lib/cmake/Qt5'
-            modules: 'qtcharts'
-          - version: 6.5.3
-            cmake-prefix-path: 'lib/cmake/Qt6'
-            moudles: 'qtcharts qtserialbus qtwebsockets'
+    runs-on: macos-11
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -30,21 +20,20 @@ jobs:
           target: 'desktop'
           arch: 'clang_64'
           dir: ${{ github.workspace }}
-          version: ${{ matrix.version }}
-          modules: ${{ matrix['moudles']}} qtserialport
+          version:  ${{ env.QT_MODULES }}
+          modules: ${{ env.QT_MODULES }}
       - name: install qt for ios
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
-          version: ${{ matrix.version }}
           host: 'mac'
-          dir: ${{ github.workspace }}
           target: 'ios'
-          arch: ${{ matrix.arch }}
-          modules: ${{ matrix['moudles']}}
+          arch: 'ios'
+          dir: ${{ github.workspace }}
+          version:  ${{ env.QT_MODULES }}
+          modules: ${{ env.QT_MODULES }}
       - name: build for macos
         run: |
-          mkdir build
-          cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
-          make
+          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\ios\bin\qt-cmake -G "MinGW Makefiles" -S . -B "build/ios" -DCMAKE_BUILD_TYPE=Release
+          cmake --build "build/ios" --config Release
+          tree build/ios
