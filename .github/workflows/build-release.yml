@@ -1,4 +1,4 @@
-name: build-daily
+name: build-release
 on:
   schedule:
     - cron: '0 0 * * *'
