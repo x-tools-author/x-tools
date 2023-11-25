@@ -38,7 +38,7 @@ jobs:
           -G Ninja ^
           -S . ^
           -B "build\armeabi_v7a" ^
-          -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\win64_mingw"
+          -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\win64_mingw" ^
           -DCMAKE_BUILD_TYPE:STRING=Release ^
           -CMAKE_MAKE_PROGRAM:FILEPATH="${{ github.workspace }}/resources/tools/ninja.exe" ^
           -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
