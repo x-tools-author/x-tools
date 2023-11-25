@@ -6,7 +6,6 @@
 [![build-ios](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ios.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ios.yml)
 [![build-android](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-android.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-android.yml)
 
-
 The *Qt Swiss Army Knife* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (recommended version: Qt6.5). It offers extensive support for SerialPort, BLE, UDP, TCP, WebSocket, Modbus and CANBus debugging functionalities. Here are some notable features:
 
 1. Data Reading and Writing: This serves as the fundamental function across all tools.
@@ -19,6 +18,9 @@ The *Qt Swiss Army Knife* is a user-friendly, open-source, cross-platform debugg
 > **You can get *Qt Swiss Army Knife* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
 
 ![MainWindow.png](resources/images/mainwindow.png)
+
+> [!WARNING]  
+> The project is not supported for building for ios yet.
 
 ## Build with Qt5
 
