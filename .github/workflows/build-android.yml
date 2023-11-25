@@ -23,13 +23,13 @@ jobs:
         with:
           version: ${{ matrix.version }}
           target: ${{ matrix.target }}
-          arch: 'android_armv7'
-          dir: ${{ matrix.arch }}
+          arch: ${{ matrix.arch }}
+          dir: ${{ github.workspace }}
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: Build for Android
         shell: cmd
         run: |
-          ${{ matrix.version }}\Qt\${{matrix.version}}\${{matrix.arch}}\bin\qt-cmake.bat ^
+          ${{ github.workspace }}\${{ matrix.version }}\Qt\${{matrix.version}}\${{matrix.arch}}\bin\qt-cmake.bat ^
           -G Ninja ^
           -S . ^
           -B "build\armeabi_v7a" ^
