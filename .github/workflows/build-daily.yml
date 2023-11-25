@@ -164,4 +164,4 @@ jobs:
           --jdk %JAVA_HOME% --gradle --release
       - name: Upload Release Asset for macOS
         run: |
-          ls &&  && ls build/armeabi_v7a/android-build/ -L 4 && gh release upload continuous 'build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-unsigned.apk'
+          ls && ls build/armeabi_v7a/android-build/ -L 4 && gh release upload continuous 'build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-unsigned.apk'
