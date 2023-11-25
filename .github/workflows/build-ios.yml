@@ -31,6 +31,6 @@ jobs:
           version:  ${{ env.QT_VERSION }}
       - name: build for macos
         run: |
-          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\ios\bin\qt-cmake -G "MinGW Makefiles" -S . -B "build/ios" -DCMAKE_BUILD_TYPE=Release
+          ${{ github.workspace }}/Qt/${{env.QT_VERSION}}/macos/bin/qt-cmake -G "MinGW Makefiles" -S . -B "build/ios" -DCMAKE_BUILD_TYPE=Release
           cmake --build "build/ios" --config Release --target StringAssistant
           tree build/ios
