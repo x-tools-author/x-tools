@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: call cmake -G -h
+        run: cmake -G -h
       - name: install qt for desktop
         uses: jurplel/install-qt-action@v3
         with:
