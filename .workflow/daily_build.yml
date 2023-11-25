@@ -18,11 +18,11 @@ stages:
       - step: build@gcc
         name: build_gcc
         displayName: Build
-        gccVersion: '10.3'
+        gccVersion: '9.4'
         commands:
           - apt-get update --fix-missing -y
           - apt-get install libgl1-mesa-dev -y
-          - apt-get install qtbase5-dev -y
+          - apt-get install qtbase5-* -y
           - qmake -v
           - apt-get install libqt5charts5* -y
           - apt-get install libqt5serialbus5* -y
@@ -33,7 +33,8 @@ stages:
           - ls /usr/lib/x86_64-linux-gnu/cmake/
           - strip --remove-section=.note.ABI-tag /usr/lib64/libQt5Core.so.5
           - cmake --version
-          - cmake -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE=Release ../ && make
+          - cmake -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE:STRING=Release -G "CodeBlocks - Unix Makefiles" ../ -G "Unix Makefiles"
+          - cmake --build . --target QtSwissArmyKnife
         artifacts:
           - name: BUILD_ARTIFACT
             path:
