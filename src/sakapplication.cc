@@ -31,8 +31,11 @@
 #include "sakdatastructure.h"
 #include "sakmainwindow.h"
 #include "saksettings.h"
-#include "saksystemtrayicon.h"
 #include "saktranslator.h"
+
+#ifdef Q_OS_WIN
+#include "saksystemtrayicon.h"
+#endif
 
 QDate buildDate = QLocale(QLocale::English)
                       .toDate(QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
