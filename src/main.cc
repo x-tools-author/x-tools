@@ -57,7 +57,7 @@ void sakShutdownGoogleLogging()
 
 #endif
 
-void qtLogToGlog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QByteArray localMsg = msg.toUtf8();
     const char *file = context.file ? context.file : "";
@@ -109,7 +109,7 @@ static void sakInitApp()
 static void sakInstallMessageHandler()
 {
 #ifndef QT_DEBUG
-    qInstallMessageHandler(qtLogToGlog);
+    qInstallMessageHandler(qtLogToGoogleLog);
 #endif
 }
 
@@ -158,10 +158,9 @@ int main(const int argc, char *argv[])
     sakInitHdpi();
     sakInitAppStyle();
 
-    // Text github action.
-
     SAKLog::instance()->start();
     SAKApplication app(argc, argv);
+    int ret = SAKApplication::exec();
     sakShutdownGoogleLogging();
-    return app.exec();
+    return ret;
 }
