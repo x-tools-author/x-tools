@@ -3,19 +3,19 @@ include(.cmake/sak_common.cmake)
 file(
   GLOB dirs
   LIST_DIRECTORIES true
-  "${CMAKE_SOURCE_DIR}/Private/*")
+  "${CMAKE_SOURCE_DIR}/private/*")
 
 set(SAK_HAS_PRIVATE_MODULE false)
 
 foreach(dir ${dirs})
   if(IS_DIRECTORY ${dir})
-    if(NOT SAK_HAS_PRIVATE_MODULE)
+    if(NOT ${SAK_HAS_PRIVATE_MODULE})
       set(SAK_HAS_PRIVATE_MODULE true)
     endif()
   endif()
 endforeach()
 
-if(SAK_HAS_PRIVATE_MODULE)
+if(${SAK_HAS_PRIVATE_MODULE})
   sak_add_subdiretory("nodeeditor-3.0.10")
   add_compile_definitions(SAK_IMPORT_MODULE_PRIVATE)
 endif()
