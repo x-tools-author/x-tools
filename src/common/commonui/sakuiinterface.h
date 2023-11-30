@@ -10,6 +10,7 @@
 #define SAKUIINTERFACE_H
 
 #include <QLineEdit>
+#include <QMainWindow>
 #include <QObject>
 
 class SAKUiInterface : public QObject
@@ -20,6 +21,7 @@ public:
 
     static void setValidator(QLineEdit *le, int textFormat);
     static QIcon cookedIcon(const QIcon &icon);
+    static QMainWindow *mainWindow();
 };
 
 #endif // SAKUIINTERFACE_H

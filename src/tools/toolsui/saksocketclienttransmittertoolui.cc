@@ -8,10 +8,12 @@
  **************************************************************************************************/
 #include "saksocketclienttransmittertoolui.h"
 
+#include "sakuiinterface.h"
+
 SAKSocketClientTransmitterToolUi::SAKSocketClientTransmitterToolUi(const char *lg, QWidget *parent)
     : SAKTransmitterToolUi(lg, parent)
 {
-    mEditor = new SAKSocketClientTransmitterToolUiEditor(this);
+    mEditor = new SAKSocketClientTransmitterToolUiEditor(SAKUiInterface::mainWindow());
 }
 
 QDialog *SAKSocketClientTransmitterToolUi::itemEditor()

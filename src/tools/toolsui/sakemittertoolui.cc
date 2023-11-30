@@ -7,12 +7,14 @@
  * code directory.
  **************************************************************************************************/
 #include "sakemittertoolui.h"
+
 #include "saktablemodeltool.h"
+#include "sakuiinterface.h"
 
 SAKEmitterToolUi::SAKEmitterToolUi(QWidget *parent)
     : SAKTableModelToolUi{"sak.emittertoolui", parent}
 {
-    mEditor = new SAKEmitterToolUiEditor(this);
+    mEditor = new SAKEmitterToolUiEditor(SAKUiInterface::mainWindow());
 }
 
 SAKEmitterToolUi::~SAKEmitterToolUi() {}

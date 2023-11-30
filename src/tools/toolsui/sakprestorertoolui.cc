@@ -17,11 +17,12 @@
 #include "sakprestorertool.h"
 #include "sakprestorertoolui.h"
 #include "sakprestorertooluieditor.h"
+#include "sakuiinterface.h"
 
 SAKPrestorerToolUi::SAKPrestorerToolUi(QWidget *parent)
     : SAKTableModelToolUi{"SAK.PrestorerToolUi", parent}
 {
-    mEditor = new SAKPrestorerToolUiEditor(this);
+    mEditor = new SAKPrestorerToolUiEditor(SAKUiInterface::mainWindow());
     mMenu = new SAKMenu();
 }
 

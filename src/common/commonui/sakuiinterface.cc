@@ -8,13 +8,16 @@
  **************************************************************************************************/
 #include "sakuiinterface.h"
 
-#include <QGuiApplication>
+#include <QApplication>
 #include <QIcon>
 #include <QMap>
 #include <QPainter>
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
 
+#include "qapplication.h"
+#include "qmainwindow.h"
+#include "qobject.h"
 #include "sakdatastructure.h"
 
 SAKUiInterface::SAKUiInterface(QObject* parent)
@@ -61,4 +64,16 @@ QIcon SAKUiInterface::cookedIcon(const QIcon& icon)
     painter.fillRect(pixmap.rect(), qApp->palette().windowText().color());
     QIcon colorIcon = QIcon(pixmap);
     return colorIcon;
+}
+
+QMainWindow* SAKUiInterface::mainWindow()
+{
+    for (const auto& it : qobject_cast<QApplication*>(qApp)->topLevelWidgets()) {
+        auto w = qobject_cast<QMainWindow*>(it);
+        if (w) {
+            return w;
+        }
+    }
+
+    return nullptr;
 }

@@ -17,6 +17,8 @@
 #include "saksettings.h"
 #include "saktablemodeltool.h"
 #include "saktablemodeltoolui.h"
+#include "sakuiinterface.h"
+
 #include "ui_saktablemodeltoolui.h"
 
 SAKTableModelToolUi::SAKTableModelToolUi(const char *lg, QWidget *parent)
@@ -282,7 +284,7 @@ QModelIndex SAKTableModelToolUi::currentIndex()
 {
     QModelIndex index = ui->tableView->currentIndex();
     if (!index.isValid()) {
-        QMessageBox::warning(this,
+        QMessageBox::warning(SAKUiInterface::mainWindow(),
                              tr("Please Select an Item"),
                              tr("Please select an tiem first,"
                                 " then try again!"));
@@ -299,7 +301,7 @@ void SAKTableModelToolUi::writeToSettingsFile()
 bool SAKTableModelToolUi::isInitialized()
 {
     if (!mTableModelTool) {
-        QMessageBox::warning(this,
+        QMessageBox::warning(SAKUiInterface::mainWindow(),
                              tr("Invalid Parameter"),
                              tr("The value of mTableModelTool is nullptr,"
                                 " you must called initialize() first!"));
@@ -328,7 +330,7 @@ void SAKTableModelToolUi::onPushButtonClearClicked()
         return;
     }
 
-    int ret = QMessageBox::warning(this,
+    int ret = QMessageBox::warning(SAKUiInterface::mainWindow(),
                                    tr("Clear Data"),
                                    tr("The data will be empty from settings file, "
                                       "please confrim the operation!"),
@@ -345,7 +347,7 @@ void SAKTableModelToolUi::onPushButtonDeleteClicked()
         return;
     }
 
-    int ret = QMessageBox::warning(this,
+    int ret = QMessageBox::warning(SAKUiInterface::mainWindow(),
                                    tr("Delete Data"),
                                    tr("The data will be delete from settings file, "
                                       "please confrim the operation!"),
@@ -368,7 +370,7 @@ void SAKTableModelToolUi::onPushButtonImportClicked()
         return;
     }
 
-    QString fileName = QFileDialog::getOpenFileName(this,
+    QString fileName = QFileDialog::getOpenFileName(SAKUiInterface::mainWindow(),
                                                     tr("Import data"),
                                                     ".",
                                                     tr("JSON (*.json);;All (*)"));
@@ -395,7 +397,7 @@ void SAKTableModelToolUi::onPushButtonExportClicked()
         return;
     }
 
-    QString fileName = QFileDialog::getSaveFileName(this,
+    QString fileName = QFileDialog::getSaveFileName(SAKUiInterface::mainWindow(),
                                                     tr("Import data"),
                                                     ".",
                                                     tr("JSON (*.json);;All (*); "));

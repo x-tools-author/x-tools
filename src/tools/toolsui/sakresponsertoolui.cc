@@ -16,11 +16,12 @@
 
 #include "sakresponsertoolui.h"
 #include "saktablemodeltool.h"
+#include "sakuiinterface.h"
 
 SAKResponserToolUi::SAKResponserToolUi(QWidget *parent)
     : SAKTableModelToolUi{"sak.responsertoolui", parent}
 {
-    mEditor = new SAKResponserToolUiEditor(this);
+    mEditor = new SAKResponserToolUiEditor(SAKUiInterface::mainWindow());
 }
 
 SAKResponserToolUi::~SAKResponserToolUi() {}

@@ -8,10 +8,12 @@
  **************************************************************************************************/
 #include "sakserialporttransmittertoolui.h"
 
+#include "sakuiinterface.h"
+
 SAKSerialPortTransmitterToolUi::SAKSerialPortTransmitterToolUi(QWidget *parent)
     : SAKTransmitterToolUi("SAK.SerialPortTransmitterToolUi", parent)
 {
-    mEditor = new SAKSerialPortTransmitterToolUiEditor(this);
+    mEditor = new SAKSerialPortTransmitterToolUiEditor(SAKUiInterface::mainWindow());
 }
 
 void SAKSerialPortTransmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
