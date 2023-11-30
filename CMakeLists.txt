@@ -195,4 +195,4 @@ if(QT_VERSION_MAJOR EQUAL 6 AND QT_VERSION_MINOR GREATER_EQUAL 4)
 endif()
 
 # The private module is not open source.
-include(${CMAKE_SOURCE_DIR}/private/private.cmake)
+include(${CMAKE_SOURCE_DIR}/src/private/private.cmake)

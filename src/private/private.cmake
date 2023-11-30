@@ -3,7 +3,7 @@ include(.cmake/sak_common.cmake)
 file(
   GLOB dirs
   LIST_DIRECTORIES true
-  "${CMAKE_SOURCE_DIR}/private/*")
+  "${CMAKE_SOURCE_DIR}/src/private/*")
 
 set(SAK_HAS_PRIVATE_MODULE false)
 
