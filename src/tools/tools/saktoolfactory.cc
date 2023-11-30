@@ -110,3 +110,37 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
 
     return tool;
 }
+
+QString SAKToolFactory::toolName(int type)
+{
+    static QMap<int, QString> map;
+    if (map.isEmpty()) {
+        map.insert(AnalyzerTool, tr("Analyzer"));
+        map.insert(SerialportTool, tr("Serialport"));
+        map.insert(EmitterTool, tr("Emitter"));
+        map.insert(MaskerTool, tr("Masker"));
+        map.insert(ResponserTool, tr("Responser"));
+        map.insert(StorerTool, tr("Storer"));
+        map.insert(PrestoreTool, tr("Prestore"));
+        map.insert(VelometerTool, tr("Velometer"));
+        map.insert(UdpClientTool, tr("UdpClient"));
+        map.insert(UdpServerTool, tr("UdpServer"));
+        map.insert(TcpClientTool, tr("TcpClient"));
+        map.insert(TcpServerTool, tr("TcpServer"));
+        map.insert(WebSocketClientTool, tr("WebSocketClient"));
+        map.insert(WebSocketServerTool, tr("WebSocketServer"));
+        map.insert(BleCentralTool, tr("BleCentral"));
+        map.insert(BlePeriheral, tr("BlePeriheral"));
+        map.insert(StatistiticianTool, tr("Statistitician"));
+        map.insert(SerialPortTransmitterTool, tr("SerialPortTransmitter"));
+        map.insert(UdpTransmitterTool, tr("UdpTransmitter"));
+        map.insert(TcpTransmitterTool, tr("TcpTransmitter"));
+        map.insert(WebSocketTransmitterTool, tr("WebSocketTransmitter"));
+    }
+
+    if (map.contains(type)) {
+        return map.value(type);
+    } else {
+        return tr("Unknown");
+    }
+}

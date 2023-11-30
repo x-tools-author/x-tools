@@ -48,6 +48,7 @@ private:
 public:
     static SAKToolFactory *instance();
     SAKBaseTool *createTool(int type);
+    QString toolName(int type);
 };
 
 #endif // SAKTOOLFACTORY_H
