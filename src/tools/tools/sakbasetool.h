@@ -24,6 +24,8 @@ public:
     virtual ~SAKBaseTool();
     QString toolName() { return mToolName; }
     void setToolName(const QString &name) { mToolName = name; }
+    int toolType() { return m_type; }
+    void setToolType(int type) { m_type = type; }
 
     /**
      * @brief inputBytes: The entrance of data.
@@ -56,6 +58,7 @@ public:
 protected:
     std::atomic_bool mIsWorking{false};
     std::atomic_bool mEnable{true};
+    int m_type;
 
 signals:
     void isWorkingChanged();
