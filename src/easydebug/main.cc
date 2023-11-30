@@ -20,6 +20,8 @@ int main(int argc, char* argv[])
     //qInstallMessageHandler(SAKLog::messageOutput);
 #endif
 
+    qputenv("QT_QUICK_CONTROLS_MATERIAL_VARIANT", "Dense");
+
     // Initialize some information about application.
     QCoreApplication::setOrganizationName(QString("Qsaker"));
     QCoreApplication::setOrganizationDomain(QString("IT"));

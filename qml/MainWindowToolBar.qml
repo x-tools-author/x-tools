@@ -34,19 +34,13 @@ ToolBar {
         id: toolColumnLayout
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        Item { Layout.minimumHeight: 24 }
+        Item {
+            Layout.minimumHeight: 24
+        }
         Repeater {
             id: btRepeater
-            model: [
-                ["qrc:/resources/icon/IconSerialPort.svg",      SAKToolsFactory.SerialportTool,      qsTr("SerialPort"),       "MainWindowSerialPortPage.qml"],
-                ["qrc:/resources/icon/IconBlueTooth.svg",       SAKToolsFactory.SerialportTool,      qsTr("SerialPort"),       "MainWindowBlePage.qml"],
-                ["qrc:/resources/icon/IconUdpClient.svg",       SAKToolsFactory.UdpClientTool,       qsTr("UDP Client"),       "MainWindowUdpClientPage.qml"],
-                ["qrc:/resources/icon/IconUdpServer.svg",       SAKToolsFactory.UdpServerTool,       qsTr("UDP Server"),       "MainWindowUdpServerPage.qml"],
-                ["qrc:/resources/icon/IconTcpClient.svg",       SAKToolsFactory.TcpClientTool,       qsTr("TCP Client"),       "MainWindowTcpClientPage.qml"],
-                ["qrc:/resources/icon/IconTcpServer.svg",       SAKToolsFactory.TcpServerTool,       qsTr("TCP Server"),       "MainWindowTcpServerPage.qml"],
-                ["qrc:/resources/icon/IconWebScoketClient.svg", SAKToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"],
-                ["qrc:/resources/icon/IconWebSocketServer.svg", SAKToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]
-            ]
+            model: [["qrc:/resources/icon/IconSerialPort.svg", SAKToolsFactory.SerialportTool, qsTr(
+                         "SerialPort"), "MainWindowSerialPortPage.qml"], ["qrc:/resources/icon/IconBlueTooth.svg", SAKToolsFactory.SerialportTool, qsTr("SerialPort"), "MainWindowBlePage.qml"], ["qrc:/resources/icon/IconUdpClient.svg", SAKToolsFactory.UdpClientTool, qsTr("UDP Client"), "MainWindowUdpClientPage.qml"], ["qrc:/resources/icon/IconUdpServer.svg", SAKToolsFactory.UdpServerTool, qsTr("UDP Server"), "MainWindowUdpServerPage.qml"], ["qrc:/resources/icon/IconTcpClient.svg", SAKToolsFactory.TcpClientTool, qsTr("TCP Client"), "MainWindowTcpClientPage.qml"], ["qrc:/resources/icon/IconTcpServer.svg", SAKToolsFactory.TcpServerTool, qsTr("TCP Server"), "MainWindowTcpServerPage.qml"], ["qrc:/resources/icon/IconWebSocketClient.svg", SAKToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"], ["qrc:/resources/icon/IconWebSocketServer.svg", SAKToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]]
             SAKToolButton {
                 id: bt
                 checkable: true
@@ -70,15 +64,8 @@ ToolBar {
             Menu {
                 id: optionMenu
                 Repeater {
-                    model:  [
-                        ["qrc:/resources/icon/IconSerialPort.svg",      SAKToolsFactory.SerialportTool,      qsTr("SerialPort"),       "MainWindowSerialPortPage.qml"],
-                        ["qrc:/resources/icon/IconUdpClient.svg",       SAKToolsFactory.UdpClientTool,       qsTr("UDP Client"),       "MainWindowUdpClientPage.qml"],
-                        ["qrc:/resources/icon/IconUdpServer.svg",       SAKToolsFactory.UdpServerTool,       qsTr("UDP Server"),       "MainWindowUdpServerPage.qml"],
-                        ["qrc:/resources/icon/IconTcpClient.svg",       SAKToolsFactory.TcpClientTool,       qsTr("TCP Client"),       "MainWindowTcpClientPage.qml"],
-                        ["qrc:/resources/icon/IconTcpServer.svg",       SAKToolsFactory.TcpServerTool,       qsTr("TCP Server"),       "MainWindowTcpServerPage.qml"],
-                        ["qrc:/resources/icon/IconWebScoketClient.svg", SAKToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"],
-                        ["qrc:/resources/icon/IconWebSocketServer.svg", SAKToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]
-                    ]
+                    model: [["qrc:/resources/icon/IconSerialPort.svg", SAKToolsFactory.SerialportTool, qsTr(
+                                 "SerialPort"), "MainWindowSerialPortPage.qml"], ["qrc:/resources/icon/IconUdpClient.svg", SAKToolsFactory.UdpClientTool, qsTr("UDP Client"), "MainWindowUdpClientPage.qml"], ["qrc:/resources/icon/IconUdpServer.svg", SAKToolsFactory.UdpServerTool, qsTr("UDP Server"), "MainWindowUdpServerPage.qml"], ["qrc:/resources/icon/IconTcpClient.svg", SAKToolsFactory.TcpClientTool, qsTr("TCP Client"), "MainWindowTcpClientPage.qml"], ["qrc:/resources/icon/IconTcpServer.svg", SAKToolsFactory.TcpServerTool, qsTr("TCP Server"), "MainWindowTcpServerPage.qml"], ["qrc:/resources/icon/IconWebScoketClient.svg", SAKToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"], ["qrc:/resources/icon/IconWebSocketServer.svg", SAKToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]]
                     MenuItem {
                         text: modelData[2]
                         icon.source: modelData[0]
@@ -93,13 +80,15 @@ ToolBar {
                 }
             }
         }
-        Item { Layout.fillHeight: true }
+        Item {
+            Layout.fillHeight: true
+        }
         ToolButton {
             id: infoToolButton
             checkable: true
             icon.source: "qrc:/resources/icon/IconInfo.svg"
             onClicked: pageIndex = btRepeater.model.length
-            Component.onCompleted:  bg.addButton(infoToolButton)
+            Component.onCompleted: bg.addButton(infoToolButton)
         }
         ToolButton {
             id: settingsToolButton
@@ -108,7 +97,9 @@ ToolBar {
             onClicked: pageIndex = btRepeater.model.length + 1
             Component.onCompleted: bg.addButton(settingsToolButton)
         }
-        Item { Layout.minimumHeight: 24 }
+        Item {
+            Layout.minimumHeight: 24
+        }
     }
 
     Component.onCompleted: fixedpage = btRepeater.model.length

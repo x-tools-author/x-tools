@@ -1,9 +1,8 @@
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls.Material
 
 ComboBox {
     id: root
-
     property string settingKey: ""
     property bool useValueRole: true
     property string tips: ""
