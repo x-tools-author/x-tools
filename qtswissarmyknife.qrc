@@ -69,5 +69,6 @@
         <file>resources/icon/IconBuy.svg</file>
         <file>resources/icon/IconQQ.svg</file>
         <file>resources/icon/IconQQGray.svg</file>
+        <file>resources/icon/branch.svg</file>
     </qresource>
 </RCC>
