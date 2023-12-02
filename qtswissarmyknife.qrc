@@ -70,5 +70,7 @@
         <file>resources/icon/IconQQ.svg</file>
         <file>resources/icon/IconQQGray.svg</file>
         <file>resources/icon/branch.svg</file>
+        <file>resources/icon/zoomin.svg</file>
+        <file>resources/icon/zoomout.svg</file>
     </qresource>
 </RCC>
