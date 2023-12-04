@@ -72,5 +72,7 @@
         <file>resources/icon/branch.svg</file>
         <file>resources/icon/zoomin.svg</file>
         <file>resources/icon/zoomout.svg</file>
+        <file>resources/icon/play.svg</file>
+        <file>resources/icon/stop.svg</file>
     </qresource>
 </RCC>
