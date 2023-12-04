@@ -219,7 +219,8 @@ public:
      * @param format: See SAKEnumTextOutputFormat for more information.
      * @return A QString.
      */
-    static QString byteArrayToString(QByteArray &origingData, SAKEnumTextFormatOutput format);
+    static QString byteArrayToString(const QByteArray &origingData, SAKEnumTextFormatOutput format);
+    static QString byteArrayToString(const QByteArray &origingData, int format);
 
     /**
      * @brief setLineEditTextFormat: Formating input

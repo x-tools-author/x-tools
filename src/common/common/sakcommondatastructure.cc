@@ -167,7 +167,7 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString, int
     return stringToByteArray(origingString, cookedFormat);
 }
 
-QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData,
+QString SAKCommonDataStructure::byteArrayToString(const QByteArray &origingData,
                                                   SAKEnumTextFormatOutput format)
 {
     QString str;
@@ -215,6 +215,12 @@ QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData,
     }
 
     return str;
+}
+
+QString SAKCommonDataStructure::byteArrayToString(const QByteArray &origingData, int format)
+{
+    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatOutput>(format);
+    return byteArrayToString(origingData, cookedFormat);
 }
 
 void SAKCommonDataStructure::setLineEditTextFormat(QLineEdit *lineEdit,

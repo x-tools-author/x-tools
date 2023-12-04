@@ -74,6 +74,25 @@ QByteArray SAKDataStructure::dataItemBytes(const EDStructDataItem &item)
     return bytes;
 }
 
+QString SAKDataStructure::textFormatName(int textFormat)
+{
+    static QMap<int, QString> map;
+    if (map.isEmpty()) {
+        map.insert(TextFormatBin, tr("Bin"));
+        map.insert(TextFormatOct, tr("Oct"));
+        map.insert(TextFormatDec, tr("Dec"));
+        map.insert(TextFormatHex, tr("Hex"));
+        map.insert(TextFormatAscii, "Ascii");
+        map.insert(TextFormatUtf8, "Utf8");
+    }
+
+    if (map.contains(textFormat)) {
+        return map.value(textFormat);
+    }
+
+    return QString("Unknown");
+}
+
 QString SAKDataStructure::cookEscapeCharacter(int option, const QString &str)
 {
     QString newStr = str;

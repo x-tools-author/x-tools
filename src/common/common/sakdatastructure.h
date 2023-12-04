@@ -84,6 +84,7 @@ public:
     static QByteArray affixesData(int affixes);
     static QString cookedString(int escapeCharacter, const QString& str);
     static QByteArray dataItemBytes(const EDStructDataItem& item);
+    static QString textFormatName(int textFormat);
     Q_INVOKABLE static QString cookEscapeCharacter(int option, const QString& str);
 };
 
