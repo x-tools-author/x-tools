@@ -90,9 +90,11 @@ static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, 
 static void sakInitApp(const QString &appName)
 {
     // Initialize some information about application.
+    QString cookedAppName = appName;
+    cookedAppName.remove(" ");
     QCoreApplication::setOrganizationName(QString("Qsaker"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
-    QCoreApplication::setApplicationName(appName);
+    QCoreApplication::setApplicationName(cookedAppName);
 
 #ifdef SAK_VERSION
     QCoreApplication::setApplicationVersion(SAK_VERSION);
