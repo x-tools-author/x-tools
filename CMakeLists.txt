@@ -37,6 +37,7 @@ set(BUILD_SHARED_LIBS OFF)
 include(.cmake/sak_common.cmake)
 include(.cmake/sak_environment.cmake)
 include(.cmake/sak_deploy.cmake)
+include(.cmake/sak_font_fontawesome.cmake)
 
 sak_get_last_commit(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 sak_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
@@ -86,6 +87,7 @@ sak_import_assistant("number")
 sak_import_assistant("string")
 sak_import_assistant("broadcast")
 sak_import_assistant("filecheck")
+sak_import_assistant("fontawesome")
 
 # QtSwissArmyKnife src files
 macro(sak_add_src src_dir_name)
@@ -136,6 +138,7 @@ endif()
 
 # QtSwissArmyKnife
 include_directories(src)
+include_directories(3rd/qt/flowlayout)
 file(GLOB APP_SOURCES "src/*.h" "src/*.cc" "src/*.ui" ".cmake/*.cmake")
 
 option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
@@ -153,10 +156,15 @@ if(SAK_IMPORT_MODULE_BLUETOOTH)
   include_directories(src/optional/bluetooth)
 endif()
 
+file(GLOB_RECURSE SAK_QT_FLOWLAYOUT_SOURCES "${CMAKE_SOURCE_DIR}/3rd/qt/flowlayout/*.cpp"
+     "${CMAKE_SOURCE_DIR}/3rd/qt/flowlayout/*.h")
+ list(APPEND SAK_APP_SOURCES ${SAK_QT_FLOWLAYOUT_SOURCES})
+
 sak_add_executable("QtSwissArmyKnife" ${SAK_APP_SOURCES})
 sak_auto_execute_deployqt(QtSwissArmyKnife)
 sak_tar_target(QtSwissArmyKnife)
 sak_set_target_properties(QtSwissArmyKnife)
+sak_import_fontawesome_for_target(QtSwissArmyKnife)
 target_link_libraries(
   QtSwissArmyKnife
   PRIVATE glog::glog Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
