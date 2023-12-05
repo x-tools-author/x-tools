@@ -9,6 +9,7 @@
 #ifndef SAKFONTAWESOME_H
 #define SAKFONTAWESOME_H
 
+#include <QIcon>
 #include <QList>
 #include <QObject>
 
@@ -23,7 +24,6 @@ private:
 public:
     static SAKFontAwesome *instance();
 
-    void addApplicationFonts();
     QList<SAKFontAwesomeIconContext> supportedIcons() const;
     QString familyToString(int family);
 
@@ -32,6 +32,7 @@ private:
 
 private:
     QString fontAwesomePath() const;
+    void addApplicationFonts();
 };
 
 #endif // SAKFONTAWESOME_H

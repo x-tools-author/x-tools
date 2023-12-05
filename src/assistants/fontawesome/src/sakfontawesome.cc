@@ -75,6 +75,7 @@ SAKFontAwesome *SAKFontAwesome::instance()
     static SAKFontAwesome *instance = nullptr;
     if (!instance) {
         instance = new SAKFontAwesome(qApp);
+        instance->addApplicationFonts();
     }
 
     return instance;
@@ -83,22 +84,6 @@ SAKFontAwesome *SAKFontAwesome::instance()
 QList<SAKFontAwesomeIconContext> SAKFontAwesome::supportedIcons() const
 {
     return m_supportedIcons;
-}
-
-void SAKFontAwesome::addApplicationFonts()
-{
-    QString path = fontAwesomePath() + "/otfs/";
-    QString name = path + QString("Font Awesome 6 Brands-Regular-400.otf");
-    int fontId = QFontDatabase::addApplicationFont(name);
-    qInfo() << "Install font:" << QFontDatabase::applicationFontFamilies(fontId);
-
-    name = path + QString("Font Awesome 6 Free-Regular-400.otf");
-    fontId = QFontDatabase::addApplicationFont(name);
-    qInfo() << "Install font:" << QFontDatabase::applicationFontFamilies(fontId);
-
-    name = path + QString("Font Awesome 6 Free-Solid-900.otf");
-    fontId = QFontDatabase::addApplicationFont(name);
-    qInfo() << QFontDatabase::applicationFontFamilies(fontId);
 }
 
 QString SAKFontAwesome::familyToString(int family)
@@ -121,4 +106,20 @@ QString SAKFontAwesome::fontAwesomePath() const
     QString path = QCoreApplication::applicationDirPath();
     path += "/fonts/" + QString(SAK_FONTAWESOME_DIR);
     return path;
+}
+
+void SAKFontAwesome::addApplicationFonts()
+{
+    QString path = fontAwesomePath() + "/otfs/";
+    QString name = path + QString("Font Awesome 6 Brands-Regular-400.otf");
+    int fontId = QFontDatabase::addApplicationFont(name);
+    qInfo() << "Install font:" << QFontDatabase::applicationFontFamilies(fontId);
+
+    name = path + QString("Font Awesome 6 Free-Regular-400.otf");
+    fontId = QFontDatabase::addApplicationFont(name);
+    qInfo() << "Install font:" << QFontDatabase::applicationFontFamilies(fontId);
+
+    name = path + QString("Font Awesome 6 Free-Solid-900.otf");
+    fontId = QFontDatabase::addApplicationFont(name);
+    qInfo() << QFontDatabase::applicationFontFamilies(fontId);
 }

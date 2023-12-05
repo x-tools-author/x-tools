@@ -18,7 +18,6 @@ SAKFontAwesomeAssistant::SAKFontAwesomeAssistant(QWidget *parent)
     , ui(new Ui::SAKFontAwesomeAssistant)
 {
     ui->setupUi(this);
-    SAKFontAwesome::instance()->addApplicationFonts();
     auto *l = new FlowLayout();
     ui->widget->setLayout(l);
 
