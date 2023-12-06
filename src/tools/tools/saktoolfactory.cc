@@ -11,6 +11,7 @@
 #include <QMetaEnum>
 
 #include "sakanalyzertool.h"
+#include "sakcrccalculatortool.h"
 #include "sakemittertool.h"
 #include "sakmaskertool.h"
 #include "sakprestorertool.h"
@@ -91,6 +92,8 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
         tool = new SAKTcpTransmitterTool();
     } else if (WebSocketTransmitterTool == type) {
         tool = new SAKWebSocketTransmitterTool();
+    } else if (CrcCalculatorTool == type) {
+        tool = new SAKCrcCalculatorTool();
     } else {
         qWarning() << "Unknown tool type: " << type;
     }
@@ -136,6 +139,7 @@ QString SAKToolFactory::toolName(int type)
         map.insert(UdpTransmitterTool, tr("UdpTransmitter"));
         map.insert(TcpTransmitterTool, tr("TcpTransmitter"));
         map.insert(WebSocketTransmitterTool, tr("WebSocketTransmitter"));
+        map.insert(CrcCalculatorTool, tr("CrcCalculator"));
     }
 
     if (map.contains(type)) {

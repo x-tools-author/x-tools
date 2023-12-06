@@ -38,7 +38,8 @@ public:
         SerialPortTransmitterTool,
         UdpTransmitterTool,
         TcpTransmitterTool,
-        WebSocketTransmitterTool
+        WebSocketTransmitterTool,
+        CrcCalculatorTool
     };
     Q_ENUM(ToolsType)
 

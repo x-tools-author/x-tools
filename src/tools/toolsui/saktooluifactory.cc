@@ -10,29 +10,8 @@
 
 #include <QCoreApplication>
 
-// AnalyzerTool,
-// SerialportTool,
-// EmitterTool,
-// MaskerTool,
-// ResponserTool,
-// StorerTool,
-// PrestoreTool,
-// VelometerTool,
-// UdpClientTool,
-// UdpServerTool,
-// TcpClientTool,
-// TcpServerTool,
-// WebSocketClientTool,
-// WebSocketServerTool,
-// BleCentralTool,
-// BlePeriheral,
-// StatistiticianTool,
-// SerialPortTransmitterTool,
-// UdpTransmitterTool,
-// TcpTransmitterTool,
-// WebSocketTransmitterTool
-
 #include "sakanalyzertoolui.h"
+#include "sakcrccalculatortoolui.h"
 #include "sakemittertoolui.h"
 #include "sakmaskertoolui.h"
 #include "sakprestorertoolui.h"
@@ -113,6 +92,8 @@ SAKBaseToolUi *SAKToolUiFactory::createToolUi(int type)
         return new SAKTcpTransmitterToolUi();
     case SAKToolFactory::WebSocketTransmitterTool:
         return new SAKWebSocketTransmitterToolUi();
+    case SAKToolFactory::CrcCalculatorTool:
+        return new SAKCrcCalculatorToolUi();
     default:
         return nullptr;
     }
