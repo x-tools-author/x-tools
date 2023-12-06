@@ -32,11 +32,11 @@ class SAKMainWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit SAKMainWindow(QWidget* parent = Q_NULLPTR);
-    ~SAKMainWindow();
+    ~SAKMainWindow() override;
 
 #ifdef Q_OS_WIN
 protected:
-    void closeEvent(QCloseEvent* event);
+    void closeEvent(QCloseEvent* event) override;
 #endif
 
 private:

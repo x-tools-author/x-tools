@@ -13,36 +13,22 @@
 #include <QButtonGroup>
 #include <QClipboard>
 #include <QCloseEvent>
-#include <QDateTime>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QDir>
 #include <QFile>
 #include <QFileDialog>
-#include <QFileInfo>
-#include <QFileInfoList>
 #include <QImage>
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QJsonObject>
 #include <QJsonParseError>
-#include <QLineEdit>
 #include <QLocale>
 #include <QMessageBox>
-#include <QMetaEnum>
 #include <QPainter>
 #include <QPixmap>
 #include <QProcess>
-#include <QRect>
-#include <QScrollArea>
 #include <QScrollBar>
-#include <QSettings>
 #include <QSizePolicy>
-#include <QSpacerItem>
-#include <QStatusBar>
 #include <QStyleFactory>
 #include <QSysInfo>
-#include <QTabBar>
 #include <QTextBrowser>
 #include <QToolBar>
 #include <QToolButton>
@@ -72,7 +58,7 @@
 
 #include "ui_sakmainwindow.h"
 
-#define SAK_QT_CONF qApp->applicationDirPath() + "/qt.conf"
+#define SAK_QT_CONF (qApp->applicationDirPath() + "/qt.conf")
 
 QString palettePath()
 {
@@ -128,6 +114,7 @@ SAKMainWindow::SAKMainWindow(QWidget* parent)
     initMenuBar();
     initNav();
     initStatusBar();
+    initWindowMenu();
 }
 
 SAKMainWindow::~SAKMainWindow()
@@ -508,6 +495,11 @@ void SAKMainWindow::initOptionMenuPalette(QMenu* optionMenu)
     if (!custom->actions().isEmpty()) {
         m->addMenu(custom);
     }
+}
+
+void SAKMainWindow::initWindowMenu()
+{
+    // Nothing to do.
 }
 
 void SAKMainWindow::initLanguageMenu()
