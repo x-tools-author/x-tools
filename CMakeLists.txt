@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.21)
 
 project(
   QtSwissArmyKnife
@@ -11,7 +11,9 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
+set(CMAKE_EXPORT_COMPILE_COMMANDS
+    ON
+    CACHE INTERNAL "")
 
 set(SAK_QT_COMPONENTS
     Core
@@ -158,7 +160,7 @@ endif()
 
 file(GLOB_RECURSE SAK_QT_FLOWLAYOUT_SOURCES "${CMAKE_SOURCE_DIR}/3rd/qt/flowlayout/*.cpp"
      "${CMAKE_SOURCE_DIR}/3rd/qt/flowlayout/*.h")
- list(APPEND SAK_APP_SOURCES ${SAK_QT_FLOWLAYOUT_SOURCES})
+list(APPEND SAK_APP_SOURCES ${SAK_QT_FLOWLAYOUT_SOURCES})
 
 sak_add_executable("QtSwissArmyKnife" ${SAK_APP_SOURCES})
 sak_auto_execute_deployqt(QtSwissArmyKnife)
