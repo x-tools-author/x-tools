@@ -1,11 +1,14 @@
-﻿option(SAK_ENABLE_LINUXDEPLOYQT "Enable linuxdeployqt" OFF)
+option(SAK_ENABLE_LINUXDEPLOYQT "Enable linuxdeployqt" OFF)
 option(SAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD "Enable linuxdeployqt download" OFF)
 option(SAK_ENABLE_LINUXDEPLOYQT_SYS "Enable linuxdeployqt with system tool" OFF)
 
 if(${SAK_ENABLE_LINUXDEPLOYQT})
   if(${SAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD})
-    set(appimagetool_url "https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage")
-    set(linuxdeployqt_url "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage")
+    set(appimagetool_url
+        "https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage")
+    set(linuxdeployqt_url
+        "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
+    )
     execute_process(COMMAND wget -O ${CMAKE_BINARY_DIR}/linuxdeployqt ${linuxdeployqt_url})
     execute_process(COMMAND wget -O ${CMAKE_BINARY_DIR}/appimagetool ${appimagetool_url})
     execute_process(COMMAND chmod +x ${CMAKE_BINARY_DIR}/linuxdeployqt ${linuxdeployqt_url})
