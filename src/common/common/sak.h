@@ -6,6 +6,7 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
+#include <QApplication>
 #include <QDir>
 #include <QFile>
 #include <QStyleFactory>
@@ -14,7 +15,6 @@
 #include "glog/logging.h"
 #endif
 
-#include "sakapplication.h"
 #include "sakinterface.h"
 #include "saklog.h"
 #include "saksettings.h"
@@ -125,8 +125,9 @@ static void sakTryToClearSettings()
 
 static void sakInitHdpi()
 {
-    // qputenv("QT_SCALE_FACTOR", "1.5");
-    // High dpi settings.
+#if 0
+    qputenv("QT_SCALE_FACTOR", "1.5");
+#endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     if (int policy = SAKSettings::instance()->hdpiPolicy();
         SAKInterface::isQtHighDpiScalePolicy(policy)) {
