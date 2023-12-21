@@ -9,7 +9,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS
     ON
@@ -59,7 +59,7 @@ if(SAK_USING_GLOG)
   set(WITH_GTEST OFF)
   set(WITH_GFLAGS OFF)
 
-  sak_add_subdiretory("glog-master")
+  sak_add_subdirectory("glog-master")
 endif()
 
 macro(sak_import_assistant assistant_dir_name)

@@ -10,30 +10,25 @@
 #define SAKAPPLICATION_H
 
 #include <QApplication>
-#include <QLoggingCategory>
 #include <QSplashScreen>
-
-#define sakApp (static_cast<SAKApplication *>(QCoreApplication::instance()))
 
 class SAKApplication : public QApplication
 {
     Q_OBJECT
 public:
     explicit SAKApplication(int argc, char **argv);
-    ~SAKApplication();
+    ~SAKApplication() override = default;
 
-    QSplashScreen *splashScreen();
-    void showSplashScreenMessage(QString msg);
-
-private:
-    QSplashScreen *mSplashScreen;
-    const QLoggingCategory mLoggingCategory{"sak.application"};
-
-private:
-    void setupPalette(const QString &fileName);
+    void showSplashScreenMessage(const QString &msg);
 
 signals:
     void activeMainWindow();
+
+private:
+    QSplashScreen *m_splashScreen{nullptr};
+
+private:
+    static void setupPalette(const QString &fileName);
 };
 
 #endif

@@ -8,25 +8,13 @@
  **************************************************************************************************/
 #include "sakapplication.h"
 
-#include <QAction>
-#include <QDateTime>
-#include <QDebug>
-#include <QDialog>
-#include <QDir>
 #include <QFile>
-#include <QGridLayout>
-#include <QLabel>
 #include <QPushButton>
 #include <QRect>
 #include <QScreen>
-#include <QSettings>
-#include <QSizePolicy>
 #include <QSplashScreen>
-#include <QStandardPaths>
-#include <QStyleFactory>
 #include <QTextCursor>
 #include <QTranslator>
-#include <QUrl>
 
 #include "sakdatastructure.h"
 #include "sakmainwindow.h"
@@ -37,24 +25,19 @@
 #include "saksystemtrayicon.h"
 #endif
 
-QDate buildDate = QLocale(QLocale::English)
-                      .toDate(QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
-QTime buildTime = QTime::fromString(__TIME__, "hh:mm:ss");
 SAKApplication::SAKApplication(int argc, char** argv)
     : QApplication(argc, argv)
 {
-    // It can avoid app crash in this way to show a splashScreen.
-    // If you new a QSplashScreen and show it in the main function,
-    // app will crash(test on Ubuntu 16.04).
-    // Of course, it is because that I use a wrong way,
-    // also, it could be a bug of Qt.
+    // It can avoid app crash in this way to show a splashScreen. If you create a QSplashScreen and
+    // show it in the main function, app will crash(test on Ubuntu 16.04). Of course, it is because
+    // that I use a wrong way, also, it could be a bug of Qt.
     QPixmap pixmap(":/resources/images/StartUi.jpg");
-    mSplashScreen = new QSplashScreen(pixmap);
+    m_splashScreen = new QSplashScreen(pixmap);
     showSplashScreenMessage(tr("Initializing..."));
-    mSplashScreen->show();
+    m_splashScreen->show();
     processEvents();
 
-    // Palete
+    // Palette
     int ret = SAKSettings::instance()->palette();
     if ((ret == SAKDataStructure::PaletteDark) || (ret == SAKDataStructure::PaletteLight)) {
         QString fileName = (ret == SAKDataStructure::PaletteLight
@@ -64,7 +47,7 @@ SAKApplication::SAKApplication(int argc, char** argv)
     } else {
         QString customPalette = SAKSettings::instance()->customPalette();
         if (customPalette.isEmpty()) {
-            qCInfo(mLoggingCategory) << "current palete: system";
+            qInfo() << "current palette: system";
         } else {
             setupPalette(customPalette);
         }
@@ -75,8 +58,8 @@ SAKApplication::SAKApplication(int argc, char** argv)
     SAKTranslator::instance()->setupLanguage(language);
     showSplashScreenMessage(tr("Initializing main window..."));
 
-    SAKMainWindow* mainWindow = new SAKMainWindow();
-    mSplashScreen->finish(mainWindow);
+    auto mainWindow = new SAKMainWindow();
+    m_splashScreen->finish(mainWindow);
     QObject::connect(this,
                      &SAKApplication::activeMainWindow,
                      mainWindow,
@@ -85,11 +68,11 @@ SAKApplication::SAKApplication(int argc, char** argv)
 
 #ifdef Q_OS_WIN
     // Setup system tray icon.
-    SAKSystemTrayIcon* systemTrayIcon = new SAKSystemTrayIcon(qApp);
-    QObject::connect(systemTrayIcon, &SAKSystemTrayIcon::invokeExit, qApp, [=]() {
+    auto systemTrayIcon = new SAKSystemTrayIcon(this);
+    QObject::connect(systemTrayIcon, &SAKSystemTrayIcon::invokeExit, this, [=]() {
         mainWindow->close();
     });
-    QObject::connect(systemTrayIcon, &SAKSystemTrayIcon::invokeShowMainWindow, qApp, [=]() {
+    QObject::connect(systemTrayIcon, &SAKSystemTrayIcon::invokeShowMainWindow, this, [=]() {
         mainWindow->show();
     });
     systemTrayIcon->show();
@@ -97,14 +80,14 @@ SAKApplication::SAKApplication(int argc, char** argv)
 
     // Move the window to the screen central.
 #ifndef Q_OS_ANDROID
-    mainWindow->resize(mainWindow->height() * 1.732, mainWindow->height());
+    mainWindow->resize(int(double(mainWindow->height()) * 1.732), mainWindow->height());
 #endif
     QRect screenRect = QGuiApplication::primaryScreen()->geometry();
     bool tooWidth = (mainWindow->width() > screenRect.width());
     bool tooHeight = (mainWindow->height() > screenRect.height());
     if (tooWidth || tooHeight) {
         mainWindow->showMaximized();
-        qCInfo(mLoggingCategory) << "too small screen";
+        qInfo() << "too small screen";
     } else {
         mainWindow->move((screenRect.width() - mainWindow->width()) / 2,
                          (screenRect.height() - mainWindow->height()) / 2);
@@ -114,19 +97,12 @@ SAKApplication::SAKApplication(int argc, char** argv)
     QString msg = QString("the size of main window is: %1x%2")
                       .arg(mainWindow->width())
                       .arg(mainWindow->height());
-    qCInfo(mLoggingCategory) << qPrintable(msg);
+    qInfo() << qPrintable(msg);
 }
 
-SAKApplication::~SAKApplication() {}
-
-QSplashScreen* SAKApplication::splashScreen()
+void SAKApplication::showSplashScreenMessage(const QString &msg)
 {
-    return mSplashScreen;
-}
-
-void SAKApplication::showSplashScreenMessage(QString msg)
-{
-    mSplashScreen->showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
+    m_splashScreen->showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
 }
 
 void SAKApplication::setupPalette(const QString& fileName)
@@ -138,8 +114,8 @@ void SAKApplication::setupPalette(const QString& fileName)
         out >> p;
         file.close();
         setPalette(p);
-        qCInfo(mLoggingCategory) << "current palete:" << fileName;
+        qInfo() << "current palette:" << fileName;
     } else {
-        qCWarning(mLoggingCategory) << "open palette file error:" << file.errorString();
+        qWarning() << "open palette file error:" << file.errorString();
     }
 }

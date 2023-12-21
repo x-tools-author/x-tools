@@ -16,7 +16,7 @@ foreach(dir ${dirs})
 endforeach()
 
 if(${SAK_HAS_PRIVATE_MODULE})
-  sak_add_subdiretory("nodeeditor-3.0.10")
+  sak_add_subdirectory("nodeeditor-3.0.10")
   add_compile_definitions(SAK_IMPORT_MODULE_PRIVATE)
 endif()
 

@@ -37,8 +37,8 @@ function(sak_get_last_commit_time working_dir prefix)
   add_compile_definitions(${prefix}_GIT_COMMIT_TIME="${GIT_COMMIT_TIME}")
 endfunction()
 
-# Unzip file and imort it as a sub module.
-function(sak_add_subdiretory zip_file_name_without_suffix)
+# Unzip file and import it as a sub module.
+function(sak_add_subdirectory zip_file_name_without_suffix)
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${zip_file_name_without_suffix}.zip
                   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/3rd)
   add_subdirectory(3rd/${zip_file_name_without_suffix})
