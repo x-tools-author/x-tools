@@ -100,8 +100,3 @@ SAKGuiApplication::SAKGuiApplication(int argc, char* argv[])
     mQmlAppEngine.rootContext()->setContextProperty("sakDataStructure", sakDataStructure);
     mQmlAppEngine.load("qrc:/qml/MainWindow.qml");
 }
-
-QQmlApplicationEngine& SAKGuiApplication::qmlAppEngine()
-{
-    return mQmlAppEngine;
-}

@@ -17,7 +17,6 @@ class SAKGuiApplication : public QGuiApplication
     Q_OBJECT
 public:
     SAKGuiApplication(int argc, char *argv[]);
-    QQmlApplicationEngine &qmlAppEngine();
 
 private:
     QQmlApplicationEngine mQmlAppEngine;
