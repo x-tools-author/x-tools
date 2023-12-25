@@ -41,7 +41,8 @@ sak_auto_execute_windeployqt(EasyDebug)
 
 target_link_libraries(
   EasyDebug
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core
+  PRIVATE glog::glog
+          Qt${QT_VERSION_MAJOR}::Core
           Qt${QT_VERSION_MAJOR}::Gui
           Qt${QT_VERSION_MAJOR}::Qml
           Qt${QT_VERSION_MAJOR}::SerialPort
