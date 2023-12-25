@@ -203,4 +203,7 @@ if(QT_VERSION_MAJOR EQUAL 6 AND QT_VERSION_MINOR GREATER_EQUAL 4)
 endif()
 
 # The private module is not open source.
-include(${CMAKE_SOURCE_DIR}/src/private/private.cmake)
+option(SAK_ENABLE_APP_PRIVATE "Do not change the option unless you are the author" OFF)
+if(SAK_ENABLE_APP_PRIVATE)
+  include(${CMAKE_SOURCE_DIR}/src/private/private.cmake)
+endif()
