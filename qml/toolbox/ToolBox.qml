@@ -69,7 +69,7 @@ Item {
 
             var text = devicePageReadWrite.inputText
             if (text === "") {
-                console.info("The input text if empty, the operaion will be ignored!")
+                console.info("The input text if empty, the operation will be ignored!")
                 return
             }
 
