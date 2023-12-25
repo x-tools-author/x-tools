@@ -26,3 +26,9 @@ foreach(dir ${dirs})
     add_subdirectory(${cooked_dir})
   endif()
 endforeach()
+
+add_custom_target(
+  PullPrivateModules
+  COMMAND git clone https://gitee.com/qsak/data-flow-workstation.git ./dfw
+  SOURCES ${CMAKE_SOURCE_DIR}/src/private/private.cmake
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
