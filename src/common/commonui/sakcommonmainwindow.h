@@ -33,9 +33,8 @@ protected:
     QMenu* m_helpMenu;
 
 private:
-    QActionGroup* app_style_action_group_;
-    QActionGroup* language_action_group_;
-    const QLoggingCategory logging_category_{"SAK.CommonMainWindow"};
+    QActionGroup* m_appStyleActionGroup;
+    QActionGroup* m_languageActionGroup;
 
 private:
     void init();

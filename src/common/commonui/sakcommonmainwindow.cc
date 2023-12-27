@@ -32,8 +32,8 @@
 SAKCommonMainWindow::SAKCommonMainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
-    app_style_action_group_ = new QActionGroup(this);
-    language_action_group_ = new QActionGroup(this);
+    m_appStyleActionGroup = new QActionGroup(this);
+    m_languageActionGroup = new QActionGroup(this);
     QString language = SAKSettings::instance()->language();
     SAKTranslator::instance()->setupLanguage(language);
     init();
@@ -81,7 +81,7 @@ void SAKCommonMainWindow::initMenuLanguage()
         QAction* action = new QAction(language, this);
         action->setCheckable(true);
         m_languageMenu->addAction(action);
-        language_action_group_->addAction(action);
+        m_languageActionGroup->addAction(action);
 
         connect(action, &QAction::triggered, this, [=]() {
             SAKSettings::instance()->setLanguage(language);
@@ -116,9 +116,9 @@ void SAKCommonMainWindow::initMenuHelp()
 
 void SAKCommonMainWindow::initOptionMenuAppStyleMenu()
 {
-    QList<QAction*> actions = app_style_action_group_->actions();
+    QList<QAction*> actions = m_appStyleActionGroup->actions();
     for (auto action : actions) {
-        app_style_action_group_->removeAction(action);
+        m_appStyleActionGroup->removeAction(action);
     }
 
     QMenu* appStyleMenu = new QMenu(tr("Application Style"), this);
@@ -135,7 +135,7 @@ void SAKCommonMainWindow::initOptionMenuAppStyleMenu()
         QAction* action = new QAction(key, this);
         action->setObjectName(key);
         action->setCheckable(true);
-        app_style_action_group_->addAction(action);
+        m_appStyleActionGroup->addAction(action);
 
         if (key == style) {
             action->setChecked(true);
@@ -147,7 +147,7 @@ void SAKCommonMainWindow::initOptionMenuAppStyleMenu()
         });
     }
 
-    appStyleMenu->addActions(app_style_action_group_->actions());
+    appStyleMenu->addActions(m_appStyleActionGroup->actions());
 }
 
 void SAKCommonMainWindow::initOptionMenuSettingsMenu()
@@ -224,9 +224,9 @@ void SAKCommonMainWindow::initOptionMenuHdpiPolicy()
 void SAKCommonMainWindow::onHdpiPolicyActionTriggered(int policy)
 {
     if (QFile::remove(getQtConfFileName())) {
-        qCInfo(logging_category_) << getQtConfFileName() << "was removed!";
+        qInfo() << getQtConfFileName() << "was removed!";
     } else {
-        qCInfo(logging_category_) << "removed" << getQtConfFileName() << "failed";
+        qInfo() << "removed" << getQtConfFileName() << "failed";
     }
 
     SAKSettings::instance()->setHdpiPolicy(int(policy));
@@ -247,7 +247,7 @@ void SAKCommonMainWindow::onUserQqGroupTriggerd()
 {
     QPixmap pix;
     if (!pix.load(":/resources/images/QSAKQQ.jpg")) {
-        qCWarning(logging_category_) << "Can not load QSAKQQ.jpg.";
+        qWarning() << "Can not load QSAKQQ.jpg.";
         return;
     }
 
@@ -302,8 +302,8 @@ void SAKCommonMainWindow::createQtConf()
         out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
         file.close();
     } else {
-        qCWarning(logging_category_) << fileName;
-        qCWarning(logging_category_) << "can not open file:" << file.errorString();
+        qWarning() << fileName;
+        qWarning() << "can not open file:" << file.errorString();
     }
 }
 
