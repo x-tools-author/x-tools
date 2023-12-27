@@ -81,6 +81,7 @@ list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.h)
 list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.cc)
 
 sak_import_assistant("crc")
+sak_import_assistant("mdns")
 sak_import_assistant("ascii")
 sak_import_assistant("base64")
 sak_import_assistant("number")
