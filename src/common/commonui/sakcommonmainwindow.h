@@ -88,6 +88,7 @@ QApplication* sakNewAssistantApp(int argc, char* argv[], const QString& title)
     T* assistant = new T(mainWindow);
     mainWindow->setWindowTitle(title);
     mainWindow->setCentralWidget(assistant);
+    mainWindow->showMinimized();
     mainWindow->resize(mainWindow->height() * 1.732, mainWindow->height());
     mainWindow->show();
 
