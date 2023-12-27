@@ -105,10 +105,10 @@ macro(sak_add_src src_dir_name)
   list(APPEND SAK_SRC_SOURCES ${SRC_SOURCE})
 endmacro()
 
-sak_add_src("common")
 sak_add_src("log")
-sak_add_src("toolbox")
 sak_add_src("tools")
+sak_add_src("common")
+sak_add_src("toolbox")
 
 # QtSwissArmyKnife module files
 macro(sak_import_module src_dir_name)
