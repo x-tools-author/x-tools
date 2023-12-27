@@ -20,34 +20,34 @@ private:
     SAKAssistantsFactory(QObject* parent = Q_NULLPTR);
 
 private:
-    enum Assistants {
-        kCrcAssistant,
-        kFileCheckAssistant,
-        kAsciiAssistant,
-        kNumberAssistant,
-        kStringAssistant,
-        kBroadcastAssistant,
-        kBase64Assistant,
-        kMdnsAssistant
+    enum AssistantTypes {
+        AssistantTypesCrc,
+        AssistantTypesFileCheck,
+        AssistantTypesAscii,
+        AssistantTypesNumber,
+        AssistantTypesString,
+        AssistantTypesBroadcast,
+        AssistantTypesBase64,
+        AssistantTypesMdns
     };
 
 public:
-    static SAKAssistantsFactory* Instance();
+    static SAKAssistantsFactory* instance();
 
-    QList<int> SupportedAssistants();
-    QString GetAssistantName(int type) const;
-    QWidget* NewAssistant(int type);
+    QList<int> supportedAssistants();
+    QString assistantName(int type) const;
+    QWidget* newAssistant(int type);
 
 private:
-    QMap<int, QString> type_name_map_;
-    QMap<int, QMetaObject> meta_object_map_;
+    QMap<int, QString> m_typeNameMap;
+    QMap<int, QMetaObject> m_metaObjectMap;
 
 private:
     template<typename T>
-    void RegisterAssistantMetaType(int type, const QString& assistant_name)
+    void registerAssistant(int type, const QString& assistantName)
     {
-        type_name_map_.insert(type, assistant_name);
-        meta_object_map_.insert(type, T::staticMetaObject);
+        m_typeNameMap.insert(type, assistantName);
+        m_metaObjectMap.insert(type, T::staticMetaObject);
     }
 };
 

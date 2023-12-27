@@ -7,7 +7,6 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
  * the root of the source code directory.
  ******************************************************************************/
-
 #include "sakassistantsfactory.h"
 
 #include <QCoreApplication>
@@ -42,48 +41,47 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     : QObject(parent)
 {
 #ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
-    RegisterAssistantMetaType<SAKCRCAssistant>(kCrcAssistant, tr("CRC Assistant"));
+    registerAssistant<SAKCRCAssistant>(AssistantTypesCrc, tr("CRC Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_CRCASSISTANT
-    RegisterAssistantMetaType<SAKFileCheckAssistant>(kFileCheckAssistant,
-                                                     tr("File Check Assistant"));
+    registerAssistant<SAKFileCheckAssistant>(AssistantTypesFileCheck, tr("File Check Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
-    RegisterAssistantMetaType<SAKAsciiAssistant>(kAsciiAssistant, tr("ASCII Assistant"));
+    registerAssistant<SAKAsciiAssistant>(AssistantTypesAscii, tr("ASCII Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_NUMBERASSISTANT
-    RegisterAssistantMetaType<SAKNumberAssistant>(kFileCheckAssistant, tr("Number Assistant"));
+    registerAssistant<SAKNumberAssistant>(AssistantTypesNumber, tr("Number Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
-    RegisterAssistantMetaType<SAKStringAssistant>(kStringAssistant, tr("String Assistant"));
+    registerAssistant<SAKStringAssistant>(AssistantTypesString, tr("String Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
-    RegisterAssistantMetaType<SAKBroadcastAssistant>(kBroadcastAssistant, tr("Broadcast Assistant"));
+    registerAssistant<SAKBroadcastAssistant>(AssistantTypesBroadcast, tr("Broadcast Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_BASE64ASSISTANT
-    RegisterAssistantMetaType<SAKBase64Assisatnt>(kBase64Assistant, tr("Base64 Assistant"));
+    registerAssistant<SAKBase64Assisatnt>(AssistantTypesBase64, tr("Base64 Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_MDNSASSISTANT
-    RegisterAssistantMetaType<SAKMdnsAssistant>(kMdnsAssistant, tr("Mdns Assistant"));
+    registerAssistant<SAKMdnsAssistant>(AssistantTypesMdns, tr("Mdns Assistant"));
 #endif
 }
 
-QList<int> SAKAssistantsFactory::SupportedAssistants()
+QList<int> SAKAssistantsFactory::supportedAssistants()
 {
-    return type_name_map_.keys();
+    return m_typeNameMap.keys();
 }
 
-QString SAKAssistantsFactory::GetAssistantName(int type) const
+QString SAKAssistantsFactory::assistantName(int type) const
 {
-    if (type_name_map_.contains(type)) {
-        return type_name_map_.value(type);
+    if (m_typeNameMap.contains(type)) {
+        return m_typeNameMap.value(type);
     }
 
     QString name = QString("UnknowType(%1)").arg(type);
     return name;
 }
 
-SAKAssistantsFactory* SAKAssistantsFactory::Instance()
+SAKAssistantsFactory* SAKAssistantsFactory::instance()
 {
     static SAKAssistantsFactory* factory = nullptr;
     if (!factory) {
@@ -93,10 +91,10 @@ SAKAssistantsFactory* SAKAssistantsFactory::Instance()
     return factory;
 }
 
-QWidget* SAKAssistantsFactory::NewAssistant(int type)
+QWidget* SAKAssistantsFactory::newAssistant(int type)
 {
-    if (meta_object_map_.contains(type)) {
-        const QMetaObject meta_obj = meta_object_map_.value(type);
+    if (m_metaObjectMap.contains(type)) {
+        const QMetaObject meta_obj = m_metaObjectMap.value(type);
         QObject* obj = meta_obj.newInstance();
         return qobject_cast<QWidget*>(obj);
     }
