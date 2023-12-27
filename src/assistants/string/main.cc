@@ -14,7 +14,7 @@
 int main(int argc, char* argv[])
 {
     const QString title = QObject::tr("String Assistant");
-    QApplication* app = sakNewAssistantApp<SAKStringAssistant>(argc, argv, title);
+    QApplication* app = sakNewApp<SAKStringAssistant>(argc, argv, title);
     int ret = app->exec();
     app->deleteLater();
 

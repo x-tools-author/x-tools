@@ -14,7 +14,7 @@
 int main(int argc, char* argv[])
 {
     const QString title = QObject::tr("Base64 Assisatnt");
-    QApplication* app = sakNewAssistantApp<SAKBase64Assisatnt>(argc, argv, title);
+    QApplication* app = sakNewApp<SAKBase64Assisatnt>(argc, argv, title);
     int ret = app->exec();
     app->deleteLater();
 

@@ -14,7 +14,7 @@
 int main(int argc, char* argv[])
 {
     const QString title = QObject::tr("MDNS Assistant");
-    QApplication* app = sakNewAssistantApp<SAKMdnsAssistant>(argc, argv, title);
+    QApplication* app = sakNewApp<SAKMdnsAssistant>(argc, argv, title);
     int ret = app->exec();
     app->deleteLater();
 

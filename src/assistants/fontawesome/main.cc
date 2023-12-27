@@ -14,7 +14,7 @@
 int main(int argc, char* argv[])
 {
     const QString title = QObject::tr("Font Awesome Assistant");
-    QApplication* app = sakNewAssistantApp<SAKFontAwesomeAssistant>(argc, argv, title);
+    QApplication* app = sakNewApp<SAKFontAwesomeAssistant>(argc, argv, title);
     int ret = app->exec();
     app->deleteLater();
 

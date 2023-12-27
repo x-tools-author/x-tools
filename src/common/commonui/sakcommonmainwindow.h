@@ -38,30 +38,30 @@ private:
     const QLoggingCategory logging_category_{"SAK.CommonMainWindow"};
 
 private:
-    void Init();
-    void InitMenu();
-    void InitMenuFile();
-    void InitMenuOption();
-    void InitMenuLanguage();
-    void InitMenuHelp();
+    void init();
+    void initMenu();
+    void initMenuFile();
+    void initMenuOption();
+    void initMenuLanguage();
+    void initMenuHelp();
 
-    void InitOptionMenuAppStyleMenu();
-    void InitOptionMenuSettingsMenu();
-    void InitOptionMenuHdpiPolicy();
+    void initOptionMenuAppStyleMenu();
+    void initOptionMenuSettingsMenu();
+    void initOptionMenuHdpiPolicy();
 
-    void OnHdpiPolicyActionTriggered(int policy);
-    void OnGithubActionTriggered();
-    void OnGiteeActionTriggered();
-    void OnUserQqGroupTriggerd();
-    void OnAboutActionTriggered();
+    void onHdpiPolicyActionTriggered(int policy);
+    void onGithubActionTriggered();
+    void onGiteeActionTriggered();
+    void onUserQqGroupTriggerd();
+    void onAboutActionTriggered();
 
-    void TryToReboot();
-    void CreateQtConf();
-    QString GetQtConfFileName();
+    void tryToReboot();
+    void createQtConf();
+    QString getQtConfFileName();
 };
 
 template<typename T>
-QApplication* sakNewAssistantApp(int argc, char* argv[], const QString& title)
+QApplication* sakNewApp(int argc, char* argv[], const QString& title)
 {
     QCoreApplication::setOrganizationName(QString("Qsaker"));
     QCoreApplication::setOrganizationDomain(QString("IT"));

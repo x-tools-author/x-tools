@@ -14,7 +14,7 @@
 int main(int argc, char* argv[])
 {
     const QString title = QObject::tr("File Check Assistant");
-    QApplication* app = sakNewAssistantApp<SAKFileCheckAssistant>(argc, argv, title);
+    QApplication* app = sakNewApp<SAKFileCheckAssistant>(argc, argv, title);
     int ret = app->exec();
     app->deleteLater();
 

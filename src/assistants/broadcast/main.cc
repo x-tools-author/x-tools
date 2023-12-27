@@ -14,7 +14,7 @@
 int main(int argc, char* argv[])
 {
     const QString title = QObject::tr("Broadcast Assistant");
-    QApplication* app = sakNewAssistantApp<SAKBroadcastAssistant>(argc, argv, title);
+    QApplication* app = sakNewApp<SAKBroadcastAssistant>(argc, argv, title);
     int ret = app->exec();
     app->deleteLater();
 
