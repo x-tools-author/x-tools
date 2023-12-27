@@ -14,11 +14,8 @@
 
 int main(int argc, char* argv[])
 {
-    QApplication* app = CreateCommonMainWindowApplication<SAKAsciiAssistant>(argc,
-                                                                             argv,
-                                                                             QObject::tr(
-                                                                                 "Ascii Assistant"),
-                                                                             "SAK.AsciiAssistant");
+    const QString title = QObject::tr("Ascii Assistant");
+    QApplication* app = sakNewAssistantApp<SAKAsciiAssistant>(argc, argv, title);
     int ret = app->exec();
     app->deleteLater();
 

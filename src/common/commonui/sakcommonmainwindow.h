@@ -61,20 +61,15 @@ private:
 };
 
 template<typename T>
-QApplication* CreateCommonMainWindowApplication(int argc,
-                                                char* argv[],
-                                                const QString& title,
-                                                const char* logging_category_path)
+QApplication* sakNewAssistantApp(int argc, char* argv[], const QString& title)
 {
     QCoreApplication::setOrganizationName(QString("Qsaker"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
     QCoreApplication::setApplicationName(QString(title).remove(" "));
 
     // Application style.
-    QLoggingCategory logging_category(logging_category_path);
     QString style = SAKSettings::instance()->appStyle();
     if (!style.isEmpty() && QStyleFactory::keys().contains(style)) {
-        qCInfo(logging_category) << "The application style is:" << style;
         QApplication::setStyle(QStyleFactory::create(style));
     }
 
@@ -89,12 +84,12 @@ QApplication* CreateCommonMainWindowApplication(int argc,
 
     QApplication* app = new QApplication(argc, argv);
 
-    SAKCommonMainWindow* main_window = new SAKCommonMainWindow();
-    T* assistant = new T(main_window);
-    main_window->setWindowTitle(title);
-    main_window->setCentralWidget(assistant);
-    main_window->resize(main_window->height() * 1.732, main_window->height());
-    main_window->show();
+    SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow();
+    T* assistant = new T(mainWindow);
+    mainWindow->setWindowTitle(title);
+    mainWindow->setCentralWidget(assistant);
+    mainWindow->resize(mainWindow->height() * 1.732, mainWindow->height());
+    mainWindow->show();
 
     return app;
 }

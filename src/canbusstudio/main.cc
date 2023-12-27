@@ -13,11 +13,7 @@
 
 int main(int argc, char* argv[])
 {
-    QApplication* app = CreateCommonMainWindowApplication<SAKCanBusUi>(argc,
-                                                                       argv,
-                                                                       QObject::tr(
-                                                                           "CAN Bus Studio"),
-                                                                       "SAK.CanBusStudio");
+    QApplication* app = sakNewAssistantApp<SAKCanBusUi>(argc, argv, QObject::tr("CAN Bus Studio"));
     int ret = app->exec();
     app->deleteLater();
 

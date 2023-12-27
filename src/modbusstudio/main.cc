@@ -13,10 +13,7 @@
 
 int main(int argc, char* argv[])
 {
-    QApplication* app = CreateCommonMainWindowApplication<SAKModbusUi>(argc,
-                                                                       argv,
-                                                                       QObject::tr("Modbus Studio"),
-                                                                       "SAK.ModbusStudio");
+    QApplication* app = sakNewAssistantApp<SAKModbusUi>(argc, argv, QObject::tr("Modbus Studio"));
     int ret = app->exec();
     app->deleteLater();
 

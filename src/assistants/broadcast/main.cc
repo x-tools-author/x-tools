@@ -1,12 +1,11 @@
-﻿/********************************************************************************
+﻿/***************************************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
- * project(https://github.com/qsaker/QtSwissArmyKnife).
+ * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
- * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
- * the root of the source code directory.
- ******************************************************************************/
+ * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
+ * code directory.
+ **************************************************************************************************/
 #include <QApplication>
 
 #include "sakbroadcastassistant.h"
@@ -14,8 +13,8 @@
 
 int main(int argc, char* argv[])
 {
-    QApplication* app = CreateCommonMainWindowApplication<SAKBroadcastAssistant>(
-        argc, argv, QObject::tr("Broadcast Assistant"), "SAK.BroadcastAssistant");
+    const QString title = QObject::tr("Broadcast Assistant");
+    QApplication* app = sakNewAssistantApp<SAKBroadcastAssistant>(argc, argv, title);
     int ret = app->exec();
     app->deleteLater();
 

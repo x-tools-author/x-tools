@@ -27,7 +27,8 @@ private:
         kNumberAssistant,
         kStringAssistant,
         kBroadcastAssistant,
-        kBase64Assistant
+        kBase64Assistant,
+        kMdnsAssistant
     };
 
 public:

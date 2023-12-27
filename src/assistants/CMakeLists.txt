@@ -23,7 +23,7 @@ macro(sak_add_assistant dir_name app_name)
         ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
 
     if(WIN32)
-        list(APPEND APP_ASSISTANT_SOURCES ${CMAKE_SOURCE_DIR}/windows.rc)
+      list(APPEND APP_ASSISTANT_SOURCES ${CMAKE_SOURCE_DIR}/windows.rc)
     endif()
 
     sak_add_executable(${app_name} ${APP_ASSISTANT_SOURCES})
@@ -34,6 +34,7 @@ macro(sak_add_assistant dir_name app_name)
 endmacro()
 
 add_subdirectory(crc)
+add_subdirectory(mdns)
 add_subdirectory(ascii)
 add_subdirectory(base64)
 add_subdirectory(number)

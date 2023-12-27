@@ -9,12 +9,12 @@
 #include <QApplication>
 
 #include "sakcommonmainwindow.h"
-#include "sakfontawesomeassistant.h"
+#include "sakmdnsassistant.h"
 
 int main(int argc, char* argv[])
 {
-    QApplication* app = CreateCommonMainWindowApplication<SAKFontAwesomeAssistant>(
-        argc, argv, QObject::tr("Font Awesome Assistant"), "SAK.FontAwesomeAssistant");
+    const QString title = QObject::tr("MDNS Assistant");
+    QApplication* app = sakNewAssistantApp<SAKMdnsAssistant>(argc, argv, title);
     int ret = app->exec();
     app->deleteLater();
 

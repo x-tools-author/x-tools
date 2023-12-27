@@ -13,8 +13,8 @@
 
 int main(int argc, char* argv[])
 {
-    QApplication* app = CreateCommonMainWindowApplication<SAKFontAwesomeAssistant>(
-        argc, argv, QObject::tr("Font Awesome Assistant"), "SAK.FontAwesomeAssistant");
+    const QString title = QObject::tr("Font Awesome Assistant");
+    QApplication* app = sakNewAssistantApp<SAKFontAwesomeAssistant>(argc, argv, title);
     int ret = app->exec();
     app->deleteLater();
 

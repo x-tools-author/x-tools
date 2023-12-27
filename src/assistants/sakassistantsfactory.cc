@@ -34,6 +34,9 @@
 #ifdef SAK_IMPORT_MODULE_BASE64ASSISTANT
 #include "sakbase64assistant.h"
 #endif
+#ifdef SAK_IMPORT_MODULE_MDNSASSISTANT
+#include "sakmdnsassistant.h"
+#endif
 
 SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     : QObject(parent)
@@ -48,7 +51,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
 #ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
     RegisterAssistantMetaType<SAKAsciiAssistant>(kAsciiAssistant, tr("ASCII Assistant"));
 #endif
-#ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
+#ifdef SAK_IMPORT_MODULE_NUMBERASSISTANT
     RegisterAssistantMetaType<SAKNumberAssistant>(kFileCheckAssistant, tr("Number Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
@@ -59,6 +62,9 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
 #endif
 #ifdef SAK_IMPORT_MODULE_BASE64ASSISTANT
     RegisterAssistantMetaType<SAKBase64Assisatnt>(kBase64Assistant, tr("Base64 Assistant"));
+#endif
+#ifdef SAK_IMPORT_MODULE_MDNSASSISTANT
+    RegisterAssistantMetaType<SAKMdnsAssistant>(kMdnsAssistant, tr("Mdns Assistant"));
 #endif
 }
 
