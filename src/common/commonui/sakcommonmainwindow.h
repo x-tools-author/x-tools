@@ -27,10 +27,10 @@ public:
     ~SAKCommonMainWindow();
 
 protected:
-    QMenu* file_menu_;
-    QMenu* option_menu_;
-    QMenu* language_menu_;
-    QMenu* help_menu_;
+    QMenu* m_fileMenu;
+    QMenu* m_optionMenu;
+    QMenu* m_languageMenu;
+    QMenu* m_helpMenu;
 
 private:
     QActionGroup* app_style_action_group_;

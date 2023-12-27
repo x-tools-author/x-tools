@@ -57,14 +57,14 @@ void SAKCommonMainWindow::InitMenu()
 void SAKCommonMainWindow::InitMenuFile()
 {
     QMenuBar* menu_bar = menuBar();
-    file_menu_ = menu_bar->addMenu(tr("&File"));
-    file_menu_->addAction(tr("&Exit"), this, &SAKCommonMainWindow::close);
+    m_fileMenu = menu_bar->addMenu(tr("&File"));
+    m_fileMenu->addAction(tr("&Exit"), this, &SAKCommonMainWindow::close);
 }
 
 void SAKCommonMainWindow::InitMenuOption()
 {
-    option_menu_ = new QMenu(tr("&Options"));
-    menuBar()->addMenu(option_menu_);
+    m_optionMenu = new QMenu(tr("&Options"));
+    menuBar()->addMenu(m_optionMenu);
 
     InitOptionMenuAppStyleMenu();
     InitOptionMenuSettingsMenu();
@@ -73,14 +73,14 @@ void SAKCommonMainWindow::InitMenuOption()
 
 void SAKCommonMainWindow::InitMenuLanguage()
 {
-    language_menu_ = new QMenu(tr("&Languages"), this);
-    menuBar()->addMenu(language_menu_);
+    m_languageMenu = new QMenu(tr("&Languages"), this);
+    menuBar()->addMenu(m_languageMenu);
 
     QStringList languages = SAKTranslator::instance()->languanges();
     for (auto& language : languages) {
         QAction* action = new QAction(language, this);
         action->setCheckable(true);
-        language_menu_->addAction(action);
+        m_languageMenu->addAction(action);
         language_action_group_->addAction(action);
 
         connect(action, &QAction::triggered, this, [=]() {
@@ -98,20 +98,20 @@ void SAKCommonMainWindow::InitMenuLanguage()
 void SAKCommonMainWindow::InitMenuHelp()
 {
     QMenuBar* menu_bar = menuBar();
-    help_menu_ = menu_bar->addMenu(tr("&Help"));
-    help_menu_->addAction(QIcon(":/resources/images/GitHub.png"),
+    m_helpMenu = menu_bar->addMenu(tr("&Help"));
+    m_helpMenu->addAction(QIcon(":/resources/images/GitHub.png"),
                           "Github",
                           this,
                           &SAKCommonMainWindow::OnGithubActionTriggered);
-    help_menu_->addAction(QIcon(":/resources/images/Gitee.png"),
+    m_helpMenu->addAction(QIcon(":/resources/images/Gitee.png"),
                           "Gitee",
                           this,
                           &SAKCommonMainWindow::OnGiteeActionTriggered);
-    help_menu_->addAction(QIcon(":/resources/icon/IconQQGray.svg"),
+    m_helpMenu->addAction(QIcon(":/resources/icon/IconQQGray.svg"),
                           tr("User QQ Group"),
                           this,
                           &SAKCommonMainWindow::OnUserQqGroupTriggerd);
-    help_menu_->addAction(tr("&About"), this, &SAKCommonMainWindow::OnAboutActionTriggered);
+    m_helpMenu->addAction(tr("&About"), this, &SAKCommonMainWindow::OnAboutActionTriggered);
 }
 
 void SAKCommonMainWindow::InitOptionMenuAppStyleMenu()
@@ -122,7 +122,7 @@ void SAKCommonMainWindow::InitOptionMenuAppStyleMenu()
     }
 
     QMenu* appStyleMenu = new QMenu(tr("Application Style"), this);
-    option_menu_->addMenu(appStyleMenu);
+    m_optionMenu->addMenu(appStyleMenu);
     QStringList keys = QStyleFactory::keys();
     QString style = SAKSettings::instance()->appStyle();
     if (style.isEmpty()) {
@@ -153,7 +153,7 @@ void SAKCommonMainWindow::InitOptionMenuAppStyleMenu()
 void SAKCommonMainWindow::InitOptionMenuSettingsMenu()
 {
     QMenu* menu = new QMenu(tr("Settings"), this);
-    option_menu_->addMenu(menu);
+    m_optionMenu->addMenu(menu);
 
     QAction* action = new QAction(tr("Clear Configuration"), this);
     menu->addAction(action);
@@ -197,7 +197,7 @@ void SAKCommonMainWindow::InitOptionMenuHdpiPolicy()
         });
     }
     menu->addActions(action_group->actions());
-    option_menu_->addMenu(menu);
+    m_optionMenu->addMenu(menu);
 #endif
 
 #ifdef Q_OS_WIN
