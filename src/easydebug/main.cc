@@ -13,11 +13,13 @@
 int main(int argc, char* argv[])
 {
     qputenv("QT_QUICK_CONTROLS_MATERIAL_VARIANT", "Dense");
-    QString appName = QString("EasyDebug");
+    const QString appName = QString("EasyDebug");
     sakDoSomethingBeforeAppCreated(argv, appName);
 
     SAKGuiApplication app(argc, argv);
-    Q_UNUSED(app)
     SAKLog::instance()->start();
-    return SAKGuiApplication::exec();
+    int ret = app.exec();
+
+    sakDoSomethingAfterAppExited();
+    return ret;
 }
