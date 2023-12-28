@@ -107,8 +107,10 @@ function(sak_set_target_properties target)
     PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
                ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
                ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
-               TRUE WIN32_EXECUTABLE
                TRUE)
+  if(WIN32 AND ${CMAKE_BUILD_TYPE} STREQUAL "Release")
+    set_target_properties(${target} PROPERTIES WIN32_EXECUTABLE TRUE)
+  endif()
 endfunction()
 
 function(sak_tar_target target)

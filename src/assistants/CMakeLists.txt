@@ -18,7 +18,7 @@ macro(sak_add_assistant dir_name app_name)
         ${CMAKE_SOURCE_DIR}/src/common/common/saksettings.cc
         ${CMAKE_SOURCE_DIR}/src/common/commonui/sakcommonmainwindow.h
         ${CMAKE_SOURCE_DIR}/src/common/commonui/sakcommonmainwindow.cc
-        ${APP_ASSISITANT_OWN_SOURCE}
+        ${APP_ASSISTANT_OWN_SOURCE}
         ${ASSISTANT_SOURCES}
         ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
 
@@ -29,7 +29,7 @@ macro(sak_add_assistant dir_name app_name)
     sak_add_executable(${app_name} ${APP_ASSISTANT_SOURCES})
     sak_auto_execute_deployqt(${app_name})
     sak_set_target_properties(${app_name})
-    target_link_libraries(${app_name} PRIVATE ${APP_ASSISITANT_OWN_LIBS})
+    target_link_libraries(${app_name} PRIVATE ${APP_ASSISTANT_OWN_LIBS})
   endif()
 endmacro()
 
