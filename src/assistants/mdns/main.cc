@@ -7,6 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include <QApplication>
+#include <QDebug>
 
 #include "sakcommonmainwindow.h"
 #include "sakmdnsassistant.h"
@@ -14,9 +15,7 @@
 int main(int argc, char* argv[])
 {
     const QString title = QObject::tr("MDNS Assistant");
-    QApplication* app = sakNewApp<SAKMdnsAssistant>(argc, argv, title);
+    auto app = sakNewApp<SAKMdnsAssistant>(argc, argv, title);
     int ret = app->exec();
-    app->deleteLater();
-
     return ret;
 }
