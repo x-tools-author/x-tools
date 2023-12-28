@@ -59,41 +59,4 @@ private:
     QString getQtConfFileName();
 };
 
-template<typename T>
-QApplication* sakNewApp(int argc, char* argv[], const QString& title)
-{
-    QCoreApplication::setOrganizationName(QString("Qsaker"));
-    QCoreApplication::setOrganizationDomain(QString("IT"));
-    QCoreApplication::setApplicationName(QString(title).remove(" "));
-
-    // Application style.
-    QString style = SAKSettings::instance()->appStyle();
-    if (!style.isEmpty() && QStyleFactory::keys().contains(style)) {
-        QApplication::setStyle(QStyleFactory::create(style));
-    }
-
-    // High dpi settings.
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    int policy = SAKSettings::instance()->hdpiPolicy();
-    if (SAKInterface::isQtHighDpiScalePolicy(policy)) {
-        auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
-        QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
-    }
-#endif
-
-    QApplication* app = new QApplication(argc, argv);
-
-    SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow();
-    T* centralWidget = new T(mainWindow);
-    mainWindow->setWindowTitle(title);
-    mainWindow->setCentralWidget(centralWidget);
-    if (mainWindow->height() < 400) {
-        mainWindow->setMinimumHeight(400);
-    }
-    mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());
-    mainWindow->show();
-
-    return app;
-}
-
 #endif // SAKCOMMONMAINWINDOW_H
