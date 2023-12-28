@@ -7,6 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sakassistantsfactory.h"
+#include "qwidget.h"
 
 #include <QCoreApplication>
 #include <QWidget>
@@ -61,7 +62,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     registerAssistant<SAKBase64Assisatnt>(AssistantTypesBase64, tr("Base64 Assistant"));
 #endif
 #ifdef SAK_IMPORT_MODULE_MDNSASSISTANT
-    registerAssistant<SAKMdnsAssistant>(AssistantTypesMdns, tr("Mdns Assistant"));
+    registerAssistant<SAKMdnsAssistant>(AssistantTypesMdns, tr("MDNS Assistant"));
 #endif
 }
 
@@ -95,7 +96,9 @@ QWidget* SAKAssistantsFactory::newAssistant(int type)
     if (m_metaObjectMap.contains(type)) {
         const QMetaObject meta_obj = m_metaObjectMap.value(type);
         QObject* obj = meta_obj.newInstance();
-        return qobject_cast<QWidget*>(obj);
+        QWidget* w = qobject_cast<QWidget*>(obj);
+        w->setWindowTitle(assistantName(type));
+        return w;
     }
 
     return Q_NULLPTR;
