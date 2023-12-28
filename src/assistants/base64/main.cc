@@ -12,6 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Base64 Assisatnt");
-    SAK_APP(SAKBase64Assisatnt, argc, argv, appName);
-    return QApplication::exec();
+    SAK_EXEC(SAKBase64Assisatnt, argc, argv, appName);
 }

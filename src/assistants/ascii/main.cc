@@ -13,6 +13,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("ASCII Assistant");
-    SAK_APP(SAKAsciiAssistant, argc, argv, appName);
-    return QApplication::exec();
+    SAK_EXEC(SAKAsciiAssistant, argc, argv, appName);
 }

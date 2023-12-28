@@ -15,7 +15,7 @@
 #include "sakcommonmainwindow.h"
 #include "saksettings.h"
 
-#define SAK_APP(WidgetType, argc, argv, appName) \
+#define SAK_EXEC(WidgetType, argc, argv, appName) \
     sakDoSomethingBeforeAppCreated(argv, appName); \
     QApplication app(argc, argv); \
     SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow(); \
@@ -26,6 +26,9 @@
         mainWindow->setMinimumHeight(400); \
     } \
     mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height()); \
-    mainWindow->show();
+    mainWindow->show(); \
+    int ret = app.exec(); \
+    sakDoSomethingAfterAppExited(); \
+    return ret;
 
 #endif // SAKUI_H

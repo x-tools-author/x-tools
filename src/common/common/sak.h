@@ -156,3 +156,8 @@ static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
     sakInitHdpi();
     sakInitAppStyle();
 }
+
+static void sakDoSomethingAfterAppExited()
+{
+    sakShutdownGoogleLogging();
+}

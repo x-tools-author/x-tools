@@ -12,6 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Modbus Studio");
-    SAK_APP(SAKModbusUi, argc, argv, appName);
-    return QApplication::exec();
+    SAK_EXEC(SAKModbusUi, argc, argv, appName);
 }

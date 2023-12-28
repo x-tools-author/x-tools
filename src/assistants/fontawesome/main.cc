@@ -12,6 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Font Awesome Assistant");
-    SAK_APP(SAKFontAwesomeAssistant, argc, argv, appName);
-    return QApplication::exec();
+    SAK_EXEC(SAKFontAwesomeAssistant, argc, argv, appName);
 }

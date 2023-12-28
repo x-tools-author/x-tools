@@ -12,6 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Number Assistant");
-    SAK_APP(SAKNumberAssistant, argc, argv, appName);
-    return QApplication::exec();
+    SAK_EXEC(SAKNumberAssistant, argc, argv, appName);
 }

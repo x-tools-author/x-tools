@@ -12,6 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("MDNS Assistant");
-    SAK_APP(SAKMdnsAssistant, argc, argv, appName);
-    return QApplication::exec();
+    SAK_EXEC(SAKMdnsAssistant, argc, argv, appName);
 }

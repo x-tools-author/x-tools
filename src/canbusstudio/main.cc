@@ -12,6 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("CAN Bus Studio");
-    SAK_APP(SAKCanBusUi, argc, argv, appName);
-    return QApplication::exec();
+    SAK_EXEC(SAKCanBusUi, argc, argv, appName);
 }

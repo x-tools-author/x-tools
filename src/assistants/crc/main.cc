@@ -12,6 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("CRC Assistant");
-    SAK_APP(SAKCRCAssistant, argc, argv, appName);
-    return QApplication::exec();
+    SAK_EXEC(SAKCRCAssistant, argc, argv, appName);
 }
