@@ -44,6 +44,16 @@ private:
     {
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
     } mSettingsKey;
+    struct NavContext
+    {
+        QButtonGroup* bg;
+        QIcon icon;
+        QString name;
+        QWidget* page;
+        QToolBar* tb;
+    };
+
+private:
     const QLoggingCategory mLoggingCategory{"sak.mainwindow"};
     Ui::SAKMainWindow* ui;
 
@@ -65,8 +75,7 @@ private:
     void initLinksMenu();
     void initDemoMenu();
     void initNav();
-    void initNav(
-        QButtonGroup* bg, const QIcon& icon, const QString& name, QWidget* page, QToolBar* tb);
+    void initNav(const NavContext& ctx);
     void initStatusBar();
 
     void aboutSoftware();

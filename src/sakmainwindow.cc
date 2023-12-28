@@ -672,11 +672,11 @@ void SAKMainWindow::initNav()
         SAKToolBoxUi* toolBoxUi = new SAKToolBoxUi(this);
         toolBoxUi->initialize(type);
 
-        initNav(&navButtonGroup,
-                SAKUiInterface::cookedIcon(toolBoxUi->windowIcon()),
-                toolBoxUi->windowTitle(),
-                toolBoxUi,
-                tb);
+        initNav({&navButtonGroup,
+                 SAKUiInterface::cookedIcon(toolBoxUi->windowIcon()),
+                 toolBoxUi->windowTitle(),
+                 toolBoxUi,
+                 tb});
     }
 
     tb->addSeparator();
@@ -684,7 +684,7 @@ void SAKMainWindow::initNav()
     QString path = ":/resources/icon/IconModbus.svg";
 #ifdef SAK_IMPORT_MODULE_MODBUSSTUDIO
     SAKModbusUi* modbus = new SAKModbusUi(this);
-    initNav(&navButtonGroup, SAKUiInterface::cookedIcon(QIcon(path)), "Modbus Studio", modbus, tb);
+    initNav({&navButtonGroup, SAKUiInterface::cookedIcon(QIcon(path)), "Modbus Studio", modbus, tb});
 #ifdef SAK_IMPORT_MODULE_PRIVATE_MODBUS
     SAKPrivateModbusClient* modbusClient = new SAKPrivateModbusClient(this);
     SAKPrivateModbusServer* modbusServer = new SAKPrivateModbusServer(this);
@@ -708,7 +708,7 @@ void SAKMainWindow::initNav()
 #ifdef SAK_IMPORT_MODULE_CANBUSSTUDIO
     SAKCanBusUi* canbus = new SAKCanBusUi(this);
     path = ":/resources/icon/IconCanBus.svg";
-    initNav(&navButtonGroup, SAKUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb);
+    initNav({&navButtonGroup, SAKUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb});
 #endif
 #endif
     QLabel* lb = new QLabel(" ");
@@ -745,11 +745,11 @@ void SAKMainWindow::initNav()
     tb->addSeparator();
 #endif
 
-    initNav(&navButtonGroup,
-            SAKUiInterface::cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
-            tr("Log Viewer"),
-            new SAKLogUi(this),
-            tb);
+    initNav({&navButtonGroup,
+             SAKUiInterface::cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
+             tr("Log Viewer"),
+             new SAKLogUi(this),
+             tb});
 #if 0
     path = ":/resources/icon/IconSettings.svg";
     initNav(&navButtonGroup,
@@ -758,31 +758,30 @@ void SAKMainWindow::initNav()
 #endif
 }
 
-void SAKMainWindow::initNav(
-    QButtonGroup* bg, const QIcon& icon, const QString& name, QWidget* page, QToolBar* tb)
+void SAKMainWindow::initNav(const NavContext& ctx)
 {
     bool isTextBesideIcon = SAKSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
     QToolButton* bt = new QToolButton();
     bt->setAutoRaise(true);
-    bt->setIcon(icon);
+    bt->setIcon(ctx.icon);
     bt->setCheckable(true);
     bt->setToolButtonStyle(style);
-    bt->setToolTip(name);
-    bt->setText(" " + name);
+    bt->setToolTip(ctx.name);
+    bt->setText(" " + ctx.name);
     bt->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 #if 0
     bt->setIconSize(QSize(32, 32));
 #endif
-    bg->addButton(bt);
-    tb->addWidget(bt);
+    ctx.bg->addButton(bt);
+    ctx.tb->addWidget(bt);
 
-    if (page->layout()) {
-        page->layout()->setContentsMargins(0, 0, 0, 0);
+    if (ctx.page->layout()) {
+        ctx.page->layout()->setContentsMargins(0, 0, 0, 0);
     }
-    ui->stackedWidget->addWidget(page);
+    ui->stackedWidget->addWidget(ctx.page);
 
-    int pageCount = bg->buttons().count();
+    int pageCount = ctx.bg->buttons().count();
     QObject::connect(bt, &QToolButton::clicked, bt, [=]() {
         ui->stackedWidget->setCurrentIndex(pageCount - 1);
         SAKSettings::instance()->setPageIndex(pageCount - 1);
