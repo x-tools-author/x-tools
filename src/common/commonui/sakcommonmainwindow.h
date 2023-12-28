@@ -84,11 +84,13 @@ QApplication* sakNewApp(int argc, char* argv[], const QString& title)
     QApplication* app = new QApplication(argc, argv);
 
     SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow();
-    T* assistant = new T(mainWindow);
+    T* centralWidget = new T(mainWindow);
     mainWindow->setWindowTitle(title);
-    mainWindow->setCentralWidget(assistant);
-    mainWindow->showMinimized();
-    mainWindow->resize(mainWindow->height() * 1.732, mainWindow->height());
+    mainWindow->setCentralWidget(centralWidget);
+    if (mainWindow->height() < 400) {
+        mainWindow->setMinimumHeight(400);
+    }
+    mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());
     mainWindow->show();
 
     return app;
