@@ -6,17 +6,12 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#include <QApplication>
-
-#include "sakcommonmainwindow.h"
 #include "saknumberassistant.h"
+#include "sakui.h"
 
 int main(int argc, char* argv[])
 {
-    const QString title = QObject::tr("Number Assistant");
-    QApplication* app = sakNewApp<SAKNumberAssistant>(argc, argv, title);
-    int ret = app->exec();
-    app->deleteLater();
-
-    return ret;
+    const QString appName = QObject::tr("Number Assistant");
+    SAK_APP(SAKNumberAssistant, argc, argv, appName);
+    return QApplication::exec();
 }

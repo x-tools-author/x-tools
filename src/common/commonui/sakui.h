@@ -16,18 +16,16 @@
 #include "saksettings.h"
 
 #define SAK_APP(WidgetType, argc, argv, appName) \
-    { \
-        sakDoSomethingBeforeAppCreated(argv, appName); \
-        QApplication(argc, argv); \
-        SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow(); \
-        WidgetType* centralWidget = new WidgetType(mainWindow); \
-        mainWindow->setWindowTitle(appName); \
-        mainWindow->setCentralWidget(centralWidget); \
-        if (mainWindow->height() < 400) { \
-            mainWindow->setMinimumHeight(400); \
-        } \
-        mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height()); \
-        mainWindow->show(); \
-    }
+    sakDoSomethingBeforeAppCreated(argv, appName); \
+    QApplication app(argc, argv); \
+    SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow(); \
+    WidgetType* centralWidget = new WidgetType(mainWindow); \
+    mainWindow->setWindowTitle(appName); \
+    mainWindow->setCentralWidget(centralWidget); \
+    if (mainWindow->height() < 400) { \
+        mainWindow->setMinimumHeight(400); \
+    } \
+    mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height()); \
+    mainWindow->show();
 
 #endif // SAKUI_H

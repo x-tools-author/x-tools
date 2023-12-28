@@ -6,17 +6,12 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#include <QApplication>
-
 #include "sakbase64assistant.h"
-#include "sakcommonmainwindow.h"
+#include "sakui.h"
 
 int main(int argc, char* argv[])
 {
-    const QString title = QObject::tr("Base64 Assisatnt");
-    QApplication* app = sakNewApp<SAKBase64Assisatnt>(argc, argv, title);
-    int ret = app->exec();
-    app->deleteLater();
-
-    return ret;
+    const QString appName = QObject::tr("Base64 Assisatnt");
+    SAK_APP(SAKBase64Assisatnt, argc, argv, appName);
+    return QApplication::exec();
 }

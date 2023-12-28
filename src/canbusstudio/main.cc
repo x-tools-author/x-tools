@@ -6,16 +6,12 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#include <QApplication>
-
 #include "sakcanbusstudioui.h"
-#include "sakcommonmainwindow.h"
+#include "sakui.h"
 
 int main(int argc, char* argv[])
 {
-    QApplication* app = sakNewApp<SAKCanBusUi>(argc, argv, QObject::tr("CAN Bus Studio"));
-    int ret = app->exec();
-    app->deleteLater();
-
-    return ret;
+    const QString appName = QObject::tr("CAN Bus Studio");
+    SAK_APP(SAKCanBusUi, argc, argv, appName);
+    return QApplication::exec();
 }
