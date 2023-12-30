@@ -19,6 +19,8 @@ int main(const int argc, char *argv[])
 
     SAKApplication app(argc, argv);
     int ret = SAKApplication::exec();
+
     sakShutdownGoogleLogging();
+
     return ret;
 }
