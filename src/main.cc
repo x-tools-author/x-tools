@@ -8,7 +8,6 @@
  **************************************************************************************************/
 #include "sak.h"
 #include "sakapplication.h"
-#include "saklog.h"
 
 int main(const int argc, char *argv[])
 {
@@ -18,7 +17,6 @@ int main(const int argc, char *argv[])
 #endif
     sakDoSomethingBeforeAppCreated(argv, appName);
 
-    SAKLog::instance()->start();
     SAKApplication app(argc, argv);
     int ret = SAKApplication::exec();
     sakShutdownGoogleLogging();
