@@ -744,12 +744,13 @@ void SAKMainWindow::initNav()
     });
     tb->addSeparator();
 #endif
-
+#if 0
     initNav({&navButtonGroup,
              SAKUiInterface::cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
              tr("Log Viewer"),
              new SAKLogUi(this),
              tb});
+#endif
 #if 0
     path = ":/resources/icon/IconSettings.svg";
     initNav(&navButtonGroup,

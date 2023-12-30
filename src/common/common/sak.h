@@ -83,8 +83,6 @@ static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, 
     Q_UNUSED(file)
     Q_UNUSED(line)
 #endif
-    // Show the log on ui.
-    SAKLog::instance()->appendLog(type, context, msg);
 }
 
 static void sakInitApp(const QString &appName)
