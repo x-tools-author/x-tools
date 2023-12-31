@@ -16,7 +16,6 @@
 #endif
 
 #include "sakinterface.h"
-#include "saklog.h"
 #include "saksettings.h"
 
 #ifdef SAK_USING_GLOG
