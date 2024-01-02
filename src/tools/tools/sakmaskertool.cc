@@ -24,7 +24,7 @@ SAKMaskerTool::~SAKMaskerTool()
 void SAKMaskerTool::inputBytes(const QByteArray &bytes)
 {
     if (!isEnable()) {
-        emit bytesOutput(bytes);
+        emit outputBytes(bytes);
         return;
     }
 
@@ -58,8 +58,8 @@ void SAKMaskerTool::run()
                 value ^= m_mask;
                 cookedBytes.append(reinterpret_cast<char *>(&value), 1);
             }
-
-            emit bytesOutput(cookedBytes);
+            
+            emit outputBytes(cookedBytes);
         }
 
         timer->start();

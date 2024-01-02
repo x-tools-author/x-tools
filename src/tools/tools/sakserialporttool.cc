@@ -145,7 +145,7 @@ void SAKSerialPortTool::readBytes()
         msg = QString("%1<-%2").arg(m_parameters.portName, msg);
         qInfo() << qPrintable(msg);
 #endif
-        emit bytesOutput(bytes);
+        emit outputBytes(bytes);
         emit bytesRead(bytes, m_serialPort->portName());
     }
 }

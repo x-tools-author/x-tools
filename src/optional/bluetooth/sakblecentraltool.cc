@@ -256,14 +256,14 @@ void SAKBleCentralTool::onServiceDiscoveryFinished()
                 &QLowEnergyService::characteristicChanged,
                 service,
                 [=](const QLowEnergyCharacteristic &info, const QByteArray &value) {
-                    emit bytesOutput(value);
+                    emit outputBytes(value);
                     emit bytesRead(value, info.name());
                 });
         connect(service,
                 &QLowEnergyService::characteristicRead,
                 service,
                 [=](const QLowEnergyCharacteristic &info, const QByteArray &value) {
-                    emit bytesOutput(value);
+                    emit outputBytes(value);
                     emit bytesRead(value, info.name());
                 });
         connect(service,

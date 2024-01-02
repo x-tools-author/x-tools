@@ -22,11 +22,6 @@ SAKToolBoxUiCommunicationMenu::SAKToolBoxUiCommunicationMenu(QWidget* parent)
     QWidgetAction* action = new QWidgetAction(this);
     action->setDefaultWidget(w);
     addAction(action);
-
-    ui->widgetTxMasker->setToolName("Tx masker");
-    ui->widgetRxMasker->setToolName("Rx masker");
-    ui->widgetTxAnanyzer->setToolName(tr("Tx analyzer"));
-    ui->widgetRxAnanlyzer->setToolName(tr("Rx analyzer"));
 }
 
 SAKToolBoxUiCommunicationMenu::~SAKToolBoxUiCommunicationMenu()
@@ -36,21 +31,8 @@ SAKToolBoxUiCommunicationMenu::~SAKToolBoxUiCommunicationMenu()
 
 void SAKToolBoxUiCommunicationMenu::initialize(SAKToolBox* toolBox, const QString& settingsGroup)
 {
-    auto txM = toolBox->getTxMaskerTool();
-    auto rxM = toolBox->getRxMaskerTool();
-    auto txA = toolBox->getTxAnalyzerTool();
-    auto rxA = toolBox->getRxAnalyzerTool();
     auto storer = toolBox->getStorerTool();
-
-    auto txMGroup = settingsGroup + "/txMasker";
-    auto rxMGroup = settingsGroup + "/rxMasker";
-    auto txAGroup = settingsGroup + "/txAnalyzer";
-    auto rxAGroup = settingsGroup + "/rxAnalyzer";
     auto storerGroup = settingsGroup + "/storer";
 
-    ui->widgetRxMasker->initialize(rxM, rxMGroup);
-    ui->widgetTxMasker->initialize(txM, txMGroup);
-    ui->widgetTxAnanyzer->initialize(txA, txAGroup);
-    ui->widgetRxAnanlyzer->initialize(rxA, rxAGroup);
     ui->widgetStorer->initialize(storer, storerGroup);
 }

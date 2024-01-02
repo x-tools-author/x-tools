@@ -12,11 +12,9 @@
 #include <QObject>
 #include <QVariant>
 
-#include "sakanalyzertool.h"
 #include "sakbasetool.h"
 #include "sakcommunicationtool.h"
 #include "sakemittertool.h"
-#include "sakmaskertool.h"
 #include "sakprestorertool.h"
 #include "sakresponsertool.h"
 #include "sakserialporttransmittertool.h"
@@ -31,10 +29,6 @@ class SAKToolBox : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QVariant communicaton READ communicaton NOTIFY communicatonChanged)
-    Q_PROPERTY(QVariant txMasker READ txMasker CONSTANT)
-    Q_PROPERTY(QVariant rxMasker READ rxMasker CONSTANT)
-    Q_PROPERTY(QVariant txAnalyzer READ txAnalyzer CONSTANT)
-    Q_PROPERTY(QVariant rxAnalyzer READ rxAnalyzer CONSTANT)
     Q_PROPERTY(QVariant emitter READ emitter CONSTANT)
     Q_PROPERTY(QVariant responser READ responser CONSTANT)
     Q_PROPERTY(QVariant storer READ storer CONSTANT)
@@ -63,10 +57,6 @@ public:
     bool isWorking();
 
     SAKCommunicationTool* getCommunicationTool();
-    SAKMaskerTool* getTxMaskerTool();
-    SAKMaskerTool* getRxMaskerTool();
-    SAKAnalyzerTool* getTxAnalyzerTool();
-    SAKAnalyzerTool* getRxAnalyzerTool();
     SAKEmitterTool* getEmitterTool();
     SAKResponserTool* getResponserTool();
     SAKStorerTool* getStorerTool();
@@ -84,31 +74,26 @@ signals:
     void errorOccurred(const QString& errorString);
 
 private:
-    QList<SAKBaseTool*> mToolList;
-    const QLoggingCategory mLoggingCategory{"sak.toolbox"};
+    QList<SAKBaseTool*> m_tools;
 
 private:
     void uninitializedTips();
 
 private:
-    SAKCommunicationTool* mComunicationTool{nullptr};
-    SAKMaskerTool* mTxMaskerTool{nullptr};
-    SAKMaskerTool* mRxMaskerTool{nullptr};
-    SAKAnalyzerTool* mTxAnalyzerTool{nullptr};
-    SAKAnalyzerTool* mRxAnalyzerTool{nullptr};
-    SAKEmitterTool* mEmitterTool{nullptr};
-    SAKResponserTool* mResponserTool{nullptr};
-    SAKStorerTool* mStorerTool{nullptr};
-    SAKPrestorerTool* mPrestorerTool{nullptr};
-    SAKVelometerTool* mRxVelometerTool{nullptr};
-    SAKVelometerTool* mTxVelometerTool{nullptr};
-    SAKStatisticianTool* mRxStatisticianTool{nullptr};
-    SAKStatisticianTool* mTxStatisticianTool{nullptr};
-    SAKUdpTransmitterTool* mUdpTransmitterTool{nullptr};
-    SAKTcpTransmitterTool* mTcpTransmitterTool{nullptr};
-    SAKWebSocketTransmitterTool* mWebSocketTransmitterTool{nullptr};
-    SAKSerialPortTransmitterTool* mSerialPortTransmitterTool{nullptr};
-    bool mIsWorking{false};
+    SAKCommunicationTool* m_comunicationTool{nullptr};
+    SAKEmitterTool* m_emitterTool{nullptr};
+    SAKResponserTool* m_responserTool{nullptr};
+    SAKStorerTool* m_storerTool{nullptr};
+    SAKPrestorerTool* m_prestorerTool{nullptr};
+    SAKVelometerTool* m_rxVelometerTool{nullptr};
+    SAKVelometerTool* m_txVelometerTool{nullptr};
+    SAKStatisticianTool* m_rxStatisticianTool{nullptr};
+    SAKStatisticianTool* m_txStatisticianTool{nullptr};
+    SAKUdpTransmitterTool* m_udpTransmitterTool{nullptr};
+    SAKTcpTransmitterTool* m_tcpTransmitterTool{nullptr};
+    SAKWebSocketTransmitterTool* m_webSocketTransmitterTool{nullptr};
+    SAKSerialPortTransmitterTool* m_serialPortTransmitterTool{nullptr};
+    bool m_isWorking{false};
 
 private:
     QVariant communicaton();

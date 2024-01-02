@@ -512,7 +512,7 @@ void SAKResponserTool::try2output(const QByteArray &bytes, QObject *receiver)
         }
 
         QTimer::singleShot(item.data.itemResponseDelay, receiver, [=]() {
-            emit bytesOutput(item.data.itemResponseText.toUtf8());
+            emit outputBytes(item.data.itemResponseText.toUtf8());
         });
     }
 }

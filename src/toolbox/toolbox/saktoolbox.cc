@@ -19,33 +19,28 @@ SAKToolBox::SAKToolBox(QObject* parent)
     };
 
     // clang-format off
-    mTxMaskerTool = qobject_cast<SAKMaskerTool*>(createTool(SAKToolFactory::MaskerTool));
-    mRxMaskerTool = qobject_cast<SAKMaskerTool*>(createTool(SAKToolFactory::MaskerTool));
-    mTxAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(createTool(SAKToolFactory::AnalyzerTool));
-    mRxAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(createTool(SAKToolFactory::AnalyzerTool));
-    mEmitterTool = qobject_cast<SAKEmitterTool*>(createTool(SAKToolFactory::EmitterTool));
-    mResponserTool = qobject_cast<SAKResponserTool*>(createTool(SAKToolFactory::ResponserTool));
-    mStorerTool = qobject_cast<SAKStorerTool*>(createTool(SAKToolFactory::StorerTool));
-    mPrestorerTool = qobject_cast<SAKPrestorerTool*>(createTool(SAKToolFactory::PrestoreTool));
-    mRxVelometerTool = qobject_cast<SAKVelometerTool*>(createTool(SAKToolFactory::VelometerTool));
-    mTxVelometerTool = qobject_cast<SAKVelometerTool*>(createTool(SAKToolFactory::VelometerTool));
-    mRxStatisticianTool = qobject_cast<SAKStatisticianTool*>(createTool(SAKToolFactory::StatistiticianTool));
-    mTxStatisticianTool = qobject_cast<SAKStatisticianTool*>(createTool(SAKToolFactory::StatistiticianTool));
+    m_emitterTool = qobject_cast<SAKEmitterTool*>(createTool(SAKToolFactory::EmitterTool));
+    m_responserTool = qobject_cast<SAKResponserTool*>(createTool(SAKToolFactory::ResponserTool));
+    m_storerTool = qobject_cast<SAKStorerTool*>(createTool(SAKToolFactory::StorerTool));
+    m_prestorerTool = qobject_cast<SAKPrestorerTool*>(createTool(SAKToolFactory::PrestoreTool));
+    m_rxVelometerTool = qobject_cast<SAKVelometerTool*>(createTool(SAKToolFactory::VelometerTool));
+    m_txVelometerTool = qobject_cast<SAKVelometerTool*>(createTool(SAKToolFactory::VelometerTool));
+    m_rxStatisticianTool = qobject_cast<SAKStatisticianTool*>(createTool(SAKToolFactory::StatistiticianTool));
+    m_txStatisticianTool = qobject_cast<SAKStatisticianTool*>(createTool(SAKToolFactory::StatistiticianTool));
 
-    mUdpTransmitterTool = qobject_cast<SAKUdpTransmitterTool*>(createTool(SAKToolFactory::UdpTransmitterTool));
-    mTcpTransmitterTool = qobject_cast<SAKTcpTransmitterTool*>(createTool(SAKToolFactory::TcpTransmitterTool));
-    mWebSocketTransmitterTool = qobject_cast<SAKWebSocketTransmitterTool*>( createTool(SAKToolFactory::WebSocketTransmitterTool));
-    mSerialPortTransmitterTool = qobject_cast<SAKSerialPortTransmitterTool*>( createTool(SAKToolFactory::SerialPortTransmitterTool));
+    m_udpTransmitterTool = qobject_cast<SAKUdpTransmitterTool*>(createTool(SAKToolFactory::UdpTransmitterTool));
+    m_tcpTransmitterTool = qobject_cast<SAKTcpTransmitterTool*>(createTool(SAKToolFactory::TcpTransmitterTool));
+    m_webSocketTransmitterTool = qobject_cast<SAKWebSocketTransmitterTool*>( createTool(SAKToolFactory::WebSocketTransmitterTool));
+    m_serialPortTransmitterTool = qobject_cast<SAKSerialPortTransmitterTool*>( createTool(SAKToolFactory::SerialPortTransmitterTool));
     // clang-format on
 
-    mToolList << mTxMaskerTool << mRxMaskerTool << mTxAnalyzerTool << mRxAnalyzerTool
-              << mEmitterTool << mResponserTool << mStorerTool << mPrestorerTool << mRxVelometerTool
-              << mTxVelometerTool << mRxStatisticianTool << mTxStatisticianTool
-              << mUdpTransmitterTool << mTcpTransmitterTool << mWebSocketTransmitterTool
-              << mSerialPortTransmitterTool;
+    m_tools << m_emitterTool << m_responserTool << m_storerTool << m_prestorerTool
+            << m_rxVelometerTool << m_txVelometerTool << m_rxStatisticianTool
+            << m_txStatisticianTool << m_udpTransmitterTool << m_tcpTransmitterTool
+            << m_webSocketTransmitterTool << m_serialPortTransmitterTool;
 
     int flag = Qt::AutoConnection | Qt::UniqueConnection;
-    for (auto tool : mToolList) {
+    for (auto tool : m_tools) {
         connect(tool,
                 &SAKBaseTool::errorOccured,
                 this,
@@ -58,13 +53,13 @@ SAKToolBox::SAKToolBox(QObject* parent)
 
 SAKToolBox::~SAKToolBox()
 {
-    if (mComunicationTool) {
-        mComunicationTool->exit();
-        mComunicationTool->wait();
-        mComunicationTool->deleteLater();
+    if (m_comunicationTool) {
+        m_comunicationTool->exit();
+        m_comunicationTool->wait();
+        m_comunicationTool->deleteLater();
     }
 
-    for (auto tool : mToolList) {
+    for (auto tool : m_tools) {
         tool->exit();
         tool->wait();
         tool->deleteLater();
@@ -73,55 +68,57 @@ SAKToolBox::~SAKToolBox()
 
 void SAKToolBox::initialize(int type)
 {
-    if (mComunicationTool) {
-        mComunicationTool->exit();
-        mComunicationTool->wait();
-        mComunicationTool->deleteLater();
-        mComunicationTool = nullptr;
+    if (m_comunicationTool) {
+        m_comunicationTool->exit();
+        m_comunicationTool->wait();
+        m_comunicationTool->deleteLater();
+        m_comunicationTool = nullptr;
     }
 
     auto toolFactory = SAKToolFactory::instance();
     auto tool = toolFactory->createTool(type);
-    mComunicationTool = qobject_cast<SAKCommunicationTool*>(tool);
-    if (!mComunicationTool) {
+    m_comunicationTool = qobject_cast<SAKCommunicationTool*>(tool);
+    if (!m_comunicationTool) {
         qWarning() << "mComunicationTool is nullptr, type:" << type;
         return;
     }
 
     // clang-format off
-    // rx->output_masker->output_analyzer->responser
-    connect(mComunicationTool, &SAKBaseTool::bytesOutput, mRxMaskerTool, &SAKBaseTool::inputBytes);
-    connect(mRxMaskerTool, &SAKBaseTool::bytesOutput, mRxAnalyzerTool, &SAKBaseTool::inputBytes);
-    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutput, mResponserTool, &SAKBaseTool::inputBytes);
-    // emiiter,responser,prestorer->input_analyzer->input_masker->tx
-    connect(mEmitterTool, &SAKBaseTool::bytesOutput, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
-    connect(mResponserTool, &SAKBaseTool::bytesOutput, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
-    connect(mPrestorerTool, &SAKBaseTool::bytesOutput, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
-    connect(mTxAnalyzerTool, &SAKBaseTool::bytesOutput, mTxMaskerTool, &SAKBaseTool::inputBytes);
-    connect(mTxMaskerTool, &SAKBaseTool::bytesOutput, mComunicationTool, &SAKBaseTool::inputBytes);
+    // rx->responser
+    connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_responserTool, &SAKBaseTool::inputBytes);
+    // emiiter,responser,prestorer->tx
+    connect(m_emitterTool, &SAKBaseTool::outputBytes, m_comunicationTool, &SAKBaseTool::inputBytes);
+    connect(m_responserTool, &SAKBaseTool::outputBytes, m_comunicationTool, &SAKBaseTool::inputBytes);
+    connect(m_prestorerTool, &SAKBaseTool::outputBytes, m_comunicationTool, &SAKBaseTool::inputBytes);
     // rx->storer; tx->storer
-    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutput, mStorerTool, &SAKBaseTool::inputBytes);
-    connect(mTxMaskerTool, &SAKBaseTool::bytesOutput, mStorerTool, &SAKBaseTool::inputBytes);
+    connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_storerTool, &SAKBaseTool::inputBytes);
+    connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_storerTool, &SAKBaseTool::inputBytes);
     // rx->velometer; tx->velometer
-    connect(mComunicationTool, &SAKBaseTool::bytesOutput, mRxVelometerTool, &SAKBaseTool::inputBytes);
-    connect(mComunicationTool, &SAKBaseTool::bytesOutput, mTxVelometerTool, &SAKBaseTool::inputBytes);
+    connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_rxVelometerTool, &SAKBaseTool::inputBytes);
+    connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_txVelometerTool, &SAKBaseTool::inputBytes);
     // rx->statistician; tx->statistician
-    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutput, mRxStatisticianTool, &SAKBaseTool::inputBytes);
-    connect(mComunicationTool, &SAKBaseTool::bytesOutput, mTxStatisticianTool, &SAKBaseTool::inputBytes);
+    connect(m_comunicationTool, &SAKCommunicationTool::bytesRead, m_rxStatisticianTool, [=](const QByteArray& bytes, const QString &from){
+        Q_UNUSED(from)
+        m_rxStatisticianTool->inputBytes(bytes);
+    });
+    connect(m_comunicationTool, &SAKCommunicationTool::bytesWritten, m_txStatisticianTool, [=](const QByteArray& bytes, const QString &to){
+        Q_UNUSED(to)
+        m_txStatisticianTool->inputBytes(bytes);
+    });
     // rx->serialport transmition; serialport transmition->Tx analyzer
-    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutput, mSerialPortTransmitterTool, &SAKBaseTool::inputBytes);
-    connect(mSerialPortTransmitterTool, &SAKBaseTool::bytesOutput, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_serialPortTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(m_serialPortTransmitterTool, &SAKBaseTool::outputBytes, m_comunicationTool, &SAKBaseTool::inputBytes);
     // rx->udp transmition; udp transmition->Tx analyzer
-    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutput, mUdpTransmitterTool, &SAKBaseTool::inputBytes);
-    connect(mUdpTransmitterTool, &SAKBaseTool::bytesOutput, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_udpTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(m_udpTransmitterTool, &SAKBaseTool::outputBytes, m_comunicationTool, &SAKBaseTool::inputBytes);
     // rx->tcp transmition; tcp transmition->Tx analyzer
-    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutput, mTcpTransmitterTool, &SAKBaseTool::inputBytes);
-    connect(mTcpTransmitterTool, &SAKBaseTool::bytesOutput, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_tcpTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(m_tcpTransmitterTool, &SAKBaseTool::outputBytes, m_comunicationTool, &SAKBaseTool::inputBytes);
     // rx->websocket transmition; websocket transmition->Tx analyzer
-    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutput, mWebSocketTransmitterTool, &SAKBaseTool::inputBytes);
-    connect(mWebSocketTransmitterTool, &SAKBaseTool::bytesOutput, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_webSocketTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(m_webSocketTransmitterTool, &SAKBaseTool::outputBytes, m_comunicationTool, &SAKBaseTool::inputBytes);
     
-    connect(mComunicationTool, &SAKCommunicationTool::errorOccured, this, &SAKToolBox::errorOccurred);
+    connect(m_comunicationTool, &SAKCommunicationTool::errorOccured, this, &SAKToolBox::errorOccurred);
     // clang-format on
 
     emit communicatonChanged();
@@ -129,14 +126,14 @@ void SAKToolBox::initialize(int type)
 
 void SAKToolBox::open()
 {
-    if (mComunicationTool) {
-        for (auto tool : mToolList) {
+    if (m_comunicationTool) {
+        for (auto tool : m_tools) {
             tool->start();
         }
 
-        mIsWorking = true;
+        m_isWorking = true;
         emit isWorkingChanged();
-        mComunicationTool->start();
+        m_comunicationTool->start();
     } else {
         uninitializedTips();
     }
@@ -144,16 +141,16 @@ void SAKToolBox::open()
 
 void SAKToolBox::close()
 {
-    if (mComunicationTool) {
-        mComunicationTool->exit();
-        mComunicationTool->wait();
+    if (m_comunicationTool) {
+        m_comunicationTool->exit();
+        m_comunicationTool->wait();
 
-        for (auto tool : mToolList) {
+        for (auto tool : m_tools) {
             tool->exit();
             tool->wait();
         }
 
-        mIsWorking = false;
+        m_isWorking = false;
         emit isWorkingChanged();
     } else {
         uninitializedTips();
@@ -162,97 +159,77 @@ void SAKToolBox::close()
 
 void SAKToolBox::send(const QByteArray& bytes)
 {
-    mTxAnalyzerTool->inputBytes(bytes);
+    m_comunicationTool->inputBytes(bytes);
 }
 
 bool SAKToolBox::isWorking()
 {
-    return mIsWorking;
+    return m_isWorking;
 }
 
 SAKCommunicationTool* SAKToolBox::getCommunicationTool()
 {
-    return mComunicationTool;
-}
-
-SAKMaskerTool* SAKToolBox::getTxMaskerTool()
-{
-    return mTxMaskerTool;
-}
-
-SAKMaskerTool* SAKToolBox::getRxMaskerTool()
-{
-    return mRxMaskerTool;
-}
-
-SAKAnalyzerTool* SAKToolBox::getTxAnalyzerTool()
-{
-    return mTxAnalyzerTool;
-}
-
-SAKAnalyzerTool* SAKToolBox::getRxAnalyzerTool()
-{
-    return mRxAnalyzerTool;
+    return m_comunicationTool;
 }
 
 SAKEmitterTool* SAKToolBox::getEmitterTool()
 {
-    return mEmitterTool;
+    return m_emitterTool;
 }
 
 SAKResponserTool* SAKToolBox::getResponserTool()
 {
-    return mResponserTool;
+    return m_responserTool;
 }
 
 SAKStorerTool* SAKToolBox::getStorerTool()
 {
-    return mStorerTool;
+    return m_storerTool;
 }
 
 SAKPrestorerTool* SAKToolBox::getPrestorerTool()
 {
-    return mPrestorerTool;
+    return m_prestorerTool;
 }
 
 SAKVelometerTool* SAKToolBox::getRxVelometerTool()
 {
-    return mRxVelometerTool;
+    return m_rxVelometerTool;
 }
 
 SAKVelometerTool* SAKToolBox::getTxVelometerTool()
 {
-    return mTxVelometerTool;
+    return m_txVelometerTool;
 }
 
 SAKStatisticianTool* SAKToolBox::getRxStatisticianTool()
 {
-    return mRxStatisticianTool;
+    return m_rxStatisticianTool;
 }
 
 SAKStatisticianTool* SAKToolBox::getTxStatisticianTool()
 {
-    return mTxStatisticianTool;
+    return m_txStatisticianTool;
 }
 
 SAKUdpTransmitterTool* SAKToolBox::getUdpTransmitterTool()
 {
-    return mUdpTransmitterTool;
+    return m_udpTransmitterTool;
 }
 
 SAKTcpTransmitterTool* SAKToolBox::getTcpTransmitterTool()
 {
-    return mTcpTransmitterTool;
+    return m_tcpTransmitterTool;
 }
 
 SAKWebSocketTransmitterTool* SAKToolBox::getWebSocketTransmitterTool()
 {
-    return mWebSocketTransmitterTool;
+    return m_webSocketTransmitterTool;
 }
 
 SAKSerialPortTransmitterTool* SAKToolBox::getSerialPortTransmitterTool()
 {
-    return mSerialPortTransmitterTool;
+    return m_serialPortTransmitterTool;
 }
 
 void SAKToolBox::uninitializedTips()
@@ -266,85 +243,65 @@ void SAKToolBox::uninitializedTips()
 
 QVariant SAKToolBox::communicaton()
 {
-    return QVariant::fromValue(mComunicationTool);
-}
-
-QVariant SAKToolBox::txMasker()
-{
-    return QVariant::fromValue(mTxMaskerTool);
-}
-
-QVariant SAKToolBox::rxMasker()
-{
-    return QVariant::fromValue(mRxMaskerTool);
-}
-
-QVariant SAKToolBox::txAnalyzer()
-{
-    return QVariant::fromValue(mTxAnalyzerTool);
-}
-
-QVariant SAKToolBox::rxAnalyzer()
-{
-    return QVariant::fromValue(mRxAnalyzerTool);
+    return QVariant::fromValue(m_comunicationTool);
 }
 
 QVariant SAKToolBox::emitter()
 {
-    return QVariant::fromValue(mEmitterTool);
+    return QVariant::fromValue(m_emitterTool);
 }
 
 QVariant SAKToolBox::responser()
 {
-    return QVariant::fromValue(mResponserTool);
+    return QVariant::fromValue(m_responserTool);
 }
 
 QVariant SAKToolBox::storer()
 {
-    return QVariant::fromValue(mStorerTool);
+    return QVariant::fromValue(m_storerTool);
 }
 
 QVariant SAKToolBox::prestorer()
 {
-    return QVariant::fromValue(mPrestorerTool);
+    return QVariant::fromValue(m_prestorerTool);
 }
 
 QVariant SAKToolBox::rxVelometer()
 {
-    return QVariant::fromValue(mRxVelometerTool);
+    return QVariant::fromValue(m_rxVelometerTool);
 }
 
 QVariant SAKToolBox::txVelometer()
 {
-    return QVariant::fromValue(mTxVelometerTool);
+    return QVariant::fromValue(m_txVelometerTool);
 }
 
 QVariant SAKToolBox::rxStatistician()
 {
-    return QVariant::fromValue(mRxStatisticianTool);
+    return QVariant::fromValue(m_rxStatisticianTool);
 }
 
 QVariant SAKToolBox::txStatistician()
 {
-    return QVariant::fromValue(mTxStatisticianTool);
+    return QVariant::fromValue(m_txStatisticianTool);
 }
 
 QVariant SAKToolBox::udpTransmitter()
 {
-    return QVariant::fromValue(mUdpTransmitterTool);
+    return QVariant::fromValue(m_udpTransmitterTool);
 }
 
 QVariant SAKToolBox::tcpTransmitter()
 {
-    return QVariant::fromValue(mTcpTransmitterTool);
+    return QVariant::fromValue(m_tcpTransmitterTool);
 }
 
 QVariant SAKToolBox::webSocketTransmitter()
 {
-    return QVariant::fromValue(mWebSocketTransmitterTool);
+    return QVariant::fromValue(m_webSocketTransmitterTool);
 }
 
 QVariant SAKToolBox::serialPortTransmitter()
 {
-    return QVariant::fromValue(mSerialPortTransmitterTool);
+    return QVariant::fromValue(m_serialPortTransmitterTool);
 }

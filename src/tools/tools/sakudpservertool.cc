@@ -96,8 +96,8 @@ void SAKUdpServerTool::readBytes()
             mClients.append(info);
             emit clientsChanged();
         }
-
-        emit bytesOutput(bytes);
+        
+        emit outputBytes(bytes);
         emit bytesRead(bytes, info);
     }
 }

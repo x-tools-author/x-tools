@@ -71,6 +71,6 @@ void SAKCrcCalculatorTool::inputBytes(const QByteArray &bytes)
                                                     m_bigEndian);
     QByteArray cookedBytes = bytes;
     cookedBytes.append(crc);
-
-    emit bytesOutput(cookedBytes);
+    
+    emit outputBytes(cookedBytes);
 }

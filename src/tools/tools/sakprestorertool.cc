@@ -314,7 +314,7 @@ void SAKPrestorerTool::try2send()
     if (index >= 0 && index < mItems.count()) {
         auto item = mItems.at(index);
         QByteArray bytes = itemBytes(item);
-        emit bytesOutput(bytes);
+        emit outputBytes(bytes);
     }
     mItemsMutex.unlock();
 }

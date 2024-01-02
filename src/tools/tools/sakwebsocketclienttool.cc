@@ -44,14 +44,14 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
         QString hex = QString::fromLatin1(ba);
         QString info = mBindingIpPort + "<-" + this->m_peerInfo + ":" + hex;
         //outputMessage(QtInfoMsg, info);
-        emit bytesOutput(msg);
+        emit outputBytes(msg);
         emit bytesRead(msg, this->m_peerInfo);
     });
 
     connect(m_webSocket, &QWebSocket::textMessageReceived, m_webSocket, [=](QString message) {
         QString info = mBindingIpPort + "<-" + this->m_peerInfo + ":" + message;
         //outputMessage(QtInfoMsg, info);
-        emit bytesOutput(message.toUtf8());
+        emit outputBytes(message.toUtf8());
         emit bytesRead(message.toUtf8(), this->m_peerInfo);
     });
 

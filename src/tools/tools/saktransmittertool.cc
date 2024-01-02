@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -21,33 +21,42 @@ SAKTransmitterTool::SAKTransmitterTool(QObject *parent)
 SAKCommunicationTool *SAKTransmitterTool::communicationTool(int index)
 {
     SAKCommunicationTool *tool = Q_NULLPTR;
-    mToolVectorMutex.lock();
-    if (index >= 0 && index < mToolVector.count()) {
-        tool = mToolVector.at(index);
+    m_toolsMutex.lock();
+    if (index >= 0 && index < m_tools.count()) {
+        tool = m_tools.at(index);
     }
-    mToolVectorMutex.unlock();
+    m_toolsMutex.unlock();
 
     return tool;
+}
+
+void SAKTransmitterTool::inputBytes(const QByteArray &bytes)
+{
+    m_toolsMutex.lock();
+    for (auto tool : m_tools) {
+        tool->inputBytes(bytes);
+    }
+    m_toolsMutex.unlock();
 }
 
 int SAKTransmitterTool::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    int ret = mToolVector.length();
+    int ret = m_tools.length();
     return ret;
 }
 
 bool SAKTransmitterTool::removeRows(int row, int count, const QModelIndex &parent)
 {
-    if (mToolVector.isEmpty()) {
+    if (m_tools.isEmpty()) {
         return true;
     }
 
     Q_UNUSED(parent)
-    bool isValidRow = (row >= 0 && row < mToolVector.count());
+    bool isValidRow = (row >= 0 && row < m_tools.count());
     Q_ASSERT_X(isValidRow, __FUNCTION__, "invalid row");
 
-    bool isValidCount = (count >= 0 && count <= mToolVector.count());
+    bool isValidCount = (count >= 0 && count <= m_tools.count());
     Q_ASSERT_X(isValidCount, __FUNCTION__, "invalid count");
 
     if (!(isValidCount && isValidRow)) {
@@ -55,7 +64,7 @@ bool SAKTransmitterTool::removeRows(int row, int count, const QModelIndex &paren
     }
 
     while (count--) {
-        auto tool = mToolVector.takeAt(row);
+        auto tool = m_tools.takeAt(row);
         tool->exit();
         tool->wait();
         tool->deleteLater();
@@ -71,7 +80,7 @@ bool SAKTransmitterTool::insertRows(int row, int count, const QModelIndex &paren
 
     auto initTool = [=](SAKCommunicationTool *tool) {
         tool->setParent(this);
-        connect(this, &SAKCommunicationTool::bytesOutput, tool, &SAKCommunicationTool::inputBytes);
+        connect(this, &SAKCommunicationTool::outputBytes, tool, &SAKCommunicationTool::inputBytes);
         connect(this, &SAKCommunicationTool::started, tool, [=]() { tool->start(); });
         connect(this, &SAKCommunicationTool::finished, tool, [=]() { tool->exit(); });
 
@@ -87,11 +96,11 @@ bool SAKTransmitterTool::insertRows(int row, int count, const QModelIndex &paren
     };
 
     for (int i = 0; i < count; i++) {
-        mToolVectorMutex.lock();
+        m_toolsMutex.lock();
         auto tool = createTool();
         initTool(tool);
-        mToolVector.insert(row, tool);
-        mToolVectorMutex.unlock();
+        m_tools.insert(row, tool);
+        m_toolsMutex.unlock();
     }
 
     return true;

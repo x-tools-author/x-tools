@@ -43,7 +43,7 @@ bool SAKTcpServerTool::initialize(QString &errStr)
             QByteArray bytes = client->readAll();
             QString hex = bytes.toHex();
             //outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort, ipPort, hex));
-            emit bytesOutput(bytes);
+            emit outputBytes(bytes);
         });
 
         connect(client, &QTcpSocket::disconnected, client, [=]() {

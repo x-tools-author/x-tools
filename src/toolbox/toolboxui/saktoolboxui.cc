@@ -202,7 +202,7 @@ void SAKToolBoxUi::try2send()
 
     bytes.prepend(prefixData);
     bytes.append(suffixData);
-    mToolBox->getTxAnalyzerTool()->inputBytes(bytes);
+    mToolBox->getCommunicationTool()->inputBytes(bytes);
 }
 
 QString SAKToolBoxUi::dateTimeFormat()

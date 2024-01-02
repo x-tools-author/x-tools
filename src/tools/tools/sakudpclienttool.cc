@@ -98,7 +98,7 @@ void SAKUdpClientTool::readBytes()
             QString serverInfo = address.toString() + ":" + portStr;
             QString info = mBindingIpPort + "<-" + serverInfo + ":" + hex;
             //outputMessage(QtInfoMsg, info);
-            emit bytesOutput(bytes);
+            emit outputBytes(bytes);
             emit bytesRead(bytes, mBindingIpPort);
         }
     }

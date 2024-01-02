@@ -42,8 +42,8 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
 {
     QJsonObject obj;
     ItemContextKey ctx;
-    if (index >= 0 && index < mToolVector.count()) {
-        SAKSerialPortTool *tool = qobject_cast<SAKSerialPortTool *>(mToolVector.value(index));
+    if (index >= 0 && index < m_tools.count()) {
+        SAKSerialPortTool *tool = qobject_cast<SAKSerialPortTool *>(m_tools.value(index));
         obj.insert(ctx.baudRate, tool->baudRate());
         obj.insert(ctx.dataBits, tool->dataBits());
         obj.insert(ctx.enable, tool->isEnable());
@@ -70,11 +70,11 @@ void SAKSerialPortTransmitterTool::inputBytes(const QByteArray &bytes)
     QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
     QString hex = QString::fromLatin1(ba);
 
-    mToolVectorMutex.lock();
-    for (auto tool : mToolVector) {
+    m_toolsMutex.lock();
+    for (auto tool : m_tools) {
         tool->inputBytes(bytes);
     }
-    mToolVectorMutex.unlock();
+    m_toolsMutex.unlock();
 }
 
 int SAKSerialPortTransmitterTool::columnCount(const QModelIndex &parent) const
@@ -88,8 +88,8 @@ QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index, int role) 
     if (role != Qt::DisplayRole) {
         return QVariant();
     }
-
-    auto ret = qobject_cast<SAKSerialPortTool *>(mToolVector.value(index.row()));
+    
+    auto ret = qobject_cast<SAKSerialPortTool *>(m_tools.value(index.row()));
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKey ctx;
     if (key == ctx.enable) {
@@ -120,8 +120,8 @@ bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index, const QVari
     if (role != Qt::EditRole) {
         return false;
     }
-
-    auto ret = qobject_cast<SAKSerialPortTool *>(mToolVector.value(index.row()));
+    
+    auto ret = qobject_cast<SAKSerialPortTool *>(m_tools.value(index.row()));
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKey ctx;
     if (key == ctx.enable) {

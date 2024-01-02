@@ -254,7 +254,7 @@ void SAKEmitterTool::try2emit()
         if (elapsedTime > item.data.itemInterval && item.data.itemEnable) {
             item.elapsedTime = 0;
             const auto bytes = itemBytes(item.data);
-            emit bytesOutput(bytes);
+            emit outputBytes(bytes);
         }
     }
     mItemsMutex.unlock();

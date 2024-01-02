@@ -14,36 +14,12 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="1">
-    <widget class="SAKAnalyzerToolUi" name="widgetTxAnanyzer" native="true"/>
-   </item>
-   <item row="1" column="0">
-    <widget class="SAKAnalyzerToolUi" name="widgetRxAnanlyzer" native="true"/>
-   </item>
-   <item row="0" column="1">
-    <widget class="SAKMaskerToolUi" name="widgetTxMasker" native="true"/>
-   </item>
-   <item row="0" column="0">
-    <widget class="SAKMaskerToolUi" name="widgetRxMasker" native="true"/>
-   </item>
-   <item row="3" column="0" colspan="2">
+   <item row="1" column="0" colspan="2">
     <widget class="SAKStorerToolUi" name="widgetStorer" native="true"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>SAKAnalyzerToolUi</class>
-   <extends>QWidget</extends>
-   <header location="global">sakanalyzertoolui.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>SAKMaskerToolUi</class>
-   <extends>QWidget</extends>
-   <header location="global">sakmaskertoolui.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>SAKStorerToolUi</class>
    <extends>QWidget</extends>
