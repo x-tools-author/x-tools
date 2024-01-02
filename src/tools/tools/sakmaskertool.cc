@@ -8,7 +8,6 @@
  **************************************************************************************************/
 #include <QTimer>
 
-#include "sakinterface.h"
 #include "sakmaskertool.h"
 
 SAKMaskerTool::SAKMaskerTool(QObject *parent)
@@ -24,6 +23,11 @@ SAKMaskerTool::~SAKMaskerTool()
 
 void SAKMaskerTool::inputBytes(const QByteArray &bytes)
 {
+    if (!isEnable()) {
+        emit bytesOutput(bytes);
+        return;
+    }
+
     m_inputBytesListMutex.lock();
     m_inputBytesList.append(bytes);
     m_inputBytesListMutex.unlock();
@@ -43,30 +47,19 @@ void SAKMaskerTool::run()
         QByteArray bytes;
         this->m_inputBytesListMutex.lock();
         if (!this->m_inputBytesList.isEmpty()) {
-            auto ctx = m_inputBytesList.takeFirst();
+            bytes = m_inputBytesList.takeFirst();
         }
         this->m_inputBytesListMutex.unlock();
 
         if (!bytes.isEmpty()) {
-            QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
-            QString hex = QString::fromLatin1(ba);
-            
-            if (this->isEnable()) {
-                QByteArray cookedBytes;
-                for (int i = 0; i < bytes.length(); i++) {
-                    quint8 value = quint8(bytes.at(i));
-                    value ^= m_mask;
-                    cookedBytes.append(reinterpret_cast<char *>(&value), 1);
-                }
-
-                ba = SAKInterface::arrayToHex(cookedBytes, ' ');
-                QString hex = QString::fromLatin1(ba);
-                emit bytesOutput(cookedBytes);
-            } else {
-                ba = SAKInterface::arrayToHex(bytes, ' ');
-                QString hex = QString::fromLatin1(ba);
-                emit bytesOutput(bytes);
+            QByteArray cookedBytes;
+            for (int i = 0; i < bytes.length(); i++) {
+                quint8 value = quint8(bytes.at(i));
+                value ^= m_mask;
+                cookedBytes.append(reinterpret_cast<char *>(&value), 1);
             }
+
+            emit bytesOutput(cookedBytes);
         }
 
         timer->start();

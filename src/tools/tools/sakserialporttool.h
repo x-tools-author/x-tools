@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -55,9 +55,10 @@ signals:
 
 protected:
     bool initialize(QString &errStr) override;
-    void writeBytes(const QByteArray &bytes);
-    void readBytes();
+    void writeBytes(const QByteArray &bytes) override;
     void uninitialize() override;
+
+    void readBytes();
 
 private:
     struct
@@ -68,10 +69,10 @@ private:
         int stopBits{QSerialPort::OneStop};
         int parity{QSerialPort::NoParity};
         int flowControl{QSerialPort::NoFlowControl};
-    } mParameters;
+    } m_parameters;
 
 private:
-    QSerialPort *mSerialPort{Q_NULLPTR};
+    QSerialPort *m_serialPort{Q_NULLPTR};
 };
 
 #endif // SAKSERIALPORTTOOL_H

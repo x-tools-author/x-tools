@@ -83,8 +83,8 @@ private:
 
 private slots:
     void onIsWorkingChanged();
-    void onBytesWritten(const QByteArray &bytes, const QString &to);
-    void onBytesRead(const QByteArray &bytes, const QString &from);
+    void onBytesWritten(const QByteArray &bytes, const QString &from);
+    void onBytesRead(const QByteArray &bytes, const QString &to);
     void onInputTextChanged();
 
 private:

@@ -250,13 +250,13 @@ void SAKToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bool 
     QString flags = isRx ? "Rx" : "Tx";
     QString color = isRx ? "red" : "blue";
 
-    flags = QString("<font color=%1>%2</font>").arg(color, flags);
+    flags = QString("<font color=%1>%2</font>").arg(color, flag);
     QString info;
     if (dt.isEmpty()) {
-        info = QString("[%1]").arg(flag);
+        info = QString("[%1]").arg(flags);
     } else {
         dt = QString("<font color=silver>%1</font>").arg(dt);
-        info = QString("[%1 %2]").arg(dt, flag);
+        info = QString("[%1 %2]").arg(dt, flags);
     }
 
     info = QString("<font color=silver>%1</font>").arg(info);
@@ -337,22 +337,22 @@ void SAKToolBoxUi::onIsWorkingChanged()
     }
 }
 
-void SAKToolBoxUi::onBytesWritten(const QByteArray& bytes, const QString& to)
+void SAKToolBoxUi::onBytesWritten(const QByteArray& bytes, const QString& from)
 {
     if (!ui->checkBoxOutputTx->isChecked()) {
         return;
     }
 
-    output2ui(bytes, to, false);
+    output2ui(bytes, from, false);
 }
 
-void SAKToolBoxUi::onBytesRead(const QByteArray& bytes, const QString& from)
+void SAKToolBoxUi::onBytesRead(const QByteArray& bytes, const QString& to)
 {
     if (!ui->checkBoxOutputRx->isChecked()) {
         return;
     }
 
-    output2ui(bytes, from, true);
+    output2ui(bytes, to, true);
 }
 
 void SAKToolBoxUi::onInputTextChanged()
@@ -632,9 +632,7 @@ void SAKToolBoxUi::initTools()
             &SAKCommunicationTool::bytesWritten,
             this,
             &SAKToolBoxUi::onBytesWritten);
-
-    auto outputAnalyzer = mToolBox->getRxAnalyzerTool();
-    //connect(outputAnalyzer, &SAKAnalyzerTool::bytesOutput, this, &::SAKToolBoxUi::onBytesRead);
+    connect(mCommunicationTool, &SAKCommunicationTool::bytesRead, this, &SAKToolBoxUi::onBytesRead);
 
     ui->pushButtonPrestorer->setMenu(mPrestorerToolUi->menu());
 }

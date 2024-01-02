@@ -17,30 +17,30 @@ SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
 
 void SAKAnalyzerTool::setFixed(bool fixed)
 {
-    mParametersMutex.lock();
-    mParameters.fixed = fixed;
-    mParametersMutex.unlock();
+    m_parametersMutex.lock();
+    m_parameters.fixed = fixed;
+    m_parametersMutex.unlock();
 }
 
 void SAKAnalyzerTool::setFrameBytes(int bytes)
 {
-    mParametersMutex.lock();
-    mParameters.frameBytes = bytes;
-    mParametersMutex.unlock();
+    m_parametersMutex.lock();
+    m_parameters.frameBytes = bytes;
+    m_parametersMutex.unlock();
 }
 
 void SAKAnalyzerTool::setSeparationMark(const QByteArray &mark)
 {
-    mParametersMutex.lock();
-    mParameters.separationMark = mark;
-    mParametersMutex.unlock();
+    m_parametersMutex.lock();
+    m_parameters.separationMark = mark;
+    m_parametersMutex.unlock();
 }
 
 void SAKAnalyzerTool::setMaxTempBytes(int maxBytes)
 {
-    mParametersMutex.lock();
-    mParameters.maxTempBytes = maxBytes;
-    mParametersMutex.unlock();
+    m_parametersMutex.lock();
+    m_parameters.maxTempBytes = maxBytes;
+    m_parametersMutex.unlock();
 }
 
 void SAKAnalyzerTool::inputBytes(const QByteArray &bytes)
@@ -50,15 +50,11 @@ void SAKAnalyzerTool::inputBytes(const QByteArray &bytes)
         return;
     }
 
-    QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
-    
     if (isEnable()) {
-        mInputtedBytesMutex.lock();
-        mInputtedBytes.append(bytes);
-        mInputtedBytesMutex.unlock();
+        m_inputtedBytesMutex.lock();
+        m_inputtedBytes.append(bytes);
+        m_inputtedBytesMutex.unlock();
     } else {
-        QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
-        QString hex = QString::fromLatin1(ba);
         emit bytesOutput(bytes);
     }
 }
@@ -70,9 +66,9 @@ void SAKAnalyzerTool::run()
     handleTimer->setSingleShot(true);
     connect(handleTimer, &QTimer::timeout, handleTimer, [=]() {
         if (m_enable) {
-            mInputtedBytesMutex.lock();
+            m_inputtedBytesMutex.lock();
             analyze();
-            mInputtedBytesMutex.unlock();
+            m_inputtedBytesMutex.unlock();
         }
         handleTimer->start();
     });
@@ -85,16 +81,16 @@ void SAKAnalyzerTool::run()
     handleTimer->stop();
     handleTimer->deleteLater();
 
-    mInputtedBytesMutex.lock();
-    mInputtedBytes.clear();
-    mInputtedBytesMutex.unlock();
+    m_inputtedBytesMutex.lock();
+    m_inputtedBytes.clear();
+    m_inputtedBytesMutex.unlock();
 }
 
 void SAKAnalyzerTool::analyze()
 {
-    mParametersMutex.lock();
-    auto ctx = mParameters;
-    mParametersMutex.unlock();
+    m_parametersMutex.lock();
+    auto ctx = m_parameters;
+    m_parametersMutex.unlock();
 
     if (ctx.fixed) {
         analyzeFixed();
@@ -102,23 +98,23 @@ void SAKAnalyzerTool::analyze()
         analyzeSeparationMark();
     }
 
-    if (mInputtedBytes.length() > ctx.maxTempBytes) {
-        QByteArray ba = SAKInterface::arrayToHex(mInputtedBytes, ' ');
+    if (m_inputtedBytes.length() > ctx.maxTempBytes) {
+        QByteArray ba = SAKInterface::arrayToHex(m_inputtedBytes, ' ');
         qInfo() << "clear bytes: " + QString::fromLatin1(ba);
-        emit bytesOutput(mInputtedBytes);
-        mInputtedBytes.clear();
+        emit bytesOutput(m_inputtedBytes);
+        m_inputtedBytes.clear();
     }
 }
 
 void SAKAnalyzerTool::analyzeFixed()
 {
-    mParametersMutex.lock();
-    auto ctx = mParameters;
-    mParametersMutex.unlock();
+    m_parametersMutex.lock();
+    auto ctx = m_parameters;
+    m_parametersMutex.unlock();
 
-    while (mInputtedBytes.length() >= ctx.frameBytes) {
-        QByteArray frame(mInputtedBytes.data(), ctx.frameBytes);
-        mInputtedBytes.remove(0, ctx.frameBytes);
+    while (m_inputtedBytes.length() >= ctx.frameBytes) {
+        QByteArray frame(m_inputtedBytes.data(), ctx.frameBytes);
+        m_inputtedBytes.remove(0, ctx.frameBytes);
 
         QByteArray ba = SAKInterface::arrayToHex(frame, ' ');
         QString hex = QString::fromLatin1(ba);
@@ -129,31 +125,31 @@ void SAKAnalyzerTool::analyzeFixed()
 
 void SAKAnalyzerTool::analyzeSeparationMark()
 {
-    if (mInputtedBytes.isEmpty()) {
+    if (m_inputtedBytes.isEmpty()) {
         return;
     }
 
-    mParametersMutex.lock();
-    auto ctx = mParameters;
-    mParametersMutex.unlock();
+    m_parametersMutex.lock();
+    auto ctx = m_parameters;
+    m_parametersMutex.unlock();
     if (ctx.separationMark.isEmpty()) {
-        QByteArray ba = SAKInterface::arrayToHex(mInputtedBytes, ' ');
+        QByteArray ba = SAKInterface::arrayToHex(m_inputtedBytes, ' ');
         QString hex = QString::fromLatin1(ba);
         QString msg = QString("Analyzer->%1").arg(hex);
         qInfo() << msg;
-        emit bytesOutput(mInputtedBytes);
-        mInputtedBytes.clear();
+        emit bytesOutput(m_inputtedBytes);
+        m_inputtedBytes.clear();
         return;
     }
 
-    auto ret = mInputtedBytes.indexOf(ctx.separationMark);
+    auto ret = m_inputtedBytes.indexOf(ctx.separationMark);
     if (ret == -1) {
         return;
     }
 
     int len = ret + ctx.separationMark.length();
-    QByteArray frame(mInputtedBytes.constData(), len);
-    mInputtedBytes.remove(0, len);
+    QByteArray frame(m_inputtedBytes.constData(), len);
+    m_inputtedBytes.remove(0, len);
 
     QByteArray ba = SAKInterface::arrayToHex(frame, ' ');
     QString hex = QString::fromLatin1(ba);

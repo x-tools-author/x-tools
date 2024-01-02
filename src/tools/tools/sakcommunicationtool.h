@@ -26,14 +26,11 @@ signals:
     void bytesWritten(const QByteArray &bytes, const QString &to);
 
 protected:
-    virtual void run() override;
+    void run() override;
 
     virtual bool initialize(QString &errStr) = 0;
     virtual void writeBytes(const QByteArray &bytes) = 0;
     virtual void uninitialize() = 0;
-
-    QJsonObject rxJsonObject() const;
-    QJsonObject txJsonObject() const;
 
 private:
     QList<QByteArray> m_inputBytesList;

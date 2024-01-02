@@ -90,7 +90,6 @@ private:
 private:
     void uninitializedTips();
 
-    // Properties ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 private:
     SAKCommunicationTool* mComunicationTool{nullptr};
     SAKMaskerTool* mTxMaskerTool{nullptr};

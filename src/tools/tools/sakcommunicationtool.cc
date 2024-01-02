@@ -26,20 +26,6 @@ void SAKCommunicationTool::inputBytes(const QByteArray &bytes)
     m_inputBytesMutex.unlock();
 }
 
-QJsonObject SAKCommunicationTool::rxJsonObject() const
-{
-    QJsonObject obj;
-    obj.insert("flag", "rx");
-    return obj;
-}
-
-QJsonObject SAKCommunicationTool::txJsonObject() const
-{
-    QJsonObject obj;
-    obj.insert("flag", "tx");
-    return obj;
-}
-
 void SAKCommunicationTool::run()
 {
     QString errStr;

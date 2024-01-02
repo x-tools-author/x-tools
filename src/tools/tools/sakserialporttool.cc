@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -15,134 +15,137 @@ SAKSerialPortTool::SAKSerialPortTool(QObject *parent)
 
 QString SAKSerialPortTool::portName()
 {
-    return mParameters.portName;
+    return m_parameters.portName;
 }
 
 void SAKSerialPortTool::setPortName(const QString &portName)
 {
-    mParameters.portName = portName;
+    m_parameters.portName = portName;
 }
 
 int SAKSerialPortTool::baudRate()
 {
-    return mParameters.baudRate;
+    return m_parameters.baudRate;
 }
 
 void SAKSerialPortTool::setBaudRate(int baudRate)
 {
-    mParameters.baudRate = baudRate;
+    m_parameters.baudRate = baudRate;
 }
 
 int SAKSerialPortTool::dataBits()
 {
-    return mParameters.dataBits;
+    return m_parameters.dataBits;
 }
 
 void SAKSerialPortTool::setDataBits(int dataBits)
 {
-    mParameters.dataBits = dataBits;
+    m_parameters.dataBits = dataBits;
 }
 
 int SAKSerialPortTool::stopBits()
 {
-    return mParameters.stopBits;
+    return m_parameters.stopBits;
 }
 
 void SAKSerialPortTool::setStopBits(int stopBits)
 {
-    mParameters.stopBits = stopBits;
+    m_parameters.stopBits = stopBits;
 }
 
 int SAKSerialPortTool::parity()
 {
-    return mParameters.parity;
+    return m_parameters.parity;
 }
 
 void SAKSerialPortTool::setParity(int parity)
 {
-    mParameters.parity = parity;
+    m_parameters.parity = parity;
 }
 
 int SAKSerialPortTool::flowControl()
 {
-    return mParameters.flowControl;
+    return m_parameters.flowControl;
 }
 
 void SAKSerialPortTool::setFlowControl(int flowControl)
 {
-    mParameters.flowControl = flowControl;
+    m_parameters.flowControl = flowControl;
 }
 
 bool SAKSerialPortTool::initialize(QString &errStr)
 {
-    mSerialPort = new QSerialPort();
-    mSerialPort->setPortName(mParameters.portName);
-    mSerialPort->setBaudRate(mParameters.baudRate);
-    mSerialPort->setDataBits(QSerialPort::DataBits(mParameters.dataBits));
-    mSerialPort->setStopBits(QSerialPort::StopBits(mParameters.stopBits));
-    mSerialPort->setParity(QSerialPort::Parity(mParameters.parity));
-    auto cookedFlowControl = QSerialPort::FlowControl(mParameters.flowControl);
-    mSerialPort->setFlowControl(cookedFlowControl);
+    m_serialPort = new QSerialPort();
+    m_serialPort->setPortName(m_parameters.portName);
+    m_serialPort->setBaudRate(m_parameters.baudRate);
+    m_serialPort->setDataBits(QSerialPort::DataBits(m_parameters.dataBits));
+    m_serialPort->setStopBits(QSerialPort::StopBits(m_parameters.stopBits));
+    m_serialPort->setParity(QSerialPort::Parity(m_parameters.parity));
+    auto cookedFlowControl = QSerialPort::FlowControl(m_parameters.flowControl);
+    m_serialPort->setFlowControl(cookedFlowControl);
 
     QString info = QString("portName:%1, baudRate:%2, dataBits:%3, "
                            "stopBits:%4, parity:%5, flowControl: %6")
-                       .arg(mParameters.portName,
-                            QString::number(mParameters.baudRate),
-                            QString::number(mParameters.dataBits),
-                            QString::number(mParameters.stopBits),
-                            QString::number(mParameters.parity),
-                            QString::number(mParameters.flowControl));
-    qInfo() << qPrintable(info);
+                       .arg(m_parameters.portName,
+                            QString::number(m_parameters.baudRate),
+                            QString::number(m_parameters.dataBits),
+                            QString::number(m_parameters.stopBits),
+                            QString::number(m_parameters.parity),
+                            QString::number(m_parameters.flowControl));
+    qInfo() << "Open serialport with parameters:[" << qPrintable(info) << "]";
 
-    if (!mSerialPort->open(QSerialPort::ReadWrite)) {
-        errStr = "open serial port failed:" + mSerialPort->errorString();
+    if (!m_serialPort->open(QSerialPort::ReadWrite)) {
+        errStr = "open serial port failed:" + m_serialPort->errorString();
         qWarning() << errStr;
-        mSerialPort->deleteLater();
-        mSerialPort = Q_NULLPTR;
+        m_serialPort->deleteLater();
+        m_serialPort = Q_NULLPTR;
         return false;
     }
 
-    connect(mSerialPort, &QSerialPort::readyRead, mSerialPort, [=]() { readBytes(); });
+    connect(m_serialPort, &QSerialPort::readyRead, m_serialPort, [=]() { readBytes(); });
 
     return true;
 }
 
 void SAKSerialPortTool::writeBytes(const QByteArray &bytes)
 {
-    if (mSerialPort && mSerialPort->isOpen()) {
-        qint64 ret = mSerialPort->write(bytes);
+    if (m_serialPort && m_serialPort->isOpen()) {
+        qint64 ret = m_serialPort->write(bytes);
         if (ret == -1) {
-            qWarning() << mSerialPort->errorString();
+            qWarning() << m_serialPort->errorString();
         } else if (ret > 0) {
             QByteArray hex = SAKInterface::arrayToHex(bytes, ' ');
             QString msg = QString::fromLatin1(hex);
-            msg = QString("%1<-%2").arg(mParameters.portName, msg);
+            msg = QString("%1<-%2").arg(m_parameters.portName, msg);
             qInfo() << msg;
-            emit bytesWritten(bytes, mSerialPort->portName());
-        }
-    }
-}
-
-void SAKSerialPortTool::readBytes()
-{
-    if (mSerialPort && mSerialPort->isOpen()) {
-        QByteArray bytes = mSerialPort->readAll();
-        if (!bytes.isEmpty()) {
-            QByteArray hex = SAKInterface::arrayToHex(bytes, ' ');
-            QString msg = QString::fromLatin1(hex);
-            msg = QString("%1<-%2").arg(mParameters.portName, msg);
-            qInfo() << msg;
-            emit bytesOutput(bytes);
-            emit bytesRead(bytes, mSerialPort->portName());
+            emit bytesWritten(bytes, m_serialPort->portName());
         }
     }
 }
 
 void SAKSerialPortTool::uninitialize()
 {
-    if (mSerialPort) {
-        mSerialPort->close();
-        mSerialPort->deleteLater();
-        mSerialPort = Q_NULLPTR;
+    if (m_serialPort) {
+        m_serialPort->close();
+        m_serialPort->deleteLater();
+        m_serialPort = Q_NULLPTR;
+    }
+}
+
+void SAKSerialPortTool::readBytes()
+{
+    if (m_serialPort && m_serialPort->isOpen()) {
+        QByteArray bytes = m_serialPort->readAll();
+        if (bytes.isEmpty()) {
+            return;
+        }
+#if 0
+        QByteArray hex = SAKInterface::arrayToHex(bytes, ' ');
+        QString msg = QString::fromLatin1(hex);
+        msg = QString("%1<-%2").arg(m_parameters.portName, msg);
+        qInfo() << qPrintable(msg);
+#endif
+        emit bytesOutput(bytes);
+        emit bytesRead(bytes, m_serialPort->portName());
     }
 }

@@ -37,11 +37,11 @@ private:
         int frameBytes;
         QByteArray separationMark;
         int maxTempBytes{1024};
-    } mParameters;
-    QMutex mParametersMutex;
-    QByteArray mInputtedBytes;
-    QMutex mInputtedBytesMutex;
-    QVariant mContext;
+    } m_parameters;
+    QMutex m_parametersMutex;
+    QByteArray m_inputtedBytes;
+    QMutex m_inputtedBytesMutex;
+    QVariant m_context;
 
 private:
     void analyze();
