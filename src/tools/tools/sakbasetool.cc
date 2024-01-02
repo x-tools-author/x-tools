@@ -23,7 +23,11 @@ SAKBaseTool::SAKBaseTool(const char *logCategory, QObject *parent)
         this->mIsWorking = false;
         emit this->isWorkingChanged();
     });
-    connect(this, &SAKBaseTool::errorOccured, this, [=]() { exit(); });
+    connect(this, &SAKBaseTool::errorOccured, this, [=](const QString &errorString) {
+        qWarning() << "Error occured: " << qPrintable(errorString);
+        exit();
+        wait();
+    });
 }
 
 SAKBaseTool::~SAKBaseTool()
