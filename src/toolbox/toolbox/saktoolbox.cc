@@ -18,39 +18,25 @@ SAKToolBox::SAKToolBox(QObject* parent)
         return toolFactory->createTool(type);
     };
 
-    SAKBaseTool* tool = createTool(SAKToolFactory::MaskerTool);
-    mTxMaskerTool = qobject_cast<SAKMaskerTool*>(tool);
-    tool = createTool(SAKToolFactory::MaskerTool);
-    mRxMaskerTool = qobject_cast<SAKMaskerTool*>(tool);
-    tool = createTool(SAKToolFactory::AnalyzerTool);
-    mTxAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(tool);
-    tool = createTool(SAKToolFactory::AnalyzerTool);
-    mRxAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(tool);
-    tool = createTool(SAKToolFactory::EmitterTool);
-    mEmitterTool = qobject_cast<SAKEmitterTool*>(tool);
-    tool = createTool(SAKToolFactory::ResponserTool);
-    mResponserTool = qobject_cast<SAKResponserTool*>(tool);
-    tool = createTool(SAKToolFactory::StorerTool);
-    mStorerTool = qobject_cast<SAKStorerTool*>(tool);
-    tool = createTool(SAKToolFactory::PrestoreTool);
-    mPrestorerTool = qobject_cast<SAKPrestorerTool*>(tool);
-    tool = createTool(SAKToolFactory::VelometerTool);
-    mRxVelometerTool = qobject_cast<SAKVelometerTool*>(tool);
-    tool = createTool(SAKToolFactory::VelometerTool);
-    mTxVelometerTool = qobject_cast<SAKVelometerTool*>(tool);
+    // clang-format off
+    mTxMaskerTool = qobject_cast<SAKMaskerTool*>(createTool(SAKToolFactory::MaskerTool));
+    mRxMaskerTool = qobject_cast<SAKMaskerTool*>(createTool(SAKToolFactory::MaskerTool));
+    mTxAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(createTool(SAKToolFactory::AnalyzerTool));
+    mRxAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(createTool(SAKToolFactory::AnalyzerTool));
+    mEmitterTool = qobject_cast<SAKEmitterTool*>(createTool(SAKToolFactory::EmitterTool));
+    mResponserTool = qobject_cast<SAKResponserTool*>(createTool(SAKToolFactory::ResponserTool));
+    mStorerTool = qobject_cast<SAKStorerTool*>(createTool(SAKToolFactory::StorerTool));
+    mPrestorerTool = qobject_cast<SAKPrestorerTool*>(createTool(SAKToolFactory::PrestoreTool));
+    mRxVelometerTool = qobject_cast<SAKVelometerTool*>(createTool(SAKToolFactory::VelometerTool));
+    mTxVelometerTool = qobject_cast<SAKVelometerTool*>(createTool(SAKToolFactory::VelometerTool));
+    mRxStatisticianTool = qobject_cast<SAKStatisticianTool*>(createTool(SAKToolFactory::StatistiticianTool));
+    mTxStatisticianTool = qobject_cast<SAKStatisticianTool*>(createTool(SAKToolFactory::StatistiticianTool));
 
-    tool = createTool(SAKToolFactory::StatistiticianTool);
-    mRxStatisticianTool = qobject_cast<SAKStatisticianTool*>(tool);
-    tool = createTool(SAKToolFactory::StatistiticianTool);
-    mTxStatisticianTool = qobject_cast<SAKStatisticianTool*>(tool);
-    tool = createTool(SAKToolFactory::UdpTransmitterTool);
-    mUdpTransmitterTool = qobject_cast<SAKUdpTransmitterTool*>(tool);
-    tool = createTool(SAKToolFactory::TcpTransmitterTool);
-    mTcpTransmitterTool = qobject_cast<SAKTcpTransmitterTool*>(tool);
-    tool = createTool(SAKToolFactory::WebSocketTransmitterTool);
-    mWebSocketTransmitterTool = qobject_cast<SAKWebSocketTransmitterTool*>(tool);
-    tool = createTool(SAKToolFactory::SerialPortTransmitterTool);
-    mSerialPortTransmitterTool = qobject_cast<SAKSerialPortTransmitterTool*>(tool);
+    mUdpTransmitterTool = qobject_cast<SAKUdpTransmitterTool*>(createTool(SAKToolFactory::UdpTransmitterTool));
+    mTcpTransmitterTool = qobject_cast<SAKTcpTransmitterTool*>(createTool(SAKToolFactory::TcpTransmitterTool));
+    mWebSocketTransmitterTool = qobject_cast<SAKWebSocketTransmitterTool*>( createTool(SAKToolFactory::WebSocketTransmitterTool));
+    mSerialPortTransmitterTool = qobject_cast<SAKSerialPortTransmitterTool*>( createTool(SAKToolFactory::SerialPortTransmitterTool));
+    // clang-format on
 
     mToolList << mTxMaskerTool << mRxMaskerTool << mTxAnalyzerTool << mRxAnalyzerTool
               << mEmitterTool << mResponserTool << mStorerTool << mPrestorerTool << mRxVelometerTool
@@ -103,10 +89,9 @@ void SAKToolBox::initialize(int type)
     }
 
     // clang-format off
-    // rx->output_masker->output_analyzer->emmitter,responser
+    // rx->output_masker->output_analyzer->responser
     connect(mComunicationTool, &SAKBaseTool::bytesOutputted, mRxMaskerTool, &SAKBaseTool::inputBytes);
     connect(mRxMaskerTool, &SAKBaseTool::bytesOutputted, mRxAnalyzerTool, &SAKBaseTool::inputBytes);
-    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mEmitterTool, &SAKBaseTool::inputBytes);
     connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mResponserTool, &SAKBaseTool::inputBytes);
     // emiiter,responser,prestorer->input_analyzer->input_masker->tx
     connect(mEmitterTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
@@ -129,10 +114,13 @@ void SAKToolBox::initialize(int type)
     // rx->udp transmition; udp transmition->Tx analyzer
     connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mUdpTransmitterTool, &SAKBaseTool::inputBytes);
     connect(mUdpTransmitterTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    // rx->tcp transmition; tcp transmition->Tx analyzer
     connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mTcpTransmitterTool, &SAKBaseTool::inputBytes);
     connect(mTcpTransmitterTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    // rx->websocket transmition; websocket transmition->Tx analyzer
     connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mWebSocketTransmitterTool, &SAKBaseTool::inputBytes);
     connect(mWebSocketTransmitterTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    
     connect(mComunicationTool, &SAKCommunicationTool::errorOccured, this, &SAKToolBox::errorOccurred);
     // clang-format on
 
