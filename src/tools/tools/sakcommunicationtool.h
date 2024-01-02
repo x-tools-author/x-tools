@@ -19,6 +19,10 @@ public:
     explicit SAKCommunicationTool(const char *logCategory, QObject *parent = nullptr);
     virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
 
+signals:
+    void bytesRead(const QByteArray &bytes, const QString &from);
+    void bytesWritten(const QByteArray &bytes, const QString &to);
+
 protected:
     struct InputDataContext
     {
