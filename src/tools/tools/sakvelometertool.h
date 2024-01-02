@@ -20,18 +20,13 @@ class SAKVelometerTool : public SAKBaseTool
 public:
     explicit SAKVelometerTool(QObject *parent = nullptr);
 
-    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
+    void inputBytes(const QByteArray &bytes) override;
 
 protected:
-    void run();
+    void run() override;
 
 private:
-    struct InputBytesContext
-    {
-        QByteArray bytes;
-        QVariant context;
-    };
-    QList<struct InputBytesContext> mInputBytesContextList;
+    QList<QByteArray> mInputBytesContextList;
     QMutex mInputBytesContextListMutex;
     QString mVelocity;
     QMutex mVelocityMutex;

@@ -20,10 +20,8 @@ SAKStatisticianTool::SAKStatisticianTool(QObject *parent)
     });
 }
 
-void SAKStatisticianTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+void SAKStatisticianTool::inputBytes(const QByteArray &bytes)
 {
-    Q_UNUSED(context)
-
     mFrames += 1;
     emit framesChanged(mFrames);
 

@@ -280,10 +280,9 @@ void SAKPrestorerTool::send(int index)
     }
 }
 
-void SAKPrestorerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+void SAKPrestorerTool::inputBytes(const QByteArray &bytes)
 {
-    Q_UNUSED(bytes);
-    Q_UNUSED(context);
+    Q_UNUSED(bytes)
 }
 
 void SAKPrestorerTool::run()

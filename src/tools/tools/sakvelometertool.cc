@@ -13,15 +13,11 @@ SAKVelometerTool::SAKVelometerTool(QObject *parent)
     : SAKBaseTool{parent}
 {}
 
-void SAKVelometerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+void SAKVelometerTool::inputBytes(const QByteArray &bytes)
 {
     if (isRunning()) {
-        InputBytesContext ctx;
-        ctx.bytes = bytes;
-        ctx.context = context;
-
         mInputBytesContextListMutex.lock();
-        mInputBytesContextList.append(ctx);
+        mInputBytesContextList.append(bytes);
         mInputBytesContextListMutex.unlock();
     }
 }
@@ -38,8 +34,8 @@ void SAKVelometerTool::run()
         this->mInputBytesContextListMutex.unlock();
 
         int v = 0;
-        for (auto &ctx : list) {
-            v += ctx.bytes.length();
+        for (auto &bytes : list) {
+            v += bytes.length();
         }
 
         QString cookedVelocity;
