@@ -155,7 +155,7 @@ void SAKStorerTool::write2file()
             file.close();
         }
     } else {
-        //outputMessage(QtWarningMsg, QString("the file(%1) is not exist").arg(path));
+        qWarning() << QString("the file(%1) is not exist").arg(path);
     }
 
     if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)) {
@@ -191,6 +191,6 @@ void SAKStorerTool::write2file()
         }
         file.close();
     } else {
-        //outputMessage(QtWarningMsg, file.errorString());
+        qWarning() << file.errorString();
     }
 }

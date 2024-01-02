@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -87,7 +87,7 @@ void SAKCryptographicHashCalculator::run()
             // been read incorrectly. Both cases are considered to be the end of the
             // check calculation
             if (array.isEmpty()) {
-                //outputMessage(tr("Calculating finished"), false);
+                emit outputMessage(tr("Calculating finished"), false);
                 QApplication::beep();
                 break;
             }
@@ -140,6 +140,6 @@ void SAKCryptographicHashCalculator::run()
         QByteArray result = cryptographicHash.result();
         emit updateResult(result);
     } else {
-        //outputMessage(file.errorString(), true);
+        emit outputMessage(file.errorString(), true);
     }
 }

@@ -26,7 +26,7 @@ QString SAKBleCentralTool::serviceName(QVariant service)
     if (cookedService) {
         return cookedService->serviceName();
     } else {
-        //outputMessage(QtWarningMsg, "invalid valud of service, not a object!");
+        qWarning() << "invalid valud of service, not a object!";
     }
 
     return "Invalid";
@@ -67,14 +67,14 @@ QString SAKBleCentralTool::characteristicName(QVariant characteristic)
 void SAKBleCentralTool::readCharacteristic()
 {
     if (!(mServiceIndex >= 0 && mServiceIndex < mServices.length())) {
-        //outputMessage(QtWarningMsg, "invalid service index");
+        qWarning() << "invalid service index";
         return;
     }
 
     auto service = mServices.at(mServiceIndex);
     auto chs = service->characteristics();
     if (!(mCharacteristicIndex >= 0 && mCharacteristicIndex < chs.count())) {
-        //outputMessage(QtWarningMsg, "invalid characteristic index");
+        qWarning() << "invalid characteristic index";
         return;
     }
 
@@ -237,14 +237,14 @@ void SAKBleCentralTool::uninitialize()
 
 void SAKBleCentralTool::onServiceDiscovered(const QBluetoothUuid &newService)
 {
-    //outputMessage(QtInfoMsg, "new ble service discovered:" + newService.toString());
+    qInfo() << "new ble service discovered:" + newService.toString();
 }
 
 void SAKBleCentralTool::onServiceDiscoveryFinished()
 {
-    //outputMessage(QtInfoMsg, "ble service discovery finished.");
+    qInfo() << "ble service discovery finished.";
     QList<QBluetoothUuid> uuids = mBleCentral->services();
-    //outputMessage(QtInfoMsg, "service count:" + QString::number(uuids.length()));
+    qInfo() << "service count:" + QString::number(uuids.length());
 
     for (auto &uuid : uuids) {
         auto service = mBleCentral->createServiceObject(uuid);
@@ -296,20 +296,20 @@ void SAKBleCentralTool::onBleCentralErrorOccuured(QLowEnergyController::Error er
         return;
     }
 
-    //outputMessage(QtWarningMsg, "new ble service error:" + mBleCentral->errorString());
+    qWarning() << "new ble service error:" + mBleCentral->errorString();
     exit();
 }
 
 void SAKBleCentralTool::onBleCentralConnected()
 {
-    //outputMessage(QtWarningMsg, "connect to device successfully.");
+    qWarning() << "connect to device successfully.";
     mBleCentral->discoverServices();
 }
 
 void SAKBleCentralTool::onBleCentralDisconnected()
 {
     QString msg = "disconnect from device";
-    //outputMessage(QtWarningMsg, msg);
+    qWarning() << msg;
     emit errorOccured(msg);
 }
 

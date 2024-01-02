@@ -58,8 +58,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
             QString ip = client->peerAddress().toString();
             quint16 port = client->peerPort();
             QString ipport = QString("%1:%2").arg(ip, QString::number(port));
-            QString hex = QString::fromUtf8(bytes);
-            //outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort, ipport, hex));
+
             emit outputBytes(bytes);
             emit bytesRead(bytes, ipport);
         });
@@ -68,8 +67,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
             QString ip = client->peerAddress().toString();
             quint16 port = client->peerPort();
             QString ipport = QString("%1:%2").arg(ip, QString::number(port));
-            QString hex = QString::fromUtf8(message);
-            //outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort, ipport, hex));
+
             emit outputBytes(message);
             emit bytesRead(message, ipport);
         });
