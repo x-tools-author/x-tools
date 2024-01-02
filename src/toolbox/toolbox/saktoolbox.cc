@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -102,91 +102,39 @@ void SAKToolBox::initialize(int type)
         return;
     }
 
+    // clang-format off
     // rx->output_masker->output_analyzer->emmitter,responser
-    connect(mComunicationTool,
-            &SAKBaseTool::bytesOutputted,
-            mRxMaskerTool,
-            &SAKBaseTool::inputBytes);
+    connect(mComunicationTool, &SAKBaseTool::bytesOutputted, mRxMaskerTool, &SAKBaseTool::inputBytes);
     connect(mRxMaskerTool, &SAKBaseTool::bytesOutputted, mRxAnalyzerTool, &SAKBaseTool::inputBytes);
     connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mEmitterTool, &SAKBaseTool::inputBytes);
     connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mResponserTool, &SAKBaseTool::inputBytes);
-
     // emiiter,responser,prestorer->input_analyzer->input_masker->tx
     connect(mEmitterTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
     connect(mResponserTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
     connect(mPrestorerTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
     connect(mTxAnalyzerTool, &SAKBaseTool::bytesOutputted, mTxMaskerTool, &SAKBaseTool::inputBytes);
-    connect(mTxMaskerTool,
-            &SAKBaseTool::bytesOutputted,
-            mComunicationTool,
-            &SAKBaseTool::inputBytes);
-
+    connect(mTxMaskerTool, &SAKBaseTool::bytesOutputted, mComunicationTool, &SAKBaseTool::inputBytes);
     // rx->storer; tx->storer
     connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mStorerTool, &SAKBaseTool::inputBytes);
     connect(mTxMaskerTool, &SAKBaseTool::bytesInputted, mStorerTool, &SAKBaseTool::inputBytes);
-
     // rx->velometer; tx->velometer
-    connect(mComunicationTool,
-            &SAKBaseTool::bytesOutputted,
-            mRxVelometerTool,
-            &SAKBaseTool::inputBytes);
-    connect(mComunicationTool,
-            &SAKBaseTool::bytesInputted,
-            mTxVelometerTool,
-            &SAKBaseTool::inputBytes);
-
+    connect(mComunicationTool, &SAKBaseTool::bytesOutputted, mRxVelometerTool, &SAKBaseTool::inputBytes);
+    connect(mComunicationTool, &SAKBaseTool::bytesInputted, mTxVelometerTool, &SAKBaseTool::inputBytes);
     // rx->statistician; tx->statistician
-    connect(mRxAnalyzerTool,
-            &SAKBaseTool::bytesOutputted,
-            mRxStatisticianTool,
-            &SAKBaseTool::inputBytes);
-    connect(mComunicationTool,
-            &SAKBaseTool::bytesInputted,
-            mTxStatisticianTool,
-            &SAKBaseTool::inputBytes);
-
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mRxStatisticianTool, &SAKBaseTool::inputBytes);
+    connect(mComunicationTool, &SAKBaseTool::bytesInputted, mTxStatisticianTool, &SAKBaseTool::inputBytes);
     // rx->serialport transmition; serialport transmition->Tx analyzer
-    connect(mRxAnalyzerTool,
-            &SAKBaseTool::bytesOutputted,
-            mSerialPortTransmitterTool,
-            &SAKBaseTool::inputBytes);
-    connect(mSerialPortTransmitterTool,
-            &SAKBaseTool::bytesOutputted,
-            mTxAnalyzerTool,
-            &SAKBaseTool::inputBytes);
-
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mSerialPortTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(mSerialPortTransmitterTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
     // rx->udp transmition; udp transmition->Tx analyzer
-    connect(mRxAnalyzerTool,
-            &SAKBaseTool::bytesOutputted,
-            mUdpTransmitterTool,
-            &SAKBaseTool::inputBytes);
-    connect(mUdpTransmitterTool,
-            &SAKBaseTool::bytesOutputted,
-            mTxAnalyzerTool,
-            &SAKBaseTool::inputBytes);
-
-    connect(mRxAnalyzerTool,
-            &SAKBaseTool::bytesOutputted,
-            mTcpTransmitterTool,
-            &SAKBaseTool::inputBytes);
-    connect(mTcpTransmitterTool,
-            &SAKBaseTool::bytesOutputted,
-            mTxAnalyzerTool,
-            &SAKBaseTool::inputBytes);
-
-    connect(mRxAnalyzerTool,
-            &SAKBaseTool::bytesOutputted,
-            mWebSocketTransmitterTool,
-            &SAKBaseTool::inputBytes);
-    connect(mWebSocketTransmitterTool,
-            &SAKBaseTool::bytesOutputted,
-            mTxAnalyzerTool,
-            &SAKBaseTool::inputBytes);
-
-    connect(mComunicationTool,
-            &SAKCommunicationTool::errorOccured,
-            this,
-            &SAKToolBox::errorOccurred);
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mUdpTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(mUdpTransmitterTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mTcpTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(mTcpTransmitterTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted, mWebSocketTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(mWebSocketTransmitterTool, &SAKBaseTool::bytesOutputted, mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(mComunicationTool, &SAKCommunicationTool::errorOccured, this, &SAKToolBox::errorOccurred);
+    // clang-format on
 
     emit communicatonChanged();
 }
