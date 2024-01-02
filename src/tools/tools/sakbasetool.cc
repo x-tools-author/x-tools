@@ -36,8 +36,3 @@ SAKBaseTool::~SAKBaseTool()
         wait();
     }
 }
-
-void SAKBaseTool::inputBytes(const QByteArray &bytes)
-{
-    emit bytesOutput(bytes);
-}

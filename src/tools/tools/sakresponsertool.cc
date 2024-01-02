@@ -435,12 +435,11 @@ QString SAKResponserTool::cookHeaderString(const QString &str)
     return "--";
 }
 
-void SAKResponserTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+void SAKResponserTool::inputBytes(const QByteArray &bytes)
 {
     mInputContextListMutex.lock();
-    mInputContextList.append({bytes, context});
+    mInputContextList.append(bytes);
     mInputContextListMutex.unlock();
-    ;
 }
 
 void SAKResponserTool::run()
@@ -470,7 +469,7 @@ void SAKResponserTool::run()
     outputTimer = nullptr;
 }
 
-void SAKResponserTool::try2output(const SAKResponserTool::InputContext &ctx, QObject *receiver)
+void SAKResponserTool::try2output(const QByteArray &bytes, QObject *receiver)
 {
     mItemsMutex.lock();
     auto items = mItems;
@@ -498,14 +497,14 @@ void SAKResponserTool::try2output(const SAKResponserTool::InputContext &ctx, QOb
         if (item.data.itemOption == always) {
             enableResponse = true;
         } else if (item.data.itemOption == echo) {
-            resBytes = ctx.bytes;
+            resBytes = bytes;
             enableResponse = true;
         } else if (item.data.itemOption == contain) {
-            enableResponse = (ctx.bytes.contains(refBytes));
+            enableResponse = (bytes.contains(refBytes));
         } else if (item.data.itemOption == discontain) {
-            enableResponse = (!ctx.bytes.contains(refBytes));
+            enableResponse = (!bytes.contains(refBytes));
         } else if (item.data.itemOption == eaual) {
-            enableResponse = (ctx.bytes == refBytes);
+            enableResponse = (bytes == refBytes);
         }
 
         if (!enableResponse) {

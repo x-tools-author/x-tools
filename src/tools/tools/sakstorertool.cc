@@ -26,11 +26,11 @@ SAKStorerTool::~SAKStorerTool()
     mInputContextListMutex.unlock();
 }
 
-void SAKStorerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+void SAKStorerTool::inputBytes(const QByteArray &bytes)
 {
     if (isEnable()) {
         mInputContextListMutex.lock();
-        mInputContextList.append({bytes, context});
+        mInputContextList.append(bytes);
         mInputContextListMutex.unlock();
     }
 }
@@ -161,9 +161,7 @@ void SAKStorerTool::write2file()
     if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)) {
         QTextStream outStream(&file);
         while (!mInputContextList.isEmpty()) {
-            auto ctx = mInputContextList.takeFirst();
-            auto bytes = ctx.bytes;
-            auto context = ctx.context;
+            auto bytes = mInputContextList.takeFirst();
             this->mParametersMutex.lock();
             int format = this->mParameters.format;
             this->mParametersMutex.unlock();
@@ -190,25 +188,6 @@ void SAKStorerTool::write2file()
                     }
                 }
             }
-
-            const QString txFlag = "Tx: ";
-            const QString rxFlag = "Rx: ";
-            QString flag = context.toJsonObject().value("flag").toString();
-            flag = (flag == "rx" ? rxFlag : txFlag);
-
-            if (flag == txFlag) {
-                if (!mParameters.saveTx) {
-                    continue;
-                }
-            }
-
-            if (flag == rxFlag) {
-                if (!mParameters.saveRx) {
-                    continue;
-                }
-            }
-            str = dtStr + flag + str;
-            outStream << str << "\n";
         }
         file.close();
     } else {

@@ -28,7 +28,7 @@ public:
     explicit SAKStorerTool(QObject *parent = nullptr);
     ~SAKStorerTool();
 
-    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes) override;
 
 public:
     int saveFormat();
@@ -71,12 +71,7 @@ private:
     } mParameters;
     QMutex mParametersMutex;
 
-    struct InputContext
-    {
-        QByteArray bytes;
-        QVariant context;
-    };
-    QList<InputContext> mInputContextList;
+    QList<QByteArray> mInputContextList;
     QMutex mInputContextListMutex;
 
 private:

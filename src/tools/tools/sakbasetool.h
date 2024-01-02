@@ -22,7 +22,7 @@ class SAKBaseTool : public QThread
 public:
     explicit SAKBaseTool(QObject *parent = Q_NULLPTR);
     virtual ~SAKBaseTool();
-    virtual void inputBytes(const QByteArray &bytes);
+    virtual void inputBytes(const QByteArray &bytes) = 0;
 
     int toolType() { return m_type; }
     void setToolType(int type) { m_type = type; }

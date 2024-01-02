@@ -116,9 +116,9 @@ public:
 
 public:
     explicit SAKResponserTool(QObject *parent = nullptr);
-    Q_INVOKABLE virtual QVariant itemContext(int index) final;
+    Q_INVOKABLE virtual QVariant itemContext(int index) override;
     virtual QString cookHeaderString(const QString &str) override;
-    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes) override;
 
 protected:
     virtual void run() final;
@@ -136,14 +136,7 @@ protected:
                                 int role = Qt::DisplayRole) const final;
 
 private:
-    struct InputContext
-    {
-        QByteArray bytes;
-        QVariant context;
-    };
-
-private:
-    QVector<InputContext> mInputContextList;
+    QVector<QByteArray> mInputContextList;
     QMutex mInputContextListMutex;
 
     QVector<ResponserData> mItems;
@@ -158,7 +151,7 @@ private:
     QVariant columnDisplayRoleData(const ResponserData &item, int column) const;
     QByteArray referenceBytes(const ResponserItem &item) const;
     QByteArray responseBytes(const ResponserItem &item) const;
-    void try2output(const InputContext &ctx, QObject *receiver);
+    void try2output(const QByteArray &bytes, QObject *receiver);
 
 private:
     QString itemEnable();

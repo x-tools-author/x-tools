@@ -19,10 +19,9 @@ SAKEmitterTool::SAKEmitterTool(QObject *parent)
     : SAKTableModelTool{parent}
 {}
 
-void SAKEmitterTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+void SAKEmitterTool::inputBytes(const QByteArray &bytes)
 {
     Q_UNUSED(bytes)
-    Q_UNUSED(context)
 }
 
 QVariant SAKEmitterTool::itemContext(int index)

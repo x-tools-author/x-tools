@@ -77,7 +77,7 @@ public:
 
 public:
     explicit SAKEmitterTool(QObject *parent = Q_NULLPTR);
-    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes) override;
 
 public:
     virtual QString cookHeaderString(const QString &str) override;
