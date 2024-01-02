@@ -513,7 +513,7 @@ void SAKResponserTool::try2output(const SAKResponserTool::InputContext &ctx, QOb
         }
 
         QTimer::singleShot(item.data.itemResponseDelay, receiver, [=]() {
-            emit bytesOutputted(item.data.itemResponseText.toUtf8(), ctx.context);
+            emit bytesOutput(item.data.itemResponseText.toUtf8());
         });
     }
 }

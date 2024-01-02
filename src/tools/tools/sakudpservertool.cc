@@ -45,20 +45,20 @@ bool SAKUdpServerTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKUdpServerTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKUdpServerTool::writeBytes(const QByteArray &bytes)
 {
     if (mClientIndex >= 0 && mClientIndex < mClients.length()) {
         QString ipPort = mClients.at(mClientIndex);
         QStringList list = ipPort.split(":");
         QString ip = list.first();
         quint16 port = list.last().toInt();
-        writeDatagram(bytes, context, ip, port);
+        writeDatagram(bytes, ip, port);
     } else {
         for (auto &client : mClients) {
             QStringList list = client.split(":");
             QString ip = list.first();
             quint16 port = list.last().toInt();
-            writeDatagram(bytes, context, ip, port);
+            writeDatagram(bytes, ip, port);
         }
     }
 }
@@ -97,12 +97,12 @@ void SAKUdpServerTool::readBytes()
             emit clientsChanged();
         }
 
-        emit bytesOutputted(bytes, info);
+        emit bytesOutput(bytes);
+        emit bytesRead(bytes, info);
     }
 }
 
 void SAKUdpServerTool::writeDatagram(const QByteArray &bytes,
-                                     const QVariant &context,
                                      const QString &ip,
                                      quint16 port)
 {
@@ -112,6 +112,6 @@ void SAKUdpServerTool::writeDatagram(const QByteArray &bytes,
     } else {
         QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
         outputMessage(QtInfoMsg, QString("%1<-%2").arg(mBindingIpPort, hex));
-        emit bytesInputted(bytes, context);
+        emit bytesWritten(bytes, mBindingIpPort);
     }
 }

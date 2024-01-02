@@ -48,7 +48,7 @@ bool SAKUdpClientTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKUdpClientTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKUdpClientTool::writeBytes(const QByteArray &bytes)
 {
     if (mServerIp.isEmpty()) {
         return;
@@ -67,7 +67,7 @@ void SAKUdpClientTool::writeBytes(const QByteArray &bytes, const QVariant &conte
         QString serverInfo = QString("%1:%2").arg(mServerIp, portStr);
         QString info = mBindingIpPort + "->" + serverInfo + ":" + hex;
         outputMessage(QtInfoMsg, info);
-        emit bytesInputted(bytes, context);
+        emit bytesWritten(bytes, info);
     }
 }
 
@@ -98,7 +98,8 @@ void SAKUdpClientTool::readBytes()
             QString serverInfo = address.toString() + ":" + portStr;
             QString info = mBindingIpPort + "<-" + serverInfo + ":" + hex;
             outputMessage(QtInfoMsg, info);
-            emit bytesOutputted(bytes, QVariant());
+            emit bytesOutput(bytes);
+            emit bytesRead(bytes, mBindingIpPort);
         }
     }
 }

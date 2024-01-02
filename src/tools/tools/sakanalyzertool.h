@@ -25,7 +25,7 @@ public:
     Q_INVOKABLE void setSeparationMark(const QByteArray &mark);
     Q_INVOKABLE void setMaxTempBytes(int maxBytes);
 
-    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
+    void inputBytes(const QByteArray &bytes) override;
 
 protected:
     virtual void run() final;

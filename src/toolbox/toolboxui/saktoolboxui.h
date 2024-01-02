@@ -76,15 +76,15 @@ private:
     SAKCommunicationToolUi *communicationToolUi(int type);
     void try2send();
     QString dateTimeFormat();
-    void output2ui(const QByteArray &bytes, const QVariant &context, bool isRx);
+    void output2ui(const QByteArray &bytes, const QString &flag, bool isRx);
     QString settingsGroup();
     QByteArray calculateCrc(const QByteArray &bytes = QByteArray(), bool fixedOriginOrder = false);
     void setDefaultText();
 
 private slots:
     void onIsWorkingChanged();
-    void onBytesWritten(const QByteArray &bytes, const QVariant &context);
-    void onBytesRead(const QByteArray &bytes, const QVariant &context);
+    void onBytesWritten(const QByteArray &bytes, const QString &to);
+    void onBytesRead(const QByteArray &bytes, const QString &from);
     void onInputTextChanged();
 
 private:

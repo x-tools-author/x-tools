@@ -34,8 +34,7 @@ public:
     explicit SAKSerialPortTransmitterTool(QObject *parent = nullptr);
     virtual QString cookHeaderString(const QString &str) override;
     Q_INVOKABLE virtual QVariant itemContext(int index) override;
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) override;
+    virtual void inputBytes(const QByteArray &bytes) override;
 
 protected:
     virtual int columnCount(const QModelIndex &parent = QModelIndex()) const override;

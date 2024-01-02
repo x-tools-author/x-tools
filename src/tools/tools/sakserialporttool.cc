@@ -109,7 +109,7 @@ bool SAKSerialPortTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKSerialPortTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKSerialPortTool::writeBytes(const QByteArray &bytes)
 {
     if (mSerialPort && mSerialPort->isOpen()) {
         qint64 ret = mSerialPort->write(bytes);
@@ -120,7 +120,7 @@ void SAKSerialPortTool::writeBytes(const QByteArray &bytes, const QVariant &cont
             QString msg = QString::fromLatin1(hex);
             msg = QString("%1<-%2").arg(mParameters.portName, msg);
             outputMessage(QtInfoMsg, msg);
-            emit bytesInputted(bytes, context);
+            emit bytesWritten(bytes, mSerialPort->portName());
         }
     }
 }
@@ -134,7 +134,8 @@ void SAKSerialPortTool::readBytes()
             QString msg = QString::fromLatin1(hex);
             msg = QString("%1<-%2").arg(mParameters.portName, msg);
             outputMessage(QtInfoMsg, msg);
-            emit bytesOutputted(bytes, rxJsonObject());
+            emit bytesOutput(bytes);
+            emit bytesRead(bytes, mSerialPort->portName());
         }
     }
 }

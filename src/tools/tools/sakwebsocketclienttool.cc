@@ -44,13 +44,15 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
         QString hex = QString::fromLatin1(ba);
         QString info = mBindingIpPort + "<-" + this->m_peerInfo + ":" + hex;
         outputMessage(QtInfoMsg, info);
-        emit bytesOutputted(msg, rxJsonObject());
+        emit bytesOutput(msg);
+        emit bytesRead(msg, this->m_peerInfo);
     });
 
     connect(m_webSocket, &QWebSocket::textMessageReceived, m_webSocket, [=](QString message) {
         QString info = mBindingIpPort + "<-" + this->m_peerInfo + ":" + message;
         outputMessage(QtInfoMsg, info);
-        emit bytesOutputted(message.toUtf8(), rxJsonObject());
+        emit bytesOutput(message.toUtf8());
+        emit bytesRead(message.toUtf8(), this->m_peerInfo);
     });
 
     connect(m_webSocket, SAK_SIG_WEBSOCKETERROROCCURRED, m_webSocket, [=]() {
@@ -66,9 +68,8 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes)
 {
-    Q_UNUSED(context);
     qint64 ret = -1;
     QString hex;
     if (mMessageType == 0) {
@@ -84,7 +85,7 @@ void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes, const QVariant 
     } else {
         QString info = mBindingIpPort + "<-" + this->m_peerInfo + ":" + hex;
         outputMessage(QtInfoMsg, info);
-        emit bytesInputted(bytes, txJsonObject());
+        emit bytesWritten(bytes, this->m_peerInfo);
     }
 }
 

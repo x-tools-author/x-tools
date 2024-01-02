@@ -28,7 +28,7 @@ public:
     bool bigEndian() const;
     void setBigEndian(bool bigEndian);
 
-    void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) override;
+    void inputBytes(const QByteArray &bytes) override;
 
 private:
     int m_startIndex;

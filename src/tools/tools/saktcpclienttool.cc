@@ -52,14 +52,13 @@ bool SAKTcpClientTool::initialize(QString& errStr)
     return true;
 }
 
-void SAKTcpClientTool::writeBytes(const QByteArray& bytes, const QVariant& context)
+void SAKTcpClientTool::writeBytes(const QByteArray& bytes)
 {
-    Q_UNUSED(context);
     qint64 ret = mTcpSocket->write(bytes);
     if (ret == -1) {
         outputMessage(QtWarningMsg, mTcpSocket->errorString());
     } else {
-        emit bytesInputted(bytes, QVariant());
+        emit bytesWritten(bytes, mBindingIpPort);
     }
 }
 
@@ -82,6 +81,7 @@ void SAKTcpClientTool::readBytes()
         QString info = mBindingIpPort + "<-" + ipport + ":";
         info += QString::fromLatin1(ba);
         outputMessage(QtDebugMsg, info);
-        emit bytesOutputted(bytes, rxJsonObject());
+        emit bytesOutput(bytes);
+        emit bytesWritten(bytes, ipport);
     }
 }

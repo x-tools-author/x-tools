@@ -20,7 +20,7 @@ public:
 
 protected:
     virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
+    virtual void writeBytes(const QByteArray &bytes) override;
     virtual void uninitialize() final;
 
 private:

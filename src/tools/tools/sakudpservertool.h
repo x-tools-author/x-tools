@@ -19,8 +19,8 @@ public:
     explicit SAKUdpServerTool(QObject *parent = nullptr);
 
 protected:
-    virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
+    virtual bool initialize(QString &errStr) override;
+    virtual void writeBytes(const QByteArray &bytes) override;
     virtual void uninitialize() final;
     void readBytes();
 
@@ -28,10 +28,7 @@ private:
     QUdpSocket *mUdpSocket{nullptr};
 
 private:
-    void writeDatagram(const QByteArray &bytes,
-                       const QVariant &context,
-                       const QString &ip,
-                       quint16 port);
+    void writeDatagram(const QByteArray &bytes, const QString &ip, quint16 port);
 };
 
 #endif // SAKUDPSERVERTOOL_H

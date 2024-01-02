@@ -54,10 +54,10 @@ signals:
     void flowControlChanged();
 
 protected:
-    virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
-    virtual void readBytes() final;
-    virtual void uninitialize() final;
+    bool initialize(QString &errStr) override;
+    void writeBytes(const QByteArray &bytes);
+    void readBytes();
+    void uninitialize() override;
 
 private:
     struct

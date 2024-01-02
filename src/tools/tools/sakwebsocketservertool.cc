@@ -60,7 +60,8 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
             QString ipport = QString("%1:%2").arg(ip, QString::number(port));
             QString hex = QString::fromUtf8(bytes);
             outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort, ipport, hex));
-            emit bytesOutputted(bytes, QVariant());
+            emit bytesOutput(bytes);
+            emit bytesRead(bytes, ipport);
         });
 
         connect(client, &QWebSocket::binaryMessageReceived, client, [=](const QByteArray &message) {
@@ -69,7 +70,8 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
             QString ipport = QString("%1:%2").arg(ip, QString::number(port));
             QString hex = QString::fromUtf8(message);
             outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort, ipport, hex));
-            emit bytesOutputted(message, QVariant());
+            emit bytesOutput(message);
+            emit bytesRead(message, ipport);
         });
 
         connect(client, &QWebSocket::disconnected, client, [=]() {
@@ -100,15 +102,14 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKWebSocketServerTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKWebSocketServerTool::writeBytes(const QByteArray &bytes)
 {
-    Q_UNUSED(context);
     if (mClientIndex >= 0 && mClientIndex < mWebSocketList.length()) {
         QWebSocket *client = mWebSocketList.at(mClientIndex);
-        writeBytesInner(client, bytes, context);
+        writeBytesInner(client, bytes);
     } else {
         for (auto &client : mWebSocketList) {
-            writeBytesInner(client, bytes, context);
+            writeBytesInner(client, bytes);
         }
     }
 }
@@ -141,6 +142,6 @@ void SAKWebSocketServerTool::writeBytesInner(QWebSocket *client,
         quint16 port = client->peerPort();
         QString ipport = QString("%1:%2").arg(ip, QString::number(port));
         outputMessage(QtInfoMsg, QString("%1->%2:%3").arg(this->mBindingIpPort, ipport, hex));
-        emit bytesInputted(bytes, context);
+        emit bytesWritten(bytes, ipport);
     }
 }

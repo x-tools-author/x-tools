@@ -20,14 +20,12 @@ public:
     explicit SAKTcpServerTool(QObject *parent = nullptr);
 
 protected:
-    virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
+    virtual bool initialize(QString &errStr) override;
+    virtual void writeBytes(const QByteArray &bytes) override;
     virtual void uninitialize() final;
 
 private:
-    void writeBytesInner(QTcpSocket *client,
-                         const QByteArray &bytes,
-                         const QVariant &context = QJsonObject());
+    void writeBytesInner(QTcpSocket *client, const QByteArray &bytes);
 
 private:
     QTcpServer *mTcpServer{nullptr};

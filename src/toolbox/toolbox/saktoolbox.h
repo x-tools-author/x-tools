@@ -59,7 +59,7 @@ public:
 
     Q_INVOKABLE void open();
     Q_INVOKABLE void close();
-    Q_INVOKABLE void send(const QByteArray& bytes, const QVariant& context = QJsonObject());
+    Q_INVOKABLE void send(const QByteArray& bytes);
     bool isWorking();
 
     SAKCommunicationTool* getCommunicationTool();

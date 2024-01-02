@@ -43,7 +43,7 @@ bool SAKTcpServerTool::initialize(QString &errStr)
             QByteArray bytes = client->readAll();
             QString hex = bytes.toHex();
             outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort, ipPort, hex));
-            emit bytesOutputted(bytes, QVariant());
+            emit bytesOutput(bytes);
         });
 
         connect(client, &QTcpSocket::disconnected, client, [=]() {
@@ -71,15 +71,14 @@ bool SAKTcpServerTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKTcpServerTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKTcpServerTool::writeBytes(const QByteArray &bytes)
 {
-    Q_UNUSED(context);
     if (mClientIndex >= 0 && mClientIndex < mTcpSocketList.length()) {
         QTcpSocket *client = mTcpSocketList.at(mClientIndex);
-        writeBytesInner(client, bytes, context);
+        writeBytesInner(client, bytes);
     } else {
         for (auto &client : mTcpSocketList) {
-            writeBytesInner(client, bytes, context);
+            writeBytesInner(client, bytes);
         }
     }
 }
@@ -91,9 +90,7 @@ void SAKTcpServerTool::uninitialize()
     mTcpServer = nullptr;
 }
 
-void SAKTcpServerTool::writeBytesInner(QTcpSocket *client,
-                                       const QByteArray &bytes,
-                                       const QVariant &context)
+void SAKTcpServerTool::writeBytesInner(QTcpSocket *client, const QByteArray &bytes)
 {
     qint64 ret = client->write(bytes);
     if (ret == -1) {
@@ -104,6 +101,6 @@ void SAKTcpServerTool::writeBytesInner(QTcpSocket *client,
         QString ipPort = QString("%1:%2").arg(ip).arg(port);
         QString hex = bytes.toHex();
         outputMessage(QtInfoMsg, QString("%1->%2:%3").arg(mBindingIpPort, ipPort, hex));
-        emit bytesInputted(bytes, context);
+        emit bytesWritten(bytes, ipPort);
     }
 }

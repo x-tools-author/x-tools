@@ -19,8 +19,8 @@ public:
     explicit SAKUdpClientTool(QObject *parent = nullptr);
 
 protected:
-    virtual bool initialize(QString &errStr) final;
-    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
+    virtual bool initialize(QString &errStr) override;
+    virtual void writeBytes(const QByteArray &bytes) override;
     virtual void uninitialize() final;
     void readBytes();
 

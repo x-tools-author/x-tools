@@ -13,19 +13,17 @@ SAKCommunicationTool::SAKCommunicationTool(QObject *parent)
     : SAKBaseTool{parent}
 {}
 
-void SAKCommunicationTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+SAKCommunicationTool::~SAKCommunicationTool() {}
+
+void SAKCommunicationTool::inputBytes(const QByteArray &bytes)
 {
     if (!enable()) {
         return;
     }
 
-    mInputDataMutex.lock();
-    QJsonObject jsonObj = context.toJsonObject();
-    jsonObj.insert("flag", "tx");
-    QVariant cookedContext = QVariant::fromValue(jsonObj);
-    InputDataContext dataCtx{bytes, cookedContext};
-    mInputDataList.append(dataCtx);
-    mInputDataMutex.unlock();
+    m_inputBytesMutex.lock();
+    m_inputBytesList.append(bytes);
+    m_inputBytesMutex.unlock();
 }
 
 QJsonObject SAKCommunicationTool::rxJsonObject() const
@@ -55,12 +53,12 @@ void SAKCommunicationTool::run()
     txTimer->setInterval(5);
     txTimer->setSingleShot(true);
     connect(txTimer, &QTimer::timeout, txTimer, [=]() {
-        this->mInputDataMutex.lock();
-        if (!mInputDataList.isEmpty()) {
-            InputDataContext dataCtx = mInputDataList.takeFirst();
-            writeBytes(dataCtx.bytes, dataCtx.context);
+        this->m_inputBytesMutex.lock();
+        if (!m_inputBytesList.isEmpty()) {
+            auto bytes = m_inputBytesList.takeFirst();
+            writeBytes(bytes);
         }
-        this->mInputDataMutex.unlock();
+        this->m_inputBytesMutex.unlock();
         txTimer->start();
     });
     txTimer->start();

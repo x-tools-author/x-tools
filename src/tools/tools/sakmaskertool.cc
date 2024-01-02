@@ -19,24 +19,19 @@ SAKMaskerTool::SAKMaskerTool(QObject *parent)
 
 SAKMaskerTool::~SAKMaskerTool()
 {
-    qDebug() << __FUNCTION__;
+    
+}
+
+void SAKMaskerTool::inputBytes(const QByteArray &bytes)
+{
+    m_inputBytesListMutex.lock();
+    m_inputBytesList.append(bytes);
+    m_inputBytesListMutex.unlock();
 }
 
 void SAKMaskerTool::setMaskCode(qint8 maskCode)
 {
-    mMask = maskCode;
-}
-
-void SAKMaskerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
-{
-    emit bytesInputted(bytes, context);
-
-    mInputParametersListMutex.lock();
-    InputParameters params;
-    params.bytes = bytes;
-    params.context = context;
-    mInputParametersList.append(params);
-    mInputParametersListMutex.unlock();
+    m_mask = maskCode;
 }
 
 void SAKMaskerTool::run()
@@ -46,14 +41,11 @@ void SAKMaskerTool::run()
     timer->setSingleShot(true);
     connect(timer, &QTimer::timeout, timer, [=]() {
         QByteArray bytes;
-        QVariant context;
-        this->mInputParametersListMutex.lock();
-        if (!this->mInputParametersList.isEmpty()) {
-            auto ctx = mInputParametersList.takeFirst();
-            bytes = ctx.bytes;
-            context = ctx.context;
+        this->m_inputBytesListMutex.lock();
+        if (!this->m_inputBytesList.isEmpty()) {
+            auto ctx = m_inputBytesList.takeFirst();
         }
-        this->mInputParametersListMutex.unlock();
+        this->m_inputBytesListMutex.unlock();
 
         if (!bytes.isEmpty()) {
             QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
@@ -64,19 +56,19 @@ void SAKMaskerTool::run()
                 QByteArray cookedBytes;
                 for (int i = 0; i < bytes.length(); i++) {
                     quint8 value = quint8(bytes.at(i));
-                    value ^= mMask;
+                    value ^= m_mask;
                     cookedBytes.append(reinterpret_cast<char *>(&value), 1);
                 }
 
                 ba = SAKInterface::arrayToHex(cookedBytes, ' ');
                 QString hex = QString::fromLatin1(ba);
                 outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
-                emit bytesOutputted(cookedBytes, context);
+                emit bytesOutput(cookedBytes);
             } else {
                 ba = SAKInterface::arrayToHex(bytes, ' ');
                 QString hex = QString::fromLatin1(ba);
                 outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
-                emit bytesOutputted(bytes, context);
+                emit bytesOutput(bytes);
             }
         }
 

@@ -10,6 +10,7 @@
 #define SAKCOMMUNICATIONTOOL_H
 
 #include "sakbasetool.h"
+
 #include <QMutex>
 
 class SAKCommunicationTool : public SAKBaseTool
@@ -17,32 +18,26 @@ class SAKCommunicationTool : public SAKBaseTool
     Q_OBJECT
 public:
     explicit SAKCommunicationTool(QObject *parent = nullptr);
-    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
+    ~SAKCommunicationTool() override;
+    void inputBytes(const QByteArray &bytes) override;
 
 signals:
     void bytesRead(const QByteArray &bytes, const QString &from);
     void bytesWritten(const QByteArray &bytes, const QString &to);
 
 protected:
-    struct InputDataContext
-    {
-        QByteArray bytes;
-        QVariant context;
-    };
-
-protected:
-    virtual void run() final;
+    virtual void run() override;
 
     virtual bool initialize(QString &errStr) = 0;
-    virtual void writeBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) = 0;
+    virtual void writeBytes(const QByteArray &bytes) = 0;
     virtual void uninitialize() = 0;
 
     QJsonObject rxJsonObject() const;
     QJsonObject txJsonObject() const;
 
 private:
-    QList<InputDataContext> mInputDataList;
-    QMutex mInputDataMutex;
+    QList<QByteArray> m_inputBytesList;
+    QMutex m_inputBytesMutex;
 };
 
 #endif // SAKCOMMUNICATIONTOOL_H

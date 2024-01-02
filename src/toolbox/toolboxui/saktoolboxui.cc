@@ -202,7 +202,7 @@ void SAKToolBoxUi::try2send()
 
     bytes.prepend(prefixData);
     bytes.append(suffixData);
-    mToolBox->getTxAnalyzerTool()->inputBytes(bytes, QJsonObject());
+    mToolBox->getTxAnalyzerTool()->inputBytes(bytes);
 }
 
 QString SAKToolBoxUi::dateTimeFormat()
@@ -237,9 +237,8 @@ QString SAKToolBoxUi::dateTimeFormat()
     return QDateTime::currentDateTime().toString(dateTimeFormat);
 }
 
-void SAKToolBoxUi::output2ui(const QByteArray& bytes, const QVariant& context, bool isRx)
+void SAKToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bool isRx)
 {
-    Q_UNUSED(context);
     int format = ui->comboBoxOutputFormat->currentData().toInt();
     QString str = SAKInterface::arrayToString(bytes, format);
 
@@ -248,10 +247,10 @@ void SAKToolBoxUi::output2ui(const QByteArray& bytes, const QVariant& context, b
     }
 
     QString dt = dateTimeFormat();
-    QString flag = isRx ? "Rx" : "Tx";
+    QString flags = isRx ? "Rx" : "Tx";
     QString color = isRx ? "red" : "blue";
 
-    flag = QString("<font color=%1>%2</font>").arg(color, flag);
+    flags = QString("<font color=%1>%2</font>").arg(color, flags);
     QString info;
     if (dt.isEmpty()) {
         info = QString("[%1]").arg(flag);
@@ -338,22 +337,22 @@ void SAKToolBoxUi::onIsWorkingChanged()
     }
 }
 
-void SAKToolBoxUi::onBytesWritten(const QByteArray& bytes, const QVariant& context)
+void SAKToolBoxUi::onBytesWritten(const QByteArray& bytes, const QString& to)
 {
     if (!ui->checkBoxOutputTx->isChecked()) {
         return;
     }
 
-    output2ui(bytes, context, false);
+    output2ui(bytes, to, false);
 }
 
-void SAKToolBoxUi::onBytesRead(const QByteArray& bytes, const QVariant& context)
+void SAKToolBoxUi::onBytesRead(const QByteArray& bytes, const QString& from)
 {
     if (!ui->checkBoxOutputRx->isChecked()) {
         return;
     }
 
-    output2ui(bytes, context, true);
+    output2ui(bytes, from, true);
 }
 
 void SAKToolBoxUi::onInputTextChanged()
@@ -630,12 +629,12 @@ void SAKToolBoxUi::initTools()
     });
 
     connect(mCommunicationTool,
-            &SAKCommunicationTool::bytesInputted,
+            &SAKCommunicationTool::bytesWritten,
             this,
             &SAKToolBoxUi::onBytesWritten);
 
     auto outputAnalyzer = mToolBox->getRxAnalyzerTool();
-    connect(outputAnalyzer, &SAKAnalyzerTool::bytesOutputted, this, &::SAKToolBoxUi::onBytesRead);
+    //connect(outputAnalyzer, &SAKAnalyzerTool::bytesOutput, this, &::SAKToolBoxUi::onBytesRead);
 
     ui->pushButtonPrestorer->setMenu(mPrestorerToolUi->menu());
 }

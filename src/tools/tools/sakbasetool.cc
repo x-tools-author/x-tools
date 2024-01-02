@@ -38,9 +38,9 @@ SAKBaseTool::~SAKBaseTool()
     }
 }
 
-void SAKBaseTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+void SAKBaseTool::inputBytes(const QByteArray &bytes)
 {
-    emit bytesInputted(bytes, context);
+    emit bytesOutput(bytes);
 }
 
 void SAKBaseTool::outputMessage(int type, const QString &info) const

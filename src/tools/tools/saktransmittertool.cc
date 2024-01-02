@@ -71,11 +71,7 @@ bool SAKTransmitterTool::insertRows(int row, int count, const QModelIndex &paren
 
     auto initTool = [=](SAKCommunicationTool *tool) {
         tool->setParent(this);
-        connect(this, &SAKCommunicationTool::bytesInputted, tool, &SAKCommunicationTool::inputBytes);
-        connect(tool,
-                &SAKCommunicationTool::bytesOutputted,
-                this,
-                &SAKCommunicationTool::bytesOutputted);
+        connect(this, &SAKCommunicationTool::bytesOutput, tool, &SAKCommunicationTool::inputBytes);
         connect(this, &SAKCommunicationTool::started, tool, [=]() { tool->start(); });
         connect(this, &SAKCommunicationTool::finished, tool, [=]() { tool->exit(); });
 

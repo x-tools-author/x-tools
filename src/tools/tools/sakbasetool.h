@@ -32,11 +32,10 @@ public:
      * @param bytes: The bytes input.
      * @param context: The extension parameters.
      */
-    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject());
+    virtual void inputBytes(const QByteArray &bytes);
 
 signals:
-    void bytesInputted(const QByteArray &bytes, const QVariant &context);
-    void bytesOutputted(const QByteArray &bytes, const QVariant &context);
+    void bytesOutput(const QByteArray &bytes);
     void errorOccured(const QString &errorString);
 
 protected:

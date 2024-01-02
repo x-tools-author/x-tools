@@ -194,9 +194,8 @@ void SAKBleCentralTool::readBytes()
     service->readCharacteristic(characteristic);
 }
 
-void SAKBleCentralTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKBleCentralTool::writeBytes(const QByteArray &bytes)
 {
-    Q_UNUSED(context);
     if (!((mServiceIndex >= 0) && (mServiceIndex < mServices.length()))) {
         qWarning() << "invalid parameters.";
         return;
@@ -257,22 +256,21 @@ void SAKBleCentralTool::onServiceDiscoveryFinished()
                 &QLowEnergyService::characteristicChanged,
                 service,
                 [=](const QLowEnergyCharacteristic &info, const QByteArray &value) {
-                    emit bytesOutputted(value, QVariant());
-                    Q_UNUSED(info);
+                    emit bytesOutput(value);
+                    emit bytesRead(value, info.name());
                 });
         connect(service,
                 &QLowEnergyService::characteristicRead,
                 service,
                 [=](const QLowEnergyCharacteristic &info, const QByteArray &value) {
-                    emit bytesOutputted(value, QVariant());
-                    Q_UNUSED(info);
+                    emit bytesOutput(value);
+                    emit bytesRead(value, info.name());
                 });
         connect(service,
                 &QLowEnergyService::characteristicWritten,
                 service,
                 [=](const QLowEnergyCharacteristic &info, const QByteArray &value) {
-                    emit bytesInputted(value, QVariant());
-                    Q_UNUSED(info);
+                    emit bytesWritten(value, info.name());
                 });
         connect(service,
                 &QLowEnergyService::stateChanged,

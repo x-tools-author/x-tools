@@ -65,7 +65,7 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
     return obj;
 }
 
-void SAKSerialPortTransmitterTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+void SAKSerialPortTransmitterTool::inputBytes(const QByteArray &bytes)
 {
     QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
     QString hex = QString::fromLatin1(ba);
@@ -73,7 +73,7 @@ void SAKSerialPortTransmitterTool::inputBytes(const QByteArray &bytes, const QVa
 
     mToolVectorMutex.lock();
     for (auto tool : mToolVector) {
-        tool->inputBytes(bytes, context);
+        tool->inputBytes(bytes);
     }
     mToolVectorMutex.unlock();
 }

@@ -19,26 +19,19 @@ class SAKMaskerTool : public SAKBaseTool
     Q_OBJECT
 public:
     explicit SAKMaskerTool(QObject *parent = Q_NULLPTR);
-    ~SAKMaskerTool();
+    ~SAKMaskerTool() override;
+
+    void inputBytes(const QByteArray &bytes) override;
 
     Q_INVOKABLE void setMaskCode(qint8 maskCode);
 
-    virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
-
 protected:
-    void run();
+    void run() override;
 
 private:
-    struct InputParameters
-    {
-        QByteArray bytes;
-        QVariant context;
-    };
-
-private:
-    std::atomic<quint8> mMask;
-    QList<InputParameters> mInputParametersList;
-    QMutex mInputParametersListMutex;
+    std::atomic<quint8> m_mask;
+    QList<QByteArray> m_inputBytesList;
+    QMutex m_inputBytesListMutex;
 };
 
 #endif // SAKMASKERTOOL_H
