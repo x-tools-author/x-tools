@@ -14,7 +14,7 @@
 #include "sakinterface.h"
 
 SAKTcpClientTool::SAKTcpClientTool(QObject* parent)
-    : SAKSocketClientTool{"sak.tcpclienttool", parent}
+    : SAKSocketClientTool{parent}
 {}
 
 bool SAKTcpClientTool::initialize(QString& errStr)

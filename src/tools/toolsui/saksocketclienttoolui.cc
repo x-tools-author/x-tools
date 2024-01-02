@@ -71,7 +71,7 @@ void SAKSocketClientToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QSt
 
     mTool = qobject_cast<SAKSocketClientTool *>(tool);
     if (!mTool) {
-        qCWarning(mLoggingCategory) << "qobject_cast<>() return nullptr";
+        qWarning() << "qobject_cast<>() return nullptr";
         return;
     }
 

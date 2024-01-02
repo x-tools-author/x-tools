@@ -65,13 +65,13 @@ void SAKTranslator::setupLanguage(const QString& language)
 
     QString key = mFlagNameMap.key(language);
     if (language.isEmpty()) {
-        qCWarning(mLoggingCategory) << "language is not specified,"
+        qWarning() << "language is not specified,"
                                        " system language will be used";
         key = QLocale::system().name();
     }
 
     if (key.isEmpty()) {
-        qCWarning(mLoggingCategory) << "unsupported language, "
+        qWarning() << "unsupported language, "
                                        "english will be used";
         key = "en";
     }
@@ -79,8 +79,8 @@ void SAKTranslator::setupLanguage(const QString& language)
     QString fileName = ":/resources/translations/sak_" + key + ".qm";
     if (mTranslator.load(fileName)) {
         QCoreApplication::installTranslator(&mTranslator);
-        qCInfo(mLoggingCategory) << mFlagNameMap.value(key) << " has been setup!";
+        qInfo() << mFlagNameMap.value(key) << " has been setup!";
     } else {
-        qCWarning(mLoggingCategory) << "Load file failed: " << fileName;
+        qWarning() << "Load file failed: " << fileName;
     }
 }

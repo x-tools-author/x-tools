@@ -9,7 +9,7 @@
 #include "sakstatisticiantool.h"
 
 SAKStatisticianTool::SAKStatisticianTool(QObject *parent)
-    : SAKBaseTool{"sak.statisticiantool", parent}
+    : SAKBaseTool{parent}
 {
     connect(this, &SAKStatisticianTool::started, this, [=]() {
         this->mFrames = 0;

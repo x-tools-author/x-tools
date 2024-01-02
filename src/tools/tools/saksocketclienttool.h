@@ -24,7 +24,7 @@ class SAKSocketClientTool : public SAKCommunicationTool
     // Just for web socket client.
     Q_PROPERTY(int messageType READ messageType WRITE setMessageType NOTIFY messageTypeChanged)
 public:
-    explicit SAKSocketClientTool(const char *lg, QObject *parent = nullptr);
+    explicit SAKSocketClientTool(QObject *parent = nullptr);
 
 public:
     QString clientIp();

@@ -18,7 +18,7 @@ class SAKTableModelTool : public SAKBaseTool
     Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
     Q_PROPERTY(QStringList headers READ headers CONSTANT)
 public:
-    explicit SAKTableModelTool(const char *logCategory, QObject *parent = nullptr);
+    explicit SAKTableModelTool(QObject *parent = nullptr);
     QVariant tableModel();
     QStringList headers() const;
 

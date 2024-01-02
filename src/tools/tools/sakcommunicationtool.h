@@ -16,7 +16,7 @@ class SAKCommunicationTool : public SAKBaseTool
 {
     Q_OBJECT
 public:
-    explicit SAKCommunicationTool(const char *logCategory, QObject *parent = nullptr);
+    explicit SAKCommunicationTool(QObject *parent = nullptr);
     virtual void inputBytes(const QByteArray &bytes, const QVariant &context = QJsonObject()) final;
 
 signals:

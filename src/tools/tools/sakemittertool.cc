@@ -16,7 +16,7 @@
 #include "sakinterface.h"
 
 SAKEmitterTool::SAKEmitterTool(QObject *parent)
-    : SAKTableModelTool{"sak.emittertool", parent}
+    : SAKTableModelTool{parent}
 {}
 
 void SAKEmitterTool::inputBytes(const QByteArray &bytes, const QVariant &context)

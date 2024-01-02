@@ -9,8 +9,8 @@
 #include "sakvelometertool.h"
 #include <QTimer>
 
-    SAKVelometerTool::SAKVelometerTool(QObject *parent)
-    : SAKBaseTool{"sak.velometertool", parent}
+SAKVelometerTool::SAKVelometerTool(QObject *parent)
+    : SAKBaseTool{parent}
 {}
 
 void SAKVelometerTool::inputBytes(const QByteArray &bytes, const QVariant &context)

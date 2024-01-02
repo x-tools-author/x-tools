@@ -26,6 +26,6 @@ void SAKTransmitterToolUi::afterRowEdited(int row)
         tool->exit();
         tool->wait();
         tool->start();
-        qCInfo(mLoggingCategory) << "parameters changed, restart the thread";
+        qInfo() << "parameters changed, restart the thread";
     }
 }

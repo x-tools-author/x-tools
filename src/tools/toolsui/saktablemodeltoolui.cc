@@ -95,18 +95,18 @@ void SAKTableModelToolUi::setColumnVisible(int column, bool visible)
 void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup)
 {
     if (!tool) {
-        qCWarning(mLoggingCategory) << "The value of tool is nullptr!";
+        qWarning() << "The value of tool is nullptr!";
         return;
     }
 
     if (!tool->inherits("SAKTableModelTool")) {
-        qCWarning(mLoggingCategory) << "The tool does not inherits SAKTableModelTool!";
+        qWarning() << "The tool does not inherits SAKTableModelTool!";
         return;
     }
 
     mTableModelTool = qobject_cast<SAKTableModelTool *>(tool);
     if (!mTableModelTool) {
-        qCWarning(mLoggingCategory) << "The value of mTableModelTool is nullptr!";
+        qWarning() << "The value of mTableModelTool is nullptr!";
         return;
     }
 
@@ -230,7 +230,7 @@ void SAKTableModelToolUi::edit(const QModelIndex &index)
                               Qt::DirectConnection,
                               ret,
                               Q_ARG(QJsonObject, jsonObj));
-    qCInfo(mLoggingCategory) << "the parameter of setParameters() is:" << jsonObj;
+    qInfo() << "the parameter of setParameters() is:" << jsonObj;
     Q_UNUSED(ret);
     editor->show();
 
@@ -240,7 +240,7 @@ void SAKTableModelToolUi::edit(const QModelIndex &index)
                                   "parameters",
                                   Qt::DirectConnection,
                                   Q_RETURN_ARG(QJsonObject, params));
-        qCInfo(mLoggingCategory) << "the parameter of parameters() is:" << params;
+        qInfo() << "the parameter of parameters() is:" << params;
         QJsonDocument jsonDoc;
         jsonDoc.setObject(params);
         QString str = QString::fromUtf8(jsonDoc.toJson());
@@ -260,7 +260,7 @@ bool SAKTableModelToolUi::append()
                               Qt::DirectConnection,
                               ret,
                               Q_ARG(QJsonObject, jsonObj));
-    qCInfo(mLoggingCategory) << "the parameter of setParameters() is:" << jsonObj;
+    qInfo() << "the parameter of setParameters() is:" << jsonObj;
     Q_UNUSED(ret);
 
     editor->show();
@@ -272,7 +272,7 @@ bool SAKTableModelToolUi::append()
                               "parameters",
                               Qt::DirectConnection,
                               Q_RETURN_ARG(QJsonObject, jsonObj));
-    qCInfo(mLoggingCategory) << "the parameter of parameters() is:" << jsonObj;
+    qInfo() << "the parameter of parameters() is:" << jsonObj;
     QJsonDocument jsonDoc;
     jsonDoc.setObject(jsonObj);
     QString str = QString::fromUtf8(jsonDoc.toJson());
@@ -387,7 +387,7 @@ void SAKTableModelToolUi::onPushButtonImportClicked()
         importFromJson(json);
         writeToSettingsFile();
     } else {
-        qCWarning(mLoggingCategory) << "Can not open file:" << file.errorString();
+        qWarning() << "Can not open file:" << file.errorString();
     }
 }
 
@@ -411,7 +411,7 @@ void SAKTableModelToolUi::onPushButtonExportClicked()
         out << exportAsJson();
         file.close();
     } else {
-        qCWarning(mLoggingCategory) << "Can not open file:" << file.errorString();
+        qWarning() << "Can not open file:" << file.errorString();
     }
 }
 

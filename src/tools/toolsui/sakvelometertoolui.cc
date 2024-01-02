@@ -27,19 +27,19 @@ void SAKVelometerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QStrin
     Q_UNUSED(settingsGroup)
 
     if (!tool) {
-        qCWarning(mLoggingCategory) << "Parameter tool can not be nullptr!";
+        qWarning() << "Parameter tool can not be nullptr!";
         return;
     }
 
     if (!tool->inherits("SAKVelometerTool")) {
-        qCWarning(mLoggingCategory) << "Invalid tool, "
+        qWarning() << "Invalid tool, "
                                        "it must inherits SAKVelometerTool";
         return;
     }
 
     auto cookedTool = qobject_cast<SAKVelometerTool *>(tool);
     if (!cookedTool) {
-        qCWarning(mLoggingCategory) << "Invalid tool!";
+        qWarning() << "Invalid tool!";
         return;
     }
 

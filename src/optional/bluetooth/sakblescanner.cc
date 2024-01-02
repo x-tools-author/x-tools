@@ -100,7 +100,7 @@ void SAKBleScanner::onDiscoveryFinished()
 void SAKBleScanner::onDiscoveryErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error)
 {
     Q_UNUSED(error);
-    qCWarning(mLoggingCategory) << "QBluetoothDeviceDiscoveryAgent error:"
+    qWarning() << "QBluetoothDeviceDiscoveryAgent error:"
                                 << mDiscover->errorString();
     exit();
     emit errorOccurred(mDiscover->errorString());
@@ -109,11 +109,11 @@ void SAKBleScanner::onDiscoveryErrorOccurred(QBluetoothDeviceDiscoveryAgent::Err
 void SAKBleScanner::onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo& info)
 {
     const QString name = info.name();
-    qCInfo(mLoggingCategory) << "new ble device:" << name;
+    qInfo() << "new ble device:" << name;
 
     if (!mNameFiltter.isEmpty()) {
         if (!name.contains(mNameFiltter)) {
-            qCInfo(mLoggingCategory) << "device is ignored:" << name;
+            qInfo() << "device is ignored:" << name;
             return;
         }
     }

@@ -11,9 +11,8 @@
 
 #include "sakbasetool.h"
 
-SAKBaseTool::SAKBaseTool(const char *logCategory, QObject *parent)
+SAKBaseTool::SAKBaseTool(QObject *parent)
     : QThread{parent}
-    , mLoggingCategory(logCategory)
 {
     connect(this, &SAKBaseTool::started, this, [=]() {
         this->mIsWorking = true;
@@ -47,12 +46,12 @@ void SAKBaseTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 void SAKBaseTool::outputMessage(int type, const QString &info) const
 {
     if (type == QtInfoMsg) {
-        qCInfo(mLoggingCategory) << qPrintable(info);
+        qInfo() << qPrintable(info);
     } else if (type == QtDebugMsg) {
-        qCDebug(mLoggingCategory) << qPrintable(info);
+        qDebug() << qPrintable(info);
     } else if (type == QtWarningMsg) {
-        qCWarning(mLoggingCategory) << qPrintable(info);
+        qWarning() << qPrintable(info);
     } else {
-        qCCritical(mLoggingCategory) << qPrintable(info);
+        qCritical() << qPrintable(info);
     }
 }

@@ -14,7 +14,7 @@
 #define BLE_ERR_SIG QLowEnergyController::Error
 
 SAKBleCentralTool::SAKBleCentralTool(QObject *parent)
-    : SAKCommunicationTool("sak.blecentral", parent)
+    : SAKCommunicationTool(parent)
 {}
 
 SAKBleCentralTool::~SAKBleCentralTool() {}
@@ -107,11 +107,11 @@ void SAKBleCentralTool::changeNotify()
         if (value == QByteArray::fromHex("0100")) {
             QByteArray value = QByteArray::fromHex("0000");
             service->writeDescriptor(descriptor, value);
-            qCWarning(mLoggingCategory) << "disable notify";
+            qWarning() << "disable notify";
         } else {
             QByteArray value = QByteArray::fromHex("0100");
             service->writeDescriptor(descriptor, value);
-            qCWarning(mLoggingCategory) << "enable notify";
+            qWarning() << "enable notify";
         }
     }
 }
@@ -198,7 +198,7 @@ void SAKBleCentralTool::writeBytes(const QByteArray &bytes, const QVariant &cont
 {
     Q_UNUSED(context);
     if (!((mServiceIndex >= 0) && (mServiceIndex < mServices.length()))) {
-        qCWarning(mLoggingCategory) << "invalid parameters.";
+        qWarning() << "invalid parameters.";
         return;
     }
 
@@ -208,21 +208,21 @@ void SAKBleCentralTool::writeBytes(const QByteArray &bytes, const QVariant &cont
     if (mWriteModel == 0) {
         if (!hasFlag(QVariant::fromValue(characteristic), QLowEnergyCharacteristic::Write)) {
             QString str = "QLowEnergyService::WriteWithResponse";
-            qCWarning(mLoggingCategory) << "unsupported write model: " + str;
+            qWarning() << "unsupported write model: " + str;
             return;
         }
 
-        qCInfo(mLoggingCategory) << "try to write bytes:" << QString::fromLatin1(bytes.toHex());
+        qInfo() << "try to write bytes:" << QString::fromLatin1(bytes.toHex());
         service->writeCharacteristic(characteristic, bytes);
     } else {
         if (!hasFlag(QVariant::fromValue(characteristic),
                      QLowEnergyCharacteristic::WriteNoResponse)) {
             QString str = "QLowEnergyService::WriteWithoutResponse";
-            qCWarning(mLoggingCategory) << "unsupported write model: " + str;
+            qWarning() << "unsupported write model: " + str;
             return;
         }
 
-        qCInfo(mLoggingCategory) << "try to write bytes without response:"
+        qInfo() << "try to write bytes without response:"
                                  << QString::fromLatin1(bytes.toHex());
         auto opt = QLowEnergyService::WriteWithoutResponse;
         service->writeCharacteristic(characteristic, bytes, opt);

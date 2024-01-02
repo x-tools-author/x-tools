@@ -12,7 +12,7 @@
 #include "sakinterface.h"
 
 SAKUdpServerTool::SAKUdpServerTool(QObject *parent)
-    : SAKSocketServerTool{"sak.udpservertool", parent}
+    : SAKSocketServerTool{parent}
 {}
 
 bool SAKUdpServerTool::initialize(QString &errStr)

@@ -16,7 +16,7 @@
 #include "sakprestorertool.h"
 
 SAKPrestorerTool::SAKPrestorerTool(QObject *parent)
-    : SAKTableModelTool{"sak.prestorertool", parent}
+    : SAKTableModelTool{parent}
 {}
 
 int SAKPrestorerTool::rowCount(const QModelIndex &parent) const

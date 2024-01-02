@@ -12,7 +12,7 @@
 #include "sakinterface.h"
 
 SAKWebSocketClientTool::SAKWebSocketClientTool(QObject *parent)
-    : SAKSocketClientTool{"sak.websocketclienttool", parent}
+    : SAKSocketClientTool{parent}
 {}
 
 bool SAKWebSocketClientTool::initialize(QString &errStr)
@@ -60,7 +60,7 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
     });
 
     QString address = "ws://" + mServerIp + ":" + QString::number(mServerPort);
-    qCDebug(mLoggingCategory) << "Server url: " + address;
+    qDebug() << "Server url: " + address;
     m_webSocket->open(address);
 
     return true;

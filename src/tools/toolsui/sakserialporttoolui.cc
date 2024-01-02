@@ -25,7 +25,7 @@ SAKSerialPortToolUi::~SAKSerialPortToolUi()
 void SAKSerialPortToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
 {
     if (!(tool && tool->inherits("SAKSerialPortTool"))) {
-        qCWarning(mLoggingCategory) << "Invalid type of communication tool!";
+        qWarning() << "Invalid type of communication tool!";
         return;
     }
 

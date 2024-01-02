@@ -10,8 +10,8 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
-SAKTableModelTool::SAKTableModelTool(const char *logCategory, QObject *parent)
-    : SAKBaseTool{logCategory, parent}
+SAKTableModelTool::SAKTableModelTool(QObject *parent)
+    : SAKBaseTool{parent}
 {
     mTableModel = new SAKTableModel(this);
 
@@ -87,7 +87,7 @@ void SAKTableModelTool::addItem(const QString &jsonCtx, int index)
         auto key = headers().at(i);
         auto modelIndex = mTableModel->index(index, i);
         mTableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);
-        qCInfo(mLoggingCategory) << qPrintable(QString("set %1 as").arg(key)) << jsonObj.value(key);
+        qInfo() << qPrintable(QString("set %1 as").arg(key)) << jsonObj.value(key);
     }
 }
 

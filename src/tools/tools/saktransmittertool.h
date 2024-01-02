@@ -18,7 +18,7 @@ class SAKTransmitterTool : public SAKTableModelTool
 {
     Q_OBJECT
 public:
-    explicit SAKTransmitterTool(const char *logCategory, QObject *parent = nullptr);
+    explicit SAKTransmitterTool(QObject *parent = nullptr);
     SAKCommunicationTool *communicationTool(int index);
 
 protected:

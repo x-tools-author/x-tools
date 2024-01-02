@@ -9,8 +9,8 @@
 #include "saktransmittertool.h"
 #include <QTimer>
 
-SAKTransmitterTool::SAKTransmitterTool(const char *logCategory, QObject *parent)
-    : SAKTableModelTool{logCategory, parent}
+SAKTransmitterTool::SAKTransmitterTool(QObject *parent)
+    : SAKTableModelTool{parent}
 {
     connect(mTableModel,
             &QAbstractTableModel::dataChanged,
@@ -83,7 +83,7 @@ bool SAKTransmitterTool::insertRows(int row, int count, const QModelIndex &paren
             // Reboot the transmitter thread if tool box is wroking.
             if (this->isRunning()) {
                 QTimer::singleShot(1 * 1000, tool, [=]() {
-                    qCDebug(mLoggingCategory) << "reboot...";
+                    qDebug() << "reboot...";
                     tool->start();
                 });
             }

@@ -10,7 +10,7 @@
 #include "sakinterface.h"
 
 SAKSerialPortTool::SAKSerialPortTool(QObject *parent)
-    : SAKCommunicationTool("sak.serialporttool", parent)
+    : SAKCommunicationTool(parent)
 {}
 
 QString SAKSerialPortTool::portName()

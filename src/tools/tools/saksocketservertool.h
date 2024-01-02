@@ -25,7 +25,7 @@ class SAKSocketServerTool : public SAKCommunicationTool
     Q_PROPERTY(int messageType READ messageType WRITE setMessageType NOTIFY messageTypeChanged)
 
 public:
-    explicit SAKSocketServerTool(const char *log, QObject *parent = nullptr);
+    explicit SAKSocketServerTool(QObject *parent = nullptr);
 
     QString serverIp();
     void setServerIp(const QString &ip);

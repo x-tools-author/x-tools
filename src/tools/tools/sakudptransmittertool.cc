@@ -12,7 +12,7 @@
 #include "sakudptransmittertool.h"
 
 SAKUdpTransmitterTool::SAKUdpTransmitterTool(QObject *parent)
-    : SAKSocketClientTransmitterTool{"sak.udptransmittertool", parent}
+    : SAKSocketClientTransmitterTool{parent}
 {}
 
 SAKCommunicationTool *SAKUdpTransmitterTool::createTool()

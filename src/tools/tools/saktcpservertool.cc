@@ -12,7 +12,7 @@
 #include "saktcpservertool.h"
 
 SAKTcpServerTool::SAKTcpServerTool(QObject *parent)
-    : SAKSocketServerTool{"sak.tcpservertool", parent}
+    : SAKSocketServerTool{parent}
 {}
 
 bool SAKTcpServerTool::initialize(QString &errStr)

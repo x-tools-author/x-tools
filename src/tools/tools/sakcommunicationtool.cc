@@ -9,8 +9,8 @@
 #include "sakcommunicationtool.h"
 #include <QTimer>
 
-SAKCommunicationTool::SAKCommunicationTool(const char *logCategory, QObject *parent)
-    : SAKBaseTool{logCategory, parent}
+SAKCommunicationTool::SAKCommunicationTool(QObject *parent)
+    : SAKBaseTool{parent}
 {}
 
 void SAKCommunicationTool::inputBytes(const QByteArray &bytes, const QVariant &context)

@@ -12,14 +12,14 @@
 #include "sakmaskertool.h"
 
 SAKMaskerTool::SAKMaskerTool(QObject *parent)
-    : SAKBaseTool{"sak.masktool", parent}
+    : SAKBaseTool{parent}
 {
     mEnable = false;
 }
 
 SAKMaskerTool::~SAKMaskerTool()
 {
-    qCDebug(mLoggingCategory) << __FUNCTION__;
+    qDebug() << __FUNCTION__;
 }
 
 void SAKMaskerTool::setMaskCode(qint8 maskCode)

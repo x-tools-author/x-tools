@@ -23,7 +23,7 @@ static const QString fileName()
 SAKSettings::SAKSettings(QObject* parent)
     : QSettings{::fileName(), QSettings::IniFormat, parent}
 {
-    qCInfo(mLoggingCategory) << "settings file:" << fileName();
+    qInfo() << "settings file:" << fileName();
 }
 
 SAKSettings* SAKSettings::instance()

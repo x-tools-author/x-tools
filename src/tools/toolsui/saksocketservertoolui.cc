@@ -58,7 +58,7 @@ void SAKSocketServerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QSt
     }
 
     if (!tool->inherits("SAKSocketServerTool")) {
-        qCWarning(mLoggingCategory) << "Invalid SAKSocketServerTool object,"
+        qWarning() << "Invalid SAKSocketServerTool object,"
                                        " the operation will be ignored!";
         return;
     }
@@ -76,7 +76,7 @@ void SAKSocketServerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QSt
 
     mTool = qobject_cast<SAKSocketServerTool *>(tool);
     if (!mTool) {
-        qCWarning(mLoggingCategory) << "qobject_cast<>() return nullptr";
+        qWarning() << "qobject_cast<>() return nullptr";
         return;
     }
 

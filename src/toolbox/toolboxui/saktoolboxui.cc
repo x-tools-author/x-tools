@@ -143,7 +143,7 @@ void SAKToolBoxUi::initialize(int type)
 
     mCommunicationTool = mToolBox->getCommunicationTool();
     if (!mCommunicationTool) {
-        qCWarning(mLoggingCategory) << "initializing failed, "
+        qWarning() << "initializing failed, "
                                        "tool box is invaliad!";
         return;
     }
@@ -175,7 +175,7 @@ SAKCommunicationToolUi* SAKToolBoxUi::communicationToolUi(int type)
     }
 #endif
     else {
-        qCWarning(mLoggingCategory) << "unknow type of communication tool ui!";
+        qWarning() << "unknow type of communication tool ui!";
     }
 
     return w;
@@ -284,7 +284,7 @@ QString SAKToolBoxUi::settingsGroup()
     } else if (mCommunicationToolType == SAKToolFactory::BleCentralTool) {
         return "BleCentralToolBox";
     } else {
-        qCWarning(mLoggingCategory)
+        qWarning()
             << "unknow type of communication tool ui:" << mCommunicationToolType;
         return "UnknowToolBox";
     }
@@ -399,7 +399,7 @@ void SAKToolBoxUi::initUiCommunication()
     // Setup communication tool.
     mCommunicationToolUi = communicationToolUi(mCommunicationToolType);
     if (!mCommunicationToolUi) {
-        qCWarning(mLoggingCategory) << "mCommunicationToolUi is nullptr";
+        qWarning() << "mCommunicationToolUi is nullptr";
         return;
     }
 
@@ -671,7 +671,7 @@ void SAKToolBoxUi::onCheckBoxOutputWrapClicked()
 void SAKToolBoxUi::onPushButtonInputSendClicked()
 {
     if (ui->comboBoxInputText->currentText().isEmpty()) {
-        qCInfo(mLoggingCategory) << "input text is empty,"
+        qInfo() << "input text is empty,"
                                     "the text will be set as (null)";
         QApplication::beep();
         ui->comboBoxInputText->setFocus();
@@ -721,7 +721,7 @@ void SAKToolBoxUi::onComboBoxInputIntervalActivated()
 {
     int interval = ui->comboBoxInputIntervel->currentText().toInt();
     interval = interval < 10 ? 10 : interval;
-    qCInfo(mLoggingCategory) << "start sending automatically, the interval is:" << interval;
+    qInfo() << "start sending automatically, the interval is:" << interval;
 
     if (ui->comboBoxInputIntervel->currentIndex() == 0) {
         mCycleSendingTimer->stop();

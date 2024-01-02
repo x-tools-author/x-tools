@@ -11,7 +11,7 @@
 #include "sakcrcinterface.h"
 
 SAKCrcCalculatorTool::SAKCrcCalculatorTool(QObject *parent)
-    : SAKBaseTool("SAK.CrcCalculatorTool", parent)
+    : SAKBaseTool(parent)
 {
     m_startIndex = 0;
     m_endIndex = 0;

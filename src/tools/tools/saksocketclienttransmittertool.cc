@@ -9,9 +9,8 @@
 #include "saksocketclienttransmittertool.h"
 #include "saksocketclienttool.h"
 
-SAKSocketClientTransmitterTool::SAKSocketClientTransmitterTool(const char *logCategory,
-                                                               QObject *parent)
-    : SAKTransmitterTool{logCategory, parent}
+SAKSocketClientTransmitterTool::SAKSocketClientTransmitterTool(QObject *parent)
+    : SAKTransmitterTool{parent}
 {}
 
 QString SAKSocketClientTransmitterTool::cookHeaderString(const QString &str)
@@ -93,7 +92,7 @@ QVariant SAKSocketClientTransmitterTool::data(const QModelIndex &index, int role
         return tool->messageType();
     } else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknow index");
-        qCWarning(mLoggingCategory) << "unknown index:" << index;
+        qWarning() << "unknown index:" << index;
         return false;
     }
 
@@ -127,7 +126,7 @@ bool SAKSocketClientTransmitterTool::setData(const QModelIndex &index,
     } else if (key == keys.messageType) {
         tool->setMessageType(value.toInt());
     } else {
-        qCWarning(mLoggingCategory) << "unknow key:" << key;
+        qWarning() << "unknow key:" << key;
         return false;
     }
 

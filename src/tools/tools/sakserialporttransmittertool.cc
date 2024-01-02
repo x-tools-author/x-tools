@@ -11,7 +11,7 @@
 #include "sakserialporttool.h"
 
 SAKSerialPortTransmitterTool::SAKSerialPortTransmitterTool(QObject *parent)
-    : SAKTransmitterTool{"sak.serialporttransmittertool", parent}
+    : SAKTransmitterTool{parent}
 {}
 
 QString SAKSerialPortTransmitterTool::cookHeaderString(const QString &str)
@@ -59,7 +59,7 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
         obj.insert(ctx.parity, QSerialPort::NoParity);
         obj.insert(ctx.portName, "");
         obj.insert(ctx.stopBits, QSerialPort::OneStop);
-        qCInfo(mLoggingCategory) << "get default value:" << obj;
+        qInfo() << "get default value:" << obj;
     }
 
     return obj;
@@ -109,7 +109,7 @@ QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index, int role) 
         return ret->stopBits();
     } else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknow index");
-        qCWarning(mLoggingCategory) << "unknown index:" << index;
+        qWarning() << "unknown index:" << index;
         return false;
     }
 

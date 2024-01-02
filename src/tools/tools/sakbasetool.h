@@ -20,7 +20,7 @@ class SAKBaseTool : public QThread
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
     Q_PROPERTY(bool enable READ enable WRITE setEnable NOTIFY enableChanged)
 public:
-    explicit SAKBaseTool(const char *logCategory, QObject *parent = Q_NULLPTR);
+    explicit SAKBaseTool(QObject *parent = Q_NULLPTR);
     virtual ~SAKBaseTool();
     QString toolName() { return mToolName; }
     void setToolName(const QString &name) { mToolName = name; }
@@ -41,7 +41,6 @@ signals:
 
 protected:
     QString mToolName{""};
-    QLoggingCategory mLoggingCategory;
 
 protected:
     void outputMessage(int type, const QString &info) const;

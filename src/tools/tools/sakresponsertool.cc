@@ -20,7 +20,7 @@
 #include "sakresponsertool.h"
 
 SAKResponserTool::SAKResponserTool(QObject *parent)
-    : SAKTableModelTool{"sak.responsertool", parent}
+    : SAKTableModelTool{parent}
 {}
 
 int SAKResponserTool::rowCount(const QModelIndex &parent) const

@@ -78,12 +78,12 @@ SAKMainWindow::SAKMainWindow(QWidget* parent)
 
     QDir dir;
     if (dir.exists(palettePath())) {
-        qCInfo(mLoggingCategory) << "palette path is:" << palettePath();
+        qInfo() << "palette path is:" << palettePath();
     } else {
         if (dir.mkdir(palettePath())) {
-            qCInfo(mLoggingCategory) << palettePath() << "has been created";
+            qInfo() << palettePath() << "has been created";
         } else {
-            qCWarning(mLoggingCategory) << palettePath() << "has been created";
+            qWarning() << palettePath() << "has been created";
         }
     }
 
@@ -356,9 +356,9 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
     QString fileName = SAK_QT_CONF;
     auto triggered = [=](int policy) {
         if (QFile::remove(fileName)) {
-            qCInfo(mLoggingCategory) << fileName << "was removed!";
+            qInfo() << fileName << "was removed!";
         } else {
-            qCInfo(mLoggingCategory) << "removed" << fileName << "failed";
+            qInfo() << "removed" << fileName << "failed";
         }
 
         SAKSettings::instance()->setHdpiPolicy(int(policy));
@@ -956,8 +956,8 @@ void SAKMainWindow::createQtConf()
         out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
         file.close();
     } else {
-        qCWarning(mLoggingCategory) << fileName;
-        qCWarning(mLoggingCategory) << "can not open file:" << file.errorString();
+        qWarning() << fileName;
+        qWarning() << "can not open file:" << file.errorString();
     }
 }
 
@@ -965,7 +965,7 @@ void SAKMainWindow::onImportActionTriggered()
 {
     auto str = QFileDialog::getOpenFileName(this, tr("Save Palette"), "Palete", tr("All (*)"));
     if (str.isEmpty()) {
-        qCInfo(mLoggingCategory) << "cancle to import the palette";
+        qInfo() << "cancle to import the palette";
     } else {
         QFile inFile(str);
         if (inFile.open(QFile::ReadOnly)) {
@@ -990,10 +990,10 @@ void SAKMainWindow::onImportActionTriggered()
                 out << bytes;
                 outFile.close();
             } else {
-                qCWarning(mLoggingCategory) << "open out file failed:" << inFile.errorString();
+                qWarning() << "open out file failed:" << inFile.errorString();
             }
         } else {
-            qCWarning(mLoggingCategory) << "open in file failed:" << inFile.errorString();
+            qWarning() << "open in file failed:" << inFile.errorString();
         }
     }
 }
@@ -1002,7 +1002,7 @@ void SAKMainWindow::onExportActionTriggered()
 {
     auto str = QFileDialog::getSaveFileName(this, tr("Save Palette"), "Palete", tr("All (*)"));
     if (str.isEmpty()) {
-        qCInfo(mLoggingCategory) << "cancle to export the palette";
+        qInfo() << "cancle to export the palette";
     } else {
         QFile file(str);
         if (file.open(QFile::WriteOnly)) {
@@ -1011,7 +1011,7 @@ void SAKMainWindow::onExportActionTriggered()
             out << p;
             file.close();
         } else {
-            qCWarning(mLoggingCategory) << "can not open file:" << file.errorString();
+            qWarning() << "can not open file:" << file.errorString();
         }
     }
 }

@@ -8,8 +8,8 @@
  **************************************************************************************************/
 #include "saksocketclienttool.h"
 
-SAKSocketClientTool::SAKSocketClientTool(const char *lg, QObject *parent)
-    : SAKCommunicationTool{lg, parent}
+SAKSocketClientTool::SAKSocketClientTool(QObject *parent)
+    : SAKCommunicationTool{parent}
 {}
 
 QString SAKSocketClientTool::clientIp()

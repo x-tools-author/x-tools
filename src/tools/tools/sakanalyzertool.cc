@@ -10,7 +10,7 @@
 #include "sakinterface.h"
 
 SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
-    : SAKBaseTool{"sak.analyzertool", parent}
+    : SAKBaseTool{parent}
 {
     mEnable = false;
 }

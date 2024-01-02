@@ -30,19 +30,19 @@ QByteArray SAKCrcInterface::calculateBytes(
         }
 
         if (!(startIndex >= 0 && startIndex < bytes.length())) {
-            qCWarning(mLoggingCategory) << "start index is invalid:" << startIndex;
+            qWarning() << "start index is invalid:" << startIndex;
             return false;
         }
 
         if (!(endIndex >= 0 && endIndex < bytes.length())) {
-            qCWarning(mLoggingCategory) << "end index is invalid:" << endIndex;
+            qWarning() << "end index is invalid:" << endIndex;
             return false;
         }
 
         int cookedEndIndex = bytes.length() - endIndex - 1;
         int len = cookedEndIndex - startIndex;
         if (len < 0) {
-            qCWarning(mLoggingCategory) << "crc data length is invalid";
+            qWarning() << "crc data length is invalid";
             return false;
         }
 
