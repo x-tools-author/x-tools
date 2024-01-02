@@ -41,7 +41,7 @@ QVariant SAKSocketClientTransmitterTool::itemContext(int index)
     ItemContextKeys keys;
     if (index >= 0 && index < mToolVector.count()) {
         SAKSocketClientTool *tool = qobject_cast<SAKSocketClientTool *>(mToolVector.value(index));
-        obj.insert(keys.enable, tool->enable());
+        obj.insert(keys.enable, tool->isEnable());
         obj.insert(keys.clientIp, tool->clientIp());
         obj.insert(keys.clientPort, tool->clientPort());
         obj.insert(keys.specifiedClientIpPort, tool->specifyClientIpPort());
@@ -77,7 +77,7 @@ QVariant SAKSocketClientTransmitterTool::data(const QModelIndex &index, int role
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKeys keys;
     if (key == keys.enable) {
-        return tool->enable();
+        return tool->isEnable();
     } else if (key == keys.clientIp) {
         return tool->clientIp();
     } else if (key == keys.clientPort) {
@@ -112,7 +112,7 @@ bool SAKSocketClientTransmitterTool::setData(const QModelIndex &index,
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKeys keys;
     if (key == keys.enable) {
-        tool->setEnable(value.toBool());
+        tool->setIsEnable(value.toBool());
     } else if (key == keys.clientIp) {
         tool->setClientIp(value.toString());
     } else if (key == keys.clientPort) {

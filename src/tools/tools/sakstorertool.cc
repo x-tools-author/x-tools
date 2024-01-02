@@ -28,7 +28,7 @@ SAKStorerTool::~SAKStorerTool()
 
 void SAKStorerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
-    if (enable()) {
+    if (isEnable()) {
         mInputContextListMutex.lock();
         mInputContextList.append({bytes, context});
         mInputContextListMutex.unlock();

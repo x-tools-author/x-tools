@@ -17,7 +17,7 @@ SAKCommunicationTool::~SAKCommunicationTool() {}
 
 void SAKCommunicationTool::inputBytes(const QByteArray &bytes)
 {
-    if (!enable()) {
+    if (!isEnable()) {
         return;
     }
 

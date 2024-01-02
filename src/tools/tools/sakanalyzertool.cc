@@ -51,8 +51,8 @@ void SAKAnalyzerTool::inputBytes(const QByteArray &bytes)
     }
 
     QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
-
-    if (enable()) {
+    
+    if (isEnable()) {
         mInputtedBytesMutex.lock();
         mInputtedBytes.append(bytes);
         mInputtedBytesMutex.unlock();

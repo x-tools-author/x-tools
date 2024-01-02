@@ -43,7 +43,7 @@ void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &
     }
 
     connect(ui->checkBoxEnable, &QCheckBox::clicked, this, [=]() {
-        cookedTool->setEnable(ui->checkBoxEnable->isChecked());
+        cookedTool->setIsEnable(ui->checkBoxEnable->isChecked());
     });
     connect(ui->checkBoxRx, &QCheckBox::clicked, this, [=]() {
         cookedTool->setSaveRx(ui->checkBoxRx->isChecked());
@@ -79,8 +79,8 @@ void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &
     ui->checkBoxTx->setGroupKey(settingsGroup, "tx");
     ui->comboBoxFormat->setGroupKey(settingsGroup, "format");
     ui->lineEditStorerPath->setGroupKey(settingsGroup, "path");
-
-    cookedTool->setEnable(ui->checkBoxEnable->isChecked());
+    
+    cookedTool->setIsEnable(ui->checkBoxEnable->isChecked());
     cookedTool->setSaveTx(ui->checkBoxTx->isChecked());
     cookedTool->setSaveRx(ui->checkBoxRx->isChecked());
     cookedTool->setSaveDate(ui->checkBoxDate->isChecked());

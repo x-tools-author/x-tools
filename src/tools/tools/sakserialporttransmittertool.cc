@@ -46,7 +46,7 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
         SAKSerialPortTool *tool = qobject_cast<SAKSerialPortTool *>(mToolVector.value(index));
         obj.insert(ctx.baudRate, tool->baudRate());
         obj.insert(ctx.dataBits, tool->dataBits());
-        obj.insert(ctx.enable, tool->enable());
+        obj.insert(ctx.enable, tool->isEnable());
         obj.insert(ctx.flowControl, tool->flowControl());
         obj.insert(ctx.parity, tool->parity());
         obj.insert(ctx.portName, tool->portName());
@@ -93,7 +93,7 @@ QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index, int role) 
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKey ctx;
     if (key == ctx.enable) {
-        return ret->enable();
+        return ret->isEnable();
     } else if (key == ctx.baudRate) {
         return ret->baudRate();
     } else if (key == ctx.dataBits) {
@@ -125,7 +125,7 @@ bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index, const QVari
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKey ctx;
     if (key == ctx.enable) {
-        ret->setEnable(value.toBool());
+        ret->setIsEnable(value.toBool());
     } else if (key == ctx.baudRate) {
         ret->setBaudRate(value.toInt());
     } else if (key == ctx.dataBits) {

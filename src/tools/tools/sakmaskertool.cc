@@ -50,8 +50,8 @@ void SAKMaskerTool::run()
         if (!bytes.isEmpty()) {
             QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
             QString hex = QString::fromLatin1(ba);
-
-            if (this->enable()) {
+            
+            if (this->isEnable()) {
                 QByteArray cookedBytes;
                 for (int i = 0; i < bytes.length(); i++) {
                     quint8 value = quint8(bytes.at(i));

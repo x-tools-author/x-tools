@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -18,11 +18,14 @@ class SAKBaseTool : public QThread
 {
     Q_OBJECT
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
-    Q_PROPERTY(bool enable READ enable WRITE setEnable NOTIFY enableChanged)
+    Q_PROPERTY(bool isEnable READ isEnable WRITE setIsEnable NOTIFY isEnableChanged)
 public:
     explicit SAKBaseTool(QObject *parent = Q_NULLPTR);
     virtual ~SAKBaseTool();
     virtual void inputBytes(const QByteArray &bytes);
+
+    int toolType() { return m_type; }
+    void setToolType(int type) { m_type = type; }
 
 signals:
     void bytesOutput(const QByteArray &bytes);
@@ -30,11 +33,11 @@ signals:
 
 public:
     bool isWorking() { return m_isWorking; }
-    bool enable() { return m_enable; }
-    void setEnable(bool enable)
+    bool isEnable() { return m_enable; }
+    void setIsEnable(bool enable)
     {
         m_enable = enable;
-        emit enableChanged();
+        emit isEnableChanged();
     }
 
 protected:
@@ -44,7 +47,7 @@ protected:
 
 signals:
     void isWorkingChanged();
-    void enableChanged();
+    void isEnableChanged();
 };
 
 #endif // SAKBASETOOL_H

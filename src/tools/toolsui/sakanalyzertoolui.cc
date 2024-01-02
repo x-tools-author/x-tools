@@ -51,8 +51,8 @@ void SAKAnalyzerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString
     int maxBytes = ui->spinBoxMaxTempBytes->value();
     QString txt = ui->lineEditSeparationMark->text().trimmed();
     QByteArray flag = SAKInterface::string2array(txt, format);
-
-    cookedTool->setEnable(enable);
+    
+    cookedTool->setIsEnable(enable);
     cookedTool->setFixed(fixed);
     cookedTool->setFrameBytes(len);
     cookedTool->setMaxTempBytes(maxBytes);
@@ -60,7 +60,7 @@ void SAKAnalyzerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString
 
     connect(ui->checkBoxEnable, &QCheckBox::clicked, this, [=]() {
         bool enable = ui->checkBoxEnable->isChecked();
-        cookedTool->setEnable(enable);
+        cookedTool->setIsEnable(enable);
     });
     connect(ui->checkBoxFixedLength, &QCheckBox::clicked, this, [=]() {
         bool fixed = ui->checkBoxFixedLength->isChecked();

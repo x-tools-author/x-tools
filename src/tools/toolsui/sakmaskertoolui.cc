@@ -41,13 +41,13 @@ void SAKMaskerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &
     }
 
     connect(ui->checkBoxEnable, &QCheckBox::clicked, this, [=]() {
-        cookedTool->setEnable(ui->checkBoxEnable->isChecked());
+        cookedTool->setIsEnable(ui->checkBoxEnable->isChecked());
     });
     connect(ui->spinBoxMaskCode,
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
             [=](int code) { cookedTool->setMaskCode(code); });
-
-    cookedTool->setEnable(ui->checkBoxEnable->isChecked());
+    
+    cookedTool->setIsEnable(ui->checkBoxEnable->isChecked());
     cookedTool->setMaskCode(ui->spinBoxMaskCode->value());
 }
