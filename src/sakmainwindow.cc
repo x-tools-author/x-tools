@@ -37,7 +37,6 @@
 #include "sakassistantsfactory.h"
 #include "sakdatastructure.h"
 #include "sakinterface.h"
-#include "saklogui.h"
 #include "saksettings.h"
 #include "saktoolboxui.h"
 #include "saktranslator.h"

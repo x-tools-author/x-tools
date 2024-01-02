@@ -7,7 +7,6 @@
  * code directory.
  **************************************************************************************************/
 #include "sak.h"
-#include "saklog.h"
 #include "sakguiapplication.h"
 
 int main(int argc, char* argv[])
@@ -17,7 +16,6 @@ int main(int argc, char* argv[])
     sakDoSomethingBeforeAppCreated(argv, appName);
 
     SAKGuiApplication app(argc, argv);
-    SAKLog::instance()->start();
     int ret = app.exec();
 
     sakDoSomethingAfterAppExited();
