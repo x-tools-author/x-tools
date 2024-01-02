@@ -80,7 +80,7 @@ void SAKTableModelTool::addItem(const QString &jsonCtx, int index)
 
     for (int i = 0; i < headers().count(); i++) {
         if (i >= columnCount()) {
-            outputMessage(QtWarningMsg, "Invalid column index!");
+            qWarning() << "Invalid column index!";
             return;
         }
 

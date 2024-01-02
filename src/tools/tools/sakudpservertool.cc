@@ -26,7 +26,7 @@ bool SAKUdpServerTool::initialize(QString &errStr)
     }
 
     if (!ret) {
-        outputMessage(QtWarningMsg, mUdpSocket->errorString());
+        //outputMessage(QtWarningMsg, mUdpSocket->errorString());
         errStr = mUdpSocket->errorString();
         return false;
     }
@@ -34,7 +34,7 @@ bool SAKUdpServerTool::initialize(QString &errStr)
     QString ip = mUdpSocket->localAddress().toString();
     int port = mUdpSocket->localPort();
     mBindingIpPort = QString("%1:%2").arg(ip).arg(port);
-    outputMessage(QtInfoMsg, mBindingIpPort);
+    //outputMessage(QtInfoMsg, mBindingIpPort);
     emit bindingIpPortChanged();
 
     connect(mUdpSocket, &QUdpSocket::readyRead, mUdpSocket, [=]() { readBytes(); });
@@ -82,7 +82,7 @@ void SAKUdpServerTool::readBytes()
         quint16 port;
         qint64 ret = mUdpSocket->readDatagram(bytes.data(), bytes.length(), &address, &port);
         if (ret == -1) {
-            outputMessage(QtWarningMsg, mUdpSocket->errorString());
+            //outputMessage(QtWarningMsg, mUdpSocket->errorString());
             break;
         }
 
@@ -90,7 +90,7 @@ void SAKUdpServerTool::readBytes()
         QString hex = QString::fromLatin1(ba);
         QString info = QString("%1:%2").arg(address.toString()).arg(port);
         QString msg = QString("%1<-%2:%3").arg(mBindingIpPort, info, hex);
-        outputMessage(QtInfoMsg, msg);
+        //outputMessage(QtInfoMsg, msg);
 
         if (!mClients.contains(info)) {
             mClients.append(info);
@@ -108,10 +108,10 @@ void SAKUdpServerTool::writeDatagram(const QByteArray &bytes,
 {
     qint64 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(ip), port);
     if (ret == -1) {
-        outputMessage(QtWarningMsg, mUdpSocket->errorString());
+        //outputMessage(QtWarningMsg, mUdpSocket->errorString());
     } else {
         QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
-        outputMessage(QtInfoMsg, QString("%1<-%2").arg(mBindingIpPort, hex));
+        //outputMessage(QtInfoMsg, QString("%1<-%2").arg(mBindingIpPort, hex));
         emit bytesWritten(bytes, mBindingIpPort);
     }
 }

@@ -87,7 +87,7 @@ void SAKCryptographicHashCalculator::run()
             // been read incorrectly. Both cases are considered to be the end of the
             // check calculation
             if (array.isEmpty()) {
-                outputMessage(tr("Calculating finished"), false);
+                //outputMessage(tr("Calculating finished"), false);
                 QApplication::beep();
                 break;
             }
@@ -140,6 +140,6 @@ void SAKCryptographicHashCalculator::run()
         QByteArray result = cryptographicHash.result();
         emit updateResult(result);
     } else {
-        outputMessage(file.errorString(), true);
+        //outputMessage(file.errorString(), true);
     }
 }

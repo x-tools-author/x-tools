@@ -126,7 +126,7 @@ private:
     QList<quint16> GetTableValues(QTableView *table_view, int row, int count);
 
     void OutputModbusReply(QModbusReply *reply, int function_code);
-    void OutputMessage(const QString &msg,
+    void outputMessage(const QString &msg,
                        bool isError,
                        const QString &color = QString(),
                        const QString &flag = QString());

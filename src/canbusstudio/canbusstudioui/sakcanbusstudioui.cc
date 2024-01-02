@@ -368,7 +368,7 @@ void SAKCanBusUi::onSendButtonClicked()
         }
 
         QString flag = QString("<font color=green>[Tx] </font>");
-        outputMessage(flag + view);
+        //outputMessage(flag + view);
     } else {
         qCWarning(gLC) << mDevice->errorString();
     }
@@ -400,7 +400,7 @@ void SAKCanBusUi::onFrameReceived()
         }
 
         QString flag = QString("<font color=blue>[Rx] </font>");
-        outputMessage(flag + view);
+        //outputMessage(flag + view);
     }
 }
 

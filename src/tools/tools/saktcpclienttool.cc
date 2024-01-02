@@ -36,12 +36,12 @@ bool SAKTcpClientTool::initialize(QString& errStr)
     QString ip = mTcpSocket->localAddress().toString();
     QString port = QString::number(mTcpSocket->localPort());
     mBindingIpPort = ip + ":" + port;
-    outputMessage(QtInfoMsg, "Client address and port: " + mBindingIpPort);
+    qInfo() << "Client address and port: " + mBindingIpPort;
     emit bindingIpPortChanged();
 
     connect(mTcpSocket, SAK_SIG_SOCKETERROROCCURRED, mTcpSocket, [=]() {
         QString info = "Error occurred: " + mTcpSocket->errorString();
-        outputMessage(QtWarningMsg, info);
+        qInfo() << info;
         emit errorOccured(mTcpSocket->errorString());
     });
 
@@ -56,7 +56,7 @@ void SAKTcpClientTool::writeBytes(const QByteArray& bytes)
 {
     qint64 ret = mTcpSocket->write(bytes);
     if (ret == -1) {
-        outputMessage(QtWarningMsg, mTcpSocket->errorString());
+        qWarning() << mTcpSocket->errorString();
     } else {
         emit bytesWritten(bytes, mBindingIpPort);
     }
@@ -80,7 +80,7 @@ void SAKTcpClientTool::readBytes()
         QString ipport = address.toString() + ":" + QString::number(port);
         QString info = mBindingIpPort + "<-" + ipport + ":";
         info += QString::fromLatin1(ba);
-        outputMessage(QtDebugMsg, info);
+        qInfo() << info;
         emit bytesOutput(bytes);
         emit bytesWritten(bytes, ipport);
     }

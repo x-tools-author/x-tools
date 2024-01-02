@@ -69,7 +69,6 @@ void SAKSerialPortTransmitterTool::inputBytes(const QByteArray &bytes)
 {
     QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
     QString hex = QString::fromLatin1(ba);
-    outputMessage(QtInfoMsg, QString("%1<-%2").arg(mToolName, hex));
 
     mToolVectorMutex.lock();
     for (auto tool : mToolVector) {

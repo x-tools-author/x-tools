@@ -15,11 +15,11 @@ SAKBaseTool::SAKBaseTool(QObject *parent)
     : QThread{parent}
 {
     connect(this, &SAKBaseTool::started, this, [=]() {
-        this->mIsWorking = true;
+        this->m_isWorking = true;
         emit this->isWorkingChanged();
     });
     connect(this, &SAKBaseTool::finished, this, [=]() {
-        this->mIsWorking = false;
+        this->m_isWorking = false;
         emit this->isWorkingChanged();
     });
     connect(this, &SAKBaseTool::errorOccured, this, [=](const QString &errorString) {
@@ -34,24 +34,10 @@ SAKBaseTool::~SAKBaseTool()
     if (isRunning()) {
         exit();
         wait();
-        outputMessage(QtDebugMsg, __FUNCTION__);
     }
 }
 
 void SAKBaseTool::inputBytes(const QByteArray &bytes)
 {
     emit bytesOutput(bytes);
-}
-
-void SAKBaseTool::outputMessage(int type, const QString &info) const
-{
-    if (type == QtInfoMsg) {
-        qInfo() << qPrintable(info);
-    } else if (type == QtDebugMsg) {
-        qDebug() << qPrintable(info);
-    } else if (type == QtWarningMsg) {
-        qWarning() << qPrintable(info);
-    } else {
-        qCritical() << qPrintable(info);
-    }
 }

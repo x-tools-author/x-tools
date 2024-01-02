@@ -477,7 +477,7 @@ void SAKModbusUi::InitSignalsClientOperations()
 
 void SAKModbusUi::OnErrorOccurred()
 {
-    OutputMessage(modbus_device_->errorString(), true, "", "error");
+    //outputMessage(modbus_device_->errorString(), true, "", "error");
     if (modbus_device_->error() == QModbusDevice::ConnectionError) {
         const QString msg = modbus_device_->errorString();
         OnCloseClicked();
@@ -693,7 +693,7 @@ void SAKModbusUi::OnReadClicked()
     }
 
     QString info = ui_->function_code_->currentText();
-    OutputMessage(info, false, TXCOLOR, TXFLAG);
+    //outputMessage(info, false, TXCOLOR, TXFLAG);
     connect(reply, &QModbusReply::finished, this, [=]() {
         OutputModbusReply(reply, function_code);
 
@@ -728,7 +728,7 @@ void SAKModbusUi::OnWriteClicked()
         });
 
         QString info = ui_->function_code_->currentText();
-        OutputMessage(info, false, TXCOLOR, TXFLAG);
+        //outputMessage(info, false, TXCOLOR, TXFLAG);
     }
 }
 
@@ -767,7 +767,7 @@ void SAKModbusUi::OnSendClicked()
 
         QString info = "pdu(No server address, no crc):";
         info += QString(pdu.toHex(' '));
-        OutputMessage(info, false, TXCOLOR, TXFLAG);
+        //outputMessage(info, false, TXCOLOR, TXFLAG);
     }
 
     // Update settings data.
@@ -1157,7 +1157,7 @@ QList<quint16> SAKModbusUi::GetTableValues(QTableView *table_view, int row, int 
 void SAKModbusUi::OutputModbusReply(QModbusReply *reply, int function_code)
 {
     if (reply->error() != QModbusDevice::NoError) {
-        OutputMessage(reply->errorString(), true, "", "error");
+        //outputMessage(reply->errorString(), true, "", "error");
         QMessageBox::warning(this, tr("Error occured"), reply->errorString());
         return;
     }
@@ -1171,14 +1171,14 @@ void SAKModbusUi::OutputModbusReply(QModbusReply *reply, int function_code)
                            .arg(server_address)
                            .arg(function_code)
                            .arg(QString::fromLatin1(data.toHex(' ')));
-        OutputMessage(info, false, RXCOLOR, RXFLAG);
+        //outputMessage(info, false, RXCOLOR, RXFLAG);
     } else if (reply->type() == QModbusReply::ReplyType::Common) {
         QString info = ui_->function_code_->currentText();
-        OutputMessage(info, false, RXCOLOR, RXFLAG);
+        //outputMessage(info, false, RXCOLOR, RXFLAG);
     }
 }
 
-void SAKModbusUi::OutputMessage(const QString &msg,
+void SAKModbusUi::outputMessage(const QString &msg,
                                 bool isError,
                                 const QString &color,
                                 const QString &flag)

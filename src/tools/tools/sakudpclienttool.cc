@@ -22,13 +22,13 @@ bool SAKUdpClientTool::initialize(QString &errStr)
     if (mSpecifyClientIpPort) {
         if (!mUdpSocket->bind(QHostAddress(mClientIp), mClientPort)) {
             errStr = mUdpSocket->errorString();
-            outputMessage(QtWarningMsg, errStr);
+            //outputMessage(QtWarningMsg, errStr);
             return false;
         }
     } else {
         if (!mUdpSocket->bind()) {
             errStr = mUdpSocket->errorString();
-            outputMessage(QtWarningMsg, errStr);
+            //outputMessage(QtWarningMsg, errStr);
             return false;
         }
     }
@@ -37,7 +37,7 @@ bool SAKUdpClientTool::initialize(QString &errStr)
     int port = mUdpSocket->localPort();
     QString info = QString("%1:%2").arg(ip).arg(port);
     mBindingIpPort = info;
-    outputMessage(QtInfoMsg, info);
+    //outputMessage(QtInfoMsg, info);
     emit bindingIpPortChanged();
 
     connect(mUdpSocket, &QUdpSocket::readyRead, mUdpSocket, [=]() { readBytes(); });
@@ -59,14 +59,14 @@ void SAKUdpClientTool::writeBytes(const QByteArray &bytes)
         QString ipport = mServerIp + ":" + QString::number(mServerPort);
         QString str = mUdpSocket->errorString();
         QString info = QString("write bytes to %1 error: %2").arg(ipport, str);
-        outputMessage(QtWarningMsg, info);
+        //outputMessage(QtWarningMsg, info);
     } else {
         QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
         QString hex = QString::fromLatin1(ba);
         QString portStr = QString::number(mServerPort);
         QString serverInfo = QString("%1:%2").arg(mServerIp, portStr);
         QString info = mBindingIpPort + "->" + serverInfo + ":" + hex;
-        outputMessage(QtInfoMsg, info);
+        //outputMessage(QtInfoMsg, info);
         emit bytesWritten(bytes, info);
     }
 }
@@ -90,14 +90,14 @@ void SAKUdpClientTool::readBytes()
         quint16 port;
         qint64 ret = mUdpSocket->readDatagram(bytes.data(), bytes.length(), &address, &port);
         if (ret == -1) {
-            outputMessage(QtWarningMsg, mUdpSocket->errorString());
+            //outputMessage(QtWarningMsg, mUdpSocket->errorString());
         } else {
             QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
             QString hex = QString::fromLatin1(ba);
             QString portStr = address.toString();
             QString serverInfo = address.toString() + ":" + portStr;
             QString info = mBindingIpPort + "<-" + serverInfo + ":" + hex;
-            outputMessage(QtInfoMsg, info);
+            //outputMessage(QtInfoMsg, info);
             emit bytesOutput(bytes);
             emit bytesRead(bytes, mBindingIpPort);
         }

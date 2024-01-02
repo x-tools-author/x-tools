@@ -84,8 +84,6 @@ bool SAKSerialPortTool::initialize(QString &errStr)
     auto cookedFlowControl = QSerialPort::FlowControl(mParameters.flowControl);
     mSerialPort->setFlowControl(cookedFlowControl);
 
-    mToolName = mParameters.portName;
-
     QString info = QString("portName:%1, baudRate:%2, dataBits:%3, "
                            "stopBits:%4, parity:%5, flowControl: %6")
                        .arg(mParameters.portName,
@@ -94,11 +92,11 @@ bool SAKSerialPortTool::initialize(QString &errStr)
                             QString::number(mParameters.stopBits),
                             QString::number(mParameters.parity),
                             QString::number(mParameters.flowControl));
-    outputMessage(QtInfoMsg, info);
+    qInfo() << qPrintable(info);
 
     if (!mSerialPort->open(QSerialPort::ReadWrite)) {
         errStr = "open serial port failed:" + mSerialPort->errorString();
-        outputMessage(QtWarningMsg, errStr);
+        qWarning() << errStr;
         mSerialPort->deleteLater();
         mSerialPort = Q_NULLPTR;
         return false;
@@ -114,12 +112,12 @@ void SAKSerialPortTool::writeBytes(const QByteArray &bytes)
     if (mSerialPort && mSerialPort->isOpen()) {
         qint64 ret = mSerialPort->write(bytes);
         if (ret == -1) {
-            outputMessage(QtWarningMsg, mSerialPort->errorString());
+            qWarning() << mSerialPort->errorString();
         } else if (ret > 0) {
             QByteArray hex = SAKInterface::arrayToHex(bytes, ' ');
             QString msg = QString::fromLatin1(hex);
             msg = QString("%1<-%2").arg(mParameters.portName, msg);
-            outputMessage(QtInfoMsg, msg);
+            qInfo() << msg;
             emit bytesWritten(bytes, mSerialPort->portName());
         }
     }
@@ -133,7 +131,7 @@ void SAKSerialPortTool::readBytes()
             QByteArray hex = SAKInterface::arrayToHex(bytes, ' ');
             QString msg = QString::fromLatin1(hex);
             msg = QString("%1<-%2").arg(mParameters.portName, msg);
-            outputMessage(QtInfoMsg, msg);
+            qInfo() << msg;
             emit bytesOutput(bytes);
             emit bytesRead(bytes, mSerialPort->portName());
         }

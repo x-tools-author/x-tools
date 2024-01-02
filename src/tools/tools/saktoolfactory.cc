@@ -108,7 +108,7 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
     }
 
     if (tool) {
-        tool->setToolType(type);
+        //tool->setToolType(type);
     }
 
     return tool;

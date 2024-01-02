@@ -160,7 +160,7 @@ bool SAKEmitterTool::setData(const QModelIndex &index, const QVariant &value, in
             } else if (dataKey == mDataKeys.itemText) {
                 item.data.itemText = value.toString();
             } else {
-                outputMessage(QtWarningMsg, "Unknown data key:" + dataKey);
+                qWarning() << "Unknown data key:" + dataKey;
             }
 
             mItems.replace(row, item);
@@ -320,7 +320,7 @@ QVariant SAKEmitterTool::columnDisplayRoleData(const SAKEmitterTool::EmiterItem 
         } else if (dataKey == mDataKeys.itemText) {
             return item.data.itemText;
         } else {
-            outputMessage(QtWarningMsg, "Unknown data key:" + dataKey);
+            qWarning() << "Unknown data key:" + dataKey;
             return "Error";
         }
     }

@@ -22,35 +22,24 @@ class SAKBaseTool : public QThread
 public:
     explicit SAKBaseTool(QObject *parent = Q_NULLPTR);
     virtual ~SAKBaseTool();
-    QString toolName() { return mToolName; }
-    void setToolName(const QString &name) { mToolName = name; }
-    int toolType() { return m_type; }
-    void setToolType(int type) { m_type = type; }
-
     virtual void inputBytes(const QByteArray &bytes);
 
 signals:
     void bytesOutput(const QByteArray &bytes);
     void errorOccured(const QString &errorString);
 
-protected:
-    QString mToolName{""};
-
-protected:
-    void outputMessage(int type, const QString &info) const;
-
 public:
-    bool isWorking() { return mIsWorking; }
-    bool enable() { return mEnable; }
+    bool isWorking() { return m_isWorking; }
+    bool enable() { return m_enable; }
     void setEnable(bool enable)
     {
-        mEnable = enable;
+        m_enable = enable;
         emit enableChanged();
     }
 
 protected:
-    std::atomic_bool mIsWorking{false};
-    std::atomic_bool mEnable{true};
+    std::atomic_bool m_isWorking{false};
+    std::atomic_bool m_enable{true};
     int m_type;
 
 signals:

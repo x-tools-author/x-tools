@@ -24,12 +24,12 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
     mWebSocketServer = new QWebSocketServer(serverName, QWebSocketServer::NonSecureMode);
     if (!mWebSocketServer->listen(QHostAddress(mServerIp), mServerPort)) {
         errStr = mWebSocketServer->errorString();
-        outputMessage(QtWarningMsg, errStr);
+        //outputMessage(QtWarningMsg, errStr);
         return false;
     }
 
     QString mBindingIpPort = QString("%1:%2").arg(mServerIp).arg(mServerPort);
-    outputMessage(QtInfoMsg, "Server url: " + mBindingIpPort);
+    //outputMessage(QtInfoMsg, "Server url: " + mBindingIpPort);
 
     connect(mWebSocketServer,
             &QWebSocketServer::serverError,
@@ -59,7 +59,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
             quint16 port = client->peerPort();
             QString ipport = QString("%1:%2").arg(ip, QString::number(port));
             QString hex = QString::fromUtf8(bytes);
-            outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort, ipport, hex));
+            //outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort, ipport, hex));
             emit bytesOutput(bytes);
             emit bytesRead(bytes, ipport);
         });
@@ -69,7 +69,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
             quint16 port = client->peerPort();
             QString ipport = QString("%1:%2").arg(ip, QString::number(port));
             QString hex = QString::fromUtf8(message);
-            outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort, ipport, hex));
+            //outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort, ipport, hex));
             emit bytesOutput(message);
             emit bytesRead(message, ipport);
         });
@@ -77,9 +77,8 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
         connect(client, &QWebSocket::disconnected, client, [=]() {
             this->mWebSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
-            outputMessage(QtInfoMsg,
-                          QString("Connection(%1) has been disconnected: %2")
-                              .arg(mBindingIpPort, client->errorString()));
+            qInfo() << QString("Connection(%1) has been disconnected: %2")
+                           .arg(mBindingIpPort, client->errorString());
             emit clientsChanged();
         });
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
@@ -93,8 +92,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
                     Q_UNUSED(err);
                     this->mWebSocketList.removeOne(client);
                     this->mClients.removeOne(ipPort);
-                    outputMessage(QtInfoMsg,
-                                  QString("Error occurred: %1").arg(client->errorString()));
+                    qInfo() << QString("Error occurred: %1").arg(client->errorString());
                     emit clientsChanged();
                 });
     });
@@ -136,12 +134,12 @@ void SAKWebSocketServerTool::writeBytesInner(QWebSocket *client,
     }
 
     if (ret == -1) {
-        outputMessage(QtWarningMsg, client->errorString());
+        //outputMessage(QtWarningMsg, client->errorString());
     } else {
         QString ip = client->peerAddress().toString();
         quint16 port = client->peerPort();
         QString ipport = QString("%1:%2").arg(ip, QString::number(port));
-        outputMessage(QtInfoMsg, QString("%1->%2:%3").arg(this->mBindingIpPort, ipport, hex));
+        //outputMessage(QtInfoMsg, QString("%1->%2:%3").arg(this->mBindingIpPort, ipport, hex));
         emit bytesWritten(bytes, ipport);
     }
 }

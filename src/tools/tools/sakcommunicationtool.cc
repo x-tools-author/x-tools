@@ -44,7 +44,7 @@ void SAKCommunicationTool::run()
 {
     QString errStr;
     if (!initialize(errStr)) {
-        outputMessage(QtWarningMsg, errStr);
+        qWarning() << errStr;
         emit errorOccured(errStr);
         return;
     }

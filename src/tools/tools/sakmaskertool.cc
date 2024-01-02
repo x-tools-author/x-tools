@@ -14,7 +14,7 @@
 SAKMaskerTool::SAKMaskerTool(QObject *parent)
     : SAKBaseTool{parent}
 {
-    mEnable = false;
+    m_enable = false;
 }
 
 SAKMaskerTool::~SAKMaskerTool()
@@ -50,7 +50,6 @@ void SAKMaskerTool::run()
         if (!bytes.isEmpty()) {
             QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
             QString hex = QString::fromLatin1(ba);
-            outputMessage(QtInfoMsg, QString("%1<-%2").arg(mToolName, hex));
 
             if (this->enable()) {
                 QByteArray cookedBytes;
@@ -62,12 +61,10 @@ void SAKMaskerTool::run()
 
                 ba = SAKInterface::arrayToHex(cookedBytes, ' ');
                 QString hex = QString::fromLatin1(ba);
-                outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
                 emit bytesOutput(cookedBytes);
             } else {
                 ba = SAKInterface::arrayToHex(bytes, ' ');
                 QString hex = QString::fromLatin1(ba);
-                outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
                 emit bytesOutput(bytes);
             }
         }
