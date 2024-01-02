@@ -10,7 +10,6 @@
 #define SAKCOMMUNICATIONTOOL_H
 
 #include "sakbasetool.h"
-#include <atomic>
 #include <QMutex>
 
 class SAKCommunicationTool : public SAKBaseTool
