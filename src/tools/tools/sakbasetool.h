@@ -27,11 +27,6 @@ public:
     int toolType() { return m_type; }
     void setToolType(int type) { m_type = type; }
 
-    /**
-     * @brief inputBytes: The entrance of data.
-     * @param bytes: The bytes input.
-     * @param context: The extension parameters.
-     */
     virtual void inputBytes(const QByteArray &bytes);
 
 signals:
