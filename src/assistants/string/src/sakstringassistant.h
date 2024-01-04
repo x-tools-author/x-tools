@@ -22,7 +22,7 @@ public:
     ~SAKStringAssistant();
 
 private:
-    Ui::SAKStringAssistant* ui_;
+    Ui::SAKStringAssistant* ui;
 
 private slots:
     void OnTextEditTextChanged();

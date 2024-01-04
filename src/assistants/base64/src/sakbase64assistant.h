@@ -23,7 +23,7 @@ public:
     ~SAKBase64Assisatnt();
 
 private:
-    Ui::SAKBase64Assisatnt* ui_;
+    Ui::SAKBase64Assisatnt* ui;
 
 private:
     void OnImageClicked();

@@ -30,7 +30,7 @@ private:
     void FixedLength(QStringList& stringList);
 
 private:
-    Ui::SAKNumberAssistant* ui_;
+    Ui::SAKNumberAssistant* ui;
 
 private slots:
     void OnHexRawDataCheckBoxClicked();

@@ -37,7 +37,7 @@ signals:
     void deviceChanged(QModbusDevice *device);
 
 private:
-    Ui::SAKModbusUi *ui_;
+    Ui::SAKModbusUi *ui;
     QModbusDevice *modbus_device_{Q_NULLPTR};
     QSettings *settings_{Q_NULLPTR};
     QStandardItemModel *register_model_{Q_NULLPTR};

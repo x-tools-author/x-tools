@@ -18,22 +18,22 @@
 
 SAKBase64Assisatnt::SAKBase64Assisatnt(QWidget* parent)
     : QWidget(parent)
-    , ui_(new Ui::SAKBase64Assisatnt)
+    , ui(new Ui::SAKBase64Assisatnt)
 {
-    ui_->setupUi(this);
-    connect(ui_->image_, &QPushButton::clicked, this, &SAKBase64Assisatnt::OnImageClicked);
-    connect(ui_->decrypt_, &QPushButton::clicked, this, &SAKBase64Assisatnt::OnDecryptClicked);
-    connect(ui_->encrypt_, &QPushButton::clicked, this, &SAKBase64Assisatnt::OnEncryptClicked);
+    ui->setupUi(this);
+    connect(ui->image_, &QPushButton::clicked, this, &SAKBase64Assisatnt::OnImageClicked);
+    connect(ui->decrypt_, &QPushButton::clicked, this, &SAKBase64Assisatnt::OnDecryptClicked);
+    connect(ui->encrypt_, &QPushButton::clicked, this, &SAKBase64Assisatnt::OnEncryptClicked);
 }
 
 SAKBase64Assisatnt::~SAKBase64Assisatnt()
 {
-    delete ui_;
+    delete ui;
 }
 
 void SAKBase64Assisatnt::OnImageClicked()
 {
-    QString cipher_text = ui_->cipher_text_->toPlainText();
+    QString cipher_text = ui->cipher_text_->toPlainText();
     QByteArray base64 = cipher_text.toUtf8();
     QByteArray bytes = QByteArray::fromBase64(base64);
 
@@ -56,18 +56,18 @@ void SAKBase64Assisatnt::OnImageClicked()
 
 void SAKBase64Assisatnt::OnEncryptClicked()
 {
-    QString plain_text = ui_->plain_text_->toPlainText();
+    QString plain_text = ui->plain_text_->toPlainText();
     QByteArray byte_array = plain_text.toUtf8();
     QByteArray base64 = byte_array.toBase64();
     QString ciper_text = QString::fromLatin1(base64);
-    ui_->cipher_text_->setPlainText(ciper_text);
+    ui->cipher_text_->setPlainText(ciper_text);
 }
 
 void SAKBase64Assisatnt::OnDecryptClicked()
 {
-    QString cipher_text = ui_->cipher_text_->toPlainText();
+    QString cipher_text = ui->cipher_text_->toPlainText();
     QByteArray base64 = cipher_text.toUtf8();
     QByteArray byte_array = QByteArray::fromBase64(base64);
     QString plain_text = QString::fromUtf8(byte_array);
-    ui_->plain_text_->setPlainText(plain_text);
+    ui->plain_text_->setPlainText(plain_text);
 }

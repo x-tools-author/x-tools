@@ -24,7 +24,7 @@ public:
     ~SAKBroadcastAssistant();
 
 private:
-    Ui::SAKBroadcastAssistant* ui_;
+    Ui::SAKBroadcastAssistant* ui;
     SAKBroadcastThread* broadcast_thread_;
 
 private:

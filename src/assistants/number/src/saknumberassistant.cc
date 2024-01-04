@@ -14,34 +14,34 @@
 
 SAKNumberAssistant::SAKNumberAssistant(QWidget* parent)
     : QWidget(parent)
-    , ui_(new Ui::SAKNumberAssistant)
+    , ui(new Ui::SAKNumberAssistant)
 {
-    ui_->setupUi(this);
+    ui->setupUi(this);
     common_interface_ = new SAKCommonInterface(this);
-    common_interface_->setLineEditValidator(ui_->rawDataLineEdit,
+    common_interface_->setLineEditValidator(ui->rawDataLineEdit,
                                             SAKCommonInterface::ValidatorFloat);
 
-    connect(ui_->hexRawDataCheckBox,
+    connect(ui->hexRawDataCheckBox,
             &QCheckBox::clicked,
             this,
             &SAKNumberAssistant::OnHexRawDataCheckBoxClicked);
-    connect(ui_->createPushButton,
+    connect(ui->createPushButton,
             &QPushButton::clicked,
             this,
             &SAKNumberAssistant::OnCreatePushButtonClicked);
-    connect(ui_->rawDataLineEdit,
+    connect(ui->rawDataLineEdit,
             &QLineEdit::textChanged,
             this,
             &SAKNumberAssistant::OnRawDataLineEditTextChanged);
-    connect(ui_->bigEndianCheckBox,
+    connect(ui->bigEndianCheckBox,
             &QCheckBox::clicked,
             this,
             &SAKNumberAssistant::OnBigEndianCheckBoxClicked);
-    connect(ui_->floatRadioButton,
+    connect(ui->floatRadioButton,
             &QRadioButton::clicked,
             this,
             &SAKNumberAssistant::OnFloatRadioButtonClicked);
-    connect(ui_->doubleRadioButton,
+    connect(ui->doubleRadioButton,
             &QRadioButton::clicked,
             this,
             &SAKNumberAssistant::OnDoubleRadioButtonClicked);
@@ -51,13 +51,13 @@ SAKNumberAssistant::SAKNumberAssistant(QWidget* parent)
 
 SAKNumberAssistant::~SAKNumberAssistant()
 {
-    delete ui_;
+    delete ui;
 }
 
 void SAKNumberAssistant::FixedLength(QStringList& stringList)
 {
-    if (ui_->bigEndianCheckBox->isChecked()) {
-        if (ui_->floatRadioButton->isChecked()) {
+    if (ui->bigEndianCheckBox->isChecked()) {
+        if (ui->floatRadioButton->isChecked()) {
             if (stringList.length() < int(sizeof(float))) {
                 int len = int(sizeof(float)) - stringList.length();
                 for (int i = 0; i < len; i++) {
@@ -73,7 +73,7 @@ void SAKNumberAssistant::FixedLength(QStringList& stringList)
             }
         }
     } else {
-        if (ui_->floatRadioButton->isChecked()) {
+        if (ui->floatRadioButton->isChecked()) {
             if (stringList.length() < int(sizeof(float))) {
                 int len = int(sizeof(float)) - stringList.length();
                 for (int i = 0; i < len; i++) {
@@ -93,49 +93,49 @@ void SAKNumberAssistant::FixedLength(QStringList& stringList)
 
 void SAKNumberAssistant::OnHexRawDataCheckBoxClicked()
 {
-    ui_->rawDataLineEdit->clear();
-    if (ui_->hexRawDataCheckBox->isChecked()) {
-        common_interface_->setLineEditValidator(ui_->rawDataLineEdit,
+    ui->rawDataLineEdit->clear();
+    if (ui->hexRawDataCheckBox->isChecked()) {
+        common_interface_->setLineEditValidator(ui->rawDataLineEdit,
                                                 SAKCommonInterface::ValidatorHex);
     } else {
-        common_interface_->setLineEditValidator(ui_->rawDataLineEdit,
+        common_interface_->setLineEditValidator(ui->rawDataLineEdit,
                                                 SAKCommonInterface::ValidatorFloat);
     }
 }
 
 void SAKNumberAssistant::OnCreatePushButtonClicked()
 {
-    if (ui_->hexRawDataCheckBox->isChecked()) {
-        ui_->rawDataLineEdit->setMaxLength(ui_->floatRadioButton->isChecked() ? 11 : 23);
-        QString rawDataString = ui_->rawDataLineEdit->text().trimmed();
+    if (ui->hexRawDataCheckBox->isChecked()) {
+        ui->rawDataLineEdit->setMaxLength(ui->floatRadioButton->isChecked() ? 11 : 23);
+        QString rawDataString = ui->rawDataLineEdit->text().trimmed();
         QStringList rawDataStringList = rawDataString.split(' ');
         FixedLength(rawDataStringList);
 
         QByteArray data;
         for (int i = 0; i < rawDataStringList.length(); i++) {
-            bool isBigEndian = ui_->bigEndianCheckBox->isChecked();
+            bool isBigEndian = ui->bigEndianCheckBox->isChecked();
             quint8 value = quint8(
                 rawDataStringList.at(isBigEndian ? i : rawDataStringList.length() - 1 - i).toInt());
             data.append(reinterpret_cast<char*>(&value), 1);
         }
 
-        if (ui_->floatRadioButton->isChecked()) {
+        if (ui->floatRadioButton->isChecked()) {
             float* f = reinterpret_cast<float*>(data.data());
-            ui_->friendlyCookedDataLineEdit->setText(QString("%1").arg(*f));
+            ui->friendlyCookedDataLineEdit->setText(QString("%1").arg(*f));
             data = SAKInterface::arrayToHex(data, ' ');
-            ui_->hexCookedDataLineEdit->setText(QString(data));
+            ui->hexCookedDataLineEdit->setText(QString(data));
         } else {
             double* d = reinterpret_cast<double*>(data.data());
-            ui_->friendlyCookedDataLineEdit->setText(QString("%1").arg(*d));
+            ui->friendlyCookedDataLineEdit->setText(QString("%1").arg(*d));
             data = SAKInterface::arrayToHex(data, ' ');
-            ui_->hexCookedDataLineEdit->setText(QString(data));
+            ui->hexCookedDataLineEdit->setText(QString(data));
         }
     } else {
         QByteArray data;
-        ui_->rawDataLineEdit->setMaxLength(INT_MAX);
-        if (ui_->floatRadioButton->isChecked()) {
-            float value = ui_->rawDataLineEdit->text().trimmed().toFloat();
-            if (ui_->bigEndianCheckBox->isChecked()) {
+        ui->rawDataLineEdit->setMaxLength(INT_MAX);
+        if (ui->floatRadioButton->isChecked()) {
+            float value = ui->rawDataLineEdit->text().trimmed().toFloat();
+            if (ui->bigEndianCheckBox->isChecked()) {
                 // To big endian
                 float temp = value;
                 quint8* ptr = reinterpret_cast<quint8*>(&value);
@@ -145,8 +145,8 @@ void SAKNumberAssistant::OnCreatePushButtonClicked()
             }
             data.append(reinterpret_cast<char*>(&value), sizeof(value));
         } else {
-            double value = ui_->rawDataLineEdit->text().trimmed().toFloat();
-            if (ui_->bigEndianCheckBox->isChecked()) {
+            double value = ui->rawDataLineEdit->text().trimmed().toFloat();
+            if (ui->bigEndianCheckBox->isChecked()) {
                 // To big endian
                 double temp = value;
                 quint8* ptr = reinterpret_cast<quint8*>(&value);
@@ -156,9 +156,9 @@ void SAKNumberAssistant::OnCreatePushButtonClicked()
             }
             data.append(reinterpret_cast<char*>(&value), sizeof(value));
         }
-        ui_->friendlyCookedDataLineEdit->setText(ui_->rawDataLineEdit->text());
+        ui->friendlyCookedDataLineEdit->setText(ui->rawDataLineEdit->text());
         data = SAKInterface::arrayToHex(data, ' ');
-        ui_->hexCookedDataLineEdit->setText(QString(data));
+        ui->hexCookedDataLineEdit->setText(QString(data));
     }
 }
 

@@ -6,25 +6,23 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-
 #include "sakasciiassistant.h"
+#include "ui_sakasciiassistant.h"
 
 #include <QImage>
 
-#include "ui_sakasciiassistant.h"
-
 SAKAsciiAssistant::SAKAsciiAssistant(QWidget* parent)
     : QWidget(parent)
-    , ui_(new Ui::SAKAsciiAssistant)
+    , ui(new Ui::SAKAsciiAssistant)
 {
-    ui_->setupUi(this);
+    ui->setupUi(this);
 
     const QPixmap pixmap = QPixmap::fromImage(QImage(":/resources/ASCII.png"));
     resize(pixmap.size());
-    ui_->image_->setPixmap(pixmap);
+    ui->image_->setPixmap(pixmap);
 }
 
 SAKAsciiAssistant::~SAKAsciiAssistant()
 {
-    delete ui_;
+    delete ui;
 }
