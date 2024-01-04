@@ -13,22 +13,23 @@
 
 #include "sak.h"
 #include "sakcommonmainwindow.h"
-#include "saksettings.h"
 
-#define SAK_EXEC(WidgetType, argc, argv, appName) \
-    sakDoSomethingBeforeAppCreated(argv, appName); \
-    QApplication app(argc, argv); \
-    SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow(); \
-    WidgetType* centralWidget = new WidgetType(mainWindow); \
-    mainWindow->setWindowTitle(appName); \
-    mainWindow->setCentralWidget(centralWidget); \
-    if (mainWindow->height() < 400) { \
-        mainWindow->setMinimumHeight(400); \
-    } \
-    mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height()); \
-    mainWindow->show(); \
-    int ret = app.exec(); \
-    sakDoSomethingAfterAppExited(); \
+template<typename T>
+int sakExec(int argc, char* argv[], const QString& appName)
+{
+    sakDoSomethingBeforeAppCreated(argv, appName);
+
+    QApplication app(argc, argv);
+    SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow();
+    T* centralWidget = new T(mainWindow);
+    mainWindow->setWindowTitle(appName);
+    mainWindow->setCentralWidget(centralWidget);
+    mainWindow->show();
+    mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());
+
+    int ret = app.exec();
+    sakDoSomethingAfterAppExited();
     return ret;
+}
 
 #endif // SAKUI_H

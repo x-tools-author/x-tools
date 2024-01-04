@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Broadcast Assistant");
-    SAK_EXEC(SAKBroadcastAssistant, argc, argv, appName);
+    return sakExec<SAKBroadcastAssistant>(argc, argv, appName);
 }
