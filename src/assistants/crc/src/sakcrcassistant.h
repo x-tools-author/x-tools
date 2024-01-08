@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -25,7 +25,7 @@ namespace Ui {
 class SAKCRCAssistant;
 }
 
-class SAKCommonCrcInterface;
+class SAKCrcInterface;
 class SAKCRCAssistant : public QWidget
 {
     Q_OBJECT
@@ -37,33 +37,30 @@ protected:
     bool eventFilter(QObject* watched, QEvent* event);
 
 private:
-    const char* log_category_;
-    SAKCommonCrcInterface* crc_interface_;
+    SAKCrcInterface* m_crcInterface;
+
+    Ui::SAKCRCAssistant* ui;
+    QComboBox* m_widthComboBox;
+    QComboBox* m_parameterComboBox;
+    QCheckBox* m_refinCheckBox;
+    QCheckBox* m_refoutCheckBox;
+    QLineEdit* m_polyLineEdit;
+    QLineEdit* m_initLineEdit;
+    QLineEdit* m_xorLineEdit;
+    QRadioButton* m_hexRadioBt;
+    QRadioButton* m_asciiRadioBt;
+    QLineEdit* m_hexCRCOutput;
+    QLineEdit* m_binCRCOutput;
+    QTextEdit* m_inputTextEdit;
+    QPushButton* m_calculatedBt;
+    QLabel* m_labelPolyFormula;
+    QLabel* m_labelInfo;
 
 private:
-    void InitParameterModel();
+    void initParameterModel();
 
-private slots:
-    void Calculate();
-    void TextFormatControl();
-    void ChangedParameterModel(int index);
-
-private:
-    Ui::SAKCRCAssistant* mUi;
-    QComboBox* mWidthComboBox;
-    QComboBox* mParameterComboBox;
-    QCheckBox* mRefinCheckBox;
-    QCheckBox* mRefoutCheckBox;
-    QLineEdit* mPolyLineEdit;
-    QLineEdit* mInitLineEdit;
-    QLineEdit* mXorLineEdit;
-    QRadioButton* mHexRadioBt;
-    QRadioButton* mAsciiRadioBt;
-    QLineEdit* mHexCRCOutput;
-    QLineEdit* mBinCRCOutput;
-    QTextEdit* mInputTextEdit;
-    QPushButton* mCalculatedBt;
-    QLabel* mLabelPolyFormula;
-    QLabel* mLabelInfo;
+    void calculate();
+    void textFormatControl();
+    void changedParameterModel(int index);
 };
 #endif

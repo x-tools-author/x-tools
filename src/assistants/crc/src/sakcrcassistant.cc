@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -13,94 +13,91 @@
 #include <QLoggingCategory>
 #include <QMetaEnum>
 
-#include "sakcommoncrcinterface.h"
+#include "sakcrcinterface.h"
 #include "ui_sakcrcassistant.h"
 
 SAKCRCAssistant::SAKCRCAssistant(QWidget* parent)
     : QWidget(parent)
-    , log_category_("CRCAssistant")
-    , crc_interface_(new SAKCommonCrcInterface)
-    , mUi(new Ui::SAKCRCAssistant)
+    , m_crcInterface(new SAKCrcInterface)
+    , ui(new Ui::SAKCRCAssistant)
 {
-    mUi->setupUi(this);
-    mWidthComboBox = mUi->comboBoxWidth;
-    mWidthComboBox->addItem(QString::number(8));
-    mWidthComboBox->addItem(QString::number(16));
-    mWidthComboBox->addItem(QString::number(32));
-    mWidthComboBox->setEnabled(false);
+    ui->setupUi(this);
+    m_widthComboBox = ui->comboBoxWidth;
+    m_widthComboBox->addItem(QString::number(8));
+    m_widthComboBox->addItem(QString::number(16));
+    m_widthComboBox->addItem(QString::number(32));
+    m_widthComboBox->setEnabled(false);
 
-    mParameterComboBox = mUi->comboBoxName;
-    mParameterComboBox->clear();
+    m_parameterComboBox = ui->comboBoxName;
+    m_parameterComboBox->clear();
 
-    mRefinCheckBox = mUi->checkBoxRefIn;
-    mRefoutCheckBox = mUi->checkBoxRefOut;
-    mPolyLineEdit = mUi->lineEditPoly;
-    mInitLineEdit = mUi->lineEditInit;
-    mXorLineEdit = mUi->lineEditXOROUT;
+    m_refinCheckBox = ui->checkBoxRefIn;
+    m_refoutCheckBox = ui->checkBoxRefOut;
+    m_polyLineEdit = ui->lineEditPoly;
+    m_initLineEdit = ui->lineEditInit;
+    m_xorLineEdit = ui->lineEditXOROUT;
 
-    mRefinCheckBox->setEnabled(false);
-    mRefoutCheckBox->setEnabled(false);
-    mPolyLineEdit->setReadOnly(true);
-    mInitLineEdit->setReadOnly(true);
-    mXorLineEdit->setReadOnly(true);
+    m_refinCheckBox->setEnabled(false);
+    m_refoutCheckBox->setEnabled(false);
+    m_polyLineEdit->setReadOnly(true);
+    m_initLineEdit->setReadOnly(true);
+    m_xorLineEdit->setReadOnly(true);
 
-    mHexRadioBt = mUi->radioButtonHex;
-    mAsciiRadioBt = mUi->radioButtonASCII;
+    m_hexRadioBt = ui->radioButtonHex;
+    m_asciiRadioBt = ui->radioButtonASCII;
 
-    mHexCRCOutput = mUi->lineEditOutputHex;
-    mBinCRCOutput = mUi->lineEditOutputBin;
-    mHexCRCOutput->setReadOnly(true);
-    mBinCRCOutput->setReadOnly(true);
+    m_hexCRCOutput = ui->lineEditOutputHex;
+    m_binCRCOutput = ui->lineEditOutputBin;
+    m_hexCRCOutput->setReadOnly(true);
+    m_binCRCOutput->setReadOnly(true);
 
-    mInputTextEdit = mUi->textEdit;
+    m_inputTextEdit = ui->textEdit;
 
-    mCalculatedBt = mUi->pushButtonCalculate;
-    mLabelPolyFormula = mUi->labelPolyFormula;
-    mLabelInfo = mUi->labelInfo;
-    mLabelInfo->installEventFilter(this);
-    mLabelInfo->setCursor(QCursor(Qt::PointingHandCursor));
+    m_calculatedBt = ui->pushButtonCalculate;
+    m_labelPolyFormula = ui->labelPolyFormula;
+    m_labelInfo = ui->labelInfo;
+    m_labelInfo->installEventFilter(this);
+    m_labelInfo->setCursor(QCursor(Qt::PointingHandCursor));
 
-    InitParameterModel();
-    connect(mParameterComboBox,
-            SIGNAL(currentIndexChanged(int)),
+    initParameterModel();
+    connect(m_parameterComboBox,
+            &QComboBox::currentIndexChanged,
             this,
-            SLOT(ChangedParameterModel(int)));
-    connect(mCalculatedBt, SIGNAL(clicked()), this, SLOT(Calculate()));
-    connect(mInputTextEdit, SIGNAL(textChanged()), this, SLOT(TextFormatControl()));
+            &SAKCRCAssistant::changedParameterModel);
+    connect(m_calculatedBt, &QPushButton::clicked, this, &SAKCRCAssistant::calculate);
+    connect(m_inputTextEdit, &QTextEdit::textChanged, this, &SAKCRCAssistant::textFormatControl);
 }
 
 SAKCRCAssistant::~SAKCRCAssistant()
 {
-    QLoggingCategory category(log_category_);
-    qCInfo(category) << "Goodbye CRCCalculator";
-    delete crc_interface_;
-    delete mUi;
+    delete m_crcInterface;
+    delete ui;
 }
 
-void SAKCRCAssistant::InitParameterModel()
+void SAKCRCAssistant::initParameterModel()
 {
-    mParameterComboBox->clear();
-    QStringList list = crc_interface_->supportedParameterModels();
-    mParameterComboBox->addItems(list);
+    m_parameterComboBox->clear();
+    QStringList list = m_crcInterface->supportedParameterModels();
+    m_parameterComboBox->addItems(list);
 
-    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::SAKEnumCrcModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();
     bool ok = false;
-    int ret = models.keyToValue(mParameterComboBox->currentText().toLatin1().constData(), &ok);
-    SAKCommonCrcInterface::SAKEnumCrcModel model = SAKCommonCrcInterface::CRC_8;
+    int ret = models.keyToValue(m_parameterComboBox->currentText().toLatin1().constData(), &ok);
+    SAKCrcInterface::SAKEnumCrcAlgorithm model = SAKCrcInterface::CRC_8;
     if (ok) {
-        model = static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(ret);
+        model = static_cast<SAKCrcInterface::SAKEnumCrcAlgorithm>(ret);
     }
 
-    int bitsWidth = crc_interface_->bitsWidth(model);
-    mWidthComboBox->setCurrentIndex(mWidthComboBox->findText(QString::number(bitsWidth)));
-    mLabelPolyFormula->setText(crc_interface_->friendlyPoly(model));
+    int bitsWidth = m_crcInterface->bitsWidth(model);
+    m_widthComboBox->setCurrentIndex(m_widthComboBox->findText(QString::number(bitsWidth)));
+    m_labelPolyFormula->setText(m_crcInterface->friendlyPoly(model));
 }
 
-void SAKCRCAssistant::Calculate()
+void SAKCRCAssistant::calculate()
 {
     QByteArray inputArray;
-    if (mHexRadioBt->isChecked()) {
-        QString str = mInputTextEdit->toPlainText();
+    if (m_hexRadioBt->isChecked()) {
+        QString str = m_inputTextEdit->toPlainText();
         QStringList strList = str.split(' ');
         char ch;
         for (int i = 0; i < strList.length(); i++) {
@@ -111,20 +108,20 @@ void SAKCRCAssistant::Calculate()
             inputArray.append(ch);
         }
     } else {
-        inputArray = mInputTextEdit->toPlainText().toLatin1();
+        inputArray = m_inputTextEdit->toPlainText().toLatin1();
     }
 
     if (inputArray.isEmpty()) {
         return;
     }
 
-    int bitsWidth = mWidthComboBox->currentText().toInt();
-    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::SAKEnumCrcModel>();
+    int bitsWidth = m_widthComboBox->currentText().toInt();
+    QMetaEnum models = QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();
     bool ok = false;
-    int ret = models.keyToValue(mParameterComboBox->currentText().toLatin1().constData(), &ok);
-    SAKCommonCrcInterface::SAKEnumCrcModel model = SAKCommonCrcInterface::CRC_8;
+    int ret = models.keyToValue(m_parameterComboBox->currentText().toLatin1().constData(), &ok);
+    SAKCrcInterface::SAKEnumCrcAlgorithm model = SAKCrcInterface::CRC_8;
     if (ok) {
-        model = static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(ret);
+        model = static_cast<SAKCrcInterface::SAKEnumCrcAlgorithm>(ret);
     } else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknown crc parameters model!");
     }
@@ -132,44 +129,37 @@ void SAKCRCAssistant::Calculate()
     QString crcHexString = "error";
     QString crcBinString = "error";
 
+    uint8_t* inputData = reinterpret_cast<uint8_t*>(inputArray.data());
+    uint64_t inputLength = static_cast<uint64_t>(inputArray.length());
     if (bitsWidth == 8) {
-        uint8_t crc = crc_interface_
-                          ->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()),
-                                                  static_cast<uint64_t>(inputArray.length()),
-                                                  model);
+        uint8_t crc = m_crcInterface->crcCalculate<uint8_t>(inputData, inputLength, model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 2, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 8, '0');
     } else if (bitsWidth == 16) {
-        uint16_t crc = crc_interface_
-                           ->crcCalculate<uint16_t>(reinterpret_cast<uint8_t*>(inputArray.data()),
-                                                    static_cast<uint64_t>(inputArray.length()),
-                                                    model);
+        uint16_t crc = m_crcInterface->crcCalculate<uint16_t>(inputData, inputLength, model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 4, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 16, '0');
     } else if (bitsWidth == 32) {
-        uint32_t crc = crc_interface_
-                           ->crcCalculate<uint32_t>(reinterpret_cast<uint8_t*>(inputArray.data()),
-                                                    static_cast<uint64_t>(inputArray.length()),
-                                                    model);
+        uint32_t crc = m_crcInterface->crcCalculate<uint32_t>(inputData, inputLength, model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 8, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 32, '0');
     } else {
         qWarning() << "Not supported bits width!";
     }
 
-    mHexCRCOutput->setText(crcHexString);
-    mBinCRCOutput->setText(crcBinString);
+    m_hexCRCOutput->setText(crcHexString);
+    m_binCRCOutput->setText(crcBinString);
 }
 
-void SAKCRCAssistant::TextFormatControl()
+void SAKCRCAssistant::textFormatControl()
 {
-    if (mAsciiRadioBt->isChecked()) {
+    if (m_asciiRadioBt->isChecked()) {
         return;
     }
-    disconnect(mInputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+    disconnect(m_inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 
     QString strTemp;
-    QString plaintext = mInputTextEdit->toPlainText();
+    QString plaintext = m_inputTextEdit->toPlainText();
     static QRegularExpression reg("[^0-9a-fA-F]");
     plaintext.remove(reg);
     for (int i = 0; i < plaintext.length(); i++) {
@@ -178,52 +168,51 @@ void SAKCRCAssistant::TextFormatControl()
         }
         strTemp.append(plaintext.at(i));
     }
-    mInputTextEdit->setText(strTemp.toUpper());
-    mInputTextEdit->moveCursor(QTextCursor::End);
+    m_inputTextEdit->setText(strTemp.toUpper());
+    m_inputTextEdit->moveCursor(QTextCursor::End);
 
-    connect(mInputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+    connect(m_inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
 
-void SAKCRCAssistant::ChangedParameterModel(int index)
+void SAKCRCAssistant::changedParameterModel(int index)
 {
     Q_UNUSED(index)
-    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::SAKEnumCrcModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();
     bool ok = false;
-    SAKCommonCrcInterface::SAKEnumCrcModel model = SAKCommonCrcInterface::CRC_8;
-    int ret = models.keyToValue(mParameterComboBox->currentText().toLatin1().constData(), &ok);
+    SAKCrcInterface::SAKEnumCrcAlgorithm model = SAKCrcInterface::CRC_8;
+    int ret = models.keyToValue(m_parameterComboBox->currentText().toLatin1().constData(), &ok);
     if (ok) {
-        model = static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(ret);
+        model = static_cast<SAKCrcInterface::SAKEnumCrcAlgorithm>(ret);
     } else {
-        QLoggingCategory category(log_category_);
-        qCWarning(category) << "Unknown parameter model!";
+        qWarning() << "Unknown parameter model!";
         Q_ASSERT_X(false, __FUNCTION__, "Unknown parameter model!");
         return;
     }
 
-    int bitsWidth = crc_interface_->bitsWidth(model);
-    mWidthComboBox->setCurrentIndex(mWidthComboBox->findText(QString::number(bitsWidth)));
-    mPolyLineEdit->setText(
-        QString("0x%1").arg(QString::number(static_cast<int>(crc_interface_->poly(model)), 16),
+    int bitsWidth = m_crcInterface->bitsWidth(model);
+    m_widthComboBox->setCurrentIndex(m_widthComboBox->findText(QString::number(bitsWidth)));
+    m_polyLineEdit->setText(
+        QString("0x%1").arg(QString::number(static_cast<int>(m_crcInterface->poly(model)), 16),
                             bitsWidth / 4,
                             '0'));
-    mInitLineEdit->setText(
-        QString("0x%1").arg(QString::number(static_cast<int>(crc_interface_->initialValue(model)),
+    m_initLineEdit->setText(
+        QString("0x%1").arg(QString::number(static_cast<int>(m_crcInterface->initialValue(model)),
                                             16),
                             bitsWidth / 4,
                             '0'));
-    mXorLineEdit->setText(
-        QString("0x%1").arg(QString::number(static_cast<int>(crc_interface_->xorValue(model)), 16),
+    m_xorLineEdit->setText(
+        QString("0x%1").arg(QString::number(static_cast<int>(m_crcInterface->xorValue(model)), 16),
                             bitsWidth / 4,
                             '0'));
-    mRefinCheckBox->setChecked(crc_interface_->isInputReversal(model));
-    mRefoutCheckBox->setChecked(crc_interface_->isOutputReversal(model));
-    mLabelPolyFormula->setText(crc_interface_->friendlyPoly(model));
+    m_refinCheckBox->setChecked(m_crcInterface->isInputReversal(model));
+    m_refoutCheckBox->setChecked(m_crcInterface->isOutputReversal(model));
+    m_labelPolyFormula->setText(m_crcInterface->friendlyPoly(model));
 }
 
 bool SAKCRCAssistant::eventFilter(QObject* watched, QEvent* event)
 {
     if (event->type() == QEvent::MouseButtonDblClick) {
-        if (watched == mLabelInfo) {
+        if (watched == m_labelInfo) {
             QDesktopServices::openUrl(QUrl(QString("http://www.ip33.com/crc.html")));
             return true;
         }
