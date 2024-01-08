@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2022-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2022-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -9,6 +9,7 @@
 #ifndef SAKASCIIASSISTANT_H
 #define SAKASCIIASSISTANT_H
 
+#include <QMap>
 #include <QWidget>
 
 namespace Ui {
@@ -24,6 +25,11 @@ public:
 
 private:
     Ui::SAKAsciiAssistant* ui;
+    QMap<int, QString> m_descirption;
+
+private:
+    void initDescirption();
+    void onFilterTextChanged(const QString& text);
 };
 
 #endif // SAKASCIIASSISTANT_H
