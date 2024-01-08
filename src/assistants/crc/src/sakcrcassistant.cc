@@ -156,7 +156,7 @@ void SAKCRCAssistant::textFormatControl()
     if (m_asciiRadioBt->isChecked()) {
         return;
     }
-    disconnect(m_inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+    disconnect(m_inputTextEdit, &QTextEdit::textChanged, this, &SAKCRCAssistant::textFormatControl);
 
     QString strTemp;
     QString plaintext = m_inputTextEdit->toPlainText();
@@ -171,7 +171,7 @@ void SAKCRCAssistant::textFormatControl()
     m_inputTextEdit->setText(strTemp.toUpper());
     m_inputTextEdit->moveCursor(QTextCursor::End);
 
-    connect(m_inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+    connect(m_inputTextEdit, &QTextEdit::textChanged, this, &SAKCRCAssistant::textFormatControl);
 }
 
 void SAKCRCAssistant::changedParameterModel(int index)
