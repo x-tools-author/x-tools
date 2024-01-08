@@ -13,7 +13,7 @@
 #include <QNetworkInterface>
 
 #include "sakbroadcastthread.h"
-#include "sakcommondatastructure.h"
+#include "sakdatastructure.h"
 #include "ui_sakbroadcastassistant.h"
 
 SAKBroadcastAssistant::SAKBroadcastAssistant(QWidget* parent)
