@@ -16,8 +16,8 @@ SAKStringAssistant::SAKStringAssistant(QWidget* parent)
     , ui(new Ui::SAKStringAssistant)
 {
     ui->setupUi(this);
-    SAKCommonDataStructure::setComboBoxTextInputFormat(ui->inputFormatComboBox);
-    SAKCommonDataStructure::setComboBoxTextOutputFormat(ui->outputFormatComboBox);
+    SAKDataStructure::setComboBoxTextInputFormat(ui->inputFormatComboBox);
+    SAKDataStructure::setComboBoxTextOutputFormat(ui->outputFormatComboBox);
 
     connect(ui->textEdit,
             &QTextEdit::textChanged,
@@ -46,9 +46,9 @@ void SAKStringAssistant::OnTextEditTextChanged()
 {
     if (!ui->textEdit->blockSignals(true)) {
         QString inputString = ui->textEdit->toPlainText();
-        auto inputFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(
+        auto inputFormat = static_cast<SAKDataStructure::SAKEnumTextFormatInput>(
             ui->inputFormatComboBox->currentData().toInt());
-        QString cookedString = SAKCommonDataStructure::formattingString(inputString, inputFormat);
+        QString cookedString = SAKDataStructure::formattingString(inputString, inputFormat);
         ui->textEdit->setText(cookedString);
         ui->textEdit->moveCursor(QTextCursor::End);
         ui->textEdit->blockSignals(false);
@@ -68,12 +68,12 @@ void SAKStringAssistant::OnInputFormatComboBoxCurrentIndexChanged(int index)
 void SAKStringAssistant::OnCreatePushButtonClicked()
 {
     QString inputString = ui->textEdit->toPlainText();
-    auto inputFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(
+    auto inputFormat = static_cast<SAKDataStructure::SAKEnumTextFormatInput>(
         ui->inputFormatComboBox->currentData().toInt());
-    QByteArray inputArray = SAKCommonDataStructure::stringToByteArray(inputString, inputFormat);
-    auto outputFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatOutput>(
+    QByteArray inputArray = SAKDataStructure::stringToByteArray(inputString, inputFormat);
+    auto outputFormat = static_cast<SAKDataStructure::SAKEnumTextFormatOutput>(
         ui->outputFormatComboBox->currentData().toInt());
-    auto outputString = SAKCommonDataStructure::byteArrayToString(inputArray, outputFormat);
+    auto outputString = SAKDataStructure::byteArrayToString(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);
 }
 

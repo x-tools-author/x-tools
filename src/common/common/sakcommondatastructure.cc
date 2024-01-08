@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -14,13 +14,13 @@
 #include <QRegularExpressionValidator>
 #include <QStandardItemModel>
 
-SAKCommonDataStructure::SAKCommonDataStructure(QObject *parent)
+SAKDataStructure::SAKDataStructure(QObject *parent)
     : QObject(parent)
 {}
 
-SAKCommonDataStructure::~SAKCommonDataStructure() {}
+SAKDataStructure::~SAKDataStructure() {}
 
-void SAKCommonDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
+void SAKDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
 {
     if (comboBox) {
         QMap<int, QString> formatMap;
@@ -37,7 +37,7 @@ void SAKCommonDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
     }
 }
 
-void SAKCommonDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
+void SAKDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
 {
     if (comboBox) {
         if (comboBox) {
@@ -53,19 +53,18 @@ void SAKCommonDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
     }
 }
 
-void SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(QComboBox *comboBox)
+void SAKDataStructure::setComboBoxTextWebSocketSendingType(QComboBox *comboBox)
 {
     if (comboBox) {
-        comboBox->addItem(tr("BIN"), SAKCommonDataStructure::WebSocketSendingTypeBin);
-        comboBox->addItem(tr("TEXT"), SAKCommonDataStructure::WebSocketSendingTypeText);
+        comboBox->addItem(tr("BIN"), SAKDataStructure::WebSocketSendingTypeBin);
+        comboBox->addItem(tr("TEXT"), SAKDataStructure::WebSocketSendingTypeText);
     }
 }
 
-QString SAKCommonDataStructure::formattingString(QString &origingString,
-                                                 SAKEnumTextFormatInput format)
+QString SAKDataStructure::formattingString(QString &origingString, SAKEnumTextFormatInput format)
 {
     QString cookedString;
-    if (format == SAKCommonDataStructure::InputFormatBin) {
+    if (format == SAKDataStructure::InputFormatBin) {
         origingString.remove(QRegularExpression("[^0-1]"));
         for (int i = 0; i < origingString.length(); i++) {
             if ((i != 0) && (i % 8 == 0)) {
@@ -73,7 +72,7 @@ QString SAKCommonDataStructure::formattingString(QString &origingString,
             }
             cookedString.append(origingString.at(i));
         }
-    } else if (format == SAKCommonDataStructure::InputFormatOct) {
+    } else if (format == SAKDataStructure::InputFormatOct) {
         origingString.remove(QRegularExpression("[^0-7]"));
         for (int i = 0; i < origingString.length(); i++) {
             if ((i != 0) && (i % 2 == 0)) {
@@ -81,7 +80,7 @@ QString SAKCommonDataStructure::formattingString(QString &origingString,
             }
             cookedString.append(origingString.at(i));
         }
-    } else if (format == SAKCommonDataStructure::InputFormatDec) {
+    } else if (format == SAKDataStructure::InputFormatDec) {
         origingString.remove(QRegularExpression("[^0-9]"));
         for (int i = 0; i < origingString.length(); i++) {
             if ((i != 0) && (i % 2 == 0)) {
@@ -89,7 +88,7 @@ QString SAKCommonDataStructure::formattingString(QString &origingString,
             }
             cookedString.append(origingString.at(i));
         }
-    } else if (format == SAKCommonDataStructure::InputFormatHex) {
+    } else if (format == SAKDataStructure::InputFormatHex) {
         origingString.remove(QRegularExpression("[^0-9a-fA-F]"));
         for (int i = 0; i < origingString.length(); i++) {
             if ((i != 0) && (i % 2 == 0)) {
@@ -97,13 +96,13 @@ QString SAKCommonDataStructure::formattingString(QString &origingString,
             }
             cookedString.append(origingString.at(i));
         }
-    } else if (format == SAKCommonDataStructure::InputFormatAscii) {
+    } else if (format == SAKDataStructure::InputFormatAscii) {
         for (int i = 0; i < origingString.length(); i++) {
             if (origingString.at(i).unicode() <= 127) {
                 cookedString.append(origingString.at(i));
             }
         }
-    } else if (format == SAKCommonDataStructure::InputFormatLocal) {
+    } else if (format == SAKDataStructure::InputFormatLocal) {
         cookedString = origingString;
     } else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknown input model!");
@@ -112,8 +111,7 @@ QString SAKCommonDataStructure::formattingString(QString &origingString,
     return cookedString;
 }
 
-QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString,
-                                                     SAKEnumTextFormatInput format)
+QByteArray SAKDataStructure::stringToByteArray(QString &origingString, SAKEnumTextFormatInput format)
 {
     QByteArray data;
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
@@ -121,37 +119,37 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString,
 #else
     auto behavior = Qt::SkipEmptyParts;
 #endif
-    if (format == SAKCommonDataStructure::InputFormatBin) {
+    if (format == SAKDataStructure::InputFormatBin) {
         QStringList strList = origingString.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 2);
             data.append(reinterpret_cast<char *>(&value), 1);
         }
-    } else if (format == SAKCommonDataStructure::InputFormatOct) {
+    } else if (format == SAKDataStructure::InputFormatOct) {
         QStringList strList = origingString.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 8);
             data.append(reinterpret_cast<char *>(&value), 1);
         }
-    } else if (format == SAKCommonDataStructure::InputFormatDec) {
+    } else if (format == SAKDataStructure::InputFormatDec) {
         QStringList strList = origingString.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 10);
             data.append(reinterpret_cast<char *>(&value), 1);
         }
-    } else if (format == SAKCommonDataStructure::InputFormatHex) {
+    } else if (format == SAKDataStructure::InputFormatHex) {
         QStringList strList = origingString.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 16);
             data.append(reinterpret_cast<char *>(&value), 1);
         }
-    } else if (format == SAKCommonDataStructure::InputFormatAscii) {
+    } else if (format == SAKDataStructure::InputFormatAscii) {
         data = origingString.toLatin1();
-    } else if (format == SAKCommonDataStructure::InputFormatLocal) {
+    } else if (format == SAKDataStructure::InputFormatLocal) {
         data = origingString.toLocal8Bit();
     } else {
         data = origingString.toUtf8();
@@ -161,53 +159,53 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString,
     return data;
 }
 
-QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString, int format)
+QByteArray SAKDataStructure::stringToByteArray(QString &origingString, int format)
 {
-    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(format);
+    auto cookedFormat = static_cast<SAKDataStructure::SAKEnumTextFormatInput>(format);
     return stringToByteArray(origingString, cookedFormat);
 }
 
-QString SAKCommonDataStructure::byteArrayToString(const QByteArray &origingData,
-                                                  SAKEnumTextFormatOutput format)
+QString SAKDataStructure::byteArrayToString(const QByteArray &origingData,
+                                            SAKEnumTextFormatOutput format)
 {
     QString str;
-    if (format == SAKCommonDataStructure::OutputFormatBin) {
+    if (format == SAKDataStructure::OutputFormatBin) {
         for (int i = 0; i < origingData.length(); i++) {
             str.append(
                 QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 2),
                                    8,
                                    '0'));
         }
-    } else if (format == SAKCommonDataStructure::OutputFormatOct) {
+    } else if (format == SAKDataStructure::OutputFormatOct) {
         for (int i = 0; i < origingData.length(); i++) {
             str.append(
                 QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 8),
                                    3,
                                    '0'));
         }
-    } else if (format == SAKCommonDataStructure::OutputFormatDec) {
+    } else if (format == SAKDataStructure::OutputFormatDec) {
         for (int i = 0; i < origingData.length(); i++) {
             str.append(
                 QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 10)));
         }
-    } else if (format == SAKCommonDataStructure::OutputFormatHex) {
+    } else if (format == SAKDataStructure::OutputFormatHex) {
         for (int i = 0; i < origingData.length(); i++) {
             str.append(
                 QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 16),
                                    2,
                                    '0'));
         }
-    } else if (format == SAKCommonDataStructure::OutputFormatAscii) {
+    } else if (format == SAKDataStructure::OutputFormatAscii) {
         str.append(QString::fromLatin1(origingData));
-    } else if (format == SAKCommonDataStructure::OutputFormatUtf8) {
+    } else if (format == SAKDataStructure::OutputFormatUtf8) {
         str.append(QString::fromUtf8(origingData));
-    } else if (format == SAKCommonDataStructure::OutputFormatUtf16) {
+    } else if (format == SAKDataStructure::OutputFormatUtf16) {
         str.append(QString::fromUtf16(reinterpret_cast<const char16_t *>(origingData.constData()),
                                       origingData.length() / sizeof(char16_t)));
-    } else if (format == SAKCommonDataStructure::OutputFormatUcs4) {
+    } else if (format == SAKDataStructure::OutputFormatUcs4) {
         str.append(QString::fromUcs4(reinterpret_cast<const char32_t *>(origingData.constData()),
                                      origingData.length() / sizeof(char32_t)));
-    } else if (format == SAKCommonDataStructure::OutputFormatLocal) {
+    } else if (format == SAKDataStructure::OutputFormatLocal) {
         str.append(QString::fromLocal8Bit(origingData));
     } else {
         str.append(QString::fromUtf8(origingData));
@@ -217,14 +215,13 @@ QString SAKCommonDataStructure::byteArrayToString(const QByteArray &origingData,
     return str;
 }
 
-QString SAKCommonDataStructure::byteArrayToString(const QByteArray &origingData, int format)
+QString SAKDataStructure::byteArrayToString(const QByteArray &origingData, int format)
 {
-    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatOutput>(format);
+    auto cookedFormat = static_cast<SAKDataStructure::SAKEnumTextFormatOutput>(format);
     return byteArrayToString(origingData, cookedFormat);
 }
 
-void SAKCommonDataStructure::setLineEditTextFormat(QLineEdit *lineEdit,
-                                                   SAKEnumTextFormatInput format)
+void SAKDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, SAKEnumTextFormatInput format)
 {
     QMap<int, QRegularExpressionValidator *> regExpMap;
     QRegularExpression binRegExp = QRegularExpression("([01][01][01][01][01][01][01][01][ ])*");
@@ -232,17 +229,13 @@ void SAKCommonDataStructure::setLineEditTextFormat(QLineEdit *lineEdit,
     QRegularExpression decRegExp = QRegularExpression("([0-9][0-9][ ])*");
     QRegularExpression hexRegExp = QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*");
     QRegularExpression asciiRegExp = QRegularExpression("([ -~])*");
-    regExpMap.insert(SAKCommonDataStructure::InputFormatBin,
-                     new QRegularExpressionValidator(binRegExp));
-    regExpMap.insert(SAKCommonDataStructure::InputFormatOct,
-                     new QRegularExpressionValidator(otcRegExp));
-    regExpMap.insert(SAKCommonDataStructure::InputFormatDec,
-                     new QRegularExpressionValidator(decRegExp));
-    regExpMap.insert(SAKCommonDataStructure::InputFormatHex,
-                     new QRegularExpressionValidator(hexRegExp));
-    regExpMap.insert(SAKCommonDataStructure::InputFormatAscii,
+    regExpMap.insert(SAKDataStructure::InputFormatBin, new QRegularExpressionValidator(binRegExp));
+    regExpMap.insert(SAKDataStructure::InputFormatOct, new QRegularExpressionValidator(otcRegExp));
+    regExpMap.insert(SAKDataStructure::InputFormatDec, new QRegularExpressionValidator(decRegExp));
+    regExpMap.insert(SAKDataStructure::InputFormatHex, new QRegularExpressionValidator(hexRegExp));
+    regExpMap.insert(SAKDataStructure::InputFormatAscii,
                      new QRegularExpressionValidator(asciiRegExp));
-    regExpMap.insert(SAKCommonDataStructure::InputFormatLocal, Q_NULLPTR);
+    regExpMap.insert(SAKDataStructure::InputFormatLocal, Q_NULLPTR);
 
     if (lineEdit) {
         if (lineEdit->validator()) {
@@ -259,18 +252,18 @@ void SAKCommonDataStructure::setLineEditTextFormat(QLineEdit *lineEdit,
     }
 }
 
-void SAKCommonDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, int format)
+void SAKDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, int format)
 {
     auto cookedFormat = static_cast<SAKEnumTextFormatInput>(format);
-    SAKCommonDataStructure::setLineEditTextFormat(lineEdit, cookedFormat);
+    SAKDataStructure::setLineEditTextFormat(lineEdit, cookedFormat);
 }
 
-QString SAKCommonDataStructure::suffix(SAKEmnuSuffixType type)
+QString SAKDataStructure::suffix(SAKEmnuSuffixType type)
 {
     return suffix(int(type));
 }
 
-QString SAKCommonDataStructure::suffix(int type)
+QString SAKDataStructure::suffix(int type)
 {
     switch (type) {
     case SuffixsTypeNone:
@@ -288,7 +281,7 @@ QString SAKCommonDataStructure::suffix(int type)
     }
 }
 
-QString SAKCommonDataStructure::friendlySuffix(SAKEmnuSuffixType type)
+QString SAKDataStructure::friendlySuffix(SAKEmnuSuffixType type)
 {
     switch (type) {
     case SuffixsTypeNone:
@@ -306,7 +299,7 @@ QString SAKCommonDataStructure::friendlySuffix(SAKEmnuSuffixType type)
     }
 }
 
-QString SAKCommonDataStructure::prefix(int type)
+QString SAKDataStructure::prefix(int type)
 {
     switch (type) {
     case PrefixTypeNone:
@@ -324,7 +317,7 @@ QString SAKCommonDataStructure::prefix(int type)
     }
 }
 
-QString SAKCommonDataStructure::friendlyPrefix(SAKEnumPrefixType type)
+QString SAKDataStructure::friendlyPrefix(SAKEnumPrefixType type)
 {
     switch (type) {
     case PrefixTypeNone:
@@ -342,7 +335,7 @@ QString SAKCommonDataStructure::friendlyPrefix(SAKEnumPrefixType type)
     }
 }
 
-void SAKCommonDataStructure::setupSuffix(QComboBox *comboBox)
+void SAKDataStructure::setupSuffix(QComboBox *comboBox)
 {
     if (comboBox) {
         QMap<int, QString> formatMap;
@@ -355,14 +348,14 @@ void SAKCommonDataStructure::setupSuffix(QComboBox *comboBox)
     }
 }
 
-void SAKCommonDataStructure::formattingInputText(QTextEdit *textEdit, int model)
+void SAKDataStructure::formattingInputText(QTextEdit *textEdit, int model)
 {
     if (textEdit) {
         textEdit->blockSignals(true);
         QString plaintext = textEdit->toPlainText();
         if (!plaintext.isEmpty()) {
-            auto cookedModel = static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(model);
-            QString cookedString = SAKCommonDataStructure::formattingString(plaintext, cookedModel);
+            auto cookedModel = static_cast<SAKDataStructure::SAKEnumTextFormatInput>(model);
+            QString cookedString = SAKDataStructure::formattingString(plaintext, cookedModel);
             textEdit->setText(cookedString);
             textEdit->moveCursor(QTextCursor::End);
         }
@@ -370,9 +363,9 @@ void SAKCommonDataStructure::formattingInputText(QTextEdit *textEdit, int model)
     }
 }
 
-void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox,
-                                              QMap<int, QString> &formatMap,
-                                              int currentData)
+void SAKDataStructure::setComboBoxItems(QComboBox *comboBox,
+                                        QMap<int, QString> &formatMap,
+                                        int currentData)
 {
     if (comboBox) {
         comboBox->clear();

@@ -27,8 +27,8 @@ SAKBroadcastAssistant::SAKBroadcastAssistant(QWidget* parent)
     connect(broadcast_thread_, &SAKBroadcastThread::BytesWritten, this, [=](const QByteArray& bytes) {
         QByteArray temp = bytes;
         int format = ui->comboBoxOutputFormat->currentData().toInt();
-        auto cookedFormat = SAKCommonDataStructure::SAKEnumTextFormatOutput(format);
-        auto bytesString = SAKCommonDataStructure::byteArrayToString(temp, cookedFormat);
+        auto cookedFormat = SAKDataStructure::SAKEnumTextFormatOutput(format);
+        auto bytesString = SAKDataStructure::byteArrayToString(temp, cookedFormat);
         auto info = QDateTime::currentDateTime().toString("hh:mm:ss");
         info += " Tx: ";
         info = QString("<font color=silver>%1</font>").arg(info);
@@ -40,7 +40,7 @@ SAKBroadcastAssistant::SAKBroadcastAssistant(QWidget* parent)
             this,
             [=](const QString& text) {
                 Q_UNUSED(text);
-                SAKCommonDataStructure::setLineEditTextFormat(ui->lineEditBroadcastData,
+                SAKDataStructure::setLineEditTextFormat(ui->lineEditBroadcastData,
                                                               ui->comboBoxBroadcastFormat
                                                                   ->currentData()
                                                                   .toInt());
@@ -79,11 +79,11 @@ void SAKBroadcastAssistant::InitUi()
 
     InitUiBroadcastAddress();
     InitUiBroadcastInterval();
-
-    SAKCommonDataStructure::setComboBoxTextInputFormat(ui->comboBoxBroadcastFormat);
-    SAKCommonDataStructure::setComboBoxTextOutputFormat(ui->comboBoxOutputFormat);
-    SAKCommonDataStructure::setupSuffix(ui->comboBoxBroadcastPrefix);
-    SAKCommonDataStructure::setupSuffix(ui->comboBoxBroadcastSuffix);
+    
+    SAKDataStructure::setComboBoxTextInputFormat(ui->comboBoxBroadcastFormat);
+    SAKDataStructure::setComboBoxTextOutputFormat(ui->comboBoxOutputFormat);
+    SAKDataStructure::setupSuffix(ui->comboBoxBroadcastPrefix);
+    SAKDataStructure::setupSuffix(ui->comboBoxBroadcastSuffix);
 }
 
 void SAKBroadcastAssistant::InitUiBroadcastAddress()
@@ -139,14 +139,14 @@ QByteArray SAKBroadcastAssistant::PacketData()
     QByteArray bytes;
 
     int prefixType = ui->comboBoxBroadcastPrefix->currentData().toInt();
-    QByteArray prefix = SAKCommonDataStructure::prefix(prefixType).toLatin1();
+    QByteArray prefix = SAKDataStructure::prefix(prefixType).toLatin1();
 
     int format = ui->comboBoxBroadcastFormat->currentData().toInt();
     QString text = ui->lineEditBroadcastData->text();
-    QByteArray data = SAKCommonDataStructure::stringToByteArray(text, format);
+    QByteArray data = SAKDataStructure::stringToByteArray(text, format);
 
     int suffixType = ui->comboBoxBroadcastSuffix->currentData().toInt();
-    QByteArray suffix = SAKCommonDataStructure::suffix(suffixType).toLatin1();
+    QByteArray suffix = SAKDataStructure::suffix(suffixType).toLatin1();
 
     bytes.append(prefix);
     bytes.append(data);

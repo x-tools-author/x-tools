@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -26,12 +26,12 @@
 
 /// @brief The class define some data structure of the project.
 /// Also, It provides some interface about these data structure.
-class SAKCommonDataStructure : public QObject
+class SAKDataStructure : public QObject
 {
     Q_OBJECT
 public:
-    SAKCommonDataStructure(QObject *parent = Q_NULLPTR);
-    ~SAKCommonDataStructure();
+    SAKDataStructure(QObject *parent = Q_NULLPTR);
+    ~SAKDataStructure();
 
     // Input text format
     enum SAKEnumTextFormatInput {
