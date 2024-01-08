@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -48,29 +48,28 @@ public:
     void initialize(int type);
 
 private:
-    SAKToolBox *mToolBox{nullptr};
-    SAKCommunicationTool *mCommunicationTool{nullptr};
-    SAKCommunicationToolUi *mCommunicationToolUi{nullptr};
-    SAKEmitterToolUi *mEmitterToolUi{nullptr};
-    SAKResponserToolUi *mResponserToolUi{nullptr};
-    SAKPrestorerToolUi *mPrestorerToolUi{nullptr};
-    SAKTcpTransmitterToolUi *mTcpTransmitterToolUi{nullptr};
-    SAKUdpTransmitterToolUi *mUdpTransmitterToolUi{nullptr};
-    SAKWebSocketTransmitterToolUi *mWebSocketTransmitterToolUi{nullptr};
-    SAKSerialPortTransmitterToolUi *mSerialPortTransmitterToolUi{nullptr};
-    QLoggingCategory mLoggingCategory{"sak.toolbox.ui"};
-    QTimer *mCycleSendingTimer{nullptr};
-    int mCommunicationToolType;
-    SAKToolBoxUiCommunicationMenu *mCommunicationMenu{nullptr};
-    SAKToolBoxUiInputMenu *mInputMenu{nullptr};
-    SAKToolBoxUiOutputMenu *mOutputMenu{nullptr};
+    SAKToolBox *m_toolBox{nullptr};
+    SAKCommunicationTool *m_communication{nullptr};
+    SAKCommunicationToolUi *m_communicationUi{nullptr};
+    SAKEmitterToolUi *m_emitterUi{nullptr};
+    SAKResponserToolUi *m_responserUi{nullptr};
+    SAKPrestorerToolUi *m_prestorerUi{nullptr};
+    SAKTcpTransmitterToolUi *m_tcpTransmitterUi{nullptr};
+    SAKUdpTransmitterToolUi *m_udpTransmitterUi{nullptr};
+    SAKWebSocketTransmitterToolUi *m_webSocketTransmitterUi{nullptr};
+    SAKSerialPortTransmitterToolUi *m_serialPortTransmitterUi{nullptr};
+    QTimer *m_cycleSendingTimer{nullptr};
+    int m_communicationType;
+    SAKToolBoxUiCommunicationMenu *m_communicationMenu{nullptr};
+    SAKToolBoxUiInputMenu *m_inputMenu{nullptr};
+    SAKToolBoxUiOutputMenu *m_outputMenu{nullptr};
 
     struct
     {
         QString tabIndex;
         QString items;
         QString transmitterTabIndex;
-    } mSettingsKey;
+    } m_settingsKey;
 
 private:
     SAKCommunicationToolUi *communicationToolUi(int type);

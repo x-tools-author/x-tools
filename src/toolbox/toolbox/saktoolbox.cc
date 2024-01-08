@@ -97,14 +97,8 @@ void SAKToolBox::initialize(int type)
     connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_rxVelometerTool, &SAKBaseTool::inputBytes);
     connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_txVelometerTool, &SAKBaseTool::inputBytes);
     // rx->statistician; tx->statistician
-    connect(m_comunicationTool, &SAKCommunicationTool::bytesRead, m_rxStatisticianTool, [=](const QByteArray& bytes, const QString &from){
-        Q_UNUSED(from)
-        m_rxStatisticianTool->inputBytes(bytes);
-    });
-    connect(m_comunicationTool, &SAKCommunicationTool::bytesWritten, m_txStatisticianTool, [=](const QByteArray& bytes, const QString &to){
-        Q_UNUSED(to)
-        m_txStatisticianTool->inputBytes(bytes);
-    });
+    connect(m_comunicationTool, &SAKCommunicationTool::outputBytes, m_rxStatisticianTool, &SAKBaseTool::inputBytes);
+    connect(m_comunicationTool, &SAKCommunicationTool::outputBytes, m_txStatisticianTool, &SAKBaseTool::inputBytes);
     // rx->serialport transmition; serialport transmition->Tx analyzer
     connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_serialPortTransmitterTool, &SAKBaseTool::inputBytes);
     connect(m_serialPortTransmitterTool, &SAKBaseTool::outputBytes, m_comunicationTool, &SAKBaseTool::inputBytes);

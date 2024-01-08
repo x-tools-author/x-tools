@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -48,10 +48,10 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget* parent)
     , ui(new Ui::SAKToolBoxUi)
 {
     ui->setupUi(this);
-    mToolBox = new SAKToolBox(this);
+    m_toolBox = new SAKToolBox(this);
 
-    mCycleSendingTimer = new QTimer(this);
-    connect(mCycleSendingTimer, &QTimer::timeout, this, [=]() {
+    m_cycleSendingTimer = new QTimer(this);
+    connect(m_cycleSendingTimer, &QTimer::timeout, this, [=]() {
         if (ui->comboBoxInputText->currentText().isEmpty()) {
             setDefaultText();
         }
@@ -128,21 +128,21 @@ QIcon SAKToolBoxUi::communicationToolIcon(int type)
 
 void SAKToolBoxUi::initialize(int type)
 {
-    if (mCommunicationTool) {
-        mCommunicationTool->deleteLater();
-        mCommunicationTool = nullptr;
+    if (m_communication) {
+        m_communication->deleteLater();
+        m_communication = nullptr;
     }
 
-    mToolBox->initialize(type);
-    mCommunicationToolType = type;
+    m_toolBox->initialize(type);
+    m_communicationType = type;
 
     QString toolName = communicationToolName(type);
     QIcon icon = communicationToolIcon(type);
     setWindowTitle(toolName);
     setWindowIcon(icon);
 
-    mCommunicationTool = mToolBox->getCommunicationTool();
-    if (!mCommunicationTool) {
+    m_communication = m_toolBox->getCommunicationTool();
+    if (!m_communication) {
         qWarning() << "initializing failed, "
                                        "tool box is invaliad!";
         return;
@@ -183,7 +183,7 @@ SAKCommunicationToolUi* SAKToolBoxUi::communicationToolUi(int type)
 
 void SAKToolBoxUi::try2send()
 {
-    auto ctx = mInputMenu->parameters();
+    auto ctx = m_inputMenu->parameters();
     int prefix = ctx.prefix;
     int suffix = ctx.suffix;
     int esc = ctx.escapeCharacter;
@@ -202,7 +202,7 @@ void SAKToolBoxUi::try2send()
 
     bytes.prepend(prefixData);
     bytes.append(suffixData);
-    mToolBox->getCommunicationTool()->inputBytes(bytes);
+    m_toolBox->getCommunicationTool()->inputBytes(bytes);
 }
 
 QString SAKToolBoxUi::dateTimeFormat()
@@ -242,7 +242,7 @@ void SAKToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bool 
     int format = ui->comboBoxOutputFormat->currentData().toInt();
     QString str = SAKInterface::arrayToString(bytes, format);
 
-    if (!str.contains(mOutputMenu->filter())) {
+    if (!str.contains(m_outputMenu->filter())) {
         return;
     }
 
@@ -266,32 +266,31 @@ void SAKToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bool 
 
 QString SAKToolBoxUi::settingsGroup()
 {
-    if (mCommunicationToolType == SAKToolFactory::SerialportTool) {
+    if (m_communicationType == SAKToolFactory::SerialportTool) {
         return "SerialportToolBox";
-    } else if (mCommunicationToolType == SAKToolFactory::UdpClientTool) {
+    } else if (m_communicationType == SAKToolFactory::UdpClientTool) {
         return "UdpClientToolBox";
-    } else if (mCommunicationToolType == SAKToolFactory::UdpServerTool) {
+    } else if (m_communicationType == SAKToolFactory::UdpServerTool) {
         return "UdpServerTool";
-    } else if (mCommunicationToolType == SAKToolFactory::TcpClientTool) {
+    } else if (m_communicationType == SAKToolFactory::TcpClientTool) {
         return "TcpClientTool";
-    } else if (mCommunicationToolType == SAKToolFactory::TcpServerTool) {
+    } else if (m_communicationType == SAKToolFactory::TcpServerTool) {
         return "TcpServerToolBox";
-    } else if (mCommunicationToolType == SAKToolFactory::WebSocketClientTool) {
+    } else if (m_communicationType == SAKToolFactory::WebSocketClientTool) {
         return "WebSocketClientToolBox";
-    } else if (mCommunicationToolType == SAKToolFactory::WebSocketServerTool) {
+    } else if (m_communicationType == SAKToolFactory::WebSocketServerTool) {
         return "WebSocketServerToolBox";
-    } else if (mCommunicationToolType == SAKToolFactory::BleCentralTool) {
+    } else if (m_communicationType == SAKToolFactory::BleCentralTool) {
         return "BleCentralToolBox";
     } else {
-        qWarning()
-            << "unknow type of communication tool ui:" << mCommunicationToolType;
+        qWarning() << "unknow type of communication tool ui:" << m_communicationType;
         return "UnknowToolBox";
     }
 }
 
 QByteArray SAKToolBoxUi::calculateCrc(const QByteArray& bytes, bool fixedOriginOrder)
 {
-    auto ctx = mInputMenu->parameters();
+    auto ctx = m_inputMenu->parameters();
     QByteArray inputBytes = bytes;
     if (inputBytes.isEmpty()) {
         int format = ui->comboBoxInputFormat->currentData().toInt();
@@ -321,7 +320,7 @@ void SAKToolBoxUi::setDefaultText()
 
 void SAKToolBoxUi::onIsWorkingChanged()
 {
-    bool isWorking = mToolBox->isWorking();
+    bool isWorking = m_toolBox->isWorking();
     ui->pushButtonInputSend->setEnabled(isWorking);
     ui->comboBoxInputIntervel->setEnabled(isWorking);
     QTimer::singleShot(1000, this, [=]() { ui->pushButtonCommunicationOpen->setEnabled(true); });
@@ -333,7 +332,7 @@ void SAKToolBoxUi::onIsWorkingChanged()
     }
 
     if (!isWorking) {
-        mCycleSendingTimer->stop();
+        m_cycleSendingTimer->stop();
     }
 }
 
@@ -361,14 +360,14 @@ void SAKToolBoxUi::onInputTextChanged()
     QString crc = QString::fromLatin1(b.toHex());
     crc = "0x" + crc.toUpper();
     ui->labelCrc->setText(crc);
-    ui->labelAlgorithm->setText(mInputMenu->parameters().algorithmName);
+    ui->labelAlgorithm->setText(m_inputMenu->parameters().algorithmName);
 }
 
 void SAKToolBoxUi::init()
 {
-    mSettingsKey.tabIndex = settingsGroup() + "/tabIndex";
-    mSettingsKey.items = settingsGroup() + "/items";
-    mSettingsKey.transmitterTabIndex = settingsGroup() + "/transmitterTabIndex";
+    m_settingsKey.tabIndex = settingsGroup() + "/tabIndex";
+    m_settingsKey.items = settingsGroup() + "/items";
+    m_settingsKey.transmitterTabIndex = settingsGroup() + "/transmitterTabIndex";
 
     initUi();
     initSettings();
@@ -387,7 +386,7 @@ void SAKToolBoxUi::initUi()
     initUiOutput();
 
     QSettings* settings = SAKSettings::instance();
-    int index = settings->value(mSettingsKey.tabIndex).toInt();
+    int index = settings->value(m_settingsKey.tabIndex).toInt();
     if (index >= 0 && index < ui->tabWidget->count()) {
         ui->tabWidget->setCurrentIndex(index);
     }
@@ -396,8 +395,8 @@ void SAKToolBoxUi::initUi()
 void SAKToolBoxUi::initUiCommunication()
 {
     // Setup communication tool.
-    mCommunicationToolUi = communicationToolUi(mCommunicationToolType);
-    if (!mCommunicationToolUi) {
+    m_communicationUi = communicationToolUi(m_communicationType);
+    if (!m_communicationUi) {
         qWarning() << "mCommunicationToolUi is nullptr";
         return;
     }
@@ -415,7 +414,7 @@ void SAKToolBoxUi::initUiCommunication()
         lt->setContentsMargins(0, 0, 0, 0);
     }
 
-    ui->widgetCommunicationToolUi->layout()->addWidget(mCommunicationToolUi);
+    ui->widgetCommunicationToolUi->layout()->addWidget(m_communicationUi);
 }
 
 void SAKToolBoxUi::initUiInput()
@@ -431,7 +430,7 @@ void SAKToolBoxUi::initUiInput()
         ui->comboBoxInputIntervel->addItem(QString::number(i), i);
     }
 
-    QString hex = SAKSettings::instance()->value(mSettingsKey.items).toString();
+    QString hex = SAKSettings::instance()->value(m_settingsKey.items).toString();
     if (!hex.isEmpty()) {
         QString json = QString::fromUtf8(QByteArray::fromHex(hex.toLatin1()));
         QJsonDocument jsonDoc = QJsonDocument::fromJson(json.toUtf8());
@@ -444,12 +443,12 @@ void SAKToolBoxUi::initUiInput()
         }
     }
 
-    mInputMenu = new SAKToolBoxUiInputMenu(settingsGroup(), this);
-    connect(mInputMenu,
+    m_inputMenu = new SAKToolBoxUiInputMenu(settingsGroup(), this);
+    connect(m_inputMenu,
             &SAKToolBoxUiInputMenu::parametersChanged,
             this,
             &SAKToolBoxUi::onInputTextChanged);
-    ui->pushButtonInputSettings->setMenu(mInputMenu);
+    ui->pushButtonInputSettings->setMenu(m_inputMenu);
 }
 
 void SAKToolBoxUi::initUiOutput()
@@ -458,10 +457,10 @@ void SAKToolBoxUi::initUiOutput()
     ui->checkBoxOutputTx->setChecked(true);
     ui->textBrowserOutput->document()->setMaximumBlockCount(2000);
 
-    mOutputMenu = new SAKToolBoxUiOutputMenu(settingsGroup(),
-                                             ui->textBrowserOutput->document(),
-                                             this);
-    ui->pushButtonOutputSettings->setMenu(mOutputMenu);
+    m_outputMenu = new SAKToolBoxUiOutputMenu(settingsGroup(),
+                                              ui->textBrowserOutput->document(),
+                                              this);
+    ui->pushButtonOutputSettings->setMenu(m_outputMenu);
 }
 
 void SAKToolBoxUi::initSettings()
@@ -474,7 +473,7 @@ void SAKToolBoxUi::initSettings()
 void SAKToolBoxUi::initSettingsCommunication()
 {
     const QString key = settingsGroup() + "/communication";
-    mCommunicationToolUi->initialize(mCommunicationTool, key);
+    m_communicationUi->initialize(m_communication, key);
 }
 
 void SAKToolBoxUi::initSettingsInput()
@@ -556,14 +555,14 @@ void SAKToolBoxUi::initSignalsOutput()
 
 void SAKToolBoxUi::initTools()
 {
-    mCommunicationMenu = new SAKToolBoxUiCommunicationMenu(this);
-    mCommunicationMenu->initialize(mToolBox, settingsGroup());
-    ui->pushButtonCommunicationSettings->setMenu(mCommunicationMenu);
+    m_communicationMenu = new SAKToolBoxUiCommunicationMenu(this);
+    m_communicationMenu->initialize(m_toolBox, settingsGroup());
+    ui->pushButtonCommunicationSettings->setMenu(m_communicationMenu);
 
-    auto rxVelometer = mToolBox->getRxVelometerTool();
-    auto txVelometer = mToolBox->getTxVelometerTool();
-    auto rxS = mToolBox->getRxStatisticianTool();
-    auto txS = mToolBox->getTxStatisticianTool();
+    auto rxVelometer = m_toolBox->getRxVelometerTool();
+    auto txVelometer = m_toolBox->getTxVelometerTool();
+    auto rxS = m_toolBox->getRxStatisticianTool();
+    auto txS = m_toolBox->getTxStatisticianTool();
     const QString rxVelometerGroup = settingsGroup() + "/rxVelometer";
     const QString txVelometerGroup = settingsGroup() + "/txVelometer";
     const QString rxSGroup = settingsGroup() + "/rxStatistician";
@@ -573,47 +572,47 @@ void SAKToolBoxUi::initTools()
     ui->widgetRxStatistician->initialize(rxS, rxSGroup);
     ui->widgetTxStatistician->initialize(txS, txSGroup);
 
-    mEmitterToolUi = new SAKEmitterToolUi();
+    m_emitterUi = new SAKEmitterToolUi();
     ui->tabEmiter->setLayout(new QVBoxLayout());
-    ui->tabEmiter->layout()->addWidget(mEmitterToolUi);
-    mEmitterToolUi->initialize(mToolBox->getEmitterTool(), settingsGroup() + "/emitter");
+    ui->tabEmiter->layout()->addWidget(m_emitterUi);
+    m_emitterUi->initialize(m_toolBox->getEmitterTool(), settingsGroup() + "/emitter");
 
-    mResponserToolUi = new SAKResponserToolUi();
+    m_responserUi = new SAKResponserToolUi();
     ui->tabResponser->setLayout(new QVBoxLayout());
-    ui->tabResponser->layout()->addWidget(mResponserToolUi);
-    mResponserToolUi->initialize(mToolBox->getResponserTool(), settingsGroup() + "/responser");
+    ui->tabResponser->layout()->addWidget(m_responserUi);
+    m_responserUi->initialize(m_toolBox->getResponserTool(), settingsGroup() + "/responser");
 
-    mPrestorerToolUi = new SAKPrestorerToolUi();
+    m_prestorerUi = new SAKPrestorerToolUi();
     ui->tabPrestorer->setLayout(new QVBoxLayout());
-    ui->tabPrestorer->layout()->addWidget(mPrestorerToolUi);
-    mPrestorerToolUi->initialize(mToolBox->getPrestorerTool(), settingsGroup() + "/prestorer");
+    ui->tabPrestorer->layout()->addWidget(m_prestorerUi);
+    m_prestorerUi->initialize(m_toolBox->getPrestorerTool(), settingsGroup() + "/prestorer");
 
-    mTcpTransmitterToolUi = new SAKTcpTransmitterToolUi(this);
-    mTcpTransmitterToolUi->initialize(mToolBox->getTcpTransmitterTool(),
-                                      settingsGroup() + "/tcpTransmitter");
-    mUdpTransmitterToolUi = new SAKUdpTransmitterToolUi(this);
-    mUdpTransmitterToolUi->initialize(mToolBox->getUdpTransmitterTool(),
-                                      settingsGroup() + "/udpTransmitter");
-    mWebSocketTransmitterToolUi = new SAKWebSocketTransmitterToolUi(this);
-    mWebSocketTransmitterToolUi->initialize(mToolBox->getWebSocketTransmitterTool(),
-                                            settingsGroup() + "/webSocketTransmitter");
-    mSerialPortTransmitterToolUi = new SAKSerialPortTransmitterToolUi(this);
-    mSerialPortTransmitterToolUi->initialize(mToolBox->getSerialPortTransmitterTool(),
-                                             settingsGroup() + "/serialPortTransmitter");
+    m_tcpTransmitterUi = new SAKTcpTransmitterToolUi(this);
+    m_tcpTransmitterUi->initialize(m_toolBox->getTcpTransmitterTool(),
+                                   settingsGroup() + "/tcpTransmitter");
+    m_udpTransmitterUi = new SAKUdpTransmitterToolUi(this);
+    m_udpTransmitterUi->initialize(m_toolBox->getUdpTransmitterTool(),
+                                   settingsGroup() + "/udpTransmitter");
+    m_webSocketTransmitterUi = new SAKWebSocketTransmitterToolUi(this);
+    m_webSocketTransmitterUi->initialize(m_toolBox->getWebSocketTransmitterTool(),
+                                         settingsGroup() + "/webSocketTransmitter");
+    m_serialPortTransmitterUi = new SAKSerialPortTransmitterToolUi(this);
+    m_serialPortTransmitterUi->initialize(m_toolBox->getSerialPortTransmitterTool(),
+                                          settingsGroup() + "/serialPortTransmitter");
 
-    mTcpTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
-    mUdpTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
-    mWebSocketTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
-    mSerialPortTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
+    m_tcpTransmitterUi->layout()->setContentsMargins(9, 9, 9, 9);
+    m_udpTransmitterUi->layout()->setContentsMargins(9, 9, 9, 9);
+    m_webSocketTransmitterUi->layout()->setContentsMargins(9, 9, 9, 9);
+    m_serialPortTransmitterUi->layout()->setContentsMargins(9, 9, 9, 9);
 
     ui->tabWidgetTransmitter->clear();
-    ui->tabWidgetTransmitter->addTab(mSerialPortTransmitterToolUi,
+    ui->tabWidgetTransmitter->addTab(m_serialPortTransmitterUi,
                                      tr("SerialPort", "Transmitter", __LINE__));
-    ui->tabWidgetTransmitter->addTab(mUdpTransmitterToolUi, tr("UDP"));
-    ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi, tr("TCP"));
-    ui->tabWidgetTransmitter->addTab(mWebSocketTransmitterToolUi, tr("WebSocket"));
+    ui->tabWidgetTransmitter->addTab(m_udpTransmitterUi, tr("UDP"));
+    ui->tabWidgetTransmitter->addTab(m_tcpTransmitterUi, tr("TCP"));
+    ui->tabWidgetTransmitter->addTab(m_webSocketTransmitterUi, tr("WebSocket"));
 
-    const QString key = mSettingsKey.transmitterTabIndex;
+    const QString key = m_settingsKey.transmitterTabIndex;
     int tabIndex = SAKSettings::instance()->value(key).toInt();
     if ((tabIndex >= 0) && (tabIndex < ui->tabWidgetTransmitter->count())) {
         ui->tabWidgetTransmitter->setCurrentIndex(tabIndex);
@@ -623,36 +622,36 @@ void SAKToolBoxUi::initTools()
         SAKSettings::instance()->setValue(key, index);
     });
 
-    connect(mToolBox, &SAKToolBox::isWorkingChanged, this, &SAKToolBoxUi::onIsWorkingChanged);
-    connect(mToolBox, &SAKToolBox::errorOccurred, this, [=](const QString& err) {
+    connect(m_toolBox, &SAKToolBox::isWorkingChanged, this, &SAKToolBoxUi::onIsWorkingChanged);
+    connect(m_toolBox, &SAKToolBox::errorOccurred, this, [=](const QString& err) {
         QMessageBox::warning(this, tr("Error Occured"), err);
     });
 
-    connect(mCommunicationTool,
+    connect(m_communication,
             &SAKCommunicationTool::bytesWritten,
             this,
             &SAKToolBoxUi::onBytesWritten);
-    connect(mCommunicationTool, &SAKCommunicationTool::bytesRead, this, &SAKToolBoxUi::onBytesRead);
+    connect(m_communication, &SAKCommunicationTool::bytesRead, this, &SAKToolBoxUi::onBytesRead);
 
-    ui->pushButtonPrestorer->setMenu(mPrestorerToolUi->menu());
+    ui->pushButtonPrestorer->setMenu(m_prestorerUi->menu());
 }
 
 void SAKToolBoxUi::onTabWidgetCurrentChanged(int index)
 {
-    if (mSettingsKey.tabIndex.isEmpty()) {
+    if (m_settingsKey.tabIndex.isEmpty()) {
         return;
     }
 
-    SAKSettings::instance()->setValue(mSettingsKey.tabIndex, index);
+    SAKSettings::instance()->setValue(m_settingsKey.tabIndex, index);
 }
 
 void SAKToolBoxUi::onPushButtonCommunicationOpenClicked()
 {
     ui->pushButtonCommunicationOpen->setEnabled(false);
-    if (mToolBox->isWorking()) {
-        mToolBox->close();
+    if (m_toolBox->isWorking()) {
+        m_toolBox->close();
     } else {
-        mToolBox->open();
+        m_toolBox->open();
     }
 }
 
@@ -708,7 +707,7 @@ void SAKToolBoxUi::onPushButtonInputSendClicked()
         jsonDoc.setArray(arr);
         QByteArray json = jsonDoc.toJson();
         QString hex = QString::fromLatin1(json.toHex());
-        SAKSettings::instance()->setValue(mSettingsKey.items, hex);
+        SAKSettings::instance()->setValue(m_settingsKey.items, hex);
     }
 
     try2send();
@@ -721,9 +720,9 @@ void SAKToolBoxUi::onComboBoxInputIntervalActivated()
     qInfo() << "start sending automatically, the interval is:" << interval;
 
     if (ui->comboBoxInputIntervel->currentIndex() == 0) {
-        mCycleSendingTimer->stop();
+        m_cycleSendingTimer->stop();
     } else {
-        mCycleSendingTimer->start(interval);
+        m_cycleSendingTimer->start(interval);
     }
 }
 

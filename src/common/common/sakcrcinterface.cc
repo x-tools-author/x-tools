@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -99,18 +99,18 @@ QByteArray SAKCrcInterface::calculateBytes(
 
 QStringList SAKCrcInterface::supportedParameterModels()
 {
-    modelStrings.clear();
+    m_modelStrings.clear();
     QMetaEnum models = QMetaEnum::fromType<SAKEnumCrcAlgorithm>();
 
     const char *ch = Q_NULLPTR;
     for (int i = 0; i < models.keyCount(); i++) {
         ch = models.valueToKey(i);
         if (ch) {
-            modelStrings.append(QString(ch));
+            m_modelStrings.append(QString(ch));
         }
     }
 
-    return modelStrings;
+    return m_modelStrings;
 }
 
 uint32_t SAKCrcInterface::poly(SAKCrcInterface::SAKEnumCrcAlgorithm model)
