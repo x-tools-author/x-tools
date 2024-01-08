@@ -51,7 +51,7 @@ jobs:
         mkdir build
         cd build
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+        cmake -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
         cmake --build . --target QtSwissArmyKnife
         dir && dir .\sak && dir .\sak\QtSwissArmyKnife
     - name: Upload Release Asset for Windnows
@@ -78,7 +78,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -DSAK_ENABLE_LINUXDEPLOYQT:BOOL=TRUE -DSAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD:BOOL=TRUE -G "Unix Makefiles"
+        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -DSAK_ENABLE_LINUXDEPLOYQT:BOOL=TRUE -DSAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD:BOOL=TRUE -G "Unix Makefiles"
         cmake --build . --target QtSwissArmyKnife
         dir && dir ./sak && dir ./sak/QtSwissArmyKnife
     - name: Upload Release Asset for Linux
@@ -99,7 +99,7 @@ jobs:
         dir: ${{ github.workspace }}
         modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
     - name: Build for macOS
-      # 278ERROR: no file at "/usr/local/opt/libiodbc/lib/libiodbc.2.dylib" 
+      # 278ERROR: no file at "/usr/local/opt/libiodbc/lib/libiodbc.2.dylib"
       # brew unlink unixodbc
       # brew install libiodbc
       # ERROR: no file at "/Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib"
@@ -111,7 +111,7 @@ jobs:
         ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
         mkdir build
         cd build
-        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
+        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
         cmake --build . --target QtSwissArmyKnife
         ls && ls ./sak && ls ./sak/QtSwissArmyKnife
     - name: Upload Release Asset for macOS
@@ -159,7 +159,7 @@ jobs:
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
-          cmake --build build\armeabi_v7a --target QtSwissArmyKnife --config Release
+          cmake --build -DBUILD_SHARED_LIBS:BOOL=OFF build\armeabi_v7a --target QtSwissArmyKnife --config Release
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-QtSwissArmyKnife-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
