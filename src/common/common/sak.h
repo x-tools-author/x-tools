@@ -137,8 +137,8 @@ static void sakInitHdpi()
 static void sakInitAppStyle()
 {
     qInfo() << "Supported style:" << QStyleFactory::keys();
-    if (const QString style = SAKSettings::instance()->appStyle();
-        QStyleFactory::keys().contains(style)) {
+    const QString style = SAKSettings::instance()->appStyle();
+    if (QStyleFactory::keys().contains(style)) {
         qInfo() << "App style:" << style;
         QApplication::setStyle(QStyleFactory::create(style));
     }

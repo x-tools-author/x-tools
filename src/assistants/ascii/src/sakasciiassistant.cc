@@ -9,6 +9,8 @@
 #include "sakasciiassistant.h"
 #include "ui_sakasciiassistant.h"
 
+#include <QDebug>
+
 SAKAsciiAssistant::SAKAsciiAssistant(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::SAKAsciiAssistant)
