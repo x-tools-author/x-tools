@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>resources/ASCII.png</file>
-    </qresource>
-</RCC>
