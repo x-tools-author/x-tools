@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2020-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2020-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -24,21 +24,19 @@ public:
     ~SAKNumberAssistant();
 
 private:
-    SAKInterface* common_interface_;
-
-private:
-    void FixedLength(QStringList& stringList);
-
-private:
     Ui::SAKNumberAssistant* ui;
+    SAKInterface* m_interface;
+
+private:
+    void fixedLength(QStringList& stringList);
 
 private slots:
-    void OnHexRawDataCheckBoxClicked();
-    void OnCreatePushButtonClicked();
-    void OnRawDataLineEditTextChanged(const QString& text);
-    void OnBigEndianCheckBoxClicked();
-    void OnFloatRadioButtonClicked();
-    void OnDoubleRadioButtonClicked();
+    void onHexRawDataCheckBoxClicked();
+    void onCreatePushButtonClicked();
+    void onRawDataLineEditTextChanged(const QString& text);
+    void onBigEndianCheckBoxClicked();
+    void onFloatRadioButtonClicked();
+    void onDoubleRadioButtonClicked();
 };
 
 #endif // SAKNUMBERASSISTANT_H

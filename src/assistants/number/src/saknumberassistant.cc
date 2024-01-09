@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2020-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2020-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -16,35 +16,35 @@ SAKNumberAssistant::SAKNumberAssistant(QWidget* parent)
     , ui(new Ui::SAKNumberAssistant)
 {
     ui->setupUi(this);
-    common_interface_ = new SAKInterface(this);
-    common_interface_->setLineEditValidator(ui->rawDataLineEdit, SAKInterface::ValidatorFloat);
+    m_interface = new SAKInterface(this);
+    m_interface->setLineEditValidator(ui->rawDataLineEdit, SAKInterface::ValidatorFloat);
 
     connect(ui->hexRawDataCheckBox,
             &QCheckBox::clicked,
             this,
-            &SAKNumberAssistant::OnHexRawDataCheckBoxClicked);
+            &SAKNumberAssistant::onHexRawDataCheckBoxClicked);
     connect(ui->createPushButton,
             &QPushButton::clicked,
             this,
-            &SAKNumberAssistant::OnCreatePushButtonClicked);
+            &SAKNumberAssistant::onCreatePushButtonClicked);
     connect(ui->rawDataLineEdit,
             &QLineEdit::textChanged,
             this,
-            &SAKNumberAssistant::OnRawDataLineEditTextChanged);
+            &SAKNumberAssistant::onRawDataLineEditTextChanged);
     connect(ui->bigEndianCheckBox,
             &QCheckBox::clicked,
             this,
-            &SAKNumberAssistant::OnBigEndianCheckBoxClicked);
+            &SAKNumberAssistant::onBigEndianCheckBoxClicked);
     connect(ui->floatRadioButton,
             &QRadioButton::clicked,
             this,
-            &SAKNumberAssistant::OnFloatRadioButtonClicked);
+            &SAKNumberAssistant::onFloatRadioButtonClicked);
     connect(ui->doubleRadioButton,
             &QRadioButton::clicked,
             this,
-            &SAKNumberAssistant::OnDoubleRadioButtonClicked);
+            &SAKNumberAssistant::onDoubleRadioButtonClicked);
 
-    OnCreatePushButtonClicked();
+    onCreatePushButtonClicked();
 }
 
 SAKNumberAssistant::~SAKNumberAssistant()
@@ -52,7 +52,7 @@ SAKNumberAssistant::~SAKNumberAssistant()
     delete ui;
 }
 
-void SAKNumberAssistant::FixedLength(QStringList& stringList)
+void SAKNumberAssistant::fixedLength(QStringList& stringList)
 {
     if (ui->bigEndianCheckBox->isChecked()) {
         if (ui->floatRadioButton->isChecked()) {
@@ -89,23 +89,23 @@ void SAKNumberAssistant::FixedLength(QStringList& stringList)
     }
 }
 
-void SAKNumberAssistant::OnHexRawDataCheckBoxClicked()
+void SAKNumberAssistant::onHexRawDataCheckBoxClicked()
 {
     ui->rawDataLineEdit->clear();
     if (ui->hexRawDataCheckBox->isChecked()) {
-        common_interface_->setLineEditValidator(ui->rawDataLineEdit, SAKInterface::ValidatorHex);
+        m_interface->setLineEditValidator(ui->rawDataLineEdit, SAKInterface::ValidatorHex);
     } else {
-        common_interface_->setLineEditValidator(ui->rawDataLineEdit, SAKInterface::ValidatorFloat);
+        m_interface->setLineEditValidator(ui->rawDataLineEdit, SAKInterface::ValidatorFloat);
     }
 }
 
-void SAKNumberAssistant::OnCreatePushButtonClicked()
+void SAKNumberAssistant::onCreatePushButtonClicked()
 {
     if (ui->hexRawDataCheckBox->isChecked()) {
         ui->rawDataLineEdit->setMaxLength(ui->floatRadioButton->isChecked() ? 11 : 23);
         QString rawDataString = ui->rawDataLineEdit->text().trimmed();
         QStringList rawDataStringList = rawDataString.split(' ');
-        FixedLength(rawDataStringList);
+        fixedLength(rawDataStringList);
 
         QByteArray data;
         for (int i = 0; i < rawDataStringList.length(); i++) {
@@ -158,23 +158,23 @@ void SAKNumberAssistant::OnCreatePushButtonClicked()
     }
 }
 
-void SAKNumberAssistant::OnRawDataLineEditTextChanged(const QString& text)
+void SAKNumberAssistant::onRawDataLineEditTextChanged(const QString& text)
 {
     Q_UNUSED(text);
-    OnCreatePushButtonClicked();
+    onCreatePushButtonClicked();
 }
 
-void SAKNumberAssistant::OnBigEndianCheckBoxClicked()
+void SAKNumberAssistant::onBigEndianCheckBoxClicked()
 {
-    OnCreatePushButtonClicked();
+    onCreatePushButtonClicked();
 }
 
-void SAKNumberAssistant::OnFloatRadioButtonClicked()
+void SAKNumberAssistant::onFloatRadioButtonClicked()
 {
-    OnCreatePushButtonClicked();
+    onCreatePushButtonClicked();
 }
 
-void SAKNumberAssistant::OnDoubleRadioButtonClicked()
+void SAKNumberAssistant::onDoubleRadioButtonClicked()
 {
-    OnCreatePushButtonClicked();
+    onCreatePushButtonClicked();
 }
