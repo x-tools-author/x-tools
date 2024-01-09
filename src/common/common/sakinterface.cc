@@ -241,7 +241,7 @@ void SAKInterface::setLineEditValidator(QLineEdit *lineEdit,
     QMap<int, QRegularExpression> regExpMap;
     regExpMap.insert(ValidatorBin, QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
     regExpMap.insert(ValidatorOtc, QRegularExpression("([0-7][0-7][ ])*"));
-    regExpMap.insert(ValidatorDec, QRegularExpression("([0-9][0-9][ ])*"));
+    regExpMap.insert(ValidatorDec, QRegularExpression("([-+.e0-9])*"));
     regExpMap.insert(ValidatorHex, QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
     regExpMap.insert(ValidatorAscii, QRegularExpression("([ -~])*"));
     regExpMap.insert(ValidatorFloat, QRegularExpression("^[-+]?[0-9]*\\.?[0-9]+$"));

@@ -24,19 +24,27 @@ public:
     ~SAKNumberAssistant();
 
 private:
+    enum CookedDataType {
+        CookedDataTypeInt8,
+        CookedDataTypeUint8,
+        CookedDataTypeInt16,
+        CookedDataTypeUint16,
+        CookedDataTypeInt32,
+        CookedDataTypeUint32,
+        CookedDataTypeInt64,
+        CookedDataTypeUint64,
+        CookedDataTypeFloat,
+        CookedDataTypeDouble
+    };
+
+private:
     Ui::SAKNumberAssistant* ui;
     SAKInterface* m_interface;
 
 private:
-    void fixedLength(QStringList& stringList);
-
-private slots:
-    void onHexRawDataCheckBoxClicked();
-    void onCreatePushButtonClicked();
-    void onRawDataLineEditTextChanged(const QString& text);
-    void onBigEndianCheckBoxClicked();
-    void onFloatRadioButtonClicked();
-    void onDoubleRadioButtonClicked();
+    void updateCookedData();
+    void updateRawData();
+    int bytesOfType(int type);
 };
 
 #endif // SAKNUMBERASSISTANT_H
