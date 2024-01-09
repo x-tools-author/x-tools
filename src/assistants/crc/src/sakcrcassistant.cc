@@ -7,6 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sakcrcassistant.h"
+#include "ui_sakcrcassistant.h"
 
 #include <QComboBox>
 #include <QDesktopServices>
@@ -14,7 +15,6 @@
 #include <QMetaEnum>
 
 #include "sakcrcinterface.h"
-#include "ui_sakcrcassistant.h"
 
 SAKCRCAssistant::SAKCRCAssistant(QWidget* parent)
     : QWidget(parent)
@@ -191,19 +191,15 @@ void SAKCRCAssistant::changedParameterModel(int index)
 
     int bitsWidth = m_crcInterface->bitsWidth(model);
     m_widthComboBox->setCurrentIndex(m_widthComboBox->findText(QString::number(bitsWidth)));
-    m_polyLineEdit->setText(
-        QString("0x%1").arg(QString::number(static_cast<int>(m_crcInterface->poly(model)), 16),
-                            bitsWidth / 4,
-                            '0'));
-    m_initLineEdit->setText(
-        QString("0x%1").arg(QString::number(static_cast<int>(m_crcInterface->initialValue(model)),
-                                            16),
-                            bitsWidth / 4,
-                            '0'));
-    m_xorLineEdit->setText(
-        QString("0x%1").arg(QString::number(static_cast<int>(m_crcInterface->xorValue(model)), 16),
-                            bitsWidth / 4,
-                            '0'));
+    QString strTmp = QString::number(static_cast<int>(m_crcInterface->poly(model)), 16);
+    m_polyLineEdit->setText(QString("0x%1").arg(strTmp, bitsWidth / 4, '0'));
+
+    strTmp = QString::number(static_cast<int>(m_crcInterface->initialValue(model)), 16);
+    m_initLineEdit->setText(QString("0x%1").arg(strTmp, bitsWidth / 4, '0'));
+
+    strTmp = QString::number(static_cast<int>(m_crcInterface->xorValue(model)), 16);
+    m_xorLineEdit->setText(QString("0x%1").arg(strTmp, bitsWidth / 4, '0'));
+
     m_refinCheckBox->setChecked(m_crcInterface->isInputReversal(model));
     m_refoutCheckBox->setChecked(m_crcInterface->isOutputReversal(model));
     m_labelPolyFormula->setText(m_crcInterface->friendlyPoly(model));
