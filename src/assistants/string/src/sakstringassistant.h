@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2020-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2020-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -25,10 +25,10 @@ private:
     Ui::SAKStringAssistant* ui;
 
 private slots:
-    void OnTextEditTextChanged();
-    void OnInputFormatComboBoxCurrentIndexChanged(int index);
-    void OnCreatePushButtonClicked();
-    void OnOutputFormatComboBoxCurrentTextChanged(const QString& text);
+    void onTextEditTextChanged();
+    void onInputFormatComboBoxCurrentIndexChanged(int index);
+    void onCreatePushButtonClicked();
+    void onOutputFormatComboBoxCurrentTextChanged(const QString& text);
 };
 
 #endif // SAKSTRINGASSISTANT_H
