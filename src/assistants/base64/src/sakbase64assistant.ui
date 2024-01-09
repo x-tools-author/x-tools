@@ -27,7 +27,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <widget class="QPlainTextEdit" name="plain_text_"/>
+       <widget class="QPlainTextEdit" name="plainText"/>
       </item>
      </layout>
     </widget>
@@ -45,7 +45,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
-       <widget class="QPlainTextEdit" name="cipher_text_"/>
+       <widget class="QPlainTextEdit" name="cipherText"/>
       </item>
      </layout>
     </widget>
@@ -66,21 +66,21 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="image_">
+      <widget class="QPushButton" name="image">
        <property name="text">
         <string>Image</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="decrypt_">
+      <widget class="QPushButton" name="decrypt">
        <property name="text">
         <string>Decrypt</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="encrypt_">
+      <widget class="QPushButton" name="encrypt">
        <property name="text">
         <string>Encrypt</string>
        </property>

@@ -1,29 +1,27 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-
 #include "sakbase64assistant.h"
+#include "ui_sakbase64assistant.h"
 
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QMessageBox>
 #include <QPixmap>
 
-#include "ui_sakbase64assistant.h"
-
 SAKBase64Assisatnt::SAKBase64Assisatnt(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::SAKBase64Assisatnt)
 {
     ui->setupUi(this);
-    connect(ui->image_, &QPushButton::clicked, this, &SAKBase64Assisatnt::OnImageClicked);
-    connect(ui->decrypt_, &QPushButton::clicked, this, &SAKBase64Assisatnt::OnDecryptClicked);
-    connect(ui->encrypt_, &QPushButton::clicked, this, &SAKBase64Assisatnt::OnEncryptClicked);
+    connect(ui->image, &QPushButton::clicked, this, &SAKBase64Assisatnt::onImageClicked);
+    connect(ui->decrypt, &QPushButton::clicked, this, &SAKBase64Assisatnt::onDecryptClicked);
+    connect(ui->encrypt, &QPushButton::clicked, this, &SAKBase64Assisatnt::onEncryptClicked);
 }
 
 SAKBase64Assisatnt::~SAKBase64Assisatnt()
@@ -31,10 +29,10 @@ SAKBase64Assisatnt::~SAKBase64Assisatnt()
     delete ui;
 }
 
-void SAKBase64Assisatnt::OnImageClicked()
+void SAKBase64Assisatnt::onImageClicked()
 {
-    QString cipher_text = ui->cipher_text_->toPlainText();
-    QByteArray base64 = cipher_text.toUtf8();
+    QString cipherText = ui->cipherText->toPlainText();
+    QByteArray base64 = cipherText.toUtf8();
     QByteArray bytes = QByteArray::fromBase64(base64);
 
     QPixmap pix;
@@ -54,20 +52,20 @@ void SAKBase64Assisatnt::OnImageClicked()
     dialog.exec();
 }
 
-void SAKBase64Assisatnt::OnEncryptClicked()
+void SAKBase64Assisatnt::onEncryptClicked()
 {
-    QString plain_text = ui->plain_text_->toPlainText();
-    QByteArray byte_array = plain_text.toUtf8();
-    QByteArray base64 = byte_array.toBase64();
-    QString ciper_text = QString::fromLatin1(base64);
-    ui->cipher_text_->setPlainText(ciper_text);
+    QString plainText = ui->plainText->toPlainText();
+    QByteArray byteArray = plainText.toUtf8();
+    QByteArray base64 = byteArray.toBase64();
+    QString ciperText = QString::fromLatin1(base64);
+    ui->cipherText->setPlainText(ciperText);
 }
 
-void SAKBase64Assisatnt::OnDecryptClicked()
+void SAKBase64Assisatnt::onDecryptClicked()
 {
-    QString cipher_text = ui->cipher_text_->toPlainText();
-    QByteArray base64 = cipher_text.toUtf8();
-    QByteArray byte_array = QByteArray::fromBase64(base64);
-    QString plain_text = QString::fromUtf8(byte_array);
-    ui->plain_text_->setPlainText(plain_text);
+    QString cipherText = ui->cipherText->toPlainText();
+    QByteArray base64 = cipherText.toUtf8();
+    QByteArray byteArray = QByteArray::fromBase64(base64);
+    QString plainText = QString::fromUtf8(byteArray);
+    ui->plainText->setPlainText(plainText);
 }
