@@ -17,7 +17,7 @@
 SAKCryptographicHashCalculator::SAKCryptographicHashCalculator(SAKFileCheckAssistant* controller,
                                                                QObject* parent)
     : QThread(parent)
-    , mCryptographicHashController(controller)
+    , m_cryptographicHashController(controller)
 {
     connect(this,
             &SAKCryptographicHashCalculator::updateResult,
@@ -39,11 +39,11 @@ SAKCryptographicHashCalculator::SAKCryptographicHashCalculator(SAKFileCheckAssis
 
 void SAKCryptographicHashCalculator::run()
 {
-    QCryptographicHash::Algorithm algorithm = mCryptographicHashController->algorithm();
+    QCryptographicHash::Algorithm algorithm = m_cryptographicHashController->algorithm();
     QCryptographicHash cryptographicHash(algorithm);
     cryptographicHash.reset();
 
-    QString fileName = mCryptographicHashController->fileName();
+    QString fileName = m_cryptographicHashController->fileName();
     QFile file(fileName);
     if (file.open(QFile::ReadOnly)) {
         qint64 allBytes = file.size();
@@ -99,15 +99,15 @@ void SAKCryptographicHashCalculator::run()
             consumeTime = endTime - startTime;
 
             if (consumeTime != 0) {
-                consumeTimeList.append(consumeTime);
-                while (consumeTimeList.length() > 1000) {
-                    consumeTimeList.removeFirst();
+                m_consumeTimeList.append(consumeTime);
+                while (m_consumeTimeList.length() > 1000) {
+                    m_consumeTimeList.removeFirst();
                 }
                 qint64 averageConsumeTime = 0;
-                for (auto& var : consumeTimeList) {
+                for (auto& var : m_consumeTimeList) {
                     averageConsumeTime += var;
                 }
-                averageConsumeTime = averageConsumeTime / consumeTimeList.count();
+                averageConsumeTime = averageConsumeTime / m_consumeTimeList.count();
                 if (averageConsumeTime > 0) {
                     remainTime = remainBytes / dataBlock * averageConsumeTime;
 

@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -7,34 +7,34 @@
  * code directory.
  **************************************************************************************************/
 #include "sakfilecheckassistant.h"
+#include "ui_sakfilecheckassistant.h"
 
 #include <QDebug>
 #include <QFileDialog>
 #include <QMetaEnum>
 
 #include "sakcryptographichashcalculator.h"
-#include "ui_sakfilecheckassistant.h"
 
 SAKFileCheckAssistant::SAKFileCheckAssistant(QWidget* parent)
     : QWidget(parent)
-    , mFileName(QString("C:/Windows/explorer.exe"))
-    , mAlgorithm(QCryptographicHash::Md5)
-    , mCalculator(Q_NULLPTR)
-    , mUi(new Ui::SAKFileCheckAssistant)
+    , m_fileName(QString("C:/Windows/explorer.exe"))
+    , m_algorithm(QCryptographicHash::Md5)
+    , m_calculator(Q_NULLPTR)
+    , ui(new Ui::SAKFileCheckAssistant)
 {
-    mUi->setupUi(this);
+    ui->setupUi(this);
 
     // Initializing data member about ui
-    mFilePathlineEdit = mUi->filePathlineEdit;
-    mAlgorithmComboBox = mUi->algorithmComboBox;
-    mResultLineEdit = mUi->resultLineEdit;
-    mCalculatorProgressBar = mUi->calculatorProgressBar;
-    mOpenPushButton = mUi->openPushButton;
-    mStartStopPushButton = mUi->startStopPushButton;
-    mUpperCheckBox = mUi->upperCheckBox;
-    mMessageLabel = mUi->messageLabel;
-    mRemainTimeLabel = mUi->remainTimeLabel;
-    mFilePathlineEdit->setText(mFileName);
+    m_filePathlineEdit = ui->filePathlineEdit;
+    m_algorithmComboBox = ui->algorithmComboBox;
+    m_resultLineEdit = ui->resultLineEdit;
+    m_calculatorProgressBar = ui->calculatorProgressBar;
+    m_openPushButton = ui->openPushButton;
+    m_startStopPushButton = ui->startStopPushButton;
+    m_upperCheckBox = ui->upperCheckBox;
+    m_messageLabel = ui->messageLabel;
+    m_remainTimeLabel = ui->remainTimeLabel;
+    m_filePathlineEdit->setText(m_fileName);
 
     // Appending algorithms to combo box
 #if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
@@ -46,60 +46,68 @@ SAKFileCheckAssistant::SAKFileCheckAssistant(QWidget* parent)
     for (int i = 0; i < algorithms.keyCount(); i++) {
         algorithmsStringList.append(QString(algorithms.key(i)));
     }
-    mAlgorithmComboBox->addItems(algorithmsStringList);
-    mAlgorithmComboBox->setCurrentText("Md5");
+    m_algorithmComboBox->addItems(algorithmsStringList);
+    m_algorithmComboBox->setCurrentText("Md5");
 
-    mFilePathlineEdit->setReadOnly(true);
-    mResultLineEdit->setReadOnly(true);
-    mCalculatorProgressBar->setMinimum(0);
-    mCalculatorProgressBar->setMaximum(100);
-    mCalculatorProgressBar->setValue(0);
+    m_filePathlineEdit->setReadOnly(true);
+    m_resultLineEdit->setReadOnly(true);
+    m_calculatorProgressBar->setMinimum(0);
+    m_calculatorProgressBar->setMaximum(100);
+    m_calculatorProgressBar->setValue(0);
 
     // It will clean the message which was showed on the info label when the timer
     // is timeout
-    mClearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
-    connect(&mClearMessageTimer, &QTimer::timeout, this, &SAKFileCheckAssistant::clearMessage);
+    m_clearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
+    connect(&m_clearMessageTimer, &QTimer::timeout, this, &SAKFileCheckAssistant::clearMessage);
 
-    mUpperCheckBox->setChecked(true);
+    m_upperCheckBox->setChecked(true);
     setWindowTitle(tr("File Check Assistant"));
+
+    connect(m_openPushButton, SIGNAL(clicked()), this, SLOT(onOpenPushButtonClicked()));
+    connect(m_startStopPushButton, SIGNAL(clicked()), this, SLOT(onStartStopPushButtonClicked()));
+    connect(m_upperCheckBox, SIGNAL(clicked()), this, SLOT(onUpperCheckBoxClicked()));
+    connect(m_algorithmComboBox,
+            SIGNAL(currentIndexChanged(int)),
+            this,
+            SLOT(onAlgorithmChanged(int)));
 }
 
 SAKFileCheckAssistant::~SAKFileCheckAssistant()
 {
-    delete mUi;
-    if (mCalculator) {
-        mCalculator->blockSignals(true);
-        mCalculator->requestInterruption();
-        mCalculator->exit();
-        mCalculator->wait();
-        mCalculator->deleteLater();
-        mCalculator = Q_NULLPTR;
+    delete ui;
+    if (m_calculator) {
+        m_calculator->blockSignals(true);
+        m_calculator->requestInterruption();
+        m_calculator->exit();
+        m_calculator->wait();
+        m_calculator->deleteLater();
+        m_calculator = Q_NULLPTR;
     }
 }
 
 void SAKFileCheckAssistant::setUiEnable(bool enable)
 {
-    mAlgorithmComboBox->setEnabled(enable);
-    mOpenPushButton->setEnabled(enable);
+    m_algorithmComboBox->setEnabled(enable);
+    m_openPushButton->setEnabled(enable);
 }
 
 QString SAKFileCheckAssistant::fileName()
 {
-    return mFileName;
+    return m_fileName;
 }
 
 QCryptographicHash::Algorithm SAKFileCheckAssistant::algorithm()
 {
-    return mAlgorithm;
+    return m_algorithm;
 }
 
 void SAKFileCheckAssistant::updateResult(QByteArray result)
 {
     QString resultString = QString(result.toHex());
-    if (mUpperCheckBox->isChecked()) {
-        mResultLineEdit->setText(resultString.toUpper());
+    if (m_upperCheckBox->isChecked()) {
+        m_resultLineEdit->setText(resultString.toUpper());
     } else {
-        mResultLineEdit->setText(resultString);
+        m_resultLineEdit->setText(resultString);
     }
 }
 
@@ -112,85 +120,84 @@ void SAKFileCheckAssistant::outputMessage(QString msg, bool isErrMsg)
         msg = QString("<font color=blue>%1</font>").arg(msg);
     }
 
-    mMessageLabel->setText(msg);
-    mClearMessageTimer.start();
+    m_messageLabel->setText(msg);
+    m_clearMessageTimer.start();
 }
 
 void SAKFileCheckAssistant::updateProgressBar(int currentValue)
 {
-    mCalculatorProgressBar->setValue(currentValue);
+    m_calculatorProgressBar->setValue(currentValue);
 }
 
 void SAKFileCheckAssistant::changeRemainTime(QString remainTime)
 {
     QString str = tr("Remaining time");
-    mRemainTimeLabel->setText(QString("%1 %2").arg(str, remainTime));
+    m_remainTimeLabel->setText(QString("%1 %2").arg(str, remainTime));
 }
 
 void SAKFileCheckAssistant::finished()
 {
-    on_startStopPushButton_clicked();
+    onStartStopPushButtonClicked();
 }
 
 void SAKFileCheckAssistant::clearMessage()
 {
-    mClearMessageTimer.stop();
-    mMessageLabel->clear();
-    mRemainTimeLabel->clear();
+    m_clearMessageTimer.stop();
+    m_messageLabel->clear();
+    m_remainTimeLabel->clear();
 }
 
-void SAKFileCheckAssistant::on_openPushButton_clicked()
+void SAKFileCheckAssistant::onOpenPushButtonClicked()
 {
-    mFileName = QFileDialog::getOpenFileName();
-    mFilePathlineEdit->setText(mFileName);
-    if (!mFileName.isEmpty()) {
-        mStartStopPushButton->setEnabled(true);
+    m_fileName = QFileDialog::getOpenFileName();
+    m_filePathlineEdit->setText(m_fileName);
+    if (!m_fileName.isEmpty()) {
+        m_startStopPushButton->setEnabled(true);
     }
 
-    mCalculatorProgressBar->setValue(0);
-    mResultLineEdit->clear();
-    mMessageLabel->clear();
+    m_calculatorProgressBar->setValue(0);
+    m_resultLineEdit->clear();
+    m_messageLabel->clear();
 }
 
-void SAKFileCheckAssistant::on_algorithmComboBox_currentIndexChanged(int index)
+void SAKFileCheckAssistant::onStartStopPushButtonClicked()
+{
+    if (m_calculator) {
+        m_calculator->blockSignals(true);
+        m_calculator->requestInterruption();
+        m_calculator->exit();
+        m_calculator->wait();
+        m_calculator->deleteLater();
+        m_calculator = Q_NULLPTR;
+        m_startStopPushButton->setText(tr("Calculate"));
+        setUiEnable(true);
+    } else {
+        m_calculator = new SAKCryptographicHashCalculator(this);
+        connect(m_calculator, &QThread::finished, this, &SAKFileCheckAssistant::finished);
+        m_calculator->start();
+        m_startStopPushButton->setText(tr("StopCalculating"));
+        setUiEnable(false);
+    }
+}
+
+void SAKFileCheckAssistant::onUpperCheckBoxClicked()
+{
+    QString temp = m_resultLineEdit->text();
+    if (m_upperCheckBox->isChecked()) {
+        m_resultLineEdit->setText(temp.toUpper());
+    } else {
+        m_resultLineEdit->setText(temp.toLower());
+    }
+}
+
+void SAKFileCheckAssistant::onAlgorithmChanged(int index)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
     QMetaEnum algorithms = QMetaEnum::fromType<SAKToolFileCheckAssistant::Algorithm>();
 #else
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
 #endif
-    mAlgorithm = static_cast<QCryptographicHash::Algorithm>(algorithms.value(index));
-    mResultLineEdit->clear();
-    mCalculatorProgressBar->setValue(0);
-}
-
-void SAKFileCheckAssistant::on_startStopPushButton_clicked()
-{
-    if (mCalculator) {
-        mCalculator->blockSignals(true);
-        mCalculator->requestInterruption();
-        mCalculator->exit();
-        mCalculator->wait();
-        mCalculator->deleteLater();
-        mCalculator = Q_NULLPTR;
-        setUiEnable(true);
-        mStartStopPushButton->setText(tr("Calculate"));
-        setUiEnable(true);
-    } else {
-        mCalculator = new SAKCryptographicHashCalculator(this);
-        connect(mCalculator, &QThread::finished, this, &SAKFileCheckAssistant::finished);
-        mCalculator->start();
-        mStartStopPushButton->setText(tr("StopCalculating"));
-        setUiEnable(false);
-    }
-}
-
-void SAKFileCheckAssistant::on_upperCheckBox_clicked()
-{
-    QString temp = mResultLineEdit->text();
-    if (mUpperCheckBox->isChecked()) {
-        mResultLineEdit->setText(temp.toUpper());
-    } else {
-        mResultLineEdit->setText(temp.toLower());
-    }
+    m_algorithm = static_cast<QCryptographicHash::Algorithm>(algorithms.value(index));
+    m_resultLineEdit->clear();
+    m_calculatorProgressBar->setValue(0);
 }

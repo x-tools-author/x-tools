@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -39,8 +39,7 @@ public:
     void updateProgressBar(int currentValue);
     void changeRemainTime(QString remainTime);
 #if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
-    // The QtCryptographicHashCalculator::Algorithm enum is not export with Q_ENUM
-    // in Qt5.6.0
+    // The QtCryptographicHashCalculator::Algorithm enum is not export with Q_ENUM in Qt5.6.0
     enum Algorithm {
 #ifndef QT_CRYPTOGRAPHICHASH_ONLY_SHA1
         Md4,
@@ -65,27 +64,28 @@ private:
     void clearMessage();
 
 private:
-    QString mFileName;
-    QCryptographicHash::Algorithm mAlgorithm;
-    SAKCryptographicHashCalculator* mCalculator;
-    QTimer mClearMessageTimer;
+    QString m_fileName;
+    QCryptographicHash::Algorithm m_algorithm;
+    SAKCryptographicHashCalculator* m_calculator;
+    QTimer m_clearMessageTimer;
 
 private:
-    Ui::SAKFileCheckAssistant* mUi;
-    QLineEdit* mFilePathlineEdit;
-    QComboBox* mAlgorithmComboBox;
-    QLineEdit* mResultLineEdit;
-    QProgressBar* mCalculatorProgressBar;
-    QPushButton* mOpenPushButton;
-    QPushButton* mStartStopPushButton;
-    QCheckBox* mUpperCheckBox;
-    QLabel* mMessageLabel;
-    QLabel* mRemainTimeLabel;
+    Ui::SAKFileCheckAssistant* ui;
+    QLineEdit* m_filePathlineEdit;
+    QComboBox* m_algorithmComboBox;
+    QLineEdit* m_resultLineEdit;
+    QProgressBar* m_calculatorProgressBar;
+    QPushButton* m_openPushButton;
+    QPushButton* m_startStopPushButton;
+    QCheckBox* m_upperCheckBox;
+    QLabel* m_messageLabel;
+    QLabel* m_remainTimeLabel;
+
 private slots:
-    void on_openPushButton_clicked();
-    void on_algorithmComboBox_currentIndexChanged(int index);
-    void on_startStopPushButton_clicked();
-    void on_upperCheckBox_clicked();
+    void onOpenPushButtonClicked();
+    void onStartStopPushButtonClicked();
+    void onUpperCheckBoxClicked();
+    void onAlgorithmChanged(int index);
 };
 
 #endif

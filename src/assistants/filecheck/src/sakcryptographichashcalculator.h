@@ -18,18 +18,19 @@ class SAKCryptographicHashCalculator : public QThread
 public:
     SAKCryptographicHashCalculator(SAKFileCheckAssistant* controller, QObject* parent = Q_NULLPTR);
 
-private:
-    SAKFileCheckAssistant* mCryptographicHashController;
-    QList<qint64> consumeTimeList;
-
-private:
-    void run() final;
 signals:
     void outputMessage(QString msg, bool isErrMsg);
     void updateResult(QByteArray result);
     void progressBarMaxValueChanged(qint64 value);
     void updateProgressBar(qint64 currentValue);
     void remainTimeChanged(QString remainTime);
+
+private:
+    SAKFileCheckAssistant* m_cryptographicHashController;
+    QList<qint64> m_consumeTimeList;
+
+private:
+    void run() final;
 };
 
 #endif
