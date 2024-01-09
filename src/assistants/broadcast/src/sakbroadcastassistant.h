@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -25,16 +25,17 @@ public:
 
 private:
     Ui::SAKBroadcastAssistant* ui;
-    SAKBroadcastThread* broadcast_thread_;
+    SAKBroadcastThread* m_broadcastThread;
 
 private:
-    void InitUi();
-    void InitUiBroadcastAddress();
-    void InitUiBroadcastInterval();
-    void UpdateUiState(bool started);
-    QByteArray PacketData();
+    void initUi();
+    void initUiBroadcastAddress();
+    void initUiBroadcastInterval();
+    void updateUiState(bool started);
+    QByteArray packetData();
 
-    void OnBroadcastPushButtonClicked();
+private slots:
+    void onBroadcastPushButtonClicked();
 };
 
 #endif // SAKBROADCASTASSISTANT_H

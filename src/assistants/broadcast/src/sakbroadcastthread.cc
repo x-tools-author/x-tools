@@ -1,12 +1,11 @@
-﻿/*******************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+﻿/***************************************************************************************************
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
- * project(https://github.com/qsaker/QtSwissArmyKnife).
+ * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
- * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
- * the root of the source code directory.
- ******************************************************************************/
+ * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
+ * code directory.
+ **************************************************************************************************/
 #include "sakbroadcastthread.h"
 
 #include <QTimer>
@@ -24,55 +23,54 @@ SAKBroadcastThread::~SAKBroadcastThread()
     }
 }
 
-void SAKBroadcastThread::SetBroadcastInformation(const QString& address,
+void SAKBroadcastThread::setBroadcastInformation(const QString& address,
                                                  quint16 port,
                                                  int interval,
                                                  const QByteArray& data)
 {
-    parameters_mutext_.lock();
-    parameters_.address = address;
-    parameters_.port = port;
-    parameters_.interval = interval;
-    parameters_.data = data;
-    parameters_mutext_.unlock();
+    m_parametersMutext.lock();
+    m_parameters.address = address;
+    m_parameters.port = port;
+    m_parameters.interval = interval;
+    m_parameters.data = data;
+    m_parametersMutext.unlock();
 }
 
 void SAKBroadcastThread::run()
 {
-    QUdpSocket* udp_socket = new QUdpSocket();
-    if (!udp_socket->bind()) {
-        qWarning() << udp_socket->errorString();
+    QUdpSocket* udpSocket = new QUdpSocket();
+    if (!udpSocket->bind()) {
+        qWarning() << udpSocket->errorString();
         return;
     }
 
-    parameters_mutext_.lock();
-    auto parameters = parameters_;
-    parameters_mutext_.unlock();
+    m_parametersMutext.lock();
+    auto parameters = m_parameters;
+    m_parametersMutext.unlock();
 
-    QTimer* tx_timer = new QTimer();
-    tx_timer->setSingleShot(true);
-    tx_timer->setInterval(parameters.interval < 20 ? 20 : parameters.interval);
-    connect(tx_timer, &QTimer::timeout, tx_timer, [=]() {
-        qint64 ret = udp_socket->writeDatagram(parameters.data,
-                                               QHostAddress(parameters.address),
-                                               parameters.port);
+    QTimer* txTimer = new QTimer();
+    txTimer->setSingleShot(true);
+    txTimer->setInterval(parameters.interval < 20 ? 20 : parameters.interval);
+    connect(txTimer, &QTimer::timeout, txTimer, [=]() {
+        QHostAddress hostAddress(parameters.address);
+        qint64 ret = udpSocket->writeDatagram(parameters.data, hostAddress, parameters.port);
         if (ret < 0) {
-            qWarning() << udp_socket->error();
+            qWarning() << udpSocket->error();
         } else {
-            emit BytesWritten(parameters.data);
+            emit bytesWritten(parameters.data);
         }
 
-        tx_timer->start();
+        txTimer->start();
     });
-    tx_timer->start();
+    txTimer->start();
 
     exec();
 
-    tx_timer->stop();
-    tx_timer->deleteLater();
-    tx_timer = Q_NULLPTR;
+    txTimer->stop();
+    txTimer->deleteLater();
+    txTimer = Q_NULLPTR;
 
-    udp_socket->close();
-    udp_socket->deleteLater();
-    udp_socket = Q_NULLPTR;
+    udpSocket->close();
+    udpSocket->deleteLater();
+    udpSocket = Q_NULLPTR;
 }

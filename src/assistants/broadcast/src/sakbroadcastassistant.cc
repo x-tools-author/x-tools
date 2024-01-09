@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -7,6 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sakbroadcastassistant.h"
+#include "ui_sakbroadcastassistant.h"
 
 #include <QDateTime>
 #include <QNetworkAddressEntry>
@@ -14,17 +15,16 @@
 
 #include "sakbroadcastthread.h"
 #include "sakdatastructure.h"
-#include "ui_sakbroadcastassistant.h"
 
 SAKBroadcastAssistant::SAKBroadcastAssistant(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::SAKBroadcastAssistant)
 {
     ui->setupUi(this);
-    broadcast_thread_ = new SAKBroadcastThread(this);
-    connect(broadcast_thread_, &SAKBroadcastThread::started, this, [=]() { UpdateUiState(true); });
-    connect(broadcast_thread_, &SAKBroadcastThread::finished, this, [=]() { UpdateUiState(false); });
-    connect(broadcast_thread_, &SAKBroadcastThread::BytesWritten, this, [=](const QByteArray& bytes) {
+    m_broadcastThread = new SAKBroadcastThread(this);
+    connect(m_broadcastThread, &SAKBroadcastThread::started, this, [=]() { updateUiState(true); });
+    connect(m_broadcastThread, &SAKBroadcastThread::finished, this, [=]() { updateUiState(false); });
+    connect(m_broadcastThread, &SAKBroadcastThread::bytesWritten, this, [=](const QByteArray& bytes) {
         QByteArray temp = bytes;
         int format = ui->comboBoxOutputFormat->currentData().toInt();
         auto cookedFormat = SAKDataStructure::SAKEnumTextFormatOutput(format);
@@ -41,16 +41,15 @@ SAKBroadcastAssistant::SAKBroadcastAssistant(QWidget* parent)
             [=](const QString& text) {
                 Q_UNUSED(text);
                 SAKDataStructure::setLineEditTextFormat(ui->lineEditBroadcastData,
-                                                              ui->comboBoxBroadcastFormat
-                                                                  ->currentData()
-                                                                  .toInt());
+                                                        ui->comboBoxBroadcastFormat->currentData()
+                                                            .toInt());
             });
     connect(ui->pushButtonBroadcast,
             &QPushButton::clicked,
             this,
-            &SAKBroadcastAssistant::OnBroadcastPushButtonClicked);
+            &SAKBroadcastAssistant::onBroadcastPushButtonClicked);
 
-    InitUi();
+    initUi();
     setWindowTitle(tr("Broadcast Assistant"));
 }
 
@@ -59,7 +58,7 @@ SAKBroadcastAssistant::~SAKBroadcastAssistant()
     delete ui;
 }
 
-void SAKBroadcastAssistant::UpdateUiState(bool started)
+void SAKBroadcastAssistant::updateUiState(bool started)
 {
     ui->pushButtonBroadcast->setEnabled(true);
     ui->pushButtonBroadcast->setText(started ? tr("Terminate") : tr("Broadcast"));
@@ -73,20 +72,20 @@ void SAKBroadcastAssistant::UpdateUiState(bool started)
     ui->lineEditBroadcastData->setEnabled(!started);
 }
 
-void SAKBroadcastAssistant::InitUi()
+void SAKBroadcastAssistant::initUi()
 {
     ui->textBrowserInformation->document()->setMaximumBlockCount(2000);
 
-    InitUiBroadcastAddress();
-    InitUiBroadcastInterval();
-    
+    initUiBroadcastAddress();
+    initUiBroadcastInterval();
+
     SAKDataStructure::setComboBoxTextInputFormat(ui->comboBoxBroadcastFormat);
     SAKDataStructure::setComboBoxTextOutputFormat(ui->comboBoxOutputFormat);
     SAKDataStructure::setupSuffix(ui->comboBoxBroadcastPrefix);
     SAKDataStructure::setupSuffix(ui->comboBoxBroadcastSuffix);
 }
 
-void SAKBroadcastAssistant::InitUiBroadcastAddress()
+void SAKBroadcastAssistant::initUiBroadcastAddress()
 {
     ui->comboBoxBroadcastAddress->clear();
     auto bd = QHostAddress(QHostAddress::Broadcast);
@@ -116,7 +115,7 @@ void SAKBroadcastAssistant::InitUiBroadcastAddress()
     }
 }
 
-void SAKBroadcastAssistant::InitUiBroadcastInterval()
+void SAKBroadcastAssistant::initUiBroadcastInterval()
 {
     ui->comboBoxBroadcastInterval->clear();
     for (int i = 20; i <= 100; i += 20) {
@@ -134,7 +133,7 @@ void SAKBroadcastAssistant::InitUiBroadcastInterval()
     ui->comboBoxBroadcastInterval->setCurrentText("1000");
 }
 
-QByteArray SAKBroadcastAssistant::PacketData()
+QByteArray SAKBroadcastAssistant::packetData()
 {
     QByteArray bytes;
 
@@ -154,24 +153,24 @@ QByteArray SAKBroadcastAssistant::PacketData()
     return bytes;
 }
 
-void SAKBroadcastAssistant::OnBroadcastPushButtonClicked()
+void SAKBroadcastAssistant::onBroadcastPushButtonClicked()
 {
     ui->pushButtonBroadcast->setEnabled(false);
 
-    if (broadcast_thread_->isRunning()) {
-        broadcast_thread_->exit();
+    if (m_broadcastThread->isRunning()) {
+        m_broadcastThread->exit();
     } else {
-        auto bytes = PacketData();
+        auto bytes = packetData();
         if (bytes.isEmpty()) {
             ui->pushButtonBroadcast->setEnabled(true);
             return;
         }
 
-        broadcast_thread_
-            ->SetBroadcastInformation(ui->comboBoxBroadcastAddress->currentText(),
+        m_broadcastThread
+            ->setBroadcastInformation(ui->comboBoxBroadcastAddress->currentText(),
                                       ui->lineEditBroadcastPort->text().toInt(),
                                       ui->comboBoxBroadcastInterval->currentData().toInt(),
                                       bytes);
-        broadcast_thread_->start();
+        m_broadcastThread->start();
     }
 }
