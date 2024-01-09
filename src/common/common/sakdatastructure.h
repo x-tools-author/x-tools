@@ -37,7 +37,8 @@ public:
         TextFormatDec,
         TextFormatHex,
         TextFormatAscii,
-        TextFormatUtf8
+        TextFormatUtf8,
+        TextFormatSystem
     };
     Q_ENUM(SAKEnumTextFormat)
 
