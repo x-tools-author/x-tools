@@ -45,6 +45,7 @@ private:
     void updateCookedData();
     void updateRawData();
     int bytesOfType(int type);
+    void onCookedDataTypeChanged();
 };
 
 #endif // SAKNUMBERASSISTANT_H

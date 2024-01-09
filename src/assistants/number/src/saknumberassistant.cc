@@ -41,33 +41,17 @@ SAKNumberAssistant::SAKNumberAssistant(QWidget *parent)
             &QLineEdit::textEdited,
             this,
             &SAKNumberAssistant::updateCookedData);
-    connect(ui->pushButtonUpdate,
-            &QPushButton::clicked,
+    connect(ui->comboBoxCookedDataType,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this,
-            &SAKNumberAssistant::updateCookedData);
+            &SAKNumberAssistant::onCookedDataTypeChanged);
+
+    onCookedDataTypeChanged();
 }
 
 SAKNumberAssistant::~SAKNumberAssistant()
 {
     delete ui;
-}
-
-template<typename T>
-void updateCookedData(QLineEdit *le, const QByteArray &data, int base)
-{
-    const void *ptr = data.constData();
-    const T *value = reinterpret_cast<const T *>(ptr);
-    T cookedValue = *value;
-    le->setText(QString::number(cookedValue, base));
-}
-
-template<typename T>
-void updateCookedData(QLineEdit *le, const QByteArray &data)
-{
-    const void *ptr = data.constData();
-    const T *value = reinterpret_cast<const T *>(ptr);
-    T cookedValue = *value;
-    le->setText(QString::number(cookedValue));
 }
 
 void SAKNumberAssistant::updateCookedData()
@@ -81,49 +65,46 @@ void SAKNumberAssistant::updateCookedData()
         ba.append('\0');
     }
 
-    switch (type) {
-    case CookedDataTypeInt8:
-    case CookedDataTypeInt16:
-    case CookedDataTypeInt32:
-        ::updateCookedData<int32_t>(ui->lineEditCookedBin, ba, 2);
-        ::updateCookedData<int32_t>(ui->lineEditCookedOct, ba, 8);
-        ::updateCookedData<int32_t>(ui->lineEditCookedDec, ba, 10);
-        ::updateCookedData<int32_t>(ui->lineEditCookedHex, ba, 16);
-        break;
-    case CookedDataTypeUint8:
-    case CookedDataTypeUint16:
-    case CookedDataTypeUint32:
-        ::updateCookedData<uint32_t>(ui->lineEditCookedBin, ba, 2);
-        ::updateCookedData<uint32_t>(ui->lineEditCookedOct, ba, 8);
-        ::updateCookedData<uint32_t>(ui->lineEditCookedDec, ba, 10);
-        ::updateCookedData<uint32_t>(ui->lineEditCookedHex, ba, 16);
-        break;
-    case CookedDataTypeInt64:
-        ::updateCookedData<int64_t>(ui->lineEditCookedBin, ba, 2);
-        ::updateCookedData<int64_t>(ui->lineEditCookedOct, ba, 8);
-        ::updateCookedData<int64_t>(ui->lineEditCookedDec, ba, 10);
-        ::updateCookedData<int64_t>(ui->lineEditCookedHex, ba, 16);
-        break;
-    case CookedDataTypeUint64:
-        ::updateCookedData<uint64_t>(ui->lineEditCookedBin, ba, 2);
-        ::updateCookedData<uint64_t>(ui->lineEditCookedOct, ba, 8);
-        ::updateCookedData<uint64_t>(ui->lineEditCookedDec, ba, 10);
-        ::updateCookedData<uint64_t>(ui->lineEditCookedHex, ba, 16);
-        break;
-    case CookedDataTypeFloat:
-        ::updateCookedData<float>(ui->lineEditCookedBin, ba);
-        ::updateCookedData<float>(ui->lineEditCookedOct, ba);
-        ::updateCookedData<float>(ui->lineEditCookedDec, ba);
-        ::updateCookedData<float>(ui->lineEditCookedHex, ba);
-        break;
-    case CookedDataTypeDouble:
-        ::updateCookedData<double>(ui->lineEditCookedBin, ba);
-        ::updateCookedData<double>(ui->lineEditCookedOct, ba);
-        ::updateCookedData<double>(ui->lineEditCookedDec, ba);
-        ::updateCookedData<double>(ui->lineEditCookedHex, ba);
-        break;
-    default:
-        break;
+    QByteArray tmpBa = ba;
+    std::reverse(tmpBa.begin(), tmpBa.end());
+
+    QString binStr = m_interface->arrayToString(tmpBa, SAKDataStructure::TextFormatBin);
+    QString hexStr = m_interface->arrayToString(tmpBa, SAKDataStructure::TextFormatHex);
+    ui->lineEditCookedBin->setText(binStr);
+    ui->lineEditCookedHex->setText(hexStr);
+
+    if (type == CookedDataTypeInt8) {
+        int8_t *ptr = reinterpret_cast<int8_t *>(ba.data());
+        ui->lineEditCookedDec->setText(QString::number(*ptr));
+    } else if (type == CookedDataTypeUint8) {
+        uint8_t *ptr = reinterpret_cast<uint8_t *>(ba.data());
+        ui->lineEditCookedDec->setText(QString::number(*ptr));
+    } else if (type == CookedDataTypeInt16) {
+        int16_t *ptr = reinterpret_cast<int16_t *>(ba.data());
+        ui->lineEditCookedDec->setText(QString::number(*ptr));
+    } else if (type == CookedDataTypeUint16) {
+        uint16_t *ptr = reinterpret_cast<uint16_t *>(ba.data());
+        ui->lineEditCookedDec->setText(QString::number(*ptr));
+    } else if (type == CookedDataTypeInt32) {
+        int32_t *ptr = reinterpret_cast<int32_t *>(ba.data());
+        ui->lineEditCookedDec->setText(QString::number(*ptr));
+    } else if (type == CookedDataTypeUint32) {
+        uint32_t *ptr = reinterpret_cast<uint32_t *>(ba.data());
+        ui->lineEditCookedDec->setText(QString::number(*ptr));
+    } else if (type == CookedDataTypeInt64) {
+        int64_t *ptr = reinterpret_cast<int64_t *>(ba.data());
+        ui->lineEditCookedDec->setText(QString::number(*ptr));
+    } else if (type == CookedDataTypeUint64) {
+        uint64_t *ptr = reinterpret_cast<uint64_t *>(ba.data());
+        ui->lineEditCookedDec->setText(QString::number(*ptr));
+    } else if (type == CookedDataTypeFloat) {
+        float *ptr = reinterpret_cast<float *>(ba.data());
+        ui->lineEditCookedDec->setText(QString::number(*ptr));
+    } else if (type == CookedDataTypeDouble) {
+        double *ptr = reinterpret_cast<double *>(ba.data());
+        ui->lineEditCookedDec->setText(QString::number(*ptr));
+    } else {
+        Q_ASSERT_X(false, __FUNCTION__, "Oh, No!");
     }
 }
 
@@ -169,9 +150,11 @@ int SAKNumberAssistant::bytesOfType(int type)
 {
     switch (type) {
     case CookedDataTypeInt8:
-    case CookedDataTypeInt16:
     case CookedDataTypeUint8:
+        return 1;
+    case CookedDataTypeInt16:
     case CookedDataTypeUint16:
+        return 2;
     case CookedDataTypeInt32:
     case CookedDataTypeUint32:
         return 4;
@@ -185,4 +168,12 @@ int SAKNumberAssistant::bytesOfType(int type)
     default:
         break;
     }
+}
+
+void SAKNumberAssistant::onCookedDataTypeChanged()
+{
+    int bytes = bytesOfType(ui->comboBoxCookedDataType->currentData().toInt());
+    ui->lineEditRawData->setMaxLength(bytes * 3 - 1);
+
+    updateCookedData();
 }
