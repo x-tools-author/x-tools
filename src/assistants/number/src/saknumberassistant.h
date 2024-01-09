@@ -15,7 +15,7 @@ namespace Ui {
 class SAKNumberAssistant;
 }
 
-class SAKCommonInterface;
+class SAKInterface;
 class SAKNumberAssistant : public QWidget
 {
     Q_OBJECT
@@ -24,7 +24,7 @@ public:
     ~SAKNumberAssistant();
 
 private:
-    SAKCommonInterface* common_interface_;
+    SAKInterface* common_interface_;
 
 private:
     void FixedLength(QStringList& stringList);

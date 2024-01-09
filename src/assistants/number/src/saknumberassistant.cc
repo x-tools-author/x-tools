@@ -7,19 +7,17 @@
  * code directory.
  **************************************************************************************************/
 #include "saknumberassistant.h"
-
-#include "sakcommoninterface.h"
-#include "sakinterface.h"
 #include "ui_saknumberassistant.h"
+
+#include "sakinterface.h"
 
 SAKNumberAssistant::SAKNumberAssistant(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::SAKNumberAssistant)
 {
     ui->setupUi(this);
-    common_interface_ = new SAKCommonInterface(this);
-    common_interface_->setLineEditValidator(ui->rawDataLineEdit,
-                                            SAKCommonInterface::ValidatorFloat);
+    common_interface_ = new SAKInterface(this);
+    common_interface_->setLineEditValidator(ui->rawDataLineEdit, SAKInterface::ValidatorFloat);
 
     connect(ui->hexRawDataCheckBox,
             &QCheckBox::clicked,
@@ -95,11 +93,9 @@ void SAKNumberAssistant::OnHexRawDataCheckBoxClicked()
 {
     ui->rawDataLineEdit->clear();
     if (ui->hexRawDataCheckBox->isChecked()) {
-        common_interface_->setLineEditValidator(ui->rawDataLineEdit,
-                                                SAKCommonInterface::ValidatorHex);
+        common_interface_->setLineEditValidator(ui->rawDataLineEdit, SAKInterface::ValidatorHex);
     } else {
-        common_interface_->setLineEditValidator(ui->rawDataLineEdit,
-                                                SAKCommonInterface::ValidatorFloat);
+        common_interface_->setLineEditValidator(ui->rawDataLineEdit, SAKInterface::ValidatorFloat);
     }
 }
 
