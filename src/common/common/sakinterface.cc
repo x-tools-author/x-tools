@@ -22,10 +22,8 @@
 #endif
 #endif
 #include <QAbstractTableModel>
-#include <QHostAddress>
 #include <QLineEdit>
 #include <QList>
-#include <QNetworkInterface>
 #include <QRegularExpressionValidator>
 #include <QSettings>
 #include <QStandardItemModel>
@@ -349,32 +347,6 @@ void SAKInterface::addSerialPortFlowControlItemsToComboBox(QComboBox *comboBox)
     }
 }
 #endif
-
-void SAKInterface::addIpItemsToComboBox(QComboBox *comboBox, bool appendHostAny)
-{
-    QString localHost("127.0.0.1");
-    if (comboBox) {
-        comboBox->clear();
-        comboBox->addItem(QString("::"));
-        comboBox->addItem(QString("::1"));
-        comboBox->addItem(QString("0.0.0.0"));
-        comboBox->addItem(localHost);
-        QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
-        for (auto &var : addresses) {
-            if (var.protocol() == QAbstractSocket::IPv4Protocol) {
-                if (var.toString().compare(localHost) == 0) {
-                    continue;
-                }
-                comboBox->addItem(var.toString());
-            }
-        }
-
-        if (appendHostAny) {
-            comboBox->addItem(QString(SAK_HOST_ADDRESS_ANY));
-        }
-        comboBox->setCurrentText(localHost);
-    }
-}
 
 void SAKInterface::setComboBoxIndexFromSettings(QSettings *settings,
                                                 QString key,

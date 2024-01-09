@@ -102,7 +102,6 @@ public:
     static void addSerialPortParityItemsToComboBox(QComboBox *comboBox);
     static void addSerialPortFlowControlItemsToComboBox(QComboBox *comboBox);
 #endif
-    static void addIpItemsToComboBox(QComboBox *comboBox, bool appendHostAny = false);
     static void setComboBoxIndexFromSettings(QSettings *settings, QString key, QComboBox *comboBox);
     static void setSettingsValueFromComboBoxIndex(QSettings *settings,
                                                   QString key,
