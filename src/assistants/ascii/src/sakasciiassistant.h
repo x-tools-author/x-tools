@@ -29,7 +29,7 @@ private:
 
 private:
     void initDescirption();
-    void onFilterTextChanged(const QString& text);
+    void setupFilter(const QString& text);
 };
 
 #endif // SAKASCIIASSISTANT_H
