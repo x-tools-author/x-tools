@@ -20,9 +20,7 @@ SAKAsciiAssistant::SAKAsciiAssistant(QWidget* parent)
 
     connect(ui->lineEdit, &QLineEdit::textChanged, this, &SAKAsciiAssistant::setupFilter);
     connect(ui->checkBox, &QCheckBox::clicked, this, [=]() {
-        if (!ui->lineEdit->text().isEmpty()) {
-            this->setupFilter(ui->lineEdit->text());
-        }
+        this->setupFilter(ui->lineEdit->text());
     });
 
     QStringList headerLabels;
