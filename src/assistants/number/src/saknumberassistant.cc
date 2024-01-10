@@ -166,7 +166,7 @@ int SAKNumberAssistant::bytesOfType(int type)
     case CookedDataTypeDouble:
         return 8;
     default:
-        break;
+        return 0;
     }
 }
 
