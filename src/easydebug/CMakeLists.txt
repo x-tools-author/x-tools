@@ -5,6 +5,8 @@ file(
   EASY_DEBUG_SOURCES
   "${CMAKE_SOURCE_DIR}/src/common/common/*.h"
   "${CMAKE_SOURCE_DIR}/src/common/common/*.cc"
+  "${CMAKE_SOURCE_DIR}/src/common/commonui/sakhighlighter.h"
+  "${CMAKE_SOURCE_DIR}/src/common/commonui/sakhighlighter.cc"
   "${CMAKE_SOURCE_DIR}/src/toolbox/toolbox/*.h"
   "${CMAKE_SOURCE_DIR}/src/toolbox/toolbox/*.cc"
   "${CMAKE_SOURCE_DIR}/src/tools/tools/*.hh"
