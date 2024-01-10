@@ -61,7 +61,7 @@ SAKCRCAssistant::SAKCRCAssistant(QWidget* parent)
 
     initParameterModel();
     connect(m_parameterComboBox,
-            &QComboBox::currentIndexChanged,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this,
             &SAKCRCAssistant::changedParameterModel);
     connect(m_calculatedBt, &QPushButton::clicked, this, &SAKCRCAssistant::calculate);
