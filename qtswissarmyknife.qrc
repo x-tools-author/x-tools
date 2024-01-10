@@ -74,5 +74,6 @@
         <file>resources/icon/zoomout.svg</file>
         <file>resources/icon/play.svg</file>
         <file>resources/icon/stop.svg</file>
+        <file>resources/icon/ping.ico</file>
     </qresource>
 </RCC>

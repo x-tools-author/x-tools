@@ -35,6 +35,7 @@ endmacro()
 
 add_subdirectory(crc)
 add_subdirectory(mdns)
+add_subdirectory(ping)
 add_subdirectory(ascii)
 add_subdirectory(base64)
 add_subdirectory(number)

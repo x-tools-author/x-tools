@@ -36,6 +36,9 @@
 #ifdef SAK_IMPORT_MODULE_MDNSASSISTANT
 #include "sakmdnsassistant.h"
 #endif
+#ifdef SAK_IMPORT_MODULE_PINGASSISTANT
+#include "sakpingassistant.h"
+#endif
 
 SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     : QObject(parent)
@@ -63,6 +66,9 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
 #endif
 #ifdef SAK_IMPORT_MODULE_MDNSASSISTANT
     registerAssistant<SAKMdnsAssistant>(AssistantTypesMdns, tr("MDNS Assistant"));
+#endif
+#ifdef SAK_IMPORT_MODULE_PINGASSISTANT
+    registerAssistant<SAKPingAssistant>(AssistantTypesPing, tr("Ping Assistant"));
 #endif
 }
 

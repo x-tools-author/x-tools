@@ -27,7 +27,8 @@ private:
         AssistantTypesString,
         AssistantTypesBroadcast,
         AssistantTypesBase64,
-        AssistantTypesMdns
+        AssistantTypesMdns,
+        AssistantTypesPing
     };
 
 public:
