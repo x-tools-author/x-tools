@@ -15,17 +15,23 @@
 #include "sakcommonmainwindow.h"
 
 template<typename T>
-int sakExec(int argc, char* argv[], const QString& appName)
+int sakExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
 {
     sakDoSomethingBeforeAppCreated(argv, appName);
 
     QApplication app(argc, argv);
-    SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow();
-    T* centralWidget = new T(mainWindow);
-    mainWindow->setWindowTitle(appName);
-    mainWindow->setCentralWidget(centralWidget);
-    mainWindow->show();
-    mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());
+    if (usingCommonMainWindow) {
+        SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow();
+        T* centralWidget = new T(mainWindow);
+        mainWindow->setWindowTitle(appName);
+        mainWindow->setCentralWidget(centralWidget);
+        mainWindow->show();
+        mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());
+    } else {
+        T* widget = new T();
+        widget->show();
+        widget->resize(int(qreal(widget->height()) * 1.732), widget->height());
+    }
 
     int ret = app.exec();
     sakDoSomethingAfterAppExited();
