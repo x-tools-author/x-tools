@@ -58,7 +58,7 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
     connect(m_webSocket, SAK_SIG_WEBSOCKETERROROCCURRED, m_webSocket, [=]() {
         QString errStr = m_webSocket->errorString();
         //outputMessage(QtInfoMsg, errStr);
-        emit errorOccured(errStr);
+        emit errorOccurred(errStr);
     });
 
     QString address = "ws://" + mServerIp + ":" + QString::number(mServerPort);

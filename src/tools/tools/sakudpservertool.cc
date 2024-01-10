@@ -39,7 +39,7 @@ bool SAKUdpServerTool::initialize(QString &errStr)
 
     connect(mUdpSocket, &QUdpSocket::readyRead, mUdpSocket, [=]() { readBytes(); });
     connect(mUdpSocket, SAK_SIG_SOCKETERROROCCURRED, this, [=]() {
-        emit errorOccured(mUdpSocket->errorString());
+        emit errorOccurred(mUdpSocket->errorString());
     });
 
     return true;
@@ -96,7 +96,7 @@ void SAKUdpServerTool::readBytes()
             mClients.append(info);
             emit clientsChanged();
         }
-        
+
         emit outputBytes(bytes);
         emit bytesRead(bytes, info);
     }

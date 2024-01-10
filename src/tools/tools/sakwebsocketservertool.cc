@@ -36,11 +36,11 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
             mWebSocketServer,
             [=](QWebSocketProtocol::CloseCode closeCode) {
                 Q_UNUSED(closeCode)
-                emit errorOccured(mWebSocketServer->errorString());
+                emit errorOccurred(mWebSocketServer->errorString());
             });
 
     connect(mWebSocketServer, &QWebSocketServer::acceptError, mWebSocketServer, [=]() {
-        emit errorOccured(mWebSocketServer->errorString());
+        emit errorOccurred(mWebSocketServer->errorString());
     });
 
     connect(mWebSocketServer, &QWebSocketServer::newConnection, mWebSocketServer, [=]() {

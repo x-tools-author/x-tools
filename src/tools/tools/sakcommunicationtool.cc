@@ -31,7 +31,7 @@ void SAKCommunicationTool::run()
     QString errStr;
     if (!initialize(errStr)) {
         qWarning() << errStr;
-        emit errorOccured(errStr);
+        emit errorOccurred(errStr);
         return;
     }
 

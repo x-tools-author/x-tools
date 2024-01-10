@@ -29,7 +29,7 @@ public:
 
 signals:
     void outputBytes(const QByteArray &bytes);
-    void errorOccured(const QString &errorString);
+    void errorOccurred(const QString &errorString);
 
 public:
     bool isWorking() { return m_isWorking; }

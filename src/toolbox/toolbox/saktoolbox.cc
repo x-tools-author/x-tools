@@ -42,7 +42,7 @@ SAKToolBox::SAKToolBox(QObject* parent)
     int flag = Qt::AutoConnection | Qt::UniqueConnection;
     for (auto tool : m_tools) {
         connect(tool,
-                &SAKBaseTool::errorOccured,
+                &SAKBaseTool::errorOccurred,
                 this,
                 &SAKToolBox::errorOccurred,
                 Qt::ConnectionType(flag));
@@ -111,8 +111,8 @@ void SAKToolBox::initialize(int type)
     // rx->websocket transmition; websocket transmition->Tx analyzer
     connect(m_comunicationTool, &SAKBaseTool::outputBytes, m_webSocketTransmitterTool, &SAKBaseTool::inputBytes);
     connect(m_webSocketTransmitterTool, &SAKBaseTool::outputBytes, m_comunicationTool, &SAKBaseTool::inputBytes);
-    
-    connect(m_comunicationTool, &SAKCommunicationTool::errorOccured, this, &SAKToolBox::errorOccurred);
+
+    connect(m_comunicationTool, &SAKCommunicationTool::errorOccurred, this, &SAKToolBox::errorOccurred);
     // clang-format on
 
     emit communicatonChanged();

@@ -42,7 +42,7 @@ bool SAKTcpClientTool::initialize(QString& errStr)
     connect(mTcpSocket, SAK_SIG_SOCKETERROROCCURRED, mTcpSocket, [=]() {
         QString info = "Error occurred: " + mTcpSocket->errorString();
         qInfo() << info;
-        emit errorOccured(mTcpSocket->errorString());
+        emit errorOccurred(mTcpSocket->errorString());
     });
 
     connect(mTcpSocket, &QTcpSocket::disconnected, mTcpSocket, [=]() { exit(); });

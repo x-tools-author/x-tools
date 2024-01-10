@@ -310,7 +310,7 @@ void SAKBleCentralTool::onBleCentralDisconnected()
 {
     QString msg = "disconnect from device";
     qWarning() << msg;
-    emit errorOccured(msg);
+    emit errorOccurred(msg);
 }
 
 void SAKBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *service,
