@@ -477,7 +477,7 @@ void SAKPingAssistant::onPingStarted(const QString &ip)
     int row = this->row(ip);
     QTableWidgetItem *item = ui->tableWidget->item(row, 1);
     if (item) {
-        item->setText(tr("Scaning"));
+        item->setText(tr("Scanning"));
         item->setBackground(QBrush(Qt::yellow));
     }
 
@@ -514,8 +514,8 @@ void SAKPingAssistant::onPingFinished(const QString &ip, bool is_online, const Q
     if (m_finishedCount == ui->tableWidget->rowCount()) {
         QMessageBox::information(
             this,
-            tr("Scaning Finished"),
-            tr("Scaning finished, you can screen out the result by the toolbar."));
+            tr("Scanning Finished"),
+            tr("Scanning finished, you can screen out the result by the toolbar."));
         m_playAction->setEnabled(true);
         m_pauseAction->setEnabled(false);
         m_stopAction->setEnabled(false);
