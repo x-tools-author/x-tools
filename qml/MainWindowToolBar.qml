@@ -8,9 +8,6 @@ import "common"
 ToolBar {
     id: root
     width: toolColumnLayout.width
-    property int pageIndex: 0
-    property int fixedpage: 0
-
     background: Rectangle {
         radius: isWindowed ? 8 : 0
         color: Material.primary
@@ -23,6 +20,8 @@ ToolBar {
         }
     }
 
+    property int pageIndex: 0
+
     signal invokeAddPage(var qmlFile)
     signal invokeRemovePage(var pageIndex)
 
@@ -32,23 +31,63 @@ ToolBar {
 
     ColumnLayout {
         id: toolColumnLayout
+        spacing: 0
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         Item {
-            Layout.minimumHeight: 24
+            Layout.minimumHeight: titleBar.height
+            Layout.fillWidth: true
+            Row {
+                spacing: 4
+                anchors.centerIn: parent
+                Text {
+                    id: easyText
+                    text: "Easy"
+                    color: "green"
+                    font.bold: true
+                    font.pixelSize: 20
+                    font.italic: true
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.verticalCenterOffset: 1
+                }
+                Text {
+                    text: "Debug"
+                    color: "#efeff0"
+                    font: easyText.font
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.verticalCenterOffset: -1
+                }
+            }
+            SAKHorizontalLine {
+                anchors.bottom: parent.bottom
+            }
         }
         Repeater {
             id: btRepeater
-            model: [["qrc:/resources/icon/IconSerialPort.svg", SAKToolsFactory.SerialportTool, qsTr(
-                         "SerialPort"), "MainWindowSerialPortPage.qml"], ["qrc:/resources/icon/IconBlueTooth.svg", SAKToolsFactory.SerialportTool, qsTr("SerialPort"), "MainWindowBlePage.qml"], ["qrc:/resources/icon/IconUdpClient.svg", SAKToolsFactory.UdpClientTool, qsTr("UDP Client"), "MainWindowUdpClientPage.qml"], ["qrc:/resources/icon/IconUdpServer.svg", SAKToolsFactory.UdpServerTool, qsTr("UDP Server"), "MainWindowUdpServerPage.qml"], ["qrc:/resources/icon/IconTcpClient.svg", SAKToolsFactory.TcpClientTool, qsTr("TCP Client"), "MainWindowTcpClientPage.qml"], ["qrc:/resources/icon/IconTcpServer.svg", SAKToolsFactory.TcpServerTool, qsTr("TCP Server"), "MainWindowTcpServerPage.qml"], ["qrc:/resources/icon/IconWebSocketClient.svg", SAKToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"], ["qrc:/resources/icon/IconWebSocketServer.svg", SAKToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]]
-            SAKToolButton {
+            model: {
+                var serialPort = [qsTr("Serial Port"), "qrc:/resources/icon/IconSerialPort.svg"]
+                var bleCentral = [qsTr("BLE Central"), "qrc:/resources/icon/IconBlueTooth.svg"]
+                var udpClient = [qsTr("UDP Client"), "qrc:/resources/icon/IconUdpClient.svg"]
+                var ucpServer = [qsTr("UDP Server"), "qrc:/resources/icon/IconUdpServer.svg"]
+                var tcpClient = [qsTr("TCP Client"), "qrc:/resources/icon/IconTcpClient.svg"]
+                var tcpServer = [qsTr("TCP Server"), "qrc:/resources/icon/IconTcpServer.svg"]
+                var wsClient = [qsTr("WebSocket Client"), "qrc:/resources/icon/IconWebSocketClient.svg"]
+                var wsServer = [qsTr("WebSocket Server"), "qrc:/resources/icon/IconWebSocketServer.svg"]
+
+                var tmp = [serialPort, bleCentral, udpClient, ucpServer, tcpClient, tcpServer, wsClient, wsServer]
+                return tmp
+            }
+            MainWindowToolBarItem {
                 id: bt
                 checkable: true
-                icon.source: modelData[0]
-                onClicked: root.pageIndex = index
+                icon.source: modelData[1]
                 checked: pageIndex === index
+                text: modelData[0]
+                leftPadding: 4
+                onClicked: root.pageIndex = index
                 onDoubleClicked: invokeRemovePage(index)
-                tips: modelData[2]
+
+                Layout.fillWidth: true
                 Component.onCompleted: {
                     bg.addButton(bt)
                     if (index === pageIndex) {
@@ -57,60 +96,23 @@ ToolBar {
                 }
             }
         }
-        ToolButton {
-            icon.source: "qrc:/resources/icon/IconAdd.svg"
-            onClicked: optionMenu.open()
-            visible: false
-            Menu {
-                id: optionMenu
-                Repeater {
-                    model: [["qrc:/resources/icon/IconSerialPort.svg", SAKToolsFactory.SerialportTool, qsTr(
-                                 "SerialPort"), "MainWindowSerialPortPage.qml"], ["qrc:/resources/icon/IconUdpClient.svg", SAKToolsFactory.UdpClientTool, qsTr("UDP Client"), "MainWindowUdpClientPage.qml"], ["qrc:/resources/icon/IconUdpServer.svg", SAKToolsFactory.UdpServerTool, qsTr("UDP Server"), "MainWindowUdpServerPage.qml"], ["qrc:/resources/icon/IconTcpClient.svg", SAKToolsFactory.TcpClientTool, qsTr("TCP Client"), "MainWindowTcpClientPage.qml"], ["qrc:/resources/icon/IconTcpServer.svg", SAKToolsFactory.TcpServerTool, qsTr("TCP Server"), "MainWindowTcpServerPage.qml"], ["qrc:/resources/icon/IconWebSocketClient.svg", SAKToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"], ["qrc:/resources/icon/IconWebSocketServer.svg", SAKToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]]
-                    MenuItem {
-                        text: modelData[2]
-                        icon.source: modelData[0]
-                        onTriggered: {
-                            var temp = []
-                            temp = btRepeater.model
-                            temp.push(modelData)
-                            btRepeater.model = temp
-                            root.invokeAddPage(modelData[3])
-                        }
-                    }
-                }
+        Item {
+            Layout.fillWidth: true
+            SAKHorizontalLine {
+                anchors.bottom: parent.bottom
             }
         }
-        Item {
-            Layout.fillHeight: true
-        }
-        ToolButton {
-            id: infoToolButton
-            checkable: true
-            icon.source: "qrc:/resources/icon/IconInfo.svg"
-            onClicked: pageIndex = btRepeater.model.length
-            Component.onCompleted: bg.addButton(infoToolButton)
-        }
-        ToolButton {
+        MainWindowToolBarItem {
             id: settingsToolButton
             checkable: true
+            text: qsTr("Settings")
             icon.source: "qrc:/resources/icon/IconSettings.svg"
-            onClicked: pageIndex = btRepeater.model.length + 1
+            onClicked: pageIndex = btRepeater.model.length
+            Layout.fillWidth: true
             Component.onCompleted: bg.addButton(settingsToolButton)
         }
         Item {
-            Layout.minimumHeight: 24
-        }
-    }
-
-    Component.onCompleted: fixedpage = btRepeater.model.length
-
-    function removePageIndex(index) {
-        if (index >= fixedpage && index < btRepeater.model.length) {
-            var newModel = btRepeater.model
-            newModel.splice(index, 1)
-            btRepeater.model = newModel
-            pageIndex = pageIndex - 1
-            console.info("Page index removed:", index)
+            Layout.fillHeight: true
         }
     }
 }

@@ -27,7 +27,7 @@ Item {
     readonly property string txColor: "blue"
 
     signal invokeOpenDrawer(var pageIndex)
-    signal invokeSend()
+    signal invokeSend
 
     onInputFormatChanged: inputComboBox.editText = ""
 
@@ -57,14 +57,7 @@ Item {
             anchors.fill: parent
             RowLayout {
                 Repeater {
-                    model: [
-                        [qsTr("Rx"), groupName + "/outputRx"],
-                        [qsTr("Tx"), groupName + "/outputTx"],
-                        [qsTr("Date"), groupName + "/outputShowDate"],
-                        [qsTr("Time"), groupName + "/outputShowTime"],
-                        [qsTr("MS"), groupName + "/outputShowMS"],
-                        [qsTr("Wrap"), groupName + "/outputShowWrap"]
-                    ]
+                    model: [[qsTr("Rx"), groupName + "/outputRx"], [qsTr("Tx"), groupName + "/outputTx"], [qsTr("Date"), groupName + "/outputShowDate"], [qsTr("Time"), groupName + "/outputShowTime"], [qsTr("MS"), groupName + "/outputShowMS"], [qsTr("Wrap"), groupName + "/outputShowWrap"]]
                     SAKCheckBox {
                         id: cbCheckBox
                         text: modelData[0]
@@ -73,17 +66,29 @@ Item {
                         visible: index !== 5
                         Component.onCompleted: {
                             if (index === 0) {
-                                showRx = Qt.binding(function (){return checked})
+                                showRx = Qt.binding(function () {
+                                    return checked
+                                })
                             } else if (index === 1) {
-                                showTx = Qt.binding(function (){return checked})
-                            }  else if (index === 2) {
-                                showDate = Qt.binding(function (){return checked})
+                                showTx = Qt.binding(function () {
+                                    return checked
+                                })
+                            } else if (index === 2) {
+                                showDate = Qt.binding(function () {
+                                    return checked
+                                })
                             } else if (index === 3) {
-                                showTime = Qt.binding(function (){return checked})
+                                showTime = Qt.binding(function () {
+                                    return checked
+                                })
                             } else if (index === 4) {
-                                showMs = Qt.binding(function (){return checked})
+                                showMs = Qt.binding(function () {
+                                    return checked
+                                })
                             } else if (index === 5) {
-                                showWrap = Qt.binding(function (){return checked})
+                                showWrap = Qt.binding(function () {
+                                    return checked
+                                })
                             }
 
                             if (index === 0 || index === 1) {
@@ -92,7 +97,9 @@ Item {
                         }
                     }
                 }
-                Item { Layout.fillWidth: true }
+                Item {
+                    Layout.fillWidth: true
+                }
                 SAKTextFormatComboBox {
                     id: outputTextFormatComboBox
                     tips: qsTr("Output text format")
@@ -154,12 +161,8 @@ Item {
                     id: intervalComboBox
                     enabled: communicationTool ? communicationTool.isWorking : null
                     tips: qsTr("Cycle sending interval")
-                    model: [
-                        qsTr("Disable"),
-                        20, 40, 60, 80, 100,
-                        200, 400, 600, 800, 1000,
-                        2000, 4000, 6000, 8000, 10000
-                    ]
+                    model: [qsTr(
+                            "Disable"), 20, 40, 60, 80, 100, 200, 400, 600, 800, 1000, 2000, 4000, 6000, 8000, 10000]
                     onActivated: {
                         if (intervalComboBox.currentIndex === 0) {
                             cycleSendingTimer.stop()
@@ -196,22 +199,23 @@ Item {
                     }
 
                     Component.onCompleted: {
-//                        var values = sakSettings.sakArrayValues(keysObj.itemGroup, keysObj.itemArray, keysObj.itemAll)
-//                        var item = {}
-//                        for (var i = 0; i < values.length; i++) {
-//                            var str = sakInterface.hexString2String(values[i])
-//                            var jsonObj = JSON.parse(str)
-//                            item[keysObj.itemText] = jsonObj[keysObj.itemText]
-//                            item[keysObj.itemFormat] = jsonObj[keysObj.itemFormat]
-//                            hisrotyListModel.append(item)
-//                        }
 
-//                        var index = sakSettings.value(keysObj.itemCurrentIndex)
-//                        if (index >= 0 && index < hisrotyListModel.count) {
-//                            currentIndex = index
-//                            editText = currentText
-//                            // Todo: no effect, need to fix.
-//                        }
+                        //                        var values = sakSettings.sakArrayValues(keysObj.itemGroup, keysObj.itemArray, keysObj.itemAll)
+                        //                        var item = {}
+                        //                        for (var i = 0; i < values.length; i++) {
+                        //                            var str = sakInterface.hexString2String(values[i])
+                        //                            var jsonObj = JSON.parse(str)
+                        //                            item[keysObj.itemText] = jsonObj[keysObj.itemText]
+                        //                            item[keysObj.itemFormat] = jsonObj[keysObj.itemFormat]
+                        //                            hisrotyListModel.append(item)
+                        //                        }
+
+                        //                        var index = sakSettings.value(keysObj.itemCurrentIndex)
+                        //                        if (index >= 0 && index < hisrotyListModel.count) {
+                        //                            currentIndex = index
+                        //                            editText = currentText
+                        //                            // Todo: no effect, need to fix.
+                        //                        }
                     }
                 }
                 SAKButton {
@@ -221,7 +225,10 @@ Item {
                         id: menu
                         Repeater {
                             id: menuRepeater
-                            MenuItem { text: modelData; onTriggered: presotrerTool.send(index) }
+                            MenuItem {
+                                text: modelData
+                                onTriggered: presotrerTool.send(index)
+                            }
                         }
 
                         function resetMenu() {
@@ -259,7 +266,7 @@ Item {
     Connections {
         target: communicationTool
 
-        function onBytesInputted(flag, inputedBytes) {
+        function onBytesWritten(inputedBytes, to) {
             if (showTx) {
                 var str = cookedBytes(flag, inputedBytes, false)
                 outputTextArea.append(str)
@@ -278,7 +285,7 @@ Item {
         }
     }
 
-    function appendHisroty (text, format) {
+    function appendHisroty(text, format) {
         var count = hisrotyListModel.count
         for (var i = 0; i < count; i++) {
             if (i == 10) {
@@ -289,7 +296,7 @@ Item {
             if (item[keysObj.itemText] === text) {
                 return
             }
-        }        
+        }
 
         item = {}
         item[keysObj.itemText] = text
@@ -317,28 +324,30 @@ Item {
         var dateTimeInfo = ""
         if (showDate && showTime) {
             if (showMs) {
-                dateTimeInfo = sakInterface.dateTimeString("yyyy-MM-dd hh:mm:ss.zzz ");
+                dateTimeInfo = sakInterface.dateTimeString("yyyy-MM-dd hh:mm:ss.zzz ")
             } else {
-                dateTimeInfo = sakInterface.dateTimeString("yyyy-MM-dd hh:mm:ss ");
+                dateTimeInfo = sakInterface.dateTimeString("yyyy-MM-dd hh:mm:ss ")
             }
         } else if (showDate) {
-            dateTimeInfo = sakInterface.dateTimeString("yyyy-MM-dd ");
+            dateTimeInfo = sakInterface.dateTimeString("yyyy-MM-dd ")
         } else if (showTime) {
             if (showMs) {
-                dateTimeInfo = sakInterface.dateTimeString("hh:mm:ss.zzz ");
+                dateTimeInfo = sakInterface.dateTimeString("hh:mm:ss.zzz ")
             } else {
-                dateTimeInfo = sakInterface.dateTimeString("hh:mm:ss ");
+                dateTimeInfo = sakInterface.dateTimeString("hh:mm:ss ")
             }
         }
-        dateTimeInfo = String("<font color=%1>%2</font>").arg(Material.color(Material.Grey)).arg(dateTimeInfo)
+        dateTimeInfo = String("<font color=%1>%2</font>").arg(Material.color(Material.Grey)).arg(
+                    dateTimeInfo)
 
         var flagInfo = isRx ? "Rx" : "Tx"
         flagInfo += "(" + flag + ")"
-        flagInfo = isRx ? String("<font color=%1>%2</font>").arg(Material.color(Material.Red)).arg(flagInfo)
-                        : String("<font color=%1>%2</font>").arg(Material.color(Material.Blue)).arg(flagInfo)
+        flagInfo = isRx ? String("<font color=%1>%2</font>").arg(Material.color(Material.Red)).arg(
+                              flagInfo) : String("<font color=%1>%2</font>").arg(
+                              Material.color(Material.Blue)).arg(flagInfo)
 
         var cookedString = "[" + dateTimeInfo + " " + flagInfo + "] "
-        cookedString =  String("<font color=silver>%1</font>").arg(cookedString)
+        cookedString = String("<font color=silver>%1</font>").arg(cookedString)
         var bytesString = sakInterface.arrayToString(bytes, outputFormat)
         cookedString += bytesString
 

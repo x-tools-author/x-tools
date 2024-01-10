@@ -10,12 +10,14 @@ import "common"
 
 Window {
     id: mainWindow
-    title: qsTr("EasyDebug")
-    visible: true
+
     width: 1280
     height: 720
+    visible: true
     color: "#00000000"
+    title: qsTr("EasyDebug")
     flags: Qt.FramelessWindowHint | Qt.Window
+    opacity: 0.3
 
     property alias keysObj: settingKeys
 
@@ -64,20 +66,17 @@ Window {
 
     onEdMaterialThemeChanged: {
         if (sakSettings) {
-            sakSettings.setValue(settingKeys.materialTheme,
-                                 String(edMaterialTheme))
+            sakSettings.setValue(settingKeys.materialTheme, String(edMaterialTheme))
         }
     }
     onEdMaterialAccentChanged: {
         if (sakSettings) {
-            sakSettings.setValue(settingKeys.materialAccent,
-                                 String(edMaterialAccent))
+            sakSettings.setValue(settingKeys.materialAccent, String(edMaterialAccent))
         }
     }
     onEdMaterialPrimaryChanged: {
         if (sakSettings) {
-            sakSettings.setValue(settingKeys.materialPrimary,
-                                 String(edMaterialPrimary))
+            sakSettings.setValue(settingKeys.materialPrimary, String(edMaterialPrimary))
         }
     }
 
@@ -147,13 +146,7 @@ Window {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            onPageIndexChanged: sakSettings.setValue(settingKeys.pageIndex,
-                                                     pageIndex)
-            onInvokeAddPage: function (qmlFile) {
-                pageRepeaterListModel.append({
-                                                 "page": "qrc:/qml/" + qmlFile
-                                             })
-            }
+            onPageIndexChanged: sakSettings.setValue(settingKeys.pageIndex, pageIndex)
             onInvokeRemovePage: function (pageIndex) {
                 var i = pageIndex - fixedpage
                 if (i >= 0 && i < pageRepeaterListModel.count) {
@@ -215,18 +208,6 @@ Window {
             MainWindowWebSocketServerPage {
                 id: websocketServerPage
             }
-
-            Repeater {
-                id: pageRepeater
-                model: ListModel {
-                    id: pageRepeaterListModel
-                }
-                Loader {
-                    asynchronous: true
-                    source: page
-                }
-            }
-
             MainWindowInfoPage {
                 id: infoPage
             }

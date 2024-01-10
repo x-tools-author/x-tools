@@ -77,5 +77,6 @@
         <file>qml/common/SAKTextFormatComboBox.qml</file>
         <file>qml/common/SAKToolButton.qml</file>
         <file>qml/common/SAKVerticalLine.qml</file>
+        <file>qml/MainWindowToolBarItem.qml</file>
     </qresource>
 </RCC>

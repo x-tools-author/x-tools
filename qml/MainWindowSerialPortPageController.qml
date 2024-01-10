@@ -16,7 +16,7 @@ SAKPane {
     property bool devIsWorking: comTool ? comTool.isWorking : false
     property bool ignoredUpdate: comTool ? comTool.isWorking : false
 
-    signal invokeRefreshDevice()
+    signal invokeRefreshDevice
 
     onIgnoredUpdateChanged: spController.setIgnoredUpdate(ignoredUpdate)
 
@@ -40,11 +40,26 @@ SAKPane {
 
     ListModel {
         id: additionListModel
-        ListElement {text: qsTr("None"); value: ""}
-        ListElement {text: qsTr("\\r"); value: "\r"}
-        ListElement {text: qsTr("\\n"); value: "\n"}
-        ListElement {text: qsTr("\\r\\n"); value: "\r\n"}
-        ListElement {text: qsTr("\\n\\r"); value: "\n\r"}
+        ListElement {
+            text: qsTr("None")
+            value: ""
+        }
+        ListElement {
+            text: qsTr("\\r")
+            value: "\r"
+        }
+        ListElement {
+            text: qsTr("\\n")
+            value: "\n"
+        }
+        ListElement {
+            text: qsTr("\\r\\n")
+            value: "\r\n"
+        }
+        ListElement {
+            text: qsTr("\\n\\r")
+            value: "\n\r"
+        }
     }
 
     GridLayout {
@@ -57,7 +72,7 @@ SAKPane {
             color: Material.foreground
         }
         SAKLabel {
-            text: qsTr("Port names")
+            text: qsTr("Port name")
         }
         SAKComboBox {
             id: portNameComboBox
@@ -65,8 +80,7 @@ SAKPane {
             enabled: !devIsWorking
             Layout.fillWidth: true
             onActivated: {
-                sakSettings.setValue(settingKeys.portName,
-                                      portNameComboBox.currentText)
+                sakSettings.setValue(settingKeys.portName, portNameComboBox.currentText)
             }
             Component.onCompleted: {
                 var portName = sakSettings.value(settingKeys.portName)
@@ -121,9 +135,18 @@ SAKPane {
             enabled: !devIsWorking
             Layout.fillWidth: true
             model: ListModel {
-                ListElement{text: "1"; value: 1}
-                ListElement{text: "1.5"; value: 3}
-                ListElement{text: "2"; value: 2}
+                ListElement {
+                    text: "1"
+                    value: 1
+                }
+                ListElement {
+                    text: "1.5"
+                    value: 3
+                }
+                ListElement {
+                    text: "2"
+                    value: 2
+                }
             }
             onActivated: {
                 sakSettings.setValue(settingKeys.stopBits, stopBitsComboBox.currentValue)
@@ -148,10 +171,22 @@ SAKPane {
             enabled: !devIsWorking
             Layout.fillWidth: true
             model: ListModel {
-                ListElement{text: "8"; value: 8}
-                ListElement{text: "7"; value: 7}
-                ListElement{text: "6"; value: 6}
-                ListElement{text: "5"; value: 5}
+                ListElement {
+                    text: "8"
+                    value: 8
+                }
+                ListElement {
+                    text: "7"
+                    value: 7
+                }
+                ListElement {
+                    text: "6"
+                    value: 6
+                }
+                ListElement {
+                    text: "5"
+                    value: 5
+                }
             }
             onActivated: {
                 sakSettings.setValue(settingKeys.dataBits, dataBitsComboBox.currentValue)
@@ -176,11 +211,26 @@ SAKPane {
             enabled: !devIsWorking
             Layout.fillWidth: true
             model: ListModel {
-                ListElement{text: qsTr("No"); value: 0}
-                ListElement{text: qsTr("Even"); value: 2}
-                ListElement{text: qsTr("Odd"); value: 3}
-                ListElement{text: qsTr("Space"); value: 4}
-                ListElement{text: qsTr("Mark"); value: 5}
+                ListElement {
+                    text: qsTr("No")
+                    value: 0
+                }
+                ListElement {
+                    text: qsTr("Even")
+                    value: 2
+                }
+                ListElement {
+                    text: qsTr("Odd")
+                    value: 3
+                }
+                ListElement {
+                    text: qsTr("Space")
+                    value: 4
+                }
+                ListElement {
+                    text: qsTr("Mark")
+                    value: 5
+                }
             }
             onActivated: {
                 sakSettings.setValue(settingKeys.parity, parityComboBox.currentValue)
@@ -205,13 +255,21 @@ SAKPane {
             enabled: !devIsWorking
             Layout.fillWidth: true
             model: ListModel {
-                ListElement{text: qsTr("No"); value: 0}
-                ListElement{text: qsTr("Hardware"); value: 1}
-                ListElement{text: qsTr("Software"); value: 2}
+                ListElement {
+                    text: qsTr("No")
+                    value: 0
+                }
+                ListElement {
+                    text: qsTr("Hardware")
+                    value: 1
+                }
+                ListElement {
+                    text: qsTr("Software")
+                    value: 2
+                }
             }
             onActivated: {
-                sakSettings.setValue(settingKeys.flowControl,
-                                      flowControlComboBox.currentValue)
+                sakSettings.setValue(settingKeys.flowControl, flowControlComboBox.currentValue)
             }
             Component.onCompleted: {
                 var flowControl = sakSettings.value(settingKeys.flowControl)
@@ -246,7 +304,7 @@ SAKPane {
             onClicked: {
                 spController.setIgnoredBusyDevice(ignoredBusyDeviceCheckBox.checked)
                 sakSettings.setValue(settingKeys.ignoredBusyDevice,
-                                      ignoredBusyDeviceCheckBox.checked)
+                                     ignoredBusyDeviceCheckBox.checked)
             }
             Component.onCompleted: {
                 var ignoredBusyDevice = sakSettings.value(settingKeys.ignoredBusyDevice)
@@ -261,14 +319,17 @@ SAKPane {
             Layout.columnSpan: 2
             onClicked: {
                 spController.setAutoUpdatePortNames(autoUpdatePortNameCheckBox.checked)
-                sakSettings.setValue(settingKeys.autoUpdatePortNames, autoUpdatePortNameCheckBox.checked)
+                sakSettings.setValue(settingKeys.autoUpdatePortNames,
+                                     autoUpdatePortNameCheckBox.checked)
             }
             Component.onCompleted: {
                 var autoUpdatePortNames = sakSettings.value(settingKeys.autoUpdatePortNames)
                 autoUpdatePortNameCheckBox.checked = autoUpdatePortNames === edTrue ? true : false
             }
         }
-        Item { Layout.fillHeight: true }
+        Item {
+            Layout.fillHeight: true
+        }
     }
 
     function portName() {

@@ -9,18 +9,10 @@ SAKPane {
 
     property int mainWindowVisibility: Window.Windowed
 
-    signal invokeShowMaximized()
-    signal invokeShowMinimized()
-    signal invokeClose()
-    signal invokeShowWindowed()
-
-    SAKLabel {
-        text: "EasyDebug"
-        font.pixelSize: 24
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: parent.left
-        anchors.leftMargin: 8
-    }
+    signal invokeShowMaximized
+    signal invokeShowMinimized
+    signal invokeClose
+    signal invokeShowWindowed
 
     MouseArea {
         anchors.fill: parent
@@ -34,16 +26,11 @@ SAKPane {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         Repeater {
-            model: [
-                "qrc:/resources/icon/IconMinimized.svg",
-                "qrc:/resources/icon/IconWindowed.svg",
-                "qrc:/resources/icon/IconMaximized.svg",
-                "qrc:/resources/icon/IconClose.svg"
-            ]
+            model: ["qrc:/resources/icon/IconMinimized.svg", "qrc:/resources/icon/IconWindowed.svg", "qrc:/resources/icon/IconMaximized.svg", "qrc:/resources/icon/IconClose.svg"]
             Rectangle {
                 id: bt
                 height: root.height
-                width: height*1.4
+                width: height * 1.4
                 radius: index === 3 ? mainWindowVisibility === Window.Windowed ? 8 : 0 : 0
                 visible: {
                     if (index === 1) {
@@ -95,7 +82,7 @@ SAKPane {
                 }
                 Image {
                     anchors.centerIn: parent
-                    height: parent.height*0.6
+                    height: parent.height * 0.6
                     width: height
                     source: modelData
                     mipmap: true
@@ -110,4 +97,3 @@ SAKPane {
         anchors.bottom: parent.bottom
     }
 }
-
