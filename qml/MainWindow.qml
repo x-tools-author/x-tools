@@ -17,7 +17,6 @@ Window {
     color: "#00000000"
     title: qsTr("EasyDebug")
     flags: Qt.FramelessWindowHint | Qt.Window
-    opacity: 0.3
 
     property alias keysObj: settingKeys
 
@@ -208,9 +207,9 @@ Window {
             MainWindowWebSocketServerPage {
                 id: websocketServerPage
             }
-            MainWindowInfoPage {
-                id: infoPage
-            }
+            // MainWindowInfoPage {
+            //     id: infoPage
+            // }
             MainWindowSettingsPage {
                 id: settingsPage
             }

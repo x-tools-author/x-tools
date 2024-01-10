@@ -43,7 +43,7 @@ ToolBar {
                 Text {
                     id: easyText
                     text: "Easy"
-                    color: "green"
+                    color: "red"
                     font.bold: true
                     font.pixelSize: 20
                     font.italic: true
