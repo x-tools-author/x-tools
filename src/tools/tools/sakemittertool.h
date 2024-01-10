@@ -69,7 +69,7 @@ public:
         int itemCrcEndIndex;
     };
 
-    struct EmiterItem
+    struct EmitterItem
     {
         Data data;
         int elapsedTime{0};
@@ -99,7 +99,7 @@ protected:
     virtual void run() final;
 
 private:
-    QVector<EmiterItem> mItems;
+    QVector<EmitterItem> mItems;
     QMutex mItemsMutex;
     const int mDescriptionColumnIndex{0};
     const int mFormatColumnIndex{1};
@@ -112,7 +112,7 @@ private:
 private:
     void try2emit();
     QByteArray itemBytes(const SAKEmitterTool::Data &item);
-    QVariant columnDisplayRoleData(const EmiterItem &item, int column) const;
+    QVariant columnDisplayRoleData(const EmitterItem &item, int column) const;
 
 private:
     QString itemEnable();

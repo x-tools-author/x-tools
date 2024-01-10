@@ -114,7 +114,7 @@ QVariant SAKEmitterTool::data(const QModelIndex &index, int role) const
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
         int column = index.column();
-        const EmiterItem &item = mItems[row];
+        const EmitterItem &item = mItems[row];
         if (role == Qt::DisplayRole) {
             return columnDisplayRoleData(item, column);
         }
@@ -173,7 +173,7 @@ bool SAKEmitterTool::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
     Data ctx;
-    EmiterItem item;
+    EmitterItem item;
     item.data = ctx;
     item.elapsedTime = 0;
     for (int i = 0; i < count; i++) {
@@ -285,7 +285,7 @@ QByteArray SAKEmitterTool::itemBytes(const SAKEmitterTool::Data &item)
     return bytes;
 }
 
-QVariant SAKEmitterTool::columnDisplayRoleData(const SAKEmitterTool::EmiterItem &item,
+QVariant SAKEmitterTool::columnDisplayRoleData(const SAKEmitterTool::EmitterItem &item,
                                                int column) const
 {
     DataKeys keys;
