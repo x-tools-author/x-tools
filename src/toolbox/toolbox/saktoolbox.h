@@ -80,19 +80,19 @@ private:
     void uninitializedTips();
 
 private:
-    SAKCommunicationTool* m_comunicationTool{nullptr};
-    SAKEmitterTool* m_emitterTool{nullptr};
-    SAKResponserTool* m_responserTool{nullptr};
-    SAKStorerTool* m_storerTool{nullptr};
-    SAKPrestorerTool* m_prestorerTool{nullptr};
-    SAKVelometerTool* m_rxVelometerTool{nullptr};
-    SAKVelometerTool* m_txVelometerTool{nullptr};
-    SAKStatisticianTool* m_rxStatisticianTool{nullptr};
-    SAKStatisticianTool* m_txStatisticianTool{nullptr};
-    SAKUdpTransmitterTool* m_udpTransmitterTool{nullptr};
-    SAKTcpTransmitterTool* m_tcpTransmitterTool{nullptr};
-    SAKWebSocketTransmitterTool* m_webSocketTransmitterTool{nullptr};
-    SAKSerialPortTransmitterTool* m_serialPortTransmitterTool{nullptr};
+    SAKCommunicationTool* m_comunicator{nullptr};
+    SAKEmitterTool* m_emitter{nullptr};
+    SAKResponserTool* m_responser{nullptr};
+    SAKStorerTool* m_storer{nullptr};
+    SAKPrestorerTool* m_prestorer{nullptr};
+    SAKVelometerTool* m_rxVelometer{nullptr};
+    SAKVelometerTool* m_txVelometer{nullptr};
+    SAKStatisticianTool* m_rxCounter{nullptr};
+    SAKStatisticianTool* m_txCounter{nullptr};
+    SAKUdpTransmitterTool* m_udpTransmitter{nullptr};
+    SAKTcpTransmitterTool* m_tcpTransmitter{nullptr};
+    SAKWebSocketTransmitterTool* m_webSocketTransmitter{nullptr};
+    SAKSerialPortTransmitterTool* m_serialPortTransmitter{nullptr};
     bool m_isWorking{false};
 
 private:
