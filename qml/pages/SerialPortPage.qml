@@ -4,7 +4,7 @@ import QtQuick.Controls
 import QtQuick.Controls.Universal
 
 import SAK.Custom
-import "toolbox"
+import "../toolbox"
 
 ToolBox {
     id: root
@@ -15,14 +15,14 @@ ToolBox {
 
     Component {
         id: comComtrollerComponent
-        MainWindowSerialPortPageController {
-            comTool: root.edDevice.communicaton
+        SerialPortPageController {
+            comTool: root.toolBox.communicator
         }
     }
 
     Component.onCompleted: {
-        edDevice.initialize(SAKToolsFactory.SerialportTool)
-        comTool = edDevice.communicaton
+        toolBox.initialize(SAKToolsFactory.SerialportTool)
+        comTool = toolBox.communicator
     }
 
     onInvokeOpenDevice: {
@@ -38,10 +38,10 @@ ToolBox {
         comTool.setDataBits(dataBits)
         comTool.setStopBits(stopBits)
         comTool.setFlowControl(flowControl)
-        edDevice.open()
+        toolBox.open()
     }
 
     onInvokeCloseDevice: {
-        edDevice.close()
+        toolBox.close()
     }
 }

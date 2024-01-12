@@ -12,18 +12,18 @@ Item {
     Layout.fillHeight: true
     Layout.rowSpan: 2
 
-    property SAKBaseTool communicationTool: null
+    property SAKCommunicator communicator: null
     property var controllerComponent: null
     property alias deviceControllerLoader: controllerLoader
     property int outputFormat: outputFormatComboBox.currentValue
     property int inputFormat: inputFormatComboBox.currentValue
-    property bool devIsWorking: communicationTool ? communicationTool.isWorking : false
+    property bool devIsWorking: communicator ? communicator.isWorking : false
 
     signal invokeOpenDrawer(var pageIndex)
-    signal invokeOpenDevice()
-    signal invokeCloseDevice()
-    signal invokeSend();
-    signal invokeClearOutput();
+    signal invokeOpenDevice
+    signal invokeCloseDevice
+    signal invokeSend
+    signal invokeClearOutput
 
     onDevIsWorkingChanged: {
         if (!devIsWorking) {
@@ -32,15 +32,14 @@ Item {
         }
     }
 
-//    background: Rectangle {
-//        radius: 8
-//        layer.enabled: true
-//        layer.effect: DropShadow {
-//            samples: 16
-//            radius: 8
-//        }
-//    }
-
+    //    background: Rectangle {
+    //        radius: 8
+    //        layer.enabled: true
+    //        layer.effect: DropShadow {
+    //            samples: 16
+    //            radius: 8
+    //        }
+    //    }
     QtObject {
         id: settingKeys
         readonly property string outputFormat: groupName + "/outputFormat"
@@ -56,9 +55,18 @@ Item {
 
     ListModel {
         id: inputTextFormatListModel
-        ListElement { text: "Hex"; value: SAKDataStructure.TextFormatHex }
-        ListElement { text: "Ascii"; value: SAKDataStructure.TextFormatAscii }
-        ListElement { text: "Utf8"; value: SAKDataStructure.TextFormatUtf8 }
+        ListElement {
+            text: "Hex"
+            value: SAKDataStructure.TextFormatHex
+        }
+        ListElement {
+            text: "Ascii"
+            value: SAKDataStructure.TextFormatAscii
+        }
+        ListElement {
+            text: "Utf8"
+            value: SAKDataStructure.TextFormatUtf8
+        }
     }
 
     GridLayout {
@@ -67,7 +75,10 @@ Item {
         columns: 2
         anchors.rightMargin: 6
         anchors.leftMargin: 6
-        Item {Layout.minimumHeight: 2; Layout.columnSpan: 2}
+        Item {
+            Layout.minimumHeight: 2
+            Layout.columnSpan: 2
+        }
         Loader {
             id: controllerLoader
             Layout.fillWidth: true
@@ -83,13 +94,8 @@ Item {
                 onClicked: root.invokeOpenDrawer(0)
             }
             SAKButton {
-                text: {
-                    if (communicationTool) {
-                        return communicationTool.isWorking
-                                ? qsTr("Close")
-                                : qsTr("Open")
-                    }
-                }
+                text: communicator ? (communicator.isWorking ? qsTr("Close") : qsTr(
+                                                                   "Open")) : qsTr("Open")
                 Layout.fillWidth: true
                 onClicked: {
                     if (communicationTool) {
@@ -151,13 +157,9 @@ Item {
                 }
                 SAKComboBox {
                     id: intervalComboBox
-                    enabled: communicationTool ? communicationTool.isWorking : null
-                    model: [
-                        qsTr("Disable"),
-                        20, 40, 60, 80, 100,
-                        200, 400, 600, 800, 1000,
-                        2000, 4000, 6000, 8000, 10000
-                    ]
+                    enabled: communicator ? communicator.isWorking : false
+                    model: [qsTr(
+                            "Disable"), 20, 40, 60, 80, 100, 200, 400, 600, 800, 1000, 2000, 4000, 6000, 8000, 10000]
                     Layout.fillWidth: true
 
                     onActivated: {
@@ -194,8 +196,8 @@ Item {
                             enabled: {
                                 if (index === 0) {
                                     return true
-                                } else  {
-                                    return communicationTool ? communicationTool.isWorking : false
+                                } else {
+                                    return communicator ? communicator.isWorking : false
                                 }
                             }
                             onClicked: {
@@ -210,6 +212,8 @@ Item {
                 }
             }
         }
-        Item {Layout.minimumHeight: 4}
+        Item {
+            Layout.minimumHeight: 4
+        }
     }
 }

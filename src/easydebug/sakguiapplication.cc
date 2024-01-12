@@ -58,7 +58,7 @@ SAKGuiApplication::SAKGuiApplication(int argc, char* argv[])
     SAKTranslator::instance()->setupLanguage(language);
 
     const QString reason = "Uncreatable type!";
-    qmlRegisterType<SAKToolBox>("SAK.Custom", 1, 0, "SAKDevice");
+    qmlRegisterType<SAKToolBox>("SAK.Custom", 1, 0, "SAKToolBox");
     qmlRegisterType<SAKSettings>("SAK.Custom", 1, 0, "SAKSettings");
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
     qmlRegisterType<SAKBleScanner>("SAK.Custom", 1, 0, "SAKBleScanner");
@@ -88,7 +88,7 @@ SAKGuiApplication::SAKGuiApplication(int argc, char* argv[])
 #endif
     qmlRegisterUncreatableType<SAKSerialPortTool>("SAK.Custom", 1, 0, "SAKSerialportTool", reason);
     qmlRegisterUncreatableType<SAKTableModelTool>("SAK.Custom", 1, 0, "SAKTabelModelTool", reason);
-    qmlRegisterUncreatableType<SAKCommunicationTool>("SAK.Custom", 1, 0, "SAKCommunicationTool", reason);
+    qmlRegisterUncreatableType<SAKCommunicationTool>("SAK.Custom", 1, 0, "SAKCommunicator", reason);
     qmlRegisterUncreatableType<SAKWebSocketServerTool>("SAK.Custom", 1, 0, "SAKWebSocketServerTool", reason);
     qmlRegisterUncreatableType<SAKWebSocketClientTool>("SAK.Custom", 1, 0, "SAKWebSocketClientTool", reason);
     // clang-format on

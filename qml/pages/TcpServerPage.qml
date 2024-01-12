@@ -4,7 +4,7 @@ import QtQuick.Controls
 import QtQuick.Controls.Universal
 
 import SAK.Custom
-import "toolbox"
+import "../toolbox"
 
 ToolBox {
     id: root
@@ -15,29 +15,37 @@ ToolBox {
 
     Component {
         id: comComtrollerComponent
-        MainWindowTcpServerPageController {
-
-        }
+        TcpServerPageController {}
     }
 
     Component.onCompleted: {
-        edDevice.initialize(SAKToolsFactory.TcpServerTool)
-        tcpServerTool = edDevice.communicaton
+        toolBox.initialize(SAKToolsFactory.TcpServerTool)
+        tcpServerTool = toolBox.communicator
         if (tcpServerTool) {
             var controller = deviceControllerLoader.item
-            tcpServerTool.serverIp = Qt.binding(function (){return controller.deviceController.serverIp})
-            tcpServerTool.serverPort = Qt.binding(function (){return Number(controller.deviceController.serverPort)})
-            tcpServerTool.clientIndex = Qt.binding(function (){return Number(controller.deviceController.clientIndex)})
-            controller.deviceController.deviceIsWorking = Qt.binding(function (){return tcpServerTool.isWorking})
-            controller.deviceController.clients = Qt.binding(function (){return tcpServerTool.clients})
+            tcpServerTool.serverIp = Qt.binding(function () {
+                return controller.deviceController.serverIp
+            })
+            tcpServerTool.serverPort = Qt.binding(function () {
+                return Number(controller.deviceController.serverPort)
+            })
+            tcpServerTool.clientIndex = Qt.binding(function () {
+                return Number(controller.deviceController.clientIndex)
+            })
+            controller.deviceController.deviceIsWorking = Qt.binding(function () {
+                return tcpServerTool.isWorking
+            })
+            controller.deviceController.clients = Qt.binding(function () {
+                return tcpServerTool.clients
+            })
         }
     }
 
     onInvokeOpenDevice: {
-        edDevice.open()
+        toolBox.open()
     }
 
     onInvokeCloseDevice: {
-        edDevice.close()
+        toolBox.close()
     }
 }

@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 import SAK.Custom
-import "common"
+import "../common"
 
 SAKPane {
     id: root
@@ -96,16 +96,11 @@ SAKPane {
         SAKComboBox {
             id: baudRateComboBox
             model: spController.baudRates
-            editable: bdCheckBox.checked
+            editable: true
             enabled: !devIsWorking
             Layout.fillWidth: true
             onActivated: {
                 writeBaudRateToIniFile()
-            }
-            onCurrentTextChanged: {
-                if (bdCheckBox.checked) {
-                    writeBaudRateToIniFile()
-                }
             }
             Component.onCompleted: {
                 var baudRate = sakSettings.value(settingKeys.baudRate)
@@ -279,52 +274,6 @@ SAKPane {
                         flowControlComboBox.currentIndex = ret
                     }
                 }
-            }
-        }
-        SAKCheckBox {
-            id: bdCheckBox
-            text: qsTr("Custom baud rate")
-            enabled: !devIsWorking
-            Layout.columnSpan: 2
-            Layout.fillWidth: true
-            onClicked: {
-                sakSettings.setValue(settingKeys.customBaudRate, bdCheckBox.checked)
-            }
-            Component.onCompleted: {
-                var customBaudRate = sakSettings.value(settingKeys.customBaudRate)
-                bdCheckBox.checked = customBaudRate === edTrue ? true : false
-            }
-        }
-        SAKCheckBox {
-            id: ignoredBusyDeviceCheckBox
-            text: qsTr("Ignore busy device")
-            enabled: !devIsWorking
-            Layout.fillWidth: true
-            Layout.columnSpan: 2
-            onClicked: {
-                spController.setIgnoredBusyDevice(ignoredBusyDeviceCheckBox.checked)
-                sakSettings.setValue(settingKeys.ignoredBusyDevice,
-                                     ignoredBusyDeviceCheckBox.checked)
-            }
-            Component.onCompleted: {
-                var ignoredBusyDevice = sakSettings.value(settingKeys.ignoredBusyDevice)
-                ignoredBusyDeviceCheckBox.checked = ignoredBusyDevice === edTrue ? true : false
-            }
-        }
-        SAKCheckBox {
-            id: autoUpdatePortNameCheckBox
-            text: qsTr("Auto update port names")
-            enabled: !devIsWorking
-            Layout.fillWidth: true
-            Layout.columnSpan: 2
-            onClicked: {
-                spController.setAutoUpdatePortNames(autoUpdatePortNameCheckBox.checked)
-                sakSettings.setValue(settingKeys.autoUpdatePortNames,
-                                     autoUpdatePortNameCheckBox.checked)
-            }
-            Component.onCompleted: {
-                var autoUpdatePortNames = sakSettings.value(settingKeys.autoUpdatePortNames)
-                autoUpdatePortNameCheckBox.checked = autoUpdatePortNames === edTrue ? true : false
             }
         }
         Item {

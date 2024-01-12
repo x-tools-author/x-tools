@@ -4,7 +4,7 @@ import QtQuick.Controls
 import QtQuick.Controls.Universal
 
 import SAK.Custom
-import "toolbox"
+import "../toolbox"
 
 ToolBox {
     id: root
@@ -15,31 +15,43 @@ ToolBox {
 
     Component {
         id: comComtrollerComponent
-        MainWindowTcpClientPageController {
-
-        }
+        TcpClientPageController {}
     }
 
     Component.onCompleted: {
-        edDevice.initialize(SAKToolsFactory.TcpClientTool)
-        tcpClientTool = edDevice.communicaton
+        toolBox.initialize(SAKToolsFactory.TcpClientTool)
+        tcpClientTool = toolBox.communicator
         if (tcpClientTool) {
             var controller = deviceControllerLoader.item
-            tcpClientTool.clientIp = Qt.binding(function (){return controller.deviceController.clientIp})
-            tcpClientTool.clientPort = Qt.binding(function (){return Number(controller.deviceController.clientPort)})
-            tcpClientTool.specifyClientIpPort = Qt.binding(function (){return controller.deviceController.specifyClientIpPort})
-            tcpClientTool.serverIp = Qt.binding(function (){return controller.deviceController.serverIp})
-            tcpClientTool.serverPort = Qt.binding(function (){return Number(controller.deviceController.serverPort)})
-            controller.deviceController.bindingIpPort = Qt.binding(function (){return tcpClientTool.bindingIpPort})
-            controller.deviceController.deviceIsWorking = Qt.binding(function (){return tcpClientTool.isWorking})
+            tcpClientTool.clientIp = Qt.binding(function () {
+                return controller.deviceController.clientIp
+            })
+            tcpClientTool.clientPort = Qt.binding(function () {
+                return Number(controller.deviceController.clientPort)
+            })
+            tcpClientTool.specifyClientIpPort = Qt.binding(function () {
+                return controller.deviceController.specifyClientIpPort
+            })
+            tcpClientTool.serverIp = Qt.binding(function () {
+                return controller.deviceController.serverIp
+            })
+            tcpClientTool.serverPort = Qt.binding(function () {
+                return Number(controller.deviceController.serverPort)
+            })
+            controller.deviceController.bindingIpPort = Qt.binding(function () {
+                return tcpClientTool.bindingIpPort
+            })
+            controller.deviceController.deviceIsWorking = Qt.binding(function () {
+                return tcpClientTool.isWorking
+            })
         }
     }
 
     onInvokeOpenDevice: {
-        edDevice.open()
+        toolBox.open()
     }
 
     onInvokeCloseDevice: {
-        edDevice.close()
+        toolBox.close()
     }
 }

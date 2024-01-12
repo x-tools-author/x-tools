@@ -7,9 +7,9 @@ import "../common"
 
 Item {
     id: root
-    //padding: 0
 
-    property alias communicationTool: ioPage.communicationTool
+    //padding: 0
+    property alias communicator: ioPage.communicationTool
     property alias emitterTool: emitterPage.emitterTool
     property alias responserTool: responserPage.responserTool
     property alias presotrerTool: prestorePage.presotrerTool
@@ -27,7 +27,7 @@ Item {
     property alias textVar: ioPage.textVar
 
     signal invokeOpenDrawer(var pageIndex)
-    signal invokeSend()
+    signal invokeSend
 
     ColumnLayout {
         spacing: 0
@@ -82,7 +82,7 @@ Item {
         ioPage.clearOutput()
     }
 
-    function appendHisroty (text, format) {
+    function appendHisroty(text, format) {
         ioPage.appendHisroty(text, format)
     }
 }

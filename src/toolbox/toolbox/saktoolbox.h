@@ -28,7 +28,7 @@
 class SAKToolBox : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant communicaton READ communicaton NOTIFY communicatonChanged)
+    Q_PROPERTY(QVariant communicator READ communicator NOTIFY communicatorChanged)
     Q_PROPERTY(QVariant emitter READ emitter CONSTANT)
     Q_PROPERTY(QVariant responser READ responser CONSTANT)
     Q_PROPERTY(QVariant storer READ storer CONSTANT)
@@ -96,7 +96,7 @@ private:
     bool m_isWorking{false};
 
 private:
-    QVariant communicaton();
+    QVariant communicator();
     QVariant txMasker();
     QVariant rxMasker();
     QVariant txAnalyzer();
@@ -116,7 +116,7 @@ private:
 
 signals:
     void isWorkingChanged();
-    void communicatonChanged();
+    void communicatorChanged();
 };
 
 #endif // SAKTOOLBOX_H

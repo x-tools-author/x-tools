@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 import SAK.Custom
-import "common"
+import "../common"
 
 SAKPane {
     id: root
@@ -24,11 +24,31 @@ SAKPane {
                 valueRole: "value"
                 model: ListModel {
                     id: hidListModel
-                    ListElement{text: qsTr(".5"); value: 1; detail: qsTr("Round up for .5 and above.")}
-                    ListElement{text: qsTr("Up"); value: 2; detail: qsTr("Always round up.")}
-                    ListElement{text: qsTr("Down"); value: 3; detail: qsTr("Always round down.")}
-                    ListElement{text: qsTr(".75"); value: 4; detail: qsTr("Round up for .75 and above.")}
-                    ListElement{text: qsTr("Don't"); value: 5; detail: qsTr("Don't round.")}
+                    ListElement {
+                        text: qsTr(".5")
+                        value: 1
+                        detail: qsTr("Round up for .5 and above.")
+                    }
+                    ListElement {
+                        text: qsTr("Up")
+                        value: 2
+                        detail: qsTr("Always round up.")
+                    }
+                    ListElement {
+                        text: qsTr("Down")
+                        value: 3
+                        detail: qsTr("Always round down.")
+                    }
+                    ListElement {
+                        text: qsTr(".75")
+                        value: 4
+                        detail: qsTr("Round up for .75 and above.")
+                    }
+                    ListElement {
+                        text: qsTr("Don't")
+                        value: 5
+                        detail: qsTr("Don't round.")
+                    }
                 }
 
                 onActivated: sakSettings.hdpiPolicy = hidComboBox.currentValue
@@ -99,23 +119,31 @@ SAKPane {
                 valueRole: "value"
                 settingKey: mainWindow.keysObj.materialTheme
                 model: ListModel {
-                    ListElement{text: qsTr("System"); value: Material.System}
-                    ListElement{text: qsTr("Dark"); value: Material.Dark}
-                    ListElement{text: qsTr("Light"); value: Material.Light}
+                    ListElement {
+                        text: qsTr("System")
+                        value: Material.System
+                    }
+                    ListElement {
+                        text: qsTr("Dark")
+                        value: Material.Dark
+                    }
+                    ListElement {
+                        text: qsTr("Light")
+                        value: Material.Light
+                    }
                 }
                 onActivated: edMaterialTheme = currentValue
                 Component.onCompleted: edMaterialTheme = currentValue
             }
             Repeater {
-                model: [
-                    [qsTr("Accent color"), SAKMaterialColors.Option.MaterialAccent],
-                    [qsTr("Primary color"), SAKMaterialColors.Option.MaterialPrimary]
-                ]
+                model: [[qsTr("Accent color"), SAKMaterialColors.Option.MaterialAccent], [qsTr("Primary color"), SAKMaterialColors.Option.MaterialPrimary]]
                 Column {
                     SAKLabel {
                         text: modelData[0]
                     }
-                    SAKMaterialColors { option: modelData[1] }
+                    SAKMaterialColors {
+                        option: modelData[1]
+                    }
                 }
             }
             SAKLabel {

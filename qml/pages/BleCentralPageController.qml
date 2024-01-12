@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 import SAK.Custom
-import "common"
+import "../common"
 
 SAKPane {
     id: root
@@ -18,8 +18,8 @@ SAKPane {
     property alias serviceNames: serviceComboBox.model
     property alias characteristicNames: characteristicsComboBox.model
 
-    signal invokeChangedNotify()
-    signal invokeRead()
+    signal invokeChangedNotify
+    signal invokeRead
 
     QtObject {
         id: settingKeys
@@ -90,12 +90,10 @@ SAKPane {
             Layout.columnSpan: 2
             Repeater {
                 id: btRepeater
-                model: [
-                    qsTr("Notify"), qsTr("Read"),
-                ]
+                model: [qsTr("Notify"), qsTr("Read")]
                 SAKButton {
                     text: modelData
-                    width: (parent.width - btGrid.spacing)/2
+                    width: (parent.width - btGrid.spacing) / 2
                     onClicked: {
                         if (index === 0) {
                             root.invokeChangedNotify()

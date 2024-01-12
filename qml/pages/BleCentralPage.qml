@@ -4,18 +4,18 @@ import QtQuick.Controls
 import QtQuick.Controls.Universal
 
 import SAK.Custom
-import "toolbox"
+import "../toolbox"
 
 ToolBox {
     id: root
     controllerComponent: comComtrollerComponent
     groupName: "BleCentral"
 
-    property SAKBleCentralTool bleCentral: edDevice.communication ? edDevice.communication : null
+    property SAKBleCentralTool bleCentral: toolBox.communication ? toolBox.communication : null
 
     Component {
         id: comComtrollerComponent
-        MainWindowBleCentralPageController {
+        BleCentralPageController {
             onInvokeChangedNotify: root.onInvokeChangedNotify()
             onInvokeRead: root.onInvokeRead()
             onCurrentCharacteristicIndexChanged: updateNotify()
@@ -30,23 +30,33 @@ ToolBox {
     }
 
     Component.onCompleted: {
-        edDevice.initialize(SAKToolsFactory.BleCentral)
+        toolBox.initialize(SAKToolsFactory.BleCentral)
         if (bleCentral) {
             var controller = deviceControllerLoader.item
-            bleCentral.currentCharacteristicIndex = Qt.binding(function (){return controller.currentCharacteristicIndex})
-            bleCentral.currentServiceIndex = Qt.binding(function (){return controller.currentServiceIndex})
-            bleCentral.writeModel = Qt.binding(function (){return controller.writeModel})
-            controller.characteristicNames = Qt.binding(function (){return bleCentral.characteristicNames})
-            controller.serviceNames = Qt.binding(function (){return bleCentral.serviceNames})
+            bleCentral.currentCharacteristicIndex = Qt.binding(function () {
+                return controller.currentCharacteristicIndex
+            })
+            bleCentral.currentServiceIndex = Qt.binding(function () {
+                return controller.currentServiceIndex
+            })
+            bleCentral.writeModel = Qt.binding(function () {
+                return controller.writeModel
+            })
+            controller.characteristicNames = Qt.binding(function () {
+                return bleCentral.characteristicNames
+            })
+            controller.serviceNames = Qt.binding(function () {
+                return bleCentral.serviceNames
+            })
         }
     }
 
     onInvokeOpenDevice: {
-        edDevice.open()
+        toolBox.open()
     }
 
     onInvokeCloseDevice: {
-        edDevice.close()
+        toolBox.close()
     }
 
     function onInvokeChangedNotify() {

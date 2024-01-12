@@ -115,7 +115,7 @@ void SAKToolBox::initialize(int type)
     connect(m_comunicationTool, &SAKCommunicationTool::errorOccurred, this, &SAKToolBox::errorOccurred);
     // clang-format on
 
-    emit communicatonChanged();
+    emit communicatorChanged();
 }
 
 void SAKToolBox::open()
@@ -235,7 +235,7 @@ void SAKToolBox::uninitializedTips()
     emit errorOccurred(QString::fromLatin1(tips));
 }
 
-QVariant SAKToolBox::communicaton()
+QVariant SAKToolBox::communicator()
 {
     return QVariant::fromValue(m_comunicationTool);
 }

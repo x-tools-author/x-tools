@@ -4,42 +4,56 @@ import QtQuick.Controls
 import QtQuick.Controls.Universal
 
 import SAK.Custom
-import "toolbox"
+import "../toolbox"
 
 ToolBox {
     id: root
     controllerComponent: comComtrollerComponent
     groupName: "WebSocketClient"
 
-    property SAKWebSocketClientTool webSocketClient: edDevice.communication ? edDevice.communication : null
+    property SAKWebSocketClientTool webSocketClient: toolBox.communication ? toolBox.communication : null
 
     Component {
         id: comComtrollerComponent
-        MainWindowWebSocketClientPageController {
-
-        }
+        WebSocketClientPageController {}
     }
 
     Component.onCompleted: {
-        edDevice.initialize(SAKToolsFactory.WebSocketClientTool)
+        toolBox.initialize(SAKToolsFactory.WebSocketClientTool)
         if (webSocketClient) {
             var controller = deviceControllerLoader.item
-            webSocketClient.clientIp = Qt.binding(function (){return controller.deviceController.clientIp})
-            webSocketClient.clientPort = Qt.binding(function (){return Number(controller.deviceController.clientPort)})
-            webSocketClient.specifyClientIpPort = Qt.binding(function (){return controller.deviceController.specifyClientIpPort})
-            webSocketClient.serverIp = Qt.binding(function (){return controller.deviceController.serverIp})
-            webSocketClient.serverPort = Qt.binding(function (){return Number(controller.deviceController.serverPort)})
-            webSocketClient.messageType = Qt.binding(function (){return Number(controller.deviceController.messageType)})
-            controller.deviceController.bindingIpPort = Qt.binding(function (){return webSocketClient.bindingIpPort})
-            controller.deviceController.deviceIsWorking = Qt.binding(function (){return webSocketClient.isWorking})
+            webSocketClient.clientIp = Qt.binding(function () {
+                return controller.deviceController.clientIp
+            })
+            webSocketClient.clientPort = Qt.binding(function () {
+                return Number(controller.deviceController.clientPort)
+            })
+            webSocketClient.specifyClientIpPort = Qt.binding(function () {
+                return controller.deviceController.specifyClientIpPort
+            })
+            webSocketClient.serverIp = Qt.binding(function () {
+                return controller.deviceController.serverIp
+            })
+            webSocketClient.serverPort = Qt.binding(function () {
+                return Number(controller.deviceController.serverPort)
+            })
+            webSocketClient.messageType = Qt.binding(function () {
+                return Number(controller.deviceController.messageType)
+            })
+            controller.deviceController.bindingIpPort = Qt.binding(function () {
+                return webSocketClient.bindingIpPort
+            })
+            controller.deviceController.deviceIsWorking = Qt.binding(function () {
+                return webSocketClient.isWorking
+            })
         }
     }
 
     onInvokeOpenDevice: {
-        edDevice.open()
+        toolBox.open()
     }
 
     onInvokeCloseDevice: {
-        edDevice.close()
+        toolBox.close()
     }
 }

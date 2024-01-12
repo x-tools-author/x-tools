@@ -17,6 +17,7 @@ Window {
     color: "#00000000"
     title: qsTr("EasyDebug")
     flags: Qt.FramelessWindowHint | Qt.Window
+    opacity: 0.4
 
     property alias keysObj: settingKeys
 
@@ -146,18 +147,10 @@ Window {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             onPageIndexChanged: sakSettings.setValue(settingKeys.pageIndex, pageIndex)
-            onInvokeRemovePage: function (pageIndex) {
-                var i = pageIndex - fixedpage
-                if (i >= 0 && i < pageRepeaterListModel.count) {
-                    pageRepeaterListModel.remove(i, 1)
-                    console.info("Page removed:", pageIndex)
-                    removePageIndex(pageIndex)
-                }
-            }
             Component.onCompleted: {
                 var index = sakSettings.value(settingKeys.pageIndex)
                 if (index !== undefined) {
-                    pageIndex = index > (fixedpage - 1) ? 0 : index
+                    pageIndex = index
                 }
             }
             SAKVerticalLine {
@@ -176,43 +169,13 @@ Window {
             onInvokeShowMaximized: mainWindow.showMaximized()
             onInvokeShowMinimized: mainWindow.showMinimized()
         }
-        StackLayout {
+        MainWindowPages {
             id: pageStackLayout
-            currentIndex: toolBar.pageIndex
+            pageIndex: toolBar.pageIndex
             anchors.top: titleBar.bottom
             anchors.left: toolBar.right
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            MainWindowSerialPortPage {
-                id: comPage
-            }
-            MainWindowBleCentralPage {
-                id: blePage
-            }
-            MainWindowUdpClientPage {
-                id: udpClientPage
-            }
-            MainWindowUdpServerPage {
-                id: udpServerPage
-            }
-            MainWindowTcpClientPage {
-                id: tcpClientPage
-            }
-            MainWindowTcpServerPage {
-                id: tcpServerPage
-            }
-            MainWindowWebSocketClientPage {
-                id: websocketClientPage
-            }
-            MainWindowWebSocketServerPage {
-                id: websocketServerPage
-            }
-            // MainWindowInfoPage {
-            //     id: infoPage
-            // }
-            MainWindowSettingsPage {
-                id: settingsPage
-            }
         }
     } // SAKPane
 }
