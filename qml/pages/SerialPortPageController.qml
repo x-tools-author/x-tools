@@ -12,7 +12,7 @@ SAKPane {
     property var portNames: []
     property var baudRates: []
 
-    property SAKSerialportTool comTool: null
+    property SAKSerialport comTool: null
     property bool devIsWorking: comTool ? comTool.isWorking : false
     property bool ignoredUpdate: comTool ? comTool.isWorking : false
 

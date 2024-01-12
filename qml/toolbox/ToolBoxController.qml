@@ -94,12 +94,11 @@ Item {
                 onClicked: root.invokeOpenDrawer(0)
             }
             SAKButton {
-                text: communicator ? (communicator.isWorking ? qsTr("Close") : qsTr(
-                                                                   "Open")) : qsTr("Open")
+                text: communicator ? (communicator.isWorking ? qsTr("Close") : qsTr("Open")) : "--"
                 Layout.fillWidth: true
                 onClicked: {
-                    if (communicationTool) {
-                        if (communicationTool.isWorking) {
+                    if (communicator) {
+                        if (communicator.isWorking) {
                             invokeCloseDevice()
                         } else {
                             invokeOpenDevice()

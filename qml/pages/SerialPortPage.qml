@@ -11,7 +11,7 @@ ToolBox {
     controllerComponent: comComtrollerComponent
     groupName: "SerialportToolBox"
 
-    property SAKSerialportTool comTool: null
+    property SAKSerialport comTool: null
 
     Component {
         id: comComtrollerComponent
@@ -32,12 +32,14 @@ ToolBox {
         var dataBits = comComtroller.dataBits()
         var stopBits = comComtroller.stopBits()
         var flowControl = comComtroller.flowControl()
+        var parity = comComtroller.parity()
 
-        comTool.setPortName(portName)
-        comTool.setBaudRate(baudRate)
-        comTool.setDataBits(dataBits)
-        comTool.setStopBits(stopBits)
-        comTool.setFlowControl(flowControl)
+        comTool.portName = portName
+        comTool.baudRate = baudRate
+        comTool.dataBits = dataBits
+        comTool.stopBits = stopBits
+        comTool.parity = parity
+        comTool.flowControl = flowControl
         toolBox.open()
     }
 

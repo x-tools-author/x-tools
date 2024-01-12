@@ -86,7 +86,7 @@ SAKGuiApplication::SAKGuiApplication(int argc, char* argv[])
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
     qmlRegisterUncreatableType<SAKBleCentralTool>("SAK.Custom", 1, 0, "SAKBleCentralTool", reason);
 #endif
-    qmlRegisterUncreatableType<SAKSerialPortTool>("SAK.Custom", 1, 0, "SAKSerialportTool", reason);
+    qmlRegisterUncreatableType<SAKSerialPortTool>("SAK.Custom", 1, 0, "SAKSerialport", reason);
     qmlRegisterUncreatableType<SAKTableModelTool>("SAK.Custom", 1, 0, "SAKTabelModelTool", reason);
     qmlRegisterUncreatableType<SAKCommunicationTool>("SAK.Custom", 1, 0, "SAKCommunicator", reason);
     qmlRegisterUncreatableType<SAKWebSocketServerTool>("SAK.Custom", 1, 0, "SAKWebSocketServerTool", reason);
