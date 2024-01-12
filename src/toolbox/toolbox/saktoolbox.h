@@ -97,10 +97,6 @@ private:
 
 private:
     QVariant communicator();
-    QVariant txMasker();
-    QVariant rxMasker();
-    QVariant txAnalyzer();
-    QVariant rxAnalyzer();
     QVariant emitter();
     QVariant responser();
     QVariant storer();
