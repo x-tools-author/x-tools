@@ -42,4 +42,7 @@ add_subdirectory(number)
 add_subdirectory(string)
 add_subdirectory(broadcast)
 add_subdirectory(filecheck)
-add_subdirectory(fontawesome)
+
+if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
+  add_subdirectory(fontawesome)
+endif()

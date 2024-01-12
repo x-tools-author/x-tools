@@ -7,8 +7,9 @@ function(sak_import_fontawesome_for_target target)
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory fonts
     COMMAND
-      ${CMAKE_COMMAND} -E  copy_directory_if_different
+      ${CMAKE_COMMAND} -E copy_directory_if_different
       "${CMAKE_SOURCE_DIR}/resources/font/${fontawesome_dir}"
       "${SAK_BINARY_DIR}/${target}/fonts/${fontawesome_dir}"
-    WORKING_DIRECTORY ${SAK_BINARY_DIR}/${target} VERBATIM)
+    WORKING_DIRECTORY "${SAK_BINARY_DIR}/${target}"
+    VERBATIM)
 endfunction(sak_import_fontawesome_for_target)

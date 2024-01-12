@@ -96,7 +96,11 @@ sak_import_assistant("number")
 sak_import_assistant("string")
 sak_import_assistant("broadcast")
 sak_import_assistant("filecheck")
-sak_import_assistant("fontawesome")
+
+option(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT "" OFF)
+if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
+  sak_import_assistant("fontawesome")
+endif()
 
 # QtSwissArmyKnife src files
 macro(sak_add_src src_dir_name)
@@ -165,15 +169,19 @@ if(SAK_IMPORT_MODULE_BLUETOOTH)
   include_directories(src/optional/bluetooth)
 endif()
 
-file(GLOB_RECURSE SAK_QT_FLOWLAYOUT_SOURCES "${CMAKE_SOURCE_DIR}/3rd/qt/flowlayout/*.cpp"
-     "${CMAKE_SOURCE_DIR}/3rd/qt/flowlayout/*.h")
-list(APPEND SAK_APP_SOURCES ${SAK_QT_FLOWLAYOUT_SOURCES})
+if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
+  file(GLOB_RECURSE SAK_QT_FLOWLAYOUT_SOURCES "${CMAKE_SOURCE_DIR}/3rd/qt/flowlayout/*.cpp"
+       "${CMAKE_SOURCE_DIR}/3rd/qt/flowlayout/*.h")
+  list(APPEND SAK_APP_SOURCES ${SAK_QT_FLOWLAYOUT_SOURCES})
+endif()
 
 sak_add_executable("QtSwissArmyKnife" ${SAK_APP_SOURCES})
 sak_auto_execute_deployqt(QtSwissArmyKnife)
 sak_tar_target(QtSwissArmyKnife)
 sak_set_target_properties(QtSwissArmyKnife)
-sak_import_fontawesome_for_target(QtSwissArmyKnife)
+if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
+  sak_import_fontawesome_for_target(QtSwissArmyKnife)
+endif()
 
 sak_3rd_setup_glog(QtSwissArmyKnife)
 sak_3rd_setup_qmdnsengine(QtSwissArmyKnife)
@@ -194,25 +202,31 @@ install(
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # Custom build target.
-option(SAK_EABLE_APP_ASSISTANTS "Enable to build assistants." ON)
-if(SAK_EABLE_APP_ASSISTANTS)
+option(SAK_ENABLE_APP_ASSISTANTS "Enable to build assistants." OFF)
+if(SAK_ENABLE_APP_ASSISTANTS)
   add_subdirectory(${CMAKE_SOURCE_DIR}/src/assistants)
 endif()
 
-if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-  option(APP_EABLE_CANBUSSTUDIO "Enable to build CANBusStudio." ON)
-  if(APP_EABLE_CANBUSSTUDIO)
+option(APP_ENABLE_CANBUSSTUDIO "Enable to build CANBusStudio." OFF)
+if(APP_ENABLE_CANBUSSTUDIO)
+  if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
     add_subdirectory(${CMAKE_SOURCE_DIR}/src/canbusstudio)
   endif()
-  option(APP_EABLE_MODBUSSTUDIO "Enable to build ModbusStudio." ON)
-  if(APP_EABLE_MODBUSSTUDIO)
+endif()
+
+option(APP_ENABLE_MODBUSSTUDIO "Enable to build ModbusStudio." OFF)
+if(APP_ENABLE_MODBUSSTUDIO)
+  if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
     add_subdirectory(${CMAKE_SOURCE_DIR}/src/modbusstudio)
   endif()
 endif()
 
 # For Qt6.4 and later.
-if(QT_VERSION_MAJOR EQUAL 6 AND QT_VERSION_MINOR GREATER_EQUAL 4)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/src/easydebug)
+option(SAK_ENABLE_APP_EASYDEBUG "Enable to build EasyDebug." OFF)
+if(SAK_ENABLE_APP_EASYDEBUG)
+  if(QT_VERSION_MAJOR EQUAL 6 AND QT_VERSION_MINOR GREATER_EQUAL 4)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/src/easydebug)
+  endif()
 endif()
 
 # The private module is not open source.
