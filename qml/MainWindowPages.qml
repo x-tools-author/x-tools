@@ -21,7 +21,7 @@ Item {
             id: comPage
         }
 
-        /*BleCentralPage {
+        BleCentralPage {
             id: blePage
         }
         UdpClientPage {
@@ -41,7 +41,7 @@ Item {
         }
         WebSocketServerPage {
             id: websocketServerPage
-        }*/
+        }
         AboutPage {
             id: aboutPage
         }

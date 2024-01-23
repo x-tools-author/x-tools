@@ -66,17 +66,14 @@ ToolBar {
             id: btRepeater
             model: {
                 var serialPort = [qsTr("Serial Port"), "qrc:/resources/icon/IconSerialPort.svg"]
-
-
-                /*var bleCentral = [qsTr("BLE Central"), "qrc:/resources/icon/IconBlueTooth.svg"]
+                var bleCentral = [qsTr("BLE Central"), "qrc:/resources/icon/IconBlueTooth.svg"]
                 var udpClient = [qsTr("UDP Client"), "qrc:/resources/icon/IconUdpClient.svg"]
                 var ucpServer = [qsTr("UDP Server"), "qrc:/resources/icon/IconUdpServer.svg"]
                 var tcpClient = [qsTr("TCP Client"), "qrc:/resources/icon/IconTcpClient.svg"]
                 var tcpServer = [qsTr("TCP Server"), "qrc:/resources/icon/IconTcpServer.svg"]
                 var wsClient = [qsTr("WebSocket Client"), "qrc:/resources/icon/IconWebSocketClient.svg"]
-                var wsServer = [qsTr("WebSocket Server"), "qrc:/resources/icon/IconWebSocketServer.svg"]*/
-                var tmp = [serialPort /*, bleCentral, udpClient, ucpServer, tcpClient, tcpServer, wsClient, wsServer*/
-                        ]
+                var wsServer = [qsTr("WebSocket Server"), "qrc:/resources/icon/IconWebSocketServer.svg"]
+                var tmp = [serialPort, bleCentral, udpClient, ucpServer, tcpClient, tcpServer, wsClient, wsServer]
                 return tmp
             }
             MainWindowToolBarItem {
