@@ -221,14 +221,6 @@ if(APP_ENABLE_MODBUSSTUDIO)
   endif()
 endif()
 
-# For Qt6.4 and later.
-option(SAK_ENABLE_APP_EASYDEBUG "Enable to build EasyDebug." OFF)
-if(SAK_ENABLE_APP_EASYDEBUG)
-  if(QT_VERSION_MAJOR EQUAL 6 AND QT_VERSION_MINOR GREATER_EQUAL 4)
-    add_subdirectory(${CMAKE_SOURCE_DIR}/src/easydebug)
-  endif()
-endif()
-
 # The private module is not open source.
 option(SAK_ENABLE_APP_PRIVATE "Do not change the option unless you are the author" OFF)
 if(SAK_ENABLE_APP_PRIVATE)
