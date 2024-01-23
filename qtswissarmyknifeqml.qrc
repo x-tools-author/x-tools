@@ -79,5 +79,6 @@
         <file>qml/pages/BleCentralPageController.qml</file>
         <file>qml/pages/AboutPage.qml</file>
         <file>qml/pages/SettingsPage.qml</file>
+        <file>qml/pages/BasePage.qml</file>
     </qresource>
 </RCC>

@@ -17,7 +17,7 @@ Window {
     color: "#00000000"
     title: qsTr("EasyDebug")
     flags: Qt.FramelessWindowHint | Qt.Window
-    opacity: 1.0
+    opacity: 0.4
 
     property alias keysObj: settingKeys
 
