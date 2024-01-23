@@ -1,5 +1,3 @@
-include(${CMAKE_SOURCE_DIR}/.cmake/sak_common.cmake)
-
 function(sak_auto_execute_windeployqt target)
   if(WIN32)
     set(SAK_WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
