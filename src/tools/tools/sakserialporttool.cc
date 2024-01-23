@@ -95,8 +95,8 @@ bool SAKSerialPortTool::initialize(QString &errStr)
     qInfo() << "Open serialport with parameters:[" << qPrintable(info) << "]";
 
     if (!m_serialPort->open(QSerialPort::ReadWrite)) {
-        errStr = "open serial port failed:" + m_serialPort->errorString();
-        qWarning() << errStr;
+        errStr = "open serial port failed:";
+        qWarning() << errStr << qPrintable(m_serialPort->errorString());
         m_serialPort->deleteLater();
         m_serialPort = Q_NULLPTR;
         return false;

@@ -17,6 +17,7 @@
 
 #include "sakinterface.h"
 #include "saksettings.h"
+#include "saktranslator.h"
 
 #ifdef SAK_USING_GLOG
 
@@ -120,6 +121,12 @@ static void sakTryToClearSettings()
     }
 }
 
+static void sakInitLanguage()
+{
+    QString language = SAKSettings::instance()->language();
+    SAKTranslator::instance()->setupLanguage(language);
+}
+
 static void sakInitHdpi()
 {
 #if 0
@@ -150,6 +157,7 @@ static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
     sakInitGoogleLogging(argv[0]);
     sakInstallMessageHandler();
     sakTryToClearSettings();
+    sakInitLanguage();
     sakInitHdpi();
     sakInitAppStyle();
 }
