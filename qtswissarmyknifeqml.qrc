@@ -3,7 +3,6 @@
         <file>qml/MainWindow.qml</file>
         <file>qml/MainWindowTitleBar.qml</file>
         <file>qml/MainWindowToolBar.qml</file>
-        <file>qml/MainWindowTest.qml</file>
         <file>qml/toolbox/ToolBox.qml</file>
         <file>qml/toolbox/ToolBoxCommonClient.qml</file>
         <file>qml/toolbox/ToolBoxCommonCrcParameters.qml</file>
