@@ -31,5 +31,6 @@ add_custom_target(
   PullPrivateModules
   COMMAND git clone https://gitee.com/qsak/data-flow-workstation.git ./dfw
   COMMAND git clone https://gitee.com/qsak/fluent2.git ./fluent2
+  COMMAND git clone https://gitee.com/qsak/easydebug.git ./easydebug
   SOURCES ${CMAKE_SOURCE_DIR}/src/private/private.cmake
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
