@@ -75,5 +75,13 @@
         <file>resources/icon/play.svg</file>
         <file>resources/icon/stop.svg</file>
         <file>resources/icon/ping.ico</file>
+        <file>resources/icon/send.svg</file>
+        <file>resources/icon/attachment.svg</file>
+        <file>resources/icon/check.svg</file>
+        <file>resources/icon/esc.svg</file>
+        <file>resources/icon/header.svg</file>
+        <file>resources/icon/tail.svg</file>
+        <file>resources/icon/timer.svg</file>
+        <file>resources/icon/format.svg</file>
     </qresource>
 </RCC>
