@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -13,12 +13,12 @@
 SAKSerialPortScanner::SAKSerialPortScanner(QObject *parent)
     : QObject{parent}
 {
-    nAutoUpdatePortNamesTimer = new QTimer(this);
-    nAutoUpdatePortNamesTimer->setInterval(1000);
-    nAutoUpdatePortNamesTimer->setSingleShot(true);
-    connect(nAutoUpdatePortNamesTimer, &QTimer::timeout, this, [=]() {
+    m_autoUpdatePortNamesTimer = new QTimer(this);
+    m_autoUpdatePortNamesTimer->setInterval(1000);
+    m_autoUpdatePortNamesTimer->setSingleShot(true);
+    connect(m_autoUpdatePortNamesTimer, &QTimer::timeout, this, [=]() {
         refresh();
-        nAutoUpdatePortNamesTimer->start();
+        m_autoUpdatePortNamesTimer->start();
     });
 
     refresh();
@@ -26,8 +26,8 @@ SAKSerialPortScanner::SAKSerialPortScanner(QObject *parent)
 
 void SAKSerialPortScanner::refresh()
 {
-    auto temp = mPortNames;
-    mPortNames.clear();
+    auto temp = m_portNames;
+    m_portNames.clear();
     auto infos = QSerialPortInfo::availablePorts();
     for (auto &info : infos) {
         auto description = info.description();
@@ -36,50 +36,50 @@ void SAKSerialPortScanner::refresh()
             continue;
         }
 
-        if (mIgnoredBusyDevice) {
+        if (m_ignoredBusyDevice) {
             if (!isBusy(info.portName())) {
-                mPortNames.append(info.portName());
+                m_portNames.append(info.portName());
             }
         } else {
-            mPortNames.append(info.portName());
+            m_portNames.append(info.portName());
         }
     }
 
-    if (temp != mPortNames && !mIgnoredUpdate) {
+    if (temp != m_portNames && !m_ignoredUpdate) {
         emit portNamesChanged();
     }
 
-    temp = mBaudRates;
-    mBaudRates.clear();
+    temp = m_baudRates;
+    m_baudRates.clear();
     auto bds = QSerialPortInfo::standardBaudRates();
     for (auto bd : bds) {
-        mBaudRates.append(QString::number(bd));
+        m_baudRates.append(QString::number(bd));
     }
 
-    if (temp != mBaudRates && !mIgnoredUpdate) {
+    if (temp != m_baudRates && !m_ignoredUpdate) {
         emit baudRatesChanged();
     }
 }
 
 void SAKSerialPortScanner::setIgnoredBusyDevice(bool ignored)
 {
-    mIgnoredBusyDevice = ignored;
+    m_ignoredBusyDevice = ignored;
     refresh();
 }
 
 void SAKSerialPortScanner::setAutoUpdatePortNames(bool autoUpdate)
 {
     if (autoUpdate) {
-        nAutoUpdatePortNamesTimer->start();
+        m_autoUpdatePortNamesTimer->start();
     } else {
-        nAutoUpdatePortNamesTimer->stop();
+        m_autoUpdatePortNamesTimer->stop();
     }
 }
 
 void SAKSerialPortScanner::setIgnoredUpdate(bool ignored)
 {
-    mIgnoredUpdate = ignored;
-    if (!mIgnoredUpdate) {
+    m_ignoredUpdate = ignored;
+    if (!m_ignoredUpdate) {
         emit portNamesChanged();
     }
 }

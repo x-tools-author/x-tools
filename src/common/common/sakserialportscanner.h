@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -26,20 +26,20 @@ public:
     Q_INVOKABLE void setIgnoredUpdate(bool ignored);
 
 private:
-    bool mIgnoredBusyDevice{false};
-    bool mIgnoredUpdate{false};
-    QTimer *nAutoUpdatePortNamesTimer;
+    bool m_ignoredBusyDevice{false};
+    bool m_ignoredUpdate{false};
+    QTimer *m_autoUpdatePortNamesTimer;
 
 private:
     bool isBusy(const QString &portName);
 
 private:
-    QStringList mPortNames;
-    QStringList portNames() { return mPortNames; }
+    QStringList m_portNames;
+    QStringList portNames() { return m_portNames; }
     Q_SIGNAL void portNamesChanged();
 
-    QStringList mBaudRates;
-    QStringList baudRates() { return mBaudRates; }
+    QStringList m_baudRates;
+    QStringList baudRates() { return m_baudRates; }
     Q_SIGNAL void baudRatesChanged();
 };
 
