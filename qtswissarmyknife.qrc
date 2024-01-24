@@ -83,5 +83,12 @@
         <file>resources/icon/tail.svg</file>
         <file>resources/icon/timer.svg</file>
         <file>resources/icon/format.svg</file>
+        <file>resources/icon/date.svg</file>
+        <file>resources/icon/enter.svg</file>
+        <file>resources/icon/ms.svg</file>
+        <file>resources/icon/rx.svg</file>
+        <file>resources/icon/time.svg</file>
+        <file>resources/icon/tx.svg</file>
+        <file>resources/icon/clear.svg</file>
     </qresource>
 </RCC>
