@@ -23,6 +23,21 @@ SAKDataStructure::SAKDataStructure(QObject *parent)
 
 SAKDataStructure::~SAKDataStructure() {}
 
+QString SAKDataStructure::cookedAffixes(int affixes)
+{
+    if (affixes == AffixesN) {
+        return QString("\n");
+    } else if (affixes == AffixesR) {
+        return QString("\r");
+    } else if (affixes == AffixesNR) {
+        return QString("\n\r");
+    } else if (affixes == AffixesRN) {
+        return QString("\r\n");
+    } else {
+        return QString("");
+    }
+}
+
 void SAKDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
 {
     if (comboBox) {

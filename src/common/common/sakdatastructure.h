@@ -54,6 +54,7 @@ public:
 
     enum SAKEnumAffixes { AffixesNone, AffixesR, AffixesN, AffixesRN, AffixesNR };
     Q_ENUM(SAKEnumAffixes)
+    Q_INVOKABLE static QString cookedAffixes(int affixes);
 
     enum EDEnumResponseOptions {
         ResponseOptionDisable,
