@@ -19,7 +19,7 @@ class SAKCommunicationTool : public SAKBaseTool
 public:
     explicit SAKCommunicationTool(QObject *parent = nullptr);
     ~SAKCommunicationTool() override;
-    void inputBytes(const QByteArray &bytes) override;
+    Q_INVOKABLE void inputBytes(const QByteArray &bytes) override;
 
 signals:
     void bytesRead(const QByteArray &bytes, const QString &from);
