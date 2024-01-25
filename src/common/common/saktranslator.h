@@ -27,7 +27,7 @@ private:
 public:
     static SAKTranslator *instance();
     QStringList languanges();
-    void setupLanguage(const QString &language);
+    Q_INVOKABLE void setupLanguage(const QString &language);
 
 private:
     QMap<QString, QString> m_flagNameMap;
