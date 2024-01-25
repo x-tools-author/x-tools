@@ -23,7 +23,7 @@ SAKBaseTool::SAKBaseTool(QObject *parent)
         emit this->isWorkingChanged();
     });
     connect(this, &SAKBaseTool::errorOccurred, this, [=](const QString &errorString) {
-        qWarning() << "Error occured: " << qPrintable(errorString);
+        qWarning() << "Error occured: " << errorString;
         exit();
         wait();
     });

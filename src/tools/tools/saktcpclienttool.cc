@@ -20,14 +20,14 @@ SAKTcpClientTool::SAKTcpClientTool(QObject* parent)
 bool SAKTcpClientTool::initialize(QString& errStr)
 {
     mTcpSocket = new QTcpSocket();
-    if (mSpecifyClientIpPort) {
-        if (!mTcpSocket->bind(QHostAddress(mClientIp), mClientPort)) {
+    if (m_specifyClientIpPort) {
+        if (!mTcpSocket->bind(QHostAddress(m_clientIp), m_clientPort)) {
             errStr = "Binding error: " + mTcpSocket->errorString();
             return false;
         }
     }
-
-    mTcpSocket->connectToHost(QHostAddress(mServerIp), mServerPort);
+    
+    mTcpSocket->connectToHost(QHostAddress(m_serverIp), m_serverPort);
     if (!mTcpSocket->waitForConnected()) {
         errStr = "Connect to host error: " + mTcpSocket->errorString();
         return false;
@@ -35,8 +35,8 @@ bool SAKTcpClientTool::initialize(QString& errStr)
 
     QString ip = mTcpSocket->localAddress().toString();
     QString port = QString::number(mTcpSocket->localPort());
-    mBindingIpPort = ip + ":" + port;
-    qInfo() << "Client address and port: " + mBindingIpPort;
+    m_bindingIpPort = ip + ":" + port;
+    qInfo() << "Client address and port: " + m_bindingIpPort;
     emit bindingIpPortChanged();
 
     connect(mTcpSocket, SAK_SIG_SOCKETERROROCCURRED, mTcpSocket, [=]() {
@@ -58,7 +58,7 @@ void SAKTcpClientTool::writeBytes(const QByteArray& bytes)
     if (ret == -1) {
         qWarning() << mTcpSocket->errorString();
     } else {
-        emit bytesWritten(bytes, mBindingIpPort);
+        emit bytesWritten(bytes, m_bindingIpPort);
     }
 }
 
@@ -78,7 +78,7 @@ void SAKTcpClientTool::readBytes()
     if (!bytes.isEmpty()) {
         QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
         QString ipport = address.toString() + ":" + QString::number(port);
-        QString info = mBindingIpPort + "<-" + ipport + ":";
+        QString info = m_bindingIpPort + "<-" + ipport + ":";
         info += QString::fromLatin1(ba);
         qInfo() << info;
         emit outputBytes(bytes);

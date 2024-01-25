@@ -14,70 +14,70 @@ SAKSocketClientTool::SAKSocketClientTool(QObject *parent)
 
 QString SAKSocketClientTool::clientIp()
 {
-    return mClientIp;
+    return m_clientIp;
 }
 
 void SAKSocketClientTool::setClientIp(const QString &ip)
 {
-    mClientIp = ip;
+    m_clientIp = ip;
     emit clientIpChanged();
 }
 
 int SAKSocketClientTool::clientPort()
 {
-    return mClientPort;
+    return m_clientPort;
 }
 
 void SAKSocketClientTool::setClientPort(int port)
 {
-    mClientPort = port;
+    m_clientPort = port;
     emit clientPortChanged();
 }
 
 bool SAKSocketClientTool::specifyClientIpPort()
 {
-    return mSpecifyClientIpPort;
+    return m_specifyClientIpPort;
 }
 
 void SAKSocketClientTool::setSpecifyClientIpPort(bool specified)
 {
-    mSpecifyClientIpPort = specified;
+    m_specifyClientIpPort = specified;
 }
 
 QString SAKSocketClientTool::serverIp()
 {
-    return mServerIp;
+    return m_serverIp;
 }
 
 void SAKSocketClientTool::setServerIp(const QString &ip)
 {
-    mServerIp = ip;
+    m_serverIp = ip;
     emit serverIpChanged();
 }
 
 int SAKSocketClientTool::serverPort()
 {
-    return mServerPort;
+    return m_serverPort;
 }
 
 void SAKSocketClientTool::setServerPort(int port)
 {
-    mServerPort = port;
+    m_serverPort = port;
     emit serverPortChanged();
 }
 
 QString SAKSocketClientTool::bindingIpPort()
 {
-    return mBindingIpPort;
+    return m_bindingIpPort;
 }
 
 int SAKSocketClientTool::messageType()
 {
-    return mMessageType;
+    return m_messageType;
 }
 
 void SAKSocketClientTool::setMessageType(int type)
 {
-    mMessageType = type;
+    m_messageType = type;
     emit messageTypeChanged();
 }

@@ -22,7 +22,7 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
     connect(m_webSocket, &QWebSocket::connected, m_webSocket, [=]() {
         QString address = m_webSocket->localAddress().toString();
         QString port = QString::number(m_webSocket->localPort());
-        this->mBindingIpPort = address + ":" + port;
+        this->m_bindingIpPort = address + ":" + port;
         emit bindingIpPortChanged();
 
         QString ip = m_webSocket->peerAddress().toString();
@@ -42,14 +42,14 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
     connect(m_webSocket, &QWebSocket::binaryFrameReceived, m_webSocket, [=](const QByteArray &msg) {
         QByteArray ba = SAKInterface::arrayToHex(msg, ' ');
         QString hex = QString::fromLatin1(ba);
-        QString info = mBindingIpPort + "<-" + this->m_peerInfo + ":" + hex;
+        QString info = m_bindingIpPort + "<-" + this->m_peerInfo + ":" + hex;
         //outputMessage(QtInfoMsg, info);
         emit outputBytes(msg);
         emit bytesRead(msg, this->m_peerInfo);
     });
 
     connect(m_webSocket, &QWebSocket::textMessageReceived, m_webSocket, [=](QString message) {
-        QString info = mBindingIpPort + "<-" + this->m_peerInfo + ":" + message;
+        QString info = m_bindingIpPort + "<-" + this->m_peerInfo + ":" + message;
         //outputMessage(QtInfoMsg, info);
         emit outputBytes(message.toUtf8());
         emit bytesRead(message.toUtf8(), this->m_peerInfo);
@@ -60,8 +60,8 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
         //outputMessage(QtInfoMsg, errStr);
         emit errorOccurred(errStr);
     });
-
-    QString address = "ws://" + mServerIp + ":" + QString::number(mServerPort);
+    
+    QString address = "ws://" + m_serverIp + ":" + QString::number(m_serverPort);
     qDebug() << "Server url: " + address;
     m_webSocket->open(address);
 
@@ -72,7 +72,7 @@ void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes)
 {
     qint64 ret = -1;
     QString hex;
-    if (mMessageType == 0) {
+    if (m_messageType == 0) {
         hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
         ret = m_webSocket->sendBinaryMessage(bytes);
     } else {
@@ -83,7 +83,7 @@ void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes)
     if (ret == -1) {
         //outputMessage(QtWarningMsg, m_webSocket->errorString());
     } else {
-        QString info = mBindingIpPort + "<-" + this->m_peerInfo + ":" + hex;
+        QString info = m_bindingIpPort + "<-" + this->m_peerInfo + ":" + hex;
         //outputMessage(QtInfoMsg, info);
         emit bytesWritten(bytes, this->m_peerInfo);
     }
