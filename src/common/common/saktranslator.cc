@@ -78,6 +78,7 @@ void SAKTranslator::setupLanguage(const QString& language)
     if (m_translator.load(fileName)) {
         QCoreApplication::installTranslator(&m_translator);
         qInfo() << m_flagNameMap.value(key) << " has been setup!";
+        emit languageChanged();
     } else {
         qWarning() << "Load file failed: " << fileName;
     }
