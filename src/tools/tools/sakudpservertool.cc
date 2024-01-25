@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -17,29 +17,29 @@ SAKUdpServerTool::SAKUdpServerTool(QObject *parent)
 
 bool SAKUdpServerTool::initialize(QString &errStr)
 {
-    mUdpSocket = new QUdpSocket();
+    m_udpSocket = new QUdpSocket();
     bool ret = false;
     if (mSpecifyIpAndPort) {
-        ret = mUdpSocket->bind(QHostAddress(mServerIp), mServerPort);
+        ret = m_udpSocket->bind(QHostAddress(mServerIp), mServerPort);
     } else {
-        ret = mUdpSocket->bind();
+        ret = m_udpSocket->bind();
     }
 
     if (!ret) {
-        //outputMessage(QtWarningMsg, mUdpSocket->errorString());
-        errStr = mUdpSocket->errorString();
+        qWarning() << m_udpSocket->errorString();
+        errStr = m_udpSocket->errorString();
         return false;
     }
 
-    QString ip = mUdpSocket->localAddress().toString();
-    int port = mUdpSocket->localPort();
+    QString ip = m_udpSocket->localAddress().toString();
+    int port = m_udpSocket->localPort();
     mBindingIpPort = QString("%1:%2").arg(ip).arg(port);
-    //outputMessage(QtInfoMsg, mBindingIpPort);
+    qInfo() << mBindingIpPort;
     emit bindingIpPortChanged();
 
-    connect(mUdpSocket, &QUdpSocket::readyRead, mUdpSocket, [=]() { readBytes(); });
-    connect(mUdpSocket, SAK_SIG_SOCKETERROROCCURRED, this, [=]() {
-        emit errorOccurred(mUdpSocket->errorString());
+    connect(m_udpSocket, &QUdpSocket::readyRead, m_udpSocket, [=]() { readBytes(); });
+    connect(m_udpSocket, SAK_SIG_SOCKETERROROCCURRED, this, [=]() {
+        emit errorOccurred(m_udpSocket->errorString());
     });
 
     return true;
@@ -65,14 +65,14 @@ void SAKUdpServerTool::writeBytes(const QByteArray &bytes)
 
 void SAKUdpServerTool::uninitialize()
 {
-    mUdpSocket->deleteLater();
-    mUdpSocket = nullptr;
+    m_udpSocket->deleteLater();
+    m_udpSocket = nullptr;
 }
 
 void SAKUdpServerTool::readBytes()
 {
-    while (mUdpSocket->hasPendingDatagrams()) {
-        auto len = mUdpSocket->pendingDatagramSize();
+    while (m_udpSocket->hasPendingDatagrams()) {
+        auto len = m_udpSocket->pendingDatagramSize();
         if (len == -1) {
             break;
         }
@@ -80,9 +80,9 @@ void SAKUdpServerTool::readBytes()
         QByteArray bytes(len, 0);
         QHostAddress address;
         quint16 port;
-        qint64 ret = mUdpSocket->readDatagram(bytes.data(), bytes.length(), &address, &port);
+        qint64 ret = m_udpSocket->readDatagram(bytes.data(), bytes.length(), &address, &port);
         if (ret == -1) {
-            //outputMessage(QtWarningMsg, mUdpSocket->errorString());
+            qWarning() << m_udpSocket->errorString();
             break;
         }
 
@@ -90,7 +90,7 @@ void SAKUdpServerTool::readBytes()
         QString hex = QString::fromLatin1(ba);
         QString info = QString("%1:%2").arg(address.toString()).arg(port);
         QString msg = QString("%1<-%2:%3").arg(mBindingIpPort, info, hex);
-        //outputMessage(QtInfoMsg, msg);
+        qInfo() << msg;
 
         if (!mClients.contains(info)) {
             mClients.append(info);
@@ -106,12 +106,12 @@ void SAKUdpServerTool::writeDatagram(const QByteArray &bytes,
                                      const QString &ip,
                                      quint16 port)
 {
-    qint64 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(ip), port);
+    qint64 ret = m_udpSocket->writeDatagram(bytes, QHostAddress(ip), port);
     if (ret == -1) {
-        //outputMessage(QtWarningMsg, mUdpSocket->errorString());
+        qWarning() << m_udpSocket->errorString();
     } else {
         QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
-        //outputMessage(QtInfoMsg, QString("%1<-%2").arg(mBindingIpPort, hex));
+        qInfo() << QString("%1<-%2").arg(mBindingIpPort, hex);
         emit bytesWritten(bytes, mBindingIpPort);
     }
 }
