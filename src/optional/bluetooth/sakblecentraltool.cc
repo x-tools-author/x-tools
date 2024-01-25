@@ -60,35 +60,35 @@ QString SAKBleCentralTool::characteristicName(QVariant characteristic)
 
 void SAKBleCentralTool::readCharacteristic()
 {
-    if (!(mServiceIndex >= 0 && mServiceIndex < mServices.length())) {
+    if (!(m_serviceIndex >= 0 && m_serviceIndex < m_services.length())) {
         qWarning() << "invalid service index";
         return;
     }
 
-    auto service = mServices.at(mServiceIndex);
+    auto service = m_services.at(m_serviceIndex);
     auto chs = service->characteristics();
-    if (!(mCharacteristicIndex >= 0 && mCharacteristicIndex < chs.count())) {
+    if (!(m_characteristicIndex >= 0 && m_characteristicIndex < chs.count())) {
         qWarning() << "invalid characteristic index";
         return;
     }
 
-    auto c = chs.at(mCharacteristicIndex);
+    auto c = chs.at(m_characteristicIndex);
     service->readCharacteristic(c);
 }
 
 void SAKBleCentralTool::changeNotify()
 {
-    if (!((mServiceIndex >= 0) && (mServiceIndex < mServices.length()))) {
+    if (!((m_serviceIndex >= 0) && (m_serviceIndex < m_services.length()))) {
         return;
     }
 
-    auto service = mServices.at(mServiceIndex);
+    auto service = m_services.at(m_serviceIndex);
     auto characteristics = service->characteristics();
-    if (!((mCharacteristicIndex >= 0) && (mCharacteristicIndex < characteristics.length()))) {
+    if (!((m_characteristicIndex >= 0) && (m_characteristicIndex < characteristics.length()))) {
         return;
     }
 
-    auto characteristic = characteristics.at(mCharacteristicIndex);
+    auto characteristic = characteristics.at(m_characteristicIndex);
     auto descriptors = characteristic.descriptors();
     typedef QBluetoothUuid::DescriptorType SAKDescriptorType;
     auto type = SAKDescriptorType::ClientCharacteristicConfiguration;
@@ -138,13 +138,13 @@ bool SAKBleCentralTool::isNotified(QVariant characteristic)
 
 bool SAKBleCentralTool::initialize(QString &errStr)
 {
-    if (!mBluetoothDeviceInfo.isValid()) {
+    if (!m_bluetoothDeviceInfo.isValid()) {
         errStr = "invalid ble information.";
         return false;
     }
 
-    mServices.clear();
-    mBleCentral = QLowEnergyController::createCentral(mBluetoothDeviceInfo);
+    m_services.clear();
+    mBleCentral = QLowEnergyController::createCentral(m_bluetoothDeviceInfo);
     connect(mBleCentral,
             &QLowEnergyController::serviceDiscovered,
             mBleCentral,
@@ -170,27 +170,27 @@ bool SAKBleCentralTool::initialize(QString &errStr)
 
 void SAKBleCentralTool::readBytes()
 {
-    if (!((mServiceIndex >= 0) && (mServiceIndex < mServices.length()))) {
+    if (!((m_serviceIndex >= 0) && (m_serviceIndex < m_services.length()))) {
         return;
     }
 
-    auto service = mServices.at(mServiceIndex);
+    auto service = m_services.at(m_serviceIndex);
     auto characteristics = service->characteristics();
-    auto characteristic = characteristics.at(mCharacteristicIndex);
+    auto characteristic = characteristics.at(m_characteristicIndex);
     service->readCharacteristic(characteristic);
 }
 
 void SAKBleCentralTool::writeBytes(const QByteArray &bytes)
 {
-    if (!((mServiceIndex >= 0) && (mServiceIndex < mServices.length()))) {
+    if (!((m_serviceIndex >= 0) && (m_serviceIndex < m_services.length()))) {
         qWarning() << "invalid parameters.";
         return;
     }
 
-    auto service = mServices.at(mServiceIndex);
+    auto service = m_services.at(m_serviceIndex);
     auto characteristics = service->characteristics();
-    auto characteristic = characteristics.at(mCharacteristicIndex);
-    if (mWriteModel == 0) {
+    auto characteristic = characteristics.at(m_characteristicIndex);
+    if (m_writeModel == 0) {
         if (!hasFlag(QVariant::fromValue(characteristic), QLowEnergyCharacteristic::Write)) {
             QString str = "QLowEnergyService::WriteWithResponse";
             qWarning() << "unsupported write model: " + str;
@@ -269,7 +269,7 @@ void SAKBleCentralTool::onServiceDiscoveryFinished()
                 this,
                 &SAKBleCentralTool::descriptorWritten);
 
-        mServices.append(service);
+        m_services.append(service);
         service->discoverDetails();
     }
 
@@ -311,19 +311,19 @@ void SAKBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *service,
 
 QVariant SAKBleCentralTool::info()
 {
-    return QVariant::fromValue(mBluetoothDeviceInfo);
+    return QVariant::fromValue(m_bluetoothDeviceInfo);
 }
 
 void SAKBleCentralTool::setInfo(QVariant info)
 {
-    mBluetoothDeviceInfo = info.value<QBluetoothDeviceInfo>();
+    m_bluetoothDeviceInfo = info.value<QBluetoothDeviceInfo>();
     emit infoChanged();
 }
 
 QVariantList SAKBleCentralTool::services()
 {
     QVariantList varList;
-    for (auto &var : mServices) {
+    for (auto &var : m_services) {
         varList.append(QVariant::fromValue(var));
     }
     return varList;
@@ -331,33 +331,33 @@ QVariantList SAKBleCentralTool::services()
 
 int SAKBleCentralTool::serviceIndex()
 {
-    return mServiceIndex;
+    return m_serviceIndex;
 }
 
 void SAKBleCentralTool::setServiceIndex(int index)
 {
-    mServiceIndex = index;
+    m_serviceIndex = index;
     emit serviceIndexChanged();
 }
 
 int SAKBleCentralTool::characteristicIndex()
 {
-    return mCharacteristicIndex;
+    return m_characteristicIndex;
 }
 
 void SAKBleCentralTool::setCharacteristicIndex(int index)
 {
-    mCharacteristicIndex = index;
+    m_characteristicIndex = index;
     emit characteristicIndexChanged();
 }
 
 int SAKBleCentralTool::writeModel()
 {
-    return mWriteModel;
+    return m_writeModel;
 }
 
 void SAKBleCentralTool::setWriteModel(int model)
 {
-    mWriteModel = model;
+    m_writeModel = model;
     emit writeModelChanged();
 }

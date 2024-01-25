@@ -20,12 +20,13 @@
 class SAKBleCentralTool : public SAKCommunicationTool
 {
     Q_OBJECT
+    // clang-format off
     Q_PROPERTY(QVariant info READ info WRITE setInfo NOTIFY infoChanged)
     Q_PROPERTY(QVariantList services READ services NOTIFY servicesChanged)
     Q_PROPERTY(int serviceIndex READ serviceIndex WRITE setServiceIndex NOTIFY serviceIndexChanged)
-    Q_PROPERTY(int characteristicIndex READ characteristicIndex WRITE setCharacteristicIndex NOTIFY
-                   characteristicIndexChanged)
+    Q_PROPERTY(int characteristicIndex READ characteristicIndex WRITE setCharacteristicIndex NOTIFY characteristicIndexChanged)
     Q_PROPERTY(int writeModel READ writeModel WRITE setWriteModel NOTIFY writeModelChanged)
+    // clang-format on
 public:
     SAKBleCentralTool(QObject *parent = nullptr);
     ~SAKBleCentralTool();
@@ -62,8 +63,6 @@ private:
     void onServiceObjectStateChanged(QLowEnergyService *service,
                                      QLowEnergyService::ServiceState newState);
 
-    //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    //Properties
 public:
     Q_INVOKABLE QVariant info();
     Q_INVOKABLE void setInfo(QVariant info);
@@ -84,11 +83,11 @@ signals:
     void writeModelChanged();
 
 private:
-    QBluetoothDeviceInfo mBluetoothDeviceInfo;
-    QVector<QLowEnergyService *> mServices;
-    int mServiceIndex{-1};
-    int mCharacteristicIndex{-1};
-    int mWriteModel;
+    QBluetoothDeviceInfo m_bluetoothDeviceInfo;
+    QVector<QLowEnergyService *> m_services;
+    int m_serviceIndex{-1};
+    int m_characteristicIndex{-1};
+    int m_writeModel;
 };
 
 #endif // EDBLECENTRAL_HPP
