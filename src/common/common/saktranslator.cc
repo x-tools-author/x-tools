@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -17,8 +17,8 @@
 SAKTranslator::SAKTranslator(QObject* parent)
     : QObject{parent}
 {
-    mFlagNameMap.insert("zh_CN", "简体中文");
-    mFlagNameMap.insert("en", "English");
+    m_flagNameMap.insert("zh_CN", "简体中文");
+    m_flagNameMap.insert("en", "English");
 #if 0
   mFlagNameMap.insert("zh_TW", "繁體中文");
   mFlagNameMap.insert("ar", "العربية");
@@ -56,30 +56,28 @@ SAKTranslator* SAKTranslator::instance()
 
 QStringList SAKTranslator::languanges()
 {
-    return mFlagNameMap.values();
+    return m_flagNameMap.values();
 }
 
 void SAKTranslator::setupLanguage(const QString& language)
 {
-    QCoreApplication::removeTranslator(&mTranslator);
+    QCoreApplication::removeTranslator(&m_translator);
 
-    QString key = mFlagNameMap.key(language);
+    QString key = m_flagNameMap.key(language);
     if (language.isEmpty()) {
-        qWarning() << "language is not specified,"
-                                       " system language will be used";
+        qWarning() << "language is not specified, system language will be used";
         key = QLocale::system().name();
     }
 
-    if (key.isEmpty()) {
-        qWarning() << "unsupported language, "
-                                       "english will be used";
+    if (key.isEmpty() || !m_flagNameMap.contains(key)) {
+        qWarning() << "unsupported language, english will be used";
         key = "en";
     }
 
     QString fileName = ":/resources/translations/sak_" + key + ".qm";
-    if (mTranslator.load(fileName)) {
-        QCoreApplication::installTranslator(&mTranslator);
-        qInfo() << mFlagNameMap.value(key) << " has been setup!";
+    if (m_translator.load(fileName)) {
+        QCoreApplication::installTranslator(&m_translator);
+        qInfo() << m_flagNameMap.value(key) << " has been setup!";
     } else {
         qWarning() << "Load file failed: " << fileName;
     }

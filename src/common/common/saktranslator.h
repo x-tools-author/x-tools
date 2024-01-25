@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -30,9 +30,8 @@ public:
     void setupLanguage(const QString &language);
 
 private:
-    const QLoggingCategory mLoggingCategory{"sak.translator"};
-    QMap<QString, QString> mFlagNameMap;
-    QTranslator mTranslator;
+    QMap<QString, QString> m_flagNameMap;
+    QTranslator m_translator;
 
 signals:
     void languageChanged();
