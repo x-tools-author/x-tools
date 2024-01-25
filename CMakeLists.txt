@@ -154,7 +154,9 @@ endif()
 
 # QtSwissArmyKnife
 include_directories(src)
-include_directories(3rd/qt/flowlayout)
+if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
+  include_directories(3rd/qt/flowlayout)
+endif()
 file(GLOB APP_SOURCES "src/*.h" "src/*.cc" "src/*.ui" ".cmake/*.cmake")
 
 option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
