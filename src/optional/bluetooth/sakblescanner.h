@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -19,10 +19,11 @@
 class SAKBleScanner : public QThread
 {
     Q_OBJECT
+    // clang-format off
     Q_PROPERTY(QVariantList deviceInfoList READ devicesInfoList NOTIFY devicesInfoListChanged)
-    Q_PROPERTY(int timeoutInterval READ timeoutInterval WRITE setTimeoutInterval NOTIFY
-                   timeoutIntervalChanged)
+    Q_PROPERTY(int timeoutInterval READ timeoutInterval WRITE setTimeoutInterval NOTIFY timeoutIntervalChanged)
     Q_PROPERTY(QString namefiltter READ namefiltter WRITE setNameFiltter NOTIFY filtterNameChanged)
+    // clang-format on
 public:
     explicit SAKBleScanner(QObject *parent = nullptr);
     ~SAKBleScanner();
@@ -43,17 +44,14 @@ protected:
     virtual void run() override;
 
 private:
-    QBluetoothDeviceDiscoveryAgent *mDiscover;
-    QLoggingCategory mLoggingCategory{"sak.blescanner"};
-    QMutex mDeviceInfoListMutex;
+    QBluetoothDeviceDiscoveryAgent *m_discover;
+    QMutex m_deviceInfoListMutex;
 
 private:
     void onDiscoveryFinished();
     void onDiscoveryErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error);
     void onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo &info);
 
-    //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    //Properties
 public:
     QVariantList devicesInfoList();
     int timeoutInterval();
@@ -68,9 +66,9 @@ signals:
     void filtterNameChanged();
 
 private:
-    QVector<QBluetoothDeviceInfo> mDeviceInfoList;
-    int mTimeoutInterval{120};
-    QString mNameFiltter{""};
+    QVector<QBluetoothDeviceInfo> m_deviceInfoList;
+    int m_timeoutInterval{120};
+    QString m_nameFiltter{""};
 };
 
 #endif // SAKBLESCANNER_H

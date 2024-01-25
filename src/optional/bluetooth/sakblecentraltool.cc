@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -38,7 +38,6 @@ QVariantList SAKBleCentralTool::characteristics(QVariant service)
     if (service.canConvert<QLowEnergyService *>()) {
         return list;
     }
-#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
     auto cookedService = service.value<QLowEnergyService *>();
     if (cookedService) {
         auto characteristics = cookedService->characteristics();
@@ -46,20 +45,15 @@ QVariantList SAKBleCentralTool::characteristics(QVariant service)
             list.append(QVariant::fromValue(characteristic));
         }
     }
-#endif
     return list;
 }
 
 QString SAKBleCentralTool::characteristicName(QVariant characteristic)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
     if (characteristic.canConvert<QLowEnergyCharacteristic>()) {
         auto c = characteristic.value<QLowEnergyCharacteristic>();
         return c.name();
     }
-#else
-    Q_UNUSED(characteristic)
-#endif
 
     return "Invalid";
 }
@@ -149,7 +143,6 @@ bool SAKBleCentralTool::initialize(QString &errStr)
         return false;
     }
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
     mServices.clear();
     mBleCentral = QLowEnergyController::createCentral(mBluetoothDeviceInfo);
     connect(mBleCentral,
@@ -160,11 +153,7 @@ bool SAKBleCentralTool::initialize(QString &errStr)
         onServiceDiscoveryFinished();
     });
     connect(mBleCentral,
-#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
             &QLowEnergyController::errorOccurred,
-#else
-            QOverload<BLE_ERR_SIG>::of(&QLowEnergyController::error),
-#endif
             mBleCentral,
             [=](QLowEnergyController::Error err) { onBleCentralErrorOccuured(err); });
     connect(mBleCentral, &QLowEnergyController::connected, mBleCentral, [=]() {
@@ -177,9 +166,6 @@ bool SAKBleCentralTool::initialize(QString &errStr)
     mBleCentral->connectToDevice();
     emit serviceDiscoveryStarted();
     return true;
-#else
-    return false;
-#endif
 }
 
 void SAKBleCentralTool::readBytes()
@@ -317,11 +303,7 @@ void SAKBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *service,
                                                     QLowEnergyService::ServiceState newState)
 {
     Q_UNUSED(service);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)
     auto state = QLowEnergyService::RemoteServiceDiscovered;
-#else
-    auto state = QLowEnergyService::ServiceDiscovered;
-#endif
     if (newState == state) {
         qInfo() << "Remote service discovered:" << newState;
     }
