@@ -37,6 +37,7 @@ private:
 
 public:
     static SAKSettings *instance();
+    Q_INVOKABLE void openSettingsFileDir();
 
     QString settingsPath();
 

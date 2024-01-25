@@ -7,6 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include <QCoreApplication>
+#include <QDesktopServices>
 #include <QStandardPaths>
 
 #include "sakdatastructure.h"
@@ -33,6 +34,11 @@ SAKSettings* SAKSettings::instance()
         settings = new SAKSettings(qApp);
     }
     return settings;
+}
+
+void SAKSettings::openSettingsFileDir()
+{
+    QDesktopServices::openUrl(settingsPath());
 }
 
 QString SAKSettings::settingsPath()
