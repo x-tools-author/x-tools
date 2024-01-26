@@ -7,7 +7,7 @@ function(sak_auto_execute_windeployqt target)
       TARGET ${target}
       POST_BUILD
       COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> --qmldir
-              ${CMAKE_CURRENT_SOURCE_DIR}/qml DEPENDS ${depends_dll}
+              "${CMAKE_CURRENT_SOURCE_DIR}/qml" DEPENDS ${depends_dll}
       COMMENT "Running windeployqt..."
       VERBATIM)
   endif()
@@ -67,15 +67,15 @@ function(sak_auto_execute_linuxdeployqt target)
   add_custom_command(
     TARGET ${target}
     POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/platform/unix/QtSwissArmyKnife
-            ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/platform/unix/QtSwissArmyKnife"
+            "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${target}>
-            ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin
+            "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin"
     COMMAND
       ${SAK_BIN_LINUXDEPLOYQT}
       "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/share/applications/QtSwissArmyKnife.desktop"
-      -verbose=0 -appimage -qmake=${SAK_QMAKE}
+      "-verbose=0" "-appimage" "-qmake=${SAK_QMAKE}"
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     COMMENT "Running creating appimage file..."
     VERBATIM)
@@ -85,7 +85,7 @@ function(sak_auto_execute_linuxdeployqt target)
       TARGET ${target}
       POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:glog::glog>
-              ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/$<TARGET_FILE_NAME:glog::glog>
+              "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/$<TARGET_FILE_NAME:glog::glog>"
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
       COMMENT "Copy glog to QtSwissArmyKnifeAppDir/lib..."
       VERBATIM)
@@ -94,8 +94,8 @@ function(sak_auto_execute_linuxdeployqt target)
       POST_BUILD
       COMMAND
         ${CMAKE_COMMAND} -E copy_if_different
-        ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/$<TARGET_FILE_NAME:glog::glog>
-        ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/libglog.so.1
+        "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/$<TARGET_FILE_NAME:glog::glog>"
+        "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/libglog.so.1"
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
       COMMENT "Copy glog and rename"
       VERBATIM)

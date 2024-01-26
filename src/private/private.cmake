@@ -4,7 +4,7 @@ file(
   GLOB dirs
   LIST_DIRECTORIES true
   "${CMAKE_SOURCE_DIR}/src/private/*")
-
+list(REMOVE_ITEM dirs "common")
 set(SAK_HAS_PRIVATE_MODULE false)
 
 foreach(dir ${dirs})
@@ -23,14 +23,16 @@ endif()
 foreach(dir ${dirs})
   if(IS_DIRECTORY ${dir})
     file(RELATIVE_PATH cooked_dir ${CMAKE_SOURCE_DIR} ${dir})
-    add_subdirectory(${cooked_dir})
+    if(NOT ${cooked_dir} STREQUAL "src/private/common")
+      add_subdirectory(${cooked_dir})
+    endif()
   endif()
 endforeach()
 
 add_custom_target(
   PullPrivateModules
-  COMMAND git clone https://gitee.com/qsak/data-flow-workstation.git ./dfw
   COMMAND git clone https://gitee.com/qsak/fluent2.git ./fluent2
   COMMAND git clone https://gitee.com/qsak/easydebug.git ./easydebug
+  COMMAND git clone https://gitee.com/qsak/dataflowstudio.git ./dataflowstudio
   SOURCES ${CMAKE_SOURCE_DIR}/src/private/private.cmake
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
