@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sak.h"
-#include "sakapplication.h"
+#include "application.h"
 
 int main(const int argc, char *argv[])
 {
@@ -16,9 +16,9 @@ int main(const int argc, char *argv[])
     appName += QObject::tr("(Community)");
 #endif
     sakDoSomethingBeforeAppCreated(argv, appName);
-
-    SAKApplication app(argc, argv);
-    int ret = SAKApplication::exec();
+    
+    Application app(argc, argv);
+    int ret = Application::exec();
 
     sakDoSomethingAfterAppExited();
 

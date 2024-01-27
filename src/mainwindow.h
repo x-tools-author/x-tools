@@ -1,13 +1,13 @@
-﻿/***************************************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+/***************************************************************************************************
+ * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKMAINWINDOW_HH
-#define SAKMAINWINDOW_HH
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <QAction>
 #include <QButtonGroup>
@@ -24,15 +24,15 @@
 #include <QTranslator>
 
 namespace Ui {
-class SAKMainWindow;
+class MainWindow;
 }
 
-class SAKMainWindow : public QMainWindow
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit SAKMainWindow(QWidget* parent = Q_NULLPTR);
-    ~SAKMainWindow() override;
+    explicit MainWindow(QWidget* parent = Q_NULLPTR);
+    ~MainWindow() override;
 
 #ifdef Q_OS_WIN
 protected:
@@ -55,7 +55,7 @@ private:
 
 private:
     const QLoggingCategory mLoggingCategory{"sak.mainwindow"};
-    Ui::SAKMainWindow* ui;
+    Ui::MainWindow* ui;
 
 private:
     void initMenuBar();

@@ -1,17 +1,17 @@
 ﻿/***************************************************************************************************
- * Copyright 2022-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2022-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saksystemtrayicon.h"
+#include "systemtrayicon.h"
 #include <QAction>
 #include <QDir>
 #include <QMenu>
 
-SAKSystemTrayIcon::SAKSystemTrayIcon(QObject *parent)
+SystemTrayIcon::SystemTrayIcon(QObject *parent)
     : QSystemTrayIcon(parent)
 {
     setIcon(QIcon(":/resources/images/SAKLogo.png"));
@@ -24,7 +24,7 @@ SAKSystemTrayIcon::SAKSystemTrayIcon(QObject *parent)
     setContextMenu(menu);
 }
 
-SAKSystemTrayIcon::~SAKSystemTrayIcon()
+SystemTrayIcon::~SystemTrayIcon()
 {
     this->hide();
     QMenu *menu = contextMenu();

@@ -6,7 +6,7 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakapplication.h"
+#include "application.h"
 
 #include <QFile>
 #include <QPushButton>
@@ -17,15 +17,15 @@
 #include <QTranslator>
 
 #include "sakdatastructure.h"
-#include "sakmainwindow.h"
+#include "mainwindow.h"
 #include "saksettings.h"
 #include "saktranslator.h"
 
 #ifdef Q_OS_WIN
-#include "saksystemtrayicon.h"
+#include "systemtrayicon.h"
 #endif
 
-SAKApplication::SAKApplication(int argc, char** argv)
+Application::Application(int argc, char** argv)
     : QApplication(argc, argv)
 {
     // It can avoid app crash in this way to show a splashScreen. If you create a QSplashScreen and
@@ -57,22 +57,22 @@ SAKApplication::SAKApplication(int argc, char** argv)
     QString language = SAKSettings::instance()->language();
     SAKTranslator::instance()->setupLanguage(language);
     showSplashScreenMessage(tr("Initializing main window..."));
-
-    auto mainWindow = new SAKMainWindow();
+    
+    auto mainWindow = new MainWindow();
     m_splashScreen->finish(mainWindow);
     QObject::connect(this,
-                     &SAKApplication::activeMainWindow,
+                     &Application::activeMainWindow,
                      mainWindow,
-                     &SAKMainWindow::activateWindow);
+                     &MainWindow::activateWindow);
     mainWindow->show();
 
 #ifdef Q_OS_WIN
     // Setup system tray icon.
-    auto systemTrayIcon = new SAKSystemTrayIcon(this);
-    QObject::connect(systemTrayIcon, &SAKSystemTrayIcon::invokeExit, this, [=]() {
+    auto systemTrayIcon = new SystemTrayIcon(this);
+    QObject::connect(systemTrayIcon, &SystemTrayIcon::invokeExit, this, [=]() {
         mainWindow->close();
     });
-    QObject::connect(systemTrayIcon, &SAKSystemTrayIcon::invokeShowMainWindow, this, [=]() {
+    QObject::connect(systemTrayIcon, &SystemTrayIcon::invokeShowMainWindow, this, [=]() {
         mainWindow->show();
     });
     systemTrayIcon->show();
@@ -100,12 +100,12 @@ SAKApplication::SAKApplication(int argc, char** argv)
     qInfo() << qPrintable(msg);
 }
 
-void SAKApplication::showSplashScreenMessage(const QString &msg)
+void Application::showSplashScreenMessage(const QString &msg)
 {
     m_splashScreen->showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
 }
 
-void SAKApplication::setupPalette(const QString& fileName)
+void Application::setupPalette(const QString& fileName)
 {
     QFile file(fileName);
     if (file.open(QFile::ReadOnly)) {

@@ -1,12 +1,13 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source 
  * code directory.
  **************************************************************************************************/
-#include "sakmainwindow.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 #include <QAction>
 #include <QActionGroup>
@@ -55,8 +56,6 @@
 #include "SAKPrivateModbusServer.h"
 #endif
 
-#include "ui_sakmainwindow.h"
-
 #define SAK_QT_CONF (qApp->applicationDirPath() + "/qt.conf")
 
 QString palettePath()
@@ -69,9 +68,9 @@ QString palettePath()
     return logPath;
 }
 
-SAKMainWindow::SAKMainWindow(QWidget* parent)
+MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
-    , ui(new Ui::SAKMainWindow)
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -116,12 +115,12 @@ SAKMainWindow::SAKMainWindow(QWidget* parent)
     initWindowMenu();
 }
 
-SAKMainWindow::~SAKMainWindow()
+MainWindow::~MainWindow()
 {
     delete ui;
 }
 
-void SAKMainWindow::initMenuBar()
+void MainWindow::initMenuBar()
 {
     menuBar()->setPalette(qApp->palette());
 
@@ -135,7 +134,7 @@ void SAKMainWindow::initMenuBar()
 }
 
 #ifdef Q_OS_WIN
-void SAKMainWindow::closeEvent(QCloseEvent* event)
+void MainWindow::closeEvent(QCloseEvent* event)
 {
     auto key = mSettingsKey.exitToSystemTray;
     bool ignore = SAKSettings::instance()->value(key).toBool();
@@ -146,7 +145,7 @@ void SAKMainWindow::closeEvent(QCloseEvent* event)
 }
 #endif
 
-void SAKMainWindow::initFileMenu()
+void MainWindow::initFileMenu()
 {
     QMenu* fileMenu = new QMenu(tr("&File"), this);
     menuBar()->addMenu(fileMenu);
@@ -196,11 +195,11 @@ void SAKMainWindow::initFileMenu()
     fileMenu->addSeparator();
     QAction* importAction = new QAction(tr("Import Palette"), fileMenu);
     fileMenu->addAction(importAction);
-    connect(importAction, &QAction::triggered, this, &SAKMainWindow::onImportActionTriggered);
+    connect(importAction, &QAction::triggered, this, &MainWindow::onImportActionTriggered);
 
     QAction* exportAction = new QAction(tr("Export Palette"), fileMenu);
     fileMenu->addAction(exportAction);
-    connect(exportAction, &QAction::triggered, this, &SAKMainWindow::onExportActionTriggered);
+    connect(exportAction, &QAction::triggered, this, &MainWindow::onExportActionTriggered);
 
     fileMenu->addSeparator();
     QAction* exitAction = new QAction(tr("Exit"), this);
@@ -208,7 +207,7 @@ void SAKMainWindow::initFileMenu()
     connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
 }
 
-void SAKMainWindow::initToolMenu()
+void MainWindow::initToolMenu()
 {
     QMenu* toolMenu = new QMenu(tr("&Tools"));
     menuBar()->addMenu(toolMenu);
@@ -233,7 +232,7 @@ void SAKMainWindow::initToolMenu()
     }
 }
 
-void SAKMainWindow::initOptionMenu()
+void MainWindow::initOptionMenu()
 {
     QMenu* optionMenu = new QMenu(tr("&Options"));
     menuBar()->addMenu(optionMenu);
@@ -249,7 +248,7 @@ void SAKMainWindow::initOptionMenu()
     initOptionMenuPalette(optionMenu);
 }
 
-void SAKMainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
+void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
 {
     // Initializing application style menu.
     static QActionGroup gActionGroup(this);
@@ -291,7 +290,7 @@ void SAKMainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
     }
 }
 
-void SAKMainWindow::initOptionMenuMainWindowMenu(QMenu* optionMenu)
+void MainWindow::initOptionMenuMainWindowMenu(QMenu* optionMenu)
 {
     if (!optionMenu) {
         return;
@@ -315,14 +314,14 @@ void SAKMainWindow::initOptionMenuMainWindowMenu(QMenu* optionMenu)
     });
 }
 
-void SAKMainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
+void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
 {
     QMenu* menu = new QMenu(tr("Settings"), this);
     optionMenu->addMenu(menu);
 
     QAction* action = new QAction(tr("Clear Configuration"), this);
     menu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKMainWindow::clearConfiguration);
+    connect(action, &QAction::triggered, this, &MainWindow::clearConfiguration);
     action = new QAction(tr("Open configuration floder"), this);
     menu->addAction(action);
     connect(action, &QAction::triggered, this, [=]() {
@@ -334,7 +333,7 @@ void SAKMainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
 }
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
+void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
 {
     QMenu* menu = new QMenu(tr("HDPI Policy"));
     QActionGroup* ag = new QActionGroup(this);
@@ -421,7 +420,7 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
 }
 #endif
 
-void SAKMainWindow::initOptionMenuPalette(QMenu* optionMenu)
+void MainWindow::initOptionMenuPalette(QMenu* optionMenu)
 {
     static QActionGroup ag(this);
     QAction* systemAction = new QAction(tr("System"), this);
@@ -496,12 +495,12 @@ void SAKMainWindow::initOptionMenuPalette(QMenu* optionMenu)
     }
 }
 
-void SAKMainWindow::initWindowMenu()
+void MainWindow::initWindowMenu()
 {
     // Nothing to do.
 }
 
-void SAKMainWindow::initLanguageMenu()
+void MainWindow::initLanguageMenu()
 {
     QMenu* languageMenu = new QMenu(tr("&Languages"), this);
 #if 0
@@ -530,7 +529,7 @@ void SAKMainWindow::initLanguageMenu()
     }
 }
 
-void SAKMainWindow::initHelpMenu()
+void MainWindow::initHelpMenu()
 {
     QMenu* helpMenu = new QMenu(tr("&Help"), this);
     menuBar()->addMenu(helpMenu);
@@ -542,7 +541,7 @@ void SAKMainWindow::initHelpMenu()
 
     QAction* aboutAction = new QAction(tr("About QtSwissArmyKnife"), this);
     helpMenu->addAction(aboutAction);
-    connect(aboutAction, &QAction::triggered, this, &SAKMainWindow::aboutSoftware);
+    connect(aboutAction, &QAction::triggered, this, &MainWindow::aboutSoftware);
 #ifdef Q_OS_WIN
     QString tips = tr("Buy from Microsoft App Store");
     QIcon buy(":/resources/icon/IconBuy.svg");
@@ -574,18 +573,18 @@ void SAKMainWindow::initHelpMenu()
 
     QAction* releaseHistoryAction = new QAction(tr("Release History"), this);
     helpMenu->addAction(releaseHistoryAction);
-    connect(releaseHistoryAction, &QAction::triggered, this, &SAKMainWindow::showHistory);
+    connect(releaseHistoryAction, &QAction::triggered, this, &MainWindow::showHistory);
 
     helpMenu->addSeparator();
     QAction* qrCodeAction = new QAction(tr("QR Code"), this);
     helpMenu->addAction(qrCodeAction);
-    connect(qrCodeAction, &QAction::triggered, this, &SAKMainWindow::showQrCode);
+    connect(qrCodeAction, &QAction::triggered, this, &MainWindow::showQrCode);
 #ifndef SAK_IMPORT_MODULE_PRIVATE
     helpMenu->addAction(tr("Donate"), this, &SAKMainWindow::showDonation);
 #endif
 }
 
-void SAKMainWindow::initLinksMenu()
+void MainWindow::initLinksMenu()
 {
     QMenu* linksMenu = new QMenu(tr("&Links"), this);
     menuBar()->addMenu(linksMenu);
@@ -627,7 +626,7 @@ void SAKMainWindow::initLinksMenu()
     }
 }
 
-void SAKMainWindow::initDemoMenu()
+void MainWindow::initDemoMenu()
 {
     QMenu* demoMenu = new QMenu(tr("&Demo"), this);
     menuBar()->addMenu(demoMenu);
@@ -655,7 +654,7 @@ void SAKMainWindow::initDemoMenu()
     }
 }
 
-void SAKMainWindow::initNav()
+void MainWindow::initNav()
 {
     QToolBar* tb = new QToolBar(this);
     addToolBar(Qt::LeftToolBarArea, tb);
@@ -758,7 +757,7 @@ void SAKMainWindow::initNav()
 #endif
 }
 
-void SAKMainWindow::initNav(const NavContext& ctx)
+void MainWindow::initNav(const NavContext& ctx)
 {
     bool isTextBesideIcon = SAKSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
@@ -793,13 +792,13 @@ void SAKMainWindow::initNav(const NavContext& ctx)
     }
 }
 
-void SAKMainWindow::initStatusBar()
+void MainWindow::initStatusBar()
 {
     ui->statusbar->showMessage("Hello world", 10 * 1000);
     ui->statusbar->hide();
 }
 
-void SAKMainWindow::aboutSoftware()
+void MainWindow::aboutSoftware()
 {
     struct Info
     {
@@ -860,13 +859,13 @@ void SAKMainWindow::aboutSoftware()
     dialog.exec();
 }
 
-void SAKMainWindow::clearConfiguration()
+void MainWindow::clearConfiguration()
 {
     SAKSettings::instance()->setClearSettings(true);
     rebootRequestion();
 }
 
-void SAKMainWindow::rebootRequestion()
+void MainWindow::rebootRequestion()
 {
     int ret = QMessageBox::information(this,
                                        tr("Reboot application to effective"),
@@ -880,7 +879,7 @@ void SAKMainWindow::rebootRequestion()
     }
 }
 
-void SAKMainWindow::showHistory()
+void MainWindow::showHistory()
 {
     QDialog dialog;
     dialog.setModal(true);
@@ -901,7 +900,7 @@ void SAKMainWindow::showHistory()
     dialog.exec();
 }
 
-void SAKMainWindow::showQrCode()
+void MainWindow::showQrCode()
 {
     QDialog dialog;
     dialog.setWindowTitle(tr("QR Code"));
@@ -931,7 +930,7 @@ void SAKMainWindow::showQrCode()
     dialog.exec();
 }
 
-void SAKMainWindow::showDonation()
+void MainWindow::showDonation()
 {
     QDialog dialog(this);
     dialog.setModal(true);
@@ -946,7 +945,7 @@ void SAKMainWindow::showDonation()
     dialog.exec();
 }
 
-void SAKMainWindow::createQtConf()
+void MainWindow::createQtConf()
 {
     QString fileName = SAK_QT_CONF;
     QFile file(fileName);
@@ -960,7 +959,7 @@ void SAKMainWindow::createQtConf()
     }
 }
 
-void SAKMainWindow::onImportActionTriggered()
+void MainWindow::onImportActionTriggered()
 {
     auto str = QFileDialog::getOpenFileName(this, tr("Save Palette"), "Palete", tr("All (*)"));
     if (str.isEmpty()) {
@@ -997,7 +996,7 @@ void SAKMainWindow::onImportActionTriggered()
     }
 }
 
-void SAKMainWindow::onExportActionTriggered()
+void MainWindow::onExportActionTriggered()
 {
     auto str = QFileDialog::getSaveFileName(this, tr("Save Palette"), "Palete", tr("All (*)"));
     if (str.isEmpty()) {
