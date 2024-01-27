@@ -12,7 +12,7 @@
 #include <QApplication>
 
 #include "sak.h"
-#include "sakcommonmainwindow.h"
+#include "sakmainwindow.h"
 
 template<typename T>
 int sakExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
@@ -21,7 +21,7 @@ int sakExec(int argc, char* argv[], const QString& appName, bool usingCommonMain
 
     QApplication app(argc, argv);
     if (usingCommonMainWindow) {
-        SAKCommonMainWindow* mainWindow = new SAKCommonMainWindow();
+        SAKMainWindow* mainWindow = new SAKMainWindow();
         T* centralWidget = new T(mainWindow);
         mainWindow->setWindowTitle(appName);
         mainWindow->setCentralWidget(centralWidget);

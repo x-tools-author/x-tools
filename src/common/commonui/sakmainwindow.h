@@ -1,13 +1,13 @@
-﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+/***************************************************************************************************
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKCOMMONMAINWINDOW_H
-#define SAKCOMMONMAINWINDOW_H
+#ifndef SAKMAINWINDOW_H
+#define SAKMAINWINDOW_H
 
 #include <QActionGroup>
 #include <QApplication>
@@ -16,15 +16,12 @@
 #include <QMenu>
 #include <QStyleFactory>
 
-#include "sakinterface.h"
-#include "saksettings.h"
-
-class SAKCommonMainWindow : public QMainWindow
+class SAKMainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    SAKCommonMainWindow(QWidget* parent = Q_NULLPTR);
-    ~SAKCommonMainWindow();
+    SAKMainWindow(QWidget* parent = Q_NULLPTR);
+    ~SAKMainWindow();
 
 protected:
     QMenu* m_fileMenu;
@@ -59,4 +56,4 @@ private:
     QString getQtConfFileName();
 };
 
-#endif // SAKCOMMONMAINWINDOW_H
+#endif // SAKMAINWINDOW_H

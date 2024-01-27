@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -29,7 +29,7 @@
 #include "saksettings.h"
 #include "saktranslator.h"
 
-SAKCommonMainWindow::SAKCommonMainWindow(QWidget* parent)
+SAKMainWindow::SAKMainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     m_appStyleActionGroup = new QActionGroup(this);
@@ -39,14 +39,14 @@ SAKCommonMainWindow::SAKCommonMainWindow(QWidget* parent)
     init();
 }
 
-SAKCommonMainWindow::~SAKCommonMainWindow() {}
+SAKMainWindow::~SAKMainWindow() {}
 
-void SAKCommonMainWindow::init()
+void SAKMainWindow::init()
 {
     initMenu();
 }
 
-void SAKCommonMainWindow::initMenu()
+void SAKMainWindow::initMenu()
 {
     initMenuFile();
     initMenuOption();
@@ -54,14 +54,14 @@ void SAKCommonMainWindow::initMenu()
     initMenuHelp();
 }
 
-void SAKCommonMainWindow::initMenuFile()
+void SAKMainWindow::initMenuFile()
 {
     QMenuBar* menu_bar = menuBar();
     m_fileMenu = menu_bar->addMenu(tr("&File"));
-    m_fileMenu->addAction(tr("&Exit"), this, &SAKCommonMainWindow::close);
+    m_fileMenu->addAction(tr("&Exit"), this, &SAKMainWindow::close);
 }
 
-void SAKCommonMainWindow::initMenuOption()
+void SAKMainWindow::initMenuOption()
 {
     m_optionMenu = new QMenu(tr("&Options"));
     menuBar()->addMenu(m_optionMenu);
@@ -71,7 +71,7 @@ void SAKCommonMainWindow::initMenuOption()
     initOptionMenuHdpiPolicy();
 }
 
-void SAKCommonMainWindow::initMenuLanguage()
+void SAKMainWindow::initMenuLanguage()
 {
     m_languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(m_languageMenu);
@@ -95,26 +95,26 @@ void SAKCommonMainWindow::initMenuLanguage()
     }
 }
 
-void SAKCommonMainWindow::initMenuHelp()
+void SAKMainWindow::initMenuHelp()
 {
     QMenuBar* menu_bar = menuBar();
     m_helpMenu = menu_bar->addMenu(tr("&Help"));
     m_helpMenu->addAction(QIcon(":/resources/images/GitHub.png"),
                           "Github",
                           this,
-                          &SAKCommonMainWindow::onGithubActionTriggered);
+                          &SAKMainWindow::onGithubActionTriggered);
     m_helpMenu->addAction(QIcon(":/resources/images/Gitee.png"),
                           "Gitee",
                           this,
-                          &SAKCommonMainWindow::onGiteeActionTriggered);
+                          &SAKMainWindow::onGiteeActionTriggered);
     m_helpMenu->addAction(QIcon(":/resources/icon/IconQQGray.svg"),
                           tr("User QQ Group"),
                           this,
-                          &SAKCommonMainWindow::onUserQqGroupTriggerd);
-    m_helpMenu->addAction(tr("&About"), this, &SAKCommonMainWindow::onAboutActionTriggered);
+                          &SAKMainWindow::onUserQqGroupTriggerd);
+    m_helpMenu->addAction(tr("&About"), this, &SAKMainWindow::onAboutActionTriggered);
 }
 
-void SAKCommonMainWindow::initOptionMenuAppStyleMenu()
+void SAKMainWindow::initOptionMenuAppStyleMenu()
 {
     QList<QAction*> actions = m_appStyleActionGroup->actions();
     for (auto action : actions) {
@@ -150,7 +150,7 @@ void SAKCommonMainWindow::initOptionMenuAppStyleMenu()
     appStyleMenu->addActions(m_appStyleActionGroup->actions());
 }
 
-void SAKCommonMainWindow::initOptionMenuSettingsMenu()
+void SAKMainWindow::initOptionMenuSettingsMenu()
 {
     QMenu* menu = new QMenu(tr("Settings"), this);
     m_optionMenu->addMenu(menu);
@@ -171,7 +171,7 @@ void SAKCommonMainWindow::initOptionMenuSettingsMenu()
     });
 }
 
-void SAKCommonMainWindow::initOptionMenuHdpiPolicy()
+void SAKMainWindow::initOptionMenuHdpiPolicy()
 {
     QMenu* menu = new QMenu(tr("HDPI Policy"));
     QActionGroup* action_group = new QActionGroup(this);
@@ -221,7 +221,7 @@ void SAKCommonMainWindow::initOptionMenuHdpiPolicy()
 #endif
 }
 
-void SAKCommonMainWindow::onHdpiPolicyActionTriggered(int policy)
+void SAKMainWindow::onHdpiPolicyActionTriggered(int policy)
 {
     if (QFile::remove(getQtConfFileName())) {
         qInfo() << getQtConfFileName() << "was removed!";
@@ -233,17 +233,17 @@ void SAKCommonMainWindow::onHdpiPolicyActionTriggered(int policy)
     tryToReboot();
 }
 
-void SAKCommonMainWindow::onGithubActionTriggered()
+void SAKMainWindow::onGithubActionTriggered()
 {
     QDesktopServices::openUrl(QUrl(SAK_GITHUB_REPOSITORY_URL));
 }
 
-void SAKCommonMainWindow::onGiteeActionTriggered()
+void SAKMainWindow::onGiteeActionTriggered()
 {
     QDesktopServices::openUrl(QUrl(SAK_GITEE_REPOSITORY_URL));
 }
 
-void SAKCommonMainWindow::onUserQqGroupTriggerd()
+void SAKMainWindow::onUserQqGroupTriggerd()
 {
     QPixmap pix;
     if (!pix.load(":/resources/images/QSAKQQ.jpg")) {
@@ -261,7 +261,7 @@ void SAKCommonMainWindow::onUserQqGroupTriggerd()
     dialog.exec();
 }
 
-void SAKCommonMainWindow::onAboutActionTriggered()
+void SAKMainWindow::onAboutActionTriggered()
 {
     QString year = SAKInterface::buildDateTime("yyyy");
     QString info;
@@ -279,7 +279,7 @@ void SAKCommonMainWindow::onAboutActionTriggered()
     QMessageBox::about(this, tr("About"), info);
 }
 
-void SAKCommonMainWindow::tryToReboot()
+void SAKMainWindow::tryToReboot()
 {
     int ret = QMessageBox::information(this,
                                        tr("Reboot application to effective"),
@@ -293,7 +293,7 @@ void SAKCommonMainWindow::tryToReboot()
     }
 }
 
-void SAKCommonMainWindow::createQtConf()
+void SAKMainWindow::createQtConf()
 {
     QString fileName = getQtConfFileName();
     QFile file(fileName);
@@ -307,7 +307,7 @@ void SAKCommonMainWindow::createQtConf()
     }
 }
 
-QString SAKCommonMainWindow::getQtConfFileName()
+QString SAKMainWindow::getQtConfFileName()
 {
     return qApp->applicationDirPath() + "/qt.conf";
 }
