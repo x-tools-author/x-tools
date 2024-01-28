@@ -134,33 +134,28 @@
     <name>ClientController</name>
     <message>
         <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="38"/>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="86"/>
+        <source>Client settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="42"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="96"/>
         <source>Address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="51"/>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="97"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="55"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="107"/>
         <source>Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="63"/>
-        <source>Binding</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="74"/>
-        <source>Specify client information</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="82"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="92"/>
         <source>Server settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="107"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="80"/>
         <source>Message</source>
         <translation></translation>
     </message>
@@ -198,6 +193,14 @@
         <location filename="../../build/vscode/sak/EasyDebug/qml/QtQuick/Dialogs/quickimpl/qml/ColorInputs.qml" line="59"/>
         <source>HSL</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>CommunicationController</name>
+    <message>
+        <location filename="../../src/private/easydebug/qml/controller/CommunicationController.qml" line="26"/>
+        <source>Error Occurred</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -564,17 +567,17 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/private/easydebug/qml/MainWindow.qml" line="18"/>
+        <location filename="../../src/private/easydebug/qml/MainWindow.qml" line="17"/>
         <source>EasyDebug</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/MainWindow.qml" line="22"/>
+        <location filename="../../src/private/easydebug/qml/MainWindow.qml" line="21"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/MainWindow.qml" line="23"/>
+        <location filename="../../src/private/easydebug/qml/MainWindow.qml" line="22"/>
         <source>None</source>
         <translation></translation>
     </message>
@@ -1222,12 +1225,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/MainWindowToolBar.qml" line="119"/>
+        <location filename="../../src/private/easydebug/qml/MainWindowToolBar.qml" line="122"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/MainWindowToolBar.qml" line="128"/>
+        <location filename="../../src/private/easydebug/qml/MainWindowToolBar.qml" line="131"/>
         <source>Settings</source>
         <translation></translation>
     </message>
@@ -5980,22 +5983,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ServerController</name>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="30"/>
+        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="31"/>
         <source>Address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="42"/>
+        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="43"/>
         <source>Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="52"/>
+        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="77"/>
         <source>Clients</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="60"/>
+        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="53"/>
         <source>Message</source>
         <translation></translation>
     </message>
