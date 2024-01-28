@@ -759,7 +759,7 @@
     <message>
         <location filename="../../src/mainwindow.cc" line="319"/>
         <source>Settings</source>
-        <translation></translation>
+        <translation>偏好设置</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cc" line="322"/>
@@ -820,7 +820,7 @@
     <message>
         <location filename="../../src/mainwindow.cc" line="429"/>
         <source>Palette</source>
-        <translation></translation>
+        <translation>配色方案</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cc" line="465"/>
@@ -1708,7 +1708,7 @@
     <message>
         <location filename="../../src/assistants/sakassistantsfactory.cc" line="56"/>
         <source>Number Assistant</source>
-        <translation>数值助手</translation>
+        <translation>数值转换助手</translation>
     </message>
     <message>
         <location filename="../../src/assistants/sakassistantsfactory.cc" line="59"/>
