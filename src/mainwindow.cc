@@ -211,7 +211,7 @@ void MainWindow::initToolMenu()
 {
     QMenu* toolMenu = new QMenu(tr("&Tools"));
     menuBar()->addMenu(toolMenu);
-    
+
     for (auto& t : SAKAssistantsFactory::instance()->supportedAssistants()) {
         QString name = SAKAssistantsFactory::instance()->assistantName(t);
         QAction* action = new QAction(name, this);
@@ -580,7 +580,7 @@ void MainWindow::initHelpMenu()
     helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered, this, &MainWindow::showQrCode);
 #ifndef SAK_IMPORT_MODULE_PRIVATE
-    helpMenu->addAction(tr("Donate"), this, &SAKMainWindow::showDonation);
+    helpMenu->addAction(tr("Donate"), this, &MainWindow::showDonation);
 #endif
 }
 
