@@ -20,16 +20,16 @@ SAKWebSocketServerTool::SAKWebSocketServerTool(QObject *parent)
 
 bool SAKWebSocketServerTool::initialize(QString &errStr)
 {
-    QString serverName = QString("%1:%2").arg(mServerIp).arg(mServerPort);
+    QString serverName = QString("%1:%2").arg(m_serverIp).arg(m_serverPort);
     mWebSocketServer = new QWebSocketServer(serverName, QWebSocketServer::NonSecureMode);
-    if (!mWebSocketServer->listen(QHostAddress(mServerIp), mServerPort)) {
+    if (!mWebSocketServer->listen(QHostAddress(m_serverIp), m_serverPort)) {
         errStr = mWebSocketServer->errorString();
-        //outputMessage(QtWarningMsg, errStr);
+        qWarning() << errStr;
         return false;
     }
 
-    QString mBindingIpPort = QString("%1:%2").arg(mServerIp).arg(mServerPort);
-    //outputMessage(QtInfoMsg, "Server url: " + mBindingIpPort);
+    QString mBindingIpPort = QString("%1:%2").arg(m_serverIp).arg(m_serverPort);
+    qInfo() << "Server url: " + mBindingIpPort;
 
     connect(mWebSocketServer,
             &QWebSocketServer::serverError,
@@ -50,7 +50,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
         QString ip = client->peerAddress().toString();
         quint16 port = client->peerPort();
         QString ipPort = QString("%1:%2").arg(ip).arg(port);
-        mClients.append(ipPort);
+        m_clients.append(ipPort);
         emit clientsChanged();
 
         connect(client, &QWebSocket::textMessageReceived, client, [=](const QString &message) {
@@ -74,7 +74,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
 
         connect(client, &QWebSocket::disconnected, client, [=]() {
             this->mWebSocketList.removeOne(client);
-            this->mClients.removeOne(ipPort);
+            this->m_clients.removeOne(ipPort);
             qInfo() << QString("Connection(%1) has been disconnected: %2")
                            .arg(mBindingIpPort, client->errorString());
             emit clientsChanged();
@@ -89,7 +89,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
                 [=](QAbstractSocket::SocketError err) {
                     Q_UNUSED(err);
                     this->mWebSocketList.removeOne(client);
-                    this->mClients.removeOne(ipPort);
+                    this->m_clients.removeOne(ipPort);
                     qInfo() << QString("Error occurred: %1").arg(client->errorString());
                     emit clientsChanged();
                 });
@@ -100,8 +100,8 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
 
 void SAKWebSocketServerTool::writeBytes(const QByteArray &bytes)
 {
-    if (mClientIndex >= 0 && mClientIndex < mWebSocketList.length()) {
-        QWebSocket *client = mWebSocketList.at(mClientIndex);
+    if (m_clientIndex >= 0 && m_clientIndex < mWebSocketList.length()) {
+        QWebSocket *client = mWebSocketList.at(m_clientIndex);
         writeBytesInner(client, bytes);
     } else {
         for (auto &client : mWebSocketList) {
@@ -123,7 +123,7 @@ void SAKWebSocketServerTool::writeBytesInner(QWebSocket *client,
 {
     qint64 ret = -1;
     QString hex;
-    if (mMessageType == 0) {
+    if (m_messageType == 0) {
         hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
         ret = client->sendBinaryMessage(bytes);
     } else {

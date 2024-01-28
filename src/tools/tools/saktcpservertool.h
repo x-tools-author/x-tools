@@ -28,9 +28,9 @@ private:
     void writeBytesInner(QTcpSocket *client, const QByteArray &bytes);
 
 private:
-    QTcpServer *mTcpServer{nullptr};
-    QList<QTcpSocket *> mTcpSocketList;
-    QMutex mTcpSocketListMutex;
+    QTcpServer *m_tcpServer{nullptr};
+    QList<QTcpSocket *> m_tcpSocketList;
+    QMutex m_tcpSocketListMutex;
 };
 
 #endif // SAKTCPSERVERTOOL_H

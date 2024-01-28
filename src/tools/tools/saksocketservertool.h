@@ -41,13 +41,13 @@ public:
     void setMessageType(int type);
 
 protected:
-    QString mServerIp;
-    int mServerPort;
-    bool mSpecifyIpAndPort;
-    QStringList mClients;
-    int mClientIndex;
-    QString mBindingIpPort;
-    std::atomic_int8_t mMessageType;
+    QString m_serverIp;
+    int m_serverPort;
+    bool m_specifyIpAndPort;
+    QStringList m_clients;
+    int m_clientIndex;
+    QString m_bindingIpPort;
+    std::atomic_int8_t m_messageType;
 
 signals:
     void serverIpChanged();

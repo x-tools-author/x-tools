@@ -17,51 +17,51 @@ SAKTcpServerTool::SAKTcpServerTool(QObject *parent)
 
 bool SAKTcpServerTool::initialize(QString &errStr)
 {
-    mTcpServer = new QTcpServer();
-    if (!mTcpServer->listen(QHostAddress(mServerIp), mServerPort)) {
-        errStr = "Error occurred: " + mTcpServer->errorString();
+    m_tcpServer = new QTcpServer();
+    if (!m_tcpServer->listen(QHostAddress(m_serverIp), m_serverPort)) {
+        errStr = "Error occurred: " + m_tcpServer->errorString();
         return false;
     }
 
-    mBindingIpPort = QString("%1:%2").arg(mServerIp).arg(mServerPort);
-    qInfo() << "Server ip and port: " + mBindingIpPort;
+    m_bindingIpPort = QString("%1:%2").arg(m_serverIp).arg(m_serverPort);
+    qInfo() << "Server ip and port: " + m_bindingIpPort;
 
-    connect(mTcpServer, &QTcpServer::newConnection, mTcpServer, [=]() {
-        QTcpSocket *client = mTcpServer->nextPendingConnection();
-        this->mTcpSocketListMutex.lock();
-        this->mTcpSocketList.append(client);
-        this->mTcpSocketListMutex.unlock();
+    connect(m_tcpServer, &QTcpServer::newConnection, m_tcpServer, [=]() {
+        QTcpSocket *client = m_tcpServer->nextPendingConnection();
+        this->m_tcpSocketListMutex.lock();
+        this->m_tcpSocketList.append(client);
+        this->m_tcpSocketListMutex.unlock();
 
         QString ip = client->peerAddress().toString();
         quint16 port = client->peerPort();
         QString ipPort = QString("%1:%2").arg(ip).arg(port);
-        mClients.append(ipPort);
+        m_clients.append(ipPort);
         qInfo() << "New connection:" + ipPort;
         emit clientsChanged();
 
         connect(client, &QTcpSocket::readyRead, client, [=]() {
             QByteArray bytes = client->readAll();
             QString hex = bytes.toHex();
-            qInfo() << QString("%1<-%2:%3").arg(mBindingIpPort, ipPort, hex);
+            qInfo() << QString("%1<-%2:%3").arg(m_bindingIpPort, ipPort, hex);
             emit outputBytes(bytes);
         });
 
         connect(client, &QTcpSocket::disconnected, client, [=]() {
             client->deleteLater();
-            this->mTcpSocketListMutex.lock();
-            this->mTcpSocketList.removeOne(client);
-            this->mTcpSocketListMutex.unlock();
-            this->mClients.removeOne(ipPort);
+            this->m_tcpSocketListMutex.lock();
+            this->m_tcpSocketList.removeOne(client);
+            this->m_tcpSocketListMutex.unlock();
+            this->m_clients.removeOne(ipPort);
             qInfo() << QString("Connection(%1) has been disconnected: %2")
                            .arg(ipPort, client->errorString());
             emit clientsChanged();
         });
 
         connect(client, SAK_SIG_SOCKETERROROCCURRED, client, [=]() {
-            this->mTcpSocketListMutex.lock();
-            this->mTcpSocketList.removeOne(client);
-            this->mTcpSocketListMutex.unlock();
-            this->mClients.removeOne(ipPort);
+            this->m_tcpSocketListMutex.lock();
+            this->m_tcpSocketList.removeOne(client);
+            this->m_tcpSocketListMutex.unlock();
+            this->m_clients.removeOne(ipPort);
             qInfo() << QString("Error occurred: %1").arg(client->errorString());
             emit clientsChanged();
         });
@@ -72,11 +72,11 @@ bool SAKTcpServerTool::initialize(QString &errStr)
 
 void SAKTcpServerTool::writeBytes(const QByteArray &bytes)
 {
-    if (mClientIndex >= 0 && mClientIndex < mTcpSocketList.length()) {
-        QTcpSocket *client = mTcpSocketList.at(mClientIndex);
+    if (m_clientIndex >= 0 && m_clientIndex < m_tcpSocketList.length()) {
+        QTcpSocket *client = m_tcpSocketList.at(m_clientIndex);
         writeBytesInner(client, bytes);
     } else {
-        for (auto &client : mTcpSocketList) {
+        for (auto &client : m_tcpSocketList) {
             writeBytesInner(client, bytes);
         }
     }
@@ -84,22 +84,22 @@ void SAKTcpServerTool::writeBytes(const QByteArray &bytes)
 
 void SAKTcpServerTool::uninitialize()
 {
-    mTcpServer->close();
-    mTcpServer->deleteLater();
-    mTcpServer = nullptr;
+    m_tcpServer->close();
+    m_tcpServer->deleteLater();
+    m_tcpServer = nullptr;
 }
 
 void SAKTcpServerTool::writeBytesInner(QTcpSocket *client, const QByteArray &bytes)
 {
     qint64 ret = client->write(bytes);
     if (ret == -1) {
-        qWarning() << mTcpServer->errorString();
+        qWarning() << m_tcpServer->errorString();
     } else {
         QString ip = client->peerAddress().toString();
         quint16 port = client->peerPort();
         QString ipPort = QString("%1:%2").arg(ip).arg(port);
         QString hex = bytes.toHex();
-        qInfo() << QString("%1->%2:%3").arg(mBindingIpPort, ipPort, hex);
+        qInfo() << QString("%1->%2:%3").arg(m_bindingIpPort, ipPort, hex);
         emit bytesWritten(bytes, ipPort);
     }
 }

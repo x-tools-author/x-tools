@@ -19,8 +19,8 @@ bool SAKUdpServerTool::initialize(QString &errStr)
 {
     m_udpSocket = new QUdpSocket();
     bool ret = false;
-    if (mSpecifyIpAndPort) {
-        ret = m_udpSocket->bind(QHostAddress(mServerIp), mServerPort);
+    if (m_specifyIpAndPort) {
+        ret = m_udpSocket->bind(QHostAddress(m_serverIp), m_serverPort);
     } else {
         ret = m_udpSocket->bind();
     }
@@ -33,8 +33,8 @@ bool SAKUdpServerTool::initialize(QString &errStr)
 
     QString ip = m_udpSocket->localAddress().toString();
     int port = m_udpSocket->localPort();
-    mBindingIpPort = QString("%1:%2").arg(ip).arg(port);
-    qInfo() << mBindingIpPort;
+    m_bindingIpPort = QString("%1:%2").arg(ip).arg(port);
+    qInfo() << m_bindingIpPort;
     emit bindingIpPortChanged();
 
     connect(m_udpSocket, &QUdpSocket::readyRead, m_udpSocket, [=]() { readBytes(); });
@@ -47,14 +47,14 @@ bool SAKUdpServerTool::initialize(QString &errStr)
 
 void SAKUdpServerTool::writeBytes(const QByteArray &bytes)
 {
-    if (mClientIndex >= 0 && mClientIndex < mClients.length()) {
-        QString ipPort = mClients.at(mClientIndex);
+    if (m_clientIndex >= 0 && m_clientIndex < m_clients.length()) {
+        QString ipPort = m_clients.at(m_clientIndex);
         QStringList list = ipPort.split(":");
         QString ip = list.first();
         quint16 port = list.last().toInt();
         writeDatagram(bytes, ip, port);
     } else {
-        for (auto &client : mClients) {
+        for (auto &client : m_clients) {
             QStringList list = client.split(":");
             QString ip = list.first();
             quint16 port = list.last().toInt();
@@ -89,11 +89,11 @@ void SAKUdpServerTool::readBytes()
         QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
         QString hex = QString::fromLatin1(ba);
         QString info = QString("%1:%2").arg(address.toString()).arg(port);
-        QString msg = QString("%1<-%2:%3").arg(mBindingIpPort, info, hex);
+        QString msg = QString("%1<-%2:%3").arg(m_bindingIpPort, info, hex);
         qInfo() << msg;
 
-        if (!mClients.contains(info)) {
-            mClients.append(info);
+        if (!m_clients.contains(info)) {
+            m_clients.append(info);
             emit clientsChanged();
         }
 
@@ -111,7 +111,7 @@ void SAKUdpServerTool::writeDatagram(const QByteArray &bytes,
         qWarning() << m_udpSocket->errorString();
     } else {
         QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
-        qInfo() << QString("%1<-%2").arg(mBindingIpPort, hex);
-        emit bytesWritten(bytes, mBindingIpPort);
+        qInfo() << QString("%1<-%2").arg(m_bindingIpPort, hex);
+        emit bytesWritten(bytes, m_bindingIpPort);
     }
 }
