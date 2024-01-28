@@ -24,34 +24,34 @@
         <translation>技术交流：</translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="44"/>
-        <source>Copy</source>
-        <translation>复制</translation>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="38"/>
+        <source>(Doublue click to copy)</source>
+        <translation>(双击复制)</translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="49"/>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="52"/>
         <source>Last commit(EasyDebug):</source>
         <translation>提交指纹(EasyDebug)：</translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="55"/>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="58"/>
         <source>Last commit time(EasyDebug):</source>
         <translation>提交时间(EasyDebug)：</translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="61"/>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="64"/>
         <source>Last commit(QtSwissArmyKnife):</source>
         <translation>提交指纹(QtSwissArmyKnife)：</translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="67"/>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="70"/>
         <source>Last commit time(QtSwissArmyKnife):</source>
         <translation>提交时间(QtSwissArmyKnife)：</translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="73"/>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="45"/>
         <source>Copyright information:</source>
-        <translation>版本信息：</translation>
+        <translation>版权声明：</translation>
     </message>
 </context>
 <context>
@@ -139,18 +139,18 @@
     </message>
     <message>
         <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="42"/>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="96"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="97"/>
         <source>Address</source>
         <translation>地址</translation>
     </message>
     <message>
         <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="55"/>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="107"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="108"/>
         <source>Port</source>
         <translation>端口</translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="92"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="93"/>
         <source>Server settings</source>
         <translation>服务器配置</translation>
     </message>
@@ -5988,7 +5988,7 @@ p, li { white-space: pre-wrap; }
         <translation>服务器端口</translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="77"/>
+        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="79"/>
         <source>Clients</source>
         <translation>客户端列表</translation>
     </message>

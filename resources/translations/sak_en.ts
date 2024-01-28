@@ -24,32 +24,32 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="44"/>
-        <source>Copy</source>
-        <translation></translation>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="38"/>
+        <source>(Doublue click to copy)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="49"/>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="52"/>
         <source>Last commit(EasyDebug):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="55"/>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="58"/>
         <source>Last commit time(EasyDebug):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="61"/>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="64"/>
         <source>Last commit(QtSwissArmyKnife):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="67"/>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="70"/>
         <source>Last commit time(QtSwissArmyKnife):</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="73"/>
+        <location filename="../../src/private/easydebug/qml/pages/AboutPage.qml" line="45"/>
         <source>Copyright information:</source>
         <translation></translation>
     </message>
@@ -139,18 +139,18 @@
     </message>
     <message>
         <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="42"/>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="96"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="97"/>
         <source>Address</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="55"/>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="107"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="108"/>
         <source>Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="92"/>
+        <location filename="../../src/private/easydebug/qml/controller/ClientController.qml" line="93"/>
         <source>Server settings</source>
         <translation></translation>
     </message>
@@ -5993,7 +5993,7 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="77"/>
+        <location filename="../../src/private/easydebug/qml/controller/ServerController.qml" line="79"/>
         <source>Clients</source>
         <translation></translation>
     </message>
