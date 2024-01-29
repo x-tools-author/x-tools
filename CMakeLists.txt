@@ -39,6 +39,7 @@ set(BUILD_TESTING OFF)
 set(BUILD_SHARED_LIBS OFF)
 
 include(.cmake/sak_common.cmake)
+include(.cmake/sak_git.cmake)
 include(.cmake/sak_environment.cmake)
 include(.cmake/sak_deploy.cmake)
 include(.cmake/sak_font_fontawesome.cmake)
@@ -47,8 +48,9 @@ include(.cmake/sak_3rd_glog.cmake)
 include(.cmake/sak_3rd_nodeeditor.cmake)
 include(.cmake/sak_3rd_qmdnsengine.cmake)
 
-sak_get_last_commit(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
-sak_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
+sak_git_get_last_commit(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
+sak_git_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
+sak_git_get_last_tag(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 
 # Assistant module.
 include_directories(src/assistants)

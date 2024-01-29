@@ -1,5 +1,5 @@
 ﻿# Get the last tag.
-function(sak_git_last_tag prefix)
+function(sak_git_get_last_tag prefix)
   execute_process(
     COMMAND ${GIT_EXECUTABLE} describe --abbrev=0 --tags
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
