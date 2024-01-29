@@ -57,13 +57,13 @@ static void sakShutdownGoogleLogging()
 
 #endif
 
+#ifdef SAK_USING_GLOG
 static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QByteArray localMsg = msg.toUtf8();
     const char *file = context.file ? context.file : "";
     const int line = context.line;
 
-#ifdef SAK_USING_GLOG
     switch (type) {
     case QtWarningMsg:
         google::LogMessage(file, line, google::GLOG_WARNING).stream() << localMsg.data();
@@ -78,12 +78,8 @@ static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, 
         google::LogMessage(file, line, google::GLOG_INFO).stream() << localMsg.data();
         break;
     }
-#else
-    Q_UNUSED(localMsg)
-    Q_UNUSED(file)
-    Q_UNUSED(line)
-#endif
 }
+#endif
 
 static void sakInitApp(const QString &appName)
 {
@@ -154,8 +150,12 @@ static void sakInitAppStyle()
 static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 {
     sakInitApp(appName);
+#ifdef SAK_USING_GLOG
     sakInitGoogleLogging(argv[0]);
     sakInstallMessageHandler();
+#else
+    Q_UNUSED(argv)
+#endif
     sakTryToClearSettings();
 #if 0
     sakInitLanguage();
@@ -166,5 +166,7 @@ static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 
 static void sakDoSomethingAfterAppExited()
 {
+#ifdef SAK_USING_GLOG
     sakShutdownGoogleLogging();
+#endif
 }

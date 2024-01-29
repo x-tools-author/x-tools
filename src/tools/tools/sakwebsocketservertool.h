@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -24,9 +24,7 @@ protected:
     virtual void uninitialize() final;
 
 private:
-    void writeBytesInner(QWebSocket *client,
-                         const QByteArray &bytes,
-                         const QVariant &context = QJsonObject());
+    void writeBytesInner(QWebSocket *client, const QByteArray &bytes);
 
 private:
     QWebSocketServer *mWebSocketServer{nullptr};

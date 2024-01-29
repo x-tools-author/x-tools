@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
@@ -117,9 +117,7 @@ void SAKWebSocketServerTool::uninitialize()
     mWebSocketServer = nullptr;
 }
 
-void SAKWebSocketServerTool::writeBytesInner(QWebSocket *client,
-                                             const QByteArray &bytes,
-                                             const QVariant &context)
+void SAKWebSocketServerTool::writeBytesInner(QWebSocket *client, const QByteArray &bytes)
 {
     qint64 ret = -1;
     QString hex;
@@ -132,12 +130,12 @@ void SAKWebSocketServerTool::writeBytesInner(QWebSocket *client,
     }
 
     if (ret == -1) {
-        //outputMessage(QtWarningMsg, client->errorString());
+        qWarning() << client->errorString();
     } else {
         QString ip = client->peerAddress().toString();
         quint16 port = client->peerPort();
         QString ipport = QString("%1:%2").arg(ip, QString::number(port));
-        //outputMessage(QtInfoMsg, QString("%1->%2:%3").arg(this->mBindingIpPort, ipport, hex));
+        qInfo() << QString("%1->%2:%3").arg(this->m_bindingIpPort, ipport, hex);
         emit bytesWritten(bytes, ipport);
     }
 }
