@@ -23,6 +23,6 @@ function(sak_generate_installer_with_qt_ifw target root_dir version icon)
             ${root_dir}/packages/${target}/data
     COMMAND ${binarycreator} --offline-only -c ${root_dir}/config/config.xml -p ${root_dir}/packages
             ${root_dir}/../${target_lower}-${version}-installer${binarysuffix}
-    SOURCES ${RES_FILES}
+    SOURCES ${CMAKE_SOURCE_DIR}/.cmake/sak_installer.cmake
     COMMENT "Start making installer(${target})...")
 endfunction()
