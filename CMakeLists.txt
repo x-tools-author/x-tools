@@ -44,6 +44,7 @@ include(.cmake/sak_git.cmake)
 include(.cmake/sak_environment.cmake)
 include(.cmake/sak_deploy.cmake)
 include(.cmake/sak_font_fontawesome.cmake)
+include(.cmake/sak_installer.cmake)
 
 include(.cmake/sak_3rd_glog.cmake)
 include(.cmake/sak_3rd_nodeeditor.cmake)
