@@ -27,16 +27,23 @@ function(sak_generate_installer_with_qt_ifw target root_dir version icon)
     COMMENT "Start making installer(${target})...")
 endfunction()
 
-function(sak_generate_msix target template packet_name packet_author)
+function(sak_generate_msix target template packet_name packet_version packet_suffix)
   set(root_dir ${CMAKE_BINARY_DIR}/msix/${target})
+  set(zip_file ${CMAKE_BINARY_DIR}/msix/${target}/${target}.zip)
+  set(args -DargTarget=${target})
+  list(APPEND args -DargZipFile=${zip_file})
+  list(APPEND args -DargTemplate=${template})
+  list(APPEND args -DargPacketName=${packet_name})
+  list(APPEND args -DargPacketVersion=${packet_version})
+  list(APPEND args -DargPacketSuffix=${packet_suffix})
+  exec_program(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${template} ${root_dir}/template.xml)
   add_custom_target(
     ${target}-Msix
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${root_dir}
-    COMMAND
-      ${CMAKE_COMMAND} -E make_directory ${root_dir} ${CMAKE_COMMAND} -DTARGET=${target}
-      -DargBinDir=${bin_dir} -DargPacketName=${packet_name} -DargPacketAuthor=${packet_author} -P
-      ${CMAKE_SOURCE_DIR}/.cmake/sak_script_generate_msix.cmake
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${target}
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${template} ${root_dir}/template.xml
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ${target}
+    COMMAND ${CMAKE_COMMAND} -E tar "cf" ${target}.zip "--format=zip" "${target}"
+    COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_SOURCE_DIR}/.cmake/sak_script_generate_msix.cmake
     WORKING_DIRECTORY ${root_dir}
-    SOURCES ${CMAKE_SOURCE_DIR}/.cmake/sak_installer.cmake
     COMMENT "Start making msix packet for ${target}")
 endfunction()
