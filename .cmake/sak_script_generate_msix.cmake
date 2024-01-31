@@ -1,8 +1,8 @@
-﻿# * argTarget 构建目标
-# * argZipFile zip压缩文件（绝对路径）
-# * argPacketName 包/标识/名称
+﻿# * argTarget        构建目标
+# * argZipFile       zip压缩文件（绝对路径）
+# * argPacketName    包/标识/名称
 # * argPacketVersion 版本
-# * argPacketSuffix 包/标识/名称后缀
+# * argPacketSuffix  包/标识/名称后缀
 
 set(cooked_version "${argPacketVersion}.0")
 set(output_name "${argPacketName}_${cooked_version}_${argPacketSuffix}")
