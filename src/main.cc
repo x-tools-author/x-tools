@@ -16,7 +16,6 @@ int main(const int argc, char *argv[])
     appName += QObject::tr("(Community)");
 #endif
     sakDoSomethingBeforeAppCreated(argv, appName);
-    
     Application app(argc, argv);
     int ret = Application::exec();
 
