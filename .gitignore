@@ -12,3 +12,4 @@ private
 3rd
 /.fleet
 src/private
+cmake-build-debug
