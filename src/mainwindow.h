@@ -73,7 +73,6 @@ private:
     void initLanguageMenu();
     void initHelpMenu();
     void initLinksMenu();
-    void initDemoMenu();
     void initNav();
     void initNav(const NavContext& ctx);
     void initStatusBar();

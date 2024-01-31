@@ -129,7 +129,6 @@ void MainWindow::initMenuBar()
     initOptionMenu();
     initLanguageMenu();
     initLinksMenu();
-    initDemoMenu();
     initHelpMenu();
 }
 
@@ -619,34 +618,6 @@ void MainWindow::initLinksMenu()
         QAction* action = new QAction(QIcon(var.iconPath), var.name, this);
         action->setObjectName(var.url);
         linksMenu->addAction(action);
-
-        connect(action, &QAction::triggered, this, [=]() {
-            QDesktopServices::openUrl(QUrl(sender()->objectName()));
-        });
-    }
-}
-
-void MainWindow::initDemoMenu()
-{
-    QMenu* demoMenu = new QMenu(tr("&Demo"), this);
-    menuBar()->addMenu(demoMenu);
-
-    struct Link
-    {
-        QString name;
-        QString url;
-        QString iconPath;
-    };
-    QList<Link> linkList;
-    QString baseUrl = "https://gitee.com/qsaker";
-    linkList << Link{tr("Qt SerialPort Demo"),
-                     QString(baseUrl + "/qt-demo-serial-port-widget.git"),
-                     QString(":/resources/images/Qt.png")};
-
-    for (auto& var : linkList) {
-        QAction* action = new QAction(QIcon(var.iconPath), var.name, this);
-        action->setObjectName(var.url);
-        demoMenu->addAction(action);
 
         connect(action, &QAction::triggered, this, [=]() {
             QDesktopServices::openUrl(QUrl(sender()->objectName()));
