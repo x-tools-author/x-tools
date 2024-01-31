@@ -26,3 +26,17 @@ function(sak_generate_installer_with_qt_ifw target root_dir version icon)
     SOURCES ${CMAKE_SOURCE_DIR}/.cmake/sak_installer.cmake
     COMMENT "Start making installer(${target})...")
 endfunction()
+
+function(sak_generate_msix target template packet_name packet_author)
+  set(root_dir ${CMAKE_BINARY_DIR}/msix/${target})
+  add_custom_target(
+    ${target}-Msix
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${root_dir}
+    COMMAND
+      ${CMAKE_COMMAND} -E make_directory ${root_dir} ${CMAKE_COMMAND} -DTARGET=${target}
+      -DargBinDir=${bin_dir} -DargPacketName=${packet_name} -DargPacketAuthor=${packet_author} -P
+      ${CMAKE_SOURCE_DIR}/.cmake/sak_script_generate_msix.cmake
+    WORKING_DIRECTORY ${root_dir}
+    SOURCES ${CMAKE_SOURCE_DIR}/.cmake/sak_installer.cmake
+    COMMENT "Start making msix packet for ${target}")
+endfunction()
