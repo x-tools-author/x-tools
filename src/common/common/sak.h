@@ -129,8 +129,8 @@ static void sakInitHdpi()
     qputenv("QT_SCALE_FACTOR", "1.5");
 #endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    if (int policy = SAKSettings::instance()->hdpiPolicy();
-        SAKInterface::isQtHighDpiScalePolicy(policy)) {
+    int policy = SAKSettings::instance()->hdpiPolicy();
+    if (SAKInterface::isQtHighDpiScalePolicy(policy)) {
         const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
         QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
     }
