@@ -31,8 +31,8 @@ endforeach()
 
 add_custom_target(
   PullPrivateModules
-  COMMAND git clone https://gitee.com/qsak/fluent2.git ./fluent2
-  COMMAND git clone https://gitee.com/qsak/easydebug.git ./easydebug
-  COMMAND git clone https://gitee.com/qsak/dataflowstudio.git ./dataflowstudio
+  COMMAND git clone https://gitee.com/qsaker-qsak/fluent2.git ./fluent2
+  COMMAND git clone https://gitee.com/qsaker-qsak/easydebug.git ./easydebug
+  COMMAND git clone https://gitee.com/qsaker-qsak/dataflowstudio.git ./dataflowstudio
   SOURCES ${CMAKE_SOURCE_DIR}/src/private/private.cmake
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
