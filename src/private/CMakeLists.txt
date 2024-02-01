@@ -1,9 +1,9 @@
-include(.cmake/sak_common.cmake)
+include(${CMAKE_SOURCE_DIR}/.cmake/sak_common.cmake)
 
 file(
   GLOB dirs
   LIST_DIRECTORIES true
-  "${CMAKE_SOURCE_DIR}/src/private/*")
+  "${CMAKE_CURRENT_SOURCE_DIR}/*")
 list(REMOVE_ITEM dirs "common")
 set(SAK_HAS_PRIVATE_MODULE false)
 
@@ -15,17 +15,10 @@ foreach(dir ${dirs})
   endif()
 endforeach()
 
-if(${SAK_HAS_PRIVATE_MODULE})
-  sak_add_subdirectory("nodeeditor-3.0.10")
-  add_compile_definitions(SAK_IMPORT_MODULE_PRIVATE)
-endif()
-
 foreach(dir ${dirs})
   if(IS_DIRECTORY ${dir})
     file(RELATIVE_PATH cooked_dir ${CMAKE_SOURCE_DIR} ${dir})
-    if(NOT ${cooked_dir} STREQUAL "src/private/common")
-      add_subdirectory(${cooked_dir})
-    endif()
+    add_subdirectory(${CMAKE_SOURCE_DIR}/${cooked_dir})
   endif()
 endforeach()
 
@@ -34,5 +27,4 @@ add_custom_target(
   COMMAND git clone https://gitee.com/qsaker-qsak/fluent2.git ./fluent2
   COMMAND git clone https://gitee.com/qsaker-qsak/easydebug.git ./easydebug
   COMMAND git clone https://gitee.com/qsaker-qsak/dataflowstudio.git ./dataflowstudio
-  SOURCES ${CMAKE_SOURCE_DIR}/src/private/private.cmake
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)

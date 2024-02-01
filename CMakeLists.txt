@@ -57,9 +57,6 @@ sak_git_get_last_tag(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 # Assistant module.
 include_directories(src/assistants)
 include_directories(src/assistantsui)
-include(${CMAKE_SOURCE_DIR}/.cmake/sak_i18n.cmake)
-sak_add_lupdate()
-sak_add_lrelease()
 
 # Glog module.
 option(SAK_USING_GLOG "Using glog module." ON)
@@ -204,6 +201,8 @@ if(SAK_IMPORT_MODULE_BLUETOOTH)
   target_link_libraries(QtSwissArmyKnife PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 endif()
 
+add_subdirectory(resources/translations)
+
 install(
   TARGETS QtSwissArmyKnife
   BUNDLE DESTINATION .
@@ -233,7 +232,8 @@ endif()
 # The private module is not open source.
 option(SAK_ENABLE_APP_PRIVATE "Do not change the option unless you are the author" OFF)
 if(SAK_ENABLE_APP_PRIVATE)
+  sak_add_subdirectory("nodeeditor-3.0.10")
   if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-    include(${CMAKE_SOURCE_DIR}/src/private/private.cmake)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/src/private)
   endif()
 endif()
