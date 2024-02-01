@@ -34,6 +34,7 @@ jobs:
           modules: ${{ matrix['moudles']}}
       - name: build for macos
         run: |
+          brew uninstall --force node
           brew unlink unixodbc
           brew install libiodbc
           mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
