@@ -25,6 +25,7 @@ endforeach()
 add_custom_target(
   Clone
   COMMAND git clone https://gitee.com/qsaker-qsak/fluent2.git ./fluent2
+  COMMAND git clone https://gitee.com/qsaker-qsak/keygen.git ./keygen
   COMMAND git clone https://gitee.com/qsaker-qsak/easydebug.git ./easydebug
   COMMAND git clone https://gitee.com/qsaker-qsak/dataflowstudio.git ./dataflowstudio
   SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
