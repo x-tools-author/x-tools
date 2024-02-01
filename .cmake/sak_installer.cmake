@@ -36,7 +36,9 @@ function(sak_generate_msix target template packet_name packet_version packet_suf
   list(APPEND args -DargPacketName=${packet_name})
   list(APPEND args -DargPacketVersion=${packet_version})
   list(APPEND args -DargPacketSuffix=${packet_suffix})
-  exec_program(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${template} ${root_dir}/template.xml)
+  message(STATUS "root_dir(${target}): ${root_dir}")
+  message(STATUS "template(${target}): ${template}")
+  execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${template} ${root_dir}/template.xml)
   add_custom_target(
     ${target}-Msix
     COMMAND ${CMAKE_COMMAND} -E remove_directory ${target}
@@ -45,5 +47,6 @@ function(sak_generate_msix target template packet_name packet_version packet_suf
     COMMAND ${CMAKE_COMMAND} -E tar "cf" ${target}.zip "--format=zip" "${target}"
     COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_SOURCE_DIR}/.cmake/sak_script_generate_msix.cmake
     WORKING_DIRECTORY ${root_dir}
+    SOURCES ${template}
     COMMENT "Start making msix packet for ${target}")
 endfunction()

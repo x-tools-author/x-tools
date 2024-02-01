@@ -6,6 +6,7 @@ function(sak_git_get_last_tag working_dir prefix)
     OUTPUT_VARIABLE GIT_LATEST_TAG
     OUTPUT_STRIP_TRAILING_WHITESPACE)
   message("Latest git tag: ${GIT_LATEST_TAG}")
+  set(${prefix}_GIT_TAG="${GIT_LATEST_TAG}")
   add_compile_definitions(${prefix}_GIT_TAG="${GIT_LATEST_TAG}")
 endfunction()
 
