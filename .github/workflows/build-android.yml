@@ -43,3 +43,18 @@ jobs:
           -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
           -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
           -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%"
+      - name: Build for Android
+        shell: cmd
+        run: dir build\armeabi_v7a
+      - name: Android Deploy Qt
+        shell: cmd
+        run: |
+          set JAVA_HOME=%JAVA_HOME_11_X64%
+          echo %JAVA_HOME%
+          cmake --build -DBUILD_SHARED_LIBS:BOOL=OFF build\armeabi_v7a --target QtSwissArmyKnife --config Release
+          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
+          --input build\armeabi_v7a\android-QtSwissArmyKnife-deployment-settings.json ^
+          --output build\armeabi_v7a\android-build ^
+          --android-platform android-34 ^
+          --sign ${{ github.workspace }}\resources\android\android_release.keystore QtSwissArmyKnife --storepass QtSwissArmyKnife --keypass QtSwissArmyKnife ^
+          --jdk %JAVA_HOME% --gradle --release
