@@ -35,7 +35,7 @@ jobs:
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
           version: "${{env.QT_VERSION}}"
-      - name: Build for Android
+      - name: CMake for Android
         shell: cmd
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
@@ -51,12 +51,18 @@ jobs:
       - name: Directory of build\armeabi_v7a
         shell: cmd
         run: dir build\armeabi_v7a
-      - name: Android Deploy Qt
+      - name: Build for android
         shell: cmd
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
           cmake -DBUILD_SHARED_LIBS:BOOL=OFF --build build\armeabi_v7a --target QtSwissArmyKnife --config Release
+      - name: Directory of build\armeabi_v7a
+        shell: cmd
+        run: dir build\armeabi_v7a
+      - name: Deploy for Android
+        shell: cmd
+        run: |
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-QtSwissArmyKnife-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
