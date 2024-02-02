@@ -7,8 +7,8 @@ function(sak_auto_execute_windeployqt target)
       add_custom_command(
         TARGET ${target}
         POST_BUILD
-        COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> --qmldir ${qml_dir} DEPENDS
-                ${depends_dll}
+        COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" "$<TARGET_FILE:${target}>" --qmldir
+                "${CMAKE_CURRENT_SOURCE_DIR}/qml" DEPENDS ${depends_dll}
         COMMENT "Running windeployqt..."
         VERBATIM)
     else()
