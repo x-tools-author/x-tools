@@ -1,21 +1,21 @@
-function(sak_auto_execute_windeployqt target qml_dir)
+function(sak_auto_execute_windeployqt target)
   if(WIN32)
     set(SAK_WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
     set(QT_CORE_FILE Qt${QT_VERSION_MAJOR}Core${SAK_FILE_SUFFIX}.dll)
     set(depends_dll ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${QT_CORE_FILE})
-    if(${qml_dir} STREQUAL "")
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/qml")
       add_custom_command(
         TARGET ${target}
         POST_BUILD
-        COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> DEPENDS ${depends_dll}
+        COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> --qmldir ${qml_dir} DEPENDS
+                ${depends_dll}
         COMMENT "Running windeployqt..."
         VERBATIM)
     else()
       add_custom_command(
         TARGET ${target}
         POST_BUILD
-        COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> --qmldir ${qml_dir} DEPENDS
-                ${depends_dll}
+        COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> DEPENDS ${depends_dll}
         COMMENT "Running windeployqt..."
         VERBATIM)
     endif()
@@ -52,13 +52,22 @@ function(sak_auto_execute_macdeployqt target)
   endif()
 
   set(SAK_MACDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/macdeployqt")
-  add_custom_command(
-    TARGET ${target}
-    POST_BUILD
-    COMMAND ${SAK_MACDEPLOYQT_EXECUTABLE} "${SAK_BINARY_DIR}/${target}/${target}.app"
-            "-qmldir=${CMAKE_SOURCE_DIR}/qml -dmg"
-    COMMENT "Running macdeployqt..."
-    VERBATIM)
+  if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/qml")
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND ${SAK_MACDEPLOYQT_EXECUTABLE} "${SAK_BINARY_DIR}/${target}/${target}.app"
+              "-qmldir=${CMAKE_CURRENT_SOURCE_DIR}/qml -dmg"
+      COMMENT "Running macdeployqt..."
+      VERBATIM)
+  else()
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND ${SAK_MACDEPLOYQT_EXECUTABLE} "${SAK_BINARY_DIR}/${target}/${target}.app" "-dmg"
+      COMMENT "Running macdeployqt..."
+      VERBATIM)
+  endif()
 
   add_custom_command(
     TARGET ${target}
@@ -149,9 +158,9 @@ function(sak_auto_execute_linuxdeployqt target)
     VERBATIM)
 endfunction()
 
-function(sak_auto_execute_deployqt target qml_dir)
+function(sak_auto_execute_deployqt target)
   if(WIN32)
-    sak_auto_execute_windeployqt(${target} ${qml_dir})
+    sak_auto_execute_windeployqt(${target})
   elseif(UNIX AND NOT APPLE)
     sak_auto_execute_linuxdeployqt(${target})
   elseif(APPLE)
