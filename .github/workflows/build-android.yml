@@ -56,7 +56,7 @@ jobs:
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
-          cmake -DBUILD_SHARED_LIBS:BOOL=OFF --build build\armeabi_v7a --target QtSwissArmyKnife --config Release
+          cmake -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_BUILD_TYPE:STRING=Release --build build\armeabi_v7a --target QtSwissArmyKnife
       - name: Directory of build\armeabi_v7a
         shell: cmd
         run: dir build\armeabi_v7a
