@@ -1,7 +1,13 @@
 name: build-daily
+#on:
+#  schedule:
+#    - cron: '0 0 * * *'
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  push:
+    branches:
+      - master
+
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   QT_VERSION: 6.5.3
@@ -105,8 +111,8 @@ jobs:
       # ERROR: no file at "/Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib"
       # ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
       run: |
-        brew unlink unixodbc
-        brew install libiodbc
+        # brew unlink unixodbc
+        # brew install libiodbc
         mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
         ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
         mkdir build
