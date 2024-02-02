@@ -1,15 +1,25 @@
-function(sak_auto_execute_windeployqt target)
+function(sak_auto_execute_windeployqt target qml_dir)
   if(WIN32)
     set(SAK_WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
     set(QT_CORE_FILE Qt${QT_VERSION_MAJOR}Core${SAK_FILE_SUFFIX}.dll)
     set(depends_dll ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${QT_CORE_FILE})
-    add_custom_command(
-      TARGET ${target}
-      POST_BUILD
-      COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> --qmldir
-              "${CMAKE_CURRENT_SOURCE_DIR}/qml" DEPENDS ${depends_dll}
-      COMMENT "Running windeployqt..."
-      VERBATIM)
+    if(${qml_dir} STREQUAL "")
+      add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> DEPENDS ${depends_dll}
+        COMMENT "Running windeployqt..."
+        VERBATIM)
+    else()
+      add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> --qmldir ${qml_dir} DEPENDS
+                ${depends_dll}
+        COMMENT "Running windeployqt..."
+        VERBATIM)
+    endif()
+
   endif()
   if(MSVC AND ${MSVC_VERSION} GREATER_EQUAL 1929)
     cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
@@ -139,9 +149,9 @@ function(sak_auto_execute_linuxdeployqt target)
     VERBATIM)
 endfunction()
 
-function(sak_auto_execute_deployqt target)
+function(sak_auto_execute_deployqt target qml_dir)
   if(WIN32)
-    sak_auto_execute_windeployqt(${target})
+    sak_auto_execute_windeployqt(${target} ${qml_dir})
   elseif(UNIX AND NOT APPLE)
     sak_auto_execute_linuxdeployqt(${target})
   elseif(APPLE)
