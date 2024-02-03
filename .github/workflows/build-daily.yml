@@ -1,11 +1,11 @@
 name: build-daily
+#on:
+#  schedule:
+#    - cron: '0 0 * * *'
 on:
-  schedule:
-    - cron: '0 0 * * *'
-# on:
-#  push:
-#    branches:
-#      - master
+  push:
+    branches:
+      - master
 
 
 env:
