@@ -53,7 +53,7 @@ file(APPEND ${script_file} "            \"iconPath=@TargetDir@/icon.ico\",${sak_
 file(APPEND ${script_file} "            \"description=Open ${TARGET} Program\");${sak_endl}")
 file(APPEND ${script_file} "        component.addOperation(\"CreateShortcut\",${sak_endl}")
 file(APPEND ${script_file} "            \"@TargetDir@/maintenancetool.exe\",${sak_endl}")
-file(APPEND ${script_file} "            \"@StartMenuDir@/Uninstaller.lnk\",${sak_endl}")
+file(APPEND ${script_file} "            \"@StartMenuDir@/${TARGET} Uninstaller.lnk\",${sak_endl}")
 file(APPEND ${script_file} "            \"workingDirectory=@TargetDir@\",${sak_endl}")
 file(APPEND ${script_file} "            \"iconPath=%SystemRoot%/system32/SHELL32.dll\",${sak_endl}")
 file(APPEND ${script_file} "            \"iconId=101\",${sak_endl}")
