@@ -82,6 +82,6 @@ void SAKTcpClientTool::readBytes()
         info += QString::fromLatin1(ba);
         qInfo() << info;
         emit outputBytes(bytes);
-        emit bytesWritten(bytes, ipport);
+        emit bytesRead(bytes, ipport);
     }
 }
