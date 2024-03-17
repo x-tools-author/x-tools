@@ -33,7 +33,7 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
         QString errStr = m_webSocket->errorString();
         if (!errStr.isEmpty()) {
             errStr = "Disconected from server:" + errStr;
-            //outputMessage(QtInfoMsg, errStr);
+            emit errorOccurred(errStr);
         }
 
         exit();
@@ -43,21 +43,20 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
         QByteArray ba = SAKInterface::arrayToHex(msg, ' ');
         QString hex = QString::fromLatin1(ba);
         QString info = m_bindingIpPort + "<-" + this->m_peerInfo + ":" + hex;
-        //outputMessage(QtInfoMsg, info);
+        qInfo() << info;
         emit outputBytes(msg);
         emit bytesRead(msg, this->m_peerInfo);
     });
 
     connect(m_webSocket, &QWebSocket::textMessageReceived, m_webSocket, [=](QString message) {
         QString info = m_bindingIpPort + "<-" + this->m_peerInfo + ":" + message;
-        //outputMessage(QtInfoMsg, info);
+        qInfo() << info;
         emit outputBytes(message.toUtf8());
         emit bytesRead(message.toUtf8(), this->m_peerInfo);
     });
 
     connect(m_webSocket, SAK_SIG_WEBSOCKETERROROCCURRED, m_webSocket, [=]() {
         QString errStr = m_webSocket->errorString();
-        //outputMessage(QtInfoMsg, errStr);
         emit errorOccurred(errStr);
     });
     
@@ -81,10 +80,11 @@ void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes)
     }
 
     if (ret == -1) {
-        //outputMessage(QtWarningMsg, m_webSocket->errorString());
+        qWarning() << "Send message error: " + m_webSocket->errorString();
+        emit errorOccurred(m_webSocket->errorString());
     } else {
         QString info = m_bindingIpPort + "<-" + this->m_peerInfo + ":" + hex;
-        //outputMessage(QtInfoMsg, info);
+        qInfo() << info;
         emit bytesWritten(bytes, this->m_peerInfo);
     }
 }
