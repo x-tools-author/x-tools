@@ -83,32 +83,17 @@ void SAKToolBox::initialize(int type)
     }
 
     // clang-format off
-    // rx->responser
-    connect(m_comunicator, &SAKBaseTool::outputBytes, m_responser, &SAKBaseTool::inputBytes);
+    connect(m_comunicator, &SAKCommunicationTool::bytesWritten, this, &SAKToolBox::onCommunicatorBytesWritten);
+    connect(m_comunicator, &SAKCommunicationTool::bytesRead, this, &SAKToolBox::onCommunicatorBytesRead);
     // emiiter,responser,prestorer->tx
     connect(m_emitter, &SAKBaseTool::outputBytes, m_comunicator, &SAKBaseTool::inputBytes);
     connect(m_responser, &SAKBaseTool::outputBytes, m_comunicator, &SAKBaseTool::inputBytes);
     connect(m_prestorer, &SAKBaseTool::outputBytes, m_comunicator, &SAKBaseTool::inputBytes);
-    // rx->storer; tx->storer
-    connect(m_comunicator, &SAKBaseTool::outputBytes, m_storer, &SAKBaseTool::inputBytes);
-    connect(m_comunicator, &SAKBaseTool::outputBytes, m_storer, &SAKBaseTool::inputBytes);
-    // rx->velometer; tx->velometer
-    connect(m_comunicator, &SAKBaseTool::outputBytes, m_rxVelometer, &SAKBaseTool::inputBytes);
-    connect(m_comunicator, &SAKBaseTool::outputBytes, m_txVelometer, &SAKBaseTool::inputBytes);
-    // rx->statistician; tx->statistician
-    connect(m_comunicator, &SAKCommunicationTool::outputBytes, m_rxCounter, &SAKBaseTool::inputBytes);
-    connect(m_comunicator, &SAKCommunicationTool::outputBytes, m_txCounter, &SAKBaseTool::inputBytes);
-    // rx->serialport transmition; serialport transmition->Tx analyzer
-    connect(m_comunicator, &SAKBaseTool::outputBytes, m_serialPortTransmitter, &SAKBaseTool::inputBytes);
+
+    // transmition -> communicator
     connect(m_serialPortTransmitter, &SAKBaseTool::outputBytes, m_comunicator, &SAKBaseTool::inputBytes);
-    // rx->udp transmition; udp transmition->Tx analyzer
-    connect(m_comunicator, &SAKBaseTool::outputBytes, m_udpTransmitter, &SAKBaseTool::inputBytes);
     connect(m_udpTransmitter, &SAKBaseTool::outputBytes, m_comunicator, &SAKBaseTool::inputBytes);
-    // rx->tcp transmition; tcp transmition->Tx analyzer
-    connect(m_comunicator, &SAKBaseTool::outputBytes, m_tcpTransmitter, &SAKBaseTool::inputBytes);
     connect(m_tcpTransmitter, &SAKBaseTool::outputBytes, m_comunicator, &SAKBaseTool::inputBytes);
-    // rx->websocket transmition; websocket transmition->Tx analyzer
-    connect(m_comunicator, &SAKBaseTool::outputBytes, m_webSocketTransmitter, &SAKBaseTool::inputBytes);
     connect(m_webSocketTransmitter, &SAKBaseTool::outputBytes, m_comunicator, &SAKBaseTool::inputBytes);
 
     connect(m_comunicator, &SAKCommunicationTool::errorOccurred, this, &SAKToolBox::errorOccurred);
@@ -297,4 +282,27 @@ QVariant SAKToolBox::webSocketTransmitter()
 QVariant SAKToolBox::serialPortTransmitter()
 {
     return QVariant::fromValue(m_serialPortTransmitter);
+}
+
+void SAKToolBox::onCommunicatorBytesWritten(const QByteArray& bytes, const QString& to)
+{
+    Q_UNUSED(to)
+    m_txVelometer->inputBytes(bytes);
+    m_txCounter->inputBytes(bytes);
+    m_storer->inputBytes(bytes);
+}
+
+void SAKToolBox::onCommunicatorBytesRead(const QByteArray& bytes, const QString& to)
+{
+    Q_UNUSED(to)
+    m_rxVelometer->inputBytes(bytes);
+    m_rxCounter->inputBytes(bytes);
+    m_storer->inputBytes(bytes);
+
+    m_responser->inputBytes(bytes);
+
+    m_serialPortTransmitter->inputBytes(bytes);
+    m_udpTransmitter->inputBytes(bytes);
+    m_tcpTransmitter->inputBytes(bytes);
+    m_webSocketTransmitter->inputBytes(bytes);
 }

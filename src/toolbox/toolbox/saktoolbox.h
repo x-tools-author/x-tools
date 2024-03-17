@@ -72,6 +72,8 @@ public:
 
 signals:
     void errorOccurred(const QString& errorString);
+    void isWorkingChanged();
+    void communicatorChanged();
 
 private:
     QList<SAKBaseTool*> m_tools;
@@ -110,9 +112,8 @@ private:
     QVariant webSocketTransmitter();
     QVariant serialPortTransmitter();
 
-signals:
-    void isWorkingChanged();
-    void communicatorChanged();
+    void onCommunicatorBytesWritten(const QByteArray& bytes, const QString& to);
+    void onCommunicatorBytesRead(const QByteArray& bytes, const QString& to);
 };
 
 #endif // SAKTOOLBOX_H
