@@ -70,6 +70,7 @@ if(SAK_USING_GLOG)
   sak_add_subdirectory("glog-master")
 endif()
 
+sak_add_subdirectory("Qt-AES-master")
 sak_add_subdirectory("qmdnsengine-master")
 
 macro(sak_import_assistant assistant_dir_name)
