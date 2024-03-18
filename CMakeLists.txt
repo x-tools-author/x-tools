@@ -67,7 +67,7 @@ if(SAK_USING_GLOG)
   set(WITH_GTEST OFF)
   set(WITH_GFLAGS OFF)
 
-  sak_add_subdirectory("glog-master")
+  sak_add_subdirectory("glog-0.7.0")
 endif()
 
 sak_add_subdirectory("Qt-AES-master")
