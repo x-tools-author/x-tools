@@ -23,11 +23,27 @@ foreach(dir ${dirs})
 endforeach()
 
 add_custom_target(
-  Clone
+  CloneFluent2
   COMMAND git clone https://gitee.com/qsaker-qsak/fluent2.git ./fluent2
+  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
+add_custom_target(
+  CloneKeyGen
   COMMAND git clone https://gitee.com/qsaker-qsak/keygen.git ./keygen
+  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
+add_custom_target(
+  CloneEasyDebug
   COMMAND git clone https://gitee.com/qsaker-qsak/easydebug.git ./easydebug
+  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
+add_custom_target(
+  CloneDataFlowStudio
   COMMAND git clone https://gitee.com/qsaker-qsak/dataflowstudio.git ./dataflowstudio
+  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
+add_custom_target(
+  ClonePasswordAssassin
   COMMAND git clone https://gitee.com/qsaker-qsak/passwordassassin.git ./passwordassassin
   SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
