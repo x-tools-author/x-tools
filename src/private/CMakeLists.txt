@@ -28,5 +28,6 @@ add_custom_target(
   COMMAND git clone https://gitee.com/qsaker-qsak/keygen.git ./keygen
   COMMAND git clone https://gitee.com/qsaker-qsak/easydebug.git ./easydebug
   COMMAND git clone https://gitee.com/qsaker-qsak/dataflowstudio.git ./dataflowstudio
+  COMMAND git clone https://gitee.com/qsaker-qsak/passwordassassin.git ./passwordassassin
   SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)

@@ -47,6 +47,7 @@ include(.cmake/sak_font_fontawesome.cmake)
 include(.cmake/sak_installer.cmake)
 
 include(.cmake/sak_3rd_glog.cmake)
+include(.cmake/sak_3rd_qt_aes.cmake)
 include(.cmake/sak_3rd_nodeeditor.cmake)
 include(.cmake/sak_3rd_qmdnsengine.cmake)
 
