@@ -56,8 +56,8 @@ sak_git_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 sak_git_get_last_tag(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
 
 # Assistant module.
-include_directories(src/assistants)
-include_directories(src/assistantsui)
+include_directories(Source/assistants)
+include_directories(Source/assistantsui)
 
 # Glog module.
 option(SAK_USING_GLOG "Using glog module." ON)
@@ -78,20 +78,20 @@ macro(sak_import_assistant assistant_dir_name)
   set(SAK_IMPORT_MODULE_NAME SAK_IMPORT_MODULE_${upper_name}ASSISTANT)
   option(${SAK_IMPORT_MODULE_NAME} "" ON)
   if(${SAK_IMPORT_MODULE_NAME})
-    include_directories(${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src)
+    include_directories(${CMAKE_SOURCE_DIR}/Source/assistants/${assistant_dir_name}/src)
     add_compile_definitions(${SAK_IMPORT_MODULE_NAME})
     file(
       GLOB_RECURSE
       ASSISTANT_SOURCE
-      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*h"
-      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*.cc"
-      "${CMAKE_SOURCE_DIR}/src/assistants/${assistant_dir_name}/src/*.ui")
+      "${CMAKE_SOURCE_DIR}/Source/assistants/${assistant_dir_name}/src/*h"
+      "${CMAKE_SOURCE_DIR}/Source/assistants/${assistant_dir_name}/src/*.cc"
+      "${CMAKE_SOURCE_DIR}/Source/assistants/${assistant_dir_name}/src/*.ui")
     list(APPEND SAK_ASSISTANT_SOURCES ${ASSISTANT_SOURCE})
   endif()
 endmacro()
 
-list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.h)
-list(APPEND SAK_ASSISTANT_SOURCES src/assistants/sakassistantsfactory.cc)
+list(APPEND SAK_ASSISTANT_SOURCES Source/assistants/sakassistantsfactory.h)
+list(APPEND SAK_ASSISTANT_SOURCES Source/assistants/sakassistantsfactory.cc)
 
 sak_import_assistant("crc")
 sak_import_assistant("mdns")
@@ -110,7 +110,7 @@ endif()
 
 # QtSwissArmyKnife src files
 macro(sak_add_src src_dir_name)
-  set(SRC_PRE ${CMAKE_SOURCE_DIR}/src/${src_dir_name})
+  set(SRC_PRE ${CMAKE_SOURCE_DIR}/Source/${src_dir_name})
   include_directories(${SRC_PRE}/${src_dir_name})
   include_directories(${SRC_PRE}/${src_dir_name}ui)
   file(
@@ -136,7 +136,7 @@ macro(sak_import_module src_dir_name)
   string(TOUPPER ${src_dir_name} upper_dir_name)
   option(SAK_IMPORT_MODULE_${upper_dir_name} "" ON)
   if(SAK_IMPORT_MODULE_${upper_dir_name})
-    set(SRC_PRE ${CMAKE_SOURCE_DIR}/src/${src_dir_name})
+    set(SRC_PRE ${CMAKE_SOURCE_DIR}/Source/${src_dir_name})
     include_directories(${SRC_PRE}/${src_dir_name})
     include_directories(${SRC_PRE}/${src_dir_name}ui)
     add_compile_definitions(SAK_IMPORT_MODULE_${upper_dir_name})
@@ -158,11 +158,18 @@ if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
 endif()
 
 # QtSwissArmyKnife
-include_directories(src)
+include_directories(Source)
 if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
   include_directories(3rd/qt/flowlayout)
 endif()
-file(GLOB APP_SOURCES "src/*.h" "src/*.cc" "src/*.ui" ".cmake/*.cmake")
+file(
+  GLOB
+  APP_SOURCES
+  "Source/*.h"
+  "Source/*.cc"
+  "Source/*.cpp"
+  "Source/*.ui"
+  ".cmake/*.cmake")
 
 option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
 if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
@@ -173,10 +180,10 @@ endif()
 list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES})
 list(APPEND SAK_APP_SOURCES x-tools.qrc x-tools.rc)
 if(SAK_IMPORT_MODULE_BLUETOOTH)
-  file(GLOB SAK_BLUETOOTH_SOURCES "src/optional/bluetooth/*.h" "src/optional/bluetooth/*.cc"
-       "src/optional/bluetooth/*.ui")
+  file(GLOB SAK_BLUETOOTH_SOURCES "Source/optional/bluetooth/*.h" "Source/optional/bluetooth/*.cc"
+       "Source/optional/bluetooth/*.ui")
   list(APPEND SAK_APP_SOURCES ${SAK_BLUETOOTH_SOURCES})
-  include_directories(src/optional/bluetooth)
+  include_directories(Source/optional/bluetooth)
 endif()
 
 if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
@@ -216,13 +223,13 @@ install(
 # Custom build target.
 option(SAK_ENABLE_APP_ASSISTANTS "Enable to build assistants." OFF)
 if(SAK_ENABLE_APP_ASSISTANTS)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/src/assistants)
+  add_subdirectory(${CMAKE_SOURCE_DIR}/Source/assistants)
 endif()
 
 option(APP_ENABLE_CANBUSSTUDIO "Enable to build CANBusStudio." OFF)
 if(APP_ENABLE_CANBUSSTUDIO)
   if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-    add_subdirectory(${CMAKE_SOURCE_DIR}/src/canbusstudio)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/Source/canbusstudio)
   endif()
 endif()
 
@@ -238,6 +245,6 @@ option(SAK_ENABLE_APP_PRIVATE "Do not change the option unless you are the autho
 if(SAK_ENABLE_APP_PRIVATE)
   sak_add_subdirectory("nodeeditor-3.0.10")
   if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-    add_subdirectory(${CMAKE_SOURCE_DIR}/src/private)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/Source/private)
   endif()
 endif()
