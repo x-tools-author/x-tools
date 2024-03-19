@@ -178,7 +178,7 @@ if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
 endif()
 
 list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES})
-list(APPEND SAK_APP_SOURCES x-tools.qrc x-tools.rc)
+list(APPEND SAK_APP_SOURCES xTools.qrc xTools.rc)
 if(SAK_IMPORT_MODULE_BLUETOOTH)
   file(GLOB SAK_BLUETOOTH_SOURCES "Source/optional/bluetooth/*.h" "Source/optional/bluetooth/*.cc"
        "Source/optional/bluetooth/*.ui")
