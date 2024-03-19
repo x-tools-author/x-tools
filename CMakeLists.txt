@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 
 project(
-  QtSwissArmyKnife
+  xTools
   VERSION 1.0
   LANGUAGES CXX)
 
@@ -169,7 +169,7 @@ if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
 endif()
 
 list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES})
-list(APPEND SAK_APP_SOURCES qtswissarmyknife.qrc windows.rc)
+list(APPEND SAK_APP_SOURCES x-tools.qrc x-tools.rc)
 if(SAK_IMPORT_MODULE_BLUETOOTH)
   file(GLOB SAK_BLUETOOTH_SOURCES "src/optional/bluetooth/*.h" "src/optional/bluetooth/*.cc"
        "src/optional/bluetooth/*.ui")
@@ -183,30 +183,30 @@ if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
   list(APPEND SAK_APP_SOURCES ${SAK_QT_FLOWLAYOUT_SOURCES})
 endif()
 
-sak_add_executable("QtSwissArmyKnife" ${SAK_APP_SOURCES})
-sak_auto_execute_deployqt(QtSwissArmyKnife)
-sak_tar_target(QtSwissArmyKnife)
-sak_set_target_properties(QtSwissArmyKnife)
+sak_add_executable("xTools" ${SAK_APP_SOURCES})
+sak_auto_execute_deployqt(xTools)
+sak_tar_target(xTools)
+sak_set_target_properties(xTools)
 if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
-  sak_import_fontawesome_for_target(QtSwissArmyKnife)
+  sak_import_fontawesome_for_target(xTools)
 endif()
 
-sak_3rd_setup_glog(QtSwissArmyKnife)
-sak_3rd_setup_qmdnsengine(QtSwissArmyKnife)
+sak_3rd_setup_glog(xTools)
+sak_3rd_setup_qmdnsengine(xTools)
 
 target_link_libraries(
-  QtSwissArmyKnife
+  xTools
   PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
           Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort
           Qt${QT_VERSION_MAJOR}::SerialBus)
 if(SAK_IMPORT_MODULE_BLUETOOTH)
-  target_link_libraries(QtSwissArmyKnife PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
+  target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 endif()
 
 add_subdirectory(resources/translations)
 
 install(
-  TARGETS QtSwissArmyKnife
+  TARGETS xTools
   BUNDLE DESTINATION .
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
