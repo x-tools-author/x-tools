@@ -15,7 +15,7 @@
 #include <QToolBar>
 #include <QWidget>
 
-#include "xToolsMainWindow2.h"
+#include "xToolsMainWindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

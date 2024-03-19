@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE in the root of the source code
  * directory.
  **************************************************************************************************/
-#ifndef XTOOLSMAINWINDOW2_H
-#define XTOOLSMAINWINDOW2_H
+#ifndef XTOOLSMAINWINDOW_H
+#define XTOOLSMAINWINDOW_H
 
 #include <QActionGroup>
 #include <QApplication>
@@ -56,4 +56,4 @@ private:
     QString getQtConfFileName();
 };
 
-#endif // XTOOLSMAINWINDOW2_H
+#endif // XTOOLSMAINWINDOW_H

@@ -12,7 +12,7 @@
 #include <QApplication>
 
 #include "sak.h"
-#include "xToolsMainWindow2.h"
+#include "xToolsMainWindow.h"
 
 template<typename T>
 int sakExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
