@@ -13,238 +13,89 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(SAK_QT_COMPONENTS
+set(X_TOOLS_QT_COMPONENTS
     Core
     Gui
     Widgets
     WebSockets
-    Network
-    SerialPort
-    SerialBus)
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${SAK_QT_COMPONENTS})
-add_compile_definitions(SAK_BUILD_WITH_SAK)
+    Network)
 
-if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-  find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Bluetooth)
-  if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
-    message(STATUS "Qt${QT_VERSION_MAJOR}::Bluetooth found.")
-    option(SAK_IMPORT_MODULE_BLUETOOTH "Import Bluetooth module." ON)
-    add_compile_definitions(SAK_IMPORT_MODULE_BLUETOOTH)
-  else()
-    message(STATUS "Qt${QT_VERSION_MAJOR}::Bluetooth not found.")
-  endif()
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
+    list(APPEND X_TOOLS_QT_COMPONENTS SerialPort)
+    list(APPEND X_TOOLS_QT_COMPONENTS SerialBus)
+    add_compile_definitions(X_TOOLS_IMPORT_MODULE_SERIALPORT)
+    add_compile_definitions(X_TOOLS_IMPORT_MODULE_SERIALBUS)
 endif()
 
-set(BUILD_TESTING OFF)
-set(BUILD_SHARED_LIBS OFF)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 
-include(.cmake/sak_common.cmake)
-include(.cmake/sak_git.cmake)
-include(.cmake/sak_environment.cmake)
-include(.cmake/sak_deploy.cmake)
-include(.cmake/sak_font_fontawesome.cmake)
-include(.cmake/sak_installer.cmake)
+include(CMake/sak_common.cmake)
 
-include(.cmake/sak_3rd_glog.cmake)
-include(.cmake/sak_3rd_qt_aes.cmake)
-include(.cmake/sak_3rd_nodeeditor.cmake)
-include(.cmake/sak_3rd_qmdnsengine.cmake)
+file(GLOB_RECURSE X_TOOLS_COMMOM_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/Common/*.h")
+file(GLOB_RECURSE X_TOOLS_COMMOM_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/Common/*.ui")
+file(GLOB_RECURSE X_TOOLS_COMMOM_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/Common/*.cc")
 
-sak_git_get_last_commit(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
-sak_git_get_last_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
-sak_git_get_last_tag(${CMAKE_CURRENT_SOURCE_DIR} "SAK")
+file(GLOB_RECURSE X_TOOLS_TOOLS_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/Tools/*.h")
+file(GLOB_RECURSE X_TOOLS_TOOLS_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/Tools/*.ui")
+file(GLOB_RECURSE X_TOOLS_TOOLS_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/Tools/*.cc")
 
-# Assistant module.
-include_directories(Source/assistants)
-include_directories(Source/assistantsui)
+file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/ToolBox/*.h")
+file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/ToolBox/*.ui")
+file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/ToolBox/*.cc")
 
-# Glog module.
-option(SAK_USING_GLOG "Using glog module." ON)
-if(SAK_USING_GLOG)
-  add_compile_definitions(SAK_USING_GLOG)
+file(GLOB X_TOOLS_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/*.h")
+file(GLOB X_TOOLS_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/*.ui")
+file(GLOB X_TOOLS_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/*.cc")
 
-  set(WITH_GTEST OFF)
-  set(WITH_GFLAGS OFF)
+file(GLOB X_TOOLS_ASSISTANT_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/Assistants/*/src/*.h")
+file(GLOB X_TOOLS_ASSISTANT_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/Assistants/*/src/*.ui")
+file(GLOB X_TOOLS_ASSISTANT_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/Assistants/*/src/*.cc")
 
-  sak_add_subdirectory("glog-0.7.0")
-endif()
+file(GLOB X_TOOLS_CMAKE_FILES "${CMAKE_SOURCE_DIR}/CMake/*.cmake")
 
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_COMMOM_SOURCE_H})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_COMMOM_SOURCE_UI})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_COMMOM_SOURCE_CPP})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_SOURCE_H})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_SOURCE_UI})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_SOURCE_CPP})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLBOX_SOURCE_H})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLBOX_SOURCE_UI})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLBOX_SOURCE_CPP})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_SOURCE_H})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_SOURCE_UI})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_SOURCE_CPP})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_SOURCE_H})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_SOURCE_UI})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_SOURCE_CPP})
+list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Assistants/xToolsAssistantFactory.h)
+list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Assistants/xToolsAssistantFactory.cpp)
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CMAKE_FILES})
+
+include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
+include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
+include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/Tools)
+include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI)
+include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBox)
+include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBoxUI)
+
+sak_add_subdirectory("glog-0.7.0")
 sak_add_subdirectory("Qt-AES-master")
+sak_add_subdirectory("nodeeditor-3.0.10")
 sak_add_subdirectory("qmdnsengine-master")
 
-macro(sak_import_assistant assistant_dir_name)
-  string(TOUPPER ${assistant_dir_name} upper_name)
-  set(SAK_IMPORT_MODULE_NAME SAK_IMPORT_MODULE_${upper_name}ASSISTANT)
-  option(${SAK_IMPORT_MODULE_NAME} "" ON)
-  if(${SAK_IMPORT_MODULE_NAME})
-    include_directories(${CMAKE_SOURCE_DIR}/Source/assistants/${assistant_dir_name}/src)
-    add_compile_definitions(${SAK_IMPORT_MODULE_NAME})
-    file(
-      GLOB_RECURSE
-      ASSISTANT_SOURCE
-      "${CMAKE_SOURCE_DIR}/Source/assistants/${assistant_dir_name}/src/*h"
-      "${CMAKE_SOURCE_DIR}/Source/assistants/${assistant_dir_name}/src/*.cc"
-      "${CMAKE_SOURCE_DIR}/Source/assistants/${assistant_dir_name}/src/*.ui")
-    list(APPEND SAK_ASSISTANT_SOURCES ${ASSISTANT_SOURCE})
-  endif()
-endmacro()
-
-list(APPEND SAK_ASSISTANT_SOURCES Source/assistants/sakassistantsfactory.h)
-list(APPEND SAK_ASSISTANT_SOURCES Source/assistants/sakassistantsfactory.cc)
-
-sak_import_assistant("crc")
-sak_import_assistant("mdns")
-sak_import_assistant("ping")
-sak_import_assistant("ascii")
-sak_import_assistant("base64")
-sak_import_assistant("number")
-sak_import_assistant("string")
-sak_import_assistant("broadcast")
-sak_import_assistant("filecheck")
-
-option(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT "" OFF)
-if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
-  sak_import_assistant("fontawesome")
+qt_add_executable(xTools ${X_TOOLS_SOURCE})
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Network)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::WebSockets)
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::SerialPort)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::SerialBus)
 endif()
-
-# QtSwissArmyKnife src files
-macro(sak_add_src src_dir_name)
-  set(SRC_PRE ${CMAKE_SOURCE_DIR}/Source/${src_dir_name})
-  include_directories(${SRC_PRE}/${src_dir_name})
-  include_directories(${SRC_PRE}/${src_dir_name}ui)
-  file(
-    GLOB_RECURSE
-    SRC_SOURCE
-    "${SRC_PRE}/${src_dir_name}/*h"
-    "${SRC_PRE}/${src_dir_name}/*cpp"
-    "${SRC_PRE}/${src_dir_name}/*.cc"
-    "${SRC_PRE}/${src_dir_name}ui/*.h"
-    "${SRC_PRE}/${src_dir_name}ui/*.cc"
-    "${SRC_PRE}/${src_dir_name}ui/*.cpp"
-    "${SRC_PRE}/${src_dir_name}ui/*.ui")
-  list(APPEND SAK_SRC_SOURCES ${SRC_SOURCE})
-endmacro()
-
-sak_add_src("log")
-sak_add_src("tools")
-sak_add_src("common")
-sak_add_src("toolbox")
-
-# QtSwissArmyKnife module files
-macro(sak_import_module src_dir_name)
-  string(TOUPPER ${src_dir_name} upper_dir_name)
-  option(SAK_IMPORT_MODULE_${upper_dir_name} "" ON)
-  if(SAK_IMPORT_MODULE_${upper_dir_name})
-    set(SRC_PRE ${CMAKE_SOURCE_DIR}/Source/${src_dir_name})
-    include_directories(${SRC_PRE}/${src_dir_name})
-    include_directories(${SRC_PRE}/${src_dir_name}ui)
-    add_compile_definitions(SAK_IMPORT_MODULE_${upper_dir_name})
-    file(
-      GLOB_RECURSE
-      SRC_SOURCE
-      "${SRC_PRE}/${src_dir_name}/*h"
-      "${SRC_PRE}/${src_dir_name}/*.cc"
-      "${SRC_PRE}/${src_dir_name}ui/*.h"
-      "${SRC_PRE}/${src_dir_name}ui/*.cc"
-      "${SRC_PRE}/${src_dir_name}ui/*.ui")
-    list(APPEND SAK_SRC_SOURCES ${SRC_SOURCE})
-  endif()
-endmacro()
-
-if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-  sak_import_module("canbusstudio")
-  sak_import_module("modbusstudio")
-endif()
-
-# QtSwissArmyKnife
-include_directories(Source)
-if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
-  include_directories(3rd/qt/flowlayout)
-endif()
-file(
-  GLOB
-  APP_SOURCES
-  "Source/*.h"
-  "Source/*.cc"
-  "Source/*.cpp"
-  "Source/*.ui"
-  ".cmake/*.cmake")
-
-option(SAK_BUILD_FOR_APP_SOTRE "Build for Microsoft/Apple app store." OFF)
-if(SAK_BUILD_FOR_APP_SOTRE AND CMAKE_BUILD_TYPE)
-  add_definitions(-DSAK_RELEASE_FOR_APP_STORE)
-  set(SAK_IMPORT_MODULE_CANBUSSTUDIO OFF)
-endif()
-
-list(APPEND SAK_APP_SOURCES ${SAK_ASSISTANT_SOURCES} ${SAK_SRC_SOURCES} ${APP_SOURCES})
-list(APPEND SAK_APP_SOURCES xTools.qrc xTools.rc)
-if(SAK_IMPORT_MODULE_BLUETOOTH)
-  file(GLOB SAK_BLUETOOTH_SOURCES "Source/optional/bluetooth/*.h" "Source/optional/bluetooth/*.cc"
-       "Source/optional/bluetooth/*.ui")
-  list(APPEND SAK_APP_SOURCES ${SAK_BLUETOOTH_SOURCES})
-  include_directories(Source/optional/bluetooth)
-endif()
-
-if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
-  file(GLOB_RECURSE SAK_QT_FLOWLAYOUT_SOURCES "${CMAKE_SOURCE_DIR}/3rd/qt/flowlayout/*.cpp"
-       "${CMAKE_SOURCE_DIR}/3rd/qt/flowlayout/*.h")
-  list(APPEND SAK_APP_SOURCES ${SAK_QT_FLOWLAYOUT_SOURCES})
-endif()
-
-sak_add_executable("xTools" ${SAK_APP_SOURCES})
-sak_auto_execute_deployqt(xTools)
-sak_tar_target(xTools)
-sak_set_target_properties(xTools)
-if(SAK_ENABLE_MODULE_FONTAWESOMEASSISTANT)
-  sak_import_fontawesome_for_target(xTools)
-endif()
-
-sak_3rd_setup_glog(xTools)
-sak_3rd_setup_qmdnsengine(xTools)
-
-target_link_libraries(
-  xTools
-  PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebSockets
-          Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort
-          Qt${QT_VERSION_MAJOR}::SerialBus)
-if(SAK_IMPORT_MODULE_BLUETOOTH)
-  target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
-endif()
-
-add_subdirectory(resources/translations)
-
-install(
-  TARGETS xTools
-  BUNDLE DESTINATION .
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-
-# Custom build target.
-option(SAK_ENABLE_APP_ASSISTANTS "Enable to build assistants." OFF)
-if(SAK_ENABLE_APP_ASSISTANTS)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/Source/assistants)
-endif()
-
-option(APP_ENABLE_CANBUSSTUDIO "Enable to build CANBusStudio." OFF)
-if(APP_ENABLE_CANBUSSTUDIO)
-  if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-    add_subdirectory(${CMAKE_SOURCE_DIR}/Source/canbusstudio)
-  endif()
-endif()
-
-option(APP_ENABLE_MODBUSSTUDIO "Enable to build ModbusStudio." OFF)
-if(APP_ENABLE_MODBUSSTUDIO)
-  if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-    add_subdirectory(${CMAKE_SOURCE_DIR}/src/modbusstudio)
-  endif()
-endif()
-
-# The private module is not open source.
-option(SAK_ENABLE_APP_PRIVATE "Do not change the option unless you are the author" OFF)
-if(SAK_ENABLE_APP_PRIVATE)
-  sak_add_subdirectory("nodeeditor-3.0.10")
-  if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-    add_subdirectory(${CMAKE_SOURCE_DIR}/Source/private)
-  endif()
-endif()
+target_link_libraries(xTools PRIVATE qmdnsengine)
+target_link_libraries(xTools PRIVATE glog::glog)
+target_link_libraries(xTools PRIVATE QtAES::QtAES)
+target_link_libraries(xTools PRIVATE QtNodes::QtNodes)

@@ -13,3 +13,4 @@ private
 /.fleet
 src/private
 cmake-build-debug
+ThirdParty
