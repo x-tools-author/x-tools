@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef APPLICATION_H
-#define APPLICATION_H
+#pragma once
 
 #include <QApplication>
 #include <QSplashScreen>
@@ -30,5 +29,3 @@ private:
 private:
     static void setupPalette(const QString &fileName);
 };
-
-#endif

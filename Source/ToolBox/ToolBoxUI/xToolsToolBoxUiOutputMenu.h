@@ -6,30 +6,27 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTOOLBOXUIOUTPUTMENU_H
-#define SAKTOOLBOXUIOUTPUTMENU_H
+#pragma once
 
 #include <QMenu>
 #include <QTextDocument>
 #include <QWidget>
 
 namespace Ui {
-class SAKToolBoxUiOutputMenu;
+class xToolsToolBoxUiOutputMenu;
 }
 
-class SAKToolBoxUiOutputMenu : public QMenu
+class xToolsToolBoxUiOutputMenu : public QMenu
 {
     Q_OBJECT
 
 public:
-    explicit SAKToolBoxUiOutputMenu(const QString &settingsGroup,
+    explicit xToolsToolBoxUiOutputMenu(const QString &settingsGroup,
                                     QTextDocument *doc,
                                     QWidget *parent = nullptr);
-    ~SAKToolBoxUiOutputMenu();
+    ~xToolsToolBoxUiOutputMenu();
     QString filter();
 
 private:
-    Ui::SAKToolBoxUiOutputMenu *ui;
+    Ui::xToolsToolBoxUiOutputMenu *ui;
 };
-
-#endif // SAKTOOLBOXUIOUTPUTMENU_H

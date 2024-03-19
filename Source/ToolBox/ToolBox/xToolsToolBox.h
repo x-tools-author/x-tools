@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTOOLBOX_H
-#define SAKTOOLBOX_H
+#pragma once
 
 #include <QObject>
 #include <QVariant>
@@ -25,7 +24,7 @@
 #include "sakvelometertool.h"
 #include "sakwebsockettransmittertool.h"
 
-class SAKToolBox : public QObject
+class xToolsToolBox : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QVariant communicator READ communicator NOTIFY communicatorChanged)
@@ -45,8 +44,8 @@ class SAKToolBox : public QObject
 
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
 public:
-    explicit SAKToolBox(QObject* parent = nullptr);
-    ~SAKToolBox();
+    explicit xToolsToolBox(QObject* parent = nullptr);
+    ~xToolsToolBox();
 
     /// You must call the interface before useing.
     Q_INVOKABLE void initialize(int type);
@@ -115,5 +114,3 @@ private:
     void onCommunicatorBytesWritten(const QByteArray& bytes, const QString& to);
     void onCommunicatorBytesRead(const QByteArray& bytes, const QString& to);
 };
-
-#endif // SAKTOOLBOX_H

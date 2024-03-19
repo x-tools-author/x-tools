@@ -6,16 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saktoolboxuicommunicationmenu.h"
+#include "xToolsToolBoxUiCommunicationMenu.h"
+#include "ui_xToolsToolBoxUiCommunicationMenu.h"
 
 #include <QWidgetAction>
 
-#include "saktoolbox.h"
-#include "ui_saktoolboxuicommunicationmenu.h"
+#include "xToolsToolBox.h"
 
-SAKToolBoxUiCommunicationMenu::SAKToolBoxUiCommunicationMenu(QWidget* parent)
+xToolsToolBoxUiCommunicationMenu::xToolsToolBoxUiCommunicationMenu(QWidget* parent)
     : QMenu(parent)
-    , ui(new Ui::SAKToolBoxUiCommunicationMenu)
+    , ui(new Ui::xToolsToolBoxUiCommunicationMenu)
 {
     QWidget* w = new QWidget(this);
     ui->setupUi(w);
@@ -24,12 +24,12 @@ SAKToolBoxUiCommunicationMenu::SAKToolBoxUiCommunicationMenu(QWidget* parent)
     addAction(action);
 }
 
-SAKToolBoxUiCommunicationMenu::~SAKToolBoxUiCommunicationMenu()
+xToolsToolBoxUiCommunicationMenu::~xToolsToolBoxUiCommunicationMenu()
 {
     delete ui;
 }
 
-void SAKToolBoxUiCommunicationMenu::initialize(SAKToolBox* toolBox, const QString& settingsGroup)
+void xToolsToolBoxUiCommunicationMenu::initialize(xToolsToolBox* toolBox, const QString& settingsGroup)
 {
     auto storer = toolBox->getStorerTool();
     auto storerGroup = settingsGroup + "/storer";

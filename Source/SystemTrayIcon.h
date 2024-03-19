@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SYSTEMTRAYICON_H
-#define SYSTEMTRAYICON_H
+#pragma once
 
 #include <QSystemTrayIcon>
 
@@ -21,5 +20,3 @@ signals:
     void invokeExit();
     void invokeShowMainWindow();
 };
-
-#endif // SYSTEMTRAYICON_H

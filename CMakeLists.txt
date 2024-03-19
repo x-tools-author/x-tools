@@ -38,11 +38,11 @@ file(GLOB_RECURSE X_TOOLS_TOOLS_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/Tools/*.c
 
 file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/ToolBox/*.h")
 file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/ToolBox/*.ui")
-file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/ToolBox/*.cc")
+file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/ToolBox/*.cpp")
 
 file(GLOB X_TOOLS_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/*.h")
 file(GLOB X_TOOLS_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/*.ui")
-file(GLOB X_TOOLS_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/*.cc")
+file(GLOB X_TOOLS_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/*.cpp")
 
 file(GLOB X_TOOLS_ASSISTANT_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/Assistants/*/Source/*.h")
 file(GLOB X_TOOLS_ASSISTANT_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/Assistants/*/Source/*.ui")
@@ -86,9 +86,9 @@ set(BUILD_TESTING OFF)
 set(BUILD_SHARED_LIBS OFF)
 
 sak_add_subdirectory("glog-0.7.0")
-sak_add_subdirectory("Qt-AES-master")
-sak_add_subdirectory("nodeeditor-3.0.10")
 sak_add_subdirectory("qmdnsengine-master")
+
+#add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Assistants)
 
 qt_add_executable(xTools ${X_TOOLS_SOURCE})
 sak_git_get_last_commit(${CMAKE_SOURCE_DIR} "SAK")
@@ -104,5 +104,3 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
 endif()
 target_link_libraries(xTools PRIVATE qmdnsengine)
 target_link_libraries(xTools PRIVATE glog::glog)
-target_link_libraries(xTools PRIVATE QtAES::QtAES)
-target_link_libraries(xTools PRIVATE QtNodes::QtNodes)

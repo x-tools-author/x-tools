@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QAction>
 #include <QButtonGroup>
@@ -89,5 +88,3 @@ private slots:
     void onImportActionTriggered();
     void onExportActionTriggered();
 };
-
-#endif // MAINWINDOW_H

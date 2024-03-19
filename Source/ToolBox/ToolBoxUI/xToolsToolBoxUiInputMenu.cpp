@@ -6,17 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saktoolboxuiinputmenu.h"
+#include "xToolsToolBoxUiInputMenu.h"
+#include "ui_xToolsToolBoxUiInputMenu.h"
 
 #include <QWidgetAction>
 
-#include "ui_saktoolboxuiinputmenu.h"
-
 #define SAK_CB_ACTIVATED static_cast<void (QComboBox::*)(int)>(&QComboBox::activated)
 
-SAKToolBoxUiInputMenu::SAKToolBoxUiInputMenu(const QString& settingsGroup, QWidget* parent)
+xToolsToolBoxUiInputMenu::xToolsToolBoxUiInputMenu(const QString& settingsGroup, QWidget* parent)
     : QMenu{parent}
-    , ui(new Ui::SAKToolBoxUiInputMenu)
+    , ui(new Ui::xToolsToolBoxUiInputMenu)
 {
     QWidget* w = new QWidget(this);
     ui->setupUi(w);
@@ -88,12 +87,12 @@ SAKToolBoxUiInputMenu::SAKToolBoxUiInputMenu(const QString& settingsGroup, QWidg
     });
 }
 
-SAKToolBoxUiInputMenu::~SAKToolBoxUiInputMenu()
+xToolsToolBoxUiInputMenu::~xToolsToolBoxUiInputMenu()
 {
     delete ui;
 }
 
-SAKToolBoxUiInputMenu::Parameters SAKToolBoxUiInputMenu::parameters()
+xToolsToolBoxUiInputMenu::Parameters xToolsToolBoxUiInputMenu::parameters()
 {
     return mParameters;
 }

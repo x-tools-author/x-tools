@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKToolBoxUiOutputMenu</class>
- <widget class="QWidget" name="SAKToolBoxUiOutputMenu">
+ <class>xToolsToolBoxUiOutputMenu</class>
+ <widget class="QWidget" name="xToolsToolBoxUiOutputMenu">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>224</width>
+    <width>236</width>
     <height>114</height>
    </rect>
   </property>

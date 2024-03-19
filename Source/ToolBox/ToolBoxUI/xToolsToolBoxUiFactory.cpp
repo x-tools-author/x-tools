@@ -1,12 +1,12 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saktoolboxuifactory.h"
+#include "xToolsToolBoxUiFactory.h"
 
 #include "saktoolfactory.h"
 #if 0
@@ -21,17 +21,17 @@
 #include "SAKWebSocketServerToolBoxUi.h"
 #endif
 
-SAKToolBoxUiFactory::SAKToolBoxUiFactory(QObject* parent)
+xToolsToolBoxUiFactory::xToolsToolBoxUiFactory(QObject* parent)
     : QObject{parent}
 {}
 
-SAKToolBoxUiFactory* SAKToolBoxUiFactory::instance()
+xToolsToolBoxUiFactory* xToolsToolBoxUiFactory::instance()
 {
-    static SAKToolBoxUiFactory factory;
+    static xToolsToolBoxUiFactory factory;
     return &factory;
 }
 
-QList<int> SAKToolBoxUiFactory::supportedTools()
+QList<int> xToolsToolBoxUiFactory::supportedTools()
 {
     QList<int> list;
     list << SAKToolFactory::SerialportTool << SAKToolFactory::UdpClientTool
@@ -42,7 +42,7 @@ QList<int> SAKToolBoxUiFactory::supportedTools()
     return list;
 }
 
-SAKToolBoxUi* SAKToolBoxUiFactory::createToolBoxUi(int type)
+xToolsToolBoxUi* xToolsToolBoxUiFactory::createToolBoxUi(int type)
 {
 #if 0
     if (type == SAKToolFactory::SerialportTool) {

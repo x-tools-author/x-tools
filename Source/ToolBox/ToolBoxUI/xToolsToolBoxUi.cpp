@@ -6,7 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saktoolboxui.h"
+#include "xToolsToolBoxUi.h"
+#include "ui_xToolsToolBoxUi.h"
 
 #include <QDateTime>
 #include <QJsonArray>
@@ -30,25 +31,24 @@
 #include "saksocketclienttoolui.h"
 #include "saksocketservertoolui.h"
 #include "saktcptransmittertoolti.h"
-#include "saktoolboxuicommunicationmenu.h"
-#include "saktoolboxuiinputmenu.h"
-#include "saktoolboxuioutputmenu.h"
+#include "xToolsToolBoxUiCommunicationMenu.h"
+#include "xToolsToolBoxUiInputMenu.h"
+#include "xToolsToolBoxUiOutputMenu.h"
 #include "saktoolfactory.h"
 #include "sakudptransmittertoolui.h"
 #include "sakuiinterface.h"
 #include "sakwebsockettransmittertoolui.h"
-#include "ui_saktoolboxui.h"
 
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
 #include "sakblecentraltoolui.h"
 #endif
 
-SAKToolBoxUi::SAKToolBoxUi(QWidget* parent)
+xToolsToolBoxUi::xToolsToolBoxUi(QWidget* parent)
     : QWidget{parent}
-    , ui(new Ui::SAKToolBoxUi)
+    , ui(new Ui::xToolsToolBoxUi)
 {
     ui->setupUi(this);
-    m_toolBox = new SAKToolBox(this);
+    m_toolBox = new xToolsToolBox(this);
 
     m_cycleSendingTimer = new QTimer(this);
     connect(m_cycleSendingTimer, &QTimer::timeout, this, [=]() {
@@ -60,12 +60,12 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget* parent)
     });
 }
 
-SAKToolBoxUi::~SAKToolBoxUi()
+xToolsToolBoxUi::~xToolsToolBoxUi()
 {
     delete ui;
 }
 
-QList<int> SAKToolBoxUi::supportedCommunicationTools()
+QList<int> xToolsToolBoxUi::supportedCommunicationTools()
 {
     QList<int> list;
     list << SAKToolFactory::SerialportTool
@@ -78,7 +78,7 @@ QList<int> SAKToolBoxUi::supportedCommunicationTools()
     return list;
 }
 
-QString SAKToolBoxUi::communicationToolName(int type)
+QString xToolsToolBoxUi::communicationToolName(int type)
 {
     if (type == SAKToolFactory::SerialportTool) {
         return tr("SerialPort");
@@ -101,7 +101,7 @@ QString SAKToolBoxUi::communicationToolName(int type)
     }
 }
 
-QIcon SAKToolBoxUi::communicationToolIcon(int type)
+QIcon xToolsToolBoxUi::communicationToolIcon(int type)
 {
     QString fileName;
     if (type == SAKToolFactory::SerialportTool) {
@@ -126,7 +126,7 @@ QIcon SAKToolBoxUi::communicationToolIcon(int type)
     return icon;
 }
 
-void SAKToolBoxUi::initialize(int type)
+void xToolsToolBoxUi::initialize(int type)
 {
     if (m_communication) {
         m_communication->deleteLater();
@@ -151,7 +151,7 @@ void SAKToolBoxUi::initialize(int type)
     init();
 }
 
-SAKCommunicationToolUi* SAKToolBoxUi::communicationToolUi(int type)
+SAKCommunicationToolUi* xToolsToolBoxUi::communicationToolUi(int type)
 {
     SAKCommunicationToolUi* w = nullptr;
     if (type == SAKToolFactory::SerialportTool) {
@@ -181,7 +181,7 @@ SAKCommunicationToolUi* SAKToolBoxUi::communicationToolUi(int type)
     return w;
 }
 
-void SAKToolBoxUi::try2send()
+void xToolsToolBoxUi::try2send()
 {
     auto ctx = m_inputMenu->parameters();
     int prefix = ctx.prefix;
@@ -205,7 +205,7 @@ void SAKToolBoxUi::try2send()
     m_toolBox->getCommunicationTool()->inputBytes(bytes);
 }
 
-QString SAKToolBoxUi::dateTimeFormat()
+QString xToolsToolBoxUi::dateTimeFormat()
 {
     static QString dateFormat = QLocale::system().dateFormat();
 
@@ -237,7 +237,7 @@ QString SAKToolBoxUi::dateTimeFormat()
     return QDateTime::currentDateTime().toString(dateTimeFormat);
 }
 
-void SAKToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bool isRx)
+void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bool isRx)
 {
     int format = ui->comboBoxOutputFormat->currentData().toInt();
     QString str = SAKInterface::arrayToString(bytes, format);
@@ -264,7 +264,7 @@ void SAKToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bool 
     ui->textBrowserOutput->append(info + " " + str);
 }
 
-QString SAKToolBoxUi::settingsGroup()
+QString xToolsToolBoxUi::settingsGroup()
 {
     if (m_communicationType == SAKToolFactory::SerialportTool) {
         return "SerialportToolBox";
@@ -288,7 +288,7 @@ QString SAKToolBoxUi::settingsGroup()
     }
 }
 
-QByteArray SAKToolBoxUi::calculateCrc(const QByteArray& bytes, bool fixedOriginOrder)
+QByteArray xToolsToolBoxUi::calculateCrc(const QByteArray& bytes, bool fixedOriginOrder)
 {
     auto ctx = m_inputMenu->parameters();
     QByteArray inputBytes = bytes;
@@ -310,7 +310,7 @@ QByteArray SAKToolBoxUi::calculateCrc(const QByteArray& bytes, bool fixedOriginO
     return crc;
 }
 
-void SAKToolBoxUi::setDefaultText()
+void xToolsToolBoxUi::setDefaultText()
 {
     QByteArray ba("(null)");
     int format = ui->comboBoxInputFormat->currentData().toInt();
@@ -318,7 +318,7 @@ void SAKToolBoxUi::setDefaultText()
     ui->comboBoxInputText->setCurrentText(str);
 }
 
-void SAKToolBoxUi::onIsWorkingChanged()
+void xToolsToolBoxUi::onIsWorkingChanged()
 {
     bool isWorking = m_toolBox->isWorking();
     ui->pushButtonInputSend->setEnabled(isWorking);
@@ -336,7 +336,7 @@ void SAKToolBoxUi::onIsWorkingChanged()
     }
 }
 
-void SAKToolBoxUi::onBytesWritten(const QByteArray& bytes, const QString& from)
+void xToolsToolBoxUi::onBytesWritten(const QByteArray& bytes, const QString& from)
 {
     if (!ui->checkBoxOutputTx->isChecked()) {
         return;
@@ -345,7 +345,7 @@ void SAKToolBoxUi::onBytesWritten(const QByteArray& bytes, const QString& from)
     output2ui(bytes, from, false);
 }
 
-void SAKToolBoxUi::onBytesRead(const QByteArray& bytes, const QString& to)
+void xToolsToolBoxUi::onBytesRead(const QByteArray& bytes, const QString& to)
 {
     if (!ui->checkBoxOutputRx->isChecked()) {
         return;
@@ -354,7 +354,7 @@ void SAKToolBoxUi::onBytesRead(const QByteArray& bytes, const QString& to)
     output2ui(bytes, to, true);
 }
 
-void SAKToolBoxUi::onInputTextChanged()
+void xToolsToolBoxUi::onInputTextChanged()
 {
     QByteArray b = calculateCrc(QByteArray(), true);
     QString crc = QString::fromLatin1(b.toHex());
@@ -363,7 +363,7 @@ void SAKToolBoxUi::onInputTextChanged()
     ui->labelAlgorithm->setText(m_inputMenu->parameters().algorithmName);
 }
 
-void SAKToolBoxUi::init()
+void xToolsToolBoxUi::init()
 {
     m_settingsKey.tabIndex = settingsGroup() + "/tabIndex";
     m_settingsKey.items = settingsGroup() + "/items";
@@ -379,7 +379,7 @@ void SAKToolBoxUi::init()
     onComboBoxInputFormatActivated();
 }
 
-void SAKToolBoxUi::initUi()
+void xToolsToolBoxUi::initUi()
 {
     initUiCommunication();
     initUiInput();
@@ -392,7 +392,7 @@ void SAKToolBoxUi::initUi()
     }
 }
 
-void SAKToolBoxUi::initUiCommunication()
+void xToolsToolBoxUi::initUiCommunication()
 {
     // Setup communication tool.
     m_communicationUi = communicationToolUi(m_communicationType);
@@ -417,7 +417,7 @@ void SAKToolBoxUi::initUiCommunication()
     ui->widgetCommunicationToolUi->layout()->addWidget(m_communicationUi);
 }
 
-void SAKToolBoxUi::initUiInput()
+void xToolsToolBoxUi::initUiInput()
 {
     ui->comboBoxInputIntervel->addItem(tr("Disable"), -1);
     for (int i = 10; i <= 100; i += 10) {
@@ -443,47 +443,47 @@ void SAKToolBoxUi::initUiInput()
         }
     }
 
-    m_inputMenu = new SAKToolBoxUiInputMenu(settingsGroup(), this);
+    m_inputMenu = new xToolsToolBoxUiInputMenu(settingsGroup(), this);
     connect(m_inputMenu,
-            &SAKToolBoxUiInputMenu::parametersChanged,
+            &xToolsToolBoxUiInputMenu::parametersChanged,
             this,
-            &SAKToolBoxUi::onInputTextChanged);
+            &xToolsToolBoxUi::onInputTextChanged);
     ui->pushButtonInputSettings->setMenu(m_inputMenu);
 }
 
-void SAKToolBoxUi::initUiOutput()
+void xToolsToolBoxUi::initUiOutput()
 {
     ui->checkBoxOutputRx->setChecked(true);
     ui->checkBoxOutputTx->setChecked(true);
     ui->textBrowserOutput->document()->setMaximumBlockCount(2000);
 
-    m_outputMenu = new SAKToolBoxUiOutputMenu(settingsGroup(),
+    m_outputMenu = new xToolsToolBoxUiOutputMenu(settingsGroup(),
                                               ui->textBrowserOutput->document(),
                                               this);
     ui->pushButtonOutputSettings->setMenu(m_outputMenu);
 }
 
-void SAKToolBoxUi::initSettings()
+void xToolsToolBoxUi::initSettings()
 {
     initSettingsCommunication();
     initSettingsInput();
     initSettingsOutput();
 }
 
-void SAKToolBoxUi::initSettingsCommunication()
+void xToolsToolBoxUi::initSettingsCommunication()
 {
     const QString key = settingsGroup() + "/communication";
     m_communicationUi->initialize(m_communication, key);
 }
 
-void SAKToolBoxUi::initSettingsInput()
+void xToolsToolBoxUi::initSettingsInput()
 {
     QString group = settingsGroup();
     ui->comboBoxInputFormat->setGroupKey(group + "/input", "fromat");
     ui->comboBoxInputText->setGroupKey(group + "/input", "text", false);
 }
 
-void SAKToolBoxUi::initSettingsOutput()
+void xToolsToolBoxUi::initSettingsOutput()
 {
     QString group = settingsGroup();
     ui->comboBoxOutputFormat->setGroupKey(group + "/output", "outputFormat");
@@ -501,7 +501,7 @@ void SAKToolBoxUi::initSettingsOutput()
 #endif
 }
 
-void SAKToolBoxUi::initSignals()
+void xToolsToolBoxUi::initSignals()
 {
     initSignalsCommunication();
     initSignalsInput();
@@ -510,52 +510,52 @@ void SAKToolBoxUi::initSignals()
     connect(ui->tabWidget,
             &QTabWidget::currentChanged,
             this,
-            &SAKToolBoxUi::onTabWidgetCurrentChanged);
+            &xToolsToolBoxUi::onTabWidgetCurrentChanged);
 }
 
-void SAKToolBoxUi::initSignalsCommunication()
+void xToolsToolBoxUi::initSignalsCommunication()
 {
     connect(ui->pushButtonCommunicationOpen,
             &QPushButton::clicked,
             this,
-            &SAKToolBoxUi::onPushButtonCommunicationOpenClicked);
+            &xToolsToolBoxUi::onPushButtonCommunicationOpenClicked);
 }
 
-void SAKToolBoxUi::initSignalsInput()
+void xToolsToolBoxUi::initSignalsInput()
 {
     connect(ui->comboBoxInputIntervel,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::activated),
             this,
-            &SAKToolBoxUi::onComboBoxInputIntervalActivated);
+            &xToolsToolBoxUi::onComboBoxInputIntervalActivated);
     connect(ui->pushButtonInputSend,
             &QPushButton::clicked,
             this,
-            &SAKToolBoxUi::onPushButtonInputSendClicked);
+            &xToolsToolBoxUi::onPushButtonInputSendClicked);
     connect(ui->comboBoxInputFormat,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::activated),
             this,
-            &SAKToolBoxUi::onComboBoxInputFormatActivated);
+            &xToolsToolBoxUi::onComboBoxInputFormatActivated);
     connect(ui->comboBoxInputText,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::activated),
             this,
-            &SAKToolBoxUi::onComboBoxInputTextActivated);
+            &xToolsToolBoxUi::onComboBoxInputTextActivated);
     connect(ui->comboBoxInputText,
             &QComboBox::currentTextChanged,
             this,
-            &SAKToolBoxUi::onInputTextChanged);
+            &xToolsToolBoxUi::onInputTextChanged);
 }
 
-void SAKToolBoxUi::initSignalsOutput()
+void xToolsToolBoxUi::initSignalsOutput()
 {
     connect(ui->checkBoxOutputWrap,
             &QCheckBox::clicked,
             this,
-            &SAKToolBoxUi::onCheckBoxOutputWrapClicked);
+            &xToolsToolBoxUi::onCheckBoxOutputWrapClicked);
 }
 
-void SAKToolBoxUi::initTools()
+void xToolsToolBoxUi::initTools()
 {
-    m_communicationMenu = new SAKToolBoxUiCommunicationMenu(this);
+    m_communicationMenu = new xToolsToolBoxUiCommunicationMenu(this);
     m_communicationMenu->initialize(m_toolBox, settingsGroup());
     ui->pushButtonCommunicationSettings->setMenu(m_communicationMenu);
 
@@ -622,21 +622,21 @@ void SAKToolBoxUi::initTools()
         SAKSettings::instance()->setValue(key, index);
     });
 
-    connect(m_toolBox, &SAKToolBox::isWorkingChanged, this, &SAKToolBoxUi::onIsWorkingChanged);
-    connect(m_toolBox, &SAKToolBox::errorOccurred, this, [=](const QString& err) {
+    connect(m_toolBox, &xToolsToolBox::isWorkingChanged, this, &xToolsToolBoxUi::onIsWorkingChanged);
+    connect(m_toolBox, &xToolsToolBox::errorOccurred, this, [=](const QString& err) {
         QMessageBox::warning(this, tr("Error Occured"), err);
     });
 
     connect(m_communication,
             &SAKCommunicationTool::bytesWritten,
             this,
-            &SAKToolBoxUi::onBytesWritten);
-    connect(m_communication, &SAKCommunicationTool::bytesRead, this, &SAKToolBoxUi::onBytesRead);
+            &xToolsToolBoxUi::onBytesWritten);
+    connect(m_communication, &SAKCommunicationTool::bytesRead, this, &xToolsToolBoxUi::onBytesRead);
 
     ui->pushButtonPrestorer->setMenu(m_prestorerUi->menu());
 }
 
-void SAKToolBoxUi::onTabWidgetCurrentChanged(int index)
+void xToolsToolBoxUi::onTabWidgetCurrentChanged(int index)
 {
     if (m_settingsKey.tabIndex.isEmpty()) {
         return;
@@ -645,7 +645,7 @@ void SAKToolBoxUi::onTabWidgetCurrentChanged(int index)
     SAKSettings::instance()->setValue(m_settingsKey.tabIndex, index);
 }
 
-void SAKToolBoxUi::onPushButtonCommunicationOpenClicked()
+void xToolsToolBoxUi::onPushButtonCommunicationOpenClicked()
 {
     ui->pushButtonCommunicationOpen->setEnabled(false);
     if (m_toolBox->isWorking()) {
@@ -655,7 +655,7 @@ void SAKToolBoxUi::onPushButtonCommunicationOpenClicked()
     }
 }
 
-void SAKToolBoxUi::onCheckBoxOutputWrapClicked()
+void xToolsToolBoxUi::onCheckBoxOutputWrapClicked()
 {
     if (ui->checkBoxOutputWrap->isChecked()) {
         ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapAnywhere);
@@ -664,7 +664,7 @@ void SAKToolBoxUi::onCheckBoxOutputWrapClicked()
     }
 }
 
-void SAKToolBoxUi::onPushButtonInputSendClicked()
+void xToolsToolBoxUi::onPushButtonInputSendClicked()
 {
     if (ui->comboBoxInputText->currentText().isEmpty()) {
         qInfo() << "input text is empty,"
@@ -713,7 +713,7 @@ void SAKToolBoxUi::onPushButtonInputSendClicked()
     try2send();
 }
 
-void SAKToolBoxUi::onComboBoxInputIntervalActivated()
+void xToolsToolBoxUi::onComboBoxInputIntervalActivated()
 {
     int interval = ui->comboBoxInputIntervel->currentText().toInt();
     interval = interval < 10 ? 10 : interval;
@@ -726,7 +726,7 @@ void SAKToolBoxUi::onComboBoxInputIntervalActivated()
     }
 }
 
-void SAKToolBoxUi::onComboBoxInputFormatActivated()
+void xToolsToolBoxUi::onComboBoxInputFormatActivated()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
     auto lineEdit = ui->comboBoxInputText->lineEdit();
@@ -734,7 +734,7 @@ void SAKToolBoxUi::onComboBoxInputFormatActivated()
     SAKUiInterface::setValidator(lineEdit, format);
 }
 
-void SAKToolBoxUi::onComboBoxInputTextActivated()
+void xToolsToolBoxUi::onComboBoxInputTextActivated()
 {
     int format = ui->comboBoxInputText->currentData().toInt();
     ui->comboBoxInputFormat->setCurrentIndexFromData(format);

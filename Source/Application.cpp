@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "application.h"
+#include "Application.h"
 
 #include <QFile>
 #include <QPushButton>
@@ -17,12 +17,12 @@
 #include <QTranslator>
 
 #include "sakdatastructure.h"
-#include "mainwindow.h"
+#include "MainWindow.h"
 #include "saksettings.h"
 #include "saktranslator.h"
 
 #ifdef Q_OS_WIN
-#include "systemtrayicon.h"
+#include "SystemTrayIcon.h"
 #endif
 
 Application::Application(int argc, char** argv)

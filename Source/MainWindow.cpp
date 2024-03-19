@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source 
  * code directory.
  **************************************************************************************************/
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "MainWindow.h"
+#include "ui_MainWindow.h"
 
 #include <QAction>
 #include <QActionGroup>
@@ -38,7 +38,7 @@
 #include "sakdatastructure.h"
 #include "sakinterface.h"
 #include "saksettings.h"
-#include "saktoolboxui.h"
+#include "xToolsToolBoxUi.h"
 #include "saktranslator.h"
 #include "sakuiinterface.h"
 #include "xToolsAssistantFactory.h"
@@ -151,13 +151,13 @@ void MainWindow::initFileMenu()
     // Tool box
     QMenu* windowMenu = new QMenu(tr("New Window"), this);
     fileMenu->addMenu(windowMenu);
-    QList<int> toolTypeList = SAKToolBoxUi::supportedCommunicationTools();
+    QList<int> toolTypeList = xToolsToolBoxUi::supportedCommunicationTools();
     for (auto& toolType : toolTypeList) {
-        const QString name = SAKToolBoxUi::communicationToolName(toolType);
+        const QString name = xToolsToolBoxUi::communicationToolName(toolType);
         QAction* action = new QAction(name, this);
         windowMenu->addAction(action);
         connect(action, &QAction::triggered, this, [=]() {
-            SAKToolBoxUi* w = new SAKToolBoxUi();
+            xToolsToolBoxUi* w = new xToolsToolBoxUi();
             w->setContentsMargins(9, 9, 9, 9);
             w->setAttribute(Qt::WA_DeleteOnClose, true);
             w->initialize(toolType);
@@ -635,10 +635,10 @@ void MainWindow::initNav()
     tb->setAllowedAreas(Qt::LeftToolBarArea);
 
     static QButtonGroup navButtonGroup;
-    QList<int> types = SAKToolBoxUi::supportedCommunicationTools();
+    QList<int> types = xToolsToolBoxUi::supportedCommunicationTools();
     for (int i = 0; i < types.count(); i++) {
         int type = types.at(i);
-        SAKToolBoxUi* toolBoxUi = new SAKToolBoxUi(this);
+        xToolsToolBoxUi* toolBoxUi = new xToolsToolBoxUi(this);
         toolBoxUi->initialize(type);
 
         initNav({&navButtonGroup,

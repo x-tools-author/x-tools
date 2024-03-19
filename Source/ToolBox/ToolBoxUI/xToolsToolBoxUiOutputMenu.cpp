@@ -6,19 +6,20 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saktoolboxuioutputmenu.h"
+#include "xToolsToolBoxUiOutputMenu.h"
+#include "ui_xToolsToolBoxUiOutputMenu.h"
 
 #include <QWidgetAction>
 
 #include "sakhighlighter.h"
 #include "saksettings.h"
-#include "ui_saktoolboxuioutputmenu.h"
 
-SAKToolBoxUiOutputMenu::SAKToolBoxUiOutputMenu(const QString& settingsGroup,
+
+xToolsToolBoxUiOutputMenu::xToolsToolBoxUiOutputMenu(const QString& settingsGroup,
                                                QTextDocument* doc,
                                                QWidget* parent)
     : QMenu(parent)
-    , ui(new Ui::SAKToolBoxUiOutputMenu)
+    , ui(new Ui::xToolsToolBoxUiOutputMenu)
 {
     QWidget* w = new QWidget(this);
     ui->setupUi(w);
@@ -62,12 +63,12 @@ SAKToolBoxUiOutputMenu::SAKToolBoxUiOutputMenu(const QString& settingsGroup,
     });
 }
 
-SAKToolBoxUiOutputMenu::~SAKToolBoxUiOutputMenu()
+xToolsToolBoxUiOutputMenu::~xToolsToolBoxUiOutputMenu()
 {
     delete ui;
 }
 
-QString SAKToolBoxUiOutputMenu::filter()
+QString xToolsToolBoxUiOutputMenu::filter()
 {
     return ui->filter->text().trimmed();
 }

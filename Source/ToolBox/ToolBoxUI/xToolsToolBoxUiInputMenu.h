@@ -6,21 +6,20 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTOOLBOXUIINPUTMENU_H
-#define SAKTOOLBOXUIINPUTMENU_H
+#pragma once
 
 #include <QMenu>
 
 namespace Ui {
-class SAKToolBoxUiInputMenu;
+class xToolsToolBoxUiInputMenu;
 }
 
-class SAKToolBoxUiInputMenu : public QMenu
+class xToolsToolBoxUiInputMenu : public QMenu
 {
     Q_OBJECT
 public:
-    explicit SAKToolBoxUiInputMenu(const QString &settingsGroup, QWidget *parent = nullptr);
-    ~SAKToolBoxUiInputMenu();
+    explicit xToolsToolBoxUiInputMenu(const QString &settingsGroup, QWidget *parent = nullptr);
+    ~xToolsToolBoxUiInputMenu();
 
     struct Parameters
     {
@@ -46,7 +45,5 @@ private:
     Parameters mParameters;
 
 private:
-    Ui::SAKToolBoxUiInputMenu *ui;
+    Ui::xToolsToolBoxUiInputMenu *ui;
 };
-
-#endif // SAKTOOLBOXUIINPUTMENU_H

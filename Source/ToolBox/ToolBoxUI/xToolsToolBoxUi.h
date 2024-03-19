@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTOOLBOXUI_H
-#define SAKTOOLBOXUI_H
+#pragma once
 
 #include <QIcon>
 #include <QList>
@@ -16,30 +15,30 @@
 #include <QWidget>
 
 #include "sakcommunicationtoolui.h"
-#include "saktoolbox.h"
+#include "xToolsToolBox.h"
 
 namespace Ui {
-class SAKToolBoxUi;
+class xToolsToolBoxUi;
 }
 
 class SAKEmitterToolUi;
 class SAKResponserToolUi;
 class SAKPrestorerToolUi;
 class SAKCommunicationTool;
-class SAKToolBoxUiInputMenu;
-class SAKToolBoxUiOutputMenu;
+class xToolsToolBoxUiInputMenu;
+class xToolsToolBoxUiOutputMenu;
 class SAKCommunicationToolUi;
 class SAKTcpTransmitterToolUi;
 class SAKUdpTransmitterToolUi;
-class SAKToolBoxUiCommunicationMenu;
+class xToolsToolBoxUiCommunicationMenu;
 class SAKWebSocketTransmitterToolUi;
 class SAKSerialPortTransmitterToolUi;
-class SAKToolBoxUi : public QWidget
+class xToolsToolBoxUi : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKToolBoxUi(QWidget *parent = nullptr);
-    ~SAKToolBoxUi() override;
+    explicit xToolsToolBoxUi(QWidget *parent = nullptr);
+    ~xToolsToolBoxUi() override;
 
     static QList<int> supportedCommunicationTools();
     static QString communicationToolName(int type);
@@ -48,7 +47,7 @@ public:
     void initialize(int type);
 
 private:
-    SAKToolBox *m_toolBox{nullptr};
+    xToolsToolBox *m_toolBox{nullptr};
     SAKCommunicationTool *m_communication{nullptr};
     SAKCommunicationToolUi *m_communicationUi{nullptr};
     SAKEmitterToolUi *m_emitterUi{nullptr};
@@ -60,9 +59,9 @@ private:
     SAKSerialPortTransmitterToolUi *m_serialPortTransmitterUi{nullptr};
     QTimer *m_cycleSendingTimer{nullptr};
     int m_communicationType;
-    SAKToolBoxUiCommunicationMenu *m_communicationMenu{nullptr};
-    SAKToolBoxUiInputMenu *m_inputMenu{nullptr};
-    SAKToolBoxUiOutputMenu *m_outputMenu{nullptr};
+    xToolsToolBoxUiCommunicationMenu *m_communicationMenu{nullptr};
+    xToolsToolBoxUiInputMenu *m_inputMenu{nullptr};
+    xToolsToolBoxUiOutputMenu *m_outputMenu{nullptr};
 
     struct
     {
@@ -107,7 +106,7 @@ private:
     void initTools();
 
 private:
-    Ui::SAKToolBoxUi *ui;
+    Ui::xToolsToolBoxUi *ui;
     void onTabWidgetCurrentChanged(int index);
 
     // communication
@@ -122,5 +121,3 @@ private:
     // output
     void onCheckBoxOutputWrapClicked();
 };
-
-#endif // SAKTOOLBOXUI_H

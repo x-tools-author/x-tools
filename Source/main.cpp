@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sak.h"
-#include "application.h"
+#include "Application.h"
 
 int main(const int argc, char *argv[])
 {

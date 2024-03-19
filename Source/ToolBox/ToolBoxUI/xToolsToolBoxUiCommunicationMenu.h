@@ -6,33 +6,30 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTOOLBOXUICOMMUNICATIONMENU_H
-#define SAKTOOLBOXUICOMMUNICATIONMENU_H
+#pragma once
 
 #include <QLoggingCategory>
 #include <QMenu>
 #include <QTextDocument>
 
 namespace Ui {
-class SAKToolBoxUiCommunicationMenu;
+class xToolsToolBoxUiCommunicationMenu;
 }
 
-class SAKToolBox;
+class xToolsToolBox;
 class SAKHighlighter;
-class SAKToolBoxUiCommunicationMenu : public QMenu
+class xToolsToolBoxUiCommunicationMenu : public QMenu
 {
     Q_OBJECT
 public:
-    SAKToolBoxUiCommunicationMenu(QWidget *parent = nullptr);
-    ~SAKToolBoxUiCommunicationMenu();
+    xToolsToolBoxUiCommunicationMenu(QWidget *parent = nullptr);
+    ~xToolsToolBoxUiCommunicationMenu();
 
-    void initialize(SAKToolBox *toolBox, const QString &settingsGroup);
+    void initialize(xToolsToolBox *toolBox, const QString &settingsGroup);
 
 private:
     const QLoggingCategory mLoggingCategory{"SAK.CustomBoxUiParameters"};
 
 private:
-    Ui::SAKToolBoxUiCommunicationMenu *ui;
+    Ui::xToolsToolBoxUiCommunicationMenu *ui;
 };
-
-#endif // SAKTOOLBOXUICOMMUNICATIONMENU_H
