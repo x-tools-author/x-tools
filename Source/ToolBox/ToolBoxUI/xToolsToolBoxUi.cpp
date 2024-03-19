@@ -18,7 +18,7 @@
 #include <QMetaEnum>
 #include <QRegularExpression>
 
-#include "sakcommunicationtool.h"
+#include "xToolsCommunicationTool.h"
 #include "sakcrcinterface.h"
 #include "sakdatastructure.h"
 #include "sakemittertoolui.h"
@@ -34,7 +34,7 @@
 #include "xToolsToolBoxUiCommunicationMenu.h"
 #include "xToolsToolBoxUiInputMenu.h"
 #include "xToolsToolBoxUiOutputMenu.h"
-#include "saktoolfactory.h"
+#include "xToolsToolFactory.h"
 #include "sakudptransmittertoolui.h"
 #include "sakuiinterface.h"
 #include "sakwebsockettransmittertoolui.h"
@@ -68,33 +68,33 @@ xToolsToolBoxUi::~xToolsToolBoxUi()
 QList<int> xToolsToolBoxUi::supportedCommunicationTools()
 {
     QList<int> list;
-    list << SAKToolFactory::SerialportTool
+    list << xToolsToolFactory::SerialportTool
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
          << SAKToolFactory::BleCentralTool
 #endif
-         << SAKToolFactory::UdpClientTool << SAKToolFactory::UdpServerTool
-         << SAKToolFactory::TcpClientTool << SAKToolFactory::TcpServerTool
-         << SAKToolFactory::WebSocketClientTool << SAKToolFactory::WebSocketServerTool;
+         << xToolsToolFactory::UdpClientTool << xToolsToolFactory::UdpServerTool
+         << xToolsToolFactory::TcpClientTool << xToolsToolFactory::TcpServerTool
+         << xToolsToolFactory::WebSocketClientTool << xToolsToolFactory::WebSocketServerTool;
     return list;
 }
 
 QString xToolsToolBoxUi::communicationToolName(int type)
 {
-    if (type == SAKToolFactory::SerialportTool) {
+    if (type == xToolsToolFactory::SerialportTool) {
         return tr("SerialPort");
-    } else if (type == SAKToolFactory::UdpClientTool) {
+    } else if (type == xToolsToolFactory::UdpClientTool) {
         return tr("UDP Client");
-    } else if (type == SAKToolFactory::UdpServerTool) {
+    } else if (type == xToolsToolFactory::UdpServerTool) {
         return tr("UDP Server");
-    } else if (type == SAKToolFactory::TcpClientTool) {
+    } else if (type == xToolsToolFactory::TcpClientTool) {
         return tr("TCP Client");
-    } else if (type == SAKToolFactory::TcpServerTool) {
+    } else if (type == xToolsToolFactory::TcpServerTool) {
         return tr("TCP Server");
-    } else if (type == SAKToolFactory::WebSocketClientTool) {
+    } else if (type == xToolsToolFactory::WebSocketClientTool) {
         return tr("WebSocket Client");
-    } else if (type == SAKToolFactory::WebSocketServerTool) {
+    } else if (type == xToolsToolFactory::WebSocketServerTool) {
         return tr("WebSocket Server");
-    } else if (type == SAKToolFactory::BleCentralTool) {
+    } else if (type == xToolsToolFactory::BleCentralTool) {
         return tr("BLE Central");
     } else {
         return "Unknow";
@@ -104,21 +104,21 @@ QString xToolsToolBoxUi::communicationToolName(int type)
 QIcon xToolsToolBoxUi::communicationToolIcon(int type)
 {
     QString fileName;
-    if (type == SAKToolFactory::SerialportTool) {
+    if (type == xToolsToolFactory::SerialportTool) {
         fileName = ":/Resources/Icon/IconSerialPort.svg";
-    } else if (type == SAKToolFactory::UdpClientTool) {
+    } else if (type == xToolsToolFactory::UdpClientTool) {
         fileName = ":/Resources/Icon/IconUdpClient.svg";
-    } else if (type == SAKToolFactory::UdpServerTool) {
+    } else if (type == xToolsToolFactory::UdpServerTool) {
         fileName = ":/Resources/Icon/IconUdpServer.svg";
-    } else if (type == SAKToolFactory::TcpClientTool) {
+    } else if (type == xToolsToolFactory::TcpClientTool) {
         fileName = ":/Resources/Icon/IconTcpClient.svg";
-    } else if (type == SAKToolFactory::TcpServerTool) {
+    } else if (type == xToolsToolFactory::TcpServerTool) {
         fileName = ":/Resources/Icon/IconTcpServer.svg";
-    } else if (type == SAKToolFactory::WebSocketClientTool) {
+    } else if (type == xToolsToolFactory::WebSocketClientTool) {
         fileName = ":/Resources/Icon/IconWebSocketClient.svg";
-    } else if (type == SAKToolFactory::WebSocketServerTool) {
+    } else if (type == xToolsToolFactory::WebSocketServerTool) {
         fileName = ":/Resources/Icon/IconWebSocketServer.svg";
-    } else if (type == SAKToolFactory::BleCentralTool) {
+    } else if (type == xToolsToolFactory::BleCentralTool) {
         fileName = ":/Resources/Icon/IconBlueTooth.svg";
     }
 
@@ -154,19 +154,19 @@ void xToolsToolBoxUi::initialize(int type)
 SAKCommunicationToolUi* xToolsToolBoxUi::communicationToolUi(int type)
 {
     SAKCommunicationToolUi* w = nullptr;
-    if (type == SAKToolFactory::SerialportTool) {
+    if (type == xToolsToolFactory::SerialportTool) {
         w = new SAKSerialPortToolUi();
-    } else if (type == SAKToolFactory::UdpClientTool) {
+    } else if (type == xToolsToolFactory::UdpClientTool) {
         w = new SAKSocketClientToolUi();
-    } else if (type == SAKToolFactory::UdpServerTool) {
+    } else if (type == xToolsToolFactory::UdpServerTool) {
         w = new SAKSocketServerToolUi();
-    } else if (type == SAKToolFactory::TcpClientTool) {
+    } else if (type == xToolsToolFactory::TcpClientTool) {
         w = new SAKSocketClientToolUi();
-    } else if (type == SAKToolFactory::TcpServerTool) {
+    } else if (type == xToolsToolFactory::TcpServerTool) {
         w = new SAKSocketServerToolUi();
-    } else if (type == SAKToolFactory::WebSocketClientTool) {
+    } else if (type == xToolsToolFactory::WebSocketClientTool) {
         w = new SAKSocketClientToolUi();
-    } else if (type == SAKToolFactory::WebSocketServerTool) {
+    } else if (type == xToolsToolFactory::WebSocketServerTool) {
         w = new SAKSocketServerToolUi();
     }
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
@@ -266,21 +266,21 @@ void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bo
 
 QString xToolsToolBoxUi::settingsGroup()
 {
-    if (m_communicationType == SAKToolFactory::SerialportTool) {
+    if (m_communicationType == xToolsToolFactory::SerialportTool) {
         return "SerialportToolBox";
-    } else if (m_communicationType == SAKToolFactory::UdpClientTool) {
+    } else if (m_communicationType == xToolsToolFactory::UdpClientTool) {
         return "UdpClientToolBox";
-    } else if (m_communicationType == SAKToolFactory::UdpServerTool) {
+    } else if (m_communicationType == xToolsToolFactory::UdpServerTool) {
         return "UdpServerTool";
-    } else if (m_communicationType == SAKToolFactory::TcpClientTool) {
+    } else if (m_communicationType == xToolsToolFactory::TcpClientTool) {
         return "TcpClientTool";
-    } else if (m_communicationType == SAKToolFactory::TcpServerTool) {
+    } else if (m_communicationType == xToolsToolFactory::TcpServerTool) {
         return "TcpServerToolBox";
-    } else if (m_communicationType == SAKToolFactory::WebSocketClientTool) {
+    } else if (m_communicationType == xToolsToolFactory::WebSocketClientTool) {
         return "WebSocketClientToolBox";
-    } else if (m_communicationType == SAKToolFactory::WebSocketServerTool) {
+    } else if (m_communicationType == xToolsToolFactory::WebSocketServerTool) {
         return "WebSocketServerToolBox";
-    } else if (m_communicationType == SAKToolFactory::BleCentralTool) {
+    } else if (m_communicationType == xToolsToolFactory::BleCentralTool) {
         return "BleCentralToolBox";
     } else {
         qWarning() << "unknow type of communication tool ui:" << m_communicationType;
@@ -628,10 +628,10 @@ void xToolsToolBoxUi::initTools()
     });
 
     connect(m_communication,
-            &SAKCommunicationTool::bytesWritten,
+            &xToolsCommunicationTool::bytesWritten,
             this,
             &xToolsToolBoxUi::onBytesWritten);
-    connect(m_communication, &SAKCommunicationTool::bytesRead, this, &xToolsToolBoxUi::onBytesRead);
+    connect(m_communication, &xToolsCommunicationTool::bytesRead, this, &xToolsToolBoxUi::onBytesRead);
 
     ui->pushButtonPrestorer->setMenu(m_prestorerUi->menu());
 }

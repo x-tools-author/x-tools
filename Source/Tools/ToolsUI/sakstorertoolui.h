@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSTORERTOOLUI_H
-#define SAKSTORERTOOLUI_H
+#pragma once
 
 #include "sakbasetoolui.h"
 
@@ -15,19 +14,17 @@ namespace Ui {
 class SAKStorerToolUi;
 }
 
-class SAKStorerTool;
+class xToolsStorerTool;
 class SAKStorerToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
 public:
     explicit SAKStorerToolUi(QWidget *parent = nullptr);
     ~SAKStorerToolUi();
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) final;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
     Ui::SAKStorerToolUi *ui{nullptr};
 
     void onPushButtonSelectFileClicked();
 };
-
-#endif // SAKSTORERTOOLUI_H

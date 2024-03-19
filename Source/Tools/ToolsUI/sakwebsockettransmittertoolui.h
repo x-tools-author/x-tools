@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKWEBSOCKETTRANSMITTERTOOLUI_H
-#define SAKWEBSOCKETTRANSMITTERTOOLUI_H
+#pragma once
 
 #include "saksocketclienttransmittertoolui.h"
 
@@ -18,7 +17,5 @@ public:
     SAKWebSocketTransmitterToolUi(QWidget *parent = nullptr);
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
 };
-
-#endif // SAKWEBSOCKETTRANSMITTERTOOLUI_H

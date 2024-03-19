@@ -6,6 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsPrestorerTool.h"
+
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QTimer>
@@ -13,25 +15,24 @@
 #include "sakcrcinterface.h"
 #include "sakdatastructure.h"
 #include "sakinterface.h"
-#include "sakprestorertool.h"
 
-SAKPrestorerTool::SAKPrestorerTool(QObject *parent)
-    : SAKTableModelTool{parent}
+xToolsPrestorerTool::xToolsPrestorerTool(QObject *parent)
+    : xToolsTableModelTool{parent}
 {}
 
-int SAKPrestorerTool::rowCount(const QModelIndex &parent) const
+int xToolsPrestorerTool::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return mItems.count();
 }
 
-int SAKPrestorerTool::columnCount(const QModelIndex &parent) const
+int xToolsPrestorerTool::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     return mTableColumnCount;
 }
 
-QVariant SAKPrestorerTool::data(const QModelIndex &index, int role) const
+QVariant xToolsPrestorerTool::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
@@ -45,7 +46,7 @@ QVariant SAKPrestorerTool::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool SAKPrestorerTool::setData(const QModelIndex &index, const QVariant &value, int role)
+bool xToolsPrestorerTool::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     Q_UNUSED(role);
     int row = index.row();
@@ -86,7 +87,7 @@ bool SAKPrestorerTool::setData(const QModelIndex &index, const QVariant &value, 
     return true;
 }
 
-bool SAKPrestorerTool::insertRows(int row, int count, const QModelIndex &parent)
+bool xToolsPrestorerTool::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
     Item item{};
@@ -97,14 +98,14 @@ bool SAKPrestorerTool::insertRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-bool SAKPrestorerTool::removeRows(int row, int count, const QModelIndex &parent)
+bool xToolsPrestorerTool::removeRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent)
     mItems.remove(row, count);
     return true;
 }
 
-QVariant SAKPrestorerTool::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant xToolsPrestorerTool::headerData(int section, Qt::Orientation orientation, int role) const
 {
     Q_UNUSED(role);
     if (orientation == Qt::Horizontal) {
@@ -139,7 +140,7 @@ QVariant SAKPrestorerTool::headerData(int section, Qt::Orientation orientation, 
     return QVariant("");
 }
 
-QByteArray SAKPrestorerTool::itemBytes(const Item &item)
+QByteArray xToolsPrestorerTool::itemBytes(const Item &item)
 {
     QByteArray bytes;
     QString text = item.itemText;
@@ -165,7 +166,7 @@ QByteArray SAKPrestorerTool::itemBytes(const Item &item)
     return bytes;
 }
 
-QVariant SAKPrestorerTool::columnDisplayRoleData(const Item &item, int column) const
+QVariant xToolsPrestorerTool::columnDisplayRoleData(const Item &item, int column) const
 {
     if (column >= 0 && column < headers().count()) {
         const QString dataKey = headers().at(column);
@@ -199,7 +200,7 @@ QVariant SAKPrestorerTool::columnDisplayRoleData(const Item &item, int column) c
     return QVariant("Error");
 }
 
-QString SAKPrestorerTool::cookHeaderString(const QString &str)
+QString xToolsPrestorerTool::cookHeaderString(const QString &str)
 {
     ItemKeys keys;
     if (str == keys.itemDescription) {
@@ -229,7 +230,7 @@ QString SAKPrestorerTool::cookHeaderString(const QString &str)
     return "--";
 }
 
-QVariant SAKPrestorerTool::itemContext(int index)
+QVariant xToolsPrestorerTool::itemContext(int index)
 {
     QJsonObject ctx;
     mItemsMutex.lock();
@@ -264,14 +265,14 @@ QVariant SAKPrestorerTool::itemContext(int index)
     return ctx;
 }
 
-QString SAKPrestorerTool::description(int index)
+QString xToolsPrestorerTool::description(int index)
 {
     QJsonObject obj = itemContext(index).toJsonObject();
     ItemKeys keys;
     return obj.value(keys.itemDescription).toString();
 }
 
-void SAKPrestorerTool::send(int index)
+void xToolsPrestorerTool::send(int index)
 {
     if (isRunning()) {
         mIndexsMutex.lock();
@@ -280,12 +281,12 @@ void SAKPrestorerTool::send(int index)
     }
 }
 
-void SAKPrestorerTool::inputBytes(const QByteArray &bytes)
+void xToolsPrestorerTool::inputBytes(const QByteArray &bytes)
 {
     Q_UNUSED(bytes)
 }
 
-void SAKPrestorerTool::run()
+void xToolsPrestorerTool::run()
 {
     QTimer *sendTimer = new QTimer();
     sendTimer->setInterval(mScanInterval);
@@ -304,7 +305,7 @@ void SAKPrestorerTool::run()
     }
 }
 
-void SAKPrestorerTool::try2send()
+void xToolsPrestorerTool::try2send()
 {
     mIndexsMutex.lock();
     int index = mIndexs.isEmpty() ? -1 : mIndexs.takeFirst();
@@ -319,62 +320,62 @@ void SAKPrestorerTool::try2send()
     mItemsMutex.unlock();
 }
 
-QString SAKPrestorerTool::itemDescription()
+QString xToolsPrestorerTool::itemDescription()
 {
     return mDataKeys.itemDescription;
 }
 
-QString SAKPrestorerTool::itemTextFormat()
+QString xToolsPrestorerTool::itemTextFormat()
 {
     return mDataKeys.itemTextFormat;
 }
 
-QString SAKPrestorerTool::itemEscapeCharacter()
+QString xToolsPrestorerTool::itemEscapeCharacter()
 {
     return mDataKeys.itemEscapeCharacter;
 }
 
-QString SAKPrestorerTool::itemPrefix()
+QString xToolsPrestorerTool::itemPrefix()
 {
     return mDataKeys.itemPrefix;
 }
 
-QString SAKPrestorerTool::itemSuffix()
+QString xToolsPrestorerTool::itemSuffix()
 {
     return mDataKeys.itemSuffix;
 }
 
-QString SAKPrestorerTool::itemCrcEnable()
+QString xToolsPrestorerTool::itemCrcEnable()
 {
     return mDataKeys.itemCrcEnable;
 }
 
-QString SAKPrestorerTool::itemCrcBigEndian()
+QString xToolsPrestorerTool::itemCrcBigEndian()
 {
     return mDataKeys.itemCrcBigEndian;
 }
 
-QString SAKPrestorerTool::itemCrcAlgorithm()
+QString xToolsPrestorerTool::itemCrcAlgorithm()
 {
     return mDataKeys.itemCrcAlgorithm;
 }
 
-QString SAKPrestorerTool::itemCrcStartIndex()
+QString xToolsPrestorerTool::itemCrcStartIndex()
 {
     return mDataKeys.itemCrcStartIndex;
 }
 
-QString SAKPrestorerTool::itemCrcEndIndex()
+QString xToolsPrestorerTool::itemCrcEndIndex()
 {
     return mDataKeys.itemCrcEndIndex;
 }
 
-QString SAKPrestorerTool::itemText()
+QString xToolsPrestorerTool::itemText()
 {
     return mDataKeys.itemText;
 }
 
-QStringList SAKPrestorerTool::descriptions()
+QStringList xToolsPrestorerTool::descriptions()
 {
     mItemsMutex.lock();
     auto items = mItems;

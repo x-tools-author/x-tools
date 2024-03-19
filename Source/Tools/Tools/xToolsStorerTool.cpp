@@ -6,6 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsStorerTool.h"
+
 #include <QDateTime>
 #include <QDir>
 #include <QFile>
@@ -13,20 +15,19 @@
 #include <Qt>
 
 #include "sakinterface.h"
-#include "sakstorertool.h"
 
-SAKStorerTool::SAKStorerTool(QObject *parent)
-    : SAKBaseTool{parent}
+xToolsStorerTool::xToolsStorerTool(QObject *parent)
+    : xToolsBaseTool{parent}
 {}
 
-SAKStorerTool::~SAKStorerTool()
+xToolsStorerTool::~xToolsStorerTool()
 {
     mInputContextListMutex.lock();
     mInputContextList.clear();
     mInputContextListMutex.unlock();
 }
 
-void SAKStorerTool::inputBytes(const QByteArray &bytes)
+void xToolsStorerTool::inputBytes(const QByteArray &bytes)
 {
     if (isEnable()) {
         mInputContextListMutex.lock();
@@ -35,84 +36,84 @@ void SAKStorerTool::inputBytes(const QByteArray &bytes)
     }
 }
 
-int SAKStorerTool::saveFormat()
+int xToolsStorerTool::saveFormat()
 {
     return mParameters.format;
 }
 
-void SAKStorerTool::setSaveFormat(int format)
+void xToolsStorerTool::setSaveFormat(int format)
 {
     mParameters.format = format;
     emit saveFormatChanged();
 }
 
-bool SAKStorerTool::saveRx()
+bool xToolsStorerTool::saveRx()
 {
     return mParameters.saveRx;
 }
 
-void SAKStorerTool::setSaveRx(bool save)
+void xToolsStorerTool::setSaveRx(bool save)
 {
     mParameters.saveRx = save;
     emit saveRxChanged();
 }
 
-bool SAKStorerTool::saveTx()
+bool xToolsStorerTool::saveTx()
 {
     return mParameters.saveTx;
 }
 
-void SAKStorerTool::setSaveTx(bool save)
+void xToolsStorerTool::setSaveTx(bool save)
 {
     mParameters.saveTx = save;
     emit saveTxChanged();
 }
 
-bool SAKStorerTool::saveDate()
+bool xToolsStorerTool::saveDate()
 {
     return mParameters.saveDate;
 }
 
-void SAKStorerTool::setSaveDate(bool save)
+void xToolsStorerTool::setSaveDate(bool save)
 {
     mParameters.saveDate = save;
     emit saveDateChanged();
 }
 
-bool SAKStorerTool::saveTime()
+bool xToolsStorerTool::saveTime()
 {
     return mParameters.saveTime;
 }
 
-void SAKStorerTool::setSaveTime(bool save)
+void xToolsStorerTool::setSaveTime(bool save)
 {
     mParameters.saveTime = save;
     emit saveTimeChanged();
 }
 
-bool SAKStorerTool::saveMs()
+bool xToolsStorerTool::saveMs()
 {
     return mParameters.saveMs;
 }
 
-void SAKStorerTool::setSaveMs(bool save)
+void xToolsStorerTool::setSaveMs(bool save)
 {
     mParameters.saveMs = save;
     emit saveMsChanged();
 }
 
-QString SAKStorerTool::fileName()
+QString xToolsStorerTool::fileName()
 {
     return mParameters.file;
 }
 
-void SAKStorerTool::setFileName(const QString &name)
+void xToolsStorerTool::setFileName(const QString &name)
 {
     mParameters.file = name;
     emit fileNameChanged();
 }
 
-void SAKStorerTool::run()
+void xToolsStorerTool::run()
 {
     QTimer *writeTimer = new QTimer();
     writeTimer->setInterval(2000);
@@ -132,7 +133,7 @@ void SAKStorerTool::run()
     mInputContextList.clear();
 }
 
-void SAKStorerTool::write2file()
+void xToolsStorerTool::write2file()
 {
     if (mParameters.file.isEmpty()) {
         mInputContextList.clear();

@@ -6,12 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKCOMMUNICATIONTOOLUI_H
-#define SAKCOMMUNICATIONTOOLUI_H
+#pragma once
 
 #include "sakbasetoolui.h"
 
-class SAKCommunicationTool;
+class xToolsCommunicationTool;
 class SAKCommunicationToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
@@ -19,5 +18,3 @@ public:
     explicit SAKCommunicationToolUi(QWidget *parent = nullptr);
     virtual void onIsWorkingChanged(bool isWorking) override;
 };
-
-#endif // SAKCOMMUNICATIONTOOLUI_H

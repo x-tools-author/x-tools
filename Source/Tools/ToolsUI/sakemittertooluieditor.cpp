@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sakemittertooluieditor.h"
-#include "sakemittertool.h"
+#include "xToolsEmitterTool.h"
 #include "ui_sakemittertooluieditor.h"
 
 SAKEmitterToolUiEditor::SAKEmitterToolUiEditor(QWidget *parent)
@@ -43,7 +43,7 @@ QJsonObject SAKEmitterToolUiEditor::parameters()
     int end = ui->spinBoxEndIndex->value();
     QString data = ui->lineEditData->text();
 
-    SAKEmitterTool::DataKeys keys;
+    xToolsEmitterTool::DataKeys keys;
     QJsonObject params;
     params.insert(keys.itemEnable, enable);
     params.insert(keys.itemDescription, description);
@@ -63,7 +63,7 @@ QJsonObject SAKEmitterToolUiEditor::parameters()
 
 void SAKEmitterToolUiEditor::setParameters(const QJsonObject &params)
 {
-    SAKEmitterTool::DataKeys keys;
+    xToolsEmitterTool::DataKeys keys;
     bool enable = params.value(keys.itemEnable).toBool();
     QString description = params.value(keys.itemDescription).toString();
     int format = params.value(keys.itemTextFormat).toInt();

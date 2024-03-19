@@ -6,30 +6,30 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsBaseTool.h"
+
 #include <QDateTime>
 #include <QtGlobal>
 
-#include "sakbasetool.h"
-
-SAKBaseTool::SAKBaseTool(QObject *parent)
+xToolsBaseTool::xToolsBaseTool(QObject *parent)
     : QThread{parent}
 {
-    connect(this, &SAKBaseTool::started, this, [=]() {
+    connect(this, &xToolsBaseTool::started, this, [=]() {
         this->m_isWorking = true;
         emit this->isWorkingChanged();
     });
-    connect(this, &SAKBaseTool::finished, this, [=]() {
+    connect(this, &xToolsBaseTool::finished, this, [=]() {
         this->m_isWorking = false;
         emit this->isWorkingChanged();
     });
-    connect(this, &SAKBaseTool::errorOccurred, this, [=](const QString &errorString) {
+    connect(this, &xToolsBaseTool::errorOccurred, this, [=](const QString &errorString) {
         qWarning() << "Error occured: " << errorString;
         exit();
         wait();
     });
 }
 
-SAKBaseTool::~SAKBaseTool()
+xToolsBaseTool::~xToolsBaseTool()
 {
     if (isRunning()) {
         exit();

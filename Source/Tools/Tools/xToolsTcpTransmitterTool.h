@@ -6,17 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTCPTRANSMITTERTOOL_H
-#define SAKTCPTRANSMITTERTOOL_H
+#pragma once
 
-#include "saksocketclienttransmittertool.h"
+#include "xToolsSocketClientTransmitterTool.h"
 
-class SAKTcpTransmitterTool : public SAKSocketClientTransmitterTool
+class xToolsTcpTransmitterTool : public xToolsSocketClientTransmitterTool
 {
     Q_OBJECT
 public:
-    explicit SAKTcpTransmitterTool(QObject *parent = nullptr);
-    virtual SAKCommunicationTool *createTool() override;
+    explicit xToolsTcpTransmitterTool(QObject *parent = nullptr);
+    virtual xToolsCommunicationTool *createTool() override;
 };
-
-#endif // SAKTCPTRANSMITTERTOOL_H

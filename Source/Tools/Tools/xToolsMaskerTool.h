@@ -6,20 +6,19 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKMASKERTOOL_H
-#define SAKMASKERTOOL_H
+#pragma once
 
 #include <atomic>
 #include <QMutex>
 
-#include "sakbasetool.h"
+#include "xToolsBaseTool.h"
 
-class SAKMaskerTool : public SAKBaseTool
+class xToolsMaskerTool : public xToolsBaseTool
 {
     Q_OBJECT
 public:
-    explicit SAKMaskerTool(QObject *parent = Q_NULLPTR);
-    ~SAKMaskerTool() override;
+    explicit xToolsMaskerTool(QObject *parent = Q_NULLPTR);
+    ~xToolsMaskerTool() override;
 
     void inputBytes(const QByteArray &bytes) override;
 
@@ -33,5 +32,3 @@ private:
     QList<QByteArray> m_inputBytesList;
     QMutex m_inputBytesListMutex;
 };
-
-#endif // SAKMASKERTOOL_H

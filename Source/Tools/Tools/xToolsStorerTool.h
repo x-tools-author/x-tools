@@ -6,15 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSTORERTOOL_H
-#define SAKSTORERTOOL_H
+#pragma once
 
 #include <QMutex>
 #include <QTimer>
 
-#include "sakbasetool.h"
+#include "xToolsBaseTool.h"
 
-class SAKStorerTool : public SAKBaseTool
+class xToolsStorerTool : public xToolsBaseTool
 {
     Q_OBJECT
     Q_PROPERTY(int saveFormat READ saveFormat WRITE setSaveFormat NOTIFY saveFormatChanged)
@@ -25,8 +24,8 @@ class SAKStorerTool : public SAKBaseTool
     Q_PROPERTY(bool saveMs READ saveMs WRITE setSaveMs NOTIFY saveMsChanged)
     Q_PROPERTY(QString fileName READ fileName WRITE setFileName NOTIFY fileNameChanged)
 public:
-    explicit SAKStorerTool(QObject *parent = nullptr);
-    ~SAKStorerTool();
+    explicit xToolsStorerTool(QObject *parent = nullptr);
+    ~xToolsStorerTool();
 
     virtual void inputBytes(const QByteArray &bytes) override;
 
@@ -77,5 +76,3 @@ private:
 private:
     void write2file();
 };
-
-#endif // SAKSTORERTOOL_H

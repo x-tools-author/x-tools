@@ -7,13 +7,13 @@
  * code directory.
  **************************************************************************************************/
 #include "sakbasetoolui.h"
-#include "sakbasetool.h"
+#include "xToolsBaseTool.h"
 
 SAKBaseToolUi::SAKBaseToolUi(QWidget *parent)
     : QWidget{parent}
 {}
 
-void SAKBaseToolUi::initialize(SAKBaseTool *tool,
+void SAKBaseToolUi::initialize(xToolsBaseTool *tool,
                                const QString &settingsGroup,
                                const char *loggingCategory)
 {
@@ -30,7 +30,7 @@ void SAKBaseToolUi::initialize(SAKBaseTool *tool,
         return;
     }
 
-    connect(tool, &SAKBaseTool::isWorkingChanged, this, [=]() {
+    connect(tool, &xToolsBaseTool::isWorkingChanged, this, [=]() {
         onIsWorkingChanged(tool->isWorking());
     });
 
@@ -42,7 +42,7 @@ void SAKBaseToolUi::onIsWorkingChanged(bool isWorking)
     Q_UNUSED(isWorking)
 }
 
-void SAKBaseToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
+void SAKBaseToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     Q_UNUSED(tool)
     Q_UNUSED(settingsGroup)

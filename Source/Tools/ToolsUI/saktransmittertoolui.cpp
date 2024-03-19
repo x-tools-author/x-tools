@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "saktransmittertoolui.h"
-#include "saktransmittertool.h"
+#include "xToolsTransmitterTool.h"
 
 SAKTransmitterToolUi::SAKTransmitterToolUi(const char *lg, QWidget *parent)
     : SAKTableModelToolUi{lg, parent}
@@ -15,13 +15,13 @@ SAKTransmitterToolUi::SAKTransmitterToolUi(const char *lg, QWidget *parent)
 
 void SAKTransmitterToolUi::afterRowEdited(int row)
 {
-    SAKTransmitterTool *cookedTool = Q_NULLPTR;
-    cookedTool = qobject_cast<SAKTransmitterTool *>(mTool);
+    xToolsTransmitterTool *cookedTool = Q_NULLPTR;
+    cookedTool = qobject_cast<xToolsTransmitterTool *>(mTool);
     if (!cookedTool) {
         return;
     }
 
-    SAKCommunicationTool *tool = cookedTool->communicationTool(row);
+    xToolsCommunicationTool *tool = cookedTool->communicationTool(row);
     if (tool) {
         tool->exit();
         tool->wait();

@@ -6,15 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSERIALPORTTRANSMITTERTOOL_H
-#define SAKSERIALPORTTRANSMITTERTOOL_H
+#pragma once
 
 #include <QMutex>
 #include <QVector>
 
-#include "saktransmittertool.h"
+#include "xToolsTransmitterTool.h"
 
-class SAKSerialPortTransmitterTool : public SAKTransmitterTool
+class xToolsSerialPortTransmitterTool : public xToolsTransmitterTool
 {
     Q_OBJECT
 public:
@@ -31,7 +30,7 @@ public:
     };
 
 public:
-    explicit SAKSerialPortTransmitterTool(QObject *parent = nullptr);
+    explicit xToolsSerialPortTransmitterTool(QObject *parent = nullptr);
     virtual QString cookHeaderString(const QString &str) override;
     Q_INVOKABLE virtual QVariant itemContext(int index) override;
     virtual void inputBytes(const QByteArray &bytes) override;
@@ -45,7 +44,5 @@ protected:
     virtual QVariant headerData(int section,
                                 Qt::Orientation orientation,
                                 int role = Qt::DisplayRole) const override;
-    virtual SAKCommunicationTool *createTool() override;
+    virtual xToolsCommunicationTool *createTool() override;
 };
-
-#endif // SAKSERIALPORTTRANSMITTERTOOL_H

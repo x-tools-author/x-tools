@@ -6,58 +6,59 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saktablemodeltool.h"
+#include "xToolsTableModelTool.h"
+
 #include <QJsonArray>
 #include <QJsonDocument>
 
-SAKTableModelTool::SAKTableModelTool(QObject *parent)
-    : SAKBaseTool{parent}
+xToolsTableModelTool::xToolsTableModelTool(QObject *parent)
+    : xToolsBaseTool{parent}
 {
     mTableModel = new SAKTableModel(this);
 
     connect(mTableModel,
             &SAKTableModel::invokeGetRowCount,
             this,
-            &SAKTableModelTool::onInvokeGetRowCount,
+            &xToolsTableModelTool::onInvokeGetRowCount,
             Qt::DirectConnection);
     connect(mTableModel,
             &SAKTableModel::invokeGetColumnCount,
             this,
-            &SAKTableModelTool::onInvokeGetColumnCount,
+            &xToolsTableModelTool::onInvokeGetColumnCount,
             Qt::DirectConnection);
     connect(mTableModel,
             &SAKTableModel::invokeGetData,
             this,
-            &SAKTableModelTool::onInvokeGetData,
+            &xToolsTableModelTool::onInvokeGetData,
             Qt::DirectConnection);
     connect(mTableModel,
             &SAKTableModel::invokeSetData,
             this,
-            &SAKTableModelTool::onInvokeSetData,
+            &xToolsTableModelTool::onInvokeSetData,
             Qt::DirectConnection);
     connect(mTableModel,
             &SAKTableModel::invokeInsertRows,
             this,
-            &SAKTableModelTool::onInvokeInsertRows,
+            &xToolsTableModelTool::onInvokeInsertRows,
             Qt::DirectConnection);
     connect(mTableModel,
             &SAKTableModel::invokeRemoveRows,
             this,
-            &SAKTableModelTool::onInvokeRemoveRows,
+            &xToolsTableModelTool::onInvokeRemoveRows,
             Qt::DirectConnection);
     connect(mTableModel,
             &SAKTableModel::invokeGetHeaderData,
             this,
-            &SAKTableModelTool::onInvokeGetHeaderData,
+            &xToolsTableModelTool::onInvokeGetHeaderData,
             Qt::DirectConnection);
 }
 
-QVariant SAKTableModelTool::tableModel()
+QVariant xToolsTableModelTool::tableModel()
 {
     return QVariant::fromValue(mTableModel);
 }
 
-QStringList SAKTableModelTool::headers() const
+QStringList xToolsTableModelTool::headers() const
 {
     int count = columnCount();
     QStringList strList;
@@ -69,7 +70,7 @@ QStringList SAKTableModelTool::headers() const
     return strList;
 }
 
-void SAKTableModelTool::addItem(const QString &jsonCtx, int index)
+void xToolsTableModelTool::addItem(const QString &jsonCtx, int index)
 {
     QByteArray json = jsonCtx.toUtf8();
     QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
@@ -91,7 +92,7 @@ void SAKTableModelTool::addItem(const QString &jsonCtx, int index)
     }
 }
 
-QVariant SAKTableModelTool::itemsContext()
+QVariant xToolsTableModelTool::itemsContext()
 {
     QJsonArray arr;
     int rowCount = mTableModel->rowCount();
@@ -102,27 +103,27 @@ QVariant SAKTableModelTool::itemsContext()
     return QVariant::fromValue(arr);
 }
 
-QString SAKTableModelTool::cookHeaderString(const QString &str)
+QString xToolsTableModelTool::cookHeaderString(const QString &str)
 {
     return str;
 }
 
-void SAKTableModelTool::onInvokeGetRowCount(int &count)
+void xToolsTableModelTool::onInvokeGetRowCount(int &count)
 {
     count = rowCount();
 }
 
-void SAKTableModelTool::onInvokeGetColumnCount(int &count)
+void xToolsTableModelTool::onInvokeGetColumnCount(int &count)
 {
     count = columnCount();
 }
 
-void SAKTableModelTool::onInvokeGetData(QVariant &data, const QModelIndex &index, int role)
+void xToolsTableModelTool::onInvokeGetData(QVariant &data, const QModelIndex &index, int role)
 {
     data = this->data(index, role);
 }
 
-void SAKTableModelTool::onInvokeSetData(bool &result,
+void xToolsTableModelTool::onInvokeSetData(bool &result,
                                         const QModelIndex &index,
                                         const QVariant &value,
                                         int role)
@@ -130,7 +131,7 @@ void SAKTableModelTool::onInvokeSetData(bool &result,
     result = setData(index, value, role);
 }
 
-void SAKTableModelTool::onInvokeInsertRows(bool &result,
+void xToolsTableModelTool::onInvokeInsertRows(bool &result,
                                            int row,
                                            int count,
                                            const QModelIndex &parent)
@@ -138,7 +139,7 @@ void SAKTableModelTool::onInvokeInsertRows(bool &result,
     result = insertRows(row, count, parent);
 }
 
-void SAKTableModelTool::onInvokeRemoveRows(bool &result,
+void xToolsTableModelTool::onInvokeRemoveRows(bool &result,
                                            int row,
                                            int count,
                                            const QModelIndex &parent)
@@ -146,7 +147,7 @@ void SAKTableModelTool::onInvokeRemoveRows(bool &result,
     result = removeRows(row, count, parent);
 }
 
-void SAKTableModelTool::onInvokeGetHeaderData(QVariant &data,
+void xToolsTableModelTool::onInvokeGetHeaderData(QVariant &data,
                                               int section,
                                               Qt::Orientation orientation,
                                               int role)

@@ -15,7 +15,7 @@
 
 #include "sakmenu.h"
 #include "saksettings.h"
-#include "saktablemodeltool.h"
+#include "xToolsTableModelTool.h"
 #include "saktablemodeltoolui.h"
 #include "sakuiinterface.h"
 
@@ -92,7 +92,7 @@ void SAKTableModelToolUi::setColumnVisible(int column, bool visible)
     }
 }
 
-void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup)
+void SAKTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
 {
     if (!tool) {
         qWarning() << "The value of tool is nullptr!";
@@ -104,7 +104,7 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QStri
         return;
     }
 
-    mTableModelTool = qobject_cast<SAKTableModelTool *>(tool);
+    mTableModelTool = qobject_cast<xToolsTableModelTool *>(tool);
     if (!mTableModelTool) {
         qWarning() << "The value of mTableModelTool is nullptr!";
         return;

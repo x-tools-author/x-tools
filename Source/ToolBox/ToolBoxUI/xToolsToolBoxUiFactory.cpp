@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "xToolsToolBoxUiFactory.h"
 
-#include "saktoolfactory.h"
+#include "xToolsToolFactory.h"
 #if 0
 #include "SAKBleCentralToolBoxUi.h"
 #include "SAKBlePeripheralToolBoxUi.h"
@@ -34,11 +34,11 @@ xToolsToolBoxUiFactory* xToolsToolBoxUiFactory::instance()
 QList<int> xToolsToolBoxUiFactory::supportedTools()
 {
     QList<int> list;
-    list << SAKToolFactory::SerialportTool << SAKToolFactory::UdpClientTool
-         << SAKToolFactory::UdpServerTool << SAKToolFactory::TcpClientTool
-         << SAKToolFactory::TcpServerTool << SAKToolFactory::WebSocketClientTool
-         << SAKToolFactory::WebSocketServerTool << SAKToolFactory::BleCentralTool
-         << SAKToolFactory::BlePeriheral;
+    list << xToolsToolFactory::SerialportTool << xToolsToolFactory::UdpClientTool
+         << xToolsToolFactory::UdpServerTool << xToolsToolFactory::TcpClientTool
+         << xToolsToolFactory::TcpServerTool << xToolsToolFactory::WebSocketClientTool
+         << xToolsToolFactory::WebSocketServerTool << xToolsToolFactory::BleCentralTool
+         << xToolsToolFactory::BlePeriheral;
     return list;
 }
 

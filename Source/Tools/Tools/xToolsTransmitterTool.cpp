@@ -6,21 +6,22 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saktransmittertool.h"
+#include "xToolsTransmitterTool.h"
+
 #include <QTimer>
 
-SAKTransmitterTool::SAKTransmitterTool(QObject *parent)
-    : SAKTableModelTool{parent}
+xToolsTransmitterTool::xToolsTransmitterTool(QObject *parent)
+    : xToolsTableModelTool{parent}
 {
     connect(mTableModel,
             &QAbstractTableModel::dataChanged,
             this,
-            &SAKTransmitterTool::onDataChanged);
+            &xToolsTransmitterTool::onDataChanged);
 }
 
-SAKCommunicationTool *SAKTransmitterTool::communicationTool(int index)
+xToolsCommunicationTool *xToolsTransmitterTool::communicationTool(int index)
 {
-    SAKCommunicationTool *tool = Q_NULLPTR;
+    xToolsCommunicationTool *tool = Q_NULLPTR;
     m_toolsMutex.lock();
     if (index >= 0 && index < m_tools.count()) {
         tool = m_tools.at(index);
@@ -30,7 +31,7 @@ SAKCommunicationTool *SAKTransmitterTool::communicationTool(int index)
     return tool;
 }
 
-void SAKTransmitterTool::inputBytes(const QByteArray &bytes)
+void xToolsTransmitterTool::inputBytes(const QByteArray &bytes)
 {
     m_toolsMutex.lock();
     for (auto tool : m_tools) {
@@ -39,14 +40,14 @@ void SAKTransmitterTool::inputBytes(const QByteArray &bytes)
     m_toolsMutex.unlock();
 }
 
-int SAKTransmitterTool::rowCount(const QModelIndex &parent) const
+int xToolsTransmitterTool::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     int ret = m_tools.length();
     return ret;
 }
 
-bool SAKTransmitterTool::removeRows(int row, int count, const QModelIndex &parent)
+bool xToolsTransmitterTool::removeRows(int row, int count, const QModelIndex &parent)
 {
     if (m_tools.isEmpty()) {
         return true;
@@ -74,17 +75,17 @@ bool SAKTransmitterTool::removeRows(int row, int count, const QModelIndex &paren
     return true;
 }
 
-bool SAKTransmitterTool::insertRows(int row, int count, const QModelIndex &parent)
+bool xToolsTransmitterTool::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent)
 
-    auto initTool = [=](SAKCommunicationTool *tool) {
+    auto initTool = [=](xToolsCommunicationTool *tool) {
         tool->setParent(this);
-        connect(this, &SAKCommunicationTool::outputBytes, tool, &SAKCommunicationTool::inputBytes);
-        connect(this, &SAKCommunicationTool::started, tool, [=]() { tool->start(); });
-        connect(this, &SAKCommunicationTool::finished, tool, [=]() { tool->exit(); });
+        connect(this, &xToolsCommunicationTool::outputBytes, tool, &xToolsCommunicationTool::inputBytes);
+        connect(this, &xToolsCommunicationTool::started, tool, [=]() { tool->start(); });
+        connect(this, &xToolsCommunicationTool::finished, tool, [=]() { tool->exit(); });
 
-        connect(tool, &SAKCommunicationTool::finished, this, [=]() {
+        connect(tool, &xToolsCommunicationTool::finished, this, [=]() {
             // Reboot the transmitter thread if tool box is wroking.
             if (this->isRunning()) {
                 QTimer::singleShot(1 * 1000, tool, [=]() {
@@ -106,7 +107,7 @@ bool SAKTransmitterTool::insertRows(int row, int count, const QModelIndex &paren
     return true;
 }
 
-void SAKTransmitterTool::onDataChanged(const QModelIndex &topLeft,
+void xToolsTransmitterTool::onDataChanged(const QModelIndex &topLeft,
                                        const QModelIndex &bottomRight,
                                        const QVector<int> &roles)
 {

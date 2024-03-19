@@ -16,7 +16,7 @@ SAKSerialPortTransmitterToolUi::SAKSerialPortTransmitterToolUi(QWidget *parent)
     mEditor = new SAKSerialPortTransmitterToolUiEditor(SAKUiInterface::mainWindow());
 }
 
-void SAKSerialPortTransmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+void SAKSerialPortTransmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
                                                              const QString &settingGroup)
 {
     SAKTransmitterToolUi::SAKTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);

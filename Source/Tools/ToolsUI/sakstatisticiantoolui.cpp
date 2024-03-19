@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sakstatisticiantoolui.h"
-#include "sakstatisticiantool.h"
+#include "xToolsStatisticianTool.h"
 #include "ui_sakstatisticiantoolui.h"
 
 SAKStatisticianToolUi::SAKStatisticianToolUi(QWidget *parent)
@@ -22,7 +22,7 @@ SAKStatisticianToolUi::~SAKStatisticianToolUi()
     delete ui;
 }
 
-void SAKStatisticianToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
+void SAKStatisticianToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     Q_UNUSED(settingsGroup)
 
@@ -34,18 +34,18 @@ void SAKStatisticianToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QSt
         return;
     }
 
-    auto cookedTool = qobject_cast<SAKStatisticianTool *>(tool);
+    auto cookedTool = qobject_cast<xToolsStatisticianTool *>(tool);
     if (!cookedTool) {
         return;
     }
 
-    connect(cookedTool, &SAKStatisticianTool::bytesChanged, this, [=](int bytes) {
+    connect(cookedTool, &xToolsStatisticianTool::bytesChanged, this, [=](int bytes) {
         ui->labelBytes->setText(QString::number(bytes));
     });
-    connect(cookedTool, &SAKStatisticianTool::framesChanged, this, [=](int frames) {
+    connect(cookedTool, &xToolsStatisticianTool::framesChanged, this, [=](int frames) {
         ui->labelFrames->setText(QString::number(frames));
     });
-    connect(cookedTool, &SAKStatisticianTool::started, this, [=]() {
+    connect(cookedTool, &xToolsStatisticianTool::started, this, [=]() {
         ui->labelBytes->setText(QString::number(0));
         ui->labelFrames->setText(QString::number(0));
     });

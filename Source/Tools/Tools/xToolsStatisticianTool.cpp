@@ -6,12 +6,12 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakstatisticiantool.h"
+#include "xToolsStatisticianTool.h"
 
-SAKStatisticianTool::SAKStatisticianTool(QObject *parent)
-    : SAKBaseTool{parent}
+xToolsStatisticianTool::xToolsStatisticianTool(QObject *parent)
+    : xToolsBaseTool{parent}
 {
-    connect(this, &SAKStatisticianTool::started, this, [=]() {
+    connect(this, &xToolsStatisticianTool::started, this, [=]() {
         this->mFrames = 0;
         this->mBytes = 0;
 
@@ -20,7 +20,7 @@ SAKStatisticianTool::SAKStatisticianTool(QObject *parent)
     });
 }
 
-void SAKStatisticianTool::inputBytes(const QByteArray &bytes)
+void xToolsStatisticianTool::inputBytes(const QByteArray &bytes)
 {
     mFrames += 1;
     emit framesChanged(mFrames);
@@ -29,7 +29,7 @@ void SAKStatisticianTool::inputBytes(const QByteArray &bytes)
     emit bytesChanged(mBytes);
 }
 
-void SAKStatisticianTool::run()
+void xToolsStatisticianTool::run()
 {
     exec();
 }

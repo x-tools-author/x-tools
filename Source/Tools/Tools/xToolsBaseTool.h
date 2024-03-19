@@ -6,22 +6,21 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKBASETOOL_H
-#define SAKBASETOOL_H
+#pragma once
 
 #include <atomic>
 #include <QJsonObject>
 #include <QLoggingCategory>
 #include <QThread>
 
-class SAKBaseTool : public QThread
+class xToolsBaseTool : public QThread
 {
     Q_OBJECT
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
     Q_PROPERTY(bool isEnable READ isEnable WRITE setIsEnable NOTIFY isEnableChanged)
 public:
-    explicit SAKBaseTool(QObject *parent = Q_NULLPTR);
-    virtual ~SAKBaseTool();
+    explicit xToolsBaseTool(QObject *parent = Q_NULLPTR);
+    virtual ~xToolsBaseTool();
     virtual void inputBytes(const QByteArray &bytes) = 0;
 
     int toolType() { return m_type; }
@@ -49,5 +48,3 @@ signals:
     void isWorkingChanged();
     void isEnableChanged();
 };
-
-#endif // SAKBASETOOL_H

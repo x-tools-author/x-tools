@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "saksocketclienttransmittertooluieditor.h"
-#include "saksocketclienttransmittertool.h"
+#include "xToolsSocketClientTransmitterTool.h"
 #include "ui_saksocketclienttransmittertooluieditor.h"
 
 SAKSocketClientTransmitterToolUiEditor::SAKSocketClientTransmitterToolUiEditor(QWidget *parent)
@@ -52,7 +52,7 @@ QJsonObject SAKSocketClientTransmitterToolUiEditor::parameters()
     int messageType = ui->comboBoxMessageType->currentData().toInt();
 
     QJsonObject obj;
-    SAKSocketClientTransmitterTool::ItemContextKeys keys;
+    xToolsSocketClientTransmitterTool::ItemContextKeys keys;
     obj.insert(keys.enable, enable);
     obj.insert(keys.clientIp, clientIp);
     obj.insert(keys.clientPort, clientPort);
@@ -65,7 +65,7 @@ QJsonObject SAKSocketClientTransmitterToolUiEditor::parameters()
 
 void SAKSocketClientTransmitterToolUiEditor::setParameters(const QJsonObject &params)
 {
-    SAKSocketClientTransmitterTool::ItemContextKeys keys;
+    xToolsSocketClientTransmitterTool::ItemContextKeys keys;
     bool enable = params.value(keys.enable).toBool();
     QString clientIp = params.value(keys.clientIp).toString();
     int clientPort = params.value(keys.clientPort).toInt();

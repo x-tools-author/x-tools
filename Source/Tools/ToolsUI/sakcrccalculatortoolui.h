@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKCRCCALCULATORTOOLUI_H
-#define SAKCRCCALCULATORTOOLUI_H
+#pragma once
 
 #include "sakbasetoolui.h"
 
@@ -24,10 +23,8 @@ public:
 
 protected:
     void onIsWorkingChanged(bool isWorking) override;
-    void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) override;
+    void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) override;
 
 private:
     Ui::SAKCrcCalculatorToolUi *ui;
 };
-
-#endif // SAKCRCCALCULATORTOOLUI_H

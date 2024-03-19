@@ -6,12 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSOCKETCLIENTTOOL_H
-#define SAKSOCKETCLIENTTOOL_H
+#pragma once
 
-#include "sakcommunicationtool.h"
+#include "xToolsCommunicationTool.h"
 
-class SAKSocketClientTool : public SAKCommunicationTool
+class xToolsSocketClientTool : public xToolsCommunicationTool
 {
     Q_OBJECT
     // clang-format off
@@ -25,7 +24,7 @@ class SAKSocketClientTool : public SAKCommunicationTool
     Q_PROPERTY(int messageType READ messageType WRITE setMessageType NOTIFY messageTypeChanged)
     // clang-format on
 public:
-    explicit SAKSocketClientTool(QObject *parent = nullptr);
+    explicit xToolsSocketClientTool(QObject *parent = nullptr);
 
 public:
     QString clientIp();
@@ -60,5 +59,3 @@ signals:
     void bindingIpPortChanged();
     void messageTypeChanged();
 };
-
-#endif // SAKSOCKETCLIENTTOOL_H

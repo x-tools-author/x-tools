@@ -6,25 +6,25 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsEmitterTool.h"
+
 #include <QJsonDocument>
 #include <QJsonObject>
-
-#include "sakemittertool.h"
 
 #include "sakcrcinterface.h"
 #include "sakdatastructure.h"
 #include "sakinterface.h"
 
-SAKEmitterTool::SAKEmitterTool(QObject *parent)
-    : SAKTableModelTool{parent}
+xToolsEmitterTool::xToolsEmitterTool(QObject *parent)
+    : xToolsTableModelTool{parent}
 {}
 
-void SAKEmitterTool::inputBytes(const QByteArray &bytes)
+void xToolsEmitterTool::inputBytes(const QByteArray &bytes)
 {
     Q_UNUSED(bytes)
 }
 
-QVariant SAKEmitterTool::itemContext(int index)
+QVariant xToolsEmitterTool::itemContext(int index)
 {
     QJsonObject ctx;
     mItemsMutex.lock();
@@ -63,7 +63,7 @@ QVariant SAKEmitterTool::itemContext(int index)
     return ctx;
 }
 
-QString SAKEmitterTool::cookHeaderString(const QString &str)
+QString xToolsEmitterTool::cookHeaderString(const QString &str)
 {
     DataKeys keys;
     if (str == keys.itemEnable) {
@@ -97,19 +97,19 @@ QString SAKEmitterTool::cookHeaderString(const QString &str)
     return "--";
 }
 
-int SAKEmitterTool::rowCount(const QModelIndex &parent) const
+int xToolsEmitterTool::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return mItems.count();
 }
 
-int SAKEmitterTool::columnCount(const QModelIndex &parent) const
+int xToolsEmitterTool::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return mTableColumnCount;
 }
 
-QVariant SAKEmitterTool::data(const QModelIndex &index, int role) const
+QVariant xToolsEmitterTool::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
@@ -123,7 +123,7 @@ QVariant SAKEmitterTool::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool SAKEmitterTool::setData(const QModelIndex &index, const QVariant &value, int role)
+bool xToolsEmitterTool::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     Q_UNUSED(role);
     int row = index.row();
@@ -169,7 +169,7 @@ bool SAKEmitterTool::setData(const QModelIndex &index, const QVariant &value, in
     return true;
 }
 
-bool SAKEmitterTool::insertRows(int row, int count, const QModelIndex &parent)
+bool xToolsEmitterTool::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
     Data ctx;
@@ -183,14 +183,14 @@ bool SAKEmitterTool::insertRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-bool SAKEmitterTool::removeRows(int row, int count, const QModelIndex &parent)
+bool xToolsEmitterTool::removeRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent)
     mItems.remove(row, count);
     return true;
 }
 
-QVariant SAKEmitterTool::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant xToolsEmitterTool::headerData(int section, Qt::Orientation orientation, int role) const
 {
     Q_UNUSED(role);
     if (orientation == Qt::Horizontal) {
@@ -229,7 +229,7 @@ QVariant SAKEmitterTool::headerData(int section, Qt::Orientation orientation, in
     return QVariant("");
 }
 
-void SAKEmitterTool::run()
+void xToolsEmitterTool::run()
 {
     mEmittingTimer = new QTimer();
     mEmittingTimer->setInterval(mScanInterval);
@@ -246,7 +246,7 @@ void SAKEmitterTool::run()
     }
 }
 
-void SAKEmitterTool::try2emit()
+void xToolsEmitterTool::try2emit()
 {
     mItemsMutex.lock();
     for (auto &item : mItems) {
@@ -261,7 +261,7 @@ void SAKEmitterTool::try2emit()
     mEmittingTimer->start();
 }
 
-QByteArray SAKEmitterTool::itemBytes(const SAKEmitterTool::Data &item)
+QByteArray xToolsEmitterTool::itemBytes(const xToolsEmitterTool::Data &item)
 {
     QByteArray bytes;
     QString text = item.itemText;
@@ -285,11 +285,11 @@ QByteArray SAKEmitterTool::itemBytes(const SAKEmitterTool::Data &item)
     return bytes;
 }
 
-QVariant SAKEmitterTool::columnDisplayRoleData(const SAKEmitterTool::EmitterItem &item,
+QVariant xToolsEmitterTool::columnDisplayRoleData(const xToolsEmitterTool::EmitterItem &item,
                                                int column) const
 {
     DataKeys keys;
-    QStringList hs = const_cast<SAKEmitterTool *>(this)->headers();
+    QStringList hs = const_cast<xToolsEmitterTool *>(this)->headers();
     if (column >= 0 && column < hs.count()) {
         const QString dataKey = hs.at(column);
         if (dataKey == mDataKeys.itemEnable) {
@@ -327,67 +327,67 @@ QVariant SAKEmitterTool::columnDisplayRoleData(const SAKEmitterTool::EmitterItem
     return QVariant("Error");
 }
 
-QString SAKEmitterTool::itemEnable()
+QString xToolsEmitterTool::itemEnable()
 {
     return mDataKeys.itemEnable;
 }
 
-QString SAKEmitterTool::itemDescription()
+QString xToolsEmitterTool::itemDescription()
 {
     return mDataKeys.itemDescription;
 }
 
-QString SAKEmitterTool::itemTextFormat()
+QString xToolsEmitterTool::itemTextFormat()
 {
     return mDataKeys.itemTextFormat;
 }
 
-QString SAKEmitterTool::itemEscapeCharacter()
+QString xToolsEmitterTool::itemEscapeCharacter()
 {
     return mDataKeys.itemEscapeCharacter;
 }
 
-QString SAKEmitterTool::itemInterval()
+QString xToolsEmitterTool::itemInterval()
 {
     return mDataKeys.itemInterval;
 }
 
-QString SAKEmitterTool::itemPrefix()
+QString xToolsEmitterTool::itemPrefix()
 {
     return mDataKeys.itemPrefix;
 }
 
-QString SAKEmitterTool::itemSuffix()
+QString xToolsEmitterTool::itemSuffix()
 {
     return mDataKeys.itemSuffix;
 }
 
-QString SAKEmitterTool::itemCrcEnable()
+QString xToolsEmitterTool::itemCrcEnable()
 {
     return mDataKeys.itemCrcEnable;
 }
 
-QString SAKEmitterTool::itemCrcBigEndian()
+QString xToolsEmitterTool::itemCrcBigEndian()
 {
     return mDataKeys.itemCrcBigEndian;
 }
 
-QString SAKEmitterTool::itemCrcAlgorithm()
+QString xToolsEmitterTool::itemCrcAlgorithm()
 {
     return mDataKeys.itemCrcAlgorithm;
 }
 
-QString SAKEmitterTool::itemCrcStartIndex()
+QString xToolsEmitterTool::itemCrcStartIndex()
 {
     return mDataKeys.itemCrcStartIndex;
 }
 
-QString SAKEmitterTool::itemCrcEndIndex()
+QString xToolsEmitterTool::itemCrcEndIndex()
 {
     return mDataKeys.itemCrcEndIndex;
 }
 
-QString SAKEmitterTool::itemText()
+QString xToolsEmitterTool::itemText()
 {
     return mDataKeys.itemText;
 }

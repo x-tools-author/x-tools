@@ -6,16 +6,17 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakcommunicationtool.h"
+#include "xToolsCommunicationTool.h"
+
 #include <QTimer>
 
-SAKCommunicationTool::SAKCommunicationTool(QObject *parent)
-    : SAKBaseTool{parent}
+xToolsCommunicationTool::xToolsCommunicationTool(QObject *parent)
+    : xToolsBaseTool{parent}
 {}
 
-SAKCommunicationTool::~SAKCommunicationTool() {}
+xToolsCommunicationTool::~xToolsCommunicationTool() {}
 
-void SAKCommunicationTool::inputBytes(const QByteArray &bytes)
+void xToolsCommunicationTool::inputBytes(const QByteArray &bytes)
 {
     if (!isEnable()) {
         return;
@@ -26,7 +27,7 @@ void SAKCommunicationTool::inputBytes(const QByteArray &bytes)
     m_inputBytesMutex.unlock();
 }
 
-void SAKCommunicationTool::run()
+void xToolsCommunicationTool::run()
 {
     QString errStr;
     if (!initialize(errStr)) {

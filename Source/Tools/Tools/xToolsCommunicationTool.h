@@ -6,19 +6,18 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKCOMMUNICATIONTOOL_H
-#define SAKCOMMUNICATIONTOOL_H
+#pragma once
 
-#include "sakbasetool.h"
+#include "xToolsBaseTool.h"
 
 #include <QMutex>
 
-class SAKCommunicationTool : public SAKBaseTool
+class xToolsCommunicationTool : public xToolsBaseTool
 {
     Q_OBJECT
 public:
-    explicit SAKCommunicationTool(QObject *parent = nullptr);
-    ~SAKCommunicationTool() override;
+    explicit xToolsCommunicationTool(QObject *parent = nullptr);
+    ~xToolsCommunicationTool() override;
     Q_INVOKABLE void inputBytes(const QByteArray &bytes) override;
 
 signals:
@@ -36,5 +35,3 @@ private:
     QList<QByteArray> m_inputBytesList;
     QMutex m_inputBytesMutex;
 };
-
-#endif // SAKCOMMUNICATIONTOOL_H

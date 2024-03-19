@@ -6,18 +6,18 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saktcpclienttool.h"
+#include "xToolsTcpClientTool.h"
 
 #include <QHostAddress>
 
 #include "sakcompatibility.h"
 #include "sakinterface.h"
 
-SAKTcpClientTool::SAKTcpClientTool(QObject* parent)
-    : SAKSocketClientTool{parent}
+xToolsTcpClientTool::xToolsTcpClientTool(QObject* parent)
+    : xToolsSocketClientTool{parent}
 {}
 
-bool SAKTcpClientTool::initialize(QString& errStr)
+bool xToolsTcpClientTool::initialize(QString& errStr)
 {
     mTcpSocket = new QTcpSocket();
     if (m_specifyClientIpPort) {
@@ -52,7 +52,7 @@ bool SAKTcpClientTool::initialize(QString& errStr)
     return true;
 }
 
-void SAKTcpClientTool::writeBytes(const QByteArray& bytes)
+void xToolsTcpClientTool::writeBytes(const QByteArray& bytes)
 {
     qint64 ret = mTcpSocket->write(bytes);
     if (ret == -1) {
@@ -62,7 +62,7 @@ void SAKTcpClientTool::writeBytes(const QByteArray& bytes)
     }
 }
 
-void SAKTcpClientTool::uninitialize()
+void xToolsTcpClientTool::uninitialize()
 {
     mTcpSocket->disconnectFromHost();
     mTcpSocket->close();
@@ -70,7 +70,7 @@ void SAKTcpClientTool::uninitialize()
     mTcpSocket = nullptr;
 }
 
-void SAKTcpClientTool::readBytes()
+void xToolsTcpClientTool::readBytes()
 {
     QHostAddress address = mTcpSocket->peerAddress();
     quint16 port = mTcpSocket->peerPort();

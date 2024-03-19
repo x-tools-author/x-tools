@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKRESPONSERTOOLUI_H
-#define SAKRESPONSERTOOLUI_H
+#pragma once
 
 #include <QWidget>
 
@@ -22,12 +21,10 @@ public:
     ~SAKResponserToolUi();
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
     virtual QList<int> defaultHideColumns() override;
     virtual QDialog *itemEditor() override;
 
 private:
     SAKResponserToolUiEditor *mEditor{nullptr};
 };
-
-#endif // SAKRESPONSERTOOL_HH

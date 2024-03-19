@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSERIALPORTTOOLBOXUI_HH
-#define SAKSERIALPORTTOOLBOXUI_HH
+#pragma once
 
 #include "sakcommunicationtoolui.h"
 #include <QLoggingCategory>
@@ -16,17 +15,17 @@ namespace Ui {
 class SAKSerialPortToolUi;
 }
 
-class SAKSerialPortTool;
+class xToolsSerialPortTool;
 class SAKSerialPortToolUi : public SAKCommunicationToolUi
 {
     Q_OBJECT
 public:
     explicit SAKSerialPortToolUi(QWidget *parent = nullptr);
     ~SAKSerialPortToolUi();
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) final;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
-    SAKSerialPortTool *mTool{nullptr};
+    xToolsSerialPortTool *mTool{nullptr};
     const QLoggingCategory mLoggingCategory{"sak.serialporttoolui"};
 
 private:
@@ -42,5 +41,3 @@ private:
     void onComboBoxParityCurrentIndexChanged();
     void onComboBoxFlowControlCurrentIndexChanged();
 };
-
-#endif // SAKSerialPortToolUi_HH

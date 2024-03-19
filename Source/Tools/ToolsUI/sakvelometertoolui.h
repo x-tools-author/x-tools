@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKVELOMETERTOOLUI_H
-#define SAKVELOMETERTOOLUI_H
+#pragma once
 
 #include "sakbasetoolui.h"
 #include <QLoggingCategory>
@@ -24,11 +23,9 @@ public:
     ~SAKVelometerToolUi();
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) final;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
     const QLoggingCategory mLoggingCategory{"sak.velometertoolui"};
     Ui::SAKVelometerToolUi *ui;
 };
-
-#endif // SAKVELOMETERTOOLUI_H

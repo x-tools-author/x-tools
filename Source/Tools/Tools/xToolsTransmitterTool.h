@@ -6,20 +6,19 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTRANSMITTERTOOL_H
-#define SAKTRANSMITTERTOOL_H
+#pragma once
 
 #include <QMutex>
 
-#include "sakcommunicationtool.h"
-#include "saktablemodeltool.h"
+#include "xToolsCommunicationTool.h"
+#include "xToolsTableModelTool.h"
 
-class SAKTransmitterTool : public SAKTableModelTool
+class xToolsTransmitterTool : public xToolsTableModelTool
 {
     Q_OBJECT
 public:
-    explicit SAKTransmitterTool(QObject *parent = nullptr);
-    SAKCommunicationTool *communicationTool(int index);
+    explicit xToolsTransmitterTool(QObject *parent = nullptr);
+    xToolsCommunicationTool *communicationTool(int index);
 
     void inputBytes(const QByteArray &bytes) override;
 
@@ -30,10 +29,10 @@ protected:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
     bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
-    virtual SAKCommunicationTool *createTool() = 0;
+    virtual xToolsCommunicationTool *createTool() = 0;
 
 protected:
-    QVector<SAKCommunicationTool *> m_tools;
+    QVector<xToolsCommunicationTool *> m_tools;
     QMutex m_toolsMutex;
 
 private:
@@ -41,5 +40,3 @@ private:
                        const QModelIndex &bottomRight,
                        const QVector<int> &roles = QVector<int>());
 };
-
-#endif // SAKTRANSMITTERTOOL_H

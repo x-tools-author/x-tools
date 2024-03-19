@@ -6,16 +6,17 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsTcpServerTool.h"
+
 #include <QTcpSocket>
 
 #include "sakcompatibility.h"
-#include "saktcpservertool.h"
 
-SAKTcpServerTool::SAKTcpServerTool(QObject *parent)
-    : SAKSocketServerTool{parent}
+xToolsTcpServerTool::xToolsTcpServerTool(QObject *parent)
+    : xToolsSocketServerTool{parent}
 {}
 
-bool SAKTcpServerTool::initialize(QString &errStr)
+bool xToolsTcpServerTool::initialize(QString &errStr)
 {
     m_tcpServer = new QTcpServer();
     if (!m_tcpServer->listen(QHostAddress(m_serverIp), m_serverPort)) {
@@ -72,7 +73,7 @@ bool SAKTcpServerTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKTcpServerTool::writeBytes(const QByteArray &bytes)
+void xToolsTcpServerTool::writeBytes(const QByteArray &bytes)
 {
     if (m_clientIndex >= 0 && m_clientIndex < m_tcpSocketList.length()) {
         QTcpSocket *client = m_tcpSocketList.at(m_clientIndex);
@@ -84,14 +85,14 @@ void SAKTcpServerTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void SAKTcpServerTool::uninitialize()
+void xToolsTcpServerTool::uninitialize()
 {
     m_tcpServer->close();
     m_tcpServer->deleteLater();
     m_tcpServer = nullptr;
 }
 
-void SAKTcpServerTool::writeBytesInner(QTcpSocket *client, const QByteArray &bytes)
+void xToolsTcpServerTool::writeBytesInner(QTcpSocket *client, const QByteArray &bytes)
 {
     qint64 ret = client->write(bytes);
     if (ret == -1) {

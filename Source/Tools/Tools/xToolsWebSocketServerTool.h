@@ -6,17 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKWEBSOCKETSERVERTOOL_H
-#define SAKWEBSOCKETSERVERTOOL_H
+#pragma once
 
-#include "saksocketservertool.h"
+#include "xToolsSocketServerTool.h"
 #include <QWebSocketServer>
 
-class SAKWebSocketServerTool : public SAKSocketServerTool
+class xToolsWebSocketServerTool : public xToolsSocketServerTool
 {
     Q_OBJECT
 public:
-    explicit SAKWebSocketServerTool(QObject *parent = nullptr);
+    explicit xToolsWebSocketServerTool(QObject *parent = nullptr);
 
 protected:
     virtual bool initialize(QString &errStr) final;
@@ -30,5 +29,3 @@ private:
     QWebSocketServer *mWebSocketServer{nullptr};
     QList<QWebSocket *> mWebSocketList;
 };
-
-#endif // SAKWEBSOCKETSERVERTOOL_H

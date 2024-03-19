@@ -21,7 +21,7 @@ QDialog *SAKSocketClientTransmitterToolUi::itemEditor()
     return mEditor;
 }
 
-void SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+void SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
                                                                const QString &settingGroup)
 {
     SAKTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);

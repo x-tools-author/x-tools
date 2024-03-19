@@ -6,19 +6,18 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTABLEMODELTOOL_H
-#define SAKTABLEMODELTOOL_H
+#pragma once
 
-#include "sakbasetool.h"
+#include "xToolsBaseTool.h"
 #include "saktablemodel.h"
 
-class SAKTableModelTool : public SAKBaseTool
+class xToolsTableModelTool : public xToolsBaseTool
 {
     Q_OBJECT
     Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
     Q_PROPERTY(QStringList headers READ headers CONSTANT)
 public:
-    explicit SAKTableModelTool(QObject *parent = nullptr);
+    explicit xToolsTableModelTool(QObject *parent = nullptr);
     QVariant tableModel();
     QStringList headers() const;
 
@@ -64,5 +63,3 @@ private:
                                Qt::Orientation orientation,
                                int role = Qt::DisplayRole);
 };
-
-#endif // SAKTABLEMODELTOOL_H

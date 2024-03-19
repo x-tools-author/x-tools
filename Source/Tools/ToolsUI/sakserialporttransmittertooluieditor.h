@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSERIALPORTTRANSMITTERTOOLUIEDITOR_H
-#define SAKSERIALPORTTRANSMITTERTOOLUIEDITOR_H
+#pragma once
 
 #include <QDialog>
 #include <QJsonObject>
@@ -30,5 +29,3 @@ public:
 private:
     Ui::SAKSerialPortTransmitterToolUiEditor *ui;
 };
-
-#endif // SAKSERIALPORTTRANSMITTERTOOLUIEDITOR_H

@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSOCKETSERVERTOOLUI_H
-#define SAKSOCKETSERVERTOOLUI_H
+#pragma once
 
 #include "sakcommunicationtoolui.h"
 #include <QLoggingCategory>
@@ -16,7 +15,7 @@ namespace Ui {
 class SAKSocketServerToolUi;
 }
 
-class SAKSocketServerTool;
+class xToolsSocketServerTool;
 class SAKSocketServerToolUi : public SAKCommunicationToolUi
 {
     Q_OBJECT
@@ -24,10 +23,10 @@ public:
     explicit SAKSocketServerToolUi(QWidget *parent = nullptr);
     ~SAKSocketServerToolUi();
     virtual void onIsWorkingChanged(bool isWorking) final;
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) final;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
-    SAKSocketServerTool *mTool{nullptr};
+    xToolsSocketServerTool *mTool{nullptr};
     const QLoggingCategory mLoggingCategory{"sak.socketservertoolui"};
 
 private:
@@ -39,5 +38,3 @@ private:
     void onComboBoxMessageTypeIndexChanged();
     void onCheckBoxSpecifyIpAndPortClicked();
 };
-
-#endif // SAKSOCKETSERVERTOOLUI_H

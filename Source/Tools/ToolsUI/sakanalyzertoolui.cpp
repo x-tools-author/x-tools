@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "sakanalyzertoolui.h"
 
-#include "sakanalyzertool.h"
+#include "xToolsAnalyzerTool.h"
 #include "sakdatastructure.h"
 #include "sakinterface.h"
 #include "sakuiinterface.h"
@@ -26,7 +26,7 @@ void SAKAnalyzerToolUi::setToolName(const QString &name)
     ui->groupBox->setTitle(name);
 }
 
-void SAKAnalyzerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
+void SAKAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     int format = SAKDataStructure::TextFormatHex;
     SAKUiInterface::setValidator(ui->lineEditSeparationMark, format);
@@ -37,7 +37,7 @@ void SAKAnalyzerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString
     ui->spinBoxMaxTempBytes->setGroupKey(settingsGroup, "maxTempBytes");
     ui->lineEditSeparationMark->setGroupKey(settingsGroup, "separationMark");
 
-    auto cookedTool = qobject_cast<SAKAnalyzerTool *>(tool);
+    auto cookedTool = qobject_cast<xToolsAnalyzerTool *>(tool);
     static QByteArray tips("invalid SAKAnalyzerTool");
     Q_ASSERT_X(cookedTool, __FUNCTION__, tips.constData());
     if (!cookedTool) {

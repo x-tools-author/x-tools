@@ -6,12 +6,12 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakcrccalculatortool.h"
+#include "xToolsCrcCalculatorTool.h"
 
 #include "sakcrcinterface.h"
 
-SAKCrcCalculatorTool::SAKCrcCalculatorTool(QObject *parent)
-    : SAKBaseTool(parent)
+xToolsCrcCalculatorTool::xToolsCrcCalculatorTool(QObject *parent)
+    : xToolsBaseTool(parent)
 {
     m_startIndex = 0;
     m_endIndex = 0;
@@ -20,49 +20,49 @@ SAKCrcCalculatorTool::SAKCrcCalculatorTool(QObject *parent)
     m_crcInterface = new SAKCrcInterface(this);
 }
 
-SAKCrcCalculatorTool::~SAKCrcCalculatorTool() {}
+xToolsCrcCalculatorTool::~xToolsCrcCalculatorTool() {}
 
-int SAKCrcCalculatorTool::startIndex() const
+int xToolsCrcCalculatorTool::startIndex() const
 {
     return m_startIndex;
 }
 
-void SAKCrcCalculatorTool::setStartIndex(int index)
+void xToolsCrcCalculatorTool::setStartIndex(int index)
 {
     m_startIndex = index;
 }
 
-int SAKCrcCalculatorTool::endIndex() const
+int xToolsCrcCalculatorTool::endIndex() const
 {
     return m_endIndex;
 }
 
-void SAKCrcCalculatorTool::setEndIndex(int index)
+void xToolsCrcCalculatorTool::setEndIndex(int index)
 {
     m_endIndex = index;
 }
 
-int SAKCrcCalculatorTool::algorithm() const
+int xToolsCrcCalculatorTool::algorithm() const
 {
     return m_algorithm;
 }
 
-void SAKCrcCalculatorTool::setAlgorithm(int algorithm)
+void xToolsCrcCalculatorTool::setAlgorithm(int algorithm)
 {
     m_algorithm = algorithm;
 }
 
-bool SAKCrcCalculatorTool::bigEndian() const
+bool xToolsCrcCalculatorTool::bigEndian() const
 {
     return m_bigEndian;
 }
 
-void SAKCrcCalculatorTool::setBigEndian(bool bigEndian)
+void xToolsCrcCalculatorTool::setBigEndian(bool bigEndian)
 {
     m_bigEndian = bigEndian;
 }
 
-void SAKCrcCalculatorTool::inputBytes(const QByteArray &bytes)
+void xToolsCrcCalculatorTool::inputBytes(const QByteArray &bytes)
 {
     QByteArray crc = m_crcInterface->calculateBytes(bytes,
                                                     m_algorithm,

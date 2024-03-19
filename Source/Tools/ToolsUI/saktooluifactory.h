@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTOOLUIFACTORY_H
-#define SAKTOOLUIFACTORY_H
+#pragma once
 
 #include <QObject>
 
@@ -22,5 +21,3 @@ public:
     static SAKToolUiFactory *instance();
     SAKBaseToolUi *createToolUi(int type);
 };
-
-#endif // SAKTOOLUIFACTORY_H

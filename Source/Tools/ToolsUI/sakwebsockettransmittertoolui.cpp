@@ -12,7 +12,7 @@ SAKWebSocketTransmitterToolUi::SAKWebSocketTransmitterToolUi(QWidget *parent)
     : SAKSocketClientTransmitterToolUi("SAK.WebSocketTransmitterToolUi", parent)
 {}
 
-void SAKWebSocketTransmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+void SAKWebSocketTransmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
                                                             const QString &settingGroup)
 {
     SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);

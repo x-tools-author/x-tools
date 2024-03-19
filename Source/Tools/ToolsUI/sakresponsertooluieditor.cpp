@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sakresponsertooluieditor.h"
-#include "sakresponsertool.h"
+#include "xToolsResponserTool.h"
 #include "ui_sakresponsertooluieditor.h"
 
 SAKResponserToolUiEditor::SAKResponserToolUiEditor(QWidget *parent)
@@ -56,7 +56,7 @@ QJsonObject SAKResponserToolUiEditor::parameters()
     int resDelay = ui->spinBoxResDelay->value();
     QString resData = ui->lineEditResData->text();
 
-    SAKResponserTool::ResponserItemKeys keys;
+    xToolsResponserTool::ResponserItemKeys keys;
     QJsonObject jsonObj;
     jsonObj.insert(keys.itemEnable, enable);
     jsonObj.insert(keys.itemDescription, description);
@@ -90,7 +90,7 @@ QJsonObject SAKResponserToolUiEditor::parameters()
 
 void SAKResponserToolUiEditor::setParameters(const QJsonObject &params)
 {
-    SAKResponserTool::ResponserItemKeys keys;
+    xToolsResponserTool::ResponserItemKeys keys;
     bool enable = params.value(keys.itemEnable).toBool();
     QString description = params.value(keys.itemDescription).toString();
     int option = params.value(keys.itemOption).toInt();

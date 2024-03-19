@@ -6,74 +6,75 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakserialporttool.h"
+#include "xToolsSerialPortTool.h"
+
 #include "sakinterface.h"
 
-SAKSerialPortTool::SAKSerialPortTool(QObject *parent)
-    : SAKCommunicationTool(parent)
+xToolsSerialPortTool::xToolsSerialPortTool(QObject *parent)
+    : xToolsCommunicationTool(parent)
 {}
 
-QString SAKSerialPortTool::portName()
+QString xToolsSerialPortTool::portName()
 {
     return m_parameters.portName;
 }
 
-void SAKSerialPortTool::setPortName(const QString &portName)
+void xToolsSerialPortTool::setPortName(const QString &portName)
 {
     m_parameters.portName = portName;
 }
 
-int SAKSerialPortTool::baudRate()
+int xToolsSerialPortTool::baudRate()
 {
     return m_parameters.baudRate;
 }
 
-void SAKSerialPortTool::setBaudRate(int baudRate)
+void xToolsSerialPortTool::setBaudRate(int baudRate)
 {
     m_parameters.baudRate = baudRate;
 }
 
-int SAKSerialPortTool::dataBits()
+int xToolsSerialPortTool::dataBits()
 {
     return m_parameters.dataBits;
 }
 
-void SAKSerialPortTool::setDataBits(int dataBits)
+void xToolsSerialPortTool::setDataBits(int dataBits)
 {
     m_parameters.dataBits = dataBits;
 }
 
-int SAKSerialPortTool::stopBits()
+int xToolsSerialPortTool::stopBits()
 {
     return m_parameters.stopBits;
 }
 
-void SAKSerialPortTool::setStopBits(int stopBits)
+void xToolsSerialPortTool::setStopBits(int stopBits)
 {
     m_parameters.stopBits = stopBits;
 }
 
-int SAKSerialPortTool::parity()
+int xToolsSerialPortTool::parity()
 {
     return m_parameters.parity;
 }
 
-void SAKSerialPortTool::setParity(int parity)
+void xToolsSerialPortTool::setParity(int parity)
 {
     m_parameters.parity = parity;
 }
 
-int SAKSerialPortTool::flowControl()
+int xToolsSerialPortTool::flowControl()
 {
     return m_parameters.flowControl;
 }
 
-void SAKSerialPortTool::setFlowControl(int flowControl)
+void xToolsSerialPortTool::setFlowControl(int flowControl)
 {
     m_parameters.flowControl = flowControl;
 }
 
-bool SAKSerialPortTool::initialize(QString &errStr)
+bool xToolsSerialPortTool::initialize(QString &errStr)
 {
     m_serialPort = new QSerialPort();
     m_serialPort->setPortName(m_parameters.portName);
@@ -107,7 +108,7 @@ bool SAKSerialPortTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKSerialPortTool::writeBytes(const QByteArray &bytes)
+void xToolsSerialPortTool::writeBytes(const QByteArray &bytes)
 {
     if (m_serialPort && m_serialPort->isOpen()) {
         qint64 ret = m_serialPort->write(bytes);
@@ -123,7 +124,7 @@ void SAKSerialPortTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void SAKSerialPortTool::uninitialize()
+void xToolsSerialPortTool::uninitialize()
 {
     if (m_serialPort) {
         m_serialPort->close();
@@ -132,7 +133,7 @@ void SAKSerialPortTool::uninitialize()
     }
 }
 
-void SAKSerialPortTool::readBytes()
+void xToolsSerialPortTool::readBytes()
 {
     if (m_serialPort && m_serialPort->isOpen()) {
         QByteArray bytes = m_serialPort->readAll();

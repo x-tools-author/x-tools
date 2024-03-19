@@ -6,72 +6,72 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saksocketservertool.h"
+#include "xToolsSocketServerTool.h"
 
-SAKSocketServerTool::SAKSocketServerTool(QObject *parent)
-    : SAKCommunicationTool{parent}
+xToolsSocketServerTool::xToolsSocketServerTool(QObject *parent)
+    : xToolsCommunicationTool{parent}
 {}
 
-QString SAKSocketServerTool::serverIp()
+QString xToolsSocketServerTool::serverIp()
 {
     return m_serverIp;
 }
 
-void SAKSocketServerTool::setServerIp(const QString &ip)
+void xToolsSocketServerTool::setServerIp(const QString &ip)
 {
     m_serverIp = ip;
     emit serverIpChanged();
 }
 
-int SAKSocketServerTool::serverPort()
+int xToolsSocketServerTool::serverPort()
 {
     return m_serverPort;
 }
 
-void SAKSocketServerTool::setServerPort(int port)
+void xToolsSocketServerTool::setServerPort(int port)
 {
     m_serverPort = port;
     emit serverPortChanged();
 }
 
-bool SAKSocketServerTool::specifyIpAndPort()
+bool xToolsSocketServerTool::specifyIpAndPort()
 {
     return m_specifyIpAndPort;
 }
 
-void SAKSocketServerTool::setSpecifyIpAndPort(bool specified)
+void xToolsSocketServerTool::setSpecifyIpAndPort(bool specified)
 {
     m_specifyIpAndPort = specified;
     emit specifyIpAndPortChanged();
 }
 
-QStringList SAKSocketServerTool::clients()
+QStringList xToolsSocketServerTool::clients()
 {
     return m_clients;
 }
 
-int SAKSocketServerTool::clientIndex()
+int xToolsSocketServerTool::clientIndex()
 {
     return m_clientIndex;
 }
 
-void SAKSocketServerTool::setClientIndex(int index)
+void xToolsSocketServerTool::setClientIndex(int index)
 {
     m_clientIndex = index;
     emit clientIndexChanged();
 }
 
-QString SAKSocketServerTool::bindingIpPort()
+QString xToolsSocketServerTool::bindingIpPort()
 {
     return m_bindingIpPort;
 }
 
-int SAKSocketServerTool::messageType()
+int xToolsSocketServerTool::messageType()
 {
     return m_messageType;
 }
 
-void SAKSocketServerTool::setMessageType(int type)
+void xToolsSocketServerTool::setMessageType(int type)
 {
     m_messageType = type;
     emit messageTypeChanged();

@@ -6,16 +6,15 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSOCKETCLIENTTRANSMITTERTOOL_H
-#define SAKSOCKETCLIENTTRANSMITTERTOOL_H
+#pragma once
 
-#include "saktransmittertool.h"
+#include "xToolsTransmitterTool.h"
 
-class SAKSocketClientTransmitterTool : public SAKTransmitterTool
+class xToolsSocketClientTransmitterTool : public xToolsTransmitterTool
 {
     Q_OBJECT
 public:
-    explicit SAKSocketClientTransmitterTool(QObject *parent = nullptr);
+    explicit xToolsSocketClientTransmitterTool(QObject *parent = nullptr);
     virtual QString cookHeaderString(const QString &str) override;
     Q_INVOKABLE virtual QVariant itemContext(int index) override;
 
@@ -40,5 +39,3 @@ protected:
                         Qt::Orientation orientation,
                         int role = Qt::DisplayRole) const override;
 };
-
-#endif // SAKSOCKETCLIENTTRANSMITTERTOOL_H

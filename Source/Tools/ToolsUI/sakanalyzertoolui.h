@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKANALYZERTOOLUI_H
-#define SAKANALYZERTOOLUI_H
+#pragma once
 
 #include "sakbasetoolui.h"
 
@@ -15,17 +14,15 @@ namespace Ui {
 class SAKAnalyzerToolUi;
 }
 
-class SAKAnalyzerTool;
+class xToolsAnalyzerTool;
 class SAKAnalyzerToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
 public:
     explicit SAKAnalyzerToolUi(QWidget *parent = nullptr);
     void setToolName(const QString &name);
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) final;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
     Ui::SAKAnalyzerToolUi *ui;
 };
-
-#endif // SAKANALYZERTOOLUI_H

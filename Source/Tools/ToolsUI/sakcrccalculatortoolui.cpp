@@ -9,7 +9,7 @@
 #include "sakcrccalculatortoolui.h"
 #include "ui_sakcrccalculatortoolui.h"
 
-#include "sakcrccalculatortool.h"
+#include "xToolsCrcCalculatorTool.h"
 
 SAKCrcCalculatorToolUi::SAKCrcCalculatorToolUi(QWidget *parent)
     : SAKBaseToolUi(parent)
@@ -25,10 +25,10 @@ void SAKCrcCalculatorToolUi::onIsWorkingChanged(bool isWorking)
     setEnabled(isWorking);
 }
 
-void SAKCrcCalculatorToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
+void SAKCrcCalculatorToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     Q_UNUSED(settingsGroup)
-    SAKCrcCalculatorTool *crcTool = qobject_cast<SAKCrcCalculatorTool *>(tool);
+    xToolsCrcCalculatorTool *crcTool = qobject_cast<xToolsCrcCalculatorTool *>(tool);
     if (!crcTool) {
         return;
     }
@@ -40,17 +40,17 @@ void SAKCrcCalculatorToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QS
     connect(ui->spinBoxStartIndex,
             QOverload<int>::of(&QSpinBox::valueChanged),
             crcTool,
-            &SAKCrcCalculatorTool::setStartIndex);
+            &xToolsCrcCalculatorTool::setStartIndex);
     connect(ui->spinBoxEndIndex,
             QOverload<int>::of(&QSpinBox::valueChanged),
             crcTool,
-            &SAKCrcCalculatorTool::setEndIndex);
+            &xToolsCrcCalculatorTool::setEndIndex);
     connect(ui->comboBoxAlgorithm,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             crcTool,
-            &SAKCrcCalculatorTool::setAlgorithm);
+            &xToolsCrcCalculatorTool::setAlgorithm);
     connect(ui->checkBoxBigEndian,
             &QCheckBox::toggled,
             crcTool,
-            &SAKCrcCalculatorTool::setBigEndian);
+            &xToolsCrcCalculatorTool::setBigEndian);
 }

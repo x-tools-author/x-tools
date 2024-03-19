@@ -6,15 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakserialporttransmittertool.h"
-#include "sakinterface.h"
-#include "sakserialporttool.h"
+#include "xToolsSerialPortTransmitterTool.h"
 
-SAKSerialPortTransmitterTool::SAKSerialPortTransmitterTool(QObject *parent)
-    : SAKTransmitterTool{parent}
+#include "sakinterface.h"
+#include "xToolsSerialPortTool.h"
+
+xToolsSerialPortTransmitterTool::xToolsSerialPortTransmitterTool(QObject *parent)
+    : xToolsTransmitterTool{parent}
 {}
 
-QString SAKSerialPortTransmitterTool::cookHeaderString(const QString &str)
+QString xToolsSerialPortTransmitterTool::cookHeaderString(const QString &str)
 {
     ItemContextKey keys;
     if (str == keys.enable) {
@@ -38,12 +39,12 @@ QString SAKSerialPortTransmitterTool::cookHeaderString(const QString &str)
     return "--";
 }
 
-QVariant SAKSerialPortTransmitterTool::itemContext(int index)
+QVariant xToolsSerialPortTransmitterTool::itemContext(int index)
 {
     QJsonObject obj;
     ItemContextKey ctx;
     if (index >= 0 && index < m_tools.count()) {
-        SAKSerialPortTool *tool = qobject_cast<SAKSerialPortTool *>(m_tools.value(index));
+        xToolsSerialPortTool *tool = qobject_cast<xToolsSerialPortTool *>(m_tools.value(index));
         obj.insert(ctx.baudRate, tool->baudRate());
         obj.insert(ctx.dataBits, tool->dataBits());
         obj.insert(ctx.enable, tool->isEnable());
@@ -65,7 +66,7 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
     return obj;
 }
 
-void SAKSerialPortTransmitterTool::inputBytes(const QByteArray &bytes)
+void xToolsSerialPortTransmitterTool::inputBytes(const QByteArray &bytes)
 {
     QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
     QString hex = QString::fromLatin1(ba);
@@ -77,19 +78,19 @@ void SAKSerialPortTransmitterTool::inputBytes(const QByteArray &bytes)
     m_toolsMutex.unlock();
 }
 
-int SAKSerialPortTransmitterTool::columnCount(const QModelIndex &parent) const
+int xToolsSerialPortTransmitterTool::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     return 7;
 }
 
-QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index, int role) const
+QVariant xToolsSerialPortTransmitterTool::data(const QModelIndex &index, int role) const
 {
     if (role != Qt::DisplayRole) {
         return QVariant();
     }
     
-    auto ret = qobject_cast<SAKSerialPortTool *>(m_tools.value(index.row()));
+    auto ret = qobject_cast<xToolsSerialPortTool *>(m_tools.value(index.row()));
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKey ctx;
     if (key == ctx.enable) {
@@ -115,13 +116,13 @@ QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index, int role) 
     return true;
 }
 
-bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index, const QVariant &value, int role)
+bool xToolsSerialPortTransmitterTool::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (role != Qt::EditRole) {
         return false;
     }
     
-    auto ret = qobject_cast<SAKSerialPortTool *>(m_tools.value(index.row()));
+    auto ret = qobject_cast<xToolsSerialPortTool *>(m_tools.value(index.row()));
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKey ctx;
     if (key == ctx.enable) {
@@ -146,7 +147,7 @@ bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index, const QVari
     return true;
 }
 
-QVariant SAKSerialPortTransmitterTool::headerData(int section,
+QVariant xToolsSerialPortTransmitterTool::headerData(int section,
                                                   Qt::Orientation orientation,
                                                   int role) const
 {
@@ -178,8 +179,8 @@ QVariant SAKSerialPortTransmitterTool::headerData(int section,
     }
 }
 
-SAKCommunicationTool *SAKSerialPortTransmitterTool::createTool()
+xToolsCommunicationTool *xToolsSerialPortTransmitterTool::createTool()
 {
-    SAKSerialPortTool *tool = new SAKSerialPortTool();
+    xToolsSerialPortTool *tool = new xToolsSerialPortTool();
     return tool;
 }

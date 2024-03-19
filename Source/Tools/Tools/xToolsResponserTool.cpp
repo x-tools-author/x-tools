@@ -6,6 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsResponserTool.h"
+
 #include <QFile>
 #include <QHeaderView>
 #include <QJsonArray>
@@ -17,25 +19,24 @@
 #include "sakcrcinterface.h"
 #include "sakdatastructure.h"
 #include "sakinterface.h"
-#include "sakresponsertool.h"
 
-SAKResponserTool::SAKResponserTool(QObject *parent)
-    : SAKTableModelTool{parent}
+xToolsResponserTool::xToolsResponserTool(QObject *parent)
+    : xToolsTableModelTool{parent}
 {}
 
-int SAKResponserTool::rowCount(const QModelIndex &parent) const
+int xToolsResponserTool::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return mItems.count();
 }
 
-int SAKResponserTool::columnCount(const QModelIndex &parent) const
+int xToolsResponserTool::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return mTableColumnCount;
 }
 
-QVariant SAKResponserTool::data(const QModelIndex &index, int role) const
+QVariant xToolsResponserTool::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
@@ -49,7 +50,7 @@ QVariant SAKResponserTool::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool SAKResponserTool::setData(const QModelIndex &index, const QVariant &value, int role)
+bool xToolsResponserTool::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     Q_UNUSED(role);
     int row = index.row();
@@ -117,7 +118,7 @@ bool SAKResponserTool::setData(const QModelIndex &index, const QVariant &value, 
     return true;
 }
 
-bool SAKResponserTool::insertRows(int row, int count, const QModelIndex &parent)
+bool xToolsResponserTool::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
     ResponserItem ctx;
@@ -131,14 +132,14 @@ bool SAKResponserTool::insertRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-bool SAKResponserTool::removeRows(int row, int count, const QModelIndex &parent)
+bool xToolsResponserTool::removeRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
     mItems.remove(row, count);
     return true;
 }
 
-QVariant SAKResponserTool::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant xToolsResponserTool::headerData(int section, Qt::Orientation orientation, int role) const
 {
     Q_UNUSED(role);
     if (orientation == Qt::Horizontal) {
@@ -199,7 +200,7 @@ QVariant SAKResponserTool::headerData(int section, Qt::Orientation orientation, 
     return QVariant("");
 }
 
-QVariant SAKResponserTool::columnDisplayRoleData(const ResponserData &item, int column) const
+QVariant xToolsResponserTool::columnDisplayRoleData(const ResponserData &item, int column) const
 {
     if (column >= 0 && column < headers().count()) {
         const QString dataKey = headers().at(column);
@@ -259,7 +260,7 @@ QVariant SAKResponserTool::columnDisplayRoleData(const ResponserData &item, int 
     return QVariant("Error");
 }
 
-QByteArray SAKResponserTool::referenceBytes(const ResponserItem &item) const
+QByteArray xToolsResponserTool::referenceBytes(const ResponserItem &item) const
 {
     QByteArray bytes;
     QString text = item.itemReferenceText;
@@ -283,7 +284,7 @@ QByteArray SAKResponserTool::referenceBytes(const ResponserItem &item) const
     return bytes;
 }
 
-QByteArray SAKResponserTool::responseBytes(const ResponserItem &item) const
+QByteArray xToolsResponserTool::responseBytes(const ResponserItem &item) const
 {
     QByteArray bytes;
     QString text = item.itemResponseText;
@@ -307,7 +308,7 @@ QByteArray SAKResponserTool::responseBytes(const ResponserItem &item) const
     return bytes;
 }
 
-QVariant SAKResponserTool::itemContext(int index)
+QVariant xToolsResponserTool::itemContext(int index)
 {
     auto itemCtx = [=](int index) -> QJsonObject {
         QJsonObject ctx;
@@ -379,7 +380,7 @@ QVariant SAKResponserTool::itemContext(int index)
     return ctx;
 }
 
-QString SAKResponserTool::cookHeaderString(const QString &str)
+QString xToolsResponserTool::cookHeaderString(const QString &str)
 {
     ResponserItemKeys keys;
     if (str == keys.itemEnable) {
@@ -435,14 +436,14 @@ QString SAKResponserTool::cookHeaderString(const QString &str)
     return "--";
 }
 
-void SAKResponserTool::inputBytes(const QByteArray &bytes)
+void xToolsResponserTool::inputBytes(const QByteArray &bytes)
 {
     mInputContextListMutex.lock();
     mInputContextList.append(bytes);
     mInputContextListMutex.unlock();
 }
 
-void SAKResponserTool::run()
+void xToolsResponserTool::run()
 {
     QTimer *outputTimer = new QTimer();
     outputTimer->setInterval(5);
@@ -469,7 +470,7 @@ void SAKResponserTool::run()
     outputTimer = nullptr;
 }
 
-void SAKResponserTool::try2output(const QByteArray &bytes, QObject *receiver)
+void xToolsResponserTool::try2output(const QByteArray &bytes, QObject *receiver)
 {
     mItemsMutex.lock();
     auto items = mItems;
@@ -517,122 +518,122 @@ void SAKResponserTool::try2output(const QByteArray &bytes, QObject *receiver)
     }
 }
 
-QString SAKResponserTool::itemEnable()
+QString xToolsResponserTool::itemEnable()
 {
     return mDataKeys.itemEnable;
 }
 
-QString SAKResponserTool::itemDescription()
+QString xToolsResponserTool::itemDescription()
 {
     return mDataKeys.itemDescription;
 }
 
-QString SAKResponserTool::itemOption()
+QString xToolsResponserTool::itemOption()
 {
     return mDataKeys.itemOption;
 }
 
-QString SAKResponserTool::itemReferenceTextFormat()
+QString xToolsResponserTool::itemReferenceTextFormat()
 {
     return mDataKeys.itemReferenceTextFormat;
 }
 
-QString SAKResponserTool::itemReferenceEscapeCharacter()
+QString xToolsResponserTool::itemReferenceEscapeCharacter()
 {
     return mDataKeys.itemReferenceEscapeCharacter;
 }
 
-QString SAKResponserTool::itemReferencePrefix()
+QString xToolsResponserTool::itemReferencePrefix()
 {
     return mDataKeys.itemReferencePrefix;
 }
 
-QString SAKResponserTool::itemReferenceSuffix()
+QString xToolsResponserTool::itemReferenceSuffix()
 {
     return mDataKeys.itemReferenceSuffix;
 }
 
-QString SAKResponserTool::itemReferenceCrcEnable()
+QString xToolsResponserTool::itemReferenceCrcEnable()
 {
     return mDataKeys.itemReferenceCrcEnable;
 }
 
-QString SAKResponserTool::itemReferenceCrcBigEndian()
+QString xToolsResponserTool::itemReferenceCrcBigEndian()
 {
     return mDataKeys.itemReferenceCrcBigEndian;
 }
 
-QString SAKResponserTool::itemReferenceCrcAlgorithm()
+QString xToolsResponserTool::itemReferenceCrcAlgorithm()
 {
     return mDataKeys.itemReferenceCrcAlgorithm;
 }
 
-QString SAKResponserTool::itemReferenceCrcStartIndex()
+QString xToolsResponserTool::itemReferenceCrcStartIndex()
 {
     return mDataKeys.itemReferenceCrcStartIndex;
 }
 
-QString SAKResponserTool::itemReferenceCrcEndIndex()
+QString xToolsResponserTool::itemReferenceCrcEndIndex()
 {
     return mDataKeys.itemReferenceCrcEndIndex;
 }
 
-QString SAKResponserTool::itemReferenceText()
+QString xToolsResponserTool::itemReferenceText()
 {
     return mDataKeys.itemReferenceText;
 }
 
-QString SAKResponserTool::itemResponseTextFormat()
+QString xToolsResponserTool::itemResponseTextFormat()
 {
     return mDataKeys.itemResponseTextFormat;
 }
 
-QString SAKResponserTool::itemResponseEscapeCharacter()
+QString xToolsResponserTool::itemResponseEscapeCharacter()
 {
     return mDataKeys.itemResponseEscapeCharacter;
 }
 
-QString SAKResponserTool::itemResponsePrefix()
+QString xToolsResponserTool::itemResponsePrefix()
 {
     return mDataKeys.itemResponsePrefix;
 }
 
-QString SAKResponserTool::itemResponseSuffix()
+QString xToolsResponserTool::itemResponseSuffix()
 {
     return mDataKeys.itemResponseSuffix;
 }
 
-QString SAKResponserTool::itemResponseCrcEnable()
+QString xToolsResponserTool::itemResponseCrcEnable()
 {
     return mDataKeys.itemResponseCrcEnable;
 }
 
-QString SAKResponserTool::itemResponseCrcBigEndian()
+QString xToolsResponserTool::itemResponseCrcBigEndian()
 {
     return mDataKeys.itemResponseCrcBigEndian;
 }
 
-QString SAKResponserTool::itemResponseCrcAlgorithm()
+QString xToolsResponserTool::itemResponseCrcAlgorithm()
 {
     return mDataKeys.itemResponseCrcAlgorithm;
 }
 
-QString SAKResponserTool::itemResponseCrcStartIndex()
+QString xToolsResponserTool::itemResponseCrcStartIndex()
 {
     return mDataKeys.itemResponseCrcStartIndex;
 }
 
-QString SAKResponserTool::itemResponseCrcEndIndex()
+QString xToolsResponserTool::itemResponseCrcEndIndex()
 {
     return mDataKeys.itemResponseCrcEndIndex;
 }
 
-QString SAKResponserTool::itemResponseDelay()
+QString xToolsResponserTool::itemResponseDelay()
 {
     return mDataKeys.itemResponseDelay;
 }
 
-QString SAKResponserTool::itemResponseText()
+QString xToolsResponserTool::itemResponseText()
 {
     return mDataKeys.itemResponseText;
 }

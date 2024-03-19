@@ -9,7 +9,7 @@
 #include <QFileDialog>
 #include <QLineEdit>
 
-#include "sakstorertool.h"
+#include "xToolsStorerTool.h"
 #include "sakstorertoolui.h"
 #include "ui_sakstorertoolui.h"
 
@@ -29,14 +29,14 @@ SAKStorerToolUi::~SAKStorerToolUi()
     delete ui;
 }
 
-void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
+void SAKStorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     if (!tool) {
         qCWarning((*mLoggingCategory)) << "The tool value is nullptr!";
         return;
     }
 
-    SAKStorerTool *cookedTool = qobject_cast<SAKStorerTool *>(tool);
+    xToolsStorerTool *cookedTool = qobject_cast<xToolsStorerTool *>(tool);
     if (!cookedTool) {
         qCWarning((*mLoggingCategory)) << "The cookedTool value is nullptr!";
         return;

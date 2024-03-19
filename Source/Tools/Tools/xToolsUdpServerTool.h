@@ -6,17 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKUDPSERVERTOOL_H
-#define SAKUDPSERVERTOOL_H
+#pragma once
 
-#include "saksocketservertool.h"
+#include "xToolsSocketServerTool.h"
 #include <QUdpSocket>
 
-class SAKUdpServerTool : public SAKSocketServerTool
+class xToolsUdpServerTool : public xToolsSocketServerTool
 {
     Q_OBJECT
 public:
-    explicit SAKUdpServerTool(QObject *parent = nullptr);
+    explicit xToolsUdpServerTool(QObject *parent = nullptr);
 
 protected:
     virtual bool initialize(QString &errStr) override;
@@ -30,5 +29,3 @@ private:
 private:
     void writeDatagram(const QByteArray &bytes, const QString &ip, quint16 port);
 };
-
-#endif // SAKUDPSERVERTOOL_H

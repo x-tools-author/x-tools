@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sakvelometertoolui.h"
-#include "sakvelometertool.h"
+#include "xToolsVelometerTool.h"
 #include "ui_sakvelometertoolui.h"
 
 SAKVelometerToolUi::SAKVelometerToolUi(QWidget *parent)
@@ -22,7 +22,7 @@ SAKVelometerToolUi::~SAKVelometerToolUi()
     delete ui;
 }
 
-void SAKVelometerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
+void SAKVelometerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     Q_UNUSED(settingsGroup)
 
@@ -37,13 +37,13 @@ void SAKVelometerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QStrin
         return;
     }
 
-    auto cookedTool = qobject_cast<SAKVelometerTool *>(tool);
+    auto cookedTool = qobject_cast<xToolsVelometerTool *>(tool);
     if (!cookedTool) {
         qWarning() << "Invalid tool!";
         return;
     }
 
-    connect(cookedTool, &SAKVelometerTool::velocityChanged, this, [=](const QString &v) {
+    connect(cookedTool, &xToolsVelometerTool::velocityChanged, this, [=](const QString &v) {
         ui->labelVelocity->setText(v);
     });
 }

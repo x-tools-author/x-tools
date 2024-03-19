@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSOCKETCLIENTTRANSMITTERTOOLUI_H
-#define SAKSOCKETCLIENTTRANSMITTERTOOLUI_H
+#pragma once
 
 #include "saksocketclienttransmittertooluieditor.h"
 #include "saktransmittertoolui.h"
@@ -19,10 +18,8 @@ public:
     virtual QDialog *itemEditor() override;
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
 
 protected:
     SAKSocketClientTransmitterToolUiEditor *mEditor{nullptr};
 };
-
-#endif // SAKSOCKETCLIENTTRANSMITTERTOOLUI_H

@@ -6,18 +6,17 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKRESPONSERTOOL_H
-#define SAKRESPONSERTOOL_H
+#pragma once
 
 #include <QAbstractTableModel>
 #include <QMutex>
 #include <QVariant>
 
-#include "saktablemodeltool.h"
+#include "xToolsTableModelTool.h"
 
 #define SAK_STR_PROPERTY(name) Q_PROPERTY(QString name READ name CONSTANT)
 
-class SAKResponserTool : public SAKTableModelTool
+class xToolsResponserTool : public xToolsTableModelTool
 {
     Q_OBJECT
     Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
@@ -115,7 +114,7 @@ public:
     };
 
 public:
-    explicit SAKResponserTool(QObject *parent = nullptr);
+    explicit xToolsResponserTool(QObject *parent = nullptr);
     Q_INVOKABLE virtual QVariant itemContext(int index) override;
     virtual QString cookHeaderString(const QString &str) override;
     virtual void inputBytes(const QByteArray &bytes) override;
@@ -181,5 +180,3 @@ private:
     QString itemResponseDelay();
     QString itemResponseText();
 };
-
-#endif // SAKRESPONSERTOOL_H

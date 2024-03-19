@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "saksocketservertoolui.h"
-#include "saksocketservertool.h"
+#include "xToolsSocketServerTool.h"
 #include "ui_saksocketservertoolui.h"
 #include <QMessageBox>
 
@@ -51,7 +51,7 @@ void SAKSocketServerToolUi::onIsWorkingChanged(bool isWorking)
     ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
 }
 
-void SAKSocketServerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
+void SAKSocketServerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     if (!tool) {
         return;
@@ -74,7 +74,7 @@ void SAKSocketServerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QSt
         ui->checkBoxSpecifyIpAndPort->hide();
     }
 
-    mTool = qobject_cast<SAKSocketServerTool *>(tool);
+    mTool = qobject_cast<xToolsSocketServerTool *>(tool);
     if (!mTool) {
         qWarning() << "qobject_cast<>() return nullptr";
         return;
@@ -95,14 +95,14 @@ void SAKSocketServerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QSt
     mTool->setSpecifyIpAndPort(specified);
     mTool->setMessageType(messageType);
 
-    connect(mTool, &SAKSocketServerTool::bindingIpPortChanged, this, [=]() {
+    connect(mTool, &xToolsSocketServerTool::bindingIpPortChanged, this, [=]() {
         QString ipport = mTool->bindingIpPort();
         ui->labelBindingInfo->setText(ipport);
     });
-    connect(mTool, &SAKSocketServerTool::finished, this, [=]() {
+    connect(mTool, &xToolsSocketServerTool::finished, this, [=]() {
         ui->labelBindingInfo->setText(tr("Closed"));
     });
-    connect(mTool, &SAKSocketServerTool::clientsChanged, this, [=]() {
+    connect(mTool, &xToolsSocketServerTool::clientsChanged, this, [=]() {
         int index = ui->comboBoxClientList->currentIndex();
         QString first = ui->comboBoxClientList->itemText(0);
         QStringList clients = mTool->clients();

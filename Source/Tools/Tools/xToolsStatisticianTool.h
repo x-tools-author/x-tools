@@ -6,18 +6,17 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSTATISTICIANTOOL_H
-#define SAKSTATISTICIANTOOL_H
+#pragma once
 
-#include "sakbasetool.h"
+#include "xToolsBaseTool.h"
 
-class SAKStatisticianTool : public SAKBaseTool
+class xToolsStatisticianTool : public xToolsBaseTool
 {
     Q_OBJECT
     Q_PROPERTY(int frames READ frames NOTIFY framesChanged)
     Q_PROPERTY(int bytes READ bytes NOTIFY bytesChanged)
 public:
-    explicit SAKStatisticianTool(QObject *parent = nullptr);
+    explicit xToolsStatisticianTool(QObject *parent = nullptr);
 
     void inputBytes(const QByteArray &bytes) override;
 
@@ -36,5 +35,3 @@ signals:
     void framesChanged(int frames);
     void bytesChanged(int bytes);
 };
-
-#endif // SAKSTATISTICIANTOOL_H

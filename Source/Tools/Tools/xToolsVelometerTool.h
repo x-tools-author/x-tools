@@ -6,19 +6,18 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKVELOMETERTOOL_H
-#define SAKVELOMETERTOOL_H
+#pragma once
 
-#include "sakbasetool.h"
+#include "xToolsBaseTool.h"
 #include <QList>
 #include <QMutex>
 
-class SAKVelometerTool : public SAKBaseTool
+class xToolsVelometerTool : public xToolsBaseTool
 {
     Q_OBJECT
     Q_PROPERTY(QString velocity READ velocity NOTIFY velocityChanged)
 public:
-    explicit SAKVelometerTool(QObject *parent = nullptr);
+    explicit xToolsVelometerTool(QObject *parent = nullptr);
 
     void inputBytes(const QByteArray &bytes) override;
 
@@ -37,5 +36,3 @@ private:
 signals:
     void velocityChanged(const QString &velocity);
 };
-
-#endif // SAKVELOMETERTOOL_H

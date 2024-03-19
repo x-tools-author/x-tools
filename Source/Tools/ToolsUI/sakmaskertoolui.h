@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKMASKERTOOLUI_H
-#define SAKMASKERTOOLUI_H
+#pragma once
 
 #include "sakbasetoolui.h"
 
@@ -24,10 +23,8 @@ public:
     void setToolName(const QString &name);
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup) final;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
     Ui::SAKMaskerToolUi *ui;
 };
-
-#endif // SAKMASKERTOOLUI_H

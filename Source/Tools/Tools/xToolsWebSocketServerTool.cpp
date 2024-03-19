@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakwebsocketservertool.h"
+#include "xToolsWebSocketServerTool.h"
 
 #include <QWebSocket>
 
@@ -14,11 +14,11 @@
 
 #define WS_ERR_SIGNAL void (QWebSocket::*)(QAbstractSocket::SocketError)
 
-SAKWebSocketServerTool::SAKWebSocketServerTool(QObject *parent)
-    : SAKSocketServerTool{parent}
+xToolsWebSocketServerTool::xToolsWebSocketServerTool(QObject *parent)
+    : xToolsSocketServerTool{parent}
 {}
 
-bool SAKWebSocketServerTool::initialize(QString &errStr)
+bool xToolsWebSocketServerTool::initialize(QString &errStr)
 {
     QString serverName = QString("%1:%2").arg(m_serverIp).arg(m_serverPort);
     mWebSocketServer = new QWebSocketServer(serverName, QWebSocketServer::NonSecureMode);
@@ -98,7 +98,7 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKWebSocketServerTool::writeBytes(const QByteArray &bytes)
+void xToolsWebSocketServerTool::writeBytes(const QByteArray &bytes)
 {
     if (m_clientIndex >= 0 && m_clientIndex < mWebSocketList.length()) {
         QWebSocket *client = mWebSocketList.at(m_clientIndex);
@@ -110,14 +110,14 @@ void SAKWebSocketServerTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void SAKWebSocketServerTool::uninitialize()
+void xToolsWebSocketServerTool::uninitialize()
 {
     mWebSocketServer->close();
     mWebSocketServer->deleteLater();
     mWebSocketServer = nullptr;
 }
 
-void SAKWebSocketServerTool::writeBytesInner(QWebSocket *client, const QByteArray &bytes)
+void xToolsWebSocketServerTool::writeBytesInner(QWebSocket *client, const QByteArray &bytes)
 {
     qint64 ret = -1;
     QString hex;

@@ -6,17 +6,18 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsUdpClientTool.h"
+
 #include <QHostAddress>
 
 #include "sakcompatibility.h"
 #include "sakinterface.h"
-#include "sakudpclienttool.h"
 
-SAKUdpClientTool::SAKUdpClientTool(QObject *parent)
-    : SAKSocketClientTool{parent}
+xToolsUdpClientTool::xToolsUdpClientTool(QObject *parent)
+    : xToolsSocketClientTool{parent}
 {}
 
-bool SAKUdpClientTool::initialize(QString &errStr)
+bool xToolsUdpClientTool::initialize(QString &errStr)
 {
     m_udpSocket = new QUdpSocket();
     if (m_specifyClientIpPort) {
@@ -46,7 +47,7 @@ bool SAKUdpClientTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKUdpClientTool::writeBytes(const QByteArray &bytes)
+void xToolsUdpClientTool::writeBytes(const QByteArray &bytes)
 {
     if (m_serverIp.isEmpty()) {
         return;
@@ -68,13 +69,13 @@ void SAKUdpClientTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void SAKUdpClientTool::uninitialize()
+void xToolsUdpClientTool::uninitialize()
 {
     m_udpSocket->deleteLater();
     m_udpSocket = nullptr;
 }
 
-void SAKUdpClientTool::readBytes()
+void xToolsUdpClientTool::readBytes()
 {
     while (m_udpSocket->hasPendingDatagrams()) {
         auto len = m_udpSocket->pendingDatagramSize();

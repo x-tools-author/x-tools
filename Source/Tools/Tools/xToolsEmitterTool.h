@@ -6,17 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKEMITTERTOOL_H
-#define SAKEMITTERTOOL_H
+#pragma once
 
 #include <QAbstractTableModel>
 #include <QMutex>
 #include <QTimer>
 #include <QVariant>
 
-#include "saktablemodeltool.h"
+#include "xToolsTableModelTool.h"
 
-class SAKEmitterTool : public SAKTableModelTool
+class xToolsEmitterTool : public xToolsTableModelTool
 {
     Q_OBJECT
     Q_PROPERTY(QString itemEnable READ itemEnable CONSTANT)
@@ -76,7 +75,7 @@ public:
     };
 
 public:
-    explicit SAKEmitterTool(QObject *parent = Q_NULLPTR);
+    explicit xToolsEmitterTool(QObject *parent = Q_NULLPTR);
     virtual void inputBytes(const QByteArray &bytes) override;
 
 public:
@@ -111,7 +110,7 @@ private:
 
 private:
     void try2emit();
-    QByteArray itemBytes(const SAKEmitterTool::Data &item);
+    QByteArray itemBytes(const xToolsEmitterTool::Data &item);
     QVariant columnDisplayRoleData(const EmitterItem &item, int column) const;
 
 private:
@@ -129,5 +128,3 @@ private:
     QString itemCrcEndIndex();
     QString itemText();
 };
-
-#endif // SAKEMITTERTOOL_H

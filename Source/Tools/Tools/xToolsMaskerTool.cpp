@@ -6,22 +6,22 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsMaskerTool.h"
+
 #include <QTimer>
 
-#include "sakmaskertool.h"
-
-SAKMaskerTool::SAKMaskerTool(QObject *parent)
-    : SAKBaseTool{parent}
+xToolsMaskerTool::xToolsMaskerTool(QObject *parent)
+    : xToolsBaseTool{parent}
 {
     m_enable = false;
 }
 
-SAKMaskerTool::~SAKMaskerTool()
+xToolsMaskerTool::~xToolsMaskerTool()
 {
     
 }
 
-void SAKMaskerTool::inputBytes(const QByteArray &bytes)
+void xToolsMaskerTool::inputBytes(const QByteArray &bytes)
 {
     if (!isEnable()) {
         emit outputBytes(bytes);
@@ -33,12 +33,12 @@ void SAKMaskerTool::inputBytes(const QByteArray &bytes)
     m_inputBytesListMutex.unlock();
 }
 
-void SAKMaskerTool::setMaskCode(qint8 maskCode)
+void xToolsMaskerTool::setMaskCode(qint8 maskCode)
 {
     m_mask = maskCode;
 }
 
-void SAKMaskerTool::run()
+void xToolsMaskerTool::run()
 {
     QTimer *timer = new QTimer();
     timer->setInterval(5);

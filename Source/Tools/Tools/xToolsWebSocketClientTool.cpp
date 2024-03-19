@@ -6,16 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakwebsocketclienttool.h"
+#include "xToolsWebSocketClientTool.h"
 
 #include "sakcompatibility.h"
 #include "sakinterface.h"
 
-SAKWebSocketClientTool::SAKWebSocketClientTool(QObject *parent)
-    : SAKSocketClientTool{parent}
+xToolsWebSocketClientTool::xToolsWebSocketClientTool(QObject *parent)
+    : xToolsSocketClientTool{parent}
 {}
 
-bool SAKWebSocketClientTool::initialize(QString &errStr)
+bool xToolsWebSocketClientTool::initialize(QString &errStr)
 {
     Q_UNUSED(errStr)
     m_webSocket = new QWebSocket();
@@ -67,7 +67,7 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes)
+void xToolsWebSocketClientTool::writeBytes(const QByteArray &bytes)
 {
     qint64 ret = -1;
     QString hex;
@@ -89,7 +89,7 @@ void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void SAKWebSocketClientTool::uninitialize()
+void xToolsWebSocketClientTool::uninitialize()
 {
     m_webSocket->close();
     m_webSocket->deleteLater();

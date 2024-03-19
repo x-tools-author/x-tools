@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "sakemittertoolui.h"
 
-#include "saktablemodeltool.h"
+#include "xToolsTableModelTool.h"
 #include "sakuiinterface.h"
 
 SAKEmitterToolUi::SAKEmitterToolUi(QWidget *parent)
@@ -19,7 +19,7 @@ SAKEmitterToolUi::SAKEmitterToolUi(QWidget *parent)
 
 SAKEmitterToolUi::~SAKEmitterToolUi() {}
 
-void SAKEmitterToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup)
+void SAKEmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
 {
     SAKTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
 

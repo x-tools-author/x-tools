@@ -6,44 +6,45 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakanalyzertool.h"
+#include "xToolsAnalyzerTool.h"
+
 #include "sakinterface.h"
 
-SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
-    : SAKBaseTool{parent}
+xToolsAnalyzerTool::xToolsAnalyzerTool(QObject *parent)
+    : xToolsBaseTool{parent}
 {
     m_enable = false;
 }
 
-void SAKAnalyzerTool::setFixed(bool fixed)
+void xToolsAnalyzerTool::setFixed(bool fixed)
 {
     m_parametersMutex.lock();
     m_parameters.fixed = fixed;
     m_parametersMutex.unlock();
 }
 
-void SAKAnalyzerTool::setFrameBytes(int bytes)
+void xToolsAnalyzerTool::setFrameBytes(int bytes)
 {
     m_parametersMutex.lock();
     m_parameters.frameBytes = bytes;
     m_parametersMutex.unlock();
 }
 
-void SAKAnalyzerTool::setSeparationMark(const QByteArray &mark)
+void xToolsAnalyzerTool::setSeparationMark(const QByteArray &mark)
 {
     m_parametersMutex.lock();
     m_parameters.separationMark = mark;
     m_parametersMutex.unlock();
 }
 
-void SAKAnalyzerTool::setMaxTempBytes(int maxBytes)
+void xToolsAnalyzerTool::setMaxTempBytes(int maxBytes)
 {
     m_parametersMutex.lock();
     m_parameters.maxTempBytes = maxBytes;
     m_parametersMutex.unlock();
 }
 
-void SAKAnalyzerTool::inputBytes(const QByteArray &bytes)
+void xToolsAnalyzerTool::inputBytes(const QByteArray &bytes)
 {
     if (bytes.isEmpty()) {
         qInfo() << "Empty input bytes, the operation will be ignored!";
@@ -59,7 +60,7 @@ void SAKAnalyzerTool::inputBytes(const QByteArray &bytes)
     }
 }
 
-void SAKAnalyzerTool::run()
+void xToolsAnalyzerTool::run()
 {
     QTimer *handleTimer = new QTimer();
     handleTimer->setInterval(5);
@@ -86,7 +87,7 @@ void SAKAnalyzerTool::run()
     m_inputtedBytesMutex.unlock();
 }
 
-void SAKAnalyzerTool::analyze()
+void xToolsAnalyzerTool::analyze()
 {
     m_parametersMutex.lock();
     auto ctx = m_parameters;
@@ -106,7 +107,7 @@ void SAKAnalyzerTool::analyze()
     }
 }
 
-void SAKAnalyzerTool::analyzeFixed()
+void xToolsAnalyzerTool::analyzeFixed()
 {
     m_parametersMutex.lock();
     auto ctx = m_parameters;
@@ -123,7 +124,7 @@ void SAKAnalyzerTool::analyzeFixed()
     }
 }
 
-void SAKAnalyzerTool::analyzeSeparationMark()
+void xToolsAnalyzerTool::analyzeSeparationMark()
 {
     if (m_inputtedBytes.isEmpty()) {
         return;

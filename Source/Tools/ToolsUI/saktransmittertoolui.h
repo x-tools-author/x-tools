@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTRANSMITTERTOOLUI_H
-#define SAKTRANSMITTERTOOLUI_H
+#pragma once
 
 #include "saktablemodeltoolui.h"
 
@@ -20,5 +19,3 @@ public:
 protected:
     virtual void afterRowEdited(int row) override;
 };
-
-#endif // SAKTRANSMITTERTOOLUI_H

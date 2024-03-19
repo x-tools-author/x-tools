@@ -6,14 +6,15 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saksocketclienttransmittertool.h"
-#include "saksocketclienttool.h"
+#include "xToolsSocketClientTransmitterTool.h"
 
-SAKSocketClientTransmitterTool::SAKSocketClientTransmitterTool(QObject *parent)
-    : SAKTransmitterTool{parent}
+#include "xToolsSocketClientTool.h"
+
+xToolsSocketClientTransmitterTool::xToolsSocketClientTransmitterTool(QObject *parent)
+    : xToolsTransmitterTool{parent}
 {}
 
-QString SAKSocketClientTransmitterTool::cookHeaderString(const QString &str)
+QString xToolsSocketClientTransmitterTool::cookHeaderString(const QString &str)
 {
     ItemContextKeys keys;
     if (str == keys.enable) {
@@ -35,12 +36,12 @@ QString SAKSocketClientTransmitterTool::cookHeaderString(const QString &str)
     return "--";
 }
 
-QVariant SAKSocketClientTransmitterTool::itemContext(int index)
+QVariant xToolsSocketClientTransmitterTool::itemContext(int index)
 {
     QJsonObject obj;
     ItemContextKeys keys;
     if (index >= 0 && index < m_tools.count()) {
-        SAKSocketClientTool *tool = qobject_cast<SAKSocketClientTool *>(m_tools.value(index));
+        xToolsSocketClientTool *tool = qobject_cast<xToolsSocketClientTool *>(m_tools.value(index));
         obj.insert(keys.enable, tool->isEnable());
         obj.insert(keys.clientIp, tool->clientIp());
         obj.insert(keys.clientPort, tool->clientPort());
@@ -61,19 +62,19 @@ QVariant SAKSocketClientTransmitterTool::itemContext(int index)
     return obj;
 }
 
-int SAKSocketClientTransmitterTool::columnCount(const QModelIndex &parent) const
+int xToolsSocketClientTransmitterTool::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     return 7;
 }
 
-QVariant SAKSocketClientTransmitterTool::data(const QModelIndex &index, int role) const
+QVariant xToolsSocketClientTransmitterTool::data(const QModelIndex &index, int role) const
 {
     if (role != Qt::DisplayRole) {
         return QVariant();
     }
     
-    auto tool = qobject_cast<SAKSocketClientTool *>(m_tools.value(index.row()));
+    auto tool = qobject_cast<xToolsSocketClientTool *>(m_tools.value(index.row()));
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKeys keys;
     if (key == keys.enable) {
@@ -99,7 +100,7 @@ QVariant SAKSocketClientTransmitterTool::data(const QModelIndex &index, int role
     return true;
 }
 
-bool SAKSocketClientTransmitterTool::setData(const QModelIndex &index,
+bool xToolsSocketClientTransmitterTool::setData(const QModelIndex &index,
                                              const QVariant &value,
                                              int role)
 {
@@ -108,7 +109,7 @@ bool SAKSocketClientTransmitterTool::setData(const QModelIndex &index,
     }
     
     auto baseTool = m_tools.value(index.row());
-    auto tool = qobject_cast<SAKSocketClientTool *>(baseTool);
+    auto tool = qobject_cast<xToolsSocketClientTool *>(baseTool);
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKeys keys;
     if (key == keys.enable) {
@@ -133,7 +134,7 @@ bool SAKSocketClientTransmitterTool::setData(const QModelIndex &index,
     return true;
 }
 
-QVariant SAKSocketClientTransmitterTool::headerData(int section,
+QVariant xToolsSocketClientTransmitterTool::headerData(int section,
                                                     Qt::Orientation orientation,
                                                     int role) const
 {

@@ -6,18 +6,17 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTCPSERVERTOOL_H
-#define SAKTCPSERVERTOOL_H
+#pragma once
 
-#include "saksocketservertool.h"
+#include "xToolsSocketServerTool.h"
 #include <QMutex>
 #include <QTcpServer>
 
-class SAKTcpServerTool : public SAKSocketServerTool
+class xToolsTcpServerTool : public xToolsSocketServerTool
 {
     Q_OBJECT
 public:
-    explicit SAKTcpServerTool(QObject *parent = nullptr);
+    explicit xToolsTcpServerTool(QObject *parent = nullptr);
 
 protected:
     virtual bool initialize(QString &errStr) override;
@@ -32,5 +31,3 @@ private:
     QList<QTcpSocket *> m_tcpSocketList;
     QMutex m_tcpSocketListMutex;
 };
-
-#endif // SAKTCPSERVERTOOL_H

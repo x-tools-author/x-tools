@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sakserialporttoolui.h"
-#include "sakserialporttool.h"
+#include "xToolsSerialPortTool.h"
 #include "ui_sakserialporttoolui.h"
 
 SAKSerialPortToolUi::SAKSerialPortToolUi(QWidget *parent)
@@ -22,14 +22,14 @@ SAKSerialPortToolUi::~SAKSerialPortToolUi()
     delete ui;
 }
 
-void SAKSerialPortToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
+void SAKSerialPortToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     if (!(tool && tool->inherits("SAKSerialPortTool"))) {
         qWarning() << "Invalid type of communication tool!";
         return;
     }
 
-    mTool = qobject_cast<SAKSerialPortTool *>(tool);
+    mTool = qobject_cast<xToolsSerialPortTool *>(tool);
     mTool->setPortName(ui->comboBoxPortNames->currentText());
     mTool->setBaudRate(ui->comboBoxBaudRate->currentData().toInt());
     mTool->setDataBits(ui->comboBoxDataBits->currentData().toInt());

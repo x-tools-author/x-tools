@@ -24,7 +24,7 @@ class xToolsToolBoxUi;
 class SAKEmitterToolUi;
 class SAKResponserToolUi;
 class SAKPrestorerToolUi;
-class SAKCommunicationTool;
+class xToolsCommunicationTool;
 class xToolsToolBoxUiInputMenu;
 class xToolsToolBoxUiOutputMenu;
 class SAKCommunicationToolUi;
@@ -48,7 +48,7 @@ public:
 
 private:
     xToolsToolBox *m_toolBox{nullptr};
-    SAKCommunicationTool *m_communication{nullptr};
+    xToolsCommunicationTool *m_communication{nullptr};
     SAKCommunicationToolUi *m_communicationUi{nullptr};
     SAKEmitterToolUi *m_emitterUi{nullptr};
     SAKResponserToolUi *m_responserUi{nullptr};

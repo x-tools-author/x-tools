@@ -6,13 +6,12 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKPRESTORERTOOLUI_H
-#define SAKPRESTORERTOOLUI_H
+#pragma once
 
 #include "saktablemodeltoolui.h"
 #include <QMenu>
 
-class SAKPrestorerTool;
+class xToolsPrestorerTool;
 class SAKPrestorerToolUiEditor;
 class SAKPrestorerToolUi : public SAKTableModelToolUi
 {
@@ -23,7 +22,7 @@ public:
     QMenu *menu();
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
     virtual QList<int> defaultHideColumns() override;
     virtual void afterRowEdited(int row) override;
     virtual QDialog *itemEditor() override;
@@ -35,5 +34,3 @@ private:
 private:
     void updateMenu();
 };
-
-#endif // SAKPRESTORERTOOLUI_H

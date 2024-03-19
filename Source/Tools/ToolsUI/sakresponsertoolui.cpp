@@ -15,7 +15,7 @@
 #include <QVariant>
 
 #include "sakresponsertoolui.h"
-#include "saktablemodeltool.h"
+#include "xToolsTableModelTool.h"
 #include "sakuiinterface.h"
 
 SAKResponserToolUi::SAKResponserToolUi(QWidget *parent)
@@ -26,7 +26,7 @@ SAKResponserToolUi::SAKResponserToolUi(QWidget *parent)
 
 SAKResponserToolUi::~SAKResponserToolUi() {}
 
-void SAKResponserToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup)
+void SAKResponserToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
 {
     SAKTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
     QList<int> columns;

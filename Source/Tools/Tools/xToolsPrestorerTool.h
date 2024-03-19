@@ -6,17 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKPRESTORERTOOL_H
-#define SAKPRESTORERTOOL_H
+#pragma once
 
 #include <QAbstractTableModel>
 #include <QMutex>
 #include <QTimer>
 #include <QVariant>
 
-#include "saktablemodeltool.h"
+#include "xToolsTableModelTool.h"
 
-class SAKPrestorerTool : public SAKTableModelTool
+class xToolsPrestorerTool : public xToolsTableModelTool
 {
     Q_OBJECT
     Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
@@ -68,7 +67,7 @@ public:
     };
 
 public:
-    explicit SAKPrestorerTool(QObject *parent = nullptr);
+    explicit xToolsPrestorerTool(QObject *parent = nullptr);
     virtual QString cookHeaderString(const QString &str) override;
     Q_INVOKABLE virtual QVariant itemContext(int index) final;
     QString description(int index);
@@ -125,5 +124,3 @@ private:
 Q_SIGNALS:
     void descriptionsChanged();
 };
-
-#endif // EDPRESETDATATOOL_NEW_H

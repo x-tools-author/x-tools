@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKPRESTORERTOOLUIEDITOR_H
-#define SAKPRESTORERTOOLUIEDITOR_H
+#pragma once
 
 #include <QDialog>
 #include <QJsonObject>
@@ -29,5 +28,3 @@ public:
 private:
     Ui::SAKPrestorerToolUiEditor *ui{nullptr};
 };
-
-#endif // SAKPRESTORERTOOLUIEDITOR_H

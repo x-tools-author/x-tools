@@ -6,17 +6,18 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsUdpTransmitterTool.h"
+
 #include <QJsonObject>
 
-#include "sakudpclienttool.h"
-#include "sakudptransmittertool.h"
+#include "xToolsUdpClientTool.h"
 
-SAKUdpTransmitterTool::SAKUdpTransmitterTool(QObject *parent)
-    : SAKSocketClientTransmitterTool{parent}
+xToolsUdpTransmitterTool::xToolsUdpTransmitterTool(QObject *parent)
+    : xToolsSocketClientTransmitterTool{parent}
 {}
 
-SAKCommunicationTool *SAKUdpTransmitterTool::createTool()
+xToolsCommunicationTool *xToolsUdpTransmitterTool::createTool()
 {
-    SAKCommunicationTool *tool = new SAKUdpClientTool();
+    xToolsCommunicationTool *tool = new xToolsUdpClientTool();
     return tool;
 }

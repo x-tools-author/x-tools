@@ -6,16 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakudpservertool.h"
+#include "xToolsUdpServerTool.h"
 
 #include "sakcompatibility.h"
 #include "sakinterface.h"
 
-SAKUdpServerTool::SAKUdpServerTool(QObject *parent)
-    : SAKSocketServerTool{parent}
+xToolsUdpServerTool::xToolsUdpServerTool(QObject *parent)
+    : xToolsSocketServerTool{parent}
 {}
 
-bool SAKUdpServerTool::initialize(QString &errStr)
+bool xToolsUdpServerTool::initialize(QString &errStr)
 {
     m_udpSocket = new QUdpSocket();
     bool ret = false;
@@ -45,7 +45,7 @@ bool SAKUdpServerTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKUdpServerTool::writeBytes(const QByteArray &bytes)
+void xToolsUdpServerTool::writeBytes(const QByteArray &bytes)
 {
     if (m_clientIndex >= 0 && m_clientIndex < m_clients.length()) {
         QString ipPort = m_clients.at(m_clientIndex);
@@ -63,13 +63,13 @@ void SAKUdpServerTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void SAKUdpServerTool::uninitialize()
+void xToolsUdpServerTool::uninitialize()
 {
     m_udpSocket->deleteLater();
     m_udpSocket = nullptr;
 }
 
-void SAKUdpServerTool::readBytes()
+void xToolsUdpServerTool::readBytes()
 {
     while (m_udpSocket->hasPendingDatagrams()) {
         auto len = m_udpSocket->pendingDatagramSize();
@@ -102,7 +102,7 @@ void SAKUdpServerTool::readBytes()
     }
 }
 
-void SAKUdpServerTool::writeDatagram(const QByteArray &bytes,
+void xToolsUdpServerTool::writeDatagram(const QByteArray &bytes,
                                      const QString &ip,
                                      quint16 port)
 {

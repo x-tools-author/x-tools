@@ -6,30 +6,27 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKBASETOOLUI_H
-#define SAKBASETOOLUI_H
+#pragma once
 
 #include <QLoggingCategory>
 #include <QWidget>
 
-class SAKBaseTool;
+class xToolsBaseTool;
 class SAKBaseToolUi : public QWidget
 {
     Q_OBJECT
 public:
     explicit SAKBaseToolUi(QWidget *parent = nullptr);
 
-    void initialize(SAKBaseTool *tool,
+    void initialize(xToolsBaseTool *tool,
                     const QString &settingsGroup,
                     const char *loggingCategory = nullptr);
 
 protected:
     virtual void onIsWorkingChanged(bool isWorking);
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup);
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup);
 
 protected:
     QLoggingCategory *mLoggingCategory{nullptr};
-    SAKBaseTool *mTool{nullptr};
+    xToolsBaseTool *mTool{nullptr};
 };
-
-#endif // SAKBASETOOLUI_H

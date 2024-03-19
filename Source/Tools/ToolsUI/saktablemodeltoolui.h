@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTABLEMODELTOOLUI_H
-#define SAKTABLEMODELTOOLUI_H
+#pragma once
 
 #include <QAbstractTableModel>
 #include <QActionGroup>
@@ -23,7 +22,7 @@ namespace Ui {
 class SAKTableModelToolUi;
 }
 
-class SAKTableModelTool;
+class xToolsTableModelTool;
 class SAKTableModelToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
@@ -35,7 +34,7 @@ public:
     void setColumnVisible(int column, bool visible);
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
     virtual QList<int> defaultHideColumns();
     virtual void afterRowEdited(int row);
     virtual QDialog *itemEditor() = 0;
@@ -43,7 +42,7 @@ protected:
 protected:
     const QLoggingCategory mLoggingCategory;
     QAbstractTableModel *mTableModel{nullptr};
-    SAKTableModelTool *mTableModelTool{nullptr};
+    xToolsTableModelTool *mTableModelTool{nullptr};
 
 private:
     void clear();
@@ -72,5 +71,3 @@ private:
     void onPushButtonExportClicked();
     void onPushButtonAppendClicked();
 };
-
-#endif // SAKTABLEMODELTOOLUI_H

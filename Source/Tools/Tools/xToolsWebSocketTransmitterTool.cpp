@@ -6,15 +6,15 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakwebsockettransmittertool.h"
-#include "sakwebsocketclienttool.h"
+#include "xToolsWebSocketTransmitterTool.h"
+#include "xToolsWebSocketClientTool.h"
 
-SAKWebSocketTransmitterTool::SAKWebSocketTransmitterTool(QObject *parent)
-    : SAKSocketClientTransmitterTool{parent}
+xToolsWebSocketTransmitterTool::xToolsWebSocketTransmitterTool(QObject *parent)
+    : xToolsSocketClientTransmitterTool{parent}
 {}
 
-SAKCommunicationTool *SAKWebSocketTransmitterTool::createTool()
+xToolsCommunicationTool *xToolsWebSocketTransmitterTool::createTool()
 {
-    SAKWebSocketClientTool *tool = new SAKWebSocketClientTool();
+    xToolsWebSocketClientTool *tool = new xToolsWebSocketClientTool();
     return tool;
 }

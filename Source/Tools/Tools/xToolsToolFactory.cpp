@@ -6,76 +6,76 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saktoolfactory.h"
+#include "xToolsToolFactory.h"
 
 #include <QMetaEnum>
 
-#include "sakanalyzertool.h"
-#include "sakcrccalculatortool.h"
-#include "sakemittertool.h"
-#include "sakmaskertool.h"
-#include "sakprestorertool.h"
-#include "sakresponsertool.h"
-#include "sakserialporttool.h"
-#include "sakserialporttransmittertool.h"
-#include "sakstatisticiantool.h"
-#include "sakstorertool.h"
-#include "saktcpclienttool.h"
-#include "saktcpservertool.h"
-#include "saktcptransmittertool.h"
-#include "sakudpclienttool.h"
-#include "sakudpservertool.h"
-#include "sakudptransmittertool.h"
-#include "sakvelometertool.h"
-#include "sakwebsocketclienttool.h"
-#include "sakwebsocketservertool.h"
-#include "sakwebsockettransmittertool.h"
+#include "xToolsAnalyzerTool.h"
+#include "xToolsCrcCalculatorTool.h"
+#include "xToolsEmitterTool.h"
+#include "xToolsMaskerTool.h"
+#include "xToolsPrestorerTool.h"
+#include "xToolsResponserTool.h"
+#include "xToolsSerialPortTool.h"
+#include "xToolsSerialPortTransmitterTool.h"
+#include "xToolsStatisticianTool.h"
+#include "xToolsStorerTool.h"
+#include "xToolsTcpClientTool.h"
+#include "xToolsTcpServerTool.h"
+#include "xToolsTcpTransmitterTool.h"
+#include "xToolsUdpClientTool.h"
+#include "xToolsUdpServerTool.h"
+#include "xToolsUdpTransmitterTool.h"
+#include "xToolsVelometerTool.h"
+#include "xToolsWebSocketClientTool.h"
+#include "xToolsWebSocketServerTool.h"
+#include "xToolsWebSocketTransmitterTool.h"
 
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
 #include "sakblecentraltool.h"
 #endif
 
-SAKToolFactory::SAKToolFactory(QObject *parent)
+xToolsToolFactory::xToolsToolFactory(QObject *parent)
     : QObject{parent}
 {}
 
-SAKToolFactory *SAKToolFactory::instance()
+xToolsToolFactory *xToolsToolFactory::instance()
 {
-    static SAKToolFactory toolsFactory;
+    static xToolsToolFactory toolsFactory;
     return &toolsFactory;
 }
 
-SAKBaseTool *SAKToolFactory::createTool(int type)
+xToolsBaseTool *xToolsToolFactory::createTool(int type)
 {
-    SAKBaseTool *tool{nullptr};
+    xToolsBaseTool *tool{nullptr};
     if (AnalyzerTool == type) {
-        tool = new SAKAnalyzerTool();
+        tool = new xToolsAnalyzerTool();
     } else if (SerialportTool == type) {
-        tool = new SAKSerialPortTool();
+        tool = new xToolsSerialPortTool();
     } else if (EmitterTool == type) {
-        tool = new SAKEmitterTool();
+        tool = new xToolsEmitterTool();
     } else if (MaskerTool == type) {
-        tool = new SAKMaskerTool();
+        tool = new xToolsMaskerTool();
     } else if (ResponserTool == type) {
-        tool = new SAKResponserTool();
+        tool = new xToolsResponserTool();
     } else if (StorerTool == type) {
-        tool = new SAKStorerTool();
+        tool = new xToolsStorerTool();
     } else if (PrestoreTool == type) {
-        tool = new SAKPrestorerTool();
+        tool = new xToolsPrestorerTool();
     } else if (VelometerTool == type) {
-        tool = new SAKVelometerTool();
+        tool = new xToolsVelometerTool();
     } else if (UdpClientTool == type) {
-        tool = new SAKUdpClientTool();
+        tool = new xToolsUdpClientTool();
     } else if (UdpServerTool == type) {
-        tool = new SAKUdpServerTool();
+        tool = new xToolsUdpServerTool();
     } else if (TcpClientTool == type) {
-        tool = new SAKTcpClientTool();
+        tool = new xToolsTcpClientTool();
     } else if (TcpServerTool == type) {
-        tool = new SAKTcpServerTool();
+        tool = new xToolsTcpServerTool();
     } else if (WebSocketClientTool == type) {
-        tool = new SAKWebSocketClientTool();
+        tool = new xToolsWebSocketClientTool();
     } else if (WebSocketServerTool == type) {
-        tool = new SAKWebSocketServerTool();
+        tool = new xToolsWebSocketServerTool();
     }
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
     else if (BleCentralTool == type) {
@@ -83,23 +83,23 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
     }
 #endif
     else if (StatistiticianTool == type) {
-        tool = new SAKStatisticianTool();
+        tool = new xToolsStatisticianTool();
     } else if (SerialPortTransmitterTool == type) {
-        tool = new SAKSerialPortTransmitterTool();
+        tool = new xToolsSerialPortTransmitterTool();
     } else if (UdpTransmitterTool == type) {
-        tool = new SAKUdpTransmitterTool();
+        tool = new xToolsUdpTransmitterTool();
     } else if (TcpTransmitterTool == type) {
-        tool = new SAKTcpTransmitterTool();
+        tool = new xToolsTcpTransmitterTool();
     } else if (WebSocketTransmitterTool == type) {
-        tool = new SAKWebSocketTransmitterTool();
+        tool = new xToolsWebSocketTransmitterTool();
     } else if (CrcCalculatorTool == type) {
-        tool = new SAKCrcCalculatorTool();
+        tool = new xToolsCrcCalculatorTool();
     } else {
         qWarning() << "Unknown tool type: " << type;
     }
 
     if (tool) {
-        QMetaEnum metaEnum = QMetaEnum::fromType<SAKToolFactory::ToolsType>();
+        QMetaEnum metaEnum = QMetaEnum::fromType<xToolsToolFactory::ToolsType>();
         tool->setProperty("toolTypeName", metaEnum.valueToKey(type));
     } else {
         QString msg = QString("Unknow tool type: %1.").arg(type);
@@ -114,7 +114,7 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
     return tool;
 }
 
-QString SAKToolFactory::toolName(int type)
+QString xToolsToolFactory::toolName(int type)
 {
     static QMap<int, QString> map;
     if (map.isEmpty()) {

@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sakprestorertooluieditor.h"
-#include "sakprestorertool.h"
+#include "xToolsPrestorerTool.h"
 #include "ui_sakprestorertooluieditor.h"
 
 SAKPrestorerToolUiEditor::SAKPrestorerToolUiEditor(QWidget *parent)
@@ -42,7 +42,7 @@ QJsonObject SAKPrestorerToolUiEditor::parameters()
     QString data = ui->lineEditData->text();
 
     QJsonObject params;
-    SAKPrestorerTool::ItemKeys keys;
+    xToolsPrestorerTool::ItemKeys keys;
     params.insert(keys.itemDescription, description);
     params.insert(keys.itemTextFormat, format);
     params.insert(keys.itemEscapeCharacter, escape);
@@ -60,7 +60,7 @@ QJsonObject SAKPrestorerToolUiEditor::parameters()
 
 void SAKPrestorerToolUiEditor::setParameters(const QJsonObject &params)
 {
-    SAKPrestorerTool::ItemKeys keys;
+    xToolsPrestorerTool::ItemKeys keys;
     QString description = params.value(keys.itemDescription).toString();
     int format = params.value(keys.itemTextFormat).toInt();
     int escape = params.value(keys.itemEscapeCharacter).toInt();

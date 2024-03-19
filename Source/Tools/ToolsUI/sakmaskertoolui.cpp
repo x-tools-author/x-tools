@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "sakmaskertoolui.h"
-#include "sakmaskertool.h"
+#include "xToolsMaskerTool.h"
 #include "ui_sakmaskertoolui.h"
 
 SAKMaskerToolUi::SAKMaskerToolUi(QWidget *parent)
@@ -27,14 +27,14 @@ void SAKMaskerToolUi::setToolName(const QString &name)
     ui->groupBox->setTitle(name);
 }
 
-void SAKMaskerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingsGroup)
+void SAKMaskerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
 #if 0
     ui->checkBoxEnable->setGroupKey(settingsGroup, "maskerEnable");
 #endif
     ui->spinBoxMaskCode->setGroupKey(settingsGroup, "maskCode");
 
-    SAKMaskerTool *cookedTool = qobject_cast<SAKMaskerTool *>(tool);
+    xToolsMaskerTool *cookedTool = qobject_cast<xToolsMaskerTool *>(tool);
     if (!cookedTool) {
         qCWarning((*mLoggingCategory)) << "Invalid tool type!";
         return;

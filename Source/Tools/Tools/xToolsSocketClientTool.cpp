@@ -6,77 +6,77 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saksocketclienttool.h"
+#include "xToolsSocketClientTool.h"
 
-SAKSocketClientTool::SAKSocketClientTool(QObject *parent)
-    : SAKCommunicationTool{parent}
+xToolsSocketClientTool::xToolsSocketClientTool(QObject *parent)
+    : xToolsCommunicationTool{parent}
 {}
 
-QString SAKSocketClientTool::clientIp()
+QString xToolsSocketClientTool::clientIp()
 {
     return m_clientIp;
 }
 
-void SAKSocketClientTool::setClientIp(const QString &ip)
+void xToolsSocketClientTool::setClientIp(const QString &ip)
 {
     m_clientIp = ip;
     emit clientIpChanged();
 }
 
-int SAKSocketClientTool::clientPort()
+int xToolsSocketClientTool::clientPort()
 {
     return m_clientPort;
 }
 
-void SAKSocketClientTool::setClientPort(int port)
+void xToolsSocketClientTool::setClientPort(int port)
 {
     m_clientPort = port;
     emit clientPortChanged();
 }
 
-bool SAKSocketClientTool::specifyClientIpPort()
+bool xToolsSocketClientTool::specifyClientIpPort()
 {
     return m_specifyClientIpPort;
 }
 
-void SAKSocketClientTool::setSpecifyClientIpPort(bool specified)
+void xToolsSocketClientTool::setSpecifyClientIpPort(bool specified)
 {
     m_specifyClientIpPort = specified;
 }
 
-QString SAKSocketClientTool::serverIp()
+QString xToolsSocketClientTool::serverIp()
 {
     return m_serverIp;
 }
 
-void SAKSocketClientTool::setServerIp(const QString &ip)
+void xToolsSocketClientTool::setServerIp(const QString &ip)
 {
     m_serverIp = ip;
     emit serverIpChanged();
 }
 
-int SAKSocketClientTool::serverPort()
+int xToolsSocketClientTool::serverPort()
 {
     return m_serverPort;
 }
 
-void SAKSocketClientTool::setServerPort(int port)
+void xToolsSocketClientTool::setServerPort(int port)
 {
     m_serverPort = port;
     emit serverPortChanged();
 }
 
-QString SAKSocketClientTool::bindingIpPort()
+QString xToolsSocketClientTool::bindingIpPort()
 {
     return m_bindingIpPort;
 }
 
-int SAKSocketClientTool::messageType()
+int xToolsSocketClientTool::messageType()
 {
     return m_messageType;
 }
 
-void SAKSocketClientTool::setMessageType(int type)
+void xToolsSocketClientTool::setMessageType(int type)
 {
     m_messageType = type;
     emit messageTypeChanged();

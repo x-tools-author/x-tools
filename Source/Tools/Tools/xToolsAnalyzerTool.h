@@ -6,19 +6,18 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKANALYZERTOOL_H
-#define SAKANALYZERTOOL_H
+#pragma once
 
 #include <QMutex>
 #include <QTimer>
 
-#include "sakbasetool.h"
+#include "xToolsBaseTool.h"
 
-class SAKAnalyzerTool : public SAKBaseTool
+class xToolsAnalyzerTool : public xToolsBaseTool
 {
     Q_OBJECT
 public:
-    explicit SAKAnalyzerTool(QObject *parent = Q_NULLPTR);
+    explicit xToolsAnalyzerTool(QObject *parent = Q_NULLPTR);
 
     Q_INVOKABLE void setFixed(bool fixed);
     Q_INVOKABLE void setFrameBytes(int bytes);
@@ -48,5 +47,3 @@ private:
     void analyzeFixed();
     void analyzeSeparationMark();
 };
-
-#endif // SAKANALYZERTOOL_H

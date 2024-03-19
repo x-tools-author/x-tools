@@ -6,14 +6,13 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTOOLFACTORY_H
-#define SAKTOOLFACTORY_H
+#pragma once
 
 #include <QObject>
 
-#include "sakbasetool.h"
+#include "xToolsBaseTool.h"
 
-class SAKToolFactory : public QObject
+class xToolsToolFactory : public QObject
 {
     Q_OBJECT
 public:
@@ -44,12 +43,10 @@ public:
     Q_ENUM(ToolsType)
 
 private:
-    explicit SAKToolFactory(QObject *parent = Q_NULLPTR);
+    explicit xToolsToolFactory(QObject *parent = Q_NULLPTR);
 
 public:
-    static SAKToolFactory *instance();
-    Q_INVOKABLE SAKBaseTool *createTool(int type);
+    static xToolsToolFactory *instance();
+    Q_INVOKABLE xToolsBaseTool *createTool(int type);
     QString toolName(int type);
 };
-
-#endif // SAKTOOLFACTORY_H

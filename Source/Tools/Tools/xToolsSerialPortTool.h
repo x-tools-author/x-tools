@@ -6,15 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSERIALPORTTOOL_H
-#define SAKSERIALPORTTOOL_H
+#pragma once
 
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-#include "sakcommunicationtool.h"
+#include "xToolsCommunicationTool.h"
 
-class SAKSerialPortTool : public SAKCommunicationTool
+class xToolsSerialPortTool : public xToolsCommunicationTool
 {
     Q_OBJECT
     Q_PROPERTY(QString portName READ portName WRITE setPortName NOTIFY portNameChanged FINAL)
@@ -25,7 +24,7 @@ class SAKSerialPortTool : public SAKCommunicationTool
     Q_PROPERTY(int flowControl READ flowControl WRITE setFlowControl NOTIFY flowControlChanged FINAL)
 
 public:
-    SAKSerialPortTool(QObject *parent = Q_NULLPTR);
+    xToolsSerialPortTool(QObject *parent = Q_NULLPTR);
 
     QString portName();
     void setPortName(const QString &portName);
@@ -74,5 +73,3 @@ private:
 private:
     QSerialPort *m_serialPort{Q_NULLPTR};
 };
-
-#endif // SAKSERIALPORTTOOL_H

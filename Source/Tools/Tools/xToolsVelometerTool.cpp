@@ -6,14 +6,15 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakvelometertool.h"
+#include "xToolsVelometerTool.h"
+
 #include <QTimer>
 
-SAKVelometerTool::SAKVelometerTool(QObject *parent)
-    : SAKBaseTool{parent}
+xToolsVelometerTool::xToolsVelometerTool(QObject *parent)
+    : xToolsBaseTool{parent}
 {}
 
-void SAKVelometerTool::inputBytes(const QByteArray &bytes)
+void xToolsVelometerTool::inputBytes(const QByteArray &bytes)
 {
     if (isRunning()) {
         mInputBytesContextListMutex.lock();
@@ -22,7 +23,7 @@ void SAKVelometerTool::inputBytes(const QByteArray &bytes)
     }
 }
 
-void SAKVelometerTool::run()
+void xToolsVelometerTool::run()
 {
     QTimer *timer = new QTimer();
     timer->setInterval(1000);
@@ -62,7 +63,7 @@ void SAKVelometerTool::run()
     timer = nullptr;
 }
 
-QString SAKVelometerTool::velocity()
+QString xToolsVelometerTool::velocity()
 {
     mVelocityMutex.lock();
     QString v = mVelocity;

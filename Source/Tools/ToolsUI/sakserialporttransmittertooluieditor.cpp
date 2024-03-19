@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include <QJsonObject>
 
-#include "sakserialporttransmittertool.h"
+#include "xToolsSerialPortTransmitterTool.h"
 #include "sakserialporttransmittertooluieditor.h"
 #include "ui_sakserialporttransmittertooluieditor.h"
 
@@ -34,7 +34,7 @@ SAKSerialPortTransmitterToolUiEditor::~SAKSerialPortTransmitterToolUiEditor()
 
 QJsonObject SAKSerialPortTransmitterToolUiEditor::parameters()
 {
-    SAKSerialPortTransmitterTool::ItemContextKey keys;
+    xToolsSerialPortTransmitterTool::ItemContextKey keys;
     QJsonObject obj;
 
     bool enable = ui->checkBoxEnable->isChecked();
@@ -58,7 +58,7 @@ QJsonObject SAKSerialPortTransmitterToolUiEditor::parameters()
 
 void SAKSerialPortTransmitterToolUiEditor::setParameters(const QJsonObject &params)
 {
-    SAKSerialPortTransmitterTool::ItemContextKey keys;
+    xToolsSerialPortTransmitterTool::ItemContextKey keys;
     bool enable = params.value(keys.enable).toBool();
     QString portName = params.value(keys.portName).toString();
     int dataBits = params.value(keys.dataBits).toInt();

@@ -6,18 +6,17 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKCRCCALCULATORTOOL_H
-#define SAKCRCCALCULATORTOOL_H
+#pragma once
 
-#include "sakbasetool.h"
+#include "xToolsBaseTool.h"
 
 class SAKCrcInterface;
-class SAKCrcCalculatorTool : public SAKBaseTool
+class xToolsCrcCalculatorTool : public xToolsBaseTool
 {
     Q_OBJECT
 public:
-    SAKCrcCalculatorTool(QObject *parent = Q_NULLPTR);
-    ~SAKCrcCalculatorTool();
+    xToolsCrcCalculatorTool(QObject *parent = Q_NULLPTR);
+    ~xToolsCrcCalculatorTool();
 
     int startIndex() const;
     void setStartIndex(int index);
@@ -37,5 +36,3 @@ private:
     bool m_bigEndian;
     SAKCrcInterface *m_crcInterface;
 };
-
-#endif // SAKCRCCALCULATORTOOL_H

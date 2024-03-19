@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSERIALPORTTRANSMITTERTOOLUI_H
-#define SAKSERIALPORTTRANSMITTERTOOLUI_H
+#pragma once
 
 #include "sakserialporttransmittertooluieditor.h"
 #include "saktransmittertoolui.h"
@@ -19,11 +18,9 @@ public:
     SAKSerialPortTransmitterToolUi(QWidget *parent = nullptr);
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
     virtual QDialog *itemEditor() override;
 
 private:
     SAKSerialPortTransmitterToolUiEditor *mEditor;
 };
-
-#endif // SAKSERIALPORTTRANSMITTERTOOLUI_H

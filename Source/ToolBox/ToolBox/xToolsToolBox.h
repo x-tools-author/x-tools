@@ -11,18 +11,18 @@
 #include <QObject>
 #include <QVariant>
 
-#include "sakbasetool.h"
-#include "sakcommunicationtool.h"
-#include "sakemittertool.h"
-#include "sakprestorertool.h"
-#include "sakresponsertool.h"
-#include "sakserialporttransmittertool.h"
-#include "sakstatisticiantool.h"
-#include "sakstorertool.h"
-#include "saktcptransmittertool.h"
-#include "sakudptransmittertool.h"
-#include "sakvelometertool.h"
-#include "sakwebsockettransmittertool.h"
+#include "xToolsBaseTool.h"
+#include "xToolsCommunicationTool.h"
+#include "xToolsEmitterTool.h"
+#include "xToolsPrestorerTool.h"
+#include "xToolsResponserTool.h"
+#include "xToolsSerialPortTransmitterTool.h"
+#include "xToolsStatisticianTool.h"
+#include "xToolsStorerTool.h"
+#include "xToolsTcpTransmitterTool.h"
+#include "xToolsUdpTransmitterTool.h"
+#include "xToolsVelometerTool.h"
+#include "xToolsWebSocketTransmitterTool.h"
 
 class xToolsToolBox : public QObject
 {
@@ -55,19 +55,19 @@ public:
     Q_INVOKABLE void send(const QByteArray& bytes);
     bool isWorking();
 
-    SAKCommunicationTool* getCommunicationTool();
-    SAKEmitterTool* getEmitterTool();
-    SAKResponserTool* getResponserTool();
-    SAKStorerTool* getStorerTool();
-    SAKPrestorerTool* getPrestorerTool();
-    SAKVelometerTool* getRxVelometerTool();
-    SAKVelometerTool* getTxVelometerTool();
-    SAKStatisticianTool* getRxStatisticianTool();
-    SAKStatisticianTool* getTxStatisticianTool();
-    SAKUdpTransmitterTool* getUdpTransmitterTool();
-    SAKTcpTransmitterTool* getTcpTransmitterTool();
-    SAKWebSocketTransmitterTool* getWebSocketTransmitterTool();
-    SAKSerialPortTransmitterTool* getSerialPortTransmitterTool();
+    xToolsCommunicationTool* getCommunicationTool();
+    xToolsEmitterTool* getEmitterTool();
+    xToolsResponserTool* getResponserTool();
+    xToolsStorerTool* getStorerTool();
+    xToolsPrestorerTool* getPrestorerTool();
+    xToolsVelometerTool* getRxVelometerTool();
+    xToolsVelometerTool* getTxVelometerTool();
+    xToolsStatisticianTool* getRxStatisticianTool();
+    xToolsStatisticianTool* getTxStatisticianTool();
+    xToolsUdpTransmitterTool* getUdpTransmitterTool();
+    xToolsTcpTransmitterTool* getTcpTransmitterTool();
+    xToolsWebSocketTransmitterTool* getWebSocketTransmitterTool();
+    xToolsSerialPortTransmitterTool* getSerialPortTransmitterTool();
 
 signals:
     void errorOccurred(const QString& errorString);
@@ -75,25 +75,25 @@ signals:
     void communicatorChanged();
 
 private:
-    QList<SAKBaseTool*> m_tools;
+    QList<xToolsBaseTool*> m_tools;
 
 private:
     void uninitializedTips();
 
 private:
-    SAKCommunicationTool* m_comunicator{nullptr};
-    SAKEmitterTool* m_emitter{nullptr};
-    SAKResponserTool* m_responser{nullptr};
-    SAKStorerTool* m_storer{nullptr};
-    SAKPrestorerTool* m_prestorer{nullptr};
-    SAKVelometerTool* m_rxVelometer{nullptr};
-    SAKVelometerTool* m_txVelometer{nullptr};
-    SAKStatisticianTool* m_rxCounter{nullptr};
-    SAKStatisticianTool* m_txCounter{nullptr};
-    SAKUdpTransmitterTool* m_udpTransmitter{nullptr};
-    SAKTcpTransmitterTool* m_tcpTransmitter{nullptr};
-    SAKWebSocketTransmitterTool* m_webSocketTransmitter{nullptr};
-    SAKSerialPortTransmitterTool* m_serialPortTransmitter{nullptr};
+    xToolsCommunicationTool* m_comunicator{nullptr};
+    xToolsEmitterTool* m_emitter{nullptr};
+    xToolsResponserTool* m_responser{nullptr};
+    xToolsStorerTool* m_storer{nullptr};
+    xToolsPrestorerTool* m_prestorer{nullptr};
+    xToolsVelometerTool* m_rxVelometer{nullptr};
+    xToolsVelometerTool* m_txVelometer{nullptr};
+    xToolsStatisticianTool* m_rxCounter{nullptr};
+    xToolsStatisticianTool* m_txCounter{nullptr};
+    xToolsUdpTransmitterTool* m_udpTransmitter{nullptr};
+    xToolsTcpTransmitterTool* m_tcpTransmitter{nullptr};
+    xToolsWebSocketTransmitterTool* m_webSocketTransmitter{nullptr};
+    xToolsSerialPortTransmitterTool* m_serialPortTransmitter{nullptr};
     bool m_isWorking{false};
 
 private:

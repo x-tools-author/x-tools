@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTABLEVIEWTOOLUI_H
-#define SAKTABLEVIEWTOOLUI_H
+#pragma once
 
 #include "sakbasetoolui.h"
 
@@ -16,5 +15,3 @@ class SAKTableViewToolUi : public SAKBaseToolUi
 public:
     SAKTableViewToolUi(QWidget *parent = nullptr);
 };
-
-#endif // SAKTABLEVIEWTOOLUI_H

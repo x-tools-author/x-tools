@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKEMITTERTOOLUI_H
-#define SAKEMITTERTOOLUI_H
+#pragma once
 
 #include "sakemittertooluieditor.h"
 #include "saktablemodeltoolui.h"
@@ -20,12 +19,10 @@ public:
     ~SAKEmitterToolUi();
 
 protected:
-    virtual void onBaseToolUiInitialized(SAKBaseTool *tool, const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
     virtual QList<int> defaultHideColumns() override;
     virtual QDialog *itemEditor() override;
 
 private:
     SAKEmitterToolUiEditor *mEditor{nullptr};
 };
-
-#endif // SAKEMITTERTOOLUI_H
