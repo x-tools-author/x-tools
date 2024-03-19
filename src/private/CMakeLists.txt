@@ -22,28 +22,13 @@ foreach(dir ${dirs})
   endif()
 endforeach()
 
+set(GITEE_URL "git clone https://gitee.com/qsaker-qsak")
 add_custom_target(
-  CloneFluent2
-  COMMAND git clone https://gitee.com/qsaker-qsak/fluent2.git ./fluent2
-  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
-add_custom_target(
-  CloneKeyGen
-  COMMAND git clone https://gitee.com/qsaker-qsak/keygen.git ./keygen
-  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
-add_custom_target(
-  CloneEasyDebug
-  COMMAND git clone https://gitee.com/qsaker-qsak/easydebug.git ./easydebug
-  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
-add_custom_target(
-  CloneDataFlowStudio
-  COMMAND git clone https://gitee.com/qsaker-qsak/dataflowstudio.git ./dataflowstudio
-  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
-add_custom_target(
-  ClonePasswordAssassin
-  COMMAND git clone https://gitee.com/qsaker-qsak/passwordassassin.git ./passwordassassin
+  ClonePrivate
+  COMMAND git clone ${GITEE_URL}/keygen.git || echo "clone keygen"
+  COMMAND git clone ${GITEE_URL}/fluent2.git || echo "clone fluent2"
+  COMMAND git clone ${GITEE_URL}/easydebug.git || echo "clone easydebug"
+  COMMAND git clone ${GITEE_URL}/dataflowstudio.git || echo "clone dataflowstudio"
+  COMMAND git clone ${GITEE_URL}/passwordassassin.git || echo "clone passwordassassin"
   SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
