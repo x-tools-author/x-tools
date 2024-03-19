@@ -1,13 +1,12 @@
 ﻿/***************************************************************************************************
- * Copyright 2022-2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2022-2023 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
- * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKASSISTANTSFACTORY_H
-#define SAKASSISTANTSFACTORY_H
+#pragma onece
 
 #include <QMap>
 #include <QObject>
@@ -50,5 +49,3 @@ private:
         m_metaObjectMap.insert(type, T::staticMetaObject);
     }
 };
-
-#endif // SAKASSISTANTSFACTORY_H

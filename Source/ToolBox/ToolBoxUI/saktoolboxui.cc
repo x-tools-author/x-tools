@@ -1,9 +1,9 @@
 ﻿/***************************************************************************************************
- * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
- * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
 #include "saktoolboxui.h"
@@ -105,21 +105,21 @@ QIcon SAKToolBoxUi::communicationToolIcon(int type)
 {
     QString fileName;
     if (type == SAKToolFactory::SerialportTool) {
-        fileName = ":/resources/icon/IconSerialPort.svg";
+        fileName = ":/Resources/Icon/IconSerialPort.svg";
     } else if (type == SAKToolFactory::UdpClientTool) {
-        fileName = ":/resources/icon/IconUdpClient.svg";
+        fileName = ":/Resources/Icon/IconUdpClient.svg";
     } else if (type == SAKToolFactory::UdpServerTool) {
-        fileName = ":/resources/icon/IconUdpServer.svg";
+        fileName = ":/Resources/Icon/IconUdpServer.svg";
     } else if (type == SAKToolFactory::TcpClientTool) {
-        fileName = ":/resources/icon/IconTcpClient.svg";
+        fileName = ":/Resources/Icon/IconTcpClient.svg";
     } else if (type == SAKToolFactory::TcpServerTool) {
-        fileName = ":/resources/icon/IconTcpServer.svg";
+        fileName = ":/Resources/Icon/IconTcpServer.svg";
     } else if (type == SAKToolFactory::WebSocketClientTool) {
-        fileName = ":/resources/icon/IconWebSocketClient.svg";
+        fileName = ":/Resources/Icon/IconWebSocketClient.svg";
     } else if (type == SAKToolFactory::WebSocketServerTool) {
-        fileName = ":/resources/icon/IconWebSocketServer.svg";
+        fileName = ":/Resources/Icon/IconWebSocketServer.svg";
     } else if (type == SAKToolFactory::BleCentralTool) {
-        fileName = ":/resources/icon/IconBlueTooth.svg";
+        fileName = ":/Resources/Icon/IconBlueTooth.svg";
     }
 
     QIcon icon(fileName);

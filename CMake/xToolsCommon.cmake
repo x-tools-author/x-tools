@@ -5,8 +5,8 @@ add_compile_definitions(SAK_STYLE_DEFAULT="Fusion")
 add_compile_definitions(SAK_HOST_ADDRESS_ANY="Any")
 add_compile_definitions(SAK_CLEAR_MESSAGE_INTERVAL=8000)
 add_compile_definitions(SAK_AUTHOR_EMAIL="qsaker@foxmail.com")
-add_compile_definitions(SAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/QtSwissArmyKnife")
-add_compile_definitions(SAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/QtSwissArmyKnife")
+add_compile_definitions(SAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/xTools")
+add_compile_definitions(SAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/xTools")
 
 set(SAK_BINARY_DIR ${CMAKE_BINARY_DIR}/assets)
 
@@ -66,7 +66,7 @@ function(sak_add_executable target sources)
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${target} MANUAL_FINALIZATION)
 
-    if(${target} STREQUAL "QtSwissArmyKnife")
+    if(${target} STREQUAL "xTools")
       set_property(
         TARGET ${target}
         APPEND

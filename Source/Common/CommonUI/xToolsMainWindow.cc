@@ -1,9 +1,9 @@
 ﻿/***************************************************************************************************
- * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
- * The file is encoded in "utf8 with bom", it is a part of QtSwissArmyKnife project.
+ * The file is encoded in "utf8 with bom", it is a part of xTools project.
  *
- * xTools is licensed according to the terms in the file LICENCE in the root of the source code
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source code
  * directory.
  **************************************************************************************************/
 #include "xToolsMainWindow.h"
@@ -107,7 +107,7 @@ void xToolsMainWindow::initMenuHelp()
                           "Gitee",
                           this,
                           &xToolsMainWindow::onGiteeActionTriggered);
-    m_helpMenu->addAction(QIcon(":/resources/icon/IconQQGray.svg"),
+    m_helpMenu->addAction(QIcon(":/Resources/Icon/IconQQGray.svg"),
                           tr("User QQ Group"),
                           this,
                           &xToolsMainWindow::onUserQqGroupTriggerd);
@@ -275,7 +275,7 @@ void xToolsMainWindow::onAboutActionTriggered()
     info += "\n";
     info += tr("Date: ") + SAK_GIT_COMMIT_TIME;
     info += "\n";
-    info += tr("Copyright 2018-%1 Qsaker(qsaker@foxmail.com). All rights reserved.").arg(year);
+    info += tr("Copyright 2018-%1 x-tools-author(x-tools@outlook.com). All rights reserved.").arg(year);
     QMessageBox::about(this, tr("About"), info);
 }
 

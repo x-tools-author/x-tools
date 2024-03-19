@@ -25,7 +25,7 @@ endif()
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 
-include(CMake/Common.cmake)
+include(CMake/xToolsCommon.cmake)
 include(CMake/xToolsGit.cmake)
 
 file(GLOB_RECURSE X_TOOLS_COMMOM_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/Common/*.h")
@@ -46,7 +46,7 @@ file(GLOB X_TOOLS_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/*.cc")
 
 file(GLOB X_TOOLS_ASSISTANT_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/Assistants/*/Source/*.h")
 file(GLOB X_TOOLS_ASSISTANT_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/Assistants/*/Source/*.ui")
-file(GLOB X_TOOLS_ASSISTANT_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/Assistants/*/Source/*.cc")
+file(GLOB X_TOOLS_ASSISTANT_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/Assistants/*/Source/*.cpp")
 
 file(GLOB X_TOOLS_CMAKE_FILES "${CMAKE_SOURCE_DIR}/CMake/*.cmake")
 

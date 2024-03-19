@@ -1,9 +1,9 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2018-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
- * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source 
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source 
  * code directory.
  **************************************************************************************************/
 #include "mainwindow.h"
@@ -503,7 +503,7 @@ void MainWindow::initLanguageMenu()
 {
     QMenu* languageMenu = new QMenu(tr("&Languages"), this);
 #if 0
-    QIcon icon = QIcon(":/resources/icon/IconLanguage.svg");
+    QIcon icon = QIcon(":/Resources/Icon/IconLanguage.svg");
     languageMenu->setIcon(icon);
 #endif
     menuBar()->addMenu(languageMenu);
@@ -538,12 +538,12 @@ void MainWindow::initHelpMenu()
         QMessageBox::aboutQt(this, tr("About Qt"));
     });
 
-    QAction* aboutAction = new QAction(tr("About QtSwissArmyKnife"), this);
+    QAction* aboutAction = new QAction(tr("About xTools"), this);
     helpMenu->addAction(aboutAction);
     connect(aboutAction, &QAction::triggered, this, &MainWindow::aboutSoftware);
 #ifdef Q_OS_WIN
     QString tips = tr("Buy from Microsoft App Store");
-    QIcon buy(":/resources/icon/IconBuy.svg");
+    QIcon buy(":/Resources/Icon/IconBuy.svg");
     QAction* microsoft = new QAction(buy, tips);
     helpMenu->addAction(microsoft);
     connect(microsoft, &QAction::triggered, this, []() {
@@ -650,20 +650,20 @@ void MainWindow::initNav()
 
     tb->addSeparator();
 
-    QString path = ":/resources/icon/IconModbus.svg";
+    QString path = ":/Resources/Icon/IconModbus.svg";
 #ifdef SAK_IMPORT_MODULE_MODBUSSTUDIO
     SAKModbusUi* modbus = new SAKModbusUi(this);
     initNav({&navButtonGroup, SAKUiInterface::cookedIcon(QIcon(path)), "Modbus Studio", modbus, tb});
 #ifdef SAK_IMPORT_MODULE_PRIVATE_MODBUS
     SAKPrivateModbusClient* modbusClient = new SAKPrivateModbusClient(this);
     SAKPrivateModbusServer* modbusServer = new SAKPrivateModbusServer(this);
-    path = ":/resources/icon/IconModbus.svg";
+    path = ":/Resources/Icon/IconModbus.svg";
     initNav(&navButtonGroup,
             SAKUiInterface::cookedIcon(QIcon(path)),
             "Modbus Master",
             modbusClient,
             tb);
-    path = ":/resources/icon/IconModbus.svg";
+    path = ":/Resources/Icon/IconModbus.svg";
     initNav(&navButtonGroup,
             SAKUiInterface::cookedIcon(QIcon(path)),
             "Modbus Slave",
@@ -676,7 +676,7 @@ void MainWindow::initNav()
 #ifndef SAK_RELEASE_FOR_APP_STORE
 #ifdef SAK_IMPORT_MODULE_CANBUSSTUDIO
     SAKCanBusUi* canbus = new SAKCanBusUi(this);
-    path = ":/resources/icon/IconCanBus.svg";
+    path = ":/Resources/Icon/IconCanBus.svg";
     initNav({&navButtonGroup, SAKUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb});
 #endif
 #endif
@@ -689,7 +689,7 @@ void MainWindow::initNav()
     bool isTextBesideIcon = SAKSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
     QToolButton* tbt = new QToolButton(this);
-    path = ":/resources/icon/IconListWithIcon.svg";
+    path = ":/Resources/Icon/IconListWithIcon.svg";
     tbt->setIcon(SAKUiInterface::cookedIcon(QIcon(path)));
     tbt->setCheckable(true);
     tbt->setText(" " + tr("Hide Text"));
@@ -715,13 +715,13 @@ void MainWindow::initNav()
 #endif
 #if 0
     initNav({&navButtonGroup,
-             SAKUiInterface::cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
+             SAKUiInterface::cookedIcon(QIcon(":/Resources/Icon/IconLog.svg")),
              tr("Log Viewer"),
              new SAKLogUi(this),
              tb});
 #endif
 #if 0
-    path = ":/resources/icon/IconSettings.svg";
+    path = ":/Resources/Icon/IconSettings.svg";
     initNav(&navButtonGroup,
             SAKUiInterface::cookedIcon(QIcon(path)),
             tr("Preferences"), new SAKPreferencesUi(this), tb);
@@ -800,7 +800,7 @@ void MainWindow::aboutSoftware()
                      true}
 #endif
              << Info{tr("Copyright"),
-                     tr("Copyright 2018-%1 Qsaker(qsaker@foxmail.com)."
+                     tr("Copyright 2018-%1 x-tools-author(x-tools@outlook.com)."
                         " All rights reserved.")
                          .arg(SAKInterface::buildDateTime("yyyy")),
                      false};

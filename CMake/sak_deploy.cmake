@@ -44,7 +44,7 @@ function(sak_auto_execute_windeployqt target)
 endfunction()
 
 function(sak_auto_execute_macdeployqt target)
-  if(NOT ${target} STREQUAL "QtSwissArmyKnife")
+  if(NOT ${target} STREQUAL "xTools")
     return()
   endif()
 
@@ -90,7 +90,7 @@ function(sak_auto_execute_macdeployqt target)
 endfunction()
 
 function(sak_auto_execute_linuxdeployqt target)
-  if(NOT ${target} STREQUAL "QtSwissArmyKnife")
+  if(NOT ${target} STREQUAL "xTools")
     return()
   endif()
 
@@ -106,14 +106,14 @@ function(sak_auto_execute_linuxdeployqt target)
   add_custom_command(
     TARGET ${target}
     POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/platform/unix/QtSwissArmyKnife"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/platform/unix/xTools"
             "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir"
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${target}>
             "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin"
     COMMAND
       ${SAK_BIN_LINUXDEPLOYQT}
-      "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/share/applications/QtSwissArmyKnife.desktop"
+      "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/share/applications/xTools.desktop"
       "-verbose=0" "-appimage" "-qmake=${SAK_QMAKE}"
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     COMMENT "Running creating appimage file..."
