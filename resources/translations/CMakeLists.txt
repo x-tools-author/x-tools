@@ -66,7 +66,7 @@ function(sak_linguist_release)
   # Auto create ts files and qm files.
   option(SAK_AUTO_I18N "" OFF)
   if(SAK_AUTO_I18N)
-    add_custom_target(sak_i18n ALL)
+    add_custom_target(sak_i18n)
     add_dependencies(sak_i18n LinguistRelease)
   endif()
 endfunction()

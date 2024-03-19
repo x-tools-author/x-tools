@@ -8,7 +8,7 @@ add_compile_definitions(SAK_AUTHOR_EMAIL="qsaker@foxmail.com")
 add_compile_definitions(SAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/QtSwissArmyKnife")
 add_compile_definitions(SAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/QtSwissArmyKnife")
 
-set(SAK_BINARY_DIR ${CMAKE_BINARY_DIR}/sak)
+set(SAK_BINARY_DIR ${CMAKE_BINARY_DIR}/assets)
 
 # Set the suffix of the library.
 if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
