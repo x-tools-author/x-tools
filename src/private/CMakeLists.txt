@@ -24,11 +24,12 @@ endforeach()
 
 set(GITEE_URL "git clone https://gitee.com/qsaker-qsak")
 add_custom_target(
-  ClonePrivate
+  ClonePrivateModules
   COMMAND git clone ${GITEE_URL}/keygen.git || echo "clone keygen"
   COMMAND git clone ${GITEE_URL}/fluent2.git || echo "clone fluent2"
   COMMAND git clone ${GITEE_URL}/easydebug.git || echo "clone easydebug"
   COMMAND git clone ${GITEE_URL}/dataflowstudio.git || echo "clone dataflowstudio"
   COMMAND git clone ${GITEE_URL}/passwordassassin.git || echo "clone passwordassassin"
+  COMMAND git clone ${GITEE_URL}/pdfpasswordretriever.git || echo "clone pdfpasswordretriever"
   SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/private)
