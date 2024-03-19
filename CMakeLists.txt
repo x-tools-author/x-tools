@@ -13,18 +13,13 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(X_TOOLS_QT_COMPONENTS
-    Core
-    Gui
-    Widgets
-    WebSockets
-    Network)
+set(X_TOOLS_QT_COMPONENTS Core Gui Widgets WebSockets Network)
 
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
-    list(APPEND X_TOOLS_QT_COMPONENTS SerialPort)
-    list(APPEND X_TOOLS_QT_COMPONENTS SerialBus)
-    add_compile_definitions(X_TOOLS_IMPORT_MODULE_SERIALPORT)
-    add_compile_definitions(X_TOOLS_IMPORT_MODULE_SERIALBUS)
+  list(APPEND X_TOOLS_QT_COMPONENTS SerialPort)
+  list(APPEND X_TOOLS_QT_COMPONENTS SerialBus)
+  add_compile_definitions(X_TOOLS_IMPORT_MODULE_SERIALPORT)
+  add_compile_definitions(X_TOOLS_IMPORT_MODULE_SERIALBUS)
 endif()
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
@@ -73,12 +68,16 @@ list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Assistants/xToolsAssistant
 list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Assistants/xToolsAssistantFactory.cpp)
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CMAKE_FILES})
 
+include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/Tools)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI)
 include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBox)
 include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBoxUI)
+
+set(WITH_GFLAGS OFF)
+set(BUILD_SHARED_LIBS OFF)
 
 sak_add_subdirectory("glog-0.7.0")
 sak_add_subdirectory("Qt-AES-master")
@@ -92,8 +91,8 @@ target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Network)
 target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::WebSockets)
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
-target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::SerialPort)
-target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::SerialBus)
+  target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::SerialPort)
+  target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::SerialBus)
 endif()
 target_link_libraries(xTools PRIVATE qmdnsengine)
 target_link_libraries(xTools PRIVATE glog::glog)

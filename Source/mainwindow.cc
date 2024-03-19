@@ -35,13 +35,13 @@
 #include <QToolButton>
 #include <QVariant>
 
-#include "sakassistantsfactory.h"
 #include "sakdatastructure.h"
 #include "sakinterface.h"
 #include "saksettings.h"
 #include "saktoolboxui.h"
 #include "saktranslator.h"
 #include "sakuiinterface.h"
+#include "xToolsAssistantFactory.h"
 
 #ifdef SAK_IMPORT_MODULE_CANBUSSTUDIO
 #include "sakcanbusstudioui.h"
