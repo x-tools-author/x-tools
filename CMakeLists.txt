@@ -117,9 +117,11 @@ macro(sak_add_src src_dir_name)
     GLOB_RECURSE
     SRC_SOURCE
     "${SRC_PRE}/${src_dir_name}/*h"
+    "${SRC_PRE}/${src_dir_name}/*cpp"
     "${SRC_PRE}/${src_dir_name}/*.cc"
     "${SRC_PRE}/${src_dir_name}ui/*.h"
     "${SRC_PRE}/${src_dir_name}ui/*.cc"
+    "${SRC_PRE}/${src_dir_name}ui/*.cpp"
     "${SRC_PRE}/${src_dir_name}ui/*.ui")
   list(APPEND SAK_SRC_SOURCES ${SRC_SOURCE})
 endmacro()

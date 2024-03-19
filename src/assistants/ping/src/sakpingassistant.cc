@@ -75,7 +75,7 @@ private:
 };
 
 SAKPingAssistant::SAKPingAssistant(QWidget *parent)
-    : SAKMainWindow(parent)
+    : xToolsMainWindow(parent)
     , ui(new Ui::SAKPingAssistant)
     , m_pausing(false)
     , m_finishedCount(0)

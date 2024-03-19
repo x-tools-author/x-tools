@@ -1,13 +1,13 @@
 /***************************************************************************************************
  * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
+ * The file is encoded in "utf8 with bom", it is a part of QtSwissArmyKnife project.
  *
- * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
- * code directory.
+ * xTools is licensed according to the terms in the file LICENCE in the root of the source code
+ * directory.
  **************************************************************************************************/
-#ifndef SAKMAINWINDOW_H
-#define SAKMAINWINDOW_H
+#ifndef XTOOLSMAINWINDOW2_H
+#define XTOOLSMAINWINDOW2_H
 
 #include <QActionGroup>
 #include <QApplication>
@@ -16,12 +16,12 @@
 #include <QMenu>
 #include <QStyleFactory>
 
-class SAKMainWindow : public QMainWindow
+class xToolsMainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    SAKMainWindow(QWidget* parent = Q_NULLPTR);
-    ~SAKMainWindow();
+    xToolsMainWindow(QWidget* parent = Q_NULLPTR);
+    ~xToolsMainWindow();
 
 protected:
     QMenu* m_fileMenu;
@@ -56,4 +56,4 @@ private:
     QString getQtConfFileName();
 };
 
-#endif // SAKMAINWINDOW_H
+#endif // XTOOLSMAINWINDOW2_H

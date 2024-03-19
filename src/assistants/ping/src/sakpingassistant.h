@@ -15,7 +15,7 @@
 #include <QToolBar>
 #include <QWidget>
 
-#include "sakmainwindow.h"
+#include "xToolsMainWindow2.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,7 +23,7 @@ class SAKPingAssistant;
 }
 QT_END_NAMESPACE
 
-class SAKPingAssistant : public SAKMainWindow
+class SAKPingAssistant : public xToolsMainWindow
 {
     Q_OBJECT
 

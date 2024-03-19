@@ -95,7 +95,7 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 #endif
 
-    QString title = QString("Qt Swiss Army Knife");
+    QString title = QString("xTools");
 #ifndef SAK_IMPORT_MODULE_PRIVATE
     title.append(tr("(Community)"));
 #endif
