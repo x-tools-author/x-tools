@@ -99,8 +99,8 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QS
         return;
     }
 
-    if (!tool->inherits("SAKTableModelTool")) {
-        qWarning() << "The tool does not inherits SAKTableModelTool!";
+    if (!tool->inherits("xToolsTableModelTool")) {
+        qWarning() << "The tool does not inherits xToolsTableModelTool!";
         return;
     }
 
