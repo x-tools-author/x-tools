@@ -1,35 +1,36 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsStorerToolUi.h"
+#include "ui_xToolsStorerToolUi.h"
+
 #include <QFileDialog>
 #include <QLineEdit>
 
 #include "xToolsStorerTool.h"
-#include "sakstorertoolui.h"
-#include "ui_sakstorertoolui.h"
 
-SAKStorerToolUi::SAKStorerToolUi(QWidget *parent)
-    : SAKBaseToolUi{parent}
-    , ui(new Ui::SAKStorerToolUi)
+xToolsStorerToolUi::xToolsStorerToolUi(QWidget *parent)
+    : xToolsBaseToolUi{parent}
+    , ui(new Ui::xToolsStorerToolUi)
 {
     ui->setupUi(this);
     connect(ui->pushButtonSelectFile,
             &QPushButton::clicked,
             this,
-            &SAKStorerToolUi::onPushButtonSelectFileClicked);
+            &xToolsStorerToolUi::onPushButtonSelectFileClicked);
 }
 
-SAKStorerToolUi::~SAKStorerToolUi()
+xToolsStorerToolUi::~xToolsStorerToolUi()
 {
     delete ui;
 }
 
-void SAKStorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsStorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     if (!tool) {
         qCWarning((*mLoggingCategory)) << "The tool value is nullptr!";
@@ -90,7 +91,7 @@ void SAKStorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QStrin
     cookedTool->setFileName(ui->lineEditStorerPath->text());
 }
 
-void SAKStorerToolUi::onPushButtonSelectFileClicked()
+void xToolsStorerToolUi::onPushButtonSelectFileClicked()
 {
     auto str = QFileDialog::getSaveFileName(Q_NULLPTR,
                                             tr("Save file"),

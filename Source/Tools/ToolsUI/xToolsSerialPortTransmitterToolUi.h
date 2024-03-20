@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,19 +8,19 @@
  **************************************************************************************************/
 #pragma once
 
-#include "sakserialporttransmittertooluieditor.h"
-#include "saktransmittertoolui.h"
+#include "xToolsSerialPortTransmitterToolUiEditor.h"
+#include "xToolsTransmitterToolUi.h"
 
-class SAKSerialPortTransmitterToolUi : public SAKTransmitterToolUi
+class xToolsSerialPortTransmitterToolUi : public xToolsTransmitterToolUi
 {
     Q_OBJECT
 public:
-    SAKSerialPortTransmitterToolUi(QWidget *parent = nullptr);
+    xToolsSerialPortTransmitterToolUi(QWidget *parent = nullptr);
 
 protected:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
     virtual QDialog *itemEditor() override;
 
 private:
-    SAKSerialPortTransmitterToolUiEditor *mEditor;
+    xToolsSerialPortTransmitterToolUiEditor *mEditor;
 };

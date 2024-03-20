@@ -1,11 +1,13 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsResponserToolUi.h"
+
 #include <QAbstractTableModel>
 #include <QFile>
 #include <QJsonArray>
@@ -14,27 +16,26 @@
 #include <QTimer>
 #include <QVariant>
 
-#include "sakresponsertoolui.h"
 #include "xToolsTableModelTool.h"
 #include "sakuiinterface.h"
 
-SAKResponserToolUi::SAKResponserToolUi(QWidget *parent)
-    : SAKTableModelToolUi{"sak.responsertoolui", parent}
+xToolsResponserToolUi::xToolsResponserToolUi(QWidget *parent)
+    : xToolsTableModelToolUi{"sak.responsertoolui", parent}
 {
-    mEditor = new SAKResponserToolUiEditor(SAKUiInterface::mainWindow());
+    mEditor = new xToolsResponserToolUiEditor(SAKUiInterface::mainWindow());
 }
 
-SAKResponserToolUi::~SAKResponserToolUi() {}
+xToolsResponserToolUi::~xToolsResponserToolUi() {}
 
-void SAKResponserToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
+void xToolsResponserToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
 {
-    SAKTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
+    xToolsTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
     QList<int> columns;
     columns << 12 << 23;
     setStretchSections(columns);
 }
 
-QList<int> SAKResponserToolUi::defaultHideColumns()
+QList<int> xToolsResponserToolUi::defaultHideColumns()
 {
     QList<int> list;
     auto tb = mTableModelTool->tableModel().value<QAbstractTableModel *>();
@@ -51,7 +52,7 @@ QList<int> SAKResponserToolUi::defaultHideColumns()
     return list;
 }
 
-QDialog *SAKResponserToolUi::itemEditor()
+QDialog *xToolsResponserToolUi::itemEditor()
 {
     return mEditor;
 }

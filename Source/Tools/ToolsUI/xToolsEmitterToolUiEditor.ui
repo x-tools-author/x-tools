@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKEmitterToolUiEditor</class>
- <widget class="QWidget" name="SAKEmitterToolUiEditor">
+ <class>xToolsEmitterToolUiEditor</class>
+ <widget class="QWidget" name="xToolsEmitterToolUiEditor">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>468</width>
+    <width>482</width>
     <height>400</height>
    </rect>
   </property>

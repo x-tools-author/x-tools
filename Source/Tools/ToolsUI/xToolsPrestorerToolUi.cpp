@@ -1,11 +1,13 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsPrestorerToolUi.h"
+
 #include <QFile>
 #include <QHeaderView>
 #include <QJsonArray>
@@ -15,27 +17,26 @@
 
 #include "sakmenu.h"
 #include "xToolsPrestorerTool.h"
-#include "sakprestorertoolui.h"
-#include "sakprestorertooluieditor.h"
+#include "xToolsPrestorerToolUiEditor.h"
 #include "sakuiinterface.h"
 
-SAKPrestorerToolUi::SAKPrestorerToolUi(QWidget *parent)
-    : SAKTableModelToolUi{"SAK.PrestorerToolUi", parent}
+xToolsPrestorerToolUi::xToolsPrestorerToolUi(QWidget *parent)
+    : xToolsTableModelToolUi{"SAK.PrestorerToolUi", parent}
 {
-    mEditor = new SAKPrestorerToolUiEditor(SAKUiInterface::mainWindow());
+    mEditor = new xToolsPrestorerToolUiEditor(SAKUiInterface::mainWindow());
     mMenu = new SAKMenu();
 }
 
-SAKPrestorerToolUi::~SAKPrestorerToolUi() {}
+xToolsPrestorerToolUi::~xToolsPrestorerToolUi() {}
 
-QMenu *SAKPrestorerToolUi::menu()
+QMenu *xToolsPrestorerToolUi::menu()
 {
     return mMenu;
 }
 
-void SAKPrestorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
+void xToolsPrestorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
 {
-    SAKTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
+    xToolsTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
 
     QList<int> columns;
     columns << 9;
@@ -43,9 +44,9 @@ void SAKPrestorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QSt
 
     xToolsPrestorerTool *cookedTool = qobject_cast<xToolsPrestorerTool *>(tool);
     auto *model = cookedTool->tableModel().value<SAKTableModel *>();
-    connect(model, &QAbstractTableModel::rowsRemoved, this, &SAKPrestorerToolUi::updateMenu);
-    connect(model, &QAbstractTableModel::rowsInserted, this, &SAKPrestorerToolUi::updateMenu);
-    connect(model, &QAbstractTableModel::dataChanged, this, &SAKPrestorerToolUi::updateMenu);
+    connect(model, &QAbstractTableModel::rowsRemoved, this, &xToolsPrestorerToolUi::updateMenu);
+    connect(model, &QAbstractTableModel::rowsInserted, this, &xToolsPrestorerToolUi::updateMenu);
+    connect(model, &QAbstractTableModel::dataChanged, this, &xToolsPrestorerToolUi::updateMenu);
     updateMenu();
 
     QList<int> list;
@@ -53,7 +54,7 @@ void SAKPrestorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QSt
     setStretchSections(list);
 }
 
-QList<int> SAKPrestorerToolUi::defaultHideColumns()
+QList<int> xToolsPrestorerToolUi::defaultHideColumns()
 {
     QList<int> list;
     auto tb = mTableModelTool->tableModel().value<QAbstractTableModel *>();
@@ -71,18 +72,18 @@ QList<int> SAKPrestorerToolUi::defaultHideColumns()
     return list;
 }
 
-void SAKPrestorerToolUi::afterRowEdited(int row)
+void xToolsPrestorerToolUi::afterRowEdited(int row)
 {
-    SAKTableModelToolUi::afterRowEdited(row);
+    xToolsTableModelToolUi::afterRowEdited(row);
     updateMenu();
 }
 
-QDialog *SAKPrestorerToolUi::itemEditor()
+QDialog *xToolsPrestorerToolUi::itemEditor()
 {
     return mEditor;
 }
 
-void SAKPrestorerToolUi::updateMenu()
+void xToolsPrestorerToolUi::updateMenu()
 {
     auto *cookedTool = qobject_cast<xToolsPrestorerTool *>(mTableModelTool);
     auto *model = cookedTool->tableModel().value<SAKTableModel *>();

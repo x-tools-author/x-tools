@@ -1,34 +1,34 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakemittertoolui.h"
+#include "xToolsEmitterToolUi.h"
 
 #include "xToolsTableModelTool.h"
 #include "sakuiinterface.h"
 
-SAKEmitterToolUi::SAKEmitterToolUi(QWidget *parent)
-    : SAKTableModelToolUi{"sak.emittertoolui", parent}
+xToolsEmitterToolUi::xToolsEmitterToolUi(QWidget *parent)
+    : xToolsTableModelToolUi{"sak.emittertoolui", parent}
 {
-    mEditor = new SAKEmitterToolUiEditor(SAKUiInterface::mainWindow());
+    mEditor = new xToolsEmitterToolUiEditor(SAKUiInterface::mainWindow());
 }
 
-SAKEmitterToolUi::~SAKEmitterToolUi() {}
+xToolsEmitterToolUi::~xToolsEmitterToolUi() {}
 
-void SAKEmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
+void xToolsEmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
 {
-    SAKTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
+    xToolsTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
 
     QList<int> columns;
     columns << 12;
     setStretchSections(columns);
 }
 
-QList<int> SAKEmitterToolUi::defaultHideColumns()
+QList<int> xToolsEmitterToolUi::defaultHideColumns()
 {
     QList<int> list;
     auto tb = mTableModelTool->tableModel().value<QAbstractTableModel *>();
@@ -44,7 +44,7 @@ QList<int> SAKEmitterToolUi::defaultHideColumns()
     return list;
 }
 
-QDialog *SAKEmitterToolUi::itemEditor()
+QDialog *xToolsEmitterToolUi::itemEditor()
 {
     return mEditor;
 }

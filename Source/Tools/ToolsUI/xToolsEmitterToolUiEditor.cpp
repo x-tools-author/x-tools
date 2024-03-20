@@ -1,33 +1,34 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakemittertooluieditor.h"
-#include "xToolsEmitterTool.h"
-#include "ui_sakemittertooluieditor.h"
+#include "xToolsEmitterToolUiEditor.h"
+#include "ui_xToolsEmitterToolUiEditor.h"
 
-SAKEmitterToolUiEditor::SAKEmitterToolUiEditor(QWidget *parent)
+#include "xToolsEmitterTool.h"
+
+xToolsEmitterToolUiEditor::xToolsEmitterToolUiEditor(QWidget *parent)
     : QDialog{parent}
-    , ui(new Ui::SAKEmitterToolUiEditor)
+    , ui(new Ui::xToolsEmitterToolUiEditor)
 {
     ui->setupUi(this);
     setModal(true);
     setWindowTitle(tr("Emitter Item Editor"));
 
-    connect(ui->pushButtonApply, &QPushButton::clicked, this, &SAKEmitterToolUiEditor::accept);
-    connect(ui->pushButtonCancel, &QPushButton::clicked, this, &SAKEmitterToolUiEditor::reject);
+    connect(ui->pushButtonApply, &QPushButton::clicked, this, &xToolsEmitterToolUiEditor::accept);
+    connect(ui->pushButtonCancel, &QPushButton::clicked, this, &xToolsEmitterToolUiEditor::reject);
 }
 
-SAKEmitterToolUiEditor::~SAKEmitterToolUiEditor()
+xToolsEmitterToolUiEditor::~xToolsEmitterToolUiEditor()
 {
     delete ui;
 }
 
-QJsonObject SAKEmitterToolUiEditor::parameters()
+QJsonObject xToolsEmitterToolUiEditor::parameters()
 {
     bool enable = ui->checkBoxEnable->isChecked();
     QString description = ui->lineEditDescription->text().trimmed();
@@ -61,7 +62,7 @@ QJsonObject SAKEmitterToolUiEditor::parameters()
     return params;
 }
 
-void SAKEmitterToolUiEditor::setParameters(const QJsonObject &params)
+void xToolsEmitterToolUiEditor::setParameters(const QJsonObject &params)
 {
     xToolsEmitterTool::DataKeys keys;
     bool enable = params.value(keys.itemEnable).toBool();

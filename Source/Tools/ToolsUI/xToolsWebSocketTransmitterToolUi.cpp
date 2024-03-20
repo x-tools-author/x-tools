@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -9,13 +9,13 @@
 #include "xToolsWebSocketTransmitterToolUi.h"
 
 xToolsWebSocketTransmitterToolUi::xToolsWebSocketTransmitterToolUi(QWidget *parent)
-    : SAKSocketClientTransmitterToolUi("SAK.WebSocketTransmitterToolUi", parent)
+    : xToolsSocketClientTransmitterToolUi("SAK.WebSocketTransmitterToolUi", parent)
 {}
 
 void xToolsWebSocketTransmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
                                                             const QString &settingGroup)
 {
-    SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
+    xToolsSocketClientTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
 
     setColumnVisible(4, true);
     mEditor->setWebSocketContextVisible(true);

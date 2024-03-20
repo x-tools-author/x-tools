@@ -21,21 +21,21 @@
 #include "xToolsCommunicationTool.h"
 #include "sakcrcinterface.h"
 #include "sakdatastructure.h"
-#include "sakemittertoolui.h"
+#include "xToolsEmitterToolUi.h"
 #include "sakinterface.h"
-#include "sakprestorertoolui.h"
-#include "sakresponsertoolui.h"
-#include "sakserialporttoolui.h"
-#include "sakserialporttransmittertoolui.h"
+#include "xToolsPrestorerToolUi.h"
+#include "xToolsResponserToolUi.h"
+#include "xToolsSerialPortToolUi.h"
+#include "xToolsSerialPortTransmitterToolUi.h"
 #include "saksettings.h"
-#include "saksocketclienttoolui.h"
-#include "saksocketservertoolui.h"
-#include "saktcptransmittertoolti.h"
+#include "xToolsSocketClientToolUi.h"
+#include "xToolsSocketServerToolUi.h"
+#include "xToolsTcpTransmitterToolUi.h"
 #include "xToolsToolBoxUiCommunicationMenu.h"
 #include "xToolsToolBoxUiInputMenu.h"
 #include "xToolsToolBoxUiOutputMenu.h"
 #include "xToolsToolFactory.h"
-#include "sakudptransmittertoolui.h"
+#include "xToolsUdpTransmitterToolUi.h"
 #include "sakuiinterface.h"
 #include "xToolsWebSocketTransmitterToolUi.h"
 
@@ -151,23 +151,23 @@ void xToolsToolBoxUi::initialize(int type)
     init();
 }
 
-SAKCommunicationToolUi* xToolsToolBoxUi::communicationToolUi(int type)
+xToolsCommunicationToolUi* xToolsToolBoxUi::communicationToolUi(int type)
 {
-    SAKCommunicationToolUi* w = nullptr;
+    xToolsCommunicationToolUi* w = nullptr;
     if (type == xToolsToolFactory::SerialportTool) {
-        w = new SAKSerialPortToolUi();
+        w = new xToolsSerialPortToolUi();
     } else if (type == xToolsToolFactory::UdpClientTool) {
-        w = new SAKSocketClientToolUi();
+        w = new xToolsSocketClientToolUi();
     } else if (type == xToolsToolFactory::UdpServerTool) {
-        w = new SAKSocketServerToolUi();
+        w = new xToolsSocketServerToolUi();
     } else if (type == xToolsToolFactory::TcpClientTool) {
-        w = new SAKSocketClientToolUi();
+        w = new xToolsSocketClientToolUi();
     } else if (type == xToolsToolFactory::TcpServerTool) {
-        w = new SAKSocketServerToolUi();
+        w = new xToolsSocketServerToolUi();
     } else if (type == xToolsToolFactory::WebSocketClientTool) {
-        w = new SAKSocketClientToolUi();
+        w = new xToolsSocketClientToolUi();
     } else if (type == xToolsToolFactory::WebSocketServerTool) {
-        w = new SAKSocketServerToolUi();
+        w = new xToolsSocketServerToolUi();
     }
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
     else if (type == SAKToolFactory::BleCentralTool) {
@@ -572,31 +572,31 @@ void xToolsToolBoxUi::initTools()
     ui->widgetRxStatistician->initialize(rxS, rxSGroup);
     ui->widgetTxStatistician->initialize(txS, txSGroup);
 
-    m_emitterUi = new SAKEmitterToolUi();
+    m_emitterUi = new xToolsEmitterToolUi();
     ui->tabEmiter->setLayout(new QVBoxLayout());
     ui->tabEmiter->layout()->addWidget(m_emitterUi);
     m_emitterUi->initialize(m_toolBox->getEmitterTool(), settingsGroup() + "/emitter");
 
-    m_responserUi = new SAKResponserToolUi();
+    m_responserUi = new xToolsResponserToolUi();
     ui->tabResponser->setLayout(new QVBoxLayout());
     ui->tabResponser->layout()->addWidget(m_responserUi);
     m_responserUi->initialize(m_toolBox->getResponserTool(), settingsGroup() + "/responser");
 
-    m_prestorerUi = new SAKPrestorerToolUi();
+    m_prestorerUi = new xToolsPrestorerToolUi();
     ui->tabPrestorer->setLayout(new QVBoxLayout());
     ui->tabPrestorer->layout()->addWidget(m_prestorerUi);
     m_prestorerUi->initialize(m_toolBox->getPrestorerTool(), settingsGroup() + "/prestorer");
 
-    m_tcpTransmitterUi = new SAKTcpTransmitterToolUi(this);
+    m_tcpTransmitterUi = new xToolsTcpTransmitterToolUi(this);
     m_tcpTransmitterUi->initialize(m_toolBox->getTcpTransmitterTool(),
                                    settingsGroup() + "/tcpTransmitter");
-    m_udpTransmitterUi = new SAKUdpTransmitterToolUi(this);
+    m_udpTransmitterUi = new xToolsUdpTransmitterToolUi(this);
     m_udpTransmitterUi->initialize(m_toolBox->getUdpTransmitterTool(),
                                    settingsGroup() + "/udpTransmitter");
     m_webSocketTransmitterUi = new xToolsWebSocketTransmitterToolUi(this);
     m_webSocketTransmitterUi->initialize(m_toolBox->getWebSocketTransmitterTool(),
                                          settingsGroup() + "/webSocketTransmitter");
-    m_serialPortTransmitterUi = new SAKSerialPortTransmitterToolUi(this);
+    m_serialPortTransmitterUi = new xToolsSerialPortTransmitterToolUi(this);
     m_serialPortTransmitterUi->initialize(m_toolBox->getSerialPortTransmitterTool(),
                                           settingsGroup() + "/serialPortTransmitter");
 

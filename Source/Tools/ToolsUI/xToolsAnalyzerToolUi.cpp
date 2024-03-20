@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -15,7 +15,7 @@
 #include "sakuiinterface.h"
 
 xToolsAnalyzerToolUi::xToolsAnalyzerToolUi(QWidget *parent)
-    : SAKBaseToolUi{parent}
+    : xToolsBaseToolUi{parent}
     , ui(new Ui::xToolsAnalyzerToolUi)
 {
     ui->setupUi(this);

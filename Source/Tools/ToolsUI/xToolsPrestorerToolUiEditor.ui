@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKPrestorerToolUiEditor</class>
- <widget class="QWidget" name="SAKPrestorerToolUiEditor">
+ <class>xToolsPrestorerToolUiEditor</class>
+ <widget class="QWidget" name="xToolsPrestorerToolUiEditor">
   <property name="geometry">
    <rect>
     <x>0</x>

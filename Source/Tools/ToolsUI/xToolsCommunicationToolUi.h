@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,13 +8,13 @@
  **************************************************************************************************/
 #pragma once
 
-#include "sakbasetoolui.h"
+#include "xToolsBaseToolUi.h"
 
 class xToolsCommunicationTool;
-class SAKCommunicationToolUi : public SAKBaseToolUi
+class xToolsCommunicationToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit SAKCommunicationToolUi(QWidget *parent = nullptr);
+    explicit xToolsCommunicationToolUi(QWidget *parent = nullptr);
     virtual void onIsWorkingChanged(bool isWorking) override;
 };

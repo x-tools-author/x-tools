@@ -1,19 +1,20 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsSocketClientToolUi.h"
+#include "ui_xToolsSocketClientToolUi.h"
+
 #include <QMessageBox>
 
 #include "xToolsSocketClientTool.h"
-#include "saksocketclienttoolui.h"
-#include "ui_saksocketclienttoolui.h"
 
-SAKSocketClientToolUi::SAKSocketClientToolUi(QWidget *parent)
-    : SAKCommunicationToolUi{parent}
+xToolsSocketClientToolUi::xToolsSocketClientToolUi(QWidget *parent)
+    : xToolsCommunicationToolUi{parent}
     , ui(new Ui::SAKSocketClientToolUi)
 {
     ui->setupUi(this);
@@ -21,38 +22,38 @@ SAKSocketClientToolUi::SAKSocketClientToolUi(QWidget *parent)
     connect(ui->comboBoxClientAddress,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::activated),
             this,
-            &SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
+            &xToolsSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
     connect(ui->spinBoxClientPort,
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
-            &SAKSocketClientToolUi::onSpinBoxClientPortValueChanged);
+            &xToolsSocketClientToolUi::onSpinBoxClientPortValueChanged);
     connect(ui->comboBoxServerAddress,
             static_cast<void (QComboBox::*)(const QString &)>(&QComboBox::currentTextChanged),
             this,
-            &SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
+            &xToolsSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
     connect(ui->spinBoxServerPort,
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
-            &SAKSocketClientToolUi::onSpinBoxServerPortValueChanged);
+            &xToolsSocketClientToolUi::onSpinBoxServerPortValueChanged);
     connect(ui->checkBoxSpecifyIpAndPort,
             &QCheckBox::clicked,
             this,
-            &SAKSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked);
+            &xToolsSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked);
 }
 
-SAKSocketClientToolUi::~SAKSocketClientToolUi()
+xToolsSocketClientToolUi::~xToolsSocketClientToolUi()
 {
     delete ui;
 }
 
-void SAKSocketClientToolUi::onIsWorkingChanged(bool isWorking)
+void xToolsSocketClientToolUi::onIsWorkingChanged(bool isWorking)
 {
     ui->comboBoxClientAddress->setEnabled(!isWorking);
     ui->spinBoxClientPort->setEnabled(!isWorking);
     ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
 }
 
-void SAKSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     if (!tool) {
         return;
@@ -97,7 +98,7 @@ void SAKSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const 
     });
 }
 
-void SAKSocketClientToolUi::onComboBoxClientAddressActived()
+void xToolsSocketClientToolUi::onComboBoxClientAddressActived()
 {
     if (mTool) {
         QString ip = ui->comboBoxClientAddress->currentText().trimmed();
@@ -105,14 +106,14 @@ void SAKSocketClientToolUi::onComboBoxClientAddressActived()
     }
 }
 
-void SAKSocketClientToolUi::onSpinBoxClientPortValueChanged(int value)
+void xToolsSocketClientToolUi::onSpinBoxClientPortValueChanged(int value)
 {
     if (mTool) {
         mTool->setClientPort(value);
     }
 }
 
-void SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged()
+void xToolsSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged()
 {
     if (mTool) {
         QString ip = ui->comboBoxServerAddress->currentText().trimmed();
@@ -120,14 +121,14 @@ void SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged()
     }
 }
 
-void SAKSocketClientToolUi::onSpinBoxServerPortValueChanged(int value)
+void xToolsSocketClientToolUi::onSpinBoxServerPortValueChanged(int value)
 {
     if (mTool) {
         mTool->setServerPort(value);
     }
 }
 
-void SAKSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked()
+void xToolsSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked()
 {
     if (mTool) {
         bool checked = ui->checkBoxSpecifyIpAndPort->isChecked();

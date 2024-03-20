@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -10,14 +10,14 @@
 
 #include <QObject>
 
-class SAKBaseToolUi;
-class SAKToolUiFactory : public QObject
+class xToolsBaseToolUi;
+class xToolsToolUiFactory : public QObject
 {
     Q_OBJECT
 private:
-    explicit SAKToolUiFactory(QObject *parent = nullptr);
+    explicit xToolsToolUiFactory(QObject *parent = nullptr);
 
 public:
-    static SAKToolUiFactory *instance();
-    SAKBaseToolUi *createToolUi(int type);
+    static xToolsToolUiFactory *instance();
+    xToolsBaseToolUi *createToolUi(int type);
 };

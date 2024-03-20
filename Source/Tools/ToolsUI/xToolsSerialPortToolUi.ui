@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKSerialPortToolUi</class>
- <widget class="QWidget" name="SAKSerialPortToolUi">
+ <class>xToolsSerialPortToolUi</class>
+ <widget class="QWidget" name="xToolsSerialPortToolUi">
   <property name="geometry">
    <rect>
     <x>0</x>

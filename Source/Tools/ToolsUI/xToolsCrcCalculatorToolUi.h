@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,23 +8,23 @@
  **************************************************************************************************/
 #pragma once
 
-#include "sakbasetoolui.h"
+#include "xToolsBaseToolUi.h"
 
 namespace Ui {
-class SAKCrcCalculatorToolUi;
+class xToolsCrcCalculatorToolUi;
 }
 
-class SAKCrcCalculatorToolUi : public SAKBaseToolUi
+class xToolsCrcCalculatorToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    SAKCrcCalculatorToolUi(QWidget *parent = nullptr);
-    ~SAKCrcCalculatorToolUi();
+    xToolsCrcCalculatorToolUi(QWidget *parent = nullptr);
+    ~xToolsCrcCalculatorToolUi();
 
 protected:
     void onIsWorkingChanged(bool isWorking) override;
     void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) override;
 
 private:
-    Ui::SAKCrcCalculatorToolUi *ui;
+    Ui::xToolsCrcCalculatorToolUi *ui;
 };

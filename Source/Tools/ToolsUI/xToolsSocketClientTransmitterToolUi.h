@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,18 +8,18 @@
  **************************************************************************************************/
 #pragma once
 
-#include "saksocketclienttransmittertooluieditor.h"
-#include "saktransmittertoolui.h"
+#include "xToolsSocketClientTransmitterToolUiEditor.h"
+#include "xToolsTransmitterToolUi.h"
 
-class SAKSocketClientTransmitterToolUi : public SAKTransmitterToolUi
+class xToolsSocketClientTransmitterToolUi : public xToolsTransmitterToolUi
 {
 public:
-    SAKSocketClientTransmitterToolUi(const char *lg, QWidget *parent = nullptr);
+    xToolsSocketClientTransmitterToolUi(const char *lg, QWidget *parent = nullptr);
     virtual QDialog *itemEditor() override;
 
 protected:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
 
 protected:
-    SAKSocketClientTransmitterToolUiEditor *mEditor{nullptr};
+    xToolsSocketClientTransmitterToolUiEditor *mEditor{nullptr};
 };

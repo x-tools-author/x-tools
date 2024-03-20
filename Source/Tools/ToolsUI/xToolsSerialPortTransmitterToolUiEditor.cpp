@@ -1,38 +1,39 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsSerialPortTransmitterToolUiEditor.h"
+#include "ui_xToolsSerialPortTransmitterToolUiEditor.h"
+
 #include <QJsonObject>
 
 #include "xToolsSerialPortTransmitterTool.h"
-#include "sakserialporttransmittertooluieditor.h"
-#include "ui_sakserialporttransmittertooluieditor.h"
 
-SAKSerialPortTransmitterToolUiEditor::SAKSerialPortTransmitterToolUiEditor(QWidget *parent)
+xToolsSerialPortTransmitterToolUiEditor::xToolsSerialPortTransmitterToolUiEditor(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::SAKSerialPortTransmitterToolUiEditor)
+    , ui(new Ui::xToolsSerialPortTransmitterToolUiEditor)
 {
     ui->setupUi(this);
     connect(ui->pushButtonApply,
             &QPushButton::clicked,
             this,
-            &SAKSerialPortTransmitterToolUiEditor::accept);
+            &xToolsSerialPortTransmitterToolUiEditor::accept);
     connect(ui->pushButtonCancel,
             &QPushButton::clicked,
             this,
-            &SAKSerialPortTransmitterToolUiEditor::reject);
+            &xToolsSerialPortTransmitterToolUiEditor::reject);
 }
 
-SAKSerialPortTransmitterToolUiEditor::~SAKSerialPortTransmitterToolUiEditor()
+xToolsSerialPortTransmitterToolUiEditor::~xToolsSerialPortTransmitterToolUiEditor()
 {
     delete ui;
 }
 
-QJsonObject SAKSerialPortTransmitterToolUiEditor::parameters()
+QJsonObject xToolsSerialPortTransmitterToolUiEditor::parameters()
 {
     xToolsSerialPortTransmitterTool::ItemContextKey keys;
     QJsonObject obj;
@@ -56,7 +57,7 @@ QJsonObject SAKSerialPortTransmitterToolUiEditor::parameters()
     return obj;
 }
 
-void SAKSerialPortTransmitterToolUiEditor::setParameters(const QJsonObject &params)
+void xToolsSerialPortTransmitterToolUiEditor::setParameters(const QJsonObject &params)
 {
     xToolsSerialPortTransmitterTool::ItemContextKey keys;
     bool enable = params.value(keys.enable).toBool();

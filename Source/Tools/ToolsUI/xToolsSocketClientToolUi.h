@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "sakcommunicationtoolui.h"
+#include "xToolsCommunicationToolUi.h"
 #include <QLoggingCategory>
 
 namespace Ui {
@@ -16,12 +16,12 @@ class SAKSocketClientToolUi;
 }
 
 class xToolsSocketClientTool;
-class SAKSocketClientToolUi : public SAKCommunicationToolUi
+class xToolsSocketClientToolUi : public xToolsCommunicationToolUi
 {
     Q_OBJECT
 public:
-    explicit SAKSocketClientToolUi(QWidget *parent = nullptr);
-    ~SAKSocketClientToolUi();
+    explicit xToolsSocketClientToolUi(QWidget *parent = nullptr);
+    ~xToolsSocketClientToolUi();
     virtual void onIsWorkingChanged(bool isWorking) final;
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 

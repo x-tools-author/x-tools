@@ -1,33 +1,34 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakresponsertooluieditor.h"
-#include "xToolsResponserTool.h"
-#include "ui_sakresponsertooluieditor.h"
+#include "xToolsResponserToolUiEditor.h"
+#include "ui_xToolsResponserToolUiEditor.h"
 
-SAKResponserToolUiEditor::SAKResponserToolUiEditor(QWidget *parent)
+#include "xToolsResponserTool.h"
+
+xToolsResponserToolUiEditor::xToolsResponserToolUiEditor(QWidget *parent)
     : QDialog{parent}
-    , ui(new Ui::SAKResponserToolUiEditor)
+    , ui(new Ui::xToolsResponserToolUiEditor)
 {
     ui->setupUi(this);
     setModal(true);
     setWindowTitle(tr("Responser Item Editor"));
 
-    connect(ui->pushButtonOk, &QPushButton::clicked, this, &SAKResponserToolUiEditor::accept);
-    connect(ui->pushButtonCancel, &QPushButton::clicked, this, &SAKResponserToolUiEditor::reject);
+    connect(ui->pushButtonOk, &QPushButton::clicked, this, &xToolsResponserToolUiEditor::accept);
+    connect(ui->pushButtonCancel, &QPushButton::clicked, this, &xToolsResponserToolUiEditor::reject);
 }
 
-SAKResponserToolUiEditor::~SAKResponserToolUiEditor()
+xToolsResponserToolUiEditor::~xToolsResponserToolUiEditor()
 {
     delete ui;
 }
 
-QJsonObject SAKResponserToolUiEditor::parameters()
+QJsonObject xToolsResponserToolUiEditor::parameters()
 {
     bool enable = ui->checkBoxEnable->isChecked();
     QString description = ui->lineEditDescription->text().trimmed();
@@ -88,7 +89,7 @@ QJsonObject SAKResponserToolUiEditor::parameters()
     return jsonObj;
 }
 
-void SAKResponserToolUiEditor::setParameters(const QJsonObject &params)
+void xToolsResponserToolUiEditor::setParameters(const QJsonObject &params)
 {
     xToolsResponserTool::ResponserItemKeys keys;
     bool enable = params.value(keys.itemEnable).toBool();

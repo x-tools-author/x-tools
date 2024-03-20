@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,14 +8,14 @@
  **************************************************************************************************/
 #pragma once
 
-#include "sakbasetoolui.h"
+#include "xToolsBaseToolUi.h"
 #include <QLoggingCategory>
 
 namespace Ui {
 class xToolsVelometerToolUi;
 }
 
-class xToolsVelometerToolUi : public SAKBaseToolUi
+class xToolsVelometerToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:

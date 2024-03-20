@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -12,19 +12,19 @@
 #include <QJsonObject>
 
 namespace Ui {
-class SAKEmitterToolUiEditor;
+class xToolsEmitterToolUiEditor;
 }
 
-class SAKEmitterToolUiEditor : public QDialog
+class xToolsEmitterToolUiEditor : public QDialog
 {
     Q_OBJECT
 public:
-    explicit SAKEmitterToolUiEditor(QWidget *parent = nullptr);
-    ~SAKEmitterToolUiEditor();
+    explicit xToolsEmitterToolUiEditor(QWidget *parent = nullptr);
+    ~xToolsEmitterToolUiEditor();
 
     Q_INVOKABLE QJsonObject parameters();
     Q_INVOKABLE void setParameters(const QJsonObject &params);
 
 private:
-    Ui::SAKEmitterToolUiEditor *ui{nullptr};
+    Ui::xToolsEmitterToolUiEditor *ui{nullptr};
 };

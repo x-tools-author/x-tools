@@ -14,25 +14,25 @@
 #include <QTimer>
 #include <QWidget>
 
-#include "sakcommunicationtoolui.h"
+#include "xToolsCommunicationToolUi.h"
 #include "xToolsToolBox.h"
 
 namespace Ui {
 class xToolsToolBoxUi;
 }
 
-class SAKEmitterToolUi;
-class SAKResponserToolUi;
-class SAKPrestorerToolUi;
+class xToolsEmitterToolUi;
+class xToolsResponserToolUi;
+class xToolsPrestorerToolUi;
 class xToolsCommunicationTool;
 class xToolsToolBoxUiInputMenu;
 class xToolsToolBoxUiOutputMenu;
-class SAKCommunicationToolUi;
-class SAKTcpTransmitterToolUi;
-class SAKUdpTransmitterToolUi;
+class xToolsCommunicationToolUi;
+class xToolsTcpTransmitterToolUi;
+class xToolsUdpTransmitterToolUi;
 class xToolsToolBoxUiCommunicationMenu;
 class xToolsWebSocketTransmitterToolUi;
-class SAKSerialPortTransmitterToolUi;
+class xToolsSerialPortTransmitterToolUi;
 class xToolsToolBoxUi : public QWidget
 {
     Q_OBJECT
@@ -49,14 +49,14 @@ public:
 private:
     xToolsToolBox *m_toolBox{nullptr};
     xToolsCommunicationTool *m_communication{nullptr};
-    SAKCommunicationToolUi *m_communicationUi{nullptr};
-    SAKEmitterToolUi *m_emitterUi{nullptr};
-    SAKResponserToolUi *m_responserUi{nullptr};
-    SAKPrestorerToolUi *m_prestorerUi{nullptr};
-    SAKTcpTransmitterToolUi *m_tcpTransmitterUi{nullptr};
-    SAKUdpTransmitterToolUi *m_udpTransmitterUi{nullptr};
+    xToolsCommunicationToolUi *m_communicationUi{nullptr};
+    xToolsEmitterToolUi *m_emitterUi{nullptr};
+    xToolsResponserToolUi *m_responserUi{nullptr};
+    xToolsPrestorerToolUi *m_prestorerUi{nullptr};
+    xToolsTcpTransmitterToolUi *m_tcpTransmitterUi{nullptr};
+    xToolsUdpTransmitterToolUi *m_udpTransmitterUi{nullptr};
     xToolsWebSocketTransmitterToolUi *m_webSocketTransmitterUi{nullptr};
-    SAKSerialPortTransmitterToolUi *m_serialPortTransmitterUi{nullptr};
+    xToolsSerialPortTransmitterToolUi *m_serialPortTransmitterUi{nullptr};
     QTimer *m_cycleSendingTimer{nullptr};
     int m_communicationType;
     xToolsToolBoxUiCommunicationMenu *m_communicationMenu{nullptr};
@@ -71,7 +71,7 @@ private:
     } m_settingsKey;
 
 private:
-    SAKCommunicationToolUi *communicationToolUi(int type);
+    xToolsCommunicationToolUi *communicationToolUi(int type);
     void try2send();
     QString dateTimeFormat();
     void output2ui(const QByteArray &bytes, const QString &flag, bool isRx);

@@ -15,15 +15,15 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0" colspan="2">
-    <widget class="SAKStorerToolUi" name="widgetStorer" native="true"/>
+    <widget class="xToolsStorerToolUi" name="widgetStorer" native="true"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKStorerToolUi</class>
+   <class>xToolsStorerToolUi</class>
    <extends>QWidget</extends>
-   <header location="global">sakstorertoolui.h</header>
+   <header location="global">xToolsStorerToolUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -1,36 +1,37 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saksocketclienttransmittertooluieditor.h"
-#include "xToolsSocketClientTransmitterTool.h"
-#include "ui_saksocketclienttransmittertooluieditor.h"
+#include "xToolsSocketClientTransmitterToolUiEditor.h"
+#include "ui_xToolsSocketClientTransmitterToolUiEditor.h"
 
-SAKSocketClientTransmitterToolUiEditor::SAKSocketClientTransmitterToolUiEditor(QWidget *parent)
+#include "xToolsSocketClientTransmitterTool.h"
+
+xToolsSocketClientTransmitterToolUiEditor::xToolsSocketClientTransmitterToolUiEditor(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::SAKSocketClientTransmitterToolUiEditor)
+    , ui(new Ui::xToolsSocketClientTransmitterToolUiEditor)
 {
     ui->setupUi(this);
     connect(ui->pushButtonApply,
             &QPushButton::clicked,
             this,
-            &SAKSocketClientTransmitterToolUiEditor::accept);
+            &xToolsSocketClientTransmitterToolUiEditor::accept);
     connect(ui->pushButtonCancel,
             &QPushButton::clicked,
             this,
-            &SAKSocketClientTransmitterToolUiEditor::reject);
+            &xToolsSocketClientTransmitterToolUiEditor::reject);
 }
 
-SAKSocketClientTransmitterToolUiEditor::~SAKSocketClientTransmitterToolUiEditor()
+xToolsSocketClientTransmitterToolUiEditor::~xToolsSocketClientTransmitterToolUiEditor()
 {
     delete ui;
 }
 
-void SAKSocketClientTransmitterToolUiEditor::setWebSocketContextVisible(bool v)
+void xToolsSocketClientTransmitterToolUiEditor::setWebSocketContextVisible(bool v)
 {
     if (v) {
         ui->labelMessageType->show();
@@ -41,7 +42,7 @@ void SAKSocketClientTransmitterToolUiEditor::setWebSocketContextVisible(bool v)
     }
 }
 
-QJsonObject SAKSocketClientTransmitterToolUiEditor::parameters()
+QJsonObject xToolsSocketClientTransmitterToolUiEditor::parameters()
 {
     bool enable = ui->checkBoxEnable->isChecked();
     QString clientIp = ui->comboBoxClientIp->currentText();
@@ -63,7 +64,7 @@ QJsonObject SAKSocketClientTransmitterToolUiEditor::parameters()
     return obj;
 }
 
-void SAKSocketClientTransmitterToolUiEditor::setParameters(const QJsonObject &params)
+void xToolsSocketClientTransmitterToolUiEditor::setParameters(const QJsonObject &params)
 {
     xToolsSocketClientTransmitterTool::ItemContextKeys keys;
     bool enable = params.value(keys.enable).toBool();

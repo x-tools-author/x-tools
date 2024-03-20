@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -12,15 +12,15 @@
 #include <QJsonObject>
 
 namespace Ui {
-class SAKSocketClientTransmitterToolUiEditor;
+class xToolsSocketClientTransmitterToolUiEditor;
 }
 
-class SAKSocketClientTransmitterToolUiEditor : public QDialog
+class xToolsSocketClientTransmitterToolUiEditor : public QDialog
 {
     Q_OBJECT
 public:
-    SAKSocketClientTransmitterToolUiEditor(QWidget *parent = nullptr);
-    ~SAKSocketClientTransmitterToolUiEditor();
+    xToolsSocketClientTransmitterToolUiEditor(QWidget *parent = nullptr);
+    ~xToolsSocketClientTransmitterToolUiEditor();
 
     void setWebSocketContextVisible(bool v);
 
@@ -28,5 +28,5 @@ public:
     Q_INVOKABLE void setParameters(const QJsonObject &params);
 
 private:
-    Ui::SAKSocketClientTransmitterToolUiEditor *ui;
+    Ui::xToolsSocketClientTransmitterToolUiEditor *ui;
 };

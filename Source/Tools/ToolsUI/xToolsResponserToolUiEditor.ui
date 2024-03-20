@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKResponserToolUiEditor</class>
- <widget class="QWidget" name="SAKResponserToolUiEditor">
+ <class>xToolsResponserToolUiEditor</class>
+ <widget class="QWidget" name="xToolsResponserToolUiEditor">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>637</width>
+    <width>647</width>
     <height>474</height>
    </rect>
   </property>

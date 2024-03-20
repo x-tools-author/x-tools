@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,15 +8,15 @@
  **************************************************************************************************/
 #pragma once
 
-#include "sakemittertooluieditor.h"
-#include "saktablemodeltoolui.h"
+#include "xToolsEmitterToolUiEditor.h"
+#include "xToolsTableModelToolUi.h"
 
-class SAKEmitterToolUi : public SAKTableModelToolUi
+class xToolsEmitterToolUi : public xToolsTableModelToolUi
 {
     Q_OBJECT
 public:
-    explicit SAKEmitterToolUi(QWidget *parent = nullptr);
-    ~SAKEmitterToolUi();
+    explicit xToolsEmitterToolUi(QWidget *parent = nullptr);
+    ~xToolsEmitterToolUi();
 
 protected:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
@@ -24,5 +24,5 @@ protected:
     virtual QDialog *itemEditor() override;
 
 private:
-    SAKEmitterToolUiEditor *mEditor{nullptr};
+    xToolsEmitterToolUiEditor *mEditor{nullptr};
 };

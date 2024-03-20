@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,23 +8,23 @@
  **************************************************************************************************/
 #pragma once
 
-#include "sakbasetoolui.h"
+#include "xToolsBaseToolUi.h"
 
 namespace Ui {
-class SAKStorerToolUi;
+class xToolsStorerToolUi;
 }
 
 class xToolsStorerTool;
-class SAKStorerToolUi : public SAKBaseToolUi
+class xToolsStorerToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit SAKStorerToolUi(QWidget *parent = nullptr);
-    ~SAKStorerToolUi();
+    explicit xToolsStorerToolUi(QWidget *parent = nullptr);
+    ~xToolsStorerToolUi();
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
-    Ui::SAKStorerToolUi *ui{nullptr};
+    Ui::xToolsStorerToolUi *ui{nullptr};
 
     void onPushButtonSelectFileClicked();
 };

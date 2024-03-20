@@ -1,33 +1,34 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakmaskertoolui.h"
-#include "xToolsMaskerTool.h"
-#include "ui_sakmaskertoolui.h"
+#include "xToolsMaskerToolUi.h"
+#include "ui_xToolsMaskerToolUi.h"
 
-SAKMaskerToolUi::SAKMaskerToolUi(QWidget *parent)
-    : SAKBaseToolUi(parent)
-    , ui(new Ui::SAKMaskerToolUi)
+#include "xToolsMaskerTool.h"
+
+xToolsMaskerToolUi::xToolsMaskerToolUi(QWidget *parent)
+    : xToolsBaseToolUi(parent)
+    , ui(new Ui::xToolsMaskerToolUi)
 {
     ui->setupUi(this);
 }
 
-SAKMaskerToolUi::~SAKMaskerToolUi()
+xToolsMaskerToolUi::~xToolsMaskerToolUi()
 {
     delete ui;
 }
 
-void SAKMaskerToolUi::setToolName(const QString &name)
+void xToolsMaskerToolUi::setToolName(const QString &name)
 {
     ui->groupBox->setTitle(name);
 }
 
-void SAKMaskerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsMaskerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
 #if 0
     ui->checkBoxEnable->setGroupKey(settingsGroup, "maskerEnable");

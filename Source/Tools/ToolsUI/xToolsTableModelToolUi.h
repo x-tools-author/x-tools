@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -16,19 +16,19 @@
 #include <QModelIndex>
 #include <QWidget>
 
-#include "sakbasetoolui.h"
+#include "xToolsBaseToolUi.h"
 
 namespace Ui {
-class SAKTableModelToolUi;
+class xToolsTableModelToolUi;
 }
 
 class xToolsTableModelTool;
-class SAKTableModelToolUi : public SAKBaseToolUi
+class xToolsTableModelToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit SAKTableModelToolUi(const char *lg, QWidget *parent = nullptr);
-    ~SAKTableModelToolUi();
+    explicit xToolsTableModelToolUi(const char *lg, QWidget *parent = nullptr);
+    ~xToolsTableModelToolUi();
     void setStretchSections(QList<int> columns);
     void setSectionResizeModeToStretch();
     void setColumnVisible(int column, bool visible);
@@ -62,7 +62,7 @@ private:
     bool isInitialized();
 
 private:
-    Ui::SAKTableModelToolUi *ui{nullptr};
+    Ui::xToolsTableModelToolUi *ui{nullptr};
 
     void onPushButtonEditClicked();
     void onPushButtonClearClicked();

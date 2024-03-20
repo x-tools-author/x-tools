@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKStatisticianToolUi</class>
- <widget class="QWidget" name="SAKStatisticianToolUi">
+ <class>xToolsStatisticianToolUi</class>
+ <widget class="QWidget" name="xToolsStatisticianToolUi">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>111</width>
+    <width>120</width>
     <height>17</height>
    </rect>
   </property>

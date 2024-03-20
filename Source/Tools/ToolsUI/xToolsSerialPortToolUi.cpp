@@ -1,28 +1,29 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakserialporttoolui.h"
-#include "xToolsSerialPortTool.h"
-#include "ui_sakserialporttoolui.h"
+#include "xToolsSerialPortToolUi.h"
+#include "ui_xToolsSerialPortToolUi.h"
 
-SAKSerialPortToolUi::SAKSerialPortToolUi(QWidget *parent)
-    : SAKCommunicationToolUi{parent}
-    , ui(new Ui::SAKSerialPortToolUi)
+#include "xToolsSerialPortTool.h"
+
+xToolsSerialPortToolUi::xToolsSerialPortToolUi(QWidget *parent)
+    : xToolsCommunicationToolUi{parent}
+    , ui(new Ui::xToolsSerialPortToolUi)
 {
     ui->setupUi(this);
 }
 
-SAKSerialPortToolUi::~SAKSerialPortToolUi()
+xToolsSerialPortToolUi::~xToolsSerialPortToolUi()
 {
     delete ui;
 }
 
-void SAKSerialPortToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsSerialPortToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     if (!(tool && tool->inherits("SAKSerialPortTool"))) {
         qWarning() << "Invalid type of communication tool!";
@@ -40,27 +41,27 @@ void SAKSerialPortToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QS
     connect(ui->comboBoxPortNames,
             &QComboBox::currentTextChanged,
             this,
-            &SAKSerialPortToolUi::onComboBoxPortNamesCurrentTextChanged);
+            &xToolsSerialPortToolUi::onComboBoxPortNamesCurrentTextChanged);
     connect(ui->comboBoxBaudRate,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &SAKSerialPortToolUi::onComboBoxBaudRateCurrentIndexChanged);
+            &xToolsSerialPortToolUi::onComboBoxBaudRateCurrentIndexChanged);
     connect(ui->comboBoxDataBits,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &SAKSerialPortToolUi::onComboBoxDataBitsCurrentIndexChanged);
+            &xToolsSerialPortToolUi::onComboBoxDataBitsCurrentIndexChanged);
     connect(ui->comboBoxStopBits,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &SAKSerialPortToolUi::onComboBoxStopBitsCurrentIndexChanged);
+            &xToolsSerialPortToolUi::onComboBoxStopBitsCurrentIndexChanged);
     connect(ui->comboBoxParity,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &SAKSerialPortToolUi::onComboBoxParityCurrentIndexChanged);
+            &xToolsSerialPortToolUi::onComboBoxParityCurrentIndexChanged);
     connect(ui->comboBoxFlowControl,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &SAKSerialPortToolUi::onComboBoxFlowControlCurrentIndexChanged);
+            &xToolsSerialPortToolUi::onComboBoxFlowControlCurrentIndexChanged);
 
     ui->comboBoxPortNames->setGroupKey(settingsGroup, "portName");
     ui->comboBoxBaudRate->setGroupKey(settingsGroup, "baudRate", false);
@@ -70,41 +71,41 @@ void SAKSerialPortToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QS
     ui->comboBoxFlowControl->setGroupKey(settingsGroup, "flowControl");
 }
 
-void SAKSerialPortToolUi::checkInitializingStatus()
+void xToolsSerialPortToolUi::checkInitializingStatus()
 {
     Q_ASSERT_X(mTool, __FUNCTION__, "Please call initialze() first!");
 }
 
-void SAKSerialPortToolUi::onComboBoxPortNamesCurrentTextChanged()
+void xToolsSerialPortToolUi::onComboBoxPortNamesCurrentTextChanged()
 {
     checkInitializingStatus();
     mTool->setPortName(ui->comboBoxPortNames->currentText());
 }
 
-void SAKSerialPortToolUi::onComboBoxBaudRateCurrentIndexChanged()
+void xToolsSerialPortToolUi::onComboBoxBaudRateCurrentIndexChanged()
 {
     checkInitializingStatus();
     mTool->setBaudRate(ui->comboBoxBaudRate->currentData().toInt());
 }
 
-void SAKSerialPortToolUi::onComboBoxDataBitsCurrentIndexChanged()
+void xToolsSerialPortToolUi::onComboBoxDataBitsCurrentIndexChanged()
 {
     checkInitializingStatus();
     mTool->setDataBits(ui->comboBoxDataBits->currentData().toInt());
 }
 
-void SAKSerialPortToolUi::onComboBoxStopBitsCurrentIndexChanged()
+void xToolsSerialPortToolUi::onComboBoxStopBitsCurrentIndexChanged()
 {
     mTool->setStopBits(ui->comboBoxStopBits->currentData().toInt());
 }
 
-void SAKSerialPortToolUi::onComboBoxParityCurrentIndexChanged()
+void xToolsSerialPortToolUi::onComboBoxParityCurrentIndexChanged()
 {
     checkInitializingStatus();
     mTool->setParity(ui->comboBoxParity->currentData().toInt());
 }
 
-void SAKSerialPortToolUi::onComboBoxFlowControlCurrentIndexChanged()
+void xToolsSerialPortToolUi::onComboBoxFlowControlCurrentIndexChanged()
 {
     checkInitializingStatus();
     mTool->setFlowControl(ui->comboBoxFlowControl->currentData().toInt());

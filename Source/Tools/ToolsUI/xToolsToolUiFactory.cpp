@@ -1,31 +1,31 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saktooluifactory.h"
+#include "xToolsToolUiFactory.h"
 
 #include <QCoreApplication>
 
 #include "xToolsAnalyzerToolUi.h"
-#include "sakcrccalculatortoolui.h"
-#include "sakemittertoolui.h"
-#include "sakmaskertoolui.h"
-#include "sakprestorertoolui.h"
-#include "sakresponsertoolui.h"
-#include "sakserialporttoolui.h"
-#include "sakserialporttransmittertoolui.h"
-#include "saksocketclienttoolui.h"
-#include "saksocketclienttransmittertoolui.h"
-#include "saksocketservertoolui.h"
-#include "sakstatisticiantoolui.h"
-#include "sakstorertoolui.h"
-#include "saktcptransmittertoolti.h"
+#include "xToolsCrcCalculatorToolUi.h"
+#include "xToolsEmitterToolUi.h"
+#include "xToolsMaskerToolUi.h"
+#include "xToolsPrestorerToolUi.h"
+#include "xToolsResponserToolUi.h"
+#include "xToolsSerialPortToolUi.h"
+#include "xToolsSerialPortTransmitterToolUi.h"
+#include "xToolsSocketClientToolUi.h"
+#include "xToolsSocketClientTransmitterToolUi.h"
+#include "xToolsSocketServerToolUi.h"
+#include "xToolsStatisticianToolUi.h"
+#include "xToolsStorerToolUi.h"
+#include "xToolsTcpTransmitterToolUi.h"
 #include "xToolsToolFactory.h"
-#include "sakudptransmittertoolui.h"
+#include "xToolsUdpTransmitterToolUi.h"
 #include "xToolsVelometerToolUi.h"
 #include "xToolsWebSocketTransmitterToolUi.h"
 
@@ -33,67 +33,67 @@
 #include "sakblecentraltoolui.h"
 #endif
 
-SAKToolUiFactory::SAKToolUiFactory(QObject *parent)
+xToolsToolUiFactory::xToolsToolUiFactory(QObject *parent)
     : QObject{parent}
 {}
 
-SAKToolUiFactory *SAKToolUiFactory::instance()
+xToolsToolUiFactory *xToolsToolUiFactory::instance()
 {
-    static SAKToolUiFactory *factory = nullptr;
+    static xToolsToolUiFactory *factory = nullptr;
     if (factory == nullptr) {
-        factory = new SAKToolUiFactory(qApp);
+        factory = new xToolsToolUiFactory(qApp);
     }
 
     return factory;
 }
 
-SAKBaseToolUi *SAKToolUiFactory::createToolUi(int type)
+xToolsBaseToolUi *xToolsToolUiFactory::createToolUi(int type)
 {
     switch (type) {
     case xToolsToolFactory::AnalyzerTool:
         return new xToolsAnalyzerToolUi();
     case xToolsToolFactory::SerialportTool:
-        return new SAKSerialPortToolUi();
+        return new xToolsSerialPortToolUi();
     case xToolsToolFactory::EmitterTool:
-        return new SAKEmitterToolUi();
+        return new xToolsEmitterToolUi();
     case xToolsToolFactory::MaskerTool:
-        return new SAKMaskerToolUi();
+        return new xToolsMaskerToolUi();
     case xToolsToolFactory::ResponserTool:
-        return new SAKResponserToolUi();
+        return new xToolsResponserToolUi();
     case xToolsToolFactory::StorerTool:
-        return new SAKStorerToolUi();
+        return new xToolsStorerToolUi();
     case xToolsToolFactory::PrestoreTool:
-        return new SAKPrestorerToolUi();
+        return new xToolsPrestorerToolUi();
     case xToolsToolFactory::VelometerTool:
         return new xToolsVelometerToolUi();
     case xToolsToolFactory::UdpClientTool:
-        return new SAKSocketClientToolUi();
+        return new xToolsSocketClientToolUi();
     case xToolsToolFactory::UdpServerTool:
-        return new SAKSocketServerToolUi();
+        return new xToolsSocketServerToolUi();
     case xToolsToolFactory::TcpClientTool:
-        return new SAKSocketClientToolUi();
+        return new xToolsSocketClientToolUi();
     case xToolsToolFactory::TcpServerTool:
-        return new SAKSocketServerToolUi();
+        return new xToolsSocketServerToolUi();
     case xToolsToolFactory::WebSocketClientTool:
-        return new SAKSocketClientToolUi();
+        return new xToolsSocketClientToolUi();
     case xToolsToolFactory::WebSocketServerTool:
-        return new SAKSocketServerToolUi();
+        return new xToolsSocketServerToolUi();
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
     case SAKToolFactory::BleCentralTool:
         return new SAKBleCentralToolUi();
 #endif
     case xToolsToolFactory::StatistiticianTool:
-        return new SAKStatisticianToolUi();
+        return new xToolsStatisticianToolUi();
     case xToolsToolFactory::SerialPortTransmitterTool:
-        return new SAKSerialPortTransmitterToolUi();
+        return new xToolsSerialPortTransmitterToolUi();
     case xToolsToolFactory::UdpTransmitterTool:
-        return new SAKUdpTransmitterToolUi();
+        return new xToolsUdpTransmitterToolUi();
     case xToolsToolFactory::TcpTransmitterTool:
-        return new SAKTcpTransmitterToolUi();
+        return new xToolsTcpTransmitterToolUi();
     case xToolsToolFactory::WebSocketTransmitterTool:
         return new xToolsWebSocketTransmitterToolUi();
     case xToolsToolFactory::CrcCalculatorTool:
-        return new SAKCrcCalculatorToolUi();
+        return new xToolsCrcCalculatorToolUi();
     default:
         return nullptr;
     }

@@ -1,11 +1,14 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsTableModelToolUi.h"
+#include "ui_xToolsTableModelToolUi.h"
+
 #include <QFile>
 #include <QFileDialog>
 #include <QJsonArray>
@@ -16,15 +19,12 @@
 #include "sakmenu.h"
 #include "saksettings.h"
 #include "xToolsTableModelTool.h"
-#include "saktablemodeltoolui.h"
 #include "sakuiinterface.h"
 
-#include "ui_saktablemodeltoolui.h"
-
-SAKTableModelToolUi::SAKTableModelToolUi(const char *lg, QWidget *parent)
-    : SAKBaseToolUi{parent}
+xToolsTableModelToolUi::xToolsTableModelToolUi(const char *lg, QWidget *parent)
+    : xToolsBaseToolUi{parent}
     , mLoggingCategory{lg}
-    , ui(new Ui::SAKTableModelToolUi)
+    , ui(new Ui::xToolsTableModelToolUi)
 {
     ui->setupUi(this);
     QHeaderView *vHeaderView = ui->tableView->verticalHeader();
@@ -33,27 +33,27 @@ SAKTableModelToolUi::SAKTableModelToolUi(const char *lg, QWidget *parent)
     connect(ui->pushButtonEdit,
             &QPushButton::clicked,
             this,
-            &SAKTableModelToolUi::onPushButtonEditClicked);
+            &xToolsTableModelToolUi::onPushButtonEditClicked);
     connect(ui->pushButtonClear,
             &QPushButton::clicked,
             this,
-            &SAKTableModelToolUi::onPushButtonClearClicked);
+            &xToolsTableModelToolUi::onPushButtonClearClicked);
     connect(ui->pushButtonDelete,
             &QPushButton::clicked,
             this,
-            &SAKTableModelToolUi::onPushButtonDeleteClicked);
+            &xToolsTableModelToolUi::onPushButtonDeleteClicked);
     connect(ui->pushButtonImport,
             &QPushButton::clicked,
             this,
-            &SAKTableModelToolUi::onPushButtonImportClicked);
+            &xToolsTableModelToolUi::onPushButtonImportClicked);
     connect(ui->pushButtonExport,
             &QPushButton::clicked,
             this,
-            &SAKTableModelToolUi::onPushButtonExportClicked);
+            &xToolsTableModelToolUi::onPushButtonExportClicked);
     connect(ui->pushButtonAppend,
             &QPushButton::clicked,
             this,
-            &SAKTableModelToolUi::onPushButtonAppendClicked);
+            &xToolsTableModelToolUi::onPushButtonAppendClicked);
 
     connect(ui->tableView, &QTableView::doubleClicked, this, [=](const QModelIndex &index) {
         Q_UNUSED(index)
@@ -61,12 +61,12 @@ SAKTableModelToolUi::SAKTableModelToolUi(const char *lg, QWidget *parent)
     });
 }
 
-SAKTableModelToolUi::~SAKTableModelToolUi()
+xToolsTableModelToolUi::~xToolsTableModelToolUi()
 {
     delete ui;
 }
 
-void SAKTableModelToolUi::setStretchSections(QList<int> columns)
+void xToolsTableModelToolUi::setStretchSections(QList<int> columns)
 {
     QTableView *tableView = ui->tableView;
     QHeaderView *headerView = tableView->horizontalHeader();
@@ -75,14 +75,14 @@ void SAKTableModelToolUi::setStretchSections(QList<int> columns)
     }
 }
 
-void SAKTableModelToolUi::setSectionResizeModeToStretch()
+void xToolsTableModelToolUi::setSectionResizeModeToStretch()
 {
     QTableView *tableView = ui->tableView;
     QHeaderView *headerView = tableView->horizontalHeader();
     headerView->setSectionResizeMode(QHeaderView::Stretch);
 }
 
-void SAKTableModelToolUi::setColumnVisible(int column, bool visible)
+void xToolsTableModelToolUi::setColumnVisible(int column, bool visible)
 {
     QTableView *tableView = ui->tableView;
     if (visible) {
@@ -92,7 +92,7 @@ void SAKTableModelToolUi::setColumnVisible(int column, bool visible)
     }
 }
 
-void SAKTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
+void xToolsTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
 {
     if (!tool) {
         qWarning() << "The value of tool is nullptr!";
@@ -172,31 +172,31 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QS
     importFromJson(QJsonDocument::fromJson(json).toJson());
 }
 
-QList<int> SAKTableModelToolUi::defaultHideColumns()
+QList<int> xToolsTableModelToolUi::defaultHideColumns()
 {
     QList<int> list;
     return list;
 }
 
-void SAKTableModelToolUi::afterRowEdited(int row)
+void xToolsTableModelToolUi::afterRowEdited(int row)
 {
     Q_UNUSED(row)
 }
 
-void SAKTableModelToolUi::clear()
+void xToolsTableModelToolUi::clear()
 {
     int rowCount = mTableModel->rowCount();
     mTableModel->removeRows(0, rowCount);
 }
 
-void SAKTableModelToolUi::remove(const QModelIndex &index)
+void xToolsTableModelToolUi::remove(const QModelIndex &index)
 {
     if (index.isValid()) {
         mTableModel->removeRow(index.row());
     }
 }
 
-void SAKTableModelToolUi::importFromJson(const QByteArray &json)
+void xToolsTableModelToolUi::importFromJson(const QByteArray &json)
 {
     QJsonDocument jsonDoc = QJsonDocument::fromJson(json);
     QJsonArray jsonArray = jsonDoc.array();
@@ -209,7 +209,7 @@ void SAKTableModelToolUi::importFromJson(const QByteArray &json)
     }
 }
 
-QByteArray SAKTableModelToolUi::exportAsJson()
+QByteArray xToolsTableModelToolUi::exportAsJson()
 {
     auto items = mTableModelTool->itemsContext();
     QJsonArray jsonArray = items.toJsonArray();
@@ -219,7 +219,7 @@ QByteArray SAKTableModelToolUi::exportAsJson()
     return json;
 }
 
-void SAKTableModelToolUi::edit(const QModelIndex &index)
+void xToolsTableModelToolUi::edit(const QModelIndex &index)
 {
     QVariant var = mTableModelTool->itemContext(index.row());
     QJsonObject jsonObj = var.toJsonObject();
@@ -250,7 +250,7 @@ void SAKTableModelToolUi::edit(const QModelIndex &index)
     }
 }
 
-bool SAKTableModelToolUi::append()
+bool xToolsTableModelToolUi::append()
 {
     QJsonObject jsonObj = mTableModelTool->itemContext(-1).toJsonObject();
     QDialog *editor = itemEditor();
@@ -280,7 +280,7 @@ bool SAKTableModelToolUi::append()
     return true;
 }
 
-QModelIndex SAKTableModelToolUi::currentIndex()
+QModelIndex xToolsTableModelToolUi::currentIndex()
 {
     QModelIndex index = ui->tableView->currentIndex();
     if (!index.isValid()) {
@@ -292,13 +292,13 @@ QModelIndex SAKTableModelToolUi::currentIndex()
     return index;
 }
 
-void SAKTableModelToolUi::writeToSettingsFile()
+void xToolsTableModelToolUi::writeToSettingsFile()
 {
     QByteArray json = exportAsJson();
     SAKSettings::instance()->setValue(mItemsKey, QString::fromLatin1(json.toHex()));
 }
 
-bool SAKTableModelToolUi::isInitialized()
+bool xToolsTableModelToolUi::isInitialized()
 {
     if (!mTableModelTool) {
         QMessageBox::warning(SAKUiInterface::mainWindow(),
@@ -311,7 +311,7 @@ bool SAKTableModelToolUi::isInitialized()
     return true;
 }
 
-void SAKTableModelToolUi::onPushButtonEditClicked()
+void xToolsTableModelToolUi::onPushButtonEditClicked()
 {
     if (!isInitialized()) {
         return;
@@ -324,7 +324,7 @@ void SAKTableModelToolUi::onPushButtonEditClicked()
     }
 }
 
-void SAKTableModelToolUi::onPushButtonClearClicked()
+void xToolsTableModelToolUi::onPushButtonClearClicked()
 {
     if (!isInitialized()) {
         return;
@@ -341,7 +341,7 @@ void SAKTableModelToolUi::onPushButtonClearClicked()
     }
 }
 
-void SAKTableModelToolUi::onPushButtonDeleteClicked()
+void xToolsTableModelToolUi::onPushButtonDeleteClicked()
 {
     if (!isInitialized()) {
         return;
@@ -364,7 +364,7 @@ void SAKTableModelToolUi::onPushButtonDeleteClicked()
     }
 }
 
-void SAKTableModelToolUi::onPushButtonImportClicked()
+void xToolsTableModelToolUi::onPushButtonImportClicked()
 {
     if (!isInitialized()) {
         return;
@@ -391,7 +391,7 @@ void SAKTableModelToolUi::onPushButtonImportClicked()
     }
 }
 
-void SAKTableModelToolUi::onPushButtonExportClicked()
+void xToolsTableModelToolUi::onPushButtonExportClicked()
 {
     if (!isInitialized()) {
         return;
@@ -415,7 +415,7 @@ void SAKTableModelToolUi::onPushButtonExportClicked()
     }
 }
 
-void SAKTableModelToolUi::onPushButtonAppendClicked()
+void xToolsTableModelToolUi::onPushButtonAppendClicked()
 {
     if (!isInitialized()) {
         return;

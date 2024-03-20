@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,17 +8,17 @@
  **************************************************************************************************/
 #pragma once
 
-#include "saktablemodeltoolui.h"
+#include "xToolsTableModelToolUi.h"
 #include <QMenu>
 
 class xToolsPrestorerTool;
-class SAKPrestorerToolUiEditor;
-class SAKPrestorerToolUi : public SAKTableModelToolUi
+class xToolsPrestorerToolUiEditor;
+class xToolsPrestorerToolUi : public xToolsTableModelToolUi
 {
     Q_OBJECT
 public:
-    explicit SAKPrestorerToolUi(QWidget *parent = nullptr);
-    ~SAKPrestorerToolUi();
+    explicit xToolsPrestorerToolUi(QWidget *parent = nullptr);
+    ~xToolsPrestorerToolUi();
     QMenu *menu();
 
 protected:
@@ -28,7 +28,7 @@ protected:
     virtual QDialog *itemEditor() override;
 
 private:
-    SAKPrestorerToolUiEditor *mEditor{nullptr};
+    xToolsPrestorerToolUiEditor *mEditor{nullptr};
     QMenu *mMenu{nullptr};
 
 private:

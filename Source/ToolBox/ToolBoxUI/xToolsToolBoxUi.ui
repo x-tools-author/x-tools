@@ -346,7 +346,7 @@
           </widget>
          </item>
          <item>
-          <widget class="SAKStatisticianToolUi" name="widgetRxStatistician" native="true">
+          <widget class="xToolsStatisticianToolUi" name="widgetRxStatistician" native="true">
            <property name="minimumSize">
             <size>
              <width>20</width>
@@ -378,7 +378,7 @@
           </widget>
          </item>
          <item>
-          <widget class="SAKStatisticianToolUi" name="widgetTxStatistician" native="true">
+          <widget class="xToolsStatisticianToolUi" name="widgetTxStatistician" native="true">
            <property name="minimumSize">
             <size>
              <width>20</width>
@@ -504,14 +504,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKCheckBox</class>
-   <extends>QCheckBox</extends>
-   <header location="global">sakcheckbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>SAKTextFormatComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">saktextformatcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">sakcheckbox.h</header>
   </customwidget>
   <customwidget>
    <class>SAKComboBox</class>
@@ -525,9 +525,9 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>SAKStatisticianToolUi</class>
+   <class>xToolsStatisticianToolUi</class>
    <extends>QWidget</extends>
-   <header location="global">sakstatisticiantoolui.h</header>
+   <header location="global">xToolsStatisticianToolUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

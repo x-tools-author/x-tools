@@ -1,33 +1,35 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakprestorertooluieditor.h"
-#include "xToolsPrestorerTool.h"
-#include "ui_sakprestorertooluieditor.h"
+#include "xToolsPrestorerToolUiEditor.h"
+#include "ui_xToolsPrestorerToolUiEditor.h"
 
-SAKPrestorerToolUiEditor::SAKPrestorerToolUiEditor(QWidget *parent)
+#include "xToolsPrestorerTool.h"
+
+
+xToolsPrestorerToolUiEditor::xToolsPrestorerToolUiEditor(QWidget *parent)
     : QDialog{parent}
-    , ui(new Ui::SAKPrestorerToolUiEditor)
+    , ui(new Ui::xToolsPrestorerToolUiEditor)
 {
     ui->setupUi(this);
     setModal(true);
     setWindowTitle(tr("Prestorer Item Editor"));
 
-    connect(ui->pushButtonOk, &QPushButton::clicked, this, &SAKPrestorerToolUiEditor::accept);
-    connect(ui->pushButtonCancel, &QPushButton::clicked, this, &SAKPrestorerToolUiEditor::reject);
+    connect(ui->pushButtonOk, &QPushButton::clicked, this, &xToolsPrestorerToolUiEditor::accept);
+    connect(ui->pushButtonCancel, &QPushButton::clicked, this, &xToolsPrestorerToolUiEditor::reject);
 }
 
-SAKPrestorerToolUiEditor::~SAKPrestorerToolUiEditor()
+xToolsPrestorerToolUiEditor::~xToolsPrestorerToolUiEditor()
 {
     delete ui;
 }
 
-QJsonObject SAKPrestorerToolUiEditor::parameters()
+QJsonObject xToolsPrestorerToolUiEditor::parameters()
 {
     QString description = ui->lineEditDescription->text().trimmed();
     int format = ui->comboBoxFormat->currentData().toInt();
@@ -58,7 +60,7 @@ QJsonObject SAKPrestorerToolUiEditor::parameters()
     return params;
 }
 
-void SAKPrestorerToolUiEditor::setParameters(const QJsonObject &params)
+void xToolsPrestorerToolUiEditor::setParameters(const QJsonObject &params)
 {
     xToolsPrestorerTool::ItemKeys keys;
     QString description = params.value(keys.itemDescription).toString();

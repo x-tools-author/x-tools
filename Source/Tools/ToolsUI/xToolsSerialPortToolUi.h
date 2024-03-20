@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,20 +8,20 @@
  **************************************************************************************************/
 #pragma once
 
-#include "sakcommunicationtoolui.h"
+#include "xToolsCommunicationToolUi.h"
 #include <QLoggingCategory>
 
 namespace Ui {
-class SAKSerialPortToolUi;
+class xToolsSerialPortToolUi;
 }
 
 class xToolsSerialPortTool;
-class SAKSerialPortToolUi : public SAKCommunicationToolUi
+class xToolsSerialPortToolUi : public xToolsCommunicationToolUi
 {
     Q_OBJECT
 public:
-    explicit SAKSerialPortToolUi(QWidget *parent = nullptr);
-    ~SAKSerialPortToolUi();
+    explicit xToolsSerialPortToolUi(QWidget *parent = nullptr);
+    ~xToolsSerialPortToolUi();
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
@@ -32,7 +32,7 @@ private:
     void checkInitializingStatus();
 
 private:
-    Ui::SAKSerialPortToolUi *ui;
+    Ui::xToolsSerialPortToolUi *ui;
 
     void onComboBoxPortNamesCurrentTextChanged();
     void onComboBoxBaudRateCurrentIndexChanged();

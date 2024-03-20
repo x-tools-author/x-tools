@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKSocketClientTransmitterToolUiEditor</class>
- <widget class="QWidget" name="SAKSocketClientTransmitterToolUiEditor">
+ <class>xToolsSocketClientTransmitterToolUiEditor</class>
+ <widget class="QWidget" name="xToolsSocketClientTransmitterToolUiEditor">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>278</width>
+    <width>295</width>
     <height>240</height>
    </rect>
   </property>
