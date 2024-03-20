@@ -213,7 +213,7 @@ void xToolsMainWindow::initOptionMenuHdpiPolicy()
     }
 
     connect(system_action, &QAction::triggered, this, [=]() {
-        SAKSettings::instance()->setHdpiPolicy(xToolsDataStructure::HdpiPolicySystem);
+        xToolsSettings::instance()->setHdpiPolicy(xToolsDataStructure::HdpiPolicySystem);
         createQtConf();
         tryToReboot();
     });

@@ -6,11 +6,11 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsCRCCalculatorAssistant.h"
+#include "xToolsCRCAssistant.h"
 #include "xToolsUi.h"
 
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("CRC Assistant");
-    return sakExec<xToolsCRCCalculatorAssistant>(argc, argv, appName);
+    return sakExec<xToolsCRCAssistant>(argc, argv, appName);
 }

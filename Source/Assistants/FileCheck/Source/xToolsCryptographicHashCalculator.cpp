@@ -13,9 +13,9 @@
 #include <QDebug>
 #include <QFile>
 
-#include "xToolsFileCheckerAssistant.h"
+#include "xToolsFileCheckAssistant.h"
 
-xToolsCryptographicHashCalculator::xToolsCryptographicHashCalculator(xToolsFileCheckerAssistant* controller,
+xToolsCryptographicHashCalculator::xToolsCryptographicHashCalculator(xToolsFileCheckAssistant* controller,
                                                                QObject* parent)
     : QThread(parent)
     , m_cryptographicHashController(controller)
@@ -23,19 +23,19 @@ xToolsCryptographicHashCalculator::xToolsCryptographicHashCalculator(xToolsFileC
     connect(this,
             &xToolsCryptographicHashCalculator::updateResult,
             controller,
-            &xToolsFileCheckerAssistant::updateResult);
+            &xToolsFileCheckAssistant::updateResult);
     connect(this,
             &xToolsCryptographicHashCalculator::outputMessage,
             controller,
-            &xToolsFileCheckerAssistant::outputMessage);
+            &xToolsFileCheckAssistant::outputMessage);
     connect(this,
             &xToolsCryptographicHashCalculator::updateProgressBar,
             controller,
-            &xToolsFileCheckerAssistant::updateProgressBar);
+            &xToolsFileCheckAssistant::updateProgressBar);
     connect(this,
             &xToolsCryptographicHashCalculator::remainTimeChanged,
             controller,
-            &xToolsFileCheckerAssistant::changeRemainTime);
+            &xToolsFileCheckAssistant::changeRemainTime);
 }
 
 void xToolsCryptographicHashCalculator::run()

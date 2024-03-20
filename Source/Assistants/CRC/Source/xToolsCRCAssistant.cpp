@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsCRCCalculatorAssistant.h"
-#include "ui_xToolsCRCCalculatorAssistant.h"
+#include "xToolsCRCAssistant.h"
+#include "ui_xToolsCRCAssistant.h"
 
 #include <QComboBox>
 #include <QDesktopServices>
@@ -16,10 +16,10 @@
 
 #include "xToolsCrcInterface.h"
 
-xToolsCRCCalculatorAssistant::xToolsCRCCalculatorAssistant(QWidget* parent)
+xToolsCRCAssistant::xToolsCRCAssistant(QWidget* parent)
     : QWidget(parent)
     , m_crcInterface(new xToolsCrcInterface)
-    , ui(new Ui::xToolsCRCCalculatorAssistant)
+    , ui(new Ui::xToolsCRCAssistant)
 {
     ui->setupUi(this);
     m_widthComboBox = ui->comboBoxWidth;
@@ -63,18 +63,18 @@ xToolsCRCCalculatorAssistant::xToolsCRCCalculatorAssistant(QWidget* parent)
     connect(m_parameterComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this,
-            &xToolsCRCCalculatorAssistant::changedParameterModel);
-    connect(m_calculatedBt, &QPushButton::clicked, this, &xToolsCRCCalculatorAssistant::calculate);
-    connect(m_inputTextEdit, &QTextEdit::textChanged, this, &xToolsCRCCalculatorAssistant::textFormatControl);
+            &xToolsCRCAssistant::changedParameterModel);
+    connect(m_calculatedBt, &QPushButton::clicked, this, &xToolsCRCAssistant::calculate);
+    connect(m_inputTextEdit, &QTextEdit::textChanged, this, &xToolsCRCAssistant::textFormatControl);
 }
 
-xToolsCRCCalculatorAssistant::~xToolsCRCCalculatorAssistant()
+xToolsCRCAssistant::~xToolsCRCAssistant()
 {
     delete m_crcInterface;
     delete ui;
 }
 
-void xToolsCRCCalculatorAssistant::initParameterModel()
+void xToolsCRCAssistant::initParameterModel()
 {
     m_parameterComboBox->clear();
     QStringList list = m_crcInterface->supportedParameterModels();
@@ -93,7 +93,7 @@ void xToolsCRCCalculatorAssistant::initParameterModel()
     m_labelPolyFormula->setText(m_crcInterface->friendlyPoly(model));
 }
 
-void xToolsCRCCalculatorAssistant::calculate()
+void xToolsCRCAssistant::calculate()
 {
     QByteArray inputArray;
     if (m_hexRadioBt->isChecked()) {
@@ -151,12 +151,12 @@ void xToolsCRCCalculatorAssistant::calculate()
     m_binCRCOutput->setText(crcBinString);
 }
 
-void xToolsCRCCalculatorAssistant::textFormatControl()
+void xToolsCRCAssistant::textFormatControl()
 {
     if (m_asciiRadioBt->isChecked()) {
         return;
     }
-    disconnect(m_inputTextEdit, &QTextEdit::textChanged, this, &xToolsCRCCalculatorAssistant::textFormatControl);
+    disconnect(m_inputTextEdit, &QTextEdit::textChanged, this, &xToolsCRCAssistant::textFormatControl);
 
     QString strTemp;
     QString plaintext = m_inputTextEdit->toPlainText();
@@ -170,11 +170,11 @@ void xToolsCRCCalculatorAssistant::textFormatControl()
     }
     m_inputTextEdit->setText(strTemp.toUpper());
     m_inputTextEdit->moveCursor(QTextCursor::End);
-
-    connect(m_inputTextEdit, &QTextEdit::textChanged, this, &xToolsCRCCalculatorAssistant::textFormatControl);
+    
+    connect(m_inputTextEdit, &QTextEdit::textChanged, this, &xToolsCRCAssistant::textFormatControl);
 }
 
-void xToolsCRCCalculatorAssistant::changedParameterModel(int index)
+void xToolsCRCAssistant::changedParameterModel(int index)
 {
     Q_UNUSED(index)
     QMetaEnum models = QMetaEnum::fromType<xToolsCrcInterface::SAKEnumCrcAlgorithm>();
@@ -205,7 +205,7 @@ void xToolsCRCCalculatorAssistant::changedParameterModel(int index)
     m_labelPolyFormula->setText(m_crcInterface->friendlyPoly(model));
 }
 
-bool xToolsCRCCalculatorAssistant::eventFilter(QObject* watched, QEvent* event)
+bool xToolsCRCAssistant::eventFilter(QObject* watched, QEvent* event)
 {
     if (event->type() == QEvent::MouseButtonDblClick) {
         if (watched == m_labelInfo) {

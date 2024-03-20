@@ -136,7 +136,7 @@ void MainWindow::initMenuBar()
 void MainWindow::closeEvent(QCloseEvent* event)
 {
     auto key = mSettingsKey.exitToSystemTray;
-    bool ignore = SAKSettings::instance()->value(key).toBool();
+    bool ignore = xToolsSettings::instance()->value(key).toBool();
     if (ignore) {
         this->hide();
         event->ignore();
@@ -403,11 +403,11 @@ void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
     connect(systemAction, &QAction::triggered, this, [=]() {
         createQtConf();
 
-        SAKSettings::instance()->setHdpiPolicy(sysScale);
+        xToolsSettings::instance()->setHdpiPolicy(sysScale);
         rebootRequestion();
     });
 
-    if (SAKSettings::instance()->hdpiPolicy() == sysScale) {
+    if (xToolsSettings::instance()->hdpiPolicy() == sysScale) {
         systemAction->setChecked(true);
         if (!QFile::exists(fileName)) {
             createQtConf();

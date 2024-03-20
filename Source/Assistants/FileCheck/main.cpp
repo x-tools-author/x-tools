@@ -6,11 +6,11 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsFileCheckerAssistant.h"
+#include "xToolsFileCheckAssistant.h"
 #include "xToolsUi.h"
 
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("File Check Assistant");
-    return sakExec<xToolsFileCheckerAssistant>(argc, argv, appName);
+    return sakExec<xToolsFileCheckAssistant>(argc, argv, appName);
 }

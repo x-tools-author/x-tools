@@ -21,16 +21,16 @@
 #include <QTextEdit>
 
 namespace Ui {
-class xToolsCRCCalculatorAssistant;
+class xToolsCRCAssistant;
 }
 
 class xToolsCrcInterface;
-class xToolsCRCCalculatorAssistant : public QWidget
+class xToolsCRCAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE xToolsCRCCalculatorAssistant(QWidget* parent = Q_NULLPTR);
-    ~xToolsCRCCalculatorAssistant();
+    Q_INVOKABLE xToolsCRCAssistant(QWidget* parent = Q_NULLPTR);
+    ~xToolsCRCAssistant();
 
 protected:
     bool eventFilter(QObject* watched, QEvent* event);
@@ -38,7 +38,7 @@ protected:
 private:
     xToolsCrcInterface* m_crcInterface;
 
-    Ui::xToolsCRCCalculatorAssistant* ui;
+    Ui::xToolsCRCAssistant* ui;
     QComboBox* m_widthComboBox;
     QComboBox* m_parameterComboBox;
     QCheckBox* m_refinCheckBox;

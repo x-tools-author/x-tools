@@ -19,16 +19,16 @@
 #include <QWidget>
 
 namespace Ui {
-class xToolsFileCheckerAssistant;
+class xToolsFileCheckAssistant;
 }
 
 class xToolsCryptographicHashCalculator;
-class xToolsFileCheckerAssistant : public QWidget
+class xToolsFileCheckAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE xToolsFileCheckerAssistant(QWidget* parent = Q_NULLPTR);
-    ~xToolsFileCheckerAssistant();
+    Q_INVOKABLE xToolsFileCheckAssistant(QWidget* parent = Q_NULLPTR);
+    ~xToolsFileCheckAssistant();
 
     void setUiEnable(bool enable);
     QString fileName();
@@ -69,7 +69,7 @@ private:
     QTimer m_clearMessageTimer;
 
 private:
-    Ui::xToolsFileCheckerAssistant* ui;
+    Ui::xToolsFileCheckAssistant* ui;
     QLineEdit* m_filePathlineEdit;
     QComboBox* m_algorithmComboBox;
     QLineEdit* m_resultLineEdit;

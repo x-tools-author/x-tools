@@ -13,10 +13,10 @@
 #include <QWidget>
 
 #ifdef X_TOOLS_IMPORT_MODULE_FILECHECKASSISTANT
-#include "xToolsFileCheckerAssistant.h"
+#include "xToolsFileCheckAssistant.h"
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_CRCASSISTANT
-#include "xToolsCRCCalculatorAssistant.h"
+#include "xToolsCRCAssistant.h"
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_NUMBERASSISTANT
 #include "xToolsNumberAssistant.h"
@@ -44,10 +44,10 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     : QObject(parent)
 {
 #ifdef X_TOOLS_IMPORT_MODULE_FILECHECKASSISTANT
-    registerAssistant<xToolsCRCCalculatorAssistant>(AssistantTypesCrc, tr("CRC Assistant"));
+    registerAssistant<xToolsCRCAssistant>(AssistantTypesCrc, tr("CRC Assistant"));
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_CRCASSISTANT
-    registerAssistant<xToolsFileCheckerAssistant>(AssistantTypesFileCheck, tr("File Check Assistant"));
+    registerAssistant<xToolsFileCheckAssistant>(AssistantTypesFileCheck, tr("File Check Assistant"));
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_ASCIIASSISTANT
     registerAssistant<xToolsAsciiAssistant>(AssistantTypesAscii, tr("ASCII Assistant"));

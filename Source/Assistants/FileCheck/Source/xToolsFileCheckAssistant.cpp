@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsFileCheckerAssistant.h"
-#include "ui_xToolsFileCheckerAssistant.h"
+#include "xToolsFileCheckAssistant.h"
+#include "ui_xToolsFileCheckAssistant.h"
 
 #include <QDebug>
 #include <QFileDialog>
@@ -15,12 +15,12 @@
 
 #include "xToolsCryptographicHashCalculator.h"
 
-xToolsFileCheckerAssistant::xToolsFileCheckerAssistant(QWidget* parent)
+xToolsFileCheckAssistant::xToolsFileCheckAssistant(QWidget* parent)
     : QWidget(parent)
     , m_fileName(QString("C:/Windows/explorer.exe"))
     , m_algorithm(QCryptographicHash::Md5)
     , m_calculator(Q_NULLPTR)
-    , ui(new Ui::xToolsFileCheckerAssistant)
+    , ui(new Ui::xToolsFileCheckAssistant)
 {
     ui->setupUi(this);
 
@@ -58,7 +58,7 @@ xToolsFileCheckerAssistant::xToolsFileCheckerAssistant(QWidget* parent)
     // It will clean the message which was showed on the info label when the timer
     // is timeout
     m_clearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
-    connect(&m_clearMessageTimer, &QTimer::timeout, this, &xToolsFileCheckerAssistant::clearMessage);
+    connect(&m_clearMessageTimer, &QTimer::timeout, this, &xToolsFileCheckAssistant::clearMessage);
 
     m_upperCheckBox->setChecked(true);
     setWindowTitle(tr("File Check Assistant"));
@@ -72,7 +72,7 @@ xToolsFileCheckerAssistant::xToolsFileCheckerAssistant(QWidget* parent)
             SLOT(onAlgorithmChanged(int)));
 }
 
-xToolsFileCheckerAssistant::~xToolsFileCheckerAssistant()
+xToolsFileCheckAssistant::~xToolsFileCheckAssistant()
 {
     delete ui;
     if (m_calculator) {
@@ -85,23 +85,23 @@ xToolsFileCheckerAssistant::~xToolsFileCheckerAssistant()
     }
 }
 
-void xToolsFileCheckerAssistant::setUiEnable(bool enable)
+void xToolsFileCheckAssistant::setUiEnable(bool enable)
 {
     m_algorithmComboBox->setEnabled(enable);
     m_openPushButton->setEnabled(enable);
 }
 
-QString xToolsFileCheckerAssistant::fileName()
+QString xToolsFileCheckAssistant::fileName()
 {
     return m_fileName;
 }
 
-QCryptographicHash::Algorithm xToolsFileCheckerAssistant::algorithm()
+QCryptographicHash::Algorithm xToolsFileCheckAssistant::algorithm()
 {
     return m_algorithm;
 }
 
-void xToolsFileCheckerAssistant::updateResult(QByteArray result)
+void xToolsFileCheckAssistant::updateResult(QByteArray result)
 {
     QString resultString = QString(result.toHex());
     if (m_upperCheckBox->isChecked()) {
@@ -111,7 +111,7 @@ void xToolsFileCheckerAssistant::updateResult(QByteArray result)
     }
 }
 
-void xToolsFileCheckerAssistant::outputMessage(QString msg, bool isErrMsg)
+void xToolsFileCheckAssistant::outputMessage(QString msg, bool isErrMsg)
 {
     if (isErrMsg) {
         QApplication::beep();
@@ -124,30 +124,30 @@ void xToolsFileCheckerAssistant::outputMessage(QString msg, bool isErrMsg)
     m_clearMessageTimer.start();
 }
 
-void xToolsFileCheckerAssistant::updateProgressBar(int currentValue)
+void xToolsFileCheckAssistant::updateProgressBar(int currentValue)
 {
     m_calculatorProgressBar->setValue(currentValue);
 }
 
-void xToolsFileCheckerAssistant::changeRemainTime(QString remainTime)
+void xToolsFileCheckAssistant::changeRemainTime(QString remainTime)
 {
     QString str = tr("Remaining time");
     m_remainTimeLabel->setText(QString("%1 %2").arg(str, remainTime));
 }
 
-void xToolsFileCheckerAssistant::finished()
+void xToolsFileCheckAssistant::finished()
 {
     onStartStopPushButtonClicked();
 }
 
-void xToolsFileCheckerAssistant::clearMessage()
+void xToolsFileCheckAssistant::clearMessage()
 {
     m_clearMessageTimer.stop();
     m_messageLabel->clear();
     m_remainTimeLabel->clear();
 }
 
-void xToolsFileCheckerAssistant::onOpenPushButtonClicked()
+void xToolsFileCheckAssistant::onOpenPushButtonClicked()
 {
     m_fileName = QFileDialog::getOpenFileName();
     m_filePathlineEdit->setText(m_fileName);
@@ -160,7 +160,7 @@ void xToolsFileCheckerAssistant::onOpenPushButtonClicked()
     m_messageLabel->clear();
 }
 
-void xToolsFileCheckerAssistant::onStartStopPushButtonClicked()
+void xToolsFileCheckAssistant::onStartStopPushButtonClicked()
 {
     if (m_calculator) {
         m_calculator->blockSignals(true);
@@ -173,14 +173,14 @@ void xToolsFileCheckerAssistant::onStartStopPushButtonClicked()
         setUiEnable(true);
     } else {
         m_calculator = new xToolsCryptographicHashCalculator(this);
-        connect(m_calculator, &QThread::finished, this, &xToolsFileCheckerAssistant::finished);
+        connect(m_calculator, &QThread::finished, this, &xToolsFileCheckAssistant::finished);
         m_calculator->start();
         m_startStopPushButton->setText(tr("StopCalculating"));
         setUiEnable(false);
     }
 }
 
-void xToolsFileCheckerAssistant::onUpperCheckBoxClicked()
+void xToolsFileCheckAssistant::onUpperCheckBoxClicked()
 {
     QString temp = m_resultLineEdit->text();
     if (m_upperCheckBox->isChecked()) {
@@ -190,7 +190,7 @@ void xToolsFileCheckerAssistant::onUpperCheckBoxClicked()
     }
 }
 
-void xToolsFileCheckerAssistant::onAlgorithmChanged(int index)
+void xToolsFileCheckAssistant::onAlgorithmChanged(int index)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
     QMetaEnum algorithms = QMetaEnum::fromType<SAKToolFileCheckAssistant::Algorithm>();
