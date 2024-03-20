@@ -12,63 +12,63 @@
 #include <QCoreApplication>
 #include <QWidget>
 
-#ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
-#include "sakfilecheckassistant.h"
+#ifdef X_TOOLS_IMPORT_MODULE_FILECHECKASSISTANT
+#include "xToolsFileCheckerAssistant.h"
 #endif
-#ifdef SAK_IMPORT_MODULE_CRCASSISTANT
-#include "sakcrcassistant.h"
+#ifdef X_TOOLS_IMPORT_MODULE_CRCASSISTANT
+#include "xToolsCRCCalculatorAssistant.h"
 #endif
-#ifdef SAK_IMPORT_MODULE_NUMBERASSISTANT
-#include "saknumberassistant.h"
+#ifdef X_TOOLS_IMPORT_MODULE_NUMBERASSISTANT
+#include "xToolsNumberAssistant.h"
 #endif
-#ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
-#include "sakstringassistant.h"
+#ifdef X_TOOLS_IMPORT_MODULE_STRINGASSISTANT
+#include "xToolsStringAssistant.h"
 #endif
-#ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
-#include "sakasciiassistant.h"
+#ifdef X_TOOLS_IMPORT_MODULE_ASCIIASSISTANT
+#include "xToolsAsciiAssistant.h"
 #endif
-#ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
-#include "sakbroadcastassistant.h"
+#ifdef X_TOOLS_IMPORT_MODULE_BROADCASTASSISTANT
+#include "xToolsBroadcastAssistant.h"
 #endif
-#ifdef SAK_IMPORT_MODULE_BASE64ASSISTANT
-#include "sakbase64assistant.h"
+#ifdef X_TOOLS_IMPORT_MODULE_BASE64ASSISTANT
+#include "xToolsBase64Assisatnt.h"
 #endif
-#ifdef SAK_IMPORT_MODULE_MDNSASSISTANT
-#include "sakmdnsassistant.h"
+#ifdef X_TOOLS_IMPORT_MODULE_MDNSASSISTANT
+#include "xToolsMdnsAssistant.h"
 #endif
-#ifdef SAK_IMPORT_MODULE_PINGASSISTANT
-#include "sakpingassistant.h"
+#ifdef X_TOOLS_IMPORT_MODULE_PINGASSISTANT
+#include "xToolsPingAssistant.h"
 #endif
 
 SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     : QObject(parent)
 {
-#ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
-    registerAssistant<SAKCRCAssistant>(AssistantTypesCrc, tr("CRC Assistant"));
+#ifdef X_TOOLS_IMPORT_MODULE_FILECHECKASSISTANT
+    registerAssistant<xToolsCRCCalculatorAssistant>(AssistantTypesCrc, tr("CRC Assistant"));
 #endif
-#ifdef SAK_IMPORT_MODULE_CRCASSISTANT
-    registerAssistant<SAKFileCheckAssistant>(AssistantTypesFileCheck, tr("File Check Assistant"));
+#ifdef X_TOOLS_IMPORT_MODULE_CRCASSISTANT
+    registerAssistant<xToolsFileCheckerAssistant>(AssistantTypesFileCheck, tr("File Check Assistant"));
 #endif
-#ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
-    registerAssistant<SAKAsciiAssistant>(AssistantTypesAscii, tr("ASCII Assistant"));
+#ifdef X_TOOLS_IMPORT_MODULE_ASCIIASSISTANT
+    registerAssistant<xToolsAsciiAssistant>(AssistantTypesAscii, tr("ASCII Assistant"));
 #endif
-#ifdef SAK_IMPORT_MODULE_NUMBERASSISTANT
-    registerAssistant<SAKNumberAssistant>(AssistantTypesNumber, tr("Number Assistant"));
+#ifdef X_TOOLS_IMPORT_MODULE_NUMBERASSISTANT
+    registerAssistant<xToolsNumberAssistant>(AssistantTypesNumber, tr("Number Assistant"));
 #endif
-#ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
-    registerAssistant<SAKStringAssistant>(AssistantTypesString, tr("String Assistant"));
+#ifdef X_TOOLS_IMPORT_MODULE_STRINGASSISTANT
+    registerAssistant<xToolsStringAssistant>(AssistantTypesString, tr("String Assistant"));
 #endif
-#ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
-    registerAssistant<SAKBroadcastAssistant>(AssistantTypesBroadcast, tr("Broadcast Assistant"));
+#ifdef X_TOOLS_IMPORT_MODULE_BROADCASTASSISTANT
+    registerAssistant<xToolsBroadcastAssistant>(AssistantTypesBroadcast, tr("Broadcast Assistant"));
 #endif
-#ifdef SAK_IMPORT_MODULE_BASE64ASSISTANT
-    registerAssistant<SAKBase64Assisatnt>(AssistantTypesBase64, tr("Base64 Assistant"));
+#ifdef X_TOOLS_IMPORT_MODULE_BASE64ASSISTANT
+    registerAssistant<xToolsBase64Assisatnt>(AssistantTypesBase64, tr("Base64 Assistant"));
 #endif
-#ifdef SAK_IMPORT_MODULE_MDNSASSISTANT
-    registerAssistant<SAKMdnsAssistant>(AssistantTypesMdns, tr("MDNS Assistant"));
+#ifdef X_TOOLS_IMPORT_MODULE_MDNSASSISTANT
+    registerAssistant<xToolsMdnsAssistant>(AssistantTypesMdns, tr("MDNS Assistant"));
 #endif
-#ifdef SAK_IMPORT_MODULE_PINGASSISTANT
-    registerAssistant<SAKPingAssistant>(AssistantTypesPing, tr("Ping Assistant"));
+#ifdef X_TOOLS_IMPORT_MODULE_PINGASSISTANT
+    registerAssistant<xToolsPingAssistant>(AssistantTypesPing, tr("Ping Assistant"));
 #endif
 }
 
