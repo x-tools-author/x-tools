@@ -83,7 +83,8 @@ QString xToolsDataStructure::formattingString(QString &origingString, SAKEnumTex
 {
     QString cookedString;
     if (format == xToolsDataStructure::InputFormatBin) {
-        origingString.remove(QRegularExpression("[^0-1]"));
+        static auto tmp = QRegularExpression("[^0-1]");
+        origingString.remove(tmp);
         for (int i = 0; i < origingString.length(); i++) {
             if ((i != 0) && (i % 8 == 0)) {
                 cookedString.append(QChar(' '));
@@ -91,7 +92,8 @@ QString xToolsDataStructure::formattingString(QString &origingString, SAKEnumTex
             cookedString.append(origingString.at(i));
         }
     } else if (format == xToolsDataStructure::InputFormatOct) {
-        origingString.remove(QRegularExpression("[^0-7]"));
+        static auto tmp = QRegularExpression("[^0-7]");
+        origingString.remove(tmp);
         for (int i = 0; i < origingString.length(); i++) {
             if ((i != 0) && (i % 2 == 0)) {
                 cookedString.append(QChar(' '));
@@ -99,7 +101,8 @@ QString xToolsDataStructure::formattingString(QString &origingString, SAKEnumTex
             cookedString.append(origingString.at(i));
         }
     } else if (format == xToolsDataStructure::InputFormatDec) {
-        origingString.remove(QRegularExpression("[^0-9]"));
+        static auto tmp = QRegularExpression("[^0-9]");
+        origingString.remove(tmp);
         for (int i = 0; i < origingString.length(); i++) {
             if ((i != 0) && (i % 2 == 0)) {
                 cookedString.append(QChar(' '));
@@ -107,7 +110,8 @@ QString xToolsDataStructure::formattingString(QString &origingString, SAKEnumTex
             cookedString.append(origingString.at(i));
         }
     } else if (format == xToolsDataStructure::InputFormatHex) {
-        origingString.remove(QRegularExpression("[^0-9a-fA-F]"));
+        static auto tmp = QRegularExpression("[^0-9a-fA-F]");
+        origingString.remove(tmp);
         for (int i = 0; i < origingString.length(); i++) {
             if ((i != 0) && (i % 2 == 0)) {
                 cookedString.append(QChar(' '));

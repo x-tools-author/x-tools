@@ -13,17 +13,6 @@
 #include <QObject>
 #include <QTextEdit>
 
-#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
-#include <QSerialPort>
-#include <QSerialPortInfo>
-#endif
-
-#ifdef X_TOOLS_IMPORT_MODULE_BLE
-#ifdef X_TOOLS_IMPORT_MODULE_BLE_CENTRAL
-#include <QBluetoothDeviceInfo>
-#endif
-#endif
-
 class xToolsDataStructure : public QObject
 {
     Q_OBJECT
@@ -146,107 +135,6 @@ public:
     enum SAKEnumPrefixType { PrefixTypeNone, PrefixTypeR, PrefixTypeN, PrefixTypeRN, PrefixTypeNR };
     Q_ENUM(SAKEnumPrefixType);
 
-#ifdef X_TOOLS_IMPORT_MODULE_TEST
-    struct SAKStructTestParametersContext
-    {
-        bool openFailed;
-        bool readCircularly;
-        int readInterval;
-        bool writeCircularly;
-        int writtingInterval;
-        QString errorString;
-        QString rxData;
-        QString txData;
-    };
-#endif
-
-#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
-    struct SAKStructSerialPortParametersContext
-    {
-        QString portName;
-        qint32 baudRate;
-        QSerialPort::DataBits dataBits;
-        QSerialPort::Parity parity;
-        QSerialPort::StopBits stopBits;
-        QSerialPort::FlowControl flowControl;
-
-        int frameIntervel;
-    };
-#endif
-
-#ifdef X_TOOLS_IMPORT_MODULE_UDP
-#ifdef X_TOOLS_IMPORT_MODULE_UDP_CLIENT
-    struct SAKStructUdpClientParametersContext
-    {
-        QString peerHost;
-        quint16 peerPort;
-        QString localHost;
-        quint16 localPort;
-        bool specifyLocalInfo;
-        bool pauseSending;
-    };
-    struct SAKStructUdpServerParametersContext
-    {
-        QString serverHost;
-        quint16 serverPort;
-
-        QString currentClientHost;
-        quint16 currentClientPort;
-        QStringList clients;
-    };
-#endif
-#endif
-
-#ifdef X_TOOLS_IMPORT_MODULE_TCP
-#ifdef X_TOOLS_IMPORT_MODULE_TCP_CLIENT
-    struct SAKStructTcpClientParametersContext
-    {
-        QString localHost;
-        quint16 localPort;
-        QString serverHost;
-        quint16 serverPort;
-        bool specifyClientAddressAndPort;
-        bool allowAutomaticConnection;
-    };
-#endif
-#ifdef X_TOOLS_IMPORT_MODULE_TCP_SERVER
-    struct SAKStructTcpServerParametersContext
-    {
-        QString serverHost;
-        quint16 serverPort;
-        QString currentClientHost;
-        quint16 currentClientPort;
-    };
-#endif
-#endif
-#ifdef X_TOOLS_IMPORT_MODULE_WEBSOCKET
-#ifdef X_TOOLS_IMPORT_MODULE_WEBSOCKET_CLIENT
-    struct SAKStructWSClientParametersContext
-    {
-        QString serverAddress;
-        quint32 sendingType;
-    };
-#endif
-#ifdef X_TOOLS_IMPORT_MODULE_WEBSOCKET_SERVER
-    struct SAKStructWSServerParametersContext
-    {
-        QString serverHost;
-        quint16 serverPort;
-        QString currentClientHost;
-        quint16 currentClientPort;
-        quint32 sendingType;
-    };
-#endif
-#endif
-#ifdef X_TOOLS_IMPORT_MODULE_BLE
-#ifdef X_TOOLS_IMPORT_MODULE_BLE_CENTRAL
-    struct SAKStructBleCentralParametersContext
-    {
-        QBluetoothDeviceInfo info;
-        QString uuid;
-    };
-#endif
-#endif
 public:
     /**
      * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
