@@ -44,31 +44,31 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     : QObject(parent)
 {
 #ifdef X_TOOLS_IMPORT_MODULE_FILECHECKASSISTANT
-    registerAssistant<xToolsCRCAssistant>(AssistantTypesCrc, tr("CRC Assistant"));
+    registerAssistant<xToolsCRCAssistant>(AssistantTypeCrc, tr("CRC Assistant"));
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_CRCASSISTANT
-    registerAssistant<xToolsFileCheckAssistant>(AssistantTypesFileCheck, tr("File Check Assistant"));
+    registerAssistant<xToolsFileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_ASCIIASSISTANT
-    registerAssistant<xToolsAsciiAssistant>(AssistantTypesAscii, tr("ASCII Assistant"));
+    registerAssistant<xToolsAsciiAssistant>(AssistantTypeAscii, tr("ASCII Assistant"));
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_NUMBERASSISTANT
-    registerAssistant<xToolsNumberAssistant>(AssistantTypesNumber, tr("Number Assistant"));
+    registerAssistant<xToolsNumberAssistant>(AssistantTypeNumber, tr("Number Assistant"));
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_STRINGASSISTANT
-    registerAssistant<xToolsStringAssistant>(AssistantTypesString, tr("String Assistant"));
+    registerAssistant<xToolsStringAssistant>(AssistantTypeString, tr("String Assistant"));
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_BROADCASTASSISTANT
-    registerAssistant<xToolsBroadcastAssistant>(AssistantTypesBroadcast, tr("Broadcast Assistant"));
+    registerAssistant<xToolsBroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_BASE64ASSISTANT
-    registerAssistant<xToolsBase64Assisatnt>(AssistantTypesBase64, tr("Base64 Assistant"));
+    registerAssistant<xToolsBase64Assisatnt>(AssistantTypeBase64, tr("Base64 Assistant"));
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_MDNSASSISTANT
-    registerAssistant<xToolsMdnsAssistant>(AssistantTypesMdns, tr("MDNS Assistant"));
+    registerAssistant<xToolsMdnsAssistant>(AssistantTypeMdns, tr("mDNS Assistant"));
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_PINGASSISTANT
-    registerAssistant<xToolsPingAssistant>(AssistantTypesPing, tr("Ping Assistant"));
+    registerAssistant<xToolsPingAssistant>(AssistantTypePing, tr("Ping Assistant"));
 #endif
 }
 

@@ -18,16 +18,16 @@ private:
     SAKAssistantsFactory(QObject* parent = Q_NULLPTR);
 
 private:
-    enum AssistantTypes {
-        AssistantTypesCrc,
-        AssistantTypesFileCheck,
-        AssistantTypesAscii,
-        AssistantTypesNumber,
-        AssistantTypesString,
-        AssistantTypesBroadcast,
-        AssistantTypesBase64,
-        AssistantTypesMdns,
-        AssistantTypesPing
+    enum AssistantType {
+        AssistantTypeCrc,
+        AssistantTypeFileCheck,
+        AssistantTypeAscii,
+        AssistantTypeNumber,
+        AssistantTypeString,
+        AssistantTypeBroadcast,
+        AssistantTypeBase64,
+        AssistantTypeMdns,
+        AssistantTypePing
     };
 
 public:
