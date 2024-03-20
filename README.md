@@ -1,4 +1,4 @@
-# Qt Swiss Army Knife [![LGPL License](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.html)
+# xTools [![LGPL License](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.html)
 
 [![build-windows](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-windows.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-windows.yml)
 [![build-ubuntu](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ubuntu.yml)
@@ -6,7 +6,7 @@
 [![build-ios](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ios.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ios.yml)
 [![build-android](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-android.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-android.yml)
 
-The *Qt Swiss Army Knife* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (recommended version: Qt6.5). It offers extensive support for SerialPort, BLE, UDP, TCP, WebSocket, Modbus and CANBus debugging functionalities. Here are some notable features:
+*xTools* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (recommended version: Qt6.5). It offers extensive support for SerialPort, BLE, UDP, TCP, WebSocket, Modbus and CANBus debugging functionalities. Here are some notable features:
 
 1. Data Reading and Writing: This serves as the fundamental function across all tools.
 2. Timed Sending: Enables scheduled transmission of "Hello" to the device every second.
@@ -19,7 +19,7 @@ The *Qt Swiss Army Knife* is a user-friendly, open-source, cross-platform debugg
 
 ![MainWindow.png](resources/images/mainwindow.png)
 
-> [!WARNING]  
+> [!WARNING]
 > The project is not supported for building for ios yet.
 
 ## Build with Qt5
