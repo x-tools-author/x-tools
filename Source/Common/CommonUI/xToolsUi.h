@@ -14,7 +14,7 @@
 #include "xToolsMainWindow.h"
 
 template<typename T>
-int sakExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
+int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
 {
     sakDoSomethingBeforeAppCreated(argv, appName);
 

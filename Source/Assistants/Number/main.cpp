@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Number Assistant");
-    return sakExec<xToolsNumberAssistant>(argc, argv, appName);
+    return xToolsExec<xToolsNumberAssistant>(argc, argv, appName);
 }

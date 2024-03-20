@@ -26,7 +26,7 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 
 include(CMake/xToolsCommon.cmake)
-include(CMake/xToolsGit.cmake)
+include(CMake/xToolsGitInfo.cmake)
 include(CMake/xToolsDeployQt.cmake)
 include(CMake/xToolsThirdParty.cmake)
 

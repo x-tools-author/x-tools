@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Broadcast Assistant");
-    return sakExec<xToolsBroadcastAssistant>(argc, argv, appName);
+    return xToolsExec<xToolsBroadcastAssistant>(argc, argv, appName);
 }

@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("mDNS Assistant");
-    return sakExec<xToolsMdnsAssistant>(argc, argv, appName);
+    return xToolsExec<xToolsMdnsAssistant>(argc, argv, appName);
 }

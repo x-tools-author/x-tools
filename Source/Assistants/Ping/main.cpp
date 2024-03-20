@@ -12,5 +12,5 @@
 int main(int argc, char *argv[])
 {
     const QString appName = QObject::tr("Ping Assistant");
-    return sakExec<xToolsPingAssistant>(argc, argv, appName, false);
+    return xToolsExec<xToolsPingAssistant>(argc, argv, appName, false);
 }
