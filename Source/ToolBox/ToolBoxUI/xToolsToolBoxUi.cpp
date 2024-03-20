@@ -19,15 +19,15 @@
 #include <QRegularExpression>
 
 #include "xToolsCommunicationTool.h"
-#include "sakcrcinterface.h"
-#include "sakdatastructure.h"
+#include "xToolsCrcInterface.h"
+#include "xToolsDataStructure.h"
 #include "xToolsEmitterToolUi.h"
-#include "sakinterface.h"
+#include "xToolsInterface.h"
 #include "xToolsPrestorerToolUi.h"
 #include "xToolsResponserToolUi.h"
 #include "xToolsSerialPortToolUi.h"
 #include "xToolsSerialPortTransmitterToolUi.h"
-#include "saksettings.h"
+#include "xToolsSettings.h"
 #include "xToolsSocketClientToolUi.h"
 #include "xToolsSocketServerToolUi.h"
 #include "xToolsTcpTransmitterToolUi.h"
@@ -36,7 +36,7 @@
 #include "xToolsToolBoxUiOutputMenu.h"
 #include "xToolsToolFactory.h"
 #include "xToolsUdpTransmitterToolUi.h"
-#include "sakuiinterface.h"
+#include "xToolsUiInterface.h"
 #include "xToolsWebSocketTransmitterToolUi.h"
 
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
@@ -188,13 +188,13 @@ void xToolsToolBoxUi::try2send()
     int suffix = ctx.suffix;
     int esc = ctx.escapeCharacter;
 
-    QByteArray prefixData = SAKDataStructure::affixesData(prefix);
-    QByteArray suffixData = SAKDataStructure::affixesData(suffix);
+    QByteArray prefixData = xToolsDataStructure::affixesData(prefix);
+    QByteArray suffixData = xToolsDataStructure::affixesData(suffix);
 
     QString input = ui->comboBoxInputText->currentText();
-    input = SAKDataStructure::cookedString(esc, input);
+    input = xToolsDataStructure::cookedString(esc, input);
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    QByteArray bytes = SAKInterface::string2array(input, format);
+    QByteArray bytes = xToolsInterface::string2array(input, format);
     if (ctx.appendCrc) {
         QByteArray b = calculateCrc(bytes);
         bytes.append(b);
@@ -240,7 +240,7 @@ QString xToolsToolBoxUi::dateTimeFormat()
 void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bool isRx)
 {
     int format = ui->comboBoxOutputFormat->currentData().toInt();
-    QString str = SAKInterface::arrayToString(bytes, format);
+    QString str = xToolsInterface::arrayToString(bytes, format);
 
     if (!str.contains(m_outputMenu->filter())) {
         return;
@@ -297,15 +297,15 @@ QByteArray xToolsToolBoxUi::calculateCrc(const QByteArray& bytes, bool fixedOrig
         QString input = ui->comboBoxInputText->currentText();
         int esc = ctx.escapeCharacter;
 
-        input = SAKDataStructure::cookedString(esc, input);
-        inputBytes = SAKInterface::string2array(input, format);
+        input = xToolsDataStructure::cookedString(esc, input);
+        inputBytes = xToolsInterface::string2array(input, format);
     }
 
     int algorithm = ctx.algorithm;
     int startIndex = ctx.startIndex;
     int endIndex = ctx.endIndex;
     bool bigEndian = fixedOriginOrder ? true : ctx.bigEndian;
-    SAKCrcInterface crci;
+    xToolsCrcInterface crci;
     QByteArray crc = crci.calculateBytes(inputBytes, algorithm, startIndex, endIndex, bigEndian);
     return crc;
 }
@@ -314,7 +314,7 @@ void xToolsToolBoxUi::setDefaultText()
 {
     QByteArray ba("(null)");
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    QString str = SAKInterface::arrayToString(ba, format);
+    QString str = xToolsInterface::arrayToString(ba, format);
     ui->comboBoxInputText->setCurrentText(str);
 }
 
@@ -385,7 +385,7 @@ void xToolsToolBoxUi::initUi()
     initUiInput();
     initUiOutput();
 
-    QSettings* settings = SAKSettings::instance();
+    QSettings* settings = xToolsSettings::instance();
     int index = settings->value(m_settingsKey.tabIndex).toInt();
     if (index >= 0 && index < ui->tabWidget->count()) {
         ui->tabWidget->setCurrentIndex(index);
@@ -430,7 +430,7 @@ void xToolsToolBoxUi::initUiInput()
         ui->comboBoxInputIntervel->addItem(QString::number(i), i);
     }
 
-    QString hex = SAKSettings::instance()->value(m_settingsKey.items).toString();
+    QString hex = xToolsSettings::instance()->value(m_settingsKey.items).toString();
     if (!hex.isEmpty()) {
         QString json = QString::fromUtf8(QByteArray::fromHex(hex.toLatin1()));
         QJsonDocument jsonDoc = QJsonDocument::fromJson(json.toUtf8());
@@ -613,13 +613,13 @@ void xToolsToolBoxUi::initTools()
     ui->tabWidgetTransmitter->addTab(m_webSocketTransmitterUi, tr("WebSocket"));
 
     const QString key = m_settingsKey.transmitterTabIndex;
-    int tabIndex = SAKSettings::instance()->value(key).toInt();
+    int tabIndex = xToolsSettings::instance()->value(key).toInt();
     if ((tabIndex >= 0) && (tabIndex < ui->tabWidgetTransmitter->count())) {
         ui->tabWidgetTransmitter->setCurrentIndex(tabIndex);
     }
 
     connect(ui->tabWidgetTransmitter, &QTabWidget::currentChanged, this, [=](int index) {
-        SAKSettings::instance()->setValue(key, index);
+        xToolsSettings::instance()->setValue(key, index);
     });
 
     connect(m_toolBox, &xToolsToolBox::isWorkingChanged, this, &xToolsToolBoxUi::onIsWorkingChanged);
@@ -642,7 +642,7 @@ void xToolsToolBoxUi::onTabWidgetCurrentChanged(int index)
         return;
     }
 
-    SAKSettings::instance()->setValue(m_settingsKey.tabIndex, index);
+    xToolsSettings::instance()->setValue(m_settingsKey.tabIndex, index);
 }
 
 void xToolsToolBoxUi::onPushButtonCommunicationOpenClicked()
@@ -707,7 +707,7 @@ void xToolsToolBoxUi::onPushButtonInputSendClicked()
         jsonDoc.setArray(arr);
         QByteArray json = jsonDoc.toJson();
         QString hex = QString::fromLatin1(json.toHex());
-        SAKSettings::instance()->setValue(m_settingsKey.items, hex);
+        xToolsSettings::instance()->setValue(m_settingsKey.items, hex);
     }
 
     try2send();
@@ -731,7 +731,7 @@ void xToolsToolBoxUi::onComboBoxInputFormatActivated()
     int format = ui->comboBoxInputFormat->currentData().toInt();
     auto lineEdit = ui->comboBoxInputText->lineEdit();
     ui->comboBoxInputText->clear();
-    SAKUiInterface::setValidator(lineEdit, format);
+    xToolsUiInterface::setValidator(lineEdit, format);
 }
 
 void xToolsToolBoxUi::onComboBoxInputTextActivated()

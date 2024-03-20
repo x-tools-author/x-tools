@@ -1,42 +1,42 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakcheckbox.h"
+#include "xToolsCheckBox.h"
 
-#include "saksettings.h"
+#include "xToolsSettings.h"
 
-SAKCheckBox::SAKCheckBox(QWidget* parent)
+xToolsCheckBox::xToolsCheckBox(QWidget* parent)
     : QCheckBox(parent)
 {
-    connect(this, &SAKCheckBox::clicked, this, &SAKCheckBox::writeToSettingsFile);
+    connect(this, &xToolsCheckBox::clicked, this, &xToolsCheckBox::writeToSettingsFile);
 }
 
-void SAKCheckBox::setGroupKey(const QString& group, const QString& key)
+void xToolsCheckBox::setGroupKey(const QString& group, const QString& key)
 {
     mKey = group + "/" + key;
     readFromSettingsFile();
 }
 
-void SAKCheckBox::readFromSettingsFile()
+void xToolsCheckBox::readFromSettingsFile()
 {
     if (mKey.isEmpty()) {
         return;
     }
 
-    bool ret = SAKSettings::instance()->value(mKey).toBool();
+    bool ret = xToolsSettings::instance()->value(mKey).toBool();
     setChecked(ret);
 }
 
-void SAKCheckBox::writeToSettingsFile()
+void xToolsCheckBox::writeToSettingsFile()
 {
     if (mKey.isEmpty()) {
         return;
     }
 
-    SAKSettings::instance()->setValue(mKey, isChecked());
+    xToolsSettings::instance()->setValue(mKey, isChecked());
 }

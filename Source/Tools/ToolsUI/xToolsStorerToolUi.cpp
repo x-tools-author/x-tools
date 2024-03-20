@@ -68,7 +68,7 @@ void xToolsStorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QSt
                 int format = ui->comboBoxFormat->currentData().toInt();
                 cookedTool->setSaveFormat(format);
             });
-    connect(ui->lineEditStorerPath, &SAKLineEdit::textChanged, this, [=]() {
+    connect(ui->lineEditStorerPath, &xToolsLineEdit::textChanged, this, [=]() {
         cookedTool->setFileName(ui->lineEditStorerPath->text());
     });
 

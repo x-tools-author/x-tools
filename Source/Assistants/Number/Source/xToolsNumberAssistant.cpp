@@ -9,17 +9,17 @@
 #include "xToolsNumberAssistant.h"
 #include "ui_xToolsNumberAssistant.h"
 
-#include "sakdatastructure.h"
-#include "sakinterface.h"
+#include "xToolsDataStructure.h"
+#include "xToolsInterface.h"
 
 xToolsNumberAssistant::xToolsNumberAssistant(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::xToolsNumberAssistant)
 {
     ui->setupUi(this);
-    m_interface = new SAKInterface(this);
-    m_interface->setLineEditValidator(ui->lineEditRawData, SAKInterface::ValidatorHex);
-    m_interface->setLineEditValidator(ui->lineEditCookedDec, SAKInterface::ValidatorDec);
+    m_interface = new xToolsInterface(this);
+    m_interface->setLineEditValidator(ui->lineEditRawData, xToolsInterface::ValidatorHex);
+    m_interface->setLineEditValidator(ui->lineEditCookedDec, xToolsInterface::ValidatorDec);
 
     ui->comboBoxCookedDataType->addItem("int8_t", CookedDataTypeInt8);
     ui->comboBoxCookedDataType->addItem("uint8_t", CookedDataTypeUint8);
@@ -68,8 +68,8 @@ void xToolsNumberAssistant::updateCookedData()
     QByteArray tmpBa = ba;
     std::reverse(tmpBa.begin(), tmpBa.end());
 
-    QString binStr = m_interface->arrayToString(tmpBa, SAKDataStructure::TextFormatBin);
-    QString hexStr = m_interface->arrayToString(tmpBa, SAKDataStructure::TextFormatHex);
+    QString binStr = m_interface->arrayToString(tmpBa, xToolsDataStructure::TextFormatBin);
+    QString hexStr = m_interface->arrayToString(tmpBa, xToolsDataStructure::TextFormatHex);
     ui->lineEditCookedBin->setText(binStr);
     ui->lineEditCookedHex->setText(hexStr);
 

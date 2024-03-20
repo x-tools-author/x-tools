@@ -10,9 +10,9 @@
 #include "ui_xToolsAnalyzerToolUi.h"
 
 #include "xToolsAnalyzerTool.h"
-#include "sakdatastructure.h"
-#include "sakinterface.h"
-#include "sakuiinterface.h"
+#include "xToolsDataStructure.h"
+#include "xToolsInterface.h"
+#include "xToolsUiInterface.h"
 
 xToolsAnalyzerToolUi::xToolsAnalyzerToolUi(QWidget *parent)
     : xToolsBaseToolUi{parent}
@@ -28,8 +28,8 @@ void xToolsAnalyzerToolUi::setToolName(const QString &name)
 
 void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
-    int format = SAKDataStructure::TextFormatHex;
-    SAKUiInterface::setValidator(ui->lineEditSeparationMark, format);
+    int format = xToolsDataStructure::TextFormatHex;
+    xToolsUiInterface::setValidator(ui->lineEditSeparationMark, format);
 
     ui->checkBoxEnable->setGroupKey(settingsGroup, "analyzerEnable");
     ui->checkBoxFixedLength->setGroupKey(settingsGroup, "fxiedLength");
@@ -50,7 +50,7 @@ void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const Q
     int len = ui->spinBoxFrameLength->value();
     int maxBytes = ui->spinBoxMaxTempBytes->value();
     QString txt = ui->lineEditSeparationMark->text().trimmed();
-    QByteArray flag = SAKInterface::string2array(txt, format);
+    QByteArray flag = xToolsInterface::string2array(txt, format);
     
     cookedTool->setIsEnable(enable);
     cookedTool->setFixed(fixed);
@@ -90,7 +90,7 @@ void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const Q
             });
     connect(ui->lineEditSeparationMark, &QLineEdit::textChanged, this, [=]() {
         QString txt = ui->lineEditSeparationMark->text().trimmed();
-        QByteArray flag = SAKInterface::string2array(txt, format);
+        QByteArray flag = xToolsInterface::string2array(txt, format);
         cookedTool->setSeparationMark(flag);
     });
 }

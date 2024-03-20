@@ -135,47 +135,47 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="SAKTextFormatComboBox" name="comboBoxOutputFormat"/>
+          <widget class="xToolsTextFormatComboBox" name="comboBoxOutputFormat"/>
          </item>
          <item row="2" column="0" colspan="2">
           <layout class="QGridLayout" name="gridLayout_5">
            <item row="1" column="0">
-            <widget class="SAKCheckBox" name="checkBoxOutputDate">
+            <widget class="xToolsCheckBox" name="checkBoxOutputDate">
              <property name="text">
               <string>Date</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="SAKCheckBox" name="checkBoxOutputTx">
+            <widget class="xToolsCheckBox" name="checkBoxOutputTx">
              <property name="text">
               <string>Tx</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="SAKCheckBox" name="checkBoxOutputRx">
+            <widget class="xToolsCheckBox" name="checkBoxOutputRx">
              <property name="text">
               <string>Rx</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="SAKCheckBox" name="checkBoxOutputTime">
+            <widget class="xToolsCheckBox" name="checkBoxOutputTime">
              <property name="text">
               <string>Time</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="SAKCheckBox" name="checkBoxOutputWrap">
+            <widget class="xToolsCheckBox" name="checkBoxOutputWrap">
              <property name="text">
               <string>Wrap</string>
              </property>
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="SAKCheckBox" name="checkBoxOutputMs">
+            <widget class="xToolsCheckBox" name="checkBoxOutputMs">
              <property name="text">
               <string>MS</string>
              </property>
@@ -269,7 +269,7 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="SAKTextFormatComboBox" name="comboBoxInputFormat"/>
+          <widget class="xToolsTextFormatComboBox" name="comboBoxInputFormat"/>
          </item>
          <item row="2" column="0" colspan="2">
           <layout class="QGridLayout" name="gridLayout">
@@ -448,7 +448,7 @@
         </layout>
        </item>
        <item row="3" column="0" colspan="5">
-        <widget class="SAKComboBox" name="comboBoxInputText">
+        <widget class="xToolsComboBox" name="comboBoxInputText">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -504,19 +504,19 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKTextFormatComboBox</class>
+   <class>xToolsTextFormatComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">saktextformatcombobox.h</header>
+   <header location="global">xToolsTextFormatComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKCheckBox</class>
+   <class>xToolsCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">sakcheckbox.h</header>
+   <header location="global">xToolsCheckBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKComboBox</class>
+   <class>xToolsComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakcombobox.h</header>
+   <header location="global">xToolsComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>xToolsVelometerToolUi</class>

@@ -1,21 +1,18 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKWEBSOCKETMESSAGETYPECOMBOBOX_H
-#define SAKWEBSOCKETMESSAGETYPECOMBOBOX_H
+#pragma once
 
-#include "sakcombobox.h"
+#include "xToolsComboBox.h"
 
-class sakwebsocketmessagetypecombobox : public SAKComboBox
+class xToolsWebSocketMessageTypeComboBox : public xToolsComboBox
 {
     Q_OBJECT
 public:
-    sakwebsocketmessagetypecombobox(QWidget *parent = nullptr);
+    xToolsWebSocketMessageTypeComboBox(QWidget *parent = nullptr);
 };
-
-#endif // SAKWEBSOCKETMESSAGETYPECOMBOBOX_H

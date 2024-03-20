@@ -1,17 +1,16 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKUI_H
-#define SAKUI_H
+#pragma once
 
 #include <QApplication>
 
-#include "sak.h"
+#include "xTools.h"
 #include "xToolsMainWindow.h"
 
 template<typename T>
@@ -37,5 +36,3 @@ int sakExec(int argc, char* argv[], const QString& appName, bool usingCommonMain
     sakDoSomethingAfterAppExited();
     return ret;
 }
-
-#endif // SAKUI_H

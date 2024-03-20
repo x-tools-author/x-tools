@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "xToolsSerialPortTransmitterTool.h"
 
-#include "sakinterface.h"
+#include "xToolsInterface.h"
 #include "xToolsSerialPortTool.h"
 
 xToolsSerialPortTransmitterTool::xToolsSerialPortTransmitterTool(QObject *parent)
@@ -68,7 +68,7 @@ QVariant xToolsSerialPortTransmitterTool::itemContext(int index)
 
 void xToolsSerialPortTransmitterTool::inputBytes(const QByteArray &bytes)
 {
-    QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
+    QByteArray ba = xToolsInterface::arrayToHex(bytes, ' ');
     QString hex = QString::fromLatin1(ba);
 
     m_toolsMutex.lock();

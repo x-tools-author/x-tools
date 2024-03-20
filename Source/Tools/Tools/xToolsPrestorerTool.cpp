@@ -12,9 +12,9 @@
 #include <QJsonObject>
 #include <QTimer>
 
-#include "sakcrcinterface.h"
-#include "sakdatastructure.h"
-#include "sakinterface.h"
+#include "xToolsCrcInterface.h"
+#include "xToolsDataStructure.h"
+#include "xToolsInterface.h"
 
 xToolsPrestorerTool::xToolsPrestorerTool(QObject *parent)
     : xToolsTableModelTool{parent}
@@ -144,12 +144,12 @@ QByteArray xToolsPrestorerTool::itemBytes(const Item &item)
 {
     QByteArray bytes;
     QString text = item.itemText;
-    text = SAKDataStructure::cookedString(item.itemEscapeCharacter, text);
-    bytes = SAKInterface::string2array(text, item.itemTextFormat);
-    SAKCrcInterface sakCrc;
-    QByteArray prefix = SAKDataStructure::affixesData(item.itemPrefix);
+    text = xToolsDataStructure::cookedString(item.itemEscapeCharacter, text);
+    bytes = xToolsInterface::string2array(text, item.itemTextFormat);
+    xToolsCrcInterface sakCrc;
+    QByteArray prefix = xToolsDataStructure::affixesData(item.itemPrefix);
     QByteArray crcBytes;
-    QByteArray suffix = SAKDataStructure::affixesData(item.itemSuffix);
+    QByteArray suffix = xToolsDataStructure::affixesData(item.itemSuffix);
 
     if (item.itemCrcEnable) {
         crcBytes = sakCrc.calculateBytes(bytes,
@@ -249,13 +249,13 @@ QVariant xToolsPrestorerTool::itemContext(int index)
         ctx.insert(itemText(), item.itemText);
     } else {
         ctx.insert(itemDescription(), "Demo");
-        ctx.insert(itemTextFormat(), SAKDataStructure::TextFormatAscii);
-        ctx.insert(itemEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
-        ctx.insert(itemPrefix(), SAKDataStructure::AffixesNone);
-        ctx.insert(itemSuffix(), SAKDataStructure::AffixesNone);
+        ctx.insert(itemTextFormat(), xToolsDataStructure::TextFormatAscii);
+        ctx.insert(itemEscapeCharacter(), xToolsDataStructure::EscapeCharacterOptionNone);
+        ctx.insert(itemPrefix(), xToolsDataStructure::AffixesNone);
+        ctx.insert(itemSuffix(), xToolsDataStructure::AffixesNone);
         ctx.insert(itemCrcEnable(), false);
         ctx.insert(itemCrcBigEndian(), false);
-        ctx.insert(itemCrcAlgorithm(), SAKCrcInterface::CRC_8);
+        ctx.insert(itemCrcAlgorithm(), xToolsCrcInterface::CRC_8);
         ctx.insert(itemCrcStartIndex(), 0);
         ctx.insert(itemCrcEndIndex(), 0);
         ctx.insert(itemText(), "This is a demo.");

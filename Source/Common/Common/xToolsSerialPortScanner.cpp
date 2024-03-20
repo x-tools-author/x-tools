@@ -6,11 +6,12 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakserialportscanner.h"
+#include "xToolsSerialPortScanner.h"
+
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-SAKSerialPortScanner::SAKSerialPortScanner(QObject *parent)
+xToolsSerialPortScanner::xToolsSerialPortScanner(QObject *parent)
     : QObject{parent}
 {
     m_autoUpdatePortNamesTimer = new QTimer(this);
@@ -24,7 +25,7 @@ SAKSerialPortScanner::SAKSerialPortScanner(QObject *parent)
     refresh();
 }
 
-void SAKSerialPortScanner::refresh()
+void xToolsSerialPortScanner::refresh()
 {
     auto temp = m_portNames;
     m_portNames.clear();
@@ -61,13 +62,13 @@ void SAKSerialPortScanner::refresh()
     }
 }
 
-void SAKSerialPortScanner::setIgnoredBusyDevice(bool ignored)
+void xToolsSerialPortScanner::setIgnoredBusyDevice(bool ignored)
 {
     m_ignoredBusyDevice = ignored;
     refresh();
 }
 
-void SAKSerialPortScanner::setAutoUpdatePortNames(bool autoUpdate)
+void xToolsSerialPortScanner::setAutoUpdatePortNames(bool autoUpdate)
 {
     if (autoUpdate) {
         m_autoUpdatePortNamesTimer->start();
@@ -76,7 +77,7 @@ void SAKSerialPortScanner::setAutoUpdatePortNames(bool autoUpdate)
     }
 }
 
-void SAKSerialPortScanner::setIgnoredUpdate(bool ignored)
+void xToolsSerialPortScanner::setIgnoredUpdate(bool ignored)
 {
     m_ignoredUpdate = ignored;
     if (!m_ignoredUpdate) {
@@ -84,7 +85,7 @@ void SAKSerialPortScanner::setIgnoredUpdate(bool ignored)
     }
 }
 
-bool SAKSerialPortScanner::isBusy(const QString &portName)
+bool xToolsSerialPortScanner::isBusy(const QString &portName)
 {
     QSerialPort sp;
     sp.setPortName(portName);

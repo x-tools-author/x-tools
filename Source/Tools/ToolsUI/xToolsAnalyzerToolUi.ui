@@ -35,7 +35,7 @@
       <item row="0" column="0" colspan="2">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="1" column="0">
-         <widget class="SAKCheckBox" name="checkBoxFixedLength">
+         <widget class="xToolsCheckBox" name="checkBoxFixedLength">
           <property name="text">
            <string>Fixed length</string>
           </property>
@@ -49,7 +49,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="SAKSpinBox" name="spinBoxMaxTempBytes">
+         <widget class="xToolsSpinBox" name="spinBoxMaxTempBytes">
           <property name="minimum">
            <number>64</number>
           </property>
@@ -59,7 +59,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="SAKCheckBox" name="checkBoxEnable">
+         <widget class="xToolsCheckBox" name="checkBoxEnable">
           <property name="text">
            <string>Enable</string>
           </property>
@@ -73,7 +73,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="SAKSpinBox" name="spinBoxFrameLength">
+         <widget class="xToolsSpinBox" name="spinBoxFrameLength">
           <property name="minimum">
            <number>1</number>
           </property>
@@ -112,7 +112,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="SAKLineEdit" name="lineEditSeparationMark">
+       <widget class="xToolsLineEdit" name="lineEditSeparationMark">
         <property name="placeholderText">
          <string>Hex format</string>
         </property>
@@ -125,19 +125,19 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKCheckBox</class>
+   <class>xToolsCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">sakcheckbox.h</header>
+   <header location="global">xToolsCheckBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKSpinBox</class>
+   <class>xToolsSpinBox</class>
    <extends>QSpinBox</extends>
-   <header location="global">sakspinbox.h</header>
+   <header location="global">xToolsSpinBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKLineEdit</class>
+   <class>xToolsLineEdit</class>
    <extends>QLineEdit</extends>
-   <header location="global">saklineedit.h</header>
+   <header location="global">xToolsLineEdit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

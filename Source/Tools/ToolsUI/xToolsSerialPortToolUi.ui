@@ -27,7 +27,7 @@
     <number>0</number>
    </property>
    <item row="0" column="1">
-    <widget class="SAKPortNameComboBox" name="comboBoxPortNames">
+    <widget class="xToolsPortNameComboBox" name="comboBoxPortNames">
      <property name="editable">
       <bool>false</bool>
      </property>
@@ -47,23 +47,23 @@
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="SAKDataBitsComboBox" name="comboBoxDataBits"/>
+    <widget class="xToolsDataBitsComboBox" name="comboBoxDataBits"/>
    </item>
    <item row="3" column="1">
-    <widget class="SAKStopBitsComboBox" name="comboBoxStopBits"/>
+    <widget class="xToolsStopBitsComboBox" name="comboBoxStopBits"/>
    </item>
    <item row="4" column="1">
-    <widget class="SAKParityComboBox" name="comboBoxParity"/>
+    <widget class="xToolsParityComboBox" name="comboBoxParity"/>
    </item>
    <item row="1" column="1">
-    <widget class="SAKBaudRateComboBox" name="comboBoxBaudRate">
+    <widget class="xToolsBaudRateComboBox" name="comboBoxBaudRate">
      <property name="editable">
       <bool>true</bool>
      </property>
     </widget>
    </item>
    <item row="5" column="1">
-    <widget class="SAKFlowControlComboBox" name="comboBoxFlowControl"/>
+    <widget class="xToolsFlowControlComboBox" name="comboBoxFlowControl"/>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label">
@@ -134,34 +134,34 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKPortNameComboBox</class>
+   <class>xToolsPortNameComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakportnamecombobox.h</header>
+   <header location="global">xToolsPortNameComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKBaudRateComboBox</class>
+   <class>xToolsBaudRateComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakbaudratecombobox.h</header>
+   <header location="global">xToolsBaudRateComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKDataBitsComboBox</class>
+   <class>xToolsDataBitsComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakdatabitscombobox.h</header>
+   <header location="global">xToolsDataBitsComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKStopBitsComboBox</class>
+   <class>xToolsStopBitsComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakstopbitscombobox.h</header>
+   <header location="global">xToolsStopBitsComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKParityComboBox</class>
+   <class>xToolsParityComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakparitycombobox.h</header>
+   <header location="global">xToolsParityComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKFlowControlComboBox</class>
+   <class>xToolsFlowControlComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakflowcontrolcombobox.h</header>
+   <header location="global">xToolsFlowControlComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

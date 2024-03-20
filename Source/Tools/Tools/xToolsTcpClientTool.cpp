@@ -10,8 +10,8 @@
 
 #include <QHostAddress>
 
-#include "sakcompatibility.h"
-#include "sakinterface.h"
+#include "xToolsCompatibility.h"
+#include "xToolsInterface.h"
 
 xToolsTcpClientTool::xToolsTcpClientTool(QObject* parent)
     : xToolsSocketClientTool{parent}
@@ -76,7 +76,7 @@ void xToolsTcpClientTool::readBytes()
     quint16 port = mTcpSocket->peerPort();
     QByteArray bytes = mTcpSocket->readAll();
     if (!bytes.isEmpty()) {
-        QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
+        QByteArray ba = xToolsInterface::arrayToHex(bytes, ' ');
         QString ipport = address.toString() + ":" + QString::number(port);
         QString info = m_bindingIpPort + "<-" + ipport + ":";
         info += QString::fromLatin1(ba);

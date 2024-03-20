@@ -1,17 +1,17 @@
 /***************************************************************************************************
- * Copyright 2018-2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2018-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "saknetworkinterfacescanner.h"
+#include "xToolsNetworkInterfaceScanner.h"
 
 #include <QHostAddress>
 #include <QNetworkInterface>
 
-SAKNetworkInterfaceScanner::SAKNetworkInterfaceScanner(QObject* parent)
+xToolsNetworkInterfaceScanner::xToolsNetworkInterfaceScanner(QObject* parent)
     : QObject{parent}
 {
     refresh();
@@ -26,7 +26,7 @@ SAKNetworkInterfaceScanner::SAKNetworkInterfaceScanner(QObject* parent)
     mRefreshTimer->start();
 }
 
-void SAKNetworkInterfaceScanner::refresh()
+void xToolsNetworkInterfaceScanner::refresh()
 {
     QStringList ipv4List, ipv6List;
     auto addresses = QNetworkInterface::allAddresses();

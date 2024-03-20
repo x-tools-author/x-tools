@@ -16,10 +16,10 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 
-#include "sakmenu.h"
-#include "saksettings.h"
+#include "xToolsMenu.h"
+#include "xToolsSettings.h"
 #include "xToolsTableModelTool.h"
-#include "sakuiinterface.h"
+#include "xToolsUiInterface.h"
 
 xToolsTableModelToolUi::xToolsTableModelToolUi(const char *lg, QWidget *parent)
     : xToolsBaseToolUi{parent}
@@ -134,9 +134,9 @@ void xToolsTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const
     headerView->setModel(headerViewModel);
     headerView->setDefaultAlignment(Qt::AlignLeft);
 
-    mMenu = new SAKMenu(ui->pushButtonVisible);
+    mMenu = new xToolsMenu(ui->pushButtonVisible);
     ui->pushButtonVisible->setMenu(mMenu);
-    auto settings = SAKSettings::instance();
+    auto settings = xToolsSettings::instance();
     auto hideColumns = defaultHideColumns();
     for (int i = 0; i < headers.count(); i++) {
         QAction *ret = mMenu->addAction(headers.at(i));
@@ -284,7 +284,7 @@ QModelIndex xToolsTableModelToolUi::currentIndex()
 {
     QModelIndex index = ui->tableView->currentIndex();
     if (!index.isValid()) {
-        QMessageBox::warning(SAKUiInterface::mainWindow(),
+        QMessageBox::warning(xToolsUiInterface::mainWindow(),
                              tr("Please Select an Item"),
                              tr("Please select an tiem first,"
                                 " then try again!"));
@@ -295,13 +295,13 @@ QModelIndex xToolsTableModelToolUi::currentIndex()
 void xToolsTableModelToolUi::writeToSettingsFile()
 {
     QByteArray json = exportAsJson();
-    SAKSettings::instance()->setValue(mItemsKey, QString::fromLatin1(json.toHex()));
+    xToolsSettings::instance()->setValue(mItemsKey, QString::fromLatin1(json.toHex()));
 }
 
 bool xToolsTableModelToolUi::isInitialized()
 {
     if (!mTableModelTool) {
-        QMessageBox::warning(SAKUiInterface::mainWindow(),
+        QMessageBox::warning(xToolsUiInterface::mainWindow(),
                              tr("Invalid Parameter"),
                              tr("The value of mTableModelTool is nullptr,"
                                 " you must called initialize() first!"));
@@ -330,7 +330,7 @@ void xToolsTableModelToolUi::onPushButtonClearClicked()
         return;
     }
 
-    int ret = QMessageBox::warning(SAKUiInterface::mainWindow(),
+    int ret = QMessageBox::warning(xToolsUiInterface::mainWindow(),
                                    tr("Clear Data"),
                                    tr("The data will be empty from settings file, "
                                       "please confrim the operation!"),
@@ -347,7 +347,7 @@ void xToolsTableModelToolUi::onPushButtonDeleteClicked()
         return;
     }
 
-    int ret = QMessageBox::warning(SAKUiInterface::mainWindow(),
+    int ret = QMessageBox::warning(xToolsUiInterface::mainWindow(),
                                    tr("Delete Data"),
                                    tr("The data will be delete from settings file, "
                                       "please confrim the operation!"),
@@ -370,7 +370,7 @@ void xToolsTableModelToolUi::onPushButtonImportClicked()
         return;
     }
 
-    QString fileName = QFileDialog::getOpenFileName(SAKUiInterface::mainWindow(),
+    QString fileName = QFileDialog::getOpenFileName(xToolsUiInterface::mainWindow(),
                                                     tr("Import data"),
                                                     ".",
                                                     tr("JSON (*.json);;All (*)"));
@@ -397,7 +397,7 @@ void xToolsTableModelToolUi::onPushButtonExportClicked()
         return;
     }
 
-    QString fileName = QFileDialog::getSaveFileName(SAKUiInterface::mainWindow(),
+    QString fileName = QFileDialog::getSaveFileName(xToolsUiInterface::mainWindow(),
                                                     tr("Import data"),
                                                     ".",
                                                     tr("JSON (*.json);;All (*); "));

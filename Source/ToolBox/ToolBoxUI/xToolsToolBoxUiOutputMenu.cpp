@@ -11,8 +11,8 @@
 
 #include <QWidgetAction>
 
-#include "sakhighlighter.h"
-#include "saksettings.h"
+#include "xToolsHighlighter.h"
+#include "xToolsSettings.h"
 
 
 xToolsToolBoxUiOutputMenu::xToolsToolBoxUiOutputMenu(const QString& settingsGroup,
@@ -28,11 +28,11 @@ xToolsToolBoxUiOutputMenu::xToolsToolBoxUiOutputMenu(const QString& settingsGrou
     addAction(action);
 
     const QString key = settingsGroup + "/highlighter/items";
-    QString txt = SAKSettings::instance()->value(key).toString();
+    QString txt = xToolsSettings::instance()->value(key).toString();
     txt = QString::fromUtf8(QByteArray::fromHex(txt.toLatin1()));
     ui->keyword->setText(txt);
 
-    SAKHighlighter* highlighter = new SAKHighlighter(this);
+    xToolsHighlighter* highlighter = new xToolsHighlighter(this);
     auto updateDoc = [=]() {
         QString text = ui->keyword->text();
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
@@ -48,7 +48,7 @@ xToolsToolBoxUiOutputMenu::xToolsToolBoxUiOutputMenu(const QString& settingsGrou
     connect(ui->keyword, &QLineEdit::textChanged, this, [=]() {
         QString text = ui->keyword->text();
         QString hex = QString::fromLatin1(text.toUtf8().toHex());
-        SAKSettings::instance()->setValue(key, hex);
+        xToolsSettings::instance()->setValue(key, hex);
 
         updateDoc();
     });
@@ -56,10 +56,10 @@ xToolsToolBoxUiOutputMenu::xToolsToolBoxUiOutputMenu(const QString& settingsGrou
     updateDoc();
 
     const QString fillterKey = settingsGroup + "/fillter";
-    txt = SAKSettings::instance()->value(fillterKey).toString();
+    txt = xToolsSettings::instance()->value(fillterKey).toString();
     ui->filter->setText(txt);
     connect(ui->filter, &QLineEdit::editingFinished, this, [=]() {
-        SAKSettings::instance()->setValue(fillterKey, ui->filter->text().trimmed());
+        xToolsSettings::instance()->setValue(fillterKey, ui->filter->text().trimmed());
     });
 }
 

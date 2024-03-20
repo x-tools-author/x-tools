@@ -6,14 +6,13 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKCRCINTERFACE_H
-#define SAKCRCINTERFACE_H
+#pragma once
 
 #include <QLoggingCategory>
 #include <QObject>
 #include <QStringList>
 
-class SAKCrcInterface : public QObject
+class xToolsCrcInterface : public QObject
 {
     Q_OBJECT
 public:
@@ -39,7 +38,7 @@ public:
     Q_ENUM(SAKEnumCrcAlgorithm)
 
 public:
-    SAKCrcInterface(QObject *parent = Q_NULLPTR);
+    xToolsCrcInterface(QObject *parent = Q_NULLPTR);
 
     Q_INVOKABLE QString calculateString(const QString &bytes, int format);
     Q_INVOKABLE QByteArray calculateBytes(const QByteArray &bytes,
@@ -49,17 +48,17 @@ public:
                                           bool bigEndian = false);
 
     QStringList supportedParameterModels();
-    uint32_t poly(SAKCrcInterface::SAKEnumCrcAlgorithm model);
-    uint32_t xorValue(SAKCrcInterface::SAKEnumCrcAlgorithm model);
-    uint32_t initialValue(SAKCrcInterface::SAKEnumCrcAlgorithm model);
-    QString friendlyPoly(SAKCrcInterface::SAKEnumCrcAlgorithm model);
-    bool isInputReversal(SAKCrcInterface::SAKEnumCrcAlgorithm model);
-    bool isOutputReversal(SAKCrcInterface::SAKEnumCrcAlgorithm model);
-    int bitsWidth(SAKCrcInterface::SAKEnumCrcAlgorithm model);
+    uint32_t poly(xToolsCrcInterface::SAKEnumCrcAlgorithm model);
+    uint32_t xorValue(xToolsCrcInterface::SAKEnumCrcAlgorithm model);
+    uint32_t initialValue(xToolsCrcInterface::SAKEnumCrcAlgorithm model);
+    QString friendlyPoly(xToolsCrcInterface::SAKEnumCrcAlgorithm model);
+    bool isInputReversal(xToolsCrcInterface::SAKEnumCrcAlgorithm model);
+    bool isOutputReversal(xToolsCrcInterface::SAKEnumCrcAlgorithm model);
+    int bitsWidth(xToolsCrcInterface::SAKEnumCrcAlgorithm model);
 
 public:
     template<typename T>
-    T crcCalculate(uint8_t *input, uint64_t length, SAKCrcInterface::SAKEnumCrcAlgorithm model)
+    T crcCalculate(uint8_t *input, uint64_t length, xToolsCrcInterface::SAKEnumCrcAlgorithm model)
     {
         T crcReg = static_cast<T>(initialValue(model));
         T rawPoly = static_cast<T>(poly(model));
@@ -110,5 +109,3 @@ private:
         return ok;
     }
 };
-
-#endif

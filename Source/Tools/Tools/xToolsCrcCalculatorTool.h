@@ -10,7 +10,7 @@
 
 #include "xToolsBaseTool.h"
 
-class SAKCrcInterface;
+class xToolsCrcInterface;
 class xToolsCrcCalculatorTool : public xToolsBaseTool
 {
     Q_OBJECT
@@ -34,5 +34,5 @@ private:
     int m_endIndex;
     int m_algorithm;
     bool m_bigEndian;
-    SAKCrcInterface *m_crcInterface;
+    xToolsCrcInterface *m_crcInterface;
 };

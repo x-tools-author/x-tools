@@ -1,17 +1,18 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsSettings.h"
+
 #include <QCoreApplication>
 #include <QDesktopServices>
 #include <QStandardPaths>
 
-#include "sakdatastructure.h"
-#include "saksettings.h"
+#include "xToolsDataStructure.h"
 
 static const QString fileName()
 {
@@ -21,39 +22,39 @@ static const QString fileName()
     return ret;
 }
 
-SAKSettings::SAKSettings(QObject* parent)
+xToolsSettings::xToolsSettings(QObject* parent)
     : QSettings{::fileName(), QSettings::IniFormat, parent}
 {
     qInfo() << "settings file:" << fileName();
 }
 
-SAKSettings* SAKSettings::instance()
+xToolsSettings* xToolsSettings::instance()
 {
-    static SAKSettings* settings = Q_NULLPTR;
+    static xToolsSettings* settings = Q_NULLPTR;
     if (!settings) {
-        settings = new SAKSettings(qApp);
+        settings = new xToolsSettings(qApp);
     }
     return settings;
 }
 
-void SAKSettings::openSettingsFileDir()
+void xToolsSettings::openSettingsFileDir()
 {
     QDesktopServices::openUrl(settingsPath());
 }
 
-QString SAKSettings::settingsPath()
+QString xToolsSettings::settingsPath()
 {
     QString settingsFile(fileName());
     QString path = settingsFile.left(settingsFile.lastIndexOf("/"));
     return path;
 }
 
-int SAKSettings::hdpiPolicy()
+int xToolsSettings::hdpiPolicy()
 {
     int ret = value(mSettingsKey.hdpiPolicy).toInt();
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     if ((ret < 1) || (ret > 5)) {
-        if (ret != SAKDataStructure::HdpiPolicySystem) {
+        if (ret != xToolsDataStructure::HdpiPolicySystem) {
             ret = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
         }
     }
@@ -61,11 +62,11 @@ int SAKSettings::hdpiPolicy()
     return ret;
 }
 
-void SAKSettings::setHdpiPolicy(int policy)
+void xToolsSettings::setHdpiPolicy(int policy)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     if ((policy < 1) || (policy > 5)) {
-        if (policy != SAKDataStructure::HdpiPolicySystem) {
+        if (policy != xToolsDataStructure::HdpiPolicySystem) {
             policy = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
         }
     }
@@ -75,7 +76,7 @@ void SAKSettings::setHdpiPolicy(int policy)
     emit hdpiPolicyChanged();
 }
 
-int SAKSettings::uiType()
+int xToolsSettings::uiType()
 {
     int ret = value(mSettingsKey.uiType).toInt();
     if ((ret < 0) || (ret > 1)) {
@@ -85,7 +86,7 @@ int SAKSettings::uiType()
     return ret;
 }
 
-void SAKSettings::setUiType(int type)
+void xToolsSettings::setUiType(int type)
 {
     if ((type < 0) || (type > 1)) {
         type = UiTypeWidget;
@@ -95,93 +96,93 @@ void SAKSettings::setUiType(int type)
     emit uiTypeChanged();
 }
 
-QString SAKSettings::appStyle()
+QString xToolsSettings::appStyle()
 {
     return value(mSettingsKey.appStyle, SAK_STYLE_DEFAULT).toString();
 }
 
-void SAKSettings::setAppStyle(const QString& style)
+void xToolsSettings::setAppStyle(const QString& style)
 {
     setValue(mSettingsKey.appStyle, style);
 }
 
-QString SAKSettings::language()
+QString xToolsSettings::language()
 {
     return value(mSettingsKey.language).toString();
 }
 
-void SAKSettings::setLanguage(const QString& lan)
+void xToolsSettings::setLanguage(const QString& lan)
 {
     setValue(mSettingsKey.language, lan);
 }
 
-bool SAKSettings::clearSettings()
+bool xToolsSettings::clearSettings()
 {
     return value(mSettingsKey.clearSettings).toBool();
 }
 
-void SAKSettings::setClearSettings(bool clear)
+void xToolsSettings::setClearSettings(bool clear)
 {
     setValue(mSettingsKey.clearSettings, clear);
     emit clearSettingsChanged();
 }
 
-int SAKSettings::pageIndex()
+int xToolsSettings::pageIndex()
 {
     return value(mSettingsKey.pageIndex).toInt();
 }
 
-void SAKSettings::setPageIndex(int index)
+void xToolsSettings::setPageIndex(int index)
 {
     setValue(mSettingsKey.pageIndex, index);
     emit pageIndexChanged();
 }
 
-bool SAKSettings::isTextBesideIcon()
+bool xToolsSettings::isTextBesideIcon()
 {
     return value(mSettingsKey.isTextBesideIcon).toBool();
 }
 
-void SAKSettings::setIsTextBesideIcon(bool is)
+void xToolsSettings::setIsTextBesideIcon(bool is)
 {
     setValue(mSettingsKey.isTextBesideIcon, is);
     emit isTextBesideIconChanged();
 }
 
-int SAKSettings::palette()
+int xToolsSettings::palette()
 {
     int ret = value(mSettingsKey.palette).toInt();
-    if ((ret != SAKDataStructure::PaletteSystem) && (ret != SAKDataStructure::PaletteLight)
-        && (ret != SAKDataStructure::PaletteDark) && (ret != SAKDataStructure::PaletteCustom)) {
-        ret = SAKDataStructure::PaletteSystem;
+    if ((ret != xToolsDataStructure::PaletteSystem) && (ret != xToolsDataStructure::PaletteLight)
+        && (ret != xToolsDataStructure::PaletteDark) && (ret != xToolsDataStructure::PaletteCustom)) {
+        ret = xToolsDataStructure::PaletteSystem;
     }
 
     return ret;
 }
 
-void SAKSettings::setPalette(int p)
+void xToolsSettings::setPalette(int p)
 {
     setValue(mSettingsKey.palette, p);
     emit paletteChanged();
 }
 
-QString SAKSettings::customPalette()
+QString xToolsSettings::customPalette()
 {
     return value(mSettingsKey.customPalette).toString();
 }
 
-void SAKSettings::setCustomPalette(const QString& p)
+void xToolsSettings::setCustomPalette(const QString& p)
 {
     setValue(mSettingsKey.customPalette, p);
     emit customPaletteChanged();
 }
 
-QVariant SAKSettings::value(const QString& key, const QVariant& defaultValue) const
+QVariant xToolsSettings::value(const QString& key, const QVariant& defaultValue) const
 {
     return QSettings::value(key, defaultValue);
 }
 
-void SAKSettings::setValue(const QString& key, const QVariant& value)
+void xToolsSettings::setValue(const QString& key, const QVariant& value)
 {
     QSettings::setValue(key, value);
 }

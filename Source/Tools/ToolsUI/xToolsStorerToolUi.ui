@@ -33,28 +33,28 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_7">
       <item row="0" column="1">
-       <widget class="SAKCheckBox" name="checkBoxRx">
+       <widget class="xToolsCheckBox" name="checkBoxRx">
         <property name="text">
          <string>Save rx</string>
         </property>
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="SAKCheckBox" name="checkBoxTx">
+       <widget class="xToolsCheckBox" name="checkBoxTx">
         <property name="text">
          <string>Save tx</string>
         </property>
        </widget>
       </item>
       <item row="0" column="4">
-       <widget class="SAKCheckBox" name="checkBoxTime">
+       <widget class="xToolsCheckBox" name="checkBoxTime">
         <property name="text">
          <string>Save time</string>
         </property>
        </widget>
       </item>
       <item row="0" column="3">
-       <widget class="SAKCheckBox" name="checkBoxDate">
+       <widget class="xToolsCheckBox" name="checkBoxDate">
         <property name="text">
          <string>Save date</string>
         </property>
@@ -68,21 +68,21 @@
        </widget>
       </item>
       <item row="0" column="5">
-       <widget class="SAKCheckBox" name="checkBoxMs">
+       <widget class="xToolsCheckBox" name="checkBoxMs">
         <property name="text">
          <string>Save ms</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="SAKCheckBox" name="checkBoxEnable">
+       <widget class="xToolsCheckBox" name="checkBoxEnable">
         <property name="text">
          <string>Enable</string>
         </property>
        </widget>
       </item>
       <item row="0" column="8">
-       <widget class="SAKTextFormatComboBox" name="comboBoxFormat"/>
+       <widget class="xToolsTextFormatComboBox" name="comboBoxFormat"/>
       </item>
       <item row="0" column="6">
        <spacer name="horizontalSpacer">
@@ -112,7 +112,7 @@
        </widget>
       </item>
       <item row="1" column="1" colspan="7">
-       <widget class="SAKLineEdit" name="lineEditStorerPath"/>
+       <widget class="xToolsLineEdit" name="lineEditStorerPath"/>
       </item>
      </layout>
     </widget>
@@ -121,19 +121,19 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKCheckBox</class>
-   <extends>QCheckBox</extends>
-   <header location="global">sakcheckbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>SAKLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header location="global">saklineedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>SAKTextFormatComboBox</class>
+   <class>xToolsTextFormatComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">saktextformatcombobox.h</header>
+   <header location="global">xToolsTextFormatComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">xToolsCheckBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header location="global">xToolsLineEdit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

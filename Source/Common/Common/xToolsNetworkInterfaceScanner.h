@@ -1,18 +1,17 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKNETWORKINTERFACESCANNER_H
-#define SAKNETWORKINTERFACESCANNER_H
+#pragma once
 
 #include <QObject>
 #include <QTimer>
 
-class SAKNetworkInterfaceScanner : public QObject
+class xToolsNetworkInterfaceScanner : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList ipList READ ipList NOTIFY ipListChanged)
@@ -21,7 +20,7 @@ class SAKNetworkInterfaceScanner : public QObject
     Q_PROPERTY(bool enableAutoRefresh READ enableAutoRefresh WRITE setEnableAutoRefresh NOTIFY
                    enableAutoRefreshChanged)
 public:
-    explicit SAKNetworkInterfaceScanner(QObject *parent = nullptr);
+    explicit xToolsNetworkInterfaceScanner(QObject *parent = nullptr);
 
 private:
     QTimer *mRefreshTimer;
@@ -61,5 +60,3 @@ private:
     }
     Q_SIGNAL void enableAutoRefreshChanged();
 };
-
-#endif // SAKNETWORKINTERFACESCANNER_H

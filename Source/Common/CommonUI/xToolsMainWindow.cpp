@@ -24,18 +24,18 @@
 #include <QStyleFactory>
 #include <QUrl>
 
-#include "sakdatastructure.h"
-#include "sakinterface.h"
-#include "saksettings.h"
-#include "saktranslator.h"
+#include "xToolsDataStructure.h"
+#include "xToolsInterface.h"
+#include "xToolsSettings.h"
+#include "xToolsTranslator.h"
 
 xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     m_appStyleActionGroup = new QActionGroup(this);
     m_languageActionGroup = new QActionGroup(this);
-    QString language = SAKSettings::instance()->language();
-    SAKTranslator::instance()->setupLanguage(language);
+    QString language = xToolsSettings::instance()->language();
+    xToolsTranslator::instance()->setupLanguage(language);
     init();
 }
 
@@ -76,7 +76,7 @@ void xToolsMainWindow::initMenuLanguage()
     m_languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(m_languageMenu);
 
-    QStringList languages = SAKTranslator::instance()->languanges();
+    QStringList languages = xToolsTranslator::instance()->languanges();
     for (auto& language : languages) {
         QAction* action = new QAction(language, this);
         action->setCheckable(true);
@@ -84,11 +84,11 @@ void xToolsMainWindow::initMenuLanguage()
         m_languageActionGroup->addAction(action);
 
         connect(action, &QAction::triggered, this, [=]() {
-            SAKSettings::instance()->setLanguage(language);
+            xToolsSettings::instance()->setLanguage(language);
             tryToReboot();
         });
 
-        QString setting_language = SAKSettings::instance()->language();
+        QString setting_language = xToolsSettings::instance()->language();
         if (setting_language == language) {
             action->setChecked(true);
         }
@@ -124,7 +124,7 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
     QMenu* appStyleMenu = new QMenu(tr("Application Style"), this);
     m_optionMenu->addMenu(appStyleMenu);
     QStringList keys = QStyleFactory::keys();
-    QString style = SAKSettings::instance()->appStyle();
+    QString style = xToolsSettings::instance()->appStyle();
     if (style.isEmpty()) {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 1, 0)
         style = qApp->style()->name();
@@ -142,7 +142,7 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
         }
 
         connect(action, &QAction::triggered, this, [=]() {
-            SAKSettings::instance()->setAppStyle(key);
+            xToolsSettings::instance()->setAppStyle(key);
             tryToReboot();
         });
     }
@@ -158,13 +158,13 @@ void xToolsMainWindow::initOptionMenuSettingsMenu()
     QAction* action = new QAction(tr("Clear Configuration"), this);
     menu->addAction(action);
     connect(action, &QAction::triggered, this, [=]() {
-        SAKSettings::instance()->setClearSettings(true);
+        xToolsSettings::instance()->setClearSettings(true);
         tryToReboot();
     });
     action = new QAction(tr("Open configuration floder"), this);
     menu->addAction(action);
     connect(action, &QAction::triggered, this, [=]() {
-        QString file_name = SAKSettings::instance()->fileName();
+        QString file_name = xToolsSettings::instance()->fileName();
         QUrl file_url = QUrl(file_name);
         QString floder_url = file_name.remove(file_url.fileName());
         QDesktopServices::openUrl(floder_url);
@@ -175,16 +175,16 @@ void xToolsMainWindow::initOptionMenuHdpiPolicy()
 {
     QMenu* menu = new QMenu(tr("HDPI Policy"));
     QActionGroup* action_group = new QActionGroup(this);
-    int setting_policy = SAKSettings::instance()->hdpiPolicy();
+    int setting_policy = xToolsSettings::instance()->hdpiPolicy();
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QList<QPair<int, QString>> policy_list;
     typedef QPair<int, QString> policy_pair;
-    policy_list << policy_pair(SAKDataStructure::HdpiPolicyRound, tr("Round up for .5 and above"));
-    policy_list << policy_pair(SAKDataStructure::HdpiPolicyCeil, tr("Always round up"));
-    policy_list << policy_pair(SAKDataStructure::HdpiPolicyFloor, tr("Always round down"));
-    policy_list << policy_pair(SAKDataStructure::HdpiPolicyRoundPreferFloor,
+    policy_list << policy_pair(xToolsDataStructure::HdpiPolicyRound, tr("Round up for .5 and above"));
+    policy_list << policy_pair(xToolsDataStructure::HdpiPolicyCeil, tr("Always round up"));
+    policy_list << policy_pair(xToolsDataStructure::HdpiPolicyFloor, tr("Always round down"));
+    policy_list << policy_pair(xToolsDataStructure::HdpiPolicyRoundPreferFloor,
                                tr("Round up for .75 and above"));
-    policy_list << policy_pair(SAKDataStructure::HdpiPolicyPassThrough, tr("Don't round"));
+    policy_list << policy_pair(xToolsDataStructure::HdpiPolicyPassThrough, tr("Don't round"));
     for (auto& policy : policy_list) {
         QAction* action = new QAction(policy.second, this);
         action_group->addAction(action);
@@ -208,12 +208,12 @@ void xToolsMainWindow::initOptionMenuHdpiPolicy()
     menu->addSeparator();
     menu->addAction(system_action);
 
-    if (setting_policy == SAKDataStructure::HdpiPolicySystem) {
+    if (setting_policy == xToolsDataStructure::HdpiPolicySystem) {
         system_action->setChecked(true);
     }
 
     connect(system_action, &QAction::triggered, this, [=]() {
-        SAKSettings::instance()->setHdpiPolicy(SAKDataStructure::HdpiPolicySystem);
+        SAKSettings::instance()->setHdpiPolicy(xToolsDataStructure::HdpiPolicySystem);
         createQtConf();
         tryToReboot();
     });
@@ -229,7 +229,7 @@ void xToolsMainWindow::onHdpiPolicyActionTriggered(int policy)
         qInfo() << "removed" << getQtConfFileName() << "failed";
     }
 
-    SAKSettings::instance()->setHdpiPolicy(int(policy));
+    xToolsSettings::instance()->setHdpiPolicy(int(policy));
     tryToReboot();
 }
 
@@ -263,7 +263,7 @@ void xToolsMainWindow::onUserQqGroupTriggerd()
 
 void xToolsMainWindow::onAboutActionTriggered()
 {
-    QString year = SAKInterface::buildDateTime("yyyy");
+    QString year = xToolsInterface::buildDateTime("yyyy");
     QString info;
     info += centralWidget()->windowTitle() + tr("(Part of Qt Swiss Army knife)");
     info += "\n";

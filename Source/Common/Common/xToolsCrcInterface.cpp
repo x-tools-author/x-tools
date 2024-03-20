@@ -6,22 +6,22 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsCrcInterface.h"
+
 #include <QMetaEnum>
 
-#include "sakcrcinterface.h"
-
-SAKCrcInterface::SAKCrcInterface(QObject *parent)
+xToolsCrcInterface::xToolsCrcInterface(QObject *parent)
     : QObject(parent)
 {}
 
-QString SAKCrcInterface::calculateString(const QString &bytes, int format)
+QString xToolsCrcInterface::calculateString(const QString &bytes, int format)
 {
     Q_UNUSED(bytes);
     Q_UNUSED(format);
     return QString();
 }
 
-QByteArray SAKCrcInterface::calculateBytes(
+QByteArray xToolsCrcInterface::calculateBytes(
     const QByteArray &bytes, int arithmetic, int startIndex, int endIndex, bool bigEndian)
 {
     auto parametersIsValid = [&]() -> bool {
@@ -97,7 +97,7 @@ QByteArray SAKCrcInterface::calculateBytes(
     return retBytes;
 }
 
-QStringList SAKCrcInterface::supportedParameterModels()
+QStringList xToolsCrcInterface::supportedParameterModels()
 {
     m_modelStrings.clear();
     QMetaEnum models = QMetaEnum::fromType<SAKEnumCrcAlgorithm>();
@@ -113,7 +113,7 @@ QStringList SAKCrcInterface::supportedParameterModels()
     return m_modelStrings;
 }
 
-uint32_t SAKCrcInterface::poly(SAKCrcInterface::SAKEnumCrcAlgorithm model)
+uint32_t xToolsCrcInterface::poly(xToolsCrcInterface::SAKEnumCrcAlgorithm model)
 {
     uint32_t poly = 0;
 
@@ -150,7 +150,7 @@ uint32_t SAKCrcInterface::poly(SAKCrcInterface::SAKEnumCrcAlgorithm model)
     return poly;
 }
 
-uint32_t SAKCrcInterface::xorValue(SAKCrcInterface::SAKEnumCrcAlgorithm model)
+uint32_t xToolsCrcInterface::xorValue(xToolsCrcInterface::SAKEnumCrcAlgorithm model)
 {
     uint32_t value = 0;
 
@@ -188,7 +188,7 @@ uint32_t SAKCrcInterface::xorValue(SAKCrcInterface::SAKEnumCrcAlgorithm model)
     return value;
 }
 
-uint32_t SAKCrcInterface::initialValue(SAKCrcInterface::SAKEnumCrcAlgorithm model)
+uint32_t xToolsCrcInterface::initialValue(xToolsCrcInterface::SAKEnumCrcAlgorithm model)
 {
     uint32_t init = 0;
 
@@ -223,7 +223,7 @@ uint32_t SAKCrcInterface::initialValue(SAKCrcInterface::SAKEnumCrcAlgorithm mode
     return init;
 }
 
-QString SAKCrcInterface::friendlyPoly(SAKCrcInterface::SAKEnumCrcAlgorithm model)
+QString xToolsCrcInterface::friendlyPoly(xToolsCrcInterface::SAKEnumCrcAlgorithm model)
 {
     QString formula = QString("Error: Formula not found");
 
@@ -258,7 +258,7 @@ QString SAKCrcInterface::friendlyPoly(SAKCrcInterface::SAKEnumCrcAlgorithm model
     return formula;
 }
 
-bool SAKCrcInterface::isInputReversal(SAKCrcInterface::SAKEnumCrcAlgorithm model)
+bool xToolsCrcInterface::isInputReversal(xToolsCrcInterface::SAKEnumCrcAlgorithm model)
 {
     bool reversal = true;
 
@@ -288,7 +288,7 @@ bool SAKCrcInterface::isInputReversal(SAKCrcInterface::SAKEnumCrcAlgorithm model
     return reversal;
 }
 
-bool SAKCrcInterface::isOutputReversal(SAKCrcInterface::SAKEnumCrcAlgorithm model)
+bool xToolsCrcInterface::isOutputReversal(xToolsCrcInterface::SAKEnumCrcAlgorithm model)
 {
     bool reversal = true;
 
@@ -318,7 +318,7 @@ bool SAKCrcInterface::isOutputReversal(SAKCrcInterface::SAKEnumCrcAlgorithm mode
     return reversal;
 }
 
-int SAKCrcInterface::bitsWidth(SAKCrcInterface::SAKEnumCrcAlgorithm model)
+int xToolsCrcInterface::bitsWidth(xToolsCrcInterface::SAKEnumCrcAlgorithm model)
 {
     int ret = -1;
     switch (model) {

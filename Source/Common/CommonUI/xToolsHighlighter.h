@@ -6,16 +6,15 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKHIGHLIGHTER_H
-#define SAKHIGHLIGHTER_H
+#pragma once
 
 #include <QSyntaxHighlighter>
 
-class SAKHighlighter : public QSyntaxHighlighter
+class xToolsHighlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
 public:
-    SAKHighlighter(QObject *parent = nullptr);
+    xToolsHighlighter(QObject *parent = nullptr);
 
     Q_INVOKABLE void setDoc(QVariant doc);
     Q_INVOKABLE void setKeyWords(QVariant keyWords);
@@ -27,5 +26,3 @@ protected:
 private:
     QStringList mKeyWords;
 };
-
-#endif // SAKHIGHLIGHTER_H

@@ -15,13 +15,13 @@
 #endif
 #endif
 
-#include "sakhighlighter.h"
+#include "xToolsHighlighter.h"
 
-SAKHighlighter::SAKHighlighter(QObject *parent)
+xToolsHighlighter::xToolsHighlighter(QObject *parent)
     : QSyntaxHighlighter(parent)
 {}
 
-void SAKHighlighter::setDoc(QVariant doc)
+void xToolsHighlighter::setDoc(QVariant doc)
 {
     auto obj = doc.value<QObject *>();
 #ifdef SAK_IMPORT_MODULE_QML
@@ -37,7 +37,7 @@ void SAKHighlighter::setDoc(QVariant doc)
     }
 }
 
-void SAKHighlighter::setKeyWords(QVariant keyWords)
+void xToolsHighlighter::setKeyWords(QVariant keyWords)
 {
     QList<QVariant> cookedKeyWords = keyWords.toList();
     mKeyWords.clear();
@@ -46,7 +46,7 @@ void SAKHighlighter::setKeyWords(QVariant keyWords)
     }
 }
 
-void SAKHighlighter::removeKeyWord(const QString &keyWord)
+void xToolsHighlighter::removeKeyWord(const QString &keyWord)
 {
     if (keyWord.isEmpty()) {
         mKeyWords.clear();
@@ -56,7 +56,7 @@ void SAKHighlighter::removeKeyWord(const QString &keyWord)
     mKeyWords.removeOne(keyWord);
 }
 
-void SAKHighlighter::highlightBlock(const QString &text)
+void xToolsHighlighter::highlightBlock(const QString &text)
 {
     QTextCharFormat format;
     format.setFontWeight(QFont::Bold);

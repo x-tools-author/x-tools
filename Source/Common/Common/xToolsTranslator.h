@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKTRANSLATOR_H
-#define SAKTRANSLATOR_H
+#pragma once
 
 #include <QJsonArray>
 #include <QJsonObject>
@@ -17,15 +16,15 @@
 #include <QTranslator>
 #include <QVariantList>
 
-class SAKTranslator : public QObject
+class xToolsTranslator : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList languanges READ languanges CONSTANT)
 private:
-    explicit SAKTranslator(QObject *parent = nullptr);
+    explicit xToolsTranslator(QObject *parent = nullptr);
 
 public:
-    static SAKTranslator *instance();
+    static xToolsTranslator *instance();
     QStringList languanges();
     Q_INVOKABLE void setupLanguage(const QString &language);
 
@@ -36,5 +35,3 @@ private:
 signals:
     void languageChanged();
 };
-
-#endif // SAKTRANSLATOR_H

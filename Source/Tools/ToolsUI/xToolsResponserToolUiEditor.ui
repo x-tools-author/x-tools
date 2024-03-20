@@ -54,7 +54,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="6" column="4">
-       <widget class="SAKAffixesComboBox" name="comboBoxResSuffix"/>
+       <widget class="xToolsAffixesComboBox" name="comboBoxResSuffix"/>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label">
@@ -154,7 +154,7 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="SAKTextFormatComboBox" name="comboBoxRefFormat"/>
+       <widget class="xToolsTextFormatComboBox" name="comboBoxRefFormat"/>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_5">
@@ -186,16 +186,16 @@
        <widget class="QLineEdit" name="lineEditRefData"/>
       </item>
       <item row="8" column="4">
-       <widget class="SAKCrcAlgorithmComboBox" name="comboBoxResAlgorithm"/>
+       <widget class="xToolsCrcAlgorithmComboBox" name="comboBoxResAlgorithm"/>
       </item>
       <item row="5" column="4">
-       <widget class="SAKAffixesComboBox" name="comboBoxResPrefix"/>
+       <widget class="xToolsAffixesComboBox" name="comboBoxResPrefix"/>
       </item>
       <item row="13" column="3" colspan="2">
        <widget class="QLineEdit" name="lineEditResData"/>
       </item>
       <item row="1" column="4">
-       <widget class="SAKResponseOptionComboBox" name="comboBoxOption"/>
+       <widget class="xToolsResponseOptionComboBox" name="comboBoxOption"/>
       </item>
       <item row="6" column="3">
        <widget class="QLabel" name="label_12">
@@ -224,7 +224,7 @@
        </widget>
       </item>
       <item row="3" column="4">
-       <widget class="SAKTextFormatComboBox" name="comboBoxResFormat"/>
+       <widget class="xToolsTextFormatComboBox" name="comboBoxResFormat"/>
       </item>
       <item row="10" column="4">
        <widget class="QSpinBox" name="spinBoxResEnd">
@@ -234,7 +234,7 @@
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="SAKAffixesComboBox" name="comboBoxRefSuffix"/>
+       <widget class="xToolsAffixesComboBox" name="comboBoxRefSuffix"/>
       </item>
       <item row="8" column="0">
        <widget class="QLabel" name="label_13">
@@ -290,10 +290,10 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="SAKAffixesComboBox" name="comboBoxRefPrefix"/>
+       <widget class="xToolsAffixesComboBox" name="comboBoxRefPrefix"/>
       </item>
       <item row="8" column="1">
-       <widget class="SAKCrcAlgorithmComboBox" name="comboBoxRefAlgorithm"/>
+       <widget class="xToolsCrcAlgorithmComboBox" name="comboBoxRefAlgorithm"/>
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="label_7">
@@ -348,7 +348,7 @@
        </widget>
       </item>
       <item row="4" column="4">
-       <widget class="SAKEscapeCharacterComboBox" name="comboBoxResEscape"/>
+       <widget class="xToolsEscapeCharacterComboBox" name="comboBoxResEscape"/>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="label_9">
@@ -398,7 +398,7 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="SAKEscapeCharacterComboBox" name="comboBoxRefEscape"/>
+       <widget class="xToolsTextFormatComboBox" name="comboBoxRefEscape"/>
       </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="lineEditDescription">
@@ -449,29 +449,29 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKEscapeCharacterComboBox</class>
+   <class>xToolsEscapeCharacterComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakescapecharactercombobox.h</header>
+   <header location="global">xToolsEscapeCharacterComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKTextFormatComboBox</class>
+   <class>xToolsTextFormatComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">saktextformatcombobox.h</header>
+   <header location="global">xToolsTextFormatComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKAffixesComboBox</class>
+   <class>xToolsAffixesComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakaffixescombobox.h</header>
+   <header location="global">xToolsAffixesComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKCrcAlgorithmComboBox</class>
+   <class>xToolsCrcAlgorithmComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakcrcalgorithmcombobox.h</header>
+   <header location="global">xToolsCrcAlgorithmComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKResponseOptionComboBox</class>
+   <class>xToolsResponseOptionComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakresponseoptioncombobox.h</header>
+   <header location="global">xToolsResponseOptionComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKDATASTRUCTURE_H
-#define SAKDATASTRUCTURE_H
+#pragma once
 
 #include <QComboBox>
 #include <QMap>
@@ -24,12 +23,12 @@
 #endif
 #endif
 
-class SAKDataStructure : public QObject
+class xToolsDataStructure : public QObject
 {
     Q_OBJECT
 public:
-    SAKDataStructure(QObject *parent = Q_NULLPTR);
-    ~SAKDataStructure();
+    xToolsDataStructure(QObject *parent = Q_NULLPTR);
+    ~xToolsDataStructure();
 
     enum SAKEnumTextFormat {
         TextFormatBin,
@@ -313,5 +312,3 @@ private:
                                  QMap<int, QString> &formatMap,
                                  int currentData);
 };
-
-#endif

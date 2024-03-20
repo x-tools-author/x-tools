@@ -1,19 +1,18 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSETTINGS_H
-#define SAKSETTINGS_H
+#pragma once
 
 #include <QLoggingCategory>
 #include <QSettings>
 #include <Qt>
 
-class SAKSettings : public QSettings
+class xToolsSettings : public QSettings
 {
     Q_OBJECT
     // clang-format off
@@ -33,10 +32,10 @@ public:
     Q_ENUM(UiType)
 
 private:
-    explicit SAKSettings(QObject *parent = nullptr);
+    explicit xToolsSettings(QObject *parent = nullptr);
 
 public:
-    static SAKSettings *instance();
+    static xToolsSettings *instance();
     Q_INVOKABLE void openSettingsFileDir();
 
     QString settingsPath();
@@ -97,5 +96,3 @@ private:
 
     QLoggingCategory mLoggingCategory{"sak.settings"};
 };
-
-#endif // SAKSETTINGS_H

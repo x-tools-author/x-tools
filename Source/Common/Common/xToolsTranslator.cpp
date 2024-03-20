@@ -6,15 +6,15 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsTranslator.h"
+
 #include <QCoreApplication>
 #include <QDir>
 #include <QFile>
 #include <QFileInfoList>
 #include <QJsonDocument>
 
-#include "saktranslator.h"
-
-SAKTranslator::SAKTranslator(QObject* parent)
+xToolsTranslator::xToolsTranslator(QObject* parent)
     : QObject{parent}
 {
     m_flagNameMap.insert("zh_CN", "简体中文");
@@ -44,22 +44,22 @@ SAKTranslator::SAKTranslator(QObject* parent)
 #endif
 }
 
-SAKTranslator* SAKTranslator::instance()
+xToolsTranslator* xToolsTranslator::instance()
 {
-    static SAKTranslator* translator = Q_NULLPTR;
+    static xToolsTranslator* translator = Q_NULLPTR;
     if (!translator) {
-        translator = new SAKTranslator(qApp);
+        translator = new xToolsTranslator(qApp);
     }
 
     return translator;
 }
 
-QStringList SAKTranslator::languanges()
+QStringList xToolsTranslator::languanges()
 {
     return m_flagNameMap.values();
 }
 
-void SAKTranslator::setupLanguage(const QString& language)
+void xToolsTranslator::setupLanguage(const QString& language)
 {
     QCoreApplication::removeTranslator(&m_translator);
 

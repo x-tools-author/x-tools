@@ -16,10 +16,10 @@
 #include <QTextCursor>
 #include <QTranslator>
 
-#include "sakdatastructure.h"
+#include "xToolsDataStructure.h"
 #include "MainWindow.h"
-#include "saksettings.h"
-#include "saktranslator.h"
+#include "xToolsSettings.h"
+#include "xToolsTranslator.h"
 
 #ifdef Q_OS_WIN
 #include "SystemTrayIcon.h"
@@ -38,14 +38,14 @@ Application::Application(int argc, char** argv)
     processEvents();
 
     // Palette
-    int ret = SAKSettings::instance()->palette();
-    if ((ret == SAKDataStructure::PaletteDark) || (ret == SAKDataStructure::PaletteLight)) {
-        QString fileName = (ret == SAKDataStructure::PaletteLight
+    int ret = xToolsSettings::instance()->palette();
+    if ((ret == xToolsDataStructure::PaletteDark) || (ret == xToolsDataStructure::PaletteLight)) {
+        QString fileName = (ret == xToolsDataStructure::PaletteLight
                                 ? ":/resources/palette/SAKAppPaletteLight"
                                 : ":/resources/palette/SAKAppPaletteDark");
         setupPalette(fileName);
     } else {
-        QString customPalette = SAKSettings::instance()->customPalette();
+        QString customPalette = xToolsSettings::instance()->customPalette();
         if (customPalette.isEmpty()) {
             qInfo() << "current palette: system";
         } else {
@@ -54,8 +54,8 @@ Application::Application(int argc, char** argv)
     }
 
     // Setup ui language.
-    QString language = SAKSettings::instance()->language();
-    SAKTranslator::instance()->setupLanguage(language);
+    QString language = xToolsSettings::instance()->language();
+    xToolsTranslator::instance()->setupLanguage(language);
     showSplashScreenMessage(tr("Initializing main window..."));
     
     auto mainWindow = new MainWindow();

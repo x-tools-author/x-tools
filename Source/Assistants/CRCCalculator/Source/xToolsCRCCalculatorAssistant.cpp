@@ -14,11 +14,11 @@
 #include <QLoggingCategory>
 #include <QMetaEnum>
 
-#include "sakcrcinterface.h"
+#include "xToolsCrcInterface.h"
 
 xToolsCRCCalculatorAssistant::xToolsCRCCalculatorAssistant(QWidget* parent)
     : QWidget(parent)
-    , m_crcInterface(new SAKCrcInterface)
+    , m_crcInterface(new xToolsCrcInterface)
     , ui(new Ui::xToolsCRCCalculatorAssistant)
 {
     ui->setupUi(this);
@@ -80,12 +80,12 @@ void xToolsCRCCalculatorAssistant::initParameterModel()
     QStringList list = m_crcInterface->supportedParameterModels();
     m_parameterComboBox->addItems(list);
 
-    QMetaEnum models = QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();
+    QMetaEnum models = QMetaEnum::fromType<xToolsCrcInterface::SAKEnumCrcAlgorithm>();
     bool ok = false;
     int ret = models.keyToValue(m_parameterComboBox->currentText().toLatin1().constData(), &ok);
-    SAKCrcInterface::SAKEnumCrcAlgorithm model = SAKCrcInterface::CRC_8;
+    xToolsCrcInterface::SAKEnumCrcAlgorithm model = xToolsCrcInterface::CRC_8;
     if (ok) {
-        model = static_cast<SAKCrcInterface::SAKEnumCrcAlgorithm>(ret);
+        model = static_cast<xToolsCrcInterface::SAKEnumCrcAlgorithm>(ret);
     }
 
     int bitsWidth = m_crcInterface->bitsWidth(model);
@@ -116,12 +116,12 @@ void xToolsCRCCalculatorAssistant::calculate()
     }
 
     int bitsWidth = m_widthComboBox->currentText().toInt();
-    QMetaEnum models = QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();
+    QMetaEnum models = QMetaEnum::fromType<xToolsCrcInterface::SAKEnumCrcAlgorithm>();
     bool ok = false;
     int ret = models.keyToValue(m_parameterComboBox->currentText().toLatin1().constData(), &ok);
-    SAKCrcInterface::SAKEnumCrcAlgorithm model = SAKCrcInterface::CRC_8;
+    xToolsCrcInterface::SAKEnumCrcAlgorithm model = xToolsCrcInterface::CRC_8;
     if (ok) {
-        model = static_cast<SAKCrcInterface::SAKEnumCrcAlgorithm>(ret);
+        model = static_cast<xToolsCrcInterface::SAKEnumCrcAlgorithm>(ret);
     } else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknown crc parameters model!");
     }
@@ -177,12 +177,12 @@ void xToolsCRCCalculatorAssistant::textFormatControl()
 void xToolsCRCCalculatorAssistant::changedParameterModel(int index)
 {
     Q_UNUSED(index)
-    QMetaEnum models = QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();
+    QMetaEnum models = QMetaEnum::fromType<xToolsCrcInterface::SAKEnumCrcAlgorithm>();
     bool ok = false;
-    SAKCrcInterface::SAKEnumCrcAlgorithm model = SAKCrcInterface::CRC_8;
+    xToolsCrcInterface::SAKEnumCrcAlgorithm model = xToolsCrcInterface::CRC_8;
     int ret = models.keyToValue(m_parameterComboBox->currentText().toLatin1().constData(), &ok);
     if (ok) {
-        model = static_cast<SAKCrcInterface::SAKEnumCrcAlgorithm>(ret);
+        model = static_cast<xToolsCrcInterface::SAKEnumCrcAlgorithm>(ret);
     } else {
         qWarning() << "Unknown parameter model!";
         Q_ASSERT_X(false, __FUNCTION__, "Unknown parameter model!");

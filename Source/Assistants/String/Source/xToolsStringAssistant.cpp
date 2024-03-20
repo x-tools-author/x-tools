@@ -9,15 +9,15 @@
 #include "xToolsStringAssistant.h"
 #include "ui_xToolsStringAssistant.h"
 
-#include "sakdatastructure.h"
+#include "xToolsDataStructure.h"
 
 xToolsStringAssistant::xToolsStringAssistant(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::xToolsStringAssistant)
 {
     ui->setupUi(this);
-    SAKDataStructure::setComboBoxTextInputFormat(ui->inputFormatComboBox);
-    SAKDataStructure::setComboBoxTextOutputFormat(ui->outputFormatComboBox);
+    xToolsDataStructure::setComboBoxTextInputFormat(ui->inputFormatComboBox);
+    xToolsDataStructure::setComboBoxTextOutputFormat(ui->outputFormatComboBox);
 
     connect(ui->textEdit, &QTextEdit::textChanged, this, &xToolsStringAssistant::onTextEditTextChanged);
     connect(ui->inputFormatComboBox,
@@ -43,9 +43,9 @@ void xToolsStringAssistant::onTextEditTextChanged()
 {
     if (!ui->textEdit->blockSignals(true)) {
         QString inputString = ui->textEdit->toPlainText();
-        auto inputFormat = static_cast<SAKDataStructure::SAKEnumTextFormatInput>(
+        auto inputFormat = static_cast<xToolsDataStructure::SAKEnumTextFormatInput>(
             ui->inputFormatComboBox->currentData().toInt());
-        QString cookedString = SAKDataStructure::formattingString(inputString, inputFormat);
+        QString cookedString = xToolsDataStructure::formattingString(inputString, inputFormat);
         ui->textEdit->setText(cookedString);
         ui->textEdit->moveCursor(QTextCursor::End);
         ui->textEdit->blockSignals(false);
@@ -65,12 +65,12 @@ void xToolsStringAssistant::onInputFormatComboBoxCurrentIndexChanged(int index)
 void xToolsStringAssistant::onCreatePushButtonClicked()
 {
     QString inputString = ui->textEdit->toPlainText();
-    auto inputFormat = static_cast<SAKDataStructure::SAKEnumTextFormatInput>(
+    auto inputFormat = static_cast<xToolsDataStructure::SAKEnumTextFormatInput>(
         ui->inputFormatComboBox->currentData().toInt());
-    QByteArray inputArray = SAKDataStructure::stringToByteArray(inputString, inputFormat);
-    auto outputFormat = static_cast<SAKDataStructure::SAKEnumTextFormatOutput>(
+    QByteArray inputArray = xToolsDataStructure::stringToByteArray(inputString, inputFormat);
+    auto outputFormat = static_cast<xToolsDataStructure::SAKEnumTextFormatOutput>(
         ui->outputFormatComboBox->currentData().toInt());
-    auto outputString = SAKDataStructure::byteArrayToString(inputArray, outputFormat);
+    auto outputString = xToolsDataStructure::byteArrayToString(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);
 }
 

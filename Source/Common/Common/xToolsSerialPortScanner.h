@@ -6,19 +6,18 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKSERIALPORTSCANNER_H
-#define SAKSERIALPORTSCANNER_H
+#pragma once
 
 #include <QObject>
 #include <QTimer>
 
-class SAKSerialPortScanner : public QObject
+class xToolsSerialPortScanner : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList portNames READ portNames NOTIFY portNamesChanged)
     Q_PROPERTY(QStringList baudRates READ baudRates NOTIFY baudRatesChanged)
 public:
-    explicit SAKSerialPortScanner(QObject *parent = nullptr);
+    explicit xToolsSerialPortScanner(QObject *parent = nullptr);
 
     Q_INVOKABLE void refresh();
     Q_INVOKABLE void setIgnoredBusyDevice(bool ignored);
@@ -42,5 +41,3 @@ private:
     QStringList baudRates() { return m_baudRates; }
     Q_SIGNAL void baudRatesChanged();
 };
-
-#endif // EDQMLSERIALPORTASSISTANT_HH

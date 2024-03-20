@@ -40,14 +40,14 @@
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="SAKSpinBox" name="spinBoxMaskCode">
+       <widget class="xToolsSpinBox" name="spinBoxMaskCode">
         <property name="maximum">
          <number>256</number>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="SAKCheckBox" name="checkBoxEnable">
+       <widget class="xToolsCheckBox" name="checkBoxEnable">
         <property name="text">
          <string>Enable</string>
         </property>
@@ -73,14 +73,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKCheckBox</class>
+   <class>xToolsCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">sakcheckbox.h</header>
+   <header location="global">xToolsCheckBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKSpinBox</class>
+   <class>xToolsSpinBox</class>
    <extends>QSpinBox</extends>
-   <header location="global">sakspinbox.h</header>
+   <header location="global">xToolsSpinBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

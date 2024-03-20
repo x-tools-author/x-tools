@@ -1,21 +1,20 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKLINEEDIT_H
-#define SAKLINEEDIT_H
+#pragma once
 
 #include <QLineEdit>
 
-class SAKLineEdit : public QLineEdit
+class xToolsLineEdit : public QLineEdit
 {
     Q_OBJECT
 public:
-    SAKLineEdit(QWidget *parent = nullptr);
+    xToolsLineEdit(QWidget *parent = nullptr);
     void setGroupKey(const QString &group, const QString &key);
 
 private:
@@ -25,5 +24,3 @@ private:
     void readFromSettingsFile();
     void writeToSettingsFile();
 };
-
-#endif // SAKLINEEDIT_H

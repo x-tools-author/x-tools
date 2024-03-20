@@ -16,9 +16,9 @@
 #include <QTableView>
 #include <QTimer>
 
-#include "sakcrcinterface.h"
-#include "sakdatastructure.h"
-#include "sakinterface.h"
+#include "xToolsCrcInterface.h"
+#include "xToolsDataStructure.h"
+#include "xToolsInterface.h"
 
 xToolsResponserTool::xToolsResponserTool(QObject *parent)
     : xToolsTableModelTool{parent}
@@ -264,14 +264,14 @@ QByteArray xToolsResponserTool::referenceBytes(const ResponserItem &item) const
 {
     QByteArray bytes;
     QString text = item.itemReferenceText;
-    text = SAKDataStructure::cookedString(item.itemReferenceEscapeCharacter, text);
-    bytes = SAKInterface::string2array(text, item.itemReferenceTextFormat);
-    QByteArray prefix = SAKDataStructure::affixesData(item.itemReferencePrefix);
-    QByteArray suffix = SAKDataStructure::affixesData(item.itemReferenceSuffix);
+    text = xToolsDataStructure::cookedString(item.itemReferenceEscapeCharacter, text);
+    bytes = xToolsInterface::string2array(text, item.itemReferenceTextFormat);
+    QByteArray prefix = xToolsDataStructure::affixesData(item.itemReferencePrefix);
+    QByteArray suffix = xToolsDataStructure::affixesData(item.itemReferenceSuffix);
 
     bytes.prepend(prefix);
     if (item.itemReferenceCrcEnable) {
-        SAKCrcInterface sakCrc;
+        xToolsCrcInterface sakCrc;
         QByteArray crcBytes = sakCrc.calculateBytes(bytes,
                                                     item.itemReferenceCrcAlgorithm,
                                                     item.itemReferenceCrcStartIndex,
@@ -288,14 +288,14 @@ QByteArray xToolsResponserTool::responseBytes(const ResponserItem &item) const
 {
     QByteArray bytes;
     QString text = item.itemResponseText;
-    text = SAKDataStructure::cookedString(item.itemResponseEscapeCharacter, text);
-    bytes = SAKInterface::string2array(text, item.itemResponseTextFormat);
-    QByteArray prefix = SAKDataStructure::affixesData(item.itemResponsePrefix);
-    QByteArray suffix = SAKDataStructure::affixesData(item.itemResponseSuffix);
+    text = xToolsDataStructure::cookedString(item.itemResponseEscapeCharacter, text);
+    bytes = xToolsInterface::string2array(text, item.itemResponseTextFormat);
+    QByteArray prefix = xToolsDataStructure::affixesData(item.itemResponsePrefix);
+    QByteArray suffix = xToolsDataStructure::affixesData(item.itemResponseSuffix);
 
     bytes.prepend(prefix);
     if (item.itemResponseCrcEnable) {
-        SAKCrcInterface sakCrc;
+        xToolsCrcInterface sakCrc;
         QByteArray crcBytes = sakCrc.calculateBytes(bytes,
                                                     item.itemResponseCrcAlgorithm,
                                                     item.itemResponseCrcStartIndex,
@@ -346,24 +346,24 @@ QVariant xToolsResponserTool::itemContext(int index)
             ctx.insert(itemDescription(), "Demo");
             ctx.insert(itemOption(), 0);
 
-            ctx.insert(itemReferenceTextFormat(), SAKDataStructure::TextFormatAscii);
-            ctx.insert(itemReferenceEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
-            ctx.insert(itemReferencePrefix(), SAKDataStructure::AffixesNone);
-            ctx.insert(itemReferenceSuffix(), SAKDataStructure::AffixesNone);
+            ctx.insert(itemReferenceTextFormat(), xToolsDataStructure::TextFormatAscii);
+            ctx.insert(itemReferenceEscapeCharacter(), xToolsDataStructure::EscapeCharacterOptionNone);
+            ctx.insert(itemReferencePrefix(), xToolsDataStructure::AffixesNone);
+            ctx.insert(itemReferenceSuffix(), xToolsDataStructure::AffixesNone);
             ctx.insert(itemReferenceCrcEnable(), false);
             ctx.insert(itemReferenceCrcBigEndian(), false);
-            ctx.insert(itemReferenceCrcAlgorithm(), SAKCrcInterface::CRC_8);
+            ctx.insert(itemReferenceCrcAlgorithm(), xToolsCrcInterface::CRC_8);
             ctx.insert(itemReferenceCrcStartIndex(), 0);
             ctx.insert(itemReferenceCrcEndIndex(), 0);
             ctx.insert(itemReferenceText(), "Reference data.");
 
-            ctx.insert(itemResponseTextFormat(), SAKDataStructure::TextFormatAscii);
-            ctx.insert(itemResponseEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
-            ctx.insert(itemResponsePrefix(), SAKDataStructure::AffixesNone);
-            ctx.insert(itemResponseSuffix(), SAKDataStructure::AffixesNone);
+            ctx.insert(itemResponseTextFormat(), xToolsDataStructure::TextFormatAscii);
+            ctx.insert(itemResponseEscapeCharacter(), xToolsDataStructure::EscapeCharacterOptionNone);
+            ctx.insert(itemResponsePrefix(), xToolsDataStructure::AffixesNone);
+            ctx.insert(itemResponseSuffix(), xToolsDataStructure::AffixesNone);
             ctx.insert(itemResponseCrcEnable(), false);
             ctx.insert(itemResponseCrcBigEndian(), false);
-            ctx.insert(itemResponseCrcAlgorithm(), SAKCrcInterface::CRC_8);
+            ctx.insert(itemResponseCrcAlgorithm(), xToolsCrcInterface::CRC_8);
             ctx.insert(itemResponseCrcStartIndex(), 0);
             ctx.insert(itemResponseCrcEndIndex(), 0);
             ctx.insert(itemResponseDelay(), 0);
@@ -476,11 +476,11 @@ void xToolsResponserTool::try2output(const QByteArray &bytes, QObject *receiver)
     auto items = mItems;
     mItemsMutex.unlock();
 
-    int always = SAKDataStructure::ResponseOptionAlways;
-    int echo = SAKDataStructure::ResponseOptionEcho;
-    int contain = SAKDataStructure::ResponseOptionInputContainReference;
-    int discontain = SAKDataStructure::ResponseOptionInputDiscontainReference;
-    int eaual = SAKDataStructure::ResponseOptionInputEqualReference;
+    int always = xToolsDataStructure::ResponseOptionAlways;
+    int echo = xToolsDataStructure::ResponseOptionEcho;
+    int contain = xToolsDataStructure::ResponseOptionInputContainReference;
+    int discontain = xToolsDataStructure::ResponseOptionInputDiscontainReference;
+    int eaual = xToolsDataStructure::ResponseOptionInputEqualReference;
 
     for (const auto &item : items) {
         if (!item.data.itemEnable) {

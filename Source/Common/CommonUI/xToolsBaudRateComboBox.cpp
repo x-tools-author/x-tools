@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -9,10 +9,10 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-#include "sakbaudratecombobox.h"
+#include "xToolsBaudRateComboBox.h"
 
-SAKBaudRateComboBox::SAKBaudRateComboBox(QWidget *parent)
-    : SAKComboBox(parent)
+xToolsBaudRateComboBox::xToolsBaudRateComboBox(QWidget *parent)
+    : xToolsComboBox(parent)
 {
     clear();
     QList<qint32> bd = QSerialPortInfo::standardBaudRates();

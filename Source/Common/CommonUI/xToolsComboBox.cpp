@@ -1,24 +1,24 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakcombobox.h"
+#include "xToolsComboBox.h"
 
 #include <QLineEdit>
 
-#include "saksettings.h"
+#include "xToolsSettings.h"
 
-SAKComboBox::SAKComboBox(QWidget* parent)
+xToolsComboBox::xToolsComboBox(QWidget* parent)
     : QComboBox(parent)
 {
-    connect(this, &SAKComboBox::currentTextChanged, this, &SAKComboBox::writeToSettingsFile);
+    connect(this, &xToolsComboBox::currentTextChanged, this, &xToolsComboBox::writeToSettingsFile);
 }
 
-void SAKComboBox::setCurrentIndexFromData(const QVariant& data)
+void xToolsComboBox::setCurrentIndexFromData(const QVariant& data)
 {
     int ret = findData(data);
     if (ret != -1) {
@@ -26,7 +26,7 @@ void SAKComboBox::setCurrentIndexFromData(const QVariant& data)
     }
 }
 
-void SAKComboBox::setGroupKey(const QString& group, const QString& key, bool isIndex)
+void xToolsComboBox::setGroupKey(const QString& group, const QString& key, bool isIndex)
 {
     mKey = group + "/" + key;
     mIsIndex = isIndex;
@@ -34,13 +34,13 @@ void SAKComboBox::setGroupKey(const QString& group, const QString& key, bool isI
     readFromSettingsFile();
 }
 
-void SAKComboBox::readFromSettingsFile()
+void xToolsComboBox::readFromSettingsFile()
 {
     if (mKey.isEmpty()) {
         return;
     }
 
-    QVariant var = SAKSettings::instance()->value(mKey);
+    QVariant var = xToolsSettings::instance()->value(mKey);
     if (!var.isValid()) {
         return;
     }
@@ -64,19 +64,19 @@ void SAKComboBox::readFromSettingsFile()
     }
 }
 
-void SAKComboBox::writeToSettingsFile()
+void xToolsComboBox::writeToSettingsFile()
 {
     if (mKey.isEmpty()) {
         return;
     }
 
     if (mIsIndex) {
-        SAKSettings::instance()->setValue(mKey, currentIndex());
+        xToolsSettings::instance()->setValue(mKey, currentIndex());
     } else {
         if (isEditable()) {
-            SAKSettings::instance()->setValue(mKey, currentText());
+            xToolsSettings::instance()->setValue(mKey, currentText());
         } else {
-            SAKSettings::instance()->setValue(mKey, currentData());
+            xToolsSettings::instance()->setValue(mKey, currentData());
         }
     }
 }

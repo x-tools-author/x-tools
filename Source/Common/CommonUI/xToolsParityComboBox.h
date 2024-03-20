@@ -1,21 +1,18 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKPARITYCOMBOBOX_H
-#define SAKPARITYCOMBOBOX_H
+#pragma once
 
-#include "sakcombobox.h"
+#include "xToolsComboBox.h"
 
-class SAKParityComboBox : public SAKComboBox
+class xToolsParityComboBox : public xToolsComboBox
 {
     Q_OBJECT
 public:
-    SAKParityComboBox(QWidget *parent = nullptr);
+    xToolsParityComboBox(QWidget *parent = nullptr);
 };
-
-#endif // SAKPARITYCOMBOBOX_H

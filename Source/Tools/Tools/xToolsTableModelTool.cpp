@@ -14,40 +14,40 @@
 xToolsTableModelTool::xToolsTableModelTool(QObject *parent)
     : xToolsBaseTool{parent}
 {
-    mTableModel = new SAKTableModel(this);
+    mTableModel = new xToolsTableModel(this);
 
     connect(mTableModel,
-            &SAKTableModel::invokeGetRowCount,
+            &xToolsTableModel::invokeGetRowCount,
             this,
             &xToolsTableModelTool::onInvokeGetRowCount,
             Qt::DirectConnection);
     connect(mTableModel,
-            &SAKTableModel::invokeGetColumnCount,
+            &xToolsTableModel::invokeGetColumnCount,
             this,
             &xToolsTableModelTool::onInvokeGetColumnCount,
             Qt::DirectConnection);
     connect(mTableModel,
-            &SAKTableModel::invokeGetData,
+            &xToolsTableModel::invokeGetData,
             this,
             &xToolsTableModelTool::onInvokeGetData,
             Qt::DirectConnection);
     connect(mTableModel,
-            &SAKTableModel::invokeSetData,
+            &xToolsTableModel::invokeSetData,
             this,
             &xToolsTableModelTool::onInvokeSetData,
             Qt::DirectConnection);
     connect(mTableModel,
-            &SAKTableModel::invokeInsertRows,
+            &xToolsTableModel::invokeInsertRows,
             this,
             &xToolsTableModelTool::onInvokeInsertRows,
             Qt::DirectConnection);
     connect(mTableModel,
-            &SAKTableModel::invokeRemoveRows,
+            &xToolsTableModel::invokeRemoveRows,
             this,
             &xToolsTableModelTool::onInvokeRemoveRows,
             Qt::DirectConnection);
     connect(mTableModel,
-            &SAKTableModel::invokeGetHeaderData,
+            &xToolsTableModel::invokeGetHeaderData,
             this,
             &xToolsTableModelTool::onInvokeGetHeaderData,
             Qt::DirectConnection);

@@ -10,8 +10,8 @@
 
 #include <QHostAddress>
 
-#include "sakcompatibility.h"
-#include "sakinterface.h"
+#include "xToolsCompatibility.h"
+#include "xToolsInterface.h"
 
 xToolsUdpClientTool::xToolsUdpClientTool(QObject *parent)
     : xToolsSocketClientTool{parent}
@@ -59,7 +59,7 @@ void xToolsUdpClientTool::writeBytes(const QByteArray &bytes)
         QString str = m_udpSocket->errorString();
         qInfo() << qPrintable(QString("write bytes to %1 error: %2").arg(ipport, str));
     } else {
-        QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
+        QByteArray ba = xToolsInterface::arrayToHex(bytes, ' ');
         QString hex = QString::fromLatin1(ba);
         QString portStr = QString::number(m_serverPort);
         QString serverInfo = QString("%1:%2").arg(m_serverIp, portStr);
@@ -90,7 +90,7 @@ void xToolsUdpClientTool::readBytes()
         if (ret == -1) {
             qWarning() << m_udpSocket->errorString();
         } else {
-            QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
+            QByteArray ba = xToolsInterface::arrayToHex(bytes, ' ');
             QString hex = QString::fromLatin1(ba);
             QString portStr = address.toString();
             QString serverInfo = address.toString() + ":" + portStr;

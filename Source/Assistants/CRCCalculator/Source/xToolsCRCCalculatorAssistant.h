@@ -24,7 +24,7 @@ namespace Ui {
 class xToolsCRCCalculatorAssistant;
 }
 
-class SAKCrcInterface;
+class xToolsCrcInterface;
 class xToolsCRCCalculatorAssistant : public QWidget
 {
     Q_OBJECT
@@ -36,7 +36,7 @@ protected:
     bool eventFilter(QObject* watched, QEvent* event);
 
 private:
-    SAKCrcInterface* m_crcInterface;
+    xToolsCrcInterface* m_crcInterface;
 
     Ui::xToolsCRCCalculatorAssistant* ui;
     QComboBox* m_widthComboBox;

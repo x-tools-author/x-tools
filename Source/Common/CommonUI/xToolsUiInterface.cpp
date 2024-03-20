@@ -1,12 +1,12 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakuiinterface.h"
+#include "xToolsUiInterface.h"
 
 #include <QApplication>
 #include <QIcon>
@@ -18,13 +18,13 @@
 #include "qapplication.h"
 #include "qmainwindow.h"
 #include "qobject.h"
-#include "sakdatastructure.h"
+#include "xToolsDataStructure.h"
 
-SAKUiInterface::SAKUiInterface(QObject* parent)
+xToolsUiInterface::xToolsUiInterface(QObject* parent)
     : QObject{parent}
 {}
 
-void SAKUiInterface::setValidator(QLineEdit* le, int textFormat)
+void xToolsUiInterface::setValidator(QLineEdit* le, int textFormat)
 {
     if (!le) {
         return;
@@ -32,13 +32,13 @@ void SAKUiInterface::setValidator(QLineEdit* le, int textFormat)
 
     static QMap<int, QRegularExpression> regExpMap;
     if (regExpMap.isEmpty()) {
-        regExpMap.insert(SAKDataStructure::TextFormatBin,
+        regExpMap.insert(xToolsDataStructure::TextFormatBin,
                          QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
-        regExpMap.insert(SAKDataStructure::TextFormatOct, QRegularExpression("([0-7][0-7][ ])*"));
-        regExpMap.insert(SAKDataStructure::TextFormatDec, QRegularExpression("([0-9][0-9][ ])*"));
-        regExpMap.insert(SAKDataStructure::TextFormatHex,
+        regExpMap.insert(xToolsDataStructure::TextFormatOct, QRegularExpression("([0-7][0-7][ ])*"));
+        regExpMap.insert(xToolsDataStructure::TextFormatDec, QRegularExpression("([0-9][0-9][ ])*"));
+        regExpMap.insert(xToolsDataStructure::TextFormatHex,
                          QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
-        regExpMap.insert(SAKDataStructure::TextFormatAscii, QRegularExpression("([ -~])*"));
+        regExpMap.insert(xToolsDataStructure::TextFormatAscii, QRegularExpression("([ -~])*"));
     }
 
     if (le->validator()) {
@@ -56,7 +56,7 @@ void SAKUiInterface::setValidator(QLineEdit* le, int textFormat)
     le->clear();
 }
 
-QIcon SAKUiInterface::cookedIcon(const QIcon& icon)
+QIcon xToolsUiInterface::cookedIcon(const QIcon& icon)
 {
     QPixmap pixmap = icon.pixmap(QSize(128, 128));
     QPainter painter(&pixmap);
@@ -66,7 +66,7 @@ QIcon SAKUiInterface::cookedIcon(const QIcon& icon)
     return colorIcon;
 }
 
-QMainWindow* SAKUiInterface::mainWindow()
+QMainWindow* xToolsUiInterface::mainWindow()
 {
     for (const auto& it : qobject_cast<QApplication*>(qApp)->topLevelWidgets()) {
         auto w = qobject_cast<QMainWindow*>(it);

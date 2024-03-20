@@ -14,7 +14,7 @@ namespace Ui {
 class xToolsNumberAssistant;
 }
 
-class SAKInterface;
+class xToolsInterface;
 class xToolsNumberAssistant : public QWidget
 {
     Q_OBJECT
@@ -38,7 +38,7 @@ private:
 
 private:
     Ui::xToolsNumberAssistant* ui;
-    SAKInterface* m_interface;
+    xToolsInterface* m_interface;
 
 private:
     void updateCookedData();

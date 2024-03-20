@@ -1,45 +1,45 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakspinbox.h"
+#include "xToolsSpinBox.h"
 
-#include "saksettings.h"
+#include "xToolsSettings.h"
 
-SAKSpinBox::SAKSpinBox(QWidget* parent)
+xToolsSpinBox::xToolsSpinBox(QWidget* parent)
     : QSpinBox(parent)
 {
     connect(this,
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
-            &SAKSpinBox::writeToSettingsFile);
+            &xToolsSpinBox::writeToSettingsFile);
 }
 
-void SAKSpinBox::setGroupKey(const QString& group, const QString& key)
+void xToolsSpinBox::setGroupKey(const QString& group, const QString& key)
 {
     mKey = group + "/" + key;
     readFromSettingsFile();
 }
 
-void SAKSpinBox::readFromSettingsFile()
+void xToolsSpinBox::readFromSettingsFile()
 {
     if (mKey.isEmpty()) {
         return;
     }
 
-    int value = SAKSettings::instance()->value(mKey).toInt();
+    int value = xToolsSettings::instance()->value(mKey).toInt();
     setValue(value);
 }
 
-void SAKSpinBox::writeToSettingsFile()
+void xToolsSpinBox::writeToSettingsFile()
 {
     if (mKey.isEmpty()) {
         return;
     }
 
-    SAKSettings::instance()->setValue(mKey, value());
+    xToolsSettings::instance()->setValue(mKey, value());
 }

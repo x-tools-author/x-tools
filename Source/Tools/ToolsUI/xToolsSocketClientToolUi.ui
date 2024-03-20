@@ -27,7 +27,7 @@
     <number>0</number>
    </property>
    <item row="2" column="1">
-    <widget class="SAKSpinBox" name="spinBoxClientPort">
+    <widget class="xToolsSpinBox" name="spinBoxClientPort">
      <property name="maximum">
       <number>65535</number>
      </property>
@@ -37,7 +37,7 @@
     </widget>
    </item>
    <item row="7" column="1">
-    <widget class="SAKIpComboBox" name="comboBoxServerAddress">
+    <widget class="xToolsIpComboBox" name="comboBoxServerAddress">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -116,7 +116,7 @@
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="SAKIpComboBox" name="comboBoxClientAddress">
+    <widget class="xToolsIpComboBox" name="comboBoxClientAddress">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -152,10 +152,10 @@
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="sakwebsocketmessagetypecombobox" name="comboBoxMessageType"/>
+    <widget class="xToolsWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
    </item>
    <item row="8" column="1">
-    <widget class="SAKSpinBox" name="spinBoxServerPort">
+    <widget class="xToolsSpinBox" name="spinBoxServerPort">
      <property name="maximum">
       <number>65535</number>
      </property>
@@ -168,7 +168,7 @@
     </widget>
    </item>
    <item row="4" column="0" colspan="2">
-    <widget class="SAKCheckBox" name="checkBoxSpecifyIpAndPort">
+    <widget class="xToolsCheckBox" name="checkBoxSpecifyIpAndPort">
      <property name="text">
       <string>Specify ip and port</string>
      </property>
@@ -178,24 +178,24 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKCheckBox</class>
+   <class>xToolsCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">sakcheckbox.h</header>
+   <header location="global">xToolsCheckBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKIpComboBox</class>
-   <extends>QComboBox</extends>
-   <header location="global">sakipcombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>sakwebsocketmessagetypecombobox</class>
-   <extends>QComboBox</extends>
-   <header location="global">sakwebsocketmessagetypecombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>SAKSpinBox</class>
+   <class>xToolsSpinBox</class>
    <extends>QSpinBox</extends>
-   <header location="global">sakspinbox.h</header>
+   <header location="global">xToolsSpinBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsIpComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsIpComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsWebSocketMessageTypeComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsWebSocketMessageTypeComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -11,9 +11,9 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-#include "sakcrcinterface.h"
-#include "sakdatastructure.h"
-#include "sakinterface.h"
+#include "xToolsCrcInterface.h"
+#include "xToolsDataStructure.h"
+#include "xToolsInterface.h"
 
 xToolsEmitterTool::xToolsEmitterTool(QObject *parent)
     : xToolsTableModelTool{parent}
@@ -46,14 +46,14 @@ QVariant xToolsEmitterTool::itemContext(int index)
     } else {
         ctx.insert(itemEnable(), true);
         ctx.insert(itemDescription(), "Demo");
-        ctx.insert(itemTextFormat(), SAKDataStructure::TextFormatAscii);
-        ctx.insert(itemEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
+        ctx.insert(itemTextFormat(), xToolsDataStructure::TextFormatAscii);
+        ctx.insert(itemEscapeCharacter(), xToolsDataStructure::EscapeCharacterOptionNone);
         ctx.insert(itemInterval(), 1000);
-        ctx.insert(itemPrefix(), SAKDataStructure::AffixesNone);
-        ctx.insert(itemSuffix(), SAKDataStructure::AffixesNone);
+        ctx.insert(itemPrefix(), xToolsDataStructure::AffixesNone);
+        ctx.insert(itemSuffix(), xToolsDataStructure::AffixesNone);
         ctx.insert(itemCrcEnable(), false);
         ctx.insert(itemCrcBigEndian(), false);
-        ctx.insert(itemCrcAlgorithm(), SAKCrcInterface::CRC_8);
+        ctx.insert(itemCrcAlgorithm(), xToolsCrcInterface::CRC_8);
         ctx.insert(itemCrcStartIndex(), 0);
         ctx.insert(itemCrcEndIndex(), 0);
         ctx.insert(itemText(), "This is a demo.");
@@ -265,14 +265,14 @@ QByteArray xToolsEmitterTool::itemBytes(const xToolsEmitterTool::Data &item)
 {
     QByteArray bytes;
     QString text = item.itemText;
-    text = SAKDataStructure::cookedString(item.itemEscapeCharacter, text);
-    bytes = SAKInterface::string2array(text, item.itemTextFormat);
-    QByteArray prefix = SAKDataStructure::affixesData(item.itemPrefix);
-    QByteArray suffix = SAKDataStructure::affixesData(item.itemSuffix);
+    text = xToolsDataStructure::cookedString(item.itemEscapeCharacter, text);
+    bytes = xToolsInterface::string2array(text, item.itemTextFormat);
+    QByteArray prefix = xToolsDataStructure::affixesData(item.itemPrefix);
+    QByteArray suffix = xToolsDataStructure::affixesData(item.itemSuffix);
 
     bytes.prepend(prefix);
     if (item.itemCrcEnable) {
-        SAKCrcInterface sakCrc;
+        xToolsCrcInterface sakCrc;
         QByteArray crcBytes = sakCrc.calculateBytes(bytes,
                                                     item.itemCrcAlgorithm,
                                                     item.itemCrcStartIndex,

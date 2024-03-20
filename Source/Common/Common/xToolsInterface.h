@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKINTERFACE_H
-#define SAKINTERFACE_H
+#pragma once
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -49,11 +48,11 @@
                                                    + QString(#structMember).split('.').last(), \
                                                checkBox)
 
-class SAKInterface : public QObject
+class xToolsInterface : public QObject
 {
     Q_OBJECT
 public:
-    explicit SAKInterface(QObject *parent = nullptr);
+    explicit xToolsInterface(QObject *parent = nullptr);
 
     Q_INVOKABLE static void setMaximumBlockCount(QVariant doc, int maximum);
     Q_INVOKABLE static void setAppFont(const QString &fontFamily);
@@ -113,5 +112,3 @@ public:
     static void setCheckBoxValueFromSettings(QSettings *settings, QString key, QCheckBox *checkBox);
     static void setSettingsValueFromCheckBox(QSettings *settings, QString key, QCheckBox *checkBox);
 };
-
-#endif // SAKINTERFACE_H

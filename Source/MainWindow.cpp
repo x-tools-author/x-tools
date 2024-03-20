@@ -35,12 +35,12 @@
 #include <QToolButton>
 #include <QVariant>
 
-#include "sakdatastructure.h"
-#include "sakinterface.h"
-#include "saksettings.h"
+#include "xToolsDataStructure.h"
+#include "xToolsInterface.h"
+#include "xToolsSettings.h"
 #include "xToolsToolBoxUi.h"
-#include "saktranslator.h"
-#include "sakuiinterface.h"
+#include "xToolsTranslator.h"
+#include "xToolsUiInterface.h"
 #include "xToolsAssistantFactory.h"
 
 #ifdef SAK_IMPORT_MODULE_CANBUSSTUDIO
@@ -60,7 +60,7 @@
 
 QString palettePath()
 {
-    QString fileName = SAKSettings::instance()->fileName();
+    QString fileName = xToolsSettings::instance()->fileName();
     QUrl url(fileName);
     QString path = fileName;
     QString logPath = path.remove(url.fileName());
@@ -267,7 +267,7 @@ void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
         gActionGroup.addAction(action);
 
         connect(action, &QAction::triggered, this, [=]() {
-            SAKSettings::instance()->setAppStyle(key);
+            xToolsSettings::instance()->setAppStyle(key);
             rebootRequestion();
         });
     }
@@ -275,7 +275,7 @@ void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
     appStyleMenu->addActions(gActionGroup.actions());
 
     // Reading the specified style.
-    QString style = SAKSettings::instance()->appStyle();
+    QString style = xToolsSettings::instance()->appStyle();
 
     if (style.isEmpty()) {
         return;
@@ -301,7 +301,7 @@ void MainWindow::initOptionMenuMainWindowMenu(QMenu* optionMenu)
     mainWindowMenu->addAction(action);
     optionMenu->addMenu(mainWindowMenu);
 
-    QVariant v = SAKSettings::instance()->value(mSettingsKey.exitToSystemTray);
+    QVariant v = xToolsSettings::instance()->value(mSettingsKey.exitToSystemTray);
     if (!v.isNull()) {
         bool isExitToSystemTray = v.toBool();
         action->setChecked(isExitToSystemTray);
@@ -309,7 +309,7 @@ void MainWindow::initOptionMenuMainWindowMenu(QMenu* optionMenu)
 
     connect(action, &QAction::triggered, this, [=]() {
         bool keep = action->isChecked();
-        SAKSettings::instance()->setValue(mSettingsKey.exitToSystemTray, keep);
+        xToolsSettings::instance()->setValue(mSettingsKey.exitToSystemTray, keep);
     });
 }
 
@@ -324,7 +324,7 @@ void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
     action = new QAction(tr("Open configuration floder"), this);
     menu->addAction(action);
     connect(action, &QAction::triggered, this, [=]() {
-        QString fileName = SAKSettings::instance()->fileName();
+        QString fileName = xToolsSettings::instance()->fileName();
         QUrl fileUrl = QUrl(fileName);
         QString floderUrl = fileName.remove(fileUrl.fileName());
         QDesktopServices::openUrl(floderUrl);
@@ -343,12 +343,12 @@ void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
     QAction* rpfAction = new QAction(tr("Round up for .75 and above"), this);
     QAction* passThroughAction = new QAction(tr("Don't round"), this);
 
-    int round = SAKDataStructure::HdpiPolicyRound;
-    int ceil = SAKDataStructure::HdpiPolicyCeil;
-    int floor = SAKDataStructure::HdpiPolicyFloor;
-    int preferFloor = SAKDataStructure::HdpiPolicyRoundPreferFloor;
-    int passThrough = SAKDataStructure::HdpiPolicyPassThrough;
-    int sysScale = SAKDataStructure::HdpiPolicySystem;
+    int round = xToolsDataStructure::HdpiPolicyRound;
+    int ceil = xToolsDataStructure::HdpiPolicyCeil;
+    int floor = xToolsDataStructure::HdpiPolicyFloor;
+    int preferFloor = xToolsDataStructure::HdpiPolicyRoundPreferFloor;
+    int passThrough = xToolsDataStructure::HdpiPolicyPassThrough;
+    int sysScale = xToolsDataStructure::HdpiPolicySystem;
 
     QString fileName = SAK_QT_CONF;
     auto triggered = [=](int policy) {
@@ -358,7 +358,7 @@ void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
             qInfo() << "removed" << fileName << "failed";
         }
 
-        SAKSettings::instance()->setHdpiPolicy(int(policy));
+        xToolsSettings::instance()->setHdpiPolicy(int(policy));
         rebootRequestion();
     };
 
@@ -379,15 +379,15 @@ void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
         a->setCheckable(true);
     }
 
-    if (SAKSettings::instance()->hdpiPolicy() == round) {
+    if (xToolsSettings::instance()->hdpiPolicy() == round) {
         roundAction->setChecked(true);
-    } else if (SAKSettings::instance()->hdpiPolicy() == ceil) {
+    } else if (xToolsSettings::instance()->hdpiPolicy() == ceil) {
         ceilAction->setChecked(true);
-    } else if (SAKSettings::instance()->hdpiPolicy() == floor) {
+    } else if (xToolsSettings::instance()->hdpiPolicy() == floor) {
         floorAction->setChecked(true);
-    } else if (SAKSettings::instance()->hdpiPolicy() == preferFloor) {
+    } else if (xToolsSettings::instance()->hdpiPolicy() == preferFloor) {
         rpfAction->setChecked(true);
-    } else if (SAKSettings::instance()->hdpiPolicy() == passThrough) {
+    } else if (xToolsSettings::instance()->hdpiPolicy() == passThrough) {
         passThroughAction->setChecked(true);
     }
 
@@ -435,12 +435,12 @@ void MainWindow::initOptionMenuPalette(QMenu* optionMenu)
     lightAction->setCheckable(true);
     darkAction->setCheckable(true);
 
-    int ret = SAKSettings::instance()->palette();
-    if (ret == SAKDataStructure::PaletteLight) {
+    int ret = xToolsSettings::instance()->palette();
+    if (ret == xToolsDataStructure::PaletteLight) {
         lightAction->setChecked(true);
-    } else if (ret == SAKDataStructure::PaletteDark) {
+    } else if (ret == xToolsDataStructure::PaletteDark) {
         darkAction->setChecked(true);
-    } else if (ret == SAKDataStructure::PaletteSystem) {
+    } else if (ret == xToolsDataStructure::PaletteSystem) {
         systemAction->setChecked(true);
     }
 
@@ -449,22 +449,22 @@ void MainWindow::initOptionMenuPalette(QMenu* optionMenu)
     m->addAction(darkAction);
 
     connect(systemAction, &QAction::triggered, this, [=]() {
-        SAKSettings::instance()->setPalette(SAKDataStructure::PaletteSystem);
+        xToolsSettings::instance()->setPalette(xToolsDataStructure::PaletteSystem);
         rebootRequestion();
     });
     connect(lightAction, &QAction::triggered, this, [=]() {
-        SAKSettings::instance()->setPalette(SAKDataStructure::PaletteLight);
+        xToolsSettings::instance()->setPalette(xToolsDataStructure::PaletteLight);
         rebootRequestion();
     });
     connect(darkAction, &QAction::triggered, this, [=]() {
-        SAKSettings::instance()->setPalette(SAKDataStructure::PaletteDark);
+        xToolsSettings::instance()->setPalette(xToolsDataStructure::PaletteDark);
         rebootRequestion();
     });
 
     QMenu* custom = new QMenu(tr("Custom"), this);
     QDir dir(palettePath());
     QFileInfoList infoList = dir.entryInfoList(QDir::Files | QDir::NoDotAndDotDot);
-    QString currentCustom = SAKSettings::instance()->customPalette();
+    QString currentCustom = xToolsSettings::instance()->customPalette();
     for (auto& info : infoList) {
         if (!info.isFile()) {
             continue;
@@ -476,14 +476,14 @@ void MainWindow::initOptionMenuPalette(QMenu* optionMenu)
         QAction* a = new QAction(fn, this);
         a->setCheckable(true);
         ag.addAction(a);
-        if (fn == currentCustom && ret == SAKDataStructure::PaletteCustom) {
+        if (fn == currentCustom && ret == xToolsDataStructure::PaletteCustom) {
             a->setChecked(true);
         }
 
         custom->addAction(a);
         connect(a, &QAction::triggered, this, [=]() {
-            SAKSettings* settings = SAKSettings::instance();
-            settings->setPalette(SAKDataStructure::PaletteCustom);
+            xToolsSettings* settings = xToolsSettings::instance();
+            settings->setPalette(xToolsDataStructure::PaletteCustom);
             settings->setCustomPalette(fileName);
             rebootRequestion();
         });
@@ -509,7 +509,7 @@ void MainWindow::initLanguageMenu()
     menuBar()->addMenu(languageMenu);
 
     static QActionGroup ag(this);
-    QStringList languages = SAKTranslator::instance()->languanges();
+    QStringList languages = xToolsTranslator::instance()->languanges();
     for (auto& language : languages) {
         QAction* action = new QAction(language, this);
         action->setCheckable(true);
@@ -517,11 +517,11 @@ void MainWindow::initLanguageMenu()
         ag.addAction(action);
 
         connect(action, &QAction::triggered, this, [=]() {
-            SAKSettings::instance()->setLanguage(language);
+            xToolsSettings::instance()->setLanguage(language);
             rebootRequestion();
         });
 
-        QString l = SAKSettings::instance()->language();
+        QString l = xToolsSettings::instance()->language();
         if (l == language) {
             action->setChecked(true);
         }
@@ -642,7 +642,7 @@ void MainWindow::initNav()
         toolBoxUi->initialize(type);
 
         initNav({&navButtonGroup,
-                 SAKUiInterface::cookedIcon(toolBoxUi->windowIcon()),
+                 xToolsUiInterface::cookedIcon(toolBoxUi->windowIcon()),
                  toolBoxUi->windowTitle(),
                  toolBoxUi,
                  tb});
@@ -686,11 +686,11 @@ void MainWindow::initNav()
 
 #if 1
     tb->addSeparator();
-    bool isTextBesideIcon = SAKSettings::instance()->isTextBesideIcon();
+    bool isTextBesideIcon = xToolsSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
     QToolButton* tbt = new QToolButton(this);
     path = ":/Resources/Icon/IconListWithIcon.svg";
-    tbt->setIcon(SAKUiInterface::cookedIcon(QIcon(path)));
+    tbt->setIcon(xToolsUiInterface::cookedIcon(QIcon(path)));
     tbt->setCheckable(true);
     tbt->setText(" " + tr("Hide Text"));
     tbt->setToolTip(tr("Click to show(hide) nav text"));
@@ -709,7 +709,7 @@ void MainWindow::initNav()
 
             cookedBt->setToolButtonStyle(style);
         }
-        SAKSettings::instance()->setIsTextBesideIcon(tbt->isChecked());
+        xToolsSettings::instance()->setIsTextBesideIcon(tbt->isChecked());
     });
     tb->addSeparator();
 #endif
@@ -730,7 +730,7 @@ void MainWindow::initNav()
 
 void MainWindow::initNav(const NavContext& ctx)
 {
-    bool isTextBesideIcon = SAKSettings::instance()->isTextBesideIcon();
+    bool isTextBesideIcon = xToolsSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
     QToolButton* bt = new QToolButton();
     bt->setAutoRaise(true);
@@ -754,10 +754,10 @@ void MainWindow::initNav(const NavContext& ctx)
     int pageCount = ctx.bg->buttons().count();
     QObject::connect(bt, &QToolButton::clicked, bt, [=]() {
         ui->stackedWidget->setCurrentIndex(pageCount - 1);
-        SAKSettings::instance()->setPageIndex(pageCount - 1);
+        xToolsSettings::instance()->setPageIndex(pageCount - 1);
     });
 
-    if (SAKSettings::instance()->pageIndex() == (pageCount - 1)) {
+    if (xToolsSettings::instance()->pageIndex() == (pageCount - 1)) {
         bt->setChecked(true);
         ui->stackedWidget->setCurrentIndex(pageCount - 1);
     }
@@ -780,7 +780,7 @@ void MainWindow::aboutSoftware()
 
     QString format = QLocale::system().dateFormat();
     format = format + " " + QLocale::system().timeFormat();
-    QString dateTimeString = SAKInterface::buildDateTime(format);
+    QString dateTimeString = xToolsInterface::buildDateTime(format);
     QList<Info> infoList;
     infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
 #ifndef SAK_RELEASE_FOR_APP_STORE
@@ -802,7 +802,7 @@ void MainWindow::aboutSoftware()
              << Info{tr("Copyright"),
                      tr("Copyright 2018-%1 x-tools-author(x-tools@outlook.com)."
                         " All rights reserved.")
-                         .arg(SAKInterface::buildDateTime("yyyy")),
+                         .arg(xToolsInterface::buildDateTime("yyyy")),
                      false};
 
     QDialog dialog(this);
@@ -832,7 +832,7 @@ void MainWindow::aboutSoftware()
 
 void MainWindow::clearConfiguration()
 {
-    SAKSettings::instance()->setClearSettings(true);
+    xToolsSettings::instance()->setClearSettings(true);
     rebootRequestion();
 }
 

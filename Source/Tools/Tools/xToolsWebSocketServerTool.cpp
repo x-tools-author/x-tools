@@ -10,7 +10,7 @@
 
 #include <QWebSocket>
 
-#include "sakinterface.h"
+#include "xToolsInterface.h"
 
 #define WS_ERR_SIGNAL void (QWebSocket::*)(QAbstractSocket::SocketError)
 
@@ -122,7 +122,7 @@ void xToolsWebSocketServerTool::writeBytesInner(QWebSocket *client, const QByteA
     qint64 ret = -1;
     QString hex;
     if (m_messageType == 0) {
-        hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
+        hex = QString::fromLatin1(xToolsInterface::arrayToHex(bytes, ' '));
         ret = client->sendBinaryMessage(bytes);
     } else {
         hex = QString::fromUtf8(bytes);

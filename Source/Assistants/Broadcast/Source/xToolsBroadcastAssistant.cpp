@@ -14,7 +14,7 @@
 #include <QNetworkInterface>
 
 #include "xToolsBroadcastThread.h"
-#include "sakdatastructure.h"
+#include "xToolsDataStructure.h"
 
 xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
     : QWidget(parent)
@@ -27,8 +27,8 @@ xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
     connect(m_broadcastThread, &xToolsBroadcastThread::bytesWritten, this, [=](const QByteArray& bytes) {
         QByteArray temp = bytes;
         int format = ui->comboBoxOutputFormat->currentData().toInt();
-        auto cookedFormat = SAKDataStructure::SAKEnumTextFormatOutput(format);
-        auto bytesString = SAKDataStructure::byteArrayToString(temp, cookedFormat);
+        auto cookedFormat = xToolsDataStructure::SAKEnumTextFormatOutput(format);
+        auto bytesString = xToolsDataStructure::byteArrayToString(temp, cookedFormat);
         auto info = QDateTime::currentDateTime().toString("hh:mm:ss");
         info += " Tx: ";
         info = QString("<font color=silver>%1</font>").arg(info);
@@ -40,7 +40,7 @@ xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
             this,
             [=](const QString& text) {
                 Q_UNUSED(text);
-                SAKDataStructure::setLineEditTextFormat(ui->lineEditBroadcastData,
+                xToolsDataStructure::setLineEditTextFormat(ui->lineEditBroadcastData,
                                                         ui->comboBoxBroadcastFormat->currentData()
                                                             .toInt());
             });
@@ -79,10 +79,10 @@ void xToolsBroadcastAssistant::initUi()
     initUiBroadcastAddress();
     initUiBroadcastInterval();
 
-    SAKDataStructure::setComboBoxTextInputFormat(ui->comboBoxBroadcastFormat);
-    SAKDataStructure::setComboBoxTextOutputFormat(ui->comboBoxOutputFormat);
-    SAKDataStructure::setupSuffix(ui->comboBoxBroadcastPrefix);
-    SAKDataStructure::setupSuffix(ui->comboBoxBroadcastSuffix);
+    xToolsDataStructure::setComboBoxTextInputFormat(ui->comboBoxBroadcastFormat);
+    xToolsDataStructure::setComboBoxTextOutputFormat(ui->comboBoxOutputFormat);
+    xToolsDataStructure::setupSuffix(ui->comboBoxBroadcastPrefix);
+    xToolsDataStructure::setupSuffix(ui->comboBoxBroadcastSuffix);
 }
 
 void xToolsBroadcastAssistant::initUiBroadcastAddress()
@@ -138,14 +138,14 @@ QByteArray xToolsBroadcastAssistant::packetData()
     QByteArray bytes;
 
     int prefixType = ui->comboBoxBroadcastPrefix->currentData().toInt();
-    QByteArray prefix = SAKDataStructure::prefix(prefixType).toLatin1();
+    QByteArray prefix = xToolsDataStructure::prefix(prefixType).toLatin1();
 
     int format = ui->comboBoxBroadcastFormat->currentData().toInt();
     QString text = ui->lineEditBroadcastData->text();
-    QByteArray data = SAKDataStructure::stringToByteArray(text, format);
+    QByteArray data = xToolsDataStructure::stringToByteArray(text, format);
 
     int suffixType = ui->comboBoxBroadcastSuffix->currentData().toInt();
-    QByteArray suffix = SAKDataStructure::suffix(suffixType).toLatin1();
+    QByteArray suffix = xToolsDataStructure::suffix(suffixType).toLatin1();
 
     bytes.append(prefix);
     bytes.append(data);

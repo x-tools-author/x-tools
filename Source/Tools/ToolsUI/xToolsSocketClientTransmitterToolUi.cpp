@@ -8,12 +8,12 @@
  **************************************************************************************************/
 #include "xToolsSocketClientTransmitterToolUi.h"
 
-#include "sakuiinterface.h"
+#include "xToolsUiInterface.h"
 
 xToolsSocketClientTransmitterToolUi::xToolsSocketClientTransmitterToolUi(const char *lg, QWidget *parent)
     : xToolsTransmitterToolUi(lg, parent)
 {
-    mEditor = new xToolsSocketClientTransmitterToolUiEditor(SAKUiInterface::mainWindow());
+    mEditor = new xToolsSocketClientTransmitterToolUiEditor(xToolsUiInterface::mainWindow());
 }
 
 QDialog *xToolsSocketClientTransmitterToolUi::itemEditor()

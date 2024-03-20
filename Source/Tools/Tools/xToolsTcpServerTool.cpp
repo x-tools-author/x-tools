@@ -10,7 +10,7 @@
 
 #include <QTcpSocket>
 
-#include "sakcompatibility.h"
+#include "xToolsCompatibility.h"
 
 xToolsTcpServerTool::xToolsTcpServerTool(QObject *parent)
     : xToolsSocketServerTool{parent}

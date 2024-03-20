@@ -34,7 +34,7 @@
        </widget>
       </item>
       <item row="4" column="3">
-       <widget class="SAKCrcAlgorithmComboBox" name="comboBoxAlgorithm"/>
+       <widget class="xToolsCrcAlgorithmComboBox" name="comboBoxAlgorithm"/>
       </item>
       <item row="4" column="2">
        <widget class="QLabel" name="label_7">
@@ -70,10 +70,10 @@
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="SAKAffixesComboBox" name="comboBoxSufix"/>
+       <widget class="xToolsAffixesComboBox" name="comboBoxSufix"/>
       </item>
       <item row="3" column="1">
-       <widget class="SAKEscapeCharacterComboBox" name="comboBoxEscaoe"/>
+       <widget class="xToolsEscapeCharacterComboBox" name="comboBoxEscaoe"/>
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="label_4">
@@ -145,7 +145,7 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="SAKAffixesComboBox" name="comboBoxPrefix"/>
+       <widget class="xToolsAffixesComboBox" name="comboBoxPrefix"/>
       </item>
       <item row="12" column="0" colspan="4">
        <widget class="QLabel" name="label_12">
@@ -175,7 +175,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="SAKTextFormatComboBox" name="comboBoxFormat">
+       <widget class="xToolsTextFormatComboBox" name="comboBoxFormat">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -297,24 +297,24 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKEscapeCharacterComboBox</class>
+   <class>xToolsEscapeCharacterComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakescapecharactercombobox.h</header>
+   <header location="global">xToolsEscapeCharacterComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKTextFormatComboBox</class>
+   <class>xToolsTextFormatComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">saktextformatcombobox.h</header>
+   <header location="global">xToolsTextFormatComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKAffixesComboBox</class>
+   <class>xToolsAffixesComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakaffixescombobox.h</header>
+   <header location="global">xToolsAffixesComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKCrcAlgorithmComboBox</class>
+   <class>xToolsCrcAlgorithmComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakcrcalgorithmcombobox.h</header>
+   <header location="global">xToolsCrcAlgorithmComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -9,7 +9,7 @@
 #pragma once
 
 #include "xToolsBaseTool.h"
-#include "saktablemodel.h"
+#include "xToolsTableModel.h"
 
 class xToolsTableModelTool : public xToolsBaseTool
 {
@@ -40,7 +40,7 @@ protected:
         = 0;
 
 protected:
-    SAKTableModel *mTableModel;
+    xToolsTableModel *mTableModel;
 
 private:
     void onInvokeGetRowCount(int &count);

@@ -6,6 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#pragma once
+
 #include <QApplication>
 #include <QDir>
 #include <QFile>
@@ -15,9 +17,9 @@
 #include "glog/logging.h"
 #endif
 
-#include "sakinterface.h"
-#include "saksettings.h"
-#include "saktranslator.h"
+#include "xToolsInterface.h"
+#include "xToolsSettings.h"
+#include "xToolsTranslator.h"
 
 #ifdef SAK_USING_GLOG
 
@@ -107,9 +109,9 @@ static void sakInstallMessageHandler()
 static void sakTryToClearSettings()
 {
     // Remove settings file and database
-    if (SAKSettings::instance()->clearSettings()) {
-        SAKSettings::instance()->setClearSettings(false);
-        if (QFile::remove(SAKSettings::instance()->fileName())) {
+    if (xToolsSettings::instance()->clearSettings()) {
+        xToolsSettings::instance()->setClearSettings(false);
+        if (QFile::remove(xToolsSettings::instance()->fileName())) {
             qInfo() << "Remove settings file successfully.";
         } else {
             qWarning() << "Remove settings file failed!";
@@ -119,8 +121,8 @@ static void sakTryToClearSettings()
 
 static void sakInitLanguage()
 {
-    QString language = SAKSettings::instance()->language();
-    SAKTranslator::instance()->setupLanguage(language);
+    QString language = xToolsSettings::instance()->language();
+    xToolsTranslator::instance()->setupLanguage(language);
 }
 
 static void sakInitHdpi()
@@ -129,8 +131,8 @@ static void sakInitHdpi()
     qputenv("QT_SCALE_FACTOR", "1.5");
 #endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    int policy = SAKSettings::instance()->hdpiPolicy();
-    if (SAKInterface::isQtHighDpiScalePolicy(policy)) {
+    int policy = xToolsSettings::instance()->hdpiPolicy();
+    if (xToolsInterface::isQtHighDpiScalePolicy(policy)) {
         const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
         QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
     }
@@ -140,7 +142,7 @@ static void sakInitHdpi()
 static void sakInitAppStyle()
 {
     qInfo() << "Supported style:" << QStyleFactory::keys();
-    const QString style = SAKSettings::instance()->appStyle();
+    const QString style = xToolsSettings::instance()->appStyle();
     if (QStyleFactory::keys().contains(style)) {
         qInfo() << "App style:" << style;
         QApplication::setStyle(QStyleFactory::create(style));

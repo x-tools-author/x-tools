@@ -48,7 +48,7 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="SAKAffixesComboBox" name="comboBoxPrefix"/>
+    <widget class="xToolsAffixesComboBox" name="comboBoxPrefix"/>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_3">
@@ -77,19 +77,19 @@
     </widget>
    </item>
    <item row="7" column="1">
-    <widget class="SAKSpinBox" name="spinBoxEndIndex"/>
+    <widget class="xToolsSpinBox" name="spinBoxEndIndex"/>
    </item>
    <item row="1" column="1">
-    <widget class="SAKAffixesComboBox" name="comboBoxSuffix"/>
+    <widget class="xToolsAffixesComboBox" name="comboBoxSuffix"/>
    </item>
    <item row="6" column="1">
-    <widget class="SAKSpinBox" name="spinBoxStartIndex"/>
+    <widget class="xToolsSpinBox" name="spinBoxStartIndex"/>
    </item>
    <item row="2" column="1">
-    <widget class="SAKEscapeCharacterComboBox" name="comboBoxEscape"/>
+    <widget class="xToolsEscapeCharacterComboBox" name="comboBoxEscape"/>
    </item>
    <item row="8" column="1">
-    <widget class="SAKCrcAlgorithmComboBox" name="comboBoxAglorithm"/>
+    <widget class="xToolsCrcAlgorithmComboBox" name="comboBoxAglorithm"/>
    </item>
    <item row="8" column="0">
     <widget class="QLabel" name="label_7">
@@ -120,14 +120,14 @@
    <item row="9" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="SAKCheckBox" name="checkBoxAppendCrc">
+      <widget class="xToolsCheckBox" name="checkBoxAppendCrc">
        <property name="text">
         <string>Append CRC</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="SAKCheckBox" name="checkBoxBigEndian">
+      <widget class="xToolsCheckBox" name="checkBoxBigEndian">
        <property name="text">
         <string>Big endian CRC</string>
        </property>
@@ -139,29 +139,29 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKCheckBox</class>
+   <class>xToolsEscapeCharacterComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsEscapeCharacterComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsAffixesComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsAffixesComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsCrcAlgorithmComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsCrcAlgorithmComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsCheckBox</class>
    <extends>QCheckBox</extends>
-   <header location="global">sakcheckbox.h</header>
+   <header location="global">xToolsCheckBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKSpinBox</class>
+   <class>xToolsSpinBox</class>
    <extends>QSpinBox</extends>
-   <header location="global">sakspinbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>SAKEscapeCharacterComboBox</class>
-   <extends>QComboBox</extends>
-   <header location="global">sakescapecharactercombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>SAKAffixesComboBox</class>
-   <extends>QComboBox</extends>
-   <header location="global">sakaffixescombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>SAKCrcAlgorithmComboBox</class>
-   <extends>QComboBox</extends>
-   <header location="global">sakcrcalgorithmcombobox.h</header>
+   <header location="global">xToolsSpinBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

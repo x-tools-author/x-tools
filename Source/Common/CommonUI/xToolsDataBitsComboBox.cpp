@@ -1,17 +1,17 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakdatabitscombobox.h"
+#include "xToolsDataBitsComboBox.h"
 
 #include <QSerialPort>
 
-SAKDataBitsComboBox::SAKDataBitsComboBox(QWidget* parent)
-    : SAKComboBox(parent)
+xToolsDataBitsComboBox::xToolsDataBitsComboBox(QWidget* parent)
+    : xToolsComboBox(parent)
 {
     addItem("8", QSerialPort::Data8);
     addItem("7", QSerialPort::Data7);

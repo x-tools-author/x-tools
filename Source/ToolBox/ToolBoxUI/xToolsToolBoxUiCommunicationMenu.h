@@ -17,7 +17,7 @@ class xToolsToolBoxUiCommunicationMenu;
 }
 
 class xToolsToolBox;
-class SAKHighlighter;
+class xToolsHighlighter;
 class xToolsToolBoxUiCommunicationMenu : public QMenu
 {
     Q_OBJECT

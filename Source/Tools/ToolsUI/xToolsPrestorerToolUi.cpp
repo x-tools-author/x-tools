@@ -15,16 +15,16 @@
 #include <QStandardItemModel>
 #include <QTableView>
 
-#include "sakmenu.h"
+#include "xToolsMenu.h"
 #include "xToolsPrestorerTool.h"
 #include "xToolsPrestorerToolUiEditor.h"
-#include "sakuiinterface.h"
+#include "xToolsUiInterface.h"
 
 xToolsPrestorerToolUi::xToolsPrestorerToolUi(QWidget *parent)
     : xToolsTableModelToolUi{"SAK.PrestorerToolUi", parent}
 {
-    mEditor = new xToolsPrestorerToolUiEditor(SAKUiInterface::mainWindow());
-    mMenu = new SAKMenu();
+    mEditor = new xToolsPrestorerToolUiEditor(xToolsUiInterface::mainWindow());
+    mMenu = new xToolsMenu();
 }
 
 xToolsPrestorerToolUi::~xToolsPrestorerToolUi() {}
@@ -43,7 +43,7 @@ void xToolsPrestorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const 
     setStretchSections(columns);
 
     xToolsPrestorerTool *cookedTool = qobject_cast<xToolsPrestorerTool *>(tool);
-    auto *model = cookedTool->tableModel().value<SAKTableModel *>();
+    auto *model = cookedTool->tableModel().value<xToolsTableModel *>();
     connect(model, &QAbstractTableModel::rowsRemoved, this, &xToolsPrestorerToolUi::updateMenu);
     connect(model, &QAbstractTableModel::rowsInserted, this, &xToolsPrestorerToolUi::updateMenu);
     connect(model, &QAbstractTableModel::dataChanged, this, &xToolsPrestorerToolUi::updateMenu);
@@ -86,7 +86,7 @@ QDialog *xToolsPrestorerToolUi::itemEditor()
 void xToolsPrestorerToolUi::updateMenu()
 {
     auto *cookedTool = qobject_cast<xToolsPrestorerTool *>(mTableModelTool);
-    auto *model = cookedTool->tableModel().value<SAKTableModel *>();
+    auto *model = cookedTool->tableModel().value<xToolsTableModel *>();
 
     mMenu->clear();
 

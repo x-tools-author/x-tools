@@ -6,6 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsInterface.h"
+
 #include <QClipboard>
 #include <QDateTime>
 #include <QDebug>
@@ -28,14 +30,13 @@
 #include <QSettings>
 #include <QStandardItemModel>
 
-#include "sakdatastructure.h"
-#include "sakinterface.h"
+#include "xToolsDataStructure.h"
 
-SAKInterface::SAKInterface(QObject *parent)
+xToolsInterface::xToolsInterface(QObject *parent)
     : QObject{parent}
 {}
 
-void SAKInterface::setMaximumBlockCount(QVariant doc, int maximum)
+void xToolsInterface::setMaximumBlockCount(QVariant doc, int maximum)
 {
     auto obj = doc.value<QObject *>();
     if (obj) {
@@ -57,17 +58,17 @@ void SAKInterface::setMaximumBlockCount(QVariant doc, int maximum)
     }
 }
 
-void SAKInterface::setAppFont(const QString &fontFamily)
+void xToolsInterface::setAppFont(const QString &fontFamily)
 {
     qGuiApp->setFont(fontFamily);
 }
 
-void SAKInterface::setClipboardText(const QString &text)
+void xToolsInterface::setClipboardText(const QString &text)
 {
     QGuiApplication::clipboard()->setText(text);
 }
 
-bool SAKInterface::isQtHighDpiScalePolicy(int policy)
+bool xToolsInterface::isQtHighDpiScalePolicy(int policy)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     QList<int> policyList;
@@ -83,7 +84,7 @@ bool SAKInterface::isQtHighDpiScalePolicy(int policy)
 #endif
 }
 
-QString SAKInterface::arrayToString(const QByteArray &array, int format)
+QString xToolsInterface::arrayToString(const QByteArray &array, int format)
 {
     auto cookedArray = [](const QByteArray &array, int base, int len) -> QString {
         QString str, numStr;
@@ -99,27 +100,27 @@ QString SAKInterface::arrayToString(const QByteArray &array, int format)
         return str;
     };
 
-    if (SAKDataStructure::TextFormatBin == format) {
+    if (xToolsDataStructure::TextFormatBin == format) {
         return cookedArray(array, 2, 8);
-    } else if (SAKDataStructure::TextFormatOct == format) {
+    } else if (xToolsDataStructure::TextFormatOct == format) {
         return cookedArray(array, 8, 3);
-    } else if (SAKDataStructure::TextFormatDec == format) {
+    } else if (xToolsDataStructure::TextFormatDec == format) {
         return cookedArray(array, 10, 3);
-    } else if (SAKDataStructure::TextFormatHex == format) {
+    } else if (xToolsDataStructure::TextFormatHex == format) {
         return cookedArray(array, 16, 2);
-    } else if (SAKDataStructure::TextFormatAscii == format) {
+    } else if (xToolsDataStructure::TextFormatAscii == format) {
         return QString::fromLatin1(array);
     } else {
         return QString::fromUtf8(array);
     }
 }
 
-QString SAKInterface::dateTimeString(const QString &format)
+QString xToolsInterface::dateTimeString(const QString &format)
 {
     return QDateTime::currentDateTime().toString(format);
 }
 
-QString SAKInterface::cookedFileName(const QString &fileName)
+QString xToolsInterface::cookedFileName(const QString &fileName)
 {
     QString cookedFileName = fileName;
 #ifdef Q_OS_WIN
@@ -129,18 +130,18 @@ QString SAKInterface::cookedFileName(const QString &fileName)
     return cookedFileName;
 }
 
-QString SAKInterface::string2hexString(const QString &str)
+QString xToolsInterface::string2hexString(const QString &str)
 {
     return QString::fromLatin1(str.toUtf8().toHex());
 }
 
-QString SAKInterface::hexString2String(const QString &str)
+QString xToolsInterface::hexString2String(const QString &str)
 {
     QByteArray arr = QByteArray::fromHex(str.toUtf8());
     return QString::fromUtf8(arr);
 }
 
-QString SAKInterface::buildDateTime(const QString &format)
+QString xToolsInterface::buildDateTime(const QString &format)
 {
     QString str = QString(__DATE__);
     QDate date = QDate::fromString(str, "MMM d yyyy");
@@ -151,17 +152,17 @@ QString SAKInterface::buildDateTime(const QString &format)
     return QDateTime(date, time).toString(format);
 }
 
-QString SAKInterface::dateFormat()
+QString xToolsInterface::dateFormat()
 {
     return QLocale::system().dateFormat();
 }
 
-QString SAKInterface::timeFormat()
+QString xToolsInterface::timeFormat()
 {
     return QLocale::system().timeFormat();
 }
 
-QByteArray SAKInterface::string2array(const QString &input, int format)
+QByteArray xToolsInterface::string2array(const QString &input, int format)
 {
     QByteArray data;
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
@@ -170,35 +171,35 @@ QByteArray SAKInterface::string2array(const QString &input, int format)
     auto behavior = Qt::SkipEmptyParts;
 #endif
 
-    if (format == SAKDataStructure::TextFormatBin) {
+    if (format == xToolsDataStructure::TextFormatBin) {
         QStringList strList = input.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 2);
             data.append(reinterpret_cast<char *>(&value), 1);
         }
-    } else if (format == SAKDataStructure::TextFormatOct) {
+    } else if (format == xToolsDataStructure::TextFormatOct) {
         QStringList strList = input.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 8);
             data.append(reinterpret_cast<char *>(&value), 1);
         }
-    } else if (format == SAKDataStructure::TextFormatDec) {
+    } else if (format == xToolsDataStructure::TextFormatDec) {
         QStringList strList = input.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 10);
             data.append(reinterpret_cast<char *>(&value), 1);
         }
-    } else if (format == SAKDataStructure::TextFormatHex) {
+    } else if (format == xToolsDataStructure::TextFormatHex) {
         QStringList strList = input.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 16);
             data.append(reinterpret_cast<char *>(&value), 1);
         }
-    } else if (format == SAKDataStructure::TextFormatAscii) {
+    } else if (format == xToolsDataStructure::TextFormatAscii) {
         data = input.toLatin1();
     } else {
         data = input.toUtf8();
@@ -207,12 +208,12 @@ QByteArray SAKInterface::string2array(const QString &input, int format)
     return data;
 }
 
-QByteArray SAKInterface::arrayAppendArray(const QByteArray &a1, const QByteArray &a2)
+QByteArray xToolsInterface::arrayAppendArray(const QByteArray &a1, const QByteArray &a2)
 {
     return a1 + a2;
 }
 
-QByteArray SAKInterface::arrayToHex(const QByteArray &array, char separator)
+QByteArray xToolsInterface::arrayToHex(const QByteArray &array, char separator)
 {
     if (array.isEmpty()) {
         return array;
@@ -234,7 +235,7 @@ QByteArray SAKInterface::arrayToHex(const QByteArray &array, char separator)
     return hex;
 }
 
-void SAKInterface::setLineEditValidator(QLineEdit *lineEdit,
+void xToolsInterface::setLineEditValidator(QLineEdit *lineEdit,
                                         SAKEnumValidatorType type,
                                         int maxLength)
 {
@@ -348,7 +349,7 @@ void SAKInterface::addSerialPortFlowControlItemsToComboBox(QComboBox *comboBox)
 }
 #endif
 
-void SAKInterface::setComboBoxIndexFromSettings(QSettings *settings,
+void xToolsInterface::setComboBoxIndexFromSettings(QSettings *settings,
                                                 QString key,
                                                 QComboBox *comboBox)
 {
@@ -358,7 +359,7 @@ void SAKInterface::setComboBoxIndexFromSettings(QSettings *settings,
     }
 }
 
-void SAKInterface::setSettingsValueFromComboBoxIndex(QSettings *settings,
+void xToolsInterface::setSettingsValueFromComboBoxIndex(QSettings *settings,
                                                      QString key,
                                                      QComboBox *comboBox)
 {
@@ -366,7 +367,7 @@ void SAKInterface::setSettingsValueFromComboBoxIndex(QSettings *settings,
     settings->setValue(key, currentIndex);
 }
 
-void SAKInterface::setLineEditTextFromSettings(QSettings *settings, QString key, QLineEdit *lineEdit)
+void xToolsInterface::setLineEditTextFromSettings(QSettings *settings, QString key, QLineEdit *lineEdit)
 {
     QString text = settings->value(key).toString();
     if (!text.isEmpty()) {
@@ -374,7 +375,7 @@ void SAKInterface::setLineEditTextFromSettings(QSettings *settings, QString key,
     }
 }
 
-void SAKInterface::setSettingsValueFromLineEditText(QSettings *settings,
+void xToolsInterface::setSettingsValueFromLineEditText(QSettings *settings,
                                                     QString key,
                                                     QLineEdit *lineEdit)
 {
@@ -382,14 +383,14 @@ void SAKInterface::setSettingsValueFromLineEditText(QSettings *settings,
     settings->setValue(key, value);
 }
 
-void SAKInterface::setCheckBoxValueFromSettings(QSettings *settings,
+void xToolsInterface::setCheckBoxValueFromSettings(QSettings *settings,
                                                 QString key,
                                                 QCheckBox *checkBox)
 {
     checkBox->setChecked(settings->value(key).toBool());
 }
 
-void SAKInterface::setSettingsValueFromCheckBox(QSettings *settings,
+void xToolsInterface::setSettingsValueFromCheckBox(QSettings *settings,
                                                 QString key,
                                                 QCheckBox *checkBox)
 {

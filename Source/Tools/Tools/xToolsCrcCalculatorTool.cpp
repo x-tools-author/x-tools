@@ -8,16 +8,16 @@
  **************************************************************************************************/
 #include "xToolsCrcCalculatorTool.h"
 
-#include "sakcrcinterface.h"
+#include "xToolsCrcInterface.h"
 
 xToolsCrcCalculatorTool::xToolsCrcCalculatorTool(QObject *parent)
     : xToolsBaseTool(parent)
 {
     m_startIndex = 0;
     m_endIndex = 0;
-    m_algorithm = SAKCrcInterface::CRC_8;
+    m_algorithm = xToolsCrcInterface::CRC_8;
     m_bigEndian = false;
-    m_crcInterface = new SAKCrcInterface(this);
+    m_crcInterface = new xToolsCrcInterface(this);
 }
 
 xToolsCrcCalculatorTool::~xToolsCrcCalculatorTool() {}
