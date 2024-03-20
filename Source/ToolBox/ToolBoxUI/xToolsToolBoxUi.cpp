@@ -39,7 +39,7 @@
 #include "xToolsUiInterface.h"
 #include "xToolsWebSocketTransmitterToolUi.h"
 
-#ifdef SAK_IMPORT_MODULE_BLUETOOTH
+#ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
 #include "sakblecentraltoolui.h"
 #endif
 
@@ -69,8 +69,8 @@ QList<int> xToolsToolBoxUi::supportedCommunicationTools()
 {
     QList<int> list;
     list << xToolsToolFactory::SerialportTool
-#ifdef SAK_IMPORT_MODULE_BLUETOOTH
-         << SAKToolFactory::BleCentralTool
+#ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
+         << xToolsToolFactory::BleCentralTool
 #endif
          << xToolsToolFactory::UdpClientTool << xToolsToolFactory::UdpServerTool
          << xToolsToolFactory::TcpClientTool << xToolsToolFactory::TcpServerTool
@@ -169,8 +169,8 @@ xToolsCommunicationToolUi* xToolsToolBoxUi::communicationToolUi(int type)
     } else if (type == xToolsToolFactory::WebSocketServerTool) {
         w = new xToolsSocketServerToolUi();
     }
-#ifdef SAK_IMPORT_MODULE_BLUETOOTH
-    else if (type == SAKToolFactory::BleCentralTool) {
+#ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
+    else if (type == xToolsToolFactory::BleCentralTool) {
         w = new SAKBleCentralToolUi();
     }
 #endif

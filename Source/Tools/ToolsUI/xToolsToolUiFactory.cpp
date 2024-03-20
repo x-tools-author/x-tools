@@ -29,7 +29,7 @@
 #include "xToolsVelometerToolUi.h"
 #include "xToolsWebSocketTransmitterToolUi.h"
 
-#ifdef SAK_IMPORT_MODULE_BLUETOOTH
+#ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
 #include "sakblecentraltoolui.h"
 #endif
 
@@ -78,8 +78,8 @@ xToolsBaseToolUi *xToolsToolUiFactory::createToolUi(int type)
         return new xToolsSocketClientToolUi();
     case xToolsToolFactory::WebSocketServerTool:
         return new xToolsSocketServerToolUi();
-#ifdef SAK_IMPORT_MODULE_BLUETOOTH
-    case SAKToolFactory::BleCentralTool:
+#ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
+    case xToolsToolFactory::BleCentralTool:
         return new SAKBleCentralToolUi();
 #endif
     case xToolsToolFactory::StatistiticianTool:

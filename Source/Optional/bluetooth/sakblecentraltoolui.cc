@@ -1,12 +1,13 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
- * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
 #include "sakblecentraltoolui.h"
+#include "ui_sakblecentraltoolui.h"
 
 #include <QGridLayout>
 #include <QLabel>
@@ -15,14 +16,13 @@
 #include <QWidget>
 #include <QWidgetAction>
 
-#include "saklineedit.h"
-#include "sakspinbox.h"
-#include "ui_sakblecentraltoolui.h"
+#include "xToolsLineEdit.h"
+#include "xToolsSpinBox.h"
 
 #define SAK_CB_I_C &QComboBox::currentIndexChanged
 
 SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget* parent)
-    : SAKCommunicationToolUi{parent}
+    : xToolsCommunicationToolUi{parent}
     , ui(new Ui::SAKBleCentralToolUi)
     , mBleTool(Q_NULLPTR)
 {
@@ -78,9 +78,9 @@ SAKBleCentralToolUi::~SAKBleCentralToolUi()
     delete ui;
 }
 
-void SAKBleCentralToolUi::onBaseToolUiInitialized(SAKBaseTool* tool, const QString& settingsGroup)
+void SAKBleCentralToolUi::onBaseToolUiInitialized(xToolsBaseTool* tool, const QString& settingsGroup)
 {
-    SAKCommunicationToolUi::onBaseToolUiInitialized(tool, settingsGroup);
+    xToolsCommunicationToolUi::onBaseToolUiInitialized(tool, settingsGroup);
 
     mBleTool = qobject_cast<SAKBleCentralTool*>(mTool);
     if (!mBleTool) {
@@ -114,7 +114,7 @@ void SAKBleCentralToolUi::initSettingsMenu(const QString& settingsGroup)
 
     int rowIndex = 0;
     gl->addWidget(new QLabel(tr("Timeout interval(S)"), w), rowIndex, 0, 1, 1);
-    SAKSpinBox* sp = new SAKSpinBox(w);
+    xToolsSpinBox* sp = new xToolsSpinBox(w);
     sp->setMinimum(10);
     sp->setMaximum(120);
     sp->setValue(120);
@@ -131,10 +131,10 @@ void SAKBleCentralToolUi::initSettingsMenu(const QString& settingsGroup)
 
     rowIndex += 1;
     gl->addWidget(new QLabel(tr("Name filtter"), w), rowIndex, 0, 1, 1);
-    SAKLineEdit* le = new SAKLineEdit(w);
+    xToolsLineEdit* le = new xToolsLineEdit(w);
     le->setGroupKey(settingsGroup, "nameFiltter");
     gl->addWidget(le, rowIndex, 1, 1, 1);
-    connect(le, &SAKLineEdit::textChanged, this, [=](const QString& text) {
+    connect(le, &xToolsLineEdit::textChanged, this, [=](const QString& text) {
         ui->comboBoxDevices->setNameFiltter(text);
     });
 

@@ -13,12 +13,13 @@
 #include <QObject>
 #include <QTextEdit>
 
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
+#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
 #include <QSerialPort>
+#include <QSerialPortInfo>
 #endif
 
-#ifdef SAK_IMPORT_MODULE_BLE
-#ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
+#ifdef X_TOOLS_IMPORT_MODULE_BLE
+#ifdef X_TOOLS_IMPORT_MODULE_BLE_CENTRAL
 #include <QBluetoothDeviceInfo>
 #endif
 #endif
@@ -145,7 +146,7 @@ public:
     enum SAKEnumPrefixType { PrefixTypeNone, PrefixTypeR, PrefixTypeN, PrefixTypeRN, PrefixTypeNR };
     Q_ENUM(SAKEnumPrefixType);
 
-#ifdef SAK_IMPORT_MODULE_TEST
+#ifdef X_TOOLS_IMPORT_MODULE_TEST
     struct SAKStructTestParametersContext
     {
         bool openFailed;
@@ -159,7 +160,7 @@ public:
     };
 #endif
 
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
+#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
     struct SAKStructSerialPortParametersContext
     {
         QString portName;
@@ -173,8 +174,8 @@ public:
     };
 #endif
 
-#ifdef SAK_IMPORT_MODULE_UDP
-#ifdef SAK_IMPORT_MODULE_UDP_CLIENT
+#ifdef X_TOOLS_IMPORT_MODULE_UDP
+#ifdef X_TOOLS_IMPORT_MODULE_UDP_CLIENT
     struct SAKStructUdpClientParametersContext
     {
         QString peerHost;
@@ -196,8 +197,8 @@ public:
 #endif
 #endif
 
-#ifdef SAK_IMPORT_MODULE_TCP
-#ifdef SAK_IMPORT_MODULE_TCP_CLIENT
+#ifdef X_TOOLS_IMPORT_MODULE_TCP
+#ifdef X_TOOLS_IMPORT_MODULE_TCP_CLIENT
     struct SAKStructTcpClientParametersContext
     {
         QString localHost;
@@ -208,7 +209,7 @@ public:
         bool allowAutomaticConnection;
     };
 #endif
-#ifdef SAK_IMPORT_MODULE_TCP_SERVER
+#ifdef X_TOOLS_IMPORT_MODULE_TCP_SERVER
     struct SAKStructTcpServerParametersContext
     {
         QString serverHost;
@@ -218,15 +219,15 @@ public:
     };
 #endif
 #endif
-#ifdef SAK_IMPORT_MODULE_WEBSOCKET
-#ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
+#ifdef X_TOOLS_IMPORT_MODULE_WEBSOCKET
+#ifdef X_TOOLS_IMPORT_MODULE_WEBSOCKET_CLIENT
     struct SAKStructWSClientParametersContext
     {
         QString serverAddress;
         quint32 sendingType;
     };
 #endif
-#ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
+#ifdef X_TOOLS_IMPORT_MODULE_WEBSOCKET_SERVER
     struct SAKStructWSServerParametersContext
     {
         QString serverHost;
@@ -237,8 +238,8 @@ public:
     };
 #endif
 #endif
-#ifdef SAK_IMPORT_MODULE_BLE
-#ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
+#ifdef X_TOOLS_IMPORT_MODULE_BLE
+#ifdef X_TOOLS_IMPORT_MODULE_BLE_CENTRAL
     struct SAKStructBleCentralParametersContext
     {
         QBluetoothDeviceInfo info;

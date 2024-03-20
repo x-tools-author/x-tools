@@ -92,7 +92,7 @@ public:
     static void setLineEditValidator(QLineEdit *lineEdit,
                                      SAKEnumValidatorType type,
                                      int maxLength = INT_MAX);
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
+#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
     // Serialport interfaces
     static void addSerialPortNametItemsToComboBox(QComboBox *comboBox);
     static void addSerialPortBaudRateItemsToComboBox(QComboBox *comboBox);

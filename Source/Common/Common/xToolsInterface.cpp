@@ -18,7 +18,7 @@
 #include <QJsonObject>
 #include <QLocale>
 #include <QTextDocument>
-#ifdef SAK_IMPORT_MODULE_QML
+#ifdef X_TOOLS_IMPORT_MODULE_QML
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
 #include <QQuickTextDocument>
 #endif
@@ -41,7 +41,7 @@ void xToolsInterface::setMaximumBlockCount(QVariant doc, int maximum)
     auto obj = doc.value<QObject *>();
     if (obj) {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
-#ifdef SAK_IMPORT_MODULE_QML
+#ifdef X_TOOLS_IMPORT_MODULE_QML
         auto quickTextDoc = qobject_cast<QQuickTextDocument *>(obj);
         if (quickTextDoc) {
             auto textDoc = quickTextDoc->textDocument();
@@ -263,8 +263,8 @@ void xToolsInterface::setLineEditValidator(QLineEdit *lineEdit,
     }
 }
 
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-void SAKInterface::addSerialPortNametItemsToComboBox(QComboBox *comboBox)
+#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
+void xToolsInterface::addSerialPortNametItemsToComboBox(QComboBox *comboBox)
 {
     if (comboBox) {
         comboBox->clear();
@@ -281,8 +281,8 @@ void SAKInterface::addSerialPortNametItemsToComboBox(QComboBox *comboBox)
 }
 #endif
 
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-void SAKInterface::addSerialPortBaudRateItemsToComboBox(QComboBox *comboBox)
+#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
+void xToolsInterface::addSerialPortBaudRateItemsToComboBox(QComboBox *comboBox)
 {
     if (comboBox) {
         comboBox->clear();
@@ -296,8 +296,8 @@ void SAKInterface::addSerialPortBaudRateItemsToComboBox(QComboBox *comboBox)
 }
 #endif
 
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-void SAKInterface::addSerialPortDataBitItemsToComboBox(QComboBox *comboBox)
+#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
+void xToolsInterface::addSerialPortDataBitItemsToComboBox(QComboBox *comboBox)
 {
     if (comboBox) {
         comboBox->clear();
@@ -309,8 +309,8 @@ void SAKInterface::addSerialPortDataBitItemsToComboBox(QComboBox *comboBox)
 }
 #endif
 
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-void SAKInterface::addSerialPortStopBitItemsToComboBox(QComboBox *comboBox)
+#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
+void xToolsInterface::addSerialPortStopBitItemsToComboBox(QComboBox *comboBox)
 {
     if (comboBox) {
         comboBox->clear();
@@ -323,8 +323,8 @@ void SAKInterface::addSerialPortStopBitItemsToComboBox(QComboBox *comboBox)
 }
 #endif
 
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-void SAKInterface::addSerialPortParityItemsToComboBox(QComboBox *comboBox)
+#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
+void xToolsInterface::addSerialPortParityItemsToComboBox(QComboBox *comboBox)
 {
     if (comboBox) {
         comboBox->clear();
@@ -337,8 +337,8 @@ void SAKInterface::addSerialPortParityItemsToComboBox(QComboBox *comboBox)
 }
 #endif
 
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-void SAKInterface::addSerialPortFlowControlItemsToComboBox(QComboBox *comboBox)
+#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
+void xToolsInterface::addSerialPortFlowControlItemsToComboBox(QComboBox *comboBox)
 {
     if (comboBox) {
         comboBox->clear();

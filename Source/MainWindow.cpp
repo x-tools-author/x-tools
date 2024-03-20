@@ -43,17 +43,12 @@
 #include "xToolsUiInterface.h"
 #include "xToolsAssistantFactory.h"
 
-#ifdef SAK_IMPORT_MODULE_CANBUSSTUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
 #include "sakcanbusstudioui.h"
 #endif
 
-#ifdef SAK_IMPORT_MODULE_MODBUSSTUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
 #include "sakmodbusui.h"
-#endif
-
-#ifdef SAK_IMPORT_MODULE_PRIVATE_MODBUS
-#include "SAKPrivateModbusClient.h"
-#include "SAKPrivateModbusServer.h"
 #endif
 
 #define SAK_QT_CONF (qApp->applicationDirPath() + "/qt.conf")
@@ -96,13 +91,13 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 
     QString title = QString("xTools");
-#ifndef SAK_IMPORT_MODULE_PRIVATE
+#ifndef X_TOOLS_IMPORT_MODULE_PRIVATE
     title.append(tr("(Community)"));
 #endif
     title.append(QString(" "));
     title.append(QString("v"));
     title.append(qApp->applicationVersion());
-#ifndef SAK_IMPORT_MODULE_PRIVATE
+#ifndef X_TOOLS_IMPORT_MODULE_PRIVATE
     title.append(" ");
     title.append("Beta1");
 #endif
@@ -166,7 +161,7 @@ void MainWindow::initFileMenu()
     }
 
     // Other tools
-#ifdef SAK_IMPORT_MODULE_MODBUSSTUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_MODBUSSTUDIO
     QAction* modbusAction = new QAction("Modbus Studio", this);
     connect(modbusAction, &QAction::triggered, this, [=]() {
         SAKModbusUi* w = new SAKModbusUi();
@@ -178,7 +173,7 @@ void MainWindow::initFileMenu()
     windowMenu->addAction(modbusAction);
 #endif
 #ifndef SAK_RELEASE_FOR_APP_STORE
-#ifdef SAK_IMPORT_MODULE_CANBUSSTUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_CANBUSSTUDIO
     QAction* canbusAction = new QAction("CANBus Studio", this);
     connect(canbusAction, &QAction::triggered, this, [=]() {
         SAKCanBusUi* w = new SAKCanBusUi();
@@ -578,7 +573,7 @@ void MainWindow::initHelpMenu()
     QAction* qrCodeAction = new QAction(tr("QR Code"), this);
     helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered, this, &MainWindow::showQrCode);
-#ifndef SAK_IMPORT_MODULE_PRIVATE
+#ifndef X_TOOLS_IMPORT_MODULE_PRIVATE
     helpMenu->addAction(tr("Donate"), this, &MainWindow::showDonation);
 #endif
 }
@@ -651,33 +646,17 @@ void MainWindow::initNav()
     tb->addSeparator();
 
     QString path = ":/Resources/Icon/IconModbus.svg";
-#ifdef SAK_IMPORT_MODULE_MODBUSSTUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
     SAKModbusUi* modbus = new SAKModbusUi(this);
-    initNav({&navButtonGroup, SAKUiInterface::cookedIcon(QIcon(path)), "Modbus Studio", modbus, tb});
-#ifdef SAK_IMPORT_MODULE_PRIVATE_MODBUS
-    SAKPrivateModbusClient* modbusClient = new SAKPrivateModbusClient(this);
-    SAKPrivateModbusServer* modbusServer = new SAKPrivateModbusServer(this);
-    path = ":/Resources/Icon/IconModbus.svg";
-    initNav(&navButtonGroup,
-            SAKUiInterface::cookedIcon(QIcon(path)),
-            "Modbus Master",
-            modbusClient,
-            tb);
-    path = ":/Resources/Icon/IconModbus.svg";
-    initNav(&navButtonGroup,
-            SAKUiInterface::cookedIcon(QIcon(path)),
-            "Modbus Slave",
-            modbusServer,
-            tb);
-    modbusClient->importProject();
-    modbusServer->importProject();
+    initNav(
+        {&navButtonGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "Modbus Studio", modbus, tb});
 #endif
-#endif
-#ifndef SAK_RELEASE_FOR_APP_STORE
-#ifdef SAK_IMPORT_MODULE_CANBUSSTUDIO
+#ifndef X_TOOLS_BUILD_FOR_STORE
+#ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
     SAKCanBusUi* canbus = new SAKCanBusUi(this);
     path = ":/Resources/Icon/IconCanBus.svg";
-    initNav({&navButtonGroup, SAKUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb});
+    initNav(
+        {&navButtonGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb});
 #endif
 #endif
     QLabel* lb = new QLabel(" ");

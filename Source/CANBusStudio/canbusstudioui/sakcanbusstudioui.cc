@@ -1,12 +1,13 @@
 ﻿/***************************************************************************************************
- * Copyright 2023-2024 Qsaker(qsaker@foxmail.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife project.
+ * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
- * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
 #include "sakcanbusstudioui.h"
+#include "ui_sakcanbusstudioui.h"
 
 #include <QCanBus>
 #include <QCheckBox>
@@ -16,8 +17,7 @@
 #include <QMessageBox>
 #include <QVector>
 
-#include "saksettings.h"
-#include "ui_sakcanbusstudioui.h"
+#include "xToolsSettings.h"
 
 const QLoggingCategory gLC("sak.canstudio");
 
@@ -27,7 +27,7 @@ SAKCanBusUi::SAKCanBusUi(QWidget* parent)
     , mDevice(Q_NULLPTR)
 {
     if (!mSettings) {
-        mSettings = SAKSettings::instance();
+        mSettings = xToolsSettings::instance();
     }
 
     ui->setupUi(this);

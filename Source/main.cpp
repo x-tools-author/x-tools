@@ -12,7 +12,7 @@
 int main(const int argc, char *argv[])
 {
     QString appName = QString("xTools");
-#ifndef SAK_IMPORT_MODULE_PRIVATE
+#ifndef X_TOOLS_IMPORT_MODULE_PRIVATE
     appName += QObject::tr("(Community)");
 #endif
     sakDoSomethingBeforeAppCreated(argv, appName);
