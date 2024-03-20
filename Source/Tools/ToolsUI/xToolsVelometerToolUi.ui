@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKVelometerToolUi</class>
- <widget class="QWidget" name="SAKVelometerToolUi">
+ <class>xToolsVelometerToolUi</class>
+ <widget class="QWidget" name="xToolsVelometerToolUi">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>116</width>
+    <width>124</width>
     <height>17</height>
    </rect>
   </property>

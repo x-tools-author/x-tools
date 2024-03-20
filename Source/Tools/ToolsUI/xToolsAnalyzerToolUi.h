@@ -11,18 +11,18 @@
 #include "sakbasetoolui.h"
 
 namespace Ui {
-class SAKAnalyzerToolUi;
+class xToolsAnalyzerToolUi;
 }
 
 class xToolsAnalyzerTool;
-class SAKAnalyzerToolUi : public SAKBaseToolUi
+class xToolsAnalyzerToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit SAKAnalyzerToolUi(QWidget *parent = nullptr);
+    explicit xToolsAnalyzerToolUi(QWidget *parent = nullptr);
     void setToolName(const QString &name);
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
-    Ui::SAKAnalyzerToolUi *ui;
+    Ui::xToolsAnalyzerToolUi *ui;
 };

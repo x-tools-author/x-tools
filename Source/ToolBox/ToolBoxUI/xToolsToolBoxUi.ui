@@ -356,7 +356,7 @@
           </widget>
          </item>
          <item>
-          <widget class="SAKVelometerToolUi" name="widgetRxVelometer" native="true">
+          <widget class="xToolsVelometerToolUi" name="widgetRxVelometer" native="true">
            <property name="minimumSize">
             <size>
              <width>20</width>
@@ -388,7 +388,7 @@
           </widget>
          </item>
          <item>
-          <widget class="SAKVelometerToolUi" name="widgetTxVelometer" native="true">
+          <widget class="xToolsVelometerToolUi" name="widgetTxVelometer" native="true">
            <property name="minimumSize">
             <size>
              <width>20</width>
@@ -519,9 +519,9 @@
    <header location="global">sakcombobox.h</header>
   </customwidget>
   <customwidget>
-   <class>SAKVelometerToolUi</class>
+   <class>xToolsVelometerToolUi</class>
    <extends>QWidget</extends>
-   <header location="global">sakvelometertoolui.h</header>
+   <header location="global">xToolsVelometerToolUi.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

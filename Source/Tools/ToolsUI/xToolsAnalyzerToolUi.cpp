@@ -6,27 +6,27 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakanalyzertoolui.h"
+#include "xToolsAnalyzerToolUi.h"
+#include "ui_xToolsAnalyzerToolUi.h"
 
 #include "xToolsAnalyzerTool.h"
 #include "sakdatastructure.h"
 #include "sakinterface.h"
 #include "sakuiinterface.h"
-#include "ui_sakanalyzertoolui.h"
 
-SAKAnalyzerToolUi::SAKAnalyzerToolUi(QWidget *parent)
+xToolsAnalyzerToolUi::xToolsAnalyzerToolUi(QWidget *parent)
     : SAKBaseToolUi{parent}
-    , ui(new Ui::SAKAnalyzerToolUi)
+    , ui(new Ui::xToolsAnalyzerToolUi)
 {
     ui->setupUi(this);
 }
 
-void SAKAnalyzerToolUi::setToolName(const QString &name)
+void xToolsAnalyzerToolUi::setToolName(const QString &name)
 {
     ui->groupBox->setTitle(name);
 }
 
-void SAKAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     int format = SAKDataStructure::TextFormatHex;
     SAKUiInterface::setValidator(ui->lineEditSeparationMark, format);

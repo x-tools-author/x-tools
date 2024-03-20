@@ -6,23 +6,24 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakvelometertoolui.h"
-#include "xToolsVelometerTool.h"
-#include "ui_sakvelometertoolui.h"
+#include "xToolsVelometerToolUi.h"
+#include "ui_xToolsVelometerToolUi.h"
 
-SAKVelometerToolUi::SAKVelometerToolUi(QWidget *parent)
+#include "xToolsVelometerTool.h"
+
+xToolsVelometerToolUi::xToolsVelometerToolUi(QWidget *parent)
     : SAKBaseToolUi(parent)
-    , ui(new Ui::SAKVelometerToolUi)
+    , ui(new Ui::xToolsVelometerToolUi)
 {
     ui->setupUi(this);
 }
 
-SAKVelometerToolUi::~SAKVelometerToolUi()
+xToolsVelometerToolUi::~xToolsVelometerToolUi()
 {
     delete ui;
 }
 
-void SAKVelometerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsVelometerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     Q_UNUSED(settingsGroup)
 

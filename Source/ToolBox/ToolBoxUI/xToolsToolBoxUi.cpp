@@ -37,7 +37,7 @@
 #include "xToolsToolFactory.h"
 #include "sakudptransmittertoolui.h"
 #include "sakuiinterface.h"
-#include "sakwebsockettransmittertoolui.h"
+#include "xToolsWebSocketTransmitterToolUi.h"
 
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
 #include "sakblecentraltoolui.h"
@@ -593,7 +593,7 @@ void xToolsToolBoxUi::initTools()
     m_udpTransmitterUi = new SAKUdpTransmitterToolUi(this);
     m_udpTransmitterUi->initialize(m_toolBox->getUdpTransmitterTool(),
                                    settingsGroup() + "/udpTransmitter");
-    m_webSocketTransmitterUi = new SAKWebSocketTransmitterToolUi(this);
+    m_webSocketTransmitterUi = new xToolsWebSocketTransmitterToolUi(this);
     m_webSocketTransmitterUi->initialize(m_toolBox->getWebSocketTransmitterTool(),
                                          settingsGroup() + "/webSocketTransmitter");
     m_serialPortTransmitterUi = new SAKSerialPortTransmitterToolUi(this);

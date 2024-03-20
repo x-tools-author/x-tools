@@ -10,11 +10,11 @@
 
 #include "saksocketclienttransmittertoolui.h"
 
-class SAKWebSocketTransmitterToolUi : public SAKSocketClientTransmitterToolUi
+class xToolsWebSocketTransmitterToolUi : public SAKSocketClientTransmitterToolUi
 {
     Q_OBJECT
 public:
-    SAKWebSocketTransmitterToolUi(QWidget *parent = nullptr);
+    xToolsWebSocketTransmitterToolUi(QWidget *parent = nullptr);
 
 protected:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;

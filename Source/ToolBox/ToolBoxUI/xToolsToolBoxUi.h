@@ -31,7 +31,7 @@ class SAKCommunicationToolUi;
 class SAKTcpTransmitterToolUi;
 class SAKUdpTransmitterToolUi;
 class xToolsToolBoxUiCommunicationMenu;
-class SAKWebSocketTransmitterToolUi;
+class xToolsWebSocketTransmitterToolUi;
 class SAKSerialPortTransmitterToolUi;
 class xToolsToolBoxUi : public QWidget
 {
@@ -55,7 +55,7 @@ private:
     SAKPrestorerToolUi *m_prestorerUi{nullptr};
     SAKTcpTransmitterToolUi *m_tcpTransmitterUi{nullptr};
     SAKUdpTransmitterToolUi *m_udpTransmitterUi{nullptr};
-    SAKWebSocketTransmitterToolUi *m_webSocketTransmitterUi{nullptr};
+    xToolsWebSocketTransmitterToolUi *m_webSocketTransmitterUi{nullptr};
     SAKSerialPortTransmitterToolUi *m_serialPortTransmitterUi{nullptr};
     QTimer *m_cycleSendingTimer{nullptr};
     int m_communicationType;

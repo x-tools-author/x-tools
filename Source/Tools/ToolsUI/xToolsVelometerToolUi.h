@@ -12,20 +12,20 @@
 #include <QLoggingCategory>
 
 namespace Ui {
-class SAKVelometerToolUi;
+class xToolsVelometerToolUi;
 }
 
-class SAKVelometerToolUi : public SAKBaseToolUi
+class xToolsVelometerToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
 public:
-    SAKVelometerToolUi(QWidget *parent = nullptr);
-    ~SAKVelometerToolUi();
+    xToolsVelometerToolUi(QWidget *parent = nullptr);
+    ~xToolsVelometerToolUi();
 
 protected:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
     const QLoggingCategory mLoggingCategory{"sak.velometertoolui"};
-    Ui::SAKVelometerToolUi *ui;
+    Ui::xToolsVelometerToolUi *ui;
 };

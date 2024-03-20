@@ -10,7 +10,7 @@
 
 #include <QCoreApplication>
 
-#include "sakanalyzertoolui.h"
+#include "xToolsAnalyzerToolUi.h"
 #include "sakcrccalculatortoolui.h"
 #include "sakemittertoolui.h"
 #include "sakmaskertoolui.h"
@@ -26,8 +26,8 @@
 #include "saktcptransmittertoolti.h"
 #include "xToolsToolFactory.h"
 #include "sakudptransmittertoolui.h"
-#include "sakvelometertoolui.h"
-#include "sakwebsockettransmittertoolui.h"
+#include "xToolsVelometerToolUi.h"
+#include "xToolsWebSocketTransmitterToolUi.h"
 
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
 #include "sakblecentraltoolui.h"
@@ -51,7 +51,7 @@ SAKBaseToolUi *SAKToolUiFactory::createToolUi(int type)
 {
     switch (type) {
     case xToolsToolFactory::AnalyzerTool:
-        return new SAKAnalyzerToolUi();
+        return new xToolsAnalyzerToolUi();
     case xToolsToolFactory::SerialportTool:
         return new SAKSerialPortToolUi();
     case xToolsToolFactory::EmitterTool:
@@ -65,7 +65,7 @@ SAKBaseToolUi *SAKToolUiFactory::createToolUi(int type)
     case xToolsToolFactory::PrestoreTool:
         return new SAKPrestorerToolUi();
     case xToolsToolFactory::VelometerTool:
-        return new SAKVelometerToolUi();
+        return new xToolsVelometerToolUi();
     case xToolsToolFactory::UdpClientTool:
         return new SAKSocketClientToolUi();
     case xToolsToolFactory::UdpServerTool:
@@ -91,7 +91,7 @@ SAKBaseToolUi *SAKToolUiFactory::createToolUi(int type)
     case xToolsToolFactory::TcpTransmitterTool:
         return new SAKTcpTransmitterToolUi();
     case xToolsToolFactory::WebSocketTransmitterTool:
-        return new SAKWebSocketTransmitterToolUi();
+        return new xToolsWebSocketTransmitterToolUi();
     case xToolsToolFactory::CrcCalculatorTool:
         return new SAKCrcCalculatorToolUi();
     default:
