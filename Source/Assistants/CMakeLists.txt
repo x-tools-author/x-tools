@@ -1,29 +1,29 @@
 macro(x_tools_add_assistant dir_name app_name)
   string(TOUPPER ${app_name} upper_app_name)
-  option(SAK_ENABLE_APP_${upper_app_name} "" ON)
-  if(SAK_ENABLE_APP_${upper_app_name})
+  option(X_TOOLS_ENABLE_APP_${upper_app_name} "" ON)
+  if(X_TOOLS_ENABLE_APP_${upper_app_name})
     file(
       GLOB_RECURSE
       ASSISTANT_SOURCES
-      "${CMAKE_SOURCE_DIR}/src/assistants/${dir_name}/*.h"
-      "${CMAKE_SOURCE_DIR}/src/assistants/${dir_name}/*.cc"
-      "${CMAKE_SOURCE_DIR}/src/assistants/${dir_name}/*.ui"
-      "${CMAKE_SOURCE_DIR}/src/assistants/${dir_name}/*.qrc")
+      "${CMAKE_SOURCE_DIR}/Source/Assistants/${dir_name}/*.h"
+      "${CMAKE_SOURCE_DIR}/Source/Assistants/${dir_name}/*.cpp"
+      "${CMAKE_SOURCE_DIR}/Source/Assistants/${dir_name}/*.ui"
+      "${CMAKE_SOURCE_DIR}/Source/Assistants/${dir_name}/*.qrc")
     set(APP_ASSISTANT_SOURCES
-        ${CMAKE_SOURCE_DIR}/src/common/common/sakinterface.h
-        ${CMAKE_SOURCE_DIR}/src/common/common/sakinterface.cc
-        ${CMAKE_SOURCE_DIR}/src/common/common/saktranslator.h
-        ${CMAKE_SOURCE_DIR}/src/common/common/saktranslator.cc
-        ${CMAKE_SOURCE_DIR}/src/common/common/saksettings.h
-        ${CMAKE_SOURCE_DIR}/src/common/common/saksettings.cc
-        ${CMAKE_SOURCE_DIR}/src/common/commonui/sakcommonmainwindow.h
-        ${CMAKE_SOURCE_DIR}/src/common/commonui/sakcommonmainwindow.cc
+        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.h
+        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.cpp
+        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.h
+        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.cpp
+        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.h
+        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.cpp
+        ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.h
+        ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.cpp
         ${APP_ASSISTANT_OWN_SOURCE}
         ${ASSISTANT_SOURCES}
-        ${CMAKE_SOURCE_DIR}/qtswissarmyknife.qrc)
+        ${CMAKE_SOURCE_DIR}/xTools.qrc)
 
     if(WIN32)
-      list(APPEND APP_ASSISTANT_SOURCES ${CMAKE_SOURCE_DIR}/windows.rc)
+      list(APPEND APP_ASSISTANT_SOURCES ${CMAKE_SOURCE_DIR}/xTools.rc)
     endif()
 
     sak_add_executable(${app_name} ${APP_ASSISTANT_SOURCES})
@@ -40,5 +40,5 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Base64)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Number)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/String)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Broadcast)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Filechecker)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/FileChecker)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/CRCCalculator)

@@ -6,11 +6,11 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakbase64assistant.h"
-#include "sakui.h"
+#include "xToolsStringAssistant.h"
+#include "xToolsUi.h"
 
 int main(int argc, char* argv[])
 {
-    const QString appName = QObject::tr("Base64 Assisatnt");
-    return sakExec<SAKBase64Assisatnt>(argc, argv, appName);
+    const QString appName = QObject::tr("String Assistant");
+    return sakExec<xToolsStringAssistant>(argc, argv, appName);
 }

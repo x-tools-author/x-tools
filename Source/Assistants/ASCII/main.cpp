@@ -6,11 +6,11 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakmdnsassistant.h"
-#include "sakui.h"
+#include "xToolsAsciiAssistant.h"
+#include "xToolsUi.h"
 
 int main(int argc, char* argv[])
 {
-    const QString appName = QObject::tr("MDNS Assistant");
-    return sakExec<SAKMdnsAssistant>(argc, argv, appName);
+    const QString appName = QObject::tr("ASCII Assistant");
+    return sakExec<xToolsAsciiAssistant>(argc, argv, appName);
 }

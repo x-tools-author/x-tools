@@ -27,6 +27,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 
 include(CMake/xToolsCommon.cmake)
 include(CMake/xToolsGit.cmake)
+include(CMake/xToolsDeployQt.cmake)
+include(CMake/xToolsThirdParty.cmake)
 
 file(GLOB_RECURSE X_TOOLS_COMMOM_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/Common/*.h")
 file(GLOB_RECURSE X_TOOLS_COMMOM_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/Common/*.ui")
@@ -88,8 +90,6 @@ set(BUILD_SHARED_LIBS OFF)
 sak_add_subdirectory("glog-0.7.0")
 sak_add_subdirectory("qmdnsengine-master")
 
-#add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Assistants)
-
 qt_add_executable(xTools ${X_TOOLS_SOURCE})
 sak_git_get_last_commit(${CMAKE_SOURCE_DIR} "SAK")
 sak_git_get_last_commit_time(${CMAKE_SOURCE_DIR} "SAK")
@@ -104,3 +104,7 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
 endif()
 target_link_libraries(xTools PRIVATE qmdnsengine)
 target_link_libraries(xTools PRIVATE glog::glog)
+
+# -------------------------------------------------------------------------------------------------
+# Assistants
+add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Assistants)
