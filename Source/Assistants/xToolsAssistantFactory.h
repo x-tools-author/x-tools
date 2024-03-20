@@ -43,7 +43,7 @@ private:
 
 private:
     template<typename T>
-    void registerAssistant(int type, const QString& assistantName)
+    void addAssistant(int type, const QString& assistantName)
     {
         m_typeNameMap.insert(type, assistantName);
         m_metaObjectMap.insert(type, T::staticMetaObject);
