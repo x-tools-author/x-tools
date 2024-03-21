@@ -117,12 +117,12 @@ option(X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO "Enable CAN Bus module" ON)
 if(X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO)
   file(GLOB_RECURSE X_TOOLS_CANBUS_STUDIO_H "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.h")
   file(GLOB_RECURSE X_TOOLS_CANBUS_STUDIO_UI "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.ui")
-  file(GLOB_RECURSE X_TOOLS_CANBUS_STUDIO_CPP "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.cc")
+  file(GLOB_RECURSE X_TOOLS_CANBUS_STUDIO_CPP "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.cpp")
   add_compile_definitions(X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO)
   list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CANBUS_STUDIO_H})
   list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CANBUS_STUDIO_UI})
   list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CANBUS_STUDIO_CPP})
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/CANBusStudio/main.cc)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/CANBusStudio/main.cpp)
   include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/canbusstudio)
   include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/canbusstudioui)
 endif()
@@ -151,6 +151,8 @@ if(NOT DO_NOT_REMOVE_BLE_SOURCE)
     message(STATUS "The BLE module source has been removed!")
 endif()
 
+# -------------------------------------------------------------------------------------------------
+# xTools application
 set(WITH_GFLAGS OFF)
 set(BUILD_TESTING OFF)
 set(BUILD_SHARED_LIBS OFF)
@@ -177,6 +179,7 @@ if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
 endif()
 
 # -------------------------------------------------------------------------------------------------
+# Other applications
 option(X_TOOLS_ENABLE_APP_ASSISTANTS "Enable assistant applications" OFF)
 if(X_TOOLS_ENABLE_APP_ASSISTANTS)
   add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Assistants)

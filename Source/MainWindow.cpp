@@ -44,7 +44,7 @@
 #include "xToolsAssistantFactory.h"
 
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
-#include "sakcanbusstudioui.h"
+#include "xToolsCanBusStudioUi.h"
 #endif
 
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
@@ -653,7 +653,7 @@ void MainWindow::initNav()
 #endif
 #ifndef X_TOOLS_BUILD_FOR_STORE
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
-    SAKCanBusUi* canbus = new SAKCanBusUi(this);
+    xToolsCanBusStudioUi* canbus = new xToolsCanBusStudioUi(this);
     path = ":/Resources/Icon/IconCanBus.svg";
     initNav(
         {&navButtonGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb});

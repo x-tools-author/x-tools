@@ -1,25 +1,25 @@
-file(GLOB_RECURSE SAK_CANBUSSTUDIO_SOURCES "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.h"
-     "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.cc" "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.ui")
+file(GLOB_RECURSE SOURCES_H "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.h")
+file(GLOB_RECURSE SOURCES_UI "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.ui")
+file(GLOB_RECURSE SOURCES_CPP "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.cpp")
 
-set(SAK_COMMON_SOURCES
-    ${STUDIO_SOURCES}
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.cpp
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.cpp
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.cpp
-    ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsUi.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.cpp
-    ${CMAKE_SOURCE_DIR}/xTools.qrc)
+list(APPEND ALL_SOURCE ${SOURCES_H})
+list(APPEND ALL_SOURCE ${SOURCES_UI})
+list(APPEND ALL_SOURCE ${SOURCES_CPP})
+list(APPEND ALL_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.h)
+list(APPEND ALL_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.cpp)
+list(APPEND ALL_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.h)
+list(APPEND ALL_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.cpp)
+list(APPEND ALL_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.h)
+list(APPEND ALL_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.cpp)
+list(APPEND ALL_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsUi.h)
+list(APPEND ALL_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.h)
+list(APPEND ALL_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.cpp)
+list(APPEND ALL_SOURCE ${CMAKE_SOURCE_DIR}/xTools.qrc)
 
-set(SAK_CANBUSSTUDIO_SOURCES ${SAK_CANBUSSTUDIO_SOURCES} ${SAK_COMMON_SOURCES})
+x_tools_add_executable("CANBusStudio" ${ALL_SOURCE})
+x_tools_set_target_properties(CANBusStudio)
+x_tools_deploy_qt(CANBusStudio)
 
-sak_add_executable("CANBusStudio" ${SAK_CANBUSSTUDIO_SOURCES})
-sak_set_target_properties(CANBusStudio)
-sak_auto_execute_windeployqt(CANBusStudio)
-x_tools_3rd_setup_glog(CANBusStudio)
-
-target_link_libraries(CANBusStudio PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
-                                           Qt${QT_VERSION_MAJOR}::SerialBus)
+target_link_libraries(CANBusStudio PRIVATE glog::glog)
+target_link_libraries(CANBusStudio PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(CANBusStudio PRIVATE Qt${QT_VERSION_MAJOR}::SerialBus)

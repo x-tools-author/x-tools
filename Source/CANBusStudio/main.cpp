@@ -6,11 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakcanbusstudioui.h"
+#include "xToolsCanBusStudioUi.h"
 #include "xToolsUi.h"
 
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("CAN Bus Studio");
-    return xToolsExec<SAKCanBusUi>(argc, argv, appName);
+    return xToolsExec<xToolsCanBusStudioUi>(argc, argv, appName);
 }

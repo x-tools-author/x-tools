@@ -1,13 +1,12 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKCANBUSSTUDIOUI_H
-#define SAKCANBUSSTUDIOUI_H
+#pragma once
 
 #include <QCanBusDevice>
 #include <QCanBusFrame>
@@ -19,18 +18,18 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class SAKCanBusUi;
+class xToolsCanBusStudioUi;
 }
 QT_END_NAMESPACE
 
-class SAKCanBusUi : public QWidget
+class xToolsCanBusStudioUi : public QWidget
 {
     Q_OBJECT
     typedef QPair<QCanBusDevice::ConfigurationKey, QVariant> ConfigurationItem;
 
 public:
-    Q_INVOKABLE SAKCanBusUi(QWidget *parent = Q_NULLPTR);
-    ~SAKCanBusUi();
+    Q_INVOKABLE xToolsCanBusStudioUi(QWidget *parent = Q_NULLPTR);
+    ~xToolsCanBusStudioUi();
 
 private:
     struct
@@ -54,7 +53,7 @@ private:
     } mSettingKeyCtx;
 
 private:
-    Ui::SAKCanBusUi *ui;
+    Ui::xToolsCanBusStudioUi *ui;
     QSettings *mSettings{nullptr};
     QCanBusDevice *mDevice{nullptr};
 
@@ -107,5 +106,3 @@ private:
     void updateUiState(bool connected);
     QVector<ConfigurationItem> configurationItems();
 };
-
-#endif // SAKCANBUSSTUDIOUI_H
