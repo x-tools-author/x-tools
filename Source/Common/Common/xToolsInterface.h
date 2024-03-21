@@ -92,15 +92,6 @@ public:
     static void setLineEditValidator(QLineEdit *lineEdit,
                                      SAKEnumValidatorType type,
                                      int maxLength = INT_MAX);
-#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
-    // Serialport interfaces
-    static void addSerialPortNametItemsToComboBox(QComboBox *comboBox);
-    static void addSerialPortBaudRateItemsToComboBox(QComboBox *comboBox);
-    static void addSerialPortDataBitItemsToComboBox(QComboBox *comboBox);
-    static void addSerialPortStopBitItemsToComboBox(QComboBox *comboBox);
-    static void addSerialPortParityItemsToComboBox(QComboBox *comboBox);
-    static void addSerialPortFlowControlItemsToComboBox(QComboBox *comboBox);
-#endif
     static void setComboBoxIndexFromSettings(QSettings *settings, QString key, QComboBox *comboBox);
     static void setSettingsValueFromComboBoxIndex(QSettings *settings,
                                                   QString key,

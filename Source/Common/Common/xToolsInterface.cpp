@@ -236,8 +236,8 @@ QByteArray xToolsInterface::arrayToHex(const QByteArray &array, char separator)
 }
 
 void xToolsInterface::setLineEditValidator(QLineEdit *lineEdit,
-                                        SAKEnumValidatorType type,
-                                        int maxLength)
+                                           SAKEnumValidatorType type,
+                                           int maxLength)
 {
     QMap<int, QRegularExpression> regExpMap;
     regExpMap.insert(ValidatorBin, QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
@@ -263,95 +263,9 @@ void xToolsInterface::setLineEditValidator(QLineEdit *lineEdit,
     }
 }
 
-#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
-void xToolsInterface::addSerialPortNametItemsToComboBox(QComboBox *comboBox)
-{
-    if (comboBox) {
-        comboBox->clear();
-        QList<QSerialPortInfo> coms = QSerialPortInfo::availablePorts();
-        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
-        for (auto &var : coms) {
-            QStandardItem *item = new QStandardItem(var.portName());
-            item->setToolTip(var.description());
-            itemModel->appendRow(item);
-        }
-
-        comboBox->setModel(itemModel);
-    }
-}
-#endif
-
-#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
-void xToolsInterface::addSerialPortBaudRateItemsToComboBox(QComboBox *comboBox)
-{
-    if (comboBox) {
-        comboBox->clear();
-        QList<qint32> bd = QSerialPortInfo::standardBaudRates();
-        for (auto &var : bd) {
-            comboBox->addItem(QString::number(var), QVariant::fromValue(var));
-        }
-
-        comboBox->setCurrentText("9600");
-    }
-}
-#endif
-
-#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
-void xToolsInterface::addSerialPortDataBitItemsToComboBox(QComboBox *comboBox)
-{
-    if (comboBox) {
-        comboBox->clear();
-        comboBox->addItem("8", QVariant::fromValue(int(QSerialPort::Data8)));
-        comboBox->addItem("7", QVariant::fromValue(int(QSerialPort::Data7)));
-        comboBox->addItem("6", QVariant::fromValue(int(QSerialPort::Data6)));
-        comboBox->addItem("5", QVariant::fromValue(int(QSerialPort::Data5)));
-    }
-}
-#endif
-
-#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
-void xToolsInterface::addSerialPortStopBitItemsToComboBox(QComboBox *comboBox)
-{
-    if (comboBox) {
-        comboBox->clear();
-        comboBox->addItem("1", QVariant::fromValue(int(QSerialPort::OneStop)));
-#ifdef Q_OS_WINDOWS
-        comboBox->addItem("1.5", QVariant::fromValue(int(QSerialPort::OneAndHalfStop)));
-#endif
-        comboBox->addItem("2", QVariant::fromValue(int(QSerialPort::TwoStop)));
-    }
-}
-#endif
-
-#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
-void xToolsInterface::addSerialPortParityItemsToComboBox(QComboBox *comboBox)
-{
-    if (comboBox) {
-        comboBox->clear();
-        comboBox->addItem(tr("No"), QVariant::fromValue(int(QSerialPort::NoParity)));
-        comboBox->addItem(tr("Even"), QVariant::fromValue(int(QSerialPort::EvenParity)));
-        comboBox->addItem(tr("Odd"), QVariant::fromValue(int(QSerialPort::OddParity)));
-        comboBox->addItem(tr("Space"), QVariant::fromValue(int(QSerialPort::SpaceParity)));
-        comboBox->addItem(tr("Mark"), QVariant::fromValue(int(QSerialPort::MarkParity)));
-    }
-}
-#endif
-
-#ifdef X_TOOLS_IMPORT_MODULE_SERIALPORT
-void xToolsInterface::addSerialPortFlowControlItemsToComboBox(QComboBox *comboBox)
-{
-    if (comboBox) {
-        comboBox->clear();
-        comboBox->addItem(tr("No"), QVariant::fromValue(int(QSerialPort::NoFlowControl)));
-        comboBox->addItem(tr("Hardware"), QVariant::fromValue(int(QSerialPort::HardwareControl)));
-        comboBox->addItem(tr("Software"), QVariant::fromValue(int(QSerialPort::SoftwareControl)));
-    }
-}
-#endif
-
 void xToolsInterface::setComboBoxIndexFromSettings(QSettings *settings,
-                                                QString key,
-                                                QComboBox *comboBox)
+                                                   QString key,
+                                                   QComboBox *comboBox)
 {
     int index = settings->value(key).toInt();
     if (index >= 0 && index < comboBox->count()) {
@@ -360,14 +274,16 @@ void xToolsInterface::setComboBoxIndexFromSettings(QSettings *settings,
 }
 
 void xToolsInterface::setSettingsValueFromComboBoxIndex(QSettings *settings,
-                                                     QString key,
-                                                     QComboBox *comboBox)
+                                                        QString key,
+                                                        QComboBox *comboBox)
 {
     int currentIndex = comboBox->currentIndex();
     settings->setValue(key, currentIndex);
 }
 
-void xToolsInterface::setLineEditTextFromSettings(QSettings *settings, QString key, QLineEdit *lineEdit)
+void xToolsInterface::setLineEditTextFromSettings(QSettings *settings,
+                                                  QString key,
+                                                  QLineEdit *lineEdit)
 {
     QString text = settings->value(key).toString();
     if (!text.isEmpty()) {
@@ -376,23 +292,23 @@ void xToolsInterface::setLineEditTextFromSettings(QSettings *settings, QString k
 }
 
 void xToolsInterface::setSettingsValueFromLineEditText(QSettings *settings,
-                                                    QString key,
-                                                    QLineEdit *lineEdit)
+                                                       QString key,
+                                                       QLineEdit *lineEdit)
 {
     QString value = lineEdit->text();
     settings->setValue(key, value);
 }
 
 void xToolsInterface::setCheckBoxValueFromSettings(QSettings *settings,
-                                                QString key,
-                                                QCheckBox *checkBox)
+                                                   QString key,
+                                                   QCheckBox *checkBox)
 {
     checkBox->setChecked(settings->value(key).toBool());
 }
 
 void xToolsInterface::setSettingsValueFromCheckBox(QSettings *settings,
-                                                QString key,
-                                                QCheckBox *checkBox)
+                                                   QString key,
+                                                   QCheckBox *checkBox)
 {
     settings->setValue(key, checkBox->isChecked());
 }
