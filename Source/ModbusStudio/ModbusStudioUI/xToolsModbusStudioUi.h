@@ -21,22 +21,22 @@
 #include <QWidget>
 
 namespace Ui {
-class xToolsModbusUi;
+class xToolsModbusStudioUi;
 }
 
 struct SAKModbusUiSettingKeys;
-class xToolsModbusUi : public QWidget
+class xToolsModbusStudioUi : public QWidget
 {
     Q_OBJECT
 public:
-    explicit xToolsModbusUi(QWidget *parent = Q_NULLPTR);
-    ~xToolsModbusUi();
+    explicit xToolsModbusStudioUi(QWidget *parent = Q_NULLPTR);
+    ~xToolsModbusStudioUi();
 
 signals:
     void deviceChanged(QModbusDevice *device);
 
 private:
-    Ui::xToolsModbusUi *ui;
+    Ui::xToolsModbusStudioUi *ui;
     QModbusDevice *modbus_device_{Q_NULLPTR};
     QSettings *settings_{Q_NULLPTR};
     QStandardItemModel *register_model_{Q_NULLPTR};

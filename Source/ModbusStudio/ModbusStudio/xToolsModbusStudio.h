@@ -14,7 +14,7 @@
 #include <QModbusReply>
 #include <QObject>
 
-class xToolsModbusFactory : public QObject
+class xToolsModbusStudio : public QObject
 {
     Q_OBJECT
 public:
@@ -27,11 +27,11 @@ public:
     Q_ENUM(ModbusDeviceType)
 
 private:
-    xToolsModbusFactory(QObject *parent = Q_NULLPTR);
+    xToolsModbusStudio(QObject *parent = Q_NULLPTR);
 
 public:
-    ~xToolsModbusFactory();
-    static xToolsModbusFactory *Instance();
+    ~xToolsModbusStudio();
+    static xToolsModbusStudio *Instance();
 
 public:
     const QString TypeName(int type);

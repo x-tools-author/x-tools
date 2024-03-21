@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsModbusFactory.h"
+#include "xToolsModbusStudio.h"
 
 #include <QCoreApplication>
 #include <QModbusTcpClient>
@@ -19,24 +19,24 @@
 #include <QModbusRtuSerialServer>
 #endif
 
-xToolsModbusFactory::xToolsModbusFactory(QObject *parent)
+xToolsModbusStudio::xToolsModbusStudio(QObject *parent)
     : QObject(parent)
 {}
 
-xToolsModbusFactory::~xToolsModbusFactory() {}
+xToolsModbusStudio::~xToolsModbusStudio() {}
 
-xToolsModbusFactory *xToolsModbusFactory::Instance()
+xToolsModbusStudio *xToolsModbusStudio::Instance()
 {
-    static xToolsModbusFactory *factory = Q_NULLPTR;
+    static xToolsModbusStudio *factory = Q_NULLPTR;
 
     if (!factory) {
-        factory = new xToolsModbusFactory(qApp);
+        factory = new xToolsModbusStudio(qApp);
     }
 
     return factory;
 }
 
-const QString xToolsModbusFactory::TypeName(int type)
+const QString xToolsModbusStudio::TypeName(int type)
 {
     if (type == kModbusRtuSerialClient) {
         return tr("RTU Client");
@@ -54,7 +54,7 @@ const QString xToolsModbusFactory::TypeName(int type)
     return "Unknown";
 }
 
-QModbusDevice *xToolsModbusFactory::CreateDevice(int type)
+QModbusDevice *xToolsModbusStudio::CreateDevice(int type)
 {
     if (type == kModbusRtuSerialClient) {
         qCInfo(kLoggingCategory) << "Create rtu serial client.";
@@ -84,7 +84,7 @@ QModbusDevice *xToolsModbusFactory::CreateDevice(int type)
     return Q_NULLPTR;
 }
 
-bool xToolsModbusFactory::IsTcpDevice(QModbusDevice *modbus_device)
+bool xToolsModbusStudio::IsTcpDevice(QModbusDevice *modbus_device)
 {
     if (modbus_device) {
         if (qobject_cast<QModbusTcpClient *>(modbus_device)) {
@@ -97,7 +97,7 @@ bool xToolsModbusFactory::IsTcpDevice(QModbusDevice *modbus_device)
     return false;
 }
 
-bool xToolsModbusFactory::IsRtuSerialDevice(QModbusDevice *modbus_device)
+bool xToolsModbusStudio::IsRtuSerialDevice(QModbusDevice *modbus_device)
 {
     if (modbus_device) {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
@@ -118,7 +118,7 @@ bool xToolsModbusFactory::IsRtuSerialDevice(QModbusDevice *modbus_device)
     return false;
 }
 
-bool xToolsModbusFactory::IsTcpDeviceType(int type)
+bool xToolsModbusStudio::IsTcpDeviceType(int type)
 {
     bool is_tcp = (type == kModbusTcpClient);
     is_tcp |= (type == kModbusTcpServer);
@@ -126,7 +126,7 @@ bool xToolsModbusFactory::IsTcpDeviceType(int type)
     return is_tcp;
 }
 
-bool xToolsModbusFactory::IsRtuSerialDeviceType(int type)
+bool xToolsModbusStudio::IsRtuSerialDeviceType(int type)
 {
     bool is_rtu = (type == kModbusRtuSerialClient);
     is_rtu |= (type == kModbusRtuSerialServer);
@@ -134,7 +134,7 @@ bool xToolsModbusFactory::IsRtuSerialDeviceType(int type)
     return is_rtu;
 }
 
-bool xToolsModbusFactory::IsServerDevice(QModbusDevice *modbus_device)
+bool xToolsModbusStudio::IsServerDevice(QModbusDevice *modbus_device)
 {
     if (modbus_device && qobject_cast<QModbusServer *>(modbus_device)) {
         return true;
@@ -143,7 +143,7 @@ bool xToolsModbusFactory::IsServerDevice(QModbusDevice *modbus_device)
     return false;
 }
 
-bool xToolsModbusFactory::IsClientDevice(QModbusDevice *modbus_device)
+bool xToolsModbusStudio::IsClientDevice(QModbusDevice *modbus_device)
 {
     if (modbus_device && qobject_cast<QModbusClient *>(modbus_device)) {
         return true;
@@ -152,7 +152,7 @@ bool xToolsModbusFactory::IsClientDevice(QModbusDevice *modbus_device)
     return false;
 }
 
-bool xToolsModbusFactory::ConnectDeivce(QModbusDevice *modbus_device)
+bool xToolsModbusStudio::ConnectDeivce(QModbusDevice *modbus_device)
 {
     if (modbus_device) {
         return modbus_device->connectDevice();
@@ -161,7 +161,7 @@ bool xToolsModbusFactory::ConnectDeivce(QModbusDevice *modbus_device)
     return false;
 }
 
-bool xToolsModbusFactory::IsConnected(QModbusDevice *modbus_device)
+bool xToolsModbusStudio::IsConnected(QModbusDevice *modbus_device)
 {
     if (modbus_device) {
         if (modbus_device->state() == QModbusDevice::ConnectedState) {
@@ -172,7 +172,7 @@ bool xToolsModbusFactory::IsConnected(QModbusDevice *modbus_device)
     return false;
 }
 
-bool xToolsModbusFactory::IsValidModbusReply(QModbusReply *reply)
+bool xToolsModbusStudio::IsValidModbusReply(QModbusReply *reply)
 {
     if (reply && !reply->isFinished()) {
         return true;
@@ -181,7 +181,7 @@ bool xToolsModbusFactory::IsValidModbusReply(QModbusReply *reply)
     return false;
 }
 
-bool xToolsModbusFactory::SetServerData(QModbusDevice *server,
+bool xToolsModbusStudio::SetServerData(QModbusDevice *server,
                                      QModbusDataUnit::RegisterType table,
                                      int address,
                                      int data,
@@ -200,7 +200,7 @@ bool xToolsModbusFactory::SetServerData(QModbusDevice *server,
     return is_ok;
 }
 
-QList<quint16> xToolsModbusFactory::GetServerData(QModbusDevice *server,
+QList<quint16> xToolsModbusStudio::GetServerData(QModbusDevice *server,
                                                QModbusDataUnit::RegisterType table,
                                                int address,
                                                int quantity)
@@ -224,7 +224,7 @@ QList<quint16> xToolsModbusFactory::GetServerData(QModbusDevice *server,
     return values;
 }
 
-void xToolsModbusFactory::DeleteModbusDevuce(QModbusDevice **modbus_device)
+void xToolsModbusStudio::DeleteModbusDevuce(QModbusDevice **modbus_device)
 {
     if (*modbus_device) {
         QModbusServer *server = qobject_cast<QModbusServer *>(*modbus_device);
@@ -237,7 +237,7 @@ void xToolsModbusFactory::DeleteModbusDevuce(QModbusDevice **modbus_device)
     }
 }
 
-QModbusDevice *xToolsModbusFactory::CreateRtuSerialDevice(
+QModbusDevice *xToolsModbusStudio::CreateRtuSerialDevice(
     int type, const QString &port_name, int parity, int baud_rate, int data_bits, int stop_bits)
 {
     QModbusDevice *device = CreateDevice(type);
@@ -257,7 +257,7 @@ QModbusDevice *xToolsModbusFactory::CreateRtuSerialDevice(
     return device;
 }
 
-QModbusDevice *xToolsModbusFactory::CreateTcpDevice(int type, QString address, int port)
+QModbusDevice *xToolsModbusStudio::CreateTcpDevice(int type, QString address, int port)
 {
     QModbusDevice *device = CreateDevice(type);
     if (IsTcpDevice(device)) {
@@ -271,7 +271,7 @@ QModbusDevice *xToolsModbusFactory::CreateTcpDevice(int type, QString address, i
     return device;
 }
 
-void xToolsModbusFactory::SetClientDeviceParameters(QModbusDevice *client,
+void xToolsModbusStudio::SetClientDeviceParameters(QModbusDevice *client,
                                                  int timeout,
                                                  int number_of_retries)
 {
@@ -286,7 +286,7 @@ void xToolsModbusFactory::SetClientDeviceParameters(QModbusDevice *client,
     }
 }
 
-void xToolsModbusFactory::SetServerDeviceParameters(QModbusDevice *server,
+void xToolsModbusStudio::SetServerDeviceParameters(QModbusDevice *server,
                                                  int address,
                                                  bool device_busy,
                                                  bool listen_only_mode)
@@ -303,7 +303,7 @@ void xToolsModbusFactory::SetServerDeviceParameters(QModbusDevice *server,
     }
 }
 
-QModbusReply *xToolsModbusFactory::SendWriteRequest(QModbusDevice *modbus_device,
+QModbusReply *xToolsModbusStudio::SendWriteRequest(QModbusDevice *modbus_device,
                                                  int register_type,
                                                  int start_address,
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
@@ -332,7 +332,7 @@ QModbusReply *xToolsModbusFactory::SendWriteRequest(QModbusDevice *modbus_device
     return Q_NULLPTR;
 }
 
-QModbusReply *xToolsModbusFactory::SendRawRequest(QModbusDevice *modbus_device,
+QModbusReply *xToolsModbusStudio::SendRawRequest(QModbusDevice *modbus_device,
                                                int server_address,
                                                int function_code,
                                                const QByteArray &data)
