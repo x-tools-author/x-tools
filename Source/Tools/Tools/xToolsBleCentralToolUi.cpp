@@ -56,11 +56,11 @@ xToolsBleCentralToolUi::xToolsBleCentralToolUi(QWidget* parent)
             &QPushButton::clicked,
             this,
             &xToolsBleCentralToolUi::onPushButtonReadClicked);
-    connect(ui->comboBoxDevices, &xToolsBluetoothDeviceInfoComboBox::finished, this, [=]() {
+    connect(ui->comboBoxDevices, &xToolsBleDeviceInfoComboBox::finished, this, [=]() {
         ui->pushButtonScan->setText(tr("Scan"));
         ui->pushButtonScan->setEnabled(true);
     });
-    connect(ui->comboBoxDevices, &xToolsBluetoothDeviceInfoComboBox::started, this, [=]() {
+    connect(ui->comboBoxDevices, &xToolsBleDeviceInfoComboBox::started, this, [=]() {
         ui->pushButtonScan->setText(tr("Stop"));
         ui->pushButtonScan->setEnabled(true);
     });

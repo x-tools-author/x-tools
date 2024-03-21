@@ -13,12 +13,12 @@
 #include "xToolsBleScanner.h"
 #include "xToolsComboBox.h"
 
-class xToolsBluetoothDeviceInfoComboBox : public xToolsComboBox
+class xToolsBleDeviceInfoComboBox : public xToolsComboBox
 {
     Q_OBJECT
 public:
-    xToolsBluetoothDeviceInfoComboBox(QWidget *parent = Q_NULLPTR);
-    ~xToolsBluetoothDeviceInfoComboBox();
+    xToolsBleDeviceInfoComboBox(QWidget *parent = Q_NULLPTR);
+    ~xToolsBleDeviceInfoComboBox();
     void startDiscover();
     void stopDiscover();
     bool isActive();

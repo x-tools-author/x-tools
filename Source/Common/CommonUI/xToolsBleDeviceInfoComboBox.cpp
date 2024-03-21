@@ -11,7 +11,7 @@
 #include <QBluetoothDeviceInfo>
 #include <QMessageBox>
 
-xToolsBluetoothDeviceInfoComboBox::xToolsBluetoothDeviceInfoComboBox(QWidget* parent)
+xToolsBleDeviceInfoComboBox::xToolsBleDeviceInfoComboBox(QWidget* parent)
     : xToolsComboBox(parent)
     , mScanner(Q_NULLPTR)
 {
@@ -28,14 +28,14 @@ xToolsBluetoothDeviceInfoComboBox::xToolsBluetoothDeviceInfoComboBox(QWidget* pa
 #endif
 }
 
-xToolsBluetoothDeviceInfoComboBox::~xToolsBluetoothDeviceInfoComboBox()
+xToolsBleDeviceInfoComboBox::~xToolsBleDeviceInfoComboBox()
 {
 #if 0
     mScanner->stopDiscover();
 #endif
 }
 
-void xToolsBluetoothDeviceInfoComboBox::startDiscover()
+void xToolsBleDeviceInfoComboBox::startDiscover()
 {
 #if 0
     clear();
@@ -43,14 +43,14 @@ void xToolsBluetoothDeviceInfoComboBox::startDiscover()
 #endif
 }
 
-void xToolsBluetoothDeviceInfoComboBox::stopDiscover()
+void xToolsBleDeviceInfoComboBox::stopDiscover()
 {
 #if 0
     mScanner->stopDiscover();
 #endif
 }
 
-bool xToolsBluetoothDeviceInfoComboBox::isActive()
+bool xToolsBleDeviceInfoComboBox::isActive()
 {
 #if 0
     return mScanner->isActive();
@@ -58,19 +58,19 @@ bool xToolsBluetoothDeviceInfoComboBox::isActive()
     return false;
 }
 
-void xToolsBluetoothDeviceInfoComboBox::setTimeoutInterval(int interval)
+void xToolsBleDeviceInfoComboBox::setTimeoutInterval(int interval)
 {
 #if 0
     mScanner->setTimeoutInterval(interval);
 #endif
 }
 
-void xToolsBluetoothDeviceInfoComboBox::setNameFiltter(const QString& filtter)
+void xToolsBleDeviceInfoComboBox::setNameFiltter(const QString& filtter)
 {
     //    mScanner->setNameFiltter(filtter);
 }
 
-void xToolsBluetoothDeviceInfoComboBox::changeEvent(QEvent* event)
+void xToolsBleDeviceInfoComboBox::changeEvent(QEvent* event)
 {
     xToolsComboBox::changeEvent(event);
     if ((event->type() == QEvent::EnabledChange) && isEnabled()) {
@@ -78,7 +78,7 @@ void xToolsBluetoothDeviceInfoComboBox::changeEvent(QEvent* event)
     }
 }
 
-void xToolsBluetoothDeviceInfoComboBox::onFinished()
+void xToolsBleDeviceInfoComboBox::onFinished()
 {
     // if (!isEnabled()) {
     //     return;
@@ -94,7 +94,7 @@ void xToolsBluetoothDeviceInfoComboBox::onFinished()
     // emit finished();
 }
 
-void xToolsBluetoothDeviceInfoComboBox::onDeviceDiscovered(const QBluetoothDeviceInfo& info)
+void xToolsBleDeviceInfoComboBox::onDeviceDiscovered(const QBluetoothDeviceInfo& info)
 {
     if (!isEnabled()) {
         return;
@@ -103,7 +103,7 @@ void xToolsBluetoothDeviceInfoComboBox::onDeviceDiscovered(const QBluetoothDevic
     addItem(info.name(), QVariant::fromValue(info));
 }
 
-void xToolsBluetoothDeviceInfoComboBox::onErrorOccurred(const QString& errStr)
+void xToolsBleDeviceInfoComboBox::onErrorOccurred(const QString& errStr)
 {
     QMessageBox::warning(this, tr("Error Occurred"), errStr);
 }
