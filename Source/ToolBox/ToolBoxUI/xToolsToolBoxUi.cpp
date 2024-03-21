@@ -40,7 +40,7 @@
 #include "xToolsWebSocketTransmitterToolUi.h"
 
 #ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
-#include "sakblecentraltoolui.h"
+#include "xToolsBleCentralToolUi.h"
 #endif
 
 xToolsToolBoxUi::xToolsToolBoxUi(QWidget* parent)
@@ -171,7 +171,7 @@ xToolsCommunicationToolUi* xToolsToolBoxUi::communicationToolUi(int type)
     }
 #ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
     else if (type == xToolsToolFactory::BleCentralTool) {
-        w = new SAKBleCentralToolUi();
+        w = new xToolsBleCentralToolUi();
     }
 #endif
     else {

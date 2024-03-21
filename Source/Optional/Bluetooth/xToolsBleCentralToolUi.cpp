@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakblecentraltoolui.h"
-#include "ui_sakblecentraltoolui.h"
+#include "xToolsBleCentralToolUi.h"
+#include "ui_xToolsBleCentralToolUi.h"
 
 #include <QGridLayout>
 #include <QLabel>
@@ -21,9 +21,9 @@
 
 #define SAK_CB_I_C &QComboBox::currentIndexChanged
 
-SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget* parent)
+xToolsBleCentralToolUi::xToolsBleCentralToolUi(QWidget* parent)
     : xToolsCommunicationToolUi{parent}
-    , ui(new Ui::SAKBleCentralToolUi)
+    , ui(new Ui::xToolsBleCentralToolUi)
     , mBleTool(Q_NULLPTR)
 {
     ui->setupUi(this);
@@ -31,36 +31,36 @@ SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget* parent)
     connect(ui->pushButtonScan,
             &QPushButton::clicked,
             this,
-            &SAKBleCentralToolUi::onPushButtonScanClicked);
+            &xToolsBleCentralToolUi::onPushButtonScanClicked);
     connect(ui->comboBoxDevices,
             static_cast<void (QComboBox::*)(int)>(SAK_CB_I_C),
             this,
-            &SAKBleCentralToolUi::onComboBoxDevicesActived);
+            &xToolsBleCentralToolUi::onComboBoxDevicesActived);
     connect(ui->comboBoxServices,
             static_cast<void (QComboBox::*)(int)>(SAK_CB_I_C),
             this,
-            &SAKBleCentralToolUi::onComboBoxServicesCurrentIndexChanged);
+            &xToolsBleCentralToolUi::onComboBoxServicesCurrentIndexChanged);
     connect(ui->comboBoxCharacteristics,
             static_cast<void (QComboBox::*)(int)>(SAK_CB_I_C),
             this,
-            &SAKBleCentralToolUi::onComboBoxCharacteristicsActived);
+            &xToolsBleCentralToolUi::onComboBoxCharacteristicsActived);
     connect(ui->comboBoxWriteWay,
             static_cast<void (QComboBox::*)(int)>(SAK_CB_I_C),
             this,
-            &SAKBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged);
+            &xToolsBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged);
     connect(ui->pushButtonNotify,
             &QPushButton::clicked,
             this,
-            &SAKBleCentralToolUi::onPushButtonNotifyClicked);
+            &xToolsBleCentralToolUi::onPushButtonNotifyClicked);
     connect(ui->pushButtonRead,
             &QPushButton::clicked,
             this,
-            &SAKBleCentralToolUi::onPushButtonReadClicked);
-    connect(ui->comboBoxDevices, &SAKBluetoothDeviceInfoComboBox::finished, this, [=]() {
+            &xToolsBleCentralToolUi::onPushButtonReadClicked);
+    connect(ui->comboBoxDevices, &xToolsBluetoothDeviceInfoComboBox::finished, this, [=]() {
         ui->pushButtonScan->setText(tr("Scan"));
         ui->pushButtonScan->setEnabled(true);
     });
-    connect(ui->comboBoxDevices, &SAKBluetoothDeviceInfoComboBox::started, this, [=]() {
+    connect(ui->comboBoxDevices, &xToolsBluetoothDeviceInfoComboBox::started, this, [=]() {
         ui->pushButtonScan->setText(tr("Stop"));
         ui->pushButtonScan->setEnabled(true);
     });
@@ -73,16 +73,16 @@ SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget* parent)
     ui->labelUnsupported->setStyleSheet("QLabel{color:red}");
 }
 
-SAKBleCentralToolUi::~SAKBleCentralToolUi()
+xToolsBleCentralToolUi::~xToolsBleCentralToolUi()
 {
     delete ui;
 }
 
-void SAKBleCentralToolUi::onBaseToolUiInitialized(xToolsBaseTool* tool, const QString& settingsGroup)
+void xToolsBleCentralToolUi::onBaseToolUiInitialized(xToolsBaseTool* tool, const QString& settingsGroup)
 {
     xToolsCommunicationToolUi::onBaseToolUiInitialized(tool, settingsGroup);
 
-    mBleTool = qobject_cast<SAKBleCentralTool*>(mTool);
+    mBleTool = qobject_cast<xToolsBleCentralTool*>(mTool);
     if (!mBleTool) {
         QByteArray msg("invalid SAKBleCentralTool tool");
         qWarning() << QString::fromLatin1(msg);
@@ -92,21 +92,21 @@ void SAKBleCentralToolUi::onBaseToolUiInitialized(xToolsBaseTool* tool, const QS
 
     onComboBoxWriteWayCurrentIndexChanged();
     connect(mBleTool,
-            &SAKBleCentralTool::descriptorWritten,
+            &xToolsBleCentralTool::descriptorWritten,
             this,
-            &SAKBleCentralToolUi::onDescriptorWritten);
+            &xToolsBleCentralToolUi::onDescriptorWritten);
 
     initSettingsMenu(settingsGroup);
 }
 
-void SAKBleCentralToolUi::onIsWorkingChanged(bool isWorking)
+void xToolsBleCentralToolUi::onIsWorkingChanged(bool isWorking)
 {
     if (!isWorking) {
         ui->progressBar->hide();
     }
 }
 
-void SAKBleCentralToolUi::initSettingsMenu(const QString& settingsGroup)
+void xToolsBleCentralToolUi::initSettingsMenu(const QString& settingsGroup)
 {
     QWidget* w = new QWidget(this);
     QGridLayout* gl = new QGridLayout();
@@ -151,13 +151,13 @@ void SAKBleCentralToolUi::initSettingsMenu(const QString& settingsGroup)
     ui->pushButtonSettings->setMenu(menu);
 
     connect(mBleTool,
-            &SAKBleCentralTool::serviceDiscoveryStarted,
+            &xToolsBleCentralTool::serviceDiscoveryStarted,
             this,
-            &SAKBleCentralToolUi::onServiceDiscoveryStarted);
+            &xToolsBleCentralToolUi::onServiceDiscoveryStarted);
     connect(mBleTool,
-            &SAKBleCentralTool::serviceDiscoveryFinished,
+            &xToolsBleCentralTool::serviceDiscoveryFinished,
             this,
-            &SAKBleCentralToolUi::onServiceDiscoveryFinished);
+            &xToolsBleCentralToolUi::onServiceDiscoveryFinished);
 
     int timeoutInterval = sp->value();
     QString nameFiltter = le->text().trimmed();
@@ -167,12 +167,12 @@ void SAKBleCentralToolUi::initSettingsMenu(const QString& settingsGroup)
     onComboBoxDevicesActived();
 }
 
-void SAKBleCentralToolUi::onServiceDiscoveryStarted()
+void xToolsBleCentralToolUi::onServiceDiscoveryStarted()
 {
     ui->progressBar->show();
 }
 
-void SAKBleCentralToolUi::onServiceDiscoveryFinished()
+void xToolsBleCentralToolUi::onServiceDiscoveryFinished()
 {
     ui->comboBoxServices->clear();
     auto services = mBleTool->services();
@@ -193,7 +193,7 @@ void SAKBleCentralToolUi::onServiceDiscoveryFinished()
     ui->progressBar->hide();
 }
 
-void SAKBleCentralToolUi::onDescriptorWritten(const QLowEnergyDescriptor& descriptor,
+void xToolsBleCentralToolUi::onDescriptorWritten(const QLowEnergyDescriptor& descriptor,
                                               const QByteArray& newValue)
 {
     Q_UNUSED(descriptor)
@@ -201,7 +201,7 @@ void SAKBleCentralToolUi::onDescriptorWritten(const QLowEnergyDescriptor& descri
     onComboBoxCharacteristicsActived();
 }
 
-void SAKBleCentralToolUi::onPushButtonScanClicked()
+void xToolsBleCentralToolUi::onPushButtonScanClicked()
 {
     ui->pushButtonScan->setEnabled(false);
     if (ui->comboBoxDevices->isActive()) {
@@ -211,13 +211,13 @@ void SAKBleCentralToolUi::onPushButtonScanClicked()
     }
 }
 
-void SAKBleCentralToolUi::onComboBoxDevicesActived()
+void xToolsBleCentralToolUi::onComboBoxDevicesActived()
 {
     QVariant data = ui->comboBoxDevices->currentData();
     mBleTool->setInfo(data);
 }
 
-void SAKBleCentralToolUi::onComboBoxServicesCurrentIndexChanged()
+void xToolsBleCentralToolUi::onComboBoxServicesCurrentIndexChanged()
 {
     mBleTool->setServiceIndex(ui->comboBoxServices->currentIndex());
     auto service = ui->comboBoxServices->currentData();
@@ -233,7 +233,7 @@ void SAKBleCentralToolUi::onComboBoxServicesCurrentIndexChanged()
     }
 }
 
-void SAKBleCentralToolUi::onComboBoxCharacteristicsActived()
+void xToolsBleCentralToolUi::onComboBoxCharacteristicsActived()
 {
     int index = ui->comboBoxCharacteristics->currentIndex();
     mBleTool->setCharacteristicIndex(index);
@@ -259,19 +259,19 @@ void SAKBleCentralToolUi::onComboBoxCharacteristicsActived()
     }
 }
 
-void SAKBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged()
+void xToolsBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged()
 {
     int index = ui->comboBoxWriteWay->currentIndex();
     mBleTool->setWriteModel(index);
     qInfo() << "set write model to:" << index;
 }
 
-void SAKBleCentralToolUi::onPushButtonNotifyClicked()
+void xToolsBleCentralToolUi::onPushButtonNotifyClicked()
 {
     mBleTool->changeNotify();
 }
 
-void SAKBleCentralToolUi::onPushButtonReadClicked()
+void xToolsBleCentralToolUi::onPushButtonReadClicked()
 {
     mBleTool->readCharacteristic();
 }

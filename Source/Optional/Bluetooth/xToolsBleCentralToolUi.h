@@ -6,23 +6,20 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKBLECENTRALTOOLUI_H
-#define SAKBLECENTRALTOOLUI_H
-
 #include <QLowEnergyDescriptor>
 
-#include "sakblecentraltool.h"
+#include "xToolsBleCentralTool.h"
 #include "xToolsCommunicationToolUi.h"
 
 namespace Ui {
-class SAKBleCentralToolUi;
+class xToolsBleCentralToolUi;
 }
-class SAKBleCentralToolUi : public xToolsCommunicationToolUi
+class xToolsBleCentralToolUi : public xToolsCommunicationToolUi
 {
     Q_OBJECT
 public:
-    explicit SAKBleCentralToolUi(QWidget *parent = nullptr);
-    ~SAKBleCentralToolUi();
+    explicit xToolsBleCentralToolUi(QWidget *parent = nullptr);
+    ~xToolsBleCentralToolUi();
 
 protected:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool,
@@ -31,8 +28,8 @@ protected:
     virtual void onIsWorkingChanged(bool isWorking) final;
 
 private:
-    Ui::SAKBleCentralToolUi *ui{nullptr};
-    SAKBleCentralTool *mBleTool;
+    Ui::xToolsBleCentralToolUi *ui{nullptr};
+    xToolsBleCentralTool *mBleTool;
     const QLoggingCategory mLoggingCategory{"sak.blecentraltoolui"};
 
 private:
@@ -51,5 +48,3 @@ private slots:
     void onPushButtonNotifyClicked();
     void onPushButtonReadClicked();
 };
-
-#endif // SAKBLECENTRALTOOLUI_H

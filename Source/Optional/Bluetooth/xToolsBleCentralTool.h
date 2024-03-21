@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef EDBLECENTRAL_HH
-#define EDBLECENTRAL_HH
+#pragma once
 
 #include <QBluetoothDeviceInfo>
 #include <QBluetoothUuid>
@@ -17,7 +16,7 @@
 
 #include "xToolsCommunicationTool.h"
 
-class SAKBleCentralTool : public xToolsCommunicationTool
+class xToolsBleCentralTool : public xToolsCommunicationTool
 {
     Q_OBJECT
     // clang-format off
@@ -28,8 +27,8 @@ class SAKBleCentralTool : public xToolsCommunicationTool
     Q_PROPERTY(int writeModel READ writeModel WRITE setWriteModel NOTIFY writeModelChanged)
     // clang-format on
 public:
-    SAKBleCentralTool(QObject *parent = nullptr);
-    ~SAKBleCentralTool();
+    xToolsBleCentralTool(QObject *parent = nullptr);
+    ~xToolsBleCentralTool();
 
 public:
     Q_INVOKABLE QString serviceName(QVariant service);
@@ -89,5 +88,3 @@ private:
     int m_characteristicIndex{-1};
     int m_writeModel;
 };
-
-#endif // EDBLECENTRAL_HPP

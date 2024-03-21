@@ -9,9 +9,9 @@ set(SAK_COMMON_SOURCES
     ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.cpp
     ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.h
     ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.cpp
-    ${CMAKE_SOURCE_DIR}/Source/Common/Commonui/xToolsUi.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/Commonui/xToolsMainWindow.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/Commonui/xToolsMainWindow.cpp
+    ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsUi.h
+    ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.h
+    ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.cpp
     ${CMAKE_SOURCE_DIR}/xTools.qrc)
 
 set(SAK_MODBUSSTUDIO_SOURCES ${SAK_MODBUSSTUDIO_SOURCES} ${SAK_COMMON_SOURCES})

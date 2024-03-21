@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakblescanner.h"
+#include "xToolsBleScanner.h"
 
 #include <QBluetoothDeviceInfo>
 #include <QDebug>
@@ -14,29 +14,29 @@
 
 #define BLE_ERR_SIG void (QBluetoothDeviceDiscoveryAgent::*)(QBluetoothDeviceDiscoveryAgent::Error)
 
-SAKBleScanner::SAKBleScanner(QObject* parent)
+xToolsBleScanner::xToolsBleScanner(QObject* parent)
     : QThread(parent)
     , m_discover(Q_NULLPTR)
 {}
 
-SAKBleScanner::~SAKBleScanner() {}
+xToolsBleScanner::~xToolsBleScanner() {}
 
-void SAKBleScanner::startDiscover()
+void xToolsBleScanner::startDiscover()
 {
     start();
 }
 
-void SAKBleScanner::stopDiscover()
+void xToolsBleScanner::stopDiscover()
 {
     exit();
 }
 
-bool SAKBleScanner::isActive()
+bool xToolsBleScanner::isActive()
 {
     return isRunning();
 }
 
-QVariant SAKBleScanner::deviceInfo(int index)
+QVariant xToolsBleScanner::deviceInfo(int index)
 {
     m_deviceInfoListMutex.lock();
     if (index >= 0 && index < m_deviceInfoList.length()) {
@@ -48,27 +48,27 @@ QVariant SAKBleScanner::deviceInfo(int index)
     return QVariant();
 }
 
-QString SAKBleScanner::deviceName(const QVariant& deviceInfo)
+QString xToolsBleScanner::deviceName(const QVariant& deviceInfo)
 {
     auto cookedInfo = deviceInfo.value<QBluetoothDeviceInfo>();
     return cookedInfo.name();
 }
 
-void SAKBleScanner::run()
+void xToolsBleScanner::run()
 {
     m_discover = new QBluetoothDeviceDiscoveryAgent();
     connect(m_discover,
             &QBluetoothDeviceDiscoveryAgent::finished,
             this,
-            &SAKBleScanner::onDiscoveryFinished);
+            &xToolsBleScanner::onDiscoveryFinished);
     connect(m_discover,
             &QBluetoothDeviceDiscoveryAgent::errorOccurred,
             this,
-            &SAKBleScanner::onDiscoveryErrorOccurred);
+            &xToolsBleScanner::onDiscoveryErrorOccurred);
     connect(m_discover,
             &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
             this,
-            &SAKBleScanner::onDiscoveryDeviceDiscovered);
+            &xToolsBleScanner::onDiscoveryDeviceDiscovered);
 
     // 10s-1minute
     int interval = m_timeoutInterval < 10 ? 10 : m_timeoutInterval;
@@ -82,13 +82,13 @@ void SAKBleScanner::run()
     exec();
 }
 
-void SAKBleScanner::onDiscoveryFinished()
+void xToolsBleScanner::onDiscoveryFinished()
 {
     emit devicesInfoListChanged();
     exit();
 }
 
-void SAKBleScanner::onDiscoveryErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error)
+void xToolsBleScanner::onDiscoveryErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error)
 {
     Q_UNUSED(error);
     qWarning() << "QBluetoothDeviceDiscoveryAgent error:" << m_discover->errorString();
@@ -96,7 +96,7 @@ void SAKBleScanner::onDiscoveryErrorOccurred(QBluetoothDeviceDiscoveryAgent::Err
     emit errorOccurred(m_discover->errorString());
 }
 
-void SAKBleScanner::onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo& info)
+void xToolsBleScanner::onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo& info)
 {
     const QString name = info.name();
     qInfo() << "new ble device:" << name;
@@ -114,7 +114,7 @@ void SAKBleScanner::onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo& info
     emit deviceDiscovered(info);
 }
 
-QVariantList SAKBleScanner::devicesInfoList()
+QVariantList xToolsBleScanner::devicesInfoList()
 {
     QVariantList list;
     m_deviceInfoListMutex.lock();
@@ -126,23 +126,23 @@ QVariantList SAKBleScanner::devicesInfoList()
     return list;
 }
 
-int SAKBleScanner::timeoutInterval()
+int xToolsBleScanner::timeoutInterval()
 {
     return m_timeoutInterval;
 }
 
-void SAKBleScanner::setTimeoutInterval(int interval)
+void xToolsBleScanner::setTimeoutInterval(int interval)
 {
     m_timeoutInterval = interval;
     emit timeoutIntervalChanged();
 }
 
-QString SAKBleScanner::namefiltter()
+QString xToolsBleScanner::namefiltter()
 {
     return m_nameFiltter;
 }
 
-void SAKBleScanner::setNameFiltter(const QString& flag)
+void xToolsBleScanner::setNameFiltter(const QString& flag)
 {
     m_nameFiltter = flag;
     emit filtterNameChanged();

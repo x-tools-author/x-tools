@@ -6,20 +6,20 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsBleCentralTool.h"
+
 #include <QBluetoothDeviceInfo>
 #include <QMetaObject>
 
-#include "sakblecentraltool.h"
-
 #define BLE_ERR_SIG QLowEnergyController::Error
 
-SAKBleCentralTool::SAKBleCentralTool(QObject *parent)
+xToolsBleCentralTool::xToolsBleCentralTool(QObject *parent)
     : xToolsCommunicationTool(parent)
 {}
 
-SAKBleCentralTool::~SAKBleCentralTool() {}
+xToolsBleCentralTool::~xToolsBleCentralTool() {}
 
-QString SAKBleCentralTool::serviceName(QVariant service)
+QString xToolsBleCentralTool::serviceName(QVariant service)
 {
     QObject *obj = service.value<QObject *>();
     auto cookedService = qobject_cast<QLowEnergyService *>(obj);
@@ -32,7 +32,7 @@ QString SAKBleCentralTool::serviceName(QVariant service)
     return "Invalid";
 }
 
-QVariantList SAKBleCentralTool::characteristics(QVariant service)
+QVariantList xToolsBleCentralTool::characteristics(QVariant service)
 {
     QVariantList list;
     if (service.canConvert<QLowEnergyService *>()) {
@@ -48,7 +48,7 @@ QVariantList SAKBleCentralTool::characteristics(QVariant service)
     return list;
 }
 
-QString SAKBleCentralTool::characteristicName(QVariant characteristic)
+QString xToolsBleCentralTool::characteristicName(QVariant characteristic)
 {
     if (characteristic.canConvert<QLowEnergyCharacteristic>()) {
         auto c = characteristic.value<QLowEnergyCharacteristic>();
@@ -58,7 +58,7 @@ QString SAKBleCentralTool::characteristicName(QVariant characteristic)
     return "Invalid";
 }
 
-void SAKBleCentralTool::readCharacteristic()
+void xToolsBleCentralTool::readCharacteristic()
 {
     if (!(m_serviceIndex >= 0 && m_serviceIndex < m_services.length())) {
         qWarning() << "invalid service index";
@@ -76,7 +76,7 @@ void SAKBleCentralTool::readCharacteristic()
     service->readCharacteristic(c);
 }
 
-void SAKBleCentralTool::changeNotify()
+void xToolsBleCentralTool::changeNotify()
 {
     if (!((m_serviceIndex >= 0) && (m_serviceIndex < m_services.length()))) {
         return;
@@ -110,7 +110,7 @@ void SAKBleCentralTool::changeNotify()
     }
 }
 
-bool SAKBleCentralTool::hasFlag(QVariant characteristic, int flag)
+bool xToolsBleCentralTool::hasFlag(QVariant characteristic, int flag)
 {
     auto ch = characteristic.value<QLowEnergyCharacteristic>();
     auto properties = ch.properties();
@@ -121,7 +121,7 @@ bool SAKBleCentralTool::hasFlag(QVariant characteristic, int flag)
     return false;
 }
 
-bool SAKBleCentralTool::isNotified(QVariant characteristic)
+bool xToolsBleCentralTool::isNotified(QVariant characteristic)
 {
     auto cookedCh = characteristic.value<QLowEnergyCharacteristic>();
     auto desList = cookedCh.descriptors();
@@ -136,7 +136,7 @@ bool SAKBleCentralTool::isNotified(QVariant characteristic)
     return notified;
 }
 
-bool SAKBleCentralTool::initialize(QString &errStr)
+bool xToolsBleCentralTool::initialize(QString &errStr)
 {
     if (!m_bluetoothDeviceInfo.isValid()) {
         errStr = "invalid ble information.";
@@ -168,7 +168,7 @@ bool SAKBleCentralTool::initialize(QString &errStr)
     return true;
 }
 
-void SAKBleCentralTool::readBytes()
+void xToolsBleCentralTool::readBytes()
 {
     if (!((m_serviceIndex >= 0) && (m_serviceIndex < m_services.length()))) {
         return;
@@ -180,7 +180,7 @@ void SAKBleCentralTool::readBytes()
     service->readCharacteristic(characteristic);
 }
 
-void SAKBleCentralTool::writeBytes(const QByteArray &bytes)
+void xToolsBleCentralTool::writeBytes(const QByteArray &bytes)
 {
     if (!((m_serviceIndex >= 0) && (m_serviceIndex < m_services.length()))) {
         qWarning() << "invalid parameters.";
@@ -214,19 +214,19 @@ void SAKBleCentralTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void SAKBleCentralTool::uninitialize()
+void xToolsBleCentralTool::uninitialize()
 {
     mBleCentral->disconnectFromDevice();
     mBleCentral->deleteLater();
     mBleCentral = nullptr;
 }
 
-void SAKBleCentralTool::onServiceDiscovered(const QBluetoothUuid &newService)
+void xToolsBleCentralTool::onServiceDiscovered(const QBluetoothUuid &newService)
 {
     qInfo() << "new ble service discovered:" + newService.toString();
 }
 
-void SAKBleCentralTool::onServiceDiscoveryFinished()
+void xToolsBleCentralTool::onServiceDiscoveryFinished()
 {
     qInfo() << "ble service discovery finished.";
     QList<QBluetoothUuid> uuids = mBleCentral->services();
@@ -267,7 +267,7 @@ void SAKBleCentralTool::onServiceDiscoveryFinished()
         connect(service,
                 &QLowEnergyService::descriptorWritten,
                 this,
-                &SAKBleCentralTool::descriptorWritten);
+                &xToolsBleCentralTool::descriptorWritten);
 
         m_services.append(service);
         service->discoverDetails();
@@ -276,7 +276,7 @@ void SAKBleCentralTool::onServiceDiscoveryFinished()
     emit serviceDiscoveryFinished();
 }
 
-void SAKBleCentralTool::onBleCentralErrorOccuured(QLowEnergyController::Error err)
+void xToolsBleCentralTool::onBleCentralErrorOccuured(QLowEnergyController::Error err)
 {
     if (err == QLowEnergyController::UnknownError) {
         return;
@@ -286,20 +286,20 @@ void SAKBleCentralTool::onBleCentralErrorOccuured(QLowEnergyController::Error er
     exit();
 }
 
-void SAKBleCentralTool::onBleCentralConnected()
+void xToolsBleCentralTool::onBleCentralConnected()
 {
     qWarning() << "connect to device successfully.";
     mBleCentral->discoverServices();
 }
 
-void SAKBleCentralTool::onBleCentralDisconnected()
+void xToolsBleCentralTool::onBleCentralDisconnected()
 {
     QString msg = "disconnect from device";
     qWarning() << msg;
     emit errorOccurred(msg);
 }
 
-void SAKBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *service,
+void xToolsBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *service,
                                                     QLowEnergyService::ServiceState newState)
 {
     Q_UNUSED(service);
@@ -309,18 +309,18 @@ void SAKBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *service,
     }
 }
 
-QVariant SAKBleCentralTool::info()
+QVariant xToolsBleCentralTool::info()
 {
     return QVariant::fromValue(m_bluetoothDeviceInfo);
 }
 
-void SAKBleCentralTool::setInfo(QVariant info)
+void xToolsBleCentralTool::setInfo(QVariant info)
 {
     m_bluetoothDeviceInfo = info.value<QBluetoothDeviceInfo>();
     emit infoChanged();
 }
 
-QVariantList SAKBleCentralTool::services()
+QVariantList xToolsBleCentralTool::services()
 {
     QVariantList varList;
     for (auto &var : m_services) {
@@ -329,34 +329,34 @@ QVariantList SAKBleCentralTool::services()
     return varList;
 }
 
-int SAKBleCentralTool::serviceIndex()
+int xToolsBleCentralTool::serviceIndex()
 {
     return m_serviceIndex;
 }
 
-void SAKBleCentralTool::setServiceIndex(int index)
+void xToolsBleCentralTool::setServiceIndex(int index)
 {
     m_serviceIndex = index;
     emit serviceIndexChanged();
 }
 
-int SAKBleCentralTool::characteristicIndex()
+int xToolsBleCentralTool::characteristicIndex()
 {
     return m_characteristicIndex;
 }
 
-void SAKBleCentralTool::setCharacteristicIndex(int index)
+void xToolsBleCentralTool::setCharacteristicIndex(int index)
 {
     m_characteristicIndex = index;
     emit characteristicIndexChanged();
 }
 
-int SAKBleCentralTool::writeModel()
+int xToolsBleCentralTool::writeModel()
 {
     return m_writeModel;
 }
 
-void SAKBleCentralTool::setWriteModel(int model)
+void xToolsBleCentralTool::setWriteModel(int model)
 {
     m_writeModel = model;
     emit writeModelChanged();

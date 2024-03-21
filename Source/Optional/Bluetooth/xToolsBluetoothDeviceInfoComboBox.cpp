@@ -6,12 +6,12 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakbluetoothdeviceInfocombobox.h"
+#include "xToolsBluetoothDeviceInfoComboBox.h"
 
 #include <QBluetoothDeviceInfo>
 #include <QMessageBox>
 
-SAKBluetoothDeviceInfoComboBox::SAKBluetoothDeviceInfoComboBox(QWidget* parent)
+xToolsBluetoothDeviceInfoComboBox::xToolsBluetoothDeviceInfoComboBox(QWidget* parent)
     : xToolsComboBox(parent)
     , mScanner(Q_NULLPTR)
 {
@@ -28,14 +28,14 @@ SAKBluetoothDeviceInfoComboBox::SAKBluetoothDeviceInfoComboBox(QWidget* parent)
 #endif
 }
 
-SAKBluetoothDeviceInfoComboBox::~SAKBluetoothDeviceInfoComboBox()
+xToolsBluetoothDeviceInfoComboBox::~xToolsBluetoothDeviceInfoComboBox()
 {
 #if 0
     mScanner->stopDiscover();
 #endif
 }
 
-void SAKBluetoothDeviceInfoComboBox::startDiscover()
+void xToolsBluetoothDeviceInfoComboBox::startDiscover()
 {
 #if 0
     clear();
@@ -43,14 +43,14 @@ void SAKBluetoothDeviceInfoComboBox::startDiscover()
 #endif
 }
 
-void SAKBluetoothDeviceInfoComboBox::stopDiscover()
+void xToolsBluetoothDeviceInfoComboBox::stopDiscover()
 {
 #if 0
     mScanner->stopDiscover();
 #endif
 }
 
-bool SAKBluetoothDeviceInfoComboBox::isActive()
+bool xToolsBluetoothDeviceInfoComboBox::isActive()
 {
 #if 0
     return mScanner->isActive();
@@ -58,19 +58,19 @@ bool SAKBluetoothDeviceInfoComboBox::isActive()
     return false;
 }
 
-void SAKBluetoothDeviceInfoComboBox::setTimeoutInterval(int interval)
+void xToolsBluetoothDeviceInfoComboBox::setTimeoutInterval(int interval)
 {
 #if 0
     mScanner->setTimeoutInterval(interval);
 #endif
 }
 
-void SAKBluetoothDeviceInfoComboBox::setNameFiltter(const QString& filtter)
+void xToolsBluetoothDeviceInfoComboBox::setNameFiltter(const QString& filtter)
 {
     //    mScanner->setNameFiltter(filtter);
 }
 
-void SAKBluetoothDeviceInfoComboBox::changeEvent(QEvent* event)
+void xToolsBluetoothDeviceInfoComboBox::changeEvent(QEvent* event)
 {
     xToolsComboBox::changeEvent(event);
     if ((event->type() == QEvent::EnabledChange) && isEnabled()) {
@@ -78,7 +78,7 @@ void SAKBluetoothDeviceInfoComboBox::changeEvent(QEvent* event)
     }
 }
 
-void SAKBluetoothDeviceInfoComboBox::onFinished()
+void xToolsBluetoothDeviceInfoComboBox::onFinished()
 {
     // if (!isEnabled()) {
     //     return;
@@ -94,7 +94,7 @@ void SAKBluetoothDeviceInfoComboBox::onFinished()
     // emit finished();
 }
 
-void SAKBluetoothDeviceInfoComboBox::onDeviceDiscovered(const QBluetoothDeviceInfo& info)
+void xToolsBluetoothDeviceInfoComboBox::onDeviceDiscovered(const QBluetoothDeviceInfo& info)
 {
     if (!isEnabled()) {
         return;
@@ -103,7 +103,7 @@ void SAKBluetoothDeviceInfoComboBox::onDeviceDiscovered(const QBluetoothDeviceIn
     addItem(info.name(), QVariant::fromValue(info));
 }
 
-void SAKBluetoothDeviceInfoComboBox::onErrorOccurred(const QString& errStr)
+void xToolsBluetoothDeviceInfoComboBox::onErrorOccurred(const QString& errStr)
 {
     QMessageBox::warning(this, tr("Error Occurred"), errStr);
 }

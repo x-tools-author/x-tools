@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKBleCentralToolUi</class>
- <widget class="QWidget" name="SAKBleCentralToolUi">
+ <class>xToolsBleCentralToolUi</class>
+ <widget class="QWidget" name="xToolsBleCentralToolUi">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>248</width>
+    <width>256</width>
     <height>256</height>
    </rect>
   </property>
@@ -66,7 +66,7 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="SAKBluetoothDeviceInfoComboBox" name="comboBoxDevices"/>
+    <widget class="xToolsBluetoothDeviceInfoComboBox" name="comboBoxDevices"/>
    </item>
    <item row="7" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -175,9 +175,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKBluetoothDeviceInfoComboBox</class>
+   <class>xToolsBluetoothDeviceInfoComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">sakbluetoothdeviceInfocombobox.h</header>
+   <header location="global">xToolsBluetoothDeviceInfoComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

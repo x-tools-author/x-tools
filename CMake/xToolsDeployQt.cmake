@@ -21,24 +21,24 @@ function(sak_auto_execute_windeployqt target)
         VERBATIM)
     endif()
 
-  endif()
-  if(MSVC AND ${MSVC_VERSION} GREATER_EQUAL 1929)
-    cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
-    if("${CMAKE_BUILD_TYPE}" STREQUAL "Release" AND MSVC)
-      add_custom_command(
-        TARGET ${target}
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140.dll"
-                $<TARGET_FILE_DIR:${target}>
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140_1.dll"
-                $<TARGET_FILE_DIR:${target}>
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140.dll"
-                $<TARGET_FILE_DIR:${target}>
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_1.dll"
-                $<TARGET_FILE_DIR:${target}>
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_2.dll"
-                $<TARGET_FILE_DIR:${target}>
-        VERBATIM)
+    if(MSVC AND ${MSVC_VERSION} GREATER_EQUAL 1929)
+      cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
+      if("${CMAKE_BUILD_TYPE}" STREQUAL "Release" AND MSVC)
+        add_custom_command(
+          TARGET ${target}
+          POST_BUILD
+          COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140.dll"
+                  $<TARGET_FILE_DIR:${target}>
+          COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140_1.dll"
+                  $<TARGET_FILE_DIR:${target}>
+          COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140.dll"
+                  $<TARGET_FILE_DIR:${target}>
+          COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_1.dll"
+                  $<TARGET_FILE_DIR:${target}>
+          COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_2.dll"
+                  $<TARGET_FILE_DIR:${target}>
+          VERBATIM)
+      endif()
     endif()
   endif()
 endfunction()

@@ -6,8 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKBLESCANNER_H
-#define SAKBLESCANNER_H
+#pragma once
 
 #include <QBluetoothDeviceDiscoveryAgent>
 #include <QBluetoothDeviceInfo>
@@ -16,7 +15,7 @@
 #include <QThread>
 #include <QVariant>
 
-class SAKBleScanner : public QThread
+class xToolsBleScanner : public QThread
 {
     Q_OBJECT
     // clang-format off
@@ -25,8 +24,8 @@ class SAKBleScanner : public QThread
     Q_PROPERTY(QString namefiltter READ namefiltter WRITE setNameFiltter NOTIFY filtterNameChanged)
     // clang-format on
 public:
-    explicit SAKBleScanner(QObject *parent = nullptr);
-    ~SAKBleScanner();
+    explicit xToolsBleScanner(QObject *parent = nullptr);
+    ~xToolsBleScanner();
 
 public:
     Q_INVOKABLE void startDiscover();
@@ -70,5 +69,3 @@ private:
     int m_timeoutInterval{120};
     QString m_nameFiltter{""};
 };
-
-#endif // SAKBLESCANNER_H

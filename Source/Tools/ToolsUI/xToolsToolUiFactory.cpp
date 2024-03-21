@@ -30,7 +30,7 @@
 #include "xToolsWebSocketTransmitterToolUi.h"
 
 #ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
-#include "sakblecentraltoolui.h"
+#include "xToolsBleCentralToolUi.h"
 #endif
 
 xToolsToolUiFactory::xToolsToolUiFactory(QObject *parent)
@@ -80,7 +80,7 @@ xToolsBaseToolUi *xToolsToolUiFactory::createToolUi(int type)
         return new xToolsSocketServerToolUi();
 #ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
     case xToolsToolFactory::BleCentralTool:
-        return new SAKBleCentralToolUi();
+        return new xToolsBleCentralToolUi();
 #endif
     case xToolsToolFactory::StatistiticianTool:
         return new xToolsStatisticianToolUi();

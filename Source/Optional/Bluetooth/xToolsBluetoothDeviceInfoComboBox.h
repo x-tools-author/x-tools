@@ -6,20 +6,19 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKBLUETOOTHDEVICEINFOCOMBOBOX_H
-#define SAKBLUETOOTHDEVICEINFOCOMBOBOX_H
+#pragma once
 
 #include <QEvent>
 
-#include "sakblescanner.h"
+#include "xToolsBleScanner.h"
 #include "xToolsComboBox.h"
 
-class SAKBluetoothDeviceInfoComboBox : public xToolsComboBox
+class xToolsBluetoothDeviceInfoComboBox : public xToolsComboBox
 {
     Q_OBJECT
 public:
-    SAKBluetoothDeviceInfoComboBox(QWidget *parent = Q_NULLPTR);
-    ~SAKBluetoothDeviceInfoComboBox();
+    xToolsBluetoothDeviceInfoComboBox(QWidget *parent = Q_NULLPTR);
+    ~xToolsBluetoothDeviceInfoComboBox();
     void startDiscover();
     void stopDiscover();
     bool isActive();
@@ -34,12 +33,10 @@ protected:
     virtual void changeEvent(QEvent *event) override;
 
 private:
-    SAKBleScanner *mScanner;
+    xToolsBleScanner *mScanner;
 
 private slots:
     void onFinished();
     void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
     void onErrorOccurred(const QString &errStr);
 };
-
-#endif // SAKBLUETOOTHDEVICEINFOCOMBOBOX_H

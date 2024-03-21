@@ -32,7 +32,7 @@
 #include "xToolsWebSocketTransmitterTool.h"
 
 #ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
-#include "sakblecentraltool.h"
+#include "xToolsBleCentralTool.h"
 #endif
 
 xToolsToolFactory::xToolsToolFactory(QObject *parent)
@@ -79,7 +79,7 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
     }
 #ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
     else if (BleCentralTool == type) {
-        tool = new SAKBleCentralTool();
+        tool = new xToolsBleCentralTool();
     }
 #endif
     else if (StatistiticianTool == type) {
