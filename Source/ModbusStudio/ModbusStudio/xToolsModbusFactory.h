@@ -1,13 +1,12 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKMODBUSFACTORY_H
-#define SAKMODBUSFACTORY_H
+#pragma once
 
 #include <QLoggingCategory>
 #include <QModbusDataUnit>
@@ -15,7 +14,7 @@
 #include <QModbusReply>
 #include <QObject>
 
-class SAKModbusFactory : public QObject
+class xToolsModbusFactory : public QObject
 {
     Q_OBJECT
 public:
@@ -28,11 +27,11 @@ public:
     Q_ENUM(ModbusDeviceType)
 
 private:
-    SAKModbusFactory(QObject *parent = Q_NULLPTR);
+    xToolsModbusFactory(QObject *parent = Q_NULLPTR);
 
 public:
-    ~SAKModbusFactory();
-    static SAKModbusFactory *Instance();
+    ~xToolsModbusFactory();
+    static xToolsModbusFactory *Instance();
 
 public:
     const QString TypeName(int type);
@@ -82,5 +81,3 @@ public:
 private:
     const QLoggingCategory kLoggingCategory{"SAK.Modbus.Factory"};
 };
-
-#endif // SAKMODBUSFACTORY_H

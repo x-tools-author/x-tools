@@ -6,11 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "sakmodbusui.h"
+#include "xToolsModbusUi.h"
 #include "xToolsUi.h"
 
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Modbus Studio");
-    return xToolsExec<SAKModbusUi>(argc, argv, appName);
+    return xToolsExec<xToolsModbusUi>(argc, argv, appName);
 }

@@ -159,7 +159,7 @@ function(sak_auto_execute_linuxdeployqt target)
     VERBATIM)
 endfunction()
 
-function(sak_auto_execute_deployqt target)
+function(x_tools_deploy_qt target)
   if(WIN32)
     sak_auto_execute_windeployqt(${target})
   elseif(UNIX AND NOT APPLE)

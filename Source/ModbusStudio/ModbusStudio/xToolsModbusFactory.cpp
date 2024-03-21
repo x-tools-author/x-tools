@@ -1,11 +1,13 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xToolsModbusFactory.h"
+
 #include <QCoreApplication>
 #include <QModbusTcpClient>
 #include <QModbusTcpServer>
@@ -17,26 +19,24 @@
 #include <QModbusRtuSerialServer>
 #endif
 
-#include "sakmodbusfactory.h"
-
-SAKModbusFactory::SAKModbusFactory(QObject *parent)
+xToolsModbusFactory::xToolsModbusFactory(QObject *parent)
     : QObject(parent)
 {}
 
-SAKModbusFactory::~SAKModbusFactory() {}
+xToolsModbusFactory::~xToolsModbusFactory() {}
 
-SAKModbusFactory *SAKModbusFactory::Instance()
+xToolsModbusFactory *xToolsModbusFactory::Instance()
 {
-    static SAKModbusFactory *factory = Q_NULLPTR;
+    static xToolsModbusFactory *factory = Q_NULLPTR;
 
     if (!factory) {
-        factory = new SAKModbusFactory(qApp);
+        factory = new xToolsModbusFactory(qApp);
     }
 
     return factory;
 }
 
-const QString SAKModbusFactory::TypeName(int type)
+const QString xToolsModbusFactory::TypeName(int type)
 {
     if (type == kModbusRtuSerialClient) {
         return tr("RTU Client");
@@ -54,7 +54,7 @@ const QString SAKModbusFactory::TypeName(int type)
     return "Unknown";
 }
 
-QModbusDevice *SAKModbusFactory::CreateDevice(int type)
+QModbusDevice *xToolsModbusFactory::CreateDevice(int type)
 {
     if (type == kModbusRtuSerialClient) {
         qCInfo(kLoggingCategory) << "Create rtu serial client.";
@@ -84,7 +84,7 @@ QModbusDevice *SAKModbusFactory::CreateDevice(int type)
     return Q_NULLPTR;
 }
 
-bool SAKModbusFactory::IsTcpDevice(QModbusDevice *modbus_device)
+bool xToolsModbusFactory::IsTcpDevice(QModbusDevice *modbus_device)
 {
     if (modbus_device) {
         if (qobject_cast<QModbusTcpClient *>(modbus_device)) {
@@ -97,7 +97,7 @@ bool SAKModbusFactory::IsTcpDevice(QModbusDevice *modbus_device)
     return false;
 }
 
-bool SAKModbusFactory::IsRtuSerialDevice(QModbusDevice *modbus_device)
+bool xToolsModbusFactory::IsRtuSerialDevice(QModbusDevice *modbus_device)
 {
     if (modbus_device) {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
@@ -118,7 +118,7 @@ bool SAKModbusFactory::IsRtuSerialDevice(QModbusDevice *modbus_device)
     return false;
 }
 
-bool SAKModbusFactory::IsTcpDeviceType(int type)
+bool xToolsModbusFactory::IsTcpDeviceType(int type)
 {
     bool is_tcp = (type == kModbusTcpClient);
     is_tcp |= (type == kModbusTcpServer);
@@ -126,7 +126,7 @@ bool SAKModbusFactory::IsTcpDeviceType(int type)
     return is_tcp;
 }
 
-bool SAKModbusFactory::IsRtuSerialDeviceType(int type)
+bool xToolsModbusFactory::IsRtuSerialDeviceType(int type)
 {
     bool is_rtu = (type == kModbusRtuSerialClient);
     is_rtu |= (type == kModbusRtuSerialServer);
@@ -134,7 +134,7 @@ bool SAKModbusFactory::IsRtuSerialDeviceType(int type)
     return is_rtu;
 }
 
-bool SAKModbusFactory::IsServerDevice(QModbusDevice *modbus_device)
+bool xToolsModbusFactory::IsServerDevice(QModbusDevice *modbus_device)
 {
     if (modbus_device && qobject_cast<QModbusServer *>(modbus_device)) {
         return true;
@@ -143,7 +143,7 @@ bool SAKModbusFactory::IsServerDevice(QModbusDevice *modbus_device)
     return false;
 }
 
-bool SAKModbusFactory::IsClientDevice(QModbusDevice *modbus_device)
+bool xToolsModbusFactory::IsClientDevice(QModbusDevice *modbus_device)
 {
     if (modbus_device && qobject_cast<QModbusClient *>(modbus_device)) {
         return true;
@@ -152,7 +152,7 @@ bool SAKModbusFactory::IsClientDevice(QModbusDevice *modbus_device)
     return false;
 }
 
-bool SAKModbusFactory::ConnectDeivce(QModbusDevice *modbus_device)
+bool xToolsModbusFactory::ConnectDeivce(QModbusDevice *modbus_device)
 {
     if (modbus_device) {
         return modbus_device->connectDevice();
@@ -161,7 +161,7 @@ bool SAKModbusFactory::ConnectDeivce(QModbusDevice *modbus_device)
     return false;
 }
 
-bool SAKModbusFactory::IsConnected(QModbusDevice *modbus_device)
+bool xToolsModbusFactory::IsConnected(QModbusDevice *modbus_device)
 {
     if (modbus_device) {
         if (modbus_device->state() == QModbusDevice::ConnectedState) {
@@ -172,7 +172,7 @@ bool SAKModbusFactory::IsConnected(QModbusDevice *modbus_device)
     return false;
 }
 
-bool SAKModbusFactory::IsValidModbusReply(QModbusReply *reply)
+bool xToolsModbusFactory::IsValidModbusReply(QModbusReply *reply)
 {
     if (reply && !reply->isFinished()) {
         return true;
@@ -181,7 +181,7 @@ bool SAKModbusFactory::IsValidModbusReply(QModbusReply *reply)
     return false;
 }
 
-bool SAKModbusFactory::SetServerData(QModbusDevice *server,
+bool xToolsModbusFactory::SetServerData(QModbusDevice *server,
                                      QModbusDataUnit::RegisterType table,
                                      int address,
                                      int data,
@@ -200,7 +200,7 @@ bool SAKModbusFactory::SetServerData(QModbusDevice *server,
     return is_ok;
 }
 
-QList<quint16> SAKModbusFactory::GetServerData(QModbusDevice *server,
+QList<quint16> xToolsModbusFactory::GetServerData(QModbusDevice *server,
                                                QModbusDataUnit::RegisterType table,
                                                int address,
                                                int quantity)
@@ -224,7 +224,7 @@ QList<quint16> SAKModbusFactory::GetServerData(QModbusDevice *server,
     return values;
 }
 
-void SAKModbusFactory::DeleteModbusDevuce(QModbusDevice **modbus_device)
+void xToolsModbusFactory::DeleteModbusDevuce(QModbusDevice **modbus_device)
 {
     if (*modbus_device) {
         QModbusServer *server = qobject_cast<QModbusServer *>(*modbus_device);
@@ -237,7 +237,7 @@ void SAKModbusFactory::DeleteModbusDevuce(QModbusDevice **modbus_device)
     }
 }
 
-QModbusDevice *SAKModbusFactory::CreateRtuSerialDevice(
+QModbusDevice *xToolsModbusFactory::CreateRtuSerialDevice(
     int type, const QString &port_name, int parity, int baud_rate, int data_bits, int stop_bits)
 {
     QModbusDevice *device = CreateDevice(type);
@@ -257,7 +257,7 @@ QModbusDevice *SAKModbusFactory::CreateRtuSerialDevice(
     return device;
 }
 
-QModbusDevice *SAKModbusFactory::CreateTcpDevice(int type, QString address, int port)
+QModbusDevice *xToolsModbusFactory::CreateTcpDevice(int type, QString address, int port)
 {
     QModbusDevice *device = CreateDevice(type);
     if (IsTcpDevice(device)) {
@@ -271,7 +271,7 @@ QModbusDevice *SAKModbusFactory::CreateTcpDevice(int type, QString address, int 
     return device;
 }
 
-void SAKModbusFactory::SetClientDeviceParameters(QModbusDevice *client,
+void xToolsModbusFactory::SetClientDeviceParameters(QModbusDevice *client,
                                                  int timeout,
                                                  int number_of_retries)
 {
@@ -286,7 +286,7 @@ void SAKModbusFactory::SetClientDeviceParameters(QModbusDevice *client,
     }
 }
 
-void SAKModbusFactory::SetServerDeviceParameters(QModbusDevice *server,
+void xToolsModbusFactory::SetServerDeviceParameters(QModbusDevice *server,
                                                  int address,
                                                  bool device_busy,
                                                  bool listen_only_mode)
@@ -303,7 +303,7 @@ void SAKModbusFactory::SetServerDeviceParameters(QModbusDevice *server,
     }
 }
 
-QModbusReply *SAKModbusFactory::SendWriteRequest(QModbusDevice *modbus_device,
+QModbusReply *xToolsModbusFactory::SendWriteRequest(QModbusDevice *modbus_device,
                                                  int register_type,
                                                  int start_address,
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
@@ -332,7 +332,7 @@ QModbusReply *SAKModbusFactory::SendWriteRequest(QModbusDevice *modbus_device,
     return Q_NULLPTR;
 }
 
-QModbusReply *SAKModbusFactory::SendRawRequest(QModbusDevice *modbus_device,
+QModbusReply *xToolsModbusFactory::SendRawRequest(QModbusDevice *modbus_device,
                                                int server_address,
                                                int function_code,
                                                const QByteArray &data)

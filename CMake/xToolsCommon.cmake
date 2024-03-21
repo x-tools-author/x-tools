@@ -61,7 +61,7 @@ function(sak_copy_glog target)
 endfunction()
 
 # Add executable. It can be used by Qt5 and Qt6.
-function(sak_add_executable target sources)
+function(x_tools_add_executable target sources)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${SAK_BINARY_DIR}/${target}")
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${target} MANUAL_FINALIZATION)
@@ -101,7 +101,7 @@ function(sak_add_executable target sources)
   endif()
 endfunction()
 
-function(sak_set_target_properties target)
+function(x_tools_set_target_properties target)
   set_target_properties(
     ${target}
     PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION

@@ -48,7 +48,7 @@
 #endif
 
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
-#include "sakmodbusui.h"
+#include "xToolsModbusUi.h"
 #endif
 
 #define SAK_QT_CONF (qApp->applicationDirPath() + "/qt.conf")
@@ -647,7 +647,7 @@ void MainWindow::initNav()
 
     QString path = ":/Resources/Icon/IconModbus.svg";
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
-    SAKModbusUi* modbus = new SAKModbusUi(this);
+    xToolsModbusUi* modbus = new xToolsModbusUi(this);
     initNav(
         {&navButtonGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "Modbus Studio", modbus, tb});
 #endif

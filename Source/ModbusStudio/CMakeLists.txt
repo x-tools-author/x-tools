@@ -1,26 +1,27 @@
-file(GLOB_RECURSE SAK_MODBUSSTUDIO_SOURCES "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.h"
-     "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.cc" "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.ui")
+file(GLOB_RECURSE SAK_MODBUSSTUDIO_SOURCES_H "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.h")
+file(GLOB_RECURSE SAK_MODBUSSTUDIO_SOURCES_UI "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.ui")
+file(GLOB_RECURSE SAK_MODBUSSTUDIO_SOURCES_CPP "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.cpp")
 
-set(SAK_COMMON_SOURCES
-    ${STUDIO_SOURCES}
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.cpp
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.cpp
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.cpp
-    ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsUi.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.h
-    ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.cpp
-    ${CMAKE_SOURCE_DIR}/xTools.qrc)
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${SAK_MODBUSSTUDIO_SOURCES_H})
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${SAK_MODBUSSTUDIO_SOURCES_UI})
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${SAK_MODBUSSTUDIO_SOURCES_CPP})
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.h)
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.cpp)
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.h)
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.cpp)
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.h)
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.cpp)
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsUi.h)
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.h)
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.cpp)
+list(APPEND SAK_MODBUSSTUDIO_SOURCES ${CMAKE_SOURCE_DIR}/xTools.qrc)
 
-set(SAK_MODBUSSTUDIO_SOURCES ${SAK_MODBUSSTUDIO_SOURCES} ${SAK_COMMON_SOURCES})
+x_tools_add_executable("ModbusStudio" ${SAK_MODBUSSTUDIO_SOURCES})
+x_tools_set_target_properties(ModbusStudio)
+x_tools_deploy_qt(ModbusStudio)
 
-sak_add_executable("ModbusStudio" ${SAK_MODBUSSTUDIO_SOURCES})
-sak_set_target_properties(ModbusStudio)
-sak_auto_execute_windeployqt(ModbusStudio)
-x_tools_3rd_setup_glog(ModbusStudio)
-
-target_link_libraries(
-  ModbusStudio PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::SerialBus
-                       Qt${QT_VERSION_MAJOR}::SerialPort Qt${QT_VERSION_MAJOR}::Network)
+target_link_libraries(ModbusStudio PRIVATE glog::glog)
+target_link_libraries(ModbusStudio PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(ModbusStudio PRIVATE Qt${QT_VERSION_MAJOR}::Network)
+target_link_libraries(ModbusStudio PRIVATE Qt${QT_VERSION_MAJOR}::SerialBus)
+target_link_libraries(ModbusStudio PRIVATE Qt${QT_VERSION_MAJOR}::SerialPort)

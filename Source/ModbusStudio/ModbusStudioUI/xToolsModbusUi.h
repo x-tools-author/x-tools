@@ -1,13 +1,12 @@
 /***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef SAKMODBUSUI_H
-#define SAKMODBUSUI_H
+#pragma once
 
 #include <QJsonArray>
 #include <QLoggingCategory>
@@ -22,22 +21,22 @@
 #include <QWidget>
 
 namespace Ui {
-class SAKModbusUi;
+class xToolsModbusUi;
 }
 
 struct SAKModbusUiSettingKeys;
-class SAKModbusUi : public QWidget
+class xToolsModbusUi : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusUi(QWidget *parent = Q_NULLPTR);
-    ~SAKModbusUi();
+    explicit xToolsModbusUi(QWidget *parent = Q_NULLPTR);
+    ~xToolsModbusUi();
 
 signals:
     void deviceChanged(QModbusDevice *device);
 
 private:
-    Ui::SAKModbusUi *ui;
+    Ui::xToolsModbusUi *ui;
     QModbusDevice *modbus_device_{Q_NULLPTR};
     QSettings *settings_{Q_NULLPTR};
     QStandardItemModel *register_model_{Q_NULLPTR};
@@ -134,5 +133,3 @@ private:
     bool WriteSettingsArray(
         const QString &group, const QString &key, const QString &value, int index, int max_index);
 };
-
-#endif // SAKMODBUSUI_H
