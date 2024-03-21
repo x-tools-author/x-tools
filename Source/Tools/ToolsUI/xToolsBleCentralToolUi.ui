@@ -66,7 +66,7 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="xToolsBluetoothDeviceInfoComboBox" name="comboBoxDevices"/>
+    <widget class="xToolsBleDeviceInfoComboBox" name="comboBoxDevices"/>
    </item>
    <item row="7" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -175,9 +175,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>xToolsBluetoothDeviceInfoComboBox</class>
+   <class>xToolsBleDeviceInfoComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">xToolsBluetoothDeviceInfoComboBox.h</header>
+   <header location="global">xToolsBleDeviceInfoComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
