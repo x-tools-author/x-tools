@@ -123,8 +123,8 @@ if(X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO)
   list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CANBUS_STUDIO_UI})
   list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CANBUS_STUDIO_CPP})
   list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/CANBusStudio/main.cpp)
-  include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/canbusstudio)
-  include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/canbusstudioui)
+  include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/CANBusStudio)
+  include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/CANBusStudioUI)
 endif()
 
 # -------------------------------------------------------------------------------------------------
