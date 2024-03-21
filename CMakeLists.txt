@@ -131,24 +131,30 @@ endif()
 # BLE module
 option(X_TOOLS_IMPORT_MODULE_BLUETOOTH "Enable Bluetooth modbule" ON)
 if(X_TOOLS_IMPORT_MODULE_BLUETOOTH AND QT_VERSION_MAJOR GREATER 5)
-    if(NOT Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS "6.5.0")
-        find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Bluetooth QUIET)
-        if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
-            add_compile_definitions(X_TOOLS_IMPORT_MODULE_BLUETOOTH)
-            option(DO_NOT_REMOVE_BLE_SOURCE "Do not remove BLE source" ON)
-        endif()
+  if(NOT Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS "6.5.0")
+    find_package(
+      Qt${QT_VERSION_MAJOR} REQUIRED
+      COMPONENTS Bluetooth
+      QUIET)
+    if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
+      add_compile_definitions(X_TOOLS_IMPORT_MODULE_BLUETOOTH)
+      option(DO_NOT_REMOVE_BLE_SOURCE "Do not remove BLE source" ON)
     endif()
+  endif()
 endif()
 if(NOT DO_NOT_REMOVE_BLE_SOURCE)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsBleScanner.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsBleScanner.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsBleCentralTool.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsBleCentralTool.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsBleCentralToolUi.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsBleDeviceInfoComboBox.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsBleDeviceInfoComboBox.cpp)
-    message(STATUS "The BLE module source has been removed!")
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsBleScanner.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsBleScanner.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsBleCentralTool.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsBleCentralTool.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsBleCentralToolUi.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE
+       ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE
+       ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsBleDeviceInfoComboBox.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE
+       ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsBleDeviceInfoComboBox.cpp)
+  message(STATUS "The BLE module source has been removed!")
 endif()
 
 # -------------------------------------------------------------------------------------------------
@@ -159,6 +165,7 @@ set(BUILD_SHARED_LIBS OFF)
 
 sak_add_subdirectory("glog-0.7.0")
 sak_add_subdirectory("qmdnsengine-master")
+add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private)
 
 qt_add_executable(xTools ${X_TOOLS_SOURCE})
 sak_git_get_last_commit(${CMAKE_SOURCE_DIR} "SAK")
