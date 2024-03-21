@@ -1,18 +1,17 @@
 if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
-  if(EXISTS ${CMAKE_SOURCE_DIR}/Source/private/private)
-    add_subdirectory(${CMAKE_SOURCE_DIR}/Source/private/private)
-
-    add_custom_target(
-      PullPrivateModules
-      COMMAND git pull ${GITEE_URL}
-      SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
-      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Source/private/private)
+  if(EXISTS ${CMAKE_SOURCE_DIR}/Source/Private/Private)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private/Private)
   endif()
 
   set(GITEE_URL "https://gitee.com/qsaker/QtSwissArmyKnifePrivate.git")
   add_custom_target(
     ClonePrivateModules
-    COMMAND git clone ${GITEE_URL} ./private || echo "clone private modules"
+    COMMAND git clone ${GITEE_URL} ./Private || echo "clone private modules"
     SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Source/private)
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Source/Private)
+  add_custom_target(
+    PullPrivateModules
+    COMMAND git pull ${GITEE_URL}
+    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/readme.md
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Source/Private/Private)
 endif()

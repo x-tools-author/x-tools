@@ -40,8 +40,8 @@ endfunction()
 # Unzip file and import it as a sub module.
 function(sak_add_subdirectory zip_file_name_without_suffix)
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${zip_file_name_without_suffix}.zip
-                  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/ThirdParty)
-  add_subdirectory(ThirdParty/${zip_file_name_without_suffix})
+                  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty)
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/${zip_file_name_without_suffix})
 endfunction()
 
 # Find Qt package.
@@ -130,5 +130,11 @@ function(sak_tar_target target)
       POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E tar "cf" ${TAR_FILE_NAME}.zip "--format=zip" ${target}
       WORKING_DIRECTORY ${SAK_BINARY_DIR})
+  endif()
+endfunction()
+
+function(x_tools_finalize_executable target)
+  if(QT_VERSION_MAJOR EQUAL 6)
+    qt_finalize_executable(${target})
   endif()
 endfunction()

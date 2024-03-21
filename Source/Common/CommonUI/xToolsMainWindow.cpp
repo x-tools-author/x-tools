@@ -271,9 +271,13 @@ void xToolsMainWindow::onAboutActionTriggered()
     info += "\n";
     info += tr("Email: ") + SAK_AUTHOR_EMAIL;
     info += "\n";
+#ifdef SAK_GIT_COMMIT
     info += tr("Commit: ") + SAK_GIT_COMMIT;
+#endif
     info += "\n";
+#ifdef SAK_GIT_COMMIT_TIME
     info += tr("Date: ") + SAK_GIT_COMMIT_TIME;
+#endif
     info += "\n";
     info += tr("Copyright 2018-%1 x-tools-author(x-tools@outlook.com). All rights reserved.").arg(year);
     QMessageBox::about(this, tr("About"), info);
