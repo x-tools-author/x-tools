@@ -34,9 +34,24 @@ include(CMake/xToolsGitInfo.cmake)
 include(CMake/xToolsDeployQt.cmake)
 include(CMake/xToolsThirdParty.cmake)
 
-file(GLOB_RECURSE X_TOOLS_COMMOM_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/Common/*.h")
-file(GLOB_RECURSE X_TOOLS_COMMOM_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/Common/*.ui")
-file(GLOB_RECURSE X_TOOLS_COMMOM_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/Common/*.cpp")
+# --------------------------------------------------------------------------------------------------
+# Common module
+include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
+include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
+option(X_TOOLS_IMPORT_MODULE_BLUETOOTH "Enable Bluetooth modbule" ON)
+if(X_TOOLS_IMPORT_MODULE_BLUETOOTH AND QT_VERSION_MAJOR GREATER 5)
+  if(NOT Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS "6.5.0")
+    find_package(
+      Qt${QT_VERSION_MAJOR} REQUIRED
+      COMPONENTS Bluetooth
+      QUIET)
+    if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
+      add_compile_definitions(X_TOOLS_IMPORT_MODULE_BLUETOOTH)
+      set(X_TOOLS_BLUETOOTH_MODULE_IS_VALID TRUE)
+    endif()
+  endif()
+endif()
+add_subdirectory(Source/Common)
 
 file(GLOB_RECURSE X_TOOLS_TOOLS_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/Tools/*.h")
 file(GLOB_RECURSE X_TOOLS_TOOLS_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/Tools/*.ui")
@@ -56,9 +71,6 @@ file(GLOB X_TOOLS_ASSISTANT_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/Assistants/*/
 
 file(GLOB X_TOOLS_CMAKE_FILES "${CMAKE_SOURCE_DIR}/CMake/*.cmake")
 
-list(APPEND X_TOOLS_SOURCE ${X_TOOLS_COMMOM_SOURCE_H})
-list(APPEND X_TOOLS_SOURCE ${X_TOOLS_COMMOM_SOURCE_UI})
-list(APPEND X_TOOLS_SOURCE ${X_TOOLS_COMMOM_SOURCE_CPP})
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_SOURCE_H})
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_SOURCE_UI})
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_SOURCE_CPP})
@@ -80,8 +92,6 @@ if(WIN32)
 endif()
 
 include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/Tools)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI)
 include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBox)
@@ -129,36 +139,6 @@ if(X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO)
   include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/CANBusStudioUI)
 endif()
 
-# -------------------------------------------------------------------------------------------------
-# BLE module
-option(X_TOOLS_IMPORT_MODULE_BLUETOOTH "Enable Bluetooth modbule" ON)
-if(X_TOOLS_IMPORT_MODULE_BLUETOOTH AND QT_VERSION_MAJOR GREATER 5)
-  if(NOT Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS "6.5.0")
-    find_package(
-      Qt${QT_VERSION_MAJOR} REQUIRED
-      COMPONENTS Bluetooth
-      QUIET)
-    if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
-      add_compile_definitions(X_TOOLS_IMPORT_MODULE_BLUETOOTH)
-      option(DO_NOT_REMOVE_BLE_SOURCE "Do not remove BLE source" ON)
-    endif()
-  endif()
-endif()
-if(NOT DO_NOT_REMOVE_BLE_SOURCE)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsBleScanner.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsBleScanner.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsBleCentralTool.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsBleCentralTool.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsBleCentralToolUi.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE
-       ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE
-       ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsBleDeviceInfoComboBox.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE
-       ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsBleDeviceInfoComboBox.cpp)
-  message(STATUS "The BLE module source has been removed!")
-endif()
-
 # --------------------------------------------------------------------------------------------------
 # xTools application
 set(WITH_GFLAGS OFF)
@@ -169,29 +149,12 @@ sak_add_subdirectory("glog-0.7.0")
 sak_add_subdirectory("qmdnsengine-master")
 add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private)
 
-# * list(APPEND X_TOOLS_COMMOM_SOURCE ${X_TOOLS_COMMOM_SOURCE_H})
-# * list(APPEND X_TOOLS_COMMOM_SOURCE ${X_TOOLS_COMMOM_SOURCE_UI})
-# * list(APPEND X_TOOLS_COMMOM_SOURCE ${X_TOOLS_COMMOM_SOURCE_CPP})
-# * add_library(xToolsCommon STATIC ${X_TOOLS_COMMOM_SOURCE})
-# * target_link_libraries(xToolsCommon PRIVATE glog::glog)
-# * target_link_libraries(xToolsCommon PRIVATE qmdnsengine)
-# * target_link_libraries(xToolsCommon PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-# * target_link_libraries(xToolsCommon PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
-# * target_link_libraries(xToolsCommon PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-# * target_link_libraries(xToolsCommon PRIVATE Qt${QT_VERSION_MAJOR}::Network)
-# * if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
-# * target_link_libraries(xToolsCommon PRIVATE Qt${QT_VERSION_MAJOR}::SerialPort)
-# * target_link_libraries(xToolsCommon PRIVATE Qt${QT_VERSION_MAJOR}::SerialBus)
-# * endif()
-# * if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
-# * target_link_libraries(xToolsCommon PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
-# * endif()
-
 qt_add_executable(xTools ${X_TOOLS_SOURCE})
 sak_git_get_last_commit(${CMAKE_SOURCE_DIR} "SAK")
 sak_git_get_last_commit_time(${CMAKE_SOURCE_DIR} "SAK")
 target_link_libraries(xTools PRIVATE glog::glog)
 target_link_libraries(xTools PRIVATE qmdnsengine)
+target_link_libraries(xTools PRIVATE xToolsCommon)
 target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
 target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
@@ -201,7 +164,7 @@ if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
   target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::SerialPort)
   target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::SerialBus)
 endif()
-if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
+if(X_TOOLS_BLUETOOTH_MODULE_IS_VALID)
   target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 endif()
 

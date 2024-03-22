@@ -8,9 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QApplication>
-
 #include "xTools.h"
+#include "xToolsApplication.h"
 #include "xToolsMainWindow.h"
 
 template<typename UiT, typename MainWindowT, typename AppT>
@@ -40,5 +39,8 @@ int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonM
 template<typename T>
 int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
 {
-    return xToolsExec<T, xToolsMainWindow, QApplication>(argc, argv, appName, usingCommonMainWindow);
+    return xToolsExec<T, xToolsMainWindow, xToolsApplication>(argc,
+                                                              argv,
+                                                              appName,
+                                                              usingCommonMainWindow);
 }
