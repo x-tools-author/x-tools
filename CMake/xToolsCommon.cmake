@@ -139,7 +139,7 @@ function(x_tools_finalize_executable target)
   endif()
 endfunction()
 
-function(x_tools_setup_translations target)
+function(x_tools_generate_translations target)
   set(APP_TS_FILES "")
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/app_en.ts)
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/app_zh_CN.ts)
