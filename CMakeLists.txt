@@ -32,7 +32,6 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 include(CMake/xToolsCommon.cmake)
 include(CMake/xToolsGitInfo.cmake)
 include(CMake/xToolsDeployQt.cmake)
-include(CMake/xToolsThirdParty.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Common module
@@ -145,8 +144,8 @@ set(WITH_GFLAGS OFF)
 set(BUILD_TESTING OFF)
 set(BUILD_SHARED_LIBS OFF)
 
-sak_add_subdirectory("glog-0.7.0")
-sak_add_subdirectory("qmdnsengine-master")
+x_tools_add_third_party("glog-0.7.0")
+x_tools_add_third_party("qmdnsengine-master")
 add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private)
 
 qt_add_executable(xTools ${X_TOOLS_SOURCE})

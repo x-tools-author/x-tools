@@ -38,7 +38,7 @@ function(sak_get_last_commit_time working_dir prefix)
 endfunction()
 
 # Unzip file and import it as a sub module.
-function(sak_add_subdirectory zip_file_name_without_suffix)
+function(x_tools_add_third_party zip_file_name_without_suffix)
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${zip_file_name_without_suffix}.zip
                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty)
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/${zip_file_name_without_suffix})
