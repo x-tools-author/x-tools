@@ -32,9 +32,8 @@ void xToolsVelometerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const 
         return;
     }
 
-    if (!tool->inherits("SAKVelometerTool")) {
-        qWarning() << "Invalid tool, "
-                                       "it must inherits SAKVelometerTool";
+    if (!tool->inherits("xToolsVelometerTool")) {
+        qWarning() << "Invalid tool, it must inherits xToolsVelometerTool";
         return;
     }
 

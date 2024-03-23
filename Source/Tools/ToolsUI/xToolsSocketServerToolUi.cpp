@@ -14,7 +14,7 @@
 
 xToolsSocketServerToolUi::xToolsSocketServerToolUi(QWidget *parent)
     : xToolsCommunicationToolUi{parent}
-    , ui(new Ui::SAKSocketServerToolUi)
+    , ui(new Ui::xToolsSocketServerToolUi)
 {
     ui->setupUi(this);
     connect(ui->comboBoxServerIp,
@@ -58,18 +58,17 @@ void xToolsSocketServerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, con
         return;
     }
 
-    if (!tool->inherits("SAKSocketServerTool")) {
-        qWarning() << "Invalid SAKSocketServerTool object,"
-                                       " the operation will be ignored!";
+    if (!tool->inherits("xToolsSocketServerTool")) {
+        qWarning() << "Invalid xToolsSocketServerTool object, the operation will be ignored!";
         return;
     }
 
-    if (!tool->inherits("SAKWebSocketServerTool")) {
+    if (!tool->inherits("xToolsWebSocketServerTool")) {
         ui->labelMessageType->hide();
         ui->comboBoxMessageType->hide();
     }
 
-    if (!tool->inherits("SAKUdpServerTool")) {
+    if (!tool->inherits("xToolsUdpServerTool")) {
         ui->labelCntext->hide();
         ui->labelBindingInfo->hide();
         ui->checkBoxSpecifyIpAndPort->hide();

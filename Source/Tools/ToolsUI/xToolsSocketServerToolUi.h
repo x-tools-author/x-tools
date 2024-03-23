@@ -12,7 +12,7 @@
 #include <QLoggingCategory>
 
 namespace Ui {
-class SAKSocketServerToolUi;
+class xToolsSocketServerToolUi;
 }
 
 class xToolsSocketServerTool;
@@ -30,7 +30,7 @@ private:
     const QLoggingCategory mLoggingCategory{"sak.socketservertoolui"};
 
 private:
-    Ui::SAKSocketServerToolUi *ui{nullptr};
+    Ui::xToolsSocketServerToolUi *ui{nullptr};
 
     void onComboBoxServerIpActived();
     void onSpinBoxServerPortValueChanged(int value);

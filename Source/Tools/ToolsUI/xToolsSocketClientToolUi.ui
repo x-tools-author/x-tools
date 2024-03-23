@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKSocketClientToolUi</class>
- <widget class="QWidget" name="SAKSocketClientToolUi">
+ <class>xToolsSocketClientToolUi</class>
+ <widget class="QWidget" name="xToolsSocketClientToolUi">
   <property name="geometry">
    <rect>
     <x>0</x>

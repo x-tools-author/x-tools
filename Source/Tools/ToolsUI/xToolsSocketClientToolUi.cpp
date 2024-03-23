@@ -15,7 +15,7 @@
 
 xToolsSocketClientToolUi::xToolsSocketClientToolUi(QWidget *parent)
     : xToolsCommunicationToolUi{parent}
-    , ui(new Ui::SAKSocketClientToolUi)
+    , ui(new Ui::xToolsSocketClientToolUi)
 {
     ui->setupUi(this);
 
@@ -59,9 +59,8 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, con
         return;
     }
 
-    if (!tool->inherits("SAKSocketClientTool")) {
-        qWarning(mLoggingCategory) << "Invalid SAKSocketClientTool object,"
-                                      " the operation will be ignored!";
+    if (!tool->inherits("xToolsSocketClientTool")) {
+        qWarning() << "Invalid xToolsSocketClientTool object, the operation will be ignored!";
         return;
     }
 
