@@ -1,35 +1,39 @@
+set(X_TOOLS_COMMON_PATH ${CMAKE_SOURCE_DIR}/Source/Common)
+list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsInterface.h)
+list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsInterface.cpp)
+list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsTranslator.h)
+list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsTranslator.cpp)
+list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsSettings.h)
+list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsSettings.cpp)
+list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/CommonUI/xToolsMainWindow.h)
+list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/CommonUI/xToolsMainWindow.cpp)
+list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/CommonUI/xToolsApplication.h)
+list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/CommonUI/xToolsApplication.cpp)
+
 macro(x_tools_add_assistant dir_name app_name)
   string(TOUPPER ${app_name} upper_app_name)
   option(X_TOOLS_ENABLE_APP_${upper_app_name} "" ON)
   if(X_TOOLS_ENABLE_APP_${upper_app_name})
-    file(
-      GLOB_RECURSE
-      ASSISTANT_SOURCES
-      "${CMAKE_SOURCE_DIR}/Source/Assistants/${dir_name}/*.h"
-      "${CMAKE_SOURCE_DIR}/Source/Assistants/${dir_name}/*.cpp"
-      "${CMAKE_SOURCE_DIR}/Source/Assistants/${dir_name}/*.ui"
-      "${CMAKE_SOURCE_DIR}/Source/Assistants/${dir_name}/*.qrc")
-    set(APP_ASSISTANT_SOURCES
-        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.h
-        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsInterface.cpp
-        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.h
-        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsTranslator.cpp
-        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.h
-        ${CMAKE_SOURCE_DIR}/Source/Common/Common/xToolsSettings.cpp
-        ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.h
-        ${CMAKE_SOURCE_DIR}/Source/Common/CommonUI/xToolsMainWindow.cpp
-        ${APP_ASSISTANT_OWN_SOURCE}
-        ${ASSISTANT_SOURCES}
-        ${CMAKE_SOURCE_DIR}/xTools.qrc)
-
+    set(ASSISTANT_ROOT_DIR ${CMAKE_SOURCE_DIR}/Source/Assistants/${dir_name})
+    file(GLOB_RECURSE ASSISTANT_SOURCES_H "${ASSISTANT_ROOT_DIR}/*.h")
+    file(GLOB_RECURSE ASSISTANT_SOURCES_UI "${ASSISTANT_ROOT_DIR}/*.ui")
+    file(GLOB_RECURSE ASSISTANT_SOURCES_CPP "${ASSISTANT_ROOT_DIR}/*.cpp")
+    file(GLOB_RECURSE ASSISTANT_SOURCES_QRC "${ASSISTANT_ROOT_DIR}/*.qrc")
+    list(APPEND ASSISTANT_SOURCES ${ASSISTANT_SOURCES_H})
+    list(APPEND ASSISTANT_SOURCES ${ASSISTANT_SOURCES_UI})
+    list(APPEND ASSISTANT_SOURCES ${ASSISTANT_SOURCES_CPP})
+    list(APPEND ASSISTANT_SOURCES ${ASSISTANT_SOURCES_QRC})
+    list(APPEND ASSISTANT_SOURCES ${ASSISTANT_OWN_SOURCE})
+    list(APPEND ASSISTANT_SOURCES ${X_TOOLS_})
+    list(APPEND ASSISTANT_SOURCES ${CMAKE_SOURCE_DIR}/xTools.qrc)
     if(WIN32)
-      list(APPEND APP_ASSISTANT_SOURCES ${CMAKE_SOURCE_DIR}/xTools.rc)
+      list(APPEND ASSISTANT_SOURCES ${CMAKE_SOURCE_DIR}/xTools.rc)
     endif()
 
-    sak_add_executable(${app_name} ${APP_ASSISTANT_SOURCES})
-    sak_auto_execute_deployqt(${app_name})
-    sak_set_target_properties(${app_name})
-    target_link_libraries(${app_name} PRIVATE ${APP_ASSISTANT_OWN_LIBS})
+    x_tools_add_executable(${app_name} ${ASSISTANT_SOURCES})
+    x_tools_set_target_properties(${app_name})
+    x_tools_deploy_qt(${app_name})
+    target_link_libraries(${app_name} PRIVATE ${ASSISTANT_OWN_LIBS})
   endif()
 endmacro()
 

@@ -26,7 +26,7 @@
 #endif
 
 Application::Application(int argc, char** argv)
-    : QApplication(argc, argv)
+    : xToolsApplication(argc, argv)
 {
     // It can avoid app crash in this way to show a splashScreen. If you create a QSplashScreen and
     // show it in the main function, app will crash(test on Ubuntu 16.04). Of course, it is because

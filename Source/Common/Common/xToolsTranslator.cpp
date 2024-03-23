@@ -74,7 +74,7 @@ void xToolsTranslator::setupLanguage(const QString& language)
         key = "en";
     }
 
-    QString fileName = ":/resources/translations/sak_" + key + ".qm";
+    QString fileName = ":/Resources/Translations/app_" + key + ".qm";
     if (m_translator.load(fileName)) {
         QCoreApplication::installTranslator(&m_translator);
         qInfo() << m_flagNameMap.value(key) << " has been setup!";

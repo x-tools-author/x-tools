@@ -8,10 +8,11 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QApplication>
 #include <QSplashScreen>
 
-class Application : public QApplication
+#include "xToolsApplication.h"
+
+class Application : public xToolsApplication
 {
     Q_OBJECT
 public:

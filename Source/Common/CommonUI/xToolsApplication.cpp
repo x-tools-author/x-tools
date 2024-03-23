@@ -8,6 +8,10 @@
  **************************************************************************************************/
 #include "xToolsApplication.h"
 
+#include <QtResource>
+
 xToolsApplication::xToolsApplication(int argc, char *argv[])
     : QApplication(argc, argv)
-{}
+{
+
+}

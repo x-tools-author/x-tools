@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>Resources/Translations/app_en.qm</file>
         <file>Resources/Translations/app_zh_CN.qm</file>
+        <file>Resources/Icons/IconQQ.svg</file>
     </qresource>
 </RCC>
