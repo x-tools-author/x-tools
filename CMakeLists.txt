@@ -152,7 +152,6 @@ x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 sak_git_get_last_commit(${CMAKE_SOURCE_DIR} "SAK")
 sak_git_get_last_commit_time(${CMAKE_SOURCE_DIR} "SAK")
 x_tools_generate_translations(xTools)
-#x_tools_finalize_executable(xTools)
 
 target_link_libraries(xTools PRIVATE glog::glog)
 target_link_libraries(xTools PRIVATE qmdnsengine)

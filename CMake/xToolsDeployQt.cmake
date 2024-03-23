@@ -21,7 +21,7 @@ function(x_tools_deploy_qt_for_windows target)
         VERBATIM)
     endif()
 
-    if(MSVC AND (${MSVC_VERSION} GREATER_EQUAL 1929))
+    if(${MSVC} AND (${MSVC_VERSION} GREATER_EQUAL 1929))
       cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
       if("${CMAKE_BUILD_TYPE}" STREQUAL "Release" AND MSVC)
         add_custom_command(
@@ -113,8 +113,8 @@ function(sak_auto_execute_linuxdeployqt target)
             "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin"
     COMMAND
       ${SAK_BIN_LINUXDEPLOYQT}
-      "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/share/applications/xTools.desktop"
-      "-verbose=0" "-appimage" "-qmake=${SAK_QMAKE}"
+      "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/share/applications/xTools.desktop" "-verbose=0"
+      "-appimage" "-qmake=${SAK_QMAKE}"
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     COMMENT "Running creating appimage file..."
     VERBATIM)
