@@ -3,7 +3,7 @@ if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
     add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private/Private)
   endif()
 
-  set(GITEE_URL "https://gitee.com/x-tools-author/x-tools.git")
+  set(GITEE_URL "https://gitee.com/x-tools-author/x-tools-private.git")
   add_custom_target(
     ClonePrivateModules
     COMMAND git clone ${GITEE_URL} ./Private || echo "clone private modules"
