@@ -47,5 +47,28 @@
         <file>Resources/Icons/IconZoomOut.svg</file>
         <file>Resources/Translations/xTools_en.qm</file>
         <file>Resources/Translations/xTools_zh_CN.qm</file>
+        <file>Resources/Images/Android.png</file>
+        <file>Resources/Images/AndroidLogo.png</file>
+        <file>Resources/Images/Gitee.png</file>
+        <file>Resources/Images/GitHub.png</file>
+        <file>Resources/Images/Gz.png</file>
+        <file>Resources/Images/I18n.png</file>
+        <file>Resources/Images/iOS.png</file>
+        <file>Resources/Images/Linux.png</file>
+        <file>Resources/Images/Logo.jpg</file>
+        <file>Resources/Images/Logo.png</file>
+        <file>Resources/Images/Logo.svg</file>
+        <file>Resources/Images/Mac.png</file>
+        <file>Resources/Images/MainWindow.png</file>
+        <file>Resources/Images/Pi.png</file>
+        <file>Resources/Images/QSAKQQ.jpg</file>
+        <file>Resources/Images/Qt.png</file>
+        <file>Resources/Images/QtQQ.jpg</file>
+        <file>Resources/Images/StartUi.jpg</file>
+        <file>Resources/Images/WeChat.jpg</file>
+        <file>Resources/Images/Windows.png</file>
+        <file>Resources/Images/Zip.png</file>
+        <file>Resources/Palettes/DarkPalette</file>
+        <file>Resources/Palettes/LightPalette</file>
     </qresource>
 </RCC>

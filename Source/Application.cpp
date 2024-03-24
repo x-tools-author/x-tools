@@ -31,7 +31,7 @@ Application::Application(int argc, char** argv)
     // It can avoid app crash in this way to show a splashScreen. If you create a QSplashScreen and
     // show it in the main function, app will crash(test on Ubuntu 16.04). Of course, it is because
     // that I use a wrong way, also, it could be a bug of Qt.
-    QPixmap pixmap(":/resources/images/StartUi.jpg");
+    QPixmap pixmap(":/Resources/Images/StartUi.jpg");
     m_splashScreen = new QSplashScreen(pixmap);
     showSplashScreenMessage(tr("Initializing..."));
     m_splashScreen->show();
@@ -41,8 +41,8 @@ Application::Application(int argc, char** argv)
     int ret = xToolsSettings::instance()->palette();
     if ((ret == xToolsDataStructure::PaletteDark) || (ret == xToolsDataStructure::PaletteLight)) {
         QString fileName = (ret == xToolsDataStructure::PaletteLight
-                                ? ":/resources/palette/SAKAppPaletteLight"
-                                : ":/resources/palette/SAKAppPaletteDark");
+                                ? ":/Resources/Palettes/DarkPalette"
+                                : ":/Resources/Palettes/DarkPalette");
         setupPalette(fileName);
     } else {
         QString customPalette = xToolsSettings::instance()->customPalette();
@@ -87,14 +87,14 @@ Application::Application(int argc, char** argv)
     bool tooHeight = (mainWindow->height() > screenRect.height());
     if (tooWidth || tooHeight) {
         mainWindow->showMaximized();
-        qInfo() << "too small screen";
+        qInfo() << "The screen is too small.";
     } else {
         mainWindow->move((screenRect.width() - mainWindow->width()) / 2,
                          (screenRect.height() - mainWindow->height()) / 2);
     }
     showSplashScreenMessage(tr("Finished..."));
 
-    QString msg = QString("the size of main window is: %1x%2")
+    QString msg = QString("The size of main window is: %1x%2")
                       .arg(mainWindow->width())
                       .arg(mainWindow->height());
     qInfo() << qPrintable(msg);
@@ -114,8 +114,8 @@ void Application::setupPalette(const QString& fileName)
         out >> p;
         file.close();
         setPalette(p);
-        qInfo() << "current palette:" << fileName;
+        qInfo() << "Current palette is:" << fileName;
     } else {
-        qWarning() << "open palette file error:" << file.errorString();
+        qWarning() << "Open palette file error:" << file.errorString();
     }
 }

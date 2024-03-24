@@ -6,14 +6,15 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xTools.h"
 #include "Application.h"
+#include "xTools.h"
 
 int main(const int argc, char *argv[])
 {
+    Q_INIT_RESOURCE(xToolsCommon);
     QString appName = QString("xTools");
-#ifndef X_TOOLS_IMPORT_MODULE_PRIVATE
-    appName += QObject::tr("(Community)");
+#ifdef X_TOOLS_BUILD_FOR_STORE
+    appName += QObject::tr("(Store)");
 #endif
     sakDoSomethingBeforeAppCreated(argv, appName);
     Application app(argc, argv);
