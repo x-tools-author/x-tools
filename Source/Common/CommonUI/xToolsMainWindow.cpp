@@ -107,7 +107,7 @@ void xToolsMainWindow::initMenuHelp()
                           "Gitee",
                           this,
                           &xToolsMainWindow::onGiteeActionTriggered);
-    m_helpMenu->addAction(QIcon(":/Resources/Iconss/IconQQ.svg"),
+    m_helpMenu->addAction(QIcon(":/Resources/Icons/IconQQ.svg"),
                           tr("User QQ Group"),
                           this,
                           &xToolsMainWindow::onUserQqGroupTriggerd);

@@ -11,7 +11,6 @@
 
 int main(const int argc, char *argv[])
 {
-    Q_INIT_RESOURCE(xToolsCommon);
     QString appName = QString("xTools");
 #ifndef X_TOOLS_IMPORT_MODULE_PRIVATE
     appName += QObject::tr("(Community)");
