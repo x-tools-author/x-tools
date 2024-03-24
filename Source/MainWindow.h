@@ -13,7 +13,6 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QLoggingCategory>
-#include <QMainWindow>
 #include <QMenu>
 #include <QMessageBox>
 #include <QMetaEnum>
@@ -22,11 +21,9 @@
 #include <QTabWidget>
 #include <QTranslator>
 
-namespace Ui {
-class MainWindow;
-}
+#include "xToolsMainWindow.h"
 
-class MainWindow : public QMainWindow
+class MainWindow : public xToolsMainWindow
 {
     Q_OBJECT
 public:
@@ -54,7 +51,6 @@ private:
 
 private:
     const QLoggingCategory mLoggingCategory{"sak.mainwindow"};
-    Ui::MainWindow* ui;
 
 private:
     void initMenuBar();

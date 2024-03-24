@@ -7,7 +7,6 @@
  * code directory.
  **************************************************************************************************/
 #include "MainWindow.h"
-#include "ui_MainWindow.h"
 
 #include <QAction>
 #include <QActionGroup>
@@ -34,6 +33,8 @@
 #include <QToolBar>
 #include <QToolButton>
 #include <QVariant>
+#include <QMenuBar>
+#include <QStatusBar>
 
 #include "xToolsDataStructure.h"
 #include "xToolsInterface.h"
@@ -64,10 +65,10 @@ QString palettePath()
 }
 
 MainWindow::MainWindow(QWidget* parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : xToolsMainWindow(parent)
 {
-    ui->setupUi(this);
+    QStackedWidget *stackedWidget = new QStackedWidget();
+    setCentralWidget(stackedWidget);
 
     QDir dir;
     if (dir.exists(palettePath())) {
@@ -112,7 +113,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+
 }
 
 void MainWindow::initMenuBar()
@@ -121,8 +122,8 @@ void MainWindow::initMenuBar()
 
     initFileMenu();
     initToolMenu();
-    initOptionMenu();
-    initLanguageMenu();
+    //initOptionMenu();
+    //initLanguageMenu();
     initLinksMenu();
     initHelpMenu();
 }
@@ -141,11 +142,9 @@ void MainWindow::closeEvent(QCloseEvent* event)
 
 void MainWindow::initFileMenu()
 {
-    QMenu* fileMenu = new QMenu(tr("&File"), this);
-    menuBar()->addMenu(fileMenu);
     // Tool box
     QMenu* windowMenu = new QMenu(tr("New Window"), this);
-    fileMenu->addMenu(windowMenu);
+    m_fileMenu->addMenu(windowMenu);
     QList<int> toolTypeList = xToolsToolBoxUi::supportedCommunicationTools();
     for (auto& toolType : toolTypeList) {
         const QString name = xToolsToolBoxUi::communicationToolName(toolType);
@@ -186,25 +185,25 @@ void MainWindow::initFileMenu()
 #endif
 #endif
 
-    fileMenu->addSeparator();
-    QAction* importAction = new QAction(tr("Import Palette"), fileMenu);
-    fileMenu->addAction(importAction);
+    m_fileMenu->addSeparator();
+    QAction* importAction = new QAction(tr("Import Palette"), m_fileMenu);
+    m_fileMenu->addAction(importAction);
     connect(importAction, &QAction::triggered, this, &MainWindow::onImportActionTriggered);
 
-    QAction* exportAction = new QAction(tr("Export Palette"), fileMenu);
-    fileMenu->addAction(exportAction);
+    QAction* exportAction = new QAction(tr("Export Palette"), m_fileMenu);
+    m_fileMenu->addAction(exportAction);
     connect(exportAction, &QAction::triggered, this, &MainWindow::onExportActionTriggered);
 
-    fileMenu->addSeparator();
+    m_fileMenu->addSeparator();
     QAction* exitAction = new QAction(tr("Exit"), this);
-    fileMenu->addAction(exitAction);
+    m_fileMenu->addAction(exitAction);
     connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
 }
 
 void MainWindow::initToolMenu()
 {
     QMenu* toolMenu = new QMenu(tr("&Tools"));
-    menuBar()->addMenu(toolMenu);
+    menuBar()->insertMenu(m_languageMenu->menuAction(), toolMenu);
 
     for (auto& t : SAKAssistantsFactory::instance()->supportedAssistants()) {
         QString name = SAKAssistantsFactory::instance()->assistantName(t);
@@ -525,29 +524,27 @@ void MainWindow::initLanguageMenu()
 
 void MainWindow::initHelpMenu()
 {
-    QMenu* helpMenu = new QMenu(tr("&Help"), this);
-    menuBar()->addMenu(helpMenu);
     QAction* aboutQtAction = new QAction(tr("About Qt"), this);
-    helpMenu->addAction(aboutQtAction);
+    m_helpMenu->addAction(aboutQtAction);
     connect(aboutQtAction, &QAction::triggered, this, [=]() {
         QMessageBox::aboutQt(this, tr("About Qt"));
     });
 
     QAction* aboutAction = new QAction(tr("About xTools"), this);
-    helpMenu->addAction(aboutAction);
+    m_helpMenu->addAction(aboutAction);
     connect(aboutAction, &QAction::triggered, this, &MainWindow::aboutSoftware);
 #ifdef Q_OS_WIN
     QString tips = tr("Buy from Microsoft App Store");
     QIcon buy(":/Resources/Icons/IconBuy.svg");
     QAction* microsoft = new QAction(buy, tips);
-    helpMenu->addAction(microsoft);
+    m_helpMenu->addAction(microsoft);
     connect(microsoft, &QAction::triggered, this, []() {
         QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
         QDesktopServices::openUrl(url);
     });
 #endif
     QMenu* srcMenu = new QMenu(tr("Get Source"), this);
-    helpMenu->addMenu(srcMenu);
+    m_helpMenu->addMenu(srcMenu);
     QAction* visitGitHubAction = new QAction(QIcon(":/resources/images/GitHub.png"),
                                              tr("GitHub"),
                                              this);
@@ -566,22 +563,22 @@ void MainWindow::initHelpMenu()
     srcMenu->addAction(visitGiteeAction);
 
     QAction* releaseHistoryAction = new QAction(tr("Release History"), this);
-    helpMenu->addAction(releaseHistoryAction);
+    m_helpMenu->addAction(releaseHistoryAction);
     connect(releaseHistoryAction, &QAction::triggered, this, &MainWindow::showHistory);
 
-    helpMenu->addSeparator();
+    m_helpMenu->addSeparator();
     QAction* qrCodeAction = new QAction(tr("QR Code"), this);
-    helpMenu->addAction(qrCodeAction);
+    m_helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered, this, &MainWindow::showQrCode);
 #ifndef X_TOOLS_IMPORT_MODULE_PRIVATE
-    helpMenu->addAction(tr("Donate"), this, &MainWindow::showDonation);
+    m_helpMenu->addAction(tr("Donate"), this, &MainWindow::showDonation);
 #endif
 }
 
 void MainWindow::initLinksMenu()
 {
     QMenu* linksMenu = new QMenu(tr("&Links"), this);
-    menuBar()->addMenu(linksMenu);
+    menuBar()->insertMenu(m_helpMenu->menuAction(), linksMenu);
 
     struct Link
     {
@@ -728,24 +725,24 @@ void MainWindow::initNav(const NavContext& ctx)
     if (ctx.page->layout()) {
         ctx.page->layout()->setContentsMargins(0, 0, 0, 0);
     }
-    ui->stackedWidget->addWidget(ctx.page);
+    auto stackedWidget = qobject_cast<QStackedWidget*>(centralWidget());
+    stackedWidget->addWidget(ctx.page);
 
     int pageCount = ctx.bg->buttons().count();
     QObject::connect(bt, &QToolButton::clicked, bt, [=]() {
-        ui->stackedWidget->setCurrentIndex(pageCount - 1);
+        stackedWidget->setCurrentIndex(pageCount - 1);
         xToolsSettings::instance()->setPageIndex(pageCount - 1);
     });
 
     if (xToolsSettings::instance()->pageIndex() == (pageCount - 1)) {
         bt->setChecked(true);
-        ui->stackedWidget->setCurrentIndex(pageCount - 1);
+        stackedWidget->setCurrentIndex(pageCount - 1);
     }
 }
 
 void MainWindow::initStatusBar()
 {
-    ui->statusbar->showMessage("Hello world", 10 * 1000);
-    ui->statusbar->hide();
+    statusBar()->showMessage("Hello world", 10 * 1000);
 }
 
 void MainWindow::aboutSoftware()
