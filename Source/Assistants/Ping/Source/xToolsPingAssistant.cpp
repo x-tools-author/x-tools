@@ -111,7 +111,7 @@ xToolsPingAssistant::xToolsPingAssistant(QWidget *parent)
 
     init();
     setWindowTitle("Ping Assistant");
-    setWindowIcon(QIcon(":/Resources/Icon/ping.ico"));
+    setWindowIcon(QIcon(":/Resources/Icons/ping.ico"));
     ui->tableWidget->setAlternatingRowColors(true);
 }
 

@@ -498,7 +498,7 @@ void MainWindow::initLanguageMenu()
 {
     QMenu* languageMenu = new QMenu(tr("&Languages"), this);
 #if 0
-    QIcon icon = QIcon(":/Resources/Icon/IconLanguage.svg");
+    QIcon icon = QIcon(":/Resources/Icons/IconLanguage.svg");
     languageMenu->setIcon(icon);
 #endif
     menuBar()->addMenu(languageMenu);
@@ -538,7 +538,7 @@ void MainWindow::initHelpMenu()
     connect(aboutAction, &QAction::triggered, this, &MainWindow::aboutSoftware);
 #ifdef Q_OS_WIN
     QString tips = tr("Buy from Microsoft App Store");
-    QIcon buy(":/Resources/Icon/IconBuy.svg");
+    QIcon buy(":/Resources/Icons/IconBuy.svg");
     QAction* microsoft = new QAction(buy, tips);
     helpMenu->addAction(microsoft);
     connect(microsoft, &QAction::triggered, this, []() {
@@ -645,7 +645,7 @@ void MainWindow::initNav()
 
     tb->addSeparator();
 
-    QString path = ":/Resources/Icon/IconModbus.svg";
+    QString path = ":/Resources/Icons/IconModbus.svg";
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
     xToolsModbusStudioUi* modbus = new xToolsModbusStudioUi(this);
     initNav(
@@ -654,7 +654,7 @@ void MainWindow::initNav()
 #ifndef X_TOOLS_BUILD_FOR_STORE
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
     xToolsCanBusStudioUi* canbus = new xToolsCanBusStudioUi(this);
-    path = ":/Resources/Icon/IconCanBus.svg";
+    path = ":/Resources/Icons/IconCanBus.svg";
     initNav(
         {&navButtonGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb});
 #endif
@@ -668,7 +668,7 @@ void MainWindow::initNav()
     bool isTextBesideIcon = xToolsSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
     QToolButton* tbt = new QToolButton(this);
-    path = ":/Resources/Icon/IconListWithIcon.svg";
+    path = ":/Resources/Icons/IconListWithIcon.svg";
     tbt->setIcon(xToolsUiInterface::cookedIcon(QIcon(path)));
     tbt->setCheckable(true);
     tbt->setText(" " + tr("Hide Text"));
@@ -694,13 +694,13 @@ void MainWindow::initNav()
 #endif
 #if 0
     initNav({&navButtonGroup,
-             SAKUiInterface::cookedIcon(QIcon(":/Resources/Icon/IconLog.svg")),
+             SAKUiInterface::cookedIcon(QIcon(":/Resources/Icons/IconLog.svg")),
              tr("Log Viewer"),
              new SAKLogUi(this),
              tb});
 #endif
 #if 0
-    path = ":/Resources/Icon/IconSettings.svg";
+    path = ":/Resources/Icons/IconSettings.svg";
     initNav(&navButtonGroup,
             SAKUiInterface::cookedIcon(QIcon(path)),
             tr("Preferences"), new SAKPreferencesUi(this), tb);

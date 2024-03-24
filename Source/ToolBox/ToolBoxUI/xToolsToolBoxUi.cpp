@@ -105,21 +105,21 @@ QIcon xToolsToolBoxUi::communicationToolIcon(int type)
 {
     QString fileName;
     if (type == xToolsToolFactory::SerialportTool) {
-        fileName = ":/Resources/Icon/IconSerialPort.svg";
+        fileName = ":/Resources/Icons/IconSerialPort.svg";
     } else if (type == xToolsToolFactory::UdpClientTool) {
-        fileName = ":/Resources/Icon/IconUdpClient.svg";
+        fileName = ":/Resources/Icons/IconUdpClient.svg";
     } else if (type == xToolsToolFactory::UdpServerTool) {
-        fileName = ":/Resources/Icon/IconUdpServer.svg";
+        fileName = ":/Resources/Icons/IconUdpServer.svg";
     } else if (type == xToolsToolFactory::TcpClientTool) {
-        fileName = ":/Resources/Icon/IconTcpClient.svg";
+        fileName = ":/Resources/Icons/IconTcpClient.svg";
     } else if (type == xToolsToolFactory::TcpServerTool) {
-        fileName = ":/Resources/Icon/IconTcpServer.svg";
+        fileName = ":/Resources/Icons/IconTcpServer.svg";
     } else if (type == xToolsToolFactory::WebSocketClientTool) {
-        fileName = ":/Resources/Icon/IconWebSocketClient.svg";
+        fileName = ":/Resources/Icons/IconWebSocketClient.svg";
     } else if (type == xToolsToolFactory::WebSocketServerTool) {
-        fileName = ":/Resources/Icon/IconWebSocketServer.svg";
+        fileName = ":/Resources/Icons/IconWebSocketServer.svg";
     } else if (type == xToolsToolFactory::BleCentralTool) {
-        fileName = ":/Resources/Icon/IconBlueTooth.svg";
+        fileName = ":/Resources/Icons/IconBlueTooth.svg";
     }
 
     QIcon icon(fileName);
