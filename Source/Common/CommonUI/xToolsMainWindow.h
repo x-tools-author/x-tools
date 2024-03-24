@@ -28,6 +28,8 @@ protected:
     QMenu* m_languageMenu;
     QMenu* m_helpMenu;
 
+    QAction* m_exitAction;
+
 private:
     QActionGroup* m_appStyleActionGroup;
     QActionGroup* m_languageActionGroup;

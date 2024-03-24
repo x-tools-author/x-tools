@@ -58,7 +58,7 @@ void xToolsMainWindow::initMenuFile()
 {
     QMenuBar* menu_bar = menuBar();
     m_fileMenu = menu_bar->addMenu(tr("&File"));
-    m_fileMenu->addAction(tr("&Exit"), this, &xToolsMainWindow::close);
+    m_exitAction = m_fileMenu->addAction(tr("&Exit"), this, &xToolsMainWindow::close);
 }
 
 void xToolsMainWindow::initMenuOption()

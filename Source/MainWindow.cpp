@@ -160,10 +160,10 @@ void MainWindow::initFileMenu()
     }
 
     // Other tools
-#ifdef X_TOOLS_IMPORT_MODULE_MODBUSSTUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
     QAction* modbusAction = new QAction("Modbus Studio", this);
     connect(modbusAction, &QAction::triggered, this, [=]() {
-        SAKModbusUi* w = new SAKModbusUi();
+        xToolsModbusStudioUi* w = new xToolsModbusStudioUi();
         w->setContentsMargins(9, 9, 9, 9);
         w->setAttribute(Qt::WA_DeleteOnClose, true);
         w->resize(1024, 480);
@@ -171,11 +171,12 @@ void MainWindow::initFileMenu()
     });
     windowMenu->addAction(modbusAction);
 #endif
+
 #ifndef SAK_RELEASE_FOR_APP_STORE
-#ifdef X_TOOLS_IMPORT_MODULE_CANBUSSTUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
     QAction* canbusAction = new QAction("CANBus Studio", this);
     connect(canbusAction, &QAction::triggered, this, [=]() {
-        SAKCanBusUi* w = new SAKCanBusUi();
+        xToolsModbusStudioUi* w = new xToolsModbusStudioUi();
         w->setContentsMargins(9, 9, 9, 9);
         w->setAttribute(Qt::WA_DeleteOnClose, true);
         w->resize(1024, 480);
@@ -195,9 +196,7 @@ void MainWindow::initFileMenu()
     connect(exportAction, &QAction::triggered, this, &MainWindow::onExportActionTriggered);
 
     m_fileMenu->addSeparator();
-    QAction* exitAction = new QAction(tr("Exit"), this);
-    m_fileMenu->addAction(exitAction);
-    connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
+    m_fileMenu->addAction(m_exitAction);
 }
 
 void MainWindow::initToolMenu()
