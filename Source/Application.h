@@ -18,15 +18,4 @@ class Application : public xToolsApplication
 public:
     explicit Application(int argc, char **argv);
     ~Application() override = default;
-
-    void showSplashScreenMessage(const QString &msg);
-
-signals:
-    void activeMainWindow();
-
-private:
-    QSplashScreen *m_splashScreen{nullptr};
-
-private:
-    static void setupPalette(const QString &fileName);
 };

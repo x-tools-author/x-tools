@@ -6,16 +6,29 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#ifndef XTOOLSAPPLICATION_H
-#define XTOOLSAPPLICATION_H
+#pragma once
 
 #include <QApplication>
+#include <QPixmap>
+#include <QSplashScreen>
 
 class xToolsApplication : public QApplication
 {
     Q_OBJECT
 public:
-    xToolsApplication(int argc, char *argv[]);
-};
+    enum xToolsAppPalette { DefaultPalette, DarkPalette, LightPalette, CustomPalette = -1 };
 
-#endif // XTOOLSAPPLICATION_H
+public:
+    explicit xToolsApplication(int argc, char *argv[]);
+
+    void showSplashScreenMessage(const QString &msg);
+    void setupPalette(int palette);
+    void setupPalette(const QString &fileName);
+    void setupLanguage(const QString &language);
+
+protected:
+    QSplashScreen m_splashScreen;
+
+private:
+    static QPixmap splashScreenPixmap();
+};
