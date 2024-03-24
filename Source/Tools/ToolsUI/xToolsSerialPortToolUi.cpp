@@ -25,7 +25,7 @@ xToolsSerialPortToolUi::~xToolsSerialPortToolUi()
 
 void xToolsSerialPortToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
-    if (!(tool && tool->inherits("SAKSerialPortTool"))) {
+    if (!(tool && tool->inherits("xToolsSerialPortTool"))) {
         qWarning() << "Invalid type of communication tool!";
         return;
     }
