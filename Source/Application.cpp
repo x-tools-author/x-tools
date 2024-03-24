@@ -28,7 +28,7 @@ Application::Application(int argc, char** argv)
 {
     // Setup ui language.
     QString language = xToolsSettings::instance()->language();
-    setupLanguage(language, "xTools");
+    xToolsApplication::setupLanguage(language, m_translatorPrefix);
     showSplashScreenMessage(tr("Initializing main window..."));
 
     auto mainWindow = new MainWindow();
@@ -67,4 +67,10 @@ Application::Application(int argc, char** argv)
                       .arg(mainWindow->width())
                       .arg(mainWindow->height());
     qInfo() << qPrintable(msg);
+}
+
+void Application::setupLanguage(const QString &language)
+{
+    xToolsApplication::setupLanguage(language);
+    xToolsApplication::setupLanguage(language, m_translatorPrefix);
 }

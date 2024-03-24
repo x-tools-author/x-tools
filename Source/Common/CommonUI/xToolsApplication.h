@@ -24,7 +24,8 @@ public:
     void showSplashScreenMessage(const QString &msg);
     void setupPalette(int palette);
     void setupPalette(const QString &fileName);
-    void setupLanguage(const QString &language, const QString &prefix);
+
+    virtual void setupLanguage(const QString &language);
 
 signals:
     void languageChanged();
@@ -32,7 +33,11 @@ signals:
 protected:
     QSplashScreen m_splashScreen;
 
+protected:
+    void setupLanguage(const QString &language, const QString &prefix);
+
 private:
+    const QString m_translatorPrefix{"xToolsCommon"};
     QMap<QString, QString> m_languageFlagNameMap;
 
 private:

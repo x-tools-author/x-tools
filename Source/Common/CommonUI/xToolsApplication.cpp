@@ -44,7 +44,7 @@ xToolsApplication::xToolsApplication(int argc, char *argv[])
   m_languageFlagNameMap.insert("sv", "Svenska");
 #endif
     QString language = xToolsSettings::instance()->language();
-    setupLanguage(language, "xToolsCommon");
+    xToolsApplication::setupLanguage(language);
 
     // Splash screen
     m_splashScreen.setPixmap(splashScreenPixmap());
@@ -98,6 +98,11 @@ void xToolsApplication::setupPalette(const QString &fileName)
     }
 }
 
+void xToolsApplication::setupLanguage(const QString &language)
+{
+    setupLanguage(language, m_translatorPrefix);
+}
+
 void xToolsApplication::setupLanguage(const QString &language, const QString &prefix)
 {
     QString key = m_languageFlagNameMap.key(language);
@@ -138,19 +143,21 @@ void xToolsApplication::setupLanguage(const QString &language, const QString &pr
     }
 }
 
+
 QPixmap xToolsApplication::splashScreenPixmap()
 {
-    QPixmap pixmap(400, 260);
+    QPixmap pixmap(600, 260);
     pixmap.fill(QColor(0x2d2d30));
 
     QPainter painter(&pixmap);
     painter.setPen(QColor(Qt::white));
     auto font = painter.font();
-    font.setPixelSize(48);
+    font.setPixelSize(52);
     painter.setFont(font);
     painter.drawText(pixmap.rect(),
                      Qt::AlignHCenter | Qt::AlignVCenter,
                      xToolsApplication::applicationName());
+    painter.drawRect(pixmap.rect() - QMargins(1, 1, 1, 1));
 
     return pixmap;
 }
