@@ -128,7 +128,8 @@ void xToolsApplication::setupLanguage(const QString &language, const QString &pr
             qInfo() << m_languageFlagNameMap.value(key) << " has been setup!";
             emit languageChanged();
         } else {
-            qInfo() << "Install translator failed, the file is:" << fileName;
+            qInfo() << "Install translator failed, the file is:" << fileName
+                    << ". Maybe the qm file if empty!";
             translator->deleteLater();
             translator = Q_NULLPTR;
         }
