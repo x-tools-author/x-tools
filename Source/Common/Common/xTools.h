@@ -141,10 +141,11 @@ static void sakInitHdpi()
 
 static void sakInitAppStyle()
 {
-    qInfo() << "Supported style:" << QStyleFactory::keys();
+    qInfo() << "The supported application styles are:"
+            << qPrintable(QStyleFactory::keys().join(QChar(',')));
     const QString style = xToolsSettings::instance()->appStyle();
     if (QStyleFactory::keys().contains(style)) {
-        qInfo() << "App style:" << style;
+        qInfo() << "The current application style is:" << qPrintable(style);
         QApplication::setStyle(QStyleFactory::create(style));
     }
 }

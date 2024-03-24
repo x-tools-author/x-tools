@@ -61,6 +61,7 @@ QStringList xToolsTranslator::languanges()
 
 void xToolsTranslator::setupLanguage(const QString& language)
 {
+    return;
     QCoreApplication::removeTranslator(&m_translator);
 
     QString key = m_flagNameMap.key(language);

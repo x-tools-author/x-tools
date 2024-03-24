@@ -71,7 +71,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     QDir dir;
     if (dir.exists(palettePath())) {
-        qInfo() << "palette path is:" << palettePath();
+        qInfo() << "The palette path is:" << palettePath();
     } else {
         if (dir.mkdir(palettePath())) {
             qInfo() << palettePath() << "has been created";

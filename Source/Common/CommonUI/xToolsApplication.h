@@ -24,10 +24,16 @@ public:
     void showSplashScreenMessage(const QString &msg);
     void setupPalette(int palette);
     void setupPalette(const QString &fileName);
-    void setupLanguage(const QString &language);
+    void setupLanguage(const QString &language, const QString &prefix);
+
+signals:
+    void languageChanged();
 
 protected:
     QSplashScreen m_splashScreen;
+
+private:
+    QMap<QString, QString> m_languageFlagNameMap;
 
 private:
     static QPixmap splashScreenPixmap();
