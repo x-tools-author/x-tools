@@ -18,7 +18,6 @@
 
 #include "MainWindow.h"
 #include "xToolsSettings.h"
-#include "xToolsTranslator.h"
 
 #ifdef Q_OS_WIN
 #include "SystemTrayIcon.h"
@@ -29,7 +28,7 @@ Application::Application(int argc, char** argv)
 {
     // Setup ui language.
     QString language = xToolsSettings::instance()->language();
-    xToolsTranslator::instance()->setupLanguage(language);
+    setupLanguage(language, "xTools");
     showSplashScreenMessage(tr("Initializing main window..."));
 
     auto mainWindow = new MainWindow();

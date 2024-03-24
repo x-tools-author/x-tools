@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../Source/Application.cpp" line="36"/>
-        <source>Initializing...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Application.cpp" line="59"/>
+        <location filename="../../Source/Application.cpp" line="32"/>
         <source>Initializing main window...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>初始化主窗口...</translatorcomment>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Application.cpp" line="95"/>
+        <location filename="../../Source/Application.cpp" line="64"/>
         <source>Finished...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -371,8 +367,8 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../Source/main.cpp" line="16"/>
-        <source>(Community)</source>
+        <location filename="../../Source/main.cpp" line="17"/>
+        <source>(Store)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
