@@ -47,7 +47,7 @@ Application::Application(int argc, char** argv)
     } else {
         QString customPalette = xToolsSettings::instance()->customPalette();
         if (customPalette.isEmpty()) {
-            qInfo() << "current palette: system";
+            qInfo() << "Current palette is: system";
         } else {
             setupPalette(customPalette);
         }

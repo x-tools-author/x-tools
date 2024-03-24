@@ -86,6 +86,7 @@ list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Assistants/xToolsAssistant
 list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Assistants/xToolsAssistantFactory.cpp)
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CMAKE_FILES})
 list(APPEND X_TOOLS_SOURCE xTools.qrc)
+# list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/xToolsCommon.qrc)
 if(WIN32)
   list(APPEND X_TOOLS_SOURCE xTools.rc)
 endif()

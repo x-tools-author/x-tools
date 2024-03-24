@@ -25,7 +25,7 @@ static const QString fileName()
 xToolsSettings::xToolsSettings(QObject* parent)
     : QSettings{::fileName(), QSettings::IniFormat, parent}
 {
-    qInfo() << "settings file:" << fileName();
+    qInfo() << "The path of settings file is:" << qPrintable(fileName());
 }
 
 xToolsSettings* xToolsSettings::instance()

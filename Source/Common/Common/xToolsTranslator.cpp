@@ -65,12 +65,12 @@ void xToolsTranslator::setupLanguage(const QString& language)
 
     QString key = m_flagNameMap.key(language);
     if (language.isEmpty()) {
-        qWarning() << "language is not specified, system language will be used";
+        qWarning() << "The language is not specified, system language will be used";
         key = QLocale::system().name();
     }
 
     if (key.isEmpty() || !m_flagNameMap.contains(key)) {
-        qWarning() << "unsupported language, english will be used";
+        qWarning() << "Unsupported language, english will be used";
         key = "en";
     }
 

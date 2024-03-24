@@ -604,10 +604,10 @@ void MainWindow::initLinksMenu()
                      QString(":/resources/images/GitHub.png")}
              << Link{tr("Download SAK from Gitee"),
                      QString("%1/releases").arg(SAK_GITEE_REPOSITORY_URL),
-                     QString(":/resources/images/Gitee.png")}
+                     QString(":/Resources/Icons/IconQQ.svg")}
              << Link{tr("Office Web Site"),
                      QString("https://qsaker.gitee.io/qsak/"),
-                     QString(":/resources/images/Gitee.png")};
+                     QString(":/Resources/Icons/IconQQ.svg")};
 
     for (auto& var : linkList) {
         QAction* action = new QAction(QIcon(var.iconPath), var.name, this);
