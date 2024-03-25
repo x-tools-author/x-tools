@@ -90,7 +90,7 @@ static void sakInitApp(const QString &appName)
     // Initialize some information about application.
     QString cookedAppName = appName;
     cookedAppName.remove(" ");
-    QCoreApplication::setOrganizationName(QString("Qsaker"));
+    QCoreApplication::setOrganizationName(QString("xTools"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
     QCoreApplication::setApplicationName(cookedAppName);
 
