@@ -97,16 +97,9 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 
     QString title = QString("xTools");
-#ifndef X_TOOLS_IMPORT_MODULE_PRIVATE
-    title.append(tr("(Community)"));
-#endif
     title.append(QString(" "));
     title.append(QString("v"));
     title.append(qApp->applicationVersion());
-#ifndef X_TOOLS_IMPORT_MODULE_PRIVATE
-    title.append(" ");
-    title.append("Beta1");
-#endif
     setWindowTitle(title);
     setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
 
@@ -271,11 +264,10 @@ void MainWindow::initHelpMenu()
 #endif
 #endif
     m_helpMenu->addSeparator();
-    m_helpMenu->addAction(QIcon(":/Resources/Icons/GitHub.svg"),
-                          tr("Release History"),
+    m_helpMenu->addAction(tr("Release History"),
                           this,
                           &MainWindow::showHistory);
-    m_helpMenu->addAction(QIcon(":/Resources/Icons/GitHub.svg"),
+    m_helpMenu->addAction(QIcon(":/Resources/Icons/IconQQ.svg"),
                           tr("Join in QQ Group"),
                           this,
                           &MainWindow::showQrCode);
@@ -302,17 +294,28 @@ void MainWindow::initLinksMenu()
              << Link{tr("Qt Official Release"),
                      QString("https://wiki.qt.io/Qt_5.15_Release"),
                      QString(":/resources/images/Qt.png")}
+             << Link{QString(""),
+                     QString(""),
+                     QString("")}
              << Link{tr("Download xTools from Github"),
                      QString("%1/releases").arg(X_TOOLS_GITHUB_REPOSITORY_URL),
-                     QString(":/resources/images/GitHub.png")}
+                     QString(":/Resources/Icons/GitHub.svg")}
              << Link{tr("Download xTools from Gitee"),
                      QString("%1/releases").arg(X_TOOLS_GITEE_REPOSITORY_URL),
-                     QString(":/Resources/Icons/IconQQ.svg")}
+                     QString(":/Resources/Icons/Gitee.svg")}
+             << Link{QString(""),
+                     QString(""),
+                     QString("")}
              << Link{tr("Office Web Site"),
                      QString("https://qsaker.gitee.io/qsak/"),
-                     QString(":/Resources/Icons/IconQQ.svg")};
+                     QString(":/Resources/Images/I18n.png")};
 
     for (auto& var : linkList) {
+        if (var.url.isEmpty()) {
+            linksMenu->addSeparator();
+            continue;
+        }
+
         QAction* action = new QAction(QIcon(var.iconPath), var.name, this);
         action->setObjectName(var.url);
         linksMenu->addAction(action);
