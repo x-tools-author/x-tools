@@ -24,12 +24,6 @@ class xToolsSettings : public QSettings
     Q_PROPERTY(int palette READ palette WRITE setPalette NOTIFY paletteChanged)
     Q_PROPERTY(QString customPalette READ customPalette WRITE setCustomPalette NOTIFY customPaletteChanged)
     // clang-format on
-public:
-    enum UiType {
-        UiTypeWidget,
-        UiTypeQml,
-    };
-    Q_ENUM(UiType)
 
 private:
     explicit xToolsSettings(QObject *parent = nullptr);

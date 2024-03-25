@@ -76,26 +76,6 @@ void xToolsSettings::setHdpiPolicy(int policy)
     emit hdpiPolicyChanged();
 }
 
-int xToolsSettings::uiType()
-{
-    int ret = value(mSettingsKey.uiType).toInt();
-    if ((ret < 0) || (ret > 1)) {
-        ret = UiTypeWidget;
-    }
-
-    return ret;
-}
-
-void xToolsSettings::setUiType(int type)
-{
-    if ((type < 0) || (type > 1)) {
-        type = UiTypeWidget;
-    }
-
-    setValue(mSettingsKey.uiType, type);
-    emit uiTypeChanged();
-}
-
 QString xToolsSettings::appStyle()
 {
     return value(mSettingsKey.appStyle, SAK_STYLE_DEFAULT).toString();
