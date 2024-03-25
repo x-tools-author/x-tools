@@ -1,43 +1,39 @@
-function(x_tools_deploy_qt_for_windows target)
-  if(WIN32)
-    set(QT_CORE_FILE Qt${QT_VERSION_MAJOR}Core${X_TOOLS_FILE_SUFFIX}.dll)
-    set(depends_dll ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${QT_CORE_FILE})
-    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Qml")
-      add_custom_command(
-        TARGET ${target}
-        POST_BUILD
-        COMMAND "${WINDEPLOYQT_EXECUTABLE}" "$<TARGET_FILE:${target}>" --qmldir
-                "${CMAKE_CURRENT_SOURCE_DIR}/Qml" --no-compiler-runtime
-        COMMENT "Deploy Qt(with qml) for Windows..."
-        VERBATIM)
-    else()
-      add_custom_command(
-        TARGET ${target}
-        POST_BUILD
-        COMMAND "${WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> --no-compiler-runtime
-        COMMENT "Deploy Qt for Windows..."
-        VERBATIM)
-    endif()
+set(X_TOOLS_QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Qml)
 
-    if(${MSVC} AND (${MSVC_VERSION} GREATER_EQUAL 1929))
-      cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
-      if("${CMAKE_BUILD_TYPE}" STREQUAL "Release" AND MSVC)
-        add_custom_command(
-          TARGET ${target}
-          POST_BUILD
-          COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140.dll"
-                  $<TARGET_FILE_DIR:${target}>
-          COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140_1.dll"
-                  $<TARGET_FILE_DIR:${target}>
-          COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140.dll"
-                  $<TARGET_FILE_DIR:${target}>
-          COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_1.dll"
-                  $<TARGET_FILE_DIR:${target}>
-          COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_2.dll"
-                  $<TARGET_FILE_DIR:${target}>
-          VERBATIM)
-      endif()
-    endif()
+function(x_tools_deploy_qt_for_windows target)
+  if(EXISTS "${X_TOOLS_QML_PATH}")
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --qmldir ${X_TOOLS_QML_PATH}
+              --no-compiler-runtime
+      COMMENT "Deploy Qt (with qml) for Windows..."
+      VERBATIM)
+  else()
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime
+      COMMENT "Deploy Qt for Windows..."
+      VERBATIM)
+  endif()
+
+  if((${MSVC_VERSION} GREATER_EQUAL 1929) AND ("${CMAKE_BUILD_TYPE}" STREQUAL "Release"))
+    cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140.dll"
+              $<TARGET_FILE_DIR:${target}>
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140_1.dll"
+              $<TARGET_FILE_DIR:${target}>
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140.dll"
+              $<TARGET_FILE_DIR:${target}>
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_1.dll"
+              $<TARGET_FILE_DIR:${target}>
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_2.dll"
+              $<TARGET_FILE_DIR:${target}>
+      VERBATIM)
   endif()
 endfunction()
 
