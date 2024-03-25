@@ -30,6 +30,12 @@ protected:
 
     QAction* m_exitAction;
 
+    QAction* m_gitHubAction;
+    QAction* m_giteeAction;
+    QAction* m_qqGroupAction;
+    QAction* m_aboutAction;
+    QAction* m_aboutQtAction;
+
 private:
     QActionGroup* m_appStyleActionGroup;
     QActionGroup* m_languageActionGroup;
@@ -54,5 +60,6 @@ private:
 
     void tryToReboot();
     void createQtConf();
+    void showQqQrCode();
     QString getQtConfFileName();
 };

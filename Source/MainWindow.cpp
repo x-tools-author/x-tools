@@ -523,15 +523,22 @@ void MainWindow::initLanguageMenu()
 
 void MainWindow::initHelpMenu()
 {
-    QAction* aboutQtAction = new QAction(tr("About Qt"), this);
-    m_helpMenu->addAction(aboutQtAction);
-    connect(aboutQtAction, &QAction::triggered, this, [=]() {
-        QMessageBox::aboutQt(this, tr("About Qt"));
-    });
-
+    m_helpMenu->addSeparator();
+    m_helpMenu->addAction(QIcon(":/Resources/Icons/GitHub.svg"),
+                          tr("Get Sources from Github"),
+                          this,
+                          []() { QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL)); });
+    m_helpMenu->addAction(QIcon(":/Resources/Icons/Gitee.svg"),
+                          tr("Get Sources from Gitee"),
+                          this,
+                          []() { QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL)); });
+    m_helpMenu->addSeparator();
+#if 0
     QAction* aboutAction = new QAction(tr("About xTools"), this);
     m_helpMenu->addAction(aboutAction);
     connect(aboutAction, &QAction::triggered, this, &MainWindow::aboutSoftware);
+#endif
+#ifndef X_TOOLS_BUILD_FOR_STORE
 #ifdef Q_OS_WIN
     QString tips = tr("Buy from Microsoft App Store");
     QIcon buy(":/Resources/Icons/IconBuy.svg");
@@ -542,36 +549,16 @@ void MainWindow::initHelpMenu()
         QDesktopServices::openUrl(url);
     });
 #endif
-    QMenu* srcMenu = new QMenu(tr("Get Source"), this);
-    m_helpMenu->addMenu(srcMenu);
-    QAction* visitGitHubAction = new QAction(QIcon(":/resources/images/GitHub.png"),
-                                             tr("GitHub"),
-                                             this);
-    connect(visitGitHubAction, &QAction::triggered, []() {
-        QUrl url = QUrl(QLatin1String(SAK_GITHUB_REPOSITORY_URL));
-        QDesktopServices::openUrl(url);
-    });
-    srcMenu->addAction(visitGitHubAction);
-    QAction* visitGiteeAction = new QAction(QIcon(":/resources/images/Gitee.png"),
-                                            tr("Gitee"),
-                                            this);
-    connect(visitGiteeAction, &QAction::triggered, []() {
-        QUrl url = QUrl(QLatin1String(SAK_GITEE_REPOSITORY_URL));
-        QDesktopServices::openUrl(url);
-    });
-    srcMenu->addAction(visitGiteeAction);
-
+#endif
+    m_helpMenu->addSeparator();
     QAction* releaseHistoryAction = new QAction(tr("Release History"), this);
     m_helpMenu->addAction(releaseHistoryAction);
     connect(releaseHistoryAction, &QAction::triggered, this, &MainWindow::showHistory);
 
-    m_helpMenu->addSeparator();
-    QAction* qrCodeAction = new QAction(tr("QR Code"), this);
-    m_helpMenu->addAction(qrCodeAction);
-    connect(qrCodeAction, &QAction::triggered, this, &MainWindow::showQrCode);
-#ifndef X_TOOLS_IMPORT_MODULE_PRIVATE
-    m_helpMenu->addAction(tr("Donate"), this, &MainWindow::showDonation);
-#endif
+    m_helpMenu->addAction(QIcon(":/Resources/Icons/GitHub.svg"),
+                          tr("Join in QQ Group"),
+                          this,
+                          &MainWindow::showQrCode);
 }
 
 void MainWindow::initLinksMenu()
@@ -595,11 +582,11 @@ void MainWindow::initLinksMenu()
              << Link{tr("Qt Official Release"),
                      QString("https://wiki.qt.io/Qt_5.15_Release"),
                      QString(":/resources/images/Qt.png")}
-             << Link{tr("Download SAK from Github"),
-                     QString("%1/releases").arg(SAK_GITHUB_REPOSITORY_URL),
+             << Link{tr("Download xTools from Github"),
+                     QString("%1/releases").arg(X_TOOLS_GITHUB_REPOSITORY_URL),
                      QString(":/resources/images/GitHub.png")}
-             << Link{tr("Download SAK from Gitee"),
-                     QString("%1/releases").arg(SAK_GITEE_REPOSITORY_URL),
+             << Link{tr("Download xTools from Gitee"),
+                     QString("%1/releases").arg(X_TOOLS_GITEE_REPOSITORY_URL),
                      QString(":/Resources/Icons/IconQQ.svg")}
              << Link{tr("Office Web Site"),
                      QString("https://qsaker.gitee.io/qsak/"),
@@ -761,17 +748,17 @@ void MainWindow::aboutSoftware()
 #ifndef SAK_RELEASE_FOR_APP_STORE
              << Info{tr("Edition"), SAK_EDITION, false}
 #endif
-             << Info{tr("Author"), QString(SAK_AUTHOR), false}
-             << Info{tr("Email"), QString(SAK_AUTHOR_EMAIL), false}
+             << Info{tr("Author"), QString(X_TOOLS_AUTHOR), false}
+             << Info{tr("Email"), QString(X_TOOLS_AUTHOR_EMAIL), false}
              << Info{tr("QQ"), QString("QQ:2869470394"), false}
              << Info{tr("QQ Group"), QString("QQ:952218522"), false}
              << Info{tr("Build Time"), dateTimeString, false}
 #ifndef SAK_RELEASE_FOR_APP_STORE
              << Info{tr("Gitee Url"),
-                     QString("<a href=%1>%1</a>").arg(SAK_GITEE_REPOSITORY_URL),
+                     QString("<a href=%1>%1</a>").arg(X_TOOLS_GITEE_REPOSITORY_URL),
                      true}
              << Info{tr("Gitbub Url"),
-                     QString("<a href=%1>%1</a>").arg(SAK_GITHUB_REPOSITORY_URL),
+                     QString("<a href=%1>%1</a>").arg(X_TOOLS_GITHUB_REPOSITORY_URL),
                      true}
 #endif
              << Info{tr("Copyright"),
@@ -858,8 +845,8 @@ void MainWindow::showQrCode()
     };
     QList<QrCodeInfo> qrCodeInfoList;
 
-    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/resources/images/QSAKQQ.jpg")}
-                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/resources/images/QtQQ.jpg")};
+    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/Resources/Images/QSAKQQ.jpg")}
+                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/Resources/Images/QtQQ.jpg")};
 
     QTabWidget* tabWidget = new QTabWidget(&dialog);
     for (auto& var : qrCodeInfoList) {

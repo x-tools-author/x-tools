@@ -1,5 +1,5 @@
 ﻿# Get the last tag.
-function(sak_git_get_last_tag working_dir prefix)
+function(x_tools_git_get_latest_tag working_dir prefix)
   execute_process(
     COMMAND git describe --abbrev=0 --tags
     WORKING_DIRECTORY ${working_dir}
@@ -11,7 +11,7 @@ function(sak_git_get_last_tag working_dir prefix)
 endfunction()
 
 # Get the last commit.
-function(sak_git_get_last_commit working_dir prefix)
+function(x_tools_git_get_latest_commit working_dir prefix)
   execute_process(
     COMMAND git log -1 --pretty=%H
     WORKING_DIRECTORY ${working_dir}
@@ -22,7 +22,7 @@ function(sak_git_get_last_commit working_dir prefix)
 endfunction()
 
 # Get last commit time.
-function(sak_git_get_last_commit_time working_dir prefix)
+function(x_tools_git_get_latest_commit_time working_dir prefix)
   execute_process(
     COMMAND git log -1 --format=%cd
     WORKING_DIRECTORY ${working_dir}

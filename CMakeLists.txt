@@ -33,6 +33,9 @@ include(CMake/xToolsCommon.cmake)
 include(CMake/xToolsGitInfo.cmake)
 include(CMake/xToolsDeployQt.cmake)
 
+x_tools_git_get_latest_commit(${CMAKE_SOURCE_DIR} "X_TOOLS")
+x_tools_git_get_latest_commit_time(${CMAKE_SOURCE_DIR} "X_TOOLS")
+
 # --------------------------------------------------------------------------------------------------
 # Common module
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
@@ -150,8 +153,6 @@ x_tools_add_third_party("qmdnsengine-master")
 add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private)
 
 x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
-sak_git_get_last_commit(${CMAKE_SOURCE_DIR} "SAK")
-sak_git_get_last_commit_time(${CMAKE_SOURCE_DIR} "SAK")
 x_tools_generate_translations(xTools)
 
 target_link_libraries(xTools PRIVATE glog::glog)

@@ -5,5 +5,9 @@
         <file>Resources/Translations/xToolsCommon_zh_CN.qm</file>
         <file>Resources/Palettes/DarkPalette</file>
         <file>Resources/Palettes/LightPalette</file>
+        <file>Resources/Icons/Gitee.svg</file>
+        <file>Resources/Icons/GitHub.svg</file>
+        <file>Resources/Images/QtQQ.jpg</file>
+        <file>Resources/Images/UserQQ.jpg</file>
     </qresource>
 </RCC>

@@ -99,19 +99,12 @@ void xToolsMainWindow::initMenuHelp()
 {
     QMenuBar* menu_bar = menuBar();
     m_helpMenu = menu_bar->addMenu(tr("&Help"));
-    m_helpMenu->addAction(QIcon(":/resources/images/GitHub.png"),
-                          "Github",
-                          this,
-                          &xToolsMainWindow::onGithubActionTriggered);
-    m_helpMenu->addAction(QIcon(":/resources/images/Gitee.png"),
-                          "Gitee",
-                          this,
-                          &xToolsMainWindow::onGiteeActionTriggered);
-    m_helpMenu->addAction(QIcon(":/Resources/Icons/IconQQ.svg"),
-                          tr("User QQ Group"),
-                          this,
-                          &xToolsMainWindow::onUserQqGroupTriggerd);
-    m_helpMenu->addAction(tr("&About"), this, &xToolsMainWindow::onAboutActionTriggered);
+    m_aboutAction = m_helpMenu->addAction(tr("&About"),
+                                          this,
+                                          &xToolsMainWindow::onAboutActionTriggered);
+    m_aboutQtAction = m_helpMenu->addAction(tr("About Qt"), this, [=]() {
+        QMessageBox::aboutQt(this, tr("About Qt"));
+    });
 }
 
 void xToolsMainWindow::initOptionMenuAppStyleMenu()
@@ -235,18 +228,18 @@ void xToolsMainWindow::onHdpiPolicyActionTriggered(int policy)
 
 void xToolsMainWindow::onGithubActionTriggered()
 {
-    QDesktopServices::openUrl(QUrl(SAK_GITHUB_REPOSITORY_URL));
+    QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL));
 }
 
 void xToolsMainWindow::onGiteeActionTriggered()
 {
-    QDesktopServices::openUrl(QUrl(SAK_GITEE_REPOSITORY_URL));
+    QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL));
 }
 
 void xToolsMainWindow::onUserQqGroupTriggerd()
 {
     QPixmap pix;
-    if (!pix.load(":/resources/images/QSAKQQ.jpg")) {
+    if (!pix.load(":/Resources/Images/QSAKQQ.jpg")) {
         qWarning() << "Can not load QSAKQQ.jpg.";
         return;
     }
@@ -265,21 +258,17 @@ void xToolsMainWindow::onAboutActionTriggered()
 {
     QString year = xToolsInterface::buildDateTime("yyyy");
     QString info;
-    info += centralWidget()->windowTitle() + tr("(Part of Qt Swiss Army knife)");
-    info += "\n";
-    info += tr("Author: ") + SAK_AUTHOR;
-    info += "\n";
-    info += tr("Email: ") + SAK_AUTHOR_EMAIL;
-    info += "\n";
-#ifdef SAK_GIT_COMMIT
-    info += tr("Commit: ") + SAK_GIT_COMMIT;
+    info += windowTitle() + tr("(A Part of xTools Project)");
+    info += "\n\n";
+#ifdef X_TOOLS_GIT_COMMIT
+    info += tr("Commit: ") + X_TOOLS_GIT_COMMIT;
+    info += "\n\n";
 #endif
-    info += "\n";
-#ifdef SAK_GIT_COMMIT_TIME
-    info += tr("Date: ") + SAK_GIT_COMMIT_TIME;
+#ifdef X_TOOLS_GIT_COMMIT_TIME
+    info += tr("Date: ") + X_TOOLS_GIT_COMMIT_TIME;
+    info += "\n\n";
 #endif
-    info += "\n";
-    info += tr("Copyright 2018-%1 x-tools-author(x-tools@outlook.com). All rights reserved.").arg(year);
+    info += tr("© 2018-%1 x-tools-author(x-tools@outlook.com). All rights reserved.").arg(year);
     QMessageBox::about(this, tr("About"), info);
 }
 
@@ -309,6 +298,36 @@ void xToolsMainWindow::createQtConf()
         qWarning() << fileName;
         qWarning() << "can not open file:" << file.errorString();
     }
+}
+
+void xToolsMainWindow::showQqQrCode()
+{
+    QDialog dialog;
+    dialog.setWindowTitle(tr("QR Code"));
+
+    struct QrCodeInfo
+    {
+        QString title;
+        QString qrCode;
+    };
+    QList<QrCodeInfo> qrCodeInfoList;
+
+    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/Resources/Images/UserQQ.jpg")}
+                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/Resources/Images/QtQQ.jpg")};
+
+    QTabWidget* tabWidget = new QTabWidget(&dialog);
+    for (auto& var : qrCodeInfoList) {
+        QLabel* label = new QLabel(tabWidget);
+        label->setPixmap(QPixmap::fromImage(QImage(var.qrCode)));
+        tabWidget->addTab(label, var.title);
+    }
+
+    QHBoxLayout* layout = new QHBoxLayout(&dialog);
+    layout->addWidget(tabWidget);
+    dialog.setLayout(layout);
+    dialog.setModal(true);
+    dialog.show();
+    dialog.exec();
 }
 
 QString xToolsMainWindow::getQtConfFileName()

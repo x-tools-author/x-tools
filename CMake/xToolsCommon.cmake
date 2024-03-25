@@ -1,12 +1,12 @@
-add_compile_definitions(SAK_AUTHOR="Qsaker")
+add_compile_definitions(X_TOOLS_AUTHOR="x-tools-author")
 add_compile_definitions(SAK_EDITION="beta1")
 add_compile_definitions(SAK_VERSION="5.1.0")
 add_compile_definitions(SAK_STYLE_DEFAULT="Fusion")
 add_compile_definitions(SAK_HOST_ADDRESS_ANY="Any")
 add_compile_definitions(SAK_CLEAR_MESSAGE_INTERVAL=8000)
-add_compile_definitions(SAK_AUTHOR_EMAIL="qsaker@foxmail.com")
-add_compile_definitions(SAK_GITEE_REPOSITORY_URL="https://gitee.com/qsaker/xTools")
-add_compile_definitions(SAK_GITHUB_REPOSITORY_URL="https://github.com/qsaker/xTools")
+add_compile_definitions(X_TOOLS_AUTHOR_EMAIL="x-tools@outlook.com")
+add_compile_definitions(X_TOOLS_GITEE_REPOSITORY_URL="https://gitee.com/x-tools-author/x-tools")
+add_compile_definitions(X_TOOLS_GITHUB_REPOSITORY_URL="https://github.com/x-tools-author/x-tools")
 
 set(SAK_BINARY_DIR ${CMAKE_BINARY_DIR}/assets)
 
