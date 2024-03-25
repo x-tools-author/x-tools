@@ -21,28 +21,26 @@
 #include <QImage>
 #include <QJsonParseError>
 #include <QLocale>
+#include <QMenuBar>
 #include <QMessageBox>
 #include <QPainter>
 #include <QPixmap>
 #include <QProcess>
 #include <QScrollBar>
 #include <QSizePolicy>
+#include <QStatusBar>
 #include <QStyleFactory>
 #include <QSysInfo>
 #include <QTextBrowser>
 #include <QToolBar>
 #include <QToolButton>
 #include <QVariant>
-#include <QMenuBar>
-#include <QStatusBar>
 
-#include "xToolsDataStructure.h"
+#include "xToolsAssistantFactory.h"
 #include "xToolsInterface.h"
 #include "xToolsSettings.h"
 #include "xToolsToolBoxUi.h"
-#include "xToolsTranslator.h"
 #include "xToolsUiInterface.h"
-#include "xToolsAssistantFactory.h"
 
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
 #include "xToolsCanBusStudioUi.h"
@@ -67,7 +65,7 @@ QString palettePath()
 MainWindow::MainWindow(QWidget* parent)
     : xToolsMainWindow(parent)
 {
-    QStackedWidget *stackedWidget = new QStackedWidget();
+    QStackedWidget* stackedWidget = new QStackedWidget();
     setCentralWidget(stackedWidget);
 
     QDir dir;
@@ -108,13 +106,9 @@ MainWindow::MainWindow(QWidget* parent)
     initMenuBar();
     initNav();
     initStatusBar();
-    initWindowMenu();
 }
 
-MainWindow::~MainWindow()
-{
-
-}
+MainWindow::~MainWindow() {}
 
 void MainWindow::initMenuBar()
 {
@@ -122,8 +116,8 @@ void MainWindow::initMenuBar()
 
     initFileMenu();
     initToolMenu();
-    //initOptionMenu();
-    //initLanguageMenu();
+    initOptionMenu();
+    initLanguageMenu();
     initLinksMenu();
     initHelpMenu();
 }
@@ -226,60 +220,7 @@ void MainWindow::initToolMenu()
 
 void MainWindow::initOptionMenu()
 {
-    QMenu* optionMenu = new QMenu(tr("&Options"));
-    menuBar()->addMenu(optionMenu);
-
-    initOptionMenuAppStyleMenu(optionMenu);
-#ifdef Q_OS_WIN
-    initOptionMenuMainWindowMenu(optionMenu);
-#endif
-    initOptionMenuSettingsMenu(optionMenu);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    initOptionMenuHdpiPolicy(optionMenu);
-#endif
-    initOptionMenuPalette(optionMenu);
-}
-
-void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
-{
-    // Initializing application style menu.
-    static QActionGroup gActionGroup(this);
-    auto actions = gActionGroup.actions();
-    for (auto action : actions) {
-        gActionGroup.removeAction(action);
-    }
-
-    QMenu* appStyleMenu = new QMenu(tr("Application Style"), this);
-    optionMenu->addMenu(appStyleMenu);
-    auto keys = QStyleFactory::keys();
-    for (QString& key : keys) {
-        QAction* action = new QAction(key, this);
-        action->setObjectName(key);
-        action->setCheckable(true);
-
-        gActionGroup.addAction(action);
-
-        connect(action, &QAction::triggered, this, [=]() {
-            xToolsSettings::instance()->setAppStyle(key);
-            rebootRequestion();
-        });
-    }
-
-    appStyleMenu->addActions(gActionGroup.actions());
-
-    // Reading the specified style.
-    QString style = xToolsSettings::instance()->appStyle();
-
-    if (style.isEmpty()) {
-        return;
-    }
-
-    for (QAction*& action : gActionGroup.actions()) {
-        if (action->objectName() == style) {
-            action->setChecked(true);
-            break;
-        }
-    }
+    initOptionMenuMainWindowMenu(m_optionMenu);
 }
 
 void MainWindow::initOptionMenuMainWindowMenu(QMenu* optionMenu)
@@ -306,220 +247,7 @@ void MainWindow::initOptionMenuMainWindowMenu(QMenu* optionMenu)
     });
 }
 
-void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
-{
-    QMenu* menu = new QMenu(tr("Settings"), this);
-    optionMenu->addMenu(menu);
-
-    QAction* action = new QAction(tr("Clear Configuration"), this);
-    menu->addAction(action);
-    connect(action, &QAction::triggered, this, &MainWindow::clearConfiguration);
-    action = new QAction(tr("Open configuration floder"), this);
-    menu->addAction(action);
-    connect(action, &QAction::triggered, this, [=]() {
-        QString fileName = xToolsSettings::instance()->fileName();
-        QUrl fileUrl = QUrl(fileName);
-        QString floderUrl = fileName.remove(fileUrl.fileName());
-        QDesktopServices::openUrl(floderUrl);
-    });
-}
-
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
-{
-    QMenu* menu = new QMenu(tr("HDPI Policy"));
-    QActionGroup* ag = new QActionGroup(this);
-
-    QAction* roundAction = new QAction(tr("Round up for .5 and above"), this);
-    QAction* ceilAction = new QAction(tr("Always round up"), this);
-    QAction* floorAction = new QAction(tr("Always round down"), this);
-    QAction* rpfAction = new QAction(tr("Round up for .75 and above"), this);
-    QAction* passThroughAction = new QAction(tr("Don't round"), this);
-
-    int round = xToolsDataStructure::HdpiPolicyRound;
-    int ceil = xToolsDataStructure::HdpiPolicyCeil;
-    int floor = xToolsDataStructure::HdpiPolicyFloor;
-    int preferFloor = xToolsDataStructure::HdpiPolicyRoundPreferFloor;
-    int passThrough = xToolsDataStructure::HdpiPolicyPassThrough;
-    int sysScale = xToolsDataStructure::HdpiPolicySystem;
-
-    QString fileName = SAK_QT_CONF;
-    auto triggered = [=](int policy) {
-        if (QFile::remove(fileName)) {
-            qInfo() << fileName << "was removed!";
-        } else {
-            qInfo() << "removed" << fileName << "failed";
-        }
-
-        xToolsSettings::instance()->setHdpiPolicy(int(policy));
-        rebootRequestion();
-    };
-
-    connect(roundAction, &QAction::triggered, this, [=]() { triggered(int(round)); });
-    connect(ceilAction, &QAction::triggered, this, [=]() { triggered(int(ceil)); });
-    connect(floorAction, &QAction::triggered, this, [=]() { triggered(int(floor)); });
-    connect(rpfAction, &QAction::triggered, this, [=]() { triggered(int(preferFloor)); });
-    connect(passThroughAction, &QAction::triggered, this, [=]() { triggered(int(passThrough)); });
-
-    ag->addAction(roundAction);
-    ag->addAction(ceilAction);
-    ag->addAction(floorAction);
-    ag->addAction(rpfAction);
-    ag->addAction(passThroughAction);
-
-    auto list = ag->actions();
-    for (auto& a : list) {
-        a->setCheckable(true);
-    }
-
-    if (xToolsSettings::instance()->hdpiPolicy() == round) {
-        roundAction->setChecked(true);
-    } else if (xToolsSettings::instance()->hdpiPolicy() == ceil) {
-        ceilAction->setChecked(true);
-    } else if (xToolsSettings::instance()->hdpiPolicy() == floor) {
-        floorAction->setChecked(true);
-    } else if (xToolsSettings::instance()->hdpiPolicy() == preferFloor) {
-        rpfAction->setChecked(true);
-    } else if (xToolsSettings::instance()->hdpiPolicy() == passThrough) {
-        passThroughAction->setChecked(true);
-    }
-
-    menu->addActions(ag->actions());
-    optionMenu->addMenu(menu);
-
-#ifdef Q_OS_WIN
-    QAction* systemAction = new QAction(tr("System"), this);
-    systemAction->setCheckable(true);
-    ag->addAction(systemAction);
-    menu->addSeparator();
-    menu->addAction(systemAction);
-    connect(systemAction, &QAction::triggered, this, [=]() {
-        createQtConf();
-
-        xToolsSettings::instance()->setHdpiPolicy(sysScale);
-        rebootRequestion();
-    });
-
-    if (xToolsSettings::instance()->hdpiPolicy() == sysScale) {
-        systemAction->setChecked(true);
-        if (!QFile::exists(fileName)) {
-            createQtConf();
-        }
-    }
-#else
-    Q_UNUSED(sysScale)
-#endif
-}
-#endif
-
-void MainWindow::initOptionMenuPalette(QMenu* optionMenu)
-{
-    static QActionGroup ag(this);
-    QAction* systemAction = new QAction(tr("System"), this);
-    QAction* lightAction = new QAction(tr("Light"), this);
-    QAction* darkAction = new QAction(tr("Dark"), this);
-    QMenu* m = new QMenu(tr("Palette"), optionMenu);
-    optionMenu->addMenu(m);
-    ag.addAction(systemAction);
-    ag.addAction(lightAction);
-    ag.addAction(darkAction);
-
-    systemAction->setCheckable(true);
-    lightAction->setCheckable(true);
-    darkAction->setCheckable(true);
-
-    int ret = xToolsSettings::instance()->palette();
-    if (ret == xToolsDataStructure::PaletteLight) {
-        lightAction->setChecked(true);
-    } else if (ret == xToolsDataStructure::PaletteDark) {
-        darkAction->setChecked(true);
-    } else if (ret == xToolsDataStructure::PaletteSystem) {
-        systemAction->setChecked(true);
-    }
-
-    m->addAction(systemAction);
-    m->addAction(lightAction);
-    m->addAction(darkAction);
-
-    connect(systemAction, &QAction::triggered, this, [=]() {
-        xToolsSettings::instance()->setPalette(xToolsDataStructure::PaletteSystem);
-        rebootRequestion();
-    });
-    connect(lightAction, &QAction::triggered, this, [=]() {
-        xToolsSettings::instance()->setPalette(xToolsDataStructure::PaletteLight);
-        rebootRequestion();
-    });
-    connect(darkAction, &QAction::triggered, this, [=]() {
-        xToolsSettings::instance()->setPalette(xToolsDataStructure::PaletteDark);
-        rebootRequestion();
-    });
-
-    QMenu* custom = new QMenu(tr("Custom"), this);
-    QDir dir(palettePath());
-    QFileInfoList infoList = dir.entryInfoList(QDir::Files | QDir::NoDotAndDotDot);
-    QString currentCustom = xToolsSettings::instance()->customPalette();
-    for (auto& info : infoList) {
-        if (!info.isFile()) {
-            continue;
-        }
-
-        QString fileName = info.fileName();
-        QUrl url(fileName);
-        QString fn = url.fileName();
-        QAction* a = new QAction(fn, this);
-        a->setCheckable(true);
-        ag.addAction(a);
-        if (fn == currentCustom && ret == xToolsDataStructure::PaletteCustom) {
-            a->setChecked(true);
-        }
-
-        custom->addAction(a);
-        connect(a, &QAction::triggered, this, [=]() {
-            xToolsSettings* settings = xToolsSettings::instance();
-            settings->setPalette(xToolsDataStructure::PaletteCustom);
-            settings->setCustomPalette(fileName);
-            rebootRequestion();
-        });
-    }
-
-    if (!custom->actions().isEmpty()) {
-        m->addMenu(custom);
-    }
-}
-
-void MainWindow::initWindowMenu()
-{
-    // Nothing to do.
-}
-
-void MainWindow::initLanguageMenu()
-{
-    QMenu* languageMenu = new QMenu(tr("&Languages"), this);
-#if 0
-    QIcon icon = QIcon(":/Resources/Icons/IconLanguage.svg");
-    languageMenu->setIcon(icon);
-#endif
-    menuBar()->addMenu(languageMenu);
-
-    static QActionGroup ag(this);
-    QStringList languages = xToolsTranslator::instance()->languanges();
-    for (auto& language : languages) {
-        QAction* action = new QAction(language, this);
-        action->setCheckable(true);
-        languageMenu->addAction(action);
-        ag.addAction(action);
-
-        connect(action, &QAction::triggered, this, [=]() {
-            xToolsSettings::instance()->setLanguage(language);
-            rebootRequestion();
-        });
-
-        QString l = xToolsSettings::instance()->language();
-        if (l == language) {
-            action->setChecked(true);
-        }
-    }
-}
+void MainWindow::initLanguageMenu() {}
 
 void MainWindow::initHelpMenu()
 {
@@ -631,13 +359,11 @@ void MainWindow::initNav()
     initNav(
         {&navButtonGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "Modbus Studio", modbus, tb});
 #endif
-#ifndef X_TOOLS_BUILD_FOR_STORE
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
     xToolsCanBusStudioUi* canbus = new xToolsCanBusStudioUi(this);
     path = ":/Resources/Icons/IconCanBus.svg";
     initNav(
         {&navButtonGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb});
-#endif
 #endif
     QLabel* lb = new QLabel(" ");
     tb->addWidget(lb);
@@ -671,19 +397,6 @@ void MainWindow::initNav()
         xToolsSettings::instance()->setIsTextBesideIcon(tbt->isChecked());
     });
     tb->addSeparator();
-#endif
-#if 0
-    initNav({&navButtonGroup,
-             SAKUiInterface::cookedIcon(QIcon(":/Resources/Icons/IconLog.svg")),
-             tr("Log Viewer"),
-             new SAKLogUi(this),
-             tb});
-#endif
-#if 0
-    path = ":/Resources/Icons/IconSettings.svg";
-    initNav(&navButtonGroup,
-            SAKUiInterface::cookedIcon(QIcon(path)),
-            tr("Preferences"), new SAKPreferencesUi(this), tb);
 #endif
 }
 

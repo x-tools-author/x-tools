@@ -64,7 +64,6 @@ private:
     void initOptionMenuHdpiPolicy(QMenu* optionMenu);
 #endif
     void initOptionMenuPalette(QMenu* optionMenu);
-    void initWindowMenu();
     void initLanguageMenu();
     void initHelpMenu();
     void initLinksMenu();
