@@ -7,34 +7,14 @@ add_compile_definitions(X_TOOLS_AUTHOR_EMAIL="x-tools@outlook.com")
 add_compile_definitions(X_TOOLS_GITEE_REPOSITORY_URL="https://gitee.com/x-tools-author/x-tools")
 add_compile_definitions(X_TOOLS_GITHUB_REPOSITORY_URL="https://github.com/x-tools-author/x-tools")
 
-set(SAK_BINARY_DIR ${CMAKE_BINARY_DIR}/assets)
+set(X_TOOLS_BINARY_DIR ${CMAKE_BINARY_DIR}/assets)
 
 # Set the suffix of the library.
 if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-
+  set(X_TOOLS_FILE_SUFFIX "")
 else()
-  set(SAK_FILE_SUFFIX "d")
+  set(X_TOOLS_FILE_SUFFIX "d")
 endif()
-
-# Get the last commit.
-function(sak_get_last_commit working_dir prefix)
-  execute_process(
-    COMMAND git log -1 --pretty=%H
-    WORKING_DIRECTORY ${working_dir}
-    OUTPUT_VARIABLE GIT_COMMIT
-    OUTPUT_STRIP_TRAILING_WHITESPACE)
-  add_compile_definitions(${prefix}_GIT_COMMIT="${GIT_COMMIT}")
-endfunction()
-
-# Get last commit time.
-function(sak_get_last_commit_time working_dir prefix)
-  execute_process(
-    COMMAND git log -1 --format=%cd
-    WORKING_DIRECTORY ${working_dir}
-    OUTPUT_VARIABLE GIT_COMMIT_TIME
-    OUTPUT_STRIP_TRAILING_WHITESPACE)
-  add_compile_definitions(${prefix}_GIT_COMMIT_TIME="${GIT_COMMIT_TIME}")
-endfunction()
 
 # Unzip file and import it as a sub module.
 function(x_tools_add_third_party zip_file_name_without_suffix)
@@ -43,25 +23,19 @@ function(x_tools_add_third_party zip_file_name_without_suffix)
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/${zip_file_name_without_suffix})
 endfunction()
 
-# Find Qt package.
-macro(sak_find_qt_package modules)
-  find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${modules})
-  find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${modules})
-endmacro()
-
-function(sak_copy_glog target)
+function(x_tools_copy_glog target)
   if(${BUILD_SHARED_LIBS})
     add_custom_command(
       TARGET ${target}
       POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:glog::glog>
-              "${SAK_BINARY_DIR}/${target}/$<TARGET_FILE_NAME:glog::glog>")
+              "${X_TOOLS_BINARY_DIR}/${target}/$<TARGET_FILE_NAME:glog::glog>")
   endif()
 endfunction()
 
 # Add executable. It can be used by Qt5 and Qt6.
 function(x_tools_add_executable target sources)
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${SAK_BINARY_DIR}/${target}")
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${X_TOOLS_BINARY_DIR}/${target}")
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${target} MANUAL_FINALIZATION)
 
@@ -93,7 +67,7 @@ function(x_tools_add_executable target sources)
               "${CMAKE_BINARY_DIR}/android-build/libs/${ANDROID_ABI}/$<TARGET_FILE_NAME:${target}>")
   endif()
 
-  sak_copy_glog(${target})
+  x_tools_copy_glog(${target})
 
   if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(${target})
@@ -118,7 +92,7 @@ function(x_tools_set_target_properties target)
   endif()
 endfunction()
 
-function(sak_tar_target target)
+function(x_tools_tar_target target)
   if(WIN32)
     string(TOLOWER ${target} lower_target)
     string(TOLOWER ${CMAKE_HOST_SYSTEM_NAME} lower_system_name)
@@ -128,7 +102,7 @@ function(sak_tar_target target)
       TARGET ${target}
       POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E tar "cf" ${TAR_FILE_NAME}.zip "--format=zip" ${target}
-      WORKING_DIRECTORY ${SAK_BINARY_DIR})
+      WORKING_DIRECTORY ${X_TOOLS_BINARY_DIR})
   endif()
 endfunction()
 

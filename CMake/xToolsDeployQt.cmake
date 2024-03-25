@@ -1,7 +1,7 @@
 function(x_tools_deploy_qt_for_windows target)
   if(WIN32)
     set(SAK_WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
-    set(QT_CORE_FILE Qt${QT_VERSION_MAJOR}Core${SAK_FILE_SUFFIX}.dll)
+    set(QT_CORE_FILE Qt${QT_VERSION_MAJOR}Core${X_TOOLS_FILE_SUFFIX}.dll)
     set(depends_dll ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${QT_CORE_FILE})
     if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/qml")
       add_custom_command(
@@ -57,7 +57,7 @@ function(sak_auto_execute_macdeployqt target)
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${SAK_MACDEPLOYQT_EXECUTABLE} "${SAK_BINARY_DIR}/${target}/${target}.app"
+      COMMAND ${SAK_MACDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app"
               "-qmldir=${CMAKE_CURRENT_SOURCE_DIR}/qml -dmg"
       COMMENT "Running macdeployqt..."
       VERBATIM)
@@ -65,7 +65,7 @@ function(sak_auto_execute_macdeployqt target)
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${SAK_MACDEPLOYQT_EXECUTABLE} "${SAK_BINARY_DIR}/${target}/${target}.app" "-dmg"
+      COMMAND ${SAK_MACDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app" "-dmg"
       COMMENT "Running macdeployqt..."
       VERBATIM)
   endif()
@@ -74,7 +74,7 @@ function(sak_auto_execute_macdeployqt target)
     TARGET ${target}
     POST_BUILD
     COMMAND sh -c "ls *.dmg > dmgs.txt"
-    WORKING_DIRECTORY "${SAK_BINARY_DIR}/${target}"
+    WORKING_DIRECTORY "${X_TOOLS_BINARY_DIR}/${target}"
     COMMENT "Scan dmg file"
     VERBATIM)
 
@@ -84,7 +84,7 @@ function(sak_auto_execute_macdeployqt target)
     COMMAND sh -c "rm qtswissarmyknife-macos-11.dmg || true"
     COMMAND sh -c "cat dmgs.txt | xargs -I {} mv {} qtswissarmyknife-macos-11.dmg"
     COMMAND sh -c "rm dmgs.txt || true"
-    WORKING_DIRECTORY "${SAK_BINARY_DIR}/${target}"
+    WORKING_DIRECTORY "${X_TOOLS_BINARY_DIR}/${target}"
     COMMENT "Rename old dmg file"
     VERBATIM)
 endfunction()
