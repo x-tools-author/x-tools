@@ -40,7 +40,12 @@ x_tools_git_get_latest_commit_time(${CMAKE_SOURCE_DIR} "X_TOOLS")
 # Common module
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
-option(X_TOOLS_IMPORT_MODULE_BLUETOOTH "Enable Bluetooth modbule" ON)
+if(QT_VERSION_MAJOR EQUAL 6)
+  option(X_TOOLS_IMPORT_MODULE_BLUETOOTH "Enable Bluetooth modbule" ON)
+else()
+  option(X_TOOLS_IMPORT_MODULE_BLUETOOTH "Enable Bluetooth modbule" OFF)
+endif()
+set(X_TOOLS_BLUETOOTH_MODULE_IS_VALID FALSE)
 if(X_TOOLS_IMPORT_MODULE_BLUETOOTH AND QT_VERSION_MAJOR GREATER 5)
   if(NOT Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS "6.5.0")
     find_package(
@@ -140,6 +145,17 @@ if(X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/CANBusStudio/main.cpp)
   include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/CANBusStudio)
   include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/CANBusStudioUI)
+endif()
+
+# -------------------------------------------------------------------------------------------------
+# BLE module
+if(NOT X_TOOLS_BLUETOOTH_MODULE_IS_VALID)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsBleCentralTool.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsBleCentralTool.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsBleCentralToolUi.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE
+       ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp)
+  message(STATUS "The xTools BLE module source has been removed!")
 endif()
 
 # --------------------------------------------------------------------------------------------------

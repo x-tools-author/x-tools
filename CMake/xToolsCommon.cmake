@@ -140,6 +140,10 @@ function(x_tools_finalize_executable target)
 endfunction()
 
 function(x_tools_generate_translations target)
+  if(QT_VERSION_MAJOR LESS 6)
+    return()
+  endif()
+
   set(APP_TS_FILES "")
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_en.ts)
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_zh_CN.ts)
