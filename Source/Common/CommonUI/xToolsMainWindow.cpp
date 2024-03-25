@@ -58,6 +58,11 @@ void xToolsMainWindow::moveToCenter()
     }
 }
 
+QString xToolsMainWindow::qtConfFileName()
+{
+    return qApp->applicationDirPath() + "/qt.conf";
+}
+
 void xToolsMainWindow::init()
 {
     initMenu();
@@ -231,10 +236,10 @@ void xToolsMainWindow::initOptionMenuHdpiPolicy()
 
 void xToolsMainWindow::onHdpiPolicyActionTriggered(int policy)
 {
-    if (QFile::remove(getQtConfFileName())) {
-        qInfo() << getQtConfFileName() << "was removed!";
+    if (QFile::remove(qtConfFileName())) {
+        qInfo() << qtConfFileName() << "was removed!";
     } else {
-        qInfo() << "removed" << getQtConfFileName() << "failed";
+        qInfo() << "removed" << qtConfFileName() << "failed";
     }
 
     xToolsSettings::instance()->setHdpiPolicy(int(policy));
@@ -303,7 +308,7 @@ void xToolsMainWindow::tryToReboot()
 
 void xToolsMainWindow::createQtConf()
 {
-    QString fileName = getQtConfFileName();
+    QString fileName = qtConfFileName();
     QFile file(fileName);
     if (file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate)) {
         QTextStream out(&file);
@@ -343,9 +348,4 @@ void xToolsMainWindow::showQqQrCode()
     dialog.setModal(true);
     dialog.show();
     dialog.exec();
-}
-
-QString xToolsMainWindow::getQtConfFileName()
-{
-    return qApp->applicationDirPath() + "/qt.conf";
 }

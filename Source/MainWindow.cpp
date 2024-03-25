@@ -52,8 +52,6 @@
 #include "SystemTrayIcon.h"
 #endif
 
-#define SAK_QT_CONF (qApp->applicationDirPath() + "/qt.conf")
-
 QString palettePath()
 {
     QString fileName = xToolsSettings::instance()->fileName();
@@ -110,7 +108,7 @@ MainWindow::MainWindow(QWidget* parent)
     title.append("Beta1");
 #endif
     setWindowTitle(title);
-    setWindowIcon(QIcon(":/resources/images/SAKLogo.png"));
+    setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
 
     initMenuBar();
     initNav();
@@ -334,14 +332,14 @@ void MainWindow::initNav()
     tb->setOrientation(Qt::Vertical);
     tb->setAllowedAreas(Qt::LeftToolBarArea);
 
-    static QButtonGroup navButtonGroup;
+    static QButtonGroup btGroup;
     QList<int> types = xToolsToolBoxUi::supportedCommunicationTools();
     for (int i = 0; i < types.count(); i++) {
         int type = types.at(i);
         xToolsToolBoxUi* toolBoxUi = new xToolsToolBoxUi(this);
         toolBoxUi->initialize(type);
 
-        initNav({&navButtonGroup,
+        initNav({&btGroup,
                  xToolsUiInterface::cookedIcon(toolBoxUi->windowIcon()),
                  toolBoxUi->windowTitle(),
                  toolBoxUi,
@@ -353,14 +351,12 @@ void MainWindow::initNav()
     QString path = ":/Resources/Icons/IconModbus.svg";
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
     xToolsModbusStudioUi* modbus = new xToolsModbusStudioUi(this);
-    initNav(
-        {&navButtonGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "Modbus Studio", modbus, tb});
+    initNav({&btGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "Modbus Studio", modbus, tb});
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
     xToolsCanBusStudioUi* canbus = new xToolsCanBusStudioUi(this);
     path = ":/Resources/Icons/IconCanBus.svg";
-    initNav(
-        {&navButtonGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb});
+    initNav({&btGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb});
 #endif
     QLabel* lb = new QLabel(" ");
     tb->addWidget(lb);
@@ -382,7 +378,7 @@ void MainWindow::initNav()
     tbt->setToolButtonStyle(style);
     tbt->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     tb->addWidget(tbt);
-    auto bg = &navButtonGroup;
+    auto bg = &btGroup;
     connect(tbt, &QToolButton::clicked, tbt, [=]() {
         auto bts = bg->buttons();
         auto style = tbt->isChecked() ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
@@ -509,15 +505,21 @@ void MainWindow::clearConfiguration()
 
 void MainWindow::rebootRequestion()
 {
-    int ret = QMessageBox::information(this,
-                                       tr("Reboot application to effective"),
-                                       tr("Need to reboot, reboot to effective now?"),
-                                       QMessageBox::Ok | QMessageBox::Cancel);
-    if (ret == QMessageBox::Ok) {
-        QProcess::startDetached(QCoreApplication::applicationFilePath());
+    QString title = tr("Reboot application to effective");
+    QString text = tr("Need to reboot, reboot to effective now?");
+    QMessageBox::StandardButtons buttons = QMessageBox::Ok | QMessageBox::Cancel;
 
+    int ret = QMessageBox::information(this, title, text, buttons);
+    if (ret != QMessageBox::Ok) {
+        return;
+    }
+
+    if (QProcess::startDetached(QCoreApplication::applicationFilePath())) {
         qApp->closeAllWindows();
         qApp->exit();
+    } else {
+        QString text = tr("Can not reboot the application, pelase reboot it manually!");
+        QMessageBox::warning(this, tr("Reboot Error"), text);
     }
 }
 
@@ -589,69 +591,76 @@ void MainWindow::showDonation()
 
 void MainWindow::createQtConf()
 {
-    QString fileName = SAK_QT_CONF;
+    QString fileName = qtConfFileName();
     QFile file(fileName);
-    if (file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate)) {
-        QTextStream out(&file);
-        out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
-        file.close();
-    } else {
-        qWarning() << fileName;
-        qWarning() << "can not open file:" << file.errorString();
+    if (!file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate)) {
+        QString message = tr("Can not open file(%1): %2").arg(fileName, file.errorString());
+        qWarning() << qPrintable(message);
+        return;
     }
+
+    QTextStream out(&file);
+    out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
+    file.close();
+    qInfo() << "Create Qt configuration file successfully:" << qPrintable(fileName);
 }
 
 void MainWindow::onImportActionTriggered()
 {
-    auto str = QFileDialog::getOpenFileName(this, tr("Save Palette"), "Palete", tr("All (*)"));
-    if (str.isEmpty()) {
-        qInfo() << "cancle to import the palette";
-    } else {
-        QFile inFile(str);
-        if (inFile.open(QFile::ReadOnly)) {
-            QByteArray bytes = inFile.readAll();
-            inFile.close();
-
-            QUrl url(str);
-            QString fn = url.fileName();
-            QString path = palettePath();
-            QString outFileName = path + "/" + fn;
-            if (QFile::exists(outFileName)) {
-                QMessageBox::warning(this,
-                                     tr("File Exists"),
-                                     tr("The file is exists, "
-                                        "import operaion failed"));
-                return;
-            }
-
-            QFile outFile(outFileName);
-            if (outFile.open(QFile::WriteOnly)) {
-                QDataStream out(&outFile);
-                out << bytes;
-                outFile.close();
-            } else {
-                qWarning() << "open out file failed:" << inFile.errorString();
-            }
-        } else {
-            qWarning() << "open in file failed:" << inFile.errorString();
-        }
+    QString iFileName = QFileDialog::getOpenFileName(this, tr("Import"), "Palete", tr("All (*)"));
+    if (iFileName.isEmpty()) {
+        qInfo() << "Importing palette had been cancled!";
+        return;
     }
+
+    QFile inFile(iFileName);
+    if (!inFile.open(QFile::ReadOnly)) {
+        QString message = tr("Open the file(%1) failed: %2").arg(iFileName, inFile.errorString());
+        qWarning() << qPrintable(message);
+        return;
+    }
+
+    QByteArray bytes = inFile.readAll();
+    inFile.close();
+
+    QUrl url(iFileName);
+    QString oFileName = palettePath() + "/" + url.fileName();
+    if (QFile::exists(oFileName)) {
+        const QString title = tr("File Exists");
+        const QString text = tr("The file is exists, import operaion failed");
+        QMessageBox::warning(this, title, text);
+        return;
+    }
+
+    QFile outFile(oFileName);
+    if (!outFile.open(QFile::WriteOnly)) {
+        QString message = tr("Open the file(%1) failed: %2").arg(oFileName, outFile.errorString());
+        qWarning() << qPrintable(message);
+        return;
+    }
+
+    QDataStream out(&outFile);
+    out << bytes;
+    outFile.close();
 }
 
 void MainWindow::onExportActionTriggered()
 {
-    auto str = QFileDialog::getSaveFileName(this, tr("Save Palette"), "Palete", tr("All (*)"));
-    if (str.isEmpty()) {
-        qInfo() << "cancle to export the palette";
-    } else {
-        QFile file(str);
-        if (file.open(QFile::WriteOnly)) {
-            QPalette p = qApp->palette();
-            QDataStream out(&file);
-            out << p;
-            file.close();
-        } else {
-            qWarning() << "can not open file:" << file.errorString();
-        }
+    auto fileName = QFileDialog::getSaveFileName(this, tr("Export"), "Palete", tr("All (*)"));
+    if (fileName.isEmpty()) {
+        qInfo() << "Exporting palette had been cancled!";
+        return;
     }
+
+    QFile file(fileName);
+    if (!file.open(QFile::WriteOnly)) {
+        QString message = tr("Open file(%1) failed: %2").arg(fileName, file.errorString());
+        qWarning() << qPrintable(message);
+        return;
+    }
+
+    QPalette p = qApp->palette();
+    QDataStream out(&file);
+    out << p;
+    file.close();
 }

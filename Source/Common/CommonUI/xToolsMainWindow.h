@@ -38,6 +38,9 @@ protected:
     QAction* m_aboutAction;
     QAction* m_aboutQtAction;
 
+protected:
+    QString qtConfFileName();
+
 private:
     QActionGroup* m_appStyleActionGroup;
     QActionGroup* m_languageActionGroup;
@@ -63,5 +66,4 @@ private:
     void tryToReboot();
     void createQtConf();
     void showQqQrCode();
-    QString getQtConfFileName();
 };
