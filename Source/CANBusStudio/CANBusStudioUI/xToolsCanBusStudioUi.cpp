@@ -232,7 +232,7 @@ void xToolsCanBusStudioUi::onConnectClicked()
     connect(mDevice, &QCanBusDevice::framesWritten, this, &xToolsCanBusStudioUi::onFrameWritten);
 
     auto items = configurationItems();
-    for (const ConfigurationItem& item : items) {
+    for (auto& item : items) {
         mDevice->setConfigurationParameter(item.first, item.second);
     }
 

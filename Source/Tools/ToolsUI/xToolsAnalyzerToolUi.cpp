@@ -66,28 +66,14 @@ void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const Q
         bool fixed = ui->checkBoxFixedLength->isChecked();
         cookedTool->setFixed(fixed);
     });
-    connect(ui->spinBoxFrameLength,
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-            QOverload<const QString &>::of(&QSpinBox::valueChanged),
-#else
-            &QSpinBox::valueChanged,
-#endif
-            this,
-            [=]() {
-                int len = ui->spinBoxFrameLength->value();
-                cookedTool->setFrameBytes(len);
-            });
-    connect(ui->spinBoxMaxTempBytes,
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-            QOverload<const QString &>::of(&QSpinBox::valueChanged),
-#else
-      &QSpinBox::valueChanged,
-#endif
-            this,
-            [=]() {
-                int maxBytes = ui->spinBoxMaxTempBytes->value();
-                cookedTool->setMaxTempBytes(maxBytes);
-            });
+    connect(ui->spinBoxFrameLength, QOverload<int>::of(&QSpinBox::valueChanged), this, [=]() {
+        int len = ui->spinBoxFrameLength->value();
+        cookedTool->setFrameBytes(len);
+    });
+    connect(ui->spinBoxMaxTempBytes, QOverload<int>::of(&QSpinBox::valueChanged), this, [=]() {
+        int maxBytes = ui->spinBoxMaxTempBytes->value();
+        cookedTool->setMaxTempBytes(maxBytes);
+    });
     connect(ui->lineEditSeparationMark, &QLineEdit::textChanged, this, [=]() {
         QString txt = ui->lineEditSeparationMark->text().trimmed();
         QByteArray flag = xToolsInterface::string2array(txt, format);
