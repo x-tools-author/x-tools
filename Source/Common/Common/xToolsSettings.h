@@ -17,10 +17,7 @@ class xToolsSettings : public QSettings
     Q_OBJECT
     // clang-format off
     Q_PROPERTY(int hdpiPolicy READ hdpiPolicy WRITE setHdpiPolicy NOTIFY hdpiPolicyChanged)
-    Q_PROPERTY(int uiType READ uiType WRITE setUiType NOTIFY uiTypeChanged)
     Q_PROPERTY(bool clearSettings READ clearSettings WRITE setClearSettings NOTIFY clearSettingsChanged)
-    Q_PROPERTY(int pageIndex READ pageIndex WRITE setPageIndex NOTIFY pageIndexChanged)
-    Q_PROPERTY(bool isTextBesideIcon READ isTextBesideIcon WRITE setIsTextBesideIcon NOTIFY isTextBesideIconChanged)
     Q_PROPERTY(int palette READ palette WRITE setPalette NOTIFY paletteChanged)
     Q_PROPERTY(QString customPalette READ customPalette WRITE setCustomPalette NOTIFY customPaletteChanged)
     // clang-format on
@@ -37,9 +34,6 @@ public:
     int hdpiPolicy();
     void setHdpiPolicy(int policy);
 
-    int uiType();
-    void setUiType(int type);
-
     QString appStyle();
     void setAppStyle(const QString &style);
 
@@ -48,12 +42,6 @@ public:
 
     bool clearSettings();
     void setClearSettings(bool clear);
-
-    int pageIndex();
-    void setPageIndex(int index);
-
-    bool isTextBesideIcon();
-    void setIsTextBesideIcon(bool is);
 
     int palette();
     void setPalette(int p);

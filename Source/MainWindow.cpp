@@ -368,7 +368,8 @@ void MainWindow::initNav()
 
 #if 1
     tb->addSeparator();
-    bool isTextBesideIcon = xToolsSettings::instance()->isTextBesideIcon();
+    const QString key = m_settingsKey.isTextBesideIcon;
+    bool isTextBesideIcon = xToolsSettings::instance()->value(key).toBool();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
     QToolButton* tbt = new QToolButton(this);
     path = ":/Resources/Icons/IconListWithIcon.svg";
@@ -391,7 +392,7 @@ void MainWindow::initNav()
 
             cookedBt->setToolButtonStyle(style);
         }
-        xToolsSettings::instance()->setIsTextBesideIcon(tbt->isChecked());
+        xToolsSettings::instance()->setValue(key, tbt->isChecked());
     });
     tb->addSeparator();
 #endif
@@ -399,7 +400,8 @@ void MainWindow::initNav()
 
 void MainWindow::initNav(const NavContext& ctx)
 {
-    bool isTextBesideIcon = xToolsSettings::instance()->isTextBesideIcon();
+    const QString key = m_settingsKey.isTextBesideIcon;
+    bool isTextBesideIcon = xToolsSettings::instance()->value(key).toBool();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
     QToolButton* bt = new QToolButton();
     bt->setAutoRaise(true);
@@ -424,10 +426,10 @@ void MainWindow::initNav(const NavContext& ctx)
     int pageCount = ctx.bg->buttons().count();
     QObject::connect(bt, &QToolButton::clicked, bt, [=]() {
         stackedWidget->setCurrentIndex(pageCount - 1);
-        xToolsSettings::instance()->setPageIndex(pageCount - 1);
+        xToolsSettings::instance()->setValue(m_settingsKey.pageIndex, pageCount - 1);
     });
 
-    if (xToolsSettings::instance()->pageIndex() == (pageCount - 1)) {
+    if (xToolsSettings::instance()->value(m_settingsKey.pageIndex).toInt() == (pageCount - 1)) {
         bt->setChecked(true);
         stackedWidget->setCurrentIndex(pageCount - 1);
     }

@@ -38,6 +38,8 @@ protected:
 private:
     struct SettingsKeyContext
     {
+        const QString isTextBesideIcon{"MainWindow/isTextBesideIcon"};
+        const QString pageIndex{"MainWindow/pageIndex"};
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
     } m_settingsKey;
     struct NavContext

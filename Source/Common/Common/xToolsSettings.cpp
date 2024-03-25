@@ -107,28 +107,6 @@ void xToolsSettings::setClearSettings(bool clear)
     emit clearSettingsChanged();
 }
 
-int xToolsSettings::pageIndex()
-{
-    return value(mSettingsKey.pageIndex).toInt();
-}
-
-void xToolsSettings::setPageIndex(int index)
-{
-    setValue(mSettingsKey.pageIndex, index);
-    emit pageIndexChanged();
-}
-
-bool xToolsSettings::isTextBesideIcon()
-{
-    return value(mSettingsKey.isTextBesideIcon).toBool();
-}
-
-void xToolsSettings::setIsTextBesideIcon(bool is)
-{
-    setValue(mSettingsKey.isTextBesideIcon, is);
-    emit isTextBesideIconChanged();
-}
-
 int xToolsSettings::palette()
 {
     int ret = value(mSettingsKey.palette).toInt();
