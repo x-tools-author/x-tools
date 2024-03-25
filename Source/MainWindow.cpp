@@ -178,7 +178,7 @@ void MainWindow::initFileMenu()
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
     QAction* canbusAction = new QAction("CANBus Studio", this);
     connect(canbusAction, &QAction::triggered, this, [=]() {
-        xToolsModbusStudioUi* w = new xToolsModbusStudioUi();
+        xToolsCanBusStudioUi* w = new xToolsCanBusStudioUi();
         w->setContentsMargins(9, 9, 9, 9);
         w->setAttribute(Qt::WA_DeleteOnClose, true);
         w->resize(1024, 480);

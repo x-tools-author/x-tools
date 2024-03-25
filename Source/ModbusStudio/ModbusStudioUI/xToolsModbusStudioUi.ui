@@ -537,9 +537,6 @@
           <property name="editable">
            <bool>true</bool>
           </property>
-          <property name="placeholderText">
-           <string>pdu(no server address, no crc, such read 2 coils: 01 00 00 00 01)</string>
-          </property>
          </widget>
         </item>
         <item>
