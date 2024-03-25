@@ -1,22 +1,20 @@
 function(x_tools_deploy_qt_for_windows target)
   if(WIN32)
-    set(SAK_WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
     set(QT_CORE_FILE Qt${QT_VERSION_MAJOR}Core${X_TOOLS_FILE_SUFFIX}.dll)
     set(depends_dll ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${QT_CORE_FILE})
-    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/qml")
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Qml")
       add_custom_command(
         TARGET ${target}
         POST_BUILD
-        COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" "$<TARGET_FILE:${target}>" --qmldir
-                "${CMAKE_CURRENT_SOURCE_DIR}/qml" --no-compiler-runtime DEPENDS ${depends_dll}
-        COMMENT "Deploy Qt for Windows..."
+        COMMAND "${WINDEPLOYQT_EXECUTABLE}" "$<TARGET_FILE:${target}>" --qmldir
+                "${CMAKE_CURRENT_SOURCE_DIR}/Qml" --no-compiler-runtime
+        COMMENT "Deploy Qt(with qml) for Windows..."
         VERBATIM)
     else()
       add_custom_command(
         TARGET ${target}
         POST_BUILD
-        COMMAND "${SAK_WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> --no-compiler-runtime
-                DEPENDS ${depends_dll}
+        COMMAND "${WINDEPLOYQT_EXECUTABLE}" $<TARGET_FILE:${target}> --no-compiler-runtime
         COMMENT "Deploy Qt for Windows..."
         VERBATIM)
     endif()
@@ -43,7 +41,7 @@ function(x_tools_deploy_qt_for_windows target)
   endif()
 endfunction()
 
-function(sak_auto_execute_macdeployqt target)
+function(x_tools_deploy_qt_for_mac target)
   if(NOT ${target} STREQUAL "xTools")
     return()
   endif()
@@ -89,7 +87,7 @@ function(sak_auto_execute_macdeployqt target)
     VERBATIM)
 endfunction()
 
-function(sak_auto_execute_linuxdeployqt target)
+function(x_tools_deploy_qt_for_linux target)
   if(NOT ${target} STREQUAL "xTools")
     return()
   endif()
@@ -160,11 +158,15 @@ function(sak_auto_execute_linuxdeployqt target)
 endfunction()
 
 function(x_tools_deploy_qt target)
+  if(${WINDEPLOYQT_EXECUTABLE} STREQUAL "")
+    return()
+  endif()
+
   if(WIN32)
     x_tools_deploy_qt_for_windows(${target})
   elseif(UNIX AND NOT APPLE)
-    sak_auto_execute_linuxdeployqt(${target})
+    x_tools_deploy_qt_for_linux(${target})
   elseif(APPLE)
-    sak_auto_execute_macdeployqt(${target})
+    x_tools_deploy_qt_for_mac(${target})
   endif()
 endfunction()
