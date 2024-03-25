@@ -12,10 +12,5 @@
 int main(const int argc, char *argv[])
 {
     Q_INIT_RESOURCE(xToolsCommon);
-    QString appName = QString("xTools");
-#ifdef X_TOOLS_BUILD_FOR_STORE
-    appName += QObject::tr("(Store)");
-#endif
-
-    return xToolsExec<MainWindow>(argc, argv, appName, false);
+    return xToolsExec<MainWindow>(argc, argv, QString("xTools"), false);
 }

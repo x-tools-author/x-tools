@@ -176,6 +176,10 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private)
 x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xTools)
 
+if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
+  add_compile_definitions(X_TOOLS_USING_GLOG)
+endif()
+
 target_link_libraries(xTools PRIVATE glog::glog)
 target_link_libraries(xTools PRIVATE qmdnsengine)
 target_link_libraries(xTools PRIVATE xToolsCommon)

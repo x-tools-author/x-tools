@@ -15,7 +15,11 @@
 template<typename UiT, typename MainWindowT, typename AppT>
 int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
 {
-    sakDoSomethingBeforeAppCreated(argv, appName);
+    QString cookedAppName = appName;
+#ifdef X_TOOLS_BUILD_FOR_STORE
+    cookedAppName += QObject::tr("(Store)");
+#endif
+    sakDoSomethingBeforeAppCreated(argv, cookedAppName);
 
     AppT app(argc, argv);
     QSplashScreen& splashScreen = qobject_cast<xToolsApplication*>(qApp)->splashScreen();
@@ -24,7 +28,7 @@ int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonM
         splashScreen.finish(mainWindow);
 
         UiT* centralWidget = new UiT(mainWindow);
-        mainWindow->setWindowTitle(appName);
+        mainWindow->setWindowTitle(cookedAppName);
         mainWindow->setCentralWidget(centralWidget);
         mainWindow->show();
         mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());

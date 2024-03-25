@@ -25,7 +25,10 @@
 #include <QStyleFactory>
 #include <QUrl>
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #include "xToolsDataStructure.h"
+#endif
+
 #include "xToolsInterface.h"
 #include "xToolsSettings.h"
 #include "xToolsTranslator.h"
@@ -124,7 +127,7 @@ void xToolsMainWindow::initMenuHelp()
 void xToolsMainWindow::initOptionMenuAppStyleMenu()
 {
     QList<QAction*> actions = m_appStyleActionGroup->actions();
-    for (auto action : actions) {
+    for (auto& action : actions) {
         m_appStyleActionGroup->removeAction(action);
     }
 
@@ -180,10 +183,10 @@ void xToolsMainWindow::initOptionMenuSettingsMenu()
 
 void xToolsMainWindow::initOptionMenuHdpiPolicy()
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QMenu* menu = new QMenu(tr("HDPI Policy"));
     QActionGroup* action_group = new QActionGroup(this);
     int setting_policy = xToolsSettings::instance()->hdpiPolicy();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QList<QPair<int, QString>> policy_list;
     typedef QPair<int, QString> policy_pair;
     policy_list << policy_pair(xToolsDataStructure::HdpiPolicyRound, tr("Round up for .5 and above"));
@@ -205,10 +208,8 @@ void xToolsMainWindow::initOptionMenuHdpiPolicy()
     }
     menu->addActions(action_group->actions());
     m_optionMenu->addMenu(menu);
-#endif
 
 #ifdef Q_OS_WIN
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QAction* system_action = new QAction(tr("System"), this);
     system_action->setCheckable(true);
     action_group->addAction(system_action);

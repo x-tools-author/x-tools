@@ -13,15 +13,17 @@
 #include <QFile>
 #include <QStyleFactory>
 
-#ifdef SAK_USING_GLOG
+#ifdef X_TOOLS_USING_GLOG
 #include "glog/logging.h"
 #endif
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #include "xToolsInterface.h"
+#endif
 #include "xToolsSettings.h"
 #include "xToolsTranslator.h"
 
-#ifdef SAK_USING_GLOG
+#ifdef X_TOOLS_USING_GLOG
 
 static void sakInitGoogleLogging(char *argv0)
 {
@@ -59,7 +61,7 @@ static void sakShutdownGoogleLogging()
 
 #endif
 
-#ifdef SAK_USING_GLOG
+#ifdef X_TOOLS_USING_GLOG
 static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QByteArray localMsg = msg.toUtf8();
@@ -153,7 +155,7 @@ static void sakInitAppStyle()
 static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 {
     sakInitApp(appName);
-#ifdef SAK_USING_GLOG
+#ifdef X_TOOLS_USING_GLOG
     sakInitGoogleLogging(argv[0]);
     sakInstallMessageHandler();
 #else
@@ -169,7 +171,7 @@ static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 
 static void sakDoSomethingAfterAppExited()
 {
-#ifdef SAK_USING_GLOG
+#ifdef X_TOOLS_USING_GLOG
     sakShutdownGoogleLogging();
 #endif
 }
