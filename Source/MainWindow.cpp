@@ -220,20 +220,11 @@ void MainWindow::initToolMenu()
 
 void MainWindow::initOptionMenu()
 {
-    initOptionMenuMainWindowMenu(m_optionMenu);
-}
-
-void MainWindow::initOptionMenuMainWindowMenu(QMenu* optionMenu)
-{
-    if (!optionMenu) {
-        return;
-    }
-
     QMenu* mainWindowMenu = new QMenu(tr("Main Window"), this);
     QAction* action = new QAction(tr("Exit to Sysytem Tray"), this);
     action->setCheckable(true);
     mainWindowMenu->addAction(action);
-    optionMenu->addMenu(mainWindowMenu);
+    m_optionMenu->addMenu(mainWindowMenu);
 
     QVariant v = xToolsSettings::instance()->value(mSettingsKey.exitToSystemTray);
     if (!v.isNull()) {
