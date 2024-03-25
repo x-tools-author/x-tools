@@ -13,20 +13,20 @@
 #include <QtGlobal>
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-#define SAK_SIG_SOCKETERROROCCURRED &QAbstractSocket::errorOccurred
+#define X_TOOLS_ABSTRACT_SOCKET_ERROR_OCCURRED &QAbstractSocket::errorOccurred
 #else
-#define SAK_SIG_SOCKETERROROCCURRED \
+#define X_TOOLS_ABSTRACT_SOCKET_ERROR_OCCURRED \
     static_cast<void (QAbstractSocket::*)(QAbstractSocket::SocketError)>(&QAbstractSocket::error)
 #endif
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
-#define SAK_SIG_WEBSOCKETERROROCCURRED &QWebSocket::errorOccurred
+#define X_TOOLS_WEB_SOCKET_ERROR_OCCURRED &QWebSocket::errorOccurred
 #else
-#define SAK_SIG_WEBSOCKETERROROCCURRED \
+#define X_TOOLS_WEB_SOCKET_ERROR_OCCURRED \
     static_cast<void (QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error)
 #endif
 
-static qint64 sakBirthTimeOfFile(const QFileInfo &info)
+static qint64 xToolsBirthTimeOfFile(const QFileInfo &info)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
     return info.birthTime().toMSecsSinceEpoch();

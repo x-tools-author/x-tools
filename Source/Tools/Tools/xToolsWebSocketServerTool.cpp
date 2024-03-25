@@ -10,9 +10,8 @@
 
 #include <QWebSocket>
 
+#include "xToolsCompatibility.h"
 #include "xToolsInterface.h"
-
-#define WS_ERR_SIGNAL void (QWebSocket::*)(QAbstractSocket::SocketError)
 
 xToolsWebSocketServerTool::xToolsWebSocketServerTool(QObject *parent)
     : xToolsSocketServerTool{parent}
@@ -75,16 +74,13 @@ bool xToolsWebSocketServerTool::initialize(QString &errStr)
         connect(client, &QWebSocket::disconnected, client, [=]() {
             this->mWebSocketList.removeOne(client);
             this->m_clients.removeOne(ipPort);
-            qInfo() << QString("Connection(%1) has been disconnected: %2")
-                           .arg(mBindingIpPort, client->errorString());
+
+            qInfo() << qPrintable(QString("Connection(%1) has been disconnected: %2")
+                                      .arg(mBindingIpPort, client->errorString()));
             emit clientsChanged();
         });
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
         connect(client,
-                static_cast<WS_ERR_SIGNAL>(&QWebSocket::errorOccurred),
-#else
-        connect(client, static_cast<WS_ERR_SIGNAL>(&QWebSocket::error),
-#endif
+                X_TOOLS_WEB_SOCKET_ERROR_OCCURRED,
                 client,
                 [=](QAbstractSocket::SocketError err) {
                     Q_UNUSED(err);

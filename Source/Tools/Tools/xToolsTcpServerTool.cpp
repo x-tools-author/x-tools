@@ -60,7 +60,7 @@ bool xToolsTcpServerTool::initialize(QString &errStr)
             emit clientsChanged();
         });
 
-        connect(client, SAK_SIG_SOCKETERROROCCURRED, client, [=]() {
+        connect(client, X_TOOLS_ABSTRACT_SOCKET_ERROR_OCCURRED, client, [=]() {
             this->m_tcpSocketListMutex.lock();
             this->m_tcpSocketList.removeOne(client);
             this->m_tcpSocketListMutex.unlock();

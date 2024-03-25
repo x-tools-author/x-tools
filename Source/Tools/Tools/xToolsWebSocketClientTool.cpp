@@ -55,7 +55,7 @@ bool xToolsWebSocketClientTool::initialize(QString &errStr)
         emit bytesRead(message.toUtf8(), this->m_peerInfo);
     });
 
-    connect(m_webSocket, SAK_SIG_WEBSOCKETERROROCCURRED, m_webSocket, [=]() {
+    connect(m_webSocket, X_TOOLS_WEB_SOCKET_ERROR_OCCURRED, m_webSocket, [=]() {
         QString errStr = m_webSocket->errorString();
         emit errorOccurred(errStr);
     });

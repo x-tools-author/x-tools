@@ -40,7 +40,7 @@ bool xToolsUdpClientTool::initialize(QString &errStr)
     emit bindingIpPortChanged();
 
     connect(m_udpSocket, &QUdpSocket::readyRead, m_udpSocket, [=]() { readBytes(); });
-    connect(m_udpSocket, SAK_SIG_SOCKETERROROCCURRED, this, [=]() {
+    connect(m_udpSocket, X_TOOLS_ABSTRACT_SOCKET_ERROR_OCCURRED, this, [=]() {
         emit errorOccurred(m_udpSocket->errorString());
     });
 

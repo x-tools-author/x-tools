@@ -39,7 +39,7 @@ bool xToolsTcpClientTool::initialize(QString& errStr)
     qInfo() << "Client address and port: " + m_bindingIpPort;
     emit bindingIpPortChanged();
 
-    connect(mTcpSocket, SAK_SIG_SOCKETERROROCCURRED, mTcpSocket, [=]() {
+    connect(mTcpSocket, X_TOOLS_ABSTRACT_SOCKET_ERROR_OCCURRED, mTcpSocket, [=]() {
         QString info = "Error occurred: " + mTcpSocket->errorString();
         qInfo() << info;
         emit errorOccurred(mTcpSocket->errorString());
