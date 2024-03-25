@@ -39,7 +39,7 @@ private:
     struct SettingsKeyContext
     {
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
-    } mSettingsKey;
+    } m_settingsKey;
     struct NavContext
     {
         QButtonGroup* bg;
@@ -48,9 +48,6 @@ private:
         QWidget* page;
         QToolBar* tb;
     };
-
-private:
-    const QLoggingCategory mLoggingCategory{"sak.mainwindow"};
 
 private:
     void initMenuBar();

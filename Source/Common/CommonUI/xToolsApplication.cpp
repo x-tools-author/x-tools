@@ -98,6 +98,11 @@ void xToolsApplication::setupPalette(const QString &fileName)
     }
 }
 
+QSplashScreen &xToolsApplication::splashScreen()
+{
+    return m_splashScreen;
+}
+
 void xToolsApplication::setupLanguage(const QString &language)
 {
     setupLanguage(language, m_translatorPrefix);

@@ -24,6 +24,7 @@ public:
     void showSplashScreenMessage(const QString &msg);
     void setupPalette(int palette);
     void setupPalette(const QString &fileName);
+    QSplashScreen &splashScreen();
 
     virtual void setupLanguage(const QString &language);
 

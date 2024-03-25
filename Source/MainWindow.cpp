@@ -41,13 +41,15 @@
 #include "xToolsSettings.h"
 #include "xToolsToolBoxUi.h"
 #include "xToolsUiInterface.h"
-
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
 #include "xToolsCanBusStudioUi.h"
 #endif
-
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
 #include "xToolsModbusStudioUi.h"
+#endif
+
+#ifdef Q_OS_WIN
+#include "SystemTrayIcon.h"
 #endif
 
 #define SAK_QT_CONF (qApp->applicationDirPath() + "/qt.conf")
@@ -65,6 +67,13 @@ QString palettePath()
 MainWindow::MainWindow(QWidget* parent)
     : xToolsMainWindow(parent)
 {
+#ifdef Q_OS_WIN
+    // Setup system tray icon.
+    auto systemTrayIcon = new SystemTrayIcon(this);
+    QObject::connect(systemTrayIcon, &SystemTrayIcon::invokeExit, this, &MainWindow::close);
+    QObject::connect(systemTrayIcon, &SystemTrayIcon::invokeShowMainWindow, this, &MainWindow::show);
+#endif
+
     QStackedWidget* stackedWidget = new QStackedWidget();
     setCentralWidget(stackedWidget);
 
@@ -125,7 +134,7 @@ void MainWindow::initMenuBar()
 #ifdef Q_OS_WIN
 void MainWindow::closeEvent(QCloseEvent* event)
 {
-    auto key = mSettingsKey.exitToSystemTray;
+    auto key = m_settingsKey.exitToSystemTray;
     bool ignore = xToolsSettings::instance()->value(key).toBool();
     if (ignore) {
         this->hide();
@@ -166,7 +175,6 @@ void MainWindow::initFileMenu()
     windowMenu->addAction(modbusAction);
 #endif
 
-#ifndef SAK_RELEASE_FOR_APP_STORE
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
     QAction* canbusAction = new QAction("CANBus Studio", this);
     connect(canbusAction, &QAction::triggered, this, [=]() {
@@ -177,7 +185,6 @@ void MainWindow::initFileMenu()
         w->show();
     });
     windowMenu->addAction(canbusAction);
-#endif
 #endif
 
     m_fileMenu->addSeparator();
@@ -198,21 +205,20 @@ void MainWindow::initToolMenu()
     QMenu* toolMenu = new QMenu(tr("&Tools"));
     menuBar()->insertMenu(m_languageMenu->menuAction(), toolMenu);
 
-    for (auto& t : SAKAssistantsFactory::instance()->supportedAssistants()) {
-        QString name = SAKAssistantsFactory::instance()->assistantName(t);
+    for (auto& type : SAKAssistantsFactory::instance()->supportedAssistants()) {
+        QString name = SAKAssistantsFactory::instance()->assistantName(type);
         QAction* action = new QAction(name, this);
-        QWidget* w = SAKAssistantsFactory::instance()->newAssistant(t);
+        QWidget* assistant = SAKAssistantsFactory::instance()->newAssistant(type);
 
-        Q_ASSERT_X(action, __FUNCTION__, "A null action!");
-        Q_ASSERT_X(w, __FUNCTION__, "A null assistant widget!");
+        Q_ASSERT_X(assistant, __FUNCTION__, "A null assistant widget!");
 
-        w->hide();
+        assistant->hide();
         toolMenu->addAction(action);
         connect(action, &QAction::triggered, this, [=]() {
-            if (w->isHidden()) {
-                w->show();
+            if (assistant->isHidden()) {
+                assistant->show();
             } else {
-                w->activateWindow();
+                assistant->activateWindow();
             }
         });
     }
@@ -226,7 +232,7 @@ void MainWindow::initOptionMenu()
     mainWindowMenu->addAction(action);
     m_optionMenu->addMenu(mainWindowMenu);
 
-    QVariant v = xToolsSettings::instance()->value(mSettingsKey.exitToSystemTray);
+    QVariant v = xToolsSettings::instance()->value(m_settingsKey.exitToSystemTray);
     if (!v.isNull()) {
         bool isExitToSystemTray = v.toBool();
         action->setChecked(isExitToSystemTray);
@@ -234,7 +240,7 @@ void MainWindow::initOptionMenu()
 
     connect(action, &QAction::triggered, this, [=]() {
         bool keep = action->isChecked();
-        xToolsSettings::instance()->setValue(mSettingsKey.exitToSystemTray, keep);
+        xToolsSettings::instance()->setValue(m_settingsKey.exitToSystemTray, keep);
     });
 }
 

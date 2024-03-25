@@ -18,17 +18,23 @@ int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonM
     sakDoSomethingBeforeAppCreated(argv, appName);
 
     AppT app(argc, argv);
+    QSplashScreen& splashScreen = qobject_cast<xToolsApplication*>(qApp)->splashScreen();
     if (usingCommonMainWindow) {
         MainWindowT* mainWindow = new MainWindowT();
+        splashScreen.finish(mainWindow);
+
         UiT* centralWidget = new UiT(mainWindow);
         mainWindow->setWindowTitle(appName);
         mainWindow->setCentralWidget(centralWidget);
         mainWindow->show();
         mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());
+        mainWindow->moveToCenter();
     } else {
         UiT* widget = new UiT();
+        splashScreen.finish(widget);
         widget->show();
         widget->resize(int(qreal(widget->height()) * 1.732), widget->height());
+        widget->moveToCenter();
     }
 
     int ret = app.exec();

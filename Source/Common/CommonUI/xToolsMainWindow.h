@@ -22,6 +22,8 @@ public:
     xToolsMainWindow(QWidget* parent = Q_NULLPTR);
     ~xToolsMainWindow();
 
+    void moveToCenter();
+
 protected:
     QMenu* m_fileMenu;
     QMenu* m_optionMenu;
