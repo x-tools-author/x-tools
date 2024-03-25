@@ -78,7 +78,7 @@ void xToolsSettings::setHdpiPolicy(int policy)
 
 QString xToolsSettings::appStyle()
 {
-    return value(mSettingsKey.appStyle, SAK_STYLE_DEFAULT).toString();
+    return value(mSettingsKey.appStyle, X_TOOLS_DEFAULT_APP_STYLE).toString();
 }
 
 void xToolsSettings::setAppStyle(const QString& style)

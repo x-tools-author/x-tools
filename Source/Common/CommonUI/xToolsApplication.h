@@ -15,6 +15,7 @@
 class xToolsApplication : public QApplication
 {
     Q_OBJECT
+    Q_PROPERTY(QStringList supportedLanguages READ supportedLanguages CONSTANT FINAL)
 public:
     enum xToolsAppPalette { DefaultPalette, DarkPalette, LightPalette, CustomPalette = -1 };
 
@@ -25,6 +26,7 @@ public:
     void setupPalette(int palette);
     void setupPalette(const QString &fileName);
     QSplashScreen &splashScreen();
+    QStringList supportedLanguages();
 
     virtual void setupLanguage(const QString &language);
 

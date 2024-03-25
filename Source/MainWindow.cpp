@@ -451,7 +451,7 @@ void MainWindow::aboutSoftware()
     QList<Info> infoList;
     infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
 #ifndef SAK_RELEASE_FOR_APP_STORE
-             << Info{tr("Edition"), SAK_EDITION, false}
+             << Info{tr("Edition"), X_TOOL_EDITION, false}
 #endif
              << Info{tr("Author"), QString(X_TOOLS_AUTHOR), false}
              << Info{tr("Email"), QString(X_TOOLS_AUTHOR_EMAIL), false}

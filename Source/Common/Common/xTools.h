@@ -21,11 +21,10 @@
 #include "xToolsInterface.h"
 #endif
 #include "xToolsSettings.h"
-#include "xToolsTranslator.h"
 
 #ifdef X_TOOLS_USING_GLOG
 
-static void sakInitGoogleLogging(char *argv0)
+static void xToolsInitGoogleLogging(char *argv0)
 {
     QString logPath = SAKSettings::instance()->settingsPath();
     logPath += "/log";
@@ -52,7 +51,7 @@ static void sakInitGoogleLogging(char *argv0)
     qInfo() << "The logging path is:" << qPrintable(logPath);
 }
 
-static void sakShutdownGoogleLogging()
+static void xToolsShutdownGoogleLogging()
 {
 #ifndef QT_DEBUG
     google::ShutdownGoogleLogging();
@@ -85,7 +84,7 @@ static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, 
 }
 #endif
 
-static void sakInitApp(const QString &appName)
+static void xToolsInitApp(const QString &appName)
 {
     // Initialize some information about application.
     QString cookedAppName = appName;
@@ -94,21 +93,21 @@ static void sakInitApp(const QString &appName)
     QCoreApplication::setOrganizationDomain(QString("IT"));
     QCoreApplication::setApplicationName(cookedAppName);
 
-#ifdef SAK_VERSION
-    QCoreApplication::setApplicationVersion(SAK_VERSION);
+#ifdef X_TOOLS_VERSION
+    QCoreApplication::setApplicationVersion(X_TOOLS_VERSION);
 #else
     QCoreApplication::setApplicationVersion("0.0.0");
 #endif
 }
 
-static void sakInstallMessageHandler()
+static void xToolsInstallMessageHandler()
 {
 #ifndef QT_DEBUG
     qInstallMessageHandler(qtLogToGoogleLog);
 #endif
 }
 
-static void sakTryToClearSettings()
+static void xToolsTryToClearSettings()
 {
     // Remove settings file and database
     if (xToolsSettings::instance()->clearSettings()) {
@@ -121,13 +120,7 @@ static void sakTryToClearSettings()
     }
 }
 
-static void sakInitLanguage()
-{
-    QString language = xToolsSettings::instance()->language();
-    xToolsTranslator::instance()->setupLanguage(language);
-}
-
-static void sakInitHdpi()
+static void xToolsInitHdpi()
 {
 #if 0
     qputenv("QT_SCALE_FACTOR", "1.5");
@@ -141,7 +134,7 @@ static void sakInitHdpi()
 #endif
 }
 
-static void sakInitAppStyle()
+static void xToolsInitAppStyle()
 {
     qInfo() << "The supported application styles are:"
             << qPrintable(QStyleFactory::keys().join(QChar(',')));
@@ -154,24 +147,21 @@ static void sakInitAppStyle()
 
 static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 {
-    sakInitApp(appName);
+    xToolsInitApp(appName);
 #ifdef X_TOOLS_USING_GLOG
-    sakInitGoogleLogging(argv[0]);
-    sakInstallMessageHandler();
+    xToolsInitGoogleLogging(argv[0]);
+    xToolsInstallMessageHandler();
 #else
     Q_UNUSED(argv)
 #endif
-    sakTryToClearSettings();
-#if 0
-    sakInitLanguage();
-#endif
-    sakInitHdpi();
-    sakInitAppStyle();
+    xToolsTryToClearSettings();
+    xToolsInitHdpi();
+    xToolsInitAppStyle();
 }
 
 static void sakDoSomethingAfterAppExited()
 {
 #ifdef X_TOOLS_USING_GLOG
-    sakShutdownGoogleLogging();
+    xToolsShutdownGoogleLogging();
 #endif
 }

@@ -103,6 +103,11 @@ QSplashScreen &xToolsApplication::splashScreen()
     return m_splashScreen;
 }
 
+QStringList xToolsApplication::supportedLanguages()
+{
+    return m_languageFlagNameMap.values();
+}
+
 void xToolsApplication::setupLanguage(const QString &language)
 {
     setupLanguage(language, m_translatorPrefix);

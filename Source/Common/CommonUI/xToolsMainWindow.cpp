@@ -29,17 +29,15 @@
 #include "xToolsDataStructure.h"
 #endif
 
+#include "xToolsApplication.h"
 #include "xToolsInterface.h"
 #include "xToolsSettings.h"
-#include "xToolsTranslator.h"
 
 xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     m_appStyleActionGroup = new QActionGroup(this);
     m_languageActionGroup = new QActionGroup(this);
-    QString language = xToolsSettings::instance()->language();
-    xToolsTranslator::instance()->setupLanguage(language);
     init();
 }
 
@@ -98,7 +96,7 @@ void xToolsMainWindow::initMenuLanguage()
     m_languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(m_languageMenu);
 
-    QStringList languages = xToolsTranslator::instance()->languanges();
+    QStringList languages = qobject_cast<xToolsApplication*>(qApp)->supportedLanguages();
     for (auto& language : languages) {
         QAction* action = new QAction(language, this);
         action->setCheckable(true);

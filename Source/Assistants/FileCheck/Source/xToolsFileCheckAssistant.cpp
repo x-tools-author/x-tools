@@ -57,7 +57,7 @@ xToolsFileCheckAssistant::xToolsFileCheckAssistant(QWidget* parent)
 
     // It will clean the message which was showed on the info label when the timer
     // is timeout
-    m_clearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
+    m_clearMessageTimer.setInterval(X_TOOLS_CLEAR_MESSAGE_INTERVAL);
     connect(&m_clearMessageTimer, &QTimer::timeout, this, &xToolsFileCheckAssistant::clearMessage);
 
     m_upperCheckBox->setChecked(true);
