@@ -534,7 +534,7 @@ void MainWindow::showHistory()
     dialog.resize(600, 400);
 
     QTextBrowser* textBrowser = new QTextBrowser(&dialog);
-    QFile file(":/resources/files/History.txt");
+    QFile file(":/Resources/Files/History.txt");
     if (file.open(QFile::ReadOnly)) {
         QByteArray data = file.readAll();
         textBrowser->setText(QString::fromUtf8(data));
