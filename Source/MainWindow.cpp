@@ -534,27 +534,24 @@ void MainWindow::initHelpMenu()
                           []() { QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL)); });
     m_helpMenu->addSeparator();
 #if 0
-    QAction* aboutAction = new QAction(tr("About xTools"), this);
-    m_helpMenu->addAction(aboutAction);
-    connect(aboutAction, &QAction::triggered, this, &MainWindow::aboutSoftware);
+    m_helpMenu->addAction(tr("About xTools"), this, &MainWindow::aboutSoftware);
 #endif
 #ifndef X_TOOLS_BUILD_FOR_STORE
 #ifdef Q_OS_WIN
-    QString tips = tr("Buy from Microsoft App Store");
-    QIcon buy(":/Resources/Icons/IconBuy.svg");
-    QAction* microsoft = new QAction(buy, tips);
-    m_helpMenu->addAction(microsoft);
-    connect(microsoft, &QAction::triggered, this, []() {
-        QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
-        QDesktopServices::openUrl(url);
-    });
+    m_helpMenu->addAction(QIcon(":/Resources/Icons/IconBuy.svg"),
+                          tr("Buy from Microsoft App Store"),
+                          this,
+                          []() {
+                              QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
+                              QDesktopServices::openUrl(url);
+                          });
 #endif
 #endif
     m_helpMenu->addSeparator();
-    QAction* releaseHistoryAction = new QAction(tr("Release History"), this);
-    m_helpMenu->addAction(releaseHistoryAction);
-    connect(releaseHistoryAction, &QAction::triggered, this, &MainWindow::showHistory);
-
+    m_helpMenu->addAction(QIcon(":/Resources/Icons/GitHub.svg"),
+                          tr("Release History"),
+                          this,
+                          &MainWindow::showHistory);
     m_helpMenu->addAction(QIcon(":/Resources/Icons/GitHub.svg"),
                           tr("Join in QQ Group"),
                           this,
