@@ -38,7 +38,6 @@ int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonM
         splashScreen.finish(widget);
         widget->show();
         widget->resize(int(qreal(widget->height()) * 1.732), widget->height());
-        widget->moveToCenter();
     }
 
     int ret = app.exec();
