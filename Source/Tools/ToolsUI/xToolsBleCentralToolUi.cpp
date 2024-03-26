@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -19,8 +19,6 @@
 #include "xToolsLineEdit.h"
 #include "xToolsSpinBox.h"
 
-#define SAK_CB_I_C &QComboBox::currentIndexChanged
-
 xToolsBleCentralToolUi::xToolsBleCentralToolUi(QWidget* parent)
     : xToolsCommunicationToolUi{parent}
     , ui(new Ui::xToolsBleCentralToolUi)
@@ -33,19 +31,19 @@ xToolsBleCentralToolUi::xToolsBleCentralToolUi(QWidget* parent)
             this,
             &xToolsBleCentralToolUi::onPushButtonScanClicked);
     connect(ui->comboBoxDevices,
-            static_cast<void (QComboBox::*)(int)>(SAK_CB_I_C),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsBleCentralToolUi::onComboBoxDevicesActived);
     connect(ui->comboBoxServices,
-            static_cast<void (QComboBox::*)(int)>(SAK_CB_I_C),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsBleCentralToolUi::onComboBoxServicesCurrentIndexChanged);
     connect(ui->comboBoxCharacteristics,
-            static_cast<void (QComboBox::*)(int)>(SAK_CB_I_C),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsBleCentralToolUi::onComboBoxCharacteristicsActived);
     connect(ui->comboBoxWriteWay,
-            static_cast<void (QComboBox::*)(int)>(SAK_CB_I_C),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged);
     connect(ui->pushButtonNotify,
@@ -78,7 +76,8 @@ xToolsBleCentralToolUi::~xToolsBleCentralToolUi()
     delete ui;
 }
 
-void xToolsBleCentralToolUi::onBaseToolUiInitialized(xToolsBaseTool* tool, const QString& settingsGroup)
+void xToolsBleCentralToolUi::onBaseToolUiInitialized(xToolsBaseTool* tool,
+                                                     const QString& settingsGroup)
 {
     xToolsCommunicationToolUi::onBaseToolUiInitialized(tool, settingsGroup);
 
@@ -120,10 +119,9 @@ void xToolsBleCentralToolUi::initSettingsMenu(const QString& settingsGroup)
     sp->setValue(120);
     sp->setGroupKey(settingsGroup, "timeoutInterval");
     gl->addWidget(sp, rowIndex, 1, 1, 1);
-    connect(sp,
-            QOverload<int>::of(&QSpinBox::valueChanged),
-            this,
-            [=](int v) { ui->comboBoxDevices->setTimeoutInterval(v); });
+    connect(sp, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int v) {
+        ui->comboBoxDevices->setTimeoutInterval(v);
+    });
 
     rowIndex += 1;
     gl->addWidget(new QLabel(tr("Name filtter"), w), rowIndex, 0, 1, 1);
@@ -175,7 +173,6 @@ void xToolsBleCentralToolUi::onServiceDiscoveryFinished()
     for (auto& service : services) {
         auto cookedSerivce = service.value<QLowEnergyService*>();
         ui->comboBoxServices->addItem(cookedSerivce->serviceName(), service);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
         connect(cookedSerivce,
                 &QLowEnergyService::stateChanged,
                 this,
@@ -184,13 +181,12 @@ void xToolsBleCentralToolUi::onServiceDiscoveryFinished()
                         onComboBoxServicesCurrentIndexChanged();
                     }
                 });
-#endif
     }
     ui->progressBar->hide();
 }
 
 void xToolsBleCentralToolUi::onDescriptorWritten(const QLowEnergyDescriptor& descriptor,
-                                              const QByteArray& newValue)
+                                                 const QByteArray& newValue)
 {
     Q_UNUSED(descriptor)
     Q_UNUSED(newValue)
