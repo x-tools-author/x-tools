@@ -23,11 +23,11 @@ public:
     explicit xToolsApplication(int argc, char *argv[]);
 
     void showSplashScreenMessage(const QString &msg);
-    void setupPalette(int palette);
     void setupPalette(const QString &fileName);
     QSplashScreen &splashScreen();
     QStringList supportedLanguages();
 
+    QString language();
     virtual void setupLanguage(const QString &language);
 
 signals:
@@ -37,7 +37,7 @@ protected:
     QSplashScreen m_splashScreen;
 
 protected:
-    void setupLanguage(const QString &language, const QString &prefix);
+    void setupLanguageWithPrefix(const QString &language, const QString &prefix);
 
 private:
     const QString m_translatorPrefix{"xToolsCommon"};

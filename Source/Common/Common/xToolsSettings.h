@@ -18,8 +18,6 @@ class xToolsSettings : public QSettings
     // clang-format off
     Q_PROPERTY(int hdpiPolicy READ hdpiPolicy WRITE setHdpiPolicy NOTIFY hdpiPolicyChanged)
     Q_PROPERTY(bool clearSettings READ clearSettings WRITE setClearSettings NOTIFY clearSettingsChanged)
-    Q_PROPERTY(int palette READ palette WRITE setPalette NOTIFY paletteChanged)
-    Q_PROPERTY(QString customPalette READ customPalette WRITE setCustomPalette NOTIFY customPaletteChanged)
     // clang-format on
 
 private:
@@ -43,11 +41,8 @@ public:
     bool clearSettings();
     void setClearSettings(bool clear);
 
-    int palette();
-    void setPalette(int p);
-
-    QString customPalette();
-    void setCustomPalette(const QString &p);
+    QString palette();
+    void setPalette(const QString &fileName);
 
 signals:
     void hdpiPolicyChanged();

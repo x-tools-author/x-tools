@@ -107,32 +107,15 @@ void xToolsSettings::setClearSettings(bool clear)
     emit clearSettingsChanged();
 }
 
-int xToolsSettings::palette()
+QString xToolsSettings::palette()
 {
-    int ret = value(mSettingsKey.palette).toInt();
-    if ((ret != xToolsDataStructure::PaletteSystem) && (ret != xToolsDataStructure::PaletteLight)
-        && (ret != xToolsDataStructure::PaletteDark) && (ret != xToolsDataStructure::PaletteCustom)) {
-        ret = xToolsDataStructure::PaletteSystem;
-    }
-
-    return ret;
+    return value(mSettingsKey.palette).toString();
 }
 
-void xToolsSettings::setPalette(int p)
+void xToolsSettings::setPalette(const QString& fileName)
 {
-    setValue(mSettingsKey.palette, p);
+    setValue(mSettingsKey.palette, fileName);
     emit paletteChanged();
-}
-
-QString xToolsSettings::customPalette()
-{
-    return value(mSettingsKey.customPalette).toString();
-}
-
-void xToolsSettings::setCustomPalette(const QString& p)
-{
-    setValue(mSettingsKey.customPalette, p);
-    emit customPaletteChanged();
 }
 
 QVariant xToolsSettings::value(const QString& key, const QVariant& defaultValue) const

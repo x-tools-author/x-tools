@@ -70,8 +70,4 @@ private:
     void showQrCode();
     void showDonation();
     void createQtConf();
-
-private slots:
-    void onImportActionTriggered();
-    void onExportActionTriggered();
 };

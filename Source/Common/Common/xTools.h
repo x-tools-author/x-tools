@@ -113,9 +113,9 @@ static void xToolsTryToClearSettings()
     if (xToolsSettings::instance()->clearSettings()) {
         xToolsSettings::instance()->setClearSettings(false);
         if (QFile::remove(xToolsSettings::instance()->fileName())) {
-            qInfo() << "Remove settings file successfully.";
+            qInfo() << "The settings file is removed.";
         } else {
-            qWarning() << "Remove settings file failed!";
+            qWarning() << "The operation(remove settings file) failed!";
         }
     }
 }

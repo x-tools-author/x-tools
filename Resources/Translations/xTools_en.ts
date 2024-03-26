@@ -4,370 +4,254 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../Source/Application.cpp" line="32"/>
+        <location filename="../../Source/Application.cpp" line="27"/>
         <source>Initializing main window...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Application.cpp" line="64"/>
-        <source>Finished...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../Source/MainWindow.ui" line="14"/>
-        <source>MainWindow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="95"/>
-        <source>(Community)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="144"/>
-        <source>&amp;File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="147"/>
+        <location filename="../../Source/MainWindow.cpp" line="140"/>
         <source>New Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="190"/>
+        <location filename="../../Source/MainWindow.cpp" line="182"/>
         <source>Import Palette</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="194"/>
+        <location filename="../../Source/MainWindow.cpp" line="186"/>
         <source>Export Palette</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="199"/>
-        <source>Exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="206"/>
+        <location filename="../../Source/MainWindow.cpp" line="196"/>
         <source>&amp;Tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="231"/>
-        <source>&amp;Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="254"/>
-        <source>Application Style</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="293"/>
+        <location filename="../../Source/MainWindow.cpp" line="220"/>
         <source>Main Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="294"/>
+        <location filename="../../Source/MainWindow.cpp" line="221"/>
         <source>Exit to Sysytem Tray</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="313"/>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="316"/>
-        <source>Clear Configuration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="319"/>
-        <source>Open configuration floder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="332"/>
-        <source>HDPI Policy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="335"/>
-        <source>Round up for .5 and above</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="336"/>
-        <source>Always round up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="337"/>
-        <source>Always round down</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="338"/>
-        <source>Round up for .75 and above</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="339"/>
-        <source>Don&apos;t round</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="393"/>
-        <location filename="../../Source/MainWindow.cpp" line="420"/>
-        <source>System</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="421"/>
-        <source>Light</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="422"/>
-        <source>Dark</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="423"/>
-        <source>Palette</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="459"/>
-        <source>Custom</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="499"/>
-        <source>&amp;Languages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="528"/>
-        <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="530"/>
-        <location filename="../../Source/MainWindow.cpp" line="533"/>
-        <source>About Qt</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="536"/>
+        <location filename="../../Source/MainWindow.cpp" line="253"/>
         <source>About xTools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="540"/>
+        <location filename="../../Source/MainWindow.cpp" line="258"/>
         <source>Buy from Microsoft App Store</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="549"/>
-        <source>Get Source</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="552"/>
-        <source>GitHub</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="560"/>
-        <source>Gitee</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="568"/>
-        <location filename="../../Source/MainWindow.cpp" line="836"/>
+        <location filename="../../Source/MainWindow.cpp" line="267"/>
+        <location filename="../../Source/MainWindow.cpp" line="533"/>
         <source>Release History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="573"/>
-        <location filename="../../Source/MainWindow.cpp" line="856"/>
+        <location filename="../../Source/MainWindow.cpp" line="553"/>
         <source>QR Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="577"/>
-        <source>Donate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="583"/>
+        <location filename="../../Source/MainWindow.cpp" line="278"/>
         <source>&amp;Links</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="593"/>
+        <location filename="../../Source/MainWindow.cpp" line="288"/>
         <source>Qt Official Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="596"/>
+        <location filename="../../Source/MainWindow.cpp" line="291"/>
         <source>Qt Official Blog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="599"/>
+        <location filename="../../Source/MainWindow.cpp" line="294"/>
         <source>Qt Official Release</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="602"/>
-        <source>Download SAK from Github</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="605"/>
-        <source>Download SAK from Gitee</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="608"/>
+        <location filename="../../Source/MainWindow.cpp" line="309"/>
         <source>Office Web Site</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="674"/>
+        <location filename="../../Source/MainWindow.cpp" line="377"/>
         <source>Hide Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="675"/>
+        <location filename="../../Source/MainWindow.cpp" line="378"/>
         <source>Click to show(hide) nav text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="698"/>
-        <source>Log Viewer</source>
+        <location filename="../../Source/MainWindow.cpp" line="244"/>
+        <source>Get Sources from Github</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="706"/>
-        <source>Preferences</source>
+        <location filename="../../Source/MainWindow.cpp" line="248"/>
+        <source>Get Sources from Gitee</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="764"/>
+        <location filename="../../Source/MainWindow.cpp" line="271"/>
+        <source>Join in QQ Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="300"/>
+        <source>Download xTools from Github</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="303"/>
+        <source>Download xTools from Gitee</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="455"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="766"/>
+        <location filename="../../Source/MainWindow.cpp" line="457"/>
         <source>Edition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="768"/>
+        <location filename="../../Source/MainWindow.cpp" line="459"/>
         <source>Author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="769"/>
+        <location filename="../../Source/MainWindow.cpp" line="460"/>
         <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="770"/>
+        <location filename="../../Source/MainWindow.cpp" line="461"/>
         <source>QQ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="771"/>
+        <location filename="../../Source/MainWindow.cpp" line="462"/>
         <source>QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="772"/>
+        <location filename="../../Source/MainWindow.cpp" line="463"/>
         <source>Build Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="774"/>
+        <location filename="../../Source/MainWindow.cpp" line="465"/>
         <source>Gitee Url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="777"/>
+        <location filename="../../Source/MainWindow.cpp" line="468"/>
         <source>Gitbub Url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="781"/>
+        <location filename="../../Source/MainWindow.cpp" line="472"/>
         <source>Copyright</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="782"/>
+        <location filename="../../Source/MainWindow.cpp" line="473"/>
         <source>Copyright 2018-%1 x-tools-author(x-tools@outlook.com). All rights reserved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="788"/>
+        <location filename="../../Source/MainWindow.cpp" line="479"/>
         <source>About QSAK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="821"/>
+        <location filename="../../Source/MainWindow.cpp" line="511"/>
         <source>Reboot application to effective</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="822"/>
+        <location filename="../../Source/MainWindow.cpp" line="512"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="865"/>
+        <location filename="../../Source/MainWindow.cpp" line="524"/>
+        <source>Can not reboot the application, pelase reboot it manually!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="525"/>
+        <source>Reboot Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="562"/>
         <source>User QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="866"/>
+        <location filename="../../Source/MainWindow.cpp" line="563"/>
         <source>Qt QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="914"/>
-        <location filename="../../Source/MainWindow.cpp" line="951"/>
-        <source>Save Palette</source>
+        <location filename="../../Source/MainWindow.cpp" line="600"/>
+        <source>Can not open file(%1): %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="914"/>
-        <location filename="../../Source/MainWindow.cpp" line="951"/>
+        <location filename="../../Source/MainWindow.cpp" line="652"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="660"/>
+        <source>Open file(%1) failed: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="613"/>
+        <location filename="../../Source/MainWindow.cpp" line="652"/>
         <source>All (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="929"/>
+        <location filename="../../Source/MainWindow.cpp" line="613"/>
+        <source>Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="621"/>
+        <location filename="../../Source/MainWindow.cpp" line="640"/>
+        <source>Open the file(%1) failed: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="632"/>
         <source>File Exists</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="930"/>
+        <location filename="../../Source/MainWindow.cpp" line="633"/>
         <source>The file is exists, import operaion failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QObject</name>
-    <message>
-        <location filename="../../Source/main.cpp" line="17"/>
-        <source>(Store)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1743,17 +1627,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/ModbusStudio/ModbusStudioUI/xToolsModbusStudioUi.ui" line="541"/>
-        <source>pdu(no server address, no crc, such read 2 coils: 01 00 00 00 01)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Source/ModbusStudio/ModbusStudioUI/xToolsModbusStudioUi.ui" line="548"/>
+        <location filename="../../Source/ModbusStudio/ModbusStudioUI/xToolsModbusStudioUi.ui" line="545"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/ModbusStudio/ModbusStudioUI/xToolsModbusStudioUi.ui" line="570"/>
+        <location filename="../../Source/ModbusStudio/ModbusStudioUI/xToolsModbusStudioUi.ui" line="567"/>
         <source>Server registers</source>
         <translation type="unfinished"></translation>
     </message>

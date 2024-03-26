@@ -15,16 +15,18 @@
 #include <QMenu>
 #include <QStyleFactory>
 
+class xToolsApplication;
 class xToolsMainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    xToolsMainWindow(QWidget* parent = Q_NULLPTR);
-    ~xToolsMainWindow();
+    explicit xToolsMainWindow(QWidget* parent = Q_NULLPTR);
 
     void moveToCenter();
 
 protected:
+    xToolsApplication* m_xToolsApp;
+
     QMenu* m_fileMenu;
     QMenu* m_optionMenu;
     QMenu* m_languageMenu;
@@ -44,6 +46,7 @@ protected:
 private:
     QActionGroup* m_appStyleActionGroup;
     QActionGroup* m_languageActionGroup;
+    QActionGroup* m_appPaletteActionGroup;
 
 private:
     void init();
@@ -54,6 +57,7 @@ private:
     void initMenuHelp();
 
     void initOptionMenuAppStyleMenu();
+    void initOptionMenuAppPaletteMenu();
     void initOptionMenuSettingsMenu();
     void initOptionMenuHdpiPolicy();
 
@@ -62,8 +66,11 @@ private:
     void onGiteeActionTriggered();
     void onUserQqGroupTriggerd();
     void onAboutActionTriggered();
+    void onImportActionTriggered();
+    void onExportActionTriggered();
 
     void tryToReboot();
     void createQtConf();
     void showQqQrCode();
+    void setPalette(const QString& fileName);
 };

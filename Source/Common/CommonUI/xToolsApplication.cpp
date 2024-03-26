@@ -46,25 +46,16 @@ xToolsApplication::xToolsApplication(int argc, char *argv[])
     QString language = xToolsSettings::instance()->language();
     xToolsApplication::setupLanguage(language);
 
+    // Palette
+    showSplashScreenMessage(tr("Load palette..."));
+    QString palette = xToolsSettings::instance()->palette();
+    setupPalette(palette);
+
     // Splash screen
     m_splashScreen.setPixmap(splashScreenPixmap());
     m_splashScreen.show();
     processEvents();
     showSplashScreenMessage(tr("Initialize application..."));
-
-    // Palette
-    showSplashScreenMessage(tr("Load palette..."));
-    int ret = xToolsSettings::instance()->palette();
-    if ((ret == DarkPalette) || (ret == LightPalette)) {
-        setupPalette(ret);
-    } else {
-        QString customPalette = xToolsSettings::instance()->customPalette();
-        if (!customPalette.isEmpty()) {
-            setupPalette(customPalette);
-        } else {
-            qInfo() << "The palette is not specified, use default palette.";
-        }
-    }
 }
 
 void xToolsApplication::showSplashScreenMessage(const QString &msg)
@@ -72,27 +63,27 @@ void xToolsApplication::showSplashScreenMessage(const QString &msg)
     m_splashScreen.showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
 }
 
-void xToolsApplication::setupPalette(int palette)
-{
-    if (palette == DarkPalette) {
-        setupPalette(QString(":/Resources/Palettes/DarkPalette"));
-    } else if (palette == LightPalette) {
-        setupPalette(QString(":/Resources/Palettes/LightPalette"));
-    } else {
-        qInfo() << "The palette is not specified, use default palette.";
-    }
-}
-
 void xToolsApplication::setupPalette(const QString &fileName)
 {
+    if (fileName.isEmpty()) {
+        qWarning() << "The palette file name is empty, use default palette.";
+        return;
+    }
+
+    if (!QFile::exists(fileName)) {
+        QString info = QString("The palette file not found: %1, use default palette.").arg(fileName);
+        qInfo() << qPrintable(info);
+        return;
+    }
+
     QFile file(fileName);
     if (file.open(QFile::ReadOnly)) {
         QDataStream out(&file);
-        QPalette p;
-        out >> p;
+        QPalette palette;
+        out >> palette;
         file.close();
-        setPalette(p);
-        qInfo() << "Current palette is:" << fileName;
+        setPalette(palette);
+        qInfo() << "The palette of application is:" << fileName;
     } else {
         qWarning() << "Open palette file error:" << file.errorString();
     }
@@ -108,12 +99,26 @@ QStringList xToolsApplication::supportedLanguages()
     return m_languageFlagNameMap.values();
 }
 
-void xToolsApplication::setupLanguage(const QString &language)
+QString xToolsApplication::language()
 {
-    setupLanguage(language, m_translatorPrefix);
+    QString language = xToolsSettings::instance()->language();
+    if (language.isEmpty()) {
+        language = QLocale::system().name();
+    }
+
+    if (!m_languageFlagNameMap.contains(language)) {
+        language = "en";
+    }
+
+    return m_languageFlagNameMap.value(language);
 }
 
-void xToolsApplication::setupLanguage(const QString &language, const QString &prefix)
+void xToolsApplication::setupLanguage(const QString &language)
+{
+    setupLanguageWithPrefix(language, m_translatorPrefix);
+}
+
+void xToolsApplication::setupLanguageWithPrefix(const QString &language, const QString &prefix)
 {
     QString key = m_languageFlagNameMap.key(language);
     if (language.isEmpty()) {
@@ -140,11 +145,13 @@ void xToolsApplication::setupLanguage(const QString &language, const QString &pr
     QTranslator *translator = fileTranslatorMap.value(prefix);
     if (translator->load(fileName)) {
         if (QCoreApplication::installTranslator(translator)) {
-            qInfo() << m_languageFlagNameMap.value(key) << " has been setup!";
+            QString info = QString("The translator(%1) has been installed,").arg(fileName);
+            qInfo() << qPrintable(info)
+                    << "current language is:" << m_languageFlagNameMap.value(key);
             emit languageChanged();
         } else {
-            qInfo() << "Install translator failed, the file is:" << fileName
-                    << ". Maybe the qm file if empty!";
+            QString info = QString("Install translator failed, the file is: \"%1\".").arg(fileName);
+            qInfo() << qPrintable(info) << "Maybe the qm file if empty!";
             translator->deleteLater();
             translator = Q_NULLPTR;
         }

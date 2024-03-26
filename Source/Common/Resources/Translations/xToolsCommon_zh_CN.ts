@@ -87,7 +87,7 @@
     <message>
         <location filename="../../CommonUI/xToolsMainWindow.cpp" line="60"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>文件(&amp;F)</translation>
     </message>
     <message>
         <location filename="../../CommonUI/xToolsMainWindow.cpp" line="61"/>

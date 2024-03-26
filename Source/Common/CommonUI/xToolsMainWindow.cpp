@@ -13,6 +13,7 @@
 #include <QApplication>
 #include <QDesktopServices>
 #include <QFile>
+#include <QFileDialog>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QLoggingCategory>
@@ -36,12 +37,15 @@
 xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
+    m_xToolsApp = qobject_cast<xToolsApplication*>(qApp);
+    Q_ASSERT_X(m_xToolsApp, Q_FUNC_INFO, "The application is not xToolsApplication.");
+
     m_appStyleActionGroup = new QActionGroup(this);
     m_languageActionGroup = new QActionGroup(this);
+    m_appPaletteActionGroup = new QActionGroup(this);
+
     init();
 }
-
-xToolsMainWindow::~xToolsMainWindow() {}
 
 void xToolsMainWindow::moveToCenter()
 {
@@ -78,6 +82,16 @@ void xToolsMainWindow::initMenuFile()
 {
     QMenuBar* menu_bar = menuBar();
     m_fileMenu = menu_bar->addMenu(tr("&File"));
+
+    QAction* importAction = new QAction(tr("Import Palette"), m_fileMenu);
+    m_fileMenu->addAction(importAction);
+    connect(importAction, &QAction::triggered, this, &xToolsMainWindow::onImportActionTriggered);
+
+    QAction* exportAction = new QAction(tr("Export Palette"), m_fileMenu);
+    m_fileMenu->addAction(exportAction);
+    connect(exportAction, &QAction::triggered, this, &xToolsMainWindow::onExportActionTriggered);
+
+    m_fileMenu->addSeparator();
     m_exitAction = m_fileMenu->addAction(tr("&Exit"), this, &xToolsMainWindow::close);
 }
 
@@ -86,9 +100,11 @@ void xToolsMainWindow::initMenuOption()
     m_optionMenu = new QMenu(tr("&Options"));
     menuBar()->addMenu(m_optionMenu);
 
-    initOptionMenuAppStyleMenu();
-    initOptionMenuSettingsMenu();
     initOptionMenuHdpiPolicy();
+    initOptionMenuAppStyleMenu();
+    initOptionMenuAppPaletteMenu();
+    m_optionMenu->addSeparator();
+    initOptionMenuSettingsMenu();
 }
 
 void xToolsMainWindow::initMenuLanguage()
@@ -97,6 +113,7 @@ void xToolsMainWindow::initMenuLanguage()
     menuBar()->addMenu(m_languageMenu);
 
     QStringList languages = qobject_cast<xToolsApplication*>(qApp)->supportedLanguages();
+    QString settingLanguage = xToolsSettings::instance()->language();
     for (auto& language : languages) {
         QAction* action = new QAction(language, this);
         action->setCheckable(true);
@@ -108,8 +125,10 @@ void xToolsMainWindow::initMenuLanguage()
             tryToReboot();
         });
 
-        QString setting_language = xToolsSettings::instance()->language();
-        if (setting_language == language) {
+        if (settingLanguage.isEmpty()) {
+            settingLanguage = qobject_cast<xToolsApplication*>(qApp)->language();
+        }
+        if (settingLanguage == language) {
             action->setChecked(true);
         }
     }
@@ -138,10 +157,8 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
     m_optionMenu->addMenu(appStyleMenu);
     QStringList keys = QStyleFactory::keys();
     QString style = xToolsSettings::instance()->appStyle();
-    if (style.isEmpty()) {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 1, 0)
-        style = qApp->style()->name();
-#endif
+    if (style.isEmpty() && keys.contains(QString("Funsion"))) {
+        style = "Funsion";
     }
 
     for (QString& key : keys) {
@@ -161,6 +178,53 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
     }
 
     appStyleMenu->addActions(m_appStyleActionGroup->actions());
+}
+
+void xToolsMainWindow::initOptionMenuAppPaletteMenu()
+{
+    if (!m_appPaletteActionGroup->actions().isEmpty()) {
+        return;
+    }
+    const QString darkPalette(":/Resources/Palettes/DarkPalette");
+    const QString lightPalette(":/Resources/Palettes/LightPalette");
+
+    QMenu* appPaletteMenu = new QMenu(tr("Application Palette"), this);
+    m_optionMenu->addMenu(appPaletteMenu);
+    auto defaultAction = appPaletteMenu->addAction(tr("Default"), this, [=]() {
+        setPalette(QString(""));
+    });
+    auto darkAction = appPaletteMenu->addAction(tr("Dark"), this, [=]() {
+        setPalette(darkPalette);
+    });
+    auto lightAction = appPaletteMenu->addAction(tr("Light"), this, [=]() {
+        setPalette(lightPalette);
+    });
+    appPaletteMenu->addSeparator();
+    auto customAction = appPaletteMenu->addAction(tr("Import"),
+                                                  this,
+                                                  &xToolsMainWindow::onImportActionTriggered);
+    defaultAction->setCheckable(true);
+    darkAction->setCheckable(true);
+    lightAction->setCheckable(true);
+    customAction->setCheckable(true);
+
+    m_appPaletteActionGroup->addAction(defaultAction);
+    m_appPaletteActionGroup->addAction(darkAction);
+    m_appPaletteActionGroup->addAction(lightAction);
+    m_appPaletteActionGroup->addAction(customAction);
+
+    QString paletteFile = xToolsSettings::instance()->palette();
+    if (paletteFile.isEmpty()) {
+        defaultAction->setChecked(true);
+        customAction->setToolTip(paletteFile);
+    } else if (paletteFile == darkPalette) {
+        darkAction->setChecked(true);
+    } else if (paletteFile == lightPalette) {
+        lightAction->setChecked(true);
+    } else {
+        customAction->setToolTip(paletteFile);
+        customAction->setChecked(true);
+    }
 }
 
 void xToolsMainWindow::initOptionMenuSettingsMenu()
@@ -290,6 +354,38 @@ void xToolsMainWindow::onAboutActionTriggered()
     QMessageBox::about(this, tr("About"), info);
 }
 
+void xToolsMainWindow::onImportActionTriggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Import"), "Palete", tr("All (*)"));
+    if (fileName.isEmpty()) {
+        qInfo() << "Importing palette had been cancled!";
+        return;
+    }
+
+    setPalette(fileName);
+}
+
+void xToolsMainWindow::onExportActionTriggered()
+{
+    auto fileName = QFileDialog::getSaveFileName(this, tr("Export"), "Palete", tr("All (*)"));
+    if (fileName.isEmpty()) {
+        qInfo() << "Exporting palette had been cancled!";
+        return;
+    }
+
+    QFile file(fileName);
+    if (!file.open(QFile::WriteOnly)) {
+        QString message = tr("Open file(%1) failed: %2").arg(fileName, file.errorString());
+        qWarning() << qPrintable(message);
+        return;
+    }
+
+    QPalette p = qApp->palette();
+    QDataStream out(&file);
+    out << p;
+    file.close();
+}
+
 void xToolsMainWindow::tryToReboot()
 {
     int ret = QMessageBox::information(this,
@@ -346,4 +442,25 @@ void xToolsMainWindow::showQqQrCode()
     dialog.setModal(true);
     dialog.show();
     dialog.exec();
+}
+
+void xToolsMainWindow::setPalette(const QString& fileName)
+{
+    if (fileName.isEmpty()) {
+        xToolsSettings::instance()->setPalette(fileName);
+        tryToReboot();
+        return;
+    }
+
+    QFile file(fileName);
+    if (!file.open(QFile::ReadOnly)) {
+        QString message = tr("Open the file(%1) failed: %2").arg(fileName, file.errorString());
+        qWarning() << qPrintable(message);
+        return;
+    }
+
+    xToolsSettings::instance()->setPalette(fileName);
+    m_xToolsApp->setupPalette(fileName);
+    menuBar()->setPalette(qApp->palette());
+    tryToReboot();
 }

@@ -52,16 +52,6 @@
 #include "SystemTrayIcon.h"
 #endif
 
-QString palettePath()
-{
-    QString fileName = xToolsSettings::instance()->fileName();
-    QUrl url(fileName);
-    QString path = fileName;
-    QString logPath = path.remove(url.fileName());
-    logPath += "palette";
-    return logPath;
-}
-
 MainWindow::MainWindow(QWidget* parent)
     : xToolsMainWindow(parent)
 {
@@ -74,17 +64,6 @@ MainWindow::MainWindow(QWidget* parent)
 
     QStackedWidget* stackedWidget = new QStackedWidget();
     setCentralWidget(stackedWidget);
-
-    QDir dir;
-    if (dir.exists(palettePath())) {
-        qInfo() << "The palette path is:" << palettePath();
-    } else {
-        if (dir.mkdir(palettePath())) {
-            qInfo() << palettePath() << "has been created";
-        } else {
-            qWarning() << palettePath() << "has been created";
-        }
-    }
 
 #if 0
 #ifdef Q_OS_ANDROID
@@ -112,8 +91,6 @@ MainWindow::~MainWindow() {}
 
 void MainWindow::initMenuBar()
 {
-    menuBar()->setPalette(qApp->palette());
-
     initFileMenu();
     initToolMenu();
     initOptionMenu();
@@ -179,15 +156,6 @@ void MainWindow::initFileMenu()
 #endif
 
     m_fileMenu->addSeparator();
-    QAction* importAction = new QAction(tr("Import Palette"), m_fileMenu);
-    m_fileMenu->addAction(importAction);
-    connect(importAction, &QAction::triggered, this, &MainWindow::onImportActionTriggered);
-
-    QAction* exportAction = new QAction(tr("Export Palette"), m_fileMenu);
-    m_fileMenu->addAction(exportAction);
-    connect(exportAction, &QAction::triggered, this, &MainWindow::onExportActionTriggered);
-
-    m_fileMenu->addSeparator();
     m_fileMenu->addAction(m_exitAction);
 }
 
@@ -221,6 +189,7 @@ void MainWindow::initOptionMenu()
     QAction* action = new QAction(tr("Exit to Sysytem Tray"), this);
     action->setCheckable(true);
     mainWindowMenu->addAction(action);
+    m_optionMenu->addSeparator();
     m_optionMenu->addMenu(mainWindowMenu);
 
     QVariant v = xToolsSettings::instance()->value(m_settingsKey.exitToSystemTray);
@@ -606,64 +575,4 @@ void MainWindow::createQtConf()
     out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
     file.close();
     qInfo() << "Create Qt configuration file successfully:" << qPrintable(fileName);
-}
-
-void MainWindow::onImportActionTriggered()
-{
-    QString iFileName = QFileDialog::getOpenFileName(this, tr("Import"), "Palete", tr("All (*)"));
-    if (iFileName.isEmpty()) {
-        qInfo() << "Importing palette had been cancled!";
-        return;
-    }
-
-    QFile inFile(iFileName);
-    if (!inFile.open(QFile::ReadOnly)) {
-        QString message = tr("Open the file(%1) failed: %2").arg(iFileName, inFile.errorString());
-        qWarning() << qPrintable(message);
-        return;
-    }
-
-    QByteArray bytes = inFile.readAll();
-    inFile.close();
-
-    QUrl url(iFileName);
-    QString oFileName = palettePath() + "/" + url.fileName();
-    if (QFile::exists(oFileName)) {
-        const QString title = tr("File Exists");
-        const QString text = tr("The file is exists, import operaion failed");
-        QMessageBox::warning(this, title, text);
-        return;
-    }
-
-    QFile outFile(oFileName);
-    if (!outFile.open(QFile::WriteOnly)) {
-        QString message = tr("Open the file(%1) failed: %2").arg(oFileName, outFile.errorString());
-        qWarning() << qPrintable(message);
-        return;
-    }
-
-    QDataStream out(&outFile);
-    out << bytes;
-    outFile.close();
-}
-
-void MainWindow::onExportActionTriggered()
-{
-    auto fileName = QFileDialog::getSaveFileName(this, tr("Export"), "Palete", tr("All (*)"));
-    if (fileName.isEmpty()) {
-        qInfo() << "Exporting palette had been cancled!";
-        return;
-    }
-
-    QFile file(fileName);
-    if (!file.open(QFile::WriteOnly)) {
-        QString message = tr("Open file(%1) failed: %2").arg(fileName, file.errorString());
-        qWarning() << qPrintable(message);
-        return;
-    }
-
-    QPalette p = qApp->palette();
-    QDataStream out(&file);
-    out << p;
-    file.close();
 }
