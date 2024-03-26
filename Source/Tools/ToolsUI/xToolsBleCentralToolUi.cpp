@@ -121,11 +121,7 @@ void xToolsBleCentralToolUi::initSettingsMenu(const QString& settingsGroup)
     sp->setGroupKey(settingsGroup, "timeoutInterval");
     gl->addWidget(sp, rowIndex, 1, 1, 1);
     connect(sp,
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             QOverload<int>::of(&QSpinBox::valueChanged),
-#else
-          &QSpinBox::valueChanged,
-#endif
             this,
             [=](int v) { ui->comboBoxDevices->setTimeoutInterval(v); });
 
