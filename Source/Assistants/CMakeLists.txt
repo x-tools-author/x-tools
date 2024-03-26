@@ -1,8 +1,6 @@
 set(X_TOOLS_COMMON_PATH ${CMAKE_SOURCE_DIR}/Source/Common)
 list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsInterface.h)
 list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsInterface.cpp)
-list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsTranslator.h)
-list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsTranslator.cpp)
 list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsSettings.h)
 list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/Common/xToolsSettings.cpp)
 list(APPEND X_TOOLS_ ${X_TOOLS_COMMON_PATH}/CommonUI/xToolsMainWindow.h)
