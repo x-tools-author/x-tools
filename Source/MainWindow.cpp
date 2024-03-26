@@ -311,58 +311,31 @@ void MainWindow::initNav()
         xToolsToolBoxUi* toolBoxUi = new xToolsToolBoxUi(this);
         toolBoxUi->initialize(type);
 
-        initNav({&btGroup,
-                 xToolsUiInterface::cookedIcon(toolBoxUi->windowIcon()),
-                 toolBoxUi->windowTitle(),
-                 toolBoxUi,
-                 tb});
+        auto icon = xToolsUiInterface::cookedIcon(toolBoxUi->windowIcon());
+        initNav({&btGroup, icon, toolBoxUi->windowTitle(), toolBoxUi, tb});
     }
 
     tb->addSeparator();
+    initNavStudio(&btGroup, tb);
+    QLabel* lb = new QLabel(" ");
+    tb->addWidget(lb);
+    lb->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+    intNavControlButton(&btGroup, tb);
+}
 
+void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
+{
     QString path = ":/Resources/Icons/IconModbus.svg";
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
     xToolsModbusStudioUi* modbus = new xToolsModbusStudioUi(this);
-    initNav({&btGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "Modbus Studio", modbus, tb});
+    auto icon = xToolsUiInterface::cookedIcon(QIcon(path));
+    initNav({buttonGroup, icon, "Modbus Studio", modbus, toolBar});
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
     xToolsCanBusStudioUi* canbus = new xToolsCanBusStudioUi(this);
     path = ":/Resources/Icons/IconCanBus.svg";
-    initNav({&btGroup, xToolsUiInterface::cookedIcon(QIcon(path)), "CANBus Studio", canbus, tb});
-#endif
-    QLabel* lb = new QLabel(" ");
-    tb->addWidget(lb);
-    lb->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
-
-#if 1
-    tb->addSeparator();
-    const QString key = m_settingsKey.isTextBesideIcon;
-    bool isTextBesideIcon = xToolsSettings::instance()->value(key).toBool();
-    auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
-    QToolButton* tbt = new QToolButton(this);
-    path = ":/Resources/Icons/IconListWithIcon.svg";
-    tbt->setIcon(xToolsUiInterface::cookedIcon(QIcon(path)));
-    tbt->setCheckable(true);
-    tbt->setText(" " + tr("Hide Text"));
-    tbt->setToolTip(tr("Click to show(hide) nav text"));
-    tbt->setAutoRaise(true);
-    tbt->setChecked(isTextBesideIcon);
-    tbt->setToolButtonStyle(style);
-    tbt->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    tb->addWidget(tbt);
-    auto bg = &btGroup;
-    connect(tbt, &QToolButton::clicked, tbt, [=]() {
-        auto bts = bg->buttons();
-        auto style = tbt->isChecked() ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
-        tbt->setToolButtonStyle(style);
-        for (auto& bt : bts) {
-            auto cookedBt = qobject_cast<QToolButton*>(bt);
-
-            cookedBt->setToolButtonStyle(style);
-        }
-        xToolsSettings::instance()->setValue(key, tbt->isChecked());
-    });
-    tb->addSeparator();
+    icon = xToolsUiInterface::cookedIcon(QIcon(path));
+    initNav({buttonGroup, icon, "CANBus Studio", canbus, toolBar});
 #endif
 }
 
@@ -386,7 +359,7 @@ void MainWindow::initNav(const NavContext& ctx)
     ctx.tb->addWidget(bt);
 
     if (ctx.page->layout()) {
-        ctx.page->layout()->setContentsMargins(0, 0, 0, 0);
+        ctx.page->layout()->setContentsMargins(4, 4, 4, 4);
     }
     auto stackedWidget = qobject_cast<QStackedWidget*>(centralWidget());
     stackedWidget->addWidget(ctx.page);
@@ -401,6 +374,37 @@ void MainWindow::initNav(const NavContext& ctx)
         bt->setChecked(true);
         stackedWidget->setCurrentIndex(pageCount - 1);
     }
+}
+
+void MainWindow::intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBar)
+{
+    toolBar->addSeparator();
+    const QString key = m_settingsKey.isTextBesideIcon;
+    bool isTextBesideIcon = xToolsSettings::instance()->value(key).toBool();
+    auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
+    QToolButton* tbt = new QToolButton(this);
+    const QString path = ":/Resources/Icons/IconListWithIcon.svg";
+    tbt->setIcon(xToolsUiInterface::cookedIcon(QIcon(path)));
+    tbt->setText(" " + tr("Show Icon Only"));
+    tbt->setToolTip(tr("Click to show(hide) nav text"));
+    tbt->setAutoRaise(true);
+    tbt->setToolButtonStyle(style);
+    tbt->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    toolBar->addWidget(tbt);
+    connect(tbt, &QToolButton::clicked, tbt, [=]() {
+        const QString key = m_settingsKey.isTextBesideIcon;
+        bool checked = xToolsSettings::instance()->value(key).toBool();
+        checked = !checked;
+        auto bts = buttonGroup->buttons();
+        auto style = checked ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
+        tbt->setToolButtonStyle(style);
+        for (auto& bt : bts) {
+            auto cookedBt = qobject_cast<QToolButton*>(bt);
+
+            cookedBt->setToolButtonStyle(style);
+        }
+        xToolsSettings::instance()->setValue(key, checked);
+    });
 }
 
 void MainWindow::initStatusBar()

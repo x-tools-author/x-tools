@@ -33,11 +33,13 @@ int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonM
         mainWindow->show();
         mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());
         mainWindow->moveToCenter();
+        qInfo() << "The size of window is" << mainWindow->size();
     } else {
         UiT* widget = new UiT();
         splashScreen.finish(widget);
         widget->show();
         widget->resize(int(qreal(widget->height()) * 1.732), widget->height());
+        qInfo() << "The size of window is" << widget->size();
     }
 
     int ret = app.exec();

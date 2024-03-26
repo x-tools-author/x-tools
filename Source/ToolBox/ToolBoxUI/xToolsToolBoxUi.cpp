@@ -144,7 +144,7 @@ void xToolsToolBoxUi::initialize(int type)
     m_communication = m_toolBox->getCommunicationTool();
     if (!m_communication) {
         qWarning() << "initializing failed, "
-                                       "tool box is invaliad!";
+                      "tool box is invaliad!";
         return;
     }
 
@@ -458,8 +458,8 @@ void xToolsToolBoxUi::initUiOutput()
     ui->textBrowserOutput->document()->setMaximumBlockCount(2000);
 
     m_outputMenu = new xToolsToolBoxUiOutputMenu(settingsGroup(),
-                                              ui->textBrowserOutput->document(),
-                                              this);
+                                                 ui->textBrowserOutput->document(),
+                                                 this);
     ui->pushButtonOutputSettings->setMenu(m_outputMenu);
 }
 
@@ -631,9 +631,16 @@ void xToolsToolBoxUi::initTools()
             &xToolsCommunicationTool::bytesWritten,
             this,
             &xToolsToolBoxUi::onBytesWritten);
-    connect(m_communication, &xToolsCommunicationTool::bytesRead, this, &xToolsToolBoxUi::onBytesRead);
+    connect(m_communication,
+            &xToolsCommunicationTool::bytesRead,
+            this,
+            &xToolsToolBoxUi::onBytesRead);
 
-    ui->pushButtonPrestorer->setMenu(m_prestorerUi->menu());
+    ui->toolButtonPrestore->setIcon(QIcon(":/Resources/Icons/IconMenu.svg"));
+    ui->toolButtonPrestore->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    ui->toolButtonPrestore->setMenu(m_prestorerUi->menu());
+    ui->toolButtonPrestore->setPopupMode(QToolButton::InstantPopup);
+    ui->toolButtonPrestore->setToolTip("The preset items");
 }
 
 void xToolsToolBoxUi::onTabWidgetCurrentChanged(int index)
@@ -668,7 +675,7 @@ void xToolsToolBoxUi::onPushButtonInputSendClicked()
 {
     if (ui->comboBoxInputText->currentText().isEmpty()) {
         qInfo() << "input text is empty,"
-                                    "the text will be set as (null)";
+                   "the text will be set as (null)";
         QApplication::beep();
         ui->comboBoxInputText->setFocus();
 

@@ -60,7 +60,9 @@ private:
     void initHelpMenu();
     void initLinksMenu();
     void initNav();
+    void initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar);
     void initNav(const NavContext& ctx);
+    void intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBar);
     void initStatusBar();
 
     void aboutSoftware();
