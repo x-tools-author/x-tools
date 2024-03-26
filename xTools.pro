@@ -1,4 +1,4 @@
-QT       += core gui serialport serialbus network websockets
+QT       += core gui serialport serialbus network websockets svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,6 +31,7 @@ win32 {
 
 #---------------------------------------------------------------------------------------------------
 # Definitions
+DEFINES += X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
 DEFINES += X_TOOLS_CLEAR_MESSAGE_INTERVAL=8000
 DEFINES += X_TOOLS_EDITION=\"\\\"Beta\\\"\"
 DEFINES += X_TOOLS_AUTHOR=\"\\\"x-tools-author\\\"\"
@@ -51,6 +52,9 @@ win32 {
     RC_ICONS = xTools.ico
     msvc:lessThan(QT_MAJOR_VERSION, 6) {
         QMAKE_CXXFLAGS += -execution-charset:utf-8
+    }
+    mingw: {
+        DEFINES+=FEATURE_schannel
     }
 }
 
