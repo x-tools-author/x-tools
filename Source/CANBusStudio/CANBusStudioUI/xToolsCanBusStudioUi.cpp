@@ -54,10 +54,7 @@ void xToolsCanBusStudioUi::initUi()
 void xToolsCanBusStudioUi::initUiSelectPlugin()
 {
     ui->pluginComboBox->clear();
-    QList<QByteArray> plugins = QCanBus::instance()->plugins();
-    for (const QByteArray& plugin : plugins) {
-        ui->pluginComboBox->addItem(QString::fromLatin1(plugin));
-    }
+    ui->pluginComboBox->addItems(QCanBus::instance()->plugins());
     ui->disconnectPushButton->setEnabled(false);
     ui->connectPushButton->setEnabled(true);
 
