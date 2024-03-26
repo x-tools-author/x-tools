@@ -66,11 +66,11 @@ void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const Q
         bool fixed = ui->checkBoxFixedLength->isChecked();
         cookedTool->setFixed(fixed);
     });
-    connect(ui->spinBoxFrameLength, QOverload<int>::of(&QSpinBox::valueChanged), this, [=]() {
+    connect(ui->spinBoxFrameLength, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, [=]() {
         int len = ui->spinBoxFrameLength->value();
         cookedTool->setFrameBytes(len);
     });
-    connect(ui->spinBoxMaxTempBytes, QOverload<int>::of(&QSpinBox::valueChanged), this, [=]() {
+    connect(ui->spinBoxMaxTempBytes, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, [=]() {
         int maxBytes = ui->spinBoxMaxTempBytes->value();
         cookedTool->setMaxTempBytes(maxBytes);
     });

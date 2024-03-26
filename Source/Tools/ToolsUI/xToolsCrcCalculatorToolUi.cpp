@@ -38,15 +38,15 @@ void xToolsCrcCalculatorToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, co
     ui->comboBoxAlgorithm->setCurrentIndex(crcTool->algorithm());
     ui->checkBoxBigEndian->setChecked(crcTool->bigEndian());
     connect(ui->spinBoxStartIndex,
-            QOverload<int>::of(&QSpinBox::valueChanged),
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             crcTool,
             &xToolsCrcCalculatorTool::setStartIndex);
     connect(ui->spinBoxEndIndex,
-            QOverload<int>::of(&QSpinBox::valueChanged),
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             crcTool,
             &xToolsCrcCalculatorTool::setEndIndex);
     connect(ui->comboBoxAlgorithm,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             crcTool,
             &xToolsCrcCalculatorTool::setAlgorithm);
     connect(ui->checkBoxBigEndian,

@@ -61,7 +61,7 @@ xToolsCRCAssistant::xToolsCRCAssistant(QWidget* parent)
 
     initParameterModel();
     connect(m_parameterComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsCRCAssistant::changedParameterModel);
     connect(m_calculatedBt, &QPushButton::clicked, this, &xToolsCRCAssistant::calculate);

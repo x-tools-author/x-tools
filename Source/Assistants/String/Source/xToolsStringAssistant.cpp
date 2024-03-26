@@ -21,7 +21,7 @@ xToolsStringAssistant::xToolsStringAssistant(QWidget* parent)
 
     connect(ui->textEdit, &QTextEdit::textChanged, this, &xToolsStringAssistant::onTextEditTextChanged);
     connect(ui->inputFormatComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsStringAssistant::onInputFormatComboBoxCurrentIndexChanged);
     connect(ui->createPushButton,

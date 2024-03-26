@@ -38,7 +38,7 @@ xToolsFileCheckAssistant::xToolsFileCheckAssistant(QWidget* parent)
 
     // Appending algorithms to combo box
 #if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
-    QMetaEnum algorithms = QMetaEnum::fromType<SAKToolFileCheckAssistant::Algorithm>();
+    QMetaEnum algorithms = QMetaEnum::fromType<xToolsFileCheckAssistant::Algorithm>();
 #else
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
 #endif
@@ -193,7 +193,7 @@ void xToolsFileCheckAssistant::onUpperCheckBoxClicked()
 void xToolsFileCheckAssistant::onAlgorithmChanged(int index)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
-    QMetaEnum algorithms = QMetaEnum::fromType<SAKToolFileCheckAssistant::Algorithm>();
+    QMetaEnum algorithms = QMetaEnum::fromType<xToolsFileCheckAssistant::Algorithm>();
 #else
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
 #endif

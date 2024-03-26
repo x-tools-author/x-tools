@@ -63,17 +63,23 @@ xToolsToolBoxUiInputMenu::xToolsToolBoxUiInputMenu(const QString& settingsGroup,
 
     ui->spinBoxStartIndex->setGroupKey(settingsGroup + "/input", "startIndex");
     mParameters.startIndex = ui->spinBoxStartIndex->value();
-    connect(ui->spinBoxStartIndex, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int) {
-        this->mParameters.startIndex = ui->spinBoxStartIndex->value();
-        emit parametersChanged();
-    });
+    connect(ui->spinBoxStartIndex,
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this,
+            [=](int) {
+                this->mParameters.startIndex = ui->spinBoxStartIndex->value();
+                emit parametersChanged();
+            });
 
     ui->spinBoxEndIndex->setGroupKey(settingsGroup + "/input", "endIndex");
     mParameters.endIndex = ui->spinBoxEndIndex->value();
-    connect(ui->spinBoxEndIndex, QOverload<int>::of(&QSpinBox::valueChanged), this, [=]() {
-        this->mParameters.endIndex = ui->spinBoxEndIndex->value();
-        emit parametersChanged();
-    });
+    connect(ui->spinBoxEndIndex,
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this,
+            [=]() {
+                this->mParameters.endIndex = ui->spinBoxEndIndex->value();
+                emit parametersChanged();
+            });
 
     ui->comboBoxAglorithm->setGroupKey(settingsGroup + "/input", "algorithm");
     mParameters.algorithm = ui->comboBoxAglorithm->currentData().toInt();

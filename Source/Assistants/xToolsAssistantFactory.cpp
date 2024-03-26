@@ -16,7 +16,9 @@
 #include "xToolsBroadcastAssistant.h"
 #include "xToolsCRCAssistant.h"
 #include "xToolsFileCheckAssistant.h"
+#ifdef X_TOOLS_IMPORT_MODULE_MDNS
 #include "xToolsMdnsAssistant.h"
+#endif
 #include "xToolsNumberAssistant.h"
 #include "xToolsPingAssistant.h"
 #include "xToolsStringAssistant.h"
@@ -25,7 +27,9 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     : QObject(parent)
 {
     addAssistant<xToolsCRCAssistant>(AssistantTypeCrc, tr("CRC Assistant"));
+#ifdef X_TOOLS_IMPORT_MODULE_MDNS
     addAssistant<xToolsMdnsAssistant>(AssistantTypeMdns, tr("mDNS Assistant"));
+#endif
     addAssistant<xToolsPingAssistant>(AssistantTypePing, tr("Ping Assistant"));
     addAssistant<xToolsAsciiAssistant>(AssistantTypeAscii, tr("ASCII Assistant"));
     addAssistant<xToolsBase64Assisatnt>(AssistantTypeBase64, tr("Base64 Assistant"));

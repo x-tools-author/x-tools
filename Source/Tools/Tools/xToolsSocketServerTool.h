@@ -46,7 +46,7 @@ protected:
     QStringList m_clients;
     int m_clientIndex;
     QString m_bindingIpPort;
-    std::atomic_int8_t m_messageType;
+    qint8 m_messageType;
 
 signals:
     void serverIpChanged();

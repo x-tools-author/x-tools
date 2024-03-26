@@ -54,12 +54,15 @@ void xToolsCanBusStudioUi::initUi()
 void xToolsCanBusStudioUi::initUiSelectPlugin()
 {
     ui->pluginComboBox->clear();
-    ui->pluginComboBox->addItems(QCanBus::instance()->plugins());
+    QList<QByteArray> plugins = QCanBus::instance()->plugins();
+    for (const QByteArray& plugin : plugins) {
+        ui->pluginComboBox->addItem(QString::fromLatin1(plugin));
+    }
     ui->disconnectPushButton->setEnabled(false);
     ui->connectPushButton->setEnabled(true);
 
     connect(ui->pluginComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsCanBusStudioUi::onPluginChanged);
     connect(ui->disconnectPushButton,
@@ -84,23 +87,23 @@ void xToolsCanBusStudioUi::initUiSpecifyConfiguration()
             this,
             &xToolsCanBusStudioUi::onCustomConfigurationChanged);
     connect(ui->loopbackComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsCanBusStudioUi::onLoopbackIndexChanged);
     connect(ui->receivOwnComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsCanBusStudioUi::onReceiveOwnIndexChanged);
     connect(ui->canFdComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsCanBusStudioUi::onCanFdIndexChanged);
     connect(ui->bitrateComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsCanBusStudioUi::onBitrateChanged);
     connect(ui->dataBitrateComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsCanBusStudioUi::onDataBitrateChanged);
     connect(ui->customBitrateCheckBox,
@@ -121,7 +124,7 @@ void xToolsCanBusStudioUi::initUiCanFrame()
     ui->frameTypeComboBox->addItem(tr("RemoteRequestFrame"), QCanBusFrame::RemoteRequestFrame);
 
     connect(ui->frameTypeComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsCanBusStudioUi::onFrameTypeChanged);
     connect(ui->extendedFormatCheckBox,
@@ -221,11 +224,19 @@ void xToolsCanBusStudioUi::onConnectClicked()
     }
 
     QString errorString;
+#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
     mDevice = QCanBus::instance()->createDevice(pluginName, interfaceName, &errorString);
     if (!mDevice) {
         qCWarning(gLC) << errorString;
         return;
     }
+#else
+    mDevice = QCanBus::instance()->createDevice(pluginName.toLatin1(), interfaceName);
+    if (!mDevice) {
+        qCWarning(gLC) << tr("Create device failed!");
+        return;
+    }
+#endif
 
     connect(mDevice, &QCanBusDevice::errorOccurred, this, &xToolsCanBusStudioUi::onErrorOccure);
     connect(mDevice, &QCanBusDevice::framesReceived, this, &xToolsCanBusStudioUi::onFrameReceived);

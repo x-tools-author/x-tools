@@ -39,6 +39,7 @@
 #include <QModbusRtuSerialServer>
 #endif
 
+#include "xToolsCompatibility.h"
 #include "xToolsModbusStudio.h"
 #include "xToolsSettings.h"
 
@@ -96,6 +97,24 @@ public:
         return Q_NULLPTR;
     }
 };
+
+QList<quint16> vectorTolist(const QVector<quint16> &vector)
+{
+    QList<quint16> list;
+    for (int i = 0; i < vector.length(); vector.count()) {
+        list.append(vector.at(i));
+    }
+    return list;
+}
+
+QVector<quint16> listToVector(const QList<quint16> &list)
+{
+    QVector<quint16> vector;
+    for (int i = 0; i < list.length(); list.count()) {
+        vector.append(list.at(i));
+    }
+    return vector;
+}
 
 xToolsModbusStudioUi::xToolsModbusStudioUi(QWidget *parent)
     : QWidget{parent}
@@ -390,7 +409,7 @@ void xToolsModbusStudioUi::InitSignals()
 void xToolsModbusStudioUi::InitSignalsDevice()
 {
     connect(ui->device_list_,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsModbusStudioUi::OnDeviceTypeChanged);
     connect(ui->open_button_, &QPushButton::clicked, this, &xToolsModbusStudioUi::OnOpenClicked);
@@ -404,7 +423,7 @@ void xToolsModbusStudioUi::InitSignalsNetworking()
             this,
             &xToolsModbusStudioUi::OnAddressChanged);
     connect(ui->port_spin_box,
-            QOverload<int>::of(&QSpinBox::valueChanged),
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
             &xToolsModbusStudioUi::OnPortChanged);
 }
@@ -413,16 +432,16 @@ void xToolsModbusStudioUi::InitSignalsSerialPort()
 {
     connect(ui->port_name_, &QComboBox::currentTextChanged, this, &xToolsModbusStudioUi::OnPortNameChanged);
     connect(ui->parity_,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsModbusStudioUi::OnParityChanged);
     connect(ui->baud_rate_, &QComboBox::currentTextChanged, this, &xToolsModbusStudioUi::OnBaudRateChanged);
     connect(ui->data_bits_,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsModbusStudioUi::OnDataBitsChanged);
     connect(ui->stop_bits_,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsModbusStudioUi::OnStopBistChanged);
 }
@@ -430,11 +449,11 @@ void xToolsModbusStudioUi::InitSignalsSerialPort()
 void xToolsModbusStudioUi::InitSignalsClient()
 {
     connect(ui->timeout_,
-            QOverload<int>::of(&QSpinBox::valueChanged),
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
             &xToolsModbusStudioUi::OnClientTimeoutChanged);
     connect(ui->repeat_time_,
-            QOverload<int>::of(&QSpinBox::valueChanged),
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
             &xToolsModbusStudioUi::OnClientRepeatTimeChanged);
 }
@@ -447,7 +466,7 @@ void xToolsModbusStudioUi::InitSignalsServer()
             this,
             &xToolsModbusStudioUi::OnServerJustListenChanged);
     connect(ui->server_address,
-            QOverload<int>::of(&QSpinBox::valueChanged),
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
             &xToolsModbusStudioUi::OnServerAddressChanged);
 }
@@ -459,15 +478,15 @@ void xToolsModbusStudioUi::InitSignalsClientOperations()
             this,
             &xToolsModbusStudioUi::OnFunctionCodeChanged);
     connect(ui->device_address_,
-            QOverload<int>::of(&QSpinBox::valueChanged),
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
             &xToolsModbusStudioUi::OnTargetAddressChanged);
     connect(ui->start_address_,
-            QOverload<int>::of(&QSpinBox::valueChanged),
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
             &xToolsModbusStudioUi::OnStartAddressChanged);
     connect(ui->quantity_,
-            QOverload<int>::of(&QSpinBox::valueChanged),
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
             &xToolsModbusStudioUi::OnAddressNumberChanged);
     connect(ui->read_, &QPushButton::clicked, this, &xToolsModbusStudioUi::OnReadClicked);
@@ -698,7 +717,11 @@ void xToolsModbusStudioUi::OnReadClicked()
         OutputModbusReply(reply, function_code);
 
         if (reply->error() == QModbusDevice::NoError) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
             UpdateClientTableViewData(reply->result().values());
+#else
+            UpdateClientTableViewData(vectorTolist(reply->result().values()));
+#endif
             reply->deleteLater();
         }
     });
@@ -719,7 +742,11 @@ void xToolsModbusStudioUi::OnWriteClicked()
     QModbusReply *reply = factory->SendWriteRequest(modbus_device_,
                                                     registerType,
                                                     start_address,
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
                                                     values,
+#else
+                                                    listToVector(values),
+#endif
                                                     server_address);
     if (xToolsModbusStudio::Instance()->IsValidModbusReply(reply)) {
         connect(reply, &QModbusReply::finished, this, [=]() {
@@ -758,7 +785,7 @@ void xToolsModbusStudioUi::OnSendClicked()
     qCWarning(kLoggingCategory) << "Send raw request:"
                                 << "server address:" << server_address
                                 << "function code:" << function_code
-                                << "data:" << QString(pdu.toHex(' '));
+                                << "data:" << QString(xToolsByteArrayToHex(pdu, ' '));
     if (xToolsModbusStudio::Instance()->IsValidModbusReply(reply)) {
         connect(reply, &QModbusReply::finished, this, [=]() {
             OutputModbusReply(reply, function_code);
@@ -766,7 +793,7 @@ void xToolsModbusStudioUi::OnSendClicked()
         });
 
         QString info = "pdu(No server address, no crc):";
-        info += QString(pdu.toHex(' '));
+        info += QString(xToolsByteArrayToHex(pdu, ' '));
         outputMessage(info, false, TXCOLOR, TXFLAG);
     }
 
@@ -774,7 +801,7 @@ void xToolsModbusStudioUi::OnSendClicked()
     int index = settings_->value(key_ctx_->send_history_index).toInt();
     bool ret = WriteSettingsArray(key_ctx_->send_history,
                                   key_ctx_->pdu,
-                                  QString(pdu.toHex(' ')),
+                                  QString(xToolsByteArrayToHex(pdu, ' ')),
                                   index,
                                   MAX_HISTORY_INDEX);
     if (!ret) {
@@ -782,9 +809,9 @@ void xToolsModbusStudioUi::OnSendClicked()
     }
 
     if (index > ui->pdu_->count()) {
-        ui->pdu_->addItem(QString(pdu.toHex(' ')));
+        ui->pdu_->addItem(QString(xToolsByteArrayToHex(pdu, ' ')));
     } else {
-        ui->pdu_->insertItem(index, QString(pdu.toHex(' ')));
+        ui->pdu_->insertItem(index, QString(xToolsByteArrayToHex(pdu, ' ')));
     }
 
     index = index + 1 > MAX_HISTORY_INDEX ? 0 : index + 1;
@@ -1068,7 +1095,7 @@ void xToolsModbusStudioUi::UpdateServerRegistersData()
 quint8 xToolsModbusStudioUi::GetClientFunctionCode()
 {
     QString txt = ui->function_code_->currentText();
-    QStringList list = txt.split('-', Qt::SkipEmptyParts);
+    QStringList list = txt.split('-', xToolsSkipEmptyParts);
     if (list.length()) {
         return list.first().toInt(Q_NULLPTR, 16);
     }
@@ -1170,7 +1197,7 @@ void xToolsModbusStudioUi::OutputModbusReply(QModbusReply *reply, int function_c
                                "data unit: %3")
                            .arg(server_address)
                            .arg(function_code)
-                           .arg(QString::fromLatin1(data.toHex(' ')));
+                           .arg(QString::fromLatin1(xToolsByteArrayToHex(data, ' ')));
         outputMessage(info, false, RXCOLOR, RXFLAG);
     } else if (reply->type() == QModbusReply::ReplyType::Common) {
         QString info = ui->function_code_->currentText();

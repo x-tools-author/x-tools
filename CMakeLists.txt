@@ -117,11 +117,7 @@ include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/FileCheck/Source)
 
 # -------------------------------------------------------------------------------------------------
 # Modbus module
-if(NOT Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS "6.5.0")
-  option(X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO "Enable Modbus Studio module" ON)
-else()
-  option(X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO "Enable Modbus Studio module" OFF)
-endif()
+option(X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO "Enable Modbus Studio module" ON)
 if(X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO)
   file(GLOB_RECURSE X_TOOLS_MODBUS_STUDIO_H "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.h")
   file(GLOB_RECURSE X_TOOLS_MODBUS_STUDIO_UI "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.ui")

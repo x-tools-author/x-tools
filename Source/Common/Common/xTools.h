@@ -102,7 +102,7 @@ static void xToolsInitApp(const QString &appName)
 
 static void xToolsInstallMessageHandler()
 {
-#ifndef QT_DEBUG
+#ifdef X_TOOLS_USING_GLOG
     qInstallMessageHandler(qtLogToGoogleLog);
 #endif
 }

@@ -154,6 +154,10 @@ function(x_tools_deploy_qt_for_linux target)
 endfunction()
 
 function(x_tools_deploy_qt target)
+  if(NOT QT_VERSION_MAJOR EQUAL 6)
+    return()
+  endif()
+
   if(${WINDEPLOYQT_EXECUTABLE} STREQUAL "")
     return()
   endif()

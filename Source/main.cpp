@@ -12,7 +12,9 @@
 
 int main(const int argc, char *argv[])
 {
+#ifdef X_TOOLS_BUILD_WITH_CMAKE
     Q_INIT_RESOURCE(xToolsCommon);
+#endif
     return xToolsExec<MainWindow, xToolsMainWindow, Application>(argc,
                                                                  argv,
                                                                  QString("xTools"),

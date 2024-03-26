@@ -9,6 +9,7 @@
 #include "xToolsNumberAssistant.h"
 #include "ui_xToolsNumberAssistant.h"
 
+#include "xToolsCompatibility.h"
 #include "xToolsDataStructure.h"
 #include "xToolsInterface.h"
 
@@ -42,7 +43,7 @@ xToolsNumberAssistant::xToolsNumberAssistant(QWidget *parent)
             this,
             &xToolsNumberAssistant::updateCookedData);
     connect(ui->comboBoxCookedDataType,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             &xToolsNumberAssistant::onCookedDataTypeChanged);
 
@@ -113,7 +114,7 @@ void updateRawData(QLineEdit *le, T value)
 {
     T *ptr = &value;
     QByteArray tmp = QByteArray::fromRawData(reinterpret_cast<char *>(ptr), sizeof(T));
-    le->setText(tmp.toHex(' '));
+    le->setText(xToolsByteArrayToHex(tmp, ' '));
 }
 
 void xToolsNumberAssistant::updateRawData()
