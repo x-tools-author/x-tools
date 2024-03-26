@@ -12,30 +12,40 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 #---------------------------------------------------------------------------------------------------
-# Android settings
+# Application information
 X_TOOLS_APP_NAME        = "xTools"
 X_TOOLS_ORG_NAME        = "xTools"
 X_TOOLS_ORG_DOMAIN      = "IT"
 X_TOOLS_APP_DESCRIPTION = "xTools Studio"
 X_TOOLS_APP_COPYRIGHT   = "Copyright 2018-2024 x-tools-author(x-tools@outlook.com). All rights reserved."
+X_TOOLS_VERSION         = "6.0.0"
 
 win32 {
     QMAKE_TARGET_COMPANY        = "$${X_TOOLS_ORG_NAME}"
     QMAKE_TARGET_DESCRIPTION    = "$${X_TOOLS_APP_DESCRIPTION}"
     QMAKE_TARGET_COPYRIGHT      = "$${X_TOOLS_APP_COPYRIGHT}"
     QMAKE_TARGET_PRODUCT        = "$${X_TOOLS_APP_NAME}"
-    QMAKE_TARGET_VERSION        = "$${SAK_VERSION}"
+    QMAKE_TARGET_VERSION        = "$${X_TOOLS_VERSION}"
 }
 
 #---------------------------------------------------------------------------------------------------
-#Output directory
+# Definitions
+DEFINES += X_TOOLS_CLEAR_MESSAGE_INTERVAL=8000
+DEFINES += X_TOOLS_EDITION=\"\\\"Beta\\\"\"
+DEFINES += X_TOOLS_AUTHOR=\"\\\"x-tools-author\\\"\"
+DEFINES += X_TOOLS_AUTHOR_EMAIL=\"\\\"x-tools@outlook.com\\\"\"
+DEFINES += X_TOOLS_GITHUB_REPOSITORY_URL=\"\\\"https://github.com/x-tools-author/x-tools\\\"\"
+DEFINES += X_TOOLS_GITEE_REPOSITORY_URL=\"\\\"https://gitee.com/x-tools-author/x-tools\\\"\"
+
+#---------------------------------------------------------------------------------------------------
+# Output directory
 UI_DIR      = $$OUT_PWD/ui
 MOC_DIR     = $$OUT_PWD/moc
 RCC_DIR     = $$OUT_PWD/res
 OBJECTS_DIR = $$OUT_PWD/obj
 
 #---------------------------------------------------------------------------------------------------
-#Configuration of Windows
+# Configuration of Windows
 win32 {
     RC_ICONS = xTools.ico
     msvc:{
@@ -45,13 +55,33 @@ win32 {
     }
 }
 
-DEFINES += X_TOOLS_CLEAR_MESSAGE_INTERVAL=8000
-DEFINES += X_TOOLS_EDITION=\"\\\"Beta\\\"\"
-DEFINES += X_TOOLS_AUTHOR=\"\\\"x-tools-author\\\"\"
-DEFINES += X_TOOLS_AUTHOR_EMAIL=\"\\\"x-tools@outlook.com\\\"\"
-DEFINES += X_TOOLS_GITHUB_REPOSITORY_URL=\"\\\"https://github.com/x-tools-author/x-tools\\\"\"
-DEFINES += X_TOOLS_GITEE_REPOSITORY_URL=\"\\\"https://gitee.com/x-tools-author/x-tools\\\"\"
+#---------------------------------------------------------------------------------------------------
+# Deploy Qt
+contains(CONFIG, static) {
+    # Static compilation does not require deployment
+} else {
+    # Windows platform(only for x86 architecture)
+    win32 {
+        DEPLOY_TOOL = $${dirname(QMAKE_QMAKE)}/windeployqt.exe
+        DEPLOY_TOOL = $$replace(DEPLOY_TOOL, /, \\)
 
+        contains(CONFIG, debug, debug|release){
+            DEPLOY_TARGET = $${OUT_PWD}/debug/$${TARGET}.exe
+        } else {
+            DEPLOY_TARGET = $${OUT_PWD}/release/$${TARGET}.exe
+        }
+
+        DEPLOY_TARGET=$$replace(DEPLOY_TARGET, /, \\)
+        msvc {
+            QMAKE_POST_LINK+=$${DEPLOY_TOOL} $${DEPLOY_TARGET} --force --no-translations $$escape_expand(\\n)
+        } else {
+            QMAKE_POST_LINK+='$$escape_expand("\\n\\t") $${DEPLOY_TOOL} $${DEPLOY_TARGET} --force --no-translations $$escape_expand("\\n\\t")'
+        }
+    }
+}
+
+#---------------------------------------------------------------------------------------------------
+# Include path
 INCLUDEPATH += Source
 INCLUDEPATH += Source/Assistants
 INCLUDEPATH += Source/Assistants/ASCII/Source
@@ -72,6 +102,12 @@ INCLUDEPATH += Source/ModbusStudio/ModbusStudio
 INCLUDEPATH += Source/ModbusStudio/ModbusStudioUI
 INCLUDEPATH += Source/ToolBox/ToolBox
 INCLUDEPATH += Source/ToolBox/ToolBoxUI
+
+#---------------------------------------------------------------------------------------------------
+# Source of project
+RESOURCES += \
+    xTools.qrc \
+    Source/Common/xToolsCommon.qrc
 
 SOURCES += \
     Source/Application.cpp \
@@ -294,10 +330,6 @@ HEADERS += \
     Source/Tools/ToolsUI/xToolsUdpTransmitterToolUi.h \
     Source/Tools/ToolsUI/xToolsVelometerToolUi.h \
     Source/Tools/ToolsUI/xToolsWebSocketTransmitterToolUi.h
-
-RESOURCES += \
-    xTools.qrc \
-    Source/Common/xToolsCommon.qrc
 
 FORMS += \
     Source/Assistants/ASCII/Source/xToolsAsciiAssistant.ui \
