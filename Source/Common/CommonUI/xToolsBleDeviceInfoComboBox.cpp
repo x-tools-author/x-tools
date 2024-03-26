@@ -15,46 +15,38 @@ xToolsBleDeviceInfoComboBox::xToolsBleDeviceInfoComboBox(QWidget* parent)
     : xToolsComboBox(parent)
     , mScanner(Q_NULLPTR)
 {
-#if 0
-    mScanner = new SAKBleScanner(this);
-    connect(mScanner, &SAKBleScanner::finished,
-            this, &SAKBluetoothDeviceInfoComboBox::onFinished);
-    connect(mScanner, &SAKBleScanner::started,
-            this, &SAKBluetoothDeviceInfoComboBox::started);
-    connect(mScanner, &SAKBleScanner::deviceDiscovered,
-            this, &SAKBluetoothDeviceInfoComboBox::onDeviceDiscovered);
-    connect(mScanner, &SAKBleScanner::errorOccurred,
-            this, &SAKBluetoothDeviceInfoComboBox::onErrorOccurred);
-#endif
+    mScanner = new xToolsBleScanner(this);
+    connect(mScanner, &xToolsBleScanner::finished, this, &xToolsBleDeviceInfoComboBox::onFinished);
+    connect(mScanner, &xToolsBleScanner::started, this, &xToolsBleDeviceInfoComboBox::started);
+    connect(mScanner,
+            &xToolsBleScanner::deviceDiscovered,
+            this,
+            &xToolsBleDeviceInfoComboBox::onDeviceDiscovered);
+    connect(mScanner,
+            &xToolsBleScanner::errorOccurred,
+            this,
+            &xToolsBleDeviceInfoComboBox::onErrorOccurred);
 }
 
 xToolsBleDeviceInfoComboBox::~xToolsBleDeviceInfoComboBox()
 {
-#if 0
     mScanner->stopDiscover();
-#endif
 }
 
 void xToolsBleDeviceInfoComboBox::startDiscover()
 {
-#if 0
     clear();
     mScanner->startDiscover();
-#endif
 }
 
 void xToolsBleDeviceInfoComboBox::stopDiscover()
 {
-#if 0
     mScanner->stopDiscover();
-#endif
 }
 
 bool xToolsBleDeviceInfoComboBox::isActive()
 {
-#if 0
     return mScanner->isActive();
-#endif
     return false;
 }
 
@@ -67,7 +59,7 @@ void xToolsBleDeviceInfoComboBox::setTimeoutInterval(int interval)
 
 void xToolsBleDeviceInfoComboBox::setNameFiltter(const QString& filtter)
 {
-    //    mScanner->setNameFiltter(filtter);
+    mScanner->setNameFiltter(filtter);
 }
 
 void xToolsBleDeviceInfoComboBox::changeEvent(QEvent* event)
@@ -80,18 +72,18 @@ void xToolsBleDeviceInfoComboBox::changeEvent(QEvent* event)
 
 void xToolsBleDeviceInfoComboBox::onFinished()
 {
-    // if (!isEnabled()) {
-    //     return;
-    // }
+    if (!isEnabled()) {
+        return;
+    }
 
-    // clear();
-    // auto infos = mScanner->devicesInfoList();
-    // for (auto &info : infos) {
-    //     QString name = mScanner->deviceName(info);
-    //     addItem(name, info);
-    // }
+    clear();
+    auto infos = mScanner->devicesInfoList();
+    for (auto& info : infos) {
+        QString name = mScanner->deviceName(info);
+        addItem(name, info);
+    }
 
-    // emit finished();
+    emit finished();
 }
 
 void xToolsBleDeviceInfoComboBox::onDeviceDiscovered(const QBluetoothDeviceInfo& info)
