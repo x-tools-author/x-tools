@@ -729,7 +729,7 @@ void xToolsModbusStudioUi::onReadClicked()
 
         if (reply->error() == QModbusDevice::NoError) {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-            UpdateClientTableViewData(reply->result().values());
+            updateClientTableViewData(reply->result().values());
 #else
             updateClientTableViewData(vectorTolist(reply->result().values()));
 #endif
