@@ -106,12 +106,10 @@ set(BUILD_SHARED_LIBS OFF)
 
 x_tools_add_third_party("glog-0.7.0")
 x_tools_add_third_party("qmdnsengine-master")
-if(EXISTS ${CMAKE_SOURCE_DIR}/Source/Private/Private/Source/xTools/xToolsPrivate.cmake)
-  include(${CMAKE_SOURCE_DIR}/Source/Private/Private/Source/xTools/xToolsPrivate.cmake)
-  list(APPEND X_TOOLS_SOURCE
-       ${CMAKE_SOURCE_DIR}/Source/Private/Private/Source/xTools/xToolsPrivate.cmake)
+if(EXISTS ${CMAKE_SOURCE_DIR}/Private/Source/xTools/xToolsPrivate.cmake)
+  include(${CMAKE_SOURCE_DIR}/Private/Source/xTools/xToolsPrivate.cmake)
+  list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Private/Source/xTools/xToolsPrivate.cmake)
 endif()
-add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private)
 x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
@@ -141,4 +139,24 @@ endif()
 option(X_TOOLS_ENABLE_APP_ASSISTANTS "Enable assistant applications" OFF)
 if(X_TOOLS_ENABLE_APP_ASSISTANTS)
   add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Assistants)
+endif()
+
+# -------------------------------------------------------------------------------------------------
+# The private modules is not open-source.
+if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
+  if(EXISTS ${CMAKE_SOURCE_DIR}/Private)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
+  endif()
+
+  set(GITEE_URL "https://gitee.com/x-tools-author/x-tools-private.git")
+  add_custom_target(
+    xTools_clone_private_modules
+    COMMAND git clone ${GITEE_URL} ./Private || echo "clone private modules"
+    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+  add_custom_target(
+    xTools_pull_private_modules
+    COMMAND git pull ${GITEE_URL}
+    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Private)
 endif()
