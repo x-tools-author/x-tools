@@ -1,10 +1,10 @@
 # xTools [![LGPL License](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.html)
 
-[![build-windows](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-windows.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-windows.yml)
-[![build-ubuntu](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ubuntu.yml)
-[![build-macos](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-macos.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-macos.yml)
-[![build-ios](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ios.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-ios.yml)
-[![build-android](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-android.yml/badge.svg)](https://github.com/qsaker/QtSwissArmyKnife/actions/workflows/build-android.yml)
+[![build-windows](https://github.com/x-tools-author/x-tools/actions/workflows/build-windows.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-windows.yml)
+[![build-ubuntu](https://github.com/x-tools-author/x-tools/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-ubuntu.yml)
+[![build-macos](https://github.com/x-tools-author/x-tools/actions/workflows/build-macos.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-macos.yml)
+[![build-ios](https://github.com/x-tools-author/x-tools/actions/workflows/build-ios.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-ios.yml)
+[![build-android](https://github.com/x-tools-author/x-tools/actions/workflows/build-android.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-android.yml)
 
 *xTools* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (recommended version: Qt6.5). It offers extensive support for SerialPort, BLE, UDP, TCP, WebSocket, Modbus and CANBus debugging functionalities. Here are some notable features:
 
@@ -15,7 +15,7 @@
 5. Multiple Text Formats: Show text as bin, otc, dec, hex, ascii or urf8 etc..
 6. (etc.)
 
-> **You can get *Qt Swiss Army Knife* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
+> **You can get *xTools Ultimate* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
 
 ![MainWindow.png](resources/images/mainwindow.png)
 
@@ -59,15 +59,15 @@ cmake -DQT_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt6 -DQt6_DIR=/usr/lib/x86_64-lin
 ## About the Project
 
 <!--https://sdpro.top/blog/html/article/1016.html-->
-[![stars](https://img.shields.io/github/stars/qsaker/QtSwissArmyKnife?style=social)](https://img.shields.io/github/stars/qsaker/QtSwissArmyKnife?style=social)
-[![forks](https://img.shields.io/github/forks/qsaker/QtSwissArmyKnife?style=social)](https://img.shields.io/github/forks/qsaker/QtSwissArmyKnife?style=social)
-[![watchers](https://img.shields.io/github/watchers/qsaker/QtSwissArmyKnife?style=social)](https://img.shields.io/github/watchers/qsaker/QtSwissArmyKnife?style=social)
-[![star](https://gitee.com/qsaker/QtSwissArmyKnife/badge/star.svg?theme=dark)](https://gitee.com/qsaker/QtSwissArmyKnife/stargazers)
-[![fork](https://gitee.com/qsaker/QtSwissArmyKnife/badge/fork.svg?theme=dark)](https://gitee.com/qsaker/QtSwissArmyKnife/members)
+[![stars](https://img.shields.io/github/stars/x-tools-author/x-tools?style=social)](https://img.shields.io/github/stars/x-tools-author/x-tools?style=social)
+[![forks](https://img.shields.io/github/forks/x-tools-author/x-tools?style=social)](https://img.shields.io/github/forks/x-tools-author/x-tools?style=social)
+[![watchers](https://img.shields.io/github/watchers/x-tools-author/x-tools?style=social)](https://img.shields.io/github/watchers/x-tools-author/x-tools?style=social)
+[![star](https://gitee.com/x-tools-author/x-tools/badge/star.svg?theme=dark)](https://gitee.com/x-tools-author/x-tools/stargazers)
+[![fork](https://gitee.com/x-tools-author/x-tools/badge/fork.svg?theme=dark)](https://gitee.com/x-tools-author/x-tools/members)
 
 * Author：Qsaker
-* E-mail：<qsaker@foxmail.com>
+* E-mail：<x-tools@outlook.com>
 * User Communication: 952218522 (QQ Group)
 * Qt Technology Communication：723516989 (QQ Group)
-* Gitee: <https://gitee.com/qsaker/QtSwissArmyKnife>
-* GitHub: <https://github.com/qsaker/QtSwissArmyKnife>
+* Gitee: <https://gitee.com/x-tools-author/x-tools>
+* GitHub: <https://github.com/x-tools-author/x-tools>
