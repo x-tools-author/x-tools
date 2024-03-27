@@ -26,9 +26,9 @@
 
 static void xToolsInitGoogleLogging(char *argv0)
 {
-    QString logPath = SAKSettings::instance()->settingsPath();
+    QString logPath = xToolsSettings::instance()->settingsPath();
     logPath += "/log";
-    QDir dir(SAKSettings::instance()->settingsPath());
+    QDir dir(xToolsSettings::instance()->settingsPath());
     if (!dir.exists(logPath) && !dir.mkpath(logPath)) {
         qWarning() << "Make log directory failed";
     }

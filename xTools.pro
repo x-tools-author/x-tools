@@ -1,4 +1,4 @@
-QT       += core gui serialport serialbus network websockets svg
+QT       += core gui serialport network websockets svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

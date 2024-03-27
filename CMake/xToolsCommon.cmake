@@ -38,7 +38,6 @@ function(x_tools_add_executable target sources)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${X_TOOLS_BINARY_DIR}/${target}")
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${target} MANUAL_FINALIZATION)
-
     if(${target} STREQUAL "xTools")
       set_property(
         TARGET ${target}
@@ -68,6 +67,7 @@ function(x_tools_add_executable target sources)
   endif()
 
   x_tools_copy_glog(${target})
+  x_tools_set_target_properties(${target})
 
   if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(${target})
@@ -75,19 +75,20 @@ function(x_tools_add_executable target sources)
 endfunction()
 
 function(x_tools_set_target_properties target)
-  set_target_properties(
-    ${target}
-    PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
-               ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
-               ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
-               TRUE)
-  if(WIN32 AND ${CMAKE_BUILD_TYPE} STREQUAL "Release")
+  if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
     set_target_properties(
       ${target}
       PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
                  ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
                  ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
                  TRUE WIN32_EXECUTABLE
+                 TRUE)
+  else()
+    set_target_properties(
+      ${target}
+      PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
+                 ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
+                 ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
                  TRUE)
   endif()
 endfunction()

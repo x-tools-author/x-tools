@@ -54,18 +54,20 @@ void xToolsUdpClientTool::writeBytes(const QByteArray &bytes)
     }
 
     qint64 ret = m_udpSocket->writeDatagram(bytes, QHostAddress(m_serverIp), m_serverPort);
+    QString ipport = m_serverIp + ":" + QString::number(m_serverPort);
     if (ret == -1) {
-        QString ipport = m_serverIp + ":" + QString::number(m_serverPort);
         QString str = m_udpSocket->errorString();
         qInfo() << qPrintable(QString("write bytes to %1 error: %2").arg(ipport, str));
     } else {
+#ifdef QT_DEBUG
         QByteArray ba = xToolsInterface::arrayToHex(bytes, ' ');
         QString hex = QString::fromLatin1(ba);
         QString portStr = QString::number(m_serverPort);
         QString serverInfo = QString("%1:%2").arg(m_serverIp, portStr);
         QString info = m_bindingIpPort + "->" + serverInfo + ":" + hex;
         qInfo() << qPrintable(info);
-        emit bytesWritten(bytes, info);
+#endif
+        emit bytesWritten(bytes, ipport);
     }
 }
 

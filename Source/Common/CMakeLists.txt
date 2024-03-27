@@ -8,6 +8,7 @@ list(APPEND ALL_SOURCE ${X_TOOLS_COMMOM_SOURCE_UI})
 list(APPEND ALL_SOURCE ${X_TOOLS_COMMOM_SOURCE_CPP})
 
 add_library(xToolsCommon STATIC ${ALL_SOURCE} ${CMAKE_CURRENT_SOURCE_DIR}/xToolsCommon.qrc)
+target_link_libraries(xToolsCommon PRIVATE glog::glog)
 target_link_libraries(xToolsCommon PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(xToolsCommon PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
 target_link_libraries(xToolsCommon PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

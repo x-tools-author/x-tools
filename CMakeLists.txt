@@ -35,9 +35,18 @@ include(CMake/xToolsCommon.cmake)
 include(CMake/xToolsGitInfo.cmake)
 include(CMake/xToolsDeployQt.cmake)
 
+set(WITH_GFLAGS OFF)
+set(BUILD_TESTING OFF)
+set(BUILD_SHARED_LIBS OFF)
+
+if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
+  add_compile_definitions(X_TOOLS_USING_GLOG)
+endif()
+
+x_tools_add_third_party("glog-0.7.0")
+x_tools_add_third_party("qmdnsengine-master")
 x_tools_git_get_latest_commit(${CMAKE_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_SOURCE_DIR} "X_TOOLS")
-
 # --------------------------------------------------------------------------------------------------
 # Common module
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
@@ -100,12 +109,6 @@ include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/FileCheck/Source)
 
 # --------------------------------------------------------------------------------------------------
 # xTools application
-set(WITH_GFLAGS OFF)
-set(BUILD_TESTING OFF)
-set(BUILD_SHARED_LIBS OFF)
-
-x_tools_add_third_party("glog-0.7.0")
-x_tools_add_third_party("qmdnsengine-master")
 if(EXISTS ${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
   include(${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
   list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
@@ -113,10 +116,6 @@ endif()
 x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
-
-if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-  add_compile_definitions(X_TOOLS_USING_GLOG)
-endif()
 
 target_link_libraries(xTools PRIVATE glog::glog)
 target_link_libraries(xTools PRIVATE qmdnsengine)

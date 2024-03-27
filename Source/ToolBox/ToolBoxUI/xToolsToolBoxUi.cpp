@@ -247,20 +247,18 @@ void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bo
     }
 
     QString dt = dateTimeFormat();
-    QString flags = isRx ? "Rx" : "Tx";
-    QString color = isRx ? "red" : "blue";
+    QString rxTx = isRx ? "Rx" : "Tx";
+    QString color = isRx ? "blue" : "green";
 
-    flags = QString("<font color=%1>%2</font>").arg(color, flag);
+    rxTx = QString("<font color=%1>%2</font>").arg(color, rxTx);
     QString info;
     if (dt.isEmpty()) {
-        info = QString("[%1]").arg(flags);
+        info = QString("[%1 %2]").arg(rxTx, flag);
     } else {
-        dt = QString("<font color=silver>%1</font>").arg(dt);
-        info = QString("[%1 %2]").arg(dt, flags);
+        info = QString("[%1 %2 %3]").arg(rxTx, dt, flag);
     }
 
-    info = QString("<font color=silver>%1</font>").arg(info);
-
+    info = QString("<font color=silver>%2</font>").arg(info);
     ui->textBrowserOutput->append(info + " " + str);
 }
 

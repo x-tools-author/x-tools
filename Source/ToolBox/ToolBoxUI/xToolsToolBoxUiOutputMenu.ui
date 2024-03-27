@@ -26,6 +26,9 @@
      <property name="placeholderText">
       <string>Such as:hello;world</string>
      </property>
+     <property name="clearButtonEnabled">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
    <item row="2" column="0">
@@ -36,7 +39,11 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QLineEdit" name="filter"/>
+    <widget class="QLineEdit" name="filter">
+     <property name="clearButtonEnabled">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

@@ -59,7 +59,8 @@
          <font>
           <pointsize>9</pointsize>
           <italic>true</italic>
-          <bold>true</bold>
+          <bold>false</bold>
+          <kerning>false</kerning>
          </font>
         </property>
         <property name="text">
@@ -111,7 +112,7 @@
             <font>
              <pointsize>9</pointsize>
              <italic>true</italic>
-             <bold>true</bold>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -260,7 +261,7 @@
            <property name="font">
             <font>
              <italic>true</italic>
-             <bold>true</bold>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
