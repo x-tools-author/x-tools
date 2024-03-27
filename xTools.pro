@@ -31,7 +31,6 @@ win32 {
 
 #---------------------------------------------------------------------------------------------------
 # Definitions
-DEFINES += X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
 DEFINES += X_TOOLS_CLEAR_MESSAGE_INTERVAL=8000
 DEFINES += X_TOOLS_VERSION=\"\\\"6.0.0\\\"\"
 DEFINES += X_TOOLS_EDITION=\"\\\"Beta\\\"\"
@@ -103,8 +102,6 @@ INCLUDEPATH += Source/Tools/Tools
 INCLUDEPATH += Source/Tools/ToolsUI
 INCLUDEPATH += Source/ToolBox/ToolBox
 INCLUDEPATH += Source/ToolBox/ToolBoxUI
-INCLUDEPATH += Source/ModbusStudio/ModbusStudio
-INCLUDEPATH += Source/ModbusStudio/ModbusStudioUI
 INCLUDEPATH += Source/ToolBox/ToolBox
 INCLUDEPATH += Source/ToolBox/ToolBoxUI
 
@@ -156,8 +153,6 @@ SOURCES += \
     Source/Common/CommonUI/xToolsTextFormatComboBox.cpp \
     Source/Common/CommonUI/xToolsUiInterface.cpp \
     Source/Common/CommonUI/xToolsWebSocketMessageTypeComboBox.cpp \
-    Source/ModbusStudio/ModbusStudio/xToolsModbusStudio.cpp \
-    Source/ModbusStudio/ModbusStudioUI/xToolsModbusStudioUi.cpp \
     Source/SystemTrayIcon.cpp \
     Source/ToolBox/ToolBox/xToolsToolBox.cpp \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp \
@@ -270,8 +265,6 @@ HEADERS += \
     Source/Common/CommonUI/xToolsUiInterface.h \
     Source/Common/CommonUI/xToolsWebSocketMessageTypeComboBox.h \
     Source/MainWindow.h \
-    Source/ModbusStudio/ModbusStudio/xToolsModbusStudio.h \
-    Source/ModbusStudio/ModbusStudioUI/xToolsModbusStudioUi.h \
     Source/SystemTrayIcon.h \
     Source/ToolBox/ToolBox/xToolsToolBox.h \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.h \
@@ -345,7 +338,6 @@ FORMS += \
     Source/Assistants/Number/Source/xToolsNumberAssistant.ui \
     Source/Assistants/Ping/Source/xToolsPingAssistant.ui \
     Source/Assistants/String/Source/xToolsStringAssistant.ui \
-    Source/ModbusStudio/ModbusStudioUI/xToolsModbusStudioUi.ui \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUiCommunicationMenu.ui \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUiInputMenu.ui \
