@@ -42,24 +42,6 @@ x_tools_git_get_latest_commit_time(${CMAKE_SOURCE_DIR} "X_TOOLS")
 # Common module
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
-if(QT_VERSION_MAJOR EQUAL 6)
-  option(X_TOOLS_IMPORT_MODULE_BLUETOOTH "Enable Bluetooth modbule" ON)
-else()
-  option(X_TOOLS_IMPORT_MODULE_BLUETOOTH "Enable Bluetooth modbule" OFF)
-endif()
-set(X_TOOLS_BLUETOOTH_MODULE_IS_VALID FALSE)
-if(X_TOOLS_IMPORT_MODULE_BLUETOOTH AND QT_VERSION_MAJOR GREATER 5)
-  if(NOT Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS "6.5.0")
-    find_package(
-      Qt${QT_VERSION_MAJOR} REQUIRED
-      COMPONENTS Bluetooth
-      QUIET)
-    if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
-      add_compile_definitions(X_TOOLS_IMPORT_MODULE_BLUETOOTH)
-      set(X_TOOLS_BLUETOOTH_MODULE_IS_VALID TRUE)
-    endif()
-  endif()
-endif()
 add_subdirectory(Source/Common)
 
 file(GLOB_RECURSE X_TOOLS_TOOLS_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/Tools/*.h")
@@ -96,7 +78,6 @@ list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Assistants/xToolsAssistant
 list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Assistants/xToolsAssistantFactory.cpp)
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CMAKE_FILES})
 list(APPEND X_TOOLS_SOURCE xTools.qrc)
-# list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Common/xToolsCommon.qrc)
 if(WIN32)
   list(APPEND X_TOOLS_SOURCE xTools.rc)
 endif()
@@ -117,50 +98,6 @@ include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/String/Source)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/Broadcast/Source)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/FileCheck/Source)
 
-# -------------------------------------------------------------------------------------------------
-# Modbus module
-option(X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO "Enable Modbus Studio module" ON)
-if(X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO)
-  file(GLOB_RECURSE X_TOOLS_MODBUS_STUDIO_H "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.h")
-  file(GLOB_RECURSE X_TOOLS_MODBUS_STUDIO_UI "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.ui")
-  file(GLOB_RECURSE X_TOOLS_MODBUS_STUDIO_CPP "${CMAKE_SOURCE_DIR}/Source/ModbusStudio/*.cpp")
-  add_compile_definitions(X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO)
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_MODBUS_STUDIO_H})
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_MODBUS_STUDIO_UI})
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_MODBUS_STUDIO_CPP})
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/ModbusStudio/main.cpp)
-  include_directories(${CMAKE_SOURCE_DIR}/Source/ModbusStudio/ModbusStudio)
-  include_directories(${CMAKE_SOURCE_DIR}/Source/ModbusStudio/ModbusStudioUI)
-endif()
-
-# -------------------------------------------------------------------------------------------------
-# CAN bus module
-
-option(X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO "Enable CAN Bus module" ON)
-if(X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO)
-  file(GLOB_RECURSE X_TOOLS_CANBUS_STUDIO_H "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.h")
-  file(GLOB_RECURSE X_TOOLS_CANBUS_STUDIO_UI "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.ui")
-  file(GLOB_RECURSE X_TOOLS_CANBUS_STUDIO_CPP "${CMAKE_SOURCE_DIR}/Source/CANBusStudio/*.cpp")
-  add_compile_definitions(X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO)
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CANBUS_STUDIO_H})
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CANBUS_STUDIO_UI})
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CANBUS_STUDIO_CPP})
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/CANBusStudio/main.cpp)
-  include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/CANBusStudio)
-  include_directories(${CMAKE_SOURCE_DIR}/Source/CANBusStudio/CANBusStudioUI)
-endif()
-
-# -------------------------------------------------------------------------------------------------
-# BLE module
-if(NOT X_TOOLS_BLUETOOTH_MODULE_IS_VALID)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsBleCentralTool.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsBleCentralTool.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsBleCentralToolUi.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE
-       ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp)
-  message(STATUS "The xTools BLE module source has been removed!")
-endif()
-
 # --------------------------------------------------------------------------------------------------
 # xTools application
 set(WITH_GFLAGS OFF)
@@ -169,8 +106,12 @@ set(BUILD_SHARED_LIBS OFF)
 
 x_tools_add_third_party("glog-0.7.0")
 x_tools_add_third_party("qmdnsengine-master")
-add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private)
-
+if(EXISTS ${CMAKE_SOURCE_DIR}/Source/Private/Private/Source/xTools/xToolsPrivate.cmake)
+  include(${CMAKE_SOURCE_DIR}/Source/Private/Private/Source/xTools/xToolsPrivate.cmake)
+  list(APPEND X_TOOLS_SOURCE
+       ${CMAKE_SOURCE_DIR}/Source/Private/Private/Source/xTools/xToolsPrivate.cmake)
+endif()
+# add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private)
 x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
@@ -196,18 +137,8 @@ if(X_TOOLS_BLUETOOTH_MODULE_IS_VALID)
 endif()
 
 # -------------------------------------------------------------------------------------------------
-# Other applications
+# Assistant applications
 option(X_TOOLS_ENABLE_APP_ASSISTANTS "Enable assistant applications" OFF)
 if(X_TOOLS_ENABLE_APP_ASSISTANTS)
   add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Assistants)
-endif()
-
-option(X_TOOLS_ENABLE_APP_MODBUS_STUDIO "Enable Modbus Studio application" OFF)
-if(X_TOOLS_ENABLE_APP_MODBUS_STUDIO)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/Source/ModbusStudio)
-endif()
-
-option(X_TOOLS_ENABLE_APP_CANBUS_STUDIO "Enable CANBus Studio application" OFF)
-if(X_TOOLS_ENABLE_APP_CANBUS_STUDIO)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/Source/CANBusStudio)
 endif()
