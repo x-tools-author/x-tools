@@ -17,37 +17,6 @@
 
 #define SAK_STATIC Q_INVOKABLE static
 
-#define microIni2CoB(settings, settingsGroup, structMember, comboBox) \
-    SAKInterface::setComboBoxIndexFromSettings(settings, \
-                                               settingsGroup + QString("/") \
-                                                   + QString(#structMember).split('.').last(), \
-                                               comboBox)
-#define microCoB2Ini(settings, settingsGroup, structMember, comboBox) \
-    SAKInterface::setSettingsValueFromComboBoxIndex(settings, \
-                                                    settingsGroup + QString("/") \
-                                                        + QString(#structMember).split('.').last(), \
-                                                    comboBox)
-#define microIni2LE(settings, settingsGroup, structMember, lineEdit) \
-    SAKInterface::setLineEditTextFromSettings(settings, \
-                                              settingsGroup + QString("/") \
-                                                  + QString(#structMember).split('.').last(), \
-                                              lineEdit)
-#define microLE2Ini(settings, settingsGroup, structMember, lineEdit) \
-    SAKInterface::setSettingsValueFromLineEditText(settings, \
-                                                   settingsGroup + QString("/") \
-                                                       + QString(#structMember).split('.').last(), \
-                                                   lineEdit)
-#define microIni2ChB(settings, settingsGroup, structMember, checkBox) \
-    SAKInterface::setCheckBoxValueFromSettings(settings, \
-                                               settingsGroup + QString("/") \
-                                                   + QString(#structMember).split('.').last(), \
-                                               checkBox)
-#define microChB2Ini(settings, settingsGroup, structMember, checkBox) \
-    SAKInterface::setSettingsValueFromCheckBox(settings, \
-                                               settingsGroup + QString("/") \
-                                                   + QString(#structMember).split('.').last(), \
-                                               checkBox)
-
 class xToolsInterface : public QObject
 {
     Q_OBJECT

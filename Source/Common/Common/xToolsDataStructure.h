@@ -55,8 +55,6 @@ public:
     };
     Q_ENUM(EDEnumResponseOptions)
 
-    enum SAKEnumPalette { PaletteSystem, PaletteLight, PaletteDark, PaletteCustom };
-    Q_ENUM(SAKEnumPalette)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     enum SAKHdpiPolicy {
         HdpiPolicyRound = int(Qt::HighDpiScaleFactorRoundingPolicy::Round),
@@ -69,25 +67,10 @@ public:
     Q_ENUM(SAKHdpiPolicy)
 #endif
 
-    struct EDStructDataItem
-    {
-        int itemTextFormat;
-        int itemTextEscapeChracter;
-        QString itemText;
-        int itemPrefix;
-        int itemSuffix;
-
-        bool itemCrcEnable;
-        int itemCrcAlgorithm;
-        int itemCrcStartIndex;
-        int itemCrcEndIndex;
-    };
-
 public:
     static QString affixesName(int affixes);
     static QByteArray affixesData(int affixes);
     static QString cookedString(int escapeCharacter, const QString &str);
-    static QByteArray dataItemBytes(const EDStructDataItem &item);
     static QString textFormatName(int textFormat);
     Q_INVOKABLE static QString cookEscapeCharacter(int option, const QString &str);
 

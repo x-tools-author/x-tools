@@ -14,9 +14,6 @@
 #include <QRegularExpressionValidator>
 #include <QStandardItemModel>
 
-#include "xToolsCrcInterface.h"
-#include "xToolsInterface.h"
-
 xToolsDataStructure::xToolsDataStructure(QObject *parent)
     : QObject(parent)
 {}
@@ -461,27 +458,6 @@ QByteArray xToolsDataStructure::affixesData(int affixes)
 QString xToolsDataStructure::cookedString(int escapeCharacter, const QString &str)
 {
     return xToolsDataStructure::cookEscapeCharacter(escapeCharacter, str);
-}
-
-QByteArray xToolsDataStructure::dataItemBytes(const EDStructDataItem &item)
-{
-    QByteArray bytes;
-    QString text = item.itemText;
-    text = xToolsDataStructure::cookedString(item.itemTextEscapeChracter, text);
-    bytes = xToolsInterface::string2array(text, item.itemTextFormat);
-    xToolsCrcInterface sakCrc;
-    QByteArray crcBytes = sakCrc.calculateBytes(bytes,
-                                                item.itemCrcAlgorithm,
-                                                item.itemCrcStartIndex,
-                                                item.itemCrcEndIndex);
-    QByteArray prefix = xToolsDataStructure::affixesData(item.itemPrefix);
-    QByteArray suffix = xToolsDataStructure::affixesData(item.itemSuffix);
-
-    bytes.prepend(prefix);
-    bytes.append(crcBytes);
-    bytes.append(suffix);
-
-    return bytes;
 }
 
 QString xToolsDataStructure::textFormatName(int textFormat)
