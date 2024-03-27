@@ -24,7 +24,7 @@ namespace Ui {
 class xToolsModbusStudioUi;
 }
 
-struct SAKModbusUiSettingKeys;
+struct xToolsModbusUiSettingKeys;
 class xToolsModbusStudioUi : public QWidget
 {
     Q_OBJECT
@@ -40,7 +40,7 @@ private:
     QModbusDevice *m_modbusDevice{Q_NULLPTR};
     QSettings *m_settings{Q_NULLPTR};
     QStandardItemModel *m_registerModel{Q_NULLPTR};
-    SAKModbusUiSettingKeys *m_keyCtx;
+    xToolsModbusUiSettingKeys *m_keyCtx;
 
 private:
     void initComponents();
@@ -121,7 +121,7 @@ private:
     QList<quint16> getClientRegisterValue();
     QByteArray getClientPdu();
     QTableView *getTableView(QModbusDataUnit::RegisterType table);
-    QList<quint16> getTableValues(QTableView *table_view, int row, int count);
+    QList<quint16> getTableValues(QTableView *tableView, int row, int count);
 
     void outputModbusReply(QModbusReply *reply, int functionCode);
     void outputMessage(const QString &msg,

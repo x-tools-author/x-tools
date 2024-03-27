@@ -8,7 +8,6 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QLoggingCategory>
 #include <QModbusDataUnit>
 #include <QModbusDevice>
 #include <QModbusReply>
@@ -77,7 +76,4 @@ public:
                                  int server_address,
                                  int function_code,
                                  const QByteArray &data);
-
-private:
-    const QLoggingCategory kLoggingCategory{"SAK.Modbus.Factory"};
 };

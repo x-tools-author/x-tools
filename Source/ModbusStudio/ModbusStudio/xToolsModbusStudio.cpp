@@ -9,6 +9,7 @@
 #include "xToolsModbusStudio.h"
 
 #include <QCoreApplication>
+#include <QDebug>
 #include <QModbusTcpClient>
 #include <QModbusTcpServer>
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
@@ -49,7 +50,7 @@ const QString xToolsModbusStudio::TypeName(int type)
     }
 
     Q_ASSERT_X(false, __FUNCTION__, "Unknown modebus device type");
-    qCWarning(kLoggingCategory) << "Unknown modebus device type";
+    qWarning() << "Unknown modebus device type";
 
     return "Unknown";
 }
@@ -57,29 +58,29 @@ const QString xToolsModbusStudio::TypeName(int type)
 QModbusDevice *xToolsModbusStudio::CreateDevice(int type)
 {
     if (type == kModbusRtuSerialClient) {
-        qCInfo(kLoggingCategory) << "Create rtu serial client.";
+        qInfo() << "Create rtu serial client.";
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
         return new QModbusRtuSerialMaster(this);
 #else
         return new QModbusRtuSerialClient(this);
 #endif
     } else if (type == kModbusRtuSerialServer) {
-        qCInfo(kLoggingCategory) << "Create rtu serial server.";
+        qInfo() << "Create rtu serial server.";
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
         return new QModbusRtuSerialSlave(this);
 #else
         return new QModbusRtuSerialServer(this);
 #endif
     } else if (type == kModbusTcpClient) {
-        qCInfo(kLoggingCategory) << "Create tcp client.";
+        qInfo() << "Create tcp client.";
         return new QModbusTcpClient();
     } else if (type == kModbusTcpServer) {
-        qCInfo(kLoggingCategory) << "Create tcp server.";
+        qInfo() << "Create tcp server.";
         return new QModbusTcpServer();
     }
 
     Q_ASSERT_X(false, __FUNCTION__, "Unknown modebus device type");
-    qCWarning(kLoggingCategory) << "Unknown modebus device type";
+    qWarning() << "Unknown modebus device type";
 
     return Q_NULLPTR;
 }
@@ -192,8 +193,8 @@ bool xToolsModbusStudio::SetServerData(QModbusDevice *server,
         QModbusServer *modbusServer = qobject_cast<QModbusServer *>(server);
         is_ok = modbusServer->setData(table, address, data);
         if (enable_log) {
-            qCInfo(kLoggingCategory) << "Set register data result:" << is_ok << "table:" << table
-                                     << "address:" << address << "data:" << data;
+            qInfo() << "Set register data result:" << is_ok << "table:" << table
+                    << "address:" << address << "data:" << data;
         }
     }
 
@@ -213,12 +214,12 @@ QList<quint16> xToolsModbusStudio::GetServerData(QModbusDevice *server,
             if (cooked_server->data(table, i, &value)) {
                 values.append(value);
             } else {
-                qCWarning(kLoggingCategory) << "Parameters error!";
+                qWarning() << "Parameters error!";
                 break;
             }
         }
     } else {
-        qCWarning(kLoggingCategory) << "Can not get values from null object!";
+        qWarning() << "Can not get values from null object!";
     }
 
     return values;
@@ -248,10 +249,9 @@ QModbusDevice *xToolsModbusStudio::CreateRtuSerialDevice(
         device->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, stop_bits);
         device->setConnectionParameter(QModbusDevice::SerialParityParameter, parity);
 
-        qCInfo(kLoggingCategory) << "Set rtu serial modbus device parameters:"
-                                 << "port name:" << port_name << "baud rate:" << baud_rate
-                                 << "data bits:" << data_bits << "stop bits" << stop_bits
-                                 << "parity" << parity;
+        qInfo() << "Set rtu serial modbus device parameters:"
+                << "port name:" << port_name << "baud rate:" << baud_rate
+                << "data bits:" << data_bits << "stop bits" << stop_bits << "parity" << parity;
     }
 
     return device;
@@ -264,8 +264,8 @@ QModbusDevice *xToolsModbusStudio::CreateTcpDevice(int type, QString address, in
         device->setConnectionParameter(QModbusDevice::NetworkAddressParameter, address);
         device->setConnectionParameter(QModbusDevice::NetworkPortParameter, port);
 
-        qCInfo(kLoggingCategory) << "Set tcp modbus device parameters:"
-                                 << "ip address:" << address << "port" << port;
+        qInfo() << "Set tcp modbus device parameters:"
+                << "ip address:" << address << "port" << port;
     }
 
     return device;
@@ -276,9 +276,8 @@ void xToolsModbusStudio::SetClientDeviceParameters(QModbusDevice *client,
                                                  int number_of_retries)
 {
     if (client) {
-        qCInfo(kLoggingCategory) << "Set modbus client device parameters:"
-                                 << "timeout:" << timeout << "number_of_retries"
-                                 << number_of_retries;
+        qInfo() << "Set modbus client device parameters:"
+                << "timeout:" << timeout << "number_of_retries" << number_of_retries;
 
         QModbusClient *cooked_client = qobject_cast<QModbusClient *>(client);
         cooked_client->setTimeout(timeout);
@@ -292,9 +291,9 @@ void xToolsModbusStudio::SetServerDeviceParameters(QModbusDevice *server,
                                                  bool listen_only_mode)
 {
     if (server) {
-        qCInfo(kLoggingCategory) << "Set modbus server device parameters:"
-                                 << "address:" << address << "device busy" << device_busy
-                                 << "listen only mode:" << listen_only_mode;
+        qInfo() << "Set modbus server device parameters:"
+                << "address:" << address << "device busy" << device_busy
+                << "listen only mode:" << listen_only_mode;
 
         QModbusServer *cooked_server = qobject_cast<QModbusServer *>(server);
         cooked_server->setServerAddress(address);
@@ -317,15 +316,14 @@ QModbusReply *xToolsModbusStudio::SendWriteRequest(QModbusDevice *modbus_device,
         auto cooked_type = QModbusDataUnit::RegisterType(register_type);
         QModbusDataUnit dataUnit(cooked_type, start_address, values);
         if (dataUnit.isValid()) {
-            qCInfo(kLoggingCategory)
-                << "register-type:" << register_type << " start-address:" << start_address
-                << " serverAddress:" << server_address << " values:" << values;
+            qInfo() << "register-type:" << register_type << " start-address:" << start_address
+                    << " serverAddress:" << server_address << " values:" << values;
 
             auto *client = qobject_cast<QModbusClient *>(modbus_device);
             QModbusReply *reply = client->sendWriteRequest(dataUnit, server_address);
             return reply;
         } else {
-            qCWarning(kLoggingCategory) << "Unvalid data unit!";
+            qWarning() << "Unvalid data unit!";
         }
     }
 

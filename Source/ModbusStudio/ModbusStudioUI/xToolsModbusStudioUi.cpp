@@ -49,35 +49,35 @@
 #define TXFLAG "tx:"
 #define MAX_HISTORY_INDEX 9
 
-struct SAKModbusUiSettingKeys
+struct xToolsModbusUiSettingKeys
 {
-    const QString device_index = "SAKModbus/deviceIndex";
+    const QString deviceIndex = "xToolsModbus/deviceIndex";
 
-    const QString port_name = "SAKModbus/portName";
-    const QString parity = "SAKModbus/parity";
-    const QString baud_rate = "SAKModbus/baudRate";
-    const QString data_bits = "SAKModbus/dataBits";
-    const QString stop_bits = "SAKModbus/stopBits";
-    const QString custom_baud_rate = "SAKModbus/customBaudRate";
+    const QString portName = "xToolsModbus/portName";
+    const QString parity = "xToolsModbus/parity";
+    const QString baudRate = "xToolsModbus/baudRate";
+    const QString dataBits = "xToolsModbus/dataBits";
+    const QString stopBits = "xToolsModbus/stopBits";
+    const QString customBaudRate = "xToolsModbus/customBaudRate";
 
-    const QString address = "SAKModbus/address";
-    const QString port = "SAKModbus/port";
-    const QString custom_address = "SAKModbus/customAddress";
+    const QString address = "xToolsModbus/address";
+    const QString port = "xToolsModbus/port";
+    const QString customAddress = "xToolsModbus/customAddress";
 
-    const QString client_timeout = "SAKModbus/clientTimeout";
-    const QString client_repeat_time = "SAKModbus/clientRepeatTime";
+    const QString clientTimeout = "xToolsModbus/clientTimeout";
+    const QString clientRepeatTime = "xToolsModbus/clientRepeatTime";
 
-    const QString server_is_busy = "SAKModbus/serverIsBusy";
-    const QString server_just_listen = "SAKModbus/serverJustListen";
-    const QString server_address = "SAKModbus/serverAddress";
+    const QString serverIsBusy = "xToolsModbus/serverIsBusy";
+    const QString serverJustListen = "xToolsModbus/serverJustListen";
+    const QString serverAddress = "xToolsModbus/serverAddress";
 
-    const QString function_code = "SAKModbus/functionCode";
-    const QString target_address = "SAKModbus/targetAddress";
-    const QString start_address = "SAKModbus/startAddress";
-    const QString address_number = "SAKModbus/addressNumber";
+    const QString functionCode = "xToolsModbus/functionCode";
+    const QString targetAddress = "xToolsModbus/targetAddress";
+    const QString startAddress = "xToolsModbus/startAddress";
+    const QString addressNumber = "xToolsModbus/addressNumber";
 
-    const QString send_history = "SAKModbus/sendHistory";
-    const QString send_history_index = "SAKModbus/sendHistoryIndex";
+    const QString sendHistory = "xToolsModbus/sendHistory";
+    const QString sendHistoryIndex = "xToolsModbus/sendHistoryIndex";
     const QString pdu = "pdu";
 };
 
@@ -121,7 +121,7 @@ xToolsModbusStudioUi::xToolsModbusStudioUi(QWidget *parent)
     , ui(new Ui::xToolsModbusStudioUi)
     , m_modbusDevice(Q_NULLPTR)
     , m_registerModel(Q_NULLPTR)
-    , m_keyCtx(new SAKModbusUiSettingKeys)
+    , m_keyCtx(new xToolsModbusUiSettingKeys)
 {
     if (!m_settings) {
         m_settings = xToolsSettings::instance();
@@ -295,7 +295,7 @@ void xToolsModbusStudioUi::initSettings()
 
 void xToolsModbusStudioUi::initSettingsDevice()
 {
-    int deviceIndex = m_settings->value(m_keyCtx->device_index).toInt();
+    int deviceIndex = m_settings->value(m_keyCtx->deviceIndex).toInt();
     if (deviceIndex >= 0 && deviceIndex < ui->device_list_->count()) {
         ui->device_list_->setCurrentIndex(deviceIndex);
     }
@@ -322,67 +322,67 @@ void xToolsModbusStudioUi::initSettingsSerialPort()
         }
     };
 
-    QString portName = m_settings->value(m_keyCtx->port_name).toString();
+    QString portName = m_settings->value(m_keyCtx->portName).toString();
     int index = ui->port_name_->findText(portName);
     SetComboBoxIndex(index, ui->port_name_);
 
     index = m_settings->value(m_keyCtx->parity).toInt();
     SetComboBoxIndex(index, ui->parity_);
 
-    QString bd = m_settings->value(m_keyCtx->baud_rate).toString();
+    QString bd = m_settings->value(m_keyCtx->baudRate).toString();
     ui->baud_rate_->setCurrentText(bd);
 
-    index = m_settings->value(m_keyCtx->data_bits).toInt();
+    index = m_settings->value(m_keyCtx->dataBits).toInt();
     SetComboBoxIndex(index, ui->data_bits_);
 
-    index = m_settings->value(m_keyCtx->stop_bits).toInt();
+    index = m_settings->value(m_keyCtx->stopBits).toInt();
     SetComboBoxIndex(index, ui->stop_bits_);
 }
 
 void xToolsModbusStudioUi::initSettingsClient()
 {
-    int timeout = m_settings->value(m_keyCtx->client_timeout).toInt();
+    int timeout = m_settings->value(m_keyCtx->clientTimeout).toInt();
     ui->timeout_->setValue(timeout < 100 ? 100 : timeout);
 
-    const QString key = m_keyCtx->client_repeat_time;
+    const QString key = m_keyCtx->clientRepeatTime;
     int repeatTimes = m_settings->value(key).toInt();
     ui->repeat_time_->setValue(repeatTimes);
 }
 
 void xToolsModbusStudioUi::initSettingsServer()
 {
-    bool isBusy = m_settings->value(m_keyCtx->server_is_busy).toBool();
+    bool isBusy = m_settings->value(m_keyCtx->serverIsBusy).toBool();
     ui->device_busy_->setChecked(isBusy);
 
-    QString key = m_keyCtx->server_just_listen;
+    QString key = m_keyCtx->serverJustListen;
     bool just_listen = m_settings->value(key).toBool();
     ui->listen_only_mode_->setChecked(just_listen);
 
-    int address = m_settings->value(m_keyCtx->server_address).toInt();
+    int address = m_settings->value(m_keyCtx->serverAddress).toInt();
     ui->server_address->setValue(address);
 }
 
 void xToolsModbusStudioUi::initSettingsClientOperations()
 {
-    int index = m_settings->value(m_keyCtx->function_code).toInt();
+    int index = m_settings->value(m_keyCtx->functionCode).toInt();
     if (index >= 0 && index < ui->function_code_->count()) {
         ui->function_code_->setCurrentIndex(index);
     }
 
-    int address = m_settings->value(m_keyCtx->target_address).toInt();
+    int address = m_settings->value(m_keyCtx->targetAddress).toInt();
     ui->device_address_->setValue(address);
 
-    int start = m_settings->value(m_keyCtx->start_address).toInt();
+    int start = m_settings->value(m_keyCtx->startAddress).toInt();
     ui->start_address_->setValue(start);
 
-    int number = m_settings->value(m_keyCtx->address_number).toInt();
+    int number = m_settings->value(m_keyCtx->addressNumber).toInt();
     ui->quantity_->setValue(number);
 }
 
 void xToolsModbusStudioUi::initSettingsInput()
 {
     ui->pdu_->clear();
-    m_settings->beginReadArray(m_keyCtx->send_history);
+    m_settings->beginReadArray(m_keyCtx->sendHistory);
     for (int i = 0; i < 10; i++) {
         m_settings->setArrayIndex(i);
         QString text = m_settings->value(m_keyCtx->pdu).toString();
@@ -392,7 +392,7 @@ void xToolsModbusStudioUi::initSettingsInput()
     }
     m_settings->endArray();
 
-    int index = m_settings->value(m_keyCtx->send_history_index).toInt();
+    int index = m_settings->value(m_keyCtx->sendHistoryIndex).toInt();
     ui->pdu_->setCurrentIndex(index - 1);
 }
 
@@ -547,7 +547,7 @@ void xToolsModbusStudioUi::onDeviceTypeChanged()
         ui->registersGroupBox->setHidden(false);
     }
 
-    m_settings->setValue(m_keyCtx->device_index, type);
+    m_settings->setValue(m_keyCtx->deviceIndex, type);
 }
 
 void xToolsModbusStudioUi::onCloseClicked()
@@ -612,7 +612,7 @@ void xToolsModbusStudioUi::onPortChanged()
 
 void xToolsModbusStudioUi::onPortNameChanged()
 {
-    m_settings->setValue(m_keyCtx->port_name, ui->port_name_->currentText());
+    m_settings->setValue(m_keyCtx->portName, ui->port_name_->currentText());
 }
 
 void xToolsModbusStudioUi::onParityChanged()
@@ -622,17 +622,17 @@ void xToolsModbusStudioUi::onParityChanged()
 
 void xToolsModbusStudioUi::onBaudRateChanged()
 {
-    m_settings->setValue(m_keyCtx->baud_rate, ui->baud_rate_->currentText());
+    m_settings->setValue(m_keyCtx->baudRate, ui->baud_rate_->currentText());
 }
 
 void xToolsModbusStudioUi::onDataBitsChanged()
 {
-    m_settings->setValue(m_keyCtx->data_bits, ui->data_bits_->currentIndex());
+    m_settings->setValue(m_keyCtx->dataBits, ui->data_bits_->currentIndex());
 }
 
 void xToolsModbusStudioUi::onStopBistChanged()
 {
-    m_settings->setValue(m_keyCtx->stop_bits, ui->stop_bits_->currentIndex());
+    m_settings->setValue(m_keyCtx->stopBits, ui->stop_bits_->currentIndex());
 }
 
 void xToolsModbusStudioUi::onInvokeRefresh()
@@ -642,54 +642,54 @@ void xToolsModbusStudioUi::onInvokeRefresh()
 
 void xToolsModbusStudioUi::onClientTimeoutChanged()
 {
-    m_settings->setValue(m_keyCtx->client_timeout, ui->timeout_->value());
+    m_settings->setValue(m_keyCtx->clientTimeout, ui->timeout_->value());
     updateClientParameters();
 }
 
 void xToolsModbusStudioUi::onClientRepeatTimeChanged()
 {
-    m_settings->setValue(m_keyCtx->client_repeat_time, ui->repeat_time_->value());
+    m_settings->setValue(m_keyCtx->clientRepeatTime, ui->repeat_time_->value());
     updateClientParameters();
 }
 
 void xToolsModbusStudioUi::onServerIsBusyChanged()
 {
-    m_settings->setValue(m_keyCtx->server_is_busy, ui->device_busy_->isChecked());
+    m_settings->setValue(m_keyCtx->serverIsBusy, ui->device_busy_->isChecked());
     updateServerParameters();
 }
 
 void xToolsModbusStudioUi::onServerJustListenChanged()
 {
-    m_settings->setValue(m_keyCtx->server_just_listen, ui->listen_only_mode_->isChecked());
+    m_settings->setValue(m_keyCtx->serverJustListen, ui->listen_only_mode_->isChecked());
     updateServerParameters();
 }
 
 void xToolsModbusStudioUi::onServerAddressChanged()
 {
-    m_settings->setValue(m_keyCtx->server_address, ui->server_address->value());
+    m_settings->setValue(m_keyCtx->serverAddress, ui->server_address->value());
     updateServerParameters();
 }
 
 void xToolsModbusStudioUi::onFunctionCodeChanged()
 {
-    m_settings->setValue(m_keyCtx->function_code, ui->function_code_->currentIndex());
+    m_settings->setValue(m_keyCtx->functionCode, ui->function_code_->currentIndex());
     updateClientReadWriteButtonState();
 }
 
 void xToolsModbusStudioUi::onTargetAddressChanged()
 {
-    m_settings->setValue(m_keyCtx->target_address, ui->device_address_->value());
+    m_settings->setValue(m_keyCtx->targetAddress, ui->device_address_->value());
 }
 
 void xToolsModbusStudioUi::onStartAddressChanged()
 {
-    m_settings->setValue(m_keyCtx->start_address, ui->start_address_->value());
+    m_settings->setValue(m_keyCtx->startAddress, ui->start_address_->value());
     updateClientTableView();
 }
 
 void xToolsModbusStudioUi::onAddressNumberChanged()
 {
-    m_settings->setValue(m_keyCtx->address_number, ui->quantity_->value());
+    m_settings->setValue(m_keyCtx->addressNumber, ui->quantity_->value());
     updateClientTableView();
 }
 
@@ -808,8 +808,8 @@ void xToolsModbusStudioUi::onSendClicked()
     }
 
     // Update settings data.
-    int index = m_settings->value(m_keyCtx->send_history_index).toInt();
-    bool ret = writeSettingsArray(m_keyCtx->send_history,
+    int index = m_settings->value(m_keyCtx->sendHistoryIndex).toInt();
+    bool ret = writeSettingsArray(m_keyCtx->sendHistory,
                                   m_keyCtx->pdu,
                                   QString(xToolsByteArrayToHex(pdu, ' ')),
                                   index,
@@ -825,7 +825,7 @@ void xToolsModbusStudioUi::onSendClicked()
     }
 
     index = index + 1 > MAX_HISTORY_INDEX ? 0 : index + 1;
-    m_settings->setValue(m_keyCtx->send_history_index, index);
+    m_settings->setValue(m_keyCtx->sendHistoryIndex, index);
 }
 
 void xToolsModbusStudioUi::onDateWritten(QModbusDataUnit::RegisterType table, int address, int size)
@@ -1164,14 +1164,14 @@ QTableView *xToolsModbusStudioUi::getTableView(QModbusDataUnit::RegisterType tab
     return qobject_cast<QTableView *>(tv);
 }
 
-QList<quint16> xToolsModbusStudioUi::getTableValues(QTableView *table_view, int row, int count)
+QList<quint16> xToolsModbusStudioUi::getTableValues(QTableView *tableView, int row, int count)
 {
-    if (!table_view) {
+    if (!tableView) {
         qWarning() << "Table view can not be null!";
         return QList<quint16>();
     }
 
-    auto *model = qobject_cast<QStandardItemModel *>(table_view->model());
+    auto *model = qobject_cast<QStandardItemModel *>(tableView->model());
     if (!model) {
         qWarning() << "Model can not be null!";
         return QList<quint16>();
