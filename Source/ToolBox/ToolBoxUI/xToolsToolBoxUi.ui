@@ -33,7 +33,7 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="widgetControl" native="true">
      <property name="minimumSize">
       <size>
        <width>200</width>
@@ -54,7 +54,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QLabel" name="label_10">
+       <widget class="QLabel" name="labelCommunicationControl">
         <property name="font">
          <font>
           <pointsize>9</pointsize>
