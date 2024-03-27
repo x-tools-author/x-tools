@@ -84,7 +84,9 @@ MainWindow::MainWindow(QWidget* parent)
 
     initMenuBar();
     initNav();
+#if 0
     initStatusBar();
+#endif
 }
 
 MainWindow::~MainWindow() {}
