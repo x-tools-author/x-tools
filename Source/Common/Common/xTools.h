@@ -136,11 +136,12 @@ static void xToolsInitHdpi()
 
 static void xToolsInitAppStyle()
 {
-    qInfo() << "The supported application styles are:"
-            << qPrintable(QStyleFactory::keys().join(QChar(',')));
+    const QStringList keys = QStyleFactory::keys();
+    qInfo() << "The supported application styles are:" << qPrintable(keys.join(QChar(',')));
     const QString style = xToolsSettings::instance()->appStyle();
-    if (QStyleFactory::keys().contains(style)) {
-        qInfo() << "The current application style is:" << qPrintable(style);
+    qInfo() << style;
+    if (keys.contains(style)) {
+        qInfo() << "The current style of application is:" << qPrintable(style);
         QApplication::setStyle(QStyleFactory::create(style));
     }
 }

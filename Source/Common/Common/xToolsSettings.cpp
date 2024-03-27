@@ -81,7 +81,7 @@ QString xToolsSettings::appStyle()
 #ifdef X_TOOLS_DEFAULT_APP_STYLE
     return value(mSettingsKey.appStyle, X_TOOLS_DEFAULT_APP_STYLE).toString();
 #else
-    return QString("Funcsion");
+    return QString("Fusion");
 #endif
 }
 

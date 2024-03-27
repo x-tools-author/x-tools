@@ -58,6 +58,7 @@
         <property name="font">
          <font>
           <pointsize>9</pointsize>
+          <italic>true</italic>
           <bold>true</bold>
          </font>
         </property>
@@ -109,6 +110,7 @@
            <property name="font">
             <font>
              <pointsize>9</pointsize>
+             <italic>true</italic>
              <bold>true</bold>
             </font>
            </property>
@@ -257,6 +259,7 @@
           <widget class="QLabel" name="label_4">
            <property name="font">
             <font>
+             <italic>true</italic>
              <bold>true</bold>
             </font>
            </property>

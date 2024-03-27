@@ -37,6 +37,7 @@ DEFINES += X_TOOLS_VERSION=\"\\\"6.0.0\\\"\"
 DEFINES += X_TOOLS_EDITION=\"\\\"Beta\\\"\"
 DEFINES += X_TOOLS_AUTHOR=\"\\\"x-tools-author\\\"\"
 DEFINES += X_TOOLS_AUTHOR_EMAIL=\"\\\"x-tools@outlook.com\\\"\"
+DEFINES += X_TOOLS_DEFAULT_APP_STYLE=\"\\\"Fusion\\\"\"
 DEFINES += X_TOOLS_GITHUB_REPOSITORY_URL=\"\\\"https://github.com/x-tools-author/x-tools\\\"\"
 DEFINES += X_TOOLS_GITEE_REPOSITORY_URL=\"\\\"https://gitee.com/x-tools-author/x-tools\\\"\"
 

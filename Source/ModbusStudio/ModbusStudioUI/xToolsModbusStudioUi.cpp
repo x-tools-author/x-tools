@@ -515,26 +515,26 @@ void xToolsModbusStudioUi::OnDeviceTypeChanged()
     // Hide ui component first then show ui component,
     // or the window will be resize to the max size of default.
     if (isSerial) {
-        ui->networkGroupBox->setHidden(true);
-        ui->serialPortGroupBox->setHidden(false);
+        ui->widgetNetworkSettings->setHidden(true);
+        ui->widgetSerialPortSettings->setHidden(false);
     } else {
-        ui->serialPortGroupBox->setHidden(true);
-        ui->networkGroupBox->setHidden(false);
+        ui->widgetSerialPortSettings->setHidden(true);
+        ui->widgetNetworkSettings->setHidden(false);
     }
 
     if (isClient) {
         ui->console_->setVisible(true);
-        ui->serverGroupBox->setHidden(true);
+        ui->widgetServerParameters->setHidden(true);
         ui->registersGroupBox->setHidden(true);
-        ui->clientOperationsGroupBox->setHidden(false);
+        ui->widgetClientParameters->setHidden(false);
         ui->clientCustomCommandGroupBox->setHidden(false);
         ui->clientRegistersGroupBox->setHidden(false);
     } else {
         ui->console_->setVisible(false);
         ui->clientCustomCommandGroupBox->setHidden(true);
         ui->clientRegistersGroupBox->setHidden(true);
-        ui->clientOperationsGroupBox->setHidden(true);
-        ui->serverGroupBox->setHidden(false);
+        ui->widgetClientParameters->setHidden(true);
+        ui->widgetServerParameters->setHidden(false);
         ui->registersGroupBox->setHidden(false);
     }
 
@@ -946,11 +946,11 @@ void xToolsModbusStudioUi::UpdateUiState(bool connected)
     ui->device_list_->setEnabled(!connected);
     ui->cloese_button_->setEnabled(connected);
     ui->open_button_->setEnabled(!connected);
-    ui->networkGroupBox->setEnabled(!connected);
-    ui->serialPortGroupBox->setEnabled(!connected);
+    ui->widgetNetworkSettings->setEnabled(!connected);
+    ui->widgetSerialPortSettings->setEnabled(!connected);
 #if 0
     ui->clientGroupBox->setEnabled(!connected);
-    ui->serverGroupBox->setEnabled(!connected);
+    ui->widgetServerParameters->setEnabled(!connected);
 #endif
 }
 
