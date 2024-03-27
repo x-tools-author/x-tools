@@ -22,6 +22,9 @@ int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonM
     sakDoSomethingBeforeAppCreated(argv, cookedAppName);
 
     AppT app(argc, argv);
+#ifdef X_TOOLS_VERSION
+    app.setApplicationVersion(X_TOOLS_VERSION);
+#endif
     QSplashScreen& splashScreen = qobject_cast<xToolsApplication*>(qApp)->splashScreen();
     if (usingCommonMainWindow) {
         MainWindowT* mainWindow = new MainWindowT();

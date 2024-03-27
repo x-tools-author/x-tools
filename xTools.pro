@@ -33,6 +33,7 @@ win32 {
 # Definitions
 DEFINES += X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
 DEFINES += X_TOOLS_CLEAR_MESSAGE_INTERVAL=8000
+DEFINES += X_TOOLS_VERSION=\"\\\"6.0.0\\\"\"
 DEFINES += X_TOOLS_EDITION=\"\\\"Beta\\\"\"
 DEFINES += X_TOOLS_AUTHOR=\"\\\"x-tools-author\\\"\"
 DEFINES += X_TOOLS_AUTHOR_EMAIL=\"\\\"x-tools@outlook.com\\\"\"
