@@ -15,7 +15,7 @@
 xToolsComboBox::xToolsComboBox(QWidget* parent)
     : QComboBox(parent)
 {
-    connect(this, &xToolsComboBox::activated, this, &xToolsComboBox::writeToSettingsFile);
+    connect(this, &xToolsComboBox::currentTextChanged, this, &xToolsComboBox::writeToSettingsFile);
 }
 
 void xToolsComboBox::setCurrentIndexFromData(const QVariant& data)
