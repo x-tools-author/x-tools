@@ -111,7 +111,7 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/Source/Private/Private/Source/xTools/xToolsPrivate
   list(APPEND X_TOOLS_SOURCE
        ${CMAKE_SOURCE_DIR}/Source/Private/Private/Source/xTools/xToolsPrivate.cmake)
 endif()
-# add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private)
+add_subdirectory(${CMAKE_SOURCE_DIR}/Source/Private)
 x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
