@@ -150,7 +150,10 @@ static void xToolsInitAppStyle()
     const QStringList keys = QStyleFactory::keys();
     qInfo() << "The supported application styles are:" << qPrintable(keys.join(QChar(',')));
     const QString style = xToolsSettings::instance()->appStyle();
-    if (keys.contains(style)) {
+    if (style.isEmpty()) {
+        qWarning() << "The application style is not specified, the default style is:"
+                   << qPrintable(QApplication::style()->objectName());
+    } else if (keys.contains(style)) {
         qInfo() << "The current style of application is:" << qPrintable(style);
         QApplication::setStyle(QStyleFactory::create(style));
     }
@@ -167,7 +170,6 @@ static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 #endif
     xToolsTryToClearSettings();
     xToolsInitHdpi();
-    xToolsInitAppStyle();
 }
 
 static void sakDoSomethingAfterAppExited()

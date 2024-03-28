@@ -152,10 +152,6 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
     m_optionMenu->addMenu(appStyleMenu);
     QStringList keys = QStyleFactory::keys();
     QString style = xToolsSettings::instance()->appStyle();
-    if (style.isEmpty() && keys.contains(QString("Funsion"))) {
-        style = "Funsion";
-    }
-
     for (QString& key : keys) {
         QAction* action = new QAction(key, this);
         action->setObjectName(key);

@@ -12,6 +12,7 @@
 #include <QDesktopServices>
 #include <QStandardPaths>
 #include <QUrl>
+#include <QStyle>
 
 static const QString fileName()
 {
@@ -74,11 +75,16 @@ void xToolsSettings::setHdpiPolicy(int policy)
 
 QString xToolsSettings::appStyle()
 {
-#ifdef X_TOOLS_DEFAULT_APP_STYLE
-    return value(mSettingsKey.appStyle, X_TOOLS_DEFAULT_APP_STYLE).toString();
-#else
-    return QString("Fusion");
-#endif
+    auto var = value(mSettingsKey.appStyle);
+    if (var.isValid()) {
+        return value(mSettingsKey.appStyle).toString();
+    }
+
+    if (QApplication::instance()) {
+        return QApplication::style()->objectName();
+    }
+
+    return QString("");
 }
 
 void xToolsSettings::setAppStyle(const QString& style)

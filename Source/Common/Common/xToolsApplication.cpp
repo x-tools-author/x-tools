@@ -28,11 +28,14 @@
 #include <QTextDocument>
 #include <QTranslator>
 
+#include "xTools.h"
 #include "xToolsSettings.h"
 
 xToolsApplication::xToolsApplication(int argc, char *argv[])
     : QApplication(argc, argv)
 {
+    xToolsInitAppStyle();
+
     m_languageFlagNameMap.insert("zh_CN", "简体中文");
     m_languageFlagNameMap.insert("en", "English");
 #if 0
