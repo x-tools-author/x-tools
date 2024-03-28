@@ -229,7 +229,6 @@ HEADERS += \
     Source/Assistants/Ping/Source/xToolsPingAssistant.h \
     Source/Assistants/String/Source/xToolsStringAssistant.h \
     Source/Assistants/xToolsAssistantFactory.h \
-    Source/Common/Common/xTools.h \
     Source/Common/Common/xToolsApplication.h \
     Source/Common/Common/xToolsCompatibility.h \
     Source/Common/Common/xToolsCrcInterface.h \
@@ -238,6 +237,7 @@ HEADERS += \
     Source/Common/Common/xToolsSerialPortScanner.h \
     Source/Common/Common/xToolsSettings.h \
     Source/Common/Common/xToolsTableModel.h \
+    Source/Common/Common/xTools.h \
     Source/Common/CommonUI/xToolsAffixesComboBox.h \
     Source/Common/CommonUI/xToolsBaudRateComboBox.h \
     Source/Common/CommonUI/xToolsCheckBox.h \
@@ -257,7 +257,6 @@ HEADERS += \
     Source/Common/CommonUI/xToolsSpinBox.h \
     Source/Common/CommonUI/xToolsStopBitsComboBox.h \
     Source/Common/CommonUI/xToolsTextFormatComboBox.h \
-    Source/Common/CommonUI/xToolsUi.h \
     Source/Common/CommonUI/xToolsWebSocketMessageTypeComboBox.h \
     Source/MainWindow.h \
     Source/SystemTrayIcon.h \
