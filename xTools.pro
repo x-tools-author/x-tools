@@ -126,7 +126,6 @@ SOURCES += \
     Source/Assistants/xToolsAssistantFactory.cpp \
     Source/Common/Common/xToolsCrcInterface.cpp \
     Source/Common/Common/xToolsDataStructure.cpp \
-    Source/Common/Common/xToolsInterface.cpp \
     Source/Common/Common/xToolsNetworkInterfaceScanner.cpp \
     Source/Common/Common/xToolsSerialPortScanner.cpp \
     Source/Common/Common/xToolsSettings.cpp \
@@ -157,7 +156,6 @@ SOURCES += \
     Source/ToolBox/ToolBox/xToolsToolBox.cpp \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUiCommunicationMenu.cpp \
-    Source/ToolBox/ToolBoxUI/xToolsToolBoxUiFactory.cpp \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUiInputMenu.cpp \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUiOutputMenu.cpp \
     Source/Tools/Tools/xToolsAnalyzerTool.cpp \
@@ -236,7 +234,6 @@ HEADERS += \
     Source/Common/Common/xToolsCompatibility.h \
     Source/Common/Common/xToolsCrcInterface.h \
     Source/Common/Common/xToolsDataStructure.h \
-    Source/Common/Common/xToolsInterface.h \
     Source/Common/Common/xToolsNetworkInterfaceScanner.h \
     Source/Common/Common/xToolsSerialPortScanner.h \
     Source/Common/Common/xToolsSettings.h \
@@ -269,7 +266,6 @@ HEADERS += \
     Source/ToolBox/ToolBox/xToolsToolBox.h \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.h \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUiCommunicationMenu.h \
-    Source/ToolBox/ToolBoxUI/xToolsToolBoxUiFactory.h \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUiInputMenu.h \
     Source/ToolBox/ToolBoxUI/xToolsToolBoxUiOutputMenu.h \
     Source/Tools/Tools/xToolsAnalyzerTool.h \

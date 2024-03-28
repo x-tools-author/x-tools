@@ -50,18 +50,26 @@ QString xToolsSettings::settingsPath()
 
 int xToolsSettings::hdpiPolicy()
 {
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
     auto var = value(mSettingsKey.hdpiPolicy);
     if (var.isValid()) {
         return value(mSettingsKey.hdpiPolicy).toInt();
     }
 
     return int(QGuiApplication::highDpiScaleFactorRoundingPolicy());
+#else
+    return 0;
+#endif
 }
 
 void xToolsSettings::setHdpiPolicy(int policy)
 {
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
     setValue(mSettingsKey.hdpiPolicy, policy);
     emit hdpiPolicyChanged();
+#else
+    Q_UNUSED(policy)
+#endif
 }
 
 QString xToolsSettings::appStyle()

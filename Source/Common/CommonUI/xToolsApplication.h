@@ -12,6 +12,7 @@
 #include <QPixmap>
 #include <QSplashScreen>
 
+class QLineEdit;
 class xToolsApplication : public QApplication
 {
     Q_OBJECT
