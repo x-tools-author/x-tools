@@ -47,7 +47,7 @@ QVariant xToolsEmitterTool::itemContext(int index)
         ctx.insert(itemEnable(), true);
         ctx.insert(itemDescription(), "Demo");
         ctx.insert(itemTextFormat(), xToolsDataStructure::TextFormatAscii);
-        ctx.insert(itemEscapeCharacter(), xToolsDataStructure::EscapeCharacterOptionNone);
+        ctx.insert(itemEscapeCharacter(), xToolsDataStructure::EscapeCharacterNone);
         ctx.insert(itemInterval(), 1000);
         ctx.insert(itemPrefix(), xToolsDataStructure::AffixesNone);
         ctx.insert(itemSuffix(), xToolsDataStructure::AffixesNone);

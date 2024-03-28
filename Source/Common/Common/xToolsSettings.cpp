@@ -8,11 +8,10 @@
  **************************************************************************************************/
 #include "xToolsSettings.h"
 
-#include <QCoreApplication>
+#include <QApplication>
 #include <QDesktopServices>
 #include <QStandardPaths>
-
-#include "xToolsDataStructure.h"
+#include <QUrl>
 
 static const QString fileName()
 {
@@ -51,27 +50,16 @@ QString xToolsSettings::settingsPath()
 
 int xToolsSettings::hdpiPolicy()
 {
-    int ret = value(mSettingsKey.hdpiPolicy).toInt();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    if ((ret < 1) || (ret > 5)) {
-        if (ret != xToolsDataStructure::HdpiPolicySystem) {
-            ret = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
-        }
+    auto var = value(mSettingsKey.hdpiPolicy);
+    if (var.isValid()) {
+        return value(mSettingsKey.hdpiPolicy).toInt();
     }
-#endif
-    return ret;
+
+    return int(QGuiApplication::highDpiScaleFactorRoundingPolicy());
 }
 
 void xToolsSettings::setHdpiPolicy(int policy)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    if ((policy < 1) || (policy > 5)) {
-        if (policy != xToolsDataStructure::HdpiPolicySystem) {
-            policy = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
-        }
-    }
-#endif
-
     setValue(mSettingsKey.hdpiPolicy, policy);
     emit hdpiPolicyChanged();
 }

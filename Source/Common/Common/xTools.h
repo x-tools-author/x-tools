@@ -11,14 +11,15 @@
 #include <QApplication>
 #include <QDir>
 #include <QFile>
+#include <QMetaEnum>
 #include <QStyleFactory>
 
 #ifdef X_TOOLS_USING_GLOG
 #include "glog/logging.h"
 #endif
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-#include "xToolsInterface.h"
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#include "xToolsDataStructure.h"
 #endif
 #include "xToolsSettings.h"
 
@@ -125,12 +126,18 @@ static void xToolsInitHdpi()
 #if 0
     qputenv("QT_SCALE_FACTOR", "1.5");
 #endif
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
     int policy = xToolsSettings::instance()->hdpiPolicy();
-    if (xToolsInterface::isQtHighDpiScalePolicy(policy)) {
-        const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
-        QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
+    if (!xToolsDataStructure::isValidHighDpiPolicy(policy)) {
+        qWarning() << "The value of hdpi policy is not specified, set to default value:"
+                   << QGuiApplication::highDpiScaleFactorRoundingPolicy();
+        return;
     }
+
+    auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
+    qInfo() << "The current high dpi policy is:" << cookedPolicy;
 #endif
 }
 
@@ -139,7 +146,6 @@ static void xToolsInitAppStyle()
     const QStringList keys = QStyleFactory::keys();
     qInfo() << "The supported application styles are:" << qPrintable(keys.join(QChar(',')));
     const QString style = xToolsSettings::instance()->appStyle();
-    qInfo() << style;
     if (keys.contains(style)) {
         qInfo() << "The current style of application is:" << qPrintable(style);
         QApplication::setStyle(QStyleFactory::create(style));

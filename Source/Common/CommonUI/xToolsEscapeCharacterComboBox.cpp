@@ -13,10 +13,10 @@
 xToolsEscapeCharacterComboBox::xToolsEscapeCharacterComboBox(QWidget* parent)
     : xToolsComboBox(parent)
 {
-    addItem(tr("None"), xToolsDataStructure::EscapeCharacterOptionNone);
-    addItem("\\r", xToolsDataStructure::EscapeCharacterOptionR);
-    addItem("\\n", xToolsDataStructure::EscapeCharacterOptionN);
-    addItem("\\r\\n", xToolsDataStructure::EscapeCharacterOptionRN);
-    addItem("\\n\\r", xToolsDataStructure::EscapeCharacterOptionNR);
-    addItem("\\r + \\n", xToolsDataStructure::EscapeCharacterOptionRAndN);
+    addItem(tr("None"), xToolsDataStructure::EscapeCharacterNone);
+    addItem("\\r", xToolsDataStructure::EscapeCharacterR);
+    addItem("\\n", xToolsDataStructure::EscapeCharacterN);
+    addItem("\\r\\n", xToolsDataStructure::EscapeCharacterRN);
+    addItem("\\n\\r", xToolsDataStructure::EscapeCharacterNR);
+    addItem("\\r + \\n", xToolsDataStructure::EscapeCharacterRAndN);
 }

@@ -347,7 +347,7 @@ QVariant xToolsResponserTool::itemContext(int index)
             ctx.insert(itemOption(), 0);
 
             ctx.insert(itemReferenceTextFormat(), xToolsDataStructure::TextFormatAscii);
-            ctx.insert(itemReferenceEscapeCharacter(), xToolsDataStructure::EscapeCharacterOptionNone);
+            ctx.insert(itemReferenceEscapeCharacter(), xToolsDataStructure::EscapeCharacterNone);
             ctx.insert(itemReferencePrefix(), xToolsDataStructure::AffixesNone);
             ctx.insert(itemReferenceSuffix(), xToolsDataStructure::AffixesNone);
             ctx.insert(itemReferenceCrcEnable(), false);
@@ -358,7 +358,7 @@ QVariant xToolsResponserTool::itemContext(int index)
             ctx.insert(itemReferenceText(), "Reference data.");
 
             ctx.insert(itemResponseTextFormat(), xToolsDataStructure::TextFormatAscii);
-            ctx.insert(itemResponseEscapeCharacter(), xToolsDataStructure::EscapeCharacterOptionNone);
+            ctx.insert(itemResponseEscapeCharacter(), xToolsDataStructure::EscapeCharacterNone);
             ctx.insert(itemResponsePrefix(), xToolsDataStructure::AffixesNone);
             ctx.insert(itemResponseSuffix(), xToolsDataStructure::AffixesNone);
             ctx.insert(itemResponseCrcEnable(), false);

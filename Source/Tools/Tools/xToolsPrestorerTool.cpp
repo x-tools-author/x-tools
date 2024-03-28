@@ -250,7 +250,7 @@ QVariant xToolsPrestorerTool::itemContext(int index)
     } else {
         ctx.insert(itemDescription(), "Demo");
         ctx.insert(itemTextFormat(), xToolsDataStructure::TextFormatAscii);
-        ctx.insert(itemEscapeCharacter(), xToolsDataStructure::EscapeCharacterOptionNone);
+        ctx.insert(itemEscapeCharacter(), xToolsDataStructure::EscapeCharacterNone);
         ctx.insert(itemPrefix(), xToolsDataStructure::AffixesNone);
         ctx.insert(itemSuffix(), xToolsDataStructure::AffixesNone);
         ctx.insert(itemCrcEnable(), false);

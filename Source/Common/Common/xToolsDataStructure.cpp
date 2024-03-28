@@ -9,16 +9,223 @@
 #include "xToolsDataStructure.h"
 
 #include <QLineEdit>
+#include <QMap>
 #include <QMetaEnum>
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
 #include <QStandardItemModel>
+
+#include "xToolsCompatibility.h"
 
 xToolsDataStructure::xToolsDataStructure(QObject *parent)
     : QObject(parent)
 {}
 
 xToolsDataStructure::~xToolsDataStructure() {}
+
+QVariantList xToolsDataStructure::supportedTextFormats()
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<TextFormat>();
+    QVariantList list;
+    for (int i = 0; i < metaEnum.keyCount(); i++) {
+        list.append(metaEnum.value(i));
+    }
+    return list;
+}
+
+QString xToolsDataStructure::textFormatName(int textFormat)
+{
+    static QMap<int, QString> textFormatMap;
+    if (textFormatMap.isEmpty()) {
+        textFormatMap.insert(TextFormatBin, QString("BIN"));
+        textFormatMap.insert(TextFormatOct, QString("OCT"));
+        textFormatMap.insert(TextFormatDec, QString("DEC"));
+        textFormatMap.insert(TextFormatHex, QString("HEX"));
+        textFormatMap.insert(TextFormatAscii, QString("ASCII"));
+        textFormatMap.insert(TextFormatUtf8, QString("UTF8"));
+        textFormatMap.insert(TextFormatSystem, QString("SYSTEM"));
+    }
+
+    return textFormatMap.value(textFormat, "Unknown");
+}
+
+QString xToolsDataStructure::byteArrayToString(const QByteArray &array, int format)
+{
+    auto cookedArray = [](const QByteArray &array, int base, int len) -> QString {
+        QString str, numStr;
+        for (int i = 0; i < array.length(); i++) {
+            if (base == 10 || base == 8) {
+                numStr = QString::number(array.at(i), base);
+                str.append(QString("%1 ").arg(numStr));
+            } else {
+                numStr = QString::number(quint8(array.at(i)), base);
+                str.append(QString("%1 ").arg(numStr, len, '0'));
+            }
+        }
+        return str;
+    };
+
+    if (xToolsDataStructure::TextFormatBin == format) {
+        return cookedArray(array, 2, 8);
+    } else if (xToolsDataStructure::TextFormatOct == format) {
+        return cookedArray(array, 8, 3);
+    } else if (xToolsDataStructure::TextFormatDec == format) {
+        return cookedArray(array, 10, 3);
+    } else if (xToolsDataStructure::TextFormatHex == format) {
+        return cookedArray(array, 16, 2);
+    } else if (xToolsDataStructure::TextFormatAscii == format) {
+        return QString::fromLatin1(array);
+    } else if (xToolsDataStructure::TextFormatUtf8) {
+        return QString::fromUtf8(array);
+    } else if (xToolsDataStructure::TextFormatSystem) {
+        return QString::fromLocal8Bit(array);
+    } else {
+        Q_ASSERT_X(false, __FUNCTION__, "Unsupported text format");
+        return QString("Unsupported text format: %1").arg(format);
+    }
+}
+
+QByteArray xToolsDataStructure::stringToByteArray(const QString &str, int format)
+{
+    auto cookString = [](const QString &str, int base) -> QByteArray {
+        QByteArray data;
+        QStringList strList = str.split(' ', xToolsSkipEmptyParts);
+        for (int i = 0; i < strList.length(); i++) {
+            QString str = strList.at(i);
+            qint8 value = QString(str).toInt(Q_NULLPTR, base);
+            data.append(reinterpret_cast<char *>(&value), 1);
+        }
+
+        return data;
+    };
+
+    QByteArray data;
+    if (format == xToolsDataStructure::TextFormatBin) {
+        cookString(str, 2);
+    } else if (format == xToolsDataStructure::TextFormatOct) {
+        cookString(str, 8);
+    } else if (format == xToolsDataStructure::TextFormatDec) {
+        cookString(str, 10);
+    } else if (format == xToolsDataStructure::TextFormatHex) {
+        cookString(str, 16);
+    } else if (format == xToolsDataStructure::TextFormatAscii) {
+        data = str.toLatin1();
+    } else if (format == xToolsDataStructure::TextFormatUtf8) {
+        data = str.toUtf8();
+    } else if (format == xToolsDataStructure::TextFormatSystem) {
+        data = str.toLocal8Bit();
+    } else {
+        Q_ASSERT_X(false, __FUNCTION__, "Unsupported text format");
+        data = str.toLocal8Bit();
+    }
+
+    return data;
+}
+
+QString xToolsDataStructure::formatString(const QString &str, int format)
+{
+    static QRegularExpression binRegularExpression("[^0-1]");
+    static QRegularExpression octRegularExpression("[^0-7]");
+    static QRegularExpression decRegularExpression("[^0-9]");
+    static QRegularExpression hexRegularExpression("[^0-9a-fA-F]");
+    static QRegularExpression asciiRegularExpression("[^ -~]");
+
+    auto cookString = [](const QString &str, int length, QRegularExpression &re) -> QString {
+        QString rawString = str;
+        QString cookedString;
+        rawString.remove(re);
+        for (int i = 0; i < rawString.length(); i++) {
+            if ((i != 0) && (i % length == 0)) {
+                cookedString.append(QChar(' '));
+            }
+            cookedString.append(rawString.at(i));
+        }
+
+        return cookedString;
+    };
+
+    if (format == xToolsDataStructure::TextFormatBin) {
+        return cookString(str, 8, binRegularExpression);
+    } else if (format == xToolsDataStructure::TextFormatOct) {
+        return cookString(str, 3, octRegularExpression);
+    } else if (format == xToolsDataStructure::TextFormatDec) {
+        return cookString(str, 3, decRegularExpression);
+    } else if (format == xToolsDataStructure::TextFormatHex) {
+        return cookString(str, 3, hexRegularExpression);
+    } else if (format == xToolsDataStructure::TextFormatAscii) {
+        return QString(str).remove(asciiRegularExpression);
+    } else if (format == xToolsDataStructure::TextFormatUtf8) {
+        return QString::fromUtf8(str.toUtf8());
+    } else if (format == xToolsDataStructure::TextFormatSystem) {
+        return QString::fromUtf8(str.toLocal8Bit());
+    } else {
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown input model!");
+        return QString::fromUtf8(str.toLocal8Bit());
+    }
+}
+
+QString xToolsDataStructure::cookedString(int escapeCharacter, const QString &str)
+{
+    return xToolsDataStructure::cookEscapeCharacter(escapeCharacter, str);
+}
+
+QString xToolsDataStructure::cookEscapeCharacter(int option, const QString &str)
+{
+    QString newStr = str;
+    if (option == EscapeCharacterR) {
+        newStr.replace("\\r", "\r");
+    } else if (option == EscapeCharacterN) {
+        newStr.replace("\\n", "\n");
+    } else if (option == EscapeCharacterRN) {
+        newStr.replace("\\r\\n", "\r\n");
+    } else if (option == EscapeCharacterNR) {
+        newStr.replace("\\n\\r", "\n\\r");
+    } else if (option == EscapeCharacterRAndN) {
+        newStr.replace("\\r", "\r");
+        newStr.replace("\\n", "\n");
+    }
+
+    return newStr;
+}
+
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+QVariantList xToolsDataStructure::supportedHighDpiPolicies()
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<HighDpiPolicy>();
+    QVariantList list;
+    for (int i = 0; i < metaEnum.keyCount(); i++) {
+        list.append(metaEnum.value(i));
+    }
+    return list;
+}
+#endif
+
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+QString xToolsDataStructure::highDpiPolicyName(int policy)
+{
+    static QMap<int, QString> policyMap;
+    if (policyMap.isEmpty()) {
+        policyMap.insert(HighDpiPolicyRound, tr("Round up for .5 and above"));
+        policyMap.insert(HighDpiPolicyCeil, tr("Always round up"));
+        policyMap.insert(HighDpiPolicyFloor, tr("Always round down"));
+        policyMap.insert(HighDpiPolicyRoundPreferFloor, tr("Round up for .75 and above"));
+        policyMap.insert(HighDpiPolicyPassThrough, tr("Don't round"));
+#ifdef Q_OS_WIN
+        policyMap.insert(HighDpiPolicySystem, tr("System"));
+#endif
+    }
+
+    return policyMap.value(policy, "Unknown");
+}
+#endif
+
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+bool xToolsDataStructure::isValidHighDpiPolicy(int policy)
+{
+    auto policies = supportedHighDpiPolicies();
+    return policies.contains(QVariant(policy));
+}
+#endif
 
 QString xToolsDataStructure::cookedAffixes(int affixes)
 {
@@ -35,20 +242,52 @@ QString xToolsDataStructure::cookedAffixes(int affixes)
     }
 }
 
+QString xToolsDataStructure::affixesName(int affixes)
+{
+    if (xToolsDataStructure::AffixesNone == affixes) {
+        return "None";
+    } else if (xToolsDataStructure::AffixesR == affixes) {
+        return "//r";
+    } else if (xToolsDataStructure::AffixesN == affixes) {
+        return "//n";
+    } else if (xToolsDataStructure::AffixesRN == affixes) {
+        return "//r//n";
+    } else if (xToolsDataStructure::AffixesNR == affixes) {
+        return "//n//r";
+    }
+
+    return "None";
+}
+
+QByteArray xToolsDataStructure::affixesData(int affixes)
+{
+    if (affixes == xToolsDataStructure::AffixesNone) {
+        return QByteArray("");
+    } else if (affixes == xToolsDataStructure::AffixesR) {
+        return QByteArray("\r");
+    } else if (affixes == xToolsDataStructure::AffixesN) {
+        return QByteArray("\n");
+    } else if (affixes == xToolsDataStructure::AffixesRN) {
+        return QByteArray("\r\n");
+    } else if (affixes == xToolsDataStructure::AffixesNR) {
+        return QByteArray("\n\r");
+    }
+
+    return QByteArray("");
+}
+
 void xToolsDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
 {
     if (comboBox) {
         QMap<int, QString> formatMap;
-        formatMap.insert(OutputFormatBin, QString("BIN"));
-        formatMap.insert(OutputFormatOct, QString("OCT"));
-        formatMap.insert(OutputFormatDec, QString("DEC"));
-        formatMap.insert(OutputFormatHex, QString("HEX"));
-        formatMap.insert(OutputFormatUtf8, QString("UTF8"));
-        formatMap.insert(OutputFormatUcs4, QString("UCS4"));
-        formatMap.insert(OutputFormatAscii, QString("ASCII"));
-        formatMap.insert(OutputFormatUtf16, QString("UTF16"));
-        formatMap.insert(OutputFormatLocal, QString("SYSTEM"));
-        setComboBoxItems(comboBox, formatMap, OutputFormatHex);
+        formatMap.insert(TextFormatBin, QString("BIN"));
+        formatMap.insert(TextFormatOct, QString("OCT"));
+        formatMap.insert(TextFormatDec, QString("DEC"));
+        formatMap.insert(TextFormatHex, QString("HEX"));
+        formatMap.insert(TextFormatUtf8, QString("UTF8"));
+        formatMap.insert(TextFormatAscii, QString("ASCII"));
+        formatMap.insert(TextFormatSystem, QString("SYSTEM"));
+        setComboBoxItems(comboBox, formatMap, TextFormatHex);
     }
 }
 
@@ -57,13 +296,13 @@ void xToolsDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
     if (comboBox) {
         if (comboBox) {
             QMap<int, QString> formatMap;
-            formatMap.insert(InputFormatBin, QString("BIN"));
-            formatMap.insert(InputFormatOct, QString("OTC"));
-            formatMap.insert(InputFormatDec, QString("DEC"));
-            formatMap.insert(InputFormatHex, QString("HEX"));
-            formatMap.insert(InputFormatAscii, QString("ASCII"));
-            formatMap.insert(InputFormatLocal, QString("SYSTEM"));
-            setComboBoxItems(comboBox, formatMap, InputFormatLocal);
+            formatMap.insert(TextFormatBin, QString("BIN"));
+            formatMap.insert(TextFormatOct, QString("OTC"));
+            formatMap.insert(TextFormatDec, QString("DEC"));
+            formatMap.insert(TextFormatHex, QString("HEX"));
+            formatMap.insert(TextFormatAscii, QString("ASCII"));
+            formatMap.insert(TextFormatSystem, QString("SYSTEM"));
+            setComboBoxItems(comboBox, formatMap, TextFormatSystem);
         }
     }
 }
@@ -76,171 +315,7 @@ void xToolsDataStructure::setComboBoxTextWebSocketSendingType(QComboBox *comboBo
     }
 }
 
-QString xToolsDataStructure::formattingString(QString &origingString, SAKEnumTextFormatInput format)
-{
-    QString cookedString;
-    if (format == xToolsDataStructure::InputFormatBin) {
-        static auto tmp = QRegularExpression("[^0-1]");
-        origingString.remove(tmp);
-        for (int i = 0; i < origingString.length(); i++) {
-            if ((i != 0) && (i % 8 == 0)) {
-                cookedString.append(QChar(' '));
-            }
-            cookedString.append(origingString.at(i));
-        }
-    } else if (format == xToolsDataStructure::InputFormatOct) {
-        static auto tmp = QRegularExpression("[^0-7]");
-        origingString.remove(tmp);
-        for (int i = 0; i < origingString.length(); i++) {
-            if ((i != 0) && (i % 2 == 0)) {
-                cookedString.append(QChar(' '));
-            }
-            cookedString.append(origingString.at(i));
-        }
-    } else if (format == xToolsDataStructure::InputFormatDec) {
-        static auto tmp = QRegularExpression("[^0-9]");
-        origingString.remove(tmp);
-        for (int i = 0; i < origingString.length(); i++) {
-            if ((i != 0) && (i % 2 == 0)) {
-                cookedString.append(QChar(' '));
-            }
-            cookedString.append(origingString.at(i));
-        }
-    } else if (format == xToolsDataStructure::InputFormatHex) {
-        static auto tmp = QRegularExpression("[^0-9a-fA-F]");
-        origingString.remove(tmp);
-        for (int i = 0; i < origingString.length(); i++) {
-            if ((i != 0) && (i % 2 == 0)) {
-                cookedString.append(QChar(' '));
-            }
-            cookedString.append(origingString.at(i));
-        }
-    } else if (format == xToolsDataStructure::InputFormatAscii) {
-        for (int i = 0; i < origingString.length(); i++) {
-            if (origingString.at(i).unicode() <= 127) {
-                cookedString.append(origingString.at(i));
-            }
-        }
-    } else if (format == xToolsDataStructure::InputFormatLocal) {
-        cookedString = origingString;
-    } else {
-        Q_ASSERT_X(false, __FUNCTION__, "Unknown input model!");
-    }
-
-    return cookedString;
-}
-
-QByteArray xToolsDataStructure::stringToByteArray(QString &origingString, SAKEnumTextFormatInput format)
-{
-    QByteArray data;
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-    auto behavior = QString::SkipEmptyParts;
-#else
-    auto behavior = Qt::SkipEmptyParts;
-#endif
-    if (format == xToolsDataStructure::InputFormatBin) {
-        QStringList strList = origingString.split(' ', behavior);
-        for (int i = 0; i < strList.length(); i++) {
-            QString str = strList.at(i);
-            qint8 value = QString(str).toInt(Q_NULLPTR, 2);
-            data.append(reinterpret_cast<char *>(&value), 1);
-        }
-    } else if (format == xToolsDataStructure::InputFormatOct) {
-        QStringList strList = origingString.split(' ', behavior);
-        for (int i = 0; i < strList.length(); i++) {
-            QString str = strList.at(i);
-            qint8 value = QString(str).toInt(Q_NULLPTR, 8);
-            data.append(reinterpret_cast<char *>(&value), 1);
-        }
-    } else if (format == xToolsDataStructure::InputFormatDec) {
-        QStringList strList = origingString.split(' ', behavior);
-        for (int i = 0; i < strList.length(); i++) {
-            QString str = strList.at(i);
-            qint8 value = QString(str).toInt(Q_NULLPTR, 10);
-            data.append(reinterpret_cast<char *>(&value), 1);
-        }
-    } else if (format == xToolsDataStructure::InputFormatHex) {
-        QStringList strList = origingString.split(' ', behavior);
-        for (int i = 0; i < strList.length(); i++) {
-            QString str = strList.at(i);
-            qint8 value = QString(str).toInt(Q_NULLPTR, 16);
-            data.append(reinterpret_cast<char *>(&value), 1);
-        }
-    } else if (format == xToolsDataStructure::InputFormatAscii) {
-        data = origingString.toLatin1();
-    } else if (format == xToolsDataStructure::InputFormatLocal) {
-        data = origingString.toLocal8Bit();
-    } else {
-        data = origingString.toUtf8();
-        Q_ASSERT_X(false, __FUNCTION__, "Unknown input mode!");
-    }
-
-    return data;
-}
-
-QByteArray xToolsDataStructure::stringToByteArray(QString &origingString, int format)
-{
-    auto cookedFormat = static_cast<xToolsDataStructure::SAKEnumTextFormatInput>(format);
-    return stringToByteArray(origingString, cookedFormat);
-}
-
-QString xToolsDataStructure::byteArrayToString(const QByteArray &origingData,
-                                            SAKEnumTextFormatOutput format)
-{
-    QString str;
-    if (format == xToolsDataStructure::OutputFormatBin) {
-        for (int i = 0; i < origingData.length(); i++) {
-            str.append(
-                QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 2),
-                                   8,
-                                   '0'));
-        }
-    } else if (format == xToolsDataStructure::OutputFormatOct) {
-        for (int i = 0; i < origingData.length(); i++) {
-            str.append(
-                QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 8),
-                                   3,
-                                   '0'));
-        }
-    } else if (format == xToolsDataStructure::OutputFormatDec) {
-        for (int i = 0; i < origingData.length(); i++) {
-            str.append(
-                QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 10)));
-        }
-    } else if (format == xToolsDataStructure::OutputFormatHex) {
-        for (int i = 0; i < origingData.length(); i++) {
-            str.append(
-                QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 16),
-                                   2,
-                                   '0'));
-        }
-    } else if (format == xToolsDataStructure::OutputFormatAscii) {
-        str.append(QString::fromLatin1(origingData));
-    } else if (format == xToolsDataStructure::OutputFormatUtf8) {
-        str.append(QString::fromUtf8(origingData));
-    } else if (format == xToolsDataStructure::OutputFormatUtf16) {
-        str.append(QString::fromUtf16(reinterpret_cast<const char16_t *>(origingData.constData()),
-                                      origingData.length() / sizeof(char16_t)));
-    } else if (format == xToolsDataStructure::OutputFormatUcs4) {
-        str.append(QString::fromUcs4(reinterpret_cast<const char32_t *>(origingData.constData()),
-                                     origingData.length() / sizeof(char32_t)));
-    } else if (format == xToolsDataStructure::OutputFormatLocal) {
-        str.append(QString::fromLocal8Bit(origingData));
-    } else {
-        str.append(QString::fromUtf8(origingData));
-        Q_ASSERT_X(false, __FUNCTION__, "Unknown output mode!");
-    }
-
-    return str;
-}
-
-QString xToolsDataStructure::byteArrayToString(const QByteArray &origingData, int format)
-{
-    auto cookedFormat = static_cast<xToolsDataStructure::SAKEnumTextFormatOutput>(format);
-    return byteArrayToString(origingData, cookedFormat);
-}
-
-void xToolsDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, SAKEnumTextFormatInput format)
+void xToolsDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, TextFormat format)
 {
     QMap<int, QRegularExpressionValidator *> regExpMap;
     QRegularExpression binRegExp = QRegularExpression("([01][01][01][01][01][01][01][01][ ])*");
@@ -248,13 +323,13 @@ void xToolsDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, SAKEnumText
     QRegularExpression decRegExp = QRegularExpression("([0-9][0-9][ ])*");
     QRegularExpression hexRegExp = QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*");
     QRegularExpression asciiRegExp = QRegularExpression("([ -~])*");
-    regExpMap.insert(xToolsDataStructure::InputFormatBin, new QRegularExpressionValidator(binRegExp));
-    regExpMap.insert(xToolsDataStructure::InputFormatOct, new QRegularExpressionValidator(otcRegExp));
-    regExpMap.insert(xToolsDataStructure::InputFormatDec, new QRegularExpressionValidator(decRegExp));
-    regExpMap.insert(xToolsDataStructure::InputFormatHex, new QRegularExpressionValidator(hexRegExp));
-    regExpMap.insert(xToolsDataStructure::InputFormatAscii,
+    regExpMap.insert(xToolsDataStructure::TextFormatBin, new QRegularExpressionValidator(binRegExp));
+    regExpMap.insert(xToolsDataStructure::TextFormatOct, new QRegularExpressionValidator(otcRegExp));
+    regExpMap.insert(xToolsDataStructure::TextFormatDec, new QRegularExpressionValidator(decRegExp));
+    regExpMap.insert(xToolsDataStructure::TextFormatHex, new QRegularExpressionValidator(hexRegExp));
+    regExpMap.insert(xToolsDataStructure::TextFormatAscii,
                      new QRegularExpressionValidator(asciiRegExp));
-    regExpMap.insert(xToolsDataStructure::InputFormatLocal, Q_NULLPTR);
+    regExpMap.insert(xToolsDataStructure::TextFormatSystem, Q_NULLPTR);
 
     if (lineEdit) {
         if (lineEdit->validator()) {
@@ -273,7 +348,7 @@ void xToolsDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, SAKEnumText
 
 void xToolsDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, int format)
 {
-    auto cookedFormat = static_cast<SAKEnumTextFormatInput>(format);
+    auto cookedFormat = static_cast<TextFormat>(format);
     xToolsDataStructure::setLineEditTextFormat(lineEdit, cookedFormat);
 }
 
@@ -373,8 +448,8 @@ void xToolsDataStructure::formattingInputText(QTextEdit *textEdit, int model)
         textEdit->blockSignals(true);
         QString plaintext = textEdit->toPlainText();
         if (!plaintext.isEmpty()) {
-            auto cookedModel = static_cast<xToolsDataStructure::SAKEnumTextFormatInput>(model);
-            QString cookedString = xToolsDataStructure::formattingString(plaintext, cookedModel);
+            auto cookedModel = static_cast<xToolsDataStructure::TextFormat>(model);
+            QString cookedString = xToolsDataStructure::formatString(plaintext, cookedModel);
             textEdit->setText(cookedString);
             textEdit->moveCursor(QTextCursor::End);
         }
@@ -419,81 +494,4 @@ void xToolsDataStructure::setComboBoxItems(QComboBox *comboBox,
             }
         }
     }
-}
-
-QString xToolsDataStructure::affixesName(int affixes)
-{
-    if (xToolsDataStructure::AffixesNone == affixes) {
-        return "None";
-    } else if (xToolsDataStructure::AffixesR == affixes) {
-        return "//r";
-    } else if (xToolsDataStructure::AffixesN == affixes) {
-        return "//n";
-    } else if (xToolsDataStructure::AffixesRN == affixes) {
-        return "//r//n";
-    } else if (xToolsDataStructure::AffixesNR == affixes) {
-        return "//n//r";
-    }
-
-    return "None";
-}
-
-QByteArray xToolsDataStructure::affixesData(int affixes)
-{
-    if (affixes == xToolsDataStructure::AffixesNone) {
-        return QByteArray("");
-    } else if (affixes == xToolsDataStructure::AffixesR) {
-        return QByteArray("\r");
-    } else if (affixes == xToolsDataStructure::AffixesN) {
-        return QByteArray("\n");
-    } else if (affixes == xToolsDataStructure::AffixesRN) {
-        return QByteArray("\r\n");
-    } else if (affixes == xToolsDataStructure::AffixesNR) {
-        return QByteArray("\n\r");
-    }
-
-    return QByteArray("");
-}
-
-QString xToolsDataStructure::cookedString(int escapeCharacter, const QString &str)
-{
-    return xToolsDataStructure::cookEscapeCharacter(escapeCharacter, str);
-}
-
-QString xToolsDataStructure::textFormatName(int textFormat)
-{
-    static QMap<int, QString> map;
-    if (map.isEmpty()) {
-        map.insert(TextFormatBin, tr("Bin"));
-        map.insert(TextFormatOct, tr("Oct"));
-        map.insert(TextFormatDec, tr("Dec"));
-        map.insert(TextFormatHex, tr("Hex"));
-        map.insert(TextFormatAscii, "Ascii");
-        map.insert(TextFormatUtf8, "Utf8");
-    }
-
-    if (map.contains(textFormat)) {
-        return map.value(textFormat);
-    }
-
-    return QString("Unknown");
-}
-
-QString xToolsDataStructure::cookEscapeCharacter(int option, const QString &str)
-{
-    QString newStr = str;
-    if (option == EscapeCharacterOptionR) {
-        newStr.replace("\\r", "\r");
-    } else if (option == EscapeCharacterOptionN) {
-        newStr.replace("\\n", "\n");
-    } else if (option == EscapeCharacterOptionRN) {
-        newStr.replace("\\r\\n", "\r\n");
-    } else if (option == EscapeCharacterOptionNR) {
-        newStr.replace("\\n\\r", "\n\\r");
-    } else if (option == EscapeCharacterOptionRAndN) {
-        newStr.replace("\\r", "\r");
-        newStr.replace("\\n", "\n");
-    }
-
-    return newStr;
 }

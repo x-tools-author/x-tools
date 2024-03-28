@@ -11,9 +11,9 @@
 
 #include <QWidgetAction>
 
+#include "xToolsCompatibility.h"
 #include "xToolsHighlighter.h"
 #include "xToolsSettings.h"
-
 
 xToolsToolBoxUiOutputMenu::xToolsToolBoxUiOutputMenu(const QString& settingsGroup,
                                                QTextDocument* doc,
@@ -35,11 +35,7 @@ xToolsToolBoxUiOutputMenu::xToolsToolBoxUiOutputMenu(const QString& settingsGrou
     xToolsHighlighter* highlighter = new xToolsHighlighter(this);
     auto updateDoc = [=]() {
         QString text = ui->keyword->text();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-        QStringList list = text.split(";", Qt::SkipEmptyParts);
-#else
-        QStringList list = text.split(QString(";"), QString::SkipEmptyParts);
-#endif
+        QStringList list = text.split(";", xToolsSkipEmptyParts);
         highlighter->removeKeyWord("");
         highlighter->setKeyWords(list);
     };

@@ -20,7 +20,8 @@ public:
     xToolsDataStructure(QObject *parent = Q_NULLPTR);
     ~xToolsDataStructure();
 
-    enum SAKEnumTextFormat {
+public:
+    enum TextFormat {
         TextFormatBin,
         TextFormatOct,
         TextFormatDec,
@@ -29,76 +30,53 @@ public:
         TextFormatUtf8,
         TextFormatSystem
     };
-    Q_ENUM(SAKEnumTextFormat)
+    Q_ENUM(TextFormat)
+    Q_INVOKABLE static QVariantList supportedTextFormats();
+    Q_INVOKABLE static QString textFormatName(int textFormat);
+    Q_INVOKABLE static QString byteArrayToString(const QByteArray &array, int format);
+    Q_INVOKABLE static QByteArray stringToByteArray(const QString &str, int format);
+    Q_INVOKABLE static QString formatString(const QString &str, int format);
 
-    enum SAKEnumEscapeCharacterOption {
-        EscapeCharacterOptionNone,
-        EscapeCharacterOptionR,
-        EscapeCharacterOptionN,
-        EscapeCharacterOptionRN,
-        EscapeCharacterOptionNR,
-        EscapeCharacterOptionRAndN
+public:
+    enum EscapeCharacter {
+        EscapeCharacterNone,
+        EscapeCharacterR,
+        EscapeCharacterN,
+        EscapeCharacterRN,
+        EscapeCharacterNR,
+        EscapeCharacterRAndN
     };
-    Q_ENUM(SAKEnumEscapeCharacterOption)
+    Q_ENUM(EscapeCharacter)
+    Q_INVOKABLE static QString cookedString(int escapeCharacter, const QString &str);
+    Q_INVOKABLE static QString cookEscapeCharacter(int option, const QString &str);
 
+public:
     enum SAKEnumAffixes { AffixesNone, AffixesR, AffixesN, AffixesRN, AffixesNR };
     Q_ENUM(SAKEnumAffixes)
     Q_INVOKABLE static QString cookedAffixes(int affixes);
+    Q_INVOKABLE static QString affixesName(int affixes);
+    Q_INVOKABLE static QByteArray affixesData(int affixes);
 
-    enum EDEnumResponseOptions {
-        ResponseOptionDisable,
-        ResponseOptionEcho,
-        ResponseOptionAlways,
-        ResponseOptionInputEqualReference,
-        ResponseOptionInputContainReference,
-        ResponseOptionInputDiscontainReference
+public:
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+    enum HighDpiPolicy {
+        HighDpiPolicyRound = int(Qt::HighDpiScaleFactorRoundingPolicy::Round),
+        HighDpiPolicyCeil = int(Qt::HighDpiScaleFactorRoundingPolicy::Ceil),
+        HighDpiPolicyFloor = int(Qt::HighDpiScaleFactorRoundingPolicy::Floor),
+        HighDpiPolicyRoundPreferFloor = int(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor),
+        HighDpiPolicyPassThrough = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough),
+#ifdef Q_OS_WIN
+        HighDpiPolicySystem,
+#endif
     };
-    Q_ENUM(EDEnumResponseOptions)
-
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    enum SAKHdpiPolicy {
-        HdpiPolicyRound = int(Qt::HighDpiScaleFactorRoundingPolicy::Round),
-        HdpiPolicyCeil = int(Qt::HighDpiScaleFactorRoundingPolicy::Ceil),
-        HdpiPolicyFloor = int(Qt::HighDpiScaleFactorRoundingPolicy::Floor),
-        HdpiPolicyRoundPreferFloor = int(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor),
-        HdpiPolicyPassThrough = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough),
-        HdpiPolicySystem = 999
-    };
-    Q_ENUM(SAKHdpiPolicy)
+    Q_ENUM(HighDpiPolicy)
+    Q_INVOKABLE static QVariantList supportedHighDpiPolicies();
+    Q_INVOKABLE static QString highDpiPolicyName(int policy);
+    Q_INVOKABLE static bool isValidHighDpiPolicy(int policy);
 #endif
 
 public:
-    static QString affixesName(int affixes);
-    static QByteArray affixesData(int affixes);
-    static QString cookedString(int escapeCharacter, const QString &str);
-    static QString textFormatName(int textFormat);
-    Q_INVOKABLE static QString cookEscapeCharacter(int option, const QString &str);
-
-    // Input text format
-    enum SAKEnumTextFormatInput {
-        InputFormatBin,
-        InputFormatOct,
-        InputFormatDec,
-        InputFormatHex,
-        InputFormatAscii,
-        InputFormatLocal
-    };
-    Q_ENUM(SAKEnumTextFormatInput);
-
-    // Output text format
-    enum SAKEnumTextFormatOutput {
-        OutputFormatBin,
-        OutputFormatOct,
-        OutputFormatDec,
-        OutputFormatHex,
-        OutputFormatUcs4,
-        OutputFormatUtf8,
-        OutputFormatUtf16,
-        OutputFormatAscii,
-        OutputFormatLocal
-    };
-    Q_ENUM(SAKEnumTextFormatOutput);
-
+public:
     // Web socket sending type
     enum SAKEnumWebSocketSendingType {
         WebSocketSendingTypeText,
@@ -106,6 +84,7 @@ public:
     };
     Q_ENUM(SAKEnumWebSocketSendingType);
 
+public:
     enum SAKEmnuSuffixType {
         SuffixsTypeNone,
         SuffixsTypeR,
@@ -115,6 +94,7 @@ public:
     };
     Q_ENUM(SAKEmnuSuffixType);
 
+public:
     enum SAKEnumPrefixType { PrefixTypeNone, PrefixTypeR, PrefixTypeN, PrefixTypeRN, PrefixTypeNR };
     Q_ENUM(SAKEnumPrefixType);
 
@@ -138,36 +118,11 @@ public:
     static void setComboBoxTextWebSocketSendingType(QComboBox *comboBox);
 
     /**
-     * @brief formattingString: Formatting input text of text edit.
-     * @param textEdit: Target text edit.
-     * @param format: See SAKEnumTextInputFormat for more information.
-     */
-    static QString formattingString(QString &origingString, SAKEnumTextFormatInput format);
-
-    /**
-     * @brief stringToByteArray: Transmit a QString to a QByteArray.
-     * @param origingString: Origin string.
-     * @param format: See SAKEnumTextInputFormat for more information.
-     * @return A QByteArray.
-     */
-    static QByteArray stringToByteArray(QString &origingString, SAKEnumTextFormatInput format);
-    static QByteArray stringToByteArray(QString &origingString, int format);
-
-    /**
-     * @brief byteArrayToString: Transmit a QByteArray to a QString.
-     * @param origingString: Origin byte array.
-     * @param format: See SAKEnumTextOutputFormat for more information.
-     * @return A QString.
-     */
-    static QString byteArrayToString(const QByteArray &origingData, SAKEnumTextFormatOutput format);
-    static QString byteArrayToString(const QByteArray &origingData, int format);
-
-    /**
      * @brief setLineEditTextFormat: Formating input
      * @param lineEdit: Target component
      * @param format: (SAKEnumTextInputFormat)
      */
-    static void setLineEditTextFormat(QLineEdit *lineEdit, SAKEnumTextFormatInput format);
+    static void setLineEditTextFormat(QLineEdit *lineEdit, TextFormat format);
     static void setLineEditTextFormat(QLineEdit *lineEdit, int format);
 
     static QString suffix(SAKEmnuSuffixType type);

@@ -26,10 +26,6 @@
 #include <QStyleFactory>
 #include <QUrl>
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-#include "xToolsDataStructure.h"
-#endif
-
 #include "xToolsApplication.h"
 #include "xToolsInterface.h"
 #include "xToolsSettings.h"
@@ -248,56 +244,43 @@ void xToolsMainWindow::initOptionMenuSettingsMenu()
     });
 }
 
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#include "xToolsDataStructure.h"
+#endif
 void xToolsMainWindow::initOptionMenuHdpiPolicy()
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
     QMenu* menu = new QMenu(tr("HDPI Policy"));
-    QActionGroup* action_group = new QActionGroup(this);
-    int setting_policy = xToolsSettings::instance()->hdpiPolicy();
-    QList<QPair<int, QString>> policy_list;
-    typedef QPair<int, QString> policy_pair;
-    policy_list << policy_pair(xToolsDataStructure::HdpiPolicyRound, tr("Round up for .5 and above"));
-    policy_list << policy_pair(xToolsDataStructure::HdpiPolicyCeil, tr("Always round up"));
-    policy_list << policy_pair(xToolsDataStructure::HdpiPolicyFloor, tr("Always round down"));
-    policy_list << policy_pair(xToolsDataStructure::HdpiPolicyRoundPreferFloor,
-                               tr("Round up for .75 and above"));
-    policy_list << policy_pair(xToolsDataStructure::HdpiPolicyPassThrough, tr("Don't round"));
-    for (auto& policy : policy_list) {
-        QAction* action = new QAction(policy.second, this);
-        action_group->addAction(action);
-        if (setting_policy == policy.first) {
-            action->setCheckable(true);
-        }
-
-        connect(action, &QAction::triggered, this, [=]() {
-            onHdpiPolicyActionTriggered(policy.first);
+    QActionGroup* actionGroup = new QActionGroup(this);
+    int currentPolicy = xToolsSettings::instance()->hdpiPolicy();
+    auto supportedPolicies = xToolsDataStructure::supportedHighDpiPolicies();
+    for (auto& policy : supportedPolicies) {
+        auto name = xToolsDataStructure::highDpiPolicyName(policy.toInt());
+        auto action = menu->addAction(name, this, [=]() {
+            onHdpiPolicyActionTriggered(policy.toInt());
         });
+        action->setCheckable(true);
+        actionGroup->addAction(action);
+        if (policy.toInt() == currentPolicy) {
+            action->setChecked(true);
+        }
     }
-    menu->addActions(action_group->actions());
+    menu->addActions(actionGroup->actions());
     m_optionMenu->addMenu(menu);
-
-#ifdef Q_OS_WIN
-    QAction* system_action = new QAction(tr("System"), this);
-    system_action->setCheckable(true);
-    action_group->addAction(system_action);
-    menu->addSeparator();
-    menu->addAction(system_action);
-
-    if (setting_policy == xToolsDataStructure::HdpiPolicySystem) {
-        system_action->setChecked(true);
-    }
-
-    connect(system_action, &QAction::triggered, this, [=]() {
-        xToolsSettings::instance()->setHdpiPolicy(xToolsDataStructure::HdpiPolicySystem);
-        createQtConf();
-        tryToReboot();
-    });
-#endif
 #endif
 }
 
 void xToolsMainWindow::onHdpiPolicyActionTriggered(int policy)
 {
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#ifdef Q_OS_WIN
+    if (policy == xToolsDataStructure::HighDpiPolicySystem) {
+        createQtConf();
+        tryToReboot();
+        return;
+    }
+#endif
+
     if (QFile::remove(qtConfFileName())) {
         qInfo() << qtConfFileName() << "was removed!";
     } else {
@@ -306,6 +289,9 @@ void xToolsMainWindow::onHdpiPolicyActionTriggered(int policy)
 
     xToolsSettings::instance()->setHdpiPolicy(int(policy));
     tryToReboot();
+#else
+    Q_UNUSED(policy)
+#endif
 }
 
 void xToolsMainWindow::onGithubActionTriggered()

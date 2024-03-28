@@ -27,9 +27,11 @@ if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
 endif()
 
 add_compile_definitions(X_TOOLS_BUILD_WITH_CMAKE)
-
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
+if(NOT Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS "5.14.0")
+  add_compile_definitions(X_TOOLS_ENABLE_HIGH_DPI_POLICY)
+endif()
 
 include(CMake/xToolsCommon.cmake)
 include(CMake/xToolsGitInfo.cmake)
@@ -145,7 +147,7 @@ endif()
 
 # -------------------------------------------------------------------------------------------------
 # The private modules is not open-source.
-if(NOT Qt6_VERSION VERSION_LESS "6.5.0")
+if(NOT Qt{QT_VERSION_MAJOR}_VERSION VERSION_LESS "6.5.0")
   if(EXISTS ${CMAKE_SOURCE_DIR}/Private)
     add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
   endif()

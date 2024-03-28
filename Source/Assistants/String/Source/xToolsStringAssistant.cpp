@@ -43,9 +43,9 @@ void xToolsStringAssistant::onTextEditTextChanged()
 {
     if (!ui->textEdit->blockSignals(true)) {
         QString inputString = ui->textEdit->toPlainText();
-        auto inputFormat = static_cast<xToolsDataStructure::SAKEnumTextFormatInput>(
+        auto inputFormat = static_cast<xToolsDataStructure::TextFormat>(
             ui->inputFormatComboBox->currentData().toInt());
-        QString cookedString = xToolsDataStructure::formattingString(inputString, inputFormat);
+        QString cookedString = xToolsDataStructure::formatString(inputString, inputFormat);
         ui->textEdit->setText(cookedString);
         ui->textEdit->moveCursor(QTextCursor::End);
         ui->textEdit->blockSignals(false);
@@ -65,10 +65,10 @@ void xToolsStringAssistant::onInputFormatComboBoxCurrentIndexChanged(int index)
 void xToolsStringAssistant::onCreatePushButtonClicked()
 {
     QString inputString = ui->textEdit->toPlainText();
-    auto inputFormat = static_cast<xToolsDataStructure::SAKEnumTextFormatInput>(
+    auto inputFormat = static_cast<xToolsDataStructure::TextFormat>(
         ui->inputFormatComboBox->currentData().toInt());
     QByteArray inputArray = xToolsDataStructure::stringToByteArray(inputString, inputFormat);
-    auto outputFormat = static_cast<xToolsDataStructure::SAKEnumTextFormatOutput>(
+    auto outputFormat = static_cast<xToolsDataStructure::TextFormat>(
         ui->outputFormatComboBox->currentData().toInt());
     auto outputString = xToolsDataStructure::byteArrayToString(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);

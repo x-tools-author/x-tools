@@ -27,8 +27,7 @@ xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
     connect(m_broadcastThread, &xToolsBroadcastThread::bytesWritten, this, [=](const QByteArray& bytes) {
         QByteArray temp = bytes;
         int format = ui->comboBoxOutputFormat->currentData().toInt();
-        auto cookedFormat = xToolsDataStructure::SAKEnumTextFormatOutput(format);
-        auto bytesString = xToolsDataStructure::byteArrayToString(temp, cookedFormat);
+        auto bytesString = xToolsDataStructure::byteArrayToString(temp, format);
         auto info = QDateTime::currentDateTime().toString("hh:mm:ss");
         info += " Tx: ";
         info = QString("<font color=silver>%1</font>").arg(info);
