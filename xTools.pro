@@ -124,6 +124,7 @@ SOURCES += \
     Source/Assistants/Ping/Source/xToolsPingAssistant.cpp \
     Source/Assistants/String/Source/xToolsStringAssistant.cpp \
     Source/Assistants/xToolsAssistantFactory.cpp \
+    Source/Common/Common/xToolsApplication.cpp \
     Source/Common/Common/xToolsCrcInterface.cpp \
     Source/Common/Common/xToolsDataStructure.cpp \
     Source/Common/Common/xToolsNetworkInterfaceScanner.cpp \
@@ -131,7 +132,6 @@ SOURCES += \
     Source/Common/Common/xToolsSettings.cpp \
     Source/Common/Common/xToolsTableModel.cpp \
     Source/Common/CommonUI/xToolsAffixesComboBox.cpp \
-    Source/Common/CommonUI/xToolsApplication.cpp \
     Source/Common/CommonUI/xToolsBaudRateComboBox.cpp \
     Source/Common/CommonUI/xToolsCheckBox.cpp \
     Source/Common/CommonUI/xToolsComboBox.cpp \
@@ -150,7 +150,6 @@ SOURCES += \
     Source/Common/CommonUI/xToolsSpinBox.cpp \
     Source/Common/CommonUI/xToolsStopBitsComboBox.cpp \
     Source/Common/CommonUI/xToolsTextFormatComboBox.cpp \
-    Source/Common/CommonUI/xToolsUiInterface.cpp \
     Source/Common/CommonUI/xToolsWebSocketMessageTypeComboBox.cpp \
     Source/SystemTrayIcon.cpp \
     Source/ToolBox/ToolBox/xToolsToolBox.cpp \
@@ -231,6 +230,7 @@ HEADERS += \
     Source/Assistants/String/Source/xToolsStringAssistant.h \
     Source/Assistants/xToolsAssistantFactory.h \
     Source/Common/Common/xTools.h \
+    Source/Common/Common/xToolsApplication.h \
     Source/Common/Common/xToolsCompatibility.h \
     Source/Common/Common/xToolsCrcInterface.h \
     Source/Common/Common/xToolsDataStructure.h \
@@ -239,7 +239,6 @@ HEADERS += \
     Source/Common/Common/xToolsSettings.h \
     Source/Common/Common/xToolsTableModel.h \
     Source/Common/CommonUI/xToolsAffixesComboBox.h \
-    Source/Common/CommonUI/xToolsApplication.h \
     Source/Common/CommonUI/xToolsBaudRateComboBox.h \
     Source/Common/CommonUI/xToolsCheckBox.h \
     Source/Common/CommonUI/xToolsComboBox.h \
@@ -259,7 +258,6 @@ HEADERS += \
     Source/Common/CommonUI/xToolsStopBitsComboBox.h \
     Source/Common/CommonUI/xToolsTextFormatComboBox.h \
     Source/Common/CommonUI/xToolsUi.h \
-    Source/Common/CommonUI/xToolsUiInterface.h \
     Source/Common/CommonUI/xToolsWebSocketMessageTypeComboBox.h \
     Source/MainWindow.h \
     Source/SystemTrayIcon.h \

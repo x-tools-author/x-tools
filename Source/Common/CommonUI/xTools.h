@@ -14,6 +14,10 @@
 #include <QMetaEnum>
 #include <QStyleFactory>
 
+#include "xToolsApplication.h"
+#include "xToolsMainWindow.h"
+#include "xToolsSettings.h"
+
 #ifdef X_TOOLS_USING_GLOG
 #include "glog/logging.h"
 #endif
@@ -21,7 +25,7 @@
 #ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
 #include "xToolsDataStructure.h"
 #endif
-#include "xToolsSettings.h"
+
 
 #ifdef X_TOOLS_USING_GLOG
 
@@ -171,4 +175,51 @@ static void sakDoSomethingAfterAppExited()
 #ifdef X_TOOLS_USING_GLOG
     xToolsShutdownGoogleLogging();
 #endif
+}
+
+template<typename CentralWidgetT, typename MainWindowT, typename AppT>
+int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
+{
+    QString cookedAppName = appName;
+#ifdef X_TOOLS_BUILD_FOR_STORE
+    cookedAppName += QObject::tr("(Store)");
+#endif
+    sakDoSomethingBeforeAppCreated(argv, cookedAppName);
+
+    AppT app(argc, argv);
+#ifdef X_TOOLS_VERSION
+    app.setApplicationVersion(X_TOOLS_VERSION);
+#endif
+    QSplashScreen& splashScreen = qobject_cast<xToolsApplication*>(qApp)->splashScreen();
+    if (usingCommonMainWindow) {
+        MainWindowT* mainWindow = new MainWindowT();
+        splashScreen.finish(mainWindow);
+
+        CentralWidgetT* centralWidget = new CentralWidgetT(mainWindow);
+        mainWindow->setWindowTitle(cookedAppName);
+        mainWindow->setCentralWidget(centralWidget);
+        mainWindow->show();
+        mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());
+        mainWindow->moveToCenter();
+        qInfo() << "The size of window is" << mainWindow->size();
+    } else {
+        CentralWidgetT* widget = new CentralWidgetT();
+        splashScreen.finish(widget);
+        widget->show();
+        widget->resize(int(qreal(widget->height()) * 1.732), widget->height());
+        qInfo() << "The size of window is" << widget->size();
+    }
+
+    int ret = app.exec();
+    sakDoSomethingAfterAppExited();
+    return ret;
+}
+
+template<typename T>
+int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
+{
+    return xToolsExec<T, xToolsMainWindow, xToolsApplication>(argc,
+                                                              argv,
+                                                              appName,
+                                                              usingCommonMainWindow);
 }

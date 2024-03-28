@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "Application.h"
 #include "MainWindow.h"
-#include "xToolsUi.h"
+#include "xTools.h"
 
 int main(const int argc, char *argv[])
 {
