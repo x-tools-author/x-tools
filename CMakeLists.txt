@@ -132,6 +132,9 @@ endif()
 if(X_TOOLS_BLUETOOTH_MODULE_IS_VALID)
   target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 endif()
+if(X_TOOLS_PRIVATE_MODULE_IS_VALID)
+  target_link_libraries(xTools PRIVATE QtAES::QtAES)
+endif()
 
 # -------------------------------------------------------------------------------------------------
 # Assistant applications

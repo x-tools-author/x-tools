@@ -53,7 +53,11 @@
 #endif
 
 MainWindow::MainWindow(QWidget* parent)
+#ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
+    : xToolsPrivateMainWindow(parent)
+#else
     : xToolsMainWindow(parent)
+#endif
 {
 #ifdef Q_OS_WIN
     // Setup system tray icon.
@@ -246,7 +250,7 @@ void MainWindow::initHelpMenu()
 
 void MainWindow::initLinksMenu()
 {
-    QMenu* linksMenu = new QMenu(tr("&Links"), this);
+    QMenu* linksMenu = new QMenu(tr("Links"), this);
     menuBar()->insertMenu(m_helpMenu->menuAction(), linksMenu);
 
     struct Link

@@ -8,11 +8,17 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QSplashScreen>
-
+#ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
+#include "xToolsPrivateApplication.h"
+#else
 #include "xToolsApplication.h"
+#endif
 
+#ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
+class Application : public xToolsPrivateApplication
+#else
 class Application : public xToolsApplication
+#endif
 {
     Q_OBJECT
 public:

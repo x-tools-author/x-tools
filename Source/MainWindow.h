@@ -21,9 +21,17 @@
 #include <QTabWidget>
 #include <QTranslator>
 
+#ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
+#include "xToolsPrivateMainWindow.h"
+#else
 #include "xToolsMainWindow.h"
+#endif
 
+#ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
+class MainWindow : public xToolsPrivateMainWindow
+#else
 class MainWindow : public xToolsMainWindow
+#endif
 {
     Q_OBJECT
 public:
