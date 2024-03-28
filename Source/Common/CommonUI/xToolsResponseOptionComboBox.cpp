@@ -13,15 +13,9 @@
 xToolsResponseOptionComboBox::xToolsResponseOptionComboBox(QWidget* parent)
     : xToolsComboBox(parent)
 {
-#if 0
-    addItem(tr("Disable"), SAKDataStructure::ResponseOptionDisable);
-#endif
-    addItem(tr("Echo", "widget", __LINE__), xToolsDataStructure::ResponseOptionEcho);
-    addItem(tr("Always", "widget", __LINE__), xToolsDataStructure::ResponseOptionAlways);
-    addItem(tr("RxEqualReference", "widget", __LINE__),
-            xToolsDataStructure::ResponseOptionInputEqualReference);
-    addItem(tr("RxContainReference", "widget", __LINE__),
-            xToolsDataStructure::ResponseOptionInputContainReference);
-    addItem(tr("RxDiscontainReference", "widget", __LINE__),
-            xToolsDataStructure::ResponseOptionInputDiscontainReference);
+    auto options = xToolsDataStructure::supportedResponseOptions();
+    for (auto& option : options) {
+        auto name = xToolsDataStructure::responseOptionName(option.toInt());
+        addItem(name, option.toInt());
+    }
 }

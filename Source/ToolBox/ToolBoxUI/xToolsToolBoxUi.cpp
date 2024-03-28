@@ -192,7 +192,7 @@ void xToolsToolBoxUi::try2send()
     QByteArray suffixData = xToolsDataStructure::affixesData(suffix);
 
     QString input = ui->comboBoxInputText->currentText();
-    input = xToolsDataStructure::cookedString(esc, input);
+    input = xToolsDataStructure::cookEscapeCharacter(esc, input);
     int format = ui->comboBoxInputFormat->currentData().toInt();
     QByteArray bytes = xToolsInterface::string2array(input, format);
     if (ctx.appendCrc) {
@@ -294,8 +294,8 @@ QByteArray xToolsToolBoxUi::calculateCrc(const QByteArray& bytes, bool fixedOrig
         int format = ui->comboBoxInputFormat->currentData().toInt();
         QString input = ui->comboBoxInputText->currentText();
         int esc = ctx.escapeCharacter;
-
-        input = xToolsDataStructure::cookedString(esc, input);
+        
+        input = xToolsDataStructure::cookEscapeCharacter(esc, input);
         inputBytes = xToolsInterface::string2array(input, format);
     }
 

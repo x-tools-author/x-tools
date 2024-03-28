@@ -235,9 +235,7 @@ QByteArray xToolsInterface::arrayToHex(const QByteArray &array, char separator)
     return hex;
 }
 
-void xToolsInterface::setLineEditValidator(QLineEdit *lineEdit,
-                                           SAKEnumValidatorType type,
-                                           int maxLength)
+void xToolsInterface::setLineEditValidator(QLineEdit *lineEdit, int type, int maxLength)
 {
     QMap<int, QRegularExpression> regExpMap;
     regExpMap.insert(ValidatorBin, QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));

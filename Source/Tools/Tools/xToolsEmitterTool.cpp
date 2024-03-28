@@ -265,7 +265,7 @@ QByteArray xToolsEmitterTool::itemBytes(const xToolsEmitterTool::Data &item)
 {
     QByteArray bytes;
     QString text = item.itemText;
-    text = xToolsDataStructure::cookedString(item.itemEscapeCharacter, text);
+    text = xToolsDataStructure::cookEscapeCharacter(item.itemEscapeCharacter, text);
     bytes = xToolsInterface::string2array(text, item.itemTextFormat);
     QByteArray prefix = xToolsDataStructure::affixesData(item.itemPrefix);
     QByteArray suffix = xToolsDataStructure::affixesData(item.itemSuffix);

@@ -264,7 +264,7 @@ QByteArray xToolsResponserTool::referenceBytes(const ResponserItem &item) const
 {
     QByteArray bytes;
     QString text = item.itemReferenceText;
-    text = xToolsDataStructure::cookedString(item.itemReferenceEscapeCharacter, text);
+    text = xToolsDataStructure::cookEscapeCharacter(item.itemReferenceEscapeCharacter, text);
     bytes = xToolsInterface::string2array(text, item.itemReferenceTextFormat);
     QByteArray prefix = xToolsDataStructure::affixesData(item.itemReferencePrefix);
     QByteArray suffix = xToolsDataStructure::affixesData(item.itemReferenceSuffix);
@@ -288,7 +288,7 @@ QByteArray xToolsResponserTool::responseBytes(const ResponserItem &item) const
 {
     QByteArray bytes;
     QString text = item.itemResponseText;
-    text = xToolsDataStructure::cookedString(item.itemResponseEscapeCharacter, text);
+    text = xToolsDataStructure::cookEscapeCharacter(item.itemResponseEscapeCharacter, text);
     bytes = xToolsInterface::string2array(text, item.itemResponseTextFormat);
     QByteArray prefix = xToolsDataStructure::affixesData(item.itemResponsePrefix);
     QByteArray suffix = xToolsDataStructure::affixesData(item.itemResponseSuffix);

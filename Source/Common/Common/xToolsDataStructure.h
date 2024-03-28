@@ -47,13 +47,12 @@ public:
         EscapeCharacterRAndN
     };
     Q_ENUM(EscapeCharacter)
-    Q_INVOKABLE static QString cookedString(int escapeCharacter, const QString &str);
-    Q_INVOKABLE static QString cookEscapeCharacter(int option, const QString &str);
+    Q_INVOKABLE static QString cookEscapeCharacter(int escapeCharacter, const QString &str);
 
 public:
     enum SAKEnumAffixes { AffixesNone, AffixesR, AffixesN, AffixesRN, AffixesNR };
     Q_ENUM(SAKEnumAffixes)
-    Q_INVOKABLE static QString cookedAffixes(int affixes);
+    Q_INVOKABLE static QString affixesString(int affixes);
     Q_INVOKABLE static QString affixesName(int affixes);
     Q_INVOKABLE static QByteArray affixesData(int affixes);
 
@@ -76,66 +75,25 @@ public:
 #endif
 
 public:
-public:
     // Web socket sending type
-    enum SAKEnumWebSocketSendingType {
+    enum WebSocketSendingType {
         WebSocketSendingTypeText,
-        WebSocketSendingTypeBin,
+        WebSocketSendingTypeBinary,
     };
-    Q_ENUM(SAKEnumWebSocketSendingType);
+    Q_ENUM(WebSocketSendingType);
+    Q_INVOKABLE static QVariantList supportedWebSocketSendingTypes();
+    Q_INVOKABLE static QString webSocketSendingTypeName(int type);
 
 public:
-    enum SAKEmnuSuffixType {
-        SuffixsTypeNone,
-        SuffixsTypeR,
-        SuffixsTypeN,
-        SuffixsTypeRN,
-        SuffixsTypeNR
+    enum ResponseOption {
+        ResponseOptionDisable,
+        ResponseOptionEcho,   // Response the data that received.
+        ResponseOptionAlways, // Response the data that set by user when data received.
+        ResponseOptionInputEqualReference,
+        ResponseOptionInputContainReference,
+        ResponseOptionInputDiscontainReference
     };
-    Q_ENUM(SAKEmnuSuffixType);
-
-public:
-    enum SAKEnumPrefixType { PrefixTypeNone, PrefixTypeR, PrefixTypeN, PrefixTypeRN, PrefixTypeNR };
-    Q_ENUM(SAKEnumPrefixType);
-
-public:
-    /**
-     * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
-     * @param comboBox: Targat combo box.
-     */
-    static void setComboBoxTextOutputFormat(QComboBox *comboBox);
-
-    /**
-     * @brief setComboBoxTextInputFormat: Add input text format items to combo Box.
-     * @param comboBox: Target combo box.
-     */
-    static void setComboBoxTextInputFormat(QComboBox *comboBox);
-
-    /**
-     * @brief setComboBoxTextWebSocketSendingType: Add supported types to combo box.
-     * @param comboBox: Target combo box.
-     */
-    static void setComboBoxTextWebSocketSendingType(QComboBox *comboBox);
-
-    /**
-     * @brief setLineEditTextFormat: Formating input
-     * @param lineEdit: Target component
-     * @param format: (SAKEnumTextInputFormat)
-     */
-    static void setLineEditTextFormat(QLineEdit *lineEdit, TextFormat format);
-    static void setLineEditTextFormat(QLineEdit *lineEdit, int format);
-
-    static QString suffix(SAKEmnuSuffixType type);
-    static QString suffix(int type);
-    static QString friendlySuffix(SAKEmnuSuffixType type);
-    static QString prefix(int type);
-    static QString friendlyPrefix(SAKEnumPrefixType type);
-    static void setupSuffix(QComboBox *comboBox);
-
-    static void formattingInputText(QTextEdit *textEdit, int model);
-
-private:
-    static void setComboBoxItems(QComboBox *comboBox,
-                                 QMap<int, QString> &formatMap,
-                                 int currentData);
+    Q_ENUM(ResponseOption)
+    Q_INVOKABLE static QVariantList supportedResponseOptions();
+    Q_INVOKABLE static QString responseOptionName(int option);
 };

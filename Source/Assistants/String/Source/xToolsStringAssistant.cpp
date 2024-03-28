@@ -16,9 +16,6 @@ xToolsStringAssistant::xToolsStringAssistant(QWidget* parent)
     , ui(new Ui::xToolsStringAssistant)
 {
     ui->setupUi(this);
-    xToolsDataStructure::setComboBoxTextInputFormat(ui->inputFormatComboBox);
-    xToolsDataStructure::setComboBoxTextOutputFormat(ui->outputFormatComboBox);
-
     connect(ui->textEdit, &QTextEdit::textChanged, this, &xToolsStringAssistant::onTextEditTextChanged);
     connect(ui->inputFormatComboBox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),

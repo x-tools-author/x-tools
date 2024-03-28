@@ -144,7 +144,7 @@ QByteArray xToolsPrestorerTool::itemBytes(const Item &item)
 {
     QByteArray bytes;
     QString text = item.itemText;
-    text = xToolsDataStructure::cookedString(item.itemEscapeCharacter, text);
+    text = xToolsDataStructure::cookEscapeCharacter(item.itemEscapeCharacter, text);
     bytes = xToolsInterface::string2array(text, item.itemTextFormat);
     xToolsCrcInterface sakCrc;
     QByteArray prefix = xToolsDataStructure::affixesData(item.itemPrefix);

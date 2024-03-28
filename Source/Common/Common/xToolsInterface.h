@@ -58,9 +58,7 @@ public:
      * @param lineEdit: Target line edit.
      * @param type: See ValidatorType for more information.
      */
-    static void setLineEditValidator(QLineEdit *lineEdit,
-                                     SAKEnumValidatorType type,
-                                     int maxLength = INT_MAX);
+    static void setLineEditValidator(QLineEdit *lineEdit, int type, int maxLength = INT_MAX);
     static void setComboBoxIndexFromSettings(QSettings *settings, QString key, QComboBox *comboBox);
     static void setSettingsValueFromComboBoxIndex(QSettings *settings,
                                                   QString key,

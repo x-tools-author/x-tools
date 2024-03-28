@@ -164,28 +164,72 @@ QString xToolsDataStructure::formatString(const QString &str, int format)
     }
 }
 
-QString xToolsDataStructure::cookedString(int escapeCharacter, const QString &str)
-{
-    return xToolsDataStructure::cookEscapeCharacter(escapeCharacter, str);
-}
-
-QString xToolsDataStructure::cookEscapeCharacter(int option, const QString &str)
+QString xToolsDataStructure::cookEscapeCharacter(int escapeCharacter, const QString &str)
 {
     QString newStr = str;
-    if (option == EscapeCharacterR) {
+    if (escapeCharacter == EscapeCharacterR) {
         newStr.replace("\\r", "\r");
-    } else if (option == EscapeCharacterN) {
+    } else if (escapeCharacter == EscapeCharacterN) {
         newStr.replace("\\n", "\n");
-    } else if (option == EscapeCharacterRN) {
+    } else if (escapeCharacter == EscapeCharacterRN) {
         newStr.replace("\\r\\n", "\r\n");
-    } else if (option == EscapeCharacterNR) {
+    } else if (escapeCharacter == EscapeCharacterNR) {
         newStr.replace("\\n\\r", "\n\\r");
-    } else if (option == EscapeCharacterRAndN) {
+    } else if (escapeCharacter == EscapeCharacterRAndN) {
         newStr.replace("\\r", "\r");
         newStr.replace("\\n", "\n");
     }
 
     return newStr;
+}
+
+QString xToolsDataStructure::affixesString(int affixes)
+{
+    if (affixes == AffixesN) {
+        return QString("\n");
+    } else if (affixes == AffixesR) {
+        return QString("\r");
+    } else if (affixes == AffixesNR) {
+        return QString("\n\r");
+    } else if (affixes == AffixesRN) {
+        return QString("\r\n");
+    } else {
+        return QString("");
+    }
+}
+
+QString xToolsDataStructure::affixesName(int affixes)
+{
+    if (xToolsDataStructure::AffixesNone == affixes) {
+        return "None";
+    } else if (xToolsDataStructure::AffixesR == affixes) {
+        return "\\r";
+    } else if (xToolsDataStructure::AffixesN == affixes) {
+        return "\\n";
+    } else if (xToolsDataStructure::AffixesRN == affixes) {
+        return "\\r\\n";
+    } else if (xToolsDataStructure::AffixesNR == affixes) {
+        return "\\n\\r";
+    }
+
+    return "None";
+}
+
+QByteArray xToolsDataStructure::affixesData(int affixes)
+{
+    if (affixes == xToolsDataStructure::AffixesNone) {
+        return QByteArray("");
+    } else if (affixes == xToolsDataStructure::AffixesR) {
+        return QByteArray("\r");
+    } else if (affixes == xToolsDataStructure::AffixesN) {
+        return QByteArray("\n");
+    } else if (affixes == xToolsDataStructure::AffixesRN) {
+        return QByteArray("\r\n");
+    } else if (affixes == xToolsDataStructure::AffixesNR) {
+        return QByteArray("\n\r");
+    }
+
+    return QByteArray("");
 }
 
 #ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
@@ -227,271 +271,50 @@ bool xToolsDataStructure::isValidHighDpiPolicy(int policy)
 }
 #endif
 
-QString xToolsDataStructure::cookedAffixes(int affixes)
+QVariantList xToolsDataStructure::supportedWebSocketSendingTypes()
 {
-    if (affixes == AffixesN) {
-        return QString("\n");
-    } else if (affixes == AffixesR) {
-        return QString("\r");
-    } else if (affixes == AffixesNR) {
-        return QString("\n\r");
-    } else if (affixes == AffixesRN) {
-        return QString("\r\n");
-    } else {
-        return QString("");
+    QMetaEnum metaEnum = QMetaEnum::fromType<WebSocketSendingType>();
+    QVariantList list;
+    for (int i = 0; i < metaEnum.keyCount(); i++) {
+        list.append(metaEnum.value(i));
     }
+    return list;
 }
 
-QString xToolsDataStructure::affixesName(int affixes)
+QString xToolsDataStructure::webSocketSendingTypeName(int type)
 {
-    if (xToolsDataStructure::AffixesNone == affixes) {
-        return "None";
-    } else if (xToolsDataStructure::AffixesR == affixes) {
-        return "//r";
-    } else if (xToolsDataStructure::AffixesN == affixes) {
-        return "//n";
-    } else if (xToolsDataStructure::AffixesRN == affixes) {
-        return "//r//n";
-    } else if (xToolsDataStructure::AffixesNR == affixes) {
-        return "//n//r";
+    static QMap<int, QString> typeMap;
+    if (typeMap.isEmpty()) {
+        typeMap.insert(WebSocketSendingTypeText, tr("Text"));
+        typeMap.insert(WebSocketSendingTypeBinary, tr("Binary"));
     }
 
-    return "None";
+    return typeMap.value(type, "Unknown");
 }
 
-QByteArray xToolsDataStructure::affixesData(int affixes)
+QVariantList xToolsDataStructure::supportedResponseOptions()
 {
-    if (affixes == xToolsDataStructure::AffixesNone) {
-        return QByteArray("");
-    } else if (affixes == xToolsDataStructure::AffixesR) {
-        return QByteArray("\r");
-    } else if (affixes == xToolsDataStructure::AffixesN) {
-        return QByteArray("\n");
-    } else if (affixes == xToolsDataStructure::AffixesRN) {
-        return QByteArray("\r\n");
-    } else if (affixes == xToolsDataStructure::AffixesNR) {
-        return QByteArray("\n\r");
+    QMetaEnum metaEnum = QMetaEnum::fromType<ResponseOption>();
+    QVariantList list;
+    for (int i = 0; i < metaEnum.keyCount(); i++) {
+        list.append(metaEnum.value(i));
+    }
+    return list;
+}
+
+QString xToolsDataStructure::responseOptionName(int option)
+{
+    static QMap<int, QString> optionMap;
+    if (optionMap.isEmpty()) {
+        // clang-format off
+        optionMap.insert(ResponseOptionDisable, tr("Disable"));
+        optionMap.insert(ResponseOptionEcho, tr("Echo"));
+        optionMap.insert(ResponseOptionAlways, tr("Data Received"));
+        optionMap.insert(ResponseOptionInputEqualReference, tr("Rx Data Equal Reference Data"));
+        optionMap.insert(ResponseOptionInputContainReference, tr("Rx Data Contain Reference Data"));
+        optionMap.insert(ResponseOptionInputDiscontainReference, tr("Rx Data Discontain Reference Data"));
+        // clang-format on
     }
 
-    return QByteArray("");
-}
-
-void xToolsDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
-{
-    if (comboBox) {
-        QMap<int, QString> formatMap;
-        formatMap.insert(TextFormatBin, QString("BIN"));
-        formatMap.insert(TextFormatOct, QString("OCT"));
-        formatMap.insert(TextFormatDec, QString("DEC"));
-        formatMap.insert(TextFormatHex, QString("HEX"));
-        formatMap.insert(TextFormatUtf8, QString("UTF8"));
-        formatMap.insert(TextFormatAscii, QString("ASCII"));
-        formatMap.insert(TextFormatSystem, QString("SYSTEM"));
-        setComboBoxItems(comboBox, formatMap, TextFormatHex);
-    }
-}
-
-void xToolsDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
-{
-    if (comboBox) {
-        if (comboBox) {
-            QMap<int, QString> formatMap;
-            formatMap.insert(TextFormatBin, QString("BIN"));
-            formatMap.insert(TextFormatOct, QString("OTC"));
-            formatMap.insert(TextFormatDec, QString("DEC"));
-            formatMap.insert(TextFormatHex, QString("HEX"));
-            formatMap.insert(TextFormatAscii, QString("ASCII"));
-            formatMap.insert(TextFormatSystem, QString("SYSTEM"));
-            setComboBoxItems(comboBox, formatMap, TextFormatSystem);
-        }
-    }
-}
-
-void xToolsDataStructure::setComboBoxTextWebSocketSendingType(QComboBox *comboBox)
-{
-    if (comboBox) {
-        comboBox->addItem(tr("BIN"), xToolsDataStructure::WebSocketSendingTypeBin);
-        comboBox->addItem(tr("TEXT"), xToolsDataStructure::WebSocketSendingTypeText);
-    }
-}
-
-void xToolsDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, TextFormat format)
-{
-    QMap<int, QRegularExpressionValidator *> regExpMap;
-    QRegularExpression binRegExp = QRegularExpression("([01][01][01][01][01][01][01][01][ ])*");
-    QRegularExpression otcRegExp = QRegularExpression("([0-7][0-7][ ])*");
-    QRegularExpression decRegExp = QRegularExpression("([0-9][0-9][ ])*");
-    QRegularExpression hexRegExp = QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*");
-    QRegularExpression asciiRegExp = QRegularExpression("([ -~])*");
-    regExpMap.insert(xToolsDataStructure::TextFormatBin, new QRegularExpressionValidator(binRegExp));
-    regExpMap.insert(xToolsDataStructure::TextFormatOct, new QRegularExpressionValidator(otcRegExp));
-    regExpMap.insert(xToolsDataStructure::TextFormatDec, new QRegularExpressionValidator(decRegExp));
-    regExpMap.insert(xToolsDataStructure::TextFormatHex, new QRegularExpressionValidator(hexRegExp));
-    regExpMap.insert(xToolsDataStructure::TextFormatAscii,
-                     new QRegularExpressionValidator(asciiRegExp));
-    regExpMap.insert(xToolsDataStructure::TextFormatSystem, Q_NULLPTR);
-
-    if (lineEdit) {
-        if (lineEdit->validator()) {
-            delete lineEdit->validator();
-            lineEdit->setValidator(Q_NULLPTR);
-        }
-
-        if (regExpMap.contains(format)) {
-            QRegularExpressionValidator *validator = regExpMap.value(format);
-            lineEdit->setValidator(validator);
-        } else {
-            lineEdit->setValidator(Q_NULLPTR);
-        }
-    }
-}
-
-void xToolsDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, int format)
-{
-    auto cookedFormat = static_cast<TextFormat>(format);
-    xToolsDataStructure::setLineEditTextFormat(lineEdit, cookedFormat);
-}
-
-QString xToolsDataStructure::suffix(SAKEmnuSuffixType type)
-{
-    return suffix(int(type));
-}
-
-QString xToolsDataStructure::suffix(int type)
-{
-    switch (type) {
-    case SuffixsTypeNone:
-        return "";
-    case SuffixsTypeR:
-        return "\r";
-    case SuffixsTypeN:
-        return "\n";
-    case SuffixsTypeRN:
-        return "\r\n";
-    case SuffixsTypeNR:
-        return "\n\r";
-    default:
-        return "";
-    }
-}
-
-QString xToolsDataStructure::friendlySuffix(SAKEmnuSuffixType type)
-{
-    switch (type) {
-    case SuffixsTypeNone:
-        return tr("None");
-    case SuffixsTypeR:
-        return "\\r";
-    case SuffixsTypeN:
-        return "\\n";
-    case SuffixsTypeRN:
-        return "\\r\\n";
-    case SuffixsTypeNR:
-        return "\\n\\r";
-    default:
-        return tr("None");
-    }
-}
-
-QString xToolsDataStructure::prefix(int type)
-{
-    switch (type) {
-    case PrefixTypeNone:
-        return "";
-    case PrefixTypeR:
-        return "\r";
-    case PrefixTypeN:
-        return "\n";
-    case PrefixTypeRN:
-        return "\r\n";
-    case PrefixTypeNR:
-        return "\n\r";
-    default:
-        return "";
-    }
-}
-
-QString xToolsDataStructure::friendlyPrefix(SAKEnumPrefixType type)
-{
-    switch (type) {
-    case PrefixTypeNone:
-        return "";
-    case PrefixTypeR:
-        return "\\r";
-    case PrefixTypeN:
-        return "\\n";
-    case PrefixTypeRN:
-        return "\\r\\n";
-    case PrefixTypeNR:
-        return "\\n\\r";
-    default:
-        return "";
-    }
-}
-
-void xToolsDataStructure::setupSuffix(QComboBox *comboBox)
-{
-    if (comboBox) {
-        QMap<int, QString> formatMap;
-        formatMap.insert(SuffixsTypeNone, friendlySuffix(SuffixsTypeNone));
-        formatMap.insert(SuffixsTypeR, friendlySuffix(SuffixsTypeR));
-        formatMap.insert(SuffixsTypeN, friendlySuffix(SuffixsTypeN));
-        formatMap.insert(SuffixsTypeRN, friendlySuffix(SuffixsTypeRN));
-        formatMap.insert(SuffixsTypeNR, friendlySuffix(SuffixsTypeNR));
-        setComboBoxItems(comboBox, formatMap, SuffixsTypeNone);
-    }
-}
-
-void xToolsDataStructure::formattingInputText(QTextEdit *textEdit, int model)
-{
-    if (textEdit) {
-        textEdit->blockSignals(true);
-        QString plaintext = textEdit->toPlainText();
-        if (!plaintext.isEmpty()) {
-            auto cookedModel = static_cast<xToolsDataStructure::TextFormat>(model);
-            QString cookedString = xToolsDataStructure::formatString(plaintext, cookedModel);
-            textEdit->setText(cookedString);
-            textEdit->moveCursor(QTextCursor::End);
-        }
-        textEdit->blockSignals(false);
-    }
-}
-
-void xToolsDataStructure::setComboBoxItems(QComboBox *comboBox,
-                                        QMap<int, QString> &formatMap,
-                                        int currentData)
-{
-    if (comboBox) {
-        comboBox->clear();
-        QMapIterator<int, QString> mapIterator(formatMap);
-        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
-        while (mapIterator.hasNext()) {
-            mapIterator.next();
-            QStandardItem *item = new QStandardItem(mapIterator.value());
-            item->setToolTip(mapIterator.value());
-            itemModel->appendRow(item);
-        }
-        comboBox->setModel(itemModel);
-        comboBox->setCurrentIndex(currentData);
-
-        // Reset the iterator...
-        while (mapIterator.hasPrevious()) {
-            mapIterator.previous();
-        }
-
-        // Set item data of combo box
-        int index = 0;
-        while (mapIterator.hasNext()) {
-            mapIterator.next();
-            comboBox->setItemData(index, QVariant::fromValue(mapIterator.key()));
-            index += 1;
-        }
-
-        // Try to set the current index.
-        for (int i = 0; i < comboBox->count(); i++) {
-            if (comboBox->itemData(i).toInt() == currentData) {
-                comboBox->setCurrentIndex(i);
-            }
-        }
-    }
+    return optionMap.value(option, "Unknown");
 }

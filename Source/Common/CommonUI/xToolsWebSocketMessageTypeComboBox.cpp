@@ -8,9 +8,14 @@
  **************************************************************************************************/
 #include "xToolsWebSocketMessageTypeComboBox.h"
 
+#include "xToolsDataStructure.h"
+
 xToolsWebSocketMessageTypeComboBox::xToolsWebSocketMessageTypeComboBox(QWidget* parent)
     : xToolsComboBox{parent}
 {
-    addItem("Bin", 0);
-    addItem("Text", 1);
+    auto types = xToolsDataStructure::supportedWebSocketSendingTypes();
+    for (auto &type : types) {
+        auto name = xToolsDataStructure::webSocketSendingTypeName(type.toInt());
+        addItem(name, type.toInt());
+    }
 }

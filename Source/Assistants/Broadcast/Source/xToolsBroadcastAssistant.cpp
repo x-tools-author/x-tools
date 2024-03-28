@@ -15,6 +15,7 @@
 
 #include "xToolsBroadcastThread.h"
 #include "xToolsDataStructure.h"
+#include "xToolsInterface.h"
 
 xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
     : QWidget(parent)
@@ -34,15 +35,10 @@ xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
         info += bytesString;
         ui->textBrowserInformation->append(info);
     });
-    connect(ui->comboBoxBroadcastFormat,
-            &QComboBox::currentTextChanged,
-            this,
-            [=](const QString& text) {
-                Q_UNUSED(text);
-                xToolsDataStructure::setLineEditTextFormat(ui->lineEditBroadcastData,
-                                                        ui->comboBoxBroadcastFormat->currentData()
-                                                            .toInt());
-            });
+    connect(ui->comboBoxBroadcastFormat, &QComboBox::currentTextChanged, this, [=]() {
+        auto format = ui->comboBoxBroadcastFormat->currentData().toInt();
+        xToolsInterface::setLineEditValidator(ui->lineEditBroadcastData, format);
+    });
     connect(ui->pushButtonBroadcast,
             &QPushButton::clicked,
             this,
@@ -74,14 +70,8 @@ void xToolsBroadcastAssistant::updateUiState(bool started)
 void xToolsBroadcastAssistant::initUi()
 {
     ui->textBrowserInformation->document()->setMaximumBlockCount(2000);
-
     initUiBroadcastAddress();
     initUiBroadcastInterval();
-
-    xToolsDataStructure::setComboBoxTextInputFormat(ui->comboBoxBroadcastFormat);
-    xToolsDataStructure::setComboBoxTextOutputFormat(ui->comboBoxOutputFormat);
-    xToolsDataStructure::setupSuffix(ui->comboBoxBroadcastPrefix);
-    xToolsDataStructure::setupSuffix(ui->comboBoxBroadcastSuffix);
 }
 
 void xToolsBroadcastAssistant::initUiBroadcastAddress()
@@ -137,14 +127,14 @@ QByteArray xToolsBroadcastAssistant::packetData()
     QByteArray bytes;
 
     int prefixType = ui->comboBoxBroadcastPrefix->currentData().toInt();
-    QByteArray prefix = xToolsDataStructure::prefix(prefixType).toLatin1();
+    QByteArray prefix = xToolsDataStructure::affixesData(prefixType);
 
     int format = ui->comboBoxBroadcastFormat->currentData().toInt();
     QString text = ui->lineEditBroadcastData->text();
     QByteArray data = xToolsDataStructure::stringToByteArray(text, format);
 
     int suffixType = ui->comboBoxBroadcastSuffix->currentData().toInt();
-    QByteArray suffix = xToolsDataStructure::suffix(suffixType).toLatin1();
+    QByteArray suffix = xToolsDataStructure::affixesData(suffixType);
 
     bytes.append(prefix);
     bytes.append(data);
