@@ -36,8 +36,8 @@
 #include <QToolButton>
 #include <QVariant>
 
+#include "xToolsApplication.h"
 #include "xToolsAssistantFactory.h"
-#include "xToolsInterface.h"
 #include "xToolsSettings.h"
 #include "xToolsToolBoxUi.h"
 #include "xToolsUiInterface.h"
@@ -429,7 +429,7 @@ void MainWindow::aboutSoftware()
 
     QString format = QLocale::system().dateFormat();
     format = format + " " + QLocale::system().timeFormat();
-    QString dateTimeString = xToolsInterface::buildDateTime(format);
+    QString dateTimeString = xToolsApplication::buildDateTime(format);
     QList<Info> infoList;
     infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
 #ifndef SAK_RELEASE_FOR_APP_STORE
@@ -451,7 +451,7 @@ void MainWindow::aboutSoftware()
              << Info{tr("Copyright"),
                      tr("Copyright 2018-%1 x-tools-author(x-tools@outlook.com)."
                         " All rights reserved.")
-                         .arg(xToolsInterface::buildDateTime("yyyy")),
+                         .arg(xToolsApplication::buildDateTime("yyyy")),
                      false};
 
     QDialog dialog(this);

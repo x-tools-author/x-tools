@@ -9,7 +9,6 @@
 #include "xToolsWebSocketClientTool.h"
 
 #include "xToolsCompatibility.h"
-#include "xToolsInterface.h"
 
 xToolsWebSocketClientTool::xToolsWebSocketClientTool(QObject *parent)
     : xToolsSocketClientTool{parent}
@@ -40,7 +39,7 @@ bool xToolsWebSocketClientTool::initialize(QString &errStr)
     });
 
     connect(m_webSocket, &QWebSocket::binaryFrameReceived, m_webSocket, [=](const QByteArray &msg) {
-        QByteArray ba = xToolsInterface::arrayToHex(msg, ' ');
+        QByteArray ba = xToolsByteArrayToHex(msg, ' ');
         QString hex = QString::fromLatin1(ba);
         QString info = m_bindingIpPort + "<-" + this->m_peerInfo + ":" + hex;
         qInfo() << info;
@@ -72,7 +71,7 @@ void xToolsWebSocketClientTool::writeBytes(const QByteArray &bytes)
     qint64 ret = -1;
     QString hex;
     if (m_messageType == 0) {
-        hex = QString::fromLatin1(xToolsInterface::arrayToHex(bytes, ' '));
+        hex = QString::fromLatin1(xToolsByteArrayToHex(bytes, ' '));
         ret = m_webSocket->sendBinaryMessage(bytes);
     } else {
         hex = QString::fromUtf8(bytes);

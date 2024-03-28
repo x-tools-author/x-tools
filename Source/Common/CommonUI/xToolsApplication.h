@@ -17,7 +17,10 @@ class xToolsApplication : public QApplication
     Q_OBJECT
     Q_PROPERTY(QStringList supportedLanguages READ supportedLanguages CONSTANT FINAL)
 public:
-    enum xToolsAppPalette { DefaultPalette, DarkPalette, LightPalette, CustomPalette = -1 };
+    enum class AppPalette { Default, Dark, Light, Custom = -1 };
+    Q_ENUM(AppPalette)
+    enum class ValidatorType { Bin, Otc, Dec, Hex, Ascii, Float, None };
+    Q_ENUM(ValidatorType)
 
 public:
     explicit xToolsApplication(int argc, char *argv[]);
@@ -29,6 +32,20 @@ public:
 
     QString language();
     virtual void setupLanguage(const QString &language);
+
+public:
+    static void setValidator(QLineEdit *target, int validatorType, int maxLength = INT_MAX);
+
+    Q_INVOKABLE static void setMaximumBlockCount(QVariant doc, int maximum);
+    Q_INVOKABLE static void setClipboardText(const QString &text);
+    Q_INVOKABLE static QString arrayToString(const QByteArray &array, int format);
+    Q_INVOKABLE static QString dateTimeString(const QString &format);
+    Q_INVOKABLE static QString cookedFileName(const QString &fileName);
+    Q_INVOKABLE static QString string2hexString(const QString &str);
+    Q_INVOKABLE static QString hexString2String(const QString &str);
+    Q_INVOKABLE static QString buildDateTime(const QString &format);
+    Q_INVOKABLE static QString systemDateFormat();
+    Q_INVOKABLE static QString systemTimeFormat();
 
 signals:
     void languageChanged();

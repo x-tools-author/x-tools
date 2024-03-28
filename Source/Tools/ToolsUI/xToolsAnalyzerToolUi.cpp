@@ -11,7 +11,6 @@
 
 #include "xToolsAnalyzerTool.h"
 #include "xToolsDataStructure.h"
-#include "xToolsInterface.h"
 #include "xToolsUiInterface.h"
 
 xToolsAnalyzerToolUi::xToolsAnalyzerToolUi(QWidget *parent)
@@ -50,7 +49,7 @@ void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const Q
     int len = ui->spinBoxFrameLength->value();
     int maxBytes = ui->spinBoxMaxTempBytes->value();
     QString txt = ui->lineEditSeparationMark->text().trimmed();
-    QByteArray flag = xToolsInterface::string2array(txt, format);
+    QByteArray flag = xToolsDataStructure::stringToByteArray(txt, format);
     
     cookedTool->setIsEnable(enable);
     cookedTool->setFixed(fixed);
@@ -76,7 +75,7 @@ void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const Q
     });
     connect(ui->lineEditSeparationMark, &QLineEdit::textChanged, this, [=]() {
         QString txt = ui->lineEditSeparationMark->text().trimmed();
-        QByteArray flag = xToolsInterface::string2array(txt, format);
+        QByteArray flag = xToolsDataStructure::stringToByteArray(txt, format);
         cookedTool->setSeparationMark(flag);
     });
 }

@@ -13,7 +13,6 @@
 
 #include "xToolsCrcInterface.h"
 #include "xToolsDataStructure.h"
-#include "xToolsInterface.h"
 
 xToolsEmitterTool::xToolsEmitterTool(QObject *parent)
     : xToolsTableModelTool{parent}
@@ -266,7 +265,7 @@ QByteArray xToolsEmitterTool::itemBytes(const xToolsEmitterTool::Data &item)
     QByteArray bytes;
     QString text = item.itemText;
     text = xToolsDataStructure::cookEscapeCharacter(item.itemEscapeCharacter, text);
-    bytes = xToolsInterface::string2array(text, item.itemTextFormat);
+    bytes = xToolsDataStructure::stringToByteArray(text, item.itemTextFormat);
     QByteArray prefix = xToolsDataStructure::affixesData(item.itemPrefix);
     QByteArray suffix = xToolsDataStructure::affixesData(item.itemSuffix);
 

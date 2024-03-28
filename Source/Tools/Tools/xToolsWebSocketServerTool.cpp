@@ -11,7 +11,6 @@
 #include <QWebSocket>
 
 #include "xToolsCompatibility.h"
-#include "xToolsInterface.h"
 
 xToolsWebSocketServerTool::xToolsWebSocketServerTool(QObject *parent)
     : xToolsSocketServerTool{parent}
@@ -118,7 +117,7 @@ void xToolsWebSocketServerTool::writeBytesInner(QWebSocket *client, const QByteA
     qint64 ret = -1;
     QString hex;
     if (m_messageType == 0) {
-        hex = QString::fromLatin1(xToolsInterface::arrayToHex(bytes, ' '));
+        hex = QString::fromLatin1(xToolsByteArrayToHex(bytes, ' '));
         ret = client->sendBinaryMessage(bytes);
     } else {
         hex = QString::fromUtf8(bytes);

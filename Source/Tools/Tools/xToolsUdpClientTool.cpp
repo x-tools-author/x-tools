@@ -11,7 +11,6 @@
 #include <QHostAddress>
 
 #include "xToolsCompatibility.h"
-#include "xToolsInterface.h"
 
 xToolsUdpClientTool::xToolsUdpClientTool(QObject *parent)
     : xToolsSocketClientTool{parent}
@@ -60,7 +59,7 @@ void xToolsUdpClientTool::writeBytes(const QByteArray &bytes)
         qInfo() << qPrintable(QString("write bytes to %1 error: %2").arg(ipport, str));
     } else {
 #ifdef QT_DEBUG
-        QByteArray ba = xToolsInterface::arrayToHex(bytes, ' ');
+        QByteArray ba = xToolsByteArrayToHex(bytes, ' ');
         QString hex = QString::fromLatin1(ba);
         QString portStr = QString::number(m_serverPort);
         QString serverInfo = QString("%1:%2").arg(m_serverIp, portStr);
@@ -92,7 +91,7 @@ void xToolsUdpClientTool::readBytes()
         if (ret == -1) {
             qWarning() << m_udpSocket->errorString();
         } else {
-            QByteArray ba = xToolsInterface::arrayToHex(bytes, ' ');
+            QByteArray ba = xToolsByteArrayToHex(bytes, ' ');
             QString hex = QString::fromLatin1(ba);
             QString portStr = address.toString();
             QString serverInfo = address.toString() + ":" + portStr;

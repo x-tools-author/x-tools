@@ -8,11 +8,32 @@
  **************************************************************************************************/
 #include "xToolsApplication.h"
 
+#include <QAbstractTableModel>
+#include <QClipboard>
 #include <QDataStream>
+#include <QDateTime>
+#include <QDebug>
 #include <QFile>
+#include <QGuiApplication>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QLineEdit>
+#include <QList>
+#include <QLocale>
 #include <QPainter>
+#include <QRegularExpressionValidator>
+#include <QSettings>
+#include <QStandardItemModel>
+#include <QTextDocument>
 #include <QTranslator>
+#ifdef X_TOOLS_IMPORT_MODULE_QML
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
+#include <QQuickTextDocument>
+#endif
+#endif
 
+#include "xToolsDataStructure.h"
 #include "xToolsSettings.h"
 
 xToolsApplication::xToolsApplication(int argc, char *argv[])
@@ -118,16 +139,153 @@ void xToolsApplication::setupLanguage(const QString &language)
     setupLanguageWithPrefix(language, m_translatorPrefix);
 }
 
+void xToolsApplication::setValidator(QLineEdit *target, int validatorType, int maxLength)
+{
+    static QMap<int, QRegularExpressionValidator *> regularExpressionMap;
+    if (regularExpressionMap.isEmpty()) {
+        typedef QRegularExpressionValidator REV;
+        auto noneRE = nullptr;
+        auto binRE = new REV(QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
+        auto otcRE = new REV(QRegularExpression("([0-7][0-7][ ])*"));
+        auto decRE = new REV(QRegularExpression("([-+.e0-9])*"));
+        auto hexRE = new REV(QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
+        auto asciiRE = new REV(QRegularExpression("([ -~])*"));
+        auto floatRE = new REV(QRegularExpression("^[-+]?[0-9]*\\.?[0-9]+$"));
+
+        regularExpressionMap.insert(int(ValidatorType::None), noneRE);
+        regularExpressionMap.insert(int(ValidatorType::Bin), binRE);
+        regularExpressionMap.insert(int(ValidatorType::Otc), otcRE);
+        regularExpressionMap.insert(int(ValidatorType::Dec), decRE);
+        regularExpressionMap.insert(int(ValidatorType::Hex), hexRE);
+        regularExpressionMap.insert(int(ValidatorType::Ascii), asciiRE);
+        regularExpressionMap.insert(int(ValidatorType::Float), floatRE);
+    }
+
+    if (!target || !regularExpressionMap.contains(validatorType) || maxLength < 0) {
+        qWarning() << "Invalid parameter, the operation will be ignored!";
+        return;
+    }
+
+    target->setValidator(regularExpressionMap.value(validatorType));
+    target->setMaxLength(maxLength);
+}
+
+void xToolsApplication::setMaximumBlockCount(QVariant doc, int maximum)
+{
+    auto obj = doc.value<QObject *>();
+    if (obj) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
+#ifdef X_TOOLS_IMPORT_MODULE_QML
+        auto quickTextDoc = qobject_cast<QQuickTextDocument *>(obj);
+        if (quickTextDoc) {
+            auto textDoc = quickTextDoc->textDocument();
+            textDoc->setMaximumBlockCount(maximum);
+        }
+#else
+        Q_UNUSED(doc)
+        Q_UNUSED(maximum)
+#endif
+#else
+        Q_UNUSED(doc)
+        Q_UNUSED(maximum)
+#endif
+    }
+}
+void xToolsApplication::setClipboardText(const QString &text)
+{
+    QGuiApplication::clipboard()->setText(text);
+}
+
+QString xToolsApplication::arrayToString(const QByteArray &array, int format)
+{
+    auto cookedArray = [](const QByteArray &array, int base, int len) -> QString {
+        QString str, numStr;
+        for (int i = 0; i < array.length(); i++) {
+            if (base == 10 || base == 8) {
+                numStr = QString::number(array.at(i), base);
+                str.append(QString("%1 ").arg(numStr));
+            } else {
+                numStr = QString::number(quint8(array.at(i)), base);
+                str.append(QString("%1 ").arg(numStr, len, '0'));
+            }
+        }
+        return str;
+    };
+
+    if (xToolsDataStructure::TextFormatBin == format) {
+        return cookedArray(array, 2, 8);
+    } else if (xToolsDataStructure::TextFormatOct == format) {
+        return cookedArray(array, 8, 3);
+    } else if (xToolsDataStructure::TextFormatDec == format) {
+        return cookedArray(array, 10, 3);
+    } else if (xToolsDataStructure::TextFormatHex == format) {
+        return cookedArray(array, 16, 2);
+    } else if (xToolsDataStructure::TextFormatAscii == format) {
+        return QString::fromLatin1(array);
+    } else {
+        return QString::fromUtf8(array);
+    }
+}
+
+QString xToolsApplication::dateTimeString(const QString &format)
+{
+    return QDateTime::currentDateTime().toString(format);
+}
+
+QString xToolsApplication::cookedFileName(const QString &fileName)
+{
+    QString cookedFileName = fileName;
+#ifdef Q_OS_WIN
+    cookedFileName = cookedFileName.remove("file:///");
+#endif
+
+    return cookedFileName;
+}
+
+QString xToolsApplication::string2hexString(const QString &str)
+{
+    return QString::fromLatin1(str.toUtf8().toHex());
+}
+
+QString xToolsApplication::hexString2String(const QString &str)
+{
+    QByteArray arr = QByteArray::fromHex(str.toUtf8());
+    return QString::fromUtf8(arr);
+}
+
+QString xToolsApplication::buildDateTime(const QString &format)
+{
+    QString str = QString(__DATE__);
+    QDate date = QDate::fromString(str, "MMM d yyyy");
+    if (!date.isValid()) {
+        date = QDate::fromString(str, "MMM  d yyyy");
+    }
+    QTime time = QTime::fromString(__TIME__, "hh:mm:ss");
+    return QDateTime(date, time).toString(format);
+}
+
+QString xToolsApplication::systemDateFormat()
+{
+    return QLocale::system().dateFormat();
+}
+
+QString xToolsApplication::systemTimeFormat()
+{
+    return QLocale::system().timeFormat();
+}
+
 void xToolsApplication::setupLanguageWithPrefix(const QString &language, const QString &prefix)
 {
     QString key = m_languageFlagNameMap.key(language);
     if (language.isEmpty()) {
         key = QLocale::system().name();
+
         qWarning() << "The language is not specified, system language will be used:" << key;
     }
 
     if (!m_languageFlagNameMap.contains(key)) {
         qWarning() << "Unsupported language, english will be used";
+
         key = "en";
     }
 
@@ -159,7 +317,6 @@ void xToolsApplication::setupLanguageWithPrefix(const QString &language, const Q
         qWarning() << "Load file failed: " << fileName;
     }
 }
-
 
 QPixmap xToolsApplication::splashScreenPixmap()
 {

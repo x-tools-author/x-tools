@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "xToolsSerialPortTool.h"
 
-#include "xToolsInterface.h"
+#include "xToolsCompatibility.h"
 
 xToolsSerialPortTool::xToolsSerialPortTool(QObject *parent)
     : xToolsCommunicationTool(parent)
@@ -115,7 +115,7 @@ void xToolsSerialPortTool::writeBytes(const QByteArray &bytes)
         if (ret == -1) {
             qWarning() << m_serialPort->errorString();
         } else if (ret > 0) {
-            QByteArray hex = xToolsInterface::arrayToHex(bytes, ' ');
+            QByteArray hex = xToolsByteArrayToHex(bytes, ' ');
             QString msg = QString::fromLatin1(hex);
             msg = QString("%1<-%2").arg(m_parameters.portName, msg);
             qInfo() << msg;

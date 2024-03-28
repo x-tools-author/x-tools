@@ -9,7 +9,6 @@
 #include "xToolsUdpServerTool.h"
 
 #include "xToolsCompatibility.h"
-#include "xToolsInterface.h"
 
 xToolsUdpServerTool::xToolsUdpServerTool(QObject *parent)
     : xToolsSocketServerTool{parent}
@@ -86,7 +85,7 @@ void xToolsUdpServerTool::readBytes()
             break;
         }
 
-        QByteArray ba = xToolsInterface::arrayToHex(bytes, ' ');
+        QByteArray ba = xToolsByteArrayToHex(bytes, ' ');
         QString hex = QString::fromLatin1(ba);
         QString info = QString("%1:%2").arg(address.toString()).arg(port);
         QString msg = QString("%1<-%2:%3").arg(m_bindingIpPort, info, hex);
@@ -110,7 +109,7 @@ void xToolsUdpServerTool::writeDatagram(const QByteArray &bytes,
     if (ret == -1) {
         qWarning() << m_udpSocket->errorString();
     } else {
-        QString hex = QString::fromLatin1(xToolsInterface::arrayToHex(bytes, ' '));
+        QString hex = QString::fromLatin1(xToolsByteArrayToHex(bytes, ' '));
         qInfo() << QString("%1<-%2").arg(m_bindingIpPort, hex);
         emit bytesWritten(bytes, m_bindingIpPort);
     }

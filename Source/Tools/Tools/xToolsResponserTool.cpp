@@ -18,7 +18,6 @@
 
 #include "xToolsCrcInterface.h"
 #include "xToolsDataStructure.h"
-#include "xToolsInterface.h"
 
 xToolsResponserTool::xToolsResponserTool(QObject *parent)
     : xToolsTableModelTool{parent}
@@ -265,7 +264,7 @@ QByteArray xToolsResponserTool::referenceBytes(const ResponserItem &item) const
     QByteArray bytes;
     QString text = item.itemReferenceText;
     text = xToolsDataStructure::cookEscapeCharacter(item.itemReferenceEscapeCharacter, text);
-    bytes = xToolsInterface::string2array(text, item.itemReferenceTextFormat);
+    bytes = xToolsDataStructure::stringToByteArray(text, item.itemReferenceTextFormat);
     QByteArray prefix = xToolsDataStructure::affixesData(item.itemReferencePrefix);
     QByteArray suffix = xToolsDataStructure::affixesData(item.itemReferenceSuffix);
 
@@ -289,7 +288,7 @@ QByteArray xToolsResponserTool::responseBytes(const ResponserItem &item) const
     QByteArray bytes;
     QString text = item.itemResponseText;
     text = xToolsDataStructure::cookEscapeCharacter(item.itemResponseEscapeCharacter, text);
-    bytes = xToolsInterface::string2array(text, item.itemResponseTextFormat);
+    bytes = xToolsDataStructure::stringToByteArray(text, item.itemResponseTextFormat);
     QByteArray prefix = xToolsDataStructure::affixesData(item.itemResponsePrefix);
     QByteArray suffix = xToolsDataStructure::affixesData(item.itemResponseSuffix);
 

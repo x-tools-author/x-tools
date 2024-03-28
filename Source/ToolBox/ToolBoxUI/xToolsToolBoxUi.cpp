@@ -18,11 +18,11 @@
 #include <QMetaEnum>
 #include <QRegularExpression>
 
+#include "xToolsApplication.h"
 #include "xToolsCommunicationTool.h"
 #include "xToolsCrcInterface.h"
 #include "xToolsDataStructure.h"
 #include "xToolsEmitterToolUi.h"
-#include "xToolsInterface.h"
 #include "xToolsPrestorerToolUi.h"
 #include "xToolsResponserToolUi.h"
 #include "xToolsSerialPortToolUi.h"
@@ -194,7 +194,7 @@ void xToolsToolBoxUi::try2send()
     QString input = ui->comboBoxInputText->currentText();
     input = xToolsDataStructure::cookEscapeCharacter(esc, input);
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    QByteArray bytes = xToolsInterface::string2array(input, format);
+    QByteArray bytes = xToolsDataStructure::stringToByteArray(input, format);
     if (ctx.appendCrc) {
         QByteArray b = calculateCrc(bytes);
         bytes.append(b);
@@ -240,7 +240,7 @@ QString xToolsToolBoxUi::dateTimeFormat()
 void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bool isRx)
 {
     int format = ui->comboBoxOutputFormat->currentData().toInt();
-    QString str = xToolsInterface::arrayToString(bytes, format);
+    QString str = xToolsApplication::arrayToString(bytes, format);
 
     if (!str.contains(m_outputMenu->filter())) {
         return;
@@ -296,7 +296,7 @@ QByteArray xToolsToolBoxUi::calculateCrc(const QByteArray& bytes, bool fixedOrig
         int esc = ctx.escapeCharacter;
         
         input = xToolsDataStructure::cookEscapeCharacter(esc, input);
-        inputBytes = xToolsInterface::string2array(input, format);
+        inputBytes = xToolsDataStructure::stringToByteArray(input, format);
     }
 
     int algorithm = ctx.algorithm;
@@ -312,7 +312,7 @@ void xToolsToolBoxUi::setDefaultText()
 {
     QByteArray ba("(null)");
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    QString str = xToolsInterface::arrayToString(ba, format);
+    QString str = xToolsApplication::arrayToString(ba, format);
     ui->comboBoxInputText->setCurrentText(str);
 }
 

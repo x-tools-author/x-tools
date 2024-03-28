@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "xToolsAnalyzerTool.h"
 
-#include "xToolsInterface.h"
+#include "xToolsCompatibility.h"
 
 xToolsAnalyzerTool::xToolsAnalyzerTool(QObject *parent)
     : xToolsBaseTool{parent}
@@ -100,7 +100,7 @@ void xToolsAnalyzerTool::analyze()
     }
 
     if (m_inputtedBytes.length() > ctx.maxTempBytes) {
-        QByteArray ba = xToolsInterface::arrayToHex(m_inputtedBytes, ' ');
+        QByteArray ba = xToolsByteArrayToHex(m_inputtedBytes, ' ');
         qInfo() << "clear bytes: " + QString::fromLatin1(ba);
         emit outputBytes(m_inputtedBytes);
         m_inputtedBytes.clear();
@@ -117,7 +117,7 @@ void xToolsAnalyzerTool::analyzeFixed()
         QByteArray frame(m_inputtedBytes.data(), ctx.frameBytes);
         m_inputtedBytes.remove(0, ctx.frameBytes);
 
-        QByteArray ba = xToolsInterface::arrayToHex(frame, ' ');
+        QByteArray ba = xToolsByteArrayToHex(frame, ' ');
         QString hex = QString::fromLatin1(ba);
         qInfo() << QString("Analyzer->%1").arg(hex);
         emit outputBytes(frame);
@@ -134,7 +134,7 @@ void xToolsAnalyzerTool::analyzeSeparationMark()
     auto ctx = m_parameters;
     m_parametersMutex.unlock();
     if (ctx.separationMark.isEmpty()) {
-        QByteArray ba = xToolsInterface::arrayToHex(m_inputtedBytes, ' ');
+        QByteArray ba = xToolsByteArrayToHex(m_inputtedBytes, ' ');
         QString hex = QString::fromLatin1(ba);
         QString msg = QString("Analyzer->%1").arg(hex);
         qInfo() << msg;
@@ -152,7 +152,7 @@ void xToolsAnalyzerTool::analyzeSeparationMark()
     QByteArray frame(m_inputtedBytes.constData(), len);
     m_inputtedBytes.remove(0, len);
 
-    QByteArray ba = xToolsInterface::arrayToHex(frame, ' ');
+    QByteArray ba = xToolsByteArrayToHex(frame, ' ');
     QString hex = QString::fromLatin1(ba);
     QString msg = QString("Analyzer->%1").arg(hex);
     qInfo() << msg;

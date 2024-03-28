@@ -41,6 +41,7 @@ static qint64 xToolsBirthTimeOfFile(const QFileInfo &info)
 #endif
 }
 
+// QByteArray QByteArray::toHex(char separator = '\0') const
 static QByteArray xToolsByteArrayToHex(const QByteArray &source, char separator = '\0')
 {
     if (source.isEmpty()) {

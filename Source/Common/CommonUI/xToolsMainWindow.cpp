@@ -27,7 +27,6 @@
 #include <QUrl>
 
 #include "xToolsApplication.h"
-#include "xToolsInterface.h"
 #include "xToolsSettings.h"
 
 xToolsMainWindow::xToolsMainWindow(QWidget* parent)
@@ -324,7 +323,7 @@ void xToolsMainWindow::onUserQqGroupTriggerd()
 
 void xToolsMainWindow::onAboutActionTriggered()
 {
-    QString year = xToolsInterface::buildDateTime("yyyy");
+    QString year = xToolsApplication::buildDateTime("yyyy");
     QString info;
     info += windowTitle() + QString("") + tr("(A Part of xTools Project)");
     info += "\n\n";
