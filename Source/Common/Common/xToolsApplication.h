@@ -40,13 +40,12 @@ public:
     static QIcon cookedIcon(const QIcon &icon);
     static QMainWindow *mainWindow();
 
-    Q_INVOKABLE static void setMaximumBlockCount(QVariant doc, int maximum);
+    Q_INVOKABLE static QString clipboardText();
     Q_INVOKABLE static void setClipboardText(const QString &text);
-    Q_INVOKABLE static QString arrayToString(const QByteArray &array, int format);
+
     Q_INVOKABLE static QString dateTimeString(const QString &format);
-    Q_INVOKABLE static QString cookedFileName(const QString &fileName);
-    Q_INVOKABLE static QString string2hexString(const QString &str);
-    Q_INVOKABLE static QString hexString2String(const QString &str);
+    Q_INVOKABLE static QString stringToHexString(const QString &str);
+    Q_INVOKABLE static QString hexStringToString(const QString &str);
     Q_INVOKABLE static QString buildDateTime(const QString &format);
     Q_INVOKABLE static QString systemDateFormat();
     Q_INVOKABLE static QString systemTimeFormat();

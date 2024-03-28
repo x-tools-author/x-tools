@@ -240,7 +240,7 @@ QString xToolsToolBoxUi::dateTimeFormat()
 void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bool isRx)
 {
     int format = ui->comboBoxOutputFormat->currentData().toInt();
-    QString str = xToolsApplication::arrayToString(bytes, format);
+    QString str = xToolsDataStructure::byteArrayToString(bytes, format);
 
     if (!str.contains(m_outputMenu->filter())) {
         return;
@@ -312,7 +312,7 @@ void xToolsToolBoxUi::setDefaultText()
 {
     QByteArray ba("(null)");
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    QString str = xToolsApplication::arrayToString(ba, format);
+    QString str = xToolsDataStructure::byteArrayToString(ba, format);
     ui->comboBoxInputText->setCurrentText(str);
 }
 

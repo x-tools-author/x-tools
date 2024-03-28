@@ -27,13 +27,7 @@
 #include <QStandardItemModel>
 #include <QTextDocument>
 #include <QTranslator>
-#ifdef X_TOOLS_IMPORT_MODULE_QML
-#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
-#include <QQuickTextDocument>
-#endif
-#endif
 
-#include "xToolsDataStructure.h"
 #include "xToolsSettings.h"
 
 xToolsApplication::xToolsApplication(int argc, char *argv[])
@@ -183,70 +177,23 @@ QIcon xToolsApplication::cookedIcon(const QIcon &icon)
 QMainWindow *xToolsApplication::mainWindow()
 {
     for (const auto& it : qobject_cast<QApplication*>(qApp)->topLevelWidgets()) {
-        auto w = qobject_cast<QMainWindow*>(it);
-        if (w) {
-            return w;
+        auto mainWindow = qobject_cast<QMainWindow*>(it);
+        if (mainWindow) {
+            return mainWindow;
         }
     }
 
     return nullptr;
 }
 
-void xToolsApplication::setMaximumBlockCount(QVariant doc, int maximum)
+QString xToolsApplication::clipboardText()
 {
-    auto obj = doc.value<QObject *>();
-    if (obj) {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
-#ifdef X_TOOLS_IMPORT_MODULE_QML
-        auto quickTextDoc = qobject_cast<QQuickTextDocument *>(obj);
-        if (quickTextDoc) {
-            auto textDoc = quickTextDoc->textDocument();
-            textDoc->setMaximumBlockCount(maximum);
-        }
-#else
-        Q_UNUSED(doc)
-        Q_UNUSED(maximum)
-#endif
-#else
-        Q_UNUSED(doc)
-        Q_UNUSED(maximum)
-#endif
-    }
+    return QGuiApplication::clipboard()->text();
 }
+
 void xToolsApplication::setClipboardText(const QString &text)
 {
     QGuiApplication::clipboard()->setText(text);
-}
-
-QString xToolsApplication::arrayToString(const QByteArray &array, int format)
-{
-    auto cookedArray = [](const QByteArray &array, int base, int len) -> QString {
-        QString str, numStr;
-        for (int i = 0; i < array.length(); i++) {
-            if (base == 10 || base == 8) {
-                numStr = QString::number(array.at(i), base);
-                str.append(QString("%1 ").arg(numStr));
-            } else {
-                numStr = QString::number(quint8(array.at(i)), base);
-                str.append(QString("%1 ").arg(numStr, len, '0'));
-            }
-        }
-        return str;
-    };
-
-    if (xToolsDataStructure::TextFormatBin == format) {
-        return cookedArray(array, 2, 8);
-    } else if (xToolsDataStructure::TextFormatOct == format) {
-        return cookedArray(array, 8, 3);
-    } else if (xToolsDataStructure::TextFormatDec == format) {
-        return cookedArray(array, 10, 3);
-    } else if (xToolsDataStructure::TextFormatHex == format) {
-        return cookedArray(array, 16, 2);
-    } else if (xToolsDataStructure::TextFormatAscii == format) {
-        return QString::fromLatin1(array);
-    } else {
-        return QString::fromUtf8(array);
-    }
 }
 
 QString xToolsApplication::dateTimeString(const QString &format)
@@ -254,22 +201,12 @@ QString xToolsApplication::dateTimeString(const QString &format)
     return QDateTime::currentDateTime().toString(format);
 }
 
-QString xToolsApplication::cookedFileName(const QString &fileName)
-{
-    QString cookedFileName = fileName;
-#ifdef Q_OS_WIN
-    cookedFileName = cookedFileName.remove("file:///");
-#endif
-
-    return cookedFileName;
-}
-
-QString xToolsApplication::string2hexString(const QString &str)
+QString xToolsApplication::stringToHexString(const QString &str)
 {
     return QString::fromLatin1(str.toUtf8().toHex());
 }
 
-QString xToolsApplication::hexString2String(const QString &str)
+QString xToolsApplication::hexStringToString(const QString &str)
 {
     QByteArray arr = QByteArray::fromHex(str.toUtf8());
     return QString::fromUtf8(arr);

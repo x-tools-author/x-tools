@@ -14,7 +14,7 @@
 #include <QTextStream>
 #include <Qt>
 
-#include "xToolsApplication.h"
+#include "xToolsDataStructure.h"
 
 xToolsStorerTool::xToolsStorerTool(QObject *parent)
     : xToolsBaseTool{parent}
@@ -166,8 +166,7 @@ void xToolsStorerTool::write2file()
             this->mParametersMutex.lock();
             int format = this->mParameters.format;
             this->mParametersMutex.unlock();
-            auto str = xToolsApplication::arrayToString(bytes, format);
-
+            auto str = xToolsDataStructure::byteArrayToString(bytes, format);
             QString dtStr;
             auto dt = QDateTime::currentDateTime();
             if (mParameters.saveDate && mParameters.saveTime) {
@@ -189,6 +188,7 @@ void xToolsStorerTool::write2file()
                     }
                 }
             }
+            outStream << dtStr << str << "\n";
         }
         file.close();
     } else {
