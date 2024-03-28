@@ -170,6 +170,28 @@ void xToolsApplication::setValidator(QLineEdit *target, int validatorType, int m
     target->setMaxLength(maxLength);
 }
 
+QIcon xToolsApplication::cookedIcon(const QIcon &icon)
+{
+    QPixmap pixmap = icon.pixmap(QSize(128, 128));
+    QPainter painter(&pixmap);
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    painter.fillRect(pixmap.rect(), qApp->palette().windowText().color());
+    QIcon colorIcon = QIcon(pixmap);
+    return colorIcon;
+}
+
+QMainWindow *xToolsApplication::mainWindow()
+{
+    for (const auto& it : qobject_cast<QApplication*>(qApp)->topLevelWidgets()) {
+        auto w = qobject_cast<QMainWindow*>(it);
+        if (w) {
+            return w;
+        }
+    }
+
+    return nullptr;
+}
+
 void xToolsApplication::setMaximumBlockCount(QVariant doc, int maximum)
 {
     auto obj = doc.value<QObject *>();

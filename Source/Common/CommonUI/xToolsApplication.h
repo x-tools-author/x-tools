@@ -11,6 +11,7 @@
 #include <QApplication>
 #include <QPixmap>
 #include <QSplashScreen>
+#include <QMainWindow>
 
 class QLineEdit;
 class xToolsApplication : public QApplication
@@ -36,6 +37,8 @@ public:
 
 public:
     static void setValidator(QLineEdit *target, int validatorType, int maxLength = INT_MAX);
+    static QIcon cookedIcon(const QIcon &icon);
+    static QMainWindow *mainWindow();
 
     Q_INVOKABLE static void setMaximumBlockCount(QVariant doc, int maximum);
     Q_INVOKABLE static void setClipboardText(const QString &text);

@@ -9,12 +9,12 @@
 #include "xToolsEmitterToolUi.h"
 
 #include "xToolsTableModelTool.h"
-#include "xToolsUiInterface.h"
+#include "xToolsApplication.h"
 
 xToolsEmitterToolUi::xToolsEmitterToolUi(QWidget *parent)
     : xToolsTableModelToolUi{"sak.emittertoolui", parent}
 {
-    mEditor = new xToolsEmitterToolUiEditor(xToolsUiInterface::mainWindow());
+    mEditor = new xToolsEmitterToolUiEditor(xToolsApplication::mainWindow());
 }
 
 xToolsEmitterToolUi::~xToolsEmitterToolUi() {}

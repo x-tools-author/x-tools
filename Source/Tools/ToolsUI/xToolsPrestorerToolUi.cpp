@@ -18,12 +18,12 @@
 #include "xToolsMenu.h"
 #include "xToolsPrestorerTool.h"
 #include "xToolsPrestorerToolUiEditor.h"
-#include "xToolsUiInterface.h"
+#include "xToolsApplication.h"
 
 xToolsPrestorerToolUi::xToolsPrestorerToolUi(QWidget *parent)
     : xToolsTableModelToolUi{"SAK.PrestorerToolUi", parent}
 {
-    mEditor = new xToolsPrestorerToolUiEditor(xToolsUiInterface::mainWindow());
+    mEditor = new xToolsPrestorerToolUiEditor(xToolsApplication::mainWindow());
     mMenu = new xToolsMenu();
 }
 

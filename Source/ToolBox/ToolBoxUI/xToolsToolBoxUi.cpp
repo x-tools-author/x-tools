@@ -36,7 +36,7 @@
 #include "xToolsToolBoxUiOutputMenu.h"
 #include "xToolsToolFactory.h"
 #include "xToolsUdpTransmitterToolUi.h"
-#include "xToolsUiInterface.h"
+#include "xToolsApplication.h"
 #include "xToolsWebSocketTransmitterToolUi.h"
 
 #ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
@@ -736,7 +736,7 @@ void xToolsToolBoxUi::onComboBoxInputFormatActivated()
     int format = ui->comboBoxInputFormat->currentData().toInt();
     auto lineEdit = ui->comboBoxInputText->lineEdit();
     ui->comboBoxInputText->clear();
-    xToolsUiInterface::setValidator(lineEdit, format);
+    xToolsApplication::setValidator(lineEdit, format);
 }
 
 void xToolsToolBoxUi::onComboBoxInputTextActivated()

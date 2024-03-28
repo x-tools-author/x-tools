@@ -17,12 +17,12 @@
 #include <QVariant>
 
 #include "xToolsTableModelTool.h"
-#include "xToolsUiInterface.h"
+#include "xToolsApplication.h"
 
 xToolsResponserToolUi::xToolsResponserToolUi(QWidget *parent)
     : xToolsTableModelToolUi{"sak.responsertoolui", parent}
 {
-    mEditor = new xToolsResponserToolUiEditor(xToolsUiInterface::mainWindow());
+    mEditor = new xToolsResponserToolUiEditor(xToolsApplication::mainWindow());
 }
 
 xToolsResponserToolUi::~xToolsResponserToolUi() {}

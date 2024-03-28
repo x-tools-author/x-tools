@@ -40,7 +40,7 @@
 #include "xToolsAssistantFactory.h"
 #include "xToolsSettings.h"
 #include "xToolsToolBoxUi.h"
-#include "xToolsUiInterface.h"
+#include "xToolsApplication.h"
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
 #include "xToolsCanBusStudioUi.h"
 #endif
@@ -317,7 +317,7 @@ void MainWindow::initNav()
         xToolsToolBoxUi* toolBoxUi = new xToolsToolBoxUi(this);
         toolBoxUi->initialize(type);
 
-        auto icon = xToolsUiInterface::cookedIcon(toolBoxUi->windowIcon());
+        auto icon = xToolsApplication::cookedIcon(toolBoxUi->windowIcon());
         initNav({&btGroup, icon, toolBoxUi->windowTitle(), toolBoxUi, tb});
     }
 
@@ -334,13 +334,13 @@ void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
     QString path = ":/Resources/Icons/IconModbus.svg";
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
     xToolsModbusStudioUi* modbus = new xToolsModbusStudioUi(this);
-    auto icon = xToolsUiInterface::cookedIcon(QIcon(path));
+    auto icon = xToolsApplication::cookedIcon(QIcon(path));
     initNav({buttonGroup, icon, "Modbus Studio", modbus, toolBar});
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
     xToolsCanBusStudioUi* canbus = new xToolsCanBusStudioUi(this);
     path = ":/Resources/Icons/IconCanBus.svg";
-    icon = xToolsUiInterface::cookedIcon(QIcon(path));
+    icon = xToolsApplication::cookedIcon(QIcon(path));
     initNav({buttonGroup, icon, "CANBus Studio", canbus, toolBar});
 #endif
 }
@@ -390,7 +390,7 @@ void MainWindow::intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBa
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
     QToolButton* tbt = new QToolButton(this);
     const QString path = ":/Resources/Icons/IconListWithIcon.svg";
-    tbt->setIcon(xToolsUiInterface::cookedIcon(QIcon(path)));
+    tbt->setIcon(xToolsApplication::cookedIcon(QIcon(path)));
     tbt->setText(" " + tr("Show Icon Only"));
     tbt->setToolTip(tr("Click to show(hide) nav text"));
     tbt->setAutoRaise(true);

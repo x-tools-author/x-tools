@@ -11,7 +11,7 @@
 
 #include "xToolsAnalyzerTool.h"
 #include "xToolsDataStructure.h"
-#include "xToolsUiInterface.h"
+#include "xToolsApplication.h"
 
 xToolsAnalyzerToolUi::xToolsAnalyzerToolUi(QWidget *parent)
     : xToolsBaseToolUi{parent}
@@ -28,7 +28,7 @@ void xToolsAnalyzerToolUi::setToolName(const QString &name)
 void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     int format = xToolsDataStructure::TextFormatHex;
-    xToolsUiInterface::setValidator(ui->lineEditSeparationMark, format);
+    xToolsApplication::setValidator(ui->lineEditSeparationMark, format);
 
     ui->checkBoxEnable->setGroupKey(settingsGroup, "analyzerEnable");
     ui->checkBoxFixedLength->setGroupKey(settingsGroup, "fxiedLength");

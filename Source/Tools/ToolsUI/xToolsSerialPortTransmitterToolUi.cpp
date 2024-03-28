@@ -8,12 +8,12 @@
  **************************************************************************************************/
 #include "xToolsSerialPortTransmitterToolUi.h"
 
-#include "xToolsUiInterface.h"
+#include "xToolsApplication.h"
 
 xToolsSerialPortTransmitterToolUi::xToolsSerialPortTransmitterToolUi(QWidget *parent)
     : xToolsTransmitterToolUi("SAK.SerialPortTransmitterToolUi", parent)
 {
-    mEditor = new xToolsSerialPortTransmitterToolUiEditor(xToolsUiInterface::mainWindow());
+    mEditor = new xToolsSerialPortTransmitterToolUiEditor(xToolsApplication::mainWindow());
 }
 
 void xToolsSerialPortTransmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,

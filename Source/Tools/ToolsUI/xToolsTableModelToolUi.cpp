@@ -19,7 +19,7 @@
 #include "xToolsMenu.h"
 #include "xToolsSettings.h"
 #include "xToolsTableModelTool.h"
-#include "xToolsUiInterface.h"
+#include "xToolsApplication.h"
 
 xToolsTableModelToolUi::xToolsTableModelToolUi(const char *lg, QWidget *parent)
     : xToolsBaseToolUi{parent}
@@ -284,7 +284,7 @@ QModelIndex xToolsTableModelToolUi::currentIndex()
 {
     QModelIndex index = ui->tableView->currentIndex();
     if (!index.isValid()) {
-        QMessageBox::warning(xToolsUiInterface::mainWindow(),
+        QMessageBox::warning(xToolsApplication::mainWindow(),
                              tr("Please Select an Item"),
                              tr("Please select an tiem first,"
                                 " then try again!"));
@@ -301,7 +301,7 @@ void xToolsTableModelToolUi::writeToSettingsFile()
 bool xToolsTableModelToolUi::isInitialized()
 {
     if (!mTableModelTool) {
-        QMessageBox::warning(xToolsUiInterface::mainWindow(),
+        QMessageBox::warning(xToolsApplication::mainWindow(),
                              tr("Invalid Parameter"),
                              tr("The value of mTableModelTool is nullptr,"
                                 " you must called initialize() first!"));
@@ -330,7 +330,7 @@ void xToolsTableModelToolUi::onPushButtonClearClicked()
         return;
     }
 
-    int ret = QMessageBox::warning(xToolsUiInterface::mainWindow(),
+    int ret = QMessageBox::warning(xToolsApplication::mainWindow(),
                                    tr("Clear Data"),
                                    tr("The data will be empty from settings file, "
                                       "please confrim the operation!"),
@@ -347,7 +347,7 @@ void xToolsTableModelToolUi::onPushButtonDeleteClicked()
         return;
     }
 
-    int ret = QMessageBox::warning(xToolsUiInterface::mainWindow(),
+    int ret = QMessageBox::warning(xToolsApplication::mainWindow(),
                                    tr("Delete Data"),
                                    tr("The data will be delete from settings file, "
                                       "please confrim the operation!"),
@@ -370,7 +370,7 @@ void xToolsTableModelToolUi::onPushButtonImportClicked()
         return;
     }
 
-    QString fileName = QFileDialog::getOpenFileName(xToolsUiInterface::mainWindow(),
+    QString fileName = QFileDialog::getOpenFileName(xToolsApplication::mainWindow(),
                                                     tr("Import data"),
                                                     ".",
                                                     tr("JSON (*.json);;All (*)"));
@@ -397,7 +397,7 @@ void xToolsTableModelToolUi::onPushButtonExportClicked()
         return;
     }
 
-    QString fileName = QFileDialog::getSaveFileName(xToolsUiInterface::mainWindow(),
+    QString fileName = QFileDialog::getSaveFileName(xToolsApplication::mainWindow(),
                                                     tr("Import data"),
                                                     ".",
                                                     tr("JSON (*.json);;All (*); "));
