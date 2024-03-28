@@ -64,7 +64,7 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, con
         return;
     }
 
-    if (!tool->inherits("SAKWebSocketClientTool")) {
+    if (!tool->inherits("xToolsWebSocketClientTool")) {
         ui->labelMessageType->hide();
         ui->comboBoxMessageType->hide();
     }
