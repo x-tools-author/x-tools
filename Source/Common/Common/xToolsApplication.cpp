@@ -148,14 +148,16 @@ void xToolsApplication::setValidator(QLineEdit *target, int validatorType, int m
         auto hexRE = new REV(QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
         auto asciiRE = new REV(QRegularExpression("([ -~])*"));
         auto floatRE = new REV(QRegularExpression("^[-+]?[0-9]*\\.?[0-9]+$"));
+        auto urf8RE = nullptr;
+        auto systemRE = nullptr;
 
-        regularExpressionMap.insert(int(ValidatorType::None), noneRE);
-        regularExpressionMap.insert(int(ValidatorType::Bin), binRE);
-        regularExpressionMap.insert(int(ValidatorType::Otc), otcRE);
-        regularExpressionMap.insert(int(ValidatorType::Dec), decRE);
-        regularExpressionMap.insert(int(ValidatorType::Hex), hexRE);
-        regularExpressionMap.insert(int(ValidatorType::Ascii), asciiRE);
-        regularExpressionMap.insert(int(ValidatorType::Float), floatRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatBin), noneRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatOct), binRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatDec), otcRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatHex), decRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatAscii), hexRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatUtf8), asciiRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatSystem), floatRE);
     }
 
     if (!target || !regularExpressionMap.contains(validatorType) || maxLength < 0) {
