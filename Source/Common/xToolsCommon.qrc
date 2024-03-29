@@ -9,5 +9,6 @@
         <file>Resources/Icons/GitHub.svg</file>
         <file>Resources/Images/QtQQ.jpg</file>
         <file>Resources/Images/UserQQ.jpg</file>
+        <file>Resources/Icons/Unregistered.svg</file>
     </qresource>
 </RCC>
