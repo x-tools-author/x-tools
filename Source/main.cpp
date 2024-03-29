@@ -12,6 +12,9 @@
 
 int main(const int argc, char *argv[])
 {
+#if 0
+    QApplication::setAttribute(Qt::AA_Use96Dpi);
+#endif
 #ifdef X_TOOLS_BUILD_WITH_CMAKE
     Q_INIT_RESOURCE(xToolsCommon);
 #endif

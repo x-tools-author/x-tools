@@ -215,11 +215,11 @@ void MainWindow::initLanguageMenu() {}
 void MainWindow::initHelpMenu()
 {
     m_helpMenu->addSeparator();
-    m_helpMenu->addAction(QIcon(":/Resources/Icons/GitHub.svg"),
+    m_helpMenu->addAction(/*QIcon(":/Resources/Icons/GitHub.svg"),*/
                           tr("Get Sources from Github"),
                           this,
                           []() { QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL)); });
-    m_helpMenu->addAction(QIcon(":/Resources/Icons/Gitee.svg"),
+    m_helpMenu->addAction(/*QIcon(":/Resources/Icons/Gitee.svg"),*/
                           tr("Get Sources from Gitee"),
                           this,
                           []() { QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL)); });
@@ -242,7 +242,7 @@ void MainWindow::initHelpMenu()
     m_helpMenu->addAction(tr("Release History"),
                           this,
                           &MainWindow::showHistory);
-    m_helpMenu->addAction(QIcon(":/Resources/Icons/IconQQ.svg"),
+    m_helpMenu->addAction(/*QIcon(":/Resources/Icons/IconQQ.svg"),*/
                           tr("Join in QQ Group"),
                           this,
                           &MainWindow::showQrCode);
@@ -291,7 +291,7 @@ void MainWindow::initLinksMenu()
             continue;
         }
 
-        QAction* action = new QAction(QIcon(var.iconPath), var.name, this);
+        QAction* action = new QAction(var.name, this);
         action->setObjectName(var.url);
         linksMenu->addAction(action);
 
