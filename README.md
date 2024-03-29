@@ -17,7 +17,7 @@
 
 > **You can get *xTools Ultimate* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
 
-![MainWindow.png](Resources/Images/MainWindow.png)
+![MainWindow.png](xTools.png)
 
 > [!WARNING]
 > The project is not supported for building for ios yet.
