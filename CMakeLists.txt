@@ -147,7 +147,7 @@ endif()
 
 # -------------------------------------------------------------------------------------------------
 # The private modules is not open-source.
-if(NOT Qt{QT_VERSION_MAJOR}_VERSION VERSION_LESS "6.5.0")
+if((QT_VERSION_MAJOR GREATER 5) AND (NOT Qt6_VERSION VERSION_LESS "6.5.0"))
   if(EXISTS ${CMAKE_SOURCE_DIR}/Private)
     add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
   endif()
