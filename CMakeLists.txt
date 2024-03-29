@@ -138,6 +138,17 @@ if(X_TOOLS_PRIVATE_MODULE_IS_VALID)
   target_link_libraries(xTools PRIVATE QtAES::QtAES)
 endif()
 
+add_custom_target(
+  xTools_pull
+  COMMAND git pull "https://gitee.com/x-tools-author/x-tools-private.git"
+  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+add_custom_target(
+  xTools_push
+  COMMAND git push
+  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+
 # -------------------------------------------------------------------------------------------------
 # Assistant applications
 option(X_TOOLS_ENABLE_APP_ASSISTANTS "Enable assistant applications" OFF)
@@ -161,6 +172,11 @@ if((QT_VERSION_MAJOR GREATER 5) AND (NOT Qt6_VERSION VERSION_LESS "6.5.0"))
   add_custom_target(
     xTools_pull_private_modules
     COMMAND git pull ${GITEE_URL}
+    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Private)
+  add_custom_target(
+    xTools_push_private_modules
+    COMMAND git push
     SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Private)
 endif()
