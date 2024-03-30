@@ -9,13 +9,11 @@
 #include "MainWindow.h"
 
 #include <QAction>
-#include <QActionGroup>
 #include <QButtonGroup>
 #include <QClipboard>
 #include <QCloseEvent>
 #include <QDebug>
 #include <QDesktopServices>
-#include <QDir>
 #include <QFile>
 #include <QFileDialog>
 #include <QImage>
@@ -40,7 +38,6 @@
 #include "xToolsAssistantFactory.h"
 #include "xToolsSettings.h"
 #include "xToolsToolBoxUi.h"
-#include "xToolsApplication.h"
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
 #include "xToolsCanBusStudioUi.h"
 #endif
@@ -66,7 +63,7 @@ MainWindow::MainWindow(QWidget* parent)
     QObject::connect(systemTrayIcon, &SystemTrayIcon::invokeShowMainWindow, this, &MainWindow::show);
 #endif
 
-    QStackedWidget* stackedWidget = new QStackedWidget();
+    auto* stackedWidget = new QStackedWidget();
     setCentralWidget(stackedWidget);
 
 #if 0
@@ -93,7 +90,7 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 }
 
-MainWindow::~MainWindow() {}
+MainWindow::~MainWindow() = default;
 
 void MainWindow::initMenuBar()
 {
@@ -120,15 +117,15 @@ void MainWindow::closeEvent(QCloseEvent* event)
 void MainWindow::initFileMenu()
 {
     // Tool box
-    QMenu* windowMenu = new QMenu(tr("New Window"), this);
+    auto* windowMenu = new QMenu(tr("New Window"), this);
     m_fileMenu->addMenu(windowMenu);
     QList<int> toolTypeList = xToolsToolBoxUi::supportedCommunicationTools();
     for (auto& toolType : toolTypeList) {
         const QString name = xToolsToolBoxUi::communicationToolName(toolType);
-        QAction* action = new QAction(name, this);
+        auto* action = new QAction(name, this);
         windowMenu->addAction(action);
         connect(action, &QAction::triggered, this, [=]() {
-            xToolsToolBoxUi* w = new xToolsToolBoxUi();
+            auto* w = new xToolsToolBoxUi();
             w->setContentsMargins(9, 9, 9, 9);
             w->setAttribute(Qt::WA_DeleteOnClose, true);
             w->initialize(toolType);
@@ -138,9 +135,9 @@ void MainWindow::initFileMenu()
 
     // Other tools
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
-    QAction* modbusAction = new QAction("Modbus Studio", this);
+    auto* modbusAction = new QAction("Modbus Studio", this);
     connect(modbusAction, &QAction::triggered, this, [=]() {
-        xToolsModbusStudioUi* w = new xToolsModbusStudioUi();
+        auto* w = new xToolsModbusStudioUi();
         w->setContentsMargins(9, 9, 9, 9);
         w->setAttribute(Qt::WA_DeleteOnClose, true);
         w->resize(1024, 480);
@@ -150,15 +147,15 @@ void MainWindow::initFileMenu()
 #endif
 
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
-    QAction* canbusAction = new QAction("CANBus Studio", this);
-    connect(canbusAction, &QAction::triggered, this, [=]() {
-        xToolsCanBusStudioUi* w = new xToolsCanBusStudioUi();
+    auto* canBusAction = new QAction("CANBus Studio", this);
+    connect(canBusAction, &QAction::triggered, this, [=]() {
+        auto* w = new xToolsCanBusStudioUi();
         w->setContentsMargins(9, 9, 9, 9);
         w->setAttribute(Qt::WA_DeleteOnClose, true);
         w->resize(1024, 480);
         w->show();
     });
-    windowMenu->addAction(canbusAction);
+    windowMenu->addAction(canBusAction);
 #endif
 
     m_fileMenu->addSeparator();
@@ -167,12 +164,12 @@ void MainWindow::initFileMenu()
 
 void MainWindow::initToolMenu()
 {
-    QMenu* toolMenu = new QMenu(tr("&Tools"));
+    auto* toolMenu = new QMenu(tr("&Tools"));
     menuBar()->insertMenu(m_languageMenu->menuAction(), toolMenu);
 
     for (auto& type : SAKAssistantsFactory::instance()->supportedAssistants()) {
         QString name = SAKAssistantsFactory::instance()->assistantName(type);
-        QAction* action = new QAction(name, this);
+        auto* action = new QAction(name, this);
         QWidget* assistant = SAKAssistantsFactory::instance()->newAssistant(type);
 
         Q_ASSERT_X(assistant, __FUNCTION__, "A null assistant widget!");
@@ -191,8 +188,8 @@ void MainWindow::initToolMenu()
 
 void MainWindow::initOptionMenu()
 {
-    QMenu* mainWindowMenu = new QMenu(tr("Main Window"), this);
-    QAction* action = new QAction(tr("Exit to Sysytem Tray"), this);
+    auto* mainWindowMenu = new QMenu(tr("Main Window"), this);
+    auto* action = new QAction(tr("Exit to System Tray"), this);
     action->setCheckable(true);
     mainWindowMenu->addAction(action);
     m_optionMenu->addSeparator();
@@ -250,7 +247,7 @@ void MainWindow::initHelpMenu()
 
 void MainWindow::initLinksMenu()
 {
-    QMenu* linksMenu = new QMenu(tr("Links"), this);
+    auto* linksMenu = new QMenu(tr("Links"), this);
     menuBar()->insertMenu(m_helpMenu->menuAction(), linksMenu);
 
     struct Link
@@ -291,7 +288,7 @@ void MainWindow::initLinksMenu()
             continue;
         }
 
-        QAction* action = new QAction(var.name, this);
+        auto* action = new QAction(var.name, this);
         action->setObjectName(var.url);
         linksMenu->addAction(action);
 
@@ -303,7 +300,7 @@ void MainWindow::initLinksMenu()
 
 void MainWindow::initNav()
 {
-    QToolBar* tb = new QToolBar(this);
+    auto* tb = new QToolBar(this);
     addToolBar(Qt::LeftToolBarArea, tb);
     tb->setFloatable(false);
     tb->setMovable(false);
@@ -314,7 +311,7 @@ void MainWindow::initNav()
     QList<int> types = xToolsToolBoxUi::supportedCommunicationTools();
     for (int i = 0; i < types.count(); i++) {
         int type = types.at(i);
-        xToolsToolBoxUi* toolBoxUi = new xToolsToolBoxUi(this);
+        auto* toolBoxUi = new xToolsToolBoxUi(this);
         toolBoxUi->initialize(type);
 
         auto icon = xToolsApplication::cookedIcon(toolBoxUi->windowIcon());
@@ -323,7 +320,7 @@ void MainWindow::initNav()
 
     tb->addSeparator();
     initNavStudio(&btGroup, tb);
-    QLabel* lb = new QLabel(" ");
+    auto* lb = new QLabel(" ");
     tb->addWidget(lb);
     lb->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     intNavControlButton(&btGroup, tb);
@@ -332,14 +329,14 @@ void MainWindow::initNav()
 void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
 {
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
-    xToolsModbusStudioUi* modbus = new xToolsModbusStudioUi(this);
+    auto* modbus = new xToolsModbusStudioUi(this);
     auto icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconModbus.svg"));
     initNav({buttonGroup, icon, "Modbus Studio", modbus, toolBar});
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
-    xToolsCanBusStudioUi* canbus = new xToolsCanBusStudioUi(this);
+    auto* canBus = new xToolsCanBusStudioUi(this);
     icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconCanBus.svg"));
-    initNav({buttonGroup, icon, "CANBus Studio", canbus, toolBar});
+    initNav({buttonGroup, icon, "CANBus Studio", canBus, toolBar});
 #endif
 }
 
@@ -348,7 +345,7 @@ void MainWindow::initNav(const NavContext& ctx)
     const QString key = m_settingsKey.isTextBesideIcon;
     bool isTextBesideIcon = xToolsSettings::instance()->value(key).toBool();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
-    QToolButton* bt = new QToolButton();
+    auto* bt = new QToolButton();
     bt->setAutoRaise(true);
     bt->setIcon(ctx.icon);
     bt->setCheckable(true);
@@ -455,18 +452,18 @@ void MainWindow::aboutSoftware()
     QDialog dialog(this);
     dialog.setWindowTitle(tr("About QSAK"));
 
-    QGridLayout* gridLayout = new QGridLayout(&dialog);
+    auto* gridLayout = new QGridLayout(&dialog);
     int i = 0;
     for (auto& var : infoList) {
-        QLabel* nameLabel = new QLabel(QString("<font color=green>%1</font>").arg(var.name),
+        auto* nameLabel = new QLabel(QString("<font color=green>%1</font>").arg(var.name),
                                        &dialog);
-        QLabel* valueLabel = new QLabel(var.value, &dialog);
+        auto* valueLabel = new QLabel(var.value, &dialog);
         gridLayout->addWidget(nameLabel, i, 0, 1, 1);
         gridLayout->addWidget(valueLabel, i, 1, 1, 1);
         i += 1;
 
         if (var.valueIsUrl) {
-            connect(valueLabel, &QLabel::linkActivated, [](QString url) {
+            connect(valueLabel, &QLabel::linkActivated, [](const QString &url) {
                 QDesktopServices::openUrl(QUrl(url));
             });
         }
@@ -498,7 +495,7 @@ void MainWindow::rebootRequestion()
         qApp->closeAllWindows();
         qApp->exit();
     } else {
-        QString text = tr("Can not reboot the application, pelase reboot it manually!");
+        QString text = tr("Can not reboot the application, please reboot it manually!");
         QMessageBox::warning(this, tr("Reboot Error"), text);
     }
 }
@@ -510,14 +507,14 @@ void MainWindow::showHistory()
     dialog.setWindowTitle(tr("Release History"));
     dialog.resize(600, 400);
 
-    QTextBrowser* textBrowser = new QTextBrowser(&dialog);
+    auto* textBrowser = new QTextBrowser(&dialog);
     QFile file(":/Resources/Files/History.txt");
     if (file.open(QFile::ReadOnly)) {
         QByteArray data = file.readAll();
         textBrowser->setText(QString::fromUtf8(data));
     }
 
-    QHBoxLayout* layout = new QHBoxLayout(&dialog);
+    auto* layout = new QHBoxLayout(&dialog);
     layout->addWidget(textBrowser);
     dialog.setLayout(layout);
     dialog.show();
@@ -539,14 +536,14 @@ void MainWindow::showQrCode()
     qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/Resources/Images/QSAKQQ.jpg")}
                    << QrCodeInfo{tr("Qt QQ Group"), QString(":/Resources/Images/QtQQ.jpg")};
 
-    QTabWidget* tabWidget = new QTabWidget(&dialog);
+    auto* tabWidget = new QTabWidget(&dialog);
     for (auto& var : qrCodeInfoList) {
-        QLabel* label = new QLabel(tabWidget);
+        auto* label = new QLabel(tabWidget);
         label->setPixmap(QPixmap::fromImage(QImage(var.qrCode)));
         tabWidget->addTab(label, var.title);
     }
 
-    QHBoxLayout* layout = new QHBoxLayout(&dialog);
+    auto* layout = new QHBoxLayout(&dialog);
     layout->addWidget(tabWidget);
     dialog.setLayout(layout);
     dialog.setModal(true);
@@ -558,9 +555,9 @@ void MainWindow::showDonation()
 {
     QDialog dialog(this);
     dialog.setModal(true);
-    QHBoxLayout* hBoxLayout = new QHBoxLayout(&dialog);
+    auto* hBoxLayout = new QHBoxLayout(&dialog);
     QString image = ":/resources/images/WeChat.jpg";
-    QLabel* label = new QLabel(&dialog);
+    auto* label = new QLabel(&dialog);
     QPixmap pixMap = QPixmap::fromImage(QImage(image));
     label->setPixmap(pixMap.scaledToHeight(400, Qt::SmoothTransformation));
     hBoxLayout->addWidget(label);

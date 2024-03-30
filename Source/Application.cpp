@@ -9,10 +9,8 @@
 #include "Application.h"
 
 #include <QFile>
-#include <QPushButton>
 #include <QRect>
 #include <QScreen>
-#include <QSplashScreen>
 #include <QTextCursor>
 #include <QTranslator>
 

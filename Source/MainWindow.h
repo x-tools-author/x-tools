@@ -75,7 +75,7 @@ private:
     void aboutSoftware();
     void clearConfiguration();
     void rebootRequestion();
-    void showHistory();
+    static void showHistory();
     void showQrCode();
     void showDonation();
     void createQtConf();
