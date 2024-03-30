@@ -26,11 +26,8 @@ public:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
-    const QLoggingCategory mLoggingCategory{"sak.socketclienttoolui"};
-    xToolsSocketClientTool *mTool{nullptr};
-
-private:
     Ui::xToolsSocketClientToolUi *ui{nullptr};
+    xToolsSocketClientTool *m_tool{nullptr};
 
 public slots:
     void onComboBoxClientAddressActivated();

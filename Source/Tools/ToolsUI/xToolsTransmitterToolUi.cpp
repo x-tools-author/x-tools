@@ -17,7 +17,7 @@ xToolsTransmitterToolUi::xToolsTransmitterToolUi(const char *lg, QWidget *parent
 void xToolsTransmitterToolUi::afterRowEdited(int row)
 {
     xToolsTransmitterTool *cookedTool = Q_NULLPTR;
-    cookedTool = qobject_cast<xToolsTransmitterTool *>(mTool);
+    cookedTool = qobject_cast<xToolsTransmitterTool *>(m_tool);
     if (!cookedTool) {
         return;
     }

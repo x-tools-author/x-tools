@@ -52,7 +52,8 @@ void xToolsSocketServerToolUi::onIsWorkingChanged(bool isWorking)
     ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
 }
 
-void xToolsSocketServerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsSocketServerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
+                                                       const QString &settingsGroup)
 {
     if (!tool) {
         return;
@@ -74,8 +75,8 @@ void xToolsSocketServerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, con
         ui->checkBoxSpecifyIpAndPort->hide();
     }
 
-    mTool = qobject_cast<xToolsSocketServerTool *>(tool);
-    if (!mTool) {
+    m_tool = qobject_cast<xToolsSocketServerTool *>(tool);
+    if (!m_tool) {
         qWarning() << "qobject_cast<>() return nullptr";
         return;
     }
@@ -89,23 +90,23 @@ void xToolsSocketServerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, con
     int port = ui->spinBoxServerPort->value();
     bool specified = ui->checkBoxSpecifyIpAndPort->isChecked();
     int messageType = ui->comboBoxMessageType->currentData().toInt();
-    mTool->setServerIp(ip);
+    m_tool->setServerIp(ip);
     ;
-    mTool->setServerPort(port);
-    mTool->setSpecifyIpAndPort(specified);
-    mTool->setMessageType(messageType);
+    m_tool->setServerPort(port);
+    m_tool->setSpecifyIpAndPort(specified);
+    m_tool->setMessageType(messageType);
 
-    connect(mTool, &xToolsSocketServerTool::bindingIpPortChanged, this, [=]() {
-        QString ipport = mTool->bindingIpPort();
+    connect(m_tool, &xToolsSocketServerTool::bindingIpPortChanged, this, [=]() {
+        QString ipport = m_tool->bindingIpPort();
         ui->labelBindingInfo->setText(ipport);
     });
-    connect(mTool, &xToolsSocketServerTool::finished, this, [=]() {
+    connect(m_tool, &xToolsSocketServerTool::finished, this, [=]() {
         ui->labelBindingInfo->setText(tr("Closed"));
     });
-    connect(mTool, &xToolsSocketServerTool::clientsChanged, this, [=]() {
+    connect(m_tool, &xToolsSocketServerTool::clientsChanged, this, [=]() {
         int index = ui->comboBoxClientList->currentIndex();
         QString first = ui->comboBoxClientList->itemText(0);
-        QStringList clients = mTool->clients();
+        QStringList clients = m_tool->clients();
         int count = ui->comboBoxClientList->count();
 
         ui->comboBoxClientList->clear();
@@ -119,32 +120,32 @@ void xToolsSocketServerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, con
 
 void xToolsSocketServerToolUi::onComboBoxServerIpActived()
 {
-    if (mTool) {
-        mTool->setServerIp(ui->comboBoxServerIp->currentText().trimmed());
+    if (m_tool) {
+        m_tool->setServerIp(ui->comboBoxServerIp->currentText().trimmed());
     }
 }
 
 void xToolsSocketServerToolUi::onSpinBoxServerPortValueChanged(int value)
 {
-    if (mTool) {
-        mTool->setServerPort(value);
+    if (m_tool) {
+        m_tool->setServerPort(value);
     }
 }
 
 void xToolsSocketServerToolUi::onComboBoxClientsIndexChanged()
 {
     int index = ui->comboBoxClientList->currentIndex();
-    mTool->setClientIndex(index - 1);
+    m_tool->setClientIndex(index - 1);
 }
 
 void xToolsSocketServerToolUi::onComboBoxMessageTypeIndexChanged()
 {
     int messageType = ui->comboBoxMessageType->currentData().toInt();
-    mTool->setMessageType(messageType);
+    m_tool->setMessageType(messageType);
 }
 
 void xToolsSocketServerToolUi::onCheckBoxSpecifyIpAndPortClicked()
 {
     bool specified = ui->checkBoxSpecifyIpAndPort->isChecked();
-    mTool->setSpecifyIpAndPort(specified);
+    m_tool->setSpecifyIpAndPort(specified);
 }

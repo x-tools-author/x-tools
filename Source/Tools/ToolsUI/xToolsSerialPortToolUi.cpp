@@ -23,20 +23,21 @@ xToolsSerialPortToolUi::~xToolsSerialPortToolUi()
     delete ui;
 }
 
-void xToolsSerialPortToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsSerialPortToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
+                                                     const QString &settingsGroup)
 {
     if (!(tool && tool->inherits("xToolsSerialPortTool"))) {
         qWarning() << "Invalid type of communication tool!";
         return;
     }
 
-    mTool = qobject_cast<xToolsSerialPortTool *>(tool);
-    mTool->setPortName(ui->comboBoxPortNames->currentText());
-    mTool->setBaudRate(ui->comboBoxBaudRate->currentData().toInt());
-    mTool->setDataBits(ui->comboBoxDataBits->currentData().toInt());
-    mTool->setStopBits(ui->comboBoxStopBits->currentData().toInt());
-    mTool->setParity(ui->comboBoxParity->currentData().toInt());
-    mTool->setFlowControl(ui->comboBoxFlowControl->currentData().toInt());
+    m_tool = qobject_cast<xToolsSerialPortTool *>(tool);
+    m_tool->setPortName(ui->comboBoxPortNames->currentText());
+    m_tool->setBaudRate(ui->comboBoxBaudRate->currentData().toInt());
+    m_tool->setDataBits(ui->comboBoxDataBits->currentData().toInt());
+    m_tool->setStopBits(ui->comboBoxStopBits->currentData().toInt());
+    m_tool->setParity(ui->comboBoxParity->currentData().toInt());
+    m_tool->setFlowControl(ui->comboBoxFlowControl->currentData().toInt());
 
     connect(ui->comboBoxPortNames,
             &QComboBox::currentTextChanged,
@@ -73,40 +74,40 @@ void xToolsSerialPortToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const
 
 void xToolsSerialPortToolUi::checkInitializingStatus()
 {
-    Q_ASSERT_X(mTool, __FUNCTION__, "Please call initialze() first!");
+    Q_ASSERT_X(m_tool, __FUNCTION__, "Please call initialze() first!");
 }
 
 void xToolsSerialPortToolUi::onComboBoxPortNamesCurrentTextChanged()
 {
     checkInitializingStatus();
-    mTool->setPortName(ui->comboBoxPortNames->currentText());
+    m_tool->setPortName(ui->comboBoxPortNames->currentText());
 }
 
 void xToolsSerialPortToolUi::onComboBoxBaudRateCurrentIndexChanged()
 {
     checkInitializingStatus();
-    mTool->setBaudRate(ui->comboBoxBaudRate->currentData().toInt());
+    m_tool->setBaudRate(ui->comboBoxBaudRate->currentData().toInt());
 }
 
 void xToolsSerialPortToolUi::onComboBoxDataBitsCurrentIndexChanged()
 {
     checkInitializingStatus();
-    mTool->setDataBits(ui->comboBoxDataBits->currentData().toInt());
+    m_tool->setDataBits(ui->comboBoxDataBits->currentData().toInt());
 }
 
 void xToolsSerialPortToolUi::onComboBoxStopBitsCurrentIndexChanged()
 {
-    mTool->setStopBits(ui->comboBoxStopBits->currentData().toInt());
+    m_tool->setStopBits(ui->comboBoxStopBits->currentData().toInt());
 }
 
 void xToolsSerialPortToolUi::onComboBoxParityCurrentIndexChanged()
 {
     checkInitializingStatus();
-    mTool->setParity(ui->comboBoxParity->currentData().toInt());
+    m_tool->setParity(ui->comboBoxParity->currentData().toInt());
 }
 
 void xToolsSerialPortToolUi::onComboBoxFlowControlCurrentIndexChanged()
 {
     checkInitializingStatus();
-    mTool->setFlowControl(ui->comboBoxFlowControl->currentData().toInt());
+    m_tool->setFlowControl(ui->comboBoxFlowControl->currentData().toInt());
 }

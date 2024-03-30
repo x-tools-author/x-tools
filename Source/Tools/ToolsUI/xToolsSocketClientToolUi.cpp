@@ -18,7 +18,6 @@ xToolsSocketClientToolUi::xToolsSocketClientToolUi(QWidget *parent)
     , ui(new Ui::xToolsSocketClientToolUi)
 {
     ui->setupUi(this);
-    ui->widgetAuthentication->hide();
 
     connect(ui->comboBoxClientAddress,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::activated),
@@ -82,13 +81,12 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
     if (!tool->inherits("xToolsWebSocketClientTool")) {
         ui->labelMessageType->hide();
         ui->comboBoxMessageType->hide();
-    } else {
-        ui->widgetAuthentication->show();
+        ui->widgetAuthentication->hide();
     }
 
-    mTool = qobject_cast<xToolsSocketClientTool *>(tool);
-    if (!mTool) {
-        qWarning() << "qobject_cast<>() return nullptr";
+    m_tool = qobject_cast<xToolsSocketClientTool *>(tool);
+    if (!m_tool) {
+        Q_ASSERT_X(m_tool, __FUNCTION__, "Invalid xToolsSocketClientTool object!");
         return;
     }
 
@@ -102,77 +100,77 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
     ui->lineEditUserName->setGroupKey(settingsGroup, "username");
     ui->lineEditPassword->setGroupKey(settingsGroup, "password");
 
-    mTool->setClientIp(ui->comboBoxClientAddress->currentText().trimmed());
-    mTool->setClientPort(ui->spinBoxClientPort->value());
-    mTool->setServerIp(ui->comboBoxServerAddress->currentText().trimmed());
-    mTool->setServerPort(ui->spinBoxServerPort->value());
-    mTool->setSpecifyClientIpPort(ui->checkBoxSpecifyIpAndPort->isChecked());
+    m_tool->setClientIp(ui->comboBoxClientAddress->currentText().trimmed());
+    m_tool->setClientPort(ui->spinBoxClientPort->value());
+    m_tool->setServerIp(ui->comboBoxServerAddress->currentText().trimmed());
+    m_tool->setServerPort(ui->spinBoxServerPort->value());
+    m_tool->setSpecifyClientIpPort(ui->checkBoxSpecifyIpAndPort->isChecked());
 
-    connect(mTool, &xToolsSocketClientTool::bindingIpPortChanged, this, [=]() {
-        QString ipport = mTool->bindingIpPort();
+    connect(m_tool, &xToolsSocketClientTool::bindingIpPortChanged, this, [=]() {
+        QString ipport = m_tool->bindingIpPort();
         ui->labelContext->setText(ipport);
     });
-    connect(mTool, &xToolsSocketClientTool::finished, this, [=]() {
+    connect(m_tool, &xToolsSocketClientTool::finished, this, [=]() {
         ui->labelContext->setText(tr("Closed"));
     });
 }
 
 void xToolsSocketClientToolUi::onComboBoxClientAddressActivated()
 {
-    if (mTool) {
+    if (m_tool) {
         QString ip = ui->comboBoxClientAddress->currentText().trimmed();
-        mTool->setClientIp(ip);
+        m_tool->setClientIp(ip);
     }
 }
 
 void xToolsSocketClientToolUi::onSpinBoxClientPortValueChanged(int value)
 {
-    if (mTool) {
-        mTool->setClientPort(value);
+    if (m_tool) {
+        m_tool->setClientPort(value);
     }
 }
 
 void xToolsSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged()
 {
-    if (mTool) {
+    if (m_tool) {
         QString ip = ui->comboBoxServerAddress->currentText().trimmed();
-        mTool->setServerIp(ip);
+        m_tool->setServerIp(ip);
     }
 }
 
 void xToolsSocketClientToolUi::onSpinBoxServerPortValueChanged(int value)
 {
-    if (mTool) {
-        mTool->setServerPort(value);
+    if (m_tool) {
+        m_tool->setServerPort(value);
     }
 }
 
 void xToolsSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked()
 {
-    if (mTool) {
+    if (m_tool) {
         bool checked = ui->checkBoxSpecifyIpAndPort->isChecked();
-        mTool->setSpecifyClientIpPort(checked);
+        m_tool->setSpecifyClientIpPort(checked);
     }
 }
 
 void xToolsSocketClientToolUi::onAuthenticationCheckBoxClicked()
 {
-    if (mTool) {
+    if (m_tool) {
         bool checked = ui->checkBoxAuthentication->isChecked();
-        mTool->setAuthentication(checked);
+        m_tool->setAuthentication(checked);
     }
 }
 
 void xToolsSocketClientToolUi::onUserNameLineEditTextChanged(const QString &text)
 {
-    if (mTool) {
-        mTool->setUserName(text);
+    if (m_tool) {
+        m_tool->setUserName(text);
     }
 }
 
 void xToolsSocketClientToolUi::onPasswordLineEditTextChanged(const QString &text)
 {
-    if (mTool) {
-        mTool->setPassword(text);
+    if (m_tool) {
+        m_tool->setPassword(text);
     }
 }

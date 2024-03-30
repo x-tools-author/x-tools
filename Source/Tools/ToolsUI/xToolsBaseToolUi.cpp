@@ -14,10 +14,10 @@ xToolsBaseToolUi::xToolsBaseToolUi(QWidget *parent)
 {}
 
 void xToolsBaseToolUi::initialize(xToolsBaseTool *tool,
-                               const QString &settingsGroup,
-                               const char *loggingCategory)
+                                  const QString &settingsGroup,
+                                  const char *loggingCategory)
 {
-    mTool = tool;
+    m_tool = tool;
     if (mLoggingCategory) {
         delete mLoggingCategory;
         mLoggingCategory = nullptr;

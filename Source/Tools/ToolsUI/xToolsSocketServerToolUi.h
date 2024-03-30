@@ -26,7 +26,7 @@ public:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
-    xToolsSocketServerTool *mTool{nullptr};
+    xToolsSocketServerTool *m_tool{nullptr};
     const QLoggingCategory mLoggingCategory{"sak.socketservertoolui"};
 
 private:

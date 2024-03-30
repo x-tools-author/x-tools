@@ -25,7 +25,7 @@ public:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
-    xToolsSerialPortTool *mTool{nullptr};
+    xToolsSerialPortTool *m_tool{nullptr};
     const QLoggingCategory mLoggingCategory{"sak.serialporttoolui"};
 
 private:

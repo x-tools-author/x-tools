@@ -28,5 +28,5 @@ protected:
 
 protected:
     QLoggingCategory *mLoggingCategory{nullptr};
-    xToolsBaseTool *mTool{nullptr};
+    xToolsBaseTool *m_tool{nullptr};
 };
