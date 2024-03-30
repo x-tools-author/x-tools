@@ -44,6 +44,7 @@ set(BUILD_SHARED_LIBS OFF)
 if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
   add_compile_definitions(X_TOOLS_USING_GLOG)
 endif()
+add_compile_definitions(X_TOOLS_IMPORT_MODULE_MDNS)
 
 x_tools_add_third_party("glog-0.7.0")
 x_tools_add_third_party("qmdnsengine-master")
