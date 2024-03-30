@@ -512,7 +512,6 @@ void xToolsResponserTool::try2output(const QByteArray &bytes, QObject *receiver)
         }
 
         QTimer::singleShot(item.data.itemResponseDelay, receiver, [=]() {
-            qInfo() << __FUNCTION__;
             emit outputBytes(responseBytes(item.data));
         });
     }
