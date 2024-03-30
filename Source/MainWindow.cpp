@@ -331,16 +331,14 @@ void MainWindow::initNav()
 
 void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
 {
-    QString path = ":/Resources/Icons/IconModbus.svg";
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
     xToolsModbusStudioUi* modbus = new xToolsModbusStudioUi(this);
-    auto icon = xToolsApplication::cookedIcon(QIcon(path));
+    auto icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconModbus.svg"));
     initNav({buttonGroup, icon, "Modbus Studio", modbus, toolBar});
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
     xToolsCanBusStudioUi* canbus = new xToolsCanBusStudioUi(this);
-    path = ":/Resources/Icons/IconCanBus.svg";
-    icon = xToolsApplication::cookedIcon(QIcon(path));
+    icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconCanBus.svg"));
     initNav({buttonGroup, icon, "CANBus Studio", canbus, toolBar});
 #endif
 }
