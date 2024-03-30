@@ -24,6 +24,7 @@ public:
 
 private:
     Ui::xToolsFileMergeAssistant *ui;
+    QString m_desktopPath;
 
 private:
     void onImportPushButtonClicked();

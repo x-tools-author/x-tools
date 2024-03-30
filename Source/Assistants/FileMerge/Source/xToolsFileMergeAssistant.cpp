@@ -12,8 +12,7 @@
 #include <QDataStream>
 #include <QFileDialog>
 #include <QMessageBox>
-
-#include "xToolsApplication.h"
+#include <QStandardPaths>
 
 xToolsFileMergeAssistant::xToolsFileMergeAssistant(QWidget *parent)
     : QWidget(parent)
@@ -22,6 +21,7 @@ xToolsFileMergeAssistant::xToolsFileMergeAssistant(QWidget *parent)
     ui->setupUi(this);
     ui->listWidget->setAlternatingRowColors(true);
     ui->progressBar->hide();
+    m_desktopPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 
     connect(ui->pushButtonImport,
             &QPushButton::clicked,
@@ -56,10 +56,9 @@ xToolsFileMergeAssistant::~xToolsFileMergeAssistant()
 
 void xToolsFileMergeAssistant::onImportPushButtonClicked()
 {
-    QString path = xToolsApplication::desktopPath();
     auto files = QFileDialog::getOpenFileNames(this,
                                                tr("Import Files"),
-                                               path,
+                                               m_desktopPath,
                                                tr("Bin file(*.bin);;All file(*)"));
     if (files.isEmpty()) {
         return;
@@ -86,10 +85,9 @@ void xToolsFileMergeAssistant::onMergePushButtonClicked()
         return;
     }
 
-    QString path = xToolsApplication::desktopPath();
     auto fileName = QFileDialog::getSaveFileName(this,
                                                  tr("Save Files"),
-                                                 path,
+                                                 m_desktopPath,
                                                  tr("Bin file(*.bin);;All file(*)"));
     if (fileName.isEmpty()) {
         return;
