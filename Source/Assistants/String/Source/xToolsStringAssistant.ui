@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>510</width>
-    <height>264</height>
+    <height>272</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,7 +117,7 @@
   <customwidget>
    <class>xToolsTextFormatComboBox</class>
    <extends>QComboBox</extends>
-   <header location="global">xtoolstextformatcombobox.h</header>
+   <header location="global">xToolsTextFormatComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
