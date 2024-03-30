@@ -10,7 +10,6 @@
 
 #include <atomic>
 #include <QJsonObject>
-#include <QLoggingCategory>
 #include <QThread>
 
 class xToolsBaseTool : public QThread

@@ -14,7 +14,7 @@ class xToolsTransmitterToolUi : public xToolsTableModelToolUi
 {
     Q_OBJECT
 public:
-    xToolsTransmitterToolUi(const char *lg, QWidget *parent = nullptr);
+    xToolsTransmitterToolUi(QWidget *parent = nullptr);
 
 protected:
     virtual void afterRowEdited(int row) override;

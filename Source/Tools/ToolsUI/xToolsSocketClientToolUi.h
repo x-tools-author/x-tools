@@ -9,7 +9,6 @@
 #pragma once
 
 #include "xToolsCommunicationToolUi.h"
-#include <QLoggingCategory>
 
 namespace Ui {
 class xToolsSocketClientToolUi;

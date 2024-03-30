@@ -10,8 +10,8 @@
 
 #include "xToolsTransmitterTool.h"
 
-xToolsTransmitterToolUi::xToolsTransmitterToolUi(const char *lg, QWidget *parent)
-    : xToolsTableModelToolUi{lg, parent}
+xToolsTransmitterToolUi::xToolsTransmitterToolUi(QWidget *parent)
+    : xToolsTableModelToolUi{parent}
 {}
 
 void xToolsTransmitterToolUi::afterRowEdited(int row)

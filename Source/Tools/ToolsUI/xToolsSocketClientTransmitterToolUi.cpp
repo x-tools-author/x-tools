@@ -10,15 +10,15 @@
 
 #include "xToolsApplication.h"
 
-xToolsSocketClientTransmitterToolUi::xToolsSocketClientTransmitterToolUi(const char *lg, QWidget *parent)
-    : xToolsTransmitterToolUi(lg, parent)
+xToolsSocketClientTransmitterToolUi::xToolsSocketClientTransmitterToolUi(QWidget *parent)
+    : xToolsTransmitterToolUi(parent)
 {
-    mEditor = new xToolsSocketClientTransmitterToolUiEditor(xToolsApplication::mainWindow());
+    m_editor = new xToolsSocketClientTransmitterToolUiEditor(xToolsApplication::mainWindow());
 }
 
 QDialog *xToolsSocketClientTransmitterToolUi::itemEditor()
 {
-    return mEditor;
+    return m_editor;
 }
 
 void xToolsSocketClientTransmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
@@ -27,5 +27,5 @@ void xToolsSocketClientTransmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool
     xToolsTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
     setColumnVisible(4, false);
     setSectionResizeModeToStretch();
-    mEditor->setWebSocketContextVisible(false);
+    m_editor->setWebSocketContextVisible(false);
 }

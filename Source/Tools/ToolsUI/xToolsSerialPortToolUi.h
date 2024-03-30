@@ -9,7 +9,6 @@
 #pragma once
 
 #include "xToolsCommunicationToolUi.h"
-#include <QLoggingCategory>
 
 namespace Ui {
 class xToolsSerialPortToolUi;
@@ -26,7 +25,6 @@ public:
 
 private:
     xToolsSerialPortTool *m_tool{nullptr};
-    const QLoggingCategory mLoggingCategory{"sak.serialporttoolui"};
 
 private:
     void checkInitializingStatus();

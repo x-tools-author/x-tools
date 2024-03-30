@@ -20,7 +20,7 @@
 #include "xToolsApplication.h"
 
 xToolsResponserToolUi::xToolsResponserToolUi(QWidget *parent)
-    : xToolsTableModelToolUi{"sak.responsertoolui", parent}
+    : xToolsTableModelToolUi{parent}
 {
     mEditor = new xToolsResponserToolUiEditor(xToolsApplication::mainWindow());
 }

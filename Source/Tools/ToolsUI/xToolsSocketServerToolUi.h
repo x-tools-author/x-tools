@@ -9,7 +9,6 @@
 #pragma once
 
 #include "xToolsCommunicationToolUi.h"
-#include <QLoggingCategory>
 
 namespace Ui {
 class xToolsSocketServerToolUi;
@@ -27,7 +26,6 @@ public:
 
 private:
     xToolsSocketServerTool *m_tool{nullptr};
-    const QLoggingCategory mLoggingCategory{"sak.socketservertoolui"};
 
 private:
     Ui::xToolsSocketServerToolUi *ui{nullptr};

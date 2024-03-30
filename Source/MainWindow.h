@@ -12,7 +12,6 @@
 #include <QButtonGroup>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QLoggingCategory>
 #include <QMenu>
 #include <QMessageBox>
 #include <QMetaEnum>

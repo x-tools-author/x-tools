@@ -37,7 +37,7 @@ void xToolsMaskerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QSt
 
     xToolsMaskerTool *cookedTool = qobject_cast<xToolsMaskerTool *>(tool);
     if (!cookedTool) {
-        qCWarning((*mLoggingCategory)) << "Invalid tool type!";
+        qWarning() << "Invalid tool type!";
         return;
     }
 

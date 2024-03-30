@@ -11,8 +11,8 @@
 #include <QApplication>
 #include <QDesktopServices>
 #include <QStandardPaths>
-#include <QUrl>
 #include <QStyle>
+#include <QUrl>
 
 static const QString fileName()
 {
@@ -52,9 +52,9 @@ QString xToolsSettings::settingsPath()
 int xToolsSettings::hdpiPolicy()
 {
 #ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
-    auto var = value(mSettingsKey.hdpiPolicy);
+    auto var = value(m_settingsKey.hdpiPolicy);
     if (var.isValid()) {
-        return value(mSettingsKey.hdpiPolicy).toInt();
+        return value(m_settingsKey.hdpiPolicy).toInt();
     }
 
     return int(QGuiApplication::highDpiScaleFactorRoundingPolicy());
@@ -66,7 +66,7 @@ int xToolsSettings::hdpiPolicy()
 void xToolsSettings::setHdpiPolicy(int policy)
 {
 #ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
-    setValue(mSettingsKey.hdpiPolicy, policy);
+    setValue(m_settingsKey.hdpiPolicy, policy);
     emit hdpiPolicyChanged();
 #else
     Q_UNUSED(policy)
@@ -75,9 +75,9 @@ void xToolsSettings::setHdpiPolicy(int policy)
 
 QString xToolsSettings::appStyle()
 {
-    auto var = value(mSettingsKey.appStyle);
+    auto var = value(m_settingsKey.appStyle);
     if (var.isValid()) {
-        return value(mSettingsKey.appStyle).toString();
+        return value(m_settingsKey.appStyle).toString();
     }
 
     if (QApplication::instance()) {
@@ -89,38 +89,38 @@ QString xToolsSettings::appStyle()
 
 void xToolsSettings::setAppStyle(const QString& style)
 {
-    setValue(mSettingsKey.appStyle, style);
+    setValue(m_settingsKey.appStyle, style);
 }
 
 QString xToolsSettings::language()
 {
-    return value(mSettingsKey.language).toString();
+    return value(m_settingsKey.language).toString();
 }
 
 void xToolsSettings::setLanguage(const QString& lan)
 {
-    setValue(mSettingsKey.language, lan);
+    setValue(m_settingsKey.language, lan);
 }
 
 bool xToolsSettings::clearSettings()
 {
-    return value(mSettingsKey.clearSettings).toBool();
+    return value(m_settingsKey.clearSettings).toBool();
 }
 
 void xToolsSettings::setClearSettings(bool clear)
 {
-    setValue(mSettingsKey.clearSettings, clear);
+    setValue(m_settingsKey.clearSettings, clear);
     emit clearSettingsChanged();
 }
 
 QString xToolsSettings::palette()
 {
-    return value(mSettingsKey.palette).toString();
+    return value(m_settingsKey.palette).toString();
 }
 
 void xToolsSettings::setPalette(const QString& fileName)
 {
-    setValue(mSettingsKey.palette, fileName);
+    setValue(m_settingsKey.palette, fileName);
     emit paletteChanged();
 }
 

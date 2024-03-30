@@ -8,7 +8,6 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QLoggingCategory>
 #include <QWidget>
 
 class xToolsBaseTool;

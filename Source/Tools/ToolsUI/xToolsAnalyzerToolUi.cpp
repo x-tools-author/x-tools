@@ -40,7 +40,7 @@ void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const Q
     static QByteArray tips("invalid SAKAnalyzerTool");
     Q_ASSERT_X(cookedTool, __FUNCTION__, tips.constData());
     if (!cookedTool) {
-        qCWarning((*mLoggingCategory)) << QString::fromLatin1(tips);
+        qWarning() << QString::fromLatin1(tips);
         return;
     }
 

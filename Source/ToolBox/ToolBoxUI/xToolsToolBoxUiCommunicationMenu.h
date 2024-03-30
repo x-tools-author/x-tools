@@ -8,7 +8,6 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QLoggingCategory>
 #include <QMenu>
 #include <QTextDocument>
 
@@ -26,9 +25,6 @@ public:
     ~xToolsToolBoxUiCommunicationMenu();
 
     void initialize(xToolsToolBox *toolBox, const QString &settingsGroup);
-
-private:
-    const QLoggingCategory mLoggingCategory{"SAK.CustomBoxUiParameters"};
 
 private:
     Ui::xToolsToolBoxUiCommunicationMenu *ui;

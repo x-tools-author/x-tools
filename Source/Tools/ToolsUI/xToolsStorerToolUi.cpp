@@ -33,13 +33,13 @@ xToolsStorerToolUi::~xToolsStorerToolUi()
 void xToolsStorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     if (!tool) {
-        qCWarning((*mLoggingCategory)) << "The tool value is nullptr!";
+        qWarning() << "The tool value is nullptr!";
         return;
     }
 
     xToolsStorerTool *cookedTool = qobject_cast<xToolsStorerTool *>(tool);
     if (!cookedTool) {
-        qCWarning((*mLoggingCategory)) << "The cookedTool value is nullptr!";
+        qWarning() << "The cookedTool value is nullptr!";
         return;
     }
 

@@ -9,5 +9,5 @@
 #include "xToolsTcpTransmitterToolUi.h"
 
 xToolsTcpTransmitterToolUi::xToolsTcpTransmitterToolUi(QWidget *parent)
-    : xToolsSocketClientTransmitterToolUi{"SAK.TcpTransmitterToolUi", parent}
+    : xToolsSocketClientTransmitterToolUi{parent}
 {}

@@ -11,7 +11,6 @@
 
 #include <QComboBox>
 #include <QDesktopServices>
-#include <QLoggingCategory>
 #include <QMetaEnum>
 
 #include "xToolsCrcInterface.h"
@@ -156,7 +155,10 @@ void xToolsCRCAssistant::textFormatControl()
     if (m_asciiRadioBt->isChecked()) {
         return;
     }
-    disconnect(m_inputTextEdit, &QTextEdit::textChanged, this, &xToolsCRCAssistant::textFormatControl);
+    disconnect(m_inputTextEdit,
+               &QTextEdit::textChanged,
+               this,
+               &xToolsCRCAssistant::textFormatControl);
 
     QString strTemp;
     QString plaintext = m_inputTextEdit->toPlainText();
@@ -170,7 +172,7 @@ void xToolsCRCAssistant::textFormatControl()
     }
     m_inputTextEdit->setText(strTemp.toUpper());
     m_inputTextEdit->moveCursor(QTextCursor::End);
-    
+
     connect(m_inputTextEdit, &QTextEdit::textChanged, this, &xToolsCRCAssistant::textFormatControl);
 }
 

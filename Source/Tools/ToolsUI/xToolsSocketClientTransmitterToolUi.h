@@ -14,12 +14,12 @@
 class xToolsSocketClientTransmitterToolUi : public xToolsTransmitterToolUi
 {
 public:
-    xToolsSocketClientTransmitterToolUi(const char *lg, QWidget *parent = nullptr);
+    xToolsSocketClientTransmitterToolUi(QWidget *parent = nullptr);
     virtual QDialog *itemEditor() override;
 
 protected:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
 
 protected:
-    xToolsSocketClientTransmitterToolUiEditor *mEditor{nullptr};
+    xToolsSocketClientTransmitterToolUiEditor *m_editor{nullptr};
 };

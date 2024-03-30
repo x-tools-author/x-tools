@@ -22,5 +22,5 @@ protected:
     virtual QDialog *itemEditor() override;
 
 private:
-    xToolsSerialPortTransmitterToolUiEditor *mEditor;
+    xToolsSerialPortTransmitterToolUiEditor *m_Editor;
 };

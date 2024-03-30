@@ -9,7 +9,7 @@
 #include "xToolsWebSocketTransmitterToolUi.h"
 
 xToolsWebSocketTransmitterToolUi::xToolsWebSocketTransmitterToolUi(QWidget *parent)
-    : xToolsSocketClientTransmitterToolUi("SAK.WebSocketTransmitterToolUi", parent)
+    : xToolsSocketClientTransmitterToolUi(parent)
 {}
 
 void xToolsWebSocketTransmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
@@ -18,5 +18,5 @@ void xToolsWebSocketTransmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *t
     xToolsSocketClientTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
 
     setColumnVisible(4, true);
-    mEditor->setWebSocketContextVisible(true);
+    m_editor->setWebSocketContextVisible(true);
 }

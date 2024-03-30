@@ -10,7 +10,6 @@
 
 #include <QIcon>
 #include <QList>
-#include <QLoggingCategory>
 #include <QTimer>
 #include <QWidget>
 

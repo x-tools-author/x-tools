@@ -10,7 +10,6 @@
 
 #include <QActionGroup>
 #include <QApplication>
-#include <QLoggingCategory>
 #include <QMainWindow>
 #include <QMenu>
 #include <QStyleFactory>

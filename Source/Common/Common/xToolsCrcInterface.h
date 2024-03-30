@@ -8,7 +8,6 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QLoggingCategory>
 #include <QObject>
 #include <QStringList>
 

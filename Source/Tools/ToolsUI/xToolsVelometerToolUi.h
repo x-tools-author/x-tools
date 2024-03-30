@@ -9,7 +9,6 @@
 #pragma once
 
 #include "xToolsBaseToolUi.h"
-#include <QLoggingCategory>
 
 namespace Ui {
 class xToolsVelometerToolUi;
@@ -26,6 +25,5 @@ protected:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
-    const QLoggingCategory mLoggingCategory{"sak.velometertoolui"};
     Ui::xToolsVelometerToolUi *ui;
 };

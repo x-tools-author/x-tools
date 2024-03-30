@@ -21,9 +21,8 @@
 #include "xToolsTableModelTool.h"
 #include "xToolsApplication.h"
 
-xToolsTableModelToolUi::xToolsTableModelToolUi(const char *lg, QWidget *parent)
+xToolsTableModelToolUi::xToolsTableModelToolUi(QWidget *parent)
     : xToolsBaseToolUi{parent}
-    , mLoggingCategory{lg}
     , ui(new Ui::xToolsTableModelToolUi)
 {
     ui->setupUi(this);

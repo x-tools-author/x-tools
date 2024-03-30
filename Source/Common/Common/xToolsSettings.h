@@ -8,7 +8,6 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QLoggingCategory>
 #include <QSettings>
 #include <Qt>
 
@@ -69,7 +68,5 @@ private:
         const QString isTextBesideIcon{"isTextBesideIcon"};
         const QString palette{"palette"};
         const QString customPalette{"customPalette"};
-    } mSettingsKey;
-
-    QLoggingCategory mLoggingCategory{"sak.settings"};
+    } m_settingsKey;
 };

@@ -18,15 +18,8 @@ void xToolsBaseToolUi::initialize(xToolsBaseTool *tool,
                                   const char *loggingCategory)
 {
     m_tool = tool;
-    if (mLoggingCategory) {
-        delete mLoggingCategory;
-        mLoggingCategory = nullptr;
-    }
-
-    mLoggingCategory = new QLoggingCategory(loggingCategory);
-
     if (!tool) {
-        qCWarning((*mLoggingCategory)) << "The value of tool is nullptr!";
+        qWarning() << "The value of tool is nullptr!";
         return;
     }
 

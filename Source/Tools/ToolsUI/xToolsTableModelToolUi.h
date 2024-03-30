@@ -11,7 +11,6 @@
 #include <QAbstractTableModel>
 #include <QActionGroup>
 #include <QJsonObject>
-#include <QLoggingCategory>
 #include <QMenu>
 #include <QModelIndex>
 #include <QWidget>
@@ -27,7 +26,7 @@ class xToolsTableModelToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit xToolsTableModelToolUi(const char *lg, QWidget *parent = nullptr);
+    explicit xToolsTableModelToolUi(QWidget *parent = nullptr);
     ~xToolsTableModelToolUi();
     void setStretchSections(QList<int> columns);
     void setSectionResizeModeToStretch();
@@ -40,7 +39,6 @@ protected:
     virtual QDialog *itemEditor() = 0;
 
 protected:
-    const QLoggingCategory mLoggingCategory;
     QAbstractTableModel *mTableModel{nullptr};
     xToolsTableModelTool *mTableModelTool{nullptr};
 
