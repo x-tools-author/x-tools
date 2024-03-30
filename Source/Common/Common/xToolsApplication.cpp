@@ -142,15 +142,20 @@ void xToolsApplication::setValidator(QLineEdit *target, int validatorType, int m
     static QMap<int, QRegularExpressionValidator *> regularExpressionMap;
     if (regularExpressionMap.isEmpty()) {
         QRegularExpressionValidator *noneRE = nullptr;
-        // clang-format off
-        auto binValidator = new QRegularExpressionValidator(QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
-        auto otcValidator = new QRegularExpressionValidator(QRegularExpression("^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*$")); //0-377
-        auto decValidator = new QRegularExpressionValidator(QRegularExpression("^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( (25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*")); // 0-255;
-        auto hexValidator = new QRegularExpressionValidator(QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
-        auto asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
         QRegularExpressionValidator *urf8Validator = nullptr;
         QRegularExpressionValidator *systemValidator = nullptr;
-        // clang-format on
+
+        QString binStr = "([01][01][01][01][01][01][01][01][ ])*";
+        QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*$";
+        QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( "
+                         "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
+        QString hexStr = "([0-9a-fA-F][0-9a-fA-F][ ])*";
+
+        auto binValidator = new QRegularExpressionValidator(QRegularExpression(binStr));
+        auto otcValidator = new QRegularExpressionValidator(QRegularExpression(octStr)); //0-377
+        auto decValidator = new QRegularExpressionValidator(QRegularExpression(decStr)); // 0-255;
+        auto hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
+        auto asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
 
         regularExpressionMap.insert(int(xToolsDataStructure::TextFormatBin), binValidator);
         regularExpressionMap.insert(int(xToolsDataStructure::TextFormatOct), otcValidator);
