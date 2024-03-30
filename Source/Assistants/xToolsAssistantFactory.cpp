@@ -16,12 +16,14 @@
 #include "xToolsBroadcastAssistant.h"
 #include "xToolsCRCAssistant.h"
 #include "xToolsFileCheckAssistant.h"
-#ifdef X_TOOLS_IMPORT_MODULE_MDNS
-#include "xToolsMdnsAssistant.h"
-#endif
+#include "xToolsFileMergeAssistant.h"
 #include "xToolsNumberAssistant.h"
 #include "xToolsPingAssistant.h"
 #include "xToolsStringAssistant.h"
+
+#ifdef X_TOOLS_IMPORT_MODULE_MDNS
+#include "xToolsMdnsAssistant.h"
+#endif
 
 SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     : QObject(parent)
@@ -37,6 +39,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     addAssistant<xToolsStringAssistant>(AssistantTypeString, tr("String Assistant"));
     addAssistant<xToolsBroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));
     addAssistant<xToolsFileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
+    addAssistant<xToolsFileMergeAssistant>(AssistantTypeFileMerge, tr("File Merge Assistant"));
 }
 
 QList<int> SAKAssistantsFactory::supportedAssistants()

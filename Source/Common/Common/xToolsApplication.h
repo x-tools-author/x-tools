@@ -50,6 +50,7 @@ public:
     Q_INVOKABLE static QString buildDateTime(const QString &format);
     Q_INVOKABLE static QString systemDateFormat();
     Q_INVOKABLE static QString systemTimeFormat();
+    Q_INVOKABLE static QString desktopPath();
 
 signals:
     void languageChanged();

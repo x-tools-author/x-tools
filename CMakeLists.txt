@@ -109,6 +109,7 @@ include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/Number/Source)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/String/Source)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/Broadcast/Source)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/FileCheck/Source)
+include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/FileMerge/Source)
 
 # --------------------------------------------------------------------------------------------------
 # xTools application

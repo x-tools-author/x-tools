@@ -26,6 +26,7 @@
 #include <QScreen>
 #include <QSettings>
 #include <QStandardItemModel>
+#include <QStandardPaths>
 #include <QTextDocument>
 #include <QTranslator>
 
@@ -256,6 +257,11 @@ QString xToolsApplication::systemDateFormat()
 QString xToolsApplication::systemTimeFormat()
 {
     return QLocale::system().timeFormat();
+}
+
+QString xToolsApplication::desktopPath()
+{
+    return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 }
 
 void xToolsApplication::setupLanguageWithPrefix(const QString &language, const QString &prefix)

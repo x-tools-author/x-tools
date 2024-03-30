@@ -27,7 +27,8 @@ private:
         AssistantTypeBroadcast,
         AssistantTypeBase64,
         AssistantTypeMdns,
-        AssistantTypePing
+        AssistantTypePing,
+        AssistantTypeFileMerge
     };
 
 public:
