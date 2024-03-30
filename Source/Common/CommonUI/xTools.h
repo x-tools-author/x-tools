@@ -26,7 +26,6 @@
 #include "xToolsDataStructure.h"
 #endif
 
-
 #ifdef X_TOOLS_USING_GLOG
 
 static void xToolsInitGoogleLogging(char *argv0)
@@ -40,7 +39,7 @@ static void xToolsInitGoogleLogging(char *argv0)
 
     google::SetLogFilenameExtension(".log");  // The suffix of log file.
     google::EnableLogCleaner(30);             // Keep the log file for 30 days.
-    google::SetApplicationFingerprint("SAK"); // (It seem to be no use.)
+    google::SetApplicationFingerprint("xTools"); // (It seem to be no use.)
 
     fLB::FLAGS_logtostdout = false;
     fLB::FLAGS_logtostderr = false;
