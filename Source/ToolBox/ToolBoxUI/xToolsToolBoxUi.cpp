@@ -735,7 +735,7 @@ void xToolsToolBoxUi::onComboBoxInputFormatActivated()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
     auto lineEdit = ui->comboBoxInputText->lineEdit();
-    ui->comboBoxInputText->clear();
+    ui->comboBoxInputText->lineEdit()->clear();
     xToolsApplication::setValidator(lineEdit, format);
 }
 

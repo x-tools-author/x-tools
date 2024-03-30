@@ -202,13 +202,14 @@ int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonM
         mainWindow->setCentralWidget(centralWidget);
         mainWindow->show();
         mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());
-        mainWindow->moveToCenter();
+        xToolsApplication::moveToScreenCenter(mainWindow);
         qInfo() << "The size of window is" << mainWindow->size();
     } else {
         CentralWidgetT* widget = new CentralWidgetT();
         splashScreen.finish(widget);
         widget->show();
         widget->resize(int(qreal(widget->height()) * 1.732), widget->height());
+        xToolsApplication::moveToScreenCenter(widget);
         qInfo() << "The size of window is" << widget->size();
     }
 

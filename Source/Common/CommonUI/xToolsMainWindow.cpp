@@ -42,19 +42,6 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     init();
 }
 
-void xToolsMainWindow::moveToCenter()
-{
-    QRect screenRect = QApplication::primaryScreen()->geometry();
-    bool tooWidth = (width() > screenRect.width());
-    bool tooHeight = (height() > screenRect.height());
-    if (tooWidth || tooHeight) {
-        showMaximized();
-        qInfo() << "The screen is too small.";
-    } else {
-        move((screenRect.width() - width()) / 2, (screenRect.height() - height()) / 2);
-    }
-}
-
 QString xToolsMainWindow::qtConfFileName()
 {
     return qApp->applicationDirPath() + "/qt.conf";

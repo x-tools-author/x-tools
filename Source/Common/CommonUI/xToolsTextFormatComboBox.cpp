@@ -13,12 +13,10 @@
 xToolsTextFormatComboBox::xToolsTextFormatComboBox(QWidget* parent)
     : xToolsComboBox(parent)
 {
-    addItem("Bin", xToolsDataStructure::TextFormatBin);
-    addItem("Oct", xToolsDataStructure::TextFormatOct);
-    addItem("Dec", xToolsDataStructure::TextFormatDec);
-    addItem("Hex", xToolsDataStructure::TextFormatHex);
-    addItem("Ascii", xToolsDataStructure::TextFormatAscii);
-    addItem("Utf8", xToolsDataStructure::TextFormatUtf8);
+    auto formats = xToolsDataStructure::supportedTextFormats();
+    for (auto &format : formats) {
+        addItem(xToolsDataStructure::textFormatName(format.toInt()), format.toInt());
+    }
 
     blockSignals(true);
     setCurrentIndex(5);

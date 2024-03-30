@@ -23,6 +23,7 @@
 #include <QLocale>
 #include <QPainter>
 #include <QRegularExpressionValidator>
+#include <QScreen>
 #include <QSettings>
 #include <QStandardItemModel>
 #include <QTextDocument>
@@ -141,23 +142,24 @@ void xToolsApplication::setValidator(QLineEdit *target, int validatorType, int m
     static QMap<int, QRegularExpressionValidator *> regularExpressionMap;
     if (regularExpressionMap.isEmpty()) {
         typedef QRegularExpressionValidator REV;
-        auto noneRE = nullptr;
+        QRegularExpressionValidator *noneRE = nullptr;
         auto binRE = new REV(QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
         auto otcRE = new REV(QRegularExpression("([0-7][0-7][ ])*"));
-        auto decRE = new REV(QRegularExpression("([-+.e0-9])*"));
+        auto decRE = new REV(QRegularExpression("([0-9])*"));
         auto hexRE = new REV(QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
         auto asciiRE = new REV(QRegularExpression("([ -~])*"));
         auto floatRE = new REV(QRegularExpression("^[-+]?[0-9]*\\.?[0-9]+$"));
-        auto urf8RE = nullptr;
-        auto systemRE = nullptr;
+        QRegularExpressionValidator *urf8RE = nullptr;
+        QRegularExpressionValidator *systemRE = nullptr;
+        Q_UNUSED(floatRE)
 
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatBin), noneRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatOct), binRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatDec), otcRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatHex), decRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatAscii), hexRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatUtf8), asciiRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatSystem), floatRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatBin), binRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatOct), otcRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatDec), decRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatHex), hexRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatAscii), asciiRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatUtf8), urf8RE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatSystem), systemRE);
     }
 
     if (!target || !regularExpressionMap.contains(validatorType) || maxLength < 0) {
@@ -189,6 +191,20 @@ QMainWindow *xToolsApplication::mainWindow()
     }
 
     return nullptr;
+}
+
+void xToolsApplication::moveToScreenCenter(QWidget *widget)
+{
+    QRect screenRect = QApplication::primaryScreen()->geometry();
+    bool tooWidth = (widget->width() > screenRect.width());
+    bool tooHeight = (widget->height() > screenRect.height());
+    if (tooWidth || tooHeight) {
+        widget->showMaximized();
+        qInfo() << "The screen is too small.";
+    } else {
+        widget->move((screenRect.width() - widget->width()) / 2,
+                     (screenRect.height() - widget->height()) / 2);
+    }
 }
 
 QString xToolsApplication::clipboardText()

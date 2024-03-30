@@ -22,8 +22,6 @@ class xToolsMainWindow : public QMainWindow
 public:
     explicit xToolsMainWindow(QWidget* parent = Q_NULLPTR);
 
-    void moveToCenter();
-
 protected:
     xToolsApplication* m_xToolsApp;
 

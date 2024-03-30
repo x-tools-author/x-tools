@@ -39,6 +39,7 @@ public:
     static void setValidator(QLineEdit *target, int validatorType, int maxLength = INT_MAX);
     static QIcon cookedIcon(const QIcon &icon);
     static QMainWindow *mainWindow();
+    static void moveToScreenCenter(QWidget *widget);
 
     Q_INVOKABLE static QString clipboardText();
     Q_INVOKABLE static void setClipboardText(const QString &text);
