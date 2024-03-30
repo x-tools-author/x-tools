@@ -13,7 +13,7 @@
 xToolsTransmitterTool::xToolsTransmitterTool(QObject *parent)
     : xToolsTableModelTool{parent}
 {
-    connect(mTableModel,
+    connect(m_tableModel,
             &QAbstractTableModel::dataChanged,
             this,
             &xToolsTransmitterTool::onDataChanged);

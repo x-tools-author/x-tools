@@ -112,5 +112,5 @@ private:
     QVariant serialPortTransmitter();
 
     void onCommunicatorBytesWritten(const QByteArray& bytes, const QString& to);
-    void onCommunicatorBytesRead(const QByteArray& bytes, const QString& to);
+    void onCommunicatorBytesRead(const QByteArray& bytes, const QString& from);
 };

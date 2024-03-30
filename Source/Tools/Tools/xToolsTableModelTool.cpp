@@ -14,39 +14,39 @@
 xToolsTableModelTool::xToolsTableModelTool(QObject *parent)
     : xToolsBaseTool{parent}
 {
-    mTableModel = new xToolsTableModel(this);
-
-    connect(mTableModel,
+    m_tableModel = new xToolsTableModel(this);
+    
+    connect(m_tableModel,
             &xToolsTableModel::invokeGetRowCount,
             this,
             &xToolsTableModelTool::onInvokeGetRowCount,
             Qt::DirectConnection);
-    connect(mTableModel,
+    connect(m_tableModel,
             &xToolsTableModel::invokeGetColumnCount,
             this,
             &xToolsTableModelTool::onInvokeGetColumnCount,
             Qt::DirectConnection);
-    connect(mTableModel,
+    connect(m_tableModel,
             &xToolsTableModel::invokeGetData,
             this,
             &xToolsTableModelTool::onInvokeGetData,
             Qt::DirectConnection);
-    connect(mTableModel,
+    connect(m_tableModel,
             &xToolsTableModel::invokeSetData,
             this,
             &xToolsTableModelTool::onInvokeSetData,
             Qt::DirectConnection);
-    connect(mTableModel,
+    connect(m_tableModel,
             &xToolsTableModel::invokeInsertRows,
             this,
             &xToolsTableModelTool::onInvokeInsertRows,
             Qt::DirectConnection);
-    connect(mTableModel,
+    connect(m_tableModel,
             &xToolsTableModel::invokeRemoveRows,
             this,
             &xToolsTableModelTool::onInvokeRemoveRows,
             Qt::DirectConnection);
-    connect(mTableModel,
+    connect(m_tableModel,
             &xToolsTableModel::invokeGetHeaderData,
             this,
             &xToolsTableModelTool::onInvokeGetHeaderData,
@@ -55,7 +55,7 @@ xToolsTableModelTool::xToolsTableModelTool(QObject *parent)
 
 QVariant xToolsTableModelTool::tableModel()
 {
-    return QVariant::fromValue(mTableModel);
+    return QVariant::fromValue(m_tableModel);
 }
 
 QStringList xToolsTableModelTool::headers() const
@@ -75,8 +75,8 @@ void xToolsTableModelTool::addItem(const QString &jsonCtx, int index)
     QByteArray json = jsonCtx.toUtf8();
     QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
     if (!(index >= 0 && index < rowCount())) {
-        mTableModel->insertRows(mTableModel->rowCount(), 1);
-        index = mTableModel->rowCount() - 1;
+        m_tableModel->insertRows(m_tableModel->rowCount(), 1);
+        index = m_tableModel->rowCount() - 1;
     }
 
     for (int i = 0; i < headers().count(); i++) {
@@ -86,8 +86,8 @@ void xToolsTableModelTool::addItem(const QString &jsonCtx, int index)
         }
 
         auto key = headers().at(i);
-        auto modelIndex = mTableModel->index(index, i);
-        mTableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);
+        auto modelIndex = m_tableModel->index(index, i);
+        m_tableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);
         qInfo() << qPrintable(QString("set %1 as").arg(key)) << jsonObj.value(key);
     }
 }
@@ -95,7 +95,7 @@ void xToolsTableModelTool::addItem(const QString &jsonCtx, int index)
 QVariant xToolsTableModelTool::itemsContext()
 {
     QJsonArray arr;
-    int rowCount = mTableModel->rowCount();
+    int rowCount = m_tableModel->rowCount();
     for (int i = 0; i < rowCount; i++) {
         arr.append(itemContext(i).toJsonObject());
     }

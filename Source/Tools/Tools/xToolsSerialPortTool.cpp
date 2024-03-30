@@ -140,8 +140,8 @@ void xToolsSerialPortTool::readBytes()
         if (bytes.isEmpty()) {
             return;
         }
-#if 0
-        QByteArray hex = SAKInterface::arrayToHex(bytes, ' ');
+#if 1
+        QByteArray hex = xToolsByteArrayToHex(bytes, ' ');
         QString msg = QString::fromLatin1(hex);
         msg = QString("%1<-%2").arg(m_parameters.portName, msg);
         qInfo() << qPrintable(msg);

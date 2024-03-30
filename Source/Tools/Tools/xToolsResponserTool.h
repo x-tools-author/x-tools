@@ -48,6 +48,7 @@ class xToolsResponserTool : public xToolsTableModelTool
     SAK_STR_PROPERTY(itemResponseCrcEndIndex)
     SAK_STR_PROPERTY(itemResponseDelay)
     SAK_STR_PROPERTY(itemResponseText)
+
 public:
     struct ResponserItem
     {
@@ -122,29 +123,27 @@ public:
 protected:
     virtual void run() final;
 
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const final;
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const final;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const final;
-    virtual bool setData(const QModelIndex &index,
-                         const QVariant &value,
-                         int role = Qt::EditRole) final;
-    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) final;
-    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) final;
-    virtual QVariant headerData(int section,
-                                Qt::Orientation orientation,
-                                int role = Qt::DisplayRole) const final;
+    // clang-format off
+    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    virtual bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
+    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
+    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
+    virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+    // clang-format on
 
 private:
-    QVector<QByteArray> mInputContextList;
-    QMutex mInputContextListMutex;
+    QVector<QByteArray> m_inputBytesList;
+    QMutex m_inputBytesListMutex;
 
-    QVector<ResponserData> mItems;
-    QMutex mItemsMutex;
-    const int mDescriptionColumnIndex{0};
-    const int mFormatColumnIndex{1};
-    const int mItemTextColumnIndex{2};
-    struct ResponserItemKeys mDataKeys;
-    const int mTableColumnCount{24};
+    QVector<ResponserData> m_iItems;
+    QMutex m_itemsMutex;
+    const int m_descriptionColumnIndex{0};
+    const int m_formatColumnIndex{1};
+    const int m_itemTextColumnIndex{2};
+    struct ResponserItemKeys m_dataKeys;
+    const int m_tableColumnCount{24};
 
 private:
     QVariant columnDisplayRoleData(const ResponserData &item, int column) const;

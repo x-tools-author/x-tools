@@ -27,7 +27,6 @@ xToolsToolBox::xToolsToolBox(QObject* parent)
     m_txVelometer = qobject_cast<xToolsVelometerTool*>(createTool(xToolsToolFactory::VelometerTool));
     m_rxCounter = qobject_cast<xToolsStatisticianTool*>(createTool(xToolsToolFactory::StatistiticianTool));
     m_txCounter = qobject_cast<xToolsStatisticianTool*>(createTool(xToolsToolFactory::StatistiticianTool));
-
     m_udpTransmitter = qobject_cast<xToolsUdpTransmitterTool*>(createTool(xToolsToolFactory::UdpTransmitterTool));
     m_tcpTransmitter = qobject_cast<xToolsTcpTransmitterTool*>(createTool(xToolsToolFactory::TcpTransmitterTool));
     m_webSocketTransmitter = qobject_cast<xToolsWebSocketTransmitterTool*>( createTool(xToolsToolFactory::WebSocketTransmitterTool));
@@ -83,18 +82,24 @@ void xToolsToolBox::initialize(int type)
     }
 
     // clang-format off
-    connect(m_comunicator, &xToolsCommunicationTool::bytesWritten, this, &xToolsToolBox::onCommunicatorBytesWritten);
-    connect(m_comunicator, &xToolsCommunicationTool::bytesRead, this, &xToolsToolBox::onCommunicatorBytesRead);
-    // emiiter,responser,prestorer->tx
-    connect(m_emitter, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsBaseTool::inputBytes);
-    connect(m_responser, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsBaseTool::inputBytes);
-    connect(m_prestorer, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsBaseTool::inputBytes);
-
-    // transmition -> communicator
-    connect(m_serialPortTransmitter, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsBaseTool::inputBytes);
-    connect(m_udpTransmitter, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsBaseTool::inputBytes);
-    connect(m_tcpTransmitter, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsBaseTool::inputBytes);
-    connect(m_webSocketTransmitter, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsBaseTool::inputBytes);
+    // communicator->responser,txCounter,txVelometer,storer,serialPortTransmitter,udpTransmitter,tcpTransmitter
+    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_responser, &xToolsResponserTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_txCounter, &xToolsStatisticianTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_txVelometer, &xToolsVelometerTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_storer, &xToolsStorerTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_serialPortTransmitter, &xToolsSerialPortTransmitterTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_udpTransmitter, &xToolsUdpTransmitterTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_tcpTransmitter, &xToolsTcpTransmitterTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_webSocketTransmitter, &xToolsWebSocketTransmitterTool::inputBytes);
+    // emiiter,responser,prestorer->communicator
+    connect(m_emitter, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsCommunicationTool::inputBytes);
+    connect(m_responser, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsCommunicationTool::inputBytes);
+    connect(m_prestorer, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsCommunicationTool::inputBytes);
+    // serialPortTransmitter,udpTransmitter,tcpTransmitter,webSocketTransmitter->communicator
+    connect(m_serialPortTransmitter, &xToolsSerialPortTransmitterTool::outputBytes, m_comunicator, &xToolsCommunicationTool::inputBytes);
+    connect(m_udpTransmitter, &xToolsUdpTransmitterTool::outputBytes, m_comunicator, &xToolsCommunicationTool::inputBytes);
+    connect(m_tcpTransmitter, &xToolsTcpTransmitterTool::outputBytes, m_comunicator, &xToolsCommunicationTool::inputBytes);
+    connect(m_webSocketTransmitter, &xToolsWebSocketTransmitterTool::outputBytes, m_comunicator, &xToolsCommunicationTool::inputBytes);
 
     connect(m_comunicator, &xToolsCommunicationTool::errorOccurred, this, &xToolsToolBox::errorOccurred);
     // clang-format on
@@ -286,23 +291,12 @@ QVariant xToolsToolBox::serialPortTransmitter()
 
 void xToolsToolBox::onCommunicatorBytesWritten(const QByteArray& bytes, const QString& to)
 {
+    Q_UNUSED(bytes)
     Q_UNUSED(to)
-    m_txVelometer->inputBytes(bytes);
-    m_txCounter->inputBytes(bytes);
-    m_storer->inputBytes(bytes);
 }
 
-void xToolsToolBox::onCommunicatorBytesRead(const QByteArray& bytes, const QString& to)
+void xToolsToolBox::onCommunicatorBytesRead(const QByteArray& bytes, const QString& from)
 {
-    Q_UNUSED(to)
-    m_rxVelometer->inputBytes(bytes);
-    m_rxCounter->inputBytes(bytes);
-    m_storer->inputBytes(bytes);
-
-    m_responser->inputBytes(bytes);
-
-    m_serialPortTransmitter->inputBytes(bytes);
-    m_udpTransmitter->inputBytes(bytes);
-    m_tcpTransmitter->inputBytes(bytes);
-    m_webSocketTransmitter->inputBytes(bytes);
+    Q_UNUSED(bytes)
+    Q_UNUSED(from)
 }

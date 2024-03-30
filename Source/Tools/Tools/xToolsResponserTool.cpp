@@ -26,21 +26,21 @@ xToolsResponserTool::xToolsResponserTool(QObject *parent)
 int xToolsResponserTool::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return mItems.count();
+    return m_iItems.count();
 }
 
 int xToolsResponserTool::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return mTableColumnCount;
+    return m_tableColumnCount;
 }
 
 QVariant xToolsResponserTool::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
-    if (row >= 0 && row < mItems.count()) {
+    if (row >= 0 && row < m_iItems.count()) {
         int column = index.column();
-        const ResponserData &item = mItems[row];
+        const ResponserData &item = m_iItems[row];
         if (role == Qt::DisplayRole) {
             return columnDisplayRoleData(item, column);
         }
@@ -53,64 +53,64 @@ bool xToolsResponserTool::setData(const QModelIndex &index, const QVariant &valu
 {
     Q_UNUSED(role);
     int row = index.row();
-    if (row >= 0 && row < mItems.count()) {
-        auto item = mItems.at(row);
+    if (row >= 0 && row < m_iItems.count()) {
+        auto item = m_iItems.at(row);
         int column = index.column();
         if (column >= 0 && column < headers().count()) {
             auto dataKey = headers().at(column);
-            if (dataKey == mDataKeys.itemEnable) {
+            if (dataKey == m_dataKeys.itemEnable) {
                 item.data.itemEnable = value.toBool();
-            } else if (dataKey == mDataKeys.itemDescription) {
+            } else if (dataKey == m_dataKeys.itemDescription) {
                 item.data.itemDescription = value.toString();
-            } else if (dataKey == mDataKeys.itemOption) {
+            } else if (dataKey == m_dataKeys.itemOption) {
                 item.data.itemOption = value.toInt();
-            } else if (dataKey == mDataKeys.itemReferenceTextFormat) {
+            } else if (dataKey == m_dataKeys.itemReferenceTextFormat) {
                 item.data.itemReferenceTextFormat = value.toInt();
-            } else if (dataKey == mDataKeys.itemReferenceEscapeCharacter) {
+            } else if (dataKey == m_dataKeys.itemReferenceEscapeCharacter) {
                 item.data.itemReferenceEscapeCharacter = value.toInt();
-            } else if (dataKey == mDataKeys.itemReferencePrefix) {
+            } else if (dataKey == m_dataKeys.itemReferencePrefix) {
                 item.data.itemReferencePrefix = value.toInt();
-            } else if (dataKey == mDataKeys.itemReferenceSuffix) {
+            } else if (dataKey == m_dataKeys.itemReferenceSuffix) {
                 item.data.itemReferenceSuffix = value.toInt();
-            } else if (dataKey == mDataKeys.itemReferenceCrcEnable) {
+            } else if (dataKey == m_dataKeys.itemReferenceCrcEnable) {
                 item.data.itemReferenceCrcEnable = value.toBool();
-            } else if (dataKey == mDataKeys.itemReferenceCrcBigEndian) {
+            } else if (dataKey == m_dataKeys.itemReferenceCrcBigEndian) {
                 item.data.itemReferenceCrcBigEndian = value.toBool();
-            } else if (dataKey == mDataKeys.itemReferenceCrcAlgorithm) {
+            } else if (dataKey == m_dataKeys.itemReferenceCrcAlgorithm) {
                 item.data.itemReferenceCrcAlgorithm = value.toInt();
-            } else if (dataKey == mDataKeys.itemReferenceCrcStartIndex) {
+            } else if (dataKey == m_dataKeys.itemReferenceCrcStartIndex) {
                 item.data.itemReferenceCrcStartIndex = value.toInt();
-            } else if (dataKey == mDataKeys.itemReferenceCrcEndIndex) {
+            } else if (dataKey == m_dataKeys.itemReferenceCrcEndIndex) {
                 item.data.itemReferenceCrcEndIndex = value.toInt();
-            } else if (dataKey == mDataKeys.itemReferenceText) {
+            } else if (dataKey == m_dataKeys.itemReferenceText) {
                 item.data.itemReferenceText = value.toString();
-            } else if (dataKey == mDataKeys.itemResponseTextFormat) {
+            } else if (dataKey == m_dataKeys.itemResponseTextFormat) {
                 item.data.itemResponseTextFormat = value.toInt();
-            } else if (dataKey == mDataKeys.itemResponseEscapeCharacter) {
+            } else if (dataKey == m_dataKeys.itemResponseEscapeCharacter) {
                 item.data.itemResponseEscapeCharacter = value.toInt();
-            } else if (dataKey == mDataKeys.itemResponsePrefix) {
+            } else if (dataKey == m_dataKeys.itemResponsePrefix) {
                 item.data.itemResponsePrefix = value.toInt();
-            } else if (dataKey == mDataKeys.itemResponseSuffix) {
+            } else if (dataKey == m_dataKeys.itemResponseSuffix) {
                 item.data.itemResponseSuffix = value.toInt();
-            } else if (dataKey == mDataKeys.itemResponseCrcEnable) {
+            } else if (dataKey == m_dataKeys.itemResponseCrcEnable) {
                 item.data.itemResponseCrcEnable = value.toBool();
-            } else if (dataKey == mDataKeys.itemResponseCrcBigEndian) {
+            } else if (dataKey == m_dataKeys.itemResponseCrcBigEndian) {
                 item.data.itemResponseCrcBigEndian = value.toBool();
-            } else if (dataKey == mDataKeys.itemResponseCrcAlgorithm) {
+            } else if (dataKey == m_dataKeys.itemResponseCrcAlgorithm) {
                 item.data.itemResponseCrcAlgorithm = value.toInt();
-            } else if (dataKey == mDataKeys.itemResponseCrcStartIndex) {
+            } else if (dataKey == m_dataKeys.itemResponseCrcStartIndex) {
                 item.data.itemResponseCrcStartIndex = value.toInt();
-            } else if (dataKey == mDataKeys.itemResponseCrcEndIndex) {
+            } else if (dataKey == m_dataKeys.itemResponseCrcEndIndex) {
                 item.data.itemResponseCrcEndIndex = value.toInt();
-            } else if (dataKey == mDataKeys.itemResponseDelay) {
+            } else if (dataKey == m_dataKeys.itemResponseDelay) {
                 item.data.itemResponseDelay = value.toInt();
-            } else if (dataKey == mDataKeys.itemResponseText) {
+            } else if (dataKey == m_dataKeys.itemResponseText) {
                 item.data.itemResponseText = value.toString();
             } else {
                 // Nothing to do yet.
             }
 
-            mItems.replace(row, item);
+            m_iItems.replace(row, item);
         }
     }
 
@@ -125,7 +125,7 @@ bool xToolsResponserTool::insertRows(int row, int count, const QModelIndex &pare
     item.data = ctx;
     item.elapsedTime = 0;
     for (int i = 0; i < count; i++) {
-        mItems.insert(row, item);
+        m_iItems.insert(row, item);
     }
 
     return true;
@@ -134,7 +134,7 @@ bool xToolsResponserTool::insertRows(int row, int count, const QModelIndex &pare
 bool xToolsResponserTool::removeRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
-    mItems.remove(row, count);
+    m_iItems.remove(row, count);
     return true;
 }
 
@@ -144,53 +144,53 @@ QVariant xToolsResponserTool::headerData(int section, Qt::Orientation orientatio
     if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-            return mDataKeys.itemEnable;
+            return m_dataKeys.itemEnable;
         case 1:
-            return mDataKeys.itemDescription;
+            return m_dataKeys.itemDescription;
         case 2:
-            return mDataKeys.itemOption;
+            return m_dataKeys.itemOption;
         case 3:
-            return mDataKeys.itemReferenceTextFormat;
+            return m_dataKeys.itemReferenceTextFormat;
         case 4:
-            return mDataKeys.itemReferenceEscapeCharacter;
+            return m_dataKeys.itemReferenceEscapeCharacter;
         case 5:
-            return mDataKeys.itemReferencePrefix;
+            return m_dataKeys.itemReferencePrefix;
         case 6:
-            return mDataKeys.itemReferenceSuffix;
+            return m_dataKeys.itemReferenceSuffix;
         case 7:
-            return mDataKeys.itemReferenceCrcEnable;
+            return m_dataKeys.itemReferenceCrcEnable;
         case 8:
-            return mDataKeys.itemReferenceCrcBigEndian;
+            return m_dataKeys.itemReferenceCrcBigEndian;
         case 9:
-            return mDataKeys.itemReferenceCrcAlgorithm;
+            return m_dataKeys.itemReferenceCrcAlgorithm;
         case 10:
-            return mDataKeys.itemReferenceCrcStartIndex;
+            return m_dataKeys.itemReferenceCrcStartIndex;
         case 11:
-            return mDataKeys.itemReferenceCrcEndIndex;
+            return m_dataKeys.itemReferenceCrcEndIndex;
         case 12:
-            return mDataKeys.itemReferenceText;
+            return m_dataKeys.itemReferenceText;
         case 13:
-            return mDataKeys.itemResponseTextFormat;
+            return m_dataKeys.itemResponseTextFormat;
         case 14:
-            return mDataKeys.itemResponseEscapeCharacter;
+            return m_dataKeys.itemResponseEscapeCharacter;
         case 15:
-            return mDataKeys.itemResponsePrefix;
+            return m_dataKeys.itemResponsePrefix;
         case 16:
-            return mDataKeys.itemResponseSuffix;
+            return m_dataKeys.itemResponseSuffix;
         case 17:
-            return mDataKeys.itemResponseCrcEnable;
+            return m_dataKeys.itemResponseCrcEnable;
         case 18:
-            return mDataKeys.itemResponseCrcBigEndian;
+            return m_dataKeys.itemResponseCrcBigEndian;
         case 19:
-            return mDataKeys.itemResponseCrcAlgorithm;
+            return m_dataKeys.itemResponseCrcAlgorithm;
         case 20:
-            return mDataKeys.itemResponseCrcStartIndex;
+            return m_dataKeys.itemResponseCrcStartIndex;
         case 21:
-            return mDataKeys.itemResponseCrcEndIndex;
+            return m_dataKeys.itemResponseCrcEndIndex;
         case 22:
-            return mDataKeys.itemResponseDelay;
+            return m_dataKeys.itemResponseDelay;
         case 23:
-            return mDataKeys.itemResponseText;
+            return m_dataKeys.itemResponseText;
         default:
             return "";
         }
@@ -203,53 +203,53 @@ QVariant xToolsResponserTool::columnDisplayRoleData(const ResponserData &item, i
 {
     if (column >= 0 && column < headers().count()) {
         const QString dataKey = headers().at(column);
-        if (dataKey == mDataKeys.itemEnable) {
+        if (dataKey == m_dataKeys.itemEnable) {
             return item.data.itemEnable;
-        } else if (dataKey == mDataKeys.itemDescription) {
+        } else if (dataKey == m_dataKeys.itemDescription) {
             return item.data.itemDescription;
-        } else if (dataKey == mDataKeys.itemOption) {
+        } else if (dataKey == m_dataKeys.itemOption) {
             return item.data.itemOption;
-        } else if (dataKey == mDataKeys.itemReferenceTextFormat) {
+        } else if (dataKey == m_dataKeys.itemReferenceTextFormat) {
             return item.data.itemReferenceEscapeCharacter;
-        } else if (dataKey == mDataKeys.itemReferenceEscapeCharacter) {
+        } else if (dataKey == m_dataKeys.itemReferenceEscapeCharacter) {
             return item.data.itemReferenceEscapeCharacter;
-        } else if (dataKey == mDataKeys.itemReferencePrefix) {
+        } else if (dataKey == m_dataKeys.itemReferencePrefix) {
             return item.data.itemReferencePrefix;
-        } else if (dataKey == mDataKeys.itemReferenceSuffix) {
+        } else if (dataKey == m_dataKeys.itemReferenceSuffix) {
             return item.data.itemReferenceSuffix;
-        } else if (dataKey == mDataKeys.itemReferenceCrcEnable) {
+        } else if (dataKey == m_dataKeys.itemReferenceCrcEnable) {
             return item.data.itemReferenceCrcEnable;
-        } else if (dataKey == mDataKeys.itemReferenceCrcBigEndian) {
+        } else if (dataKey == m_dataKeys.itemReferenceCrcBigEndian) {
             return item.data.itemReferenceCrcBigEndian;
-        } else if (dataKey == mDataKeys.itemReferenceCrcAlgorithm) {
+        } else if (dataKey == m_dataKeys.itemReferenceCrcAlgorithm) {
             return item.data.itemReferenceCrcAlgorithm;
-        } else if (dataKey == mDataKeys.itemReferenceCrcStartIndex) {
+        } else if (dataKey == m_dataKeys.itemReferenceCrcStartIndex) {
             return item.data.itemReferenceCrcStartIndex;
-        } else if (dataKey == mDataKeys.itemReferenceCrcEndIndex) {
+        } else if (dataKey == m_dataKeys.itemReferenceCrcEndIndex) {
             return item.data.itemReferenceCrcEndIndex;
-        } else if (dataKey == mDataKeys.itemReferenceText) {
+        } else if (dataKey == m_dataKeys.itemReferenceText) {
             return item.data.itemReferenceText;
-        } else if (dataKey == mDataKeys.itemResponseTextFormat) {
+        } else if (dataKey == m_dataKeys.itemResponseTextFormat) {
             return item.data.itemResponseEscapeCharacter;
-        } else if (dataKey == mDataKeys.itemResponseEscapeCharacter) {
+        } else if (dataKey == m_dataKeys.itemResponseEscapeCharacter) {
             return item.data.itemResponseEscapeCharacter;
-        } else if (dataKey == mDataKeys.itemResponsePrefix) {
+        } else if (dataKey == m_dataKeys.itemResponsePrefix) {
             return item.data.itemResponsePrefix;
-        } else if (dataKey == mDataKeys.itemResponseSuffix) {
+        } else if (dataKey == m_dataKeys.itemResponseSuffix) {
             return item.data.itemResponseSuffix;
-        } else if (dataKey == mDataKeys.itemResponseCrcEnable) {
+        } else if (dataKey == m_dataKeys.itemResponseCrcEnable) {
             return item.data.itemResponseCrcEnable;
-        } else if (dataKey == mDataKeys.itemResponseCrcBigEndian) {
+        } else if (dataKey == m_dataKeys.itemResponseCrcBigEndian) {
             return item.data.itemResponseCrcBigEndian;
-        } else if (dataKey == mDataKeys.itemResponseCrcAlgorithm) {
+        } else if (dataKey == m_dataKeys.itemResponseCrcAlgorithm) {
             return item.data.itemResponseCrcAlgorithm;
-        } else if (dataKey == mDataKeys.itemResponseCrcStartIndex) {
+        } else if (dataKey == m_dataKeys.itemResponseCrcStartIndex) {
             return item.data.itemResponseCrcStartIndex;
-        } else if (dataKey == mDataKeys.itemResponseCrcEndIndex) {
+        } else if (dataKey == m_dataKeys.itemResponseCrcEndIndex) {
             return item.data.itemResponseCrcEndIndex;
-        } else if (dataKey == mDataKeys.itemResponseDelay) {
+        } else if (dataKey == m_dataKeys.itemResponseDelay) {
             return item.data.itemResponseDelay;
-        } else if (dataKey == mDataKeys.itemResponseText) {
+        } else if (dataKey == m_dataKeys.itemResponseText) {
             return item.data.itemResponseText;
         } else {
             return "Error";
@@ -311,8 +311,8 @@ QVariant xToolsResponserTool::itemContext(int index)
 {
     auto itemCtx = [=](int index) -> QJsonObject {
         QJsonObject ctx;
-        if (index >= 0 && index < mItems.count()) {
-            auto item = mItems.at(index);
+        if (index >= 0 && index < m_iItems.count()) {
+            auto item = m_iItems.at(index);
             ctx.insert(itemEnable(), item.data.itemEnable);
             ctx.insert(itemDescription(), item.data.itemDescription);
             ctx.insert(itemOption(), item.data.itemOption);
@@ -372,9 +372,9 @@ QVariant xToolsResponserTool::itemContext(int index)
         return ctx;
     };
 
-    mItemsMutex.lock();
+    m_itemsMutex.lock();
     QJsonObject ctx = itemCtx(index);
-    mItemsMutex.unlock();
+    m_itemsMutex.unlock();
 
     return ctx;
 }
@@ -437,9 +437,9 @@ QString xToolsResponserTool::cookHeaderString(const QString &str)
 
 void xToolsResponserTool::inputBytes(const QByteArray &bytes)
 {
-    mInputContextListMutex.lock();
-    mInputContextList.append(bytes);
-    mInputContextListMutex.unlock();
+    m_inputBytesListMutex.lock();
+    m_inputBytesList.append(bytes);
+    m_inputBytesListMutex.unlock();
 }
 
 void xToolsResponserTool::run()
@@ -449,21 +449,21 @@ void xToolsResponserTool::run()
     outputTimer->setSingleShot(true);
 
     connect(outputTimer, &QTimer::timeout, outputTimer, [=]() {
-        mInputContextListMutex.lock();
-        while (!mInputContextList.isEmpty()) {
-            auto ctx = mInputContextList.takeFirst();
-            try2output(ctx, outputTimer);
+        m_inputBytesListMutex.lock();
+        while (!m_inputBytesList.isEmpty()) {
+            auto bytes = m_inputBytesList.takeFirst();
+            try2output(bytes, outputTimer);
         }
-        mInputContextListMutex.unlock();
+        m_inputBytesListMutex.unlock();
         outputTimer->start();
     });
 
     outputTimer->start();
     exec();
 
-    mInputContextListMutex.lock();
-    mInputContextList.clear();
-    mInputContextListMutex.unlock();
+    m_inputBytesListMutex.lock();
+    m_inputBytesList.clear();
+    m_inputBytesListMutex.unlock();
 
     outputTimer->deleteLater();
     outputTimer = nullptr;
@@ -471,9 +471,9 @@ void xToolsResponserTool::run()
 
 void xToolsResponserTool::try2output(const QByteArray &bytes, QObject *receiver)
 {
-    mItemsMutex.lock();
-    auto items = mItems;
-    mItemsMutex.unlock();
+    m_itemsMutex.lock();
+    auto items = m_iItems;
+    m_itemsMutex.unlock();
 
     int always = xToolsDataStructure::ResponseOptionAlways;
     int echo = xToolsDataStructure::ResponseOptionEcho;
@@ -512,127 +512,128 @@ void xToolsResponserTool::try2output(const QByteArray &bytes, QObject *receiver)
         }
 
         QTimer::singleShot(item.data.itemResponseDelay, receiver, [=]() {
-            emit outputBytes(item.data.itemResponseText.toUtf8());
+            qInfo() << __FUNCTION__;
+            emit outputBytes(responseBytes(item.data));
         });
     }
 }
 
 QString xToolsResponserTool::itemEnable()
 {
-    return mDataKeys.itemEnable;
+    return m_dataKeys.itemEnable;
 }
 
 QString xToolsResponserTool::itemDescription()
 {
-    return mDataKeys.itemDescription;
+    return m_dataKeys.itemDescription;
 }
 
 QString xToolsResponserTool::itemOption()
 {
-    return mDataKeys.itemOption;
+    return m_dataKeys.itemOption;
 }
 
 QString xToolsResponserTool::itemReferenceTextFormat()
 {
-    return mDataKeys.itemReferenceTextFormat;
+    return m_dataKeys.itemReferenceTextFormat;
 }
 
 QString xToolsResponserTool::itemReferenceEscapeCharacter()
 {
-    return mDataKeys.itemReferenceEscapeCharacter;
+    return m_dataKeys.itemReferenceEscapeCharacter;
 }
 
 QString xToolsResponserTool::itemReferencePrefix()
 {
-    return mDataKeys.itemReferencePrefix;
+    return m_dataKeys.itemReferencePrefix;
 }
 
 QString xToolsResponserTool::itemReferenceSuffix()
 {
-    return mDataKeys.itemReferenceSuffix;
+    return m_dataKeys.itemReferenceSuffix;
 }
 
 QString xToolsResponserTool::itemReferenceCrcEnable()
 {
-    return mDataKeys.itemReferenceCrcEnable;
+    return m_dataKeys.itemReferenceCrcEnable;
 }
 
 QString xToolsResponserTool::itemReferenceCrcBigEndian()
 {
-    return mDataKeys.itemReferenceCrcBigEndian;
+    return m_dataKeys.itemReferenceCrcBigEndian;
 }
 
 QString xToolsResponserTool::itemReferenceCrcAlgorithm()
 {
-    return mDataKeys.itemReferenceCrcAlgorithm;
+    return m_dataKeys.itemReferenceCrcAlgorithm;
 }
 
 QString xToolsResponserTool::itemReferenceCrcStartIndex()
 {
-    return mDataKeys.itemReferenceCrcStartIndex;
+    return m_dataKeys.itemReferenceCrcStartIndex;
 }
 
 QString xToolsResponserTool::itemReferenceCrcEndIndex()
 {
-    return mDataKeys.itemReferenceCrcEndIndex;
+    return m_dataKeys.itemReferenceCrcEndIndex;
 }
 
 QString xToolsResponserTool::itemReferenceText()
 {
-    return mDataKeys.itemReferenceText;
+    return m_dataKeys.itemReferenceText;
 }
 
 QString xToolsResponserTool::itemResponseTextFormat()
 {
-    return mDataKeys.itemResponseTextFormat;
+    return m_dataKeys.itemResponseTextFormat;
 }
 
 QString xToolsResponserTool::itemResponseEscapeCharacter()
 {
-    return mDataKeys.itemResponseEscapeCharacter;
+    return m_dataKeys.itemResponseEscapeCharacter;
 }
 
 QString xToolsResponserTool::itemResponsePrefix()
 {
-    return mDataKeys.itemResponsePrefix;
+    return m_dataKeys.itemResponsePrefix;
 }
 
 QString xToolsResponserTool::itemResponseSuffix()
 {
-    return mDataKeys.itemResponseSuffix;
+    return m_dataKeys.itemResponseSuffix;
 }
 
 QString xToolsResponserTool::itemResponseCrcEnable()
 {
-    return mDataKeys.itemResponseCrcEnable;
+    return m_dataKeys.itemResponseCrcEnable;
 }
 
 QString xToolsResponserTool::itemResponseCrcBigEndian()
 {
-    return mDataKeys.itemResponseCrcBigEndian;
+    return m_dataKeys.itemResponseCrcBigEndian;
 }
 
 QString xToolsResponserTool::itemResponseCrcAlgorithm()
 {
-    return mDataKeys.itemResponseCrcAlgorithm;
+    return m_dataKeys.itemResponseCrcAlgorithm;
 }
 
 QString xToolsResponserTool::itemResponseCrcStartIndex()
 {
-    return mDataKeys.itemResponseCrcStartIndex;
+    return m_dataKeys.itemResponseCrcStartIndex;
 }
 
 QString xToolsResponserTool::itemResponseCrcEndIndex()
 {
-    return mDataKeys.itemResponseCrcEndIndex;
+    return m_dataKeys.itemResponseCrcEndIndex;
 }
 
 QString xToolsResponserTool::itemResponseDelay()
 {
-    return mDataKeys.itemResponseDelay;
+    return m_dataKeys.itemResponseDelay;
 }
 
 QString xToolsResponserTool::itemResponseText()
 {
-    return mDataKeys.itemResponseText;
+    return m_dataKeys.itemResponseText;
 }
