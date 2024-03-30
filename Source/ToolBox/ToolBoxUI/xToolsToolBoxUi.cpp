@@ -202,7 +202,6 @@ void xToolsToolBoxUi::try2send()
     bytes.prepend(prefixData);
     bytes.append(suffixData);
     m_toolBox->getCommunicationTool()->inputBytes(bytes);
-    qInfo() << bytes;
 }
 
 QString xToolsToolBoxUi::dateTimeFormat()
