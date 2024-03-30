@@ -24,5 +24,5 @@ protected:
     virtual QDialog *itemEditor() override;
 
 private:
-    xToolsEmitterToolUiEditor *mEditor{nullptr};
+    xToolsEmitterToolUiEditor *m_editor{nullptr};
 };

@@ -51,7 +51,7 @@ private:
     bool append();
 
 private:
-    QMenu *mMenu{nullptr};
+    QMenu *m_menu{nullptr};
     QString mItemsKey;
 
 private:

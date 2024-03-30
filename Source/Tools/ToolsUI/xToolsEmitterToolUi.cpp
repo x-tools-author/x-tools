@@ -14,7 +14,7 @@
 xToolsEmitterToolUi::xToolsEmitterToolUi(QWidget *parent)
     : xToolsTableModelToolUi{parent}
 {
-    mEditor = new xToolsEmitterToolUiEditor(xToolsApplication::mainWindow());
+    m_editor = new xToolsEmitterToolUiEditor(xToolsApplication::mainWindow());
 }
 
 xToolsEmitterToolUi::~xToolsEmitterToolUi() {}
@@ -46,5 +46,5 @@ QList<int> xToolsEmitterToolUi::defaultHideColumns()
 
 QDialog *xToolsEmitterToolUi::itemEditor()
 {
-    return mEditor;
+    return m_editor;
 }

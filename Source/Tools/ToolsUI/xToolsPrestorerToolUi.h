@@ -28,8 +28,8 @@ protected:
     virtual QDialog *itemEditor() override;
 
 private:
-    xToolsPrestorerToolUiEditor *mEditor{nullptr};
-    QMenu *mMenu{nullptr};
+    xToolsPrestorerToolUiEditor *m_editor{nullptr};
+    QMenu *m_menu{nullptr};
 
 private:
     void updateMenu();

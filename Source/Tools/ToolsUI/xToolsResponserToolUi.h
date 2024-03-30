@@ -26,5 +26,5 @@ protected:
     virtual QDialog *itemEditor() override;
 
 private:
-    xToolsResponserToolUiEditor *mEditor{nullptr};
+    xToolsResponserToolUiEditor *m_editor{nullptr};
 };

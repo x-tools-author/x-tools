@@ -133,12 +133,12 @@ void xToolsTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const
     headerView->setModel(headerViewModel);
     headerView->setDefaultAlignment(Qt::AlignLeft);
 
-    mMenu = new xToolsMenu(ui->pushButtonVisible);
-    ui->pushButtonVisible->setMenu(mMenu);
+    m_menu = new xToolsMenu(ui->pushButtonVisible);
+    ui->pushButtonVisible->setMenu(m_menu);
     auto settings = xToolsSettings::instance();
     auto hideColumns = defaultHideColumns();
     for (int i = 0; i < headers.count(); i++) {
-        QAction *ret = mMenu->addAction(headers.at(i));
+        QAction *ret = m_menu->addAction(headers.at(i));
         connect(ret, &QAction::triggered, this, [=]() {
             if (ret->isChecked()) {
                 tableView->showColumn(i);

@@ -22,7 +22,7 @@
 xToolsResponserToolUi::xToolsResponserToolUi(QWidget *parent)
     : xToolsTableModelToolUi{parent}
 {
-    mEditor = new xToolsResponserToolUiEditor(xToolsApplication::mainWindow());
+    m_editor = new xToolsResponserToolUiEditor(xToolsApplication::mainWindow());
 }
 
 xToolsResponserToolUi::~xToolsResponserToolUi() {}
@@ -54,5 +54,5 @@ QList<int> xToolsResponserToolUi::defaultHideColumns()
 
 QDialog *xToolsResponserToolUi::itemEditor()
 {
-    return mEditor;
+    return m_editor;
 }

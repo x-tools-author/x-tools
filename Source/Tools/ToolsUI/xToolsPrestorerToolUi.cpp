@@ -23,15 +23,15 @@
 xToolsPrestorerToolUi::xToolsPrestorerToolUi(QWidget *parent)
     : xToolsTableModelToolUi(parent)
 {
-    mEditor = new xToolsPrestorerToolUiEditor(xToolsApplication::mainWindow());
-    mMenu = new xToolsMenu();
+    m_editor = new xToolsPrestorerToolUiEditor(xToolsApplication::mainWindow());
+    m_menu = new xToolsMenu();
 }
 
 xToolsPrestorerToolUi::~xToolsPrestorerToolUi() {}
 
 QMenu *xToolsPrestorerToolUi::menu()
 {
-    return mMenu;
+    return m_menu;
 }
 
 void xToolsPrestorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
@@ -80,7 +80,7 @@ void xToolsPrestorerToolUi::afterRowEdited(int row)
 
 QDialog *xToolsPrestorerToolUi::itemEditor()
 {
-    return mEditor;
+    return m_editor;
 }
 
 void xToolsPrestorerToolUi::updateMenu()
@@ -88,12 +88,12 @@ void xToolsPrestorerToolUi::updateMenu()
     auto *cookedTool = qobject_cast<xToolsPrestorerTool *>(mTableModelTool);
     auto *model = cookedTool->tableModel().value<xToolsTableModel *>();
 
-    mMenu->clear();
+    m_menu->clear();
 
     for (int i = 0; i < model->rowCount(); i++) {
         QString desc = cookedTool->description(i);
-        QAction *a = new QAction(desc, mMenu);
-        mMenu->addAction(a);
+        QAction *a = new QAction(desc, m_menu);
+        m_menu->addAction(a);
         connect(a, &QAction::triggered, this, [=]() { cookedTool->send(i); });
     }
 }
