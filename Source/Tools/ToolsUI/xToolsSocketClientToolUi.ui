@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>165</width>
-    <height>217</height>
+    <width>141</width>
+    <height>247</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,17 +26,7 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="2" column="1">
-    <widget class="xToolsSpinBox" name="spinBoxClientPort">
-     <property name="maximum">
-      <number>65535</number>
-     </property>
-     <property name="value">
-      <number>44444</number>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
+   <item row="11" column="1">
     <widget class="xToolsIpComboBox" name="comboBoxServerAddress">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
@@ -46,13 +36,6 @@
      </property>
      <property name="editable">
       <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" colspan="2">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -69,39 +52,6 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
-    <widget class="QLabel" name="labelContext">
-     <property name="text">
-      <string>(closed)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Server IP</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Server port</string>
-     </property>
-    </widget>
-   </item>
    <item row="5" column="0">
     <widget class="QLabel" name="label_5">
      <property name="sizePolicy">
@@ -111,17 +61,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>Context</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="xToolsIpComboBox" name="comboBoxClientAddress">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+      <string>Binding info</string>
      </property>
     </widget>
    </item>
@@ -138,6 +78,19 @@
      </property>
     </widget>
    </item>
+   <item row="11" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Server IP</string>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label">
      <property name="sizePolicy">
@@ -151,10 +104,43 @@
      </property>
     </widget>
    </item>
+   <item row="2" column="1">
+    <widget class="xToolsSpinBox" name="spinBoxClientPort">
+     <property name="maximum">
+      <number>65535</number>
+     </property>
+     <property name="value">
+      <number>44444</number>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="xToolsIpComboBox" name="comboBoxClientAddress">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Server port</string>
+     </property>
+    </widget>
+   </item>
    <item row="3" column="1">
     <widget class="xToolsWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
    </item>
-   <item row="8" column="1">
+   <item row="12" column="1">
     <widget class="xToolsSpinBox" name="spinBoxServerPort">
      <property name="maximum">
       <number>65535</number>
@@ -167,11 +153,84 @@
      </property>
     </widget>
    </item>
+   <item row="5" column="1">
+    <widget class="QLabel" name="labelContext">
+     <property name="text">
+      <string>(closed)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
    <item row="4" column="0" colspan="2">
     <widget class="xToolsCheckBox" name="checkBoxSpecifyIpAndPort">
      <property name="text">
       <string>Specify ip and port</string>
      </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QWidget" name="widgetAuthentication" native="true">
+     <layout class="QGridLayout" name="gridLayout_4">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item row="0" column="1" colspan="2">
+       <widget class="xToolsCheckBox" name="checkBoxAuthentication">
+        <property name="text">
+         <string>Authentication</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="xToolsLineEdit" name="lineEditUserName">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>User name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Password</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="xToolsLineEdit" name="lineEditPassword">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
@@ -196,6 +255,11 @@
    <class>xToolsWebSocketMessageTypeComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">xToolsWebSocketMessageTypeComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>xToolsLineEdit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

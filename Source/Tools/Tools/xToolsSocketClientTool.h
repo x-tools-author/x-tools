@@ -22,6 +22,9 @@ class xToolsSocketClientTool : public xToolsCommunicationTool
     Q_PROPERTY(QString bindingIpPort READ bindingIpPort NOTIFY bindingIpPortChanged)
     // Just for web socket client.
     Q_PROPERTY(int messageType READ messageType WRITE setMessageType NOTIFY messageTypeChanged)
+    Q_PROPERTY(bool authentication READ authentication WRITE setAuthentication NOTIFY authenticationChanged)
+    Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
+    Q_PROPERTY(QString password READ password WRITE setPassword NOTIFY passwordChanged)
     // clang-format on
 public:
     explicit xToolsSocketClientTool(QObject *parent = nullptr);
@@ -40,6 +43,12 @@ public:
     QString bindingIpPort();
     int messageType();
     void setMessageType(int type);
+    bool authentication();
+    void setAuthentication(bool authentication);
+    QString userName();
+    void setUserName(const QString &userName);
+    QString password();
+    void setPassword(const QString &password);
 
 protected:
     QString m_clientIp;
@@ -49,6 +58,10 @@ protected:
     int m_serverPort;
     QString m_bindingIpPort;
     qint8 m_messageType;
+    QString m_peerInfo;
+    QString m_userName;
+    QString m_password;
+    bool m_authentication;
 
 signals:
     void clientIpChanged();
@@ -58,4 +71,7 @@ signals:
     void serverPortChanged();
     void bindingIpPortChanged();
     void messageTypeChanged();
+    void authenticationChanged();
+    void userNameChanged();
+    void passwordChanged();
 };

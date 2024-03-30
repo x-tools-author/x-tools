@@ -18,7 +18,7 @@ public:
     void setGroupKey(const QString &group, const QString &key);
 
 private:
-    QString mKey;
+    QString m_key;
 
 private:
     void readFromSettingsFile();

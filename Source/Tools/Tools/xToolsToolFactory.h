@@ -18,7 +18,7 @@ class xToolsToolFactory : public QObject
 public:
     enum ToolsType {
         AnalyzerTool,
-        SerialportTool,
+        SerialPortTool,
         EmitterTool,
         MaskerTool,
         ResponserTool,

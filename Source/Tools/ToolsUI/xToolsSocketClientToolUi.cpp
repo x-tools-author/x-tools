@@ -18,6 +18,7 @@ xToolsSocketClientToolUi::xToolsSocketClientToolUi(QWidget *parent)
     , ui(new Ui::xToolsSocketClientToolUi)
 {
     ui->setupUi(this);
+    ui->widgetAuthentication->hide();
 
     connect(ui->comboBoxClientAddress,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::activated),
@@ -39,6 +40,19 @@ xToolsSocketClientToolUi::xToolsSocketClientToolUi(QWidget *parent)
             &QCheckBox::clicked,
             this,
             &xToolsSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked);
+    connect(ui->checkBoxAuthentication,
+            &QCheckBox::clicked,
+            this,
+            &xToolsSocketClientToolUi::onAuthenticationCheckBoxClicked);
+    connect(ui->lineEditUserName,
+            &QLineEdit::textChanged,
+            this,
+            &xToolsSocketClientToolUi::onUserNameLineEditTextChanged);
+
+    connect(ui->lineEditPassword,
+            &QLineEdit::textChanged,
+            this,
+            &xToolsSocketClientToolUi::onPasswordLineEditTextChanged);
 }
 
 xToolsSocketClientToolUi::~xToolsSocketClientToolUi()
@@ -53,7 +67,8 @@ void xToolsSocketClientToolUi::onIsWorkingChanged(bool isWorking)
     ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
 }
 
-void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
+                                                       const QString &settingsGroup)
 {
     if (!tool) {
         return;
@@ -67,6 +82,8 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, con
     if (!tool->inherits("xToolsWebSocketClientTool")) {
         ui->labelMessageType->hide();
         ui->comboBoxMessageType->hide();
+    } else {
+        ui->widgetAuthentication->show();
     }
 
     mTool = qobject_cast<xToolsSocketClientTool *>(tool);
@@ -81,6 +98,9 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, con
     ui->comboBoxServerAddress->setGroupKey(settingsGroup, "serverAddress");
     ui->spinBoxServerPort->setGroupKey(settingsGroup, "serverPort");
     ui->comboBoxMessageType->setGroupKey(settingsGroup, "messageType");
+    ui->checkBoxAuthentication->setGroupKey(settingsGroup, "authentication");
+    ui->lineEditUserName->setGroupKey(settingsGroup, "username");
+    ui->lineEditPassword->setGroupKey(settingsGroup, "password");
 
     mTool->setClientIp(ui->comboBoxClientAddress->currentText().trimmed());
     mTool->setClientPort(ui->spinBoxClientPort->value());
@@ -97,7 +117,7 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, con
     });
 }
 
-void xToolsSocketClientToolUi::onComboBoxClientAddressActived()
+void xToolsSocketClientToolUi::onComboBoxClientAddressActivated()
 {
     if (mTool) {
         QString ip = ui->comboBoxClientAddress->currentText().trimmed();
@@ -132,5 +152,27 @@ void xToolsSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked()
     if (mTool) {
         bool checked = ui->checkBoxSpecifyIpAndPort->isChecked();
         mTool->setSpecifyClientIpPort(checked);
+    }
+}
+
+void xToolsSocketClientToolUi::onAuthenticationCheckBoxClicked()
+{
+    if (mTool) {
+        bool checked = ui->checkBoxAuthentication->isChecked();
+        mTool->setAuthentication(checked);
+    }
+}
+
+void xToolsSocketClientToolUi::onUserNameLineEditTextChanged(const QString &text)
+{
+    if (mTool) {
+        mTool->setUserName(text);
+    }
+}
+
+void xToolsSocketClientToolUi::onPasswordLineEditTextChanged(const QString &text)
+{
+    if (mTool) {
+        mTool->setPassword(text);
     }
 }

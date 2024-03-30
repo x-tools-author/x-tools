@@ -50,7 +50,7 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
     xToolsBaseTool *tool{nullptr};
     if (AnalyzerTool == type) {
         tool = new xToolsAnalyzerTool();
-    } else if (SerialportTool == type) {
+    } else if (SerialPortTool == type) {
         tool = new xToolsSerialPortTool();
     } else if (EmitterTool == type) {
         tool = new xToolsEmitterTool();
@@ -119,7 +119,7 @@ QString xToolsToolFactory::toolName(int type)
     static QMap<int, QString> map;
     if (map.isEmpty()) {
         map.insert(AnalyzerTool, tr("Analyzer"));
-        map.insert(SerialportTool, tr("Serialport"));
+        map.insert(SerialPortTool, tr("Serialport"));
         map.insert(EmitterTool, tr("Emitter"));
         map.insert(MaskerTool, tr("Masker"));
         map.insert(ResponserTool, tr("Responser"));

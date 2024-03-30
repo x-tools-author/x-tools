@@ -36,7 +36,6 @@
 #include "xToolsToolBoxUiOutputMenu.h"
 #include "xToolsToolFactory.h"
 #include "xToolsUdpTransmitterToolUi.h"
-#include "xToolsApplication.h"
 #include "xToolsWebSocketTransmitterToolUi.h"
 
 #ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
@@ -68,7 +67,7 @@ xToolsToolBoxUi::~xToolsToolBoxUi()
 QList<int> xToolsToolBoxUi::supportedCommunicationTools()
 {
     QList<int> list;
-    list << xToolsToolFactory::SerialportTool
+    list << xToolsToolFactory::SerialPortTool
 #ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
          << xToolsToolFactory::BleCentralTool
 #endif
@@ -80,7 +79,7 @@ QList<int> xToolsToolBoxUi::supportedCommunicationTools()
 
 QString xToolsToolBoxUi::communicationToolName(int type)
 {
-    if (type == xToolsToolFactory::SerialportTool) {
+    if (type == xToolsToolFactory::SerialPortTool) {
         return tr("SerialPort");
     } else if (type == xToolsToolFactory::UdpClientTool) {
         return tr("UDP Client");
@@ -104,7 +103,7 @@ QString xToolsToolBoxUi::communicationToolName(int type)
 QIcon xToolsToolBoxUi::communicationToolIcon(int type)
 {
     QString fileName;
-    if (type == xToolsToolFactory::SerialportTool) {
+    if (type == xToolsToolFactory::SerialPortTool) {
         fileName = ":/Resources/Icons/IconSerialPort.svg";
     } else if (type == xToolsToolFactory::UdpClientTool) {
         fileName = ":/Resources/Icons/IconUdpClient.svg";
@@ -154,7 +153,7 @@ void xToolsToolBoxUi::initialize(int type)
 xToolsCommunicationToolUi* xToolsToolBoxUi::communicationToolUi(int type)
 {
     xToolsCommunicationToolUi* w = nullptr;
-    if (type == xToolsToolFactory::SerialportTool) {
+    if (type == xToolsToolFactory::SerialPortTool) {
         w = new xToolsSerialPortToolUi();
     } else if (type == xToolsToolFactory::UdpClientTool) {
         w = new xToolsSocketClientToolUi();
@@ -265,7 +264,7 @@ void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bo
 
 QString xToolsToolBoxUi::settingsGroup()
 {
-    if (m_communicationType == xToolsToolFactory::SerialportTool) {
+    if (m_communicationType == xToolsToolFactory::SerialPortTool) {
         return "SerialportToolBox";
     } else if (m_communicationType == xToolsToolFactory::UdpClientTool) {
         return "UdpClientToolBox";
@@ -295,7 +294,7 @@ QByteArray xToolsToolBoxUi::calculateCrc(const QByteArray& bytes, bool fixedOrig
         int format = ui->comboBoxInputFormat->currentData().toInt();
         QString input = ui->comboBoxInputText->currentText();
         int esc = ctx.escapeCharacter;
-        
+
         input = xToolsDataStructure::cookEscapeCharacter(esc, input);
         inputBytes = xToolsDataStructure::stringToByteArray(input, format);
     }

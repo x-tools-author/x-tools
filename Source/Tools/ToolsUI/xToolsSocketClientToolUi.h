@@ -32,9 +32,13 @@ private:
 private:
     Ui::xToolsSocketClientToolUi *ui{nullptr};
 
-    void onComboBoxClientAddressActived();
+public slots:
+    void onComboBoxClientAddressActivated();
     void onSpinBoxClientPortValueChanged(int value);
     void onComboBoxServerAddressCurrentTextChanged();
     void onSpinBoxServerPortValueChanged(int value);
     void onCheckBoxSpecifyIpAndPortClicked();
+    void onAuthenticationCheckBoxClicked();
+    void onUserNameLineEditTextChanged(const QString &text);
+    void onPasswordLineEditTextChanged(const QString &text);
 };

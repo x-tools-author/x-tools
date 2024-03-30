@@ -25,5 +25,4 @@ protected:
 
 private:
     QWebSocket *m_webSocket{Q_NULLPTR};
-    QString m_peerInfo;
 };

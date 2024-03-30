@@ -58,10 +58,21 @@ bool xToolsWebSocketClientTool::initialize(QString &errStr)
         QString errStr = m_webSocket->errorString();
         emit errorOccurred(errStr);
     });
-    
+
     QString address = "ws://" + m_serverIp + ":" + QString::number(m_serverPort);
-    qDebug() << "Server url: " + address;
-    m_webSocket->open(address);
+    qInfo() << "Server url: " + address;
+    if (m_authentication) {
+        QNetworkRequest request(address);
+        QString username = m_userName;
+        QString password = m_password;
+        QString concatenated = username + ":" + password;
+        QByteArray data = concatenated.toLocal8Bit().toBase64();
+        QString headerData = "Basic " + data;
+        request.setRawHeader("Authorization", headerData.toLocal8Bit());
+        m_webSocket->open(request);
+    } else {
+        m_webSocket->open(address);
+    }
 
     return true;
 }
@@ -70,6 +81,7 @@ void xToolsWebSocketClientTool::writeBytes(const QByteArray &bytes)
 {
     qint64 ret = -1;
     QString hex;
+
     if (m_messageType == 0) {
         hex = QString::fromLatin1(xToolsByteArrayToHex(bytes, ' '));
         ret = m_webSocket->sendBinaryMessage(bytes);

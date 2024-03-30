@@ -81,3 +81,36 @@ void xToolsSocketClientTool::setMessageType(int type)
     m_messageType = type;
     emit messageTypeChanged();
 }
+
+bool xToolsSocketClientTool::authentication()
+{
+    return m_authentication;
+}
+
+void xToolsSocketClientTool::setAuthentication(bool authentication)
+{
+    m_authentication = authentication;
+    emit authenticationChanged();
+}
+
+QString xToolsSocketClientTool::userName()
+{
+    return m_userName;
+}
+
+void xToolsSocketClientTool::setUserName(const QString &userName)
+{
+    m_userName = userName;
+    emit userNameChanged();
+}
+
+QString xToolsSocketClientTool::password()
+{
+    return m_password;
+}
+
+void xToolsSocketClientTool::setPassword(const QString &password)
+{
+    m_password = password;
+    emit passwordChanged();
+}

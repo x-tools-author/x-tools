@@ -18,25 +18,25 @@ xToolsCheckBox::xToolsCheckBox(QWidget* parent)
 
 void xToolsCheckBox::setGroupKey(const QString& group, const QString& key)
 {
-    mKey = group + "/" + key;
+    m_key = group + "/" + key;
     readFromSettingsFile();
 }
 
 void xToolsCheckBox::readFromSettingsFile()
 {
-    if (mKey.isEmpty()) {
+    if (m_key.isEmpty()) {
         return;
     }
 
-    bool ret = xToolsSettings::instance()->value(mKey).toBool();
+    bool ret = xToolsSettings::instance()->value(m_key).toBool();
     setChecked(ret);
 }
 
 void xToolsCheckBox::writeToSettingsFile()
 {
-    if (mKey.isEmpty()) {
+    if (m_key.isEmpty()) {
         return;
     }
 
-    xToolsSettings::instance()->setValue(mKey, isChecked());
+    xToolsSettings::instance()->setValue(m_key, isChecked());
 }

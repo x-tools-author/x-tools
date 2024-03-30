@@ -52,7 +52,7 @@ xToolsBaseToolUi *xToolsToolUiFactory::createToolUi(int type)
     switch (type) {
     case xToolsToolFactory::AnalyzerTool:
         return new xToolsAnalyzerToolUi();
-    case xToolsToolFactory::SerialportTool:
+    case xToolsToolFactory::SerialPortTool:
         return new xToolsSerialPortToolUi();
     case xToolsToolFactory::EmitterTool:
         return new xToolsEmitterToolUi();
