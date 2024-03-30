@@ -12,7 +12,6 @@
 #include <QButtonGroup>
 #include <QClipboard>
 #include <QCloseEvent>
-#include <QDebug>
 #include <QDesktopServices>
 #include <QFile>
 #include <QFileDialog>
@@ -365,15 +364,15 @@ void MainWindow::initNav(const NavContext& ctx)
     auto stackedWidget = qobject_cast<QStackedWidget*>(centralWidget());
     stackedWidget->addWidget(ctx.page);
 
-    int pageCount = ctx.bg->buttons().count();
+    auto pageCount = ctx.bg->buttons().count();
     QObject::connect(bt, &QToolButton::clicked, bt, [=]() {
-        stackedWidget->setCurrentIndex(pageCount - 1);
+        stackedWidget->setCurrentIndex(int(pageCount) - 1);
         xToolsSettings::instance()->setValue(m_settingsKey.pageIndex, pageCount - 1);
     });
 
     if (xToolsSettings::instance()->value(m_settingsKey.pageIndex).toInt() == (pageCount - 1)) {
         bt->setChecked(true);
-        stackedWidget->setCurrentIndex(pageCount - 1);
+        stackedWidget->setCurrentIndex(int(pageCount) - 1);
     }
 }
 
@@ -383,7 +382,7 @@ void MainWindow::intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBa
     const QString key = m_settingsKey.isTextBesideIcon;
     bool isTextBesideIcon = xToolsSettings::instance()->value(key).toBool();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
-    QToolButton* tbt = new QToolButton(this);
+    auto* tbt = new QToolButton(this);
     const QString path = ":/Resources/Icons/IconListWithIcon.svg";
     tbt->setIcon(xToolsApplication::cookedIcon(QIcon(path)));
     tbt->setText(" " + tr("Show Icon Only"));
@@ -439,7 +438,7 @@ void MainWindow::aboutSoftware()
              << Info{tr("Gitee Url"),
                      QString("<a href=%1>%1</a>").arg(X_TOOLS_GITEE_REPOSITORY_URL),
                      true}
-             << Info{tr("Gitbub Url"),
+             << Info{tr("GitHub Url"),
                      QString("<a href=%1>%1</a>").arg(X_TOOLS_GITHUB_REPOSITORY_URL),
                      true}
 #endif
@@ -450,7 +449,7 @@ void MainWindow::aboutSoftware()
                      false};
 
     QDialog dialog(this);
-    dialog.setWindowTitle(tr("About QSAK"));
+    dialog.setWindowTitle(tr("About xTools"));
 
     auto* gridLayout = new QGridLayout(&dialog);
     int i = 0;
@@ -472,32 +471,6 @@ void MainWindow::aboutSoftware()
     dialog.setModal(true);
     dialog.show();
     dialog.exec();
-}
-
-void MainWindow::clearConfiguration()
-{
-    xToolsSettings::instance()->setClearSettings(true);
-    rebootRequestion();
-}
-
-void MainWindow::rebootRequestion()
-{
-    QString title = tr("Reboot application to effective");
-    QString text = tr("Need to reboot, reboot to effective now?");
-    QMessageBox::StandardButtons buttons = QMessageBox::Ok | QMessageBox::Cancel;
-
-    int ret = QMessageBox::information(this, title, text, buttons);
-    if (ret != QMessageBox::Ok) {
-        return;
-    }
-
-    if (QProcess::startDetached(QCoreApplication::applicationFilePath())) {
-        qApp->closeAllWindows();
-        qApp->exit();
-    } else {
-        QString text = tr("Can not reboot the application, please reboot it manually!");
-        QMessageBox::warning(this, tr("Reboot Error"), text);
-    }
 }
 
 void MainWindow::showHistory()
@@ -549,35 +522,4 @@ void MainWindow::showQrCode()
     dialog.setModal(true);
     dialog.show();
     dialog.exec();
-}
-
-void MainWindow::showDonation()
-{
-    QDialog dialog(this);
-    dialog.setModal(true);
-    auto* hBoxLayout = new QHBoxLayout(&dialog);
-    QString image = ":/resources/images/WeChat.jpg";
-    auto* label = new QLabel(&dialog);
-    QPixmap pixMap = QPixmap::fromImage(QImage(image));
-    label->setPixmap(pixMap.scaledToHeight(400, Qt::SmoothTransformation));
-    hBoxLayout->addWidget(label);
-    dialog.layout()->addWidget(label);
-    dialog.show();
-    dialog.exec();
-}
-
-void MainWindow::createQtConf()
-{
-    QString fileName = qtConfFileName();
-    QFile file(fileName);
-    if (!file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate)) {
-        QString message = tr("Can not open file(%1): %2").arg(fileName, file.errorString());
-        qWarning() << qPrintable(message);
-        return;
-    }
-
-    QTextStream out(&file);
-    out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
-    file.close();
-    qInfo() << "Create Qt configuration file successfully:" << qPrintable(fileName);
 }

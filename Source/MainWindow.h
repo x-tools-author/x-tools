@@ -73,10 +73,6 @@ private:
     void initStatusBar();
 
     void aboutSoftware();
-    void clearConfiguration();
-    void rebootRequestion();
     static void showHistory();
-    void showQrCode();
-    void showDonation();
-    void createQtConf();
+    static void showQrCode();
 };
