@@ -22,8 +22,9 @@ class xToolsSocketClientToolUi : public xToolsCommunicationToolUi
 public:
     explicit xToolsSocketClientToolUi(QWidget *parent = nullptr);
     ~xToolsSocketClientToolUi();
-    virtual void onIsWorkingChanged(bool isWorking) final;
-    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
+    virtual void onIsWorkingChanged(bool isWorking) override;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool,
+                                         const QString &settingsGroup) override;
 
 private:
     Ui::xToolsSocketClientToolUi *ui{nullptr};
