@@ -33,7 +33,7 @@ void xToolsMdnsServer::run()
     connect(&browser, &QMdnsEngine::Browser::serviceUpdated, this, &xToolsMdnsServer::serviceUpdated);
     connect(&browser, &QMdnsEngine::Browser::serviceRemoved, this, &xToolsMdnsServer::serviceRemoved);
 
-    qInfo() << "mDNS broser has been started.";
+    qInfo() << "The mDNS broser has been started.";
     exec();
-    qInfo() << "mDNS broser has been stopped.";
+    qInfo() << "The mDNS broser has been stopped.";
 }
