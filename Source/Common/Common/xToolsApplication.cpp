@@ -143,15 +143,19 @@ void xToolsApplication::setValidator(QLineEdit *target, int validatorType, int m
     if (regularExpressionMap.isEmpty()) {
         typedef QRegularExpressionValidator REV;
         QRegularExpressionValidator *noneRE = nullptr;
-        auto binRE = new REV(QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
-        auto otcRE = new REV(QRegularExpression("([0-7][0-7][ ])*"));
-        auto decRE = new REV(QRegularExpression("([0-9])*"));
-        auto hexRE = new REV(QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
-        auto asciiRE = new REV(QRegularExpression("([ -~])*"));
-        auto floatRE = new REV(QRegularExpression("^[-+]?[0-9]*\\.?[0-9]+$"));
+        auto binRE = new QRegularExpressionValidator(
+            QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
+        auto otcRE = new QRegularExpressionValidator(
+            QRegularExpression("^(3[0-7][0-7]|[1-2][0-7]{0,2}|[0-7]{1,2})( "
+                               "(3[0-7][0-7]|[1-2][0-7]{0,2}|[0-7]{1,2}))*$")); //0-377
+        auto decRE = new QRegularExpressionValidator(
+            QRegularExpression("^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( "
+                               "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*")); // 0-255;
+        auto hexRE = new QRegularExpressionValidator(
+            QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
+        auto asciiRE = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
         QRegularExpressionValidator *urf8RE = nullptr;
         QRegularExpressionValidator *systemRE = nullptr;
-        Q_UNUSED(floatRE)
 
         regularExpressionMap.insert(int(xToolsDataStructure::TextFormatBin), binRE);
         regularExpressionMap.insert(int(xToolsDataStructure::TextFormatOct), otcRE);

@@ -245,17 +245,14 @@
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer_3">
+       <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>16</height>
+          <height>40</height>
          </size>
         </property>
        </spacer>
@@ -275,20 +272,30 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item row="0" column="0" colspan="2">
-          <widget class="QLabel" name="label_4">
-           <property name="font">
-            <font>
-             <italic>true</italic>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Input control</string>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboBoxInputIntervel">
+           <property name="editable">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
-         <item row="4" column="0" colspan="2">
+         <item row="4" column="1">
+          <widget class="xToolsTextFormatComboBox" name="comboBoxInputFormat"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Cycle</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0" colspan="2">
           <layout class="QGridLayout" name="gridLayout">
            <item row="0" column="0">
             <widget class="QPushButton" name="pushButtonInputSettings">
@@ -306,7 +313,7 @@
            </item>
           </layout>
          </item>
-         <item row="3" column="0">
+         <item row="4" column="0">
           <widget class="QLabel" name="label_6">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -319,30 +326,20 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="comboBoxInputIntervel">
-           <property name="editable">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="xToolsTextFormatComboBox" name="comboBoxInputFormat"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_5">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+         <item row="1" column="0" colspan="2">
+          <widget class="QLabel" name="label_4">
+           <property name="font">
+            <font>
+             <italic>true</italic>
+             <bold>false</bold>
+            </font>
            </property>
            <property name="text">
-            <string>Cycle</string>
+            <string>Input control</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="0" colspan="2">
+         <item row="2" column="0" colspan="2">
           <widget class="Line" name="line_3">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -351,19 +348,6 @@
          </item>
         </layout>
        </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </widget>

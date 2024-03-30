@@ -203,6 +203,7 @@ void xToolsToolBoxUi::try2send()
     bytes.prepend(prefixData);
     bytes.append(suffixData);
     m_toolBox->getCommunicationTool()->inputBytes(bytes);
+    qInfo() << bytes;
 }
 
 QString xToolsToolBoxUi::dateTimeFormat()
@@ -672,12 +673,10 @@ void xToolsToolBoxUi::onCheckBoxOutputWrapClicked()
 void xToolsToolBoxUi::onPushButtonInputSendClicked()
 {
     if (ui->comboBoxInputText->currentText().isEmpty()) {
-        qInfo() << "input text is empty,"
-                   "the text will be set as (null)";
-        QApplication::beep();
-        ui->comboBoxInputText->setFocus();
-
-        setDefaultText();
+        QMessageBox::warning(this,
+                             tr("Input Text Can Not Be Empty"),
+                             tr("The input text is empty, please enter the input text"));
+        return;
     }
 
     QString text = ui->comboBoxInputText->currentText();
@@ -720,6 +719,13 @@ void xToolsToolBoxUi::onPushButtonInputSendClicked()
 
 void xToolsToolBoxUi::onComboBoxInputIntervalActivated()
 {
+    if (ui->comboBoxInputText->currentText().isEmpty()) {
+        ui->comboBoxInputText->lineEdit()->setFocus();
+        QApplication::beep();
+        ui->comboBoxInputIntervel->setCurrentIndex(0);
+        return;
+    }
+
     int interval = ui->comboBoxInputIntervel->currentText().toInt();
     interval = interval < 10 ? 10 : interval;
     qInfo() << "start sending automatically, the interval is:" << interval;
