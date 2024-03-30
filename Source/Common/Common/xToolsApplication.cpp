@@ -141,29 +141,24 @@ void xToolsApplication::setValidator(QLineEdit *target, int validatorType, int m
 {
     static QMap<int, QRegularExpressionValidator *> regularExpressionMap;
     if (regularExpressionMap.isEmpty()) {
-        typedef QRegularExpressionValidator REV;
         QRegularExpressionValidator *noneRE = nullptr;
-        auto binRE = new QRegularExpressionValidator(
-            QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
-        auto otcRE = new QRegularExpressionValidator(
-            QRegularExpression("^(3[0-7][0-7]|[1-2][0-7]{0,2}|[0-7]{1,2})( "
-                               "(3[0-7][0-7]|[1-2][0-7]{0,2}|[0-7]{1,2}))*$")); //0-377
-        auto decRE = new QRegularExpressionValidator(
-            QRegularExpression("^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( "
-                               "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*")); // 0-255;
-        auto hexRE = new QRegularExpressionValidator(
-            QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
-        auto asciiRE = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
-        QRegularExpressionValidator *urf8RE = nullptr;
-        QRegularExpressionValidator *systemRE = nullptr;
+        // clang-format off
+        auto binValidator = new QRegularExpressionValidator(QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
+        auto otcValidator = new QRegularExpressionValidator(QRegularExpression("^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*$")); //0-377
+        auto decValidator = new QRegularExpressionValidator(QRegularExpression("^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( (25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*")); // 0-255;
+        auto hexValidator = new QRegularExpressionValidator(QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
+        auto asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
+        QRegularExpressionValidator *urf8Validator = nullptr;
+        QRegularExpressionValidator *systemValidator = nullptr;
+        // clang-format on
 
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatBin), binRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatOct), otcRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatDec), decRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatHex), hexRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatAscii), asciiRE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatUtf8), urf8RE);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatSystem), systemRE);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatBin), binValidator);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatOct), otcValidator);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatDec), decValidator);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatHex), hexValidator);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatAscii), asciiValidator);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatUtf8), urf8Validator);
+        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatSystem), systemValidator);
     }
 
     if (!target || !regularExpressionMap.contains(validatorType) || maxLength < 0) {
