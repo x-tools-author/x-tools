@@ -39,6 +39,12 @@ DEFINES += X_TOOLS_AUTHOR_EMAIL=\"\\\"x-tools@outlook.com\\\"\"
 DEFINES += X_TOOLS_DEFAULT_APP_STYLE=\"\\\"Fusion\\\"\"
 DEFINES += X_TOOLS_GITHUB_REPOSITORY_URL=\"\\\"https://github.com/x-tools-author/x-tools\\\"\"
 DEFINES += X_TOOLS_GITEE_REPOSITORY_URL=\"\\\"https://gitee.com/x-tools-author/x-tools\\\"\"
+equals(QT_MAJOR_VERSION, 5):greaterThan(QT_MINOR_VERSION, 13) {
+    DEFINES += X_TOOLS_ENABLE_HIGH_DPI_POLICY
+}
+equals(QT_MAJOR_VERSION, 6) {
+    DEFINES += X_TOOLS_ENABLE_HIGH_DPI_POLICY
+}
 
 exists (./.git) {
     GIT_COMMIT   = $$system(git rev-parse HEAD)
