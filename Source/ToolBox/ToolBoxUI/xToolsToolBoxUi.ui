@@ -197,6 +197,9 @@
             </item>
             <item row="2" column="0">
              <widget class="QCheckBox" name="checkBoxFromTo">
+              <property name="toolTip">
+               <string>Show the data origin or sending target</string>
+              </property>
               <property name="text">
                <string>From-To</string>
               </property>
@@ -205,10 +208,13 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="1" colspan="2">
+            <item row="2" column="1">
              <widget class="QCheckBox" name="checkBoxConsoleMode">
-              <property name="text">
+              <property name="toolTip">
                <string>Console mode</string>
+              </property>
+              <property name="text">
+               <string>Console</string>
               </property>
              </widget>
             </item>

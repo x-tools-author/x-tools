@@ -249,6 +249,7 @@ void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bo
     if (ui->checkBoxConsoleMode) {
         ui->textBrowserOutput->moveCursor(QTextCursor::End);
         ui->textBrowserOutput->insertPlainText(str);
+
         return;
     }
 
