@@ -224,7 +224,7 @@ void MainWindow::initHelpMenu()
 #ifndef X_TOOLS_BUILD_FOR_STORE
 #ifdef Q_OS_WIN
     m_helpMenu->addAction(QIcon(":/Resources/Icons/IconBuy.svg"),
-                          tr("Buy from Microsoft App Store"),
+                          tr("Buy Ultimate Edition"),
                           this,
                           []() {
                               QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
@@ -320,6 +320,8 @@ void MainWindow::initNav()
 
 void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
 {
+    Q_UNUSED(buttonGroup)
+    Q_UNUSED(toolBar)
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
     auto* modbus = new xToolsModbusStudioUi(this);
     auto icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconModbus.svg"));

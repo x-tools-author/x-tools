@@ -53,42 +53,18 @@ void xToolsStorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QSt
     connect(ui->checkBoxTx, &QCheckBox::clicked, this, [=]() {
         cookedTool->setSaveTx(ui->checkBoxTx->isChecked());
     });
-    connect(ui->checkBoxDate, &QCheckBox::clicked, this, [=]() {
-        cookedTool->setSaveDate(ui->checkBoxDate->isChecked());
-    });
-    connect(ui->checkBoxDate, &QCheckBox::clicked, this, [=]() {
-        cookedTool->setSaveTime(ui->checkBoxTime->isChecked());
-    });
-    connect(ui->checkBoxMs, &QCheckBox::clicked, this, [=]() {
-        cookedTool->setSaveMs(ui->checkBoxMs->isChecked());
-    });
-    connect(ui->comboBoxFormat,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::activated),
-            this,
-            [=]() {
-                int format = ui->comboBoxFormat->currentData().toInt();
-                cookedTool->setSaveFormat(format);
-            });
     connect(ui->lineEditStorerPath, &xToolsLineEdit::textChanged, this, [=]() {
         cookedTool->setFileName(ui->lineEditStorerPath->text());
     });
 
     ui->checkBoxEnable->setGroupKey(settingsGroup, "enable");
-    ui->checkBoxDate->setGroupKey(settingsGroup, "date");
-    ui->checkBoxTime->setGroupKey(settingsGroup, "time");
-    ui->checkBoxMs->setGroupKey(settingsGroup, "ms");
     ui->checkBoxRx->setGroupKey(settingsGroup, "rx");
     ui->checkBoxTx->setGroupKey(settingsGroup, "tx");
-    ui->comboBoxFormat->setGroupKey(settingsGroup, "format");
     ui->lineEditStorerPath->setGroupKey(settingsGroup, "path");
     
     cookedTool->setIsEnable(ui->checkBoxEnable->isChecked());
     cookedTool->setSaveTx(ui->checkBoxTx->isChecked());
     cookedTool->setSaveRx(ui->checkBoxRx->isChecked());
-    cookedTool->setSaveDate(ui->checkBoxDate->isChecked());
-    cookedTool->setSaveTime(ui->checkBoxTime->isChecked());
-    cookedTool->setSaveMs(ui->checkBoxMs->isChecked());
-    cookedTool->setSaveFormat(ui->comboBoxFormat->currentData().toInt());
     cookedTool->setFileName(ui->lineEditStorerPath->text());
 }
 

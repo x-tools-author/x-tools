@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>286</width>
-    <height>148</height>
+    <width>327</width>
+    <height>96</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,73 +33,58 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <widget class="xToolsCheckBox" name="checkBoxEnable">
-        <property name="text">
-         <string>Enable</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="xToolsCheckBox" name="checkBoxRx">
-        <property name="text">
-         <string>Save rx</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="xToolsCheckBox" name="checkBoxTx">
-        <property name="text">
-         <string>Save tx</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="xToolsCheckBox" name="checkBoxEnable">
+          <property name="text">
+           <string>Enable</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="xToolsCheckBox" name="checkBoxRx">
+          <property name="text">
+           <string>Save rx</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="xToolsCheckBox" name="checkBoxTx">
+          <property name="text">
+           <string>Save tx</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonSelectFile">
+          <property name="text">
+           <string>Browser</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item row="1" column="0">
-       <widget class="xToolsCheckBox" name="checkBoxDate">
-        <property name="text">
-         <string>Save date</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="xToolsCheckBox" name="checkBoxTime">
-        <property name="text">
-         <string>Save time</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="xToolsCheckBox" name="checkBoxMs">
-        <property name="text">
-         <string>Save ms</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Save format</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="xToolsTextFormatComboBox" name="comboBoxFormat"/>
-      </item>
-      <item row="2" column="2">
-       <widget class="QPushButton" name="pushButtonSelectFile">
-        <property name="text">
-         <string>Browser</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_14">
-        <property name="text">
-         <string>Output file</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1" colspan="2">
        <widget class="xToolsLineEdit" name="lineEditStorerPath">
+        <property name="minimumSize">
+         <size>
+          <width>230</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string notr="true"/>
         </property>
@@ -123,11 +108,6 @@
    <class>xToolsLineEdit</class>
    <extends>QLineEdit</extends>
    <header>xToolsLineEdit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>xToolsTextFormatComboBox</class>
-   <extends>QComboBox</extends>
-   <header location="global">xToolsTextFormatComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
