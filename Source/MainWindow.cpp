@@ -125,9 +125,10 @@ void MainWindow::initFileMenu()
         windowMenu->addAction(action);
         connect(action, &QAction::triggered, this, [=]() {
             auto* w = new xToolsToolBoxUi();
-            w->setContentsMargins(9, 9, 9, 9);
+            w->setContentsMargins(0, 0, 0, 0);
             w->setAttribute(Qt::WA_DeleteOnClose, true);
             w->initialize(toolType);
+            w->adjustSize();
             w->show();
         });
     }

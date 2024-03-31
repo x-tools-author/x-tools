@@ -241,8 +241,14 @@ void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bo
 {
     int format = ui->comboBoxOutputFormat->currentData().toInt();
     QString str = xToolsDataStructure::byteArrayToString(bytes, format);
-
+    bool showFromTo = ui->checkBoxFromTo->isChecked();
     if (!str.contains(m_outputMenu->filter())) {
+        return;
+    }
+
+    if (ui->checkBoxConsoleMode) {
+        ui->textBrowserOutput->moveCursor(QTextCursor::End);
+        ui->textBrowserOutput->insertPlainText(str);
         return;
     }
 
@@ -253,9 +259,17 @@ void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bo
     rxTx = QString("<font color=%1>%2</font>").arg(color, rxTx);
     QString info;
     if (dt.isEmpty()) {
-        info = QString("[%1 %2]").arg(rxTx, flag);
+        if (showFromTo) {
+            info = QString("[%1 %2]").arg(rxTx, flag);
+        } else {
+            info = QString("[%1]").arg(rxTx);
+        }
     } else {
-        info = QString("[%1 %2 %3]").arg(rxTx, dt, flag);
+        if (showFromTo) {
+            info = QString("[%1 %2 %3]").arg(rxTx, dt, flag);
+        } else {
+            info = QString("[%1 %2]").arg(rxTx, dt);
+        }
     }
 
     info = QString("<font color=silver>%2</font>").arg(info);
