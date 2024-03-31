@@ -247,7 +247,6 @@ HEADERS += \
     Source/Common/Common/xToolsSerialPortScanner.h \
     Source/Common/Common/xToolsSettings.h \
     Source/Common/Common/xToolsTableModel.h \
-    Source/Common/Common/xTools.h \
     Source/Common/CommonUI/xToolsAffixesComboBox.h \
     Source/Common/CommonUI/xToolsBaudRateComboBox.h \
     Source/Common/CommonUI/xToolsCheckBox.h \
