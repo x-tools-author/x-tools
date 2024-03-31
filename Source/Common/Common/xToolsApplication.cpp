@@ -1,4 +1,4 @@
-/***************************************************************************************************
+﻿/***************************************************************************************************
  * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
@@ -41,7 +41,7 @@ xToolsApplication::xToolsApplication(int argc, char *argv[])
 
     m_languageFlagNameMap.insert("zh_CN", "简体中文");
     m_languageFlagNameMap.insert("en", "English");
-#if 0
+#if 0 
   m_languageFlagNameMap.insert("zh_TW", "繁體中文");
   m_languageFlagNameMap.insert("ar", "العربية");
   m_languageFlagNameMap.insert("cs", "Čeština");
