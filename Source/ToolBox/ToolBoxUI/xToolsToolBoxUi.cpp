@@ -259,7 +259,9 @@ void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bo
     }
 
     info = QString("<font color=silver>%2</font>").arg(info);
-    ui->textBrowserOutput->append(info + " " + str);
+    info = info + " " + str;
+    m_toolBox->getStorerTool()->inputBytes(info.toUtf8());
+    ui->textBrowserOutput->append(info);
 }
 
 QString xToolsToolBoxUi::settingsGroup()

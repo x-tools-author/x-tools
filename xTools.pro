@@ -40,6 +40,13 @@ DEFINES += X_TOOLS_DEFAULT_APP_STYLE=\"\\\"Fusion\\\"\"
 DEFINES += X_TOOLS_GITHUB_REPOSITORY_URL=\"\\\"https://github.com/x-tools-author/x-tools\\\"\"
 DEFINES += X_TOOLS_GITEE_REPOSITORY_URL=\"\\\"https://gitee.com/x-tools-author/x-tools\\\"\"
 
+exists (./.git) {
+    GIT_COMMIT   = $$system(git rev-parse HEAD)
+    GIT_TIME     = $$system(git log -1 --format="%cd")
+    DEFINES += X_TOOLS_GIT_COMMIT=\"\\\"$${GIT_COMMIT}\\\"\"
+    DEFINES += X_TOOLS_GIT_COMMIT_TIME=\"\\\"$${GIT_TIME}\\\"\"
+}
+
 #---------------------------------------------------------------------------------------------------
 # Output directory
 UI_DIR      = $$OUT_PWD/ui

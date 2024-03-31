@@ -24,12 +24,12 @@ protected:
     virtual void run() final;
 
 private:
-    int mFrames{0};
-    int mBytes{0};
+    int m_frames{0};
+    int m_bytes{0};
 
 private:
-    int frames() { return mFrames; }
-    int bytes() { return mBytes; }
+    int frames() { return m_frames; }
+    int bytes() { return m_bytes; }
 
 signals:
     void framesChanged(int frames);

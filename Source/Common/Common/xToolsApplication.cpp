@@ -242,8 +242,7 @@ QString xToolsApplication::buildDateTime(const QString &format)
 {
     QString str = QString(__DATE__);
     str = str.replace(QString("  "), " 0");
-    str = QLocale(QLocale::English).toDateTime(str, "MMM dd yyyy").toString(format);
-    return str;
+    return QLocale(QLocale::English).toDateTime(str, "MMM dd yyyy").toString(format);
 }
 
 QString xToolsApplication::systemDateFormat()

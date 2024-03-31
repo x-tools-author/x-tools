@@ -12,21 +12,21 @@ xToolsStatisticianTool::xToolsStatisticianTool(QObject *parent)
     : xToolsBaseTool{parent}
 {
     connect(this, &xToolsStatisticianTool::started, this, [=]() {
-        this->mFrames = 0;
-        this->mBytes = 0;
+        this->m_frames = 0;
+        this->m_bytes = 0;
 
-        emit framesChanged(this->mFrames);
-        emit bytesChanged(this->mBytes);
+        emit framesChanged(this->m_frames);
+        emit bytesChanged(this->m_bytes);
     });
 }
 
 void xToolsStatisticianTool::inputBytes(const QByteArray &bytes)
 {
-    mFrames += 1;
-    emit framesChanged(mFrames);
+    m_frames += 1;
+    emit framesChanged(m_frames);
 
-    mBytes += bytes.length();
-    emit bytesChanged(mBytes);
+    m_bytes += bytes.length();
+    emit bytesChanged(m_bytes);
 }
 
 void xToolsStatisticianTool::run()

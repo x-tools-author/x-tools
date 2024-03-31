@@ -84,15 +84,16 @@ void xToolsToolBox::initialize(int type)
     }
 
     // clang-format off
+    connect(m_comunicator, &xToolsCommunicationTool::bytesRead, m_rxCounter, &xToolsStatisticianTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::bytesRead, m_rxVelometer, &xToolsVelometerTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::bytesWritten, m_txCounter, &xToolsStatisticianTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::bytesWritten, m_txVelometer, &xToolsVelometerTool::inputBytes);
     // communicator->responser,txCounter,txVelometer,storer,serialPortTransmitter,udpTransmitter,tcpTransmitter
-    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_responser, &xToolsResponserTool::inputBytes);
-    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_txCounter, &xToolsStatisticianTool::inputBytes);
-    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_txVelometer, &xToolsVelometerTool::inputBytes);
-    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_storer, &xToolsStorerTool::inputBytes);
-    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_serialPortTransmitter, &xToolsSerialPortTransmitterTool::inputBytes);
-    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_udpTransmitter, &xToolsUdpTransmitterTool::inputBytes);
-    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_tcpTransmitter, &xToolsTcpTransmitterTool::inputBytes);
-    connect(m_comunicator, &xToolsCommunicationTool::outputBytes, m_webSocketTransmitter, &xToolsWebSocketTransmitterTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::bytesRead, m_responser, &xToolsResponserTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::bytesRead, m_serialPortTransmitter, &xToolsSerialPortTransmitterTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::bytesRead, m_udpTransmitter, &xToolsUdpTransmitterTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::bytesRead, m_tcpTransmitter, &xToolsTcpTransmitterTool::inputBytes);
+    connect(m_comunicator, &xToolsCommunicationTool::bytesRead, m_webSocketTransmitter, &xToolsWebSocketTransmitterTool::inputBytes);
     // emiiter,responser,prestorer->communicator
     connect(m_emitter, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsCommunicationTool::inputBytes);
     connect(m_responser, &xToolsBaseTool::outputBytes, m_comunicator, &xToolsCommunicationTool::inputBytes);

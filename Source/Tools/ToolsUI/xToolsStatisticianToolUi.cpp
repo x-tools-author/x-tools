@@ -23,18 +23,10 @@ xToolsStatisticianToolUi::~xToolsStatisticianToolUi()
     delete ui;
 }
 
-void xToolsStatisticianToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsStatisticianToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
+                                                       const QString &settingsGroup)
 {
     Q_UNUSED(settingsGroup)
-
-    if (!tool) {
-        return;
-    }
-
-    if (!tool->inherits("SAKStatisticianTool")) {
-        return;
-    }
-
     auto cookedTool = qobject_cast<xToolsStatisticianTool *>(tool);
     if (!cookedTool) {
         return;

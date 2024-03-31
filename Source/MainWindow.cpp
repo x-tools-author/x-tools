@@ -211,14 +211,12 @@ void MainWindow::initLanguageMenu() {}
 void MainWindow::initHelpMenu()
 {
     m_helpMenu->addSeparator();
-    m_helpMenu->addAction(/*QIcon(":/Resources/Icons/GitHub.svg"),*/
-                          tr("Get Sources from Github"),
-                          this,
-                          []() { QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL)); });
-    m_helpMenu->addAction(/*QIcon(":/Resources/Icons/Gitee.svg"),*/
-                          tr("Get Sources from Gitee"),
-                          this,
-                          []() { QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL)); });
+    m_helpMenu->addAction(tr("Get Sources from Github"), this, []() {
+        QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL));
+    });
+    m_helpMenu->addAction(tr("Get Sources from Gitee"), this, []() {
+        QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL));
+    });
     m_helpMenu->addSeparator();
 #if 0
     m_helpMenu->addAction(tr("About xTools"), this, &MainWindow::aboutSoftware);
@@ -235,13 +233,8 @@ void MainWindow::initHelpMenu()
 #endif
 #endif
     m_helpMenu->addSeparator();
-    m_helpMenu->addAction(tr("Release History"),
-                          this,
-                          &MainWindow::showHistory);
-    m_helpMenu->addAction(/*QIcon(":/Resources/Icons/IconQQ.svg"),*/
-                          tr("Join in QQ Group"),
-                          this,
-                          &MainWindow::showQrCode);
+    m_helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
+    m_helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
 }
 
 void MainWindow::initLinksMenu()

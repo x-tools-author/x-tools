@@ -308,17 +308,18 @@ void xToolsMainWindow::onAboutActionTriggered()
 {
     QString year = xToolsApplication::buildDateTime("yyyy");
     QString info;
-    info += windowTitle() + QString("") + tr("(A Part of xTools Project)");
+    info += windowTitle() + QString(" ") + tr("(A Part of xTools Project)");
     info += "\n\n";
 #ifdef X_TOOLS_GIT_COMMIT
-    info += tr("Commit: ") + X_TOOLS_GIT_COMMIT;
+    info += tr("Commit") + ": " + X_TOOLS_GIT_COMMIT;
     info += "\n\n";
 #endif
 #ifdef X_TOOLS_GIT_COMMIT_TIME
-    info += tr("Date: ") + X_TOOLS_GIT_COMMIT_TIME;
+    info += tr("Date") + ": " + X_TOOLS_GIT_COMMIT_TIME;
     info += "\n\n";
 #endif
-    info += tr("© 2018-%1 x-tools-author(x-tools@outlook.com). All rights reserved.").arg(year);
+    info += QString("© 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year)
+            + tr("All rights reserved.");
     QMessageBox::about(this, tr("About"), info);
 }
 
