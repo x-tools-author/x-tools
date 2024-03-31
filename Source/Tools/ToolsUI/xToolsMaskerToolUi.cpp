@@ -9,6 +9,8 @@
 #include "xToolsMaskerToolUi.h"
 #include "ui_xToolsMaskerToolUi.h"
 
+#include <QDebug>
+
 #include "xToolsMaskerTool.h"
 
 xToolsMaskerToolUi::xToolsMaskerToolUi(QWidget *parent)

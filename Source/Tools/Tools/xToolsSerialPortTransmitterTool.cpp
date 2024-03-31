@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "xToolsSerialPortTransmitterTool.h"
 
+#include <QDebug>
+
 #include "xToolsCompatibility.h"
 #include "xToolsSerialPortTool.h"
 

@@ -33,6 +33,4 @@ private:
     void onComboBoxServerIpActived();
     void onSpinBoxServerPortValueChanged(int value);
     void onComboBoxClientsIndexChanged();
-    void onComboBoxMessageTypeIndexChanged();
-    void onCheckBoxSpecifyIpAndPortClicked();
-};
+    void onComboBoxMessageTypeIndexChanged();};

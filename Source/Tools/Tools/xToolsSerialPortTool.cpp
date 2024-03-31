@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "xToolsSerialPortTool.h"
 
+#include <QDebug>
+
 #include "xToolsCompatibility.h"
 
 xToolsSerialPortTool::xToolsSerialPortTool(QObject *parent)

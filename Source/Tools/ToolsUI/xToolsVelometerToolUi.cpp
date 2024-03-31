@@ -9,6 +9,8 @@
 #include "xToolsVelometerToolUi.h"
 #include "ui_xToolsVelometerToolUi.h"
 
+#include <QDebug>
+
 #include "xToolsVelometerTool.h"
 
 xToolsVelometerToolUi::xToolsVelometerToolUi(QWidget *parent)

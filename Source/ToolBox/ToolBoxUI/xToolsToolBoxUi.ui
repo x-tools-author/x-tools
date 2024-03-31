@@ -64,7 +64,7 @@
            <number>0</number>
           </property>
           <property name="topMargin">
-           <number>9</number>
+           <number>4</number>
           </property>
           <property name="rightMargin">
            <number>0</number>
@@ -127,7 +127,7 @@
            <number>0</number>
           </property>
           <property name="topMargin">
-           <number>9</number>
+           <number>4</number>
           </property>
           <property name="rightMargin">
            <number>0</number>
@@ -272,7 +272,7 @@
            <number>0</number>
           </property>
           <property name="topMargin">
-           <number>9</number>
+           <number>4</number>
           </property>
           <property name="rightMargin">
            <number>0</number>
@@ -550,14 +550,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>xToolsTextFormatComboBox</class>
-   <extends>QComboBox</extends>
-   <header location="global">xToolsTextFormatComboBox.h</header>
-  </customwidget>
-  <customwidget>
    <class>xToolsCheckBox</class>
    <extends>QCheckBox</extends>
    <header location="global">xToolsCheckBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsTextFormatComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsTextFormatComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>xToolsComboBox</class>

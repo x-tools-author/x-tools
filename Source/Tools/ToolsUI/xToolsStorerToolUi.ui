@@ -94,12 +94,19 @@
       <item row="3" column="0">
        <widget class="QLabel" name="label_14">
         <property name="text">
-         <string>Saving file path</string>
+         <string>Output file</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1" colspan="2">
-       <widget class="xToolsLineEdit" name="lineEditStorerPath"/>
+       <widget class="xToolsLineEdit" name="lineEditStorerPath">
+        <property name="text">
+         <string notr="true"/>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -108,11 +115,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>xToolsTextFormatComboBox</class>
-   <extends>QComboBox</extends>
-   <header location="global">xToolsTextFormatComboBox.h</header>
-  </customwidget>
-  <customwidget>
    <class>xToolsCheckBox</class>
    <extends>QCheckBox</extends>
    <header location="global">xToolsCheckBox.h</header>
@@ -120,7 +122,12 @@
   <customwidget>
    <class>xToolsLineEdit</class>
    <extends>QLineEdit</extends>
-   <header location="global">xToolsLineEdit.h</header>
+   <header>xToolsLineEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsTextFormatComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsTextFormatComboBox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

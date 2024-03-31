@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "xToolsTransmitterTool.h"
 
+#include <QDebug>
 #include <QTimer>
 
 xToolsTransmitterTool::xToolsTransmitterTool(QObject *parent)

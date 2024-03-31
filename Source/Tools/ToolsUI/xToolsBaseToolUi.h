@@ -17,15 +17,12 @@ class xToolsBaseToolUi : public QWidget
 public:
     explicit xToolsBaseToolUi(QWidget *parent = nullptr);
 
-    void initialize(xToolsBaseTool *tool,
-                    const QString &settingsGroup,
-                    const char *loggingCategory = nullptr);
+    void initialize(xToolsBaseTool *tool, const QString &settingsGroup);
 
 protected:
     virtual void onIsWorkingChanged(bool isWorking);
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup);
 
 protected:
-    QLoggingCategory *mLoggingCategory{nullptr};
     xToolsBaseTool *m_tool{nullptr};
 };

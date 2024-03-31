@@ -9,6 +9,7 @@
 #include "xToolsTableModelToolUi.h"
 #include "ui_xToolsTableModelToolUi.h"
 
+#include <QDebug>
 #include <QFile>
 #include <QFileDialog>
 #include <QJsonArray>

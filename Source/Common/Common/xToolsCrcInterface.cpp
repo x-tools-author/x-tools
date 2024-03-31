@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "xToolsCrcInterface.h"
 
+#include <QDebug>
 #include <QMetaEnum>
 
 xToolsCrcInterface::xToolsCrcInterface(QObject *parent)

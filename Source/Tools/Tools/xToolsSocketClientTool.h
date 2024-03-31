@@ -53,7 +53,7 @@ public:
 protected:
     QString m_clientIp;
     int m_clientPort;
-    bool m_specifyClientIpPort;
+    bool m_specifyClientIpPort{true};
     QString m_serverIp;
     int m_serverPort;
     QString m_bindingIpPort;

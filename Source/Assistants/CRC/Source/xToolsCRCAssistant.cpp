@@ -10,6 +10,7 @@
 #include "ui_xToolsCRCAssistant.h"
 
 #include <QComboBox>
+#include <QDebug>
 #include <QDesktopServices>
 #include <QMetaEnum>
 

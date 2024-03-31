@@ -96,6 +96,7 @@ INCLUDEPATH += Source/Assistants/FileCheck/Source
 INCLUDEPATH += Source/Assistants/Number/Source
 INCLUDEPATH += Source/Assistants/Ping/Source
 INCLUDEPATH += Source/Assistants/String/Source
+INCLUDEPATH += Source/Assistants/FileMerge/Source
 INCLUDEPATH += Source/Common/Common
 INCLUDEPATH += Source/Common/CommonUI
 INCLUDEPATH += Source/Tools/Tools
@@ -120,6 +121,7 @@ SOURCES += \
     Source/Assistants/CRC/Source/xToolsCRCAssistant.cpp \
     Source/Assistants/FileCheck/Source/xToolsCryptographicHashCalculator.cpp \
     Source/Assistants/FileCheck/Source/xToolsFileCheckAssistant.cpp \
+    Source/Assistants/FileMerge/Source/xToolsFileMergeAssistant.cpp \
     Source/Assistants/Number/Source/xToolsNumberAssistant.cpp \
     Source/Assistants/Ping/Source/xToolsPingAssistant.cpp \
     Source/Assistants/String/Source/xToolsStringAssistant.cpp \
@@ -225,6 +227,7 @@ HEADERS += \
     Source/Assistants/CRC/Source/xToolsCRCAssistant.h \
     Source/Assistants/FileCheck/Source/xToolsCryptographicHashCalculator.h \
     Source/Assistants/FileCheck/Source/xToolsFileCheckAssistant.h \
+    Source/Assistants/FileMerge/Source/xToolsFileMergeAssistant.h \
     Source/Assistants/Number/Source/xToolsNumberAssistant.h \
     Source/Assistants/Ping/Source/xToolsPingAssistant.h \
     Source/Assistants/String/Source/xToolsStringAssistant.h \
@@ -328,6 +331,7 @@ FORMS += \
     Source/Assistants/Broadcast/Source/xToolsBroadcastAssistant.ui \
     Source/Assistants/CRC/Source/xToolsCRCAssistant.ui \
     Source/Assistants/FileCheck/Source/xToolsFileCheckAssistant.ui \
+    Source/Assistants/FileMerge/Source/xToolsFileMergeAssistant.ui \
     Source/Assistants/Number/Source/xToolsNumberAssistant.ui \
     Source/Assistants/Ping/Source/xToolsPingAssistant.ui \
     Source/Assistants/String/Source/xToolsStringAssistant.ui \

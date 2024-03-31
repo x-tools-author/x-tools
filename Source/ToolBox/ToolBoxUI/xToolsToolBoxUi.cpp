@@ -10,6 +10,7 @@
 #include "ui_xToolsToolBoxUi.h"
 
 #include <QDateTime>
+#include <QDebug>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>

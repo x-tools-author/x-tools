@@ -11,6 +11,7 @@
 #include <QAction>
 #include <QActionGroup>
 #include <QApplication>
+#include <QDebug>
 #include <QDesktopServices>
 #include <QFile>
 #include <QFileDialog>
@@ -144,7 +145,7 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
         action->setCheckable(true);
         m_appStyleActionGroup->addAction(action);
 
-        if (key == style) {
+        if (key == style || key.toLower() == style) {
             action->setChecked(true);
         }
 

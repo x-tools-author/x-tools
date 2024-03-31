@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "xToolsToolBox.h"
 
+#include <QDebug>
+
 #include "xToolsToolFactory.h"
 
 xToolsToolBox::xToolsToolBox(QObject* parent)

@@ -9,6 +9,8 @@
 #include "xToolsSerialPortToolUi.h"
 #include "ui_xToolsSerialPortToolUi.h"
 
+#include <QDebug>
+
 #include "xToolsSerialPortTool.h"
 
 xToolsSerialPortToolUi::xToolsSerialPortToolUi(QWidget *parent)

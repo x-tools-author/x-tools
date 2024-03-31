@@ -9,6 +9,7 @@
 #include "xToolsSocketClientToolUi.h"
 #include "ui_xToolsSocketClientToolUi.h"
 
+#include <QDebug>
 #include <QMessageBox>
 
 #include "xToolsSocketClientTool.h"
@@ -35,10 +36,6 @@ xToolsSocketClientToolUi::xToolsSocketClientToolUi(QWidget *parent)
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
             &xToolsSocketClientToolUi::onSpinBoxServerPortValueChanged);
-    connect(ui->checkBoxSpecifyIpAndPort,
-            &QCheckBox::clicked,
-            this,
-            &xToolsSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked);
     connect(ui->checkBoxAuthentication,
             &QCheckBox::clicked,
             this,
@@ -63,7 +60,6 @@ void xToolsSocketClientToolUi::onIsWorkingChanged(bool isWorking)
 {
     ui->comboBoxClientAddress->setEnabled(!isWorking);
     ui->spinBoxClientPort->setEnabled(!isWorking);
-    ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
 }
 
 void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
@@ -92,7 +88,6 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
 
     ui->comboBoxClientAddress->setGroupKey(settingsGroup, "clientAddress");
     ui->spinBoxClientPort->setGroupKey(settingsGroup, "clientPort");
-    ui->checkBoxSpecifyIpAndPort->setGroupKey(settingsGroup, "specifyIpAndPort");
     ui->comboBoxServerAddress->setGroupKey(settingsGroup, "serverAddress");
     ui->spinBoxServerPort->setGroupKey(settingsGroup, "serverPort");
     ui->comboBoxMessageType->setGroupKey(settingsGroup, "messageType");
@@ -104,15 +99,6 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
     m_tool->setClientPort(ui->spinBoxClientPort->value());
     m_tool->setServerIp(ui->comboBoxServerAddress->currentText().trimmed());
     m_tool->setServerPort(ui->spinBoxServerPort->value());
-    m_tool->setSpecifyClientIpPort(ui->checkBoxSpecifyIpAndPort->isChecked());
-
-    connect(m_tool, &xToolsSocketClientTool::bindingIpPortChanged, this, [=]() {
-        QString ipport = m_tool->bindingIpPort();
-        ui->labelContext->setText(ipport);
-    });
-    connect(m_tool, &xToolsSocketClientTool::finished, this, [=]() {
-        ui->labelContext->setText(tr("Closed"));
-    });
 }
 
 void xToolsSocketClientToolUi::onComboBoxClientAddressActivated()
@@ -142,14 +128,6 @@ void xToolsSocketClientToolUi::onSpinBoxServerPortValueChanged(int value)
 {
     if (m_tool) {
         m_tool->setServerPort(value);
-    }
-}
-
-void xToolsSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked()
-{
-    if (m_tool) {
-        bool checked = ui->checkBoxSpecifyIpAndPort->isChecked();
-        m_tool->setSpecifyClientIpPort(checked);
     }
 }
 

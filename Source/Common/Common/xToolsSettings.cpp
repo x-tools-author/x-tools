@@ -9,6 +9,7 @@
 #include "xToolsSettings.h"
 
 #include <QApplication>
+#include <QDebug>
 #include <QDesktopServices>
 #include <QStandardPaths>
 #include <QStyle>

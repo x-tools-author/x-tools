@@ -10,6 +10,7 @@
 
 #include <QMutex>
 #include <QTimer>
+#include <QVariant>
 
 #include "xToolsBaseTool.h"
 

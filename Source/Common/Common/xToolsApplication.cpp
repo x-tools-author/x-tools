@@ -31,6 +31,7 @@
 #include <QTranslator>
 
 #include "xTools.h"
+#include "xToolsDataStructure.h"
 #include "xToolsSettings.h"
 
 xToolsApplication::xToolsApplication(int argc, char *argv[])
@@ -142,7 +143,6 @@ void xToolsApplication::setValidator(QLineEdit *target, int validatorType, int m
 {
     static QMap<int, QRegularExpressionValidator *> regularExpressionMap;
     if (regularExpressionMap.isEmpty()) {
-        QRegularExpressionValidator *noneRE = nullptr;
         QRegularExpressionValidator *urf8Validator = nullptr;
         QRegularExpressionValidator *systemValidator = nullptr;
 
@@ -241,12 +241,9 @@ QString xToolsApplication::hexStringToString(const QString &str)
 QString xToolsApplication::buildDateTime(const QString &format)
 {
     QString str = QString(__DATE__);
-    QDate date = QDate::fromString(str, "MMM d yyyy");
-    if (!date.isValid()) {
-        date = QDate::fromString(str, "MMM  d yyyy");
-    }
-    QTime time = QTime::fromString(__TIME__, "hh:mm:ss");
-    return QDateTime(date, time).toString(format);
+    str = str.replace(QString("  "), " 0");
+    str = QLocale(QLocale::English).toDateTime(str, "MMM dd yyyy").toString(format);
+    return str;
 }
 
 QString xToolsApplication::systemDateFormat()

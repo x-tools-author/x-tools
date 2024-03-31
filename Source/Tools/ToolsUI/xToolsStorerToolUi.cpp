@@ -9,6 +9,7 @@
 #include "xToolsStorerToolUi.h"
 #include "ui_xToolsStorerToolUi.h"
 
+#include <QDebug>
 #include <QFileDialog>
 #include <QLineEdit>
 

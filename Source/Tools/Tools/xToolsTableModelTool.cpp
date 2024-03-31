@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "xToolsTableModelTool.h"
 
+#include <QDebug>
 #include <QJsonArray>
 #include <QJsonDocument>
 

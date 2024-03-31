@@ -9,6 +9,7 @@
 #include "xToolsBaseTool.h"
 
 #include <QDateTime>
+#include <QDebug>
 #include <QtGlobal>
 
 xToolsBaseTool::xToolsBaseTool(QObject *parent)

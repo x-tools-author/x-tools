@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "xToolsTransmitterToolUi.h"
 
+#include <QDebug>
+
 #include "xToolsTransmitterTool.h"
 
 xToolsTransmitterToolUi::xToolsTransmitterToolUi(QWidget *parent)

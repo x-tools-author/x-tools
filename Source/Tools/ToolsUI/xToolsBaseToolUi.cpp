@@ -9,13 +9,13 @@
 #include "xToolsBaseToolUi.h"
 #include "xToolsBaseTool.h"
 
+#include <QDebug>
+
 xToolsBaseToolUi::xToolsBaseToolUi(QWidget *parent)
     : QWidget{parent}
 {}
 
-void xToolsBaseToolUi::initialize(xToolsBaseTool *tool,
-                                  const QString &settingsGroup,
-                                  const char *loggingCategory)
+void xToolsBaseToolUi::initialize(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     m_tool = tool;
     if (!tool) {

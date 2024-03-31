@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>162</width>
-    <height>202</height>
+    <width>172</width>
+    <height>140</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,6 +26,19 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
+   <item row="1" column="1">
+    <widget class="xToolsSpinBox" name="spinBoxServerPort">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>65535</number>
+     </property>
+     <property name="value">
+      <number>55555</number>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="sizePolicy">
@@ -39,6 +52,13 @@
      </property>
     </widget>
    </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="QPushButton" name="pushButtonClear">
+     <property name="text">
+      <string>Disconnect all clients</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="1">
     <widget class="xToolsIpComboBox" name="comboBoxServerIp">
      <property name="sizePolicy">
@@ -46,6 +66,28 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="comboBoxClientList">
+     <item>
+      <property name="text">
+       <string>All clients</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Selected client</string>
      </property>
     </widget>
    </item>
@@ -62,43 +104,6 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="xToolsSpinBox" name="spinBoxServerPort">
-     <property name="maximum">
-      <number>65535</number>
-     </property>
-     <property name="value">
-      <number>55555</number>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="xToolsCheckBox" name="checkBoxSpecifyIpAndPort">
-     <property name="text">
-      <string>Specify ip and port</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="labelCntext">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Binding</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLabel" name="labelBindingInfo">
-     <property name="text">
-      <string>(closed)</string>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="0">
     <widget class="QLabel" name="labelMessageType">
      <property name="sizePolicy">
@@ -108,50 +113,16 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>Message</string>
+      <string>Message type</string>
      </property>
     </widget>
    </item>
    <item row="4" column="1">
     <widget class="xToolsWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
    </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Target</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QComboBox" name="comboBoxClientList">
-     <item>
-      <property name="text">
-       <string>All clients</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QPushButton" name="pushButtonClear">
-     <property name="text">
-      <string>Clear</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>xToolsCheckBox</class>
-   <extends>QCheckBox</extends>
-   <header location="global">xToolsCheckBox.h</header>
-  </customwidget>
   <customwidget>
    <class>xToolsSpinBox</class>
    <extends>QSpinBox</extends>

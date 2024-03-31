@@ -42,7 +42,7 @@ public:
 protected:
     QString m_serverIp;
     int m_serverPort;
-    bool m_specifyIpAndPort;
+    bool m_specifyIpAndPort{true};
     QStringList m_clients;
     int m_clientIndex;
     QString m_bindingIpPort;

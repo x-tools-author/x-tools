@@ -9,9 +9,11 @@
 #pragma once
 
 #include <QApplication>
+#include <QDebug>
 #include <QDir>
 #include <QFile>
 #include <QMetaEnum>
+#include <QStyle>
 #include <QStyleFactory>
 
 #include "xToolsApplication.h"
@@ -149,10 +151,11 @@ static void xToolsInitAppStyle()
     const QStringList keys = QStyleFactory::keys();
     qInfo() << "The supported application styles are:" << qPrintable(keys.join(QChar(',')));
     const QString style = xToolsSettings::instance()->appStyle();
+    qInfo() << "The current style of application is:" << qPrintable(style);
     if (style.isEmpty()) {
         qWarning() << "The application style is not specified, the default style is:"
                    << qPrintable(QApplication::style()->objectName());
-    } else if (keys.contains(style)) {
+    } else if (keys.contains(style) || keys.contains(style.toLower())) {
         qInfo() << "The current style of application is:" << qPrintable(style);
         QApplication::setStyle(QStyleFactory::create(style));
     }

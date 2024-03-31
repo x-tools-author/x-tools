@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "xToolsAnalyzerTool.h"
 
+#include <QDebug>
+
 #include "xToolsCompatibility.h"
 
 xToolsAnalyzerTool::xToolsAnalyzerTool(QObject *parent)

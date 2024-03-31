@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "xToolsSocketClientTransmitterTool.h"
 
+#include <QDebug>
+
 #include "xToolsSocketClientTool.h"
 
 xToolsSocketClientTransmitterTool::xToolsSocketClientTransmitterTool(QObject *parent)

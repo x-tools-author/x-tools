@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "xToolsCommunicationTool.h"
 
+#include <QDebug>
 #include <QTimer>
 
 xToolsCommunicationTool::xToolsCommunicationTool(QObject *parent)

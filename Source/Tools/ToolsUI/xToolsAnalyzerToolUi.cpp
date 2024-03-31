@@ -9,6 +9,8 @@
 #include "xToolsAnalyzerToolUi.h"
 #include "ui_xToolsAnalyzerToolUi.h"
 
+#include <QDebug>
+
 #include "xToolsAnalyzerTool.h"
 #include "xToolsDataStructure.h"
 #include "xToolsApplication.h"
