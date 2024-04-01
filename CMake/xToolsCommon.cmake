@@ -21,6 +21,7 @@ function(x_tools_add_third_party zip_file_name_without_suffix)
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${zip_file_name_without_suffix}.zip
                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty)
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/${zip_file_name_without_suffix})
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/${zip_file_name_without_suffix})
 endfunction()
 
 function(x_tools_copy_glog target)

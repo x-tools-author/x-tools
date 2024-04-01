@@ -28,7 +28,8 @@ private:
         AssistantTypeBase64,
         AssistantTypeMdns,
         AssistantTypePing,
-        AssistantTypeFileMerge
+        AssistantTypeFileMerge,
+        AssistantTypeQRCode
     };
 
 public:
