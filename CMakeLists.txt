@@ -126,6 +126,7 @@ x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
 
+target_link_libraries(xTools PRIVATE qrencode)
 target_link_libraries(xTools PRIVATE glog::glog)
 target_link_libraries(xTools PRIVATE qmdnsengine)
 target_link_libraries(xTools PRIVATE xToolsCommon)
