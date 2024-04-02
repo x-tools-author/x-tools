@@ -12,6 +12,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+LIBS += -L$$[QT_INSTALL_LIBS]
+
 #---------------------------------------------------------------------------------------------------
 # Application information
 X_TOOLS_APP_NAME        = "xTools"
