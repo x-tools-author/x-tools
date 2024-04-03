@@ -47,7 +47,7 @@ public:
     Q_INVOKABLE static QString dateTimeString(const QString &format);
     Q_INVOKABLE static QString stringToHexString(const QString &str);
     Q_INVOKABLE static QString hexStringToString(const QString &str);
-    Q_INVOKABLE static QString buildDateTime(const QString &format);
+    Q_INVOKABLE static QString buildDateTimeString(const QString &format);
     Q_INVOKABLE static QString systemDateFormat();
     Q_INVOKABLE static QString systemTimeFormat();
     Q_INVOKABLE static QString desktopPath();

@@ -46,8 +46,6 @@ private:
     QActionGroup* m_appPaletteActionGroup;
 
 private:
-    void init();
-    void initMenu();
     void initMenuFile();
     void initMenuOption();
     void initMenuLanguage();
@@ -59,9 +57,6 @@ private:
     void initOptionMenuHdpiPolicy();
 
     void onHdpiPolicyActionTriggered(int policy);
-    void onGithubActionTriggered();
-    void onGiteeActionTriggered();
-    void onUserQqGroupTriggerd();
     void onAboutActionTriggered();
     void onImportActionTriggered();
     void onExportActionTriggered();

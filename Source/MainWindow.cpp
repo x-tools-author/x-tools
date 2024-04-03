@@ -112,12 +112,13 @@ void MainWindow::initMenuBar()
 #ifdef Q_OS_WIN
 void MainWindow::closeEvent(QCloseEvent* event)
 {
-    auto key = m_settingsKey.exitToSystemTray;
-    bool ignore = xToolsSettings::instance()->value(key).toBool();
-    if (ignore) {
-        this->hide();
+    if (xToolsSettings::instance()->value(m_settingsKey.exitToSystemTray).toBool()) {
+        close();
         event->ignore();
+        return;
     }
+
+    QMainWindow::closeEvent(event);
 }
 #endif
 
@@ -423,7 +424,7 @@ void MainWindow::aboutSoftware()
 
     QString format = QLocale::system().dateFormat();
     format = format + " " + QLocale::system().timeFormat();
-    QString dateTimeString = xToolsApplication::buildDateTime(format);
+    QString dateTimeString = xToolsApplication::buildDateTimeString(format);
     QList<Info> infoList;
     infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
 #ifndef SAK_RELEASE_FOR_APP_STORE
@@ -445,7 +446,7 @@ void MainWindow::aboutSoftware()
              << Info{tr("Copyright"),
                      tr("Copyright 2018-%1 x-tools-author(x-tools@outlook.com)."
                         " All rights reserved.")
-                         .arg(xToolsApplication::buildDateTime("yyyy")),
+                         .arg(xToolsApplication::buildDateTimeString("yyyy")),
                      false};
 
     QDialog dialog(this);

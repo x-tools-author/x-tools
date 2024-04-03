@@ -24,40 +24,35 @@
 #include <QScreen>
 #include <QStyle>
 #include <QStyleFactory>
+#include <QTimer>
 #include <QUrl>
 
 #include "xToolsApplication.h"
 #include "xToolsSettings.h"
 
+#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#include "xToolsDataStructure.h"
+#endif
+
 xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
-    m_xToolsApp = qobject_cast<xToolsApplication*>(qApp);
+    m_xToolsApp = dynamic_cast<xToolsApplication*>(qApp);
     Q_ASSERT_X(m_xToolsApp, Q_FUNC_INFO, "The application is not xToolsApplication.");
 
     m_appStyleActionGroup = new QActionGroup(this);
     m_languageActionGroup = new QActionGroup(this);
     m_appPaletteActionGroup = new QActionGroup(this);
 
-    init();
+    initMenuFile();
+    initMenuOption();
+    initMenuLanguage();
+    initMenuHelp();
 }
 
 QString xToolsMainWindow::qtConfFileName()
 {
     return qApp->applicationDirPath() + "/qt.conf";
-}
-
-void xToolsMainWindow::init()
-{
-    initMenu();
-}
-
-void xToolsMainWindow::initMenu()
-{
-    initMenuFile();
-    initMenuOption();
-    initMenuLanguage();
-    initMenuHelp();
 }
 
 void xToolsMainWindow::initMenuFile()
@@ -97,10 +92,16 @@ void xToolsMainWindow::initMenuLanguage()
     m_languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(m_languageMenu);
 
-    QStringList languages = qobject_cast<xToolsApplication*>(qApp)->supportedLanguages();
+    xToolsApplication* app = dynamic_cast<xToolsApplication*>(qApp);
+    if (!app) {
+        qWarning() << "The application is not xToolsApplication.";
+        return;
+    }
+
+    QStringList languages = app->supportedLanguages();
     QString settingLanguage = xToolsSettings::instance()->language();
     for (auto& language : languages) {
-        QAction* action = new QAction(language, this);
+        auto* action = new QAction(language, this);
         action->setCheckable(true);
         m_languageMenu->addAction(action);
         m_languageActionGroup->addAction(action);
@@ -111,10 +112,9 @@ void xToolsMainWindow::initMenuLanguage()
         });
 
         if (settingLanguage.isEmpty()) {
-            settingLanguage = qobject_cast<xToolsApplication*>(qApp)->language();
-        }
-        if (settingLanguage == language) {
-            action->setChecked(true);
+            if (language == app->language()) {
+                action->setChecked(true);
+            }
         }
     }
 }
@@ -123,21 +123,14 @@ void xToolsMainWindow::initMenuHelp()
 {
     QMenuBar* menu_bar = menuBar();
     m_helpMenu = menu_bar->addMenu(tr("&Help"));
-    m_aboutAction = m_helpMenu->addAction(tr("&About"),
-                                          this,
-                                          &xToolsMainWindow::onAboutActionTriggered);
-    m_aboutQtAction = m_helpMenu->addAction(tr("About Qt"), this, [=]() {
-        QMessageBox::aboutQt(this, tr("About Qt"));
-    });
+    m_aboutAction = m_helpMenu->addAction(tr("&About"));
+    m_aboutQtAction = m_helpMenu->addAction(tr("About Qt"), qApp, &QApplication::aboutQt);
+
+    connect(m_aboutAction, &QAction::triggered, this, &xToolsMainWindow::onAboutActionTriggered);
 }
 
 void xToolsMainWindow::initOptionMenuAppStyleMenu()
 {
-    QList<QAction*> actions = m_appStyleActionGroup->actions();
-    for (auto& action : actions) {
-        m_appStyleActionGroup->removeAction(action);
-    }
-
     QMenu* appStyleMenu = new QMenu(tr("Application Style"), this);
     m_optionMenu->addMenu(appStyleMenu);
     QStringList keys = QStyleFactory::keys();
@@ -163,48 +156,41 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
 
 void xToolsMainWindow::initOptionMenuAppPaletteMenu()
 {
-    if (!m_appPaletteActionGroup->actions().isEmpty()) {
-        return;
-    }
+    const QString emptyPalette("");
     const QString darkPalette(":/Resources/Palettes/DarkPalette");
     const QString lightPalette(":/Resources/Palettes/LightPalette");
 
     QMenu* appPaletteMenu = new QMenu(tr("Application Palette"), this);
     m_optionMenu->addMenu(appPaletteMenu);
-    auto defaultAction = appPaletteMenu->addAction(tr("Default"), this, [=]() {
-        setPalette(QString(""));
-    });
-    auto darkAction = appPaletteMenu->addAction(tr("Dark"), this, [=]() {
-        setPalette(darkPalette);
-    });
-    auto lightAction = appPaletteMenu->addAction(tr("Light"), this, [=]() {
-        setPalette(lightPalette);
-    });
+    auto defaultAction = appPaletteMenu->addAction(tr("Default"));
+    connect(defaultAction, &QAction::triggered, this, [=]() { setPalette(emptyPalette); });
+    auto darkAction = appPaletteMenu->addAction(tr("Dark"));
+    connect(darkAction, &QAction::triggered, this, [=]() { setPalette(darkPalette); });
+    auto lightAction = appPaletteMenu->addAction(tr("Light"));
+    connect(lightAction, &QAction::triggered, this, [=]() { setPalette(lightPalette); });
     appPaletteMenu->addSeparator();
-    auto customAction = appPaletteMenu->addAction(tr("Import"),
-                                                  this,
-                                                  &xToolsMainWindow::onImportActionTriggered);
+    auto customAction = appPaletteMenu->addAction(tr("Import"));
+    connect(customAction, &QAction::triggered, this, &xToolsMainWindow::onImportActionTriggered);
+
     defaultAction->setCheckable(true);
     darkAction->setCheckable(true);
     lightAction->setCheckable(true);
     customAction->setCheckable(true);
-
     m_appPaletteActionGroup->addAction(defaultAction);
     m_appPaletteActionGroup->addAction(darkAction);
     m_appPaletteActionGroup->addAction(lightAction);
     m_appPaletteActionGroup->addAction(customAction);
 
+    QMap<QString, QAction*> stringActionMap;
     QString paletteFile = xToolsSettings::instance()->palette();
-    if (paletteFile.isEmpty()) {
-        defaultAction->setChecked(true);
-        customAction->setToolTip(paletteFile);
-    } else if (paletteFile == darkPalette) {
-        darkAction->setChecked(true);
-    } else if (paletteFile == lightPalette) {
-        lightAction->setChecked(true);
+    stringActionMap.insert(emptyPalette, defaultAction);
+    stringActionMap.insert(darkPalette, darkAction);
+    stringActionMap.insert(lightPalette, lightAction);
+    if (stringActionMap.contains(paletteFile)) {
+        stringActionMap.value(paletteFile)->setChecked(true);
     } else {
-        customAction->setToolTip(paletteFile);
         customAction->setChecked(true);
+        customAction->setToolTip(paletteFile);
     }
 }
 
@@ -213,25 +199,23 @@ void xToolsMainWindow::initOptionMenuSettingsMenu()
     QMenu* menu = new QMenu(tr("Settings"), this);
     m_optionMenu->addMenu(menu);
 
-    QAction* action = new QAction(tr("Clear Configuration"), this);
-    menu->addAction(action);
-    connect(action, &QAction::triggered, this, [=]() {
-        xToolsSettings::instance()->setClearSettings(true);
+    auto clearAction = new QAction(tr("Clear Settings"), this);
+    menu->addAction(clearAction);
+    connect(clearAction, &QAction::triggered, this, [=]() {
+        xToolsSettings::instance()->clear();
         tryToReboot();
     });
-    action = new QAction(tr("Open configuration floder"), this);
-    menu->addAction(action);
-    connect(action, &QAction::triggered, this, [=]() {
+
+    auto openAction = new QAction(tr("Open Settings Directory"), this);
+    menu->addAction(openAction);
+    connect(openAction, &QAction::triggered, this, [=]() {
         QString file_name = xToolsSettings::instance()->fileName();
-        QUrl file_url = QUrl(file_name);
-        QString floder_url = file_name.remove(file_url.fileName());
-        QDesktopServices::openUrl(floder_url);
+        QUrl fileUrl = QUrl(file_name);
+        QString path = file_name.remove(fileUrl.fileName());
+        QDesktopServices::openUrl(path);
     });
 }
 
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
-#include "xToolsDataStructure.h"
-#endif
 void xToolsMainWindow::initOptionMenuHdpiPolicy()
 {
 #ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
@@ -244,8 +228,9 @@ void xToolsMainWindow::initOptionMenuHdpiPolicy()
         auto action = menu->addAction(name, this, [=]() {
             onHdpiPolicyActionTriggered(policy.toInt());
         });
-        action->setCheckable(true);
+
         actionGroup->addAction(action);
+        action->setCheckable(true);
         if (policy.toInt() == currentPolicy) {
             action->setChecked(true);
         }
@@ -257,6 +242,7 @@ void xToolsMainWindow::initOptionMenuHdpiPolicy()
 
 void xToolsMainWindow::onHdpiPolicyActionTriggered(int policy)
 {
+    Q_UNUSED(policy)
 #ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
 #ifdef Q_OS_WIN
     if (policy == xToolsDataStructure::HighDpiPolicySystem) {
@@ -264,73 +250,38 @@ void xToolsMainWindow::onHdpiPolicyActionTriggered(int policy)
         tryToReboot();
         return;
     }
-#endif
 
-    if (QFile::remove(qtConfFileName())) {
-        qInfo() << qtConfFileName() << "was removed!";
-    } else {
-        qInfo() << "removed" << qtConfFileName() << "failed";
-    }
-
-    xToolsSettings::instance()->setHdpiPolicy(int(policy));
-    tryToReboot();
-#else
-    Q_UNUSED(policy)
-#endif
-}
-
-void xToolsMainWindow::onGithubActionTriggered()
-{
-    QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL));
-}
-
-void xToolsMainWindow::onGiteeActionTriggered()
-{
-    QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL));
-}
-
-void xToolsMainWindow::onUserQqGroupTriggerd()
-{
-    QPixmap pix;
-    if (!pix.load(":/Resources/Images/QSAKQQ.jpg")) {
-        qWarning() << "Can not load QSAKQQ.jpg.";
+    const QString confFileName = qtConfFileName();
+    if (QFile::exists(confFileName) && !QFile::remove(confFileName)) {
+        qWarning() << qPrintable(QString("Can not remove the file:").arg(confFileName));
         return;
     }
-
-    QLabel* label = new QLabel(this);
-    label->resize(pix.size());
-    label->setPixmap(pix);
-    QDialog dialog;
-    dialog.setLayout(new QHBoxLayout());
-    dialog.layout()->addWidget(label);
-    dialog.setModal(true);
-    dialog.exec();
+#endif
+    xToolsSettings::instance()->setHdpiPolicy(int(policy));
+    tryToReboot();
+#endif
 }
 
 void xToolsMainWindow::onAboutActionTriggered()
 {
-    QString year = xToolsApplication::buildDateTime("yyyy");
+    QString year = xToolsApplication::buildDateTimeString("yyyy");
     QString info;
-    info += windowTitle() + QString(" ") + tr("(A Part of xTools Project)");
-    info += "\n\n";
+    info += windowTitle() + QString(" ") + tr("(A Part of xTools Project)") + "\n\n";
 #ifdef X_TOOLS_GIT_COMMIT
-    info += tr("Commit") + ": " + X_TOOLS_GIT_COMMIT;
-    info += "\n\n";
+    info += tr("Commit") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
 #endif
 #ifdef X_TOOLS_GIT_COMMIT_TIME
-    info += tr("Date") + ": " + X_TOOLS_GIT_COMMIT_TIME;
-    info += "\n\n";
+    info += tr("Date") + ": " + X_TOOLS_GIT_COMMIT_TIME + "\n\n";
 #endif
-    info += QString("© 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year)
-            + tr("All rights reserved.");
+    info += QString("© 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
+    info += tr("All rights reserved.");
     QMessageBox::about(this, tr("About"), info);
 }
 
 void xToolsMainWindow::onImportActionTriggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Import"), "Palete", tr("All (*)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Import"), "Palette", tr("All (*)"));
     if (fileName.isEmpty()) {
-        qInfo() << "Importing palette had been cancled!";
         return;
     }
 
@@ -339,23 +290,23 @@ void xToolsMainWindow::onImportActionTriggered()
 
 void xToolsMainWindow::onExportActionTriggered()
 {
-    auto fileName = QFileDialog::getSaveFileName(this, tr("Export"), "Palete", tr("All (*)"));
+    auto fileName = QFileDialog::getSaveFileName(this, tr("Export"), "Palette", tr("All (*)"));
     if (fileName.isEmpty()) {
-        qInfo() << "Exporting palette had been cancled!";
         return;
     }
 
     QFile file(fileName);
-    if (!file.open(QFile::WriteOnly)) {
-        QString message = tr("Open file(%1) failed: %2").arg(fileName, file.errorString());
+    if (file.open(QFile::WriteOnly)) {
+        QPalette p = qApp->palette();
+        QDataStream out(&file);
+        out << p;
+        file.close();
+    } else {
+        const QString errorString = file.errorString();
+        QString message = tr("The operation(open file %1) failed: %2").arg(fileName, errorString);
         qWarning() << qPrintable(message);
         return;
     }
-
-    QPalette p = qApp->palette();
-    QDataStream out(&file);
-    out << p;
-    file.close();
 }
 
 void xToolsMainWindow::tryToReboot()
@@ -366,9 +317,10 @@ void xToolsMainWindow::tryToReboot()
                                        QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok) {
         QProcess::startDetached(QCoreApplication::applicationFilePath());
-
-        qApp->closeAllWindows();
-        qApp->exit();
+        QTimer::singleShot(1000, this, [=]() {
+            qApp->closeAllWindows();
+            qApp->exit();
+        });
     }
 }
 
@@ -381,8 +333,8 @@ void xToolsMainWindow::createQtConf()
         out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
         file.close();
     } else {
-        qWarning() << fileName;
-        qWarning() << "can not open file:" << file.errorString();
+        auto info = QString("Open file(%1) failed: %2").arg(fileName, file.errorString());
+        qWarning() << qPrintable(info);
     }
 }
 
@@ -391,21 +343,16 @@ void xToolsMainWindow::showQqQrCode()
     QDialog dialog;
     dialog.setWindowTitle(tr("QR Code"));
 
-    struct QrCodeInfo
-    {
-        QString title;
-        QString qrCode;
-    };
-    QList<QrCodeInfo> qrCodeInfoList;
-
+    typedef QPair<QString, QString> QrCodeInfo;
+    QList<QPair<QString, QString>> qrCodeInfoList;
     qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/Resources/Images/UserQQ.jpg")}
                    << QrCodeInfo{tr("Qt QQ Group"), QString(":/Resources/Images/QtQQ.jpg")};
 
     QTabWidget* tabWidget = new QTabWidget(&dialog);
     for (auto& var : qrCodeInfoList) {
         QLabel* label = new QLabel(tabWidget);
-        label->setPixmap(QPixmap::fromImage(QImage(var.qrCode)));
-        tabWidget->addTab(label, var.title);
+        label->setPixmap(QPixmap::fromImage(QImage(var.second)));
+        tabWidget->addTab(label, var.first);
     }
 
     QHBoxLayout* layout = new QHBoxLayout(&dialog);

@@ -238,11 +238,14 @@ QString xToolsApplication::hexStringToString(const QString &str)
     return QString::fromUtf8(arr);
 }
 
-QString xToolsApplication::buildDateTime(const QString &format)
+QString xToolsApplication::buildDateTimeString(const QString &format)
 {
-    QString str = QString(__DATE__);
-    str = str.replace(QString("  "), " 0");
-    return QLocale(QLocale::English).toDateTime(str, "MMM dd yyyy").toString(format);
+    QString dateString = QString(__DATE__);
+    QString timeString = QString(__TIME__);
+    dateString = dateString.replace(QString("  "), " 0");
+    QString dateTimeString = dateString + " " + timeString;
+    QDateTime dateTime = QLocale(QLocale::English).toDateTime(dateTimeString, "MMM dd yyyy hh:mm:ss");
+    return dateTime.toString(format);
 }
 
 QString xToolsApplication::systemDateFormat()
@@ -265,42 +268,45 @@ void xToolsApplication::setupLanguageWithPrefix(const QString &language, const Q
     QString key = m_languageFlagNameMap.key(language);
     if (language.isEmpty()) {
         key = QLocale::system().name();
-
         qWarning() << "The language is not specified, system language will be used:" << key;
     }
 
     if (!m_languageFlagNameMap.contains(key)) {
-        qWarning() << "Unsupported language, english will be used";
-
+        auto info = QString("The language(%1) isn't supported. English 'll be used.").arg(language);
+        qWarning() << qPrintable(info);
         key = "en";
     }
 
     static QMap<QString, QTranslator *> fileTranslatorMap;
+    QString fileName = QString(":/Resources/Translations/%1_%2.qm").arg(prefix, key);
     if (!fileTranslatorMap.contains(prefix)) {
         QTranslator *translator = new QTranslator();
         fileTranslatorMap.insert(prefix, translator);
     } else {
-        if (!QCoreApplication::removeTranslator(fileTranslatorMap.value(prefix))) {
-            qWarning() << "Remove translator failed:" << prefix;
-        }
+        bool ret = QCoreApplication::removeTranslator(fileTranslatorMap.value(prefix));
+        const QString status = ret ? "success" : "failed";
+        auto info = QString("The translator(%1) removing: %2.").arg(prefix, status);
+        qInfo() << qPrintable(info);
     }
 
-    QString fileName = QString(":/Resources/Translations/%1_%2.qm").arg(prefix, key);
     QTranslator *translator = fileTranslatorMap.value(prefix);
-    if (translator->load(fileName)) {
-        if (QCoreApplication::installTranslator(translator)) {
-            QString info = QString("The translator(%1) has been installed,").arg(fileName);
-            qInfo() << qPrintable(info)
-                    << "current language is:" << m_languageFlagNameMap.value(key);
-            emit languageChanged();
-        } else {
-            QString info = QString("Install translator failed, the file is: \"%1\".").arg(fileName);
-            qInfo() << qPrintable(info) << "Maybe the qm file if empty!";
-            translator->deleteLater();
-            translator = Q_NULLPTR;
-        }
+    if (!translator->load(fileName)) {
+        auto info = QString("The file(%1) can not be load to translator.").arg(fileName);
+        qWarning() << qPrintable(info);
+        return;
+    }
+
+    if (QCoreApplication::installTranslator(translator)) {
+        const QString name = m_languageFlagNameMap.value(key);
+        auto info = QString("The language(%1) has been setup, current language is:").arg(fileName);
+        qInfo() << qPrintable(info) << name;
+        emit languageChanged();
     } else {
-        qWarning() << "Load file failed: " << fileName;
+        translator->deleteLater();
+        translator = Q_NULLPTR;
+        auto info = QString("The translator(%1) install failed(qm file is empty?).").arg(fileName);
+        qInfo() << qPrintable(info);
+        return;
     }
 }
 
