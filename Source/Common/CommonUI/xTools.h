@@ -30,7 +30,7 @@
 
 #ifdef X_TOOLS_USING_GLOG
 
-static void xToolsInitGoogleLogging(char *argv0)
+static void xToolsInitGoogleLogging(char* argv0)
 {
     QString logPath = xToolsSettings::instance()->settingsPath();
     logPath += "/log";
@@ -39,8 +39,8 @@ static void xToolsInitGoogleLogging(char *argv0)
         qWarning() << "Make log directory failed";
     }
 
-    google::SetLogFilenameExtension(".log");  // The suffix of log file.
-    google::EnableLogCleaner(30);             // Keep the log file for 30 days.
+    google::SetLogFilenameExtension(".log");     // The suffix of log file.
+    google::EnableLogCleaner(30);                // Keep the log file for 30 days.
     google::SetApplicationFingerprint("xTools"); // (It seem to be no use.)
 
     fLB::FLAGS_logtostdout = false;
@@ -67,10 +67,10 @@ static void xToolsShutdownGoogleLogging()
 #endif
 
 #ifdef X_TOOLS_USING_GLOG
-static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext& context, const QString& msg)
 {
     QByteArray localMsg = msg.toUtf8();
-    const char *file = context.file ? context.file : "";
+    const char* file = context.file ? context.file : "";
     const int line = context.line;
 
     switch (type) {
@@ -90,7 +90,7 @@ static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, 
 }
 #endif
 
-static void xToolsInitApp(const QString &appName)
+static void xToolsInitApp(const QString& appName)
 {
     // Initialize some information about application.
     QString cookedAppName = appName;
@@ -161,7 +161,7 @@ static void xToolsInitAppStyle()
     }
 }
 
-static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
+static void sakDoSomethingBeforeAppCreated(char* argv[], const QString& appName)
 {
     xToolsInitApp(appName);
 #ifdef X_TOOLS_USING_GLOG
