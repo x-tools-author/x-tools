@@ -3,7 +3,7 @@
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
- * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source 
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
 #include "MainWindow.h"
@@ -56,10 +56,18 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 {
 #ifdef Q_OS_WIN
-    // Setup system tray icon.
-    auto systemTrayIcon = new SystemTrayIcon(this);
-    QObject::connect(systemTrayIcon, &SystemTrayIcon::invokeExit, this, &MainWindow::close);
-    QObject::connect(systemTrayIcon, &SystemTrayIcon::invokeShowMainWindow, this, &MainWindow::show);
+    if (QSystemTrayIcon::isSystemTrayAvailable()) {
+        auto systemTrayIcon = new SystemTrayIcon(this);
+        QObject::connect(systemTrayIcon, &SystemTrayIcon::invokeExit, this, [=]() {
+            QApplication::closeAllWindows();
+            QApplication::quit();
+        });
+        QObject::connect(systemTrayIcon,
+                         &SystemTrayIcon::invokeShowMainWindow,
+                         this,
+                         &MainWindow::show);
+        systemTrayIcon->show();
+    }
 #endif
 
     auto* stackedWidget = new QStackedWidget();
@@ -89,7 +97,7 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 }
 
-MainWindow::~MainWindow() = default;
+MainWindow::~MainWindow() {}
 
 void MainWindow::initMenuBar()
 {
@@ -259,18 +267,14 @@ void MainWindow::initLinksMenu()
              << Link{tr("Qt Official Release"),
                      QString("https://wiki.qt.io/Qt_5.15_Release"),
                      QString(":/resources/images/Qt.png")}
-             << Link{QString(""),
-                     QString(""),
-                     QString("")}
+             << Link{QString(""), QString(""), QString("")}
              << Link{tr("Download xTools from Github"),
                      QString("%1/releases").arg(X_TOOLS_GITHUB_REPOSITORY_URL),
                      QString(":/Resources/Icons/GitHub.svg")}
              << Link{tr("Download xTools from Gitee"),
                      QString("%1/releases").arg(X_TOOLS_GITEE_REPOSITORY_URL),
                      QString(":/Resources/Icons/Gitee.svg")}
-             << Link{QString(""),
-                     QString(""),
-                     QString("")}
+             << Link{QString(""), QString(""), QString("")}
              << Link{tr("Office Web Site"),
                      QString("https://qsaker.gitee.io/qsak/"),
                      QString(":/Resources/Images/I18n.png")};
@@ -450,15 +454,14 @@ void MainWindow::aboutSoftware()
     auto* gridLayout = new QGridLayout(&dialog);
     int i = 0;
     for (auto& var : infoList) {
-        auto* nameLabel = new QLabel(QString("<font color=green>%1</font>").arg(var.name),
-                                       &dialog);
+        auto* nameLabel = new QLabel(QString("<font color=green>%1</font>").arg(var.name), &dialog);
         auto* valueLabel = new QLabel(var.value, &dialog);
         gridLayout->addWidget(nameLabel, i, 0, 1, 1);
         gridLayout->addWidget(valueLabel, i, 1, 1, 1);
         i += 1;
 
         if (var.valueIsUrl) {
-            connect(valueLabel, &QLabel::linkActivated, [](const QString &url) {
+            connect(valueLabel, &QLabel::linkActivated, [](const QString& url) {
                 QDesktopServices::openUrl(QUrl(url));
             });
         }

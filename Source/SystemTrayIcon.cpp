@@ -15,8 +15,8 @@
 SystemTrayIcon::SystemTrayIcon(QObject *parent)
     : QSystemTrayIcon(parent)
 {
-    setIcon(QIcon(":/resources/images/SAKLogo.png"));
-    setToolTip(tr("Qt Swiss Army Knife"));
+    setIcon(QIcon(":/Resources/Images/Logo.png"));
+    setToolTip(tr("xTools"));
 
     QMenu *menu = new QMenu();
     menu->addAction(tr("Open main window"), this, [=]() { emit invokeShowMainWindow(); });

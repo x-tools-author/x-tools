@@ -74,7 +74,10 @@ void xToolsMainWindow::initMenuFile()
     connect(exportAction, &QAction::triggered, this, &xToolsMainWindow::onExportActionTriggered);
 
     m_fileMenu->addSeparator();
-    m_exitAction = m_fileMenu->addAction(tr("&Exit"), this, &xToolsMainWindow::close);
+    m_exitAction = m_fileMenu->addAction(tr("&Exit"), this, []() {
+        QApplication::closeAllWindows();
+        QApplication::quit();
+    });
 }
 
 void xToolsMainWindow::initMenuOption()
