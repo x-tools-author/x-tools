@@ -181,8 +181,10 @@ static void sakDoSomethingAfterAppExited()
 #endif
 }
 
-template<typename CentralWidgetT, typename MainWindowT, typename AppT>
-int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
+template<typename CentralWidgetT = QWidget,
+         typename MainWindowT = xToolsMainWindow,
+         typename AppT = xToolsApplication>
+int xToolsExec(int argc, char* argv[], const QString& appName, bool usingSpecifiedMainWindow = true)
 {
     QString cookedAppName = appName;
 #ifdef X_TOOLS_BUILD_FOR_STORE
@@ -195,8 +197,10 @@ int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonM
     app.setApplicationVersion(X_TOOLS_VERSION);
 #endif
     QSplashScreen& splashScreen = qobject_cast<xToolsApplication*>(qApp)->splashScreen();
-    if (usingCommonMainWindow) {
+    if (usingSpecifiedMainWindow) {
         MainWindowT* mainWindow = new MainWindowT();
+        bool isValidMainWindow = mainWindow->inherits("xToolsMainWindow");
+
         splashScreen.finish(mainWindow);
 
         CentralWidgetT* centralWidget = new CentralWidgetT(mainWindow);
@@ -218,13 +222,4 @@ int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonM
     int ret = app.exec();
     sakDoSomethingAfterAppExited();
     return ret;
-}
-
-template<typename T>
-int xToolsExec(int argc, char* argv[], const QString& appName, bool usingCommonMainWindow = true)
-{
-    return xToolsExec<T, xToolsMainWindow, xToolsApplication>(argc,
-                                                              argv,
-                                                              appName,
-                                                              usingCommonMainWindow);
 }
