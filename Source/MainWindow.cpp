@@ -413,66 +413,6 @@ void MainWindow::initStatusBar()
     statusBar()->showMessage("Hello world", 10 * 1000);
 }
 
-void MainWindow::aboutSoftware()
-{
-    struct Info
-    {
-        QString name;
-        QString value;
-        bool valueIsUrl;
-    };
-
-    QString format = QLocale::system().dateFormat();
-    format = format + " " + QLocale::system().timeFormat();
-    QString dateTimeString = xToolsApplication::buildDateTimeString(format);
-    QList<Info> infoList;
-    infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
-#ifndef SAK_RELEASE_FOR_APP_STORE
-             << Info{tr("Edition"), X_TOOLS_EDITION, false}
-#endif
-             << Info{tr("Author"), QString(X_TOOLS_AUTHOR), false}
-             << Info{tr("Email"), QString(X_TOOLS_AUTHOR_EMAIL), false}
-             << Info{tr("QQ"), QString("QQ:2869470394"), false}
-             << Info{tr("QQ Group"), QString("QQ:952218522"), false}
-             << Info{tr("Build Time"), dateTimeString, false}
-#ifndef SAK_RELEASE_FOR_APP_STORE
-             << Info{tr("Gitee Url"),
-                     QString("<a href=%1>%1</a>").arg(X_TOOLS_GITEE_REPOSITORY_URL),
-                     true}
-             << Info{tr("GitHub Url"),
-                     QString("<a href=%1>%1</a>").arg(X_TOOLS_GITHUB_REPOSITORY_URL),
-                     true}
-#endif
-             << Info{tr("Copyright"),
-                     tr("Copyright 2018-%1 x-tools-author(x-tools@outlook.com)."
-                        " All rights reserved.")
-                         .arg(xToolsApplication::buildDateTimeString("yyyy")),
-                     false};
-
-    QDialog dialog(this);
-    dialog.setWindowTitle(tr("About xTools"));
-
-    auto* gridLayout = new QGridLayout(&dialog);
-    int i = 0;
-    for (auto& var : infoList) {
-        auto* nameLabel = new QLabel(QString("<font color=green>%1</font>").arg(var.name), &dialog);
-        auto* valueLabel = new QLabel(var.value, &dialog);
-        gridLayout->addWidget(nameLabel, i, 0, 1, 1);
-        gridLayout->addWidget(valueLabel, i, 1, 1, 1);
-        i += 1;
-
-        if (var.valueIsUrl) {
-            connect(valueLabel, &QLabel::linkActivated, [](const QString& url) {
-                QDesktopServices::openUrl(QUrl(url));
-            });
-        }
-    }
-    dialog.setLayout(gridLayout);
-    dialog.setModal(true);
-    dialog.show();
-    dialog.exec();
-}
-
 void MainWindow::showHistory()
 {
     QDialog dialog;

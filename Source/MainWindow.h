@@ -72,7 +72,6 @@ private:
     void intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBar);
     void initStatusBar();
 
-    void aboutSoftware();
     static void showHistory();
     static void showQrCode();
 };
