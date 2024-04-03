@@ -9,10 +9,6 @@
 #include "Application.h"
 
 #include <QFile>
-#include <QRect>
-#include <QScreen>
-#include <QTextCursor>
-#include <QTranslator>
 
 #include "xToolsSettings.h"
 
@@ -24,7 +20,7 @@ Application::Application(int argc, char **argv)
 #endif
 {
     // Setup ui language.
-    QString language = xToolsSettings::instance()->language();
+    const QString language = xToolsSettings::instance()->language();
     setupLanguageWithPrefix(language, m_translatorPrefix);
     showSplashScreenMessage(tr("Initializing main window..."));
 }
@@ -32,5 +28,5 @@ Application::Application(int argc, char **argv)
 void Application::setupLanguage(const QString &language)
 {
     xToolsApplication::setupLanguage(language);
-    xToolsApplication::setupLanguageWithPrefix(language, m_translatorPrefix);
+    setupLanguageWithPrefix(language, m_translatorPrefix);
 }
