@@ -41,7 +41,7 @@ xToolsApplication::xToolsApplication(int argc, char *argv[])
 
     m_languageFlagNameMap.insert("zh_CN", "简体中文");
     m_languageFlagNameMap.insert("en", "English");
-#if 0 
+#if 0
   m_languageFlagNameMap.insert("zh_TW", "繁體中文");
   m_languageFlagNameMap.insert("ar", "العربية");
   m_languageFlagNameMap.insert("cs", "Čeština");
@@ -73,7 +73,7 @@ xToolsApplication::xToolsApplication(int argc, char *argv[])
     setupPalette(palette);
 
     // Splash screen
-    m_splashScreen.setPixmap(splashScreenPixmap());
+    m_splashScreen.setPixmap(splashScreenPixMap());
     m_splashScreen.show();
     processEvents();
     showSplashScreenMessage(tr("Initialize application..."));
@@ -188,8 +188,8 @@ QIcon xToolsApplication::cookedIcon(const QIcon &icon)
 
 QMainWindow *xToolsApplication::mainWindow()
 {
-    for (const auto& it : qobject_cast<QApplication*>(qApp)->topLevelWidgets()) {
-        auto mainWindow = qobject_cast<QMainWindow*>(it);
+    for (const auto &it : qobject_cast<QApplication *>(qApp)->topLevelWidgets()) {
+        auto mainWindow = qobject_cast<QMainWindow *>(it);
         if (mainWindow) {
             return mainWindow;
         }
@@ -304,7 +304,7 @@ void xToolsApplication::setupLanguageWithPrefix(const QString &language, const Q
     }
 }
 
-QPixmap xToolsApplication::splashScreenPixmap()
+QPixmap xToolsApplication::splashScreenPixMap()
 {
     QPixmap pixmap(600, 260);
     pixmap.fill(QColor(0x2d2d30));

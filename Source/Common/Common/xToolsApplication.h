@@ -9,9 +9,9 @@
 #pragma once
 
 #include <QApplication>
+#include <QMainWindow>
 #include <QPixmap>
 #include <QSplashScreen>
-#include <QMainWindow>
 
 class QLineEdit;
 class xToolsApplication : public QApplication
@@ -66,5 +66,5 @@ private:
     QMap<QString, QString> m_languageFlagNameMap;
 
 private:
-    static QPixmap splashScreenPixmap();
+    static QPixmap splashScreenPixMap();
 };
