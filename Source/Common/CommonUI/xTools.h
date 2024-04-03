@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <type_traits>
+
 #include <QApplication>
 #include <QDebug>
 #include <QDir>
@@ -92,8 +94,10 @@ static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext& context, 
 
 static void xToolsInitApp(const QString& appName)
 {
-    // Initialize some information about application.
     QString cookedAppName = appName;
+#ifdef X_TOOLS_BUILD_FOR_STORE
+    cookedAppName += QObject::tr("(Store)");
+#endif
     cookedAppName.remove(" ");
     QCoreApplication::setOrganizationName(QString("xTools"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
@@ -184,40 +188,29 @@ static void sakDoSomethingAfterAppExited()
 template<typename CentralWidgetT = QWidget,
          typename MainWindowT = xToolsMainWindow,
          typename AppT = xToolsApplication>
-int xToolsExec(int argc, char* argv[], const QString& appName, bool usingSpecifiedMainWindow = true)
+int xToolsExec(int argc, char* argv[], const QString& appName)
 {
-    QString cookedAppName = appName;
-#ifdef X_TOOLS_BUILD_FOR_STORE
-    cookedAppName += QObject::tr("(Store)");
-#endif
     sakDoSomethingBeforeAppCreated(argv, cookedAppName);
 
     AppT app(argc, argv);
-#ifdef X_TOOLS_VERSION
-    app.setApplicationVersion(X_TOOLS_VERSION);
-#endif
-    QSplashScreen& splashScreen = qobject_cast<xToolsApplication*>(qApp)->splashScreen();
-    if (usingSpecifiedMainWindow) {
+    QWidget* ui = nullptr;
+    if (std::is_same<CentralWidgetT, MainWindowT>::value) {
+        CentralWidgetT* widget = new CentralWidgetT();
+        ui = widget;
+    } else {
         MainWindowT* mainWindow = new MainWindowT();
-        bool isValidMainWindow = mainWindow->inherits("xToolsMainWindow");
-
-        splashScreen.finish(mainWindow);
-
         CentralWidgetT* centralWidget = new CentralWidgetT(mainWindow);
         mainWindow->setWindowTitle(cookedAppName);
         mainWindow->setCentralWidget(centralWidget);
-        mainWindow->show();
-        mainWindow->resize(int(qreal(mainWindow->height()) * 1.732), mainWindow->height());
-        xToolsApplication::moveToScreenCenter(mainWindow);
-        qInfo() << "The size of window is" << mainWindow->size();
-    } else {
-        CentralWidgetT* widget = new CentralWidgetT();
-        splashScreen.finish(widget);
-        widget->show();
-        widget->resize(int(qreal(widget->height()) * 1.732), widget->height());
-        xToolsApplication::moveToScreenCenter(widget);
-        qInfo() << "The size of window is" << widget->size();
+        ui = mainWindow;
     }
+
+    QSplashScreen& splashScreen = ((xToolsApplication*) (qApp))->splashScreen();
+    splashScreen.finish(ui);
+    ui->show();
+    ui->resize(int(qreal(ui->height()) * 1.732), ui->height());
+    xToolsApplication::moveToScreenCenter(ui);
+    qInfo() << "The size of window is" << ui->size();
 
     int ret = app.exec();
     sakDoSomethingAfterAppExited();
