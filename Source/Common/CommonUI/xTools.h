@@ -190,7 +190,7 @@ template<typename CentralWidgetT = QWidget,
          typename AppT = xToolsApplication>
 int xToolsExec(int argc, char* argv[], const QString& appName)
 {
-    sakDoSomethingBeforeAppCreated(argv, cookedAppName);
+    sakDoSomethingBeforeAppCreated(argv, appName);
 
     AppT app(argc, argv);
     QWidget* ui = nullptr;
@@ -200,7 +200,7 @@ int xToolsExec(int argc, char* argv[], const QString& appName)
     } else {
         MainWindowT* mainWindow = new MainWindowT();
         CentralWidgetT* centralWidget = new CentralWidgetT(mainWindow);
-        mainWindow->setWindowTitle(cookedAppName);
+        mainWindow->setWindowTitle(appName);
         mainWindow->setCentralWidget(centralWidget);
         ui = mainWindow;
     }
