@@ -15,3 +15,5 @@ src/private
 cmake-build-debug
 ThirdParty
 cmake-build*
+.vs
+CMakeSettings.json
