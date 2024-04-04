@@ -33,6 +33,7 @@ if(NOT Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS "5.14.0")
   add_compile_definitions(X_TOOLS_ENABLE_HIGH_DPI_POLICY)
 endif()
 
+include(CMake/xToolsCompatibility.cmake)
 include(CMake/xToolsCommon.cmake)
 include(CMake/xToolsGitInfo.cmake)
 include(CMake/xToolsDeployQt.cmake)

@@ -8,30 +8,25 @@
  **************************************************************************************************/
 #pragma once
 
-#include <type_traits>
-
 #include <QApplication>
 #include <QDebug>
 #include <QDir>
 #include <QFile>
-#include <QMetaEnum>
 #include <QStyle>
-#include <QStyleFactory>
 
 #include "xToolsApplication.h"
+#include "xToolsCompatibility.h"
 #include "xToolsMainWindow.h"
 #include "xToolsSettings.h"
 
 #ifdef X_TOOLS_USING_GLOG
 #include "glog/logging.h"
 #endif
-
 #ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
 #include "xToolsDataStructure.h"
 #endif
 
 #ifdef X_TOOLS_USING_GLOG
-
 static void xToolsInitGoogleLogging(char* argv0)
 {
     QString logPath = xToolsSettings::instance()->settingsPath();
@@ -58,14 +53,15 @@ static void xToolsInitGoogleLogging(char* argv0)
 #endif
     qInfo() << "The logging path is:" << qPrintable(logPath);
 }
+#endif
 
+#ifdef X_TOOLS_USING_GLOG
 static void xToolsShutdownGoogleLogging()
 {
 #ifndef QT_DEBUG
     google::ShutdownGoogleLogging();
 #endif
 }
-
 #endif
 
 #ifdef X_TOOLS_USING_GLOG
@@ -92,7 +88,7 @@ static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext& context, 
 }
 #endif
 
-static void xToolsInitApp(const QString& appName)
+static void xToolsInitApp(const QString &appName)
 {
     QString cookedAppName = appName;
 #ifdef X_TOOLS_BUILD_FOR_STORE
@@ -120,13 +116,15 @@ static void xToolsInstallMessageHandler()
 static void xToolsTryToClearSettings()
 {
     // Remove settings file and database
-    if (xToolsSettings::instance()->clearSettings()) {
-        xToolsSettings::instance()->setClearSettings(false);
-        if (QFile::remove(xToolsSettings::instance()->fileName())) {
-            qInfo() << "The settings file is removed.";
-        } else {
-            qWarning() << "The operation(remove settings file) failed!";
-        }
+    if (!xToolsSettings::instance()->clearSettings()) {
+        return;
+    }
+
+    xToolsSettings::instance()->setClearSettings(false);
+    if (QFile::remove(xToolsSettings::instance()->fileName())) {
+        qInfo() << "The settings file is removed.";
+    } else {
+        qWarning() << "The operation(remove settings file) failed!";
     }
 }
 
@@ -140,11 +138,11 @@ static void xToolsInitHdpi()
     int policy = xToolsSettings::instance()->hdpiPolicy();
     if (!xToolsDataStructure::isValidHighDpiPolicy(policy)) {
         qWarning() << "The value of hdpi policy is not specified, set to default value:"
-                   << QGuiApplication::highDpiScaleFactorRoundingPolicy();
+            << QGuiApplication::highDpiScaleFactorRoundingPolicy();
         return;
     }
 
-    auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
+    const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
     qInfo() << "The current high dpi policy is:" << cookedPolicy;
 #endif
@@ -158,14 +156,14 @@ static void xToolsInitAppStyle()
     qInfo() << "The current style of application is:" << qPrintable(style);
     if (style.isEmpty()) {
         qWarning() << "The application style is not specified, the default style is:"
-                   << qPrintable(QApplication::style()->objectName());
+            << qPrintable(QApplication::style()->objectName());
     } else if (keys.contains(style) || keys.contains(style.toLower())) {
         qInfo() << "The current style of application is:" << qPrintable(style);
         QApplication::setStyle(QStyleFactory::create(style));
     }
 }
 
-static void sakDoSomethingBeforeAppCreated(char* argv[], const QString& appName)
+static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 {
     xToolsInitApp(appName);
 #ifdef X_TOOLS_USING_GLOG
@@ -188,31 +186,33 @@ static void sakDoSomethingAfterAppExited()
 template<typename CentralWidgetT = QWidget,
          typename MainWindowT = xToolsMainWindow,
          typename AppT = xToolsApplication>
-int xToolsExec(int argc, char* argv[], const QString& appName)
+int xToolsExec(int argc, char *argv[], const QString &appName)
 {
     sakDoSomethingBeforeAppCreated(argv, appName);
 
     AppT app(argc, argv);
-    QWidget* ui = nullptr;
-    if (std::is_same<CentralWidgetT, MainWindowT>::value) {
-        CentralWidgetT* widget = new CentralWidgetT();
+    xToolsInitAppStyle();
+
+    QWidget *ui;
+    if (xToolsIsSameType<MainWindowT, CentralWidgetT>()) {
+        auto widget = new CentralWidgetT();
         ui = widget;
     } else {
-        MainWindowT* mainWindow = new MainWindowT();
-        CentralWidgetT* centralWidget = new CentralWidgetT(mainWindow);
+        auto mainWindow = new MainWindowT();
+        auto centralWidget = new CentralWidgetT(mainWindow);
         mainWindow->setWindowTitle(appName);
         mainWindow->setCentralWidget(centralWidget);
         ui = mainWindow;
     }
 
-    QSplashScreen& splashScreen = ((xToolsApplication*) (qApp))->splashScreen();
+    QSplashScreen &splashScreen = app.splashScreen();
     splashScreen.finish(ui);
     ui->show();
-    ui->resize(int(qreal(ui->height()) * 1.732), ui->height());
+    ui->resize(static_cast<int>(static_cast<qreal>(ui->height()) * 1.732), ui->height());
     xToolsApplication::moveToScreenCenter(ui);
     qInfo() << "The size of window is" << ui->size();
 
-    int ret = app.exec();
+    const int ret = app.exec();
     sakDoSomethingAfterAppExited();
     return ret;
 }

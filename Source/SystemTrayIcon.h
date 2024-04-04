@@ -13,10 +13,14 @@
 class SystemTrayIcon : public QSystemTrayIcon
 {
     Q_OBJECT
+
 public:
     explicit SystemTrayIcon(QObject *parent = Q_NULLPTR);
-    ~SystemTrayIcon();
+
+    ~SystemTrayIcon() override;
+
 signals:
     void invokeExit();
+
     void invokeShowMainWindow();
 };

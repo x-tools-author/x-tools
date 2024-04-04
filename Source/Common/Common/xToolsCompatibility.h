@@ -8,6 +8,10 @@
  **************************************************************************************************/
 #pragma once
 
+#ifndef X_TOOLS_CXX17_SUPPORTED
+#include <type_traits>
+#endif
+
 #include <QDateTime>
 #include <QFileInfo>
 #include <QtGlobal>
@@ -62,4 +66,14 @@ static QByteArray xToolsByteArrayToHex(const QByteArray &source, char separator 
             hexData[o++] = separator;
     }
     return hex;
+}
+
+template<typename T1, typename T2>
+bool xToolsIsSameType()
+{
+#ifdef X_TOOLS_CXX17_SUPPORTED
+    return std::is_same_v<T1, T2>;
+#else
+    return std::is_same<T1, T2>::value;
+#endif
 }
