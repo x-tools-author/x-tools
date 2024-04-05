@@ -191,6 +191,8 @@ int xToolsExec(int argc, char *argv[], const QString &appName)
     sakDoSomethingBeforeAppCreated(argv, appName);
 
     AppT app(argc, argv);
+    const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+    xToolsSettings::instance()->setValue("startUpTime", dtStr);
     xToolsInitAppStyle();
 
     QWidget *ui;
