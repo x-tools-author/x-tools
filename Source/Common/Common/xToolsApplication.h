@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QApplication>
+#include <QDateTime>
 #include <QMainWindow>
 #include <QPixmap>
 #include <QSplashScreen>
@@ -47,6 +48,7 @@ public:
     Q_INVOKABLE static QString dateTimeString(const QString &format);
     Q_INVOKABLE static QString stringToHexString(const QString &str);
     Q_INVOKABLE static QString hexStringToString(const QString &str);
+    Q_INVOKABLE static QDateTime buildDateTime();
     Q_INVOKABLE static QString buildDateTimeString(const QString &format);
     Q_INVOKABLE static QString systemDateFormat();
     Q_INVOKABLE static QString systemTimeFormat();

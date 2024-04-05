@@ -235,14 +235,19 @@ QString xToolsApplication::hexStringToString(const QString &str)
     return QString::fromUtf8(arr);
 }
 
-QString xToolsApplication::buildDateTimeString(const QString &format)
+QDateTime xToolsApplication::buildDateTime()
 {
     QString dateString = QString(__DATE__);
     QString timeString = QString(__TIME__);
     dateString = dateString.replace(QString("  "), " 0");
     QString dateTimeString = dateString + " " + timeString;
     QDateTime dateTime = QLocale(QLocale::English).toDateTime(dateTimeString, "MMM dd yyyy hh:mm:ss");
-    return dateTime.toString(format);
+    return dateTime;
+}
+
+QString xToolsApplication::buildDateTimeString(const QString &format)
+{
+    return buildDateTime().toString(format);
 }
 
 QString xToolsApplication::systemDateFormat()
