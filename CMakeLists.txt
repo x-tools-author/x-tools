@@ -38,9 +38,9 @@ include(CMake/xToolsCommon.cmake)
 include(CMake/xToolsGitInfo.cmake)
 include(CMake/xToolsDeployQt.cmake)
 
-set(WITH_TOOLS OFF)
+set(WITH_TOOLS NO)
 set(WITH_GFLAGS OFF)
-set(WITHOUT_PNG OFF)
+set(WITHOUT_PNG ON)
 set(BUILD_TESTING OFF)
 set(BUILD_SHARED_LIBS OFF)
 
