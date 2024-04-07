@@ -45,7 +45,7 @@ set(BUILD_TESTING OFF)
 set(BUILD_SHARED_LIBS OFF)
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-  add_compile_definitions(X_TOOLS_USING_GLOG)
+  add_compile_definitions(X_TOOLS_USING_GOOGLE_LOG)
 endif()
 add_compile_definitions(X_TOOLS_IMPORT_MODULE_MDNS)
 add_compile_definitions(X_TOOLS_IMPORT_MODULE_QRCODE)

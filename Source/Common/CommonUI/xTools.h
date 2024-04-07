@@ -19,15 +19,15 @@
 #include "xToolsMainWindow.h"
 #include "xToolsSettings.h"
 
-#ifdef X_TOOLS_USING_GLOG
+#ifdef X_TOOLS_USING_GOOGLE_LOG
 #include "glog/logging.h"
 #endif
 #ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
 #include "xToolsDataStructure.h"
 #endif
 
-#ifdef X_TOOLS_USING_GLOG
-static void xToolsInitGoogleLogging(char* argv0)
+#ifdef X_TOOLS_USING_GOOGLE_LOG
+static void xToolsInitGoogleLogging(char *argv0)
 {
     QString logPath = xToolsSettings::instance()->settingsPath();
     logPath += "/log";
@@ -55,7 +55,7 @@ static void xToolsInitGoogleLogging(char* argv0)
 }
 #endif
 
-#ifdef X_TOOLS_USING_GLOG
+#ifdef X_TOOLS_USING_GOOGLE_LOG
 static void xToolsShutdownGoogleLogging()
 {
 #ifndef QT_DEBUG
@@ -64,11 +64,11 @@ static void xToolsShutdownGoogleLogging()
 }
 #endif
 
-#ifdef X_TOOLS_USING_GLOG
-static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext& context, const QString& msg)
+#ifdef X_TOOLS_USING_GOOGLE_LOG
+static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QByteArray localMsg = msg.toUtf8();
-    const char* file = context.file ? context.file : "";
+    const char *file = context.file ? context.file : "";
     const int line = context.line;
 
     switch (type) {
@@ -108,7 +108,7 @@ static void xToolsInitApp(const QString &appName)
 
 static void xToolsInstallMessageHandler()
 {
-#ifdef X_TOOLS_USING_GLOG
+#ifdef X_TOOLS_USING_GOOGLE_LOG
     qInstallMessageHandler(qtLogToGoogleLog);
 #endif
 }
@@ -138,7 +138,7 @@ static void xToolsInitHdpi()
     int policy = xToolsSettings::instance()->hdpiPolicy();
     if (!xToolsDataStructure::isValidHighDpiPolicy(policy)) {
         qWarning() << "The value of hdpi policy is not specified, set to default value:"
-            << QGuiApplication::highDpiScaleFactorRoundingPolicy();
+                   << QGuiApplication::highDpiScaleFactorRoundingPolicy();
         return;
     }
 
@@ -156,7 +156,7 @@ static void xToolsInitAppStyle()
     qInfo() << "The current style of application is:" << qPrintable(style);
     if (style.isEmpty()) {
         qWarning() << "The application style is not specified, the default style is:"
-            << qPrintable(QApplication::style()->objectName());
+                   << qPrintable(QApplication::style()->objectName());
     } else if (keys.contains(style) || keys.contains(style.toLower())) {
         qInfo() << "The current style of application is:" << qPrintable(style);
         QApplication::setStyle(QStyleFactory::create(style));
@@ -166,7 +166,7 @@ static void xToolsInitAppStyle()
 static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 {
     xToolsInitApp(appName);
-#ifdef X_TOOLS_USING_GLOG
+#ifdef X_TOOLS_USING_GOOGLE_LOG
     xToolsInitGoogleLogging(argv[0]);
     xToolsInstallMessageHandler();
 #else
@@ -178,7 +178,7 @@ static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 
 static void sakDoSomethingAfterAppExited()
 {
-#ifdef X_TOOLS_USING_GLOG
+#ifdef X_TOOLS_USING_GOOGLE_LOG
     xToolsShutdownGoogleLogging();
 #endif
 }
