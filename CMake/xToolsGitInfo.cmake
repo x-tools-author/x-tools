@@ -1,4 +1,4 @@
-﻿# Get the last tag.
+# Get the last tag.
 function(x_tools_git_get_latest_tag working_dir prefix)
   execute_process(
     COMMAND git describe --abbrev=0 --tags
@@ -17,7 +17,7 @@ function(x_tools_git_get_latest_commit working_dir prefix)
     WORKING_DIRECTORY ${working_dir}
     OUTPUT_VARIABLE GIT_COMMIT
     OUTPUT_STRIP_TRAILING_WHITESPACE)
-  message("Latest git commit: ${GIT_COMMIT}")
+  message("Latest git commit(${prefix}_GIT_COMMIT): ${GIT_COMMIT}")
   add_compile_definitions(${prefix}_GIT_COMMIT="${GIT_COMMIT}")
 endfunction()
 

@@ -56,6 +56,12 @@ x_tools_add_third_party("libqrencode-master")
 x_tools_git_get_latest_commit(${CMAKE_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_SOURCE_DIR} "X_TOOLS")
 # --------------------------------------------------------------------------------------------------
+# Private module(not open-source)
+if(EXISTS ${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
+  include(${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
+  x_tools_git_get_latest_commit(${CMAKE_SOURCE_DIR}/Private "X_TOOLS_PRIVATE")
+endif()
+# --------------------------------------------------------------------------------------------------
 # Common module
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
@@ -119,9 +125,6 @@ include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/FileMerge/Source)
 
 # --------------------------------------------------------------------------------------------------
 # xTools application
-if(EXISTS ${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
-  include(${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
-endif()
 x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)

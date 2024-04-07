@@ -264,15 +264,20 @@ void xToolsMainWindow::onHdpiPolicyActionTriggered(int policy)
 
 void xToolsMainWindow::onAboutActionTriggered()
 {
+    QString buildDateTimeFormat = xToolsApplication::systemDateFormat();
+    buildDateTimeFormat += " ";
+    buildDateTimeFormat += xToolsApplication::systemTimeFormat();
+    QString buildDateTimeString = xToolsApplication::buildDateTimeString(buildDateTimeFormat);
     QString year = xToolsApplication::buildDateTimeString("yyyy");
     QString info;
     info += windowTitle() + QString(" ") + tr("(A Part of xTools Project)") + "\n\n";
 #ifdef X_TOOLS_GIT_COMMIT
     info += tr("Commit") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
 #endif
-#ifdef X_TOOLS_GIT_COMMIT_TIME
-    info += tr("Date") + ": " + X_TOOLS_GIT_COMMIT_TIME + "\n\n";
+#ifdef X_TOOLS_PRIVATE_GIT_COMMIT
+    info += tr("Commit") + ": " + X_TOOLS_PRIVATE_GIT_COMMIT + "\n\n";
 #endif
+    info += tr("Build Date") + ": " + buildDateTimeString + "\n\n";
     info += QString("© 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
     info += tr("All rights reserved.");
     QMessageBox::about(this, tr("About"), info);

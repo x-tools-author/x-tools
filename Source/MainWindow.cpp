@@ -43,6 +43,9 @@
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
 #include "xToolsModbusStudioUi.h"
 #endif
+#ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
+#include "xToolsPayJsApi.h"
+#endif
 
 #ifdef Q_OS_WIN
 #include "SystemTrayIcon.h"
@@ -68,6 +71,14 @@ MainWindow::MainWindow(QWidget* parent)
                          &MainWindow::show);
         systemTrayIcon->show();
     }
+#endif
+
+#ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
+#ifdef QT_DEBUG
+    xToolsPayJsApi::singleton().setPrice(2);
+#else
+    xToolsPayJsApi::singleton().setPrice(10 * 10 * 10 * 10);
+#endif
 #endif
 
     auto* stackedWidget = new QStackedWidget();
