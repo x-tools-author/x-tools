@@ -121,7 +121,6 @@ include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/FileMerge/Source)
 # xTools application
 if(EXISTS ${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
   include(${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
-  list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
 endif()
 x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xTools)
