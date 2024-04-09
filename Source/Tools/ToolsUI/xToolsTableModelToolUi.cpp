@@ -105,11 +105,8 @@ void xToolsTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
         return;
     }
 
-    mTableModelTool = qobject_cast<xToolsTableModelTool *>(tool);
-    if (!mTableModelTool) {
-        qWarning() << "The value of mTableModelTool is nullptr!";
-        return;
-    }
+    mTableModelTool = dynamic_cast<xToolsTableModelTool *>(tool);
+    Q_ASSERT_X(mTableModelTool, Q_FUNC_INFO, "The tool is not xToolsTableModelTool!");
 
     mTableModel = mTableModelTool->tableModel().value<QAbstractTableModel *>();
     QTableView *tableView = ui->tableView;
@@ -331,9 +328,8 @@ void xToolsTableModelToolUi::onPushButtonClearClicked()
 
     int ret = QMessageBox::warning(xToolsApplication::mainWindow(),
                                    tr("Clear Data"),
-                                   tr("The data will be empty from settings file, "
-                                      "please confrim the operation!"),
-                                   QMessageBox::Cancel | QMessageBox::Ok);
+                                   tr("The data will be empty from settings file, are you sure?"),
+                                   QMessageBox::No | QMessageBox::Ok);
     if (ret == QMessageBox::Ok) {
         clear();
         writeToSettingsFile();
@@ -348,8 +344,7 @@ void xToolsTableModelToolUi::onPushButtonDeleteClicked()
 
     int ret = QMessageBox::warning(xToolsApplication::mainWindow(),
                                    tr("Delete Data"),
-                                   tr("The data will be delete from settings file, "
-                                      "please confrim the operation!"),
+                                   tr("The data will be delete from settings file, are you sure?"),
                                    QMessageBox::Cancel | QMessageBox::Ok);
 
     if (ret != QMessageBox::Ok) {
