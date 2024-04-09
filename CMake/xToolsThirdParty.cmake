@@ -1,0 +1,13 @@
+﻿option(X_TOOLS_ENABLE_ADVANCED_STYLESHEET "Enable Qt advanced stylesheet" OFF)
+if(X_TOOLS_ENABLE_ADVANCED_STYLESHEET)
+  set(FILE_NAME Qt-Advanced-Stylesheets-main)
+  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${FILE_NAME}.zip
+                  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/ThirdParty)
+  set(SOURCE_PATH ${CMAKE_SOURCE_DIR}/ThirdParty/${FILE_NAME}/src)
+  list(APPEND X_TOOLS_SOURCE ${SOURCE_PATH}/acss_globals.h)
+  list(APPEND X_TOOLS_SOURCE ${SOURCE_PATH}/QtAdvancedStylesheet.h)
+  list(APPEND X_TOOLS_SOURCE ${SOURCE_PATH}/QtAdvancedStylesheet.cpp)
+  include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/${FILE_NAME}/src)
+  add_compile_definitions(ACSS_STATIC)
+  add_compile_definitions(X_TOOLS_ENABLE_ADVANCED_STYLESHEET)
+endif()
