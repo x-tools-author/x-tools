@@ -18,7 +18,14 @@ if(X_TOOLS_BUILD_FOR_STORE)
   add_compile_definitions(X_TOOLS_BUILD_FOR_STORE)
 endif()
 
-set(X_TOOLS_QT_COMPONENTS Core Gui Widgets WebSockets Network LinguistTools)
+set(X_TOOLS_QT_COMPONENTS
+    Core
+    Gui
+    Widgets
+    WebSockets
+    Network
+    LinguistTools
+    Svg)
 if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
   list(APPEND X_TOOLS_QT_COMPONENTS SerialPort)
   list(APPEND X_TOOLS_QT_COMPONENTS SerialBus)
@@ -105,6 +112,8 @@ if(WIN32)
   list(APPEND X_TOOLS_SOURCE xTools.rc)
 endif()
 
+include(${CMAKE_SOURCE_DIR}/CMake/xToolsThirdParty.cmake)
+
 include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/Tools)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI)
@@ -133,6 +142,7 @@ target_link_libraries(xTools PRIVATE qrencode)
 target_link_libraries(xTools PRIVATE glog::glog)
 target_link_libraries(xTools PRIVATE qmdnsengine)
 target_link_libraries(xTools PRIVATE xToolsCommon)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Svg)
 target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
 target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
