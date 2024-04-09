@@ -69,6 +69,10 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/Private/xTools/xToolsPrivate.cmake)
   x_tools_git_get_latest_commit(${CMAKE_SOURCE_DIR}/Private "X_TOOLS_PRIVATE")
 endif()
 # --------------------------------------------------------------------------------------------------
+# Third party modules that are not managed by cmake
+include(${CMAKE_SOURCE_DIR}/CMake/xToolsThirdParty.cmake)
+
+# --------------------------------------------------------------------------------------------------
 # Common module
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
@@ -112,8 +116,6 @@ if(WIN32)
   list(APPEND X_TOOLS_SOURCE xTools.rc)
 endif()
 
-include(${CMAKE_SOURCE_DIR}/CMake/xToolsThirdParty.cmake)
-
 include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/Tools)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI)
@@ -137,6 +139,9 @@ include_directories(${CMAKE_SOURCE_DIR}/Source/Assistants/FileMerge/Source)
 x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
+if(X_TOOLS_ENABLE_ADVANCED_STYLESHEET)
+  x_tools_copy_style_resources_for_target(xTools)
+endif()
 
 target_link_libraries(xTools PRIVATE qrencode)
 target_link_libraries(xTools PRIVATE glog::glog)

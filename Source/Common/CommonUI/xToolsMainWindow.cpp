@@ -33,12 +33,20 @@
 #ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
 #include "xToolsDataStructure.h"
 #endif
+#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+#include "xToolsStyleSheetManager.h"
+#endif
 
 xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     m_xToolsApp = dynamic_cast<xToolsApplication*>(qApp);
     Q_ASSERT_X(m_xToolsApp, Q_FUNC_INFO, "The application is not xToolsApplication.");
+
+#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+    auto& styleSheetManager = xToolsStyleSheetManager::instance();
+    styleSheetManager.setThemeName(styleSheetManager.themeName());
+#endif
 
     m_appStyleActionGroup = new QActionGroup(this);
     m_languageActionGroup = new QActionGroup(this);
@@ -133,6 +141,15 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
 {
     QMenu* appStyleMenu = new QMenu(tr("Application Style"), this);
     m_optionMenu->addMenu(appStyleMenu);
+#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+    initOptionMenuAppStyleMenuThirdParty(appStyleMenu);
+#else
+    initOptionMenuAppStyleMenuQt(appStyleMenu);
+#endif
+}
+
+void xToolsMainWindow::initOptionMenuAppStyleMenuQt(QMenu* menu)
+{
     QStringList keys = QStyleFactory::keys();
     QString style = xToolsSettings::instance()->appStyle();
     for (QString& key : keys) {
@@ -151,7 +168,20 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
         });
     }
 
-    appStyleMenu->addActions(m_appStyleActionGroup->actions());
+    menu->addActions(m_appStyleActionGroup->actions());
+}
+
+void xToolsMainWindow::initOptionMenuAppStyleMenuThirdParty(QMenu* menu)
+{
+#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+    menu->addAction(tr("none"), this, [=]() {
+        xToolsStyleSheetManager::instance().setThemeName("");
+    });
+    menu->addSeparator();
+    menu->addActions(xToolsStyleSheetManager::instance().darkThemeMenu()->actions());
+    menu->addSeparator();
+    menu->addActions(xToolsStyleSheetManager::instance().lightThemeMenu()->actions());
+#endif
 }
 
 void xToolsMainWindow::initOptionMenuAppPaletteMenu()

@@ -26,10 +26,6 @@
 #include "xToolsDataStructure.h"
 #endif
 
-#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
-#include "QtAdvancedStylesheet.h"
-#endif
-
 #ifdef X_TOOLS_USING_GOOGLE_LOG
 static void xToolsInitGoogleLogging(char *argv0)
 {
@@ -195,21 +191,6 @@ int xToolsExec(int argc, char *argv[], const QString &appName)
     sakDoSomethingBeforeAppCreated(argv, appName);
 
     AppT app(argc, argv);
-#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
-    acss::QtAdvancedStylesheet advancedStylesheet;
-    QString appDir = app.applicationDirPath();
-    advancedStylesheet.setStylesDirPath(appDir + "/3rd_styles");
-    advancedStylesheet.setOutputDirPath(appDir + "/output");
-    advancedStylesheet.setCurrentStyle("qt_material");
-    advancedStylesheet.setCurrentTheme("dark_lightgreen");
-    advancedStylesheet.updateStylesheet();
-    qInfo() << "The styles directory is:" << advancedStylesheet.stylesDirPath();
-    qInfo() << "The output directory is:" << advancedStylesheet.outputDirPath();
-    qInfo() << "The current style is:" << advancedStylesheet.currentStyle();
-    qInfo() << "The current theme is:" << advancedStylesheet.currentTheme();
-    app.setStyleSheet(advancedStylesheet.styleSheet());
-#endif
-
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     xToolsSettings::instance()->setValue("startUpTime", dtStr);
     xToolsInitAppStyle();
