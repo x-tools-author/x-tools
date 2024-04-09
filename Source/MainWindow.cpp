@@ -13,21 +13,17 @@
 #include <QClipboard>
 #include <QCloseEvent>
 #include <QDesktopServices>
-#include <QFile>
 #include <QFileDialog>
 #include <QImage>
-#include <QJsonParseError>
-#include <QLocale>
+#include <QLabel>
+#include <QLayout>
 #include <QMenuBar>
-#include <QMessageBox>
 #include <QPainter>
 #include <QPixmap>
-#include <QProcess>
 #include <QScrollBar>
 #include <QSizePolicy>
+#include <QStackedWidget>
 #include <QStatusBar>
-#include <QStyleFactory>
-#include <QSysInfo>
 #include <QTextBrowser>
 #include <QToolBar>
 #include <QToolButton>
@@ -97,7 +93,7 @@ MainWindow::MainWindow(QWidget* parent)
     QString title = QString("xTools");
     title.append(QString(" "));
     title.append(QString("v"));
-    title.append(qApp->applicationVersion());
+    title.append(QApplication::applicationVersion());
     setWindowTitle(title);
     setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
 
@@ -108,7 +104,7 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 }
 
-MainWindow::~MainWindow() {}
+MainWindow::~MainWindow() = default;
 
 void MainWindow::initMenuBar()
 {
@@ -340,14 +336,12 @@ void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
     Q_UNUSED(buttonGroup)
     Q_UNUSED(toolBar)
 #ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
-    auto* modbus = new xToolsModbusStudioUi(this);
     auto icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconModbus.svg"));
-    initNav({buttonGroup, icon, "Modbus Studio", modbus, toolBar});
+    initNav({buttonGroup, icon, "Modbus Studio", new xToolsModbusStudioUi(this), toolBar});
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
-    auto* canBus = new xToolsCanBusStudioUi(this);
     icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconCanBus.svg"));
-    initNav({buttonGroup, icon, "CANBus Studio", canBus, toolBar});
+    initNav({buttonGroup, icon, "CANBus Studio", new xToolsCanBusStudioUi(this), toolBar});
 #endif
 }
 

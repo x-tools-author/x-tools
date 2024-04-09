@@ -8,17 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QAction>
 #include <QButtonGroup>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QMenu>
-#include <QMessageBox>
 #include <QMetaEnum>
-#include <QSettings>
-#include <QStackedWidget>
-#include <QTabWidget>
-#include <QTranslator>
 
 #ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
 #include "xToolsPrivateMainWindow.h"
