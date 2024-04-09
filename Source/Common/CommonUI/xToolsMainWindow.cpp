@@ -319,7 +319,8 @@ void xToolsMainWindow::tryToReboot()
     int ret = QMessageBox::information(this,
                                        tr("Reboot application to effective"),
                                        tr("Need to reboot, reboot to effective now?"),
-                                       QMessageBox::Ok | QMessageBox::Cancel);
+                                       QMessageBox::Ok | QMessageBox::No,
+                                       QMessageBox::No);
     if (ret == QMessageBox::Ok) {
         QProcess::startDetached(QCoreApplication::applicationFilePath());
         QTimer::singleShot(1000, this, [=]() {

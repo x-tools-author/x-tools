@@ -17,10 +17,10 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 
+#include "xToolsApplication.h"
 #include "xToolsMenu.h"
 #include "xToolsSettings.h"
 #include "xToolsTableModelTool.h"
-#include "xToolsApplication.h"
 
 xToolsTableModelToolUi::xToolsTableModelToolUi(QWidget *parent)
     : xToolsBaseToolUi{parent}
@@ -92,7 +92,8 @@ void xToolsTableModelToolUi::setColumnVisible(int column, bool visible)
     }
 }
 
-void xToolsTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
+void xToolsTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
+                                                     const QString &settingGroup)
 {
     if (!tool) {
         qWarning() << "The value of tool is nullptr!";
@@ -132,7 +133,6 @@ void xToolsTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const
     headerViewModel->setColumnCount(headers.count());
     headerViewModel->setHorizontalHeaderLabels(headers);
     headerView->setModel(headerViewModel);
-    headerView->setDefaultAlignment(Qt::AlignLeft);
 
     m_menu = new xToolsMenu(ui->pushButtonVisible);
     ui->pushButtonVisible->setMenu(m_menu);
@@ -286,8 +286,7 @@ QModelIndex xToolsTableModelToolUi::currentIndex()
     if (!index.isValid()) {
         QMessageBox::warning(xToolsApplication::mainWindow(),
                              tr("Please Select an Item"),
-                             tr("Please select an tiem first,"
-                                " then try again!"));
+                             tr("Please select an item first, then try again!"));
     }
     return index;
 }
