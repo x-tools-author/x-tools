@@ -40,7 +40,7 @@ protected:
 
 protected:
     QAbstractTableModel *mTableModel{nullptr};
-    xToolsTableModelTool *mTableModelTool{nullptr};
+    xToolsTableModelTool *m_TableModelTool{nullptr};
 
 private:
     void clear();

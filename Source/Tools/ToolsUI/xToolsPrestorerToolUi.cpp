@@ -15,10 +15,10 @@
 #include <QStandardItemModel>
 #include <QTableView>
 
+#include "xToolsApplication.h"
 #include "xToolsMenu.h"
 #include "xToolsPrestorerTool.h"
 #include "xToolsPrestorerToolUiEditor.h"
-#include "xToolsApplication.h"
 
 xToolsPrestorerToolUi::xToolsPrestorerToolUi(QWidget *parent)
     : xToolsTableModelToolUi(parent)
@@ -34,7 +34,8 @@ QMenu *xToolsPrestorerToolUi::menu()
     return m_menu;
 }
 
-void xToolsPrestorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
+void xToolsPrestorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
+                                                    const QString &settingGroup)
 {
     xToolsTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
 
@@ -42,7 +43,7 @@ void xToolsPrestorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const 
     columns << 9;
     setStretchSections(columns);
 
-    xToolsPrestorerTool *cookedTool = qobject_cast<xToolsPrestorerTool *>(tool);
+    xToolsPrestorerTool *cookedTool = dynamic_cast<xToolsPrestorerTool *>(tool);
     auto *model = cookedTool->tableModel().value<xToolsTableModel *>();
     connect(model, &QAbstractTableModel::rowsRemoved, this, &xToolsPrestorerToolUi::updateMenu);
     connect(model, &QAbstractTableModel::rowsInserted, this, &xToolsPrestorerToolUi::updateMenu);
@@ -57,7 +58,7 @@ void xToolsPrestorerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const 
 QList<int> xToolsPrestorerToolUi::defaultHideColumns()
 {
     QList<int> list;
-    auto tb = mTableModelTool->tableModel().value<QAbstractTableModel *>();
+    auto tb = m_TableModelTool->tableModel().value<QAbstractTableModel *>();
     for (int i = 0; i < tb->columnCount(); i++) {
         list.append(i);
     }
@@ -85,7 +86,7 @@ QDialog *xToolsPrestorerToolUi::itemEditor()
 
 void xToolsPrestorerToolUi::updateMenu()
 {
-    auto *cookedTool = qobject_cast<xToolsPrestorerTool *>(mTableModelTool);
+    auto *cookedTool = dynamic_cast<xToolsPrestorerTool *>(m_TableModelTool);
     auto *model = cookedTool->tableModel().value<xToolsTableModel *>();
 
     m_menu->clear();

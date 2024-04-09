@@ -16,8 +16,8 @@
 #include <QTimer>
 #include <QVariant>
 
-#include "xToolsTableModelTool.h"
 #include "xToolsApplication.h"
+#include "xToolsTableModelTool.h"
 
 xToolsResponserToolUi::xToolsResponserToolUi(QWidget *parent)
     : xToolsTableModelToolUi{parent}
@@ -27,7 +27,8 @@ xToolsResponserToolUi::xToolsResponserToolUi(QWidget *parent)
 
 xToolsResponserToolUi::~xToolsResponserToolUi() {}
 
-void xToolsResponserToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup)
+void xToolsResponserToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
+                                                    const QString &settingGroup)
 {
     xToolsTableModelToolUi::onBaseToolUiInitialized(tool, settingGroup);
     QList<int> columns;
@@ -38,7 +39,7 @@ void xToolsResponserToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const 
 QList<int> xToolsResponserToolUi::defaultHideColumns()
 {
     QList<int> list;
-    auto tb = mTableModelTool->tableModel().value<QAbstractTableModel *>();
+    auto tb = m_TableModelTool->tableModel().value<QAbstractTableModel *>();
     for (int i = 0; i < tb->columnCount(); i++) {
         list.append(i);
     }

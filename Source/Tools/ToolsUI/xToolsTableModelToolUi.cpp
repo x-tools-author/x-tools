@@ -105,10 +105,10 @@ void xToolsTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
         return;
     }
 
-    mTableModelTool = dynamic_cast<xToolsTableModelTool *>(tool);
-    Q_ASSERT_X(mTableModelTool, Q_FUNC_INFO, "The tool is not xToolsTableModelTool!");
+    m_TableModelTool = dynamic_cast<xToolsTableModelTool *>(tool);
+    Q_ASSERT_X(m_TableModelTool, Q_FUNC_INFO, "The tool is not xToolsTableModelTool!");
 
-    mTableModel = mTableModelTool->tableModel().value<QAbstractTableModel *>();
+    mTableModel = m_TableModelTool->tableModel().value<QAbstractTableModel *>();
     QTableView *tableView = ui->tableView;
     QHeaderView *headerView = tableView->horizontalHeader();
     int columnCount = mTableModel->columnCount();
@@ -118,7 +118,7 @@ void xToolsTableModelToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
         auto orientation = Qt::Orientation::Horizontal;
         QString str = mTableModel->headerData(i, orientation).toString();
         rawHeaders.append(str);
-        str = mTableModelTool->cookHeaderString(str);
+        str = m_TableModelTool->cookHeaderString(str);
         headers.append(str);
     }
 
@@ -202,13 +202,13 @@ void xToolsTableModelToolUi::importFromJson(const QByteArray &json)
         QJsonDocument jd;
         jd.setObject(jsonObj);
         QString item = QString::fromUtf8(jd.toJson());
-        mTableModelTool->addItem(item);
+        m_TableModelTool->addItem(item);
     }
 }
 
 QByteArray xToolsTableModelToolUi::exportAsJson()
 {
-    auto items = mTableModelTool->itemsContext();
+    auto items = m_TableModelTool->itemsContext();
     QJsonArray jsonArray = items.toJsonArray();
     QJsonDocument jsonDoc;
     jsonDoc.setArray(jsonArray);
@@ -218,7 +218,7 @@ QByteArray xToolsTableModelToolUi::exportAsJson()
 
 void xToolsTableModelToolUi::edit(const QModelIndex &index)
 {
-    QVariant var = mTableModelTool->itemContext(index.row());
+    QVariant var = m_TableModelTool->itemContext(index.row());
     QJsonObject jsonObj = var.toJsonObject();
     QDialog *editor = itemEditor();
     QGenericReturnArgument ret;
@@ -241,7 +241,7 @@ void xToolsTableModelToolUi::edit(const QModelIndex &index)
         QJsonDocument jsonDoc;
         jsonDoc.setObject(params);
         QString str = QString::fromUtf8(jsonDoc.toJson());
-        mTableModelTool->addItem(str, index.row());
+        m_TableModelTool->addItem(str, index.row());
 
         afterRowEdited(index.row());
     }
@@ -249,7 +249,7 @@ void xToolsTableModelToolUi::edit(const QModelIndex &index)
 
 bool xToolsTableModelToolUi::append()
 {
-    QJsonObject jsonObj = mTableModelTool->itemContext(-1).toJsonObject();
+    QJsonObject jsonObj = m_TableModelTool->itemContext(-1).toJsonObject();
     QDialog *editor = itemEditor();
     QGenericReturnArgument ret;
     QMetaObject::invokeMethod(editor,
@@ -273,7 +273,7 @@ bool xToolsTableModelToolUi::append()
     QJsonDocument jsonDoc;
     jsonDoc.setObject(jsonObj);
     QString str = QString::fromUtf8(jsonDoc.toJson());
-    mTableModelTool->addItem(str, -1);
+    m_TableModelTool->addItem(str, -1);
     return true;
 }
 
@@ -296,7 +296,7 @@ void xToolsTableModelToolUi::writeToSettingsFile()
 
 bool xToolsTableModelToolUi::isInitialized()
 {
-    if (!mTableModelTool) {
+    if (!m_TableModelTool) {
         QMessageBox::warning(xToolsApplication::mainWindow(),
                              tr("Invalid Parameter"),
                              tr("The value of mTableModelTool is nullptr,"

@@ -8,8 +8,8 @@
  **************************************************************************************************/
 #include "xToolsEmitterToolUi.h"
 
-#include "xToolsTableModelTool.h"
 #include "xToolsApplication.h"
+#include "xToolsTableModelTool.h"
 
 xToolsEmitterToolUi::xToolsEmitterToolUi(QWidget *parent)
     : xToolsTableModelToolUi{parent}
@@ -31,7 +31,7 @@ void xToolsEmitterToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QS
 QList<int> xToolsEmitterToolUi::defaultHideColumns()
 {
     QList<int> list;
-    auto tb = mTableModelTool->tableModel().value<QAbstractTableModel *>();
+    auto tb = m_TableModelTool->tableModel().value<QAbstractTableModel *>();
     for (int i = 0; i < tb->columnCount(); i++) {
         list.append(i);
     }
