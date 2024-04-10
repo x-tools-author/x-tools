@@ -193,6 +193,9 @@
               <property name="text">
                <string>Time</string>
               </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item row="2" column="0">
@@ -204,7 +207,10 @@
                <string>From-To</string>
               </property>
               <property name="checkable">
-               <bool>false</bool>
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
               </property>
              </widget>
             </item>

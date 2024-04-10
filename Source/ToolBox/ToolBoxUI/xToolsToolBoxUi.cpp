@@ -246,7 +246,7 @@ void xToolsToolBoxUi::output2ui(const QByteArray& bytes, const QString& flag, bo
         return;
     }
 
-    if (ui->checkBoxConsoleMode) {
+    if (ui->checkBoxConsoleMode->isChecked()) {
         ui->textBrowserOutput->moveCursor(QTextCursor::End);
         ui->textBrowserOutput->insertPlainText(str);
         return;
@@ -513,6 +513,8 @@ void xToolsToolBoxUi::initSettingsOutput()
     ui->checkBoxOutputTime->setGroupKey(group + "/output", "outputTime");
     ui->checkBoxOutputMs->setGroupKey(group + "/output", "outputMs");
     ui->checkBoxOutputWrap->setGroupKey(group + "/output", "outputWrap");
+    ui->checkBoxFromTo->setGroupKey(group + "/output", "fromTo");
+    ui->checkBoxConsoleMode->setGroupKey(group + "/output", "consoleMode");
 
 #if 1
     ui->checkBoxOutputRx->setChecked(true);
