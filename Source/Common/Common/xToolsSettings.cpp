@@ -52,7 +52,7 @@ QString xToolsSettings::settingsPath()
 
 int xToolsSettings::hdpiPolicy()
 {
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     auto var = value(m_settingsKey.hdpiPolicy);
     if (var.isValid()) {
         return value(m_settingsKey.hdpiPolicy).toInt();
@@ -66,7 +66,7 @@ int xToolsSettings::hdpiPolicy()
 
 void xToolsSettings::setHdpiPolicy(int policy)
 {
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     setValue(m_settingsKey.hdpiPolicy, policy);
     emit hdpiPolicyChanged();
 #else

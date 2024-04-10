@@ -46,12 +46,11 @@ function(x_tools_deploy_qt_for_mac target)
     return()
   endif()
 
-  set(SAK_MACDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/macdeployqt")
   if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/qml")
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${SAK_MACDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app"
+      COMMAND ${WINDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app"
               "-qmldir=${CMAKE_CURRENT_SOURCE_DIR}/qml -dmg"
       COMMENT "Running macdeployqt..."
       VERBATIM)
@@ -59,7 +58,7 @@ function(x_tools_deploy_qt_for_mac target)
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${SAK_MACDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app" "-dmg"
+      COMMAND ${WINDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app" "-dmg"
       COMMENT "Running macdeployqt..."
       VERBATIM)
   endif()
@@ -75,8 +74,8 @@ function(x_tools_deploy_qt_for_mac target)
   add_custom_command(
     TARGET ${target}
     POST_BUILD
-    COMMAND sh -c "rm qtswissarmyknife-macos-11.dmg || true"
-    COMMAND sh -c "cat dmgs.txt | xargs -I {} mv {} qtswissarmyknife-macos-11.dmg"
+    COMMAND sh -c "rm xtools-macos-11.dmg || true"
+    COMMAND sh -c "cat dmgs.txt | xargs -I {} mv {} xtools-macos-11.dmg"
     COMMAND sh -c "rm dmgs.txt || true"
     WORKING_DIRECTORY "${X_TOOLS_BINARY_DIR}/${target}"
     COMMENT "Rename old dmg file"
@@ -88,27 +87,18 @@ function(x_tools_deploy_qt_for_linux target)
     return()
   endif()
 
-  if(NOT ${SAK_ENABLE_LINUXDEPLOYQT})
-    return()
-  endif()
-
-  find_program(
-    SAK_QMAKE
-    NAMES qmake
-    PATHS ${QT_DIR}/../../../bin)
-  set(APP_DIR ${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir)
+  set(APP_DIR ${CMAKE_BINARY_DIR}/xToolsAppDir)
   add_custom_command(
     TARGET ${target}
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/platform/unix/xTools"
-            "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir"
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin"
+            "${CMAKE_BINARY_DIR}/xToolsAppDir"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/xToolsAppDir/bin"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${target}>
-            "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/bin"
+            "${CMAKE_BINARY_DIR}/xToolsAppDir/bin"
     COMMAND
-      ${SAK_BIN_LINUXDEPLOYQT}
-      "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/share/applications/xTools.desktop" "-verbose=0"
-      "-appimage" "-qmake=${SAK_QMAKE}"
+      ${SAK_BIN_LINUXDEPLOYQT} "${CMAKE_BINARY_DIR}/xToolsAppDir/share/applications/xTools.desktop"
+      "-verbose=0" "-appimage" "-qmake=${QT_QMAKE_EXECUTABLE}"
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     COMMENT "Running creating appimage file..."
     VERBATIM)
@@ -118,17 +108,17 @@ function(x_tools_deploy_qt_for_linux target)
       TARGET ${target}
       POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:glog::glog>
-              "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/$<TARGET_FILE_NAME:glog::glog>"
+              "${CMAKE_BINARY_DIR}/xToolsAppDir/lib/$<TARGET_FILE_NAME:glog::glog>"
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-      COMMENT "Copy glog to QtSwissArmyKnifeAppDir/lib..."
+      COMMENT "Copy glog to xToolsAppDir/lib..."
       VERBATIM)
     add_custom_command(
       TARGET ${target}
       POST_BUILD
       COMMAND
         ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/$<TARGET_FILE_NAME:glog::glog>"
-        "${CMAKE_BINARY_DIR}/QtSwissArmyKnifeAppDir/lib/libglog.so.1"
+        "${CMAKE_BINARY_DIR}/xToolsAppDir/lib/$<TARGET_FILE_NAME:glog::glog>"
+        "${CMAKE_BINARY_DIR}/xToolsAppDir/lib/libglog.so.1"
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
       COMMENT "Copy glog and rename"
       VERBATIM)
@@ -158,15 +148,11 @@ function(x_tools_deploy_qt target)
     return()
   endif()
 
-  if(NOT ${WINDEPLOYQT_EXECUTABLE})
-    # return()
-  endif()
-
   if(WIN32)
     x_tools_deploy_qt_for_windows(${target})
   elseif(UNIX AND NOT APPLE)
-    # x_tools_deploy_qt_for_linux(${target})
+    x_tools_deploy_qt_for_linux(${target})
   elseif(APPLE)
-    # x_tools_deploy_qt_for_mac(${target})
+    x_tools_deploy_qt_for_mac(${target})
   endif()
 endfunction()

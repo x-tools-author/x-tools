@@ -30,7 +30,7 @@
 #include "xToolsApplication.h"
 #include "xToolsSettings.h"
 
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #include "xToolsDataStructure.h"
 #endif
 #ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
@@ -248,7 +248,7 @@ void xToolsMainWindow::initOptionMenuSettingsMenu()
 
 void xToolsMainWindow::initOptionMenuHdpiPolicy()
 {
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QMenu* menu = new QMenu(tr("HDPI Policy"));
     QActionGroup* actionGroup = new QActionGroup(this);
     int currentPolicy = xToolsSettings::instance()->hdpiPolicy();
@@ -273,7 +273,7 @@ void xToolsMainWindow::initOptionMenuHdpiPolicy()
 void xToolsMainWindow::onHdpiPolicyActionTriggered(int policy)
 {
     Q_UNUSED(policy)
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #ifdef Q_OS_WIN
     if (policy == xToolsDataStructure::HighDpiPolicySystem) {
         createQtConf();

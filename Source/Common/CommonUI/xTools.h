@@ -19,14 +19,14 @@
 #include "xToolsMainWindow.h"
 #include "xToolsSettings.h"
 
-#ifdef X_TOOLS_USING_GOOGLE_LOG
+#ifdef X_TOOLS_IMPORT_MODULE_GLOG
 #include "glog/logging.h"
 #endif
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #include "xToolsDataStructure.h"
 #endif
 
-#ifdef X_TOOLS_USING_GOOGLE_LOG
+#ifdef X_TOOLS_IMPORT_MODULE_GLOG
 static void xToolsInitGoogleLogging(char *argv0)
 {
     QString logPath = xToolsSettings::instance()->settingsPath();
@@ -55,7 +55,7 @@ static void xToolsInitGoogleLogging(char *argv0)
 }
 #endif
 
-#ifdef X_TOOLS_USING_GOOGLE_LOG
+#ifdef X_TOOLS_IMPORT_MODULE_GLOG
 static void xToolsShutdownGoogleLogging()
 {
 #ifndef QT_DEBUG
@@ -64,7 +64,7 @@ static void xToolsShutdownGoogleLogging()
 }
 #endif
 
-#ifdef X_TOOLS_USING_GOOGLE_LOG
+#ifdef X_TOOLS_IMPORT_MODULE_GLOG
 static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QByteArray localMsg = msg.toUtf8();
@@ -108,7 +108,7 @@ static void xToolsInitApp(const QString &appName)
 
 static void xToolsInstallMessageHandler()
 {
-#ifdef X_TOOLS_USING_GOOGLE_LOG
+#ifdef X_TOOLS_IMPORT_MODULE_GLOG
     qInstallMessageHandler(qtLogToGoogleLog);
 #endif
 }
@@ -134,7 +134,7 @@ static void xToolsInitHdpi()
     qputenv("QT_SCALE_FACTOR", "1.5");
 #endif
 
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     int policy = xToolsSettings::instance()->hdpiPolicy();
     if (!xToolsDataStructure::isValidHighDpiPolicy(policy)) {
         qWarning() << "The value of hdpi policy is not specified, set to default value:"
@@ -166,7 +166,7 @@ static void xToolsInitAppStyle()
 static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 {
     xToolsInitApp(appName);
-#ifdef X_TOOLS_USING_GOOGLE_LOG
+#ifdef X_TOOLS_IMPORT_MODULE_GLOG
     xToolsInitGoogleLogging(argv[0]);
     xToolsInstallMessageHandler();
 #else
@@ -178,7 +178,7 @@ static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 
 static void sakDoSomethingAfterAppExited()
 {
-#ifdef X_TOOLS_USING_GOOGLE_LOG
+#ifdef X_TOOLS_IMPORT_MODULE_GLOG
     xToolsShutdownGoogleLogging();
 #endif
 }

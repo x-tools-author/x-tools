@@ -232,7 +232,7 @@ QByteArray xToolsDataStructure::affixesData(int affixes)
     return QByteArray("");
 }
 
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 QVariantList xToolsDataStructure::supportedHighDpiPolicies()
 {
     QMetaEnum metaEnum = QMetaEnum::fromType<HighDpiPolicy>();
@@ -244,7 +244,7 @@ QVariantList xToolsDataStructure::supportedHighDpiPolicies()
 }
 #endif
 
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 QString xToolsDataStructure::highDpiPolicyName(int policy)
 {
     static QMap<int, QString> policyMap;
@@ -263,7 +263,7 @@ QString xToolsDataStructure::highDpiPolicyName(int policy)
 }
 #endif
 
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 bool xToolsDataStructure::isValidHighDpiPolicy(int policy)
 {
     auto policies = supportedHighDpiPolicies();

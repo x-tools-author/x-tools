@@ -57,7 +57,7 @@ public:
     Q_INVOKABLE static QByteArray affixesData(int affixes);
 
 public:
-#ifdef X_TOOLS_ENABLE_HIGH_DPI_POLICY
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     enum HighDpiPolicy {
         HighDpiPolicyRound = int(Qt::HighDpiScaleFactorRoundingPolicy::Round),
         HighDpiPolicyCeil = int(Qt::HighDpiScaleFactorRoundingPolicy::Ceil),

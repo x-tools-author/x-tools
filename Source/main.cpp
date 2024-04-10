@@ -15,7 +15,7 @@ int main(const int argc, char *argv[])
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QApplication::setAttribute(Qt::AA_Use96Dpi);
 #endif
-#ifdef X_TOOLS_BUILD_WITH_CMAKE
+#if 0
     Q_INIT_RESOURCE(xToolsCommon);
 #endif
     return xToolsExec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"));

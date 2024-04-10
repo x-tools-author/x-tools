@@ -57,12 +57,12 @@ jobs:
         mkdir build
         cd build
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-        cmake -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
-        cmake --build . --target QtSwissArmyKnife
-        dir && dir .\sak && dir .\sak\QtSwissArmyKnife
+        cmake -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+        cmake --build . --target xTools
+        dir && dir .\assets && dir .\assets\xTools
     - name: Upload Release Asset for Windnows
       run: |
-        dir && gh release upload continuous 'build\sak\qtswissarmyknife-windows-amd64.zip'
+        dir && gh release upload continuous 'build\assets\xtools-windows-amd64.zip'
   release-for-linux:
     runs-on: ubuntu-20.04
     needs: update-release
@@ -84,12 +84,12 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -DSAK_ENABLE_LINUXDEPLOYQT:BOOL=TRUE -DSAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD:BOOL=TRUE -G "Unix Makefiles"
-        cmake --build . --target QtSwissArmyKnife
-        dir && dir ./sak && dir ./sak/QtSwissArmyKnife
+        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -DSAK_ENABLE_LINUXDEPLOYQT:BOOL=TRUE -DSAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD:BOOL=TRUE -G "Unix Makefiles"
+        cmake --build . --target xTools
+        dir && dir ./assets && dir ./assets/xTools
     - name: Upload Release Asset for Linux
       run: |
-        dir && gh release upload continuous 'build/qtswissarmyknife-linux-x86_64.AppImage'
+        dir && gh release upload continuous 'build/xtools-linux-x86_64.AppImage'
   release-for-macos:
     runs-on: macos-11
     needs: update-release
@@ -118,11 +118,11 @@ jobs:
         mkdir build
         cd build
         cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
-        cmake --build . --target QtSwissArmyKnife
-        ls && ls ./sak && ls ./sak/QtSwissArmyKnife
+        cmake --build . --target xTools
+        ls && ls ./assets && ls ./assets/xTools
     - name: Upload Release Asset for macOS
       run: |
-        ls && gh release upload continuous 'build/sak/QtSwissArmyKnife/qtswissarmyknife-macos-11.dmg'
+        ls && gh release upload continuous 'build/assets/xTools/xtools-macos-11.dmg'
   release-for-android:
     runs-on: windows-2019
     needs: update-release
@@ -166,7 +166,7 @@ jobs:
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
-          cmake --build build\armeabi_v7a --target QtSwissArmyKnife --config Release
+          cmake --build build\armeabi_v7a --target xTools --config Release
       - name: Deploy for Android
         shell: cmd
         run: |
@@ -180,5 +180,5 @@ jobs:
           --jdk %JAVA_HOME% --gradle --release
       - name: Upload Release Asset for Android
         run: |
-          cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk qtswissarmyknife-android-armeabi_v7a.apk
-          ls && tree build/armeabi_v7a && gh release upload continuous qtswissarmyknife-android-armeabi_v7a.apk
+          cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-armeabi_v7a.apk
+          ls && tree build/armeabi_v7a && gh release upload continuous xtools-android-armeabi_v7a.apk

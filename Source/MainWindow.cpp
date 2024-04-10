@@ -30,7 +30,9 @@
 #include <QVariant>
 
 #include "xToolsApplication.h"
+#ifdef X_TOOLS_IMPORT_MODULE_ASSISTANTS
 #include "xToolsAssistantFactory.h"
+#endif
 #include "xToolsSettings.h"
 #include "xToolsToolBoxUi.h"
 #ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
@@ -180,6 +182,7 @@ void MainWindow::initFileMenu()
 
 void MainWindow::initToolMenu()
 {
+#ifdef X_TOOLS_IMPORT_MODULE_ASSISTANTS
     auto* toolMenu = new QMenu(tr("&Tools"));
     menuBar()->insertMenu(m_languageMenu->menuAction(), toolMenu);
 
@@ -200,6 +203,7 @@ void MainWindow::initToolMenu()
             }
         });
     }
+#endif
 }
 
 void MainWindow::initOptionMenu()
