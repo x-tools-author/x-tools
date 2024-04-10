@@ -71,6 +71,9 @@ xToolsApplication::xToolsApplication(int argc, char *argv[])
 
     // Splash screen
     m_splashScreen.setPixmap(splashScreenPixMap());
+#if 0
+    m_splashScreen.setWindowFlags(m_splashScreen.windowFlags() | Qt::WindowStaysOnTopHint);
+#endif
     m_splashScreen.show();
     processEvents();
     showSplashScreenMessage(tr("Initialize application..."));
