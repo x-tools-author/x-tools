@@ -56,13 +56,11 @@ QString xToolsStyleSheetManager::themeName()
 
 void xToolsStyleSheetManager::setThemeName(const QString& themeName)
 {
-    qInfo() << "The stylesheet is setting to: " << themeName;
     setCurrentTheme(themeName);
-    qInfo() << "The stylesheet is updating...";
     updateStylesheet();
-    qInfo() << "The stylesheet is setting to the application...";
+#if 0
     qApp->setStyleSheet(styleSheet());
-    xToolsSettings::instance()->setValue("themeName", themeName);
+#endif
     qInfo() << "The stylesheet has been changed: " << this->currentTheme();
 }
 

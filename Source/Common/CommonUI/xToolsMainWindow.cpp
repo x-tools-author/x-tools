@@ -43,11 +43,6 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     m_xToolsApp = dynamic_cast<xToolsApplication*>(qApp);
     Q_ASSERT_X(m_xToolsApp, Q_FUNC_INFO, "The application is not xToolsApplication.");
 
-#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
-    auto& styleSheetManager = xToolsStyleSheetManager::instance();
-    styleSheetManager.setThemeName(styleSheetManager.themeName());
-#endif
-
     m_appStyleActionGroup = new QActionGroup(this);
     m_languageActionGroup = new QActionGroup(this);
     m_appPaletteActionGroup = new QActionGroup(this);
@@ -56,6 +51,12 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     initMenuOption();
     initMenuLanguage();
     initMenuHelp();
+#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+    connect(&xToolsStyleSheetManager::instance(),
+            &xToolsStyleSheetManager::stylesheetChanged,
+            this,
+            [=]() { tryToReboot(); });
+#endif
 }
 
 QString xToolsMainWindow::qtConfFileName()

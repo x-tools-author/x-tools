@@ -25,6 +25,9 @@
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #include "xToolsDataStructure.h"
 #endif
+#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+#include "xToolsStyleSheetManager.h"
+#endif
 
 #ifdef X_TOOLS_IMPORT_MODULE_GLOG
 static void xToolsInitGoogleLogging(char *argv0)
@@ -194,7 +197,16 @@ int xToolsExec(int argc, char *argv[], const QString &appName)
     AppT app(argc, argv);
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     xToolsSettings::instance()->setValue("startUpTime", dtStr);
+
+#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+    auto &styleSheetManager = xToolsStyleSheetManager::instance();
+    const QString styleSheet = styleSheetManager.styleSheet();
+    if (!styleSheet.isEmpty() && !styleSheetManager.currentTheme().isEmpty()) {
+        app.setStyleSheet(styleSheet);
+    }
+#else
     xToolsInitAppStyle();
+#endif
 
     QWidget *ui;
     if (xToolsIsSameType<MainWindowT, CentralWidgetT>()) {

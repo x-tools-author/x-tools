@@ -21,7 +21,7 @@ X_TOOLS_ORG_NAME        = "xTools"
 X_TOOLS_ORG_DOMAIN      = "IT"
 X_TOOLS_APP_DESCRIPTION = "xTools Studio"
 X_TOOLS_APP_COPYRIGHT   = "Copyright 2018-2024 x-tools-author(x-tools@outlook.com). All rights reserved."
-X_TOOLS_VERSION         = "5.0.0"
+X_TOOLS_VERSION         = "6.0.0"
 
 win32 {
     QMAKE_TARGET_COMPANY        = "$${X_TOOLS_ORG_NAME}"
