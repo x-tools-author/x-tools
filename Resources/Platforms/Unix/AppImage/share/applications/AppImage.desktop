@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=xTools
-Comment=xTools
-Exec=xTools
-Icon=xTools
+Name=AppImage
+Comment=AppImage
+Exec=AppImage
+Icon=AppImage
 Categories=Development;

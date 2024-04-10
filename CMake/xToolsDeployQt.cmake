@@ -83,63 +83,45 @@ function(x_tools_deploy_qt_for_mac target)
 endfunction()
 
 function(x_tools_deploy_qt_for_linux target)
-  if(NOT ${target} STREQUAL "xTools")
+  option(X_TOOLS_LINUX_MAKE_${target}_APP_IMAGE "Pack target tp a app image file" OFF)
+  if(NOT X_TOOLS_LINUX_MAKE_${target}_APP_IMAGE)
     return()
   endif()
 
-  set(APP_DIR ${CMAKE_BINARY_DIR}/xToolsAppDir)
-  add_custom_command(
-    TARGET ${target}
-    POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/platform/unix/xTools"
-            "${CMAKE_BINARY_DIR}/xToolsAppDir"
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/xToolsAppDir/bin"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${target}>
-            "${CMAKE_BINARY_DIR}/xToolsAppDir/bin"
-    COMMAND
-      ${SAK_BIN_LINUXDEPLOYQT} "${CMAKE_BINARY_DIR}/xToolsAppDir/share/applications/xTools.desktop"
-      "-verbose=0" "-appimage" "-qmake=${QT_QMAKE_EXECUTABLE}"
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMENT "Running creating appimage file..."
-    VERBATIM)
+  execute_process(
+    COMMAND git rev-parse --short HEAD
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_SHORT_COMMIT
+    OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-  if(${BUILD_SHARED_LIBS})
-    add_custom_command(
-      TARGET ${target}
-      POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:glog::glog>
-              "${CMAKE_BINARY_DIR}/xToolsAppDir/lib/$<TARGET_FILE_NAME:glog::glog>"
-      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-      COMMENT "Copy glog to xToolsAppDir/lib..."
-      VERBATIM)
-    add_custom_command(
-      TARGET ${target}
-      POST_BUILD
-      COMMAND
-        ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_BINARY_DIR}/xToolsAppDir/lib/$<TARGET_FILE_NAME:glog::glog>"
-        "${CMAKE_BINARY_DIR}/xToolsAppDir/lib/libglog.so.1"
-      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-      COMMENT "Copy glog and rename"
-      VERBATIM)
-  endif()
+  set(APP_DIR ${CMAKE_BINARY_DIR}/AppImage)
+  set(APP_DIR_BIN ${APP_DIR}/bin)
+  set(APP_IMAGE_TEMPLATE ${CMAKE_SOURCE_DIR}/Resources/Platforms/Unix/AppImage)
+  set(APP_LOGO "${CMAKE_SOURCE_DIR}/Resources/Images/256x256.png")
+  set(TOOLS_PATH ${CMAKE_SOURCE_DIR}/Resources/Tools/Ubuntu20.04)
+  set(appimagetool ${TOOLS_PATH}/appimagetool-x86_64.AppImage)
+  set(linuxdeployqt ${TOOLS_PATH}/linuxdeployqt-continuous-x86_64.AppImage)
+  set(applications_dir ${APP_DIR}/share/applications)
+  set(desktop_file "${applications_dir}/${target}.desktop")
+  set(app_image_file "${target}-${GIT_SHORT_COMMIT}-x86_64.AppImage")
 
   add_custom_command(
     TARGET ${target}
     POST_BUILD
-    COMMAND sh -c "ls *.AppImage > AppImages.txt"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${APP_IMAGE_TEMPLATE} ${APP_DIR}
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${APP_DIR_BIN}
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${target}> ${APP_DIR_BIN}
+    COMMAND sed -i "s/AppImage/${target}/g" "${applications_dir}/AppImage.desktop"
+    COMMAND ${CMAKE_COMMAND} -E rename "${applications_dir}/AppImage.desktop" ${desktop_file}
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${APP_IMAGE_TEMPLATE} ${APP_DIR}
+    COMMAND chmod +x ${appimagetool}
+    COMMAND chmod +x ${linuxdeployqt}
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${APP_LOGO} "${CMAKE_BINARY_DIR}/${target}.png"
+    COMMAND ${linuxdeployqt} ${desktop_file} "-qmake=${QT_QMAKE_EXECUTABLE}" "-appimage"
+    COMMAND ${CMAKE_COMMAND} -E rm -f ${target}-Linux-x86_64.AppImage "||" ${CMAKE_COMMAND} -E true
+    COMMAND ${CMAKE_COMMAND} -E rename ${app_image_file} ${target}-Linux-x86_64.AppImage
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMENT "Scan AppImage file"
-    VERBATIM)
-
-  add_custom_command(
-    TARGET ${target}
-    POST_BUILD
-    COMMAND sh -c "rm qtswissarmyknife-linux-x86_64.AppImage || true"
-    COMMAND sh -c "cat AppImages.txt | xargs -I {} mv {} qtswissarmyknife-linux-x86_64.AppImage"
-    COMMAND sh -c "rm AppImages.txt || true"
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMENT "Rename old AppImage file"
+    COMMENT "Creating app image file..."
     VERBATIM)
 endfunction()
 

@@ -96,14 +96,6 @@ macro(x_tools_add_assistant dir_name on_off)
   endif()
 endmacro()
 
-if(X_TOOLS_IMPORT_MODULE_QRCODE)
-  x_tools_add_third_party("libqrencode-master")
-endif()
-
-if(X_TOOLS_IMPORT_MODULE_MDNS)
-  x_tools_add_third_party("qmdnsengine-master")
-endif()
-
 option(X_TOOLS_IMPORT_MODULE_ASSISTANTS "Enable assistants module" ON)
 if(X_TOOLS_IMPORT_MODULE_ASSISTANTS)
   x_tools_add_assistant("CRC" ON)
@@ -117,6 +109,14 @@ if(X_TOOLS_IMPORT_MODULE_ASSISTANTS)
   x_tools_add_assistant("Broadcast" ON)
   x_tools_add_assistant("FileCheck" ON)
   x_tools_add_assistant("FileMerge" ON)
+
+  if(X_TOOLS_IMPORT_MODULE_QRCODE)
+    x_tools_add_third_party("libqrencode-master")
+  endif()
+
+  if(X_TOOLS_IMPORT_MODULE_MDNS)
+    x_tools_add_third_party("qmdnsengine-master")
+  endif()
 
   list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Assistants/xToolsAssistantFactory.h)
   list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Assistants/xToolsAssistantFactory.cpp)

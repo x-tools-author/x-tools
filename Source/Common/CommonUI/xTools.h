@@ -36,8 +36,9 @@ static void xToolsInitGoogleLogging(char *argv0)
         qWarning() << "Make log directory failed";
     }
 
+    auto keep = std::chrono::minutes(30*24*60);
     google::SetLogFilenameExtension(".log");     // The suffix of log file.
-    google::EnableLogCleaner(30);                // Keep the log file for 30 days.
+    google::EnableLogCleaner(keep);              // Keep the log file for 30 days.
     google::SetApplicationFingerprint("xTools"); // (It seem to be no use.)
 
     fLB::FLAGS_logtostdout = false;
