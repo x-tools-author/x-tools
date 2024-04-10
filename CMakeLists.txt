@@ -182,16 +182,19 @@ if(X_TOOLS_IMPORT_MODULE_PRIVATE)
   target_link_libraries(xTools PRIVATE QtAES::QtAES)
 endif()
 
-add_custom_target(
-  xTools_pull
-  COMMAND git pull "https://gitee.com/x-tools-author/x-tools-private.git"
-  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
-add_custom_target(
-  xTools_push
-  COMMAND git push
-  SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+option(X_TOOLS_ENABLE_GIT_COMMAND "Some git commands for pulling and pushing" OFF)
+if(X_TOOLS_ENABLE_GIT_COMMAND)
+  add_custom_target(
+    xTools_pull
+    COMMAND git pull "https://gitee.com/x-tools-author/x-tools-private.git"
+    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+  add_custom_target(
+    xTools_push
+    COMMAND git push
+    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
 
 # -------------------------------------------------------------------------------------------------
 # Assistant applications
@@ -207,20 +210,22 @@ if((QT_VERSION_MAJOR GREATER 5) AND (NOT Qt6_VERSION VERSION_LESS "6.5.0"))
     add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
   endif()
 
-  set(GITEE_URL "https://gitee.com/x-tools-author/x-tools-private.git")
-  add_custom_target(
-    xTools_clone_private_modules
-    COMMAND git clone ${GITEE_URL} ./Private || echo "clone private modules"
-    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
-  add_custom_target(
-    xTools_pull_private_modules
-    COMMAND git pull ${GITEE_URL}
-    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Private)
-  add_custom_target(
-    xTools_push_private_modules
-    COMMAND git push
-    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Private)
+  if(X_TOOLS_ENABLE_GIT_COMMAND)
+    set(GITEE_URL "https://gitee.com/x-tools-author/x-tools-private.git")
+    add_custom_target(
+      xTools_clone_private_modules
+      COMMAND git clone ${GITEE_URL} ./Private || echo "clone private modules"
+      SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+    add_custom_target(
+      xTools_pull_private_modules
+      COMMAND git pull ${GITEE_URL}
+      SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Private)
+    add_custom_target(
+      xTools_push_private_modules
+      COMMAND git push
+      SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Private)
+  endif()
 endif()
