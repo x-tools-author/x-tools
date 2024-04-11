@@ -35,10 +35,10 @@
 #endif
 #include "xToolsSettings.h"
 #include "xToolsToolBoxUi.h"
-#ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_CANBUS
 #include "xToolsCanBusStudioUi.h"
 #endif
-#ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_MODBUS
 #include "xToolsModbusStudioUi.h"
 #endif
 #ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
@@ -152,7 +152,7 @@ void MainWindow::initFileMenu()
     }
 
     // Other tools
-#ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_MODBUS
     auto* modbusAction = new QAction("Modbus Studio", this);
     connect(modbusAction, &QAction::triggered, this, [=]() {
         auto* w = new xToolsModbusStudioUi();
@@ -164,7 +164,7 @@ void MainWindow::initFileMenu()
     windowMenu->addAction(modbusAction);
 #endif
 
-#ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_CANBUS
     auto* canBusAction = new QAction("CANBus Studio", this);
     connect(canBusAction, &QAction::triggered, this, [=]() {
         auto* w = new xToolsCanBusStudioUi();
@@ -339,11 +339,11 @@ void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
 {
     Q_UNUSED(buttonGroup)
     Q_UNUSED(toolBar)
-#ifdef X_TOOLS_IMPORT_MODULE_MODBUS_STUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_MODBUS
     auto icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconModbus.svg"));
     initNav({buttonGroup, icon, "Modbus Studio", new xToolsModbusStudioUi(this), toolBar});
 #endif
-#ifdef X_TOOLS_IMPORT_MODULE_CANBUS_STUDIO
+#ifdef X_TOOLS_IMPORT_MODULE_CANBUS
     icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconCanBus.svg"));
     initNav({buttonGroup, icon, "CANBus Studio", new xToolsCanBusStudioUi(this), toolBar});
 #endif
