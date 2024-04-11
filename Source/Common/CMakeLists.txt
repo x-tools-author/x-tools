@@ -36,4 +36,4 @@ if(NOT X_TOOLS_IMPORT_MODULE_BLUETOOTH)
   list(REMOVE_ITEM ALL_SOURCE ${TMP_DIR}/CommonUI/xToolsBleDeviceInfoComboBox.cpp)
 endif()
 
-x_tools_generate_translations(xToolsCommon)
+# x_tools_generate_translations(xToolsCommon)
