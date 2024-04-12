@@ -2977,7 +2977,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="86"/>
         <source>UDP Client</source>
-        <translation>DUP客户端</translation>
+        <translation>UDP客户端</translation>
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="88"/>
