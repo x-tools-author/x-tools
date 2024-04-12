@@ -115,7 +115,7 @@ private:
     void onPushButtonInputSendClicked();
     void onComboBoxInputIntervalActivated();
     void onComboBoxInputFormatActivated();
-    void onComboBoxInputTextActivated();
+    void onComboBoxInputTextActivated(int index);
 
     // output
     void onCheckBoxOutputWrapClicked();

@@ -468,6 +468,7 @@ void xToolsToolBoxUi::initUiInput()
             &xToolsToolBoxUiInputMenu::parametersChanged,
             this,
             &xToolsToolBoxUi::onInputTextChanged);
+    ui->comboBoxInputText->setCompleter(nullptr);
     ui->pushButtonInputSettings->setMenu(m_inputMenu);
 }
 
@@ -767,9 +768,12 @@ void xToolsToolBoxUi::onComboBoxInputFormatActivated()
     xToolsApplication::setValidator(lineEdit, format);
 }
 
-void xToolsToolBoxUi::onComboBoxInputTextActivated()
+void xToolsToolBoxUi::onComboBoxInputTextActivated(int index)
 {
     int format = ui->comboBoxInputText->currentData().toInt();
     ui->comboBoxInputFormat->setCurrentIndexFromData(format);
     onComboBoxInputFormatActivated();
+
+    QString text = ui->comboBoxInputText->itemText(index);
+    ui->comboBoxInputText->lineEdit()->setText(text);
 }
