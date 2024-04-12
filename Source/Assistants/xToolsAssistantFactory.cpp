@@ -21,10 +21,10 @@
 #include "xToolsPingAssistant.h"
 #include "xToolsStringAssistant.h"
 
-#ifdef X_TOOLS_IMPORT_MODULE_MDNS
+#ifdef X_TOOLS_ENABLE_MODULE_MDNS
 #include "xToolsMdnsAssistant.h"
 #endif
-#ifdef X_TOOLS_IMPORT_MODULE_QRCODE
+#ifdef X_TOOLS_ENABLE_MODULE_QRCODE
 #include "xToolsQRCodeAssistant.h"
 #endif
 
@@ -32,7 +32,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     : QObject(parent)
 {
     addAssistant<xToolsCRCAssistant>(AssistantTypeCrc, tr("CRC Assistant"));
-#ifdef X_TOOLS_IMPORT_MODULE_MDNS
+#ifdef X_TOOLS_ENABLE_MODULE_MDNS
     addAssistant<xToolsMdnsAssistant>(AssistantTypeMdns, tr("mDNS Assistant"));
 #endif
     addAssistant<xToolsPingAssistant>(AssistantTypePing, tr("Ping Assistant"));
@@ -43,7 +43,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     addAssistant<xToolsBroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));
     addAssistant<xToolsFileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
     addAssistant<xToolsFileMergeAssistant>(AssistantTypeFileMerge, tr("File Merge Assistant"));
-#ifdef X_TOOLS_IMPORT_MODULE_QRCODE
+#ifdef X_TOOLS_ENABLE_MODULE_QRCODE
     addAssistant<xToolsQRCodeAssistant>(AssistantTypeQRCode, tr("QR Code Assistant"));
 #endif
 }

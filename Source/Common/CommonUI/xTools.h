@@ -19,17 +19,17 @@
 #include "xToolsMainWindow.h"
 #include "xToolsSettings.h"
 
-#ifdef X_TOOLS_IMPORT_MODULE_GLOG
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
 #include "glog/logging.h"
 #endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #include "xToolsDataStructure.h"
 #endif
-#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
 #include "xToolsStyleSheetManager.h"
 #endif
 
-#ifdef X_TOOLS_IMPORT_MODULE_GLOG
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
 static void xToolsInitGoogleLogging(char *argv0)
 {
     QString logPath = xToolsSettings::instance()->settingsPath();
@@ -59,7 +59,7 @@ static void xToolsInitGoogleLogging(char *argv0)
 }
 #endif
 
-#ifdef X_TOOLS_IMPORT_MODULE_GLOG
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
 static void xToolsShutdownGoogleLogging()
 {
 #ifndef QT_DEBUG
@@ -68,7 +68,7 @@ static void xToolsShutdownGoogleLogging()
 }
 #endif
 
-#ifdef X_TOOLS_IMPORT_MODULE_GLOG
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
 static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QByteArray localMsg = msg.toUtf8();
@@ -112,7 +112,7 @@ static void xToolsInitApp(const QString &appName)
 
 static void xToolsInstallMessageHandler()
 {
-#ifdef X_TOOLS_IMPORT_MODULE_GLOG
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
     qInstallMessageHandler(qtLogToGoogleLog);
 #endif
 }
@@ -170,7 +170,7 @@ static void xToolsInitAppStyle()
 static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 {
     xToolsInitApp(appName);
-#ifdef X_TOOLS_IMPORT_MODULE_GLOG
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
     xToolsInitGoogleLogging(argv[0]);
     xToolsInstallMessageHandler();
 #else
@@ -182,7 +182,7 @@ static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 
 static void sakDoSomethingAfterAppExited()
 {
-#ifdef X_TOOLS_IMPORT_MODULE_GLOG
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
     xToolsShutdownGoogleLogging();
 #endif
 }
@@ -198,7 +198,7 @@ int xToolsExec(int argc, char *argv[], const QString &appName)
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     xToolsSettings::instance()->setValue("startUpTime", dtStr);
 
-#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
     auto &styleSheetManager = xToolsStyleSheetManager::instance();
     const QString styleSheet = styleSheetManager.styleSheet();
     if (!styleSheet.isEmpty() && !styleSheetManager.currentTheme().isEmpty()) {

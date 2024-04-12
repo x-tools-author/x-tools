@@ -30,18 +30,20 @@
 #include <QVariant>
 
 #include "xToolsApplication.h"
-#ifdef X_TOOLS_IMPORT_MODULE_ASSISTANTS
+#ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
 #include "xToolsAssistantFactory.h"
 #endif
 #include "xToolsSettings.h"
 #include "xToolsToolBoxUi.h"
-#ifdef X_TOOLS_IMPORT_MODULE_CANBUS
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
+#ifdef X_TOOLS_ENABLE_MODULE_CANBUS
 #include "xToolsCanBusStudioUi.h"
 #endif
-#ifdef X_TOOLS_IMPORT_MODULE_MODBUS
+#ifdef X_TOOLS_ENABLE_MODULE_MODBUS
 #include "xToolsModbusStudioUi.h"
 #endif
-#ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
 #include "xToolsPayJsApi.h"
 #endif
 
@@ -50,7 +52,7 @@
 #endif
 
 MainWindow::MainWindow(QWidget* parent)
-#ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
+#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
     : xToolsPrivateMainWindow(parent)
 #else
     : xToolsMainWindow(parent)
@@ -71,7 +73,7 @@ MainWindow::MainWindow(QWidget* parent)
     }
 #endif
 
-#ifdef X_TOOLS_IMPORT_MODULE_PRIVATE
+#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
 #ifdef QT_DEBUG
     xToolsPayJsApi::singleton().setPrice(2);
 #else
@@ -152,7 +154,8 @@ void MainWindow::initFileMenu()
     }
 
     // Other tools
-#ifdef X_TOOLS_IMPORT_MODULE_MODBUS
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
+#ifdef X_TOOLS_ENABLE_MODULE_MODBUS
     auto* modbusAction = new QAction("Modbus Studio", this);
     connect(modbusAction, &QAction::triggered, this, [=]() {
         auto* w = new xToolsModbusStudioUi();
@@ -163,8 +166,7 @@ void MainWindow::initFileMenu()
     });
     windowMenu->addAction(modbusAction);
 #endif
-
-#ifdef X_TOOLS_IMPORT_MODULE_CANBUS
+#ifdef X_TOOLS_ENABLE_MODULE_CANBUS
     auto* canBusAction = new QAction("CANBus Studio", this);
     connect(canBusAction, &QAction::triggered, this, [=]() {
         auto* w = new xToolsCanBusStudioUi();
@@ -175,6 +177,7 @@ void MainWindow::initFileMenu()
     });
     windowMenu->addAction(canBusAction);
 #endif
+#endif
 
     m_fileMenu->addSeparator();
     m_fileMenu->addAction(m_exitAction);
@@ -182,7 +185,7 @@ void MainWindow::initFileMenu()
 
 void MainWindow::initToolMenu()
 {
-#ifdef X_TOOLS_IMPORT_MODULE_ASSISTANTS
+#ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
     auto* toolMenu = new QMenu(tr("&Tools"));
     menuBar()->insertMenu(m_languageMenu->menuAction(), toolMenu);
 
@@ -339,13 +342,15 @@ void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
 {
     Q_UNUSED(buttonGroup)
     Q_UNUSED(toolBar)
-#ifdef X_TOOLS_IMPORT_MODULE_MODBUS
-    auto icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconModbus.svg"));
-    initNav({buttonGroup, icon, "Modbus Studio", new xToolsModbusStudioUi(this), toolBar});
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
+#ifdef X_TOOLS_ENABLE_MODULE_MODBUS
+    auto modbusIcon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconModbus.svg"));
+    initNav({buttonGroup, modbusIcon, "Modbus Studio", new xToolsModbusStudioUi(this), toolBar});
 #endif
-#ifdef X_TOOLS_IMPORT_MODULE_CANBUS
-    icon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconCanBus.svg"));
-    initNav({buttonGroup, icon, "CANBus Studio", new xToolsCanBusStudioUi(this), toolBar});
+#ifdef X_TOOLS_ENABLE_MODULE_CANBUS
+    auto canIcon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconCanBus.svg"));
+    initNav({buttonGroup, canIcon, "CANBus Studio", new xToolsCanBusStudioUi(this), toolBar});
+#endif
 #endif
 }
 

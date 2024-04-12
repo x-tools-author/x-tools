@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QRegularExpression>
 #include <QTextDocument>
-#ifdef X_TOOLS_IMPORT_MODULE_QML
+#ifdef X_TOOLS_ENABLE_MODULE_QML
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
 #include <QQuickTextDocument>
 #endif
@@ -24,7 +24,7 @@ xToolsHighlighter::xToolsHighlighter(QObject *parent)
 void xToolsHighlighter::setDoc(QVariant doc)
 {
     auto obj = doc.value<QObject *>();
-#ifdef X_TOOLS_IMPORT_MODULE_QML
+#ifdef X_TOOLS_ENABLE_MODULE_QML
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
     if (obj->inherits("QQuickTextDocument")) {
         setDocument(doc.value<QQuickTextDocument *>()->textDocument());

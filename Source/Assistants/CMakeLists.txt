@@ -8,10 +8,10 @@ list(APPEND X_TOOLS_COMMON_SOURCE ${X_TOOLS_COMMON_DIR}/Common/xToolsDataStructu
 list(APPEND X_TOOLS_COMMON_SOURCE ${X_TOOLS_COMMON_DIR}/CommonUI/xToolsMainWindow.h)
 list(APPEND X_TOOLS_COMMON_SOURCE ${X_TOOLS_COMMON_DIR}/CommonUI/xToolsMainWindow.cpp)
 
-macro(x_tools_add_assistant dir_name app_name)
+macro(x_tools_add_assistant_app dir_name app_name)
   string(TOUPPER ${app_name} upper_app_name)
-  option(X_TOOLS_ENABLE_APP_${upper_app_name} "" ON)
-  if(X_TOOLS_ENABLE_APP_${upper_app_name})
+  option(X_TOOLS_ENABLE_TARGET_${upper_app_name} "" ON)
+  if(X_TOOLS_ENABLE_TARGET_${upper_app_name})
     set(ASSISTANT_ROOT_DIR ${CMAKE_SOURCE_DIR}/Source/Assistants/${dir_name})
     file(GLOB_RECURSE ASSISTANT_SOURCES_H "${ASSISTANT_ROOT_DIR}/*.h")
     file(GLOB_RECURSE ASSISTANT_SOURCES_UI "${ASSISTANT_ROOT_DIR}/*.ui")

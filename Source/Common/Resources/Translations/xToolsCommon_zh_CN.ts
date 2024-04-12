@@ -223,22 +223,22 @@
     <message>
         <location filename="../../CommonUI/xToolsMainWindow.cpp" line="230"/>
         <source>Settings</source>
-        <translation>导出</translation>
+        <translation>配置参数</translation>
     </message>
     <message>
         <location filename="../../CommonUI/xToolsMainWindow.cpp" line="233"/>
         <source>Clear Settings</source>
-        <translation>还原配置</translation>
+        <translation>清空软件配置</translation>
     </message>
     <message>
         <location filename="../../CommonUI/xToolsMainWindow.cpp" line="240"/>
         <source>Open Settings Directory</source>
-        <translation>打开缓存</translation>
+        <translation>打开配置目录</translation>
     </message>
     <message>
         <location filename="../../CommonUI/xToolsMainWindow.cpp" line="253"/>
         <source>HDPI Policy</source>
-        <translation>高分屏适配策略</translation>
+        <translation>屏幕适配</translation>
     </message>
     <message>
         <location filename="../../CommonUI/xToolsMainWindow.cpp" line="304"/>

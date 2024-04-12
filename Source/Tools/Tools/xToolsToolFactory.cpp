@@ -31,7 +31,7 @@
 #include "xToolsWebSocketServerTool.h"
 #include "xToolsWebSocketTransmitterTool.h"
 
-#ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
+#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
 #include "xToolsBleCentralTool.h"
 #endif
 
@@ -77,7 +77,7 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
     } else if (WebSocketServerTool == type) {
         tool = new xToolsWebSocketServerTool();
     }
-#ifdef X_TOOLS_IMPORT_MODULE_BLUETOOTH
+#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
     else if (BleCentralTool == type) {
         tool = new xToolsBleCentralTool();
     }

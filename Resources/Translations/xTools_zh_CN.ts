@@ -24,7 +24,7 @@
     <message>
         <location filename="../../Source/MainWindow.cpp" line="211"/>
         <source>Main Window</source>
-        <translation>主窗口</translation>
+        <translation>关闭设置</translation>
     </message>
     <message>
         <location filename="../../Source/MainWindow.cpp" line="212"/>
@@ -2972,7 +2972,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="84"/>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="631"/>
         <source>SerialPort</source>
-        <translation>串口</translation>
+        <translation>串口助手</translation>
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="86"/>

@@ -33,7 +33,7 @@
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #include "xToolsDataStructure.h"
 #endif
-#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
 #include "xToolsStyleSheetManager.h"
 #endif
 
@@ -51,7 +51,7 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     initMenuOption();
     initMenuLanguage();
     initMenuHelp();
-#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
     connect(&xToolsStyleSheetManager::instance(),
             &xToolsStyleSheetManager::stylesheetChanged,
             this,
@@ -142,7 +142,7 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
 {
     QMenu* appStyleMenu = new QMenu(tr("Application Style"), this);
     m_optionMenu->addMenu(appStyleMenu);
-#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
     initOptionMenuAppStyleMenuThirdParty(appStyleMenu);
 #else
     initOptionMenuAppStyleMenuQt(appStyleMenu);
@@ -174,7 +174,7 @@ void xToolsMainWindow::initOptionMenuAppStyleMenuQt(QMenu* menu)
 
 void xToolsMainWindow::initOptionMenuAppStyleMenuThirdParty(QMenu* menu)
 {
-#ifdef X_TOOLS_ENABLE_ADVANCED_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
     menu->addAction(tr("none"), this, [=]() {
         xToolsStyleSheetManager::instance().setThemeName("");
     });
