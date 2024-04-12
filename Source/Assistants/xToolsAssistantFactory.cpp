@@ -18,7 +18,9 @@
 #include "xToolsFileCheckAssistant.h"
 #include "xToolsFileMergeAssistant.h"
 #include "xToolsNumberAssistant.h"
+#ifdef X_TOOLS_ENABLE_MODULE_PING
 #include "xToolsPingAssistant.h"
+#endif
 #include "xToolsStringAssistant.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_MDNS
@@ -35,7 +37,9 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
 #ifdef X_TOOLS_ENABLE_MODULE_MDNS
     addAssistant<xToolsMdnsAssistant>(AssistantTypeMdns, tr("mDNS Assistant"));
 #endif
+#ifdef X_TOOLS_ENABLE_MODULE_PING
     addAssistant<xToolsPingAssistant>(AssistantTypePing, tr("Ping Assistant"));
+#endif
     addAssistant<xToolsAsciiAssistant>(AssistantTypeAscii, tr("ASCII Assistant"));
     addAssistant<xToolsBase64Assisatnt>(AssistantTypeBase64, tr("Base64 Assistant"));
     addAssistant<xToolsNumberAssistant>(AssistantTypeNumber, tr("Number Assistant"));
