@@ -101,13 +101,13 @@ QByteArray xToolsDataStructure::stringToByteArray(const QString &str, int format
 
     QByteArray data;
     if (format == xToolsDataStructure::TextFormatBin) {
-        cookString(str, 2);
+        data = cookString(str, 2);
     } else if (format == xToolsDataStructure::TextFormatOct) {
-        cookString(str, 8);
+        data = cookString(str, 8);
     } else if (format == xToolsDataStructure::TextFormatDec) {
-        cookString(str, 10);
+        data = cookString(str, 10);
     } else if (format == xToolsDataStructure::TextFormatHex) {
-        cookString(str, 16);
+        data = cookString(str, 16);
     } else if (format == xToolsDataStructure::TextFormatAscii) {
         data = str.toLatin1();
     } else if (format == xToolsDataStructure::TextFormatUtf8) {
