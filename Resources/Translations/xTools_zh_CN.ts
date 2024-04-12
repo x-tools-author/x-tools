@@ -2876,7 +2876,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="187"/>
         <source>Date</source>
-        <translation>显示器器</translation>
+        <translation>显示日期</translation>
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="194"/>
