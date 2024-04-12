@@ -13,11 +13,11 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(WITH_TOOLS NO)
 set(WITH_GFLAGS OFF)
-set(WITHOUT_PNG ON)
 set(BUILD_TESTING OFF)
 set(BUILD_SHARED_LIBS OFF)
+set(WITHOUT_PNG ON)
+set(WITH_TOOLS NO)
 
 # --------------------------------------------------------------------------------------------------
 # Qt module
@@ -184,13 +184,11 @@ include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI)
 include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBox)
 include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBoxUI)
 file(GLOB X_TOOLS_SOURCE_TMP "${CMAKE_SOURCE_DIR}/Source/*.*")
-file(GLOB X_TOOLS_CMAKE_FILES "${CMAKE_SOURCE_DIR}/CMake/*.cmake")
 file(GLOB_RECURSE X_TOOLS_TOOLS_SOURCE "${CMAKE_SOURCE_DIR}/Source/Tools/*.*")
 file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE "${CMAKE_SOURCE_DIR}/Source/ToolBox/*.*")
 list(APPEND X_TOOLS_SOURCE xTools.rc)
 list(APPEND X_TOOLS_SOURCE xTools.qrc)
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_SOURCE_TMP})
-list(APPEND X_TOOLS_SOURCE ${X_TOOLS_CMAKE_FILES})
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_SOURCE})
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLBOX_SOURCE})
 

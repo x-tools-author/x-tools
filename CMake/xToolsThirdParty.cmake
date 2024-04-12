@@ -11,7 +11,7 @@ function(x_tools_copy_style_resources_for_target target)
     COMMENT "Copy style resources for ${target}...")
 endfunction()
 
-option(X_TOOLS_ENABLE_MODULE_STYLESHEET "Enable Qt advanced stylesheet" OFF)
+option(X_TOOLS_ENABLE_MODULE_STYLESHEET "Enable Qt advanced stylesheet" ON)
 if(X_TOOLS_ENABLE_MODULE_STYLESHEET)
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${X_TOOLS_STYLES_DIR_NAME}.zip
                   WORKING_DIRECTORY ${X_TOOLS_THIRD_PARTY_DIR})

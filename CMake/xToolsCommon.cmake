@@ -124,14 +124,21 @@ function(x_tools_generate_translations target)
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_zh_CN.ts)
   set(O_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations")
   if(NOT QT_VERSION VERSION_LESS "6.7.0")
-    qt_add_lupdate(SOURCE_TARGETS ${target} TS_FILES ${APP_TS_FILES})
+    qt_add_lupdate(
+      SOURCE_TARGETS
+      ${target}
+      TS_FILES
+      ${APP_TS_FILES}
+      LUPDATE_TARGET
+      ${target}_lupdate
+      NO_GLOBAL_TARGET)
   else()
     qt_add_lupdate(${target} TS_FILES ${APP_TS_FILES})
   endif()
 
   set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${O_PATH})
   if(NOT QT_VERSION VERSION_LESS "6.7.0")
-    qt_add_lrelease(TS_FILES ${APP_TS_FILES})
+    qt_add_lrelease(TS_FILES ${APP_TS_FILES} LRELEASE_TARGET ${target}_lrelease NO_GLOBAL_TARGET)
   else()
     qt_add_lrelease(${target} TS_FILES ${APP_TS_FILES})
   endif()
