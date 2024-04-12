@@ -31,6 +31,14 @@
     </message>
 </context>
 <context>
+    <name>xToolsBleDeviceInfoComboBox</name>
+    <message>
+        <location filename="../../CommonUI/xToolsBleDeviceInfoComboBox.cpp" line="100"/>
+        <source>Error Occurred</source>
+        <translation>出现错误</translation>
+    </message>
+</context>
+<context>
     <name>xToolsDataStructure</name>
     <message>
         <location filename="../../Common/xToolsDataStructure.cpp" line="252"/>

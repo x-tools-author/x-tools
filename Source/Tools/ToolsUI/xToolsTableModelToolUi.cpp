@@ -394,7 +394,7 @@ void xToolsTableModelToolUi::onPushButtonExportClicked()
     QString fileName = QFileDialog::getSaveFileName(xToolsApplication::mainWindow(),
                                                     tr("Import data"),
                                                     ".",
-                                                    tr("JSON (*.json);;All (*); "));
+                                                    tr("JSON (*.json);;All (*)"));
     if (fileName.isEmpty()) {
         return;
     }

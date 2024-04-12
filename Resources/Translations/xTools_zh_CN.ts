@@ -491,104 +491,96 @@
 <context>
     <name>xToolsBleCentralToolUi</name>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="14"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="14"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="38"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="38"/>
         <source>Devices</source>
         <translation>设备控制</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="50"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="50"/>
         <source>Settings</source>
         <translation>更多设置</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="57"/>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="58"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="57"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="58"/>
         <source>Scan</source>
         <translation>扫描设备</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="79"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="79"/>
         <source>Service</source>
         <translation>服务</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="102"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="102"/>
         <source>Characteristic</source>
         <translation>特征值</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="118"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="118"/>
         <source>Write way</source>
         <translation>写数据方式</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="126"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="126"/>
         <source>WriteWithResponse</source>
         <translation>需要应答</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="131"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="131"/>
         <source>WriteWithoutResponse</source>
         <translation>不需要应答</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="139"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="139"/>
         <source>(Unsupported characteristic)</source>
         <translation>（不支持的特征值）</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="151"/>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="249"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="151"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="249"/>
         <source>Notify</source>
         <translation>通知</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="158"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="158"/>
         <source>Read</source>
         <translation>读取</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="62"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="62"/>
         <source>Stop</source>
         <translation>停止扫描</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="115"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="115"/>
         <source>Timeout interval(S)</source>
         <translation>超时时间（秒）</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="127"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="127"/>
         <source>Name filtter</source>
         <translation>名称筛选</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="137"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="137"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="223"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="223"/>
         <source>Characteristics%1</source>
         <translation>特征值：%1</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="249"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="249"/>
         <source>Disnotify</source>
         <translation>取消通知</translation>
-    </message>
-</context>
-<context>
-    <name>xToolsBleDeviceInfoComboBox</name>
-    <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleDeviceInfoComboBox.cpp" line="100"/>
-        <source>Error Occurred</source>
-        <translation>出现错误</translation>
     </message>
 </context>
 <context>
@@ -794,207 +786,207 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsCanBusStudioUi</name>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="14"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="14"/>
         <source>CANBus Studio</source>
         <translation>CAN BUS Studio</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="38"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="38"/>
         <source>CAN Frame</source>
         <translation>帧设置</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="57"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="57"/>
         <source>Extended format</source>
         <translation>扩展格式</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="64"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="64"/>
         <source>Flexible data rate</source>
         <translation>灵活码率</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="71"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="71"/>
         <source>Frame ID</source>
         <translation>帧ID</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="91"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="91"/>
         <source>Frame type</source>
         <translation>帧类型</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="101"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="101"/>
         <source>Frame options</source>
         <translation>帧选项</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="114"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="114"/>
         <source>Bitrate switch</source>
         <translation>位率设置</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="150"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="150"/>
         <source>Device Control</source>
         <translation>设备控制</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="171"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="171"/>
         <source>Disconnect</source>
         <translation>断开连接</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="178"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="178"/>
         <source>Connect</source>
         <translation>连接设备</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="192"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="192"/>
         <source>Plugin</source>
         <translation>插件选择</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="221"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="221"/>
         <source>Name</source>
         <translation>接口名称</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="251"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="251"/>
         <source>Data View</source>
         <translation>数据预览</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="295"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="295"/>
         <source>Specify Configuration</source>
         <translation>指定配置</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="323"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="323"/>
         <source>Error filter</source>
         <translation>错误过滤</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="333"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="333"/>
         <source>Custom configurations</source>
         <translation>自定义配置</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="346"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="346"/>
         <source>CAN FD</source>
         <translation>CAN FD</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="373"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="373"/>
         <source>Loopback</source>
         <translation>本地回环</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="386"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="386"/>
         <source>Data bitrate</source>
         <translation>位率(CAN FD)</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="409"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="409"/>
         <source>Bitrate</source>
         <translation>位率</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="422"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="422"/>
         <source>Receive own</source>
         <translation>接收自己</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="451"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="451"/>
         <source>CAN Frame Payload</source>
         <translation>帧负载</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="489"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="489"/>
         <source>Send</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="74"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="74"/>
         <source>can0</source>
         <translation>can0</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="105"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="105"/>
         <source>DataFrame</source>
         <translation>数据帧</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="106"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="106"/>
         <source>ErrorFrame</source>
         <translation>错误帧</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="107"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="107"/>
         <source>RemoteRequestFrame</source>
         <translation>远程请求帧</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="129"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="129"/>
         <source>Hex</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="206"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="206"/>
         <source>Interface Name is Empty</source>
         <translation>接口名称为空</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="207"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="207"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation>接口名称为空，请输入名称后重试！</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="217"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="217"/>
         <source>Create device failed!</source>
         <translation>创建设备失败！</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="220"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="220"/>
         <source>Error Occurred</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="235"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="235"/>
         <source>Connection Error</source>
         <translation>链接错误</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="236"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="236"/>
         <source>Connection error: %1</source>
         <translation>链接错误：%1</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="317"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="317"/>
         <source>Device is Not Ready</source>
         <translation>设备未就绪</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="318"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="318"/>
         <source>Device is not ready, please connect the device then try angin!</source>
         <translation>设备未就绪，请连接设备后重试！</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="358"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="358"/>
         <source>Error Occure</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="394"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="394"/>
         <source>unspecified</source>
         <translation>未指定</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="396"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="396"/>
         <source>false</source>
         <translation>否</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="397"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="397"/>
         <source>true</source>
         <translation>是</translation>
     </message>
@@ -1495,22 +1487,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsModbusStudio</name>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudio.cpp" line="43"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudio.cpp" line="43"/>
         <source>RTU Client</source>
         <translation>RTU主机(客户端)</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudio.cpp" line="45"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudio.cpp" line="45"/>
         <source>RTU Server</source>
         <translation>RTU从机(服务器)</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudio.cpp" line="47"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudio.cpp" line="47"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudio.cpp" line="49"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudio.cpp" line="49"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
@@ -1518,299 +1510,299 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsModbusStudioUi</name>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="69"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="69"/>
         <source>Device Operations</source>
         <translation>设备操作</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="100"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="100"/>
         <source>Device list</source>
         <translation>设备列表</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="124"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="124"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="131"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="131"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="170"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="170"/>
         <source>Console</source>
         <translation>数据预览</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="208"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="208"/>
         <source>Client Registers</source>
         <translation>客户端寄存器</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="246"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="246"/>
         <source>Custom Protocol Data Unit</source>
         <translation>自定义协议数据单元</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="268"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="268"/>
         <source>Send</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="291"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="291"/>
         <source>Server Register</source>
         <translation>服务器寄存器</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="335"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="335"/>
         <source>Network Settings</source>
         <translation>网络配置</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="360"/>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="935"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="360"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="935"/>
         <source>Address</source>
         <translation>地址</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="387"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="387"/>
         <source>Port</source>
         <translation>端口</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="410"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="410"/>
         <source>Client parameters</source>
         <translation>客户端参数</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="442"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="442"/>
         <source>Start address</source>
         <translation>起始地址</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="484"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="484"/>
         <source>Target address</source>
         <translation>目标地址</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="497"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="497"/>
         <source>Timeout</source>
         <translation>超时时间</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="536"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="536"/>
         <source>Address number</source>
         <translation>地址数量</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="545"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="545"/>
         <source>Read</source>
         <translation>读取</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="552"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="552"/>
         <source>Write</source>
         <translation>写入</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="567"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="567"/>
         <source>Repeat times</source>
         <translation>重试次数</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="609"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="609"/>
         <source>Function code</source>
         <translation>功能码</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="632"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="632"/>
         <source>Serial Port Settings</source>
         <translation>服务器参数</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="657"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="657"/>
         <source>Data bits</source>
         <translation>数据位</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="673"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="673"/>
         <source>Port name</source>
         <translation>端口号</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="686"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="686"/>
         <source>Baud rate</source>
         <translation>波特率</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="705"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="705"/>
         <source>Stop bits</source>
         <translation>停止位</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="725"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="725"/>
         <source>Parity</source>
         <translation>校验位</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="751"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="751"/>
         <source>Server Parameters</source>
         <translation>服务器参数</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="770"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="770"/>
         <source>Server address</source>
         <translation>地址</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="784"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="784"/>
         <source>Listen only mode</source>
         <translation>仅监听</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="791"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="791"/>
         <source>Device busy</source>
         <translation>设备繁忙</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="164"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="164"/>
         <source>RtuClient</source>
         <translation>RTU客户端</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="165"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="165"/>
         <source>RtuServer</source>
         <translation>RTU服务器</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="166"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="166"/>
         <source>TcpClient</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="167"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="167"/>
         <source>TcpServer</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="221"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="221"/>
         <source>NoParity</source>
         <translation>无校验</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="222"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="222"/>
         <source>EvenParity</source>
         <translation>偶校验</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="223"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="223"/>
         <source>OddParity</source>
         <translation>奇校验</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="224"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="224"/>
         <source>SpaceParity</source>
         <translation>空格校验</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="225"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="225"/>
         <source>MarkParity</source>
         <translation>标记校验</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="230"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="230"/>
         <source>0x01-ReadCoils</source>
         <translation>0x01-度多个线圈</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="231"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="231"/>
         <source>0x02-ReadDiscreteInputs</source>
         <translation>0x02-读多个离散输入</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="232"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="232"/>
         <source>0x03-ReadHoldingRegisters</source>
         <translation>0x03-读多个保存寄存器</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="233"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="233"/>
         <source>0x04-ReadInputRegisters</source>
         <translation>0x04-读多个输入寄存器</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="234"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="234"/>
         <source>0x05-WriteSingleCoil</source>
         <translation>0x05-写单个线圈</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="235"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="235"/>
         <source>0x06-WriteSingleRegister</source>
         <translation>0x06-写单个寄存器</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="236"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="236"/>
         <source>0x0f-WriteMultipleCoils</source>
         <translation>0x0f-写多个线圈</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="237"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="237"/>
         <source>0x10-WriteMultipleRegisters</source>
         <translation>0x10-写多个寄存器</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="278"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="278"/>
         <source>Coils</source>
         <translation>线圈</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="278"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="278"/>
         <source>DiscreteInputs</source>
         <translation>离散输入</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="279"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="279"/>
         <source>InputRegisters</source>
         <translation>输入寄存器</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="279"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="279"/>
         <source>HoldingRegisters</source>
         <translation>保持寄存器</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="517"/>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="1207"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="517"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="1207"/>
         <source>Error occured</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="599"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="599"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
         <translation>无法打开设备：%1。请检查参数设置后重试！</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="602"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="602"/>
         <source>Can not open device</source>
         <translation>无法打开设备</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="935"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="935"/>
         <source>Value</source>
         <translation>数据</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="935"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="935"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="1257"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="1257"/>
         <source>Device is not Ready</source>
         <translation>设备未就绪</translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="1258"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="1258"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation>设备未就绪，请检查配置后重试！</translation>
     </message>
@@ -2530,37 +2522,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSocketClientTransmitterTool.cpp" line="23"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>使能</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSocketClientTransmitterTool.cpp" line="25"/>
         <source>ClientIp</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSocketClientTransmitterTool.cpp" line="27"/>
         <source>ClientPort</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSocketClientTransmitterTool.cpp" line="29"/>
         <source>SpecifiedClientIpAndPort</source>
-        <translation type="unfinished"></translation>
+        <translation>指定服务器地址和端口</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSocketClientTransmitterTool.cpp" line="31"/>
         <source>ServerIp</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSocketClientTransmitterTool.cpp" line="33"/>
         <source>ServerPort</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器端口</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSocketClientTransmitterTool.cpp" line="35"/>
         <source>MessageType</source>
-        <translation type="unfinished"></translation>
+        <translation>消息类型</translation>
     </message>
 </context>
 <context>
@@ -2568,52 +2560,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="14"/>
         <source>Item Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>参数编辑</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="33"/>
         <source>Server IP</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="53"/>
         <source>Client port</source>
-        <translation type="unfinished"></translation>
+        <translation>客户端端口</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="76"/>
         <source>Server port</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器端口</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="89"/>
         <source>Message type</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="96"/>
         <source>enable</source>
-        <translation type="unfinished"></translation>
+        <translation>使能</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="130"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="137"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>应用</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="155"/>
         <source>Client IP</source>
-        <translation type="unfinished"></translation>
+        <translation>客户端地址</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="162"/>
         <source>Specified client ip and port</source>
-        <translation type="unfinished"></translation>
+        <translation>指定客户端地址和端口</translation>
     </message>
 </context>
 <context>
@@ -2621,32 +2613,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketServerToolUi.ui" line="51"/>
         <source>Server IP</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketServerToolUi.ui" line="58"/>
         <source>Disconnect all clients</source>
-        <translation type="unfinished"></translation>
+        <translation>断开所有客户端</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketServerToolUi.ui" line="76"/>
         <source>All clients</source>
-        <translation type="unfinished"></translation>
+        <translation>所有客户端</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketServerToolUi.ui" line="90"/>
         <source>Selected client</source>
-        <translation type="unfinished"></translation>
+        <translation>选择客户端</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketServerToolUi.ui" line="103"/>
         <source>Server port</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器端口</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketServerToolUi.ui" line="116"/>
         <source>Message type</source>
-        <translation type="unfinished"></translation>
+        <translation>消息类型</translation>
     </message>
 </context>
 <context>
@@ -2654,17 +2646,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsStatisticianToolUi.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsStatisticianToolUi.ui" line="38"/>
         <source>Frames:</source>
-        <translation type="unfinished"></translation>
+        <translation>帧数：</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsStatisticianToolUi.ui" line="58"/>
         <source>Bytes:</source>
-        <translation type="unfinished"></translation>
+        <translation>字节：</translation>
     </message>
 </context>
 <context>
@@ -2672,37 +2664,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsStorerToolUi.ui" line="32"/>
         <source>Storer</source>
-        <translation type="unfinished"></translation>
+        <translation>存储器</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsStorerToolUi.ui" line="40"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>使能</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsStorerToolUi.ui" line="47"/>
         <source>Save rx</source>
-        <translation type="unfinished"></translation>
+        <translation>保存接收</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsStorerToolUi.ui" line="54"/>
         <source>Save tx</source>
-        <translation type="unfinished"></translation>
+        <translation>保存发送</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsStorerToolUi.ui" line="74"/>
         <source>Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>浏览选择选择</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsStorerToolUi.cpp" line="74"/>
         <source>Save file</source>
-        <translation type="unfinished"></translation>
+        <translation>保存文件</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsStorerToolUi.cpp" line="76"/>
         <source>txt (*.txt);;All (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>文本(*.txt);;所有文件(*)</translation>
     </message>
 </context>
 <context>
@@ -2710,27 +2702,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Assistants/String/Source/xToolsStringAssistant.ui" line="20"/>
         <source>Raw data</source>
-        <translation type="unfinished"></translation>
+        <translation>输入数据</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/String/Source/xToolsStringAssistant.ui" line="64"/>
         <source>Input format</source>
-        <translation type="unfinished"></translation>
+        <translation>输入格式</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/String/Source/xToolsStringAssistant.ui" line="77"/>
         <source>Cooked data</source>
-        <translation type="unfinished"></translation>
+        <translation>输出数据</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/String/Source/xToolsStringAssistant.ui" line="100"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>输出格式</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/String/Source/xToolsStringAssistant.ui" line="110"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>生成</translation>
     </message>
 </context>
 <context>
@@ -2738,98 +2730,94 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.ui" line="32"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>导出</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.ui" line="39"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>导入</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.ui" line="46"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.ui" line="53"/>
         <source>Append</source>
-        <translation type="unfinished"></translation>
+        <translation>添加</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.ui" line="60"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清空</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.ui" line="70"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>显示</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.ui" line="77"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="285"/>
         <source>Please Select an Item</source>
-        <translation type="unfinished"></translation>
+        <translation>请选择数据</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="286"/>
         <source>Please select an item first, then try again!</source>
-        <translation type="unfinished"></translation>
+        <translation>请选择数据后重试！</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="301"/>
         <source>Invalid Parameter</source>
-        <translation type="unfinished"></translation>
+        <translation>非法参数</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="302"/>
         <source>The value of mTableModelTool is nullptr, you must called initialize() first!</source>
-        <translation type="unfinished"></translation>
+        <translation>表格未初始化，请初始化后重试！</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="330"/>
         <source>Clear Data</source>
-        <translation type="unfinished"></translation>
+        <translation>清空数据</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="331"/>
         <source>The data will be empty from settings file, are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>清空配置文件中的相关数据，确定操作？</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="346"/>
         <source>Delete Data</source>
-        <translation type="unfinished"></translation>
+        <translation>删除数据</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="347"/>
         <source>The data will be delete from settings file, are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>配置文件中的相关数据将会被删除，继续？</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="368"/>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="395"/>
         <source>Import data</source>
-        <translation type="unfinished"></translation>
+        <translation>导入数据</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="370"/>
-        <source>JSON (*.json);;All (*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="397"/>
-        <source>JSON (*.json);;All (*); </source>
-        <translation type="unfinished"></translation>
+        <source>JSON (*.json);;All (*)</source>
+        <translation>JSON文件(*.json);;所有文件(*)</translation>
     </message>
 </context>
 <context>
@@ -2982,6 +2970,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="84"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="631"/>
         <source>SerialPort</source>
         <translation>串口</translation>
     </message>
@@ -3030,42 +3019,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
-    <message numerus="yes">
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="632"/>
-        <source>SerialPort</source>
-        <comment>Transmitter</comment>
-        <translatorcomment>转发</translatorcomment>
-        <translation>
-            <numerusform>串口</numerusform>
-        </translation>
-    </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="633"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="632"/>
         <source>UDP</source>
         <translation>UDP</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="634"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="633"/>
         <source>TCP</source>
         <translation>TCP</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="635"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="634"/>
         <source>WebSocket</source>
         <translation>WebSocket</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="649"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="648"/>
         <source>Error Occured</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="700"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="699"/>
         <source>Input Text Can Not Be Empty</source>
         <translation>输入数据不能为空</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="701"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="700"/>
         <source>The input text is empty, please enter the input text</source>
         <translation>输入数据不能为空，请输入数据后尝试</translation>
     </message>

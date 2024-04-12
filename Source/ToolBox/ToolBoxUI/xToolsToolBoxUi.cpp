@@ -628,8 +628,7 @@ void xToolsToolBoxUi::initTools()
     m_serialPortTransmitterUi->layout()->setContentsMargins(9, 9, 9, 9);
 
     ui->tabWidgetTransmitter->clear();
-    ui->tabWidgetTransmitter->addTab(m_serialPortTransmitterUi,
-                                     tr("SerialPort", "Transmitter", __LINE__));
+    ui->tabWidgetTransmitter->addTab(m_serialPortTransmitterUi, tr("SerialPort"));
     ui->tabWidgetTransmitter->addTab(m_udpTransmitterUi, tr("UDP"));
     ui->tabWidgetTransmitter->addTab(m_tcpTransmitterUi, tr("TCP"));
     ui->tabWidgetTransmitter->addTab(m_webSocketTransmitterUi, tr("WebSocket"));

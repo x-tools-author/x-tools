@@ -491,103 +491,95 @@
 <context>
     <name>xToolsBleCentralToolUi</name>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="14"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="14"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="38"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="38"/>
         <source>Devices</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="50"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="50"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="57"/>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="58"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="57"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="58"/>
         <source>Scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="79"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="79"/>
         <source>Service</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="102"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="102"/>
         <source>Characteristic</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="118"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="118"/>
         <source>Write way</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="126"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="126"/>
         <source>WriteWithResponse</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="131"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="131"/>
         <source>WriteWithoutResponse</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="139"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="139"/>
         <source>(Unsupported characteristic)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="151"/>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="249"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="151"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="249"/>
         <source>Notify</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.ui" line="158"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="158"/>
         <source>Read</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="62"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="62"/>
         <source>Stop</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="115"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="115"/>
         <source>Timeout interval(S)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="127"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="127"/>
         <source>Name filtter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="137"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="137"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="223"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="223"/>
         <source>Characteristics%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleCentralToolUi.cpp" line="249"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="249"/>
         <source>Disnotify</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>xToolsBleDeviceInfoComboBox</name>
-    <message>
-        <location filename="../../Private/xTools/BLE/xToolsBleDeviceInfoComboBox.cpp" line="100"/>
-        <source>Error Occurred</source>
         <translation></translation>
     </message>
 </context>
@@ -794,207 +786,207 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsCanBusStudioUi</name>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="14"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="14"/>
         <source>CANBus Studio</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="38"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="38"/>
         <source>CAN Frame</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="57"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="57"/>
         <source>Extended format</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="64"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="64"/>
         <source>Flexible data rate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="71"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="71"/>
         <source>Frame ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="91"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="91"/>
         <source>Frame type</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="101"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="101"/>
         <source>Frame options</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="114"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="114"/>
         <source>Bitrate switch</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="150"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="150"/>
         <source>Device Control</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="171"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="171"/>
         <source>Disconnect</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="178"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="178"/>
         <source>Connect</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="192"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="192"/>
         <source>Plugin</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="221"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="221"/>
         <source>Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="251"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="251"/>
         <source>Data View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="295"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="295"/>
         <source>Specify Configuration</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="323"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="323"/>
         <source>Error filter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="333"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="333"/>
         <source>Custom configurations</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="346"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="346"/>
         <source>CAN FD</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="373"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="373"/>
         <source>Loopback</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="386"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="386"/>
         <source>Data bitrate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="409"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="409"/>
         <source>Bitrate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="422"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="422"/>
         <source>Receive own</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="451"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="451"/>
         <source>CAN Frame Payload</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.ui" line="489"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.ui" line="489"/>
         <source>Send</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="74"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="74"/>
         <source>can0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="105"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="105"/>
         <source>DataFrame</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="106"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="106"/>
         <source>ErrorFrame</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="107"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="107"/>
         <source>RemoteRequestFrame</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="129"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="129"/>
         <source>Hex</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="206"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="206"/>
         <source>Interface Name is Empty</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="207"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="207"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="217"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="217"/>
         <source>Create device failed!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="220"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="220"/>
         <source>Error Occurred</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="235"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="235"/>
         <source>Connection Error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="236"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="236"/>
         <source>Connection error: %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="317"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="317"/>
         <source>Device is Not Ready</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="318"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="318"/>
         <source>Device is not ready, please connect the device then try angin!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="358"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="358"/>
         <source>Error Occure</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="394"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="394"/>
         <source>unspecified</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="396"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="396"/>
         <source>false</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/CAN/Source/CANBusStudio/xToolsCanBusStudioUi.cpp" line="397"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="397"/>
         <source>true</source>
         <translation></translation>
     </message>
@@ -1495,22 +1487,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsModbusStudio</name>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudio.cpp" line="43"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudio.cpp" line="43"/>
         <source>RTU Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudio.cpp" line="45"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudio.cpp" line="45"/>
         <source>RTU Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudio.cpp" line="47"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudio.cpp" line="47"/>
         <source>TCP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudio.cpp" line="49"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudio.cpp" line="49"/>
         <source>TCP Server</source>
         <translation></translation>
     </message>
@@ -1518,299 +1510,299 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsModbusStudioUi</name>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="69"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="69"/>
         <source>Device Operations</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="100"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="100"/>
         <source>Device list</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="124"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="124"/>
         <source>Close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="131"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="131"/>
         <source>Open</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="170"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="170"/>
         <source>Console</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="208"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="208"/>
         <source>Client Registers</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="246"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="246"/>
         <source>Custom Protocol Data Unit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="268"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="268"/>
         <source>Send</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="291"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="291"/>
         <source>Server Register</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="335"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="335"/>
         <source>Network Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="360"/>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="935"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="360"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="935"/>
         <source>Address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="387"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="387"/>
         <source>Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="410"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="410"/>
         <source>Client parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="442"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="442"/>
         <source>Start address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="484"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="484"/>
         <source>Target address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="497"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="497"/>
         <source>Timeout</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="536"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="536"/>
         <source>Address number</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="545"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="545"/>
         <source>Read</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="552"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="552"/>
         <source>Write</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="567"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="567"/>
         <source>Repeat times</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="609"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="609"/>
         <source>Function code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="632"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="632"/>
         <source>Serial Port Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="657"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="657"/>
         <source>Data bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="673"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="673"/>
         <source>Port name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="686"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="686"/>
         <source>Baud rate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="705"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="705"/>
         <source>Stop bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="725"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="725"/>
         <source>Parity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="751"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="751"/>
         <source>Server Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="770"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="770"/>
         <source>Server address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="784"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="784"/>
         <source>Listen only mode</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.ui" line="791"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.ui" line="791"/>
         <source>Device busy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="164"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="164"/>
         <source>RtuClient</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="165"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="165"/>
         <source>RtuServer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="166"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="166"/>
         <source>TcpClient</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="167"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="167"/>
         <source>TcpServer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="221"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="221"/>
         <source>NoParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="222"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="222"/>
         <source>EvenParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="223"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="223"/>
         <source>OddParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="224"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="224"/>
         <source>SpaceParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="225"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="225"/>
         <source>MarkParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="230"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="230"/>
         <source>0x01-ReadCoils</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="231"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="231"/>
         <source>0x02-ReadDiscreteInputs</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="232"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="232"/>
         <source>0x03-ReadHoldingRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="233"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="233"/>
         <source>0x04-ReadInputRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="234"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="234"/>
         <source>0x05-WriteSingleCoil</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="235"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="235"/>
         <source>0x06-WriteSingleRegister</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="236"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="236"/>
         <source>0x0f-WriteMultipleCoils</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="237"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="237"/>
         <source>0x10-WriteMultipleRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="278"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="278"/>
         <source>Coils</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="278"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="278"/>
         <source>DiscreteInputs</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="279"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="279"/>
         <source>InputRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="279"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="279"/>
         <source>HoldingRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="517"/>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="1207"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="517"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="1207"/>
         <source>Error occured</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="599"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="599"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="602"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="602"/>
         <source>Can not open device</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="935"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="935"/>
         <source>Value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="935"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="935"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="1257"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="1257"/>
         <source>Device is not Ready</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Private/xTools/Modbus/Source/ModbusStudio/xToolsModbusStudioUi.cpp" line="1258"/>
+        <location filename="../../Source/Modbus/Source/xToolsModbusStudioUi.cpp" line="1258"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation></translation>
     </message>
@@ -2823,12 +2815,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="370"/>
-        <source>JSON (*.json);;All (*)</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsTableModelToolUi.cpp" line="397"/>
-        <source>JSON (*.json);;All (*); </source>
+        <source>JSON (*.json);;All (*)</source>
         <translation></translation>
     </message>
 </context>
@@ -2982,6 +2970,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="84"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="631"/>
         <source>SerialPort</source>
         <translation></translation>
     </message>
@@ -3030,42 +3019,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Disable</source>
         <translation></translation>
     </message>
-    <message numerus="yes">
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="632"/>
-        <source>SerialPort</source>
-        <comment>Transmitter</comment>
-        <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="633"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="632"/>
         <source>UDP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="634"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="633"/>
         <source>TCP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="635"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="634"/>
         <source>WebSocket</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="649"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="648"/>
         <source>Error Occured</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="700"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="699"/>
         <source>Input Text Can Not Be Empty</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="701"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="700"/>
         <source>The input text is empty, please enter the input text</source>
         <translation></translation>
     </message>
