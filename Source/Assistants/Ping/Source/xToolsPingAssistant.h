@@ -10,11 +10,10 @@
 
 #include <QLabel>
 #include <QSettings>
+#include <QStatusBar>
 #include <QTimer>
 #include <QToolBar>
 #include <QWidget>
-
-#include "xToolsMainWindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -22,7 +21,7 @@ class xToolsPingAssistant;
 }
 QT_END_NAMESPACE
 
-class xToolsPingAssistant : public xToolsMainWindow
+class xToolsPingAssistant : public QWidget
 {
     Q_OBJECT
 
@@ -55,14 +54,13 @@ private:
     QString m_endIp;
     int m_currentRow;
     bool m_pausing;
-    QToolBar *m_runToolBar;
-    QToolBar *m_showToolBar;
-    QToolBar *m_settingToolBar;
     QSettings *m_settings;
     int m_finishedCount;
     int m_showModel;
     QList<QPair<QString, bool>> m_preScanResult;
     QLabel *m_progressStatus;
+    QStatusBar *m_statusBar;
+    QToolBar *m_toolBar;
 
     QAction *m_playAction;
     QAction *m_pauseAction;

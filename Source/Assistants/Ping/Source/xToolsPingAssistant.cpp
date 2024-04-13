@@ -75,7 +75,7 @@ private:
 };
 
 xToolsPingAssistant::xToolsPingAssistant(QWidget *parent)
-    : xToolsMainWindow(parent)
+    : QWidget(parent)
     , ui(new Ui::xToolsPingAssistant)
     , m_pausing(false)
     , m_finishedCount(0)
@@ -113,6 +113,7 @@ xToolsPingAssistant::xToolsPingAssistant(QWidget *parent)
     setWindowTitle("Ping Assistant");
     setWindowIcon(QIcon(":/Resources/Icons/ping.ico"));
     ui->tableWidget->setAlternatingRowColors(true);
+    setMinimumSize(720, 480);
 }
 
 xToolsPingAssistant::~xToolsPingAssistant()
@@ -134,13 +135,21 @@ void xToolsPingAssistant::emitPingFinished(const QString &ip,
 
 void xToolsPingAssistant::init()
 {
+    m_toolBar = new QToolBar(this);
+    ui->horizontalLayoutToolBar->addWidget(m_toolBar);
+    ui->horizontalLayoutToolBar->setContentsMargins(0, 0, 0, 0);
+
+    m_statusBar = new QStatusBar(this);
+    ui->horizontalLayoutStatusBar->addWidget(m_statusBar);
+    ui->horizontalLayoutStatusBar->setContentsMargins(0, 0, 0, 0);
+
     initTableWidget();
     initToolBar();
 
     m_progressStatus = new QLabel(this);
     QString txt = tr("Total: --, Active: --, Finished: --, Remain: --");
     m_progressStatus->setText(txt);
-    ui->statusbar->addPermanentWidget(m_progressStatus);
+    m_statusBar->addPermanentWidget(m_progressStatus);
 }
 
 void xToolsPingAssistant::initTableWidget()
@@ -150,6 +159,7 @@ void xToolsPingAssistant::initTableWidget()
     header_labels << tr("Target Address") << tr("Online Status") << tr("Comparing")
                   << tr("Host Name");
     ui->tableWidget->setHorizontalHeaderLabels(header_labels);
+    ui->tableWidget->horizontalHeader()->setDefaultSectionSize(150);
     ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
     ui->tableWidget->verticalHeader()->hide();
 }
@@ -163,42 +173,36 @@ void xToolsPingAssistant::initToolBar()
 
 void xToolsPingAssistant::initRunToolBar()
 {
-    m_runToolBar = new QToolBar();
-    addToolBar(m_runToolBar);
-
     QIcon icon = QApplication::style()->standardIcon(QStyle::SP_MediaPlay);
-    m_playAction = m_runToolBar->addAction(icon, "", [=]() { this->play(); });
+    m_playAction = m_toolBar->addAction(icon, "", [=]() { this->play(); });
     m_playAction->setToolTip(tr("Start scan"));
     connect(m_playAction, &QAction::hovered, this, [=]() {
-        ui->statusbar->showMessage(m_playAction->toolTip(), 3 * 1000);
+        m_statusBar->showMessage(m_playAction->toolTip(), 3 * 1000);
     });
 
     icon = QApplication::style()->standardIcon(QStyle::SP_MediaPause);
-    m_pauseAction = m_runToolBar->addAction(icon, "", [=]() { this->pause(); });
+    m_pauseAction = m_toolBar->addAction(icon, "", [=]() { this->pause(); });
     m_pauseAction->setEnabled(false);
     m_pauseAction->setToolTip(tr("Pause scan"));
     connect(m_pauseAction, &QAction::hovered, this, [=]() {
-        ui->statusbar->showMessage(m_pauseAction->toolTip(), 3 * 1000);
+        m_statusBar->showMessage(m_pauseAction->toolTip(), 3 * 1000);
     });
 
     icon = QApplication::style()->standardIcon(QStyle::SP_MediaStop);
-    m_stopAction = m_runToolBar->addAction(icon, "", [=]() { this->stop(); });
+    m_stopAction = m_toolBar->addAction(icon, "", [=]() { this->stop(); });
     m_stopAction->setEnabled(false);
     m_stopAction->setToolTip(tr("Stop scan"));
     connect(m_stopAction, &QAction::hovered, this, [=]() {
-        ui->statusbar->showMessage(m_stopAction->toolTip(), 3 * 1000);
+        m_statusBar->showMessage(m_stopAction->toolTip(), 3 * 1000);
     });
 }
 
 void xToolsPingAssistant::initSettingToolBar()
 {
-    m_settingToolBar = new QToolBar();
-    addToolBar(m_settingToolBar);
-
     QWidget *w = new QWidget(this);
     QHBoxLayout *h_box_layout = new QHBoxLayout(w);
     h_box_layout->setContentsMargins(0, 0, 0, 0);
-    m_settingToolBar->addWidget(w);
+    m_toolBar->addWidget(w);
 
     h_box_layout->addWidget(new QLabel(tr("Start address")));
     QLineEdit *begin_ip = new QLineEdit(this);
@@ -235,10 +239,7 @@ void xToolsPingAssistant::initShowToolBar()
     QButtonGroup *button_group = new QButtonGroup(this);
     button_group->addButton(show_all);
     button_group->addButton(show_online);
-
-    m_showToolBar = new QToolBar();
-    m_showToolBar->addWidget(w);
-    addToolBar(m_showToolBar);
+    m_toolBar->addWidget(w);
 
     int model = m_settings->value(m_keyCtx.showModel).toInt();
     m_showModel = model;
@@ -314,7 +315,7 @@ void xToolsPingAssistant::play()
         ui->tableWidget->setItem(i, 3, description_item);
     }
 
-    m_settingToolBar->setEnabled(false);
+    m_toolBar->setEnabled(false);
 
     updateRowVisible();
     m_currentRow = 0;
@@ -335,7 +336,7 @@ void xToolsPingAssistant::stop()
     m_playAction->setEnabled(true);
     m_pauseAction->setEnabled(false);
     m_stopAction->setEnabled(false);
-    m_settingToolBar->setEnabled(true);
+    m_toolBar->setEnabled(true);
 
     m_pausing = false;
     m_playTimer->stop();
@@ -519,7 +520,7 @@ void xToolsPingAssistant::onPingFinished(const QString &ip, bool is_online, cons
         m_playAction->setEnabled(true);
         m_pauseAction->setEnabled(false);
         m_stopAction->setEnabled(false);
-        m_settingToolBar->setEnabled(true);
+        m_toolBar->setEnabled(true);
     }
 
     updateRowVisible();
