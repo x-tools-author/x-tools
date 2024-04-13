@@ -35,43 +35,45 @@ static const QString fileName()
 class PingTask : public QRunnable
 {
 public:
-    PingTask(xToolsPingAssistant *main_window, const QString &ip)
+    PingTask(xToolsPingAssistant *mainWindow, const QString &ip, int timeout)
     {
-        main_window_ = main_window;
-        ip_ = ip;
+        m_mainWindow = mainWindow;
+        m_ip = ip;
+        m_timeout = timeout;
     }
 
     void run() override
     {
         QProcess p;
-        p.start("ping", QStringList() << "-a" << ip_);
-        main_window_->emitPingStarted(ip_);
+        p.start("ping", QStringList() << "-a" << m_ip);
+        m_mainWindow->emitPingStarted(m_ip);
         bool ret = p.waitForFinished();
         if (!ret) {
             p.terminate();
         }
 
         QByteArray all = p.readAll();
-        QString all_string = QString::fromUtf8(all);
-        QString description = ip_;
-        if (all_string.contains("TTL=")) {
+        QString allString = QString::fromUtf8(all);
+        QString description = m_ip;
+        if (allString.contains("TTL=")) {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-            QStringList list = all_string.split(" ", Qt::SkipEmptyParts);
+            QStringList list = allString.split(" ", Qt::SkipEmptyParts);
 #else
             QStringList list = all_string.split(" ", QString::SkipEmptyParts);
 #endif
             if (list.length() >= 2) {
                 description = list.at(2);
             }
-            main_window_->emitPingFinished(ip_, true, description);
+            m_mainWindow->emitPingFinished(m_ip, true, description);
         } else {
-            main_window_->emitPingFinished(ip_, false, description);
+            m_mainWindow->emitPingFinished(m_ip, false, description);
         }
     }
 
 private:
-    xToolsPingAssistant *main_window_;
-    QString ip_;
+    xToolsPingAssistant *m_mainWindow;
+    QString m_ip;
+    int m_timeout;
 };
 
 xToolsPingAssistant::xToolsPingAssistant(QWidget *parent)
@@ -146,9 +148,18 @@ void xToolsPingAssistant::init()
     initTableWidget();
     initToolBar();
 
+    m_progressBar = new QProgressBar(this);
+    m_progressBar->setMinimumWidth(200);
+    m_progressBar->setFormat("%p%");
+    m_progressBar->setTextVisible(true);
+#if 0
+    m_progressBar->setAlignment(Qt::AlignCenter);
+#endif
+    m_progressBar->hide();
     m_progressStatus = new QLabel(this);
     QString txt = tr("Total: --, Active: --, Finished: --, Remain: --");
     m_progressStatus->setText(txt);
+    m_statusBar->addPermanentWidget(m_progressBar);
     m_statusBar->addPermanentWidget(m_progressStatus);
 }
 
@@ -200,28 +211,45 @@ void xToolsPingAssistant::initRunToolBar()
 void xToolsPingAssistant::initSettingToolBar()
 {
     QWidget *w = new QWidget(this);
-    QHBoxLayout *h_box_layout = new QHBoxLayout(w);
-    h_box_layout->setContentsMargins(0, 0, 0, 0);
+    QHBoxLayout *hBoxLayout = new QHBoxLayout(w);
+    hBoxLayout->setContentsMargins(0, 0, 0, 0);
     m_toolBar->addWidget(w);
 
-    h_box_layout->addWidget(new QLabel(tr("Start address")));
-    QLineEdit *begin_ip = new QLineEdit(this);
-    begin_ip->setText(m_settings->value(m_keyCtx.beginIp).toString());
-    m_beginIp = begin_ip->text().trimmed();
-    h_box_layout->addWidget(begin_ip);
-    connect(begin_ip, &QLineEdit::textChanged, this, [=](const QString &txt) {
+    hBoxLayout->addWidget(new QLabel(tr("Start address")));
+    m_beginIpLineEdit = new QLineEdit(this);
+    m_beginIpLineEdit->setText(m_settings->value(m_keyCtx.beginIp).toString());
+    m_beginIp = m_beginIpLineEdit->text().trimmed();
+    hBoxLayout->addWidget(m_beginIpLineEdit);
+    connect(m_beginIpLineEdit, &QLineEdit::textChanged, this, [=](const QString &txt) {
         this->m_beginIp = txt;
         m_settings->setValue(this->m_keyCtx.beginIp, txt);
     });
 
-    h_box_layout->addWidget(new QLabel(tr("End address")));
-    QLineEdit *end_ip = new QLineEdit(this);
-    end_ip->setText(m_settings->value(m_keyCtx.endIp).toString());
-    m_endIp = end_ip->text().trimmed();
-    h_box_layout->addWidget(end_ip);
-    connect(end_ip, &QLineEdit::textChanged, this, [=](const QString &txt) {
+    hBoxLayout->addWidget(new QLabel(tr("End address")));
+    m_endIpLineEdit = new QLineEdit(this);
+    m_endIpLineEdit->setText(m_settings->value(m_keyCtx.endIp).toString());
+    m_endIp = m_endIpLineEdit->text().trimmed();
+    hBoxLayout->addWidget(m_endIpLineEdit);
+    connect(m_endIpLineEdit, &QLineEdit::textChanged, this, [=](const QString &txt) {
         this->m_endIp = txt;
         m_settings->setValue(this->m_keyCtx.endIp, txt);
+    });
+
+#if 0
+    hBoxLayout->addWidget(new QLabel(tr("Timeout(S)")));
+#endif
+    m_timeoutSpinBox = new QSpinBox(this);
+    m_timeoutSpinBox->setValue(5);
+    m_timeoutSpinBox->setRange(5, 100);
+    m_timeoutSpinBox->setSingleStep(5);
+    m_timeoutSpinBox->setMinimumWidth(100);
+    m_timeoutSpinBox->hide();
+    m_timeoutSpinBox->setValue(m_settings->value(m_keyCtx.timeout, 10).toInt());
+    m_timeout = m_timeoutSpinBox->value();
+    hBoxLayout->addWidget(m_timeoutSpinBox);
+    connect(m_timeoutSpinBox, &QSpinBox::editingFinished, this, [=]() {
+        this->m_timeout = m_timeoutSpinBox->value();
+        m_settings->setValue(this->m_keyCtx.timeout, m_timeoutSpinBox->value());
     });
 }
 
@@ -294,13 +322,18 @@ void xToolsPingAssistant::play()
     ui->tableWidget->setRowCount(count);
     updateProgressStatus();
 
+    m_progressBar->setValue(0);
+    m_progressBar->setMinimum(0);
+    m_progressBar->setMaximum(count);
+    m_progressBar->show();
+
     int index = m_beginIp.lastIndexOf('.');
-    QString begin_ip_left = m_beginIp.left(index + 1);
-    QString begin_ip_right = m_beginIp.right(m_beginIp.length() - index - 1);
-    int begin_ip = begin_ip_right.toInt();
+    QString beginIpLeft = m_beginIp.left(index + 1);
+    QString beginIpRight = m_beginIp.right(m_beginIp.length() - index - 1);
+    int beginIp = beginIpRight.toInt();
 
     for (int i = 0; i < count; i++) {
-        QString ip = begin_ip_left + QString::number(begin_ip + i);
+        QString ip = beginIpLeft + QString::number(beginIp + i);
         QTableWidgetItem *ip_item = new QTableWidgetItem(ip);
         ui->tableWidget->setItem(i, 0, ip_item);
 
@@ -315,7 +348,9 @@ void xToolsPingAssistant::play()
         ui->tableWidget->setItem(i, 3, description_item);
     }
 
-    m_toolBar->setEnabled(false);
+    m_beginIpLineEdit->setEnabled(false);
+    m_endIpLineEdit->setEnabled(false);
+    m_timeoutSpinBox->setEnabled(false);
 
     updateRowVisible();
     m_currentRow = 0;
@@ -338,8 +373,14 @@ void xToolsPingAssistant::stop()
     m_stopAction->setEnabled(false);
     m_toolBar->setEnabled(true);
 
+    m_beginIpLineEdit->setEnabled(true);
+    m_endIpLineEdit->setEnabled(true);
+    m_timeoutSpinBox->setEnabled(true);
+    m_progressBar->hide();
+
     m_pausing = false;
     m_playTimer->stop();
+    m_progressBar->hide();
 }
 
 bool xToolsPingAssistant::isValidIp()
@@ -353,13 +394,13 @@ bool xToolsPingAssistant::isValidIp()
         return false;
     }
 
-    int begin_ip_index = m_beginIp.lastIndexOf('.');
-    QString part_of_begin_ip = m_beginIp.left(begin_ip_index);
+    int beginIpIndex = m_beginIp.lastIndexOf('.');
+    QString partOfBeginIp = m_beginIp.left(beginIpIndex);
 
     int end_ip_index = m_endIp.lastIndexOf('.');
     QString part_of_end_ip = m_endIp.left(end_ip_index);
 
-    if (part_of_begin_ip != part_of_end_ip) {
+    if (partOfBeginIp != part_of_end_ip) {
         QMessageBox::warning(this,
                              tr("IP Error"),
                              tr("IP settings error, "
@@ -451,16 +492,14 @@ void xToolsPingAssistant::onPlayTimerTimeout()
         return;
     }
 
-    int active_count = QThreadPool::globalInstance()->activeThreadCount();
-    int max_count = QThreadPool::globalInstance()->maxThreadCount();
-    if (active_count < max_count) {
+    int activeCount = QThreadPool::globalInstance()->activeThreadCount();
+    int maxCount = QThreadPool::globalInstance()->maxThreadCount();
+    if (activeCount < maxCount) {
         const QString ip = this->ip(m_currentRow);
-        if (ip.isEmpty()) {
-            qDebug() << __FUNCTION__;
-        } else {
-            PingTask *ping_task = new PingTask(this, ip);
-            QThreadPool::globalInstance()->start(ping_task);
-        }
+        Q_ASSERT_X(!ip.isEmpty(), __FUNCTION__, "The ip is empty!");
+
+        PingTask *pingTask = new PingTask(this, ip, m_timeout);
+        QThreadPool::globalInstance()->start(pingTask);
 
         m_currentRow += 1;
     }
@@ -485,33 +524,46 @@ void xToolsPingAssistant::onPingStarted(const QString &ip)
     updateProgressStatus();
 }
 
-void xToolsPingAssistant::onPingFinished(const QString &ip, bool is_online, const QString &description)
+void xToolsPingAssistant::onPingFinished(const QString &ip,
+                                         bool isOnline,
+                                         const QString &description)
 {
     int row = this->row(ip);
-    QTableWidgetItem *status_item = ui->tableWidget->item(row, 1);
-    if (status_item) {
-        status_item->setText(is_online ? tr("Online") : tr("Offline"));
-        status_item->setBackground(is_online ? QBrush(Qt::green) : QBrush(Qt::red));
-        status_item->setData(Qt::UserRole, is_online);
+    QTableWidgetItem *statusItem = ui->tableWidget->item(row, 1);
+    if (statusItem) {
+        statusItem->setText(isOnline ? tr("Online") : tr("Offline"));
+        statusItem->setBackground(isOnline ? QBrush(Qt::green) : QBrush(Qt::red));
+        statusItem->setData(Qt::UserRole, isOnline);
     }
 
     for (int i = 0; i < m_preScanResult.count(); i++) {
         QPair<QString, bool> p = m_preScanResult.at(i);
         if ((p.first == ip) && (p.second == false)) {
-            if (is_online) {
-                QTableWidgetItem *compare_item = ui->tableWidget->item(row, 2);
-                compare_item->setText("+");
+            if (isOnline) {
+                QTableWidgetItem *compareItem = ui->tableWidget->item(row, 2);
+                compareItem->setText("+");
                 break;
             }
         }
+        if ((p.first == ip) && (p.second == true)) {
+            if (!isOnline) {
+                QTableWidgetItem *compareItem = ui->tableWidget->item(row, 2);
+                compareItem->setText("-");
+                break;
+            }
+        }
+
+        QTableWidgetItem *compareItem = ui->tableWidget->item(row, 2);
+        compareItem->setText("=");
     }
 
-    QTableWidgetItem *description_item = ui->tableWidget->item(row, 3);
-    if (description_item) {
-        description_item->setText(description);
+    QTableWidgetItem *descriptionItem = ui->tableWidget->item(row, 3);
+    if (descriptionItem) {
+        descriptionItem->setText(description);
     }
 
     m_finishedCount += 1;
+    m_progressBar->setValue(m_finishedCount);
     if (m_finishedCount == ui->tableWidget->rowCount()) {
         QMessageBox::information(
             this,
@@ -521,6 +573,11 @@ void xToolsPingAssistant::onPingFinished(const QString &ip, bool is_online, cons
         m_pauseAction->setEnabled(false);
         m_stopAction->setEnabled(false);
         m_toolBar->setEnabled(true);
+
+        m_beginIpLineEdit->setEnabled(true);
+        m_endIpLineEdit->setEnabled(true);
+        m_timeoutSpinBox->setEnabled(true);
+        m_progressBar->hide();
     }
 
     updateRowVisible();

@@ -9,7 +9,10 @@
 #pragma once
 
 #include <QLabel>
+#include <QLineEdit>
+#include <QProgressBar>
 #include <QSettings>
+#include <QSpinBox>
 #include <QStatusBar>
 #include <QTimer>
 #include <QToolBar>
@@ -44,6 +47,7 @@ private:
         const QString beginIp = "beginIp";
         const QString endIp = "endIp";
         const QString showModel = "showModel";
+        const QString timeout = "timeout";
     } m_keyCtx;
 
 private:
@@ -61,6 +65,8 @@ private:
     QLabel *m_progressStatus;
     QStatusBar *m_statusBar;
     QToolBar *m_toolBar;
+    QProgressBar *m_progressBar;
+    int m_timeout;
 
     QAction *m_playAction;
     QAction *m_pauseAction;
@@ -68,6 +74,10 @@ private:
 
     QString m_buildDate;
     QString m_buildTime;
+
+    QLineEdit *m_beginIpLineEdit;
+    QLineEdit *m_endIpLineEdit;
+    QSpinBox *m_timeoutSpinBox;
 
 private:
     void init();
