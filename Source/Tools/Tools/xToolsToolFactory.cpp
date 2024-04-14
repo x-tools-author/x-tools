@@ -130,8 +130,8 @@ QString xToolsToolFactory::toolName(int type)
         map.insert(UdpServerTool, tr("UDP Server"));
         map.insert(TcpClientTool, tr("TCP Client"));
         map.insert(TcpServerTool, tr("TCP Server"));
-        map.insert(WebSocketClientTool, tr("WebSocket Client"));
-        map.insert(WebSocketServerTool, tr("WebSocket Server"));
+        map.insert(WebSocketClientTool, tr("Web Socket Client"));
+        map.insert(WebSocketServerTool, tr("Web Socket Server"));
         map.insert(BleCentralTool, tr("BLE Central"));
         map.insert(BlePeriheral, tr("BLE Periheral"));
         map.insert(StatistiticianTool, tr("Statistitician"));
