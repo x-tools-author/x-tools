@@ -158,7 +158,7 @@ endif()
 function(x_tools_generate_installer_with_qt_ifw target root_dir version icon)
   string(TOLOWER ${target} target_lower)
   add_custom_target(
-    ${target}-Installer
+    ${target}Installer
     COMMAND ${CMAKE_COMMAND} -E remove_directory ${root_dir}
     COMMAND ${CMAKE_COMMAND} -DTARGET=${target} -DROOT_DIR=${root_dir} -DVERSION=${version}
             -DICON=${icon} -P ${CMAKE_SOURCE_DIR}/CMake/xToolsScriptGenerateQIFW.cmake
