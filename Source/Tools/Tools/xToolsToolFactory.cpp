@@ -142,11 +142,7 @@ QString xToolsToolFactory::toolName(int type)
         map.insert(CrcCalculatorTool, tr("CRC Calculator"));
     }
 
-    if (map.contains(type)) {
-        return map.value(type);
-    } else {
-        return tr("Unknown");
-    }
+    return map.value(type, QString(""));
 }
 
 QString xToolsToolFactory::rawToolName(int type)
