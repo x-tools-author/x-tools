@@ -119,27 +119,27 @@ QString xToolsToolFactory::toolName(int type)
     static QMap<int, QString> map;
     if (map.isEmpty()) {
         map.insert(AnalyzerTool, tr("Analyzer"));
-        map.insert(SerialPortTool, tr("Serialport"));
+        map.insert(SerialPortTool, tr("Serial Port"));
         map.insert(EmitterTool, tr("Emitter"));
         map.insert(MaskerTool, tr("Masker"));
         map.insert(ResponserTool, tr("Responser"));
         map.insert(StorerTool, tr("Storer"));
         map.insert(PrestoreTool, tr("Prestore"));
         map.insert(VelometerTool, tr("Velometer"));
-        map.insert(UdpClientTool, tr("UdpClient"));
-        map.insert(UdpServerTool, tr("UdpServer"));
-        map.insert(TcpClientTool, tr("TcpClient"));
-        map.insert(TcpServerTool, tr("TcpServer"));
-        map.insert(WebSocketClientTool, tr("WebSocketClient"));
-        map.insert(WebSocketServerTool, tr("WebSocketServer"));
-        map.insert(BleCentralTool, tr("BleCentral"));
-        map.insert(BlePeriheral, tr("BlePeriheral"));
+        map.insert(UdpClientTool, tr("UDP Client"));
+        map.insert(UdpServerTool, tr("UDP Server"));
+        map.insert(TcpClientTool, tr("TCP Client"));
+        map.insert(TcpServerTool, tr("TCP Server"));
+        map.insert(WebSocketClientTool, tr("WebSocket Client"));
+        map.insert(WebSocketServerTool, tr("WebSocket Server"));
+        map.insert(BleCentralTool, tr("BLE Central"));
+        map.insert(BlePeriheral, tr("BLE Periheral"));
         map.insert(StatistiticianTool, tr("Statistitician"));
-        map.insert(SerialPortTransmitterTool, tr("SerialPortTransmitter"));
-        map.insert(UdpTransmitterTool, tr("UdpTransmitter"));
-        map.insert(TcpTransmitterTool, tr("TcpTransmitter"));
-        map.insert(WebSocketTransmitterTool, tr("WebSocketTransmitter"));
-        map.insert(CrcCalculatorTool, tr("CrcCalculator"));
+        map.insert(SerialPortTransmitterTool, tr("Serial Port Transmitter"));
+        map.insert(UdpTransmitterTool, tr("UDP Transmitter"));
+        map.insert(TcpTransmitterTool, tr("TDP Transmitter"));
+        map.insert(WebSocketTransmitterTool, tr("Web Socket Transmitter"));
+        map.insert(CrcCalculatorTool, tr("CRC Calculator"));
     }
 
     if (map.contains(type)) {
