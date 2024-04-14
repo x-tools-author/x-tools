@@ -65,12 +65,18 @@ endif()
 x_tools_git_get_latest_commit(${CMAKE_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_SOURCE_DIR} "X_TOOLS")
 
+include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
+include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
+
 # --------------------------------------------------------------------------------------------------
 # Private module
 if(EXISTS ${CMAKE_SOURCE_DIR}/Private/CMakeLists.txt)
-  include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
-  include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
+  option(X_TOOLS_ENABLE_MODULE_PRIVATE "Enable private module" ON)
+  if(X_TOOLS_ENABLE_MODULE_PRIVATE)
+    include_directories(${CMAKE_SOURCE_DIR}/Private/Common/Source)
+    add_compile_definitions(X_TOOLS_ENABLE_MODULE_PRIVATE)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
+  endif()
 endif()
 
 # --------------------------------------------------------------------------------------------------
