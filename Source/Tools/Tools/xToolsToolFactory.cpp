@@ -148,3 +148,10 @@ QString xToolsToolFactory::toolName(int type)
         return tr("Unknown");
     }
 }
+
+QString xToolsToolFactory::rawToolName(int type)
+{
+    auto metaEnum = QMetaEnum::fromType<xToolsToolFactory::ToolsType>();
+    auto rawName = QString(metaEnum.valueToKey(type));
+    return rawName.isEmpty() ? QString::number(type) : rawName;
+}

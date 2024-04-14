@@ -49,4 +49,5 @@ public:
     static xToolsToolFactory *instance();
     Q_INVOKABLE xToolsBaseTool *createTool(int type);
     QString toolName(int type);
+    QString rawToolName(int type);
 };
