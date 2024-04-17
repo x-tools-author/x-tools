@@ -131,7 +131,10 @@ void xToolsCanBusStudioUi::initUiSendCanFrame()
     ui->frameIdComboBox->lineEdit()->setPlaceholderText(inputTips);
     ui->payloadComboBox->lineEdit()->setPlaceholderText(inputTips);
 
-    connect(ui->sendPushButton, &QPushButton::clicked, this, &xToolsCanBusStudioUi::onSendButtonClicked);
+    connect(ui->sendPushButton,
+            &QPushButton::clicked,
+            this,
+            &xToolsCanBusStudioUi::onSendButtonClicked);
 }
 
 void xToolsCanBusStudioUi::initSetting()
@@ -179,7 +182,7 @@ void xToolsCanBusStudioUi::onPluginChanged(QString plugin)
 {
     ui->interfaceNameComboBox->clear();
     m_interfaces = QCanBus::instance()->availableDevices(plugin);
-    for (const QCanBusDeviceInfo& info : std::as_const(m_interfaces)) {
+    for (const QCanBusDeviceInfo& info : qAsConst(m_interfaces)) {
         ui->interfaceNameComboBox->addItem(info.name());
     }
 
