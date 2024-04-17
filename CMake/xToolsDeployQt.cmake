@@ -83,8 +83,10 @@ function(x_tools_deploy_qt_for_mac target)
 endfunction()
 
 function(x_tools_deploy_qt_for_linux target)
-  option(X_TOOLS_LINUX_MAKE_${target}_APP_IMAGE "Pack target tp a app image file" OFF)
-  if(NOT X_TOOLS_LINUX_MAKE_${target}_APP_IMAGE)
+  string(TOUPPER ${target} upper_target_name)
+  string(TOLOWER ${target} lower_target_name)
+  option(X_TOOLS_LINUX_MAKE_APP_IMAGE_${upper_target_name} "Pack target tp a app image file" OFF)
+  if(NOT X_TOOLS_LINUX_MAKE_APP_IMAGE_${upper_target_name})
     return()
   endif()
 
@@ -104,6 +106,11 @@ function(x_tools_deploy_qt_for_linux target)
   set(applications_dir ${APP_DIR}/share/applications)
   set(desktop_file "${applications_dir}/${target}.desktop")
   set(app_image_file "${target}-${GIT_SHORT_COMMIT}-x86_64.AppImage")
+  if (${QT_QMAKE_EXECUTABLE})
+    set(qmake_executable ${QT_QMAKE_EXECUTABLE})
+  else()
+    set(qmake_executable ${QT_DIR}/../../../bin/qmake)
+  endif()
 
   add_custom_command(
     TARGET ${target}
@@ -117,9 +124,9 @@ function(x_tools_deploy_qt_for_linux target)
     COMMAND chmod +x ${appimagetool}
     COMMAND chmod +x ${linuxdeployqt}
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${APP_LOGO} "${CMAKE_BINARY_DIR}/${target}.png"
-    COMMAND ${linuxdeployqt} ${desktop_file} "-qmake=${QT_QMAKE_EXECUTABLE}" "-appimage"
-    COMMAND ${CMAKE_COMMAND} -E rm -f ${target}-Linux-x86_64.AppImage "||" ${CMAKE_COMMAND} -E true
-    COMMAND ${CMAKE_COMMAND} -E rename ${app_image_file} ${target}-Linux-x86_64.AppImage
+    COMMAND ${linuxdeployqt} ${desktop_file} "-qmake=${qmake_executable}" "-appimage"
+    COMMAND ${CMAKE_COMMAND} -E rm -f ${lower_target_name}-linux-x86_64.AppImage "||" ${CMAKE_COMMAND} -E true
+    COMMAND ${CMAKE_COMMAND} -E rename ${app_image_file} ${lower_target_name}-linux-x86_64.AppImage
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     COMMENT "Creating app image file..."
     VERBATIM)
