@@ -25,7 +25,8 @@ jobs:
           target: 'desktop'
           arch: 'clang_64'
           dir: ${{ github.workspace }}
-          version:  ${{ env.QT_VERSION }}
+          version: ${{ env.QT_VERSION }}
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: install qt for ios
         uses: jurplel/install-qt-action@v3
         with:
