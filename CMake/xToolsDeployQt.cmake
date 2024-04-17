@@ -75,6 +75,7 @@ function(x_tools_deploy_qt_for_mac target)
     TARGET ${target}
     POST_BUILD
     COMMAND sh -c "rm xtools-macos-11.dmg || true"
+    COMMAND sh -c "cat dmgs.txt"
     COMMAND sh -c "cat dmgs.txt | xargs -I {} mv {} xtools-macos-11.dmg"
     COMMAND sh -c "rm dmgs.txt || true"
     WORKING_DIRECTORY "${X_TOOLS_BINARY_DIR}/${target}"
