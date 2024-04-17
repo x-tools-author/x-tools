@@ -36,7 +36,7 @@ jobs:
           arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
           host: 'mac'
-          modules: ${{ matrix.modules}}
+          modules: ${{ matrix['moudles']}}
       - name: build for macos
         run: |
           # brew uninstall --force node
