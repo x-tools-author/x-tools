@@ -1,11 +1,11 @@
 name: build-daily
-on:
-  schedule:
-    - cron: '0 0 * * *'
 #on:
-#  push:
-#    branches:
-#      - master
+#  schedule:
+#    - cron: '0 0 * * *'
+on:
+  push:
+    branches:
+      - master
 
 
 env:
@@ -20,8 +20,8 @@ jobs:
       uses: actions/checkout@v3
     - name: Update continuous tag
       run: |
-        git config --global user.email "qsaker@foxmail.com"
-        git config --global user.name "Qsaker"
+        git config --global user.email "x-tools@outlook.com"
+        git config --global user.name "x-tools-author"
         git tag -fa continuous -m "chore: update to latest commit"
         git push origin :refs/tags/continuous
         git push origin continuous -f
@@ -36,7 +36,7 @@ jobs:
         gh release delete continuous -y || true
     - name: Create Release
       run: |
-        gh release create continuous --title "Continuous Build" --notes "Daily build of QtSwissArmyKnife"
+        gh release create continuous --title "Continuous Build" --notes "Daily build of xTools"
   release-for-windows:
     runs-on: windows-2019
     needs: update-release
@@ -84,7 +84,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -DSAK_ENABLE_LINUXDEPLOYQT:BOOL=TRUE -DSAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD:BOOL=TRUE -G "Unix Makefiles"
+        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -DX_TOOLS_LINUX_MAKE_APP_IMAGE_XTOOLS:BOOL=TRUE -G "Unix Makefiles"
         cmake --build . --target xTools
         dir && dir ./assets && dir ./assets/xTools
     - name: Upload Release Asset for Linux
