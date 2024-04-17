@@ -36,6 +36,7 @@ jobs:
           arch: 'ios'
           dir: ${{ github.workspace }}
           version:  ${{ env.QT_VERSION }}
+          modules: 'qtcharts qtwebsockets'
       - name: generate for ios
         run: |
           ${{ github.workspace }}/Qt/${{env.QT_VERSION}}/ios/bin/qt-cmake -G "Xcode" -S . -B "build/ios" \
