@@ -6,36 +6,40 @@ on:
   push:
     branches:
       - master
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build-for-linux:
+  build:
+    name: Build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
         version: [5.15.2, 6.5.3]
-        exclude:
-          - os: ubuntu-20.04
-            qt: 5.15.2
+        arch: [gcc_64]
+        include:
+          - version: 5.15.2
+            cmake-prefix-path: 'lib/cmake/Qt5'
+            modules: 'qtcharts'
+          - version: 6.5.3
+            cmake-prefix-path: 'lib/cmake/Qt6'
+            moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v3
-      with:
-        version: ${{ matrix.os }}
-        target: 'desktop'
-        arch: 'gcc_64'
-        dir: ${{ github.workspace }}
-        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-    - name: install-dependencies
-      run: |
-        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev
-    - name: Build for Linux
-      run: |
-        mkdir build
-        cd build
-        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
-        cmake --build . --target xTools
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: install qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: '==3.1.*'
+          version: ${{ matrix.version }}
+          target: 'desktop'
+          arch: ${{ matrix.arch }}
+          dir: ${{ github.workspace }}
+          modules: ${{ matrix['moudles']}}
+      - name: install-dependencies
+        run: |
+          sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev
+      - name: build for linux
+        run: |
+          mkdir build
+          cd build
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
+          cmake --build . --target xTools
