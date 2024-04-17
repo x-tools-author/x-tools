@@ -1,4 +1,0 @@
-list(FIND MAKE_CXX_COMPILE_FEATURES cxx_std_17 CXX17_SUPPORTED)
-if(CXX17_SUPPORTED)
-  add_compile_definitions(X_TOOLS_CXX17_SUPPORTED)
-endif()
