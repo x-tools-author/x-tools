@@ -12,7 +12,7 @@
 #include <QActionGroup>
 #include <QMenu>
 
-#include <QtAdvancedStylesheet.h>
+#include <QtAdvancedStyleSheet.h>
 
 class xToolsStyleSheetManager : public acss::QtAdvancedStylesheet
 {
