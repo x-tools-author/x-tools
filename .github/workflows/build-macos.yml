@@ -47,4 +47,4 @@ jobs:
           mkdir build
           cd build
           cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
-          cmake --build . --target QtSwissArmyKnife
+          cmake --build . --target xTools
