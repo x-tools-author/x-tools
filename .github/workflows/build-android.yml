@@ -1,12 +1,12 @@
 name: build-android
-on:
-  schedule:
-    - cron: '0 0 * * *'
 #on:
-#  push:
-#    branches:
-#      - master
+#  schedule:
+#    - cron: '0 0 * * *'
 
+on:
+  push:
+    branches:
+      - master
 env:
   QT_VERSION: 6.5.3
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
