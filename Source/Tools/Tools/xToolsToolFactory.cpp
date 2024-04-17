@@ -16,8 +16,6 @@
 #include "xToolsMaskerTool.h"
 #include "xToolsPrestorerTool.h"
 #include "xToolsResponserTool.h"
-#include "xToolsSerialPortTool.h"
-#include "xToolsSerialPortTransmitterTool.h"
 #include "xToolsStatisticianTool.h"
 #include "xToolsStorerTool.h"
 #include "xToolsTcpClientTool.h"
@@ -33,6 +31,10 @@
 
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
 #include "xToolsBleCentralTool.h"
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#include "xToolsSerialPortTool.h"
+#include "xToolsSerialPortTransmitterTool.h"
 #endif
 
 xToolsToolFactory::xToolsToolFactory(QObject *parent)
@@ -51,7 +53,9 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
     if (AnalyzerTool == type) {
         tool = new xToolsAnalyzerTool();
     } else if (SerialPortTool == type) {
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
         tool = new xToolsSerialPortTool();
+#endif
     } else if (EmitterTool == type) {
         tool = new xToolsEmitterTool();
     } else if (MaskerTool == type) {
@@ -76,16 +80,16 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
         tool = new xToolsWebSocketClientTool();
     } else if (WebSocketServerTool == type) {
         tool = new xToolsWebSocketServerTool();
-    }
+    } else if (BleCentralTool == type) {
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
-    else if (BleCentralTool == type) {
         tool = new xToolsBleCentralTool();
-    }
 #endif
-    else if (StatistiticianTool == type) {
+    } else if (StatistiticianTool == type) {
         tool = new xToolsStatisticianTool();
     } else if (SerialPortTransmitterTool == type) {
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
         tool = new xToolsSerialPortTransmitterTool();
+#endif
     } else if (UdpTransmitterTool == type) {
         tool = new xToolsUdpTransmitterTool();
     } else if (TcpTransmitterTool == type) {

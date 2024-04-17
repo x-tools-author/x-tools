@@ -16,13 +16,16 @@
 #include "xToolsEmitterTool.h"
 #include "xToolsPrestorerTool.h"
 #include "xToolsResponserTool.h"
-#include "xToolsSerialPortTransmitterTool.h"
 #include "xToolsStatisticianTool.h"
 #include "xToolsStorerTool.h"
 #include "xToolsTcpTransmitterTool.h"
 #include "xToolsUdpTransmitterTool.h"
 #include "xToolsVelometerTool.h"
 #include "xToolsWebSocketTransmitterTool.h"
+
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#include "xToolsSerialPortTransmitterTool.h"
+#endif
 
 class xToolsToolBox : public QObject
 {
@@ -40,7 +43,9 @@ class xToolsToolBox : public QObject
     Q_PROPERTY(QVariant udpTransmitter READ udpTransmitter CONSTANT)
     Q_PROPERTY(QVariant tcpTransmitter READ tcpTransmitter CONSTANT)
     Q_PROPERTY(QVariant webSocketTransmitter READ webSocketTransmitter CONSTANT)
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     Q_PROPERTY(QVariant serialPortTransmitter READ serialPortTransmitter CONSTANT)
+#endif
 
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
 public:
@@ -67,7 +72,9 @@ public:
     xToolsUdpTransmitterTool* getUdpTransmitterTool();
     xToolsTcpTransmitterTool* getTcpTransmitterTool();
     xToolsWebSocketTransmitterTool* getWebSocketTransmitterTool();
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     xToolsSerialPortTransmitterTool* getSerialPortTransmitterTool();
+#endif
 
 signals:
     void errorOccurred(const QString& errorString);
@@ -93,7 +100,9 @@ private:
     xToolsUdpTransmitterTool* m_udpTransmitter{nullptr};
     xToolsTcpTransmitterTool* m_tcpTransmitter{nullptr};
     xToolsWebSocketTransmitterTool* m_webSocketTransmitter{nullptr};
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     xToolsSerialPortTransmitterTool* m_serialPortTransmitter{nullptr};
+#endif
     bool m_isWorking{false};
 
 private:
@@ -109,7 +118,9 @@ private:
     QVariant udpTransmitter();
     QVariant tcpTransmitter();
     QVariant webSocketTransmitter();
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     QVariant serialPortTransmitter();
+#endif
 
     void onCommunicatorBytesWritten(const QByteArray& bytes, const QString& to);
     void onCommunicatorBytesRead(const QByteArray& bytes, const QString& from);

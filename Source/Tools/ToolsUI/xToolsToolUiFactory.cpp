@@ -16,10 +16,7 @@
 #include "xToolsMaskerToolUi.h"
 #include "xToolsPrestorerToolUi.h"
 #include "xToolsResponserToolUi.h"
-#include "xToolsSerialPortToolUi.h"
-#include "xToolsSerialPortTransmitterToolUi.h"
 #include "xToolsSocketClientToolUi.h"
-#include "xToolsSocketClientTransmitterToolUi.h"
 #include "xToolsSocketServerToolUi.h"
 #include "xToolsStatisticianToolUi.h"
 #include "xToolsStorerToolUi.h"
@@ -31,6 +28,10 @@
 
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
 #include "xToolsBleCentralToolUi.h"
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#include "xToolsSerialPortToolUi.h"
+#include "xToolsSerialPortTransmitterToolUi.h"
 #endif
 
 xToolsToolUiFactory::xToolsToolUiFactory(QObject *parent)
@@ -52,8 +53,10 @@ xToolsBaseToolUi *xToolsToolUiFactory::createToolUi(int type)
     switch (type) {
     case xToolsToolFactory::AnalyzerTool:
         return new xToolsAnalyzerToolUi();
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     case xToolsToolFactory::SerialPortTool:
         return new xToolsSerialPortToolUi();
+#endif
     case xToolsToolFactory::EmitterTool:
         return new xToolsEmitterToolUi();
     case xToolsToolFactory::MaskerTool:
@@ -84,8 +87,10 @@ xToolsBaseToolUi *xToolsToolUiFactory::createToolUi(int type)
 #endif
     case xToolsToolFactory::StatistiticianTool:
         return new xToolsStatisticianToolUi();
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     case xToolsToolFactory::SerialPortTransmitterTool:
         return new xToolsSerialPortTransmitterToolUi();
+#endif
     case xToolsToolFactory::UdpTransmitterTool:
         return new xToolsUdpTransmitterToolUi();
     case xToolsToolFactory::TcpTransmitterTool:

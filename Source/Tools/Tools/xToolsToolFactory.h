@@ -38,7 +38,8 @@ public:
         UdpTransmitterTool,
         TcpTransmitterTool,
         WebSocketTransmitterTool,
-        CrcCalculatorTool
+        CrcCalculatorTool,
+        UnknownTool = -1
     };
     Q_ENUM(ToolsType)
 

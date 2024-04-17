@@ -26,8 +26,6 @@
 #include "xToolsEmitterToolUi.h"
 #include "xToolsPrestorerToolUi.h"
 #include "xToolsResponserToolUi.h"
-#include "xToolsSerialPortToolUi.h"
-#include "xToolsSerialPortTransmitterToolUi.h"
 #include "xToolsSettings.h"
 #include "xToolsSocketClientToolUi.h"
 #include "xToolsSocketServerToolUi.h"
@@ -41,6 +39,10 @@
 
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
 #include "xToolsBleCentralToolUi.h"
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#include "xToolsSerialPortToolUi.h"
+#include "xToolsSerialPortTransmitterToolUi.h"
 #endif
 
 xToolsToolBoxUi::xToolsToolBoxUi(QWidget* parent)
@@ -154,8 +156,12 @@ void xToolsToolBoxUi::initialize(int type)
 xToolsCommunicationToolUi* xToolsToolBoxUi::communicationToolUi(int type)
 {
     xToolsCommunicationToolUi* w = nullptr;
-    if (type == xToolsToolFactory::SerialPortTool) {
+    if (type == xToolsToolFactory::UnknownTool) {
+        return nullptr;
+    } else if (type == xToolsToolFactory::SerialPortTool) {
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
         w = new xToolsSerialPortToolUi();
+#endif
     } else if (type == xToolsToolFactory::UdpClientTool) {
         w = new xToolsSocketClientToolUi();
     } else if (type == xToolsToolFactory::UdpServerTool) {
@@ -168,13 +174,11 @@ xToolsCommunicationToolUi* xToolsToolBoxUi::communicationToolUi(int type)
         w = new xToolsSocketClientToolUi();
     } else if (type == xToolsToolFactory::WebSocketServerTool) {
         w = new xToolsSocketServerToolUi();
-    }
+    } else if (type == xToolsToolFactory::BleCentralTool) {
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
-    else if (type == xToolsToolFactory::BleCentralTool) {
         w = new xToolsBleCentralToolUi();
-    }
 #endif
-    else {
+    } else {
         qWarning() << "unknow type of communication tool ui!";
     }
 
@@ -619,17 +623,23 @@ void xToolsToolBoxUi::initTools()
     m_webSocketTransmitterUi = new xToolsWebSocketTransmitterToolUi(this);
     m_webSocketTransmitterUi->initialize(m_toolBox->getWebSocketTransmitterTool(),
                                          settingsGroup() + "/webSocketTransmitter");
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     m_serialPortTransmitterUi = new xToolsSerialPortTransmitterToolUi(this);
     m_serialPortTransmitterUi->initialize(m_toolBox->getSerialPortTransmitterTool(),
                                           settingsGroup() + "/serialPortTransmitter");
+#endif
 
     m_tcpTransmitterUi->layout()->setContentsMargins(9, 9, 9, 9);
     m_udpTransmitterUi->layout()->setContentsMargins(9, 9, 9, 9);
     m_webSocketTransmitterUi->layout()->setContentsMargins(9, 9, 9, 9);
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     m_serialPortTransmitterUi->layout()->setContentsMargins(9, 9, 9, 9);
+#endif
 
     ui->tabWidgetTransmitter->clear();
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     ui->tabWidgetTransmitter->addTab(m_serialPortTransmitterUi, tr("SerialPort"));
+#endif
     ui->tabWidgetTransmitter->addTab(m_udpTransmitterUi, tr("UDP"));
     ui->tabWidgetTransmitter->addTab(m_tcpTransmitterUi, tr("TCP"));
     ui->tabWidgetTransmitter->addTab(m_webSocketTransmitterUi, tr("WebSocket"));
