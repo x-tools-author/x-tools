@@ -43,5 +43,5 @@ jobs:
           -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\macos"
       - name: build for ios
         run: |
-          cmake --build "build/ios" --config Release --target StringAssistant
+          cmake --build "build/ios" --config Release --target xTools
           tree build/ios
