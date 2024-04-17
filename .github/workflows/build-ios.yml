@@ -1,13 +1,17 @@
 name: build-ios
+#on:
+#  schedule:
+#    - cron: '0 0 * * *'
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  push:
+    branches:
+      - master
 env:
   QT_VERSION: 6.5.3
 jobs:
   build:
     name: Build
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
       - name: checkout
         uses: actions/checkout@v3
