@@ -1,13 +1,11 @@
 ﻿name: build-windows
-#on:
-#  schedule:
-#    - cron: '0 0 * * *'
-
 on:
-  push:
-    branches:
-      - master
-
+  schedule:
+    - cron: '0 0 * * *'
+#on:
+#  push:
+#    branches:
+#      - master
 jobs:
   build:
     name: Build

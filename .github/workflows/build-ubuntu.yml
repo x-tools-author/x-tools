@@ -2,53 +2,40 @@ name: build-ubuntu
 #on:
 #  schedule:
 #    - cron: '0 0 * * *'
-
 on:
   push:
     branches:
       - master
 
 env:
-  qt-cmake-path: '/usr/lib/x86_64-linux-gnu/cmake'
-
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build:
-    name: Build
+  build-for-linux:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
-        qt: [Qt5, Qt6]
-        exclude:
-          - os: ubuntu-20.04
-            qt: Qt6
+        version: [5.15.2, 6.5.3]
+        #exclude:
+        #  - os: ubuntu-20.04
+        #    qt: 5.15.2
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Build with Qt5
-        if: matrix.qt == 'Qt5'
-        run: |
-          sudo apt-get update --fix-missing -y
-          sudo apt-get install libgl1-mesa-dev -y
-          sudo apt-get install qtbase5-dev -y
-          sudo apt-get install libqt5charts5* -y
-          sudo apt-get install libqt5serialbus5* -y
-          sudo apt-get install libqt5websockets5* -y
-          sudo apt-get install libqt5serialport5* -y
-          mkdir buildqt5
-          cd buildqt5
-          cmake -DCMAKE_PREFIX_PATH='${{ env.qt-cmake-path }}/${{ matrix.qt }}' -DCMAKE_BUILD_TYPE="Release" ../ && make
-      - name: Build with Qt6
-        if: matrix.qt == 'Qt6'
-        run: |
-          sudo apt-get update --fix-missing -y
-          sudo apt-get install libgl1-mesa-dev -y
-          sudo apt-get install qt6-base-dev -y
-          sudo apt-get install libqt6charts6* -y
-          sudo apt-get install libqt6serialbus6* -y
-          sudo apt-get install libqt6websockets6* -y
-          sudo apt-get install libqt6serialport6* -y
-          mkdir buildqt6
-          cd buildqt6
-          cmake -DCMAKE_PREFIX_PATH='${{ env.qt-cmake-path }}/${{ matrix.qt }}' -DCMAKE_BUILD_TYPE="Release" ../ && make
-
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: ${{ matrix.os }}
+        target: 'desktop'
+        arch: 'gcc_64'
+        dir: ${{ github.workspace }}
+        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+    - name: install-dependencies
+      run: |
+        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev
+    - name: Build for Linux
+      run: |
+        mkdir build
+        cd build
+        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
+        cmake --build . --target xTools
