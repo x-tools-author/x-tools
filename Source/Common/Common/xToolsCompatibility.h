@@ -72,8 +72,8 @@ template<typename T1, typename T2>
 bool xToolsIsSameType()
 {
 #ifdef X_TOOLS_CXX17_SUPPORTED
-    return std::is_same_v<T1, T2>;
+    return std::is_same_v<T1, T2>();
 #else
-    return std::is_same<T1, T2>::value;
+    return std::is_same<T1, T2>::value();
 #endif
 }
