@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <type_traits>
+
 #include <QApplication>
 #include <QDebug>
 #include <QDir>
@@ -15,7 +17,6 @@
 #include <QStyle>
 
 #include "xToolsApplication.h"
-#include "xToolsCompatibility.h"
 #include "xToolsMainWindow.h"
 #include "xToolsSettings.h"
 
@@ -209,7 +210,7 @@ int xToolsExec(int argc, char *argv[], const QString &appName)
 #endif
 
     QWidget *ui;
-    if (xToolsIsSameType<MainWindowT, CentralWidgetT>()) {
+    if (std::is_same<MainWindowT, CentralWidgetT>::value) {
         auto widget = new CentralWidgetT();
         ui = widget;
     } else {

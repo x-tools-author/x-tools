@@ -50,7 +50,6 @@ include(CMake/xToolsCommon.cmake)
 include(CMake/xToolsGitInfo.cmake)
 include(CMake/xToolsDeployQt.cmake)
 include(CMake/xToolsThirdParty.cmake)
-include(CMake/xToolsCompatibility.cmake)
 
 option(X_TOOLS_BUILD_FOR_STORE "Build for Microsoft Store or Apple Store" OFF)
 if(X_TOOLS_BUILD_FOR_STORE)
