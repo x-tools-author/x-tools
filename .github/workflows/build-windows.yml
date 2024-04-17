@@ -2,7 +2,7 @@
 on:
   schedule:
     - cron: '0 0 * * *'
-  
+
 jobs:
   build:
     name: Build
@@ -16,9 +16,11 @@ jobs:
           - version: 5.15.2
             cmake-prefix-path: 'lib/cmake/Qt5'
             modules: 'qtcharts'
+            cmake-params: '-DX_TOOLS_ENABLE_MODULE_BLUETOOTH:BOOL=OFF'
           - version: 6.5.3
             cmake-prefix-path: 'lib/cmake/Qt6'
             moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
+            cmake-params: '-DX_TOOLS_ENABLE_MODULE_BLUETOOTH:BOOL=ON'
     steps:
       - name: Pull code
         uses: actions/checkout@v1
@@ -36,5 +38,5 @@ jobs:
           mkdir build
           cd build
           call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+          cmake ${{ cmake-params }} -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
           nmake
