@@ -12,6 +12,7 @@
 #include <QCanBus>
 #include <QCheckBox>
 #include <QDateTime>
+#include <QDebug>
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QVector>

@@ -59,7 +59,7 @@ public:
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
             QStringList list = allString.split(" ", Qt::SkipEmptyParts);
 #else
-            QStringList list = all_string.split(" ", QString::SkipEmptyParts);
+            QStringList list = allString.split(" ", QString::SkipEmptyParts);
 #endif
             if (list.length() >= 2) {
                 description = list.at(2);
