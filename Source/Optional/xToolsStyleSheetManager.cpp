@@ -51,7 +51,12 @@ xToolsStyleSheetManager& xToolsStyleSheetManager::instance()
 
 QString xToolsStyleSheetManager::themeName()
 {
-    return xToolsSettings::instance()->value("themeName").toString();
+    QString ret = xToolsSettings::instance()->value("themeName").toString();
+    if (ret.isEmpty()) {
+        ret = QString("dark_blue");
+    }
+
+    return ret;
 }
 
 void xToolsStyleSheetManager::setThemeName(const QString& themeName)
