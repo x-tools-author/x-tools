@@ -173,10 +173,10 @@ jobs:
           set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
-          --input build\armeabi_v7a\android-QtSwissArmyKnife-deployment-settings.json ^
+          --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-34 ^
-          --sign ${{ github.workspace }}\resources\android\android_release.keystore QtSwissArmyKnife --storepass QtSwissArmyKnife --keypass QtSwissArmyKnife ^
+          --sign ${{ github.workspace }}\Resources\Platforms\Android\xTools.keystore xTools --storepass xTools --keypass xTools ^
           --jdk %JAVA_HOME% --gradle --release
       - name: Upload Release Asset for Android
         run: |
