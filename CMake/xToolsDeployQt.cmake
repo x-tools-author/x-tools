@@ -46,19 +46,19 @@ function(x_tools_deploy_qt_for_mac target)
     return()
   endif()
 
-  if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/qml")
+  if(EXISTS "${X_TOOLS_QML_PATH}")
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${WINDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app"
-              "-qmldir=${CMAKE_CURRENT_SOURCE_DIR}/qml -dmg"
+      COMMAND ${MACDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app"
+              "-qmldir=${X_TOOLS_QML_PATH} -dmg"
       COMMENT "Running macdeployqt..."
       VERBATIM)
   else()
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${WINDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app" "-dmg"
+      COMMAND ${MACDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app" "-dmg"
       COMMENT "Running macdeployqt..."
       VERBATIM)
   endif()
@@ -106,7 +106,7 @@ function(x_tools_deploy_qt_for_linux target)
   set(applications_dir ${APP_DIR}/share/applications)
   set(desktop_file "${applications_dir}/${target}.desktop")
   set(app_image_file "${target}-${GIT_SHORT_COMMIT}-x86_64.AppImage")
-  if (${QT_QMAKE_EXECUTABLE})
+  if(${QT_QMAKE_EXECUTABLE})
     set(qmake_executable ${QT_QMAKE_EXECUTABLE})
   else()
     set(qmake_executable ${QT_DIR}/../../../bin/qmake)
@@ -125,7 +125,8 @@ function(x_tools_deploy_qt_for_linux target)
     COMMAND chmod +x ${linuxdeployqt}
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${APP_LOGO} "${CMAKE_BINARY_DIR}/${target}.png"
     COMMAND ${linuxdeployqt} ${desktop_file} "-qmake=${qmake_executable}" "-appimage"
-    COMMAND ${CMAKE_COMMAND} -E rm -f ${lower_target_name}-linux-x86_64.AppImage "||" ${CMAKE_COMMAND} -E true
+    COMMAND ${CMAKE_COMMAND} -E rm -f ${lower_target_name}-linux-x86_64.AppImage "||"
+            ${CMAKE_COMMAND} -E true
     COMMAND ${CMAKE_COMMAND} -E rename ${app_image_file} ${lower_target_name}-linux-x86_64.AppImage
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     COMMENT "Creating app image file..."
