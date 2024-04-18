@@ -906,87 +906,87 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="74"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="75"/>
         <source>can0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="105"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="106"/>
         <source>DataFrame</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="106"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="107"/>
         <source>ErrorFrame</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="107"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="108"/>
         <source>RemoteRequestFrame</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="129"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="130"/>
         <source>Hex</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="206"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="210"/>
         <source>Interface Name is Empty</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="207"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="211"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="217"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="221"/>
         <source>Create device failed!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="220"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="224"/>
         <source>Error Occurred</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="235"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="239"/>
         <source>Connection Error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="236"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="240"/>
         <source>Connection error: %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="317"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="321"/>
         <source>Device is Not Ready</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="318"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="322"/>
         <source>Device is not ready, please connect the device then try angin!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="358"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="362"/>
         <source>Error Occure</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="394"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="398"/>
         <source>unspecified</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="396"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="400"/>
         <source>false</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="397"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="401"/>
         <source>true</source>
         <translation></translation>
     </message>
@@ -1347,73 +1347,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Assistants/FileMerge/Source/xToolsFileMergeAssistant.cpp" line="127"/>
         <source>Merge files successfully.</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>xToolsLicenseManager</name>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="120"/>
-        <source>Import License</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="122"/>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="144"/>
-        <source>License Files (*.license)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="142"/>
-        <source>Export License</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="311"/>
-        <source>End of Trial</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="312"/>
-        <source>The trial period has expired, the application will be closed.</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>xToolsLicenseManagerUi</name>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="20"/>
-        <source>License Manager</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="127"/>
-        <source>未注册</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="223"/>
-        <source>注册码</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="232"/>
-        <source>粘贴</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="255"/>
-        <source>注册</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="272"/>
-        <source>机器码</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="281"/>
-        <source>复制</source>
         <translation></translation>
     </message>
 </context>
@@ -1850,119 +1783,119 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="160"/>
         <source>Total: --, Active: --, Finished: --, Remain: --</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="170"/>
         <source>Target Address</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="170"/>
         <source>Online Status</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="170"/>
         <source>Comparing</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="171"/>
         <source>Host Name</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="189"/>
         <source>Start scan</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="197"/>
         <source>Pause scan</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="205"/>
         <source>Stop scan</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="218"/>
         <source>Start address</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="228"/>
         <source>End address</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="239"/>
         <source>Timeout(S)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="258"/>
         <source>Show all</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="259"/>
         <source>Show online</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="390"/>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="405"/>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="414"/>
         <source>IP Error</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="391"/>
         <source>IP settings error, the start ip and end ip must be set, please check and try again. </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="406"/>
         <source>IP settings error, the start ip and end ip must be in the same network segment, please check and try again. </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="415"/>
         <source>IP settings error, the start ip must be less than the end ip, please check and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="461"/>
         <source>Total：%1，Active：%2，Finished：%3，Remain：%4</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="520"/>
         <source>Scanning</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="534"/>
         <source>Online</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="534"/>
         <source>Offline</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="570"/>
         <source>Scanning Finished</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="571"/>
         <source>Scanning finished, you can screen out the result by the toolbar.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2730,12 +2663,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Optional/xToolsStyleSheetManager.cpp" line="36"/>
         <source>Dark Theme</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Optional/xToolsStyleSheetManager.cpp" line="37"/>
         <source>Light Theme</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2849,7 +2782,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="97"/>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="351"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="355"/>
         <source>Open</source>
         <translation></translation>
     </message>
@@ -2982,83 +2915,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="84"/>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="632"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="86"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="641"/>
         <source>SerialPort</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="86"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="88"/>
         <source>UDP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="88"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="90"/>
         <source>UDP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="90"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="92"/>
         <source>TCP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="92"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="94"/>
         <source>TCP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="94"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="96"/>
         <source>WebSocket Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="96"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="98"/>
         <source>WebSocket Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="98"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="100"/>
         <source>BLE Central</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="349"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="353"/>
         <source>Close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="442"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="446"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="633"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="643"/>
         <source>UDP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="634"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="644"/>
         <source>TCP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="635"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="645"/>
         <source>WebSocket</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="649"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="659"/>
         <source>Error Occured</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="700"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="710"/>
         <source>Input Text Can Not Be Empty</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="701"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="711"/>
         <source>The input text is empty, please enter the input text</source>
         <translation></translation>
     </message>
@@ -3140,118 +3073,113 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsToolFactory</name>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="121"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="125"/>
         <source>Analyzer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="122"/>
-        <source>Serialport</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="123"/>
-        <source>Emitter</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="124"/>
-        <source>Masker</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="125"/>
-        <source>Responser</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="126"/>
-        <source>Storer</source>
+        <source>Serial Port</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="127"/>
-        <source>Prestore</source>
+        <source>Emitter</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="128"/>
-        <source>Velometer</source>
+        <source>Masker</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="129"/>
-        <source>UdpClient</source>
+        <source>Responser</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="130"/>
-        <source>UdpServer</source>
+        <source>Storer</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="131"/>
-        <source>TcpClient</source>
+        <source>Prestore</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="132"/>
-        <source>TcpServer</source>
+        <source>Velometer</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="133"/>
-        <source>WebSocketClient</source>
+        <source>UDP Client</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="134"/>
-        <source>WebSocketServer</source>
+        <source>UDP Server</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="135"/>
-        <source>BleCentral</source>
+        <source>TCP Client</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="136"/>
-        <source>BlePeriheral</source>
+        <source>TCP Server</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="137"/>
-        <source>Statistitician</source>
+        <source>Web Socket Client</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="138"/>
-        <source>SerialPortTransmitter</source>
+        <source>Web Socket Server</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="139"/>
-        <source>UdpTransmitter</source>
+        <source>BLE Central</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="140"/>
-        <source>TcpTransmitter</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="141"/>
-        <source>WebSocketTransmitter</source>
+        <source>BLE Periheral</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="142"/>
-        <source>CrcCalculator</source>
+        <source>Serial Port Transmitter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="148"/>
-        <source>Unknown</source>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="143"/>
+        <source>UDP Transmitter</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="144"/>
+        <source>TCP Transmitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="145"/>
+        <source>Web Socket Transmitter</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="146"/>
+        <source>CRC Calculator</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="141"/>
+        <source>Statistitician</source>
         <translation></translation>
     </message>
 </context>

@@ -906,87 +906,87 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="74"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="75"/>
         <source>can0</source>
         <translation>can0</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="105"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="106"/>
         <source>DataFrame</source>
         <translation>数据帧</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="106"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="107"/>
         <source>ErrorFrame</source>
         <translation>错误帧</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="107"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="108"/>
         <source>RemoteRequestFrame</source>
         <translation>远程请求帧</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="129"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="130"/>
         <source>Hex</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="206"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="210"/>
         <source>Interface Name is Empty</source>
         <translation>接口名称为空</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="207"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="211"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation>接口名称为空，请输入名称后重试！</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="217"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="221"/>
         <source>Create device failed!</source>
         <translation>创建设备失败！</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="220"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="224"/>
         <source>Error Occurred</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="235"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="239"/>
         <source>Connection Error</source>
         <translation>链接错误</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="236"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="240"/>
         <source>Connection error: %1</source>
         <translation>链接错误：%1</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="317"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="321"/>
         <source>Device is Not Ready</source>
         <translation>设备未就绪</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="318"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="322"/>
         <source>Device is not ready, please connect the device then try angin!</source>
         <translation>设备未就绪，请连接设备后重试！</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="358"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="362"/>
         <source>Error Occure</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="394"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="398"/>
         <source>unspecified</source>
         <translation>未指定</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="396"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="400"/>
         <source>false</source>
         <translation>否</translation>
     </message>
     <message>
-        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="397"/>
+        <location filename="../../Source/CANBus/Source/xToolsCanBusStudioUi.cpp" line="401"/>
         <source>true</source>
         <translation>是</translation>
     </message>
@@ -1353,68 +1353,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsLicenseManager</name>
     <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="120"/>
         <source>Import License</source>
-        <translation>导入许可</translation>
+        <translation type="vanished">导入许可</translation>
     </message>
     <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="122"/>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="144"/>
         <source>License Files (*.license)</source>
-        <translation>许可文件(*.license)</translation>
+        <translation type="vanished">许可文件(*.license)</translation>
     </message>
     <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="142"/>
         <source>Export License</source>
-        <translation>导出许可</translation>
+        <translation type="vanished">导出许可</translation>
     </message>
     <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="311"/>
         <source>End of Trial</source>
-        <translation>试用借宿</translation>
+        <translation type="vanished">试用借宿</translation>
     </message>
     <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManager.cpp" line="312"/>
         <source>The trial period has expired, the application will be closed.</source>
-        <translation>试用结束，软件即将关闭退出。</translation>
+        <translation type="vanished">试用结束，软件即将关闭退出。</translation>
     </message>
 </context>
 <context>
     <name>xToolsLicenseManagerUi</name>
     <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="20"/>
         <source>License Manager</source>
-        <translation>许可管理</translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="127"/>
-        <source>未注册</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="223"/>
-        <source>注册码</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="232"/>
-        <source>粘贴</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="255"/>
-        <source>注册</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="272"/>
-        <source>机器码</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Private/Common/Source/xToolsLicenseManagerUi.ui" line="281"/>
-        <source>复制</source>
-        <translation></translation>
+        <translation type="vanished">许可管理</translation>
     </message>
 </context>
 <context>
@@ -2849,7 +2812,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="97"/>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="351"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="355"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -2982,83 +2945,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="84"/>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="632"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="86"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="641"/>
         <source>SerialPort</source>
         <translation>串口助手</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="86"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="88"/>
         <source>UDP Client</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="88"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="90"/>
         <source>UDP Server</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="90"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="92"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="92"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="94"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="94"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="96"/>
         <source>WebSocket Client</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="96"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="98"/>
         <source>WebSocket Server</source>
         <translation>WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="98"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="100"/>
         <source>BLE Central</source>
         <translation>BLE中心设备</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="349"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="353"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="442"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="446"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="633"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="643"/>
         <source>UDP</source>
         <translation>UDP</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="634"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="644"/>
         <source>TCP</source>
         <translation>TCP</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="635"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="645"/>
         <source>WebSocket</source>
         <translation>WebSocket</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="649"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="659"/>
         <source>Error Occured</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="700"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="710"/>
         <source>Input Text Can Not Be Empty</source>
         <translation>输入数据不能为空</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="701"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="711"/>
         <source>The input text is empty, please enter the input text</source>
         <translation>输入数据不能为空，请输入数据后尝试</translation>
     </message>
@@ -3140,119 +3103,174 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsToolFactory</name>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="121"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="125"/>
         <source>Analyzer</source>
         <translation>分析器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="122"/>
         <source>Serialport</source>
-        <translation>串口</translation>
+        <translation type="vanished">串口</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="123"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="126"/>
+        <source>Serial Port</source>
+        <translation>串口助手</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="127"/>
         <source>Emitter</source>
         <translation>发射器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="124"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="128"/>
         <source>Masker</source>
         <translation>验码器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="125"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="129"/>
         <source>Responser</source>
         <translation>应答器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="126"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="130"/>
         <source>Storer</source>
         <translation>存储器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="127"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="131"/>
         <source>Prestore</source>
         <translation>预设器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="128"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="132"/>
         <source>Velometer</source>
         <translation>测速器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="129"/>
-        <source>UdpClient</source>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="133"/>
+        <source>UDP Client</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="130"/>
-        <source>UdpServer</source>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="134"/>
+        <source>UDP Server</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="131"/>
-        <source>TcpClient</source>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="135"/>
+        <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="132"/>
-        <source>TcpServer</source>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="136"/>
+        <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="133"/>
-        <source>WebSocketClient</source>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="137"/>
+        <source>Web Socket Client</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="134"/>
-        <source>WebSocketServer</source>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="138"/>
+        <source>Web Socket Server</source>
         <translation>WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="135"/>
-        <source>BleCentral</source>
-        <translation>BLE中心部件</translation>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="139"/>
+        <source>BLE Central</source>
+        <translation>BLE中心设备</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="136"/>
-        <source>BlePeriheral</source>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="140"/>
+        <source>BLE Periheral</source>
         <translation>BLE外围设备</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="137"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="142"/>
+        <source>Serial Port Transmitter</source>
+        <translation>串口转发</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="143"/>
+        <source>UDP Transmitter</source>
+        <translation>UDP转发</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="144"/>
+        <source>TCP Transmitter</source>
+        <translation>TCP转发</translation>
+    </message>
+    <message>
+        <source>TDP Transmitter</source>
+        <translation type="vanished">TCP转发</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="145"/>
+        <source>Web Socket Transmitter</source>
+        <translation>WebSocket转发器</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="146"/>
+        <source>CRC Calculator</source>
+        <translation>CRC计算器</translation>
+    </message>
+    <message>
+        <source>UdpClient</source>
+        <translation type="vanished">UDP客户端</translation>
+    </message>
+    <message>
+        <source>UdpServer</source>
+        <translation type="vanished">UDP服务器</translation>
+    </message>
+    <message>
+        <source>TcpClient</source>
+        <translation type="vanished">TCP客户端</translation>
+    </message>
+    <message>
+        <source>TcpServer</source>
+        <translation type="vanished">TCP服务器</translation>
+    </message>
+    <message>
+        <source>WebSocketClient</source>
+        <translation type="vanished">WebSocket客户端</translation>
+    </message>
+    <message>
+        <source>WebSocketServer</source>
+        <translation type="vanished">WebSocket服务器</translation>
+    </message>
+    <message>
+        <source>BleCentral</source>
+        <translation type="vanished">BLE中心部件</translation>
+    </message>
+    <message>
+        <source>BlePeriheral</source>
+        <translation type="vanished">BLE外围设备</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="141"/>
         <source>Statistitician</source>
         <translation>统计器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="138"/>
         <source>SerialPortTransmitter</source>
-        <translation>串口转发器</translation>
+        <translation type="vanished">串口转发器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="139"/>
         <source>UdpTransmitter</source>
-        <translation>UDP转发器</translation>
+        <translation type="vanished">UDP转发器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="140"/>
         <source>TcpTransmitter</source>
-        <translation>TCP转发器</translation>
+        <translation type="vanished">TCP转发器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="141"/>
         <source>WebSocketTransmitter</source>
-        <translation>WebSocket转发器</translation>
+        <translation type="vanished">WebSocket转发器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="142"/>
         <source>CrcCalculator</source>
-        <translation>CRC计算器</translation>
-    </message>
-    <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="148"/>
-        <source>Unknown</source>
-        <translation></translation>
+        <translation type="vanished">CRC计算器</translation>
     </message>
 </context>
 <context>

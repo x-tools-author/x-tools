@@ -141,7 +141,7 @@ QString xToolsToolFactory::toolName(int type)
         map.insert(StatistiticianTool, tr("Statistitician"));
         map.insert(SerialPortTransmitterTool, tr("Serial Port Transmitter"));
         map.insert(UdpTransmitterTool, tr("UDP Transmitter"));
-        map.insert(TcpTransmitterTool, tr("TDP Transmitter"));
+        map.insert(TcpTransmitterTool, tr("TCP Transmitter"));
         map.insert(WebSocketTransmitterTool, tr("Web Socket Transmitter"));
         map.insert(CrcCalculatorTool, tr("CRC Calculator"));
     }
