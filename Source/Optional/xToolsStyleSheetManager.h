@@ -3,8 +3,8 @@
  *
  * The file is encoded in "utf8 with bom", it is a part of xTools project.
  *
- * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source code
- * directory.
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
+ * code directory.
  **************************************************************************************************/
 #pragma once
 
