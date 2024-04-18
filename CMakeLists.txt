@@ -266,6 +266,14 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   if(X_TOOLS_ENABLE_MODULE_PRIVATE)
     target_link_libraries(xTools PRIVATE QtAES::QtAES)
   endif()
+
+  x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} X_TOOLS)
+  set(X_TOOLS_VERSION
+      "x.x.x"
+      CACHE STRING "The version of app store packet.")
+  if(X_TOOLS_BUILD_FOR_STORE)
+    x_tools_generate_msix(xTools "xTools" ${X_TOOLS_VERSION})
+  endif()
 endif()
 
 option(X_TOOLS_ENABLE_TARGET_GIT "Some git commands for pulling and pushing" OFF)
