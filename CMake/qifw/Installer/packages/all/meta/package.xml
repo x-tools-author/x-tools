@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>argPackageDisplayName</DisplayName>
+    <Description>argPackageDescription</Description>
+    <Version>argPackageVersion</Version>
+    <ReleaseDate>argPackageReleaseDate</ReleaseDate>
+    <Default>true</Default>
+    <Script>installscript.qs</Script>
+    <ForcedInstallation>true</ForcedInstallation>
+</Package>

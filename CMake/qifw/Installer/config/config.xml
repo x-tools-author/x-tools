@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>argConfigName</Name>
+    <Version>argConfigVersion</Version>
+    <Title>argConfigTitle</Title>
+    <Publisher>xTools</Publisher>
+    <StartMenuDir>xTools/argConfigStartMenuDir</StartMenuDir>
+    <TargetDir>@HomeDir@/AppData/Roaming/xTools/argConfigTargetDir</TargetDir>
+    <WizardDefaultHeight>420</WizardDefaultHeight>
+</Installer>
