@@ -156,7 +156,7 @@ void MainWindow::initFileMenu()
     // Other tools
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
 #ifdef X_TOOLS_ENABLE_MODULE_MODBUS
-    auto* modbusAction = new QAction("Modbus Studio", this);
+    auto* modbusAction = new QAction("Modbus", this);
     connect(modbusAction, &QAction::triggered, this, [=]() {
         auto* w = new xToolsModbusStudioUi();
         w->setContentsMargins(9, 9, 9, 9);
@@ -167,7 +167,7 @@ void MainWindow::initFileMenu()
     windowMenu->addAction(modbusAction);
 #endif
 #ifdef X_TOOLS_ENABLE_MODULE_CANBUS
-    auto* canBusAction = new QAction("CANBus Studio", this);
+    auto* canBusAction = new QAction("CAN Bus", this);
     connect(canBusAction, &QAction::triggered, this, [=]() {
         auto* w = new xToolsCanBusStudioUi();
         w->setContentsMargins(9, 9, 9, 9);
