@@ -228,6 +228,11 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
     list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/ToolsUI/xToolsSerialPortTransmitterToolUiEditor.ui)
   endif()
 
+  # You can specify the version of the application.
+  set(X_TOOLS_VERSION
+      "0.0.0"
+      CACHE STRING "The version of applicaion")
+
   x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
   x_tools_add_stylesheet_files(xTools)
   x_tools_generate_translations(xTools)
@@ -235,7 +240,7 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   if(WIN32)
     x_tools_tar_target(xTools)
   endif()
-  x_tools_generate_installer(xTools)
+  x_tools_generate_installer(xTools ${X_TOOLS_VERSION})
 
   if(X_TOOLS_ENABLE_MODULE_QRCODE)
     target_link_libraries(xTools PRIVATE qrencode)
@@ -270,9 +275,6 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   endif()
 
   x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} X_TOOLS)
-  set(X_TOOLS_VERSION
-      "x.x.x"
-      CACHE STRING "The version of app store packet.")
   if(X_TOOLS_BUILD_FOR_STORE)
     x_tools_generate_msix(xTools "xTools" ${X_TOOLS_VERSION})
   endif()
