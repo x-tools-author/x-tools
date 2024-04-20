@@ -1351,36 +1351,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xToolsLicenseManager</name>
-    <message>
-        <source>Import License</source>
-        <translation type="vanished">导入许可</translation>
-    </message>
-    <message>
-        <source>License Files (*.license)</source>
-        <translation type="vanished">许可文件(*.license)</translation>
-    </message>
-    <message>
-        <source>Export License</source>
-        <translation type="vanished">导出许可</translation>
-    </message>
-    <message>
-        <source>End of Trial</source>
-        <translation type="vanished">试用借宿</translation>
-    </message>
-    <message>
-        <source>The trial period has expired, the application will be closed.</source>
-        <translation type="vanished">试用结束，软件即将关闭退出。</translation>
-    </message>
-</context>
-<context>
-    <name>xToolsLicenseManagerUi</name>
-    <message>
-        <source>License Manager</source>
-        <translation type="vanished">许可管理</translation>
-    </message>
-</context>
-<context>
     <name>xToolsMaskerToolUi</name>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsMaskerToolUi.ui" line="32"/>
@@ -2346,42 +2316,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSerialPortTransmitterTool.cpp" line="24"/>
         <source>enable</source>
-        <translation></translation>
+        <translation>使能</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSerialPortTransmitterTool.cpp" line="26"/>
         <source>portName</source>
-        <translation></translation>
+        <translation>端口号</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSerialPortTransmitterTool.cpp" line="28"/>
         <source>baudRate</source>
-        <translation></translation>
+        <translation>波特率</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSerialPortTransmitterTool.cpp" line="30"/>
         <source>parity</source>
-        <translation></translation>
+        <translation>校验位</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSerialPortTransmitterTool.cpp" line="32"/>
         <source>stopBits</source>
-        <translation></translation>
+        <translation>停止位</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSerialPortTransmitterTool.cpp" line="34"/>
         <source>dataBits</source>
-        <translation></translation>
+        <translation>数据位</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSerialPortTransmitterTool.cpp" line="36"/>
         <source>flowControl</source>
-        <translation></translation>
+        <translation>流控位</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSerialPortTransmitterTool.cpp" line="38"/>
         <source>description</source>
-        <translation>描述</translation>
+        <translation>描述说明</translation>
     </message>
 </context>
 <context>
@@ -2490,12 +2460,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSocketClientTransmitterTool.cpp" line="25"/>
         <source>ClientIp</source>
-        <translation></translation>
+        <translation>客户端地址</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSocketClientTransmitterTool.cpp" line="27"/>
         <source>ClientPort</source>
-        <translation></translation>
+        <translation>客户端端口</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsSocketClientTransmitterTool.cpp" line="29"/>
@@ -2543,7 +2513,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="89"/>
         <source>Message type</source>
-        <translation></translation>
+        <translation>消息类型</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientTransmitterToolUiEditor.ui" line="96"/>
