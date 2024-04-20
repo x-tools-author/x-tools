@@ -17,7 +17,7 @@ set(WITH_GFLAGS OFF)
 set(BUILD_TESTING OFF)
 set(BUILD_SHARED_LIBS OFF)
 set(WITHOUT_PNG ON)
-set(WITH_TOOLS NO)
+set(WITH_TOOLS OFF)
 
 # --------------------------------------------------------------------------------------------------
 # Qt module
@@ -80,8 +80,8 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/Private/CMakeLists.txt)
   if(X_TOOLS_ENABLE_MODULE_PRIVATE)
     include_directories(${CMAKE_SOURCE_DIR}/Private/Common/Source)
     add_compile_definitions(X_TOOLS_ENABLE_MODULE_PRIVATE)
-    add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
   endif()
+  add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
 endif()
 
 # --------------------------------------------------------------------------------------------------
