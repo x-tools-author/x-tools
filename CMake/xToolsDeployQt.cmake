@@ -1,7 +1,6 @@
-set(X_TOOLS_QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Qml)
-
 function(x_tools_deploy_qt_for_windows target)
-  if(EXISTS "${X_TOOLS_QML_PATH}")
+  set(X_TOOLS_QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Qml)
+  if(EXISTS ${X_TOOLS_QML_PATH})
     add_custom_command(
       TARGET ${target}
       POST_BUILD
@@ -38,6 +37,7 @@ function(x_tools_deploy_qt_for_windows target)
 endfunction()
 
 function(x_tools_deploy_qt_for_mac target)
+  set(X_TOOLS_QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Qml)
   if(NOT ${target} STREQUAL "xTools")
     return()
   endif()
@@ -84,6 +84,7 @@ function(x_tools_deploy_qt_for_mac target)
 endfunction()
 
 function(x_tools_deploy_qt_for_linux target)
+  set(X_TOOLS_QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Qml)
   string(TOUPPER ${target} upper_target_name)
   string(TOLOWER ${target} lower_target_name)
   option(X_TOOLS_LINUX_MAKE_APP_IMAGE_${upper_target_name} "Pack target tp a app image file" OFF)
