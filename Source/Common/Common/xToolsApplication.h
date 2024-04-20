@@ -28,6 +28,9 @@ public:
 public:
     explicit xToolsApplication(int argc, char *argv[]);
 
+    static bool enableSplashScreen();
+    static void setEnableSplashScreen(bool enable);
+
     void showSplashScreenMessage(const QString &msg);
     void setupPalette(const QString &fileName);
     QSplashScreen &splashScreen();
@@ -66,6 +69,7 @@ protected:
 private:
     const QString m_translatorPrefix{"xToolsCommon"};
     QMap<QString, QString> m_languageFlagNameMap;
+    static bool m_enableSplashScreen;
 
 private:
     static QPixmap splashScreenPixMap();

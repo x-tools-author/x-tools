@@ -33,6 +33,7 @@
 #include "xToolsDataStructure.h"
 #include "xToolsSettings.h"
 
+bool xToolsApplication::m_enableSplashScreen = true;
 xToolsApplication::xToolsApplication(int argc, char *argv[])
     : QApplication(argc, argv)
 {
@@ -74,9 +75,21 @@ xToolsApplication::xToolsApplication(int argc, char *argv[])
 #if 0
     m_splashScreen.setWindowFlags(m_splashScreen.windowFlags() | Qt::WindowStaysOnTopHint);
 #endif
-    m_splashScreen.show();
-    processEvents();
-    showSplashScreenMessage(tr("Initialize application..."));
+    if(enableSplashScreen()) {
+        m_splashScreen.show();
+        processEvents();
+        showSplashScreenMessage(tr("Initialize application..."));
+    }
+}
+
+bool xToolsApplication::enableSplashScreen()
+{
+    return m_enableSplashScreen;
+}
+
+void xToolsApplication::setEnableSplashScreen(bool enable)
+{
+    m_enableSplashScreen = enable;
 }
 
 void xToolsApplication::showSplashScreenMessage(const QString &msg)
