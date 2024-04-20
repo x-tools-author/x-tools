@@ -98,6 +98,16 @@
         <translation></translation>
     </message>
     <message>
+        <location filename="../../Source/MainWindow.cpp" line="348"/>
+        <source>Modbus Studio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="352"/>
+        <source>CANBus Studio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../Source/MainWindow.cpp" line="403"/>
         <source>Show Icon Only</source>
         <translation></translation>

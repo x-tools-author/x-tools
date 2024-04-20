@@ -98,6 +98,16 @@
         <translation>官方网站</translation>
     </message>
     <message>
+        <location filename="../../Source/MainWindow.cpp" line="348"/>
+        <source>Modbus Studio</source>
+        <translation>Modbus工作台</translation>
+    </message>
+    <message>
+        <location filename="../../Source/MainWindow.cpp" line="352"/>
+        <source>CANBus Studio</source>
+        <translation>Canbus工作台</translation>
+    </message>
+    <message>
         <location filename="../../Source/MainWindow.cpp" line="403"/>
         <source>Show Icon Only</source>
         <translation>隐藏文本</translation>

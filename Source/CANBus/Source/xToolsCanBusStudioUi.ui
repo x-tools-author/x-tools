@@ -185,7 +185,7 @@
         <widget class="QLabel" name="label_11">
          <property name="font">
           <font>
-           <italic>true</italic>
+           <italic>false</italic>
           </font>
          </property>
          <property name="text">

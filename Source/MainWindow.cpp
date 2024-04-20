@@ -345,11 +345,11 @@ void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
 #ifdef X_TOOLS_ENABLE_MODULE_MODBUS
     auto modbusIcon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconModbus.svg"));
-    initNav({buttonGroup, modbusIcon, "Modbus Studio", new xToolsModbusStudioUi(this), toolBar});
+    initNav({buttonGroup, modbusIcon, tr("Modbus Studio"), new xToolsModbusStudioUi(this), toolBar});
 #endif
 #ifdef X_TOOLS_ENABLE_MODULE_CANBUS
     auto canIcon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconCanBus.svg"));
-    initNav({buttonGroup, canIcon, "CANBus Studio", new xToolsCanBusStudioUi(this), toolBar});
+    initNav({buttonGroup, canIcon, tr("CANBus Studio"), new xToolsCanBusStudioUi(this), toolBar});
 #endif
 #endif
 }
