@@ -72,11 +72,15 @@ x_tools_git_get_latest_commit_time(${CMAKE_SOURCE_DIR} "X_TOOLS")
 
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
 include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
+include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/Tools)
+include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI)
+include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBox)
+include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBoxUI)
 
 # --------------------------------------------------------------------------------------------------
 # Private module
 if(EXISTS ${CMAKE_SOURCE_DIR}/Private/CMakeLists.txt)
-  option(X_TOOLS_ENABLE_MODULE_PRIVATE "Enable private module" ON)
+  option(X_TOOLS_ENABLE_MODULE_PRIVATE "Enable private module" OFF)
   if(X_TOOLS_ENABLE_MODULE_PRIVATE)
     include_directories(${CMAKE_SOURCE_DIR}/Private/Common/Source)
     add_compile_definitions(X_TOOLS_ENABLE_MODULE_PRIVATE)
@@ -137,8 +141,6 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Common module
-include_directories(${CMAKE_SOURCE_DIR}/Source/Common/Common)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Common/CommonUI)
 add_subdirectory(Source/Common)
 
 # --------------------------------------------------------------------------------------------------
@@ -186,10 +188,6 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Tools
-include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/Tools)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI)
-include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBox)
-include_directories(${CMAKE_SOURCE_DIR}/Source/ToolBox/ToolBoxUI)
 file(GLOB X_TOOLS_SOURCE_TMP "${CMAKE_SOURCE_DIR}/Source/*.*")
 file(GLOB_RECURSE X_TOOLS_TOOLS_SOURCE "${CMAKE_SOURCE_DIR}/Source/Tools/*.*")
 file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE "${CMAKE_SOURCE_DIR}/Source/ToolBox/*.*")
