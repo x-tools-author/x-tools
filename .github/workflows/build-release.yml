@@ -17,7 +17,7 @@ jobs:
         gh release delete ${{ github.ref_name }} -y || true
     - name: Create Release
       run: |
-        gh release create ${{ github.ref_name }} --title "Release ${{ github.ref_name }}" --notes "The version is ready. You can see the changed log: https://github.com/qsaker/QtSwissArmyKnife/blob/master/resources/files/History.txt"
+        gh release create ${{ github.ref_name }} --title "Release ${{ github.ref_name }}" --notes "The version is ready. You can see the changed log: https://github.com/x-tools-author/x-tools/blob/master/Resources/Files/History.txt"
   release-for-windows:
     runs-on: windows-2019
     needs: update-release
@@ -38,12 +38,13 @@ jobs:
         mkdir build
         cd build
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
-        cmake --build . --target QtSwissArmyKnife
-        dir && dir .\sak && dir .\sak\QtSwissArmyKnife
+        cmake -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+        cmake --build . --target xTools
+        dir && dir .\assets && dir .\assets\xTools
     - name: Upload Release Asset for Windnows
       run: |
-        dir && gh release upload ${{ github.ref_name }} 'build\sak\qtswissarmyknife-windows-amd64.zip'
+        cmake -E rename 'build\assets\xtools-windows-amd64.zip' 'build\assets\xtools-${{ github.workspace }}-windows-amd64.zip'
+        dir && gh release upload continuous 'build\assets\xtools-windows-amd64.zip'
   release-for-linux:
     runs-on: ubuntu-20.04
     needs: update-release
@@ -65,19 +66,20 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -DSAK_ENABLE_LINUXDEPLOYQT:BOOL=TRUE -DSAK_ENABLE_LINUXDEPLOYQT_DOWNLOAD:BOOL=TRUE -G "Unix Makefiles"
-        cmake --build . --target QtSwissArmyKnife
-        dir && dir ./sak && dir ./sak/QtSwissArmyKnife
+        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -DX_TOOLS_LINUX_MAKE_APP_IMAGE_XTOOLS:BOOL=TRUE -G "Unix Makefiles"
+        cmake --build . --target xTools
+        dir && dir ./assets && dir ./assets/xTools
     - name: Upload Release Asset for Linux
       run: |
-        dir && gh release upload ${{ github.ref_name }} 'build/qtswissarmyknife-linux-x86_64.AppImage'
+        cmake -E rename build/xtools-linux-x86_64.AppImage build/xtools-${{ github.ref_name }}-linux-x86_64.AppImage
+        dir && gh release upload continuous 'build/xtools-linux-x86_64.AppImage'
   release-for-macos:
     runs-on: macos-11
     needs: update-release
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Install Qt
+    - name: Install Qt for macOS
       uses: jurplel/install-qt-action@v3
       with:
         version: '6.5.3'
@@ -98,9 +100,70 @@ jobs:
         ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
         mkdir build
         cd build
-        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
-        cmake --build . --target QtSwissArmyKnife
-        ls && ls ./sak && ls ./sak/QtSwissArmyKnife
+        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
+        cmake --build . --target xTools
+        ls && ls ./assets && ls ./assets/xTools
     - name: Upload Release Asset for macOS
       run: |
-        ls && gh release upload ${{ github.ref_name }} 'build/sak/QtSwissArmyKnife/qtswissarmyknife-macos-11.dmg'
+        cmake -E rename build/assets/xTools/xtools-macos-11.dmg build/assets/xTools/xtools-${{ github.ref_name }}-macos-11.dmg
+        ls && gh release upload continuous 'build/assets/xTools/xtools-macos-11.dmg'
+  release-for-android:
+    runs-on: windows-2019
+    needs: update-release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Qt for Android
+        uses: jurplel/install-qt-action@v3
+        with:
+          target: android
+          arch: android_armv7
+          host: windows
+          dir: ${{ github.workspace }}
+          modules: ${{env.QT_MODULES}}
+          version: ${{env.QT_VERSION}}
+      - name: Install Qt for Desktop(mingw)
+        uses: jurplel/install-qt-action@v3
+        with:
+          target: desktop
+          arch: win64_mingw
+          host: windows
+          dir: ${{ github.workspace }}
+          modules: ${{env.QT_MODULES}}
+          version: "${{env.QT_VERSION}}"
+      - name: CMake for Android
+        shell: cmd
+        run: |
+          set JAVA_HOME=%JAVA_HOME_11_X64%
+          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat ^
+          -G "MinGW Makefiles" ^
+          -S . ^
+          -B "build\armeabi_v7a" ^
+          -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64" ^
+          -DCMAKE_BUILD_TYPE:STRING=Release ^
+          -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
+          -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
+          -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%" ^
+          -DBUILD_SHARED_LIBS:BOOL=OFF
+      - name: Build for android
+        shell: cmd
+        run: |
+          set JAVA_HOME=%JAVA_HOME_11_X64%
+          echo %JAVA_HOME%
+          cmake --build build\armeabi_v7a --target xTools --config Release
+      - name: Deploy for Android
+        shell: cmd
+        run: |
+          set JAVA_HOME=%JAVA_HOME_11_X64%
+          echo %JAVA_HOME%
+          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
+          --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
+          --output build\armeabi_v7a\android-build ^
+          --android-platform android-34 ^
+          --sign ${{ github.workspace }}\Resources\Platforms\Android\xTools.keystore xTools --storepass xTools --keypass xTools ^
+          --jdk %JAVA_HOME% --gradle --release
+      - name: Upload Release Asset for Android
+        run: |
+          cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-armeabi_v7a.apk
+          cmake -E rename xtools-android-armeabi_v7a.apk xtools-${{ github.ref_name }}-android-armeabi_v7a.apk
+          ls && tree build/armeabi_v7a && gh release upload continuous xtools-android-armeabi_v7a.apk
