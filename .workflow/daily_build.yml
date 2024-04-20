@@ -22,13 +22,14 @@ stages:
         commands:
           - apt-get update --fix-missing -y
           - apt-get install libgl1-mesa-dev -y
-          - apt-get install qtbase5-* -y
+          - ''
           - qmake -v
-          - 'pip3 install aqtinstall   '
+          - ''
+          - 'pip install aqtinstall   '
           - aqt install-qt linux desktop 6.5.3 gcc_64 -m qtcharts qtserialbus qtserialport
           - ''
-          - cmake -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DCMAKE_BUILD_TYPE:STRING=Release -G "CodeBlocks - Unix Makefiles" ../ -G "Unix Makefiles"
-          - cmake --build . --target xTools
+          - ls
+          - ''
         artifacts:
           - name: BUILD_ARTIFACT
             path:
