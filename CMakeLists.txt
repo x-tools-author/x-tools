@@ -142,6 +142,9 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Common module
 add_subdirectory(Source/Common)
+if(X_TOOLS_ENABLE_MODULE_PRIVATE)
+  add_dependencies(xToolsPrivateCommon xToolsCommon)
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # Assistant module
@@ -232,7 +235,7 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
       CACHE STRING "The version of applicaion")
 
   x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
-  x_tools_add_stylesheet_files(xTools)
+  x_tools_copy_style_resources_for_target(xTools)
   x_tools_generate_translations(xTools)
   x_tools_deploy_qt(xTools)
   if(WIN32)
