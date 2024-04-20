@@ -5,6 +5,8 @@ on:
       - 'v*'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  QT_VERSION: 6.5.3
+  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 
 jobs:
   update-release:
