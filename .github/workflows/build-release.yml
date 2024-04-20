@@ -43,8 +43,8 @@ jobs:
         dir && dir .\assets && dir .\assets\xTools
     - name: Upload Release Asset for Windnows
       run: |
-        cmake -E rename 'build\assets\xtools-windows-amd64.zip' 'build\assets\xtools-${{ github.workspace }}-windows-amd64.zip'
-        dir && gh release upload continuous 'build\assets\xtools-windows-amd64.zip'
+        cmake -E rename 'build\assets\xtools-windows-amd64.zip' 'build\assets\xtools-${{ github.ref_name }}-windows-amd64.zip'
+        dir && gh release upload ${{ github.ref_name }} 'build\assets\xtools-${{ github.ref_name }}-windows-amd64.zip'
   release-for-linux:
     runs-on: ubuntu-20.04
     needs: update-release
@@ -72,7 +72,7 @@ jobs:
     - name: Upload Release Asset for Linux
       run: |
         cmake -E rename build/xtools-linux-x86_64.AppImage build/xtools-${{ github.ref_name }}-linux-x86_64.AppImage
-        dir && gh release upload continuous 'build/xtools-linux-x86_64.AppImage'
+        dir && gh release upload ${{ github.ref_name }} 'build/xtools-${{ github.ref_name }}-linux-x86_64.AppImage'
   release-for-macos:
     runs-on: macos-11
     needs: update-release
@@ -106,7 +106,7 @@ jobs:
     - name: Upload Release Asset for macOS
       run: |
         cmake -E rename build/assets/xTools/xtools-macos-11.dmg build/assets/xTools/xtools-${{ github.ref_name }}-macos-11.dmg
-        ls && gh release upload continuous 'build/assets/xTools/xtools-macos-11.dmg'
+        ls && gh release upload ${{ github.ref_name }} 'build/assets/xTools/xtools-${{ github.ref_name }}-macos-11.dmg'
   release-for-android:
     runs-on: windows-2019
     needs: update-release
@@ -166,4 +166,4 @@ jobs:
         run: |
           cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-armeabi_v7a.apk
           cmake -E rename xtools-android-armeabi_v7a.apk xtools-${{ github.ref_name }}-android-armeabi_v7a.apk
-          ls && tree build/armeabi_v7a && gh release upload continuous xtools-android-armeabi_v7a.apk
+          ls && tree build/armeabi_v7a && gh release upload ${{ github.ref_name }} xtools-${{ github.ref_name }}-android-armeabi_v7a.apk
