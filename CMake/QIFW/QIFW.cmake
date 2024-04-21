@@ -36,9 +36,15 @@ function(x_tools_generate_installer target version)
   list(APPEND args "-DargTemperateDir=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/Installer")
   list(APPEND args "-DargBinarycreator=${binarycreator}")
 
+  set(RESOURCES_DIR ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
+  set(QIFW_SOURCE ${RESOURCES_DIR}/QIFW.cmake)
+  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/QIFWScript.cmake)
+  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/config/config.xml)
+  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/packages/all/meta/package.xml)
+
   add_custom_target(
     ${target}_installer
     COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/QIFWScript.cmake
-    SOURCES ${template}
+    SOURCES ${QIFW_SOURCE}
     COMMENT "Start making installer packet for ${target}")
 endfunction()
