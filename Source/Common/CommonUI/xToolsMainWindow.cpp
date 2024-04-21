@@ -61,6 +61,7 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
 #endif
 }
 
+#include <QJsonObject>
 QIcon xToolsMainWindow::cookedIcon(const QString& svgFileName)
 {
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
@@ -73,8 +74,7 @@ QIcon xToolsMainWindow::cookedIcon(const QString& svgFileName)
     renderer.render(&painter);
 
     // Change color
-    QPalette palette = xToolsStyleSheetManager::instance().generateThemePalette();
-    QColor color = palette.highlight().color();
+    QColor color = xToolsStyleSheetManager::instance().themeColor("primaryColor");
     for (int y = 0; y < image.height(); y++) {
         for (int x = 0; x < image.width(); x++) {
             QColor ic = image.pixelColor(x, y);
