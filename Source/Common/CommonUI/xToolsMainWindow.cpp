@@ -20,10 +20,12 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QPainter>
 #include <QProcess>
 #include <QScreen>
 #include <QStyle>
 #include <QStyleFactory>
+#include <QSvgRenderer>
 #include <QTimer>
 #include <QUrl>
 
@@ -59,6 +61,35 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
 #endif
 }
 
+QIcon xToolsMainWindow::cookedIcon(const QString& svgFileName)
+{
+#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+    QSvgRenderer renderer(svgFileName);
+    QImage image(QSize(128, 128), QImage::Format_ARGB32);
+    image.fill(Qt::transparent); // Transparent background
+
+    QPainter painter(&image);
+    painter.setRenderHint(QPainter::Antialiasing);
+    renderer.render(&painter);
+
+    // Change color
+    QPalette palette = xToolsStyleSheetManager::instance().generateThemePalette();
+    QColor color = palette.highlight().color();
+    for (int y = 0; y < image.height(); y++) {
+        for (int x = 0; x < image.width(); x++) {
+            QColor ic = image.pixelColor(x, y);
+            if (ic.alpha() > 0) { // If not transparent
+                image.setPixelColor(x, y, color);
+            }
+        }
+    }
+
+    return QIcon(QPixmap::fromImage(image));
+#else
+    return QIcon(svgFileName);
+#endif
+}
+
 QString xToolsMainWindow::qtConfFileName()
 {
     return qApp->applicationDirPath() + "/qt.conf";
@@ -91,7 +122,9 @@ void xToolsMainWindow::initMenuOption()
 
     initOptionMenuHdpiPolicy();
     initOptionMenuAppStyleMenu();
+#ifndef X_TOOLS_ENABLE_MODULE_STYLESHEET
     initOptionMenuAppPaletteMenu();
+#endif
     m_optionMenu->addSeparator();
     initOptionMenuSettingsMenu();
 }

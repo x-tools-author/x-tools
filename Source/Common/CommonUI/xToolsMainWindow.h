@@ -20,6 +20,7 @@ class xToolsMainWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit xToolsMainWindow(QWidget* parent = Q_NULLPTR);
+    static QIcon cookedIcon(const QString& svgFileName);
 
 protected:
     xToolsApplication* m_xToolsApp;
