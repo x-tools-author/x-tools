@@ -277,7 +277,7 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
 
   x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} X_TOOLS)
   if(X_TOOLS_BUILD_FOR_STORE)
-    x_tools_generate_msix(xTools "xTools" ${X_TOOLS_VERSION})
+    x_tools_generate_msix(xTools "QSAK" ${X_TOOLS_VERSION})
   endif()
 endif()
 
