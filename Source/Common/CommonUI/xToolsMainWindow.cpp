@@ -39,6 +39,7 @@
 #include "xToolsStyleSheetManager.h"
 #endif
 
+QString xToolsMainWindow::s_version = QString("0.0.0");
 xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
@@ -88,6 +89,11 @@ QIcon xToolsMainWindow::cookedIcon(const QString& svgFileName)
 #else
     return QIcon(svgFileName);
 #endif
+}
+
+void xToolsMainWindow::setVersion(const QString& version)
+{
+    s_version = version;
 }
 
 QString xToolsMainWindow::qtConfFileName()
@@ -335,7 +341,8 @@ void xToolsMainWindow::onAboutActionTriggered()
     QString buildDateTimeString = xToolsApplication::buildDateTimeString(buildDateTimeFormat);
     QString year = xToolsApplication::buildDateTimeString("yyyy");
     QString info;
-    info += windowTitle() + QString(" ") + tr("(A Part of xTools Project)") + "\n\n";
+    info += windowTitle() + QString(" ") + s_version + " " + tr("(A Part of xTools Project)")
+            + "\n\n";
 #ifdef X_TOOLS_GIT_COMMIT
     info += tr("Commit") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
 #endif
