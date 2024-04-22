@@ -32,6 +32,10 @@ function(x_tools_deploy_qt_for_windows target)
               $<TARGET_FILE_DIR:${target}>
       COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_2.dll"
               $<TARGET_FILE_DIR:${target}>
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libcrypto-3-x64.dll"
+              $<TARGET_FILE_DIR:${target}> "||" ${CMAKE_COMMAND} -E true
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libssl-3-x64.dll"
+              $<TARGET_FILE_DIR:${target}> "||" ${CMAKE_COMMAND} -E true
       VERBATIM)
   endif()
 endfunction()
