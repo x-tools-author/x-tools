@@ -21,6 +21,7 @@ class xToolsMainWindow : public QMainWindow
 public:
     explicit xToolsMainWindow(QWidget* parent = Q_NULLPTR);
     static QIcon cookedIcon(const QString& svgFileName);
+    static QString version();
     static void setVersion(const QString& version);
 
 protected:

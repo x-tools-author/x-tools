@@ -91,6 +91,11 @@ QIcon xToolsMainWindow::cookedIcon(const QString& svgFileName)
 #endif
 }
 
+QString xToolsMainWindow::version()
+{
+    return s_version;
+}
+
 void xToolsMainWindow::setVersion(const QString& version)
 {
     s_version = version;
