@@ -55,14 +55,12 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     initMenuLanguage();
     initMenuHelp();
 #if defined(X_TOOLS_ENABLE_MODULE_STYLESHEET)
-    connect(&xToolsStyleSheetManager::instance(),
-            &xToolsStyleSheetManager::stylesheetChanged,
-            this,
-            [=]() {
-                if (!tryToReboot()) {
-                    xToolsStyleSheetManager::instance().updateApplicationStylesheet();
-                }
-            });
+    xToolsStyleSheetManager& tmp = xToolsStyleSheetManager::instance();
+    connect(&tmp, &xToolsStyleSheetManager::stylesheetChanged, this, [=]() {
+        if (!tryToReboot()) {
+            xToolsStyleSheetManager::instance().updateApplicationStylesheet();
+        }
+    });
 #endif
 }
 
