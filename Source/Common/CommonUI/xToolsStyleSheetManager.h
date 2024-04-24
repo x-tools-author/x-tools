@@ -32,6 +32,9 @@ public:
     QMenu* darkThemeMenu() const;
     QMenu* lightThemeMenu() const;
 
+signals:
+    void applicationStylesheetChanged();
+
 private:
     QStringList m_darkThemes;
     QStringList m_lightThemes;

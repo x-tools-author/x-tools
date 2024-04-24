@@ -54,7 +54,7 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     initMenuOption();
     initMenuLanguage();
     initMenuHelp();
-#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+#if defined(X_TOOLS_ENABLE_MODULE_STYLESHEET)
     connect(&xToolsStyleSheetManager::instance(),
             &xToolsStyleSheetManager::stylesheetChanged,
             this,
@@ -62,7 +62,6 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
 #endif
 }
 
-#include <QJsonObject>
 QIcon xToolsMainWindow::cookedIcon(const QString& svgFileName)
 {
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
@@ -220,10 +219,12 @@ void xToolsMainWindow::initOptionMenuAppStyleMenuQt(QMenu* menu)
 void xToolsMainWindow::initOptionMenuAppStyleMenuThirdParty(QMenu* menu)
 {
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+#if 0
     menu->addAction(tr("none"), this, [=]() {
         xToolsStyleSheetManager::instance().setThemeName("");
     });
     menu->addSeparator();
+#endif
     menu->addActions(xToolsStyleSheetManager::instance().darkThemeMenu()->actions());
     menu->addSeparator();
     menu->addActions(xToolsStyleSheetManager::instance().lightThemeMenu()->actions());

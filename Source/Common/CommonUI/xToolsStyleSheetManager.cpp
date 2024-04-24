@@ -11,6 +11,7 @@
 #include <QApplication>
 #include <QDir>
 #include <QFileInfoList>
+#include <QMessageBox>
 
 #include "xToolsSettings.h"
 
@@ -64,10 +65,8 @@ void xToolsStyleSheetManager::setThemeName(const QString& themeName)
     xToolsSettings::instance()->setValue("themeName", themeName);
     setCurrentTheme(themeName);
     updateStylesheet();
-#if 0
     qApp->setStyleSheet(styleSheet());
-#endif
-    qInfo() << "The stylesheet has been changed: " << this->currentTheme();
+    emit applicationStylesheetChanged();
 }
 
 QMenu* xToolsStyleSheetManager::darkThemeMenu() const
@@ -82,23 +81,45 @@ QMenu* xToolsStyleSheetManager::lightThemeMenu() const
 
 void xToolsStyleSheetManager::loadThemes()
 {
-    QDir dir = QDir(QApplication::applicationDirPath() + "/3rd_styles/qt_material/themes");
-    QFileInfoList infoList = dir.entryInfoList(QDir::Files);
-    for (const QFileInfo& info : infoList) {
-        if (info.fileName().endsWith(".xml")) {
-            if (info.fileName().contains("dark_")) {
-                m_darkThemes.append(info.baseName());
-            } else if (info.fileName().contains("light_")) {
-                m_lightThemes.append(info.baseName());
-            }
+    static QMap<QString, QString> nameFriendlyNameMap;
+    if (nameFriendlyNameMap.isEmpty()) {
+        nameFriendlyNameMap.insert("dark_amber", tr("Dark Amber"));
+        nameFriendlyNameMap.insert("dark_blue", tr("Dark Blue"));
+        nameFriendlyNameMap.insert("dark_cyan", tr("Dark Cyan"));
+        nameFriendlyNameMap.insert("dark_lightgreen", tr("Dark Light Green"));
+        nameFriendlyNameMap.insert("dark_pink", tr("Dark Pink"));
+        nameFriendlyNameMap.insert("dark_purple", tr("Dark Purple"));
+        nameFriendlyNameMap.insert("dark_red", tr("Dark Red"));
+        nameFriendlyNameMap.insert("dark_teal", tr("Dark Teal"));
+        nameFriendlyNameMap.insert("dark_yellow", tr("Dark Yellow"));
+
+        nameFriendlyNameMap.insert("light_amber", tr("Light Amber"));
+        nameFriendlyNameMap.insert("light_blue", tr("Light Blue"));
+        nameFriendlyNameMap.insert("light_cyan", tr("Light Cyan"));
+        nameFriendlyNameMap.insert("light_cyan_500", tr("Light Cyan(500)"));
+        nameFriendlyNameMap.insert("light_lightgreen", tr("Light Light Green"));
+        nameFriendlyNameMap.insert("light_pink", tr("Light Pink"));
+        nameFriendlyNameMap.insert("light_purple", tr("Light Purple"));
+        nameFriendlyNameMap.insert("light_red", tr("Light Red"));
+        nameFriendlyNameMap.insert("light_teal", tr("Light Teal"));
+        nameFriendlyNameMap.insert("light_yellow", tr("Light Yellow"));
+    }
+
+    QStringList themeList = themes();
+    for (QString& theme : themeList) {
+        if (theme.contains("dark_")) {
+            m_darkThemes.append(theme);
+        } else if (theme.contains("light_")) {
+            m_lightThemes.append(theme);
         }
     }
 
-    auto setupActions = [this](const QStringList& themes, QMenu* menu, QActionGroup* actionGroup) {
+    auto setupActions = [&, this](const QStringList& themes, QMenu* menu, QActionGroup* group) {
         for (const QString& theme : themes) {
-            QAction* action = new QAction(theme, menu);
+            QString txt = nameFriendlyNameMap.contains(theme) ? nameFriendlyNameMap[theme] : theme;
+            QAction* action = new QAction(txt, menu);
             action->setCheckable(true);
-            actionGroup->addAction(action);
+            group->addAction(action);
             menu->addAction(action);
             if (theme == themeName()) {
                 action->setChecked(true);
