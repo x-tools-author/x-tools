@@ -43,7 +43,11 @@ private:
     QMenu* m_lightThemeMenu;
     QActionGroup* m_darkThemeActionGroup;
     QActionGroup* m_lightThemeActionGroup;
+    QMap<QString, QString> m_nameFriendlyNameMap;
+    QMap<QString, QString> m_primaryColorMap;
 
 private:
     void loadThemes();
+    void updateActions();
+    void updateActionIcon(QAction* action, const QString& color);
 };

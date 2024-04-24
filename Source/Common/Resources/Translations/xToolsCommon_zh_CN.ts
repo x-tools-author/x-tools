@@ -4,7 +4,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../CommonUI/xTools.h" line="99"/>
+        <location filename="../../CommonUI/xTools.h" line="100"/>
         <source>(Store)</source>
         <translation></translation>
     </message>
@@ -20,12 +20,12 @@
 <context>
     <name>xToolsApplication</name>
     <message>
-        <location filename="../../Common/xToolsApplication.cpp" line="68"/>
+        <location filename="../../Common/xToolsApplication.cpp" line="69"/>
         <source>Load palette...</source>
         <translation>加载配色文件...</translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsApplication.cpp" line="79"/>
+        <location filename="../../Common/xToolsApplication.cpp" line="81"/>
         <source>Initialize application...</source>
         <translation>初始化应用...</translation>
     </message>
@@ -140,175 +140,175 @@
 <context>
     <name>xToolsMainWindow</name>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="70"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="113"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="72"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="115"/>
         <source>Import Palette</source>
         <translation>导入配色文件</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="76"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="119"/>
         <source>Export Palette</source>
         <translation>导出配色文件</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="81"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="125"/>
         <source>&amp;Exit</source>
         <translation>退出(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="89"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="133"/>
         <source>&amp;Options</source>
         <translation>选项(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="101"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="147"/>
         <source>&amp;Languages</source>
         <translation>语言(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="134"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="180"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="135"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="181"/>
         <source>&amp;About</source>
         <translation>关于软件(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="136"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="182"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="143"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="189"/>
         <source>Application Style</source>
         <translation>应用样式</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="178"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="225"/>
         <source>none</source>
         <translation>默认</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="194"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="242"/>
         <source>Application Palette</source>
         <translation>应用配色</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="196"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="244"/>
         <source>Default</source>
         <translation>默认</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="198"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="246"/>
         <source>Dark</source>
         <translation>暗色</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="200"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="248"/>
         <source>Light</source>
         <translation>亮色</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="203"/>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="319"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="251"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="368"/>
         <source>Import</source>
         <translation>导入</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="230"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="278"/>
         <source>Settings</source>
         <translation>配置参数</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="233"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="281"/>
         <source>Clear Settings</source>
         <translation>清空软件配置</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="240"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="288"/>
         <source>Open Settings Directory</source>
         <translation>打开配置目录</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="253"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="301"/>
         <source>HDPI Policy</source>
         <translation>屏幕适配</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="304"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="352"/>
         <source>(A Part of xTools Project)</source>
         <translation>(xTools系列软件之一)</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="306"/>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="309"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="355"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="358"/>
         <source>Commit</source>
         <translation>提交指纹</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="311"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="360"/>
         <source>Build Date</source>
         <translation>构建日期</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="313"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="362"/>
         <source>All rights reserved.</source>
         <translation>保留所有版权。</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="314"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="363"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="319"/>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="329"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="368"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="378"/>
         <source>All (*)</source>
         <translation>所有(*)</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="329"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="378"/>
         <source>Export</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="342"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="391"/>
         <source>The operation(open file %1) failed: %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="351"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="400"/>
         <source>Reboot application to effective</source>
         <translation>重启生效</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="352"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="401"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation>该操作需要重新启动软件，是否立即重启？</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="381"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="433"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="385"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="437"/>
         <source>User QQ Group</source>
         <translation>用户交流群</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="386"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="438"/>
         <source>Qt QQ Group</source>
         <translation>Qt技术交流群</translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="413"/>
+        <location filename="../../CommonUI/xToolsMainWindow.cpp" line="465"/>
         <source>Open the file(%1) failed: %2</source>
         <translation></translation>
     </message>
@@ -339,6 +339,114 @@
         <location filename="../../CommonUI/xToolsParityComboBox.cpp" line="20"/>
         <source>Mark</source>
         <translation>标记校验</translation>
+    </message>
+</context>
+<context>
+    <name>xToolsStyleSheetManager</name>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="37"/>
+        <source>Dark Theme</source>
+        <translation>暗色主题</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="38"/>
+        <source>Light Theme</source>
+        <translation>亮色主题</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="90"/>
+        <source>Dark Amber</source>
+        <translation>暗黑黄褐色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="91"/>
+        <source>Dark Blue</source>
+        <translation>暗黑蓝色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="92"/>
+        <source>Dark Cyan</source>
+        <translation>暗黑青色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="93"/>
+        <source>Dark Light Green</source>
+        <translation>暗黑浅绿色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="94"/>
+        <source>Dark Pink</source>
+        <translation>暗黑粉红色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="95"/>
+        <source>Dark Purple</source>
+        <translation>暗黑紫色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="96"/>
+        <source>Dark Red</source>
+        <translation>暗黑红色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="97"/>
+        <source>Dark Teal</source>
+        <translation>暗黑蓝绿色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="98"/>
+        <source>Dark Yellow</source>
+        <translation>暗黑黄色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="100"/>
+        <source>Light Amber</source>
+        <translation>明亮黄褐色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="101"/>
+        <source>Light Blue</source>
+        <translation>明亮蓝色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="102"/>
+        <source>Light Cyan</source>
+        <translation>明亮青色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="103"/>
+        <source>Light Cyan(500)</source>
+        <translation>明亮青色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="104"/>
+        <source>Light Light Green</source>
+        <translation>明亮浅绿色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="105"/>
+        <source>Light Pink</source>
+        <translation>明亮粉红色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="106"/>
+        <source>Light Purple</source>
+        <translation>明亮紫色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="107"/>
+        <source>Light Red</source>
+        <translation>明亮红色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="108"/>
+        <source>Light Teal</source>
+        <translation>明亮蓝绿色</translation>
+    </message>
+    <message>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="109"/>
+        <source>Light Yellow</source>
+        <translation>明亮黄色</translation>
     </message>
 </context>
 </TS>
