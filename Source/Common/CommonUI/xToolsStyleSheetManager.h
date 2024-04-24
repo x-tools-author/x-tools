@@ -31,6 +31,7 @@ public:
     void setThemeName(const QString& themeName);
     QMenu* darkThemeMenu() const;
     QMenu* lightThemeMenu() const;
+    void updateApplicationStylesheet();
 
 signals:
     void applicationStylesheetChanged();

@@ -58,7 +58,11 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     connect(&xToolsStyleSheetManager::instance(),
             &xToolsStyleSheetManager::stylesheetChanged,
             this,
-            [=]() { tryToReboot(); });
+            [=]() {
+                if (!tryToReboot()) {
+                    xToolsStyleSheetManager::instance().updateApplicationStylesheet();
+                }
+            });
 #endif
 }
 
@@ -392,7 +396,7 @@ void xToolsMainWindow::onExportActionTriggered()
     }
 }
 
-void xToolsMainWindow::tryToReboot()
+bool xToolsMainWindow::tryToReboot()
 {
     int ret = QMessageBox::information(this,
                                        tr("Reboot application to effective"),
@@ -405,7 +409,10 @@ void xToolsMainWindow::tryToReboot()
             qApp->closeAllWindows();
             qApp->exit();
         });
+        return true;
     }
+
+    return false;
 }
 
 void xToolsMainWindow::createQtConf()

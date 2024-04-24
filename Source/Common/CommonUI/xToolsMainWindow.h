@@ -67,7 +67,7 @@ private:
     void onImportActionTriggered();
     void onExportActionTriggered();
 
-    void tryToReboot();
+    bool tryToReboot();
     void createQtConf();
     void showQqQrCode();
     void setPalette(const QString& fileName);

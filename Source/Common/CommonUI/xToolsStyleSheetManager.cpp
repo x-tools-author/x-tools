@@ -65,8 +65,6 @@ void xToolsStyleSheetManager::setThemeName(const QString& themeName)
     xToolsSettings::instance()->setValue("themeName", themeName);
     setCurrentTheme(themeName);
     updateStylesheet();
-    qApp->setStyleSheet(styleSheet());
-    emit applicationStylesheetChanged();
 }
 
 QMenu* xToolsStyleSheetManager::darkThemeMenu() const
@@ -77,6 +75,12 @@ QMenu* xToolsStyleSheetManager::darkThemeMenu() const
 QMenu* xToolsStyleSheetManager::lightThemeMenu() const
 {
     return m_lightThemeMenu;
+}
+
+void xToolsStyleSheetManager::updateApplicationStylesheet()
+{
+    qApp->setStyleSheet(styleSheet());
+    emit applicationStylesheetChanged();
 }
 
 void xToolsStyleSheetManager::loadThemes()
