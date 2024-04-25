@@ -164,6 +164,31 @@ QString xToolsDataStructure::formatString(const QString &str, int format)
     }
 }
 
+QVariantList xToolsDataStructure::supportedEscapeCharacters()
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<EscapeCharacter>();
+    QVariantList list;
+    for (int i = 0; i < metaEnum.keyCount(); i++) {
+        list.append(metaEnum.value(i));
+    }
+    return list;
+}
+
+QString xToolsDataStructure::escapeCharacterName(int escapeCharacter)
+{
+    static QMap<int, QString> escapeCharacterMap;
+    if (escapeCharacterMap.isEmpty()) {
+        escapeCharacterMap.insert(EscapeCharacterNone, tr("None"));
+        escapeCharacterMap.insert(EscapeCharacterR, QString("\\r"));
+        escapeCharacterMap.insert(EscapeCharacterN, QString("\\n"));
+        escapeCharacterMap.insert(EscapeCharacterRN, QString("\\r\\n"));
+        escapeCharacterMap.insert(EscapeCharacterNR, QString("\\n\\r"));
+        escapeCharacterMap.insert(EscapeCharacterRAndN, tr("\\r and \\n"));
+    }
+
+    return escapeCharacterMap.value(escapeCharacter, "Unknown");
+}
+
 QString xToolsDataStructure::cookEscapeCharacter(int escapeCharacter, const QString &str)
 {
     QString newStr = str;

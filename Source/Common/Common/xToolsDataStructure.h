@@ -47,6 +47,8 @@ public:
         EscapeCharacterRAndN
     };
     Q_ENUM(EscapeCharacter)
+    Q_INVOKABLE static QVariantList supportedEscapeCharacters();
+    Q_INVOKABLE static QString escapeCharacterName(int escapeCharacter);
     Q_INVOKABLE static QString cookEscapeCharacter(int escapeCharacter, const QString &str);
 
 public:
