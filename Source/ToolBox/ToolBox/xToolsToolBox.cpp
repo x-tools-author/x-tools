@@ -23,12 +23,12 @@ xToolsToolBox::xToolsToolBox(QObject* parent)
     // clang-format off
     m_emitter = qobject_cast<xToolsEmitterTool*>(createTool(xToolsToolFactory::EmitterTool));
     m_responser = qobject_cast<xToolsResponserTool*>(createTool(xToolsToolFactory::ResponserTool));
-    m_storer = qobject_cast<xToolsStorerTool*>(createTool(xToolsToolFactory::StorerTool));
-    m_prestorer = qobject_cast<xToolsPrestorerTool*>(createTool(xToolsToolFactory::PrestoreTool));
-    m_rxVelometer = qobject_cast<xToolsVelometerTool*>(createTool(xToolsToolFactory::VelometerTool));
-    m_txVelometer = qobject_cast<xToolsVelometerTool*>(createTool(xToolsToolFactory::VelometerTool));
-    m_rxCounter = qobject_cast<xToolsStatisticianTool*>(createTool(xToolsToolFactory::StatistiticianTool));
-    m_txCounter = qobject_cast<xToolsStatisticianTool*>(createTool(xToolsToolFactory::StatistiticianTool));
+    m_storer = qobject_cast<xToolsStorerTool*>(createTool(xToolsToolFactory::DataPersistenceTool));
+    m_prestorer = qobject_cast<xToolsPrestorerTool*>(createTool(xToolsToolFactory::DataListTool));
+    m_rxVelometer = qobject_cast<xToolsVelometerTool*>(createTool(xToolsToolFactory::SpeedometerTool));
+    m_txVelometer = qobject_cast<xToolsVelometerTool*>(createTool(xToolsToolFactory::SpeedometerTool));
+    m_rxCounter = qobject_cast<xToolsStatisticianTool*>(createTool(xToolsToolFactory::CounterTool));
+    m_txCounter = qobject_cast<xToolsStatisticianTool*>(createTool(xToolsToolFactory::CounterTool));
     m_udpTransmitter = qobject_cast<xToolsUdpTransmitterTool*>(createTool(xToolsToolFactory::UdpTransmitterTool));
     m_tcpTransmitter = qobject_cast<xToolsTcpTransmitterTool*>(createTool(xToolsToolFactory::TcpTransmitterTool));
     m_webSocketTransmitter = qobject_cast<xToolsWebSocketTransmitterTool*>( createTool(xToolsToolFactory::WebSocketTransmitterTool));

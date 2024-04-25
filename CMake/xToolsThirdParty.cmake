@@ -1,4 +1,6 @@
-﻿set(X_TOOLS_THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/ThirdParty)
+﻿# --------------------------------------------------------------------------------------------------
+# Qt-Advanced-Stylesheets-main：https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets
+set(X_TOOLS_THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/ThirdParty)
 set(X_TOOLS_STYLES_DIR_NAME "Qt-Advanced-Stylesheets-main")
 option(X_TOOLS_ENABLE_MODULE_STYLESHEET "Enable Qt advanced stylesheet" ON)
 if(X_TOOLS_ENABLE_MODULE_STYLESHEET)
@@ -26,4 +28,30 @@ function(x_tools_add_stylesheet_files target)
   list(APPEND STYLESHEET_SOURCE ${SOURCE_PATH}/QtAdvancedStylesheet.h)
   list(APPEND STYLESHEET_SOURCE ${SOURCE_PATH}/QtAdvancedStylesheet.cpp)
   target_sources(${target} PRIVATE ${STYLESHEET_SOURCE})
+endfunction()
+# --------------------------------------------------------------------------------------------------
+# libhid
+set(X_TOOLS_HID_DIR_NAME "hidapi-hidapi-0.14.0")
+option(X_TOOLS_ENABLE_MODULE_HID "Enable HID module" OFF)
+if(X_TOOLS_ENABLE_MODULE_HID)
+  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${X_TOOLS_HID_DIR_NAME}.zip
+                  WORKING_DIRECTORY ${X_TOOLS_THIRD_PARTY_DIR})
+  include_directories(${X_TOOLS_THIRD_PARTY_DIR}/${X_TOOLS_HID_DIR_NAME}/hidapi)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_HID)
+endif()
+
+set(HID_ROOT_DIR ${X_TOOLS_THIRD_PARTY_DIR}/${X_TOOLS_HID_DIR_NAME})
+function(x_tools_add_hid_files target)
+  if(NOT X_TOOLS_ENABLE_MODULE_HID)
+    return()
+  endif()
+
+  target_sources(${target} PRIVATE ${HID_ROOT_DIR}/hidapi/hidapi.h)
+  if(WIN32)
+    target_sources(${target} PRIVATE ${HID_ROOT_DIR}/windows/hid.c)
+  elseif(UNIX AND NOT APPLE)
+    target_sources(${target} PRIVATE ${HID_ROOT_DIR}/linux/hid.c)
+  elseif(APPLE)
+    target_sources(${target} PRIVATE ${HID_ROOT_DIR}/mac/hid.c)
+  endif()
 endfunction()

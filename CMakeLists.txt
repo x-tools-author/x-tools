@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.21)
 project(
   xTools
   VERSION 1.0
-  LANGUAGES CXX)
+  LANGUAGES C CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -170,7 +170,7 @@ if(X_TOOLS_ENABLE_MODULE_ASSISTANTS)
   x_tools_add_assistant("Base64" ON)
   x_tools_add_assistant("Number" ON)
   x_tools_add_assistant("String" ON)
-  x_tools_add_assistant("QRCode" OFF)
+  x_tools_add_assistant("QRCode" ON)
   x_tools_add_assistant("Broadcast" ON)
   x_tools_add_assistant("FileCheck" ON)
   x_tools_add_assistant("FileMerge" ON)
@@ -278,6 +278,17 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} X_TOOLS)
   if(X_TOOLS_BUILD_FOR_STORE)
     x_tools_generate_msix(xTools "QSAK" ${X_TOOLS_VERSION})
+  endif()
+
+  # ------------------------------------------------------------------------------------------------
+  # HID Module
+  if(X_TOOLS_ENABLE_MODULE_HID)
+    x_tools_add_hid_files(xTools)
+  else()
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsHidTool.h)
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsHidTool.cpp)
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsHidToolUi.h)
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsHidToolUi.h)
   endif()
 endif()
 

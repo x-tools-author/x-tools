@@ -36,6 +36,9 @@
 #include "xToolsSerialPortTool.h"
 #include "xToolsSerialPortTransmitterTool.h"
 #endif
+#ifdef X_TOOLS_ENABLE_MODULE_HID
+#include "xToolsHidTool.h"
+#endif
 
 xToolsToolFactory::xToolsToolFactory(QObject *parent)
     : QObject{parent}
@@ -62,11 +65,11 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
         tool = new xToolsMaskerTool();
     } else if (ResponserTool == type) {
         tool = new xToolsResponserTool();
-    } else if (StorerTool == type) {
+    } else if (DataPersistenceTool == type) {
         tool = new xToolsStorerTool();
-    } else if (PrestoreTool == type) {
+    } else if (DataListTool == type) {
         tool = new xToolsPrestorerTool();
-    } else if (VelometerTool == type) {
+    } else if (SpeedometerTool == type) {
         tool = new xToolsVelometerTool();
     } else if (UdpClientTool == type) {
         tool = new xToolsUdpClientTool();
@@ -84,7 +87,7 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
         tool = new xToolsBleCentralTool();
 #endif
-    } else if (StatistiticianTool == type) {
+    } else if (CounterTool == type) {
         tool = new xToolsStatisticianTool();
     } else if (SerialPortTransmitterTool == type) {
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
@@ -98,6 +101,10 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
         tool = new xToolsWebSocketTransmitterTool();
     } else if (CrcCalculatorTool == type) {
         tool = new xToolsCrcCalculatorTool();
+    } else if (HidTool == type) {
+#ifdef X_TOOLS_ENABLE_MODULE_HID
+        tool = new xToolsCrcCalculatorTool();
+#endif
     } else {
         qWarning() << "Unknown tool type: " << type;
     }
@@ -127,9 +134,9 @@ QString xToolsToolFactory::toolName(int type)
         map.insert(EmitterTool, tr("Emitter"));
         map.insert(MaskerTool, tr("Masker"));
         map.insert(ResponserTool, tr("Responser"));
-        map.insert(StorerTool, tr("Storer"));
-        map.insert(PrestoreTool, tr("Prestore"));
-        map.insert(VelometerTool, tr("Velometer"));
+        map.insert(DataPersistenceTool, tr("Storer"));
+        map.insert(DataListTool, tr("Prestore"));
+        map.insert(SpeedometerTool, tr("Velometer"));
         map.insert(UdpClientTool, tr("UDP Client"));
         map.insert(UdpServerTool, tr("UDP Server"));
         map.insert(TcpClientTool, tr("TCP Client"));
@@ -137,8 +144,8 @@ QString xToolsToolFactory::toolName(int type)
         map.insert(WebSocketClientTool, tr("Web Socket Client"));
         map.insert(WebSocketServerTool, tr("Web Socket Server"));
         map.insert(BleCentralTool, tr("BLE Central"));
-        map.insert(BlePeriheral, tr("BLE Periheral"));
-        map.insert(StatistiticianTool, tr("Statistitician"));
+        map.insert(BlePeripheralTool, tr("BLE Periheral"));
+        map.insert(CounterTool, tr("Statistitician"));
         map.insert(SerialPortTransmitterTool, tr("Serial Port Transmitter"));
         map.insert(UdpTransmitterTool, tr("UDP Transmitter"));
         map.insert(TcpTransmitterTool, tr("TCP Transmitter"));

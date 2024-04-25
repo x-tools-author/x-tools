@@ -33,6 +33,9 @@
 #include "xToolsSerialPortToolUi.h"
 #include "xToolsSerialPortTransmitterToolUi.h"
 #endif
+#ifdef X_TOOLS_ENABLE_MODULE_HID
+#include "xToolsHidToolUi.h"
+#endif
 
 xToolsToolUiFactory::xToolsToolUiFactory(QObject *parent)
     : QObject{parent}
@@ -63,11 +66,11 @@ xToolsBaseToolUi *xToolsToolUiFactory::createToolUi(int type)
         return new xToolsMaskerToolUi();
     case xToolsToolFactory::ResponserTool:
         return new xToolsResponserToolUi();
-    case xToolsToolFactory::StorerTool:
+    case xToolsToolFactory::DataPersistenceTool:
         return new xToolsStorerToolUi();
-    case xToolsToolFactory::PrestoreTool:
+    case xToolsToolFactory::DataListTool:
         return new xToolsPrestorerToolUi();
-    case xToolsToolFactory::VelometerTool:
+    case xToolsToolFactory::SpeedometerTool:
         return new xToolsVelometerToolUi();
     case xToolsToolFactory::UdpClientTool:
         return new xToolsSocketClientToolUi();
@@ -85,7 +88,7 @@ xToolsBaseToolUi *xToolsToolUiFactory::createToolUi(int type)
     case xToolsToolFactory::BleCentralTool:
         return new xToolsBleCentralToolUi();
 #endif
-    case xToolsToolFactory::StatistiticianTool:
+    case xToolsToolFactory::CounterTool:
         return new xToolsStatisticianToolUi();
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     case xToolsToolFactory::SerialPortTransmitterTool:
@@ -99,6 +102,10 @@ xToolsBaseToolUi *xToolsToolUiFactory::createToolUi(int type)
         return new xToolsWebSocketTransmitterToolUi();
     case xToolsToolFactory::CrcCalculatorTool:
         return new xToolsCrcCalculatorToolUi();
+#ifdef X_TOOLS_ENABLE_MODULE_HID
+    case xToolsToolFactory::HidTool:
+        return new xToolsHidToolUi();
+#endif
     default:
         return nullptr;
     }
