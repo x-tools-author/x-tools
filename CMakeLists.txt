@@ -229,6 +229,17 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
     list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/ToolsUI/xToolsSerialPortTransmitterToolUiEditor.ui)
   endif()
 
+  # ------------------------------------------------------------------------------------------------
+  # HID Module
+  if(NOT X_TOOLS_ENABLE_MODULE_HID)
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsHidTool.h)
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsHidTool.cpp)
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsHidManager.h)
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsHidManager.cpp)
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsHidToolUi.h)
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsHidToolUi.h)
+  endif()
+
   # You can specify the version of the application.
   set(X_TOOLS_VERSION
       "0.0.0"
@@ -242,6 +253,9 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
     x_tools_tar_target(xTools)
   endif()
   x_tools_generate_installer(xTools ${X_TOOLS_VERSION})
+  if(X_TOOLS_ENABLE_MODULE_HID)
+    x_tools_add_hid_files(xTools)
+  endif()
 
   if(X_TOOLS_ENABLE_MODULE_QRCODE)
     target_link_libraries(xTools PRIVATE qrencode)
@@ -278,17 +292,6 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} X_TOOLS)
   if(X_TOOLS_BUILD_FOR_STORE)
     x_tools_generate_msix(xTools "QSAK" ${X_TOOLS_VERSION})
-  endif()
-
-  # ------------------------------------------------------------------------------------------------
-  # HID Module
-  if(X_TOOLS_ENABLE_MODULE_HID)
-    x_tools_add_hid_files(xTools)
-  else()
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsHidTool.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/Tools/xToolsHidTool.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsHidToolUi.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsHidToolUi.h)
   endif()
 endif()
 
