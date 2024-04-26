@@ -47,10 +47,17 @@
      <property name="editable">
       <bool>true</bool>
      </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::AdjustToContents</enum>
+     </property>
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="xToolsWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
+    <widget class="xToolsWebSocketMessageTypeComboBox" name="comboBoxMessageType">
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::AdjustToContents</enum>
+     </property>
+    </widget>
    </item>
    <item row="8" column="0" colspan="2">
     <widget class="Line" name="line">
@@ -190,6 +197,9 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::AdjustToContents</enum>
      </property>
     </widget>
    </item>
