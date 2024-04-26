@@ -163,6 +163,3 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/Tools/Tools)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/Tools/ToolsUI)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/ToolBox/ToolBox)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/ToolBox/ToolBoxUI)
-
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Source/Common)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Source/Tools)
