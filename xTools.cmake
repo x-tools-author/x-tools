@@ -59,11 +59,11 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # CMake module
-include(CMake/QIFW/QIFW.cmake)
-include(CMake/xToolsCommon.cmake)
-include(CMake/xToolsGitInfo.cmake)
-include(CMake/xToolsDeployQt.cmake)
-include(CMake/xToolsThirdParty.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/CMake/QIFW/QIFW.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/CMake/xToolsCommon.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/CMake/xToolsGitInfo.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/CMake/xToolsDeployQt.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/CMake/xToolsThirdParty.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Google log module
