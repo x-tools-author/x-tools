@@ -41,7 +41,7 @@ protected:
     QAction* m_aboutQtAction;
 
 protected:
-    QString qtConfFileName();
+    static QString qtConfFileName();
 
 private:
     QActionGroup* m_appStyleActionGroup;

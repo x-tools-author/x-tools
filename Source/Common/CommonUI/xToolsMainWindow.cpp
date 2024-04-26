@@ -42,8 +42,21 @@
 QString xToolsMainWindow::s_version = QString("0.0.0");
 xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     : QMainWindow(parent)
+    , m_fileMenu(nullptr)
+    , m_optionMenu(nullptr)
+    , m_languageMenu(nullptr)
+    , m_helpMenu(nullptr)
+    , m_exitAction(nullptr)
+    , m_gitHubAction(nullptr)
+    , m_giteeAction(nullptr)
+    , m_qqGroupAction(nullptr)
+    , m_aboutAction(nullptr)
+    , m_aboutQtAction(nullptr)
+    , m_appStyleActionGroup(nullptr)
+    , m_languageActionGroup(nullptr)
+    , m_appPaletteActionGroup(nullptr)
 {
-    m_xToolsApp = dynamic_cast<xToolsApplication*>(qApp);
+    m_xToolsApp = dynamic_cast<xToolsApplication*>(QCoreApplication::instance());
     Q_ASSERT_X(m_xToolsApp, Q_FUNC_INFO, "The application is not xToolsApplication.");
 
     m_appStyleActionGroup = new QActionGroup(this);
@@ -55,7 +68,7 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     initMenuLanguage();
     initMenuHelp();
 #if defined(X_TOOLS_ENABLE_MODULE_STYLESHEET)
-    xToolsStyleSheetManager& tmp = xToolsStyleSheetManager::instance();
+    const xToolsStyleSheetManager& tmp = xToolsStyleSheetManager::instance();
     connect(&tmp, &xToolsStyleSheetManager::stylesheetChanged, this, [=]() {
         if (!tryToReboot()) {
             xToolsStyleSheetManager::instance().updateApplicationStylesheet();
@@ -86,7 +99,7 @@ QIcon xToolsMainWindow::cookedIcon(const QString& svgFileName)
         }
     }
 
-    return QIcon(QPixmap::fromImage(image));
+    return QIcon{QPixmap::fromImage(image)};
 #else
     return QIcon(svgFileName);
 #endif
@@ -104,7 +117,7 @@ void xToolsMainWindow::setVersion(const QString& version)
 
 QString xToolsMainWindow::qtConfFileName()
 {
-    return qApp->applicationDirPath() + "/qt.conf";
+    return QCoreApplication::applicationDirPath() + "/qt.conf";
 }
 
 void xToolsMainWindow::initMenuFile()
@@ -147,7 +160,7 @@ void xToolsMainWindow::initMenuLanguage()
     m_languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(m_languageMenu);
 
-    xToolsApplication* app = dynamic_cast<xToolsApplication*>(qApp);
+    auto* app = dynamic_cast<xToolsApplication*>(QCoreApplication::instance());
     if (!app) {
         qWarning() << "The application is not xToolsApplication.";
         return;
@@ -190,7 +203,7 @@ void xToolsMainWindow::initMenuHelp()
 
 void xToolsMainWindow::initOptionMenuAppStyleMenu()
 {
-    QMenu* appStyleMenu = new QMenu(tr("Application Style"), this);
+    auto* appStyleMenu = new QMenu(tr("Application Style"), this);
     m_optionMenu->addMenu(appStyleMenu);
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
     initOptionMenuAppStyleMenuThirdParty(appStyleMenu);
@@ -202,9 +215,9 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
 void xToolsMainWindow::initOptionMenuAppStyleMenuQt(QMenu* menu)
 {
     QStringList keys = QStyleFactory::keys();
-    QString style = xToolsSettings::instance()->appStyle();
+    const QString style = xToolsSettings::instance()->appStyle();
     for (QString& key : keys) {
-        QAction* action = new QAction(key, this);
+        auto* action = new QAction(key, this);
         action->setObjectName(key);
         action->setCheckable(true);
         m_appStyleActionGroup->addAction(action);
