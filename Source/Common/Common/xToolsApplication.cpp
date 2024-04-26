@@ -141,6 +141,7 @@ QString xToolsApplication::language()
     }
 
     if (!m_languageFlagNameMap.contains(language)) {
+        qWarning() << "The language name is not supported:" << language << ". \"en\" will be used.";
         language = "en";
     }
 
