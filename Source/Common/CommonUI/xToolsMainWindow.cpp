@@ -170,6 +170,10 @@ void xToolsMainWindow::initMenuLanguage()
             if (language == app->language()) {
                 action->setChecked(true);
             }
+        } else {
+            if (language == settingLanguage) {
+                action->setChecked(true);
+            }
         }
     }
 }
