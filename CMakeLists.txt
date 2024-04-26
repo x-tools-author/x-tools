@@ -73,6 +73,15 @@ include(${CMAKE_CURRENT_LIST_DIR}/CMake/xToolsDeployQt.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/CMake/xToolsThirdParty.cmake)
 
 # --------------------------------------------------------------------------------------------------
+# Git module
+x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
+x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
+x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
+set(X_TOOLS_VERSION
+    ${GIT_TAG}
+    CACHE STRING "The version of applicaion")
+
+# --------------------------------------------------------------------------------------------------
 # Google log module
 if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
   option(X_TOOLS_ENABLE_MODULE_GLOG "Enable glog" ON)
@@ -171,18 +180,8 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/Tools/ToolsUI)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/ToolBox/ToolBox)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/ToolBox/ToolBoxUI)
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/xTools.cmake)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Source/Common)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Source/Tools)
-
-# --------------------------------------------------------------------------------------------------
-# Git module
-x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
-x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
-x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
-set(X_TOOLS_VERSION
-    ${GIT_TAG}
-    CACHE STRING "The version of applicaion")
 
 # --------------------------------------------------------------------------------------------------
 # xTools application
