@@ -29,4 +29,5 @@ public:
 
 private:
     const QString m_translatorPrefix{"xTools"};
+    const QString m_translatorToolsPrefix{"xToolsTools"};
 };

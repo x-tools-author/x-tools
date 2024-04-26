@@ -1,6 +1,6 @@
-﻿# --------------------------------------------------------------------------------------------------
+﻿set(X_TOOLS_THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/ThirdParty)
+# --------------------------------------------------------------------------------------------------
 # Qt-Advanced-Stylesheets-main：https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets
-set(X_TOOLS_THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/ThirdParty)
 set(X_TOOLS_STYLES_DIR_NAME "Qt-Advanced-Stylesheets-main")
 option(X_TOOLS_ENABLE_MODULE_STYLESHEET "Enable Qt advanced stylesheet" ON)
 if(X_TOOLS_ENABLE_MODULE_STYLESHEET)
@@ -33,7 +33,7 @@ function(x_tools_add_stylesheet_files target)
   target_sources(${target} PRIVATE ${STYLESHEET_SOURCE})
 endfunction()
 # --------------------------------------------------------------------------------------------------
-# libhid
+# hidapi: https://github.com/libusb/hidapi
 set(X_TOOLS_HID_DIR_NAME "hidapi-hidapi-0.14.0")
 option(X_TOOLS_ENABLE_MODULE_HID "Enable HID module" OFF)
 if(X_TOOLS_ENABLE_MODULE_HID)

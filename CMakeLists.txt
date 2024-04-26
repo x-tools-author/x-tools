@@ -74,8 +74,12 @@ include(CMake/xToolsThirdParty.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Git module
+x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
+set(X_TOOLS_VERSION
+    ${GIT_TAG}
+    CACHE STRING "The version of applicaion")
 
 # --------------------------------------------------------------------------------------------------
 # Google log module
@@ -191,11 +195,6 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   if(WIN32)
     list(APPEND X_TOOLS_SOURCE xTools.rc)
   endif()
-
-  # You can specify the version of the application.
-  set(X_TOOLS_VERSION
-      "0.0.0"
-      CACHE STRING "The version of applicaion")
 
   x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
   add_dependencies(xTools xToolsTools)
