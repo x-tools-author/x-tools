@@ -30,9 +30,11 @@ list(APPEND X_TOOLS_QT_COMPONENTS WebSockets)
 list(APPEND X_TOOLS_QT_COMPONENTS LinguistTools)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialPort)
 
+# --------------------------------------------------------------------------------------------------
+# Qt SerialPort module
 option(X_TOOLS_ENABLE_MODULE_SERIALPORT "Enable SerialPort module" ON)
+find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialPort)
 if(NOT Qt${QT_VERSION_MAJOR}SerialPort_FOUND)
   set(X_TOOLS_ENABLE_MODULE_SERIALPORT OFF)
 endif()
@@ -40,110 +42,85 @@ if(X_TOOLS_ENABLE_MODULE_SERIALPORT)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIALPORT)
 endif()
 
-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialBus)
-if(Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
-  option(X_TOOLS_ENABLE_MODULE_SERIALBUS "Enable SerialBus module" ON)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-endif()
-
-include(CMake/QIFW/QIFW.cmake)
-include(CMake/xToolsCommon.cmake)
-include(CMake/xToolsGitInfo.cmake)
-include(CMake/xToolsDeployQt.cmake)
-include(CMake/xToolsThirdParty.cmake)
-
-option(X_TOOLS_BUILD_FOR_STORE "Build for Microsoft Store or Apple Store" OFF)
-if(X_TOOLS_BUILD_FOR_STORE)
-  add_compile_definitions(X_TOOLS_BUILD_FOR_STORE)
-endif()
-
-if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-  option(X_TOOLS_ENABLE_MODULE_GLOG "Enable glog" ON)
-else()
-  option(X_TOOLS_ENABLE_MODULE_GLOG "Enable glog" OFF)
-endif()
-if(X_TOOLS_ENABLE_MODULE_GLOG)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_GLOG)
-  x_tools_add_third_party("glog-0.7.0")
-endif()
-
-x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
-x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
-
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Common/Common)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Common/CommonUI)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/Tools)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/ToolsUI)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/ToolBox/ToolBox)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/ToolBox/ToolBoxUI)
-
 # --------------------------------------------------------------------------------------------------
-# Private module
-if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/Private/CMakeLists.txt)
-  option(X_TOOLS_ENABLE_MODULE_PRIVATE "Enable private module" OFF)
-  if(X_TOOLS_ENABLE_MODULE_PRIVATE)
-    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Private/Common/Source)
-    add_compile_definitions(X_TOOLS_ENABLE_MODULE_PRIVATE)
-  endif()
-  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Private)
+# Qt SerialBus module
+option(X_TOOLS_ENABLE_MODULE_SERIALBUS "Enable SerialBus module" ON)
+find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialBus)
+if(NOT Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
+  set(X_TOOLS_ENABLE_MODULE_SERIALBUS OFF)
+endif()
+if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIALBUS)
 endif()
 
 # --------------------------------------------------------------------------------------------------
 # BLE
+option(X_TOOLS_ENABLE_MODULE_BLUETOOTH "Enable Bluetooth module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Bluetooth)
-if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND)
-  if(NOT QT_VERSION VERSION_LESS 6.5.0)
-    option(X_TOOLS_ENABLE_MODULE_BLUETOOTH "Enable Bluetooth module" ON)
-  else()
-    option(X_TOOLS_ENABLE_MODULE_BLUETOOTH "Enable Bluetooth module" OFF)
-  endif()
-else()
-  option(X_TOOLS_ENABLE_MODULE_BLUETOOTH "Enable Bluetooth module" OFF)
+if((NOT Qt${QT_VERSION_MAJOR}Bluetooth_FOUND) OR (QT_VERSION VERSION_LESS 6.5.0))
+  set(X_TOOLS_ENABLE_MODULE_BLUETOOTH OFF)
 endif()
 if(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# SerialBus(Modbus, CAN BUS)
-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialBus)
-if(Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
-  option(X_TOOLS_ENABLE_MODULE_SERIALBUS "Enable SerialBus module" ON)
+# CMake module
+include(CMake/QIFW/QIFW.cmake)
+include(CMake/xToolsCommon.cmake)
+include(CMake/xToolsGitInfo.cmake)
+include(CMake/xToolsDeployQt.cmake)
+include(CMake/xToolsThirdParty.cmake)
+
+# --------------------------------------------------------------------------------------------------
+# Git module
+x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
+x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
+
+# --------------------------------------------------------------------------------------------------
+# Google log module
+if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
+  option(X_TOOLS_ENABLE_MODULE_GLOG "Enable glog" ON)
 else()
-  option(X_TOOLS_ENABLE_MODULE_SERIALBUS "Enable SerialBus module" OFF)
+  option(X_TOOLS_ENABLE_MODULE_GLOG "Enable glog" OFF)
 endif()
-if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-  option(X_TOOLS_ENABLE_MODULE_MODBUS "Enable Modbus module" ON)
-  option(X_TOOLS_ENABLE_MODULE_CANBUS "Enable Modbus module" ON)
-else()
-  option(X_TOOLS_ENABLE_MODULE_MODBUS "Enable Modbus module" OFF)
-  option(X_TOOLS_ENABLE_MODULE_CANBUS "Enable CANBus module" OFF)
-endif()
-if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-  if(X_TOOLS_ENABLE_MODULE_MODBUS)
-    add_compile_definitions(X_TOOLS_ENABLE_MODULE_MODBUS)
-    set(X_TOOLS_MODBUS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source/Modbus/Source)
-    file(GLOB MODBUS_SOURCE "${X_TOOLS_MODBUS_DIR}/*.*")
-    list(REMOVE_ITEM MODBUS_SOURCE ${X_TOOLS_MODBUS_DIR}/main.cpp)
-    list(APPEND X_TOOLS_SOURCE ${MODBUS_SOURCE})
-    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Modbus/Source)
-  endif()
-  if(X_TOOLS_ENABLE_MODULE_CANBUS)
-    add_compile_definitions(X_TOOLS_ENABLE_MODULE_CANBUS)
-    set(X_TOOLS_CANBUS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source/CANBus/Source)
-    file(GLOB CANBUS_SOURCE "${X_TOOLS_CANBUS_DIR}/*.*")
-    list(REMOVE_ITEM CANBUS_SOURCE ${X_TOOLS_CANBUS_DIR}/main.cpp)
-    list(APPEND X_TOOLS_SOURCE ${CANBUS_SOURCE})
-    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/CANBus/Source)
-  endif()
+if(X_TOOLS_ENABLE_MODULE_GLOG)
+  x_tools_add_third_party("glog-0.7.0")
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_GLOG)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Common module
-add_subdirectory(Source/Common)
-if(X_TOOLS_ENABLE_MODULE_PRIVATE)
-  add_dependencies(xToolsPrivateCommon xToolsCommon)
+# SerialBus(Modbus, CAN bus)
+option(X_TOOLS_ENABLE_MODULE_SERIALBUS "Enable SerialBus module" ON)
+find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialBus)
+if(NOT Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
+  set(X_TOOLS_ENABLE_MODULE_SERIALBUS OFF)
+endif()
+if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIALBUS)
+endif()
+
+option(X_TOOLS_ENABLE_MODULE_MODBUS "Enable Modbus module" ON)
+option(X_TOOLS_ENABLE_MODULE_CANBUS "Enable CAN bus module" ON)
+if(NOT X_TOOLS_ENABLE_MODULE_SERIALBUS)
+  set(X_TOOLS_ENABLE_MODULE_MODBUS OFF)
+  set(X_TOOLS_ENABLE_MODULE_CANBUS OFF)
+endif()
+if(X_TOOLS_ENABLE_MODULE_SERIALBUS AND X_TOOLS_ENABLE_MODULE_MODBUS)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_MODBUS)
+  set(X_TOOLS_MODBUS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source/Modbus/Source)
+  file(GLOB MODBUS_SOURCE "${X_TOOLS_MODBUS_DIR}/*.*")
+  list(REMOVE_ITEM MODBUS_SOURCE ${X_TOOLS_MODBUS_DIR}/main.cpp)
+  list(APPEND X_TOOLS_SOURCE ${MODBUS_SOURCE})
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Modbus/Source)
+endif()
+if(X_TOOLS_ENABLE_MODULE_SERIALBUS AND X_TOOLS_ENABLE_MODULE_CANBUS)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_CANBUS)
+  set(X_TOOLS_CANBUS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source/CANBus/Source)
+  file(GLOB CANBUS_SOURCE "${X_TOOLS_CANBUS_DIR}/*.*")
+  list(REMOVE_ITEM CANBUS_SOURCE ${X_TOOLS_CANBUS_DIR}/main.cpp)
+  list(APPEND X_TOOLS_SOURCE ${CANBUS_SOURCE})
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/CANBus/Source)
 endif()
 
 # --------------------------------------------------------------------------------------------------
@@ -183,67 +160,36 @@ if(X_TOOLS_ENABLE_MODULE_ASSISTANTS)
     x_tools_add_third_party("qmdnsengine-master")
   endif()
 
-  list(APPEND X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/Source/Assistants/xToolsAssistantFactory.h)
-  list(APPEND X_TOOLS_SOURCE
-       ${CMAKE_CURRENT_SOURCE_DIR}/Source/Assistants/xToolsAssistantFactory.cpp)
-  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Assistants)
+  set(X_TOOLS_ASSISTANT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source/Assistants)
+  include_directories(${X_TOOLS_ASSISTANT_DIR})
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_ASSISTANTS)
+  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_DIR}/xToolsAssistantFactory.h)
+  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_DIR}/xToolsAssistantFactory.cpp)
 endif()
 
 # --------------------------------------------------------------------------------------------------
 # Tools
-file(GLOB X_TOOLS_SOURCE_TMP "${CMAKE_CURRENT_SOURCE_DIR}/Source/*.*")
-file(GLOB_RECURSE X_TOOLS_TOOLS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/*.*")
-file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/Source/ToolBox/*.*")
-list(APPEND X_TOOLS_SOURCE xTools.rc)
-list(APPEND X_TOOLS_SOURCE xTools.qrc)
-list(APPEND X_TOOLS_SOURCE ${X_TOOLS_SOURCE_TMP})
-list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_SOURCE})
-list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLBOX_SOURCE})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Common/Common)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Common/CommonUI)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/Tools)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/ToolsUI)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/ToolBox/ToolBox)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/ToolBox/ToolBoxUI)
+
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Source/Common)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools)
 
 # --------------------------------------------------------------------------------------------------
 # xTools application
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools target" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
-  if(NOT X_TOOLS_ENABLE_MODULE_BLUETOOTH)
-    set(X_TOOLS_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_SOURCE_DIR}/Tools/xToolsBleCentralTool.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_SOURCE_DIR}/Tools/xToolsBleCentralTool.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_SOURCE_DIR}/ToolsUI/xToolsBleCentralToolUi.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_SOURCE_DIR}/ToolsUI/xToolsBleCentralToolUi.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_SOURCE_DIR}/ToolsUI/xToolsBleCentralToolUi.ui)
-  endif()
-
-  if(NOT X_TOOLS_ENABLE_MODULE_SERIALPORT)
-    set(TMP ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/Tools/xToolsSerialPortTool.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/Tools/xToolsSerialPortTool.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/Tools/xToolsSerialPortTransmitterTool.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/Tools/xToolsSerialPortTransmitterTool.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/ToolsUI/xToolsSerialPortToolUi.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/ToolsUI/xToolsSerialPortToolUi.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/ToolsUI/xToolsSerialPortToolUi.ui)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/ToolsUI/xToolsSerialPortTransmitterToolUi.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/ToolsUI/xToolsSerialPortTransmitterToolUi.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/ToolsUI/xToolsSerialPortTransmitterToolUiEditor.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/ToolsUI/xToolsSerialPortTransmitterToolUiEditor.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP}/ToolsUI/xToolsSerialPortTransmitterToolUiEditor.ui)
-  endif()
-
-  # ------------------------------------------------------------------------------------------------
-  # HID Module
-  if(NOT X_TOOLS_ENABLE_MODULE_HID)
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/Tools/xToolsHidTool.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE
-         ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/Tools/xToolsHidTool.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE
-         ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/Tools/xToolsHidManager.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE
-         ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/Tools/xToolsHidManager.cpp)
-    list(REMOVE_ITEM X_TOOLS_SOURCE
-         ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsHidToolUi.h)
-    list(REMOVE_ITEM X_TOOLS_SOURCE
-         ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/ToolsUI/xToolsHidToolUi.h)
+  file(GLOB TMP "${CMAKE_CURRENT_SOURCE_DIR}/Source/*.*")
+  file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/Source/ToolBox/*.*")
+  list(APPEND X_TOOLS_SOURCE ${TMP})
+  list(APPEND X_TOOLS_SOURCE xTools.qrc)
+  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLBOX_SOURCE})
+  if(WIN32)
+    list(APPEND X_TOOLS_SOURCE xTools.rc)
   endif()
 
   # You can specify the version of the application.
@@ -252,67 +198,27 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
       CACHE STRING "The version of applicaion")
 
   x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
+  add_dependencies(xTools xToolsTools)
   x_tools_copy_style_resources_for_target(xTools)
   x_tools_generate_translations(xTools)
   x_tools_deploy_qt(xTools)
-  if(WIN32)
-    x_tools_tar_target(xTools)
-  endif()
+  x_tools_tar_target(xTools)
   x_tools_generate_installer(xTools ${X_TOOLS_VERSION})
-  if(X_TOOLS_ENABLE_MODULE_HID)
-    x_tools_add_hid_files(xTools)
-  endif()
 
-  if(X_TOOLS_ENABLE_MODULE_QRCODE)
-    target_link_libraries(xTools PRIVATE qrencode)
-  endif()
-  if(X_TOOLS_ENABLE_MODULE_GLOG)
-    target_link_libraries(xTools PRIVATE glog::glog)
-  endif()
-  if(X_TOOLS_ENABLE_MODULE_MDNS)
-    target_link_libraries(xTools PRIVATE qmdnsengine)
-  endif()
-  target_link_libraries(xTools PRIVATE xToolsCommon)
-  if(X_TOOLS_ENABLE_MODULE_PRIVATE)
-    target_link_libraries(xTools PRIVATE xToolsPrivateCommon)
-  endif()
+  target_link_libraries(xTools PRIVATE xToolsTools)
   target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Svg)
   target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
   target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Core)
   target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
   target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Network)
   target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::WebSockets)
-  if(X_TOOLS_ENABLE_MODULE_SERIALPORT)
-    target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::SerialPort)
-  endif()
-  if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-    target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::SerialBus)
-  endif()
-  if(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
-    target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
-  endif()
-  if(X_TOOLS_ENABLE_MODULE_PRIVATE)
-    target_link_libraries(xTools PRIVATE QtAES::QtAES)
-  endif()
 
-  x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} X_TOOLS)
-  if(X_TOOLS_BUILD_FOR_STORE)
-    x_tools_generate_msix(xTools "QSAK" ${X_TOOLS_VERSION})
+  if(X_TOOLS_ENABLE_MODULE_QRCODE)
+    target_link_libraries(xTools PRIVATE qrencode)
   endif()
-endif()
-
-option(X_TOOLS_ENABLE_TARGET_GIT "Some git commands for pulling and pushing" OFF)
-if(X_TOOLS_ENABLE_TARGET_GIT)
-  add_custom_target(
-    xTools_pull
-    COMMAND git pull "https://gitee.com/x-tools-author/x-tools-private.git"
-    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-  add_custom_target(
-    xTools_push
-    COMMAND git push
-    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+  if(X_TOOLS_ENABLE_MODULE_MDNS)
+    target_link_libraries(xTools PRIVATE qmdnsengine)
+  endif()
 endif()
 
 # -------------------------------------------------------------------------------------------------
@@ -320,31 +226,4 @@ endif()
 option(X_TOOLS_ENABLE_TARGET_ASSISTANTS "Enable assistant applications" OFF)
 if(X_TOOLS_ENABLE_TARGET_ASSISTANTS)
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Source/Assistants)
-endif()
-
-# -------------------------------------------------------------------------------------------------
-# The private modules is not open-source.
-if((QT_VERSION_MAJOR GREATER 5) AND (NOT Qt6_VERSION VERSION_LESS "6.5.0"))
-  if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/Private)
-    # add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Private)
-  endif()
-
-  if(X_TOOLS_ENABLE_TARGET_GIT)
-    set(GITEE_URL "https://gitee.com/x-tools-author/x-tools-private.git")
-    add_custom_target(
-      xTools_clone_private_modules
-      COMMAND git clone ${GITEE_URL} ./Private || echo "clone private modules"
-      SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-    add_custom_target(
-      xTools_pull_private_modules
-      COMMAND git pull ${GITEE_URL}
-      SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Private)
-    add_custom_target(
-      xTools_push_private_modules
-      COMMAND git push
-      SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Private)
-  endif()
 endif()
