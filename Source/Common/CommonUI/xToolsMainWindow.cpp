@@ -349,8 +349,8 @@ void xToolsMainWindow::onAboutActionTriggered()
     QString buildDateTimeString = xToolsApplication::buildDateTimeString(buildDateTimeFormat);
     QString year = xToolsApplication::buildDateTimeString("yyyy");
     QString info;
-    info += windowTitle() + QString(" ") + s_version + " " + tr("(A Part of xTools Project)")
-            + "\n\n";
+    info += qApp->applicationName() + QString(" ") + s_version + " "
+            + tr("(A Part of xTools Project)") + "\n\n";
 #ifdef X_TOOLS_GIT_COMMIT
     info += tr("Commit") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
 #endif

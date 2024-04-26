@@ -41,72 +41,82 @@
 <context>
     <name>xToolsDataStructure</name>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="252"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="181"/>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="186"/>
+        <source>\r and \n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="277"/>
         <source>Round up for .5 and above</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="253"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="278"/>
         <source>Always round up</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="254"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="279"/>
         <source>Always round down</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="255"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="280"/>
         <source>Round up for .75 and above</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="256"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="281"/>
         <source>Don&apos;t round</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="258"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="283"/>
         <source>System</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="288"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="313"/>
         <source>Text</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="289"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="314"/>
         <source>Binary</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="310"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="335"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="311"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="336"/>
         <source>Echo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="312"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="337"/>
         <source>Data Received</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="313"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="338"/>
         <source>Rx Data Equal Reference Data</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="314"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="339"/>
         <source>Rx Data Contain Reference Data</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/xToolsDataStructure.cpp" line="315"/>
+        <location filename="../../Common/xToolsDataStructure.cpp" line="340"/>
         <source>Rx Data Discontain Reference Data</source>
         <translation></translation>
     </message>
@@ -344,107 +354,107 @@
 <context>
     <name>xToolsStyleSheetManager</name>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="37"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="80"/>
         <source>Dark Theme</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="38"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="81"/>
         <source>Light Theme</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="90"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="21"/>
         <source>Dark Amber</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="91"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="22"/>
         <source>Dark Blue</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="92"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="23"/>
         <source>Dark Cyan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="93"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="24"/>
         <source>Dark Light Green</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="94"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="25"/>
         <source>Dark Pink</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="95"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="26"/>
         <source>Dark Purple</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="96"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="27"/>
         <source>Dark Red</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="97"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="28"/>
         <source>Dark Teal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="98"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="29"/>
         <source>Dark Yellow</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="100"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="31"/>
         <source>Light Amber</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="101"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="32"/>
         <source>Light Blue</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="102"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="33"/>
         <source>Light Cyan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="103"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="34"/>
         <source>Light Cyan(500)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="104"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="35"/>
         <source>Light Light Green</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="105"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="36"/>
         <source>Light Pink</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="106"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="37"/>
         <source>Light Purple</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="107"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="38"/>
         <source>Light Red</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="108"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="39"/>
         <source>Light Teal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="109"/>
+        <location filename="../../CommonUI/xToolsStyleSheetManager.cpp" line="40"/>
         <source>Light Yellow</source>
         <translation></translation>
     </message>
