@@ -1,4 +1,4 @@
-﻿set(X_TOOLS_THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/ThirdParty)
+﻿set(X_TOOLS_THIRD_PARTY_DIR ${CMAKE_CURRENT_LIST_DIR}/../ThirdParty)
 # --------------------------------------------------------------------------------------------------
 # Qt-Advanced-Stylesheets-main：https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets
 set(X_TOOLS_STYLES_DIR_NAME "Qt-Advanced-Stylesheets-main")
