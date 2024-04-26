@@ -40,7 +40,7 @@ jobs:
         mkdir build
         cd build
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-        cmake -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+        cmake -DWITH_TOOLS:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/win64_msvc2019_64' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
         cmake --build . --target xTools
         dir && dir .\assets && dir .\assets\xTools
     - name: Upload Release Asset for Windnows
@@ -68,7 +68,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -DX_TOOLS_LINUX_MAKE_APP_IMAGE_XTOOLS:BOOL=TRUE -G "Unix Makefiles"
+        cmake ../ -DWITH_TOOLS:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -DX_TOOLS_LINUX_MAKE_APP_IMAGE_XTOOLS:BOOL=TRUE -G "Unix Makefiles"
         cmake --build . --target xTools
         dir && dir ./assets && dir ./assets/xTools
     - name: Upload Release Asset for Linux
@@ -102,7 +102,7 @@ jobs:
         ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
         mkdir build
         cd build
-        cmake ../ -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
+        cmake ../ -DWITH_TOOLS:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.5.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
         cmake --build . --target xTools
         ls && ls ./assets && ls ./assets/xTools
     - name: Upload Release Asset for macOS
@@ -146,7 +146,8 @@ jobs:
           -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
           -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
           -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%" ^
-          -DBUILD_SHARED_LIBS:BOOL=OFF
+          -DBUILD_SHARED_LIBS:BOOL=OFF ^
+          -DWITH_TOOLS:BOOL=OFF
       - name: Build for android
         shell: cmd
         run: |

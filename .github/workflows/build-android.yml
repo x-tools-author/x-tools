@@ -47,7 +47,8 @@ jobs:
           -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
           -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
           -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%" ^
-          -DBUILD_SHARED_LIBS:BOOL=OFF
+          -DBUILD_SHARED_LIBS:BOOL=OFF ^
+          -DWITH_TOOLS:BOOL=OFF
       - name: Directory of build\armeabi_v7a
         shell: cmd
         run: dir build\armeabi_v7a

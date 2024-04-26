@@ -44,5 +44,5 @@ jobs:
           ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
           mkdir build
           cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
+          cmake -DWITH_TOOLS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
           cmake --build . --target xTools
