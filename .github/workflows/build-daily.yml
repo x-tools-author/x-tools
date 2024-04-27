@@ -161,7 +161,8 @@ jobs:
           -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
           -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%" ^
           -DBUILD_SHARED_LIBS:BOOL=OFF ^
-          -DWITH_TOOLS:BOOL=OFF
+          -DWITH_TOOLS:BOOL=OFF ^
+          -DWITHOUT_PNG:BOOL=ON
       - name: Build for android
         shell: cmd
         run: |
