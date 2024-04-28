@@ -183,6 +183,15 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/ToolBox/ToolBoxUI)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Source/Common)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Source/Tools)
 
+file(GLOB TMP "${CMAKE_CURRENT_SOURCE_DIR}/Source/*.*")
+file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/Source/ToolBox/*.*")
+list(APPEND X_TOOLS_SOURCE ${TMP})
+list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/xTools.qrc)
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLBOX_SOURCE})
+if(WIN32)
+  list(APPEND X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/xTools.rc)
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # Private
 option(X_TOOLS_ENABLE_MODULE_PRIVATE "Enable the private module" OFF)
@@ -203,15 +212,6 @@ endif()
 # xTools application
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools target" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
-  file(GLOB TMP "${CMAKE_CURRENT_SOURCE_DIR}/Source/*.*")
-  file(GLOB_RECURSE X_TOOLS_TOOLBOX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/Source/ToolBox/*.*")
-  list(APPEND X_TOOLS_SOURCE ${TMP})
-  list(APPEND X_TOOLS_SOURCE xTools.qrc)
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLBOX_SOURCE})
-  if(WIN32)
-    list(APPEND X_TOOLS_SOURCE xTools.rc)
-  endif()
-
   x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
   add_dependencies(xTools xToolsTools)
   x_tools_copy_style_resources_for_target(xTools)
