@@ -218,7 +218,6 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   if(X_TOOLS_ENABLE_MODULE_MDNS)
     target_link_libraries(xTools PRIVATE qmdnsengine)
   endif()
-
 endif()
 
 # -------------------------------------------------------------------------------------------------
