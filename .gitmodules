@@ -1,0 +1,3 @@
+[submodule "Private"]
+	path = Private
+	url = https://gitee.com/x-tools-private/x-tools-private.git
