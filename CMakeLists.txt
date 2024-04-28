@@ -193,6 +193,11 @@ if(X_TOOLS_ENABLE_MODULE_PRIVATE)
     add_compile_definitions(X_TOOLS_ENABLE_MODULE_PRIVATE)
   endif()
 endif()
+# [DO NOT CHANGE THE OPTION UNLESS YOU KNOWN WHAT YOU ARE DOING]
+option(X_TOOLS_BUILD_FOR_STORE "Build for store" OFF)
+if(X_TOOLS_BUILD_FOR_STORE)
+  add_compile_definitions(X_TOOLS_BUILD_FOR_STORE)
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # xTools application
