@@ -179,6 +179,7 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/Tools/Tools)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/Tools/ToolsUI)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/ToolBox/ToolBox)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/ToolBox/ToolBoxUI)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/Source)
 
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Source/Common)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Source/Tools)
@@ -194,18 +195,8 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Private
-option(X_TOOLS_ENABLE_MODULE_PRIVATE "Enable the private module" OFF)
-if(X_TOOLS_ENABLE_MODULE_PRIVATE)
-  if(EXISTS ${CMAKE_SOURCE_DIR}/Private)
-    include_directories(${CMAKE_SOURCE_DIR}/Private/Common/Source)
-    add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
-    add_compile_definitions(X_TOOLS_ENABLE_MODULE_PRIVATE)
-  endif()
-endif()
-# [DO NOT CHANGE THE OPTION UNLESS YOU KNOWN WHAT YOU ARE DOING]
-option(X_TOOLS_BUILD_FOR_STORE "Build for store" OFF)
-if(X_TOOLS_BUILD_FOR_STORE)
-  add_compile_definitions(X_TOOLS_BUILD_FOR_STORE)
+if(EXISTS ${CMAKE_SOURCE_DIR}/Private)
+  add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
 endif()
 
 # --------------------------------------------------------------------------------------------------
