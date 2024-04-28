@@ -18,6 +18,7 @@ int main(const int argc, char *argv[])
     Q_INIT_RESOURCE(xToolsCommon);
     Q_INIT_RESOURCE(xToolsTools);
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
+    Application::setProductId(QString("50263Qsaker2018.QSAK"));
     Q_INIT_RESOURCE(xToolsPrivateCommon);
 #endif
     return xToolsExec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"));
