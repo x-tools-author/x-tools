@@ -3,8 +3,6 @@
 build*
 /SAKCustomConfigure.pri
 out
-Private
-private
 .vscode
 /.cache
 /.idea

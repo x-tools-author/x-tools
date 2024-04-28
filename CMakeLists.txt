@@ -184,6 +184,16 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Source/Common)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Source/Tools)
 
 # --------------------------------------------------------------------------------------------------
+# Private
+option(X_TOOLS_ENABLE_MODULE_PRIVATE "Enable the private module" OFF)
+if(X_TOOLS_ENABLE_MODULE_PRIVATE)
+  if(EXISTS ${CMAKE_SOURCE_DIR}/Private)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
+    add_compile_definitions(X_TOOLS_ENABLE_MODULE_PRIVATE)
+  endif()
+endif()
+
+# --------------------------------------------------------------------------------------------------
 # xTools application
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools target" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
@@ -217,6 +227,9 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   endif()
   if(X_TOOLS_ENABLE_MODULE_MDNS)
     target_link_libraries(xTools PRIVATE qmdnsengine)
+  endif()
+  if(X_TOOLS_ENABLE_MODULE_PRIVATE)
+    target_link_libraries(xTools PRIVATE xToolsPrivateCommon)
   endif()
 endif()
 
