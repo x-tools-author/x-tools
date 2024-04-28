@@ -15,3 +15,5 @@ ThirdParty
 cmake-build*
 .vs
 CMakeSettings.json
+Private
+private
