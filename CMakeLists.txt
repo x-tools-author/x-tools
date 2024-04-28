@@ -221,22 +221,13 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   x_tools_generate_installer(xTools ${X_TOOLS_VERSION})
 
   target_link_libraries(xTools PRIVATE xToolsTools)
-  target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Svg)
-  target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
-  target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-  target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-  target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Network)
-  target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::WebSockets)
-
   if(X_TOOLS_ENABLE_MODULE_QRCODE)
     target_link_libraries(xTools PRIVATE qrencode)
   endif()
   if(X_TOOLS_ENABLE_MODULE_MDNS)
     target_link_libraries(xTools PRIVATE qmdnsengine)
   endif()
-  if(X_TOOLS_ENABLE_MODULE_PRIVATE)
-    target_link_libraries(xTools PRIVATE xToolsPrivateCommon)
-  endif()
+
 endif()
 
 # -------------------------------------------------------------------------------------------------
