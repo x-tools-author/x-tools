@@ -194,12 +194,6 @@ if(WIN32)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Private
-if(EXISTS ${CMAKE_SOURCE_DIR}/Private)
-  add_subdirectory(${CMAKE_SOURCE_DIR}/Private)
-endif()
-
-# --------------------------------------------------------------------------------------------------
 # xTools application
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools target" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
