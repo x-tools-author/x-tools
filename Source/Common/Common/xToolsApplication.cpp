@@ -35,6 +35,7 @@
 #include "xToolsSettings.h"
 
 bool xToolsApplication::m_enableSplashScreen = true;
+QString xToolsApplication::m_friendlyAppName = QStringLiteral("xTools");
 xToolsApplication::xToolsApplication(int argc, char *argv[])
     : QApplication(argc, argv)
 {
@@ -91,6 +92,16 @@ bool xToolsApplication::enableSplashScreen()
 void xToolsApplication::setEnableSplashScreen(bool enable)
 {
     m_enableSplashScreen = enable;
+}
+
+QString xToolsApplication::friendlyAppName()
+{
+    return m_friendlyAppName;
+}
+
+void xToolsApplication::setFriendlyAppName(const QString &name)
+{
+    m_friendlyAppName = name;
 }
 
 void xToolsApplication::showSplashScreenMessage(const QString &msg)
@@ -336,7 +347,7 @@ QPixmap xToolsApplication::splashScreenPixMap()
     font.setPixelSize(52);
 
     QFontMetrics fontMetrics(font);
-    const QString displayName = xToolsApplication::applicationDisplayName();
+    const QString displayName = xToolsApplication::friendlyAppName();
     int width = fontMetrics.boundingRect(displayName).width() * 1.2;
 
     QPixmap pixmap(width < 600 ? 600 : width, 260);

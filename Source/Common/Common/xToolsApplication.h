@@ -31,6 +31,9 @@ public:
     static bool enableSplashScreen();
     static void setEnableSplashScreen(bool enable);
 
+    static QString friendlyAppName();
+    static void setFriendlyAppName(const QString &name);
+
     void showSplashScreenMessage(const QString &msg);
     void setupPalette(const QString &fileName);
     QSplashScreen &splashScreen();
@@ -70,6 +73,7 @@ private:
     const QString m_translatorPrefix{"xToolsCommon"};
     QMap<QString, QString> m_languageFlagNameMap;
     static bool m_enableSplashScreen;
+    static QString m_friendlyAppName;
 
 private:
     static QPixmap splashScreenPixMap();

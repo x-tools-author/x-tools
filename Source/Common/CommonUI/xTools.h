@@ -93,9 +93,9 @@ static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, 
 }
 #endif
 
-static void xToolsInitApp(const QString &appDisplayName)
+static void xToolsInitApp(const QString &appName)
 {
-    QString cookedAppName = appDisplayName;
+    QString cookedAppName = appName;
 #ifdef X_TOOLS_BUILD_FOR_STORE
     cookedAppName += QObject::tr("(Store)");
 #endif
@@ -103,7 +103,7 @@ static void xToolsInitApp(const QString &appDisplayName)
     QCoreApplication::setOrganizationName(QString("xTools"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
     QCoreApplication::setApplicationName(cookedAppName);
-    QApplication::setApplicationDisplayName(appDisplayName);
+    xToolsApplication::setFriendlyAppName(appName);
 }
 
 static void xToolsInstallMessageHandler()
@@ -163,9 +163,9 @@ static void xToolsInitAppStyle()
     }
 }
 
-static void xToolsDoSomethingBeforeAppCreated(char *argv[], const QString &appDisplayName)
+static void xToolsDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 {
-    xToolsInitApp(appDisplayName);
+    xToolsInitApp(appName);
 #ifdef X_TOOLS_ENABLE_MODULE_GLOG
     xToolsInitGoogleLogging(argv[0]);
     xToolsInstallMessageHandler();
@@ -188,14 +188,14 @@ template<typename CentralWidgetT = QWidget,
          typename AppT = xToolsApplication>
 int xToolsExec(int argc,
                char *argv[],
-               const QString &appDisplayName,
+               const QString &appName,
                std::function<void(void *, void *)> doSomethingBeforAppExec = nullptr)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QApplication::setAttribute(Qt::AA_Use96Dpi);
 #endif
 
-    xToolsDoSomethingBeforeAppCreated(argv, appDisplayName);
+    xToolsDoSomethingBeforeAppCreated(argv, appName);
 
     AppT app(argc, argv);
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
@@ -218,7 +218,7 @@ int xToolsExec(int argc,
     } else {
         auto mainWindow = new MainWindowT();
         auto centralWidget = new CentralWidgetT(mainWindow);
-        mainWindow->setWindowTitle(appDisplayName);
+        mainWindow->setWindowTitle(appName);
         mainWindow->setCentralWidget(centralWidget);
         ui = mainWindow;
     }
