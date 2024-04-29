@@ -169,7 +169,7 @@ static void xToolsInitAppStyle()
     }
 }
 
-static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
+static void xToolsDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 {
     xToolsInitApp(appName);
 #ifdef X_TOOLS_ENABLE_MODULE_GLOG
@@ -182,7 +182,7 @@ static void sakDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
     xToolsInitHdpi();
 }
 
-static void sakDoSomethingAfterAppExited()
+static void xToolsDoSomethingAfterAppExited()
 {
 #ifdef X_TOOLS_ENABLE_MODULE_GLOG
     xToolsShutdownGoogleLogging();
@@ -194,7 +194,11 @@ template<typename CentralWidgetT = QWidget,
          typename AppT = xToolsApplication>
 int xToolsExec(int argc, char *argv[], const QString &appName)
 {
-    sakDoSomethingBeforeAppCreated(argv, appName);
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+    QApplication::setAttribute(Qt::AA_Use96Dpi);
+#endif
+
+    xToolsDoSomethingBeforeAppCreated(argv, appName);
 
     AppT app(argc, argv);
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
@@ -230,6 +234,6 @@ int xToolsExec(int argc, char *argv[], const QString &appName)
     qInfo() << "The size of window is" << ui->size();
 
     const int ret = app.exec();
-    sakDoSomethingAfterAppExited();
+    xToolsDoSomethingAfterAppExited();
     return ret;
 }
