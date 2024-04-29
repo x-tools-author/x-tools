@@ -15,9 +15,12 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(WITH_GFLAGS OFF)
 set(BUILD_TESTING OFF)
-set(BUILD_SHARED_LIBS OFF)
-set(WITHOUT_PNG ON)
-set(WITH_TOOLS OFF)
+set(BUILD_SHARED_LIBS
+    OFF
+    CACHE BOOL "Reset option" FORCE)
+set(WITH_TOOLS
+    OFF
+    CACHE BOOL "Reset option" FORCE)
 
 # --------------------------------------------------------------------------------------------------
 # Qt module
