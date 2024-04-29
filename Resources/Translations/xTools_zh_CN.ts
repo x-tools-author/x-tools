@@ -244,7 +244,7 @@
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsAnalyzerToolUi.ui" line="117"/>
         <source>Hex format</source>
-        <translation>16禁止格式</translation>
+        <translation>16进制格式</translation>
     </message>
 </context>
 <context>
