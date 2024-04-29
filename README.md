@@ -16,7 +16,11 @@
 
 > **You can get *xTools* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
 
-![MainWindow.png](xTools.png)
+![xToolsDark.png](Doc/Images/xToolsDark.png)
+
+> **You can get *xTools* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
+
+![xToolsDark.png](Doc/Images/xToolsLight.png)
 
 > **You can get *xTools* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
 
