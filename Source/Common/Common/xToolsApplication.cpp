@@ -14,6 +14,7 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QFile>
+#include <QFontMetrics>
 #include <QGuiApplication>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -75,7 +76,7 @@ xToolsApplication::xToolsApplication(int argc, char *argv[])
 #if 0
     m_splashScreen.setWindowFlags(m_splashScreen.windowFlags() | Qt::WindowStaysOnTopHint);
 #endif
-    if(enableSplashScreen()) {
+    if (enableSplashScreen()) {
         m_splashScreen.show();
         processEvents();
         showSplashScreenMessage(tr("Initialize application..."));
@@ -331,17 +332,20 @@ void xToolsApplication::setupLanguageWithPrefix(const QString &language, const Q
 
 QPixmap xToolsApplication::splashScreenPixMap()
 {
-    QPixmap pixmap(600, 260);
+    QFont font = qApp->font();
+    font.setPixelSize(52);
+
+    QFontMetrics fontMetrics(font);
+    const QString displayName = xToolsApplication::applicationDisplayName();
+    int width = fontMetrics.boundingRect(displayName).width() * 1.2;
+
+    QPixmap pixmap(width < 600 ? 600 : width, 260);
     pixmap.fill(QColor(0x2d2d30));
 
     QPainter painter(&pixmap);
     painter.setPen(QColor(Qt::white));
-    auto font = painter.font();
-    font.setPixelSize(52);
     painter.setFont(font);
-    painter.drawText(pixmap.rect(),
-                     Qt::AlignHCenter | Qt::AlignVCenter,
-                     xToolsApplication::applicationName());
+    painter.drawText(pixmap.rect(), Qt::AlignHCenter | Qt::AlignVCenter, displayName);
     painter.drawRect(pixmap.rect() - QMargins(1, 1, 1, 1));
 
     return pixmap;

@@ -103,6 +103,7 @@ static void xToolsInitApp(const QString &appName)
     QCoreApplication::setOrganizationName(QString("xTools"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
     QCoreApplication::setApplicationName(cookedAppName);
+    QApplication::setApplicationDisplayName(appName);
 
 #ifdef X_TOOLS_VERSION
     QCoreApplication::setApplicationVersion(X_TOOLS_VERSION);
