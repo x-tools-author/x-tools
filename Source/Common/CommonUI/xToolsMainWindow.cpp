@@ -39,7 +39,6 @@
 #include "xToolsStyleSheetManager.h"
 #endif
 
-QString xToolsMainWindow::s_version = QString("0.0.0");
 xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     : QMainWindow(parent)
     , m_fileMenu(nullptr)
@@ -75,6 +74,8 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
         }
     });
 #endif
+
+    xToolsMainWindow::updateWindowTitle();
 }
 
 QIcon xToolsMainWindow::cookedIcon(const QString& svgFileName)
@@ -105,14 +106,12 @@ QIcon xToolsMainWindow::cookedIcon(const QString& svgFileName)
 #endif
 }
 
-QString xToolsMainWindow::version()
+void xToolsMainWindow::updateWindowTitle()
 {
-    return s_version;
-}
-
-void xToolsMainWindow::setVersion(const QString& version)
-{
-    s_version = version;
+    QString title = xToolsApplication::friendlyAppName();
+    title += " v";
+    title += xToolsApplication::applicationVersion();
+    setWindowTitle(title);
 }
 
 QString xToolsMainWindow::qtConfFileName()
@@ -365,8 +364,9 @@ void xToolsMainWindow::onAboutActionTriggered()
     buildDateTimeFormat += xToolsApplication::systemTimeFormat();
     QString buildDateTimeString = xToolsApplication::buildDateTimeString(buildDateTimeFormat);
     QString year = xToolsApplication::buildDateTimeString("yyyy");
+    const QString version = xToolsApplication::applicationVersion();
     QString info;
-    info += qApp->applicationName() + QString(" ") + s_version + " "
+    info += qApp->applicationName() + QString(" ") + version + " "
             + tr("(A Part of xTools Project)") + "\n\n";
 #ifdef X_TOOLS_GIT_COMMIT
     info += tr("Commit") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";

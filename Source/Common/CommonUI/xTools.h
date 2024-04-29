@@ -189,12 +189,14 @@ template<typename CentralWidgetT = QWidget,
 int xToolsExec(int argc,
                char *argv[],
                const QString &appName,
+               const QString &version = QString("0.0.0"),
                std::function<void(void *, void *)> doSomethingBeforAppExec = nullptr)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QApplication::setAttribute(Qt::AA_Use96Dpi);
 #endif
 
+    QCoreApplication::setApplicationVersion(version);
     xToolsDoSomethingBeforeAppCreated(argv, appName);
 
     AppT app(argc, argv);

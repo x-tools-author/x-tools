@@ -94,11 +94,6 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 #endif
 
-    QString title = QString("xTools");
-    title.append(QString(" "));
-    title.append(QString("v"));
-    title.append(QApplication::applicationVersion());
-    setWindowTitle(title);
     setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
 
     initMenuBar();
