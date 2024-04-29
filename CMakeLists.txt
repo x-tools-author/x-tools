@@ -194,25 +194,30 @@ if(WIN32)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# xTools application
-option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools target" ON)
-if(X_TOOLS_ENABLE_TARGET_XTOOLS)
-  x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
-  add_dependencies(xTools xToolsTools)
-  # x_tools_copy_style_resources_for_target(xTools)
-  x_tools_generate_translations(xTools)
-  x_tools_deploy_qt(xTools)
-  # x_tools_tar_target(xTools)
-  x_tools_generate_installer(xTools ${X_TOOLS_VERSION})
-
-  target_link_libraries(xTools PRIVATE xToolsTools)
-  if(X_TOOLS_ENABLE_MODULE_QRCODE)
-    target_link_libraries(xTools PRIVATE qrencode)
-  endif()
-  if(X_TOOLS_ENABLE_MODULE_MDNS)
-    target_link_libraries(xTools PRIVATE qmdnsengine)
-  endif()
+# xTools application Core
+list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp)
+add_library(xToolsCore STATIC ${X_TOOLS_SOURCE})
+add_dependencies(xToolsCore xToolsTools)
+target_link_libraries(xToolsCore PRIVATE xToolsTools)
+if(X_TOOLS_ENABLE_MODULE_QRCODE)
+  target_link_libraries(xToolsCore PRIVATE qrencode)
 endif()
+if(X_TOOLS_ENABLE_MODULE_MDNS)
+  target_link_libraries(xToolsCore PRIVATE qmdnsengine)
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# xTools application
+list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp)
+x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
+x_tools_copy_style_resources_for_target(xTools)
+x_tools_generate_translations(xTools)
+x_tools_deploy_qt(xTools)
+x_tools_tar_target(xTools)
+x_tools_generate_installer(xTools ${X_TOOLS_VERSION})
+
+add_dependencies(xTools xToolsCore)
+target_link_libraries(xTools PRIVATE xToolsCore)
 
 # -------------------------------------------------------------------------------------------------
 # Assistant applications
