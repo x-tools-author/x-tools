@@ -93,9 +93,9 @@ static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, 
 }
 #endif
 
-static void xToolsInitApp(const QString &appName)
+static void xToolsInitApp(const QString &appDisplayName)
 {
-    QString cookedAppName = appName;
+    QString cookedAppName = appDisplayName;
 #ifdef X_TOOLS_BUILD_FOR_STORE
     cookedAppName += QObject::tr("(Store)");
 #endif
@@ -103,13 +103,7 @@ static void xToolsInitApp(const QString &appName)
     QCoreApplication::setOrganizationName(QString("xTools"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
     QCoreApplication::setApplicationName(cookedAppName);
-    QApplication::setApplicationDisplayName(appName);
-
-#ifdef X_TOOLS_VERSION
-    QCoreApplication::setApplicationVersion(X_TOOLS_VERSION);
-#else
-    QCoreApplication::setApplicationVersion("0.0.0");
-#endif
+    QApplication::setApplicationDisplayName(appDisplayName);
 }
 
 static void xToolsInstallMessageHandler()
@@ -169,9 +163,9 @@ static void xToolsInitAppStyle()
     }
 }
 
-static void xToolsDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
+static void xToolsDoSomethingBeforeAppCreated(char *argv[], const QString &appDisplayName)
 {
-    xToolsInitApp(appName);
+    xToolsInitApp(appDisplayName);
 #ifdef X_TOOLS_ENABLE_MODULE_GLOG
     xToolsInitGoogleLogging(argv[0]);
     xToolsInstallMessageHandler();
@@ -192,13 +186,16 @@ static void xToolsDoSomethingAfterAppExited()
 template<typename CentralWidgetT = QWidget,
          typename MainWindowT = xToolsMainWindow,
          typename AppT = xToolsApplication>
-int xToolsExec(int argc, char *argv[], const QString &appName)
+int xToolsExec(int argc,
+               char *argv[],
+               const QString &appDisplayName,
+               std::function<void(void *, void *)> doSomethingBeforAppExec = nullptr)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QApplication::setAttribute(Qt::AA_Use96Dpi);
 #endif
 
-    xToolsDoSomethingBeforeAppCreated(argv, appName);
+    xToolsDoSomethingBeforeAppCreated(argv, appDisplayName);
 
     AppT app(argc, argv);
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
@@ -221,7 +218,7 @@ int xToolsExec(int argc, char *argv[], const QString &appName)
     } else {
         auto mainWindow = new MainWindowT();
         auto centralWidget = new CentralWidgetT(mainWindow);
-        mainWindow->setWindowTitle(appName);
+        mainWindow->setWindowTitle(appDisplayName);
         mainWindow->setCentralWidget(centralWidget);
         ui = mainWindow;
     }
@@ -233,6 +230,9 @@ int xToolsExec(int argc, char *argv[], const QString &appName)
     xToolsApplication::moveToScreenCenter(ui);
     qInfo() << "The size of window is" << ui->size();
 
+    if (doSomethingBeforAppExec) {
+        doSomethingBeforAppExec(ui, &app);
+    }
     const int ret = app.exec();
     xToolsDoSomethingAfterAppExited();
     return ret;
