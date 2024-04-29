@@ -286,163 +286,162 @@
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="63"/>
-        <source>NUL (NULL))</source>
-        <translation></translation>
+        <translation>NUL (空字符)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="64"/>
         <source>SOH (Start Of Headling)</source>
-        <translation></translation>
+        <translation>SOH (标题开始)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="65"/>
         <source>STX (Start Of Text)</source>
-        <translation></translation>
+        <translation>STX (文本开始)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="66"/>
         <source>ETX (End Of Text)</source>
-        <translation></translation>
+        <translation>ETX (文本结束)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="67"/>
         <source>EOT (End Of Transmission)</source>
-        <translation></translation>
+        <translation>EOT (传输结束)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="68"/>
         <source>ENQ (Enquiry)</source>
-        <translation></translation>
+        <translation>ENQ (请求)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="69"/>
         <source>ACK (Acknowledge)</source>
-        <translation></translation>
+        <translation>ACK (确认回应)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="70"/>
         <source>BEL (Bell)</source>
-        <translation></translation>
+        <translation>BEL (响铃)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="71"/>
         <source>BS (Backspace)</source>
-        <translation></translation>
+        <translation>BS (退格)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="72"/>
         <source>HT (Horizontal Tab)</source>
-        <translation></translation>
+        <translation>HT (水平定位符号)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="73"/>
         <source>LF/NL(Line Feed/New Line)</source>
-        <translation></translation>
+        <translation>LF (换行键)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="74"/>
         <source>VT (Vertical Tab)</source>
-        <translation></translation>
+        <translation>VT (垂直定位符号)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="75"/>
         <source>FF/NP (Form Feed/New Page)</source>
-        <translation></translation>
+        <translation>FF (换页键)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="76"/>
         <source>CR (Carriage Return)</source>
-        <translation></translation>
+        <translation>CR (归位键)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="77"/>
         <source>SO (Shift Out)</source>
-        <translation></translation>
+        <translation>SO (取消变换)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="78"/>
         <source>SI (Shift In)</source>
-        <translation></translation>
+        <translation>SI (启用变换)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="79"/>
         <source>DLE (Data Link Escape)</source>
-        <translation></translation>
+        <translation>DLE (跳出数据通讯)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="80"/>
         <source>DC1/XON(Device Control 1/Transmission On)</source>
-        <translation></translation>
+        <translation>DC1/XON (设备控制一/XON启用软件速度控制)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="81"/>
         <source>DC2 (Device Control 2)</source>
-        <translation></translation>
+        <translation>DC2 (设备控制二)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="82"/>
         <source>DC3/XOFF(Device Control 3/Transmission Off)</source>
-        <translation></translation>
+        <translation>DC3/XOFF (设备控制三/XOFF停用软件速度控制)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="83"/>
         <source>DC4 (Device Control 4)</source>
-        <translation></translation>
+        <translation>DC4 (设备控制四)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="84"/>
         <source>NAK (Negative Acknowledge)</source>
-        <translation></translation>
+        <translation>NAK (确认失败回应)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="85"/>
         <source>SYN (Synchronous Idle)</source>
-        <translation></translation>
+        <translation>SYN (同步用暂停)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="86"/>
         <source>ETB (End of Transmission Block)</source>
-        <translation></translation>
+        <translation>ETB (区块传输结束)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="87"/>
         <source>CAN (Cancel)</source>
-        <translation></translation>
+        <translation>CAN (取消)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="88"/>
         <source>EM (End of Medium)</source>
-        <translation></translation>
+        <translation>EM (连接介质中断)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="89"/>
         <source>SUB (Substitute)</source>
-        <translation></translation>
+        <translation>SUB (替换)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="90"/>
         <source>ESC (Escape)</source>
-        <translation></translation>
+        <translation>ESC (替换)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="91"/>
         <source>FS (File Separator)</source>
-        <translation></translation>
+        <translation>FS (文件分隔符)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="92"/>
         <source>GS (Group Separator)</source>
-        <translation></translation>
+        <translation>GS (组群分隔符)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="93"/>
         <source>RS (Record Separator)</source>
-        <translation></translation>
+        <translation>RS (记录分隔符)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="94"/>
         <source>US (Unit Separator)</source>
-        <translation></translation>
+        <translation>US (单元分隔符)</translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="95"/>
