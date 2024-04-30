@@ -77,7 +77,12 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
     if (!tool->inherits("xToolsWebSocketClientTool")) {
         ui->labelMessageType->hide();
         ui->comboBoxMessageType->hide();
-        ui->widgetAuthentication->hide();
+
+        ui->checkBoxAuthentication->hide();
+        ui->lineEditUserName->hide();
+        ui->lineEditPassword->hide();
+        ui->labelUserPassword->hide();
+        ui->labelUserName->hide();
     }
 
     m_tool = qobject_cast<xToolsSocketClientTool *>(tool);
