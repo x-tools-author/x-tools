@@ -29,10 +29,15 @@ bool xToolsWebSocketClientTool::initialize(QString &errStr)
     });
 
     connect(m_webSocket, &QWebSocket::disconnected, m_webSocket, [=]() {
+        qInfo() << m_webSocket->error();
         QString errStr = m_webSocket->errorString();
         if (!errStr.isEmpty()) {
-            errStr = "Disconected from server:" + errStr;
+            errStr = tr("Disconected from server: ") + errStr;
+#if 0
             emit errorOccurred(errStr);
+#else
+            qWarning() << qPrintable(errStr);
+#endif
         }
 
         exit();
