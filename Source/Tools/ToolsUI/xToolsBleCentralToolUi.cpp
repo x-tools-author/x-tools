@@ -214,6 +214,11 @@ void xToolsBleCentralToolUi::onComboBoxServicesCurrentIndexChanged()
     m_bleTool->setServiceIndex(ui->comboBoxServices->currentIndex());
     auto service = ui->comboBoxServices->currentData();
     auto cookedSerivce = service.value<QLowEnergyService*>();
+    if (!cookedSerivce) {
+        qWarning() << "invalid service!";
+        return;
+    }
+
     auto chs = cookedSerivce->characteristics();
     ui->comboBoxCharacteristics->clear();
     for (int i = 0; i < chs.count(); i++) {
