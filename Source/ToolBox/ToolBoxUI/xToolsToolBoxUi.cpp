@@ -70,11 +70,13 @@ xToolsToolBoxUi::~xToolsToolBoxUi()
 QList<int> xToolsToolBoxUi::supportedCommunicationTools()
 {
     QList<int> list;
-    list << xToolsToolFactory::SerialPortTool
-#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
-         << xToolsToolFactory::BleCentralTool
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+    list << xToolsToolFactory::SerialPortTool;
 #endif
-         << xToolsToolFactory::UdpClientTool << xToolsToolFactory::UdpServerTool
+#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
+    list << xToolsToolFactory::BleCentralTool;
+#endif
+    list << xToolsToolFactory::UdpClientTool << xToolsToolFactory::UdpServerTool
          << xToolsToolFactory::TcpClientTool << xToolsToolFactory::TcpServerTool
          << xToolsToolFactory::WebSocketClientTool << xToolsToolFactory::WebSocketServerTool;
     return list;

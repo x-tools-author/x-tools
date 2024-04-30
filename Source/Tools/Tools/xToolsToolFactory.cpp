@@ -114,7 +114,7 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
         tool->setProperty("toolTypeName", metaEnum.valueToKey(type));
     } else {
         QString msg = QString("Unknow tool type: %1.").arg(type);
-        Q_UNUSED(msg);
+        qWarning() << qPrintable(msg);
         Q_ASSERT_X(false, __FUNCTION__, msg.toLatin1().data());
     }
 

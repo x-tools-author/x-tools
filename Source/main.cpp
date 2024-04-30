@@ -12,8 +12,10 @@
 
 int main(const int argc, char *argv[])
 {
+#ifndef X_TOOLS_BUILD_WITH_QMAKE
     Q_INIT_RESOURCE(xToolsCommon);
     Q_INIT_RESOURCE(xToolsTools);
+#endif
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
     Q_INIT_RESOURCE(xToolsPrivateCommon);
 #endif

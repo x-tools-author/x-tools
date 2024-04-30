@@ -13,6 +13,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 LIBS += -L$$[QT_INSTALL_LIBS]
+DEFINES += X_TOOLS_BUILD_WITH_QMAKE
+DEFINES += X_TOOLS_ENABLE_MODULE_SERIALPORT
 
 #---------------------------------------------------------------------------------------------------
 # Application information
