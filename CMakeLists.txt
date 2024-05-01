@@ -203,16 +203,19 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # xTools application
-list(APPEND X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp)
-x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
-x_tools_copy_style_resources_for_target(xTools)
-x_tools_generate_translations(xTools)
-x_tools_deploy_qt(xTools)
-x_tools_tar_target(xTools)
-x_tools_generate_installer(xTools ${X_TOOLS_VERSION})
+option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
+if(X_TOOLS_ENABLE_TARGET_XTOOLS)
+  list(APPEND X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp)
+  x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
+  x_tools_copy_style_resources_for_target(xTools)
+  x_tools_generate_translations(xTools)
+  x_tools_deploy_qt(xTools)
+  x_tools_tar_target(xTools)
+  x_tools_generate_installer(xTools ${X_TOOLS_VERSION})
 
-add_dependencies(xTools xToolsCore)
-target_link_libraries(xTools PRIVATE xToolsCore)
+  add_dependencies(xTools xToolsCore)
+  target_link_libraries(xTools PRIVATE xToolsCore)
+endif()
 
 # -------------------------------------------------------------------------------------------------
 # Assistant applications
