@@ -86,15 +86,7 @@ set(X_TOOLS_VERSION
 
 # --------------------------------------------------------------------------------------------------
 # Google log module
-if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-  option(X_TOOLS_ENABLE_MODULE_GLOG "Enable glog" ON)
-else()
-  option(X_TOOLS_ENABLE_MODULE_GLOG "Enable glog" OFF)
-endif()
-if(X_TOOLS_ENABLE_MODULE_GLOG)
-  x_tools_add_third_party("glog-0.7.0")
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_GLOG)
-endif()
+x_tools_add_third_party("glog-0.7.0")
 
 # --------------------------------------------------------------------------------------------------
 # SerialBus(Modbus, CAN bus)
