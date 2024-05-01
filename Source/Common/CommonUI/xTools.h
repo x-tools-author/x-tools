@@ -30,12 +30,13 @@ void xToolsInitGoogleLogging(char *argv0);
 void xToolsShutdownGoogleLogging();
 void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg);
 
-static void xToolsInitApp(const QString &appName)
+static void xToolsInitApp(const QString &appName, bool forStore)
 {
     QString cookedAppName = appName;
-#ifdef X_TOOLS_BUILD_FOR_STORE
-    cookedAppName += QObject::tr("(Store)");
-#endif
+    if (forStore) {
+        cookedAppName += QObject::tr("(Store)");
+    }
+
     cookedAppName.remove(" ");
     QCoreApplication::setOrganizationName(QString("xTools"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
@@ -98,9 +99,11 @@ static void xToolsInitAppStyle()
     }
 }
 
-static void xToolsDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
+static void xToolsDoSomethingBeforeAppCreated(char *argv[],
+                                              const QString &appName,
+                                              bool forStore = false)
 {
-    xToolsInitApp(appName);
+    xToolsInitApp(appName, forStore);
     xToolsInitGoogleLogging(argv[0]);
     xToolsInstallMessageHandler();
 

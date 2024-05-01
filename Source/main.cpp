@@ -16,8 +16,5 @@ int main(const int argc, char *argv[])
     Q_INIT_RESOURCE(xToolsCommon);
     Q_INIT_RESOURCE(xToolsTools);
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-    Q_INIT_RESOURCE(xToolsPrivateCommon);
-#endif
     return xToolsExec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"));
 }

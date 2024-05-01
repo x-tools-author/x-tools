@@ -43,20 +43,13 @@
 #include "xToolsModbusStudioUi.h"
 #endif
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#include "xToolsPayJsApi.h"
-#endif
 
 #ifdef Q_OS_WIN
 #include "SystemTrayIcon.h"
 #endif
 
 MainWindow::MainWindow(QWidget* parent)
-#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-    : xToolsPrivateMainWindow(parent)
-#else
     : xToolsMainWindow(parent)
-#endif
 {
 #ifdef Q_OS_WIN
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
@@ -71,14 +64,6 @@ MainWindow::MainWindow(QWidget* parent)
                          &MainWindow::show);
         systemTrayIcon->show();
     }
-#endif
-
-#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#ifdef QT_DEBUG
-    xToolsPayJsApi::singleton().setPrice(2);
-#else
-    xToolsPayJsApi::singleton().setPrice(10 * 10 * 10 * 10);
-#endif
 #endif
 
     auto* stackedWidget = new QStackedWidget();
@@ -240,7 +225,6 @@ void MainWindow::initHelpMenu()
 #if 0
     m_helpMenu->addAction(tr("About xTools"), this, &MainWindow::aboutSoftware);
 #endif
-#ifndef X_TOOLS_BUILD_FOR_STORE
 #ifdef Q_OS_WIN
     m_helpMenu->addAction(QIcon(":/Resources/Icons/IconBuy.svg"),
                           tr("Buy Ultimate Edition"),
@@ -249,7 +233,6 @@ void MainWindow::initHelpMenu()
                               QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
                               QDesktopServices::openUrl(url);
                           });
-#endif
 #endif
     m_helpMenu->addSeparator();
     m_helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
