@@ -100,7 +100,9 @@ void MainWindow::initMenuBar()
     initToolMenu();
     initOptionMenu();
     initLanguageMenu();
+#if !defined(X_TOOLS_ENABLE_PRIVATE_MODULE)
     initLinksMenu();
+#endif
     initHelpMenu();
 }
 
@@ -229,7 +231,7 @@ void MainWindow::initHelpMenu()
 #if 0
     m_helpMenu->addAction(tr("About xTools"), this, &MainWindow::aboutSoftware);
 #endif
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN) && !defined(X_TOOLS_ENABLE_PRIVATE_MODULE)
     m_helpMenu->addAction(QIcon(":/Resources/Icons/IconBuy.svg"),
                           tr("Buy Ultimate Edition"),
                           this,
