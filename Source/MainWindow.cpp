@@ -100,9 +100,7 @@ void MainWindow::initMenuBar()
     initToolMenu();
     initOptionMenu();
     initLanguageMenu();
-#if !defined(X_TOOLS_ENABLE_PRIVATE_MODULE)
     initLinksMenu();
-#endif
     initHelpMenu();
 }
 
