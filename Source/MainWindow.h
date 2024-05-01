@@ -11,9 +11,17 @@
 #include <QButtonGroup>
 #include <QMetaEnum>
 
+#ifdef X_TOOLS_ENABLE_PRIVATE_MODULE
+#include "xToolsPrivateMainWindow.h"
+#else
 #include "xToolsMainWindow.h"
+#endif
 
+#ifdef X_TOOLS_ENABLE_PRIVATE_MODULE
+class MainWindow : public xToolsPrivateMainWindow
+#else
 class MainWindow : public xToolsMainWindow
+#endif
 {
     Q_OBJECT
 public:

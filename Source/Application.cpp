@@ -13,7 +13,11 @@
 #include "xToolsSettings.h"
 
 Application::Application(int argc, char **argv)
+#ifdef X_TOOLS_ENABLE_PRIVATE_MODULE
+    : xToolsPrivateApplication(argc, argv)
+#else
     : xToolsApplication(argc, argv)
+#endif
 {
     // Setup ui language.
     const QString language = xToolsSettings::instance()->language();

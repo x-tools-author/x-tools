@@ -49,7 +49,11 @@
 #endif
 
 MainWindow::MainWindow(QWidget* parent)
+#ifdef X_TOOLS_ENABLE_PRIVATE_MODULE
+    : xToolsPrivateMainWindow(parent)
+#else
     : xToolsMainWindow(parent)
+#endif
 {
 #ifdef Q_OS_WIN
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
