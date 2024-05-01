@@ -14,15 +14,11 @@
 #include <QDebug>
 #include <QDir>
 #include <QFile>
-#include <QStyle>
 
 #include "xToolsApplication.h"
 #include "xToolsMainWindow.h"
 #include "xToolsSettings.h"
 
-#ifdef X_TOOLS_ENABLE_MODULE_GLOG
-#include "glog/logging.h"
-#endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #include "xToolsDataStructure.h"
 #endif
@@ -30,68 +26,9 @@
 #include "xToolsStyleSheetManager.h"
 #endif
 
-#ifdef X_TOOLS_ENABLE_MODULE_GLOG
-static void xToolsInitGoogleLogging(char *argv0)
-{
-    QString logPath = xToolsSettings::instance()->settingsPath();
-    logPath += "/log";
-    QDir dir(xToolsSettings::instance()->settingsPath());
-    if (!dir.exists(logPath) && !dir.mkpath(logPath)) {
-        qWarning() << "Make log directory failed";
-    }
-
-    auto keep = std::chrono::minutes(30 * 24 * 60);
-    google::SetLogFilenameExtension(".log");     // The suffix of log file.
-    google::EnableLogCleaner(keep);              // Keep the log file for 30 days.
-    google::SetApplicationFingerprint("xTools"); // (It seem to be no use.)
-
-    fLB::FLAGS_logtostdout = false;
-    fLB::FLAGS_logtostderr = false;
-    fLS::FLAGS_log_dir = logPath.toUtf8().data(); // The path of log.
-    fLI::FLAGS_logbufsecs = 0;                    //
-    fLU::FLAGS_max_log_size = 10;                 // The max size(MB) of log file.
-    fLB::FLAGS_stop_logging_if_full_disk = true;  //
-    fLB::FLAGS_alsologtostderr = false;           //
-
-#ifndef QT_DEBUG
-    google::InitGoogleLogging(argv0);
-#endif
-    qInfo() << "The logging path is:" << qPrintable(logPath);
-}
-#endif
-
-#ifdef X_TOOLS_ENABLE_MODULE_GLOG
-static void xToolsShutdownGoogleLogging()
-{
-#ifndef QT_DEBUG
-    google::ShutdownGoogleLogging();
-#endif
-}
-#endif
-
-#ifdef X_TOOLS_ENABLE_MODULE_GLOG
-static void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
-{
-    QByteArray localMsg = msg.toUtf8();
-    const char *file = context.file ? context.file : "";
-    const int line = context.line;
-
-    switch (type) {
-    case QtWarningMsg:
-        google::LogMessage(file, line, google::GLOG_WARNING).stream() << localMsg.data();
-        break;
-    case QtCriticalMsg:
-        google::LogMessage(file, line, google::GLOG_ERROR).stream() << localMsg.data();
-        break;
-    case QtFatalMsg:
-        google::LogMessage(file, line, google::GLOG_FATAL).stream() << localMsg.data();
-        break;
-    default:
-        google::LogMessage(file, line, google::GLOG_INFO).stream() << localMsg.data();
-        break;
-    }
-}
-#endif
+void xToolsInitGoogleLogging(char *argv0);
+void xToolsShutdownGoogleLogging();
+void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg);
 
 static void xToolsInitApp(const QString &appName)
 {
@@ -108,9 +45,7 @@ static void xToolsInitApp(const QString &appName)
 
 static void xToolsInstallMessageHandler()
 {
-#ifdef X_TOOLS_ENABLE_MODULE_GLOG
     qInstallMessageHandler(qtLogToGoogleLog);
-#endif
 }
 
 static void xToolsTryToClearSettings()
@@ -166,21 +101,16 @@ static void xToolsInitAppStyle()
 static void xToolsDoSomethingBeforeAppCreated(char *argv[], const QString &appName)
 {
     xToolsInitApp(appName);
-#ifdef X_TOOLS_ENABLE_MODULE_GLOG
     xToolsInitGoogleLogging(argv[0]);
     xToolsInstallMessageHandler();
-#else
-    Q_UNUSED(argv)
-#endif
+
     xToolsTryToClearSettings();
     xToolsInitHdpi();
 }
 
 static void xToolsDoSomethingAfterAppExited()
 {
-#ifdef X_TOOLS_ENABLE_MODULE_GLOG
     xToolsShutdownGoogleLogging();
-#endif
 }
 
 template<typename CentralWidgetT = QWidget,
@@ -190,7 +120,7 @@ int xToolsExec(int argc,
                char *argv[],
                const QString &appName,
                const QString &version = QString("0.0.0"),
-               std::function<void(void *, void *)> doSomethingBeforAppExec = nullptr)
+               const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QApplication::setAttribute(Qt::AA_Use96Dpi);
