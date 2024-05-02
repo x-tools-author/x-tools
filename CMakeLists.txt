@@ -87,6 +87,7 @@ set(X_TOOLS_VERSION
 # --------------------------------------------------------------------------------------------------
 # Google log module
 x_tools_add_third_party("glog-0.7.0")
+add_compile_definitions(X_TOOLS_ENABLE_MODULE_GLOG)
 
 # --------------------------------------------------------------------------------------------------
 # SerialBus(Modbus, CAN bus)

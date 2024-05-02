@@ -149,6 +149,7 @@ SOURCES += \
     Source/Common/Common/xToolsNetworkInterfaceScanner.cpp \
     Source/Common/Common/xToolsSerialPortScanner.cpp \
     Source/Common/Common/xToolsSettings.cpp \
+    Source/Common/CommonUI/xTools.cpp \
     Source/Common/Common/xToolsTableModel.cpp \
     Source/Common/CommonUI/xToolsAffixesComboBox.cpp \
     Source/Common/CommonUI/xToolsBaudRateComboBox.cpp \

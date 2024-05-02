@@ -8,12 +8,14 @@
  **************************************************************************************************/
 #pragma once
 
+#include <functional>
 #include <type_traits>
 
 #include <QApplication>
 #include <QDebug>
 #include <QDir>
 #include <QFile>
+#include <QStyle>
 
 #include "xToolsApplication.h"
 #include "xToolsMainWindow.h"
@@ -46,7 +48,9 @@ static void xToolsInitApp(const QString &appName, bool forStore)
 
 static void xToolsInstallMessageHandler()
 {
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
     qInstallMessageHandler(qtLogToGoogleLog);
+#endif
 }
 
 static void xToolsTryToClearSettings()

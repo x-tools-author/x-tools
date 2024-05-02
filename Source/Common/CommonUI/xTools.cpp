@@ -8,10 +8,14 @@
  **************************************************************************************************/
 
 #include "xTools.h"
+
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
 #include "glog/logging.h"
+#endif
 
 void xToolsInitGoogleLogging(char *argv0)
 {
+#if defined(X_TOOLS_ENABLE_MODULE_GLOG)
     QString logPath = xToolsSettings::instance()->settingsPath();
     logPath += "/log";
     QDir dir(xToolsSettings::instance()->settingsPath());
@@ -34,15 +38,21 @@ void xToolsInitGoogleLogging(char *argv0)
 
     google::InitGoogleLogging(argv0);
     qInfo() << "The logging path is:" << qPrintable(logPath);
+#else
+    Q_UNUSED(argv0);
+#endif
 }
 
 void xToolsShutdownGoogleLogging()
 {
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
     google::ShutdownGoogleLogging();
+#endif
 }
 
 void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
+#ifdef X_TOOLS_ENABLE_MODULE_GLOG
     QByteArray localMsg = msg.toUtf8();
     const char *file = context.file ? context.file : "";
     const int line = context.line;
@@ -61,4 +71,9 @@ void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const Q
         google::LogMessage(file, line, google::GLOG_INFO).stream() << localMsg.data();
         break;
     }
+#else
+    Q_UNUSED(type);
+    Q_UNUSED(context);
+    Q_UNUSED(msg);
+#endif
 }
