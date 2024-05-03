@@ -8,13 +8,13 @@
  **************************************************************************************************/
 #pragma once
 
-#ifdef X_TOOLS_ENABLE_PRIVATE_MODULE
+#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
 #include "xToolsPrivateApplication.h"
 #else
 #include "xToolsApplication.h"
 #endif
 
-#ifdef X_TOOLS_ENABLE_PRIVATE_MODULE
+#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
 class Application : public xToolsPrivateApplication
 #else
 class Application : public xToolsApplication

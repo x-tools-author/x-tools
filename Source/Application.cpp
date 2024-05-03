@@ -13,7 +13,7 @@
 #include "xToolsSettings.h"
 
 Application::Application(int argc, char **argv)
-#ifdef X_TOOLS_ENABLE_PRIVATE_MODULE
+#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
     : xToolsPrivateApplication(argc, argv)
 #else
     : xToolsApplication(argc, argv)

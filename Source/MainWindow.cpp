@@ -49,7 +49,7 @@
 #endif
 
 MainWindow::MainWindow(QWidget* parent)
-#ifdef X_TOOLS_ENABLE_PRIVATE_MODULE
+#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
     : xToolsPrivateMainWindow(parent)
 #else
     : xToolsMainWindow(parent)
@@ -229,7 +229,7 @@ void MainWindow::initHelpMenu()
 #if 0
     m_helpMenu->addAction(tr("About xTools"), this, &MainWindow::aboutSoftware);
 #endif
-#if defined(Q_OS_WIN) && !defined(X_TOOLS_ENABLE_PRIVATE_MODULE)
+#if defined(Q_OS_WIN) && !defined(X_TOOLS_ENABLE_MODULE_PRIVATE)
     m_helpMenu->addAction(QIcon(":/Resources/Icons/IconBuy.svg"),
                           tr("Buy Ultimate Edition"),
                           this,
