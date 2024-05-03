@@ -2,7 +2,7 @@
 set(GIT_TAG "x.x.x")
 function(x_tools_git_get_latest_tag working_dir prefix)
   execute_process(
-    COMMAND git describe --abbrev=0
+    COMMAND git describe --abbrev=0 --tags
     WORKING_DIRECTORY ${working_dir}
     OUTPUT_VARIABLE GIT_LATEST_TAG
     OUTPUT_STRIP_TRAILING_WHITESPACE)
