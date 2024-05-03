@@ -16,5 +16,18 @@ int main(const int argc, char *argv[])
     Q_INIT_RESOURCE(xToolsCommon);
     Q_INIT_RESOURCE(xToolsTools);
 #endif
-    return xToolsExec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"));
+
+    QString version = "0.0.0";
+#if defined(X_TOOLS_GIT_TAG)
+    QString tag = QString(X_TOOLS_GIT_TAG);
+    if (tag == QString("continuous")) {
+        version = "9.9.9";
+    } else {
+        tag = tag.remove("v");
+        if (tag.split('.').length() == 3) {
+            version = tag;
+        }
+    }
+#endif
+    return xToolsExec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"), version);
 }
