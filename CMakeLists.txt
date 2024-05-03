@@ -22,6 +22,10 @@ set(WITH_TOOLS
     OFF
     CACHE BOOL "Reset option" FORCE)
 
+if(MSVC)
+  set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # Qt module
 list(APPEND X_TOOLS_QT_COMPONENTS Gui)
