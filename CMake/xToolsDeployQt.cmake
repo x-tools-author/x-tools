@@ -1,18 +1,25 @@
 function(x_tools_deploy_qt_for_windows target)
+  if(NOT DEFINED WINDEPLOYQT_EXECUTABLE)
+    message(STATUS "Please set WINDEPLOYQT_EXECUTABLE")
+    return()
+  endif()
+
   set(X_TOOLS_QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Qml)
+
   if(EXISTS ${X_TOOLS_QML_PATH})
     add_custom_command(
       TARGET ${target}
       POST_BUILD
       COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --qmldir ${X_TOOLS_QML_PATH}
-              --no-compiler-runtime
+              --no-compiler-runtime "||" ${CMAKE_COMMAND} -E true
       COMMENT "Deploy Qt (with qml) for Windows..."
       VERBATIM)
   else()
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime
+      COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime "||"
+              ${CMAKE_COMMAND} -E true
       COMMENT "Deploy Qt for Windows..."
       VERBATIM)
   endif()
@@ -42,6 +49,7 @@ endfunction()
 
 function(x_tools_deploy_qt_for_mac target)
   set(X_TOOLS_QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Qml)
+
   if(NOT ${target} STREQUAL "xTools")
     return()
   endif()
@@ -92,6 +100,7 @@ function(x_tools_deploy_qt_for_linux target)
   string(TOUPPER ${target} upper_target_name)
   string(TOLOWER ${target} lower_target_name)
   option(X_TOOLS_LINUX_MAKE_APP_IMAGE_${upper_target_name} "Pack target tp a app image file" OFF)
+
   if(NOT X_TOOLS_LINUX_MAKE_APP_IMAGE_${upper_target_name})
     return()
   endif()
@@ -112,6 +121,7 @@ function(x_tools_deploy_qt_for_linux target)
   set(applications_dir ${APP_DIR}/share/applications)
   set(desktop_file "${applications_dir}/${target}.desktop")
   set(app_image_file "${target}-${GIT_SHORT_COMMIT}-x86_64.AppImage")
+
   if(${QT_QMAKE_EXECUTABLE})
     set(qmake_executable ${QT_QMAKE_EXECUTABLE})
   else()

@@ -35,7 +35,12 @@ list(APPEND X_TOOLS_QT_COMPONENTS Widgets)
 list(APPEND X_TOOLS_QT_COMPONENTS Network)
 list(APPEND X_TOOLS_QT_COMPONENTS WebSockets)
 list(APPEND X_TOOLS_QT_COMPONENTS LinguistTools)
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
+
+# Qt6 is preferred, but Qt5 is also supported
+find_package(QT NAMES Qt6 QUIET COMPONENTS ${X_TOOLS_QT_COMPONENTS})
+if(NOT QT_FOUND)
+  find_package(QT NAMES Qt5 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
+endif()
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 
 # --------------------------------------------------------------------------------------------------
