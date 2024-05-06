@@ -22,8 +22,11 @@ set(WITH_TOOLS
     OFF
     CACHE BOOL "Reset option" FORCE)
 
-if(MSVC)
-  set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+if(WIN32)
+  option(X_TOOLS_STATIC_MSVC_RUNTIME_LIBRARY "Static msvc runtime library" OFF)
+  if(MSVC AND X_TOOLS_STATIC_MSVC_RUNTIME_LIBRARY)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+  endif()
 endif()
 
 # --------------------------------------------------------------------------------------------------
