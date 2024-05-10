@@ -22,13 +22,6 @@ set(WITH_TOOLS
     OFF
     CACHE BOOL "Reset option" FORCE)
 
-if(WIN32)
-  option(X_TOOLS_STATIC_MSVC_RUNTIME_LIBRARY "Static msvc runtime library" OFF)
-  if(MSVC AND X_TOOLS_STATIC_MSVC_RUNTIME_LIBRARY)
-    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-  endif()
-endif()
-
 # --------------------------------------------------------------------------------------------------
 # Qt module
 list(APPEND X_TOOLS_QT_COMPONENTS Gui)
@@ -45,6 +38,15 @@ if(NOT QT_FOUND)
   find_package(QT NAMES Qt5 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 endif()
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
+
+get_target_property(QT_TARGET_TYPE Qt${QT_VERSION_MAJOR}::Core TYPE)
+message(STATUS "Qt${QT_VERSION_MAJOR}::Core type: ${QT_TARGET_TYPE}")
+option(X_TOOLS_AUTO_LINK_MSVC_RUNTIME_LIBRARY "auto link(static or shate) msvc runtime library" ON)
+if(WIN32 AND MSVC AND X_TOOLS_AUTO_LINK_MSVC_RUNTIME_LIBRARY)
+  if(QT_TARGET_TYPE STREQUAL "STATIC_LIBRARY")
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+  endif()
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
@@ -222,7 +224,9 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
   x_tools_copy_style_resources_for_target(xTools)
   x_tools_generate_translations(xTools)
-  x_tools_deploy_qt(xTools)
+  if(NOT QT_TARGET_TYPE STREQUAL "STATIC_LIBRARY")
+    x_tools_deploy_qt(xTools)
+  endif()
   x_tools_tar_target(xTools)
   x_tools_generate_installer(xTools ${X_TOOLS_VERSION})
 
