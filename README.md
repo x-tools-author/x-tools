@@ -1,4 +1,4 @@
-# xTools [![LGPL License](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.html) ![CodeSize](https://img.shields.io/github/languages/code-size/x-tools-author/x-tools) ![RepoSize](https://img.shields.io/github/repo-size/x-tools-author/x-tools) [![Static Badge](https://img.shields.io/badge/Support_Author-Microsoft_Sotre-blue)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)
+# xTools [![LGPL License](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.html) ![CodeSize](https://img.shields.io/github/languages/code-size/x-tools-author/x-tools) ![RepoSize](https://img.shields.io/github/repo-size/x-tools-author/x-tools) [![Static Badge](https://img.shields.io/badge/sponsor-Microsoft_Sotre-blue)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)
 
 [![build-windows](https://github.com/x-tools-author/x-tools/actions/workflows/build-windows.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-windows.yml)
 [![build-ubuntu](https://github.com/x-tools-author/x-tools/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-ubuntu.yml)
@@ -12,17 +12,13 @@
 3. Auto Response: Automatically responds with "Hi" when receiving "Hello" from the device.
 4. Data Transmitting: Facilitates forwarding data received from a SerialPort device to a BLE device.
 5. Multiple Text Formats: Show text as bin, otc, dec, hex, ascii or urf8 etc..
-6. (etc.)
+6. ...
 
-> **You can get *xTools* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
+> **You can get *xTools* form [Micorsoft Store(sponsor)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
 
 ![xToolsDark.png](Doc/Images/xToolsDark.png)
 
-> **You can get *xTools* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
-
 ![xToolsDark.png](Doc/Images/xToolsLight.png)
-
-> **You can get *xTools* form [Micorsoft Store](https://www.microsoft.com/store/apps/9P29H1NDNKBB).**
 
 ## About the Project
 
