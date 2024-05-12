@@ -18,7 +18,7 @@ function(x_tools_copy_style_resources_for_target target)
     COMMAND
       ${CMAKE_COMMAND} -E copy_directory_if_different
       "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../ThirdParty/${X_TOOLS_STYLES_DIR_NAME}/styles"
-      "$<TARGET_FILE_DIR:${target}>/3rd_styles"
+      "$<TARGET_FILE_DIR:${target}>/3rd_styles" || ${CMAKE_COMMAND} -E true
     COMMENT "Copy style resources for ${target}...")
 endfunction()
 
