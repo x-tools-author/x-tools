@@ -11,4 +11,4 @@ issuehunt: # Replace with a single IssueHunt username
 lfx_crowdfunding: # Replace with a single LFX Crowdfunding project-name e.g., cloud-foundry
 polar: # Replace with a single Polar username
 buy_me_a_coffee: # Replace with a single Buy Me a Coffee username
-custom: https://github.com/x-tools-author/x-tools/blob/master/Doc/Sponsor/README.md
+custom: [https://github.com/x-tools-author/x-tools/blob/master/Doc/Sponsor/README.md, https://www.microsoft.com/store/apps/9P29H1NDNKBB]
