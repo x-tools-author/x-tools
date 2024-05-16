@@ -37,10 +37,10 @@ public:
     void showSplashScreenMessage(const QString &msg);
     void setupPalette(const QString &fileName);
     QSplashScreen &splashScreen();
-    QStringList supportedLanguages();
+    Q_INVOKABLE QStringList supportedLanguages();
 
     QString language();
-    virtual void setupLanguage(const QString &language);
+    Q_INVOKABLE virtual void setupLanguage(const QString &language);
 
 public:
     static void setValidator(QLineEdit *target, int validatorType, int maxLength = INT_MAX);
