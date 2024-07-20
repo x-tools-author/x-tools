@@ -118,10 +118,6 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
         Q_ASSERT_X(false, __FUNCTION__, msg.toLatin1().data());
     }
 
-    if (tool) {
-        tool->setToolType(type);
-    }
-
     return tool;
 }
 

@@ -22,9 +22,6 @@ public:
     virtual ~xToolsBaseTool();
     virtual void inputBytes(const QByteArray &bytes) = 0;
 
-    int toolType() { return m_type; }
-    void setToolType(int type) { m_type = type; }
-
 signals:
     void outputBytes(const QByteArray &bytes);
     void errorOccurred(const QString &errorString);
