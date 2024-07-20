@@ -4,7 +4,7 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../Source/Application.cpp" line="25"/>
+        <location filename="../../Source/Application.cpp" line="26"/>
         <source>Initializing main window...</source>
         <translation>初始化主窗口...</translation>
     </message>
@@ -12,125 +12,143 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="139"/>
+        <location filename="../../Source/MainWindow.cpp" line="123"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="189"/>
+        <location filename="../../Source/MainWindow.cpp" line="173"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="214"/>
+        <location filename="../../Source/MainWindow.cpp" line="198"/>
         <source>Main Window</source>
         <translation>关闭设置</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="215"/>
+        <location filename="../../Source/MainWindow.cpp" line="199"/>
         <source>Exit to System Tray</source>
         <translation>退出至系统托盘</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="238"/>
+        <location filename="../../Source/MainWindow.cpp" line="222"/>
         <source>Get Sources from Github</source>
         <translation>从Github获取源码</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="241"/>
+        <location filename="../../Source/MainWindow.cpp" line="225"/>
         <source>Get Sources from Gitee</source>
         <translation>从Gitee获取源码</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="246"/>
+        <location filename="../../Source/MainWindow.cpp" line="230"/>
         <source>About xTools</source>
         <translation>关于xTools</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="251"/>
+        <location filename="../../Source/MainWindow.cpp" line="234"/>
         <source>Buy Ultimate Edition</source>
         <translation>购买旗舰版</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="260"/>
-        <location filename="../../Source/MainWindow.cpp" line="434"/>
+        <location filename="../../Source/MainWindow.cpp" line="242"/>
+        <location filename="../../Source/MainWindow.cpp" line="416"/>
         <source>Release History</source>
         <translation>发布记录</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="261"/>
+        <location filename="../../Source/MainWindow.cpp" line="243"/>
         <source>Join in QQ Group</source>
         <translation>加入QQ群</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="266"/>
+        <location filename="../../Source/MainWindow.cpp" line="248"/>
         <source>Links</source>
         <translation>链接</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="276"/>
+        <location filename="../../Source/MainWindow.cpp" line="258"/>
         <source>Qt Official Download</source>
         <translation>Qt官方下载</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="279"/>
+        <location filename="../../Source/MainWindow.cpp" line="261"/>
         <source>Qt Official Blog</source>
         <translation>Qt官方博客</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="282"/>
+        <location filename="../../Source/MainWindow.cpp" line="264"/>
         <source>Qt Official Release</source>
         <translation>Qt官方发布</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="286"/>
+        <location filename="../../Source/MainWindow.cpp" line="268"/>
         <source>Download xTools from Github</source>
         <translation>从Github下载</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="289"/>
+        <location filename="../../Source/MainWindow.cpp" line="271"/>
         <source>Download xTools from Gitee</source>
         <translation>从Gitee下载</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="293"/>
+        <location filename="../../Source/MainWindow.cpp" line="275"/>
         <source>Office Web Site</source>
         <translation>官方网站</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="348"/>
+        <location filename="../../Source/MainWindow.cpp" line="330"/>
         <source>Modbus Studio</source>
         <translation>Modbus工作台</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="352"/>
+        <location filename="../../Source/MainWindow.cpp" line="334"/>
         <source>CANBus Studio</source>
         <translation>Canbus工作台</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="403"/>
+        <location filename="../../Source/MainWindow.cpp" line="385"/>
         <source>Show Icon Only</source>
         <translation>隐藏文本</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="404"/>
+        <location filename="../../Source/MainWindow.cpp" line="386"/>
         <source>Click to show(hide) nav text</source>
         <translation>点击以显示（隐藏）文本</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="454"/>
+        <location filename="../../Source/MainWindow.cpp" line="436"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="463"/>
+        <location filename="../../Source/MainWindow.cpp" line="445"/>
         <source>User QQ Group</source>
         <translation>用户QQ群</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="464"/>
+        <location filename="../../Source/MainWindow.cpp" line="446"/>
         <source>Qt QQ Group</source>
         <translation>开发QQ群</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xTools.h" line="39"/>
+        <source>(Store)</source>
+        <translation>(商店)</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xTools.cpp" line="73"/>
+        <source>Neet to Reboot</source>
+        <translation>需要重启</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xTools.cpp" line="74"/>
+        <source>The operation need to reboot to effectived, reboot the applicaion now?</source>
+        <translation>该操作需要重启软件才能生效，是否立即重启？</translation>
     </message>
 </context>
 <context>
@@ -210,6 +228,14 @@
     </message>
 </context>
 <context>
+    <name>xToolsAffixesComboBox</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsAffixesComboBox.cpp" line="15"/>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+</context>
+<context>
     <name>xToolsAnalyzerToolUi</name>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsAnalyzerToolUi.ui" line="32"/>
@@ -245,6 +271,19 @@
         <location filename="../../Source/Tools/ToolsUI/xToolsAnalyzerToolUi.ui" line="117"/>
         <source>Hex format</source>
         <translation>16进制格式</translation>
+    </message>
+</context>
+<context>
+    <name>xToolsApplication</name>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsApplication.cpp" line="71"/>
+        <source>Load palette...</source>
+        <translation>加载配色文件...</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsApplication.cpp" line="83"/>
+        <source>Initialize application...</source>
+        <translation>初始化应用...</translation>
     </message>
 </context>
 <context>
@@ -286,7 +325,13 @@
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="63"/>
+        <source></source>
         <translation>NUL (空字符)</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="63"/>
+        <source>NUL (NULL))</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Assistants/ASCII/Source/xToolsAsciiAssistant.cpp" line="64"/>
@@ -552,7 +597,7 @@
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="151"/>
-        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="249"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="254"/>
         <source>Notify</source>
         <translation>通知</translation>
     </message>
@@ -582,14 +627,22 @@
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="223"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="228"/>
         <source>Characteristics%1</source>
         <translation>特征值：%1</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="249"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="254"/>
         <source>Disnotify</source>
         <translation>取消通知</translation>
+    </message>
+</context>
+<context>
+    <name>xToolsBleDeviceInfoComboBox</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsBleDeviceInfoComboBox.cpp" line="100"/>
+        <source>Error Occurred</source>
+        <translation>出现错误</translation>
     </message>
 </context>
 <context>
@@ -1032,6 +1085,89 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xToolsDataStructure</name>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="181"/>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="186"/>
+        <source>\r and \n</source>
+        <translation>\r + \n</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="277"/>
+        <source>Round up for .5 and above</source>
+        <translation>四舍五入至x.5倍</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="278"/>
+        <source>Always round up</source>
+        <translation>总是放大</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="279"/>
+        <source>Always round down</source>
+        <translation>总是缩小</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="280"/>
+        <source>Round up for .75 and above</source>
+        <translation>四舍五入至x.75倍</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="281"/>
+        <source>Don&apos;t round</source>
+        <translation>不缩放</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="283"/>
+        <source>System</source>
+        <translation>系统方案</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="313"/>
+        <source>Text</source>
+        <translation>文本</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="314"/>
+        <source>Binary</source>
+        <translation>二进制</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="335"/>
+        <source>Disable</source>
+        <translation>禁止</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="336"/>
+        <source>Echo</source>
+        <translation>回显</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="337"/>
+        <source>Data Received</source>
+        <translation>接收到数据时</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="338"/>
+        <source>Rx Data Equal Reference Data</source>
+        <translation>接收数据等于参考数据</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="339"/>
+        <source>Rx Data Contain Reference Data</source>
+        <translation>接收数据包含参考数据</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="340"/>
+        <source>Rx Data Discontain Reference Data</source>
+        <translation>接收数据不包含参考数据</translation>
+    </message>
+</context>
+<context>
     <name>xToolsEmitterTool</name>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsEmitterTool.cpp" line="70"/>
@@ -1216,6 +1352,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xToolsEscapeCharacterComboBox</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsEscapeCharacterComboBox.cpp" line="16"/>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+</context>
+<context>
     <name>xToolsFileCheckAssistant</name>
     <message>
         <location filename="../../Source/Assistants/FileCheck/Source/xToolsFileCheckAssistant.ui" line="14"/>
@@ -1357,6 +1501,195 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../Source/Assistants/FileMerge/Source/xToolsFileMergeAssistant.cpp" line="127"/>
         <source>Merge files successfully.</source>
         <translation>合并文件成功。</translation>
+    </message>
+</context>
+<context>
+    <name>xToolsFlowControlComboBox</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsFlowControlComboBox.cpp" line="16"/>
+        <source>No</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsFlowControlComboBox.cpp" line="17"/>
+        <source>Hardware</source>
+        <translation>硬件</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsFlowControlComboBox.cpp" line="18"/>
+        <source>Software</source>
+        <translation>软件</translation>
+    </message>
+</context>
+<context>
+    <name>xToolsMainWindow</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="117"/>
+        <source>&amp;File</source>
+        <translation>文件(&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="119"/>
+        <source>Import Palette</source>
+        <translation>导入配色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="123"/>
+        <source>Export Palette</source>
+        <translation>导出配色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="129"/>
+        <source>&amp;Exit</source>
+        <translation>退出(&amp;E)</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="137"/>
+        <source>&amp;Options</source>
+        <translation>选项(&amp;O)</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="151"/>
+        <source>&amp;Languages</source>
+        <translation>语言(&amp;L)</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="188"/>
+        <source>&amp;Help</source>
+        <translation>帮助(&amp;H)</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="189"/>
+        <source>&amp;About</source>
+        <translation>关于(&amp;A)</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="190"/>
+        <source>About Qt</source>
+        <translation>关于Qt</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="197"/>
+        <source>Application Style</source>
+        <translation>应用风格</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="230"/>
+        <source>Application Palette</source>
+        <translation>应用配色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="232"/>
+        <source>Default</source>
+        <translation>默认</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="234"/>
+        <source>Dark</source>
+        <translation>深色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="236"/>
+        <source>Light</source>
+        <translation>浅色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="239"/>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="357"/>
+        <source>Import</source>
+        <translation>导入</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="266"/>
+        <source>Settings</source>
+        <translation>缓存配置</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="269"/>
+        <source>Clear Settings</source>
+        <translation>清空配置</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="276"/>
+        <source>Open Settings Directory</source>
+        <translation>打开缓存目录</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="289"/>
+        <source>HDPI Policy</source>
+        <translation>适配策略</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="342"/>
+        <source>(A Part of xTools Project)</source>
+        <translation>xTools 系列软件</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="344"/>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="347"/>
+        <source>Commit</source>
+        <translation>提交</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="349"/>
+        <source>Build Date</source>
+        <translation>构建日期</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="351"/>
+        <source>All rights reserved.</source>
+        <translation>保留所有版权。</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="352"/>
+        <source>About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="357"/>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="367"/>
+        <source>All (*)</source>
+        <translation>所有（*）</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="367"/>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="380"/>
+        <source>The operation(open file %1) failed: %2</source>
+        <translation>打开文件(%1)失败：%2</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="389"/>
+        <source>Reboot application to effective</source>
+        <translation>重启生效</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="390"/>
+        <source>Need to reboot, reboot to effective now?</source>
+        <translation>需要重启，是否立即重启？</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="422"/>
+        <source>QR Code</source>
+        <translation>二维码</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="426"/>
+        <source>User QQ Group</source>
+        <translation>用户QQ群</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="427"/>
+        <source>Qt QQ Group</source>
+        <translation>开发QQ群</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="454"/>
+        <source>Open the file(%1) failed: %2</source>
+        <translation>打开文件(%1)失败：%2</translation>
     </message>
 </context>
 <context>
@@ -1788,6 +2121,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xToolsParityComboBox</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsParityComboBox.cpp" line="16"/>
+        <source>No</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsParityComboBox.cpp" line="17"/>
+        <source>Even</source>
+        <translation>偶校验</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsParityComboBox.cpp" line="18"/>
+        <source>Odd</source>
+        <translation>奇校验</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsParityComboBox.cpp" line="19"/>
+        <source>Space</source>
+        <translation>空格校验</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsParityComboBox.cpp" line="20"/>
+        <source>Mark</source>
+        <translation>标记校验</translation>
+    </message>
+</context>
+<context>
     <name>xToolsPingAssistant</name>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="160"/>
@@ -2041,6 +2402,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../Source/Tools/ToolsUI/xToolsPrestorerToolUiEditor.cpp" line="21"/>
         <source>Prestorer Item Editor</source>
         <translation>数据预设编辑器</translation>
+    </message>
+</context>
+<context>
+    <name>xToolsQRCodeAssistant</name>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCodeAssistant.ui" line="20"/>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCodeAssistant.ui" line="37"/>
+        <source>Generate</source>
+        <translation>生成</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCideAssistant.cpp" line="47"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCideAssistant.cpp" line="47"/>
+        <source>Please input the data to generate QR code.</source>
+        <translation>输入数据不能为空，请输入数据后尝试。</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCideAssistant.cpp" line="90"/>
+        <source>Save QR Code Image</source>
+        <translation>保存二维码</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCideAssistant.cpp" line="92"/>
+        <source>PNG Images (*.png);;JPG Images (*.jpg)</source>
+        <translation>PNG图片 (*.png);;JPG图片 (*.jpg)</translation>
     </message>
 </context>
 <context>
@@ -2419,42 +2813,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsSocketClientToolUi</name>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="71"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="189"/>
         <source>Client IP</source>
         <translation>客户端地址</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="84"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="38"/>
         <source>Message</source>
         <translation>消息类型</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="97"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="104"/>
         <source>Server port</source>
         <translation>服务器端口</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="119"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="58"/>
         <source>Authentication</source>
         <translation>用户验证</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="136"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="163"/>
         <source>User name</source>
         <translation>用户名称</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="143"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="140"/>
         <source>Password</source>
         <translation>用户密码</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="169"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="176"/>
         <source>Client port</source>
         <translation>客户端端口</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="205"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="202"/>
         <source>Server IP</source>
         <translation>服务器地址</translation>
     </message>
@@ -2670,14 +3064,127 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsStyleSheetManager</name>
     <message>
-        <location filename="../../Source/Optional/xToolsStyleSheetManager.cpp" line="36"/>
         <source>Dark Theme</source>
-        <translation>暗色</translation>
+        <translation type="vanished">暗色</translation>
     </message>
     <message>
-        <location filename="../../Source/Optional/xToolsStyleSheetManager.cpp" line="37"/>
         <source>Light Theme</source>
-        <translation>亮色</translation>
+        <translation type="vanished">亮色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="23"/>
+        <source>Dark Amber</source>
+        <translation>深色-黄褐色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="24"/>
+        <source>Dark Blue</source>
+        <translation>深色-蓝色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="25"/>
+        <source>Dark Cyan</source>
+        <translation>深色-青色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="26"/>
+        <source>Dark Light Green</source>
+        <translation>深色-浅绿色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="27"/>
+        <source>Dark Pink</source>
+        <translation>深色-粉红色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="28"/>
+        <source>Dark Purple</source>
+        <translation>深色-紫色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="29"/>
+        <source>Dark Red</source>
+        <translation>深色-红色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="30"/>
+        <source>Dark Teal</source>
+        <translation>深色-蓝绿色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="31"/>
+        <source>Dark Yellow</source>
+        <translation>深色-黄色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="33"/>
+        <source>Light Amber</source>
+        <translation>浅色-黄褐色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="34"/>
+        <source>Light Blue</source>
+        <translation>浅色-蓝色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="35"/>
+        <source>Light Cyan</source>
+        <translation>浅色-青色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="36"/>
+        <source>Light Cyan(500)</source>
+        <translation>浅色-青色（500）</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="37"/>
+        <source>Light Light Green</source>
+        <translation>浅色-浅绿色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="38"/>
+        <source>Light Pink</source>
+        <translation>浅色-粉红色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="39"/>
+        <source>Light Purple</source>
+        <translation>浅色-紫色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="40"/>
+        <source>Light Red</source>
+        <translation>浅色-红色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="41"/>
+        <source>Light Teal</source>
+        <translation>浅色-蓝绿色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="42"/>
+        <source>Light Yellow</source>
+        <translation>浅色-黄色</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="82"/>
+        <source>Enable Stylesheet</source>
+        <translation>使能样式表</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="95"/>
+        <source>Application Stylesheet</source>
+        <translation>应用样式</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="220"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="220"/>
+        <source>Please enable stylesheet first!</source>
+        <translation>请先使能样式表（在应用样式菜单中勾选）！</translation>
     </message>
 </context>
 <context>
@@ -2791,7 +3298,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="97"/>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="355"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="357"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -2924,83 +3431,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="86"/>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="641"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="88"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="643"/>
         <source>SerialPort</source>
         <translation>串口助手</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="88"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="90"/>
         <source>UDP Client</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="90"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="92"/>
         <source>UDP Server</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="92"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="94"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="94"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="96"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="96"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="98"/>
         <source>WebSocket Client</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="98"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="100"/>
         <source>WebSocket Server</source>
         <translation>WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="100"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="102"/>
         <source>BLE Central</source>
         <translation>BLE中心设备</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="353"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="355"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="446"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="448"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="643"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="645"/>
         <source>UDP</source>
         <translation>UDP</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="644"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="646"/>
         <source>TCP</source>
         <translation>TCP</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="645"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="647"/>
         <source>WebSocket</source>
         <translation>WebSocket</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="659"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="661"/>
         <source>Error Occured</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="710"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="712"/>
         <source>Input Text Can Not Be Empty</source>
         <translation>输入数据不能为空</translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="711"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="713"/>
         <source>The input text is empty, please enter the input text</source>
         <translation>输入数据不能为空，请输入数据后尝试</translation>
     </message>
@@ -3082,7 +3589,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsToolFactory</name>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="125"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="132"/>
         <source>Analyzer</source>
         <translation>分析器</translation>
     </message>
@@ -3091,92 +3598,92 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">串口</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="126"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="133"/>
         <source>Serial Port</source>
         <translation>串口助手</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="127"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="134"/>
         <source>Emitter</source>
         <translation>发射器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="128"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="135"/>
         <source>Masker</source>
         <translation>验码器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="129"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="136"/>
         <source>Responser</source>
         <translation>应答器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="130"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="137"/>
         <source>Storer</source>
         <translation>存储器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="131"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="138"/>
         <source>Prestore</source>
         <translation>预设器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="132"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="139"/>
         <source>Velometer</source>
         <translation>测速器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="133"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="140"/>
         <source>UDP Client</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="134"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="141"/>
         <source>UDP Server</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="135"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="142"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="136"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="143"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="137"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="144"/>
         <source>Web Socket Client</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="138"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="145"/>
         <source>Web Socket Server</source>
         <translation>WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="139"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="146"/>
         <source>BLE Central</source>
         <translation>BLE中心设备</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="140"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="147"/>
         <source>BLE Periheral</source>
         <translation>BLE外围设备</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="142"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="149"/>
         <source>Serial Port Transmitter</source>
         <translation>串口转发</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="143"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="150"/>
         <source>UDP Transmitter</source>
         <translation>UDP转发</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="144"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="151"/>
         <source>TCP Transmitter</source>
         <translation>TCP转发</translation>
     </message>
@@ -3185,12 +3692,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">TCP转发</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="145"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="152"/>
         <source>Web Socket Transmitter</source>
         <translation>WebSocket转发器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="146"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="153"/>
         <source>CRC Calculator</source>
         <translation>CRC计算器</translation>
     </message>
@@ -3227,7 +3734,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">BLE外围设备</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="141"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="148"/>
         <source>Statistitician</source>
         <translation>统计器</translation>
     </message>
@@ -3263,6 +3770,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../Source/Tools/ToolsUI/xToolsVelometerToolUi.ui" line="38"/>
         <source>Velometer:</source>
         <translation>速度:</translation>
+    </message>
+</context>
+<context>
+    <name>xToolsWebSocketClientTool</name>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsWebSocketClientTool.cpp" line="35"/>
+        <source>Disconected from server: </source>
+        <translation>已断开连接: </translation>
     </message>
 </context>
 </TS>

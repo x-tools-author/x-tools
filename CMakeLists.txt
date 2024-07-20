@@ -278,6 +278,8 @@ endif()
 # xTools application
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
+  list(APPEND X_TOOLS_SOURCE xTools.qrc xTools.rc)
+
   x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
   x_tools_setup_stylesheet(xTools)
   x_tools_generate_translations(xTools)

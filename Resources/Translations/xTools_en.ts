@@ -4,7 +4,7 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../Source/Application.cpp" line="25"/>
+        <location filename="../../Source/Application.cpp" line="26"/>
         <source>Initializing main window...</source>
         <translation></translation>
     </message>
@@ -12,125 +12,143 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="139"/>
+        <location filename="../../Source/MainWindow.cpp" line="123"/>
         <source>New Window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="189"/>
+        <location filename="../../Source/MainWindow.cpp" line="173"/>
         <source>&amp;Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="214"/>
+        <location filename="../../Source/MainWindow.cpp" line="198"/>
         <source>Main Window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="215"/>
+        <location filename="../../Source/MainWindow.cpp" line="199"/>
         <source>Exit to System Tray</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="238"/>
+        <location filename="../../Source/MainWindow.cpp" line="222"/>
         <source>Get Sources from Github</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="241"/>
+        <location filename="../../Source/MainWindow.cpp" line="225"/>
         <source>Get Sources from Gitee</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="246"/>
+        <location filename="../../Source/MainWindow.cpp" line="230"/>
         <source>About xTools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="251"/>
+        <location filename="../../Source/MainWindow.cpp" line="234"/>
         <source>Buy Ultimate Edition</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="260"/>
-        <location filename="../../Source/MainWindow.cpp" line="434"/>
+        <location filename="../../Source/MainWindow.cpp" line="242"/>
+        <location filename="../../Source/MainWindow.cpp" line="416"/>
         <source>Release History</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="261"/>
+        <location filename="../../Source/MainWindow.cpp" line="243"/>
         <source>Join in QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="266"/>
+        <location filename="../../Source/MainWindow.cpp" line="248"/>
         <source>Links</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="276"/>
+        <location filename="../../Source/MainWindow.cpp" line="258"/>
         <source>Qt Official Download</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="279"/>
+        <location filename="../../Source/MainWindow.cpp" line="261"/>
         <source>Qt Official Blog</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="282"/>
+        <location filename="../../Source/MainWindow.cpp" line="264"/>
         <source>Qt Official Release</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="286"/>
+        <location filename="../../Source/MainWindow.cpp" line="268"/>
         <source>Download xTools from Github</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="289"/>
+        <location filename="../../Source/MainWindow.cpp" line="271"/>
         <source>Download xTools from Gitee</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="293"/>
+        <location filename="../../Source/MainWindow.cpp" line="275"/>
         <source>Office Web Site</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="348"/>
+        <location filename="../../Source/MainWindow.cpp" line="330"/>
         <source>Modbus Studio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="352"/>
+        <location filename="../../Source/MainWindow.cpp" line="334"/>
         <source>CANBus Studio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="403"/>
+        <location filename="../../Source/MainWindow.cpp" line="385"/>
         <source>Show Icon Only</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="404"/>
+        <location filename="../../Source/MainWindow.cpp" line="386"/>
         <source>Click to show(hide) nav text</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="454"/>
+        <location filename="../../Source/MainWindow.cpp" line="436"/>
         <source>QR Code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="463"/>
+        <location filename="../../Source/MainWindow.cpp" line="445"/>
         <source>User QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="464"/>
+        <location filename="../../Source/MainWindow.cpp" line="446"/>
         <source>Qt QQ Group</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xTools.h" line="39"/>
+        <source>(Store)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xTools.cpp" line="73"/>
+        <source>Neet to Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xTools.cpp" line="74"/>
+        <source>The operation need to reboot to effectived, reboot the applicaion now?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -210,6 +228,14 @@
     </message>
 </context>
 <context>
+    <name>xToolsAffixesComboBox</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsAffixesComboBox.cpp" line="15"/>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>xToolsAnalyzerToolUi</name>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsAnalyzerToolUi.ui" line="32"/>
@@ -245,6 +271,19 @@
         <location filename="../../Source/Tools/ToolsUI/xToolsAnalyzerToolUi.ui" line="117"/>
         <source>Hex format</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>xToolsApplication</name>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsApplication.cpp" line="71"/>
+        <source>Load palette...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsApplication.cpp" line="83"/>
+        <source>Initialize application...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -553,7 +592,7 @@
     </message>
     <message>
         <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.ui" line="151"/>
-        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="249"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="254"/>
         <source>Notify</source>
         <translation></translation>
     </message>
@@ -583,14 +622,22 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="223"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="228"/>
         <source>Characteristics%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="249"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsBleCentralToolUi.cpp" line="254"/>
         <source>Disnotify</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>xToolsBleDeviceInfoComboBox</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsBleDeviceInfoComboBox.cpp" line="100"/>
+        <source>Error Occurred</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1033,6 +1080,89 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xToolsDataStructure</name>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="181"/>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="186"/>
+        <source>\r and \n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="277"/>
+        <source>Round up for .5 and above</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="278"/>
+        <source>Always round up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="279"/>
+        <source>Always round down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="280"/>
+        <source>Round up for .75 and above</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="281"/>
+        <source>Don&apos;t round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="283"/>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="313"/>
+        <source>Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="314"/>
+        <source>Binary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="335"/>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="336"/>
+        <source>Echo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="337"/>
+        <source>Data Received</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="338"/>
+        <source>Rx Data Equal Reference Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="339"/>
+        <source>Rx Data Contain Reference Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/Common/xToolsDataStructure.cpp" line="340"/>
+        <source>Rx Data Discontain Reference Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>xToolsEmitterTool</name>
     <message>
         <location filename="../../Source/Tools/Tools/xToolsEmitterTool.cpp" line="70"/>
@@ -1217,6 +1347,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xToolsEscapeCharacterComboBox</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsEscapeCharacterComboBox.cpp" line="16"/>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>xToolsFileCheckAssistant</name>
     <message>
         <location filename="../../Source/Assistants/FileCheck/Source/xToolsFileCheckAssistant.ui" line="14"/>
@@ -1358,6 +1496,195 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../Source/Assistants/FileMerge/Source/xToolsFileMergeAssistant.cpp" line="127"/>
         <source>Merge files successfully.</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>xToolsFlowControlComboBox</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsFlowControlComboBox.cpp" line="16"/>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsFlowControlComboBox.cpp" line="17"/>
+        <source>Hardware</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsFlowControlComboBox.cpp" line="18"/>
+        <source>Software</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xToolsMainWindow</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="117"/>
+        <source>&amp;File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="119"/>
+        <source>Import Palette</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="123"/>
+        <source>Export Palette</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="129"/>
+        <source>&amp;Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="137"/>
+        <source>&amp;Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="151"/>
+        <source>&amp;Languages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="188"/>
+        <source>&amp;Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="189"/>
+        <source>&amp;About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="190"/>
+        <source>About Qt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="197"/>
+        <source>Application Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="230"/>
+        <source>Application Palette</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="232"/>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="234"/>
+        <source>Dark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="236"/>
+        <source>Light</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="239"/>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="357"/>
+        <source>Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="266"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="269"/>
+        <source>Clear Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="276"/>
+        <source>Open Settings Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="289"/>
+        <source>HDPI Policy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="342"/>
+        <source>(A Part of xTools Project)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="344"/>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="347"/>
+        <source>Commit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="349"/>
+        <source>Build Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="351"/>
+        <source>All rights reserved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="352"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="357"/>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="367"/>
+        <source>All (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="367"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="380"/>
+        <source>The operation(open file %1) failed: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="389"/>
+        <source>Reboot application to effective</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="390"/>
+        <source>Need to reboot, reboot to effective now?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="422"/>
+        <source>QR Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="426"/>
+        <source>User QQ Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="427"/>
+        <source>Qt QQ Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsMainWindow.cpp" line="454"/>
+        <source>Open the file(%1) failed: %2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1789,6 +2116,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xToolsParityComboBox</name>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsParityComboBox.cpp" line="16"/>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsParityComboBox.cpp" line="17"/>
+        <source>Even</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsParityComboBox.cpp" line="18"/>
+        <source>Odd</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsParityComboBox.cpp" line="19"/>
+        <source>Space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsParityComboBox.cpp" line="20"/>
+        <source>Mark</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>xToolsPingAssistant</name>
     <message>
         <location filename="../../Source/Assistants/Ping/Source/xToolsPingAssistant.cpp" line="160"/>
@@ -2042,6 +2397,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../Source/Tools/ToolsUI/xToolsPrestorerToolUiEditor.cpp" line="21"/>
         <source>Prestorer Item Editor</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>xToolsQRCodeAssistant</name>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCodeAssistant.ui" line="20"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCodeAssistant.ui" line="37"/>
+        <source>Generate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCideAssistant.cpp" line="47"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCideAssistant.cpp" line="47"/>
+        <source>Please input the data to generate QR code.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCideAssistant.cpp" line="90"/>
+        <source>Save QR Code Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Assistants/QRCode/Source/xToolsQRCideAssistant.cpp" line="92"/>
+        <source>PNG Images (*.png);;JPG Images (*.jpg)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2420,42 +2808,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsSocketClientToolUi</name>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="71"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="189"/>
         <source>Client IP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="84"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="38"/>
         <source>Message</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="97"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="104"/>
         <source>Server port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="119"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="58"/>
         <source>Authentication</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="136"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="163"/>
         <source>User name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="143"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="140"/>
         <source>Password</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="169"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="176"/>
         <source>Client port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="205"/>
+        <location filename="../../Source/Tools/ToolsUI/xToolsSocketClientToolUi.ui" line="202"/>
         <source>Server IP</source>
         <translation></translation>
     </message>
@@ -2671,14 +3059,119 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsStyleSheetManager</name>
     <message>
-        <location filename="../../Source/Optional/xToolsStyleSheetManager.cpp" line="36"/>
-        <source>Dark Theme</source>
-        <translation></translation>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="23"/>
+        <source>Dark Amber</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/Optional/xToolsStyleSheetManager.cpp" line="37"/>
-        <source>Light Theme</source>
-        <translation></translation>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="24"/>
+        <source>Dark Blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="25"/>
+        <source>Dark Cyan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="26"/>
+        <source>Dark Light Green</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="27"/>
+        <source>Dark Pink</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="28"/>
+        <source>Dark Purple</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="29"/>
+        <source>Dark Red</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="30"/>
+        <source>Dark Teal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="31"/>
+        <source>Dark Yellow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="33"/>
+        <source>Light Amber</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="34"/>
+        <source>Light Blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="35"/>
+        <source>Light Cyan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="36"/>
+        <source>Light Cyan(500)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="37"/>
+        <source>Light Light Green</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="38"/>
+        <source>Light Pink</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="39"/>
+        <source>Light Purple</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="40"/>
+        <source>Light Red</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="41"/>
+        <source>Light Teal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="42"/>
+        <source>Light Yellow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="82"/>
+        <source>Enable Stylesheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="95"/>
+        <source>Application Stylesheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="220"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Common/CommonUI/xToolsStyleSheetManager.cpp" line="220"/>
+        <source>Please enable stylesheet first!</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2792,7 +3285,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="97"/>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="355"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="357"/>
         <source>Open</source>
         <translation></translation>
     </message>
@@ -2925,83 +3418,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="86"/>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="641"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="88"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="643"/>
         <source>SerialPort</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="88"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="90"/>
         <source>UDP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="90"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="92"/>
         <source>UDP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="92"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="94"/>
         <source>TCP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="94"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="96"/>
         <source>TCP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="96"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="98"/>
         <source>WebSocket Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="98"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="100"/>
         <source>WebSocket Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="100"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="102"/>
         <source>BLE Central</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="353"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="355"/>
         <source>Close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="446"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="448"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="643"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="645"/>
         <source>UDP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="644"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="646"/>
         <source>TCP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="645"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="647"/>
         <source>WebSocket</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="659"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="661"/>
         <source>Error Occured</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="710"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="712"/>
         <source>Input Text Can Not Be Empty</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="711"/>
+        <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.cpp" line="713"/>
         <source>The input text is empty, please enter the input text</source>
         <translation></translation>
     </message>
@@ -3083,112 +3576,112 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xToolsToolFactory</name>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="125"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="132"/>
         <source>Analyzer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="126"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="133"/>
         <source>Serial Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="127"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="134"/>
         <source>Emitter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="128"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="135"/>
         <source>Masker</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="129"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="136"/>
         <source>Responser</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="130"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="137"/>
         <source>Storer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="131"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="138"/>
         <source>Prestore</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="132"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="139"/>
         <source>Velometer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="133"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="140"/>
         <source>UDP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="134"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="141"/>
         <source>UDP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="135"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="142"/>
         <source>TCP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="136"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="143"/>
         <source>TCP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="137"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="144"/>
         <source>Web Socket Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="138"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="145"/>
         <source>Web Socket Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="139"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="146"/>
         <source>BLE Central</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="140"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="147"/>
         <source>BLE Periheral</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="142"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="149"/>
         <source>Serial Port Transmitter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="143"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="150"/>
         <source>UDP Transmitter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="144"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="151"/>
         <source>TCP Transmitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="145"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="152"/>
         <source>Web Socket Transmitter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="146"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="153"/>
         <source>CRC Calculator</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="141"/>
+        <location filename="../../Source/Tools/Tools/xToolsToolFactory.cpp" line="148"/>
         <source>Statistitician</source>
         <translation></translation>
     </message>
@@ -3204,6 +3697,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../Source/Tools/ToolsUI/xToolsVelometerToolUi.ui" line="38"/>
         <source>Velometer:</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>xToolsWebSocketClientTool</name>
+    <message>
+        <location filename="../../Source/Tools/Tools/xToolsWebSocketClientTool.cpp" line="35"/>
+        <source>Disconected from server: </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
