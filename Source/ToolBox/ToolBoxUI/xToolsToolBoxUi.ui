@@ -50,10 +50,10 @@
          </sizepolicy>
         </property>
         <property name="features">
-         <set>QDockWidget::NoDockWidgetFeatures</set>
+         <set>QDockWidget::DockWidgetFeature::NoDockWidgetFeatures</set>
         </property>
         <property name="allowedAreas">
-         <set>Qt::NoDockWidgetArea</set>
+         <set>Qt::DockWidgetArea::NoDockWidgetArea</set>
         </property>
         <property name="windowTitle">
          <string>Communication control</string>
@@ -113,10 +113,10 @@
          </sizepolicy>
         </property>
         <property name="features">
-         <set>QDockWidget::NoDockWidgetFeatures</set>
+         <set>QDockWidget::DockWidgetFeature::NoDockWidgetFeatures</set>
         </property>
         <property name="allowedAreas">
-         <set>Qt::NoDockWidgetArea</set>
+         <set>Qt::DockWidgetArea::NoDockWidgetArea</set>
         </property>
         <property name="windowTitle">
          <string>Output control</string>
@@ -214,7 +214,7 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
+            <item row="2" column="1" colspan="2">
              <widget class="xToolsCheckBox" name="checkBoxConsoleMode">
               <property name="toolTip">
                <string>Console mode</string>
@@ -251,7 +251,7 @@
       <item>
        <spacer name="verticalSpacer">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -270,10 +270,10 @@
          </sizepolicy>
         </property>
         <property name="features">
-         <set>QDockWidget::NoDockWidgetFeatures</set>
+         <set>QDockWidget::DockWidgetFeature::NoDockWidgetFeatures</set>
         </property>
         <property name="allowedAreas">
-         <set>Qt::NoDockWidgetArea</set>
+         <set>Qt::DockWidgetArea::NoDockWidgetArea</set>
         </property>
         <property name="windowTitle">
          <string>Input control</string>
@@ -356,10 +356,10 @@
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="tabPosition">
-      <enum>QTabWidget::North</enum>
+      <enum>QTabWidget::TabPosition::North</enum>
      </property>
      <property name="tabShape">
-      <enum>QTabWidget::Rounded</enum>
+      <enum>QTabWidget::TabShape::Rounded</enum>
      </property>
      <property name="currentIndex">
       <number>0</number>
@@ -472,7 +472,7 @@
          <item>
           <spacer name="horizontalSpacer">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
