@@ -79,10 +79,10 @@ function(x_tools_set_target_properties target)
   set_target_properties(
     ${target}
     PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
-              ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
-              ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
-              TRUE WIN32_EXECUTABLE
-              TRUE)
+               ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
+               ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
+               TRUE WIN32_EXECUTABLE
+               TRUE)
 endfunction()
 
 function(x_tools_tar_target target)
@@ -106,7 +106,7 @@ function(x_tools_finalize_executable target)
 endfunction()
 
 function(x_tools_generate_translations target)
-  if(QT_VERSION_MAJOR LESS 6)
+  if(QT_VERSION VERSION_LESS "6.2.0")
     return()
   endif()
 
@@ -115,14 +115,7 @@ function(x_tools_generate_translations target)
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_zh_CN.ts)
   set(O_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations")
   if(NOT QT_VERSION VERSION_LESS "6.7.0")
-    qt_add_lupdate(
-      SOURCE_TARGETS
-      ${target}
-      TS_FILES
-      ${APP_TS_FILES}
-      LUPDATE_TARGET
-      ${target}_lupdate
-      NO_GLOBAL_TARGET)
+    qt_add_lupdate(SOURCE_TARGETS ${target} TS_FILES ${APP_TS_FILES} NO_GLOBAL_TARGET)
   else()
     qt_add_lupdate(${target} TS_FILES ${APP_TS_FILES})
   endif()
