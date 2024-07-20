@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>Resources/Translations/xToolsTools_en.qm</file>
-        <file>Resources/Translations/xToolsTools_zh_CN.qm</file>
-    </qresource>
-</RCC>
