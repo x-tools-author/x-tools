@@ -11,18 +11,18 @@ if(X_TOOLS_ENABLE_MODULE_STYLESHEET)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_STYLESHEET)
 endif()
 
-function(x_tools_copy_style_resources_for_target target)
+function(x_tools_add_stylesheet_resources target)
   add_custom_command(
     TARGET ${target}
     POST_BUILD
     COMMAND
       ${CMAKE_COMMAND} -E copy_directory_if_different
       "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../ThirdParty/${X_TOOLS_STYLES_DIR_NAME}/styles"
-      "$<TARGET_FILE_DIR:${target}>/3rd_styles" || ${CMAKE_COMMAND} -E true
+      "$<TARGET_FILE_DIR:${target}>/3rd_styles" "||" ${CMAKE_COMMAND} -E true
     COMMENT "Copy style resources for ${target}...")
 endfunction()
 
-function(x_tools_add_stylesheet_files target)
+function(x_tools_add_stylesheet_sources target)
   if(NOT X_TOOLS_ENABLE_MODULE_STYLESHEET)
     return()
   endif()
@@ -32,6 +32,16 @@ function(x_tools_add_stylesheet_files target)
   list(APPEND STYLESHEET_SOURCE ${SOURCE_PATH}/QtAdvancedStylesheet.cpp)
   target_sources(${target} PRIVATE ${STYLESHEET_SOURCE})
 endfunction()
+
+function(x_tools_setup_stylesheet target)
+  if(NOT X_TOOLS_ENABLE_MODULE_STYLESHEET)
+    return()
+  endif()
+
+  x_tools_add_stylesheet_resources(${target})
+  x_tools_add_stylesheet_sources(${target})
+endfunction()
+
 # --------------------------------------------------------------------------------------------------
 # hidapi: https://github.com/libusb/hidapi
 set(X_TOOLS_HID_DIR_NAME "hidapi-hidapi-0.14.0")

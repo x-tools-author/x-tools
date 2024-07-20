@@ -12,11 +12,6 @@
 
 int main(const int argc, char *argv[])
 {
-#ifndef X_TOOLS_BUILD_WITH_QMAKE
-    Q_INIT_RESOURCE(xToolsCommon);
-    Q_INIT_RESOURCE(xToolsTools);
-#endif
-
     QString version = "0.0.0";
 #if defined(X_TOOLS_GIT_TAG)
     QString tag = QString(X_TOOLS_GIT_TAG);

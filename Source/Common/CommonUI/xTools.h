@@ -48,9 +48,7 @@ static void xToolsInitApp(const QString &appName, bool forStore)
 
 static void xToolsInstallMessageHandler()
 {
-#ifdef X_TOOLS_ENABLE_MODULE_GLOG
     qInstallMessageHandler(qtLogToGoogleLog);
-#endif
 }
 
 static void xToolsTryToClearSettings()
