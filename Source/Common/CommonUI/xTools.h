@@ -109,7 +109,9 @@ static void xToolsDoSomethingBeforeAppCreated(char *argv[],
 {
     xToolsInitApp(appName, forStore);
     xToolsInitGoogleLogging(argv[0]);
+#ifndef QT_DEBUG
     xToolsInstallMessageHandler();
+#endif
 
     xToolsTryToClearSettings();
     xToolsInitHdpi();
