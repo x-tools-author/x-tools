@@ -55,8 +55,6 @@ private:
     void initMenuHelp();
 
     void initOptionMenuAppStyleMenu();
-    void initOptionMenuAppStyleMenuQt(QMenu* menu);
-    void initOptionMenuAppStyleMenuThirdParty(QMenu* menu);
     void initOptionMenuAppPaletteMenu();
     void initOptionMenuSettingsMenu();
     void initOptionMenuHdpiPolicy();

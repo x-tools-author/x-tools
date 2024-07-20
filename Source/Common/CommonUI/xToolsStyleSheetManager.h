@@ -19,35 +19,33 @@ class xToolsStyleSheetManager : public acss::QtAdvancedStylesheet
     Q_OBJECT
 private:
     explicit xToolsStyleSheetManager(QObject* parent = Q_NULLPTR);
-
-public:
-    ~xToolsStyleSheetManager();
     xToolsStyleSheetManager(const xToolsStyleSheetManager&) = delete;
     xToolsStyleSheetManager& operator=(const xToolsStyleSheetManager&) = delete;
 
-    static xToolsStyleSheetManager& instance();
+public:
+    ~xToolsStyleSheetManager();
 
-    QString themeName();
-    void setThemeName(const QString& themeName);
-    QMenu* darkThemeMenu() const;
-    QMenu* lightThemeMenu() const;
-    void updateApplicationStylesheet();
-
-signals:
-    void applicationStylesheetChanged();
+    static xToolsStyleSheetManager& singleton();
+    QMenu* themeMenu() const;
 
 private:
-    QStringList m_darkThemes;
-    QStringList m_lightThemes;
-    QMenu* m_darkThemeMenu;
-    QMenu* m_lightThemeMenu;
-    QActionGroup* m_darkThemeActionGroup;
-    QActionGroup* m_lightThemeActionGroup;
+    QMenu* m_themeMenu;
+    QActionGroup* m_themeActionGroup;
     QMap<QString, QString> m_nameFriendlyNameMap;
     QMap<QString, QString> m_primaryColorMap;
 
 private:
+    QString themeName();
+    void setThemeName(const QString& themeName);
+    void updateApplicationStylesheet();
+
     void loadThemes();
     void updateActions();
     void updateActionIcon(QAction* action, const QString& color);
+
+    bool enableStylesheet();
+    void setEnableStylesheet(bool enable);
+    void setupActions(const QStringList& themes, QMenu* menu, QActionGroup* group);
+
+    void setApplicationStylesheetEnabled(bool enable);
 };

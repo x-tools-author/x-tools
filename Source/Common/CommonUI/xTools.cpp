@@ -6,10 +6,12 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "xTools.h"
+
+#include <QMessageBox>
+#include <QProcess>
 
 #include <glog/logging.h>
-
-#include "xTools.h"
 
 void xToolsInitGoogleLogging(char *argv0)
 {
@@ -61,5 +63,18 @@ void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const Q
     default:
         google::LogMessage(file, line, google::GLOG_INFO).stream() << localMsg.data();
         break;
+    }
+}
+
+void try2rebootApp()
+{
+    int ret = QMessageBox::information(
+        nullptr,
+        QObject::tr("Neet to Reboot"),
+        QObject::tr("The operation need to reboot to effectived, reboot the applicaion now?"),
+        QMessageBox::Ok | QMessageBox::Cancel);
+    if (ret == QMessageBox::Ok) {
+        QProcess::startDetached(QApplication::applicationFilePath());
+        qApp->closeAllWindows();
     }
 }

@@ -141,7 +141,7 @@ int xToolsExec(int argc,
     xToolsSettings::instance()->setValue("startUpTime", dtStr);
 
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
-    auto &styleSheetManager = xToolsStyleSheetManager::instance();
+    auto &styleSheetManager = xToolsStyleSheetManager::singleton();
     const QString styleSheet = styleSheetManager.styleSheet();
     if (!styleSheet.isEmpty() && !styleSheetManager.currentTheme().isEmpty()) {
         app.setStyleSheet(styleSheet);
@@ -176,3 +176,5 @@ int xToolsExec(int argc,
     xToolsDoSomethingAfterAppExited();
     return ret;
 }
+
+void try2rebootApp();

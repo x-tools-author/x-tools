@@ -66,14 +66,6 @@ xToolsMainWindow::xToolsMainWindow(QWidget* parent)
     initMenuOption();
     initMenuLanguage();
     initMenuHelp();
-#if defined(X_TOOLS_ENABLE_MODULE_STYLESHEET)
-    const xToolsStyleSheetManager& tmp = xToolsStyleSheetManager::instance();
-    connect(&tmp, &xToolsStyleSheetManager::stylesheetChanged, this, [=]() {
-        if (!tryToReboot()) {
-            xToolsStyleSheetManager::instance().updateApplicationStylesheet();
-        }
-    });
-#endif
 
     xToolsMainWindow::updateWindowTitle();
 }
@@ -90,7 +82,7 @@ QIcon xToolsMainWindow::cookedIcon(const QString& svgFileName)
     renderer.render(&painter);
 
     // Change color
-    QColor color = xToolsStyleSheetManager::instance().themeColor("primaryColor");
+    QColor color = xToolsStyleSheetManager::singleton().themeColor("primaryColor");
     for (int y = 0; y < image.height(); y++) {
         for (int x = 0; x < image.width(); x++) {
             QColor ic = image.pixelColor(x, y);
@@ -204,15 +196,6 @@ void xToolsMainWindow::initOptionMenuAppStyleMenu()
 {
     auto* appStyleMenu = new QMenu(tr("Application Style"), this);
     m_optionMenu->addMenu(appStyleMenu);
-#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
-    initOptionMenuAppStyleMenuThirdParty(appStyleMenu);
-#else
-    initOptionMenuAppStyleMenuQt(appStyleMenu);
-#endif
-}
-
-void xToolsMainWindow::initOptionMenuAppStyleMenuQt(QMenu* menu)
-{
     QStringList keys = QStyleFactory::keys();
     const QString style = xToolsSettings::instance()->appStyle();
     for (QString& key : keys) {
@@ -231,21 +214,10 @@ void xToolsMainWindow::initOptionMenuAppStyleMenuQt(QMenu* menu)
         });
     }
 
-    menu->addActions(m_appStyleActionGroup->actions());
-}
+    appStyleMenu->addActions(m_appStyleActionGroup->actions());
 
-void xToolsMainWindow::initOptionMenuAppStyleMenuThirdParty(QMenu* menu)
-{
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
-#if 0
-    menu->addAction(tr("none"), this, [=]() {
-        xToolsStyleSheetManager::instance().setThemeName("");
-    });
-    menu->addSeparator();
-#endif
-    menu->addActions(xToolsStyleSheetManager::instance().darkThemeMenu()->actions());
-    menu->addSeparator();
-    menu->addActions(xToolsStyleSheetManager::instance().lightThemeMenu()->actions());
+    m_optionMenu->addMenu(xToolsStyleSheetManager::singleton().themeMenu());
 #endif
 }
 

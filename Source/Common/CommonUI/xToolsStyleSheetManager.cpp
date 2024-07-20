@@ -14,9 +14,11 @@
 #include <QMessageBox>
 #include <QPainter>
 
+#include "Common/CommonUI/xTools.h"
 #include "xToolsSettings.h"
 
 xToolsStyleSheetManager::xToolsStyleSheetManager(QObject* parent)
+    : acss::QtAdvancedStylesheet(parent)
 {
     m_nameFriendlyNameMap.insert("dark_amber", tr("Dark Amber"));
     m_nameFriendlyNameMap.insert("dark_blue", tr("Dark Blue"));
@@ -70,27 +72,44 @@ xToolsStyleSheetManager::xToolsStyleSheetManager(QObject* parent)
     setOutputDirPath(xToolsSettings::instance()->settingsPath() + "/output");
     setCurrentStyle("qt_material");
     setCurrentTheme(themeName());
-    updateStylesheet();
 
     qInfo() << "The styles directory is:" << stylesDirPath();
     qInfo() << "The output directory is:" << outputDirPath();
     qInfo() << "The current style is:" << currentStyle();
     qInfo() << "The current theme is:" << currentTheme();
 
-    m_darkThemeMenu = new QMenu(tr("Dark Theme"));
-    m_lightThemeMenu = new QMenu(tr("Light Theme"));
-    m_darkThemeActionGroup = new QActionGroup(this);
-    m_lightThemeActionGroup = new QActionGroup(this);
+    bool checked = enableStylesheet();
+    QAction* action = new QAction(tr("Enable Stylesheet"));
+    action->setCheckable(true);
+    action->setChecked(checked);
+    if (checked) {
+        updateApplicationStylesheet();
+    }
+
+    connect(action,
+            &QAction::triggered,
+            this,
+            &xToolsStyleSheetManager::setApplicationStylesheetEnabled);
+
+    m_themeActionGroup = new QActionGroup(this);
+    m_themeMenu = new QMenu(tr("Application Stylesheet"));
+    m_themeMenu->addAction(action);
+    m_themeMenu->addSeparator();
 
     loadThemes();
 }
 
 xToolsStyleSheetManager::~xToolsStyleSheetManager() {}
 
-xToolsStyleSheetManager& xToolsStyleSheetManager::instance()
+xToolsStyleSheetManager& xToolsStyleSheetManager::singleton()
 {
     static xToolsStyleSheetManager instance;
     return instance;
+}
+
+QMenu* xToolsStyleSheetManager::themeMenu() const
+{
+    return m_themeMenu;
 }
 
 QString xToolsStyleSheetManager::themeName()
@@ -107,28 +126,24 @@ void xToolsStyleSheetManager::setThemeName(const QString& themeName)
 {
     xToolsSettings::instance()->setValue("themeName", themeName);
     setCurrentTheme(themeName);
-    updateStylesheet();
-}
-
-QMenu* xToolsStyleSheetManager::darkThemeMenu() const
-{
-    return m_darkThemeMenu;
-}
-
-QMenu* xToolsStyleSheetManager::lightThemeMenu() const
-{
-    return m_lightThemeMenu;
+    if (enableStylesheet()) {
+        updateStylesheet();
+    }
 }
 
 void xToolsStyleSheetManager::updateApplicationStylesheet()
 {
-    qApp->setStyleSheet(styleSheet());
-    emit applicationStylesheetChanged();
+    if (qApp) {
+        updateStylesheet();
+        qApp->setStyleSheet(styleSheet());
+    }
 }
 
 void xToolsStyleSheetManager::loadThemes()
 {
     QStringList themeList = themes();
+    QStringList m_darkThemes;
+    QStringList m_lightThemes;
     for (QString& theme : themeList) {
         if (theme.contains("dark_")) {
             m_darkThemes.append(theme);
@@ -137,36 +152,13 @@ void xToolsStyleSheetManager::loadThemes()
         }
     }
 
-    auto setupActions = [this](const QStringList& themes, QMenu* menu, QActionGroup* group) {
-        for (const QString& theme : themes) {
-            QString txt = this->m_nameFriendlyNameMap.contains(theme)
-                              ? this->m_nameFriendlyNameMap.value(theme)
-                              : theme;
-            QString color = this->m_primaryColorMap.value(theme);
-            QAction* action = new QAction(txt, menu);
-            action->setData(theme);
-            action->setCheckable(true);
-            group->addAction(action);
-            menu->addAction(action);
-            if (theme == themeName()) {
-                action->setChecked(true);
-            }
-            updateActionIcon(action, color);
-            connect(action, &QAction::triggered, this, [this, theme] {
-                updateActions();
-                setThemeName(theme);
-            });
-        }
-    };
-
-    setupActions(m_darkThemes, m_darkThemeMenu, m_darkThemeActionGroup);
-    setupActions(m_lightThemes, m_lightThemeMenu, m_lightThemeActionGroup);
+    setupActions(m_darkThemes, m_themeMenu, m_themeActionGroup);
+    setupActions(m_lightThemes, m_themeMenu, m_themeActionGroup);
 }
 
 void xToolsStyleSheetManager::updateActions()
 {
-    auto tmp = m_darkThemeActionGroup->actions() + m_lightThemeActionGroup->actions();
-    for (QAction* action : tmp) {
+    for (QAction* action : m_themeActionGroup->actions()) {
         QString theme = action->data().toString();
         QString color = m_primaryColorMap.value(theme);
         updateActionIcon(action, color);
@@ -186,4 +178,62 @@ void xToolsStyleSheetManager::updateActionIcon(QAction* action, const QString& c
         painter.end();
     }
     action->setIcon(QIcon(pixmap));
+}
+
+bool xToolsStyleSheetManager::enableStylesheet()
+{
+    xToolsSettings* settings = xToolsSettings::instance();
+    return settings->value("enableStylesheet", false).toBool();
+}
+
+void xToolsStyleSheetManager::setEnableStylesheet(bool enable)
+{
+    xToolsSettings* settings = xToolsSettings::instance();
+    settings->setValue("enableStylesheet", enable);
+}
+
+void xToolsStyleSheetManager::setupActions(const QStringList& themes,
+                                           QMenu* menu,
+                                           QActionGroup* group)
+{
+    for (const QString& theme : themes) {
+        bool isValidName = m_nameFriendlyNameMap.contains(theme);
+        QString txt = isValidName ? this->m_nameFriendlyNameMap.value(theme) : theme;
+        QString color = this->m_primaryColorMap.value(theme);
+        QAction* action = new QAction(txt, menu);
+        action->setData(theme);
+        action->setCheckable(true);
+        group->addAction(action);
+        menu->addAction(action);
+        if (theme == themeName()) {
+            action->setChecked(true);
+        }
+
+        updateActionIcon(action, color);
+
+        connect(action, &QAction::triggered, this, [this, theme] {
+            updateActions();
+            setThemeName(theme);
+            if (enableStylesheet()) {
+                updateApplicationStylesheet();
+            } else {
+                QMessageBox::warning(nullptr, tr("Warning"), tr("Please enable stylesheet first!"));
+            }
+        });
+    }
+}
+
+void xToolsStyleSheetManager::setApplicationStylesheetEnabled(bool enable)
+{
+    setEnableStylesheet(enable);
+    for (auto action : m_themeActionGroup->actions()) {
+        if (action->isChecked() && enable) {
+            emit action->triggered();
+            break;
+        }
+    }
+
+    if (!enable) {
+        try2rebootApp();
+    }
 }
