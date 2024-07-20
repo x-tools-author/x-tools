@@ -3317,33 +3317,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="159"/>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="437"/>
         <source>Tx</source>
-        <translation>显示发送</translation>
+        <translation>发送</translation>
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="166"/>
         <source>MS</source>
-        <translation>显示毫秒</translation>
+        <translation>毫秒</translation>
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="173"/>
         <source>Wrap</source>
-        <translation>自动换行</translation>
+        <translation>换行</translation>
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="180"/>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="405"/>
         <source>Rx</source>
-        <translation>显示接收</translation>
+        <translation>接收</translation>
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="187"/>
         <source>Date</source>
-        <translation>显示日期</translation>
+        <translation>日期</translation>
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="194"/>
         <source>Time</source>
-        <translation>显示时间</translation>
+        <translation>时间</translation>
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="204"/>
@@ -3353,7 +3353,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="207"/>
         <source>From-To</source>
-        <translation>收发标志</translation>
+        <translation>标志</translation>
     </message>
     <message>
         <location filename="../../Source/ToolBox/ToolBoxUI/xToolsToolBoxUi.ui" line="220"/>
