@@ -225,7 +225,6 @@ void xToolsTableModelToolUi::edit(const QModelIndex &index)
     QMetaObject::invokeMethod(editor,
                               "setParameters",
                               Qt::DirectConnection,
-                              ret,
                               Q_ARG(QJsonObject, jsonObj));
     qInfo() << "the parameter of setParameters() is:" << jsonObj;
     Q_UNUSED(ret);
