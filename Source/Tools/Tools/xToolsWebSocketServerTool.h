@@ -20,7 +20,7 @@ public:
 protected:
     virtual bool initialize(QString &errStr) final;
     virtual void writeBytes(const QByteArray &bytes) override;
-    virtual void uninitialize() final;
+    virtual void deinitialize() final;
 
 private:
     void writeBytesInner(QWebSocket *client, const QByteArray &bytes);

@@ -105,7 +105,7 @@ void xToolsWebSocketClientTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void xToolsWebSocketClientTool::uninitialize()
+void xToolsWebSocketClientTool::deinitialize()
 {
     m_webSocket->close();
     m_webSocket->deleteLater();

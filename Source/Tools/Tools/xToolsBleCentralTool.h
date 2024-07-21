@@ -48,7 +48,7 @@ protected:
     bool initialize(QString &errStr) override;
     void writeBytes(const QByteArray &bytes) override;
     void readBytes();
-    void uninitialize() override;
+    void deinitialize() override;
 
 private:
     QLowEnergyController *m_bleCentral{nullptr};

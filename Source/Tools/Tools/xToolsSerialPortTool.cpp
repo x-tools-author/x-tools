@@ -99,7 +99,7 @@ bool xToolsSerialPortTool::initialize(QString &errStr)
 
     if (!m_serialPort->open(QSerialPort::ReadWrite)) {
         errStr = "open serial port failed:";
-        qWarning() << errStr << qPrintable(m_serialPort->errorString());
+        qWarning() << errStr << m_serialPort->errorString();
         m_serialPort->deleteLater();
         m_serialPort = Q_NULLPTR;
         return false;
@@ -126,7 +126,7 @@ void xToolsSerialPortTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void xToolsSerialPortTool::uninitialize()
+void xToolsSerialPortTool::deinitialize()
 {
     if (m_serialPort) {
         m_serialPort->close();

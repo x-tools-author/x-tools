@@ -110,3 +110,9 @@ xToolsBaseToolUi *xToolsToolUiFactory::createToolUi(int type)
         return nullptr;
     }
 }
+
+xToolsCommunicationToolUi *xToolsToolUiFactory::createCommunicationToolUi(int type)
+{
+    auto tool = createToolUi(type);
+    return qobject_cast<xToolsCommunicationToolUi *>(tool);
+}

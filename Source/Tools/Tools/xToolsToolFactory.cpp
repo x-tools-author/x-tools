@@ -121,7 +121,20 @@ xToolsBaseTool *xToolsToolFactory::createTool(int type)
     return tool;
 }
 
-QString xToolsToolFactory::toolName(int type)
+xToolsCommunicationTool *xToolsToolFactory::createCommunicationTool(int type)
+{
+    xToolsBaseTool *tool = createTool(type);
+    xToolsCommunicationTool *communicationTool = qobject_cast<xToolsCommunicationTool *>(tool);
+    if (!communicationTool) {
+        qWarning() << "The tool is not a communication tool: " << type;
+        tool->deleteLater();
+        return nullptr;
+    }
+
+    return communicationTool;
+}
+
+QString xToolsToolFactory::toolName(int type) const
 {
     static QMap<int, QString> map;
     if (map.isEmpty()) {
@@ -152,9 +165,27 @@ QString xToolsToolFactory::toolName(int type)
     return map.value(type, QString(""));
 }
 
-QString xToolsToolFactory::rawToolName(int type)
+QString xToolsToolFactory::rawToolName(int type) const
 {
     auto metaEnum = QMetaEnum::fromType<xToolsToolFactory::ToolsType>();
     auto rawName = QString(metaEnum.valueToKey(type));
     return rawName.isEmpty() ? QString::number(type) : rawName;
+}
+
+QList<int> xToolsToolFactory::supportedCommunicationTools() const
+{
+    static QList<int> types;
+    if (types.isEmpty()) {
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+        types << xToolsToolFactory::SerialPortTool;
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
+        types << xToolsToolFactory::BleCentralTool;
+#endif
+        types << xToolsToolFactory::UdpClientTool << xToolsToolFactory::UdpServerTool
+              << xToolsToolFactory::TcpClientTool << xToolsToolFactory::TcpServerTool
+              << xToolsToolFactory::WebSocketClientTool << xToolsToolFactory::WebSocketServerTool;
+    }
+
+    return types;
 }

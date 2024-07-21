@@ -12,6 +12,8 @@
 
 #include "xToolsBaseTool.h"
 
+class xToolsToolFactory;
+class xToolsCommunicationTool;
 class xToolsToolFactory : public QObject
 {
     Q_OBJECT
@@ -50,6 +52,9 @@ private:
 public:
     static xToolsToolFactory *instance();
     Q_INVOKABLE xToolsBaseTool *createTool(int type);
-    QString toolName(int type);
-    QString rawToolName(int type);
+    Q_INVOKABLE xToolsCommunicationTool *createCommunicationTool(int type);
+
+    QString toolName(int type) const;
+    QString rawToolName(int type) const;
+    QList<int> supportedCommunicationTools() const;
 };

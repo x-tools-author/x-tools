@@ -21,7 +21,7 @@ public:
 protected:
     virtual bool initialize(QString &errStr) override;
     virtual void writeBytes(const QByteArray &bytes) override;
-    virtual void uninitialize() final;
+    virtual void deinitialize() final;
 
 private:
     QWebSocket *m_webSocket{Q_NULLPTR};

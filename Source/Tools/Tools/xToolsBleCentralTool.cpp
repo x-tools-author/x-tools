@@ -214,7 +214,7 @@ void xToolsBleCentralTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void xToolsBleCentralTool::uninitialize()
+void xToolsBleCentralTool::deinitialize()
 {
     m_bleCentral->disconnectFromDevice();
     m_bleCentral->deleteLater();

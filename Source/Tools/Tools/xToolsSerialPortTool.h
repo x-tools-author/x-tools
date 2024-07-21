@@ -55,7 +55,7 @@ signals:
 protected:
     bool initialize(QString &errStr) override;
     void writeBytes(const QByteArray &bytes) override;
-    void uninitialize() override;
+    void deinitialize() override;
 
     void readBytes();
 

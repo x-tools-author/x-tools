@@ -23,9 +23,11 @@ void xToolsCommunicationTool::inputBytes(const QByteArray &bytes)
         return;
     }
 
-    m_inputBytesMutex.lock();
-    m_inputBytesList.append(bytes);
-    m_inputBytesMutex.unlock();
+    if (!isWorking()) {
+        return;
+    }
+
+    emit invokeWriteBytes(bytes);
 }
 
 void xToolsCommunicationTool::run()
@@ -37,22 +39,13 @@ void xToolsCommunicationTool::run()
         return;
     }
 
-    QTimer *txTimer = new QTimer();
-    txTimer->setInterval(5);
-    txTimer->setSingleShot(true);
-    connect(txTimer, &QTimer::timeout, txTimer, [=]() {
-        this->m_inputBytesMutex.lock();
-        if (!m_inputBytesList.isEmpty()) {
-            auto bytes = m_inputBytesList.takeFirst();
-            writeBytes(bytes);
-        }
-        this->m_inputBytesMutex.unlock();
-        txTimer->start();
+    QObject *obj = new QObject();
+    connect(this, &xToolsCommunicationTool::invokeWriteBytes, obj, [this](const QByteArray &bytes) {
+        this->writeBytes(bytes);
     });
-    txTimer->start();
 
     exec();
-    txTimer->deleteLater();
-    txTimer = nullptr;
-    uninitialize();
+
+    obj->deleteLater();
+    deinitialize();
 }

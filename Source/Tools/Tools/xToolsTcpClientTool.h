@@ -21,7 +21,7 @@ protected:
     virtual bool initialize(QString &errStr) final;
     virtual void writeBytes(const QByteArray &bytes) final;
     void readBytes();
-    virtual void uninitialize() final;
+    virtual void deinitialize() final;
 
 private:
     QTcpSocket *mTcpSocket{nullptr};

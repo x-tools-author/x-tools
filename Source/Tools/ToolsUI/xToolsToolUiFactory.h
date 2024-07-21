@@ -11,13 +11,17 @@
 #include <QObject>
 
 class xToolsBaseToolUi;
+class xToolsCommunicationToolUi;
 class xToolsToolUiFactory : public QObject
 {
     Q_OBJECT
 private:
     explicit xToolsToolUiFactory(QObject *parent = nullptr);
+    xToolsToolUiFactory(const xToolsToolUiFactory &) = delete;
+    xToolsToolUiFactory &operator=(const xToolsToolUiFactory &) = delete;
 
 public:
     static xToolsToolUiFactory *instance();
     xToolsBaseToolUi *createToolUi(int type);
+    xToolsCommunicationToolUi *createCommunicationToolUi(int type);
 };

@@ -61,7 +61,7 @@ void xToolsTcpClientTool::writeBytes(const QByteArray& bytes)
     }
 }
 
-void xToolsTcpClientTool::uninitialize()
+void xToolsTcpClientTool::deinitialize()
 {
     mTcpSocket->disconnectFromHost();
     mTcpSocket->close();

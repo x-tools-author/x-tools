@@ -10,8 +10,6 @@
 
 #include "xToolsBaseTool.h"
 
-#include <QMutex>
-
 class xToolsCommunicationTool : public xToolsBaseTool
 {
     Q_OBJECT
@@ -29,9 +27,8 @@ protected:
 
     virtual bool initialize(QString &errStr) = 0;
     virtual void writeBytes(const QByteArray &bytes) = 0;
-    virtual void uninitialize() = 0;
+    virtual void deinitialize() = 0;
 
 private:
-    QList<QByteArray> m_inputBytesList;
-    QMutex m_inputBytesMutex;
+    Q_SIGNAL void invokeWriteBytes(const QByteArray &bytes);
 };

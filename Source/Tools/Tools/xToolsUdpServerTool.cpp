@@ -62,7 +62,7 @@ void xToolsUdpServerTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void xToolsUdpServerTool::uninitialize()
+void xToolsUdpServerTool::deinitialize()
 {
     m_udpSocket->deleteLater();
     m_udpSocket = nullptr;

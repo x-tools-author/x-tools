@@ -85,7 +85,7 @@ void xToolsTcpServerTool::writeBytes(const QByteArray &bytes)
     }
 }
 
-void xToolsTcpServerTool::uninitialize()
+void xToolsTcpServerTool::deinitialize()
 {
     m_tcpServer->close();
     m_tcpServer->deleteLater();
