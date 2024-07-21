@@ -40,6 +40,9 @@
    </item>
    <item row="1" column="0">
     <widget class="QLineEdit" name="filter">
+     <property name="placeholderText">
+      <string>Filter text</string>
+     </property>
      <property name="clearButtonEnabled">
       <bool>true</bool>
      </property>

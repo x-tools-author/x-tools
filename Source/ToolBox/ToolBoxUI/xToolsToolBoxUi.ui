@@ -24,7 +24,7 @@
     <widget class="QWidget" name="widgetControl" native="true">
      <property name="minimumSize">
       <size>
-       <width>220</width>
+       <width>0</width>
        <height>0</height>
       </size>
      </property>
