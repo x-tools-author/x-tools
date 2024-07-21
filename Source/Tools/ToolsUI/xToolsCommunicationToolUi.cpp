@@ -11,8 +11,3 @@
 xToolsCommunicationToolUi::xToolsCommunicationToolUi(QWidget *parent)
     : xToolsBaseToolUi{parent}
 {}
-
-void xToolsCommunicationToolUi::onIsWorkingChanged(bool isWorking)
-{
-    setEnabled(!isWorking);
-}

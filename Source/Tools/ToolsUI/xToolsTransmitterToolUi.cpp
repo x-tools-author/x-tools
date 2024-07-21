@@ -18,6 +18,7 @@ xToolsTransmitterToolUi::xToolsTransmitterToolUi(QWidget *parent)
 
 void xToolsTransmitterToolUi::afterRowEdited(int row)
 {
+#if 0
     xToolsTransmitterTool *cookedTool = Q_NULLPTR;
     cookedTool = qobject_cast<xToolsTransmitterTool *>(m_tool);
     if (!cookedTool) {
@@ -31,4 +32,5 @@ void xToolsTransmitterToolUi::afterRowEdited(int row)
         tool->start();
         qInfo() << "parameters changed, restart the thread";
     }
+#endif
 }

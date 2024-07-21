@@ -15,6 +15,5 @@ class xToolsCommunicationToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit xToolsCommunicationToolUi(QWidget *parent = nullptr);
-    virtual void onIsWorkingChanged(bool isWorking) override;
+    explicit xToolsCommunicationToolUi(QWidget *parent = Q_NULLPTR);
 };

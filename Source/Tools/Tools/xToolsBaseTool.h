@@ -11,6 +11,7 @@
 #include <atomic>
 #include <QJsonObject>
 #include <QThread>
+#include <QVariantMap>
 
 class xToolsBaseTool : public QThread
 {
@@ -21,6 +22,9 @@ public:
     explicit xToolsBaseTool(QObject *parent = Q_NULLPTR);
     virtual ~xToolsBaseTool();
     virtual void inputBytes(const QByteArray &bytes) = 0;
+
+    virtual QVariantMap save() const;
+    virtual void load(const QVariantMap &data);
 
 signals:
     void outputBytes(const QByteArray &bytes);

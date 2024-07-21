@@ -34,6 +34,7 @@
 #include "xToolsToolBoxUiInputMenu.h"
 #include "xToolsToolBoxUiOutputMenu.h"
 #include "xToolsToolFactory.h"
+#include "xToolsToolUiFactory.h"
 #include "xToolsUdpTransmitterToolUi.h"
 #include "xToolsWebSocketTransmitterToolUi.h"
 
@@ -50,6 +51,7 @@ xToolsToolBoxUi::xToolsToolBoxUi(QWidget* parent)
     , ui(new Ui::xToolsToolBoxUi)
 {
     ui->setupUi(this);
+
     m_toolBox = new xToolsToolBox(this);
 
     m_cycleSendingTimer = new QTimer(this);
@@ -60,6 +62,22 @@ xToolsToolBoxUi::xToolsToolBoxUi(QWidget* parent)
 
         try2send();
     });
+
+    QList<int> tools = supportedCommunicationTools();
+    connect(ui->comboBoxCommunicationTypes,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this,
+            &xToolsToolBoxUi::onCommunicationTypeChanged);
+
+    for (int tool : tools) {
+#if 0
+        ui->comboBoxTypes->addItem(communicationToolIcon(tool), communicationToolName(tool), tool);
+#else
+        ui->comboBoxCommunicationTypes->addItem(communicationToolName(tool), tool);
+#endif
+    }
+
+    init();
 }
 
 xToolsToolBoxUi::~xToolsToolBoxUi()
@@ -69,17 +87,7 @@ xToolsToolBoxUi::~xToolsToolBoxUi()
 
 QList<int> xToolsToolBoxUi::supportedCommunicationTools()
 {
-    QList<int> list;
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
-    list << xToolsToolFactory::SerialPortTool;
-#endif
-#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
-    list << xToolsToolFactory::BleCentralTool;
-#endif
-    list << xToolsToolFactory::UdpClientTool << xToolsToolFactory::UdpServerTool
-         << xToolsToolFactory::TcpClientTool << xToolsToolFactory::TcpServerTool
-         << xToolsToolFactory::WebSocketClientTool << xToolsToolFactory::WebSocketServerTool;
-    return list;
+    return xToolsToolFactory::instance()->supportedCommunicationTools();
 }
 
 QString xToolsToolBoxUi::communicationToolName(int type)
@@ -128,63 +136,6 @@ QIcon xToolsToolBoxUi::communicationToolIcon(int type)
 
     QIcon icon(fileName);
     return icon;
-}
-
-void xToolsToolBoxUi::initialize(int type)
-{
-    if (m_communication) {
-        m_communication->deleteLater();
-        m_communication = nullptr;
-    }
-
-    m_toolBox->initialize(type);
-    m_communicationType = type;
-
-    QString toolName = communicationToolName(type);
-    QIcon icon = communicationToolIcon(type);
-    setWindowTitle(toolName);
-    setWindowIcon(icon);
-
-    m_communication = m_toolBox->getCommunicationTool();
-    if (!m_communication) {
-        qWarning() << "initializing failed, "
-                      "tool box is invaliad!";
-        return;
-    }
-
-    init();
-}
-
-xToolsCommunicationToolUi* xToolsToolBoxUi::communicationToolUi(int type)
-{
-    xToolsCommunicationToolUi* w = nullptr;
-    if (type == xToolsToolFactory::UnknownTool) {
-        return nullptr;
-    } else if (type == xToolsToolFactory::SerialPortTool) {
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
-        w = new xToolsSerialPortToolUi();
-#endif
-    } else if (type == xToolsToolFactory::UdpClientTool) {
-        w = new xToolsSocketClientToolUi();
-    } else if (type == xToolsToolFactory::UdpServerTool) {
-        w = new xToolsSocketServerToolUi();
-    } else if (type == xToolsToolFactory::TcpClientTool) {
-        w = new xToolsSocketClientToolUi();
-    } else if (type == xToolsToolFactory::TcpServerTool) {
-        w = new xToolsSocketServerToolUi();
-    } else if (type == xToolsToolFactory::WebSocketClientTool) {
-        w = new xToolsSocketClientToolUi();
-    } else if (type == xToolsToolFactory::WebSocketServerTool) {
-        w = new xToolsSocketServerToolUi();
-    } else if (type == xToolsToolFactory::BleCentralTool) {
-#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
-        w = new xToolsBleCentralToolUi();
-#endif
-    } else {
-        qWarning() << "unknow type of communication tool ui!";
-    }
-
-    return w;
 }
 
 void xToolsToolBoxUi::try2send()
@@ -389,6 +340,19 @@ void xToolsToolBoxUi::onInputTextChanged()
     ui->labelAlgorithm->setText(m_inputMenu->parameters().algorithmName);
 }
 
+void xToolsToolBoxUi::onCommunicationTypeChanged()
+{
+    int type = ui->comboBoxCommunicationTypes->currentData().toInt();
+    QString toolName = communicationToolName(type);
+    QIcon icon = communicationToolIcon(type);
+    setWindowTitle(toolName);
+    setWindowIcon(icon);
+
+    m_toolBox->setupCommunicationTool(type);
+    m_communication = m_toolBox->getCommunicationTool();
+    initUiCommunication();
+}
+
 void xToolsToolBoxUi::init()
 {
     m_settingsKey.tabIndex = settingsGroup() + "/tabIndex";
@@ -420,8 +384,16 @@ void xToolsToolBoxUi::initUi()
 
 void xToolsToolBoxUi::initUiCommunication()
 {
+    if (m_communicationUi) {
+        m_communicationUi->hide();
+        m_communicationUi->setParent(Q_NULLPTR);
+        m_communicationUi->deleteLater();
+        m_communicationUi = Q_NULLPTR;
+    }
+
     // Setup communication tool.
-    m_communicationUi = communicationToolUi(m_communicationType);
+    int type = ui->comboBoxCommunicationTypes->currentData().toInt();
+    m_communicationUi = xToolsToolUiFactory::instance()->createCommunicationToolUi(type);
     if (!m_communicationUi) {
         qWarning() << "mCommunicationToolUi is nullptr";
         return;
@@ -499,8 +471,10 @@ void xToolsToolBoxUi::initSettings()
 
 void xToolsToolBoxUi::initSettingsCommunication()
 {
+#if 0
     const QString key = settingsGroup() + "/communication";
-    m_communicationUi->initialize(m_communication, key);
+    m_communicationUi->setupTool(m_communication, key);
+#endif
 }
 
 void xToolsToolBoxUi::initSettingsInput()
@@ -587,7 +561,7 @@ void xToolsToolBoxUi::initTools()
     m_communicationMenu = new xToolsToolBoxUiCommunicationMenu(this);
     m_communicationMenu->initialize(m_toolBox, settingsGroup());
     ui->pushButtonCommunicationSettings->setMenu(m_communicationMenu);
-
+#if 0
     auto rxVelometer = m_toolBox->getRxVelometerTool();
     auto txVelometer = m_toolBox->getTxVelometerTool();
     auto rxS = m_toolBox->getRxStatisticianTool();
@@ -596,38 +570,38 @@ void xToolsToolBoxUi::initTools()
     const QString txVelometerGroup = settingsGroup() + "/txVelometer";
     const QString rxSGroup = settingsGroup() + "/rxStatistician";
     const QString txSGroup = settingsGroup() + "/txStatistician";
-    ui->widgetRxVelometer->initialize(rxVelometer, rxVelometerGroup);
-    ui->widgetTxVelometer->initialize(txVelometer, txVelometerGroup);
-    ui->widgetRxStatistician->initialize(rxS, rxSGroup);
-    ui->widgetTxStatistician->initialize(txS, txSGroup);
+    ui->widgetRxVelometer->setupTool(rxVelometer, rxVelometerGroup);
+    ui->widgetTxVelometer->setupTool(txVelometer, txVelometerGroup);
+    ui->widgetRxStatistician->setupTool(rxS, rxSGroup);
+    ui->widgetTxStatistician->setupTool(txS, txSGroup);
 
     m_emitterUi = new xToolsEmitterToolUi();
     ui->tabEmiter->setLayout(new QVBoxLayout());
     ui->tabEmiter->layout()->addWidget(m_emitterUi);
-    m_emitterUi->initialize(m_toolBox->getEmitterTool(), settingsGroup() + "/emitter");
+    m_emitterUi->setupTool(m_toolBox->getEmitterTool(), settingsGroup() + "/emitter");
 
     m_responserUi = new xToolsResponserToolUi();
     ui->tabResponser->setLayout(new QVBoxLayout());
     ui->tabResponser->layout()->addWidget(m_responserUi);
-    m_responserUi->initialize(m_toolBox->getResponserTool(), settingsGroup() + "/responser");
+    m_responserUi->setupTool(m_toolBox->getResponserTool(), settingsGroup() + "/responser");
 
     m_prestorerUi = new xToolsPrestorerToolUi();
     ui->tabPrestorer->setLayout(new QVBoxLayout());
     ui->tabPrestorer->layout()->addWidget(m_prestorerUi);
-    m_prestorerUi->initialize(m_toolBox->getPrestorerTool(), settingsGroup() + "/prestorer");
+    m_prestorerUi->setupTool(m_toolBox->getPrestorerTool(), settingsGroup() + "/prestorer");
 
     m_tcpTransmitterUi = new xToolsTcpTransmitterToolUi(this);
-    m_tcpTransmitterUi->initialize(m_toolBox->getTcpTransmitterTool(),
+    m_tcpTransmitterUi->setupTool(m_toolBox->getTcpTransmitterTool(),
                                    settingsGroup() + "/tcpTransmitter");
     m_udpTransmitterUi = new xToolsUdpTransmitterToolUi(this);
-    m_udpTransmitterUi->initialize(m_toolBox->getUdpTransmitterTool(),
+    m_udpTransmitterUi->setupTool(m_toolBox->getUdpTransmitterTool(),
                                    settingsGroup() + "/udpTransmitter");
     m_webSocketTransmitterUi = new xToolsWebSocketTransmitterToolUi(this);
-    m_webSocketTransmitterUi->initialize(m_toolBox->getWebSocketTransmitterTool(),
+    m_webSocketTransmitterUi->setupTool(m_toolBox->getWebSocketTransmitterTool(),
                                          settingsGroup() + "/webSocketTransmitter");
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     m_serialPortTransmitterUi = new xToolsSerialPortTransmitterToolUi(this);
-    m_serialPortTransmitterUi->initialize(m_toolBox->getSerialPortTransmitterTool(),
+    m_serialPortTransmitterUi->setupTool(m_toolBox->getSerialPortTransmitterTool(),
                                           settingsGroup() + "/serialPortTransmitter");
 #endif
 
@@ -675,6 +649,7 @@ void xToolsToolBoxUi::initTools()
     ui->toolButtonPrestore->setMenu(m_prestorerUi->menu());
     ui->toolButtonPrestore->setPopupMode(QToolButton::InstantPopup);
     ui->toolButtonPrestore->setToolTip("The preset items");
+#endif
 }
 
 void xToolsToolBoxUi::onTabWidgetCurrentChanged(int index)

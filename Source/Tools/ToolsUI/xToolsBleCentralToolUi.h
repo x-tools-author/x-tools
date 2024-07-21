@@ -20,12 +20,13 @@ class xToolsBleCentralToolUi : public xToolsCommunicationToolUi
 public:
     explicit xToolsBleCentralToolUi(QWidget *parent = nullptr);
     ~xToolsBleCentralToolUi();
-
+#if 0
 protected:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool,
                                          const QString &settingsGroup) override;
 
     virtual void onIsWorkingChanged(bool isWorking) final;
+#endif
 
 private:
     Ui::xToolsBleCentralToolUi *ui{nullptr};

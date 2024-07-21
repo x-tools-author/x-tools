@@ -75,7 +75,7 @@ xToolsBleCentralToolUi::~xToolsBleCentralToolUi()
 {
     delete ui;
 }
-
+#if 0
 void xToolsBleCentralToolUi::onBaseToolUiInitialized(xToolsBaseTool* tool,
                                                      const QString& settingsGroup)
 {
@@ -104,7 +104,7 @@ void xToolsBleCentralToolUi::onIsWorkingChanged(bool isWorking)
         ui->progressBar->hide();
     }
 }
-
+#endif
 void xToolsBleCentralToolUi::initSettingsMenu(const QString& settingsGroup)
 {
     QWidget* w = new QWidget(this);

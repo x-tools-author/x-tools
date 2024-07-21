@@ -53,7 +53,7 @@ public:
     ~xToolsToolBox();
 
     /// You must call the interface before useing.
-    Q_INVOKABLE void initialize(int type);
+    Q_INVOKABLE void setupCommunicationTool(int type);
 
     Q_INVOKABLE void open();
     Q_INVOKABLE void close();

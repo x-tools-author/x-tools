@@ -20,10 +20,11 @@ class xToolsCrcCalculatorToolUi : public xToolsBaseToolUi
 public:
     xToolsCrcCalculatorToolUi(QWidget *parent = nullptr);
     ~xToolsCrcCalculatorToolUi();
-
+#if 0
 protected:
     void onIsWorkingChanged(bool isWorking) override;
     void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) override;
+#endif
 
 private:
     Ui::xToolsCrcCalculatorToolUi *ui;

@@ -34,5 +34,5 @@ void xToolsToolBoxUiCommunicationMenu::initialize(xToolsToolBox* toolBox, const 
     auto storer = toolBox->getStorerTool();
     auto storerGroup = settingsGroup + "/storer";
 
-    ui->widgetStorer->initialize(storer, storerGroup);
+    ui->widgetStorer->setupTool(storer);
 }

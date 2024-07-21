@@ -70,8 +70,11 @@ MainWindow::MainWindow(QWidget* parent)
     }
 #endif
 
+    setCentralWidget(new xToolsToolBoxUi());
+#if 0
     auto* stackedWidget = new QStackedWidget();
     setCentralWidget(stackedWidget);
+#endif
 
 #if 0
 #ifdef Q_OS_ANDROID
@@ -86,8 +89,8 @@ MainWindow::MainWindow(QWidget* parent)
     setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
 
     initMenuBar();
-    initNav();
 #if 0
+    initNav();
     initStatusBar();
 #endif
 }
@@ -121,6 +124,7 @@ void MainWindow::initFileMenu()
 {
     // Tool box
     auto* windowMenu = new QMenu(tr("New Window"), this);
+#if 0
     m_fileMenu->addMenu(windowMenu);
     QList<int> toolTypeList = xToolsToolBoxUi::supportedCommunicationTools();
     for (auto& toolType : toolTypeList) {
@@ -136,6 +140,7 @@ void MainWindow::initFileMenu()
             w->show();
         });
     }
+#endif
 
     // Other tools
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
@@ -306,7 +311,6 @@ void MainWindow::initNav()
     for (int i = 0; i < types.count(); i++) {
         int type = types.at(i);
         auto* toolBoxUi = new xToolsToolBoxUi(this);
-        toolBoxUi->initialize(type);
 
         auto icon = xToolsApplication::cookedIcon(toolBoxUi->windowIcon());
         initNav({&btGroup, icon, toolBoxUi->windowTitle(), toolBoxUi, tb});

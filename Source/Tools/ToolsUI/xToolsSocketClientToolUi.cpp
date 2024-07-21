@@ -55,7 +55,7 @@ xToolsSocketClientToolUi::~xToolsSocketClientToolUi()
 {
     delete ui;
 }
-
+#if 0
 void xToolsSocketClientToolUi::onIsWorkingChanged(bool isWorking)
 {
     ui->comboBoxClientAddress->setEnabled(!isWorking);
@@ -105,6 +105,7 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
     m_tool->setServerIp(ui->comboBoxServerAddress->currentText().trimmed());
     m_tool->setServerPort(ui->spinBoxServerPort->value());
 }
+#endif
 
 void xToolsSocketClientToolUi::onComboBoxClientAddressActivated()
 {

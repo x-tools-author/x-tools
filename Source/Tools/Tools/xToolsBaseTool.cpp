@@ -38,6 +38,24 @@ xToolsBaseTool::~xToolsBaseTool()
     }
 }
 
+QVariantMap xToolsBaseTool::save() const
+{
+    QVariantMap data;
+    data["isEnable"] = m_enable.load();
+    return data;
+}
+
+void xToolsBaseTool::load(const QVariantMap &data)
+{
+    if (data.isEmpty()) {
+        return;
+    }
+
+    bool isEnable = data["isEnable"].toBool();
+    m_enable.store(isEnable);
+    emit isEnableChanged();
+}
+
 bool xToolsBaseTool::isWorking()
 {
     return m_isWorking;

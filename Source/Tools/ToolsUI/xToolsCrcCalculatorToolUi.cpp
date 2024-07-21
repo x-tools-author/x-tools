@@ -20,6 +20,7 @@ xToolsCrcCalculatorToolUi::xToolsCrcCalculatorToolUi(QWidget *parent)
 
 xToolsCrcCalculatorToolUi::~xToolsCrcCalculatorToolUi() {}
 
+#if 0
 void xToolsCrcCalculatorToolUi::onIsWorkingChanged(bool isWorking)
 {
     setEnabled(isWorking);
@@ -54,3 +55,4 @@ void xToolsCrcCalculatorToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, co
             crcTool,
             &xToolsCrcCalculatorTool::setBigEndian);
 }
+#endif

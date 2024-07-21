@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QVariant>
 #include <QWidget>
 
 class xToolsBaseTool;
@@ -15,14 +16,9 @@ class xToolsBaseToolUi : public QWidget
 {
     Q_OBJECT
 public:
-    explicit xToolsBaseToolUi(QWidget *parent = nullptr);
+    explicit xToolsBaseToolUi(QWidget *parent = Q_NULLPTR);
 
-    void initialize(xToolsBaseTool *tool, const QString &settingsGroup);
-
-protected:
-    virtual void onIsWorkingChanged(bool isWorking);
-    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup);
-
-protected:
-    xToolsBaseTool *m_tool{nullptr};
+    virtual void setupTool(xToolsBaseTool *tool);
+    virtual QVariantMap save() const;
+    virtual void load(const QVariantMap &data);
 };

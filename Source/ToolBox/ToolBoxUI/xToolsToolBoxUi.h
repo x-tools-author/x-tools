@@ -43,8 +43,6 @@ public:
     static QString communicationToolName(int type);
     static QIcon communicationToolIcon(int type);
 
-    void initialize(int type);
-
 private:
     xToolsToolBox *m_toolBox{nullptr};
     xToolsCommunicationTool *m_communication{nullptr};
@@ -70,7 +68,6 @@ private:
     } m_settingsKey;
 
 private:
-    xToolsCommunicationToolUi *communicationToolUi(int type);
     void try2send();
     QString dateTimeFormat();
     void output2ui(const QByteArray &bytes, const QString &flag, bool isRx);
@@ -83,6 +80,7 @@ private slots:
     void onBytesWritten(const QByteArray &bytes, const QString &from);
     void onBytesRead(const QByteArray &bytes, const QString &to);
     void onInputTextChanged();
+    void onCommunicationTypeChanged();
 
 private:
     void init();

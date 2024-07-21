@@ -71,7 +71,7 @@ xToolsToolBox::~xToolsToolBox()
     }
 }
 
-void xToolsToolBox::initialize(int type)
+void xToolsToolBox::setupCommunicationTool(int type)
 {
     if (m_comunicator) {
         m_comunicator->exit();

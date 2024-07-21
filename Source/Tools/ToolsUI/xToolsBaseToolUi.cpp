@@ -15,28 +15,21 @@ xToolsBaseToolUi::xToolsBaseToolUi(QWidget *parent)
     : QWidget{parent}
 {}
 
-void xToolsBaseToolUi::initialize(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsBaseToolUi::setupTool(xToolsBaseTool *tool)
 {
-    m_tool = tool;
     if (!tool) {
-        qWarning() << "The value of tool is nullptr!";
         return;
     }
 
-    connect(tool, &xToolsBaseTool::isWorkingChanged, this, [=]() {
-        onIsWorkingChanged(tool->isWorking());
-    });
-
-    onBaseToolUiInitialized(tool, settingsGroup);
+    connect(tool, &xToolsBaseTool::isWorkingChanged, this, [this]() { setEnabled(false); });
 }
 
-void xToolsBaseToolUi::onIsWorkingChanged(bool isWorking)
+QVariantMap xToolsBaseToolUi::save() const
 {
-    Q_UNUSED(isWorking)
+    return QVariantMap();
 }
 
-void xToolsBaseToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void xToolsBaseToolUi::load(const QVariantMap &data)
 {
-    Q_UNUSED(tool)
-    Q_UNUSED(settingsGroup)
+    Q_UNUSED(data);
 }

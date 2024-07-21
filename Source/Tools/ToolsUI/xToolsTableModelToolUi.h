@@ -33,7 +33,7 @@ public:
     void setColumnVisible(int column, bool visible);
 
 protected:
-    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup);
     virtual QList<int> defaultHideColumns();
     virtual void afterRowEdited(int row);
     virtual QDialog *itemEditor() = 0;
