@@ -27,18 +27,13 @@ signals:
     void errorOccurred(const QString &errorString);
 
 public:
-    bool isWorking() { return m_isWorking; }
-    bool isEnable() { return m_enable; }
-    void setIsEnable(bool enable)
-    {
-        m_enable = enable;
-        emit isEnableChanged();
-    }
+    bool isWorking();
+    bool isEnable();
+    void setIsEnable(bool enable);
 
 protected:
     std::atomic_bool m_isWorking{false};
     std::atomic_bool m_enable{true};
-    int m_type;
 
 signals:
     void isWorkingChanged();

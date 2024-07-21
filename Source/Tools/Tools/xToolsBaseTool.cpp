@@ -37,3 +37,19 @@ xToolsBaseTool::~xToolsBaseTool()
         wait();
     }
 }
+
+bool xToolsBaseTool::isWorking()
+{
+    return m_isWorking;
+}
+
+bool xToolsBaseTool::isEnable()
+{
+    return m_enable;
+}
+
+void xToolsBaseTool::setIsEnable(bool enable)
+{
+    m_enable = enable;
+    emit isEnableChanged();
+}
