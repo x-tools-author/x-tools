@@ -13,9 +13,9 @@
 #include <QLowEnergyController>
 #include <QLowEnergyService>
 
-#include "Device.h"
+#include "Communication.h"
 
-class BleCentral : public Device
+class BleCentral : public Communication
 {
     Q_OBJECT
 public:
@@ -24,7 +24,7 @@ public:
 
     QObject *initDevice() override;
     void deinitDevice() override;
-    void writeBytesToDevice(const QByteArray &bytes) override;
+    void writeBytes(const QByteArray &bytes) override;
 
     QList<QBluetoothUuid> services() const;
     QString serviceName(const QBluetoothUuid &uuid) const;

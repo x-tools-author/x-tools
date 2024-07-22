@@ -9,7 +9,7 @@
 #include "BleCentral.h"
 
 BleCentral::BleCentral(QObject *parent)
-    : Device(parent)
+    : Communication(parent)
 {}
 
 BleCentral::~BleCentral() {}
@@ -68,7 +68,7 @@ void BleCentral::deinitDevice()
     m_controller = nullptr;
 }
 
-void BleCentral::writeBytesToDevice(const QByteArray &bytes)
+void BleCentral::writeBytes(const QByteArray &bytes)
 {
     m_parametersMutex.lock();
     auto service = m_parameters["service"].value<QLowEnergyService *>();

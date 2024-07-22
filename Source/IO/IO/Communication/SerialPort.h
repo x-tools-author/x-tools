@@ -10,9 +10,9 @@
 
 #include <QSerialPort>
 
-#include "Device.h"
+#include "Communication.h"
 
-class SerialPort : public Device
+class SerialPort : public Communication
 {
     Q_OBJECT
 public:
@@ -21,7 +21,7 @@ public:
 
     QObject *initDevice() override;
     void deinitDevice() override;
-    void writeBytesToDevice(const QByteArray &bytes) override;
+    void writeBytes(const QByteArray &bytes) override;
 
 private:
     static constexpr int s_recommendedDelay = 2;

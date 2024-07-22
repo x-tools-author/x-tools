@@ -9,7 +9,7 @@
 #include "Socket.h"
 
 Socket::Socket(QObject *parent)
-    : Device(parent)
+    : Communication(parent)
 {
     static bool registered = false;
     if (!registered) {
@@ -22,7 +22,7 @@ Socket::~Socket() {}
 
 void Socket::setParameters(const QVariantMap &parameters)
 {
-    Device::setParameters(parameters);
+    Communication::setParameters(parameters);
 
     m_clientPort = parameters.value("clientPort").toUInt();
     m_clientAddress = parameters.value("clientAddress").toString();

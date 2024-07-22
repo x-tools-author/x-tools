@@ -21,7 +21,7 @@ public:
 
     QObject *initDevice() override;
     void deinitDevice() override;
-    void writeBytesToDevice(const QByteArray &bytes) override;
+    void writeBytes(const QByteArray &bytes) override;
 
 private:
     QWebSocket *m_webSocket{nullptr};

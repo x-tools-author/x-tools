@@ -14,21 +14,22 @@
 
 #include "../AbstractIO.h"
 
-class Device : public AbstractIO
+class Communication : public AbstractIO
 {
     Q_OBJECT
 public:
-    explicit Device(QObject *parent = nullptr);
-    ~Device();
+    explicit Communication(QObject *parent = nullptr);
+    ~Communication();
 
     void openDevice();
     void closeDevice();
-    void writeBytes(const QByteArray &bytes);
+
+    void inputBytes(const QByteArray &bytes) override;
 
     virtual void setParameters(const QVariantMap &parameters);
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};
-    virtual void writeBytesToDevice(const QByteArray &bytes) {};
+    virtual void writeBytes(const QByteArray &bytes) {};
 
 signals:
     void opened();

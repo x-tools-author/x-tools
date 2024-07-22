@@ -29,7 +29,7 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-    void setupDevice(Device *device) override;
+    void setupDevice(Communication *device) override;
     void setUiEnabled(bool enabled) override;
 
 private:

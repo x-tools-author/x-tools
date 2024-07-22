@@ -21,7 +21,7 @@ class AbstractIO : public QThread
 public:
     explicit AbstractIO(QObject *parent = Q_NULLPTR);
     virtual ~AbstractIO();
-    virtual void inputBytes(const QByteArray &bytes) {};
+    virtual void inputBytes(const QByteArray &bytes) = 0;
 
     virtual QVariantMap save() const;
     virtual void load(const QVariantMap &data);

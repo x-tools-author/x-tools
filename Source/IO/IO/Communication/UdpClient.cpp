@@ -43,7 +43,7 @@ void UdpClient::deinitDevice()
     m_udpSocket = nullptr;
 }
 
-void UdpClient::writeBytesToDevice(const QByteArray &bytes)
+void UdpClient::writeBytes(const QByteArray &bytes)
 {
     qint64 ret = m_udpSocket->writeDatagram(bytes, QHostAddress(m_serverAddress), m_serverPort);
     if (ret == bytes.length()) {

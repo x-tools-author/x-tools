@@ -58,7 +58,7 @@ void TcpClient::deinitDevice()
     m_tcpSocket = nullptr;
 }
 
-void TcpClient::writeBytesToDevice(const QByteArray &bytes)
+void TcpClient::writeBytes(const QByteArray &bytes)
 {
     qint64 ret = m_tcpSocket->write(bytes);
     if (ret == bytes.length()) {

@@ -29,7 +29,7 @@ DeviceFactory &DeviceFactory::singleton()
     return instance;
 }
 
-Device *DeviceFactory::createDevice(int type)
+Communication *DeviceFactory::createDevice(int type)
 {
     switch (type) {
     case static_cast<int>(xIO::DeviceType::SerialPort):

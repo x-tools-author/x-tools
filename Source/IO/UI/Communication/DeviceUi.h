@@ -13,7 +13,7 @@
 
 #include "../../xIO.h"
 
-class Device;
+class Communication;
 class DeviceUi : public QWidget
 {
     Q_OBJECT
@@ -24,7 +24,7 @@ public:
 
     virtual QVariantMap save() const = 0;
     virtual void load(const QVariantMap &parameters) = 0;
-    virtual void setupDevice(Device *device) { Q_UNUSED(device); };
+    virtual void setupDevice(Communication *device) { Q_UNUSED(device); };
     virtual void setUiEnabled(bool enabled) { setEnabled(enabled); }
 
 private:

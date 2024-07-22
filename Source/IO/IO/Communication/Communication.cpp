@@ -6,20 +6,20 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "Device.h"
+#include "Communication.h"
 
-Device::Device(QObject *parent)
+Communication::Communication(QObject *parent)
     : AbstractIO(parent)
 {}
 
-Device::~Device()
+Communication::~Communication()
 {
     if (isRunning()) {
         closeDevice();
     }
 }
 
-void Device::openDevice()
+void Communication::openDevice()
 {
     if (isRunning()) {
         closeDevice();
@@ -28,25 +28,25 @@ void Device::openDevice()
     start();
 }
 
-void Device::closeDevice()
+void Communication::closeDevice()
 {
     exit();
     wait();
 }
 
-void Device::writeBytes(const QByteArray &bytes)
+void Communication::inputBytes(const QByteArray &bytes)
 {
     emit invokeWriteBytes(bytes);
 }
 
-void Device::setParameters(const QVariantMap &parameters)
+void Communication::setParameters(const QVariantMap &parameters)
 {
     m_parametersMutex.lock();
     m_parameters = parameters;
     m_parametersMutex.unlock();
 }
 
-void Device::run()
+void Communication::run()
 {
     m_deviceObj = initDevice();
     if (!m_deviceObj) {
@@ -54,8 +54,8 @@ void Device::run()
         return;
     }
 
-    connect(this, &Device::invokeWriteBytes, m_deviceObj, [this](const QByteArray &bytes) {
-        writeBytesToDevice(bytes);
+    connect(this, &Communication::invokeWriteBytes, m_deviceObj, [this](const QByteArray &bytes) {
+        writeBytes(bytes);
     });
 
     emit opened();

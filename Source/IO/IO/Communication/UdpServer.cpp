@@ -38,7 +38,7 @@ void UdpServer::deinitDevice()
     m_udpSocket = nullptr;
 }
 
-void UdpServer::writeBytesToDevice(const QByteArray &bytes)
+void UdpServer::writeBytes(const QByteArray &bytes)
 {
     QString currentFlag = currentClientFlag();
     if (currentFlag.isEmpty()) {

@@ -11,7 +11,7 @@
 #include <QTimer>
 
 SerialPort::SerialPort(QObject *parent)
-    : Device(parent)
+    : Communication(parent)
 {}
 
 SerialPort::~SerialPort() {}
@@ -81,7 +81,7 @@ void SerialPort::deinitDevice()
     }
 }
 
-void SerialPort::writeBytesToDevice(const QByteArray &bytes)
+void SerialPort::writeBytes(const QByteArray &bytes)
 {
     if (m_serialPort) {
         qint64 ret = m_serialPort->write(bytes);

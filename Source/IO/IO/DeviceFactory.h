@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-class Device;
+class Communication;
 class DeviceFactory
 {
 private:
@@ -18,5 +18,5 @@ private:
 
 public:
     static DeviceFactory &singleton();
-    Device *createDevice(int type);
+    Communication *createDevice(int type);
 };
