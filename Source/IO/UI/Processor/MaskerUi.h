@@ -10,9 +10,21 @@
 
 #include "xToolsBaseToolUi.h"
 
-class xToolsCommunicationToolUi : public xToolsBaseToolUi
+namespace Ui {
+class xToolsMaskerToolUi;
+}
+
+class xToolsMaskerToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit xToolsCommunicationToolUi(QWidget *parent = Q_NULLPTR);
+    xToolsMaskerToolUi(QWidget *parent = Q_NULLPTR);
+    ~xToolsMaskerToolUi();
+    void setToolName(const QString &name);
+
+protected:
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
+
+private:
+    Ui::xToolsMaskerToolUi *ui;
 };

@@ -10,34 +10,16 @@
 
 #include <QPair>
 
-#include "xToolsBaseTool.h"
+#include "Device.h"
 
-class xToolsSocketTool : public xToolsBaseTool
+class Socket : public Device
 {
     Q_OBJECT
 public:
-    explicit xToolsSocketTool(QObject *parent = nullptr);
-    ~xToolsSocketTool();
+    explicit Socket(QObject *parent = nullptr);
+    ~Socket();
 
-    QVariantMap save() const override;
-    void load(const QVariantMap &data) override;
-
-public:
-    struct ParameterKeysContext
-    {
-        const QString baseData{"baseData"};
-
-        const QString clientPort{"clientPort"};
-        const QString clientAddress{"clientAddress"};
-        const QString serverPort{"serverPort"};
-        const QString serverAddress{"serverAddress"};
-
-        const QString channel{"channel"};
-
-        const QString authentication{"authentication"};
-        const QString username{"username"};
-        const QString password{"password"};
-    };
+    void setParameters(const QVariantMap &parameters) override;
 
 protected:
     quint16 m_clientPort{0};
@@ -50,7 +32,8 @@ protected:
     QString m_username;
     QString m_password;
 
-    ParameterKeysContext m_keys;
+    struct SocketPrivateSignal
+    {};
 
 protected:
     QString makeFlag(const QString &address, quint16 port) const;

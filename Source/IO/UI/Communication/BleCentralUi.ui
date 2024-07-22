@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BleCentralUi</class>
+ <widget class="QWidget" name="BleCentralUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>166</width>
+    <height>279</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>4</number>
+   </property>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Characteristic</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QComboBox" name="comboBoxDevices"/>
+   </item>
+   <item row="6" column="0">
+    <widget class="QComboBox" name="comboBoxServices">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0">
+    <widget class="QLabel" name="labelUnsupported">
+     <property name="text">
+      <string>(Unsupported characteristic)</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>BLE Devices</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QComboBox" name="comboBoxCharacteristics"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QPushButton" name="pushButtonScan">
+     <property name="text">
+      <string>Scan</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButtonNotify">
+       <property name="text">
+        <string>Notify</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonRead">
+       <property name="text">
+        <string>Read</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="10" column="0">
+    <widget class="QComboBox" name="comboBoxWriteMode"/>
+   </item>
+   <item row="13" column="0">
+    <widget class="QProgressBar" name="progressBarOpening">
+     <property name="toolTip">
+      <string>Service scanning</string>
+     </property>
+     <property name="maximum">
+      <number>0</number>
+     </property>
+     <property name="value">
+      <number>-1</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="format">
+      <string notr="true">%p%</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="labelWriteMode">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Write mode</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Service</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QProgressBar" name="progressBarScanning">
+     <property name="toolTip">
+      <string>Device scanning</string>
+     </property>
+     <property name="maximum">
+      <number>0</number>
+     </property>
+     <property name="value">
+      <number>-1</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+     <property name="format">
+      <string notr="true">%p%</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

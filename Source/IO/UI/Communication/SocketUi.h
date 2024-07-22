@@ -8,20 +8,20 @@
  **************************************************************************************************/
 #pragma once
 
-#include "xToolsCommunicationToolUi.h"
+#include "DeviceUi.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class xToolsSocketToolUi;
+class SocketUi;
 }
 QT_END_NAMESPACE
 
-class xToolsSocketToolUi : public xToolsCommunicationToolUi
+class SocketUi : public DeviceUi
 {
     Q_OBJECT
 public:
-    xToolsSocketToolUi(QWidget *parent = nullptr);
-    ~xToolsSocketToolUi();
+    SocketUi(xIO::DeviceType type, QWidget *parent = nullptr);
+    ~SocketUi();
 
     virtual QVariantMap save() const;
     virtual void load(const QVariantMap &parameters);
@@ -46,5 +46,5 @@ protected:
     void setupClients(const QStringList &clients);
 
 private:
-    Ui::xToolsSocketToolUi *ui;
+    Ui::SocketUi *ui;
 };

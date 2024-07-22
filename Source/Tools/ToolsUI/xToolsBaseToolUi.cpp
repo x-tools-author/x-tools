@@ -21,7 +21,15 @@ void xToolsBaseToolUi::setupTool(xToolsBaseTool *tool)
         return;
     }
 
-    connect(tool, &xToolsBaseTool::isWorkingChanged, this, [this]() { setEnabled(false); });
+    connect(tool, &xToolsBaseTool::isWorkingChanged, this, [this, tool]() {
+        bool working = tool->isWorking();
+        setUiEnabled(!working);
+    });
+}
+
+void xToolsBaseToolUi::setUiEnabled(bool enable)
+{
+    setEnabled(enable);
 }
 
 QVariantMap xToolsBaseToolUi::save() const

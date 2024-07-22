@@ -10,9 +10,21 @@
 
 #include "xToolsBaseToolUi.h"
 
-class xToolsCommunicationToolUi : public xToolsBaseToolUi
+namespace Ui {
+class xToolsStorerToolUi;
+}
+
+class xToolsStorerTool;
+class xToolsStorerToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit xToolsCommunicationToolUi(QWidget *parent = Q_NULLPTR);
+    explicit xToolsStorerToolUi(QWidget *parent = nullptr);
+    ~xToolsStorerToolUi();
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
+
+private:
+    Ui::xToolsStorerToolUi *ui{nullptr};
+
+    void onPushButtonSelectFileClicked();
 };

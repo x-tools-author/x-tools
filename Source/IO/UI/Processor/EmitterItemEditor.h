@@ -8,11 +8,23 @@
  **************************************************************************************************/
 #pragma once
 
-#include "xToolsBaseToolUi.h"
+#include <QDialog>
+#include <QJsonObject>
 
-class xToolsCommunicationToolUi : public xToolsBaseToolUi
+namespace Ui {
+class xToolsEmitterToolUiEditor;
+}
+
+class xToolsEmitterToolUiEditor : public QDialog
 {
     Q_OBJECT
 public:
-    explicit xToolsCommunicationToolUi(QWidget *parent = Q_NULLPTR);
+    explicit xToolsEmitterToolUiEditor(QWidget *parent = nullptr);
+    ~xToolsEmitterToolUiEditor();
+
+    Q_INVOKABLE QJsonObject parameters();
+    Q_INVOKABLE void setParameters(const QJsonObject &params);
+
+private:
+    Ui::xToolsEmitterToolUiEditor *ui{nullptr};
 };

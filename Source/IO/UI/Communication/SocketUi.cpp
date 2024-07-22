@@ -6,23 +6,21 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsSocketToolUi.h"
-#include "ui_xToolsSocketToolUi.h"
+#include "SocketUi.h"
+#include "ui_SocketUi.h"
 
-#include "xToolsSocketTool.h"
+#include "../../xIO.h"
 
-xToolsSocketToolUi::xToolsSocketToolUi(QWidget *parent)
-    : xToolsCommunicationToolUi(parent)
-    , ui(new Ui::xToolsSocketToolUi)
+SocketUi::SocketUi(xIO::DeviceType type, QWidget *parent)
+    : DeviceUi(type, parent)
+    , ui(new Ui::SocketUi)
 {
     ui->setupUi(this);
     ui->spinBoxClientPort->setValue(55443);
     ui->spinBoxServerPort->setValue(34455);
-#if 0
-    setupIp(ui->comboBoxClientIp);
-    setupIp(ui->comboBoxServerIp);
-    setupWebSocketDataChannel(ui->comboBoxChannel);
-#endif
+    xIO::setupIp(ui->comboBoxClientIp);
+    xIO::setupIp(ui->comboBoxServerIp);
+    xIO::setupWebSocketDataChannel(ui->comboBoxChannel);
 
     setupClients(QStringList());
 
@@ -33,45 +31,43 @@ xToolsSocketToolUi::xToolsSocketToolUi(QWidget *parent)
     connect(ui->toolButtonDisconnectAllClient,
             &QToolButton::clicked,
             this,
-            &xToolsSocketToolUi::invokeDisconnectAll);
+            &SocketUi::invokeDisconnectAll);
 }
 
-xToolsSocketToolUi::~xToolsSocketToolUi() {}
+SocketUi::~SocketUi() {}
 
-QVariantMap xToolsSocketToolUi::save() const
+QVariantMap SocketUi::save() const
 {
-    xToolsSocketTool::ParameterKeysContext keys;
     QVariantMap parameters;
-    parameters.insert(keys.clientPort, ui->spinBoxClientPort->value());
-    parameters.insert(keys.clientAddress, ui->comboBoxClientIp->currentText());
-    parameters.insert(keys.serverPort, ui->spinBoxServerPort->value());
-    parameters.insert(keys.serverAddress, ui->comboBoxServerIp->currentText());
-    parameters.insert(keys.channel, ui->comboBoxChannel->currentIndex());
-    parameters.insert(keys.authentication, ui->checkBoxAuthentication->isChecked());
-    parameters.insert(keys.username, ui->lineEditUser->text());
-    parameters.insert(keys.password, ui->lineEditPassword->text());
+    parameters.insert("clientPort", ui->spinBoxClientPort->value());
+    parameters.insert("clientAddress", ui->comboBoxClientIp->currentText());
+    parameters.insert("serverPort", ui->spinBoxServerPort->value());
+    parameters.insert("serverAddress", ui->comboBoxServerIp->currentText());
+    parameters.insert("channel", ui->comboBoxChannel->currentIndex());
+    parameters.insert("authentication", ui->checkBoxAuthentication->isChecked());
+    parameters.insert("username", ui->lineEditUser->text());
+    parameters.insert("password", ui->lineEditPassword->text());
 
     return parameters;
 }
 
-void xToolsSocketToolUi::load(const QVariantMap &parameters)
+void SocketUi::load(const QVariantMap &parameters)
 {
     if (parameters.isEmpty()) {
         return;
     }
 
-    xToolsSocketTool::ParameterKeysContext keys;
-    ui->spinBoxClientPort->setValue(parameters.value(keys.clientPort).toUInt());
-    ui->comboBoxClientIp->setCurrentText(parameters.value(keys.clientAddress).toString());
-    ui->spinBoxServerPort->setValue(parameters.value(keys.serverPort).toUInt());
-    ui->comboBoxServerIp->setCurrentText(parameters.value(keys.serverAddress).toString());
-    ui->comboBoxChannel->setCurrentIndex(parameters.value(keys.channel).toInt());
-    ui->checkBoxAuthentication->setChecked(parameters.value(keys.authentication).toBool());
-    ui->lineEditUser->setText(parameters.value(keys.username).toString());
-    ui->lineEditPassword->setText(parameters.value(keys.password).toString());
+    ui->spinBoxClientPort->setValue(parameters.value("clientPort").toUInt());
+    ui->comboBoxClientIp->setCurrentText(parameters.value("clientAddress").toString());
+    ui->spinBoxServerPort->setValue(parameters.value("serverPort").toUInt());
+    ui->comboBoxServerIp->setCurrentText(parameters.value("serverAddress").toString());
+    ui->comboBoxChannel->setCurrentIndex(parameters.value("channel").toInt());
+    ui->checkBoxAuthentication->setChecked(parameters.value("authentication").toBool());
+    ui->lineEditUser->setText(parameters.value("username").toString());
+    ui->lineEditPassword->setText(parameters.value("password").toString());
 }
 
-void xToolsSocketToolUi::setClientWidgetsVisible(bool visible)
+void SocketUi::setClientWidgetsVisible(bool visible)
 {
     ui->labelClientIp->setVisible(visible);
     ui->labelClientPort->setVisible(visible);
@@ -79,7 +75,7 @@ void xToolsSocketToolUi::setClientWidgetsVisible(bool visible)
     ui->spinBoxClientPort->setVisible(visible);
 }
 
-void xToolsSocketToolUi::setServerWidgetsVisible(bool visible)
+void SocketUi::setServerWidgetsVisible(bool visible)
 {
     ui->labelServerIp->setVisible(visible);
     ui->labelServerPort->setVisible(visible);
@@ -87,13 +83,13 @@ void xToolsSocketToolUi::setServerWidgetsVisible(bool visible)
     ui->spinBoxServerPort->setVisible(visible);
 }
 
-void xToolsSocketToolUi::setChannelWidgetsVisible(bool visible)
+void SocketUi::setChannelWidgetsVisible(bool visible)
 {
     ui->labelChannel->setVisible(visible);
     ui->comboBoxChannel->setVisible(visible);
 }
 
-void xToolsSocketToolUi::setAuthenticationWidgetsVisible(bool visible)
+void SocketUi::setAuthenticationWidgetsVisible(bool visible)
 {
     ui->checkBoxAuthentication->setVisible(visible);
     ui->labelUser->setVisible(visible);
@@ -102,14 +98,14 @@ void xToolsSocketToolUi::setAuthenticationWidgetsVisible(bool visible)
     ui->lineEditPassword->setVisible(visible);
 }
 
-void xToolsSocketToolUi::setWriteToWidgetsVisible(bool visible)
+void SocketUi::setWriteToWidgetsVisible(bool visible)
 {
     ui->labelWriteTo->setVisible(visible);
     ui->comboBoxWriteTo->setVisible(visible);
     ui->toolButtonDisconnectAllClient->setVisible(visible);
 }
 
-void xToolsSocketToolUi::setClientWidgetsEnabled(bool enabled)
+void SocketUi::setClientWidgetsEnabled(bool enabled)
 {
     ui->labelClientIp->setEnabled(enabled);
     ui->labelClientPort->setEnabled(enabled);
@@ -117,7 +113,7 @@ void xToolsSocketToolUi::setClientWidgetsEnabled(bool enabled)
     ui->spinBoxClientPort->setEnabled(enabled);
 }
 
-void xToolsSocketToolUi::setServerWidgetsEnabled(bool enabled)
+void SocketUi::setServerWidgetsEnabled(bool enabled)
 {
     ui->labelServerIp->setEnabled(enabled);
     ui->labelServerPort->setEnabled(enabled);
@@ -125,13 +121,13 @@ void xToolsSocketToolUi::setServerWidgetsEnabled(bool enabled)
     ui->spinBoxServerPort->setEnabled(enabled);
 }
 
-void xToolsSocketToolUi::setChannelWidgetsEnabled(bool enabled)
+void SocketUi::setChannelWidgetsEnabled(bool enabled)
 {
     ui->labelChannel->setEnabled(enabled);
     ui->comboBoxChannel->setEnabled(enabled);
 }
 
-void xToolsSocketToolUi::setAuthenticationWidgetsEnabled(bool enabled)
+void SocketUi::setAuthenticationWidgetsEnabled(bool enabled)
 {
     ui->checkBoxAuthentication->setEnabled(enabled);
     ui->labelUser->setEnabled(enabled);
@@ -140,14 +136,14 @@ void xToolsSocketToolUi::setAuthenticationWidgetsEnabled(bool enabled)
     ui->lineEditPassword->setEnabled(enabled);
 }
 
-void xToolsSocketToolUi::setWriteToWidgetsEnabled(bool enabled)
+void SocketUi::setWriteToWidgetsEnabled(bool enabled)
 {
     ui->labelWriteTo->setEnabled(enabled);
     ui->comboBoxWriteTo->setEnabled(enabled);
     ui->toolButtonDisconnectAllClient->setEnabled(enabled);
 }
 
-void xToolsSocketToolUi::setupClients(const QStringList &clients)
+void SocketUi::setupClients(const QStringList &clients)
 {
     QString current = ui->comboBoxClientIp->currentData().toString();
     ui->comboBoxWriteTo->clear();

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>xToolsStorerToolUi</class>
+ <widget class="QWidget" name="xToolsStorerToolUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>327</width>
+    <height>96</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="title">
+      <string>Storer</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="xToolsCheckBox" name="checkBoxEnable">
+          <property name="text">
+           <string>Enable</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="xToolsCheckBox" name="checkBoxRx">
+          <property name="text">
+           <string>Save rx</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="xToolsCheckBox" name="checkBoxTx">
+          <property name="text">
+           <string>Save tx</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonSelectFile">
+          <property name="text">
+           <string>Browser</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="xToolsLineEdit" name="lineEditStorerPath">
+        <property name="minimumSize">
+         <size>
+          <width>230</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string notr="true"/>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>xToolsCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">xToolsCheckBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>xToolsLineEdit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -20,15 +20,15 @@ QVariantMap xToolsSocketTool::save() const
 {
     QVariantMap baseData = xToolsBaseTool::save();
     QVariantMap data;
-    data.insert("baseData", baseData);
-    data.insert("clientPort", m_clientPort);
-    data.insert("clientAddress", m_clientAddress);
-    data.insert("serverPort", m_serverPort);
-    data.insert("serverAddress", m_serverAddress);
-    data.insert("channel", m_channel);
-    data.insert("authentication", m_authentication);
-    data.insert("username", m_username);
-    data.insert("password", m_password);
+    data.insert(m_keys.baseData, baseData);
+    data.insert(m_keys.clientPort, m_clientPort);
+    data.insert(m_keys.clientAddress, m_clientAddress);
+    data.insert(m_keys.serverPort, m_serverPort);
+    data.insert(m_keys.serverAddress, m_serverAddress);
+    data.insert(m_keys.channel, m_channel);
+    data.insert(m_keys.authentication, m_authentication);
+    data.insert(m_keys.username, m_username);
+    data.insert(m_keys.password, m_password);
 
     return data;
 }
@@ -39,18 +39,16 @@ void xToolsSocketTool::load(const QVariantMap &parameters)
         return;
     }
 
-    xToolsBaseTool::load(parameters.value("baseData").toMap());
+    xToolsBaseTool::load(parameters.value(m_keys.baseData).toMap());
 
-    m_clientPort = parameters.value("clientPort").toUInt();
-    m_clientAddress = parameters.value("clientAddress").toString();
-    m_serverPort = parameters.value("serverPort").toUInt();
-    m_serverAddress = parameters.value("serverAddress").toString();
-    m_channel = parameters.value("channel").toInt();
-
-    m_channel = parameters.value("channel").toInt();
-    m_authentication = parameters.value("authentication").toBool();
-    m_username = parameters.value("username").toString();
-    m_password = parameters.value("password").toString();
+    m_clientPort = parameters.value(m_keys.clientPort).toUInt();
+    m_clientAddress = parameters.value(m_keys.clientAddress).toString();
+    m_serverPort = parameters.value(m_keys.serverPort).toUInt();
+    m_serverAddress = parameters.value(m_keys.serverAddress).toString();
+    m_channel = parameters.value(m_keys.channel).toInt();
+    m_authentication = parameters.value(m_keys.authentication).toBool();
+    m_username = parameters.value(m_keys.username).toString();
+    m_password = parameters.value(m_keys.password).toString();
 }
 
 QString xToolsSocketTool::makeFlag(const QString &address, quint16 port) const

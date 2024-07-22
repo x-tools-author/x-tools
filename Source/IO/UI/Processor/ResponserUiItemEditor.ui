@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>xToolsResponserToolUiEditor</class>
+ <widget class="QWidget" name="xToolsResponserToolUiEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>674</width>
+    <height>282</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QCheckBox" name="checkBoxEnable">
+       <property name="text">
+        <string>Enable</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Description</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEditDescription">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Option</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="xToolsResponseOptionComboBox" name="comboBoxOption"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_21">
+       <property name="text">
+        <string>Delay(ms)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBoxResDelay">
+       <property name="maximum">
+        <number>10000</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Reference data</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Format</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="xToolsTextFormatComboBox" name="comboBoxRefFormat"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_9">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Prefix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="xToolsAffixesComboBox" name="comboBoxRefPrefix"/>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="label_10">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Suffix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="xToolsAffixesComboBox" name="comboBoxRefSuffix"/>
+      </item>
+      <item row="0" column="6">
+       <widget class="QLabel" name="label_7">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Escape</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="7">
+       <widget class="xToolsEscapeCharacterComboBox" name="comboBoxRefEscape"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Algorithm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="xToolsCrcAlgorithmComboBox" name="comboBoxRefAlgorithm"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_15">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Start index</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QSpinBox" name="spinBoxRefStart">
+        <property name="maximum">
+         <number>1024</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QLabel" name="label_16">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>End index</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QSpinBox" name="spinBoxRefEnd">
+        <property name="maximum">
+         <number>1024</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <item>
+         <widget class="QCheckBox" name="checkBoxRefCrcEnable">
+          <property name="text">
+           <string>Append CRC data</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBoxRefCrcBigEndian">
+          <property name="text">
+           <string>Big endian byte order</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_19">
+        <property name="text">
+         <string>Reference data</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="7">
+       <widget class="QLineEdit" name="lineEditRefData"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Response data</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Fromat</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="xToolsTextFormatComboBox" name="comboBoxResFormat"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_11">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Prefix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="xToolsAffixesComboBox" name="comboBoxResPrefix"/>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="label_12">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Suffix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="xToolsAffixesComboBox" name="comboBoxResSuffix"/>
+      </item>
+      <item row="0" column="6">
+       <widget class="QLabel" name="label_8">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Escape</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="7">
+       <widget class="xToolsEscapeCharacterComboBox" name="comboBoxResEscape">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Algorithm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="xToolsCrcAlgorithmComboBox" name="comboBoxResAlgorithm"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_17">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Start index</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QSpinBox" name="spinBoxResStart">
+        <property name="maximum">
+         <number>1024</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QLabel" name="label_18">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>End index</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QSpinBox" name="spinBoxResEnd">
+        <property name="maximum">
+         <number>1024</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QCheckBox" name="checkBoxResCrcEnable">
+          <property name="text">
+           <string>Append CRC data</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBoxResCrcBigEndian">
+          <property name="text">
+           <string>Big endian byte order</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_20">
+        <property name="text">
+         <string>Response data</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="7">
+       <widget class="QLineEdit" name="lineEditResData"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonCancel">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonOk">
+       <property name="text">
+        <string>OK</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>xToolsTextFormatComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsTextFormatComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsEscapeCharacterComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsEscapeCharacterComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsAffixesComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsAffixesComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsCrcAlgorithmComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsCrcAlgorithmComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsResponseOptionComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsResponseOptionComboBox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

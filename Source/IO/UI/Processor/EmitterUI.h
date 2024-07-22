@@ -8,11 +8,21 @@
  **************************************************************************************************/
 #pragma once
 
-#include "xToolsBaseToolUi.h"
+#include "xToolsEmitterToolUiEditor.h"
+#include "xToolsTableModelToolUi.h"
 
-class xToolsCommunicationToolUi : public xToolsBaseToolUi
+class xToolsEmitterToolUi : public xToolsTableModelToolUi
 {
     Q_OBJECT
 public:
-    explicit xToolsCommunicationToolUi(QWidget *parent = Q_NULLPTR);
+    explicit xToolsEmitterToolUi(QWidget *parent = nullptr);
+    ~xToolsEmitterToolUi();
+
+protected:
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup) override;
+    virtual QList<int> defaultHideColumns() override;
+    virtual QDialog *itemEditor() override;
+
+private:
+    xToolsEmitterToolUiEditor *m_editor{nullptr};
 };

@@ -19,6 +19,8 @@ public:
     explicit xToolsBaseToolUi(QWidget *parent = Q_NULLPTR);
 
     virtual void setupTool(xToolsBaseTool *tool);
+    virtual void setUiEnabled(bool enable);
+
     virtual QVariantMap save() const;
     virtual void load(const QVariantMap &data);
 };

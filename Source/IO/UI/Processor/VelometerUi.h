@@ -10,9 +10,20 @@
 
 #include "xToolsBaseToolUi.h"
 
-class xToolsCommunicationToolUi : public xToolsBaseToolUi
+namespace Ui {
+class xToolsVelometerToolUi;
+}
+
+class xToolsVelometerToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit xToolsCommunicationToolUi(QWidget *parent = Q_NULLPTR);
+    xToolsVelometerToolUi(QWidget *parent = nullptr);
+    ~xToolsVelometerToolUi();
+
+protected:
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
+
+private:
+    Ui::xToolsVelometerToolUi *ui;
 };

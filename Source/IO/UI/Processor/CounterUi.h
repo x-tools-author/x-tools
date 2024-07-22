@@ -10,9 +10,20 @@
 
 #include "xToolsBaseToolUi.h"
 
-class xToolsCommunicationToolUi : public xToolsBaseToolUi
+namespace Ui {
+class xToolsStatisticianToolUi;
+}
+
+class xToolsStatisticianToolUi : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit xToolsCommunicationToolUi(QWidget *parent = Q_NULLPTR);
+    xToolsStatisticianToolUi(QWidget *parent = nullptr);
+    ~xToolsStatisticianToolUi();
+
+protected:
+    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
+
+private:
+    Ui::xToolsStatisticianToolUi *ui;
 };

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>xToolsSerialPortToolUi</class>
+ <widget class="QWidget" name="xToolsSerialPortToolUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>171</width>
+    <height>186</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="0" column="1">
+    <widget class="xToolsPortNameComboBox" name="comboBoxPortNames">
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Port name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="xToolsDataBitsComboBox" name="comboBoxDataBits"/>
+   </item>
+   <item row="3" column="1">
+    <widget class="xToolsStopBitsComboBox" name="comboBoxStopBits"/>
+   </item>
+   <item row="4" column="1">
+    <widget class="xToolsParityComboBox" name="comboBoxParity"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="xToolsBaudRateComboBox" name="comboBoxBaudRate">
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="xToolsFlowControlComboBox" name="comboBoxFlowControl"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Baud rate</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Data bits</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Stop bits</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Parity</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Flow control</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>xToolsPortNameComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsPortNameComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsBaudRateComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsBaudRateComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsDataBitsComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsDataBitsComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsStopBitsComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsStopBitsComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsParityComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsParityComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsFlowControlComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">xToolsFlowControlComboBox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

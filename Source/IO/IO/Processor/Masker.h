@@ -8,11 +8,27 @@
  **************************************************************************************************/
 #pragma once
 
-#include "xToolsBaseToolUi.h"
+#include <atomic>
+#include <QMutex>
 
-class xToolsCommunicationToolUi : public xToolsBaseToolUi
+#include "xToolsBaseTool.h"
+
+class xToolsMaskerTool : public xToolsBaseTool
 {
     Q_OBJECT
 public:
-    explicit xToolsCommunicationToolUi(QWidget *parent = Q_NULLPTR);
+    explicit xToolsMaskerTool(QObject *parent = Q_NULLPTR);
+    ~xToolsMaskerTool() override;
+
+    void inputBytes(const QByteArray &bytes) override;
+
+    Q_INVOKABLE void setMaskCode(qint8 maskCode);
+
+protected:
+    void run() override;
+
+private:
+    std::atomic<quint8> m_mask;
+    QList<QByteArray> m_inputBytesList;
+    QMutex m_inputBytesListMutex;
 };

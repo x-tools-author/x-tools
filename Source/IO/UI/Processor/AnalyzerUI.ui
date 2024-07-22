@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>xToolsAnalyzerToolUi</class>
+ <widget class="QWidget" name="xToolsAnalyzerToolUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>298</width>
+    <height>144</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Analyzer parameters</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0" colspan="2">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="0">
+         <widget class="xToolsCheckBox" name="checkBoxFixedLength">
+          <property name="text">
+           <string>Fixed length</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Frame length</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="xToolsSpinBox" name="spinBoxMaxTempBytes">
+          <property name="minimum">
+           <number>64</number>
+          </property>
+          <property name="maximum">
+           <number>2048</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="xToolsCheckBox" name="checkBoxEnable">
+          <property name="text">
+           <string>Enable</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Max temp bytes</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="xToolsSpinBox" name="spinBoxFrameLength">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>2048</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Separation mark</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="xToolsLineEdit" name="lineEditSeparationMark">
+        <property name="placeholderText">
+         <string>Hex format</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>xToolsCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">xToolsCheckBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header location="global">xToolsSpinBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>xToolsLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header location="global">xToolsLineEdit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
