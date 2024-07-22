@@ -17,7 +17,7 @@
 
 xToolsAnalyzerToolUi::xToolsAnalyzerToolUi(QWidget *parent)
     : xToolsBaseToolUi{parent}
-    , ui(new Ui::xToolsAnalyzerToolUi)
+    , ui(new Ui::FrameAnalyzer)
 {
     ui->setupUi(this);
 }

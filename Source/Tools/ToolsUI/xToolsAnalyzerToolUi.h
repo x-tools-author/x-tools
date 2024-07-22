@@ -11,7 +11,7 @@
 #include "xToolsBaseToolUi.h"
 
 namespace Ui {
-class xToolsAnalyzerToolUi;
+class FrameAnalyzer;
 }
 
 class xToolsAnalyzerTool;
@@ -24,5 +24,5 @@ public:
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
-    Ui::xToolsAnalyzerToolUi *ui;
+    Ui::FrameAnalyzer *ui;
 };

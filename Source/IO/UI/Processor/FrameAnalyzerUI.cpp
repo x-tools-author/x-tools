@@ -1,33 +1,33 @@
 ﻿/***************************************************************************************************
- * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsAnalyzerToolUi.h"
-#include "ui_xToolsAnalyzerToolUi.h"
+#include "FrameAnalyzer.h"
+#include "ui_FrameAnalyzer.h"
 
 #include <QDebug>
 
-#include "xToolsAnalyzerTool.h"
-#include "xToolsDataStructure.h"
+#include "AnalyzerTool.h"
 #include "xToolsApplication.h"
+#include "xToolsDataStructure.h"
 
-xToolsAnalyzerToolUi::xToolsAnalyzerToolUi(QWidget *parent)
+FrameAnalyzer::FrameAnalyzer(QWidget *parent)
     : xToolsBaseToolUi{parent}
-    , ui(new Ui::xToolsAnalyzerToolUi)
+    , ui(new Ui::FrameAnalyzer)
 {
     ui->setupUi(this);
 }
 
-void xToolsAnalyzerToolUi::setToolName(const QString &name)
+void FrameAnalyzer::setToolName(const QString &name)
 {
     ui->groupBox->setTitle(name);
 }
 
-void xToolsAnalyzerToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
+void FrameAnalyzer::onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup)
 {
     int format = xToolsDataStructure::TextFormatHex;
     xToolsApplication::setValidator(ui->lineEditSeparationMark, format);

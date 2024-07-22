@@ -12,7 +12,9 @@
 #include <QThread>
 #include <QVariantMap>
 
-class Device : public QThread
+#include "../AbstractIO.h"
+
+class Device : public AbstractIO
 {
     Q_OBJECT
 public:
@@ -34,8 +36,6 @@ signals:
 
     void bytesRead(const QByteArray &bytes, const QString &from);
     void bytesWritten(const QByteArray &bytes, const QString &to);
-    void errorOccurred(const QString &errorString);
-    void warningOccurred(const QString &warningString);
 
 protected:
     QVariantMap m_parameters;

@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -11,18 +11,18 @@
 #include "xToolsBaseToolUi.h"
 
 namespace Ui {
-class xToolsAnalyzerToolUi;
+class FrameAnalyzer;
 }
 
 class xToolsAnalyzerTool;
-class xToolsAnalyzerToolUi : public xToolsBaseToolUi
+class FrameAnalyzer : public xToolsBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit xToolsAnalyzerToolUi(QWidget *parent = nullptr);
+    explicit FrameAnalyzer(QWidget *parent = nullptr);
     void setToolName(const QString &name);
     virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
 
 private:
-    Ui::xToolsAnalyzerToolUi *ui;
+    Ui::FrameAnalyzer *ui;
 };

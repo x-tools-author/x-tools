@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>xToolsAnalyzerToolUi</class>
- <widget class="QWidget" name="xToolsAnalyzerToolUi">
+ <class>FrameAnalyzer</class>
+ <widget class="QWidget" name="FrameAnalyzer">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -85,7 +85,7 @@
         <item row="0" column="3">
          <spacer name="horizontalSpacer">
           <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+           <enum>Qt::Orientation::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -100,7 +100,7 @@
       <item row="1" column="0" colspan="2">
        <widget class="Line" name="line">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
       </item>
