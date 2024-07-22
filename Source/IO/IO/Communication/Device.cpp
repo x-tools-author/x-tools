@@ -9,7 +9,7 @@
 #include "Device.h"
 
 Device::Device(QObject *parent)
-    : QThread(parent)
+    : AbstractIO(parent)
 {}
 
 Device::~Device()
