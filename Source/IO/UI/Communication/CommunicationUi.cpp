@@ -6,14 +6,14 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "DeviceUi.h"
+#include "CommunicationUi.h"
 
-DeviceUi::DeviceUi(xIO::DeviceType type, QWidget *parent)
-    : QWidget(parent)
+CommunicationUi::CommunicationUi(xIO::DeviceType type, QWidget *parent)
+    : AbstractIOUi(parent)
     , m_type(type)
 {}
 
-xIO::DeviceType DeviceUi::type() const
+xIO::DeviceType CommunicationUi::type() const
 {
     return m_type;
 }

@@ -11,7 +11,7 @@
 #include "../xIO.h"
 
 #include "Communication/BleCentralUi.h"
-#include "Communication/DeviceUi.h"
+#include "Communication/CommunicationUi.h"
 #include "Communication/SerialPortUi.h"
 #include "Communication/TcpClientUi.h"
 #include "Communication/TcpServerUi.h"
@@ -28,7 +28,7 @@ DeviceUiFactory &DeviceUiFactory::singleton()
     return instance;
 }
 
-DeviceUi *DeviceUiFactory::createDeviceUi(xIO::DeviceType type)
+CommunicationUi *DeviceUiFactory::createDeviceUi(xIO::DeviceType type)
 {
     switch (type) {
     case xIO::DeviceType::SerialPort:

@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "DeviceUi.h"
+#include "CommunicationUi.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,7 +16,7 @@ class SocketUi;
 }
 QT_END_NAMESPACE
 
-class SocketUi : public DeviceUi
+class SocketUi : public CommunicationUi
 {
     Q_OBJECT
 public:

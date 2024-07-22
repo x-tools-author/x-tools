@@ -10,7 +10,7 @@
 
 #include "../xIO.h"
 
-class DeviceUi;
+class CommunicationUi;
 class DeviceUiFactory
 {
 private:
@@ -20,5 +20,5 @@ private:
 
 public:
     static DeviceUiFactory &singleton();
-    DeviceUi *createDeviceUi(xIO::DeviceType type);
+    CommunicationUi *createDeviceUi(xIO::DeviceType type);
 };

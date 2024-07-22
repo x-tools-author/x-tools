@@ -11,7 +11,7 @@
 #include <QBluetoothDeviceInfo>
 #include <QLowEnergyService>
 
-#include "DeviceUi.h"
+#include "CommunicationUi.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,7 +20,7 @@ class BleCentralUi;
 QT_END_NAMESPACE
 
 class BleScanner;
-class BleCentralUi : public DeviceUi
+class BleCentralUi : public CommunicationUi
 {
     Q_OBJECT
 public:

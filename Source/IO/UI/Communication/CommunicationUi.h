@@ -12,18 +12,17 @@
 #include <QWidget>
 
 #include "../../xIO.h"
+#include "../AbstractIOUi.h"
 
 class Communication;
-class DeviceUi : public QWidget
+class CommunicationUi : public AbstractIOUi
 {
     Q_OBJECT
 public:
-    DeviceUi(xIO::DeviceType type, QWidget *parent = nullptr);
+    CommunicationUi(xIO::DeviceType type, QWidget *parent = nullptr);
 
     xIO::DeviceType type() const;
 
-    virtual QVariantMap save() const = 0;
-    virtual void load(const QVariantMap &parameters) = 0;
     virtual void setupDevice(Communication *device) { Q_UNUSED(device); };
     virtual void setUiEnabled(bool enabled) { setEnabled(enabled); }
 
