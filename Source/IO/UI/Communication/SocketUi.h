@@ -20,7 +20,7 @@ class SocketUi : public CommunicationUi
 {
     Q_OBJECT
 public:
-    SocketUi(xIO::DeviceType type, QWidget *parent = nullptr);
+    SocketUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~SocketUi();
 
     virtual QVariantMap save() const;

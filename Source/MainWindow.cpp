@@ -43,6 +43,7 @@
 #include "xToolsModbusStudioUi.h"
 #endif
 #endif
+#include "IOPage/IOPage.h"
 
 #ifdef Q_OS_WIN
 #include "SystemTrayIcon.h"
@@ -70,7 +71,18 @@ MainWindow::MainWindow(QWidget* parent)
     }
 #endif
 
-    setCentralWidget(new xToolsToolBoxUi());
+    QWidget* centralWidget = new QWidget();
+    QGridLayout* layout = new QGridLayout(centralWidget);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setSpacing(0);
+    layout->addWidget(new IOPage(centralWidget), 0, 0);
+#if 0
+    layout->addWidget(new IOPage(centralWidget), 0, 1);
+    layout->addWidget(new IOPage(centralWidget), 1, 0);
+    layout->addWidget(new IOPage(centralWidget), 1, 1);
+#endif
+    centralWidget->setLayout(layout);
+    setCentralWidget(centralWidget);
 #if 0
     auto* stackedWidget = new QStackedWidget();
     setCentralWidget(stackedWidget);
@@ -309,7 +321,6 @@ void MainWindow::initNav()
     static QButtonGroup btGroup;
     QList<int> types = xToolsToolBoxUi::supportedCommunicationTools();
     for (int i = 0; i < types.count(); i++) {
-        int type = types.at(i);
         auto* toolBoxUi = new xToolsToolBoxUi(this);
 
         auto icon = xToolsApplication::cookedIcon(toolBoxUi->windowIcon());

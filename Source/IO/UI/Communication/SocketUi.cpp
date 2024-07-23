@@ -11,7 +11,7 @@
 
 #include "../../xIO.h"
 
-SocketUi::SocketUi(xIO::DeviceType type, QWidget *parent)
+SocketUi::SocketUi(xIO::CommunicationType type, QWidget *parent)
     : CommunicationUi(type, parent)
     , ui(new Ui::SocketUi)
 {

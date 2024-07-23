@@ -8,17 +8,15 @@
  **************************************************************************************************/
 #pragma once
 
-#include "../xIO.h"
-
-class CommunicationUi;
-class DeviceUiFactory
+class Communication;
+class IOFactory
 {
 private:
-    DeviceUiFactory();
-    DeviceUiFactory(const DeviceUiFactory &) = delete;
-    DeviceUiFactory &operator=(const DeviceUiFactory &) = delete;
+    IOFactory();
+    IOFactory(const IOFactory &) = delete;
+    IOFactory &operator=(const IOFactory &) = delete;
 
 public:
-    static DeviceUiFactory &singleton();
-    CommunicationUi *createDeviceUi(xIO::DeviceType type);
+    static IOFactory &singleton();
+    Communication *createDevice(int type);
 };

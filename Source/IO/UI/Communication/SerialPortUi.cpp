@@ -12,7 +12,7 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-SerialPortUi::SerialPortUi(xIO::DeviceType type, QWidget *parent)
+SerialPortUi::SerialPortUi(xIO::CommunicationType type, QWidget *parent)
     : CommunicationUi(type, parent)
     , ui(new Ui::SerialPortUi)
 {

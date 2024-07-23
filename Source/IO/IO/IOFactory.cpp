@@ -6,7 +6,7 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "DeviceFactory.h"
+#include "IOFactory.h"
 
 #include <QCoreApplication>
 
@@ -21,32 +21,32 @@
 #include "Communication/WebSocketClient.h"
 #include "Communication/WebSocketServer.h"
 
-DeviceFactory::DeviceFactory() {}
+IOFactory::IOFactory() {}
 
-DeviceFactory &DeviceFactory::singleton()
+IOFactory &IOFactory::singleton()
 {
-    static DeviceFactory instance;
+    static IOFactory instance;
     return instance;
 }
 
-Communication *DeviceFactory::createDevice(int type)
+Communication *IOFactory::createDevice(int type)
 {
     switch (type) {
-    case static_cast<int>(xIO::DeviceType::SerialPort):
+    case static_cast<int>(xIO::CommunicationType::SerialPort):
         return new SerialPort(QCoreApplication::instance());
-    case static_cast<int>(xIO::DeviceType::BleCentral):
+    case static_cast<int>(xIO::CommunicationType::BleCentral):
         return new BleCentral(QCoreApplication::instance());
-    case static_cast<int>(xIO::DeviceType::UdpClient):
+    case static_cast<int>(xIO::CommunicationType::UdpClient):
         return new UdpClient(QCoreApplication::instance());
-    case static_cast<int>(xIO::DeviceType::UdpServer):
+    case static_cast<int>(xIO::CommunicationType::UdpServer):
         return new UdpServer(QCoreApplication::instance());
-    case static_cast<int>(xIO::DeviceType::TcpClient):
+    case static_cast<int>(xIO::CommunicationType::TcpClient):
         return new TcpClient(QCoreApplication::instance());
-    case static_cast<int>(xIO::DeviceType::TcpServer):
+    case static_cast<int>(xIO::CommunicationType::TcpServer):
         return new TcpServer(QCoreApplication::instance());
-    case static_cast<int>(xIO::DeviceType::WebSocketClient):
+    case static_cast<int>(xIO::CommunicationType::WebSocketClient):
         return new WebSocketClient(QCoreApplication::instance());
-    case static_cast<int>(xIO::DeviceType::WebSocketServer):
+    case static_cast<int>(xIO::CommunicationType::WebSocketServer):
         return new WebSocketServer(QCoreApplication::instance());
     default:
         qWarning("Unknown device type:%d", type);

@@ -8,12 +8,12 @@
  **************************************************************************************************/
 #include "CommunicationUi.h"
 
-CommunicationUi::CommunicationUi(xIO::DeviceType type, QWidget *parent)
+CommunicationUi::CommunicationUi(xIO::CommunicationType type, QWidget *parent)
     : AbstractIOUi(parent)
     , m_type(type)
 {}
 
-xIO::DeviceType CommunicationUi::type() const
+xIO::CommunicationType CommunicationUi::type() const
 {
     return m_type;
 }

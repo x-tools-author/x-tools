@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "SocketClientUi.h"
 
-SocketClientUi::SocketClientUi(xIO::DeviceType type, QWidget *parent)
+SocketClientUi::SocketClientUi(xIO::CommunicationType type, QWidget *parent)
     : SocketUi(type, parent)
 {}
 

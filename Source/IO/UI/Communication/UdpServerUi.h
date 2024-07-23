@@ -14,6 +14,6 @@ class UdpServerUi : public SocketServerUi
 {
     Q_OBJECT
 public:
-    explicit UdpServerUi(xIO::DeviceType type, QWidget *parent = nullptr);
+    explicit UdpServerUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~UdpServerUi() override;
 };

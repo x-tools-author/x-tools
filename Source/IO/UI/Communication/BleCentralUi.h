@@ -24,7 +24,7 @@ class BleCentralUi : public CommunicationUi
 {
     Q_OBJECT
 public:
-    explicit BleCentralUi(xIO::DeviceType type, QWidget *parent = nullptr);
+    explicit BleCentralUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~BleCentralUi() override;
 
     QVariantMap save() const override;

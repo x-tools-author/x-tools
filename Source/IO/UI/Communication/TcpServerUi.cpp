@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "TcpServerUi.h"
 
-TcpServerUi::TcpServerUi(xIO::DeviceType type, QWidget *parent)
+TcpServerUi::TcpServerUi(xIO::CommunicationType type, QWidget *parent)
     : SocketServerUi(type, parent)
 {
     setClientWidgetsVisible(false);

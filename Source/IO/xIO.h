@@ -19,8 +19,8 @@ class xIO : public QObject
 {
     Q_OBJECT
 public:
-    /**************************************************************************************************/
-    enum class DeviceType {
+    /**********************************************************************************************/
+    enum class CommunicationType {
         SerialPort,
         BleCentral,
         BlePeripheral,
@@ -31,10 +31,11 @@ public:
         WebSocketClient,
         WebSocketServer
     };
-    static QList<int> supportedDeviceTypes();
-    static QString deviceName(DeviceType type);
+    static QList<int> supportedCommunicationTypes();
+    static QString CommunicationName(CommunicationType type);
+    static void setupCommunicationTypes(QComboBox *comboBox);
 
-    /***************************************************************************************************/
+    /**********************************************************************************************/
     enum class TextFormat { Bin, Oct, Dec, Hex, Ascii, Utf8 };
     static QList<int> supportedTextFormats();
     static QString textFormatName(TextFormat format);
@@ -43,21 +44,21 @@ public:
     static QByteArray string2bytes(const QString &text, TextFormat format);
     static void setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format);
 
-    /**************************************************************************************************/
+    /**********************************************************************************************/
     enum class Affixes { None, R, N, RN, NR };
     static QList<int> supportedAffixes();
     static QString additionName(Affixes affixes);
     static void setupAddition(QComboBox *comboBox);
     static QByteArray cookedAffixes(Affixes affixes);
 
-    /**************************************************************************************************/
+    /**********************************************************************************************/
     enum class EscapeCharacter { None, R, N, RN, NR, R_N };
     static QList<int> supportedEscapeCharacters();
     static QString escapeCharacterName(EscapeCharacter character);
     static void setupEscapeCharacter(QComboBox *comboBox);
     static QString cookedEscapeCharacter(const QString &text, EscapeCharacter escapeCharacter);
 
-    /**************************************************************************************************/
+    /**********************************************************************************************/
     enum class CrcAlgorithm {
         CRC_8,
         CRC_8_ITU,
@@ -84,11 +85,11 @@ public:
     static QByteArray calculateCrc(const QByteArray &data, CrcAlgorithm algorithm, int startIndex, int endIndex, bool bigEndian);
     // clang-format on
 
-    /**************************************************************************************************/
+    /**********************************************************************************************/
     enum class WebSocketDataChannel { Text, Binary };
     static void setupWebSocketDataChannel(QComboBox *comboBox);
 
-    /**************************************************************************************************/
+    /**********************************************************************************************/
     static QString jsonValue2hexString(const QJsonValue &value);
     static QJsonValue hexString2jsonValue(const QString &hexString);
     static void setupIp(QComboBox *cb);

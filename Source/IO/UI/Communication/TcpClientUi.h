@@ -14,6 +14,6 @@ class TcpClientUi : public SocketClientUi
 {
     Q_OBJECT
 public:
-    explicit TcpClientUi(xIO::DeviceType type, QWidget *parent = nullptr);
+    explicit TcpClientUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~TcpClientUi() override;
 };

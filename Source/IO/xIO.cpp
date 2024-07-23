@@ -19,50 +19,65 @@
 #include <QNetworkInterface>
 #include <QProcess>
 
-QList<int> xIO::supportedDeviceTypes()
+QList<int> xIO::supportedCommunicationTypes()
 {
     static QList<int> deviceTypes;
     if (deviceTypes.isEmpty()) {
-        deviceTypes << static_cast<int>(DeviceType::SerialPort);
-        deviceTypes << static_cast<int>(DeviceType::BleCentral);
+        deviceTypes << static_cast<int>(CommunicationType::SerialPort);
+        deviceTypes << static_cast<int>(CommunicationType::BleCentral);
 #if 0
         deviceTypes << static_cast<int>(DeviceType::BlePeripheral);
 #endif
-        deviceTypes << static_cast<int>(DeviceType::UdpClient);
-        deviceTypes << static_cast<int>(DeviceType::UdpServer);
-        deviceTypes << static_cast<int>(DeviceType::TcpClient);
-        deviceTypes << static_cast<int>(DeviceType::TcpServer);
-        deviceTypes << static_cast<int>(DeviceType::WebSocketClient);
-        deviceTypes << static_cast<int>(DeviceType::WebSocketServer);
+        deviceTypes << static_cast<int>(CommunicationType::UdpClient);
+        deviceTypes << static_cast<int>(CommunicationType::UdpServer);
+        deviceTypes << static_cast<int>(CommunicationType::TcpClient);
+        deviceTypes << static_cast<int>(CommunicationType::TcpServer);
+        deviceTypes << static_cast<int>(CommunicationType::WebSocketClient);
+        deviceTypes << static_cast<int>(CommunicationType::WebSocketServer);
     }
 
     return deviceTypes;
 }
 
-QString xIO::deviceName(xIO::DeviceType type)
+QString xIO::CommunicationName(xIO::CommunicationType type)
 {
     switch (type) {
-    case DeviceType::SerialPort:
+    case CommunicationType::SerialPort:
         return QObject::tr("Serial Port");
-    case DeviceType::BleCentral:
+    case CommunicationType::BleCentral:
         return QObject::tr("BLE Central");
-    case DeviceType::BlePeripheral:
+    case CommunicationType::BlePeripheral:
         return QObject::tr("BLE Peripheral");
-    case DeviceType::UdpClient:
+    case CommunicationType::UdpClient:
         return QObject::tr("UDP Client");
-    case DeviceType::UdpServer:
+    case CommunicationType::UdpServer:
         return QObject::tr("UDP Server");
-    case DeviceType::TcpClient:
+    case CommunicationType::TcpClient:
         return QObject::tr("TCP Client");
-    case DeviceType::TcpServer:
+    case CommunicationType::TcpServer:
         return QObject::tr("TCP Server");
-    case DeviceType::WebSocketClient:
+    case CommunicationType::WebSocketClient:
         return QObject::tr("WebSocket Client");
-    case DeviceType::WebSocketServer:
+    case CommunicationType::WebSocketServer:
         return QObject::tr("WebSocket Server");
     default:
         return COMMON_UNKNOWN_STR;
     }
+}
+
+void xIO::setupCommunicationTypes(QComboBox *comboBox)
+{
+    if (!comboBox) {
+        return;
+    }
+
+    comboBox->clear();
+    QList<int> deviceTypes = supportedCommunicationTypes();
+    for (int type : deviceTypes) {
+        comboBox->addItem(CommunicationName(static_cast<CommunicationType>(type)), type);
+    }
+
+    comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(CommunicationType::SerialPort)));
 }
 
 QList<int> xIO::supportedTextFormats()

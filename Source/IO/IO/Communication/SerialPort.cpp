@@ -56,7 +56,6 @@ QObject *SerialPort::initDevice()
         m_serialPort = nullptr;
     }
 
-    calculateInterFrameDelay();
     m_interFrameTimer = new QTimer();
     m_interFrameTimer->setInterval(m_interFrameDelayMilliseconds);
     m_interFrameTimer->setSingleShot(true);

@@ -8,24 +8,32 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QVariantMap>
 #include <QWidget>
 
-#include "../../xIO.h"
-#include "../AbstractIOUi.h"
+QT_BEGIN_NAMESPACE
+namespace Ui {
+class OutputSettings;
+}
+QT_END_NAMESPACE
 
-class Communication;
-class CommunicationUi : public AbstractIOUi
+class OutputSettings : public QWidget
 {
     Q_OBJECT
 public:
-    CommunicationUi(xIO::CommunicationType type, QWidget *parent = nullptr);
+    OutputSettings(QWidget *parent = nullptr);
+    ~OutputSettings();
+    bool isEnableFilter() const;
+    bool isEnableHighlighter() const;
+    QString filterText() const;
+    QStringList highlighterKeywords() const;
 
-    xIO::CommunicationType type() const;
+    QVariantMap save();
+    void load(const QVariantMap &data);
 
-    virtual void setupDevice(Communication *device) { Q_UNUSED(device); };
-    virtual void setUiEnabled(bool enabled) { setEnabled(enabled); }
+signals:
+    void highlighterEnableChanged();
+    void highlighterKeywordsChanged();
 
 private:
-    xIO::CommunicationType const m_type;
+    Ui::OutputSettings *ui;
 };

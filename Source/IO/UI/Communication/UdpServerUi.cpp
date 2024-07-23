@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "UdpServerUi.h"
 
-UdpServerUi::UdpServerUi(xIO::DeviceType type, QWidget *parent)
+UdpServerUi::UdpServerUi(xIO::CommunicationType type, QWidget *parent)
     : SocketServerUi(type, parent)
 {
     setClientWidgetsVisible(false);

@@ -10,7 +10,7 @@
 
 #include "../../IO/Communication/SocketServer.h"
 
-SocketServerUi::SocketServerUi(xIO::DeviceType type, QWidget *parent)
+SocketServerUi::SocketServerUi(xIO::CommunicationType type, QWidget *parent)
     : SocketUi(type, parent)
 {}
 

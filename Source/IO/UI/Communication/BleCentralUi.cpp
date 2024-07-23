@@ -15,7 +15,7 @@
 #include "../../IO/Communication/BleCentral.h"
 #include "../../Unit/BleScanner.h"
 
-BleCentralUi::BleCentralUi(xIO::DeviceType type, QWidget *parent)
+BleCentralUi::BleCentralUi(xIO::CommunicationType type, QWidget *parent)
     : CommunicationUi(type, parent)
     , ui(new Ui::BleCentralUi)
 {

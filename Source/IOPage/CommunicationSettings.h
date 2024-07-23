@@ -8,26 +8,37 @@
  **************************************************************************************************/
 #pragma once
 
-#include "CommunicationUi.h"
+#include <QWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class SerialPortUi;
+class CommunicationSettings;
 }
 QT_END_NAMESPACE
 
-class SerialPortUi : public CommunicationUi
+class SaveThread;
+class CommunicationSettings : public QWidget
 {
     Q_OBJECT
 public:
-    SerialPortUi(xIO::CommunicationType type, QWidget *parent = nullptr);
+    CommunicationSettings(QWidget *parent = nullptr);
+    ~CommunicationSettings();
 
-    QVariantMap save() const override;
-    void load(const QVariantMap &parameters) override;
+    void saveData(const QByteArray &data, bool isRx);
+    QVariantMap save();
+    void load(const QVariantMap &data);
 
 private:
-    Ui::SerialPortUi *ui;
+    struct
+    {
+        const QString saveToFilePath{"saveToFilePath"};
+    } m_settingKeys;
 
 private:
-    void refresh();
+    Ui::CommunicationSettings *ui;
+    SaveThread *m_saveThread;
+    QString m_fileName;
+
+private:
+    void onBroswerButtonClicked();
 };

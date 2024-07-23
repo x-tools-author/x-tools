@@ -6,7 +6,7 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "DeviceUiFactory.h"
+#include "IOUiFactory.h"
 
 #include "../xIO.h"
 
@@ -20,32 +20,32 @@
 #include "Communication/WebSocketClientUi.h"
 #include "Communication/WebSocketServerUi.h"
 
-DeviceUiFactory::DeviceUiFactory() {}
+IOUiFactory::IOUiFactory() {}
 
-DeviceUiFactory &DeviceUiFactory::singleton()
+IOUiFactory &IOUiFactory::singleton()
 {
-    static DeviceUiFactory instance;
+    static IOUiFactory instance;
     return instance;
 }
 
-CommunicationUi *DeviceUiFactory::createDeviceUi(xIO::DeviceType type)
+CommunicationUi *IOUiFactory::createDeviceUi(xIO::CommunicationType type)
 {
     switch (type) {
-    case xIO::DeviceType::SerialPort:
+    case xIO::CommunicationType::SerialPort:
         return new SerialPortUi(type);
-    case xIO::DeviceType::BleCentral:
+    case xIO::CommunicationType::BleCentral:
         return new BleCentralUi(type);
-    case xIO::DeviceType::UdpClient:
+    case xIO::CommunicationType::UdpClient:
         return new UdpClientUi(type);
-    case xIO::DeviceType::UdpServer:
+    case xIO::CommunicationType::UdpServer:
         return new UdpServerUi(type);
-    case xIO::DeviceType::TcpClient:
+    case xIO::CommunicationType::TcpClient:
         return new TcpClientUi(type);
-    case xIO::DeviceType::TcpServer:
+    case xIO::CommunicationType::TcpServer:
         return new TcpServerUi(type);
-    case xIO::DeviceType::WebSocketClient:
+    case xIO::CommunicationType::WebSocketClient:
         return new WebSocketClientUi(type);
-    case xIO::DeviceType::WebSocketServer:
+    case xIO::CommunicationType::WebSocketServer:
         return new WebSocketServerUi(type);
     default:
         return nullptr;

@@ -8,26 +8,42 @@
  **************************************************************************************************/
 #pragma once
 
-#include "CommunicationUi.h"
+#include <QWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class SerialPortUi;
+class InputSettings;
 }
 QT_END_NAMESPACE
 
-class SerialPortUi : public CommunicationUi
+class InputController;
+class InputSettings : public QWidget
 {
     Q_OBJECT
 public:
-    SerialPortUi(xIO::CommunicationType type, QWidget *parent = nullptr);
+    struct Parameters
+    {
+        bool showDataPreview;
 
-    QVariantMap save() const override;
-    void load(const QVariantMap &parameters) override;
+        int prefix;
+        int suffix;
+        int escapeCharacter;
+
+        int algorithm;
+        int startIndex;
+        int endIndex;
+        bool appendCrc;
+        bool bigEndian;
+    };
+
+public:
+    InputSettings(QWidget *parent = nullptr);
+    ~InputSettings();
+    QVariantMap save();
+    void load(const QVariantMap &parameters);
+
+    Parameters parameters() const;
 
 private:
-    Ui::SerialPortUi *ui;
-
-private:
-    void refresh();
+    Ui::InputSettings *ui;
 };

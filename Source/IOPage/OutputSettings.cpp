@@ -1,0 +1,68 @@
+﻿/***************************************************************************************************
+ * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part of eTools project.
+ *
+ * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
+ * code directory.
+ **************************************************************************************************/
+#include "OutputSettings.h"
+#include "ui_OutputSettings.h"
+
+OutputSettings::OutputSettings(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::OutputSettings)
+{
+    ui->setupUi(this);
+    connect(ui->lineEditHighlighter,
+            &QLineEdit::textChanged,
+            this,
+            &OutputSettings::highlighterKeywordsChanged);
+    connect(ui->checkBoxHighlighter,
+            &QCheckBox::clicked,
+            this,
+            &OutputSettings::highlighterEnableChanged);
+}
+
+OutputSettings::~OutputSettings()
+{
+    delete ui;
+}
+
+bool OutputSettings::isEnableFilter() const
+{
+    return ui->checkBoxFilter->isChecked();
+}
+
+bool OutputSettings::isEnableHighlighter() const
+{
+    return ui->checkBoxHighlighter->isChecked();
+}
+
+QString OutputSettings::filterText() const
+{
+    return ui->lineEditFilter->text();
+}
+
+QStringList OutputSettings::highlighterKeywords() const
+{
+    return ui->lineEditHighlighter->text().split(",", Qt::SkipEmptyParts);
+}
+
+QVariantMap OutputSettings::save()
+{
+    QVariantMap map;
+    map.insert("enableFilter", isEnableFilter());
+    map.insert("enableHighlighter", isEnableHighlighter());
+    map.insert("filterText", ui->lineEditFilter->text());
+    map.insert("highlighterKeywords", ui->lineEditHighlighter->text());
+    return map;
+}
+
+void OutputSettings::load(const QVariantMap &data)
+{
+    ui->checkBoxFilter->setChecked(data.value("enableFilter").toBool());
+    ui->checkBoxHighlighter->setChecked(data.value("enableHighlighter").toBool());
+    ui->lineEditFilter->setText(data.value("filterText").toString());
+    ui->lineEditHighlighter->setText(data.value("highlighterKeywords").toString());
+}

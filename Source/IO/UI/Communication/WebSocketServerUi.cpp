@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "WebSocketServerUi.h"
 
-WebSocketServerUi::WebSocketServerUi(xIO::DeviceType type, QWidget *parent)
+WebSocketServerUi::WebSocketServerUi(xIO::CommunicationType type, QWidget *parent)
     : SocketServerUi(type, parent)
 {
     setClientWidgetsVisible(false);

@@ -16,6 +16,7 @@
 #include <QDir>
 #include <QFile>
 #include <QStyle>
+#include <QStyleHints>
 
 #include "xToolsApplication.h"
 #include "xToolsMainWindow.h"
@@ -137,6 +138,8 @@ int xToolsExec(int argc,
     xToolsDoSomethingBeforeAppCreated(argv, appName);
 
     AppT app(argc, argv);
+    QStyleHints *styleHints = QApplication::styleHints();
+    styleHints->setColorScheme(Qt::ColorScheme::Dark);
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     xToolsSettings::instance()->setValue("startUpTime", dtStr);
 
