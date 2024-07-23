@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>xToolsVelometerToolUi</class>
- <widget class="QWidget" name="xToolsVelometerToolUi">
+ <class>StatisticianUi</class>
+ <widget class="QWidget" name="StatisticianUi">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>124</width>
-    <height>17</height>
+    <width>114</width>
+    <height>16</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -35,20 +35,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Velometer:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="labelVelocity">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string notr="true">0Bytes/s</string>
+      <string notr="true"/>
      </property>
     </widget>
    </item>

@@ -294,7 +294,7 @@
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <property name="spacing">
-         <number>4</number>
+         <number>10</number>
         </property>
         <item>
          <widget class="QLabel" name="labelTitle">
@@ -366,6 +366,39 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="styleSheet">
+           <string notr="true">color:blue</string>
+          </property>
+          <property name="text">
+           <string notr="true">Rx</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="StatisticianUi" name="widgetRxInfo" native="true"/>
+        </item>
+        <item>
+         <widget class="Line" name="line_5">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_9">
+          <property name="styleSheet">
+           <string notr="true">color:green</string>
+          </property>
+          <property name="text">
+           <string notr="true">Tx</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="StatisticianUi" name="widgetTxInfo" native="true"/>
         </item>
         <item>
          <widget class="QToolButton" name="toolButtonUp">
@@ -464,6 +497,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>StatisticianUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/Ui/Processor/StatisticianUi.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

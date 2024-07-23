@@ -8,22 +8,25 @@
  **************************************************************************************************/
 #pragma once
 
-#include "xToolsBaseToolUi.h"
+#include "../AbstractIOUi.h"
 
 namespace Ui {
-class xToolsVelometerToolUi;
+class StatisticianUi;
 }
 
-class xToolsVelometerToolUi : public xToolsBaseToolUi
+class StatisticianUi : public AbstractIOUi
 {
     Q_OBJECT
 public:
-    xToolsVelometerToolUi(QWidget *parent = nullptr);
-    ~xToolsVelometerToolUi();
+    StatisticianUi(QWidget *parent = nullptr);
+    ~StatisticianUi();
 
-protected:
-    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingsGroup) final;
+    QVariantMap save() const override;
+    void load(const QVariantMap &parameters) override;
 
 private:
-    Ui::xToolsVelometerToolUi *ui;
+    Ui::StatisticianUi *ui;
+
+private:
+    void updateInfo(int frame, int bytes, int speed);
 };

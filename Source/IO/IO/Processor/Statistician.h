@@ -12,20 +12,14 @@
 
 #include "../AbstractIO.h"
 
-class Counter : public AbstractIO
+class Statistician : public AbstractIO
 {
     Q_OBJECT
     Q_PROPERTY(int frames READ frames NOTIFY framesChanged)
     Q_PROPERTY(int bytes READ bytes NOTIFY bytesChanged)
     Q_PROPERTY(int speed READ speed NOTIFY speedChanged)
-
-    Q_PROPERTY(QString framesString READ framesString NOTIFY framesStringChanged FINAL)
-    Q_PROPERTY(QString bytesString READ bytesString NOTIFY bytesStringChanged FINAL)
-    Q_PROPERTY(QString speedString READ speedString NOTIFY speedStringChanged FINAL)
-
-    Q_PROPERTY(QString info READ info NOTIFY infoChanged FINAL)
 public:
-    explicit Counter(QObject *parent = nullptr);
+    explicit Statistician(QObject *parent = nullptr);
 
     void inputBytes(const QByteArray &bytes) override;
 
@@ -42,12 +36,6 @@ signals:
     void bytesChanged();
     void speedChanged();
 
-    void framesStringChanged();
-    void bytesStringChanged();
-    void speedStringChanged();
-
-    void infoChanged();
-
 protected:
     virtual void run() final;
 
@@ -56,12 +44,6 @@ private:
     int m_bytes{0};
     int m_speed{0};
 
-    QString m_framesString;
-    QString m_bytesString;
-    QString m_speedString;
-
-    QString m_info;
-    QMutex m_speedMutex;
     QByteArray m_tempBytes;
 
 private:
