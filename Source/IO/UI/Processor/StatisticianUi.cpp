@@ -9,14 +9,15 @@
 #include "StatisticianUi.h"
 #include "ui_StatisticianUi.h"
 
-#include "StatisticianUi.h"
+#include "../../IO/Processor/Statistician.h"
 
 StatisticianUi::StatisticianUi(QWidget *parent)
     : AbstractIOUi{parent}
     , ui(new Ui::StatisticianUi)
+    , m_statistician{nullptr}
 {
     ui->setupUi(this);
-    updateInfo(0, 0, 0);
+    updateInfo();
 }
 
 StatisticianUi::~StatisticianUi()
@@ -34,8 +35,34 @@ void StatisticianUi::load(const QVariantMap &parameters)
     Q_UNUSED(parameters);
 }
 
-void StatisticianUi::updateInfo(int frame, int bytes, int speed)
+void StatisticianUi::setupIO(AbstractIO *io)
 {
+    if (m_statistician) {
+        disconnect(m_statistician, nullptr, this, nullptr);
+    }
+
+    m_statistician = qobject_cast<Statistician *>(io);
+    if (!m_statistician) {
+        return;
+    }
+
+    connect(m_statistician, &Statistician::bytesChanged, this, &StatisticianUi::updateInfo);
+    connect(m_statistician, &Statistician::framesChanged, this, &StatisticianUi::updateInfo);
+    connect(m_statistician, &Statistician::speedChanged, this, &StatisticianUi::updateInfo);
+}
+
+void StatisticianUi::updateInfo()
+{
+    int frame = 0;
+    int bytes = 0;
+    int speed = 0;
+
+    if (m_statistician) {
+        frame = m_statistician->frames();
+        bytes = m_statistician->bytes();
+        speed = m_statistician->speed();
+    }
+
     QString info = tr("%1 frames, %2 bytes, %3B/s").arg(frame).arg(bytes).arg(speed);
     ui->label->setText(info);
 }

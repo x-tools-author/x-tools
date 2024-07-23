@@ -14,6 +14,7 @@ namespace Ui {
 class StatisticianUi;
 }
 
+class Statistician;
 class StatisticianUi : public AbstractIOUi
 {
     Q_OBJECT
@@ -23,10 +24,12 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
+    void setupIO(AbstractIO *io) override;
 
 private:
     Ui::StatisticianUi *ui;
+    Statistician *m_statistician;
 
 private:
-    void updateInfo(int frame, int bytes, int speed);
+    void updateInfo();
 };

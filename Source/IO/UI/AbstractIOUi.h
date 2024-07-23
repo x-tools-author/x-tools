@@ -11,6 +11,7 @@
 #include <QVariantMap>
 #include <QWidget>
 
+class AbstractIO;
 class AbstractIOUi : public QWidget
 {
     Q_OBJECT
@@ -20,4 +21,5 @@ public:
 
     virtual QVariantMap save() const = 0;
     virtual void load(const QVariantMap &parameters) = 0;
+    virtual void setupIO(AbstractIO *io) { Q_UNUSED(io); };
 };
