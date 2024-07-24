@@ -15,7 +15,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_4">
    <item>
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="widgetController" native="true">
      <layout class="QGridLayout" name="gridLayout">
       <property name="leftMargin">
        <number>0</number>
@@ -368,7 +368,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="label_8">
+         <widget class="QLabel" name="labelRx">
           <property name="styleSheet">
            <string notr="true">color:blue</string>
           </property>
@@ -381,14 +381,14 @@
          <widget class="StatisticianUi" name="widgetRxInfo" native="true"/>
         </item>
         <item>
-         <widget class="Line" name="line_5">
+         <widget class="Line" name="lineRxTx">
           <property name="orientation">
            <enum>Qt::Orientation::Vertical</enum>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_9">
+         <widget class="QLabel" name="labelTx">
           <property name="styleSheet">
            <string notr="true">color:green</string>
           </property>

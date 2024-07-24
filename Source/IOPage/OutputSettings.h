@@ -33,6 +33,7 @@ public:
 signals:
     void highlighterEnableChanged();
     void highlighterKeywordsChanged();
+    void showStatisticianChanged(bool checked);
 
 private:
     Ui::OutputSettings *ui;

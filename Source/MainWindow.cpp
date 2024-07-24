@@ -55,6 +55,10 @@ MainWindow::MainWindow(QWidget* parent)
 #else
     : xToolsMainWindow(parent)
 #endif
+    , m_ioPage00(new IOPage(IOPage::Left, this))
+    , m_ioPage01(new IOPage(IOPage::Right, this))
+    , m_ioPage10(new IOPage(IOPage::Left, this))
+    , m_ioPage11(new IOPage(IOPage::Right, this))
 {
 #ifdef Q_OS_WIN
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
@@ -75,36 +79,17 @@ MainWindow::MainWindow(QWidget* parent)
     QGridLayout* layout = new QGridLayout(centralWidget);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
-    layout->addWidget(new IOPage(centralWidget), 0, 0);
-#if 0
-    layout->addWidget(new IOPage(centralWidget), 0, 1);
-    layout->addWidget(new IOPage(centralWidget), 1, 0);
-    layout->addWidget(new IOPage(centralWidget), 1, 1);
-#endif
+    layout->addWidget(m_ioPage00, 0, 0);
+    layout->addWidget(m_ioPage01, 0, 1);
+    layout->addWidget(m_ioPage10, 1, 0);
+    layout->addWidget(m_ioPage11, 1, 1);
     centralWidget->setLayout(layout);
     setCentralWidget(centralWidget);
-#if 0
-    auto* stackedWidget = new QStackedWidget();
-    setCentralWidget(stackedWidget);
-#endif
-
-#if 0
-#ifdef Q_OS_ANDROID
-    setWindowFlags(Qt::FramelessWindowHint);
-    QScrollArea* scrollArea = new QScrollArea(this);
-    scrollArea->setWidgetResizable(true);
-    setCentralWidget(scrollArea);
-    scrollArea->setWidget(mTabWidget);
-#endif
-#endif
 
     setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
-
     initMenuBar();
-#if 0
-    initNav();
-    initStatusBar();
-#endif
+
+    updateGrid(m_windowGrid);
 }
 
 MainWindow::~MainWindow() = default;
@@ -114,6 +99,7 @@ void MainWindow::initMenuBar()
     initFileMenu();
     initToolMenu();
     initOptionMenu();
+    initViewMenu();
     initLanguageMenu();
     initLinksMenu();
     initHelpMenu();
@@ -187,8 +173,8 @@ void MainWindow::initFileMenu()
 void MainWindow::initToolMenu()
 {
 #ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
-    auto* toolMenu = new QMenu(tr("&Tools"));
-    menuBar()->insertMenu(m_languageMenu->menuAction(), toolMenu);
+    m_toolMenu = new QMenu(tr("&Tools"));
+    menuBar()->insertMenu(m_languageMenu->menuAction(), m_toolMenu);
 
     for (auto& type : SAKAssistantsFactory::instance()->supportedAssistants()) {
         QString name = SAKAssistantsFactory::instance()->assistantName(type);
@@ -198,7 +184,7 @@ void MainWindow::initToolMenu()
         Q_ASSERT_X(assistant, __FUNCTION__, "A null assistant widget!");
 
         assistant->hide();
-        toolMenu->addAction(action);
+        m_toolMenu->addAction(action);
         connect(action, &QAction::triggered, this, [=]() {
             if (assistant->isHidden()) {
                 assistant->show();
@@ -229,6 +215,53 @@ void MainWindow::initOptionMenu()
         bool keep = action->isChecked();
         xToolsSettings::instance()->setValue(m_settingsKey.exitToSystemTray, keep);
     });
+}
+
+void MainWindow::initViewMenu()
+{
+    QMenu* viewMenu = new QMenu(tr("&View"));
+    menuBar()->insertMenu(m_toolMenu->menuAction(), viewMenu);
+
+    auto a1x1 = viewMenu->addAction("1x1", this, [=]() { updateGrid(WindowGrid::Grid1x1); });
+    auto a1x2 = viewMenu->addAction("1x2", this, [=]() { updateGrid(WindowGrid::Grid1x2); });
+    auto a2x1 = viewMenu->addAction("2x1", this, [=]() { updateGrid(WindowGrid::Grid2x1); });
+    auto a2x2 = viewMenu->addAction("2x2", this, [=]() { updateGrid(WindowGrid::Grid2x2); });
+
+    a1x1->setCheckable(true);
+    a1x2->setCheckable(true);
+    a2x1->setCheckable(true);
+    a2x2->setCheckable(true);
+
+    static QActionGroup group(this);
+    group.addAction(a1x1);
+    group.addAction(a1x2);
+    group.addAction(a2x1);
+    group.addAction(a2x2);
+
+    if (m_windowGrid == WindowGrid::Grid1x1) {
+        a1x1->setChecked(true);
+    } else if (m_windowGrid == WindowGrid::Grid1x2) {
+        a1x2->setChecked(true);
+    } else if (m_windowGrid == WindowGrid::Grid2x1) {
+        a2x1->setChecked(true);
+    } else if (m_windowGrid == WindowGrid::Grid2x2) {
+        a2x2->setChecked(true);
+    }
+
+    auto windowGrid = xToolsSettings::instance()->value(m_settingsKey.windowGrid).toInt();
+    if (windowGrid == int(WindowGrid::Grid1x2)) {
+        a1x2->setChecked(true);
+        a1x2->trigger();
+    } else if (windowGrid == int(WindowGrid::Grid2x1)) {
+        a2x1->setChecked(true);
+        a2x1->trigger();
+    } else if (windowGrid == int(WindowGrid::Grid2x2)) {
+        a2x2->setChecked(true);
+        a2x2->trigger();
+    } else {
+        a1x1->setChecked(true);
+        a1x1->trigger();
+    }
 }
 
 void MainWindow::initLanguageMenu() {}
@@ -422,6 +455,33 @@ void MainWindow::intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBa
 void MainWindow::initStatusBar()
 {
     statusBar()->showMessage("Hello world", 10 * 1000);
+}
+
+void MainWindow::updateGrid(WindowGrid grid)
+{
+    if (grid == WindowGrid::Grid1x2) {
+        m_ioPage00->show();
+        m_ioPage01->show();
+        m_ioPage10->hide();
+        m_ioPage11->hide();
+    } else if (grid == WindowGrid::Grid2x1) {
+        m_ioPage00->show();
+        m_ioPage01->hide();
+        m_ioPage10->show();
+        m_ioPage11->hide();
+    } else if (grid == WindowGrid::Grid2x2) {
+        m_ioPage00->show();
+        m_ioPage01->show();
+        m_ioPage10->show();
+        m_ioPage11->show();
+    } else {
+        m_ioPage00->show();
+        m_ioPage01->hide();
+        m_ioPage10->hide();
+        m_ioPage11->hide();
+    }
+
+    xToolsSettings::instance()->setValue(m_settingsKey.windowGrid, int(grid));
 }
 
 void MainWindow::showHistory()

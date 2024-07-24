@@ -20,6 +20,8 @@
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
 class MainWindow : public xToolsPrivateMainWindow
 #else
+
+class IOPage;
 class MainWindow : public xToolsMainWindow
 #endif
 {
@@ -34,8 +36,10 @@ protected:
 #endif
 
 private:
-    struct SettingsKeyContext
+    enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
+    struct SettingsKeys
     {
+        const QString windowGrid{"MainWindow/windowGrid"};
         const QString isTextBesideIcon{"MainWindow/isTextBesideIcon"};
         const QString pageIndex{"MainWindow/pageIndex"};
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
@@ -49,11 +53,19 @@ private:
         QToolBar* tb;
     };
 
+    QMenu* m_toolMenu;
+    WindowGrid m_windowGrid{WindowGrid::Grid1x1};
+    IOPage* m_ioPage00;
+    IOPage* m_ioPage01;
+    IOPage* m_ioPage10;
+    IOPage* m_ioPage11;
+
 private:
     void initMenuBar();
     void initFileMenu();
     void initToolMenu();
     void initOptionMenu();
+    void initViewMenu();
     void initLanguageMenu();
     void initHelpMenu();
     void initLinksMenu();
@@ -62,6 +74,8 @@ private:
     void initNav(const NavContext& ctx);
     void intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBar);
     void initStatusBar();
+
+    void updateGrid(WindowGrid grid);
 
     static void showHistory();
     static void showQrCode();

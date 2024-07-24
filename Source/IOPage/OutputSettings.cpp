@@ -9,6 +9,8 @@
 #include "OutputSettings.h"
 #include "ui_OutputSettings.h"
 
+#include <QCheckBox>
+
 OutputSettings::OutputSettings(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::OutputSettings)
@@ -22,6 +24,13 @@ OutputSettings::OutputSettings(QWidget *parent)
             &QCheckBox::clicked,
             this,
             &OutputSettings::highlighterEnableChanged);
+    connect(ui->checkBoxFilter, &QCheckBox::checkStateChanged, this, [this]() {
+        if (ui->checkBoxShowStatistician->checkState() == Qt::Checked) {
+            emit showStatisticianChanged(true);
+        } else {
+            emit showStatisticianChanged(false);
+        }
+    });
 }
 
 OutputSettings::~OutputSettings()

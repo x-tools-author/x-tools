@@ -24,7 +24,7 @@
 #include "OutputSettings.h"
 #include "Unit/SyntaxHighlighter.h"
 
-IOPage::IOPage(QWidget *parent)
+IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     : QWidget{parent}
     , ui{new Ui::IOPage}
     , m_io{nullptr}
@@ -42,6 +42,14 @@ IOPage::IOPage(QWidget *parent)
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
 
+    if (direction == ControllerDirection::Right) {
+        QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
+        if (l) {
+            auto item = l->takeAt(0);
+            l->addItem(item);
+        }
+    }
+
     m_writeTimer->setInterval(1000);
     connect(m_writeTimer, &QTimer::timeout, this, &IOPage::writeBytes);
 
@@ -50,6 +58,8 @@ IOPage::IOPage(QWidget *parent)
     m_updateLabelnfoTimer->start();
 
     initUi();
+
+    onShowStatisticianChanged(false);
 }
 
 IOPage::~IOPage()
@@ -171,6 +181,10 @@ void IOPage::initUiOutputControl()
             &OutputSettings::highlighterKeywordsChanged,
             this,
             &IOPage::onHighlighterKeywordsChanged);
+    connect(m_outputSettings,
+            &OutputSettings::showStatisticianChanged,
+            this,
+            &IOPage::onShowStatisticianChanged);
     m_highlighter->setDocument(ui->textBrowserOutput->document());
 }
 
@@ -269,6 +283,15 @@ void IOPage::onHighlighterKeywordsChanged()
 {
     QStringList keywords = m_outputSettings->highlighterKeywords();
     m_highlighter->setKeywords(keywords);
+}
+
+void IOPage::onShowStatisticianChanged(bool checked)
+{
+    ui->labelRx->setVisible(checked);
+    ui->labelTx->setVisible(checked);
+    ui->lineRxTx->setVisible(checked);
+    ui->widgetRxInfo->setVisible(checked);
+    ui->widgetTxInfo->setVisible(checked);
 }
 
 void IOPage::onOpened()

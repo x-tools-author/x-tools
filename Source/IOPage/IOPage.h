@@ -30,7 +30,10 @@ class IOPage : public QWidget
 {
     Q_OBJECT
 public:
-    explicit IOPage(QWidget *parent = nullptr);
+    enum ControllerDirection { Left, Right };
+
+public:
+    explicit IOPage(ControllerDirection direction, QWidget *parent = nullptr);
     ~IOPage();
 
     QVariantMap save();
@@ -83,6 +86,7 @@ private:
     void onOpenButtonClicked();
     void onHighlighterEnableChanged();
     void onHighlighterKeywordsChanged();
+    void onShowStatisticianChanged(bool checked);
 
     void onOpened();
     void onClosed();
