@@ -16,6 +16,7 @@
 #include "CommunicationSettings.h"
 #include "IO/IO/Communication/Communication.h"
 #include "IO/IO/IOFactory.h"
+#include "IO/IO/Processor/Statistician.h"
 #include "IO/UI/Communication/CommunicationUi.h"
 #include "IO/UI/IOUiFactory.h"
 #include "IO/xIO.h"
@@ -34,8 +35,12 @@ IOPage::IOPage(QWidget *parent)
     , m_writeTimer{new QTimer(this)}
     , m_updateLabelnfoTimer{new QTimer(this)}
     , m_highlighter{new SyntaxHighlighter(this)}
+    , m_rxStatistician{new Statistician(this)}
+    , m_txStatistician{new Statistician(this)}
 {
     ui->setupUi(this);
+    ui->widgetRxInfo->setupIO(m_rxStatistician);
+    ui->widgetTxInfo->setupIO(m_txStatistician);
 
     m_writeTimer->setInterval(1000);
     connect(m_writeTimer, &QTimer::timeout, this, &IOPage::writeBytes);
@@ -298,12 +303,14 @@ void IOPage::onWarningOccurred(const QString &warning)
 void IOPage::onBytesRead(const QByteArray &bytes, const QString &from)
 {
     m_ioSettings->saveData(bytes, false);
+    m_rxStatistician->inputBytes(bytes);
     outputText(bytes, from, true);
 }
 
 void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
 {
     m_ioSettings->saveData(bytes, true);
+    m_txStatistician->inputBytes(bytes);
     outputText(bytes, to, false);
 }
 
@@ -313,6 +320,9 @@ void IOPage::open()
     m_io = IOFactory::singleton().createDevice(type);
     if (m_io) {
         setUiEnabled(false);
+
+        m_rxStatistician->start();
+        m_txStatistician->start();
 
         connect(m_io, &Communication::opened, this, &IOPage::onOpened);
         connect(m_io, &Communication::closed, this, &IOPage::onClosed);
@@ -331,6 +341,11 @@ void IOPage::open()
 
 void IOPage::close()
 {
+    m_rxStatistician->exit();
+    m_rxStatistician->wait();
+    m_txStatistician->exit();
+    m_txStatistician->wait();
+
     if (m_io) {
         m_io->exit();
         m_io->wait();

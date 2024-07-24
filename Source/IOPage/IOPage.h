@@ -19,6 +19,7 @@ class IOPage;
 }
 QT_END_NAMESPACE
 
+class Statistician;
 class InputSettings;
 class OutputSettings;
 class Communication;
@@ -65,6 +66,8 @@ private:
     QTimer *m_writeTimer;
     QTimer *m_updateLabelnfoTimer;
     SyntaxHighlighter *m_highlighter;
+    Statistician *m_rxStatistician;
+    Statistician *m_txStatistician;
 
 private:
     void initUi();
