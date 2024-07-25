@@ -15,32 +15,34 @@
 #include <QModelIndex>
 #include <QWidget>
 
-#include "xToolsBaseToolUi.h"
+#include "../AbstractIOUi.h"
 
 namespace Ui {
 class AbstractModelUi;
 }
 
-class xToolsTableModelTool;
-class xToolsTableModelToolUi : public xToolsBaseToolUi
+namespace xTools {
+
+class AbstractModel;
+class AbstractModelUi : public AbstractIOUi
 {
     Q_OBJECT
 public:
-    explicit xToolsTableModelToolUi(QWidget *parent = nullptr);
-    ~xToolsTableModelToolUi();
+    explicit AbstractModelUi(QWidget *parent = nullptr);
+    ~AbstractModelUi();
     void setStretchSections(QList<int> columns);
     void setSectionResizeModeToStretch();
     void setColumnVisible(int column, bool visible);
 
 protected:
-    virtual void onBaseToolUiInitialized(xToolsBaseTool *tool, const QString &settingGroup);
+    virtual void onBaseToolUiInitialized(AbstractIO *tool, const QString &settingGroup);
     virtual QList<int> defaultHideColumns();
     virtual void afterRowEdited(int row);
     virtual QDialog *itemEditor() = 0;
 
 protected:
     QAbstractTableModel *mTableModel{nullptr};
-    xToolsTableModelTool *m_TableModelTool{nullptr};
+    AbstractModel *m_TableModelTool{nullptr};
 
 private:
     void clear();
@@ -69,3 +71,5 @@ private:
     void onPushButtonExportClicked();
     void onPushButtonAppendClicked();
 };
+
+} // namespace xTools
