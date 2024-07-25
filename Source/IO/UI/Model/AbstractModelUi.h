@@ -30,6 +30,7 @@ class AbstractModelUi : public AbstractIOUi
 public:
     explicit AbstractModelUi(QWidget *parent = nullptr);
     ~AbstractModelUi();
+
     void setStretchSections(QList<int> columns);
     void setSectionResizeModeToStretch();
     void setColumnVisible(int column, bool visible);

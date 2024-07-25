@@ -210,17 +210,19 @@ void AbstractModelUi::importFromJson(const QByteArray &json)
     }
 #endif
 }
-#if 0
+
 QByteArray AbstractModelUi::exportAsJson()
 {
+#if 0
     auto items = m_TableModelTool->itemsContext();
     QJsonArray jsonArray = items.toJsonArray();
     QJsonDocument jsonDoc;
     jsonDoc.setArray(jsonArray);
     QByteArray json = jsonDoc.toJson();
-    return json;
-}
 #endif
+    return QByteArray();
+}
+
 void AbstractModelUi::edit(const QModelIndex &index)
 {
 #if 0
