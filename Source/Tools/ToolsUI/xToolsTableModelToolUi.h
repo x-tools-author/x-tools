@@ -18,7 +18,7 @@
 #include "xToolsBaseToolUi.h"
 
 namespace Ui {
-class AbstractModelUi;
+class xToolsTableModelToolUi;
 }
 
 class xToolsTableModelTool;
@@ -60,7 +60,7 @@ private:
     bool isInitialized();
 
 private:
-    Ui::AbstractModelUi *ui{nullptr};
+    Ui::xToolsTableModelToolUi *ui{nullptr};
 
     void onPushButtonEditClicked();
     void onPushButtonClearClicked();
