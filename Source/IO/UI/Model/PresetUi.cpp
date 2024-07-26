@@ -32,6 +32,27 @@ QMenu *PresetUi::menu()
     return nullptr;
 }
 
+QVariantMap PresetUi::save() const
+{
+    return QVariantMap();
+}
+
+void PresetUi::load(const QVariantMap &parameters)
+{
+    Q_UNUSED(parameters);
+}
+
+void PresetUi::setupIO(AbstractIO *io)
+{
+    Q_UNUSED(io);
+}
+
+void PresetUi::onBaseToolUiInitialized(AbstractIO *tool, const QString &settingGroup)
+{
+    Q_UNUSED(tool);
+    Q_UNUSED(settingGroup);
+}
+
 QList<int> PresetUi::defaultHideColumns()
 {
     QList<int> list;

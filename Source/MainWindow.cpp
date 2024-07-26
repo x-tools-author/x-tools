@@ -88,11 +88,10 @@ MainWindow::MainWindow(QWidget* parent)
 
     setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
     initMenuBar();
-
     updateGrid(m_windowGrid);
 }
 
-MainWindow::~MainWindow() = default;
+MainWindow::~MainWindow() {}
 
 void MainWindow::initMenuBar()
 {
@@ -344,117 +343,7 @@ void MainWindow::initLinksMenu()
 
 void MainWindow::initNav()
 {
-    auto* tb = new QToolBar(this);
-    addToolBar(Qt::LeftToolBarArea, tb);
-    tb->setFloatable(false);
-    tb->setMovable(false);
-    tb->setOrientation(Qt::Vertical);
-    tb->setAllowedAreas(Qt::LeftToolBarArea);
 
-    static QButtonGroup btGroup;
-    QList<int> types = xToolsToolBoxUi::supportedCommunicationTools();
-    for (int i = 0; i < types.count(); i++) {
-        auto* toolBoxUi = new xToolsToolBoxUi(this);
-
-        auto icon = xToolsApplication::cookedIcon(toolBoxUi->windowIcon());
-        initNav({&btGroup, icon, toolBoxUi->windowTitle(), toolBoxUi, tb});
-    }
-
-    tb->addSeparator();
-    initNavStudio(&btGroup, tb);
-    auto* lb = new QLabel(" ");
-    tb->addWidget(lb);
-    lb->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
-    intNavControlButton(&btGroup, tb);
-}
-
-void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
-{
-    Q_UNUSED(buttonGroup)
-    Q_UNUSED(toolBar)
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
-#ifdef X_TOOLS_ENABLE_MODULE_MODBUS
-    auto modbusIcon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconModbus.svg"));
-    initNav({buttonGroup, modbusIcon, tr("Modbus Studio"), new xToolsModbusStudioUi(this), toolBar});
-#endif
-#ifdef X_TOOLS_ENABLE_MODULE_CANBUS
-    auto canIcon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconCanBus.svg"));
-    initNav({buttonGroup, canIcon, tr("CANBus Studio"), new xToolsCanBusStudioUi(this), toolBar});
-#endif
-#endif
-}
-
-void MainWindow::initNav(const NavContext& ctx)
-{
-    const QString key = m_settingsKey.isTextBesideIcon;
-    bool isTextBesideIcon = xToolsSettings::instance()->value(key).toBool();
-    auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
-    auto* bt = new QToolButton();
-    bt->setAutoRaise(true);
-    bt->setIcon(ctx.icon);
-    bt->setCheckable(true);
-    bt->setToolButtonStyle(style);
-    bt->setToolTip(ctx.name);
-    bt->setText(" " + ctx.name);
-    bt->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-#if 0
-    bt->setIconSize(QSize(32, 32));
-#endif
-    ctx.bg->addButton(bt);
-    ctx.tb->addWidget(bt);
-
-    if (ctx.page->layout()) {
-        ctx.page->layout()->setContentsMargins(4, 4, 4, 4);
-    }
-    auto stackedWidget = qobject_cast<QStackedWidget*>(centralWidget());
-    stackedWidget->addWidget(ctx.page);
-
-    auto pageCount = ctx.bg->buttons().count();
-    QObject::connect(bt, &QToolButton::clicked, bt, [=]() {
-        stackedWidget->setCurrentIndex(int(pageCount) - 1);
-        xToolsSettings::instance()->setValue(m_settingsKey.pageIndex, pageCount - 1);
-    });
-
-    if (xToolsSettings::instance()->value(m_settingsKey.pageIndex).toInt() == (pageCount - 1)) {
-        bt->setChecked(true);
-        stackedWidget->setCurrentIndex(int(pageCount) - 1);
-    }
-}
-
-void MainWindow::intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBar)
-{
-    toolBar->addSeparator();
-    const QString key = m_settingsKey.isTextBesideIcon;
-    bool isTextBesideIcon = xToolsSettings::instance()->value(key).toBool();
-    auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
-    auto* tbt = new QToolButton(this);
-    const QString path = ":/Resources/Icons/IconListWithIcon.svg";
-    tbt->setIcon(xToolsApplication::cookedIcon(QIcon(path)));
-    tbt->setText(" " + tr("Show Icon Only"));
-    tbt->setToolTip(tr("Click to show(hide) nav text"));
-    tbt->setAutoRaise(true);
-    tbt->setToolButtonStyle(style);
-    tbt->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    toolBar->addWidget(tbt);
-    connect(tbt, &QToolButton::clicked, tbt, [=]() {
-        const QString key = m_settingsKey.isTextBesideIcon;
-        bool checked = xToolsSettings::instance()->value(key).toBool();
-        checked = !checked;
-        auto bts = buttonGroup->buttons();
-        auto style = checked ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
-        tbt->setToolButtonStyle(style);
-        for (auto& bt : bts) {
-            auto cookedBt = qobject_cast<QToolButton*>(bt);
-
-            cookedBt->setToolButtonStyle(style);
-        }
-        xToolsSettings::instance()->setValue(key, checked);
-    });
-}
-
-void MainWindow::initStatusBar()
-{
-    statusBar()->showMessage("Hello world", 10 * 1000);
 }
 
 void MainWindow::updateGrid(WindowGrid grid)

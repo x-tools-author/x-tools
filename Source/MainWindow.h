@@ -44,14 +44,6 @@ private:
         const QString pageIndex{"MainWindow/pageIndex"};
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
     } m_settingsKey;
-    struct NavContext
-    {
-        QButtonGroup* bg;
-        QIcon icon;
-        QString name;
-        QWidget* page;
-        QToolBar* tb;
-    };
 
     QMenu* m_toolMenu;
     WindowGrid m_windowGrid{WindowGrid::Grid1x1};
@@ -70,13 +62,8 @@ private:
     void initHelpMenu();
     void initLinksMenu();
     void initNav();
-    void initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar);
-    void initNav(const NavContext& ctx);
-    void intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBar);
-    void initStatusBar();
 
     void updateGrid(WindowGrid grid);
-
-    static void showHistory();
-    static void showQrCode();
+    void showHistory();
+    void showQrCode();
 };

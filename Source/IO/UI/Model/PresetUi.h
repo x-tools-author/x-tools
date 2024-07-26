@@ -23,10 +23,15 @@ public:
     ~PresetUi();
     QMenu *menu();
 
+    QVariantMap save() const override;
+    void load(const QVariantMap &parameters) override;
+    void setupIO(AbstractIO *io) override;
+
 protected:
-    virtual QList<int> defaultHideColumns() override;
-    virtual void afterRowEdited(int row) override;
-    virtual QDialog *itemEditor() override;
+    void onBaseToolUiInitialized(AbstractIO *tool, const QString &settingGroup) override;
+    QList<int> defaultHideColumns() override;
+    void afterRowEdited(int row) override;
+    QDialog *itemEditor() override;
 };
 
 } // namespace xTools

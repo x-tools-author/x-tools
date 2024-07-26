@@ -19,6 +19,7 @@ class IOPage;
 }
 QT_END_NAMESPACE
 
+class Preset;
 class Statistician;
 class InputSettings;
 class OutputSettings;
