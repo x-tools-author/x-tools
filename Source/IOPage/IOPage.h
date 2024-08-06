@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QButtonGroup>
 #include <QPushButton>
 #include <QTimer>
 #include <QVariantMap>
@@ -72,6 +73,8 @@ private:
     SyntaxHighlighter *m_highlighter;
     Statistician *m_rxStatistician;
     Statistician *m_txStatistician;
+    QButtonGroup m_pageButtonGroup;
+    QMap<QAbstractButton *, QWidget *> m_pageContextMap;
 
 private:
     void initUi();
@@ -95,6 +98,8 @@ private:
     void onWarningOccurred(const QString &warning);
     void onBytesRead(const QByteArray &bytes, const QString &from);
     void onBytesWritten(const QByteArray &bytes, const QString &to);
+
+    void onPageButtonClicked(QAbstractButton *button);
 
     void open();
     void close();

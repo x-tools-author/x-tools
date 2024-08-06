@@ -218,7 +218,27 @@ void IOPage::initUiInputControl()
 
 void IOPage::initUiOutput()
 {
-    // Nothing to do
+    ui->toolButtonOutput->setChecked(true);
+
+    ui->toolButtonOutput->setCheckable(true);
+    ui->toolButtonPreset->setCheckable(true);
+    ui->toolButtonEmitter->setCheckable(true);
+    ui->toolButtonResponser->setCheckable(true);
+    ui->toolButtonTransmitter->setCheckable(true);
+
+    m_pageButtonGroup.addButton(ui->toolButtonOutput);
+    m_pageButtonGroup.addButton(ui->toolButtonPreset);
+    m_pageButtonGroup.addButton(ui->toolButtonEmitter);
+    m_pageButtonGroup.addButton(ui->toolButtonResponser);
+    m_pageButtonGroup.addButton(ui->toolButtonTransmitter);
+
+    m_pageContextMap.insert(ui->toolButtonOutput, ui->pageOutput);
+    m_pageContextMap.insert(ui->toolButtonPreset, ui->pagePreset);
+
+    connect(&m_pageButtonGroup,
+            qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked),
+            this,
+            &IOPage::onPageButtonClicked);
 }
 
 void IOPage::initUiInput()
@@ -335,6 +355,14 @@ void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
     m_ioSettings->saveData(bytes, true);
     m_txStatistician->inputBytes(bytes);
     outputText(bytes, to, false);
+}
+
+void IOPage::onPageButtonClicked(QAbstractButton *button)
+{
+    if (m_pageContextMap.contains(button)) {
+        QWidget *page = m_pageContextMap.value(button);
+        ui->stackedWidget->setCurrentWidget(page);
+    }
 }
 
 void IOPage::open()

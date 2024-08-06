@@ -345,6 +345,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QToolButton" name="toolButtonTransmitter">
+          <property name="text">
+           <string>🔃</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QToolButton" name="toolButtonPreset">
           <property name="toolTip">
            <string>Preset</string>
