@@ -42,8 +42,8 @@ protected:
     virtual QDialog *itemEditor() = 0;
 
 protected:
-    QAbstractTableModel *mTableModel{nullptr};
-    AbstractModel *m_TableModelTool{nullptr};
+    QAbstractTableModel *m_tableModel{nullptr};
+    AbstractModel *m_tableModelTool{nullptr};
 
 private:
     void clear();

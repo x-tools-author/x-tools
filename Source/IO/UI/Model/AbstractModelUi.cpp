@@ -185,14 +185,14 @@ void AbstractModelUi::afterRowEdited(int row)
 
 void AbstractModelUi::clear()
 {
-    int rowCount = mTableModel->rowCount();
-    mTableModel->removeRows(0, rowCount);
+    int rowCount = m_tableModel->rowCount();
+    m_tableModel->removeRows(0, rowCount);
 }
 
 void AbstractModelUi::remove(const QModelIndex &index)
 {
     if (index.isValid()) {
-        mTableModel->removeRow(index.row());
+        m_tableModel->removeRow(index.row());
     }
 }
 
@@ -306,7 +306,7 @@ void AbstractModelUi::writeToSettingsFile()
 
 bool AbstractModelUi::isInitialized()
 {
-    if (!m_TableModelTool) {
+    if (!m_tableModelTool) {
         QMessageBox::warning(xToolsApplication::mainWindow(),
                              tr("Invalid Parameter"),
                              tr("The value of mTableModelTool is nullptr,"
