@@ -14,7 +14,7 @@ TableModel::TableModel(QObject *parent)
     : QAbstractTableModel{parent}
 {}
 
-void TableModel::setEitableColumns(QList<int> columns)
+void TableModel::setEitableColumns(const QList<int> &columns)
 {
     m_editableColumns = columns;
 }

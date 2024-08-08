@@ -14,7 +14,7 @@ int main(const int argc, char *argv[])
 {
     QString version = "0.0.0";
 #if defined(X_TOOLS_GIT_TAG)
-    QString tag = QString(X_TOOLS_GIT_TAG);
+    auto tag = QString(X_TOOLS_GIT_TAG);
     if (tag == QString("continuous")) {
         version = "9.9.9";
     } else {
