@@ -9,8 +9,6 @@
 #include "xIO.h"
 
 #include <QApplication>
-#include <QDateTime>
-#include <QHostAddress>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -139,7 +137,7 @@ QString xIO::bytes2string(const QByteArray &bytes, TextFormat format)
                 numStr = QString::number(array.at(i), base);
                 str.append(QString("%1 ").arg(numStr));
             } else {
-                numStr = QString::number(quint8(array.at(i)), base);
+                numStr = QString::number(static_cast<quint8>(array.at(i)), base);
                 str.append(QString("%1 ").arg(numStr, len, '0'));
             }
         }
@@ -159,19 +157,17 @@ QString xIO::bytes2string(const QByteArray &bytes, TextFormat format)
     } else if (TextFormat::Utf8 == format) {
         return QString::fromUtf8(bytes);
     } else {
-        Q_ASSERT_X(false, __FUNCTION__, "Unsupported text format");
         return QString("Unsupported text format: %1").arg(static_cast<int>(format));
     }
 }
 
 QByteArray xIO::string2bytes(const QString &text, TextFormat format)
 {
-    auto cookString = [](const QString &str, int base) -> QByteArray {
+    auto cookString = [](const QString &str, const int base) -> QByteArray {
         QByteArray data;
-        QStringList strList = str.split(' ', Qt::SkipEmptyParts);
-        for (int i = 0; i < strList.length(); i++) {
-            QString str = strList.at(i);
-            qint8 value = QString(str).toInt(Q_NULLPTR, base);
+        const QStringList strList = str.split(' ', Qt::SkipEmptyParts);
+        for (auto &string : strList) {
+            auto value = static_cast<qint8>(string.toInt(Q_NULLPTR, base));
             data.append(reinterpret_cast<char *>(&value), 1);
         }
 
@@ -189,10 +185,7 @@ QByteArray xIO::string2bytes(const QString &text, TextFormat format)
         data = cookString(text, 16);
     } else if (format == TextFormat::Ascii) {
         data = text.toLatin1();
-    } else if (format == TextFormat::Utf8) {
-        data = text.toUtf8();
     } else {
-        Q_ASSERT_X(false, __FUNCTION__, "Unsupported text format");
         data = text.toUtf8();
     }
 
@@ -204,19 +197,21 @@ void xIO::setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format)
     static QMap<TextFormat, QRegularExpressionValidator *> regularExpressionMap;
     if (regularExpressionMap.isEmpty()) {
         QRegularExpressionValidator *urf8Validator = nullptr;
+#if 0
         QRegularExpressionValidator *systemValidator = nullptr;
+#endif
 
-        QString binStr = "([01][01][01][01][01][01][01][01][ ])*";
-        QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*$";
-        QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( "
+        const QString binStr = "([01][01][01][01][01][01][01][01][ ])*";
+        const QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*$";
+        const QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( "
                          "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
-        QString hexStr = "([0-9a-fA-F][0-9a-fA-F][ ])*";
+        const QString hexStr = "([0-9a-fA-F][0-9a-fA-F][ ])*";
 
-        auto binValidator = new QRegularExpressionValidator(QRegularExpression(binStr));
-        auto otcValidator = new QRegularExpressionValidator(QRegularExpression(octStr)); //0-377
-        auto decValidator = new QRegularExpressionValidator(QRegularExpression(decStr)); // 0-255;
-        auto hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
-        auto asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
+        auto const binValidator = new QRegularExpressionValidator(QRegularExpression(binStr));
+        auto const otcValidator = new QRegularExpressionValidator(QRegularExpression(octStr)); //0-377
+        auto const decValidator = new QRegularExpressionValidator(QRegularExpression(decStr)); // 0-255;
+        auto const hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
+        auto const asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
 
         regularExpressionMap.insert(TextFormat::Bin, binValidator);
         regularExpressionMap.insert(TextFormat::Oct, otcValidator);
@@ -278,15 +273,15 @@ QByteArray xIO::cookedAffixes(Affixes affixes)
 {
     switch (affixes) {
     case Affixes::R:
-        return QByteArray("\r");
+        return QByteArray{"\r"};
     case Affixes::N:
-        return QByteArray("\n");
+        return QByteArray{"\n"};
     case Affixes::RN:
-        return QByteArray("\r\n");
+        return QByteArray{"\r\n"};
     case Affixes::NR:
-        return QByteArray("\n\r");
+        return QByteArray{"\n\r"};
     default:
-        return QByteArray();
+        return QByteArray{};
     }
 }
 
@@ -671,16 +666,16 @@ T crcCalculate(const uint8_t *input, uint64_t length, xIO::CrcAlgorithm algorith
 QByteArray xIO::calculateCrc(const QByteArray &data, CrcAlgorithm algorithm)
 {
     QByteArray retBytes;
-    auto bw = bitsWidth(algorithm);
-    const uint8_t *ptr = reinterpret_cast<const uint8_t *>(data.constData());
+    auto const bw = bitsWidth(algorithm);
+    auto *ptr = reinterpret_cast<const uint8_t *>(data.constData());
     if (bw == 8) {
-        uint8_t ret = crcCalculate<uint8_t>(ptr, data.length(), algorithm);
+        auto ret = crcCalculate<uint8_t>(ptr, data.length(), algorithm);
         retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
     } else if (bw == 16) {
-        uint16_t ret = crcCalculate<uint16_t>(ptr, data.length(), algorithm);
+        auto ret = crcCalculate<uint16_t>(ptr, data.length(), algorithm);
         retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
     } else if (bw == 32) {
-        uint32_t ret = crcCalculate<uint32_t>(ptr, data.length(), algorithm);
+        auto ret = crcCalculate<uint32_t>(ptr, data.length(), algorithm);
         retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
     }
 
@@ -700,8 +695,8 @@ QByteArray xIO::calculateCrc(const QByteArray &data, CrcAlgorithm algorithm, boo
 QByteArray xIO::calculateCrc(
     const QByteArray &data, CrcAlgorithm algorithm, int startIndex, int endIndex, bool bigEndian)
 {
-    int length = data.length() - startIndex - endIndex;
-    QByteArray tmpData = data.mid(startIndex, length);
+    const int length = static_cast<int>(data.length()) - startIndex - endIndex;
+    const QByteArray tmpData = data.mid(startIndex, length);
     return calculateCrc(tmpData, algorithm, bigEndian);
 }
 
@@ -722,7 +717,7 @@ QString xIO::jsonValue2hexString(const QJsonValue &value)
     } else if (value.isArray()) {
         doc.setArray(value.toArray());
     } else {
-        return QString();
+        return QString{};
     }
 
     return QString::fromUtf8(doc.toJson(QJsonDocument::Compact).toHex());
@@ -737,7 +732,7 @@ QJsonValue xIO::hexString2jsonValue(const QString &hexString)
     } else if (doc.isObject()) {
         return doc.object();
     } else {
-        return QJsonValue();
+        return QJsonValue{};
     }
 }
 
@@ -771,7 +766,7 @@ QString xIO::systemDateFormat()
     return QLocale::system().dateFormat();
 }
 
-QString systemTimeFormat()
+QString xIO::systemTimeFormat()
 {
     return QLocale::system().timeFormat();
 }
@@ -785,7 +780,7 @@ void xIO::try2reboot()
         QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok) {
         QProcess::startDetached(QApplication::applicationFilePath());
-        qApp->closeAllWindows();
+        QApplication::closeAllWindows();
     }
 }
 
@@ -834,7 +829,7 @@ QString xIO::textItemContext2string(const TextItemContext &context)
 xIO::TextItemContext xIO::loadTextItemContext(const QJsonObject &obj)
 {
     TextItemContext ctx;
-    TextItemParameterKeys keys;
+    const TextItemParameterKeys keys;
     ctx.text = obj.value(keys.text).toString();
     ctx.textFormat = static_cast<TextFormat>(obj.value(keys.textFormat).toInt());
     ctx.escapeCharacter = static_cast<EscapeCharacter>(obj.value(keys.escapeCharacter).toInt());
@@ -851,7 +846,7 @@ xIO::TextItemContext xIO::loadTextItemContext(const QJsonObject &obj)
 QJsonObject xIO::saveTextItemContext(const TextItemContext &context)
 {
     QJsonObject obj;
-    TextItemParameterKeys keys;
+    const TextItemParameterKeys keys;
     obj.insert(keys.text, context.text);
     obj.insert(keys.textFormat, static_cast<int>(context.textFormat));
     obj.insert(keys.escapeCharacter, static_cast<int>(context.escapeCharacter));
