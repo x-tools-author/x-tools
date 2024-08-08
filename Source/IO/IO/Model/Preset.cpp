@@ -17,13 +17,7 @@ namespace xTools {
 Preset::Preset(QObject *parent)
     : AbstractModel{parent}
 {
-#if 0
-    xIO::TextItemContext textContext = xIO::defaultTextItemContext();
-    Item item{tr("Demo"), textContext};
-    for (int i = 0; i < 10; i++) {
-        m_items.insert(i, item);
-    }
-#endif
+
 }
 
 int Preset::rowCount(const QModelIndex &parent) const
