@@ -43,9 +43,9 @@ QVariant Preset::data(const QModelIndex &index, int role) const
     QJsonObject json = xIO::saveTextItemContext(textContext);
 
     if (index.column() == 0 && role == Qt::DisplayRole) {
-        return m_items.at(index.row()).itemDescription;
+        return m_items.at(index.row()).description;
     } else if (index.column() == 0 && role == Qt::EditRole) {
-        return m_items.at(index.row()).itemDescription;
+        return m_items.at(index.row()).description;
     } else if (index.column() == 1 && role == Qt::DisplayRole) {
         return xIO::textItemContext2string(textContext);
     } else if (index.column() == 1 && role == Qt::EditRole) {
@@ -63,7 +63,7 @@ bool Preset::setData(const QModelIndex &index, const QVariant &value, int role)
     }
 
     if (index.column() == 0 && role == Qt::EditRole) {
-        m_items[index.row()].itemDescription = value.toString();
+        m_items[index.row()].description = value.toString();
     } else if (index.column() == 1 && role == Qt::EditRole) {
         auto textContext = xIO::loadTextItemContext(value.toJsonObject());
         m_items[index.row()].textContext = textContext;

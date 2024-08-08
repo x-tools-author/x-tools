@@ -52,6 +52,7 @@ void PresetUi::load(const QVariantMap &parameters)
         return;
     }
 
+    m_model->removeColumns(0, m_model->rowCount());
     for (int i = 0; i < items.size(); i++) {
         auto item = items.at(i).toObject();
         m_model->insertColumns(i, 1);

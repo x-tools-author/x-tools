@@ -24,23 +24,14 @@ class Preset : public AbstractModel
 public:
     struct Item
     {
-        QString itemDescription{"Demo"};
+        QString description{"Demo"};
         xIO::TextItemContext textContext;
     };
 
-    struct ItemKeys
+    struct ItemKeys : public xIO::TextItemParameterKeys
     {
-        const QString itemDescription{"description"};
-        const QString itemTextFormat{"format"};
-        const QString itemEscapeCharacter{"escapeCharacter"};
-        const QString itemPrefix{"prefix"};
-        const QString itemSuffix{"suffix"};
-        const QString itemCrcEnable{"crcEnable"};
-        const QString itemCrcBigEndian{"crcBigEndian"};
-        const QString itemCrcAlgorithm{"crcAlgorithm"};
-        const QString itemCrcStartIndex{"crcStartIndex"};
-        const QString itemCrcEndIndex{"crcEndIndex"};
-        const QString itemText{"text"};
+        const QString description{"description"};
+        const xIO::TextItemParameterKeys textContext{};
     };
 
 public:
