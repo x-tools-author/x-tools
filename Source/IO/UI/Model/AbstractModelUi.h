@@ -13,6 +13,7 @@
 #include <QJsonObject>
 #include <QMenu>
 #include <QModelIndex>
+#include <QTableView>
 #include <QWidget>
 
 #include "../AbstractIOUi.h"
@@ -23,6 +24,7 @@ class AbstractModelUi;
 
 namespace xTools {
 
+class DataEditor;
 class AbstractModel;
 class AbstractModelUi : public AbstractIOUi
 {
@@ -31,46 +33,29 @@ public:
     explicit AbstractModelUi(QWidget *parent = nullptr);
     ~AbstractModelUi();
 
-    void setStretchSections(QList<int> columns);
-    void setSectionResizeModeToStretch();
-    void setColumnVisible(int column, bool visible);
+    QTableView *tableView() const;
+
+    void setupIO(AbstractIO *io) override;
 
 protected:
-    virtual void onBaseToolUiInitialized(AbstractIO *tool, const QString &settingGroup);
-    virtual QList<int> defaultHideColumns();
-    virtual void afterRowEdited(int row);
-    virtual QDialog *itemEditor() = 0;
+    virtual QList<int> universalColumns() const;
 
 protected:
-    QAbstractTableModel *m_tableModel{nullptr};
-    AbstractModel *m_tableModelTool{nullptr};
-
-private:
-    void clear();
-    void remove(const QModelIndex &index);
-    void importFromJson(const QByteArray &json);
-    QByteArray exportAsJson();
-    void edit(const QModelIndex &index);
-    bool append();
-
-private:
-    QMenu *m_menu{nullptr};
-    QString mItemsKey;
-
-private:
-    QModelIndex currentIndex();
-    void writeToSettingsFile();
-    bool isInitialized();
+    QAbstractTableModel *m_model{nullptr};
 
 private:
     Ui::AbstractModelUi *ui{nullptr};
+    AbstractModel *m_io{nullptr};
+    DataEditor *m_editor{nullptr};
 
-    void onPushButtonEditClicked();
+private:
     void onPushButtonClearClicked();
     void onPushButtonDeleteClicked();
     void onPushButtonImportClicked();
     void onPushButtonExportClicked();
-    void onPushButtonAppendClicked();
+    void onPushButtonAddClicked();
+
+    void onCellDoubleClicked(const QModelIndex &index);
 };
 
 } // namespace xTools

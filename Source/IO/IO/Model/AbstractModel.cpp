@@ -111,6 +111,11 @@ QString AbstractModel::cookHeaderString(const QString &str)
     return str;
 }
 
+QVariant AbstractModel::itemContext(int index)
+{
+    return QVariant();
+}
+
 void AbstractModel::onInvokeGetRowCount(int &count)
 {
     count = rowCount();

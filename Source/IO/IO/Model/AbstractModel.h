@@ -20,15 +20,15 @@ class AbstractModel : public AbstractIO
     Q_PROPERTY(QStringList headers READ headers CONSTANT)
 public:
     explicit AbstractModel(QObject *parent = nullptr);
+
     QVariant tableModel();
     QStringList headers() const;
 
     Q_INVOKABLE void addItem(const QString &jsonCtx, int index = -1);
     Q_INVOKABLE QVariant itemsContext();
     Q_INVOKABLE virtual QString cookHeaderString(const QString &str);
-    Q_INVOKABLE virtual QVariant itemContext(int index) = 0;
+    Q_INVOKABLE virtual QVariant itemContext(int index);
 
-protected:
     // clang-format off
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const = 0;
     virtual int columnCount(const QModelIndex &parent = QModelIndex()) const = 0;
@@ -40,7 +40,7 @@ protected:
     // clang-format on
 
 protected:
-    TableModel *m_tableModel;
+    TableModel *m_tableModel{nullptr};
 
 private:
     // clang-format off

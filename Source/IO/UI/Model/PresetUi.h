@@ -28,10 +28,10 @@ public:
     void setupIO(AbstractIO *io) override;
 
 protected:
-    void onBaseToolUiInitialized(AbstractIO *tool, const QString &settingGroup) override;
-    QList<int> defaultHideColumns() override;
-    void afterRowEdited(int row) override;
-    QDialog *itemEditor() override;
+    QList<int> universalColumns() const override;
+
+private:
+    QMenu *m_menu{nullptr};
 };
 
 } // namespace xTools

@@ -16,6 +16,7 @@
 #include "CommunicationSettings.h"
 #include "IO/IO/Communication/Communication.h"
 #include "IO/IO/IOFactory.h"
+#include "IO/IO/Model/Preset.h"
 #include "IO/IO/Processor/Statistician.h"
 #include "IO/UI/Communication/CommunicationUi.h"
 #include "IO/UI/IOUiFactory.h"
@@ -33,10 +34,11 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     , m_outputSettings{nullptr}
     , m_inputSettings{nullptr}
     , m_writeTimer{new QTimer(this)}
-    , m_updateLabelnfoTimer{new QTimer(this)}
+    , m_updateLabelInfoTimer{new QTimer(this)}
     , m_highlighter{new SyntaxHighlighter(this)}
     , m_rxStatistician{new Statistician(this)}
     , m_txStatistician{new Statistician(this)}
+    , m_preset{new xTools::Preset(this)}
 {
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
@@ -53,9 +55,9 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     m_writeTimer->setInterval(1000);
     connect(m_writeTimer, &QTimer::timeout, this, &IOPage::writeBytes);
 
-    m_updateLabelnfoTimer->setInterval(100);
-    connect(m_updateLabelnfoTimer, &QTimer::timeout, this, &IOPage::updateLabelInfo);
-    m_updateLabelnfoTimer->start();
+    m_updateLabelInfoTimer->setInterval(100);
+    connect(m_updateLabelInfoTimer, &QTimer::timeout, this, &IOPage::updateLabelInfo);
+    m_updateLabelInfoTimer->start();
 
     initUi();
 
@@ -226,6 +228,8 @@ void IOPage::initUiOutput()
     ui->toolButtonResponser->setCheckable(true);
     ui->toolButtonTransmitter->setCheckable(true);
 
+    ui->pagePreset->setupIO(m_preset);
+
     m_pageButtonGroup.addButton(ui->toolButtonOutput);
     m_pageButtonGroup.addButton(ui->toolButtonPreset);
     m_pageButtonGroup.addButton(ui->toolButtonEmitter);
@@ -239,6 +243,8 @@ void IOPage::initUiOutput()
             qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked),
             this,
             &IOPage::onPageButtonClicked);
+
+    ui->toolButtonInputPreset->setMenu(ui->pagePreset->menu());
 }
 
 void IOPage::initUiInput()

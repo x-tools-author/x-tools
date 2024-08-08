@@ -20,7 +20,12 @@ class IOPage;
 }
 QT_END_NAMESPACE
 
+QT_BEGIN_NAMESPACE
+namespace xTools {
 class Preset;
+}
+QT_END_NAMESPACE
+
 class Statistician;
 class InputSettings;
 class OutputSettings;
@@ -69,10 +74,11 @@ private:
     OutputSettings *m_outputSettings;
     InputSettings *m_inputSettings;
     QTimer *m_writeTimer;
-    QTimer *m_updateLabelnfoTimer;
+    QTimer *m_updateLabelInfoTimer;
     SyntaxHighlighter *m_highlighter;
     Statistician *m_rxStatistician;
     Statistician *m_txStatistician;
+    xTools::Preset *m_preset;
     QButtonGroup m_pageButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_pageContextMap;
 

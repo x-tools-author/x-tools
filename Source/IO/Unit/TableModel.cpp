@@ -14,6 +14,11 @@ TableModel::TableModel(QObject *parent)
     : QAbstractTableModel{parent}
 {}
 
+void TableModel::setEitableColumns(QList<int> columns)
+{
+    m_editableColumns = columns;
+}
+
 int TableModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
@@ -74,6 +79,15 @@ QVariant TableModel::headerData(int section, Qt::Orientation orientation, int ro
     QVariant d;
     emit const_cast<TableModel *>(this)->invokeGetHeaderData(d, section, orientation, role);
     return d;
+}
+
+Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
+{
+    if (m_editableColumns.contains(index.column())) {
+        return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
+    } else {
+        return QAbstractTableModel::flags(index);
+    }
 }
 
 } // namespace xTools

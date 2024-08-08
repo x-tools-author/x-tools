@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QComboBox>
+#include <QJsonObject>
 #include <QLineEdit>
 #include <QObject>
 
@@ -81,9 +82,19 @@ public:
     static void setupCrcAlgorithm(QComboBox *comboBox);
     static QByteArray calculateCrc(const QByteArray &data, CrcAlgorithm algorithm);
     static QByteArray calculateCrc(const QByteArray &data, CrcAlgorithm algorithm, bool bigEndian);
-    // clang-format off
-    static QByteArray calculateCrc(const QByteArray &data, CrcAlgorithm algorithm, int startIndex, int endIndex, bool bigEndian);
-    // clang-format on
+    struct CrcParameters
+    {
+        bool enable;
+        bool bigEndian;
+        CrcAlgorithm algorithm;
+        int startIndex;
+        int endIndex;
+    };
+    static QByteArray calculateCrc(const QByteArray &data,
+                                   CrcAlgorithm algorithm,
+                                   int startIndex,
+                                   int endIndex,
+                                   bool bigEndian);
 
     /**********************************************************************************************/
     enum class WebSocketDataChannel { Text, Binary };
@@ -106,4 +117,32 @@ public:
     static QString systemDateFormat();
     static QString systemTimeFormat();
     static void try2reboot();
+
+    /**********************************************************************************************/
+    struct TextItemContext
+    {
+        TextFormat textFormat;
+        EscapeCharacter escapeCharacter;
+        Affixes prefix;
+        QString text;
+        Affixes suffix;
+        CrcParameters crc;
+    };
+    struct TextItemParameterKeys
+    {
+        const QString textFormat{"textFormat"};
+        const QString escapeCharacter{"escapeCharacter"};
+        const QString prefix{"prefix"};
+        const QString text{"text"};
+        const QString suffix{"suffix"};
+        const QString crcEnable{"crcEnable"};
+        const QString crcBigEndian{"crcBigEndian"};
+        const QString crcAlgorithm{"crcAlgorithm"};
+        const QString crcStartIndex{"crcStartIndex"};
+        const QString crcEndIndex{"crcEndIndex"};
+    };
+    static TextItemContext defaultTextItemContext();
+    static QString textItemContext2string(const TextItemContext &context);
+    static TextItemContext loadTextItemContext(const QJsonObject &obj);
+    static QJsonObject saveTextItemContext(const TextItemContext &context);
 };

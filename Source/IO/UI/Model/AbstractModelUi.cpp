@@ -17,10 +17,8 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 
-#include "xToolsApplication.h"
-#include "xToolsMenu.h"
-#include "xToolsSettings.h"
-#include "xToolsTableModelTool.h"
+#include "../../IO/Model/AbstractModel.h"
+#include "../../Unit/DataEditor.h"
 
 namespace xTools {
 
@@ -29,13 +27,15 @@ AbstractModelUi::AbstractModelUi(QWidget *parent)
     , ui(new Ui::AbstractModelUi)
 {
     ui->setupUi(this);
+#if 0
+    ui->tableView->setEditTriggers(QTableView::EditTrigger::DoubleClicked);
+#else
+    connect(ui->tableView, &QTableView::doubleClicked, this, &AbstractModelUi::onCellDoubleClicked);
+#endif
+
     QHeaderView *vHeaderView = ui->tableView->verticalHeader();
     vHeaderView->hide();
 
-    connect(ui->pushButtonEdit,
-            &QPushButton::clicked,
-            this,
-            &AbstractModelUi::onPushButtonEditClicked);
     connect(ui->pushButtonClear,
             &QPushButton::clicked,
             this,
@@ -52,15 +52,14 @@ AbstractModelUi::AbstractModelUi(QWidget *parent)
             &QPushButton::clicked,
             this,
             &AbstractModelUi::onPushButtonExportClicked);
-    connect(ui->pushButtonAppend,
+    connect(ui->pushButtonAdd,
             &QPushButton::clicked,
             this,
-            &AbstractModelUi::onPushButtonAppendClicked);
+            &AbstractModelUi::onPushButtonAddClicked);
 
-    connect(ui->tableView, &QTableView::doubleClicked, this, [=](const QModelIndex &index) {
-        Q_UNUSED(index)
-        onPushButtonEditClicked();
-    });
+    m_editor = new DataEditor(this);
+    m_editor->setMinimumWidth(700);
+    m_editor->hide();
 }
 
 AbstractModelUi::~AbstractModelUi()
@@ -68,313 +67,61 @@ AbstractModelUi::~AbstractModelUi()
     delete ui;
 }
 
-void AbstractModelUi::setStretchSections(QList<int> columns)
+QTableView *AbstractModelUi::tableView() const
 {
-    QTableView *tableView = ui->tableView;
-    QHeaderView *headerView = tableView->horizontalHeader();
-    for (int &column : columns) {
-        headerView->setSectionResizeMode(column, QHeaderView::Stretch);
-    }
+    return ui->tableView;
 }
 
-void AbstractModelUi::setSectionResizeModeToStretch()
+void AbstractModelUi::setupIO(AbstractIO *io)
 {
-    QTableView *tableView = ui->tableView;
-    QHeaderView *headerView = tableView->horizontalHeader();
-    headerView->setSectionResizeMode(QHeaderView::Stretch);
-}
+    m_io = qobject_cast<AbstractModel *>(io);
+    if (m_io) {
+        auto tableModelVar = m_io->tableModel();
+        m_model = qvariant_cast<QAbstractTableModel *>(tableModelVar);
+        if (m_model) {
+            ui->tableView->setModel(m_model);
 
-void AbstractModelUi::setColumnVisible(int column, bool visible)
-{
-    QTableView *tableView = ui->tableView;
-    if (visible) {
-        tableView->showColumn(column);
-    } else {
-        tableView->hideColumn(column);
-    }
-}
-
-void AbstractModelUi::onBaseToolUiInitialized(AbstractIO *tool, const QString &settingGroup)
-{
-#if 0
-    if (!tool) {
-        qWarning() << "The value of tool is nullptr!";
-        return;
-    }
-
-    if (!tool->inherits("xToolsTableModelTool")) {
-        qWarning() << "The tool does not inherits xToolsTableModelTool!";
-        return;
-    }
-
-    m_TableModelTool = dynamic_cast<xToolsTableModelTool *>(tool);
-    Q_ASSERT_X(m_TableModelTool, Q_FUNC_INFO, "The tool is not xToolsTableModelTool!");
-
-    mTableModel = m_TableModelTool->tableModel().value<QAbstractTableModel *>();
-    QTableView *tableView = ui->tableView;
-    QHeaderView *headerView = tableView->horizontalHeader();
-    int columnCount = mTableModel->columnCount();
-    QStringList headers;
-    QStringList rawHeaders;
-    for (int i = 0; i < columnCount; i++) {
-        auto orientation = Qt::Orientation::Horizontal;
-        QString str = mTableModel->headerData(i, orientation).toString();
-        rawHeaders.append(str);
-        str = m_TableModelTool->cookHeaderString(str);
-        headers.append(str);
-    }
-
-    QStandardItemModel *headerViewModel = new QStandardItemModel(headerView);
-
-    tableView->setHorizontalHeader(headerView);
-    tableView->setModel(mTableModel);
-
-    headerViewModel->setColumnCount(headers.count());
-    headerViewModel->setHorizontalHeaderLabels(headers);
-    headerView->setModel(headerViewModel);
-
-    m_menu = new xToolsMenu(ui->pushButtonVisible);
-    ui->pushButtonVisible->setMenu(m_menu);
-    auto settings = xToolsSettings::instance();
-    auto hideColumns = defaultHideColumns();
-    for (int i = 0; i < headers.count(); i++) {
-        QAction *ret = m_menu->addAction(headers.at(i));
-        connect(ret, &QAction::triggered, this, [=]() {
-            if (ret->isChecked()) {
-                tableView->showColumn(i);
-            } else {
-                tableView->hideColumn(i);
-            }
-            settings->setValue(settingGroup + "/" + rawHeaders.at(i), ret->isChecked());
-        });
-        ret->setCheckable(true);
-
-        QVariant var = settings->value(settingGroup + "/" + rawHeaders.at(i));
-        if (var.isValid()) {
-            if (!var.toBool()) {
-                tableView->hideColumn(i);
-            }
-            ret->setChecked(var.toBool());
+            auto model = qobject_cast<xTools::TableModel *>(m_model);
+            model->setEitableColumns(QList<int>{0});
         } else {
-            if (hideColumns.contains(i)) {
-                tableView->hideColumn(i);
-                ret->setChecked(false);
-            } else {
-                ret->setChecked(true);
-            }
+            qCritical() << "Can not cast to QAbstractTableModel";
         }
-    }
-
-    mItemsKey = settingGroup + "/items";
-    QString items = settings->value(mItemsKey).toString();
-    QByteArray json = QByteArray::fromHex(items.toLatin1());
-    importFromJson(QJsonDocument::fromJson(json).toJson());
-#endif
-}
-
-QList<int> AbstractModelUi::defaultHideColumns()
-{
-    QList<int> list;
-    return list;
-}
-
-void AbstractModelUi::afterRowEdited(int row)
-{
-    Q_UNUSED(row)
-}
-
-void AbstractModelUi::clear()
-{
-    int rowCount = m_tableModel->rowCount();
-    m_tableModel->removeRows(0, rowCount);
-}
-
-void AbstractModelUi::remove(const QModelIndex &index)
-{
-    if (index.isValid()) {
-        m_tableModel->removeRow(index.row());
+    } else {
+        qCritical() << "Can not cast to AbstractModel";
     }
 }
 
-void AbstractModelUi::importFromJson(const QByteArray &json)
+QList<int> AbstractModelUi::universalColumns() const
 {
-#if 0
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(json);
-    QJsonArray jsonArray = jsonDoc.array();
-    for (int i = 0; i < jsonArray.count(); i++) {
-        QJsonObject jsonObj = jsonArray.at(i).toObject();
-        QJsonDocument jd;
-        jd.setObject(jsonObj);
-        QString item = QString::fromUtf8(jd.toJson());
-        m_TableModelTool->addItem(item);
-    }
-#endif
-}
-
-QByteArray AbstractModelUi::exportAsJson()
-{
-#if 0
-    auto items = m_TableModelTool->itemsContext();
-    QJsonArray jsonArray = items.toJsonArray();
-    QJsonDocument jsonDoc;
-    jsonDoc.setArray(jsonArray);
-    QByteArray json = jsonDoc.toJson();
-#endif
-    return QByteArray();
-}
-
-void AbstractModelUi::edit(const QModelIndex &index)
-{
-#if 0
-    QVariant var = m_TableModelTool->itemContext(index.row());
-    QJsonObject jsonObj = var.toJsonObject();
-    QDialog *editor = itemEditor();
-    QGenericReturnArgument ret;
-    QMetaObject::invokeMethod(editor,
-                              "setParameters",
-                              Qt::DirectConnection,
-                              Q_ARG(QJsonObject, jsonObj));
-    qInfo() << "the parameter of setParameters() is:" << jsonObj;
-    Q_UNUSED(ret);
-    editor->show();
-
-    if (QDialog::Accepted == editor->exec()) {
-        QJsonObject params;
-        QMetaObject::invokeMethod(editor,
-                                  "parameters",
-                                  Qt::DirectConnection,
-                                  Q_RETURN_ARG(QJsonObject, params));
-        qInfo() << "the parameter of parameters() is:" << params;
-        QJsonDocument jsonDoc;
-        jsonDoc.setObject(params);
-        QString str = QString::fromUtf8(jsonDoc.toJson());
-        m_TableModelTool->addItem(str, index.row());
-
-        afterRowEdited(index.row());
-    }
-#endif
-}
-
-bool AbstractModelUi::append()
-{
-#if 0
-    QJsonObject jsonObj = m_TableModelTool->itemContext(-1).toJsonObject();
-    QDialog *editor = itemEditor();
-    QGenericReturnArgument ret;
-    QMetaObject::invokeMethod(editor,
-                              "setParameters",
-                              Qt::DirectConnection,
-                              ret,
-                              Q_ARG(QJsonObject, jsonObj));
-    qInfo() << "the parameter of setParameters() is:" << jsonObj;
-    Q_UNUSED(ret);
-
-    editor->show();
-    if (!(QDialog::Accepted == editor->exec())) {
-        return false;
-    }
-
-    QMetaObject::invokeMethod(editor,
-                              "parameters",
-                              Qt::DirectConnection,
-                              Q_RETURN_ARG(QJsonObject, jsonObj));
-    qInfo() << "the parameter of parameters() is:" << jsonObj;
-    QJsonDocument jsonDoc;
-    jsonDoc.setObject(jsonObj);
-    QString str = QString::fromUtf8(jsonDoc.toJson());
-    m_TableModelTool->addItem(str, -1);
-#endif
-    return true;
-}
-
-QModelIndex AbstractModelUi::currentIndex()
-{
-    QModelIndex index = ui->tableView->currentIndex();
-    if (!index.isValid()) {
-        QMessageBox::warning(xToolsApplication::mainWindow(),
-                             tr("Please Select an Item"),
-                             tr("Please select an item first, then try again!"));
-    }
-    return index;
-}
-
-void AbstractModelUi::writeToSettingsFile()
-{
-    QByteArray json = exportAsJson();
-    xToolsSettings::instance()->setValue(mItemsKey, QString::fromLatin1(json.toHex()));
-}
-
-bool AbstractModelUi::isInitialized()
-{
-    if (!m_tableModelTool) {
-        QMessageBox::warning(xToolsApplication::mainWindow(),
-                             tr("Invalid Parameter"),
-                             tr("The value of mTableModelTool is nullptr,"
-                                " you must called initialize() first!"));
-        return false;
-    }
-
-    return true;
-}
-
-void AbstractModelUi::onPushButtonEditClicked()
-{
-    if (!isInitialized()) {
-        return;
-    }
-
-    QModelIndex index = currentIndex();
-    if (index.isValid()) {
-        edit(index);
-        writeToSettingsFile();
-    }
+    return QList<int>();
 }
 
 void AbstractModelUi::onPushButtonClearClicked()
 {
-    if (!isInitialized()) {
-        return;
-    }
-
-    int ret = QMessageBox::warning(xToolsApplication::mainWindow(),
-                                   tr("Clear Data"),
-                                   tr("The data will be empty from settings file, are you sure?"),
-                                   QMessageBox::No | QMessageBox::Ok);
-    if (ret == QMessageBox::Ok) {
-        clear();
-        writeToSettingsFile();
+    int count = m_model->rowCount();
+    auto ret = QMessageBox::warning(this,
+                                    tr("Clear"),
+                                    tr("Are you sure to clear all items?").arg(count),
+                                    QMessageBox::Yes | QMessageBox::No);
+    if (ret == QMessageBox::Yes) {
+        m_model->removeRows(0, count);
     }
 }
 
 void AbstractModelUi::onPushButtonDeleteClicked()
 {
-    if (!isInitialized()) {
+    auto index = ui->tableView->currentIndex();
+    if (!index.isValid()) {
+        QMessageBox::warning(this, tr("No Item be Selected"), tr("Please select a item first!"));
         return;
     }
 
-    int ret = QMessageBox::warning(xToolsApplication::mainWindow(),
-                                   tr("Delete Data"),
-                                   tr("The data will be delete from settings file, are you sure?"),
-                                   QMessageBox::Cancel | QMessageBox::Ok);
-
-    if (ret != QMessageBox::Ok) {
-        return;
-    }
-
-    QModelIndex index = currentIndex();
-    if (index.isValid()) {
-        remove(index);
-        writeToSettingsFile();
-    }
+    m_model->removeRows(index.row(), 1);
 }
 
 void AbstractModelUi::onPushButtonImportClicked()
 {
-    if (!isInitialized()) {
-        return;
-    }
-
-    QString fileName = QFileDialog::getOpenFileName(xToolsApplication::mainWindow(),
+    QString fileName = QFileDialog::getOpenFileName(Q_NULLPTR,
                                                     tr("Import data"),
                                                     ".",
                                                     tr("JSON (*.json);;All (*)"));
@@ -385,11 +132,13 @@ void AbstractModelUi::onPushButtonImportClicked()
     QFile file(fileName);
     if (file.open(QFile::ReadOnly)) {
         QByteArray json = file.readAll();
+        QJsonDocument doc = QJsonDocument::fromJson(json);
+        QJsonArray array = doc.array();
+        for (int i = 0; i < json.size(); i++) {
+            auto obj = array.at(i).toObject();
+            m_model->insertRows(m_model->rowCount(), 1);
+        }
         file.close();
-        ;
-
-        importFromJson(json);
-        writeToSettingsFile();
     } else {
         qWarning() << "Can not open file:" << file.errorString();
     }
@@ -397,11 +146,7 @@ void AbstractModelUi::onPushButtonImportClicked()
 
 void AbstractModelUi::onPushButtonExportClicked()
 {
-    if (!isInitialized()) {
-        return;
-    }
-
-    QString fileName = QFileDialog::getSaveFileName(xToolsApplication::mainWindow(),
+    QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
                                                     tr("Import data"),
                                                     ".",
                                                     tr("JSON (*.json);;All (*)"));
@@ -412,21 +157,34 @@ void AbstractModelUi::onPushButtonExportClicked()
     QFile file(fileName);
     if (file.open(QFile::WriteOnly)) {
         QTextStream out(&file);
-        out << exportAsJson();
+        QVariantMap map = save();
+        QJsonDocument doc = QJsonDocument::fromVariant(map);
+        out << doc.toJson();
         file.close();
     } else {
         qWarning() << "Can not open file:" << file.errorString();
     }
 }
 
-void AbstractModelUi::onPushButtonAppendClicked()
+void AbstractModelUi::onPushButtonAddClicked()
 {
-    if (!isInitialized()) {
+    m_model->insertRows(m_io->rowCount(), 1);
+}
+
+void AbstractModelUi::onCellDoubleClicked(const QModelIndex &index)
+{
+    int column = index.column();
+    auto universalColumns = this->universalColumns();
+    if (!universalColumns.contains(column)) {
         return;
     }
 
-    if (append()) {
-        writeToSettingsFile();
+    auto parameters = m_model->data(index, Qt::EditRole);
+    m_editor->load(parameters.toJsonObject());
+    auto ret = m_editor->exec();
+    if (ret == QDialog::Accepted) {
+        auto parameters = m_editor->save();
+        m_model->setData(index, parameters, Qt::EditRole);
     }
 }
 

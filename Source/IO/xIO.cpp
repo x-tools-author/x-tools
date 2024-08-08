@@ -780,11 +780,87 @@ void xIO::try2reboot()
 {
     int ret = QMessageBox::information(
         nullptr,
-        QObject::tr("Neet to Reboot"),
-        QObject::tr("The operation need to reboot to effectived, reboot the applicaion now?"),
+        QObject::tr("Need to Reboot"),
+        QObject::tr("The operation need to reboot to effective, reboot the application now?"),
         QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok) {
         QProcess::startDetached(QApplication::applicationFilePath());
         qApp->closeAllWindows();
     }
+}
+
+xIO::TextItemContext xIO::defaultTextItemContext()
+{
+    TextItemContext context;
+    context.textFormat = TextFormat::Utf8;
+    context.escapeCharacter = EscapeCharacter::None;
+    context.prefix = Affixes::None;
+    context.text = QString("Test data");
+    context.suffix = Affixes::None;
+
+    context.crc.enable = false;
+    context.crc.bigEndian = true;
+    context.crc.algorithm = CrcAlgorithm::CRC_8;
+    context.crc.startIndex = 0;
+    context.crc.endIndex = 0;
+    return context;
+}
+
+QString xIO::textItemContext2string(const TextItemContext &context)
+{
+    QString str = cookedEscapeCharacter(context.text, context.escapeCharacter);
+
+    if (context.prefix != Affixes::None) {
+        str = additionName(context.prefix) + str;
+    }
+
+    if (context.crc.enable) {
+        QByteArray data = string2bytes(context.text, context.textFormat);
+        QByteArray crc = calculateCrc(data,
+                                      context.crc.algorithm,
+                                      context.crc.startIndex,
+                                      context.crc.endIndex,
+                                      context.crc.bigEndian);
+        str.append(QString::fromLatin1(crc.toHex()));
+    }
+
+    if (context.suffix != Affixes::None) {
+        str.append(additionName(context.suffix));
+    }
+
+    return str;
+}
+
+xIO::TextItemContext xIO::loadTextItemContext(const QJsonObject &obj)
+{
+    TextItemContext ctx;
+    TextItemParameterKeys keys;
+    ctx.text = obj.value(keys.text).toString();
+    ctx.textFormat = static_cast<TextFormat>(obj.value(keys.textFormat).toInt());
+    ctx.escapeCharacter = static_cast<EscapeCharacter>(obj.value(keys.escapeCharacter).toInt());
+    ctx.prefix = static_cast<Affixes>(obj.value(keys.prefix).toInt());
+    ctx.suffix = static_cast<Affixes>(obj.value(keys.suffix).toInt());
+    ctx.crc.algorithm = static_cast<CrcAlgorithm>(obj.value(keys.crcAlgorithm).toInt());
+    ctx.crc.bigEndian = obj.value(keys.crcBigEndian).toBool();
+    ctx.crc.enable = obj.value(keys.crcEnable).toBool();
+    ctx.crc.startIndex = obj.value(keys.crcStartIndex).toInt();
+    ctx.crc.endIndex = obj.value(keys.crcEndIndex).toInt();
+    return ctx;
+}
+
+QJsonObject xIO::saveTextItemContext(const TextItemContext &context)
+{
+    QJsonObject obj;
+    TextItemParameterKeys keys;
+    obj.insert(keys.text, context.text);
+    obj.insert(keys.textFormat, static_cast<int>(context.textFormat));
+    obj.insert(keys.escapeCharacter, static_cast<int>(context.escapeCharacter));
+    obj.insert(keys.prefix, static_cast<int>(context.prefix));
+    obj.insert(keys.suffix, static_cast<int>(context.suffix));
+    obj.insert(keys.crcAlgorithm, static_cast<int>(context.crc.algorithm));
+    obj.insert(keys.crcBigEndian, context.crc.bigEndian);
+    obj.insert(keys.crcEnable, context.crc.enable);
+    obj.insert(keys.crcStartIndex, context.crc.startIndex);
+    obj.insert(keys.crcEndIndex, context.crc.endIndex);
+    return obj;
 }

@@ -13,6 +13,7 @@
 #include <QTimer>
 #include <QVariant>
 
+#include "../../xIO.h"
 #include "AbstractModel.h"
 
 namespace xTools {
@@ -20,65 +21,30 @@ namespace xTools {
 class Preset : public AbstractModel
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
-    Q_PROPERTY(QStringList headers READ headers CONSTANT)
-
-    Q_PROPERTY(QString itemDescription READ itemDescription CONSTANT)
-    Q_PROPERTY(QString itemTextFormat READ itemTextFormat CONSTANT)
-    Q_PROPERTY(QString itemEscapeCharacter READ itemEscapeCharacter CONSTANT)
-    Q_PROPERTY(QString itemPrefix READ itemPrefix CONSTANT)
-    Q_PROPERTY(QString itemSuffix READ itemSuffix CONSTANT)
-    Q_PROPERTY(QString itemCrcEnable READ itemCrcEnable CONSTANT)
-    Q_PROPERTY(QString itemCrcBigEndian READ itemCrcBigEndian CONSTANT)
-    Q_PROPERTY(QString itemCrcAlgorithm READ itemCrcAlgorithm CONSTANT)
-    Q_PROPERTY(QString itemCrcStartIndex READ itemCrcStartIndex CONSTANT)
-    Q_PROPERTY(QString itemCrcEndIndex READ itemCrcEndIndex CONSTANT)
-    Q_PROPERTY(QString itemText READ itemText CONSTANT)
-
-    Q_PROPERTY(QStringList descriptions READ descriptions NOTIFY descriptionsChanged)
 public:
     struct Item
     {
         QString itemDescription{"Demo"};
-        int itemTextFormat;
-        int itemEscapeCharacter;
-        int itemPrefix;
-        QString itemText;
-        int itemSuffix;
-
-        bool itemCrcEnable;
-        bool itemCrxBigEndian;
-        int itemCrcAlgorithm;
-        int itemCrcStartIndex;
-        int itemCrcEndIndex;
+        xIO::TextItemContext textContext;
     };
 
     struct ItemKeys
     {
-        const QString itemDescription{"Description"};
-        const QString itemTextFormat{"Format"};
-        const QString itemEscapeCharacter{"Escape"};
-        const QString itemPrefix{"Prefix"};
-        const QString itemSuffix{"Suffix"};
-        const QString itemCrcEnable{"CrcEnable"};
-        const QString itemCrcBigEndian{"BigEndian"};
-        const QString itemCrcAlgorithm{"Algorithm"};
-        const QString itemCrcStartIndex{"Start"};
-        const QString itemCrcEndIndex{"End"};
-        const QString itemText{"Data"};
+        const QString itemDescription{"description"};
+        const QString itemTextFormat{"format"};
+        const QString itemEscapeCharacter{"escapeCharacter"};
+        const QString itemPrefix{"prefix"};
+        const QString itemSuffix{"suffix"};
+        const QString itemCrcEnable{"crcEnable"};
+        const QString itemCrcBigEndian{"crcBigEndian"};
+        const QString itemCrcAlgorithm{"crcAlgorithm"};
+        const QString itemCrcStartIndex{"crcStartIndex"};
+        const QString itemCrcEndIndex{"crcEndIndex"};
+        const QString itemText{"text"};
     };
 
 public:
     explicit Preset(QObject *parent = nullptr);
-    virtual QString cookHeaderString(const QString &str) override;
-    Q_INVOKABLE virtual QVariant itemContext(int index) final;
-    QString description(int index);
-
-    Q_INVOKABLE void send(int index);
-
-protected:
-    void inputBytes(const QByteArray &bytes) override;
-    void run() override;
 
     // clang-format off
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -90,41 +56,12 @@ protected:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
     // clang-format on
 
-private:
-    void try2send();
+protected:
+    void inputBytes(const QByteArray &bytes) override;
+    void run() override;
 
 private:
-    const int mScanInterval{5};
-    QList<int> mIndexs;
-    QMutex mIndexsMutex;
-
-private:
-    QVector<Item> mItems;
-    QMutex mItemsMutex;
-    struct ItemKeys mDataKeys;
-    const int mTableColumnCount{11};
-
-private:
-    QByteArray itemBytes(const Item &item);
-    QVariant columnDisplayRoleData(const Item &item, int column) const;
-
-private:
-    QString itemDescription();
-    QString itemTextFormat();
-    QString itemEscapeCharacter();
-    QString itemPrefix();
-    QString itemSuffix();
-    QString itemCrcEnable();
-    QString itemCrcBigEndian();
-    QString itemCrcAlgorithm();
-    QString itemCrcStartIndex();
-    QString itemCrcEndIndex();
-    QString itemText();
-
-    QStringList descriptions();
-
-Q_SIGNALS:
-    void descriptionsChanged();
+    QList<Item> m_items;
 };
 
 } // namespace xTools

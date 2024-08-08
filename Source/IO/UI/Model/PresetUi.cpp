@@ -12,7 +12,10 @@
 #include <QHeaderView>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QJsonObject>
+#include <QLineEdit>
 #include <QStandardItemModel>
+#include <QStyledItemDelegate>
 #include <QTableView>
 
 #include "../../IO/AbstractIO.h"
@@ -22,49 +25,47 @@ namespace xTools {
 PresetUi::PresetUi(QWidget *parent)
     : AbstractModelUi(parent)
 {
+    m_menu = new QMenu(this);
 
+    auto *tv = tableView();
+    auto hHeader = tv->horizontalHeader();
+    hHeader->setStretchLastSection(true);
 }
 
 PresetUi::~PresetUi() {}
 
 QMenu *PresetUi::menu()
 {
-    return nullptr;
+    return m_menu;
 }
 
 QVariantMap PresetUi::save() const
 {
-    return QVariantMap();
+    QVariantMap map;
+    return map;
 }
 
 void PresetUi::load(const QVariantMap &parameters)
 {
-    Q_UNUSED(parameters);
+    auto items = parameters.value("items").toJsonArray();
+    if (items.isEmpty()) {
+        return;
+    }
+
+    for (int i = 0; i < items.size(); i++) {
+        auto item = items.at(i).toObject();
+        m_model->insertColumns(i, 1);
+    }
 }
 
 void PresetUi::setupIO(AbstractIO *io)
 {
-    Q_UNUSED(io);
+    AbstractModelUi::setupIO(io);
 }
 
-void PresetUi::onBaseToolUiInitialized(AbstractIO *tool, const QString &settingGroup)
+QList<int> PresetUi::universalColumns() const
 {
-    Q_UNUSED(tool);
-    Q_UNUSED(settingGroup);
-}
-
-QList<int> PresetUi::defaultHideColumns()
-{
-    QList<int> list;
-
-    return list;
-}
-
-void PresetUi::afterRowEdited(int row) {}
-
-QDialog *PresetUi::itemEditor()
-{
-    return nullptr;
+    return QList<int>{1};
 }
 
 } // namespace xTools

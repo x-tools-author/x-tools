@@ -17,6 +17,7 @@ class TableModel : public QAbstractTableModel
     Q_OBJECT
 public:
     explicit TableModel(QObject *parent = nullptr);
+    void setEitableColumns(QList<int> columns);
 
 public:
     // clang-format off
@@ -29,6 +30,8 @@ public:
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
     // clang-format on
 
+    Qt::ItemFlags flags(const QModelIndex &index) const override;
+
 signals:
     // You must connect these signals using Qt::DirectConnection mode.
     // clang-format off
@@ -40,6 +43,9 @@ signals:
     void invokeRemoveRows(bool &result, int row, int count, const QModelIndex &parent = QModelIndex());
     void invokeGetHeaderData(QVariant &data, int section, Qt::Orientation orientation, int role = Qt::DisplayRole);
     // clang-format on
+
+private:
+    QList<int> m_editableColumns;
 };
 
 } // namespace xTools
