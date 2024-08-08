@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QSerialPort>
+#include <QTimer>
 
 #include "Communication.h"
 
