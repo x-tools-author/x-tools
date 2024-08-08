@@ -79,10 +79,6 @@ public:
     explicit Emitter(QObject *parent = Q_NULLPTR);
     virtual void inputBytes(const QByteArray &bytes) override;
 
-public:
-    virtual QString cookHeaderString(const QString &str) override;
-    virtual QVariant itemContext(int index) final;
-
 protected:
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     virtual int columnCount(const QModelIndex &parent = QModelIndex()) const override;

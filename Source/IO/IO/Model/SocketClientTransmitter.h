@@ -17,8 +17,6 @@ class SocketClientTransmitter : public AbstractTransmitter
     Q_OBJECT
 public:
     explicit SocketClientTransmitter(QObject *parent = nullptr);
-    virtual QString cookHeaderString(const QString &str) override;
-    Q_INVOKABLE virtual QVariant itemContext(int index) override;
 
 public:
     struct ItemContextKeys

@@ -56,64 +56,9 @@ AbstractModel::AbstractModel(QObject *parent)
             Qt::DirectConnection);
 }
 
-QVariant AbstractModel::tableModel()
+QVariant AbstractModel::tableModel() const
 {
     return QVariant::fromValue(m_tableModel);
-}
-
-QStringList AbstractModel::headers() const
-{
-    int count = columnCount();
-    QStringList strList;
-    for (int i = 0; i < count; i++) {
-        QVariant var = headerData(i, Qt::Horizontal);
-        strList.append(var.toString());
-    }
-
-    return strList;
-}
-
-void AbstractModel::addItem(const QString &jsonCtx, int index)
-{
-    QByteArray json = jsonCtx.toUtf8();
-    QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
-    if (!(index >= 0 && index < rowCount())) {
-        m_tableModel->insertRows(m_tableModel->rowCount(), 1);
-        index = m_tableModel->rowCount() - 1;
-    }
-
-    for (int i = 0; i < headers().count(); i++) {
-        if (i >= columnCount()) {
-            qWarning() << "Invalid column index!";
-            return;
-        }
-
-        auto key = headers().at(i);
-        auto modelIndex = m_tableModel->index(index, i);
-        m_tableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);
-        qInfo() << qPrintable(QString("set %1 as").arg(key)) << jsonObj.value(key);
-    }
-}
-
-QVariant AbstractModel::itemsContext()
-{
-    QJsonArray arr;
-    int rowCount = m_tableModel->rowCount();
-    for (int i = 0; i < rowCount; i++) {
-        arr.append(itemContext(i).toJsonObject());
-    }
-
-    return QVariant::fromValue(arr);
-}
-
-QString AbstractModel::cookHeaderString(const QString &str)
-{
-    return str;
-}
-
-QVariant AbstractModel::itemContext(int index)
-{
-    return QVariant();
 }
 
 void AbstractModel::onInvokeGetRowCount(int &count)

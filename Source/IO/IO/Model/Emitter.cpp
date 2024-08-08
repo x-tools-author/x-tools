@@ -25,79 +25,6 @@ void Emitter::inputBytes(const QByteArray &bytes)
     Q_UNUSED(bytes)
 }
 
-QVariant Emitter::itemContext(int index)
-{
-    QJsonObject ctx;
-    mItemsMutex.lock();
-    if (index >= 0 && index < mItems.count()) {
-        auto item = mItems.at(index);
-        ctx.insert(itemEnable(), item.data.itemEnable);
-        ctx.insert(itemDescription(), item.data.itemDescription);
-        ctx.insert(itemTextFormat(), item.data.itemTextFormat);
-        ctx.insert(itemEscapeCharacter(), item.data.itemEscapeCharacter);
-        ctx.insert(itemInterval(), item.data.itemInterval);
-        ctx.insert(itemPrefix(), item.data.itemPrefix);
-        ctx.insert(itemSuffix(), item.data.itemSuffix);
-        ctx.insert(itemCrcEnable(), item.data.itemCrcEnable);
-        ctx.insert(itemCrcBigEndian(), item.data.itemCrcBigEndian);
-        ctx.insert(itemCrcAlgorithm(), item.data.itemCrcAlgorithm);
-        ctx.insert(itemCrcStartIndex(), item.data.itemCrcStartIndex);
-        ctx.insert(itemCrcEndIndex(), item.data.itemCrcEndIndex);
-        ctx.insert(itemText(), item.data.itemText);
-    } else {
-        ctx.insert(itemEnable(), true);
-        ctx.insert(itemDescription(), "Demo");
-        ctx.insert(itemTextFormat(), static_cast<int>(xIO::TextFormat::Ascii));
-        ctx.insert(itemEscapeCharacter(), static_cast<int>(xIO::EscapeCharacter::None));
-        ctx.insert(itemInterval(), 1000);
-        ctx.insert(itemPrefix(), static_cast<int>(xIO::Affixes::None));
-        ctx.insert(itemSuffix(), static_cast<int>(xIO::Affixes::None));
-        ctx.insert(itemCrcEnable(), false);
-        ctx.insert(itemCrcBigEndian(), false);
-        ctx.insert(itemCrcAlgorithm(), static_cast<int>(xIO::CrcAlgorithm::CRC_8));
-        ctx.insert(itemCrcStartIndex(), 0);
-        ctx.insert(itemCrcEndIndex(), 0);
-        ctx.insert(itemText(), "This is a demo.");
-    }
-    mItemsMutex.unlock();
-
-    return ctx;
-}
-
-QString Emitter::cookHeaderString(const QString &str)
-{
-    DataKeys keys;
-    if (str == keys.itemEnable) {
-        return tr("Enable");
-    } else if (str == keys.itemDescription) {
-        return tr("Description");
-    } else if (str == keys.itemTextFormat) {
-        return tr("Format");
-    } else if (str == keys.itemEscapeCharacter) {
-        return tr("Escape Character");
-    } else if (str == keys.itemPrefix) {
-        return tr("Prefix");
-    } else if (str == keys.itemSuffix) {
-        return tr("Suffix");
-    } else if (str == keys.itemInterval) {
-        return tr("Interval");
-    } else if (str == keys.itemCrcEnable) {
-        return tr("Append CRC");
-    } else if (str == keys.itemCrcBigEndian) {
-        return tr("Big Endian");
-    } else if (str == keys.itemCrcAlgorithm) {
-        return tr("Algorithm");
-    } else if (str == keys.itemCrcStartIndex) {
-        return tr("Start Index");
-    } else if (str == keys.itemCrcEndIndex) {
-        return tr("End Index");
-    } else if (str == keys.itemText) {
-        return tr("Data");
-    }
-
-    return "--";
-}
-
 int Emitter::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
@@ -127,45 +54,6 @@ QVariant Emitter::data(const QModelIndex &index, int role) const
 bool Emitter::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     Q_UNUSED(role);
-    int row = index.row();
-    if (row >= 0 && row < mItems.count()) {
-        auto item = mItems.at(row);
-        int column = index.column();
-        if (column >= 0 && column < headers().count()) {
-            auto dataKey = headers().at(column);
-            if (dataKey == mDataKeys.itemEnable) {
-                item.data.itemEnable = value.toBool();
-            } else if (dataKey == mDataKeys.itemDescription) {
-                item.data.itemDescription = value.toString();
-            } else if (dataKey == mDataKeys.itemTextFormat) {
-                item.data.itemTextFormat = value.toInt();
-            } else if (dataKey == mDataKeys.itemEscapeCharacter) {
-                item.data.itemEscapeCharacter = value.toInt();
-            } else if (dataKey == mDataKeys.itemInterval) {
-                item.data.itemInterval = value.toInt();
-            } else if (dataKey == mDataKeys.itemPrefix) {
-                item.data.itemPrefix = value.toInt();
-            } else if (dataKey == mDataKeys.itemSuffix) {
-                item.data.itemSuffix = value.toInt();
-            } else if (dataKey == mDataKeys.itemCrcEnable) {
-                item.data.itemCrcEnable = value.toBool();
-            } else if (dataKey == mDataKeys.itemCrcBigEndian) {
-                item.data.itemCrcBigEndian = value.toBool();
-            } else if (dataKey == mDataKeys.itemCrcAlgorithm) {
-                item.data.itemCrcAlgorithm = value.toInt();
-            } else if (dataKey == mDataKeys.itemCrcStartIndex) {
-                item.data.itemCrcStartIndex = value.toInt();
-            } else if (dataKey == mDataKeys.itemCrcEndIndex) {
-                item.data.itemCrcEndIndex = value.toInt();
-            } else if (dataKey == mDataKeys.itemText) {
-                item.data.itemText = value.toString();
-            } else {
-                qWarning() << "Unknown data key:" + dataKey;
-            }
-
-            mItems.replace(row, item);
-        }
-    }
 
     return true;
 }
@@ -289,42 +177,6 @@ QByteArray Emitter::itemBytes(const Emitter::Data &item)
 
 QVariant Emitter::columnDisplayRoleData(const Emitter::EmitterItem &item, int column) const
 {
-    DataKeys keys;
-    QStringList hs = const_cast<Emitter *>(this)->headers();
-    if (column >= 0 && column < hs.count()) {
-        const QString dataKey = hs.at(column);
-        if (dataKey == mDataKeys.itemEnable) {
-            return item.data.itemEnable;
-        } else if (dataKey == mDataKeys.itemDescription) {
-            return item.data.itemDescription;
-        } else if (dataKey == mDataKeys.itemTextFormat) {
-            return item.data.itemEscapeCharacter;
-        } else if (dataKey == mDataKeys.itemEscapeCharacter) {
-            return item.data.itemEscapeCharacter;
-        } else if (dataKey == mDataKeys.itemInterval) {
-            return item.data.itemInterval;
-        } else if (dataKey == mDataKeys.itemPrefix) {
-            return item.data.itemPrefix;
-        } else if (dataKey == mDataKeys.itemSuffix) {
-            return item.data.itemSuffix;
-        } else if (dataKey == mDataKeys.itemCrcEnable) {
-            return item.data.itemCrcEnable;
-        } else if (dataKey == mDataKeys.itemCrcBigEndian) {
-            return item.data.itemCrcBigEndian;
-        } else if (dataKey == mDataKeys.itemCrcAlgorithm) {
-            return item.data.itemCrcAlgorithm;
-        } else if (dataKey == mDataKeys.itemCrcStartIndex) {
-            return item.data.itemCrcStartIndex;
-        } else if (dataKey == mDataKeys.itemCrcEndIndex) {
-            return item.data.itemCrcEndIndex;
-        } else if (dataKey == mDataKeys.itemText) {
-            return item.data.itemText;
-        } else {
-            qWarning() << "Unknown data key:" + dataKey;
-            return "Error";
-        }
-    }
-
     return QVariant("Error");
 }
 

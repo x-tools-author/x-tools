@@ -21,8 +21,6 @@ namespace xTools {
 class Responser : public AbstractModel
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
-    Q_PROPERTY(QStringList headers READ headers CONSTANT)
 
     Q_PROPERTY(QString itemEnable READ itemEnable CONSTANT)
     Q_PROPERTY(QString itemDescription READ itemDescription CONSTANT)
@@ -118,8 +116,7 @@ public:
 
 public:
     explicit Responser(QObject *parent = nullptr);
-    Q_INVOKABLE QVariant itemContext(int index) override;
-    QString cookHeaderString(const QString &str) override;
+
     void inputBytes(const QByteArray &bytes) override;
 
 protected:

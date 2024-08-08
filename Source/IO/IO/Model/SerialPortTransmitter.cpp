@@ -20,59 +20,6 @@ SerialPortTransmitter::SerialPortTransmitter(QObject *parent)
     : AbstractTransmitter{parent}
 {}
 
-QString SerialPortTransmitter::cookHeaderString(const QString &str)
-{
-    ItemContextKey keys;
-    if (str == keys.enable) {
-        return tr("enable");
-    } else if (str == keys.portName) {
-        return tr("portName");
-    } else if (str == keys.baudRate) {
-        return tr("baudRate");
-    } else if (str == keys.parity) {
-        return tr("parity");
-    } else if (str == keys.stopBits) {
-        return tr("stopBits");
-    } else if (str == keys.dataBits) {
-        return tr("dataBits");
-    } else if (str == keys.flowControl) {
-        return tr("flowControl");
-    } else if (str == keys.description) {
-        return tr("description");
-    }
-
-    return "--";
-}
-
-QVariant SerialPortTransmitter::itemContext(int index)
-{
-    QJsonObject obj;
-    ItemContextKey ctx;
-    if (index >= 0 && index < m_tools.count()) {
-#if 0
-        SerialPort *tool = qobject_cast<SerialPort *>(m_tools.value(index));
-        obj.insert(ctx.baudRate, tool->baudRate());
-        obj.insert(ctx.dataBits, tool->dataBits());
-        obj.insert(ctx.enable, tool->isEnable());
-        obj.insert(ctx.flowControl, tool->flowControl());
-        obj.insert(ctx.parity, tool->parity());
-        obj.insert(ctx.portName, tool->portName());
-        obj.insert(ctx.stopBits, tool->stopBits());
-#endif
-    } else {
-        obj.insert(ctx.baudRate, 9600);
-        obj.insert(ctx.dataBits, QSerialPort::Data8);
-        obj.insert(ctx.enable, true);
-        obj.insert(ctx.flowControl, QSerialPort::NoFlowControl);
-        obj.insert(ctx.parity, QSerialPort::NoParity);
-        obj.insert(ctx.portName, "");
-        obj.insert(ctx.stopBits, QSerialPort::OneStop);
-        qInfo() << "get default value:" << obj;
-    }
-
-    return obj;
-}
-
 void SerialPortTransmitter::inputBytes(const QByteArray &bytes)
 {
     QByteArray ba = xToolsByteArrayToHex(bytes, ' ');

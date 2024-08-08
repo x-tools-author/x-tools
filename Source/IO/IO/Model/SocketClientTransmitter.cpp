@@ -18,56 +18,6 @@ SocketClientTransmitter::SocketClientTransmitter(QObject *parent)
     : AbstractTransmitter{parent}
 {}
 
-QString SocketClientTransmitter::cookHeaderString(const QString &str)
-{
-    ItemContextKeys keys;
-    if (str == keys.enable) {
-        return tr("Enable");
-    } else if (str == keys.clientIp) {
-        return tr("ClientIp");
-    } else if (str == keys.clientPort) {
-        return tr("ClientPort");
-    } else if (str == keys.specifiedClientIpPort) {
-        return tr("SpecifiedClientIpAndPort");
-    } else if (str == keys.serverIp) {
-        return tr("ServerIp");
-    } else if (str == keys.serverPort) {
-        return tr("ServerPort");
-    } else if (str == keys.messageType) {
-        return tr("MessageType");
-    }
-
-    return "--";
-}
-
-QVariant SocketClientTransmitter::itemContext(int index)
-{
-    QJsonObject obj;
-    ItemContextKeys keys;
-    if (index >= 0 && index < m_tools.count()) {
-        SocketClient *tool = qobject_cast<SocketClient *>(m_tools.value(index));
-#if 0
-        obj.insert(keys.enable, tool->isEnable());
-        obj.insert(keys.clientIp, tool->clientIp());
-        obj.insert(keys.clientPort, tool->clientPort());
-        obj.insert(keys.specifiedClientIpPort, tool->specifyClientIpPort());
-        obj.insert(keys.serverIp, tool->serverIp());
-        obj.insert(keys.serverPort, tool->serverPort());
-        obj.insert(keys.messageType, tool->messageType());
-#endif
-    } else {
-        obj.insert(keys.enable, true);
-        obj.insert(keys.clientIp, "127.0.0.1");
-        obj.insert(keys.clientPort, 55555);
-        obj.insert(keys.specifiedClientIpPort, false);
-        obj.insert(keys.serverIp, "127.0.0.1");
-        obj.insert(keys.serverPort, 44444);
-        obj.insert(keys.messageType, 0);
-    }
-
-    return obj;
-}
-
 int SocketClientTransmitter::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)

@@ -35,8 +35,6 @@ public:
 
 public:
     explicit SerialPortTransmitter(QObject *parent = nullptr);
-    virtual QString cookHeaderString(const QString &str) override;
-    Q_INVOKABLE virtual QVariant itemContext(int index) override;
     virtual void inputBytes(const QByteArray &bytes) override;
 
 protected:

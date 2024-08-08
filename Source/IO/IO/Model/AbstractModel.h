@@ -16,18 +16,10 @@ namespace xTools {
 class AbstractModel : public AbstractIO
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
-    Q_PROPERTY(QStringList headers READ headers CONSTANT)
 public:
     explicit AbstractModel(QObject *parent = nullptr);
 
-    QVariant tableModel();
-    QStringList headers() const;
-
-    Q_INVOKABLE void addItem(const QString &jsonCtx, int index = -1);
-    Q_INVOKABLE QVariant itemsContext();
-    Q_INVOKABLE virtual QString cookHeaderString(const QString &str);
-    Q_INVOKABLE virtual QVariant itemContext(int index);
+    QVariant tableModel() const;
 
     // clang-format off
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const = 0;
