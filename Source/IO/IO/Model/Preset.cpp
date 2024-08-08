@@ -80,7 +80,7 @@ bool Preset::insertRows(int row, int count, const QModelIndex &parent)
 
     xIO::TextItemContext textContext = xIO::defaultTextItemContext();
     for (int i = 0; i < count; i++) {
-        Item item{tr("Demo") + QString::number(rowCount()), textContext};
+        Item item{tr("Demo") + QString::number(rowCount(QModelIndex())), textContext};
         m_items.insert(row, item);
     }
 
