@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "AbstractModel.h"
+#include "AbstractModelIO.h"
 
 #include <QDebug>
 #include <QJsonArray>
@@ -14,7 +14,7 @@
 
 namespace xTools {
 
-AbstractModel::AbstractModel(QObject *parent)
+AbstractModelIO::AbstractModelIO(QObject *parent)
     : AbstractIO{parent}
 {
     m_tableModel = new TableModel(this);
@@ -22,61 +22,61 @@ AbstractModel::AbstractModel(QObject *parent)
     connect(m_tableModel,
             &TableModel::invokeGetRowCount,
             this,
-            &AbstractModel::onInvokeGetRowCount,
+            &AbstractModelIO::onInvokeGetRowCount,
             Qt::DirectConnection);
     connect(m_tableModel,
             &TableModel::invokeGetColumnCount,
             this,
-            &AbstractModel::onInvokeGetColumnCount,
+            &AbstractModelIO::onInvokeGetColumnCount,
             Qt::DirectConnection);
     connect(m_tableModel,
             &TableModel::invokeGetData,
             this,
-            &AbstractModel::onInvokeGetData,
+            &AbstractModelIO::onInvokeGetData,
             Qt::DirectConnection);
     connect(m_tableModel,
             &TableModel::invokeSetData,
             this,
-            &AbstractModel::onInvokeSetData,
+            &AbstractModelIO::onInvokeSetData,
             Qt::DirectConnection);
     connect(m_tableModel,
             &TableModel::invokeInsertRows,
             this,
-            &AbstractModel::onInvokeInsertRows,
+            &AbstractModelIO::onInvokeInsertRows,
             Qt::DirectConnection);
     connect(m_tableModel,
             &TableModel::invokeRemoveRows,
             this,
-            &AbstractModel::onInvokeRemoveRows,
+            &AbstractModelIO::onInvokeRemoveRows,
             Qt::DirectConnection);
     connect(m_tableModel,
             &TableModel::invokeGetHeaderData,
             this,
-            &AbstractModel::onInvokeGetHeaderData,
+            &AbstractModelIO::onInvokeGetHeaderData,
             Qt::DirectConnection);
 }
 
-QVariant AbstractModel::tableModel() const
+QVariant AbstractModelIO::tableModel() const
 {
     return QVariant::fromValue(m_tableModel);
 }
 
-void AbstractModel::onInvokeGetRowCount(int &count)
+void AbstractModelIO::onInvokeGetRowCount(int &count)
 {
     count = rowCount();
 }
 
-void AbstractModel::onInvokeGetColumnCount(int &count)
+void AbstractModelIO::onInvokeGetColumnCount(int &count)
 {
     count = columnCount();
 }
 
-void AbstractModel::onInvokeGetData(QVariant &data, const QModelIndex &index, int role)
+void AbstractModelIO::onInvokeGetData(QVariant &data, const QModelIndex &index, int role)
 {
     data = this->data(index, role);
 }
 
-void AbstractModel::onInvokeSetData(bool &result,
+void AbstractModelIO::onInvokeSetData(bool &result,
                                     const QModelIndex &index,
                                     const QVariant &value,
                                     int role)
@@ -84,17 +84,17 @@ void AbstractModel::onInvokeSetData(bool &result,
     result = setData(index, value, role);
 }
 
-void AbstractModel::onInvokeInsertRows(bool &result, int row, int count, const QModelIndex &parent)
+void AbstractModelIO::onInvokeInsertRows(bool &result, int row, int count, const QModelIndex &parent)
 {
     result = insertRows(row, count, parent);
 }
 
-void AbstractModel::onInvokeRemoveRows(bool &result, int row, int count, const QModelIndex &parent)
+void AbstractModelIO::onInvokeRemoveRows(bool &result, int row, int count, const QModelIndex &parent)
 {
     result = removeRows(row, count, parent);
 }
 
-void AbstractModel::onInvokeGetHeaderData(QVariant &data,
+void AbstractModelIO::onInvokeGetHeaderData(QVariant &data,
                                           int section,
                                           Qt::Orientation orientation,
                                           int role)

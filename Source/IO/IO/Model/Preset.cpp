@@ -16,7 +16,7 @@
 namespace xTools {
 
 Preset::Preset(QObject *parent)
-    : AbstractModel{parent}
+    : AbstractModelIO{parent}
 {
 
 }

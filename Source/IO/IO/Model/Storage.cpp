@@ -17,7 +17,7 @@
 namespace xTools {
 
 Storage::Storage(QObject *parent)
-    : AbstractModel{parent}
+    : AbstractModelIO{parent}
 {}
 
 Storage::~Storage() {}

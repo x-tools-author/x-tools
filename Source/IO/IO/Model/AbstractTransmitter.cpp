@@ -16,7 +16,7 @@
 namespace xTools {
 
 AbstractTransmitter::AbstractTransmitter(QObject *parent)
-    : AbstractModel{parent}
+    : AbstractModelIO{parent}
 {
     connect(m_tableModel,
             &QAbstractTableModel::dataChanged,

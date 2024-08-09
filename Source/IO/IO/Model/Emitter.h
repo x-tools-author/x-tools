@@ -11,11 +11,11 @@
 #include <QMutex>
 
 #include "../../xIO.h"
-#include "AbstractModel.h"
+#include "AbstractModelIO.h"
 
 namespace xTools {
 
-class Emitter : public AbstractModel
+class Emitter : public AbstractModelIO
 {
     Q_OBJECT
 public:

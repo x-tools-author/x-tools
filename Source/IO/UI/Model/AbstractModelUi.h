@@ -25,7 +25,7 @@ class AbstractModelUi;
 namespace xTools {
 
 class DataEditor;
-class AbstractModel;
+class AbstractModelIO;
 class AbstractModelUi : public AbstractIOUi
 {
     Q_OBJECT
@@ -44,7 +44,7 @@ protected:
 
 protected:
     QAbstractTableModel *m_model{nullptr};
-    AbstractModel *m_io{nullptr};
+    AbstractModelIO *m_io{nullptr};
 
 private:
     Ui::AbstractModelUi *ui{nullptr};

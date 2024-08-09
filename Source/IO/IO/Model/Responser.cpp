@@ -21,7 +21,7 @@
 namespace xTools {
 
 Responser::Responser(QObject *parent)
-    : AbstractModel{parent}
+    : AbstractModelIO{parent}
 {}
 
 int Responser::rowCount(const QModelIndex &parent) const

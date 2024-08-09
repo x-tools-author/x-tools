@@ -12,13 +12,13 @@
 #include <QMutex>
 #include <QVariant>
 
-#include "AbstractModel.h"
+#include "AbstractModelIO.h"
 
 #define SAK_STR_PROPERTY(name) Q_PROPERTY(QString name READ name CONSTANT)
 
 namespace xTools {
 
-class Responser : public AbstractModel
+class Responser : public AbstractModelIO
 {
     Q_OBJECT
 

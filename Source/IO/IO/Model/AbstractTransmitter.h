@@ -10,13 +10,13 @@
 
 #include <QMutex>
 
-#include "AbstractModel.h"
+#include "AbstractModelIO.h"
 
 class Communication;
 
 namespace xTools {
 
-class AbstractTransmitter : public AbstractModel
+class AbstractTransmitter : public AbstractModelIO
 {
     Q_OBJECT
 public:

@@ -16,7 +16,7 @@
 namespace xTools {
 
 Emitter::Emitter(QObject *parent)
-    : AbstractModel{parent}
+    : AbstractModelIO{parent}
 {}
 
 QVariantMap Emitter::saveItem(const int row) const

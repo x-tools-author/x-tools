@@ -17,7 +17,7 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 
-#include "../../IO/Model/AbstractModel.h"
+#include "../../IO/Model/AbstractModelIO.h"
 #include "../../Unit/DataEditor.h"
 
 namespace xTools {
@@ -104,7 +104,7 @@ void AbstractModelUi::load(const QVariantMap &parameters)
 
 void AbstractModelUi::setupIO(AbstractIO *io)
 {
-    m_io = qobject_cast<AbstractModel *>(io);
+    m_io = qobject_cast<AbstractModelIO *>(io);
     if (m_io) {
         auto tableModelVar = m_io->tableModel();
         m_model = qvariant_cast<QAbstractTableModel *>(tableModelVar);

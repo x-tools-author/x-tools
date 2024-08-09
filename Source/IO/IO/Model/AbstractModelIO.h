@@ -13,11 +13,11 @@
 
 namespace xTools {
 
-class AbstractModel : public AbstractIO
+class AbstractModelIO : public AbstractIO
 {
     Q_OBJECT
 public:
-    explicit AbstractModel(QObject *parent = nullptr);
+    explicit AbstractModelIO(QObject *parent = nullptr);
 
     QVariant tableModel() const;
 

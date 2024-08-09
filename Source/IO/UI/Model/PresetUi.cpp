@@ -18,7 +18,7 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
-#include "../../IO/Model/AbstractModel.h"
+#include "../../IO/Model/AbstractModelIO.h"
 #include "../../xIO.h"
 
 namespace xTools {

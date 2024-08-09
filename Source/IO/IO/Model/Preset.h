@@ -11,11 +11,11 @@
 #include <QTimer>
 
 #include "../../xIO.h"
-#include "AbstractModel.h"
+#include "AbstractModelIO.h"
 
 namespace xTools {
 
-class Preset : public AbstractModel
+class Preset : public AbstractModelIO
 {
     Q_OBJECT
 public:

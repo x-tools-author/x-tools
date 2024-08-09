@@ -11,11 +11,11 @@
 #include <QMutex>
 #include <QTimer>
 
-#include "AbstractModel.h"
+#include "AbstractModelIO.h"
 
 namespace xTools {
 
-class Storage : public AbstractModel
+class Storage : public AbstractModelIO
 {
     Q_OBJECT
     Q_PROPERTY(bool saveRx READ saveRx WRITE setSaveRx NOTIFY saveRxChanged)
