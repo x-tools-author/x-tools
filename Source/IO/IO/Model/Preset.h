@@ -23,9 +23,9 @@ public:
 
     QVariantMap saveItem(const int row) const override;
     void loadItem(const int row, const QVariantMap &item) override;
+    void inputBytes(const QByteArray &bytes) override;
 
 protected:
-    void inputBytes(const QByteArray &bytes) override;
     void run() override;
 
     int rowCount(const QModelIndex &parent) const override;

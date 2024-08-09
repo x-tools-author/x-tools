@@ -40,7 +40,7 @@ public:
     void setupIO(AbstractIO *io) override;
 
 protected:
-    virtual QList<int> universalColumns() const;
+    virtual QList<int> textItemColumns() const;
 
 protected:
     QAbstractTableModel *m_model{nullptr};

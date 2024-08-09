@@ -18,6 +18,7 @@ class TableModel : public QAbstractTableModel
 public:
     explicit TableModel(QObject *parent = nullptr);
     void setEitableColumns(const QList<int> &columns);
+    void setCheckableColumns(const QList<int> &columns);
 
 public:
     // clang-format off
@@ -46,6 +47,7 @@ signals:
 
 private:
     QList<int> m_editableColumns;
+    QList<int> m_checkableColumns;
 };
 
 } // namespace xTools

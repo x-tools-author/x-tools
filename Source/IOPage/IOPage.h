@@ -23,9 +23,11 @@ QT_END_NAMESPACE
 QT_BEGIN_NAMESPACE
 namespace xTools {
 class Preset;
+class Emitter;
 }
 QT_END_NAMESPACE
 
+class AbstractIO;
 class Statistician;
 class InputSettings;
 class OutputSettings;
@@ -66,6 +68,7 @@ private:
         const QString inputSettings{"inputSettings"};
 
         const QString presetItems{"presetItems"};
+        const QString emitterItems{"emitterItems"};
     } m_keys;
 
 private:
@@ -81,8 +84,10 @@ private:
     Statistician *m_rxStatistician;
     Statistician *m_txStatistician;
     xTools::Preset *m_preset;
+    xTools::Emitter *m_emitter;
     QButtonGroup m_pageButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_pageContextMap;
+    QList<AbstractIO *> m_ioList;
 
 private:
     void initUi();

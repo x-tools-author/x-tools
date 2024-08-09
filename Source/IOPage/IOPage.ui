@@ -498,6 +498,7 @@
          </layout>
         </widget>
         <widget class="xTools::PresetUi" name="pagePreset"/>
+        <widget class="xTools::EmitterUi" name="pageEmitter"/>
        </widget>
       </item>
      </layout>
@@ -516,6 +517,12 @@
    <class>xTools::PresetUi</class>
    <extends>QWidget</extends>
    <header location="global">IO/UI/Model/PresetUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::EmitterUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Model/EmitterUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

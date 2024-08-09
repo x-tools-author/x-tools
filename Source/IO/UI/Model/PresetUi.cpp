@@ -48,7 +48,7 @@ void PresetUi::setupIO(AbstractIO *io)
     connect(m_model, &QAbstractTableModel::rowsInserted, this, &PresetUi::onDataChanged);
 }
 
-QList<int> PresetUi::universalColumns() const
+QList<int> PresetUi::textItemColumns() const
 {
     return QList<int>{1};
 }

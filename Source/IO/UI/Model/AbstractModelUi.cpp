@@ -121,7 +121,7 @@ void AbstractModelUi::setupIO(AbstractIO *io)
     }
 }
 
-QList<int> AbstractModelUi::universalColumns() const
+QList<int> AbstractModelUi::textItemColumns() const
 {
     return QList<int>();
 }
@@ -204,7 +204,7 @@ void AbstractModelUi::onPushButtonAddClicked()
 void AbstractModelUi::onCellDoubleClicked(const QModelIndex &index)
 {
     int column = index.column();
-    auto universalColumns = this->universalColumns();
+    auto universalColumns = this->textItemColumns();
     if (!universalColumns.contains(column)) {
         return;
     }

@@ -8,11 +8,10 @@
  **************************************************************************************************/
 #include "Emitter.h"
 
-#include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
-
-#include "../../xIO.h"
+#include <QTimer>
+#include <QVariant>
 
 namespace xTools {
 
@@ -20,32 +19,106 @@ Emitter::Emitter(QObject *parent)
     : AbstractModel{parent}
 {}
 
+QVariantMap Emitter::saveItem(const int row) const
+{
+    if (row < 0 || row >= m_items.count()) {
+        qWarning() << "Invalid index row: " << row;
+        return QVariantMap();
+    }
+
+    QVariant var = m_tableModel->data(m_tableModel->index(row, 0), Qt::DisplayRole);
+    QString description = var.toString();
+
+    var = m_tableModel->data(m_tableModel->index(row, 1), Qt::EditRole);
+    int interval = var.toInt();
+
+    var = m_tableModel->data(m_tableModel->index(row, 2), Qt::EditRole);
+    QJsonObject item = var.toJsonObject();
+
+    QVariantMap map = item.toVariantMap();
+    map.insert("description", description);
+    map.insert("interval", interval);
+    return map;
+}
+
+void Emitter::loadItem(const int row, const QVariantMap &item)
+{
+    if (row < 0 || row >= m_items.count()) {
+        qWarning() << "Invalid index row: " << row;
+        return;
+    }
+
+    QString description = item.value("description").toString();
+    m_tableModel->setData(m_tableModel->index(row, 0), description, Qt::EditRole);
+
+    int interval = item.value("interval").toInt();
+    m_tableModel->setData(m_tableModel->index(row, 1), interval, Qt::EditRole);
+
+    QJsonObject json = QJsonObject::fromVariantMap(item);
+    m_tableModel->setData(m_tableModel->index(row, 2), json, Qt::EditRole);
+}
+
 void Emitter::inputBytes(const QByteArray &bytes)
 {
     Q_UNUSED(bytes)
 }
 
+void Emitter::run()
+{
+    QTimer *timer = new QTimer();
+    timer->setInterval(10);
+    timer->setSingleShot(true);
+    connect(timer, &QTimer::timeout, timer, [=]() {
+        trye2Emit();
+        timer->start();
+    });
+
+#if 1
+    timer->start();
+#endif
+    exec();
+
+    timer->stop();
+    timer->deleteLater();
+}
+
 int Emitter::rowCount(const QModelIndex &parent) const
 {
-    Q_UNUSED(parent);
-    return mItems.count();
+    m_itemsMutex.lock();
+    int count = m_items.count();
+    m_itemsMutex.unlock();
+    return count;
 }
 
 int Emitter::columnCount(const QModelIndex &parent) const
 {
-    Q_UNUSED(parent);
-    return mTableColumnCount;
+    return 3;
 }
 
 QVariant Emitter::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
-    if (row >= 0 && row < mItems.count()) {
-        int column = index.column();
-        const EmitterItem &item = mItems[row];
-        if (role == Qt::DisplayRole) {
-            return columnDisplayRoleData(item, column);
-        }
+    if (row < 0 || row >= m_items.count()) {
+        return QVariant();
+    }
+
+    m_itemsMutex.lock();
+    const Item item = m_items.at(row);
+    m_itemsMutex.unlock();
+
+    int column = index.column();
+    if ((column == 0) && (role == Qt::DisplayRole)) {
+        return item.description;
+    } else if ((column == 1) && (role == Qt::DisplayRole)) {
+        return item.interval;
+    } else if ((column == 2) && (role == Qt::DisplayRole)) {
+        return xIO::textItem2string(item.textContext);
+    } else if ((column == 0) && (role == Qt::EditRole)) {
+        return item.description;
+    } else if ((column == 1) && (role == Qt::EditRole)) {
+        return item.interval;
+    } else if ((column == 2) && (role == Qt::EditRole)) {
+        return xIO::saveTextItem(item.textContext);
     }
 
     return QVariant();
@@ -53,20 +126,39 @@ QVariant Emitter::data(const QModelIndex &index, int role) const
 
 bool Emitter::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    Q_UNUSED(role);
+    int row = index.row();
+    if (row < 0 || row >= m_items.count()) {
+        return false;
+    }
 
-    return true;
+    m_itemsMutex.lock();
+    bool result = true;
+    Item &item = m_items[row];
+
+    int column = index.column();
+    if ((column == 0) && (role == Qt::EditRole)) {
+        item.description = value.toString();
+    } else if ((column == 1) && (role == Qt::EditRole)) {
+        item.interval = value.toInt();
+        item.interval = qMax(100, item.interval);
+    } else if ((column == 2) && (role == Qt::EditRole)) {
+        item.textContext = xIO::loadTextItem(value.toJsonObject());
+    } else {
+        result = false;
+    }
+
+    m_itemsMutex.unlock();
+    return result;
 }
 
 bool Emitter::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
-    Data ctx;
-    EmitterItem item;
-    item.data = ctx;
-    item.elapsedTime = 0;
+
+    xIO::TextItem textContext = xIO::defaultTextItem();
     for (int i = 0; i < count; i++) {
-        mItems.insert(row, item);
+        Item item{tr("Demo") + QString::number(rowCount(QModelIndex())), 1000, textContext};
+        m_items.insert(row, item);
     }
 
     return true;
@@ -75,174 +167,42 @@ bool Emitter::insertRows(int row, int count, const QModelIndex &parent)
 bool Emitter::removeRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent)
-    mItems.remove(row, count);
+
+    m_items.remove(row, count);
     return true;
 }
 
 QVariant Emitter::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    Q_UNUSED(role);
-    if (orientation == Qt::Horizontal) {
-        switch (section) {
-        case 0:
-            return mDataKeys.itemEnable;
-        case 1:
-            return mDataKeys.itemDescription;
-        case 2:
-            return mDataKeys.itemTextFormat;
-        case 3:
-            return mDataKeys.itemEscapeCharacter;
-        case 4:
-            return mDataKeys.itemInterval;
-        case 5:
-            return mDataKeys.itemPrefix;
-        case 6:
-            return mDataKeys.itemSuffix;
-        case 7:
-            return mDataKeys.itemCrcEnable;
-        case 8:
-            return mDataKeys.itemCrcBigEndian;
-        case 9:
-            return mDataKeys.itemCrcAlgorithm;
-        case 10:
-            return mDataKeys.itemCrcStartIndex;
-        case 11:
-            return mDataKeys.itemCrcEndIndex;
-        case 12:
-            return mDataKeys.itemText;
-        default:
-            return "";
+    if (orientation == Qt::Vertical) {
+        return QVariant();
+    }
+
+    if (role == Qt::DisplayRole) {
+        if (section == 0) {
+            return tr("Description");
+        } else if (section == 1) {
+            return tr("Interval");
+        } else if (section == 2) {
+            return tr("Data");
         }
     }
 
-    return QVariant("");
+    return QVariant();
 }
 
-void Emitter::run()
+void Emitter::trye2Emit()
 {
-    mEmittingTimer = new QTimer();
-    mEmittingTimer->setInterval(mScanInterval);
-    mEmittingTimer->setSingleShot(true);
-    connect(mEmittingTimer, &QTimer::timeout, mEmittingTimer, [=]() { try2emit(); });
-    mEmittingTimer->start();
-
-    exec();
-
-    if (mEmittingTimer) {
-        mEmittingTimer->stop();
-        mEmittingTimer->deleteLater();
-        mEmittingTimer = nullptr;
-    }
-}
-
-void Emitter::try2emit()
-{
-    mItemsMutex.lock();
-    for (auto &item : mItems) {
-        int elapsedTime = item.elapsedTime += mScanInterval;
-        if (elapsedTime > item.data.itemInterval && item.data.itemEnable) {
+    m_itemsMutex.lock();
+    for (auto &item : m_items) {
+        item.elapsedTime += 10;
+        if (item.elapsedTime >= item.interval) {
             item.elapsedTime = 0;
-            const auto bytes = itemBytes(item.data);
+            QByteArray bytes = xIO::textItem2array(item.textContext);
             emit outputBytes(bytes);
         }
     }
-    mItemsMutex.unlock();
-    mEmittingTimer->start();
-}
-
-QByteArray Emitter::itemBytes(const Emitter::Data &item)
-{
-    QByteArray bytes;
-    QString text = item.itemText;
-    auto escapeCharacter = static_cast<xIO::EscapeCharacter>(item.itemEscapeCharacter);
-    text = xIO::cookedEscapeCharacter(text, escapeCharacter);
-    bytes = xIO::string2bytes(text, static_cast<xIO::TextFormat>(item.itemTextFormat));
-    QByteArray prefix = xIO::cookedAffixes(static_cast<xIO::Affixes>(item.itemPrefix));
-    QByteArray suffix = xIO::cookedAffixes(static_cast<xIO::Affixes>(item.itemSuffix));
-
-    bytes.prepend(prefix);
-    if (item.itemCrcEnable) {
-        auto algorithm = static_cast<xIO::CrcAlgorithm>(item.itemCrcAlgorithm);
-        QByteArray crcBytes = xIO::calculateCrc(bytes,
-                                                algorithm,
-                                                item.itemCrcStartIndex,
-                                                item.itemCrcEndIndex,
-                                                item.itemCrcBigEndian);
-        bytes.append(crcBytes);
-    }
-    bytes.append(suffix);
-
-    return bytes;
-}
-
-QVariant Emitter::columnDisplayRoleData(const Emitter::EmitterItem &item, int column) const
-{
-    return QVariant("Error");
-}
-
-QString Emitter::itemEnable()
-{
-    return mDataKeys.itemEnable;
-}
-
-QString Emitter::itemDescription()
-{
-    return mDataKeys.itemDescription;
-}
-
-QString Emitter::itemTextFormat()
-{
-    return mDataKeys.itemTextFormat;
-}
-
-QString Emitter::itemEscapeCharacter()
-{
-    return mDataKeys.itemEscapeCharacter;
-}
-
-QString Emitter::itemInterval()
-{
-    return mDataKeys.itemInterval;
-}
-
-QString Emitter::itemPrefix()
-{
-    return mDataKeys.itemPrefix;
-}
-
-QString Emitter::itemSuffix()
-{
-    return mDataKeys.itemSuffix;
-}
-
-QString Emitter::itemCrcEnable()
-{
-    return mDataKeys.itemCrcEnable;
-}
-
-QString Emitter::itemCrcBigEndian()
-{
-    return mDataKeys.itemCrcBigEndian;
-}
-
-QString Emitter::itemCrcAlgorithm()
-{
-    return mDataKeys.itemCrcAlgorithm;
-}
-
-QString Emitter::itemCrcStartIndex()
-{
-    return mDataKeys.itemCrcStartIndex;
-}
-
-QString Emitter::itemCrcEndIndex()
-{
-    return mDataKeys.itemCrcEndIndex;
-}
-
-QString Emitter::itemText()
-{
-    return mDataKeys.itemText;
+    m_itemsMutex.unlock();
 }
 
 } // namespace xTools

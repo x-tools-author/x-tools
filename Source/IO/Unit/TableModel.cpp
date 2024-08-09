@@ -19,6 +19,11 @@ void TableModel::setEitableColumns(const QList<int> &columns)
     m_editableColumns = columns;
 }
 
+void TableModel::setCheckableColumns(const QList<int> &columns)
+{
+    m_checkableColumns = columns;
+}
+
 int TableModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
@@ -83,7 +88,9 @@ QVariant TableModel::headerData(int section, Qt::Orientation orientation, int ro
 
 Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
 {
-    if (m_editableColumns.contains(index.column())) {
+    if (m_checkableColumns.contains(index.column())) {
+        return QAbstractTableModel::flags(index) | Qt::ItemIsUserCheckable;
+    } else if (m_editableColumns.contains(index.column())) {
         return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
     } else {
         return QAbstractTableModel::flags(index);

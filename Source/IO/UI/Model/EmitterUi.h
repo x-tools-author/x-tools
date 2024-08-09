@@ -9,33 +9,20 @@
 #pragma once
 
 #include "AbstractModelUi.h"
-#include <QMenu>
 
 class AbstractIO;
 
 namespace xTools {
 
-class Preset;
-class PresetUi : public AbstractModelUi
+class EmitterUi : public AbstractModelUi
 {
     Q_OBJECT
 public:
-    explicit PresetUi(QWidget *parent = nullptr);
-    ~PresetUi();
-    QMenu *menu();
-
-    void setupIO(AbstractIO *io) override;
+    explicit EmitterUi(QWidget *parent = nullptr);
+    ~EmitterUi();
 
 protected:
     QList<int> textItemColumns() const override;
-
-private:
-    QMenu *m_menu{nullptr};
-
-private:
-    void didOutputBytes(int row);
-
-    void onDataChanged();
 };
 
 } // namespace xTools

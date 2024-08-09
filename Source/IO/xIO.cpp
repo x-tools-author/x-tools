@@ -829,7 +829,7 @@ QString xIO::textItem2string(const TextItem &context)
 QByteArray xIO::textItem2array(const TextItem &context)
 {
     QByteArray prefix = xIO::cookedAffixes(static_cast<xIO::Affixes>(context.prefix));
-    QString text = xIO::cookedEscapeCharacter(text, context.escapeCharacter);
+    QString text = xIO::cookedEscapeCharacter(context.text, context.escapeCharacter);
     QByteArray payload = xIO::string2bytes(text, static_cast<xIO::TextFormat>(context.textFormat));
     QByteArray crc = calculateCrc(payload,
                                   context.crc.algorithm,

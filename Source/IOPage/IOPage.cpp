@@ -16,6 +16,7 @@
 #include "CommunicationSettings.h"
 #include "IO/IO/Communication/Communication.h"
 #include "IO/IO/IOFactory.h"
+#include "IO/IO/Model/Emitter.h"
 #include "IO/IO/Model/Preset.h"
 #include "IO/IO/Processor/Statistician.h"
 #include "IO/UI/Communication/CommunicationUi.h"
@@ -39,10 +40,13 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     , m_rxStatistician{new Statistician(this)}
     , m_txStatistician{new Statistician(this)}
     , m_preset{new xTools::Preset(this)}
+    , m_emitter{new xTools::Emitter(this)}
 {
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
+
+    m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter;
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
@@ -89,6 +93,7 @@ QVariantMap IOPage::save()
     map.insert(m_keys.inputSettings, m_inputSettings->save());
 
     map.insert(m_keys.presetItems, ui->pagePreset->save());
+    map.insert(m_keys.emitterItems, ui->pageEmitter->save());
 
     return map;
 }
@@ -139,6 +144,7 @@ void IOPage::load(const QVariantMap &parameters)
     m_inputSettings->load(inputSettings);
 
     ui->pagePreset->load(parameters.value(m_keys.presetItems).toMap());
+    ui->pageEmitter->load(parameters.value(m_keys.emitterItems).toMap());
 }
 
 void IOPage::initUi()
@@ -233,6 +239,7 @@ void IOPage::initUiOutput()
     ui->toolButtonTransmitter->setCheckable(true);
 
     ui->pagePreset->setupIO(m_preset);
+    ui->pageEmitter->setupIO(m_emitter);
 
     m_pageButtonGroup.addButton(ui->toolButtonOutput);
     m_pageButtonGroup.addButton(ui->toolButtonPreset);
@@ -242,6 +249,7 @@ void IOPage::initUiOutput()
 
     m_pageContextMap.insert(ui->toolButtonOutput, ui->pageOutput);
     m_pageContextMap.insert(ui->toolButtonPreset, ui->pagePreset);
+    m_pageContextMap.insert(ui->toolButtonEmitter, ui->pageEmitter);
 
     connect(&m_pageButtonGroup,
             qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked),
@@ -383,8 +391,9 @@ void IOPage::open()
     if (m_io) {
         setUiEnabled(false);
 
-        m_rxStatistician->start();
-        m_txStatistician->start();
+        for (auto io : m_ioList) {
+            io->start();
+        }
 
         connect(m_io, &Communication::opened, this, &IOPage::onOpened);
         connect(m_io, &Communication::closed, this, &IOPage::onClosed);
@@ -394,6 +403,7 @@ void IOPage::open()
         connect(m_io, &Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
 
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_emitter, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
 
         QVariantMap parameters = m_ioUi->save();
         m_ioUi->setupDevice(m_io);
@@ -405,10 +415,10 @@ void IOPage::open()
 
 void IOPage::close()
 {
-    m_rxStatistician->exit();
-    m_rxStatistician->wait();
-    m_txStatistician->exit();
-    m_txStatistician->wait();
+    for (auto io : m_ioList) {
+        io->exit();
+        io->wait();
+    }
 
     if (m_io) {
         m_io->exit();

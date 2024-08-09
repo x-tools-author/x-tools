@@ -6,36 +6,33 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#pragma once
+#include "EmitterUi.h"
 
-#include "AbstractModelUi.h"
-#include <QMenu>
-
-class AbstractIO;
+#include <QFile>
+#include <QHeaderView>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QLineEdit>
+#include <QStandardItemModel>
+#include <QStyledItemDelegate>
+#include <QTableView>
 
 namespace xTools {
 
-class Preset;
-class PresetUi : public AbstractModelUi
+EmitterUi::EmitterUi(QWidget *parent)
+    : AbstractModelUi(parent)
 {
-    Q_OBJECT
-public:
-    explicit PresetUi(QWidget *parent = nullptr);
-    ~PresetUi();
-    QMenu *menu();
+    auto *tv = tableView();
+    auto hHeader = tv->horizontalHeader();
+    hHeader->setStretchLastSection(true);
+}
 
-    void setupIO(AbstractIO *io) override;
+EmitterUi::~EmitterUi() {}
 
-protected:
-    QList<int> textItemColumns() const override;
-
-private:
-    QMenu *m_menu{nullptr};
-
-private:
-    void didOutputBytes(int row);
-
-    void onDataChanged();
-};
+QList<int> EmitterUi::textItemColumns() const
+{
+    return QList<int>{2};
+}
 
 } // namespace xTools
