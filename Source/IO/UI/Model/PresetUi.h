@@ -15,6 +15,7 @@ class AbstractIO;
 
 namespace xTools {
 
+class Preset;
 class PresetUi : public AbstractModelUi
 {
     Q_OBJECT
@@ -23,8 +24,6 @@ public:
     ~PresetUi();
     QMenu *menu();
 
-    QVariantMap save() const override;
-    void load(const QVariantMap &parameters) override;
     void setupIO(AbstractIO *io) override;
 
 protected:
@@ -32,6 +31,11 @@ protected:
 
 private:
     QMenu *m_menu{nullptr};
+
+private:
+    void didOutputBytes(int row);
+
+    void onDataChanged();
 };
 
 } // namespace xTools

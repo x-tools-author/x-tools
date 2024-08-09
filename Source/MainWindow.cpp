@@ -15,6 +15,8 @@
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QImage>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QLabel>
 #include <QLayout>
 #include <QMenuBar>
@@ -29,12 +31,10 @@
 #include <QToolButton>
 #include <QVariant>
 
-#include "xToolsApplication.h"
 #ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
 #include "xToolsAssistantFactory.h"
 #endif
 #include "xToolsSettings.h"
-#include "xToolsToolBoxUi.h"
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
 #ifdef X_TOOLS_ENABLE_MODULE_CANBUS
 #include "xToolsCanBusStudioUi.h"
@@ -89,6 +89,8 @@ MainWindow::MainWindow(QWidget* parent)
     setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
     initMenuBar();
     updateGrid(m_windowGrid);
+
+    load();
 }
 
 MainWindow::~MainWindow() {}
@@ -104,18 +106,18 @@ void MainWindow::initMenuBar()
     initHelpMenu();
 }
 
-#ifdef Q_OS_WIN
 void MainWindow::closeEvent(QCloseEvent* event)
 {
+    save();
+#ifdef Q_OS_WIN
     if (xToolsSettings::instance()->value(m_settingsKey.exitToSystemTray).toBool()) {
         close();
         event->ignore();
         return;
     }
-
+#endif
     QMainWindow::closeEvent(event);
 }
-#endif
 
 void MainWindow::initFileMenu()
 {
@@ -422,4 +424,51 @@ void MainWindow::showQrCode()
     dialog.setModal(true);
     dialog.show();
     dialog.exec();
+}
+
+void MainWindow::load()
+{
+    const QString path = xToolsSettings::instance()->settingsPath();
+    QString filePath = path + "/data.json";
+    if (!QFile::exists(filePath)) {
+        return;
+    }
+
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        return;
+    }
+
+    QByteArray data = file.readAll();
+    file.close();
+
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    QJsonObject obj = doc.object();
+    m_ioPage00->load(obj.value("page00").toObject().toVariantMap());
+    m_ioPage01->load(obj.value("page01").toObject().toVariantMap());
+    m_ioPage10->load(obj.value("page10").toObject().toVariantMap());
+    m_ioPage11->load(obj.value("page11").toObject().toVariantMap());
+}
+
+void MainWindow::save()
+{
+    QJsonObject obj;
+    obj.insert("page00", QJsonObject::fromVariantMap(m_ioPage00->save()));
+    obj.insert("page01", QJsonObject::fromVariantMap(m_ioPage01->save()));
+    obj.insert("page10", QJsonObject::fromVariantMap(m_ioPage10->save()));
+    obj.insert("page11", QJsonObject::fromVariantMap(m_ioPage11->save()));
+
+    QJsonDocument doc;
+    doc.setObject(obj);
+
+    const QString path = xToolsSettings::instance()->settingsPath();
+    QString filePath = path + "/data.json";
+    QFile file(filePath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+        return;
+    }
+
+    QTextStream out(&file);
+    out << doc.toJson();
+    file.close();
 }

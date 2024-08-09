@@ -30,10 +30,8 @@ public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
     ~MainWindow() override;
 
-#ifdef Q_OS_WIN
 protected:
     void closeEvent(QCloseEvent* event) override;
-#endif
 
 private:
     enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
@@ -66,4 +64,7 @@ private:
     void updateGrid(WindowGrid grid);
     void showHistory();
     void showQrCode();
+
+    void load();
+    void save();
 };

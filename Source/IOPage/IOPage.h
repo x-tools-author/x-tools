@@ -64,6 +64,8 @@ private:
         const QString cycleInterval{"cycleInterval"};
         const QString inputFormat{"inputFormat"};
         const QString inputSettings{"inputSettings"};
+
+        const QString presetItems{"presetItems"};
     } m_keys;
 
 private:

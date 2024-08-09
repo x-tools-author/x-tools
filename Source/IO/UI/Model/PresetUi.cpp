@@ -18,14 +18,15 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
-#include "../../IO/AbstractIO.h"
+#include "../../IO/Model/AbstractModel.h"
+#include "../../xIO.h"
 
 namespace xTools {
 
 PresetUi::PresetUi(QWidget *parent)
     : AbstractModelUi(parent)
 {
-    m_menu = new QMenu(this);
+    m_menu = new QMenu();
 
     auto *tv = tableView();
     auto hHeader = tv->horizontalHeader();
@@ -39,34 +40,43 @@ QMenu *PresetUi::menu()
     return m_menu;
 }
 
-QVariantMap PresetUi::save() const
-{
-    QVariantMap map;
-    return map;
-}
-
-void PresetUi::load(const QVariantMap &parameters)
-{
-    auto items = parameters.value("items").toJsonArray();
-    if (items.isEmpty()) {
-        return;
-    }
-
-    m_model->removeColumns(0, m_model->rowCount());
-    for (int i = 0; i < items.size(); i++) {
-        auto item = items.at(i).toObject();
-        m_model->insertColumns(i, 1);
-    }
-}
-
 void PresetUi::setupIO(AbstractIO *io)
 {
     AbstractModelUi::setupIO(io);
+    connect(m_model, &QAbstractTableModel::dataChanged, this, &PresetUi::onDataChanged);
+    connect(m_model, &QAbstractTableModel::rowsRemoved, this, &PresetUi::onDataChanged);
+    connect(m_model, &QAbstractTableModel::rowsInserted, this, &PresetUi::onDataChanged);
 }
 
 QList<int> PresetUi::universalColumns() const
 {
     return QList<int>{1};
+}
+
+void PresetUi::didOutputBytes(int row)
+{
+    auto rows = m_model->rowCount();
+    if (row < 0 || row >= rows) {
+        return;
+    }
+
+    QModelIndex index = m_model->index(row, 1);
+    QJsonObject rawItem = m_model->data(index, Qt::EditRole).toJsonObject();
+    xIO::TextItem textItem = xIO::loadTextItem(rawItem);
+    QByteArray bytes = xIO::textItem2array(textItem);
+    emit m_io->outputBytes(bytes);
+}
+
+void PresetUi::onDataChanged()
+{
+    m_menu->clear();
+    int rows = m_model->rowCount();
+
+    for (int i = 0; i < rows; ++i) {
+        auto index = m_model->index(i, 0);
+        auto text = m_model->data(index, Qt::DisplayRole).toString();
+        m_menu->addAction(text, this, [=]() { didOutputBytes(i); });
+    }
 }
 
 } // namespace xTools

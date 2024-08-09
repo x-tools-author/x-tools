@@ -72,6 +72,36 @@ QTableView *AbstractModelUi::tableView() const
     return ui->tableView;
 }
 
+QVariantMap AbstractModelUi::save() const
+{
+    QJsonArray array;
+    int rows = m_model->rowCount();
+    for (int i = 0; i < rows; i++) {
+        QVariantMap rawItem = m_io->saveItem(i);
+        QJsonObject item = QJsonObject::fromVariantMap(rawItem);
+        array.append(item);
+    }
+
+    QVariantMap map;
+    map.insert("items", array);
+    return map;
+}
+
+void AbstractModelUi::load(const QVariantMap &parameters)
+{
+    auto items = parameters.value("items").toJsonArray();
+    if (items.isEmpty()) {
+        return;
+    }
+
+    m_model->removeColumns(0, m_model->rowCount());
+    for (int i = 0; i < items.size(); i++) {
+        auto item = items.at(i).toObject();
+        m_model->insertRows(i, 1);
+        m_io->loadItem(i, item.toVariantMap());
+    }
+}
+
 void AbstractModelUi::setupIO(AbstractIO *io)
 {
     m_io = qobject_cast<AbstractModel *>(io);
@@ -168,7 +198,7 @@ void AbstractModelUi::onPushButtonExportClicked()
 
 void AbstractModelUi::onPushButtonAddClicked()
 {
-    m_model->insertRows(m_io->rowCount(), 1);
+    m_model->insertRows(m_model->rowCount(), 1);
 }
 
 void AbstractModelUi::onCellDoubleClicked(const QModelIndex &index)

@@ -35,6 +35,8 @@ public:
 
     QTableView *tableView() const;
 
+    QVariantMap save() const override;
+    void load(const QVariantMap &parameters) override;
     void setupIO(AbstractIO *io) override;
 
 protected:
@@ -42,10 +44,10 @@ protected:
 
 protected:
     QAbstractTableModel *m_model{nullptr};
+    AbstractModel *m_io{nullptr};
 
 private:
     Ui::AbstractModelUi *ui{nullptr};
-    AbstractModel *m_io{nullptr};
     DataEditor *m_editor{nullptr};
 
 private:

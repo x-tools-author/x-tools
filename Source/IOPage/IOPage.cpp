@@ -88,6 +88,8 @@ QVariantMap IOPage::save()
     map.insert(m_keys.inputFormat, ui->comboBoxInputFormat->currentData());
     map.insert(m_keys.inputSettings, m_inputSettings->save());
 
+    map.insert(m_keys.presetItems, ui->pagePreset->save());
+
     return map;
 }
 
@@ -135,6 +137,8 @@ void IOPage::load(const QVariantMap &parameters)
     index = ui->comboBoxInputFormat->findData(inputFormat);
     ui->comboBoxInputFormat->setCurrentIndex(index == -1 ? 0 : index);
     m_inputSettings->load(inputSettings);
+
+    ui->pagePreset->load(parameters.value(m_keys.presetItems).toMap());
 }
 
 void IOPage::initUi()
@@ -244,6 +248,7 @@ void IOPage::initUiOutput()
             this,
             &IOPage::onPageButtonClicked);
 
+    ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
     ui->toolButtonInputPreset->setMenu(ui->pagePreset->menu());
 }
 
@@ -387,6 +392,8 @@ void IOPage::open()
         connect(m_io, &Communication::bytesRead, this, &IOPage::onBytesRead);
         connect(m_io, &Communication::errorOccurred, this, &IOPage::onErrorOccurred);
         connect(m_io, &Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
+
+        connect(m_preset, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
 
         QVariantMap parameters = m_ioUi->save();
         m_ioUi->setupDevice(m_io);

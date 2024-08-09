@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "Preset.h"
 
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QTimer>
@@ -18,6 +19,48 @@ Preset::Preset(QObject *parent)
     : AbstractModel{parent}
 {
 
+}
+
+QVariantMap Preset::saveItem(const int row) const
+{
+    if (row < 0 || row >= m_items.count()) {
+        qWarning() << "Invalid index row: " << row;
+        return QVariantMap();
+    }
+
+    QVariant var = m_tableModel->data(m_tableModel->index(row, 0), Qt::DisplayRole);
+    QString description = var.toString();
+
+    var = m_tableModel->data(m_tableModel->index(row, 1), Qt::EditRole);
+    QJsonObject item = var.toJsonObject();
+
+    QVariantMap map = item.toVariantMap();
+    map.insert("description", description);
+    return map;
+}
+
+void Preset::loadItem(const int row, const QVariantMap &item)
+{
+    if (row < 0 || row >= m_items.count()) {
+        qWarning() << "Invalid index row: " << row;
+        return;
+    }
+
+    QString description = item.value("description").toString();
+    m_tableModel->setData(m_tableModel->index(row, 0), description, Qt::EditRole);
+
+    QJsonObject json = QJsonObject::fromVariantMap(item);
+    m_tableModel->setData(m_tableModel->index(row, 1), json, Qt::EditRole);
+}
+
+void Preset::inputBytes(const QByteArray &bytes)
+{
+    Q_UNUSED(bytes)
+}
+
+void Preset::run()
+{
+    exec();
 }
 
 int Preset::rowCount(const QModelIndex &parent) const
@@ -39,15 +82,15 @@ QVariant Preset::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    xIO::TextItemContext textContext = m_items.at(index.row()).textContext;
-    QJsonObject json = xIO::saveTextItemContext(textContext);
+    xIO::TextItem textContext = m_items.at(index.row()).textContext;
+    QJsonObject json = xIO::saveTextItem(textContext);
 
     if (index.column() == 0 && role == Qt::DisplayRole) {
         return m_items.at(index.row()).description;
     } else if (index.column() == 0 && role == Qt::EditRole) {
         return m_items.at(index.row()).description;
     } else if (index.column() == 1 && role == Qt::DisplayRole) {
-        return xIO::textItemContext2string(textContext);
+        return xIO::textItem2string(textContext);
     } else if (index.column() == 1 && role == Qt::EditRole) {
         return QVariant::fromValue(json);
     }
@@ -65,7 +108,7 @@ bool Preset::setData(const QModelIndex &index, const QVariant &value, int role)
     if (index.column() == 0 && role == Qt::EditRole) {
         m_items[index.row()].description = value.toString();
     } else if (index.column() == 1 && role == Qt::EditRole) {
-        auto textContext = xIO::loadTextItemContext(value.toJsonObject());
+        auto textContext = xIO::loadTextItem(value.toJsonObject());
         m_items[index.row()].textContext = textContext;
     } else {
         return false;
@@ -78,13 +121,11 @@ bool Preset::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
 
-    xIO::TextItemContext textContext = xIO::defaultTextItemContext();
+    xIO::TextItem textContext = xIO::defaultTextItem();
     for (int i = 0; i < count; i++) {
         Item item{tr("Demo") + QString::number(rowCount(QModelIndex())), textContext};
         m_items.insert(row, item);
     }
-
-    qInfo() << "Insert rows: " << row << ", " << count;
 
     return true;
 }
@@ -112,16 +153,6 @@ QVariant Preset::headerData(int section, Qt::Orientation orientation, int role) 
     }
 
     return QVariant();
-}
-
-void Preset::inputBytes(const QByteArray &bytes)
-{
-    Q_UNUSED(bytes)
-}
-
-void Preset::run()
-{
-    exec();
 }
 
 } // namespace xTools

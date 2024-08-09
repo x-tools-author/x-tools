@@ -43,7 +43,7 @@ QJsonObject DataEditor::save() const
     int crcStartIndex = ui->spinBoxStartIndex->value();
     int crcEndIndex = ui->spinBoxEndIndex->value();
 
-    xIO::TextItemParameterKeys keys;
+    xIO::TextItemKeys keys;
     QJsonObject parameters;
     parameters[keys.text] = text;
     parameters[keys.prefix] = prefix;
@@ -63,7 +63,7 @@ void DataEditor::load(const QJsonObject &parameters)
         return;
     }
 
-    xIO::TextItemParameterKeys keys;
+    xIO::TextItemKeys keys;
     QString text = parameters.value(keys.text).toString();
     int prefix = parameters.value(keys.prefix).toInt();
     int suffix = parameters.value(keys.suffix).toInt();

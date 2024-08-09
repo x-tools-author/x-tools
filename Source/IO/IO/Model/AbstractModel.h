@@ -21,6 +21,10 @@ public:
 
     QVariant tableModel() const;
 
+    virtual QVariantMap saveItem(const int row) const = 0;
+    virtual void loadItem(const int row, const QVariantMap &item) = 0;
+
+protected:
     // clang-format off
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const = 0;
     virtual int columnCount(const QModelIndex &parent = QModelIndex()) const = 0;

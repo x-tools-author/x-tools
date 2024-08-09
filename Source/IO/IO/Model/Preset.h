@@ -19,20 +19,14 @@ class Preset : public AbstractModel
 {
     Q_OBJECT
 public:
-    struct Item
-    {
-        QString description{"Demo"};
-        xIO::TextItemContext textContext;
-    };
-
-    struct ItemKeys : public xIO::TextItemParameterKeys
-    {
-        const QString description{"description"};
-        const xIO::TextItemParameterKeys textContext{};
-    };
-
-public:
     explicit Preset(QObject *parent = nullptr);
+
+    QVariantMap saveItem(const int row) const override;
+    void loadItem(const int row, const QVariantMap &item) override;
+
+protected:
+    void inputBytes(const QByteArray &bytes) override;
+    void run() override;
 
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
@@ -42,9 +36,12 @@ public:
     bool removeRows(int row, int count, const QModelIndex &parent) override;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
 
-protected:
-    void inputBytes(const QByteArray &bytes) override;
-    void run() override;
+private:
+    struct Item
+    {
+        QString description{"Demo"};
+        xIO::TextItem textContext;
+    };
 
 private:
     QList<Item> m_items;

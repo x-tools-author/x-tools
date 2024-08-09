@@ -784,9 +784,9 @@ void xIO::try2reboot()
     }
 }
 
-xIO::TextItemContext xIO::defaultTextItemContext()
+xIO::TextItem xIO::defaultTextItem()
 {
-    TextItemContext context;
+    TextItem context;
     context.textFormat = TextFormat::Utf8;
     context.escapeCharacter = EscapeCharacter::None;
     context.prefix = Affixes::None;
@@ -801,7 +801,7 @@ xIO::TextItemContext xIO::defaultTextItemContext()
     return context;
 }
 
-QString xIO::textItemContext2string(const TextItemContext &context)
+QString xIO::textItem2string(const TextItem &context)
 {
     QString str = cookedEscapeCharacter(context.text, context.escapeCharacter);
 
@@ -826,10 +826,29 @@ QString xIO::textItemContext2string(const TextItemContext &context)
     return str;
 }
 
-xIO::TextItemContext xIO::loadTextItemContext(const QJsonObject &obj)
+QByteArray xIO::textItem2array(const TextItem &context)
 {
-    TextItemContext ctx;
-    const TextItemParameterKeys keys;
+    QByteArray prefix = xIO::cookedAffixes(static_cast<xIO::Affixes>(context.prefix));
+    QString text = xIO::cookedEscapeCharacter(text, context.escapeCharacter);
+    QByteArray payload = xIO::string2bytes(text, static_cast<xIO::TextFormat>(context.textFormat));
+    QByteArray crc = calculateCrc(payload,
+                                  context.crc.algorithm,
+                                  context.crc.startIndex,
+                                  context.crc.endIndex,
+                                  context.crc.bigEndian);
+    QByteArray suffix = xIO::cookedAffixes(static_cast<xIO::Affixes>(context.suffix));
+
+    if (context.crc.enable) {
+        return (prefix + payload + crc + suffix);
+    } else {
+        return (prefix + payload + suffix);
+    }
+}
+
+xIO::TextItem xIO::loadTextItem(const QJsonObject &obj)
+{
+    TextItem ctx;
+    const TextItemKeys keys;
     ctx.text = obj.value(keys.text).toString();
     ctx.textFormat = static_cast<TextFormat>(obj.value(keys.textFormat).toInt());
     ctx.escapeCharacter = static_cast<EscapeCharacter>(obj.value(keys.escapeCharacter).toInt());
@@ -843,10 +862,10 @@ xIO::TextItemContext xIO::loadTextItemContext(const QJsonObject &obj)
     return ctx;
 }
 
-QJsonObject xIO::saveTextItemContext(const TextItemContext &context)
+QJsonObject xIO::saveTextItem(const TextItem &context)
 {
     QJsonObject obj;
-    const TextItemParameterKeys keys;
+    const TextItemKeys keys;
     obj.insert(keys.text, context.text);
     obj.insert(keys.textFormat, static_cast<int>(context.textFormat));
     obj.insert(keys.escapeCharacter, static_cast<int>(context.escapeCharacter));

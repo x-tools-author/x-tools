@@ -119,7 +119,7 @@ public:
     static void try2reboot();
 
     /**********************************************************************************************/
-    struct TextItemContext
+    struct TextItem
     {
         TextFormat textFormat;
         EscapeCharacter escapeCharacter;
@@ -128,7 +128,7 @@ public:
         Affixes suffix;
         CrcParameters crc;
     };
-    struct TextItemParameterKeys
+    struct TextItemKeys
     {
         const QString textFormat{"textFormat"};
         const QString escapeCharacter{"escapeCharacter"};
@@ -141,8 +141,9 @@ public:
         const QString crcStartIndex{"crcStartIndex"};
         const QString crcEndIndex{"crcEndIndex"};
     };
-    static TextItemContext defaultTextItemContext();
-    static QString textItemContext2string(const TextItemContext &context);
-    static TextItemContext loadTextItemContext(const QJsonObject &obj);
-    static QJsonObject saveTextItemContext(const TextItemContext &context);
+    static TextItem defaultTextItem();
+    static QString textItem2string(const TextItem &context);
+    static QByteArray textItem2array(const TextItem &context);
+    static TextItem loadTextItem(const QJsonObject &obj);
+    static QJsonObject saveTextItem(const TextItem &context);
 };
