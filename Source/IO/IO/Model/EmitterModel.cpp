@@ -6,94 +6,173 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "TableModel.h"
+#include "EmitterModel.h"
 
 namespace xTools {
 
-TableModel::TableModel(QObject *parent)
+EmitterModel::EmitterModel(QObject *parent)
     : QAbstractTableModel{parent}
 {}
 
-void TableModel::setEitableColumns(const QList<int> &columns)
-{
-    m_editableColumns = columns;
-}
-
-void TableModel::setCheckableColumns(const QList<int> &columns)
-{
-    m_checkableColumns = columns;
-}
-
-int TableModel::rowCount(const QModelIndex &parent) const
+int EmitterModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
 
-    int count = 0;
-    emit const_cast<TableModel *>(this)->invokeGetRowCount(count);
+    int count = m_items.count();
     return count;
 }
 
-int TableModel::columnCount(const QModelIndex &parent) const
+int EmitterModel::columnCount(const QModelIndex &parent) const
 {
-    Q_UNUSED(parent)
-
-    int column = 0;
-    emit const_cast<TableModel *>(this)->invokeGetColumnCount(column);
-    return column;
+    return 4;
 }
 
-QVariant TableModel::data(const QModelIndex &index, int role) const
+QVariant EmitterModel::data(const QModelIndex &index, int role) const
 {
-    QVariant d;
-    emit const_cast<TableModel *>(this)->invokeGetData(d, index, role);
-    return d;
+    int row = index.row();
+    if (row < 0 || row >= m_items.count()) {
+        return QVariant();
+    }
+
+    const Item item = m_items.at(row);
+
+    int column = index.column();
+    if (role == Qt::DisplayRole) {
+        if (column == 0) {
+            return item.enable;
+        } else if (column == 1) {
+            return item.description;
+        } else if (column == 2) {
+            return item.interval;
+        } else if (column == 3) {
+            return xIO::textItem2string(item.textContext);
+        }
+    } else if (role == Qt::EditRole) {
+        if (column == 0) {
+            return item.enable;
+        } else if (column == 1) {
+            return item.description;
+        } else if (column == 2) {
+            return item.interval;
+        } else if (column == 3) {
+            return xIO::saveTextItem(item.textContext);
+        }
+    } else if (role == Qt::TextAlignmentRole) {
+        if (column == 0 || column == 1 || column == 2) {
+            return Qt::AlignCenter;
+        }
+    }
+
+    return QVariant();
 }
 
-bool TableModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool EmitterModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    bool result = false;
-    emit invokeSetData(result, index, value, role);
+    int row = index.row();
+    if (row < 0 || row >= m_items.count()) {
+        return false;
+    }
+
+    bool result = true;
+    Item &item = m_items[row];
+
+    int column = index.column();
+    if ((column == 0) && (role == Qt::EditRole)) {
+        item.enable = value.toBool();
+    } else if ((column == 1) && (role == Qt::EditRole)) {
+        item.description = value.toString();
+    } else if ((column == 2) && (role == Qt::EditRole)) {
+        item.interval = value.toInt();
+        item.interval = qMax(100, item.interval);
+    } else if ((column == 3) && (role == Qt::EditRole)) {
+        item.textContext = xIO::loadTextItem(value.toJsonObject());
+    } else {
+        result = false;
+    }
+
     emit dataChanged(index, index);
     return result;
 }
 
-bool TableModel::insertRows(int row, int count, const QModelIndex &parent)
+bool EmitterModel::insertRows(int row, int count, const QModelIndex &parent)
 {
-    bool result = false;
     beginInsertRows(parent, row, row + count - 1);
-    emit invokeInsertRows(result, row, count, parent);
+
+    xIO::TextItem textContext = xIO::defaultTextItem();
+    for (int i = 0; i < count; i++) {
+        Item item{true, tr("Demo") + QString::number(rowCount(QModelIndex())), 1000, textContext};
+        m_items.insert(row, item);
+    }
+
     endInsertRows();
-    return result;
+    return true;
 }
 
-bool TableModel::removeRows(int row, int count, const QModelIndex &parent)
+bool EmitterModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     if (count == 0) {
         return true;
     }
 
-    bool result = false;
     beginRemoveRows(parent, row, row + count - 1);
-    emit invokeRemoveRows(result, row, count, parent);
+    m_items.remove(row, count);
     endRemoveRows();
-    return result;
+    return true;
 }
 
-QVariant TableModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant EmitterModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    QVariant d;
-    emit const_cast<TableModel *>(this)->invokeGetHeaderData(d, section, orientation, role);
-    return d;
+    if (orientation == Qt::Vertical) {
+        return QVariant();
+    }
+
+    if (role == Qt::DisplayRole) {
+        if (section == 0) {
+            return tr("Enable");
+        } else if (section == 1) {
+            return tr("Description");
+        } else if (section == 2) {
+            return tr("Interval");
+        } else if (section == 3) {
+            return tr("Data");
+        }
+    }
+
+    return QVariant();
 }
 
-Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
+Qt::ItemFlags EmitterModel::flags(const QModelIndex &index) const
 {
-    if (m_checkableColumns.contains(index.column())) {
-        return QAbstractTableModel::flags(index) | Qt::ItemIsUserCheckable;
-    } else if (m_editableColumns.contains(index.column())) {
+    if (index.column() == 0) {
+        return QAbstractTableModel::flags(index) | Qt::ItemIsEditable | Qt::ItemIsUserCheckable;
+    } else if (index.column() == 1 || index.column() == 2) {
         return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
     } else {
         return QAbstractTableModel::flags(index);
+    }
+}
+
+void EmitterModel::increaseElapsedTime(const int row, const int interval)
+{
+    if (row >= 0 || row < m_items.count()) {
+        m_items[row].elapsedTime += interval;
+    }
+}
+
+bool EmitterModel::isTimeout(const int row) const
+{
+    bool timeout = false;
+    if (row >= 0 || row < m_items.count()) {
+        timeout = m_items[row].elapsedTime >= m_items[row].interval;
+    }
+
+    return timeout;
+}
+
+void EmitterModel::resetElapsedTime(const int row)
+{
+    if (row >= 0 || row < m_items.count()) {
+        m_items[row].elapsedTime = 0;
     }
 }
 

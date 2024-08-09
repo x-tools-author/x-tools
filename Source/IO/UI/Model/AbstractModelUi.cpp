@@ -110,9 +110,6 @@ void AbstractModelUi::setupIO(AbstractIO *io)
         m_model = qvariant_cast<QAbstractTableModel *>(tableModelVar);
         if (m_model) {
             ui->tableView->setModel(m_model);
-
-            auto model = qobject_cast<xTools::TableModel *>(m_model);
-            model->setEitableColumns(QList<int>{0});
         } else {
             qCritical() << "Can not cast to QAbstractTableModel";
         }

@@ -325,6 +325,16 @@
          </widget>
         </item>
         <item>
+         <widget class="QToolButton" name="toolButtonPreset">
+          <property name="toolTip">
+           <string>Preset</string>
+          </property>
+          <property name="text">
+           <string>🧾</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QToolButton" name="toolButtonEmitter">
           <property name="toolTip">
            <string>Emiter</string>
@@ -348,16 +358,6 @@
          <widget class="QToolButton" name="toolButtonTransmitter">
           <property name="text">
            <string>🔃</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonPreset">
-          <property name="toolTip">
-           <string>Preset</string>
-          </property>
-          <property name="text">
-           <string>🧾</string>
           </property>
          </widget>
         </item>
@@ -406,34 +406,6 @@
         </item>
         <item>
          <widget class="StatisticianUi" name="widgetTxInfo" native="true"/>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonUp">
-          <property name="text">
-           <string>⬆</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonDown">
-          <property name="text">
-           <string>⬇</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonLeft">
-          <property name="text">
-           <string>⬅</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonRight">
-          <property name="text">
-           <string>➡️</string>
-          </property>
-         </widget>
         </item>
        </layout>
       </item>
