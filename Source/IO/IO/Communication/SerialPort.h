@@ -11,7 +11,7 @@
 #include <QSerialPort>
 
 #include "Communication.h"
-
+class QTimer;
 class SerialPort : public Communication
 {
     Q_OBJECT

@@ -30,9 +30,16 @@ QObject *WebSocketClient::initDevice()
     connect(m_webSocket, &QWebSocket::disconnected, m_webSocket, [this]() {
         emit errorOccurred("");
     });
+    //TODO:qt6
+#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
     connect(m_webSocket, &QWebSocket::errorOccurred, m_webSocket, [this]() {
         emit errorOccurred(m_webSocket->errorString());
     });
+#else
+    connect(m_webSocket,QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error),[this](QAbstractSocket::SocketError error){
+        emit errorOccurred(qt_error_string(error));
+    });
+#endif
 
     QString url = QString("ws://%1:%2").arg(m_serverAddress).arg(m_serverPort);
     if (m_authentication) {
