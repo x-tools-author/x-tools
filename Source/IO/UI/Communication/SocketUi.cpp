@@ -23,8 +23,11 @@ SocketUi::SocketUi(xIO::CommunicationType type, QWidget *parent)
     xIO::setupWebSocketDataChannel(ui->comboBoxChannel);
 
     setupClients(QStringList());
-
+#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
     connect(ui->comboBoxWriteTo, &QComboBox::activated, this, [this]() {
+#else
+    connect(ui->comboBoxWriteTo, QOverload<int>::of(&QComboBox::activated), this, [this]() {
+#endif
         QString const flag = ui->comboBoxWriteTo->currentData().toString();
         emit currentClientChanged(flag);
     });

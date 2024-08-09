@@ -152,10 +152,17 @@ bool xToolsBleCentralTool::initialize(QString &errStr)
     connect(m_bleCentral, &QLowEnergyController::discoveryFinished, m_bleCentral, [=]() {
         onServiceDiscoveryFinished();
     });
+    //TODO:qt6
+#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
     connect(m_bleCentral,
             &QLowEnergyController::errorOccurred,
             m_bleCentral,
             [=](QLowEnergyController::Error err) { onBleCentralErrorOccuured(err); });
+#else
+    connect(m_bleCentral,
+            QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
+            this,&xToolsBleCentralTool::onBleCentralErrorOccuured);
+#endif
     connect(m_bleCentral, &QLowEnergyController::connected, m_bleCentral, [=]() {
         onBleCentralConnected();
     });
@@ -303,7 +310,7 @@ void xToolsBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *servic
                                                     QLowEnergyService::ServiceState newState)
 {
     Q_UNUSED(service);
-    auto state = QLowEnergyService::RemoteServiceDiscovered;
+    auto state = QLowEnergyService::ServiceDiscovered;
     if (newState == state) {
         qInfo() << "Remote service discovered:" << newState;
     }

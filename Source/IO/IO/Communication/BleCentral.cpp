@@ -30,8 +30,10 @@ QObject *BleCentral::initDevice()
         qInfo() << "Failed to create central controller";
         return nullptr;
     }
-
+    //TODO:qt6
+#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
     connect(m_controller, &QLowEnergyController::rssiRead, this, &BleCentral::rssiRead);
+#endif
     connect(m_controller, &QLowEnergyController::disconnected, this, [this]() {
         emit errorOccurred("");
     });
@@ -41,9 +43,12 @@ QObject *BleCentral::initDevice()
     connect(m_controller, &QLowEnergyController::connected, this, [this]() {
         m_controller->discoverServices();
     });
+    //TODO:qt6
+#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
     connect(m_controller, &QLowEnergyController::errorOccurred, m_controller, [this]() {
         emit errorOccurred(m_controller->errorString());
     });
+#endif
     connect(m_controller,
             &QLowEnergyController::serviceDiscovered,
             m_controller,
@@ -149,7 +154,11 @@ void BleCentral::setupService(QLowEnergyService *service)
 
     typedef QLowEnergyService::ServiceState ServiceState;
     connect(service, &QLowEnergyService::stateChanged, this, [this, service](ServiceState newState) {
+#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
         if (newState == QLowEnergyService::RemoteServiceDiscovered) {
+#else
+        if (newState == QLowEnergyService::ServiceDiscovered) {
+#endif
             emit serviceDiscovered(service);
         }
     });

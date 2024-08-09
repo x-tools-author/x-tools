@@ -9,7 +9,7 @@
 #include "SerialPort.h"
 
 #include <QTimer>
-
+#include <QtMath>
 SerialPort::SerialPort(QObject *parent)
     : Communication(parent)
 {}

@@ -35,7 +35,7 @@ xToolsToolBoxUiOutputMenu::xToolsToolBoxUiOutputMenu(const QString& settingsGrou
     xToolsHighlighter* highlighter = new xToolsHighlighter(this);
     auto updateDoc = [=]() {
         QString text = ui->keyword->text();
-        QStringList list = text.split(";", xToolsSkipEmptyParts);
+        QStringList list = text.split(";", Qt::SplitBehavior(xToolsSkipEmptyParts));
         highlighter->removeKeyWord("");
         highlighter->setKeyWords(list);
     };
