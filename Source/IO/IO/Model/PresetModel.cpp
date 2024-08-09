@@ -6,91 +6,124 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "TableModel.h"
+#include "PresetModel.h"
 
 namespace xTools {
 
-TableModel::TableModel(QObject *parent)
+PresetModel::PresetModel(QObject *parent)
     : QAbstractTableModel{parent}
 {}
 
-void TableModel::setEitableColumns(const QList<int> &columns)
+int PresetModel::rowCount(const QModelIndex &parent) const
 {
-    m_editableColumns = columns;
+    Q_UNUSED(parent);
+    return m_items.count();
 }
 
-void TableModel::setCheckableColumns(const QList<int> &columns)
+int PresetModel::columnCount(const QModelIndex &parent) const
 {
-    m_checkableColumns = columns;
+    Q_UNUSED(parent);
+    return 2;
 }
 
-int TableModel::rowCount(const QModelIndex &parent) const
+QVariant PresetModel::data(const QModelIndex &index, int role) const
 {
-    Q_UNUSED(parent)
+    if (index.row() < 0 || index.row() >= m_items.count()) {
+        qWarning() << "Invalid index row: " << index.row();
+        return QVariant();
+    }
 
-    int count = 0;
-    emit const_cast<TableModel *>(this)->invokeGetRowCount(count);
-    return count;
+    xIO::TextItem textContext = m_items.at(index.row()).textContext;
+    QJsonObject json = xIO::saveTextItem(textContext);
+
+    int column = index.column();
+    if (role == Qt::DisplayRole) {
+        if (column == 0) {
+            return m_items.at(index.row()).description;
+        } else if (column == 1) {
+            return xIO::textItem2string(textContext);
+        }
+    } else if (role == Qt::EditRole) {
+        if (column == 0) {
+            return m_items.at(index.row()).description;
+        } else if (column == 1) {
+            return QVariant::fromValue(json);
+        }
+    } else if (role == Qt::TextAlignmentRole) {
+        if (column == 0) {
+            return Qt::AlignCenter;
+        }
+    }
+
+    return QVariant();
 }
 
-int TableModel::columnCount(const QModelIndex &parent) const
+bool PresetModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    Q_UNUSED(parent)
+    if (index.row() < 0 || index.row() >= m_items.count()) {
+        qWarning() << "Invalid index row: " << index.row();
+        return false;
+    }
 
-    int column = 0;
-    emit const_cast<TableModel *>(this)->invokeGetColumnCount(column);
-    return column;
-}
+    if (index.column() == 0 && role == Qt::EditRole) {
+        m_items[index.row()].description = value.toString();
+    } else if (index.column() == 1 && role == Qt::EditRole) {
+        auto textContext = xIO::loadTextItem(value.toJsonObject());
+        m_items[index.row()].textContext = textContext;
+    } else {
+        return false;
+    }
 
-QVariant TableModel::data(const QModelIndex &index, int role) const
-{
-    QVariant d;
-    emit const_cast<TableModel *>(this)->invokeGetData(d, index, role);
-    return d;
-}
-
-bool TableModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-    bool result = false;
-    emit invokeSetData(result, index, value, role);
     emit dataChanged(index, index);
-    return result;
+    return true;
 }
 
-bool TableModel::insertRows(int row, int count, const QModelIndex &parent)
+bool PresetModel::insertRows(int row, int count, const QModelIndex &parent)
 {
-    bool result = false;
     beginInsertRows(parent, row, row + count - 1);
-    emit invokeInsertRows(result, row, count, parent);
+
+    xIO::TextItem textContext = xIO::defaultTextItem();
+    for (int i = 0; i < count; i++) {
+        Item item{tr("Demo") + QString::number(rowCount(QModelIndex())), textContext};
+        m_items.insert(row, item);
+    }
+
     endInsertRows();
-    return result;
+    return true;
 }
 
-bool TableModel::removeRows(int row, int count, const QModelIndex &parent)
+bool PresetModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     if (count == 0) {
         return true;
     }
 
-    bool result = false;
     beginRemoveRows(parent, row, row + count - 1);
-    emit invokeRemoveRows(result, row, count, parent);
+    m_items.remove(row, count);
     endRemoveRows();
-    return result;
+    return true;
 }
 
-QVariant TableModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant PresetModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    QVariant d;
-    emit const_cast<TableModel *>(this)->invokeGetHeaderData(d, section, orientation, role);
-    return d;
+    if (orientation == Qt::Vertical) {
+        return QVariant();
+    }
+
+    if (role == Qt::DisplayRole) {
+        if (section == 0) {
+            return tr("Description");
+        } else if (section == 1) {
+            return tr("Data");
+        }
+    }
+
+    return QVariant();
 }
 
-Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
+Qt::ItemFlags PresetModel::flags(const QModelIndex &index) const
 {
-    if (m_checkableColumns.contains(index.column())) {
-        return QAbstractTableModel::flags(index) | Qt::ItemIsUserCheckable;
-    } else if (m_editableColumns.contains(index.column())) {
+    if (index.column() == 0) {
         return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
     } else {
         return QAbstractTableModel::flags(index);

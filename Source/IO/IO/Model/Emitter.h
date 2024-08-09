@@ -10,17 +10,18 @@
 
 #include <QMutex>
 
-#include "../../xIO.h"
 #include "AbstractModelIO.h"
 
 namespace xTools {
 
+class EmitterModel;
 class Emitter : public AbstractModelIO
 {
     Q_OBJECT
 public:
     explicit Emitter(QObject *parent = Q_NULLPTR);
 
+    QVariant tableModel() override;
     QVariantMap saveItem(const int row) const override;
     void loadItem(const int row, const QVariantMap &item) override;
     virtual void inputBytes(const QByteArray &bytes) override;
@@ -28,30 +29,11 @@ public:
 protected:
     void run() override;
 
-    int rowCount(const QModelIndex &parent) const override;
-    int columnCount(const QModelIndex &parent) const override;
-    QVariant data(const QModelIndex &index, int role) const override;
-    bool setData(const QModelIndex &index, const QVariant &value, int role) override;
-    bool insertRows(int row, int count, const QModelIndex &parent) override;
-    bool removeRows(int row, int count, const QModelIndex &parent) override;
-    QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
+private:
+    EmitterModel *m_tableModel{nullptr};
 
 private:
-    struct Item
-    {
-        QString description{"Demo"};
-        int interval{1000};
-        xIO::TextItem textContext;
-
-        int elapsedTime{0};
-    };
-
-private:
-    QList<Item> m_items;
-    mutable QMutex m_itemsMutex;
-
-private:
-    void trye2Emit();
+    void try2Emit();
 };
 
 } // namespace xTools

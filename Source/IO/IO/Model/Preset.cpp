@@ -1,4 +1,4 @@
-﻿/***************************************************************************************************
+/***************************************************************************************************
  * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
@@ -13,17 +13,25 @@
 #include <QJsonObject>
 #include <QTimer>
 
+#include "PresetModel.h"
+
 namespace xTools {
 
 Preset::Preset(QObject *parent)
     : AbstractModelIO{parent}
+    , m_tableModel{new PresetModel{this}}
 {
 
 }
 
+QVariant Preset::tableModel()
+{
+    return QVariant::fromValue(m_tableModel);
+}
+
 QVariantMap Preset::saveItem(const int row) const
 {
-    if (row < 0 || row >= m_items.count()) {
+    if (row < 0 || row >= m_tableModel->rowCount(QModelIndex())) {
         qWarning() << "Invalid index row: " << row;
         return QVariantMap();
     }
@@ -41,7 +49,7 @@ QVariantMap Preset::saveItem(const int row) const
 
 void Preset::loadItem(const int row, const QVariantMap &item)
 {
-    if (row < 0 || row >= m_items.count()) {
+    if (row < 0 || row >= m_tableModel->rowCount(QModelIndex())) {
         qWarning() << "Invalid index row: " << row;
         return;
     }

@@ -32,7 +32,7 @@ EmitterUi::~EmitterUi() {}
 
 QList<int> EmitterUi::textItemColumns() const
 {
-    return QList<int>{2};
+    return QList<int>{3};
 }
 
 } // namespace xTools
