@@ -201,7 +201,7 @@ void AbstractModelUi::onPushButtonAddClicked()
 void AbstractModelUi::onCellDoubleClicked(const QModelIndex &index)
 {
     int column = index.column();
-    auto universalColumns = this->textItemColumns();
+    auto universalColumns = textItemColumns();
     if (!universalColumns.contains(column)) {
         return;
     }

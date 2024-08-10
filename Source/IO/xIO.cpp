@@ -7,6 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "xIO.h"
+#include <qserialport.h>
 
 #include <QApplication>
 #include <QJsonArray>
@@ -700,12 +701,57 @@ QByteArray xIO::calculateCrc(
     return calculateCrc(tmpData, algorithm, bigEndian);
 }
 
+QString xIO::webSocketDataChannelName(WebSocketDataChannel channel)
+{
+    if (channel == WebSocketDataChannel::Text) {
+        return tr("Text");
+    } else if (channel == WebSocketDataChannel::Binary) {
+        return tr("Binary");
+    }
+
+    return COMMON_UNKNOWN_STR;
+}
+
 void xIO::setupWebSocketDataChannel(QComboBox *comboBox)
 {
     if (comboBox) {
         comboBox->clear();
-        comboBox->addItem("Text", static_cast<int>(WebSocketDataChannel::Text));
-        comboBox->addItem("Binary", static_cast<int>(WebSocketDataChannel::Binary));
+        auto text = WebSocketDataChannel::Text;
+        auto binary = WebSocketDataChannel::Binary;
+        comboBox->addItem(webSocketDataChannelName(text), static_cast<int>(text));
+        comboBox->addItem(webSocketDataChannelName(binary), static_cast<int>(binary));
+    }
+}
+
+QList<int> xIO::supportedResponseOptions()
+{
+    static QList<int> list;
+    if (list.isEmpty()) {
+        list.append(static_cast<int>(ResponseOption::Echo));
+        list.append(static_cast<int>(ResponseOption::Always));
+        list.append(static_cast<int>(ResponseOption::InputEqualReference));
+        list.append(static_cast<int>(ResponseOption::InputContainReference));
+        list.append(static_cast<int>(ResponseOption::InputDiscontainReference));
+    }
+
+    return list;
+}
+
+QString xIO::responseOptionName(ResponseOption option)
+{
+    static QMap<ResponseOption, QString> map;
+    if (map.isEmpty()) {
+        map.insert(ResponseOption::Echo, tr("Echo"));
+        map.insert(ResponseOption::Always, tr("Always"));
+        map.insert(ResponseOption::InputEqualReference, tr("Input Equal Reference"));
+        map.insert(ResponseOption::InputContainReference, tr("Input Contain Reference"));
+        map.insert(ResponseOption::InputDiscontainReference, tr("Input Discontain Reference"));
+    }
+
+    if (map.contains(option)) {
+        return map[option];
+    } else {
+        return COMMON_UNKNOWN_STR;
     }
 }
 
@@ -877,4 +923,87 @@ QJsonObject xIO::saveTextItem(const TextItem &context)
     obj.insert(keys.crcStartIndex, context.crc.startIndex);
     obj.insert(keys.crcEndIndex, context.crc.endIndex);
     return obj;
+}
+
+xIO::SerialPortItem xIO::defaultSerialPortItem()
+{
+    SerialPortItem context;
+    context.portName = "";
+    context.baudRate = 9600;
+    context.dataBits = 8;
+    context.parity = 0;
+    context.stopBits = 1;
+    context.flowControl = 0;
+
+    return context;
+}
+
+QJsonObject xIO::saveSerialPortItem(const SerialPortItem &context)
+{
+    QJsonObject obj;
+    const SerialPortItemKeys keys;
+    obj.insert(keys.portName, context.portName);
+    obj.insert(keys.baudRate, context.baudRate);
+    obj.insert(keys.dataBits, context.dataBits);
+    obj.insert(keys.parity, context.parity);
+    obj.insert(keys.stopBits, context.stopBits);
+    obj.insert(keys.flowControl, context.flowControl);
+    return obj;
+}
+
+xIO::SerialPortItem xIO::loadSerialPortItem(const QJsonObject &obj)
+{
+    SerialPortItem ctx;
+    const SerialPortItemKeys keys;
+    ctx.portName = obj.value(keys.portName).toString();
+    ctx.baudRate = obj.value(keys.baudRate).toInt();
+    ctx.dataBits = obj.value(keys.dataBits).toInt();
+    ctx.parity = obj.value(keys.parity).toInt();
+    ctx.stopBits = obj.value(keys.stopBits).toInt();
+    ctx.flowControl = obj.value(keys.flowControl).toInt();
+    return ctx;
+}
+
+xIO::SocketItem xIO::defaultSocketItem()
+{
+    SocketItem item;
+    item.clientAddress = "127.0.0.1";
+    item.clientPort = 54321;
+    item.serverAddress = "127.0.0.1";
+    item.serverPort = 12345;
+    item.dataChannel = WebSocketDataChannel::Text;
+    item.authentication = false;
+    item.username = "";
+    item.password = "";
+    return item;
+}
+
+QJsonObject xIO::saveSocketItem(const SocketItem &context)
+{
+    QJsonObject obj;
+    const SocketItemKeys keys;
+    obj.insert(keys.clientAddress, context.clientAddress);
+    obj.insert(keys.clientPort, context.clientPort);
+    obj.insert(keys.serverAddress, context.serverAddress);
+    obj.insert(keys.serverPort, context.serverPort);
+    obj.insert(keys.dataChannel, static_cast<int>(context.dataChannel));
+    obj.insert(keys.authentication, context.authentication);
+    obj.insert(keys.username, context.username);
+    obj.insert(keys.password, context.password);
+    return obj;
+}
+
+xIO::SocketItem xIO::loadSocketItem(const QJsonObject &obj)
+{
+    SocketItem ctx;
+    const SocketItemKeys keys;
+    ctx.clientAddress = obj.value(keys.clientAddress).toString();
+    ctx.clientPort = obj.value(keys.clientPort).toInt();
+    ctx.serverAddress = obj.value(keys.serverAddress).toString();
+    ctx.serverPort = obj.value(keys.serverPort).toInt();
+    ctx.dataChannel = static_cast<WebSocketDataChannel>(obj.value(keys.dataChannel).toInt());
+    ctx.authentication = obj.value(keys.authentication).toBool();
+    ctx.username = obj.value(keys.username).toString();
+    ctx.password = obj.value(keys.password).toString();
+    return ctx;
 }

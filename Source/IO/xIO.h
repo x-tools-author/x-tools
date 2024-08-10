@@ -98,17 +98,19 @@ public:
 
     /**********************************************************************************************/
     enum class WebSocketDataChannel { Text, Binary };
+    static QString webSocketDataChannelName(WebSocketDataChannel channel);
     static void setupWebSocketDataChannel(QComboBox *comboBox);
 
     /**********************************************************************************************/
     enum class ResponseOption {
-        Disable,
         Echo,   // Response the data that received.
         Always, // Response the data that set by user when data received.
         InputEqualReference,
         InputContainReference,
         InputDiscontainReference
     };
+    static QList<int> supportedResponseOptions();
+    static QString responseOptionName(ResponseOption option);
 
     /**********************************************************************************************/
     static QString jsonValue2hexString(const QJsonValue &value);
@@ -146,4 +148,54 @@ public:
     static QByteArray textItem2array(const TextItem &context);
     static TextItem loadTextItem(const QJsonObject &obj);
     static QJsonObject saveTextItem(const TextItem &context);
+
+    /**********************************************************************************************/
+    struct SerialPortItem
+    {
+        QString portName;
+        qint32 baudRate;
+        int dataBits;
+        int parity;
+        int stopBits;
+        int flowControl;
+    };
+    struct SerialPortItemKeys
+    {
+        const QString portName{"portName"};
+        const QString baudRate{"baudRate"};
+        const QString dataBits{"dataBits"};
+        const QString parity{"parity"};
+        const QString stopBits{"stopBits"};
+        const QString flowControl{"flowControl"};
+    };
+    static SerialPortItem defaultSerialPortItem();
+    static QJsonObject saveSerialPortItem(const SerialPortItem &context);
+    static SerialPortItem loadSerialPortItem(const QJsonObject &obj);
+
+    /**********************************************************************************************/
+    struct SocketItem
+    {
+        QString clientAddress;
+        quint16 clientPort;
+        QString serverAddress;
+        quint16 serverPort;
+        WebSocketDataChannel dataChannel;
+        bool authentication;
+        QString username;
+        QString password;
+    };
+    struct SocketItemKeys
+    {
+        const QString clientAddress{"clientAddress"};
+        const QString clientPort{"clientPort"};
+        const QString serverAddress{"serverAddress"};
+        const QString serverPort{"serverPort"};
+        const QString dataChannel{"dataChannel"};
+        const QString authentication{"authentication"};
+        const QString username{"username"};
+        const QString password{"password"};
+    };
+    static SocketItem defaultSocketItem();
+    static QJsonObject saveSocketItem(const SocketItem &context);
+    static SocketItem loadSocketItem(const QJsonObject &obj);
 };

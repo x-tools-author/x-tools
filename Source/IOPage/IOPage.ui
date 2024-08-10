@@ -270,27 +270,6 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="2" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <item>
-         <widget class="QLineEdit" name="lineEditInput">
-          <property name="text">
-           <string notr="true"/>
-          </property>
-          <property name="placeholderText">
-           <string>Paoload ([Prefix][Payload(crc data)][CRC][Suffix])</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonInputPreset">
-          <property name="text">
-           <string notr="true">🗒</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <property name="spacing">
@@ -355,9 +334,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="toolButtonTransmitter">
+         <widget class="QToolButton" name="toolButtonTransfers">
           <property name="text">
-           <string>🔃</string>
+           <string>🔗</string>
           </property>
          </widget>
         </item>
@@ -410,7 +389,7 @@
        </layout>
       </item>
       <item row="1" column="0">
-       <widget class="QStackedWidget" name="stackedWidget">
+       <widget class="QStackedWidget" name="stackedWidgetPages">
         <widget class="QWidget" name="pageOutput">
          <layout class="QGridLayout" name="gridLayout_4">
           <property name="leftMargin">
@@ -425,6 +404,27 @@
           <property name="bottomMargin">
            <number>0</number>
           </property>
+          <item row="2" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QLineEdit" name="lineEditInput">
+              <property name="text">
+               <string notr="true"/>
+              </property>
+              <property name="placeholderText">
+               <string>Paoload ([Prefix][Payload(crc data)][CRC][Suffix])</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="toolButtonInputPreset">
+              <property name="text">
+               <string notr="true">🗒</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
           <item row="0" column="0">
            <widget class="QTextBrowser" name="textBrowserOutput"/>
           </item>
@@ -469,8 +469,79 @@
           </item>
          </layout>
         </widget>
+        <widget class="QWidget" name="pageTransfers">
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>Transfers</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="toolButtonSerialPort">
+              <property name="toolTip">
+               <string>Serial Port Transfer</string>
+              </property>
+              <property name="text">
+               <string notr="true"/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="toolButtonUdpClient">
+              <property name="text">
+               <string>UC</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="toolButtonTcpClient">
+              <property name="text">
+               <string>TC</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="toolButtonTcpServer">
+              <property name="text">
+               <string>TS</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="toolButtonWebSocketClient">
+              <property name="text">
+               <string>WC</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="toolButtonWebSocketServer">
+              <property name="text">
+               <string>WS</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <widget class="QStackedWidget" name="stackedWidgetTransfers">
+            <widget class="xTools::SerialPortTransferUi" name="pageTransferSerialPort"/>
+            <widget class="xTools::UdpClientTransferUi" name="pageTransferUdpClient"/>
+            <widget class="xTools::TcpServerTransferUi" name="pageTransferTcpServer"/>
+            <widget class="xTools::WebSocketServerTransferUi" name="pageTransferWebSocketServer"/>
+            <widget class="xTools::WebSocketClientTransferUi" name="pageTransferWebSocketClient"/>
+            <widget class="xTools::TcpClientTransferUi" name="pageTransferTcpClient"/>
+           </widget>
+          </item>
+         </layout>
+        </widget>
         <widget class="xTools::PresetUi" name="pagePreset"/>
         <widget class="xTools::EmitterUi" name="pageEmitter"/>
+        <widget class="xTools::ResponserUi" name="pageResponser"/>
        </widget>
       </item>
      </layout>
@@ -495,6 +566,48 @@
    <class>xTools::EmitterUi</class>
    <extends>QWidget</extends>
    <header location="global">IO/UI/Model/EmitterUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::ResponserUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Model/ResponserUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::SerialPortTransferUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Transfer/SerialPortTransferUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::UdpClientTransferUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Transfer/UdpClientTransferUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::TcpClientTransferUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Transfer/TcpClientTransferUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::TcpServerTransferUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Transfer/TcpServerTransferUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::WebSocketClientTransferUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Transfer/WebSocketClientTransferUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::WebSocketServerTransferUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Transfer/WebSocketServerTransferUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

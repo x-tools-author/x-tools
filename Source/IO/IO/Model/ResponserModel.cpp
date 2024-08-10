@@ -1,20 +1,22 @@
 ﻿/***************************************************************************************************
- * Copyright 2023-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "EmitterModel.h"
+#include "ResponserModel.h"
+
+#include <QStandardItem>
 
 namespace xTools {
 
-EmitterModel::EmitterModel(QObject *parent)
+ResponserModel::ResponserModel(QObject *parent)
     : QAbstractTableModel{parent}
 {}
 
-int EmitterModel::rowCount(const QModelIndex &parent) const
+int ResponserModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
 
@@ -22,12 +24,12 @@ int EmitterModel::rowCount(const QModelIndex &parent) const
     return count;
 }
 
-int EmitterModel::columnCount(const QModelIndex &parent) const
+int ResponserModel::columnCount(const QModelIndex &parent) const
 {
-    return 4;
+    return 6;
 }
 
-QVariant EmitterModel::data(const QModelIndex &index, int role) const
+QVariant ResponserModel::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if (row < 0 || row >= m_items.count()) {
@@ -43,9 +45,13 @@ QVariant EmitterModel::data(const QModelIndex &index, int role) const
         } else if (column == 1) {
             return item.description;
         } else if (column == 2) {
-            return item.interval;
+            return xIO::responseOptionName(item.option);
         } else if (column == 3) {
-            return xIO::textItem2string(item.textContext);
+            return item.delay;
+        } else if (column == 4) {
+            return xIO::textItem2string(item.referenceTextContext);
+        } else if (column == 5) {
+            return xIO::textItem2string(item.responseTextContext);
         }
     } else if (role == Qt::EditRole) {
         if (column == 0) {
@@ -53,12 +59,16 @@ QVariant EmitterModel::data(const QModelIndex &index, int role) const
         } else if (column == 1) {
             return item.description;
         } else if (column == 2) {
-            return item.interval;
+            return static_cast<int>(item.option);
         } else if (column == 3) {
-            return xIO::saveTextItem(item.textContext);
+            return item.delay;
+        } else if (column == 4) {
+            return xIO::saveTextItem(item.referenceTextContext);
+        } else if (column == 5) {
+            return xIO::saveTextItem(item.responseTextContext);
         }
     } else if (role == Qt::TextAlignmentRole) {
-        if (column == 0 || column == 1 || column == 2) {
+        if (column == 0 || column == 1 || column == 2 || column == 3) {
             return Qt::AlignCenter;
         }
     }
@@ -66,7 +76,7 @@ QVariant EmitterModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool EmitterModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool ResponserModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     int row = index.row();
     if (row < 0 || row >= m_items.count()) {
@@ -83,10 +93,14 @@ bool EmitterModel::setData(const QModelIndex &index, const QVariant &value, int 
         } else if (column == 1) {
             item.description = value.toString();
         } else if (column == 2) {
-            item.interval = value.toInt();
-            item.interval = qMax(100, item.interval);
+            item.option = static_cast<xIO::ResponseOption>(value.toInt());
         } else if (column == 3) {
-            item.textContext = xIO::loadTextItem(value.toJsonObject());
+            item.delay = value.toInt();
+            item.delay = qMax(0, item.delay);
+        } else if (column == 4) {
+            item.referenceTextContext = xIO::loadTextItem(value.toJsonObject());
+        } else if (column == 5) {
+            item.responseTextContext = xIO::loadTextItem(value.toJsonObject());
         } else {
             result = false;
         }
@@ -96,13 +110,20 @@ bool EmitterModel::setData(const QModelIndex &index, const QVariant &value, int 
     return result;
 }
 
-bool EmitterModel::insertRows(int row, int count, const QModelIndex &parent)
+bool ResponserModel::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
 
-    xIO::TextItem textContext = xIO::defaultTextItem();
+    xIO::TextItem referenceTextContext = xIO::defaultTextItem();
+    xIO::TextItem responseTextContext = xIO::defaultTextItem();
+    auto option = xIO::ResponseOption::InputEqualReference;
     for (int i = 0; i < count; i++) {
-        Item item{true, tr("Demo") + QString::number(rowCount(QModelIndex())), 1000, textContext};
+        Item item{true,
+                  tr("Demo") + QString::number(rowCount(QModelIndex())),
+                  option,
+                  1000,
+                  referenceTextContext,
+                  responseTextContext};
         m_items.insert(row, item);
     }
 
@@ -110,25 +131,19 @@ bool EmitterModel::insertRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-bool EmitterModel::removeRows(int row, int count, const QModelIndex &parent)
+bool ResponserModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     if (count == 0) {
         return true;
     }
 
     beginRemoveRows(parent, row, row + count - 1);
-#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
     m_items.remove(row, count);
-#else
-    for (int i = row; i < row+count; ++i) {
-        m_items.removeAt(i);
-    }
-#endif
     endRemoveRows();
     return true;
 }
 
-QVariant EmitterModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant ResponserModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (orientation == Qt::Vertical) {
         return QVariant();
@@ -140,51 +155,28 @@ QVariant EmitterModel::headerData(int section, Qt::Orientation orientation, int 
         } else if (section == 1) {
             return tr("Description");
         } else if (section == 2) {
-            return tr("Interval");
+            return tr("Option");
         } else if (section == 3) {
-            return tr("Data");
-        }
-    } else if (role == Qt::TextAlignmentRole) {
-        if (section == 3) {
-            return Qt::AlignLeft;
+            return tr("Delay");
+        } else if (section == 4) {
+            return tr("Reference Data");
+        } else if (section == 5) {
+            return tr("Response Data");
         }
     }
 
     return QVariant();
 }
 
-Qt::ItemFlags EmitterModel::flags(const QModelIndex &index) const
+Qt::ItemFlags ResponserModel::flags(const QModelIndex &index) const
 {
-    if (index.column() == 0) {
-        return QAbstractTableModel::flags(index) | Qt::ItemIsEditable | Qt::ItemIsUserCheckable;
-    } else if (index.column() == 1 || index.column() == 2) {
+    int column = index.column();
+    if (column == 0) {
+        return QAbstractTableModel::flags(index) | Qt::ItemIsUserCheckable;
+    } else if (column == 1 || column == 2 || column == 3) {
         return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
     } else {
         return QAbstractTableModel::flags(index);
-    }
-}
-
-void EmitterModel::increaseElapsedTime(const int row, const int interval)
-{
-    if (row >= 0 || row < m_items.count()) {
-        m_items[row].elapsedTime += interval;
-    }
-}
-
-bool EmitterModel::isTimeout(const int row) const
-{
-    bool timeout = false;
-    if (row >= 0 || row < m_items.count()) {
-        timeout = m_items[row].elapsedTime >= m_items[row].interval;
-    }
-
-    return timeout;
-}
-
-void EmitterModel::resetElapsedTime(const int row)
-{
-    if (row >= 0 || row < m_items.count()) {
-        m_items[row].elapsedTime = 0;
     }
 }
 

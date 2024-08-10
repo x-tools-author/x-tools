@@ -122,6 +122,10 @@ QVariant PresetModel::headerData(int section, Qt::Orientation orientation, int r
         } else if (section == 1) {
             return tr("Data");
         }
+    } else if (role == Qt::TextAlignmentRole) {
+        if (section == 1) {
+            return Qt::AlignLeft;
+        }
     }
 
     return QVariant();

@@ -24,6 +24,13 @@ QT_BEGIN_NAMESPACE
 namespace xTools {
 class Preset;
 class Emitter;
+class Responser;
+class SerialPortTransfer;
+class UdpClientTransfer;
+class TcpClientTransfer;
+class TcpServerTransfer;
+class WebSocketClientTransfer;
+class WebSocketServerTransfer;
 }
 QT_END_NAMESPACE
 
@@ -69,6 +76,13 @@ private:
 
         const QString presetItems{"presetItems"};
         const QString emitterItems{"emitterItems"};
+        const QString responserItems{"responserItems"};
+        const QString serialPortTransferItems{"serialPortTransferItems"};
+        const QString udpClientTransferItems{"udpClientTransferItems"};
+        const QString tcpClientTransferItems{"tcpClientTransferItems"};
+        const QString tcpServerTransferItems{"tcpServerTransferItems"};
+        const QString webSocketClientTransferItems{"webSocketClientTransferItems"};
+        const QString webSocketServerTransferItems{"webSocketServerTransferItems"};
     } m_keys;
 
 private:
@@ -85,9 +99,18 @@ private:
     Statistician *m_txStatistician;
     xTools::Preset *m_preset;
     xTools::Emitter *m_emitter;
+    xTools::Responser *m_responser;
+    xTools::SerialPortTransfer *m_serialPortTransfer;
+    xTools::UdpClientTransfer *m_udpClientTransfer;
+    xTools::TcpClientTransfer *m_tcpClientTransfer;
+    xTools::TcpServerTransfer *m_tcpServerTransfer;
+    xTools::WebSocketClientTransfer *m_webSocketClientTransfer;
+    xTools::WebSocketServerTransfer *m_webSocketServerTransfer;
     QButtonGroup m_pageButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_pageContextMap;
     QList<AbstractIO *> m_ioList;
+    QButtonGroup m_transferButtonGroup;
+    QMap<QAbstractButton *, QWidget *> m_transferContextMap;
 
 private:
     void initUi();
@@ -95,6 +118,7 @@ private:
     void initUiOutputControl();
     void initUiInputControl();
     void initUiOutput();
+    void initUiOutputTransfers();
     void initUiInput();
 
     void onCommunicationTypeChanged();
@@ -113,6 +137,7 @@ private:
     void onBytesWritten(const QByteArray &bytes, const QString &to);
 
     void onPageButtonClicked(QAbstractButton *button);
+    void onTransferButtonClicked(QAbstractButton *button);
 
     void open();
     void close();
