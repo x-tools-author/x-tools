@@ -25,6 +25,7 @@
 #include "IO/IO/Transfer/TcpServerTransfer.h"
 #include "IO/IO/Transfer/UdpClientTransfer.h"
 #include "IO/IO/Transfer/WebSocketClientTransfer.h"
+#include "IO/IO/Transfer/WebSocketServerTransfer.h"
 #include "IO/UI/Communication/CommunicationUi.h"
 #include "IO/UI/IOUiFactory.h"
 #include "IO/xIO.h"
@@ -53,6 +54,7 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     , m_tcpClientTransfer(new xTools::TcpClientTransfer(this))
     , m_tcpServerTransfer(new xTools::TcpServerTransfer(this))
     , m_webSocketClientTransfer(new xTools::WebSocketClientTransfer(this))
+    , m_webSocketServerTransfer(new xTools::WebSocketServerTransfer(this))
 {
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
@@ -60,7 +62,7 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
 
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responser
              << m_serialPortTransfer << m_udpClientTransfer << m_tcpClientTransfer
-             << m_webSocketClientTransfer;
+             << m_webSocketClientTransfer << m_webSocketServerTransfer;
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
@@ -114,6 +116,7 @@ QVariantMap IOPage::save()
     map.insert(m_keys.tcpClientTransferItems, ui->pageTransferTcpClient->save());
     map.insert(m_keys.tcpServerTransferItems, ui->pageTransferTcpServer->save());
     map.insert(m_keys.webSocketClientTransferItems, ui->pageTransferWebSocketClient->save());
+    map.insert(m_keys.webSocketServerTransferItems, ui->pageTransferWebSocketServer->save());
 
     return map;
 }
@@ -172,6 +175,7 @@ void IOPage::load(const QVariantMap &parameters)
     ui->pageTransferTcpClient->load(parameters.value(m_keys.tcpClientTransferItems).toMap());
     ui->pageTransferTcpServer->load(parameters.value(m_keys.tcpServerTransferItems).toMap());
     ui->pageTransferWebSocketClient->load(parameters.value(m_keys.webSocketClientTransferItems).toMap());
+    ui->pageTransferWebSocketServer->load(parameters.value(m_keys.webSocketServerTransferItems).toMap());
     // clang-format on
 }
 
@@ -330,6 +334,7 @@ void IOPage::initUiOutputTransfers()
     ui->pageTransferTcpClient->setupIO(m_tcpClientTransfer);
     ui->pageTransferTcpServer->setupIO(m_tcpServerTransfer);
     ui->pageTransferWebSocketClient->setupIO(m_webSocketClientTransfer);
+    ui->pageTransferWebSocketServer->setupIO(m_webSocketServerTransfer);
 }
 
 void IOPage::initUiInput()
@@ -488,6 +493,7 @@ void IOPage::open()
         connect(m_io, &Communication::outputBytes, m_tcpClientTransfer, &xTools::TcpClientTransfer::inputBytes);
         connect(m_io, &Communication::outputBytes, m_tcpServerTransfer, &xTools::TcpServerTransfer::inputBytes);
         connect(m_io, &Communication::outputBytes, m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::inputBytes);
 
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
@@ -497,6 +503,7 @@ void IOPage::open()
         connect(m_tcpClientTransfer, &xTools::TcpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
         connect(m_tcpServerTransfer, &xTools::TcpServerTransfer::outputBytes, m_io, &Communication::inputBytes);
         connect(m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::outputBytes, m_io, &Communication::inputBytes);
         // clang-format on
 
         QVariantMap parameters = m_ioUi->save();
