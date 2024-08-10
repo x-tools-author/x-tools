@@ -136,6 +136,10 @@ QVariant EmitterModel::headerData(int section, Qt::Orientation orientation, int 
         } else if (section == 3) {
             return tr("Data");
         }
+    } else if (role == Qt::TextAlignmentRole) {
+        if (section == 3) {
+            return Qt::AlignLeft;
+        }
     }
 
     return QVariant();
