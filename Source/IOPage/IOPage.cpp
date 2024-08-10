@@ -22,6 +22,7 @@
 #include "IO/IO/Processor/Statistician.h"
 #include "IO/IO/Transfer/SerialPortTransfer.h"
 #include "IO/IO/Transfer/TcpClientTransfer.h"
+#include "IO/IO/Transfer/TcpServerTransfer.h"
 #include "IO/IO/Transfer/UdpClientTransfer.h"
 #include "IO/UI/Communication/CommunicationUi.h"
 #include "IO/UI/IOUiFactory.h"
@@ -49,6 +50,7 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     , m_serialPortTransfer(new xTools::SerialPortTransfer(this))
     , m_udpClientTransfer(new xTools::UdpClientTransfer(this))
     , m_tcpClientTransfer(new xTools::TcpClientTransfer(this))
+    , m_tcpServerTransfer(new xTools::TcpServerTransfer(this))
 {
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
@@ -106,6 +108,8 @@ QVariantMap IOPage::save()
     map.insert(m_keys.responserItems, ui->pageResponser->save());
     map.insert(m_keys.serialPortTransferItems, ui->pageTransferSerialPort->save());
     map.insert(m_keys.udpClientTransferItems, ui->pageTransferUdpClient->save());
+    map.insert(m_keys.tcpClientTransferItems, ui->pageTransferTcpClient->save());
+    map.insert(m_keys.tcpServerTransferItems, ui->pageTransferTcpServer->save());
 
     return map;
 }
@@ -160,6 +164,8 @@ void IOPage::load(const QVariantMap &parameters)
     ui->pageResponser->load(parameters.value(m_keys.responserItems).toMap());
     ui->pageTransferSerialPort->load(parameters.value(m_keys.serialPortTransferItems).toMap());
     ui->pageTransferUdpClient->load(parameters.value(m_keys.udpClientTransferItems).toMap());
+    ui->pageTransferTcpClient->load(parameters.value(m_keys.tcpClientTransferItems).toMap());
+    ui->pageTransferTcpServer->load(parameters.value(m_keys.tcpServerTransferItems).toMap());
 }
 
 void IOPage::initUi()
@@ -315,6 +321,7 @@ void IOPage::initUiOutputTransfers()
     ui->pageTransferSerialPort->setupIO(m_serialPortTransfer);
     ui->pageTransferUdpClient->setupIO(m_udpClientTransfer);
     ui->pageTransferTcpClient->setupIO(m_tcpClientTransfer);
+    ui->pageTransferTcpServer->setupIO(m_tcpServerTransfer);
 }
 
 void IOPage::initUiInput()
@@ -471,6 +478,7 @@ void IOPage::open()
         connect(m_io, &Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
         connect(m_io, &Communication::outputBytes, m_udpClientTransfer, &xTools::UdpClientTransfer::inputBytes);
         connect(m_io, &Communication::outputBytes, m_tcpClientTransfer, &xTools::TcpClientTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_tcpServerTransfer, &xTools::TcpServerTransfer::inputBytes);
 
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
@@ -478,6 +486,7 @@ void IOPage::open()
         connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &Communication::inputBytes);
         connect(m_udpClientTransfer, &xTools::UdpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
         connect(m_tcpClientTransfer, &xTools::TcpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_tcpServerTransfer, &xTools::TcpServerTransfer::outputBytes, m_io, &Communication::inputBytes);
         // clang-format on
 
         QVariantMap parameters = m_ioUi->save();
