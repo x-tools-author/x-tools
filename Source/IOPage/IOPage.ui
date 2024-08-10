@@ -553,7 +553,7 @@
   <customwidget>
    <class>StatisticianUi</class>
    <extends>QWidget</extends>
-   <header location="global">IO/Ui/Processor/StatisticianUi.h</header>
+   <header location="global">IO/UI/Processor/StatisticianUi.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
