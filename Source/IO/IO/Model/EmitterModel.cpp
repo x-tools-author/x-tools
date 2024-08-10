@@ -77,17 +77,19 @@ bool EmitterModel::setData(const QModelIndex &index, const QVariant &value, int 
     Item &item = m_items[row];
 
     int column = index.column();
-    if ((column == 0) && (role == Qt::EditRole)) {
-        item.enable = value.toBool();
-    } else if ((column == 1) && (role == Qt::EditRole)) {
-        item.description = value.toString();
-    } else if ((column == 2) && (role == Qt::EditRole)) {
-        item.interval = value.toInt();
-        item.interval = qMax(100, item.interval);
-    } else if ((column == 3) && (role == Qt::EditRole)) {
-        item.textContext = xIO::loadTextItem(value.toJsonObject());
-    } else {
-        result = false;
+    if (role == Qt::EditRole) {
+        if (column == 0) {
+            item.enable = value.toBool();
+        } else if (column == 1) {
+            item.description = value.toString();
+        } else if (column == 2) {
+            item.interval = value.toInt();
+            item.interval = qMax(100, item.interval);
+        } else if (column == 3) {
+            item.textContext = xIO::loadTextItem(value.toJsonObject());
+        } else {
+            result = false;
+        }
     }
 
     emit dataChanged(index, index);
