@@ -270,27 +270,6 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="2" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <item>
-         <widget class="QLineEdit" name="lineEditInput">
-          <property name="text">
-           <string notr="true"/>
-          </property>
-          <property name="placeholderText">
-           <string>Paoload ([Prefix][Payload(crc data)][CRC][Suffix])</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonInputPreset">
-          <property name="text">
-           <string notr="true">🗒</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <property name="spacing">
@@ -425,6 +404,27 @@
           <property name="bottomMargin">
            <number>0</number>
           </property>
+          <item row="2" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QLineEdit" name="lineEditInput">
+              <property name="text">
+               <string notr="true"/>
+              </property>
+              <property name="placeholderText">
+               <string>Paoload ([Prefix][Payload(crc data)][CRC][Suffix])</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="toolButtonInputPreset">
+              <property name="text">
+               <string notr="true">🗒</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
           <item row="0" column="0">
            <widget class="QTextBrowser" name="textBrowserOutput"/>
           </item>
