@@ -534,7 +534,7 @@
             <widget class="QWidget" name="pageTransferTcpServer"/>
             <widget class="QWidget" name="pageTransferWSServer"/>
             <widget class="QWidget" name="pageTransferWSClient"/>
-            <widget class="QWidget" name="pageTransferTcpClient"/>
+            <widget class="xTools::TcpClientTransferUi" name="pageTransferTcpClient"/>
            </widget>
           </item>
          </layout>
@@ -584,6 +584,12 @@
    <class>xTools::UdpClientTransferUi</class>
    <extends>QWidget</extends>
    <header location="global">IO/UI/Transfer/UdpClientTransferUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::TcpClientTransferUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Transfer/TcpClientTransferUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

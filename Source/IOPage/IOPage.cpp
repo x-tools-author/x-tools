@@ -21,6 +21,7 @@
 #include "IO/IO/Model/Responser.h"
 #include "IO/IO/Processor/Statistician.h"
 #include "IO/IO/Transfer/SerialPortTransfer.h"
+#include "IO/IO/Transfer/TcpClientTransfer.h"
 #include "IO/IO/Transfer/UdpClientTransfer.h"
 #include "IO/UI/Communication/CommunicationUi.h"
 #include "IO/UI/IOUiFactory.h"
@@ -47,13 +48,14 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     , m_responser{new xTools::Responser(this)}
     , m_serialPortTransfer(new xTools::SerialPortTransfer(this))
     , m_udpClientTransfer(new xTools::UdpClientTransfer(this))
+    , m_tcpClientTransfer(new xTools::TcpClientTransfer(this))
 {
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
 
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responser
-             << m_serialPortTransfer << m_udpClientTransfer;
+             << m_serialPortTransfer << m_udpClientTransfer << m_tcpClientTransfer;
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
@@ -312,6 +314,7 @@ void IOPage::initUiOutputTransfers()
     ui->stackedWidgetTransfers->setCurrentWidget(ui->pageTransferSerialPort);
     ui->pageTransferSerialPort->setupIO(m_serialPortTransfer);
     ui->pageTransferUdpClient->setupIO(m_udpClientTransfer);
+    ui->pageTransferTcpClient->setupIO(m_tcpClientTransfer);
 }
 
 void IOPage::initUiInput()
@@ -457,6 +460,7 @@ void IOPage::open()
             io->start();
         }
 
+        // clang-format off
         connect(m_io, &Communication::opened, this, &IOPage::onOpened);
         connect(m_io, &Communication::closed, this, &IOPage::onClosed);
         connect(m_io, &Communication::bytesWritten, this, &IOPage::onBytesWritten);
@@ -464,26 +468,17 @@ void IOPage::open()
         connect(m_io, &Communication::errorOccurred, this, &IOPage::onErrorOccurred);
         connect(m_io, &Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
         connect(m_io, &Communication::outputBytes, m_responser, &xTools::Responser::inputBytes);
-        connect(m_io,
-                &Communication::outputBytes,
-                m_serialPortTransfer,
-                &xTools::SerialPortTransfer::inputBytes);
-        connect(m_io,
-                &Communication::outputBytes,
-                m_udpClientTransfer,
-                &xTools::UdpClientTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_udpClientTransfer, &xTools::UdpClientTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_tcpClientTransfer, &xTools::TcpClientTransfer::inputBytes);
 
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_responser, &xTools::Responser::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_serialPortTransfer,
-                &xTools::SerialPortTransfer::outputBytes,
-                m_io,
-                &Communication::inputBytes);
-        connect(m_udpClientTransfer,
-                &xTools::UdpClientTransfer::outputBytes,
-                m_io,
-                &Communication::inputBytes);
+        connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_udpClientTransfer, &xTools::UdpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_tcpClientTransfer, &xTools::TcpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
+        // clang-format on
 
         QVariantMap parameters = m_ioUi->save();
         m_ioUi->setupDevice(m_io);
