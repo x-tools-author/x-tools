@@ -20,6 +20,7 @@
 #include "IO/IO/Model/Preset.h"
 #include "IO/IO/Model/Responser.h"
 #include "IO/IO/Processor/Statistician.h"
+#include "IO/IO/Transfer/SerialPortTransfer.h"
 #include "IO/UI/Communication/CommunicationUi.h"
 #include "IO/UI/IOUiFactory.h"
 #include "IO/xIO.h"
@@ -43,12 +44,14 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     , m_preset{new xTools::Preset(this)}
     , m_emitter{new xTools::Emitter(this)}
     , m_responser{new xTools::Responser(this)}
+    , m_serialPortTransfer(new xTools::SerialPortTransfer(this))
 {
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
 
-    m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responser;
+    m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responser
+             << m_serialPortTransfer;
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
@@ -97,6 +100,7 @@ QVariantMap IOPage::save()
     map.insert(m_keys.presetItems, ui->pagePreset->save());
     map.insert(m_keys.emitterItems, ui->pageEmitter->save());
     map.insert(m_keys.responserItems, ui->pageResponser->save());
+    map.insert(m_keys.serialPortTransferItems, ui->pageTransferSerialPort->save());
 
     return map;
 }
@@ -149,6 +153,7 @@ void IOPage::load(const QVariantMap &parameters)
     ui->pagePreset->load(parameters.value(m_keys.presetItems).toMap());
     ui->pageEmitter->load(parameters.value(m_keys.emitterItems).toMap());
     ui->pageResponser->load(parameters.value(m_keys.responserItems).toMap());
+    ui->pageTransferSerialPort->load(parameters.value(m_keys.serialPortTransferItems).toMap());
 }
 
 void IOPage::initUi()
@@ -240,7 +245,7 @@ void IOPage::initUiOutput()
     ui->toolButtonPreset->setCheckable(true);
     ui->toolButtonEmitter->setCheckable(true);
     ui->toolButtonResponser->setCheckable(true);
-    ui->toolButtonTransmitter->setCheckable(true);
+    ui->toolButtonTransfers->setCheckable(true);
 
     ui->pagePreset->setupIO(m_preset);
     ui->pageEmitter->setupIO(m_emitter);
@@ -250,12 +255,13 @@ void IOPage::initUiOutput()
     m_pageButtonGroup.addButton(ui->toolButtonPreset);
     m_pageButtonGroup.addButton(ui->toolButtonEmitter);
     m_pageButtonGroup.addButton(ui->toolButtonResponser);
-    m_pageButtonGroup.addButton(ui->toolButtonTransmitter);
+    m_pageButtonGroup.addButton(ui->toolButtonTransfers);
 
     m_pageContextMap.insert(ui->toolButtonOutput, ui->pageOutput);
     m_pageContextMap.insert(ui->toolButtonPreset, ui->pagePreset);
     m_pageContextMap.insert(ui->toolButtonEmitter, ui->pageEmitter);
     m_pageContextMap.insert(ui->toolButtonResponser, ui->pageResponser);
+    m_pageContextMap.insert(ui->toolButtonTransfers, ui->pageTransfers);
 
     connect(&m_pageButtonGroup,
             qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked),
@@ -264,6 +270,43 @@ void IOPage::initUiOutput()
 
     ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
     ui->toolButtonInputPreset->setMenu(ui->pagePreset->menu());
+
+    initUiOutputTransfers();
+}
+
+void IOPage::initUiOutputTransfers()
+{
+    ui->toolButtonSerialPort->setIcon(QIcon(":/Resources/Icons/IconSerialPort.svg"));
+
+    ui->toolButtonSerialPort->setCheckable(true);
+    ui->toolButtonTcpServer->setCheckable(true);
+    ui->toolButtonTcpClient->setCheckable(true);
+    ui->toolButtonUdpClient->setCheckable(true);
+    ui->toolButtonWebSocketClient->setCheckable(true);
+    ui->toolButtonWebSocketServer->setCheckable(true);
+
+    m_transferButtonGroup.addButton(ui->toolButtonSerialPort);
+    m_transferButtonGroup.addButton(ui->toolButtonTcpServer);
+    m_transferButtonGroup.addButton(ui->toolButtonTcpClient);
+    m_transferButtonGroup.addButton(ui->toolButtonUdpClient);
+    m_transferButtonGroup.addButton(ui->toolButtonWebSocketClient);
+    m_transferButtonGroup.addButton(ui->toolButtonWebSocketServer);
+
+    m_transferContextMap.insert(ui->toolButtonSerialPort, ui->pageTransferSerialPort);
+    m_transferContextMap.insert(ui->toolButtonTcpServer, ui->pageTransferTcpServer);
+    m_transferContextMap.insert(ui->toolButtonTcpClient, ui->pageTransferTcpClient);
+    m_transferContextMap.insert(ui->toolButtonUdpClient, ui->pageTransferUdpClient);
+    m_transferContextMap.insert(ui->toolButtonWebSocketClient, ui->pageTransferWSClient);
+    m_transferContextMap.insert(ui->toolButtonWebSocketServer, ui->pageTransferWSServer);
+
+    connect(&m_transferButtonGroup,
+            qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked),
+            this,
+            &IOPage::onTransferButtonClicked);
+
+    ui->toolButtonSerialPort->setChecked(true);
+    ui->stackedWidgetTransfers->setCurrentWidget(ui->pageTransferSerialPort);
+    ui->pageTransferSerialPort->setupIO(m_serialPortTransfer);
 }
 
 void IOPage::initUiInput()
@@ -386,7 +429,15 @@ void IOPage::onPageButtonClicked(QAbstractButton *button)
 {
     if (m_pageContextMap.contains(button)) {
         QWidget *page = m_pageContextMap.value(button);
-        ui->stackedWidget->setCurrentWidget(page);
+        ui->stackedWidgetPages->setCurrentWidget(page);
+    }
+}
+
+void IOPage::onTransferButtonClicked(QAbstractButton *button)
+{
+    if (m_transferButtonGroup.checkedButton() == button) {
+        QWidget *page = m_transferContextMap.value(button);
+        ui->stackedWidgetTransfers->setCurrentWidget(page);
     }
 }
 
@@ -408,10 +459,18 @@ void IOPage::open()
         connect(m_io, &Communication::errorOccurred, this, &IOPage::onErrorOccurred);
         connect(m_io, &Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
         connect(m_io, &Communication::outputBytes, m_responser, &xTools::Responser::inputBytes);
+        connect(m_io,
+                &Communication::outputBytes,
+                m_serialPortTransfer,
+                &xTools::SerialPortTransfer::inputBytes);
 
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_responser, &xTools::Responser::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_serialPortTransfer,
+                &xTools::SerialPortTransfer::outputBytes,
+                m_io,
+                &Communication::inputBytes);
 
         QVariantMap parameters = m_ioUi->save();
         m_ioUi->setupDevice(m_io);

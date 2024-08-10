@@ -147,4 +147,27 @@ public:
     static QByteArray textItem2array(const TextItem &context);
     static TextItem loadTextItem(const QJsonObject &obj);
     static QJsonObject saveTextItem(const TextItem &context);
+
+    /**********************************************************************************************/
+    struct SerialPortItem
+    {
+        QString portName;
+        qint32 baudRate;
+        int dataBits;
+        int parity;
+        int stopBits;
+        int flowControl;
+    };
+    struct SerialPortItemKeys
+    {
+        const QString portName{"portName"};
+        const QString baudRate{"baudRate"};
+        const QString dataBits{"dataBits"};
+        const QString parity{"parity"};
+        const QString stopBits{"stopBits"};
+        const QString flowControl{"flowControl"};
+    };
+    static SerialPortItem defaultSerialPortItem();
+    static QJsonObject saveSerialPortItem(const SerialPortItem &context);
+    static SerialPortItem loadSerialPortItem(const QJsonObject &obj);
 };

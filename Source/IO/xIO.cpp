@@ -7,6 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "xIO.h"
+#include <qserialport.h>
 
 #include <QApplication>
 #include <QJsonArray>
@@ -909,4 +910,43 @@ QJsonObject xIO::saveTextItem(const TextItem &context)
     obj.insert(keys.crcStartIndex, context.crc.startIndex);
     obj.insert(keys.crcEndIndex, context.crc.endIndex);
     return obj;
+}
+
+xIO::SerialPortItem xIO::defaultSerialPortItem()
+{
+    SerialPortItem context;
+    context.portName = "";
+    context.baudRate = 9600;
+    context.dataBits = 8;
+    context.parity = 0;
+    context.stopBits = 1;
+    context.flowControl = 0;
+
+    return context;
+}
+
+QJsonObject xIO::saveSerialPortItem(const SerialPortItem &context)
+{
+    QJsonObject obj;
+    const SerialPortItemKeys keys;
+    obj.insert(keys.portName, context.portName);
+    obj.insert(keys.baudRate, context.baudRate);
+    obj.insert(keys.dataBits, context.dataBits);
+    obj.insert(keys.parity, context.parity);
+    obj.insert(keys.stopBits, context.stopBits);
+    obj.insert(keys.flowControl, context.flowControl);
+    return obj;
+}
+
+xIO::SerialPortItem xIO::loadSerialPortItem(const QJsonObject &obj)
+{
+    SerialPortItem ctx;
+    const SerialPortItemKeys keys;
+    ctx.portName = obj.value(keys.portName).toString();
+    ctx.baudRate = obj.value(keys.baudRate).toInt();
+    ctx.dataBits = obj.value(keys.dataBits).toInt();
+    ctx.parity = obj.value(keys.parity).toInt();
+    ctx.stopBits = obj.value(keys.stopBits).toInt();
+    ctx.flowControl = obj.value(keys.flowControl).toInt();
+    return ctx;
 }

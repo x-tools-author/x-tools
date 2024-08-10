@@ -26,6 +26,7 @@ public:
 
     void inputBytes(const QByteArray &bytes) override;
 
+    virtual QVariantMap parameters() const;
     virtual void setParameters(const QVariantMap &parameters);
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};
@@ -40,7 +41,7 @@ signals:
 
 protected:
     QVariantMap m_parameters;
-    QMutex m_parametersMutex;
+    mutable QMutex m_parametersMutex;
 
 protected:
     void run() override;

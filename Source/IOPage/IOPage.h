@@ -25,6 +25,7 @@ namespace xTools {
 class Preset;
 class Emitter;
 class Responser;
+class SerialPortTransfer;
 }
 QT_END_NAMESPACE
 
@@ -71,6 +72,7 @@ private:
         const QString presetItems{"presetItems"};
         const QString emitterItems{"emitterItems"};
         const QString responserItems{"responserItems"};
+        const QString serialPortTransferItems{"serialPortTransferItems"};
     } m_keys;
 
 private:
@@ -88,9 +90,12 @@ private:
     xTools::Preset *m_preset;
     xTools::Emitter *m_emitter;
     xTools::Responser *m_responser;
+    xTools::SerialPortTransfer *m_serialPortTransfer;
     QButtonGroup m_pageButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_pageContextMap;
     QList<AbstractIO *> m_ioList;
+    QButtonGroup m_transferButtonGroup;
+    QMap<QAbstractButton *, QWidget *> m_transferContextMap;
 
 private:
     void initUi();
@@ -98,6 +103,7 @@ private:
     void initUiOutputControl();
     void initUiInputControl();
     void initUiOutput();
+    void initUiOutputTransfers();
     void initUiInput();
 
     void onCommunicationTypeChanged();
@@ -116,6 +122,7 @@ private:
     void onBytesWritten(const QByteArray &bytes, const QString &to);
 
     void onPageButtonClicked(QAbstractButton *button);
+    void onTransferButtonClicked(QAbstractButton *button);
 
     void open();
     void close();

@@ -10,6 +10,8 @@
 
 #include <QTimer>
 
+#include "../../xIO.h"
+
 SerialPort::SerialPort(QObject *parent)
     : Communication(parent)
 {}
@@ -19,23 +21,18 @@ SerialPort::~SerialPort() {}
 QObject *SerialPort::initDevice()
 {
     m_parametersMutex.lock();
-    QString const portName = m_parameters.value("portName").toString();
-    int const baudRate = m_parameters.value("baudRate").toInt();
-    int const dataBits = m_parameters.value("dataBits").toInt();
-    int const parity = m_parameters.value("parity").toInt();
-    int const stopBits = m_parameters.value("stopBits").toInt();
-    int const flowControl = m_parameters.value("flowControl").toInt();
+    xIO::SerialPortItem item = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(m_parameters));
     m_parametersMutex.unlock();
 
     m_serialPort = new QSerialPort();
-    m_serialPort->setPortName(portName);
-    m_serialPort->setBaudRate(baudRate);
-    m_serialPort->setDataBits(static_cast<QSerialPort::DataBits>(dataBits));
-    m_serialPort->setParity(static_cast<QSerialPort::Parity>(parity));
-    m_serialPort->setStopBits(static_cast<QSerialPort::StopBits>(stopBits));
-    m_serialPort->setFlowControl(static_cast<QSerialPort::FlowControl>(flowControl));
+    m_serialPort->setPortName(item.portName);
+    m_serialPort->setBaudRate(item.baudRate);
+    m_serialPort->setDataBits(static_cast<QSerialPort::DataBits>(item.dataBits));
+    m_serialPort->setParity(static_cast<QSerialPort::Parity>(item.parity));
+    m_serialPort->setStopBits(static_cast<QSerialPort::StopBits>(item.stopBits));
+    m_serialPort->setFlowControl(static_cast<QSerialPort::FlowControl>(item.flowControl));
 
-    qInfo() << "portName:" << portName << "baudRate:" << m_serialPort->baudRate()
+    qInfo() << "portName:" << m_serialPort->portName() << "baudRate:" << m_serialPort->baudRate()
             << "dataBits:" << m_serialPort->dataBits() << "parity:" << m_serialPort->parity()
             << "stopBits:" << m_serialPort->stopBits()
             << "flowControl:" << m_serialPort->flowControl();

@@ -43,6 +43,15 @@ void Communication::inputBytes(const QByteArray &bytes)
     emit invokeWriteBytes(bytes);
 }
 
+QVariantMap Communication::parameters() const
+{
+    m_parametersMutex.lock();
+    auto parameters = m_parameters;
+    m_parametersMutex.unlock();
+
+    return parameters;
+}
+
 void Communication::setParameters(const QVariantMap &parameters)
 {
     m_parametersMutex.lock();
