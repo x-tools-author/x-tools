@@ -29,8 +29,6 @@ void Socket::setParameters(const QVariantMap &parameters)
     m_serverPort = parameters.value("serverPort").toUInt();
     m_serverAddress = parameters.value("serverAddress").toString();
     m_channel = parameters.value("channel").toInt();
-
-    m_channel = parameters.value("channel").toInt();
     m_authentication = parameters.value("authentication").toBool();
     m_username = parameters.value("username").toString();
     m_password = parameters.value("password").toString();

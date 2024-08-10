@@ -98,6 +98,7 @@ public:
 
     /**********************************************************************************************/
     enum class WebSocketDataChannel { Text, Binary };
+    static QString webSocketDataChannelName(WebSocketDataChannel channel);
     static void setupWebSocketDataChannel(QComboBox *comboBox);
 
     /**********************************************************************************************/
@@ -170,4 +171,31 @@ public:
     static SerialPortItem defaultSerialPortItem();
     static QJsonObject saveSerialPortItem(const SerialPortItem &context);
     static SerialPortItem loadSerialPortItem(const QJsonObject &obj);
+
+    /**********************************************************************************************/
+    struct SocketItem
+    {
+        QString clientAddress;
+        quint16 clientPort;
+        QString serverAddress;
+        quint16 serverPort;
+        WebSocketDataChannel dataChannel;
+        bool authentication;
+        QString username;
+        QString password;
+    };
+    struct SocketItemKeys
+    {
+        const QString clientAddress{"clientAddress"};
+        const QString clientPort{"clientPort"};
+        const QString serverAddress{"serverAddress"};
+        const QString serverPort{"serverPort"};
+        const QString dataChannel{"dataChannel"};
+        const QString authentication{"authentication"};
+        const QString username{"username"};
+        const QString password{"password"};
+    };
+    static SocketItem defaultSocketItem();
+    static QJsonObject saveSocketItem(const SocketItem &context);
+    static SocketItem loadSocketItem(const QJsonObject &obj);
 };

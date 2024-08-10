@@ -26,6 +26,7 @@ class Preset;
 class Emitter;
 class Responser;
 class SerialPortTransfer;
+class UdpClientTransfer;
 }
 QT_END_NAMESPACE
 
@@ -73,6 +74,7 @@ private:
         const QString emitterItems{"emitterItems"};
         const QString responserItems{"responserItems"};
         const QString serialPortTransferItems{"serialPortTransferItems"};
+        const QString udpClientTransferItems{"udpClientTransferItems"};
     } m_keys;
 
 private:
@@ -91,6 +93,7 @@ private:
     xTools::Emitter *m_emitter;
     xTools::Responser *m_responser;
     xTools::SerialPortTransfer *m_serialPortTransfer;
+    xTools::UdpClientTransfer *m_udpClientTransfer;
     QButtonGroup m_pageButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_pageContextMap;
     QList<AbstractIO *> m_ioList;

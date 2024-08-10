@@ -530,7 +530,7 @@
           <item row="1" column="0">
            <widget class="QStackedWidget" name="stackedWidgetTransfers">
             <widget class="xTools::SerialPortTransferUi" name="pageTransferSerialPort"/>
-            <widget class="QWidget" name="pageTransferUdpClient"/>
+            <widget class="xTools::UdpClientTransferUi" name="pageTransferUdpClient"/>
             <widget class="QWidget" name="pageTransferTcpServer"/>
             <widget class="QWidget" name="pageTransferWSServer"/>
             <widget class="QWidget" name="pageTransferWSClient"/>
@@ -577,7 +577,13 @@
   <customwidget>
    <class>xTools::SerialPortTransferUi</class>
    <extends>QWidget</extends>
-   <header>IO/UI/Transfer/SerialPortTransferUi.h</header>
+   <header location="global">IO/UI/Transfer/SerialPortTransferUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::UdpClientTransferUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Transfer/UdpClientTransferUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

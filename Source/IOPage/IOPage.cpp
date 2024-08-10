@@ -21,6 +21,7 @@
 #include "IO/IO/Model/Responser.h"
 #include "IO/IO/Processor/Statistician.h"
 #include "IO/IO/Transfer/SerialPortTransfer.h"
+#include "IO/IO/Transfer/UdpClientTransfer.h"
 #include "IO/UI/Communication/CommunicationUi.h"
 #include "IO/UI/IOUiFactory.h"
 #include "IO/xIO.h"
@@ -45,13 +46,14 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     , m_emitter{new xTools::Emitter(this)}
     , m_responser{new xTools::Responser(this)}
     , m_serialPortTransfer(new xTools::SerialPortTransfer(this))
+    , m_udpClientTransfer(new xTools::UdpClientTransfer(this))
 {
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
 
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responser
-             << m_serialPortTransfer;
+             << m_serialPortTransfer << m_udpClientTransfer;
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
@@ -101,6 +103,7 @@ QVariantMap IOPage::save()
     map.insert(m_keys.emitterItems, ui->pageEmitter->save());
     map.insert(m_keys.responserItems, ui->pageResponser->save());
     map.insert(m_keys.serialPortTransferItems, ui->pageTransferSerialPort->save());
+    map.insert(m_keys.udpClientTransferItems, ui->pageTransferUdpClient->save());
 
     return map;
 }
@@ -154,6 +157,7 @@ void IOPage::load(const QVariantMap &parameters)
     ui->pageEmitter->load(parameters.value(m_keys.emitterItems).toMap());
     ui->pageResponser->load(parameters.value(m_keys.responserItems).toMap());
     ui->pageTransferSerialPort->load(parameters.value(m_keys.serialPortTransferItems).toMap());
+    ui->pageTransferUdpClient->load(parameters.value(m_keys.udpClientTransferItems).toMap());
 }
 
 void IOPage::initUi()
@@ -307,6 +311,7 @@ void IOPage::initUiOutputTransfers()
     ui->toolButtonSerialPort->setChecked(true);
     ui->stackedWidgetTransfers->setCurrentWidget(ui->pageTransferSerialPort);
     ui->pageTransferSerialPort->setupIO(m_serialPortTransfer);
+    ui->pageTransferUdpClient->setupIO(m_udpClientTransfer);
 }
 
 void IOPage::initUiInput()
@@ -463,12 +468,20 @@ void IOPage::open()
                 &Communication::outputBytes,
                 m_serialPortTransfer,
                 &xTools::SerialPortTransfer::inputBytes);
+        connect(m_io,
+                &Communication::outputBytes,
+                m_udpClientTransfer,
+                &xTools::UdpClientTransfer::inputBytes);
 
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_responser, &xTools::Responser::outputBytes, m_io, &Communication::inputBytes);
         connect(m_serialPortTransfer,
                 &xTools::SerialPortTransfer::outputBytes,
+                m_io,
+                &Communication::inputBytes);
+        connect(m_udpClientTransfer,
+                &xTools::UdpClientTransfer::outputBytes,
                 m_io,
                 &Communication::inputBytes);
 

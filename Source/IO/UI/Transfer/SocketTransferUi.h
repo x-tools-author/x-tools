@@ -1,4 +1,4 @@
-/***************************************************************************************************
+﻿/***************************************************************************************************
  * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
@@ -8,18 +8,16 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QHeaderView>
-
-#include "../Model/AbstractModelUi.h"
+#include "AbstractTransferUi.h"
 
 namespace xTools {
 
-class AbstractTransferUi : public AbstractModelUi
+class SocketTransferUi : public AbstractTransferUi
 {
     Q_OBJECT
 public:
-    explicit AbstractTransferUi(QWidget *parent = nullptr);
-    ~AbstractTransferUi() override;
+    SocketTransferUi(QWidget *parent = nullptr);
+    ~SocketTransferUi() override;
 };
 
 } // namespace xTools
