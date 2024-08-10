@@ -532,8 +532,8 @@
             <widget class="xTools::SerialPortTransferUi" name="pageTransferSerialPort"/>
             <widget class="xTools::UdpClientTransferUi" name="pageTransferUdpClient"/>
             <widget class="xTools::TcpServerTransferUi" name="pageTransferTcpServer"/>
-            <widget class="QWidget" name="pageTransferWSServer"/>
-            <widget class="QWidget" name="pageTransferWSClient"/>
+            <widget class="QWidget" name="pageTransferWebSocketServer"/>
+            <widget class="xTools::WebSocketClientTransferUi" name="pageTransferWebSocketClient"/>
             <widget class="xTools::TcpClientTransferUi" name="pageTransferTcpClient"/>
            </widget>
           </item>
@@ -596,6 +596,12 @@
    <class>xTools::TcpServerTransferUi</class>
    <extends>QWidget</extends>
    <header location="global">IO/UI/Transfer/TcpServerTransferUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::WebSocketClientTransferUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Transfer/WebSocketClientTransferUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

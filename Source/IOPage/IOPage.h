@@ -29,6 +29,7 @@ class SerialPortTransfer;
 class UdpClientTransfer;
 class TcpClientTransfer;
 class TcpServerTransfer;
+class WebSocketClientTransfer;
 }
 QT_END_NAMESPACE
 
@@ -79,6 +80,7 @@ private:
         const QString udpClientTransferItems{"udpClientTransferItems"};
         const QString tcpClientTransferItems{"tcpClientTransferItems"};
         const QString tcpServerTransferItems{"tcpServerTransferItems"};
+        const QString webSocketClientTransferItems{"webSocketClientTransferItems"};
     } m_keys;
 
 private:
@@ -100,6 +102,7 @@ private:
     xTools::UdpClientTransfer *m_udpClientTransfer;
     xTools::TcpClientTransfer *m_tcpClientTransfer;
     xTools::TcpServerTransfer *m_tcpServerTransfer;
+    xTools::WebSocketClientTransfer *m_webSocketClientTransfer;
     QButtonGroup m_pageButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_pageContextMap;
     QList<AbstractIO *> m_ioList;
