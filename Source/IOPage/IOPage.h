@@ -24,6 +24,7 @@ QT_BEGIN_NAMESPACE
 namespace xTools {
 class Preset;
 class Emitter;
+class Responser;
 }
 QT_END_NAMESPACE
 
@@ -69,6 +70,7 @@ private:
 
         const QString presetItems{"presetItems"};
         const QString emitterItems{"emitterItems"};
+        const QString responserItems{"responserItems"};
     } m_keys;
 
 private:
@@ -85,6 +87,7 @@ private:
     Statistician *m_txStatistician;
     xTools::Preset *m_preset;
     xTools::Emitter *m_emitter;
+    xTools::Responser *m_responser;
     QButtonGroup m_pageButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_pageContextMap;
     QList<AbstractIO *> m_ioList;

@@ -18,6 +18,7 @@
 #include "IO/IO/IOFactory.h"
 #include "IO/IO/Model/Emitter.h"
 #include "IO/IO/Model/Preset.h"
+#include "IO/IO/Model/Responser.h"
 #include "IO/IO/Processor/Statistician.h"
 #include "IO/UI/Communication/CommunicationUi.h"
 #include "IO/UI/IOUiFactory.h"
@@ -41,12 +42,13 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     , m_txStatistician{new Statistician(this)}
     , m_preset{new xTools::Preset(this)}
     , m_emitter{new xTools::Emitter(this)}
+    , m_responser{new xTools::Responser(this)}
 {
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
 
-    m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter;
+    m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responser;
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
@@ -94,6 +96,7 @@ QVariantMap IOPage::save()
 
     map.insert(m_keys.presetItems, ui->pagePreset->save());
     map.insert(m_keys.emitterItems, ui->pageEmitter->save());
+    map.insert(m_keys.responserItems, ui->pageResponser->save());
 
     return map;
 }
@@ -145,6 +148,7 @@ void IOPage::load(const QVariantMap &parameters)
 
     ui->pagePreset->load(parameters.value(m_keys.presetItems).toMap());
     ui->pageEmitter->load(parameters.value(m_keys.emitterItems).toMap());
+    ui->pageResponser->load(parameters.value(m_keys.responserItems).toMap());
 }
 
 void IOPage::initUi()
@@ -240,6 +244,7 @@ void IOPage::initUiOutput()
 
     ui->pagePreset->setupIO(m_preset);
     ui->pageEmitter->setupIO(m_emitter);
+    ui->pageResponser->setupIO(m_responser);
 
     m_pageButtonGroup.addButton(ui->toolButtonOutput);
     m_pageButtonGroup.addButton(ui->toolButtonPreset);
@@ -250,6 +255,7 @@ void IOPage::initUiOutput()
     m_pageContextMap.insert(ui->toolButtonOutput, ui->pageOutput);
     m_pageContextMap.insert(ui->toolButtonPreset, ui->pagePreset);
     m_pageContextMap.insert(ui->toolButtonEmitter, ui->pageEmitter);
+    m_pageContextMap.insert(ui->toolButtonResponser, ui->pageResponser);
 
     connect(&m_pageButtonGroup,
             qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked),
@@ -401,9 +407,11 @@ void IOPage::open()
         connect(m_io, &Communication::bytesRead, this, &IOPage::onBytesRead);
         connect(m_io, &Communication::errorOccurred, this, &IOPage::onErrorOccurred);
         connect(m_io, &Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
+        connect(m_io, &Communication::outputBytes, m_responser, &xTools::Responser::inputBytes);
 
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_responser, &xTools::Responser::outputBytes, m_io, &Communication::inputBytes);
 
         QVariantMap parameters = m_ioUi->save();
         m_ioUi->setupDevice(m_io);

@@ -709,6 +709,38 @@ void xIO::setupWebSocketDataChannel(QComboBox *comboBox)
     }
 }
 
+QList<int> xIO::supportedResponseOptions()
+{
+    static QList<int> list;
+    if (list.isEmpty()) {
+        list.append(static_cast<int>(ResponseOption::Echo));
+        list.append(static_cast<int>(ResponseOption::Always));
+        list.append(static_cast<int>(ResponseOption::InputEqualReference));
+        list.append(static_cast<int>(ResponseOption::InputContainReference));
+        list.append(static_cast<int>(ResponseOption::InputDiscontainReference));
+    }
+
+    return list;
+}
+
+QString xIO::responseOptionName(ResponseOption option)
+{
+    static QMap<ResponseOption, QString> map;
+    if (map.isEmpty()) {
+        map.insert(ResponseOption::Echo, tr("Echo"));
+        map.insert(ResponseOption::Always, tr("Always"));
+        map.insert(ResponseOption::InputEqualReference, tr("Input Equal Reference"));
+        map.insert(ResponseOption::InputContainReference, tr("Input Contain Reference"));
+        map.insert(ResponseOption::InputDiscontainReference, tr("Input Discontain Reference"));
+    }
+
+    if (map.contains(option)) {
+        return map[option];
+    } else {
+        return COMMON_UNKNOWN_STR;
+    }
+}
+
 QString xIO::jsonValue2hexString(const QJsonValue &value)
 {
     QJsonDocument doc;

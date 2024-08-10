@@ -102,13 +102,14 @@ public:
 
     /**********************************************************************************************/
     enum class ResponseOption {
-        Disable,
         Echo,   // Response the data that received.
         Always, // Response the data that set by user when data received.
         InputEqualReference,
         InputContainReference,
         InputDiscontainReference
     };
+    static QList<int> supportedResponseOptions();
+    static QString responseOptionName(ResponseOption option);
 
     /**********************************************************************************************/
     static QString jsonValue2hexString(const QJsonValue &value);

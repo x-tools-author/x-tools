@@ -357,7 +357,7 @@
         <item>
          <widget class="QToolButton" name="toolButtonTransmitter">
           <property name="text">
-           <string>🔃</string>
+           <string>🔗</string>
           </property>
          </widget>
         </item>
@@ -471,6 +471,7 @@
         </widget>
         <widget class="xTools::PresetUi" name="pagePreset"/>
         <widget class="xTools::EmitterUi" name="pageEmitter"/>
+        <widget class="xTools::ResponserUi" name="pageResponser"/>
        </widget>
       </item>
      </layout>
@@ -495,6 +496,12 @@
    <class>xTools::EmitterUi</class>
    <extends>QWidget</extends>
    <header location="global">IO/UI/Model/EmitterUi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xTools::ResponserUi</class>
+   <extends>QWidget</extends>
+   <header location="global">IO/UI/Model/ResponserUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -10,7 +10,11 @@
 
 Communication::Communication(QObject *parent)
     : AbstractIO(parent)
-{}
+{
+    connect(this, &Communication::bytesRead, this, [=](const QByteArray &bytes, const QString &) {
+        emit outputBytes(bytes);
+    });
+}
 
 Communication::~Communication()
 {
