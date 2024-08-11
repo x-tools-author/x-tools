@@ -11,6 +11,7 @@
 #include <QTimer>
 
 #include "AbstractModelIO.h"
+#include "IO/xIO.h"
 
 namespace xTools {
 
@@ -30,7 +31,20 @@ protected:
     void run() override;
 
 private:
+    struct Item
+    {
+        QString description{"Demo"};
+        xIO::TextItem textContext;
+    };
     PresetModel *m_tableModel{nullptr};
+    int rowCount(const QModelIndex &parent) const;
+    QList<Item> m_items;
+    int columnCount(const QModelIndex &parent) const;
+    QVariant data(const QModelIndex &index, int role) const;
+    bool setData(const QModelIndex &index, const QVariant &value, int role);
+    bool removeRows(int row, int count, const QModelIndex &parent);
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+    bool insertRows(int row, int count, const QModelIndex &parent);
 };
 
 } // namespace xTools

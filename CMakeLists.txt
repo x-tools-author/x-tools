@@ -287,7 +287,7 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   x_tools_tar_target(xTools)
 
   set(QtX Qt${QT_VERSION_MAJOR})
-  target_link_libraries(xTools PRIVATE ${QtX}::Core ${QtX}::Gui ${QtX}::Svg ${QtX}::Widgets)
+  target_link_libraries(xTools PRIVATE ${QtX}::Core ${QtX}::Gui ${QtX}::Svg ${QtX}::Widgets ${QtX}::Bluetooth)
   target_link_libraries(xTools PRIVATE ${QtX}::Network ${QtX}::WebSockets)
   target_link_libraries(xTools PUBLIC glog::glog)
 

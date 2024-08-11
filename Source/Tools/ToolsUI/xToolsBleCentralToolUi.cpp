@@ -177,7 +177,11 @@ void xToolsBleCentralToolUi::onServiceDiscoveryFinished()
                 &QLowEnergyService::stateChanged,
                 this,
                 [=](QLowEnergyService::ServiceState state) {
-                    if (state == QLowEnergyService::RemoteServiceDiscovered) {
+#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
+            if (state == QLowEnergyService::RemoteServiceDiscovered) {
+#else
+                    if (state == QLowEnergyService::ServiceDiscovered) {
+#endif
                         onComboBoxServicesCurrentIndexChanged();
                     }
                 });

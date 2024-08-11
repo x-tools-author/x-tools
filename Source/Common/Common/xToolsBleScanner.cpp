@@ -61,15 +61,18 @@ void xToolsBleScanner::run()
             &QBluetoothDeviceDiscoveryAgent::finished,
             this,
             &xToolsBleScanner::onDiscoveryFinished);
+    //TODO:qt6
+#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
     connect(m_discover,
             &QBluetoothDeviceDiscoveryAgent::errorOccurred,
             this,
             &xToolsBleScanner::onDiscoveryErrorOccurred);
+#else
     connect(m_discover,
             &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
             this,
             &xToolsBleScanner::onDiscoveryDeviceDiscovered);
-
+#endif
     // 10s-1minute
     int interval = m_timeoutInterval < 10 ? 10 : m_timeoutInterval;
     interval = interval > 120 ? 120 : interval;

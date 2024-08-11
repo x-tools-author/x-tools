@@ -138,8 +138,11 @@ int xToolsExec(int argc,
     xToolsDoSomethingBeforeAppCreated(argv, appName);
 
     AppT app(argc, argv);
+    //TODO:qt6
+#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
     QStyleHints *styleHints = QApplication::styleHints();
     styleHints->setColorScheme(Qt::ColorScheme::Dark);
+#endif
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     xToolsSettings::instance()->setValue("startUpTime", dtStr);
 

@@ -1,4 +1,4 @@
-﻿/***************************************************************************************************
+/***************************************************************************************************
  * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
@@ -9,6 +9,7 @@
 #include "SerialPort.h"
 
 #include <QTimer>
+#include <QtMath>
 
 #include "../../xIO.h"
 

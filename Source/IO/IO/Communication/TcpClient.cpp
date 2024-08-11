@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "TcpClient.h"
-
+#include <QHostAddress>
 TcpClient::TcpClient(QObject *parent)
     : SocketClient(parent)
 {}
