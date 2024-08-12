@@ -35,14 +35,6 @@
 #include "xToolsAssistantFactory.h"
 #endif
 #include "xToolsSettings.h"
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
-#ifdef X_TOOLS_ENABLE_MODULE_CANBUS
-#include "xToolsCanBusStudioUi.h"
-#endif
-#ifdef X_TOOLS_ENABLE_MODULE_MODBUS
-#include "xToolsModbusStudioUi.h"
-#endif
-#endif
 #include "IOPage/IOPage.h"
 
 #ifdef Q_OS_WIN
@@ -144,32 +136,6 @@ void MainWindow::initFileMenu()
             w->show();
         });
     }
-#endif
-
-    // Other tools
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
-#ifdef X_TOOLS_ENABLE_MODULE_MODBUS
-    auto* modbusAction = new QAction("Modbus", this);
-    connect(modbusAction, &QAction::triggered, this, [=]() {
-        auto* w = new xToolsModbusStudioUi();
-        w->setContentsMargins(9, 9, 9, 9);
-        w->setAttribute(Qt::WA_DeleteOnClose, true);
-        w->resize(1024, 480);
-        w->show();
-    });
-    windowMenu->addAction(modbusAction);
-#endif
-#ifdef X_TOOLS_ENABLE_MODULE_CANBUS
-    auto* canBusAction = new QAction("CAN Bus", this);
-    connect(canBusAction, &QAction::triggered, this, [=]() {
-        auto* w = new xToolsCanBusStudioUi();
-        w->setContentsMargins(9, 9, 9, 9);
-        w->setAttribute(Qt::WA_DeleteOnClose, true);
-        w->resize(1024, 480);
-        w->show();
-    });
-    windowMenu->addAction(canBusAction);
-#endif
 #endif
 
     m_fileMenu->addSeparator();
