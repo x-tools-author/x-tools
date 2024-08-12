@@ -23,6 +23,7 @@ DataEditor::DataEditor(QWidget *parent)
     xIO::setupAddition(ui->comboBoxSuffix);
     xIO::setupEscapeCharacter(ui->comboBoxEscapeCharacter);
     xIO::setupCrcAlgorithm(ui->comboBoxAlgorithm);
+    xIO::setupTextFormat(ui->comboBoxFormat);
 }
 
 DataEditor::~DataEditor()
@@ -42,6 +43,7 @@ QJsonObject DataEditor::save() const
     int crcAlgorithm = ui->comboBoxAlgorithm->currentData().toInt();
     int crcStartIndex = ui->spinBoxStartIndex->value();
     int crcEndIndex = ui->spinBoxEndIndex->value();
+    int format = ui->comboBoxFormat->currentData().toInt();
 
     xIO::TextItemKeys keys;
     QJsonObject parameters;
@@ -54,6 +56,7 @@ QJsonObject DataEditor::save() const
     parameters[keys.crcAlgorithm] = crcAlgorithm;
     parameters[keys.crcStartIndex] = crcStartIndex;
     parameters[keys.crcEndIndex] = crcEndIndex;
+    parameters[keys.textFormat] = format;
     return parameters;
 }
 
@@ -65,6 +68,7 @@ void DataEditor::load(const QJsonObject &parameters)
 
     xIO::TextItemKeys keys;
     QString text = parameters.value(keys.text).toString();
+    int format = parameters.value(keys.textFormat).toInt();
     int prefix = parameters.value(keys.prefix).toInt();
     int suffix = parameters.value(keys.suffix).toInt();
     int escapeCharacter = parameters.value(keys.escapeCharacter).toInt();
@@ -89,6 +93,7 @@ void DataEditor::load(const QJsonObject &parameters)
     ui->comboBoxAlgorithm->setCurrentIndex(crcAlgorithmIndex);
     ui->spinBoxStartIndex->setValue(crcStartIndex);
     ui->spinBoxEndIndex->setValue(crcEndIndex);
+    ui->comboBoxFormat->setCurrentIndex(ui->comboBoxFormat->findData(format));
 }
 
 } // namespace xTools

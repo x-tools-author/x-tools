@@ -156,6 +156,16 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Format</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBoxFormat"/>
+      </item>
+      <item>
        <widget class="QLineEdit" name="lineEditInput">
         <property name="clearButtonEnabled">
          <bool>true</bool>

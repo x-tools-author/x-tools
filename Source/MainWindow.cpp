@@ -55,10 +55,10 @@ MainWindow::MainWindow(QWidget* parent)
 #else
     : xToolsMainWindow(parent)
 #endif
-    , m_ioPage00(new IOPage(IOPage::Left, this))
-    , m_ioPage01(new IOPage(IOPage::Right, this))
-    , m_ioPage10(new IOPage(IOPage::Left, this))
-    , m_ioPage11(new IOPage(IOPage::Right, this))
+    , m_ioPage00(new IOPage(IOPage::Left, xToolsSettings::instance(), this))
+    , m_ioPage01(new IOPage(IOPage::Right, xToolsSettings::instance(), this))
+    , m_ioPage10(new IOPage(IOPage::Left, xToolsSettings::instance(), this))
+    , m_ioPage11(new IOPage(IOPage::Right, xToolsSettings::instance(), this))
 {
 #ifdef Q_OS_WIN
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
@@ -88,6 +88,10 @@ MainWindow::MainWindow(QWidget* parent)
 
     setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
     initMenuBar();
+
+    const int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
+    const QString key = m_settingsKey.windowGrid;
+    m_windowGrid = xToolsSettings::instance()->value(key, defaultGrid).value<WindowGrid>();
     updateGrid(m_windowGrid);
 
     load();
@@ -116,6 +120,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
         return;
     }
 #endif
+    xToolsSettings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
     QMainWindow::closeEvent(event);
 }
 

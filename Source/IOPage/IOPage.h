@@ -10,6 +10,7 @@
 
 #include <QButtonGroup>
 #include <QPushButton>
+#include <QSettings>
 #include <QTimer>
 #include <QVariantMap>
 #include <QWidget>
@@ -49,41 +50,11 @@ public:
     enum ControllerDirection { Left, Right };
 
 public:
-    explicit IOPage(ControllerDirection direction, QWidget *parent = nullptr);
+    explicit IOPage(ControllerDirection direction, QSettings *settings, QWidget *parent = nullptr);
     ~IOPage();
 
     QVariantMap save();
     void load(const QVariantMap &parameters);
-
-private:
-    struct
-    {
-        const QString communicationType{"communicationType"};
-        const QString communicationSettings{"communicationSettings"};
-
-        const QString outputFormat{"outputFormat"};
-        const QString outputRx{"outputRx"};
-        const QString outputTx{"outputTx"};
-        const QString outputFlag{"outputFlag"};
-        const QString outputDate{"outputDate"};
-        const QString outputTime{"outputTime"};
-        const QString outputMs{"outputMs"};
-        const QString outputSettings{"outputSettings"};
-
-        const QString cycleInterval{"cycleInterval"};
-        const QString inputFormat{"inputFormat"};
-        const QString inputSettings{"inputSettings"};
-
-        const QString presetItems{"presetItems"};
-        const QString emitterItems{"emitterItems"};
-        const QString responserItems{"responserItems"};
-        const QString serialPortTransferItems{"serialPortTransferItems"};
-        const QString udpClientTransferItems{"udpClientTransferItems"};
-        const QString tcpClientTransferItems{"tcpClientTransferItems"};
-        const QString tcpServerTransferItems{"tcpServerTransferItems"};
-        const QString webSocketClientTransferItems{"webSocketClientTransferItems"};
-        const QString webSocketServerTransferItems{"webSocketServerTransferItems"};
-    } m_keys;
 
 private:
     Ui::IOPage *ui;
@@ -111,6 +82,7 @@ private:
     QList<AbstractIO *> m_ioList;
     QButtonGroup m_transferButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_transferContextMap;
+    QSettings *m_settings;
 
 private:
     void initUi();
@@ -146,6 +118,8 @@ private:
     void setupMenu(QPushButton *target, QWidget *actionWidget);
     void setUiEnabled(bool enabled);
     void outputText(const QByteArray &bytes, const QString &flag, bool isRx);
+    void saveControllerParameters();
+    void loadControllerParameters();
 
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;

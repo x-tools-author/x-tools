@@ -33,7 +33,36 @@
 #include "OutputSettings.h"
 #include "Unit/SyntaxHighlighter.h"
 
-IOPage::IOPage(ControllerDirection direction, QWidget *parent)
+struct ParameterKeys
+{
+    const QString communicationType{"communicationType"};
+    const QString communicationSettings{"communicationSettings"};
+
+    const QString outputFormat{"outputFormat"};
+    const QString outputRx{"outputRx"};
+    const QString outputTx{"outputTx"};
+    const QString outputFlag{"outputFlag"};
+    const QString outputDate{"outputDate"};
+    const QString outputTime{"outputTime"};
+    const QString outputMs{"outputMs"};
+    const QString outputSettings{"outputSettings"};
+
+    const QString cycleInterval{"cycleInterval"};
+    const QString inputFormat{"inputFormat"};
+    const QString inputSettings{"inputSettings"};
+
+    const QString presetItems{"presetItems"};
+    const QString emitterItems{"emitterItems"};
+    const QString responserItems{"responserItems"};
+    const QString serialPortTransferItems{"serialPortTransferItems"};
+    const QString udpClientTransferItems{"udpClientTransferItems"};
+    const QString tcpClientTransferItems{"tcpClientTransferItems"};
+    const QString tcpServerTransferItems{"tcpServerTransferItems"};
+    const QString webSocketClientTransferItems{"webSocketClientTransferItems"};
+    const QString webSocketServerTransferItems{"webSocketServerTransferItems"};
+} g_keys;
+
+IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *parent)
     : QWidget{parent}
     , ui{new Ui::IOPage}
     , m_io{nullptr}
@@ -55,7 +84,12 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
     , m_tcpServerTransfer(new xTools::TcpServerTransfer(this))
     , m_webSocketClientTransfer(new xTools::WebSocketClientTransfer(this))
     , m_webSocketServerTransfer(new xTools::WebSocketServerTransfer(this))
+    , m_settings{settings}
 {
+    if (!m_settings) {
+        m_settings = new QSettings("iopage.ini", QSettings::IniFormat);
+    }
+
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
@@ -86,37 +120,38 @@ IOPage::IOPage(ControllerDirection direction, QWidget *parent)
 
 IOPage::~IOPage()
 {
+    saveControllerParameters();
     delete ui;
 }
 
 QVariantMap IOPage::save()
 {
     QVariantMap map;
-    map.insert(m_keys.communicationType, ui->comboBoxCommmunicationTypes->currentData());
-    map.insert(m_keys.communicationSettings, m_ioSettings->save());
+    map.insert(g_keys.communicationType, ui->comboBoxCommmunicationTypes->currentData());
+    map.insert(g_keys.communicationSettings, m_ioSettings->save());
 
-    map.insert(m_keys.outputFormat, ui->comboBoxOutputFormat->currentData());
-    map.insert(m_keys.outputRx, ui->checkBoxOutputRx->isChecked());
-    map.insert(m_keys.outputTx, ui->checkBoxOutputTx->isChecked());
-    map.insert(m_keys.outputFlag, ui->checkBoxOutputFlag->isChecked());
-    map.insert(m_keys.outputDate, ui->checkBoxOutputDate->isChecked());
-    map.insert(m_keys.outputTime, ui->checkBoxOutputTime->isChecked());
-    map.insert(m_keys.outputMs, ui->checkBoxOutputMs->isChecked());
-    map.insert(m_keys.outputSettings, m_outputSettings->save());
+    map.insert(g_keys.outputFormat, ui->comboBoxOutputFormat->currentData());
+    map.insert(g_keys.outputRx, ui->checkBoxOutputRx->isChecked());
+    map.insert(g_keys.outputTx, ui->checkBoxOutputTx->isChecked());
+    map.insert(g_keys.outputFlag, ui->checkBoxOutputFlag->isChecked());
+    map.insert(g_keys.outputDate, ui->checkBoxOutputDate->isChecked());
+    map.insert(g_keys.outputTime, ui->checkBoxOutputTime->isChecked());
+    map.insert(g_keys.outputMs, ui->checkBoxOutputMs->isChecked());
+    map.insert(g_keys.outputSettings, m_outputSettings->save());
 
-    map.insert(m_keys.cycleInterval, ui->comboBoxInputInterval->currentData());
-    map.insert(m_keys.inputFormat, ui->comboBoxInputFormat->currentData());
-    map.insert(m_keys.inputSettings, m_inputSettings->save());
+    map.insert(g_keys.cycleInterval, ui->comboBoxInputInterval->currentData());
+    map.insert(g_keys.inputFormat, ui->comboBoxInputFormat->currentData());
+    map.insert(g_keys.inputSettings, m_inputSettings->save());
 
-    map.insert(m_keys.presetItems, ui->pagePreset->save());
-    map.insert(m_keys.emitterItems, ui->pageEmitter->save());
-    map.insert(m_keys.responserItems, ui->pageResponser->save());
-    map.insert(m_keys.serialPortTransferItems, ui->pageTransferSerialPort->save());
-    map.insert(m_keys.udpClientTransferItems, ui->pageTransferUdpClient->save());
-    map.insert(m_keys.tcpClientTransferItems, ui->pageTransferTcpClient->save());
-    map.insert(m_keys.tcpServerTransferItems, ui->pageTransferTcpServer->save());
-    map.insert(m_keys.webSocketClientTransferItems, ui->pageTransferWebSocketClient->save());
-    map.insert(m_keys.webSocketServerTransferItems, ui->pageTransferWebSocketServer->save());
+    map.insert(g_keys.presetItems, ui->pagePreset->save());
+    map.insert(g_keys.emitterItems, ui->pageEmitter->save());
+    map.insert(g_keys.responserItems, ui->pageResponser->save());
+    map.insert(g_keys.serialPortTransferItems, ui->pageTransferSerialPort->save());
+    map.insert(g_keys.udpClientTransferItems, ui->pageTransferUdpClient->save());
+    map.insert(g_keys.tcpClientTransferItems, ui->pageTransferTcpClient->save());
+    map.insert(g_keys.tcpServerTransferItems, ui->pageTransferTcpServer->save());
+    map.insert(g_keys.webSocketClientTransferItems, ui->pageTransferWebSocketClient->save());
+    map.insert(g_keys.webSocketServerTransferItems, ui->pageTransferWebSocketServer->save());
 
     return map;
 }
@@ -127,28 +162,21 @@ void IOPage::load(const QVariantMap &parameters)
         return;
     }
 
-    int communicationType = parameters.value(m_keys.communicationType).toInt();
-    QVariantMap communicationSettings = parameters.value(m_keys.communicationSettings).toMap();
-
-    int outputFormat = parameters.value(m_keys.outputFormat).toInt();
-    bool outputRx = parameters.value(m_keys.outputRx).toBool();
-    bool outputTx = parameters.value(m_keys.outputTx).toBool();
-    bool outputFlag = parameters.value(m_keys.outputFlag).toBool();
-    bool outputDate = parameters.value(m_keys.outputDate).toBool();
-    bool outputTime = parameters.value(m_keys.outputTime).toBool();
-    bool outputMs = parameters.value(m_keys.outputMs).toBool();
-    QVariantMap outputSettings = parameters.value(m_keys.outputSettings).toMap();
-
-    int inputInterval = parameters.value(m_keys.cycleInterval).toInt();
-    int inputFormat = parameters.value(m_keys.inputFormat).toInt();
-    QVariantMap inputSettings = parameters.value(m_keys.inputSettings).toMap();
-
+    int communicationType = parameters.value(g_keys.communicationType).toInt();
     int index = ui->comboBoxCommmunicationTypes->findData(communicationType);
     ui->comboBoxCommmunicationTypes->setCurrentIndex(index == -1 ? 0 : index);
 
-    index = ui->comboBoxOutputFormat->findData(outputFormat);
-    ui->comboBoxCommmunicationTypes->setCurrentIndex(index == -1 ? 0 : index);
+    QVariantMap communicationSettings = parameters.value(g_keys.communicationSettings).toMap();
     m_ioSettings->load(communicationSettings);
+
+    int outputFormat = parameters.value(g_keys.outputFormat).toInt();
+    bool outputRx = parameters.value(g_keys.outputRx).toBool();
+    bool outputTx = parameters.value(g_keys.outputTx).toBool();
+    bool outputFlag = parameters.value(g_keys.outputFlag).toBool();
+    bool outputDate = parameters.value(g_keys.outputDate).toBool();
+    bool outputTime = parameters.value(g_keys.outputTime).toBool();
+    bool outputMs = parameters.value(g_keys.outputMs).toBool();
+    QVariantMap outputSettings = parameters.value(g_keys.outputSettings).toMap();
 
     index = ui->comboBoxOutputFormat->findData(outputFormat);
     ui->comboBoxOutputFormat->setCurrentIndex(index == -1 ? 0 : index);
@@ -160,6 +188,10 @@ void IOPage::load(const QVariantMap &parameters)
     ui->checkBoxOutputMs->setChecked(outputMs);
     m_outputSettings->load(outputSettings);
 
+    int inputInterval = parameters.value(g_keys.cycleInterval).toInt();
+    int inputFormat = parameters.value(g_keys.inputFormat).toInt();
+    QVariantMap inputSettings = parameters.value(g_keys.inputSettings).toMap();
+
     index = ui->comboBoxInputInterval->findData(inputInterval);
     ui->comboBoxInputInterval->setCurrentIndex(index == -1 ? 0 : index);
     index = ui->comboBoxInputFormat->findData(inputFormat);
@@ -167,15 +199,15 @@ void IOPage::load(const QVariantMap &parameters)
     m_inputSettings->load(inputSettings);
 
     // clang-format off
-    ui->pagePreset->load(parameters.value(m_keys.presetItems).toMap());
-    ui->pageEmitter->load(parameters.value(m_keys.emitterItems).toMap());
-    ui->pageResponser->load(parameters.value(m_keys.responserItems).toMap());
-    ui->pageTransferSerialPort->load(parameters.value(m_keys.serialPortTransferItems).toMap());
-    ui->pageTransferUdpClient->load(parameters.value(m_keys.udpClientTransferItems).toMap());
-    ui->pageTransferTcpClient->load(parameters.value(m_keys.tcpClientTransferItems).toMap());
-    ui->pageTransferTcpServer->load(parameters.value(m_keys.tcpServerTransferItems).toMap());
-    ui->pageTransferWebSocketClient->load(parameters.value(m_keys.webSocketClientTransferItems).toMap());
-    ui->pageTransferWebSocketServer->load(parameters.value(m_keys.webSocketServerTransferItems).toMap());
+    ui->pagePreset->load(parameters.value(g_keys.presetItems).toMap());
+    ui->pageEmitter->load(parameters.value(g_keys.emitterItems).toMap());
+    ui->pageResponser->load(parameters.value(g_keys.responserItems).toMap());
+    ui->pageTransferSerialPort->load(parameters.value(g_keys.serialPortTransferItems).toMap());
+    ui->pageTransferUdpClient->load(parameters.value(g_keys.udpClientTransferItems).toMap());
+    ui->pageTransferTcpClient->load(parameters.value(g_keys.tcpClientTransferItems).toMap());
+    ui->pageTransferTcpServer->load(parameters.value(g_keys.tcpServerTransferItems).toMap());
+    ui->pageTransferWebSocketClient->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
+    ui->pageTransferWebSocketServer->load(parameters.value(g_keys.webSocketServerTransferItems).toMap());
     // clang-format on
 }
 
@@ -345,6 +377,8 @@ void IOPage::initUiInput()
 void IOPage::onCommunicationTypeChanged()
 {
     if (m_ioUi != nullptr) {
+        saveControllerParameters();
+
         m_ioUi->setParent(nullptr);
         m_ioUi->deleteLater();
         m_ioUi = nullptr;
@@ -358,6 +392,7 @@ void IOPage::onCommunicationTypeChanged()
     auto cookedType = static_cast<xIO::CommunicationType>(type);
     m_ioUi = IOUiFactory::singleton().createDeviceUi(cookedType);
     if (m_ioUi) {
+        loadControllerParameters();
         ui->verticalLayoutCommunicationController->addWidget(m_ioUi);
     }
 }
@@ -681,6 +716,24 @@ void IOPage::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
         }
     } else {
         ui->textBrowserOutput->append(outputText);
+    }
+}
+
+void IOPage::saveControllerParameters()
+{
+    if (m_ioUi != nullptr) {
+        auto parameters = m_ioUi->save();
+        int type = static_cast<int>(m_ioUi->type());
+        m_settings->setValue(QString("controller_%1").arg(type), parameters);
+    }
+}
+
+void IOPage::loadControllerParameters()
+{
+    int type = ui->comboBoxCommmunicationTypes->currentData().toInt();
+    auto parameters = m_settings->value(QString("controller_%1").arg(type));
+    if (!parameters.isNull()) {
+        m_ioUi->load(parameters.toMap());
     }
 }
 
