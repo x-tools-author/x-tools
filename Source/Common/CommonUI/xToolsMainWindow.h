@@ -58,6 +58,7 @@ private:
     void initOptionMenuAppPaletteMenu();
     void initOptionMenuSettingsMenu();
     void initOptionMenuHdpiPolicy();
+    void initOptionMenuColorScheme();
 
     void onHdpiPolicyActionTriggered(int policy);
     void onAboutActionTriggered();

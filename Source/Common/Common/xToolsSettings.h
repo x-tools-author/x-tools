@@ -43,6 +43,9 @@ public:
     QString palette();
     void setPalette(const QString &fileName);
 
+    int colorScheme();
+    void setColorScheme(const int colorScheme);
+
 signals:
     void hdpiPolicyChanged();
     void uiTypeChanged();
@@ -55,18 +58,4 @@ signals:
 public:
     Q_INVOKABLE QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const;
     Q_INVOKABLE void setValue(const QString &key, const QVariant &value);
-
-private:
-    struct
-    {
-        const QString hdpiPolicy{"hdpiPolicy"};
-        const QString uiType{"uiType"};
-        const QString appStyle{"appStyle"};
-        const QString language{"language"};
-        const QString clearSettings{"clearSettings"};
-        const QString pageIndex{"pageIndex"};
-        const QString isTextBesideIcon{"isTextBesideIcon"};
-        const QString palette{"palette"};
-        const QString customPalette{"customPalette"};
-    } m_settingsKey;
 };

@@ -273,7 +273,7 @@
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <property name="spacing">
-         <number>10</number>
+         <number>4</number>
         </property>
         <item>
          <widget class="QLabel" name="labelTitle">
@@ -473,6 +473,9 @@
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <property name="spacing">
+             <number>4</number>
+            </property>
             <item>
              <widget class="QLabel" name="label_8">
               <property name="text">

@@ -25,6 +25,7 @@
 #include <QScreen>
 #include <QStyle>
 #include <QStyleFactory>
+#include <QStyleHints>
 #include <QSvgRenderer>
 #include <QTimer>
 #include <QUrl>
@@ -139,11 +140,9 @@ void xToolsMainWindow::initMenuOption()
 
     initOptionMenuHdpiPolicy();
     initOptionMenuAppStyleMenu();
-#ifndef X_TOOLS_ENABLE_MODULE_STYLESHEET
-    initOptionMenuAppPaletteMenu();
-#endif
     m_optionMenu->addSeparator();
     initOptionMenuSettingsMenu();
+    initOptionMenuColorScheme();
 }
 
 void xToolsMainWindow::initMenuLanguage()
@@ -305,6 +304,57 @@ void xToolsMainWindow::initOptionMenuHdpiPolicy()
     menu->addActions(actionGroup->actions());
     m_optionMenu->addMenu(menu);
 #endif
+}
+
+void xToolsMainWindow::initOptionMenuColorScheme()
+{
+    QMenu* menu = new QMenu(tr("Color Scheme"));
+    static QActionGroup actionGroup(this);
+    auto sys = menu->addAction(tr("System"));
+    auto dark = menu->addAction(tr("Dark"));
+    auto light = menu->addAction(tr("Light"));
+
+    sys->setCheckable(true);
+    dark->setCheckable(true);
+    light->setCheckable(true);
+
+    actionGroup.addAction(sys);
+    actionGroup.addAction(dark);
+    actionGroup.addAction(light);
+
+    menu->addActions(actionGroup.actions());
+    m_optionMenu->addMenu(menu);
+
+    connect(&actionGroup, &QActionGroup::triggered, this, [=](QAction* action) {
+        if (action == dark) {
+            xToolsSettings::instance()->setColorScheme(static_cast<int>(Qt::ColorScheme::Dark));
+        } else if (action == light) {
+            xToolsSettings::instance()->setColorScheme(static_cast<int>(Qt::ColorScheme::Light));
+        } else {
+            xToolsSettings::instance()->setColorScheme(static_cast<int>(Qt::ColorScheme::Unknown));
+        }
+
+        auto currentScheme = xToolsSettings::instance()->colorScheme();
+        QStyleHints* styleHints = QApplication::styleHints();
+        styleHints->setColorScheme(static_cast<Qt::ColorScheme>(currentScheme));
+    });
+
+    auto currentScheme = xToolsSettings::instance()->colorScheme();
+    switch (currentScheme) {
+    case static_cast<int>(Qt::ColorScheme::Dark):
+        dark->setChecked(true);
+        break;
+    case static_cast<int>(Qt::ColorScheme::Light):
+        light->setChecked(true);
+        break;
+    default:
+        currentScheme = static_cast<int>(Qt::ColorScheme::Unknown);
+        sys->setChecked(true);
+        break;
+    }
+
+    QStyleHints* styleHints = QApplication::styleHints();
+    styleHints->setColorScheme(static_cast<Qt::ColorScheme>(currentScheme));
 }
 
 void xToolsMainWindow::onHdpiPolicyActionTriggered(int policy)
