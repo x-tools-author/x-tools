@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsStyleSheetManager.h"
+#include "StyleSheetManager.h"
 
 #include <QApplication>
 #include <QDir>
@@ -15,9 +15,11 @@
 #include <QPainter>
 
 #include "Common/CommonUI/xTools.h"
-#include "xToolsSettings.h"
+#include "Common/Common/Settings.h"
 
-xToolsStyleSheetManager::xToolsStyleSheetManager(QObject* parent)
+namespace xTools {
+
+StyleSheetManager::StyleSheetManager(QObject* parent)
     : acss::QtAdvancedStylesheet(parent)
 {
     m_nameFriendlyNameMap.insert("dark_amber", tr("Dark Amber"));
@@ -62,14 +64,14 @@ xToolsStyleSheetManager::xToolsStyleSheetManager(QObject* parent)
     m_primaryColorMap.insert("light_teal", "#1de9b6");
     m_primaryColorMap.insert("light_yellow", "#ffea00");
 
-    QDir dir(xToolsSettings::instance()->settingsPath());
+    QDir dir(xTools::Settings::instance()->settingsPath());
     if (!dir.exists("output")) {
         dir.mkdir("output");
     }
 
     QString appDir = QApplication::applicationDirPath();
     setStylesDirPath(appDir + "/3rd_styles");
-    setOutputDirPath(xToolsSettings::instance()->settingsPath() + "/output");
+    setOutputDirPath(xTools::Settings::instance()->settingsPath() + "/output");
     setCurrentStyle("qt_material");
     setCurrentTheme(themeName());
 
@@ -86,10 +88,7 @@ xToolsStyleSheetManager::xToolsStyleSheetManager(QObject* parent)
         updateApplicationStylesheet();
     }
 
-    connect(action,
-            &QAction::triggered,
-            this,
-            &xToolsStyleSheetManager::setApplicationStylesheetEnabled);
+    connect(action, &QAction::triggered, this, &StyleSheetManager::setApplicationStylesheetEnabled);
 
     m_themeActionGroup = new QActionGroup(this);
     m_themeMenu = new QMenu(tr("Application Stylesheet"));
@@ -99,22 +98,22 @@ xToolsStyleSheetManager::xToolsStyleSheetManager(QObject* parent)
     loadThemes();
 }
 
-xToolsStyleSheetManager::~xToolsStyleSheetManager() {}
+StyleSheetManager::~StyleSheetManager() {}
 
-xToolsStyleSheetManager& xToolsStyleSheetManager::singleton()
+StyleSheetManager& StyleSheetManager::singleton()
 {
-    static xToolsStyleSheetManager instance;
+    static StyleSheetManager instance;
     return instance;
 }
 
-QMenu* xToolsStyleSheetManager::themeMenu() const
+QMenu* StyleSheetManager::themeMenu() const
 {
     return m_themeMenu;
 }
 
-QString xToolsStyleSheetManager::themeName()
+QString StyleSheetManager::themeName()
 {
-    QString ret = xToolsSettings::instance()->value("themeName").toString();
+    QString ret = xTools::Settings::instance()->value("themeName").toString();
     if (ret.isEmpty()) {
         ret = QString("dark_blue");
     }
@@ -122,16 +121,16 @@ QString xToolsStyleSheetManager::themeName()
     return ret;
 }
 
-void xToolsStyleSheetManager::setThemeName(const QString& themeName)
+void StyleSheetManager::setThemeName(const QString& themeName)
 {
-    xToolsSettings::instance()->setValue("themeName", themeName);
+    xTools::Settings::instance()->setValue("themeName", themeName);
     setCurrentTheme(themeName);
     if (enableStylesheet()) {
         updateStylesheet();
     }
 }
 
-void xToolsStyleSheetManager::updateApplicationStylesheet()
+void StyleSheetManager::updateApplicationStylesheet()
 {
     if (qApp) {
         updateStylesheet();
@@ -139,7 +138,7 @@ void xToolsStyleSheetManager::updateApplicationStylesheet()
     }
 }
 
-void xToolsStyleSheetManager::loadThemes()
+void StyleSheetManager::loadThemes()
 {
     QStringList themeList = themes();
     QStringList m_darkThemes;
@@ -156,7 +155,7 @@ void xToolsStyleSheetManager::loadThemes()
     setupActions(m_lightThemes, m_themeMenu, m_themeActionGroup);
 }
 
-void xToolsStyleSheetManager::updateActions()
+void StyleSheetManager::updateActions()
 {
     for (QAction* action : m_themeActionGroup->actions()) {
         QString theme = action->data().toString();
@@ -165,7 +164,7 @@ void xToolsStyleSheetManager::updateActions()
     }
 }
 
-void xToolsStyleSheetManager::updateActionIcon(QAction* action, const QString& color)
+void StyleSheetManager::updateActionIcon(QAction* action, const QString& color)
 {
     QPixmap pixmap(64, 64);
     pixmap.fill(color);
@@ -180,21 +179,19 @@ void xToolsStyleSheetManager::updateActionIcon(QAction* action, const QString& c
     action->setIcon(QIcon(pixmap));
 }
 
-bool xToolsStyleSheetManager::enableStylesheet()
+bool StyleSheetManager::enableStylesheet()
 {
-    xToolsSettings* settings = xToolsSettings::instance();
+    auto settings = xTools::Settings::instance();
     return settings->value("enableStylesheet", false).toBool();
 }
 
-void xToolsStyleSheetManager::setEnableStylesheet(bool enable)
+void StyleSheetManager::setEnableStylesheet(bool enable)
 {
-    xToolsSettings* settings = xToolsSettings::instance();
+    auto settings = xTools::Settings::instance();
     settings->setValue("enableStylesheet", enable);
 }
 
-void xToolsStyleSheetManager::setupActions(const QStringList& themes,
-                                           QMenu* menu,
-                                           QActionGroup* group)
+void StyleSheetManager::setupActions(const QStringList& themes, QMenu* menu, QActionGroup* group)
 {
     for (const QString& theme : themes) {
         bool isValidName = m_nameFriendlyNameMap.contains(theme);
@@ -223,7 +220,7 @@ void xToolsStyleSheetManager::setupActions(const QStringList& themes,
     }
 }
 
-void xToolsStyleSheetManager::setApplicationStylesheetEnabled(bool enable)
+void StyleSheetManager::setApplicationStylesheetEnabled(bool enable)
 {
     setEnableStylesheet(enable);
     for (auto action : m_themeActionGroup->actions()) {
@@ -237,3 +234,5 @@ void xToolsStyleSheetManager::setApplicationStylesheetEnabled(bool enable)
         try2rebootApp();
     }
 }
+
+} // namespace xTools

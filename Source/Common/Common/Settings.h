@@ -11,7 +11,9 @@
 #include <QSettings>
 #include <Qt>
 
-class xToolsSettings : public QSettings
+namespace xTools {
+
+class Settings : public QSettings
 {
     Q_OBJECT
     // clang-format off
@@ -20,10 +22,10 @@ class xToolsSettings : public QSettings
     // clang-format on
 
 private:
-    explicit xToolsSettings(QObject *parent = nullptr);
+    explicit Settings(QObject *parent = nullptr);
 
 public:
-    static xToolsSettings *instance();
+    static Settings *instance();
     Q_INVOKABLE void openSettingsFileDir();
 
     QString settingsPath();
@@ -59,3 +61,5 @@ public:
     Q_INVOKABLE QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const;
     Q_INVOKABLE void setValue(const QString &key, const QVariant &value);
 };
+
+} // namespace xTools

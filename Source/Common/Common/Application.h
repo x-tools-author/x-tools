@@ -15,7 +15,10 @@
 #include <QSplashScreen>
 
 class QLineEdit;
-class xToolsApplication : public QApplication
+
+namespace xTools {
+
+class Application : public QApplication
 {
     Q_OBJECT
     Q_PROPERTY(QStringList supportedLanguages READ supportedLanguages CONSTANT FINAL)
@@ -26,7 +29,7 @@ public:
     Q_ENUM(ValidatorType)
 
 public:
-    explicit xToolsApplication(int argc, char *argv[]);
+    explicit Application(int argc, char *argv[]);
 
     static bool enableSplashScreen();
     static void setEnableSplashScreen(bool enable);
@@ -78,3 +81,5 @@ private:
 private:
     static QPixmap splashScreenPixMap();
 };
+
+} // namespace xTools

@@ -14,11 +14,10 @@
 #include <QDesktopServices>
 #include <QMetaEnum>
 
-#include "xToolsCrcInterface.h"
+#include "CRC/CRC.h"
 
 xToolsCRCAssistant::xToolsCRCAssistant(QWidget* parent)
     : QWidget(parent)
-    , m_crcInterface(new xToolsCrcInterface)
     , ui(new Ui::xToolsCRCAssistant)
 {
     ui->setupUi(this);
@@ -70,27 +69,26 @@ xToolsCRCAssistant::xToolsCRCAssistant(QWidget* parent)
 
 xToolsCRCAssistant::~xToolsCRCAssistant()
 {
-    delete m_crcInterface;
     delete ui;
 }
 
 void xToolsCRCAssistant::initParameterModel()
 {
     m_parameterComboBox->clear();
-    QStringList list = m_crcInterface->supportedParameterModels();
-    m_parameterComboBox->addItems(list);
-
-    QMetaEnum models = QMetaEnum::fromType<xToolsCrcInterface::SAKEnumCrcAlgorithm>();
-    bool ok = false;
-    int ret = models.keyToValue(m_parameterComboBox->currentText().toLatin1().constData(), &ok);
-    xToolsCrcInterface::SAKEnumCrcAlgorithm model = xToolsCrcInterface::CRC_8;
-    if (ok) {
-        model = static_cast<xToolsCrcInterface::SAKEnumCrcAlgorithm>(ret);
+    QList<int> algorithms = xTools::CRC::supportedAlgorithms();
+    for (auto algorithm : algorithms) {
+        auto cookedAlgorithm = static_cast<xTools::CRC::Algorithm>(algorithm);
+        QString name = xTools::CRC::algorithmName(cookedAlgorithm);
+        m_parameterComboBox->addItem(name, algorithm);
     }
 
-    int bitsWidth = m_crcInterface->bitsWidth(model);
+    m_parameterComboBox->setCurrentIndex(0);
+    int algorithm = m_parameterComboBox->currentData().toInt();
+    auto cookedAlgorithm = static_cast<xTools::CRC::Algorithm>(algorithm);
+
+    int bitsWidth = xTools::CRC::bitsWidth(static_cast<xTools::CRC::Algorithm>(algorithm));
     m_widthComboBox->setCurrentIndex(m_widthComboBox->findText(QString::number(bitsWidth)));
-    m_labelPolyFormula->setText(m_crcInterface->friendlyPoly(model));
+    m_labelPolyFormula->setText(xTools::CRC::algorithmName(cookedAlgorithm));
 }
 
 void xToolsCRCAssistant::calculate()
@@ -115,38 +113,12 @@ void xToolsCRCAssistant::calculate()
         return;
     }
 
-    int bitsWidth = m_widthComboBox->currentText().toInt();
-    QMetaEnum models = QMetaEnum::fromType<xToolsCrcInterface::SAKEnumCrcAlgorithm>();
-    bool ok = false;
-    int ret = models.keyToValue(m_parameterComboBox->currentText().toLatin1().constData(), &ok);
-    xToolsCrcInterface::SAKEnumCrcAlgorithm model = xToolsCrcInterface::CRC_8;
-    if (ok) {
-        model = static_cast<xToolsCrcInterface::SAKEnumCrcAlgorithm>(ret);
-    } else {
-        Q_ASSERT_X(false, __FUNCTION__, "Unknown crc parameters model!");
-    }
+    int algorithm = m_parameterComboBox->currentData().toInt();
+    auto cookedAlgorithm = static_cast<xTools::CRC::Algorithm>(algorithm);
 
-    QString crcHexString = "error";
-    QString crcBinString = "error";
-
-    uint8_t* inputData = reinterpret_cast<uint8_t*>(inputArray.data());
-    uint64_t inputLength = static_cast<uint64_t>(inputArray.length());
-    if (bitsWidth == 8) {
-        uint8_t crc = m_crcInterface->crcCalculate<uint8_t>(inputData, inputLength, model);
-        crcHexString = QString("0x%1").arg(QString::number(crc, 16), 2, '0');
-        crcBinString = QString("%1").arg(QString::number(crc, 2), 8, '0');
-    } else if (bitsWidth == 16) {
-        uint16_t crc = m_crcInterface->crcCalculate<uint16_t>(inputData, inputLength, model);
-        crcHexString = QString("0x%1").arg(QString::number(crc, 16), 4, '0');
-        crcBinString = QString("%1").arg(QString::number(crc, 2), 16, '0');
-    } else if (bitsWidth == 32) {
-        uint32_t crc = m_crcInterface->crcCalculate<uint32_t>(inputData, inputLength, model);
-        crcHexString = QString("0x%1").arg(QString::number(crc, 16), 8, '0');
-        crcBinString = QString("%1").arg(QString::number(crc, 2), 32, '0');
-    } else {
-        qWarning() << "Not supported bits width!";
-    }
-
+    QByteArray result = xTools::CRC::calculate(inputArray, cookedAlgorithm);
+    QString crcHexString = QString::fromLatin1(result.toHex());
+    QString crcBinString = QString::fromLatin1(result.toHex());
     m_hexCRCOutput->setText(crcHexString);
     m_binCRCOutput->setText(crcBinString);
 }
@@ -180,32 +152,23 @@ void xToolsCRCAssistant::textFormatControl()
 void xToolsCRCAssistant::changedParameterModel(int index)
 {
     Q_UNUSED(index)
-    QMetaEnum models = QMetaEnum::fromType<xToolsCrcInterface::SAKEnumCrcAlgorithm>();
-    bool ok = false;
-    xToolsCrcInterface::SAKEnumCrcAlgorithm model = xToolsCrcInterface::CRC_8;
-    int ret = models.keyToValue(m_parameterComboBox->currentText().toLatin1().constData(), &ok);
-    if (ok) {
-        model = static_cast<xToolsCrcInterface::SAKEnumCrcAlgorithm>(ret);
-    } else {
-        qWarning() << "Unknown parameter model!";
-        Q_ASSERT_X(false, __FUNCTION__, "Unknown parameter model!");
-        return;
-    }
+    int bitsWidth = m_widthComboBox->currentText().toInt();
+    int algorithm = m_parameterComboBox->currentData().toInt();
+    auto cookedAlgorithm = static_cast<xTools::CRC::Algorithm>(algorithm);
 
-    int bitsWidth = m_crcInterface->bitsWidth(model);
     m_widthComboBox->setCurrentIndex(m_widthComboBox->findText(QString::number(bitsWidth)));
-    QString strTmp = QString::number(static_cast<int>(m_crcInterface->poly(model)), 16);
+    QString strTmp = QString::number(static_cast<int>(xTools::CRC::poly(cookedAlgorithm)), 16);
     m_polyLineEdit->setText(QString("0x%1").arg(strTmp, bitsWidth / 4, '0'));
 
-    strTmp = QString::number(static_cast<int>(m_crcInterface->initialValue(model)), 16);
+    strTmp = QString::number(static_cast<int>(xTools::CRC::initialValue(cookedAlgorithm)), 16);
     m_initLineEdit->setText(QString("0x%1").arg(strTmp, bitsWidth / 4, '0'));
 
-    strTmp = QString::number(static_cast<int>(m_crcInterface->xorValue(model)), 16);
+    strTmp = QString::number(static_cast<int>(xTools::CRC::xorValue(cookedAlgorithm)), 16);
     m_xorLineEdit->setText(QString("0x%1").arg(strTmp, bitsWidth / 4, '0'));
 
-    m_refinCheckBox->setChecked(m_crcInterface->isInputReversal(model));
-    m_refoutCheckBox->setChecked(m_crcInterface->isOutputReversal(model));
-    m_labelPolyFormula->setText(m_crcInterface->friendlyPoly(model));
+    m_refinCheckBox->setChecked(xTools::CRC::isInputReversal(cookedAlgorithm));
+    m_refoutCheckBox->setChecked(xTools::CRC::isOutputReversal(cookedAlgorithm));
+    m_labelPolyFormula->setText(xTools::CRC::friendlyPoly(cookedAlgorithm));
 }
 
 bool xToolsCRCAssistant::eventFilter(QObject* watched, QEvent* event)

@@ -18,15 +18,15 @@
 #include <QStyle>
 #include <QStyleHints>
 
-#include "xToolsApplication.h"
-#include "xToolsMainWindow.h"
-#include "xToolsSettings.h"
+#include "Common/Common/Application.h"
+#include "Common/CommonUI/MainWindow.h"
+#include "Common/Common/Settings.h"
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #include "xToolsDataStructure.h"
 #endif
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
-#include "xToolsStyleSheetManager.h"
+#include "StyleSheetManager.h"
 #endif
 
 void xToolsInitGoogleLogging(char *argv0);
@@ -44,7 +44,7 @@ static void xToolsInitApp(const QString &appName, bool forStore)
     QCoreApplication::setOrganizationName(QString("xTools"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
     QCoreApplication::setApplicationName(cookedAppName);
-    xToolsApplication::setFriendlyAppName(appName);
+    xTools::Application::setFriendlyAppName(appName);
 }
 
 static void xToolsInstallMessageHandler()
@@ -55,12 +55,12 @@ static void xToolsInstallMessageHandler()
 static void xToolsTryToClearSettings()
 {
     // Remove settings file and database
-    if (!xToolsSettings::instance()->clearSettings()) {
+    if (!xTools::Settings::instance()->clearSettings()) {
         return;
     }
 
-    xToolsSettings::instance()->setClearSettings(false);
-    if (QFile::remove(xToolsSettings::instance()->fileName())) {
+    xTools::Settings::instance()->setClearSettings(false);
+    if (QFile::remove(xTools::Settings::instance()->fileName())) {
         qInfo() << "The settings file is removed.";
     } else {
         qWarning() << "The operation(remove settings file) failed!";
@@ -74,7 +74,7 @@ static void xToolsInitHdpi()
 #endif
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    int policy = xToolsSettings::instance()->hdpiPolicy();
+    int policy = xTools::Settings::instance()->hdpiPolicy();
     if (!xToolsDataStructure::isValidHighDpiPolicy(policy)) {
         qWarning() << "The value of hdpi policy is not specified, set to default value:"
                    << QGuiApplication::highDpiScaleFactorRoundingPolicy();
@@ -91,7 +91,7 @@ static void xToolsInitAppStyle()
 {
     const QStringList keys = QStyleFactory::keys();
     qInfo() << "The supported application styles are:" << qPrintable(keys.join(QChar(',')));
-    const QString style = xToolsSettings::instance()->appStyle();
+    const QString style = xTools::Settings::instance()->appStyle();
     qInfo() << "The current style of application is:" << qPrintable(style);
     if (style.isEmpty()) {
         qWarning() << "The application style is not specified, the default style is:"
@@ -122,8 +122,8 @@ static void xToolsDoSomethingAfterAppExited()
 }
 
 template<typename CentralWidgetT = QWidget,
-         typename MainWindowT = xToolsMainWindow,
-         typename AppT = xToolsApplication>
+         typename MainWindowT = xTools::MainWindow,
+         typename AppT = xTools::Application>
 int xToolsExec(int argc,
                char *argv[],
                const QString &appName,
@@ -144,10 +144,10 @@ int xToolsExec(int argc,
     styleHints->setColorScheme(Qt::ColorScheme::Dark);
 #endif
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
-    xToolsSettings::instance()->setValue("startUpTime", dtStr);
+    xTools::Settings::instance()->setValue("startUpTime", dtStr);
 
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
-    auto &styleSheetManager = xToolsStyleSheetManager::singleton();
+    auto &styleSheetManager = xTools::StyleSheetManager::singleton();
     const QString styleSheet = styleSheetManager.styleSheet();
     if (!styleSheet.isEmpty() && !styleSheetManager.currentTheme().isEmpty()) {
         app.setStyleSheet(styleSheet);
@@ -172,7 +172,7 @@ int xToolsExec(int argc,
     splashScreen.finish(ui);
     ui->show();
     ui->resize(static_cast<int>(static_cast<qreal>(ui->height()) * 1.732), ui->height());
-    xToolsApplication::moveToScreenCenter(ui);
+    xTools::Application::moveToScreenCenter(ui);
     qInfo() << "The size of window is" << ui->size();
 
     if (doSomethingBeforAppExec) {

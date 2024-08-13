@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsSettings.h"
+#include "Settings.h"
 
 #include <QApplication>
 #include <QDebug>
@@ -14,6 +14,8 @@
 #include <QStandardPaths>
 #include <QStyle>
 #include <QUrl>
+
+namespace xTools {
 
 struct SettingKeys
 {
@@ -29,7 +31,7 @@ struct SettingKeys
     const QString colorScheme{"colorScheme"};
 } g_keys;
 
-static const QString fileName()
+static const QString settingfileName()
 {
     QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
     QString path = QStandardPaths::writableLocation(type);
@@ -37,34 +39,34 @@ static const QString fileName()
     return ret;
 }
 
-xToolsSettings::xToolsSettings(QObject* parent)
-    : QSettings{::fileName(), QSettings::IniFormat, parent}
+Settings::Settings(QObject* parent)
+    : QSettings{settingfileName(), QSettings::IniFormat, parent}
 {
     qInfo() << "The path of settings file is:" << qPrintable(fileName());
 }
 
-xToolsSettings* xToolsSettings::instance()
+Settings* xTools::Settings::instance()
 {
-    static xToolsSettings* settings = Q_NULLPTR;
+    static Settings* settings = Q_NULLPTR;
     if (!settings) {
-        settings = new xToolsSettings(qApp);
+        settings = new Settings(qApp);
     }
     return settings;
 }
 
-void xToolsSettings::openSettingsFileDir()
+void Settings::openSettingsFileDir()
 {
     QDesktopServices::openUrl(settingsPath());
 }
 
-QString xToolsSettings::settingsPath()
+QString Settings::settingsPath()
 {
     QString settingsFile(fileName());
     QString path = settingsFile.left(settingsFile.lastIndexOf("/"));
     return path;
 }
 
-int xToolsSettings::hdpiPolicy()
+int Settings::hdpiPolicy()
 {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     auto var = value(g_keys.hdpiPolicy);
@@ -78,7 +80,7 @@ int xToolsSettings::hdpiPolicy()
 #endif
 }
 
-void xToolsSettings::setHdpiPolicy(int policy)
+void Settings::setHdpiPolicy(int policy)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     setValue(g_keys.hdpiPolicy, policy);
@@ -88,7 +90,7 @@ void xToolsSettings::setHdpiPolicy(int policy)
 #endif
 }
 
-QString xToolsSettings::appStyle()
+QString Settings::appStyle()
 {
     auto var = value(g_keys.appStyle);
     if (var.isValid()) {
@@ -102,59 +104,61 @@ QString xToolsSettings::appStyle()
     return QString("");
 }
 
-void xToolsSettings::setAppStyle(const QString& style)
+void Settings::setAppStyle(const QString& style)
 {
     setValue(g_keys.appStyle, style);
 }
 
-QString xToolsSettings::language()
+QString Settings::language()
 {
     return value(g_keys.language).toString();
 }
 
-void xToolsSettings::setLanguage(const QString& lan)
+void Settings::setLanguage(const QString& lan)
 {
     setValue(g_keys.language, lan);
 }
 
-bool xToolsSettings::clearSettings()
+bool Settings::clearSettings()
 {
     return value(g_keys.clearSettings).toBool();
 }
 
-void xToolsSettings::setClearSettings(bool clear)
+void Settings::setClearSettings(bool clear)
 {
     setValue(g_keys.clearSettings, clear);
     emit clearSettingsChanged();
 }
 
-QString xToolsSettings::palette()
+QString Settings::palette()
 {
     return value(g_keys.palette).toString();
 }
 
-void xToolsSettings::setPalette(const QString& fileName)
+void Settings::setPalette(const QString& fileName)
 {
     setValue(g_keys.palette, fileName);
     emit paletteChanged();
 }
 
-int xToolsSettings::colorScheme()
+int Settings::colorScheme()
 {
     return value(g_keys.colorScheme).toInt();
 }
 
-void xToolsSettings::setColorScheme(const int colorScheme)
+void Settings::setColorScheme(const int colorScheme)
 {
     setValue(g_keys.colorScheme, colorScheme);
 }
 
-QVariant xToolsSettings::value(const QString& key, const QVariant& defaultValue) const
+QVariant Settings::value(const QString& key, const QVariant& defaultValue) const
 {
     return QSettings::value(key, defaultValue);
 }
 
-void xToolsSettings::setValue(const QString& key, const QVariant& value)
+void Settings::setValue(const QString& key, const QVariant& value)
 {
     QSettings::setValue(key, value);
 }
+
+} // namespace xTools

@@ -34,7 +34,7 @@
 #ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
 #include "xToolsAssistantFactory.h"
 #endif
-#include "xToolsSettings.h"
+#include "Common/Common/Settings.h"
 #include "IOPage/IOPage.h"
 
 #ifdef Q_OS_WIN
@@ -45,12 +45,12 @@ MainWindow::MainWindow(QWidget* parent)
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
     : xToolsPrivateMainWindow(parent)
 #else
-    : xToolsMainWindow(parent)
+    : xTools::MainWindow(parent)
 #endif
-    , m_ioPage00(new IOPage(IOPage::Left, xToolsSettings::instance(), this))
-    , m_ioPage01(new IOPage(IOPage::Right, xToolsSettings::instance(), this))
-    , m_ioPage10(new IOPage(IOPage::Left, xToolsSettings::instance(), this))
-    , m_ioPage11(new IOPage(IOPage::Right, xToolsSettings::instance(), this))
+    , m_ioPage00(new IOPage(IOPage::Left, xTools::Settings::instance(), this))
+    , m_ioPage01(new IOPage(IOPage::Right, xTools::Settings::instance(), this))
+    , m_ioPage10(new IOPage(IOPage::Left, xTools::Settings::instance(), this))
+    , m_ioPage11(new IOPage(IOPage::Right, xTools::Settings::instance(), this))
 {
 #ifdef Q_OS_WIN
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
@@ -83,7 +83,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     const int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
     const QString key = m_settingsKey.windowGrid;
-    m_windowGrid = xToolsSettings::instance()->value(key, defaultGrid).value<WindowGrid>();
+    m_windowGrid = xTools::Settings::instance()->value(key, defaultGrid).value<WindowGrid>();
     updateGrid(m_windowGrid);
 
     load();
@@ -106,13 +106,13 @@ void MainWindow::closeEvent(QCloseEvent* event)
 {
     save();
 #ifdef Q_OS_WIN
-    if (xToolsSettings::instance()->value(m_settingsKey.exitToSystemTray).toBool()) {
+    if (xTools::Settings::instance()->value(m_settingsKey.exitToSystemTray).toBool()) {
         close();
         event->ignore();
         return;
     }
 #endif
-    xToolsSettings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
+    xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
     QMainWindow::closeEvent(event);
 }
 
@@ -177,7 +177,7 @@ void MainWindow::initOptionMenu()
     m_optionMenu->addSeparator();
     m_optionMenu->addMenu(mainWindowMenu);
 
-    QVariant v = xToolsSettings::instance()->value(m_settingsKey.exitToSystemTray);
+    QVariant v = xTools::Settings::instance()->value(m_settingsKey.exitToSystemTray);
     if (!v.isNull()) {
         bool isExitToSystemTray = v.toBool();
         action->setChecked(isExitToSystemTray);
@@ -185,7 +185,7 @@ void MainWindow::initOptionMenu()
 
     connect(action, &QAction::triggered, this, [=]() {
         bool keep = action->isChecked();
-        xToolsSettings::instance()->setValue(m_settingsKey.exitToSystemTray, keep);
+        xTools::Settings::instance()->setValue(m_settingsKey.exitToSystemTray, keep);
     });
 }
 
@@ -220,7 +220,7 @@ void MainWindow::initViewMenu()
         a2x2->setChecked(true);
     }
 
-    auto windowGrid = xToolsSettings::instance()->value(m_settingsKey.windowGrid).toInt();
+    auto windowGrid = xTools::Settings::instance()->value(m_settingsKey.windowGrid).toInt();
     if (windowGrid == int(WindowGrid::Grid1x2)) {
         a1x2->setChecked(true);
         a1x2->trigger();
@@ -343,7 +343,7 @@ void MainWindow::updateGrid(WindowGrid grid)
         m_ioPage11->hide();
     }
 
-    xToolsSettings::instance()->setValue(m_settingsKey.windowGrid, int(grid));
+    xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, int(grid));
 }
 
 void MainWindow::showHistory()
@@ -399,7 +399,7 @@ void MainWindow::showQrCode()
 
 void MainWindow::load()
 {
-    const QString path = xToolsSettings::instance()->settingsPath();
+    const QString path = xTools::Settings::instance()->settingsPath();
     QString filePath = path + "/data.json";
     if (!QFile::exists(filePath)) {
         return;
@@ -432,7 +432,7 @@ void MainWindow::save()
     QJsonDocument doc;
     doc.setObject(obj);
 
-    const QString path = xToolsSettings::instance()->settingsPath();
+    const QString path = xTools::Settings::instance()->settingsPath();
     QString filePath = path + "/data.json";
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {

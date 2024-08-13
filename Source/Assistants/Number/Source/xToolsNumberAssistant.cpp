@@ -9,7 +9,7 @@
 #include "xToolsNumberAssistant.h"
 #include "ui_xToolsNumberAssistant.h"
 
-#include "xToolsApplication.h"
+#include "Application.h"
 #include "xToolsCompatibility.h"
 #include "xToolsDataStructure.h"
 
@@ -19,8 +19,8 @@ xToolsNumberAssistant::xToolsNumberAssistant(QWidget *parent)
 {
     ui->setupUi(this);
 
-    xToolsApplication::setValidator(ui->lineEditRawData, xToolsDataStructure::TextFormatHex);
-    xToolsApplication::setValidator(ui->lineEditCookedDec, xToolsDataStructure::TextFormatDec);
+    xTools::Application::setValidator(ui->lineEditRawData, xToolsDataStructure::TextFormatHex);
+    xTools::Application::setValidator(ui->lineEditCookedDec, xToolsDataStructure::TextFormatDec);
 
     ui->comboBoxCookedDataType->addItem("int8_t", CookedDataTypeInt8);
     ui->comboBoxCookedDataType->addItem("uint8_t", CookedDataTypeUint8);

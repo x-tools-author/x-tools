@@ -14,18 +14,20 @@
 
 #include <QtAdvancedStylesheet.h>
 
-class xToolsStyleSheetManager : public acss::QtAdvancedStylesheet
+namespace xTools {
+
+class StyleSheetManager : public acss::QtAdvancedStylesheet
 {
     Q_OBJECT
 private:
-    explicit xToolsStyleSheetManager(QObject* parent = Q_NULLPTR);
-    xToolsStyleSheetManager(const xToolsStyleSheetManager&) = delete;
-    xToolsStyleSheetManager& operator=(const xToolsStyleSheetManager&) = delete;
+    explicit StyleSheetManager(QObject* parent = Q_NULLPTR);
+    StyleSheetManager(const StyleSheetManager&) = delete;
+    StyleSheetManager& operator=(const StyleSheetManager&) = delete;
 
 public:
-    ~xToolsStyleSheetManager();
+    ~StyleSheetManager();
 
-    static xToolsStyleSheetManager& singleton();
+    static StyleSheetManager& singleton();
     QMenu* themeMenu() const;
 
 private:
@@ -49,3 +51,5 @@ private:
 
     void setApplicationStylesheetEnabled(bool enable);
 };
+
+} // namespace xTools

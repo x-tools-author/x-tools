@@ -13,8 +13,8 @@
 #include <QNetworkAddressEntry>
 #include <QNetworkInterface>
 
+#include "Common/Common/Application.h"
 #include "IO/xIO.h"
-#include "xToolsApplication.h"
 #include "xToolsBroadcastThread.h"
 #include "xToolsDataStructure.h"
 
@@ -38,7 +38,7 @@ xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
     });
     connect(ui->comboBoxBroadcastFormat, &QComboBox::currentTextChanged, this, [=]() {
         auto format = ui->comboBoxBroadcastFormat->currentData().toInt();
-        xToolsApplication::setValidator(ui->lineEditBroadcastData, format);
+        xTools::Application::setValidator(ui->lineEditBroadcastData, format);
     });
     connect(ui->pushButtonBroadcast,
             &QPushButton::clicked,

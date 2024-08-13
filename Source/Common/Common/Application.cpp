@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsApplication.h"
+#include "Application.h"
 
 #include <QAbstractTableModel>
 #include <QClipboard>
@@ -32,11 +32,14 @@
 #include <QTranslator>
 
 #include "xToolsDataStructure.h"
-#include "xToolsSettings.h"
+#include "Common/Common/Settings.h"
 
-bool xToolsApplication::m_enableSplashScreen = true;
-QString xToolsApplication::m_friendlyAppName = QStringLiteral("xTools");
-xToolsApplication::xToolsApplication(int argc, char *argv[])
+namespace xTools {
+
+bool Application::m_enableSplashScreen = true;
+QString Application::m_friendlyAppName = QStringLiteral("xTools");
+
+Application::Application(int argc, char *argv[])
     : QApplication(argc, argv)
 {
     m_languageFlagNameMap.insert("zh_CN", "简体中文");
@@ -64,12 +67,12 @@ xToolsApplication::xToolsApplication(int argc, char *argv[])
   m_languageFlagNameMap.insert("sl", "Slovenščina");
   m_languageFlagNameMap.insert("sv", "Svenska");
 #endif
-    QString language = xToolsSettings::instance()->language();
-    xToolsApplication::setupLanguage(language);
+    QString language = xTools::Settings::instance()->language();
+    Application::setupLanguage(language);
 
     // Palette
     showSplashScreenMessage(tr("Load palette..."));
-    QString palette = xToolsSettings::instance()->palette();
+    QString palette = xTools::Settings::instance()->palette();
     setupPalette(palette);
 
     // Splash screen
@@ -84,32 +87,32 @@ xToolsApplication::xToolsApplication(int argc, char *argv[])
     }
 }
 
-bool xToolsApplication::enableSplashScreen()
+bool Application::enableSplashScreen()
 {
     return m_enableSplashScreen;
 }
 
-void xToolsApplication::setEnableSplashScreen(bool enable)
+void Application::setEnableSplashScreen(bool enable)
 {
     m_enableSplashScreen = enable;
 }
 
-QString xToolsApplication::friendlyAppName()
+QString Application::friendlyAppName()
 {
     return m_friendlyAppName;
 }
 
-void xToolsApplication::setFriendlyAppName(const QString &name)
+void Application::setFriendlyAppName(const QString &name)
 {
     m_friendlyAppName = name;
 }
 
-void xToolsApplication::showSplashScreenMessage(const QString &msg)
+void Application::showSplashScreenMessage(const QString &msg)
 {
     m_splashScreen.showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
 }
 
-void xToolsApplication::setupPalette(const QString &fileName)
+void Application::setupPalette(const QString &fileName)
 {
     if (fileName.isEmpty()) {
         qWarning() << "The palette file name is empty, use default palette.";
@@ -135,19 +138,19 @@ void xToolsApplication::setupPalette(const QString &fileName)
     }
 }
 
-QSplashScreen &xToolsApplication::splashScreen()
+QSplashScreen &Application::splashScreen()
 {
     return m_splashScreen;
 }
 
-QStringList xToolsApplication::supportedLanguages()
+QStringList Application::supportedLanguages()
 {
     return m_languageFlagNameMap.values();
 }
 
-QString xToolsApplication::language()
+QString Application::language()
 {
-    QString language = xToolsSettings::instance()->language();
+    QString language = xTools::Settings::instance()->language();
     if (language.isEmpty()) {
         language = QLocale::system().name();
     }
@@ -160,12 +163,12 @@ QString xToolsApplication::language()
     return m_languageFlagNameMap.value(language);
 }
 
-void xToolsApplication::setupLanguage(const QString &language)
+void Application::setupLanguage(const QString &language)
 {
     setupLanguageWithPrefix(language, m_translatorPrefix);
 }
 
-void xToolsApplication::setValidator(QLineEdit *target, int validatorType, int maxLength)
+void Application::setValidator(QLineEdit *target, int validatorType, int maxLength)
 {
     static QMap<int, QRegularExpressionValidator *> regularExpressionMap;
     if (regularExpressionMap.isEmpty()) {
@@ -202,7 +205,7 @@ void xToolsApplication::setValidator(QLineEdit *target, int validatorType, int m
     target->setMaxLength(maxLength);
 }
 
-QIcon xToolsApplication::cookedIcon(const QIcon &icon)
+QIcon Application::cookedIcon(const QIcon &icon)
 {
     QPixmap pixmap = icon.pixmap(QSize(128, 128));
     QPainter painter(&pixmap);
@@ -212,7 +215,7 @@ QIcon xToolsApplication::cookedIcon(const QIcon &icon)
     return colorIcon;
 }
 
-QMainWindow *xToolsApplication::mainWindow()
+QMainWindow *Application::mainWindow()
 {
     for (const auto &it : qobject_cast<QApplication *>(qApp)->topLevelWidgets()) {
         auto mainWindow = qobject_cast<QMainWindow *>(it);
@@ -224,7 +227,7 @@ QMainWindow *xToolsApplication::mainWindow()
     return nullptr;
 }
 
-void xToolsApplication::moveToScreenCenter(QWidget *widget)
+void Application::moveToScreenCenter(QWidget *widget)
 {
     QRect screenRect = QApplication::primaryScreen()->geometry();
     bool tooWidth = (widget->width() > screenRect.width());
@@ -238,33 +241,33 @@ void xToolsApplication::moveToScreenCenter(QWidget *widget)
     }
 }
 
-QString xToolsApplication::clipboardText()
+QString Application::clipboardText()
 {
     return QGuiApplication::clipboard()->text();
 }
 
-void xToolsApplication::setClipboardText(const QString &text)
+void Application::setClipboardText(const QString &text)
 {
     QGuiApplication::clipboard()->setText(text);
 }
 
-QString xToolsApplication::dateTimeString(const QString &format)
+QString Application::dateTimeString(const QString &format)
 {
     return QDateTime::currentDateTime().toString(format);
 }
 
-QString xToolsApplication::stringToHexString(const QString &str)
+QString Application::stringToHexString(const QString &str)
 {
     return QString::fromLatin1(str.toUtf8().toHex());
 }
 
-QString xToolsApplication::hexStringToString(const QString &str)
+QString Application::hexStringToString(const QString &str)
 {
     QByteArray arr = QByteArray::fromHex(str.toUtf8());
     return QString::fromUtf8(arr);
 }
 
-QDateTime xToolsApplication::buildDateTime()
+QDateTime Application::buildDateTime()
 {
     QString dateString = QString(__DATE__);
     QString timeString = QString(__TIME__);
@@ -274,27 +277,27 @@ QDateTime xToolsApplication::buildDateTime()
     return dateTime;
 }
 
-QString xToolsApplication::buildDateTimeString(const QString &format)
+QString Application::buildDateTimeString(const QString &format)
 {
     return buildDateTime().toString(format);
 }
 
-QString xToolsApplication::systemDateFormat()
+QString Application::systemDateFormat()
 {
     return QLocale::system().dateFormat();
 }
 
-QString xToolsApplication::systemTimeFormat()
+QString Application::systemTimeFormat()
 {
     return QLocale::system().timeFormat();
 }
 
-QString xToolsApplication::desktopPath()
+QString Application::desktopPath()
 {
     return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 }
 
-void xToolsApplication::setupLanguageWithPrefix(const QString &language, const QString &prefix)
+void Application::setupLanguageWithPrefix(const QString &language, const QString &prefix)
 {
     QString key = m_languageFlagNameMap.key(language);
     if (language.isEmpty()) {
@@ -341,13 +344,13 @@ void xToolsApplication::setupLanguageWithPrefix(const QString &language, const Q
     }
 }
 
-QPixmap xToolsApplication::splashScreenPixMap()
+QPixmap Application::splashScreenPixMap()
 {
     QFont font = qApp->font();
     font.setPixelSize(52);
 
     QFontMetrics fontMetrics(font);
-    const QString displayName = xToolsApplication::friendlyAppName();
+    const QString displayName = Application::friendlyAppName();
     int width = fontMetrics.boundingRect(displayName).width() * 1.2;
 
     QPixmap pixmap(width < 600 ? 600 : width, 260);
@@ -361,3 +364,5 @@ QPixmap xToolsApplication::splashScreenPixMap()
 
     return pixmap;
 }
+
+} // namespace xTools

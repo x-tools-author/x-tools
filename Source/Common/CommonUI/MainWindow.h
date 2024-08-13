@@ -14,18 +14,20 @@
 #include <QMenu>
 #include <QStyleFactory>
 
-class xToolsApplication;
-class xToolsMainWindow : public QMainWindow
+namespace xTools {
+
+class Application;
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit xToolsMainWindow(QWidget* parent = Q_NULLPTR);
+    explicit MainWindow(QWidget* parent = Q_NULLPTR);
     static QIcon cookedIcon(const QString& svgFileName);
 
     virtual void updateWindowTitle();
 
 protected:
-    xToolsApplication* m_xToolsApp;
+    Application* m_xToolsApp;
 
     QMenu* m_fileMenu;
     QMenu* m_optionMenu;
@@ -70,3 +72,5 @@ private:
     void showQqQrCode();
     void setPalette(const QString& fileName);
 };
+
+} // namespace xTools

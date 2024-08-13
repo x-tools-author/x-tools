@@ -14,7 +14,7 @@
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
 #include "xToolsPrivateMainWindow.h"
 #else
-#include "xToolsMainWindow.h"
+#include "Common/CommonUI/MainWindow.h"
 #endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
@@ -22,13 +22,13 @@ class MainWindow : public xToolsPrivateMainWindow
 #else
 
 class IOPage;
-class MainWindow : public xToolsMainWindow
+class MainWindow : public xTools::MainWindow
 #endif
 {
     Q_OBJECT
 public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
-    ~MainWindow() override;
+    ~MainWindow();
 
 protected:
     void closeEvent(QCloseEvent* event) override;

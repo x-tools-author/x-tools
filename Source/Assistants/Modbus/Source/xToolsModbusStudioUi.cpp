@@ -41,7 +41,7 @@
 
 #include "xToolsCompatibility.h"
 #include "xToolsModbusStudio.h"
-#include "xToolsSettings.h"
+#include "Common/Common/Settings.h"
 
 #define RXCOLOR "green"
 #define TXCOLOR "blue"
@@ -124,7 +124,7 @@ xToolsModbusStudioUi::xToolsModbusStudioUi(QWidget *parent)
     , m_keyCtx(new xToolsModbusUiSettingKeys)
 {
     if (!m_settings) {
-        m_settings = xToolsSettings::instance();
+        m_settings = xTools::Settings::instance();
     }
 
     ui->setupUi(this);

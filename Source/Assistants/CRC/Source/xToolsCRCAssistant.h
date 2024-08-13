@@ -24,7 +24,6 @@ namespace Ui {
 class xToolsCRCAssistant;
 }
 
-class xToolsCrcInterface;
 class xToolsCRCAssistant : public QWidget
 {
     Q_OBJECT
@@ -36,8 +35,6 @@ protected:
     bool eventFilter(QObject* watched, QEvent* event);
 
 private:
-    xToolsCrcInterface* m_crcInterface;
-
     Ui::xToolsCRCAssistant* ui;
     QComboBox* m_widthComboBox;
     QComboBox* m_parameterComboBox;
