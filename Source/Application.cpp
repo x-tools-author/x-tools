@@ -28,7 +28,7 @@ Application::Application(int argc, char **argv)
 
 void Application::setupLanguage(const QString &language)
 {
-    Application::setupLanguage(language);
+    xTools::Application::setupLanguage(language);
     setupLanguageWithPrefix(language, m_translatorPrefix);
     setupLanguageWithPrefix(language, m_translatorToolsPrefix);
 }
