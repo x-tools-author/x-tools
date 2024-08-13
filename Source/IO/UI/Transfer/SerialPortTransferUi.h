@@ -18,6 +18,9 @@ class SerialPortTransferUi : public AbstractTransferUi
 public:
     explicit SerialPortTransferUi(QWidget *parent = nullptr);
     ~SerialPortTransferUi() override;
+
+protected:
+    QStyledItemDelegate *createItemDelegate() const override;
 };
 
 } // namespace xTools

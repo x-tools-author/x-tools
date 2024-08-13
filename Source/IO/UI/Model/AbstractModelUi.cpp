@@ -110,6 +110,10 @@ void AbstractModelUi::setupIO(AbstractIO *io)
         m_model = qvariant_cast<QAbstractTableModel *>(tableModelVar);
         if (m_model) {
             ui->tableView->setModel(m_model);
+            auto delegate = createItemDelegate();
+            if (delegate) {
+                ui->tableView->setItemDelegate(delegate);
+            }
         } else {
             qCritical() << "Can not cast to QAbstractTableModel";
         }
@@ -121,6 +125,11 @@ void AbstractModelUi::setupIO(AbstractIO *io)
 QList<int> AbstractModelUi::textItemColumns() const
 {
     return QList<int>();
+}
+
+QStyledItemDelegate *AbstractModelUi::createItemDelegate() const
+{
+    return nullptr;
 }
 
 void AbstractModelUi::onPushButtonClearClicked()

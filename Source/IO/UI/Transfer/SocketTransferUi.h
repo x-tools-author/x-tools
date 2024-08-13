@@ -18,6 +18,9 @@ class SocketTransferUi : public AbstractTransferUi
 public:
     SocketTransferUi(QWidget *parent = nullptr);
     ~SocketTransferUi() override;
+
+protected:
+    QStyledItemDelegate *createItemDelegate() const override;
 };
 
 } // namespace xTools

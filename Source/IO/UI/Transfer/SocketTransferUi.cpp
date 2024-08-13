@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "SocketTransferUi.h"
 
+#include "SocketStyledItemDelegate.h"
+
 namespace xTools {
 
 SocketTransferUi::SocketTransferUi(QWidget *parent)
@@ -15,5 +17,10 @@ SocketTransferUi::SocketTransferUi(QWidget *parent)
 {}
 
 SocketTransferUi::~SocketTransferUi() {}
+
+QStyledItemDelegate *SocketTransferUi::createItemDelegate() const
+{
+    return new SocketStyledItemDelegate();
+}
 
 } // namespace xTools

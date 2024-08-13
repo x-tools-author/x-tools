@@ -13,6 +13,7 @@
 #include <QJsonObject>
 #include <QMenu>
 #include <QModelIndex>
+#include <QStyledItemDelegate>
 #include <QTableView>
 #include <QWidget>
 
@@ -41,6 +42,7 @@ public:
 
 protected:
     virtual QList<int> textItemColumns() const;
+    virtual QStyledItemDelegate *createItemDelegate() const;
 
 protected:
     QAbstractTableModel *m_model{nullptr};
