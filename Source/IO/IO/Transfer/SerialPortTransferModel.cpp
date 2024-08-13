@@ -102,6 +102,12 @@ QVariant SerialPortTransferModel::data(const QModelIndex &index, int role) const
         } else if (column == 7) {
             return item.description;
         }
+    } else if (role == Qt::TextAlignmentRole) {
+        if (column == 7) {
+            return QVariant(Qt::AlignLeft | Qt::AlignVCenter);
+        } else {
+            return Qt::AlignCenter;
+        }
     }
 
     return QVariant();
@@ -182,6 +188,12 @@ QVariant SerialPortTransferModel::headerData(int section,
             return tr("Flow Control");
         } else if (section == 7) {
             return tr("Description");
+        }
+    } else if (role == Qt::TextAlignmentRole) {
+        if (section == 7) {
+            return Qt::AlignLeft;
+        } else {
+            return Qt::AlignCenter;
         }
     }
 
