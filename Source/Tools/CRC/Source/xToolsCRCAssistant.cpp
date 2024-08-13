@@ -14,7 +14,7 @@
 #include <QDesktopServices>
 #include <QMetaEnum>
 
-#include "CRC/CRC.h"
+#include "Common/CRC.h"
 
 xToolsCRCAssistant::xToolsCRCAssistant(QWidget* parent)
     : QWidget(parent)
