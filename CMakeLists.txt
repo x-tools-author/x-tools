@@ -225,7 +225,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Assistant module
-set(X_TOOLS_ASSISTANT_DIR "${CMAKE_SOURCE_DIR}/Source/Assistants")
+set(X_TOOLS_ASSISTANT_DIR "${CMAKE_SOURCE_DIR}/Source/Tools")
 macro(x_tools_add_assistant dir_name on_off)
   string(TOUPPER ${dir_name} DIR_NAME_UPPER)
   option(X_TOOLS_ENABLE_MODULE_${DIR_NAME_UPPER} "Enable ${dir_name} assistant" ${on_off})
@@ -269,7 +269,7 @@ if(X_TOOLS_ENABLE_MODULE_ASSISTANTS)
     x_tools_add_third_party("qmdnsengine-master")
   endif()
 
-  set(X_TOOLS_ASSISTANT_DIR ${CMAKE_CURRENT_LIST_DIR}/Source/Assistants)
+  set(X_TOOLS_ASSISTANT_DIR ${CMAKE_CURRENT_LIST_DIR}/Source/Tools)
   include_directories(${X_TOOLS_ASSISTANT_DIR})
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_ASSISTANTS)
   list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_DIR}/xToolsAssistantFactory.h)
