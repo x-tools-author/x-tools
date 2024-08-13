@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsDataStructure.h"
+#include "Common/xToolsDataStructure.h"
 
 #include <QLineEdit>
 #include <QMap>
@@ -15,7 +15,7 @@
 #include <QRegularExpressionValidator>
 #include <QStandardItemModel>
 
-#include "xToolsCompatibility.h"
+#include "Common/xTools.h"
 
 xToolsDataStructure::xToolsDataStructure(QObject *parent)
     : QObject(parent)
@@ -89,7 +89,7 @@ QByteArray xToolsDataStructure::stringToByteArray(const QString &str, int format
 {
     auto cookString = [](const QString &str, int base) -> QByteArray {
         QByteArray data;
-        QStringList strList = str.split(' ', xToolsSkipEmptyParts);
+        QStringList strList = str.split(' ', xSkipEmptyParts);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, base);

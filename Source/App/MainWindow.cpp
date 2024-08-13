@@ -34,7 +34,7 @@
 #include "./Settings.h"
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-#include "xToolsDataStructure.h"
+#include "Common/xToolsDataStructure.h"
 #endif
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
 #include "StyleSheetManager.h"

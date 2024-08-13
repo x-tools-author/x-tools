@@ -16,7 +16,7 @@
 #include "App/Application.h"
 #include "IO/xIO.h"
 #include "xToolsBroadcastThread.h"
-#include "xToolsDataStructure.h"
+#include "Common/xToolsDataStructure.h"
 
 xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
     : QWidget(parent)

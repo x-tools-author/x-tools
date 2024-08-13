@@ -9,9 +9,9 @@
 #include "xToolsNumberAssistant.h"
 #include "ui_xToolsNumberAssistant.h"
 
-#include "Application.h"
-#include "xToolsCompatibility.h"
-#include "xToolsDataStructure.h"
+#include "App/Application.h"
+#include "Common/xTools.h"
+#include "Common/xToolsDataStructure.h"
 
 xToolsNumberAssistant::xToolsNumberAssistant(QWidget *parent)
     : QWidget(parent)
@@ -115,7 +115,7 @@ void updateRawData(QLineEdit *le, T value)
 {
     T *ptr = &value;
     QByteArray tmp = QByteArray::fromRawData(reinterpret_cast<char *>(ptr), sizeof(T));
-    le->setText(xToolsByteArrayToHex(tmp, ' '));
+    le->setText(xTools::xTools::byteArrray2Hex(tmp, ' '));
 }
 
 void xToolsNumberAssistant::updateRawData()

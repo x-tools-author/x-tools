@@ -31,7 +31,7 @@
 #include <QTextDocument>
 #include <QTranslator>
 
-#include "xToolsDataStructure.h"
+#include "Common/xToolsDataStructure.h"
 #include "App/Settings.h"
 
 namespace xTools {

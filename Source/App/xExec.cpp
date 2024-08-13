@@ -14,7 +14,7 @@
 #include <glog/logging.h>
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-#include "xToolsDataStructure.h"
+#include "Common/xToolsDataStructure.h"
 #endif
 
 void xToolsInitGoogleLogging(char *argv0)

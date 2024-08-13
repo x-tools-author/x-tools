@@ -9,8 +9,8 @@
 #include "xToolsStringAssistant.h"
 #include "ui_xToolsStringAssistant.h"
 
+#include "Common/xToolsDataStructure.h"
 #include "IO/xIO.h"
-#include "xToolsDataStructure.h"
 
 xToolsStringAssistant::xToolsStringAssistant(QWidget* parent)
     : QWidget(parent)
