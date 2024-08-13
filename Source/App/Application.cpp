@@ -32,7 +32,7 @@
 #include <QTranslator>
 
 #include "xToolsDataStructure.h"
-#include "Common/Common/Settings.h"
+#include "App/Settings.h"
 
 namespace xTools {
 

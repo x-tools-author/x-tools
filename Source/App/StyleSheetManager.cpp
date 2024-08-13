@@ -14,8 +14,8 @@
 #include <QMessageBox>
 #include <QPainter>
 
-#include "Common/CommonUI/xTools.h"
-#include "Common/Common/Settings.h"
+#include "./Settings.h"
+#include "./xTools.h"
 
 namespace xTools {
 

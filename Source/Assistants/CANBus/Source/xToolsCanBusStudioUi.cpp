@@ -17,7 +17,7 @@
 #include <QMessageBox>
 #include <QVector>
 
-#include "Common/Common/Settings.h"
+#include "App/Settings.h"
 
 xToolsCanBusStudioUi::xToolsCanBusStudioUi(QWidget* parent)
     : QWidget{parent}

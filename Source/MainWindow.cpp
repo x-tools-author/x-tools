@@ -34,7 +34,7 @@
 #ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
 #include "xToolsAssistantFactory.h"
 #endif
-#include "Common/Common/Settings.h"
+#include "App/Settings.h"
 #include "IOPage/IOPage.h"
 
 #ifdef Q_OS_WIN

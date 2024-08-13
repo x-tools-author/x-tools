@@ -14,7 +14,7 @@
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
 #include "xToolsPrivateMainWindow.h"
 #else
-#include "Common/CommonUI/MainWindow.h"
+#include "App/MainWindow.h"
 #endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE

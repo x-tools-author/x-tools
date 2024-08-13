@@ -11,7 +11,7 @@
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
 #include "xToolsPrivateApplication.h"
 #else
-#include "Common/Common/Application.h"
+#include "App/Application.h"
 #endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE

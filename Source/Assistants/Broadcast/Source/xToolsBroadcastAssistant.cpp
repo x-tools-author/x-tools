@@ -13,7 +13,7 @@
 #include <QNetworkAddressEntry>
 #include <QNetworkInterface>
 
-#include "Common/Common/Application.h"
+#include "App/Application.h"
 #include "IO/xIO.h"
 #include "xToolsBroadcastThread.h"
 #include "xToolsDataStructure.h"

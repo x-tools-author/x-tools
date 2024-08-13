@@ -10,7 +10,7 @@
 
 #include <QFile>
 
-#include "Common/Common/Settings.h"
+#include "App/Settings.h"
 
 Application::Application(int argc, char **argv)
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE

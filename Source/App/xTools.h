@@ -18,9 +18,9 @@
 #include <QStyle>
 #include <QStyleHints>
 
-#include "Common/Common/Application.h"
-#include "Common/CommonUI/MainWindow.h"
-#include "Common/Common/Settings.h"
+#include "./Application.h"
+#include "./MainWindow.h"
+#include "./Settings.h"
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 #include "xToolsDataStructure.h"
