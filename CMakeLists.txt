@@ -78,12 +78,6 @@ file(GLOB_RECURSE X_TOOLS_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/*.ui")
 file(GLOB_RECURSE X_TOOLS_SOURCE_CPP "${CMAKE_SOURCE_DIR}/Source/*.cpp")
 set(X_TOOLS_SOURCE ${X_TOOLS_SOURCE_H} ${X_TOOLS_SOURCE_UI} ${X_TOOLS_SOURCE_CPP})
 
-include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/Common/Common)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/Common/CommonUI)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/Tools/Tools)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/Tools/ToolsUI)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/ToolBox/ToolBox)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/Source/ToolBox/ToolBoxUI)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/Source)
 
 # --------------------------------------------------------------------------------------------------
