@@ -14,7 +14,7 @@
 #include <glog/logging.h>
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-#include "Common/xToolsDataStructure.h"
+#include "Common/xTools.h"
 #endif
 
 void xToolsInitGoogleLogging(char *argv0)
@@ -112,7 +112,7 @@ void xToolsInitHdpi()
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     int policy = xTools::Settings::instance()->hdpiPolicy();
-    if (!xToolsDataStructure::isValidHighDpiPolicy(policy)) {
+    if (!xTools::xTools::isValidHighDpiPolicy(policy)) {
         qWarning() << "The value of hdpi policy is not specified, set to default value:"
                    << QGuiApplication::highDpiScaleFactorRoundingPolicy();
         return;

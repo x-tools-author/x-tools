@@ -9,7 +9,6 @@
 #include "xToolsStringAssistant.h"
 #include "ui_xToolsStringAssistant.h"
 
-#include "Common/xToolsDataStructure.h"
 #include "IO/xIO.h"
 
 xToolsStringAssistant::xToolsStringAssistant(QWidget* parent)
@@ -44,10 +43,7 @@ void xToolsStringAssistant::onTextEditTextChanged()
 {
     if (!ui->textEdit->blockSignals(true)) {
         QString inputString = ui->textEdit->toPlainText();
-        auto inputFormat = static_cast<xToolsDataStructure::TextFormat>(
-            ui->inputFormatComboBox->currentData().toInt());
-        QString cookedString = xToolsDataStructure::formatString(inputString, inputFormat);
-        ui->textEdit->setText(cookedString);
+        ui->textEdit->setText("to do");
         ui->textEdit->moveCursor(QTextCursor::End);
         ui->textEdit->blockSignals(false);
         onCreatePushButtonClicked();
@@ -66,12 +62,11 @@ void xToolsStringAssistant::onInputFormatComboBoxCurrentIndexChanged(int index)
 void xToolsStringAssistant::onCreatePushButtonClicked()
 {
     QString inputString = ui->textEdit->toPlainText();
-    auto inputFormat = static_cast<xToolsDataStructure::TextFormat>(
-        ui->inputFormatComboBox->currentData().toInt());
-    QByteArray inputArray = xToolsDataStructure::stringToByteArray(inputString, inputFormat);
-    auto outputFormat = static_cast<xToolsDataStructure::TextFormat>(
+    auto inputFormat = static_cast<xIO::TextFormat>(ui->inputFormatComboBox->currentData().toInt());
+    QByteArray inputArray = xIO::string2bytes(inputString, inputFormat);
+    auto outputFormat = static_cast<xIO::TextFormat>(
         ui->outputFormatComboBox->currentData().toInt());
-    auto outputString = xToolsDataStructure::byteArrayToString(inputArray, outputFormat);
+    auto outputString = xIO::bytes2string(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);
 }
 

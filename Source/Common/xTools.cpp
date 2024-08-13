@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "xTools.h"
 
+#include <QMetaEnum>
+
 namespace xTools {
 
 xTools::xTools(QObject *parent)
@@ -37,5 +39,43 @@ QByteArray xTools::byteArrray2Hex(const QByteArray &source, char separator)
     }
     return hex;
 }
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+QVariantList xTools::supportedHighDpiPolicies()
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<Qt::HighDpiScaleFactorRoundingPolicy>();
+    QVariantList list;
+    for (int i = 0; i < metaEnum.keyCount(); i++) {
+        list.append(metaEnum.value(i));
+    }
+    return list;
+}
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+QString xTools::highDpiPolicyName(int policy)
+{
+    typedef Qt::HighDpiScaleFactorRoundingPolicy Policy;
+    static QMap<Policy, QString> policyMap;
+    if (policyMap.isEmpty()) {
+        policyMap.insert(Policy::Unset, tr("System"));
+        policyMap.insert(Policy::Round, tr("Round up for .5 and above"));
+        policyMap.insert(Policy::Ceil, tr("Always round up"));
+        policyMap.insert(Policy::Floor, tr("Always round down"));
+        policyMap.insert(Policy::RoundPreferFloor, tr("Round up for .75 and above"));
+        policyMap.insert(Policy::PassThrough, tr("Don't round"));
+    }
+
+    return policyMap.value(static_cast<Policy>(policy), "Unknown");
+}
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+bool xTools::isValidHighDpiPolicy(int policy)
+{
+    auto policies = supportedHighDpiPolicies();
+    return policies.contains(QVariant(policy));
+}
+#endif
 
 } // namespace xTools

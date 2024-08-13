@@ -31,8 +31,8 @@
 #include <QTextDocument>
 #include <QTranslator>
 
-#include "Common/xToolsDataStructure.h"
 #include "App/Settings.h"
+#include "IO/xIO.h"
 
 namespace xTools {
 
@@ -187,13 +187,12 @@ void Application::setValidator(QLineEdit *target, int validatorType, int maxLeng
         auto hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
         auto asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
 
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatBin), binValidator);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatOct), otcValidator);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatDec), decValidator);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatHex), hexValidator);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatAscii), asciiValidator);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatUtf8), urf8Validator);
-        regularExpressionMap.insert(int(xToolsDataStructure::TextFormatSystem), systemValidator);
+        regularExpressionMap.insert(int(xIO::TextFormat::Bin), binValidator);
+        regularExpressionMap.insert(int(xIO::TextFormat::Oct), otcValidator);
+        regularExpressionMap.insert(int(xIO::TextFormat::Dec), decValidator);
+        regularExpressionMap.insert(int(xIO::TextFormat::Hex), hexValidator);
+        regularExpressionMap.insert(int(xIO::TextFormat::Ascii), asciiValidator);
+        regularExpressionMap.insert(int(xIO::TextFormat::Utf8), urf8Validator);
     }
 
     if (!target || !regularExpressionMap.contains(validatorType) || maxLength < 0) {
