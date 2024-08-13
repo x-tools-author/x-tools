@@ -19,6 +19,7 @@
 #include <QTableView>
 
 #include "../../IO/Model/AbstractModelIO.h"
+#include "../../Unit/Menu.h"
 #include "../../xIO.h"
 
 namespace xTools {
@@ -26,7 +27,7 @@ namespace xTools {
 PresetUi::PresetUi(QWidget *parent)
     : AbstractModelUi(parent)
 {
-    m_menu = new QMenu();
+    m_menu = new Menu();
 
     auto *tv = tableView();
     auto hHeader = tv->horizontalHeader();

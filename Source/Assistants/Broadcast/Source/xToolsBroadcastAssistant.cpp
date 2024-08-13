@@ -13,6 +13,7 @@
 #include <QNetworkAddressEntry>
 #include <QNetworkInterface>
 
+#include "IO/xIO.h"
 #include "xToolsApplication.h"
 #include "xToolsBroadcastThread.h"
 #include "xToolsDataStructure.h"
@@ -46,6 +47,9 @@ xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
 
     initUi();
     setWindowTitle(tr("Broadcast Assistant"));
+
+    xIO::setupAddition(ui->comboBoxBroadcastPrefix);
+    xIO::setupAddition(ui->comboBoxBroadcastSuffix);
 }
 
 xToolsBroadcastAssistant::~xToolsBroadcastAssistant()

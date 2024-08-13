@@ -90,7 +90,6 @@ private:
     void initUiOutputControl();
     void initUiInputControl();
     void initUiOutput();
-    void initUiOutputTransfers();
     void initUiInput();
 
     void onCommunicationTypeChanged();
@@ -107,9 +106,6 @@ private:
     void onWarningOccurred(const QString &warning);
     void onBytesRead(const QByteArray &bytes, const QString &from);
     void onBytesWritten(const QByteArray &bytes, const QString &to);
-
-    void onPageButtonClicked(QAbstractButton *button);
-    void onTransferButtonClicked(QAbstractButton *button);
 
     void open();
     void close();

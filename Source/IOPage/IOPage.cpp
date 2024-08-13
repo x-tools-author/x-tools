@@ -143,15 +143,15 @@ QVariantMap IOPage::save()
     map.insert(g_keys.inputFormat, ui->comboBoxInputFormat->currentData());
     map.insert(g_keys.inputSettings, m_inputSettings->save());
 
-    map.insert(g_keys.presetItems, ui->pagePreset->save());
-    map.insert(g_keys.emitterItems, ui->pageEmitter->save());
-    map.insert(g_keys.responserItems, ui->pageResponser->save());
-    map.insert(g_keys.serialPortTransferItems, ui->pageTransferSerialPort->save());
-    map.insert(g_keys.udpClientTransferItems, ui->pageTransferUdpClient->save());
-    map.insert(g_keys.tcpClientTransferItems, ui->pageTransferTcpClient->save());
-    map.insert(g_keys.tcpServerTransferItems, ui->pageTransferTcpServer->save());
-    map.insert(g_keys.webSocketClientTransferItems, ui->pageTransferWebSocketClient->save());
-    map.insert(g_keys.webSocketServerTransferItems, ui->pageTransferWebSocketServer->save());
+    map.insert(g_keys.presetItems, ui->tabPresets->save());
+    map.insert(g_keys.emitterItems, ui->tabEmitter->save());
+    map.insert(g_keys.responserItems, ui->tabResponser->save());
+    map.insert(g_keys.serialPortTransferItems, ui->tabSerialPort->save());
+    map.insert(g_keys.udpClientTransferItems, ui->tabUdpClient->save());
+    map.insert(g_keys.tcpClientTransferItems, ui->tabTcpClient->save());
+    map.insert(g_keys.tcpServerTransferItems, ui->tabTcpServer->save());
+    map.insert(g_keys.webSocketClientTransferItems, ui->tabWebSocketClient->save());
+    map.insert(g_keys.webSocketServerTransferItems, ui->tabWebSocketServer->save());
 
     return map;
 }
@@ -199,15 +199,15 @@ void IOPage::load(const QVariantMap &parameters)
     m_inputSettings->load(inputSettings);
 
     // clang-format off
-    ui->pagePreset->load(parameters.value(g_keys.presetItems).toMap());
-    ui->pageEmitter->load(parameters.value(g_keys.emitterItems).toMap());
-    ui->pageResponser->load(parameters.value(g_keys.responserItems).toMap());
-    ui->pageTransferSerialPort->load(parameters.value(g_keys.serialPortTransferItems).toMap());
-    ui->pageTransferUdpClient->load(parameters.value(g_keys.udpClientTransferItems).toMap());
-    ui->pageTransferTcpClient->load(parameters.value(g_keys.tcpClientTransferItems).toMap());
-    ui->pageTransferTcpServer->load(parameters.value(g_keys.tcpServerTransferItems).toMap());
-    ui->pageTransferWebSocketClient->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
-    ui->pageTransferWebSocketServer->load(parameters.value(g_keys.webSocketServerTransferItems).toMap());
+    ui->tabPresets->load(parameters.value(g_keys.presetItems).toMap());
+    ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
+    ui->tabResponser->load(parameters.value(g_keys.responserItems).toMap());
+    ui->tabSerialPort->load(parameters.value(g_keys.serialPortTransferItems).toMap());
+    ui->tabWebSocketServer->load(parameters.value(g_keys.udpClientTransferItems).toMap());
+    ui->tabTcpClient->load(parameters.value(g_keys.tcpClientTransferItems).toMap());
+    ui->tabTcpServer->load(parameters.value(g_keys.tcpServerTransferItems).toMap());
+    ui->tabWebSocketClient->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
+    ui->tabWebSocketServer->load(parameters.value(g_keys.webSocketServerTransferItems).toMap());
     // clang-format on
 }
 
@@ -294,79 +294,20 @@ void IOPage::initUiInputControl()
 
 void IOPage::initUiOutput()
 {
-    ui->toolButtonOutput->setChecked(true);
+    ui->tabPresets->setupIO(m_preset);
+    ui->tabEmitter->setupIO(m_emitter);
+    ui->tabResponser->setupIO(m_responser);
 
-    ui->toolButtonOutput->setCheckable(true);
-    ui->toolButtonPreset->setCheckable(true);
-    ui->toolButtonEmitter->setCheckable(true);
-    ui->toolButtonResponser->setCheckable(true);
-    ui->toolButtonTransfers->setCheckable(true);
-
-    ui->pagePreset->setupIO(m_preset);
-    ui->pageEmitter->setupIO(m_emitter);
-    ui->pageResponser->setupIO(m_responser);
-
-    m_pageButtonGroup.addButton(ui->toolButtonOutput);
-    m_pageButtonGroup.addButton(ui->toolButtonPreset);
-    m_pageButtonGroup.addButton(ui->toolButtonEmitter);
-    m_pageButtonGroup.addButton(ui->toolButtonResponser);
-    m_pageButtonGroup.addButton(ui->toolButtonTransfers);
-
-    m_pageContextMap.insert(ui->toolButtonOutput, ui->pageOutput);
-    m_pageContextMap.insert(ui->toolButtonPreset, ui->pagePreset);
-    m_pageContextMap.insert(ui->toolButtonEmitter, ui->pageEmitter);
-    m_pageContextMap.insert(ui->toolButtonResponser, ui->pageResponser);
-    m_pageContextMap.insert(ui->toolButtonTransfers, ui->pageTransfers);
-
-    connect(&m_pageButtonGroup,
-            qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked),
-            this,
-            &IOPage::onPageButtonClicked);
+    ui->tabSerialPort->setupIO(m_serialPortTransfer);
+    ui->tabWebSocketServer->setupIO(m_udpClientTransfer);
+    ui->tabUdpClient->setupIO(m_udpClientTransfer);
+    ui->tabTcpClient->setupIO(m_tcpClientTransfer);
+    ui->tabTcpServer->setupIO(m_tcpServerTransfer);
+    ui->tabWebSocketClient->setupIO(m_webSocketClientTransfer);
+    ui->tabWebSocketServer->setupIO(m_webSocketServerTransfer);
 
     ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
-    ui->toolButtonInputPreset->setMenu(ui->pagePreset->menu());
-
-    initUiOutputTransfers();
-}
-
-void IOPage::initUiOutputTransfers()
-{
-    ui->toolButtonSerialPort->setIcon(QIcon(":/Resources/Icons/IconSerialPort.svg"));
-
-    ui->toolButtonSerialPort->setCheckable(true);
-    ui->toolButtonTcpServer->setCheckable(true);
-    ui->toolButtonTcpClient->setCheckable(true);
-    ui->toolButtonUdpClient->setCheckable(true);
-    ui->toolButtonWebSocketClient->setCheckable(true);
-    ui->toolButtonWebSocketServer->setCheckable(true);
-
-    m_transferButtonGroup.addButton(ui->toolButtonSerialPort);
-    m_transferButtonGroup.addButton(ui->toolButtonTcpServer);
-    m_transferButtonGroup.addButton(ui->toolButtonTcpClient);
-    m_transferButtonGroup.addButton(ui->toolButtonUdpClient);
-    m_transferButtonGroup.addButton(ui->toolButtonWebSocketClient);
-    m_transferButtonGroup.addButton(ui->toolButtonWebSocketServer);
-
-    m_transferContextMap.insert(ui->toolButtonSerialPort, ui->pageTransferSerialPort);
-    m_transferContextMap.insert(ui->toolButtonTcpServer, ui->pageTransferTcpServer);
-    m_transferContextMap.insert(ui->toolButtonTcpClient, ui->pageTransferTcpClient);
-    m_transferContextMap.insert(ui->toolButtonUdpClient, ui->pageTransferUdpClient);
-    m_transferContextMap.insert(ui->toolButtonWebSocketClient, ui->pageTransferWebSocketClient);
-    m_transferContextMap.insert(ui->toolButtonWebSocketServer, ui->pageTransferWebSocketServer);
-
-    connect(&m_transferButtonGroup,
-            qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked),
-            this,
-            &IOPage::onTransferButtonClicked);
-
-    ui->toolButtonSerialPort->setChecked(true);
-    ui->stackedWidgetTransfers->setCurrentWidget(ui->pageTransferSerialPort);
-    ui->pageTransferSerialPort->setupIO(m_serialPortTransfer);
-    ui->pageTransferUdpClient->setupIO(m_udpClientTransfer);
-    ui->pageTransferTcpClient->setupIO(m_tcpClientTransfer);
-    ui->pageTransferTcpServer->setupIO(m_tcpServerTransfer);
-    ui->pageTransferWebSocketClient->setupIO(m_webSocketClientTransfer);
-    ui->pageTransferWebSocketServer->setupIO(m_webSocketServerTransfer);
+    ui->toolButtonInputPreset->setMenu(ui->tabPresets->menu());
 }
 
 void IOPage::initUiInput()
@@ -486,22 +427,6 @@ void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
     m_ioSettings->saveData(bytes, true);
     m_txStatistician->inputBytes(bytes);
     outputText(bytes, to, false);
-}
-
-void IOPage::onPageButtonClicked(QAbstractButton *button)
-{
-    if (m_pageContextMap.contains(button)) {
-        QWidget *page = m_pageContextMap.value(button);
-        ui->stackedWidgetPages->setCurrentWidget(page);
-    }
-}
-
-void IOPage::onTransferButtonClicked(QAbstractButton *button)
-{
-    if (m_transferButtonGroup.checkedButton() == button) {
-        QWidget *page = m_transferContextMap.value(button);
-        ui->stackedWidgetTransfers->setCurrentWidget(page);
-    }
 }
 
 void IOPage::open()

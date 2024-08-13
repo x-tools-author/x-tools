@@ -13,8 +13,8 @@
   <property name="windowTitle">
    <string notr="true">Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_4">
-   <item>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
     <widget class="QWidget" name="widgetController" native="true">
      <layout class="QGridLayout" name="gridLayout">
       <property name="leftMargin">
@@ -249,305 +249,192 @@
      </layout>
     </widget>
    </item>
-   <item>
-    <widget class="QWidget" name="widget_2" native="true">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+   <item row="0" column="1">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item row="0" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="labelTitle">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Output</string>
-          </property>
+     <widget class="QWidget" name="tabIO">
+      <attribute name="title">
+       <string>IO</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Output</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelRx">
+           <property name="styleSheet">
+            <string notr="true">color:blue</string>
+           </property>
+           <property name="text">
+            <string notr="true">Rx</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="StatisticianUi" name="widgetRxInfo" native="true"/>
+         </item>
+         <item>
+          <widget class="Line" name="lineRxTx">
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelTx">
+           <property name="styleSheet">
+            <string notr="true">color:green</string>
+           </property>
+           <property name="text">
+            <string notr="true">Tx</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="StatisticianUi" name="widgetTxInfo" native="true"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textBrowserOutput"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Input</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelInfo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string notr="true"/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelCrc">
+           <property name="text">
+            <string notr="true"/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLineEdit" name="lineEditInput"/>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonInputPreset">
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="xTools::PresetUi" name="tabPresets">
+      <attribute name="title">
+       <string>Presets</string>
+      </attribute>
+     </widget>
+     <widget class="xTools::EmitterUi" name="tabEmitter">
+      <attribute name="title">
+       <string>Emitter</string>
+      </attribute>
+     </widget>
+     <widget class="xTools::ResponserUi" name="tabResponser">
+      <attribute name="title">
+       <string>Responser</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tabTransfers">
+      <attribute name="title">
+       <string>Transfers</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QTabWidget" name="tabWidget_2">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <widget class="xTools::SerialPortTransferUi" name="tabSerialPort">
+          <attribute name="title">
+           <string>Serial Port</string>
+          </attribute>
          </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonOutput">
-          <property name="toolTip">
-           <string>Output</string>
-          </property>
-          <property name="text">
-           <string notr="true">🔡</string>
-          </property>
+         <widget class="xTools::UdpClientTransferUi" name="tabUdpClient">
+          <attribute name="title">
+           <string>UDP Client</string>
+          </attribute>
          </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonPreset">
-          <property name="toolTip">
-           <string>Preset</string>
-          </property>
-          <property name="text">
-           <string>🧾</string>
-          </property>
+         <widget class="xTools::TcpClientTransferUi" name="tabTcpClient">
+          <attribute name="title">
+           <string>TCP Client</string>
+          </attribute>
          </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonEmitter">
-          <property name="toolTip">
-           <string>Emiter</string>
-          </property>
-          <property name="text">
-           <string>📡</string>
-          </property>
+         <widget class="xTools::TcpServerTransferUi" name="tabTcpServer">
+          <attribute name="title">
+           <string>TCP Server</string>
+          </attribute>
          </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonResponser">
-          <property name="toolTip">
-           <string>Responser</string>
-          </property>
-          <property name="text">
-           <string>🔃</string>
-          </property>
+         <widget class="xTools::WebSocketClientTransferUi" name="tabWebSocketClient">
+          <attribute name="title">
+           <string>Web Socket Client</string>
+          </attribute>
          </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButtonTransfers">
-          <property name="text">
-           <string>🔗</string>
-          </property>
+         <widget class="xTools::WebSocketServerTransferUi" name="tabWebSocketServer">
+          <attribute name="title">
+           <string>Web Socket Server</string>
+          </attribute>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRx">
-          <property name="styleSheet">
-           <string notr="true">color:blue</string>
-          </property>
-          <property name="text">
-           <string notr="true">Rx</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="StatisticianUi" name="widgetRxInfo" native="true"/>
-        </item>
-        <item>
-         <widget class="Line" name="lineRxTx">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelTx">
-          <property name="styleSheet">
-           <string notr="true">color:green</string>
-          </property>
-          <property name="text">
-           <string notr="true">Tx</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="StatisticianUi" name="widgetTxInfo" native="true"/>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="0">
-       <widget class="QStackedWidget" name="stackedWidgetPages">
-        <widget class="QWidget" name="pageOutput">
-         <layout class="QGridLayout" name="gridLayout_4">
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item row="2" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_6">
-            <item>
-             <widget class="QLineEdit" name="lineEditInput">
-              <property name="text">
-               <string notr="true"/>
-              </property>
-              <property name="placeholderText">
-               <string>Paoload ([Prefix][Payload(crc data)][CRC][Suffix])</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="toolButtonInputPreset">
-              <property name="text">
-               <string notr="true">🗒</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="0" column="0">
-           <widget class="QTextBrowser" name="textBrowserOutput"/>
-          </item>
-          <item row="1" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_7">
-            <item>
-             <widget class="QLabel" name="label_4">
-              <property name="font">
-               <font>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Input</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="labelInfo">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string notr="true"/>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignmentFlag::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="labelCrc">
-              <property name="text">
-               <string notr="true"/>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
         </widget>
-        <widget class="QWidget" name="pageTransfers">
-         <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_8">
-            <property name="spacing">
-             <number>4</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string>Transfers</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="toolButtonSerialPort">
-              <property name="toolTip">
-               <string>Serial Port Transfer</string>
-              </property>
-              <property name="text">
-               <string notr="true"/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="toolButtonUdpClient">
-              <property name="text">
-               <string>UC</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="toolButtonTcpClient">
-              <property name="text">
-               <string>TC</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="toolButtonTcpServer">
-              <property name="text">
-               <string>TS</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="toolButtonWebSocketClient">
-              <property name="text">
-               <string>WC</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="toolButtonWebSocketServer">
-              <property name="text">
-               <string>WS</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="1" column="0">
-           <widget class="QStackedWidget" name="stackedWidgetTransfers">
-            <widget class="xTools::SerialPortTransferUi" name="pageTransferSerialPort"/>
-            <widget class="xTools::UdpClientTransferUi" name="pageTransferUdpClient"/>
-            <widget class="xTools::TcpServerTransferUi" name="pageTransferTcpServer"/>
-            <widget class="xTools::WebSocketServerTransferUi" name="pageTransferWebSocketServer"/>
-            <widget class="xTools::WebSocketClientTransferUi" name="pageTransferWebSocketClient"/>
-            <widget class="xTools::TcpClientTransferUi" name="pageTransferTcpClient"/>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="xTools::PresetUi" name="pagePreset"/>
-        <widget class="xTools::EmitterUi" name="pageEmitter"/>
-        <widget class="xTools::ResponserUi" name="pageResponser"/>
-       </widget>
-      </item>
-     </layout>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
   </layout>
@@ -615,22 +502,5 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushButtonOutputClear</sender>
-   <signal>clicked()</signal>
-   <receiver>textBrowserOutput</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>243</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>245</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

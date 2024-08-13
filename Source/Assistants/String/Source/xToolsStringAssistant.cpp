@@ -9,6 +9,7 @@
 #include "xToolsStringAssistant.h"
 #include "ui_xToolsStringAssistant.h"
 
+#include "IO/xIO.h"
 #include "xToolsDataStructure.h"
 
 xToolsStringAssistant::xToolsStringAssistant(QWidget* parent)
@@ -29,6 +30,9 @@ xToolsStringAssistant::xToolsStringAssistant(QWidget* parent)
             &QComboBox::currentTextChanged,
             this,
             &xToolsStringAssistant::onOutputFormatComboBoxCurrentTextChanged);
+
+    xIO::setupTextFormat(ui->outputFormatComboBox);
+    xIO::setupTextFormat(ui->inputFormatComboBox);
 }
 
 xToolsStringAssistant::~xToolsStringAssistant()
