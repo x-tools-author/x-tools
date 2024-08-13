@@ -22,104 +22,21 @@
 #include "./MainWindow.h"
 #include "./Settings.h"
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-#include "xToolsDataStructure.h"
-#endif
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
 #include "StyleSheetManager.h"
 #endif
 
 void xToolsInitGoogleLogging(char *argv0);
 void xToolsShutdownGoogleLogging();
-void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg);
-
-static void xToolsInitApp(const QString &appName, bool forStore)
-{
-    QString cookedAppName = appName;
-    if (forStore) {
-        cookedAppName += QObject::tr("(Store)");
-    }
-
-    cookedAppName.remove(" ");
-    QCoreApplication::setOrganizationName(QString("xTools"));
-    QCoreApplication::setOrganizationDomain(QString("IT"));
-    QCoreApplication::setApplicationName(cookedAppName);
-    xTools::Application::setFriendlyAppName(appName);
-}
-
-static void xToolsInstallMessageHandler()
-{
-    qInstallMessageHandler(qtLogToGoogleLog);
-}
-
-static void xToolsTryToClearSettings()
-{
-    // Remove settings file and database
-    if (!xTools::Settings::instance()->clearSettings()) {
-        return;
-    }
-
-    xTools::Settings::instance()->setClearSettings(false);
-    if (QFile::remove(xTools::Settings::instance()->fileName())) {
-        qInfo() << "The settings file is removed.";
-    } else {
-        qWarning() << "The operation(remove settings file) failed!";
-    }
-}
-
-static void xToolsInitHdpi()
-{
-#if 0
-    qputenv("QT_SCALE_FACTOR", "1.5");
-#endif
-
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    int policy = xTools::Settings::instance()->hdpiPolicy();
-    if (!xToolsDataStructure::isValidHighDpiPolicy(policy)) {
-        qWarning() << "The value of hdpi policy is not specified, set to default value:"
-                   << QGuiApplication::highDpiScaleFactorRoundingPolicy();
-        return;
-    }
-
-    const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
-    qInfo() << "The current high dpi policy is:" << cookedPolicy;
-#endif
-}
-
-static void xToolsInitAppStyle()
-{
-    const QStringList keys = QStyleFactory::keys();
-    qInfo() << "The supported application styles are:" << qPrintable(keys.join(QChar(',')));
-    const QString style = xTools::Settings::instance()->appStyle();
-    qInfo() << "The current style of application is:" << qPrintable(style);
-    if (style.isEmpty()) {
-        qWarning() << "The application style is not specified, the default style is:"
-                   << qPrintable(QApplication::style()->objectName());
-    } else if (keys.contains(style) || keys.contains(style.toLower())) {
-        qInfo() << "The current style of application is:" << qPrintable(style);
-        QApplication::setStyle(QStyleFactory::create(style));
-    }
-}
-
-static void xToolsDoSomethingBeforeAppCreated(char *argv[],
-                                              const QString &appName,
-                                              bool forStore = false)
-{
-    xToolsInitApp(appName, forStore);
-    xToolsInitGoogleLogging(argv[0]);
-#ifndef QT_DEBUG
-    xToolsInstallMessageHandler();
-#endif
-
-    xToolsTryToClearSettings();
-    xToolsInitHdpi();
-}
-
-static void xToolsDoSomethingAfterAppExited()
-{
-    xToolsShutdownGoogleLogging();
-}
+void xToolsQtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg);
+void xToolsInitApp(const QString &appName, bool forStore);
+void xToolsInstallMessageHandler();
+void xToolsTryToClearSettings();
+void xToolsInitHdpi();
+void xToolsInitAppStyle();
+void xToolsDoSomethingBeforeAppCreated(char *argv[], const QString &appName, bool forStore = false);
+void xToolsDoSomethingAfterAppExited();
+void xToolsTryToRebootApp();
 
 template<typename CentralWidgetT = QWidget,
          typename MainWindowT = xTools::MainWindow,
@@ -182,5 +99,3 @@ int xToolsExec(int argc,
     xToolsDoSomethingAfterAppExited();
     return ret;
 }
-
-void try2rebootApp();

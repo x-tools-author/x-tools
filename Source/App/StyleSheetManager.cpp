@@ -15,7 +15,7 @@
 #include <QPainter>
 
 #include "./Settings.h"
-#include "./xTools.h"
+#include "./xExec.h"
 
 namespace xTools {
 
@@ -231,7 +231,7 @@ void StyleSheetManager::setApplicationStylesheetEnabled(bool enable)
     }
 
     if (!enable) {
-        try2rebootApp();
+        xToolsTryToRebootApp();
     }
 }
 
