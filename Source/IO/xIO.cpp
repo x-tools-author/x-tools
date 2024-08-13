@@ -18,6 +18,11 @@
 #include <QNetworkInterface>
 #include <QProcess>
 
+#if defined(X_TOOLS_ENABLE_MODULE_SERIALPORT)
+#include <QSerialPort>
+#include <QSerialPortInfo>
+#endif
+
 QList<int> xIO::supportedCommunicationTypes()
 {
     static QList<int> deviceTypes;
@@ -963,6 +968,58 @@ xIO::SerialPortItem xIO::loadSerialPortItem(const QJsonObject &obj)
     ctx.flowControl = obj.value(keys.flowControl).toInt();
     return ctx;
 }
+
+#if defined(X_TOOLS_ENABLE_MODULE_SERIALPORT)
+void xIO::setupPortName(QComboBox *comboBox)
+{
+    QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();
+    for (const auto &info : infos) {
+        comboBox->addItem(info.portName());
+    }
+}
+
+void xIO::setupBaudRate(QComboBox *comboBox)
+{
+    QList<int> baudRates = QSerialPortInfo::standardBaudRates();
+    for (const auto &baudRate : baudRates) {
+        comboBox->addItem(QString::number(baudRate), baudRate);
+    }
+    comboBox->setCurrentText("9600");
+}
+
+void xIO::setupDataBits(QComboBox *comboBox)
+{
+    comboBox->addItem("8", QSerialPort::Data8);
+    comboBox->addItem("7", QSerialPort::Data7);
+    comboBox->addItem("6", QSerialPort::Data6);
+    comboBox->addItem("5", QSerialPort::Data5);
+}
+
+void xIO::setupParity(QComboBox *comboBox)
+{
+    comboBox->addItem(tr("None"), QSerialPort::NoParity);
+    comboBox->addItem(tr("Even"), QSerialPort::EvenParity);
+    comboBox->addItem(tr("Odd"), QSerialPort::OddParity);
+    comboBox->addItem(tr("Space"), QSerialPort::SpaceParity);
+    comboBox->addItem(tr("Mark"), QSerialPort::MarkParity);
+}
+
+void xIO::setupStopBits(QComboBox *comboBox)
+{
+    comboBox->addItem("1", QSerialPort::OneStop);
+#ifdef Q_OS_WIN
+    comboBox->addItem("1.5", QSerialPort::OneAndHalfStop);
+#endif
+    comboBox->addItem("2", QSerialPort::TwoStop);
+}
+
+void xIO::setupFlowControl(QComboBox *comboBox)
+{
+    comboBox->addItem(tr("None"), QSerialPort::NoFlowControl);
+    comboBox->addItem(tr("Hardware(RTS/CTS)"), QSerialPort::HardwareControl);
+    comboBox->addItem(tr("Software(XON/XOFF)"), QSerialPort::SoftwareControl);
+}
+#endif
 
 xIO::SocketItem xIO::defaultSocketItem()
 {

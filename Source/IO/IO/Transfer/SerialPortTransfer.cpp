@@ -8,9 +8,14 @@
  **************************************************************************************************/
 #include "SerialPortTransfer.h"
 
+#include "../../xIO.h"
 #include "SerialPortTransferModel.h"
 
 namespace xTools {
+
+struct Keys
+{
+} g_keys;
 
 SerialPortTransfer::SerialPortTransfer(QObject *parent)
     : AbstractTransfer{parent}
@@ -28,14 +33,43 @@ QVariant SerialPortTransfer::tableModel()
 
 QVariantMap SerialPortTransfer::saveItem(const int row) const
 {
-    Q_UNUSED(row)
-    return QVariantMap{};
+    if (row < 0 || row >= m_model->rowCount()) {
+        return {};
+    }
+
+    xIO::SerialPortItem item;
+    item.portName = m_model->data(m_model->index(row, 1), Qt::EditRole).toString();
+    item.baudRate = m_model->data(m_model->index(row, 2), Qt::EditRole).toInt();
+    item.dataBits = m_model->data(m_model->index(row, 3), Qt::EditRole).toInt();
+    item.stopBits = m_model->data(m_model->index(row, 4), Qt::EditRole).toInt();
+    item.parity = m_model->data(m_model->index(row, 5), Qt::EditRole).toInt();
+    item.flowControl = m_model->data(m_model->index(row, 6), Qt::EditRole).toInt();
+
+    QJsonObject obj = xIO::saveSerialPortItem(item);
+    obj.insert("enable", m_model->data(m_model->index(row, 0), Qt::EditRole).toBool());
+    obj.insert("description", m_model->data(m_model->index(row, 7), Qt::EditRole).toString());
+
+    return xIO::saveSerialPortItem(item).toVariantMap();
 }
 
 void SerialPortTransfer::loadItem(const int row, const QVariantMap &item)
 {
-    Q_UNUSED(row)
-    Q_UNUSED(item)
+    if (row < 0 || row >= m_model->rowCount()) {
+        return;
+    }
+
+    bool enable = item.value("enable").toBool();
+    QString description = item.value("description").toString();
+    xIO::SerialPortItem serialPortItem = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(item));
+
+    m_model->setData(m_model->index(row, 0), enable, Qt::EditRole);
+    m_model->setData(m_model->index(row, 1), serialPortItem.portName, Qt::EditRole);
+    m_model->setData(m_model->index(row, 2), serialPortItem.baudRate, Qt::EditRole);
+    m_model->setData(m_model->index(row, 3), serialPortItem.dataBits, Qt::EditRole);
+    m_model->setData(m_model->index(row, 4), serialPortItem.stopBits, Qt::EditRole);
+    m_model->setData(m_model->index(row, 5), serialPortItem.parity, Qt::EditRole);
+    m_model->setData(m_model->index(row, 6), serialPortItem.flowControl, Qt::EditRole);
+    m_model->setData(m_model->index(row, 7), description, Qt::EditRole);
 }
 
 } // namespace xTools

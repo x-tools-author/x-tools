@@ -109,7 +109,52 @@ QVariant SerialPortTransferModel::data(const QModelIndex &index, int role) const
 
 bool SerialPortTransferModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    return false;
+    int row = index.row();
+    if (row < 0 || row >= rowCount()) {
+        return false;
+    }
+
+    if (role != Qt::EditRole) {
+        return false;
+    }
+
+    int column = index.column();
+    Item item = m_transfers[row];
+    if (column == 0) {
+        item.enabled = value.toBool();
+    } else if (column == 7) {
+        item.description = value.toString();
+    } else {
+        auto item = m_transfers.at(row);
+        SerialPort *serialPort = qobject_cast<SerialPort *>(item.transfer);
+        if (!serialPort) {
+            return false;
+        }
+
+        QVariantMap data = serialPort->parameters();
+        auto serialPortItem = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(data));
+        if (column == 1) {
+            serialPortItem.portName = value.toString();
+        } else if (column == 2) {
+            serialPortItem.baudRate = value.toInt();
+        } else if (column == 3) {
+            serialPortItem.dataBits = value.toInt();
+        } else if (column == 4) {
+            serialPortItem.stopBits = static_cast<QSerialPort::StopBits>(value.toInt());
+        } else if (column == 5) {
+            serialPortItem.parity = static_cast<QSerialPort::Parity>(value.toInt());
+        } else if (column == 6) {
+            serialPortItem.flowControl = static_cast<QSerialPort::FlowControl>(value.toInt());
+        } else {
+            return false;
+        }
+
+        auto parametres = xIO::saveSerialPortItem(serialPortItem);
+        serialPort->setParameters(parametres.toVariantMap());
+    }
+
+    emit dataChanged(index, index);
+    return true;
 }
 
 QVariant SerialPortTransferModel::headerData(int section,
@@ -145,7 +190,7 @@ QVariant SerialPortTransferModel::headerData(int section,
 
 Qt::ItemFlags SerialPortTransferModel::flags(const QModelIndex &index) const
 {
-    return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+    return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
 }
 
 Communication *SerialPortTransferModel::createTransfer()

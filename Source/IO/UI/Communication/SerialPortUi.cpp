@@ -20,37 +20,11 @@ SerialPortUi::SerialPortUi(xIO::CommunicationType type, QWidget *parent)
 
     refresh();
 
-    QList<int> baudRates = QSerialPortInfo::standardBaudRates();
-    for (const auto &baudRate : baudRates) {
-        ui->comboBoxBaudRate->addItem(QString::number(baudRate));
-    }
-    ui->comboBoxBaudRate->setCurrentText("9600");
-
-    ui->comboBoxDataBits->addItem("8", QSerialPort::Data8);
-    ui->comboBoxDataBits->addItem("7", QSerialPort::Data7);
-    ui->comboBoxDataBits->addItem("6", QSerialPort::Data6);
-    ui->comboBoxDataBits->addItem("5", QSerialPort::Data5);
-
-    ui->comboBoxParity->addItem(tr("None"), QSerialPort::NoParity);
-    ui->comboBoxParity->addItem(tr("Even"), QSerialPort::EvenParity);
-    ui->comboBoxParity->addItem(tr("Odd"), QSerialPort::OddParity);
-    ui->comboBoxParity->addItem(tr("Space"), QSerialPort::SpaceParity);
-    ui->comboBoxParity->addItem(tr("Mark"), QSerialPort::MarkParity);
-
-    ui->comboBoxStopBits->addItem("1", QSerialPort::OneStop);
-#ifdef Q_OS_WIN
-    ui->comboBoxStopBits->addItem("1.5", QSerialPort::OneAndHalfStop);
-#endif
-    ui->comboBoxStopBits->addItem("2", QSerialPort::TwoStop);
-
-    ui->comboBoxFlowControl->addItem(tr("None"), QSerialPort::NoFlowControl);
-#if 0
-    ui->comboBoxFlowControl->addItem(tr("RTS/CTS(Hardware)"), QSerialPort::HardwareControl);
-    ui->comboBoxFlowControl->addItem(tr("XON/XOFF(Software)"), QSerialPort::SoftwareControl);
-#else
-    ui->comboBoxFlowControl->addItem(tr("Hardware"), QSerialPort::HardwareControl);
-    ui->comboBoxFlowControl->addItem(tr("Software"), QSerialPort::SoftwareControl);
-#endif
+    xIO::setupBaudRate(ui->comboBoxBaudRate);
+    xIO::setupDataBits(ui->comboBoxDataBits);
+    xIO::setupParity(ui->comboBoxParity);
+    xIO::setupStopBits(ui->comboBoxStopBits);
+    xIO::setupFlowControl(ui->comboBoxFlowControl);
 }
 
 QVariantMap SerialPortUi::save() const
@@ -88,9 +62,5 @@ void SerialPortUi::load(const QVariantMap &map)
 
 void SerialPortUi::refresh()
 {
-    ui->comboBoxPortName->clear();
-    QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();
-    for (const auto &info : infos) {
-        ui->comboBoxPortName->addItem(info.portName());
-    }
+    xIO::setupPortName(ui->comboBoxPortName);
 }

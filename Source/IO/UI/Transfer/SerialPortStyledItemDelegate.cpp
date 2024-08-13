@@ -8,6 +8,12 @@
  **************************************************************************************************/
 #include "SerialPortStyledItemDelegate.h"
 
+#include <QCheckBox>
+#include <QComboBox>
+#include <QLineEdit>
+
+#include "../../xIO.h"
+
 namespace xTools {
 
 SerialPortStyledItemDelegate::SerialPortStyledItemDelegate(QObject *parent)
@@ -15,5 +21,70 @@ SerialPortStyledItemDelegate::SerialPortStyledItemDelegate(QObject *parent)
 {}
 
 SerialPortStyledItemDelegate::~SerialPortStyledItemDelegate() {}
+
+QWidget *SerialPortStyledItemDelegate::createEditor(QWidget *parent,
+                                                    const QStyleOptionViewItem &option,
+                                                    const QModelIndex &index) const
+{
+    switch (index.column()) {
+    case 0:
+        return new QCheckBox(parent);
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+        return new QComboBox(parent);
+    case 7:
+        return new QLineEdit(parent);
+    default:
+        return nullptr;
+    }
+}
+
+void SerialPortStyledItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
+{
+    int column = index.column();
+    if (column == 0) {
+        qobject_cast<QCheckBox *>(editor)->setChecked(index.data(Qt::EditRole).toBool());
+    } else if (column == 1) {
+        auto cb = qobject_cast<QComboBox *>(editor);
+        xIO::setupPortName(cb);
+    } else if (column == 2) {
+        auto cb = qobject_cast<QComboBox *>(editor);
+        xIO::setupBaudRate(cb);
+    } else if (column == 3) {
+        auto cb = qobject_cast<QComboBox *>(editor);
+        xIO::setupDataBits(cb);
+    } else if (column == 4) {
+        auto cb = qobject_cast<QComboBox *>(editor);
+        xIO::setupStopBits(cb);
+    } else if (column == 5) {
+        auto cb = qobject_cast<QComboBox *>(editor);
+        xIO::setupParity(cb);
+    } else if (column == 6) {
+        auto cb = qobject_cast<QComboBox *>(editor);
+        xIO::setupFlowControl(cb);
+    } else if (column == 7) {
+        qobject_cast<QLineEdit *>(editor)->setText(index.data(Qt::EditRole).toString());
+    }
+}
+
+void SerialPortStyledItemDelegate::setModelData(QWidget *editor,
+                                                QAbstractItemModel *model,
+                                                const QModelIndex &index) const
+{
+    int column = index.column();
+    if (column == 0) {
+        model->setData(index, qobject_cast<QCheckBox *>(editor)->isChecked());
+    } else if (column == 1) {
+        auto cb = qobject_cast<QComboBox *>(editor);
+        model->setData(index, cb->currentText());
+    } else if (column > 1 && column < 7) {
+        auto cb = qobject_cast<QComboBox *>(editor);
+        model->setData(index, cb->currentData());
+    }
+}
 
 } // namespace xTools

@@ -18,6 +18,12 @@ class SerialPortStyledItemDelegate : public QStyledItemDelegate
 public:
     SerialPortStyledItemDelegate(QObject *parent = Q_NULLPTR);
     ~SerialPortStyledItemDelegate() override;
+
+    // clang-format off
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+    void setEditorData(QWidget *editor, const QModelIndex &index) const override;
+    void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const override;
+    // clang-format on
 };
 
 } // namespace xTools
