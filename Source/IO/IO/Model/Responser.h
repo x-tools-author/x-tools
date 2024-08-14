@@ -21,7 +21,7 @@ class Responser : public AbstractModelIO
 public:
     explicit Responser(QObject *parent = Q_NULLPTR);
 
-    QVariant tableModel() override;
+    QVariant tableModel() const override;
     QVariantMap saveItem(const int row) const override;
     void loadItem(const int row, const QVariantMap &item) override;
     virtual void inputBytes(const QByteArray &bytes) override;

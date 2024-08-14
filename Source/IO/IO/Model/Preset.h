@@ -22,7 +22,7 @@ class Preset : public AbstractModelIO
 public:
     explicit Preset(QObject *parent = nullptr);
 
-    QVariant tableModel() override;
+    QVariant tableModel() const override;
     QVariantMap saveItem(const int row) const override;
     void loadItem(const int row, const QVariantMap &item) override;
     void inputBytes(const QByteArray &bytes) override;

@@ -20,7 +20,7 @@ public:
     UdpClientTransfer(QObject *parent = nullptr);
     virtual ~UdpClientTransfer();
 
-    QVariant tableModel() override;
+    QVariant tableModel() const override;
 
 protected:
     UdpClientTransferModel *m_model;

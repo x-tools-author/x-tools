@@ -349,6 +349,9 @@
            <property name="text">
             <string notr="true"/>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
           </widget>
          </item>
          <item>
@@ -502,5 +505,22 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButtonOutputClear</sender>
+   <signal>clicked()</signal>
+   <receiver>textBrowserOutput</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>243</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>231</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

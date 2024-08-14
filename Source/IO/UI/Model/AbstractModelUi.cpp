@@ -106,7 +106,7 @@ void AbstractModelUi::setupIO(AbstractIO *io)
 {
     m_io = qobject_cast<AbstractModelIO *>(io);
     if (m_io) {
-        auto tableModelVar = m_io->tableModel();
+        auto tableModelVar = m_io->tableModel() const;
         m_model = qvariant_cast<QAbstractTableModel *>(tableModelVar);
         if (m_model) {
             ui->tableView->setModel(m_model);

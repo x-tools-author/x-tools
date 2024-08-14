@@ -12,6 +12,7 @@
 #include <QJsonObject>
 #include <QLineEdit>
 #include <QObject>
+#include <QSpinBox>
 
 #define COMMON_UNKNOWN (-1)
 #define COMMON_UNKNOWN_STR "Unknown"
@@ -115,7 +116,6 @@ public:
     /**********************************************************************************************/
     static QString jsonValue2hexString(const QJsonValue &value);
     static QJsonValue hexString2jsonValue(const QString &hexString);
-    static void setupIp(QComboBox *cb);
     static QString systemDateFormat();
     static QString systemTimeFormat();
     static void try2reboot();
@@ -206,4 +206,6 @@ public:
     static SocketItem defaultSocketItem();
     static QJsonObject saveSocketItem(const SocketItem &context);
     static SocketItem loadSocketItem(const QJsonObject &obj);
+    static void setupSocketAddress(QComboBox *cb);
+    static void setupSocketPort(QSpinBox *spinBox);
 };

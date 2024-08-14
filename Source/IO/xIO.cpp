@@ -787,31 +787,6 @@ QJsonValue xIO::hexString2jsonValue(const QString &hexString)
     }
 }
 
-void xIO::setupIp(QComboBox *cb)
-{
-    if (!cb) {
-        return;
-    }
-
-    QStringList ipv4List, ipv6List;
-    auto addresses = QNetworkInterface::allAddresses();
-    for (auto &address : addresses) {
-        auto str = address.toString();
-
-        if (address.protocol() == QAbstractSocket::IPv4Protocol) {
-            ipv4List.append(str);
-        } else if (address.protocol() == QAbstractSocket::IPv6Protocol) {
-            ipv6List.append(str);
-        }
-    }
-
-    cb->clear();
-    cb->addItems(ipv4List);
-#if 0
-    cb->addItems(ipv6List);
-#endif
-}
-
 QString xIO::systemDateFormat()
 {
     return QLocale::system().dateFormat();
@@ -1063,4 +1038,34 @@ xIO::SocketItem xIO::loadSocketItem(const QJsonObject &obj)
     ctx.username = obj.value(keys.username).toString();
     ctx.password = obj.value(keys.password).toString();
     return ctx;
+}
+
+void xIO::setupSocketAddress(QComboBox *cb)
+{
+    if (!cb) {
+        return;
+    }
+
+    QStringList ipv4List, ipv6List;
+    auto addresses = QNetworkInterface::allAddresses();
+    for (auto &address : addresses) {
+        auto str = address.toString();
+
+        if (address.protocol() == QAbstractSocket::IPv4Protocol) {
+            ipv4List.append(str);
+        } else if (address.protocol() == QAbstractSocket::IPv6Protocol) {
+            ipv6List.append(str);
+        }
+    }
+
+    cb->clear();
+    cb->addItems(ipv4List);
+#if 0
+    cb->addItems(ipv6List);
+#endif
+}
+
+void xIO::setupSocketPort(QSpinBox *spinBox)
+{
+    spinBox->setRange(0, 65535);
 }

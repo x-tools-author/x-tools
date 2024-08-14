@@ -20,7 +20,7 @@ UdpClientTransfer::UdpClientTransfer(QObject *parent)
 
 UdpClientTransfer::~UdpClientTransfer() {}
 
-QVariant UdpClientTransfer::tableModel()
+QVariant UdpClientTransfer::tableModel() const
 {
     return QVariant::fromValue(m_model);
 }

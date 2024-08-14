@@ -106,13 +106,13 @@ QVariant SocketTransferModel::headerData(int section, Qt::Orientation orientatio
         if (section == 0) {
             return tr("Enable");
         } else if (section == 1) {
-            return tr("Client Port");
-        } else if (section == 2) {
             return tr("Client Address");
+        } else if (section == 2) {
+            return tr("Client Port");
         } else if (section == 3) {
-            return tr("Server Port");
-        } else if (section == 4) {
             return tr("Server Address");
+        } else if (section == 4) {
+            return tr("Server Port");
         } else if (section == 5) {
             return tr("Data Channel");
         } else if (section == 6) {
@@ -131,7 +131,7 @@ QVariant SocketTransferModel::headerData(int section, Qt::Orientation orientatio
 
 Qt::ItemFlags SocketTransferModel::flags(const QModelIndex &index) const
 {
-    return QAbstractTableModel::flags(index);
+    return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
 }
 
 Communication *SocketTransferModel::createTransfer()

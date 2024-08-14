@@ -20,7 +20,7 @@ WebSocketServerTransfer::WebSocketServerTransfer(QObject *parent)
 
 WebSocketServerTransfer::~WebSocketServerTransfer() {}
 
-QVariant WebSocketServerTransfer::tableModel()
+QVariant WebSocketServerTransfer::tableModel() const
 {
     return QVariant::fromValue(m_model);
 }

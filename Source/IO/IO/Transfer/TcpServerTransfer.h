@@ -20,7 +20,7 @@ public:
     TcpServerTransfer(QObject *parent = nullptr);
     virtual ~TcpServerTransfer();
 
-    QVariant tableModel() override;
+    QVariant tableModel() const override;
 
 protected:
     TcpServerTransferModel *m_model;
