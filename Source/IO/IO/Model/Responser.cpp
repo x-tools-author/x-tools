@@ -24,7 +24,7 @@ Responser::Responser(QObject *parent)
 
 }
 
-QVariant Responser::tableModel()
+QVariant Responser::tableModel() const
 {
     return QVariant::fromValue(m_tableModel);
 }

@@ -26,7 +26,7 @@ SerialPortTransfer::~SerialPortTransfer() {}
 
 void SerialPortTransfer::inputBytes(const QByteArray &bytes) {}
 
-QVariant SerialPortTransfer::tableModel()
+QVariant SerialPortTransfer::tableModel() const
 {
     return QVariant::fromValue(m_model);
 }

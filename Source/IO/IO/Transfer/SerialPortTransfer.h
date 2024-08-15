@@ -22,7 +22,7 @@ public:
 
     void inputBytes(const QByteArray &bytes) override;
 
-    QVariant tableModel() override;
+    QVariant tableModel() const override;
     virtual QVariantMap saveItem(const int row) const override;
     virtual void loadItem(const int row, const QVariantMap &item) override;
 

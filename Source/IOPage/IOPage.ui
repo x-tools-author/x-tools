@@ -513,12 +513,12 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>156</x>
-     <y>195</y>
+     <x>167</x>
+     <y>243</y>
     </hint>
     <hint type="destinationlabel">
-     <x>244</x>
-     <y>197</y>
+     <x>231</x>
+     <y>245</y>
     </hint>
    </hints>
   </connection>

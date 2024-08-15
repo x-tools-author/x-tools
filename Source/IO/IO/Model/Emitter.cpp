@@ -33,7 +33,7 @@ Emitter::Emitter(QObject *parent)
     connect(this, &Emitter::finished, timer, [=]() { timer->stop(); });
 }
 
-QVariant Emitter::tableModel()
+QVariant Emitter::tableModel() const
 {
     return QVariant::fromValue(m_tableModel);
 }

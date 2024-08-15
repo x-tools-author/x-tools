@@ -20,7 +20,7 @@ TcpServerTransfer::TcpServerTransfer(QObject *parent)
 
 TcpServerTransfer::~TcpServerTransfer() {}
 
-QVariant TcpServerTransfer::tableModel()
+QVariant TcpServerTransfer::tableModel() const
 {
     return QVariant::fromValue(m_model);
 }

@@ -20,7 +20,7 @@ TcpClientTransfer::TcpClientTransfer(QObject *parent)
 
 TcpClientTransfer::~TcpClientTransfer() {}
 
-QVariant TcpClientTransfer::tableModel()
+QVariant TcpClientTransfer::tableModel() const
 {
     return QVariant::fromValue(m_model);
 }

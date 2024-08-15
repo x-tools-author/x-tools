@@ -18,8 +18,8 @@ SocketUi::SocketUi(xIO::CommunicationType type, QWidget *parent)
     ui->setupUi(this);
     ui->spinBoxClientPort->setValue(55443);
     ui->spinBoxServerPort->setValue(34455);
-    xIO::setupIp(ui->comboBoxClientIp);
-    xIO::setupIp(ui->comboBoxServerIp);
+    xIO::setupSocketAddress(ui->comboBoxClientIp);
+    xIO::setupSocketAddress(ui->comboBoxServerIp);
     xIO::setupWebSocketDataChannel(ui->comboBoxChannel);
 
     setupClients(QStringList());

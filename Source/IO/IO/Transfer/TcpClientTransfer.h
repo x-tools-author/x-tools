@@ -20,7 +20,7 @@ public:
     TcpClientTransfer(QObject *parent = nullptr);
     virtual ~TcpClientTransfer();
 
-    QVariant tableModel() override;
+    QVariant tableModel() const override;
 
 protected:
     TcpClientTransferModel *m_model;

@@ -24,7 +24,7 @@ Preset::Preset(QObject *parent)
 
 }
 
-QVariant Preset::tableModel()
+QVariant Preset::tableModel() const
 {
     return QVariant::fromValue(m_tableModel);
 }

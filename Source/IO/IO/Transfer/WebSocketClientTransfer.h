@@ -20,7 +20,7 @@ public:
     WebSocketClientTransfer(QObject *parent = nullptr);
     virtual ~WebSocketClientTransfer();
 
-    QVariant tableModel() override;
+    QVariant tableModel() const override;
 
 protected:
     WebSocketClientTransferModel *m_model;

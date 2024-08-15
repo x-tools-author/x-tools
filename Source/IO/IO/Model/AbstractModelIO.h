@@ -20,7 +20,7 @@ class AbstractModelIO : public AbstractIO
 public:
     explicit AbstractModelIO(QObject *parent = nullptr);
 
-    virtual QVariant tableModel() = 0;
+    virtual QVariant tableModel() const = 0;
     virtual QVariantMap saveItem(const int row) const = 0;
     virtual void loadItem(const int row, const QVariantMap &item) = 0;
 };
