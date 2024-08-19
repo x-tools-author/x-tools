@@ -83,7 +83,9 @@ MainWindow::MainWindow(QWidget* parent)
 
     const int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
     const QString key = m_settingsKey.windowGrid;
-    m_windowGrid = xTools::Settings::instance()->value(key, defaultGrid).value<WindowGrid>();
+    int rawGrid = xTools::Settings::instance()->value(key, defaultGrid).toInt();
+    m_windowGrid = static_cast<WindowGrid>(rawGrid);
+    qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
     updateGrid(m_windowGrid);
 
     load();
