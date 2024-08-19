@@ -31,6 +31,9 @@ public:
 
 private:
     Ui::DataEditor *ui;
+
+private:
+    void onTextFormatChanged();
 };
 
 } // namespace xTools

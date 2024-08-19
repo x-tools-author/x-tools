@@ -24,6 +24,11 @@ DataEditor::DataEditor(QWidget *parent)
     xIO::setupEscapeCharacter(ui->comboBoxEscapeCharacter);
     xIO::setupCrcAlgorithm(ui->comboBoxAlgorithm);
     xIO::setupTextFormat(ui->comboBoxFormat);
+
+    connect(ui->comboBoxFormat,
+            &QComboBox::currentIndexChanged,
+            this,
+            &DataEditor::onTextFormatChanged);
 }
 
 DataEditor::~DataEditor()
@@ -94,6 +99,13 @@ void DataEditor::load(const QJsonObject &parameters)
     ui->spinBoxStartIndex->setValue(crcStartIndex);
     ui->spinBoxEndIndex->setValue(crcEndIndex);
     ui->comboBoxFormat->setCurrentIndex(ui->comboBoxFormat->findData(format));
+}
+
+void DataEditor::onTextFormatChanged()
+{
+    ui->lineEditInput->clear();
+    int format = ui->comboBoxFormat->currentData().toInt();
+    xIO::setupTextFormatValidator(ui->lineEditInput, static_cast<xIO::TextFormat>(format));
 }
 
 } // namespace xTools
