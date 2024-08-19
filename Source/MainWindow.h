@@ -65,6 +65,8 @@ private:
     void showHistory();
     void showQrCode();
 
-    void load();
-    void save();
+    void load(const QString& fileName = QString());
+    void save(const QString& fileName = QString());
+    void onImportActionTriggered();
+    void onExportActionTriggered();
 };

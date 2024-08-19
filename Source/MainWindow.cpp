@@ -118,26 +118,14 @@ void MainWindow::closeEvent(QCloseEvent* event)
 
 void MainWindow::initFileMenu()
 {
-    // Tool box
-    auto* windowMenu = new QMenu(tr("New Window"), this);
-#if 0
-    m_fileMenu->addMenu(windowMenu);
-    QList<int> toolTypeList = xToolsToolBoxUi::supportedCommunicationTools();
-    for (auto& toolType : toolTypeList) {
-        const QString name = xToolsToolBoxUi::communicationToolName(toolType);
-        auto* action = new QAction(name, this);
-        windowMenu->addAction(action);
-        connect(action, &QAction::triggered, this, [=]() {
-            auto* w = new xToolsToolBoxUi();
-            w->setContentsMargins(0, 0, 0, 0);
-            w->setAttribute(Qt::WA_DeleteOnClose, true);
-            w->initialize(toolType);
-            w->adjustSize();
-            w->show();
-        });
-    }
-#endif
-
+    m_fileMenu->addAction(tr("New Window"), this, []() {
+        auto* w = new IOPage(IOPage::Left, xTools::Settings::instance());
+        w->setWindowTitle("xTools");
+        w->show();
+    });
+    m_fileMenu->addSeparator();
+    m_fileMenu->addAction(tr("Import Parameters"), this, &MainWindow::onImportActionTriggered);
+    m_fileMenu->addAction(tr("Export Parameters"), this, &MainWindow::onExportActionTriggered);
     m_fileMenu->addSeparator();
     m_fileMenu->addAction(m_exitAction);
 }
@@ -397,10 +385,14 @@ void MainWindow::showQrCode()
     dialog.exec();
 }
 
-void MainWindow::load()
+void MainWindow::load(const QString& fileName)
 {
-    const QString path = xTools::Settings::instance()->settingsPath();
-    QString filePath = path + "/data.json";
+    QString filePath = fileName;
+    if (fileName.isEmpty()) {
+        const QString path = xTools::Settings::instance()->settingsPath();
+        filePath = path + "/data.json";
+    }
+
     if (!QFile::exists(filePath)) {
         return;
     }
@@ -421,7 +413,7 @@ void MainWindow::load()
     m_ioPage11->load(obj.value("page11").toObject().toVariantMap());
 }
 
-void MainWindow::save()
+void MainWindow::save(const QString& fileName)
 {
     QJsonObject obj;
     obj.insert("page00", QJsonObject::fromVariantMap(m_ioPage00->save()));
@@ -432,14 +424,46 @@ void MainWindow::save()
     QJsonDocument doc;
     doc.setObject(obj);
 
-    const QString path = xTools::Settings::instance()->settingsPath();
-    QString filePath = path + "/data.json";
+    QString filePath = fileName;
+    if (fileName.isEmpty()) {
+        const QString path = xTools::Settings::instance()->settingsPath();
+        filePath = path + "/data.json";
+    }
+
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+        qWarning() << "Failed to open file: " << filePath << file.errorString();
         return;
     }
 
     QTextStream out(&file);
     out << doc.toJson();
     file.close();
+}
+
+void MainWindow::onImportActionTriggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Import Parameters"),
+                                                    "",
+                                                    tr("Json Files (*.json)"));
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    load(fileName);
+}
+
+void MainWindow::onExportActionTriggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Export Parameters"),
+                                                    "",
+                                                    tr("Json Files (*.json)"));
+
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    save(fileName);
 }
