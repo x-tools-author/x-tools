@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DataEditor</class>
- <widget class="QDialog" name="DataEditor">
+ <class>TextItemEditor</class>
+ <widget class="QDialog" name="TextItemEditor">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -182,7 +182,7 @@
   <connection>
    <sender>pushButtonCancel</sender>
    <signal>clicked()</signal>
-   <receiver>DataEditor</receiver>
+   <receiver>TextItemEditor</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -198,7 +198,7 @@
   <connection>
    <sender>pushButtonOK</sender>
    <signal>clicked()</signal>
-   <receiver>DataEditor</receiver>
+   <receiver>TextItemEditor</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">

@@ -25,7 +25,7 @@ class AbstractModelUi;
 
 namespace xTools {
 
-class DataEditor;
+class TextItemEditor;
 class AbstractModelIO;
 class AbstractModelUi : public AbstractIOUi
 {
@@ -50,7 +50,7 @@ protected:
 
 private:
     Ui::AbstractModelUi *ui{nullptr};
-    DataEditor *m_editor{nullptr};
+    TextItemEditor *m_editor{nullptr};
 
 private:
     void onPushButtonClearClicked();

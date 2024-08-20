@@ -6,16 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "DataEditor.h"
-#include "ui_DataEditor.h"
+#include "TextItemEditor.h"
+#include "ui_TextItemEditor.h"
 
 #include "../xIO.h"
 
 namespace xTools {
 
-DataEditor::DataEditor(QWidget *parent)
+TextItemEditor::TextItemEditor(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::DataEditor)
+    , ui(new Ui::TextItemEditor)
 {
     ui->setupUi(this);
 
@@ -28,15 +28,15 @@ DataEditor::DataEditor(QWidget *parent)
     connect(ui->comboBoxFormat,
             &QComboBox::currentIndexChanged,
             this,
-            &DataEditor::onTextFormatChanged);
+            &TextItemEditor::onTextFormatChanged);
 }
 
-DataEditor::~DataEditor()
+TextItemEditor::~TextItemEditor()
 {
     delete ui;
 }
 
-QJsonObject DataEditor::save() const
+QJsonObject TextItemEditor::save() const
 {
     QString text = ui->lineEditInput->text();
     int prefix = ui->comboBoxPrefix->currentData().toInt();
@@ -65,7 +65,7 @@ QJsonObject DataEditor::save() const
     return parameters;
 }
 
-void DataEditor::load(const QJsonObject &parameters)
+void TextItemEditor::load(const QJsonObject &parameters)
 {
     if (parameters.isEmpty()) {
         return;
@@ -101,7 +101,7 @@ void DataEditor::load(const QJsonObject &parameters)
     ui->comboBoxFormat->setCurrentIndex(ui->comboBoxFormat->findData(format));
 }
 
-void DataEditor::onTextFormatChanged()
+void TextItemEditor::onTextFormatChanged()
 {
     ui->lineEditInput->clear();
     int format = ui->comboBoxFormat->currentData().toInt();

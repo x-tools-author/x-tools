@@ -114,6 +114,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
         return;
     }
 #endif
+    qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
     xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
     QMainWindow::closeEvent(event);
 }
@@ -333,6 +334,7 @@ void MainWindow::updateGrid(WindowGrid grid)
         m_ioPage11->hide();
     }
 
+    m_windowGrid = grid;
     xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, int(grid));
 }
 

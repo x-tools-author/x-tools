@@ -18,7 +18,7 @@
 #include <QStandardItemModel>
 
 #include "../../IO/Model/AbstractModelIO.h"
-#include "../../Unit/DataEditor.h"
+#include "../../Unit/TextItemEditor.h"
 
 namespace xTools {
 
@@ -57,7 +57,7 @@ AbstractModelUi::AbstractModelUi(QWidget *parent)
             this,
             &AbstractModelUi::onPushButtonAddClicked);
 
-    m_editor = new DataEditor(this);
+    m_editor = new TextItemEditor(this);
     m_editor->setMinimumWidth(700);
     m_editor->hide();
 }

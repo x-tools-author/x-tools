@@ -13,24 +13,24 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class DataEditor;
+class TextItemEditor;
 }
 QT_END_NAMESPACE
 
 namespace xTools {
 
-class DataEditor : public QDialog
+class TextItemEditor : public QDialog
 {
     Q_OBJECT
 public:
-    explicit DataEditor(QWidget *parent = nullptr);
-    ~DataEditor();
+    explicit TextItemEditor(QWidget *parent = nullptr);
+    ~TextItemEditor();
 
     QJsonObject save() const;
     void load(const QJsonObject &parameters);
 
 private:
-    Ui::DataEditor *ui;
+    Ui::TextItemEditor *ui;
 
 private:
     void onTextFormatChanged();
