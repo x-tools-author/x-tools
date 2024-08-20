@@ -12,18 +12,18 @@
 #include <QWidget>
 
 namespace Ui {
-class xToolsAsciiAssistant;
+class AsciiAssistant;
 }
 
-class xToolsAsciiAssistant : public QWidget
+class AsciiAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE xToolsAsciiAssistant(QWidget* parent = Q_NULLPTR);
-    ~xToolsAsciiAssistant();
+    Q_INVOKABLE AsciiAssistant(QWidget* parent = Q_NULLPTR);
+    ~AsciiAssistant();
 
 private:
-    Ui::xToolsAsciiAssistant* ui;
+    Ui::AsciiAssistant* ui;
     QMap<int, QString> m_descirption;
 
 private:

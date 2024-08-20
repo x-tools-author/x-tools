@@ -11,7 +11,7 @@
 #include <QCoreApplication>
 #include <QWidget>
 
-#include "xToolsAsciiAssistant.h"
+#include "AsciiAssistant.h"
 #include "xToolsBase64Assisatnt.h"
 #include "xToolsBroadcastAssistant.h"
 #include "xToolsCRCAssistant.h"
@@ -40,7 +40,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
 #ifdef X_TOOLS_ENABLE_MODULE_PING
     addAssistant<xToolsPingAssistant>(AssistantTypePing, tr("Ping Assistant"));
 #endif
-    addAssistant<xToolsAsciiAssistant>(AssistantTypeAscii, tr("ASCII Assistant"));
+    addAssistant<AsciiAssistant>(AssistantTypeAscii, tr("ASCII Assistant"));
     addAssistant<xToolsBase64Assisatnt>(AssistantTypeBase64, tr("Base64 Assistant"));
     addAssistant<xToolsNumberAssistant>(AssistantTypeNumber, tr("Number Assistant"));
     addAssistant<xToolsStringAssistant>(AssistantTypeString, tr("String Assistant"));

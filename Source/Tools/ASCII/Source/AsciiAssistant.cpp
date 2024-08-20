@@ -6,19 +6,19 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsAsciiAssistant.h"
-#include "ui_xToolsAsciiAssistant.h"
+#include "AsciiAssistant.h"
+#include "ui_AsciiAssistant.h"
 
 #include <QDebug>
 
-xToolsAsciiAssistant::xToolsAsciiAssistant(QWidget* parent)
+AsciiAssistant::AsciiAssistant(QWidget* parent)
     : QWidget(parent)
-    , ui(new Ui::xToolsAsciiAssistant)
+    , ui(new Ui::AsciiAssistant)
 {
     ui->setupUi(this);
     initDescirption();
 
-    connect(ui->lineEdit, &QLineEdit::textChanged, this, &xToolsAsciiAssistant::setupFilter);
+    connect(ui->lineEdit, &QLineEdit::textChanged, this, &AsciiAssistant::setupFilter);
     connect(ui->checkBox, &QCheckBox::clicked, this, [=]() {
         this->setupFilter(ui->lineEdit->text());
     });
@@ -52,12 +52,12 @@ xToolsAsciiAssistant::xToolsAsciiAssistant(QWidget* parent)
     }
 }
 
-xToolsAsciiAssistant::~xToolsAsciiAssistant()
+AsciiAssistant::~AsciiAssistant()
 {
     delete ui;
 }
 
-void xToolsAsciiAssistant::initDescirption()
+void AsciiAssistant::initDescirption()
 {
     m_descirption.clear();
     m_descirption.insert(0, tr("NUL (NULL))"));
@@ -96,7 +96,7 @@ void xToolsAsciiAssistant::initDescirption()
     m_descirption.insert(127, tr("DEL (Delete)"));
 }
 
-void xToolsAsciiAssistant::setupFilter(const QString& text)
+void AsciiAssistant::setupFilter(const QString& text)
 {
     bool preserveCase = ui->checkBox->isChecked();
     for (int row = 0; row < ui->tableWidget->rowCount(); row++) {
