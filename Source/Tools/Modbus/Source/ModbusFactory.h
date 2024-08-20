@@ -13,7 +13,7 @@
 #include <QModbusReply>
 #include <QObject>
 
-class xToolsModbusStudio : public QObject
+class ModbusFactory : public QObject
 {
     Q_OBJECT
 public:
@@ -26,11 +26,11 @@ public:
     Q_ENUM(ModbusDeviceType)
 
 private:
-    xToolsModbusStudio(QObject *parent = Q_NULLPTR);
+    ModbusFactory(QObject *parent = Q_NULLPTR);
 
 public:
-    ~xToolsModbusStudio();
-    static xToolsModbusStudio *Instance();
+    ~ModbusFactory();
+    static ModbusFactory *Instance();
 
 public:
     const QString TypeName(int type);
