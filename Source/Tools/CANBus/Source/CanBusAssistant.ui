@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>xToolsCanBusStudioUi</class>
- <widget class="QWidget" name="xToolsCanBusStudioUi">
+ <class>CanBusAssistant</class>
+ <widget class="QWidget" name="CanBusAssistant">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,10 +29,10 @@
       </size>
      </property>
      <property name="features">
-      <set>QDockWidget::NoDockWidgetFeatures</set>
+      <set>QDockWidget::DockWidgetFeature::NoDockWidgetFeatures</set>
      </property>
      <property name="allowedAreas">
-      <set>Qt::NoDockWidgetArea</set>
+      <set>Qt::DockWidgetArea::NoDockWidgetArea</set>
      </property>
      <property name="windowTitle">
       <string>CAN Frame</string>
@@ -118,7 +118,7 @@
        <item row="2" column="0" colspan="2">
         <widget class="Line" name="line">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
         </widget>
        </item>
@@ -141,10 +141,10 @@
       </size>
      </property>
      <property name="features">
-      <set>QDockWidget::NoDockWidgetFeatures</set>
+      <set>QDockWidget::DockWidgetFeature::NoDockWidgetFeatures</set>
      </property>
      <property name="allowedAreas">
-      <set>Qt::NoDockWidgetArea</set>
+      <set>Qt::DockWidgetArea::NoDockWidgetArea</set>
      </property>
      <property name="windowTitle">
       <string>Device Control</string>
@@ -242,10 +242,10 @@
       </sizepolicy>
      </property>
      <property name="features">
-      <set>QDockWidget::NoDockWidgetFeatures</set>
+      <set>QDockWidget::DockWidgetFeature::NoDockWidgetFeatures</set>
      </property>
      <property name="allowedAreas">
-      <set>Qt::NoDockWidgetArea</set>
+      <set>Qt::DockWidgetArea::NoDockWidgetArea</set>
      </property>
      <property name="windowTitle">
       <string>Data View</string>
@@ -286,10 +286,10 @@
       </size>
      </property>
      <property name="features">
-      <set>QDockWidget::NoDockWidgetFeatures</set>
+      <set>QDockWidget::DockWidgetFeature::NoDockWidgetFeatures</set>
      </property>
      <property name="allowedAreas">
-      <set>Qt::NoDockWidgetArea</set>
+      <set>Qt::DockWidgetArea::NoDockWidgetArea</set>
      </property>
      <property name="windowTitle">
       <string>Specify Configuration</string>
@@ -442,10 +442,10 @@
       </size>
      </property>
      <property name="features">
-      <set>QDockWidget::NoDockWidgetFeatures</set>
+      <set>QDockWidget::DockWidgetFeature::NoDockWidgetFeatures</set>
      </property>
      <property name="allowedAreas">
-      <set>Qt::NoDockWidgetArea</set>
+      <set>Qt::DockWidgetArea::NoDockWidgetArea</set>
      </property>
      <property name="windowTitle">
       <string>CAN Frame Payload</string>

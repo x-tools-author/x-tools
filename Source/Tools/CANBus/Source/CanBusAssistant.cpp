@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsCanBusStudioUi.h"
-#include "ui_xToolsCanBusStudioUi.h"
+#include "CanBusAssistant.h"
+#include "ui_CanBusAssistant.h"
 
 #include <QCanBus>
 #include <QCheckBox>
@@ -19,9 +19,9 @@
 
 #include "App/Settings.h"
 
-xToolsCanBusStudioUi::xToolsCanBusStudioUi(QWidget* parent)
+CanBusAssistant::CanBusAssistant(QWidget* parent)
     : QWidget{parent}
-    , ui(new Ui::xToolsCanBusStudioUi)
+    , ui(new Ui::CanBusAssistant)
     , m_device(Q_NULLPTR)
 {
     ui->setupUi(this);
@@ -36,12 +36,12 @@ xToolsCanBusStudioUi::xToolsCanBusStudioUi(QWidget* parent)
     updateUiState(false);
 }
 
-xToolsCanBusStudioUi::~xToolsCanBusStudioUi()
+CanBusAssistant::~CanBusAssistant()
 {
     delete ui;
 }
 
-void xToolsCanBusStudioUi::initUi()
+void CanBusAssistant::initUi()
 {
     initUiSelectPlugin();
     initUiSpecifyConfiguration();
@@ -49,7 +49,7 @@ void xToolsCanBusStudioUi::initUi()
     initUiSendCanFrame();
 }
 
-void xToolsCanBusStudioUi::initUiSelectPlugin()
+void CanBusAssistant::initUiSelectPlugin()
 {
     ui->pluginComboBox->clear();
     ui->pluginComboBox->addItems(QCanBus::instance()->plugins());
@@ -64,7 +64,7 @@ void xToolsCanBusStudioUi::initUiSelectPlugin()
     connect(ui->connectPushButton, SIGNAL(clicked(bool)), this, SLOT(onConnectClicked()));
 }
 
-void xToolsCanBusStudioUi::initUiSpecifyConfiguration()
+void CanBusAssistant::initUiSpecifyConfiguration()
 {
     setOptions(ui->loopbackComboBox, true);
     setOptions(ui->receivOwnComboBox, true);
@@ -77,30 +77,30 @@ void xToolsCanBusStudioUi::initUiSpecifyConfiguration()
     connect(ui->customConfigurationCheckBox,
             &QCheckBox::clicked,
             this,
-            &xToolsCanBusStudioUi::onCustomConfigurationChanged);
+            &CanBusAssistant::onCustomConfigurationChanged);
     connect(ui->loopbackComboBox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &xToolsCanBusStudioUi::onLoopbackIndexChanged);
+            &CanBusAssistant::onLoopbackIndexChanged);
     connect(ui->receivOwnComboBox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &xToolsCanBusStudioUi::onReceiveOwnIndexChanged);
+            &CanBusAssistant::onReceiveOwnIndexChanged);
     connect(ui->canFdComboBox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &xToolsCanBusStudioUi::onCanFdIndexChanged);
+            &CanBusAssistant::onCanFdIndexChanged);
     connect(ui->bitrateComboBox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &xToolsCanBusStudioUi::onBitrateChanged);
+            &CanBusAssistant::onBitrateChanged);
     connect(ui->dataBitrateComboBox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &xToolsCanBusStudioUi::onDataBitrateChanged);
+            &CanBusAssistant::onDataBitrateChanged);
 }
 
-void xToolsCanBusStudioUi::initUiCanFrame()
+void CanBusAssistant::initUiCanFrame()
 {
     ui->frameTypeComboBox->clear();
     ui->frameTypeComboBox->addItem(tr("DataFrame"), QCanBusFrame::DataFrame);
@@ -110,34 +110,31 @@ void xToolsCanBusStudioUi::initUiCanFrame()
     connect(ui->frameTypeComboBox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &xToolsCanBusStudioUi::onFrameTypeChanged);
+            &CanBusAssistant::onFrameTypeChanged);
     connect(ui->extendedFormatCheckBox,
             &QCheckBox::clicked,
             this,
-            &xToolsCanBusStudioUi::onExtendedFormatChanged);
+            &CanBusAssistant::onExtendedFormatChanged);
     connect(ui->flexibleDataRateCheckBox,
             &QCheckBox::clicked,
             this,
-            &xToolsCanBusStudioUi::onFlexibleDataRateChanged);
+            &CanBusAssistant::onFlexibleDataRateChanged);
     connect(ui->bitrateSwitchCheckBox,
             &QCheckBox::clicked,
             this,
-            &xToolsCanBusStudioUi::onBitrateSwitchChanged);
+            &CanBusAssistant::onBitrateSwitchChanged);
 }
 
-void xToolsCanBusStudioUi::initUiSendCanFrame()
+void CanBusAssistant::initUiSendCanFrame()
 {
     const QString inputTips = tr("Hex");
     ui->frameIdComboBox->lineEdit()->setPlaceholderText(inputTips);
     ui->payloadComboBox->lineEdit()->setPlaceholderText(inputTips);
 
-    connect(ui->sendPushButton,
-            &QPushButton::clicked,
-            this,
-            &xToolsCanBusStudioUi::onSendButtonClicked);
+    connect(ui->sendPushButton, &QPushButton::clicked, this, &CanBusAssistant::onSendButtonClicked);
 }
 
-void xToolsCanBusStudioUi::initSetting()
+void CanBusAssistant::initSetting()
 {
     initSettingSelectPlugin();
     initSettingSpecifyConfiguration();
@@ -145,12 +142,12 @@ void xToolsCanBusStudioUi::initSetting()
     initSettingSendCanFrame();
 }
 
-void xToolsCanBusStudioUi::initSettingSelectPlugin()
+void CanBusAssistant::initSettingSelectPlugin()
 {
     setCurrentIndex(ui->pluginComboBox, m_settingKeyCtx.pluginIndex);
 }
 
-void xToolsCanBusStudioUi::initSettingSpecifyConfiguration()
+void CanBusAssistant::initSettingSpecifyConfiguration()
 {
     QString name = m_settings->value(m_settingKeyCtx.interfaceName).toString();
     ui->interfaceNameComboBox->lineEdit()->setText(name);
@@ -166,7 +163,7 @@ void xToolsCanBusStudioUi::initSettingSpecifyConfiguration()
     setCustomConfigurationEnable(enable);
 }
 
-void xToolsCanBusStudioUi::initSettingCanFrame()
+void CanBusAssistant::initSettingCanFrame()
 {
     setCurrentIndex(ui->frameTypeComboBox, m_settingKeyCtx.frameTypeIndex);
     setChecked(ui->extendedFormatCheckBox, m_settingKeyCtx.extendedFormat);
@@ -176,20 +173,20 @@ void xToolsCanBusStudioUi::initSettingCanFrame()
     onFrameTypeChanged();
 }
 
-void xToolsCanBusStudioUi::initSettingSendCanFrame() {}
+void CanBusAssistant::initSettingSendCanFrame() {}
 
-void xToolsCanBusStudioUi::onPluginChanged(QString plugin)
+void CanBusAssistant::onPluginChanged(QString plugin)
 {
     ui->interfaceNameComboBox->clear();
     m_interfaces = QCanBus::instance()->availableDevices(plugin);
-    for (const QCanBusDeviceInfo& info : qAsConst(m_interfaces)) {
+    for (auto& info : m_interfaces) {
         ui->interfaceNameComboBox->addItem(info.name());
     }
 
     m_settings->setValue(m_settingKeyCtx.pluginIndex, ui->pluginComboBox->findText(plugin));
 }
 
-void xToolsCanBusStudioUi::onDisconnectClicked()
+void CanBusAssistant::onDisconnectClicked()
 {
     if (m_device) {
         m_device->disconnectDevice();
@@ -200,7 +197,7 @@ void xToolsCanBusStudioUi::onDisconnectClicked()
     updateUiState(false);
 }
 
-void xToolsCanBusStudioUi::onConnectClicked()
+void CanBusAssistant::onConnectClicked()
 {
     const QString pluginName = ui->pluginComboBox->currentText();
     const QString interfaceName = ui->interfaceNameComboBox->currentText();
@@ -225,9 +222,9 @@ void xToolsCanBusStudioUi::onConnectClicked()
         return;
     }
 
-    connect(m_device, &QCanBusDevice::errorOccurred, this, &xToolsCanBusStudioUi::onErrorOccure);
-    connect(m_device, &QCanBusDevice::framesReceived, this, &xToolsCanBusStudioUi::onFrameReceived);
-    connect(m_device, &QCanBusDevice::framesWritten, this, &xToolsCanBusStudioUi::onFrameWritten);
+    connect(m_device, &QCanBusDevice::errorOccurred, this, &CanBusAssistant::onErrorOccure);
+    connect(m_device, &QCanBusDevice::framesReceived, this, &CanBusAssistant::onFrameReceived);
+    connect(m_device, &QCanBusDevice::framesWritten, this, &CanBusAssistant::onFrameWritten);
 
     auto items = configurationItems();
     for (auto& item : items) {
@@ -247,39 +244,39 @@ void xToolsCanBusStudioUi::onConnectClicked()
     updateUiState(true);
 }
 
-void xToolsCanBusStudioUi::onLoopbackIndexChanged(int index)
+void CanBusAssistant::onLoopbackIndexChanged(int index)
 {
     m_settings->setValue(m_settingKeyCtx.loopback, index);
 }
 
-void xToolsCanBusStudioUi::onCustomConfigurationChanged()
+void CanBusAssistant::onCustomConfigurationChanged()
 {
     bool checked = ui->customConfigurationCheckBox->isChecked();
     setCustomConfigurationEnable(checked);
     m_settings->setValue(m_settingKeyCtx.customConfiguration, checked);
 }
 
-void xToolsCanBusStudioUi::onReceiveOwnIndexChanged(int index)
+void CanBusAssistant::onReceiveOwnIndexChanged(int index)
 {
     m_settings->setValue(m_settingKeyCtx.receiveOwn, index);
 }
 
-void xToolsCanBusStudioUi::onCanFdIndexChanged(int index)
+void CanBusAssistant::onCanFdIndexChanged(int index)
 {
     m_settings->setValue(m_settingKeyCtx.canFd, index);
 }
 
-void xToolsCanBusStudioUi::onBitrateChanged(int index)
+void CanBusAssistant::onBitrateChanged(int index)
 {
     m_settings->setValue(m_settingKeyCtx.bitrate, index);
 }
 
-void xToolsCanBusStudioUi::onDataBitrateChanged(int index)
+void CanBusAssistant::onDataBitrateChanged(int index)
 {
     m_settings->setValue(m_settingKeyCtx.dataBitRate, index);
 }
 
-void xToolsCanBusStudioUi::onFrameTypeChanged()
+void CanBusAssistant::onFrameTypeChanged()
 {
     int index = ui->frameTypeComboBox->currentIndex();
     m_settings->setValue(m_settingKeyCtx.frameTypeIndex, index);
@@ -295,13 +292,13 @@ void xToolsCanBusStudioUi::onFrameTypeChanged()
     }
 }
 
-void xToolsCanBusStudioUi::onExtendedFormatChanged()
+void CanBusAssistant::onExtendedFormatChanged()
 {
     bool checked = ui->extendedFormatCheckBox->isChecked();
     m_settings->setValue(m_settingKeyCtx.extendedFormat, checked);
 }
 
-void xToolsCanBusStudioUi::onFlexibleDataRateChanged()
+void CanBusAssistant::onFlexibleDataRateChanged()
 {
     bool checked = ui->flexibleDataRateCheckBox->isChecked();
     m_settings->setValue(m_settingKeyCtx.flexibleDataRate, checked);
@@ -309,13 +306,13 @@ void xToolsCanBusStudioUi::onFlexibleDataRateChanged()
     ui->bitrateSwitchCheckBox->setEnabled(checked);
 }
 
-void xToolsCanBusStudioUi::onBitrateSwitchChanged()
+void CanBusAssistant::onBitrateSwitchChanged()
 {
     bool checked = ui->bitrateSwitchCheckBox->isChecked();
     m_settings->setValue(m_settingKeyCtx.bitrateSwitch, checked);
 }
 
-void xToolsCanBusStudioUi::onSendButtonClicked()
+void CanBusAssistant::onSendButtonClicked()
 {
     if (!m_device) {
         QString title = tr("Device is Not Ready");
@@ -355,7 +352,7 @@ void xToolsCanBusStudioUi::onSendButtonClicked()
     outputMessage(flag + view);
 }
 
-void xToolsCanBusStudioUi::onErrorOccure(QCanBusDevice::CanBusError error)
+void CanBusAssistant::onErrorOccure(QCanBusDevice::CanBusError error)
 {
     if (m_device) {
         Q_UNUSED(error);
@@ -364,7 +361,7 @@ void xToolsCanBusStudioUi::onErrorOccure(QCanBusDevice::CanBusError error)
     }
 }
 
-void xToolsCanBusStudioUi::onFrameReceived()
+void CanBusAssistant::onFrameReceived()
 {
     if (!m_device) {
         return;
@@ -385,12 +382,12 @@ void xToolsCanBusStudioUi::onFrameReceived()
     }
 }
 
-void xToolsCanBusStudioUi::onFrameWritten(qint64 framesCount)
+void CanBusAssistant::onFrameWritten(qint64 framesCount)
 {
     qInfo() << framesCount;
 }
 
-void xToolsCanBusStudioUi::setOptions(QComboBox* cb, bool usingUnspecified)
+void CanBusAssistant::setOptions(QComboBox* cb, bool usingUnspecified)
 {
     if (cb) {
         cb->clear();
@@ -402,7 +399,7 @@ void xToolsCanBusStudioUi::setOptions(QComboBox* cb, bool usingUnspecified)
     }
 }
 
-void xToolsCanBusStudioUi::setCurrentIndex(QComboBox* cb, const QString& key)
+void CanBusAssistant::setCurrentIndex(QComboBox* cb, const QString& key)
 {
     int index = m_settings->value(key).toInt();
     if (index >= 0 && index <= cb->count() - 1) {
@@ -410,7 +407,7 @@ void xToolsCanBusStudioUi::setCurrentIndex(QComboBox* cb, const QString& key)
     }
 }
 
-void xToolsCanBusStudioUi::setChecked(QCheckBox* cb, const QString& key)
+void CanBusAssistant::setChecked(QCheckBox* cb, const QString& key)
 {
     if (cb) {
         bool checked = m_settings->value(key).toBool();
@@ -418,7 +415,7 @@ void xToolsCanBusStudioUi::setChecked(QCheckBox* cb, const QString& key)
     }
 }
 
-void xToolsCanBusStudioUi::setCustomConfigurationEnable(bool enable)
+void CanBusAssistant::setCustomConfigurationEnable(bool enable)
 {
     ui->errorFilterComboBox->setEnabled(enable);
     ui->loopbackComboBox->setEnabled(enable);
@@ -428,14 +425,14 @@ void xToolsCanBusStudioUi::setCustomConfigurationEnable(bool enable)
     ui->dataBitrateComboBox->setEnabled(enable);
 }
 
-void xToolsCanBusStudioUi::outputMessage(const QString& msg)
+void CanBusAssistant::outputMessage(const QString& msg)
 {
     QString datetimeString = QDateTime::currentDateTime().toString("hh:mm:ss.zzz");
     QString cookedMsg = QString("<font color=silver>%1 </font>").arg(datetimeString);
     ui->textBrowser->append(cookedMsg + msg);
 }
 
-void xToolsCanBusStudioUi::updateUiState(bool connected)
+void CanBusAssistant::updateUiState(bool connected)
 {
     ui->connectPushButton->setEnabled(!connected);
     ui->disconnectPushButton->setEnabled(connected);
@@ -450,9 +447,9 @@ void xToolsCanBusStudioUi::updateUiState(bool connected)
     }
 }
 
-QVector<xToolsCanBusStudioUi::ConfigurationItem> xToolsCanBusStudioUi::configurationItems()
+QVector<CanBusAssistant::ConfigurationItem> CanBusAssistant::configurationItems()
 {
-    QVector<xToolsCanBusStudioUi::ConfigurationItem> items;
+    QVector<CanBusAssistant::ConfigurationItem> items;
     ConfigurationItem item;
 
     QString errorFilter = ui->errorFilterComboBox->currentText();
@@ -489,7 +486,7 @@ QVector<xToolsCanBusStudioUi::ConfigurationItem> xToolsCanBusStudioUi::configura
     return items;
 }
 
-void xToolsCanBusStudioUi::setBitRates(QComboBox* cb, bool isFlexibleDataRateEnable)
+void CanBusAssistant::setBitRates(QComboBox* cb, bool isFlexibleDataRateEnable)
 {
     if (!cb) {
         return;

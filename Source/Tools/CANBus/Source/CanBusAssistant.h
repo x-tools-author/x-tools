@@ -18,16 +18,16 @@
 #include <QWidget>
 
 namespace Ui {
-class xToolsCanBusStudioUi;
+class CanBusAssistant;
 }
-class xToolsCanBusStudioUi : public QWidget
+class CanBusAssistant : public QWidget
 {
     Q_OBJECT
     typedef QPair<QCanBusDevice::ConfigurationKey, QVariant> ConfigurationItem;
 
 public:
-    Q_INVOKABLE xToolsCanBusStudioUi(QWidget *parent = Q_NULLPTR);
-    ~xToolsCanBusStudioUi();
+    Q_INVOKABLE CanBusAssistant(QWidget *parent = Q_NULLPTR);
+    ~CanBusAssistant();
 
 private:
     struct
@@ -51,7 +51,7 @@ private:
     } m_settingKeyCtx;
 
 private:
-    Ui::xToolsCanBusStudioUi *ui;
+    Ui::CanBusAssistant *ui;
     QSettings *m_settings{nullptr};
     QCanBusDevice *m_device{nullptr};
     QList<QCanBusDeviceInfo> m_interfaces;
