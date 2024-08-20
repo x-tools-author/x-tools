@@ -28,10 +28,21 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
 {
     beginInsertRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {
-        m_transfers.insert(row, {createTransfer(), true, tr("Transfer %1").arg(row)});
+        auto transfer = createTransfer();
+        connect(transfer, &Communication::outputBytes, this, &AbstractTransferModel::outputBytes);
+        m_transfers.insert(row, {transfer, true, tr("Transfer %1").arg(row)});
     }
     endInsertRows();
     return true;
+}
+
+void AbstractTransferModel::inputBytes(const QByteArray &bytes)
+{
+    for (auto &item : m_transfers) {
+        if (item.enabled) {
+            item.transfer->inputBytes(bytes);
+        }
+    }
 }
 
 bool AbstractTransferModel::removeRows(int row, int count, const QModelIndex &parent)

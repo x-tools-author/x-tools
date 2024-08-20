@@ -18,6 +18,8 @@ class AbstractTransfer : public AbstractModelIO
 public:
     AbstractTransfer(QObject *parent = nullptr);
     ~AbstractTransfer() override;
+
+    void inputBytes(const QByteArray &bytes) override;
 };
 
 } // namespace xTools

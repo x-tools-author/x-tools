@@ -25,6 +25,10 @@ public:
     bool insertRows(int row, int count, const QModelIndex &parent) override;
     bool removeRows(int row, int count, const QModelIndex &parent) override;
 
+    void inputBytes(const QByteArray &bytes);
+signals:
+    void outputBytes(const QByteArray &bytes);
+
 protected:
     struct Item
     {

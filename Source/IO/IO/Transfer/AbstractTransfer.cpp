@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "AbstractTransfer.h"
 
+#include "AbstractTransferModel.h"
+
 namespace xTools {
 
 AbstractTransfer::AbstractTransfer(QObject *parent)
@@ -15,5 +17,13 @@ AbstractTransfer::AbstractTransfer(QObject *parent)
 {}
 
 AbstractTransfer::~AbstractTransfer() {}
+
+void AbstractTransfer::inputBytes(const QByteArray &bytes)
+{
+    AbstractTransferModel *model = tableModel().value<AbstractTransferModel *>();
+    if (model) {
+        model->inputBytes(bytes);
+    }
+}
 
 } // namespace xTools
