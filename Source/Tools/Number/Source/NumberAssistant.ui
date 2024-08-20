@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>xToolsNumberAssistant</class>
- <widget class="QWidget" name="xToolsNumberAssistant">
+ <class>NumberAssistant</class>
+ <widget class="QWidget" name="NumberAssistant">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>710</width>
-    <height>161</height>
+    <height>166</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -43,7 +43,7 @@
    <item row="1" column="0" colspan="2">
     <widget class="Line" name="line">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
     </widget>
    </item>

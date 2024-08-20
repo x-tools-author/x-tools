@@ -6,16 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsNumberAssistant.h"
-#include "ui_xToolsNumberAssistant.h"
+#include "NumberAssistant.h"
+#include "ui_NumberAssistant.h"
 
 #include "App/Application.h"
 #include "Common/xTools.h"
 #include "IO/xIO.h"
 
-xToolsNumberAssistant::xToolsNumberAssistant(QWidget *parent)
+NumberAssistant::NumberAssistant(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::xToolsNumberAssistant)
+    , ui(new Ui::NumberAssistant)
 {
     ui->setupUi(this);
 
@@ -37,25 +37,22 @@ xToolsNumberAssistant::xToolsNumberAssistant(QWidget *parent)
         ui->comboBoxCookedDataType->addItem("double(8bytes)", CookedDataTypeDouble);
     }
 
-    connect(ui->lineEditCookedDec, &QLineEdit::textEdited, this, &xToolsNumberAssistant::updateRawData);
-    connect(ui->lineEditRawData,
-            &QLineEdit::textEdited,
-            this,
-            &xToolsNumberAssistant::updateCookedData);
+    connect(ui->lineEditCookedDec, &QLineEdit::textEdited, this, &NumberAssistant::updateRawData);
+    connect(ui->lineEditRawData, &QLineEdit::textEdited, this, &NumberAssistant::updateCookedData);
     connect(ui->comboBoxCookedDataType,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &xToolsNumberAssistant::onCookedDataTypeChanged);
+            &NumberAssistant::onCookedDataTypeChanged);
 
     onCookedDataTypeChanged();
 }
 
-xToolsNumberAssistant::~xToolsNumberAssistant()
+NumberAssistant::~NumberAssistant()
 {
     delete ui;
 }
 
-void xToolsNumberAssistant::updateCookedData()
+void NumberAssistant::updateCookedData()
 {
     int type = ui->comboBoxCookedDataType->currentData().toInt();
     QString text = ui->lineEditRawData->text();
@@ -116,7 +113,7 @@ void updateRawData(QLineEdit *le, T value)
     le->setText(xTools::xTools::byteArrray2Hex(tmp, ' '));
 }
 
-void xToolsNumberAssistant::updateRawData()
+void NumberAssistant::updateRawData()
 {
     int type = ui->comboBoxCookedDataType->currentData().toInt();
     if (type == CookedDataTypeInt8) {
@@ -146,7 +143,7 @@ void xToolsNumberAssistant::updateRawData()
     updateCookedData();
 }
 
-int xToolsNumberAssistant::bytesOfType(int type)
+int NumberAssistant::bytesOfType(int type)
 {
     switch (type) {
     case CookedDataTypeInt8:
@@ -170,7 +167,7 @@ int xToolsNumberAssistant::bytesOfType(int type)
     }
 }
 
-void xToolsNumberAssistant::onCookedDataTypeChanged()
+void NumberAssistant::onCookedDataTypeChanged()
 {
     int bytes = bytesOfType(ui->comboBoxCookedDataType->currentData().toInt());
     ui->lineEditRawData->setMaxLength(bytes * 3 - 1);

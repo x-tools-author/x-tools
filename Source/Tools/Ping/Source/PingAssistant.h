@@ -20,17 +20,17 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class xToolsPingAssistant;
+class PingAssistant;
 }
 QT_END_NAMESPACE
 
-class xToolsPingAssistant : public QWidget
+class PingAssistant : public QWidget
 {
     Q_OBJECT
 
 public:
-    Q_INVOKABLE xToolsPingAssistant(QWidget *parent = nullptr);
-    ~xToolsPingAssistant();
+    Q_INVOKABLE PingAssistant(QWidget *parent = nullptr);
+    ~PingAssistant();
 
     void emitPingStarted(const QString &ip);
     void emitPingFinished(const QString &ip, bool isOnline, const QString &description);
@@ -51,7 +51,7 @@ private:
     } m_keyCtx;
 
 private:
-    Ui::xToolsPingAssistant *ui;
+    Ui::PingAssistant *ui;
 
     QTimer *m_playTimer;
     QString m_beginIp;

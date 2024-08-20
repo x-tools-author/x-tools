@@ -11,16 +11,16 @@
 #include <QWidget>
 
 namespace Ui {
-class xToolsNumberAssistant;
+class NumberAssistant;
 }
 
 class xToolsInterface;
-class xToolsNumberAssistant : public QWidget
+class NumberAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE xToolsNumberAssistant(QWidget* parent = Q_NULLPTR);
-    ~xToolsNumberAssistant();
+    Q_INVOKABLE NumberAssistant(QWidget* parent = Q_NULLPTR);
+    ~NumberAssistant();
 
 private:
     enum CookedDataType {
@@ -37,7 +37,7 @@ private:
     };
 
 private:
-    Ui::xToolsNumberAssistant* ui;
+    Ui::NumberAssistant* ui;
     xToolsInterface* m_interface;
 
 private:

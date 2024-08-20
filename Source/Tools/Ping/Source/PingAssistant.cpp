@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsPingAssistant.h"
-#include "ui_xToolsPingAssistant.h"
+#include "PingAssistant.h"
+#include "ui_PingAssistant.h"
 
 #include <QApplication>
 #include <QButtonGroup>
@@ -35,7 +35,7 @@ static const QString fileName()
 class PingTask : public QRunnable
 {
 public:
-    PingTask(xToolsPingAssistant *mainWindow, const QString &ip, int timeout)
+    PingTask(PingAssistant *mainWindow, const QString &ip, int timeout)
     {
         m_mainWindow = mainWindow;
         m_ip = ip;
@@ -71,14 +71,14 @@ public:
     }
 
 private:
-    xToolsPingAssistant *m_mainWindow;
+    PingAssistant *m_mainWindow;
     QString m_ip;
     int m_timeout;
 };
 
-xToolsPingAssistant::xToolsPingAssistant(QWidget *parent)
+PingAssistant::PingAssistant(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::xToolsPingAssistant)
+    , ui(new Ui::PingAssistant)
     , m_pausing(false)
     , m_finishedCount(0)
 {
@@ -90,19 +90,19 @@ xToolsPingAssistant::xToolsPingAssistant(QWidget *parent)
     m_playTimer = new QTimer(this);
     m_playTimer->setInterval(100);
     m_playTimer->setSingleShot(true);
-    connect(m_playTimer, &QTimer::timeout, this, &xToolsPingAssistant::onPlayTimerTimeout);
+    connect(m_playTimer, &QTimer::timeout, this, &PingAssistant::onPlayTimerTimeout);
 
     m_settings = new QSettings(::fileName(), QSettings::IniFormat, this);
 
     connect(this,
-            &xToolsPingAssistant::pingStarted,
+            &PingAssistant::pingStarted,
             this,
-            &xToolsPingAssistant::onPingStarted,
+            &PingAssistant::onPingStarted,
             Qt::QueuedConnection);
     connect(this,
-            &xToolsPingAssistant::pingFinished,
+            &PingAssistant::pingFinished,
             this,
-            &xToolsPingAssistant::onPingFinished,
+            &PingAssistant::onPingFinished,
             Qt::QueuedConnection);
 
 #if 0
@@ -118,24 +118,22 @@ xToolsPingAssistant::xToolsPingAssistant(QWidget *parent)
     setMinimumSize(720, 480);
 }
 
-xToolsPingAssistant::~xToolsPingAssistant()
+PingAssistant::~PingAssistant()
 {
     delete ui;
 }
 
-void xToolsPingAssistant::emitPingStarted(const QString &ip)
+void PingAssistant::emitPingStarted(const QString &ip)
 {
     emit pingStarted(ip);
 }
 
-void xToolsPingAssistant::emitPingFinished(const QString &ip,
-                                        bool is_online,
-                                        const QString &description)
+void PingAssistant::emitPingFinished(const QString &ip, bool is_online, const QString &description)
 {
     emit pingFinished(ip, is_online, description);
 }
 
-void xToolsPingAssistant::init()
+void PingAssistant::init()
 {
     m_toolBar = new QToolBar(this);
     ui->horizontalLayoutToolBar->addWidget(m_toolBar);
@@ -163,7 +161,7 @@ void xToolsPingAssistant::init()
     m_statusBar->addPermanentWidget(m_progressStatus);
 }
 
-void xToolsPingAssistant::initTableWidget()
+void PingAssistant::initTableWidget()
 {
     ui->tableWidget->setColumnCount(4);
     QStringList header_labels;
@@ -175,14 +173,14 @@ void xToolsPingAssistant::initTableWidget()
     ui->tableWidget->verticalHeader()->hide();
 }
 
-void xToolsPingAssistant::initToolBar()
+void PingAssistant::initToolBar()
 {
     initRunToolBar();
     initSettingToolBar();
     initShowToolBar();
 }
 
-void xToolsPingAssistant::initRunToolBar()
+void PingAssistant::initRunToolBar()
 {
     QIcon icon = QApplication::style()->standardIcon(QStyle::SP_MediaPlay);
     m_playAction = m_toolBar->addAction(icon, "", [=]() { this->play(); });
@@ -208,7 +206,7 @@ void xToolsPingAssistant::initRunToolBar()
     });
 }
 
-void xToolsPingAssistant::initSettingToolBar()
+void PingAssistant::initSettingToolBar()
 {
     QWidget *w = new QWidget(this);
     QHBoxLayout *hBoxLayout = new QHBoxLayout(w);
@@ -253,7 +251,7 @@ void xToolsPingAssistant::initSettingToolBar()
     });
 }
 
-void xToolsPingAssistant::initShowToolBar()
+void PingAssistant::initShowToolBar()
 {
     QRadioButton *show_all = new QRadioButton(tr("Show all"));
     QRadioButton *show_online = new QRadioButton(tr("Show online"));
@@ -292,7 +290,7 @@ void xToolsPingAssistant::initShowToolBar()
     });
 }
 
-void xToolsPingAssistant::play()
+void PingAssistant::play()
 {
     if (!isValidIp()) {
         return;
@@ -357,7 +355,7 @@ void xToolsPingAssistant::play()
     m_playTimer->start();
 }
 
-void xToolsPingAssistant::pause()
+void PingAssistant::pause()
 {
     m_playAction->setEnabled(true);
     m_pauseAction->setEnabled(false);
@@ -366,7 +364,7 @@ void xToolsPingAssistant::pause()
     m_pausing = true;
 }
 
-void xToolsPingAssistant::stop()
+void PingAssistant::stop()
 {
     m_playAction->setEnabled(true);
     m_pauseAction->setEnabled(false);
@@ -383,7 +381,7 @@ void xToolsPingAssistant::stop()
     m_progressBar->hide();
 }
 
-bool xToolsPingAssistant::isValidIp()
+bool PingAssistant::isValidIp()
 {
     if (m_beginIp.isEmpty() || m_endIp.isEmpty()) {
         QMessageBox::warning(this,
@@ -421,7 +419,7 @@ bool xToolsPingAssistant::isValidIp()
     return true;
 }
 
-int xToolsPingAssistant::row(const QString &ip)
+int PingAssistant::row(const QString &ip)
 {
     for (int row = 0; row < ui->tableWidget->rowCount(); row++) {
         QTableWidgetItem *item = ui->tableWidget->item(row, 0);
@@ -433,7 +431,7 @@ int xToolsPingAssistant::row(const QString &ip)
     return -1;
 }
 
-void xToolsPingAssistant::updateRowVisible()
+void PingAssistant::updateRowVisible()
 {
     for (int row = 0; row < ui->tableWidget->rowCount(); row++) {
         QTableWidgetItem *item = ui->tableWidget->item(row, 1);
@@ -450,7 +448,7 @@ void xToolsPingAssistant::updateRowVisible()
     }
 }
 
-void xToolsPingAssistant::updateProgressStatus()
+void PingAssistant::updateProgressStatus()
 {
     int all = ui->tableWidget->rowCount();
     int active = QThreadPool::globalInstance()->activeThreadCount();
@@ -466,7 +464,7 @@ void xToolsPingAssistant::updateProgressStatus()
     m_progressStatus->setText(txt);
 }
 
-int xToolsPingAssistant::ipCount()
+int PingAssistant::ipCount()
 {
     int begin = m_beginIp.split('.').last().toInt();
     int end = m_endIp.split('.').last().toInt();
@@ -474,7 +472,7 @@ int xToolsPingAssistant::ipCount()
     return end - begin + 1;
 }
 
-QString xToolsPingAssistant::ip(int row)
+QString PingAssistant::ip(int row)
 {
     if (row >= 0 && row < ui->tableWidget->rowCount()) {
         QTableWidgetItem *item = ui->tableWidget->item(row, 0);
@@ -486,7 +484,7 @@ QString xToolsPingAssistant::ip(int row)
     return "";
 }
 
-void xToolsPingAssistant::onPlayTimerTimeout()
+void PingAssistant::onPlayTimerTimeout()
 {
     if (m_pausing) {
         return;
@@ -512,7 +510,7 @@ void xToolsPingAssistant::onPlayTimerTimeout()
     updateProgressStatus();
 }
 
-void xToolsPingAssistant::onPingStarted(const QString &ip)
+void PingAssistant::onPingStarted(const QString &ip)
 {
     int row = this->row(ip);
     QTableWidgetItem *item = ui->tableWidget->item(row, 1);
@@ -524,9 +522,7 @@ void xToolsPingAssistant::onPingStarted(const QString &ip)
     updateProgressStatus();
 }
 
-void xToolsPingAssistant::onPingFinished(const QString &ip,
-                                         bool isOnline,
-                                         const QString &description)
+void PingAssistant::onPingFinished(const QString &ip, bool isOnline, const QString &description)
 {
     int row = this->row(ip);
     QTableWidgetItem *statusItem = ui->tableWidget->item(row, 1);
