@@ -29,7 +29,9 @@ private:
         AssistantTypeMdns,
         AssistantTypePing,
         AssistantTypeFileMerge,
-        AssistantTypeQRCode
+        AssistantTypeQRCode,
+        AssistantTypeCANBus,
+        AssistantTypeModbus,
     };
 
 public:

@@ -30,6 +30,11 @@
 #include "QRCodeAssistant.h"
 #endif
 
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
+#include "CanBusAssistant.h"
+#include "ModbusAssistant.h"
+#endif
+
 AssistantFactory::AssistantFactory(QObject* parent)
     : QObject(parent)
 {
@@ -49,6 +54,10 @@ AssistantFactory::AssistantFactory(QObject* parent)
     addAssistant<FileMergeAssistant>(AssistantTypeFileMerge, tr("File Merge Assistant"));
 #ifdef X_TOOLS_ENABLE_MODULE_QRCODE
     addAssistant<QRCodeAssistant>(AssistantTypeQRCode, tr("QR Code Assistant"));
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
+    addAssistant<CanBusAssistant>(AssistantTypeCANBus, tr("CAN Bus Assistant"));
+    addAssistant<ModbusAssistant>(AssistantTypeModbus, tr("Modbus Assistant"));
 #endif
 }
 

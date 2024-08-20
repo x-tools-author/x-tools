@@ -29,7 +29,7 @@ class ModbusAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ModbusAssistant(QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit ModbusAssistant(QWidget *parent = Q_NULLPTR);
     ~ModbusAssistant();
 
 signals:
