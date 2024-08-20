@@ -142,7 +142,9 @@ void MainWindow::initMenuOption()
     initOptionMenuAppStyleMenu();
     m_optionMenu->addSeparator();
     initOptionMenuSettingsMenu();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     initOptionMenuColorScheme();
+#endif
 }
 
 void MainWindow::initMenuLanguage()
@@ -306,6 +308,7 @@ void MainWindow::initOptionMenuHdpiPolicy()
 #endif
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 void MainWindow::initOptionMenuColorScheme()
 {
     QMenu* menu = new QMenu(tr("Color Scheme"));
@@ -356,6 +359,7 @@ void MainWindow::initOptionMenuColorScheme()
     QStyleHints* styleHints = QApplication::styleHints();
     styleHints->setColorScheme(static_cast<Qt::ColorScheme>(currentScheme));
 }
+#endif
 
 void MainWindow::onHdpiPolicyActionTriggered(int policy)
 {

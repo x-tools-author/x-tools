@@ -56,7 +56,7 @@ int xToolsExec(int argc,
 
     AppT app(argc, argv);
     //TODO:qt6
-#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     QStyleHints *styleHints = QApplication::styleHints();
     styleHints->setColorScheme(Qt::ColorScheme::Dark);
 #endif
