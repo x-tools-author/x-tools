@@ -266,8 +266,8 @@ if(X_TOOLS_ENABLE_MODULE_ASSISTANTS)
   set(X_TOOLS_ASSISTANT_DIR ${CMAKE_CURRENT_LIST_DIR}/Source/Tools)
   include_directories(${X_TOOLS_ASSISTANT_DIR})
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_ASSISTANTS)
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_DIR}/xToolsAssistantFactory.h)
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_DIR}/xToolsAssistantFactory.cpp)
+  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_DIR}/AssistantFactory.h)
+  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_DIR}/AssistantFactory.cpp)
 endif()
 
 # --------------------------------------------------------------------------------------------------

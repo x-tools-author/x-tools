@@ -11,17 +11,17 @@
 #include <QWidget>
 
 namespace Ui {
-class xToolsStringAssistant;
+class StringAssistant;
 }
-class xToolsStringAssistant : public QWidget
+class StringAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE xToolsStringAssistant(QWidget* parent = Q_NULLPTR);
-    ~xToolsStringAssistant();
+    Q_INVOKABLE StringAssistant(QWidget* parent = Q_NULLPTR);
+    ~StringAssistant();
 
 private:
-    Ui::xToolsStringAssistant* ui;
+    Ui::StringAssistant* ui;
 
 private slots:
     void onTextEditTextChanged();

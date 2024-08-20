@@ -6,40 +6,40 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsStringAssistant.h"
-#include "ui_xToolsStringAssistant.h"
+#include "StringAssistant.h"
+#include "ui_StringAssistant.h"
 
 #include "IO/xIO.h"
 
-xToolsStringAssistant::xToolsStringAssistant(QWidget* parent)
+StringAssistant::StringAssistant(QWidget* parent)
     : QWidget(parent)
-    , ui(new Ui::xToolsStringAssistant)
+    , ui(new Ui::StringAssistant)
 {
     ui->setupUi(this);
-    connect(ui->textEdit, &QTextEdit::textChanged, this, &xToolsStringAssistant::onTextEditTextChanged);
+    connect(ui->textEdit, &QTextEdit::textChanged, this, &StringAssistant::onTextEditTextChanged);
     connect(ui->inputFormatComboBox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &xToolsStringAssistant::onInputFormatComboBoxCurrentIndexChanged);
+            &StringAssistant::onInputFormatComboBoxCurrentIndexChanged);
     connect(ui->createPushButton,
             &QPushButton::clicked,
             this,
-            &xToolsStringAssistant::onCreatePushButtonClicked);
+            &StringAssistant::onCreatePushButtonClicked);
     connect(ui->outputFormatComboBox,
             &QComboBox::currentTextChanged,
             this,
-            &xToolsStringAssistant::onOutputFormatComboBoxCurrentTextChanged);
+            &StringAssistant::onOutputFormatComboBoxCurrentTextChanged);
 
     xIO::setupTextFormat(ui->outputFormatComboBox);
     xIO::setupTextFormat(ui->inputFormatComboBox);
 }
 
-xToolsStringAssistant::~xToolsStringAssistant()
+StringAssistant::~StringAssistant()
 {
     delete ui;
 }
 
-void xToolsStringAssistant::onTextEditTextChanged()
+void StringAssistant::onTextEditTextChanged()
 {
     if (!ui->textEdit->blockSignals(true)) {
         QString inputString = ui->textEdit->toPlainText();
@@ -52,14 +52,14 @@ void xToolsStringAssistant::onTextEditTextChanged()
     }
 }
 
-void xToolsStringAssistant::onInputFormatComboBoxCurrentIndexChanged(int index)
+void StringAssistant::onInputFormatComboBoxCurrentIndexChanged(int index)
 {
     Q_UNUSED(index);
     ui->textEdit->clear();
     onCreatePushButtonClicked();
 }
 
-void xToolsStringAssistant::onCreatePushButtonClicked()
+void StringAssistant::onCreatePushButtonClicked()
 {
     QString inputString = ui->textEdit->toPlainText();
     auto inputFormat = static_cast<xIO::TextFormat>(ui->inputFormatComboBox->currentData().toInt());
@@ -70,7 +70,7 @@ void xToolsStringAssistant::onCreatePushButtonClicked()
     ui->textBrowser->setText(outputString);
 }
 
-void xToolsStringAssistant::onOutputFormatComboBoxCurrentTextChanged(const QString& text)
+void StringAssistant::onOutputFormatComboBoxCurrentTextChanged(const QString& text)
 {
     Q_UNUSED(text);
     onCreatePushButtonClicked();

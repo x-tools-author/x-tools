@@ -32,7 +32,7 @@
 #include <QVariant>
 
 #ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
-#include "xToolsAssistantFactory.h"
+#include "AssistantFactory.h"
 #endif
 #include "App/Settings.h"
 #include "IOPage/IOPage.h"
@@ -139,10 +139,10 @@ void MainWindow::initToolMenu()
     m_toolMenu = new QMenu(tr("&Tools"));
     menuBar()->insertMenu(m_languageMenu->menuAction(), m_toolMenu);
 
-    for (auto& type : SAKAssistantsFactory::instance()->supportedAssistants()) {
-        QString name = SAKAssistantsFactory::instance()->assistantName(type);
+    for (auto& type : AssistantFactory::instance()->supportedAssistants()) {
+        QString name = AssistantFactory::instance()->assistantName(type);
         auto* action = new QAction(name, this);
-        QWidget* assistant = SAKAssistantsFactory::instance()->newAssistant(type);
+        QWidget* assistant = AssistantFactory::instance()->newAssistant(type);
 
         Q_ASSERT_X(assistant, __FUNCTION__, "A null assistant widget!");
 

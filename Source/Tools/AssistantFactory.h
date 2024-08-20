@@ -11,11 +11,11 @@
 #include <QMap>
 #include <QObject>
 
-class SAKAssistantsFactory : QObject
+class AssistantFactory : QObject
 {
     Q_OBJECT
 private:
-    SAKAssistantsFactory(QObject* parent = Q_NULLPTR);
+    AssistantFactory(QObject* parent = Q_NULLPTR);
 
 private:
     enum AssistantType {
@@ -33,7 +33,7 @@ private:
     };
 
 public:
-    static SAKAssistantsFactory* instance();
+    static AssistantFactory* instance();
 
     QList<int> supportedAssistants();
     QString assistantName(int type) const;

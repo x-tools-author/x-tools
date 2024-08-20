@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsAssistantFactory.h"
+#include "AssistantFactory.h"
 
 #include <QCoreApplication>
 #include <QWidget>
@@ -21,7 +21,7 @@
 #ifdef X_TOOLS_ENABLE_MODULE_PING
 #include "PingAssistant.h"
 #endif
-#include "xToolsStringAssistant.h"
+#include "StringAssistant.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_MDNS
 #include "MdnsAssistant.h"
@@ -30,7 +30,7 @@
 #include "QRCodeAssistant.h"
 #endif
 
-SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
+AssistantFactory::AssistantFactory(QObject* parent)
     : QObject(parent)
 {
     addAssistant<CrcAssistant>(AssistantTypeCrc, tr("CRC Assistant"));
@@ -43,7 +43,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     addAssistant<AsciiAssistant>(AssistantTypeAscii, tr("ASCII Assistant"));
     addAssistant<Base64Assisatnt>(AssistantTypeBase64, tr("Base64 Assistant"));
     addAssistant<NumberAssistant>(AssistantTypeNumber, tr("Number Assistant"));
-    addAssistant<xToolsStringAssistant>(AssistantTypeString, tr("String Assistant"));
+    addAssistant<StringAssistant>(AssistantTypeString, tr("String Assistant"));
     addAssistant<BroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));
     addAssistant<FileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
     addAssistant<FileMergeAssistant>(AssistantTypeFileMerge, tr("File Merge Assistant"));
@@ -52,12 +52,12 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
 #endif
 }
 
-QList<int> SAKAssistantsFactory::supportedAssistants()
+QList<int> AssistantFactory::supportedAssistants()
 {
     return m_typeNameMap.keys();
 }
 
-QString SAKAssistantsFactory::assistantName(int type) const
+QString AssistantFactory::assistantName(int type) const
 {
     if (m_typeNameMap.contains(type)) {
         return m_typeNameMap.value(type);
@@ -67,17 +67,17 @@ QString SAKAssistantsFactory::assistantName(int type) const
     return name;
 }
 
-SAKAssistantsFactory* SAKAssistantsFactory::instance()
+AssistantFactory* AssistantFactory::instance()
 {
-    static SAKAssistantsFactory* factory = nullptr;
+    static AssistantFactory* factory = nullptr;
     if (!factory) {
-        factory = new SAKAssistantsFactory(qApp);
+        factory = new AssistantFactory(qApp);
     }
 
     return factory;
 }
 
-QWidget* SAKAssistantsFactory::newAssistant(int type)
+QWidget* AssistantFactory::newAssistant(int type)
 {
     if (m_metaObjectMap.contains(type)) {
         const QMetaObject meta_obj = m_metaObjectMap.value(type);
