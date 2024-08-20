@@ -213,6 +213,13 @@ void IOPage::load(const QVariantMap &parameters)
 
 void IOPage::initUi()
 {
+#if 0
+    const QIcon icon = QIcon(":/Resources/Icons/IconSettings.svg");
+    ui->pushButtonCommunicationSettings->setIcon(icon);
+    ui->pushButtonOutputSettings->setIcon(icon);
+    ui->pushButtonInputSettings->setIcon(icon);
+#endif
+
     initUiCommunication();
     initUiOutputControl();
     initUiInputControl();

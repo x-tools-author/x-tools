@@ -69,14 +69,14 @@
         <item>
          <widget class="QPushButton" name="pushButtonCommunicationSettings">
           <property name="text">
-           <string>⚙Settings</string>
+           <string>Settings</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonCommunicationOpen">
           <property name="text">
-           <string>🔗Open</string>
+           <string>Open</string>
           </property>
          </widget>
         </item>
@@ -140,14 +140,14 @@
         <item>
          <widget class="QPushButton" name="pushButtonInputSettings">
           <property name="text">
-           <string>⚙Settings</string>
+           <string>Settings</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonInputWriteBytes">
           <property name="text">
-           <string>📤Send</string>
+           <string>Send</string>
           </property>
          </widget>
         </item>
@@ -230,14 +230,14 @@
         <item>
          <widget class="QPushButton" name="pushButtonOutputSettings">
           <property name="text">
-           <string>⚙Settings</string>
+           <string>Settings</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonOutputClear">
           <property name="text">
-           <string>🆑Clear</string>
+           <string>Clear</string>
           </property>
          </widget>
         </item>
@@ -371,7 +371,7 @@
          <item>
           <widget class="QToolButton" name="toolButtonInputPreset">
            <property name="text">
-            <string>...</string>
+            <string>📄</string>
            </property>
           </widget>
          </item>
