@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsMdnsAssistant.h"
-#include "ui_xToolsMdnsAssistant.h"
+#include "MdnsAssistant.h"
+#include "ui_MdnsAssistant.h"
 
 #include <QDebug>
 #include <QJsonArray>
@@ -17,11 +17,11 @@
 #include <QTreeWidgetItem>
 
 #include "App/Settings.h"
-#include "xToolsMdnsServer.h"
+#include "MdnsServer.h"
 
-xToolsMdnsAssistant::xToolsMdnsAssistant(QWidget *parent)
+MdnsAssistant::MdnsAssistant(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::xToolsMdnsAssistant)
+    , ui(new Ui::MdnsAssistant)
 {
     qRegisterMetaType<QMdnsEngine::Service>("Service");
 
@@ -34,12 +34,12 @@ xToolsMdnsAssistant::xToolsMdnsAssistant(QWidget *parent)
 
     loadSettings();
 
-    m_server = new xToolsMdnsServer(this);
-    connect(m_server, &xToolsMdnsServer::serviceAdded, this, &xToolsMdnsAssistant::onServiceAdded);
-    connect(m_server, &xToolsMdnsServer::serviceUpdated, this, &xToolsMdnsAssistant::onServiceUpdated);
-    connect(m_server, &xToolsMdnsServer::serviceRemoved, this, &xToolsMdnsAssistant::onServiceRemoved);
-    connect(m_server, &xToolsMdnsServer::started, this, [=]() { setUiState(true); });
-    connect(m_server, &xToolsMdnsServer::finished, this, [=]() { setUiState(false); });
+    m_server = new MdnsServer(this);
+    connect(m_server, &MdnsServer::serviceAdded, this, &MdnsAssistant::onServiceAdded);
+    connect(m_server, &MdnsServer::serviceUpdated, this, &MdnsAssistant::onServiceUpdated);
+    connect(m_server, &MdnsServer::serviceRemoved, this, &MdnsAssistant::onServiceRemoved);
+    connect(m_server, &MdnsServer::started, this, [=]() { setUiState(true); });
+    connect(m_server, &MdnsServer::finished, this, [=]() { setUiState(false); });
 
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=]() {
         if (m_server->isRunning()) {
@@ -50,12 +50,12 @@ xToolsMdnsAssistant::xToolsMdnsAssistant(QWidget *parent)
     });
 }
 
-xToolsMdnsAssistant::~xToolsMdnsAssistant()
+MdnsAssistant::~MdnsAssistant()
 {
     delete ui;
 }
 
-void xToolsMdnsAssistant::startMdnsService()
+void MdnsAssistant::startMdnsService()
 {
     QString txt = ui->comboBox->currentText().trimmed();
     if (txt.isEmpty()) {
@@ -71,14 +71,14 @@ void xToolsMdnsAssistant::startMdnsService()
     m_server->start();
 }
 
-void xToolsMdnsAssistant::stopMdnsService()
+void MdnsAssistant::stopMdnsService()
 {
     ui->pushButtonStart->setEnabled(false);
     m_server->exit();
     m_server->wait();
 }
 
-void xToolsMdnsAssistant::setupItem(const QMdnsEngine::Service &service)
+void MdnsAssistant::setupItem(const QMdnsEngine::Service &service)
 {
     auto item = findItem(service);
     if (item) {
@@ -117,7 +117,7 @@ void xToolsMdnsAssistant::setupItem(const QMdnsEngine::Service &service)
     }
 }
 
-void xToolsMdnsAssistant::setUiState(bool isRunning)
+void MdnsAssistant::setUiState(bool isRunning)
 {
     ui->pushButtonStart->setText(isRunning ? tr("Stop") : tr("Start"));
     ui->pushButtonStart->setEnabled(true);
@@ -129,7 +129,7 @@ void xToolsMdnsAssistant::setUiState(bool isRunning)
     }
 }
 
-void xToolsMdnsAssistant::loadSettings()
+void MdnsAssistant::loadSettings()
 {
     auto settings = xTools::Settings::instance();
 
@@ -151,7 +151,7 @@ void xToolsMdnsAssistant::loadSettings()
     }
 }
 
-void xToolsMdnsAssistant::saveSettings()
+void MdnsAssistant::saveSettings()
 {
     auto settings = xTools::Settings::instance();
 
@@ -171,7 +171,7 @@ void xToolsMdnsAssistant::saveSettings()
     settings->setValue(m_settingKeys.currentServiceType, currentServiceType);
 }
 
-QTreeWidgetItem *xToolsMdnsAssistant::findItem(const QMdnsEngine::Service &service)
+QTreeWidgetItem *MdnsAssistant::findItem(const QMdnsEngine::Service &service)
 {
     auto name = service.name();
     for (int i = 0; i < ui->treeWidget->topLevelItemCount(); i++) {
@@ -184,21 +184,21 @@ QTreeWidgetItem *xToolsMdnsAssistant::findItem(const QMdnsEngine::Service &servi
     return Q_NULLPTR;
 }
 
-void xToolsMdnsAssistant::onServiceAdded(const QMdnsEngine::Service &service)
+void MdnsAssistant::onServiceAdded(const QMdnsEngine::Service &service)
 {
     qInfo() << "Service added:" << service;
 
     setupItem(service);
 }
 
-void xToolsMdnsAssistant::onServiceUpdated(const QMdnsEngine::Service &service)
+void MdnsAssistant::onServiceUpdated(const QMdnsEngine::Service &service)
 {
     qInfo() << "Service updated:" << service;
 
     setupItem(service);
 }
 
-void xToolsMdnsAssistant::onServiceRemoved(const QMdnsEngine::Service &service)
+void MdnsAssistant::onServiceRemoved(const QMdnsEngine::Service &service)
 {
     qInfo() << "Service removed:" << service;
 

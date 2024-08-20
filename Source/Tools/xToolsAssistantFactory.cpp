@@ -24,7 +24,7 @@
 #include "xToolsStringAssistant.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_MDNS
-#include "xToolsMdnsAssistant.h"
+#include "MdnsAssistant.h"
 #endif
 #ifdef X_TOOLS_ENABLE_MODULE_QRCODE
 #include "xToolsQRCodeAssistant.h"
@@ -35,7 +35,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
 {
     addAssistant<CrcAssistant>(AssistantTypeCrc, tr("CRC Assistant"));
 #ifdef X_TOOLS_ENABLE_MODULE_MDNS
-    addAssistant<xToolsMdnsAssistant>(AssistantTypeMdns, tr("mDNS Assistant"));
+    addAssistant<MdnsAssistant>(AssistantTypeMdns, tr("mDNS Assistant"));
 #endif
 #ifdef X_TOOLS_ENABLE_MODULE_PING
     addAssistant<xToolsPingAssistant>(AssistantTypePing, tr("Ping Assistant"));

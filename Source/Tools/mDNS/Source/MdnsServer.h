@@ -15,12 +15,12 @@
 #include <qmdnsengine/server.h>
 #include <qmdnsengine/service.h>
 
-class xToolsMdnsServer : public QThread
+class MdnsServer : public QThread
 {
     Q_OBJECT
 public:
-    explicit xToolsMdnsServer(QObject *parent = nullptr);
-    ~xToolsMdnsServer();
+    explicit MdnsServer(QObject *parent = nullptr);
+    ~MdnsServer();
 
     void setServiceType(const QByteArray &serviceType);
 

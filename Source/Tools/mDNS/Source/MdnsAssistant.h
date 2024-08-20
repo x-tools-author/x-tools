@@ -14,16 +14,16 @@
 #include <qmdnsengine/service.h>
 
 namespace Ui {
-class xToolsMdnsAssistant;
+class MdnsAssistant;
 }
 
-class xToolsMdnsServer;
-class xToolsMdnsAssistant : public QWidget
+class MdnsServer;
+class MdnsAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE xToolsMdnsAssistant(QWidget *parent = nullptr);
-    ~xToolsMdnsAssistant();
+    Q_INVOKABLE MdnsAssistant(QWidget *parent = nullptr);
+    ~MdnsAssistant();
 
 private:
     struct
@@ -33,8 +33,8 @@ private:
     } m_settingKeys;
 
 private:
-    Ui::xToolsMdnsAssistant *ui;
-    xToolsMdnsServer *m_server;
+    Ui::MdnsAssistant *ui;
+    MdnsServer *m_server;
 
 private:
     void startMdnsService();

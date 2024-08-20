@@ -6,32 +6,32 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsMdnsServer.h"
+#include "MdnsServer.h"
 
 #include <QDebug>
 
-xToolsMdnsServer::xToolsMdnsServer(QObject *parent)
+MdnsServer::MdnsServer(QObject *parent)
     : QThread(parent)
 {}
 
-xToolsMdnsServer::~xToolsMdnsServer()
+MdnsServer::~MdnsServer()
 {
     exit();
     wait();
 }
 
-void xToolsMdnsServer::setServiceType(const QByteArray &serviceType)
+void MdnsServer::setServiceType(const QByteArray &serviceType)
 {
     m_serviceType = serviceType;
 }
 
-void xToolsMdnsServer::run()
+void MdnsServer::run()
 {
     QMdnsEngine::Server server;
     QMdnsEngine::Browser browser(&server, m_serviceType);
-    connect(&browser, &QMdnsEngine::Browser::serviceAdded, this, &xToolsMdnsServer::serviceAdded);
-    connect(&browser, &QMdnsEngine::Browser::serviceUpdated, this, &xToolsMdnsServer::serviceUpdated);
-    connect(&browser, &QMdnsEngine::Browser::serviceRemoved, this, &xToolsMdnsServer::serviceRemoved);
+    connect(&browser, &QMdnsEngine::Browser::serviceAdded, this, &MdnsServer::serviceAdded);
+    connect(&browser, &QMdnsEngine::Browser::serviceUpdated, this, &MdnsServer::serviceUpdated);
+    connect(&browser, &QMdnsEngine::Browser::serviceRemoved, this, &MdnsServer::serviceRemoved);
 
     qInfo() << "The mDNS broser has been started.";
     exec();
