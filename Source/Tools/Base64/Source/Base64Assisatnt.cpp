@@ -6,30 +6,30 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsBase64Assisatnt.h"
-#include "ui_xToolsBase64Assisatnt.h"
+#include "Base64Assisatnt.h"
+#include "ui_Base64Assisatnt.h"
 
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QMessageBox>
 #include <QPixmap>
 
-xToolsBase64Assisatnt::xToolsBase64Assisatnt(QWidget* parent)
+Base64Assisatnt::Base64Assisatnt(QWidget* parent)
     : QWidget(parent)
-    , ui(new Ui::xToolsBase64Assisatnt)
+    , ui(new Ui::Base64Assisatnt)
 {
     ui->setupUi(this);
-    connect(ui->image, &QPushButton::clicked, this, &xToolsBase64Assisatnt::onImageClicked);
-    connect(ui->decrypt, &QPushButton::clicked, this, &xToolsBase64Assisatnt::onDecryptClicked);
-    connect(ui->encrypt, &QPushButton::clicked, this, &xToolsBase64Assisatnt::onEncryptClicked);
+    connect(ui->image, &QPushButton::clicked, this, &Base64Assisatnt::onImageClicked);
+    connect(ui->decrypt, &QPushButton::clicked, this, &Base64Assisatnt::onDecryptClicked);
+    connect(ui->encrypt, &QPushButton::clicked, this, &Base64Assisatnt::onEncryptClicked);
 }
 
-xToolsBase64Assisatnt::~xToolsBase64Assisatnt()
+Base64Assisatnt::~Base64Assisatnt()
 {
     delete ui;
 }
 
-void xToolsBase64Assisatnt::onImageClicked()
+void Base64Assisatnt::onImageClicked()
 {
     QString cipherText = ui->cipherText->toPlainText();
     QByteArray base64 = cipherText.toUtf8();
@@ -52,7 +52,7 @@ void xToolsBase64Assisatnt::onImageClicked()
     dialog.exec();
 }
 
-void xToolsBase64Assisatnt::onEncryptClicked()
+void Base64Assisatnt::onEncryptClicked()
 {
     QString plainText = ui->plainText->toPlainText();
     QByteArray byteArray = plainText.toUtf8();
@@ -61,7 +61,7 @@ void xToolsBase64Assisatnt::onEncryptClicked()
     ui->cipherText->setPlainText(ciperText);
 }
 
-void xToolsBase64Assisatnt::onDecryptClicked()
+void Base64Assisatnt::onDecryptClicked()
 {
     QString cipherText = ui->cipherText->toPlainText();
     QByteArray base64 = cipherText.toUtf8();

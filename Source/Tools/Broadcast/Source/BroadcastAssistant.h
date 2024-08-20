@@ -11,20 +11,20 @@
 #include <QWidget>
 
 namespace Ui {
-class xToolsBroadcastAssistant;
+class BroadcastAssistant;
 }
 
-class xToolsBroadcastThread;
-class xToolsBroadcastAssistant : public QWidget
+class BroadcastThread;
+class BroadcastAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE xToolsBroadcastAssistant(QWidget* parent = Q_NULLPTR);
-    ~xToolsBroadcastAssistant();
+    Q_INVOKABLE BroadcastAssistant(QWidget* parent = Q_NULLPTR);
+    ~BroadcastAssistant();
 
 private:
-    Ui::xToolsBroadcastAssistant* ui;
-    xToolsBroadcastThread* m_broadcastThread;
+    Ui::BroadcastAssistant* ui;
+    BroadcastThread* m_broadcastThread;
 
 private:
     void initUi();

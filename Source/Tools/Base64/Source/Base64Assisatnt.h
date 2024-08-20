@@ -11,18 +11,18 @@
 #include <QWidget>
 
 namespace Ui {
-class xToolsBase64Assisatnt;
+class Base64Assisatnt;
 }
 
-class xToolsBase64Assisatnt : public QWidget
+class Base64Assisatnt : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE xToolsBase64Assisatnt(QWidget* parent = Q_NULLPTR);
-    ~xToolsBase64Assisatnt();
+    Q_INVOKABLE Base64Assisatnt(QWidget* parent = Q_NULLPTR);
+    ~Base64Assisatnt();
 
 private:
-    Ui::xToolsBase64Assisatnt* ui;
+    Ui::Base64Assisatnt* ui;
 
 private:
     void onImageClicked();

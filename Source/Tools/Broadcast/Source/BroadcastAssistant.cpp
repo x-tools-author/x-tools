@@ -6,26 +6,26 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsBroadcastAssistant.h"
-#include "ui_xToolsBroadcastAssistant.h"
+#include "BroadcastAssistant.h"
+#include "ui_BroadcastAssistant.h"
 
 #include <QDateTime>
 #include <QNetworkAddressEntry>
 #include <QNetworkInterface>
 
 #include "App/Application.h"
+#include "BroadcastThread.h"
 #include "IO/xIO.h"
-#include "xToolsBroadcastThread.h"
 
-xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
+BroadcastAssistant::BroadcastAssistant(QWidget* parent)
     : QWidget(parent)
-    , ui(new Ui::xToolsBroadcastAssistant)
+    , ui(new Ui::BroadcastAssistant)
 {
     ui->setupUi(this);
-    m_broadcastThread = new xToolsBroadcastThread(this);
-    connect(m_broadcastThread, &xToolsBroadcastThread::started, this, [=]() { updateUiState(true); });
-    connect(m_broadcastThread, &xToolsBroadcastThread::finished, this, [=]() { updateUiState(false); });
-    connect(m_broadcastThread, &xToolsBroadcastThread::bytesWritten, this, [=](const QByteArray& bytes) {
+    m_broadcastThread = new BroadcastThread(this);
+    connect(m_broadcastThread, &BroadcastThread::started, this, [=]() { updateUiState(true); });
+    connect(m_broadcastThread, &BroadcastThread::finished, this, [=]() { updateUiState(false); });
+    connect(m_broadcastThread, &BroadcastThread::bytesWritten, this, [=](const QByteArray& bytes) {
         QByteArray temp = bytes;
         int format = ui->comboBoxOutputFormat->currentData().toInt();
         auto bytesString = xIO::bytes2string(temp, static_cast<xIO::TextFormat>(format));
@@ -42,7 +42,7 @@ xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
     connect(ui->pushButtonBroadcast,
             &QPushButton::clicked,
             this,
-            &xToolsBroadcastAssistant::onBroadcastPushButtonClicked);
+            &BroadcastAssistant::onBroadcastPushButtonClicked);
 
     initUi();
     setWindowTitle(tr("Broadcast Assistant"));
@@ -51,12 +51,12 @@ xToolsBroadcastAssistant::xToolsBroadcastAssistant(QWidget* parent)
     xIO::setupAddition(ui->comboBoxBroadcastSuffix);
 }
 
-xToolsBroadcastAssistant::~xToolsBroadcastAssistant()
+BroadcastAssistant::~BroadcastAssistant()
 {
     delete ui;
 }
 
-void xToolsBroadcastAssistant::updateUiState(bool started)
+void BroadcastAssistant::updateUiState(bool started)
 {
     ui->pushButtonBroadcast->setEnabled(true);
     ui->pushButtonBroadcast->setText(started ? tr("Terminate") : tr("Broadcast"));
@@ -70,14 +70,14 @@ void xToolsBroadcastAssistant::updateUiState(bool started)
     ui->lineEditBroadcastData->setEnabled(!started);
 }
 
-void xToolsBroadcastAssistant::initUi()
+void BroadcastAssistant::initUi()
 {
     ui->textBrowserInformation->document()->setMaximumBlockCount(2000);
     initUiBroadcastAddress();
     initUiBroadcastInterval();
 }
 
-void xToolsBroadcastAssistant::initUiBroadcastAddress()
+void BroadcastAssistant::initUiBroadcastAddress()
 {
     ui->comboBoxBroadcastAddress->clear();
     auto bd = QHostAddress(QHostAddress::Broadcast);
@@ -107,7 +107,7 @@ void xToolsBroadcastAssistant::initUiBroadcastAddress()
     }
 }
 
-void xToolsBroadcastAssistant::initUiBroadcastInterval()
+void BroadcastAssistant::initUiBroadcastInterval()
 {
     ui->comboBoxBroadcastInterval->clear();
     for (int i = 20; i <= 100; i += 20) {
@@ -125,7 +125,7 @@ void xToolsBroadcastAssistant::initUiBroadcastInterval()
     ui->comboBoxBroadcastInterval->setCurrentText("1000");
 }
 
-QByteArray xToolsBroadcastAssistant::packetData()
+QByteArray BroadcastAssistant::packetData()
 {
     QByteArray bytes;
 
@@ -145,7 +145,7 @@ QByteArray xToolsBroadcastAssistant::packetData()
     return bytes;
 }
 
-void xToolsBroadcastAssistant::onBroadcastPushButtonClicked()
+void BroadcastAssistant::onBroadcastPushButtonClicked()
 {
     ui->pushButtonBroadcast->setEnabled(false);
 

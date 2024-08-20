@@ -11,12 +11,12 @@
 #include <QMutex>
 #include <QThread>
 
-class xToolsBroadcastThread : public QThread
+class BroadcastThread : public QThread
 {
     Q_OBJECT
 public:
-    explicit xToolsBroadcastThread(QObject* parent = Q_NULLPTR);
-    ~xToolsBroadcastThread();
+    explicit BroadcastThread(QObject* parent = Q_NULLPTR);
+    ~BroadcastThread();
 
     void setBroadcastInformation(const QString& address,
                                  quint16 port,

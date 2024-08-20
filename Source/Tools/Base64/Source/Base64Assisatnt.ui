@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>xToolsBase64Assisatnt</class>
- <widget class="QWidget" name="xToolsBase64Assisatnt">
+ <class>Base64Assisatnt</class>
+ <widget class="QWidget" name="Base64Assisatnt">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -55,7 +55,7 @@
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>

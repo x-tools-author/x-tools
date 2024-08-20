@@ -12,8 +12,8 @@
 #include <QWidget>
 
 #include "AsciiAssistant.h"
-#include "xToolsBase64Assisatnt.h"
-#include "xToolsBroadcastAssistant.h"
+#include "Base64Assisatnt.h"
+#include "BroadcastAssistant.h"
 #include "xToolsCRCAssistant.h"
 #include "xToolsFileCheckAssistant.h"
 #include "xToolsFileMergeAssistant.h"
@@ -41,10 +41,10 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     addAssistant<xToolsPingAssistant>(AssistantTypePing, tr("Ping Assistant"));
 #endif
     addAssistant<AsciiAssistant>(AssistantTypeAscii, tr("ASCII Assistant"));
-    addAssistant<xToolsBase64Assisatnt>(AssistantTypeBase64, tr("Base64 Assistant"));
+    addAssistant<Base64Assisatnt>(AssistantTypeBase64, tr("Base64 Assistant"));
     addAssistant<xToolsNumberAssistant>(AssistantTypeNumber, tr("Number Assistant"));
     addAssistant<xToolsStringAssistant>(AssistantTypeString, tr("String Assistant"));
-    addAssistant<xToolsBroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));
+    addAssistant<BroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));
     addAssistant<xToolsFileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
     addAssistant<xToolsFileMergeAssistant>(AssistantTypeFileMerge, tr("File Merge Assistant"));
 #ifdef X_TOOLS_ENABLE_MODULE_QRCODE

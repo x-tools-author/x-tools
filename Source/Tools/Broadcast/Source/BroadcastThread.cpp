@@ -6,16 +6,16 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsBroadcastThread.h"
+#include "BroadcastThread.h"
 
 #include <QTimer>
 #include <QUdpSocket>
 
-xToolsBroadcastThread::xToolsBroadcastThread(QObject* parent)
+BroadcastThread::BroadcastThread(QObject* parent)
     : QThread{parent}
 {}
 
-xToolsBroadcastThread::~xToolsBroadcastThread()
+BroadcastThread::~BroadcastThread()
 {
     if (isRunning()) {
         exit();
@@ -23,10 +23,10 @@ xToolsBroadcastThread::~xToolsBroadcastThread()
     }
 }
 
-void xToolsBroadcastThread::setBroadcastInformation(const QString& address,
-                                                 quint16 port,
-                                                 int interval,
-                                                 const QByteArray& data)
+void BroadcastThread::setBroadcastInformation(const QString& address,
+                                              quint16 port,
+                                              int interval,
+                                              const QByteArray& data)
 {
     m_parametersMutext.lock();
     m_parameters.address = address;
@@ -36,7 +36,7 @@ void xToolsBroadcastThread::setBroadcastInformation(const QString& address,
     m_parametersMutext.unlock();
 }
 
-void xToolsBroadcastThread::run()
+void BroadcastThread::run()
 {
     QUdpSocket* udpSocket = new QUdpSocket();
     if (!udpSocket->bind()) {
