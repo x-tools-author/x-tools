@@ -10,12 +10,12 @@
 
 #include <QThread>
 
-class xToolsFileCheckAssistant;
-class xToolsCryptographicHashCalculator : public QThread
+class FileCheckAssistant;
+class HashCalculator : public QThread
 {
     Q_OBJECT
 public:
-    xToolsCryptographicHashCalculator(xToolsFileCheckAssistant* controller, QObject* parent = Q_NULLPTR);
+    HashCalculator(FileCheckAssistant* controller, QObject* parent = Q_NULLPTR);
 
 signals:
     void outputMessage(QString msg, bool isErrMsg);
@@ -25,7 +25,7 @@ signals:
     void remainTimeChanged(QString remainTime);
 
 private:
-    xToolsFileCheckAssistant* m_cryptographicHashController;
+    FileCheckAssistant* m_cryptographicHashController;
     QList<qint64> m_consumeTimeList;
 
 private:

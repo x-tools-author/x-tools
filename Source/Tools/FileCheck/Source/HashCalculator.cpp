@@ -6,39 +6,32 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsCryptographicHashCalculator.h"
+#include "HashCalculator.h"
 
 #include <QApplication>
 #include <QDateTime>
 #include <QDebug>
 #include <QFile>
 
-#include "xToolsFileCheckAssistant.h"
+#include "FileCheckAssistant.h"
 
-xToolsCryptographicHashCalculator::xToolsCryptographicHashCalculator(xToolsFileCheckAssistant* controller,
-                                                               QObject* parent)
+HashCalculator::HashCalculator(FileCheckAssistant* controller, QObject* parent)
     : QThread(parent)
     , m_cryptographicHashController(controller)
 {
+    connect(this, &HashCalculator::updateResult, controller, &FileCheckAssistant::updateResult);
+    connect(this, &HashCalculator::outputMessage, controller, &FileCheckAssistant::outputMessage);
     connect(this,
-            &xToolsCryptographicHashCalculator::updateResult,
+            &HashCalculator::updateProgressBar,
             controller,
-            &xToolsFileCheckAssistant::updateResult);
+            &FileCheckAssistant::updateProgressBar);
     connect(this,
-            &xToolsCryptographicHashCalculator::outputMessage,
+            &HashCalculator::remainTimeChanged,
             controller,
-            &xToolsFileCheckAssistant::outputMessage);
-    connect(this,
-            &xToolsCryptographicHashCalculator::updateProgressBar,
-            controller,
-            &xToolsFileCheckAssistant::updateProgressBar);
-    connect(this,
-            &xToolsCryptographicHashCalculator::remainTimeChanged,
-            controller,
-            &xToolsFileCheckAssistant::changeRemainTime);
+            &FileCheckAssistant::changeRemainTime);
 }
 
-void xToolsCryptographicHashCalculator::run()
+void HashCalculator::run()
 {
     QCryptographicHash::Algorithm algorithm = m_cryptographicHashController->algorithm();
     QCryptographicHash cryptographicHash(algorithm);

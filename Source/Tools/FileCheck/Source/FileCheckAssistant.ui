@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>xToolsFileCheckAssistant</class>
- <widget class="QWidget" name="xToolsFileCheckAssistant">
+ <class>FileCheckAssistant</class>
+ <widget class="QWidget" name="FileCheckAssistant">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -27,7 +27,7 @@
       <string/>
      </property>
      <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
    </item>
@@ -41,7 +41,7 @@
    <item row="3" column="1" colspan="4">
     <widget class="QProgressBar" name="calculatorProgressBar">
      <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
+      <enum>Qt::LayoutDirection::LeftToRight</enum>
      </property>
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -50,7 +50,7 @@
       <number>24</number>
      </property>
      <property name="textDirection">
-      <enum>QProgressBar::TopToBottom</enum>
+      <enum>QProgressBar::Direction::TopToBottom</enum>
      </property>
     </widget>
    </item>

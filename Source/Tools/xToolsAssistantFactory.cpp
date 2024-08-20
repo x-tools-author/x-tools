@@ -15,7 +15,7 @@
 #include "Base64Assisatnt.h"
 #include "BroadcastAssistant.h"
 #include "CrcAssistant.h"
-#include "xToolsFileCheckAssistant.h"
+#include "FileCheckAssistant.h"
 #include "xToolsFileMergeAssistant.h"
 #include "xToolsNumberAssistant.h"
 #ifdef X_TOOLS_ENABLE_MODULE_PING
@@ -45,7 +45,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     addAssistant<xToolsNumberAssistant>(AssistantTypeNumber, tr("Number Assistant"));
     addAssistant<xToolsStringAssistant>(AssistantTypeString, tr("String Assistant"));
     addAssistant<BroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));
-    addAssistant<xToolsFileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
+    addAssistant<FileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
     addAssistant<xToolsFileMergeAssistant>(AssistantTypeFileMerge, tr("File Merge Assistant"));
 #ifdef X_TOOLS_ENABLE_MODULE_QRCODE
     addAssistant<xToolsQRCodeAssistant>(AssistantTypeQRCode, tr("QR Code Assistant"));
