@@ -27,7 +27,7 @@
 #include "MdnsAssistant.h"
 #endif
 #ifdef X_TOOLS_ENABLE_MODULE_QRCODE
-#include "xToolsQRCodeAssistant.h"
+#include "QRCodeAssistant.h"
 #endif
 
 SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
@@ -48,7 +48,7 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     addAssistant<FileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
     addAssistant<FileMergeAssistant>(AssistantTypeFileMerge, tr("File Merge Assistant"));
 #ifdef X_TOOLS_ENABLE_MODULE_QRCODE
-    addAssistant<xToolsQRCodeAssistant>(AssistantTypeQRCode, tr("QR Code Assistant"));
+    addAssistant<QRCodeAssistant>(AssistantTypeQRCode, tr("QR Code Assistant"));
 #endif
 }
 

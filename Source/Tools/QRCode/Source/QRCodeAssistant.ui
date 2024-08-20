@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>xToolsQRCodeAssistant</class>
- <widget class="QWidget" name="xToolsQRCodeAssistant">
+ <class>QRCodeAssistant</class>
+ <widget class="QWidget" name="QRCodeAssistant">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
+    <width>490</width>
     <height>347</height>
    </rect>
   </property>

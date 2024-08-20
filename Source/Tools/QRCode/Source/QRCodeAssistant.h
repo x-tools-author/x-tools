@@ -12,18 +12,18 @@
 #include <QWidget>
 
 namespace Ui {
-class xToolsQRCodeAssistant;
+class QRCodeAssistant;
 }
 
-class xToolsQRCodeAssistant : public QWidget
+class QRCodeAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE xToolsQRCodeAssistant(QWidget* parent = nullptr);
-    ~xToolsQRCodeAssistant();
+    Q_INVOKABLE QRCodeAssistant(QWidget* parent = nullptr);
+    ~QRCodeAssistant();
 
 private:
-    Ui::xToolsQRCodeAssistant* ui;
+    Ui::QRCodeAssistant* ui;
     QPixmap m_pixMap;
 
 private slots:

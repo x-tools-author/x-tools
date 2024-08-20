@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "ui_xToolsQRCodeAssistant.h"
-#include "xToolsQRCodeAssistant.h"
+#include "QRCodeAssistant.h"
+#include "ui_QRCodeAssistant.h"
 
 #include <qrencode.h>
 
@@ -17,30 +17,30 @@
 #include <QPainter>
 #include <QTimer>
 
-xToolsQRCodeAssistant::xToolsQRCodeAssistant(QWidget *parent)
+QRCodeAssistant::QRCodeAssistant(QWidget *parent)
     : QWidget{parent}
-    , ui{new Ui::xToolsQRCodeAssistant}
+    , ui{new Ui::QRCodeAssistant}
 {
     ui->setupUi(this);
     connect(ui->pushButtonGenerate,
             &QPushButton::clicked,
             this,
-            &xToolsQRCodeAssistant::onGeneratePushButtonClicked);
+            &QRCodeAssistant::onGeneratePushButtonClicked);
     connect(ui->pushButtonExport,
             &QPushButton::clicked,
             this,
-            &xToolsQRCodeAssistant::onExportPushButtonClicked);
+            &QRCodeAssistant::onExportPushButtonClicked);
 
     ui->lineEditData->setText(QString("Hello, xTools!"));
-    QTimer::singleShot(1000, this, &xToolsQRCodeAssistant::onGeneratePushButtonClicked);
+    QTimer::singleShot(1000, this, &QRCodeAssistant::onGeneratePushButtonClicked);
 }
 
-xToolsQRCodeAssistant::~xToolsQRCodeAssistant()
+QRCodeAssistant::~QRCodeAssistant()
 {
     delete ui;
 }
 
-void xToolsQRCodeAssistant::onGeneratePushButtonClicked()
+void QRCodeAssistant::onGeneratePushButtonClicked()
 {
     QString txt = ui->lineEditData->text();
     if (txt.isEmpty()) {
@@ -84,7 +84,7 @@ void xToolsQRCodeAssistant::onGeneratePushButtonClicked()
     ui->labelImage->setAlignment(Qt::AlignCenter);
 }
 
-void xToolsQRCodeAssistant::onExportPushButtonClicked()
+void QRCodeAssistant::onExportPushButtonClicked()
 {
     QString fileName = QFileDialog::getSaveFileName(this,
                                                     tr("Save QR Code Image"),
