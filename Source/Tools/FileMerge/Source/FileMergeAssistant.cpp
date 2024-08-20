@@ -6,17 +6,17 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsFileMergeAssistant.h"
-#include "ui_xToolsFileMergeAssistant.h"
+#include "FileMergeAssistant.h"
+#include "ui_FileMergeAssistant.h"
 
 #include <QDataStream>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QStandardPaths>
 
-xToolsFileMergeAssistant::xToolsFileMergeAssistant(QWidget *parent)
+FileMergeAssistant::FileMergeAssistant(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::xToolsFileMergeAssistant)
+    , ui(new Ui::FileMergeAssistant)
 {
     ui->setupUi(this);
     ui->listWidget->setAlternatingRowColors(true);
@@ -26,35 +26,35 @@ xToolsFileMergeAssistant::xToolsFileMergeAssistant(QWidget *parent)
     connect(ui->pushButtonImport,
             &QPushButton::clicked,
             this,
-            &xToolsFileMergeAssistant::onImportPushButtonClicked);
+            &FileMergeAssistant::onImportPushButtonClicked);
     connect(ui->pushButtonMerge,
             &QPushButton::clicked,
             this,
-            &xToolsFileMergeAssistant::onMergePushButtonClicked);
+            &FileMergeAssistant::onMergePushButtonClicked);
     connect(ui->pushButtonClear,
             &QPushButton::clicked,
             this,
-            &xToolsFileMergeAssistant::onClearPushButtonClicked);
+            &FileMergeAssistant::onClearPushButtonClicked);
     connect(ui->pushButtonUp,
             &QPushButton::clicked,
             this,
-            &xToolsFileMergeAssistant::onUpPushButtonClicked);
+            &FileMergeAssistant::onUpPushButtonClicked);
     connect(ui->pushButtonDown,
             &QPushButton::clicked,
             this,
-            &xToolsFileMergeAssistant::onDownPushButtonClicked);
+            &FileMergeAssistant::onDownPushButtonClicked);
     connect(ui->pushButtonRemove,
             &QPushButton::clicked,
             this,
-            &xToolsFileMergeAssistant::onRemovePushButtonClicked);
+            &FileMergeAssistant::onRemovePushButtonClicked);
 }
 
-xToolsFileMergeAssistant::~xToolsFileMergeAssistant()
+FileMergeAssistant::~FileMergeAssistant()
 {
     delete ui;
 }
 
-void xToolsFileMergeAssistant::onImportPushButtonClicked()
+void FileMergeAssistant::onImportPushButtonClicked()
 {
     auto files = QFileDialog::getOpenFileNames(this,
                                                tr("Import Files"),
@@ -70,7 +70,7 @@ void xToolsFileMergeAssistant::onImportPushButtonClicked()
     }
 }
 
-void xToolsFileMergeAssistant::onMergePushButtonClicked()
+void FileMergeAssistant::onMergePushButtonClicked()
 {
     auto showOpenFileFailedMessageBox = [=](const QString &fileName, const QString &errorString) {
         QMessageBox::warning(this,
@@ -127,12 +127,12 @@ void xToolsFileMergeAssistant::onMergePushButtonClicked()
     QMessageBox::information(this, tr("Merge Files"), tr("Merge files successfully."));
 }
 
-void xToolsFileMergeAssistant::onClearPushButtonClicked()
+void FileMergeAssistant::onClearPushButtonClicked()
 {
     ui->listWidget->clear();
 }
 
-void xToolsFileMergeAssistant::onUpPushButtonClicked()
+void FileMergeAssistant::onUpPushButtonClicked()
 {
     auto items = ui->listWidget->selectedItems();
     for (auto &item : items) {
@@ -146,7 +146,7 @@ void xToolsFileMergeAssistant::onUpPushButtonClicked()
     }
 }
 
-void xToolsFileMergeAssistant::onDownPushButtonClicked()
+void FileMergeAssistant::onDownPushButtonClicked()
 {
     auto items = ui->listWidget->selectedItems();
     for (auto &item : items) {
@@ -160,7 +160,7 @@ void xToolsFileMergeAssistant::onDownPushButtonClicked()
     }
 }
 
-void xToolsFileMergeAssistant::onRemovePushButtonClicked()
+void FileMergeAssistant::onRemovePushButtonClicked()
 {
     auto items = ui->listWidget->selectedItems();
     for (auto item : items) {
@@ -169,7 +169,7 @@ void xToolsFileMergeAssistant::onRemovePushButtonClicked()
     }
 }
 
-void xToolsFileMergeAssistant::setProgressBarRange()
+void FileMergeAssistant::setProgressBarRange()
 {
     int allBytes = 0;
     for (int i = 0; i < ui->listWidget->count(); ++i) {

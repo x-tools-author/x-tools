@@ -11,19 +11,19 @@
 #include <QWidget>
 
 namespace Ui {
-class xToolsFileMergeAssistant;
+class FileMergeAssistant;
 }
 
-class xToolsFileMergeAssistant : public QWidget
+class FileMergeAssistant : public QWidget
 {
     Q_OBJECT
 
 public:
-    Q_INVOKABLE explicit xToolsFileMergeAssistant(QWidget *parent = nullptr);
-    ~xToolsFileMergeAssistant();
+    Q_INVOKABLE explicit FileMergeAssistant(QWidget *parent = nullptr);
+    ~FileMergeAssistant();
 
 private:
-    Ui::xToolsFileMergeAssistant *ui;
+    Ui::FileMergeAssistant *ui;
     QString m_desktopPath;
 
 private:

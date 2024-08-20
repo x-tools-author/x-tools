@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>xToolsFileMergeAssistant</class>
- <widget class="QWidget" name="xToolsFileMergeAssistant">
+ <class>FileMergeAssistant</class>
+ <widget class="QWidget" name="FileMergeAssistant">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -64,7 +64,7 @@
      <item>
       <widget class="Line" name="line">
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Orientation::Vertical</enum>
        </property>
       </widget>
      </item>
