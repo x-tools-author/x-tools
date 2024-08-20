@@ -21,21 +21,21 @@
 #include <QTextEdit>
 
 namespace Ui {
-class xToolsCRCAssistant;
+class CrcAssistant;
 }
 
-class xToolsCRCAssistant : public QWidget
+class CrcAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE xToolsCRCAssistant(QWidget* parent = Q_NULLPTR);
-    ~xToolsCRCAssistant();
+    Q_INVOKABLE CrcAssistant(QWidget* parent = Q_NULLPTR);
+    ~CrcAssistant();
 
 protected:
     bool eventFilter(QObject* watched, QEvent* event);
 
 private:
-    Ui::xToolsCRCAssistant* ui;
+    Ui::CrcAssistant* ui;
     QComboBox* m_widthComboBox;
     QComboBox* m_parameterComboBox;
     QCheckBox* m_refinCheckBox;

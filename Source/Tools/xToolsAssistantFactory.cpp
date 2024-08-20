@@ -14,7 +14,7 @@
 #include "AsciiAssistant.h"
 #include "Base64Assisatnt.h"
 #include "BroadcastAssistant.h"
-#include "xToolsCRCAssistant.h"
+#include "CrcAssistant.h"
 #include "xToolsFileCheckAssistant.h"
 #include "xToolsFileMergeAssistant.h"
 #include "xToolsNumberAssistant.h"
@@ -33,7 +33,7 @@
 SAKAssistantsFactory::SAKAssistantsFactory(QObject* parent)
     : QObject(parent)
 {
-    addAssistant<xToolsCRCAssistant>(AssistantTypeCrc, tr("CRC Assistant"));
+    addAssistant<CrcAssistant>(AssistantTypeCrc, tr("CRC Assistant"));
 #ifdef X_TOOLS_ENABLE_MODULE_MDNS
     addAssistant<xToolsMdnsAssistant>(AssistantTypeMdns, tr("mDNS Assistant"));
 #endif

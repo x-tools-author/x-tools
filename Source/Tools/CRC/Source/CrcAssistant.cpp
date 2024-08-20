@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsCRCAssistant.h"
-#include "ui_xToolsCRCAssistant.h"
+#include "CrcAssistant.h"
+#include "ui_CrcAssistant.h"
 
 #include <QComboBox>
 #include <QDebug>
@@ -16,9 +16,9 @@
 
 #include "Common/CRC.h"
 
-xToolsCRCAssistant::xToolsCRCAssistant(QWidget* parent)
+CrcAssistant::CrcAssistant(QWidget* parent)
     : QWidget(parent)
-    , ui(new Ui::xToolsCRCAssistant)
+    , ui(new Ui::CrcAssistant)
 {
     ui->setupUi(this);
     m_widthComboBox = ui->comboBoxWidth;
@@ -62,17 +62,17 @@ xToolsCRCAssistant::xToolsCRCAssistant(QWidget* parent)
     connect(m_parameterComboBox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &xToolsCRCAssistant::changedParameterModel);
-    connect(m_calculatedBt, &QPushButton::clicked, this, &xToolsCRCAssistant::calculate);
-    connect(m_inputTextEdit, &QTextEdit::textChanged, this, &xToolsCRCAssistant::textFormatControl);
+            &CrcAssistant::changedParameterModel);
+    connect(m_calculatedBt, &QPushButton::clicked, this, &CrcAssistant::calculate);
+    connect(m_inputTextEdit, &QTextEdit::textChanged, this, &CrcAssistant::textFormatControl);
 }
 
-xToolsCRCAssistant::~xToolsCRCAssistant()
+CrcAssistant::~CrcAssistant()
 {
     delete ui;
 }
 
-void xToolsCRCAssistant::initParameterModel()
+void CrcAssistant::initParameterModel()
 {
     m_parameterComboBox->clear();
     QList<int> algorithms = xTools::CRC::supportedAlgorithms();
@@ -91,7 +91,7 @@ void xToolsCRCAssistant::initParameterModel()
     m_labelPolyFormula->setText(xTools::CRC::algorithmName(cookedAlgorithm));
 }
 
-void xToolsCRCAssistant::calculate()
+void CrcAssistant::calculate()
 {
     QByteArray inputArray;
     if (m_hexRadioBt->isChecked()) {
@@ -123,7 +123,7 @@ void xToolsCRCAssistant::calculate()
     m_binCRCOutput->setText(crcBinString);
 }
 
-void xToolsCRCAssistant::textFormatControl()
+void CrcAssistant::textFormatControl()
 {
     if (m_asciiRadioBt->isChecked()) {
         return;
@@ -131,7 +131,7 @@ void xToolsCRCAssistant::textFormatControl()
     disconnect(m_inputTextEdit,
                &QTextEdit::textChanged,
                this,
-               &xToolsCRCAssistant::textFormatControl);
+               &CrcAssistant::textFormatControl);
 
     QString strTemp;
     QString plaintext = m_inputTextEdit->toPlainText();
@@ -146,10 +146,10 @@ void xToolsCRCAssistant::textFormatControl()
     m_inputTextEdit->setText(strTemp.toUpper());
     m_inputTextEdit->moveCursor(QTextCursor::End);
 
-    connect(m_inputTextEdit, &QTextEdit::textChanged, this, &xToolsCRCAssistant::textFormatControl);
+    connect(m_inputTextEdit, &QTextEdit::textChanged, this, &CrcAssistant::textFormatControl);
 }
 
-void xToolsCRCAssistant::changedParameterModel(int index)
+void CrcAssistant::changedParameterModel(int index)
 {
     Q_UNUSED(index)
     int bitsWidth = m_widthComboBox->currentText().toInt();
@@ -171,7 +171,7 @@ void xToolsCRCAssistant::changedParameterModel(int index)
     m_labelPolyFormula->setText(xTools::CRC::friendlyPoly(cookedAlgorithm));
 }
 
-bool xToolsCRCAssistant::eventFilter(QObject* watched, QEvent* event)
+bool CrcAssistant::eventFilter(QObject* watched, QEvent* event)
 {
     if (event->type() == QEvent::MouseButtonDblClick) {
         if (watched == m_labelInfo) {
