@@ -14,7 +14,27 @@ namespace xTools {
 
 AbstractTransfer::AbstractTransfer(QObject *parent)
     : AbstractModelIO{parent}
-{}
+{
+    connect(this, &AbstractModelIO::started, this, [this]() {
+        auto model = tableModel();
+        if (model.isValid()) {
+            auto *transferModel = model.value<AbstractTransferModel *>();
+            if (transferModel) {
+                transferModel->startAll();
+            }
+        }
+    });
+
+    connect(this, &AbstractModelIO::finished, this, [this]() {
+        auto model = tableModel();
+        if (model.isValid()) {
+            auto *transferModel = model.value<AbstractTransferModel *>();
+            if (transferModel) {
+                transferModel->stopAll();
+            }
+        }
+    });
+}
 
 AbstractTransfer::~AbstractTransfer() {}
 

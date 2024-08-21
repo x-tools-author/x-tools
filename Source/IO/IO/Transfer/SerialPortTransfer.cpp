@@ -24,7 +24,14 @@ SerialPortTransfer::SerialPortTransfer(QObject *parent)
 
 SerialPortTransfer::~SerialPortTransfer() {}
 
-void SerialPortTransfer::inputBytes(const QByteArray &bytes) {}
+void SerialPortTransfer::inputBytes(const QByteArray &bytes)
+{
+    if (!m_enable) {
+        return;
+    }
+
+    m_model->inputBytes(bytes);
+}
 
 QVariant SerialPortTransfer::tableModel() const
 {

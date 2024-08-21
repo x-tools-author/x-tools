@@ -26,6 +26,8 @@ public:
     bool removeRows(int row, int count, const QModelIndex &parent) override;
 
     void inputBytes(const QByteArray &bytes);
+    void startAll();
+    void stopAll();
 signals:
     void outputBytes(const QByteArray &bytes);
 
@@ -33,7 +35,6 @@ protected:
     struct Item
     {
         Communication *transfer{nullptr};
-        bool enabled{false};
         QString description;
     };
     QList<Item> m_transfers;

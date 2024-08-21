@@ -44,7 +44,7 @@ QVariant SerialPortTransferModel::data(const QModelIndex &index, int role) const
 
     if (role == Qt::DisplayRole) {
         if (column == 0) {
-            return item.enabled ? tr("Enable") : tr("Disable");
+            return item.transfer->isEnable() ? tr("Enable") : tr("Disable");
         } else if (column == 1) {
             return serialPortItem.portName;
         } else if (column == 2) {
@@ -86,7 +86,7 @@ QVariant SerialPortTransferModel::data(const QModelIndex &index, int role) const
         }
     } else if (role == Qt::EditRole) {
         if (column == 0) {
-            return item.enabled;
+            return item.transfer->isEnable();
         } else if (column == 1) {
             return serialPortItem.portName;
         } else if (column == 2) {
@@ -127,7 +127,7 @@ bool SerialPortTransferModel::setData(const QModelIndex &index, const QVariant &
     int column = index.column();
     Item item = m_transfers[row];
     if (column == 0) {
-        item.enabled = value.toBool();
+        item.transfer->setIsEnable(value.toBool());
     } else if (column == 7) {
         item.description = value.toString();
     } else {

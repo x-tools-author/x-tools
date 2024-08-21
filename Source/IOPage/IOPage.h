@@ -99,10 +99,7 @@ private:
     xTools::WebSocketServerTransferUi *m_webSocketServerTransferUi;
 
     QButtonGroup m_pageButtonGroup;
-    QMap<QAbstractButton *, QWidget *> m_pageContextMap;
     QList<xTools::AbstractIO *> m_ioList;
-    QButtonGroup m_transferButtonGroup;
-    QMap<QAbstractButton *, QWidget *> m_transferContextMap;
     QSettings *m_settings;
 
 private:

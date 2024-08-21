@@ -30,7 +30,7 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
     for (int i = 0; i < count; ++i) {
         auto transfer = createTransfer();
         connect(transfer, &Communication::outputBytes, this, &AbstractTransferModel::outputBytes);
-        m_transfers.insert(row, {transfer, true, tr("Transfer %1").arg(row)});
+        m_transfers.insert(row, {transfer, tr("Transfer %1").arg(row)});
     }
     endInsertRows();
     return true;
@@ -39,9 +39,26 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
 void AbstractTransferModel::inputBytes(const QByteArray &bytes)
 {
     for (auto &item : m_transfers) {
-        if (item.enabled) {
+        if (item.transfer->isEnable()) {
             item.transfer->inputBytes(bytes);
         }
+    }
+}
+
+void AbstractTransferModel::startAll()
+{
+    for (auto &item : m_transfers) {
+        if (item.transfer->isEnable()) {
+            item.transfer->start();
+        }
+    }
+}
+
+void AbstractTransferModel::stopAll()
+{
+    for (auto &item : m_transfers) {
+        item.transfer->exit();
+        item.transfer->wait();
     }
 }
 

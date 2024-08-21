@@ -43,7 +43,7 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
 
     if (role == Qt::DisplayRole) {
         if (index.column() == 0) {
-            return item.enabled ? tr("Enable") : tr("Disable");
+            return item.transfer->isEnable() ? tr("Enable") : tr("Disable");
         } else if (index.column() == 1) {
             return socketItem.clientAddress;
         } else if (index.column() == 2) {
@@ -66,7 +66,7 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
         }
     } else if (role == Qt::EditRole) {
         if (index.column() == 0) {
-            return item.enabled;
+            return item.transfer->isEnable();
         } else if (index.column() == 1) {
             return socketItem.clientAddress;
         } else if (index.column() == 2) {
