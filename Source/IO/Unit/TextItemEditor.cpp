@@ -9,6 +9,7 @@
 #include "TextItemEditor.h"
 #include "ui_TextItemEditor.h"
 
+#include "../Common/CRC.h"
 #include "../xIO.h"
 
 namespace xTools {
@@ -22,7 +23,7 @@ TextItemEditor::TextItemEditor(QWidget *parent)
     xIO::setupAddition(ui->comboBoxPrefix);
     xIO::setupAddition(ui->comboBoxSuffix);
     xIO::setupEscapeCharacter(ui->comboBoxEscapeCharacter);
-    xIO::setupCrcAlgorithm(ui->comboBoxAlgorithm);
+    CRC::setupAlgorithm(ui->comboBoxAlgorithm);
     xIO::setupTextFormat(ui->comboBoxFormat);
 
     connect(ui->comboBoxFormat,

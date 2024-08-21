@@ -60,43 +60,6 @@ public:
     static QString cookedEscapeCharacter(const QString &text, EscapeCharacter escapeCharacter);
 
     /**********************************************************************************************/
-    enum class CrcAlgorithm {
-        CRC_8,
-        CRC_8_ITU,
-        CRC_8_ROHC,
-        CRC_8_MAXIM,
-        CRC_16_IBM,
-        CRC_16_MAXIM,
-        CRC_16_USB,
-        CRC_16_MODBUS,
-        CRC_16_CCITT,
-        CRC_16_CCITT_FALSE,
-        CRC_16_x25,
-        CRC_16_XMODEM,
-        CRC_16_DNP,
-        CRC_32,
-        CRC_32_MPEG2
-    };
-    static QList<int> supportedCrcAlgorithms();
-    static QString crcAlgorithmName(CrcAlgorithm algorithm);
-    static void setupCrcAlgorithm(QComboBox *comboBox);
-    static QByteArray calculateCrc(const QByteArray &data, CrcAlgorithm algorithm);
-    static QByteArray calculateCrc(const QByteArray &data, CrcAlgorithm algorithm, bool bigEndian);
-    struct CrcParameters
-    {
-        bool enable;
-        bool bigEndian;
-        CrcAlgorithm algorithm;
-        int startIndex;
-        int endIndex;
-    };
-    static QByteArray calculateCrc(const QByteArray &data,
-                                   CrcAlgorithm algorithm,
-                                   int startIndex,
-                                   int endIndex,
-                                   bool bigEndian);
-
-    /**********************************************************************************************/
     enum class WebSocketDataChannel { Text, Binary };
     static QString webSocketDataChannelName(WebSocketDataChannel channel);
     static void setupWebSocketDataChannel(QComboBox *comboBox);
@@ -127,7 +90,14 @@ public:
         Affixes prefix;
         QString text;
         Affixes suffix;
-        CrcParameters crc;
+        struct
+        {
+            bool enable;
+            bool bigEndian;
+            int algorithm;
+            int startIndex;
+            int endIndex;
+        } crc;
     };
     struct TextItemKeys
     {

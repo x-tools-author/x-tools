@@ -38,6 +38,7 @@
 #include "IO/UI/Transfer/SerialPortTransferUi.h"
 #endif
 
+#include "Common/CRC.h"
 #include "CommunicationSettings.h"
 #include "InputSettings.h"
 #include "OutputSettings.h"
@@ -720,9 +721,12 @@ QByteArray IOPage::payload() const
 QByteArray IOPage::crc(const QByteArray &payload) const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
-    return xTools::xIO::calculateCrc(payload,
-                             static_cast<xTools::xIO::CrcAlgorithm>(parameters.algorithm),
-                             parameters.startIndex,
-                             parameters.endIndex,
-                             parameters.bigEndian);
+    xTools::CRC::Context ctx;
+    ctx.algorithm = static_cast<xTools::CRC::Algorithm>(parameters.algorithm);
+    ctx.startIndex = parameters.startIndex;
+    ctx.endIndex = parameters.endIndex;
+    ctx.bigEndian = parameters.bigEndian;
+    ctx.data = payload;
+
+    return xTools::CRC::calculate(ctx);
 }

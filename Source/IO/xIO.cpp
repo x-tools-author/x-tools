@@ -7,7 +7,6 @@
  * code directory.
  **************************************************************************************************/
 #include "xIO.h"
-#include <qserialport.h>
 
 #include <QApplication>
 #include <QJsonArray>
@@ -22,6 +21,8 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #endif
+
+#include "../Common/CRC.h"
 
 namespace xTools {
 
@@ -357,359 +358,6 @@ QString xIO::cookedEscapeCharacter(const QString &text, EscapeCharacter escapeCh
     return newStr;
 }
 
-QList<int> xIO::supportedCrcAlgorithms()
-{
-    QList<int> crcAlgorithms;
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_8);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_8_ITU);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_8_ROHC);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_8_MAXIM);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_16_IBM);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_16_MAXIM);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_16_USB);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_16_MODBUS);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_16_CCITT);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_16_CCITT_FALSE);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_16_x25);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_16_XMODEM);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_16_DNP);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_32);
-    crcAlgorithms << static_cast<int>(CrcAlgorithm::CRC_32_MPEG2);
-    return crcAlgorithms;
-}
-
-QString xIO::crcAlgorithmName(CrcAlgorithm crcAlgorithm)
-{
-    switch (crcAlgorithm) {
-    case CrcAlgorithm::CRC_8:
-        return "CRC-8";
-    case CrcAlgorithm::CRC_8_ITU:
-        return "CRC-8/ITU";
-    case CrcAlgorithm::CRC_8_ROHC:
-        return "CRC-8/ROHC";
-    case CrcAlgorithm::CRC_8_MAXIM:
-        return "CRC-8/MAXIM";
-    case CrcAlgorithm::CRC_16_IBM:
-        return "CRC-16/IBM";
-    case CrcAlgorithm::CRC_16_MAXIM:
-        return "CRC-16/MAXIM";
-    case CrcAlgorithm::CRC_16_USB:
-        return "CRC-16/USB";
-    case CrcAlgorithm::CRC_16_MODBUS:
-        return "CRC-16/MODBUS";
-    case CrcAlgorithm::CRC_16_CCITT:
-        return "CRC-16/CCITT";
-    case CrcAlgorithm::CRC_16_CCITT_FALSE:
-        return "CRC-16/CCITT-FALSE";
-    case CrcAlgorithm::CRC_16_x25:
-        return "CRC-16/X-25";
-    case CrcAlgorithm::CRC_16_XMODEM:
-        return "CRC-16/XMODEM";
-    case CrcAlgorithm::CRC_16_DNP:
-        return "CRC-16/DNP";
-    case CrcAlgorithm::CRC_32:
-        return "CRC-32";
-    case CrcAlgorithm::CRC_32_MPEG2:
-        return "CRC-32/MPEG-2";
-    default:
-        return QObject::tr("Unknown");
-    }
-}
-
-void xIO::setupCrcAlgorithm(QComboBox *comboBox)
-{
-    if (!comboBox) {
-        return;
-    }
-
-    comboBox->clear();
-    QList<int> crcAlgorithms = supportedCrcAlgorithms();
-    for (int crcAlgorithm : crcAlgorithms) {
-        comboBox->addItem(crcAlgorithmName(static_cast<CrcAlgorithm>(crcAlgorithm)), crcAlgorithm);
-    }
-}
-
-uint32_t poly(xIO::CrcAlgorithm algorithm)
-{
-    uint32_t poly = 0;
-
-    switch (algorithm) {
-    case xIO::CrcAlgorithm::CRC_8:
-    case xIO::CrcAlgorithm::CRC_8_ITU:
-    case xIO::CrcAlgorithm::CRC_8_ROHC:
-        poly = 0x07;
-        break;
-    case xIO::CrcAlgorithm::CRC_8_MAXIM:
-        poly = 0x31;
-        break;
-    case xIO::CrcAlgorithm::CRC_16_IBM:
-    case xIO::CrcAlgorithm::CRC_16_MAXIM:
-    case xIO::CrcAlgorithm::CRC_16_USB:
-    case xIO::CrcAlgorithm::CRC_16_MODBUS:
-        poly = 0x8005;
-        break;
-    case xIO::CrcAlgorithm::CRC_16_CCITT:
-    case xIO::CrcAlgorithm::CRC_16_XMODEM:
-    case xIO::CrcAlgorithm::CRC_16_CCITT_FALSE:
-    case xIO::CrcAlgorithm::CRC_16_x25:
-        poly = 0x1021;
-        break;
-    case xIO::CrcAlgorithm::CRC_16_DNP:
-        poly = 0x3d65;
-        break;
-    case xIO::CrcAlgorithm::CRC_32:
-    case xIO::CrcAlgorithm::CRC_32_MPEG2:
-        poly = 0x04c11db7;
-        break;
-    }
-
-    return poly;
-}
-
-uint32_t xorValue(xIO::CrcAlgorithm algorithm)
-{
-    uint32_t value = 0;
-
-    switch (algorithm) {
-    case xIO::CrcAlgorithm::CRC_8:
-    case xIO::CrcAlgorithm::CRC_8_ROHC:
-    case xIO::CrcAlgorithm::CRC_8_MAXIM:
-        value = 0x00;
-        break;
-    case xIO::CrcAlgorithm::CRC_8_ITU:
-        value = 0x55;
-        break;
-    case xIO::CrcAlgorithm::CRC_16_IBM:
-    case xIO::CrcAlgorithm::CRC_16_MODBUS:
-    case xIO::CrcAlgorithm::CRC_16_CCITT:
-    case xIO::CrcAlgorithm::CRC_16_CCITT_FALSE:
-    case xIO::CrcAlgorithm::CRC_16_XMODEM:
-        value = 0x0000;
-        break;
-    case xIO::CrcAlgorithm::CRC_16_MAXIM:
-    case xIO::CrcAlgorithm::CRC_16_USB:
-    case xIO::CrcAlgorithm::CRC_16_x25:
-    case xIO::CrcAlgorithm::CRC_16_DNP:
-        value = 0xffff;
-        break;
-    case xIO::CrcAlgorithm::CRC_32:
-        value = 0xffffffff;
-        break;
-    case xIO::CrcAlgorithm::CRC_32_MPEG2:
-        value = 0x00000000;
-        break;
-    }
-
-    return value;
-}
-
-uint32_t initialValue(xIO::CrcAlgorithm algorithm)
-{
-    uint32_t init = 0;
-
-    switch (algorithm) {
-    case xIO::CrcAlgorithm::CRC_8:
-    case xIO::CrcAlgorithm::CRC_8_ITU:
-    case xIO::CrcAlgorithm::CRC_8_MAXIM:
-        init = 0x00;
-        break;
-    case xIO::CrcAlgorithm::CRC_8_ROHC:
-        init = 0xff;
-        break;
-    case xIO::CrcAlgorithm::CRC_16_IBM:
-    case xIO::CrcAlgorithm::CRC_16_MAXIM:
-    case xIO::CrcAlgorithm::CRC_16_CCITT:
-    case xIO::CrcAlgorithm::CRC_16_XMODEM:
-    case xIO::CrcAlgorithm::CRC_16_DNP:
-        init = 0x0000;
-        break;
-    case xIO::CrcAlgorithm::CRC_16_USB:
-    case xIO::CrcAlgorithm::CRC_16_MODBUS:
-    case xIO::CrcAlgorithm::CRC_16_CCITT_FALSE:
-    case xIO::CrcAlgorithm::CRC_16_x25:
-        init = 0xffff;
-        break;
-    case xIO::CrcAlgorithm::CRC_32:
-    case xIO::CrcAlgorithm::CRC_32_MPEG2:
-        init = 0xffffffff;
-        break;
-    }
-
-    return init;
-}
-
-bool isInputReversal(xIO::CrcAlgorithm algorithm)
-{
-    bool reversal = true;
-
-    switch (algorithm) {
-    case xIO::CrcAlgorithm::CRC_8:
-    case xIO::CrcAlgorithm::CRC_8_ITU:
-    case xIO::CrcAlgorithm::CRC_16_CCITT_FALSE:
-    case xIO::CrcAlgorithm::CRC_16_XMODEM:
-    case xIO::CrcAlgorithm::CRC_32_MPEG2:
-        reversal = false;
-        break;
-    case xIO::CrcAlgorithm::CRC_8_ROHC:
-    case xIO::CrcAlgorithm::CRC_8_MAXIM:
-    case xIO::CrcAlgorithm::CRC_16_IBM:
-    case xIO::CrcAlgorithm::CRC_16_MAXIM:
-    case xIO::CrcAlgorithm::CRC_16_USB:
-    case xIO::CrcAlgorithm::CRC_16_MODBUS:
-    case xIO::CrcAlgorithm::CRC_16_CCITT:
-    case xIO::CrcAlgorithm::CRC_16_x25:
-    case xIO::CrcAlgorithm::CRC_16_DNP:
-    case xIO::CrcAlgorithm::CRC_32:
-        reversal = true;
-        break;
-    }
-
-    return reversal;
-}
-
-bool isOutputReversal(xIO::CrcAlgorithm algorithm)
-{
-    bool reversal = true;
-
-    switch (algorithm) {
-    case xIO::CrcAlgorithm::CRC_8:
-    case xIO::CrcAlgorithm::CRC_8_ITU:
-    case xIO::CrcAlgorithm::CRC_16_CCITT_FALSE:
-    case xIO::CrcAlgorithm::CRC_16_XMODEM:
-    case xIO::CrcAlgorithm::CRC_32_MPEG2:
-        reversal = false;
-        break;
-    case xIO::CrcAlgorithm::CRC_8_ROHC:
-    case xIO::CrcAlgorithm::CRC_8_MAXIM:
-    case xIO::CrcAlgorithm::CRC_16_IBM:
-    case xIO::CrcAlgorithm::CRC_16_MAXIM:
-    case xIO::CrcAlgorithm::CRC_16_USB:
-    case xIO::CrcAlgorithm::CRC_16_MODBUS:
-    case xIO::CrcAlgorithm::CRC_16_CCITT:
-    case xIO::CrcAlgorithm::CRC_16_x25:
-    case xIO::CrcAlgorithm::CRC_16_DNP:
-    case xIO::CrcAlgorithm::CRC_32:
-        reversal = true;
-        break;
-    }
-
-    return reversal;
-}
-
-int bitsWidth(xIO::CrcAlgorithm algorithm)
-{
-    int ret = -1;
-    switch (algorithm) {
-    case xIO::CrcAlgorithm::CRC_8:
-    case xIO::CrcAlgorithm::CRC_8_ITU:
-    case xIO::CrcAlgorithm::CRC_8_ROHC:
-    case xIO::CrcAlgorithm::CRC_8_MAXIM:
-        ret = 8;
-        break;
-    case xIO::CrcAlgorithm::CRC_16_IBM:
-    case xIO::CrcAlgorithm::CRC_16_MAXIM:
-    case xIO::CrcAlgorithm::CRC_16_USB:
-    case xIO::CrcAlgorithm::CRC_16_MODBUS:
-    case xIO::CrcAlgorithm::CRC_16_CCITT:
-    case xIO::CrcAlgorithm::CRC_16_CCITT_FALSE:
-    case xIO::CrcAlgorithm::CRC_16_x25:
-    case xIO::CrcAlgorithm::CRC_16_XMODEM:
-    case xIO::CrcAlgorithm::CRC_16_DNP:
-        ret = 16;
-        break;
-    case xIO::CrcAlgorithm::CRC_32:
-    case xIO::CrcAlgorithm::CRC_32_MPEG2:
-        ret = 32;
-        break;
-    }
-    return ret;
-}
-
-template<typename T>
-bool reverseInt(const T &input, T &output)
-{
-    int bitsWidth = sizeof(input) * 8;
-    QString inputStr = QString("%1").arg(QString::number(input, 2), bitsWidth, '0');
-    QString outputStr;
-    outputStr.resize(bitsWidth);
-    for (int i = 0; i < bitsWidth; i++) {
-        outputStr.replace(i, 1, inputStr.at(bitsWidth - 1 - i));
-    }
-
-    bool ok;
-    output = static_cast<T>(outputStr.toULongLong(&ok, 2));
-    return ok;
-}
-
-template<typename T>
-T crcCalculate(const uint8_t *input, uint64_t length, xIO::CrcAlgorithm algorithm)
-{
-    T crcReg = static_cast<T>(initialValue(algorithm));
-    T rawPoly = static_cast<T>(poly(algorithm));
-    uint8_t byte = 0;
-
-    T temp = 1;
-    while (length--) {
-        byte = *(input++);
-        if (isInputReversal(algorithm)) {
-            reverseInt(byte, byte);
-        }
-
-        crcReg ^= static_cast<T>((byte << 8 * (sizeof(T) - 1)));
-        for (int i = 0; i < 8; i++) {
-            if (crcReg & (temp << (sizeof(T) * 8 - 1))) {
-                crcReg = static_cast<T>((crcReg << 1) ^ rawPoly);
-            } else {
-                crcReg = static_cast<T>(crcReg << 1);
-            }
-        }
-    }
-
-    if (isOutputReversal(algorithm)) {
-        reverseInt(crcReg, crcReg);
-    }
-
-    T crc = (crcReg ^ static_cast<T>(xorValue(algorithm)));
-    return crc;
-}
-
-QByteArray xIO::calculateCrc(const QByteArray &data, CrcAlgorithm algorithm)
-{
-    QByteArray retBytes;
-    auto const bw = bitsWidth(algorithm);
-    auto *ptr = reinterpret_cast<const uint8_t *>(data.constData());
-    if (bw == 8) {
-        auto ret = crcCalculate<uint8_t>(ptr, data.length(), algorithm);
-        retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
-    } else if (bw == 16) {
-        auto ret = crcCalculate<uint16_t>(ptr, data.length(), algorithm);
-        retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
-    } else if (bw == 32) {
-        auto ret = crcCalculate<uint32_t>(ptr, data.length(), algorithm);
-        retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
-    }
-
-    return retBytes;
-}
-
-QByteArray xIO::calculateCrc(const QByteArray &data, CrcAlgorithm algorithm, bool bigEndian)
-{
-    QByteArray retBytes = calculateCrc(data, algorithm);
-    if (bigEndian) {
-        std::reverse(retBytes.begin(), retBytes.end());
-    }
-
-    return retBytes;
-}
-
-QByteArray xIO::calculateCrc(
-    const QByteArray &data, CrcAlgorithm algorithm, int startIndex, int endIndex, bool bigEndian)
-{
-    const int length = static_cast<int>(data.length()) - startIndex - endIndex;
-    const QByteArray tmpData = data.mid(startIndex, length);
-    return calculateCrc(tmpData, algorithm, bigEndian);
-}
-
 QString xIO::webSocketDataChannelName(WebSocketDataChannel channel)
 {
     if (channel == WebSocketDataChannel::Text) {
@@ -825,7 +473,7 @@ xIO::TextItem xIO::defaultTextItem()
 
     context.crc.enable = false;
     context.crc.bigEndian = true;
-    context.crc.algorithm = CrcAlgorithm::CRC_8;
+    context.crc.algorithm = static_cast<int>(CRC::Algorithm::CRC_8);
     context.crc.startIndex = 0;
     context.crc.endIndex = 0;
     return context;
@@ -841,11 +489,15 @@ QString xIO::textItem2string(const TextItem &context)
 
     if (context.crc.enable) {
         QByteArray data = string2bytes(context.text, context.textFormat);
-        QByteArray crc = calculateCrc(data,
-                                      context.crc.algorithm,
-                                      context.crc.startIndex,
-                                      context.crc.endIndex,
-                                      context.crc.bigEndian);
+
+        CRC::Context ctx;
+        ctx.algorithm = static_cast<CRC::Algorithm>(context.crc.algorithm);
+        ctx.startIndex = context.crc.startIndex;
+        ctx.endIndex = context.crc.endIndex;
+        ctx.bigEndian = context.crc.bigEndian;
+        ctx.data = data;
+
+        QByteArray crc = CRC::calculate(ctx);
         str.append(QString::fromLatin1(crc.toHex()));
     }
 
@@ -861,11 +513,15 @@ QByteArray xIO::textItem2array(const TextItem &context)
     QByteArray prefix = xIO::cookedAffixes(static_cast<xIO::Affixes>(context.prefix));
     QString text = xIO::cookedEscapeCharacter(context.text, context.escapeCharacter);
     QByteArray payload = xIO::string2bytes(text, static_cast<xIO::TextFormat>(context.textFormat));
-    QByteArray crc = calculateCrc(payload,
-                                  context.crc.algorithm,
-                                  context.crc.startIndex,
-                                  context.crc.endIndex,
-                                  context.crc.bigEndian);
+
+    CRC::Context ctx;
+    ctx.algorithm = static_cast<CRC::Algorithm>(context.crc.algorithm);
+    ctx.startIndex = context.crc.startIndex;
+    ctx.endIndex = context.crc.endIndex;
+    ctx.bigEndian = context.crc.bigEndian;
+    ctx.data = payload;
+
+    QByteArray crc = CRC::calculate(ctx);
     QByteArray suffix = xIO::cookedAffixes(static_cast<xIO::Affixes>(context.suffix));
 
     if (context.crc.enable) {
@@ -884,7 +540,7 @@ xIO::TextItem xIO::loadTextItem(const QJsonObject &obj)
     ctx.escapeCharacter = static_cast<EscapeCharacter>(obj.value(keys.escapeCharacter).toInt());
     ctx.prefix = static_cast<Affixes>(obj.value(keys.prefix).toInt());
     ctx.suffix = static_cast<Affixes>(obj.value(keys.suffix).toInt());
-    ctx.crc.algorithm = static_cast<CrcAlgorithm>(obj.value(keys.crcAlgorithm).toInt());
+    ctx.crc.algorithm = obj.value(keys.crcAlgorithm).toInt();
     ctx.crc.bigEndian = obj.value(keys.crcBigEndian).toBool();
     ctx.crc.enable = obj.value(keys.crcEnable).toBool();
     ctx.crc.startIndex = obj.value(keys.crcStartIndex).toInt();
