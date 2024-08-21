@@ -67,7 +67,7 @@ QString xIO::CommunicationName(xIO::CommunicationType type)
     case CommunicationType::WebSocketServer:
         return QObject::tr("WebSocket Server");
     default:
-        return COMMON_UNKNOWN_STR;
+        return "Unknown";
     }
 }
 
@@ -117,7 +117,7 @@ QString xIO::textFormatName(TextFormat format)
     case TextFormat::Utf8:
         return QObject::tr("UTF-8");
     default:
-        return COMMON_UNKNOWN_STR;
+        return "Unknown";
     }
 }
 
@@ -716,7 +716,7 @@ QString xIO::webSocketDataChannelName(WebSocketDataChannel channel)
         return tr("Binary");
     }
 
-    return COMMON_UNKNOWN_STR;
+    return "Unknown";
 }
 
 void xIO::setupWebSocketDataChannel(QComboBox *comboBox)
@@ -758,7 +758,7 @@ QString xIO::responseOptionName(ResponseOption option)
     if (map.contains(option)) {
         return map[option];
     } else {
-        return COMMON_UNKNOWN_STR;
+        return "Unknown";
     }
 }
 

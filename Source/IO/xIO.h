@@ -14,9 +14,6 @@
 #include <QObject>
 #include <QSpinBox>
 
-#define COMMON_UNKNOWN (-1)
-#define COMMON_UNKNOWN_STR "Unknown"
-
 class xIO : public QObject
 {
     Q_OBJECT
