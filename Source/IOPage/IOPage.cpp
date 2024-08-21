@@ -112,11 +112,11 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     ui->widgetTxInfo->setupIO(m_txStatistician);
 
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responser
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
-             << m_serialPortTransfer
-#endif
              << m_udpClientTransfer << m_tcpClientTransfer << m_webSocketClientTransfer
              << m_webSocketServerTransfer;
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+    m_ioList << m_serialPortTransfer;
+#endif
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
@@ -223,7 +223,7 @@ void IOPage::load(const QVariantMap &parameters)
     ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
     ui->tabResponser->load(parameters.value(g_keys.responserItems).toMap());
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
-    m_serialPortServerTransferUi->load(parameters.value(g_keys.serialPortTransferItems).toMap());
+    m_serialPortTransferUi->load(parameters.value(g_keys.serialPortTransferItems).toMap());
 #endif
     m_udpClientTransferUi->load(parameters.value(g_keys.udpClientTransferItems).toMap());
     m_tcpClientTransferUi->load(parameters.value(g_keys.tcpClientTransferItems).toMap());
@@ -324,7 +324,7 @@ void IOPage::initUiInputControl()
 void IOPage::initUiOutput()
 {
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
-    ui->tabWidgetTransfers->addTab(m_serialPortServerTransferUi, tr("Serial Port"));
+    ui->tabWidgetTransfers->addTab(m_serialPortTransferUi, tr("Serial Port"));
 #endif
     ui->tabWidgetTransfers->addTab(m_udpClientTransferUi, tr("UDP Client"));
     ui->tabWidgetTransfers->addTab(m_tcpClientTransferUi, tr("TCP Client"));
@@ -336,7 +336,7 @@ void IOPage::initUiOutput()
     ui->tabEmitter->setupIO(m_emitter);
     ui->tabResponser->setupIO(m_responser);
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
-    ui->tabSerialPort->setupIO(m_serialPortTransfer);
+    m_serialPortTransferUi->setupIO(m_serialPortTransfer);
 #endif
     m_udpClientTransferUi->setupIO(m_udpClientTransfer);
     m_tcpClientTransferUi->setupIO(m_tcpClientTransfer);

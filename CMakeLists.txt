@@ -103,7 +103,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
-option(X_TOOLS_ENABLE_MODULE_SERIALPORT "Enable SerialPort module" OFF)
+option(X_TOOLS_ENABLE_MODULE_SERIALPORT "Enable SerialPort module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialPort)
 if(NOT Qt${QT_VERSION_MAJOR}SerialPort_FOUND)
   set(X_TOOLS_ENABLE_MODULE_SERIALPORT OFF)
