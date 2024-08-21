@@ -12,6 +12,8 @@
 #include <QDebug>
 #include <QtGlobal>
 
+namespace xTools {
+
 AbstractIO::AbstractIO(QObject *parent)
     : QThread{parent}
 {
@@ -71,3 +73,5 @@ void AbstractIO::setIsEnable(bool enable)
     m_enable = enable;
     emit isEnableChanged();
 }
+
+} // namespace xTools

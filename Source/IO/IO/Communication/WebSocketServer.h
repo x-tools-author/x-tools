@@ -12,6 +12,8 @@
 
 #include "SocketServer.h"
 
+namespace xTools {
+
 class WebSocketServer : public SocketServer
 {
     Q_OBJECT
@@ -34,3 +36,5 @@ private:
     void onTextMessageReceived(QWebSocket *socket, const QString &message);
     void onBinaryMessageReceived(QWebSocket *socket, const QByteArray &message);
 };
+
+} // namespace xTools

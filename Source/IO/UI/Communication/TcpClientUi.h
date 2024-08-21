@@ -10,6 +10,8 @@
 
 #include "SocketClientUi.h"
 
+namespace xTools {
+
 class TcpClientUi : public SocketClientUi
 {
     Q_OBJECT
@@ -17,3 +19,5 @@ public:
     explicit TcpClientUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~TcpClientUi() override;
 };
+
+} // namespace xTools

@@ -10,6 +10,8 @@
 
 #include <QTcpSocket>
 
+namespace xTools {
+
 TcpServer::TcpServer(QObject *parent)
     : SocketServer(parent)
 {}
@@ -117,3 +119,5 @@ void TcpServer::removeSocket(QTcpSocket *socket)
     socket->deleteLater();
     m_sockets.removeAll(socket);
 }
+
+} // namespace xTools

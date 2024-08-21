@@ -8,8 +8,12 @@
  **************************************************************************************************/
 #include "SocketClientUi.h"
 
+namespace xTools {
+
 SocketClientUi::SocketClientUi(xIO::CommunicationType type, QWidget *parent)
     : SocketUi(type, parent)
 {}
 
 SocketClientUi::~SocketClientUi() {}
+
+} // namespace xTools

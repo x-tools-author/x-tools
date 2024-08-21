@@ -13,6 +13,8 @@
 #include <QThread>
 #include <QVariant>
 
+namespace xTools {
+
 class BleScanner : public QThread
 {
     Q_OBJECT
@@ -35,3 +37,5 @@ private:
     void onDiscoveryErrorOccurred();
     void onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo &info);
 };
+
+} // namespace xTools

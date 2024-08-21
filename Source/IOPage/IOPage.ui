@@ -252,7 +252,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>4</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
@@ -297,7 +297,7 @@
           </widget>
          </item>
          <item>
-          <widget class="StatisticianUi" name="widgetRxInfo" native="true"/>
+          <widget class="xTools::StatisticianUi" name="widgetRxInfo" native="true"/>
          </item>
          <item>
           <widget class="Line" name="lineRxTx">
@@ -317,7 +317,7 @@
           </widget>
          </item>
          <item>
-          <widget class="StatisticianUi" name="widgetTxInfo" native="true"/>
+          <widget class="xTools::StatisticianUi" name="widgetTxInfo" native="true"/>
          </item>
         </layout>
        </item>
@@ -414,7 +414,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>StatisticianUi</class>
+   <class>xTools::StatisticianUi</class>
    <extends>QWidget</extends>
    <header location="global">IO/UI/Processor/StatisticianUi.h</header>
    <container>1</container>

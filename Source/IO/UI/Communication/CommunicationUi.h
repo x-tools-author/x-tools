@@ -14,6 +14,8 @@
 #include "../../xIO.h"
 #include "../AbstractIOUi.h"
 
+namespace xTools {
+
 class Communication;
 class CommunicationUi : public AbstractIOUi
 {
@@ -29,3 +31,5 @@ public:
 private:
     xIO::CommunicationType const m_type;
 };
+
+} // namespace xTools

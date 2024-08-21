@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+namespace xTools {
+
 class Communication;
 class IOFactory
 {
@@ -20,3 +22,5 @@ public:
     static IOFactory &singleton();
     Communication *createDevice(int type);
 };
+
+} // namespace xTools

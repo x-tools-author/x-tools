@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "SocketServer.h"
 
+namespace xTools {
+
 SocketServer::SocketServer(QObject *parent)
     : Socket(parent)
 {}
@@ -74,3 +76,5 @@ void SocketServer::clearClients()
     m_clientsMutex.unlock();
     emit clientsChanged(SocketPrivateSignal{});
 }
+
+} // namespace xTools

@@ -15,6 +15,8 @@
 
 #include "Communication.h"
 
+namespace xTools {
+
 class BleCentral : public Communication
 {
     Q_OBJECT
@@ -42,3 +44,5 @@ private:
 
     void onDiscoveryFinished();
 };
+
+} // namespace xTools

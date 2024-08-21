@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "UdpServerUi.h"
 
+namespace xTools {
+
 UdpServerUi::UdpServerUi(xIO::CommunicationType type, QWidget *parent)
     : SocketServerUi(type, parent)
 {
@@ -17,3 +19,5 @@ UdpServerUi::UdpServerUi(xIO::CommunicationType type, QWidget *parent)
 }
 
 UdpServerUi::~UdpServerUi() {}
+
+} // namespace xTools

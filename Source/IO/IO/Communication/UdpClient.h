@@ -12,6 +12,8 @@
 
 #include "SocketClient.h"
 
+namespace xTools {
+
 class UdpClient : public SocketClient
 {
     Q_OBJECT
@@ -29,3 +31,5 @@ private:
 private:
     void readPendingDatagrams();
 };
+
+} // namespace xTools

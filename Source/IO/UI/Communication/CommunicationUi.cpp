@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "CommunicationUi.h"
 
+namespace xTools {
+
 CommunicationUi::CommunicationUi(xIO::CommunicationType type, QWidget *parent)
     : AbstractIOUi(parent)
     , m_type(type)
@@ -17,3 +19,5 @@ xIO::CommunicationType CommunicationUi::type() const
 {
     return m_type;
 }
+
+} // namespace xTools

@@ -10,6 +10,8 @@
 
 #include "SocketServerUi.h"
 
+namespace xTools {
+
 class WebSocketServerUi : public SocketServerUi
 {
     Q_OBJECT
@@ -17,3 +19,5 @@ public:
     explicit WebSocketServerUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~WebSocketServerUi() override;
 };
+
+} // namespace xTools

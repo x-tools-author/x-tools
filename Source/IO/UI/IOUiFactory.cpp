@@ -24,6 +24,8 @@
 #include "Communication/WebSocketClientUi.h"
 #include "Communication/WebSocketServerUi.h"
 
+namespace xTools {
+
 IOUiFactory::IOUiFactory() {}
 
 IOUiFactory &IOUiFactory::singleton()
@@ -59,3 +61,5 @@ CommunicationUi *IOUiFactory::createDeviceUi(xIO::CommunicationType type)
         return nullptr;
     }
 }
+
+} // namespace xTools

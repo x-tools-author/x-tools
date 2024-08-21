@@ -10,6 +10,8 @@
 
 #include "../../IO/Communication/SocketServer.h"
 
+namespace xTools {
+
 SocketServerUi::SocketServerUi(xIO::CommunicationType type, QWidget *parent)
     : SocketUi(type, parent)
 {}
@@ -34,3 +36,5 @@ void SocketServerUi::setUiEnabled(bool enabled)
 {
     setServerWidgetsEnabled(enabled);
 }
+
+} // namespace xTools

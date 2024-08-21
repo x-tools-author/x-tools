@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "UdpClient.h"
 
+namespace xTools {
+
 UdpClient::UdpClient(QObject *parent)
     : SocketClient(parent)
 {}
@@ -65,3 +67,5 @@ void UdpClient::readPendingDatagrams()
         }
     }
 }
+
+} // namespace xTools

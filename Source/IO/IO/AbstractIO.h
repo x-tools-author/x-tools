@@ -13,6 +13,8 @@
 #include <QThread>
 #include <QVariantMap>
 
+namespace xTools {
+
 class AbstractIO : public QThread
 {
     Q_OBJECT
@@ -44,3 +46,5 @@ signals:
     void isWorkingChanged();
     void isEnableChanged();
 };
+
+} // namespace xTools

@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "BleCentral.h"
 
+namespace xTools {
+
 BleCentral::BleCentral(QObject *parent)
     : Communication(parent)
 {}
@@ -178,3 +180,5 @@ void BleCentral::onDiscoveryFinished()
         service->discoverDetails();
     }
 }
+
+} // namespace xTools

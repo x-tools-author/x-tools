@@ -11,6 +11,8 @@
 #include <QVariantMap>
 #include <QWidget>
 
+namespace xTools {
+
 class AbstractIO;
 class AbstractIOUi : public QWidget
 {
@@ -23,3 +25,5 @@ public:
     virtual void load(const QVariantMap &parameters) = 0;
     virtual void setupIO(AbstractIO *io) { Q_UNUSED(io); };
 };
+
+} // namespace xTools

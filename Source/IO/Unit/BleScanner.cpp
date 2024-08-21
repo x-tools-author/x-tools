@@ -12,6 +12,8 @@
 #include <QDebug>
 #include <QtGlobal>
 
+namespace xTools {
+
 BleScanner::BleScanner(QObject* parent)
     : QThread(parent)
     , m_discover(Q_NULLPTR)
@@ -76,3 +78,4 @@ void BleScanner::onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo& info)
     emit deviceDiscovered(info);
 }
 
+} // namespace xTools

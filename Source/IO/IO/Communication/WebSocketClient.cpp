@@ -10,6 +10,8 @@
 
 #include "../../xIO.h"
 
+namespace xTools {
+
 WebSocketClient::WebSocketClient(QObject *parent)
     : SocketClient(parent)
 {}
@@ -88,3 +90,5 @@ void WebSocketClient::onBinaryMessageReceived(const QByteArray &message)
     QString flag = makeFlag(m_serverAddress, m_serverPort);
     emit bytesRead(message, flag + "[B]");
 }
+
+} // namespace xTools

@@ -12,7 +12,9 @@
 #include <QTimer>
 
 #include "Communication.h"
-class QTimer;
+
+namespace xTools {
+
 class SerialPort : public Communication
 {
     Q_OBJECT
@@ -36,3 +38,5 @@ private:
     void readBytesFromDevice();
     void calculateInterFrameDelay();
 };
+
+} // namespace xTools

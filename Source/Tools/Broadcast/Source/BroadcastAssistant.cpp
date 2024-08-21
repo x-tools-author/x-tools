@@ -28,7 +28,8 @@ BroadcastAssistant::BroadcastAssistant(QWidget* parent)
     connect(m_broadcastThread, &BroadcastThread::bytesWritten, this, [=](const QByteArray& bytes) {
         QByteArray temp = bytes;
         int format = ui->comboBoxOutputFormat->currentData().toInt();
-        auto bytesString = xIO::bytes2string(temp, static_cast<xIO::TextFormat>(format));
+        auto bytesString = xTools::xIO::bytes2string(temp,
+                                                     static_cast<xTools::xIO::TextFormat>(format));
         auto info = QDateTime::currentDateTime().toString("hh:mm:ss");
         info += " Tx: ";
         info = QString("<font color=silver>%1</font>").arg(info);
@@ -47,8 +48,8 @@ BroadcastAssistant::BroadcastAssistant(QWidget* parent)
     initUi();
     setWindowTitle(tr("Broadcast Assistant"));
 
-    xIO::setupAddition(ui->comboBoxBroadcastPrefix);
-    xIO::setupAddition(ui->comboBoxBroadcastSuffix);
+    xTools::xIO::setupAddition(ui->comboBoxBroadcastPrefix);
+    xTools::xIO::setupAddition(ui->comboBoxBroadcastSuffix);
 }
 
 BroadcastAssistant::~BroadcastAssistant()
@@ -130,14 +131,14 @@ QByteArray BroadcastAssistant::packetData()
     QByteArray bytes;
 
     int prefixType = ui->comboBoxBroadcastPrefix->currentData().toInt();
-    QByteArray prefix = xIO::cookedAffixes(static_cast<xIO::Affixes>(prefixType));
+    QByteArray prefix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(prefixType));
 
     int format = ui->comboBoxBroadcastFormat->currentData().toInt();
     QString text = ui->lineEditBroadcastData->text();
-    QByteArray data = xIO::string2bytes(text, static_cast<xIO::TextFormat>(format));
+    QByteArray data = xTools::xIO::string2bytes(text, static_cast<xTools::xIO::TextFormat>(format));
 
     int suffixType = ui->comboBoxBroadcastSuffix->currentData().toInt();
-    QByteArray suffix = xIO::cookedAffixes(static_cast<xIO::Affixes>(suffixType));
+    QByteArray suffix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(suffixType));
 
     bytes.append(prefix);
     bytes.append(data);

@@ -14,6 +14,8 @@
 
 #include "../AbstractIO.h"
 
+namespace xTools {
+
 class Communication : public AbstractIO
 {
     Q_OBJECT
@@ -52,3 +54,5 @@ private:
 private:
     Q_SIGNAL void invokeWriteBytes(const QByteArray &bytes);
 };
+
+} // namespace xTools

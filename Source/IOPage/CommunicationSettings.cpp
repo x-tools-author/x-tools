@@ -20,7 +20,7 @@ CommunicationSettings::CommunicationSettings(QWidget *parent)
     , ui(new Ui::CommunicationSettings)
 {
     ui->setupUi(this);
-    xIO::setupTextFormat(ui->comboBoxSaveTextFormat);
+    xTools::xIO::setupTextFormat(ui->comboBoxSaveTextFormat);
     ui->comboBoxMaxBytes->addItem("16K", 16);
     ui->comboBoxMaxBytes->addItem("32K", 32);
     ui->comboBoxMaxBytes->addItem("64K", 64);

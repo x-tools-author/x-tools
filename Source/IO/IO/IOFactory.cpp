@@ -24,6 +24,8 @@
 #include "Communication/WebSocketClient.h"
 #include "Communication/WebSocketServer.h"
 
+namespace xTools {
+
 IOFactory::IOFactory() {}
 
 IOFactory &IOFactory::singleton()
@@ -60,3 +62,5 @@ Communication *IOFactory::createDevice(int type)
         return nullptr;
     }
 }
+
+} // namespace xTools

@@ -23,6 +23,8 @@
 #include <QSerialPortInfo>
 #endif
 
+namespace xTools {
+
 QList<int> xIO::supportedCommunicationTypes()
 {
     static QList<int> deviceTypes;
@@ -1071,3 +1073,5 @@ void xIO::setupSocketPort(QSpinBox *spinBox)
 {
     spinBox->setRange(0, 65535);
 }
+
+} // namespace xTools

@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "Socket.h"
 
+namespace xTools {
+
 Socket::Socket(QObject *parent)
     : Communication(parent)
 {
@@ -57,3 +59,5 @@ bool Socket::isValidFlag(const QPair<QString, quint16> &pair) const
 
     return true;
 }
+
+} // namespace xTools

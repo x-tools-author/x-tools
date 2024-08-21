@@ -11,6 +11,8 @@
 
 #include "../../IO/Processor/Statistician.h"
 
+namespace xTools {
+
 StatisticianUi::StatisticianUi(QWidget *parent)
     : AbstractIOUi{parent}
     , ui(new Ui::StatisticianUi)
@@ -66,3 +68,5 @@ void StatisticianUi::updateInfo()
     QString info = tr("%1 frames, %2 bytes, %3B/s").arg(frame).arg(bytes).arg(speed);
     ui->label->setText(info);
 }
+
+} // namespace xTools

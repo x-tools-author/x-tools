@@ -14,6 +14,8 @@
 #include <QObject>
 #include <QSpinBox>
 
+namespace xTools {
+
 class xIO : public QObject
 {
     Q_OBJECT
@@ -206,3 +208,5 @@ public:
     static void setupSocketAddress(QComboBox *cb);
     static void setupSocketPort(QSpinBox *spinBox);
 };
+
+} // namespace xTools

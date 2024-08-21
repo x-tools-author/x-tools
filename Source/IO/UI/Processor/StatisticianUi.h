@@ -14,6 +14,8 @@ namespace Ui {
 class StatisticianUi;
 }
 
+namespace xTools {
+
 class Statistician;
 class StatisticianUi : public AbstractIOUi
 {
@@ -33,3 +35,5 @@ private:
 private:
     void updateInfo();
 };
+
+} // namespace xTools

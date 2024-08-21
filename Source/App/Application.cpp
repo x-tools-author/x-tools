@@ -187,12 +187,12 @@ void Application::setValidator(QLineEdit *target, int validatorType, int maxLeng
         auto hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
         auto asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
 
-        regularExpressionMap.insert(int(xIO::TextFormat::Bin), binValidator);
-        regularExpressionMap.insert(int(xIO::TextFormat::Oct), otcValidator);
-        regularExpressionMap.insert(int(xIO::TextFormat::Dec), decValidator);
-        regularExpressionMap.insert(int(xIO::TextFormat::Hex), hexValidator);
-        regularExpressionMap.insert(int(xIO::TextFormat::Ascii), asciiValidator);
-        regularExpressionMap.insert(int(xIO::TextFormat::Utf8), urf8Validator);
+        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Bin), binValidator);
+        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Oct), otcValidator);
+        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Dec), decValidator);
+        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Hex), hexValidator);
+        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Ascii), asciiValidator);
+        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Utf8), urf8Validator);
     }
 
     if (!target || !regularExpressionMap.contains(validatorType) || maxLength < 0) {

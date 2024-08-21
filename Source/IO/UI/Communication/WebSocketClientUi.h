@@ -10,6 +10,8 @@
 
 #include "SocketClientUi.h"
 
+namespace xTools {
+
 class WebSocketClientUi : public SocketClientUi
 {
     Q_OBJECT
@@ -19,3 +21,5 @@ public:
 
     void setUiEnabled(bool enabled) override;
 };
+
+} // namespace xTools

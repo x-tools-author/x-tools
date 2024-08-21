@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "UdpClientUi.h"
 
+namespace xTools {
+
 UdpClientUi::UdpClientUi(xIO::CommunicationType type, QWidget *parent)
     : SocketClientUi(type, parent)
 {
@@ -22,3 +24,5 @@ void UdpClientUi::setUiEnabled(bool enabled)
 {
     setClientWidgetsEnabled(enabled);
 }
+
+} // namespace xTools

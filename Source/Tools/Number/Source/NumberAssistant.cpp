@@ -19,8 +19,8 @@ NumberAssistant::NumberAssistant(QWidget *parent)
 {
     ui->setupUi(this);
 
-    xTools::Application::setValidator(ui->lineEditRawData, static_cast<int>(xIO::TextFormat::Hex));
-    xTools::Application::setValidator(ui->lineEditCookedDec, static_cast<int>(xIO::TextFormat::Dec));
+    xTools::Application::setValidator(ui->lineEditRawData, static_cast<int>(xTools::xIO::TextFormat::Hex));
+    xTools::Application::setValidator(ui->lineEditCookedDec, static_cast<int>(xTools::xIO::TextFormat::Dec));
 
     ui->comboBoxCookedDataType->addItem("int8_t", CookedDataTypeInt8);
     ui->comboBoxCookedDataType->addItem("uint8_t", CookedDataTypeUint8);
@@ -65,8 +65,8 @@ void NumberAssistant::updateCookedData()
 
     QByteArray tmpBa = ba;
     std::reverse(tmpBa.begin(), tmpBa.end());
-    QString binStr = xIO::bytes2string(tmpBa, xIO::TextFormat::Bin);
-    QString hexStr = xIO::bytes2string(tmpBa, xIO::TextFormat::Hex);
+    QString binStr = xTools::xIO::bytes2string(tmpBa, xTools::xIO::TextFormat::Bin);
+    QString hexStr = xTools::xIO::bytes2string(tmpBa, xTools::xIO::TextFormat::Hex);
     ui->lineEditCookedBin->setText(binStr);
     ui->lineEditCookedHex->setText(hexStr);
 

@@ -10,9 +10,9 @@
 
 #include <QAbstractTableModel>
 
-class Communication;
-
 namespace xTools {
+
+class Communication;
 
 class AbstractTransferModel : public QAbstractTableModel
 {

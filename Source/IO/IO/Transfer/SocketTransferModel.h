@@ -10,10 +10,9 @@
 
 #include "AbstractTransferModel.h"
 
-class Socket;
-
 namespace xTools {
 
+class Socket;
 class SocketTransferModel : public AbstractTransferModel
 {
     Q_OBJECT

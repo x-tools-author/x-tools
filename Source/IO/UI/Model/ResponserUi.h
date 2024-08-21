@@ -10,10 +10,9 @@
 
 #include "AbstractModelUi.h"
 
-class AbstractIO;
-
 namespace xTools {
 
+class AbstractIO;
 class ResponserUi : public AbstractModelUi
 {
     Q_OBJECT

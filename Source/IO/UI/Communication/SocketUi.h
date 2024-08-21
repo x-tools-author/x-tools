@@ -16,6 +16,8 @@ class SocketUi;
 }
 QT_END_NAMESPACE
 
+namespace xTools {
+
 class SocketUi : public CommunicationUi
 {
     Q_OBJECT
@@ -48,3 +50,5 @@ protected:
 private:
     Ui::SocketUi *ui;
 };
+
+} // namespace xTools

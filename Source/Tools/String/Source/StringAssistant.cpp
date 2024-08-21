@@ -30,8 +30,8 @@ StringAssistant::StringAssistant(QWidget* parent)
             this,
             &StringAssistant::onOutputFormatComboBoxCurrentTextChanged);
 
-    xIO::setupTextFormat(ui->outputFormatComboBox);
-    xIO::setupTextFormat(ui->inputFormatComboBox);
+    xTools::xIO::setupTextFormat(ui->outputFormatComboBox);
+    xTools::xIO::setupTextFormat(ui->inputFormatComboBox);
 }
 
 StringAssistant::~StringAssistant()
@@ -62,11 +62,11 @@ void StringAssistant::onInputFormatComboBoxCurrentIndexChanged(int index)
 void StringAssistant::onCreatePushButtonClicked()
 {
     QString inputString = ui->textEdit->toPlainText();
-    auto inputFormat = static_cast<xIO::TextFormat>(ui->inputFormatComboBox->currentData().toInt());
-    QByteArray inputArray = xIO::string2bytes(inputString, inputFormat);
-    auto outputFormat = static_cast<xIO::TextFormat>(
+    auto inputFormat = static_cast<xTools::xIO::TextFormat>(ui->inputFormatComboBox->currentData().toInt());
+    QByteArray inputArray = xTools::xIO::string2bytes(inputString, inputFormat);
+    auto outputFormat = static_cast<xTools::xIO::TextFormat>(
         ui->outputFormatComboBox->currentData().toInt());
-    auto outputString = xIO::bytes2string(inputArray, outputFormat);
+    auto outputString = xTools::xIO::bytes2string(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);
 }
 

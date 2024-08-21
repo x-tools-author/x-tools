@@ -8,8 +8,12 @@
  **************************************************************************************************/
 #include "AbstractIOUi.h"
 
+namespace xTools {
+
 AbstractIOUi::AbstractIOUi(QWidget *parent)
     : QWidget(parent)
 {}
 
 AbstractIOUi::~AbstractIOUi() {}
+
+} // namespace xTools

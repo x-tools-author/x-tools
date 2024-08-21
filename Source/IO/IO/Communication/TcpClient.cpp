@@ -8,6 +8,9 @@
  **************************************************************************************************/
 #include "TcpClient.h"
 #include <QHostAddress>
+
+namespace xTools {
+
 TcpClient::TcpClient(QObject *parent)
     : SocketClient(parent)
 {}
@@ -73,3 +76,5 @@ void TcpClient::readBytesFromDevice()
     QByteArray bytes = m_tcpSocket->readAll();
     emit bytesRead(bytes, makeFlag(m_serverAddress, m_serverPort));
 }
+
+} // namespace xTools

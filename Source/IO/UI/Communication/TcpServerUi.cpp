@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "TcpServerUi.h"
 
+namespace xTools {
+
 TcpServerUi::TcpServerUi(xIO::CommunicationType type, QWidget *parent)
     : SocketServerUi(type, parent)
 {
@@ -17,3 +19,5 @@ TcpServerUi::TcpServerUi(xIO::CommunicationType type, QWidget *parent)
 }
 
 TcpServerUi::~TcpServerUi() {}
+
+} // namespace xTools

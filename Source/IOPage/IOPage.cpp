@@ -83,8 +83,8 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     , m_writeTimer{new QTimer(this)}
     , m_updateLabelInfoTimer{new QTimer(this)}
     , m_highlighter{new SyntaxHighlighter(this)}
-    , m_rxStatistician{new Statistician(this)}
-    , m_txStatistician{new Statistician(this)}
+    , m_rxStatistician{new xTools::Statistician(this)}
+    , m_txStatistician{new xTools::Statistician(this)}
     , m_preset{new xTools::Preset(this)}
     , m_emitter{new xTools::Emitter(this)}
     , m_responser{new xTools::Responser(this)}
@@ -265,12 +265,12 @@ void IOPage::initUiCommunication()
     m_ioSettings = new CommunicationSettings();
     setupMenu(target, m_ioSettings);
 
-    xIO::setupCommunicationTypes(ui->comboBoxCommmunicationTypes);
+    xTools::xIO::setupCommunicationTypes(ui->comboBoxCommmunicationTypes);
 }
 
 void IOPage::initUiOutputControl()
 {
-    xIO::setupTextFormat(ui->comboBoxOutputFormat);
+    xTools::xIO::setupTextFormat(ui->comboBoxOutputFormat);
     ui->checkBoxOutputRx->setChecked(true);
     ui->checkBoxOutputTx->setChecked(true);
     ui->checkBoxOutputTime->setChecked(true);
@@ -306,7 +306,7 @@ void IOPage::initUiInputControl()
             &IOPage::onCycleIntervalChanged);
     connect(ui->pushButtonInputWriteBytes, &QPushButton::clicked, this, &IOPage::writeBytes);
 
-    xIO::setupTextFormat(ui->comboBoxInputFormat);
+    xTools::xIO::setupTextFormat(ui->comboBoxInputFormat);
     ui->comboBoxInputInterval->addItem(tr("Disable"), -1);
     for (int i = 10; i <= 50; i += 10) {
         ui->comboBoxInputInterval->addItem(QString::number(i), i);
@@ -369,8 +369,8 @@ void IOPage::onCommunicationTypeChanged()
     }
 
     int type = ui->comboBoxCommmunicationTypes->currentData().toInt();
-    auto cookedType = static_cast<xIO::CommunicationType>(type);
-    m_ioUi = IOUiFactory::singleton().createDeviceUi(cookedType);
+    auto cookedType = static_cast<xTools::xIO::CommunicationType>(type);
+    m_ioUi = xTools::IOUiFactory::singleton().createDeviceUi(cookedType);
     if (m_ioUi) {
         loadControllerParameters();
         ui->verticalLayoutCommunicationController->addWidget(m_ioUi);
@@ -390,7 +390,7 @@ void IOPage::onCycleIntervalChanged()
 void IOPage::onInputFormatChanged()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    xIO::setupTextFormatValidator(ui->lineEditInput, static_cast<xIO::TextFormat>(format));
+    xTools::xIO::setupTextFormatValidator(ui->lineEditInput, static_cast<xTools::xIO::TextFormat>(format));
     ui->lineEditInput->clear();
 }
 
@@ -471,7 +471,7 @@ void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
 void IOPage::open()
 {
     int type = ui->comboBoxCommmunicationTypes->currentData().toInt();
-    m_io = IOFactory::singleton().createDevice(type);
+    m_io = xTools::IOFactory::singleton().createDevice(type);
     if (m_io) {
         setUiEnabled(false);
 
@@ -480,33 +480,33 @@ void IOPage::open()
         }
 
         // clang-format off
-        connect(m_io, &Communication::opened, this, &IOPage::onOpened);
-        connect(m_io, &Communication::closed, this, &IOPage::onClosed);
-        connect(m_io, &Communication::bytesWritten, this, &IOPage::onBytesWritten);
-        connect(m_io, &Communication::bytesRead, this, &IOPage::onBytesRead);
-        connect(m_io, &Communication::errorOccurred, this, &IOPage::onErrorOccurred);
-        connect(m_io, &Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
-        connect(m_io, &Communication::outputBytes, m_responser, &xTools::Responser::inputBytes);
+        connect(m_io, &xTools::Communication::opened, this, &IOPage::onOpened);
+        connect(m_io, &xTools::Communication::closed, this, &IOPage::onClosed);
+        connect(m_io, &xTools::Communication::bytesWritten, this, &IOPage::onBytesWritten);
+        connect(m_io, &xTools::Communication::bytesRead, this, &IOPage::onBytesRead);
+        connect(m_io, &xTools::Communication::errorOccurred, this, &IOPage::onErrorOccurred);
+        connect(m_io, &xTools::Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
+        connect(m_io, &xTools::Communication::outputBytes, m_responser, &xTools::Responser::inputBytes);
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
-        connect(m_io, &Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
+        connect(m_io, &xTools::Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
 #endif
-        connect(m_io, &Communication::outputBytes, m_udpClientTransfer, &xTools::UdpClientTransfer::inputBytes);
-        connect(m_io, &Communication::outputBytes, m_tcpClientTransfer, &xTools::TcpClientTransfer::inputBytes);
-        connect(m_io, &Communication::outputBytes, m_tcpServerTransfer, &xTools::TcpServerTransfer::inputBytes);
-        connect(m_io, &Communication::outputBytes, m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::inputBytes);
-        connect(m_io, &Communication::outputBytes, m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::inputBytes);
+        connect(m_io, &xTools::Communication::outputBytes, m_udpClientTransfer, &xTools::UdpClientTransfer::inputBytes);
+        connect(m_io, &xTools::Communication::outputBytes, m_tcpClientTransfer, &xTools::TcpClientTransfer::inputBytes);
+        connect(m_io, &xTools::Communication::outputBytes, m_tcpServerTransfer, &xTools::TcpServerTransfer::inputBytes);
+        connect(m_io, &xTools::Communication::outputBytes, m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::inputBytes);
+        connect(m_io, &xTools::Communication::outputBytes, m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::inputBytes);
 
-        connect(m_preset, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_emitter, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_responser, &xTools::Responser::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_preset, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_emitter, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_responser, &xTools::Responser::outputBytes, m_io, &xTools::Communication::inputBytes);
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
-        connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
 #endif
-        connect(m_udpClientTransfer, &xTools::UdpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_tcpClientTransfer, &xTools::TcpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_tcpServerTransfer, &xTools::TcpServerTransfer::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_udpClientTransfer, &xTools::UdpClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_tcpClientTransfer, &xTools::TcpClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_tcpServerTransfer, &xTools::TcpServerTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
         // clang-format on
 
         QVariantMap parameters = m_ioUi->save();
@@ -543,10 +543,10 @@ void IOPage::writeBytes()
     }
 
     auto parameters = m_inputSettings->parameters();
-    QByteArray prefix = xIO::cookedAffixes(static_cast<xIO::Affixes>(parameters.prefix));
+    QByteArray prefix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(parameters.prefix));
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xIO::cookedAffixes(static_cast<xIO::Affixes>(parameters.suffix));
+    QByteArray suffix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(parameters.suffix));
 
     if (parameters.appendCrc) {
         m_io->inputBytes(prefix + payload + crc + suffix);
@@ -559,10 +559,10 @@ void IOPage::updateLabelInfo()
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
 
-    QByteArray prefix = xIO::cookedAffixes(static_cast<xIO::Affixes>(parameters.prefix));
+    QByteArray prefix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(parameters.prefix));
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xIO::cookedAffixes(static_cast<xIO::Affixes>(parameters.suffix));
+    QByteArray suffix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(parameters.suffix));
 
     QString prefixString = QString::fromLatin1(prefix.toHex()).toUpper();
     QString payloadString = QString::fromLatin1(payload.toHex()).toUpper();
@@ -663,7 +663,7 @@ void IOPage::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     }
 
     QString dateTimeString = ::dateTimeString(showDate, showTime, showMs);
-    QString text = xIO::bytes2string(bytes, static_cast<xIO::TextFormat>(format));
+    QString text = xTools::xIO::bytes2string(bytes, static_cast<xTools::xIO::TextFormat>(format));
     QString rxtx = isRx ? QStringLiteral("Rx") : QStringLiteral("Tx");
     rxtx = QString("<font color=%1>%2</font>").arg(isRx ? "blue" : "green", rxtx);
 
@@ -710,17 +710,17 @@ QByteArray IOPage::payload() const
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     QString text = ui->lineEditInput->text();
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    auto escapeCharacter = static_cast<xIO::EscapeCharacter>(parameters.escapeCharacter);
-    text = xIO::cookedEscapeCharacter(text, escapeCharacter);
-    QByteArray payload = xIO::string2bytes(text, static_cast<xIO::TextFormat>(format));
+    auto escapeCharacter = static_cast<xTools::xIO::EscapeCharacter>(parameters.escapeCharacter);
+    text = xTools::xIO::cookedEscapeCharacter(text, escapeCharacter);
+    QByteArray payload = xTools::xIO::string2bytes(text, static_cast<xTools::xIO::TextFormat>(format));
     return payload;
 }
 
 QByteArray IOPage::crc(const QByteArray &payload) const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
-    return xIO::calculateCrc(payload,
-                             static_cast<xIO::CrcAlgorithm>(parameters.algorithm),
+    return xTools::xIO::calculateCrc(payload,
+                             static_cast<xTools::xIO::CrcAlgorithm>(parameters.algorithm),
                              parameters.startIndex,
                              parameters.endIndex,
                              parameters.bigEndian);

@@ -12,6 +12,8 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
+namespace xTools {
+
 SerialPortUi::SerialPortUi(xIO::CommunicationType type, QWidget *parent)
     : CommunicationUi(type, parent)
     , ui(new Ui::SerialPortUi)
@@ -64,3 +66,5 @@ void SerialPortUi::refresh()
 {
     xIO::setupPortName(ui->comboBoxPortName);
 }
+
+} // namespace xTools

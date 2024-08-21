@@ -10,6 +10,8 @@
 
 #include "Socket.h"
 
+namespace xTools {
+
 class SocketClient : public Socket
 {
     Q_OBJECT
@@ -17,3 +19,5 @@ public:
     explicit SocketClient(QObject *parent = nullptr);
     ~SocketClient() override;
 };
+
+} // namespace xTools

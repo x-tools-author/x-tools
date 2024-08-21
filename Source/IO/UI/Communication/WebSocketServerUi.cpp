@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "WebSocketServerUi.h"
 
+namespace xTools {
+
 WebSocketServerUi::WebSocketServerUi(xIO::CommunicationType type, QWidget *parent)
     : SocketServerUi(type, parent)
 {
@@ -16,3 +18,5 @@ WebSocketServerUi::WebSocketServerUi(xIO::CommunicationType type, QWidget *paren
 }
 
 WebSocketServerUi::~WebSocketServerUi() {}
+
+} // namespace xTools

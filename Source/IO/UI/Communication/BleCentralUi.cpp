@@ -15,6 +15,8 @@
 #include "../../IO/Communication/BleCentral.h"
 #include "../../Unit/BleScanner.h"
 
+namespace xTools {
+
 BleCentralUi::BleCentralUi(xIO::CommunicationType type, QWidget *parent)
     : CommunicationUi(type, parent)
     , ui(new Ui::BleCentralUi)
@@ -345,3 +347,5 @@ QByteArray BleCentralUi::disnotifyValue() const
     static const QByteArray disnotifyValue = QByteArray::fromHex("0000");
     return disnotifyValue;
 }
+
+} // namespace xTools

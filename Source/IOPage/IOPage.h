@@ -43,14 +43,18 @@ class WebSocketServerTransferUi;
 }
 QT_END_NAMESPACE
 
-class AbstractIO;
-class Statistician;
 class InputSettings;
 class OutputSettings;
-class Communication;
-class CommunicationUi;
 class SyntaxHighlighter;
 class CommunicationSettings;
+
+namespace xTools {
+class AbstractIO;
+class Statistician;
+class Communication;
+class CommunicationUi;
+} // namespace xTools
+
 class IOPage : public QWidget
 {
     Q_OBJECT
@@ -66,16 +70,16 @@ public:
 
 private:
     Ui::IOPage *ui;
-    Communication *m_io;
-    CommunicationUi *m_ioUi;
+    xTools::Communication *m_io;
+    xTools::CommunicationUi *m_ioUi;
     CommunicationSettings *m_ioSettings;
     OutputSettings *m_outputSettings;
     InputSettings *m_inputSettings;
     QTimer *m_writeTimer;
     QTimer *m_updateLabelInfoTimer;
     SyntaxHighlighter *m_highlighter;
-    Statistician *m_rxStatistician;
-    Statistician *m_txStatistician;
+    xTools::Statistician *m_rxStatistician;
+    xTools::Statistician *m_txStatistician;
     xTools::Preset *m_preset;
     xTools::Emitter *m_emitter;
     xTools::Responser *m_responser;
@@ -96,7 +100,7 @@ private:
 
     QButtonGroup m_pageButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_pageContextMap;
-    QList<AbstractIO *> m_ioList;
+    QList<xTools::AbstractIO *> m_ioList;
     QButtonGroup m_transferButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_transferContextMap;
     QSettings *m_settings;

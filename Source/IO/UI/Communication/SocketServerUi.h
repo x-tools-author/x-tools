@@ -10,6 +10,8 @@
 
 #include "SocketUi.h"
 
+namespace xTools {
+
 class SocketServerUi : public SocketUi
 {
     Q_OBJECT
@@ -20,3 +22,5 @@ public:
     void setupDevice(Communication *device) override;
     void setUiEnabled(bool enabled) override;
 };
+
+} // namespace xTools

@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "WebSocketClientUi.h"
 
+namespace xTools {
+
 WebSocketClientUi::WebSocketClientUi(xIO::CommunicationType type, QWidget *parent)
     : SocketClientUi(type, parent)
 {
@@ -21,3 +23,5 @@ void WebSocketClientUi::setUiEnabled(bool enabled)
 {
     Q_UNUSED(enabled);
 }
+
+} // namespace xTools

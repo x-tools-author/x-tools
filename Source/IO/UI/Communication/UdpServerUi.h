@@ -10,6 +10,8 @@
 
 #include "SocketServerUi.h"
 
+namespace xTools {
+
 class UdpServerUi : public SocketServerUi
 {
     Q_OBJECT
@@ -17,3 +19,5 @@ public:
     explicit UdpServerUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~UdpServerUi() override;
 };
+
+} // namespace xTools
