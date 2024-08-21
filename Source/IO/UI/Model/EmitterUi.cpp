@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "EmitterUi.h"
 
+#include <QCheckBox>
 #include <QFile>
 #include <QHeaderView>
 #include <QJsonArray>

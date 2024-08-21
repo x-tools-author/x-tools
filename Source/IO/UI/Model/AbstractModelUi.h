@@ -10,6 +10,7 @@
 
 #include <QAbstractTableModel>
 #include <QActionGroup>
+#include <QCheckBox>
 #include <QJsonObject>
 #include <QMenu>
 #include <QModelIndex>
@@ -35,18 +36,22 @@ public:
     ~AbstractModelUi();
 
     QTableView *tableView() const;
+    void addCustomWidget(QWidget *w);
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
     void setupIO(AbstractIO *io) override;
 
 protected:
+    QAbstractTableModel *m_model{nullptr};
+    AbstractModelIO *m_io{nullptr};
+
+protected:
     virtual QList<int> textItemColumns() const;
     virtual QStyledItemDelegate *createItemDelegate() const;
 
-protected:
-    QAbstractTableModel *m_model{nullptr};
-    AbstractModelIO *m_io{nullptr};
+    void setDisableCheckBoxVisible(bool visible);
+    QCheckBox *disableCheckBox() const;
 
 private:
     Ui::AbstractModelUi *ui{nullptr};

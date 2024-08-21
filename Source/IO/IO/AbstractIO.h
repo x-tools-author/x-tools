@@ -28,15 +28,14 @@ public:
     virtual QVariantMap save() const;
     virtual void load(const QVariantMap &data);
 
+    bool isWorking();
+    bool isEnable();
+    void setIsEnable(bool enable);
+
 signals:
     void outputBytes(const QByteArray &bytes);
     void warningOccurred(const QString &warningString);
     void errorOccurred(const QString &errorString);
-
-public:
-    bool isWorking();
-    bool isEnable();
-    void setIsEnable(bool enable);
 
 protected:
     std::atomic_bool m_isWorking{false};

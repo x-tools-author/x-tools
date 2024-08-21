@@ -20,6 +20,10 @@ AbstractTransfer::~AbstractTransfer() {}
 
 void AbstractTransfer::inputBytes(const QByteArray &bytes)
 {
+    if (!m_enable) {
+        return;
+    }
+
     AbstractTransferModel *model = tableModel().value<AbstractTransferModel *>();
     if (model) {
         model->inputBytes(bytes);

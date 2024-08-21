@@ -24,7 +24,7 @@ public:
     QVariant tableModel() const override;
     QVariantMap saveItem(const int row) const override;
     void loadItem(const int row, const QVariantMap &item) override;
-    virtual void inputBytes(const QByteArray &bytes) override;
+    void inputBytes(const QByteArray &bytes) override;
 
 protected:
     void run() override;

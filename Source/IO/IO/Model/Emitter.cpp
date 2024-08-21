@@ -110,7 +110,10 @@ void Emitter::try2Emit()
             QJsonObject json = var.toJsonObject();
             xIO::TextItem textItem = xIO::loadTextItem(json);
             QByteArray bytes = xIO::textItem2array(textItem);
-            emit outputBytes(bytes);
+
+            if (m_enable) {
+                emit outputBytes(bytes);
+            }
         }
     }
 }

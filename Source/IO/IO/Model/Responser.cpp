@@ -96,6 +96,10 @@ void Responser::inputBytes(const QByteArray &bytes)
         return;
     }
 
+    if (!m_enable) {
+        return;
+    }
+
     int rows = m_tableModel->rowCount(QModelIndex());
     for (int i = 0; i < rows; i++) {
         bool enable = m_tableModel->data(m_tableModel->index(i, 0), Qt::EditRole).toBool();

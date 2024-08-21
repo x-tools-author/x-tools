@@ -28,6 +28,7 @@ PresetUi::PresetUi(QWidget *parent)
     : AbstractModelUi(parent)
 {
     m_menu = new Menu();
+    setDisableCheckBoxVisible(false);
 
     auto *tv = tableView();
     auto hHeader = tv->horizontalHeader();

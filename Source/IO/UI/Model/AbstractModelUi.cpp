@@ -60,6 +60,11 @@ AbstractModelUi::AbstractModelUi(QWidget *parent)
     m_editor = new TextItemEditor(this);
     m_editor->setMinimumWidth(700);
     m_editor->hide();
+
+    QCheckBox *cb = disableCheckBox();
+    connect(cb, &QCheckBox::clicked, this, [this](bool checked) {
+        this->m_io->setIsEnable(!checked);
+    });
 }
 
 AbstractModelUi::~AbstractModelUi()
@@ -70,6 +75,11 @@ AbstractModelUi::~AbstractModelUi()
 QTableView *AbstractModelUi::tableView() const
 {
     return ui->tableView;
+}
+
+void AbstractModelUi::addCustomWidget(QWidget *w)
+{
+    ui->horizontalLayout->addWidget(w);
 }
 
 QVariantMap AbstractModelUi::save() const
@@ -130,6 +140,16 @@ QList<int> AbstractModelUi::textItemColumns() const
 QStyledItemDelegate *AbstractModelUi::createItemDelegate() const
 {
     return nullptr;
+}
+
+void AbstractModelUi::setDisableCheckBoxVisible(bool visible)
+{
+    ui->checkBoxDisable->setVisible(visible);
+}
+
+QCheckBox *AbstractModelUi::disableCheckBox() const
+{
+    return ui->checkBoxDisable;
 }
 
 void AbstractModelUi::onPushButtonClearClicked()
