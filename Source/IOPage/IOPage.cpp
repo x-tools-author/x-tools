@@ -13,7 +13,6 @@
 #include <QMessageBox>
 #include <QWidgetAction>
 
-#include "CommunicationSettings.h"
 #include "IO/IO/Communication/Communication.h"
 #include "IO/IO/IOFactory.h"
 #include "IO/IO/Model/Emitter.h"
@@ -33,14 +32,16 @@
 #include "IO/UI/Transfer/WebSocketClientTransferUi.h"
 #include "IO/UI/Transfer/WebSocketServerTransferUi.h"
 #include "IO/xIO.h"
-#include "InputSettings.h"
-#include "OutputSettings.h"
-#include "Unit/SyntaxHighlighter.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
 #include "IO/IO/Transfer/SerialPortTransfer.h"
 #include "IO/UI/Transfer/SerialPortTransferUi.h"
 #endif
+
+#include "CommunicationSettings.h"
+#include "InputSettings.h"
+#include "OutputSettings.h"
+#include "Unit/SyntaxHighlighter.h"
 
 struct ParameterKeys
 {
