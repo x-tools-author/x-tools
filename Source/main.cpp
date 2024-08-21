@@ -15,5 +15,5 @@
 int main(const int argc, char *argv[])
 {
     QString version = xTools::xTools::version();
-    return xToolsExec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"), version);
+    return xTools::exec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"), version);
 }

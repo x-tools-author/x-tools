@@ -166,17 +166,21 @@ void StyleSheetManager::updateActions()
 
 void StyleSheetManager::updateActionIcon(QAction* action, const QString& color)
 {
-    QPixmap pixmap(64, 64);
-    pixmap.fill(color);
     if (action->isChecked()) {
+        action->setIcon(QIcon(":/Resources/Icons/IconCheck.svg"));
+    } else {
+        QPixmap pixmap(64, 64);
+        pixmap.fill(color);
+#if 0
         QPainter painter(&pixmap);
         QRectF tmp = pixmap.rect() - QMargins(16, 16, 16, 16);
         painter.setPen(Qt::black);
         painter.setBrush(Qt::white);
         painter.drawRect(tmp);
         painter.end();
+#endif
+        action->setIcon(QIcon(pixmap));
     }
-    action->setIcon(QIcon(pixmap));
 }
 
 bool StyleSheetManager::enableStylesheet()
@@ -231,7 +235,7 @@ void StyleSheetManager::setApplicationStylesheetEnabled(bool enable)
     }
 
     if (!enable) {
-        xToolsTryToRebootApp();
+        tryToRebootApp();
     }
 }
 

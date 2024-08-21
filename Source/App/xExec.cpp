@@ -17,11 +17,13 @@
 #include "Common/xTools.h"
 #endif
 
-void xToolsInitGoogleLogging(char *argv0)
+namespace xTools {
+
+void initGoogleLogging(char *argv0)
 {
-    QString logPath = xTools::Settings::instance()->settingsPath();
+    QString logPath = Settings::instance()->settingsPath();
     logPath += "/log";
-    QDir dir(xTools::Settings::instance()->settingsPath());
+    QDir dir(Settings::instance()->settingsPath());
     if (!dir.exists(logPath) && !dir.mkpath(logPath)) {
         qWarning() << "Make log directory failed";
     }
@@ -43,12 +45,12 @@ void xToolsInitGoogleLogging(char *argv0)
     qInfo() << "The logging path is:" << qPrintable(logPath);
 }
 
-void xToolsShutdownGoogleLogging()
+void shutdownGoogleLogging()
 {
     google::ShutdownGoogleLogging();
 }
 
-void xToolsQtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QByteArray localMsg = msg.toUtf8();
     const char *file = context.file ? context.file : "";
@@ -70,7 +72,7 @@ void xToolsQtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, c
     }
 }
 
-void xToolsInitApp(const QString &appName, bool forStore)
+void initApp(const QString &appName, bool forStore)
 {
     QString cookedAppName = appName;
     if (forStore) {
@@ -81,37 +83,37 @@ void xToolsInitApp(const QString &appName, bool forStore)
     QCoreApplication::setOrganizationName(QString("xTools"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
     QCoreApplication::setApplicationName(cookedAppName);
-    xTools::Application::setFriendlyAppName(appName);
+    Application::setFriendlyAppName(appName);
 }
 
-void xToolsInstallMessageHandler()
+void installMessageHandler()
 {
-    qInstallMessageHandler(xToolsQtLogToGoogleLog);
+    qInstallMessageHandler(qtLogToGoogleLog);
 }
 
-void xToolsTryToClearSettings()
+void tryToClearSettings()
 {
     // Remove settings file and database
-    if (!xTools::Settings::instance()->clearSettings()) {
+    if (!Settings::instance()->clearSettings()) {
         return;
     }
 
-    xTools::Settings::instance()->setClearSettings(false);
-    if (QFile::remove(xTools::Settings::instance()->fileName())) {
+    Settings::instance()->setClearSettings(false);
+    if (QFile::remove(Settings::instance()->fileName())) {
         qInfo() << "The settings file is removed.";
     } else {
         qWarning() << "The operation(remove settings file) failed!";
     }
 }
 
-void xToolsInitHdpi()
+void initHdpi()
 {
 #if 0
     qputenv("QT_SCALE_FACTOR", "1.5");
 #endif
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    int policy = xTools::Settings::instance()->hdpiPolicy();
+    int policy = Settings::instance()->hdpiPolicy();
     if (!xTools::xTools::isValidHighDpiPolicy(policy)) {
         qWarning() << "The value of hdpi policy is not specified, set to default value:"
                    << QGuiApplication::highDpiScaleFactorRoundingPolicy();
@@ -124,11 +126,11 @@ void xToolsInitHdpi()
 #endif
 }
 
-void xToolsInitAppStyle()
+void initAppStyle()
 {
     const QStringList keys = QStyleFactory::keys();
     qInfo() << "The supported application styles are:" << qPrintable(keys.join(QChar(',')));
-    const QString style = xTools::Settings::instance()->appStyle();
+    const QString style = Settings::instance()->appStyle();
     qInfo() << "The current style of application is:" << qPrintable(style);
     if (style.isEmpty()) {
         qWarning() << "The application style is not specified, the default style is:"
@@ -139,24 +141,24 @@ void xToolsInitAppStyle()
     }
 }
 
-void xToolsDoSomethingBeforeAppCreated(char *argv[], const QString &appName, bool forStore)
+void doSomethingBeforeAppCreated(char *argv[], const QString &appName, bool forStore)
 {
-    xToolsInitApp(appName, forStore);
-    xToolsInitGoogleLogging(argv[0]);
+    initApp(appName, forStore);
+    initGoogleLogging(argv[0]);
 #ifndef QT_DEBUG
     xToolsInstallMessageHandler();
 #endif
 
-    xToolsTryToClearSettings();
-    xToolsInitHdpi();
+    tryToClearSettings();
+    initHdpi();
 }
 
-void xToolsDoSomethingAfterAppExited()
+void doSomethingAfterAppExited()
 {
-    xToolsShutdownGoogleLogging();
+    shutdownGoogleLogging();
 }
 
-void xToolsTryToRebootApp()
+void tryToRebootApp()
 {
     int ret = QMessageBox::information(
         nullptr,
@@ -168,3 +170,5 @@ void xToolsTryToRebootApp()
         qApp->closeAllWindows();
     }
 }
+
+} // namespace xTools

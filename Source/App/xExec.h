@@ -26,40 +26,51 @@
 #include "StyleSheetManager.h"
 #endif
 
-void xToolsInitGoogleLogging(char *argv0);
-void xToolsShutdownGoogleLogging();
-void xToolsQtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg);
-void xToolsInitApp(const QString &appName, bool forStore);
-void xToolsInstallMessageHandler();
-void xToolsTryToClearSettings();
-void xToolsInitHdpi();
-void xToolsInitAppStyle();
-void xToolsDoSomethingBeforeAppCreated(char *argv[], const QString &appName, bool forStore = false);
-void xToolsDoSomethingAfterAppExited();
-void xToolsTryToRebootApp();
+namespace xTools {
 
-template<typename CentralWidgetT = QWidget,
-         typename MainWindowT = xTools::MainWindow,
-         typename AppT = xTools::Application>
-int xToolsExec(int argc,
-               char *argv[],
-               const QString &appName,
-               const QString &version = QString("0.0.0"),
-               const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
+void initGoogleLogging(char *argv0);
+void shutdownGoogleLogging();
+void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg);
+void initApp(const QString &appName, bool forStore);
+void installMessageHandler();
+void tryToClearSettings();
+void initHdpi();
+void initAppStyle();
+void doSomethingBeforeAppCreated(char *argv[], const QString &appName, bool forStore = false);
+void doSomethingAfterAppExited();
+void tryToRebootApp();
+
+/**
+ * \brief exec: Using this function to start the application with a main window, you can specified
+ *  the central widget type of main window. If MainWindow is the same as CentralWidget, the 
+ *  main window will not be created and the instance of CentralWidget will be the main window.
+ * \param argc: The number of command line arguments.
+ * \param argv: The command line arguments.
+ * \param appName: The name of the application.
+ * \param version: The version of the application.
+ * \param doSomethingBeforAppExec: The function will be called before the application exec. The
+ * parameter of the function is the instance of the main window and the instance of the application.
+ * \return 
+ */
+template<typename CentralWidget, typename MainWindow, typename App>
+int exec(int argc,
+         char *argv[],
+         const QString &appName,
+         const QString &version = QString("0.0.0"),
+         const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QApplication::setAttribute(Qt::AA_Use96Dpi);
 #endif
-
     QCoreApplication::setApplicationVersion(version);
-    xToolsDoSomethingBeforeAppCreated(argv, appName);
+    doSomethingBeforeAppCreated(argv, appName);
 
-    AppT app(argc, argv);
-    //TODO:qt6
+    App app(argc, argv);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     QStyleHints *styleHints = QApplication::styleHints();
     styleHints->setColorScheme(Qt::ColorScheme::Dark);
 #endif
+
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     xTools::Settings::instance()->setValue("startUpTime", dtStr);
 
@@ -69,17 +80,17 @@ int xToolsExec(int argc,
     if (!styleSheet.isEmpty() && !styleSheetManager.currentTheme().isEmpty()) {
         app.setStyleSheet(styleSheet);
     }
-#else
-    xToolsInitAppStyle();
 #endif
 
+    initAppStyle();
+
     QWidget *ui;
-    if (std::is_same<MainWindowT, CentralWidgetT>::value) {
-        auto widget = new CentralWidgetT();
+    if (std::is_same<MainWindow, CentralWidget>::value) {
+        auto widget = new CentralWidget();
         ui = widget;
     } else {
-        auto mainWindow = new MainWindowT();
-        auto centralWidget = new CentralWidgetT(mainWindow);
+        auto mainWindow = new MainWindow();
+        auto centralWidget = new CentralWidget(mainWindow);
         mainWindow->setWindowTitle(appName);
         mainWindow->setCentralWidget(centralWidget);
         ui = mainWindow;
@@ -95,7 +106,10 @@ int xToolsExec(int argc,
     if (doSomethingBeforAppExec) {
         doSomethingBeforAppExec(ui, &app);
     }
+
     const int ret = app.exec();
-    xToolsDoSomethingAfterAppExited();
+    doSomethingAfterAppExited();
     return ret;
 }
+
+} // namespace xTools
