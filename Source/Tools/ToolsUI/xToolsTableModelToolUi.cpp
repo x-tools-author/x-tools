@@ -221,14 +221,11 @@ void xToolsTableModelToolUi::edit(const QModelIndex &index)
     QVariant var = m_TableModelTool->itemContext(index.row());
     QJsonObject jsonObj = var.toJsonObject();
     QDialog *editor = itemEditor();
-    QGenericReturnArgument ret;
     QMetaObject::invokeMethod(editor,
                               "setParameters",
                               Qt::DirectConnection,
-                              ret,
                               Q_ARG(QJsonObject, jsonObj));
     qInfo() << "the parameter of setParameters() is:" << jsonObj;
-    Q_UNUSED(ret);
     editor->show();
 
     if (QDialog::Accepted == editor->exec()) {
