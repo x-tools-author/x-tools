@@ -10,7 +10,9 @@
 
 #include "../xIO.h"
 
+#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
 #include "Communication/BleCentralUi.h"
+#endif
 #include "Communication/CommunicationUi.h"
 #include "Communication/SerialPortUi.h"
 #include "Communication/TcpClientUi.h"
@@ -33,8 +35,10 @@ CommunicationUi *IOUiFactory::createDeviceUi(xIO::CommunicationType type)
     switch (type) {
     case xIO::CommunicationType::SerialPort:
         return new SerialPortUi(type);
+#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
     case xIO::CommunicationType::BleCentral:
         return new BleCentralUi(type);
+#endif
     case xIO::CommunicationType::UdpClient:
         return new UdpClientUi(type);
     case xIO::CommunicationType::UdpServer:

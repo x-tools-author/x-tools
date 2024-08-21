@@ -11,8 +11,9 @@
 #include <QCoreApplication>
 
 #include "../xIO.h"
-
+#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
 #include "Communication/BleCentral.h"
+#endif
 #include "Communication/SerialPort.h"
 #include "Communication/TcpClient.h"
 #include "Communication/TcpServer.h"
@@ -34,8 +35,10 @@ Communication *IOFactory::createDevice(int type)
     switch (type) {
     case static_cast<int>(xIO::CommunicationType::SerialPort):
         return new SerialPort(QCoreApplication::instance());
+#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
     case static_cast<int>(xIO::CommunicationType::BleCentral):
         return new BleCentral(QCoreApplication::instance());
+#endif
     case static_cast<int>(xIO::CommunicationType::UdpClient):
         return new UdpClient(QCoreApplication::instance());
     case static_cast<int>(xIO::CommunicationType::UdpServer):

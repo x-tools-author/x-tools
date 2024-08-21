@@ -28,7 +28,9 @@ QList<int> xIO::supportedCommunicationTypes()
     static QList<int> deviceTypes;
     if (deviceTypes.isEmpty()) {
         deviceTypes << static_cast<int>(CommunicationType::SerialPort);
+#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
         deviceTypes << static_cast<int>(CommunicationType::BleCentral);
+#endif
 #if 0
         deviceTypes << static_cast<int>(DeviceType::BlePeripheral);
 #endif
