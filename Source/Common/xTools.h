@@ -26,6 +26,7 @@ public:
     ~xTools() override;
 
     static QByteArray byteArrray2Hex(const QByteArray& source, char separator = '\0');
+    static QString version();
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     Q_INVOKABLE static QVariantList supportedHighDpiPolicies();

@@ -7,22 +7,13 @@
  * code directory.
  **************************************************************************************************/
 #include "App/xExec.h"
+#include "Common/xTools.h"
+
 #include "Application.h"
 #include "MainWindow.h"
 
 int main(const int argc, char *argv[])
 {
-    QString version = "0.0.0";
-#if defined(X_TOOLS_GIT_TAG)
-    auto tag = QString(X_TOOLS_GIT_TAG);
-    if (tag == QString("continuous")) {
-        version = "9.9.9";
-    } else {
-        tag = tag.remove("v");
-        if (tag.split('.').length() == 3) {
-            version = tag;
-        }
-    }
-#endif
+    QString version = xTools::xTools::version();
     return xToolsExec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"), version);
 }

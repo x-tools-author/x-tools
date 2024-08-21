@@ -712,7 +712,8 @@ QByteArray IOPage::payload() const
     int format = ui->comboBoxInputFormat->currentData().toInt();
     auto escapeCharacter = static_cast<xTools::xIO::EscapeCharacter>(parameters.escapeCharacter);
     text = xTools::xIO::cookedEscapeCharacter(text, escapeCharacter);
-    QByteArray payload = xTools::xIO::string2bytes(text, static_cast<xTools::xIO::TextFormat>(format));
+    auto cookedFormat = static_cast<xTools::xIO::TextFormat>(format);
+    QByteArray payload = xTools::xIO::string2bytes(text, cookedFormat);
     return payload;
 }
 

@@ -40,6 +40,23 @@ QByteArray xTools::byteArrray2Hex(const QByteArray &source, char separator)
     return hex;
 }
 
+QString xTools::version()
+{
+    QString version = "0.0.0";
+#if defined(X_TOOLS_GIT_TAG)
+    auto tag = QString(X_TOOLS_GIT_TAG);
+    if (tag == QString("continuous")) {
+        version = "9.9.9";
+    } else {
+        tag = tag.remove("v");
+        if (tag.split('.').length() == 3) {
+            version = tag;
+        }
+    }
+#endif
+    return version;
+}
+
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 QVariantList xTools::supportedHighDpiPolicies()
 {
