@@ -131,7 +131,6 @@ void initAppStyle()
     const QStringList keys = QStyleFactory::keys();
     qInfo() << "The supported application styles are:" << qPrintable(keys.join(QChar(',')));
     const QString style = Settings::instance()->appStyle();
-    qInfo() << "The current style of application is:" << qPrintable(style);
     if (style.isEmpty()) {
         qWarning() << "The application style is not specified, the default style is:"
                    << qPrintable(QApplication::style()->objectName());

@@ -90,7 +90,6 @@ void TextItemEditor::load(const QJsonObject &parameters)
     int escapeCharacterIndex = ui->comboBoxEscapeCharacter->findData(escapeCharacter);
     int crcAlgorithmIndex = ui->comboBoxAlgorithm->findData(crcAlgorithm);
 
-    ui->lineEditInput->setText(text);
     ui->comboBoxPrefix->setCurrentIndex(prefixIndex);
     ui->comboBoxSuffix->setCurrentIndex(suffixIndex);
     ui->comboBoxEscapeCharacter->setCurrentIndex(escapeCharacterIndex);
@@ -100,6 +99,7 @@ void TextItemEditor::load(const QJsonObject &parameters)
     ui->spinBoxStartIndex->setValue(crcStartIndex);
     ui->spinBoxEndIndex->setValue(crcEndIndex);
     ui->comboBoxFormat->setCurrentIndex(ui->comboBoxFormat->findData(format));
+    ui->lineEditInput->setText(text);
 }
 
 void TextItemEditor::onTextFormatChanged()
