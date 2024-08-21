@@ -101,8 +101,8 @@ public:
 
     /**********************************************************************************************/
     enum class ResponseOption {
-        Echo,   // Response the data that received.
-        Always, // Response the data that set by user when data received.
+        Echo,   // Response data is the data received.
+        Always, // Response automatically when data received.
         InputEqualReference,
         InputContainReference,
         InputDiscontainReference
