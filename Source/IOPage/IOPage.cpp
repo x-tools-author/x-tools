@@ -20,7 +20,6 @@
 #include "IO/IO/Model/Preset.h"
 #include "IO/IO/Model/Responser.h"
 #include "IO/IO/Processor/Statistician.h"
-#include "IO/IO/Transfer/SerialPortTransfer.h"
 #include "IO/IO/Transfer/TcpClientTransfer.h"
 #include "IO/IO/Transfer/TcpServerTransfer.h"
 #include "IO/IO/Transfer/UdpClientTransfer.h"
@@ -28,10 +27,20 @@
 #include "IO/IO/Transfer/WebSocketServerTransfer.h"
 #include "IO/UI/Communication/CommunicationUi.h"
 #include "IO/UI/IOUiFactory.h"
+#include "IO/UI/Transfer/TcpClientTransferUi.h"
+#include "IO/UI/Transfer/TcpServerTransferUi.h"
+#include "IO/UI/Transfer/UdpClientTransferUi.h"
+#include "IO/UI/Transfer/WebSocketClientTransferUi.h"
+#include "IO/UI/Transfer/WebSocketServerTransferUi.h"
 #include "IO/xIO.h"
 #include "InputSettings.h"
 #include "OutputSettings.h"
 #include "Unit/SyntaxHighlighter.h"
+
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#include "IO/IO/Transfer/SerialPortTransfer.h"
+#include "IO/UI/Transfer/SerialPortTransferUi.h"
+#endif
 
 struct ParameterKeys
 {
@@ -78,12 +87,20 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     , m_preset{new xTools::Preset(this)}
     , m_emitter{new xTools::Emitter(this)}
     , m_responser{new xTools::Responser(this)}
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     , m_serialPortTransfer(new xTools::SerialPortTransfer(this))
+    , m_serialPortTransferUi(new xTools::SerialPortTransferUi(this))
+#endif
     , m_udpClientTransfer(new xTools::UdpClientTransfer(this))
+    , m_udpClientTransferUi(new xTools::UdpClientTransferUi())
     , m_tcpClientTransfer(new xTools::TcpClientTransfer(this))
+    , m_tcpClientTransferUi(new xTools::TcpClientTransferUi())
     , m_tcpServerTransfer(new xTools::TcpServerTransfer(this))
+    , m_tcpServerTransferUi(new xTools::TcpServerTransferUi())
     , m_webSocketClientTransfer(new xTools::WebSocketClientTransfer(this))
+    , m_webSocketClientTransferUi(new xTools::WebSocketClientTransferUi())
     , m_webSocketServerTransfer(new xTools::WebSocketServerTransfer(this))
+    , m_webSocketServerTransferUi(new xTools::WebSocketServerTransferUi())
     , m_settings{settings}
 {
     if (!m_settings) {
@@ -95,8 +112,11 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     ui->widgetTxInfo->setupIO(m_txStatistician);
 
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responser
-             << m_serialPortTransfer << m_udpClientTransfer << m_tcpClientTransfer
-             << m_webSocketClientTransfer << m_webSocketServerTransfer;
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+             << m_serialPortTransfer
+#endif
+             << m_udpClientTransfer << m_tcpClientTransfer << m_webSocketClientTransfer
+             << m_webSocketServerTransfer;
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
@@ -146,12 +166,12 @@ QVariantMap IOPage::save()
     map.insert(g_keys.presetItems, ui->tabPresets->save());
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
     map.insert(g_keys.responserItems, ui->tabResponser->save());
-    map.insert(g_keys.serialPortTransferItems, ui->tabSerialPort->save());
-    map.insert(g_keys.udpClientTransferItems, ui->tabUdpClient->save());
-    map.insert(g_keys.tcpClientTransferItems, ui->tabTcpClient->save());
-    map.insert(g_keys.tcpServerTransferItems, ui->tabTcpServer->save());
-    map.insert(g_keys.webSocketClientTransferItems, ui->tabWebSocketClient->save());
-    map.insert(g_keys.webSocketServerTransferItems, ui->tabWebSocketServer->save());
+    map.insert(g_keys.serialPortTransferItems, m_tcpServerTransferUi->save());
+    map.insert(g_keys.udpClientTransferItems, m_udpClientTransferUi->save());
+    map.insert(g_keys.tcpClientTransferItems, m_tcpClientTransfer->save());
+    map.insert(g_keys.tcpServerTransferItems, m_tcpServerTransfer->save());
+    map.insert(g_keys.webSocketClientTransferItems, m_webSocketClientTransferUi->save());
+    map.insert(g_keys.webSocketServerTransferItems, m_webSocketServerTransferUi->save());
 
     return map;
 }
@@ -202,12 +222,14 @@ void IOPage::load(const QVariantMap &parameters)
     ui->tabPresets->load(parameters.value(g_keys.presetItems).toMap());
     ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
     ui->tabResponser->load(parameters.value(g_keys.responserItems).toMap());
-    ui->tabSerialPort->load(parameters.value(g_keys.serialPortTransferItems).toMap());
-    ui->tabWebSocketServer->load(parameters.value(g_keys.udpClientTransferItems).toMap());
-    ui->tabTcpClient->load(parameters.value(g_keys.tcpClientTransferItems).toMap());
-    ui->tabTcpServer->load(parameters.value(g_keys.tcpServerTransferItems).toMap());
-    ui->tabWebSocketClient->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
-    ui->tabWebSocketServer->load(parameters.value(g_keys.webSocketServerTransferItems).toMap());
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+    m_serialPortServerTransferUi->load(parameters.value(g_keys.serialPortTransferItems).toMap());
+#endif
+    m_udpClientTransferUi->load(parameters.value(g_keys.udpClientTransferItems).toMap());
+    m_tcpClientTransferUi->load(parameters.value(g_keys.tcpClientTransferItems).toMap());
+    m_tcpServerTransferUi->load(parameters.value(g_keys.tcpServerTransferItems).toMap());
+    m_webSocketClientTransferUi->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
+    m_webSocketServerTransferUi->load(parameters.value(g_keys.webSocketServerTransferItems).toMap());
     // clang-format on
 }
 
@@ -301,17 +323,26 @@ void IOPage::initUiInputControl()
 
 void IOPage::initUiOutput()
 {
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+    ui->tabWidgetTransfers->addTab(m_serialPortServerTransferUi, tr("Serial Port"));
+#endif
+    ui->tabWidgetTransfers->addTab(m_udpClientTransferUi, tr("UDP Client"));
+    ui->tabWidgetTransfers->addTab(m_tcpClientTransferUi, tr("TCP Client"));
+    ui->tabWidgetTransfers->addTab(m_tcpServerTransferUi, tr("TCP Server"));
+    ui->tabWidgetTransfers->addTab(m_webSocketClientTransferUi, tr("WebSocket Client"));
+    ui->tabWidgetTransfers->addTab(m_webSocketServerTransferUi, tr("WebSocket Server"));
+
     ui->tabPresets->setupIO(m_preset);
     ui->tabEmitter->setupIO(m_emitter);
     ui->tabResponser->setupIO(m_responser);
-
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     ui->tabSerialPort->setupIO(m_serialPortTransfer);
-    ui->tabWebSocketServer->setupIO(m_udpClientTransfer);
-    ui->tabUdpClient->setupIO(m_udpClientTransfer);
-    ui->tabTcpClient->setupIO(m_tcpClientTransfer);
-    ui->tabTcpServer->setupIO(m_tcpServerTransfer);
-    ui->tabWebSocketClient->setupIO(m_webSocketClientTransfer);
-    ui->tabWebSocketServer->setupIO(m_webSocketServerTransfer);
+#endif
+    m_udpClientTransferUi->setupIO(m_udpClientTransfer);
+    m_tcpClientTransferUi->setupIO(m_tcpClientTransfer);
+    m_tcpServerTransferUi->setupIO(m_tcpServerTransfer);
+    m_webSocketClientTransferUi->setupIO(m_webSocketClientTransfer);
+    m_webSocketServerTransferUi->setupIO(m_webSocketServerTransfer);
 
     ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
     ui->toolButtonInputPreset->setMenu(ui->tabPresets->menu());
@@ -455,7 +486,9 @@ void IOPage::open()
         connect(m_io, &Communication::errorOccurred, this, &IOPage::onErrorOccurred);
         connect(m_io, &Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
         connect(m_io, &Communication::outputBytes, m_responser, &xTools::Responser::inputBytes);
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
         connect(m_io, &Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
+#endif
         connect(m_io, &Communication::outputBytes, m_udpClientTransfer, &xTools::UdpClientTransfer::inputBytes);
         connect(m_io, &Communication::outputBytes, m_tcpClientTransfer, &xTools::TcpClientTransfer::inputBytes);
         connect(m_io, &Communication::outputBytes, m_tcpServerTransfer, &xTools::TcpServerTransfer::inputBytes);
@@ -465,7 +498,9 @@ void IOPage::open()
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &Communication::inputBytes);
         connect(m_responser, &xTools::Responser::outputBytes, m_io, &Communication::inputBytes);
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
         connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &Communication::inputBytes);
+#endif
         connect(m_udpClientTransfer, &xTools::UdpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
         connect(m_tcpClientTransfer, &xTools::TcpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
         connect(m_tcpServerTransfer, &xTools::TcpServerTransfer::outputBytes, m_io, &Communication::inputBytes);

@@ -26,12 +26,20 @@ namespace xTools {
 class Preset;
 class Emitter;
 class Responser;
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
 class SerialPortTransfer;
+class SerialPortTransferUi;
+#endif
 class UdpClientTransfer;
+class UdpClientTransferUi;
 class TcpClientTransfer;
+class TcpClientTransferUi;
 class TcpServerTransfer;
+class TcpServerTransferUi;
 class WebSocketClientTransfer;
+class WebSocketClientTransferUi;
 class WebSocketServerTransfer;
+class WebSocketServerTransferUi;
 }
 QT_END_NAMESPACE
 
@@ -71,12 +79,21 @@ private:
     xTools::Preset *m_preset;
     xTools::Emitter *m_emitter;
     xTools::Responser *m_responser;
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     xTools::SerialPortTransfer *m_serialPortTransfer;
+    xTools::SerialPortTransferUi *m_serialPortTransferUi;
+#endif
     xTools::UdpClientTransfer *m_udpClientTransfer;
+    xTools::UdpClientTransferUi *m_udpClientTransferUi;
     xTools::TcpClientTransfer *m_tcpClientTransfer;
+    xTools::TcpClientTransferUi *m_tcpClientTransferUi;
     xTools::TcpServerTransfer *m_tcpServerTransfer;
+    xTools::TcpServerTransferUi *m_tcpServerTransferUi;
     xTools::WebSocketClientTransfer *m_webSocketClientTransfer;
+    xTools::WebSocketClientTransferUi *m_webSocketClientTransferUi;
     xTools::WebSocketServerTransfer *m_webSocketServerTransfer;
+    xTools::WebSocketServerTransferUi *m_webSocketServerTransferUi;
+
     QButtonGroup m_pageButtonGroup;
     QMap<QAbstractButton *, QWidget *> m_pageContextMap;
     QList<AbstractIO *> m_ioList;

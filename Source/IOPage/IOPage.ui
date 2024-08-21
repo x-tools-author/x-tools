@@ -252,7 +252,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
@@ -400,40 +400,10 @@
       </attribute>
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
-        <widget class="QTabWidget" name="tabWidget_2">
+        <widget class="QTabWidget" name="tabWidgetTransfers">
          <property name="currentIndex">
-          <number>1</number>
+          <number>-1</number>
          </property>
-         <widget class="xTools::SerialPortTransferUi" name="tabSerialPort">
-          <attribute name="title">
-           <string>Serial Port</string>
-          </attribute>
-         </widget>
-         <widget class="xTools::UdpClientTransferUi" name="tabUdpClient">
-          <attribute name="title">
-           <string>UDP Client</string>
-          </attribute>
-         </widget>
-         <widget class="xTools::TcpClientTransferUi" name="tabTcpClient">
-          <attribute name="title">
-           <string>TCP Client</string>
-          </attribute>
-         </widget>
-         <widget class="xTools::TcpServerTransferUi" name="tabTcpServer">
-          <attribute name="title">
-           <string>TCP Server</string>
-          </attribute>
-         </widget>
-         <widget class="xTools::WebSocketClientTransferUi" name="tabWebSocketClient">
-          <attribute name="title">
-           <string>Web Socket Client</string>
-          </attribute>
-         </widget>
-         <widget class="xTools::WebSocketServerTransferUi" name="tabWebSocketServer">
-          <attribute name="title">
-           <string>Web Socket Server</string>
-          </attribute>
-         </widget>
         </widget>
        </item>
       </layout>
@@ -465,42 +435,6 @@
    <class>xTools::ResponserUi</class>
    <extends>QWidget</extends>
    <header location="global">IO/UI/Model/ResponserUi.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>xTools::SerialPortTransferUi</class>
-   <extends>QWidget</extends>
-   <header location="global">IO/UI/Transfer/SerialPortTransferUi.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>xTools::UdpClientTransferUi</class>
-   <extends>QWidget</extends>
-   <header location="global">IO/UI/Transfer/UdpClientTransferUi.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>xTools::TcpClientTransferUi</class>
-   <extends>QWidget</extends>
-   <header location="global">IO/UI/Transfer/TcpClientTransferUi.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>xTools::TcpServerTransferUi</class>
-   <extends>QWidget</extends>
-   <header location="global">IO/UI/Transfer/TcpServerTransferUi.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>xTools::WebSocketClientTransferUi</class>
-   <extends>QWidget</extends>
-   <header location="global">IO/UI/Transfer/WebSocketClientTransferUi.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>xTools::WebSocketServerTransferUi</class>
-   <extends>QWidget</extends>
-   <header location="global">IO/UI/Transfer/WebSocketServerTransferUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
