@@ -333,8 +333,8 @@ void xIO::setupEscapeCharacter(QComboBox *comboBox)
     }
 
     comboBox->clear();
-    QList<int> escs = supportedEscapeCharacters();
-    for (int esc : escs) {
+    QList<int> escapeCharacters = supportedEscapeCharacters();
+    for (int esc : escapeCharacters) {
         comboBox->addItem(escapeCharacterName(static_cast<EscapeCharacter>(esc)), esc);
     }
 }
@@ -402,7 +402,7 @@ QString xIO::responseOptionName(ResponseOption option)
         map.insert(ResponseOption::Always, tr("Always"));
         map.insert(ResponseOption::InputEqualReference, tr("Input Equal Reference"));
         map.insert(ResponseOption::InputContainReference, tr("Input Contain Reference"));
-        map.insert(ResponseOption::InputDiscontainReference, tr("Input Discontain Reference"));
+        map.insert(ResponseOption::InputDiscontainReference, tr("Input Exclude Reference"));
     }
 
     if (map.contains(option)) {
@@ -652,7 +652,7 @@ void xIO::setupFlowControl(QComboBox *comboBox)
 {
     comboBox->addItem(tr("None"), QSerialPort::NoFlowControl);
     comboBox->addItem(tr("Hardware(RTS/CTS)"), QSerialPort::HardwareControl);
-    comboBox->addItem(tr("Software(XON/XOFF)"), QSerialPort::SoftwareControl);
+    comboBox->addItem(tr("Software(X-ON/X-OFF)"), QSerialPort::SoftwareControl);
 }
 #endif
 
