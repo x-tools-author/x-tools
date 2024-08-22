@@ -388,7 +388,7 @@ QList<int> xIO::supportedResponseOptions()
         list.append(static_cast<int>(ResponseOption::Always));
         list.append(static_cast<int>(ResponseOption::InputEqualReference));
         list.append(static_cast<int>(ResponseOption::InputContainReference));
-        list.append(static_cast<int>(ResponseOption::InputDiscontainReference));
+        list.append(static_cast<int>(ResponseOption::InputDoesNotContainReference));
     }
 
     return list;
@@ -402,7 +402,7 @@ QString xIO::responseOptionName(ResponseOption option)
         map.insert(ResponseOption::Always, tr("Always"));
         map.insert(ResponseOption::InputEqualReference, tr("Input Equal Reference"));
         map.insert(ResponseOption::InputContainReference, tr("Input Contain Reference"));
-        map.insert(ResponseOption::InputDiscontainReference, tr("Input Exclude Reference"));
+        map.insert(ResponseOption::InputDoesNotContainReference, tr("Input Does not Contain Reference"));
     }
 
     if (map.contains(option)) {

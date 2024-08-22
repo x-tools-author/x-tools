@@ -70,7 +70,7 @@ public:
         Always, // Response automatically when data received.
         InputEqualReference,
         InputContainReference,
-        InputDiscontainReference
+        InputDoesNotContainReference
     };
     static QList<int> supportedResponseOptions();
     static QString responseOptionName(ResponseOption option);

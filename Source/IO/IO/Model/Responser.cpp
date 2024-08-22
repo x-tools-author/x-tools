@@ -136,7 +136,7 @@ void Responser::inputBytes(const QByteArray &bytes)
             if (!bytes.contains(refBytes)) {
                 continue;
             }
-        } else if (cookedOption == xIO::ResponseOption::InputDiscontainReference) {
+        } else if (cookedOption == xIO::ResponseOption::InputDoesNotContainReference) {
             if (bytes.contains(refBytes)) {
                 continue;
             }
