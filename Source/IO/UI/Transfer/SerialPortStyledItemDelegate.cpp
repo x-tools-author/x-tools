@@ -45,27 +45,37 @@ QWidget *SerialPortStyledItemDelegate::createEditor(QWidget *parent,
 void SerialPortStyledItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     int column = index.column();
-    if (column == 0) {
-        auto cb = qobject_cast<QComboBox *>(editor);
-        xIO::setupTransferType(cb);
-    } else if (column == 1) {
-        auto cb = qobject_cast<QComboBox *>(editor);
-        xIO::setupPortName(cb);
-    } else if (column == 2) {
-        auto cb = qobject_cast<QComboBox *>(editor);
-        xIO::setupBaudRate(cb);
-    } else if (column == 3) {
-        auto cb = qobject_cast<QComboBox *>(editor);
-        xIO::setupDataBits(cb);
-    } else if (column == 4) {
-        auto cb = qobject_cast<QComboBox *>(editor);
-        xIO::setupStopBits(cb);
-    } else if (column == 5) {
-        auto cb = qobject_cast<QComboBox *>(editor);
-        xIO::setupParity(cb);
-    } else if (column == 6) {
-        auto cb = qobject_cast<QComboBox *>(editor);
-        xIO::setupFlowControl(cb);
+    if (column >= 0 && column <= 6) {
+        QComboBox *cb = nullptr;
+        if (column == 0) {
+            cb = qobject_cast<QComboBox *>(editor);
+            xIO::setupTransferType(cb);
+        } else if (column == 1) {
+            cb = qobject_cast<QComboBox *>(editor);
+            xIO::setupPortName(cb);
+        } else if (column == 2) {
+            cb = qobject_cast<QComboBox *>(editor);
+            xIO::setupBaudRate(cb);
+        } else if (column == 3) {
+            cb = qobject_cast<QComboBox *>(editor);
+            xIO::setupDataBits(cb);
+        } else if (column == 4) {
+            cb = qobject_cast<QComboBox *>(editor);
+            xIO::setupStopBits(cb);
+        } else if (column == 5) {
+            cb = qobject_cast<QComboBox *>(editor);
+            xIO::setupParity(cb);
+        } else if (column == 6) {
+            cb = qobject_cast<QComboBox *>(editor);
+            xIO::setupFlowControl(cb);
+        }
+
+        QVariant value = index.data(Qt::EditRole);
+        if (column == 1) {
+            cb->setCurrentIndex(cb->findText(value.toString()));
+        } else {
+            cb->setCurrentIndex(cb->findData(value));
+        }
     } else if (column == 7) {
         qobject_cast<QLineEdit *>(editor)->setText(index.data(Qt::EditRole).toString());
     }

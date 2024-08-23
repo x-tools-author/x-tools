@@ -63,7 +63,7 @@ bool AbstractTransferModel::removeRows(int row, int count, const QModelIndex &pa
 void AbstractTransferModel::inputBytes(const QByteArray &bytes)
 {
     for (auto &item : m_transfers) {
-        if (item.option != static_cast<int>(xIO::TransferType::Diabled)) {
+        if (item.option != static_cast<int>(xIO::TransferType::Disabled)) {
             item.transfer->inputBytes(bytes);
         }
     }

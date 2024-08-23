@@ -733,7 +733,7 @@ void xIO::setupSocketPort(QSpinBox *spinBox)
 QList<int> xIO::supportedTransferTypes()
 {
     static QList<int> types = {
-        static_cast<int>(TransferType::Diabled),
+        static_cast<int>(TransferType::Disabled),
         static_cast<int>(TransferType::Didirectional),
         static_cast<int>(TransferType::Unidirectional),
     };
@@ -743,7 +743,7 @@ QList<int> xIO::supportedTransferTypes()
 
 QString xIO::transferTypeName(int type)
 {
-    if (type == static_cast<int>(TransferType::Diabled)) {
+    if (type == static_cast<int>(TransferType::Disabled)) {
         return tr("Diabled");
     } else if (type == static_cast<int>(TransferType::Didirectional)) {
         return tr("Didirectional");

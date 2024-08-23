@@ -130,7 +130,7 @@ bool SerialPortTransferModel::setData(const QModelIndex &index, const QVariant &
     if (column == 0) {
         item.option = value.toInt();
 
-        if (item.option == static_cast<int>(xIO::TransferType::Diabled)) {
+        if (item.option == static_cast<int>(xIO::TransferType::Disabled)) {
             item.transfer->setIsEnable(false);
         } else {
             item.transfer->setIsEnable(true);
@@ -183,7 +183,7 @@ QVariant SerialPortTransferModel::headerData(int section,
 
     if (role == Qt::DisplayRole) {
         if (section == 0) {
-            return tr("Enable");
+            return tr("Transfer Option");
         } else if (section == 1) {
             return tr("Poet Name");
         } else if (section == 2) {

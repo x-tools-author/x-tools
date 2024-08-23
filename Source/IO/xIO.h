@@ -179,7 +179,7 @@ public:
     static void setupSocketPort(QSpinBox *spinBox);
 
     /**********************************************************************************************/
-    enum class TransferType { Diabled, Didirectional, Unidirectional };
+    enum class TransferType { Disabled, Didirectional, Unidirectional };
     static QList<int> supportedTransferTypes();
     static QString transferTypeName(int type);
     static void setupTransferType(QComboBox *comboBox);

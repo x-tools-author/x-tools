@@ -41,7 +41,7 @@ protected:
         int option;
     };
     QList<Item> m_transfers;
-    bool m_enableRestartTransfer{true};
+    bool m_enableRestartTransfer{false};
 
 protected:
     virtual Communication *createTransfer() = 0;

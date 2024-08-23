@@ -43,7 +43,7 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
 
     if (role == Qt::DisplayRole) {
         if (index.column() == 0) {
-            return item.transfer->isEnable() ? tr("Enable") : tr("Disable");
+            return xIO::transferTypeName(item.option);
         } else if (index.column() == 1) {
             return socketItem.clientAddress;
         } else if (index.column() == 2) {
@@ -93,7 +93,53 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
 
 bool SocketTransferModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    return false;
+    if (role != Qt::EditRole) {
+        return false;
+    }
+
+    int row = index.row();
+    if (row < 0 && row >= m_transfers.size()) {
+        return false;
+    }
+
+    int column = index.column();
+    Item item = m_transfers.at(row);
+
+    if (column == 0) {
+        item.option = value.toInt();
+        m_transfers.replace(row, item);
+    } else if (column == 9) {
+        item.description = value.toString();
+        m_transfers.replace(row, item);
+    } else {
+        auto socket = qobject_cast<Socket *>(item.transfer);
+        QVariantMap parameters = socket->parameters();
+        xIO::SocketItem socketItem = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
+
+        if (column == 1) {
+            socketItem.clientAddress = value.toString();
+        } else if (column == 2) {
+            socketItem.clientPort = value.toInt();
+        } else if (column == 3) {
+            socketItem.serverAddress = value.toString();
+        } else if (column == 4) {
+            socketItem.serverPort = value.toInt();
+        } else if (column == 5) {
+            socketItem.dataChannel = static_cast<xIO::WebSocketDataChannel>(value.toInt());
+        } else if (column == 6) {
+            socketItem.authentication = value.toBool();
+        } else if (column == 7) {
+            socketItem.username = value.toString();
+        } else if (column == 8) {
+            socketItem.password = value.toString();
+        }
+
+        parameters = xIO::saveSocketItem(socketItem).toVariantMap();
+        socket->setParameters(parameters);
+    }
+
+    emit dataChanged(index, index);
+    return true;
 }
 
 QVariant SocketTransferModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -104,7 +150,7 @@ QVariant SocketTransferModel::headerData(int section, Qt::Orientation orientatio
 
     if (role == Qt::DisplayRole) {
         if (section == 0) {
-            return tr("Enable");
+            return tr("Transfer Option");
         } else if (section == 1) {
             return tr("Client Address");
         } else if (section == 2) {
