@@ -21,6 +21,7 @@ public:
 
 protected:
     Socket *createSocket() override;
+    bool isEnableRestartingColumn(int column) const;
 };
 
 } // namespace xTools

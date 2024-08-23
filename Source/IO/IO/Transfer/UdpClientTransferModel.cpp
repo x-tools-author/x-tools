@@ -23,4 +23,13 @@ Socket *UdpClientTransferModel::createSocket()
     return new UdpClient(this);
 }
 
+bool UdpClientTransferModel::isEnableRestartingColumn(int column) const
+{
+    if (column == 1 || column == 2 || column == 3 || column == 4) {
+        return true;
+    }
+
+    return false;
+}
+
 } // namespace xTools

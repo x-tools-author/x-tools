@@ -23,4 +23,13 @@ Socket *WebSocketServerTransferModel::createSocket()
     return new UdpClient(this);
 }
 
+bool WebSocketServerTransferModel::isEnableRestartingColumn(int column) const
+{
+    if (column == 3 || column == 4) {
+        return true;
+    }
+
+    return false;
+}
+
 } // namespace xTools
