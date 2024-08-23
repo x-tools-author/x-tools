@@ -734,7 +734,7 @@ QList<int> xIO::supportedTransferTypes()
 {
     static QList<int> types = {
         static_cast<int>(TransferType::Disabled),
-        static_cast<int>(TransferType::Didirectional),
+        static_cast<int>(TransferType::Bidirectional),
         static_cast<int>(TransferType::Unidirectional),
     };
 
@@ -745,7 +745,7 @@ QString xIO::transferTypeName(int type)
 {
     if (type == static_cast<int>(TransferType::Disabled)) {
         return tr("Diabled");
-    } else if (type == static_cast<int>(TransferType::Didirectional)) {
+    } else if (type == static_cast<int>(TransferType::Bidirectional)) {
         return tr("Didirectional");
     } else if (type == static_cast<int>(TransferType::Unidirectional)) {
         return tr("Unidirectional");
