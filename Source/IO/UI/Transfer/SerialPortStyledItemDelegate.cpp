@@ -28,7 +28,6 @@ QWidget *SerialPortStyledItemDelegate::createEditor(QWidget *parent,
 {
     switch (index.column()) {
     case 0:
-        return new QCheckBox(parent);
     case 1:
     case 2:
     case 3:
@@ -47,7 +46,8 @@ void SerialPortStyledItemDelegate::setEditorData(QWidget *editor, const QModelIn
 {
     int column = index.column();
     if (column == 0) {
-        qobject_cast<QCheckBox *>(editor)->setChecked(index.data(Qt::EditRole).toBool());
+        auto cb = qobject_cast<QComboBox *>(editor);
+        xIO::setupTransferType(cb);
     } else if (column == 1) {
         auto cb = qobject_cast<QComboBox *>(editor);
         xIO::setupPortName(cb);
@@ -76,12 +76,10 @@ void SerialPortStyledItemDelegate::setModelData(QWidget *editor,
                                                 const QModelIndex &index) const
 {
     int column = index.column();
-    if (column == 0) {
-        model->setData(index, qobject_cast<QCheckBox *>(editor)->isChecked());
-    } else if (column == 1) {
+    if (column == 1) {
         auto cb = qobject_cast<QComboBox *>(editor);
         model->setData(index, cb->currentText());
-    } else if (column > 1 && column < 7) {
+    } else if ((column == 0) || (column > 1 && column < 7)) {
         auto cb = qobject_cast<QComboBox *>(editor);
         model->setData(index, cb->currentData());
     }

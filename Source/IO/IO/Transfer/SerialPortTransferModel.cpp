@@ -44,7 +44,8 @@ QVariant SerialPortTransferModel::data(const QModelIndex &index, int role) const
 
     if (role == Qt::DisplayRole) {
         if (column == 0) {
-            return item.transfer->isEnable() ? tr("Enable") : tr("Disable");
+            int option = m_transfers.at(row).option;
+            return xIO::transferTypeName(option);
         } else if (column == 1) {
             return serialPortItem.portName;
         } else if (column == 2) {
@@ -127,9 +128,18 @@ bool SerialPortTransferModel::setData(const QModelIndex &index, const QVariant &
     int column = index.column();
     Item item = m_transfers[row];
     if (column == 0) {
-        item.transfer->setIsEnable(value.toBool());
+        item.option = value.toInt();
+
+        if (item.option == static_cast<int>(xIO::TransferType::Diabled)) {
+            item.transfer->setIsEnable(false);
+        } else {
+            item.transfer->setIsEnable(true);
+        }
+
+        m_transfers.replace(row, item);
     } else if (column == 7) {
         item.description = value.toString();
+        m_transfers.replace(row, item);
     } else {
         auto item = m_transfers.at(row);
         SerialPort *serialPort = qobject_cast<SerialPort *>(item.transfer);

@@ -754,4 +754,14 @@ QString xIO::transferTypeName(int type)
     }
 }
 
+void xIO::setupTransferType(QComboBox *comboBox)
+{
+    comboBox->clear();
+
+    auto types = supportedTransferTypes();
+    for (const auto &type : types) {
+        comboBox->addItem(transferTypeName(type), type);
+    }
+}
+
 } // namespace xTools

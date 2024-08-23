@@ -9,6 +9,7 @@
 #include "AbstractTransferModel.h"
 
 #include "../../IO/Communication/Communication.h"
+#include "../../xIO.h"
 
 namespace xTools {
 
@@ -31,8 +32,16 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
     beginInsertRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {
         auto transfer = createTransfer();
-        connect(transfer, &Communication::outputBytes, this, &AbstractTransferModel::outputBytes);
-        m_transfers.insert(row, {transfer, tr("Transfer %1").arg(row)});
+        connect(transfer, &Communication::outputBytes, this, [=](const QByteArray &bytes) {
+            for (auto &transfer : m_transfers) {
+                if (transfer.option == static_cast<int>(xIO::TransferType::Didirectional)) {
+                    emit outputBytes(bytes);
+                }
+            }
+        });
+
+        int option = static_cast<int>(xIO::TransferType::Didirectional);
+        m_transfers.insert(row, {transfer, tr("Transfer %1").arg(row), option});
     }
     endInsertRows();
     return true;
@@ -54,7 +63,7 @@ bool AbstractTransferModel::removeRows(int row, int count, const QModelIndex &pa
 void AbstractTransferModel::inputBytes(const QByteArray &bytes)
 {
     for (auto &item : m_transfers) {
-        if (item.transfer->isEnable()) {
+        if (item.option != static_cast<int>(xIO::TransferType::Diabled)) {
             item.transfer->inputBytes(bytes);
         }
     }

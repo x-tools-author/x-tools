@@ -182,6 +182,7 @@ public:
     enum class TransferType { Diabled, Didirectional, Unidirectional };
     static QList<int> supportedTransferTypes();
     static QString transferTypeName(int type);
+    static void setupTransferType(QComboBox *comboBox);
 };
 
 } // namespace xTools

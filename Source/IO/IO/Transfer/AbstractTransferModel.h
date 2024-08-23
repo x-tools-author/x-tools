@@ -38,6 +38,7 @@ protected:
     {
         Communication *transfer{nullptr};
         QString description;
+        int option;
     };
     QList<Item> m_transfers;
     bool m_enableRestartTransfer{true};
