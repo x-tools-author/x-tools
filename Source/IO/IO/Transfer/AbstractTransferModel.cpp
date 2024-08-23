@@ -39,6 +39,11 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
                 }
             }
         });
+        connect(transfer, &Communication::finished, this, [=]() {
+            if (this->m_enableRestartTransfer) {
+                transfer->start();
+            }
+        });
 
         int option = static_cast<int>(xIO::TransferType::Didirectional);
         m_transfers.insert(row, {transfer, tr("Transfer %1").arg(row), option});
@@ -80,6 +85,7 @@ void AbstractTransferModel::startAll()
 
 void AbstractTransferModel::stopAll()
 {
+    m_enableRestartTransfer = false;
     for (auto &item : m_transfers) {
         item.transfer->exit();
         item.transfer->wait();
