@@ -15,27 +15,8 @@ namespace xTools {
 AbstractTransfer::AbstractTransfer(QObject *parent)
     : AbstractModelIO{parent}
 {
-    connect(this, &AbstractModelIO::started, this, [this]() {
-        auto model = tableModel();
-        if (model.isValid()) {
-            auto *transferModel = model.value<AbstractTransferModel *>();
-            if (transferModel) {
-                transferModel->setEnableRestartTransfer(true);
-                transferModel->startAll();
-            }
-        }
-    });
-
-    connect(this, &AbstractModelIO::finished, this, [this]() {
-        auto model = tableModel();
-        if (model.isValid()) {
-            auto *transferModel = model.value<AbstractTransferModel *>();
-            if (transferModel) {
-                transferModel->setEnableRestartTransfer(false);
-                transferModel->stopAll();
-            }
-        }
-    });
+    connect(this, &AbstractModelIO::started, this, &AbstractTransfer::onStarted);
+    connect(this, &AbstractModelIO::finished, this, &AbstractTransfer::onFinished);
 }
 
 AbstractTransfer::~AbstractTransfer() {}
@@ -49,6 +30,30 @@ void AbstractTransfer::inputBytes(const QByteArray &bytes)
     AbstractTransferModel *model = tableModel().value<AbstractTransferModel *>();
     if (model) {
         model->inputBytes(bytes);
+    }
+}
+
+void AbstractTransfer::onStarted()
+{
+    auto model = tableModel();
+    if (model.isValid()) {
+        auto *transferModel = model.value<AbstractTransferModel *>();
+        if (transferModel) {
+            transferModel->setEnableRestartTransfer(true);
+            transferModel->startAll();
+        }
+    }
+}
+
+void AbstractTransfer::onFinished()
+{
+    auto model = tableModel();
+    if (model.isValid()) {
+        auto *transferModel = model.value<AbstractTransferModel *>();
+        if (transferModel) {
+            transferModel->setEnableRestartTransfer(false);
+            transferModel->stopAll();
+        }
     }
 }
 

@@ -20,6 +20,10 @@ public:
     ~AbstractTransfer() override;
 
     void inputBytes(const QByteArray &bytes) override;
+
+private:
+    void onStarted();
+    void onFinished();
 };
 
 } // namespace xTools
