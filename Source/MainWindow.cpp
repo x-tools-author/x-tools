@@ -127,6 +127,7 @@ void MainWindow::initFileMenu()
         w->show();
     });
     m_fileMenu->addSeparator();
+    m_fileMenu->addAction(tr("Save Parameters"), this, &MainWindow::onSaveActionTriggered);
     m_fileMenu->addAction(tr("Import Parameters"), this, &MainWindow::onImportActionTriggered);
     m_fileMenu->addAction(tr("Export Parameters"), this, &MainWindow::onExportActionTriggered);
     m_fileMenu->addSeparator();
@@ -443,6 +444,11 @@ void MainWindow::save(const QString& fileName)
     QTextStream out(&file);
     out << doc.toJson();
     file.close();
+}
+
+void MainWindow::onSaveActionTriggered()
+{
+    save();
 }
 
 void MainWindow::onImportActionTriggered()

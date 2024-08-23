@@ -56,7 +56,7 @@ QVariantMap SerialPortTransfer::saveItem(const int row) const
     obj.insert("enable", m_model->data(m_model->index(row, 0), Qt::EditRole).toBool());
     obj.insert("description", m_model->data(m_model->index(row, 7), Qt::EditRole).toString());
 
-    return xIO::saveSerialPortItem(item).toVariantMap();
+    return obj.toVariantMap();
 }
 
 void SerialPortTransfer::loadItem(const int row, const QVariantMap &item)

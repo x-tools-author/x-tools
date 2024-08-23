@@ -67,6 +67,7 @@ private:
 
     void load(const QString& fileName = QString());
     void save(const QString& fileName = QString());
+    void onSaveActionTriggered();
     void onImportActionTriggered();
     void onExportActionTriggered();
 };

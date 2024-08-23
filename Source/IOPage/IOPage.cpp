@@ -169,11 +169,11 @@ QVariantMap IOPage::save()
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
     map.insert(g_keys.responserItems, ui->tabResponser->save());
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
-    map.insert(g_keys.serialPortTransferItems, m_serialPortTransfer->save());
+    map.insert(g_keys.serialPortTransferItems, m_serialPortTransferUi->save());
 #endif
     map.insert(g_keys.udpClientTransferItems, m_udpClientTransferUi->save());
-    map.insert(g_keys.tcpClientTransferItems, m_tcpClientTransfer->save());
-    map.insert(g_keys.tcpServerTransferItems, m_tcpServerTransfer->save());
+    map.insert(g_keys.tcpClientTransferItems, m_tcpClientTransferUi->save());
+    map.insert(g_keys.tcpServerTransferItems, m_tcpServerTransferUi->save());
     map.insert(g_keys.webSocketClientTransferItems, m_webSocketClientTransferUi->save());
     map.insert(g_keys.webSocketServerTransferItems, m_webSocketServerTransferUi->save());
 
@@ -430,6 +430,10 @@ void IOPage::onShowStatisticianChanged(bool checked)
 
 void IOPage::onOpened()
 {
+    for (auto io : m_ioList) {
+        io->start();
+    }
+
     setUiEnabled(false);
     ui->pushButtonCommunicationOpen->setEnabled(true);
     ui->pushButtonCommunicationOpen->setText(tr("Close"));
@@ -438,6 +442,11 @@ void IOPage::onOpened()
 
 void IOPage::onClosed()
 {
+    for (auto io : m_ioList) {
+        io->exit();
+        io->wait();
+    }
+
     m_io->deleteLater();
     m_io = nullptr;
 
@@ -481,10 +490,6 @@ void IOPage::open()
     if (m_io) {
         setUiEnabled(false);
 
-        for (auto io : m_ioList) {
-            io->start();
-        }
-
         // clang-format off
         connect(m_io, &xTools::Communication::opened, this, &IOPage::onOpened);
         connect(m_io, &xTools::Communication::closed, this, &IOPage::onClosed);
@@ -525,11 +530,6 @@ void IOPage::open()
 
 void IOPage::close()
 {
-    for (auto io : m_ioList) {
-        io->exit();
-        io->wait();
-    }
-
     if (m_io) {
         m_io->exit();
         m_io->wait();
