@@ -28,6 +28,8 @@ public:
     void inputBytes(const QByteArray &bytes);
     void startAll();
     void stopAll();
+    void setEnableRestartTransfer(bool enable);
+
 signals:
     void outputBytes(const QByteArray &bytes);
 
@@ -38,9 +40,16 @@ protected:
         QString description;
     };
     QList<Item> m_transfers;
+    bool m_enableRestartTransfer{true};
 
 protected:
     virtual Communication *createTransfer() = 0;
+    virtual bool isEnableRestartingColumn(int column) const;
+
+private:
+    void onDataChanged(const QModelIndex &topLeft,
+                       const QModelIndex &bottomRight,
+                       const QList<int> &roles = QList<int>());
 };
 
 } // namespace xTools

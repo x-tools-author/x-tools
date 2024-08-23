@@ -26,7 +26,7 @@ public:
     virtual QVariantMap saveItem(const int row) const override;
     virtual void loadItem(const int row, const QVariantMap &item) override;
 
-protected:
+private:
     SerialPortTransferModel *m_model;
 };
 

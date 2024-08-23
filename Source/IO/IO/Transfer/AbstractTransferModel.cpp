@@ -14,7 +14,9 @@ namespace xTools {
 
 AbstractTransferModel::AbstractTransferModel(QObject *parent)
     : QAbstractTableModel(parent)
-{}
+{
+    connect(this, &AbstractTransferModel::dataChanged, this, &AbstractTransferModel::onDataChanged);
+}
 
 AbstractTransferModel::~AbstractTransferModel() {}
 
@@ -33,6 +35,19 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
         m_transfers.insert(row, {transfer, tr("Transfer %1").arg(row)});
     }
     endInsertRows();
+    return true;
+}
+
+bool AbstractTransferModel::removeRows(int row, int count, const QModelIndex &parent)
+{
+    beginRemoveRows(parent, row, row + count - 1);
+    for (int i = 0; i < count; ++i) {
+        auto tmp = m_transfers.takeAt(row);
+        tmp.transfer->exit();
+        tmp.transfer->wait();
+        tmp.transfer->deleteLater();
+    }
+    endRemoveRows();
     return true;
 }
 
@@ -62,17 +77,40 @@ void AbstractTransferModel::stopAll()
     }
 }
 
-bool AbstractTransferModel::removeRows(int row, int count, const QModelIndex &parent)
+void AbstractTransferModel::setEnableRestartTransfer(bool enable)
 {
-    beginRemoveRows(parent, row, row + count - 1);
-    for (int i = 0; i < count; ++i) {
-        auto tmp = m_transfers.takeAt(row);
-        tmp.transfer->exit();
-        tmp.transfer->wait();
-        tmp.transfer->deleteLater();
+    m_enableRestartTransfer = enable;
+}
+
+bool AbstractTransferModel::isEnableRestartingColumn(int column) const
+{
+    return false;
+}
+
+void AbstractTransferModel::onDataChanged(const QModelIndex &topLeft,
+                                          const QModelIndex &bottomRight,
+                                          const QList<int> &roles)
+{
+    if (topLeft != bottomRight) {
+        qWarning() << "topLeft != bottomRight, it is not supported for restarting transfer!";
+        return;
     }
-    endRemoveRows();
-    return true;
+
+    if (!isEnableRestartingColumn(topLeft.column())) {
+        return;
+    }
+
+    if (!m_enableRestartTransfer) {
+        return;
+    }
+
+    auto row = topLeft.row();
+    if (row >= 0 && row < m_transfers.size()) {
+        auto transfer = m_transfers.at(row).transfer;
+        transfer->exit();
+        transfer->wait();
+        transfer->start();
+    }
 }
 
 } // namespace xTools

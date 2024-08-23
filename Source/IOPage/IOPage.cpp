@@ -447,9 +447,6 @@ void IOPage::onClosed()
         io->wait();
     }
 
-    m_io->deleteLater();
-    m_io = nullptr;
-
     m_writeTimer->stop();
     setUiEnabled(true);
     ui->pushButtonCommunicationOpen->setEnabled(true);

@@ -214,4 +214,13 @@ Communication *SerialPortTransferModel::createTransfer()
     return sp;
 }
 
+bool SerialPortTransferModel::isEnableRestartingColumn(int column) const
+{
+    if ((column == 0) && (column == (columnCount() - 1))) {
+        return false;
+    }
+
+    return true;
+}
+
 } // namespace xTools

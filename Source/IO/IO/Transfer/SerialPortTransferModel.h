@@ -27,6 +27,7 @@ public:
 
 protected:
     Communication *createTransfer() override;
+    bool isEnableRestartingColumn(int column) const override;
 };
 
 } // namespace xTools

@@ -20,6 +20,7 @@ AbstractTransfer::AbstractTransfer(QObject *parent)
         if (model.isValid()) {
             auto *transferModel = model.value<AbstractTransferModel *>();
             if (transferModel) {
+                transferModel->setEnableRestartTransfer(true);
                 transferModel->startAll();
             }
         }
@@ -30,6 +31,7 @@ AbstractTransfer::AbstractTransfer(QObject *parent)
         if (model.isValid()) {
             auto *transferModel = model.value<AbstractTransferModel *>();
             if (transferModel) {
+                transferModel->setEnableRestartTransfer(false);
                 transferModel->stopAll();
             }
         }
