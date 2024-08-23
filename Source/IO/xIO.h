@@ -177,6 +177,11 @@ public:
     static SocketItem loadSocketItem(const QJsonObject &obj);
     static void setupSocketAddress(QComboBox *cb);
     static void setupSocketPort(QSpinBox *spinBox);
+
+    /**********************************************************************************************/
+    enum class TransferType { Diabled, Didirectional, Unidirectional };
+    static QList<int> supportedTransferTypes();
+    static QString transferTypeName(int type);
 };
 
 } // namespace xTools
