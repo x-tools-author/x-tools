@@ -168,7 +168,9 @@ QVariantMap IOPage::save()
     map.insert(g_keys.presetItems, ui->tabPresets->save());
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
     map.insert(g_keys.responserItems, ui->tabResponser->save());
-    map.insert(g_keys.serialPortTransferItems, m_tcpServerTransferUi->save());
+#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+    map.insert(g_keys.serialPortTransferItems, m_serialPortTransfer->save());
+#endif
     map.insert(g_keys.udpClientTransferItems, m_udpClientTransferUi->save());
     map.insert(g_keys.tcpClientTransferItems, m_tcpClientTransfer->save());
     map.insert(g_keys.tcpServerTransferItems, m_tcpServerTransfer->save());
@@ -436,6 +438,9 @@ void IOPage::onOpened()
 
 void IOPage::onClosed()
 {
+    m_io->deleteLater();
+    m_io = nullptr;
+
     m_writeTimer->stop();
     setUiEnabled(true);
     ui->pushButtonCommunicationOpen->setEnabled(true);
