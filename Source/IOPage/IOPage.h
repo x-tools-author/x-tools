@@ -25,7 +25,7 @@ QT_BEGIN_NAMESPACE
 namespace xTools {
 class Preset;
 class Emitter;
-class Responser;
+class Responder;
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
 class SerialPortTransfer;
 class SerialPortTransferUi;
@@ -82,7 +82,7 @@ private:
     xTools::Statistician *m_txStatistician;
     xTools::Preset *m_preset;
     xTools::Emitter *m_emitter;
-    xTools::Responser *m_responder;
+    xTools::Responder *m_responder;
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     xTools::SerialPortTransfer *m_serialPortTransfer;
     xTools::SerialPortTransferUi *m_serialPortTransferUi;

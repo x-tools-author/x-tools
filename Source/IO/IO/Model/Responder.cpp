@@ -6,30 +6,30 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "Responser.h"
+#include "Responder.h"
 
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QTimer>
 #include <QVariant>
 
-#include "ResponserModel.h"
+#include "ResponderModel.h"
 
 namespace xTools {
 
-Responser::Responser(QObject *parent)
+Responder::Responder(QObject *parent)
     : AbstractModelIO{parent}
-    , m_tableModel{new ResponserModel(this)}
+    , m_tableModel{new ResponderModel(this)}
 {
 
 }
 
-QVariant Responser::tableModel() const
+QVariant Responder::tableModel() const
 {
     return QVariant::fromValue(m_tableModel);
 }
 
-QVariantMap Responser::saveItem(const int row) const
+QVariantMap Responder::saveItem(const int row) const
 {
     if (row < 0 || row >= m_tableModel->rowCount(QModelIndex())) {
         qWarning() << "Invalid index row: " << row;
@@ -64,7 +64,7 @@ QVariantMap Responser::saveItem(const int row) const
     return map;
 }
 
-void Responser::loadItem(const int row, const QVariantMap &item)
+void Responder::loadItem(const int row, const QVariantMap &item)
 {
     if (row < 0 || row >= m_tableModel->rowCount(QModelIndex())) {
         qWarning() << "Invalid index row: " << row;
@@ -90,7 +90,7 @@ void Responser::loadItem(const int row, const QVariantMap &item)
     m_tableModel->setData(m_tableModel->index(row, 5), json, Qt::EditRole);
 }
 
-void Responser::inputBytes(const QByteArray &bytes)
+void Responder::inputBytes(const QByteArray &bytes)
 {
     if (!(!bytes.isEmpty() && isRunning())) {
         return;
@@ -146,7 +146,7 @@ void Responser::inputBytes(const QByteArray &bytes)
     }
 }
 
-void Responser::run()
+void Responder::run()
 {
     exec();
 }

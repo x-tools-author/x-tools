@@ -17,7 +17,7 @@
 #include "IO/IO/IOFactory.h"
 #include "IO/IO/Model/Emitter.h"
 #include "IO/IO/Model/Preset.h"
-#include "IO/IO/Model/Responser.h"
+#include "IO/IO/Model/Responder.h"
 #include "IO/IO/Processor/Statistician.h"
 #include "IO/IO/Transfer/TcpClientTransfer.h"
 #include "IO/IO/Transfer/TcpServerTransfer.h"
@@ -88,7 +88,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     , m_txStatistician{new xTools::Statistician(this)}
     , m_preset{new xTools::Preset(this)}
     , m_emitter{new xTools::Emitter(this)}
-    , m_responder{new xTools::Responser(this)}
+    , m_responder{new xTools::Responder(this)}
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     , m_serialPortTransfer(new xTools::SerialPortTransfer(this))
     , m_serialPortTransferUi(new xTools::SerialPortTransferUi(this))
@@ -496,7 +496,7 @@ void IOPage::openCommunication()
         connect(m_io, &xTools::Communication::bytesRead, this, &IOPage::onBytesRead);
         connect(m_io, &xTools::Communication::errorOccurred, this, &IOPage::onErrorOccurred);
         connect(m_io, &xTools::Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
-        connect(m_io, &xTools::Communication::outputBytes, m_responder, &xTools::Responser::inputBytes);
+        connect(m_io, &xTools::Communication::outputBytes, m_responder, &xTools::Responder::inputBytes);
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
         connect(m_io, &xTools::Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
 #endif
@@ -508,7 +508,7 @@ void IOPage::openCommunication()
 
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
-        connect(m_responder, &xTools::Responser::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_responder, &xTools::Responder::outputBytes, m_io, &xTools::Communication::inputBytes);
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
         connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
 #endif
