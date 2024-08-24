@@ -746,7 +746,7 @@ QString xIO::transferTypeName(int type)
     if (type == static_cast<int>(TransferType::Disabled)) {
         return tr("Diabled");
     } else if (type == static_cast<int>(TransferType::Bidirectional)) {
-        return tr("Didirectional");
+        return tr("Bidirectional");
     } else if (type == static_cast<int>(TransferType::Unidirectional)) {
         return tr("Unidirectional");
     } else {
