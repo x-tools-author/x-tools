@@ -63,7 +63,7 @@ public:
 
 public:
     explicit IOPage(ControllerDirection direction, QSettings *settings, QWidget *parent = nullptr);
-    ~IOPage();
+    ~IOPage() override;
 
     QVariantMap save();
     void load(const QVariantMap &parameters);
@@ -82,7 +82,7 @@ private:
     xTools::Statistician *m_txStatistician;
     xTools::Preset *m_preset;
     xTools::Emitter *m_emitter;
-    xTools::Responser *m_responser;
+    xTools::Responser *m_responder;
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     xTools::SerialPortTransfer *m_serialPortTransfer;
     xTools::SerialPortTransferUi *m_serialPortTransferUi;
@@ -125,8 +125,8 @@ private:
     void onBytesRead(const QByteArray &bytes, const QString &from);
     void onBytesWritten(const QByteArray &bytes, const QString &to);
 
-    void open();
-    void close();
+    void openCommunication();
+    void closeCommunication();
     void writeBytes();
     void updateLabelInfo();
     void setupMenu(QPushButton *target, QWidget *actionWidget);

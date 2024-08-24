@@ -88,7 +88,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     , m_txStatistician{new xTools::Statistician(this)}
     , m_preset{new xTools::Preset(this)}
     , m_emitter{new xTools::Emitter(this)}
-    , m_responser{new xTools::Responser(this)}
+    , m_responder{new xTools::Responser(this)}
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     , m_serialPortTransfer(new xTools::SerialPortTransfer(this))
     , m_serialPortTransferUi(new xTools::SerialPortTransferUi(this))
@@ -105,15 +105,15 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     , m_webSocketServerTransferUi(new xTools::WebSocketServerTransferUi())
     , m_settings{settings}
 {
-    if (!m_settings) {
-        m_settings = new QSettings("iopage.ini", QSettings::IniFormat);
+    if (settings == nullptr) {
+        m_settings = new QSettings("IO_Page.ini", QSettings::IniFormat);
     }
 
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
 
-    m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responser
+    m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responder
              << m_udpClientTransfer << m_tcpClientTransfer << m_webSocketClientTransfer
              << m_webSocketServerTransfer;
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
@@ -121,7 +121,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
 #endif
 
     if (direction == ControllerDirection::Right) {
-        QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
+        auto *l = qobject_cast<QHBoxLayout *>(layout());
         if (l) {
             auto item = l->takeAt(0);
             l->addItem(item);
@@ -338,7 +338,7 @@ void IOPage::initUiOutput()
 
     ui->tabPresets->setupIO(m_preset);
     ui->tabEmitter->setupIO(m_emitter);
-    ui->tabResponser->setupIO(m_responser);
+    ui->tabResponser->setupIO(m_responder);
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     m_serialPortTransferUi->setupIO(m_serialPortTransfer);
 #endif
@@ -350,6 +350,8 @@ void IOPage::initUiOutput()
 
     ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
     ui->toolButtonInputPreset->setMenu(ui->tabPresets->menu());
+    ui->tabWidget->setCurrentIndex(0);
+    ui->tabWidgetTransfers->setCurrentIndex(0);
 }
 
 void IOPage::initUiInput()
@@ -401,9 +403,9 @@ void IOPage::onOpenButtonClicked()
 {
     ui->pushButtonCommunicationOpen->setEnabled(false);
     if (m_io) {
-        close();
+        closeCommunication();
     } else {
-        open();
+        openCommunication();
     }
 }
 
@@ -455,7 +457,7 @@ void IOPage::onClosed()
 
 void IOPage::onErrorOccurred(const QString &error)
 {
-    close();
+    closeCommunication();
     if (!error.isEmpty()) {
         QMessageBox::warning(this, tr("Error Occurred"), error);
     }
@@ -480,7 +482,7 @@ void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
     outputText(bytes, to, false);
 }
 
-void IOPage::open()
+void IOPage::openCommunication()
 {
     int type = ui->comboBoxCommmunicationTypes->currentData().toInt();
     m_io = xTools::IOFactory::singleton().createDevice(type);
@@ -494,7 +496,7 @@ void IOPage::open()
         connect(m_io, &xTools::Communication::bytesRead, this, &IOPage::onBytesRead);
         connect(m_io, &xTools::Communication::errorOccurred, this, &IOPage::onErrorOccurred);
         connect(m_io, &xTools::Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
-        connect(m_io, &xTools::Communication::outputBytes, m_responser, &xTools::Responser::inputBytes);
+        connect(m_io, &xTools::Communication::outputBytes, m_responder, &xTools::Responser::inputBytes);
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
         connect(m_io, &xTools::Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
 #endif
@@ -506,7 +508,7 @@ void IOPage::open()
 
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
-        connect(m_responser, &xTools::Responser::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_responder, &xTools::Responser::outputBytes, m_io, &xTools::Communication::inputBytes);
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
         connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
 #endif
@@ -525,7 +527,7 @@ void IOPage::open()
     }
 }
 
-void IOPage::close()
+void IOPage::closeCommunication()
 {
     if (m_io) {
         m_io->exit();
