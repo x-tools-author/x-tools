@@ -8,9 +8,6 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QButtonGroup>
-#include <QMetaEnum>
-
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
 #include "xToolsPrivateMainWindow.h"
 #else
@@ -28,7 +25,7 @@ class MainWindow : public xTools::MainWindow
     Q_OBJECT
 public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
-    ~MainWindow();
+    ~MainWindow() override;
 
 protected:
     void closeEvent(QCloseEvent* event) override;
@@ -56,18 +53,16 @@ private:
     void initToolMenu();
     void initOptionMenu();
     void initViewMenu();
-    void initLanguageMenu();
     void initHelpMenu();
     void initLinksMenu();
-    void initNav();
 
     void updateGrid(WindowGrid grid);
-    void showHistory();
-    void showQrCode();
+    static void showHistory();
+    static void showQrCode();
 
-    void load(const QString& fileName = QString());
-    void save(const QString& fileName = QString());
-    void onSaveActionTriggered();
+    void load(const QString& fileName = QString()) const;
+    void save(const QString& fileName = QString()) const;
+    void onSaveActionTriggered() const;
     void onImportActionTriggered();
     void onExportActionTriggered();
 };
