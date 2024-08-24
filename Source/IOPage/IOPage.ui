@@ -252,7 +252,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
@@ -389,9 +389,9 @@
        <string>Emitter</string>
       </attribute>
      </widget>
-     <widget class="xTools::ResponserUi" name="tabResponser">
+     <widget class="xTools::ResponserUi" name="tabResponder">
       <attribute name="title">
-       <string>Responser</string>
+       <string>Responder</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="tabTransfers">

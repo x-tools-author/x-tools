@@ -167,7 +167,7 @@ QVariantMap IOPage::save()
 
     map.insert(g_keys.presetItems, ui->tabPresets->save());
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
-    map.insert(g_keys.responserItems, ui->tabResponser->save());
+    map.insert(g_keys.responserItems, ui->tabResponder->save());
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     map.insert(g_keys.serialPortTransferItems, m_serialPortTransferUi->save());
 #endif
@@ -225,7 +225,7 @@ void IOPage::load(const QVariantMap &parameters)
     // clang-format off
     ui->tabPresets->load(parameters.value(g_keys.presetItems).toMap());
     ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
-    ui->tabResponser->load(parameters.value(g_keys.responserItems).toMap());
+    ui->tabResponder->load(parameters.value(g_keys.responserItems).toMap());
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     m_serialPortTransferUi->load(parameters.value(g_keys.serialPortTransferItems).toMap());
 #endif
@@ -338,7 +338,7 @@ void IOPage::initUiOutput()
 
     ui->tabPresets->setupIO(m_preset);
     ui->tabEmitter->setupIO(m_emitter);
-    ui->tabResponser->setupIO(m_responder);
+    ui->tabResponder->setupIO(m_responder);
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
     m_serialPortTransferUi->setupIO(m_serialPortTransfer);
 #endif
