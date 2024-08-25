@@ -1,4 +1,4 @@
-﻿/***************************************************************************************************
+/***************************************************************************************************
  * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
@@ -185,7 +185,7 @@ QVariant SerialPortTransferModel::headerData(int section,
         if (section == 0) {
             return tr("Transfer Option");
         } else if (section == 1) {
-            return tr("Poet Name");
+            return tr("Port Name");
         } else if (section == 2) {
             return tr("Baud Rate");
         } else if (section == 3) {
