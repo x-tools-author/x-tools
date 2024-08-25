@@ -1,4 +1,4 @@
-﻿/***************************************************************************************************
+/***************************************************************************************************
  * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
@@ -744,7 +744,7 @@ QList<int> xIO::supportedTransferTypes()
 QString xIO::transferTypeName(int type)
 {
     if (type == static_cast<int>(TransferType::Disabled)) {
-        return tr("Diabled");
+        return tr("Disabled");
     } else if (type == static_cast<int>(TransferType::Bidirectional)) {
         return tr("Bidirectional");
     } else if (type == static_cast<int>(TransferType::Unidirectional)) {
