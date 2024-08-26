@@ -6,30 +6,30 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "Base64Assisatnt.h"
-#include "ui_Base64Assisatnt.h"
+#include "Base64Assistant.h"
+#include "ui_Base64Assistant.h"
 
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QMessageBox>
 #include <QPixmap>
 
-Base64Assisatnt::Base64Assisatnt(QWidget* parent)
+Base64Assistant::Base64Assistant(QWidget* parent)
     : QWidget(parent)
-    , ui(new Ui::Base64Assisatnt)
+    , ui(new Ui::Base64Assistant)
 {
     ui->setupUi(this);
-    connect(ui->image, &QPushButton::clicked, this, &Base64Assisatnt::onImageClicked);
-    connect(ui->decrypt, &QPushButton::clicked, this, &Base64Assisatnt::onDecryptClicked);
-    connect(ui->encrypt, &QPushButton::clicked, this, &Base64Assisatnt::onEncryptClicked);
+    connect(ui->image, &QPushButton::clicked, this, &Base64Assistant::onImageClicked);
+    connect(ui->decrypt, &QPushButton::clicked, this, &Base64Assistant::onDecryptClicked);
+    connect(ui->encrypt, &QPushButton::clicked, this, &Base64Assistant::onEncryptClicked);
 }
 
-Base64Assisatnt::~Base64Assisatnt()
+Base64Assistant::~Base64Assistant()
 {
     delete ui;
 }
 
-void Base64Assisatnt::onImageClicked()
+void Base64Assistant::onImageClicked()
 {
     QString cipherText = ui->cipherText->toPlainText();
     QByteArray base64 = cipherText.toUtf8();
@@ -52,7 +52,7 @@ void Base64Assisatnt::onImageClicked()
     dialog.exec();
 }
 
-void Base64Assisatnt::onEncryptClicked()
+void Base64Assistant::onEncryptClicked()
 {
     QString plainText = ui->plainText->toPlainText();
     QByteArray byteArray = plainText.toUtf8();
@@ -61,7 +61,7 @@ void Base64Assisatnt::onEncryptClicked()
     ui->cipherText->setPlainText(ciperText);
 }
 
-void Base64Assisatnt::onDecryptClicked()
+void Base64Assistant::onDecryptClicked()
 {
     QString cipherText = ui->cipherText->toPlainText();
     QByteArray base64 = cipherText.toUtf8();

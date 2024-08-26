@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Base64 Assisatnt");
-    return xTools::execTool<Base64Assisatnt>(argc, argv, appName);
+    return xTools::execTool<Base64Assistant>(argc, argv, appName);
 }

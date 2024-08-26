@@ -46,7 +46,7 @@ AssistantFactory::AssistantFactory(QObject* parent)
     addAssistant<PingAssistant>(AssistantTypePing, tr("Ping Assistant"));
 #endif
     addAssistant<AsciiAssistant>(AssistantTypeAscii, tr("ASCII Assistant"));
-    addAssistant<Base64Assisatnt>(AssistantTypeBase64, tr("Base64 Assistant"));
+    addAssistant<Base64Assistant>(AssistantTypeBase64, tr("Base64 Assistant"));
     addAssistant<NumberAssistant>(AssistantTypeNumber, tr("Number Assistant"));
     addAssistant<StringAssistant>(AssistantTypeString, tr("String Assistant"));
     addAssistant<BroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));

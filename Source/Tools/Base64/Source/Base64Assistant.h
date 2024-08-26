@@ -14,12 +14,12 @@ namespace Ui {
 class Base64Assisatnt;
 }
 
-class Base64Assisatnt : public QWidget
+class Base64Assistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE Base64Assisatnt(QWidget* parent = Q_NULLPTR);
-    ~Base64Assisatnt();
+    Q_INVOKABLE Base64Assistant(QWidget* parent = Q_NULLPTR);
+    ~Base64Assistant();
 
 private:
     Ui::Base64Assisatnt* ui;
