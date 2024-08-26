@@ -28,7 +28,7 @@
 #include "App/Settings.h"
 #include "IOPage/IOPage.h"
 
-#ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
+#ifdef X_TOOLS_ENABLE_MODULE_TOOLS
 #include "AssistantFactory.h"
 #endif
 
@@ -134,7 +134,7 @@ void MainWindow::initFileMenu()
 
 void MainWindow::initToolMenu()
 {
-#ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
+#ifdef X_TOOLS_ENABLE_MODULE_TOOLS
     m_toolMenu = new QMenu(tr("&Tools"));
     menuBar()->insertMenu(m_languageMenu->menuAction(), m_toolMenu);
 

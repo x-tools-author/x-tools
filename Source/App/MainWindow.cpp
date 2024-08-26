@@ -348,7 +348,7 @@ void MainWindow::onAboutActionTriggered()
     info += tr("Commit") + ": " + X_TOOLS_PRIVATE_GIT_COMMIT + "\n\n";
 #endif
     info += tr("Build Date") + ": " + buildDateTimeString + "\n\n";
-    info += QString("© 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
+    info += QString("Copyright 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
     info += tr("All rights reserved.");
     QMessageBox::about(this, tr("About"), info);
 }
@@ -361,7 +361,7 @@ bool MainWindow::tryToReboot()
                                        QMessageBox::Ok | QMessageBox::No,
                                        QMessageBox::No);
     if (ret == QMessageBox::Ok) {
-        QProcess::startDetached(QCoreApplication::applicationFilePath());
+        QProcess::startDetached(QCoreApplication::applicationFilePath(), QStringList());
         QTimer::singleShot(1000, this, [=]() {
             qApp->closeAllWindows();
             qApp->exit();

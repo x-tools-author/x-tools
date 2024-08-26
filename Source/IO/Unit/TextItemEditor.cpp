@@ -27,7 +27,7 @@ TextItemEditor::TextItemEditor(QWidget *parent)
     xIO::setupTextFormat(ui->comboBoxFormat);
 
     connect(ui->comboBoxFormat,
-            &QComboBox::currentIndexChanged,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this,
             &TextItemEditor::onTextFormatChanged);
 }

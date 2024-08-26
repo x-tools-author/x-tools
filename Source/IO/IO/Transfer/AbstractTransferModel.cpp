@@ -104,7 +104,11 @@ bool AbstractTransferModel::isEnableRestartingColumn(int column) const
 
 void AbstractTransferModel::onDataChanged(const QModelIndex &topLeft,
                                           const QModelIndex &bottomRight,
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
                                           const QList<int> &roles)
+#else
+                                          const QVector<int> &roles)
+#endif
 {
     if (topLeft != bottomRight) {
         qWarning() << "topLeft != bottomRight, it is not supported for restarting transfer!";

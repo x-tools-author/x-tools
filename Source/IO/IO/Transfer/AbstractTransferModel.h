@@ -50,7 +50,11 @@ protected:
 private:
     void onDataChanged(const QModelIndex &topLeft,
                        const QModelIndex &bottomRight,
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
                        const QList<int> &roles = QList<int>());
+#else
+                       const QVector<int> &roles = QVector<int>());
+#endif
 };
 
 } // namespace xTools
