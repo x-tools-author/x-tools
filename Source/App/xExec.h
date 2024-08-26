@@ -52,7 +52,7 @@ void tryToRebootApp();
  * parameter of the function is the instance of the main window and the instance of the application.
  * \return
  */
-template<typename CentralWidget, typename MainWindow, typename Application>
+template<typename CentralWidgetT, typename MainWindowT, typename ApplicationT>
 int exec(int argc,
          char *argv[],
          const QString &appName,
@@ -65,17 +65,17 @@ int exec(int argc,
     QCoreApplication::setApplicationVersion(version);
     doSomethingBeforeAppCreated(argv, appName);
 
-    Application app(argc, argv);
+    ApplicationT app(argc, argv);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     QStyleHints *styleHints = QApplication::styleHints();
     styleHints->setColorScheme(Qt::ColorScheme::Dark);
 #endif
 
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
-    xTools::Settings::instance()->setValue("startUpTime", dtStr);
+    Settings::instance()->setValue("startUpTime", dtStr);
 
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
-    auto &styleSheetManager = xTools::StyleSheetManager::singleton();
+    auto &styleSheetManager = StyleSheetManager::singleton();
     const QString styleSheet = styleSheetManager.styleSheet();
     if (!styleSheet.isEmpty() && !styleSheetManager.currentTheme().isEmpty()) {
         app.setStyleSheet(styleSheet);
@@ -85,12 +85,12 @@ int exec(int argc,
     initAppStyle();
 
     QWidget *ui;
-    if (std::is_same<MainWindow, CentralWidget>::value) {
-        auto widget = new CentralWidget();
+    if (std::is_same<CentralWidgetT, MainWindowT>::value) {
+        auto widget = new CentralWidgetT();
         ui = widget;
     } else {
-        auto mainWindow = new MainWindow();
-        auto centralWidget = new CentralWidget(mainWindow);
+        auto mainWindow = new MainWindowT();
+        auto centralWidget = new CentralWidgetT(mainWindow);
         mainWindow->setWindowTitle(appName);
         mainWindow->setCentralWidget(centralWidget);
         ui = mainWindow;
@@ -100,7 +100,7 @@ int exec(int argc,
     splashScreen.finish(ui);
     ui->show();
     ui->resize(static_cast<int>(static_cast<qreal>(ui->height()) * 1.732), ui->height());
-    xTools::Application::moveToScreenCenter(ui);
+    Application::moveToScreenCenter(ui);
     qInfo() << "The size of window is" << ui->size();
 
     if (doSomethingBeforAppExec) {
