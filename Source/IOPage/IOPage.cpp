@@ -251,6 +251,9 @@ void IOPage::initUi()
     ui->pushButtonOutputSettings->setIcon(icon);
     ui->pushButtonInputSettings->setIcon(icon);
 #endif
+    ui->toolButtonInputPreset->setIcon(QIcon(":/Resources/Icons/IconList.svg"));
+    ui->toolButtonInputPreset->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    ui->toolButtonInputPreset->setStyleSheet("QToolButton::menu-indicator{image: none;}");
 
     initUiCommunication();
     initUiOutputControl();
