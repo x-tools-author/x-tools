@@ -14,7 +14,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 LIBS += -L$$[QT_INSTALL_LIBS]
 DEFINES += X_TOOLS_BUILD_WITH_QMAKE
-DEFINES += X_TOOLS_ENABLE_MODULE_SERIALPORT
+DEFINES += X_TOOLS_ENABLE_MODULE_SERIAL_PORT
 
 #---------------------------------------------------------------------------------------------------
 # Application information

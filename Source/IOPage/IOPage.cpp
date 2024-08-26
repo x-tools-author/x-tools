@@ -33,7 +33,7 @@
 #include "IO/UI/Transfer/WebSocketServerTransferUi.h"
 #include "IO/xIO.h"
 
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
 #include "IO/IO/Transfer/SerialPortTransfer.h"
 #include "IO/UI/Transfer/SerialPortTransferUi.h"
 #endif
@@ -48,6 +48,7 @@ struct ParameterKeys
 {
     const QString communicationType{"communicationType"};
     const QString communicationSettings{"communicationSettings"};
+    const QString communication{"communication"};
 
     const QString outputFormat{"outputFormat"};
     const QString outputRx{"outputRx"};
@@ -89,7 +90,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     , m_preset{new xTools::Preset(this)}
     , m_emitter{new xTools::Emitter(this)}
     , m_responder{new xTools::Responder(this)}
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
     , m_serialPortTransfer(new xTools::SerialPortTransfer(this))
     , m_serialPortTransferUi(new xTools::SerialPortTransferUi(this))
 #endif
@@ -116,7 +117,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responder
              << m_udpClientTransfer << m_tcpClientTransfer << m_webSocketClientTransfer
              << m_webSocketServerTransfer;
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
     m_ioList << m_serialPortTransfer;
 #endif
 
@@ -151,6 +152,9 @@ QVariantMap IOPage::save()
     QVariantMap map;
     map.insert(g_keys.communicationType, ui->comboBoxCommunicationTypes->currentData());
     map.insert(g_keys.communicationSettings, m_ioSettings->save());
+    if (m_ioUi) {
+        map.insert(g_keys.communication, m_ioUi->save());
+    }
 
     map.insert(g_keys.outputFormat, ui->comboBoxOutputFormat->currentData());
     map.insert(g_keys.outputRx, ui->checkBoxOutputRx->isChecked());
@@ -168,7 +172,7 @@ QVariantMap IOPage::save()
     map.insert(g_keys.presetItems, ui->tabPresets->save());
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
     map.insert(g_keys.responserItems, ui->tabResponder->save());
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
     map.insert(g_keys.serialPortTransferItems, m_serialPortTransferUi->save());
 #endif
     map.insert(g_keys.udpClientTransferItems, m_udpClientTransferUi->save());
@@ -188,10 +192,12 @@ void IOPage::load(const QVariantMap &parameters)
 
     int communicationType = parameters.value(g_keys.communicationType).toInt();
     int index = ui->comboBoxCommunicationTypes->findData(communicationType);
-    ui->comboBoxCommunicationTypes->setCurrentIndex(index == -1 ? 0 : index);
-
     QVariantMap communicationSettings = parameters.value(g_keys.communicationSettings).toMap();
     m_ioSettings->load(communicationSettings);
+    ui->comboBoxCommunicationTypes->setCurrentIndex(index == -1 ? 0 : index);
+    if (m_ioUi) {
+        m_ioUi->load(parameters.value(g_keys.communication).toMap());
+    }
 
     int outputFormat = parameters.value(g_keys.outputFormat).toInt();
     bool outputRx = parameters.value(g_keys.outputRx).toBool();
@@ -226,7 +232,7 @@ void IOPage::load(const QVariantMap &parameters)
     ui->tabPresets->load(parameters.value(g_keys.presetItems).toMap());
     ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
     ui->tabResponder->load(parameters.value(g_keys.responserItems).toMap());
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
     m_serialPortTransferUi->load(parameters.value(g_keys.serialPortTransferItems).toMap());
 #endif
     m_udpClientTransferUi->load(parameters.value(g_keys.udpClientTransferItems).toMap());
@@ -327,7 +333,7 @@ void IOPage::initUiInputControl()
 
 void IOPage::initUiOutput()
 {
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
     ui->tabWidgetTransfers->addTab(m_serialPortTransferUi, tr("Serial Port"));
 #endif
     ui->tabWidgetTransfers->addTab(m_udpClientTransferUi, tr("UDP Client"));
@@ -339,7 +345,7 @@ void IOPage::initUiOutput()
     ui->tabPresets->setupIO(m_preset);
     ui->tabEmitter->setupIO(m_emitter);
     ui->tabResponder->setupIO(m_responder);
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
     m_serialPortTransferUi->setupIO(m_serialPortTransfer);
 #endif
     m_udpClientTransferUi->setupIO(m_udpClientTransfer);
@@ -498,7 +504,7 @@ void IOPage::openCommunication()
         connect(m_io, &xTools::Communication::errorOccurred, this, &IOPage::onErrorOccurred);
         connect(m_io, &xTools::Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
         connect(m_io, &xTools::Communication::outputBytes, m_responder, &xTools::Responder::inputBytes);
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
         connect(m_io, &xTools::Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
 #endif
         connect(m_io, &xTools::Communication::outputBytes, m_udpClientTransfer, &xTools::UdpClientTransfer::inputBytes);
@@ -510,7 +516,7 @@ void IOPage::openCommunication()
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_responder, &xTools::Responder::outputBytes, m_io, &xTools::Communication::inputBytes);
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
         connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
 #endif
         connect(m_udpClientTransfer, &xTools::UdpClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);

@@ -14,7 +14,7 @@
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
 #include "Communication/BleCentral.h"
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
 #include "Communication/SerialPort.h"
 #endif
 #include "Communication/TcpClient.h"
@@ -37,7 +37,7 @@ IOFactory &IOFactory::singleton()
 Communication *IOFactory::createDevice(int type)
 {
     switch (type) {
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
     case static_cast<int>(xIO::CommunicationType::SerialPort):
         return new SerialPort(QCoreApplication::instance());
 #endif

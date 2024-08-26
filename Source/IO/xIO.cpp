@@ -17,7 +17,7 @@
 #include <QNetworkInterface>
 #include <QProcess>
 
-#if defined(X_TOOLS_ENABLE_MODULE_SERIALPORT)
+#if defined(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #endif
@@ -601,7 +601,7 @@ xIO::SerialPortItem xIO::loadSerialPortItem(const QJsonObject &obj)
     return ctx;
 }
 
-#if defined(X_TOOLS_ENABLE_MODULE_SERIALPORT)
+#if defined(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
 void xIO::setupPortName(QComboBox *comboBox)
 {
     QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();

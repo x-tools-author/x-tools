@@ -26,7 +26,7 @@ namespace xTools {
 class Preset;
 class Emitter;
 class Responder;
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
 class SerialPortTransfer;
 class SerialPortTransferUi;
 #endif
@@ -40,7 +40,7 @@ class WebSocketClientTransfer;
 class WebSocketClientTransferUi;
 class WebSocketServerTransfer;
 class WebSocketServerTransferUi;
-}
+} // namespace xTools
 QT_END_NAMESPACE
 
 class InputSettings;
@@ -83,7 +83,7 @@ private:
     xTools::Preset *m_preset;
     xTools::Emitter *m_emitter;
     xTools::Responder *m_responder;
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALPORT
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
     xTools::SerialPortTransfer *m_serialPortTransfer;
     xTools::SerialPortTransferUi *m_serialPortTransferUi;
 #endif

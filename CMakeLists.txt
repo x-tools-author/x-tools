@@ -103,13 +103,13 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
-option(X_TOOLS_ENABLE_MODULE_SERIALPORT "Enable SerialPort module" ON)
+option(X_TOOLS_ENABLE_MODULE_SERIAL_PORT "Enable SerialPort module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialPort)
 if(NOT Qt${QT_VERSION_MAJOR}SerialPort_FOUND)
-  set(X_TOOLS_ENABLE_MODULE_SERIALPORT OFF)
+  set(X_TOOLS_ENABLE_MODULE_SERIAL_PORT OFF)
 endif()
-if(X_TOOLS_ENABLE_MODULE_SERIALPORT)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIALPORT)
+if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
 else()
   message(STATUS "SerialPort module is disable, serial port files will be removed.")
   set(TMP_DIR ${CMAKE_SOURCE_DIR}/Source)
@@ -278,7 +278,7 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
     target_link_libraries(xTools PUBLIC qmdnsengine)
   endif()
 
-  if(X_TOOLS_ENABLE_MODULE_SERIALPORT)
+  if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
     target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::SerialPort)
   endif()
 
