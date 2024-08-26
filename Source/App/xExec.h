@@ -52,7 +52,7 @@ void tryToRebootApp();
  * parameter of the function is the instance of the main window and the instance of the application.
  * \return
  */
-template<typename CentralWidget, typename MainWindow, typename App>
+template<typename CentralWidget, typename MainWindow, typename Application>
 int exec(int argc,
          char *argv[],
          const QString &appName,
@@ -65,7 +65,7 @@ int exec(int argc,
     QCoreApplication::setApplicationVersion(version);
     doSomethingBeforeAppCreated(argv, appName);
 
-    App app(argc, argv);
+    Application app(argc, argv);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     QStyleHints *styleHints = QApplication::styleHints();
     styleHints->setColorScheme(Qt::ColorScheme::Dark);
