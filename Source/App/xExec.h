@@ -113,11 +113,11 @@ int exec(int argc,
 }
 
 template<typename CentralWidget>
-int execTool(int argc,
-             char *argv[],
-             const QString &appName,
-             const QString &version = QString("0.0.0"),
-             const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
+int execCentralWidget(int argc,
+                      char *argv[],
+                      const QString &appName,
+                      const QString &version = QString("0.0.0"),
+                      const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
 {
     return xTools::exec<CentralWidget, xTools::MainWindow, xTools::Application>(
         argc, argv, appName, version, doSomethingBeforAppExec);

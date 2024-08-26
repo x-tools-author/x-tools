@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Modbus Assistant");
-    return xTools::execTool<ModbusAssistant>(argc, argv, appName);
+    return xTools::execCentralWidget<ModbusAssistant>(argc, argv, appName);
 }

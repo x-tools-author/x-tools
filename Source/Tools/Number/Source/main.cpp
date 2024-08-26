@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Number Assistant");
-    return xTools::execTool<NumberAssistant>(argc, argv, appName);
+    return xTools::execCentralWidget<NumberAssistant>(argc, argv, appName);
 }

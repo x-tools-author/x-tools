@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("CAN Bus Assistant");
-    return xTools::execTool<CanBusAssistant>(argc, argv, appName);
+    return xTools::execCentralWidget<CanBusAssistant>(argc, argv, appName);
 }

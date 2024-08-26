@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("QR Code Assistant");
-    return xTools::execTool<QRCodeAssistant>(argc, argv, appName);
+    return xTools::execCentralWidget<QRCodeAssistant>(argc, argv, appName);
 }

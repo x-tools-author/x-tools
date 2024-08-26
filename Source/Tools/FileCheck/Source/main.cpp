@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("File Check Assistant");
-    return xTools::execTool<FileCheckAssistant>(argc, argv, appName);
+    return xTools::execCentralWidget<FileCheckAssistant>(argc, argv, appName);
 }

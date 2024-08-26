@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("File Merge Assistant");
-    return xTools::execTool<FileMergeAssistant>(argc, argv, appName);
+    return xTools::execCentralWidget<FileMergeAssistant>(argc, argv, appName);
 }

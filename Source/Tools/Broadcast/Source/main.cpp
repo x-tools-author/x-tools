@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Broadcast Assistant");
-    return xTools::execTool<BroadcastAssistant>(argc, argv, appName);
+    return xTools::execCentralWidget<BroadcastAssistant>(argc, argv, appName);
 }

@@ -12,5 +12,5 @@
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("ASCII Assistant");
-    return xTools::execTool<AsciiAssistant>(argc, argv, appName);
+    return xTools::execCentralWidget<AsciiAssistant>(argc, argv, appName);
 }
