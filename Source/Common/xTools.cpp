@@ -8,7 +8,10 @@
  **************************************************************************************************/
 #include "xTools.h"
 
+#include <QApplication>
+#include <QMessageBox>
 #include <QMetaEnum>
+#include <QProcess>
 
 namespace xTools {
 
@@ -18,7 +21,7 @@ xTools::xTools(QObject *parent)
 
 xTools::~xTools() {}
 
-QByteArray xTools::byteArrray2Hex(const QByteArray &source, char separator)
+QByteArray xTools::byteArray2Hex(const QByteArray &source, char separator)
 {
     if (source.isEmpty()) {
         return source;
@@ -55,6 +58,20 @@ QString xTools::version()
     }
 #endif
     return version;
+}
+
+void xTools::rebootApplication()
+{
+    int ret = QMessageBox::information(
+        nullptr,
+        QObject::tr("Need to Reboot"),
+        QObject::tr("The operation need to reboot to effective, reboot the application now?"),
+        QMessageBox::Ok | QMessageBox::Cancel);
+
+    if (ret == QMessageBox::Ok) {
+        QProcess::startDetached(QApplication::applicationFilePath());
+        QApplication::closeAllWindows();
+    }
 }
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)

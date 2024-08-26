@@ -25,8 +25,9 @@ public:
     explicit xTools(QObject* parent = nullptr);
     ~xTools() override;
 
-    static QByteArray byteArrray2Hex(const QByteArray& source, char separator = '\0');
+    static QByteArray byteArray2Hex(const QByteArray& source, char separator = '\0');
     static QString version();
+    static void rebootApplication();
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     Q_INVOKABLE static QVariantList supportedHighDpiPolicies();

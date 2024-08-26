@@ -415,10 +415,7 @@ void ModbusAssistant::initSignalsDevice()
             this,
             &ModbusAssistant::onDeviceTypeChanged);
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &ModbusAssistant::onOpenClicked);
-    connect(ui->pushButtonCloese,
-            &QPushButton::clicked,
-            this,
-            &ModbusAssistant::onCloseClicked);
+    connect(ui->pushButtonCloese, &QPushButton::clicked, this, &ModbusAssistant::onCloseClicked);
 }
 
 void ModbusAssistant::initSignalsNetworking()
@@ -588,10 +585,7 @@ void ModbusAssistant::onOpenClicked()
         return;
     }
 
-    connect(m_modbusDevice,
-            &QModbusDevice::errorOccurred,
-            this,
-            &ModbusAssistant::onErrorOccurred);
+    connect(m_modbusDevice, &QModbusDevice::errorOccurred, this, &ModbusAssistant::onErrorOccurred);
     ModbusFactory *factory = ModbusFactory::Instance();
     bool connected = factory->ConnectDeivce(m_modbusDevice);
     if (!connected) {
@@ -800,7 +794,7 @@ void ModbusAssistant::onSendClicked()
 
     qWarning() << "Send raw request:"
                << "server address:" << spinBoxServerAddress << "function code:" << function_code
-               << "data:" << QString(xTools::xTools::byteArrray2Hex(pdu, ' '));
+               << "data:" << QString(xTools::xTools::byteArray2Hex(pdu, ' '));
     if (ModbusFactory::Instance()->IsValidModbusReply(reply)) {
         connect(reply, &QModbusReply::finished, this, [=]() {
             outputModbusReply(reply, function_code);
@@ -808,7 +802,7 @@ void ModbusAssistant::onSendClicked()
         });
 
         QString info = "pdu(No server address, no crc):";
-        info += QString(xTools::xTools::byteArrray2Hex(pdu, ' '));
+        info += QString(xTools::xTools::byteArray2Hex(pdu, ' '));
         outputMessage(info, false, TXCOLOR, TXFLAG);
     }
 
@@ -816,7 +810,7 @@ void ModbusAssistant::onSendClicked()
     int index = m_settings->value(m_keyCtx->sendHistoryIndex).toInt();
     bool ret = writeSettingsArray(m_keyCtx->sendHistory,
                                   m_keyCtx->pdu,
-                                  QString(xTools::xTools::byteArrray2Hex(pdu, ' ')),
+                                  QString(xTools::xTools::byteArray2Hex(pdu, ' ')),
                                   index,
                                   MAX_HISTORY_INDEX);
     if (!ret) {
@@ -1213,7 +1207,7 @@ void ModbusAssistant::outputModbusReply(QModbusReply *reply, int functionCode)
                                "data unit: %3")
                            .arg(spinBoxServerAddress)
                            .arg(functionCode)
-                           .arg(QString::fromLatin1(xTools::xTools::byteArrray2Hex(data, ' ')));
+                           .arg(QString::fromLatin1(xTools::xTools::byteArray2Hex(data, ' ')));
         outputMessage(info, false, RXCOLOR, RXFLAG);
     } else if (reply->type() == QModbusReply::ReplyType::Common) {
         QString info = ui->comboBoxFunctionCode->currentText();
@@ -1222,9 +1216,9 @@ void ModbusAssistant::outputModbusReply(QModbusReply *reply, int functionCode)
 }
 
 void ModbusAssistant::outputMessage(const QString &msg,
-                                         bool isError,
-                                         const QString &color,
-                                         const QString &flag)
+                                    bool isError,
+                                    const QString &color,
+                                    const QString &flag)
 {
     QString cookedMsg = QDateTime::currentDateTime().toString("hh:mm:ss.zzz");
     cookedMsg = QString("<font color=silver>%1 </font>").arg(cookedMsg);
