@@ -452,19 +452,6 @@ QString xIO::systemTimeFormat()
     return QLocale::system().timeFormat();
 }
 
-void xIO::try2reboot()
-{
-    int ret = QMessageBox::information(
-        nullptr,
-        QObject::tr("Need to Reboot"),
-        QObject::tr("The operation need to reboot to effective, reboot the application now?"),
-        QMessageBox::Ok | QMessageBox::Cancel);
-    if (ret == QMessageBox::Ok) {
-        QProcess::startDetached(QApplication::applicationFilePath());
-        QApplication::closeAllWindows();
-    }
-}
-
 xIO::TextItem xIO::defaultTextItem()
 {
     TextItem context;

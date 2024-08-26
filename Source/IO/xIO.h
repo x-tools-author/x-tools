@@ -80,7 +80,6 @@ public:
     static QJsonValue hexString2jsonValue(const QString &hexString);
     static QString systemDateFormat();
     static QString systemTimeFormat();
-    static void try2reboot();
 
     /**********************************************************************************************/
     struct TextItem
