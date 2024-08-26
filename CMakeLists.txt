@@ -206,28 +206,28 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Assistant module
-set(X_TOOLS_ASSISTANT_DIR "${CMAKE_SOURCE_DIR}/Source/Tools")
+set(X_TOOLS_TOOLS_DIR "${CMAKE_SOURCE_DIR}/Source/Tools")
 macro(x_tools_add_assistant dir_name on_off)
   string(TOUPPER ${dir_name} DIR_NAME_UPPER)
   option(X_TOOLS_ENABLE_MODULE_${DIR_NAME_UPPER} "Enable ${dir_name} assistant" ${on_off})
 
-  file(GLOB ASSISTANT_SOURCE "${X_TOOLS_ASSISTANT_DIR}/${dir_name}/Source/*.*")
+  file(GLOB TOOL_SOURCE "${X_TOOLS_TOOLS_DIR}/${dir_name}/Source/*.*")
   if(X_TOOLS_ENABLE_MODULE_${DIR_NAME_UPPER})
-    include_directories(${X_TOOLS_ASSISTANT_DIR}/${dir_name}/Source)
+    include_directories(${X_TOOLS_TOOLS_DIR}/${dir_name}/Source)
     add_compile_definitions(X_TOOLS_ENABLE_MODULE_${DIR_NAME_UPPER})
-    list(APPEND X_TOOLS_SOURCE ${ASSISTANT_SOURCE})
+    list(APPEND X_TOOLS_SOURCE ${TOOL_SOURCE})
   else()
-    foreach(SOURCE_FILE ${ASSISTANT_SOURCE})
+    foreach(SOURCE_FILE ${TOOL_SOURCE})
       list(REMOVE_ITEM X_TOOLS_SOURCE ${SOURCE_FILE})
     endforeach()
   endif()
 
   # away remove main.cpp
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_DIR}/${dir_name}/Source/main.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/${dir_name}/Source/main.cpp)
 endmacro()
 
-option(X_TOOLS_ENABLE_MODULE_ASSISTANTS "Enable assistants module" ON)
-if(X_TOOLS_ENABLE_MODULE_ASSISTANTS)
+option(X_TOOLS_ENABLE_MODULE_TOOLS "Enable assistants module" ON)
+if(X_TOOLS_ENABLE_MODULE_TOOLS)
   x_tools_add_assistant("CRC" ON)
   x_tools_add_assistant("mDNS" ON)
   x_tools_add_assistant("Ping" ON)
@@ -250,11 +250,11 @@ if(X_TOOLS_ENABLE_MODULE_ASSISTANTS)
     x_tools_add_third_party("qmdnsengine-master")
   endif()
 
-  set(X_TOOLS_ASSISTANT_DIR ${CMAKE_CURRENT_LIST_DIR}/Source/Tools)
-  include_directories(${X_TOOLS_ASSISTANT_DIR})
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_ASSISTANTS)
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_DIR}/AssistantFactory.h)
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_ASSISTANT_DIR}/AssistantFactory.cpp)
+  set(X_TOOLS_TOOLS_DIR ${CMAKE_CURRENT_LIST_DIR}/Source/Tools)
+  include_directories(${X_TOOLS_TOOLS_DIR})
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_TOOLS)
+  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.h)
+  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.cpp)
 endif()
 
 # --------------------------------------------------------------------------------------------------
