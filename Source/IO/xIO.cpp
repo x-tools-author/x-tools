@@ -215,12 +215,14 @@ void xIO::setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format)
         const QString binStr = "([01][01][01][01][01][01][01][01][ ])*";
         const QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*$";
         const QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( "
-                         "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
+                               "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
         const QString hexStr = "([0-9a-fA-F][0-9a-fA-F][ ])*";
 
         auto const binValidator = new QRegularExpressionValidator(QRegularExpression(binStr));
-        auto const otcValidator = new QRegularExpressionValidator(QRegularExpression(octStr)); //0-377
-        auto const decValidator = new QRegularExpressionValidator(QRegularExpression(decStr)); // 0-255;
+        auto const otcValidator = new QRegularExpressionValidator(
+            QRegularExpression(octStr)); //0-377
+        auto const decValidator = new QRegularExpressionValidator(
+            QRegularExpression(decStr)); // 0-255;
         auto const hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
         auto const asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
 
@@ -402,7 +404,8 @@ QString xIO::responseOptionName(ResponseOption option)
         map.insert(ResponseOption::Always, tr("Always"));
         map.insert(ResponseOption::InputEqualReference, tr("Input Equal Reference"));
         map.insert(ResponseOption::InputContainReference, tr("Input Contain Reference"));
-        map.insert(ResponseOption::InputDoesNotContainReference, tr("Input Does not Contain Reference"));
+        map.insert(ResponseOption::InputDoesNotContainReference,
+                   tr("Input Does not Contain Reference"));
     }
 
     if (map.contains(option)) {
@@ -481,12 +484,9 @@ xIO::TextItem xIO::defaultTextItem()
 
 QString xIO::textItem2string(const TextItem &context)
 {
-    QString str = cookedEscapeCharacter(context.text, context.escapeCharacter);
-
-    if (context.prefix != Affixes::None) {
-        str = additionName(context.prefix) + str;
-    }
-
+    QString prefix = additionName(context.prefix);
+    QString payload = cookedEscapeCharacter(context.text, context.escapeCharacter);
+    QString crc;
     if (context.crc.enable) {
         QByteArray data = string2bytes(context.text, context.textFormat);
 
@@ -497,15 +497,12 @@ QString xIO::textItem2string(const TextItem &context)
         ctx.bigEndian = context.crc.bigEndian;
         ctx.data = data;
 
-        QByteArray crc = CRC::calculate(ctx);
-        str.append(QString::fromLatin1(crc.toHex()));
+        QByteArray crcArray = CRC::calculate(ctx);
+        crc = QString::fromLatin1(crcArray.toHex());
     }
 
-    if (context.suffix != Affixes::None) {
-        str.append(additionName(context.suffix));
-    }
-
-    return str;
+    QString suffix = additionName(context.suffix);
+    return QString("[%1][%2][%3][%4]").arg(prefix, payload, crc, suffix);
 }
 
 QByteArray xIO::textItem2array(const TextItem &context)
