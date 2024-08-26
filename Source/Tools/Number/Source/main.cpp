@@ -6,11 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsNumberAssistant.h"
-#include "xTools.h"
+#include "App/xExec.h"
+#include "NumberAssistant.h"
 
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Number Assistant");
-    return xToolsExec<xToolsNumberAssistant>(argc, argv, appName);
+    return xTools::execTool<NumberAssistant>(argc, argv, appName);
 }

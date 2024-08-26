@@ -6,11 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsFileCheckAssistant.h"
-#include "xTools.h"
+#include "App/xExec.h"
+#include "FileCheckAssistant.h"
 
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("File Check Assistant");
-    return xToolsExec<xToolsFileCheckAssistant>(argc, argv, appName);
+    return xTools::execTool<FileCheckAssistant>(argc, argv, appName);
 }

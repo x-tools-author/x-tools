@@ -298,7 +298,7 @@ endif()
 
 # -------------------------------------------------------------------------------------------------
 # Assistant applications
-option(X_TOOLS_ENABLE_TARGET_ASSISTANTS "Enable assistant applications" OFF)
-if(X_TOOLS_ENABLE_TARGET_ASSISTANTS)
-  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Source/Assistants)
+option(X_TOOLS_ENABLE_TARGET_TOOLS "Enable tool applications" OFF)
+if(X_TOOLS_ENABLE_TARGET_TOOLS)
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools)
 endif()

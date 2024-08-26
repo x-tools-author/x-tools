@@ -6,11 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsCRCAssistant.h"
-#include "xTools.h"
+#include "App/xExec.h"
+#include "CrcAssistant.h"
 
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("CRC Assistant");
-    return xToolsExec<xToolsCRCAssistant>(argc, argv, appName);
+    return xTools::execTool<CrcAssistant>(argc, argv, appName);
 }

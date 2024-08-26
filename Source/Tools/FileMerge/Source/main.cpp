@@ -6,11 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xTools.h"
-#include "xToolsFileMergeAssistant.h"
+#include "App/xExec.h"
+#include "FileMergeAssistant.h"
 
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("File Merge Assistant");
-    return xToolsExec<xToolsFileMergeAssistant>(argc, argv, appName);
+    return xTools::execTool<FileMergeAssistant>(argc, argv, appName);
 }

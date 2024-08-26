@@ -6,11 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsBase64Assisatnt.h"
-#include "xTools.h"
+#include "App/xExec.h"
+#include "Base64Assisatnt.h"
 
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("Base64 Assisatnt");
-    return xToolsExec<xToolsBase64Assisatnt>(argc, argv, appName);
+    return xTools::execTool<Base64Assisatnt>(argc, argv, appName);
 }

@@ -42,7 +42,7 @@ void tryToRebootApp();
 
 /**
  * \brief exec: Using this function to start the application with a main window, you can specified
- *  the central widget type of main window. If MainWindow is the same as CentralWidget, the 
+ *  the central widget type of main window. If MainWindow is the same as CentralWidget, the
  *  main window will not be created and the instance of CentralWidget will be the main window.
  * \param argc: The number of command line arguments.
  * \param argv: The command line arguments.
@@ -50,7 +50,7 @@ void tryToRebootApp();
  * \param version: The version of the application.
  * \param doSomethingBeforAppExec: The function will be called before the application exec. The
  * parameter of the function is the instance of the main window and the instance of the application.
- * \return 
+ * \return
  */
 template<typename CentralWidget, typename MainWindow, typename App>
 int exec(int argc,
@@ -110,6 +110,17 @@ int exec(int argc,
     const int ret = app.exec();
     doSomethingAfterAppExited();
     return ret;
+}
+
+template<typename CentralWidget>
+int execTool(int argc,
+             char *argv[],
+             const QString &appName,
+             const QString &version = QString("0.0.0"),
+             const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
+{
+    return xTools::exec<CentralWidget, xTools::MainWindow, xTools::Application>(
+        argc, argv, appName, version, doSomethingBeforAppExec);
 }
 
 } // namespace xTools

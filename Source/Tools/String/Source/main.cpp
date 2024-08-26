@@ -6,11 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xToolsStringAssistant.h"
-#include "xTools.h"
+#include "App/xExec.h"
+#include "StringAssistant.h"
 
 int main(int argc, char* argv[])
 {
     const QString appName = QObject::tr("String Assistant");
-    return xToolsExec<xToolsStringAssistant>(argc, argv, appName);
+    return xTools::execTool<StringAssistant>(argc, argv, appName);
 }
