@@ -81,7 +81,7 @@ void BleCentralUi::load(const QVariantMap &parameters)
     Q_UNUSED(parameters);
 }
 
-void BleCentralUi::setupDevice(Communication *device)
+void BleCentralUi::setupIO(AbstractIO *device)
 {
     BleCentral *central = qobject_cast<BleCentral *>(device);
     if (!central) {

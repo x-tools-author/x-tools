@@ -18,9 +18,9 @@ SocketServerUi::SocketServerUi(xIO::CommunicationType type, QWidget *parent)
 
 SocketServerUi::~SocketServerUi() {}
 
-void SocketServerUi::setupDevice(Communication *device)
+void SocketServerUi::setupIO(AbstractIO *io)
 {
-    SocketServer *server = qobject_cast<SocketServer *>(device);
+    SocketServer *server = qobject_cast<SocketServer *>(io);
     if (!server) {
         return;
     }

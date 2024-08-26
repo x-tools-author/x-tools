@@ -31,7 +31,7 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-    void setupDevice(Communication *device) override;
+    void setupIO(AbstractIO *device) override;
     void setUiEnabled(bool enabled) override;
 
 private:

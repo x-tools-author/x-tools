@@ -19,7 +19,7 @@ public:
     explicit SocketServerUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~SocketServerUi() override;
 
-    void setupDevice(Communication *device) override;
+    void setupIO(AbstractIO *io) override;
     void setUiEnabled(bool enabled) override;
 };
 

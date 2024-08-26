@@ -530,7 +530,7 @@ void IOPage::openCommunication()
         // clang-format on
 
         QVariantMap parameters = m_ioUi->save();
-        m_ioUi->setupDevice(m_io);
+        m_ioUi->setupIO(m_io);
         m_io->load(parameters);
         m_io->setParameters(parameters);
         m_io->openDevice();
@@ -547,7 +547,7 @@ void IOPage::closeCommunication()
     }
 
     if (m_ioUi) {
-        m_ioUi->setupDevice(nullptr);
+        m_ioUi->setupIO(nullptr);
     }
 }
 

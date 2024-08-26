@@ -25,8 +25,7 @@ public:
 
     xIO::CommunicationType type() const;
 
-    virtual void setupDevice(Communication *device) { Q_UNUSED(device); };
-    virtual void setUiEnabled(bool enabled) { setEnabled(enabled); }
+    virtual void setUiEnabled(bool enabled);
 
 private:
     xIO::CommunicationType const m_type;
