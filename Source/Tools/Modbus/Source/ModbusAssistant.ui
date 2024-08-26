@@ -119,7 +119,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QPushButton" name="pushButtonCloese">
+          <widget class="QPushButton" name="pushButtonClose">
            <property name="text">
             <string>Close</string>
            </property>

@@ -415,7 +415,7 @@ void ModbusAssistant::initSignalsDevice()
             this,
             &ModbusAssistant::onDeviceTypeChanged);
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &ModbusAssistant::onOpenClicked);
-    connect(ui->pushButtonCloese, &QPushButton::clicked, this, &ModbusAssistant::onCloseClicked);
+    connect(ui->pushButtonClose, &QPushButton::clicked, this, &ModbusAssistant::onCloseClicked);
 }
 
 void ModbusAssistant::initSignalsNetworking()
@@ -954,7 +954,7 @@ QTableView *ModbusAssistant::CreateTableView(int rowCount, QTableView *tableView
 void ModbusAssistant::updateUiState(bool connected)
 {
     ui->comboBoxDeviceList->setEnabled(!connected);
-    ui->pushButtonCloese->setEnabled(connected);
+    ui->pushButtonClose->setEnabled(connected);
     ui->pushButtonOpen->setEnabled(!connected);
     ui->dockWidgetNetworkSettings->setEnabled(!connected);
     ui->dockWidgetSerialPortSettings->setEnabled(!connected);
