@@ -149,7 +149,7 @@ IOPage::~IOPage()
 QVariantMap IOPage::save()
 {
     QVariantMap map;
-    map.insert(g_keys.communicationType, ui->comboBoxCommmunicationTypes->currentData());
+    map.insert(g_keys.communicationType, ui->comboBoxCommunicationTypes->currentData());
     map.insert(g_keys.communicationSettings, m_ioSettings->save());
 
     map.insert(g_keys.outputFormat, ui->comboBoxOutputFormat->currentData());
@@ -187,8 +187,8 @@ void IOPage::load(const QVariantMap &parameters)
     }
 
     int communicationType = parameters.value(g_keys.communicationType).toInt();
-    int index = ui->comboBoxCommmunicationTypes->findData(communicationType);
-    ui->comboBoxCommmunicationTypes->setCurrentIndex(index == -1 ? 0 : index);
+    int index = ui->comboBoxCommunicationTypes->findData(communicationType);
+    ui->comboBoxCommunicationTypes->setCurrentIndex(index == -1 ? 0 : index);
 
     QVariantMap communicationSettings = parameters.value(g_keys.communicationSettings).toMap();
     m_ioSettings->load(communicationSettings);
@@ -255,7 +255,7 @@ void IOPage::initUi()
 
 void IOPage::initUiCommunication()
 {
-    connect(ui->comboBoxCommmunicationTypes,
+    connect(ui->comboBoxCommunicationTypes,
             qOverload<int>(&QComboBox::currentIndexChanged),
             this,
             &IOPage::onCommunicationTypeChanged);
@@ -268,7 +268,7 @@ void IOPage::initUiCommunication()
     m_ioSettings = new CommunicationSettings();
     setupMenu(target, m_ioSettings);
 
-    xTools::xIO::setupCommunicationTypes(ui->comboBoxCommmunicationTypes);
+    xTools::xIO::setupCommunicationTypes(ui->comboBoxCommunicationTypes);
 }
 
 void IOPage::initUiOutputControl()
@@ -369,11 +369,11 @@ void IOPage::onCommunicationTypeChanged()
         m_ioUi = nullptr;
     }
 
-    if (!ui->comboBoxCommmunicationTypes->count()) {
+    if (!ui->comboBoxCommunicationTypes->count()) {
         return;
     }
 
-    int type = ui->comboBoxCommmunicationTypes->currentData().toInt();
+    int type = ui->comboBoxCommunicationTypes->currentData().toInt();
     auto cookedType = static_cast<xTools::xIO::CommunicationType>(type);
     m_ioUi = xTools::IOUiFactory::singleton().createDeviceUi(cookedType);
     if (m_ioUi) {
@@ -395,7 +395,8 @@ void IOPage::onCycleIntervalChanged()
 void IOPage::onInputFormatChanged()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    xTools::xIO::setupTextFormatValidator(ui->lineEditInput, static_cast<xTools::xIO::TextFormat>(format));
+    xTools::xIO::setupTextFormatValidator(ui->lineEditInput,
+                                          static_cast<xTools::xIO::TextFormat>(format));
     ui->lineEditInput->clear();
 }
 
@@ -484,7 +485,7 @@ void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
 
 void IOPage::openCommunication()
 {
-    int type = ui->comboBoxCommmunicationTypes->currentData().toInt();
+    int type = ui->comboBoxCommunicationTypes->currentData().toInt();
     m_io = xTools::IOFactory::singleton().createDevice(type);
     if (m_io) {
         setUiEnabled(false);
@@ -548,10 +549,12 @@ void IOPage::writeBytes()
     }
 
     auto parameters = m_inputSettings->parameters();
-    QByteArray prefix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(parameters.prefix));
+    QByteArray prefix = xTools::xIO::cookedAffixes(
+        static_cast<xTools::xIO::Affixes>(parameters.prefix));
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(parameters.suffix));
+    QByteArray suffix = xTools::xIO::cookedAffixes(
+        static_cast<xTools::xIO::Affixes>(parameters.suffix));
 
     if (parameters.appendCrc) {
         m_io->inputBytes(prefix + payload + crc + suffix);
@@ -564,10 +567,12 @@ void IOPage::updateLabelInfo()
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
 
-    QByteArray prefix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(parameters.prefix));
+    QByteArray prefix = xTools::xIO::cookedAffixes(
+        static_cast<xTools::xIO::Affixes>(parameters.prefix));
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(parameters.suffix));
+    QByteArray suffix = xTools::xIO::cookedAffixes(
+        static_cast<xTools::xIO::Affixes>(parameters.suffix));
 
     QString prefixString = QString::fromLatin1(prefix.toHex()).toUpper();
     QString payloadString = QString::fromLatin1(payload.toHex()).toUpper();
@@ -608,7 +613,7 @@ void IOPage::setUiEnabled(bool enabled)
         m_ioUi->setUiEnabled(enabled);
     }
 
-    ui->comboBoxCommmunicationTypes->setEnabled(enabled);
+    ui->comboBoxCommunicationTypes->setEnabled(enabled);
 }
 
 QString dateTimeString(bool showDate, bool showTime, bool showMs)
@@ -703,7 +708,7 @@ void IOPage::saveControllerParameters()
 
 void IOPage::loadControllerParameters()
 {
-    int type = ui->comboBoxCommmunicationTypes->currentData().toInt();
+    int type = ui->comboBoxCommunicationTypes->currentData().toInt();
     auto parameters = m_settings->value(QString("controller_%1").arg(type));
     if (!parameters.isNull()) {
         m_ioUi->load(parameters.toMap());
