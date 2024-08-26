@@ -15,11 +15,11 @@
 
 namespace xTools {
 
-class ResponserModel : public QAbstractTableModel
+class ResponderModel : public QAbstractTableModel
 {
     Q_OBJECT
 public:
-    explicit ResponserModel(QObject *parent = nullptr);
+    explicit ResponderModel(QObject *parent = nullptr);
 
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;

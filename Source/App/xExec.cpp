@@ -145,7 +145,7 @@ void doSomethingBeforeAppCreated(char *argv[], const QString &appName, bool forS
     initApp(appName, forStore);
     initGoogleLogging(argv[0]);
 #ifndef QT_DEBUG
-    xToolsInstallMessageHandler();
+    installMessageHandler();
 #endif
 
     tryToClearSettings();

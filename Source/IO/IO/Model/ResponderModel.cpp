@@ -6,17 +6,17 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "ResponserModel.h"
+#include "ResponderModel.h"
 
 #include <QStandardItem>
 
 namespace xTools {
 
-ResponserModel::ResponserModel(QObject *parent)
+ResponderModel::ResponderModel(QObject *parent)
     : QAbstractTableModel{parent}
 {}
 
-int ResponserModel::rowCount(const QModelIndex &parent) const
+int ResponderModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
 
@@ -24,12 +24,12 @@ int ResponserModel::rowCount(const QModelIndex &parent) const
     return count;
 }
 
-int ResponserModel::columnCount(const QModelIndex &parent) const
+int ResponderModel::columnCount(const QModelIndex &parent) const
 {
     return 6;
 }
 
-QVariant ResponserModel::data(const QModelIndex &index, int role) const
+QVariant ResponderModel::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if (row < 0 || row >= m_items.count()) {
@@ -76,7 +76,7 @@ QVariant ResponserModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool ResponserModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool ResponderModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     int row = index.row();
     if (row < 0 || row >= m_items.count()) {
@@ -110,7 +110,7 @@ bool ResponserModel::setData(const QModelIndex &index, const QVariant &value, in
     return result;
 }
 
-bool ResponserModel::insertRows(int row, int count, const QModelIndex &parent)
+bool ResponderModel::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
 
@@ -131,7 +131,7 @@ bool ResponserModel::insertRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-bool ResponserModel::removeRows(int row, int count, const QModelIndex &parent)
+bool ResponderModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     if (count == 0) {
         return true;
@@ -143,7 +143,7 @@ bool ResponserModel::removeRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-QVariant ResponserModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant ResponderModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (orientation == Qt::Vertical) {
         return QVariant();
@@ -168,7 +168,7 @@ QVariant ResponserModel::headerData(int section, Qt::Orientation orientation, in
     return QVariant();
 }
 
-Qt::ItemFlags ResponserModel::flags(const QModelIndex &index) const
+Qt::ItemFlags ResponderModel::flags(const QModelIndex &index) const
 {
     int column = index.column();
     if (column == 0) {

@@ -9,7 +9,6 @@
 #include "MainWindow.h"
 
 #include <QAction>
-#include <QButtonGroup>
 #include <QClipboard>
 #include <QCloseEvent>
 #include <QDesktopServices>
@@ -23,19 +22,15 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QScrollBar>
-#include <QSizePolicy>
-#include <QStackedWidget>
-#include <QStatusBar>
 #include <QTextBrowser>
-#include <QToolBar>
-#include <QToolButton>
 #include <QVariant>
+
+#include "App/Settings.h"
+#include "IOPage/IOPage.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
 #include "AssistantFactory.h"
 #endif
-#include "App/Settings.h"
-#include "IOPage/IOPage.h"
 
 #ifdef Q_OS_WIN
 #include "SystemTrayIcon.h"
@@ -47,6 +42,7 @@ MainWindow::MainWindow(QWidget* parent)
 #else
     : xTools::MainWindow(parent)
 #endif
+    , m_toolMenu(nullptr)
     , m_ioPage00(new IOPage(IOPage::Left, xTools::Settings::instance(), this))
     , m_ioPage01(new IOPage(IOPage::Right, xTools::Settings::instance(), this))
     , m_ioPage10(new IOPage(IOPage::Left, xTools::Settings::instance(), this))
@@ -54,12 +50,12 @@ MainWindow::MainWindow(QWidget* parent)
 {
 #ifdef Q_OS_WIN
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
-        auto systemTrayIcon = new SystemTrayIcon(this);
-        QObject::connect(systemTrayIcon, &SystemTrayIcon::invokeExit, this, [=]() {
+        auto *systemTrayIcon = new SystemTrayIcon(this);
+        connect(systemTrayIcon, &SystemTrayIcon::invokeExit, this, [=]() {
             QApplication::closeAllWindows();
             QApplication::quit();
         });
-        QObject::connect(systemTrayIcon,
+        connect(systemTrayIcon,
                          &SystemTrayIcon::invokeShowMainWindow,
                          this,
                          &MainWindow::show);
@@ -67,8 +63,8 @@ MainWindow::MainWindow(QWidget* parent)
     }
 #endif
 
-    QWidget* centralWidget = new QWidget();
-    QGridLayout* layout = new QGridLayout(centralWidget);
+    auto* centralWidget = new QWidget();
+    auto* layout = new QGridLayout(centralWidget);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
     layout->addWidget(m_ioPage00, 0, 0);
@@ -81,7 +77,7 @@ MainWindow::MainWindow(QWidget* parent)
     setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
     initMenuBar();
 
-    const int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
+    constexpr int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
     const QString key = m_settingsKey.windowGrid;
     int rawGrid = xTools::Settings::instance()->value(key, defaultGrid).toInt();
     m_windowGrid = static_cast<WindowGrid>(rawGrid);
@@ -91,7 +87,10 @@ MainWindow::MainWindow(QWidget* parent)
     load();
 }
 
-MainWindow::~MainWindow() {}
+MainWindow::~MainWindow()
+{
+    qInfo() << "MainWindow is destroyed!";
+}
 
 void MainWindow::initMenuBar()
 {
@@ -99,7 +98,6 @@ void MainWindow::initMenuBar()
     initToolMenu();
     initOptionMenu();
     initViewMenu();
-    initLanguageMenu();
     initLinksMenu();
     initHelpMenu();
 }
@@ -183,7 +181,7 @@ void MainWindow::initOptionMenu()
 
 void MainWindow::initViewMenu()
 {
-    QMenu* viewMenu = new QMenu(tr("&View"));
+    auto* viewMenu = new QMenu(tr("&View"));
     menuBar()->insertMenu(m_toolMenu->menuAction(), viewMenu);
 
     auto a1x1 = viewMenu->addAction("1x1", this, [=]() { updateGrid(WindowGrid::Grid1x1); });
@@ -213,13 +211,13 @@ void MainWindow::initViewMenu()
     }
 
     auto windowGrid = xTools::Settings::instance()->value(m_settingsKey.windowGrid).toInt();
-    if (windowGrid == int(WindowGrid::Grid1x2)) {
+    if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
         a1x2->setChecked(true);
         a1x2->trigger();
-    } else if (windowGrid == int(WindowGrid::Grid2x1)) {
+    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x1)) {
         a2x1->setChecked(true);
         a2x1->trigger();
-    } else if (windowGrid == int(WindowGrid::Grid2x2)) {
+    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x2)) {
         a2x2->setChecked(true);
         a2x2->trigger();
     } else {
@@ -227,8 +225,6 @@ void MainWindow::initViewMenu()
         a1x1->trigger();
     }
 }
-
-void MainWindow::initLanguageMenu() {}
 
 void MainWindow::initHelpMenu()
 {
@@ -306,11 +302,6 @@ void MainWindow::initLinksMenu()
     }
 }
 
-void MainWindow::initNav()
-{
-
-}
-
 void MainWindow::updateGrid(WindowGrid grid)
 {
     if (grid == WindowGrid::Grid1x2) {
@@ -336,7 +327,7 @@ void MainWindow::updateGrid(WindowGrid grid)
     }
 
     m_windowGrid = grid;
-    xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, int(grid));
+    xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
 }
 
 void MainWindow::showHistory()
@@ -390,7 +381,7 @@ void MainWindow::showQrCode()
     dialog.exec();
 }
 
-void MainWindow::load(const QString& fileName)
+void MainWindow::load(const QString& fileName) const
 {
     QString filePath = fileName;
     if (fileName.isEmpty()) {
@@ -418,7 +409,7 @@ void MainWindow::load(const QString& fileName)
     m_ioPage11->load(obj.value("page11").toObject().toVariantMap());
 }
 
-void MainWindow::save(const QString& fileName)
+void MainWindow::save(const QString& fileName) const
 {
     QJsonObject obj;
     obj.insert("page00", QJsonObject::fromVariantMap(m_ioPage00->save()));
@@ -446,7 +437,7 @@ void MainWindow::save(const QString& fileName)
     file.close();
 }
 
-void MainWindow::onSaveActionTriggered()
+void MainWindow::onSaveActionTriggered() const
 {
     save();
 }

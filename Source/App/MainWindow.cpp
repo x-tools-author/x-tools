@@ -222,46 +222,6 @@ void MainWindow::initOptionMenuAppStyleMenu()
 #endif
 }
 
-void MainWindow::initOptionMenuAppPaletteMenu()
-{
-    const QString emptyPalette("");
-    const QString darkPalette(":/Resources/Palettes/DarkPalette");
-    const QString lightPalette(":/Resources/Palettes/LightPalette");
-
-    QMenu* appPaletteMenu = new QMenu(tr("Application Palette"), this);
-    m_optionMenu->addMenu(appPaletteMenu);
-    auto defaultAction = appPaletteMenu->addAction(tr("Default"));
-    connect(defaultAction, &QAction::triggered, this, [=]() { setPalette(emptyPalette); });
-    auto darkAction = appPaletteMenu->addAction(tr("Dark"));
-    connect(darkAction, &QAction::triggered, this, [=]() { setPalette(darkPalette); });
-    auto lightAction = appPaletteMenu->addAction(tr("Light"));
-    connect(lightAction, &QAction::triggered, this, [=]() { setPalette(lightPalette); });
-    appPaletteMenu->addSeparator();
-    auto customAction = appPaletteMenu->addAction(tr("Import"));
-    connect(customAction, &QAction::triggered, this, &MainWindow::onImportActionTriggered);
-
-    defaultAction->setCheckable(true);
-    darkAction->setCheckable(true);
-    lightAction->setCheckable(true);
-    customAction->setCheckable(true);
-    m_appPaletteActionGroup->addAction(defaultAction);
-    m_appPaletteActionGroup->addAction(darkAction);
-    m_appPaletteActionGroup->addAction(lightAction);
-    m_appPaletteActionGroup->addAction(customAction);
-
-    QMap<QString, QAction*> stringActionMap;
-    QString paletteFile = Settings::instance()->palette();
-    stringActionMap.insert(emptyPalette, defaultAction);
-    stringActionMap.insert(darkPalette, darkAction);
-    stringActionMap.insert(lightPalette, lightAction);
-    if (stringActionMap.contains(paletteFile)) {
-        stringActionMap.value(paletteFile)->setChecked(true);
-    } else {
-        customAction->setChecked(true);
-        customAction->setToolTip(paletteFile);
-    }
-}
-
 void MainWindow::initOptionMenuSettingsMenu()
 {
     QMenu* menu = new QMenu(tr("Settings"), this);
@@ -391,37 +351,6 @@ void MainWindow::onAboutActionTriggered()
     info += QString("© 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
     info += tr("All rights reserved.");
     QMessageBox::about(this, tr("About"), info);
-}
-
-void MainWindow::onImportActionTriggered()
-{
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Import"), "Palette", tr("All (*)"));
-    if (fileName.isEmpty()) {
-        return;
-    }
-
-    setPalette(fileName);
-}
-
-void MainWindow::onExportActionTriggered()
-{
-    auto fileName = QFileDialog::getSaveFileName(this, tr("Export"), "Palette", tr("All (*)"));
-    if (fileName.isEmpty()) {
-        return;
-    }
-
-    QFile file(fileName);
-    if (file.open(QFile::WriteOnly)) {
-        QPalette p = qApp->palette();
-        QDataStream out(&file);
-        out << p;
-        file.close();
-    } else {
-        const QString errorString = file.errorString();
-        QString message = tr("The operation(open file %1) failed: %2").arg(fileName, errorString);
-        qWarning() << qPrintable(message);
-        return;
-    }
 }
 
 bool MainWindow::tryToReboot()

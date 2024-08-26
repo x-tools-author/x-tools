@@ -1,4 +1,4 @@
-﻿/***************************************************************************************************
+/***************************************************************************************************
  * Copyright 2022-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
@@ -60,7 +60,7 @@ AsciiAssistant::~AsciiAssistant()
 void AsciiAssistant::initDescirption()
 {
     m_descirption.clear();
-    m_descirption.insert(0, tr("NUL (NULL))"));
+    m_descirption.insert(0, tr("NUL (NULL)"));
     m_descirption.insert(1, tr("SOH (Start Of Headling)"));
     m_descirption.insert(2, tr("STX (Start Of Text)"));
     m_descirption.insert(3, tr("ETX (End Of Text)"));

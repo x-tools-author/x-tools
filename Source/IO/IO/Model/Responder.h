@@ -14,12 +14,12 @@
 
 namespace xTools {
 
-class ResponserModel;
-class Responser : public AbstractModelIO
+class ResponderModel;
+class Responder : public AbstractModelIO
 {
     Q_OBJECT
 public:
-    explicit Responser(QObject *parent = Q_NULLPTR);
+    explicit Responder(QObject *parent = Q_NULLPTR);
 
     QVariant tableModel() const override;
     QVariantMap saveItem(const int row) const override;
@@ -30,7 +30,7 @@ protected:
     void run() override;
 
 private:
-    ResponserModel *m_tableModel{nullptr};
+    ResponderModel *m_tableModel{nullptr};
 };
 
 } // namespace xTools
