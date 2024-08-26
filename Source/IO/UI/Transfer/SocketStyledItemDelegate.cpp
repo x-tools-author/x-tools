@@ -83,7 +83,11 @@ void SocketStyledItemDelegate::setModelData(QWidget *editor,
         model->setData(index, qobject_cast<QCheckBox *>(editor)->isChecked(), Qt::EditRole);
     } else if (column == 0 || column == 1 || column == 3 || column == 5) {
         auto cb = qobject_cast<QComboBox *>(editor);
-        model->setData(index, cb->currentData(), Qt::EditRole);
+        if (column == 0 || column == 5) {
+            model->setData(index, cb->currentData(), Qt::EditRole);
+        } else {
+            model->setData(index, cb->currentText());
+        }
     } else if (column == 2 || column == 4) {
         auto sb = qobject_cast<QSpinBox *>(editor);
         model->setData(index, sb->value(), Qt::EditRole);

@@ -72,11 +72,17 @@ void WebSocketClient::deinitDevice()
 
 void WebSocketClient::writeBytes(const QByteArray &bytes)
 {
-    if (m_channel == static_cast<int>(xIO::WebSocketDataChannel::Text))
-        m_webSocket->sendTextMessage(QString::fromUtf8(bytes));
-    else if (m_channel == static_cast<int>(xIO::WebSocketDataChannel::Binary))
-        m_webSocket->sendBinaryMessage(bytes);
-    m_webSocket->sendTextMessage(QString::fromUtf8(bytes));
+    if (m_channel == static_cast<int>(xIO::WebSocketDataChannel::Text)) {
+        if (m_webSocket->sendTextMessage(QString::fromUtf8(bytes)) > 0) {
+            emit bytesWritten(bytes, makeFlag(m_serverAddress, m_serverPort) + "[T]");
+        }
+    } else if (m_channel == static_cast<int>(xIO::WebSocketDataChannel::Binary)) {
+        if (m_webSocket->sendBinaryMessage(bytes) > 0) {
+            emit bytesWritten(bytes, makeFlag(m_serverAddress, m_serverPort) + "[B]");
+        }
+    } else {
+        qWarning() << "Invalid data channel: " << m_channel;
+    }
 }
 
 void WebSocketClient::onTextMessageReceived(const QString &message)

@@ -152,7 +152,7 @@ QString xIO::bytes2string(const QByteArray &bytes, TextFormat format)
                 str.append(QString("%1 ").arg(numStr, len, '0'));
             }
         }
-        return str;
+        return str.toUpper();
     };
 
     if (TextFormat::Bin == format) {
@@ -486,6 +486,7 @@ QString xIO::textItem2string(const TextItem &context)
 
         QByteArray crcArray = CRC::calculate(ctx);
         crc = QString::fromLatin1(crcArray.toHex());
+        crc = crc.toUpper();
     }
 
     QString suffix = additionName(context.suffix);
@@ -635,8 +636,13 @@ void xIO::setupStopBits(QComboBox *comboBox)
 void xIO::setupFlowControl(QComboBox *comboBox)
 {
     comboBox->addItem(tr("None"), QSerialPort::NoFlowControl);
-    comboBox->addItem(tr("Hardware(RTS/CTS)"), QSerialPort::HardwareControl);
-    comboBox->addItem(tr("Software(X-ON/X-OFF)"), QSerialPort::SoftwareControl);
+#if 0
+    comboBox->addItem(tr("RTS/CTS"), QSerialPort::HardwareControl);
+    comboBox->addItem(tr("X-ON/X-OFF"), QSerialPort::SoftwareControl);
+#else
+    comboBox->addItem(tr("Hardware"), QSerialPort::HardwareControl);
+    comboBox->addItem(tr("Software"), QSerialPort::SoftwareControl);
+#endif
 }
 #endif
 

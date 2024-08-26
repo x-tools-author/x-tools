@@ -37,6 +37,14 @@ SocketUi::SocketUi(xIO::CommunicationType type, QWidget *parent)
             &QToolButton::clicked,
             this,
             &SocketUi::invokeDisconnectAll);
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+    connect(ui->comboBoxChannel, &QComboBox::activated, this, [this]() {
+#else
+    connect(ui->comboBoxChannel, QOverload<int>::of(&QComboBox::activated), this, [this]() {
+#endif
+
+    });
 }
 
 SocketUi::~SocketUi() {}
@@ -165,5 +173,4 @@ void SocketUi::setupClients(const QStringList &clients)
         ui->comboBoxWriteTo->setCurrentIndex(index);
     }
 }
-
 } // namespace xTools

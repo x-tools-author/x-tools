@@ -21,7 +21,8 @@ WebSocketClientUi::~WebSocketClientUi() {}
 
 void WebSocketClientUi::setUiEnabled(bool enabled)
 {
-    Q_UNUSED(enabled);
+    setServerWidgetsEnabled(enabled);
+    setAuthenticationWidgetsEnabled(enabled);
 }
 
 } // namespace xTools

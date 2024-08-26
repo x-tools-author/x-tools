@@ -47,6 +47,9 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
 
         int option = static_cast<int>(xIO::TransferType::Bidirectional);
         m_transfers.insert(row, {transfer, tr("Transfer %1").arg(row), option});
+        if (m_enableRestartTransfer) {
+            transfer->start();
+        }
     }
     endInsertRows();
     return true;
