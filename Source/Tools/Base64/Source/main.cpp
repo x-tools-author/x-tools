@@ -7,10 +7,10 @@
  * code directory.
  **************************************************************************************************/
 #include "App/xExec.h"
-#include "Base64Assisatnt.h"
+#include "Base64Assistant.h"
 
 int main(int argc, char* argv[])
 {
-    const QString appName = QObject::tr("Base64 Assisatnt");
+    const QString appName = QObject::tr("Base64 Assistant");
     return xTools::execTool<Base64Assistant>(argc, argv, appName);
 }

@@ -12,7 +12,7 @@
 #include <QWidget>
 
 #include "AsciiAssistant.h"
-#include "Base64Assisatnt.h"
+#include "Base64Assistant.h"
 #include "BroadcastAssistant.h"
 #include "CrcAssistant.h"
 #include "FileCheckAssistant.h"

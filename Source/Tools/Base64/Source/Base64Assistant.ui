@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Base64Assisatnt</class>
+ <class>Base64Assistant</class>
  <widget class="QWidget" name="Base64Assistant">
   <property name="geometry">
    <rect>

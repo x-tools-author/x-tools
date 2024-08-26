@@ -11,7 +11,7 @@
 #include <QWidget>
 
 namespace Ui {
-class Base64Assisatnt;
+class Base64Assistant;
 }
 
 class Base64Assistant : public QWidget
@@ -22,7 +22,7 @@ public:
     ~Base64Assistant();
 
 private:
-    Ui::Base64Assisatnt* ui;
+    Ui::Base64Assistant* ui;
 
 private:
     void onImageClicked();
