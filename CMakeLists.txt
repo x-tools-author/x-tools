@@ -39,6 +39,10 @@ if(NOT QT_FOUND)
 endif()
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 
+if(QT_VERSION VERSION_LESS 6.8.0)
+  message(WARNING "Qt 6.8.0 or later is recommended")
+endif()
+
 # Don't change X_TOOLS_STATIC_VC_RUNTIME_LIBRARY option unless you know what you are doing.
 # QT_TARGET_TYPE is SHARED_LIBRARY or STATIC_LIBRARY
 get_target_property(QT_TARGET_TYPE Qt${QT_VERSION_MAJOR}::Core TYPE)
