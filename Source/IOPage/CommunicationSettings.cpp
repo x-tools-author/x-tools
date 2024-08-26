@@ -15,6 +15,19 @@
 #include "./Unit/SaveThread.h"
 #include "IO/xIO.h"
 
+const struct
+{
+    const QString saveToFile = "saveToFile";
+    const QString fileName = "fileName";
+    const QString saveRx = "saveRx";
+    const QString saveTx = "saveTx";
+    const QString saveTime = "saveTime";
+    const QString saveDate = "saveDate";
+    const QString saveMs = "saveMs";
+    const QString format = "format";
+    const QString maxKBytes = "maxKBytes";
+} gKeys;
+
 CommunicationSettings::CommunicationSettings(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::CommunicationSettings)
@@ -67,29 +80,29 @@ void CommunicationSettings::saveData(const QByteArray &data, bool isRx)
 QVariantMap CommunicationSettings::save()
 {
     QVariantMap map;
-    map["saveToFile"] = ui->checkBoxSaveToFile->isChecked();
-    map["fileName"] = m_fileName;
-    map["saveRx"] = ui->checkBoxSaveRx->isChecked();
-    map["saveTx"] = ui->checkBoxSaveTx->isChecked();
-    map["saveTime"] = ui->checkBoxSaveTime->isChecked();
-    map["saveDate"] = ui->checkBoxSaveDate->isChecked();
-    map["saveMs"] = ui->checkBoxSaveMs->isChecked();
-    map["format"] = ui->comboBoxSaveTextFormat->currentData().toInt();
-    map["maxKBytes"] = ui->comboBoxMaxBytes->currentData().toInt();
+    map[gKeys.saveToFile] = ui->checkBoxSaveToFile->isChecked();
+    map[gKeys.fileName] = m_fileName;
+    map[gKeys.saveRx] = ui->checkBoxSaveRx->isChecked();
+    map[gKeys.saveTx] = ui->checkBoxSaveTx->isChecked();
+    map[gKeys.saveTime] = ui->checkBoxSaveTime->isChecked();
+    map[gKeys.saveDate] = ui->checkBoxSaveDate->isChecked();
+    map[gKeys.saveMs] = ui->checkBoxSaveMs->isChecked();
+    map[gKeys.format] = ui->comboBoxSaveTextFormat->currentData().toInt();
+    map[gKeys.maxKBytes] = ui->comboBoxMaxBytes->currentData().toInt();
     return map;
 }
 
 void CommunicationSettings::load(const QVariantMap &data)
 {
-    bool saveToFile = data.value("saveToFile").toBool();
-    m_fileName = data.value("fileName").toString();
-    bool saveRx = data.value("saveRx").toBool();
-    bool saveTx = data.value("saveTx").toBool();
-    bool saveTime = data.value("saveTime").toBool();
-    bool saveDate = data.value("saveDate").toBool();
-    bool saveMs = data.value("saveMs").toBool();
-    int format = data.value("format").toInt();
-    int maxKBytes = data.value("maxKBytes").toInt();
+    bool saveToFile = data.value(gKeys.saveToFile).toBool();
+    m_fileName = data.value(gKeys.fileName).toString();
+    bool saveRx = data.value(gKeys.saveRx).toBool();
+    bool saveTx = data.value(gKeys.saveTx).toBool();
+    bool saveTime = data.value(gKeys.saveTime).toBool();
+    bool saveDate = data.value(gKeys.saveDate).toBool();
+    bool saveMs = data.value(gKeys.saveMs).toBool();
+    int format = data.value(gKeys.format).toInt();
+    int maxKBytes = data.value(gKeys.maxKBytes).toInt();
 
     ui->checkBoxSaveToFile->setChecked(saveToFile);
     ui->checkBoxSaveRx->setChecked(saveRx);
