@@ -63,6 +63,7 @@ bool AbstractTransferModel::removeRows(int row, int count, const QModelIndex &pa
     beginRemoveRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {
         auto tmp = m_transfers.takeAt(row);
+        disconnect(tmp.transfer, nullptr, nullptr, nullptr);
         tmp.transfer->exit();
         tmp.transfer->wait();
         tmp.transfer->deleteLater();
