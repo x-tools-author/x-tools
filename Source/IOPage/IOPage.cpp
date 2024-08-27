@@ -121,7 +121,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
 
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responder
              << m_udpClientTransfer << m_udpServerTransfer << m_tcpClientTransfer
-             << m_webSocketClientTransfer << m_webSocketServerTransfer;
+             << m_tcpServerTransfer << m_webSocketClientTransfer << m_webSocketServerTransfer;
 #ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
     m_ioList << m_serialPortTransfer;
 #endif
