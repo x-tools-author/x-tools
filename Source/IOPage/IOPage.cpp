@@ -127,7 +127,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
 #endif
 
     if (direction == ControllerDirection::Right) {
-        auto *l = qobject_cast<QHBoxLayout *>(layout());
+        auto *l = dynamic_cast<QHBoxLayout *>(layout());
         if (l) {
             auto item = l->takeAt(0);
             l->addItem(item);
@@ -694,14 +694,14 @@ void IOPage::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
 
     QString dateTimeString = ::dateTimeString(showDate, showTime, showMs);
     QString text = xTools::xIO::bytes2string(bytes, static_cast<xTools::xIO::TextFormat>(format));
-    QString rxtx = isRx ? QStringLiteral("Rx") : QStringLiteral("Tx");
-    rxtx = QString("<font color=%1>%2</font>").arg(isRx ? "blue" : "green", rxtx);
+    QString rxTx = isRx ? QStringLiteral("Rx") : QStringLiteral("Tx");
+    rxTx = QString("<font color=%1>%2</font>").arg(isRx ? "blue" : "green", rxTx);
 
     QString header;
     if (showFlag) {
-        header = QString("%1 %2 %3").arg(rxtx, dateTimeString, flag);
+        header = QString("%1 %2 %3").arg(rxTx, dateTimeString, flag);
     } else {
-        header = QString("%1 %2").arg(rxtx, dateTimeString);
+        header = QString("%1 %2").arg(rxTx, dateTimeString);
     }
 
     header = header.trimmed();
