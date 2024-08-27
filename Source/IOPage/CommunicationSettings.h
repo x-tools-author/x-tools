@@ -40,5 +40,5 @@ private:
     QString m_fileName;
 
 private:
-    void onBroswerButtonClicked();
+    void onBrowserButtonClicked();
 };

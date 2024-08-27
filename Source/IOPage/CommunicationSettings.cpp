@@ -50,10 +50,10 @@ CommunicationSettings::CommunicationSettings(QWidget *parent)
     m_saveThread = new SaveThread(this);
     m_saveThread->start();
 
-    connect(ui->pushButtonSavePathBroswer,
+    connect(ui->pushButtonSavePathBrowser,
             &QPushButton::clicked,
             this,
-            &CommunicationSettings::onBroswerButtonClicked);
+            &CommunicationSettings::onBrowserButtonClicked);
 }
 
 CommunicationSettings::~CommunicationSettings()
@@ -126,7 +126,7 @@ static const QString settingsFileName()
     return ret;
 }
 
-void CommunicationSettings::onBroswerButtonClicked()
+void CommunicationSettings::onBrowserButtonClicked()
 {
     QStandardPaths::StandardLocation location = QStandardPaths::DesktopLocation;
     QString defaultPath = QStandardPaths::writableLocation(location);
