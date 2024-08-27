@@ -13,10 +13,6 @@
 
 namespace xTools {
 
-struct Keys
-{
-} g_keys;
-
 SerialPortTransfer::SerialPortTransfer(QObject *parent)
     : AbstractTransfer{parent}
     , m_model{new SerialPortTransferModel{this}}
