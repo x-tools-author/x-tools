@@ -18,8 +18,6 @@ public:
     SocketTransfer(QObject *parent = nullptr);
     virtual ~SocketTransfer();
 
-    void inputBytes(const QByteArray &bytes) override;
-
     QVariantMap saveItem(const int row) const override;
     void loadItem(const int row, const QVariantMap &item) override;
 };

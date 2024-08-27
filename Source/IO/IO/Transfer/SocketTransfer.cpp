@@ -19,8 +19,6 @@ SocketTransfer::SocketTransfer(QObject* parent)
 
 SocketTransfer::~SocketTransfer() {}
 
-void SocketTransfer::inputBytes(const QByteArray &bytes) {}
-
 QVariantMap SocketTransfer::saveItem(const int row) const
 {
     QVariant modelVar = tableModel();
