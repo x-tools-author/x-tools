@@ -32,6 +32,8 @@ class SerialPortTransferUi;
 #endif
 class UdpClientTransfer;
 class UdpClientTransferUi;
+class UdpServerTransfer;
+class UdpServerTransferUi;
 class TcpClientTransfer;
 class TcpClientTransferUi;
 class TcpServerTransfer;
@@ -89,6 +91,8 @@ private:
 #endif
     xTools::UdpClientTransfer *m_udpClientTransfer;
     xTools::UdpClientTransferUi *m_udpClientTransferUi;
+    xTools::UdpServerTransfer *m_udpServerTransfer;
+    xTools::UdpServerTransferUi *m_udpServerTransferUi;
     xTools::TcpClientTransfer *m_tcpClientTransfer;
     xTools::TcpClientTransferUi *m_tcpClientTransferUi;
     xTools::TcpServerTransfer *m_tcpServerTransfer;

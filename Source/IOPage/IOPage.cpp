@@ -22,6 +22,7 @@
 #include "IO/IO/Transfer/TcpClientTransfer.h"
 #include "IO/IO/Transfer/TcpServerTransfer.h"
 #include "IO/IO/Transfer/UdpClientTransfer.h"
+#include "IO/IO/Transfer/UdpServerTransfer.h"
 #include "IO/IO/Transfer/WebSocketClientTransfer.h"
 #include "IO/IO/Transfer/WebSocketServerTransfer.h"
 #include "IO/UI/Communication/CommunicationUi.h"
@@ -29,6 +30,7 @@
 #include "IO/UI/Transfer/TcpClientTransferUi.h"
 #include "IO/UI/Transfer/TcpServerTransferUi.h"
 #include "IO/UI/Transfer/UdpClientTransferUi.h"
+#include "IO/UI/Transfer/UdpServerTransferUi.h"
 #include "IO/UI/Transfer/WebSocketClientTransferUi.h"
 #include "IO/UI/Transfer/WebSocketServerTransferUi.h"
 #include "IO/xIO.h"
@@ -68,6 +70,7 @@ struct ParameterKeys
     const QString responserItems{"responserItems"};
     const QString serialPortTransferItems{"serialPortTransferItems"};
     const QString udpClientTransferItems{"udpClientTransferItems"};
+    const QString udpServerTransferItems{"udpServerTransferItems"};
     const QString tcpClientTransferItems{"tcpClientTransferItems"};
     const QString tcpServerTransferItems{"tcpServerTransferItems"};
     const QString webSocketClientTransferItems{"webSocketClientTransferItems"};
@@ -96,6 +99,8 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
 #endif
     , m_udpClientTransfer(new xTools::UdpClientTransfer(this))
     , m_udpClientTransferUi(new xTools::UdpClientTransferUi())
+    , m_udpServerTransfer(new xTools::UdpServerTransfer(this))
+    , m_udpServerTransferUi(new xTools::UdpServerTransferUi())
     , m_tcpClientTransfer(new xTools::TcpClientTransfer(this))
     , m_tcpClientTransferUi(new xTools::TcpClientTransferUi())
     , m_tcpServerTransfer(new xTools::TcpServerTransfer(this))
@@ -115,8 +120,8 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     ui->widgetTxInfo->setupIO(m_txStatistician);
 
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responder
-             << m_udpClientTransfer << m_tcpClientTransfer << m_webSocketClientTransfer
-             << m_webSocketServerTransfer;
+             << m_udpClientTransfer << m_udpServerTransfer << m_tcpClientTransfer
+             << m_webSocketClientTransfer << m_webSocketServerTransfer;
 #ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
     m_ioList << m_serialPortTransfer;
 #endif
@@ -176,6 +181,7 @@ QVariantMap IOPage::save()
     map.insert(g_keys.serialPortTransferItems, m_serialPortTransferUi->save());
 #endif
     map.insert(g_keys.udpClientTransferItems, m_udpClientTransferUi->save());
+    map.insert(g_keys.udpServerTransferItems, m_udpServerTransferUi->save());
     map.insert(g_keys.tcpClientTransferItems, m_tcpClientTransferUi->save());
     map.insert(g_keys.tcpServerTransferItems, m_tcpServerTransferUi->save());
     map.insert(g_keys.webSocketClientTransferItems, m_webSocketClientTransferUi->save());
@@ -236,6 +242,7 @@ void IOPage::load(const QVariantMap &parameters)
     m_serialPortTransferUi->load(parameters.value(g_keys.serialPortTransferItems).toMap());
 #endif
     m_udpClientTransferUi->load(parameters.value(g_keys.udpClientTransferItems).toMap());
+    m_udpServerTransferUi->load(parameters.value(g_keys.udpServerTransferItems).toMap());
     m_tcpClientTransferUi->load(parameters.value(g_keys.tcpClientTransferItems).toMap());
     m_tcpServerTransferUi->load(parameters.value(g_keys.tcpServerTransferItems).toMap());
     m_webSocketClientTransferUi->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
@@ -340,6 +347,7 @@ void IOPage::initUiOutput()
     ui->tabWidgetTransfers->addTab(m_serialPortTransferUi, tr("Serial Port"));
 #endif
     ui->tabWidgetTransfers->addTab(m_udpClientTransferUi, tr("UDP Client"));
+    ui->tabWidgetTransfers->addTab(m_udpServerTransferUi, tr("UDP Server"));
     ui->tabWidgetTransfers->addTab(m_tcpClientTransferUi, tr("TCP Client"));
     ui->tabWidgetTransfers->addTab(m_tcpServerTransferUi, tr("TCP Server"));
     ui->tabWidgetTransfers->addTab(m_webSocketClientTransferUi, tr("WebSocket Client"));
@@ -352,6 +360,7 @@ void IOPage::initUiOutput()
     m_serialPortTransferUi->setupIO(m_serialPortTransfer);
 #endif
     m_udpClientTransferUi->setupIO(m_udpClientTransfer);
+    m_udpServerTransferUi->setupIO(m_udpServerTransfer);
     m_tcpClientTransferUi->setupIO(m_tcpClientTransfer);
     m_tcpServerTransferUi->setupIO(m_tcpServerTransfer);
     m_webSocketClientTransferUi->setupIO(m_webSocketClientTransfer);
@@ -511,6 +520,7 @@ void IOPage::openCommunication()
         connect(m_io, &xTools::Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
 #endif
         connect(m_io, &xTools::Communication::outputBytes, m_udpClientTransfer, &xTools::UdpClientTransfer::inputBytes);
+        connect(m_io, &xTools::Communication::outputBytes, m_udpServerTransfer, &xTools::UdpServerTransfer::inputBytes);
         connect(m_io, &xTools::Communication::outputBytes, m_tcpClientTransfer, &xTools::TcpClientTransfer::inputBytes);
         connect(m_io, &xTools::Communication::outputBytes, m_tcpServerTransfer, &xTools::TcpServerTransfer::inputBytes);
         connect(m_io, &xTools::Communication::outputBytes, m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::inputBytes);
@@ -523,6 +533,7 @@ void IOPage::openCommunication()
         connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
 #endif
         connect(m_udpClientTransfer, &xTools::UdpClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_udpServerTransfer, &xTools::UdpServerTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_tcpClientTransfer, &xTools::TcpClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_tcpServerTransfer, &xTools::TcpServerTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
