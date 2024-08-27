@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "WebSocketServerTransferModel.h"
 
-#include "../Communication/UdpClient.h"
+#include "../Communication/WebSocketServer.h"
 
 namespace xTools {
 
@@ -20,7 +20,7 @@ WebSocketServerTransferModel::~WebSocketServerTransferModel() {}
 
 Socket *WebSocketServerTransferModel::createSocket()
 {
-    return new UdpClient(this);
+    return new WebSocketServer(this);
 }
 
 bool WebSocketServerTransferModel::isEnableRestartingColumn(int column) const

@@ -8,6 +8,9 @@
  **************************************************************************************************/
 #include "AbstractTransferModel.h"
 
+#include <QEventLoop>
+#include <QTimer>
+
 #include "../../IO/Communication/Communication.h"
 #include "../../xIO.h"
 
@@ -131,6 +134,10 @@ void AbstractTransferModel::onDataChanged(const QModelIndex &topLeft,
         auto transfer = m_transfers.at(row).transfer;
         transfer->exit();
         transfer->wait();
+
+        QEventLoop *loop = new QEventLoop(this);
+        QTimer::singleShot(1000, this, [loop]() { loop->exit(); });
+        loop->exec();
         transfer->start();
     }
 }

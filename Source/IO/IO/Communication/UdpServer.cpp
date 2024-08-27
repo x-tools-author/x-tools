@@ -30,6 +30,8 @@ QObject *UdpServer::initDevice()
     connect(m_udpSocket, &QUdpSocket::errorOccurred, m_udpSocket, [this]() {
         emit errorOccurred(m_udpSocket->errorString());
     });
+
+    qInfo() << "Udp server is listening on" << m_serverAddress << "and port" << m_serverPort;
     return m_udpSocket;
 }
 

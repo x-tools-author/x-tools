@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "UdpServerTransferModel.h"
 
-#include "../Communication/UdpClient.h"
+#include "../Communication/UdpServer.h"
 
 namespace xTools {
 
@@ -20,7 +20,7 @@ UdpServerTransferModel::~UdpServerTransferModel() {}
 
 Socket *UdpServerTransferModel::createSocket()
 {
-    return new UdpClient(this);
+    return new UdpServer(this);
 }
 
 bool UdpServerTransferModel::isEnableRestartingColumn(int column) const
