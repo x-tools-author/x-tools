@@ -27,7 +27,7 @@
    <item row="0" column="1">
     <widget class="QPushButton" name="pushButtonSavePathBrowser">
      <property name="text">
-      <string>Broswer</string>
+      <string>Browser</string>
      </property>
     </widget>
    </item>
