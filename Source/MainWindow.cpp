@@ -19,6 +19,7 @@
 #include <QLabel>
 #include <QLayout>
 #include <QMenuBar>
+#include <QNetworkProxyFactory>
 #include <QPainter>
 #include <QPixmap>
 #include <QScrollBar>
@@ -160,6 +161,17 @@ void MainWindow::initToolMenu()
 
 void MainWindow::initOptionMenu()
 {
+    m_optionMenu->addSeparator();
+    auto* proxy = m_optionMenu->addAction(tr("Use System Proxy"));
+    proxy->setCheckable(true);
+    bool useSystemProxy = xTools::Settings::instance()->value(m_settingsKey.useSystemProxy).toBool();
+    proxy->setChecked(useSystemProxy);
+    QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
+    connect(proxy, &QAction::triggered, this, [=]() {
+        QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
+        xTools::Settings::instance()->setValue(m_settingsKey.useSystemProxy, proxy->isChecked());
+    });
+
     auto* mainWindowMenu = new QMenu(tr("Main Window"), this);
     auto* action = new QAction(tr("Exit to System Tray"), this);
     action->setCheckable(true);

@@ -46,14 +46,12 @@ protected:
 protected:
     virtual Communication *createTransfer() = 0;
     virtual bool isEnableRestartingColumn(int column) const;
-
-private:
-    void onDataChanged(const QModelIndex &topLeft,
-                       const QModelIndex &bottomRight,
+    virtual void onDataChanged(const QModelIndex &topLeft,
+                               const QModelIndex &bottomRight,
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-                       const QList<int> &roles = QList<int>());
+                               const QList<int> &roles = QList<int>());
 #else
-                       const QVector<int> &roles = QVector<int>());
+                               const QVector<int> &roles = QVector<int>());
 #endif
 };
 

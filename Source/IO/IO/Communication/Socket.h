@@ -21,6 +21,7 @@ public:
     explicit Socket(QObject *parent = nullptr);
     ~Socket();
 
+    void setDataChannel(int channel);
     void setParameters(const QVariantMap &parameters) override;
 
 protected:

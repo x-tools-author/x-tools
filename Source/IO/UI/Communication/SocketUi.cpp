@@ -9,6 +9,7 @@
 #include "SocketUi.h"
 #include "ui_SocketUi.h"
 
+#include "../../IO/Communication/Socket.h"
 #include "../../xIO.h"
 
 namespace xTools {
@@ -43,7 +44,9 @@ SocketUi::SocketUi(xIO::CommunicationType type, QWidget *parent)
 #else
     connect(ui->comboBoxChannel, QOverload<int>::of(&QComboBox::activated), this, [this]() {
 #endif
-
+        if (this->m_socket) {
+            this->m_socket->setDataChannel(ui->comboBoxChannel->currentIndex());
+        }
     });
 }
 
@@ -78,6 +81,11 @@ void SocketUi::load(const QVariantMap &parameters)
     ui->checkBoxAuthentication->setChecked(parameters.value("authentication").toBool());
     ui->lineEditUser->setText(parameters.value("username").toString());
     ui->lineEditPassword->setText(parameters.value("password").toString());
+}
+
+void SocketUi::setupIO(AbstractIO *io)
+{
+    m_socket = dynamic_cast<Socket *>(io);
 }
 
 void SocketUi::setClientWidgetsVisible(bool visible)

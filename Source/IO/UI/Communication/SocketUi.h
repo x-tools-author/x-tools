@@ -18,6 +18,7 @@ QT_END_NAMESPACE
 
 namespace xTools {
 
+class Socket;
 class SocketUi : public CommunicationUi
 {
     Q_OBJECT
@@ -25,12 +26,16 @@ public:
     SocketUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~SocketUi();
 
-    virtual QVariantMap save() const;
-    virtual void load(const QVariantMap &parameters);
+    QVariantMap save() const override;
+    void load(const QVariantMap &parameters) override;
+    void setupIO(AbstractIO *io) override;
 
 signals:
     void currentClientChanged(const QString &flag);
     void invokeDisconnectAll();
+
+protected:
+    Socket *m_socket{nullptr};
 
 protected:
     void setClientWidgetsVisible(bool visible);

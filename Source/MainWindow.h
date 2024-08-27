@@ -38,6 +38,7 @@ private:
         const QString isTextBesideIcon{"MainWindow/isTextBesideIcon"};
         const QString pageIndex{"MainWindow/pageIndex"};
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
+        const QString useSystemProxy{"MainWindow/useSystemProxy"};
     } m_settingsKey;
 
     QMenu* m_toolMenu;

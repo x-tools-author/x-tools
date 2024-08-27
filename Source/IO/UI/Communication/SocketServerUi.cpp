@@ -20,6 +20,8 @@ SocketServerUi::~SocketServerUi() {}
 
 void SocketServerUi::setupIO(AbstractIO *io)
 {
+    SocketUi::setupIO(io);
+
     SocketServer *server = qobject_cast<SocketServer *>(io);
     if (!server) {
         return;

@@ -22,6 +22,11 @@ Socket::Socket(QObject *parent)
 
 Socket::~Socket() {}
 
+void Socket::setDataChannel(int channel)
+{
+    m_channel = channel;
+}
+
 void Socket::setParameters(const QVariantMap &parameters)
 {
     Communication::setParameters(parameters);

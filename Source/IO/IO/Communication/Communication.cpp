@@ -42,6 +42,10 @@ void Communication::closeDevice()
 
 void Communication::inputBytes(const QByteArray &bytes)
 {
+    if (bytes.isEmpty()) {
+        return;
+    }
+
     emit invokeWriteBytes(bytes);
 }
 

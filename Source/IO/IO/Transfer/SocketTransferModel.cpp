@@ -191,4 +191,25 @@ Communication *SocketTransferModel::createTransfer()
     return socket;
 }
 
+void SocketTransferModel::onDataChanged(const QModelIndex &topLeft,
+                                        const QModelIndex &bottomRight,
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+                                        const QList<int> &roles)
+#else
+                                        const QVector<int> &roles)
+#endif
+{
+    AbstractTransferModel::onDataChanged(topLeft, bottomRight, roles);
+
+    auto row = topLeft.row();
+    if (row >= 0 && row < m_transfers.size()) {
+        int column = topLeft.column();
+        if (column == 5) {
+            // data channel changed
+            auto transfer = dynamic_cast<Socket *>(m_transfers.at(row).transfer);
+            transfer->setDataChannel(topLeft.data(Qt::EditRole).toInt());
+        }
+    }
+}
+
 } // namespace xTools
