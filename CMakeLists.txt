@@ -89,9 +89,9 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/Source)
 # Qt-Advanced-Stylesheets-main：https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets
 if(NOT X_TOOLS_ENABLE_MODULE_STYLESHEET)
   message(STATUS "Stylesheet module is disable, stylesheet files will be removed.")
-  set(TMP_DIR ${CMAKE_SOURCE_DIR}/Source/Common)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/CommonUI/xToolsStyleSheetManager.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/CommonUI/xToolsStyleSheetManager.cpp)
+  set(TMP_DIR ${CMAKE_SOURCE_DIR}/Source)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/App/StyleSheetManager.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/App/StyleSheetManager.cpp)
 endif()
 
 if(NOT X_TOOLS_ENABLE_MODULE_HID)
