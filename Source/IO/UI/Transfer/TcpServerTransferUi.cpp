@@ -25,12 +25,12 @@ void TcpServerTransferUi::setupIO(AbstractIO *io)
     SocketTransferUi::setupIO(io);
 
     auto tv = tableView();
-
     tv->hideColumn(1);
     tv->hideColumn(2);
-    for (int i = 5; i < 9; i++) {
-        tv->hideColumn(i);
-    }
+    tv->hideColumn(5);
+    tv->hideColumn(6);
+    tv->hideColumn(7);
+    tv->hideColumn(8);
 }
 
 } // namespace xTools

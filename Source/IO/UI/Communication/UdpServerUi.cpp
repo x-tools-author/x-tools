@@ -20,4 +20,9 @@ UdpServerUi::UdpServerUi(xIO::CommunicationType type, QWidget *parent)
 
 UdpServerUi::~UdpServerUi() {}
 
+void UdpServerUi::setUiEnabled(bool enabled)
+{
+    setServerWidgetsEnabled(enabled);
+}
+
 } // namespace xTools

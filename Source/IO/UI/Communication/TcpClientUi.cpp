@@ -13,11 +13,17 @@ namespace xTools {
 TcpClientUi::TcpClientUi(xIO::CommunicationType type, QWidget *parent)
     : SocketClientUi(type, parent)
 {
+    setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);
     setChannelWidgetsVisible(false);
     setAuthenticationWidgetsVisible(false);
 }
 
 TcpClientUi::~TcpClientUi() {}
+
+void TcpClientUi::setUiEnabled(bool enabled)
+{
+    setServerWidgetsEnabled(enabled);
+}
 
 } // namespace xTools

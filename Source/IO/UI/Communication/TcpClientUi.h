@@ -18,6 +18,8 @@ class TcpClientUi : public SocketClientUi
 public:
     explicit TcpClientUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~TcpClientUi() override;
+
+    void setUiEnabled(bool enabled) override;
 };
 
 } // namespace xTools

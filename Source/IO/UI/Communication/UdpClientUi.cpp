@@ -13,6 +13,7 @@ namespace xTools {
 UdpClientUi::UdpClientUi(xIO::CommunicationType type, QWidget *parent)
     : SocketClientUi(type, parent)
 {
+    setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);
     setChannelWidgetsVisible(false);
     setAuthenticationWidgetsVisible(false);
@@ -22,7 +23,7 @@ UdpClientUi::~UdpClientUi() {}
 
 void UdpClientUi::setUiEnabled(bool enabled)
 {
-    setClientWidgetsEnabled(enabled);
+    setServerWidgetsEnabled(enabled);
 }
 
 } // namespace xTools

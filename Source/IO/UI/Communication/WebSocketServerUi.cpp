@@ -19,4 +19,9 @@ WebSocketServerUi::WebSocketServerUi(xIO::CommunicationType type, QWidget *paren
 
 WebSocketServerUi::~WebSocketServerUi() {}
 
+void WebSocketServerUi::setUiEnabled(bool enabled)
+{
+    setServerWidgetsEnabled(enabled);
+}
+
 } // namespace xTools

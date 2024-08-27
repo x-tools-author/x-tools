@@ -18,6 +18,8 @@ class WebSocketServerUi : public SocketServerUi
 public:
     explicit WebSocketServerUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~WebSocketServerUi() override;
+
+    void setUiEnabled(bool enabled) override;
 };
 
 } // namespace xTools

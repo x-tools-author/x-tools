@@ -29,7 +29,7 @@ QObject *TcpClient::initDevice()
     connect(m_tcpSocket, &QTcpSocket::errorOccurred, m_tcpSocket, [this]() {
         emit errorOccurred(m_tcpSocket->errorString());
     });
-
+#if 0
     if (!m_tcpSocket->bind(QHostAddress(m_clientAddress), m_clientPort)) {
         m_tcpSocket->deleteLater();
         m_tcpSocket = nullptr;
@@ -39,7 +39,7 @@ QObject *TcpClient::initDevice()
 
         return nullptr;
     }
-
+#endif
     m_tcpSocket->connectToHost(m_serverAddress, m_serverPort);
     if (!m_tcpSocket->waitForConnected()) {
         m_tcpSocket->deleteLater();

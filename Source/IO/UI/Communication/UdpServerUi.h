@@ -18,6 +18,8 @@ class UdpServerUi : public SocketServerUi
 public:
     explicit UdpServerUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~UdpServerUi() override;
+
+    void setUiEnabled(bool enabled) override;
 };
 
 } // namespace xTools

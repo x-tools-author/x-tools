@@ -18,6 +18,8 @@ class TcpServerUi : public SocketServerUi
 public:
     explicit TcpServerUi(xIO::CommunicationType type, QWidget *parent = nullptr);
     ~TcpServerUi() override;
+
+    void setUiEnabled(bool enabled) override;
 };
 
 } // namespace xTools

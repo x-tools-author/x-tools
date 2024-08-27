@@ -20,4 +20,9 @@ TcpServerUi::TcpServerUi(xIO::CommunicationType type, QWidget *parent)
 
 TcpServerUi::~TcpServerUi() {}
 
+void TcpServerUi::setUiEnabled(bool enabled)
+{
+    setServerWidgetsEnabled(enabled);
+}
+
 } // namespace xTools
