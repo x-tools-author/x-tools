@@ -40,8 +40,7 @@ QObject *UdpClient::initDevice()
         emit errorOccurred(m_udpSocket->errorString());
     });
 
-    qInfo() << "client address:" << m_clientAddress << "port:" << m_clientPort
-            << "server address:" << m_serverAddress << "port:" << m_serverPort;
+    qInfo() << "UDP server address:" << m_serverAddress << "port:" << m_serverPort;
 
     return m_udpSocket;
 }
@@ -59,6 +58,7 @@ void UdpClient::writeBytes(const QByteArray &bytes)
     if (ret == bytes.length()) {
         emit bytesWritten(bytes, makeFlag(m_serverAddress, m_serverPort));
     } else {
+        qWarning() << "Failed to write bytes:" << m_udpSocket->errorString();
         emit errorOccurred(m_udpSocket->errorString());
     }
 }

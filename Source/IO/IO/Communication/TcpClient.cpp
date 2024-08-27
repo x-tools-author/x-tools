@@ -47,9 +47,7 @@ QObject *TcpClient::initDevice()
         return nullptr;
     }
 
-    qInfo() << "client address:" << m_tcpSocket->localAddress().toString()
-            << "port:" << m_tcpSocket->localPort() << "server address:" << m_serverAddress
-            << "port:" << m_serverPort;
+    qInfo() << "server address:" << m_serverAddress << "port:" << m_serverPort;
     return m_tcpSocket;
 }
 
