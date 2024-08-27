@@ -116,17 +116,6 @@ void MainWindow::initMenuFile()
 {
     QMenuBar* menuBar = this->menuBar();
     m_fileMenu = menuBar->addMenu(tr("&File"));
-#ifndef X_TOOLS_ENABLE_MODULE_STYLESHEET
-    QAction* importAction = new QAction(tr("Import Palette"), m_fileMenu);
-    m_fileMenu->addAction(importAction);
-    connect(importAction, &QAction::triggered, this, &xToolsMainWindow::onImportActionTriggered);
-
-    QAction* exportAction = new QAction(tr("Export Palette"), m_fileMenu);
-    m_fileMenu->addAction(exportAction);
-    connect(exportAction, &QAction::triggered, this, &xToolsMainWindow::onExportActionTriggered);
-
-    m_fileMenu->addSeparator();
-#endif
     m_exitAction = m_fileMenu->addAction(tr("&Exit"), this, []() {
         QApplication::closeAllWindows();
         QApplication::quit();
