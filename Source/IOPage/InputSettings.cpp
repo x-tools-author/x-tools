@@ -20,7 +20,7 @@ InputSettings::InputSettings(QWidget *parent)
 
     xTools::xIO::setupAddition(ui->comboBoxPrefix);
     xTools::xIO::setupAddition(ui->comboBoxSuffix);
-    xTools::xIO::setupEscapeCharacter(ui->comboBoxEscapeChracter);
+    xTools::xIO::setupEscapeCharacter(ui->comboBoxEscapeCharacter);
     xTools::CRC::setupAlgorithm(ui->comboBoxCrcAlgorithm);
 }
 
@@ -35,7 +35,7 @@ QVariantMap InputSettings::save()
 
     int prefix = ui->comboBoxPrefix->currentData().toInt();
     int suffix = ui->comboBoxSuffix->currentData().toInt();
-    int escapeCharacter = ui->comboBoxEscapeChracter->currentData().toInt();
+    int escapeCharacter = ui->comboBoxEscapeCharacter->currentData().toInt();
 
     int algorithm = ui->comboBoxCrcAlgorithm->currentData().toInt();
     int startIndex = ui->spinBoxCrcStartIndex->value();
@@ -79,7 +79,7 @@ void InputSettings::load(const QVariantMap &parameters)
 
     ui->comboBoxPrefix->setCurrentIndex(ui->comboBoxPrefix->findData(prefix));
     ui->comboBoxSuffix->setCurrentIndex(ui->comboBoxSuffix->findData(suffix));
-    ui->comboBoxEscapeChracter->setCurrentIndex(ui->comboBoxEscapeChracter->findData(escapeCharacter));
+    ui->comboBoxEscapeCharacter->setCurrentIndex(ui->comboBoxEscapeCharacter->findData(escapeCharacter));
 
     ui->comboBoxCrcAlgorithm->setCurrentIndex(ui->comboBoxCrcAlgorithm->findData(algorithm));
     ui->spinBoxCrcStartIndex->setValue(startIndex);
@@ -95,7 +95,7 @@ InputSettings::Parameters InputSettings::parameters() const
 
     int prefix = ui->comboBoxPrefix->currentData().toInt();
     int suffix = ui->comboBoxSuffix->currentData().toInt();
-    int escapeCharacter = ui->comboBoxEscapeChracter->currentData().toInt();
+    int escapeCharacter = ui->comboBoxEscapeCharacter->currentData().toInt();
 
     int algorithm = ui->comboBoxCrcAlgorithm->currentData().toInt();
     int startIndex = ui->spinBoxCrcStartIndex->value();
