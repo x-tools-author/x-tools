@@ -73,7 +73,7 @@ set(X_TOOLS_VERSION ${GIT_TAG} CACHE STRING "The version of applicaion")
 
 # --------------------------------------------------------------------------------------------------
 # Google log module
-x_tools_add_third_party("glog-0.7.0")
+x_tools_add_third_party("glog-0.7.1")
 
 # --------------------------------------------------------------------------------------------------
 # Get all source files of the project
