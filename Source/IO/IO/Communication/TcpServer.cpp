@@ -36,6 +36,7 @@ QObject *TcpServer::initDevice()
         return nullptr;
     }
 
+    qInfo() << "The server is listening on" << m_serverAddress << m_serverPort;
     return m_tcpServer;
 }
 
