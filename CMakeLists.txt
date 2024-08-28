@@ -235,33 +235,27 @@ if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Tools module
+# Tools
 set(X_TOOLS_TOOLS_DIR "${CMAKE_SOURCE_DIR}/Source/Tools")
-macro(x_tools_add_assistant dir_name on_off)
+macro(add_tool dir_name)
   file(GLOB TOOL_SOURCE "${X_TOOLS_TOOLS_DIR}/${dir_name}/*.*")
   include_directories(${X_TOOLS_TOOLS_DIR}/${dir_name})
   list(APPEND X_TOOLS_SOURCE ${TOOL_SOURCE})
-
   # away remove main.cpp
   list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/${dir_name}/main.cpp)
 endmacro()
-
-x_tools_add_assistant("CRC" ON)
-x_tools_add_assistant("mDNS" ON)
-x_tools_add_assistant("Ping" ON)
-x_tools_add_assistant("ASCII" ON)
-x_tools_add_assistant("Base64" ON)
-x_tools_add_assistant("Number" ON)
-x_tools_add_assistant("String" ON)
-x_tools_add_assistant("QRCode" ON)
-x_tools_add_assistant("Broadcast" ON)
-x_tools_add_assistant("FileCheck" ON)
-x_tools_add_assistant("FileMerge" ON)
-
-if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-  x_tools_add_assistant("CANBus" ON)
-  x_tools_add_assistant("Modbus" ON)
+# cmake-format: off
+file(GLOB ALL_TOOLS RELATIVE ${X_TOOLS_TOOLS_DIR} ${X_TOOLS_TOOLS_DIR}/*)
+list(REMOVE_ITEM ALL_TOOLS "AssistantFactory.h")
+list(REMOVE_ITEM ALL_TOOLS "AssistantFactory.cpp")
+# cmake-format: on
+if(NOT X_TOOLS_ENABLE_MODULE_SERIALBUS)
+  list(REMOVE_ITEM ALL_TOOLS "CANBus" "Modbus")
 endif()
+
+foreach(tool ${ALL_TOOLS})
+  add_tool(${tool})
+endforeach()
 
 set(X_TOOLS_TOOLS_DIR ${CMAKE_SOURCE_DIR}/Source/Tools)
 include_directories(${X_TOOLS_TOOLS_DIR})
@@ -316,7 +310,7 @@ endif()
 
 # -------------------------------------------------------------------------------------------------
 # Assistant applications
-macro(add_tool dir_name app_name)
+macro(add_tool_app dir_name app_name)
   set(TOOL_SOURCES ${CMAKE_SOURCE_DIR}/Source/Tools/${dir_name}/main.cpp)
   if(WIN32)
     list(APPEND TOOL_SOURCES ${CMAKE_SOURCE_DIR}/xTools.rc)
@@ -329,20 +323,7 @@ endmacro()
 
 option(X_TOOLS_ENABLE_TARGET_TOOLS "Enable tool applications" OFF)
 if(X_TOOLS_ENABLE_TARGET_TOOLS)
-  add_tool("ASCII" "ASCIIAssistant")
-  add_tool("Base64" "Base64Assistant")
-  add_tool("Broadcast" "BroadcastAssistant")
-  add_tool("CRC" "CRCAssistant")
-  add_tool("FileCheck" "FileCheckAssistant")
-  add_tool("FileMerge" "FileMergeAssistant")
-  add_tool("mDNS" "mDNSAssistant")
-  add_tool("Number" "NumberAssistant")
-  add_tool("Ping" "PingAssistant")
-  add_tool("QRCode" "QRCodeAssistant")
-  add_tool("String" "StringAssistant")
-
-  if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-    add_tool("CANBus" "CANBusAssistant")
-    add_tool("Modbus" "ModbusAssistant")
-  endif()
+  foreach(tool ${ALL_TOOLS})
+    add_tool_app(${tool} "${tool}Assistant")
+  endforeach()
 endif()
