@@ -72,10 +72,6 @@ set(X_TOOLS_VERSION ${GIT_TAG} CACHE STRING "The version of applicaion")
 # cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
-# Google log module
-x_tools_add_third_party("glog-0.7.1")
-
-# --------------------------------------------------------------------------------------------------
 # Get all source files of the project
 file(GLOB_RECURSE X_TOOLS_SOURCE_H "${CMAKE_SOURCE_DIR}/Source/*.h")
 file(GLOB_RECURSE X_TOOLS_SOURCE_UI "${CMAKE_SOURCE_DIR}/Source/*.ui")
@@ -86,7 +82,16 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/Source)
 
 # --------------------------------------------------------------------------------------------------
 # Third party module
-# Qt-Advanced-Stylesheets-main：https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets
+x_tools_add_third_party("glog-0.7.1")
+x_tools_add_third_party("libqrencode-master")
+x_tools_add_third_party("qmdnsengine-master")
+
+option(X_TOOLS_ENABLE_MODULE_HID "Enable Stylesheet module" OFF)
+if(X_TOOLS_ENABLE_MODULE_HID)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_HID)
+  x_tools_add_third_party("hidapi-hidapi-0.14.0")
+endif()
+
 if(NOT X_TOOLS_ENABLE_MODULE_STYLESHEET)
   message(STATUS "Stylesheet module is disable, stylesheet files will be removed.")
   set(TMP_DIR ${CMAKE_SOURCE_DIR}/Source)
@@ -166,24 +171,8 @@ if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIALBUS)
 endif()
 
-option(X_TOOLS_ENABLE_MODULE_SERIALBUS "Enable SerialBus module" ON)
-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialBus)
-if(NOT Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
-  set(X_TOOLS_ENABLE_MODULE_SERIALBUS OFF)
-endif()
 if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-endif()
-
-option(X_TOOLS_ENABLE_MODULE_MODBUS "Enable Modbus module" ON)
-option(X_TOOLS_ENABLE_MODULE_CANBUS "Enable CAN bus module" ON)
-if(NOT X_TOOLS_ENABLE_MODULE_SERIALBUS)
-  set(X_TOOLS_ENABLE_MODULE_MODBUS OFF)
-  set(X_TOOLS_ENABLE_MODULE_CANBUS OFF)
-endif()
-
-if(X_TOOLS_ENABLE_MODULE_SERIALBUS AND X_TOOLS_ENABLE_MODULE_MODBUS)
-  message(STATUS "Modbus module is enable, modbus files will be added.")
+  message(STATUS "Modbus module is not enabled, modbus files will be removed.")
   include_directories(${CMAKE_SOURCE_DIR}/Source/Modbus/Source)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_MODBUS)
 
@@ -193,8 +182,8 @@ if(X_TOOLS_ENABLE_MODULE_SERIALBUS AND X_TOOLS_ENABLE_MODULE_MODBUS)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_MODBUS_DIR}/main.cpp)
 endif()
 
-if(X_TOOLS_ENABLE_MODULE_SERIALBUS AND X_TOOLS_ENABLE_MODULE_CANBUS)
-  message(STATUS "CAN bus module is enable, CAN bus files will be added.")
+if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
+  message(STATUS "CAN bus module is not enabled, CAN bus files will be removed.")
   include_directories(${CMAKE_SOURCE_DIR}/Source/CANBus/Source)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_CANBUS)
 
@@ -205,57 +194,38 @@ if(X_TOOLS_ENABLE_MODULE_SERIALBUS AND X_TOOLS_ENABLE_MODULE_CANBUS)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Assistant module
+# Tools module
 set(X_TOOLS_TOOLS_DIR "${CMAKE_SOURCE_DIR}/Source/Tools")
 macro(x_tools_add_assistant dir_name on_off)
-  string(TOUPPER ${dir_name} DIR_NAME_UPPER)
-  option(X_TOOLS_ENABLE_MODULE_${DIR_NAME_UPPER} "Enable ${dir_name} assistant" ${on_off})
-
   file(GLOB TOOL_SOURCE "${X_TOOLS_TOOLS_DIR}/${dir_name}/*.*")
-  if(X_TOOLS_ENABLE_MODULE_${DIR_NAME_UPPER})
-    include_directories(${X_TOOLS_TOOLS_DIR}/${dir_name}/Source)
-    add_compile_definitions(X_TOOLS_ENABLE_MODULE_${DIR_NAME_UPPER})
-    list(APPEND X_TOOLS_SOURCE ${TOOL_SOURCE})
-  else()
-    foreach(SOURCE_FILE ${TOOL_SOURCE})
-      list(REMOVE_ITEM X_TOOLS_SOURCE ${SOURCE_FILE})
-    endforeach()
-  endif()
+  include_directories(${X_TOOLS_TOOLS_DIR}/${dir_name})
+  list(APPEND X_TOOLS_SOURCE ${TOOL_SOURCE})
 
   # away remove main.cpp
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/${dir_name}/Source/main.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/${dir_name}/main.cpp)
 endmacro()
 
-option(X_TOOLS_ENABLE_MODULE_TOOLS "Enable assistants module" ON)
-if(X_TOOLS_ENABLE_MODULE_TOOLS)
-  x_tools_add_assistant("CRC" ON)
-  x_tools_add_assistant("mDNS" ON)
-  x_tools_add_assistant("Ping" ON)
-  x_tools_add_assistant("ASCII" ON)
-  x_tools_add_assistant("Base64" ON)
-  x_tools_add_assistant("Number" ON)
-  x_tools_add_assistant("String" ON)
-  x_tools_add_assistant("QRCode" ON)
-  x_tools_add_assistant("Broadcast" ON)
-  x_tools_add_assistant("FileCheck" ON)
-  x_tools_add_assistant("FileMerge" ON)
+x_tools_add_assistant("CRC" ON)
+x_tools_add_assistant("mDNS" ON)
+x_tools_add_assistant("Ping" ON)
+x_tools_add_assistant("ASCII" ON)
+x_tools_add_assistant("Base64" ON)
+x_tools_add_assistant("Number" ON)
+x_tools_add_assistant("String" ON)
+x_tools_add_assistant("QRCode" ON)
+x_tools_add_assistant("Broadcast" ON)
+x_tools_add_assistant("FileCheck" ON)
+x_tools_add_assistant("FileMerge" ON)
+
+if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
   x_tools_add_assistant("CANBus" ON)
   x_tools_add_assistant("Modbus" ON)
-
-  if(X_TOOLS_ENABLE_MODULE_QRCODE)
-    x_tools_add_third_party("libqrencode-master")
-  endif()
-
-  if(X_TOOLS_ENABLE_MODULE_MDNS)
-    x_tools_add_third_party("qmdnsengine-master")
-  endif()
-
-  set(X_TOOLS_TOOLS_DIR ${CMAKE_CURRENT_LIST_DIR}/Source/Tools)
-  include_directories(${X_TOOLS_TOOLS_DIR})
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_TOOLS)
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.h)
-  list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.cpp)
 endif()
+
+set(X_TOOLS_TOOLS_DIR ${CMAKE_SOURCE_DIR}/Source/Tools)
+include_directories(${X_TOOLS_TOOLS_DIR})
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.h)
+list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.cpp)
 
 # --------------------------------------------------------------------------------------------------
 # xTools Core
@@ -268,15 +238,7 @@ x_tools_add_stylesheet_sources(xToolsCore)
 set(QtX Qt${QT_VERSION_MAJOR})
 target_link_libraries(xToolsCore PUBLIC ${QtX}::Core ${QtX}::Gui ${QtX}::Svg ${QtX}::Widgets)
 target_link_libraries(xToolsCore PUBLIC ${QtX}::Network ${QtX}::WebSockets)
-target_link_libraries(xToolsCore PUBLIC glog::glog)
-
-if(X_TOOLS_ENABLE_MODULE_QRCODE)
-  target_link_libraries(xToolsCore PUBLIC qrencode)
-endif()
-
-if(X_TOOLS_ENABLE_MODULE_MDNS)
-  target_link_libraries(xToolsCore PUBLIC qmdnsengine)
-endif()
+target_link_libraries(xToolsCore PUBLIC glog::glog qrencode qmdnsengine)
 
 if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
   target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::SerialPort)
@@ -309,7 +271,33 @@ endif()
 
 # -------------------------------------------------------------------------------------------------
 # Assistant applications
+macro(add_tool dir_name app_name)
+  set(TOOL_SOURCES ${CMAKE_SOURCE_DIR}/Source/Tools/${dir_name}/main.cpp)
+  if(WIN32)
+    list(APPEND TOOL_SOURCES ${CMAKE_SOURCE_DIR}/xTools.rc)
+  endif()
+
+  x_tools_add_executable(${app_name} ${TOOL_SOURCES})
+  x_tools_deploy_qt(${app_name})
+  target_link_libraries(${app_name} PRIVATE xToolsCore)
+endmacro()
+
 option(X_TOOLS_ENABLE_TARGET_TOOLS "Enable tool applications" OFF)
 if(X_TOOLS_ENABLE_TARGET_TOOLS)
-  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools)
+  add_tool("ASCII" "ASCIIAssistant")
+  add_tool("Base64" "Base64Assistant")
+  add_tool("Broadcast" "BroadcastAssistant")
+  add_tool("CRC" "CRCAssistant")
+  add_tool("FileCheck" "FileCheckAssistant")
+  add_tool("FileMerge" "FileMergeAssistant")
+  add_tool("mDNS" "mDNSAssistant")
+  add_tool("Number" "NumberAssistant")
+  add_tool("Ping" "PingAssistant")
+  add_tool("QRCode" "QRCodeAssistant")
+  add_tool("String" "StringAssistant")
+
+  if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
+    add_tool("CANBus" "CANBusAssistant")
+    add_tool("Modbus" "ModbusAssistant")
+  endif()
 endif()

@@ -41,30 +41,3 @@ function(x_tools_setup_stylesheet target)
   x_tools_add_stylesheet_resources(${target})
   x_tools_add_stylesheet_sources(${target})
 endfunction()
-
-# --------------------------------------------------------------------------------------------------
-# hidapi: https://github.com/libusb/hidapi
-set(X_TOOLS_HID_DIR_NAME "hidapi-hidapi-0.14.0")
-option(X_TOOLS_ENABLE_MODULE_HID "Enable HID module" OFF)
-if(X_TOOLS_ENABLE_MODULE_HID)
-  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${X_TOOLS_HID_DIR_NAME}.zip
-                  WORKING_DIRECTORY ${X_TOOLS_THIRD_PARTY_DIR})
-  include_directories(${X_TOOLS_THIRD_PARTY_DIR}/${X_TOOLS_HID_DIR_NAME}/hidapi)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_HID)
-endif()
-
-set(HID_ROOT_DIR ${X_TOOLS_THIRD_PARTY_DIR}/${X_TOOLS_HID_DIR_NAME})
-function(x_tools_add_hid_files target)
-  if(NOT X_TOOLS_ENABLE_MODULE_HID)
-    return()
-  endif()
-
-  target_sources(${target} PRIVATE ${HID_ROOT_DIR}/hidapi/hidapi.h)
-  if(WIN32)
-    target_sources(${target} PRIVATE ${HID_ROOT_DIR}/windows/hid.c)
-  elseif(UNIX AND NOT APPLE)
-    target_sources(${target} PRIVATE ${HID_ROOT_DIR}/linux/hid.c)
-  elseif(APPLE)
-    target_sources(${target} PRIVATE ${HID_ROOT_DIR}/mac/hid.c)
-  endif()
-endfunction()
