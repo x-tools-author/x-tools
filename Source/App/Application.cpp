@@ -32,7 +32,6 @@
 #include <QTranslator>
 
 #include "App/Settings.h"
-#include "IO/xIO.h"
 
 namespace xTools {
 
@@ -71,14 +70,12 @@ Application::Application(int argc, char *argv[])
     Application::setupLanguage(language);
 
     // Splash screen
-    m_splashScreen.setPixmap(splashScreenPixMap());
-#if 0
-    m_splashScreen.setWindowFlags(m_splashScreen.windowFlags() | Qt::WindowStaysOnTopHint);
-#endif
     if (enableSplashScreen()) {
+        m_splashScreen.setAttribute(Qt::WA_TransparentForMouseEvents, true);
+        m_splashScreen.setPixmap(splashScreenPixMap());
         m_splashScreen.show();
-        processEvents();
         showSplashScreenMessage(tr("Initialize application..."));
+        processEvents();
     }
 }
 
@@ -92,16 +89,6 @@ void Application::setEnableSplashScreen(bool enable)
     m_enableSplashScreen = enable;
 }
 
-QString Application::friendlyAppName()
-{
-    return m_friendlyAppName;
-}
-
-void Application::setFriendlyAppName(const QString &name)
-{
-    m_friendlyAppName = name;
-}
-
 void Application::showSplashScreenMessage(const QString &msg)
 {
     m_splashScreen.showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
@@ -112,9 +99,14 @@ QSplashScreen &Application::splashScreen()
     return m_splashScreen;
 }
 
-QStringList Application::supportedLanguages()
+QString Application::friendlyAppName()
 {
-    return m_languageFlagNameMap.values();
+    return m_friendlyAppName;
+}
+
+void Application::setFriendlyAppName(const QString &name)
+{
+    m_friendlyAppName = name;
 }
 
 QString Application::language()
@@ -132,45 +124,14 @@ QString Application::language()
     return m_languageFlagNameMap.value(language);
 }
 
-void Application::setupLanguage(const QString &language)
+QStringList Application::supportedLanguages()
 {
-    setupLanguageWithPrefix(language, m_translatorPrefix);
+    return m_languageFlagNameMap.values();
 }
 
-void Application::setValidator(QLineEdit *target, int validatorType, int maxLength)
+void Application::setupLanguage(const QString &language)
 {
-    static QMap<int, QRegularExpressionValidator *> regularExpressionMap;
-    if (regularExpressionMap.isEmpty()) {
-        QRegularExpressionValidator *urf8Validator = nullptr;
-        QRegularExpressionValidator *systemValidator = nullptr;
-
-        QString binStr = "([01][01][01][01][01][01][01][01][ ])*";
-        QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*$";
-        QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( "
-                         "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
-        QString hexStr = "([0-9a-fA-F][0-9a-fA-F][ ])*";
-
-        auto binValidator = new QRegularExpressionValidator(QRegularExpression(binStr));
-        auto otcValidator = new QRegularExpressionValidator(QRegularExpression(octStr)); //0-377
-        auto decValidator = new QRegularExpressionValidator(QRegularExpression(decStr)); // 0-255;
-        auto hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
-        auto asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
-
-        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Bin), binValidator);
-        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Oct), otcValidator);
-        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Dec), decValidator);
-        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Hex), hexValidator);
-        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Ascii), asciiValidator);
-        regularExpressionMap.insert(int(xTools::xIO::TextFormat::Utf8), urf8Validator);
-    }
-
-    if (!target || !regularExpressionMap.contains(validatorType) || maxLength < 0) {
-        qWarning() << "Invalid parameter, the operation will be ignored!";
-        return;
-    }
-
-    target->setValidator(regularExpressionMap.value(validatorType));
-    target->setMaxLength(maxLength);
+    Q_UNUSED(language);
 }
 
 QIcon Application::cookedIcon(const QIcon &icon)
@@ -185,8 +146,8 @@ QIcon Application::cookedIcon(const QIcon &icon)
 
 QMainWindow *Application::mainWindow()
 {
-    for (const auto &it : qobject_cast<QApplication *>(qApp)->topLevelWidgets()) {
-        auto mainWindow = qobject_cast<QMainWindow *>(it);
+    for (const auto &widget : qApp->topLevelWidgets()) {
+        auto mainWindow = qobject_cast<QMainWindow *>(widget);
         if (mainWindow) {
             return mainWindow;
         }

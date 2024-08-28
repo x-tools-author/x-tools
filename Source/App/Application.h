@@ -23,29 +23,21 @@ class Application : public QApplication
     Q_OBJECT
     Q_PROPERTY(QStringList supportedLanguages READ supportedLanguages CONSTANT FINAL)
 public:
-    enum class AppPalette { Default, Dark, Light, Custom = -1 };
-    Q_ENUM(AppPalette)
-    enum class ValidatorType { Bin, Otc, Dec, Hex, Ascii, Float, None };
-    Q_ENUM(ValidatorType)
-
-public:
     explicit Application(int argc, char *argv[]);
 
     static bool enableSplashScreen();
     static void setEnableSplashScreen(bool enable);
+    void showSplashScreenMessage(const QString &msg);
+    QSplashScreen &splashScreen();
 
     static QString friendlyAppName();
     static void setFriendlyAppName(const QString &name);
 
-    void showSplashScreenMessage(const QString &msg);
-    QSplashScreen &splashScreen();
+    Q_INVOKABLE QString language();
     Q_INVOKABLE QStringList supportedLanguages();
-
-    QString language();
     Q_INVOKABLE virtual void setupLanguage(const QString &language);
 
 public:
-    static void setValidator(QLineEdit *target, int validatorType, int maxLength = INT_MAX);
     static QIcon cookedIcon(const QIcon &icon);
     static QMainWindow *mainWindow();
     static void moveToScreenCenter(QWidget *widget);
@@ -72,7 +64,6 @@ protected:
     void setupLanguageWithPrefix(const QString &language, const QString &prefix);
 
 private:
-    const QString m_translatorPrefix{"xToolsCommon"};
     QMap<QString, QString> m_languageFlagNameMap;
     static bool m_enableSplashScreen;
     static QString m_friendlyAppName;
