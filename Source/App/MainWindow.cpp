@@ -400,25 +400,4 @@ void MainWindow::showQqQrCode()
     dialog.exec();
 }
 
-void MainWindow::setPalette(const QString& fileName)
-{
-    if (fileName.isEmpty()) {
-        Settings::instance()->setPalette(fileName);
-        tryToReboot();
-        return;
-    }
-
-    QFile file(fileName);
-    if (!file.open(QFile::ReadOnly)) {
-        QString message = tr("Open the file(%1) failed: %2").arg(fileName, file.errorString());
-        qWarning() << qPrintable(message);
-        return;
-    }
-
-    Settings::instance()->setPalette(fileName);
-    m_xToolsApp->setupPalette(fileName);
-    menuBar()->setPalette(qApp->palette());
-    tryToReboot();
-}
-
 } // namespace xTools

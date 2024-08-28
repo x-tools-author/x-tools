@@ -69,7 +69,6 @@ private:
     bool tryToReboot();
     void createQtConf();
     void showQqQrCode();
-    void setPalette(const QString& fileName);
 };
 
 } // namespace xTools

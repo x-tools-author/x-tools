@@ -70,11 +70,6 @@ Application::Application(int argc, char *argv[])
     QString language = xTools::Settings::instance()->language();
     Application::setupLanguage(language);
 
-    // Palette
-    showSplashScreenMessage(tr("Load palette..."));
-    QString palette = xTools::Settings::instance()->palette();
-    setupPalette(palette);
-
     // Splash screen
     m_splashScreen.setPixmap(splashScreenPixMap());
 #if 0
@@ -110,32 +105,6 @@ void Application::setFriendlyAppName(const QString &name)
 void Application::showSplashScreenMessage(const QString &msg)
 {
     m_splashScreen.showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
-}
-
-void Application::setupPalette(const QString &fileName)
-{
-    if (fileName.isEmpty()) {
-        qWarning() << "The palette file name is empty, use default palette.";
-        return;
-    }
-
-    if (!QFile::exists(fileName)) {
-        QString info = QString("The palette file not found: %1, use default palette.").arg(fileName);
-        qInfo() << qPrintable(info);
-        return;
-    }
-
-    QFile file(fileName);
-    if (file.open(QFile::ReadOnly)) {
-        QDataStream out(&file);
-        QPalette palette;
-        out >> palette;
-        file.close();
-        setPalette(palette);
-        qInfo() << "The palette of application is:" << fileName;
-    } else {
-        qWarning() << "Open palette file error:" << file.errorString();
-    }
 }
 
 QSplashScreen &Application::splashScreen()

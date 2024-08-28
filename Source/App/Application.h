@@ -38,7 +38,6 @@ public:
     static void setFriendlyAppName(const QString &name);
 
     void showSplashScreenMessage(const QString &msg);
-    void setupPalette(const QString &fileName);
     QSplashScreen &splashScreen();
     Q_INVOKABLE QStringList supportedLanguages();
 
