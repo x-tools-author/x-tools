@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "Socket.h"
 
+#include "../../xIO.h"
+
 namespace xTools {
 
 Socket::Socket(QObject *parent)
@@ -31,14 +33,15 @@ void Socket::setParameters(const QVariantMap &parameters)
 {
     Communication::setParameters(parameters);
 
-    m_clientPort = parameters.value("clientPort").toUInt();
-    m_clientAddress = parameters.value("clientAddress").toString();
-    m_serverPort = parameters.value("serverPort").toUInt();
-    m_serverAddress = parameters.value("serverAddress").toString();
-    m_channel = parameters.value("channel").toInt();
-    m_authentication = parameters.value("authentication").toBool();
-    m_username = parameters.value("username").toString();
-    m_password = parameters.value("password").toString();
+    xIO::SocketItem item = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
+    m_clientPort = item.clientPort;
+    m_clientAddress = item.clientAddress;
+    m_serverPort = item.serverPort;
+    m_serverAddress = item.serverAddress;
+    m_channel = static_cast<int>(item.dataChannel);
+    m_authentication = item.authentication;
+    m_username = item.username;
+    m_password = item.password;
 }
 
 QString Socket::makeFlag(const QString &address, quint16 port) const
