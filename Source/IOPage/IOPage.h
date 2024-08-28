@@ -38,10 +38,12 @@ class TcpClientTransfer;
 class TcpClientTransferUi;
 class TcpServerTransfer;
 class TcpServerTransferUi;
+#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
 class WebSocketClientTransfer;
 class WebSocketClientTransferUi;
 class WebSocketServerTransfer;
 class WebSocketServerTransferUi;
+#endif
 } // namespace xTools
 QT_END_NAMESPACE
 
@@ -97,11 +99,12 @@ private:
     xTools::TcpClientTransferUi *m_tcpClientTransferUi;
     xTools::TcpServerTransfer *m_tcpServerTransfer;
     xTools::TcpServerTransferUi *m_tcpServerTransferUi;
+#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
     xTools::WebSocketClientTransfer *m_webSocketClientTransfer;
     xTools::WebSocketClientTransferUi *m_webSocketClientTransferUi;
     xTools::WebSocketServerTransfer *m_webSocketServerTransfer;
     xTools::WebSocketServerTransferUi *m_webSocketServerTransferUi;
-
+#endif
     QButtonGroup m_pageButtonGroup;
     QList<xTools::AbstractIO *> m_ioList;
     QSettings *m_settings;

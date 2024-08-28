@@ -21,8 +21,10 @@
 #include "Communication/TcpServerUi.h"
 #include "Communication/UdpClientUi.h"
 #include "Communication/UdpServerUi.h"
+#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
 #include "Communication/WebSocketClientUi.h"
 #include "Communication/WebSocketServerUi.h"
+#endif
 
 namespace xTools {
 
@@ -53,10 +55,12 @@ CommunicationUi *IOUiFactory::createDeviceUi(xIO::CommunicationType type)
         return new TcpClientUi(type);
     case xIO::CommunicationType::TcpServer:
         return new TcpServerUi(type);
+#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
     case xIO::CommunicationType::WebSocketClient:
         return new WebSocketClientUi(type);
     case xIO::CommunicationType::WebSocketServer:
         return new WebSocketServerUi(type);
+#endif
     default:
         return nullptr;
     }

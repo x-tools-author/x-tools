@@ -30,7 +30,9 @@ QList<int> xIO::supportedCommunicationTypes()
 {
     static QList<int> deviceTypes;
     if (deviceTypes.isEmpty()) {
+#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
         deviceTypes << static_cast<int>(CommunicationType::SerialPort);
+#endif
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
         deviceTypes << static_cast<int>(CommunicationType::BleCentral);
 #endif
@@ -41,8 +43,10 @@ QList<int> xIO::supportedCommunicationTypes()
         deviceTypes << static_cast<int>(CommunicationType::UdpServer);
         deviceTypes << static_cast<int>(CommunicationType::TcpClient);
         deviceTypes << static_cast<int>(CommunicationType::TcpServer);
+#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
         deviceTypes << static_cast<int>(CommunicationType::WebSocketClient);
         deviceTypes << static_cast<int>(CommunicationType::WebSocketServer);
+#endif
     }
 
     return deviceTypes;

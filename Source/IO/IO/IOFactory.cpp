@@ -21,8 +21,10 @@
 #include "Communication/TcpServer.h"
 #include "Communication/UdpClient.h"
 #include "Communication/UdpServer.h"
+#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
 #include "Communication/WebSocketClient.h"
 #include "Communication/WebSocketServer.h"
+#endif
 
 namespace xTools {
 
@@ -53,10 +55,12 @@ Communication *IOFactory::createDevice(int type)
         return new TcpClient(QCoreApplication::instance());
     case static_cast<int>(xIO::CommunicationType::TcpServer):
         return new TcpServer(QCoreApplication::instance());
+#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
     case static_cast<int>(xIO::CommunicationType::WebSocketClient):
         return new WebSocketClient(QCoreApplication::instance());
     case static_cast<int>(xIO::CommunicationType::WebSocketServer):
         return new WebSocketServer(QCoreApplication::instance());
+#endif
     default:
         qWarning("Unknown device type:%d", type);
         return nullptr;
