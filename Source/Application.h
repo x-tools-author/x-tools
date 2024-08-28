@@ -24,10 +24,4 @@ class Application : public xTools::Application
 public:
     explicit Application(int argc, char **argv);
     ~Application() override = default;
-
-    void setupLanguage(const QString &language) override;
-
-private:
-    const QString m_translatorPrefix{"xTools"};
-    const QString m_translatorToolsPrefix{"xToolsTools"};
 };

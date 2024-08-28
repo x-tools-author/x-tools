@@ -161,7 +161,7 @@ void MainWindow::initMenuLanguage()
         });
 
         if (settingLanguage.isEmpty()) {
-            if (language == app->language()) {
+            if (language == app->defaultLanguage()) {
                 action->setChecked(true);
             }
         } else {

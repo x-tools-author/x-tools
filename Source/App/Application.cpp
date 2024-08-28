@@ -66,8 +66,6 @@ Application::Application(int argc, char *argv[])
   m_languageFlagNameMap.insert("sl", "Slovenščina");
   m_languageFlagNameMap.insert("sv", "Svenska");
 #endif
-    QString language = xTools::Settings::instance()->language();
-    Application::setupLanguage(language);
 
     // Splash screen
     if (enableSplashScreen()) {
@@ -109,7 +107,7 @@ void Application::setFriendlyAppName(const QString &name)
     m_friendlyAppName = name;
 }
 
-QString Application::language()
+QString Application::defaultLanguage()
 {
     QString language = xTools::Settings::instance()->language();
     if (language.isEmpty()) {
@@ -129,9 +127,25 @@ QStringList Application::supportedLanguages()
     return m_languageFlagNameMap.values();
 }
 
+QStringList Application::supportedLanguagePrefixes()
+{
+    return QStringList() << "xToolsCore";
+}
+
 void Application::setupLanguage(const QString &language)
 {
-    Q_UNUSED(language);
+    QString tmp = language;
+    if (tmp.isEmpty()) {
+        tmp = xTools::Settings::instance()->language();
+        if (tmp.isEmpty()) {
+            tmp = defaultLanguage();
+        }
+    }
+
+    auto prefixes = supportedLanguagePrefixes();
+    for (const auto &prefix : prefixes) {
+        setupLanguageWithPrefix(tmp, prefix + "_");
+    }
 }
 
 QIcon Application::cookedIcon(const QIcon &icon)

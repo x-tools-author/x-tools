@@ -71,6 +71,8 @@ int exec(int argc,
     doSomethingBeforeAppCreated(argv, appName);
 
     ApplicationT app(argc, argv);
+    app.setupLanguage();
+
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     QStyleHints *styleHints = QApplication::styleHints();
     styleHints->setColorScheme(Qt::ColorScheme::Dark);

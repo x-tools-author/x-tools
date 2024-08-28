@@ -33,9 +33,12 @@ public:
     static QString friendlyAppName();
     static void setFriendlyAppName(const QString &name);
 
-    Q_INVOKABLE QString language();
+    Q_INVOKABLE QString defaultLanguage();
+    Q_INVOKABLE void setupLanguage(const QString &language = QString());
     Q_INVOKABLE QStringList supportedLanguages();
-    Q_INVOKABLE virtual void setupLanguage(const QString &language);
+
+    // Such as "xToolsCore", "xToolsApp", "xToolsPrivateApp"
+    Q_INVOKABLE virtual QStringList supportedLanguagePrefixes();
 
 public:
     static QIcon cookedIcon(const QIcon &icon);
