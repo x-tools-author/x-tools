@@ -6,15 +6,15 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "SerialPortTransferUi.h"
+#include "HidTransferUi.h"
 
 #include <QHeaderView>
 
-#include "SerialPortStyledItemDelegate.h"
+#include "HidStyledItemDelegate.h"
 
 namespace xTools {
 
-SerialPortTransferUi::SerialPortTransferUi(QWidget *parent)
+HidTransferUi::HidTransferUi(QWidget *parent)
     : AbstractTransferUi{parent}
 {
     auto *tv = tableView();
@@ -22,11 +22,11 @@ SerialPortTransferUi::SerialPortTransferUi(QWidget *parent)
     hHeader->setStretchLastSection(true);
 }
 
-SerialPortTransferUi::~SerialPortTransferUi() {}
+HidTransferUi::~HidTransferUi() {}
 
-QStyledItemDelegate *SerialPortTransferUi::createItemDelegate() const
+QStyledItemDelegate *HidTransferUi::createItemDelegate() const
 {
-    return new SerialPortStyledItemDelegate();
+    return new HidStyledItemDelegate();
 }
 
 } // namespace xTools
