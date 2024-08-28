@@ -43,7 +43,7 @@ public:
     static void setupTextFormat(QComboBox *comboBox);
     static QString bytes2string(const QByteArray &bytes, TextFormat format);
     static QByteArray string2bytes(const QString &text, TextFormat format);
-    static void setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format);
+    static void setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format, int maxLen = 32767);
 
     /**********************************************************************************************/
     enum class Affixes { None, R, N, RN, NR };

@@ -19,10 +19,8 @@ NumberAssistant::NumberAssistant(QWidget *parent)
 {
     ui->setupUi(this);
 
-    xTools::Application::setValidator(ui->lineEditRawData,
-                                      static_cast<int>(xTools::xIO::TextFormat::Hex));
-    xTools::Application::setValidator(ui->lineEditCookedDec,
-                                      static_cast<int>(xTools::xIO::TextFormat::Dec));
+    xTools::xIO::setupTextFormatValidator(ui->lineEditRawData, xTools::xIO::TextFormat::Hex);
+    xTools::xIO::setupTextFormatValidator(ui->lineEditCookedDec, xTools::xIO::TextFormat::Dec);
 
     ui->comboBoxCookedDataType->addItem("int8_t", CookedDataTypeInt8);
     ui->comboBoxCookedDataType->addItem("uint8_t", CookedDataTypeUint8);

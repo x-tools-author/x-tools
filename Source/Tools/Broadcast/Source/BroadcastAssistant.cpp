@@ -37,8 +37,9 @@ BroadcastAssistant::BroadcastAssistant(QWidget* parent)
         ui->textBrowserInformation->append(info);
     });
     connect(ui->comboBoxBroadcastFormat, &QComboBox::currentTextChanged, this, [=]() {
-        auto format = ui->comboBoxBroadcastFormat->currentData().toInt();
-        xTools::Application::setValidator(ui->lineEditBroadcastData, format);
+        int format = ui->comboBoxBroadcastFormat->currentData().toInt();
+        auto cookedFormat = static_cast<xTools::xIO::TextFormat>(format);
+        xTools::xIO::setupTextFormatValidator(ui->lineEditBroadcastData, cookedFormat);
     });
     connect(ui->pushButtonBroadcast,
             &QPushButton::clicked,

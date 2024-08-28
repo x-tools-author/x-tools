@@ -203,43 +203,39 @@ QByteArray xIO::string2bytes(const QString &text, TextFormat format)
     return data;
 }
 
-void xIO::setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format)
+void xIO::setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format, int maxLen)
 {
     static QMap<TextFormat, QRegularExpressionValidator *> regularExpressionMap;
     if (regularExpressionMap.isEmpty()) {
-        QRegularExpressionValidator *urf8Validator = nullptr;
-#if 0
-        QRegularExpressionValidator *systemValidator = nullptr;
-#endif
-
+        // clang-format off
         const QString binStr = "([01][01][01][01][01][01][01][01][ ])*";
         const QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*$";
-        const QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( "
-                               "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
+        const QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( (25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
         const QString hexStr = "([0-9a-fA-F][0-9a-fA-F][ ])*";
+        // clang-format on
 
+        // clang-format off
         auto const binValidator = new QRegularExpressionValidator(QRegularExpression(binStr));
-        auto const otcValidator = new QRegularExpressionValidator(
-            QRegularExpression(octStr)); //0-377
-        auto const decValidator = new QRegularExpressionValidator(
-            QRegularExpression(decStr)); // 0-255;
+        auto const otcValidator = new QRegularExpressionValidator(QRegularExpression(octStr)); //0-377
+        auto const decValidator = new QRegularExpressionValidator(QRegularExpression(decStr)); // 0-255;
         auto const hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
         auto const asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
+        // clang-format on
 
         regularExpressionMap.insert(TextFormat::Bin, binValidator);
         regularExpressionMap.insert(TextFormat::Oct, otcValidator);
         regularExpressionMap.insert(TextFormat::Dec, decValidator);
         regularExpressionMap.insert(TextFormat::Hex, hexValidator);
         regularExpressionMap.insert(TextFormat::Ascii, asciiValidator);
-        regularExpressionMap.insert(TextFormat::Utf8, urf8Validator);
+        regularExpressionMap.insert(TextFormat::Utf8, nullptr);
     }
 
-    if (!lineEdit || !regularExpressionMap.contains(format)) {
+    if (lineEdit && regularExpressionMap.contains(format)) {
+        lineEdit->setMaxLength(maxLen);
+        lineEdit->setValidator(regularExpressionMap.value(format));
+    } else {
         qWarning() << "Invalid parameter, the operation will be ignored!";
-        return;
     }
-
-    lineEdit->setValidator(regularExpressionMap.value(format));
 }
 
 QList<int> xIO::supportedAffixes()
