@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(
-  xTools
-  VERSION 1.0
-  LANGUAGES C CXX)
+# cmake-format: off
+project(xTools VERSION 1.0 LANGUAGES C CXX)
+# cmake-format: on
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -13,14 +12,12 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# cmake-format: off
 set(WITH_GFLAGS OFF)
 set(BUILD_TESTING OFF)
-set(BUILD_SHARED_LIBS
-    OFF
-    CACHE BOOL "Reset option" FORCE)
-set(WITH_TOOLS
-    OFF
-    CACHE BOOL "Reset option" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Reset option" FORCE)
+set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
+# cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
 # Qt module
@@ -85,13 +82,7 @@ x_tools_add_third_party("glog-0.7.1")
 x_tools_add_third_party("libqrencode-master")
 x_tools_add_third_party("qmdnsengine-master")
 
-option(X_TOOLS_ENABLE_MODULE_HID "Enable HID module" OFF)
-if(X_TOOLS_ENABLE_MODULE_HID)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_HID)
-  set(HIDAPI_WITH_LIBUSB FALSE)
-  x_tools_add_third_party("hidapi-hidapi-0.14.0")
-endif()
-
+# Custom stylesheet
 if(NOT X_TOOLS_ENABLE_MODULE_STYLESHEET)
   message(STATUS "Stylesheet module is disable, stylesheet files will be removed.")
   set(TMP_DIR ${CMAKE_SOURCE_DIR}/Source)
@@ -99,15 +90,31 @@ if(NOT X_TOOLS_ENABLE_MODULE_STYLESHEET)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/App/StyleSheetManager.cpp)
 endif()
 
+# HID
+option(X_TOOLS_ENABLE_MODULE_HID "Enable HID module" OFF)
+if(X_TOOLS_ENABLE_MODULE_HID)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_HID)
+  set(HIDAPI_WITH_LIBUSB FALSE)
+  x_tools_add_third_party("hidapi-hidapi-0.14.0")
+endif()
 if(NOT X_TOOLS_ENABLE_MODULE_HID)
   message(STATUS "HID module is disable, HID files will be removed.")
-  set(TMP_DIR ${CMAKE_SOURCE_DIR}/Source/Tools)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/Tools/xToolsHidTool.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/Tools/xToolsHidTool.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/Tools/xToolsHidManager.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/Tools/xToolsHidManager.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/ToolsUI/xToolsHidToolUi.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/ToolsUI/xToolsHidToolUi.h)
+  set(TMP_DIR ${CMAKE_SOURCE_DIR}/Source)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/IO/Communication/Hid.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/IO/Communication/Hid.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/UI/Communication/HidUi.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/UI/Communication/HidUi.ui)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/UI/Communication/HidUi.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/IO/Transfer/HidTransfer.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/IO/Transfer/HidTransfer.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/IO/Transfer/HidTransferModel.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/IO/Transfer/HidTransferModel.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/UI/Transfer/HidTransferUi.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/UI/Transfer/HidTransferUi.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/UI/Transfer/HidStyledItemDelegate.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/UI/Transfer/HidStyledItemDelegate.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/UI/Transfer/HidTransferUi.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/UI/Transfer/HidTransferUi.cpp)
 endif()
 
 # --------------------------------------------------------------------------------------------------
