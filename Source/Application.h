@@ -15,7 +15,7 @@
 #endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-class Application : public xTools::Private::Application
+class Application : public xToolsPrivate::Application
 #else
 class Application : public xTools::Application
 #endif

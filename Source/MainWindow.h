@@ -16,7 +16,7 @@
 
 class IOPage;
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-class MainWindow : public xTools::Private::MainWindow
+class MainWindow : public xToolsPrivate::MainWindow
 #else
 class MainWindow : public xTools::MainWindow
 #endif
