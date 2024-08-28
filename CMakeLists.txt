@@ -86,9 +86,10 @@ x_tools_add_third_party("glog-0.7.1")
 x_tools_add_third_party("libqrencode-master")
 x_tools_add_third_party("qmdnsengine-master")
 
-option(X_TOOLS_ENABLE_MODULE_HID "Enable Stylesheet module" OFF)
+option(X_TOOLS_ENABLE_MODULE_HID "Enable HID module" OFF)
 if(X_TOOLS_ENABLE_MODULE_HID)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_HID)
+  set(HIDAPI_WITH_LIBUSB FALSE)
   x_tools_add_third_party("hidapi-hidapi-0.14.0")
 endif()
 
