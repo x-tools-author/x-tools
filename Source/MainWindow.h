@@ -9,13 +9,13 @@
 #pragma once
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#include "xToolsPrivateMainWindow.h"
+#include "Common/MainWindow.h"
 #else
 #include "App/MainWindow.h"
 #endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-class MainWindow : public xToolsPrivateMainWindow
+class MainWindow : public xTools::Private::MaMainWindow
 #else
 
 class IOPage;
