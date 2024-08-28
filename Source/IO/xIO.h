@@ -30,7 +30,11 @@ public:
         TcpClient,
         TcpServer,
         WebSocketClient,
-        WebSocketServer
+        WebSocketServer,
+        //------------------------------------------------------------------------------------------
+        Hid,
+        SctpClient,
+        SctpServer,
     };
     static QList<int> supportedCommunicationTypes();
     static QString CommunicationName(CommunicationType type);
