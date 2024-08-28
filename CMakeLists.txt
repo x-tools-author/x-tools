@@ -211,7 +211,7 @@ macro(x_tools_add_assistant dir_name on_off)
   string(TOUPPER ${dir_name} DIR_NAME_UPPER)
   option(X_TOOLS_ENABLE_MODULE_${DIR_NAME_UPPER} "Enable ${dir_name} assistant" ${on_off})
 
-  file(GLOB TOOL_SOURCE "${X_TOOLS_TOOLS_DIR}/${dir_name}/Source/*.*")
+  file(GLOB TOOL_SOURCE "${X_TOOLS_TOOLS_DIR}/${dir_name}/*.*")
   if(X_TOOLS_ENABLE_MODULE_${DIR_NAME_UPPER})
     include_directories(${X_TOOLS_TOOLS_DIR}/${dir_name}/Source)
     add_compile_definitions(X_TOOLS_ENABLE_MODULE_${DIR_NAME_UPPER})
