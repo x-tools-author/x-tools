@@ -180,11 +180,6 @@ void Application::setClipboardText(const QString &text)
     QGuiApplication::clipboard()->setText(text);
 }
 
-QString Application::dateTimeString(const QString &format)
-{
-    return QDateTime::currentDateTime().toString(format);
-}
-
 QString Application::stringToHexString(const QString &str)
 {
     return QString::fromLatin1(str.toUtf8().toHex());
@@ -194,6 +189,11 @@ QString Application::hexStringToString(const QString &str)
 {
     QByteArray arr = QByteArray::fromHex(str.toUtf8());
     return QString::fromUtf8(arr);
+}
+
+QString Application::dateTimeString(const QString &format)
+{
+    return QDateTime::currentDateTime().toString(format);
 }
 
 QDateTime Application::buildDateTime()
