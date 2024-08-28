@@ -258,41 +258,48 @@ if(X_TOOLS_ENABLE_MODULE_TOOLS)
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# xTools Core
+list(APPEND X_TOOLS_SOURCE xTools.qrc)
+list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_SOURCE_DIR}/Source/main.cpp)
+add_library(xToolsCore STATIC ${X_TOOLS_SOURCE})
+x_tools_generate_translations(xToolsCore)
+x_tools_add_stylesheet_sources(xToolsCore)
+
+set(QtX Qt${QT_VERSION_MAJOR})
+target_link_libraries(xToolsCore PUBLIC ${QtX}::Core ${QtX}::Gui ${QtX}::Svg ${QtX}::Widgets)
+target_link_libraries(xToolsCore PUBLIC ${QtX}::Network ${QtX}::WebSockets)
+target_link_libraries(xToolsCore PUBLIC glog::glog)
+
+if(X_TOOLS_ENABLE_MODULE_QRCODE)
+  target_link_libraries(xToolsCore PUBLIC qrencode)
+endif()
+
+if(X_TOOLS_ENABLE_MODULE_MDNS)
+  target_link_libraries(xToolsCore PUBLIC qmdnsengine)
+endif()
+
+if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
+  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::SerialPort)
+endif()
+
+if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
+  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::SerialBus)
+endif()
+
+if(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
+  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Bluetooth)
+endif()
+
+# --------------------------------------------------------------------------------------------------
 # xTools application
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
-  list(APPEND X_TOOLS_SOURCE xTools.qrc xTools.rc)
-
-  x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
-  x_tools_setup_stylesheet(xTools)
-  x_tools_generate_translations(xTools)
+  x_tools_add_executable(xTools ${CMAKE_SOURCE_DIR}/Source/main.cpp xTools.rc)
+  x_tools_add_stylesheet_resources(xTools)
   x_tools_deploy_qt(xTools)
   x_tools_tar_target(xTools)
 
-  set(QtX Qt${QT_VERSION_MAJOR})
-  target_link_libraries(xTools PRIVATE ${QtX}::Core ${QtX}::Gui ${QtX}::Svg ${QtX}::Widgets)
-  target_link_libraries(xTools PRIVATE ${QtX}::Network ${QtX}::WebSockets)
-  target_link_libraries(xTools PUBLIC glog::glog)
-
-  if(X_TOOLS_ENABLE_MODULE_QRCODE)
-    target_link_libraries(xTools PUBLIC qrencode)
-  endif()
-
-  if(X_TOOLS_ENABLE_MODULE_MDNS)
-    target_link_libraries(xTools PUBLIC qmdnsengine)
-  endif()
-
-  if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
-    target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::SerialPort)
-  endif()
-
-  if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-    target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::SerialBus)
-  endif()
-
-  if(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
-    target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Bluetooth)
-  endif()
+  target_link_libraries(xTools PRIVATE xToolsCore)
 
   option(X_TOOLS_ENABLE_TARGET_XTOOLS_INSTALLER "Enable xTools applications" OFF)
   if(X_TOOLS_ENABLE_TARGET_XTOOLS_INSTALLER)

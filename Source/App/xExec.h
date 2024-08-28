@@ -26,6 +26,11 @@
 #include "StyleSheetManager.h"
 #endif
 
+static void xInitResources()
+{
+    Q_INIT_RESOURCE(xTools);
+}
+
 namespace xTools {
 
 void initGoogleLogging(char *argv0);
@@ -119,6 +124,7 @@ int execCentralWidget(int argc,
                       const QString &version = QString("0.0.0"),
                       const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
 {
+    xInitResources();
     return xTools::exec<CentralWidget, xTools::MainWindow, xTools::Application>(
         argc, argv, appName, version, doSomethingBeforAppExec);
 }
