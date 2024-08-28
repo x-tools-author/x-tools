@@ -9,13 +9,13 @@
 #pragma once
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#include "Application.h"
+#include "xApp/Application.h"
 #else
 #include "App/Application.h"
 #endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-class Application : public Application
+class Application : public xTools::Private::Application
 #else
 class Application : public xTools::Application
 #endif
