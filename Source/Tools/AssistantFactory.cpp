@@ -18,17 +18,10 @@
 #include "FileCheckAssistant.h"
 #include "FileMergeAssistant.h"
 #include "NumberAssistant.h"
-#ifdef X_TOOLS_ENABLE_MODULE_PING
 #include "PingAssistant.h"
-#endif
 #include "StringAssistant.h"
-
-#ifdef X_TOOLS_ENABLE_MODULE_MDNS
 #include "MdnsAssistant.h"
-#endif
-#ifdef X_TOOLS_ENABLE_MODULE_QRCODE
 #include "QRCodeAssistant.h"
-#endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
 #include "CanBusAssistant.h"
@@ -39,12 +32,8 @@ AssistantFactory::AssistantFactory(QObject* parent)
     : QObject(parent)
 {
     addAssistant<CrcAssistant>(AssistantTypeCrc, tr("CRC Assistant"));
-#ifdef X_TOOLS_ENABLE_MODULE_MDNS
     addAssistant<MdnsAssistant>(AssistantTypeMdns, tr("mDNS Assistant"));
-#endif
-#ifdef X_TOOLS_ENABLE_MODULE_PING
     addAssistant<PingAssistant>(AssistantTypePing, tr("Ping Assistant"));
-#endif
     addAssistant<AsciiAssistant>(AssistantTypeAscii, tr("ASCII Assistant"));
     addAssistant<Base64Assistant>(AssistantTypeBase64, tr("Base64 Assistant"));
     addAssistant<NumberAssistant>(AssistantTypeNumber, tr("Number Assistant"));
@@ -52,9 +41,7 @@ AssistantFactory::AssistantFactory(QObject* parent)
     addAssistant<BroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));
     addAssistant<FileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
     addAssistant<FileMergeAssistant>(AssistantTypeFileMerge, tr("File Merge Assistant"));
-#ifdef X_TOOLS_ENABLE_MODULE_QRCODE
     addAssistant<QRCodeAssistant>(AssistantTypeQRCode, tr("QR Code Assistant"));
-#endif
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
     addAssistant<CanBusAssistant>(AssistantTypeCANBus, tr("CAN Bus Assistant"));
     addAssistant<ModbusAssistant>(AssistantTypeModbus, tr("Modbus Assistant"));

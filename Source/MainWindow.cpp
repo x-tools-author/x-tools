@@ -27,11 +27,8 @@
 #include <QVariant>
 
 #include "App/Settings.h"
-#include "IOPage/IOPage.h"
-
-#ifdef X_TOOLS_ENABLE_MODULE_TOOLS
 #include "AssistantFactory.h"
-#endif
+#include "IOPage/IOPage.h"
 
 #ifdef Q_OS_WIN
 #include "SystemTrayIcon.h"
@@ -135,7 +132,6 @@ void MainWindow::initFileMenu()
 
 void MainWindow::initToolMenu()
 {
-#ifdef X_TOOLS_ENABLE_MODULE_TOOLS
     m_toolMenu = new QMenu(tr("&Tools"));
     menuBar()->insertMenu(m_languageMenu->menuAction(), m_toolMenu);
 
@@ -156,7 +152,6 @@ void MainWindow::initToolMenu()
             }
         });
     }
-#endif
 }
 
 void MainWindow::initOptionMenu()
