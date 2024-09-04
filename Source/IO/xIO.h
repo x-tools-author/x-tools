@@ -36,6 +36,7 @@ public:
         SctpClient,
         SctpServer,
     };
+    Q_ENUM(CommunicationType);
     static QList<int> supportedCommunicationTypes();
     static QString CommunicationName(CommunicationType type);
     static void setupCommunicationTypes(QComboBox *comboBox);

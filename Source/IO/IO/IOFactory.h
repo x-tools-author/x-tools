@@ -8,11 +8,14 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QObject>
+
 namespace xTools {
 
 class Communication;
-class IOFactory
+class IOFactory : public QObject
 {
+    Q_OBJECT
 private:
     IOFactory();
     IOFactory(const IOFactory &) = delete;
@@ -20,7 +23,7 @@ private:
 
 public:
     static IOFactory &singleton();
-    Communication *createDevice(int type);
+    Q_INVOKABLE Communication *createDevice(int type);
 };
 
 } // namespace xTools
