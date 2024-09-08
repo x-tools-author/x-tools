@@ -42,6 +42,8 @@ QObject *WebSocketServer::initDevice()
         return nullptr;
     }
 
+    qInfo("Web socket server info:%s:%d", m_serverAddress.toLatin1().data(), m_serverPort);
+
     return m_webSocketServer;
 }
 
@@ -129,6 +131,7 @@ void WebSocketServer::onBinaryMessageReceived(QWebSocket *socket, const QByteArr
 {
     QString currentFlag = currentClientFlag();
     if (currentFlag.isEmpty()) {
+        qInfo() << "Receive data from client:";
         QString flag = makeFlag(m_serverAddress, m_serverPort);
         emit bytesRead(message, flag + "[T]");
     } else {
