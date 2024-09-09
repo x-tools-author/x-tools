@@ -36,7 +36,7 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
     for (int i = 0; i < count; ++i) {
         auto transfer = createTransfer();
         connect(transfer, &Communication::outputBytes, this, [=](const QByteArray &bytes) {
-            for (auto &transferItem : m_transfers) {
+            for (auto &transferItem : this->m_transfers) {
                 if (transferItem.option == static_cast<int>(xIO::TransferType::Bidirectional)) {
                     emit outputBytes(bytes);
                 }

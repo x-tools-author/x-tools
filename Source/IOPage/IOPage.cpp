@@ -587,17 +587,22 @@ void IOPage::writeBytes()
     }
 
     auto parameters = m_inputSettings->parameters();
-    QByteArray prefix = xTools::xIO::cookedAffixes(
-        static_cast<xTools::xIO::Affixes>(parameters.prefix));
+    auto prefixType = static_cast<xTools::xIO::Affixes>(parameters.prefix);
+    auto suffixType = static_cast<xTools::xIO::Affixes>(parameters.suffix);
+    QByteArray prefix = xTools::xIO::cookedAffixes(prefixType);
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xTools::xIO::cookedAffixes(
-        static_cast<xTools::xIO::Affixes>(parameters.suffix));
+    QByteArray suffix = xTools::xIO::cookedAffixes(suffixType);
 
+    QByteArray bytes;
     if (parameters.appendCrc) {
-        m_io->inputBytes(prefix + payload + crc + suffix);
+        bytes = prefix + payload + crc + suffix;
     } else {
-        m_io->inputBytes(prefix + payload + suffix);
+        bytes = prefix + payload + suffix;
+    }
+
+    if (!bytes.isEmpty()) {
+        m_io->inputBytes(bytes);
     }
 }
 

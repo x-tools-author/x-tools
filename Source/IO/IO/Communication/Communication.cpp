@@ -43,6 +43,7 @@ void Communication::closeDevice()
 void Communication::inputBytes(const QByteArray &bytes)
 {
     if (bytes.isEmpty()) {
+        qInfo() << "The input bytes is empty.";
         return;
     }
 

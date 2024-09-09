@@ -29,6 +29,8 @@ QObject *WebSocketServer::initDevice()
     });
     connect(m_webSocketServer, &QWebSocketServer::newConnection, m_webSocketServer, [this]() {
         QWebSocket *socket = this->m_webSocketServer->nextPendingConnection();
+        qInfo() << "New connection:" << socket->peerAddress().toString() << socket->peerPort();
+
         m_sockets.append(socket);
         this->setupSocket(socket);
     });
@@ -86,16 +88,19 @@ void WebSocketServer::setupSocket(QWebSocket *socket)
         onBinaryMessageReceived(socket, message);
     });
     //TODO:qt6
-#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
     connect(socket, &QWebSocket::errorOccurred, socket, [this, flag, socket]() {
         this->m_sockets.removeAll(socket);
         this->removeClient(flag);
     });
 #else
-    connect(socket, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error), socket, [this, flag, socket]() {
-        this->m_sockets.removeAll(socket);
-        this->removeClient(flag);
-    });
+    connect(socket,
+            QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error),
+            socket,
+            [this, flag, socket]() {
+                this->m_sockets.removeAll(socket);
+                this->removeClient(flag);
+            });
 #endif
     connect(socket, &QWebSocket::disconnected, socket, [this, flag, socket]() {
         this->m_sockets.removeAll(socket);
@@ -105,24 +110,31 @@ void WebSocketServer::setupSocket(QWebSocket *socket)
 
 void WebSocketServer::writeBytes(QWebSocket *socket, const QByteArray &bytes)
 {
+    const QString flag = makeFlag(socket->peerAddress().toString(), socket->peerPort()) + "[B]";
     if (m_channel == static_cast<int>(xIO::WebSocketDataChannel::Binary)) {
-        socket->sendBinaryMessage(bytes);
-        emit bytesRead(bytes,
-                       makeFlag(socket->peerAddress().toString(), socket->peerPort()) + "[B]");
+        if (socket->sendBinaryMessage(bytes) == bytes.size()) {
+            emit bytesWritten(bytes, flag);
+        } else {
+            qInfo() << "WebSocketServer: sendBinaryMessage failed:" << socket->errorString();
+        }
     } else if (m_channel == static_cast<int>(xIO::WebSocketDataChannel::Text)) {
-        socket->sendTextMessage(QString::fromUtf8(bytes));
+        if (socket->sendTextMessage(QString::fromUtf8(bytes)) == bytes.size()) {
+            emit bytesWritten(bytes, flag);
+        } else {
+            qInfo() << "WebSocketServer: sendTextMessage failed:" << socket->errorString();
+        }
     }
 }
 
 void WebSocketServer::onTextMessageReceived(QWebSocket *socket, const QString &message)
 {
-    QString currentFlag = currentClientFlag();
+    const QString socketFlag = makeFlag(socket->peerAddress().toString(), socket->peerPort());
+    const QString currentFlag = currentClientFlag();
     if (currentFlag.isEmpty()) {
-        QString flag = makeFlag(m_serverAddress, m_serverPort);
-        emit bytesRead(message.toUtf8(), flag + "[T]");
+        emit bytesRead(message.toUtf8(), socketFlag + "[T]");
     } else {
-        if (currentFlag == makeFlag(socket->peerAddress().toString(), socket->peerPort())) {
-            emit bytesRead(message.toUtf8(), currentFlag + "[T]");
+        if (currentFlag == socketFlag) {
+            emit bytesRead(message.toUtf8(), socketFlag + "[T]");
         }
     }
 }
@@ -131,7 +143,6 @@ void WebSocketServer::onBinaryMessageReceived(QWebSocket *socket, const QByteArr
 {
     QString currentFlag = currentClientFlag();
     if (currentFlag.isEmpty()) {
-        qInfo() << "Receive data from client:";
         QString flag = makeFlag(m_serverAddress, m_serverPort);
         emit bytesRead(message, flag + "[T]");
     } else {
