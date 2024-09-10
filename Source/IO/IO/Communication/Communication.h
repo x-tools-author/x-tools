@@ -23,13 +23,13 @@ public:
     explicit Communication(QObject *parent = nullptr);
     ~Communication();
 
-    void openDevice();
-    void closeDevice();
+    Q_INVOKABLE void openDevice();
+    Q_INVOKABLE void closeDevice();
 
     void inputBytes(const QByteArray &bytes) override;
 
     virtual QVariantMap parameters() const;
-    virtual void setParameters(const QVariantMap &parameters);
+    virtual Q_INVOKABLE void setParameters(const QVariantMap &parameters);
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};
     virtual void writeBytes(const QByteArray &bytes) {};
