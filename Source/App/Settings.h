@@ -60,6 +60,8 @@ signals:
 public:
     Q_INVOKABLE QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const;
     Q_INVOKABLE void setValue(const QString &key, const QVariant &value);
+
+    Q_INVOKABLE void setJsonObjectStringValue(const QString &key, const QString &value);
 };
 
 } // namespace xTools

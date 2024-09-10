@@ -11,6 +11,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QDesktopServices>
+#include <QJsonDocument>
 #include <QStandardPaths>
 #include <QStyle>
 #include <QUrl>
@@ -159,6 +160,16 @@ QVariant Settings::value(const QString& key, const QVariant& defaultValue) const
 void Settings::setValue(const QString& key, const QVariant& value)
 {
     QSettings::setValue(key, value);
+}
+
+void Settings::setJsonObjectStringValue(const QString& key, const QString& value)
+{
+    QJsonDocument doc = QJsonDocument::fromJson(value.toUtf8());
+    if (doc.isNull()) {
+        return;
+    }
+
+    setValue(key, doc.toVariant());
 }
 
 } // namespace xTools
