@@ -43,29 +43,34 @@ public:
 
     /**********************************************************************************************/
     enum class TextFormat { Bin, Oct, Dec, Hex, Ascii, Utf8 };
+    Q_ENUM(TextFormat);
     static QList<int> supportedTextFormats();
     static QString textFormatName(TextFormat format);
     static void setupTextFormat(QComboBox *comboBox);
-    static QString bytes2string(const QByteArray &bytes, TextFormat format);
-    static QByteArray string2bytes(const QString &text, TextFormat format);
+    static Q_INVOKABLE QString bytes2string(const QByteArray &bytes, int format);
+    static Q_INVOKABLE QByteArray string2bytes(const QString &text, int format);
+    static Q_INVOKABLE QByteArray arrayAppendArray(const QByteArray &a1, const QByteArray &a2);
     static void setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format, int maxLen = 32767);
 
     /**********************************************************************************************/
     enum class Affixes { None, R, N, RN, NR };
+    Q_ENUM(Affixes);
     static QList<int> supportedAffixes();
-    static QString additionName(Affixes affixes);
+    static QString additionName(int affixes);
     static void setupAddition(QComboBox *comboBox);
-    static QByteArray cookedAffixes(Affixes affixes);
+    static Q_INVOKABLE QByteArray cookedAffixes(int affixes);
 
     /**********************************************************************************************/
     enum class EscapeCharacter { None, R, N, RN, NR, R_N };
+    Q_ENUM(EscapeCharacter);
     static QList<int> supportedEscapeCharacters();
-    static QString escapeCharacterName(EscapeCharacter character);
+    static QString escapeCharacterName(int character);
     static void setupEscapeCharacter(QComboBox *comboBox);
-    static QString cookedEscapeCharacter(const QString &text, EscapeCharacter escapeCharacter);
+    static Q_INVOKABLE QString cookedEscapeCharacter(const QString &text, int escapeCharacter);
 
     /**********************************************************************************************/
     enum class WebSocketDataChannel { Text, Binary };
+    Q_ENUM(WebSocketDataChannel);
     static QString webSocketDataChannelName(WebSocketDataChannel channel);
     static void setupWebSocketDataChannel(QComboBox *comboBox);
 
@@ -77,6 +82,7 @@ public:
         InputContainReference,
         InputDoesNotContainReference
     };
+    Q_ENUM(ResponseOption);
     static QList<int> supportedResponseOptions();
     static QString responseOptionName(ResponseOption option);
 
@@ -184,6 +190,7 @@ public:
 
     /**********************************************************************************************/
     enum class TransferType { Disabled, Bidirectional, Unidirectional };
+    Q_ENUM(TransferType);
     static QList<int> supportedTransferTypes();
     static QString transferTypeName(int type);
     static void setupTransferType(QComboBox *comboBox);

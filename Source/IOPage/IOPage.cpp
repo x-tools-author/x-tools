@@ -587,12 +587,10 @@ void IOPage::writeBytes()
     }
 
     auto parameters = m_inputSettings->parameters();
-    auto prefixType = static_cast<xTools::xIO::Affixes>(parameters.prefix);
-    auto suffixType = static_cast<xTools::xIO::Affixes>(parameters.suffix);
-    QByteArray prefix = xTools::xIO::cookedAffixes(prefixType);
+    QByteArray prefix = xTools::xIO::cookedAffixes(parameters.prefix);
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xTools::xIO::cookedAffixes(suffixType);
+    QByteArray suffix = xTools::xIO::cookedAffixes(parameters.suffix);
 
     QByteArray bytes;
     if (parameters.appendCrc) {
@@ -610,12 +608,10 @@ void IOPage::updateLabelInfo()
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
 
-    QByteArray prefix = xTools::xIO::cookedAffixes(
-        static_cast<xTools::xIO::Affixes>(parameters.prefix));
+    QByteArray prefix = xTools::xIO::cookedAffixes(parameters.prefix);
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xTools::xIO::cookedAffixes(
-        static_cast<xTools::xIO::Affixes>(parameters.suffix));
+    QByteArray suffix = xTools::xIO::cookedAffixes(parameters.suffix);
 
     QString prefixString = QString::fromLatin1(prefix.toHex()).toUpper();
     QString payloadString = QString::fromLatin1(payload.toHex()).toUpper();
@@ -716,7 +712,7 @@ void IOPage::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     }
 
     QString dateTimeString = ::dateTimeString(showDate, showTime, showMs);
-    QString text = xTools::xIO::bytes2string(bytes, static_cast<xTools::xIO::TextFormat>(format));
+    QString text = xTools::xIO::bytes2string(bytes, format);
     QString rxTx = isRx ? QStringLiteral("Rx") : QStringLiteral("Tx");
     rxTx = QString("<font color=%1>%2</font>").arg(isRx ? "blue" : "green", rxTx);
 
@@ -763,10 +759,8 @@ QByteArray IOPage::payload() const
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     QString text = ui->lineEditInput->text();
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    auto escapeCharacter = static_cast<xTools::xIO::EscapeCharacter>(parameters.escapeCharacter);
-    text = xTools::xIO::cookedEscapeCharacter(text, escapeCharacter);
-    auto cookedFormat = static_cast<xTools::xIO::TextFormat>(format);
-    QByteArray payload = xTools::xIO::string2bytes(text, cookedFormat);
+    text = xTools::xIO::cookedEscapeCharacter(text, parameters.escapeCharacter);
+    QByteArray payload = xTools::xIO::string2bytes(text, format);
     return payload;
 }
 

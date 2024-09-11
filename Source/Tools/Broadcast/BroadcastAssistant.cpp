@@ -28,8 +28,7 @@ BroadcastAssistant::BroadcastAssistant(QWidget* parent)
     connect(m_broadcastThread, &BroadcastThread::bytesWritten, this, [=](const QByteArray& bytes) {
         QByteArray temp = bytes;
         int format = ui->comboBoxOutputFormat->currentData().toInt();
-        auto bytesString = xTools::xIO::bytes2string(temp,
-                                                     static_cast<xTools::xIO::TextFormat>(format));
+        auto bytesString = xTools::xIO::bytes2string(temp, format);
         auto info = QDateTime::currentDateTime().toString("hh:mm:ss");
         info += " Tx: ";
         info = QString("<font color=silver>%1</font>").arg(info);
@@ -132,14 +131,14 @@ QByteArray BroadcastAssistant::packetData()
     QByteArray bytes;
 
     int prefixType = ui->comboBoxBroadcastPrefix->currentData().toInt();
-    QByteArray prefix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(prefixType));
+    QByteArray prefix = xTools::xIO::cookedAffixes(prefixType);
 
     int format = ui->comboBoxBroadcastFormat->currentData().toInt();
     QString text = ui->lineEditBroadcastData->text();
-    QByteArray data = xTools::xIO::string2bytes(text, static_cast<xTools::xIO::TextFormat>(format));
+    QByteArray data = xTools::xIO::string2bytes(text, format);
 
     int suffixType = ui->comboBoxBroadcastSuffix->currentData().toInt();
-    QByteArray suffix = xTools::xIO::cookedAffixes(static_cast<xTools::xIO::Affixes>(suffixType));
+    QByteArray suffix = xTools::xIO::cookedAffixes(suffixType);
 
     bytes.append(prefix);
     bytes.append(data);

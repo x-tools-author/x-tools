@@ -62,10 +62,9 @@ void StringAssistant::onInputFormatComboBoxCurrentIndexChanged(int index)
 void StringAssistant::onCreatePushButtonClicked()
 {
     QString inputString = ui->textEdit->toPlainText();
-    auto inputFormat = static_cast<xTools::xIO::TextFormat>(ui->inputFormatComboBox->currentData().toInt());
+    auto inputFormat = ui->inputFormatComboBox->currentData().toInt();
     QByteArray inputArray = xTools::xIO::string2bytes(inputString, inputFormat);
-    auto outputFormat = static_cast<xTools::xIO::TextFormat>(
-        ui->outputFormatComboBox->currentData().toInt());
+    auto outputFormat = ui->outputFormatComboBox->currentData().toInt();
     auto outputString = xTools::xIO::bytes2string(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);
 }

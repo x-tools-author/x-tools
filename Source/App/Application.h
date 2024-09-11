@@ -27,7 +27,7 @@ public:
 
     static bool enableSplashScreen();
     static void setEnableSplashScreen(bool enable);
-    void showSplashScreenMessage(const QString &msg);
+    Q_INVOKABLE void showSplashScreenMessage(const QString &msg);
     QSplashScreen &splashScreen();
 
     static QString friendlyAppName();

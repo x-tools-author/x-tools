@@ -11,12 +11,14 @@
 #include <QByteArray>
 #include <QComboBox>
 #include <QList>
+#include <QObject>
 #include <QString>
 
 namespace xTools {
 
-class CRC
+class CRC : public QObject
 {
+    Q_OBJECT
 public:
     enum class Algorithm {
         CRC_8,
@@ -35,6 +37,7 @@ public:
         CRC_32,
         CRC_32_MPEG2
     };
+    Q_ENUM(Algorithm);
 
     static QList<int> supportedAlgorithms();
     static QString algorithmName(Algorithm algorithm);
@@ -47,8 +50,8 @@ public:
     static int bitsWidth(Algorithm algorithm);
     static QString friendlyPoly(Algorithm algorithm);
 
-    static QByteArray calculate(const QByteArray &data, Algorithm algorithm);
-    static QByteArray calculate(const QByteArray &data, Algorithm algorithm, bool bigEndian);
+    static Q_INVOKABLE QByteArray calculate(const QByteArray &data, int algorithm);
+    static Q_INVOKABLE QByteArray calculate(const QByteArray &data, int algorithm, bool bigEndian);
 
     struct Context
     {

@@ -361,26 +361,27 @@ T crcCalculate(const uint8_t *input, uint64_t length, CRC::Algorithm algorithm)
     return crc;
 }
 
-QByteArray CRC::calculate(const QByteArray &data, Algorithm algorithm)
+QByteArray CRC::calculate(const QByteArray &data, int algorithm)
 {
     QByteArray retBytes;
-    auto const bw = bitsWidth(algorithm);
+    auto cookedAlgorithm = static_cast<CRC::Algorithm>(algorithm);
+    auto const bw = bitsWidth(cookedAlgorithm);
     auto *ptr = reinterpret_cast<const uint8_t *>(data.constData());
     if (bw == 8) {
-        auto ret = crcCalculate<uint8_t>(ptr, data.length(), algorithm);
+        auto ret = crcCalculate<uint8_t>(ptr, data.length(), cookedAlgorithm);
         retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
     } else if (bw == 16) {
-        auto ret = crcCalculate<uint16_t>(ptr, data.length(), algorithm);
+        auto ret = crcCalculate<uint16_t>(ptr, data.length(), cookedAlgorithm);
         retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
     } else if (bw == 32) {
-        auto ret = crcCalculate<uint32_t>(ptr, data.length(), algorithm);
+        auto ret = crcCalculate<uint32_t>(ptr, data.length(), cookedAlgorithm);
         retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
     }
 
     return retBytes;
 }
 
-QByteArray CRC::calculate(const QByteArray &data, Algorithm algorithm, bool bigEndian)
+QByteArray CRC::calculate(const QByteArray &data, int algorithm, bool bigEndian)
 {
     QByteArray retBytes = calculate(data, algorithm);
     if (bigEndian) {
@@ -394,7 +395,7 @@ QByteArray CRC::calculate(const Context &ctx)
 {
     const int length = static_cast<int>(ctx.data.length()) - ctx.startIndex - ctx.endIndex;
     const QByteArray tmpData = ctx.data.mid(ctx.startIndex, length);
-    return calculate(tmpData, ctx.algorithm, ctx.bigEndian);
+    return calculate(tmpData, static_cast<int>(ctx.algorithm), ctx.bigEndian);
 }
 
 } // namespace xTools

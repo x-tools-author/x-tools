@@ -65,8 +65,10 @@ void NumberAssistant::updateCookedData()
 
     QByteArray tmpBa = ba;
     std::reverse(tmpBa.begin(), tmpBa.end());
-    QString binStr = xTools::xIO::bytes2string(tmpBa, xTools::xIO::TextFormat::Bin);
-    QString hexStr = xTools::xIO::bytes2string(tmpBa, xTools::xIO::TextFormat::Hex);
+    int binFormat = static_cast<int>(xTools::xIO::TextFormat::Bin);
+    QString binStr = xTools::xIO::bytes2string(tmpBa, binFormat);
+    int hexFormat = static_cast<int>(xTools::xIO::TextFormat::Hex);
+    QString hexStr = xTools::xIO::bytes2string(tmpBa, hexFormat);
     ui->lineEditCookedBin->setText(binStr);
     ui->lineEditCookedHex->setText(hexStr);
 

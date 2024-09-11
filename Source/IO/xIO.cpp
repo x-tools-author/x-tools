@@ -143,7 +143,7 @@ void xIO::setupTextFormat(QComboBox *comboBox)
     comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(TextFormat::Hex)));
 }
 
-QString xIO::bytes2string(const QByteArray &bytes, TextFormat format)
+QString xIO::bytes2string(const QByteArray &bytes, int format)
 {
     auto cookedArray = [](const QByteArray &array, int base, int len) -> QString {
         QString str, numStr;
@@ -159,24 +159,24 @@ QString xIO::bytes2string(const QByteArray &bytes, TextFormat format)
         return str.toUpper();
     };
 
-    if (TextFormat::Bin == format) {
+    if (static_cast<int>(TextFormat::Bin) == format) {
         return cookedArray(bytes, 2, 8);
-    } else if (TextFormat::Oct == format) {
+    } else if (static_cast<int>(TextFormat::Oct) == format) {
         return cookedArray(bytes, 8, 3);
-    } else if (TextFormat::Dec == format) {
+    } else if (static_cast<int>(TextFormat::Dec) == format) {
         return cookedArray(bytes, 10, 3);
-    } else if (TextFormat::Hex == format) {
+    } else if (static_cast<int>(TextFormat::Hex) == format) {
         return cookedArray(bytes, 16, 2);
-    } else if (TextFormat::Ascii == format) {
+    } else if (static_cast<int>(TextFormat::Ascii) == format) {
         return QString::fromLatin1(bytes);
-    } else if (TextFormat::Utf8 == format) {
+    } else if (static_cast<int>(TextFormat::Utf8) == format) {
         return QString::fromUtf8(bytes);
     } else {
         return QString("Unsupported text format: %1").arg(static_cast<int>(format));
     }
 }
 
-QByteArray xIO::string2bytes(const QString &text, TextFormat format)
+QByteArray xIO::string2bytes(const QString &text, int format)
 {
     auto cookString = [](const QString &str, const int base) -> QByteArray {
         QByteArray data;
@@ -190,15 +190,15 @@ QByteArray xIO::string2bytes(const QString &text, TextFormat format)
     };
 
     QByteArray data;
-    if (format == TextFormat::Bin) {
+    if (format == static_cast<int>(TextFormat::Bin)) {
         data = cookString(text, 2);
-    } else if (format == TextFormat::Oct) {
+    } else if (format == static_cast<int>(TextFormat::Oct)) {
         data = cookString(text, 8);
-    } else if (format == TextFormat::Dec) {
+    } else if (format == static_cast<int>(TextFormat::Dec)) {
         data = cookString(text, 10);
-    } else if (format == TextFormat::Hex) {
+    } else if (format == static_cast<int>(TextFormat::Hex)) {
         data = cookString(text, 16);
-    } else if (format == TextFormat::Ascii) {
+    } else if (format == static_cast<int>(TextFormat::Ascii)) {
         data = text.toLatin1();
     } else {
         data = text.toUtf8();
@@ -207,13 +207,18 @@ QByteArray xIO::string2bytes(const QString &text, TextFormat format)
     return data;
 }
 
+QByteArray xIO::arrayAppendArray(const QByteArray &a1, const QByteArray &a2)
+{
+    return a1 + a2;
+}
+
 void xIO::setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format, int maxLen)
 {
     static QMap<TextFormat, QRegularExpressionValidator *> regularExpressionMap;
     if (regularExpressionMap.isEmpty()) {
         // clang-format off
         const QString binStr = "([01][01][01][01][01][01][01][01][ ])*";
-        const QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*$";
+        const QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*";
         const QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( (25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
         const QString hexStr = "([0-9a-fA-F][0-9a-fA-F][ ])*";
         // clang-format on
@@ -253,16 +258,16 @@ QList<int> xIO::supportedAffixes()
     return additions;
 }
 
-QString xIO::additionName(Affixes affixes)
+QString xIO::additionName(int affixes)
 {
     switch (affixes) {
-    case Affixes::R:
+    case static_cast<int>(Affixes::R):
         return "\\R";
-    case Affixes::N:
+    case static_cast<int>(Affixes::N):
         return "\\N";
-    case Affixes::RN:
+    case static_cast<int>(Affixes::RN):
         return "\\R\\N";
-    case Affixes::NR:
+    case static_cast<int>(Affixes::NR):
         return "\\N\\R";
     default:
         return QObject::tr("None");
@@ -278,20 +283,20 @@ void xIO::setupAddition(QComboBox *comboBox)
     comboBox->clear();
     QList<int> additions = supportedAffixes();
     for (int addition : additions) {
-        comboBox->addItem(additionName(static_cast<Affixes>(addition)), addition);
+        comboBox->addItem(additionName(addition), addition);
     }
 }
 
-QByteArray xIO::cookedAffixes(Affixes affixes)
+QByteArray xIO::cookedAffixes(int affixes)
 {
     switch (affixes) {
-    case Affixes::R:
+    case static_cast<int>(Affixes::R):
         return QByteArray{"\r"};
-    case Affixes::N:
+    case static_cast<int>(Affixes::N):
         return QByteArray{"\n"};
-    case Affixes::RN:
+    case static_cast<int>(Affixes::RN):
         return QByteArray{"\r\n"};
-    case Affixes::NR:
+    case static_cast<int>(Affixes::NR):
         return QByteArray{"\n\r"};
     default:
         return QByteArray{};
@@ -310,18 +315,18 @@ QList<int> xIO::supportedEscapeCharacters()
     return escapeCharacters;
 }
 
-QString xIO::escapeCharacterName(EscapeCharacter escapeCharacter)
+QString xIO::escapeCharacterName(int escapeCharacter)
 {
     switch (escapeCharacter) {
-    case EscapeCharacter::R:
+    case static_cast<int>(EscapeCharacter::R):
         return "\\r";
-    case EscapeCharacter::N:
+    case static_cast<int>(EscapeCharacter::N):
         return "\\n";
-    case EscapeCharacter::RN:
+    case static_cast<int>(EscapeCharacter::RN):
         return "\\r\\n";
-    case EscapeCharacter::NR:
+    case static_cast<int>(EscapeCharacter::NR):
         return "\\n\\r";
-    case EscapeCharacter::R_N:
+    case static_cast<int>(EscapeCharacter::R_N):
         return "\\r + \\n";
     default:
         return QObject::tr("None");
@@ -337,22 +342,22 @@ void xIO::setupEscapeCharacter(QComboBox *comboBox)
     comboBox->clear();
     QList<int> escapeCharacters = supportedEscapeCharacters();
     for (int esc : escapeCharacters) {
-        comboBox->addItem(escapeCharacterName(static_cast<EscapeCharacter>(esc)), esc);
+        comboBox->addItem(escapeCharacterName(esc), esc);
     }
 }
 
-QString xIO::cookedEscapeCharacter(const QString &text, EscapeCharacter escapeCharacter)
+QString xIO::cookedEscapeCharacter(const QString &text, int escapeCharacter)
 {
     QString newStr = text;
-    if (escapeCharacter == EscapeCharacter::R) {
+    if (escapeCharacter == static_cast<int>(EscapeCharacter::R)) {
         newStr.replace("\\r", "\r");
-    } else if (escapeCharacter == EscapeCharacter::N) {
+    } else if (escapeCharacter == static_cast<int>(EscapeCharacter::N)) {
         newStr.replace("\\n", "\n");
-    } else if (escapeCharacter == EscapeCharacter::RN) {
+    } else if (escapeCharacter == static_cast<int>(EscapeCharacter::RN)) {
         newStr.replace("\\r\\n", "\r\n");
-    } else if (escapeCharacter == EscapeCharacter::NR) {
+    } else if (escapeCharacter == static_cast<int>(EscapeCharacter::NR)) {
         newStr.replace("\\n\\r", "\n\\r");
-    } else if (escapeCharacter == EscapeCharacter::R_N) {
+    } else if (escapeCharacter == static_cast<int>(EscapeCharacter::R_N)) {
         newStr.replace("\\r", "\r");
         newStr.replace("\\n", "\n");
     }
@@ -471,11 +476,11 @@ xIO::TextItem xIO::defaultTextItem()
 
 QString xIO::textItem2string(const TextItem &context)
 {
-    QString prefix = additionName(context.prefix);
-    QString payload = cookedEscapeCharacter(context.text, context.escapeCharacter);
+    QString prefix = additionName(static_cast<int>(context.prefix));
+    QString payload = cookedEscapeCharacter(context.text, static_cast<int>(context.escapeCharacter));
     QString crc;
     if (context.crc.enable) {
-        QByteArray data = string2bytes(context.text, context.textFormat);
+        QByteArray data = string2bytes(context.text, static_cast<int>(context.textFormat));
 
         CRC::Context ctx;
         ctx.algorithm = static_cast<CRC::Algorithm>(context.crc.algorithm);
@@ -489,15 +494,16 @@ QString xIO::textItem2string(const TextItem &context)
         crc = crc.toUpper();
     }
 
-    QString suffix = additionName(context.suffix);
+    QString suffix = additionName(static_cast<int>(context.suffix));
     return QString("[%1][%2][%3][%4]").arg(prefix, payload, crc, suffix);
 }
 
 QByteArray xIO::textItem2array(const TextItem &context)
 {
-    QByteArray prefix = xIO::cookedAffixes(static_cast<xIO::Affixes>(context.prefix));
-    QString text = xIO::cookedEscapeCharacter(context.text, context.escapeCharacter);
-    QByteArray payload = xIO::string2bytes(text, static_cast<xIO::TextFormat>(context.textFormat));
+    QByteArray prefix = xIO::cookedAffixes(static_cast<int>(context.prefix));
+    int esc = static_cast<int>(context.escapeCharacter);
+    QString text = xIO::cookedEscapeCharacter(context.text, esc);
+    QByteArray payload = xIO::string2bytes(text, static_cast<int>(context.textFormat));
 
     CRC::Context ctx;
     ctx.algorithm = static_cast<CRC::Algorithm>(context.crc.algorithm);
@@ -507,7 +513,7 @@ QByteArray xIO::textItem2array(const TextItem &context)
     ctx.data = payload;
 
     QByteArray crc = CRC::calculate(ctx);
-    QByteArray suffix = xIO::cookedAffixes(static_cast<xIO::Affixes>(context.suffix));
+    QByteArray suffix = xIO::cookedAffixes(static_cast<int>(context.suffix));
 
     if (context.crc.enable) {
         return (prefix + payload + crc + suffix);

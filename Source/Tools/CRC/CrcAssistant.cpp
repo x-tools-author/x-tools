@@ -114,9 +114,7 @@ void CrcAssistant::calculate()
     }
 
     int algorithm = m_parameterComboBox->currentData().toInt();
-    auto cookedAlgorithm = static_cast<xTools::CRC::Algorithm>(algorithm);
-
-    QByteArray result = xTools::CRC::calculate(inputArray, cookedAlgorithm);
+    QByteArray result = xTools::CRC::calculate(inputArray, algorithm);
     QString crcHexString = QString::fromLatin1(result.toHex());
     QString crcBinString = QString::fromLatin1(result.toHex());
     m_hexCRCOutput->setText(crcHexString);
