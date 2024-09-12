@@ -23,9 +23,9 @@ public:
 
     virtual void disconnectAllClients() {};
 
-    QStringList clients() const;
-    QString currentClientFlag() const;
-    void setCurrentClientFlag(const QString &flag);
+    Q_INVOKABLE QStringList clients() const;
+    Q_INVOKABLE QString currentClientFlag() const;
+    Q_INVOKABLE void setCurrentClientFlag(const QString &flag);
 
 signals:
     void clientsChanged(const SocketPrivateSignal &);

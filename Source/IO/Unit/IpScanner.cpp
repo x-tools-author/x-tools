@@ -17,15 +17,15 @@ IpScanner::IpScanner(QObject* parent)
     : QObject{parent}
 {
     refresh();
-    mRefreshTimer = new QTimer(this);
-    mRefreshTimer->setInterval(1 * 1000);
-    mRefreshTimer->setSingleShot(true);
-    connect(mRefreshTimer, &QTimer::timeout, this, [=]() {
+    m_refreshTimer = new QTimer(this);
+    m_refreshTimer->setInterval(1 * 1000);
+    m_refreshTimer->setSingleShot(true);
+    connect(m_refreshTimer, &QTimer::timeout, this, [=]() {
         refresh();
-        mRefreshTimer->start();
+        m_refreshTimer->start();
     });
 
-    mRefreshTimer->start();
+    m_refreshTimer->start();
 }
 
 void IpScanner::refresh()
@@ -42,21 +42,59 @@ void IpScanner::refresh()
         }
     }
 
-    if (mEnableAutoRefresh) {
+    if (m_enableAutoRefresh) {
         QStringList temp;
-        if (mEnableIpV4) {
+        if (m_enableIpV4) {
             temp.append(ipv4List);
         }
 
-        if (mEnableIpV6) {
+        if (m_enableIpV6) {
             temp.append(ipv6List);
         }
 
-        if (temp != mIpList) {
-            mIpList = temp;
+        if (temp != m_ipList) {
+            m_ipList = temp;
             emit ipListChanged();
         }
     }
+}
+
+QStringList IpScanner::ipList()
+{
+    return m_ipList;
+}
+
+bool IpScanner::enableIpV4()
+{
+    return m_enableIpV4;
+}
+
+void IpScanner::setEnableIpV4(bool enable)
+{
+    m_enableIpV4 = enable;
+    emit enableIpV4Changed();
+}
+
+bool IpScanner::enableIpV6()
+{
+    return m_enableIpV4;
+}
+
+void IpScanner::setEnableIpV6(bool enable)
+{
+    m_enableIpV6 = enable;
+    emit enableIpV6Changed();
+}
+
+bool IpScanner::enableAutoRefresh()
+{
+    return m_enableAutoRefresh;
+}
+
+void IpScanner::setEnableAutoRefresh(bool enable)
+{
+    m_enableAutoRefresh = enable;
+    emit enableAutoRefreshChanged();
 }
 
 } // namespace xTools
