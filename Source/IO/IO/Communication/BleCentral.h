@@ -42,6 +42,8 @@ public:
 
     Q_INVOKABLE void readCharacteristic(const QVariant &service, const QVariant &characteristic);
     Q_INVOKABLE void switchNotify(const QVariant &service, const QVariant &characteristic);
+    Q_INVOKABLE void readNotify(const QVariant &service, const QVariant &characteristic);
+    Q_INVOKABLE bool isNotify(const QVariant &service, const QVariant &characteristic);
 
 signals:
     void rssiRead(qint16 rssi);
@@ -53,6 +55,8 @@ private:
 
 private:
     void setupService(QLowEnergyService *service);
+    QByteArray notifyValue();
+    QByteArray unnotifyValue();
 
     void onDiscoveryFinished();
 };

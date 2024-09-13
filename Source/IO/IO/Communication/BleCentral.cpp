@@ -248,13 +248,59 @@ void BleCentral::switchNotify(const QVariant &service, const QVariant &character
         return;
     }
 
-    static const auto notifyValue = QByteArray::fromHex("0100");
-    static const auto disnotifyValue = QByteArray::fromHex("0000");
-    QByteArray value = descriptor.value() == notifyValue ? disnotifyValue : notifyValue;
+    QByteArray value = descriptor.value() == notifyValue() ? unnotifyValue() : notifyValue();
 #if 0
     qInfo() << "Invoke write descriptor:" << descriptor.name() << value.toHex();
 #endif
     cookedService->writeDescriptor(descriptor, value);
+}
+
+void BleCentral::readNotify(const QVariant &service, const QVariant &characteristic)
+{
+    auto cookedService = service.value<QLowEnergyService *>();
+    if (!cookedService) {
+        return;
+    }
+
+    auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
+    if (!cookedCharacteristic.isValid()) {
+        return;
+    }
+
+    auto type = QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration;
+    auto descriptor = cookedCharacteristic.descriptor(type);
+    if (!descriptor.isValid()) {
+        qWarning("Invalid descriptor");
+        return;
+    }
+
+    QByteArray value = descriptor.value() == notifyValue() ? unnotifyValue() : notifyValue();
+#if 0
+    qInfo() << "Invoke write descriptor:" << descriptor.name() << value.toHex();
+#endif
+    cookedService->readDescriptor(descriptor);
+}
+
+bool BleCentral::isNotify(const QVariant &service, const QVariant &characteristic)
+{
+    auto cookedService = service.value<QLowEnergyService *>();
+    if (!cookedService) {
+        return false;
+    }
+
+    auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
+    if (!cookedCharacteristic.isValid()) {
+        return false;
+    }
+
+    auto type = QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration;
+    auto descriptor = cookedCharacteristic.descriptor(type);
+    if (!descriptor.isValid()) {
+        qWarning("Invalid descriptor");
+        return false;
+    }
+
+    return descriptor.value() == notifyValue();
 }
 
 void BleCentral::setupService(QLowEnergyService *service)
@@ -288,6 +334,16 @@ void BleCentral::setupService(QLowEnergyService *service)
             emit serviceDiscovered(service);
         }
     });
+}
+
+QByteArray BleCentral::notifyValue()
+{
+    return QByteArray::fromHex("0100");
+}
+
+QByteArray BleCentral::unnotifyValue()
+{
+    return QByteArray::fromHex("0000");
 }
 
 void BleCentral::onDiscoveryFinished()
