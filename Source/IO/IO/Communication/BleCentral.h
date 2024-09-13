@@ -31,6 +31,18 @@ public:
     QList<QBluetoothUuid> services() const;
     QString serviceName(const QBluetoothUuid &uuid) const;
 
+    Q_INVOKABLE QString getServiceName(const QVariant &service) const;
+    Q_INVOKABLE QVariantList getCharacteristics(const QVariant &service) const;
+    Q_INVOKABLE QString getCharacteristicName(const QVariant &characteristic) const;
+
+    Q_INVOKABLE bool testWriteFlag(const QVariant &characteristic) const;
+    Q_INVOKABLE bool testWriteNoResponseFlag(const QVariant &characteristic) const;
+    Q_INVOKABLE bool testNotifyFlag(const QVariant &characteristic) const;
+    Q_INVOKABLE bool testReadFlag(const QVariant &characteristic) const;
+
+    Q_INVOKABLE void readCharacteristic(const QVariant &service, const QVariant &characteristic);
+    Q_INVOKABLE void switchNotify(const QVariant &service, const QVariant &characteristic);
+
 signals:
     void rssiRead(qint16 rssi);
     void serviceDiscovered(QLowEnergyService *service);

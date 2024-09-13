@@ -133,6 +133,130 @@ QString BleCentral::serviceName(const QBluetoothUuid &uuid) const
     return name;
 }
 
+QString BleCentral::getServiceName(const QVariant &service) const
+{
+    auto cookedService = service.value<QLowEnergyService *>();
+    if (!cookedService) {
+        return QString{};
+    }
+
+    return cookedService->serviceName();
+}
+
+QVariantList BleCentral::getCharacteristics(const QVariant &service) const
+{
+    QVariantList result;
+    auto cookedService = service.value<QLowEnergyService *>();
+    if (!cookedService) {
+        return result;
+    }
+
+    auto characteristics = cookedService->characteristics();
+    for (const auto &characteristic : characteristics) {
+        result.append(QVariant::fromValue(characteristic));
+    }
+    return result;
+}
+
+QString BleCentral::getCharacteristicName(const QVariant &characteristic) const
+{
+    auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
+    if (!cookedCharacteristic.isValid()) {
+        return QString{"Invalid"};
+    }
+
+    QString name = cookedCharacteristic.name();
+    name = name.isEmpty() ? "(unnamed)" : name;
+    return name;
+}
+
+bool BleCentral::testWriteFlag(const QVariant &characteristic) const
+{
+    auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
+    if (!cookedCharacteristic.isValid()) {
+        return false;
+    }
+
+    auto properties = cookedCharacteristic.properties();
+    return properties.testFlag(QLowEnergyCharacteristic::Write);
+}
+
+bool BleCentral::testWriteNoResponseFlag(const QVariant &characteristic) const
+{
+    auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
+    if (!cookedCharacteristic.isValid()) {
+        return false;
+    }
+
+    auto properties = cookedCharacteristic.properties();
+    return properties.testFlag(QLowEnergyCharacteristic::WriteNoResponse);
+}
+
+bool BleCentral::testNotifyFlag(const QVariant &characteristic) const
+{
+    auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
+    if (!cookedCharacteristic.isValid()) {
+        return false;
+    }
+
+    auto properties = cookedCharacteristic.properties();
+    return properties.testFlag(QLowEnergyCharacteristic::Notify);
+}
+
+bool BleCentral::testReadFlag(const QVariant &characteristic) const
+{
+    auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
+    if (!cookedCharacteristic.isValid()) {
+        return false;
+    }
+
+    auto properties = cookedCharacteristic.properties();
+    return properties.testFlag(QLowEnergyCharacteristic::Read);
+}
+
+void BleCentral::readCharacteristic(const QVariant &service, const QVariant &characteristic)
+{
+    auto cookedService = service.value<QLowEnergyService *>();
+    if (!cookedService) {
+        return;
+    }
+
+    auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
+    if (!cookedCharacteristic.isValid()) {
+        return;
+    }
+
+    cookedService->readCharacteristic(cookedCharacteristic);
+}
+
+void BleCentral::switchNotify(const QVariant &service, const QVariant &characteristic)
+{
+    auto cookedService = service.value<QLowEnergyService *>();
+    if (!cookedService) {
+        return;
+    }
+
+    auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
+    if (!cookedCharacteristic.isValid()) {
+        return;
+    }
+
+    auto type = QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration;
+    auto descriptor = cookedCharacteristic.descriptor(type);
+    if (!descriptor.isValid()) {
+        qWarning("Invalid descriptor");
+        return;
+    }
+
+    static const auto notifyValue = QByteArray::fromHex("0100");
+    static const auto disnotifyValue = QByteArray::fromHex("0000");
+    QByteArray value = descriptor.value() == notifyValue ? disnotifyValue : notifyValue;
+#if 0
+    qInfo() << "Invoke write descriptor:" << descriptor.name() << value.toHex();
+#endif
+    cookedService->writeDescriptor(descriptor, value);
+}
+
 void BleCentral::setupService(QLowEnergyService *service)
 {
     connect(service,

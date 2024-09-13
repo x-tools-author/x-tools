@@ -17,7 +17,16 @@ namespace xTools {
 BleScanner::BleScanner(QObject* parent)
     : QThread(parent)
     , m_discover(Q_NULLPTR)
-{}
+{
+    connect(this, &BleScanner::started, this, [this]() {
+        this->m_isBusy = true;
+        emit isBusyChanged();
+    });
+    connect(this, &BleScanner::finished, this, [this]() {
+        this->m_isBusy = false;
+        emit isBusyChanged();
+    });
+}
 
 BleScanner::~BleScanner()
 {
@@ -25,6 +34,12 @@ BleScanner::~BleScanner()
         exit();
         wait();
     }
+}
+
+void BleScanner::stop()
+{
+    exit();
+    wait();
 }
 
 void BleScanner::run()
@@ -61,6 +76,7 @@ void BleScanner::run()
 void BleScanner::onDiscoveryFinished()
 {
     exit();
+    wait();
 }
 
 void BleScanner::onDiscoveryErrorOccurred()
@@ -73,9 +89,10 @@ void BleScanner::onDiscoveryErrorOccurred()
 void BleScanner::onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo& info)
 {
     const QString name = info.name();
-    qInfo() << "New BLE device:" << name;
+    qInfo() << "New BLE device:" << name << QVariant::fromValue(info);
 
     emit deviceDiscovered(info);
+    emit deviceDiscoveredForQml(name, QVariant::fromValue(info));
 }
 
 } // namespace xTools
