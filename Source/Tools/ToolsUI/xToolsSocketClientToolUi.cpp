@@ -85,6 +85,13 @@ void xToolsSocketClientToolUi::onBaseToolUiInitialized(xToolsBaseTool *tool,
         ui->labelUserName->hide();
     }
 
+    if (tool->inherits("xToolsWebSocketClientTool")) {
+        ui->label->hide();
+        ui->label_2->hide();
+        ui->comboBoxClientAddress->hide();
+        ui->spinBoxClientPort->hide();
+    }
+
     m_tool = qobject_cast<xToolsSocketClientTool *>(tool);
     if (!m_tool) {
         Q_ASSERT_X(m_tool, __FUNCTION__, "Invalid xToolsSocketClientTool object!");
