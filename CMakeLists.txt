@@ -317,7 +317,7 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   endif()
 endif()
 
-# -------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # Assistant applications
 macro(add_tool_app dir_name app_name)
   set(TOOL_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/${dir_name}/main.cpp)
