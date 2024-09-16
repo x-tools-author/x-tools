@@ -116,15 +116,29 @@ void MainWindow::closeEvent(QCloseEvent* event)
 
 void MainWindow::initFileMenu()
 {
-    m_fileMenu->addAction(tr("New Window"), this, []() {
+    auto newWindowAction = m_fileMenu->addAction(tr("New Window"), this, []() {
         auto* w = new IOPage(IOPage::Left, xTools::Settings::instance());
         w->setWindowTitle("xTools");
         w->show();
     });
+    newWindowAction->setShortcut(QKeySequence::New);
+
     m_fileMenu->addSeparator();
-    m_fileMenu->addAction(tr("Save Parameters"), this, &MainWindow::onSaveActionTriggered);
-    m_fileMenu->addAction(tr("Import Parameters"), this, &MainWindow::onImportActionTriggered);
-    m_fileMenu->addAction(tr("Export Parameters"), this, &MainWindow::onExportActionTriggered);
+    auto saveAction = m_fileMenu->addAction(tr("Save Parameters"),
+                                            this,
+                                            &MainWindow::onSaveActionTriggered);
+    saveAction->setShortcut(QKeySequence::Save);
+
+    auto importActioni = m_fileMenu->addAction(tr("Import Parameters"),
+                                               this,
+                                               &MainWindow::onImportActionTriggered);
+    importActioni->setShortcut(QKeySequence::Open);
+
+    auto exportAction = m_fileMenu->addAction(tr("Export Parameters"),
+                                              this,
+                                              &MainWindow::onExportActionTriggered);
+    exportAction->setShortcuts(QKeySequence::SaveAs);
+
     m_fileMenu->addSeparator();
     m_fileMenu->addAction(m_exitAction);
 }

@@ -116,10 +116,11 @@ void MainWindow::initMenuFile()
 {
     QMenuBar* menuBar = this->menuBar();
     m_fileMenu = menuBar->addMenu(tr("&File"));
-    m_exitAction = m_fileMenu->addAction(tr("&Exit"), this, []() {
+    m_exitAction = m_fileMenu->addAction(tr("Exit Application"), this, []() {
         QApplication::closeAllWindows();
         QApplication::quit();
     });
+    m_exitAction->setShortcut(QKeySequence::Quit);
 }
 
 void MainWindow::initMenuOption()
