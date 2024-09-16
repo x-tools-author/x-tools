@@ -36,7 +36,7 @@ static const QString settingfileName()
 {
     QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
     QString path = QStandardPaths::writableLocation(type);
-    auto ret = QString("%1/%2.ini").arg(path, QCoreApplication::applicationName());
+    auto ret = QString("%1/%2v7.ini").arg(path, QCoreApplication::applicationName());
     return ret;
 }
 
