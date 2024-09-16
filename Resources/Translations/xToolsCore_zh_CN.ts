@@ -1074,7 +1074,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/IOPage/IOPage.ui" line="164"/>
         <source>Communication control</source>
-        <translation>通知控制</translation>
+        <translation>通信控制</translation>
     </message>
     <message>
         <location filename="../../Source/IOPage/IOPage.ui" line="180"/>
