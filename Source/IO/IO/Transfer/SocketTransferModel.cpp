@@ -40,50 +40,57 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
     QVariantMap parameters = socket->parameters();
     xIO::SocketItem socketItem = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
 
+    int column = index.column();
     if (role == Qt::DisplayRole) {
-        if (index.column() == 0) {
+        if (column == 0) {
             return xIO::transferTypeName(item.option);
-        } else if (index.column() == 1) {
+        } else if (column == 1) {
             return socketItem.clientAddress;
-        } else if (index.column() == 2) {
+        } else if (column == 2) {
             return QString::number(socketItem.clientPort);
-        } else if (index.column() == 3) {
+        } else if (column == 3) {
             return socketItem.serverAddress;
-        } else if (index.column() == 4) {
+        } else if (column == 4) {
             return QString::number(socketItem.serverPort);
-        } else if (index.column() == 5) {
+        } else if (column == 5) {
             auto dataChannel = socketItem.dataChannel;
             return xIO::webSocketDataChannelName(dataChannel);
-        } else if (index.column() == 6) {
+        } else if (column == 6) {
             return socketItem.authentication ? tr("Enable") : tr("Disable");
-        } else if (index.column() == 7) {
+        } else if (column == 7) {
             return socketItem.username;
-        } else if (index.column() == 8) {
+        } else if (column == 8) {
             return socketItem.password;
-        } else if (index.column() == 9) {
+        } else if (column == 9) {
             return item.description;
         }
     } else if (role == Qt::EditRole) {
-        if (index.column() == 0) {
+        if (column == 0) {
             return item.transfer->isEnable();
-        } else if (index.column() == 1) {
+        } else if (column == 1) {
             return socketItem.clientAddress;
-        } else if (index.column() == 2) {
+        } else if (column == 2) {
             return QString::number(socketItem.clientPort);
-        } else if (index.column() == 3) {
+        } else if (column == 3) {
             return socketItem.serverAddress;
-        } else if (index.column() == 4) {
+        } else if (column == 4) {
             return QString::number(socketItem.serverPort);
-        } else if (index.column() == 5) {
+        } else if (column == 5) {
             return static_cast<int>(socketItem.dataChannel);
-        } else if (index.column() == 6) {
+        } else if (column == 6) {
             return socketItem.authentication;
-        } else if (index.column() == 7) {
+        } else if (column == 7) {
             return socketItem.username;
-        } else if (index.column() == 8) {
+        } else if (column == 8) {
             return socketItem.password;
-        } else if (index.column() == 9) {
+        } else if (column == 9) {
             return item.description;
+        }
+    } else if (role == Qt::TextAlignmentRole) {
+        if (column == 9) {
+            return QVariant(Qt::AlignLeft | Qt::AlignVCenter);
+        } else {
+            return Qt::AlignCenter;
         }
     }
 
