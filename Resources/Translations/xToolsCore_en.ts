@@ -1263,136 +1263,131 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="120"/>
+        <location filename="../../Source/MainWindow.cpp" line="119"/>
         <source>New Window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="126"/>
+        <location filename="../../Source/MainWindow.cpp" line="127"/>
         <source>Save Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="127"/>
-        <location filename="../../Source/MainWindow.cpp" line="455"/>
+        <location filename="../../Source/MainWindow.cpp" line="132"/>
+        <location filename="../../Source/MainWindow.cpp" line="465"/>
         <source>Import Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="128"/>
-        <location filename="../../Source/MainWindow.cpp" line="468"/>
+        <location filename="../../Source/MainWindow.cpp" line="137"/>
+        <location filename="../../Source/MainWindow.cpp" line="478"/>
         <source>Export Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="135"/>
+        <location filename="../../Source/MainWindow.cpp" line="148"/>
         <source>&amp;Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="160"/>
+        <location filename="../../Source/MainWindow.cpp" line="173"/>
         <source>Use System Proxy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="170"/>
-        <source>Main Window</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="171"/>
+        <location filename="../../Source/MainWindow.cpp" line="183"/>
         <source>Exit to System Tray</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="191"/>
+        <location filename="../../Source/MainWindow.cpp" line="201"/>
         <source>&amp;View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="239"/>
+        <location filename="../../Source/MainWindow.cpp" line="249"/>
         <source>Get Sources from Github</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="242"/>
+        <location filename="../../Source/MainWindow.cpp" line="252"/>
         <source>Get Sources from Gitee</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="247"/>
+        <location filename="../../Source/MainWindow.cpp" line="257"/>
         <source>About xTools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="251"/>
+        <location filename="../../Source/MainWindow.cpp" line="261"/>
         <source>Buy Ultimate Edition</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="259"/>
-        <location filename="../../Source/MainWindow.cpp" line="344"/>
+        <location filename="../../Source/MainWindow.cpp" line="269"/>
+        <location filename="../../Source/MainWindow.cpp" line="354"/>
         <source>Release History</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="260"/>
+        <location filename="../../Source/MainWindow.cpp" line="270"/>
         <source>Join in QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="265"/>
+        <location filename="../../Source/MainWindow.cpp" line="275"/>
         <source>Links</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="275"/>
+        <location filename="../../Source/MainWindow.cpp" line="285"/>
         <source>Qt Official Download</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="278"/>
+        <location filename="../../Source/MainWindow.cpp" line="288"/>
         <source>Qt Official Blog</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="281"/>
+        <location filename="../../Source/MainWindow.cpp" line="291"/>
         <source>Qt Official Release</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="285"/>
+        <location filename="../../Source/MainWindow.cpp" line="295"/>
         <source>Download xTools from Github</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="288"/>
+        <location filename="../../Source/MainWindow.cpp" line="298"/>
         <source>Download xTools from Gitee</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="292"/>
+        <location filename="../../Source/MainWindow.cpp" line="302"/>
         <source>Office Web Site</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="364"/>
+        <location filename="../../Source/MainWindow.cpp" line="374"/>
         <source>QR Code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="373"/>
+        <location filename="../../Source/MainWindow.cpp" line="383"/>
         <source>User QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="374"/>
+        <location filename="../../Source/MainWindow.cpp" line="384"/>
         <source>Qt QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="457"/>
-        <location filename="../../Source/MainWindow.cpp" line="470"/>
+        <location filename="../../Source/MainWindow.cpp" line="467"/>
+        <location filename="../../Source/MainWindow.cpp" line="480"/>
         <source>Json Files (*.json)</source>
         <translation></translation>
     </message>
@@ -2470,127 +2465,127 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/App/MainWindow.cpp" line="119"/>
-        <source>&amp;Exit</source>
-        <translation></translation>
+        <source>Exit Application</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="127"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="128"/>
         <source>&amp;Options</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="141"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="142"/>
         <source>&amp;Languages</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="178"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="179"/>
         <source>&amp;Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="179"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="180"/>
         <source>&amp;About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="180"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="181"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="187"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="188"/>
         <source>Application Style</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="216"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="217"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="219"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="220"/>
         <source>Clear Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="226"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="227"/>
         <source>Open Settings Directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="239"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="240"/>
         <source>HDPI Policy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="263"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="264"/>
         <source>Color Scheme</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="265"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="266"/>
         <source>System</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="266"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="267"/>
         <source>Dark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="267"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="268"/>
         <source>Light</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="332"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="333"/>
         <source>(A Part of xTools Project)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="334"/>
-        <location filename="../../Source/App/MainWindow.cpp" line="337"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="335"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="338"/>
         <source>Commit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="339"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="340"/>
         <source>Build Date</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="341"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="342"/>
         <source>All rights reserved.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="342"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="343"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="348"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="349"/>
         <source>Reboot application to effective</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="349"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="350"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="381"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="382"/>
         <source>QR Code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="385"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="386"/>
         <source>User QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="386"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="387"/>
         <source>Qt QQ Group</source>
         <translation></translation>
     </message>
@@ -2780,62 +2775,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::SocketTransferModel</name>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="58"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="59"/>
         <source>Enable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="58"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="59"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="152"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="159"/>
         <source>Transfer Option</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="154"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="161"/>
         <source>Client Address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="156"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="163"/>
         <source>Client Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="158"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="165"/>
         <source>Server Address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="160"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="167"/>
         <source>Server Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="162"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="169"/>
         <source>Data Channel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="164"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="171"/>
         <source>Authentication</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="166"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="173"/>
         <source>Username</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="168"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="175"/>
         <source>Password</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="170"/>
+        <location filename="../../Source/IO/IO/Transfer/SocketTransferModel.cpp" line="177"/>
         <source>Description</source>
         <translation></translation>
     </message>
