@@ -526,27 +526,25 @@ void ModbusAssistant::onDeviceTypeChanged()
     // Hide ui component first then show ui component,
     // or the window will be resize to the max size of default.
     if (isSerial) {
-        ui->dockWidgetNetworkSettings->setHidden(true);
-        ui->dockWidgetSerialPortSettings->setHidden(false);
+        ui->widgetNetworkSettings->setHidden(true);
+        ui->widgetSerialPortSettings->setHidden(false);
     } else {
-        ui->dockWidgetSerialPortSettings->setHidden(true);
-        ui->dockWidgetNetworkSettings->setHidden(false);
+        ui->widgetSerialPortSettings->setHidden(true);
+        ui->widgetNetworkSettings->setHidden(false);
     }
 
     if (isClient) {
-        ui->dockWidgetConsole->setVisible(true);
-        ui->dockWidgetServerParameters->setHidden(true);
-        ui->dockWidgetServerRegisters->setHidden(true);
-        ui->dockWidgetClientParameters->setHidden(false);
-        ui->dockWidgetCustomCommand->setHidden(false);
-        ui->dockWidgetClientRegisters->setHidden(false);
+        ui->widgetConsole->setVisible(true);
+        ui->widgetServerParameters->setHidden(true);
+        ui->widgetServerRegisters->setHidden(true);
+        ui->widgetClientParameters->setHidden(false);
+        ui->widgetClientRegisters->setHidden(false);
     } else {
-        ui->dockWidgetConsole->setVisible(false);
-        ui->dockWidgetCustomCommand->setHidden(true);
-        ui->dockWidgetClientRegisters->setHidden(true);
-        ui->dockWidgetClientParameters->setHidden(true);
-        ui->dockWidgetServerParameters->setHidden(false);
-        ui->dockWidgetServerRegisters->setHidden(false);
+        ui->widgetConsole->setVisible(false);
+        ui->widgetClientRegisters->setHidden(true);
+        ui->widgetClientParameters->setHidden(true);
+        ui->widgetServerParameters->setHidden(false);
+        ui->widgetServerRegisters->setHidden(false);
     }
 
     m_settings->setValue(m_keyCtx->deviceIndex, type);
@@ -956,8 +954,8 @@ void ModbusAssistant::updateUiState(bool connected)
     ui->comboBoxDeviceList->setEnabled(!connected);
     ui->pushButtonClose->setEnabled(connected);
     ui->pushButtonOpen->setEnabled(!connected);
-    ui->dockWidgetNetworkSettings->setEnabled(!connected);
-    ui->dockWidgetSerialPortSettings->setEnabled(!connected);
+    ui->widgetNetworkSettings->setEnabled(!connected);
+    ui->widgetSerialPortSettings->setEnabled(!connected);
 #if 0
     ui->clientGroupBox->setEnabled(!connected);
     ui->widgetServerParameters->setEnabled(!connected);
