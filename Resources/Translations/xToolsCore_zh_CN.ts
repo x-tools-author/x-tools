@@ -1611,7 +1611,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="165"/>
         <source>RtuServer</source>
-        <translation>Rtu从机</translation>
+        <translation>RTU从机</translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="166"/>
