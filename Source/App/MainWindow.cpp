@@ -129,11 +129,11 @@ void MainWindow::initMenuOption()
 
     initOptionMenuHdpiPolicy();
     initOptionMenuAppStyleMenu();
-    m_optionMenu->addSeparator();
-    initOptionMenuSettingsMenu();
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     initOptionMenuColorScheme();
 #endif
+    m_optionMenu->addSeparator();
+    initOptionMenuSettingsMenu();
 }
 
 void MainWindow::initMenuLanguage()
