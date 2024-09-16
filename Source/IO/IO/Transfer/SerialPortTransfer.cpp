@@ -16,7 +16,9 @@ namespace xTools {
 SerialPortTransfer::SerialPortTransfer(QObject *parent)
     : AbstractTransfer{parent}
     , m_model{new SerialPortTransferModel{this}}
-{}
+{
+    connect(m_model, &AbstractTransferModel::outputBytes, this, &AbstractTransfer::outputBytes);
+}
 
 SerialPortTransfer::~SerialPortTransfer() {}
 

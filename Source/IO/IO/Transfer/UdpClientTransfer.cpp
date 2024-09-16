@@ -16,7 +16,9 @@ UdpClientTransfer::UdpClientTransfer(QObject *parent)
     : SocketTransfer(parent)
     , m_model(new UdpClientTransferModel(this))
 
-{}
+{
+    connect(m_model, &AbstractTransferModel::outputBytes, this, &AbstractTransfer::outputBytes);
+}
 
 UdpClientTransfer::~UdpClientTransfer() {}
 

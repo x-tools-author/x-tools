@@ -16,7 +16,9 @@ WebSocketServerTransfer::WebSocketServerTransfer(QObject *parent)
     : SocketTransfer(parent)
     , m_model(new WebSocketServerTransferModel(this))
 
-{}
+{
+    connect(m_model, &AbstractTransferModel::outputBytes, this, &AbstractTransfer::outputBytes);
+}
 
 WebSocketServerTransfer::~WebSocketServerTransfer() {}
 
