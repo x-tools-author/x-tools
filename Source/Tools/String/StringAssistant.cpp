@@ -16,19 +16,16 @@ StringAssistant::StringAssistant(QWidget* parent)
     , ui(new Ui::StringAssistant)
 {
     ui->setupUi(this);
-    connect(ui->textEdit, &QTextEdit::textChanged, this, &StringAssistant::onTextEditTextChanged);
+    connect(ui->textEdit, &QTextEdit::textChanged, this, &StringAssistant::updateOutputString);
     connect(ui->inputFormatComboBox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
-            &StringAssistant::onInputFormatComboBoxCurrentIndexChanged);
-    connect(ui->createPushButton,
-            &QPushButton::clicked,
-            this,
-            &StringAssistant::onCreatePushButtonClicked);
+            &StringAssistant::updateOutputString);
+    connect(ui->createPushButton, &QPushButton::clicked, this, &StringAssistant::updateOutputString);
     connect(ui->outputFormatComboBox,
             &QComboBox::currentTextChanged,
             this,
-            &StringAssistant::onOutputFormatComboBoxCurrentTextChanged);
+            &StringAssistant::updateOutputString);
 
     xTools::xIO::setupTextFormat(ui->outputFormatComboBox);
     xTools::xIO::setupTextFormat(ui->inputFormatComboBox);
@@ -39,27 +36,7 @@ StringAssistant::~StringAssistant()
     delete ui;
 }
 
-void StringAssistant::onTextEditTextChanged()
-{
-    if (!ui->textEdit->blockSignals(true)) {
-        QString inputString = ui->textEdit->toPlainText();
-        ui->textEdit->setText("to do");
-        ui->textEdit->moveCursor(QTextCursor::End);
-        ui->textEdit->blockSignals(false);
-        onCreatePushButtonClicked();
-    } else {
-        Q_ASSERT_X(false, __FUNCTION__, "Oh, No!");
-    }
-}
-
-void StringAssistant::onInputFormatComboBoxCurrentIndexChanged(int index)
-{
-    Q_UNUSED(index);
-    ui->textEdit->clear();
-    onCreatePushButtonClicked();
-}
-
-void StringAssistant::onCreatePushButtonClicked()
+void StringAssistant::updateOutputString()
 {
     QString inputString = ui->textEdit->toPlainText();
     auto inputFormat = ui->inputFormatComboBox->currentData().toInt();
@@ -67,10 +44,4 @@ void StringAssistant::onCreatePushButtonClicked()
     auto outputFormat = ui->outputFormatComboBox->currentData().toInt();
     auto outputString = xTools::xIO::bytes2string(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);
-}
-
-void StringAssistant::onOutputFormatComboBoxCurrentTextChanged(const QString& text)
-{
-    Q_UNUSED(text);
-    onCreatePushButtonClicked();
 }

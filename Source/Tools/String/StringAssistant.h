@@ -13,6 +13,7 @@
 namespace Ui {
 class StringAssistant;
 }
+
 class StringAssistant : public QWidget
 {
     Q_OBJECT
@@ -23,9 +24,6 @@ public:
 private:
     Ui::StringAssistant* ui;
 
-private slots:
-    void onTextEditTextChanged();
-    void onInputFormatComboBoxCurrentIndexChanged(int index);
-    void onCreatePushButtonClicked();
-    void onOutputFormatComboBoxCurrentTextChanged(const QString& text);
+private:
+    void updateOutputString();
 };
