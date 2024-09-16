@@ -27,6 +27,7 @@ QWidget *SocketStyledItemDelegate::createEditor(QWidget *parent,
                                                 const QStyleOptionViewItem &option,
                                                 const QModelIndex &index) const
 {
+    Q_UNUSED(option);
     switch (index.column()) {
     case 6: // authentication
         return new QCheckBox(parent);

@@ -26,6 +26,7 @@ QWidget *SerialPortStyledItemDelegate::createEditor(QWidget *parent,
                                                     const QStyleOptionViewItem &option,
                                                     const QModelIndex &index) const
 {
+    Q_UNUSED(option);
     switch (index.column()) {
     case 0:
     case 1:

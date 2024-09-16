@@ -32,7 +32,7 @@ public:
     virtual Q_INVOKABLE void setParameters(const QVariantMap &parameters);
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};
-    virtual void writeBytes(const QByteArray &bytes) {};
+    virtual void writeBytes(const QByteArray &bytes) { Q_UNUSED(bytes); };
 
 signals:
     void opened();
