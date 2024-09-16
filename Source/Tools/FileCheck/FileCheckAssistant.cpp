@@ -44,6 +44,10 @@ FileCheckAssistant::FileCheckAssistant(QWidget* parent)
 #endif
     QStringList algorithmsStringList;
     for (int i = 0; i < algorithms.keyCount(); i++) {
+        if (algorithms.value(i) == QCryptographicHash::NumAlgorithms) {
+            continue;
+        }
+
         algorithmsStringList.append(QString(algorithms.key(i)));
     }
     m_algorithmComboBox->addItems(algorithmsStringList);
