@@ -103,15 +103,14 @@ void MainWindow::initMenuBar()
 void MainWindow::closeEvent(QCloseEvent* event)
 {
     save();
+    xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
 #ifdef Q_OS_WIN
     if (xTools::Settings::instance()->value(m_settingsKey.exitToSystemTray).toBool()) {
-        close();
+        hide();
         event->ignore();
         return;
     }
 #endif
-    qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
-    xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
     QMainWindow::closeEvent(event);
 }
 
