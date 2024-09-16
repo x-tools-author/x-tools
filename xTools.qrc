@@ -45,8 +45,6 @@
         <file>Resources/Icons/IconWindowed.svg</file>
         <file>Resources/Icons/IconZoomIn.svg</file>
         <file>Resources/Icons/IconZoomOut.svg</file>
-        <file>Resources/Translations/xTools_en.qm</file>
-        <file>Resources/Translations/xTools_zh_CN.qm</file>
         <file>Resources/Images/Android.png</file>
         <file>Resources/Images/AndroidLogo.png</file>
         <file>Resources/Images/Gitee.png</file>
