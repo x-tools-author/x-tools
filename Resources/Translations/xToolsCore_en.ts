@@ -480,7 +480,7 @@
     </message>
     <message>
         <location filename="../../Source/Tools/Broadcast/BroadcastAssistant.ui" line="194"/>
-        <location filename="../../Source/Tools/Broadcast/BroadcastAssistant.cpp" line="63"/>
+        <location filename="../../Source/Tools/Broadcast/BroadcastAssistant.cpp" line="65"/>
         <source>Broadcast</source>
         <translation></translation>
     </message>
@@ -495,7 +495,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Broadcast/BroadcastAssistant.cpp" line="63"/>
+        <location filename="../../Source/Tools/Broadcast/BroadcastAssistant.cpp" line="65"/>
         <source>Terminate</source>
         <translation></translation>
     </message>
@@ -912,7 +912,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.ui" line="125"/>
-        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="172"/>
+        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="176"/>
         <source>Calculate</source>
         <translation></translation>
     </message>
@@ -922,17 +922,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="64"/>
+        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="68"/>
         <source>File Check Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="134"/>
+        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="138"/>
         <source>Remaining time</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="178"/>
+        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="182"/>
         <source>StopCalculating</source>
         <translation></translation>
     </message>
@@ -1444,158 +1444,158 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ModbusAssistant</name>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="69"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="235"/>
         <source>Device Operations</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="100"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="189"/>
         <source>Device list</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="124"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="213"/>
         <source>Close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="131"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="220"/>
         <source>Open</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="170"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="49"/>
         <source>Console</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="208"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="154"/>
         <source>Client Registers</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="246"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="141"/>
         <source>Custom Protocol Data Unit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="268"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="125"/>
         <source>Send</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="291"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="90"/>
         <source>Server Register</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="335"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="286"/>
         <source>Network Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="360"/>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="926"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="273"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="924"/>
         <source>Address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="387"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="306"/>
         <source>Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="410"/>
-        <source>Client parameters</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="442"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="626"/>
         <source>Start address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="484"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="556"/>
         <source>Target address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="497"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="685"/>
         <source>Timeout</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="536"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="600"/>
         <source>Address number</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="545"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="565"/>
         <source>Read</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="552"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="572"/>
         <source>Write</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="567"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="672"/>
         <source>Repeat times</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="609"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="698"/>
+        <source>Client Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="587"/>
         <source>Function code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="632"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="366"/>
         <source>Serial Port Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="657"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="353"/>
         <source>Data bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="673"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="405"/>
         <source>Port name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="686"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="337"/>
         <source>Baud rate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="705"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="421"/>
         <source>Stop bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="725"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="386"/>
         <source>Parity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="751"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="459"/>
         <source>Server Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="770"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="466"/>
         <source>Server address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="784"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="480"/>
         <source>Listen only mode</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="791"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="446"/>
         <source>Device busy</source>
         <translation></translation>
     </message>
@@ -1706,37 +1706,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="514"/>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1198"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1196"/>
         <source>Error occured</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="593"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="591"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="596"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="594"/>
         <source>Can not open device</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="926"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="924"/>
         <source>Value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="926"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="924"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1248"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1246"/>
         <source>Device is not Ready</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1249"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1247"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation></translation>
     </message>

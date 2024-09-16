@@ -480,7 +480,7 @@
     </message>
     <message>
         <location filename="../../Source/Tools/Broadcast/BroadcastAssistant.ui" line="194"/>
-        <location filename="../../Source/Tools/Broadcast/BroadcastAssistant.cpp" line="63"/>
+        <location filename="../../Source/Tools/Broadcast/BroadcastAssistant.cpp" line="65"/>
         <source>Broadcast</source>
         <translation>广播</translation>
     </message>
@@ -495,7 +495,7 @@
         <translation>广播助手</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Broadcast/BroadcastAssistant.cpp" line="63"/>
+        <location filename="../../Source/Tools/Broadcast/BroadcastAssistant.cpp" line="65"/>
         <source>Terminate</source>
         <translation>终止</translation>
     </message>
@@ -912,7 +912,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.ui" line="125"/>
-        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="172"/>
+        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="176"/>
         <source>Calculate</source>
         <translation>开始校验</translation>
     </message>
@@ -922,17 +922,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="64"/>
+        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="68"/>
         <source>File Check Assistant</source>
         <translation>文件校验助手</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="134"/>
+        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="138"/>
         <source>Remaining time</source>
         <translation>剩余时间</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="178"/>
+        <location filename="../../Source/Tools/FileCheck/FileCheckAssistant.cpp" line="182"/>
         <source>StopCalculating</source>
         <translation>停止校验</translation>
     </message>
@@ -1448,158 +1448,162 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ModbusAssistant</name>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="69"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="235"/>
         <source>Device Operations</source>
         <translation>设备操作</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="100"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="189"/>
         <source>Device list</source>
         <translation>设备列表</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="124"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="213"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="131"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="220"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="170"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="49"/>
         <source>Console</source>
         <translation>终端</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="208"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="154"/>
         <source>Client Registers</source>
         <translation>客户端寄存器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="246"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="141"/>
         <source>Custom Protocol Data Unit</source>
         <translation>自定义协议数据单元</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="268"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="125"/>
         <source>Send</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="291"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="90"/>
         <source>Server Register</source>
         <translation>服务器寄存器</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="335"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="286"/>
         <source>Network Settings</source>
         <translation>网络配置</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="360"/>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="926"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="273"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="924"/>
         <source>Address</source>
         <translation>地址</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="387"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="306"/>
         <source>Port</source>
         <translation>端口</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="410"/>
         <source>Client parameters</source>
-        <translation>客户端参数</translation>
+        <translation type="vanished">客户端参数</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="442"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="626"/>
         <source>Start address</source>
         <translation>起始地址</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="484"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="556"/>
         <source>Target address</source>
         <translation>目标地址</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="497"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="685"/>
         <source>Timeout</source>
         <translation>超时时间</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="536"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="600"/>
         <source>Address number</source>
         <translation>地址数量</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="545"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="565"/>
         <source>Read</source>
         <translation>读取</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="552"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="572"/>
         <source>Write</source>
         <translation>写入</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="567"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="672"/>
         <source>Repeat times</source>
         <translation>重试次数</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="609"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="698"/>
+        <source>Client Parameters</source>
+        <translation>客户端参数</translation>
+    </message>
+    <message>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="587"/>
         <source>Function code</source>
         <translation>功能码</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="632"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="366"/>
         <source>Serial Port Settings</source>
         <translation>串口设置</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="657"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="353"/>
         <source>Data bits</source>
         <translation>数据位</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="673"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="405"/>
         <source>Port name</source>
         <translation>端口名</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="686"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="337"/>
         <source>Baud rate</source>
         <translation>波特率</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="705"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="421"/>
         <source>Stop bits</source>
         <translation>停止位</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="725"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="386"/>
         <source>Parity</source>
         <translation>奇偶位</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="751"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="459"/>
         <source>Server Parameters</source>
         <translation>服务器参数</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="770"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="466"/>
         <source>Server address</source>
         <translation>服务器地址</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="784"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="480"/>
         <source>Listen only mode</source>
         <translation>仅监听模式</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="791"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="446"/>
         <source>Device busy</source>
         <translation>设备繁忙</translation>
     </message>
@@ -1710,37 +1714,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="514"/>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1198"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1196"/>
         <source>Error occured</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="593"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="591"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
         <translation>无法打开设备：%1。请检查参数后重试！</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="596"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="594"/>
         <source>Can not open device</source>
         <translation>无法打开设备</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="926"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="924"/>
         <source>Value</source>
         <translation>值</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="926"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="924"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1248"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1246"/>
         <source>Device is not Ready</source>
         <translation>设备未就绪</translation>
     </message>
     <message>
-        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1249"/>
+        <location filename="../../Source/Tools/Modbus/ModbusAssistant.cpp" line="1247"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation>设备未就绪，请检查链接后重试！</translation>
     </message>
