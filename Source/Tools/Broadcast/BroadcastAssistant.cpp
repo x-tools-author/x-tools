@@ -50,6 +50,8 @@ BroadcastAssistant::BroadcastAssistant(QWidget* parent)
 
     xTools::xIO::setupAddition(ui->comboBoxBroadcastPrefix);
     xTools::xIO::setupAddition(ui->comboBoxBroadcastSuffix);
+    xTools::xIO::setupTextFormat(ui->comboBoxBroadcastFormat);
+    xTools::xIO::setupTextFormat(ui->comboBoxOutputFormat);
 }
 
 BroadcastAssistant::~BroadcastAssistant()
@@ -159,11 +161,10 @@ void BroadcastAssistant::onBroadcastPushButtonClicked()
             return;
         }
 
-        m_broadcastThread
-            ->setBroadcastInformation(ui->comboBoxBroadcastAddress->currentText(),
-                                      ui->lineEditBroadcastPort->text().toInt(),
-                                      ui->comboBoxBroadcastInterval->currentData().toInt(),
-                                      bytes);
+        QString address = ui->comboBoxBroadcastAddress->currentText();
+        quint16 port = ui->lineEditBroadcastPort->text().toInt();
+        int interval = ui->comboBoxBroadcastInterval->currentData().toInt();
+        m_broadcastThread->setBroadcastInformation(address, port, interval, bytes);
         m_broadcastThread->start();
     }
 }
