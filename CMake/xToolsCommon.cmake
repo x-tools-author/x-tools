@@ -134,14 +134,25 @@ function(x_tools_generate_translations target)
     qt_add_lrelease(${target} TS_FILES ${APP_TS_FILES})
   endif()
 
-  add_custom_target(
-    ${target}_lupgrade
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_en.qm
-            ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_en.qm
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_zh_CN.qm
-            ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_zh_CN.qm
-    DEPENDS ${target}_lrelease
-    COMMENT "Generate translations for ${target}...")
+  if(EXISTS ${CMAKE_BINARY_DIR}/${target}_en.qm)
+    add_custom_target(
+      ${target}_lupgrade
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_en.qm
+              ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_en.qm
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_zh_CN.qm
+              ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_zh_CN.qm
+      DEPENDS ${target}_lrelease
+      COMMENT "Generate translations for ${target}...")
+  else()
+    add_custom_target(
+      ${target}_lupgrade
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}/${target}_en.qm
+              ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_en.qm
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}/${target}_zh_CN.qm
+              ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_zh_CN.qm
+      DEPENDS ${target}_lrelease
+      COMMENT "Generate translations for ${target}...")
+  endif()
 endfunction()
 
 set(QT_IFW_VERSION "4.6")
