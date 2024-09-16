@@ -144,7 +144,7 @@ void Application::setupLanguage(const QString &language)
 
     auto prefixes = supportedLanguagePrefixes();
     for (const auto &prefix : prefixes) {
-        setupLanguageWithPrefix(tmp, prefix + "_");
+        setupLanguageWithPrefix(tmp, prefix);
     }
 }
 
