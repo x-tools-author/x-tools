@@ -167,21 +167,18 @@ void MainWindow::initOptionMenu()
         xTools::Settings::instance()->setValue(m_settingsKey.useSystemProxy, proxy->isChecked());
     });
 
-    auto* mainWindowMenu = new QMenu(tr("Main Window"), this);
-    auto* action = new QAction(tr("Exit to System Tray"), this);
-    action->setCheckable(true);
-    mainWindowMenu->addAction(action);
-    m_optionMenu->addSeparator();
-    m_optionMenu->addMenu(mainWindowMenu);
+    auto* trayAction = new QAction(tr("Exit to System Tray"), this);
+    trayAction->setCheckable(true);
+    m_optionMenu->addAction(trayAction);
 
     QVariant v = xTools::Settings::instance()->value(m_settingsKey.exitToSystemTray);
     if (!v.isNull()) {
         bool isExitToSystemTray = v.toBool();
-        action->setChecked(isExitToSystemTray);
+        trayAction->setChecked(isExitToSystemTray);
     }
 
-    connect(action, &QAction::triggered, this, [=]() {
-        bool keep = action->isChecked();
+    connect(trayAction, &QAction::triggered, this, [=]() {
+        bool keep = trayAction->isChecked();
         xTools::Settings::instance()->setValue(m_settingsKey.exitToSystemTray, keep);
     });
 }
