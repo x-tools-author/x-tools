@@ -252,7 +252,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
@@ -438,6 +438,29 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>comboBoxCommunicationTypes</tabstop>
+  <tabstop>pushButtonCommunicationSettings</tabstop>
+  <tabstop>pushButtonCommunicationOpen</tabstop>
+  <tabstop>comboBoxOutputFormat</tabstop>
+  <tabstop>checkBoxOutputRx</tabstop>
+  <tabstop>checkBoxOutputTx</tabstop>
+  <tabstop>checkBoxOutputFlag</tabstop>
+  <tabstop>checkBoxOutputDate</tabstop>
+  <tabstop>checkBoxOutputTime</tabstop>
+  <tabstop>checkBoxOutputMs</tabstop>
+  <tabstop>pushButtonOutputSettings</tabstop>
+  <tabstop>pushButtonOutputClear</tabstop>
+  <tabstop>comboBoxInputInterval</tabstop>
+  <tabstop>comboBoxInputFormat</tabstop>
+  <tabstop>pushButtonInputSettings</tabstop>
+  <tabstop>pushButtonInputWriteBytes</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>textBrowserOutput</tabstop>
+  <tabstop>lineEditInput</tabstop>
+  <tabstop>toolButtonInputPreset</tabstop>
+  <tabstop>tabWidgetTransfers</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
