@@ -1274,13 +1274,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/MainWindow.cpp" line="132"/>
-        <location filename="../../Source/MainWindow.cpp" line="465"/>
+        <location filename="../../Source/MainWindow.cpp" line="419"/>
         <source>Import Parameters</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/MainWindow.cpp" line="137"/>
-        <location filename="../../Source/MainWindow.cpp" line="478"/>
+        <location filename="../../Source/MainWindow.cpp" line="432"/>
         <source>Export Parameters</source>
         <translation></translation>
     </message>
@@ -1305,89 +1305,54 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="249"/>
+        <location filename="../../Source/MainWindow.cpp" line="268"/>
         <source>Get Sources from Github</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="252"/>
+        <location filename="../../Source/MainWindow.cpp" line="271"/>
         <source>Get Sources from Gitee</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="257"/>
-        <source>About xTools</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="261"/>
+        <location filename="../../Source/MainWindow.cpp" line="251"/>
         <source>Buy Ultimate Edition</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="269"/>
-        <location filename="../../Source/MainWindow.cpp" line="354"/>
+        <location filename="../../Source/MainWindow.cpp" line="259"/>
+        <location filename="../../Source/MainWindow.cpp" line="308"/>
         <source>Release History</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="270"/>
+        <location filename="../../Source/MainWindow.cpp" line="260"/>
         <source>Join in QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="275"/>
+        <location filename="../../Source/MainWindow.cpp" line="265"/>
         <source>Links</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="285"/>
-        <source>Qt Official Download</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="288"/>
-        <source>Qt Official Blog</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="291"/>
-        <source>Qt Official Release</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="295"/>
-        <source>Download xTools from Github</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="298"/>
-        <source>Download xTools from Gitee</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="302"/>
-        <source>Office Web Site</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/MainWindow.cpp" line="374"/>
+        <location filename="../../Source/MainWindow.cpp" line="328"/>
         <source>QR Code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="383"/>
+        <location filename="../../Source/MainWindow.cpp" line="337"/>
         <source>User QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="384"/>
+        <location filename="../../Source/MainWindow.cpp" line="338"/>
         <source>Qt QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="467"/>
-        <location filename="../../Source/MainWindow.cpp" line="480"/>
+        <location filename="../../Source/MainWindow.cpp" line="421"/>
+        <location filename="../../Source/MainWindow.cpp" line="434"/>
         <source>Json Files (*.json)</source>
         <translation></translation>
     </message>
@@ -1953,33 +1918,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../Source/App/xExec.cpp" line="79"/>
+        <location filename="../../Source/App/xTools.cpp" line="75"/>
         <source>(Store)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/xExec.cpp" line="164"/>
+        <location filename="../../Source/App/xTools.cpp" line="160"/>
         <source>Neet to Reboot</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/xExec.cpp" line="165"/>
+        <location filename="../../Source/App/xTools.cpp" line="161"/>
         <source>The operation need to reboot to effectived, reboot the applicaion now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Common/CRC.cpp" line="68"/>
+        <location filename="../../Source/IO/Unit/CRC.cpp" line="68"/>
         <source>Unknown</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Common/xTools.cpp" line="67"/>
-        <source>Need to Reboot</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Common/xTools.cpp" line="68"/>
-        <source>The operation need to reboot to effective, reboot the application now?</source>
         <translation></translation>
     </message>
     <message>
@@ -2361,9 +2316,49 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::Application</name>
     <message>
-        <location filename="../../Source/App/Application.cpp" line="75"/>
+        <location filename="../../Source/App/Application.cpp" line="79"/>
         <source>Initialize application...</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="152"/>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="153"/>
+        <source>Round up for .5 and above</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="154"/>
+        <source>Always round up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="155"/>
+        <source>Always round down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="156"/>
+        <source>Round up for .75 and above</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="157"/>
+        <source>Don&apos;t round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="305"/>
+        <source>Reboot application to effective</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="306"/>
+        <source>Need to reboot, reboot to effective now?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2459,129 +2454,119 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::MainWindow</name>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="118"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="117"/>
         <source>&amp;File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="119"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="118"/>
         <source>Exit Application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="128"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="127"/>
         <source>&amp;Options</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="142"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="141"/>
         <source>&amp;Languages</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="179"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="178"/>
         <source>&amp;Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="181"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="179"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="188"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="187"/>
         <source>Application Style</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="217"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="216"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="220"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="219"/>
         <source>Clear Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="227"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="226"/>
         <source>Open Settings Directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="240"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="239"/>
         <source>HDPI Policy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="264"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="263"/>
         <source>Color Scheme</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="266"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="265"/>
         <source>System</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="267"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="266"/>
         <source>Dark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="268"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="267"/>
         <source>Light</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="333"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="332"/>
         <source>(A Part of xTools Project)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="335"/>
-        <location filename="../../Source/App/MainWindow.cpp" line="338"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="334"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="337"/>
         <source>Commit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="340"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="339"/>
         <source>Build Date</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="342"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="341"/>
         <source>All rights reserved.</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/App/MainWindow.cpp" line="180"/>
-        <location filename="../../Source/App/MainWindow.cpp" line="343"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="342"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="349"/>
-        <source>Reboot application to effective</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="350"/>
-        <source>Need to reboot, reboot to effective now?</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="382"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="367"/>
         <source>QR Code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="386"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="371"/>
         <source>User QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="387"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="372"/>
         <source>Qt QQ Group</source>
         <translation></translation>
     </message>
@@ -3061,39 +3046,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/IO/xIO.cpp" line="747"/>
         <source>Unidirectional</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>xTools::xTools</name>
-    <message>
-        <location filename="../../Source/Common/xTools.cpp" line="95"/>
-        <source>System</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Common/xTools.cpp" line="96"/>
-        <source>Round up for .5 and above</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Common/xTools.cpp" line="97"/>
-        <source>Always round up</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Common/xTools.cpp" line="98"/>
-        <source>Always round down</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Common/xTools.cpp" line="99"/>
-        <source>Round up for .75 and above</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Source/Common/xTools.cpp" line="100"/>
-        <source>Don&apos;t round</source>
         <translation></translation>
     </message>
 </context>

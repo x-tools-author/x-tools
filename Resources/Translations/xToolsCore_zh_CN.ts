@@ -1274,13 +1274,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/MainWindow.cpp" line="132"/>
-        <location filename="../../Source/MainWindow.cpp" line="465"/>
+        <location filename="../../Source/MainWindow.cpp" line="419"/>
         <source>Import Parameters</source>
         <translation>导入参数</translation>
     </message>
     <message>
         <location filename="../../Source/MainWindow.cpp" line="137"/>
-        <location filename="../../Source/MainWindow.cpp" line="478"/>
+        <location filename="../../Source/MainWindow.cpp" line="432"/>
         <source>Export Parameters</source>
         <translation>导出参数</translation>
     </message>
@@ -1309,89 +1309,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="249"/>
+        <location filename="../../Source/MainWindow.cpp" line="268"/>
         <source>Get Sources from Github</source>
         <translation>从GitHub获取源码</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="252"/>
+        <location filename="../../Source/MainWindow.cpp" line="271"/>
         <source>Get Sources from Gitee</source>
         <translation>从Gitee获取源码</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="257"/>
         <source>About xTools</source>
-        <translation>关于xTools</translation>
+        <translation type="vanished">关于xTools</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="261"/>
+        <location filename="../../Source/MainWindow.cpp" line="251"/>
         <source>Buy Ultimate Edition</source>
         <translation>购买旗舰版</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="269"/>
-        <location filename="../../Source/MainWindow.cpp" line="354"/>
+        <location filename="../../Source/MainWindow.cpp" line="259"/>
+        <location filename="../../Source/MainWindow.cpp" line="308"/>
         <source>Release History</source>
         <translation>发布历史</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="270"/>
+        <location filename="../../Source/MainWindow.cpp" line="260"/>
         <source>Join in QQ Group</source>
         <translation>加入群聊</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="275"/>
+        <location filename="../../Source/MainWindow.cpp" line="265"/>
         <source>Links</source>
         <translation>链接</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="285"/>
         <source>Qt Official Download</source>
-        <translation>Qt官方下载</translation>
+        <translation type="vanished">Qt官方下载</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="288"/>
         <source>Qt Official Blog</source>
-        <translation>Qt官方博客</translation>
+        <translation type="vanished">Qt官方博客</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="291"/>
         <source>Qt Official Release</source>
-        <translation>Qt官方发布</translation>
+        <translation type="vanished">Qt官方发布</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="295"/>
         <source>Download xTools from Github</source>
-        <translation>从Github下载</translation>
+        <translation type="vanished">从Github下载</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="298"/>
         <source>Download xTools from Gitee</source>
-        <translation>从Gitee下载</translation>
+        <translation type="vanished">从Gitee下载</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="302"/>
         <source>Office Web Site</source>
-        <translation>“官方网站”</translation>
+        <translation type="vanished">“官方网站”</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="374"/>
+        <location filename="../../Source/MainWindow.cpp" line="328"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="383"/>
+        <location filename="../../Source/MainWindow.cpp" line="337"/>
         <source>User QQ Group</source>
         <translation>用户交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="384"/>
+        <location filename="../../Source/MainWindow.cpp" line="338"/>
         <source>Qt QQ Group</source>
         <translation>Qt技术交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="467"/>
-        <location filename="../../Source/MainWindow.cpp" line="480"/>
+        <location filename="../../Source/MainWindow.cpp" line="421"/>
+        <location filename="../../Source/MainWindow.cpp" line="434"/>
         <source>Json Files (*.json)</source>
         <translation>Json文件(*.json)</translation>
     </message>
@@ -1961,34 +1954,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../Source/App/xExec.cpp" line="79"/>
+        <location filename="../../Source/App/xTools.cpp" line="75"/>
         <source>(Store)</source>
         <translation>（商店）</translation>
     </message>
     <message>
-        <location filename="../../Source/App/xExec.cpp" line="164"/>
+        <location filename="../../Source/App/xTools.cpp" line="160"/>
         <source>Neet to Reboot</source>
         <translation>需要重启</translation>
     </message>
     <message>
-        <location filename="../../Source/App/xExec.cpp" line="165"/>
+        <location filename="../../Source/App/xTools.cpp" line="161"/>
         <source>The operation need to reboot to effectived, reboot the applicaion now?</source>
         <translation>该操作需要重启软件生效，是否立即重启？</translation>
     </message>
     <message>
-        <location filename="../../Source/Common/CRC.cpp" line="68"/>
+        <location filename="../../Source/IO/Unit/CRC.cpp" line="68"/>
         <source>Unknown</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/Common/xTools.cpp" line="67"/>
         <source>Need to Reboot</source>
-        <translation>需要重启</translation>
+        <translation type="vanished">需要重启</translation>
     </message>
     <message>
-        <location filename="../../Source/Common/xTools.cpp" line="68"/>
         <source>The operation need to reboot to effective, reboot the application now?</source>
-        <translation>该操作需要重启软件生效，是否立即重启？</translation>
+        <translation type="vanished">该操作需要重启软件生效，是否立即重启？</translation>
     </message>
     <message>
         <location filename="../../Source/IO/xIO.cpp" line="59"/>
@@ -2369,9 +2360,49 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::Application</name>
     <message>
-        <location filename="../../Source/App/Application.cpp" line="75"/>
+        <location filename="../../Source/App/Application.cpp" line="79"/>
         <source>Initialize application...</source>
         <translation>初始化程序....</translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="152"/>
+        <source>System</source>
+        <translation>系统</translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="153"/>
+        <source>Round up for .5 and above</source>
+        <translation>缩放至x.5倍</translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="154"/>
+        <source>Always round up</source>
+        <translation>总是放大</translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="155"/>
+        <source>Always round down</source>
+        <translation>总是缩小</translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="156"/>
+        <source>Round up for .75 and above</source>
+        <translation>缩放至x.75倍</translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="157"/>
+        <source>Don&apos;t round</source>
+        <translation>不缩放</translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="305"/>
+        <source>Reboot application to effective</source>
+        <translation>重启软件生效</translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/Application.cpp" line="306"/>
+        <source>Need to reboot, reboot to effective now?</source>
+        <translation>需要重启生效，立即重启？</translation>
     </message>
 </context>
 <context>
@@ -2441,7 +2472,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/IO/IO/Model/EmitterModel.cpp" line="42"/>
         <source>Disable</source>
-        <translation>进制</translation>
+        <translation>禁止</translation>
     </message>
     <message>
         <location filename="../../Source/IO/IO/Model/EmitterModel.cpp" line="105"/>
@@ -2467,7 +2498,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::MainWindow</name>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="118"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="117"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
@@ -2476,22 +2507,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">退出(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="119"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="118"/>
         <source>Exit Application</source>
         <translation>退出应用</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="128"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="127"/>
         <source>&amp;Options</source>
         <translation>选项(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="142"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="141"/>
         <source>&amp;Languages</source>
         <translation>语言(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="179"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="178"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
@@ -2500,104 +2531,102 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">关于</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="181"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="179"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="188"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="187"/>
         <source>Application Style</source>
         <translation>应用风格</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="217"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="216"/>
         <source>Settings</source>
         <translation>配置信息</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="220"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="219"/>
         <source>Clear Settings</source>
         <translation>清空配置</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="227"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="226"/>
         <source>Open Settings Directory</source>
         <translation>打开配置目录</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="240"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="239"/>
         <source>HDPI Policy</source>
         <translation>适配策略</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="264"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="263"/>
         <source>Color Scheme</source>
         <translation>主题颜色</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="266"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="265"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="267"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="266"/>
         <source>Dark</source>
         <translation>暗黑</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="268"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="267"/>
         <source>Light</source>
         <translation>明亮</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="333"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="332"/>
         <source>(A Part of xTools Project)</source>
         <translation>(xTools 系列软件)</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="335"/>
-        <location filename="../../Source/App/MainWindow.cpp" line="338"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="334"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="337"/>
         <source>Commit</source>
         <translation>最后提交</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="340"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="339"/>
         <source>Build Date</source>
         <translation>构建日期</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="342"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="341"/>
         <source>All rights reserved.</source>
         <translation>保留所有版权。</translation>
     </message>
     <message>
         <location filename="../../Source/App/MainWindow.cpp" line="180"/>
-        <location filename="../../Source/App/MainWindow.cpp" line="343"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="342"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="349"/>
         <source>Reboot application to effective</source>
-        <translation>重启软件生效</translation>
+        <translation type="vanished">重启软件生效</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="350"/>
         <source>Need to reboot, reboot to effective now?</source>
-        <translation>需要重启生效，立即重启？</translation>
+        <translation type="vanished">需要重启生效，立即重启？</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="382"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="367"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="386"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="371"/>
         <source>User QQ Group</source>
         <translation>用户交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="387"/>
+        <location filename="../../Source/App/MainWindow.cpp" line="372"/>
         <source>Qt QQ Group</source>
         <translation>Qt技术交流QQ群</translation>
     </message>
@@ -3083,34 +3112,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::xTools</name>
     <message>
-        <location filename="../../Source/Common/xTools.cpp" line="95"/>
         <source>System</source>
-        <translation>系统</translation>
+        <translation type="vanished">系统</translation>
     </message>
     <message>
-        <location filename="../../Source/Common/xTools.cpp" line="96"/>
         <source>Round up for .5 and above</source>
-        <translation>缩放至x.5倍</translation>
+        <translation type="vanished">缩放至x.5倍</translation>
     </message>
     <message>
-        <location filename="../../Source/Common/xTools.cpp" line="97"/>
         <source>Always round up</source>
-        <translation>总是放大</translation>
+        <translation type="vanished">总是放大</translation>
     </message>
     <message>
-        <location filename="../../Source/Common/xTools.cpp" line="98"/>
         <source>Always round down</source>
-        <translation>总是缩小</translation>
+        <translation type="vanished">总是缩小</translation>
     </message>
     <message>
-        <location filename="../../Source/Common/xTools.cpp" line="99"/>
         <source>Round up for .75 and above</source>
-        <translation>缩放至x.75倍</translation>
+        <translation type="vanished">缩放至x.75倍</translation>
     </message>
     <message>
-        <location filename="../../Source/Common/xTools.cpp" line="100"/>
         <source>Don&apos;t round</source>
-        <translation>不缩放</translation>
+        <translation type="vanished">不缩放</translation>
     </message>
 </context>
 </TS>
