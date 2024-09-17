@@ -44,7 +44,7 @@ FileCheckAssistant::FileCheckAssistant(QWidget* parent)
 #endif
     QStringList algorithmsStringList;
     for (int i = 0; i < algorithms.keyCount(); i++) {
-        if (algorithms.value(i) == QCryptographicHash::NumAlgorithms) {
+        if (QString(algorithms.key(i)) == QString("NumAlgorithms")) {
             continue;
         }
 
