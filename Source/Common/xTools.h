@@ -27,7 +27,6 @@ public:
     ~xTools() override;
 
     static QByteArray byteArray2Hex(const QByteArray& source, char separator = '\0');
-    static QString version();
 };
 
 } // namespace xTools

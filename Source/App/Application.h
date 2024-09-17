@@ -63,6 +63,7 @@ public:
     Q_INVOKABLE static QString systemDateFormat();
     Q_INVOKABLE static QString systemTimeFormat();
     Q_INVOKABLE static QString desktopPath();
+    Q_INVOKABLE static QString appVersioin();
     Q_INVOKABLE static bool tryToReboot();
 
 signals:

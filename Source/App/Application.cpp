@@ -282,6 +282,23 @@ QString Application::desktopPath()
     return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 }
 
+QString Application::appVersioin()
+{
+    QString version = "0.0.0";
+#if defined(X_TOOLS_GIT_TAG)
+    auto tag = QString(X_TOOLS_GIT_TAG);
+    if (tag == QString("continuous")) {
+        version = "9.9.9";
+    } else {
+        tag = tag.remove("v");
+        if (tag.split('.').length() == 3) {
+            version = tag;
+        }
+    }
+#endif
+    return version;
+}
+
 bool Application::tryToReboot()
 {
     int ret = QMessageBox::information(nullptr,

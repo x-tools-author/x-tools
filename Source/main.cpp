@@ -7,7 +7,6 @@
  * code directory.
  **************************************************************************************************/
 #include "App/xExec.h"
-#include "Common/xTools.h"
 
 #include "Application.h"
 #include "MainWindow.h"
@@ -15,6 +14,6 @@
 int main(const int argc, char *argv[])
 {
     xInitResources();
-    const QString version = xTools::xTools::version();
+    const QString version = xTools::Application::appVersioin();
     return xTools::exec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"), version);
 }
