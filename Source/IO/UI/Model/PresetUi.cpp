@@ -52,7 +52,6 @@ void PresetUi::setupIO(AbstractIO *io)
 
 QList<int> PresetUi::textItemColumns() const
 {
-    qInfo() << "PresetUi::textItemColumns()";
     return QList<int>{1};
 }
 
