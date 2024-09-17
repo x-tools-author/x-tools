@@ -15,7 +15,7 @@
 #include <QPainter>
 
 #include "./Settings.h"
-#include "./xExec.h"
+#include "./xTools.h"
 
 namespace xTools {
 
