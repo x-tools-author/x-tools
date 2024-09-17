@@ -11,12 +11,6 @@
 #include <QObject>
 #include <QVariant>
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-#define xSkipEmptyParts Qt::SkipEmptyParts
-#else
-#define xSkipEmptyParts QString::SkipEmptyParts
-#endif
-
 namespace xTools {
 
 class xTools : public QObject
@@ -25,8 +19,6 @@ class xTools : public QObject
 public:
     explicit xTools(QObject* parent = nullptr);
     ~xTools() override;
-
-    static QByteArray byteArray2Hex(const QByteArray& source, char separator = '\0');
 };
 
 } // namespace xTools

@@ -39,8 +39,8 @@
 #include <QModbusRtuSerialServer>
 #endif
 
+#include "App/Application.h"
 #include "App/Settings.h"
-#include "Common/xTools.h"
 #include "ModbusFactory.h"
 
 #define RXCOLOR "green"
@@ -792,7 +792,7 @@ void ModbusAssistant::onSendClicked()
 
     qWarning() << "Send raw request:"
                << "server address:" << spinBoxServerAddress << "function code:" << function_code
-               << "data:" << QString(xTools::xTools::byteArray2Hex(pdu, ' '));
+               << "data:" << QString(xTools::Application::byteArray2Hex(pdu, ' '));
     if (ModbusFactory::Instance()->IsValidModbusReply(reply)) {
         connect(reply, &QModbusReply::finished, this, [=]() {
             outputModbusReply(reply, function_code);
@@ -800,7 +800,7 @@ void ModbusAssistant::onSendClicked()
         });
 
         QString info = "pdu(No server address, no crc):";
-        info += QString(xTools::xTools::byteArray2Hex(pdu, ' '));
+        info += QString(xTools::Application::byteArray2Hex(pdu, ' '));
         outputMessage(info, false, TXCOLOR, TXFLAG);
     }
 
@@ -808,7 +808,7 @@ void ModbusAssistant::onSendClicked()
     int index = m_settings->value(m_keyCtx->sendHistoryIndex).toInt();
     bool ret = writeSettingsArray(m_keyCtx->sendHistory,
                                   m_keyCtx->pdu,
-                                  QString(xTools::xTools::byteArray2Hex(pdu, ' ')),
+                                  QString(xTools::Application::byteArray2Hex(pdu, ' ')),
                                   index,
                                   MAX_HISTORY_INDEX);
     if (!ret) {
@@ -816,9 +816,9 @@ void ModbusAssistant::onSendClicked()
     }
 #if 0
     if (index > ui->comboBoxPdu->count()) {
-        ui->comboBoxPdu->addItem(QString(xTools::xTools::byteArrray2Hex(pdu, ' ')));
+        ui->comboBoxPdu->addItem(QString(xTools::Application::byteArrray2Hex(pdu, ' ')));
     } else {
-        ui->comboBoxPdu->insertItem(index, QString(xTools::xTools::byteArrray2Hex(pdu, ' ')));
+        ui->comboBoxPdu->insertItem(index, QString(xTools::Application::byteArrray2Hex(pdu, ' ')));
     }
 #endif
 
@@ -1205,7 +1205,7 @@ void ModbusAssistant::outputModbusReply(QModbusReply *reply, int functionCode)
                                "data unit: %3")
                            .arg(spinBoxServerAddress)
                            .arg(functionCode)
-                           .arg(QString::fromLatin1(xTools::xTools::byteArray2Hex(data, ' ')));
+                           .arg(QString::fromLatin1(xTools::Application::byteArray2Hex(data, ' ')));
         outputMessage(info, false, RXCOLOR, RXFLAG);
     } else if (reply->type() == QModbusReply::ReplyType::Common) {
         QString info = ui->comboBoxFunctionCode->currentText();
