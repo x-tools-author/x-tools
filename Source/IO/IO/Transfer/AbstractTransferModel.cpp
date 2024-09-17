@@ -118,7 +118,6 @@ void AbstractTransferModel::onDataChanged(const QModelIndex &topLeft,
 #endif
 {
     if (topLeft != bottomRight) {
-        qWarning() << "topLeft != bottomRight, it is not supported for restarting transfer!";
         return;
     }
 
