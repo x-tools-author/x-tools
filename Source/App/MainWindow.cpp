@@ -32,7 +32,6 @@
 
 #include "App/Application.h"
 #include "App/Settings.h"
-#include "Common/xTools.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
 #include "StyleSheetManager.h"
@@ -240,9 +239,9 @@ void MainWindow::initOptionMenuHdpiPolicy()
     QMenu* menu = new QMenu(tr("HDPI Policy"));
     QActionGroup* actionGroup = new QActionGroup(this);
     int currentPolicy = Settings::instance()->hdpiPolicy();
-    auto supportedPolicies = xTools::supportedHighDpiPolicies();
+    auto supportedPolicies = Application::supportedHighDpiPolicies();
     for (auto& policy : supportedPolicies) {
-        auto name = xTools::highDpiPolicyName(policy.toInt());
+        auto name = Application::highDpiPolicyName(policy.toInt());
         auto action = menu->addAction(name, this, [=]() {
             onHdpiPolicyActionTriggered(policy.toInt());
         });
@@ -345,21 +344,7 @@ void MainWindow::onAboutActionTriggered()
 
 bool MainWindow::tryToReboot()
 {
-    int ret = QMessageBox::information(this,
-                                       tr("Reboot application to effective"),
-                                       tr("Need to reboot, reboot to effective now?"),
-                                       QMessageBox::Ok | QMessageBox::No,
-                                       QMessageBox::No);
-    if (ret == QMessageBox::Ok) {
-        QProcess::startDetached(QCoreApplication::applicationFilePath(), QStringList());
-        QTimer::singleShot(1000, this, [=]() {
-            qApp->closeAllWindows();
-            qApp->exit();
-        });
-        return true;
-    }
-
-    return false;
+    return Application::tryToReboot();
 }
 
 void MainWindow::createQtConf()

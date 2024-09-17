@@ -22,13 +22,17 @@
 #include <QLineEdit>
 #include <QList>
 #include <QLocale>
+#include <QMessageBox>
+#include <QMetaEnum>
 #include <QPainter>
+#include <QProcess>
 #include <QRegularExpressionValidator>
 #include <QScreen>
 #include <QSettings>
 #include <QStandardItemModel>
 #include <QStandardPaths>
 #include <QTextDocument>
+#include <QTimer>
 #include <QTranslator>
 
 #include "App/Settings.h"
@@ -126,6 +130,44 @@ QStringList Application::supportedLanguages()
 {
     return m_languageFlagNameMap.values();
 }
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+QVariantList Application::supportedHighDpiPolicies()
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<Qt::HighDpiScaleFactorRoundingPolicy>();
+    QVariantList list;
+    for (int i = 0; i < metaEnum.keyCount(); i++) {
+        list.append(metaEnum.value(i));
+    }
+    return list;
+}
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+QString Application::highDpiPolicyName(int policy)
+{
+    typedef Qt::HighDpiScaleFactorRoundingPolicy Policy;
+    static QMap<Policy, QString> policyMap;
+    if (policyMap.isEmpty()) {
+        policyMap.insert(Policy::Unset, tr("System"));
+        policyMap.insert(Policy::Round, tr("Round up for .5 and above"));
+        policyMap.insert(Policy::Ceil, tr("Always round up"));
+        policyMap.insert(Policy::Floor, tr("Always round down"));
+        policyMap.insert(Policy::RoundPreferFloor, tr("Round up for .75 and above"));
+        policyMap.insert(Policy::PassThrough, tr("Don't round"));
+    }
+
+    return policyMap.value(static_cast<Policy>(policy), "Unknown");
+}
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+bool Application::isValidHighDpiPolicy(int policy)
+{
+    auto policies = supportedHighDpiPolicies();
+    return policies.contains(QVariant(policy));
+}
+#endif
 
 QStringList Application::supportedLanguagePrefixes()
 {
@@ -238,6 +280,25 @@ QString Application::systemTimeFormat()
 QString Application::desktopPath()
 {
     return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+}
+
+bool Application::tryToReboot()
+{
+    int ret = QMessageBox::information(nullptr,
+                                       tr("Reboot application to effective"),
+                                       tr("Need to reboot, reboot to effective now?"),
+                                       QMessageBox::Ok | QMessageBox::No,
+                                       QMessageBox::No);
+    if (ret == QMessageBox::Ok) {
+        QProcess::startDetached(QCoreApplication::applicationFilePath(), QStringList());
+        QTimer::singleShot(1000, qApp, [=]() {
+            qApp->closeAllWindows();
+            qApp->exit();
+        });
+        return true;
+    }
+
+    return false;
 }
 
 void Application::setupLanguageWithPrefix(const QString &language, const QString &prefix)

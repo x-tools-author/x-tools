@@ -37,6 +37,12 @@ public:
     Q_INVOKABLE void setupLanguage(const QString &language = QString());
     Q_INVOKABLE QStringList supportedLanguages();
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    Q_INVOKABLE static QVariantList supportedHighDpiPolicies();
+    Q_INVOKABLE static QString highDpiPolicyName(int policy);
+    Q_INVOKABLE static bool isValidHighDpiPolicy(int policy);
+#endif
+
     // Such as "xToolsCore", "xToolsApp", "xToolsPrivateApp"
     Q_INVOKABLE virtual QStringList supportedLanguagePrefixes();
 
@@ -57,6 +63,7 @@ public:
     Q_INVOKABLE static QString systemDateFormat();
     Q_INVOKABLE static QString systemTimeFormat();
     Q_INVOKABLE static QString desktopPath();
+    Q_INVOKABLE static bool tryToReboot();
 
 signals:
     void languageChanged();
