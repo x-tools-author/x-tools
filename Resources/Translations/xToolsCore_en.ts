@@ -2484,11 +2484,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="180"/>
-        <source>&amp;About</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../../Source/App/MainWindow.cpp" line="181"/>
         <source>About Qt</source>
         <translation></translation>
@@ -2560,6 +2555,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
+        <location filename="../../Source/App/MainWindow.cpp" line="180"/>
         <location filename="../../Source/App/MainWindow.cpp" line="343"/>
         <source>About</source>
         <translation></translation>

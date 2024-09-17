@@ -2496,9 +2496,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../../Source/App/MainWindow.cpp" line="180"/>
         <source>&amp;About</source>
-        <translation>关于(&amp;A)</translation>
+        <translation type="vanished">关于</translation>
     </message>
     <message>
         <location filename="../../Source/App/MainWindow.cpp" line="181"/>
@@ -2559,7 +2558,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../Source/App/MainWindow.cpp" line="335"/>
         <location filename="../../Source/App/MainWindow.cpp" line="338"/>
         <source>Commit</source>
-        <translation>提交</translation>
+        <translation>最后提交</translation>
     </message>
     <message>
         <location filename="../../Source/App/MainWindow.cpp" line="340"/>
@@ -2572,6 +2571,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>保留所有版权。</translation>
     </message>
     <message>
+        <location filename="../../Source/App/MainWindow.cpp" line="180"/>
         <location filename="../../Source/App/MainWindow.cpp" line="343"/>
         <source>About</source>
         <translation>关于</translation>
