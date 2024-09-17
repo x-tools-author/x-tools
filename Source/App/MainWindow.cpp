@@ -177,8 +177,8 @@ void MainWindow::initMenuHelp()
 {
     QMenuBar* menu_bar = menuBar();
     m_helpMenu = menu_bar->addMenu(tr("&Help"));
-    m_aboutAction = m_helpMenu->addAction(tr("&About"));
     m_aboutQtAction = m_helpMenu->addAction(tr("About Qt"), qApp, &QApplication::aboutQt);
+    m_aboutAction = m_helpMenu->addAction(tr("About") + " " + QApplication::applicationName());
 
     connect(m_aboutAction, &QAction::triggered, this, &MainWindow::onAboutActionTriggered);
 }
@@ -328,14 +328,14 @@ void MainWindow::onAboutActionTriggered()
     QString buildDateTimeString = Application::buildDateTimeString(buildDateTimeFormat);
     QString year = Application::buildDateTimeString("yyyy");
     const QString version = Application::applicationVersion();
+    const QString name = qApp->applicationName();
     QString info;
-    info += qApp->applicationName() + QString(" ") + version + " "
-            + tr("(A Part of xTools Project)") + "\n\n";
+    info += name + QString(" ") + version + " " + tr("(A Part of xTools Project)") + "\n\n";
 #ifdef X_TOOLS_GIT_COMMIT
-    info += tr("Commit") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
+    info += tr("Commit") + QString("(xTools)") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
 #endif
 #ifdef X_TOOLS_PRIVATE_GIT_COMMIT
-    info += tr("Commit") + ": " + X_TOOLS_PRIVATE_GIT_COMMIT + "\n\n";
+    info += tr("Commit") + QString("(%1)").arg(name) + ": " + X_TOOLS_PRIVATE_GIT_COMMIT + "\n\n";
 #endif
     info += tr("Build Date") + ": " + buildDateTimeString + "\n\n";
     info += QString("Copyright 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
