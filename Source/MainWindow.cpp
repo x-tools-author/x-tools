@@ -245,18 +245,8 @@ void MainWindow::initViewMenu()
 
 void MainWindow::initHelpMenu()
 {
-    m_helpMenu->addSeparator();
-    m_helpMenu->addAction(tr("Get Sources from Github"), this, []() {
-        QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL));
-    });
-    m_helpMenu->addAction(tr("Get Sources from Gitee"), this, []() {
-        QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL));
-    });
-    m_helpMenu->addSeparator();
-#if 0
-    m_helpMenu->addAction(tr("About xTools"), this, &MainWindow::aboutSoftware);
-#endif
 #if defined(Q_OS_WIN) && !defined(X_TOOLS_ENABLE_MODULE_PRIVATE)
+    m_helpMenu->addSeparator();
     m_helpMenu->addAction(QIcon(":/Resources/Icons/IconBuy.svg"),
                           tr("Buy Ultimate Edition"),
                           this,
@@ -275,48 +265,12 @@ void MainWindow::initLinksMenu()
     auto* linksMenu = new QMenu(tr("Links"), this);
     menuBar()->insertMenu(m_helpMenu->menuAction(), linksMenu);
 
-    struct Link
-    {
-        QString name;
-        QString url;
-        QString iconPath;
-    };
-    QList<Link> linkList;
-    linkList << Link{tr("Qt Official Download"),
-                     QString("http://download.qt.io/official_releases/qt"),
-                     QString(":/resources/images/Qt.png")}
-             << Link{tr("Qt Official Blog"),
-                     QString("https://www.qt.io/blog"),
-                     QString(":/resources/images/Qt.png")}
-             << Link{tr("Qt Official Release"),
-                     QString("https://wiki.qt.io/Qt_5.15_Release"),
-                     QString(":/resources/images/Qt.png")}
-             << Link{QString(""), QString(""), QString("")}
-             << Link{tr("Download xTools from Github"),
-                     QString("%1/releases").arg(X_TOOLS_GITHUB_REPOSITORY_URL),
-                     QString(":/Resources/Icons/GitHub.svg")}
-             << Link{tr("Download xTools from Gitee"),
-                     QString("%1/releases").arg(X_TOOLS_GITEE_REPOSITORY_URL),
-                     QString(":/Resources/Icons/Gitee.svg")}
-             << Link{QString(""), QString(""), QString("")}
-             << Link{tr("Office Web Site"),
-                     QString("https://qsaker.gitee.io/qsak/"),
-                     QString(":/Resources/Images/I18n.png")};
-
-    for (auto& var : linkList) {
-        if (var.url.isEmpty()) {
-            linksMenu->addSeparator();
-            continue;
-        }
-
-        auto* action = new QAction(var.name, this);
-        action->setObjectName(var.url);
-        linksMenu->addAction(action);
-
-        connect(action, &QAction::triggered, this, [=]() {
-            QDesktopServices::openUrl(QUrl(sender()->objectName()));
-        });
-    }
+    linksMenu->addAction(tr("Get Sources from Github"), this, []() {
+        QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL));
+    });
+    linksMenu->addAction(tr("Get Sources from Gitee"), this, []() {
+        QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL));
+    });
 }
 
 void MainWindow::updateGrid(WindowGrid grid)
