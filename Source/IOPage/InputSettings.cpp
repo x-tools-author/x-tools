@@ -9,7 +9,7 @@
 #include "InputSettings.h"
 #include "ui_InputSettings.h"
 
-#include "Common/CRC.h"
+#include "IO/Unit/CRC.h"
 #include "IO/xIO.h"
 
 InputSettings::InputSettings(QWidget *parent)

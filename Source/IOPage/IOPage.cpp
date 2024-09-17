@@ -43,8 +43,8 @@
 #include "IO/UI/Transfer/WebSocketServerTransferUi.h"
 #endif
 
-#include "Common/CRC.h"
 #include "CommunicationSettings.h"
+#include "IO/Unit/CRC.h"
 #include "InputSettings.h"
 #include "OutputSettings.h"
 #include "Unit/SyntaxHighlighter.h"

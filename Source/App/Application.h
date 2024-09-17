@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE static QString desktopPath();
     Q_INVOKABLE static QString appVersioin();
     Q_INVOKABLE static bool tryToReboot();
+    Q_INVOKABLE static QByteArray byteArray2Hex(const QByteArray &source, char separator = '\0');
 
 signals:
     void languageChanged();
