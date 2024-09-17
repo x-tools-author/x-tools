@@ -28,13 +28,6 @@ public:
 
     static QByteArray byteArray2Hex(const QByteArray& source, char separator = '\0');
     static QString version();
-    static void rebootApplication();
-
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    Q_INVOKABLE static QVariantList supportedHighDpiPolicies();
-    Q_INVOKABLE static QString highDpiPolicyName(int policy);
-    Q_INVOKABLE static bool isValidHighDpiPolicy(int policy);
-#endif
 };
 
 } // namespace xTools
