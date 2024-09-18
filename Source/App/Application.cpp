@@ -111,6 +111,21 @@ void Application::setFriendlyAppName(const QString &name)
     m_friendlyAppName = name;
 }
 
+QString Application::version()
+{
+    return QApplication::applicationVersion();
+}
+
+QString Application::lastCommit()
+{
+    return X_TOOLS_GIT_COMMIT;
+}
+
+QString Application::lastCommitTime()
+{
+    return X_TOOLS_GIT_COMMIT_TIME;
+}
+
 QString Application::defaultLanguage()
 {
     QString language = xTools::Settings::instance()->language();

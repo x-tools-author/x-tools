@@ -38,6 +38,9 @@ public:
 
     static QString friendlyAppName();
     static void setFriendlyAppName(const QString &name);
+    Q_INVOKABLE QString version();
+    Q_INVOKABLE QString lastCommit();
+    Q_INVOKABLE QString lastCommitTime();
 
     Q_INVOKABLE QString defaultLanguage();
     Q_INVOKABLE void setupLanguage(const QString &language = QString());
