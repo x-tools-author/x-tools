@@ -262,6 +262,33 @@ void IOPage::load(const QVariantMap &parameters)
     // clang-format on
 }
 
+QTabWidget *IOPage::tabWidget()
+{
+    return ui->tabWidget;
+}
+
+QToolButton *IOPage::presetToolButton()
+{
+    return ui->toolButtonInputPreset;
+}
+
+void IOPage::inputBytes(const QByteArray &bytes)
+{
+    if (m_io && m_io->isWorking()) {
+        m_io->inputBytes(bytes);
+    }
+}
+
+void IOPage::prependOutoutControl(QWidget *widget)
+{
+    ui->horizontalLayoutOutput->insertWidget(0, widget);
+}
+
+void IOPage::appendOutoutControl(QWidget *widget)
+{
+    ui->horizontalLayoutOutput->addWidget(widget);
+}
+
 void IOPage::initUi()
 {
 #if 0
@@ -507,6 +534,8 @@ void IOPage::onBytesRead(const QByteArray &bytes, const QString &from)
     m_ioSettings->saveData(bytes, false);
     m_rxStatistician->inputBytes(bytes);
     outputText(bytes, from, true);
+
+    emit bytesRead(bytes, from);
 }
 
 void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
@@ -514,6 +543,8 @@ void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
     m_ioSettings->saveData(bytes, true);
     m_txStatistician->inputBytes(bytes);
     outputText(bytes, to, false);
+
+    emit bytesWritten(bytes, to);
 }
 
 void IOPage::openCommunication()

@@ -11,6 +11,7 @@
 #include <QButtonGroup>
 #include <QPushButton>
 #include <QSettings>
+#include <QTabWidget>
 #include <QTimer>
 #include <QVariantMap>
 #include <QWidget>
@@ -71,6 +72,15 @@ public:
 
     QVariantMap save();
     void load(const QVariantMap &parameters);
+    QTabWidget *tabWidget();
+    QToolButton *presetToolButton();
+    void inputBytes(const QByteArray &bytes);
+    void prependOutoutControl(QWidget *widget);
+    void appendOutoutControl(QWidget *widget);
+
+signals:
+    void bytesWritten(const QByteArray &bytes, const QString &to);
+    void bytesRead(const QByteArray &bytes, const QString &from);
 
 private:
     Ui::IOPage *ui;
