@@ -7,9 +7,15 @@
 
 *xTools* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (Qt6.8 is recommended). It offers extensive support for SerialPort, BLE, UDP, TCP, Web Socket, Modbus and CAN Bus debugging functionalities.
 
+![xTools.gif](Doc/Images/xTools.gif)
+
 > **You can get *xTools* form [Micorsoft Store(Pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
 
-![xTools.gif](Doc/Images/xTools.gif)
+![xToolsDark.png](Doc/Images/xToolsDark.png)
+
+> **You can get *xTools* form [Micorsoft Store(Pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
+
+![xToolsDark.png](Doc/Images/xToolsLight.png)
 
 > **You can get *xTools* form [Micorsoft Store(Pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
 
