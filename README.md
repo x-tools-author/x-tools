@@ -5,20 +5,13 @@
 [![build-macos](https://github.com/x-tools-author/x-tools/actions/workflows/build-macos.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-macos.yml)
 [![build-android](https://github.com/x-tools-author/x-tools/actions/workflows/build-android.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-android.yml)
 
-*xTools* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (recommended version: Qt6.5). It offers extensive support for SerialPort, BLE, UDP, TCP, WebSocket, Modbus and CANBus debugging functionalities. Here are some notable features:
+*xTools* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (Qt6.8 is recommended). It offers extensive support for SerialPort, BLE, UDP, TCP, Web Socket, Modbus and CAN Bus debugging functionalities.
 
-1. Data Reading and Writing: This serves as the fundamental function across all tools.
-2. Timed Sending: Enables scheduled transmission of "Hello" to the device every second.
-3. Auto Response: Automatically responds with "Hi" when receiving "Hello" from the device.
-4. Data Transmitting: Facilitates forwarding data received from a SerialPort device to a BLE device.
-5. Multiple Text Formats: Show text as bin, otc, dec, hex, ascii or urf8 etc..
-6. ...
+> **You can get *xTools* form [Micorsoft Store(Pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
 
-> **You can get *xTools* form [Micorsoft Store(sponsor)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
+![xTools.gif](Doc/Images/xTools.gif)
 
-![xToolsDark.png](Doc/Images/xToolsDark.png)
-
-![xToolsDark.png](Doc/Images/xToolsLight.png)
+> **You can get *xTools* form [Micorsoft Store(Pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
 
 ## About the Project
 
@@ -37,3 +30,4 @@
 |Qt Technology Communication|723516989 (QQ Group)|
 |Gitee| <https://gitee.com/x-tools-author/x-tools>|
 |GitHub| <https://github.com/x-tools-author/x-tools>|
+|More tools|<https://apps.microsoft.com/search/publisher?name=Qsaker2018>|

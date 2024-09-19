@@ -101,8 +101,8 @@ QIcon MainWindow::cookedIcon(const QString& svgFileName)
 void MainWindow::updateWindowTitle()
 {
     QString title = Application::friendlyAppName();
-    title += " v";
-    title += Application::applicationVersion();
+    //title += " v";
+    //title += Application::applicationVersion();
     setWindowTitle(title);
 }
 
