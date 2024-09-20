@@ -52,26 +52,26 @@ QList<int> xIO::supportedCommunicationTypes()
     return deviceTypes;
 }
 
-QString xIO::CommunicationName(xIO::CommunicationType type)
+QString xIO::communicationName(int type)
 {
     switch (type) {
-    case CommunicationType::SerialPort:
+    case static_cast<int>(CommunicationType::SerialPort):
         return QObject::tr("Serial Port");
-    case CommunicationType::BleCentral:
+    case static_cast<int>(CommunicationType::BleCentral):
         return QObject::tr("BLE Central");
-    case CommunicationType::BlePeripheral:
+    case static_cast<int>(CommunicationType::BlePeripheral):
         return QObject::tr("BLE Peripheral");
-    case CommunicationType::UdpClient:
+    case static_cast<int>(CommunicationType::UdpClient):
         return QObject::tr("UDP Client");
-    case CommunicationType::UdpServer:
+    case static_cast<int>(CommunicationType::UdpServer):
         return QObject::tr("UDP Server");
-    case CommunicationType::TcpClient:
+    case static_cast<int>(CommunicationType::TcpClient):
         return QObject::tr("TCP Client");
-    case CommunicationType::TcpServer:
+    case static_cast<int>(CommunicationType::TcpServer):
         return QObject::tr("TCP Server");
-    case CommunicationType::WebSocketClient:
+    case static_cast<int>(CommunicationType::WebSocketClient):
         return QObject::tr("WebSocket Client");
-    case CommunicationType::WebSocketServer:
+    case static_cast<int>(CommunicationType::WebSocketServer):
         return QObject::tr("WebSocket Server");
     default:
         return "Unknown";
@@ -87,7 +87,7 @@ void xIO::setupCommunicationTypes(QComboBox *comboBox)
     comboBox->clear();
     QList<int> deviceTypes = supportedCommunicationTypes();
     for (int type : deviceTypes) {
-        comboBox->addItem(CommunicationName(static_cast<CommunicationType>(type)), type);
+        comboBox->addItem(communicationName(type), type);
     }
 
     comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(CommunicationType::SerialPort)));

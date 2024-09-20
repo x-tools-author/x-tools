@@ -38,7 +38,7 @@ public:
     };
     Q_ENUM(CommunicationType);
     static QList<int> supportedCommunicationTypes();
-    static QString CommunicationName(CommunicationType type);
+    static QString communicationName(int type);
     static void setupCommunicationTypes(QComboBox *comboBox);
 
     /**********************************************************************************************/
