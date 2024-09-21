@@ -10,8 +10,8 @@
 
 namespace xTools {
 
-UdpClientUi::UdpClientUi(xIO::CommunicationType type, QWidget *parent)
-    : SocketClientUi(type, parent)
+UdpClientUi::UdpClientUi(QWidget *parent)
+    : SocketClientUi(xIO::CommunicationType::UdpClient, parent)
 {
     setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);

@@ -22,7 +22,7 @@ class SerialPortUi : public CommunicationUi
 {
     Q_OBJECT
 public:
-    SerialPortUi(xIO::CommunicationType type, QWidget *parent = nullptr);
+    SerialPortUi(QWidget *parent = nullptr);
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;

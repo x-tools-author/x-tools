@@ -434,8 +434,7 @@ void IOPage::onCommunicationTypeChanged()
     }
 
     int type = ui->comboBoxCommunicationTypes->currentData().toInt();
-    auto cookedType = static_cast<xTools::xIO::CommunicationType>(type);
-    m_ioUi = xTools::IOUiFactory::singleton().createDeviceUi(cookedType);
+    m_ioUi = xTools::IOUiFactory::singleton().createDeviceUi(type);
     if (m_ioUi) {
         loadControllerParameters();
         ui->verticalLayoutCommunicationController->addWidget(m_ioUi);
