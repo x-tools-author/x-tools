@@ -10,7 +10,7 @@
 #include "ui_TextItemEditor.h"
 
 #include "../xIO.h"
-#include "CRC.h "
+#include "CRC.h"
 
 namespace xTools {
 
