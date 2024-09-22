@@ -22,7 +22,7 @@ private:
 
 public:
     static IOUiFactory &singleton();
-    CommunicationUi *createDeviceUi(xIO::CommunicationType type);
+    CommunicationUi *createDeviceUi(int type);
 };
 
 } // namespace xTools

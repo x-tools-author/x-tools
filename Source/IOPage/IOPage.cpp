@@ -434,8 +434,7 @@ void IOPage::onCommunicationTypeChanged()
     }
 
     int type = ui->comboBoxCommunicationTypes->currentData().toInt();
-    auto cookedType = static_cast<xTools::xIO::CommunicationType>(type);
-    m_ioUi = xTools::IOUiFactory::singleton().createDeviceUi(cookedType);
+    m_ioUi = xTools::IOUiFactory::singleton().createDeviceUi(type);
     if (m_ioUi) {
         loadControllerParameters();
         ui->verticalLayoutCommunicationController->addWidget(m_ioUi);
@@ -455,8 +454,7 @@ void IOPage::onCycleIntervalChanged()
 void IOPage::onInputFormatChanged()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    xTools::xIO::setupTextFormatValidator(ui->lineEditInput,
-                                          static_cast<xTools::xIO::TextFormat>(format));
+    xTools::xIO::setupTextFormatValidator(ui->lineEditInput, format);
     ui->lineEditInput->clear();
 }
 

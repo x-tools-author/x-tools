@@ -25,8 +25,6 @@ public:
 
     xIO::CommunicationType type() const;
 
-    virtual void setUiEnabled(bool enabled);
-
 private:
     xIO::CommunicationType const m_type;
 };

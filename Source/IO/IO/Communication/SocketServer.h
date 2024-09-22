@@ -21,6 +21,9 @@ public:
     explicit SocketServer(QObject *parent = nullptr);
     ~SocketServer() override;
 
+    QVariantMap save() const override;
+    void load(const QVariantMap &data) override;
+
     virtual void disconnectAllClients() {};
 
     Q_INVOKABLE QStringList clients() const;

@@ -106,7 +106,7 @@ void TextItemEditor::onTextFormatChanged()
 {
     ui->lineEditInput->clear();
     int format = ui->comboBoxFormat->currentData().toInt();
-    xIO::setupTextFormatValidator(ui->lineEditInput, static_cast<xIO::TextFormat>(format));
+    xIO::setupTextFormatValidator(ui->lineEditInput, format);
 }
 
 } // namespace xTools

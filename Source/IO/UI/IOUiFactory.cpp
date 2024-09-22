@@ -36,30 +36,30 @@ IOUiFactory &IOUiFactory::singleton()
     return instance;
 }
 
-CommunicationUi *IOUiFactory::createDeviceUi(xIO::CommunicationType type)
+CommunicationUi *IOUiFactory::createDeviceUi(int type)
 {
     switch (type) {
 #ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
-    case xIO::CommunicationType::SerialPort:
-        return new SerialPortUi(type);
+    case static_cast<int>(xIO::CommunicationType::SerialPort):
+        return new SerialPortUi();
 #endif
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
-    case xIO::CommunicationType::BleCentral:
-        return new BleCentralUi(type);
+    case static_cast<int>(xIO::CommunicationType::BleCentral):
+        return new BleCentralUi();
 #endif
-    case xIO::CommunicationType::UdpClient:
-        return new UdpClientUi(type);
-    case xIO::CommunicationType::UdpServer:
-        return new UdpServerUi(type);
-    case xIO::CommunicationType::TcpClient:
-        return new TcpClientUi(type);
-    case xIO::CommunicationType::TcpServer:
-        return new TcpServerUi(type);
+    case static_cast<int>(xIO::CommunicationType::UdpClient):
+        return new UdpClientUi();
+    case static_cast<int>(xIO::CommunicationType::UdpServer):
+        return new UdpServerUi();
+    case static_cast<int>(xIO::CommunicationType::TcpClient):
+        return new TcpClientUi();
+    case static_cast<int>(xIO::CommunicationType::TcpServer):
+        return new TcpServerUi();
 #ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
-    case xIO::CommunicationType::WebSocketClient:
-        return new WebSocketClientUi(type);
-    case xIO::CommunicationType::WebSocketServer:
-        return new WebSocketServerUi(type);
+    case static_cast<int>(xIO::CommunicationType::WebSocketClient):
+        return new WebSocketClientUi();
+    case static_cast<int>(xIO::CommunicationType::WebSocketServer):
+        return new WebSocketServerUi();
 #endif
     default:
         return nullptr;

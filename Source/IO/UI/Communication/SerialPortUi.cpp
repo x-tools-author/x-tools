@@ -14,8 +14,8 @@
 
 namespace xTools {
 
-SerialPortUi::SerialPortUi(xIO::CommunicationType type, QWidget *parent)
-    : CommunicationUi(type, parent)
+SerialPortUi::SerialPortUi(QWidget *parent)
+    : CommunicationUi(xIO::CommunicationType::SerialPort, parent)
     , ui(new Ui::SerialPortUi)
 {
     ui->setupUi(this);

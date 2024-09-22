@@ -16,7 +16,7 @@ class WebSocketServerUi : public SocketServerUi
 {
     Q_OBJECT
 public:
-    explicit WebSocketServerUi(xIO::CommunicationType type, QWidget *parent = nullptr);
+    explicit WebSocketServerUi(QWidget *parent = nullptr);
     ~WebSocketServerUi() override;
 
     void setUiEnabled(bool enabled) override;

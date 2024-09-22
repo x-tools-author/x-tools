@@ -22,9 +22,4 @@ xIO::CommunicationType CommunicationUi::type() const
     return m_type;
 }
 
-void CommunicationUi::setUiEnabled(bool enabled)
-{
-    setEnabled(enabled);
-}
-
 } // namespace xTools

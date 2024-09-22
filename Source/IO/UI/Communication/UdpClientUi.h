@@ -16,7 +16,7 @@ class UdpClientUi : public SocketClientUi
 {
     Q_OBJECT
 public:
-    explicit UdpClientUi(xIO::CommunicationType type, QWidget *parent = nullptr);
+    explicit UdpClientUi(QWidget *parent = nullptr);
     ~UdpClientUi() override;
 
     void setUiEnabled(bool enabled) override;

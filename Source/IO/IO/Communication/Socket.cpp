@@ -24,6 +24,19 @@ Socket::Socket(QObject *parent)
 
 Socket::~Socket() {}
 
+QVariantMap Socket::save() const
+{
+    m_parametersMutex.lock();
+    QVariantMap parameters = m_parameters;
+    m_parametersMutex.unlock();
+    return parameters;
+}
+
+void Socket::load(const QVariantMap &data)
+{
+    setParameters(data);
+}
+
 void Socket::setDataChannel(int channel)
 {
     m_channel = channel;
