@@ -454,8 +454,7 @@ void IOPage::onCycleIntervalChanged()
 void IOPage::onInputFormatChanged()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    xTools::xIO::setupTextFormatValidator(ui->lineEditInput,
-                                          static_cast<xTools::xIO::TextFormat>(format));
+    xTools::xIO::setupTextFormatValidator(ui->lineEditInput, format);
     ui->lineEditInput->clear();
 }
 

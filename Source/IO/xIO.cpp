@@ -212,9 +212,9 @@ QByteArray xIO::arrayAppendArray(const QByteArray &a1, const QByteArray &a2)
     return a1 + a2;
 }
 
-void xIO::setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format, int maxLen)
+void xIO::setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen)
 {
-    static QMap<TextFormat, QRegularExpressionValidator *> regularExpressionMap;
+    static QMap<int, QRegularExpressionValidator *> regularExpressionMap;
     if (regularExpressionMap.isEmpty()) {
         // clang-format off
         const QString binStr = "([01][01][01][01][01][01][01][01][ ])*";
@@ -231,12 +231,12 @@ void xIO::setupTextFormatValidator(QLineEdit *lineEdit, TextFormat format, int m
         auto const asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
         // clang-format on
 
-        regularExpressionMap.insert(TextFormat::Bin, binValidator);
-        regularExpressionMap.insert(TextFormat::Oct, otcValidator);
-        regularExpressionMap.insert(TextFormat::Dec, decValidator);
-        regularExpressionMap.insert(TextFormat::Hex, hexValidator);
-        regularExpressionMap.insert(TextFormat::Ascii, asciiValidator);
-        regularExpressionMap.insert(TextFormat::Utf8, nullptr);
+        regularExpressionMap.insert(static_cast<int>(TextFormat::Bin), binValidator);
+        regularExpressionMap.insert(static_cast<int>(TextFormat::Oct), otcValidator);
+        regularExpressionMap.insert(static_cast<int>(TextFormat::Dec), decValidator);
+        regularExpressionMap.insert(static_cast<int>(TextFormat::Hex), hexValidator);
+        regularExpressionMap.insert(static_cast<int>(TextFormat::Ascii), asciiValidator);
+        regularExpressionMap.insert(static_cast<int>(TextFormat::Utf8), nullptr);
     }
 
     if (lineEdit && regularExpressionMap.contains(format)) {
