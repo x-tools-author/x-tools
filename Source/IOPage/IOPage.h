@@ -1,4 +1,4 @@
-/***************************************************************************************************
+﻿/***************************************************************************************************
  * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
@@ -13,6 +13,7 @@
 #include <QSettings>
 #include <QTabWidget>
 #include <QTimer>
+#include <QToolButton>
 #include <QVariantMap>
 #include <QWidget>
 
