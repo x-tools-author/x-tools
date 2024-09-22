@@ -22,6 +22,9 @@ public:
     explicit SerialPort(QObject *parent = nullptr);
     ~SerialPort() override;
 
+    QVariantMap save() const override;
+    void load(const QVariantMap &data) override;
+
     QObject *initDevice() override;
     void deinitDevice() override;
     void writeBytes(const QByteArray &bytes) override;
