@@ -43,9 +43,6 @@ protected:
     void run() override;
 
 private:
-    QObject *m_deviceObj{nullptr};
-
-private:
     Q_SIGNAL void invokeWriteBytes(const QByteArray &bytes);
 };
 

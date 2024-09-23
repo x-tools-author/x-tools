@@ -20,14 +20,23 @@ Socket::Socket(QObject *parent)
         registered = true;
         qRegisterMetaType<Socket::SocketPrivateSignal>("Socket::SocketPrivateSignal");
     }
+
+    m_channel = static_cast<int>(xIO::WebSocketDataChannel::Text);
+
+    xIO::SocketItemKeys keys;
+    QVariantMap tmp;
+    tmp.insert(keys.clientPort, m_clientPort);
+    tmp.insert(keys.clientAddress, m_clientAddress);
+    tmp.insert(keys.serverPort, m_serverPort);
+    tmp.insert(keys.serverAddress, m_serverAddress);
+    tmp.insert(keys.dataChannel, m_channel);
+    tmp.insert(keys.authentication, m_authentication);
+    tmp.insert(keys.username, m_username);
+    tmp.insert(keys.password, m_password);
+    load(tmp);
 }
 
 Socket::~Socket() {}
-
-QVariantMap Socket::save() const
-{
-    return Communication::save();
-}
 
 void Socket::load(const QVariantMap &parameters)
 {

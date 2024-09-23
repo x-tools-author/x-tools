@@ -52,20 +52,19 @@ void Communication::inputBytes(const QByteArray &bytes)
 
 void Communication::run()
 {
-    m_deviceObj = initDevice();
-    if (!m_deviceObj) {
+    QObject *obj = initDevice();
+    if (!obj) {
         emit closed();
         return;
     }
 
-    connect(this, &Communication::invokeWriteBytes, m_deviceObj, [this](const QByteArray &bytes) {
+    connect(this, &Communication::invokeWriteBytes, obj, [this](const QByteArray &bytes) {
         writeBytes(bytes);
     });
 
     emit opened();
     exec();
 
-    m_deviceObj = nullptr;
     deinitDevice();
     emit closed();
 }

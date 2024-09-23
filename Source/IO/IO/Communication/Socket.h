@@ -21,23 +21,23 @@ public:
     explicit Socket(QObject *parent = nullptr);
     ~Socket();
 
-    QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
     void setDataChannel(int channel);
 
 protected:
-    quint16 m_clientPort{0};
-    QString m_clientAddress{"0.0.0.0"};
-    quint16 m_serverPort{0};
-    QString m_serverAddress{"0.0.0.0"};
+    quint16 m_clientPort{12347};
+    QString m_clientAddress{"127.0.0.1"};
+    quint16 m_serverPort{12347};
+    QString m_serverAddress{"127.0.0.1"};
 
     int m_channel;
     bool m_authentication{false};
-    QString m_username;
-    QString m_password;
+    QString m_username{""};
+    QString m_password{""};
 
-    struct SocketPrivateSignal
-    {};
+    // clang-format off
+    struct SocketPrivateSignal{};
+    // clang-format on
 
 protected:
     QString makeFlag(const QString &address, quint16 port) const;
