@@ -37,7 +37,7 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    QVariantMap parameters = socket->parameters();
+    QVariantMap parameters = socket->save();
     xIO::SocketItem socketItem = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
 
     int column = index.column();
@@ -119,7 +119,7 @@ bool SocketTransferModel::setData(const QModelIndex &index, const QVariant &valu
         m_transfers.replace(row, item);
     } else {
         auto socket = qobject_cast<Socket *>(item.transfer);
-        QVariantMap parameters = socket->parameters();
+        QVariantMap parameters = socket->save();
         xIO::SocketItem socketItem = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
 
         if (column == 1) {
@@ -141,7 +141,7 @@ bool SocketTransferModel::setData(const QModelIndex &index, const QVariant &valu
         }
 
         parameters = xIO::saveSocketItem(socketItem).toVariantMap();
-        socket->setParameters(parameters);
+        socket->load(parameters);
     }
 
     emit dataChanged(index, index);
@@ -192,7 +192,7 @@ Communication *SocketTransferModel::createTransfer()
     if (socket) {
         auto item = xIO::defaultSocketItem();
         auto cookedItem = xIO::saveSocketItem(item);
-        socket->setParameters(cookedItem.toVariantMap());
+        socket->load(cookedItem.toVariantMap());
     }
 
     return socket;

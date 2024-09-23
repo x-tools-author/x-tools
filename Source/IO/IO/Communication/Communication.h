@@ -28,8 +28,6 @@ public:
 
     void inputBytes(const QByteArray &bytes) override;
 
-    virtual QVariantMap parameters() const;
-    virtual Q_INVOKABLE void setParameters(const QVariantMap &parameters);
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};
     virtual void writeBytes(const QByteArray &bytes) { Q_UNUSED(bytes); };
@@ -40,10 +38,6 @@ signals:
 
     void bytesRead(const QByteArray &bytes, const QString &from);
     void bytesWritten(const QByteArray &bytes, const QString &to);
-
-protected:
-    QVariantMap m_parameters;
-    mutable QMutex m_parametersMutex;
 
 protected:
     void run() override;

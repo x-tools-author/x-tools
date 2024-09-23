@@ -32,20 +32,8 @@ QVariantMap Socket::save() const
     return parameters;
 }
 
-void Socket::load(const QVariantMap &data)
+void Socket::load(const QVariantMap &parameters)
 {
-    setParameters(data);
-}
-
-void Socket::setDataChannel(int channel)
-{
-    m_channel = channel;
-}
-
-void Socket::setParameters(const QVariantMap &parameters)
-{
-    Communication::setParameters(parameters);
-
     xIO::SocketItem item = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
     m_clientPort = item.clientPort;
     m_clientAddress = item.clientAddress;
@@ -55,6 +43,11 @@ void Socket::setParameters(const QVariantMap &parameters)
     m_authentication = item.authentication;
     m_username = item.username;
     m_password = item.password;
+}
+
+void Socket::setDataChannel(int channel)
+{
+    m_channel = channel;
 }
 
 QString Socket::makeFlag(const QString &address, quint16 port) const

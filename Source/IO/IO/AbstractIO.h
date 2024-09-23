@@ -10,6 +10,7 @@
 
 #include <atomic>
 #include <QJsonObject>
+#include <QMutex>
 #include <QThread>
 #include <QVariantMap>
 
@@ -40,6 +41,8 @@ signals:
 protected:
     std::atomic_bool m_isWorking{false};
     std::atomic_bool m_enable{true};
+    QVariantMap m_parameters;
+    mutable QMutex m_parametersMutex;
 
 signals:
     void isWorkingChanged();

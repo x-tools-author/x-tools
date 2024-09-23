@@ -39,7 +39,7 @@ QVariant SerialPortTransferModel::data(const QModelIndex &index, int role) const
     }
 
     int column = index.column();
-    QVariantMap data = serialPort->parameters();
+    QVariantMap data = serialPort->save();
     xIO::SerialPortItem serialPortItem = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(data));
 
     if (role == Qt::DisplayRole) {
@@ -147,7 +147,7 @@ bool SerialPortTransferModel::setData(const QModelIndex &index, const QVariant &
             return false;
         }
 
-        QVariantMap data = serialPort->parameters();
+        QVariantMap data = serialPort->save();
         auto serialPortItem = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(data));
         if (column == 1) {
             serialPortItem.portName = value.toString();
@@ -166,7 +166,7 @@ bool SerialPortTransferModel::setData(const QModelIndex &index, const QVariant &
         }
 
         auto parametres = xIO::saveSerialPortItem(serialPortItem);
-        serialPort->setParameters(parametres.toVariantMap());
+        serialPort->load(parametres.toVariantMap());
     }
 
     emit dataChanged(index, index);
@@ -220,7 +220,7 @@ Communication *SerialPortTransferModel::createTransfer()
     auto sp = new SerialPort{this};
     auto item = xIO::defaultSerialPortItem();
     auto parametres = xIO::saveSerialPortItem(item);
-    sp->setParameters(parametres.toVariantMap());
+    sp->load(parametres.toVariantMap());
     return sp;
 }
 

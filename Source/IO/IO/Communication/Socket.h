@@ -22,10 +22,8 @@ public:
     ~Socket();
 
     QVariantMap save() const override;
-    void load(const QVariantMap &data) override;
-
+    void load(const QVariantMap &parameters) override;
     void setDataChannel(int channel);
-    void setParameters(const QVariantMap &parameters) override;
 
 protected:
     quint16 m_clientPort{0};

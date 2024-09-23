@@ -49,6 +49,8 @@ QVariantMap AbstractIO::save() const
 
 void AbstractIO::load(const QVariantMap &data)
 {
+    m_parameters = data;
+
     if (data.isEmpty()) {
         return;
     }

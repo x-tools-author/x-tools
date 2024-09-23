@@ -590,7 +590,6 @@ void IOPage::openCommunication()
         QVariantMap parameters = m_ioUi->save();
         m_ioUi->setupIO(m_io);
         m_io->load(parameters);
-        m_io->setParameters(parameters);
         m_io->openDevice();
     }
 }
