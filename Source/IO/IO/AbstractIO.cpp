@@ -40,6 +40,13 @@ AbstractIO::~AbstractIO()
     }
 }
 
+void AbstractIO::inputBytes(const QByteArray &bytes)
+{
+    if (isEnable()) {
+        emit outputBytes(bytes);
+    }
+}
+
 QVariantMap AbstractIO::save() const
 {
     QVariantMap data;
