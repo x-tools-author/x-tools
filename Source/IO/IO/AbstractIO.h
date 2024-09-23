@@ -37,6 +37,9 @@ signals:
     void warningOccurred(const QString &warningString);
     void errorOccurred(const QString &errorString);
 
+    void isWorkingChanged();
+    void isEnableChanged();
+
 protected:
     std::atomic_bool m_isWorking{false};
     std::atomic_bool m_enable{true};
@@ -44,10 +47,6 @@ protected:
 private:
     QVariantMap m_parameters;
     mutable QMutex m_parametersMutex;
-
-signals:
-    void isWorkingChanged();
-    void isEnableChanged();
 };
 
 } // namespace xTools
