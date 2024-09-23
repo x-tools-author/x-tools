@@ -18,9 +18,8 @@ BleCentral::~BleCentral() {}
 
 QObject *BleCentral::initDevice()
 {
-    m_parametersMutex.lock();
-    QBluetoothDeviceInfo info = m_parameters["deviceInfo"].value<QBluetoothDeviceInfo>();
-    m_parametersMutex.unlock();
+    auto tmp = save();
+    QBluetoothDeviceInfo info = tmp["deviceInfo"].value<QBluetoothDeviceInfo>();
 
     if (!info.isValid()) {
         emit errorOccurred("Invalid device info");
@@ -77,11 +76,10 @@ void BleCentral::deinitDevice()
 
 void BleCentral::writeBytes(const QByteArray &bytes)
 {
-    m_parametersMutex.lock();
-    auto service = m_parameters["service"].value<QLowEnergyService *>();
-    auto writeMode = m_parameters["writeMode"].value<QLowEnergyService::WriteMode>();
-    auto characteristic = m_parameters["characteristic"].value<QLowEnergyCharacteristic>();
-    m_parametersMutex.unlock();
+    QVariantMap parameters = save();
+    auto service = parameters["service"].value<QLowEnergyService *>();
+    auto writeMode = parameters["writeMode"].value<QLowEnergyService::WriteMode>();
+    auto characteristic = parameters["characteristic"].value<QLowEnergyCharacteristic>();
 
     if (!characteristic.isValid()) {
         qInfo() << "Invalid characteristic";

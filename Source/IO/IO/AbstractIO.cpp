@@ -49,18 +49,19 @@ void AbstractIO::inputBytes(const QByteArray &bytes)
 
 QVariantMap AbstractIO::save() const
 {
-    QVariantMap data;
+    m_parametersMutex.lock();
+    QVariantMap data = m_parameters;
+    m_parametersMutex.unlock();
+
     data["isEnable"] = m_enable.load();
     return data;
 }
 
 void AbstractIO::load(const QVariantMap &data)
 {
+    m_parametersMutex.lock();
     m_parameters = data;
-
-    if (data.isEmpty()) {
-        return;
-    }
+    m_parametersMutex.unlock();
 
     bool isEnable = data["isEnable"].toBool();
     m_enable.store(isEnable);

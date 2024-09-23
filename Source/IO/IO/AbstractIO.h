@@ -9,7 +9,7 @@
 #pragma once
 
 #include <atomic>
-#include <QJsonObject>
+
 #include <QMutex>
 #include <QThread>
 #include <QVariantMap>
@@ -25,7 +25,6 @@ public:
     explicit AbstractIO(QObject *parent = Q_NULLPTR);
     virtual ~AbstractIO();
     virtual Q_INVOKABLE void inputBytes(const QByteArray &bytes);
-
     virtual QVariantMap save() const;
     virtual void load(const QVariantMap &data);
 
@@ -41,6 +40,8 @@ signals:
 protected:
     std::atomic_bool m_isWorking{false};
     std::atomic_bool m_enable{true};
+
+private:
     QVariantMap m_parameters;
     mutable QMutex m_parametersMutex;
 

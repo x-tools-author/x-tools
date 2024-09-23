@@ -21,28 +21,10 @@ SerialPort::SerialPort(QObject *parent)
 
 SerialPort::~SerialPort() {}
 
-QVariantMap SerialPort::save() const
-{
-    m_parametersMutex.lock();
-    auto tmp = m_parameters;
-    m_parametersMutex.unlock();
-
-    return tmp;
-}
-
-void SerialPort::load(const QVariantMap &data)
-{
-    m_parametersMutex.lock();
-    m_parameters = data;
-    m_parametersMutex.unlock();
-}
-
 QObject *SerialPort::initDevice()
 {
-    m_parametersMutex.lock();
-    xIO::SerialPortItem item = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(m_parameters));
-    m_parametersMutex.unlock();
-
+    QVariantMap tmp = save();
+    xIO::SerialPortItem item = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(tmp));
     m_serialPort = new QSerialPort();
     m_serialPort->setPortName(item.portName);
     m_serialPort->setBaudRate(item.baudRate);

@@ -26,14 +26,13 @@ Socket::~Socket() {}
 
 QVariantMap Socket::save() const
 {
-    m_parametersMutex.lock();
-    QVariantMap parameters = m_parameters;
-    m_parametersMutex.unlock();
-    return parameters;
+    return Communication::save();
 }
 
 void Socket::load(const QVariantMap &parameters)
 {
+    Communication::load(parameters);
+
     xIO::SocketItem item = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
     m_clientPort = item.clientPort;
     m_clientAddress = item.clientAddress;
