@@ -420,6 +420,50 @@ QString xIO::responseOptionName(ResponseOption option)
     }
 }
 
+void xIO::setupResponseOption(QComboBox *comboBox)
+{
+    if (comboBox) {
+        comboBox->clear();
+        QList<int> options = supportedResponseOptions();
+        for (int option : options) {
+            comboBox->addItem(responseOptionName(static_cast<ResponseOption>(option)), option);
+        }
+    }
+}
+
+QByteArray xIO::responseData(const QByteArray &data, int option, const QByteArray &reference)
+{
+    if (data.isEmpty()) {
+        return QByteArray{};
+    }
+
+    if (option == static_cast<int>(ResponseOption::Echo)) {
+        return data;
+    } else if (option == static_cast<int>(ResponseOption::Always)) {
+        return reference;
+    } else if (option == static_cast<int>(ResponseOption::InputEqualReference)) {
+        if (data == reference) {
+            return reference;
+        } else {
+            return QByteArray{};
+        }
+    } else if (option == static_cast<int>(ResponseOption::InputContainReference)) {
+        if (data.contains(reference)) {
+            return reference;
+        } else {
+            return QByteArray{};
+        }
+    } else if (option == static_cast<int>(ResponseOption::InputDoesNotContainReference)) {
+        if (!data.contains(reference)) {
+            return reference;
+        } else {
+            return QByteArray{};
+        }
+    } else {
+        return QByteArray{};
+    }
+}
+
 QString xIO::jsonValue2hexString(const QJsonValue &value)
 {
     QJsonDocument doc;

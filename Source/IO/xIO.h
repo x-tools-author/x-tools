@@ -85,6 +85,8 @@ public:
     Q_ENUM(ResponseOption);
     static QList<int> supportedResponseOptions();
     static QString responseOptionName(ResponseOption option);
+    static void setupResponseOption(QComboBox *comboBox);
+    static QByteArray responseData(const QByteArray &data, int option, const QByteArray &reference);
 
     /**********************************************************************************************/
     static QString jsonValue2hexString(const QJsonValue &value);
