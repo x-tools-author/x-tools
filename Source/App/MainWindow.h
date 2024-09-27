@@ -33,6 +33,7 @@ protected:
     QMenu* m_optionMenu;
     QMenu* m_languageMenu;
     QMenu* m_helpMenu;
+    QMenu* m_appStyleMenu;
 
     QAction* m_exitAction;
 

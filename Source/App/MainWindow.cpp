@@ -184,8 +184,8 @@ void MainWindow::initMenuHelp()
 
 void MainWindow::initOptionMenuAppStyleMenu()
 {
-    auto* appStyleMenu = new QMenu(tr("Application Style"), this);
-    m_optionMenu->addMenu(appStyleMenu);
+    m_appStyleMenu = new QMenu(tr("Application Style"), this);
+    m_optionMenu->addMenu(m_appStyleMenu);
     QStringList keys = QStyleFactory::keys();
     const QString style = Settings::instance()->appStyle();
     for (QString& key : keys) {
@@ -204,7 +204,7 @@ void MainWindow::initOptionMenuAppStyleMenu()
         });
     }
 
-    appStyleMenu->addActions(m_appStyleActionGroup->actions());
+    m_appStyleMenu->addActions(m_appStyleActionGroup->actions());
 
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
     m_optionMenu->addMenu(StyleSheetManager::singleton().themeMenu());
