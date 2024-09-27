@@ -207,7 +207,7 @@ void MainWindow::initOptionMenuAppStyleMenu()
     m_appStyleMenu->addActions(m_appStyleActionGroup->actions());
 
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
-    m_optionMenu->addMenu(StyleSheetManager::singleton().themeMenu());
+    m_themeAction = m_optionMenu->addMenu(StyleSheetManager::singleton().themeMenu());
 #endif
 }
 
@@ -260,11 +260,11 @@ void MainWindow::initOptionMenuHdpiPolicy()
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 void MainWindow::initOptionMenuColorScheme()
 {
-    QMenu* menu = new QMenu(tr("Color Scheme"));
+    m_colorSchemeMenu = new QMenu(tr("Color Scheme"));
     static QActionGroup actionGroup(this);
-    auto sys = menu->addAction(tr("System"));
-    auto dark = menu->addAction(tr("Dark"));
-    auto light = menu->addAction(tr("Light"));
+    auto sys = m_colorSchemeMenu->addAction(tr("System"));
+    auto dark = m_colorSchemeMenu->addAction(tr("Dark"));
+    auto light = m_colorSchemeMenu->addAction(tr("Light"));
 
     sys->setCheckable(true);
     dark->setCheckable(true);
@@ -274,8 +274,8 @@ void MainWindow::initOptionMenuColorScheme()
     actionGroup.addAction(dark);
     actionGroup.addAction(light);
 
-    menu->addActions(actionGroup.actions());
-    m_optionMenu->addMenu(menu);
+    m_colorSchemeMenu->addActions(actionGroup.actions());
+    m_optionMenu->addMenu(m_colorSchemeMenu);
 
     connect(&actionGroup, &QActionGroup::triggered, this, [=](QAction* action) {
         if (action == dark) {

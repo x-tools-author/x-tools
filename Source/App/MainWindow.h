@@ -34,7 +34,9 @@ protected:
     QMenu* m_languageMenu;
     QMenu* m_helpMenu;
     QMenu* m_appStyleMenu;
+    QMenu* m_colorSchemeMenu;
 
+    QAction* m_themeAction{nullptr};
     QAction* m_exitAction;
 
     QAction* m_gitHubAction;
