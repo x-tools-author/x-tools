@@ -19,8 +19,6 @@ class Socket : public Communication
     Q_OBJECT
 public:
     explicit Socket(QObject *parent = nullptr);
-    ~Socket();
-
     void load(const QVariantMap &parameters) override;
     void setDataChannel(int channel);
 

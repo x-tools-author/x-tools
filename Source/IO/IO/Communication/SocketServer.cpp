@@ -14,15 +14,6 @@ SocketServer::SocketServer(QObject *parent)
     : Socket(parent)
 {}
 
-SocketServer::~SocketServer() {}
-
-QVariantMap SocketServer::save() const
-{
-    return QVariantMap{};
-}
-
-void SocketServer::load(const QVariantMap &data) {}
-
 QStringList SocketServer::clients() const
 {
     m_clientsMutex.lock();

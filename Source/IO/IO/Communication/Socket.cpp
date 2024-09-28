@@ -33,10 +33,8 @@ Socket::Socket(QObject *parent)
     tmp.insert(keys.authentication, m_authentication);
     tmp.insert(keys.username, m_username);
     tmp.insert(keys.password, m_password);
-    load(tmp);
+    Socket::load(tmp);
 }
-
-Socket::~Socket() {}
 
 void Socket::load(const QVariantMap &parameters)
 {
