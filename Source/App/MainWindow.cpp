@@ -98,6 +98,22 @@ QIcon MainWindow::cookedIcon(const QString& svgFileName)
 #endif
 }
 
+QIcon MainWindow::cookedIcon(const QIcon& icon)
+{
+#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+    QPixmap pixmap = icon.pixmap(QSize(128, 128));
+    QPainter painter(&pixmap);
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+
+    QColor color = StyleSheetManager::singleton().themeColor("primaryColor");
+    painter.fillRect(pixmap.rect(), color);
+    QIcon colorIcon = QIcon(pixmap);
+    return colorIcon;
+#else
+    return icon;
+#endif
+}
+
 void MainWindow::updateWindowTitle()
 {
     QString title = Application::friendlyAppName();

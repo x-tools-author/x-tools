@@ -23,6 +23,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
     static QIcon cookedIcon(const QString& svgFileName);
+    static QIcon cookedIcon(const QIcon& icon);
 
     virtual void updateWindowTitle();
 
