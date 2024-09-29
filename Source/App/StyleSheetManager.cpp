@@ -19,6 +19,7 @@
 
 namespace xTools {
 
+bool StyleSheetManager::m_enableStylesheet = false;
 StyleSheetManager::StyleSheetManager(QObject* parent)
     : acss::QtAdvancedStylesheet(parent)
 {
@@ -111,6 +112,11 @@ QMenu* StyleSheetManager::themeMenu() const
     return m_themeMenu;
 }
 
+void StyleSheetManager::setEnableStyleSheetDefaultValue(bool enabled)
+{
+    m_enableStylesheet = enabled;
+}
+
 QString StyleSheetManager::themeName()
 {
     QString ret = xTools::Settings::instance()->value("themeName").toString();
@@ -187,7 +193,7 @@ void StyleSheetManager::updateActionIcon(QAction* action, const QString& color)
 bool StyleSheetManager::enableStylesheet()
 {
     auto settings = xTools::Settings::instance();
-    return settings->value("enableStylesheet", false).toBool();
+    return settings->value("enableStylesheet", m_enableStylesheet).toBool();
 }
 
 void StyleSheetManager::setEnableStylesheet(bool enable)

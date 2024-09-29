@@ -29,12 +29,14 @@ public:
 
     static StyleSheetManager& singleton();
     QMenu* themeMenu() const;
+    static void setEnableStyleSheetDefaultValue(bool enabled);
 
 private:
     QMenu* m_themeMenu;
     QActionGroup* m_themeActionGroup;
     QMap<QString, QString> m_nameFriendlyNameMap;
     QMap<QString, QString> m_primaryColorMap;
+    static bool m_enableStylesheet;
 
 private:
     QString themeName();
