@@ -20,6 +20,7 @@
 namespace xTools {
 
 bool StyleSheetManager::m_enableStylesheet = false;
+bool StyleSheetManager::m_awaysEnableStylesheet = false;
 StyleSheetManager::StyleSheetManager(QObject* parent)
     : acss::QtAdvancedStylesheet(parent)
 {
@@ -81,20 +82,27 @@ StyleSheetManager::StyleSheetManager(QObject* parent)
     qInfo() << "The current style is:" << currentStyle();
     qInfo() << "The current theme is:" << currentTheme();
 
-    bool checked = enableStylesheet();
-    QAction* action = new QAction(tr("Enable Stylesheet"));
-    action->setCheckable(true);
-    action->setChecked(checked);
-    if (checked) {
-        updateApplicationStylesheet();
-    }
-
-    connect(action, &QAction::triggered, this, &StyleSheetManager::setApplicationStylesheetEnabled);
-
     m_themeActionGroup = new QActionGroup(this);
     m_themeMenu = new QMenu(tr("Application Stylesheet"));
-    m_themeMenu->addAction(action);
-    m_themeMenu->addSeparator();
+    if (m_awaysEnableStylesheet) {
+        updateApplicationStylesheet();
+    } else {
+        bool checked = enableStylesheet();
+        QAction* action = new QAction(tr("Enable Stylesheet"));
+        action->setCheckable(true);
+        action->setChecked(checked);
+        if (checked) {
+            updateApplicationStylesheet();
+        }
+
+        connect(action,
+                &QAction::triggered,
+                this,
+                &StyleSheetManager::setApplicationStylesheetEnabled);
+
+        m_themeMenu->addAction(action);
+        m_themeMenu->addSeparator();
+    }
 
     loadThemes();
 }
@@ -115,6 +123,11 @@ QMenu* StyleSheetManager::themeMenu() const
 void StyleSheetManager::setEnableStyleSheetDefaultValue(bool enabled)
 {
     m_enableStylesheet = enabled;
+}
+
+void StyleSheetManager::setAwaysEnableStylesheet(bool enabled)
+{
+    m_awaysEnableStylesheet = enabled;
 }
 
 QString StyleSheetManager::themeName()

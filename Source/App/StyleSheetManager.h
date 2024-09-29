@@ -30,6 +30,7 @@ public:
     static StyleSheetManager& singleton();
     QMenu* themeMenu() const;
     static void setEnableStyleSheetDefaultValue(bool enabled);
+    static void setAwaysEnableStylesheet(bool enabled);
 
 private:
     QMenu* m_themeMenu;
@@ -37,6 +38,7 @@ private:
     QMap<QString, QString> m_nameFriendlyNameMap;
     QMap<QString, QString> m_primaryColorMap;
     static bool m_enableStylesheet;
+    static bool m_awaysEnableStylesheet;
 
 private:
     QString themeName();
