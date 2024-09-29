@@ -2947,7 +2947,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/App/StyleSheetManager.cpp" line="36"/>
         <source>Light Blue</source>
-        <translation>浅色-蓝色&lt;</translation>
+        <translation>浅色-蓝色</translation>
     </message>
     <message>
         <location filename="../../Source/App/StyleSheetManager.cpp" line="37"/>
