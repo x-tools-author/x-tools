@@ -152,6 +152,7 @@ void StyleSheetManager::loadThemes()
     }
 
     setupActions(m_darkThemes, m_themeMenu, m_themeActionGroup);
+    m_themeMenu->addSeparator();
     setupActions(m_lightThemes, m_themeMenu, m_themeActionGroup);
 }
 
