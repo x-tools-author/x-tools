@@ -7,7 +7,7 @@ on:
     branches:
       - master
 env:
-  QT_VERSION: 6.5.3
+  QT_VERSION: 6.7.3
 jobs:
   build:
     name: Build
