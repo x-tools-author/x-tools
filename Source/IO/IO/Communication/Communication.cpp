@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "Communication.h"
 
+#include <QDebug>
+
 namespace xTools {
 
 Communication::Communication(QObject *parent)
