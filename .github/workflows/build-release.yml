@@ -76,7 +76,7 @@ jobs:
         cmake -E rename build/xtools-linux-x86_64.AppImage build/xtools-${{ github.ref_name }}-linux-x86_64.AppImage
         dir && gh release upload ${{ github.ref_name }} 'build/xtools-${{ github.ref_name }}-linux-x86_64.AppImage'
   release-for-macos:
-    runs-on: macos-11
+    runs-on: macos-12
     needs: update-release
     steps:
     - name: Checkout
