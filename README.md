@@ -7,17 +7,21 @@
 
 *xTools* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (Qt6.8 is recommended). It offers extensive support for SerialPort, BLE, UDP, TCP, Web Socket, Modbus and CAN Bus debugging functionalities.
 
+> **You can get *xTools* form [Micorsoft Store(pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
+
 ![xTools.gif](Doc/Images/xTools.gif)
 
-> **You can get *xTools* form [Micorsoft Store(Pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
+## Dark theme
 
 ![xToolsDark.png](Doc/Images/xToolsDark.png)
 
-> **You can get *xTools* form [Micorsoft Store(Pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
+## Light theme
 
-![xToolsDark.png](Doc/Images/xToolsLight.png)
+![xToolsLight.png](Doc/Images/xToolsLight.png)
 
-> **You can get *xTools* form [Micorsoft Store(Pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
+## Custom theme
+
+![xToolsCustom.png](Doc/Images/xToolsCustom.png)
 
 ## About the Project
 
@@ -28,7 +32,7 @@
 [![star](https://gitee.com/x-tools-author/x-tools/badge/star.svg?theme=dark)](https://gitee.com/x-tools-author/x-tools/stargazers)
 [![fork](https://gitee.com/x-tools-author/x-tools/badge/fork.svg?theme=dark)](https://gitee.com/x-tools-author/x-tools/members)
 
-| | |
+|Option|Description|
 |---|---|
 |Author|x-tools-author|
 |E-mail|<x-tools@outlook.com>|
@@ -36,4 +40,5 @@
 |Qt Technology Communication|723516989 (QQ Group)|
 |Gitee| <https://gitee.com/x-tools-author/x-tools>|
 |GitHub| <https://github.com/x-tools-author/x-tools>|
-|More tools|<https://apps.microsoft.com/search/publisher?name=Qsaker2018>|
+|Sponsor|<https://apps.microsoft.com/search/publisher?name=x-tools-author>|
+|Third party|[glog](https://github.com/google/glog) [hidapi](https://github.com/libusb/hidapi) [libqrencode](https://github.com/fukuchi/libqrencode) [qmdnsengine](https://github.com/nitroshare/qmdnsengine) [Qt-Advanced-Stylesheets](https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets)|
