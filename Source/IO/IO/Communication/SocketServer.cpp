@@ -48,7 +48,7 @@ void SocketServer::addClient(const QString &flag)
     m_clientsMutex.unlock();
 
     if (changed) {
-        emit clientsChanged(SocketPrivateSignal{});
+        emit clientsChanged();
     }
 }
 
@@ -63,7 +63,7 @@ void SocketServer::removeClient(const QString &flag)
     m_clientsMutex.unlock();
 
     if (changed) {
-        emit clientsChanged(SocketPrivateSignal{});
+        emit clientsChanged();
     }
 }
 
@@ -72,7 +72,7 @@ void SocketServer::clearClients()
     m_clientsMutex.lock();
     m_clients.clear();
     m_clientsMutex.unlock();
-    emit clientsChanged(SocketPrivateSignal{});
+    emit clientsChanged();
 }
 
 } // namespace xTools

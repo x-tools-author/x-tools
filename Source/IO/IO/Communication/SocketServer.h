@@ -27,7 +27,7 @@ public:
     Q_INVOKABLE void setCurrentClientFlag(const QString &flag);
 
 signals:
-    void clientsChanged(const SocketPrivateSignal &);
+    void clientsChanged();
 
 protected:
     void addClient(const QString &flag);
