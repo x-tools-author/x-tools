@@ -20,7 +20,7 @@ class Socket : public Communication
 public:
     explicit Socket(QObject *parent = nullptr);
     void load(const QVariantMap &parameters) override;
-    void setDataChannel(int channel);
+    Q_INVOKABLE void setDataChannel(int channel);
 
 protected:
     quint16 m_clientPort{12347};
