@@ -14,12 +14,12 @@ jobs:
       matrix:
         target: [desktop]
         arch: [win64_msvc2019_64]
-        version: [5.15.2, 6.5.3]
+        version: [5.15.2, 6.7.3]
         include:
           - version: 5.15.2
             cmake-prefix-path: 'lib/cmake/Qt5'
             modules: 'qtcharts'
-          - version: 6.5.3
+          - version: 6.7.3
             cmake-prefix-path: 'lib/cmake/Qt6'
             moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
     steps:
