@@ -59,9 +59,8 @@ FileCheckAssistant::FileCheckAssistant(QWidget* parent)
     m_calculatorProgressBar->setMaximum(100);
     m_calculatorProgressBar->setValue(0);
 
-    // It will clean the message which was showed on the info label when the timer
-    // is timeout
-    m_clearMessageTimer.setInterval(X_TOOLS_CLEAR_MESSAGE_INTERVAL);
+    // It will clean the message which was showed on the info label when the timer is timeout
+    m_clearMessageTimer.setInterval(8000);
     connect(&m_clearMessageTimer, &QTimer::timeout, this, &FileCheckAssistant::clearMessage);
 
     m_upperCheckBox->setChecked(true);

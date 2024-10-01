@@ -1,8 +1,4 @@
 add_compile_definitions(X_TOOLS_AUTHOR="x-tools-author")
-add_compile_definitions(X_TOOLS_EDITION="beta1")
-add_compile_definitions(X_TOOLS_VERSION="6.0.0")
-add_compile_definitions(X_TOOLS_DEFAULT_APP_STYLE="Fusion")
-add_compile_definitions(X_TOOLS_CLEAR_MESSAGE_INTERVAL=8000)
 add_compile_definitions(X_TOOLS_AUTHOR_EMAIL="x-tools@outlook.com")
 add_compile_definitions(X_TOOLS_GITEE_REPOSITORY_URL="https://gitee.com/x-tools-author/x-tools")
 add_compile_definitions(X_TOOLS_GITHUB_REPOSITORY_URL="https://github.com/x-tools-author/x-tools")
