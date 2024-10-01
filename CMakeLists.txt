@@ -60,11 +60,10 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/CMake/xToolsThirdParty.cmake)
 # --------------------------------------------------------------------------------------------------
 # Git module
 # cmake-format: off
+set(GIT_TAG "x.x.x")
 x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
-
-set(X_TOOLS_VERSION ${GIT_TAG} CACHE STRING "The version of applicaion")
 # cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
@@ -305,16 +304,16 @@ endif()
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   x_tools_add_executable(xTools ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp xTools.rc)
+  target_link_libraries(xTools PRIVATE xToolsCore)
+
   x_tools_add_stylesheet_resources(xTools)
   x_tools_deploy_qt(xTools)
   x_tools_tar_target(xTools)
 
-  target_link_libraries(xTools PRIVATE xToolsCore)
-
-  option(X_TOOLS_ENABLE_TARGET_XTOOLS_INSTALLER "Enable xTools applications" OFF)
-  if(X_TOOLS_ENABLE_TARGET_XTOOLS_INSTALLER)
-    x_tools_generate_installer(xTools ${X_TOOLS_VERSION})
-  endif()
+  # remove "v" from version
+  set(version ${GIT_TAG})
+  string(SUBSTRING ${version} 1 -1 version)
+  x_tools_generate_installer(xTools ${version})
 endif()
 
 # --------------------------------------------------------------------------------------------------

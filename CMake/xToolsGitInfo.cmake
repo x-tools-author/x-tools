@@ -1,5 +1,4 @@
 # Get the last tag.
-set(GIT_TAG "x.x.x")
 function(x_tools_git_get_latest_tag working_dir prefix)
   execute_process(
     COMMAND git tag
@@ -15,8 +14,10 @@ function(x_tools_git_get_latest_tag working_dir prefix)
     set(GIT_LATEST_TAG ${target_version})
   endif()
   message("Latest git tag: ${GIT_LATEST_TAG}")
-  set(${prefix}_GIT_TAG="${GIT_LATEST_TAG}")
-  set(GIT_TAG "${GIT_LATEST_TAG}")
+  set(${prefix}_GIT_TAG="${GIT_LATEST_TAG}" CACHE STRING "Latest git tag" FORCE)
+  set(GIT_TAG
+      "${GIT_LATEST_TAG}"
+      PARENT_SCOPE)
   add_compile_definitions(${prefix}_GIT_TAG="${GIT_LATEST_TAG}")
 endfunction()
 
