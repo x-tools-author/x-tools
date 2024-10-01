@@ -25,8 +25,8 @@ public:
     explicit AbstractIO(QObject *parent = Q_NULLPTR);
     virtual ~AbstractIO();
     virtual Q_INVOKABLE void inputBytes(const QByteArray &bytes);
-    virtual QVariantMap save() const;
-    virtual void load(const QVariantMap &data);
+    Q_INVOKABLE virtual QVariantMap save() const;
+    Q_INVOKABLE virtual void load(const QVariantMap &data);
 
     bool isWorking();
     bool isEnable();
