@@ -2367,7 +2367,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/App/Application.cpp" line="152"/>
         <source>System</source>
-        <translation>系统</translation>
+        <translation>禁用</translation>
     </message>
     <message>
         <location filename="../../Source/App/Application.cpp" line="153"/>
