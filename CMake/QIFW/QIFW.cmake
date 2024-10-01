@@ -41,6 +41,7 @@ function(x_tools_generate_installer target version)
   list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/QIFWScript.cmake)
   list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/config/config.xml)
   list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/packages/all/meta/package.xml)
+  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/packages/all/meta/installscript.qs)
 
   add_custom_target(
     ${target}_installer
