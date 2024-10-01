@@ -36,8 +36,8 @@ public:
     QString appStyle();
     void setAppStyle(const QString &style);
 
-    QString language();
-    void setLanguage(const QString &lan);
+    Q_INVOKABLE QString language();
+    Q_INVOKABLE void setLanguage(const QString &lan);
 
     bool clearSettings();
     void setClearSettings(bool clear);
