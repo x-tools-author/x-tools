@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install Qt for Desktop(mingw)
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           aqtversion: '==3.1.*'
           target: 'desktop'
@@ -24,7 +24,7 @@ jobs:
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
           version:  '6.7.*'
       - name: Install Qt for Android
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           aqtversion: '==3.1.*'
           target: 'android'
