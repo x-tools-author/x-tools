@@ -1,23 +1,22 @@
 name: build-daily
+# on:
+#   schedule:
+#     - cron: '0 0 * * *'
 on:
-  schedule:
-    - cron: '0 0 * * *'
-#on:
-#  push:
-#    branches:
-#      - master
-
+ push:
+   branches:
+     - master
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  QT_VERSION: 6.7.3
+  QT_VERSION: 6.8.0
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   update-tag:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Update continuous tag
       run: |
         git config --global user.email "x-tools@outlook.com"
@@ -38,26 +37,26 @@ jobs:
       run: |
         gh release create continuous --title "Continuous Build" --notes "Daily build of xTools"
   release-for-windows:
-    runs-on: windows-2019
+    runs-on: windows-2022
     needs: update-release
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Install Qt
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
-        version: '6.7.3'
+        version: '${{ env.QT_VERSION }}'
         target: 'desktop'
-        arch: 'win64_msvc2019_64'
+        arch: 'win64_msvc2022_64'
         dir: ${{ github.workspace }}
-        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+        modules: ${{env.QT_MODULES}}
     - name: Build for Windows
       shell: cmd
       run: |
         mkdir build
         cd build
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-        cmake -DWITH_TOOLS:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.7.3/win64_msvc2019_64' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+        cmake -DWITH_TOOLS:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/win64_msvc2019_64' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
         cmake --build . --target xTools
         dir && dir .\assets && dir .\assets\xTools
     - name: Upload Release Asset for Windnows
@@ -72,11 +71,11 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
-        version: '6.7.3'
+        version: ${{env.QT_VERSION}}
         target: 'desktop'
         arch: 'gcc_64'
         dir: ${{ github.workspace }}
-        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+        modules: ${{env.QT_MODULES}}
     - name: install-dependencies
       run: |
         sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev
