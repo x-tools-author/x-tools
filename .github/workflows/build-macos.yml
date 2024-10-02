@@ -1,4 +1,4 @@
-name: build-macos
+﻿name: build-macos
 # on:
 #   schedule:
 #     - cron: '0 0 * * *'
