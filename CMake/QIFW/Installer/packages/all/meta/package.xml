@@ -5,6 +5,6 @@
     <Version>argPackageVersion</Version>
     <ReleaseDate>argPackageReleaseDate</ReleaseDate>
     <Default>true</Default>
-    <Script>installscript.qs</Script>
-    <ForcedInstallation>true</ForcedInstallation>
+    <Script>installscript.js</Script>
+    <ForceInstallation>true</ForceInstallation>
 </Package>

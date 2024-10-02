@@ -80,7 +80,7 @@ execute_process(
     "(Get-Content ${package_xml}) -replace '${old_text}', '${new_text}' | Set-Content ${package_xml}"
   WORKING_DIRECTORY ${argRootDir})
 # --------------------------------------------------------------------------------------------------
-set(installscript packages/all/meta/installscript.qs)
+set(installscript packages/all/meta/installscript.js)
 set(old_text "argConfigTargetDir")
 set(new_text "${argTarget}")
 execute_process(
