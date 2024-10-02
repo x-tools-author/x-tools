@@ -1,19 +1,17 @@
 ﻿name: build-windows
-# on:
-#   schedule:
-#     - cron: '0 0 * * *'
 on:
- push:
-   branches:
-     - master
+  schedule:
+    - cron: '0 0 * * *'
+# on:
+#  push:
+#    branches:
+#      - master
 jobs:
   build:
     name: Build
     runs-on: windows-2022
     strategy:
       matrix:
-        target: [desktop]
-        arch: [win64_msvc2022_64]
         version: [6.8.*]
     steps:
       - name: Pull code
@@ -21,10 +19,10 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: ${{ matrix.version }}
-          target: ${{ matrix.target }}
-          arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
+          version: ${{ matrix.version }}
+          target: desktop
+          arch: win64_msvc2022_64
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: build-msvc
         shell: cmd
