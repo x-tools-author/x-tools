@@ -22,7 +22,7 @@ jobs:
           host: windows
           dir: ${{ github.workspace }}
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-          version: 6.8.*
+          version: 6.8.0
       - name: Install Qt for Desktop(mingw)
         uses: jurplel/install-qt-action@v3
         with:
@@ -32,7 +32,7 @@ jobs:
           host: windows
           dir: ${{ github.workspace }}
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-          version:  6.8.*
+          version:  6.8.0
       - name: CMake for Android
         shell: cmd
         run: |
