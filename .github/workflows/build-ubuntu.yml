@@ -15,7 +15,6 @@ jobs:
         os: [ubuntu-20.04]
         version: [6.7.*, 6.8.*]
         arch: [linux_gcc_64]
-        moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -27,7 +26,7 @@ jobs:
           target: 'desktop'
           arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
-          modules: ${{ matrix['moudles']}}
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: install-dependencies
         run: |
           sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev
