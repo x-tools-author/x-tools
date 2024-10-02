@@ -36,7 +36,7 @@ jobs:
       - name: CMake for Android
         shell: cmd
         run: |
-          set JAVA_HOME=%JAVA_HOME_17_X64%
+          set JAVA_HOME=%JAVA_HOME_11_X64%
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat ^
           -G "MinGW Makefiles" ^
           -S . ^
@@ -54,7 +54,7 @@ jobs:
       - name: Build for android
         shell: cmd
         run: |
-          set JAVA_HOME=%JAVA_HOME_17_X64%
+          set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
           cmake --build build\armeabi_v7a --target xTools --config Release
       - name: Directory of build\armeabi_v7a
@@ -63,7 +63,7 @@ jobs:
       - name: Deploy for Android
         shell: cmd
         run: |
-          set JAVA_HOME=%JAVA_HOME_17_X64%
+          set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
           ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
