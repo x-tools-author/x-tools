@@ -5,7 +5,9 @@ function(x_tools_git_get_latest_tag working_dir prefix)
     WORKING_DIRECTORY ${working_dir}
     OUTPUT_VARIABLE git_tags
     OUTPUT_STRIP_TRAILING_WHITESPACE)
-  string(REPLACE "\r" "" git_tags ${git_tags})
+  if(WIN32)
+    string(REPLACE "\r" "" git_tags ${git_tags})
+  endif()
   string(REPLACE "\n" ";" git_tags ${git_tags})
   list(LENGTH git_tags git_tags_count)
   list(GET git_tags -1 GIT_LATEST_TAG)
