@@ -12,21 +12,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-24.04]
-        version: [5.15.2, 6.5.3]
-        arch: [gcc_64]
-        include:
-          - version: 5.15.2
-            cmake-prefix-path: 'lib/cmake/Qt5'
-            modules: 'qtcharts'
-          - version: 6.5.3
-            cmake-prefix-path: 'lib/cmake/Qt6'
-            moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
+        os: [ubuntu-20.04]
+        version: [6.7.*, 6.8.*]
+        arch: [linux_gcc_64]
+        moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
     steps:
       - name: checkout
         uses: actions/checkout@v4
       - name: install qt
-        uses: jurplel/install-qt-action@v4
+        uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
           version: ${{ matrix.version }}
