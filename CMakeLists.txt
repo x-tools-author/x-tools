@@ -313,7 +313,7 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   # remove "v" from version
   set(version ${GIT_TAG})
   string(SUBSTRING ${version} 1 -1 version)
-  x_tools_generate_installer(xTools ${version})
+  x_tools_generate_installer(xTools ${version} ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
 endif()
 
 # --------------------------------------------------------------------------------------------------

@@ -6,5 +6,5 @@
     <ReleaseDate>argPackageReleaseDate</ReleaseDate>
     <Default>true</Default>
     <Script>installscript.js</Script>
-    <ForceInstallation>true</ForceInstallation>
+    <ForcedInstallation>true</ForcedInstallation>
 </Package>
