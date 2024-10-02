@@ -13,28 +13,20 @@ jobs:
     strategy:
       matrix:
         os: [macos-12]
-        version: [6.8.0]
-        arch: [clang_64]
-        include:
-          - version: 5.15.2
-            cmake-prefix-path: 'lib/cmake/Qt5'
-            modules: 'qtcharts'
-          - version: 6.8.0
-            cmake-prefix-path: 'lib/cmake/Qt6'
-            moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
+        version: [6.8.*]
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: install qt
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
+          dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
           target: 'desktop'
-          arch: ${{ matrix.arch }}
-          dir: ${{ github.workspace }}
+          arch: 'clang_64'
           host: 'mac'
-          modules: ${{ matrix['moudles']}}
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: build for macos
         run: |
           # brew uninstall --force node
@@ -44,5 +36,5 @@ jobs:
           ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
           mkdir build
           cd build
-          cmake -DWITH_TOOLS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
           cmake --build . --target xTools
