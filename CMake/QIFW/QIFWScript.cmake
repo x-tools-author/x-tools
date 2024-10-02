@@ -115,5 +115,7 @@ if(WIN32)
 elseif(UNIX AND NOT APPLE)
   set(output_file "${argTarget}-${argVersion}-installer.run")
 endif()
+execute_process(COMMAND ${CMAKE_COMMAND} -E rename "all" "${argTarget}"
+                WORKING_DIRECTORY ${argRootDir}/packages)
 execute_process(COMMAND ${argBinarycreator} -c config/config.xml -p packages ${output_file}
                         COMMAND_ECHO STDOUT WORKING_DIRECTORY ${argRootDir})

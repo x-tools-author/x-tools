@@ -29,15 +29,12 @@
 function Component()
 {
     if (systemInfo.productType === "windows") {
-        installer.execute("@TargetDir@/maintenancetool.exe", ["pr", "-c"]);
-
+        /*installer.execute("@TargetDir@/maintenancetool.exe", ["pr", "-c"]);
         installer.setValue("TargetDir", "@HomeDir@/AppData/Roaming/xTools/argConfigTargetDir");
         installer.setValue("StartMenuDir", "@HomeDir@/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/xTools/argConfigStartMenuDir");
-
         installer.setDefaultPageVisible(QInstaller.TargetDirectory, false);
         installer.setDefaultPageVisible(QInstaller.StartMenuSelection, false);
-
-        gui.clickButton(buttons.NextButton);
+        gui.clickButton(buttons.NextButton);*/
     }
 }
 
