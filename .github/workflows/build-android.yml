@@ -13,26 +13,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install Qt for Android
-        uses: jurplel/install-qt-action@v3
-        with:
-          aqtversion: '==3.1.*'
-          target: android
-          arch: android_armv7
-          host: windows
-          dir: ${{ github.workspace }}
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-          version: 6.8.0
       - name: Install Qt for Desktop(mingw)
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
-          target: desktop
-          arch: win64_mingw
-          host: windows
-          dir: ${{ github.workspace }}
+          target: 'desktop'
+          arch: 'win64_mingw'
+          host: 'windows'
+          dir: '${{ github.workspace }}''
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-          version:  6.8.0
+          version:  '6.8.*'
+      - name: Install Qt for Android
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: '==3.1.*'
+          target: 'android'
+          arch: 'android_armv7'
+          host: 'windows'
+          dir: '${{ github.workspace }}'
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+          version: '6.8.0'
       - name: CMake for Android
         shell: cmd
         run: |
