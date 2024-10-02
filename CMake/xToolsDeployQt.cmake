@@ -89,9 +89,9 @@ function(x_tools_deploy_qt_for_mac target)
   add_custom_command(
     TARGET ${target}
     POST_BUILD
-    COMMAND sh -c "rm xtools-macos-11.dmg || true"
+    COMMAND sh -c "rm xtools-macos-12.dmg || true"
     COMMAND sh -c "cat dmgs.txt"
-    COMMAND sh -c "cat dmgs.txt | xargs -I {} mv {} xtools-macos-11.dmg"
+    COMMAND sh -c "cat dmgs.txt | xargs -I {} mv {} xtools-macos-12.dmg"
     COMMAND sh -c "rm dmgs.txt || true"
     WORKING_DIRECTORY "${X_TOOLS_BINARY_DIR}/${target}"
     COMMENT "Rename old dmg file"
