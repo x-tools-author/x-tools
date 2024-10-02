@@ -24,7 +24,7 @@ jobs:
             moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: install qt
         uses: jurplel/install-qt-action@v4
         with:
