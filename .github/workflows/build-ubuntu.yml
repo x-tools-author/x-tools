@@ -1,11 +1,11 @@
 ﻿name: build-ubuntu
-# on:
-#   schedule:
-#     - cron: '0 0 * * *'
 on:
- push:
-   branches:
-     - master
+  schedule:
+    - cron: '0 0 * * *'
+# on:
+#  push:
+#    branches:
+#      - master
 jobs:
   build:
     name: Build
@@ -32,6 +32,7 @@ jobs:
           sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev
       - name: build for linux
         run: |
+          git fetch --tags
           cmake --version
           mkdir build
           cd build
