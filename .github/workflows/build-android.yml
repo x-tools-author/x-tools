@@ -20,7 +20,7 @@ jobs:
           target: 'desktop'
           arch: 'win64_mingw'
           host: 'windows'
-          dir: '${{ github.workspace }}''
+          dir: '${{ github.workspace }}'
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
           version:  '6.8.*'
       - name: Install Qt for Android
