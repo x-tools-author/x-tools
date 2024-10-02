@@ -39,6 +39,7 @@ jobs:
           sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev
       - name: build for linux
         run: |
+          cmake --version
           mkdir build
           cd build
           cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
