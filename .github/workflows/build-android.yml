@@ -6,6 +6,8 @@ on:
  push:
    branches:
      - master
+env:
+  QT_VERSION: 6.7.3
 jobs:
   build:
     name: Build for Android
@@ -22,7 +24,7 @@ jobs:
           host: 'windows'
           dir: '${{ github.workspace }}'
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-          version:  '6.5.3'
+          version:  '${{ env.QT_VERSION }}'
       - name: Install Qt for Android
         uses: jurplel/install-qt-action@v4
         with:
@@ -32,12 +34,12 @@ jobs:
           host: 'windows'
           dir: '${{ github.workspace }}'
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-          version: '6.5.3'
+          version: '${{ env.QT_VERSION }}'
       - name: CMake for Android
         shell: cmd
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
-          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat ^
+          ${{ github.workspace }}\Qt\${{ env.QT_VERSION }}\android_armv7\bin\qt-cmake.bat ^
           -G "MinGW Makefiles" ^
           -S . ^
           -B "build\armeabi_v7a" ^
