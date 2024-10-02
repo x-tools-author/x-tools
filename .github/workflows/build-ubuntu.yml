@@ -12,8 +12,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04]
-        version: [5.15.2, 6.7.*]
+        os: [ubuntu-20.04]
+        version: [5.15.2, 6.5.*]
         arch: [gcc_64]
         include:
           - version: 5.15.2
@@ -26,7 +26,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: install qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           aqtversion: '==3.1.*'
           version: ${{ matrix.version }}
