@@ -7,7 +7,7 @@ on:
    branches:
      - master
 env:
-  QT_VERSION: 6.8.*
+  QT_VERSION: 6.8.0
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   build:
