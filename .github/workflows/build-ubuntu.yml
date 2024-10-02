@@ -1,11 +1,11 @@
 name: build-ubuntu
+# on:
+#   schedule:
+#     - cron: '0 0 * * *'
 on:
-  schedule:
-    - cron: '0 0 * * *'
-#on:
-#  push:
-#    branches:
-#      - master
+ push:
+   branches:
+     - master
 jobs:
   build:
     name: Build
@@ -13,13 +13,13 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
-        version: [5.15.2, 6.7.3]
+        version: [5.15.2, 6.7.*]
         arch: [gcc_64]
         include:
           - version: 5.15.2
             cmake-prefix-path: 'lib/cmake/Qt5'
             modules: 'qtcharts'
-          - version: 6.7.3
+          - version: 6.7.*
             cmake-prefix-path: 'lib/cmake/Qt6'
             moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
     steps:
