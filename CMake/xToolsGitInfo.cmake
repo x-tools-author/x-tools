@@ -5,6 +5,12 @@ function(x_tools_git_get_latest_tag working_dir prefix)
     WORKING_DIRECTORY ${working_dir}
     OUTPUT_VARIABLE git_tags
     OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+  if(NOT git_tags)
+    message("No tags found.")
+    return()
+  endif()
+
   if(WIN32)
     string(REPLACE "\r" "" git_tags ${git_tags})
   endif()
