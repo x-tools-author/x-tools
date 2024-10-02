@@ -1,13 +1,13 @@
 name: build-android
+# on:
+#   schedule:
+#     - cron: '0 0 * * *'
 on:
-  schedule:
-    - cron: '0 0 * * *'
-#on:
-#  push:
-#    branches:
-#      - master
+ push:
+   branches:
+     - master
 env:
-  QT_VERSION: 6.7.3
+  QT_VERSION: 6.8.*
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-2019
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install Qt for Android
         uses: jurplel/install-qt-action@v3
         with:
