@@ -33,37 +33,37 @@ public:
     static ModbusFactory *Instance();
 
 public:
-    const QString TypeName(int type);
-    QModbusDevice *CreateDevice(int type);
-    bool IsTcpDevice(QModbusDevice *modbus_device);
-    bool IsRtuSerialDevice(QModbusDevice *modbus_device);
-    bool IsTcpDeviceType(int type);
-    bool IsRtuSerialDeviceType(int type);
-    bool IsServerDevice(QModbusDevice *modbus_device);
-    bool IsClientDevice(QModbusDevice *modbus_device);
-    bool ConnectDeivce(QModbusDevice *modbus_device);
-    bool IsConnected(QModbusDevice *modbus_device);
-    bool IsValidModbusReply(QModbusReply *reply);
-    bool SetServerData(QModbusDevice *server,
+    const QString typeName(int type);
+    QModbusDevice *createDevice(int type);
+    bool isTcpDevice(QModbusDevice *modbus_device);
+    bool isRtuSerialDevice(QModbusDevice *modbus_device);
+    bool isTcpDeviceType(int type);
+    bool isRtuSerialDeviceType(int type);
+    bool isServerDevice(QModbusDevice *modbus_device);
+    bool isClientDevice(QModbusDevice *modbus_device);
+    bool connectDeivce(QModbusDevice *modbus_device);
+    bool isConnected(QModbusDevice *modbus_device);
+    bool isValidModbusReply(QModbusReply *reply);
+    bool setServerData(QModbusDevice *server,
                        QModbusDataUnit::RegisterType table,
                        int address,
                        int data,
                        bool enable_log = true);
-    QList<quint16> GetServerData(QModbusDevice *server,
+    QList<quint16> getServerData(QModbusDevice *server,
                                  QModbusDataUnit::RegisterType table,
                                  int address,
                                  int quantity);
-    void DeleteModbusDevuce(QModbusDevice **modbus_device);
+    void deleteModbusDevuce(QModbusDevice **modbus_device);
 
-    QModbusDevice *CreateRtuSerialDevice(
+    QModbusDevice *createRtuSerialDevice(
         int type, const QString &port_name, int parity, int baud_rate, int data_bits, int stop_bits);
-    QModbusDevice *CreateTcpDevice(int deviceType, QString address, int port);
-    void SetClientDeviceParameters(QModbusDevice *client, int timeout, int number_of_retries);
+    QModbusDevice *createTcpDevice(int deviceType, QString address, int port);
+    void setClientDeviceParameters(QModbusDevice *client, int timeout, int number_of_retries);
     void SetServerDeviceParameters(QModbusDevice *server,
                                    int address,
                                    bool device_busy,
                                    bool listen_only_mode);
-    QModbusReply *SendWriteRequest(QModbusDevice *modbus_device,
+    QModbusReply *sendWriteRequest(QModbusDevice *modbus_device,
                                    int register_type,
                                    int start_address,
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
@@ -72,7 +72,7 @@ public:
                                    QList<quint16> values,
 #endif
                                    int server_address);
-    QModbusReply *SendRawRequest(QModbusDevice *modbus_device,
+    QModbusReply *sendRawRequest(QModbusDevice *modbus_device,
                                  int server_address,
                                  int function_code,
                                  const QByteArray &data);

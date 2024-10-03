@@ -552,18 +552,18 @@ void ModbusAssistant::onDeviceTypeChanged()
 
 void ModbusAssistant::onCloseClicked()
 {
-    ModbusFactory::Instance()->DeleteModbusDevuce(&m_modbusDevice);
+    ModbusFactory::Instance()->deleteModbusDevuce(&m_modbusDevice);
     updateUiState(false);
 }
 
 void ModbusAssistant::onOpenClicked()
 {
     ui->pushButtonOpen->setEnabled(false);
-    ModbusFactory::Instance()->DeleteModbusDevuce(&m_modbusDevice);
+    ModbusFactory::Instance()->deleteModbusDevuce(&m_modbusDevice);
 
     m_modbusDevice = CreateModbusDevice();
 
-    if (ModbusFactory::Instance()->IsServerDevice(m_modbusDevice)) {
+    if (ModbusFactory::Instance()->isServerDevice(m_modbusDevice)) {
         if (!updateServerMap(m_modbusDevice)) {
             ui->pushButtonOpen->setEnabled(true);
             qWarning() << "Can not reset server map!";
@@ -575,7 +575,7 @@ void ModbusAssistant::onOpenClicked()
         QModbusServer *server = qobject_cast<QModbusServer *>(m_modbusDevice);
         updateServerRegistersData();
         connect(server, &QModbusServer::dataWritten, this, &ModbusAssistant::onDateWritten);
-    } else if (ModbusFactory::Instance()->IsClientDevice(m_modbusDevice)) {
+    } else if (ModbusFactory::Instance()->isClientDevice(m_modbusDevice)) {
         updateClientParameters();
     } else {
         ui->pushButtonOpen->setEnabled(true);
@@ -585,7 +585,7 @@ void ModbusAssistant::onOpenClicked()
 
     connect(m_modbusDevice, &QModbusDevice::errorOccurred, this, &ModbusAssistant::onErrorOccurred);
     ModbusFactory *factory = ModbusFactory::Instance();
-    bool connected = factory->ConnectDeivce(m_modbusDevice);
+    bool connected = factory->connectDeivce(m_modbusDevice);
     if (!connected) {
         QString errStr = m_modbusDevice->errorString();
         QString info = tr("Can not open device: %1."
@@ -696,7 +696,7 @@ void ModbusAssistant::onReadClicked()
         return;
     }
 
-    if (!ModbusFactory::Instance()->IsClientDevice(m_modbusDevice)) {
+    if (!ModbusFactory::Instance()->isClientDevice(m_modbusDevice)) {
         return;
     }
 
@@ -715,7 +715,7 @@ void ModbusAssistant::onReadClicked()
     QModbusDataUnit data_unit(type, start_address, quantity);
     QModbusClient *client = qobject_cast<QModbusClient *>(m_modbusDevice);
     QModbusReply *reply = client->sendReadRequest(data_unit, spinBoxServerAddress);
-    if (!ModbusFactory::Instance()->IsValidModbusReply(reply)) {
+    if (!ModbusFactory::Instance()->isValidModbusReply(reply)) {
         return;
     }
 
@@ -747,7 +747,7 @@ void ModbusAssistant::onWriteClicked()
     quint8 function_code = getClientFunctionCode();
     QList<quint16> values = getClientRegisterValue();
     ModbusFactory *factory = ModbusFactory::Instance();
-    QModbusReply *reply = factory->SendWriteRequest(m_modbusDevice,
+    QModbusReply *reply = factory->sendWriteRequest(m_modbusDevice,
                                                     registerType,
                                                     start_address,
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
@@ -756,7 +756,7 @@ void ModbusAssistant::onWriteClicked()
                                                     listToVector(values),
 #endif
                                                     spinBoxServerAddress);
-    if (ModbusFactory::Instance()->IsValidModbusReply(reply)) {
+    if (ModbusFactory::Instance()->isValidModbusReply(reply)) {
         connect(reply, &QModbusReply::finished, this, [=]() {
             outputModbusReply(reply, function_code);
             reply->deleteLater();
@@ -785,7 +785,7 @@ void ModbusAssistant::onSendClicked()
         function_code = pdu.at(0);
     }
     ModbusFactory *factory = ModbusFactory::Instance();
-    QModbusReply *reply = factory->SendRawRequest(m_modbusDevice,
+    QModbusReply *reply = factory->sendRawRequest(m_modbusDevice,
                                                   spinBoxServerAddress,
                                                   function_code,
                                                   data);
@@ -793,7 +793,7 @@ void ModbusAssistant::onSendClicked()
     qWarning() << "Send raw request:"
                << "server address:" << spinBoxServerAddress << "function code:" << function_code
                << "data:" << QString(xTools::Application::byteArray2Hex(pdu, ' '));
-    if (ModbusFactory::Instance()->IsValidModbusReply(reply)) {
+    if (ModbusFactory::Instance()->isValidModbusReply(reply)) {
         connect(reply, &QModbusReply::finished, this, [=]() {
             outputModbusReply(reply, function_code);
             reply->deleteLater();
@@ -833,7 +833,7 @@ void ModbusAssistant::onDateWritten(QModbusDataUnit::RegisterType table, int add
     QTableView *tv = getTableView(table);
     QStandardItemModel *model = qobject_cast<QStandardItemModel *>(tv->model());
     QModbusServer *server = qobject_cast<QModbusServer *>(m_modbusDevice);
-    QList<quint16> data = ModbusFactory::Instance()->GetServerData(server, table, address, size);
+    QList<quint16> data = ModbusFactory::Instance()->getServerData(server, table, address, size);
     size = qMin<int>(data.count(), size);
     for (int i = 0; i < size; i++) {
         int row = address + i;
@@ -862,7 +862,7 @@ void ModbusAssistant::onItemChanged(QStandardItem *item)
         return;
     }
 
-    if (ModbusFactory::Instance()->IsServerDevice(m_modbusDevice)) {
+    if (ModbusFactory::Instance()->isServerDevice(m_modbusDevice)) {
         int address = item->row();
         int current_index = ui->tabWidgetServerRegisters->currentIndex();
         QModbusDataUnit::RegisterType table = QModbusDataUnit::Invalid;
@@ -880,7 +880,7 @@ void ModbusAssistant::onItemChanged(QStandardItem *item)
         }
 
         quint16 value = item->text().toInt(Q_NULLPTR, 16);
-        ModbusFactory::Instance()->SetServerData(m_modbusDevice, table, address, value);
+        ModbusFactory::Instance()->setServerData(m_modbusDevice, table, address, value);
     }
 }
 
@@ -888,24 +888,24 @@ QModbusDevice *ModbusAssistant::CreateModbusDevice()
 {
     QModbusDevice *device = Q_NULLPTR;
     int type = ui->comboBoxDeviceList->currentData().toInt();
-    if (ModbusFactory::Instance()->IsRtuSerialDeviceType(type)) {
+    if (ModbusFactory::Instance()->isRtuSerialDeviceType(type)) {
         QString port_name = ui->comboBoxPortName->currentText();
         int parity = ui->comboBoxParity->currentData().toInt();
         int baud_rate = ui->comboBoxBaudRate->currentData().toInt();
         int data_bits = ui->comboBoxDataBits->currentData().toInt();
         int stop_bits = ui->comboBoxStopBits->currentData().toInt();
         ModbusFactory *factory = ModbusFactory::Instance();
-        device = factory->CreateRtuSerialDevice(type,
+        device = factory->createRtuSerialDevice(type,
                                                 port_name,
                                                 parity,
                                                 baud_rate,
                                                 data_bits,
                                                 stop_bits);
-    } else if (ModbusFactory::Instance()->IsTcpDeviceType(type)) {
+    } else if (ModbusFactory::Instance()->isTcpDeviceType(type)) {
         QString address = ui->comboBoxAddress->currentText();
         int port = ui->spinBoxPort->value();
         ModbusFactory *factory = ModbusFactory::Instance();
-        device = factory->CreateTcpDevice(type, address, port);
+        device = factory->createTcpDevice(type, address, port);
     } else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknown device type");
     }
@@ -1017,7 +1017,7 @@ void ModbusAssistant::updateClientParameters()
 {
     int timeout = ui->spinBoxTimeout->value();
     int repeat_time = ui->spinBoxRepeatTime->value();
-    ModbusFactory::Instance()->SetClientDeviceParameters(m_modbusDevice, timeout, repeat_time);
+    ModbusFactory::Instance()->setClientDeviceParameters(m_modbusDevice, timeout, repeat_time);
 }
 
 void ModbusAssistant::updateClientTableViewAddress(QTableView *view, int start_address)
@@ -1095,7 +1095,7 @@ void ModbusAssistant::updateServerRegistersData()
             QStandardItem *item = model->item(row, 1);
             quint16 value = item ? item->text().toInt(Q_NULLPTR, 16) : 0;
             auto table = static_cast<QModbusDataUnit::RegisterType>(type);
-            ModbusFactory::Instance()->SetServerData(m_modbusDevice, table, row, value, false);
+            ModbusFactory::Instance()->setServerData(m_modbusDevice, table, row, value, false);
         }
     }
 }
@@ -1238,7 +1238,7 @@ void ModbusAssistant::outputMessage(const QString &msg,
 
 bool ModbusAssistant::isConnected()
 {
-    if (ModbusFactory::Instance()->IsConnected(m_modbusDevice)) {
+    if (ModbusFactory::Instance()->isConnected(m_modbusDevice)) {
         return true;
     }
 
