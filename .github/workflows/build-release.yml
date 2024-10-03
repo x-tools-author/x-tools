@@ -40,6 +40,7 @@ jobs:
     - name: Build for Windows
       shell: cmd
       run: |
+        git fetch --tags
         mkdir build
         cd build
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
@@ -72,6 +73,7 @@ jobs:
         sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev
     - name: Build for Linux
       run: |
+        git fetch --tags
         mkdir build
         cd build
         cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/linux_gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -DX_TOOLS_LINUX_MAKE_APP_IMAGE_XTOOLS:BOOL=TRUE -G "Unix Makefiles"
@@ -105,6 +107,7 @@ jobs:
       # ERROR: no file at "/Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib"
       # ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
       run: |
+        git fetch --tags
         # brew unlink unixodbc
         # brew install libiodbc
         mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
@@ -148,6 +151,7 @@ jobs:
       - name: CMake for Android
         shell: cmd
         run: |
+          git fetch --tags
           set JAVA_HOME=%JAVA_HOME_11_X64%
           ${{ github.workspace }}\Qt\6.5.3\android_armv7\bin\qt-cmake.bat ^
           -G "MinGW Makefiles" ^
