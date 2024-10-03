@@ -125,8 +125,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-        # 切换至最新的tag，格式为v开头的版本号
-        ref: ${{ github.ref }}
+          # 切换至最新的tag，格式为v开头的版本号
+          ref: ${{ github.ref }}
       - name: Install Qt for Android
         uses: jurplel/install-qt-action@v4
         with:
