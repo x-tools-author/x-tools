@@ -1,8 +1,4 @@
 add_compile_definitions(X_TOOLS_AUTHOR="x-tools-author")
-add_compile_definitions(X_TOOLS_EDITION="beta1")
-add_compile_definitions(X_TOOLS_VERSION="6.0.0")
-add_compile_definitions(X_TOOLS_DEFAULT_APP_STYLE="Fusion")
-add_compile_definitions(X_TOOLS_CLEAR_MESSAGE_INTERVAL=8000)
 add_compile_definitions(X_TOOLS_AUTHOR_EMAIL="x-tools@outlook.com")
 add_compile_definitions(X_TOOLS_GITEE_REPOSITORY_URL="https://gitee.com/x-tools-author/x-tools")
 add_compile_definitions(X_TOOLS_GITHUB_REPOSITORY_URL="https://github.com/x-tools-author/x-tools")
@@ -79,10 +75,10 @@ function(x_tools_set_target_properties target)
   set_target_properties(
     ${target}
     PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
-              ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
-              ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
-              TRUE WIN32_EXECUTABLE
-              TRUE)
+               ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
+               ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
+               TRUE WIN32_EXECUTABLE
+               TRUE)
 endfunction()
 
 function(x_tools_tar_target target)
@@ -106,7 +102,7 @@ function(x_tools_finalize_executable target)
 endfunction()
 
 function(x_tools_generate_translations target)
-  if(QT_VERSION_MAJOR LESS 6)
+  if(QT_VERSION VERSION_LESS "6.2.0")
     return()
   endif()
 
@@ -114,52 +110,27 @@ function(x_tools_generate_translations target)
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_en.ts)
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_zh_CN.ts)
   set(O_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations")
+  # cmake-format: off
   if(NOT QT_VERSION VERSION_LESS "6.7.0")
-    qt_add_lupdate(
-      SOURCE_TARGETS
-      ${target}
-      TS_FILES
-      ${APP_TS_FILES}
-      LUPDATE_TARGET
-      ${target}_lupdate
-      NO_GLOBAL_TARGET)
+    qt_add_lupdate(SOURCE_TARGETS ${target} TS_FILES ${APP_TS_FILES} LUPDATE_TARGET ${target}_lupdate NO_GLOBAL_TARGET)
   else()
     qt_add_lupdate(${target} TS_FILES ${APP_TS_FILES})
   endif()
+  # cmake-format: on
 
-  set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${O_PATH})
+  set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR})
   if(NOT QT_VERSION VERSION_LESS "6.7.0")
     qt_add_lrelease(TS_FILES ${APP_TS_FILES} LRELEASE_TARGET ${target}_lrelease NO_GLOBAL_TARGET)
   else()
     qt_add_lrelease(${target} TS_FILES ${APP_TS_FILES})
   endif()
-endfunction()
 
-set(QT_IFW_VERSION "4.6")
-if(WIN32)
-  set(binarycreator_temp "Tools/QtInstallerFramework/${QT_IFW_VERSION}/bin/binarycreator.exe")
-  set(binarycreator ${QT_DIR}/../../../../../${binarycreator_temp})
-  set(binarysuffix ".exe")
-elseif(UNIX AND NOT APPLE)
-  set(binarycreator_temp "Tools/QtInstallerFramework/${QT_IFW_VERSION}/bin/binarycreator")
-  set(binarycreator ${QT_DIR}/../../../../../${binarycreator_temp})
-  set(binarysuffix ".run")
-endif()
-
-function(x_tools_generate_installer_with_qt_ifw target root_dir version icon)
-  string(TOLOWER ${target} target_lower)
   add_custom_target(
-    ${target}Installer
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${root_dir}
-    COMMAND ${CMAKE_COMMAND} -DTARGET=${target} -DROOT_DIR=${root_dir} -DVERSION=${version}
-            -DICON=${icon} -P ${CMAKE_SOURCE_DIR}/CMake/xToolsScriptGenerateQIFW.cmake
-    COMMAND ${CMAKE_COMMAND} -E echo ${icon}
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${icon}
-            ${root_dir}/packages/${target}/data/icon.ico
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-            ${root_dir}/packages/${target}/data
-    COMMAND ${binarycreator} --offline-only -c ${root_dir}/config/config.xml -p ${root_dir}/packages
-            ${root_dir}/../${target_lower}-${version}-installer${binarysuffix}
-    SOURCES ${CMAKE_SOURCE_DIR}/.cmake/sak_installer.cmake
-    COMMENT "Start making installer(${target})...")
+    ${target}_lupgrade
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_en.qm
+            ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_en.qm
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_zh_CN.qm
+            ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_zh_CN.qm
+    DEPENDS ${target}_lrelease
+    COMMENT "Generate translations for ${target}...")
 endfunction()

@@ -9,40 +9,26 @@
 #include "MainWindow.h"
 
 #include <QAction>
-#include <QButtonGroup>
 #include <QClipboard>
 #include <QCloseEvent>
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QImage>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QLabel>
 #include <QLayout>
 #include <QMenuBar>
+#include <QNetworkProxyFactory>
 #include <QPainter>
 #include <QPixmap>
 #include <QScrollBar>
-#include <QSizePolicy>
-#include <QStackedWidget>
-#include <QStatusBar>
 #include <QTextBrowser>
-#include <QToolBar>
-#include <QToolButton>
 #include <QVariant>
 
-#include "xToolsApplication.h"
-#ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
-#include "xToolsAssistantFactory.h"
-#endif
-#include "xToolsSettings.h"
-#include "xToolsToolBoxUi.h"
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
-#ifdef X_TOOLS_ENABLE_MODULE_CANBUS
-#include "xToolsCanBusStudioUi.h"
-#endif
-#ifdef X_TOOLS_ENABLE_MODULE_MODBUS
-#include "xToolsModbusStudioUi.h"
-#endif
-#endif
+#include "App/Settings.h"
+#include "AssistantFactory.h"
+#include "IOPage/IOPage.h"
 
 #ifdef Q_OS_WIN
 #include "SystemTrayIcon.h"
@@ -50,19 +36,24 @@
 
 MainWindow::MainWindow(QWidget* parent)
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-    : xToolsPrivateMainWindow(parent)
+    : xToolsPrivate::MainWindow(parent)
 #else
-    : xToolsMainWindow(parent)
+    : xTools::MainWindow(parent)
 #endif
+    , m_toolMenu(nullptr)
+    , m_ioPage00(new IOPage(IOPage::Left, xTools::Settings::instance(), this))
+    , m_ioPage01(new IOPage(IOPage::Right, xTools::Settings::instance(), this))
+    , m_ioPage10(new IOPage(IOPage::Left, xTools::Settings::instance(), this))
+    , m_ioPage11(new IOPage(IOPage::Right, xTools::Settings::instance(), this))
 {
 #ifdef Q_OS_WIN
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
-        auto systemTrayIcon = new SystemTrayIcon(this);
-        QObject::connect(systemTrayIcon, &SystemTrayIcon::invokeExit, this, [=]() {
+        auto *systemTrayIcon = new SystemTrayIcon(this);
+        connect(systemTrayIcon, &SystemTrayIcon::invokeExit, this, [=]() {
             QApplication::closeAllWindows();
             QApplication::quit();
         });
-        QObject::connect(systemTrayIcon,
+        connect(systemTrayIcon,
                          &SystemTrayIcon::invokeShowMainWindow,
                          this,
                          &MainWindow::show);
@@ -70,98 +61,83 @@ MainWindow::MainWindow(QWidget* parent)
     }
 #endif
 
-    auto* stackedWidget = new QStackedWidget();
-    setCentralWidget(stackedWidget);
-
-#if 0
-#ifdef Q_OS_ANDROID
-    setWindowFlags(Qt::FramelessWindowHint);
-    QScrollArea* scrollArea = new QScrollArea(this);
-    scrollArea->setWidgetResizable(true);
-    setCentralWidget(scrollArea);
-    scrollArea->setWidget(mTabWidget);
-#endif
-#endif
+    auto* centralWidget = new QWidget();
+    auto* layout = new QGridLayout(centralWidget);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setSpacing(0);
+    layout->addWidget(m_ioPage00, 0, 0);
+    layout->addWidget(m_ioPage01, 0, 1);
+    layout->addWidget(m_ioPage10, 1, 0);
+    layout->addWidget(m_ioPage11, 1, 1);
+    centralWidget->setLayout(layout);
+    setCentralWidget(centralWidget);
 
     setWindowIcon(QIcon(":/Resources/Images/Logo.png"));
-
     initMenuBar();
-    initNav();
-#if 0
-    initStatusBar();
-#endif
+
+    constexpr int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
+    const QString key = m_settingsKey.windowGrid;
+    int rawGrid = xTools::Settings::instance()->value(key, defaultGrid).toInt();
+    m_windowGrid = static_cast<WindowGrid>(rawGrid);
+    qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
+    updateGrid(m_windowGrid);
+
+    load();
 }
 
-MainWindow::~MainWindow() = default;
+MainWindow::~MainWindow()
+{
+    qInfo() << "MainWindow is destroyed!";
+}
 
 void MainWindow::initMenuBar()
 {
     initFileMenu();
     initToolMenu();
     initOptionMenu();
-    initLanguageMenu();
+    initViewMenu();
     initLinksMenu();
     initHelpMenu();
 }
 
-#ifdef Q_OS_WIN
 void MainWindow::closeEvent(QCloseEvent* event)
 {
-    if (xToolsSettings::instance()->value(m_settingsKey.exitToSystemTray).toBool()) {
-        close();
+    save();
+    xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
+#ifdef Q_OS_WIN
+    if (xTools::Settings::instance()->value(m_settingsKey.exitToSystemTray).toBool()) {
+        hide();
         event->ignore();
         return;
     }
-
+#endif
     QMainWindow::closeEvent(event);
 }
-#endif
 
 void MainWindow::initFileMenu()
 {
-    // Tool box
-    auto* windowMenu = new QMenu(tr("New Window"), this);
-    m_fileMenu->addMenu(windowMenu);
-    QList<int> toolTypeList = xToolsToolBoxUi::supportedCommunicationTools();
-    for (auto& toolType : toolTypeList) {
-        const QString name = xToolsToolBoxUi::communicationToolName(toolType);
-        auto* action = new QAction(name, this);
-        windowMenu->addAction(action);
-        connect(action, &QAction::triggered, this, [=]() {
-            auto* w = new xToolsToolBoxUi();
-            w->setContentsMargins(0, 0, 0, 0);
-            w->setAttribute(Qt::WA_DeleteOnClose, true);
-            w->initialize(toolType);
-            w->adjustSize();
-            w->show();
-        });
-    }
+    auto newWindowAction = m_fileMenu->addAction(tr("New Window"), this, []() {
+        auto* w = new IOPage(IOPage::Left, xTools::Settings::instance());
+        w->setWindowTitle("xTools");
+        w->show();
+    });
+    newWindowAction->setShortcut(QKeySequence::New);
 
-    // Other tools
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
-#ifdef X_TOOLS_ENABLE_MODULE_MODBUS
-    auto* modbusAction = new QAction("Modbus", this);
-    connect(modbusAction, &QAction::triggered, this, [=]() {
-        auto* w = new xToolsModbusStudioUi();
-        w->setContentsMargins(9, 9, 9, 9);
-        w->setAttribute(Qt::WA_DeleteOnClose, true);
-        w->resize(1024, 480);
-        w->show();
-    });
-    windowMenu->addAction(modbusAction);
-#endif
-#ifdef X_TOOLS_ENABLE_MODULE_CANBUS
-    auto* canBusAction = new QAction("CAN Bus", this);
-    connect(canBusAction, &QAction::triggered, this, [=]() {
-        auto* w = new xToolsCanBusStudioUi();
-        w->setContentsMargins(9, 9, 9, 9);
-        w->setAttribute(Qt::WA_DeleteOnClose, true);
-        w->resize(1024, 480);
-        w->show();
-    });
-    windowMenu->addAction(canBusAction);
-#endif
-#endif
+    m_fileMenu->addSeparator();
+    auto saveAction = m_fileMenu->addAction(tr("Save Parameters"),
+                                            this,
+                                            &MainWindow::onSaveActionTriggered);
+    saveAction->setShortcut(QKeySequence::Save);
+
+    auto importActioni = m_fileMenu->addAction(tr("Import Parameters"),
+                                               this,
+                                               &MainWindow::onImportActionTriggered);
+    importActioni->setShortcut(QKeySequence::Open);
+
+    auto exportAction = m_fileMenu->addAction(tr("Export Parameters"),
+                                              this,
+                                              &MainWindow::onExportActionTriggered);
+    exportAction->setShortcuts(QKeySequence::SaveAs);
 
     m_fileMenu->addSeparator();
     m_fileMenu->addAction(m_exitAction);
@@ -169,19 +145,18 @@ void MainWindow::initFileMenu()
 
 void MainWindow::initToolMenu()
 {
-#ifdef X_TOOLS_ENABLE_MODULE_ASSISTANTS
-    auto* toolMenu = new QMenu(tr("&Tools"));
-    menuBar()->insertMenu(m_languageMenu->menuAction(), toolMenu);
+    m_toolMenu = new QMenu(tr("&Tools"));
+    menuBar()->insertMenu(m_languageMenu->menuAction(), m_toolMenu);
 
-    for (auto& type : SAKAssistantsFactory::instance()->supportedAssistants()) {
-        QString name = SAKAssistantsFactory::instance()->assistantName(type);
+    for (auto& type : AssistantFactory::instance()->supportedAssistants()) {
+        QString name = AssistantFactory::instance()->assistantName(type);
         auto* action = new QAction(name, this);
-        QWidget* assistant = SAKAssistantsFactory::instance()->newAssistant(type);
+        QWidget* assistant = AssistantFactory::instance()->newAssistant(type);
 
         Q_ASSERT_X(assistant, __FUNCTION__, "A null assistant widget!");
 
         assistant->hide();
-        toolMenu->addAction(action);
+        m_toolMenu->addAction(action);
         connect(action, &QAction::triggered, this, [=]() {
             if (assistant->isHidden()) {
                 assistant->show();
@@ -190,46 +165,88 @@ void MainWindow::initToolMenu()
             }
         });
     }
-#endif
 }
 
 void MainWindow::initOptionMenu()
 {
-    auto* mainWindowMenu = new QMenu(tr("Main Window"), this);
-    auto* action = new QAction(tr("Exit to System Tray"), this);
-    action->setCheckable(true);
-    mainWindowMenu->addAction(action);
     m_optionMenu->addSeparator();
-    m_optionMenu->addMenu(mainWindowMenu);
+    auto* proxy = m_optionMenu->addAction(tr("Use System Proxy"));
+    proxy->setCheckable(true);
+    bool useSystemProxy = xTools::Settings::instance()->value(m_settingsKey.useSystemProxy).toBool();
+    proxy->setChecked(useSystemProxy);
+    QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
+    connect(proxy, &QAction::triggered, this, [=]() {
+        QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
+        xTools::Settings::instance()->setValue(m_settingsKey.useSystemProxy, proxy->isChecked());
+    });
 
-    QVariant v = xToolsSettings::instance()->value(m_settingsKey.exitToSystemTray);
+    auto* trayAction = new QAction(tr("Exit to System Tray"), this);
+    trayAction->setCheckable(true);
+    m_optionMenu->addAction(trayAction);
+
+    QVariant v = xTools::Settings::instance()->value(m_settingsKey.exitToSystemTray);
     if (!v.isNull()) {
         bool isExitToSystemTray = v.toBool();
-        action->setChecked(isExitToSystemTray);
+        trayAction->setChecked(isExitToSystemTray);
     }
 
-    connect(action, &QAction::triggered, this, [=]() {
-        bool keep = action->isChecked();
-        xToolsSettings::instance()->setValue(m_settingsKey.exitToSystemTray, keep);
+    connect(trayAction, &QAction::triggered, this, [=]() {
+        bool keep = trayAction->isChecked();
+        xTools::Settings::instance()->setValue(m_settingsKey.exitToSystemTray, keep);
     });
 }
 
-void MainWindow::initLanguageMenu() {}
+void MainWindow::initViewMenu()
+{
+    auto* viewMenu = new QMenu(tr("&View"));
+    menuBar()->insertMenu(m_toolMenu->menuAction(), viewMenu);
+
+    auto a1x1 = viewMenu->addAction("1x1", this, [=]() { updateGrid(WindowGrid::Grid1x1); });
+    auto a1x2 = viewMenu->addAction("1x2", this, [=]() { updateGrid(WindowGrid::Grid1x2); });
+    auto a2x1 = viewMenu->addAction("2x1", this, [=]() { updateGrid(WindowGrid::Grid2x1); });
+    auto a2x2 = viewMenu->addAction("2x2", this, [=]() { updateGrid(WindowGrid::Grid2x2); });
+
+    a1x1->setCheckable(true);
+    a1x2->setCheckable(true);
+    a2x1->setCheckable(true);
+    a2x2->setCheckable(true);
+
+    static QActionGroup group(this);
+    group.addAction(a1x1);
+    group.addAction(a1x2);
+    group.addAction(a2x1);
+    group.addAction(a2x2);
+
+    if (m_windowGrid == WindowGrid::Grid1x1) {
+        a1x1->setChecked(true);
+    } else if (m_windowGrid == WindowGrid::Grid1x2) {
+        a1x2->setChecked(true);
+    } else if (m_windowGrid == WindowGrid::Grid2x1) {
+        a2x1->setChecked(true);
+    } else if (m_windowGrid == WindowGrid::Grid2x2) {
+        a2x2->setChecked(true);
+    }
+
+    auto windowGrid = xTools::Settings::instance()->value(m_settingsKey.windowGrid).toInt();
+    if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
+        a1x2->setChecked(true);
+        a1x2->trigger();
+    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x1)) {
+        a2x1->setChecked(true);
+        a2x1->trigger();
+    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x2)) {
+        a2x2->setChecked(true);
+        a2x2->trigger();
+    } else {
+        a1x1->setChecked(true);
+        a1x1->trigger();
+    }
+}
 
 void MainWindow::initHelpMenu()
 {
-    m_helpMenu->addSeparator();
-    m_helpMenu->addAction(tr("Get Sources from Github"), this, []() {
-        QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL));
-    });
-    m_helpMenu->addAction(tr("Get Sources from Gitee"), this, []() {
-        QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL));
-    });
-    m_helpMenu->addSeparator();
-#if 0
-    m_helpMenu->addAction(tr("About xTools"), this, &MainWindow::aboutSoftware);
-#endif
 #if defined(Q_OS_WIN) && !defined(X_TOOLS_ENABLE_MODULE_PRIVATE)
+    m_helpMenu->addSeparator();
     m_helpMenu->addAction(QIcon(":/Resources/Icons/IconBuy.svg"),
                           tr("Buy Ultimate Edition"),
                           this,
@@ -248,165 +265,40 @@ void MainWindow::initLinksMenu()
     auto* linksMenu = new QMenu(tr("Links"), this);
     menuBar()->insertMenu(m_helpMenu->menuAction(), linksMenu);
 
-    struct Link
-    {
-        QString name;
-        QString url;
-        QString iconPath;
-    };
-    QList<Link> linkList;
-    linkList << Link{tr("Qt Official Download"),
-                     QString("http://download.qt.io/official_releases/qt"),
-                     QString(":/resources/images/Qt.png")}
-             << Link{tr("Qt Official Blog"),
-                     QString("https://www.qt.io/blog"),
-                     QString(":/resources/images/Qt.png")}
-             << Link{tr("Qt Official Release"),
-                     QString("https://wiki.qt.io/Qt_5.15_Release"),
-                     QString(":/resources/images/Qt.png")}
-             << Link{QString(""), QString(""), QString("")}
-             << Link{tr("Download xTools from Github"),
-                     QString("%1/releases").arg(X_TOOLS_GITHUB_REPOSITORY_URL),
-                     QString(":/Resources/Icons/GitHub.svg")}
-             << Link{tr("Download xTools from Gitee"),
-                     QString("%1/releases").arg(X_TOOLS_GITEE_REPOSITORY_URL),
-                     QString(":/Resources/Icons/Gitee.svg")}
-             << Link{QString(""), QString(""), QString("")}
-             << Link{tr("Office Web Site"),
-                     QString("https://qsaker.gitee.io/qsak/"),
-                     QString(":/Resources/Images/I18n.png")};
-
-    for (auto& var : linkList) {
-        if (var.url.isEmpty()) {
-            linksMenu->addSeparator();
-            continue;
-        }
-
-        auto* action = new QAction(var.name, this);
-        action->setObjectName(var.url);
-        linksMenu->addAction(action);
-
-        connect(action, &QAction::triggered, this, [=]() {
-            QDesktopServices::openUrl(QUrl(sender()->objectName()));
-        });
-    }
-}
-
-void MainWindow::initNav()
-{
-    auto* tb = new QToolBar(this);
-    addToolBar(Qt::LeftToolBarArea, tb);
-    tb->setFloatable(false);
-    tb->setMovable(false);
-    tb->setOrientation(Qt::Vertical);
-    tb->setAllowedAreas(Qt::LeftToolBarArea);
-
-    static QButtonGroup btGroup;
-    QList<int> types = xToolsToolBoxUi::supportedCommunicationTools();
-    for (int i = 0; i < types.count(); i++) {
-        int type = types.at(i);
-        auto* toolBoxUi = new xToolsToolBoxUi(this);
-        toolBoxUi->initialize(type);
-
-        auto icon = xToolsApplication::cookedIcon(toolBoxUi->windowIcon());
-        initNav({&btGroup, icon, toolBoxUi->windowTitle(), toolBoxUi, tb});
-    }
-
-    tb->addSeparator();
-    initNavStudio(&btGroup, tb);
-    auto* lb = new QLabel(" ");
-    tb->addWidget(lb);
-    lb->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
-    intNavControlButton(&btGroup, tb);
-}
-
-void MainWindow::initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar)
-{
-    Q_UNUSED(buttonGroup)
-    Q_UNUSED(toolBar)
-#ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
-#ifdef X_TOOLS_ENABLE_MODULE_MODBUS
-    auto modbusIcon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconModbus.svg"));
-    initNav({buttonGroup, modbusIcon, tr("Modbus Studio"), new xToolsModbusStudioUi(this), toolBar});
-#endif
-#ifdef X_TOOLS_ENABLE_MODULE_CANBUS
-    auto canIcon = xToolsApplication::cookedIcon(QIcon(":/Resources/Icons/IconCanBus.svg"));
-    initNav({buttonGroup, canIcon, tr("CANBus Studio"), new xToolsCanBusStudioUi(this), toolBar});
-#endif
-#endif
-}
-
-void MainWindow::initNav(const NavContext& ctx)
-{
-    const QString key = m_settingsKey.isTextBesideIcon;
-    bool isTextBesideIcon = xToolsSettings::instance()->value(key).toBool();
-    auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
-    auto* bt = new QToolButton();
-    bt->setAutoRaise(true);
-    bt->setIcon(ctx.icon);
-    bt->setCheckable(true);
-    bt->setToolButtonStyle(style);
-    bt->setToolTip(ctx.name);
-    bt->setText(" " + ctx.name);
-    bt->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-#if 0
-    bt->setIconSize(QSize(32, 32));
-#endif
-    ctx.bg->addButton(bt);
-    ctx.tb->addWidget(bt);
-
-    if (ctx.page->layout()) {
-        ctx.page->layout()->setContentsMargins(4, 4, 4, 4);
-    }
-    auto stackedWidget = qobject_cast<QStackedWidget*>(centralWidget());
-    stackedWidget->addWidget(ctx.page);
-
-    auto pageCount = ctx.bg->buttons().count();
-    QObject::connect(bt, &QToolButton::clicked, bt, [=]() {
-        stackedWidget->setCurrentIndex(int(pageCount) - 1);
-        xToolsSettings::instance()->setValue(m_settingsKey.pageIndex, pageCount - 1);
+    linksMenu->addAction(tr("Get Sources from Github"), this, []() {
+        QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL));
     });
-
-    if (xToolsSettings::instance()->value(m_settingsKey.pageIndex).toInt() == (pageCount - 1)) {
-        bt->setChecked(true);
-        stackedWidget->setCurrentIndex(int(pageCount) - 1);
-    }
-}
-
-void MainWindow::intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBar)
-{
-    toolBar->addSeparator();
-    const QString key = m_settingsKey.isTextBesideIcon;
-    bool isTextBesideIcon = xToolsSettings::instance()->value(key).toBool();
-    auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
-    auto* tbt = new QToolButton(this);
-    const QString path = ":/Resources/Icons/IconListWithIcon.svg";
-    tbt->setIcon(xToolsApplication::cookedIcon(QIcon(path)));
-    tbt->setText(" " + tr("Show Icon Only"));
-    tbt->setToolTip(tr("Click to show(hide) nav text"));
-    tbt->setAutoRaise(true);
-    tbt->setToolButtonStyle(style);
-    tbt->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    toolBar->addWidget(tbt);
-    connect(tbt, &QToolButton::clicked, tbt, [=]() {
-        const QString key = m_settingsKey.isTextBesideIcon;
-        bool checked = xToolsSettings::instance()->value(key).toBool();
-        checked = !checked;
-        auto bts = buttonGroup->buttons();
-        auto style = checked ? Qt::ToolButtonTextBesideIcon : Qt::ToolButtonIconOnly;
-        tbt->setToolButtonStyle(style);
-        for (auto& bt : bts) {
-            auto cookedBt = qobject_cast<QToolButton*>(bt);
-
-            cookedBt->setToolButtonStyle(style);
-        }
-        xToolsSettings::instance()->setValue(key, checked);
+    linksMenu->addAction(tr("Get Sources from Gitee"), this, []() {
+        QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL));
     });
 }
 
-void MainWindow::initStatusBar()
+void MainWindow::updateGrid(WindowGrid grid)
 {
-    statusBar()->showMessage("Hello world", 10 * 1000);
+    if (grid == WindowGrid::Grid1x2) {
+        m_ioPage00->show();
+        m_ioPage01->show();
+        m_ioPage10->hide();
+        m_ioPage11->hide();
+    } else if (grid == WindowGrid::Grid2x1) {
+        m_ioPage00->show();
+        m_ioPage01->hide();
+        m_ioPage10->show();
+        m_ioPage11->hide();
+    } else if (grid == WindowGrid::Grid2x2) {
+        m_ioPage00->show();
+        m_ioPage01->show();
+        m_ioPage10->show();
+        m_ioPage11->show();
+    } else {
+        m_ioPage00->show();
+        m_ioPage01->hide();
+        m_ioPage10->hide();
+        m_ioPage11->hide();
+    }
+
+    m_windowGrid = grid;
+    xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
 }
 
 void MainWindow::showHistory()
@@ -458,4 +350,92 @@ void MainWindow::showQrCode()
     dialog.setModal(true);
     dialog.show();
     dialog.exec();
+}
+
+void MainWindow::load(const QString& fileName) const
+{
+    QString filePath = fileName;
+    if (fileName.isEmpty()) {
+        const QString path = xTools::Settings::instance()->settingsPath();
+        filePath = path + "/data.json";
+    }
+
+    if (!QFile::exists(filePath)) {
+        return;
+    }
+
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        return;
+    }
+
+    QByteArray data = file.readAll();
+    file.close();
+
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    QJsonObject obj = doc.object();
+    m_ioPage00->load(obj.value("page00").toObject().toVariantMap());
+    m_ioPage01->load(obj.value("page01").toObject().toVariantMap());
+    m_ioPage10->load(obj.value("page10").toObject().toVariantMap());
+    m_ioPage11->load(obj.value("page11").toObject().toVariantMap());
+}
+
+void MainWindow::save(const QString& fileName) const
+{
+    QJsonObject obj;
+    obj.insert("page00", QJsonObject::fromVariantMap(m_ioPage00->save()));
+    obj.insert("page01", QJsonObject::fromVariantMap(m_ioPage01->save()));
+    obj.insert("page10", QJsonObject::fromVariantMap(m_ioPage10->save()));
+    obj.insert("page11", QJsonObject::fromVariantMap(m_ioPage11->save()));
+
+    QJsonDocument doc;
+    doc.setObject(obj);
+
+    QString filePath = fileName;
+    if (fileName.isEmpty()) {
+        const QString path = xTools::Settings::instance()->settingsPath();
+        filePath = path + "/data.json";
+    }
+
+    QFile file(filePath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+        qWarning() << "Failed to open file: " << filePath << file.errorString();
+        return;
+    }
+
+    QTextStream out(&file);
+    out << doc.toJson();
+    file.close();
+}
+
+void MainWindow::onSaveActionTriggered() const
+{
+    save();
+}
+
+void MainWindow::onImportActionTriggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Import Parameters"),
+                                                    "",
+                                                    tr("Json Files (*.json)"));
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    load(fileName);
+}
+
+void MainWindow::onExportActionTriggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Export Parameters"),
+                                                    "",
+                                                    tr("Json Files (*.json)"));
+
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    save(fileName);
 }

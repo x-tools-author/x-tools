@@ -2,42 +2,33 @@
 on:
   schedule:
     - cron: '0 0 * * *'
-#on:
+# on:
 #  push:
 #    branches:
 #      - master
 jobs:
   build:
     name: Build
-    runs-on: windows-2019
+    runs-on: windows-2022
     strategy:
       matrix:
-        target: [desktop]
-        arch: [win64_msvc2019_64]
-        version: [5.15.2, 6.5.3]
-        include:
-          - version: 5.15.2
-            cmake-prefix-path: 'lib/cmake/Qt5'
-            modules: 'qtcharts'
-          - version: 6.5.3
-            cmake-prefix-path: 'lib/cmake/Qt6'
-            moudles: 'qtcharts qtserialbus qtserialport qtwebsockets'
+        version: [6.8.*]
     steps:
       - name: Pull code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: ${{ matrix.version }}
-          target: ${{ matrix.target }}
-          arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
-          modules: ${{ matrix['moudles']}}
+          version: ${{ matrix.version }}
+          target: desktop
+          arch: win64_msvc2022_64
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: build-msvc
         shell: cmd
         run: |
           mkdir build
           cd build
-          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          cmake -DWITH_TOOLS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}/${{ matrix.cmake-prefix-path }}' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
           nmake

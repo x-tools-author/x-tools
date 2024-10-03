@@ -8,19 +8,17 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QButtonGroup>
-#include <QMetaEnum>
-
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#include "xToolsPrivateMainWindow.h"
+#include "xApp/MainWindow.h"
 #else
-#include "xToolsMainWindow.h"
+#include "App/MainWindow.h"
 #endif
 
+class IOPage;
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-class MainWindow : public xToolsPrivateMainWindow
+class MainWindow : public xToolsPrivate::MainWindow
 #else
-class MainWindow : public xToolsMainWindow
+class MainWindow : public xTools::MainWindow
 #endif
 {
     Q_OBJECT
@@ -28,41 +26,43 @@ public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
     ~MainWindow() override;
 
-#ifdef Q_OS_WIN
 protected:
     void closeEvent(QCloseEvent* event) override;
-#endif
 
 private:
-    struct SettingsKeyContext
+    enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
+    struct SettingsKeys
     {
+        const QString windowGrid{"MainWindow/windowGrid"};
         const QString isTextBesideIcon{"MainWindow/isTextBesideIcon"};
         const QString pageIndex{"MainWindow/pageIndex"};
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
+        const QString useSystemProxy{"MainWindow/useSystemProxy"};
     } m_settingsKey;
-    struct NavContext
-    {
-        QButtonGroup* bg;
-        QIcon icon;
-        QString name;
-        QWidget* page;
-        QToolBar* tb;
-    };
+
+    QMenu* m_toolMenu;
+    WindowGrid m_windowGrid{WindowGrid::Grid1x1};
+    IOPage* m_ioPage00;
+    IOPage* m_ioPage01;
+    IOPage* m_ioPage10;
+    IOPage* m_ioPage11;
 
 private:
     void initMenuBar();
     void initFileMenu();
     void initToolMenu();
     void initOptionMenu();
-    void initLanguageMenu();
+    void initViewMenu();
     void initHelpMenu();
     void initLinksMenu();
-    void initNav();
-    void initNavStudio(QButtonGroup* buttonGroup, QToolBar* toolBar);
-    void initNav(const NavContext& ctx);
-    void intNavControlButton(QButtonGroup* buttonGroup, QToolBar* toolBar);
-    void initStatusBar();
 
+    void updateGrid(WindowGrid grid);
     static void showHistory();
     static void showQrCode();
+
+    void load(const QString& fileName = QString()) const;
+    void save(const QString& fileName = QString()) const;
+    void onSaveActionTriggered() const;
+    void onImportActionTriggered();
+    void onExportActionTriggered();
 };

@@ -5,6 +5,6 @@
     <Version>argPackageVersion</Version>
     <ReleaseDate>argPackageReleaseDate</ReleaseDate>
     <Default>true</Default>
-    <Script>installscript.qs</Script>
+    <Script>installscript.js</Script>
     <ForcedInstallation>true</ForcedInstallation>
 </Package>

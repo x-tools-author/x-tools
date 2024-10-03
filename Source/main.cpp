@@ -6,28 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include "App/xTools.h"
+
 #include "Application.h"
 #include "MainWindow.h"
-#include "xTools.h"
 
 int main(const int argc, char *argv[])
 {
-#ifndef X_TOOLS_BUILD_WITH_QMAKE
-    Q_INIT_RESOURCE(xToolsCommon);
-    Q_INIT_RESOURCE(xToolsTools);
-#endif
-
-    QString version = "0.0.0";
-#if defined(X_TOOLS_GIT_TAG)
-    QString tag = QString(X_TOOLS_GIT_TAG);
-    if (tag == QString("continuous")) {
-        version = "9.9.9";
-    } else {
-        tag = tag.remove("v");
-        if (tag.split('.').length() == 3) {
-            version = tag;
-        }
-    }
-#endif
-    return xToolsExec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"), version);
+    xInitResources();
+    const QString version = xTools::Application::appVersioin();
+    return xTools::exec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"), version);
 }

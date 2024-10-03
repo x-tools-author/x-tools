@@ -45,8 +45,6 @@
         <file>Resources/Icons/IconWindowed.svg</file>
         <file>Resources/Icons/IconZoomIn.svg</file>
         <file>Resources/Icons/IconZoomOut.svg</file>
-        <file>Resources/Translations/xTools_en.qm</file>
-        <file>Resources/Translations/xTools_zh_CN.qm</file>
         <file>Resources/Images/Android.png</file>
         <file>Resources/Images/AndroidLogo.png</file>
         <file>Resources/Images/Gitee.png</file>
@@ -65,9 +63,10 @@
         <file>Resources/Images/Qt.png</file>
         <file>Resources/Images/QtQQ.jpg</file>
         <file>Resources/Images/StartUi.jpg</file>
-        <file>Resources/Images/WeChat.jpg</file>
         <file>Resources/Images/Windows.png</file>
         <file>Resources/Images/Zip.png</file>
         <file>Resources/Files/History.txt</file>
+        <file>Resources/Translations/xToolsCore_en.qm</file>
+        <file>Resources/Translations/xToolsCore_zh_CN.qm</file>
     </qresource>
 </RCC>

@@ -2,43 +2,45 @@ name: build-android
 on:
   schedule:
     - cron: '0 0 * * *'
-#on:
+# on:
 #  push:
 #    branches:
 #      - master
 env:
   QT_VERSION: 6.5.3
-  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   build:
     name: Build for Android
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Install Qt for Android
-        uses: jurplel/install-qt-action@v3
-        with:
-          target: android
-          arch: android_armv7
-          host: windows
-          dir: ${{ github.workspace }}
-          modules: ${{env.QT_MODULES}}
-          version: ${{env.QT_VERSION}}
+        uses: actions/checkout@v4
       - name: Install Qt for Desktop(mingw)
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
-          target: desktop
-          arch: win64_mingw
-          host: windows
-          dir: ${{ github.workspace }}
-          modules: ${{env.QT_MODULES}}
-          version: "${{env.QT_VERSION}}"
+          aqtversion: '==3.1.*'
+          target: 'desktop'
+          arch: 'win64_mingw'
+          host: 'windows'
+          dir: '${{ github.workspace }}'
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+          version:  '${{ env.QT_VERSION }}'
+      - name: Install Qt for Android
+        uses: jurplel/install-qt-action@v4
+        with:
+          aqtversion: '==3.1.*'
+          target: 'android'
+          arch: 'android_armv7'
+          host: 'windows'
+          dir: '${{ github.workspace }}'
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+          version: '${{ env.QT_VERSION }}'
       - name: CMake for Android
         shell: cmd
         run: |
+          git fetch --tags
           set JAVA_HOME=%JAVA_HOME_11_X64%
-          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat ^
+          ${{ github.workspace }}\Qt\${{ env.QT_VERSION }}\android_armv7\bin\qt-cmake.bat ^
           -G "MinGW Makefiles" ^
           -S . ^
           -B "build\armeabi_v7a" ^

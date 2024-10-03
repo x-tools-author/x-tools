@@ -9,25 +9,19 @@
 #pragma once
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#include "xToolsPrivateApplication.h"
+#include "xApp/Application.h"
 #else
-#include "xToolsApplication.h"
+#include "App/Application.h"
 #endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-class Application : public xToolsPrivateApplication
+class Application : public xToolsPrivate::Application
 #else
-class Application : public xToolsApplication
+class Application : public xTools::Application
 #endif
 {
     Q_OBJECT
 public:
     explicit Application(int argc, char **argv);
     ~Application() override = default;
-
-    void setupLanguage(const QString &language) override;
-
-private:
-    const QString m_translatorPrefix{"xTools"};
-    const QString m_translatorToolsPrefix{"xToolsTools"};
 };

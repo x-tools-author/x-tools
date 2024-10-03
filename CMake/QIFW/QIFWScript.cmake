@@ -4,12 +4,16 @@
 # * argTemperateDir:  安装模板目录 *
 # * argBinarycreator: Qt Installer Framework
 # * argRootDir:       工作目录
+# * argIcon:      图标文件
 
+execute_process(COMMAND ${CMAKE_COMMAND} -E rm -rf ${argRootDir} "||" ${CMAKE_COMMAND} -E true)
 execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${argRootDir})
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${argTemperateDir} ./ COMMAND_ECHO STDOUT
                 WORKING_DIRECTORY ${argRootDir})
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${argDataDir} ./packages/all/data
                 WORKING_DIRECTORY ${argRootDir})
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${argIcon}
+                        ./packages/all/data/icon.ico WORKING_DIRECTORY ${argRootDir})
 # --------------------------------------------------------------------------------------------------
 set(config_xml config/config.xml)
 set(old_text "argConfigName")
@@ -80,7 +84,7 @@ execute_process(
     "(Get-Content ${package_xml}) -replace '${old_text}', '${new_text}' | Set-Content ${package_xml}"
   WORKING_DIRECTORY ${argRootDir})
 # --------------------------------------------------------------------------------------------------
-set(installscript packages/all/meta/installscript.qs)
+set(installscript packages/all/meta/installscript.js)
 set(old_text "argConfigTargetDir")
 set(new_text "${argTarget}")
 execute_process(
@@ -115,5 +119,8 @@ if(WIN32)
 elseif(UNIX AND NOT APPLE)
   set(output_file "${argTarget}-${argVersion}-installer.run")
 endif()
+
+execute_process(COMMAND ${CMAKE_COMMAND} -E rename "all" "${argTarget}"
+                WORKING_DIRECTORY ${argRootDir}/packages)
 execute_process(COMMAND ${argBinarycreator} -c config/config.xml -p packages ${output_file}
                         COMMAND_ECHO STDOUT WORKING_DIRECTORY ${argRootDir})

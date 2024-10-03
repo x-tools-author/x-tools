@@ -1,14 +1,31 @@
 # Get the last tag.
-set(GIT_TAG "x.x.x")
 function(x_tools_git_get_latest_tag working_dir prefix)
   execute_process(
-    COMMAND git describe --abbrev=0
+    COMMAND git tag
     WORKING_DIRECTORY ${working_dir}
-    OUTPUT_VARIABLE GIT_LATEST_TAG
+    OUTPUT_VARIABLE git_tags
     OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+  if(NOT git_tags)
+    message("No tags found.")
+    return()
+  endif()
+
+  if(WIN32)
+    string(REPLACE "\r" "" git_tags ${git_tags})
+  endif()
+  string(REPLACE "\n" ";" git_tags ${git_tags})
+  list(LENGTH git_tags git_tags_count)
+  list(GET git_tags -1 GIT_LATEST_TAG)
+  if(${GIT_LATEST_TAG} STREQUAL "" OR ${GIT_LATEST_TAG} STREQUAL "continuous")
+    string(TIMESTAMP target_version "%y.%m.%d")
+    set(GIT_LATEST_TAG ${target_version})
+  endif()
   message("Latest git tag: ${GIT_LATEST_TAG}")
-  set(${prefix}_GIT_TAG="${GIT_LATEST_TAG}")
-  set(GIT_TAG "${GIT_LATEST_TAG}")
+  set(${prefix}_GIT_TAG="${GIT_LATEST_TAG}" CACHE STRING "Latest git tag" FORCE)
+  set(GIT_TAG
+      "${GIT_LATEST_TAG}"
+      PARENT_SCOPE)
   add_compile_definitions(${prefix}_GIT_TAG="${GIT_LATEST_TAG}")
 endfunction()
 

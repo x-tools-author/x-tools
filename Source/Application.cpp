@@ -10,25 +10,12 @@
 
 #include <QFile>
 
-#include "xToolsSettings.h"
-
 Application::Application(int argc, char **argv)
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-    : xToolsPrivateApplication(argc, argv)
+    : xToolsPrivate::Application(argc, argv)
 #else
-    : xToolsApplication(argc, argv)
+    : xTools::Application(argc, argv)
 #endif
 {
-    // Setup ui language.
-    const QString language = xToolsSettings::instance()->language();
-    setupLanguageWithPrefix(language, m_translatorPrefix);
-    setupLanguageWithPrefix(language, m_translatorToolsPrefix);
-    showSplashScreenMessage(tr("Initializing main window..."));
-}
 
-void Application::setupLanguage(const QString &language)
-{
-    xToolsApplication::setupLanguage(language);
-    setupLanguageWithPrefix(language, m_translatorPrefix);
-    setupLanguageWithPrefix(language, m_translatorToolsPrefix);
 }

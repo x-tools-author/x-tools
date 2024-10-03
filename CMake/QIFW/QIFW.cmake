@@ -24,7 +24,7 @@ elseif(UNIX AND NOT APPLE)
   set(binarycreator ${QT_DIR}/../../../../../${temp})
 endif()
 
-function(x_tools_generate_installer target version)
+function(x_tools_generate_installer target version icon)
   if(APPLE)
     return()
   endif()
@@ -35,12 +35,14 @@ function(x_tools_generate_installer target version)
   list(APPEND args "-DargDataDir=$<TARGET_FILE_DIR:${target}>")
   list(APPEND args "-DargTemperateDir=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/Installer")
   list(APPEND args "-DargBinarycreator=${binarycreator}")
+  list(APPEND args "-DargIcon=${icon}")
 
   set(RESOURCES_DIR ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
   set(QIFW_SOURCE ${RESOURCES_DIR}/QIFW.cmake)
   list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/QIFWScript.cmake)
   list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/config/config.xml)
   list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/packages/all/meta/package.xml)
+  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/packages/all/meta/installscript.js)
 
   add_custom_target(
     ${target}_installer
