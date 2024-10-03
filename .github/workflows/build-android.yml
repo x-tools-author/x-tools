@@ -38,6 +38,7 @@ jobs:
       - name: CMake for Android
         shell: cmd
         run: |
+          git fetch --tags
           set JAVA_HOME=%JAVA_HOME_11_X64%
           ${{ github.workspace }}\Qt\${{ env.QT_VERSION }}\android_armv7\bin\qt-cmake.bat ^
           -G "MinGW Makefiles" ^

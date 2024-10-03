@@ -5,7 +5,7 @@ on:
       - 'v*'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  QT_VERSION: 6.7.3
+  QT_VERSION: 6.8.*
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Delete Release
       run: |
         gh release delete ${{ github.ref_name }} -y || true
@@ -21,17 +21,20 @@ jobs:
       run: |
         gh release create ${{ github.ref_name }} --title "Release ${{ github.ref_name }}" --notes "The version is ready. You can see the changed log: https://github.com/x-tools-author/x-tools/blob/master/Resources/Files/History.txt"
   release-for-windows:
-    runs-on: windows-2019
+    runs-on: windows-2022
     needs: update-release
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v3
+      uses: actions/checkout@v4
       with:
-        version: '6.8.0'
+        # 切换至最新的tag，格式为v开头的版本号
+        ref: ${{ github.ref }}
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '${{ env.QT_VERSION }}'
         target: 'desktop'
-        arch: 'win64_msvc2019_64'
+        arch: 'win64_msvc2022_64'
         dir: ${{ github.workspace }}
         modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
     - name: Build for Windows
@@ -39,8 +42,8 @@ jobs:
       run: |
         mkdir build
         cd build
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-        cmake -DWITH_TOOLS:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.7.3/win64_msvc2019_64' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+        cmake -DWITH_TOOLS:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
         cmake --build . --target xTools
         dir && dir .\assets && dir .\assets\xTools
     - name: Upload Release Asset for Windnows
@@ -52,11 +55,14 @@ jobs:
     needs: update-release
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v3
+      uses: actions/checkout@v4
       with:
-        version: '6.8.0'
+        # 切换至最新的tag，格式为v开头的版本号
+        ref: ${{ github.ref }}
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '${{ env.QT_VERSION }}'
         target: 'desktop'
         arch: 'gcc_64'
         dir: ${{ github.workspace }}
@@ -68,7 +74,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake ../ -DWITH_TOOLS:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.7.3/gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -DX_TOOLS_LINUX_MAKE_APP_IMAGE_XTOOLS:BOOL=TRUE -G "Unix Makefiles"
+        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/linux_gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -DX_TOOLS_LINUX_MAKE_APP_IMAGE_XTOOLS:BOOL=TRUE -G "Unix Makefiles"
         cmake --build . --target xTools
         dir && dir ./assets && dir ./assets/xTools
     - name: Upload Release Asset for Linux
@@ -80,11 +86,14 @@ jobs:
     needs: update-release
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
-    - name: Install Qt for macOS
-      uses: jurplel/install-qt-action@v3
+      uses: actions/checkout@v4
       with:
-        version: '6.8.0'
+        # 切换至最新的tag，格式为v开头的版本号
+        ref: ${{ github.ref }}
+    - name: Install Qt for macOS
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '${{ env.QT_VERSION }}'
         target: 'desktop'
         arch: 'clang_64'
         dir: ${{ github.workspace }}
@@ -102,46 +111,49 @@ jobs:
         ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
         mkdir build
         cd build
-        cmake ../ -DWITH_TOOLS:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.7.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
+        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
         cmake --build . --target xTools
         ls && ls ./assets && ls ./assets/xTools
     - name: Upload Release Asset for macOS
       run: |
-        cmake -E rename build/assets/xTools/xtools-macos-11.dmg build/assets/xTools/xtools-${{ github.ref_name }}-macos-11.dmg
-        ls && gh release upload ${{ github.ref_name }} 'build/assets/xTools/xtools-${{ github.ref_name }}-macos-11.dmg'
+        cmake -E rename build/assets/xTools/xtools-macos-12.dmg build/assets/xTools/xtools-${{ github.ref_name }}-macos-12.dmg
+        ls && gh release upload ${{ github.ref_name }} 'build/assets/xTools/xtools-${{ github.ref_name }}-macos-12.dmg'
   release-for-android:
-    runs-on: windows-2019
+    runs-on: windows-2022
     needs: update-release
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+        # 切换至最新的tag，格式为v开头的版本号
+        ref: ${{ github.ref }}
       - name: Install Qt for Android
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           target: android
           arch: android_armv7
           host: windows
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
-          version: ${{env.QT_VERSION}}
+          version: '6.5.3'
       - name: Install Qt for Desktop(mingw)
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           target: desktop
           arch: win64_mingw
           host: windows
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
-          version: "${{env.QT_VERSION}}"
+          version: '6.5.3'
       - name: CMake for Android
         shell: cmd
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
-          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat ^
+          ${{ github.workspace }}\Qt\6.5.3\android_armv7\bin\qt-cmake.bat ^
           -G "MinGW Makefiles" ^
           -S . ^
           -B "build\armeabi_v7a" ^
-          -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64" ^
+          -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\6.5.3\mingw_64" ^
           -DCMAKE_BUILD_TYPE:STRING=Release ^
           -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
           -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
@@ -159,7 +171,7 @@ jobs:
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
-          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
+          ${{ github.workspace }}\Qt\6.5.3\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-34 ^
