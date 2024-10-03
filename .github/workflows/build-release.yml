@@ -63,9 +63,10 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
+        aqtversion: '==3.1.*'
         version: ${{ env.QT_VERSION }}
         target: 'desktop'
-        arch: 'gcc_64'
+        arch: 'linux_gcc_64'
         dir: ${{ github.workspace }}
         modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
     - name: install-dependencies
