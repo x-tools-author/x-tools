@@ -32,7 +32,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
-        version: '${{ env.QT_VERSION }}'
+        version: ${{ env.QT_VERSION }}
         target: 'desktop'
         arch: 'win64_msvc2022_64'
         dir: ${{ github.workspace }}
@@ -62,7 +62,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
-        version: '${{ env.QT_VERSION }}'
+        version: ${{ env.QT_VERSION }}
         target: 'desktop'
         arch: 'gcc_64'
         dir: ${{ github.workspace }}
