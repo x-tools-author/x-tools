@@ -48,21 +48,18 @@ public:
                        QModbusDataUnit::RegisterType table,
                        int address,
                        int data,
-                       bool enable_log = true);
+                       bool enableLog = true);
     QList<quint16> getServerData(QModbusDevice *server,
                                  QModbusDataUnit::RegisterType table,
                                  int address,
                                  int quantity);
-    void deleteModbusDevuce(QModbusDevice **modbus_device);
+    void deleteModbusDevuce(QModbusDevice **modbusDevice);
 
     QModbusDevice *createRtuSerialDevice(
         int type, const QString &port_name, int parity, int baud_rate, int data_bits, int stop_bits);
     QModbusDevice *createTcpDevice(int deviceType, QString address, int port);
     void setClientDeviceParameters(QModbusDevice *client, int timeout, int number_of_retries);
-    void SetServerDeviceParameters(QModbusDevice *server,
-                                   int address,
-                                   bool device_busy,
-                                   bool listen_only_mode);
+    void setServerDeviceParameters(QModbusDevice *server, int address, bool isBusy, bool listenOnly);
     QModbusReply *sendWriteRequest(QModbusDevice *modbus_device,
                                    int register_type,
                                    int start_address,

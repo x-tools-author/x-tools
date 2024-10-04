@@ -39,8 +39,9 @@ private:
     Ui::ModbusAssistant *ui;
     QModbusDevice *m_modbusDevice{Q_NULLPTR};
     QSettings *m_settings{Q_NULLPTR};
-    QStandardItemModel *m_registerModel{Q_NULLPTR};
+    QStandardItemModel *m_clientRegisterModel{Q_NULLPTR};
     ModbusSettingKeys *m_keyCtx;
+    QTableView *m_clientView{nullptr};
 
 private:
     void initComponents();
@@ -64,6 +65,7 @@ private:
     void initSettingsServer();
     void initSettingsClientOperations();
     void initSettingsInput();
+    void initSettingsInputControl();
 
     void initSignals();
     void initSignalsDevice();
@@ -72,6 +74,8 @@ private:
     void initSignalsClient();
     void initSignalsServer();
     void initSignalsClientOperations();
+    void initSignalsInput();
+    void initSignalsInputControl();
 
     void onErrorOccurred();
     void onDeviceTypeChanged();
@@ -102,13 +106,15 @@ private:
 
     void onDateWritten(QModbusDataUnit::RegisterType table, int address, int size);
     void onItemChanged(QStandardItem *item);
+    void onInputFormatChanged();
 
 private:
-    QModbusDevice *CreateModbusDevice();
-    QTableView *CreateTableView(int rowCount, QTableView *tableView);
+    QModbusDevice *createModbusDevice();
+    QTableView *createTableView(int rowCount, QTableView *tableView);
 
     void updateUiState(bool connected);
     void updateClientTableView();
+    void updateClientTableViewData();
     void updateClientTableViewData(const QList<quint16> &values);
     void updateClientReadWriteButtonState();
     void updateClientParameters();
@@ -123,12 +129,11 @@ private:
     QTableView *getTableView(QModbusDataUnit::RegisterType table);
     QList<quint16> getTableValues(QTableView *tableView, int row, int count);
 
+    // clang-format off
     void outputModbusReply(QModbusReply *reply, int functionCode);
-    void outputMessage(const QString &msg,
-                       bool isError,
-                       const QString &color = QString(),
-                       const QString &flag = QString());
+    void outputMessage(const QString &msg, bool isError, const QString &color = QString(), const QString &flag = QString());
     bool isConnected();
-    bool writeSettingsArray(
-        const QString &group, const QString &key, const QString &value, int index, int maxIndex);
+    bool writeSettingsArray(const QString &group, const QString &key, const QString &value, int index, int maxIndex);
+    int startAddress();
+    // clang-format on
 };

@@ -186,13 +186,13 @@ bool ModbusFactory::setServerData(QModbusDevice *server,
                                   QModbusDataUnit::RegisterType table,
                                   int address,
                                   int data,
-                                  bool enable_log)
+                                  bool enableLog)
 {
     bool is_ok = false;
     if (server && qobject_cast<QModbusServer *>(server)) {
         QModbusServer *modbusServer = qobject_cast<QModbusServer *>(server);
         is_ok = modbusServer->setData(table, address, data);
-        if (enable_log) {
+        if (enableLog) {
             qInfo() << "Set register data result:" << is_ok << "table:" << table
                     << "address:" << address << "data:" << data;
         }
@@ -225,16 +225,16 @@ QList<quint16> ModbusFactory::getServerData(QModbusDevice *server,
     return values;
 }
 
-void ModbusFactory::deleteModbusDevuce(QModbusDevice **modbus_device)
+void ModbusFactory::deleteModbusDevuce(QModbusDevice **modbusDevice)
 {
-    if (*modbus_device) {
-        QModbusServer *server = qobject_cast<QModbusServer *>(*modbus_device);
+    if (*modbusDevice) {
+        QModbusServer *server = qobject_cast<QModbusServer *>(*modbusDevice);
         if (server) {
             server->disconnect();
         }
 
-        (*modbus_device)->deleteLater();
-        (*modbus_device) = Q_NULLPTR;
+        (*modbusDevice)->deleteLater();
+        (*modbusDevice) = Q_NULLPTR;
     }
 }
 
@@ -285,20 +285,20 @@ void ModbusFactory::setClientDeviceParameters(QModbusDevice *client,
     }
 }
 
-void ModbusFactory::SetServerDeviceParameters(QModbusDevice *server,
-                                                 int address,
-                                                 bool device_busy,
-                                                 bool listen_only_mode)
+void ModbusFactory::setServerDeviceParameters(QModbusDevice *server,
+                                              int address,
+                                              bool isBusy,
+                                              bool listenOnly)
 {
     if (server) {
         qInfo() << "Set modbus server device parameters:"
-                << "address:" << address << "device busy" << device_busy
-                << "listen only mode:" << listen_only_mode;
+                << "address:" << address << "device busy" << isBusy
+                << "listen only mode:" << listenOnly;
 
         QModbusServer *cooked_server = qobject_cast<QModbusServer *>(server);
         cooked_server->setServerAddress(address);
-        cooked_server->setValue(QModbusServer::DeviceBusy, device_busy);
-        cooked_server->setValue(QModbusServer::ListenOnlyMode, listen_only_mode);
+        cooked_server->setValue(QModbusServer::DeviceBusy, isBusy);
+        cooked_server->setValue(QModbusServer::ListenOnlyMode, listenOnly);
     }
 }
 

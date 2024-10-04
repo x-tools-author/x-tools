@@ -1507,7 +1507,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="698"/>
         <source>Client Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/Tools/Modbus/ModbusAssistant.ui" line="587"/>
@@ -2323,42 +2323,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/App/Application.cpp" line="152"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/App/Application.cpp" line="153"/>
         <source>Round up for .5 and above</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/App/Application.cpp" line="154"/>
         <source>Always round up</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/App/Application.cpp" line="155"/>
         <source>Always round down</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/App/Application.cpp" line="156"/>
         <source>Round up for .75 and above</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/App/Application.cpp" line="157"/>
         <source>Don&apos;t round</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/App/Application.cpp" line="305"/>
         <source>Reboot application to effective</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/App/Application.cpp" line="306"/>
         <source>Need to reboot, reboot to effective now?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2461,7 +2461,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../Source/App/MainWindow.cpp" line="118"/>
         <source>Exit Application</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Source/App/MainWindow.cpp" line="127"/>

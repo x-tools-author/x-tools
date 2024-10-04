@@ -601,19 +601,6 @@
           </property>
          </widget>
         </item>
-        <item row="6" column="1">
-         <widget class="QSpinBox" name="spinBoxStartAddress">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximum">
-           <number>65535</number>
-          </property>
-         </widget>
-        </item>
         <item row="6" column="0">
          <widget class="QLabel" name="label_19">
           <property name="sizePolicy">
@@ -699,6 +686,16 @@
           </property>
          </widget>
         </item>
+        <item row="6" column="1">
+         <widget class="QLineEdit" name="lineEditStartAddress">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </item>
@@ -710,7 +707,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Input Control</string>
+        <string>Input Control(address and value)</string>
        </property>
       </widget>
      </item>
@@ -725,7 +722,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Address format</string>
+          <string>Input format</string>
          </property>
         </widget>
        </item>

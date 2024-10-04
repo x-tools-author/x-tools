@@ -15,7 +15,6 @@
 #include <QDateTime>
 #include <QGroupBox>
 #include <QHostAddress>
-#include <QItemDelegate>
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QModbusServer>
@@ -29,6 +28,7 @@
 #include <QSerialPortInfo>
 #include <QSpinBox>
 #include <QStandardItemModel>
+#include <QStyledItemDelegate>
 #include <QTextBrowser>
 #include <QtEndian>
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
@@ -41,6 +41,7 @@
 
 #include "App/Application.h"
 #include "App/Settings.h"
+#include "IO/xIO.h"
 #include "ModbusFactory.h"
 
 #define RXCOLOR "green"
@@ -48,6 +49,20 @@
 #define RXFLAG "rx:"
 #define TXFLAG "tx:"
 #define MAX_HISTORY_INDEX 9
+
+void setupTextFormatValidator(QLineEdit *lineEdit, int format)
+{
+    static const QString hexStr = "([0-9a-fA-F][0-9a-fA-F][0-9a-fA-F][0-9a-fA-F])";
+    static auto const hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
+
+    if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+        lineEdit->setMaxLength(5);
+        lineEdit->setValidator(new QIntValidator(0, 65535, lineEdit));
+    } else {
+        lineEdit->setMaxLength(4);
+        lineEdit->setValidator(hexValidator);
+    }
+}
 
 struct ModbusSettingKeys
 {
@@ -75,17 +90,16 @@ struct ModbusSettingKeys
     const QString targetAddress = "xToolsModbus/targetAddress";
     const QString startAddress = "xToolsModbus/startAddress";
     const QString addressNumber = "xToolsModbus/addressNumber";
-
-    const QString sendHistory = "xToolsModbus/sendHistory";
     const QString sendHistoryIndex = "xToolsModbus/sendHistoryIndex";
-    const QString pdu = "pdu";
+    const QString pdu = "xToolsModbus/pdu";
+    const QString inputFormat = "xToolsModbus/inputFormat";
 };
 
-class ReadOnlyDelegate : public QItemDelegate
+class ReadOnlyDelegate : public QStyledItemDelegate
 {
 public:
     ReadOnlyDelegate(QWidget *parent = Q_NULLPTR)
-        : QItemDelegate(parent)
+        : QStyledItemDelegate(parent)
     {}
     QWidget *createEditor(QWidget *parent,
                           const QStyleOptionViewItem &option,
@@ -95,6 +109,91 @@ public:
         Q_UNUSED(option);
         Q_UNUSED(index);
         return Q_NULLPTR;
+    }
+};
+
+class DecDelegate : public QStyledItemDelegate
+{
+public:
+    DecDelegate(QWidget *parent = Q_NULLPTR)
+        : QStyledItemDelegate(parent)
+    {}
+    QWidget *createEditor(QWidget *parent,
+                          const QStyleOptionViewItem &option,
+                          const QModelIndex &index) const override
+    {
+        QLineEdit *editor = new QLineEdit(parent);
+        setupTextFormatValidator(editor, static_cast<int>(xTools::xIO::TextFormat::Dec));
+        return editor;
+    }
+    void setEditorData(QWidget *editor, const QModelIndex &index) const override
+    {
+        QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
+        if (!lineEdit) {
+            return;
+        }
+
+        int value = index.data(Qt::EditRole).toInt();
+        lineEdit->setText(QString::number(value));
+    }
+
+    void setModelData(QWidget *editor,
+                      QAbstractItemModel *model,
+                      const QModelIndex &index) const override
+    {
+        QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
+        if (!lineEdit) {
+            return;
+        }
+
+        bool ok = false;
+        int value = lineEdit->text().toInt(&ok);
+        if (ok) {
+            model->setData(index, value, Qt::EditRole);
+            model->setData(index, QString::number(value), Qt::DisplayRole);
+        }
+    }
+};
+
+class HexDelegate : public QStyledItemDelegate
+{
+public:
+    HexDelegate(QWidget *parent = Q_NULLPTR)
+        : QStyledItemDelegate(parent)
+    {}
+    QWidget *createEditor(QWidget *parent,
+                          const QStyleOptionViewItem &option,
+                          const QModelIndex &index) const override
+    {
+        QLineEdit *editor = new QLineEdit(parent);
+        setupTextFormatValidator(editor, static_cast<int>(xTools::xIO::TextFormat::Hex));
+        return editor;
+    }
+    void setEditorData(QWidget *editor, const QModelIndex &index) const override
+    {
+        QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
+        if (!lineEdit) {
+            return;
+        }
+
+        int value = index.data(Qt::EditRole).toInt();
+        lineEdit->setText(QString::number(value, 16).toUpper());
+    }
+    void setModelData(QWidget *editor,
+                      QAbstractItemModel *model,
+                      const QModelIndex &index) const override
+    {
+        QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
+        if (!lineEdit) {
+            return;
+        }
+
+        bool ok = false;
+        int value = lineEdit->text().toInt(&ok, 16);
+        if (ok) {
+            model->setData(index, value, Qt::EditRole);
+            model->setData(index, QString::number(value, 16).toUpper(), Qt::DisplayRole);
+        }
     }
 };
 
@@ -120,7 +219,7 @@ ModbusAssistant::ModbusAssistant(QWidget *parent)
     : QWidget{parent}
     , ui(new Ui::ModbusAssistant)
     , m_modbusDevice(Q_NULLPTR)
-    , m_registerModel(Q_NULLPTR)
+    , m_clientRegisterModel(Q_NULLPTR)
     , m_keyCtx(new ModbusSettingKeys)
 {
     if (!m_settings) {
@@ -137,6 +236,7 @@ ModbusAssistant::ModbusAssistant(QWidget *parent)
     onDeviceTypeChanged();
     updateClientTableView();
     updateClientReadWriteButtonState();
+    updateClientTableViewAddress(ui->tabViewClientRegisters, startAddress());
 }
 
 ModbusAssistant::~ModbusAssistant()
@@ -146,6 +246,12 @@ ModbusAssistant::~ModbusAssistant()
 
 void ModbusAssistant::initComponents()
 {
+    int dec = static_cast<int>(xTools::xIO::TextFormat::Dec);
+    ui->comboBoxFormat->addItem(xTools::xIO::textFormatName(xTools::xIO::TextFormat::Dec), dec);
+    int hex = static_cast<int>(xTools::xIO::TextFormat::Hex);
+    ui->comboBoxFormat->addItem(xTools::xIO::textFormatName(xTools::xIO::TextFormat::Hex), hex);
+    setupTextFormatValidator(ui->lineEditStartAddress, dec);
+
     initComponentDevices();
     initComponentAddress();
     initComponentPortName();
@@ -257,8 +363,9 @@ void ModbusAssistant::initComponentFunctionCode()
 
 void ModbusAssistant::initComponentRegisterTableView()
 {
-    QTableView *table_view = CreateTableView(1, ui->tabViewClientRegisters);
-    m_registerModel = qobject_cast<QStandardItemModel *>(table_view->model());
+    m_clientView = createTableView(1, ui->tabViewClientRegisters);
+    m_clientRegisterModel = qobject_cast<QStandardItemModel *>(m_clientView->model());
+    m_clientView->setItemDelegateForColumn(1, new DecDelegate(m_clientView));
 }
 
 void ModbusAssistant::initComponentInput()
@@ -278,7 +385,7 @@ void ModbusAssistant::initComponentRegisterTabWidget()
     QStringList titles = QStringList() << tr("Coils") << tr("DiscreteInputs")
                                        << tr("InputRegisters") << tr("HoldingRegisters");
     for (QString &title : titles) {
-        QTableView *tableView = CreateTableView(UINT16_MAX + 1, Q_NULLPTR);
+        QTableView *tableView = createTableView(UINT16_MAX + 1, Q_NULLPTR);
         tableView->verticalHeader()->hide();
         tabWidget->addTab(tableView, title);
     }
@@ -293,6 +400,7 @@ void ModbusAssistant::initSettings()
     initSettingsServer();
     initSettingsClientOperations();
     initSettingsInput();
+    initSettingsInputControl();
 }
 
 void ModbusAssistant::initSettingsDevice()
@@ -375,7 +483,12 @@ void ModbusAssistant::initSettingsClientOperations()
     ui->spinBoxDeviceAddress->setValue(address);
 
     int start = m_settings->value(m_keyCtx->startAddress).toInt();
-    ui->spinBoxStartAddress->setValue(start);
+    int format = m_settings->value(m_keyCtx->inputFormat).toInt();
+    if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+        ui->lineEditStartAddress->setText(QString::number(start));
+    } else {
+        ui->lineEditStartAddress->setText(QString::number(start, 16));
+    }
 
     int number = m_settings->value(m_keyCtx->addressNumber).toInt();
     ui->spinBoxQuantity->setValue(number);
@@ -384,18 +497,19 @@ void ModbusAssistant::initSettingsClientOperations()
 void ModbusAssistant::initSettingsInput()
 {
     ui->lineEditPdu->clear();
-    m_settings->beginReadArray(m_keyCtx->sendHistory);
-    for (int i = 0; i < 10; i++) {
-        m_settings->setArrayIndex(i);
-        QString text = m_settings->value(m_keyCtx->pdu).toString();
-        if (!text.isEmpty()) {
-            //ui->comboBoxPdu->addItem(text);
-        }
-    }
-    m_settings->endArray();
+    QString pdu = m_settings->value(m_keyCtx->pdu).toString();
+    ui->lineEditPdu->setText(pdu);
+}
 
-    //int index = m_settings->value(m_keyCtx->sendHistoryIndex).toInt();
-    //ui->comboBoxPdu->setCurrentIndex(index - 1);
+void ModbusAssistant::initSettingsInputControl()
+{
+    int dec = static_cast<int>(xTools::xIO::TextFormat::Dec);
+    int format = m_settings->value(m_keyCtx->inputFormat, dec).toInt();
+    int index = ui->comboBoxFormat->findData(format);
+    if (index >= 0) {
+        ui->comboBoxFormat->setCurrentIndex(index);
+    }
+    onInputFormatChanged();
 }
 
 void ModbusAssistant::initSignals()
@@ -406,6 +520,8 @@ void ModbusAssistant::initSignals()
     initSignalsClient();
     initSignalsServer();
     initSignalsClientOperations();
+    initSignalsInput();
+    initSignalsInputControl();
 }
 
 void ModbusAssistant::initSignalsDevice()
@@ -492,8 +608,8 @@ void ModbusAssistant::initSignalsClientOperations()
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,
             &ModbusAssistant::onTargetAddressChanged);
-    connect(ui->spinBoxStartAddress,
-            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+    connect(ui->lineEditStartAddress,
+            &QLineEdit::textChanged,
             this,
             &ModbusAssistant::onStartAddressChanged);
     connect(ui->spinBoxQuantity,
@@ -503,6 +619,19 @@ void ModbusAssistant::initSignalsClientOperations()
     connect(ui->pushButtonRead, &QPushButton::clicked, this, &ModbusAssistant::onReadClicked);
     connect(ui->pushButtonWrite, &QPushButton::clicked, this, &ModbusAssistant::onWriteClicked);
     connect(ui->send_, &QPushButton::clicked, this, &ModbusAssistant::onSendClicked);
+}
+
+void ModbusAssistant::initSignalsInput()
+{
+    connect(ui->lineEditPdu, &QLineEdit::textEdited, this, [this]() {
+        QString pdu = ui->lineEditPdu->text();
+        m_settings->setValue(m_keyCtx->pdu, pdu);
+    });
+}
+
+void ModbusAssistant::initSignalsInputControl()
+{
+    connect(ui->comboBoxFormat, &QComboBox::activated, this, &ModbusAssistant::onInputFormatChanged);
 }
 
 void ModbusAssistant::onErrorOccurred()
@@ -561,7 +690,7 @@ void ModbusAssistant::onOpenClicked()
     ui->pushButtonOpen->setEnabled(false);
     ModbusFactory::Instance()->deleteModbusDevuce(&m_modbusDevice);
 
-    m_modbusDevice = CreateModbusDevice();
+    m_modbusDevice = createModbusDevice();
 
     if (ModbusFactory::Instance()->isServerDevice(m_modbusDevice)) {
         if (!updateServerMap(m_modbusDevice)) {
@@ -680,7 +809,7 @@ void ModbusAssistant::onTargetAddressChanged()
 
 void ModbusAssistant::onStartAddressChanged()
 {
-    m_settings->setValue(m_keyCtx->startAddress, ui->spinBoxStartAddress->value());
+    m_settings->setValue(m_keyCtx->startAddress, startAddress());
     updateClientTableView();
 }
 
@@ -701,7 +830,7 @@ void ModbusAssistant::onReadClicked()
     }
 
     int register_type = ui->comboBoxFunctionCode->currentData().toInt();
-    quint16 start_address = ui->spinBoxStartAddress->value();
+    quint16 start_address = startAddress();
     quint16 quantity = ui->spinBoxQuantity->value();
     quint16 spinBoxServerAddress = ui->spinBoxDeviceAddress->value();
     quint8 function_code = getClientFunctionCode();
@@ -742,7 +871,7 @@ void ModbusAssistant::onWriteClicked()
     }
 
     int registerType = ui->comboBoxFunctionCode->currentData().toInt();
-    int start_address = ui->spinBoxStartAddress->value();
+    int start_address = startAddress();
     int spinBoxServerAddress = ui->spinBoxDeviceAddress->value();
     quint8 function_code = getClientFunctionCode();
     QList<quint16> values = getClientRegisterValue();
@@ -803,27 +932,6 @@ void ModbusAssistant::onSendClicked()
         info += QString(xTools::Application::byteArray2Hex(pdu, ' '));
         outputMessage(info, false, TXCOLOR, TXFLAG);
     }
-
-    // Update settings data.
-    int index = m_settings->value(m_keyCtx->sendHistoryIndex).toInt();
-    bool ret = writeSettingsArray(m_keyCtx->sendHistory,
-                                  m_keyCtx->pdu,
-                                  QString(xTools::Application::byteArray2Hex(pdu, ' ')),
-                                  index,
-                                  MAX_HISTORY_INDEX);
-    if (!ret) {
-        return;
-    }
-#if 0
-    if (index > ui->comboBoxPdu->count()) {
-        ui->comboBoxPdu->addItem(QString(xTools::Application::byteArrray2Hex(pdu, ' ')));
-    } else {
-        ui->comboBoxPdu->insertItem(index, QString(xTools::Application::byteArrray2Hex(pdu, ' ')));
-    }
-#endif
-
-    index = index + 1 > MAX_HISTORY_INDEX ? 0 : index + 1;
-    m_settings->setValue(m_keyCtx->sendHistoryIndex, index);
 }
 
 void ModbusAssistant::onDateWritten(QModbusDataUnit::RegisterType table, int address, int size)
@@ -884,7 +992,30 @@ void ModbusAssistant::onItemChanged(QStandardItem *item)
     }
 }
 
-QModbusDevice *ModbusAssistant::CreateModbusDevice()
+void ModbusAssistant::onInputFormatChanged()
+{
+    QString tem = ui->lineEditStartAddress->text();
+    int format = ui->comboBoxFormat->currentData().toInt();
+    if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+        m_clientView->setItemDelegateForColumn(1, new DecDelegate(m_clientView));
+        setupTextFormatValidator(ui->lineEditStartAddress, format);
+        QString str = QString::number(tem.toInt(nullptr, 16));
+        ui->lineEditStartAddress->setText(str);
+        m_clientView->setItemDelegateForColumn(1, new DecDelegate(m_clientView));
+    } else {
+        m_clientView->setItemDelegateForColumn(1, new HexDelegate(m_clientView));
+        setupTextFormatValidator(ui->lineEditStartAddress, format);
+        QString str = QString::number(tem.toInt(), 16);
+        ui->lineEditStartAddress->setText(str.toUpper());
+        m_clientView->setItemDelegateForColumn(1, new HexDelegate(m_clientView));
+    }
+
+    m_settings->setValue(m_keyCtx->inputFormat, format);
+    updateClientTableViewData();
+    updateClientTableViewAddress(m_clientView, startAddress());
+}
+
+QModbusDevice *ModbusAssistant::createModbusDevice()
 {
     QModbusDevice *device = Q_NULLPTR;
     int type = ui->comboBoxDeviceList->currentData().toInt();
@@ -913,7 +1044,7 @@ QModbusDevice *ModbusAssistant::CreateModbusDevice()
     return device;
 }
 
-QTableView *ModbusAssistant::CreateTableView(int rowCount, QTableView *tableView)
+QTableView *ModbusAssistant::createTableView(int rowCount, QTableView *tableView)
 {
     if (!tableView) {
         tableView = new QTableView(this);
@@ -965,28 +1096,61 @@ void ModbusAssistant::updateUiState(bool connected)
 void ModbusAssistant::updateClientTableView()
 {
     int number = ui->spinBoxQuantity->value();
-    int rowCount = m_registerModel->rowCount();
+    int rowCount = m_clientRegisterModel->rowCount();
     if (number > rowCount) {
-        m_registerModel->insertRows(rowCount, number - rowCount);
+        m_clientRegisterModel->insertRows(rowCount, number - rowCount);
+        for (int i = rowCount; i < number; i++) {
+            m_clientRegisterModel->setData(m_clientRegisterModel->index(i, 0), i);
+        }
     } else if (number < rowCount) {
-        m_registerModel->removeRows(number, rowCount - number);
+        m_clientRegisterModel->removeRows(number, rowCount - number);
+    }
+
+    for (int i = 0; i < rowCount; i++) {
+        for (int col = 0; col < 2; col++) {
+            QModelIndex index = m_clientRegisterModel->index(i, col);
+            auto *item = m_clientRegisterModel->itemFromIndex(index);
+            if (item) {
+                item->setTextAlignment(Qt::AlignCenter);
+            }
+        }
     }
 
     // Update address.
-    int start_address = ui->spinBoxStartAddress->value();
-    updateClientTableViewAddress(ui->tabViewClientRegisters, start_address);
+    int startAddress = this->startAddress();
+    updateClientTableViewAddress(ui->tabViewClientRegisters, startAddress);
+    updateClientTableViewData();
+}
+
+void ModbusAssistant::updateClientTableViewData()
+{
+    int row = m_clientRegisterModel->rowCount();
+    QList<quint16> values;
+    for (int i = 0; i < row; i++) {
+        QModelIndex index = m_clientRegisterModel->index(i, 1);
+        int value = m_clientRegisterModel->data(index, Qt::EditRole).toInt();
+        values.append(value);
+    }
+
+    updateClientTableViewData(values);
 }
 
 void ModbusAssistant::updateClientTableViewData(const QList<quint16> &values)
 {
     for (int row = 0; row < values.count(); row++) {
         int value = values.at(row);
-        QModelIndex index = m_registerModel->index(row, 1);
+        QModelIndex index = m_clientRegisterModel->index(row, 1);
         QMap<int, QVariant> roles;
-        QString str = QString("%1").arg(QString::number(value, 16), 4, '0');
+        int format = ui->comboBoxFormat->currentData().toInt();
+        QString str;
+        if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+            str = QString("%1").arg(QString::number(value), 5, '0');
+        } else {
+            str = QString("%1").arg(QString::number(value, 16), 4, '0');
+        }
         roles.insert(Qt::DisplayRole, str);
-        m_registerModel->setItemData(index, roles);
-        QStandardItem *item = m_registerModel->item(row, 1);
+        m_clientRegisterModel->setItemData(index, roles);
+        QStandardItem *item = m_clientRegisterModel->item(row, 1);
         if (item) {
             item->setTextAlignment(Qt::AlignCenter);
         }
@@ -1020,12 +1184,19 @@ void ModbusAssistant::updateClientParameters()
     ModbusFactory::Instance()->setClientDeviceParameters(m_modbusDevice, timeout, repeat_time);
 }
 
-void ModbusAssistant::updateClientTableViewAddress(QTableView *view, int start_address)
+void ModbusAssistant::updateClientTableViewAddress(QTableView *view, int startAddress)
 {
     auto *model = qobject_cast<QStandardItemModel *>(view->model());
     for (int row = 0; row < model->rowCount(); row++) {
-        int address = row + start_address;
-        QString text = QString("%1").arg(QString::number(address), 5, '0');
+        int address = row + startAddress;
+        int format = ui->comboBoxFormat->currentData().toInt();
+        QString text;
+        if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+            text = QString("%1").arg(QString::number(address), 5, '0');
+        } else {
+            text = QString("%1").arg(QString::number(address, 16), 4, '0').toUpper();
+        }
+
         QModelIndex index = model->index(row, 0);
         QMap<int, QVariant> roles;
         roles.insert(Qt::DisplayRole, text);
@@ -1043,7 +1214,7 @@ void ModbusAssistant::updateServerParameters()
     bool device_busy = ui->checkBoxDeviceBusy->isChecked();
     bool listen_only_mode = ui->checkBoxListenOnlyMode->isChecked();
     int address = ui->spinBoxServerAddress->value();
-    ModbusFactory::Instance()->SetServerDeviceParameters(m_modbusDevice,
+    ModbusFactory::Instance()->setServerDeviceParameters(m_modbusDevice,
                                                          address,
                                                          device_busy,
                                                          listen_only_mode);
@@ -1114,8 +1285,8 @@ quint8 ModbusAssistant::getClientFunctionCode()
 QList<quint16> ModbusAssistant::getClientRegisterValue()
 {
     QList<quint16> values;
-    for (int row = 0; row < m_registerModel->rowCount(); row++) {
-        QStandardItem *item = m_registerModel->item(row, 1);
+    for (int row = 0; row < m_clientRegisterModel->rowCount(); row++) {
+        QStandardItem *item = m_clientRegisterModel->item(row, 1);
         if (item) {
             QString text = item->text();
             values.append(text.toInt(Q_NULLPTR, 16));
@@ -1266,4 +1437,18 @@ bool ModbusAssistant::writeSettingsArray(
     m_settings->setValue(key, value);
     m_settings->endArray();
     return true;
+}
+
+int ModbusAssistant::startAddress()
+{
+    QString text = ui->lineEditStartAddress->text();
+    int format = ui->comboBoxFormat->currentData().toInt();
+    if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+        return text.toInt();
+    } else if (format == static_cast<int>(xTools::xIO::TextFormat::Hex)) {
+        return text.toInt(Q_NULLPTR, 16);
+    }
+
+    Q_ASSERT_X(false, __FUNCTION__, "Unknown format.");
+    return 0;
 }
