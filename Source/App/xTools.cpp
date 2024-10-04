@@ -161,7 +161,7 @@ void tryToRebootApp()
         QObject::tr("The operation need to reboot to effectived, reboot the applicaion now?"),
         QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok) {
-        QProcess::startDetached(QApplication::applicationFilePath());
+        QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
         qApp->closeAllWindows();
     }
 }
