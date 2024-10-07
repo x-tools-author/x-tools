@@ -57,7 +57,7 @@ void setupTextFormatValidator(QLineEdit *lineEdit, int format)
 
     if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
         lineEdit->setMaxLength(5);
-        lineEdit->setValidator(new QIntValidator(0, 65535, lineEdit));
+        lineEdit->setValidator(new QIntValidator(0, 247, lineEdit));
     } else {
         lineEdit->setMaxLength(4);
         lineEdit->setValidator(hexValidator);
