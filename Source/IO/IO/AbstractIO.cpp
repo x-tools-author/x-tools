@@ -61,10 +61,11 @@ void AbstractIO::load(const QVariantMap &data)
 {
     m_parametersMutex.lock();
     m_parameters = data;
+
+    bool isEnable = m_parameters["isEnable"].toBool();
+    m_enable.store(isEnable);
     m_parametersMutex.unlock();
 
-    bool isEnable = data["isEnable"].toBool();
-    m_enable.store(isEnable);
     emit isEnableChanged();
 }
 
