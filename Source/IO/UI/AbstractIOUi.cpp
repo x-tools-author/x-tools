@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "AbstractIOUi.h"
 
+#include "IO/IO/AbstractIO.h"
+
 namespace xTools {
 
 AbstractIOUi::AbstractIOUi(QWidget *parent)
@@ -15,5 +17,17 @@ AbstractIOUi::AbstractIOUi(QWidget *parent)
 {}
 
 AbstractIOUi::~AbstractIOUi() {}
+
+void AbstractIOUi::setupIO(AbstractIO *io)
+{
+    if (io) {
+        io->load(save());
+    }
+}
+
+void AbstractIOUi::setUiEnabled(bool enabled)
+{
+    setEnabled(enabled);
+}
 
 } // namespace xTools
