@@ -17,3 +17,5 @@ cmake-build*
 CMakeSettings.json
 Private
 private
+CMakePresets.json
+CMakeUserPresets.json
