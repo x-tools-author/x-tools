@@ -51,6 +51,7 @@
 
 struct ParameterKeys
 {
+    const QString showCharts{"showCharts"};
     const QString communicationType{"communicationType"};
     const QString communicationSettings{"communicationSettings"};
     const QString communication{"communication"};
@@ -123,6 +124,10 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
+    ui->toolButtonCharts->setCheckable(true);
+    connect(ui->toolButtonCharts, &QToolButton::toggled, [this](bool checked) {
+        ui->widgetCharts->setVisible(checked);
+    });
 
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responder
              << m_udpClientTransfer << m_udpServerTransfer << m_tcpClientTransfer
@@ -168,6 +173,8 @@ QVariantMap IOPage::save()
     if (m_ioUi) {
         map.insert(g_keys.communication, m_ioUi->save());
     }
+
+    map.insert(g_keys.showCharts, ui->toolButtonCharts->isChecked());
 
     map.insert(g_keys.outputFormat, ui->comboBoxOutputFormat->currentData());
     map.insert(g_keys.outputRx, ui->checkBoxOutputRx->isChecked());
@@ -215,6 +222,7 @@ void IOPage::load(const QVariantMap &parameters)
         m_ioUi->load(parameters.value(g_keys.communication).toMap());
     }
 
+    bool showCharts = parameters.value(g_keys.showCharts).toBool();
     int outputFormat = parameters.value(g_keys.outputFormat).toInt();
     bool outputRx = parameters.value(g_keys.outputRx).toBool();
     bool outputTx = parameters.value(g_keys.outputTx).toBool();
@@ -223,6 +231,9 @@ void IOPage::load(const QVariantMap &parameters)
     bool outputTime = parameters.value(g_keys.outputTime).toBool();
     bool outputMs = parameters.value(g_keys.outputMs).toBool();
     QVariantMap outputSettings = parameters.value(g_keys.outputSettings).toMap();
+
+    ui->toolButtonCharts->setCheckable(showCharts);
+    ui->widgetCharts->setVisible(showCharts);
 
     index = ui->comboBoxOutputFormat->findData(outputFormat);
     ui->comboBoxOutputFormat->setCurrentIndex(index == -1 ? 0 : index);

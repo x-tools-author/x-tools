@@ -243,6 +243,17 @@ if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# Qt Charts module
+option(X_TOOLS_ENABLE_MODULE_CHARTS "Enable Charts module" ON)
+find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Charts)
+if(NOT Qt${QT_VERSION_MAJOR}Charts_FOUND)
+  set(X_TOOLS_ENABLE_MODULE_CHARTS OFF)
+endif()
+if(X_TOOLS_ENABLE_MODULE_CHARTS)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_CHARTS)
+endif()
+
+# --------------------------------------------------------------------------------------------------
 # Tools
 set(X_TOOLS_TOOLS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools")
 macro(add_tool dir_name)
@@ -297,6 +308,10 @@ endif()
 
 if(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
   target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Bluetooth)
+endif()
+
+if(X_TOOLS_ENABLE_MODULE_CHARTS)
+  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Charts)
 endif()
 
 # --------------------------------------------------------------------------------------------------

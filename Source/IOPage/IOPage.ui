@@ -274,6 +274,13 @@
           </widget>
          </item>
          <item>
+          <widget class="QToolButton" name="toolButtonCharts">
+           <property name="text">
+            <string notr="true"/>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="horizontalSpacer">
            <property name="orientation">
             <enum>Qt::Orientation::Horizontal</enum>
@@ -320,6 +327,16 @@
           <widget class="xTools::StatisticianUi" name="widgetTxInfo" native="true"/>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widgetCharts" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QTextBrowser" name="textBrowserOutput"/>
