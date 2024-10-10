@@ -43,6 +43,9 @@
 #include "IO/UI/Transfer/WebSocketServerTransferUi.h"
 #endif
 
+#include "IO/IO/DataVisualization/2D/Charts.h"
+#include "IO/UI/DataVisualization/2D/ChartsUi.h"
+
 #include "CommunicationSettings.h"
 #include "IO/Unit/CRC.h"
 #include "InputSettings.h"
@@ -126,7 +129,8 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     ui->widgetTxInfo->setupIO(m_txStatistician);
     ui->toolButtonCharts->setCheckable(true);
     connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
-        ui->widgetCharts->setVisible(checked);
+        qInfo() << "Show charts:" << ui->toolButtonCharts->isChecked() << checked;
+        ui->widgetCharts->setVisible(!ui->widgetCharts->isVisible());
     });
 
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responder
