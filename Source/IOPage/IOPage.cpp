@@ -125,7 +125,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
     ui->toolButtonCharts->setCheckable(true);
-    connect(ui->toolButtonCharts, &QToolButton::toggled, [this](bool checked) {
+    connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
         ui->widgetCharts->setVisible(checked);
     });
 
