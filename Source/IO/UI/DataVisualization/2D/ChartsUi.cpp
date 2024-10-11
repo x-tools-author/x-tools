@@ -23,11 +23,11 @@ ChartsUi::ChartsUi(QWidget *parent)
     , ui(new Ui::ChartsUi)
 {
     ui->setupUi(this);
-    for (int i = 0; i < 8; i++) {
-        QCheckBox *checkBox = new QCheckBox(this);
-        checkBox->setText(tr("Channel") + " " + QString::number(i + 1));
-        ui->verticalLayoutControl->addWidget(checkBox);
-    }
+    // for (int i = 0; i < 8; i++) {
+    //     QCheckBox *checkBox = new QCheckBox(this);
+    //     checkBox->setText(tr("Channel") + " " + QString::number(i + 1));
+    //     ui->verticalLayoutControl->addWidget(checkBox);
+    // }
 }
 
 ChartsUi::~ChartsUi()
