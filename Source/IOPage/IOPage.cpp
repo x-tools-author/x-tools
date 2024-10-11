@@ -12,6 +12,7 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QWidgetAction>
+#include <QToolButton>
 
 #include "IO/IO/Communication/Communication.h"
 #include "IO/IO/IOFactory.h"
