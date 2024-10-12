@@ -68,5 +68,6 @@
         <file>Resources/Files/History.txt</file>
         <file>Resources/Translations/xToolsCore_en.qm</file>
         <file>Resources/Translations/xToolsCore_zh_CN.qm</file>
+        <file>Resources/Icons/IconChart.svg</file>
     </qresource>
 </RCC>
