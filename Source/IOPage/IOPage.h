@@ -13,7 +13,6 @@
 #include <QSettings>
 #include <QTabWidget>
 #include <QTimer>
-#include <QToolButton>
 #include <QVariantMap>
 #include <QWidget>
 
