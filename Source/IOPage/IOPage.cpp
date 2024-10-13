@@ -129,10 +129,10 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
     ui->toolButtonCharts->setCheckable(true);
-    ui->toolButtonCharts->setMenu(new QMenu("Charts"));
+    ui->toolButtonCharts->setIcon(QIcon("qrc:/Resources/Icons/IconChart.svg"));
+	ui->toolButtonCharts->setMenu(new QMenu("Charts"));
     ui->toolButtonCharts->setPopupMode(QToolButton::MenuButtonPopup);
-    ui->toolButtonCharts->menu()->addAction("Rx");
-    connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
+    ui->toolButtonCharts->menu()->addAction("Rx");    connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
         qInfo() << "Show charts:" << ui->toolButtonCharts->isChecked() << checked;
         ui->widgetCharts->setVisible(!ui->widgetCharts->isVisible());
     });
