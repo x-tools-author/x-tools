@@ -11,7 +11,9 @@
 
 #include <QChartView>
 #include <QCheckBox>
+#include <QMenu>
 #include <QPointF>
+#include <QPushButton>
 #include <QTimer>
 
 #include "IO/IO/DataVisualization/2D/Charts.h"
@@ -23,6 +25,7 @@ ChartsUi::ChartsUi(QWidget *parent)
     , ui(new Ui::ChartsUi)
 {
     ui->setupUi(this);
+    ui->widgetChartView->setContentsMargins(0, 0, 0, 0);
     // for (int i = 0; i < 8; i++) {
     //     QCheckBox *checkBox = new QCheckBox(this);
     //     checkBox->setText(tr("Channel") + " " + QString::number(i + 1));

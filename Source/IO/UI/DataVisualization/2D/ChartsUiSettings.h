@@ -8,31 +8,23 @@
  **************************************************************************************************/
 #pragma once
 
-#include "IO/UI/AbstractIOUi.h"
+#include <QPushButton>
 
 namespace Ui {
-class ChartsUi;
+class ChartsUiSettings;
 }
 
 namespace xTools {
 
-class ChartsUi : public AbstractIOUi
+class ChartsUiSettings : public QPushButton
 {
     Q_OBJECT
 public:
-    explicit ChartsUi(QWidget *parent = Q_NULLPTR);
-    ~ChartsUi() override;
-
-    QVariantMap save() const override;
-    void load(const QVariantMap &parameters) override;
-    void setupIO(AbstractIO *io) override;
+    explicit ChartsUiSettings(QWidget *parent = Q_NULLPTR);
+    ~ChartsUiSettings() override;
 
 private:
-    Ui::ChartsUi *ui;
-
-private:
-    void onNewValues(const QList<double> &values);
-    void onNewPoints(const QList<QPointF> &points);
+    Ui::ChartsUiSettings *ui;
 };
 
 } // namespace xTools

@@ -6,33 +6,28 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#pragma once
+#include "ChartsUiSettings.h"
+#include "ui_ChartsUiSettings.h"
 
-#include "IO/UI/AbstractIOUi.h"
+#include <QChartView>
+#include <QCheckBox>
+#include <QPointF>
+#include <QTimer>
 
-namespace Ui {
-class ChartsUi;
-}
+#include "IO/IO/DataVisualization/2D/Charts.h"
 
 namespace xTools {
 
-class ChartsUi : public AbstractIOUi
+ChartsUiSettings::ChartsUiSettings(QWidget *parent)
+    : QPushButton(parent)
+    , ui(new Ui::ChartsUiSettings)
 {
-    Q_OBJECT
-public:
-    explicit ChartsUi(QWidget *parent = Q_NULLPTR);
-    ~ChartsUi() override;
+    ui->setupUi(this);
+}
 
-    QVariantMap save() const override;
-    void load(const QVariantMap &parameters) override;
-    void setupIO(AbstractIO *io) override;
-
-private:
-    Ui::ChartsUi *ui;
-
-private:
-    void onNewValues(const QList<double> &values);
-    void onNewPoints(const QList<QPointF> &points);
-};
+ChartsUiSettings::~ChartsUiSettings()
+{
+    delete ui;
+}
 
 } // namespace xTools
