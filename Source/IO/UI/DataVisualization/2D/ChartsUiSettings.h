@@ -16,7 +16,7 @@ class ChartsUiSettings;
 
 namespace xTools {
 
-class ChartsUiSettings : public QPushButton
+class ChartsUiSettings : public QWidget
 {
     Q_OBJECT
 public:

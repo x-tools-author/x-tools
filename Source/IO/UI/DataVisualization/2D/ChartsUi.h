@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QMenu>
+
 #include "IO/UI/AbstractIOUi.h"
 
 namespace Ui {
@@ -16,6 +18,7 @@ class ChartsUi;
 
 namespace xTools {
 
+class ChartsUiSettings;
 class ChartsUi : public AbstractIOUi
 {
     Q_OBJECT
@@ -27,8 +30,12 @@ public:
     void load(const QVariantMap &parameters) override;
     void setupIO(AbstractIO *io) override;
 
+    QMenu *settingsMenu() const;
+
 private:
     Ui::ChartsUi *ui;
+    ChartsUiSettings *m_settings;
+    QMenu *m_settingsMenu;
 
 private:
     void onNewValues(const QList<double> &values);

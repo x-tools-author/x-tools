@@ -15,7 +15,9 @@
 #include <QPointF>
 #include <QPushButton>
 #include <QTimer>
+#include <QWidgetAction>
 
+#include "ChartsUiSettings.h"
 #include "IO/IO/DataVisualization/2D/Charts.h"
 
 namespace xTools {
@@ -26,15 +28,17 @@ ChartsUi::ChartsUi(QWidget *parent)
 {
     ui->setupUi(this);
     ui->widgetChartView->setContentsMargins(0, 0, 0, 0);
-    // for (int i = 0; i < 8; i++) {
-    //     QCheckBox *checkBox = new QCheckBox(this);
-    //     checkBox->setText(tr("Channel") + " " + QString::number(i + 1));
-    //     ui->verticalLayoutControl->addWidget(checkBox);
-    // }
+
+    m_settings = new ChartsUiSettings();
+    m_settingsMenu = new QMenu(this);
+    QWidgetAction *action = new QWidgetAction(m_settingsMenu);
+    action->setDefaultWidget(m_settings);
+    m_settingsMenu->addAction(action);
 }
 
 ChartsUi::~ChartsUi()
 {
+    m_settings->deleteLater();
     delete ui;
 }
 
@@ -62,6 +66,11 @@ void ChartsUi::setupIO(AbstractIO *io)
     auto cookedType = static_cast<Qt::ConnectionType>(type);
     connect(charts, &Charts::newValues, this, &ChartsUi::onNewValues, cookedType);
     connect(charts, &Charts::newPoints, this, &ChartsUi::onNewPoints, cookedType);
+}
+
+QMenu *ChartsUi::settingsMenu() const
+{
+    return m_settingsMenu;
 }
 
 void ChartsUi::onNewValues(const QList<double> &values)

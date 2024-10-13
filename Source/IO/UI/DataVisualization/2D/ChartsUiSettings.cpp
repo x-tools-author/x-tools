@@ -11,18 +11,34 @@
 
 #include <QChartView>
 #include <QCheckBox>
+#include <QComboBox>
+#include <QLabel>
+#include <QLineEdit>
 #include <QPointF>
 #include <QTimer>
-
-#include "IO/IO/DataVisualization/2D/Charts.h"
 
 namespace xTools {
 
 ChartsUiSettings::ChartsUiSettings(QWidget *parent)
-    : QPushButton(parent)
+    : QWidget(parent)
     , ui(new Ui::ChartsUiSettings)
 {
     ui->setupUi(this);
+
+    ui->gridLayoutChartControl->addWidget(new QLabel(tr("Channel"), this), 0, 0, Qt::AlignCenter);
+    ui->gridLayoutChartControl->addWidget(new QLabel(tr("Visible"), this), 0, 1, Qt::AlignCenter);
+    ui->gridLayoutChartControl->addWidget(new QLabel(tr("Type"), this), 0, 2, Qt::AlignCenter);
+    ui->gridLayoutChartControl->addWidget(new QLabel(tr("Color"), this), 0, 3, Qt::AlignCenter);
+    ui->gridLayoutChartControl->addWidget(new QLabel(tr("Name"), this), 0, 4, Qt::AlignCenter);
+    for (int i = 0; i < 16; ++i) {
+        int row = i + 1;
+        QString str = QString::number(row);
+        ui->gridLayoutChartControl->addWidget(new QLabel(str, this), row, 0, Qt::AlignCenter);
+        ui->gridLayoutChartControl->addWidget(new QCheckBox(this), row, 1, Qt::AlignCenter);
+        ui->gridLayoutChartControl->addWidget(new QComboBox(this), row, 2, Qt::AlignCenter);
+        ui->gridLayoutChartControl->addWidget(new QPushButton(this), row, 3, Qt::AlignCenter);
+        ui->gridLayoutChartControl->addWidget(new QLineEdit(this), row, 4, Qt::AlignCenter);
+    }
 }
 
 ChartsUiSettings::~ChartsUiSettings()
