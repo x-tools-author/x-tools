@@ -12,7 +12,6 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QWidgetAction>
-#include <QToolButton>
 
 #include "IO/IO/Communication/Communication.h"
 #include "IO/IO/IOFactory.h"
@@ -297,12 +296,12 @@ void IOPage::inputBytes(const QByteArray &bytes)
     }
 }
 
-void IOPage::prependOutoutControl(QWidget *widget)
+void IOPage::prependOutputControl(QWidget *widget)
 {
     ui->horizontalLayoutOutput->insertWidget(0, widget);
 }
 
-void IOPage::appendOutoutControl(QWidget *widget)
+void IOPage::appendOutputControl(QWidget *widget)
 {
     ui->horizontalLayoutOutput->addWidget(widget);
 }

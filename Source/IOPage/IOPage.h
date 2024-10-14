@@ -13,6 +13,7 @@
 #include <QSettings>
 #include <QTabWidget>
 #include <QTimer>
+#include <QToolButton>
 #include <QVariantMap>
 #include <QWidget>
 
@@ -75,8 +76,8 @@ public:
     QTabWidget *tabWidget();
     QToolButton *presetToolButton();
     void inputBytes(const QByteArray &bytes);
-    void prependOutoutControl(QWidget *widget);
-    void appendOutoutControl(QWidget *widget);
+    void prependOutputControl(QWidget *widget);
+    void appendOutputControl(QWidget *widget);
 
 signals:
     void bytesWritten(const QByteArray &bytes, const QString &to);
