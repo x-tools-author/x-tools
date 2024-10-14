@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QMenu>
+#include <QXYSeries>
 
 #include "IO/UI/AbstractIOUi.h"
 
@@ -36,6 +37,7 @@ private:
     Ui::ChartsUi *ui;
     ChartsUiSettings *m_settings;
     QMenu *m_settingsMenu;
+    QList<QXYSeries *> m_series;
 
 private:
     void onNewValues(const QList<double> &values);

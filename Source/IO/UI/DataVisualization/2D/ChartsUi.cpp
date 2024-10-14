@@ -9,18 +9,27 @@
 #include "ChartsUi.h"
 #include "ui_ChartsUi.h"
 
+#include <QChart>
 #include <QChartView>
 #include <QCheckBox>
+#include <QLineSeries>
 #include <QMenu>
 #include <QPointF>
 #include <QPushButton>
 #include <QTimer>
+#include <QValueAxis>
 #include <QWidgetAction>
 
 #include "ChartsUiSettings.h"
 #include "IO/IO/DataVisualization/2D/Charts.h"
 
 namespace xTools {
+
+struct ChartsUiDataKeys
+{
+    const QString dataType{"dataType"};
+    const QString channelCount{"channelCount"};
+};
 
 ChartsUi::ChartsUi(QWidget *parent)
     : AbstractIOUi(parent)
@@ -34,6 +43,31 @@ ChartsUi::ChartsUi(QWidget *parent)
     QWidgetAction *action = new QWidgetAction(m_settingsMenu);
     action->setDefaultWidget(m_settings);
     m_settingsMenu->addAction(action);
+
+    QValueAxis *axisX = new QValueAxis();
+    axisX->setRange(0, 100);
+    QValueAxis *axisY = new QValueAxis();
+    axisY->setRange(0, 100);
+
+    QChart *chart = new QChart();
+    chart->addAxis(axisX, Qt::AlignBottom);
+    chart->addAxis(axisY, Qt::AlignLeft);
+
+    ui->widgetChartView->setChart(chart);
+    ui->widgetChartView->setRenderHint(QPainter::Antialiasing);
+
+    int channelCount = ChartsUiSettings::channelCount();
+    for (int i = 0; i < channelCount; ++i) {
+        QLineSeries *series = new QLineSeries();
+        chart->addSeries(series);
+        series->attachAxis(axisX);
+        series->attachAxis(axisY);
+        series->setName("CH" + QString::number(i + 1));
+        series->append(QPointF(0, 0));
+        series->append(QPointF(100, 100 - 5 * i));
+
+        m_series.append(series);
+    }
 }
 
 ChartsUi::~ChartsUi()
@@ -75,12 +109,18 @@ QMenu *ChartsUi::settingsMenu() const
 
 void ChartsUi::onNewValues(const QList<double> &values)
 {
-    // Do something with values
+    int count = qMin(values.size(), m_series.size());
+    for (int i = 0; i < count; ++i) {
+        m_series[i]->append(QPointF(m_series[i]->count(), values[i]));
+    }
 }
 
 void ChartsUi::onNewPoints(const QList<QPointF> &points)
 {
-    // Do something with points
+    int count = qMin(points.size(), m_series.size());
+    for (int i = 0; i < count; ++i) {
+        m_series[i]->append(points[i]);
+    }
 }
 
 } // namespace xTools

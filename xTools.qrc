@@ -69,5 +69,8 @@
         <file>Resources/Translations/xToolsCore_en.qm</file>
         <file>Resources/Translations/xToolsCore_zh_CN.qm</file>
         <file>Resources/Icons/IconChart.svg</file>
+        <file>Resources/Icons/IconLineSeries.svg</file>
+        <file>Resources/Icons/IconScatterSeries.svg</file>
+        <file>Resources/Icons/IconSplineSeries.svg</file>
     </qresource>
 </RCC>
