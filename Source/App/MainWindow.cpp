@@ -11,6 +11,7 @@
 #include <QAction>
 #include <QActionGroup>
 #include <QApplication>
+#include <QClipboard>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QFile>
@@ -190,10 +191,17 @@ void MainWindow::initMenuLanguage()
 
 void MainWindow::initMenuHelp()
 {
-    QMenuBar* menu_bar = menuBar();
-    m_helpMenu = menu_bar->addMenu(tr("&Help"));
+    QMenuBar* menuBar = this->menuBar();
+    m_helpMenu = menuBar->addMenu(tr("&Help"));
     m_aboutQtAction = m_helpMenu->addAction(tr("About Qt"), qApp, &QApplication::aboutQt);
     m_aboutAction = m_helpMenu->addAction(tr("About") + " " + QApplication::applicationName());
+#if defined(QT_DEBUG)
+    m_helpMenu->addAction(tr("Screenshot"), this, [=]() {
+        QPixmap pix = this->grab();
+        // copy to clipboard
+        QApplication::clipboard()->setPixmap(pix);
+    });
+#endif
 
     connect(m_aboutAction, &QAction::triggered, this, &MainWindow::onAboutActionTriggered);
 }
