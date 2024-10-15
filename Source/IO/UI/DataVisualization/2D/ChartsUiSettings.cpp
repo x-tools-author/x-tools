@@ -31,7 +31,7 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     , ui(new Ui::ChartsUiSettings)
 {
     ui->setupUi(this);
-
+    ui->checkBoxLegend->setChecked(true);
     QComboBox *cb = ui->comboBoxDataType;
     cb->addItem(tr("Binary") + "-Y", static_cast<int>(Charts::DataFormat::BinaryY));
     cb->addItem(tr("Binary") + "-XY", static_cast<int>(Charts::DataFormat::BinaryXY));
@@ -41,6 +41,10 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
         emit this->invokeSetDataType(ui->comboBoxDataType->currentData().toInt());
     });
 
+    connect(ui->checkBoxLegend,
+            &QCheckBox::clicked,
+            this,
+            &ChartsUiSettings::invokeSetLegendVisible);
     connect(ui->pushButtonClear,
             &QPushButton::clicked,
             this,

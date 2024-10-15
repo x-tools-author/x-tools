@@ -42,6 +42,7 @@ ChartsUi::ChartsUi(QWidget *parent)
 
     // clang-format off
     connect(m_settings, &ChartsUiSettings::invokeSetDataType, this, &ChartsUi::onSetDataType);
+    connect(m_settings, &ChartsUiSettings::invokeSetLegendVisible, this, &ChartsUi::onSetLegendVisible);
     connect(m_settings, &ChartsUiSettings::invokeClearChannels, this, &ChartsUi::onClearChannels);
     connect(m_settings, &ChartsUiSettings::invokeImportChannels, this, &ChartsUi::onImportChannels);
     connect(m_settings, &ChartsUiSettings::invokeExportChannels, this, &ChartsUi::onExportChannels);
