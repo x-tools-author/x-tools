@@ -11,6 +11,7 @@
 
 #include <QChartView>
 #include <QCheckBox>
+#include <QFileDialog>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QLineSeries>
@@ -21,6 +22,8 @@
 #include <QSplineSeries>
 #include <QTimer>
 #include <QWidgetAction>
+
+#include <xlsxdocument.h>
 
 #include "ChartsUiSettings.h"
 #include "IO/IO/DataVisualization/2D/Charts.h"
@@ -205,7 +208,62 @@ void ChartsUi::onClearChannels()
 }
 void ChartsUi::onImportChannels() {}
 
-void ChartsUi::onExportChannels() {}
+void ChartsUi::onExportChannels()
+{
+    const QString fileName = QFileDialog::getSaveFileName(nullptr,
+                                                          tr("导出数据"),
+                                                          "data.xlsx",
+                                                          tr("Excel表格(*.xlsx)"));
+    if (fileName.isEmpty()) {
+        return;
+    }
+#if 0
+    // 保存为18个工作表，每个工作表保存12个通道的数据
+    QXlsx::Document xlsx;
+    for (int i = 0; i < 18; ++i) {
+        xlsx.addSheet(QString("通道%1-%2").arg(i * 12 + 1).arg(i * 12 + 12));
+        xlsx.selectSheet(i);
+        writeHeader(xlsx);
+        int row = 2;
+        for (int channel = 0; channel < 12; ++channel) {
+            int cookedChannelIndex = i * 12 + channel;
+            if (cookedChannelIndex >= channelMap.size()
+                || cookedChannelIndex >= testingDataMap.size()) {
+                continue;
+            }
+
+            const QVector<QPointF> &data = testingDataMap[cookedChannelIndex];
+            if (data.isEmpty()) {
+                continue;
+            }
+
+            const QString sensorSN = channelMap[cookedChannelIndex].first;
+            const QString boardSN = channelMap[cookedChannelIndex].second;
+            const SensorContext ctx = decodeSensorSN(sensorSN);
+            for (int i = 0; i < data.size(); ++i) {
+                const QString x = QDateTime::fromMSecsSinceEpoch(data[i].x())
+                                      .toString(m_dateTimeFormat);
+                xlsx.write(row, 1, cookedChannelIndex + 1);
+                xlsx.write(row, 2, ctx.batchNumber);
+                xlsx.write(row, 3, ctx.chipCode);
+                xlsx.write(row, 4, ctx.groupCode);
+                xlsx.write(row, 5, QString::number(ctx.positionCode.toInt()));
+                xlsx.write(row, 6, boardSN);
+                xlsx.write(row, 7, x);
+                xlsx.write(row, 8, data[i].y());
+                row += 1;
+            }
+        }
+    }
+
+    xlsx.selectSheet(0);
+    if (xlsx.saveAs(fileName)) {
+        qDebug() << "File saved successfully!";
+    } else {
+        qDebug() << "Failed to save file!";
+    }
+#endif
+}
 
 void ChartsUi::onNewPoints(const QList<QPointF> &points)
 {
