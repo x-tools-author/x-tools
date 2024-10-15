@@ -41,4 +41,4 @@
 |Gitee| <https://gitee.com/x-tools-author/x-tools>|
 |GitHub| <https://github.com/x-tools-author/x-tools>|
 |Sponsor|<https://apps.microsoft.com/search/publisher?name=x-tools-author>|
-|Third party|[glog](https://github.com/google/glog) [hidapi](https://github.com/libusb/hidapi) [libqrencode](https://github.com/fukuchi/libqrencode) [qmdnsengine](https://github.com/nitroshare/qmdnsengine) [Qt-Advanced-Stylesheets](https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets)|
+|Third party|[glog](https://github.com/google/glog) [hidapi](https://github.com/libusb/hidapi) [libqrencode](https://github.com/fukuchi/libqrencode) [qmdnsengine](https://github.com/nitroshare/qmdnsengine) [Qt-Advanced-Stylesheets](https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets) [QXlsx](https://github.com/QtExcel/QXlsx)|
