@@ -7,36 +7,34 @@
     <x>0</x>
     <y>0</y>
     <width>655</width>
-    <height>344</height>
+    <height>388</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <property name="leftMargin">
-    <number>4</number>
-   </property>
-   <property name="topMargin">
-    <number>4</number>
-   </property>
-   <property name="rightMargin">
-    <number>4</number>
-   </property>
-   <property name="bottomMargin">
-    <number>4</number>
-   </property>
-   <item row="0" column="5">
-    <widget class="QPushButton" name="pushButtonApply">
+   <item row="0" column="1">
+    <widget class="QComboBox" name="comboBoxDataType"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>Apply</string>
+      <string>Data type</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="8">
-    <widget class="Line" name="line">
+   <item row="0" column="2">
+    <widget class="Line" name="line_2">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QPushButton" name="pushButtonExport">
+     <property name="text">
+      <string>Export</string>
      </property>
     </widget>
    </item>
@@ -53,17 +51,14 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="1">
-    <widget class="QSpinBox" name="spinBoxChannelCount">
-     <property name="minimum">
-      <number>8</number>
-     </property>
-     <property name="value">
-      <number>16</number>
+   <item row="0" column="4">
+    <widget class="QPushButton" name="pushButtonImport">
+     <property name="text">
+      <string>Import</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="8">
+   <item row="2" column="0" colspan="7">
     <widget class="QWidget" name="widgetControl" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -73,27 +68,17 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Channel count</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Data type</string>
+   <item row="1" column="0" colspan="7">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
     </widget>
    </item>
    <item row="0" column="3">
-    <widget class="QComboBox" name="comboBoxDataType"/>
-   </item>
-   <item row="0" column="4">
-    <widget class="Line" name="line_2">
-     <property name="orientation">
-      <enum>Qt::Orientation::Vertical</enum>
+    <widget class="QPushButton" name="pushButtonClear">
+     <property name="text">
+      <string>Clear</string>
      </property>
     </widget>
    </item>

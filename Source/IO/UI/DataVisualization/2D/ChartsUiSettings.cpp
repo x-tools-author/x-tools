@@ -9,14 +9,19 @@
 #include "ChartsUiSettings.h"
 #include "ui_ChartsUiSettings.h"
 
+#include <QAbstractSeries>
 #include <QChartView>
 #include <QCheckBox>
+#include <QColorDialog>
 #include <QComboBox>
+#include <QJsonArray>
+#include <QJsonObject>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPointF>
 #include <QTimer>
 
+#include "ChartsUi.h"
 #include "IO/IO/DataVisualization/2D/Charts.h"
 
 namespace xTools {
@@ -27,10 +32,27 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->comboBoxDataType->addItem("BinaryY", static_cast<int>(Charts::DataFormat::BinaryY));
-    ui->comboBoxDataType->addItem("BinaryXY", static_cast<int>(Charts::DataFormat::BinaryXY));
-    ui->comboBoxDataType->addItem("TextY", static_cast<int>(Charts::DataFormat::TextY));
-    ui->comboBoxDataType->addItem("TextXY", static_cast<int>(Charts::DataFormat::TextXY));
+    QComboBox *cb = ui->comboBoxDataType;
+    cb->addItem(tr("Binary") + "-Y", static_cast<int>(Charts::DataFormat::BinaryY));
+    cb->addItem(tr("Binary") + "-XY", static_cast<int>(Charts::DataFormat::BinaryXY));
+    cb->addItem(tr("Text") + "-Y", static_cast<int>(Charts::DataFormat::TextY));
+    cb->addItem(tr("Text") + "-XY", static_cast<int>(Charts::DataFormat::TextXY));
+    connect(ui->comboBoxDataType, &QComboBox::currentIndexChanged, this, [=]() {
+        emit this->invokeSetDataType(ui->comboBoxDataType->currentData().toInt());
+    });
+
+    connect(ui->pushButtonClear,
+            &QPushButton::clicked,
+            this,
+            &ChartsUiSettings::invokeClearChannels);
+    connect(ui->pushButtonImport,
+            &QPushButton::clicked,
+            this,
+            &ChartsUiSettings::invokeImportChannels);
+    connect(ui->pushButtonExport,
+            &QPushButton::clicked,
+            this,
+            &ChartsUiSettings::invokeExportChannels);
 
     QGridLayout *parametersGridLayout = new QGridLayout(ui->widgetControl);
     parametersGridLayout->addWidget(new QLabel(tr("Channel"), this), 0, 0, Qt::AlignCenter);
@@ -74,11 +96,56 @@ int ChartsUiSettings::channelCount()
     return 16;
 }
 
+int ChartsUiSettings::dataType()
+{
+    return ui->comboBoxDataType->currentData().toInt();
+}
+
+void ChartsUiSettings::setDataType(int type)
+{
+    int index = ui->comboBoxDataType->findData(type);
+    if (index != -1) {
+        ui->comboBoxDataType->setCurrentIndex(index);
+    }
+}
+
+void ChartsUiSettings::load(const QVariantMap &parameters)
+{
+    if (parameters.isEmpty()) {
+        return;
+    }
+
+    ChartsUiDataKeys keys;
+    setDataType(parameters.value(keys.dataType).toInt());
+    QJsonArray channels = parameters.value(keys.channels).toJsonArray();
+    if (channels.count() != m_channelContexts.size()) {
+        qWarning() << "The number of channels is not equal to the number of series.";
+        return;
+    }
+
+    for (int i = 0; i < channels.size(); ++i) {
+        QJsonObject obj = channels[i].toObject();
+        QString name = obj.value(keys.channelName).toString();
+        bool visible = obj.value(keys.channelVisible).toBool();
+        QString color = obj.value(keys.channelColor).toString();
+        int type = obj.value(keys.channelType).toInt();
+
+        m_channelContexts[i].nameLineEdit->setText(name);
+        m_channelContexts[i].visibleCheckBox->setChecked(visible);
+        m_channelContexts[i].colorButton->setStyleSheet("background-color: " + color + ";");
+        int index = m_channelContexts[i].typeComboBox->findData(type);
+        m_channelContexts[i].typeComboBox->setCurrentIndex(index);
+    }
+}
+
 void ChartsUiSettings::setupVisibleCheckBox(QCheckBox *checkBox, int channelIndex)
 {
     checkBox->setCheckable(true);
     checkBox->setChecked(true);
     m_channelContexts[channelIndex].visibleCheckBox = checkBox;
+    connect(checkBox, &QCheckBox::clicked, this, [=](bool checked) {
+        emit invokeSetChannelVisible(channelIndex, checked);
+    });
 }
 
 void ChartsUiSettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
@@ -86,14 +153,17 @@ void ChartsUiSettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
     m_channelContexts[channelIndex].typeComboBox = comboBox;
     comboBox->clear();
     comboBox->addItem(QIcon(":/Resources/Icons/IconLineSeries.svg"),
-                      seriesTypeToString(LineSeries),
-                      LineSeries);
+                      seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeLine),
+                      QAbstractSeries::SeriesType::SeriesTypeLine);
     comboBox->addItem(QIcon(":/Resources/Icons/IconSplineSeries.svg"),
-                      seriesTypeToString(SplineSeries),
-                      SplineSeries);
+                      seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeSpline),
+                      QAbstractSeries::SeriesType::SeriesTypeSpline);
     comboBox->addItem(QIcon(":/Resources/Icons/IconScatterSeries.svg"),
-                      seriesTypeToString(ScatterSeries),
-                      ScatterSeries);
+                      seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeScatter),
+                      QAbstractSeries::SeriesType::SeriesTypeScatter);
+    connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=](int index) {
+        emit invokeSetChannelType(channelIndex, comboBox->itemData(index).toInt());
+    });
 }
 
 void ChartsUiSettings::setupColorButton(QPushButton *button, int channelIndex)
@@ -101,22 +171,34 @@ void ChartsUiSettings::setupColorButton(QPushButton *button, int channelIndex)
     m_channelContexts[channelIndex].colorButton = button;
     button->setFlat(true);
     button->setStyleSheet("background-color: rgb(0, 0, 255);");
+
+    connect(button, &QPushButton::clicked, this, [=]() {
+        QColor color = QColorDialog::getColor(Qt::blue, this);
+        if (color.isValid()) {
+            button->setStyleSheet("background-color: " + color.name() + ";");
+            emit invokeSetChannelColor(channelIndex, color);
+        }
+    });
 }
 
 void ChartsUiSettings::setupNameLineEdit(QLineEdit *lineEdit, int channelIndex)
 {
     m_channelContexts[channelIndex].nameLineEdit = lineEdit;
     lineEdit->setText(tr("Channel") + " " + QString::number(channelIndex + 1));
+
+    connect(lineEdit, &QLineEdit::textEdited, this, [=]() {
+        emit invokeSetChannelName(channelIndex, lineEdit->text());
+    });
 }
 
 QString ChartsUiSettings::seriesTypeToString(int type) const
 {
     switch (type) {
-    case LineSeries:
+    case QAbstractSeries::SeriesType::SeriesTypeLine:
         return tr("Line");
-    case SplineSeries:
+    case QAbstractSeries::SeriesType::SeriesTypeSpline:
         return tr("Spline");
-    case ScatterSeries:
+    case QAbstractSeries::SeriesType::SeriesTypeScatter:
         return tr("Scatter");
     default:
         return QString();

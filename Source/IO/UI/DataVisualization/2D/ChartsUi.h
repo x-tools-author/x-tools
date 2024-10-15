@@ -8,7 +8,9 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QChart>
 #include <QMenu>
+#include <QValueAxis>
 #include <QXYSeries>
 
 #include "IO/UI/AbstractIOUi.h"
@@ -18,6 +20,17 @@ class ChartsUi;
 }
 
 namespace xTools {
+
+struct ChartsUiDataKeys
+{
+    const QString dataType{"dataType"};
+    const QString channels{"channels"};
+
+    const QString channelName{"channelName"};
+    const QString channelVisible{"channelVisible"};
+    const QString channelColor{"channelColor"};
+    const QString channelType{"channelType"};
+};
 
 class ChartsUiSettings;
 class ChartsUi : public AbstractIOUi
@@ -38,10 +51,23 @@ private:
     ChartsUiSettings *m_settings;
     QMenu *m_settingsMenu;
     QList<QXYSeries *> m_series;
+    QChart *m_chart;
+    QValueAxis *m_axisX;
+    QValueAxis *m_axisY;
+    AbstractIO *m_io{nullptr};
 
 private:
     void onNewValues(const QList<double> &values);
     void onNewPoints(const QList<QPointF> &points);
+
+    void onSetDataType(int type);
+    void onClearChannels();
+    void onImportChannels();
+    void onExportChannels();
+    void onSetChannelVisible(int channelIndex, bool visible);
+    void onSetChannelType(int channelIndex, int type);
+    void onSetChannelColor(int channelIndex, const QColor &color);
+    void onSetChannelName(int channelIndex, const QString &name);
 };
 
 } // namespace xTools

@@ -23,13 +23,23 @@ class ChartsUiSettings : public QWidget
 {
     Q_OBJECT
 public:
-    enum SeriesType { LineSeries, SplineSeries, ScatterSeries };
-
-public:
     explicit ChartsUiSettings(QWidget *parent = Q_NULLPTR);
     ~ChartsUiSettings() override;
 
     static int channelCount();
+    int dataType();
+    void setDataType(int type);
+    void load(const QVariantMap &parameters);
+
+signals:
+    void invokeSetDataType(int type);
+    void invokeClearChannels();
+    void invokeImportChannels();
+    void invokeExportChannels();
+    void invokeSetChannelVisible(int channelIndex, bool visible);
+    void invokeSetChannelType(int channelIndex, int type);
+    void invokeSetChannelColor(int channelIndex, const QColor &color);
+    void invokeSetChannelName(int channelIndex, const QString &name);
 
 private:
     struct ChannelContext
