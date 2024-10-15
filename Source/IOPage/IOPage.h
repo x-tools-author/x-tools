@@ -46,6 +46,10 @@ class WebSocketClientTransferUi;
 class WebSocketServerTransfer;
 class WebSocketServerTransferUi;
 #endif
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+class Charts;
+class ChartsUi;
+#endif
 } // namespace xTools
 QT_END_NAMESPACE
 
@@ -115,6 +119,10 @@ private:
     xTools::WebSocketClientTransferUi *m_webSocketClientTransferUi;
     xTools::WebSocketServerTransfer *m_webSocketServerTransfer;
     xTools::WebSocketServerTransferUi *m_webSocketServerTransferUi;
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+    xTools::Charts *m_charts;
+    xTools::ChartsUi *m_chartsUi;
 #endif
     QButtonGroup m_pageButtonGroup;
     QList<xTools::AbstractIO *> m_ioList;

@@ -329,7 +329,7 @@
         </layout>
        </item>
        <item>
-        <widget class="xTools::ChartsUi" name="widgetCharts" native="true">
+        <widget class="QWidget" name="widgetCharts" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -452,12 +452,6 @@
    <class>xTools::ResponserUi</class>
    <extends>QWidget</extends>
    <header location="global">IO/UI/Model/ResponserUi.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>xTools::ChartsUi</class>
-   <extends>QWidget</extends>
-   <header location="global">IO/UI/DataVisualization/2D/ChartsUi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

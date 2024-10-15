@@ -29,6 +29,7 @@
 #include "IO/UI/Transfer/TcpServerTransferUi.h"
 #include "IO/UI/Transfer/UdpClientTransferUi.h"
 #include "IO/UI/Transfer/UdpServerTransferUi.h"
+#include "IO/Unit/CRC.h"
 #include "IO/xIO.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
@@ -43,11 +44,12 @@
 #include "IO/UI/Transfer/WebSocketServerTransferUi.h"
 #endif
 
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
 #include "IO/IO/DataVisualization/2D/Charts.h"
 #include "IO/UI/DataVisualization/2D/ChartsUi.h"
+#endif
 
 #include "CommunicationSettings.h"
-#include "IO/Unit/CRC.h"
 #include "InputSettings.h"
 #include "OutputSettings.h"
 #include "Unit/SyntaxHighlighter.h"
@@ -82,6 +84,8 @@ struct ParameterKeys
     const QString tcpServerTransferItems{"tcpServerTransferItems"};
     const QString webSocketClientTransferItems{"webSocketClientTransferItems"};
     const QString webSocketServerTransferItems{"webSocketServerTransferItems"};
+
+    const QString chartsItems{"chartsItems"};
 } g_keys;
 
 IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *parent)
@@ -118,6 +122,10 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     , m_webSocketServerTransfer(new xTools::WebSocketServerTransfer(this))
     , m_webSocketServerTransferUi(new xTools::WebSocketServerTransferUi())
 #endif
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+    , m_charts{new xTools::Charts(this)}
+    , m_chartsUi{new xTools::ChartsUi()}
+#endif
     , m_settings{settings}
 {
     if (settings == nullptr) {
@@ -127,14 +135,20 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+    ui->widgetCharts->setLayout(new QHBoxLayout);
+    ui->widgetCharts->layout()->addWidget(m_chartsUi);
+    ui->widgetCharts->layout()->setContentsMargins(0, 0, 0, 0);
     ui->toolButtonCharts->setCheckable(true);
     ui->toolButtonCharts->setIcon(QIcon(":/Resources/Icons/IconChart.svg"));
-    ui->toolButtonCharts->setMenu(ui->widgetCharts->settingsMenu());
+    ui->toolButtonCharts->setMenu(m_chartsUi->settingsMenu());
     ui->toolButtonCharts->setPopupMode(QToolButton::MenuButtonPopup);
     connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
         ui->widgetCharts->setVisible(!ui->widgetCharts->isVisible());
     });
-
+#else
+    ui->toolButtonCharts->setVisible(false);
+#endif
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responder
              << m_udpClientTransfer << m_udpServerTransfer << m_tcpClientTransfer
              << m_tcpServerTransfer;
@@ -143,6 +157,9 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
 #endif
 #ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
     m_ioList << m_webSocketClientTransfer << m_webSocketServerTransfer;
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+    m_ioList << m_charts;
 #endif
 
     if (direction == ControllerDirection::Right) {
@@ -208,6 +225,9 @@ QVariantMap IOPage::save()
 #ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
     map.insert(g_keys.webSocketClientTransferItems, m_webSocketClientTransferUi->save());
     map.insert(g_keys.webSocketServerTransferItems, m_webSocketServerTransferUi->save());
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+    map.insert(g_keys.chartsItems, m_chartsUi->save());
 #endif
 
     return map;
@@ -275,6 +295,9 @@ void IOPage::load(const QVariantMap &parameters)
 #ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
     m_webSocketClientTransferUi->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
     m_webSocketServerTransferUi->load(parameters.value(g_keys.webSocketServerTransferItems).toMap());
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+    m_chartsUi->load(parameters.value(g_keys.chartsItems).toMap());
 #endif
     // clang-format on
 }
@@ -423,6 +446,9 @@ void IOPage::initUiOutput()
 #ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
     m_webSocketClientTransferUi->setupIO(m_webSocketClientTransfer);
     m_webSocketServerTransferUi->setupIO(m_webSocketServerTransfer);
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+    m_chartsUi->setupIO(m_charts);
 #endif
 
     ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
@@ -587,6 +613,9 @@ void IOPage::openCommunication()
 #ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
         connect(m_io, &xTools::Communication::outputBytes, m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::inputBytes);
         connect(m_io, &xTools::Communication::outputBytes, m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::inputBytes);
+#endif
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+        connect(m_io, &xTools::Communication::outputBytes, m_charts, &xTools::Charts::inputBytes);
 #endif
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
