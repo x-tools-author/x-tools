@@ -25,6 +25,7 @@ struct ChartsUiDataKeys
 {
     const QString dataType{"dataType"};
     const QString channels{"channels"};
+    const QString legendVisible{"legendVisible"};
 
     const QString channelName{"channelName"};
     const QString channelVisible{"channelVisible"};
@@ -61,6 +62,7 @@ private:
     void onNewPoints(const QList<QPointF> &points);
 
     void onSetDataType(int type);
+    void onSetLegendVisible(bool visible);
     void onClearChannels();
     void onImportChannels();
     void onExportChannels();

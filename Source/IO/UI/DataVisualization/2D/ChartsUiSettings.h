@@ -27,12 +27,18 @@ public:
     ~ChartsUiSettings() override;
 
     static int channelCount();
+
     int dataType();
     void setDataType(int type);
+
+    bool legendVisible();
+    void setLegendVisible(bool visible);
+
     void load(const QVariantMap &parameters);
 
 signals:
     void invokeSetDataType(int type);
+    void invokeSetLegendVisible(bool visible);
     void invokeClearChannels();
     void invokeImportChannels();
     void invokeExportChannels();

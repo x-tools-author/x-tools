@@ -27,7 +27,6 @@
 
 namespace xTools {
 
-
 ChartsUi::ChartsUi(QWidget *parent)
     : AbstractIOUi(parent)
     , ui(new Ui::ChartsUi)
@@ -40,6 +39,17 @@ ChartsUi::ChartsUi(QWidget *parent)
     QWidgetAction *action = new QWidgetAction(m_settingsMenu);
     action->setDefaultWidget(m_settings);
     m_settingsMenu->addAction(action);
+
+    // clang-format off
+    connect(m_settings, &ChartsUiSettings::invokeSetDataType, this, &ChartsUi::onSetDataType);
+    connect(m_settings, &ChartsUiSettings::invokeClearChannels, this, &ChartsUi::onClearChannels);
+    connect(m_settings, &ChartsUiSettings::invokeImportChannels, this, &ChartsUi::onImportChannels);
+    connect(m_settings, &ChartsUiSettings::invokeExportChannels, this, &ChartsUi::onExportChannels);
+    connect(m_settings, &ChartsUiSettings::invokeSetChannelVisible, this, &ChartsUi::onSetChannelVisible);
+    connect(m_settings, &ChartsUiSettings::invokeSetChannelType, this, &ChartsUi::onSetChannelType);
+    connect(m_settings, &ChartsUiSettings::invokeSetChannelColor, this, &ChartsUi::onSetChannelColor);
+    connect(m_settings, &ChartsUiSettings::invokeSetChannelName, this, &ChartsUi::onSetChannelName);
+    // clang-format on
 
     m_axisX = new QValueAxis();
     m_axisX->setRange(0, 100);
@@ -59,7 +69,7 @@ ChartsUi::ChartsUi(QWidget *parent)
         m_chart->addSeries(series);
         series->attachAxis(m_axisX);
         series->attachAxis(m_axisY);
-        series->setName("CH" + QString::number(i + 1));
+        series->setName(tr("Channel") + QString::number(i + 1));
         series->append(QPointF(0, 0));
         series->append(QPointF(100, 100 - 5 * i));
 
@@ -80,6 +90,7 @@ QVariantMap ChartsUi::save() const
 
     ChartsUiDataKeys keys;
     data[keys.dataType] = m_settings->dataType();
+    data[keys.legendVisible] = m_settings->legendVisible();
     QJsonArray channels;
     for (int i = 0; i < m_series.size(); ++i) {
         QJsonObject obj;
@@ -180,13 +191,17 @@ void ChartsUi::onSetDataType(int type)
     }
 }
 
+void ChartsUi::onSetLegendVisible(bool visible)
+{
+    m_chart->legend()->setVisible(visible);
+}
+
 void ChartsUi::onClearChannels()
 {
     for (auto series : m_series) {
         series->clear();
     }
 }
-
 void ChartsUi::onImportChannels() {}
 
 void ChartsUi::onExportChannels() {}

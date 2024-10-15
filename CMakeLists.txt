@@ -251,6 +251,7 @@ if(NOT Qt${QT_VERSION_MAJOR}Charts_FOUND)
 endif()
 if(X_TOOLS_ENABLE_MODULE_CHARTS)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_CHARTS)
+  x_tools_add_xlsx()
 endif()
 
 # --------------------------------------------------------------------------------------------------
@@ -311,7 +312,7 @@ if(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
 endif()
 
 if(X_TOOLS_ENABLE_MODULE_CHARTS)
-  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Charts)
+  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Charts QXlsx)
 endif()
 
 # --------------------------------------------------------------------------------------------------

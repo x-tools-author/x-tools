@@ -109,6 +109,16 @@ void ChartsUiSettings::setDataType(int type)
     }
 }
 
+bool ChartsUiSettings::legendVisible()
+{
+    return ui->checkBoxLegend->isChecked();
+}
+
+void ChartsUiSettings::setLegendVisible(bool visible)
+{
+    ui->checkBoxLegend->setChecked(true);
+}
+
 void ChartsUiSettings::load(const QVariantMap &parameters)
 {
     if (parameters.isEmpty()) {
@@ -122,6 +132,9 @@ void ChartsUiSettings::load(const QVariantMap &parameters)
         qWarning() << "The number of channels is not equal to the number of series.";
         return;
     }
+
+    bool legendVisible = parameters.value(keys.legendVisible).toBool();
+    ui->checkBoxLegend->setChecked(legendVisible);
 
     for (int i = 0; i < channels.size(); ++i) {
         QJsonObject obj = channels[i].toObject();
