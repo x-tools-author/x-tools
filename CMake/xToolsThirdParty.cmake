@@ -41,3 +41,11 @@ function(x_tools_setup_stylesheet target)
   x_tools_add_stylesheet_resources(${target})
   x_tools_add_stylesheet_sources(${target})
 endfunction()
+
+function(x_tools_add_xlsx)
+  set(xlsx "QXlsx-1.4.7")
+  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${xlsx}.zip
+                  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty)
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/${xlsx}/QXlsx/header)
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/${xlsx}/QXlsx)
+endfunction()
