@@ -118,7 +118,7 @@ void ChartsUi::load(const QVariantMap &parameters)
     m_settings->setDataType(parameters.value(keys.dataType).toInt());
     QJsonArray channels = parameters.value(keys.channels).toJsonArray();
 
-    if (channels != m_series.size()) {
+    if (channels.size() != m_series.size()) {
         qWarning() << "The number of channels is not equal to the number of series.";
         return;
     }
