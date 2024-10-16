@@ -206,53 +206,59 @@ void ChartsUi::onClearChannels()
         series->clear();
     }
 }
-void ChartsUi::onImportChannels() {}
+
+void ChartsUi::onImportChannels()
+{
+    const QString fileName = QFileDialog::getOpenFileName(nullptr,
+                                                          tr("Import Data from Excel"),
+                                                          "",
+                                                          "Excel(*.xlsx)");
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    QXlsx::Document xlsx(fileName);
+    QStringList sheetNames = xlsx.sheetNames();
+    for (int i = 0; i < sheetNames.size(); ++i) {
+        xlsx.selectSheet(sheetNames.at(i));
+        QList<QPointF> points;
+        for (int j = 2; j < std::numeric_limits<int>::max(); ++j) {
+            QVariant x = xlsx.read(j, 1);
+            QVariant y = xlsx.read(j, 2);
+            if (x.isNull() && y.isNull()) {
+                break;
+            }
+
+            points.append(QPointF(x.toDouble(), y.toDouble()));
+        }
+
+        if (i < m_series.size()) {
+            m_series[i]->replace(points);
+        }
+    }
+}
 
 void ChartsUi::onExportChannels()
 {
     const QString fileName = QFileDialog::getSaveFileName(nullptr,
-                                                          tr("导出数据"),
+                                                          tr("Export Data to Excel"),
                                                           "data.xlsx",
-                                                          tr("Excel表格(*.xlsx)"));
+                                                          "Excel(*.xlsx)");
     if (fileName.isEmpty()) {
         return;
     }
-#if 0
-    // 保存为18个工作表，每个工作表保存12个通道的数据
+
     QXlsx::Document xlsx;
-    for (int i = 0; i < 18; ++i) {
-        xlsx.addSheet(QString("通道%1-%2").arg(i * 12 + 1).arg(i * 12 + 12));
+    for (int i = 0; i < ChartsUiSettings::channelCount(); ++i) {
+        xlsx.addSheet(m_series.at(i)->name());
         xlsx.selectSheet(i);
-        writeHeader(xlsx);
-        int row = 2;
-        for (int channel = 0; channel < 12; ++channel) {
-            int cookedChannelIndex = i * 12 + channel;
-            if (cookedChannelIndex >= channelMap.size()
-                || cookedChannelIndex >= testingDataMap.size()) {
-                continue;
-            }
+        xlsx.write(1, 1, "x");
+        xlsx.write(1, 2, "y");
 
-            const QVector<QPointF> &data = testingDataMap[cookedChannelIndex];
-            if (data.isEmpty()) {
-                continue;
-            }
-
-            const QString sensorSN = channelMap[cookedChannelIndex].first;
-            const QString boardSN = channelMap[cookedChannelIndex].second;
-            const SensorContext ctx = decodeSensorSN(sensorSN);
-            for (int i = 0; i < data.size(); ++i) {
-                const QString x = QDateTime::fromMSecsSinceEpoch(data[i].x())
-                                      .toString(m_dateTimeFormat);
-                xlsx.write(row, 1, cookedChannelIndex + 1);
-                xlsx.write(row, 2, ctx.batchNumber);
-                xlsx.write(row, 3, ctx.chipCode);
-                xlsx.write(row, 4, ctx.groupCode);
-                xlsx.write(row, 5, QString::number(ctx.positionCode.toInt()));
-                xlsx.write(row, 6, boardSN);
-                xlsx.write(row, 7, x);
-                xlsx.write(row, 8, data[i].y());
-                row += 1;
-            }
+        QList<QPointF> points = m_series.at(i)->points();
+        for (int j = 0; j < points.size(); ++j) {
+            xlsx.write(j + 2, 1, points.at(j).x());
+            xlsx.write(j + 2, 2, points.at(j).y());
         }
     }
 
@@ -262,7 +268,6 @@ void ChartsUi::onExportChannels()
     } else {
         qDebug() << "Failed to save file!";
     }
-#endif
 }
 
 void ChartsUi::onNewPoints(const QList<QPointF> &points)
