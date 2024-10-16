@@ -34,6 +34,9 @@ public:
     bool legendVisible();
     void setLegendVisible(bool visible);
 
+    int cachePoints();
+    void setCachePoints(int points);
+
     void load(const QVariantMap &parameters);
 
 signals:

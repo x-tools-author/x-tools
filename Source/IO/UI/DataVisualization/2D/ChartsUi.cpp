@@ -79,6 +79,8 @@ ChartsUi::ChartsUi(QWidget *parent)
 
         m_series.append(series);
     }
+
+    m_settings->load(ChartsUi::save());
 }
 
 ChartsUi::~ChartsUi()
@@ -95,6 +97,7 @@ QVariantMap ChartsUi::save() const
     ChartsUiDataKeys keys;
     data[keys.dataType] = m_settings->dataType();
     data[keys.legendVisible] = m_settings->legendVisible();
+    data[keys.cachePoints] = m_settings->cachePoints();
     QJsonArray channels;
     for (int i = 0; i < m_series.size(); ++i) {
         QJsonObject obj;
@@ -185,6 +188,10 @@ void ChartsUi::onNewValues(const QList<double> &values)
     int count = qMin(values.size(), m_series.size());
     for (int i = 0; i < count; ++i) {
         m_series[i]->append(QPointF(m_series[i]->count(), values[i]));
+
+        if (m_settings->cachePoints() > 0 && m_series[i]->count() > m_settings->cachePoints()) {
+            m_series[i]->remove(0);
+        }
     }
 }
 

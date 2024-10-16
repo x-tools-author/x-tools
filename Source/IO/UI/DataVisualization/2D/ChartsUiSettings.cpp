@@ -123,6 +123,16 @@ void ChartsUiSettings::setLegendVisible(bool visible)
     ui->checkBoxLegend->setChecked(true);
 }
 
+int ChartsUiSettings::cachePoints()
+{
+    return ui->spinBoxCachePoints->value();
+}
+
+void ChartsUiSettings::setCachePoints(int points)
+{
+    ui->spinBoxCachePoints->setValue(points);
+}
+
 void ChartsUiSettings::load(const QVariantMap &parameters)
 {
     if (parameters.isEmpty()) {
@@ -139,6 +149,9 @@ void ChartsUiSettings::load(const QVariantMap &parameters)
 
     bool legendVisible = parameters.value(keys.legendVisible).toBool();
     ui->checkBoxLegend->setChecked(legendVisible);
+
+    int cachePoints = parameters.value(keys.cachePoints).toInt();
+    ui->spinBoxCachePoints->setValue(cachePoints);
 
     for (int i = 0; i < channels.size(); ++i) {
         QJsonObject obj = channels[i].toObject();
@@ -186,7 +199,6 @@ void ChartsUiSettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
 void ChartsUiSettings::setupColorButton(QPushButton *button, int channelIndex)
 {
     m_channelContexts[channelIndex].colorButton = button;
-    button->setFlat(true);
     button->setStyleSheet("background-color: rgb(0, 0, 255);");
 
     connect(button, &QPushButton::clicked, this, [=]() {

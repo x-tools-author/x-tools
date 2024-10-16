@@ -133,7 +133,7 @@ public:
             return;
         }
 
-        int value = index.data(Qt::EditRole).toInt();
+        int value = index.data(Qt::UserRole).toInt();
         lineEdit->setText(QString::number(value));
     }
 
@@ -1200,6 +1200,7 @@ void ModbusAssistant::updateClientTableViewAddress(QTableView *view, int startAd
         QModelIndex index = model->index(row, 0);
         QMap<int, QVariant> roles;
         roles.insert(Qt::DisplayRole, text);
+        roles.insert(Qt::UserRole, address);
         model->setItemData(index, roles);
 
         QStandardItem *item = model->item(row, 0);

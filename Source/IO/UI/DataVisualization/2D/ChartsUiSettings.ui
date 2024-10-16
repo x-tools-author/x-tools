@@ -14,27 +14,37 @@
    <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="6">
-    <widget class="QPushButton" name="pushButtonExport">
-     <property name="text">
-      <string>Export</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="1">
     <widget class="QComboBox" name="comboBoxDataType"/>
    </item>
-   <item row="0" column="3">
+   <item row="0" column="6">
+    <widget class="QPushButton" name="pushButtonClear">
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
     <widget class="Line" name="line_2">
      <property name="orientation">
       <enum>Qt::Orientation::Vertical</enum>
      </property>
     </widget>
    </item>
-   <item row="0" column="4">
-    <widget class="QPushButton" name="pushButtonClear">
-     <property name="text">
-      <string>Clear</string>
+   <item row="2" column="0" colspan="10">
+    <widget class="QWidget" name="widgetControl" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="10">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -45,14 +55,35 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="8">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+   <item row="0" column="8">
+    <widget class="QPushButton" name="pushButtonExport">
+     <property name="text">
+      <string>Export</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QCheckBox" name="checkBoxLegend">
+     <property name="text">
+      <string>Legend</string>
      </property>
     </widget>
    </item>
    <item row="0" column="7">
+    <widget class="QPushButton" name="pushButtonImport">
+     <property name="text">
+      <string>Import</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Cache points</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="9">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Orientation::Horizontal</enum>
@@ -65,27 +96,16 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="0" colspan="8">
-    <widget class="QWidget" name="widgetControl" native="true">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+   <item row="0" column="4">
+    <widget class="QSpinBox" name="spinBoxCachePoints">
+     <property name="minimum">
+      <number>1</number>
      </property>
-    </widget>
-   </item>
-   <item row="0" column="5">
-    <widget class="QPushButton" name="pushButtonImport">
-     <property name="text">
-      <string>Import</string>
+     <property name="maximum">
+      <number>102400</number>
      </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QCheckBox" name="checkBoxLegend">
-     <property name="text">
-      <string>Legend</string>
+     <property name="value">
+      <number>1024</number>
      </property>
     </widget>
    </item>
