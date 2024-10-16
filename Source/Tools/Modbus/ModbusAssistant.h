@@ -42,6 +42,7 @@ private:
     QStandardItemModel *m_clientRegisterModel{Q_NULLPTR};
     ModbusSettingKeys *m_keyCtx;
     QTableView *m_clientView{nullptr};
+    int m_textFormat{0};
 
 private:
     void initComponents();
@@ -113,15 +114,15 @@ private:
     QTableView *createTableView(int rowCount, QTableView *tableView);
 
     void updateUiState(bool connected);
-    void updateClientTableView();
-    void updateClientTableViewData();
+    void updateClientTableView(int currentFormat, int targetFormat);
+    void updateClientTableViewData(int currentFormat, int targetFormat);
     void updateClientTableViewData(const QList<quint16> &values);
     void updateClientReadWriteButtonState();
     void updateClientParameters();
     void updateClientTableViewAddress(QTableView *view, int startAddress);
     void updateServerParameters();
     bool updateServerMap(QModbusDevice *server);
-    void updateServerRegistersData();
+    void updateServerRegistersViews(int currentFormat, int targetFormat);
 
     quint8 getClientFunctionCode();
     QList<quint16> getClientRegisterValue();
