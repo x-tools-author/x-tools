@@ -117,9 +117,9 @@ private:
     void updateClientTableView(int currentFormat, int targetFormat);
     void updateClientTableViewData(int currentFormat, int targetFormat);
     void updateClientTableViewData(const QList<quint16> &values);
+    void updateClientTableViewAddress(QTableView *view, int startAddress);
     void updateClientReadWriteButtonState();
     void updateClientParameters();
-    void updateClientTableViewAddress(QTableView *view, int startAddress);
     void updateServerParameters();
     bool updateServerMap(QModbusDevice *server);
     void updateServerRegistersViews(int currentFormat, int targetFormat);
