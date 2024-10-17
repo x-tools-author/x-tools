@@ -633,6 +633,10 @@ void IOPage::openCommunication()
 #endif
         // clang-format on
 
+#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+        m_charts->load(m_chartsUi->save());
+#endif
+
         QVariantMap parameters = m_ioUi->save();
         m_ioUi->setupIO(m_io);
         m_io->load(parameters);

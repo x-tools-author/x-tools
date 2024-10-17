@@ -70,8 +70,9 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     for (int i = 0; i < channelNumber; ++i) {
         int row = i + 1;
         QString str = QString::number(row);
+        auto *label = new QLabel(str, this);
+        parametersGridLayout->addWidget(label, row, 0, Qt::AlignCenter);
 
-        parametersGridLayout->addWidget(new QLabel(str, this), row, 0, Qt::AlignCenter);
         auto *visibleCheckedBox = new QCheckBox(this);
         parametersGridLayout->addWidget(visibleCheckedBox, row, 1, Qt::AlignCenter);
         setupVisibleCheckBox(visibleCheckedBox, i);
@@ -140,18 +141,24 @@ void ChartsUiSettings::load(const QVariantMap &parameters)
     }
 
     ChartsUiDataKeys keys;
+
     setDataType(parameters.value(keys.dataType).toInt());
-    QJsonArray channels = parameters.value(keys.channels).toJsonArray();
-    if (channels.count() != m_channelContexts.size()) {
-        qWarning() << "The number of channels is not equal to the number of series.";
-        return;
-    }
 
     bool legendVisible = parameters.value(keys.legendVisible).toBool();
     ui->checkBoxLegend->setChecked(legendVisible);
 
     int cachePoints = parameters.value(keys.cachePoints).toInt();
     ui->spinBoxCachePoints->setValue(cachePoints);
+
+    QJsonArray channels = parameters.value(keys.channels).toJsonArray();
+    int channelCount = channels.count();
+    int contextCount = m_channelContexts.size();
+    if (channels.count() != m_channelContexts.size()) {
+        qWarning("The number(%d) of channels is not equal to the number of series(%d).",
+                 channelCount,
+                 contextCount);
+        return;
+    }
 
     for (int i = 0; i < channels.size(); ++i) {
         QJsonObject obj = channels[i].toObject();
@@ -166,6 +173,11 @@ void ChartsUiSettings::load(const QVariantMap &parameters)
         int index = m_channelContexts[i].typeComboBox->findData(type);
         m_channelContexts[i].typeComboBox->setCurrentIndex(index);
     }
+}
+
+void ChartsUiSettings::updateUiState(bool ioIsOpened)
+{
+    ui->comboBoxDataType->setEnabled(!ioIsOpened);
 }
 
 void ChartsUiSettings::setupVisibleCheckBox(QCheckBox *checkBox, int channelIndex)

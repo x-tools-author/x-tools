@@ -148,7 +148,11 @@ void MainWindow::initToolMenu()
     m_toolMenu = new QMenu(tr("&Tools"));
     menuBar()->insertMenu(m_languageMenu->menuAction(), m_toolMenu);
 
-    for (auto& type : AssistantFactory::instance()->supportedAssistants()) {
+    QList<int> supportedAssistants = AssistantFactory::instance()->supportedAssistants();
+    QMenu* newMenu = m_toolMenu->addMenu(tr("New"));
+    m_toolMenu->addSeparator();
+
+    for (auto& type : supportedAssistants) {
         QString name = AssistantFactory::instance()->assistantName(type);
         auto* action = new QAction(name, this);
         QWidget* assistant = AssistantFactory::instance()->newAssistant(type);
@@ -163,6 +167,18 @@ void MainWindow::initToolMenu()
             } else {
                 assistant->activateWindow();
             }
+        });
+
+        action = new QAction(name, this);
+        newMenu->addAction(action);
+        connect(action, &QAction::triggered, this, [=]() {
+            QWidget* assistant = AssistantFactory::instance()->newAssistant(type);
+            if (!assistant) {
+                return;
+            }
+
+            assistant->setAttribute(Qt::WA_DeleteOnClose, true);
+            assistant->show();
         });
     }
 }

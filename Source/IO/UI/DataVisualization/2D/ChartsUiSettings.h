@@ -38,6 +38,7 @@ public:
     void setCachePoints(int points);
 
     void load(const QVariantMap &parameters);
+    void updateUiState(bool ioIsOpened);
 
 signals:
     void invokeSetDataType(int type);

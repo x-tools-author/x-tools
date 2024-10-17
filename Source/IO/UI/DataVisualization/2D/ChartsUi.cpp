@@ -12,6 +12,7 @@
 #include <QChartView>
 #include <QCheckBox>
 #include <QFileDialog>
+#include <QGraphicsLayout>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QLineSeries>
@@ -20,11 +21,13 @@
 #include <QPushButton>
 #include <QScatterSeries>
 #include <QSplineSeries>
+#include <QStyleHints>
 #include <QTimer>
 #include <QWidgetAction>
 
 #include <xlsxdocument.h>
 
+#include "App/Settings.h"
 #include "ChartsUiSettings.h"
 #include "IO/IO/DataVisualization/2D/Charts.h"
 
@@ -36,6 +39,9 @@ ChartsUi::ChartsUi(QWidget *parent)
 {
     ui->setupUi(this);
     ui->widgetChartView->setContentsMargins(0, 0, 0, 0);
+    ui->widgetChartView->setRenderHint(QPainter::Antialiasing);
+    ui->widgetChartView->setAttribute(Qt::WA_TranslucentBackground);
+    ui->widgetChartView->viewport()->setAttribute(Qt::WA_TranslucentBackground);
 
     m_settings = new ChartsUiSettings();
     m_settingsMenu = new QMenu(this);
@@ -63,17 +69,26 @@ ChartsUi::ChartsUi(QWidget *parent)
     m_chart = new QChart();
     m_chart->addAxis(m_axisX, Qt::AlignBottom);
     m_chart->addAxis(m_axisY, Qt::AlignLeft);
+    m_chart->layout()->setContentsMargins(0, 0, 0, 0);
+    m_chart->setMargins(QMargins(0, 0, 0, 0));
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+    auto currentScheme = Settings::instance()->colorScheme();
+    if (currentScheme == static_cast<int>(Qt::ColorScheme::Dark)) {
+        m_chart->setTheme(QChart::ChartThemeDark);
+    } else if (currentScheme == static_cast<int>(Qt::ColorScheme::Light)) {
+        m_chart->setTheme(QChart::ChartThemeLight);
+    }
+#endif
 
     ui->widgetChartView->setChart(m_chart);
-    ui->widgetChartView->setRenderHint(QPainter::Antialiasing);
-
     int channelCount = ChartsUiSettings::channelCount();
     for (int i = 0; i < channelCount; ++i) {
         QLineSeries *series = new QLineSeries();
         m_chart->addSeries(series);
         series->attachAxis(m_axisX);
         series->attachAxis(m_axisY);
-        series->setName(tr("Channel") + QString::number(i + 1));
+        series->setName(QString::number(i + 1));
         series->append(QPointF(0, 0));
         series->append(QPointF(100, 100 - 5 * i));
 
@@ -105,6 +120,7 @@ QVariantMap ChartsUi::save() const
         obj[keys.channelVisible] = m_series[i]->isVisible();
         obj[keys.channelColor] = m_series[i]->color().name();
         obj[keys.channelType] = m_series[i]->type();
+        channels.append(obj);
     }
 
     data[keys.channels] = channels;
@@ -118,7 +134,7 @@ void ChartsUi::load(const QVariantMap &parameters)
     }
 
     ChartsUiDataKeys keys;
-    m_settings->setDataType(parameters.value(keys.dataType).toInt());
+    m_settings->load(parameters);
     QJsonArray channels = parameters.value(keys.channels).toJsonArray();
 
     if (channels.size() != m_series.size()) {
@@ -176,6 +192,12 @@ void ChartsUi::setupIO(AbstractIO *io)
     auto cookedType = static_cast<Qt::ConnectionType>(type);
     connect(charts, &Charts::newValues, this, &ChartsUi::onNewValues, cookedType);
     connect(charts, &Charts::newPoints, this, &ChartsUi::onNewPoints, cookedType);
+    connect(io, &xTools::AbstractIO::started, this, [this]() {
+        this->m_settings->updateUiState(true);
+    });
+    connect(io, &xTools::AbstractIO::finished, this, [this]() {
+        this->m_settings->updateUiState(false);
+    });
 }
 
 QMenu *ChartsUi::settingsMenu() const
