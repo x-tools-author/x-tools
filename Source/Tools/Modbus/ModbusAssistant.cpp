@@ -388,7 +388,8 @@ void ModbusAssistant::initSettingsClientOperations()
     if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
         ui->lineEditStartAddress->setText(QString::number(start));
     } else {
-        ui->lineEditStartAddress->setText(QString::number(start, 16));
+        QString str = QString("%1").arg(QString::number(start, 16), 4, '0');
+        ui->lineEditStartAddress->setText(str);
     }
 
     int number = m_settings->value(m_keyCtx->addressNumber).toInt();
@@ -841,8 +842,7 @@ void ModbusAssistant::onSendClicked()
 
 void ModbusAssistant::onDateWritten(QModbusDataUnit::RegisterType table, int address, int size)
 {
-    qInfo() << "Data written:"
-            << "table:" << table << "start address:" << address << "size:" << size;
+    qInfo() << "tx:" << "table:" << table << "start:" << address << "size:" << size;
     QTableView *tv = getTableView(table);
     QStandardItemModel *model = qobject_cast<QStandardItemModel *>(tv->model());
     QModbusServer *server = qobject_cast<QModbusServer *>(m_modbusDevice);
@@ -850,15 +850,17 @@ void ModbusAssistant::onDateWritten(QModbusDataUnit::RegisterType table, int add
     size = qMin<int>(data.count(), size);
     for (int i = 0; i < size; i++) {
         int row = address + i;
-        int base = 16;
+        int base = m_textFormat == static_cast<int>(xTools::xIO::TextFormat::Hex) ? 16 : 10;
         int width = base == 2 ? 16 : (base == 10 ? 5 : 4);
         int value = data.at(i);
-        QString cooked_str = QString::number(value, base);
-        cooked_str = cooked_str.rightJustified(width, '0', true);
+        QString cookedStr = QString::number(value, base);
         QStandardItem *item = model->item(row, 1);
         if (item) {
-            item->setData(cooked_str, Qt::DisplayRole);
-            item->setTextAlignment(Qt::AlignCenter);
+            if (base == 16) {
+                item->setText(cookedStr.toUpper().rightJustified(width, '0'));
+            } else {
+                item->setText(cookedStr);
+            }
         }
     }
 
@@ -1232,7 +1234,11 @@ QList<quint16> ModbusAssistant::getClientRegisterValue()
         QStandardItem *item = m_clientRegisterModel->item(row, 1);
         if (item) {
             QString text = item->text();
-            values.append(text.toInt(Q_NULLPTR, 16));
+            if (m_textFormat == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+                values.append(text.toInt());
+            } else {
+                values.append(text.toInt(Q_NULLPTR, 16));
+            }
         } else {
             values.append(0);
         }
