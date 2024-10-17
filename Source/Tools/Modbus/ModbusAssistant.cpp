@@ -1037,7 +1037,7 @@ void ModbusAssistant::updateClientTableViewData(int currentFormat, int targetFor
     QList<quint16> values;
     for (int i = 0; i < row; i++) {
         auto item = m_clientRegisterModel->item(i, 1);
-        if (item) {
+        if (!item) {
             continue;
         }
 
