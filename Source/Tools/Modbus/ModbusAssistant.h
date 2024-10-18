@@ -49,10 +49,10 @@ private:
     void initComponentDevices();
     void initComponentAddress();
     void initComponentPortName();
-    void initComponnetBaudRate();
-    void initComponnetDataBits();
-    void initComponnetStopBits();
-    void initComponnetParity();
+    void initComponentBaudRate();
+    void initComponentDataBits();
+    void initComponentStopBits();
+    void initComponentParity();
     void initComponentFunctionCode();
     void initComponentRegisterTableView();
     void initComponentInput();

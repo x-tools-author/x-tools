@@ -156,10 +156,10 @@ void ModbusAssistant::initComponents()
     initComponentDevices();
     initComponentAddress();
     initComponentPortName();
-    initComponnetBaudRate();
-    initComponnetDataBits();
-    initComponnetStopBits();
-    initComponnetParity();
+    initComponentBaudRate();
+    initComponentDataBits();
+    initComponentStopBits();
+    initComponentParity();
     initComponentFunctionCode();
     initComponentRegisterTableView();
     initComponentInput();
@@ -194,7 +194,7 @@ void ModbusAssistant::initComponentPortName()
     }
 }
 
-void ModbusAssistant::initComponnetBaudRate()
+void ModbusAssistant::initComponentBaudRate()
 {
     ui->comboBoxBaudRate->clear();
     QList<qint32> bds = QSerialPortInfo::standardBaudRates();
@@ -203,7 +203,7 @@ void ModbusAssistant::initComponnetBaudRate()
     }
 }
 
-void ModbusAssistant::initComponnetDataBits()
+void ModbusAssistant::initComponentDataBits()
 {
     ui->comboBoxDataBits->clear();
     ui->comboBoxDataBits->addItem("8", QSerialPort::Data8);
@@ -212,7 +212,7 @@ void ModbusAssistant::initComponnetDataBits()
     ui->comboBoxDataBits->addItem("5", QSerialPort::Data5);
 }
 
-void ModbusAssistant::initComponnetStopBits()
+void ModbusAssistant::initComponentStopBits()
 {
     ui->comboBoxStopBits->clear();
     ui->comboBoxStopBits->addItem("1", QSerialPort::OneStop);
@@ -222,7 +222,7 @@ void ModbusAssistant::initComponnetStopBits()
     ui->comboBoxStopBits->addItem("2", QSerialPort::TwoStop);
 }
 
-void ModbusAssistant::initComponnetParity()
+void ModbusAssistant::initComponentParity()
 {
     ui->comboBoxParity->clear();
     ui->comboBoxParity->addItem(tr("NoParity"), QSerialPort::NoParity);
