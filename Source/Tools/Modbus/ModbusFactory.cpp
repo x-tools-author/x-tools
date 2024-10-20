@@ -193,8 +193,10 @@ bool ModbusFactory::setServerData(QModbusDevice *server,
         QModbusServer *modbusServer = qobject_cast<QModbusServer *>(server);
         is_ok = modbusServer->setData(table, address, data);
         if (enableLog) {
+#if 0
             qInfo() << "Set register data result:" << is_ok << "table:" << table
                     << "address:" << address << "data:" << data;
+#endif
         }
     }
 

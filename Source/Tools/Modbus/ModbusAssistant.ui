@@ -624,26 +624,29 @@
         <item row="1" column="1">
          <widget class="QSpinBox" name="spinBoxRepeatTime">
           <property name="minimum">
-           <number>0</number>
+           <number>100</number>
+          </property>
+          <property name="maximum">
+           <number>10000</number>
           </property>
           <property name="value">
-           <number>3</number>
+           <number>1000</number>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
          <widget class="QSpinBox" name="spinBoxTimeout">
           <property name="minimum">
-           <number>500</number>
+           <number>0</number>
           </property>
           <property name="maximum">
-           <number>10000</number>
+           <number>10</number>
           </property>
           <property name="singleStep">
-           <number>100</number>
+           <number>1</number>
           </property>
           <property name="value">
-           <number>500</number>
+           <number>3</number>
           </property>
          </widget>
         </item>
