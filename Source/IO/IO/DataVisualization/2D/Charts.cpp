@@ -35,8 +35,7 @@ void Charts::run()
     connect(this, &Charts::input2run, timer, [&tmp](const QByteArray &bytes) { tmp.append(bytes); });
     connect(timer, &QTimer::timeout, timer, [&tmp, this, timer] {
         QVariantMap parameters = save();
-        ChartDataKeys keys;
-        int dataFormat = parameters.value(keys.dataFormat).toInt();
+        int dataFormat = parameters.value("dataType").toInt();
         if (dataFormat == static_cast<int>(DataFormat::BinaryY)) {
             handleBinaryY(tmp);
         } else if (dataFormat == static_cast<int>(DataFormat::TextY)) {
@@ -46,6 +45,7 @@ void Charts::run()
         } else if (dataFormat == static_cast<int>(DataFormat::TextXY)) {
             handleTextXY(tmp);
         } else {
+            qWarning() << "Invalid data format!";
             emit outputBytes(QByteArray("Invalid data format!"));
         }
 
@@ -70,6 +70,7 @@ void Charts::handleBinaryY(QByteArray &bytes)
         bytes.remove(0, index + m_binaryTail.size());
 
         if (yOfPoints.size() % 4 != 0) {
+            qWarning() << "Data error: " << yOfPoints;
             emit outputBytes(QByteArray("Data error: ") + yOfPoints);
             continue;
         }
@@ -93,14 +94,15 @@ void Charts::handleTextY(QByteArray &bytes)
 
         QString str = QString::fromLatin1(yOfPoints);
         if (str.isEmpty()) {
+            qWarning() << "Data error: " << yOfPoints;
             emit outputBytes(QByteArray("Data error: ") + yOfPoints);
             continue;
         }
 
-        QStringList yList = str.split(',');
+        QStringList yList = str.split(',', Qt::SkipEmptyParts);
         QList<double> values;
         for (const QString &y : yList) {
-            values.append(y.toDouble());
+            values.append(y.trimmed().toDouble());
         }
         emit newValues(values);
     }
@@ -148,7 +150,7 @@ void Charts::handleTextXY(QByteArray &bytes)
         QStringList xyList = str.split(',');
         QList<QPointF> points;
         for (int i = 0; i < xyList.size(); i += 2) {
-            points.append(QPointF(xyList.at(i).toDouble(), xyList.at(i + 1).toDouble()));
+            points.append(QPointF(xyList.at(i).trimmed().toDouble(), xyList.at(i + 1).toDouble()));
         }
         emit newPoints(points);
     }

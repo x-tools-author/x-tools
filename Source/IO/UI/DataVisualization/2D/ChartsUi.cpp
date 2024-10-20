@@ -205,18 +205,6 @@ QMenu *ChartsUi::settingsMenu() const
     return m_settingsMenu;
 }
 
-void ChartsUi::onNewValues(const QList<double> &values)
-{
-    int count = qMin(values.size(), m_series.size());
-    for (int i = 0; i < count; ++i) {
-        m_series[i]->append(QPointF(m_series[i]->count(), values[i]));
-
-        if (m_settings->cachePoints() > 0 && m_series[i]->count() > m_settings->cachePoints()) {
-            m_series[i]->remove(0);
-        }
-    }
-}
-
 void ChartsUi::onSetDataType(int type)
 {
     if (m_io) {
@@ -234,6 +222,9 @@ void ChartsUi::onClearChannels()
     for (auto series : m_series) {
         series->clear();
     }
+
+    m_axisX->setRange(0, 100);
+    m_axisY->setRange(0, 100);
 }
 
 void ChartsUi::onImportChannels()
@@ -299,11 +290,56 @@ void ChartsUi::onExportChannels()
     }
 }
 
+void ChartsUi::onNewValues(const QList<double> &values)
+{
+    int count = qMin(values.size(), m_series.size());
+    for (int i = 0; i < count; ++i) {
+        double value = values[i];
+        QXYSeries *series = m_series[i];
+        series->append(QPointF(series->count(), value));
+        if (m_settings->cachePoints() > 0 && series->count() > m_settings->cachePoints()) {
+            series->remove(0);
+        }
+
+        if (value > m_axisY->max()) {
+            m_axisY->setMax(value + value * 0.1);
+        }
+
+        if (value < m_axisY->min()) {
+            m_axisY->setMin(value - value * 0.1);
+        };
+
+        if (series->count() > m_axisX->max()) {
+            m_axisX->setMax(series->count() + 1);
+        }
+    }
+}
+
 void ChartsUi::onNewPoints(const QList<QPointF> &points)
 {
     int count = qMin(points.size(), m_series.size());
     for (int i = 0; i < count; ++i) {
         m_series[i]->append(points[i]);
+
+        if (m_settings->cachePoints() > 0 && m_series[i]->count() > m_settings->cachePoints()) {
+            m_series[i]->remove(0);
+        }
+
+        if (points[i].y() > m_axisY->max()) {
+            m_axisY->setMax(points[i].y() + points[i].y() * 0.1);
+        }
+
+        if (points[i].y() < m_axisY->min()) {
+            m_axisY->setMin(points[i].y() - points[i].y() * 0.1);
+        }
+
+        if (points[i].x() > m_axisX->max()) {
+            m_axisX->setMax(points[i].x() + points[i].x() * 0.1);
+        }
+
+        if (points[i].x() < m_axisX->min()) {
+            m_axisX->setMin(points[i].x() - points[i].x() * 0.1);
+        }
     }
 }
 

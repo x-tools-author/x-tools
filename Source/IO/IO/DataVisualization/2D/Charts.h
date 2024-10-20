@@ -12,11 +12,6 @@
 
 namespace xTools {
 
-struct ChartDataKeys
-{
-    const QString dataFormat{"dataFormat"};
-};
-
 class Charts : public AbstractIO
 {
     Q_OBJECT
