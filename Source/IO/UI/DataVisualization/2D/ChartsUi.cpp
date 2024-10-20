@@ -82,6 +82,7 @@ ChartsUi::ChartsUi(QWidget *parent)
 #endif
 
     ui->widgetChartView->setChart(m_chart);
+#ifdef QT_DEBUG
     int channelCount = ChartsUiSettings::channelCount();
     for (int i = 0; i < channelCount; ++i) {
         QLineSeries *series = new QLineSeries();
@@ -94,6 +95,7 @@ ChartsUi::ChartsUi(QWidget *parent)
 
         m_series.append(series);
     }
+#endif
 
     m_settings->load(ChartsUi::save());
 }
