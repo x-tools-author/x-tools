@@ -370,7 +370,9 @@ void MainWindow::showQrCode()
     auto* tabWidget = new QTabWidget(&dialog);
     for (auto& var : qrCodeInfoList) {
         auto* label = new QLabel(tabWidget);
-        label->setPixmap(QPixmap::fromImage(QImage(var.qrCode)));
+        QPixmap pix = QPixmap::fromImage(QImage(var.qrCode));
+        pix = pix.scaledToWidth(400, Qt::SmoothTransformation);
+        label->setPixmap(pix);
         tabWidget->addTab(label, var.title);
     }
 
