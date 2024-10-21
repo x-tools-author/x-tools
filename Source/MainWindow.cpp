@@ -263,17 +263,31 @@ void MainWindow::initHelpMenu()
 {
 #if defined(Q_OS_WIN) && !defined(X_TOOLS_ENABLE_MODULE_PRIVATE)
     m_helpMenu->addSeparator();
-    m_helpMenu->addAction(QIcon(":/Resources/Icons/IconBuy.svg"),
-                          tr("Buy Ultimate Edition"),
-                          this,
-                          []() {
-                              QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
-                              QDesktopServices::openUrl(url);
-                          });
+    m_helpMenu->addAction(QIcon(":/Resources/Icons/IconBuy.svg"), tr("Bug from Store"), this, []() {
+        QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
+        QDesktopServices::openUrl(url);
+    });
 #endif
     m_helpMenu->addSeparator();
     m_helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
     m_helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
+    m_helpMenu->addSeparator();
+    // clang-format off
+    QList<QPair<QString, QString>> ctxs;
+    ctxs.append(qMakePair("glog", "https://github.com/google/glog"));
+    ctxs.append(qMakePair("hidapi", "https://github.com/libusb/hidapi"));
+    ctxs.append(qMakePair("libqrencode", "https://github.com/libusb/hidapi"));
+    ctxs.append(qMakePair("qmdnsengine", "https://github.com/nitroshare/qmdnsengine"));
+    ctxs.append(qMakePair("Qt-Advanced-Stylesheets", "https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets"));
+    ctxs.append(qMakePair("QXlsx", "https://github.com/QtExcel/QXlsx"));
+    QMenu* thirdPartyMenu = m_helpMenu->addMenu(tr("Third Party Open Source"));
+    for (auto& ctx : ctxs) {
+        thirdPartyMenu->addAction(ctx.first, this, [ctx]() {
+            QDesktopServices::openUrl(QUrl(ctx.second));
+        });
+    }
+    m_helpMenu->addMenu(thirdPartyMenu);
+    // clang-format on
 }
 
 void MainWindow::initLinksMenu()
