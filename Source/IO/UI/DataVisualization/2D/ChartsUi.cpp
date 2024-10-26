@@ -369,13 +369,28 @@ void ChartsUi::onSetChannelType(int channelIndex, int type)
             }
 
             if (newSeries) {
-                newSeries->setName(m_series[channelIndex]->name());
-                newSeries->setVisible(m_series[channelIndex]->isVisible());
-                newSeries->setColor(m_series[channelIndex]->color());
-
-                m_series[channelIndex]->setParent(nullptr);
-                m_series[channelIndex]->deleteLater();
+                auto *oldSeries = m_series[channelIndex];
                 m_series[channelIndex] = newSeries;
+                m_chart->addSeries(newSeries);
+
+                newSeries->setName(oldSeries->name());
+                newSeries->setVisible(oldSeries->isVisible());
+                newSeries->setColor(oldSeries->color());
+                newSeries->replace(oldSeries->points());
+                newSeries->attachAxis(m_axisX);
+                newSeries->attachAxis(m_axisY);
+
+                oldSeries->setParent(nullptr);
+                oldSeries->deleteLater();
+                oldSeries = newSeries;
+
+                for (auto series : m_series) {
+                    m_chart->removeSeries(series);
+                }
+
+                for (auto series : m_series) {
+                    m_chart->addSeries(series);
+                }
             }
         }
     }
