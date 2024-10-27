@@ -24,6 +24,7 @@ namespace xTools {
 struct ChartsUiDataKeys
 {
     const QString dataType{"dataType"};
+    const QString testData{"testData"};
     const QString channels{"channels"};
     const QString legendVisible{"legendVisible"};
     const QString cachePoints{"cachePoints"};

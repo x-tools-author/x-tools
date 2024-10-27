@@ -31,11 +31,35 @@ void Charts::run()
 {
     QByteArray tmp;
     QTimer *timer = new QTimer();
+    m_testAngle = 0;
 
-    connect(this, &Charts::input2run, timer, [&tmp](const QByteArray &bytes) { tmp.append(bytes); });
-    connect(timer, &QTimer::timeout, timer, [&tmp, this, timer] {
-        QVariantMap parameters = save();
-        int dataFormat = parameters.value("dataType").toInt();
+    QVariantMap parameters = save();
+    int dataFormat = parameters.value("dataType").toInt();
+    bool isTestData = parameters.value("testData").toBool();
+    connect(this, &Charts::input2run, timer, [&tmp, this, isTestData](const QByteArray &bytes) {
+        if (!isTestData) {
+            tmp.append(bytes);
+        }
+    });
+
+    if (isTestData) {
+        connect(timer, &QTimer::timeout, timer, [&tmp, this, timer, dataFormat]() {
+            if (dataFormat == static_cast<int>(DataFormat::BinaryY)) {
+                tmp.append(handleBinaryY());
+            } else if (dataFormat == static_cast<int>(DataFormat::TextY)) {
+                tmp.append(handleTextY());
+            } else if (dataFormat == static_cast<int>(DataFormat::BinaryXY)) {
+                tmp.append(handleBinaryXY());
+            } else if (dataFormat == static_cast<int>(DataFormat::TextXY)) {
+                tmp.append(handleTextXY());
+            } else {
+                qWarning() << "Invalid data format(test data)!";
+                emit outputBytes(QByteArray("Invalid data format(test data)!"));
+            }
+        });
+    }
+
+    connect(timer, &QTimer::timeout, timer, [&tmp, this, timer, dataFormat] {
         if (dataFormat == static_cast<int>(DataFormat::BinaryY)) {
             handleBinaryY(tmp);
         } else if (dataFormat == static_cast<int>(DataFormat::TextY)) {
@@ -51,7 +75,6 @@ void Charts::run()
 
         timer->start();
     });
-
     timer->setSingleShot(true);
     timer->setInterval(50);
     timer->start();
@@ -60,6 +83,59 @@ void Charts::run()
 
     timer->stop();
     timer->deleteLater();
+}
+
+QByteArray Charts::handleBinaryY()
+{
+    QByteArray bytes;
+    for (int i = 0; i < 16; ++i) {
+        float y = 10 * (i + 1) * qSin(m_testAngle * 3.1415926 / 180.0);
+        bytes.append(reinterpret_cast<const char *>(&y), sizeof(y));
+    };
+
+    bytes.append(m_binaryTail);
+    m_testAngle += 1;
+    return bytes;
+}
+
+QByteArray Charts::handleTextY()
+{
+    QString str;
+    for (int i = 0; i < 16; ++i) {
+        qreal y = 10 * (i + 1) * qSin(m_testAngle * 3.1415926 / 180.0);
+        str.append(QString::number(y, 'f', 3) + (i == 15 ? "" : ","));
+    };
+
+    str = str.trimmed();
+    str.append("\n");
+    m_testAngle += 1;
+    return str.toUtf8();
+}
+
+QByteArray Charts::handleBinaryXY()
+{
+    QByteArray bytes;
+    for (int i = 0; i < 16; ++i) {
+        float y = 10 * (i + 1) * qSin(m_testAngle * 3.1415926 / 180.0);
+        bytes.append(reinterpret_cast<const char *>(&y), sizeof(y));
+    };
+
+    bytes.append(m_binaryTail);
+    m_testAngle += 1;
+    return bytes;
+}
+
+QByteArray Charts::handleTextXY()
+{
+    QByteArray bytes;
+    for (int i = 0; i < 16; ++i) {
+        qreal y = 10 * (i + 1) * qSin(m_testAngle * 3.1415926 / 180.0);
+        bytes.append(reinterpret_cast<const char *>(&y), sizeof(y));
+    };
+
+    bytes.append(m_binaryTail);
+    m_testAngle += 1;
+    return bytes;
 }
 
 void Charts::handleBinaryY(QByteArray &bytes)
@@ -86,7 +162,7 @@ void Charts::handleBinaryY(QByteArray &bytes)
 
 void Charts::handleTextY(QByteArray &bytes)
 {
-    // 1.000, 2.000, 3.000, 4.000, 5.000\n
+    // 1.000,2.000,3.000,4.000,5.000\n
     while (bytes.indexOf('\n') != -1 && !bytes.isEmpty()) {
         int index = bytes.indexOf('\n');
         QByteArray yOfPoints = bytes.left(index);

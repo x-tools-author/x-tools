@@ -32,6 +32,11 @@ signals:
 protected:
     void run() override;
 
+    QByteArray handleBinaryY();
+    QByteArray handleTextY();
+    QByteArray handleBinaryXY();
+    QByteArray handleTextXY();
+
     void handleBinaryY(QByteArray &bytes);
     void handleTextY(QByteArray &bytes);
     void handleBinaryXY(QByteArray &bytes);
@@ -41,6 +46,7 @@ protected:
 
 private:
     const QByteArray m_binaryTail;
+    int m_testAngle{0};
 };
 
 } // namespace xTools

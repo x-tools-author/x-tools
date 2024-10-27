@@ -34,9 +34,11 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     ui->checkBoxLegend->setChecked(true);
     QComboBox *cb = ui->comboBoxDataType;
     cb->addItem(tr("Binary") + "-Y", static_cast<int>(Charts::DataFormat::BinaryY));
-    cb->addItem(tr("Binary") + "-XY", static_cast<int>(Charts::DataFormat::BinaryXY));
     cb->addItem(tr("Text") + "-Y", static_cast<int>(Charts::DataFormat::TextY));
+#if 0
+    cb->addItem(tr("Binary") + "-XY", static_cast<int>(Charts::DataFormat::BinaryXY));
     cb->addItem(tr("Text") + "-XY", static_cast<int>(Charts::DataFormat::TextXY));
+#endif
     connect(ui->comboBoxDataType, &QComboBox::currentIndexChanged, this, [=]() {
         emit this->invokeSetDataType(ui->comboBoxDataType->currentData().toInt());
     });
@@ -61,7 +63,9 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     QGridLayout *parametersGridLayout = new QGridLayout(ui->widgetControl);
     parametersGridLayout->addWidget(new QLabel(tr("Channel"), this), 0, 0, Qt::AlignCenter);
     parametersGridLayout->addWidget(new QLabel(tr("Visible"), this), 0, 1, Qt::AlignCenter);
-    parametersGridLayout->addWidget(new QLabel(tr("Type"), this), 0, 2, Qt::AlignCenter);
+    auto *typeLabel = new QLabel(tr("Type"), this);
+    parametersGridLayout->addWidget(typeLabel, 0, 2, Qt::AlignCenter);
+    typeLabel->hide();
     parametersGridLayout->addWidget(new QLabel(tr("Color"), this), 0, 3, Qt::AlignCenter);
     parametersGridLayout->addWidget(new QLabel(tr("Name"), this), 0, 4, Qt::AlignCenter);
 
@@ -80,6 +84,7 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
         auto *typeComboBox = new QComboBox(this);
         parametersGridLayout->addWidget(typeComboBox, row, 2, Qt::AlignCenter);
         setupTypeComboBox(typeComboBox, i);
+        typeComboBox->hide();
 
         auto *colorButton = new QPushButton(this);
         parametersGridLayout->addWidget(colorButton, row, 3, Qt::AlignCenter);

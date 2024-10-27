@@ -64,14 +64,13 @@ ChartsUi::ChartsUi(QWidget *parent)
     m_axisX = new QValueAxis();
     m_axisX->setRange(0, 100);
     m_axisY = new QValueAxis();
-    m_axisY->setRange(0, 100);
+    m_axisY->setRange(0, 1);
 
     m_chart = new QChart();
     m_chart->addAxis(m_axisX, Qt::AlignBottom);
     m_chart->addAxis(m_axisY, Qt::AlignLeft);
     m_chart->layout()->setContentsMargins(0, 0, 0, 0);
     m_chart->setMargins(QMargins(0, 0, 0, 0));
-
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     auto currentScheme = Settings::instance()->colorScheme();
     if (currentScheme == static_cast<int>(Qt::ColorScheme::Dark)) {
@@ -82,7 +81,6 @@ ChartsUi::ChartsUi(QWidget *parent)
 #endif
 
     ui->widgetChartView->setChart(m_chart);
-#ifdef QT_DEBUG
     int channelCount = ChartsUiSettings::channelCount();
     for (int i = 0; i < channelCount; ++i) {
         QLineSeries *series = new QLineSeries();
@@ -90,12 +88,9 @@ ChartsUi::ChartsUi(QWidget *parent)
         series->attachAxis(m_axisX);
         series->attachAxis(m_axisY);
         series->setName(QString::number(i + 1));
-        series->append(QPointF(0, 0));
-        series->append(QPointF(100, 100 - 5 * i));
-
+        series->setUseOpenGL(true);
         m_series.append(series);
     }
-#endif
 
     m_settings->load(ChartsUi::save());
 }
@@ -151,14 +146,14 @@ void ChartsUi::load(const QVariantMap &parameters)
         int type = obj.value(keys.channelType).toInt();
         bool visible = channels[i].toObject().value(keys.channelVisible).toBool();
 
-        m_series[i]->setName(name);
-        m_series[i]->setVisible(visible);
-        m_series[i]->setColor(color);
-        if (type != m_series[i]->type()) {
+        QXYSeries *oldSeries = m_series[i];
+        oldSeries->setName(name);
+        oldSeries->setVisible(visible);
+        oldSeries->setColor(color);
+        if (type != oldSeries->type()) {
             QXYSeries *newSeries = nullptr;
             if (type == QAbstractSeries::SeriesType::SeriesTypeLine) {
                 newSeries = new QLineSeries();
-                m_chart->addSeries(m_series[i]);
             } else if (type == QAbstractSeries::SeriesType::SeriesTypeSpline) {
                 newSeries = new QSplineSeries();
             } else if (type == QAbstractSeries::SeriesType::SeriesTypeScatter) {
@@ -171,10 +166,15 @@ void ChartsUi::load(const QVariantMap &parameters)
                 newSeries->setName(name);
                 newSeries->setVisible(visible);
                 newSeries->setColor(color);
+                newSeries->replace(oldSeries->points());
+                newSeries->attachAxis(m_axisX);
+                newSeries->attachAxis(m_axisY);
+                newSeries->setUseOpenGL(true);
 
-                m_series[i]->setParent(nullptr);
-                m_series[i]->deleteLater();
-                m_series[i] = newSeries;
+                m_chart->removeSeries(oldSeries);
+                oldSeries->setParent(nullptr);
+                oldSeries->deleteLater();
+                oldSeries = newSeries;
             }
         }
     }
@@ -196,6 +196,7 @@ void ChartsUi::setupIO(AbstractIO *io)
     connect(charts, &Charts::newPoints, this, &ChartsUi::onNewPoints, cookedType);
     connect(io, &xTools::AbstractIO::started, this, [this]() {
         this->m_settings->updateUiState(true);
+        onClearChannels();
     });
     connect(io, &xTools::AbstractIO::finished, this, [this]() {
         this->m_settings->updateUiState(false);
@@ -226,7 +227,7 @@ void ChartsUi::onClearChannels()
     }
 
     m_axisX->setRange(0, 100);
-    m_axisY->setRange(0, 100);
+    m_axisY->setRange(0, 1);
 }
 
 void ChartsUi::onImportChannels()
@@ -298,21 +299,27 @@ void ChartsUi::onNewValues(const QList<double> &values)
     for (int i = 0; i < count; ++i) {
         double value = values[i];
         QXYSeries *series = m_series[i];
-        series->append(QPointF(series->count(), value));
+
+        QPointF pos = QPointF(series->count(), value);
+        series->append(pos);
+
         if (m_settings->cachePoints() > 0 && series->count() > m_settings->cachePoints()) {
-            series->remove(0);
+            if (pos.x() > m_axisX->max()) {
+                m_axisX->setMax(pos.x());
+                m_axisX->setMin(pos.x() - m_settings->cachePoints());
+            }
         }
 
         if (value > m_axisY->max()) {
-            m_axisY->setMax(value + value * 0.1);
+            m_axisY->setMax(value);
         }
 
         if (value < m_axisY->min()) {
-            m_axisY->setMin(value - value * 0.1);
+            m_axisY->setMin(value);
         };
 
-        if (series->count() > m_axisX->max()) {
-            m_axisX->setMax(series->count() + 1);
+        if (pos.x() > m_axisX->max()) {
+            m_axisX->setMax(pos.x());
         }
     }
 }
@@ -379,6 +386,7 @@ void ChartsUi::onSetChannelType(int channelIndex, int type)
                 newSeries->replace(oldSeries->points());
                 newSeries->attachAxis(m_axisX);
                 newSeries->attachAxis(m_axisY);
+                newSeries->setUseOpenGL(true);
 
                 oldSeries->setParent(nullptr);
                 oldSeries->deleteLater();
