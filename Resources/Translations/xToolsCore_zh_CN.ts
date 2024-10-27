@@ -709,34 +709,47 @@
     </message>
 </context>
 <context>
+    <name>ChartsTestUi</name>
+    <message>
+        <location filename="../../Source/IO/UI/Communication/ChartsTestUi.ui" line="38"/>
+        <source>Format</source>
+        <translation>数据格式</translation>
+    </message>
+    <message>
+        <location filename="../../Source/IO/UI/Communication/ChartsTestUi.ui" line="48"/>
+        <source>Channels</source>
+        <translation>通道数量</translation>
+    </message>
+</context>
+<context>
     <name>ChartsUiSettings</name>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="35"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="125"/>
         <source>Clear</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="42"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="132"/>
         <source>Export</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="49"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="139"/>
         <source>Import</source>
         <translation>导入</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="92"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="58"/>
         <source>Data type</source>
         <translation>数据类型</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="102"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="68"/>
         <source>Legend</source>
         <translation>显示图例</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="109"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="75"/>
         <source>Cache points</source>
         <translation>缓存点数</translation>
     </message>
@@ -1307,13 +1320,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/MainWindow.cpp" line="132"/>
-        <location filename="../../Source/MainWindow.cpp" line="449"/>
+        <location filename="../../Source/MainWindow.cpp" line="451"/>
         <source>Import Parameters</source>
         <translation>导入参数</translation>
     </message>
     <message>
         <location filename="../../Source/MainWindow.cpp" line="137"/>
-        <location filename="../../Source/MainWindow.cpp" line="462"/>
+        <location filename="../../Source/MainWindow.cpp" line="464"/>
         <source>Export Parameters</source>
         <translation>导出参数</translation>
     </message>
@@ -1430,8 +1443,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Qt技术交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="451"/>
-        <location filename="../../Source/MainWindow.cpp" line="464"/>
+        <location filename="../../Source/MainWindow.cpp" line="453"/>
+        <location filename="../../Source/MainWindow.cpp" line="466"/>
         <source>Json Files (*.json)</source>
         <translation>Json文件(*.json)</translation>
     </message>
@@ -2011,17 +2024,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../Source/App/xTools.cpp" line="75"/>
+        <location filename="../../Source/App/xTools.cpp" line="35"/>
+        <source>Critical Error</source>
+        <translation>严重错误</translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/xTools.cpp" line="36"/>
+        <source>The application has been crashed, clear settings file(all settings data of the application will be clear!) and reboot the application?</source>
+        <translation>软件已崩溃，是否清空缓存后重启软件？</translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/xTools.cpp" line="109"/>
         <source>(Store)</source>
         <translation>（商店）</translation>
     </message>
     <message>
-        <location filename="../../Source/App/xTools.cpp" line="160"/>
+        <location filename="../../Source/App/xTools.cpp" line="198"/>
         <source>Neet to Reboot</source>
         <translation>需要重启</translation>
     </message>
     <message>
-        <location filename="../../Source/App/xTools.cpp" line="161"/>
+        <location filename="../../Source/App/xTools.cpp" line="199"/>
         <source>The operation need to reboot to effectived, reboot the applicaion now?</source>
         <translation>该操作需要重启软件生效，是否立即重启？</translation>
     </message>
@@ -2039,83 +2062,88 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">该操作需要重启软件生效，是否立即重启？</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="59"/>
+        <location filename="../../Source/IO/xIO.cpp" line="60"/>
         <source>Serial Port</source>
         <translation>串口助手</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="61"/>
+        <location filename="../../Source/IO/xIO.cpp" line="62"/>
         <source>BLE Central</source>
         <translation>蓝牙助手</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="63"/>
+        <location filename="../../Source/IO/xIO.cpp" line="64"/>
         <source>BLE Peripheral</source>
         <translation>BLE外围设备</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="65"/>
+        <location filename="../../Source/IO/xIO.cpp" line="66"/>
         <source>UDP Client</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="67"/>
+        <location filename="../../Source/IO/xIO.cpp" line="68"/>
         <source>UDP Server</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="69"/>
+        <location filename="../../Source/IO/xIO.cpp" line="70"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="71"/>
+        <location filename="../../Source/IO/xIO.cpp" line="72"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="73"/>
+        <location filename="../../Source/IO/xIO.cpp" line="74"/>
         <source>WebSocket Client</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="75"/>
+        <location filename="../../Source/IO/xIO.cpp" line="76"/>
         <source>WebSocket Server</source>
         <translation>WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="115"/>
+        <location filename="../../Source/IO/xIO.cpp" line="78"/>
+        <source>Charts Test</source>
+        <translation>图表测试</translation>
+    </message>
+    <message>
+        <location filename="../../Source/IO/xIO.cpp" line="118"/>
         <source>Binary</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="117"/>
+        <location filename="../../Source/IO/xIO.cpp" line="120"/>
         <source>Octal</source>
         <translation>八进制</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="119"/>
+        <location filename="../../Source/IO/xIO.cpp" line="122"/>
         <source>Decimal</source>
         <translation>10进制</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="121"/>
+        <location filename="../../Source/IO/xIO.cpp" line="124"/>
         <source>Hexadecimal</source>
         <translation>16进制</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="123"/>
+        <location filename="../../Source/IO/xIO.cpp" line="126"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="125"/>
+        <location filename="../../Source/IO/xIO.cpp" line="128"/>
         <source>UTF-8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="273"/>
-        <location filename="../../Source/IO/xIO.cpp" line="332"/>
+        <location filename="../../Source/IO/xIO.cpp" line="276"/>
+        <location filename="../../Source/IO/xIO.cpp" line="335"/>
         <source>None</source>
         <translation>无</translation>
     </message>
@@ -2519,14 +2547,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xTools::ChartsTest</name>
+    <message>
+        <location filename="../../Source/IO/IO/Communication/ChartsTest.cpp" line="37"/>
+        <source>ChartsTest</source>
+        <translation>图表测试</translation>
+    </message>
+</context>
+<context>
     <name>xTools::ChartsUi</name>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="235"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="236"/>
         <source>Import Data from Excel</source>
         <translation>从Excel表格导入</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="266"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="267"/>
         <source>Export Data to Excel</source>
         <translation>导出至Excel表格</translation>
     </message>
@@ -2535,54 +2571,54 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xTools::ChartsUiSettings</name>
     <message>
         <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="36"/>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="37"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="39"/>
         <source>Binary</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="38"/>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="39"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="37"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="40"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="62"/>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="228"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="64"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="233"/>
         <source>Channel</source>
         <translation>通道</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="63"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="65"/>
         <source>Visible</source>
         <translation>可见</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="64"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="66"/>
         <source>Type</source>
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="65"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="69"/>
         <source>Color</source>
         <translation>颜色</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="66"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="70"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="239"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="244"/>
         <source>Line</source>
         <translation>折线</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="241"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="246"/>
         <source>Spline</source>
         <translation>曲线</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="243"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="248"/>
         <source>Scatter</source>
         <translation>散点图</translation>
     </message>
@@ -3144,98 +3180,102 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::xIO</name>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="371"/>
+        <location filename="../../Source/IO/xIO.cpp" line="374"/>
+        <location filename="../../Source/IO/xIO.cpp" line="829"/>
+        <location filename="../../Source/IO/xIO.cpp" line="831"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="373"/>
+        <location filename="../../Source/IO/xIO.cpp" line="376"/>
+        <location filename="../../Source/IO/xIO.cpp" line="825"/>
+        <location filename="../../Source/IO/xIO.cpp" line="827"/>
         <source>Binary</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="408"/>
+        <location filename="../../Source/IO/xIO.cpp" line="411"/>
         <source>Echo</source>
         <translation>回显</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="409"/>
+        <location filename="../../Source/IO/xIO.cpp" line="412"/>
         <source>Always</source>
         <translation>总是</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="410"/>
+        <location filename="../../Source/IO/xIO.cpp" line="413"/>
         <source>Input Equal Reference</source>
         <translation>输入等于参考</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="411"/>
+        <location filename="../../Source/IO/xIO.cpp" line="414"/>
         <source>Input Contain Reference</source>
         <translation>输入包含参考</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="413"/>
+        <location filename="../../Source/IO/xIO.cpp" line="416"/>
         <source>Input Does not Contain Reference</source>
         <translation>输入不包含参考</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="670"/>
-        <location filename="../../Source/IO/xIO.cpp" line="688"/>
+        <location filename="../../Source/IO/xIO.cpp" line="673"/>
+        <location filename="../../Source/IO/xIO.cpp" line="691"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="671"/>
+        <location filename="../../Source/IO/xIO.cpp" line="674"/>
         <source>Even</source>
         <translation>偶校验</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="672"/>
+        <location filename="../../Source/IO/xIO.cpp" line="675"/>
         <source>Odd</source>
         <translation>奇校验</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="673"/>
+        <location filename="../../Source/IO/xIO.cpp" line="676"/>
         <source>Space</source>
         <translation>空格</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="674"/>
+        <location filename="../../Source/IO/xIO.cpp" line="677"/>
         <source>Mark</source>
         <translation>标记校验</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="690"/>
+        <location filename="../../Source/IO/xIO.cpp" line="693"/>
         <source>RTS/CTS</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="691"/>
+        <location filename="../../Source/IO/xIO.cpp" line="694"/>
         <source>X-ON/X-OFF</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="693"/>
+        <location filename="../../Source/IO/xIO.cpp" line="696"/>
         <source>Hardware</source>
         <translation>硬件</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="694"/>
+        <location filename="../../Source/IO/xIO.cpp" line="697"/>
         <source>Software</source>
         <translation>软件</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="787"/>
+        <location filename="../../Source/IO/xIO.cpp" line="790"/>
         <source>Disabled</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="789"/>
+        <location filename="../../Source/IO/xIO.cpp" line="792"/>
         <source>Bidirectional</source>
         <translation>双向</translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="791"/>
+        <location filename="../../Source/IO/xIO.cpp" line="794"/>
         <source>Unidirectional</source>
         <translation>单项</translation>
     </message>

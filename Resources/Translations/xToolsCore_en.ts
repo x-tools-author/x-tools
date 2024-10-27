@@ -709,34 +709,47 @@
     </message>
 </context>
 <context>
+    <name>ChartsTestUi</name>
+    <message>
+        <location filename="../../Source/IO/UI/Communication/ChartsTestUi.ui" line="38"/>
+        <source>Format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/IO/UI/Communication/ChartsTestUi.ui" line="48"/>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChartsUiSettings</name>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="35"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="125"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="42"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="132"/>
         <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="49"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="139"/>
         <source>Import</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="92"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="58"/>
         <source>Data type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="102"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="68"/>
         <source>Legend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="109"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.ui" line="75"/>
         <source>Cache points</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1307,13 +1320,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/MainWindow.cpp" line="132"/>
-        <location filename="../../Source/MainWindow.cpp" line="449"/>
+        <location filename="../../Source/MainWindow.cpp" line="451"/>
         <source>Import Parameters</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/MainWindow.cpp" line="137"/>
-        <location filename="../../Source/MainWindow.cpp" line="462"/>
+        <location filename="../../Source/MainWindow.cpp" line="464"/>
         <source>Export Parameters</source>
         <translation></translation>
     </message>
@@ -1394,8 +1407,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/MainWindow.cpp" line="451"/>
-        <location filename="../../Source/MainWindow.cpp" line="464"/>
+        <location filename="../../Source/MainWindow.cpp" line="453"/>
+        <location filename="../../Source/MainWindow.cpp" line="466"/>
         <source>Json Files (*.json)</source>
         <translation></translation>
     </message>
@@ -1971,17 +1984,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../Source/App/xTools.cpp" line="75"/>
+        <location filename="../../Source/App/xTools.cpp" line="35"/>
+        <source>Critical Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/xTools.cpp" line="36"/>
+        <source>The application has been crashed, clear settings file(all settings data of the application will be clear!) and reboot the application?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/App/xTools.cpp" line="109"/>
         <source>(Store)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/xTools.cpp" line="160"/>
+        <location filename="../../Source/App/xTools.cpp" line="198"/>
         <source>Neet to Reboot</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/App/xTools.cpp" line="161"/>
+        <location filename="../../Source/App/xTools.cpp" line="199"/>
         <source>The operation need to reboot to effectived, reboot the applicaion now?</source>
         <translation></translation>
     </message>
@@ -1991,83 +2014,88 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="59"/>
+        <location filename="../../Source/IO/xIO.cpp" line="60"/>
         <source>Serial Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="61"/>
+        <location filename="../../Source/IO/xIO.cpp" line="62"/>
         <source>BLE Central</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="63"/>
+        <location filename="../../Source/IO/xIO.cpp" line="64"/>
         <source>BLE Peripheral</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="65"/>
+        <location filename="../../Source/IO/xIO.cpp" line="66"/>
         <source>UDP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="67"/>
+        <location filename="../../Source/IO/xIO.cpp" line="68"/>
         <source>UDP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="69"/>
+        <location filename="../../Source/IO/xIO.cpp" line="70"/>
         <source>TCP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="71"/>
+        <location filename="../../Source/IO/xIO.cpp" line="72"/>
         <source>TCP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="73"/>
+        <location filename="../../Source/IO/xIO.cpp" line="74"/>
         <source>WebSocket Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="75"/>
+        <location filename="../../Source/IO/xIO.cpp" line="76"/>
         <source>WebSocket Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="115"/>
+        <location filename="../../Source/IO/xIO.cpp" line="78"/>
+        <source>Charts Test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/IO/xIO.cpp" line="118"/>
         <source>Binary</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="117"/>
+        <location filename="../../Source/IO/xIO.cpp" line="120"/>
         <source>Octal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="119"/>
+        <location filename="../../Source/IO/xIO.cpp" line="122"/>
         <source>Decimal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="121"/>
+        <location filename="../../Source/IO/xIO.cpp" line="124"/>
         <source>Hexadecimal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="123"/>
+        <location filename="../../Source/IO/xIO.cpp" line="126"/>
         <source>ASCII</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="125"/>
+        <location filename="../../Source/IO/xIO.cpp" line="128"/>
         <source>UTF-8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="273"/>
-        <location filename="../../Source/IO/xIO.cpp" line="332"/>
+        <location filename="../../Source/IO/xIO.cpp" line="276"/>
+        <location filename="../../Source/IO/xIO.cpp" line="335"/>
         <source>None</source>
         <translation></translation>
     </message>
@@ -2471,14 +2499,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xTools::ChartsTest</name>
+    <message>
+        <location filename="../../Source/IO/IO/Communication/ChartsTest.cpp" line="37"/>
+        <source>ChartsTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>xTools::ChartsUi</name>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="235"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="236"/>
         <source>Import Data from Excel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="266"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="267"/>
         <source>Export Data to Excel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2487,54 +2523,54 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xTools::ChartsUiSettings</name>
     <message>
         <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="36"/>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="37"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="39"/>
         <source>Binary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="38"/>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="39"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="37"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="40"/>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="62"/>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="228"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="64"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="233"/>
         <source>Channel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="63"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="65"/>
         <source>Visible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="64"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="66"/>
         <source>Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="65"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="69"/>
         <source>Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="66"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="70"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="239"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="244"/>
         <source>Line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="241"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="246"/>
         <source>Spline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="243"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUiSettings.cpp" line="248"/>
         <source>Scatter</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3080,98 +3116,102 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::xIO</name>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="371"/>
+        <location filename="../../Source/IO/xIO.cpp" line="374"/>
+        <location filename="../../Source/IO/xIO.cpp" line="829"/>
+        <location filename="../../Source/IO/xIO.cpp" line="831"/>
         <source>Text</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="373"/>
+        <location filename="../../Source/IO/xIO.cpp" line="376"/>
+        <location filename="../../Source/IO/xIO.cpp" line="825"/>
+        <location filename="../../Source/IO/xIO.cpp" line="827"/>
         <source>Binary</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="408"/>
+        <location filename="../../Source/IO/xIO.cpp" line="411"/>
         <source>Echo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="409"/>
+        <location filename="../../Source/IO/xIO.cpp" line="412"/>
         <source>Always</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="410"/>
+        <location filename="../../Source/IO/xIO.cpp" line="413"/>
         <source>Input Equal Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="411"/>
+        <location filename="../../Source/IO/xIO.cpp" line="414"/>
         <source>Input Contain Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="413"/>
+        <location filename="../../Source/IO/xIO.cpp" line="416"/>
         <source>Input Does not Contain Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="670"/>
-        <location filename="../../Source/IO/xIO.cpp" line="688"/>
+        <location filename="../../Source/IO/xIO.cpp" line="673"/>
+        <location filename="../../Source/IO/xIO.cpp" line="691"/>
         <source>None</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="671"/>
+        <location filename="../../Source/IO/xIO.cpp" line="674"/>
         <source>Even</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="672"/>
+        <location filename="../../Source/IO/xIO.cpp" line="675"/>
         <source>Odd</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="673"/>
+        <location filename="../../Source/IO/xIO.cpp" line="676"/>
         <source>Space</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="674"/>
+        <location filename="../../Source/IO/xIO.cpp" line="677"/>
         <source>Mark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="690"/>
+        <location filename="../../Source/IO/xIO.cpp" line="693"/>
         <source>RTS/CTS</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="691"/>
+        <location filename="../../Source/IO/xIO.cpp" line="694"/>
         <source>X-ON/X-OFF</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="693"/>
+        <location filename="../../Source/IO/xIO.cpp" line="696"/>
         <source>Hardware</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="694"/>
+        <location filename="../../Source/IO/xIO.cpp" line="697"/>
         <source>Software</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="787"/>
+        <location filename="../../Source/IO/xIO.cpp" line="790"/>
         <source>Disabled</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="789"/>
+        <location filename="../../Source/IO/xIO.cpp" line="792"/>
         <source>Bidirectional</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="791"/>
+        <location filename="../../Source/IO/xIO.cpp" line="794"/>
         <source>Unidirectional</source>
         <translation></translation>
     </message>
