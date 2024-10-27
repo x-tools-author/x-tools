@@ -25,6 +25,7 @@
 #include "Communication/WebSocketClient.h"
 #include "Communication/WebSocketServer.h"
 #endif
+#include "Communication/ChartsTest.h"
 
 namespace xTools {
 
@@ -61,6 +62,8 @@ Communication *IOFactory::createDevice(int type)
     case static_cast<int>(xIO::CommunicationType::WebSocketServer):
         return new WebSocketServer(QCoreApplication::instance());
 #endif
+    case static_cast<int>(xIO::CommunicationType::ChartsTest):
+        return new ChartsTest(QCoreApplication::instance());
     default:
         qWarning("Unknown device type:%d", type);
         return nullptr;

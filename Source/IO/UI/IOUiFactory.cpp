@@ -25,6 +25,7 @@
 #include "Communication/WebSocketClientUi.h"
 #include "Communication/WebSocketServerUi.h"
 #endif
+#include "Communication/ChartsTestUi.h"
 
 namespace xTools {
 
@@ -60,6 +61,8 @@ CommunicationUi *IOUiFactory::createDeviceUi(int type)
         return new WebSocketClientUi();
     case static_cast<int>(xIO::CommunicationType::WebSocketServer):
         return new WebSocketServerUi();
+    case static_cast<int>(xIO::CommunicationType::ChartsTest):
+        return new ChartsTestUi();
 #endif
     default:
         return nullptr;

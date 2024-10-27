@@ -32,9 +32,11 @@ public:
         WebSocketClient,
         WebSocketServer,
         //------------------------------------------------------------------------------------------
-        Hid,
+        Hid = 0x00200000,
         SctpClient,
         SctpServer,
+        //------------------------------------------------------------------------------------------
+        ChartsTest = 0x00300000,
     };
     Q_ENUM(CommunicationType);
     static QList<int> supportedCommunicationTypes();
@@ -196,6 +198,13 @@ public:
     static QList<int> supportedTransferTypes();
     static QString transferTypeName(int type);
     static void setupTransferType(QComboBox *comboBox);
+
+    /**********************************************************************************************/
+    enum class ChartsDataFormat { BinaryY, BinaryXY, TextY, TextXY };
+    Q_ENUM(ChartsDataFormat);
+    static QList<int> supportedChartsDataFormats();
+    static QString chartsDataFormatName(int format);
+    static void setupChartsDataFormat(QComboBox *comboBox);
 };
 
 } // namespace xTools

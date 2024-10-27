@@ -47,6 +47,7 @@ QList<int> xIO::supportedCommunicationTypes()
         deviceTypes << static_cast<int>(CommunicationType::WebSocketClient);
         deviceTypes << static_cast<int>(CommunicationType::WebSocketServer);
 #endif
+        deviceTypes << static_cast<int>(CommunicationType::ChartsTest);
     }
 
     return deviceTypes;
@@ -73,6 +74,8 @@ QString xIO::communicationName(int type)
         return QObject::tr("WebSocket Client");
     case static_cast<int>(CommunicationType::WebSocketServer):
         return QObject::tr("WebSocket Server");
+    case static_cast<int>(CommunicationType::ChartsTest):
+        return QObject::tr("Charts Test");
     default:
         return "Unknown";
     }
@@ -801,6 +804,43 @@ void xIO::setupTransferType(QComboBox *comboBox)
     auto types = supportedTransferTypes();
     for (const auto &type : types) {
         comboBox->addItem(transferTypeName(type), type);
+    }
+}
+
+QList<int> xIO::supportedChartsDataFormats()
+{
+    static QList<int> formats = {
+        static_cast<int>(ChartsDataFormat::BinaryY),
+        //static_cast<int>(ChartsDataFormat::BinaryXY),
+        static_cast<int>(ChartsDataFormat::TextY),
+        //static_cast<int>(ChartsDataFormat::TextXY),
+    };
+
+    return formats;
+}
+
+QString xIO::chartsDataFormatName(int format)
+{
+    if (format == static_cast<int>(ChartsDataFormat::BinaryY)) {
+        return tr("Binary") + "-Y";
+    } else if (format == static_cast<int>(ChartsDataFormat::BinaryXY)) {
+        return tr("Binary") + "-XY";
+    } else if (format == static_cast<int>(ChartsDataFormat::TextY)) {
+        return tr("Text") + "-Y";
+    } else if (format == static_cast<int>(ChartsDataFormat::TextXY)) {
+        return tr("Text") + "-XY";
+    } else {
+        return "Unknown";
+    }
+}
+
+void xIO::setupChartsDataFormat(QComboBox *comboBox)
+{
+    comboBox->clear();
+
+    auto formats = supportedChartsDataFormats();
+    for (const auto &format : formats) {
+        comboBox->addItem(chartsDataFormatName(format), format);
     }
 }
 
