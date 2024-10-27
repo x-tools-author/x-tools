@@ -243,7 +243,7 @@ void MainWindow::initOptionMenuSettingsMenu()
     auto clearAction = new QAction(tr("Clear Settings"), this);
     menu->addAction(clearAction);
     connect(clearAction, &QAction::triggered, this, [=]() {
-        Settings::instance()->clear();
+        Settings::instance()->setClearSettings(true);
         tryToReboot();
     });
 
