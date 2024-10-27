@@ -804,6 +804,8 @@ void IOPage::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     header = header.trimmed();
     header = QString("<font color=silver>[%1]</font>").arg(header);
     QString outputText = QString("%1 %2").arg(header, text);
+    outputText = outputText.replace("\r", "\\r");
+    outputText = outputText.replace("\n", "\\n");
     if (m_outputSettings->isEnableFilter()) {
         QString filter = m_outputSettings->filterText();
         if (outputText.contains(filter)) {
