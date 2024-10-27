@@ -11,6 +11,8 @@
 
 ![xTools.gif](Doc/Images/xTools.gif)
 
+![charts.gif](Doc/Images/charts.gif)
+
 ## Dark theme
 
 ![xToolsDark.png](Doc/Images/xToolsDark.png)
