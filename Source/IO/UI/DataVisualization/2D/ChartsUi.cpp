@@ -216,6 +216,11 @@ QWidget *ChartsUi::settingsWidget()
     return m_settings;
 }
 
+void ChartsUi::updateChartsTheme(bool darkMode)
+{
+    m_chart->setTheme(darkMode ? QChart::ChartThemeDark : QChart::ChartThemeLight);
+}
+
 void ChartsUi::onSetDataType(int type)
 {
     if (m_io) {

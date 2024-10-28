@@ -49,6 +49,7 @@ public:
 
     QMenu *settingsMenu();
     QWidget *settingsWidget();
+    void updateChartsTheme(bool darkMode);
 
 private:
     Ui::ChartsUi *ui;
