@@ -44,10 +44,6 @@ ChartsUi::ChartsUi(QWidget *parent)
     ui->widgetChartView->viewport()->setAttribute(Qt::WA_TranslucentBackground);
 
     m_settings = new ChartsUiSettings();
-    m_settingsMenu = new QMenu(this);
-    QWidgetAction *action = new QWidgetAction(m_settingsMenu);
-    action->setDefaultWidget(m_settings);
-    m_settingsMenu->addAction(action);
 
     // clang-format off
     connect(m_settings, &ChartsUiSettings::invokeSetDataType, this, &ChartsUi::onSetDataType);
@@ -174,7 +170,7 @@ void ChartsUi::load(const QVariantMap &parameters)
                 m_chart->removeSeries(oldSeries);
                 oldSeries->setParent(nullptr);
                 oldSeries->deleteLater();
-                oldSeries = newSeries;
+                oldSeries = nullptr;
             }
         }
     }
@@ -203,9 +199,21 @@ void ChartsUi::setupIO(AbstractIO *io)
     });
 }
 
-QMenu *ChartsUi::settingsMenu() const
+QMenu *ChartsUi::settingsMenu()
 {
+    if (!m_settingsMenu) {
+        m_settingsMenu = new QMenu(this);
+        QWidgetAction *action = new QWidgetAction(m_settingsMenu);
+        action->setDefaultWidget(m_settings);
+        m_settingsMenu->addAction(action);
+    }
+
     return m_settingsMenu;
+}
+
+QWidget *ChartsUi::settingsWidget()
+{
+    return m_settings;
 }
 
 void ChartsUi::onSetDataType(int type)
