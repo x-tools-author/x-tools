@@ -47,12 +47,14 @@ public:
     void load(const QVariantMap &parameters) override;
     void setupIO(AbstractIO *io) override;
 
-    QMenu *settingsMenu() const;
+    QMenu *settingsMenu();
+    QWidget *settingsWidget();
+    void updateChartsTheme(bool darkMode);
 
 private:
     Ui::ChartsUi *ui;
     ChartsUiSettings *m_settings;
-    QMenu *m_settingsMenu;
+    QMenu *m_settingsMenu{nullptr};
     QList<QXYSeries *> m_series;
     QChart *m_chart;
     QValueAxis *m_axisX;
