@@ -2509,12 +2509,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::ChartsUi</name>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="236"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="249"/>
         <source>Import Data from Excel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="267"/>
+        <location filename="../../Source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="280"/>
         <source>Export Data to Excel</source>
         <translation type="unfinished"></translation>
     </message>
