@@ -5,13 +5,6 @@ add_compile_definitions(X_TOOLS_GITHUB_REPOSITORY_URL="https://github.com/x-tool
 
 set(X_TOOLS_BINARY_DIR ${CMAKE_BINARY_DIR}/assets)
 
-# Set the suffix of the library.
-if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-  set(X_TOOLS_FILE_SUFFIX "")
-else()
-  set(X_TOOLS_FILE_SUFFIX "d")
-endif()
-
 # Unzip file and import it as a sub module.
 function(x_tools_add_third_party zip_file_name_without_suffix)
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${zip_file_name_without_suffix}.zip
@@ -63,22 +56,13 @@ function(x_tools_add_executable target sources)
               "${CMAKE_BINARY_DIR}/android-build/libs/${ANDROID_ABI}/$<TARGET_FILE_NAME:${target}>")
   endif()
 
-  x_tools_copy_glog(${target})
-  x_tools_set_target_properties(${target})
-
-  if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(${target})
-  endif()
-endfunction()
-
-function(x_tools_set_target_properties target)
   set_target_properties(
     ${target}
-    PROPERTIES ${BUNDLE_ID_OPTION} MACOSX_BUNDLE_BUNDLE_VERSION
-               ${PROJECT_VERSION} MACOSX_BUNDLE_SHORT_VERSION_STRING
-               ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} MACOSX_BUNDLE
-               TRUE WIN32_EXECUTABLE
-               TRUE)
+    PROPERTIES # MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appuntitled3
+               MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+               MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+               MACOSX_BUNDLE TRUE
+               WIN32_EXECUTABLE TRUE)
 endfunction()
 
 function(x_tools_tar_target target)
@@ -92,12 +76,6 @@ function(x_tools_tar_target target)
       POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E tar "cf" ${TAR_FILE_NAME}.zip "--format=zip" ${target}
       WORKING_DIRECTORY ${X_TOOLS_BINARY_DIR})
-  endif()
-endfunction()
-
-function(x_tools_finalize_executable target)
-  if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(${target})
   endif()
 endfunction()
 
