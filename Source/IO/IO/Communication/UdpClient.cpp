@@ -24,13 +24,15 @@ QObject *UdpClient::initDevice()
         m_udpSocket->deleteLater();
         m_udpSocket = nullptr;
     }
-#if 0
+#if 1
     if (!m_udpSocket->bind(QHostAddress(m_clientAddress), m_clientPort)) {
         qWarning() << "Failed to bind to address" << m_clientAddress << "and port" << m_clientPort
                    << ":" << m_udpSocket->errorString();
         m_udpSocket->deleteLater();
         m_udpSocket = nullptr;
         return nullptr;
+    } else {
+        qInfo() << "UDP client address:" << m_clientAddress << "port:" << m_clientPort;
     }
 #endif
 
