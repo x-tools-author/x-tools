@@ -118,6 +118,19 @@ void CommunicationSettings::load(const QVariantMap &data)
     ui->comboBoxMaxBytes->setCurrentIndex(index);
 }
 
+void CommunicationSettings::addWidgets(QList<QWidget *> widgets)
+{
+    auto *layout = this->layout();
+    if (!layout) {
+        qWarning() << "No layout found";
+        return;
+    }
+
+    for (auto *widget : widgets) {
+        layout->addWidget(widget);
+    }
+}
+
 static const QString settingsFileName()
 {
     QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;

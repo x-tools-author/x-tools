@@ -24,6 +24,7 @@ public:
     CommunicationUi(xIO::CommunicationType type, QWidget *parent = nullptr);
 
     xIO::CommunicationType type() const;
+    virtual QList<QWidget *> communicationControllers();
 
 private:
     xIO::CommunicationType const m_type;

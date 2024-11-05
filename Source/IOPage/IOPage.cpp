@@ -481,6 +481,9 @@ void IOPage::onCommunicationTypeChanged()
     if (m_ioUi) {
         loadControllerParameters();
         ui->verticalLayoutCommunicationController->addWidget(m_ioUi);
+
+        QList<QWidget *> widgets = m_ioUi->communicationControllers();
+        m_ioSettings->addWidgets(widgets);
     }
 }
 

@@ -22,4 +22,9 @@ xIO::CommunicationType CommunicationUi::type() const
     return m_type;
 }
 
+QList<QWidget *> CommunicationUi::communicationControllers()
+{
+    return {};
+}
+
 } // namespace xTools

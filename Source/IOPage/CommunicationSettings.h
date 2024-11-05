@@ -27,6 +27,7 @@ public:
     void saveData(const QByteArray &data, bool isRx);
     QVariantMap save();
     void load(const QVariantMap &data);
+    void addWidgets(QList<QWidget *> widgets);
 
 private:
     struct
