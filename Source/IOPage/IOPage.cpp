@@ -146,6 +146,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
         ui->widgetCharts->setVisible(!ui->widgetCharts->isVisible());
     });
+    connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &IOPage::writeBytes);
 #else
     ui->toolButtonCharts->setVisible(false);
 #endif
