@@ -16,6 +16,7 @@ UdpServerUi::UdpServerUi(QWidget *parent)
     setClientWidgetsVisible(false);
     setChannelWidgetsVisible(false);
     setAuthenticationWidgetsVisible(false);
+    setMulticastWidgetsVisible(false);
 }
 
 UdpServerUi::~UdpServerUi() {}

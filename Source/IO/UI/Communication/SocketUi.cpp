@@ -26,7 +26,7 @@ SocketUi::SocketUi(xIO::CommunicationType type, QWidget *parent)
     xIO::setupWebSocketDataChannel(ui->comboBoxChannel);
 
     setupClients(QStringList());
-#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
     connect(ui->comboBoxWriteTo, &QComboBox::activated, this, [this]() {
 #else
     connect(ui->comboBoxWriteTo, QOverload<int>::of(&QComboBox::activated), this, [this]() {
@@ -54,17 +54,21 @@ SocketUi::~SocketUi() {}
 
 QVariantMap SocketUi::save() const
 {
-    QVariantMap parameters;
-    parameters.insert("clientPort", ui->spinBoxClientPort->value());
-    parameters.insert("clientAddress", ui->comboBoxClientIp->currentText());
-    parameters.insert("serverPort", ui->spinBoxServerPort->value());
-    parameters.insert("serverAddress", ui->comboBoxServerIp->currentText());
-    parameters.insert("channel", ui->comboBoxChannel->currentIndex());
-    parameters.insert("authentication", ui->checkBoxAuthentication->isChecked());
-    parameters.insert("username", ui->lineEditUser->text());
-    parameters.insert("password", ui->lineEditPassword->text());
+    xIO::SocketItem item;
+    item.clientPort = ui->spinBoxClientPort->value();
+    item.clientAddress = ui->comboBoxClientIp->currentText();
+    item.serverPort = ui->spinBoxServerPort->value();
+    item.serverAddress = ui->comboBoxServerIp->currentText();
+    item.dataChannel = static_cast<xIO::WebSocketDataChannel>(ui->comboBoxChannel->currentIndex());
+    item.authentication = ui->checkBoxAuthentication->isChecked();
+    item.username = ui->lineEditUser->text();
+    item.password = ui->lineEditPassword->text();
+    item.multicastAddress = ui->lineEditMulticastIp->text();
+    item.multicastPort = ui->spinBoxMulticastPort->value();
+    item.enableMulticast = ui->checkBoxEnableMulticast->isChecked();
+    item.justMulticast = ui->checkBoxJustMulticast->isChecked();
 
-    return parameters;
+    return xIO::saveSocketItem(item).toVariantMap();
 }
 
 void SocketUi::load(const QVariantMap &parameters)
@@ -73,14 +77,20 @@ void SocketUi::load(const QVariantMap &parameters)
         return;
     }
 
-    ui->spinBoxClientPort->setValue(parameters.value("clientPort").toUInt());
-    ui->comboBoxClientIp->setCurrentText(parameters.value("clientAddress").toString());
-    ui->spinBoxServerPort->setValue(parameters.value("serverPort").toUInt());
-    ui->comboBoxServerIp->setCurrentText(parameters.value("serverAddress").toString());
-    ui->comboBoxChannel->setCurrentIndex(parameters.value("channel").toInt());
-    ui->checkBoxAuthentication->setChecked(parameters.value("authentication").toBool());
-    ui->lineEditUser->setText(parameters.value("username").toString());
-    ui->lineEditPassword->setText(parameters.value("password").toString());
+    xIO::SocketItemKeys keys;
+    xIO::SocketItem item = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
+    ui->spinBoxClientPort->setValue(item.clientPort);
+    ui->comboBoxClientIp->setCurrentText(item.clientAddress);
+    ui->spinBoxServerPort->setValue(item.serverPort);
+    ui->comboBoxServerIp->setCurrentText(item.serverAddress);
+    ui->comboBoxChannel->setCurrentIndex(static_cast<int>(item.dataChannel));
+    ui->checkBoxAuthentication->setChecked(item.authentication);
+    ui->lineEditUser->setText(item.username);
+    ui->lineEditPassword->setText(item.password);
+    ui->lineEditMulticastIp->setText(item.multicastAddress);
+    ui->spinBoxMulticastPort->setValue(item.multicastPort);
+    ui->checkBoxEnableMulticast->setChecked(item.enableMulticast);
+    ui->checkBoxJustMulticast->setChecked(item.justMulticast);
 }
 
 void SocketUi::setupIO(AbstractIO *io)
@@ -126,6 +136,16 @@ void SocketUi::setWriteToWidgetsVisible(bool visible)
     ui->toolButtonDisconnectAllClient->setVisible(visible);
 }
 
+void SocketUi::setMulticastWidgetsVisible(bool visible)
+{
+    ui->labelMulticastIp->setVisible(visible);
+    ui->lineEditMulticastIp->setVisible(visible);
+    ui->labelMulticastPort->setVisible(visible);
+    ui->spinBoxMulticastPort->setVisible(visible);
+    ui->checkBoxEnableMulticast->setVisible(visible);
+    ui->checkBoxJustMulticast->setVisible(visible);
+}
+
 void SocketUi::setClientWidgetsEnabled(bool enabled)
 {
     ui->labelClientIp->setEnabled(enabled);
@@ -162,6 +182,16 @@ void SocketUi::setWriteToWidgetsEnabled(bool enabled)
     ui->labelWriteTo->setEnabled(enabled);
     ui->comboBoxWriteTo->setEnabled(enabled);
     ui->toolButtonDisconnectAllClient->setEnabled(enabled);
+}
+
+void SocketUi::setMulticastWidgetsEnabled(bool enabled)
+{
+    ui->labelMulticastIp->setEnabled(enabled);
+    ui->lineEditMulticastIp->setEnabled(enabled);
+    ui->labelMulticastPort->setEnabled(enabled);
+    ui->spinBoxMulticastPort->setEnabled(enabled);
+    ui->checkBoxEnableMulticast->setEnabled(enabled);
+    ui->checkBoxJustMulticast->setEnabled(enabled);
 }
 
 void SocketUi::setupClients(const QStringList &clients)

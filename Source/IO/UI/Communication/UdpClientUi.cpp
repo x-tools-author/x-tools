@@ -25,7 +25,9 @@ UdpClientUi::~UdpClientUi() {}
 
 void UdpClientUi::setUiEnabled(bool enabled)
 {
+    setClientWidgetsEnabled(enabled);
     setServerWidgetsEnabled(enabled);
+    setMulticastWidgetsEnabled(enabled);
 }
 
 } // namespace xTools

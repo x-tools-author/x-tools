@@ -33,6 +33,11 @@ protected:
     QString m_username{""};
     QString m_password{""};
 
+    quint16 m_multicastPort{1024};
+    QString m_multicastAddress{"239.168.3.255"};
+    bool m_enableMulticast{false};
+    bool m_justMulticast{false};
+
     // clang-format off
     struct SocketPrivateSignal{};
     // clang-format on

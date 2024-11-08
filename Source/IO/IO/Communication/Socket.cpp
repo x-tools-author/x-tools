@@ -33,6 +33,11 @@ Socket::Socket(QObject *parent)
     tmp.insert(keys.authentication, m_authentication);
     tmp.insert(keys.username, m_username);
     tmp.insert(keys.password, m_password);
+    tmp.insert(keys.multicastAddress, m_multicastAddress);
+    tmp.insert(keys.multicastPort, m_multicastPort);
+    tmp.insert(keys.enableMulticast, m_enableMulticast);
+    tmp.insert(keys.justMulticast, m_justMulticast);
+
     Socket::load(tmp);
 }
 
@@ -49,6 +54,10 @@ void Socket::load(const QVariantMap &parameters)
     m_authentication = item.authentication;
     m_username = item.username;
     m_password = item.password;
+    m_multicastAddress = item.multicastAddress;
+    m_multicastPort = item.multicastPort;
+    m_enableMulticast = item.enableMulticast;
+    m_justMulticast = item.justMulticast;
 }
 
 void Socket::setDataChannel(int channel)

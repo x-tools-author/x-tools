@@ -36,6 +36,19 @@ QObject *UdpClient::initDevice()
     }
 #endif
 
+    if (m_enableMulticast) {
+        if (!m_udpSocket->joinMulticastGroup(QHostAddress(m_multicastAddress))) {
+            qWarning() << "Failed to join multicast group:" << m_multicastAddress << ":"
+                       << m_udpSocket->errorString();
+            m_udpSocket->deleteLater();
+            m_udpSocket = nullptr;
+            return nullptr;
+        } else {
+            qInfo() << "Joined multicast group:" << m_multicastAddress
+                    << ", port is:" << m_multicastPort;
+        }
+    }
+
     connect(m_udpSocket, &QUdpSocket::readyRead, m_udpSocket, [this]() { readPendingDatagrams(); });
     connect(m_udpSocket, &QUdpSocket::errorOccurred, m_udpSocket, [this]() {
         qWarning() << m_udpSocket->errorString();
@@ -56,12 +69,12 @@ void UdpClient::deinitDevice()
 
 void UdpClient::writeBytes(const QByteArray &bytes)
 {
-    qint64 ret = m_udpSocket->writeDatagram(bytes, QHostAddress(m_serverAddress), m_serverPort);
-    if (ret == bytes.length()) {
-        emit bytesWritten(bytes, makeFlag(m_serverAddress, m_serverPort));
-    } else {
-        qWarning() << "Failed to write bytes:" << m_udpSocket->errorString();
-        emit errorOccurred(m_udpSocket->errorString());
+    if (m_enableMulticast) {
+        writeDatagram(bytes, m_multicastAddress, m_multicastPort);
+    }
+
+    if (!(m_enableMulticast && m_justMulticast)) {
+        writeDatagram(bytes, m_serverAddress, m_serverPort);
     }
 }
 
@@ -75,6 +88,17 @@ void UdpClient::readPendingDatagrams()
         if (m_udpSocket->readDatagram(datagram.data(), datagram.size(), &sender, &senderPort) > 0) {
             emit bytesRead(datagram, makeFlag(sender.toString(), senderPort));
         }
+    }
+}
+
+void UdpClient::writeDatagram(const QByteArray &bytes, const QString &ip, quint16 port)
+{
+    qint64 ret = m_udpSocket->writeDatagram(bytes, QHostAddress(ip), port);
+    if (ret == bytes.length()) {
+        emit bytesWritten(bytes, makeFlag(ip, port));
+    } else {
+        qWarning() << "Failed to write bytes:" << m_udpSocket->errorString();
+        emit errorOccurred(m_udpSocket->errorString());
     }
 }
 

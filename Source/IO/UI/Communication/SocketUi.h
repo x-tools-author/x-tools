@@ -43,12 +43,14 @@ protected:
     void setChannelWidgetsVisible(bool visible);
     void setAuthenticationWidgetsVisible(bool visible);
     void setWriteToWidgetsVisible(bool visible);
+    void setMulticastWidgetsVisible(bool visible);
 
     void setClientWidgetsEnabled(bool enabled);
     void setServerWidgetsEnabled(bool enabled);
     void setChannelWidgetsEnabled(bool enabled);
     void setAuthenticationWidgetsEnabled(bool enabled);
     void setWriteToWidgetsEnabled(bool enabled);
+    void setMulticastWidgetsEnabled(bool enabled);
 
     void setupClients(const QStringList &clients);
 

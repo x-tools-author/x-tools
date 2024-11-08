@@ -174,6 +174,10 @@ public:
         bool authentication;
         QString username;
         QString password;
+        QString multicastAddress;
+        quint16 multicastPort;
+        bool enableMulticast;
+        bool justMulticast;
     };
     struct SocketItemKeys
     {
@@ -185,6 +189,10 @@ public:
         const QString authentication{"authentication"};
         const QString username{"username"};
         const QString password{"password"};
+        const QString multicastAddress{"multicastAddress"};
+        const QString multicastPort{"multicastPort"};
+        const QString enableMulticast{"enableMulticast"};
+        const QString justMulticast{"justMulticast"};
     };
     static SocketItem defaultSocketItem();
     static QJsonObject saveSocketItem(const SocketItem &context);

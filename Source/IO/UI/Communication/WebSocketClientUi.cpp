@@ -15,6 +15,7 @@ WebSocketClientUi::WebSocketClientUi(QWidget *parent)
 {
     setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);
+    setMulticastWidgetsVisible(false);
 }
 
 WebSocketClientUi::~WebSocketClientUi() {}

@@ -17,6 +17,7 @@ TcpClientUi::TcpClientUi(QWidget *parent)
     setWriteToWidgetsVisible(false);
     setChannelWidgetsVisible(false);
     setAuthenticationWidgetsVisible(false);
+    setMulticastWidgetsVisible(false);
 }
 
 TcpClientUi::~TcpClientUi() {}

@@ -757,53 +757,53 @@
 <context>
     <name>CommunicationSettings</name>
     <message>
-        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="20"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="22"/>
         <source>Save tx data</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="30"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="32"/>
         <source>Browser</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="37"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="59"/>
         <source>Save Date</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="47"/>
-        <location filename="../../Source/IOPage/CommunicationSettings.cpp" line="136"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="69"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.cpp" line="149"/>
         <source>Save to file</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="54"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="39"/>
         <source>Save millisecond</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="64"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="49"/>
         <source>Save rx data</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="74"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="76"/>
         <source>Save Time</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="92"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="94"/>
         <source>Save format</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="102"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.ui" line="104"/>
         <source>Max bytes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/CommunicationSettings.cpp" line="138"/>
+        <location filename="../../Source/IOPage/CommunicationSettings.cpp" line="151"/>
         <source>Text File(*.txt)</source>
         <translation></translation>
     </message>
@@ -1098,7 +1098,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../Source/IOPage/IOPage.ui" line="79"/>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="557"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="561"/>
         <source>Open</source>
         <translation></translation>
     </message>
@@ -1198,62 +1198,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="408"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="409"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="426"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="427"/>
         <source>Serial Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="428"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="429"/>
         <source>UDP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="429"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="430"/>
         <source>UDP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="430"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="431"/>
         <source>TCP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="431"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="432"/>
         <source>TCP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="433"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="434"/>
         <source>WebSocket Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="434"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="435"/>
         <source>WebSocket Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="543"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="547"/>
         <source>Close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="564"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="568"/>
         <source>Error Occurred</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="570"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="574"/>
         <source>Warning</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IOPage/IOPage.cpp" line="708"/>
+        <location filename="../../Source/IOPage/IOPage.cpp" line="712"/>
         <source>[%1][%2][%3][%4]</source>
         <translation></translation>
     </message>
@@ -2169,52 +2169,72 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SocketUi</name>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="38"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="179"/>
         <source>Client IP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="54"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="122"/>
         <source>Client port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="77"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="149"/>
         <source>Server IP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="97"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="48"/>
         <source>Server port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="114"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="55"/>
         <source>Write to</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="129"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="73"/>
         <source>Disconnect all clients</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="141"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="90"/>
+        <source>Enable multicast</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="97"/>
+        <source>Just multicast</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="156"/>
         <source>Channel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="151"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="186"/>
+        <source>Multicast IP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="193"/>
         <source>Authentication</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="158"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="210"/>
+        <source>Multicast Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="109"/>
         <source>User name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="168"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.ui" line="136"/>
         <source>Password</source>
         <translation></translation>
     </message>
@@ -2982,7 +3002,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::SocketUi</name>
     <message>
-        <location filename="../../Source/IO/UI/Communication/SocketUi.cpp" line="171"/>
+        <location filename="../../Source/IO/UI/Communication/SocketUi.cpp" line="201"/>
         <source>All clients</source>
         <translation></translation>
     </message>
@@ -3117,15 +3137,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xTools::xIO</name>
     <message>
         <location filename="../../Source/IO/xIO.cpp" line="374"/>
-        <location filename="../../Source/IO/xIO.cpp" line="829"/>
-        <location filename="../../Source/IO/xIO.cpp" line="831"/>
+        <location filename="../../Source/IO/xIO.cpp" line="837"/>
+        <location filename="../../Source/IO/xIO.cpp" line="839"/>
         <source>Text</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../Source/IO/xIO.cpp" line="376"/>
-        <location filename="../../Source/IO/xIO.cpp" line="825"/>
-        <location filename="../../Source/IO/xIO.cpp" line="827"/>
+        <location filename="../../Source/IO/xIO.cpp" line="833"/>
+        <location filename="../../Source/IO/xIO.cpp" line="835"/>
         <source>Binary</source>
         <translation></translation>
     </message>
@@ -3201,17 +3221,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="790"/>
+        <location filename="../../Source/IO/xIO.cpp" line="798"/>
         <source>Disabled</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="792"/>
+        <location filename="../../Source/IO/xIO.cpp" line="800"/>
         <source>Bidirectional</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Source/IO/xIO.cpp" line="794"/>
+        <location filename="../../Source/IO/xIO.cpp" line="802"/>
         <source>Unidirectional</source>
         <translation></translation>
     </message>

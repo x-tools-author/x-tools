@@ -30,6 +30,7 @@ private:
 
 private:
     void readPendingDatagrams();
+    void writeDatagram(const QByteArray &bytes, const QString &ip, quint16 port);
 };
 
 } // namespace xTools

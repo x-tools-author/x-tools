@@ -725,6 +725,10 @@ QJsonObject xIO::saveSocketItem(const SocketItem &context)
     obj.insert(keys.authentication, context.authentication);
     obj.insert(keys.username, context.username);
     obj.insert(keys.password, context.password);
+    obj.insert(keys.multicastAddress, context.multicastAddress);
+    obj.insert(keys.multicastPort, context.multicastPort);
+    obj.insert(keys.enableMulticast, context.enableMulticast);
+    obj.insert(keys.justMulticast, context.justMulticast);
     return obj;
 }
 
@@ -740,6 +744,10 @@ xIO::SocketItem xIO::loadSocketItem(const QJsonObject &obj)
     ctx.authentication = obj.value(keys.authentication).toBool();
     ctx.username = obj.value(keys.username).toString();
     ctx.password = obj.value(keys.password).toString();
+    ctx.multicastAddress = obj.value(keys.multicastAddress).toString();
+    ctx.multicastPort = obj.value(keys.multicastPort).toInt();
+    ctx.enableMulticast = obj.value(keys.enableMulticast).toBool();
+    ctx.justMulticast = obj.value(keys.justMulticast).toBool();
     return ctx;
 }
 

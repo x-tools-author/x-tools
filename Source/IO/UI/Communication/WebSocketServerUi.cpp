@@ -15,6 +15,7 @@ WebSocketServerUi::WebSocketServerUi(QWidget *parent)
 {
     setClientWidgetsVisible(false);
     setAuthenticationWidgetsVisible(false);
+    setMulticastWidgetsVisible(false);
 }
 
 WebSocketServerUi::~WebSocketServerUi() {}
