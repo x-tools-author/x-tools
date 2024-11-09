@@ -12,6 +12,8 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
+#include "IO/xIO.h"
+
 namespace xTools {
 
 SerialPortUi::SerialPortUi(QWidget *parent)
@@ -32,12 +34,13 @@ SerialPortUi::SerialPortUi(QWidget *parent)
 QVariantMap SerialPortUi::save() const
 {
     QVariantMap map;
-    map["portName"] = ui->comboBoxPortName->currentText();
-    map["baudRate"] = ui->comboBoxBaudRate->currentText().toInt();
-    map["dataBits"] = ui->comboBoxDataBits->currentData().toInt();
-    map["parity"] = ui->comboBoxParity->currentData().toInt();
-    map["stopBits"] = ui->comboBoxStopBits->currentData().toInt();
-    map["flowControl"] = ui->comboBoxFlowControl->currentData().toInt();
+    xIO::SerialPortItemKeys keys;
+    map[keys.portName] = ui->comboBoxPortName->currentText();
+    map[keys.baudRate] = ui->comboBoxBaudRate->currentText().toInt();
+    map[keys.dataBits] = ui->comboBoxDataBits->currentData().toInt();
+    map[keys.parity] = ui->comboBoxParity->currentData().toInt();
+    map[keys.stopBits] = ui->comboBoxStopBits->currentData().toInt();
+    map[keys.flowControl] = ui->comboBoxFlowControl->currentData().toInt();
     return map;
 }
 
@@ -47,12 +50,13 @@ void SerialPortUi::load(const QVariantMap &map)
         return;
     }
 
-    QString portName = map.value("portName").toString();
-    int baudRate = map.value("baudRate").toInt();
-    int dataBits = map.value("dataBits").toInt();
-    int parity = map.value("parity").toInt();
-    int stopBits = map.value("stopBits").toInt();
-    int flowControl = map.value("flowControl").toInt();
+    xIO::SerialPortItemKeys keys;
+    QString portName = map.value(keys.portName).toString();
+    int baudRate = map.value(keys.baudRate).toInt();
+    int dataBits = map.value(keys.dataBits).toInt();
+    int parity = map.value(keys.parity).toInt();
+    int stopBits = map.value(keys.stopBits).toInt();
+    int flowControl = map.value(keys.flowControl).toInt();
 
     ui->comboBoxPortName->setCurrentText(portName);
     ui->comboBoxBaudRate->setCurrentText(QString::number(baudRate));
