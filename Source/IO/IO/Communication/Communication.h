@@ -21,7 +21,7 @@ class Communication : public AbstractIO
     Q_OBJECT
 public:
     explicit Communication(QObject *parent = nullptr);
-    ~Communication();
+    ~Communication() override;
 
     Q_INVOKABLE void openDevice();
     Q_INVOKABLE void closeDevice();
