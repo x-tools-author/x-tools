@@ -320,8 +320,16 @@ endif()
 # xTools application
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
-  x_tools_add_executable(xTools ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp xTools.rc)
+  qt_add_executable(xTools ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp xTools.rc)
   target_link_libraries(xTools PRIVATE xToolsCore)
+  set_target_properties(
+    xTools
+    PROPERTIES # MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appuntitled
+               MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+               MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+               MACOSX_BUNDLE TRUE
+               WIN32_EXECUTABLE TRUE
+               QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
 
   x_tools_add_stylesheet_resources(xTools)
   x_tools_deploy_qt(xTools)
