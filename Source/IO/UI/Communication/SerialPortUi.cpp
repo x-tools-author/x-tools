@@ -21,6 +21,9 @@ SerialPortUi::SerialPortUi(QWidget *parent)
     , ui(new Ui::SerialPortUi)
 {
     ui->setupUi(this);
+#if defined(Q_OS_LINUX)
+    ui->comboBoxPortName->setEditable(true);
+#endif
 
     refresh();
 
