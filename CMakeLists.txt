@@ -291,9 +291,9 @@ add_library(xToolsCore STATIC ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xToolsCore)
 x_tools_add_stylesheet_sources(xToolsCore)
 
-set(QtX Qt${QT_VERSION_MAJOR})
-target_link_libraries(xToolsCore PUBLIC ${QtX}::Core ${QtX}::Gui)
-target_link_libraries(xToolsCore PUBLIC ${QtX}::Network ${QtX}::Svg ${QtX}::Widgets)
+target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui)
+target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Network)
+target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Svg Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(xToolsCore PUBLIC glog::glog qrencode qmdnsengine)
 
 if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
@@ -320,8 +320,13 @@ endif()
 # xTools application
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
-  qt_add_executable(xTools ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp xTools.rc
-      android/AndroidManifest.xml android/build.gradle android/res/values/libs.xml android/res/xml/qtprovider_paths.xml)
+  qt_add_executable(
+    xTools
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp
+    xTools.rc
+    android/AndroidManifest.xml
+    android/res/values/libs.xml
+    android/res/xml/qtprovider_paths.xml)
   target_link_libraries(xTools PRIVATE xToolsCore)
   set_target_properties(
     xTools
