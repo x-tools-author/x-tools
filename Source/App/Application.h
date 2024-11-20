@@ -54,6 +54,7 @@ public:
 
     // Such as "xToolsCore", "xToolsApp", "xToolsPrivateApp"
     Q_INVOKABLE virtual QStringList supportedLanguagePrefixes();
+    Q_INVOKABLE void openUrl(const QString &url);
 
 public:
     static QIcon cookedIcon(const QIcon &icon);

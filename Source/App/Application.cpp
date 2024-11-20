@@ -13,6 +13,7 @@
 #include <QDataStream>
 #include <QDateTime>
 #include <QDebug>
+#include <QDesktopServices>
 #include <QFile>
 #include <QFontMetrics>
 #include <QGuiApplication>
@@ -187,6 +188,11 @@ bool Application::isValidHighDpiPolicy(int policy)
 QStringList Application::supportedLanguagePrefixes()
 {
     return QStringList() << "xToolsCore";
+}
+
+void Application::openUrl(const QString &url)
+{
+    QDesktopServices::openUrl(QUrl(url));
 }
 
 void Application::setupLanguage(const QString &language)
