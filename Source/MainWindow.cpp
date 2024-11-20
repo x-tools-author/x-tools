@@ -36,7 +36,7 @@
 
 MainWindow::MainWindow(QWidget* parent)
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-    : xToolsPrivate::MainWindow(parent)
+    : xApp::MainWindow(parent)
 #else
     : xTools::MainWindow(parent)
 #endif

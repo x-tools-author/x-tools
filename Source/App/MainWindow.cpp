@@ -357,8 +357,8 @@ void MainWindow::onAboutActionTriggered()
 #ifdef X_TOOLS_GIT_COMMIT
     info += tr("Commit") + QString("(xTools)") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
 #endif
-#ifdef X_TOOLS_PRIVATE_GIT_COMMIT
-    info += tr("Commit") + QString("(%1)").arg(name) + ": " + X_TOOLS_PRIVATE_GIT_COMMIT + "\n\n";
+#ifdef X_APP_GIT_COMMIT
+    info += tr("Commit") + QString("(%1)").arg(name) + ": " + X_APP_GIT_COMMIT + "\n\n";
 #endif
     info += tr("Build Date") + ": " + buildDateTimeString + "\n\n";
     info += QString("Copyright 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
