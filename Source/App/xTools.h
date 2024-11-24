@@ -33,6 +33,8 @@ static void xInitResources()
 
 namespace xTools {
 
+static void (*gOutputLog2Ui)(QtMsgType, const QMessageLogContext &, const QString &){nullptr};
+
 void initGoogleLogging(char *argv0);
 void shutdownGoogleLogging();
 void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const QString &msg);

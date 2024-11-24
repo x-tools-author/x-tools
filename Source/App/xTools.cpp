@@ -100,6 +100,10 @@ void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const Q
         google::LogMessage(file, line, google::GLOG_INFO).stream() << localMsg.data();
         break;
     }
+
+    if (gOutputLog2Ui) {
+        gOutputLog2Ui(type, context, msg);
+    }
 }
 
 void initApp(const QString &appName, bool forStore)
