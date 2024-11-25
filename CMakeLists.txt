@@ -321,12 +321,8 @@ endif()
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   qt_add_executable(
-    xTools
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp
-    xTools.rc
-    android/AndroidManifest.xml
-    android/res/values/libs.xml
-    android/res/xml/qtprovider_paths.xml)
+    xTools ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp xTools.rc android/AndroidManifest.xml
+    android/res/values/libs.xml android/res/xml/qtprovider_paths.xml)
   target_link_libraries(xTools PRIVATE xToolsCore)
   set_target_properties(
     xTools
@@ -345,6 +341,7 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   set(version ${GIT_TAG})
   string(SUBSTRING ${version} 1 -1 version)
   x_tools_generate_installer(xTools ${version} ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
+  qt_finalize_target(xTools)
 endif()
 
 # --------------------------------------------------------------------------------------------------
