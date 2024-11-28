@@ -320,7 +320,7 @@ endif()
 # xTools application
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
-  set(CMAKE_BINARY_OUTPUT_DIRECTORY ${X_TOOLS_BINARY_DIR}/xTools)
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_TOOLS_BINARY_DIR}/xTools)
   qt_add_executable(
     xTools ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp xTools.rc android/AndroidManifest.xml
     android/res/values/libs.xml android/res/xml/qtprovider_paths.xml)
