@@ -150,6 +150,7 @@ function(x_tools_deploy_qt_for_linux target)
     COMMAND chmod +x ${linuxdeployqt}
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${APP_LOGO} "${CMAKE_BINARY_DIR}/${target}.png"
     COMMAND ${linuxdeployqt} ${desktop_file} "-qmake=${qmake_executable}" "-appimage"
+            "-bundle-non-qt-libs"
     COMMAND ${CMAKE_COMMAND} -E rm -f ${lower_target_name}-linux-x86_64.AppImage "||"
             ${CMAKE_COMMAND} -E true
     COMMAND ${CMAKE_COMMAND} -E rename ${app_image_file} ${lower_target_name}-linux-x86_64.AppImage
