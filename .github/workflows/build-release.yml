@@ -171,6 +171,12 @@ jobs:
           set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
           cmake --build build\armeabi_v7a --target xTools --config Release
+      - name: Copy File for Deploy
+        shell: cmd
+        run: |
+              mkdir  build\armeabi_v7a\android-build\libs\armeabi-v7a
+              dir build\armeabi_v7a
+              copy .\build\armeabi_v7a\libxTools_armeabi-v7a.so .\build\armeabi_v7a\android-build\libs\armeabi-v7a /y
       - name: Deploy for Android
         shell: cmd
         run: |
