@@ -342,7 +342,6 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   set(version ${GIT_TAG})
   string(SUBSTRING ${version} 1 -1 version)
   x_tools_generate_installer(xTools ${version} ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
-  qt_finalize_target(xTools)
 endif()
 
 # --------------------------------------------------------------------------------------------------
