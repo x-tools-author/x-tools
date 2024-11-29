@@ -321,9 +321,21 @@ endif()
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
 if(X_TOOLS_ENABLE_TARGET_XTOOLS)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_TOOLS_BINARY_DIR}/xTools)
+
+  if(CMAKE_HOST_APPLE)
+    set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
+    set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
+    set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+  endif()
+
   qt_add_executable(
-    xTools ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp xTools.rc android/AndroidManifest.xml
-    android/res/values/libs.xml android/res/xml/qtprovider_paths.xml)
+    xTools
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp
+    xTools.rc
+    android/AndroidManifest.xml
+    android/res/values/libs.xml
+    android/res/xml/qtprovider_paths.xml
+    ${xTools_ICON})
   target_link_libraries(xTools PRIVATE xToolsCore)
   set_target_properties(
     xTools
