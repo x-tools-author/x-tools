@@ -65,6 +65,12 @@ jobs:
       - name: Directory of build\armeabi_v7a
         shell: cmd
         run: dir build\armeabi_v7a
+      - name: Copy File for Deploy
+        shell: cmd
+        run: |
+          mkdir  build\armeabi_v7a\android-build\libs\armeabi-v7a
+          copy .\build\armeabi_v7a\libxTools_armeabi-v7a.so .\build\armeabi_v7a\android-build\libs\armeabi-v7a /y
+        continue-on-error: true
       - name: Deploy for Android
         shell: cmd
         run: |
