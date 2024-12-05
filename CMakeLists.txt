@@ -51,11 +51,11 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # CMake module
-include(${CMAKE_CURRENT_SOURCE_DIR}/CMake/QIFW/QIFW.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/CMake/xToolsCommon.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/CMake/xToolsGitInfo.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/CMake/xToolsDeployQt.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/CMake/xToolsThirdParty.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/QIFW/QIFW.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/xToolsCommon.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/xToolsGitInfo.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/xToolsDeployQt.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/xToolsThirdParty.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Git module
