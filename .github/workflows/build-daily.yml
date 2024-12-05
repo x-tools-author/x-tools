@@ -92,7 +92,7 @@ jobs:
       run: |
         dir && gh release upload continuous 'build/xtools-linux-x86_64.AppImage'
   release-for-macos:
-    runs-on: macos-12
+    runs-on: macos-13
     needs: update-release
     steps:
     - name: Checkout
@@ -124,7 +124,7 @@ jobs:
         ls && ls ./assets && ls ./assets/xTools
     - name: Upload Release Asset for macOS
       run: |
-        ls && gh release upload continuous 'build/assets/xTools/xtools-macos-12.dmg'
+        ls && gh release upload continuous 'build/assets/xTools/xtools-macos-13.dmg'
   release-for-android:
     runs-on: windows-2022
     needs: update-release

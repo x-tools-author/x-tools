@@ -85,7 +85,7 @@ jobs:
         cmake -E rename build/xtools-linux-x86_64.AppImage build/xtools-${{ github.ref_name }}-linux-x86_64.AppImage
         dir && gh release upload ${{ github.ref_name }} 'build/xtools-${{ github.ref_name }}-linux-x86_64.AppImage'
   release-for-macos:
-    runs-on: macos-12
+    runs-on: macos-13
     needs: update-release
     steps:
     - name: Checkout
@@ -120,8 +120,8 @@ jobs:
         ls && ls ./assets && ls ./assets/xTools
     - name: Upload Release Asset for macOS
       run: |
-        cmake -E rename build/assets/xTools/xtools-macos-12.dmg build/assets/xTools/xtools-${{ github.ref_name }}-macos-12.dmg
-        ls && gh release upload ${{ github.ref_name }} 'build/assets/xTools/xtools-${{ github.ref_name }}-macos-12.dmg'
+        cmake -E rename build/assets/xTools/xtools-macos-13.dmg build/assets/xTools/xtools-${{ github.ref_name }}-macos-13.dmg
+        ls && gh release upload ${{ github.ref_name }} 'build/assets/xTools/xtools-${{ github.ref_name }}-macos-13.dmg'
   release-for-android:
     runs-on: windows-2022
     needs: update-release
