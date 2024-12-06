@@ -139,7 +139,7 @@ jobs:
           host: windows
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
-          version: '6.5.3'
+          version: ''${{env.QT_VERSION}}''
       - name: Install Qt for Desktop(mingw)
         uses: jurplel/install-qt-action@v4
         with:
@@ -148,17 +148,17 @@ jobs:
           host: windows
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
-          version: '6.5.3'
+          version: ''${{env.QT_VERSION}}''
       - name: CMake for Android
         shell: cmd
         run: |
           git fetch --tags
           set JAVA_HOME=%JAVA_HOME_11_X64%
-          ${{ github.workspace }}\Qt\6.5.3\android_armv7\bin\qt-cmake.bat ^
+          ${{ github.workspace }}\Qt\'${{env.QT_VERSION}}'\android_armv7\bin\qt-cmake.bat ^
           -G "MinGW Makefiles" ^
           -S . ^
           -B "build\armeabi_v7a" ^
-          -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\6.5.3\mingw_64" ^
+          -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\'${{env.QT_VERSION}}'\mingw_64" ^
           -DCMAKE_BUILD_TYPE:STRING=Release ^
           -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
           -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
@@ -183,7 +183,7 @@ jobs:
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
-          ${{ github.workspace }}\Qt\6.5.3\mingw_64\bin\androiddeployqt.exe ^
+          ${{ github.workspace }}\Qt\'${{env.QT_VERSION}}'\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-34 ^
