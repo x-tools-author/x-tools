@@ -199,13 +199,13 @@ void ChartsUiSettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
 {
     m_channelContexts[channelIndex].typeComboBox = comboBox;
     comboBox->clear();
-    comboBox->addItem(QIcon(":/Resources/Icons/IconLineSeries.svg"),
+    comboBox->addItem(QIcon(":/resources/Icons/IconLineSeries.svg"),
                       seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeLine),
                       QAbstractSeries::SeriesType::SeriesTypeLine);
-    comboBox->addItem(QIcon(":/Resources/Icons/IconSplineSeries.svg"),
+    comboBox->addItem(QIcon(":/resources/Icons/IconSplineSeries.svg"),
                       seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeSpline),
                       QAbstractSeries::SeriesType::SeriesTypeSpline);
-    comboBox->addItem(QIcon(":/Resources/Icons/IconScatterSeries.svg"),
+    comboBox->addItem(QIcon(":/resources/Icons/IconScatterSeries.svg"),
                       seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeScatter),
                       QAbstractSeries::SeriesType::SeriesTypeScatter);
     connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=](int index) {

@@ -91,9 +91,9 @@ function(x_tools_generate_translations target)
   endif()
 
   set(APP_TS_FILES "")
-  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_en.ts)
-  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_zh_CN.ts)
-  set(O_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations")
+  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/resources/Translations/${target}_en.ts)
+  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/resources/Translations/${target}_zh_CN.ts)
+  set(O_PATH "${CMAKE_CURRENT_SOURCE_DIR}/resources/Translations")
   # cmake-format: off
   if(NOT QT_VERSION VERSION_LESS "6.7.0")
     qt_add_lupdate(SOURCE_TARGETS ${target} TS_FILES ${APP_TS_FILES} LUPDATE_TARGET ${target}_lupdate NO_GLOBAL_TARGET)
@@ -112,9 +112,9 @@ function(x_tools_generate_translations target)
   add_custom_target(
     ${target}_lupgrade
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_en.qm
-            ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_en.qm
+            ${CMAKE_CURRENT_SOURCE_DIR}/resources/Translations/${target}_en.qm
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_zh_CN.qm
-            ${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/${target}_zh_CN.qm
+            ${CMAKE_CURRENT_SOURCE_DIR}/resources/Translations/${target}_zh_CN.qm
     DEPENDS ${target}_lrelease
     COMMENT "Generate translations for ${target}...")
 endfunction()

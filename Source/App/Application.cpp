@@ -376,7 +376,7 @@ void Application::setupLanguageWithPrefix(const QString &language, const QString
     }
 
     static QMap<QString, QTranslator *> fileTranslatorMap;
-    QString fileName = QString(":/Resources/Translations/%1_%2.qm").arg(prefix, key);
+    QString fileName = QString(":/resources/Translations/%1_%2.qm").arg(prefix, key);
     if (!fileTranslatorMap.contains(prefix)) {
         QTranslator *translator = new QTranslator();
         fileTranslatorMap.insert(prefix, translator);

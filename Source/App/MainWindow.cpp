@@ -392,8 +392,8 @@ void MainWindow::showQqQrCode()
 
     typedef QPair<QString, QString> QrCodeInfo;
     QList<QPair<QString, QString>> qrCodeInfoList;
-    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/Resources/Images/UserQQ.jpg")}
-                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/Resources/Images/QtQQ.jpg")};
+    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/resources/Images/UserQQ.jpg")}
+                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/resources/Images/QtQQ.jpg")};
 
     QTabWidget* tabWidget = new QTabWidget(&dialog);
     for (auto& var : qrCodeInfoList) {
