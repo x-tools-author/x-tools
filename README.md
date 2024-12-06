@@ -9,21 +9,21 @@
 
 > **You can get *xTools* form [Micorsoft Store(pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
 
-![xTools.gif](Doc/Images/xTools.gif)
+![xTools.gif](doc/Images/xTools.gif)
 
-![charts.gif](Doc/Images/charts.gif)
+![charts.gif](doc/Images/charts.gif)
 
 ## Dark theme
 
-![xToolsDark.png](Doc/Images/xToolsDark.png)
+![xToolsDark.png](doc/Images/xToolsDark.png)
 
 ## Light theme
 
-![xToolsLight.png](Doc/Images/xToolsLight.png)
+![xToolsLight.png](doc/Images/xToolsLight.png)
 
 ## Custom theme
 
-![xToolsCustom.png](Doc/Images/xToolsCustom.png)
+![xToolsCustom.png](doc/Images/xToolsCustom.png)
 
 ## About the Project
 
