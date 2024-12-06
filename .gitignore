@@ -8,6 +8,7 @@ out
 /.idea
 .vscode
 3rd
+thirdparty
 /.fleet
 src/private
 cmake-build-debug
