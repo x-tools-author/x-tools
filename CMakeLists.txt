@@ -59,12 +59,10 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/xToolsThirdParty.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Git module
-# cmake-format: off
 set(GIT_TAG "x.x.x")
 x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
-# cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
 # Get all source files of the project
