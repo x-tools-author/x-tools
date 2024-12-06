@@ -9,7 +9,7 @@
 #pragma once
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#include "xApp/Source/MainWindow.h"
+#include "xApp/source/MainWindow.h"
 #else
 #include "App/MainWindow.h"
 #endif

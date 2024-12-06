@@ -68,9 +68,9 @@ x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 
 # --------------------------------------------------------------------------------------------------
 # Get all source files of the project
-file(GLOB_RECURSE X_TOOLS_SOURCE_H "${CMAKE_CURRENT_SOURCE_DIR}/Source/*.h")
-file(GLOB_RECURSE X_TOOLS_SOURCE_UI "${CMAKE_CURRENT_SOURCE_DIR}/Source/*.ui")
-file(GLOB_RECURSE X_TOOLS_SOURCE_CPP "${CMAKE_CURRENT_SOURCE_DIR}/Source/*.cpp")
+file(GLOB_RECURSE X_TOOLS_SOURCE_H "${CMAKE_CURRENT_SOURCE_DIR}/source/*.h")
+file(GLOB_RECURSE X_TOOLS_SOURCE_UI "${CMAKE_CURRENT_SOURCE_DIR}/source/*.ui")
+file(GLOB_RECURSE X_TOOLS_SOURCE_CPP "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp")
 set(X_TOOLS_SOURCE ${X_TOOLS_SOURCE_H} ${X_TOOLS_SOURCE_UI} ${X_TOOLS_SOURCE_CPP})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source)
@@ -220,13 +220,13 @@ if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIALBUS)
 endif()
 if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/Modbus/Source)
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/source/Modbus/Source)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_MODBUS)
 
   list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_MODBUS_DIR}/main.cpp)
 endif()
 if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source/CANBus/Source)
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/source/CANBus/Source)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_CANBUS)
 
   list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_CANBUS_DIR}/main.cpp)
@@ -244,7 +244,7 @@ if(X_TOOLS_ENABLE_MODULE_CHARTS)
   x_tools_add_xlsx()
 else()
   message(STATUS "Charts module is disable, chart files will be removed.")
-  set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source/IO)
+  set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source/IO)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/DataVisualization/2D/Charts.h)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/IO/DataVisualization/2D/Charts.cpp)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/UI/DataVisualization/2D/ChartsUi.h)
@@ -257,7 +257,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Tools
-set(X_TOOLS_TOOLS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools")
+set(X_TOOLS_TOOLS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source/Tools")
 macro(add_tool dir_name)
   file(GLOB TOOL_SOURCE "${X_TOOLS_TOOLS_DIR}/${dir_name}/*.*")
   include_directories(${X_TOOLS_TOOLS_DIR}/${dir_name})
@@ -278,7 +278,7 @@ foreach(tool ${ALL_TOOLS})
   add_tool(${tool})
 endforeach()
 
-set(X_TOOLS_TOOLS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools)
+set(X_TOOLS_TOOLS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source/Tools)
 include_directories(${X_TOOLS_TOOLS_DIR})
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.h)
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.cpp)
@@ -286,7 +286,7 @@ list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.cpp)
 # --------------------------------------------------------------------------------------------------
 # xTools Core
 list(APPEND X_TOOLS_SOURCE xTools.qrc)
-list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp)
+list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/source/main.cpp)
 add_library(xToolsCore STATIC ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xToolsCore)
 x_tools_add_stylesheet_sources(xToolsCore)
@@ -330,7 +330,7 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
 
   qt_add_executable(
     xTools
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/source/main.cpp
     xTools.rc
     android/AndroidManifest.xml
     android/res/values/libs.xml
@@ -359,7 +359,7 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Assistant applications
 macro(add_tool_app dir_name app_name)
-  set(TOOL_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/Source/Tools/${dir_name}/main.cpp)
+  set(TOOL_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/source/Tools/${dir_name}/main.cpp)
   if(WIN32)
     list(APPEND TOOL_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
   endif()

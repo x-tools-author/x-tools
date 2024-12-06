@@ -9,7 +9,7 @@
 #pragma once
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#include "xApp/Source/Application.h"
+#include "xApp/source/Application.h"
 #else
 #include "App/Application.h"
 #endif
