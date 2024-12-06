@@ -2,7 +2,11 @@
 # --------------------------------------------------------------------------------------------------
 # Qt-Advanced-Stylesheets-main：https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets
 set(X_TOOLS_STYLES_DIR_NAME "Qt-Advanced-Stylesheets-main")
-option(X_TOOLS_ENABLE_MODULE_STYLESHEET "Enable Qt advanced stylesheet" ON)
+if(ANDROID OR IOS)
+  option(X_TOOLS_ENABLE_MODULE_STYLESHEET "Enable Qt advanced stylesheet" OFF)
+else()
+  option(X_TOOLS_ENABLE_MODULE_STYLESHEET "Enable Qt advanced stylesheet" ON)
+endif()
 if(X_TOOLS_ENABLE_MODULE_STYLESHEET)
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${X_TOOLS_STYLES_DIR_NAME}.zip
                   WORKING_DIRECTORY ${X_TOOLS_THIRD_PARTY_DIR})
