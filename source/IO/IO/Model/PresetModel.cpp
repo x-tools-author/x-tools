@@ -99,13 +99,7 @@ bool PresetModel::removeRows(int row, int count, const QModelIndex &parent)
     }
 
     beginRemoveRows(parent, row, row + count - 1);
-#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
     m_items.remove(row, count);
-#else
-    for (int i = row; i < row+count; ++i) {
-        m_items.removeAt(i);
-    }
-#endif
     endRemoveRows();
     return true;
 }

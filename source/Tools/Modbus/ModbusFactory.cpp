@@ -12,13 +12,8 @@
 #include <QDebug>
 #include <QModbusTcpClient>
 #include <QModbusTcpServer>
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-#include <QModbusRtuSerialMaster>
-#include <QModbusRtuSerialSlave>
-#else
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
-#endif
 
 ModbusFactory::ModbusFactory(QObject *parent)
     : QObject(parent)
@@ -59,18 +54,10 @@ QModbusDevice *ModbusFactory::createDevice(int type)
 {
     if (type == ModbusRtuSerialClient) {
         qInfo() << "Create rtu serial client.";
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-        return new QModbusRtuSerialMaster(this);
-#else
         return new QModbusRtuSerialClient(this);
-#endif
     } else if (type == ModbusRtuSerialServer) {
         qInfo() << "Create rtu serial server.";
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-        return new QModbusRtuSerialSlave(this);
-#else
         return new QModbusRtuSerialServer(this);
-#endif
     } else if (type == ModbusTcpClient) {
         qInfo() << "Create tcp client.";
         return new QModbusTcpClient();
@@ -101,17 +88,9 @@ bool ModbusFactory::isTcpDevice(QModbusDevice *modbus_device)
 bool ModbusFactory::isRtuSerialDevice(QModbusDevice *modbus_device)
 {
     if (modbus_device) {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
         if (qobject_cast<QModbusRtuSerialClient *>(modbus_device)) {
-#else
-        if (qobject_cast<QModbusRtuSerialMaster *>(modbus_device)) {
-#endif
             return true;
-#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
         } else if (qobject_cast<QModbusRtuSerialServer *>(modbus_device)) {
-#else
-        } else if (qobject_cast<QModbusRtuSerialSlave *>(modbus_device)) {
-#endif
             return true;
         }
     }
@@ -307,11 +286,7 @@ void ModbusFactory::setServerDeviceParameters(QModbusDevice *server,
 QModbusReply *ModbusFactory::sendWriteRequest(QModbusDevice *modbus_device,
                                               int register_type,
                                               int start_address,
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-                                              QVector<quint16> values,
-#else
                                               QList<quint16> values,
-#endif
                                               int server_address)
 {
     if (modbus_device && isClientDevice(modbus_device)) {

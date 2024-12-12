@@ -147,7 +147,6 @@ QStringList Application::supportedLanguages()
     return m_languageFlagNameMap.values();
 }
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 QVariantList Application::supportedHighDpiPolicies()
 {
     QMetaEnum metaEnum = QMetaEnum::fromType<Qt::HighDpiScaleFactorRoundingPolicy>();
@@ -157,9 +156,7 @@ QVariantList Application::supportedHighDpiPolicies()
     }
     return list;
 }
-#endif
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 QString Application::highDpiPolicyName(int policy)
 {
     typedef Qt::HighDpiScaleFactorRoundingPolicy Policy;
@@ -175,15 +172,12 @@ QString Application::highDpiPolicyName(int policy)
 
     return policyMap.value(static_cast<Policy>(policy), "Unknown");
 }
-#endif
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 bool Application::isValidHighDpiPolicy(int policy)
 {
     auto policies = supportedHighDpiPolicies();
     return policies.contains(QVariant(policy));
 }
-#endif
 
 QStringList Application::supportedLanguagePrefixes()
 {

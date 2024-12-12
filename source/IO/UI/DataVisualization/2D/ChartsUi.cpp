@@ -67,14 +67,12 @@ ChartsUi::ChartsUi(QWidget *parent)
     m_chart->addAxis(m_axisY, Qt::AlignLeft);
     m_chart->layout()->setContentsMargins(0, 0, 0, 0);
     m_chart->setMargins(QMargins(0, 0, 0, 0));
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     auto currentScheme = Settings::instance()->colorScheme();
     if (currentScheme == static_cast<int>(Qt::ColorScheme::Dark)) {
         m_chart->setTheme(QChart::ChartThemeDark);
     } else if (currentScheme == static_cast<int>(Qt::ColorScheme::Light)) {
         m_chart->setTheme(QChart::ChartThemeLight);
     }
-#endif
 
     ui->widgetChartView->setChart(m_chart);
     int channelCount = ChartsUiSettings::channelCount();

@@ -150,7 +150,6 @@ void initHdpi()
     qputenv("QT_SCALE_FACTOR", "1.5");
 #endif
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     int policy = Settings::instance()->hdpiPolicy();
     if (!Application::isValidHighDpiPolicy(policy)) {
         qWarning() << "The value of hdpi policy is not specified, set to default value:"
@@ -161,7 +160,6 @@ void initHdpi()
     const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
     qInfo() << "The current high dpi policy is:" << cookedPolicy;
-#endif
 }
 
 void initAppStyle()

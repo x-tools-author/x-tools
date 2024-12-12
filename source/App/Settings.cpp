@@ -69,26 +69,18 @@ QString Settings::settingsPath()
 
 int Settings::hdpiPolicy()
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     auto var = value(g_keys.hdpiPolicy);
     if (var.isValid()) {
         return value(g_keys.hdpiPolicy).toInt();
     }
 
     return int(QGuiApplication::highDpiScaleFactorRoundingPolicy());
-#else
-    return 0;
-#endif
 }
 
 void Settings::setHdpiPolicy(int policy)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     setValue(g_keys.hdpiPolicy, policy);
     emit hdpiPolicyChanged();
-#else
-    Q_UNUSED(policy)
-#endif
 }
 
 QString Settings::appStyle()

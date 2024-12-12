@@ -146,9 +146,7 @@ void MainWindow::initMenuOption()
 
     initOptionMenuHdpiPolicy();
     initOptionMenuAppStyleMenu();
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     initOptionMenuColorScheme();
-#endif
     m_optionMenu->addSeparator();
     initOptionMenuSettingsMenu();
 }
@@ -259,7 +257,6 @@ void MainWindow::initOptionMenuSettingsMenu()
 
 void MainWindow::initOptionMenuHdpiPolicy()
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QMenu* menu = new QMenu(tr("HDPI Policy"));
     QActionGroup* actionGroup = new QActionGroup(this);
     int currentPolicy = Settings::instance()->hdpiPolicy();
@@ -278,10 +275,8 @@ void MainWindow::initOptionMenuHdpiPolicy()
     }
     menu->addActions(actionGroup->actions());
     m_optionMenu->addMenu(menu);
-#endif
 }
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 void MainWindow::initOptionMenuColorScheme()
 {
     m_colorSchemeMenu = new QMenu(tr("Color Scheme"));
@@ -332,15 +327,11 @@ void MainWindow::initOptionMenuColorScheme()
     QStyleHints* styleHints = QApplication::styleHints();
     styleHints->setColorScheme(static_cast<Qt::ColorScheme>(currentScheme));
 }
-#endif
 
 void MainWindow::onHdpiPolicyActionTriggered(int policy)
 {
-    Q_UNUSED(policy)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     Settings::instance()->setHdpiPolicy(int(policy));
     tryToReboot();
-#endif
 }
 
 void MainWindow::onAboutActionTriggered()

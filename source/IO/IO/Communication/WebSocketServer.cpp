@@ -87,21 +87,11 @@ void WebSocketServer::setupSocket(QWebSocket *socket)
     connect(socket, &QWebSocket::binaryMessageReceived, socket, [=](const QByteArray &message) {
         onBinaryMessageReceived(socket, message);
     });
-    //TODO:qt6
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+
     connect(socket, &QWebSocket::errorOccurred, socket, [this, flag, socket]() {
         this->m_sockets.removeAll(socket);
         this->removeClient(flag);
     });
-#else
-    connect(socket,
-            QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error),
-            socket,
-            [this, flag, socket]() {
-                this->m_sockets.removeAll(socket);
-                this->removeClient(flag);
-            });
-#endif
     connect(socket, &QWebSocket::disconnected, socket, [this, flag, socket]() {
         this->m_sockets.removeAll(socket);
         this->removeClient(flag);

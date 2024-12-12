@@ -31,11 +31,7 @@ protected:
     Communication *createTransfer() override;
     void onDataChanged(const QModelIndex &topLeft,
                        const QModelIndex &bottomRight,
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
                        const QList<int> &roles = QList<int>()) override;
-#else
-                       const QVector<int> &roles = QVector<int>()) override;
-#endif
 };
 
 } // namespace xTools

@@ -50,15 +50,10 @@ void BleScanner::run()
             &QBluetoothDeviceDiscoveryAgent::finished,
             this,
             &BleScanner::onDiscoveryFinished);
-//TODO:qt6
-#if QT_VERSION>= QT_VERSION_CHECK(6,5,0)
-        connect(m_discover,
+    connect(m_discover,
             &QBluetoothDeviceDiscoveryAgent::errorOccurred,
             this,
             &BleScanner::onDiscoveryErrorOccurred);
-#else
-    connect(m_discover,QOverload<QBluetoothDeviceDiscoveryAgent::Error>::of(&QBluetoothDeviceDiscoveryAgent::error),this,&BleScanner::onDiscoveryErrorOccurred);
-#endif
     connect(m_discover,
             &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
             this,

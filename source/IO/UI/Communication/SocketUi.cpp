@@ -26,11 +26,7 @@ SocketUi::SocketUi(xIO::CommunicationType type, QWidget *parent)
     xIO::setupWebSocketDataChannel(ui->comboBoxChannel);
 
     setupClients(QStringList());
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
     connect(ui->comboBoxWriteTo, &QComboBox::activated, this, [this]() {
-#else
-    connect(ui->comboBoxWriteTo, QOverload<int>::of(&QComboBox::activated), this, [this]() {
-#endif
         QString const flag = ui->comboBoxWriteTo->currentData().toString();
         emit currentClientChanged(flag);
     });
@@ -38,12 +34,7 @@ SocketUi::SocketUi(xIO::CommunicationType type, QWidget *parent)
             &QToolButton::clicked,
             this,
             &SocketUi::invokeDisconnectAll);
-
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
     connect(ui->comboBoxChannel, &QComboBox::activated, this, [this]() {
-#else
-    connect(ui->comboBoxChannel, QOverload<int>::of(&QComboBox::activated), this, [this]() {
-#endif
         if (this->m_socket) {
             this->m_socket->setDataChannel(ui->comboBoxChannel->currentIndex());
         }

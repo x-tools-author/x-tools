@@ -37,27 +37,7 @@ public:
     void outputMessage(QString msg, bool isErrMsg = false);
     void updateProgressBar(int currentValue);
     void changeRemainTime(QString remainTime);
-#if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
-    // The QtCryptographicHashCalculator::Algorithm enum is not export with Q_ENUM in Qt5.6.0
-    enum Algorithm {
-#ifndef QT_CRYPTOGRAPHICHASH_ONLY_SHA1
-        Md4,
-        Md5,
-#endif
-        Sha1 = 2,
-#ifndef QT_CRYPTOGRAPHICHASH_ONLY_SHA1
-        Sha224,
-        Sha256,
-        Sha384,
-        Sha512,
-        Sha3_224,
-        Sha3_256,
-        Sha3_384,
-        Sha3_512
-#endif
-    };
-    Q_ENUM(Algorithm)
-#endif
+
 private:
     void finished();
     void clearMessage();

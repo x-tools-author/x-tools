@@ -200,11 +200,7 @@ Communication *SocketTransferModel::createTransfer()
 
 void SocketTransferModel::onDataChanged(const QModelIndex &topLeft,
                                         const QModelIndex &bottomRight,
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
                                         const QList<int> &roles)
-#else
-                                        const QVector<int> &roles)
-#endif
 {
     AbstractTransferModel::onDataChanged(topLeft, bottomRight, roles);
 

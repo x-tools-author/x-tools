@@ -211,12 +211,7 @@ void CanBusAssistant::onConnectClicked()
     }
 
     QString errorString;
-#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
     m_device = QCanBus::instance()->createDevice(pluginName, interfaceName, &errorString);
-#else
-    m_device = QCanBus::instance()->createDevice(pluginName.toLatin1(), interfaceName);
-    errorString = tr("Create device failed!");
-#endif
     if (!m_device) {
         QMessageBox::warning(this, tr("Error Occurred"), errorString);
         return;

@@ -66,19 +66,14 @@ int exec(int argc,
          const QString &version = QString("0.0.0"),
          const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
 {
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-    QApplication::setAttribute(Qt::AA_Use96Dpi);
-#endif
     QCoreApplication::setApplicationVersion(version);
     doSomethingBeforeAppCreated(argv, appName);
 
     ApplicationT app(argc, argv);
     app.setupLanguage();
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     QStyleHints *styleHints = QApplication::styleHints();
     styleHints->setColorScheme(Qt::ColorScheme::Dark);
-#endif
 
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     Settings::instance()->setValue("startUpTime", dtStr);

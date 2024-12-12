@@ -31,13 +31,9 @@
 #include <QStyledItemDelegate>
 #include <QTextBrowser>
 #include <QtEndian>
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-#include <QModbusRtuSerialMaster>
-#include <QModbusRtuSerialSlave>
-#else
+
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
-#endif
 
 #include "App/Settings.h"
 #include "IO/xIO.h"
@@ -759,11 +755,7 @@ void ModbusAssistant::onReadClicked()
         outputModbusReply(reply, function_code);
 
         if (reply->error() == QModbusDevice::NoError) {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
             updateClientTableViewData(reply->result().values());
-#else
-            updateClientTableViewData(vectorTolist(reply->result().values()));
-#endif
             reply->deleteLater();
         }
     });
@@ -784,11 +776,7 @@ void ModbusAssistant::onWriteClicked()
     QModbusReply *reply = factory->sendWriteRequest(m_modbusDevice,
                                                     registerType,
                                                     start_address,
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
                                                     values,
-#else
-                                                    listToVector(values),
-#endif
                                                     spinBoxServerAddress);
     if (ModbusFactory::Instance()->isValidModbusReply(reply)) {
         connect(reply, &QModbusReply::finished, this, [=]() {
@@ -1249,11 +1237,7 @@ QList<quint16> ModbusAssistant::getClientRegisterValue()
 QByteArray ModbusAssistant::getClientPdu()
 {
     QString text = ui->lineEditPdu->text();
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-    QStringList valueList = text.split(' ', QString::SkipEmptyParts);
-#else
     QStringList valueList = text.split(' ', Qt::SkipEmptyParts);
-#endif
     QByteArray data;
     for (QString &value : valueList) {
         data.append(char(value.toInt(Q_NULLPTR, 16)));
