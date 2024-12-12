@@ -10,19 +10,12 @@
 
 #include <QApplication>
 #include <QDateTime>
+#include <QLineEdit>
 #include <QMainWindow>
 #include <QPixmap>
 #include <QSplashScreen>
 
-class QLineEdit;
-
 namespace xTools {
-
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-#define xSkipEmptyParts Qt::SkipEmptyParts
-#else
-#define xSkipEmptyParts QString::SkipEmptyParts
-#endif
 
 class Application : public QApplication
 {

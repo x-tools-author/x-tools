@@ -39,7 +39,6 @@
 #include <QModbusRtuSerialServer>
 #endif
 
-#include "App/Application.h"
 #include "App/Settings.h"
 #include "IO/xIO.h"
 #include "ModbusFactory.h"
@@ -827,7 +826,7 @@ void ModbusAssistant::onSendClicked()
 
     qWarning() << "Send raw request:"
                << "server address:" << spinBoxServerAddress << "function code:" << function_code
-               << "data:" << QString(xTools::Application::byteArray2Hex(pdu, ' '));
+               << "data:" << QString::fromLatin1(pdu.toHex(' '));
     if (ModbusFactory::Instance()->isValidModbusReply(reply)) {
         connect(reply, &QModbusReply::finished, this, [=]() {
             outputModbusReply(reply, function_code);
@@ -835,7 +834,7 @@ void ModbusAssistant::onSendClicked()
         });
 
         QString info = "pdu(No server address, no crc):";
-        info += QString(xTools::Application::byteArray2Hex(pdu, ' '));
+        info += QString::fromLatin1(pdu.toHex(' '));
         outputMessage(info, false, TXCOLOR, TXFLAG);
     }
 }
@@ -1219,7 +1218,7 @@ void ModbusAssistant::updateServerRegistersViews(int currentFormat, int targetFo
 quint8 ModbusAssistant::getClientFunctionCode()
 {
     QString txt = ui->comboBoxFunctionCode->currentText();
-    QStringList list = txt.split('-', xSkipEmptyParts);
+    QStringList list = txt.split('-', Qt::SkipEmptyParts);
     if (list.length()) {
         return list.first().toInt(Q_NULLPTR, 16);
     }
@@ -1325,7 +1324,7 @@ void ModbusAssistant::outputModbusReply(QModbusReply *reply, int functionCode)
                                "data unit: %3")
                            .arg(spinBoxServerAddress)
                            .arg(functionCode)
-                           .arg(QString::fromLatin1(xTools::Application::byteArray2Hex(data, ' ')));
+                           .arg(QString::fromLatin1(data.toHex(' ')));
         outputMessage(info, false, RXCOLOR, RXFLAG);
     } else if (reply->type() == QModbusReply::ReplyType::Common) {
         QString info = ui->comboBoxFunctionCode->currentText();
