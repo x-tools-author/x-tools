@@ -8,17 +8,9 @@
  **************************************************************************************************/
 #pragma once
 
-#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#include "xApp/source/Application.h"
-#else
 #include "App/Application.h"
-#endif
 
-#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-class Application : public xApp::Application
-#else
 class Application : public xTools::Application
-#endif
 {
     Q_OBJECT
 public:

@@ -8,14 +8,8 @@
  **************************************************************************************************/
 #include "Application.h"
 
-#include <QFile>
-
 Application::Application(int argc, char **argv)
-#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-    : xApp::Application(argc, argv)
-#else
     : xTools::Application(argc, argv)
-#endif
 {
 
 }
