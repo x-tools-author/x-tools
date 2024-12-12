@@ -66,14 +66,14 @@ StyleSheetManager::StyleSheetManager(QObject* parent)
     m_primaryColorMap.insert("light_teal", "#1de9b6");
     m_primaryColorMap.insert("light_yellow", "#ffea00");
 
-    QDir dir(xTools::Settings::instance()->settingsPath());
+    QDir dir(Settings::instance()->settingsPath());
     if (!dir.exists("output")) {
         dir.mkdir("output");
     }
 
     QString appDir = QApplication::applicationDirPath();
     setStylesDirPath(appDir + "/3rd_styles");
-    setOutputDirPath(xTools::Settings::instance()->settingsPath() + "/output");
+    setOutputDirPath(Settings::instance()->settingsPath() + "/output");
     setCurrentStyle("qt_material");
     setCurrentTheme(themeName());
 
@@ -132,7 +132,7 @@ void StyleSheetManager::setAwaysEnableStylesheet(bool enabled)
 
 QString StyleSheetManager::themeName()
 {
-    QString ret = xTools::Settings::instance()->value("themeName").toString();
+    QString ret = Settings::instance()->value("themeName").toString();
     if (ret.isEmpty()) {
         ret = QString("dark_blue");
     }
@@ -142,7 +142,7 @@ QString StyleSheetManager::themeName()
 
 void StyleSheetManager::setThemeName(const QString& themeName)
 {
-    xTools::Settings::instance()->setValue("themeName", themeName);
+    Settings::instance()->setValue("themeName", themeName);
     setCurrentTheme(themeName);
     if (enableStylesheet()) {
         updateStylesheet();
@@ -205,13 +205,13 @@ void StyleSheetManager::updateActionIcon(QAction* action, const QString& color)
 
 bool StyleSheetManager::enableStylesheet()
 {
-    auto settings = xTools::Settings::instance();
+    auto settings = Settings::instance();
     return settings->value("enableStylesheet", m_enableStylesheet).toBool();
 }
 
 void StyleSheetManager::setEnableStylesheet(bool enable)
 {
-    auto settings = xTools::Settings::instance();
+    auto settings = Settings::instance();
     settings->setValue("enableStylesheet", enable);
 }
 

@@ -102,7 +102,7 @@ void qtLogToGoogleLog(QtMsgType type, const QMessageLogContext &context, const Q
     }
 
     if (gOutputLog2Ui) {
-        gOutputLog2Ui(type, context, msg);
+        (*gOutputLog2Ui)(type, context, msg);
     }
 }
 
