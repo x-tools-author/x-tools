@@ -8,66 +8,85 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QActionGroup>
-#include <QApplication>
 #include <QMainWindow>
-#include <QMenu>
-#include <QStyleFactory>
+#include <QObject>
+#include <QSplashScreen>
 
 namespace xTools {
-
-class xTools : public QMainWindow
+class xToolsPrivate;
+class xTools : public QObject
 {
     Q_OBJECT
+    Q_DECLARE_PRIVATE(xTools)
+private:
+    explicit xTools(QObject *parent = Q_NULLPTR);
+    xTools(const xTools &) = delete;
+    xTools &operator=(const xTools &) = delete;
+
 public:
-    explicit xTools(QWidget* parent = Q_NULLPTR);
-    static QIcon cookedIcon(const QString& svgFileName);
-    static QIcon cookedIcon(const QIcon& icon);
+    static xTools &signleton();
 
-    virtual void updateWindowTitle();
+signals:
+    void languageChanged();
 
-protected:
-    QMenu* m_fileMenu;
-    QMenu* m_optionMenu;
-    QMenu* m_languageMenu;
-    QMenu* m_helpMenu;
-    QMenu* m_appStyleMenu;
-    QMenu* m_colorSchemeMenu;
+public:
+    // About splash screen
+    Q_INVOKABLE bool enableSplashScreen();
+    Q_INVOKABLE void setEnableSplashScreen(bool enable);
+    Q_INVOKABLE void setSplashScreenMessage(const QString &msg);
+    Q_INVOKABLE QSplashScreen *splashScreen();
 
-    QAction* m_themeAction{nullptr};
-    QAction* m_exitAction;
+    // About app info
+    Q_INVOKABLE QString appFriendlyName();
+    Q_INVOKABLE void setAppFriendlyName(const QString &name);
+    Q_INVOKABLE QString appVersion();
 
-    QAction* m_gitHubAction;
-    QAction* m_giteeAction;
-    QAction* m_qqGroupAction;
-    QAction* m_aboutAction;
-    QAction* m_aboutQtAction;
+    // About i18n
+    Q_INVOKABLE QString defaultAppLanguage();
+    Q_INVOKABLE QStringList supportedAppLanguages();
+    Q_INVOKABLE QStringList supportedAppLanguagePrefixes();
+    Q_INVOKABLE void setSupportedAppLanguagePrefixes(const QStringList &prefixes);
+    Q_INVOKABLE void setupAppLanguageWithPrefix(const QString &language, const QString &prefix);
+    Q_INVOKABLE void setupAppLanguage(const QString &language = QString());
 
-protected:
-    static QString qtConfFileName();
+    // About git info
+    Q_INVOKABLE QString xToolsVersion();
+    Q_INVOKABLE QString xToolsLastCommit();
+    Q_INVOKABLE QString xToolsLastCommitTime();
 
-private:
-    QActionGroup* m_appStyleActionGroup;
-    QActionGroup* m_languageActionGroup;
-    QActionGroup* m_appPaletteActionGroup;
+    // About high dpi policy
+    Q_INVOKABLE QVariantList supportedHdpiPolicies();
+    Q_INVOKABLE QString hdpiPolicyName(int policy);
+    Q_INVOKABLE bool isValidHdpiPolicy(int policy);
 
-private:
-    void initMenuFile();
-    void initMenuOption();
-    void initMenuLanguage();
-    void initMenuHelp();
+    // About formater
+    Q_INVOKABLE QString stringToHexString(const QString &str);
+    Q_INVOKABLE QString hexStringToString(const QString &str);
+    Q_INVOKABLE QByteArray byteArray2Hex(const QByteArray &source, char separator = '\0');
 
-    void initOptionMenuAppStyleMenu();
-    void initOptionMenuSettingsMenu();
-    void initOptionMenuHdpiPolicy();
-    void initOptionMenuColorScheme();
+    // About date time
+    Q_INVOKABLE QString dateTimeString(const QString &format);
+    Q_INVOKABLE QDateTime buildDateTime();
+    Q_INVOKABLE QString buildDateTimeString(const QString &format);
+    Q_INVOKABLE QString systemDateFormat();
+    Q_INVOKABLE QString systemTimeFormat();
 
-    void onHdpiPolicyActionTriggered(int policy);
-    void onAboutActionTriggered();
+    // About system
+    Q_INVOKABLE QString desktopPath();
+    Q_INVOKABLE QString clipboardText();
+    Q_INVOKABLE void setClipboardText(const QString &text);
+    Q_INVOKABLE void openUrl(const QString &url);
 
-    bool tryToReboot();
-    void createQtConf();
-    void showQqQrCode();
+    // About icon
+    Q_INVOKABLE QIcon toThemeIcon(const QIcon &icon);
+    Q_INVOKABLE QIcon cookedIconFile(const QString &iconFile, const QString &color);
+    Q_INVOKABLE QIcon cookedIcon(const QIcon &icon, const QString &color);
+
+    // Other functions
+    Q_INVOKABLE QMainWindow *mainWindow();
+    Q_INVOKABLE void moveToScreenCenter(QWidget *widget);
+    Q_INVOKABLE bool tryToReboot();
+    Q_INVOKABLE void tryToClearSettings();
 };
 
 } // namespace xTools
