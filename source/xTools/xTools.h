@@ -82,6 +82,23 @@ public:
     Q_INVOKABLE QIcon cookedIconFile(const QString &iconFile, const QString &color);
     Q_INVOKABLE QIcon cookedIcon(const QIcon &icon, const QString &color);
 
+    // About settings
+    Q_INVOKABLE void settingsOpenSettingsFileDir();
+    Q_INVOKABLE QString settingsPath();
+    Q_INVOKABLE int settingsHdpiPolicy();
+    Q_INVOKABLE void settingsSetHdpiPolicy(int policy);
+    Q_INVOKABLE QString settingsAppStyle();
+    Q_INVOKABLE void settingsSetAppStyle(const QString &style);
+    Q_INVOKABLE QString settingsLanguage();
+    Q_INVOKABLE void settingsSetLanguage(const QString &lan);
+    Q_INVOKABLE bool settingsClearSettings();
+    Q_INVOKABLE void settingsSetClearSettings(bool clear);
+    Q_INVOKABLE int settingsColorScheme();
+    Q_INVOKABLE void settingsSetColorScheme(const int colorScheme);
+    Q_INVOKABLE QVariant settingsValue(const QString &key, const QVariant &value = QVariant()) const;
+    Q_INVOKABLE void settingsSetValue(const QString &key, const QVariant &value);
+    Q_INVOKABLE void settingsSetJsonObjectStringValue(const QString &key, const QString &value);
+
     // Other functions
     Q_INVOKABLE QMainWindow *mainWindow();
     Q_INVOKABLE void moveToScreenCenter(QWidget *widget);

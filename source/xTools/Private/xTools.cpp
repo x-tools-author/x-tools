@@ -17,6 +17,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QHBoxLayout>
+#include <QJsonDocument>
 #include <QLabel>
 #include <QMenu>
 #include <QMenuBar>
@@ -361,6 +362,126 @@ QIcon xTools::cookedIcon(const QIcon &icon, const QString &color)
     painter.fillRect(pixmap.rect(), QColor(color));
     QIcon colorIcon = QIcon(pixmap);
     return colorIcon;
+}
+
+void xTools::settingsOpenSettingsFileDir()
+{
+    QDesktopServices::openUrl(settingsPath());
+}
+
+QString xTools::settingsPath()
+{
+    Q_D(xTools);
+    QString settingsFile(d->settingsPath());
+    QString path = settingsFile.left(settingsFile.lastIndexOf("/"));
+    return path;
+}
+
+int xTools::settingsHdpiPolicy()
+{
+    Q_D(xTools);
+    auto var = d->m_settings->value("hdpiPolicy");
+    if (var.isValid()) {
+        return var.toInt();
+    }
+
+    return int(QGuiApplication::highDpiScaleFactorRoundingPolicy());
+}
+
+void xTools::settingsSetHdpiPolicy(int policy)
+{
+    Q_D(xTools);
+    d->m_settings->setValue("hdpiPolicy", policy);
+}
+
+QString xTools::settingsAppStyle()
+{
+    Q_D(xTools);
+    auto var = d->m_settings->value("appStyle");
+    if (var.isValid()) {
+        var.toString();
+    }
+
+    if (QApplication::instance()) {
+        return QApplication::style()->name();
+    }
+
+    return QString("");
+}
+
+void xTools::settingsSetAppStyle(const QString &style)
+{
+    Q_D(xTools);
+    d->m_settings->setValue("appStyle", style);
+}
+
+QString xTools::settingsLanguage()
+{
+    Q_D(xTools);
+    auto var = d->m_settings->value("language");
+    if (var.isValid()) {
+        return var.toString();
+    }
+
+    return QString("");
+}
+
+void xTools::settingsSetLanguage(const QString &lan)
+{
+    Q_D(xTools);
+    d->m_settings->setValue("language", lan);
+}
+
+bool xTools::settingsClearSettings()
+{
+    Q_D(xTools);
+    return d->m_settings->value("clearSettings").toBool();
+}
+
+void xTools::settingsSetClearSettings(bool clear)
+{
+    Q_D(xTools);
+    d->m_settings->setValue("clearSettings", clear);
+}
+
+int xTools::settingsColorScheme()
+{
+    Q_D(xTools);
+    auto var = d->m_settings->value("colorScheme");
+    if (var.isValid()) {
+        return var.toInt();
+    }
+
+    return 0;
+}
+
+void xTools::settingsSetColorScheme(const int colorScheme)
+{
+    Q_D(xTools);
+    d->m_settings->setValue("colorScheme", colorScheme);
+}
+
+QVariant xTools::settingsValue(const QString &key, const QVariant &value) const
+{
+    Q_D(const xTools);
+    return d->m_settings->value(key, value);
+}
+
+void xTools::settingsSetValue(const QString &key, const QVariant &value)
+{
+    Q_D(xTools);
+    d->m_settings->setValue(key, value);
+}
+
+void xTools::settingsSetJsonObjectStringValue(const QString &key, const QString &value)
+{
+    Q_D(xTools);
+    QJsonDocument doc = QJsonDocument::fromJson(value.toUtf8());
+    if (doc.isNull()) {
+        return;
+    }
+
+    d->m_settings->setValue(key, doc.toVariant());
 }
 
 QMainWindow *xTools::mainWindow()
