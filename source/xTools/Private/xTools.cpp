@@ -389,23 +389,17 @@ void xTools::moveToScreenCenter(QWidget *widget)
     }
 }
 
-bool xTools::tryToReboot()
+void xTools::tryToReboot()
 {
-    int ret = QMessageBox::information(nullptr,
-                                       tr("Reboot application to effective"),
-                                       tr("Need to reboot, reboot to effective now?"),
-                                       QMessageBox::Ok | QMessageBox::No,
-                                       QMessageBox::No);
+    int ret = QMessageBox::information(
+        nullptr,
+        QObject::tr("Neet to Reboot"),
+        QObject::tr("The operation need to reboot to effectived, reboot the applicaion now?"),
+        QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok) {
-        QProcess::startDetached(QCoreApplication::applicationFilePath(), QStringList());
-        QTimer::singleShot(1000, qApp, [=]() {
-            qApp->closeAllWindows();
-            qApp->exit();
-        });
-        return true;
+        QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
+        qApp->closeAllWindows();
     }
-
-    return false;
 }
 
 void xTools::tryToClearSettings()
