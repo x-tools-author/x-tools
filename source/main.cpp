@@ -6,14 +6,13 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "Common/xToolsOld.h"
-
-#include "Application.h"
+#include "Common/xTools.h"
 #include "MainWindow.h"
 
 int main(const int argc, char *argv[])
 {
-    xInitResources();
-    const QString version = xTools::Application::appVersioin();
-    return xTools::exec<MainWindow, MainWindow, Application>(argc, argv, QString("xTools"), version);
+    Q_INIT_RESOURCE(xTools);
+    xTools::xTools &xTools = xTools::xTools::singleton();
+    const QString version = xTools.xToolsVersion();
+    return xTools::exec<MainWindow, MainWindow>(argc, argv, QString("xTools"), version);
 }

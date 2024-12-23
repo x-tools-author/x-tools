@@ -8,9 +8,18 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QApplication>
+#include <QDateTime>
 #include <QMainWindow>
 #include <QObject>
 #include <QSplashScreen>
+#include <QStyle>
+#include <QStyleFactory>
+#include <QStyleHints>
+
+#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+#include "StyleSheetManager.h"
+#endif
 
 static void (*gOutputLog2Ui)(QtMsgType, const QMessageLogContext &, const QString &){nullptr};
 
@@ -26,7 +35,11 @@ private:
     xTools &operator=(const xTools &) = delete;
 
 public:
-    static xTools &signleton();
+    static xTools &singleton();
+    static void doSomethingBeforeAppCreated(char *argv[],
+                                            const QString &appName,
+                                            bool forStore = false);
+    static void doSomethingAfterAppExited();
 
 signals:
     void languageChanged();
@@ -42,6 +55,8 @@ public:
     Q_INVOKABLE QString appFriendlyName();
     Q_INVOKABLE void setAppFriendlyName(const QString &name);
     Q_INVOKABLE QString appVersion();
+    Q_INVOKABLE void appInitializing(const QString &appName, bool forStore);
+    Q_INVOKABLE void appInitializingHdpi(const QString &appName, bool forStore);
 
     // About i18n
     Q_INVOKABLE QString defaultAppLanguage();
@@ -102,11 +117,11 @@ public:
     Q_INVOKABLE void settingsSetJsonObjectStringValue(const QString &key, const QString &value);
 
     // About log
-    Q_INVOKABLE void googleLogInitializing(char *argv0);
-    Q_INVOKABLE void googleLogShutdown();
-    Q_INVOKABLE void googleLogToQtLog(QtMsgType type,
-                                      const QMessageLogContext &context,
-                                      const QString &msg);
+    Q_INVOKABLE static void googleLogInitializing(char *argv0);
+    Q_INVOKABLE static void googleLogShutdown();
+    Q_INVOKABLE static void googleLogToQtLog(QtMsgType type,
+                                             const QMessageLogContext &context,
+                                             const QString &msg);
 
     // Other functions
     Q_INVOKABLE QMainWindow *mainWindow();
@@ -114,5 +129,98 @@ public:
     Q_INVOKABLE void tryToReboot();
     Q_INVOKABLE void tryToClearSettings();
 };
+
+/**
+ * \brief exec: Using this function to start the application with a main window, you can specified
+ *  the central widget type of main window. If MainWindow is the same as CentralWidget, the
+ *  main window will not be created and the instance of CentralWidget will be the main window.
+ * \param argc: The number of command line arguments.
+ * \param argv: The command line arguments.
+ * \param appName: The name of the application.
+ * \param version: The version of the application.
+ * \param doSomethingBeforAppExec: The function will be called before the application exec. The
+ * parameter of the function is the instance of the main window and the instance of the application.
+ * \return
+ */
+template<typename CentralWidgetT, typename MainWindowT>
+int exec(int argc,
+         char *argv[],
+         const QString &appName,
+         const QString &appVersion = QString("0.0.0"),
+         const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
+{
+    QCoreApplication::setApplicationVersion(appVersion);
+    xTools::doSomethingBeforeAppCreated(argv, appName);
+
+    QApplication app(argc, argv);
+    xTools &xTools = xTools::singleton();
+    xTools.setupAppLanguage();
+
+    QStyleHints *styleHints = QApplication::styleHints();
+    styleHints->setColorScheme(Qt::ColorScheme::Dark);
+
+    const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+    xTools.settingsSetValue("startUpTime", dtStr);
+
+#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+    auto &styleSheetManager = StyleSheetManager::singleton();
+    const QString styleSheet = styleSheetManager.styleSheet();
+    if (!styleSheet.isEmpty() && !styleSheetManager.currentTheme().isEmpty()) {
+        app.setStyleSheet(styleSheet);
+    }
+#endif
+
+    const QStringList keys = QStyleFactory::keys();
+    qInfo() << "The supported application styles are:" << qPrintable(keys.join(QChar(',')));
+    const QString style = xTools.settingsAppStyle();
+    if (style.isEmpty()) {
+        qWarning() << "The application style is not specified, the default style is:"
+                   << qPrintable(QApplication::style()->objectName());
+    } else if (keys.contains(style) || keys.contains(style.toLower())) {
+        qInfo() << "The current style of application is:" << qPrintable(style);
+        QApplication::setStyle(QStyleFactory::create(style));
+    }
+
+    QWidget *ui;
+    if (std::is_same<CentralWidgetT, MainWindowT>::value) {
+        auto widget = new CentralWidgetT();
+        ui = widget;
+    } else {
+        auto mainWindow = new MainWindowT();
+        auto centralWidget = new CentralWidgetT(mainWindow);
+        mainWindow->setWindowTitle(appName);
+        mainWindow->setCentralWidget(centralWidget);
+        ui = mainWindow;
+    }
+
+    QSplashScreen *splashScreen = xTools.splashScreen();
+    splashScreen->finish(ui);
+    ui->show();
+    ui->resize(static_cast<int>(static_cast<qreal>(ui->height()) * 1.732), ui->height());
+    xTools.moveToScreenCenter(ui);
+    qInfo() << "The size of window is" << ui->size();
+
+    if (doSomethingBeforAppExec) {
+        doSomethingBeforAppExec(ui, &app);
+    }
+
+    const int ret = app.exec();
+    xTools::doSomethingAfterAppExited();
+    return ret;
+}
+
+template<typename CentralWidget>
+int execCentralWidget(int argc,
+                      char *argv[],
+                      const QString &appName,
+                      const QString &appVersion = QString("0.0.0"),
+                      const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
+{
+    return exec<CentralWidget, xTools::MainWindow>(argc,
+                                                   argv,
+                                                   appName,
+                                                   appVersion,
+                                                   doSomethingBeforAppExec);
+}
 
 } // namespace xTools

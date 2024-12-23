@@ -26,7 +26,6 @@
 #include <QProcess>
 #include <QScreen>
 #include <QStyle>
-#include <QStyleFactory>
 #include <QStyleHints>
 #include <QSvgRenderer>
 #include <QTimer>
@@ -73,12 +72,30 @@ xTools::xTools(QObject *parent)
     : QObject(*new xToolsPrivate, parent)
 {}
 
-xTools &xTools::signleton()
+xTools &xTools::singleton()
 {
     Q_ASSERT_X(qApp, "xTools", "The xTools object must be created after application object.");
 
     static xTools instance;
     return instance;
+}
+
+void xTools::doSomethingBeforeAppCreated(char *argv[], const QString &appName, bool forStore)
+{
+    xTools &xTools = singleton();
+    xTools.appInitializing(appName, forStore);
+    xTools.tryToClearSettings();
+
+    xTools.googleLogInitializing(argv[0]);
+#ifdef QT_RELEASE
+    qInstallMessageHandler(googleLogToQtLog);
+#endif
+    xTools.appInitializingHdpi(appName, forStore);
+}
+
+void xTools::doSomethingAfterAppExited()
+{
+    xTools::googleLogShutdown();
 }
 
 bool xTools::enableSplashScreen()
@@ -120,6 +137,39 @@ void xTools::setAppFriendlyName(const QString &name)
 QString xTools::appVersion()
 {
     return QApplication::applicationVersion();
+}
+
+void xTools::appInitializing(const QString &appName, bool forStore)
+{
+    QString cookedAppName = appName;
+    if (forStore) {
+        cookedAppName += QString("(Store)");
+    }
+
+    cookedAppName.remove(" ");
+    QCoreApplication::setOrganizationName(QString("xTools"));
+    QCoreApplication::setOrganizationDomain(QString("IT"));
+    QCoreApplication::setApplicationName(cookedAppName);
+    setAppFriendlyName(appName);
+}
+
+void xTools::appInitializingHdpi(const QString &appName, bool forStore)
+{
+#if 0
+    qputenv("QT_SCALE_FACTOR", "1.5");
+#endif
+
+    Q_D(xTools);
+    int policy = settingsHdpiPolicy();
+    if (!isValidHdpiPolicy(policy)) {
+        qWarning() << "The value of hdpi policy is not specified, set to default value:"
+                   << QGuiApplication::highDpiScaleFactorRoundingPolicy();
+        return;
+    }
+
+    const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
+    qInfo() << "The current high dpi policy is:" << cookedPolicy;
 }
 
 QString xTools::defaultAppLanguage()
@@ -516,10 +566,10 @@ void xTools::settingsSetJsonObjectStringValue(const QString &key, const QString 
 
 void xTools::googleLogInitializing(char *argv0)
 {
-    Q_D(xTools);
-    QString logPath = settingsPath();
+    xTools &xTools = singleton();
+    QString logPath = xTools.settingsPath();
     logPath += "/log";
-    QDir dir(settingsPath());
+    QDir dir(xTools.settingsPath());
     if (!dir.exists(logPath) && !dir.mkpath(logPath)) {
         qWarning() << "Make log directory failed";
     }
