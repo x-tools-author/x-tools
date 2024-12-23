@@ -623,87 +623,82 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="75"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="76"/>
         <source>can0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="106"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="107"/>
         <source>DataFrame</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="107"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="108"/>
         <source>ErrorFrame</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="108"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="109"/>
         <source>RemoteRequestFrame</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="130"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="131"/>
         <source>Hex</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="207"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="208"/>
         <source>Interface Name is Empty</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="208"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="209"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="218"/>
-        <source>Create device failed!</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="221"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="217"/>
         <source>Error Occurred</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="236"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="232"/>
         <source>Connection Error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="237"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="233"/>
         <source>Connection error: %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="318"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="314"/>
         <source>Device is Not Ready</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="319"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="315"/>
         <source>Device is not ready, please connect the device then try angin!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="359"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="355"/>
         <source>Error Occure</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="395"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="391"/>
         <source>unspecified</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="397"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="393"/>
         <source>false</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="398"/>
+        <location filename="../../source/Tools/CANBus/CanBusAssistant.cpp" line="394"/>
         <source>true</source>
         <translation></translation>
     </message>
@@ -958,7 +953,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../source/Tools/FileCheck/FileCheckAssistant.ui" line="125"/>
-        <location filename="../../source/Tools/FileCheck/FileCheckAssistant.cpp" line="175"/>
+        <location filename="../../source/Tools/FileCheck/FileCheckAssistant.cpp" line="171"/>
         <source>Calculate</source>
         <translation></translation>
     </message>
@@ -968,17 +963,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/FileCheck/FileCheckAssistant.cpp" line="67"/>
+        <location filename="../../source/Tools/FileCheck/FileCheckAssistant.cpp" line="63"/>
         <source>File Check Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/FileCheck/FileCheckAssistant.cpp" line="137"/>
+        <location filename="../../source/Tools/FileCheck/FileCheckAssistant.cpp" line="133"/>
         <source>Remaining time</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/FileCheck/FileCheckAssistant.cpp" line="181"/>
+        <location filename="../../source/Tools/FileCheck/FileCheckAssistant.cpp" line="177"/>
         <source>StopCalculating</source>
         <translation></translation>
     </message>
@@ -1309,106 +1304,106 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="119"/>
+        <location filename="../../source/MainWindow.cpp" line="114"/>
         <source>New Window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="127"/>
+        <location filename="../../source/MainWindow.cpp" line="122"/>
         <source>Save Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="132"/>
-        <location filename="../../source/MainWindow.cpp" line="451"/>
+        <location filename="../../source/MainWindow.cpp" line="127"/>
+        <location filename="../../source/MainWindow.cpp" line="446"/>
         <source>Import Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="137"/>
-        <location filename="../../source/MainWindow.cpp" line="464"/>
+        <location filename="../../source/MainWindow.cpp" line="132"/>
+        <location filename="../../source/MainWindow.cpp" line="459"/>
         <source>Export Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="148"/>
+        <location filename="../../source/MainWindow.cpp" line="143"/>
         <source>&amp;Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="152"/>
+        <location filename="../../source/MainWindow.cpp" line="147"/>
         <source>New</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="189"/>
+        <location filename="../../source/MainWindow.cpp" line="184"/>
         <source>Use System Proxy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="199"/>
+        <location filename="../../source/MainWindow.cpp" line="194"/>
         <source>Exit to System Tray</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="217"/>
+        <location filename="../../source/MainWindow.cpp" line="212"/>
         <source>&amp;View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="266"/>
+        <location filename="../../source/MainWindow.cpp" line="261"/>
         <source>Bug from Store</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="283"/>
+        <location filename="../../source/MainWindow.cpp" line="278"/>
         <source>Third Party Open Source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="298"/>
+        <location filename="../../source/MainWindow.cpp" line="293"/>
         <source>Get Sources from Github</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="301"/>
+        <location filename="../../source/MainWindow.cpp" line="296"/>
         <source>Get Sources from Gitee</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="272"/>
-        <location filename="../../source/MainWindow.cpp" line="338"/>
+        <location filename="../../source/MainWindow.cpp" line="267"/>
+        <location filename="../../source/MainWindow.cpp" line="333"/>
         <source>Release History</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="273"/>
+        <location filename="../../source/MainWindow.cpp" line="268"/>
         <source>Join in QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="295"/>
+        <location filename="../../source/MainWindow.cpp" line="290"/>
         <source>Links</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="358"/>
+        <location filename="../../source/MainWindow.cpp" line="353"/>
         <source>QR Code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="367"/>
+        <location filename="../../source/MainWindow.cpp" line="362"/>
         <source>User QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="368"/>
+        <location filename="../../source/MainWindow.cpp" line="363"/>
         <source>Qt QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/MainWindow.cpp" line="453"/>
-        <location filename="../../source/MainWindow.cpp" line="466"/>
+        <location filename="../../source/MainWindow.cpp" line="448"/>
+        <location filename="../../source/MainWindow.cpp" line="461"/>
         <source>Json Files (*.json)</source>
         <translation></translation>
     </message>
@@ -1516,7 +1511,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="273"/>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="966"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="952"/>
         <source>Address</source>
         <translation></translation>
     </message>
@@ -1526,72 +1521,72 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="613"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="617"/>
         <source>Start address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="556"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="560"/>
         <source>Target address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="675"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="679"/>
         <source>Timeout</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="600"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="604"/>
         <source>Address number</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="565"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="569"/>
         <source>Read</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="572"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="576"/>
         <source>Write</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="662"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="666"/>
         <source>Repeat times</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="688"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="692"/>
         <source>Client Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="713"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="717"/>
         <source>Input Control(address and value)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="728"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="732"/>
         <source>Input format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="587"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="591"/>
         <source>Function code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="366"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="370"/>
         <source>Serial Port Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="353"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="357"/>
         <source>Data bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="405"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="409"/>
         <source>Port name</source>
         <translation></translation>
     </message>
@@ -1601,173 +1596,173 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="421"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="425"/>
         <source>Stop bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="386"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="390"/>
         <source>Parity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="459"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="463"/>
         <source>Server Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="466"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="470"/>
         <source>Server address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="480"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="484"/>
         <source>Listen only mode</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="446"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.ui" line="450"/>
         <source>Device busy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="171"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="165"/>
         <source>RtuClient</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="172"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="166"/>
         <source>RtuServer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="173"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="167"/>
         <source>TcpClient</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="174"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="168"/>
         <source>TcpServer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="228"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="222"/>
         <source>NoParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="229"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="223"/>
         <source>EvenParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="230"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="224"/>
         <source>OddParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="231"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="225"/>
         <source>SpaceParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="232"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="226"/>
         <source>MarkParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="237"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="231"/>
         <source>0x01-ReadCoils</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="238"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="232"/>
         <source>0x02-ReadDiscreteInputs</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="239"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="233"/>
         <source>0x03-ReadHoldingRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="240"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="234"/>
         <source>0x04-ReadInputRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="241"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="235"/>
         <source>0x05-WriteSingleCoil</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="242"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="236"/>
         <source>0x06-WriteSingleRegister</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="243"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="237"/>
         <source>0x0f-WriteMultipleCoils</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="244"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="238"/>
         <source>0x10-WriteMultipleRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="286"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="280"/>
         <source>Coils</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="286"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="280"/>
         <source>DiscreteInputs</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="287"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="281"/>
         <source>InputRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="287"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="281"/>
         <source>HoldingRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="549"/>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="1316"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="543"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="1298"/>
         <source>Error occured</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="626"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="620"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="629"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="623"/>
         <source>Can not open device</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="966"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="952"/>
         <source>Value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="966"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="952"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="1366"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="1348"/>
         <source>Device is not Ready</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="1367"/>
+        <location filename="../../source/Tools/Modbus/ModbusAssistant.cpp" line="1349"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation></translation>
     </message>
@@ -1775,22 +1770,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ModbusFactory</name>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusFactory.cpp" line="43"/>
+        <location filename="../../source/Tools/Modbus/ModbusFactory.cpp" line="38"/>
         <source>RTU Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusFactory.cpp" line="45"/>
+        <location filename="../../source/Tools/Modbus/ModbusFactory.cpp" line="40"/>
         <source>RTU Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusFactory.cpp" line="47"/>
+        <location filename="../../source/Tools/Modbus/ModbusFactory.cpp" line="42"/>
         <source>TCP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Modbus/ModbusFactory.cpp" line="49"/>
+        <location filename="../../source/Tools/Modbus/ModbusFactory.cpp" line="44"/>
         <source>TCP Server</source>
         <translation></translation>
     </message>
@@ -1864,150 +1859,125 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PingAssistant</name>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="158"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="154"/>
         <source>Total: --, Active: --, Finished: --, Remain: --</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="168"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="164"/>
         <source>Target Address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="168"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="164"/>
         <source>Online Status</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="168"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="164"/>
         <source>Comparing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="169"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="165"/>
         <source>Host Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="187"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="183"/>
         <source>Start scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="195"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="191"/>
         <source>Pause scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="203"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="199"/>
         <source>Stop scan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="216"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="212"/>
         <source>Start address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="226"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="222"/>
         <source>End address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="237"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="233"/>
         <source>Timeout(S)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="256"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="252"/>
         <source>Show all</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="257"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="253"/>
         <source>Show online</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="388"/>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="403"/>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="412"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="384"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="399"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="408"/>
         <source>IP Error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="389"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="385"/>
         <source>IP settings error, the start ip and end ip must be set, please check and try again. </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="404"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="400"/>
         <source>IP settings error, the start ip and end ip must be in the same network segment, please check and try again. </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="413"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="409"/>
         <source>IP settings error, the start ip must be less than the end ip, please check and try again.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="459"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="455"/>
         <source>Total：%1，Active：%2，Finished：%3，Remain：%4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="518"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="514"/>
         <source>Scanning</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="530"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="526"/>
         <source>Online</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="530"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="526"/>
         <source>Offline</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="566"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="562"/>
         <source>Scanning Finished</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="567"/>
+        <location filename="../../source/Tools/Ping/PingAssistant.cpp" line="563"/>
         <source>Scanning finished, you can screen out the result by the toolbar.</source>
         <translation></translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
-    <message>
-        <location filename="../../source/Common/xTools.cpp" line="35"/>
-        <source>Critical Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/xTools.cpp" line="36"/>
-        <source>The application has been crashed, clear settings file(all settings data of the application will be clear!) and reboot the application?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/xTools.cpp" line="109"/>
-        <source>(Store)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/xTools.cpp" line="198"/>
-        <source>Neet to Reboot</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/xTools.cpp" line="199"/>
-        <source>The operation need to reboot to effectived, reboot the applicaion now?</source>
-        <translation></translation>
-    </message>
     <message>
         <location filename="../../source/IO/Unit/CRC.cpp" line="68"/>
         <source>Unknown</source>
@@ -2415,62 +2385,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xTools::Application</name>
-    <message>
-        <location filename="../../source/Common/Application.cpp" line="79"/>
-        <source>Initialize application...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/Application.cpp" line="167"/>
-        <source>System</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/Application.cpp" line="168"/>
-        <source>Round up for .5 and above</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/Application.cpp" line="169"/>
-        <source>Always round up</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/Application.cpp" line="170"/>
-        <source>Always round down</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/Application.cpp" line="171"/>
-        <source>Round up for .75 and above</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/Application.cpp" line="172"/>
-        <source>Don&apos;t round</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/Application.cpp" line="320"/>
-        <source>Reboot application to effective</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../source/Common/Application.cpp" line="321"/>
-        <source>Need to reboot, reboot to effective now?</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
     <name>xTools::BleCentral</name>
     <message>
-        <location filename="../../source/IO/IO/Communication/BleCentral.cpp" line="98"/>
+        <location filename="../../source/IO/IO/Communication/BleCentral.cpp" line="94"/>
         <source>Characteristic does not support write</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/IO/IO/Communication/BleCentral.cpp" line="104"/>
+        <location filename="../../source/IO/IO/Communication/BleCentral.cpp" line="100"/>
         <source>Characteristic does not support write without response</source>
         <translation></translation>
     </message>
@@ -2529,12 +2451,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::ChartsUi</name>
     <message>
-        <location filename="../../source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="249"/>
+        <location filename="../../source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="247"/>
         <source>Import Data from Excel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="280"/>
+        <location filename="../../source/IO/UI/DataVisualization/2D/ChartsUi.cpp" line="278"/>
         <source>Export Data to Excel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2599,7 +2521,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xTools::EmitterModel</name>
     <message>
         <location filename="../../source/IO/IO/Model/EmitterModel.cpp" line="42"/>
-        <location filename="../../source/IO/IO/Model/EmitterModel.cpp" line="139"/>
+        <location filename="../../source/IO/IO/Model/EmitterModel.cpp" line="133"/>
         <source>Enable</source>
         <translation></translation>
     </message>
@@ -2614,17 +2536,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/IO/IO/Model/EmitterModel.cpp" line="141"/>
+        <location filename="../../source/IO/IO/Model/EmitterModel.cpp" line="135"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/IO/IO/Model/EmitterModel.cpp" line="143"/>
+        <location filename="../../source/IO/IO/Model/EmitterModel.cpp" line="137"/>
         <source>Interval</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/IO/IO/Model/EmitterModel.cpp" line="145"/>
+        <location filename="../../source/IO/IO/Model/EmitterModel.cpp" line="139"/>
         <source>Data</source>
         <translation></translation>
     </message>
@@ -2632,124 +2554,124 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::MainWindow</name>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="134"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="131"/>
         <source>&amp;File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="135"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="132"/>
         <source>Exit Application</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="144"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="141"/>
         <source>&amp;Options</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="158"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="153"/>
         <source>&amp;Languages</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="195"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="185"/>
         <source>&amp;Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="196"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="186"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="199"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="189"/>
         <source>Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="211"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="202"/>
         <source>Application Style</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="240"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="231"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="243"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="234"/>
         <source>Clear Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="250"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="242"/>
         <source>Open Settings Directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="263"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="252"/>
         <source>HDPI Policy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="287"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="275"/>
         <source>Color Scheme</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="289"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="277"/>
         <source>System</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="290"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="278"/>
         <source>Dark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="291"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="279"/>
         <source>Light</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="356"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="344"/>
         <source>(A Part of xTools Project)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="358"/>
-        <location filename="../../source/Common/MainWindow.cpp" line="361"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="346"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="349"/>
         <source>Commit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="363"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="351"/>
         <source>Build Date</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="365"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="353"/>
         <source>All rights reserved.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="197"/>
-        <location filename="../../source/Common/MainWindow.cpp" line="366"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="187"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="354"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="391"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="379"/>
         <source>QR Code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="395"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="383"/>
         <source>User QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/MainWindow.cpp" line="396"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="384"/>
         <source>Qt QQ Group</source>
         <translation></translation>
     </message>
@@ -2762,12 +2684,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/IO/IO/Model/Preset.cpp" line="163"/>
+        <location filename="../../source/IO/IO/Model/Preset.cpp" line="157"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/IO/IO/Model/Preset.cpp" line="165"/>
+        <location filename="../../source/IO/IO/Model/Preset.cpp" line="159"/>
         <source>Data</source>
         <translation></translation>
     </message>
@@ -2780,12 +2702,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/IO/IO/Model/PresetModel.cpp" line="121"/>
+        <location filename="../../source/IO/IO/Model/PresetModel.cpp" line="115"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/IO/IO/Model/PresetModel.cpp" line="123"/>
+        <location filename="../../source/IO/IO/Model/PresetModel.cpp" line="117"/>
         <source>Data</source>
         <translation></translation>
     </message>
@@ -3002,7 +2924,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::SocketUi</name>
     <message>
-        <location filename="../../source/IO/UI/Communication/SocketUi.cpp" line="201"/>
+        <location filename="../../source/IO/UI/Communication/SocketUi.cpp" line="192"/>
         <source>All clients</source>
         <translation></translation>
     </message>
@@ -3018,117 +2940,117 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::StyleSheetManager</name>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="27"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="26"/>
         <source>Dark Amber</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="28"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="27"/>
         <source>Dark Blue</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="29"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="28"/>
         <source>Dark Cyan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="30"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="29"/>
         <source>Dark Light Green</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="31"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="30"/>
         <source>Dark Pink</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="32"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="31"/>
         <source>Dark Purple</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="33"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="32"/>
         <source>Dark Red</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="34"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="33"/>
         <source>Dark Teal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="35"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="34"/>
         <source>Dark Yellow</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="37"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="36"/>
         <source>Light Amber</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="38"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="37"/>
         <source>Light Blue</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="39"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="38"/>
         <source>Light Cyan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="40"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="39"/>
         <source>Light Cyan(500)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="41"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="40"/>
         <source>Light Light Green</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="42"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="41"/>
         <source>Light Pink</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="43"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="42"/>
         <source>Light Purple</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="44"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="43"/>
         <source>Light Red</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="45"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="44"/>
         <source>Light Teal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="46"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="45"/>
         <source>Light Yellow</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="91"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="90"/>
         <source>Enable Stylesheet</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="86"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="85"/>
         <source>Application Stylesheet</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="241"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="238"/>
         <source>Warning</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../source/Common/StyleSheetManager.cpp" line="241"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="238"/>
         <source>Please enable stylesheet first!</source>
         <translation></translation>
     </message>
@@ -3234,6 +3156,49 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../source/IO/xIO.cpp" line="802"/>
         <source>Unidirectional</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>xTools::xTools</name>
+    <message>
+        <location filename="../../source/Common/xTools.cpp" line="385"/>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../source/Common/xTools.cpp" line="386"/>
+        <source>Round up for .5 and above</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../source/Common/xTools.cpp" line="387"/>
+        <source>Always round up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../source/Common/xTools.cpp" line="388"/>
+        <source>Always round down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../source/Common/xTools.cpp" line="389"/>
+        <source>Round up for .75 and above</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../source/Common/xTools.cpp" line="390"/>
+        <source>Don&apos;t round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../source/Common/xTools.cpp" line="656"/>
+        <source>Need to Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../source/Common/xTools.cpp" line="657"/>
+        <source>The operation need to reboot to effected, reboot the application now?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
