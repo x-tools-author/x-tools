@@ -163,10 +163,7 @@ void MainWindow::initMenuLanguage()
         m_languageActionGroup->addAction(action);
 
         connect(action, &QAction::triggered, this, [=]() {
-#if 0
-            xTools& tools = xTools::singleton();
-            tools.setupAppLanguage(language);
-#endif
+            g_xTools.setupAppLanguage(language);
             xTools::tryToReboot();
         });
 
@@ -217,10 +214,7 @@ void MainWindow::initOptionMenuAppStyleMenu()
         }
 
         connect(action, &QAction::triggered, this, [=]() {
-#if 0
-            xTools& xTools = xTools::singleton();
-            xTools.settingsSetAppStyle(key);
-#endif
+            g_xTools.settingsSetAppStyle(key);
             tryToReboot();
         });
     }
