@@ -130,28 +130,22 @@ void xTools::googleLogToQtLog(QtMsgType type, const QMessageLogContext &context,
     }
 }
 
-bool xTools::enableSplashScreen()
+bool xTools::splashScreenIsEnable()
 {
     Q_D(xTools);
     return d->m_enableSplashScreen;
 }
 
-void xTools::setEnableSplashScreen(bool enable)
+void xTools::splashScreenSetIsEnable(bool enable)
 {
     Q_D(xTools);
     d->m_enableSplashScreen = enable;
 }
 
-void xTools::setSplashScreenMessage(const QString &msg)
+void xTools::splashScreenSetMessage(const QString &msg)
 {
     Q_D(xTools);
     d->m_splashScreen->showMessage(msg);
-}
-
-QSplashScreen *xTools::splashScreen()
-{
-    Q_D(xTools);
-    return d->m_splashScreen;
 }
 
 void xTools::splashScreenShow()
@@ -181,21 +175,22 @@ void xTools::splashScreenShow()
     d->m_splashScreen->show();
 }
 
+QSplashScreen *xTools::splashScreenGet()
+{
+    Q_D(xTools);
+    return d->m_splashScreen;
+}
+
 QString xTools::appFriendlyName()
 {
     Q_D(xTools);
     return d->m_appFriendlyName;
 }
 
-void xTools::setAppFriendlyName(const QString &name)
+void xTools::appSetFriendlyName(const QString &name)
 {
     Q_D(xTools);
     d->m_appFriendlyName = name;
-}
-
-QString xTools::appVersion()
-{
-    return QApplication::applicationVersion();
 }
 
 void xTools::appInitializing(const QString &appName, bool forStore)
@@ -209,7 +204,7 @@ void xTools::appInitializing(const QString &appName, bool forStore)
     QCoreApplication::setOrganizationName(QString("xTools"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
     QCoreApplication::setApplicationName(cookedAppName);
-    setAppFriendlyName(appName);
+    appSetFriendlyName(appName);
 }
 
 void xTools::appInitializingHdpi(const QString &appName, bool forStore)
@@ -220,7 +215,7 @@ void xTools::appInitializingHdpi(const QString &appName, bool forStore)
 
     Q_D(xTools);
     int policy = settingsHdpiPolicy();
-    if (!isValidHdpiPolicy(policy)) {
+    if (!hdpiIsValidPolicy(policy)) {
         qWarning() << "The value of hdpi policy is not specified, set to default value:"
                    << QGuiApplication::highDpiScaleFactorRoundingPolicy();
         return;
@@ -231,7 +226,12 @@ void xTools::appInitializingHdpi(const QString &appName, bool forStore)
     qInfo() << "The current high dpi policy is:" << cookedPolicy;
 }
 
-QString xTools::defaultAppLanguage()
+QString xTools::appVersion()
+{
+    return QApplication::applicationVersion();
+}
+
+QString xTools::languageSetDefaultLanguage()
 {
     Q_D(xTools);
     QSettings *settings = d->m_settings;
@@ -248,26 +248,26 @@ QString xTools::defaultAppLanguage()
     return d->m_languageFlagNameMap.value(language);
 }
 
-QStringList xTools::supportedAppLanguages()
+QStringList xTools::languageSupportedLanguages()
 {
     Q_D(xTools);
     return d->m_languageFlagNameMap.values();
 }
 
-QStringList xTools::supportedAppLanguagePrefixes()
+QStringList xTools::languageSupportedPrefixes()
 {
     Q_D(xTools);
     // Such as "xToolsCore", "xApp"
     return d->m_appSupportedLanguagePrefixes;
 }
 
-void xTools::setSupportedAppLanguagePrefixes(const QStringList &prefixes)
+void xTools::languageSetSupportedPrefixes(const QStringList &prefixes)
 {
     Q_D(xTools);
     d->m_appSupportedLanguagePrefixes = prefixes;
 }
 
-void xTools::setupAppLanguageWithPrefix(const QString &language, const QString &prefix)
+void xTools::languageSetupAppLanguageWithPrefix(const QString &language, const QString &prefix)
 {
     Q_D(xTools);
     QString key = d->m_languageFlagNameMap.key(language);
@@ -315,20 +315,20 @@ void xTools::setupAppLanguageWithPrefix(const QString &language, const QString &
     }
 }
 
-void xTools::setupAppLanguage(const QString &language)
+void xTools::languageSetupAppLanguage(const QString &language)
 {
     Q_D(xTools);
     QString tmp = language;
     if (tmp.isEmpty()) {
         tmp = d->m_settings->value("language").toString();
         if (tmp.isEmpty()) {
-            tmp = defaultAppLanguage();
+            tmp = languageSetDefaultLanguage();
         }
     }
 
-    QStringList prefixes = supportedAppLanguagePrefixes();
+    QStringList prefixes = languageSupportedPrefixes();
     for (const auto &prefix : prefixes) {
-        setupAppLanguageWithPrefix(tmp, prefix);
+        languageSetupAppLanguageWithPrefix(tmp, prefix);
     }
 }
 
@@ -367,7 +367,7 @@ QString xTools::xToolsLastCommitTime()
 #endif
 }
 
-QVariantList xTools::supportedHdpiPolicies()
+QVariantList xTools::hdpiSupportedPolicies()
 {
     QMetaEnum metaEnum = QMetaEnum::fromType<Qt::HighDpiScaleFactorRoundingPolicy>();
     QVariantList list;
@@ -393,9 +393,9 @@ QString xTools::hdpiPolicyName(int policy)
     return policyMap.value(static_cast<Policy>(policy), "Unknown");
 }
 
-bool xTools::isValidHdpiPolicy(int policy)
+bool xTools::hdpiIsValidPolicy(int policy)
 {
-    auto policies = supportedHdpiPolicies();
+    auto policies = hdpiSupportedPolicies();
     return policies.contains(QVariant(policy));
 }
 

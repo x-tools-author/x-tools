@@ -56,26 +56,27 @@ signals:
 
 public:
     // About splash screen
-    Q_INVOKABLE bool enableSplashScreen();
-    Q_INVOKABLE void setEnableSplashScreen(bool enable);
-    Q_INVOKABLE void setSplashScreenMessage(const QString &msg);
-    Q_INVOKABLE QSplashScreen *splashScreen();
+    Q_INVOKABLE bool splashScreenIsEnable();
+    Q_INVOKABLE void splashScreenSetIsEnable(bool enable);
+    Q_INVOKABLE void splashScreenSetMessage(const QString &msg);
     Q_INVOKABLE void splashScreenShow();
+    Q_INVOKABLE QSplashScreen *splashScreenGet();
 
     // About app info
     Q_INVOKABLE QString appFriendlyName();
-    Q_INVOKABLE void setAppFriendlyName(const QString &name);
-    Q_INVOKABLE QString appVersion();
+    Q_INVOKABLE void appSetFriendlyName(const QString &name);
     Q_INVOKABLE void appInitializing(const QString &appName, bool forStore);
     Q_INVOKABLE void appInitializingHdpi(const QString &appName, bool forStore);
+    Q_INVOKABLE QString appVersion();
 
     // About i18n
-    Q_INVOKABLE QString defaultAppLanguage();
-    Q_INVOKABLE QStringList supportedAppLanguages();
-    Q_INVOKABLE QStringList supportedAppLanguagePrefixes();
-    Q_INVOKABLE void setSupportedAppLanguagePrefixes(const QStringList &prefixes);
-    Q_INVOKABLE void setupAppLanguageWithPrefix(const QString &language, const QString &prefix);
-    Q_INVOKABLE void setupAppLanguage(const QString &language = QString());
+    Q_INVOKABLE QString languageSetDefaultLanguage();
+    Q_INVOKABLE QStringList languageSupportedLanguages();
+    Q_INVOKABLE QStringList languageSupportedPrefixes();
+    Q_INVOKABLE void languageSetSupportedPrefixes(const QStringList &prefixes);
+    Q_INVOKABLE void languageSetupAppLanguageWithPrefix(const QString &language,
+                                                        const QString &prefix);
+    Q_INVOKABLE void languageSetupAppLanguage(const QString &language = QString());
 
     // About git info
     Q_INVOKABLE QString xToolsVersion();
@@ -83,9 +84,9 @@ public:
     Q_INVOKABLE QString xToolsLastCommitTime();
 
     // About high dpi policy
-    Q_INVOKABLE QVariantList supportedHdpiPolicies();
+    Q_INVOKABLE QVariantList hdpiSupportedPolicies();
     Q_INVOKABLE QString hdpiPolicyName(int policy);
-    Q_INVOKABLE bool isValidHdpiPolicy(int policy);
+    Q_INVOKABLE bool hdpiIsValidPolicy(int policy);
 
     // About formater
     Q_INVOKABLE QString stringToHexString(const QString &str);
@@ -159,7 +160,7 @@ int exec(int argc,
 
     QApplication app(argc, argv);
     g_xTools.splashScreenShow();
-    g_xTools.setupAppLanguage();
+    g_xTools.languageSetupAppLanguage();
 
     QStyleHints *styleHints = QApplication::styleHints();
     styleHints->setColorScheme(static_cast<Qt::ColorScheme>(g_xTools.settingsColorScheme()));
@@ -198,7 +199,7 @@ int exec(int argc,
         ui = mainWindow;
     }
 
-    QSplashScreen *splashScreen = g_xTools.splashScreen();
+    QSplashScreen *splashScreen = g_xTools.splashScreenGet();
     splashScreen->finish(ui);
     ui->show();
     ui->resize(static_cast<int>(static_cast<qreal>(ui->height()) * 1.732), ui->height());

@@ -154,7 +154,7 @@ void MainWindow::initMenuLanguage()
     menuBar()->addMenu(m_languageMenu);
 
     xTools& xTools = xTools::singleton();
-    QStringList languages = xTools.supportedAppLanguages();
+    QStringList languages = xTools.languageSupportedLanguages();
     QString settingLanguage = xTools.settingsLanguage();
     for (auto& language : languages) {
         auto* action = new QAction(language, this);
@@ -163,12 +163,12 @@ void MainWindow::initMenuLanguage()
         m_languageActionGroup->addAction(action);
 
         connect(action, &QAction::triggered, this, [=]() {
-            g_xTools.setupAppLanguage(language);
+            g_xTools.languageSetupAppLanguage(language);
             g_xTools.tryToReboot();
         });
 
         if (settingLanguage.isEmpty()) {
-            if (language == xTools.defaultAppLanguage()) {
+            if (language == xTools.languageSetDefaultLanguage()) {
                 action->setChecked(true);
             }
         } else {
@@ -253,7 +253,7 @@ void MainWindow::initOptionMenuHdpiPolicy()
     QActionGroup* actionGroup = new QActionGroup(this);
     xTools& xTools = xTools::singleton();
     int currentPolicy = xTools.settingsHdpiPolicy();
-    auto supportedPolicies = xTools.supportedHdpiPolicies();
+    auto supportedPolicies = xTools.hdpiSupportedPolicies();
     for (auto& policy : supportedPolicies) {
         auto name = xTools.hdpiPolicyName(policy.toInt());
         auto action = menu->addAction(name, this, [=]() {
