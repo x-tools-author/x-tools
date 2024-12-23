@@ -87,7 +87,7 @@ public:
     }
 
     bool m_enableSplashScreen = true;
-    QSplashScreen m_splashScreen;
+    QSplashScreen *m_splashScreen{nullptr};
     QString m_appFriendlyName;
     QSettings *m_settings;
     QMap<QString, QString> m_languageFlagNameMap;

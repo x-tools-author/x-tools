@@ -60,6 +60,7 @@ public:
     Q_INVOKABLE void setEnableSplashScreen(bool enable);
     Q_INVOKABLE void setSplashScreenMessage(const QString &msg);
     Q_INVOKABLE QSplashScreen *splashScreen();
+    Q_INVOKABLE void splashScreenShow();
 
     // About app info
     Q_INVOKABLE QString appFriendlyName();
@@ -154,17 +155,17 @@ int exec(int argc,
          const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
 {
     QCoreApplication::setApplicationVersion(appVersion);
-    //xTools::doSomethingBeforeAppCreated(argv, appName);
+    xTools::doSomethingBeforeAppCreated(argv, appName);
 
     QApplication app(argc, argv);
-    xTools &xTools = xTools::singleton();
-    xTools.setupAppLanguage();
+    g_xTools.splashScreenShow();
+    g_xTools.setupAppLanguage();
 
     QStyleHints *styleHints = QApplication::styleHints();
-    styleHints->setColorScheme(Qt::ColorScheme::Dark);
+    styleHints->setColorScheme(static_cast<Qt::ColorScheme>(g_xTools.settingsColorScheme()));
 
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
-    xTools.settingsSetValue("startUpTime", dtStr);
+    g_xTools.settingsSetValue("startUpTime", dtStr);
 
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
     auto &styleSheetManager = StyleSheetManager::singleton();
@@ -176,7 +177,7 @@ int exec(int argc,
 
     const QStringList keys = QStyleFactory::keys();
     qInfo() << "The supported application styles are:" << qPrintable(keys.join(QChar(',')));
-    const QString style = xTools.settingsAppStyle();
+    const QString style = g_xTools.settingsAppStyle();
     if (style.isEmpty()) {
         qWarning() << "The application style is not specified, the default style is:"
                    << qPrintable(QApplication::style()->objectName());
@@ -197,19 +198,18 @@ int exec(int argc,
         ui = mainWindow;
     }
 
-    QSplashScreen *splashScreen = xTools.splashScreen();
+    QSplashScreen *splashScreen = g_xTools.splashScreen();
     splashScreen->finish(ui);
     ui->show();
     ui->resize(static_cast<int>(static_cast<qreal>(ui->height()) * 1.732), ui->height());
-    xTools.moveToScreenCenter(ui);
-    qInfo() << "The size of window is" << ui->size();
+    g_xTools.moveToScreenCenter(ui);
 
     if (doSomethingBeforAppExec) {
         doSomethingBeforAppExec(ui, &app);
     }
 
     const int ret = app.exec();
-    //xTools::doSomethingAfterAppExited();
+    xTools::doSomethingAfterAppExited();
     return ret;
 }
 

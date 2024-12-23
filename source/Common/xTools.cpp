@@ -145,13 +145,40 @@ void xTools::setEnableSplashScreen(bool enable)
 void xTools::setSplashScreenMessage(const QString &msg)
 {
     Q_D(xTools);
-    d->m_splashScreen.showMessage(msg);
+    d->m_splashScreen->showMessage(msg);
 }
 
 QSplashScreen *xTools::splashScreen()
 {
     Q_D(xTools);
-    return &d->m_splashScreen;
+    return d->m_splashScreen;
+}
+
+void xTools::splashScreenShow()
+{
+    if (!qApp) {
+        return;
+    }
+
+    QFont font = qApp->font();
+    font.setPixelSize(52);
+
+    QFontMetrics fontMetrics(font);
+    const QString displayName = g_xTools.appFriendlyName();
+    int width = fontMetrics.boundingRect(displayName).width() * 1.2;
+
+    QPixmap pixmap(width < 600 ? 600 : width, 260);
+    pixmap.fill(QColor(0x2d2d30));
+
+    QPainter painter(&pixmap);
+    painter.setPen(QColor(Qt::white));
+    painter.setFont(font);
+    painter.drawText(pixmap.rect(), Qt::AlignHCenter | Qt::AlignVCenter, displayName);
+    painter.drawRect(pixmap.rect() - QMargins(1, 1, 1, 1));
+
+    Q_D(xTools);
+    d->m_splashScreen = new QSplashScreen(pixmap);
+    d->m_splashScreen->show();
 }
 
 QString xTools::appFriendlyName()
@@ -559,7 +586,7 @@ void xTools::settingsSetClearSettings(bool clear)
 int xTools::settingsColorScheme()
 {
     Q_D(xTools);
-    auto var = d->m_settings->value("colorScheme");
+    auto var = d->m_settings->value("colorScheme", static_cast<int>(Qt::ColorScheme::Unknown));
     if (var.isValid()) {
         return var.toInt();
     }
