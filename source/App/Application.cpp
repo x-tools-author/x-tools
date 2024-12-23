@@ -36,7 +36,7 @@
 #include <QTimer>
 #include <QTranslator>
 
-#include "App/Settings.h"
+#include "Common/Settings.h"
 
 namespace xTools {
 

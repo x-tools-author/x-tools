@@ -31,8 +31,8 @@
 #include <QTimer>
 #include <QUrl>
 
-#include "App/Application.h"
-#include "App/Settings.h"
+#include "Common/Application.h"
+#include "Common/Settings.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
 #include "StyleSheetManager.h"

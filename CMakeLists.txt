@@ -83,8 +83,8 @@ x_tools_add_third_party("qmdnsengine-master")
 if(NOT X_TOOLS_ENABLE_MODULE_STYLESHEET)
   message(STATUS "Stylesheet module is disable, stylesheet files will be removed.")
   set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/App/StyleSheetManager.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/App/StyleSheetManager.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/Common/StyleSheetManager.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/Common/StyleSheetManager.cpp)
 endif()
 
 # HID

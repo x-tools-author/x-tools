@@ -9,9 +9,9 @@
 #pragma once
 
 #ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#include "xApp/source/MainWindow.h"
+#include "xCommon/source/MainWindow.h"
 #else
-#include "App/MainWindow.h"
+#include "Common/MainWindow.h"
 #endif
 
 class IOPage;

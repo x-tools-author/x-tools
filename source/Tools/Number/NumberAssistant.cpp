@@ -9,7 +9,7 @@
 #include "NumberAssistant.h"
 #include "ui_NumberAssistant.h"
 
-#include "App/Application.h"
+#include "Common/Application.h"
 #include "IO/xIO.h"
 
 NumberAssistant::NumberAssistant(QWidget *parent)

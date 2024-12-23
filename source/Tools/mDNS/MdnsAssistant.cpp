@@ -16,7 +16,7 @@
 #include <QMessageBox>
 #include <QTreeWidgetItem>
 
-#include "App/Settings.h"
+#include "Common/Settings.h"
 #include "MdnsServer.h"
 
 MdnsAssistant::MdnsAssistant(QWidget *parent)

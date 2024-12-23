@@ -26,8 +26,8 @@
 #include <QTextBrowser>
 #include <QVariant>
 
-#include "App/Settings.h"
 #include "AssistantFactory.h"
+#include "Common/Settings.h"
 #include "IOPage/IOPage.h"
 
 #ifdef Q_OS_WIN

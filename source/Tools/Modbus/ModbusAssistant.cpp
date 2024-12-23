@@ -35,7 +35,7 @@
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
 
-#include "App/Settings.h"
+#include "Common/Settings.h"
 #include "IO/xIO.h"
 #include "ModbusFactory.h"
 

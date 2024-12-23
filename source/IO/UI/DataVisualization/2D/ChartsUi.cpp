@@ -27,8 +27,8 @@
 
 #include <xlsxdocument.h>
 
-#include "App/Settings.h"
 #include "ChartsUiSettings.h"
+#include "Common/Settings.h"
 #include "IO/IO/DataVisualization/2D/Charts.h"
 
 namespace xTools {

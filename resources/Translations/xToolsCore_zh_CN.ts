@@ -2024,27 +2024,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../source/App/xTools.cpp" line="35"/>
+        <location filename="../../source/Common/xTools.cpp" line="35"/>
         <source>Critical Error</source>
         <translation>严重错误</translation>
     </message>
     <message>
-        <location filename="../../source/App/xTools.cpp" line="36"/>
+        <location filename="../../source/Common/xTools.cpp" line="36"/>
         <source>The application has been crashed, clear settings file(all settings data of the application will be clear!) and reboot the application?</source>
         <translation>软件已崩溃，是否清空缓存后重启软件？</translation>
     </message>
     <message>
-        <location filename="../../source/App/xTools.cpp" line="109"/>
+        <location filename="../../source/Common/xTools.cpp" line="109"/>
         <source>(Store)</source>
         <translation>（商店）</translation>
     </message>
     <message>
-        <location filename="../../source/App/xTools.cpp" line="198"/>
+        <location filename="../../source/Common/xTools.cpp" line="198"/>
         <source>Neet to Reboot</source>
         <translation>需要重启</translation>
     </message>
     <message>
-        <location filename="../../source/App/xTools.cpp" line="199"/>
+        <location filename="../../source/Common/xTools.cpp" line="199"/>
         <source>The operation need to reboot to effectived, reboot the applicaion now?</source>
         <translation>该操作需要重启软件生效，是否立即重启？</translation>
     </message>
@@ -2465,47 +2465,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::Application</name>
     <message>
-        <location filename="../../source/App/Application.cpp" line="79"/>
+        <location filename="../../source/Common/Application.cpp" line="79"/>
         <source>Initialize application...</source>
         <translation>初始化程序....</translation>
     </message>
     <message>
-        <location filename="../../source/App/Application.cpp" line="167"/>
+        <location filename="../../source/Common/Application.cpp" line="167"/>
         <source>System</source>
         <translation>禁用</translation>
     </message>
     <message>
-        <location filename="../../source/App/Application.cpp" line="168"/>
+        <location filename="../../source/Common/Application.cpp" line="168"/>
         <source>Round up for .5 and above</source>
         <translation>缩放至x.5倍</translation>
     </message>
     <message>
-        <location filename="../../source/App/Application.cpp" line="169"/>
+        <location filename="../../source/Common/Application.cpp" line="169"/>
         <source>Always round up</source>
         <translation>总是放大</translation>
     </message>
     <message>
-        <location filename="../../source/App/Application.cpp" line="170"/>
+        <location filename="../../source/Common/Application.cpp" line="170"/>
         <source>Always round down</source>
         <translation>总是缩小</translation>
     </message>
     <message>
-        <location filename="../../source/App/Application.cpp" line="171"/>
+        <location filename="../../source/Common/Application.cpp" line="171"/>
         <source>Round up for .75 and above</source>
         <translation>缩放至x.75倍</translation>
     </message>
     <message>
-        <location filename="../../source/App/Application.cpp" line="172"/>
+        <location filename="../../source/Common/Application.cpp" line="172"/>
         <source>Don&apos;t round</source>
         <translation>不缩放</translation>
     </message>
     <message>
-        <location filename="../../source/App/Application.cpp" line="320"/>
+        <location filename="../../source/Common/Application.cpp" line="320"/>
         <source>Reboot application to effective</source>
         <translation>重启软件生效</translation>
     </message>
     <message>
-        <location filename="../../source/App/Application.cpp" line="321"/>
+        <location filename="../../source/Common/Application.cpp" line="321"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation>需要重启生效，立即重启？</translation>
     </message>
@@ -2680,7 +2680,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::MainWindow</name>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="134"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="134"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
@@ -2689,22 +2689,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">退出(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="135"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="135"/>
         <source>Exit Application</source>
         <translation>退出应用</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="144"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="144"/>
         <source>&amp;Options</source>
         <translation>选项(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="158"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="158"/>
         <source>&amp;Languages</source>
         <translation>语言(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="195"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="195"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
@@ -2713,84 +2713,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">关于</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="196"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="196"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="199"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="199"/>
         <source>Screenshot</source>
         <translation>截图并复制</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="211"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="211"/>
         <source>Application Style</source>
         <translation>应用风格</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="240"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="240"/>
         <source>Settings</source>
         <translation>配置信息</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="243"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="243"/>
         <source>Clear Settings</source>
         <translation>清空配置</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="250"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="250"/>
         <source>Open Settings Directory</source>
         <translation>打开配置目录</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="263"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="263"/>
         <source>HDPI Policy</source>
         <translation>适配策略</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="287"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="287"/>
         <source>Color Scheme</source>
         <translation>主题颜色</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="289"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="289"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="290"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="290"/>
         <source>Dark</source>
         <translation>暗黑</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="291"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="291"/>
         <source>Light</source>
         <translation>明亮</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="356"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="356"/>
         <source>(A Part of xTools Project)</source>
         <translation>(xTools 系列软件)</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="358"/>
-        <location filename="../../source/App/MainWindow.cpp" line="361"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="358"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="361"/>
         <source>Commit</source>
         <translation>最后提交</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="363"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="363"/>
         <source>Build Date</source>
         <translation>构建日期</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="365"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="365"/>
         <source>All rights reserved.</source>
         <translation>保留所有版权。</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="197"/>
-        <location filename="../../source/App/MainWindow.cpp" line="366"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="197"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="366"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
@@ -2803,17 +2803,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">需要重启生效，立即重启？</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="391"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="391"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="395"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="395"/>
         <source>User QQ Group</source>
         <translation>用户交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../source/App/MainWindow.cpp" line="396"/>
+        <location filename="../../source/Common/MainWindow.cpp" line="396"/>
         <source>Qt QQ Group</source>
         <translation>Qt技术交流QQ群</translation>
     </message>
@@ -3082,117 +3082,117 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xTools::StyleSheetManager</name>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="27"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="27"/>
         <source>Dark Amber</source>
         <translation>深色-黄褐色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="28"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="28"/>
         <source>Dark Blue</source>
         <translation>深色-蓝色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="29"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="29"/>
         <source>Dark Cyan</source>
         <translation>深色-青色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="30"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="30"/>
         <source>Dark Light Green</source>
         <translation>深色-浅绿色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="31"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="31"/>
         <source>Dark Pink</source>
         <translation>深色-粉红色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="32"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="32"/>
         <source>Dark Purple</source>
         <translation>深色-紫色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="33"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="33"/>
         <source>Dark Red</source>
         <translation>深色-红色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="34"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="34"/>
         <source>Dark Teal</source>
         <translation>深色-蓝绿色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="35"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="35"/>
         <source>Dark Yellow</source>
         <translation>深色-黄色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="37"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="37"/>
         <source>Light Amber</source>
         <translation>浅色-黄褐色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="38"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="38"/>
         <source>Light Blue</source>
         <translation>浅色-蓝色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="39"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="39"/>
         <source>Light Cyan</source>
         <translation>浅色-青色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="40"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="40"/>
         <source>Light Cyan(500)</source>
         <translation>浅色-青色（500）</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="41"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="41"/>
         <source>Light Light Green</source>
         <translation>浅色-浅绿色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="42"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="42"/>
         <source>Light Pink</source>
         <translation>浅色-粉红色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="43"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="43"/>
         <source>Light Purple</source>
         <translation>浅色-紫色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="44"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="44"/>
         <source>Light Red</source>
         <translation>浅色-红色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="45"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="45"/>
         <source>Light Teal</source>
         <translation>浅色-蓝绿色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="46"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="46"/>
         <source>Light Yellow</source>
         <translation>浅色-黄色</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="91"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="91"/>
         <source>Enable Stylesheet</source>
         <translation>允许自定义样式</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="86"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="86"/>
         <source>Application Stylesheet</source>
         <translation>应用样式</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="241"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="241"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../source/App/StyleSheetManager.cpp" line="241"/>
+        <location filename="../../source/Common/StyleSheetManager.cpp" line="241"/>
         <source>Please enable stylesheet first!</source>
         <translation>请使能自定义样式后重试！</translation>
     </message>
