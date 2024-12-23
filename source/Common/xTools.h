@@ -18,13 +18,15 @@
 #include <QStyleFactory>
 #include <QStyleHints>
 
+#include "Common/MainWindow.h"
+
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
 #include "StyleSheetManager.h"
 #endif
 
 #define g_xTools xTools::xTools::singleton()
 
-static void (*gOutputLog2Ui)(QtMsgType, const QMessageLogContext &, const QString &){nullptr};
+static void (*gOutputLog2Ui)(QtMsgType, const QMessageLogContext &, const QString &);
 
 namespace xTools {
 class xToolsPrivate;
@@ -42,6 +44,7 @@ public:
     static void doSomethingBeforeAppCreated(char *argv[],
                                             const QString &appName,
                                             bool forStore = false);
+
     static void doSomethingAfterAppExited();
 
 signals:
@@ -154,7 +157,7 @@ int exec(int argc,
          const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
 {
     QCoreApplication::setApplicationVersion(appVersion);
-    xTools::doSomethingBeforeAppCreated(argv, appName);
+    //xTools::doSomethingBeforeAppCreated(argv, appName);
 
     QApplication app(argc, argv);
     xTools &xTools = xTools::singleton();
@@ -209,7 +212,7 @@ int exec(int argc,
     }
 
     const int ret = app.exec();
-    xTools::doSomethingAfterAppExited();
+    //xTools::doSomethingAfterAppExited();
     return ret;
 }
 
@@ -220,11 +223,7 @@ int execCentralWidget(int argc,
                       const QString &appVersion = QString("0.0.0"),
                       const std::function<void(void *, void *)> &doSomethingBeforAppExec = nullptr)
 {
-    return exec<CentralWidget, xTools::MainWindow>(argc,
-                                                   argv,
-                                                   appName,
-                                                   appVersion,
-                                                   doSomethingBeforAppExec);
+    return exec<CentralWidget, MainWindow>(argc, argv, appName, appVersion, doSomethingBeforAppExec);
 }
 
 } // namespace xTools

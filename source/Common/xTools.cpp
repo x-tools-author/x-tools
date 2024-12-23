@@ -38,36 +38,6 @@
 
 namespace xTools {
 
-static void failureWriter(const char *data, size_t size)
-{
-#if 0
-    QByteArray localMsg(data, size);
-    QString currentDateTime = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
-    QString logName = QString("crash_%1.log").arg(currentDateTime);
-    QFile file(Settings::instance()->settingsPath() + QString("/log/") + logName);
-    QDataStream out(&file);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text)) {
-        out << localMsg;
-        file.close();
-    }
-#else
-    Q_UNUSED(data);
-    Q_UNUSED(size);
-    auto ret = QMessageBox::warning(
-        nullptr,
-        QObject::tr("Critical Error"),
-        QObject::tr("The application has been crashed, clear settings file(all settings data of "
-                    "the application will be clear!) and reboot the application?"),
-        QMessageBox::Ok | QMessageBox::Cancel);
-    if (ret == QMessageBox::Ok) {
-#if 0
-        tryToClearSettings();
-        QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
-#endif
-    }
-#endif
-}
-
 xTools::xTools(QObject *parent)
     : QObject(*new xToolsPrivate, parent)
 {}
@@ -76,8 +46,8 @@ xTools &xTools::singleton()
 {
     Q_ASSERT_X(qApp, "xTools", "The xTools object must be created after application object.");
 
-    static xTools instance;
-    return instance;
+    static xTools singleton;
+    return singleton;
 }
 
 void xTools::doSomethingBeforeAppCreated(char *argv[], const QString &appName, bool forStore)
