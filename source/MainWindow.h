@@ -15,11 +15,7 @@
 #endif
 
 class IOPage;
-#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-class MainWindow : public xApp::MainWindow
-#else
 class MainWindow : public xTools::MainWindow
-#endif
 {
     Q_OBJECT
 public:

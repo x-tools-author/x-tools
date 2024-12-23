@@ -22,6 +22,8 @@
 #include "StyleSheetManager.h"
 #endif
 
+#define g_xTools xTools::xTools::singleton()
+
 static void (*gOutputLog2Ui)(QtMsgType, const QMessageLogContext &, const QString &){nullptr};
 
 namespace xTools {
@@ -109,8 +111,8 @@ public:
     Q_INVOKABLE void settingsSetAppStyle(const QString &style);
     Q_INVOKABLE QString settingsLanguage();
     Q_INVOKABLE void settingsSetLanguage(const QString &lan);
-    Q_INVOKABLE static bool settingsClearSettings();
-    Q_INVOKABLE static void settingsSetClearSettings(bool clear);
+    Q_INVOKABLE bool settingsClearSettings();
+    Q_INVOKABLE void settingsSetClearSettings(bool clear);
     Q_INVOKABLE int settingsColorScheme();
     Q_INVOKABLE void settingsSetColorScheme(const int colorScheme);
     Q_INVOKABLE QVariant settingsValue(const QString &key, const QVariant &value = QVariant()) const;
@@ -129,6 +131,7 @@ public:
     Q_INVOKABLE void moveToScreenCenter(QWidget *widget);
     Q_INVOKABLE static bool tryToReboot();
     Q_INVOKABLE void tryToClearSettings();
+    Q_INVOKABLE QSettings *settings();
 };
 
 /**

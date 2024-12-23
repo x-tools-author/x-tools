@@ -27,7 +27,7 @@
 #include <QVariant>
 
 #include "AssistantFactory.h"
-#include "Common/Settings.h"
+#include "Common/xTools.h"
 #include "IOPage/IOPage.h"
 
 #ifdef Q_OS_WIN
@@ -35,17 +35,14 @@
 #endif
 
 MainWindow::MainWindow(QWidget* parent)
-#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-    : xApp::MainWindow(parent)
-#else
     : xTools::MainWindow(parent)
-#endif
     , m_toolMenu(nullptr)
-    , m_ioPage00(new IOPage(IOPage::Left, xTools::Settings::instance(), this))
-    , m_ioPage01(new IOPage(IOPage::Right, xTools::Settings::instance(), this))
-    , m_ioPage10(new IOPage(IOPage::Left, xTools::Settings::instance(), this))
-    , m_ioPage11(new IOPage(IOPage::Right, xTools::Settings::instance(), this))
 {
+    xTools::xTools& xTools = xTools::xTools::singleton();
+    m_ioPage00 = new IOPage(IOPage::Left, xTools.settings(), this);
+    m_ioPage01 = new IOPage(IOPage::Right, xTools.settings(), this);
+    m_ioPage10 = new IOPage(IOPage::Left, xTools.settings(), this);
+    m_ioPage11 = new IOPage(IOPage::Right, xTools.settings(), this);
 #ifdef Q_OS_WIN
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
         auto* systemTrayIcon = new SystemTrayIcon(this);
@@ -74,7 +71,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     constexpr int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
     const QString key = m_settingsKey.windowGrid;
-    int rawGrid = xTools::Settings::instance()->value(key, defaultGrid).toInt();
+    int rawGrid = xTools.settings()->value(key, defaultGrid).toInt();
     m_windowGrid = static_cast<WindowGrid>(rawGrid);
     qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
     updateGrid(m_windowGrid);
@@ -100,9 +97,10 @@ void MainWindow::initMenuBar()
 void MainWindow::closeEvent(QCloseEvent* event)
 {
     save();
-    xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
+
+    g_xTools.settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
 #ifdef Q_OS_WIN
-    if (xTools::Settings::instance()->value(m_settingsKey.exitToSystemTray).toBool()) {
+    if (g_xTools.settings()->value(m_settingsKey.exitToSystemTray).toBool()) {
         hide();
         event->ignore();
         return;
@@ -114,7 +112,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
 void MainWindow::initFileMenu()
 {
     auto newWindowAction = m_fileMenu->addAction(tr("New Window"), this, []() {
-        auto* w = new IOPage(IOPage::Left, xTools::Settings::instance());
+        auto* w = new IOPage(IOPage::Left, g_xTools.settings());
         w->setWindowTitle("xTools");
         w->show();
     });
@@ -185,19 +183,19 @@ void MainWindow::initOptionMenu()
     m_optionMenu->addSeparator();
     auto* proxy = m_optionMenu->addAction(tr("Use System Proxy"));
     proxy->setCheckable(true);
-    bool useSystemProxy = xTools::Settings::instance()->value(m_settingsKey.useSystemProxy).toBool();
+    bool useSystemProxy = g_xTools.settings()->value(m_settingsKey.useSystemProxy).toBool();
     proxy->setChecked(useSystemProxy);
     QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
     connect(proxy, &QAction::triggered, this, [=]() {
         QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
-        xTools::Settings::instance()->setValue(m_settingsKey.useSystemProxy, proxy->isChecked());
+        g_xTools.settings()->setValue(m_settingsKey.useSystemProxy, proxy->isChecked());
     });
 
     auto* trayAction = new QAction(tr("Exit to System Tray"), this);
     trayAction->setCheckable(true);
     m_optionMenu->addAction(trayAction);
 
-    QVariant v = xTools::Settings::instance()->value(m_settingsKey.exitToSystemTray);
+    QVariant v = g_xTools.settings()->value(m_settingsKey.exitToSystemTray);
     if (!v.isNull()) {
         bool isExitToSystemTray = v.toBool();
         trayAction->setChecked(isExitToSystemTray);
@@ -205,7 +203,7 @@ void MainWindow::initOptionMenu()
 
     connect(trayAction, &QAction::triggered, this, [=]() {
         bool keep = trayAction->isChecked();
-        xTools::Settings::instance()->setValue(m_settingsKey.exitToSystemTray, keep);
+        g_xTools.settings()->setValue(m_settingsKey.exitToSystemTray, keep);
     });
 }
 
@@ -240,7 +238,7 @@ void MainWindow::initViewMenu()
         a2x2->setChecked(true);
     }
 
-    auto windowGrid = xTools::Settings::instance()->value(m_settingsKey.windowGrid).toInt();
+    auto windowGrid = g_xTools.settings()->value(m_settingsKey.windowGrid).toInt();
     if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
         a1x2->setChecked(true);
         a1x2->trigger();
@@ -325,7 +323,7 @@ void MainWindow::updateGrid(WindowGrid grid)
     }
 
     m_windowGrid = grid;
-    xTools::Settings::instance()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
+    g_xTools.settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
 }
 
 void MainWindow::showHistory()
@@ -385,7 +383,7 @@ void MainWindow::load(const QString& fileName) const
 {
     QString filePath = fileName;
     if (fileName.isEmpty()) {
-        const QString path = xTools::Settings::instance()->settingsPath();
+        const QString path = g_xTools.settingsPath();
         filePath = path + "/data.json";
     }
 
@@ -422,7 +420,7 @@ void MainWindow::save(const QString& fileName) const
 
     QString filePath = fileName;
     if (fileName.isEmpty()) {
-        const QString path = xTools::Settings::instance()->settingsPath();
+        const QString path = g_xTools.settingsPath();
         filePath = path + "/data.json";
     }
 

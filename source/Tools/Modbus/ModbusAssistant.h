@@ -38,11 +38,11 @@ signals:
 private:
     Ui::ModbusAssistant *ui;
     QModbusDevice *m_modbusDevice{Q_NULLPTR};
-    QSettings *m_settings{Q_NULLPTR};
     QStandardItemModel *m_clientRegisterModel{Q_NULLPTR};
     ModbusSettingKeys *m_keyCtx;
     QTableView *m_clientView{nullptr};
     int m_textFormat{0};
+    QSettings *m_settings;
 
 private:
     void initComponents();

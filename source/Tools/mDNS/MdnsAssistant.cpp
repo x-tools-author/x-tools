@@ -16,7 +16,7 @@
 #include <QMessageBox>
 #include <QTreeWidgetItem>
 
-#include "Common/Settings.h"
+#include "Common/xTools.h"
 #include "MdnsServer.h"
 
 MdnsAssistant::MdnsAssistant(QWidget *parent)
@@ -131,7 +131,7 @@ void MdnsAssistant::setUiState(bool isRunning)
 
 void MdnsAssistant::loadSettings()
 {
-    auto settings = xTools::Settings::instance();
+    QSettings *settings = g_xTools.settings();
 
     auto hexString = settings->value(m_settingKeys.serviceTypes).toString().toLatin1();
     QByteArray json = QByteArray::fromHex(hexString);
@@ -153,7 +153,7 @@ void MdnsAssistant::loadSettings()
 
 void MdnsAssistant::saveSettings()
 {
-    auto settings = xTools::Settings::instance();
+    QSettings *settings = g_xTools.settings();
 
     QVariantList list;
     for (int i = 0; i < ui->comboBox->count(); i++) {

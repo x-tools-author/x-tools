@@ -240,17 +240,16 @@ void MainWindow::initOptionMenuSettingsMenu()
     auto clearAction = new QAction(tr("Clear Settings"), this);
     menu->addAction(clearAction);
     connect(clearAction, &QAction::triggered, this, [=]() {
-        xTools::settingsSetClearSettings(true);
+        xTools& xTools = xTools::singleton();
+        xTools.settingsSetClearSettings(true);
         tryToReboot();
     });
 
     auto openAction = new QAction(tr("Open Settings Directory"), this);
     menu->addAction(openAction);
     connect(openAction, &QAction::triggered, this, [=]() {
-        QString file_name = Settings::instance()->fileName();
-        QUrl fileUrl = QUrl(file_name);
-        QString path = file_name.remove(fileUrl.fileName());
-        QDesktopServices::openUrl(path);
+        xTools& xTools = xTools::singleton();
+        QDesktopServices::openUrl(xTools.settingsPath());
     });
 }
 
@@ -259,7 +258,7 @@ void MainWindow::initOptionMenuHdpiPolicy()
     QMenu* menu = new QMenu(tr("HDPI Policy"));
     QActionGroup* actionGroup = new QActionGroup(this);
     xTools& xTools = xTools::singleton();
-    int currentPolicy = Settings::instance()->hdpiPolicy();
+    int currentPolicy = xTools.settingsHdpiPolicy();
     auto supportedPolicies = xTools.supportedHdpiPolicies();
     for (auto& policy : supportedPolicies) {
         auto name = xTools.hdpiPolicyName(policy.toInt());
@@ -297,20 +296,22 @@ void MainWindow::initOptionMenuColorScheme()
     m_optionMenu->addMenu(m_colorSchemeMenu);
 
     connect(&actionGroup, &QActionGroup::triggered, this, [=](QAction* action) {
+        xTools& xTools = xTools::singleton();
         if (action == dark) {
-            Settings::instance()->setColorScheme(static_cast<int>(Qt::ColorScheme::Dark));
+            xTools.settingsSetColorScheme(static_cast<int>(Qt::ColorScheme::Dark));
         } else if (action == light) {
-            Settings::instance()->setColorScheme(static_cast<int>(Qt::ColorScheme::Light));
+            xTools.settingsSetColorScheme(static_cast<int>(Qt::ColorScheme::Light));
         } else {
-            Settings::instance()->setColorScheme(static_cast<int>(Qt::ColorScheme::Unknown));
+            xTools.settingsSetColorScheme(static_cast<int>(Qt::ColorScheme::Unknown));
         }
 
-        auto currentScheme = Settings::instance()->colorScheme();
+        auto currentScheme = xTools.settingsColorScheme();
         QStyleHints* styleHints = QApplication::styleHints();
         styleHints->setColorScheme(static_cast<Qt::ColorScheme>(currentScheme));
     });
 
-    auto currentScheme = Settings::instance()->colorScheme();
+    xTools& xTools = xTools::singleton();
+    auto currentScheme = xTools.settingsColorScheme();
     switch (currentScheme) {
     case static_cast<int>(Qt::ColorScheme::Dark):
         dark->setChecked(true);
@@ -330,7 +331,8 @@ void MainWindow::initOptionMenuColorScheme()
 
 void MainWindow::onHdpiPolicyActionTriggered(int policy)
 {
-    Settings::instance()->setHdpiPolicy(int(policy));
+    xTools& xTools = xTools::singleton();
+    xTools.settingsSetHdpiPolicy(int(policy));
     tryToReboot();
 }
 

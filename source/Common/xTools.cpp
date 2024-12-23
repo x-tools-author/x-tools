@@ -76,7 +76,7 @@ xTools &xTools::singleton()
 {
     Q_ASSERT_X(qApp, "xTools", "The xTools object must be created after application object.");
 
-    static xTools instance{};
+    static xTools instance;
     return instance;
 }
 
@@ -685,6 +685,12 @@ void xTools::tryToClearSettings()
             qWarning() << "The operation(remove settings path) failed!";
         }
     }
+}
+
+QSettings *xTools::settings()
+{
+    Q_D(xTools);
+    return d->m_settings;
 }
 
 } // namespace xTools

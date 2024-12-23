@@ -28,7 +28,7 @@
 #include <xlsxdocument.h>
 
 #include "ChartsUiSettings.h"
-#include "Common/Settings.h"
+#include "Common/xTools.h"
 #include "IO/IO/DataVisualization/2D/Charts.h"
 
 namespace xTools {
@@ -67,7 +67,9 @@ ChartsUi::ChartsUi(QWidget *parent)
     m_chart->addAxis(m_axisY, Qt::AlignLeft);
     m_chart->layout()->setContentsMargins(0, 0, 0, 0);
     m_chart->setMargins(QMargins(0, 0, 0, 0));
-    auto currentScheme = Settings::instance()->colorScheme();
+
+    xTools &xTools = xTools::singleton();
+    auto currentScheme = xTools.settingsColorScheme();
     if (currentScheme == static_cast<int>(Qt::ColorScheme::Dark)) {
         m_chart->setTheme(QChart::ChartThemeDark);
     } else if (currentScheme == static_cast<int>(Qt::ColorScheme::Light)) {
@@ -188,13 +190,11 @@ void ChartsUi::setupIO(AbstractIO *io)
     auto cookedType = static_cast<Qt::ConnectionType>(type);
     connect(charts, &Charts::newValues, this, &ChartsUi::onNewValues, cookedType);
     connect(charts, &Charts::newPoints, this, &ChartsUi::onNewPoints, cookedType);
-    connect(io, &xTools::AbstractIO::started, this, [this]() {
+    connect(io, &AbstractIO::started, this, [this]() {
         this->m_settings->updateUiState(true);
         onClearChannels();
     });
-    connect(io, &xTools::AbstractIO::finished, this, [this]() {
-        this->m_settings->updateUiState(false);
-    });
+    connect(io, &AbstractIO::finished, this, [this]() { this->m_settings->updateUiState(false); });
 }
 
 QMenu *ChartsUi::settingsMenu()
