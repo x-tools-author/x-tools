@@ -68,6 +68,68 @@ void xTools::doSomethingAfterAppExited()
     xTools::googleLogShutdown();
 }
 
+void xTools::googleLogInitializing(char *argv0)
+{
+    xTools &xTools = singleton();
+    QString logPath = xTools.settingsPath();
+    logPath += "/log";
+    QDir dir(xTools.settingsPath());
+    if (!dir.exists(logPath) && !dir.mkpath(logPath)) {
+        qWarning() << "Make log directory failed";
+    }
+
+    auto keep = std::chrono::minutes(30 * 24 * 60);
+    google::SetLogFilenameExtension(".log");     // The suffix of log file.
+    google::EnableLogCleaner(keep);              // Keep the log file for 30 days.
+    google::SetApplicationFingerprint("xTools"); // (It seem to be no use.)
+
+    fLB::FLAGS_logtostdout = false;
+    fLB::FLAGS_logtostderr = false;
+    fLS::FLAGS_log_dir = logPath.toUtf8().data(); // The path of log.
+    fLI::FLAGS_logbufsecs = 0;                    //
+    fLU::FLAGS_max_log_size = 10;                 // The max size(MB) of log file.
+    fLB::FLAGS_stop_logging_if_full_disk = true;  //
+    fLB::FLAGS_alsologtostderr = true;            //
+#if 0
+    google::InstallFailureSignalHandler();
+    google::InstallFailureWriter(failureWriter);
+#endif
+
+    google::InitGoogleLogging(argv0);
+    qInfo() << "The logging path is:" << qPrintable(logPath);
+}
+
+void xTools::googleLogShutdown()
+{
+    google::ShutdownGoogleLogging();
+}
+
+void xTools::googleLogToQtLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    QByteArray localMsg = msg.toUtf8();
+    const char *file = context.file ? context.file : "";
+    const int line = context.line;
+
+    switch (type) {
+    case QtWarningMsg:
+        google::LogMessage(file, line, google::GLOG_WARNING).stream() << localMsg.data();
+        break;
+    case QtCriticalMsg:
+        google::LogMessage(file, line, google::GLOG_ERROR).stream() << localMsg.data();
+        break;
+    case QtFatalMsg:
+        google::LogMessage(file, line, google::GLOG_FATAL).stream() << localMsg.data();
+        break;
+    default:
+        google::LogMessage(file, line, google::GLOG_INFO).stream() << localMsg.data();
+        break;
+    }
+
+    if (gOutputLog2Ui) {
+        (*gOutputLog2Ui)(type, context, msg);
+    }
+}
+
 bool xTools::enableSplashScreen()
 {
     Q_D(xTools);
@@ -532,68 +594,6 @@ void xTools::settingsSetJsonObjectStringValue(const QString &key, const QString 
     }
 
     d->m_settings->setValue(key, doc.toVariant());
-}
-
-void xTools::googleLogInitializing(char *argv0)
-{
-    xTools &xTools = singleton();
-    QString logPath = xTools.settingsPath();
-    logPath += "/log";
-    QDir dir(xTools.settingsPath());
-    if (!dir.exists(logPath) && !dir.mkpath(logPath)) {
-        qWarning() << "Make log directory failed";
-    }
-
-    auto keep = std::chrono::minutes(30 * 24 * 60);
-    google::SetLogFilenameExtension(".log");     // The suffix of log file.
-    google::EnableLogCleaner(keep);              // Keep the log file for 30 days.
-    google::SetApplicationFingerprint("xTools"); // (It seem to be no use.)
-
-    fLB::FLAGS_logtostdout = false;
-    fLB::FLAGS_logtostderr = false;
-    fLS::FLAGS_log_dir = logPath.toUtf8().data(); // The path of log.
-    fLI::FLAGS_logbufsecs = 0;                    //
-    fLU::FLAGS_max_log_size = 10;                 // The max size(MB) of log file.
-    fLB::FLAGS_stop_logging_if_full_disk = true;  //
-    fLB::FLAGS_alsologtostderr = true;            //
-#if 0
-    google::InstallFailureSignalHandler();
-    google::InstallFailureWriter(failureWriter);
-#endif
-
-    google::InitGoogleLogging(argv0);
-    qInfo() << "The logging path is:" << qPrintable(logPath);
-}
-
-void xTools::googleLogShutdown()
-{
-    google::ShutdownGoogleLogging();
-}
-
-void xTools::googleLogToQtLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
-{
-    QByteArray localMsg = msg.toUtf8();
-    const char *file = context.file ? context.file : "";
-    const int line = context.line;
-
-    switch (type) {
-    case QtWarningMsg:
-        google::LogMessage(file, line, google::GLOG_WARNING).stream() << localMsg.data();
-        break;
-    case QtCriticalMsg:
-        google::LogMessage(file, line, google::GLOG_ERROR).stream() << localMsg.data();
-        break;
-    case QtFatalMsg:
-        google::LogMessage(file, line, google::GLOG_FATAL).stream() << localMsg.data();
-        break;
-    default:
-        google::LogMessage(file, line, google::GLOG_INFO).stream() << localMsg.data();
-        break;
-    }
-
-    if (gOutputLog2Ui) {
-        (*gOutputLog2Ui)(type, context, msg);
-    }
 }
 
 QMainWindow *xTools::mainWindow()

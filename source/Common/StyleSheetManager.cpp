@@ -252,7 +252,7 @@ void StyleSheetManager::setApplicationStylesheetEnabled(bool enable)
     }
 
     if (!enable) {
-        xTools::tryToReboot();
+        g_xTools.tryToReboot();
     }
 }
 

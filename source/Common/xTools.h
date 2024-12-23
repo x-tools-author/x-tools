@@ -44,8 +44,12 @@ public:
     static void doSomethingBeforeAppCreated(char *argv[],
                                             const QString &appName,
                                             bool forStore = false);
-
     static void doSomethingAfterAppExited();
+    static void googleLogInitializing(char *argv0);
+    static void googleLogShutdown();
+    static void googleLogToQtLog(QtMsgType type,
+                                 const QMessageLogContext &context,
+                                 const QString &msg);
 
 signals:
     void languageChanged();
@@ -122,17 +126,10 @@ public:
     Q_INVOKABLE void settingsSetValue(const QString &key, const QVariant &value);
     Q_INVOKABLE void settingsSetJsonObjectStringValue(const QString &key, const QString &value);
 
-    // About log
-    Q_INVOKABLE static void googleLogInitializing(char *argv0);
-    Q_INVOKABLE static void googleLogShutdown();
-    Q_INVOKABLE static void googleLogToQtLog(QtMsgType type,
-                                             const QMessageLogContext &context,
-                                             const QString &msg);
-
     // Other functions
     Q_INVOKABLE QMainWindow *mainWindow();
     Q_INVOKABLE void moveToScreenCenter(QWidget *widget);
-    Q_INVOKABLE static bool tryToReboot();
+    Q_INVOKABLE bool tryToReboot();
     Q_INVOKABLE void tryToClearSettings();
     Q_INVOKABLE QSettings *settings();
 };

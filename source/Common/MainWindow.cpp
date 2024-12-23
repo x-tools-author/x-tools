@@ -164,7 +164,7 @@ void MainWindow::initMenuLanguage()
 
         connect(action, &QAction::triggered, this, [=]() {
             g_xTools.setupAppLanguage(language);
-            xTools::tryToReboot();
+            g_xTools.tryToReboot();
         });
 
         if (settingLanguage.isEmpty()) {
@@ -356,7 +356,7 @@ void MainWindow::onAboutActionTriggered()
 
 bool MainWindow::tryToReboot()
 {
-    return xTools::tryToReboot();
+    return g_xTools.tryToReboot();
 }
 
 void MainWindow::createQtConf()
