@@ -35,7 +35,7 @@
 #include <QTimer>
 #include <QUrl>
 
-#include "../xTools.h"
+#include "xTools.h"
 
 namespace xTools {
 

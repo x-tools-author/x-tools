@@ -12,6 +12,8 @@
 #include <QObject>
 #include <QSplashScreen>
 
+static void (*gOutputLog2Ui)(QtMsgType, const QMessageLogContext &, const QString &){nullptr};
+
 namespace xTools {
 class xToolsPrivate;
 class xTools : public QObject
@@ -98,6 +100,13 @@ public:
     Q_INVOKABLE QVariant settingsValue(const QString &key, const QVariant &value = QVariant()) const;
     Q_INVOKABLE void settingsSetValue(const QString &key, const QVariant &value);
     Q_INVOKABLE void settingsSetJsonObjectStringValue(const QString &key, const QString &value);
+
+    // About log
+    Q_INVOKABLE void googleLogInitializing(char *argv0);
+    Q_INVOKABLE void googleLogShutdown();
+    Q_INVOKABLE void googleLogToQtLog(QtMsgType type,
+                                      const QMessageLogContext &context,
+                                      const QString &msg);
 
     // Other functions
     Q_INVOKABLE QMainWindow *mainWindow();
