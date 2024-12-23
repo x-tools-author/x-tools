@@ -12,6 +12,7 @@
 #include <QDateTime>
 #include <QMainWindow>
 #include <QObject>
+#include <QSettings>
 #include <QSplashScreen>
 #include <QStyle>
 #include <QStyleFactory>
