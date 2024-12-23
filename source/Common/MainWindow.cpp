@@ -31,7 +31,6 @@
 #include <QTimer>
 #include <QUrl>
 
-#include "Common/Settings.h"
 #include "Common/xTools.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
@@ -156,7 +155,7 @@ void MainWindow::initMenuLanguage()
 
     xTools& xTools = xTools::singleton();
     QStringList languages = xTools.supportedAppLanguages();
-    QString settingLanguage = Settings::instance()->language();
+    QString settingLanguage = xTools.settingsLanguage();
     for (auto& language : languages) {
         auto* action = new QAction(language, this);
         action->setCheckable(true);
@@ -164,8 +163,11 @@ void MainWindow::initMenuLanguage()
         m_languageActionGroup->addAction(action);
 
         connect(action, &QAction::triggered, this, [=]() {
-            Settings::instance()->setLanguage(language);
-            tryToReboot();
+#if 0
+            xTools& tools = xTools::singleton();
+            tools.setupAppLanguage(language);
+#endif
+            xTools::tryToReboot();
         });
 
         if (settingLanguage.isEmpty()) {
@@ -199,10 +201,11 @@ void MainWindow::initMenuHelp()
 
 void MainWindow::initOptionMenuAppStyleMenu()
 {
+    xTools& xTools = xTools::singleton();
     m_appStyleMenu = new QMenu(tr("Application Style"), this);
     m_optionMenu->addMenu(m_appStyleMenu);
     QStringList keys = QStyleFactory::keys();
-    const QString style = Settings::instance()->appStyle();
+    const QString style = xTools.settingsAppStyle();
     for (QString& key : keys) {
         auto* action = new QAction(key, this);
         action->setObjectName(key);
@@ -214,7 +217,10 @@ void MainWindow::initOptionMenuAppStyleMenu()
         }
 
         connect(action, &QAction::triggered, this, [=]() {
-            Settings::instance()->setAppStyle(key);
+#if 0
+            xTools& xTools = xTools::singleton();
+            xTools.settingsSetAppStyle(key);
+#endif
             tryToReboot();
         });
     }
@@ -234,7 +240,7 @@ void MainWindow::initOptionMenuSettingsMenu()
     auto clearAction = new QAction(tr("Clear Settings"), this);
     menu->addAction(clearAction);
     connect(clearAction, &QAction::triggered, this, [=]() {
-        Settings::instance()->setClearSettings(true);
+        xTools::settingsSetClearSettings(true);
         tryToReboot();
     });
 

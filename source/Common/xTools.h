@@ -108,8 +108,8 @@ public:
     Q_INVOKABLE void settingsSetAppStyle(const QString &style);
     Q_INVOKABLE QString settingsLanguage();
     Q_INVOKABLE void settingsSetLanguage(const QString &lan);
-    Q_INVOKABLE bool settingsClearSettings();
-    Q_INVOKABLE void settingsSetClearSettings(bool clear);
+    Q_INVOKABLE static bool settingsClearSettings();
+    Q_INVOKABLE static void settingsSetClearSettings(bool clear);
     Q_INVOKABLE int settingsColorScheme();
     Q_INVOKABLE void settingsSetColorScheme(const int colorScheme);
     Q_INVOKABLE QVariant settingsValue(const QString &key, const QVariant &value = QVariant()) const;
