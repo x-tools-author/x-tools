@@ -16,7 +16,6 @@
 
 namespace xTools {
 
-class Application;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -28,8 +27,6 @@ public:
     virtual void updateWindowTitle();
 
 protected:
-    Application* m_xToolsApp;
-
     QMenu* m_fileMenu;
     QMenu* m_optionMenu;
     QMenu* m_languageMenu;

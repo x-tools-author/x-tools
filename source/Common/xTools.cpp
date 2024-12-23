@@ -652,7 +652,7 @@ void xTools::moveToScreenCenter(QWidget *widget)
     }
 }
 
-void xTools::tryToReboot()
+bool xTools::tryToReboot()
 {
     int ret = QMessageBox::information(
         nullptr,
@@ -662,7 +662,10 @@ void xTools::tryToReboot()
     if (ret == QMessageBox::Ok) {
         QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
         qApp->closeAllWindows();
+        return true;
     }
+
+    return false;
 }
 
 void xTools::tryToClearSettings()

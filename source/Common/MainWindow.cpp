@@ -31,8 +31,8 @@
 #include <QTimer>
 #include <QUrl>
 
-#include "Common/Application.h"
 #include "Common/Settings.h"
+#include "Common/xTools.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
 #include "StyleSheetManager.h"
@@ -56,9 +56,6 @@ MainWindow::MainWindow(QWidget* parent)
     , m_languageActionGroup(nullptr)
     , m_appPaletteActionGroup(nullptr)
 {
-    m_xToolsApp = dynamic_cast<Application*>(QCoreApplication::instance());
-    Q_ASSERT_X(m_xToolsApp, Q_FUNC_INFO, "The application is not xToolsApplication.");
-
     m_appStyleActionGroup = new QActionGroup(this);
     m_languageActionGroup = new QActionGroup(this);
     m_appPaletteActionGroup = new QActionGroup(this);
@@ -117,9 +114,10 @@ QIcon MainWindow::cookedIcon(const QIcon& icon)
 
 void MainWindow::updateWindowTitle()
 {
-    QString title = Application::friendlyAppName();
+    xTools& xTools = xTools::singleton();
+    QString title = xTools.appFriendlyName();
     title += " v";
-    title += Application::applicationVersion();
+    title += QApplication::applicationVersion();
     setWindowTitle(title);
 }
 
@@ -156,13 +154,8 @@ void MainWindow::initMenuLanguage()
     m_languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(m_languageMenu);
 
-    auto* app = dynamic_cast<Application*>(QCoreApplication::instance());
-    if (!app) {
-        qWarning() << "The application is not xToolsApplication.";
-        return;
-    }
-
-    QStringList languages = app->supportedLanguages();
+    xTools& xTools = xTools::singleton();
+    QStringList languages = xTools.supportedAppLanguages();
     QString settingLanguage = Settings::instance()->language();
     for (auto& language : languages) {
         auto* action = new QAction(language, this);
@@ -176,7 +169,7 @@ void MainWindow::initMenuLanguage()
         });
 
         if (settingLanguage.isEmpty()) {
-            if (language == app->defaultLanguage()) {
+            if (language == xTools.defaultAppLanguage()) {
                 action->setChecked(true);
             }
         } else {
@@ -259,10 +252,11 @@ void MainWindow::initOptionMenuHdpiPolicy()
 {
     QMenu* menu = new QMenu(tr("HDPI Policy"));
     QActionGroup* actionGroup = new QActionGroup(this);
+    xTools& xTools = xTools::singleton();
     int currentPolicy = Settings::instance()->hdpiPolicy();
-    auto supportedPolicies = Application::supportedHighDpiPolicies();
+    auto supportedPolicies = xTools.supportedHdpiPolicies();
     for (auto& policy : supportedPolicies) {
-        auto name = Application::highDpiPolicyName(policy.toInt());
+        auto name = xTools.hdpiPolicyName(policy.toInt());
         auto action = menu->addAction(name, this, [=]() {
             onHdpiPolicyActionTriggered(policy.toInt());
         });
@@ -336,12 +330,13 @@ void MainWindow::onHdpiPolicyActionTriggered(int policy)
 
 void MainWindow::onAboutActionTriggered()
 {
-    QString buildDateTimeFormat = Application::systemDateFormat();
+    xTools& xTools = xTools::singleton();
+    QString buildDateTimeFormat = xTools.systemDateFormat();
     buildDateTimeFormat += " ";
-    buildDateTimeFormat += Application::systemTimeFormat();
-    QString buildDateTimeString = Application::buildDateTimeString(buildDateTimeFormat);
-    QString year = Application::buildDateTimeString("yyyy");
-    const QString version = Application::applicationVersion();
+    buildDateTimeFormat += xTools.systemTimeFormat();
+    QString buildDateTimeString = xTools.buildDateTimeString(buildDateTimeFormat);
+    QString year = xTools.buildDateTimeString("yyyy");
+    const QString version = xTools.xToolsVersion();
     const QString name = qApp->applicationName();
     QString info;
     info += name + QString(" ") + version + " " + tr("(A Part of xTools Project)") + "\n\n";
@@ -359,7 +354,7 @@ void MainWindow::onAboutActionTriggered()
 
 bool MainWindow::tryToReboot()
 {
-    return Application::tryToReboot();
+    return xTools::tryToReboot();
 }
 
 void MainWindow::createQtConf()

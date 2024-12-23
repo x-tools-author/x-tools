@@ -9,7 +9,7 @@
 #include "NumberAssistant.h"
 #include "ui_NumberAssistant.h"
 
-#include "Common/Application.h"
+#include "Common/xTools.h"
 #include "IO/xIO.h"
 
 NumberAssistant::NumberAssistant(QWidget *parent)
@@ -113,7 +113,7 @@ void updateRawData(QLineEdit *le, T value)
 {
     T *ptr = &value;
     QByteArray tmp = QByteArray::fromRawData(reinterpret_cast<char *>(ptr), sizeof(T));
-    le->setText(xTools::Application::byteArray2Hex(tmp, ' '));
+    le->setText(tmp.toHex(' '));
 }
 
 void NumberAssistant::updateRawData()
