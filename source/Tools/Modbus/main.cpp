@@ -10,7 +10,7 @@
 #include "ModbusAssistant.h"
 
 int main(int argc, char* argv[])
-{
+{  
     const QString appName = QObject::tr("Modbus Assistant");
     return xTools::execCentralWidget<ModbusAssistant>(argc, argv, appName);
 }

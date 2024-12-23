@@ -12,7 +12,6 @@
 int main(const int argc, char *argv[])
 {
     Q_INIT_RESOURCE(xTools);
-    xTools::xTools &xTools = xTools::xTools::singleton();
-    const QString version = xTools.xToolsVersion();
+    const QString version = g_xTools.xToolsVersion();
     return xTools::exec<MainWindow, MainWindow>(argc, argv, QString("xTools"), version);
 }

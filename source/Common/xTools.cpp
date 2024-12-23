@@ -40,7 +40,11 @@ namespace xTools {
 
 xTools::xTools(QObject *parent)
     : QObject(*new xToolsPrivate, parent)
-{}
+{
+    QStringList list;
+    list << "xToolsCore";
+    languageSetSupportedPrefixes(list);
+}
 
 xTools &xTools::singleton()
 {
