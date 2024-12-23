@@ -126,7 +126,7 @@ public:
     // Other functions
     Q_INVOKABLE QMainWindow *mainWindow();
     Q_INVOKABLE void moveToScreenCenter(QWidget *widget);
-    Q_INVOKABLE void tryToReboot();
+    Q_INVOKABLE static void tryToReboot();
     Q_INVOKABLE void tryToClearSettings();
 };
 
