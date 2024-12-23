@@ -653,8 +653,8 @@ bool xTools::tryToReboot()
 {
     int ret = QMessageBox::information(
         nullptr,
-        QObject::tr("Need to Reboot"),
-        QObject::tr("The operation need to reboot to effected, reboot the application now?"),
+        tr("Need to Reboot"),
+        tr("The operation need to reboot to effected, reboot the application now?"),
         QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok) {
         QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
