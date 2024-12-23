@@ -94,10 +94,6 @@ void xTools::googleLogInitializing(char *argv0)
     fLU::FLAGS_max_log_size = 10;                 // The max size(MB) of log file.
     fLB::FLAGS_stop_logging_if_full_disk = true;  //
     fLB::FLAGS_alsologtostderr = true;            //
-#if 0
-    google::InstallFailureSignalHandler();
-    google::InstallFailureWriter(failureWriter);
-#endif
 
     google::InitGoogleLogging(argv0);
     qInfo() << "The logging path is:" << qPrintable(logPath);
