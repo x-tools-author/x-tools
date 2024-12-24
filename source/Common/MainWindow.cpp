@@ -333,11 +333,11 @@ void MainWindow::onHdpiPolicyActionTriggered(int policy)
 void MainWindow::onAboutActionTriggered()
 {
     xTools& xTools = xTools::singleton();
-    QString buildDateTimeFormat = xTools.systemDateFormat();
+    QString buildDateTimeFormat = xTools.dtSystemDateFormat();
     buildDateTimeFormat += " ";
-    buildDateTimeFormat += xTools.systemTimeFormat();
-    QString buildDateTimeString = xTools.buildDateTimeString(buildDateTimeFormat);
-    QString year = xTools.buildDateTimeString("yyyy");
+    buildDateTimeFormat += xTools.dtSystemTimeFormat();
+    QString buildDateTimeString = xTools.dtBuildDateTimeString(buildDateTimeFormat);
+    QString year = xTools.dtBuildDateTimeString("yyyy");
     const QString version = xTools.xToolsVersion();
     const QString name = qApp->applicationName();
     QString info;

@@ -65,8 +65,8 @@ public:
     // About app info
     Q_INVOKABLE QString appFriendlyName();
     Q_INVOKABLE void appSetFriendlyName(const QString &name);
-    Q_INVOKABLE void appInitializing(const QString &appName, bool forStore);
-    Q_INVOKABLE void appInitializingHdpi(const QString &appName, bool forStore);
+    Q_INVOKABLE void appInitializeApp(const QString &appName, bool forStore);
+    Q_INVOKABLE void appInitializeHdpi(const QString &appName, bool forStore);
     Q_INVOKABLE QString appVersion();
 
     // About i18n
@@ -89,27 +89,27 @@ public:
     Q_INVOKABLE bool hdpiIsValidPolicy(int policy);
 
     // About formater
-    Q_INVOKABLE QString stringToHexString(const QString &str);
-    Q_INVOKABLE QString hexStringToString(const QString &str);
-    Q_INVOKABLE QByteArray byteArray2Hex(const QByteArray &source, char separator = '\0');
+    Q_INVOKABLE QString formatStringToHexString(const QString &str);
+    Q_INVOKABLE QString formatHexStringToString(const QString &str);
+    Q_INVOKABLE QByteArray formatByteArray2Hex(const QByteArray &source, char separator = '\0');
 
     // About date time
-    Q_INVOKABLE QString dateTimeString(const QString &format);
-    Q_INVOKABLE QDateTime buildDateTime();
-    Q_INVOKABLE QString buildDateTimeString(const QString &format);
-    Q_INVOKABLE QString systemDateFormat();
-    Q_INVOKABLE QString systemTimeFormat();
+    Q_INVOKABLE QString dtDateTimeString(const QString &format);
+    Q_INVOKABLE QDateTime dtBuildDateTime();
+    Q_INVOKABLE QString dtBuildDateTimeString(const QString &format);
+    Q_INVOKABLE QString dtSystemDateFormat();
+    Q_INVOKABLE QString dtSystemTimeFormat();
 
     // About system
-    Q_INVOKABLE QString desktopPath();
-    Q_INVOKABLE QString clipboardText();
-    Q_INVOKABLE void setClipboardText(const QString &text);
-    Q_INVOKABLE void openUrl(const QString &url);
+    Q_INVOKABLE QString sysDesktopPath();
+    Q_INVOKABLE QString sysClipboardText();
+    Q_INVOKABLE void sysSetClipboardText(const QString &text);
+    Q_INVOKABLE void sysOpenUrl(const QString &url);
 
     // About icon
-    Q_INVOKABLE QIcon toThemeIcon(const QIcon &icon);
-    Q_INVOKABLE QIcon cookedIconFile(const QString &iconFile, const QString &color);
-    Q_INVOKABLE QIcon cookedIcon(const QIcon &icon, const QString &color);
+    Q_INVOKABLE QIcon iconToThemeIcon(const QIcon &icon);
+    Q_INVOKABLE QIcon iconCookedIconFile(const QString &iconFile, const QString &color);
+    Q_INVOKABLE QIcon iconCookedIcon(const QIcon &icon, const QString &color);
 
     // About settings
     Q_INVOKABLE void settingsOpenSettingsFileDir();
@@ -127,13 +127,13 @@ public:
     Q_INVOKABLE QVariant settingsValue(const QString &key, const QVariant &value = QVariant()) const;
     Q_INVOKABLE void settingsSetValue(const QString &key, const QVariant &value);
     Q_INVOKABLE void settingsSetJsonObjectStringValue(const QString &key, const QString &value);
+    Q_INVOKABLE QSettings *settings();
 
     // Other functions
     Q_INVOKABLE QMainWindow *mainWindow();
     Q_INVOKABLE void moveToScreenCenter(QWidget *widget);
     Q_INVOKABLE bool tryToReboot();
     Q_INVOKABLE void tryToClearSettings();
-    Q_INVOKABLE QSettings *settings();
 };
 
 /**

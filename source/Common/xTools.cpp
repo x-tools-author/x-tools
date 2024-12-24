@@ -57,14 +57,14 @@ xTools &xTools::singleton()
 void xTools::doSomethingBeforeAppCreated(char *argv[], const QString &appName, bool forStore)
 {
     xTools &xTools = singleton();
-    xTools.appInitializing(appName, forStore);
+    xTools.appInitializeApp(appName, forStore);
     xTools.tryToClearSettings();
 
     xTools.googleLogInitializing(argv[0]);
 #ifdef QT_RELEASE
     qInstallMessageHandler(googleLogToQtLog);
 #endif
-    xTools.appInitializingHdpi(appName, forStore);
+    xTools.appInitializeHdpi(appName, forStore);
 }
 
 void xTools::doSomethingAfterAppExited()
@@ -193,7 +193,7 @@ void xTools::appSetFriendlyName(const QString &name)
     d->m_appFriendlyName = name;
 }
 
-void xTools::appInitializing(const QString &appName, bool forStore)
+void xTools::appInitializeApp(const QString &appName, bool forStore)
 {
     QString cookedAppName = appName;
     if (forStore) {
@@ -207,7 +207,7 @@ void xTools::appInitializing(const QString &appName, bool forStore)
     appSetFriendlyName(appName);
 }
 
-void xTools::appInitializingHdpi(const QString &appName, bool forStore)
+void xTools::appInitializeHdpi(const QString &appName, bool forStore)
 {
 #if 0
     qputenv("QT_SCALE_FACTOR", "1.5");
@@ -399,18 +399,18 @@ bool xTools::hdpiIsValidPolicy(int policy)
     return policies.contains(QVariant(policy));
 }
 
-QString xTools::stringToHexString(const QString &str)
+QString xTools::formatStringToHexString(const QString &str)
 {
     return QString::fromLatin1(str.toUtf8().toHex());
 }
 
-QString xTools::hexStringToString(const QString &str)
+QString xTools::formatHexStringToString(const QString &str)
 {
     QByteArray arr = QByteArray::fromHex(str.toUtf8());
     return QString::fromUtf8(arr);
 }
 
-QByteArray xTools::byteArray2Hex(const QByteArray &source, char separator)
+QByteArray xTools::formatByteArray2Hex(const QByteArray &source, char separator)
 {
     if (source.isEmpty()) {
         return source;
@@ -431,12 +431,12 @@ QByteArray xTools::byteArray2Hex(const QByteArray &source, char separator)
     return hex;
 }
 
-QString xTools::dateTimeString(const QString &format)
+QString xTools::dtDateTimeString(const QString &format)
 {
     return QDateTime::currentDateTime().toString(format);
 }
 
-QDateTime xTools::buildDateTime()
+QDateTime xTools::dtBuildDateTime()
 {
     QString dateString = QString(__DATE__);
     QString timeString = QString(__TIME__);
@@ -446,54 +446,54 @@ QDateTime xTools::buildDateTime()
     return dateTime;
 }
 
-QString xTools::buildDateTimeString(const QString &format)
+QString xTools::dtBuildDateTimeString(const QString &format)
 {
-    return buildDateTime().toString(format);
+    return dtBuildDateTime().toString(format);
 }
 
-QString xTools::systemDateFormat()
+QString xTools::dtSystemDateFormat()
 {
     return QLocale::system().dateFormat();
 }
 
-QString xTools::systemTimeFormat()
+QString xTools::dtSystemTimeFormat()
 {
     return QLocale::system().timeFormat();
 }
 
-QString xTools::desktopPath()
+QString xTools::sysDesktopPath()
 {
     return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 }
 
-QString xTools::clipboardText()
+QString xTools::sysClipboardText()
 {
     return QGuiApplication::clipboard()->text();
 }
 
-void xTools::setClipboardText(const QString &text)
+void xTools::sysSetClipboardText(const QString &text)
 {
     QGuiApplication::clipboard()->setText(text);
 }
 
-void xTools::openUrl(const QString &url)
+void xTools::sysOpenUrl(const QString &url)
 {
     QDesktopServices::openUrl(QUrl(url));
 }
 
-QIcon xTools::toThemeIcon(const QIcon &icon)
+QIcon xTools::iconToThemeIcon(const QIcon &icon)
 {
     const QString color = qApp->palette().windowText().color().name();
-    return cookedIcon(icon, color);
+    return iconCookedIcon(icon, color);
 }
 
-QIcon xTools::cookedIconFile(const QString &iconFile, const QString &color)
+QIcon xTools::iconCookedIconFile(const QString &iconFile, const QString &color)
 {
     QIcon icon(iconFile);
-    return cookedIcon(icon, color);
+    return iconCookedIcon(icon, color);
 }
 
-QIcon xTools::cookedIcon(const QIcon &icon, const QString &color)
+QIcon xTools::iconCookedIcon(const QIcon &icon, const QString &color)
 {
     QPixmap pixmap = icon.pixmap(QSize(128, 128));
     QPainter painter(&pixmap);
@@ -623,6 +623,12 @@ void xTools::settingsSetJsonObjectStringValue(const QString &key, const QString 
     d->m_settings->setValue(key, doc.toVariant());
 }
 
+QSettings *xTools::settings()
+{
+    Q_D(xTools);
+    return d->m_settings;
+}
+
 QMainWindow *xTools::mainWindow()
 {
     for (const auto &widget : qApp->topLevelWidgets()) {
@@ -682,12 +688,6 @@ void xTools::tryToClearSettings()
             qWarning() << "The operation(remove settings path) failed!";
         }
     }
-}
-
-QSettings *xTools::settings()
-{
-    Q_D(xTools);
-    return d->m_settings;
 }
 
 } // namespace xTools
