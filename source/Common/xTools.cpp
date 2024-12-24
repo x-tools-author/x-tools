@@ -231,7 +231,7 @@ QString xTools::appVersion()
     return QApplication::applicationVersion();
 }
 
-QString xTools::languageSetDefaultLanguage()
+QString xTools::languageDefaultLanguage()
 {
     Q_D(xTools);
     QSettings *settings = d->m_settings;
@@ -322,7 +322,7 @@ void xTools::languageSetupAppLanguage(const QString &language)
     if (tmp.isEmpty()) {
         tmp = d->m_settings->value("language").toString();
         if (tmp.isEmpty()) {
-            tmp = languageSetDefaultLanguage();
+            tmp = languageDefaultLanguage();
         }
     }
 

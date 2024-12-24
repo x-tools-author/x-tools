@@ -168,7 +168,7 @@ void MainWindow::initMenuLanguage()
         });
 
         if (settingLanguage.isEmpty()) {
-            if (language == xTools.languageSetDefaultLanguage()) {
+            if (language == xTools.languageDefaultLanguage()) {
                 action->setChecked(true);
             }
         } else {

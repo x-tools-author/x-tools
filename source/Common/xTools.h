@@ -70,7 +70,7 @@ public:
     Q_INVOKABLE QString appVersion();
 
     // About i18n
-    Q_INVOKABLE QString languageSetDefaultLanguage();
+    Q_INVOKABLE QString languageDefaultLanguage();
     Q_INVOKABLE QStringList languageSupportedLanguages();
     Q_INVOKABLE QStringList languageSupportedPrefixes();
     Q_INVOKABLE void languageSetSupportedPrefixes(const QStringList &prefixes);
