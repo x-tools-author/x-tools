@@ -8,11 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#ifdef X_TOOLS_ENABLE_MODULE_PRIVATE
-#include "xCommon/source/MainWindow.h"
-#else
 #include "Common/MainWindow.h"
-#endif
 
 class IOPage;
 class MainWindow : public xTools::MainWindow
