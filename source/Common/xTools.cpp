@@ -130,6 +130,41 @@ void xTools::googleLogToQtLog(QtMsgType type, const QMessageLogContext &context,
     }
 }
 
+QString xTools::xToolsVersion()
+{
+    QString version = "0.0.0";
+#if defined(X_TOOLS_GIT_TAG)
+    auto tag = QString(X_TOOLS_GIT_TAG);
+    if (tag == QString("continuous")) {
+        version = "9.9.9";
+    } else {
+        tag = tag.remove("v");
+        if (tag.split('.').length() == 3) {
+            version = tag;
+        }
+    }
+#endif
+    return version;
+}
+
+QString xTools::xToolsLastCommit()
+{
+#if defined(X_TOOLS_GIT_COMMIT)
+    return X_TOOLS_GIT_COMMIT;
+#else
+    return "Unknown";
+#endif
+}
+
+QString xTools::xToolsLastCommitTime()
+{
+#if defined(X_TOOLS_GIT_COMMIT_TIME)
+    return X_TOOLS_GIT_COMMIT_TIME;
+#else
+    return "Unknown";
+#endif
+}
+
 bool xTools::splashScreenIsEnable()
 {
     Q_D(xTools);
@@ -330,41 +365,6 @@ void xTools::languageSetupAppLanguage(const QString &language)
     for (const auto &prefix : prefixes) {
         languageSetupAppLanguageWithPrefix(tmp, prefix);
     }
-}
-
-QString xTools::xToolsVersion()
-{
-    QString version = "0.0.0";
-#if defined(X_TOOLS_GIT_TAG)
-    auto tag = QString(X_TOOLS_GIT_TAG);
-    if (tag == QString("continuous")) {
-        version = "9.9.9";
-    } else {
-        tag = tag.remove("v");
-        if (tag.split('.').length() == 3) {
-            version = tag;
-        }
-    }
-#endif
-    return version;
-}
-
-QString xTools::xToolsLastCommit()
-{
-#if defined(X_TOOLS_GIT_COMMIT)
-    return X_TOOLS_GIT_COMMIT;
-#else
-    return "Unknown";
-#endif
-}
-
-QString xTools::xToolsLastCommitTime()
-{
-#if defined(X_TOOLS_GIT_COMMIT_TIME)
-    return X_TOOLS_GIT_COMMIT_TIME;
-#else
-    return "Unknown";
-#endif
 }
 
 QVariantList xTools::hdpiSupportedPolicies()
