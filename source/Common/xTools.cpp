@@ -48,8 +48,6 @@ xTools::xTools(QObject *parent)
 
 xTools &xTools::singleton()
 {
-    Q_ASSERT_X(qApp, "xTools", "The xTools object must be created after application object.");
-
     static xTools singleton;
     return singleton;
 }
