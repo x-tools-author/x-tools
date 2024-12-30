@@ -88,12 +88,8 @@ else()
 endif()
 
 if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
   add_subdirectory("modules/xQSS")
-else()
-  message(STATUS "Style sheet module is disable, style sheet files will be removed.")
-  set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/Common/StyleSheetManager.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/Common/StyleSheetManager.cpp)
 endif()
 
 # HID
@@ -323,6 +319,10 @@ if(X_TOOLS_ENABLE_MODULE_CHARTS)
   target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Charts QXlsx)
 endif()
 
+if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
+  target_link_libraries(xToolsCore PUBLIC xQSS)
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # xTools application
 option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
@@ -353,7 +353,9 @@ if(X_TOOLS_ENABLE_TARGET_XTOOLS)
                WIN32_EXECUTABLE TRUE
                QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
 
-  x_tools_add_stylesheet_resources(xTools)
+  if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
+    x_tools_add_style_sheet_resources(xTools)
+  endif()
   x_tools_deploy_qt(xTools)
   x_tools_tar_target(xTools)
 

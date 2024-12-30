@@ -15,7 +15,7 @@ if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
 endif()
 
-function(x_tools_add_stylesheet_resources target)
+function(x_tools_add_style_sheet_resources target)
   add_custom_command(
     TARGET ${target}
     POST_BUILD
@@ -42,7 +42,7 @@ function(x_tools_setup_stylesheet target)
     return()
   endif()
 
-  x_tools_add_stylesheet_resources(${target})
+  x_tools_add_style_sheet_resources(${target})
   x_tools_add_stylesheet_sources(${target})
 endfunction()
 
