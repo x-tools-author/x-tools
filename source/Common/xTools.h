@@ -50,6 +50,10 @@ public:
     static void googleLogToQtLog(QtMsgType type,
                                  const QMessageLogContext &context,
                                  const QString &msg);
+    // About git info
+    Q_INVOKABLE QString static xToolsVersion();
+    Q_INVOKABLE QString static xToolsLastCommit();
+    Q_INVOKABLE QString static xToolsLastCommitTime();
 
 signals:
     void languageChanged();
@@ -70,18 +74,13 @@ public:
     Q_INVOKABLE QString appVersion();
 
     // About i18n
-    Q_INVOKABLE QString languageSetDefaultLanguage();
+    Q_INVOKABLE QString languageDefaultLanguage();
     Q_INVOKABLE QStringList languageSupportedLanguages();
     Q_INVOKABLE QStringList languageSupportedPrefixes();
     Q_INVOKABLE void languageSetSupportedPrefixes(const QStringList &prefixes);
     Q_INVOKABLE void languageSetupAppLanguageWithPrefix(const QString &language,
                                                         const QString &prefix);
     Q_INVOKABLE void languageSetupAppLanguage(const QString &language = QString());
-
-    // About git info
-    Q_INVOKABLE QString xToolsVersion();
-    Q_INVOKABLE QString xToolsLastCommit();
-    Q_INVOKABLE QString xToolsLastCommitTime();
 
     // About high dpi policy
     Q_INVOKABLE QVariantList hdpiSupportedPolicies();
