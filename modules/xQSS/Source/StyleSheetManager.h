@@ -11,7 +11,7 @@
 #include <QAction>
 #include <QActionGroup>
 #include <QMenu>
-
+#include <QSettings>
 #include <QtAdvancedStylesheet.h>
 
 namespace xTools {
@@ -37,6 +37,7 @@ private:
     QActionGroup* m_themeActionGroup;
     QMap<QString, QString> m_nameFriendlyNameMap;
     QMap<QString, QString> m_primaryColorMap;
+    QSettings* m_settings{nullptr};
     static bool m_enableStylesheet;
     static bool m_awaysEnableStylesheet;
 

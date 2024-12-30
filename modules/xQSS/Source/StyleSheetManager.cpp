@@ -13,8 +13,7 @@
 #include <QFileInfoList>
 #include <QMessageBox>
 #include <QPainter>
-
-#include "xTools.h"
+#include <QStandardPaths>
 
 namespace xTools {
 
@@ -65,14 +64,23 @@ StyleSheetManager::StyleSheetManager(QObject* parent)
     m_primaryColorMap.insert("light_teal", "#1de9b6");
     m_primaryColorMap.insert("light_yellow", "#ffea00");
 
-    QDir dir(g_xTools.settingsPath());
+    if (!m_settings) {
+        QString fileName = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+        fileName += "/xQSS.ini";
+        m_settings = new QSettings(fileName, QSettings::IniFormat, this);
+    }
+
+    QString fileName = m_settings->fileName();
+    QString settingsPath = fileName.left(fileName.lastIndexOf('/') + 1);
+
+    QDir dir(settingsPath);
     if (!dir.exists("output")) {
         dir.mkdir("output");
     }
 
     QString appDir = QApplication::applicationDirPath();
     setStylesDirPath(appDir + "/3rd_styles");
-    setOutputDirPath(g_xTools.settingsPath() + "/output");
+    setOutputDirPath(settingsPath + "/output");
     setCurrentStyle("qt_material");
     setCurrentTheme(themeName());
 
@@ -131,7 +139,7 @@ void StyleSheetManager::setAwaysEnableStylesheet(bool enabled)
 
 QString StyleSheetManager::themeName()
 {
-    QString ret = g_xTools.settingsValue("themeName").toString();
+    QString ret = m_settings->value("themeName").toString();
     if (ret.isEmpty()) {
         ret = QString("dark_blue");
     }
@@ -141,7 +149,7 @@ QString StyleSheetManager::themeName()
 
 void StyleSheetManager::setThemeName(const QString& themeName)
 {
-    g_xTools.settingsSetValue("themeName", themeName);
+    m_settings->setValue("themeName", themeName);
     setCurrentTheme(themeName);
     if (enableStylesheet()) {
         updateStylesheet();
@@ -204,12 +212,12 @@ void StyleSheetManager::updateActionIcon(QAction* action, const QString& color)
 
 bool StyleSheetManager::enableStylesheet()
 {
-    return g_xTools.settingsValue("enableStylesheet", m_enableStylesheet).toBool();
+    return m_settings->value("enableStylesheet", m_enableStylesheet).toBool();
 }
 
 void StyleSheetManager::setEnableStylesheet(bool enable)
 {
-    g_xTools.settingsSetValue("enableStylesheet", enable);
+    m_settings->setValue("enableStylesheet", enable);
 }
 
 void StyleSheetManager::setupActions(const QStringList& themes, QMenu* menu, QActionGroup* group)
@@ -249,10 +257,6 @@ void StyleSheetManager::setApplicationStylesheetEnabled(bool enable)
             emit action->triggered();
             break;
         }
-    }
-
-    if (!enable) {
-        g_xTools.tryToReboot();
     }
 }
 

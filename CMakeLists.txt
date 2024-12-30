@@ -90,6 +90,8 @@ endif()
 if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
   add_subdirectory("modules/xQSS")
+  include_directories(${CMAKE_SOURCE_DIR}/modules/xQSS/Source)
+  include_directories(${CMAKE_SOURCE_DIR}/modules/xQSS/ThirdParty/Qt-Advanced-Stylesheets-main/src)
 endif()
 
 # HID
@@ -292,7 +294,6 @@ list(APPEND X_TOOLS_SOURCE xTools.qrc)
 list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/source/main.cpp)
 add_library(xToolsCore STATIC ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xToolsCore)
-x_tools_add_stylesheet_sources(xToolsCore)
 
 target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui)
 target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Network)
