@@ -80,7 +80,7 @@ x_tools_add_third_party("libqrencode-master")
 x_tools_add_third_party("qmdnsengine-master")
 
 # --------------------------------------------------------------------------------------------------
-# Custom stylesheet
+# Custom style sheet
 if(ANDROID OR IOS)
   option(X_TOOLS_ENABLE_MODULE_STYLE_SHEET "Enable Qt advanced style sheet" OFF)
 else()
