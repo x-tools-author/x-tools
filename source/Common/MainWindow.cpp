@@ -33,7 +33,7 @@
 
 #include "Common/xTools.h"
 
-#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLE_SHEET
 #include "StyleSheetManager.h"
 #endif
 
@@ -69,7 +69,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 QIcon MainWindow::cookedIcon(const QString& svgFileName)
 {
-#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLE_SHEET
     QSvgRenderer renderer(svgFileName);
     QImage image(QSize(128, 128), QImage::Format_ARGB32);
     image.fill(Qt::transparent); // Transparent background
@@ -97,7 +97,7 @@ QIcon MainWindow::cookedIcon(const QString& svgFileName)
 
 QIcon MainWindow::cookedIcon(const QIcon& icon)
 {
-#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLE_SHEET
     QPixmap pixmap = icon.pixmap(QSize(128, 128));
     QPainter painter(&pixmap);
     painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
@@ -221,7 +221,7 @@ void MainWindow::initOptionMenuAppStyleMenu()
 
     m_appStyleMenu->addActions(m_appStyleActionGroup->actions());
 
-#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLE_SHEET
     m_themeAction = m_optionMenu->addMenu(StyleSheetManager::singleton().themeMenu());
 #endif
 }

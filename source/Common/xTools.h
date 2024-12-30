@@ -20,7 +20,7 @@
 
 #include "Common/MainWindow.h"
 
-#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLE_SHEET
 #include "StyleSheetManager.h"
 #endif
 
@@ -168,7 +168,7 @@ int exec(int argc,
     const QString dtStr = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     g_xTools.settingsSetValue("startUpTime", dtStr);
 
-#ifdef X_TOOLS_ENABLE_MODULE_STYLESHEET
+#ifdef X_TOOLS_ENABLE_MODULE_STYLE_SHEET
     auto &styleSheetManager = StyleSheetManager::singleton();
     const QString styleSheet = styleSheetManager.styleSheet();
     if (!styleSheet.isEmpty() && !styleSheetManager.currentTheme().isEmpty()) {

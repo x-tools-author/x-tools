@@ -79,9 +79,18 @@ x_tools_add_third_party("glog-0.7.1")
 x_tools_add_third_party("libqrencode-master")
 x_tools_add_third_party("qmdnsengine-master")
 
+# --------------------------------------------------------------------------------------------------
 # Custom stylesheet
-if(NOT X_TOOLS_ENABLE_MODULE_STYLESHEET)
-  message(STATUS "Stylesheet module is disable, stylesheet files will be removed.")
+if(ANDROID OR IOS)
+  option(X_TOOLS_ENABLE_MODULE_STYLE_SHEET "Enable Qt advanced style sheet" OFF)
+else()
+  option(X_TOOLS_ENABLE_MODULE_STYLE_SHEET "Enable Qt advanced style sheet" ON)
+endif()
+
+if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
+  add_subdirectory("modules/xQSS")
+else()
+  message(STATUS "Style sheet module is disable, style sheet files will be removed.")
   set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/Common/StyleSheetManager.h)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/Common/StyleSheetManager.cpp)

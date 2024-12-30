@@ -3,16 +3,16 @@
 # Qt-Advanced-Stylesheets-main：https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets
 set(X_TOOLS_STYLES_DIR_NAME "Qt-Advanced-Stylesheets-main")
 if(ANDROID OR IOS)
-  option(X_TOOLS_ENABLE_MODULE_STYLESHEET "Enable Qt advanced stylesheet" OFF)
+  option(X_TOOLS_ENABLE_MODULE_STYLE_SHEET "Enable Qt advanced stylesheet" OFF)
 else()
-  option(X_TOOLS_ENABLE_MODULE_STYLESHEET "Enable Qt advanced stylesheet" ON)
+  option(X_TOOLS_ENABLE_MODULE_STYLE_SHEET "Enable Qt advanced stylesheet" ON)
 endif()
-if(X_TOOLS_ENABLE_MODULE_STYLESHEET)
+if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${X_TOOLS_STYLES_DIR_NAME}.zip
                   WORKING_DIRECTORY ${X_TOOLS_THIRD_PARTY_DIR})
   include_directories(${X_TOOLS_THIRD_PARTY_DIR}/${X_TOOLS_STYLES_DIR_NAME}/src)
   add_compile_definitions(ACSS_STATIC)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_STYLESHEET)
+  add_compile_definitions(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
 endif()
 
 function(x_tools_add_stylesheet_resources target)
@@ -27,7 +27,7 @@ function(x_tools_add_stylesheet_resources target)
 endfunction()
 
 function(x_tools_add_stylesheet_sources target)
-  if(NOT X_TOOLS_ENABLE_MODULE_STYLESHEET)
+  if(NOT X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
     return()
   endif()
   set(SOURCE_PATH ${X_TOOLS_THIRD_PARTY_DIR}/${X_TOOLS_STYLES_DIR_NAME}/src)
@@ -38,7 +38,7 @@ function(x_tools_add_stylesheet_sources target)
 endfunction()
 
 function(x_tools_setup_stylesheet target)
-  if(NOT X_TOOLS_ENABLE_MODULE_STYLESHEET)
+  if(NOT X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
     return()
   endif()
 
