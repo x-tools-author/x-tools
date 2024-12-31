@@ -43,6 +43,7 @@ public:
     static xTools &singleton();
     static void doSomethingBeforeAppCreated(char *argv[],
                                             const QString &appName,
+                                            const QString &appVersion = QString("0.0.0"),
                                             bool forStore = false);
     static void doSomethingAfterAppExited();
     static void googleLogInitializing(char *argv0);
@@ -69,7 +70,6 @@ public:
     // About app info
     Q_INVOKABLE QString appFriendlyName();
     Q_INVOKABLE void appSetFriendlyName(const QString &name);
-    Q_INVOKABLE void appInitializeApp(const QString &appName, bool forStore);
     Q_INVOKABLE void appInitializeHdpi(const QString &appName, bool forStore);
     Q_INVOKABLE QString appVersion();
 

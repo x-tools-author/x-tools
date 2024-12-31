@@ -52,17 +52,34 @@ xTools &xTools::singleton()
     return singleton;
 }
 
-void xTools::doSomethingBeforeAppCreated(char *argv[], const QString &appName, bool forStore)
+void xTools::doSomethingBeforeAppCreated(char *argv[],
+                                         const QString &appName,
+                                         const QString &appVersion,
+                                         bool forStore)
 {
-    xTools &xTools = singleton();
-    xTools.appInitializeApp(appName, forStore);
-    xTools.tryToClearSettings();
+    QString cookedAppName = appName;
+    if (forStore) {
+        cookedAppName += QString("(Store)");
+    }
 
-    xTools.googleLogInitializing(argv[0]);
+    cookedAppName.remove(" ");
+    QCoreApplication::setOrganizationName(QString("xTools"));
+    QCoreApplication::setOrganizationDomain(QString("IT"));
+    QCoreApplication::setApplicationName(cookedAppName);
+    QCoreApplication::setApplicationVersion(appVersion);
+
+    g_xTools.appSetFriendlyName(appName);
+    g_xTools.tryToClearSettings();
+    g_xTools.googleLogInitializing(argv[0]);
+    g_xTools.appInitializeHdpi(appName, forStore);
 #ifdef QT_RELEASE
     qInstallMessageHandler(googleLogToQtLog);
 #endif
-    xTools.appInitializeHdpi(appName, forStore);
+
+    qInfo() << "The settings path is:" << qPrintable(g_xTools.settingsPath());
+    qInfo() << "The settings file is:" << qPrintable(g_xTools.settings()->fileName());
+    qInfo() << "The application version is:" << qPrintable(g_xTools.appVersion());
+    qInfo() << "The application friendly name is:" << qPrintable(g_xTools.appFriendlyName());
 }
 
 void xTools::doSomethingAfterAppExited()
@@ -72,10 +89,9 @@ void xTools::doSomethingAfterAppExited()
 
 void xTools::googleLogInitializing(char *argv0)
 {
-    xTools &xTools = singleton();
-    QString logPath = xTools.settingsPath();
+    QString logPath = g_xTools.settingsPath();
     logPath += "/log";
-    QDir dir(xTools.settingsPath());
+    QDir dir(logPath);
     if (!dir.exists(logPath) && !dir.mkpath(logPath)) {
         qWarning() << "Make log directory failed";
     }
@@ -224,20 +240,6 @@ void xTools::appSetFriendlyName(const QString &name)
 {
     Q_D(xTools);
     d->m_appFriendlyName = name;
-}
-
-void xTools::appInitializeApp(const QString &appName, bool forStore)
-{
-    QString cookedAppName = appName;
-    if (forStore) {
-        cookedAppName += QString("(Store)");
-    }
-
-    cookedAppName.remove(" ");
-    QCoreApplication::setOrganizationName(QString("xTools"));
-    QCoreApplication::setOrganizationDomain(QString("IT"));
-    QCoreApplication::setApplicationName(cookedAppName);
-    appSetFriendlyName(appName);
 }
 
 void xTools::appInitializeHdpi(const QString &appName, bool forStore)
@@ -509,7 +511,7 @@ void xTools::settingsOpenSettingsFileDir()
 QString xTools::settingsPath()
 {
     Q_D(xTools);
-    QString settingsFile(d->settingsPath());
+    QString settingsFile(d->m_settings->fileName());
     QString path = settingsFile.left(settingsFile.lastIndexOf("/"));
     return path;
 }
