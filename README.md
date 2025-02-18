@@ -5,6 +5,8 @@
 [![build-macos](https://github.com/x-tools-author/x-tools/actions/workflows/build-macos.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-macos.yml)
 [![build-android](https://github.com/x-tools-author/x-tools/actions/workflows/build-android.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-android.yml)
 
+[![Packaging status](https://repology.org/badge/vertical-allrepos/x-tools.svg)](https://repology.org/project/x-tools/versions)
+
 *xTools* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (Qt6.8 is recommended). It offers extensive support for SerialPort, BLE, UDP, TCP, Web Socket, Modbus and CAN Bus debugging functionalities.
 
 > **You can get *xTools* form [Micorsoft Store(pro)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
@@ -24,6 +26,16 @@
 ## Custom theme
 
 ![xToolsCustom.png](doc/Images/xToolsCustom.png)
+
+## Build
+
+### Arch Linux
+
+Arch Linux can install x-tools via the [AUR](https://aur.archlinux.org/packages/x-tools) or a [self-built source](https://github.com/taotieren/aur-repo).
+
+```bash
+yay -Syu x-tools
+```
 
 ## About the Project
 
