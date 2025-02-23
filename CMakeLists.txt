@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.21)
-
-# cmake-format: off
-project(xTools VERSION 1.0 LANGUAGES C CXX)
-# cmake-format: on
+cmake_minimum_required(VERSION 3.22)
+project(
+  xTools
+  VERSION 8.0
+  LANGUAGES C CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -289,99 +289,70 @@ list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.h)
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.cpp)
 
 # --------------------------------------------------------------------------------------------------
-# xTools Core
-list(APPEND X_TOOLS_SOURCE xTools.qrc)
-list(REMOVE_ITEM X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/source/main.cpp)
-add_library(xToolsCore STATIC ${X_TOOLS_SOURCE})
-x_tools_generate_translations(xToolsCore)
+# xTools application
+option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_TOOLS_BINARY_DIR}/xTools)
 
-target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui)
-target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Network)
-target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Svg Qt${QT_VERSION_MAJOR}::Widgets)
-target_link_libraries(xToolsCore PUBLIC glog::glog qrencode qmdnsengine)
+if(CMAKE_HOST_APPLE)
+  set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
+  set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
+  set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+endif()
+
+qt_add_executable(
+  xTools
+  ${X_TOOLS_SOURCE}
+  xTools.rc
+  xTools.qrc
+  android/AndroidManifest.xml
+  android/res/values/libs.xml
+  android/res/xml/qtprovider_paths.xml
+  ${xTools_ICON})
+set_target_properties(
+  xTools
+  PROPERTIES # MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appuntitled
+             MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+             MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+             MACOSX_BUNDLE TRUE
+             WIN32_EXECUTABLE TRUE
+             QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
+target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui)
+target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Network)
+target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Svg Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(xTools PUBLIC glog::glog qrencode qmdnsengine)
 
 if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
-  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::SerialPort)
+  target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::SerialPort)
 endif()
 
 if(X_TOOLS_ENABLE_MODULE_WEB_SOCKET)
-  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::WebSockets)
+  target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::WebSockets)
 endif()
 
 if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
-  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::SerialBus)
+  target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::SerialBus)
 endif()
 
 if(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
-  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Bluetooth)
+  target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Bluetooth)
 endif()
 
 if(X_TOOLS_ENABLE_MODULE_CHARTS)
-  target_link_libraries(xToolsCore PUBLIC Qt${QT_VERSION_MAJOR}::Charts QXlsx)
+  target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Charts QXlsx)
 endif()
 
 if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
-  target_link_libraries(xToolsCore PUBLIC xQSS)
+  target_link_libraries(xTools PUBLIC xQSS)
 endif()
 
-# --------------------------------------------------------------------------------------------------
-# xTools application
-option(X_TOOLS_ENABLE_TARGET_XTOOLS "Enable xTools applications" ON)
-if(X_TOOLS_ENABLE_TARGET_XTOOLS)
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_TOOLS_BINARY_DIR}/xTools)
-
-  if(CMAKE_HOST_APPLE)
-    set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
-    set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
-    set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
-  endif()
-
-  qt_add_executable(
-    xTools
-    ${CMAKE_CURRENT_SOURCE_DIR}/source/main.cpp
-    xTools.rc
-    android/AndroidManifest.xml
-    android/res/values/libs.xml
-    android/res/xml/qtprovider_paths.xml
-    ${xTools_ICON})
-  target_link_libraries(xTools PRIVATE xToolsCore)
-  set_target_properties(
-    xTools
-    PROPERTIES # MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appuntitled
-               MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-               MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-               MACOSX_BUNDLE TRUE
-               WIN32_EXECUTABLE TRUE
-               QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
-
-  if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
-    x_tools_add_style_sheet_resources(xTools)
-  endif()
-  x_tools_deploy_qt(xTools)
-  x_tools_tar_target(xTools)
-
-  # remove "v" from version
-  set(version ${GIT_TAG})
-  string(SUBSTRING ${version} 1 -1 version)
-  x_tools_generate_installer(xTools ${version} ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
+if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
+  x_tools_add_style_sheet_resources(xTools)
 endif()
+x_tools_generate_translations(xTools)
+x_tools_deploy_qt(xTools)
+x_tools_tar_target(xTools)
 
-# --------------------------------------------------------------------------------------------------
-# Assistant applications
-macro(add_tool_app dir_name app_name)
-  set(TOOL_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/source/Tools/${dir_name}/main.cpp)
-  if(WIN32)
-    list(APPEND TOOL_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
-  endif()
-
-  x_tools_add_executable(${app_name} ${TOOL_SOURCES})
-  x_tools_deploy_qt(${app_name})
-  target_link_libraries(${app_name} PRIVATE xToolsCore)
-endmacro()
-
-option(X_TOOLS_ENABLE_TARGET_TOOLS "Enable tool applications" OFF)
-if(X_TOOLS_ENABLE_TARGET_TOOLS)
-  foreach(tool ${ALL_TOOLS})
-    add_tool_app(${tool} "${tool}Assistant")
-  endforeach()
-endif()
+# remove "v" from version
+set(version ${GIT_TAG})
+string(SUBSTRING ${version} 1 -1 version)
+x_tools_generate_installer(xTools ${version} ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)

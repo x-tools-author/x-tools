@@ -7,16 +7,10 @@ set(X_TOOLS_BINARY_DIR ${CMAKE_BINARY_DIR}/assets)
 
 # Unzip file and import it as a sub module.
 function(x_tools_add_third_party zip_file_name_without_suffix)
-  set(3rd_dir "")
-  if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/${zip_file_name_without_suffix}.zip)
-    set(3rd_dir "thirdparty")
-  else()
-    set(3rd_dir "ThirdParty")
-  endif()
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${zip_file_name_without_suffix}.zip
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${3rd_dir})
-  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/${3rd_dir}/${zip_file_name_without_suffix})
-  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/${3rd_dir}/${zip_file_name_without_suffix})
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${zip_file_name_without_suffix})
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${zip_file_name_without_suffix})
 endfunction()
 
 function(x_tools_copy_glog target)
