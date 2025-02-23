@@ -12,12 +12,16 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# cmake-format: off
+# --------------------------------------------------------------------------------------------------
+# Some options for 3rd party libraries
 set(WITH_GFLAGS OFF)
 set(BUILD_TESTING OFF)
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "Reset option" FORCE)
-set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
-# cmake-format: on
+set(BUILD_SHARED_LIBS
+    OFF
+    CACHE BOOL "Reset option" FORCE)
+set(WITH_TOOLS
+    OFF
+    CACHE BOOL "Reset option" FORCE)
 
 # --------------------------------------------------------------------------------------------------
 # Qt module
