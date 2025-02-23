@@ -8,7 +8,7 @@ set(X_TOOLS_BINARY_DIR ${CMAKE_BINARY_DIR}/assets)
 # Unzip file and import it as a sub module.
 function(x_tools_add_third_party zip_file_name_without_suffix)
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${zip_file_name_without_suffix}.zip
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
+                  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${zip_file_name_without_suffix})
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${zip_file_name_without_suffix})
 endfunction()
@@ -85,9 +85,9 @@ function(x_tools_generate_translations target)
   endif()
 
   set(APP_TS_FILES "")
-  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/resources/Translations/${target}_en.ts)
-  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/resources/Translations/${target}_zh_CN.ts)
-  set(O_PATH "${CMAKE_CURRENT_SOURCE_DIR}/resources/Translations")
+  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/res/Translations/${target}_en.ts)
+  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/res/Translations/${target}_zh_CN.ts)
+  set(O_PATH "${CMAKE_CURRENT_SOURCE_DIR}/res/Translations")
   # cmake-format: off
   if(NOT QT_VERSION VERSION_LESS "6.7.0")
     qt_add_lupdate(SOURCE_TARGETS ${target} TS_FILES ${APP_TS_FILES} LUPDATE_TARGET ${target}_lupdate NO_GLOBAL_TARGET)
@@ -106,9 +106,9 @@ function(x_tools_generate_translations target)
   add_custom_target(
     ${target}_lupgrade
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_en.qm
-            ${CMAKE_CURRENT_SOURCE_DIR}/resources/Translations/${target}_en.qm
+            ${CMAKE_CURRENT_SOURCE_DIR}/res/Translations/${target}_en.qm
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_zh_CN.qm
-            ${CMAKE_CURRENT_SOURCE_DIR}/resources/Translations/${target}_zh_CN.qm
+            ${CMAKE_CURRENT_SOURCE_DIR}/res/Translations/${target}_zh_CN.qm
     DEPENDS ${target}_lrelease
     COMMENT "Generate translations for ${target}...")
 endfunction()

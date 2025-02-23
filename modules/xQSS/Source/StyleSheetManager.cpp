@@ -194,7 +194,7 @@ void StyleSheetManager::updateActions()
 void StyleSheetManager::updateActionIcon(QAction* action, const QString& color)
 {
     if (action->isChecked()) {
-        action->setIcon(QIcon(":/resources/Icons/IconCheck.svg"));
+        action->setIcon(QIcon(":/res/Icons/IconCheck.svg"));
     } else {
         QPixmap pixmap(64, 64);
         pixmap.fill(color);

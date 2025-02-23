@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget* parent)
     centralWidget->setLayout(layout);
     setCentralWidget(centralWidget);
 
-    setWindowIcon(QIcon(":/resources/Images/Logo.png"));
+    setWindowIcon(QIcon(":/res/Images/Logo.png"));
     initMenuBar();
 
     constexpr int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
@@ -258,7 +258,7 @@ void MainWindow::initHelpMenu()
 {
 #if defined(Q_OS_WIN) && !defined(X_TOOLS_ENABLE_MODULE_PRIVATE)
     m_helpMenu->addSeparator();
-    m_helpMenu->addAction(QIcon(":/resources/Icons/IconBuy.svg"), tr("Bug from Store"), this, []() {
+    m_helpMenu->addAction(QIcon(":/res/Icons/IconBuy.svg"), tr("Bug from Store"), this, []() {
         QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
         QDesktopServices::openUrl(url);
     });
@@ -334,7 +334,7 @@ void MainWindow::showHistory()
     dialog.resize(600, 400);
 
     auto* textBrowser = new QTextBrowser(&dialog);
-    QFile file(":/resources/Files/History.txt");
+    QFile file(":/res/Files/History.txt");
     if (file.open(QFile::ReadOnly)) {
         QByteArray data = file.readAll();
         textBrowser->setText(QString::fromUtf8(data));
@@ -359,8 +359,8 @@ void MainWindow::showQrCode()
     };
     QList<QrCodeInfo> qrCodeInfoList;
 
-    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/resources/Images/QSAKQQ.jpg")}
-                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/resources/Images/QtQQ.jpg")};
+    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/res/Images/QSAKQQ.jpg")}
+                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/res/Images/QtQQ.jpg")};
 
     auto* tabWidget = new QTabWidget(&dialog);
     for (auto& var : qrCodeInfoList) {

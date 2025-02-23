@@ -109,7 +109,7 @@ PingAssistant::PingAssistant(QWidget *parent)
 
     init();
     setWindowTitle("Ping Assistant");
-    setWindowIcon(QIcon(":/resources/Icons/ping.ico"));
+    setWindowIcon(QIcon(":/res/Icons/ping.ico"));
     ui->tableWidget->setAlternatingRowColors(true);
     setMinimumSize(720, 480);
 }
