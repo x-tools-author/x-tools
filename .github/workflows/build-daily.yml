@@ -21,8 +21,12 @@ jobs:
       run: |
         git config --global user.email "x-tools@outlook.com"
         git config --global user.name "x-tools-author"
-        git tag -fa continuous -m "chore: update to latest commit"
+        # git tag -fa continuous -m "chore: update to latest commit"
+        # git push origin :refs/tags/continuous
+        # git push origin continuous -f
+        git tag -d continuous || true
         git push origin :refs/tags/continuous
+        git tag continuous
         git push origin continuous -f
   update-release:
     runs-on: ubuntu-latest
