@@ -22,3 +22,4 @@ CMakePresets.json
 CMakeUserPresets.json
 compile_commands.json
 *.aps
+libs
