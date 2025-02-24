@@ -75,7 +75,7 @@ function(x_tools_tar_target target)
       TARGET ${target}
       POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E tar "cf" ${TAR_FILE_NAME}.zip "--format=zip" ${target}
-      WORKING_DIRECTORY ${X_TOOLS_BINARY_DIR})
+      WORKING_DIRECTORY "$<TARGET_FILE_DIR:${target}>/../")
   endif()
 endfunction()
 
