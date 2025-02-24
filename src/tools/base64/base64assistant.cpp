@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "Base64Assistant.h"
-#include "ui_Base64Assistant.h"
+#include "base64assistant.h"
+#include "ui_base64assistant.h"
 
 #include <QHBoxLayout>
 #include <QLabel>

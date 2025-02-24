@@ -6,15 +6,15 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "BroadcastAssistant.h"
-#include "ui_BroadcastAssistant.h"
+#include "broadcastassistant.h"
+#include "ui_broadcastassistant.h"
 
 #include <QDateTime>
 #include <QNetworkAddressEntry>
 #include <QNetworkInterface>
 
-#include "BroadcastThread.h"
 #include "IO/xIO.h"
+#include "broadcastthread.h"
 #include "common/xtools.h"
 
 BroadcastAssistant::BroadcastAssistant(QWidget* parent)

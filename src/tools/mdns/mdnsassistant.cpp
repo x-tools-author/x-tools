@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "MdnsAssistant.h"
-#include "ui_MdnsAssistant.h"
+#include "mdnsassistant.h"
+#include "ui_mdnsassistant.h"
 
 #include <QDebug>
 #include <QJsonArray>
@@ -16,8 +16,8 @@
 #include <QMessageBox>
 #include <QTreeWidgetItem>
 
-#include "MdnsServer.h"
 #include "common/xtools.h"
+#include "mdnsserver.h"
 
 MdnsAssistant::MdnsAssistant(QWidget *parent)
     : QWidget(parent)

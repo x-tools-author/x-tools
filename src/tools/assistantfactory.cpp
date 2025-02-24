@@ -11,21 +11,21 @@
 #include <QCoreApplication>
 #include <QWidget>
 
-#include "ASCII/AsciiAssistant.h"
-#include "Base64/Base64Assistant.h"
-#include "Broadcast/BroadcastAssistant.h"
-#include "CRC/CrcAssistant.h"
-#include "FileCheck/FileCheckAssistant.h"
-#include "FileMerge/FileMergeAssistant.h"
-#include "Number/NumberAssistant.h"
-#include "Ping/PingAssistant.h"
-#include "QRCode/QRCodeAssistant.h"
-#include "String/StringAssistant.h"
-#include "mDNS/MdnsAssistant.h"
+#include "ascii/asciiassistant.h"
+#include "base64/base64assistant.h"
+#include "broadcast/broadcastassistant.h"
+#include "crc/crcassistant.h"
+#include "filecheck/filecheckassistant.h"
+#include "filemerge/filemergeassistant.h"
+#include "mdns/mdnsassistant.h"
+#include "number/numberassistant.h"
+#include "ping/pingassistant.h"
+#include "qrcode/qrcodeassistant.h"
+#include "string/stringassistant.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_SERIALBUS
-#include "CANBus/CanBusAssistant.h"
-#include "Modbus/ModbusAssistant.h"
+#include "canbus/canbusassistant.h"
+#include "modbus/modbusassistant.h"
 #endif
 
 AssistantFactory::AssistantFactory(QObject* parent)

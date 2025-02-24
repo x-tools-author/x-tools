@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "CrcAssistant.h"
-#include "ui_CrcAssistant.h"
+#include "crcassistant.h"
+#include "ui_crcassistant.h"
 
 #include <QComboBox>
 #include <QDebug>
@@ -126,10 +126,7 @@ void CrcAssistant::textFormatControl()
     if (m_asciiRadioBt->isChecked()) {
         return;
     }
-    disconnect(m_inputTextEdit,
-               &QTextEdit::textChanged,
-               this,
-               &CrcAssistant::textFormatControl);
+    disconnect(m_inputTextEdit, &QTextEdit::textChanged, this, &CrcAssistant::textFormatControl);
 
     QString strTemp;
     QString plaintext = m_inputTextEdit->toPlainText();

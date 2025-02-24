@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "ModbusAssistant.h"
-#include "ui_ModbusAssistant.h"
+#include "modbusassistant.h"
+#include "ui_modbusassistant.h"
 
 #include <QAbstractSocket>
 #include <QCheckBox>
@@ -36,8 +36,8 @@
 #include <QModbusRtuSerialServer>
 
 #include "IO/xIO.h"
-#include "ModbusFactory.h"
 #include "common/xtools.h"
+#include "modbusfactory.h"
 
 #define RXCOLOR "green"
 #define TXCOLOR "blue"

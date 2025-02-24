@@ -6,14 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "HashCalculator.h"
+#include "hashcalculator.h"
 
 #include <QApplication>
 #include <QDateTime>
 #include <QDebug>
 #include <QFile>
 
-#include "FileCheckAssistant.h"
+#include "filecheckassistant.h"
 
 HashCalculator::HashCalculator(FileCheckAssistant* controller, QObject* parent)
     : QThread(parent)

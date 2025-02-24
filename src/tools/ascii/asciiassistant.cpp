@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "AsciiAssistant.h"
-#include "ui_AsciiAssistant.h"
+#include "asciiassistant.h"
+#include "ui_asciiassistant.h"
 
 #include <QDebug>
 

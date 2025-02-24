@@ -6,14 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "FileCheckAssistant.h"
-#include "ui_FileCheckAssistant.h"
+#include "filecheckassistant.h"
+#include "ui_filecheckassistant.h"
 
 #include <QDebug>
 #include <QFileDialog>
 #include <QMetaEnum>
 
-#include "HashCalculator.h"
+#include "hashcalculator.h"
 
 FileCheckAssistant::FileCheckAssistant(QWidget* parent)
     : QWidget(parent)

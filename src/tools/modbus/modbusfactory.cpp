@@ -6,14 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "ModbusFactory.h"
+#include "modbusfactory.h"
 
 #include <QCoreApplication>
 #include <QDebug>
-#include <QModbusTcpClient>
-#include <QModbusTcpServer>
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
+#include <QModbusTcpClient>
+#include <QModbusTcpServer>
 
 ModbusFactory::ModbusFactory(QObject *parent)
     : QObject(parent)

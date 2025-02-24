@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "CanBusAssistant.h"
-#include "ui_CanBusAssistant.h"
+#include "canbusassistant.h"
+#include "ui_canbusassistant.h"
 
 #include <QCanBus>
 #include <QCheckBox>

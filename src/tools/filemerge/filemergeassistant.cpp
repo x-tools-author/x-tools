@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "FileMergeAssistant.h"
-#include "ui_FileMergeAssistant.h"
+#include "filemergeassistant.h"
+#include "ui_filemergeassistant.h"
 
 #include <QDataStream>
 #include <QFileDialog>
