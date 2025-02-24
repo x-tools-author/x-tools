@@ -6,7 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source code
  * directory.
  **************************************************************************************************/
-#include "xTools.h"
+#include "xtools.h"
+#include "xTools_p.h"
 
 #include <QAction>
 #include <QActionGroup>
@@ -33,8 +34,6 @@
 #include <QUrl>
 
 #include <glog/logging.h>
-
-#include "xTools_p.h"
 
 namespace xTools {
 

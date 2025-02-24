@@ -35,9 +35,9 @@
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
 
-#include "Common/xTools.h"
 #include "IO/xIO.h"
 #include "ModbusFactory.h"
+#include "xtools.h"
 
 #define RXCOLOR "green"
 #define TXCOLOR "blue"

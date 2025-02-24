@@ -28,8 +28,8 @@
 #include <xlsxdocument.h>
 
 #include "ChartsUiSettings.h"
-#include "Common/xTools.h"
 #include "IO/IO/DataVisualization/2D/Charts.h"
+#include "xtools.h"
 
 namespace xTools {
 

@@ -8,20 +8,50 @@
  **************************************************************************************************/
 #pragma once
 
-#include "Common/MainWindow.h"
+#include <QActionGroup>
+#include <QApplication>
+#include <QMainWindow>
+#include <QMenu>
+#include <QStyleFactory>
 
 class IOPage;
-class MainWindow : public xTools::MainWindow
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
     ~MainWindow() override;
 
+    static QIcon cookedIcon(const QString& svgFileName);
+    static QIcon cookedIcon(const QIcon& icon);
+    void updateWindowTitle();
+
+protected:
+    QMenu* m_fileMenu;
+    QMenu* m_optionMenu;
+    QMenu* m_languageMenu;
+    QMenu* m_helpMenu;
+    QMenu* m_appStyleMenu;
+    QMenu* m_colorSchemeMenu;
+
+    QAction* m_themeAction{nullptr};
+    QAction* m_exitAction;
+
+    QAction* m_gitHubAction;
+    QAction* m_giteeAction;
+    QAction* m_qqGroupAction;
+    QAction* m_aboutAction;
+    QAction* m_aboutQtAction;
+
 protected:
     void closeEvent(QCloseEvent* event) override;
+    static QString qtConfFileName();
 
 private:
+    QActionGroup* m_appStyleActionGroup;
+    QActionGroup* m_languageActionGroup;
+    QActionGroup* m_appPaletteActionGroup;
+
     enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
     struct SettingsKeys
     {
@@ -57,4 +87,21 @@ private:
     void onSaveActionTriggered() const;
     void onImportActionTriggered();
     void onExportActionTriggered();
+
+    void initMenuFile();
+    void initMenuOption();
+    void initMenuLanguage();
+    void initMenuHelp();
+
+    void initOptionMenuAppStyleMenu();
+    void initOptionMenuSettingsMenu();
+    void initOptionMenuHdpiPolicy();
+    void initOptionMenuColorScheme();
+
+    void onHdpiPolicyActionTriggered(int policy);
+    void onAboutActionTriggered();
+
+    bool tryToReboot();
+    void createQtConf();
+    void showQqQrCode();
 };

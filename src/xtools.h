@@ -18,7 +18,7 @@
 #include <QStyleFactory>
 #include <QStyleHints>
 
-#include "Common/MainWindow.h"
+#include "MainWindow.h"
 
 #ifdef X_TOOLS_ENABLE_QSS
 #include "qss/QssMgr.h"

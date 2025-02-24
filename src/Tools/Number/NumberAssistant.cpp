@@ -9,8 +9,8 @@
 #include "NumberAssistant.h"
 #include "ui_NumberAssistant.h"
 
-#include "Common/xTools.h"
 #include "IO/xIO.h"
+#include "xtools.h"
 
 NumberAssistant::NumberAssistant(QWidget *parent)
     : QWidget(parent)
