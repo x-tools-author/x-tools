@@ -6,13 +6,13 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "CommunicationSettings.h"
-#include "ui_CommunicationSettings.h"
+#include "communicationsettings.h"
+#include "ui_communicationsettings.h"
 
 #include <QFileDialog>
 #include <QStandardPaths>
 
-#include "./Unit/SaveThread.h"
+#include "./utilities/savethread.h"
 #include "IO/xIO.h"
 
 const struct

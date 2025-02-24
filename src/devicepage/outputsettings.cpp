@@ -6,8 +6,8 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "OutputSettings.h"
-#include "ui_OutputSettings.h"
+#include "outputsettings.h"
+#include "ui_outputsettings.h"
 
 #include <QCheckBox>
 

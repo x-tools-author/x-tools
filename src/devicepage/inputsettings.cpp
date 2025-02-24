@@ -6,8 +6,8 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "InputSettings.h"
-#include "ui_InputSettings.h"
+#include "inputsettings.h"
+#include "ui_inputsettings.h"
 
 #include "IO/Unit/CRC.h"
 #include "IO/xIO.h"

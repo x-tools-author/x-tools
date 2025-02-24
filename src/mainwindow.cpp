@@ -28,8 +28,8 @@
 #include <QTextBrowser>
 #include <QVariant>
 
-#include "IOPage/IOPage.h"
 #include "common/xtools.h"
+#include "devicepage/iopage.h"
 #include "tools/assistantfactory.h"
 
 #ifdef Q_OS_WIN

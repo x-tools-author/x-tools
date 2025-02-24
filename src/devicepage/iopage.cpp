@@ -6,8 +6,8 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "IOPage.h"
-#include "ui_IOPage.h"
+#include "iopage.h"
+#include "ui_iopage.h"
 
 #include <QMenu>
 #include <QMessageBox>
@@ -49,10 +49,10 @@
 #include "IO/UI/DataVisualization/2D/ChartsUi.h"
 #endif
 
-#include "CommunicationSettings.h"
-#include "InputSettings.h"
-#include "OutputSettings.h"
-#include "Unit/SyntaxHighlighter.h"
+#include "communicationsettings.h"
+#include "inputsettings.h"
+#include "outputsettings.h"
+#include "utilities/syntaxhighlighter.h"
 
 struct ParameterKeys
 {
