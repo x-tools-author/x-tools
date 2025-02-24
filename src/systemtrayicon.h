@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2022-2023 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2022-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -16,11 +16,9 @@ class SystemTrayIcon : public QSystemTrayIcon
 
 public:
     explicit SystemTrayIcon(QObject *parent = Q_NULLPTR);
-
     ~SystemTrayIcon() override;
 
 signals:
     void invokeExit();
-
     void invokeShowMainWindow();
 };
