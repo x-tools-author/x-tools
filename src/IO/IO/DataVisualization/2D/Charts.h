@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QPointF>
+
 #include "IO/IO/AbstractIO.h"
 
 namespace xTools {
