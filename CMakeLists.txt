@@ -50,10 +50,13 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # CMake module
 include(${CMAKE_SOURCE_DIR}/cmake/git.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/QXlsx.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/deployqt.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/QIFW/QIFW.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 
 # --------------------------------------------------------------------------------------------------
@@ -62,12 +65,6 @@ set(GIT_TAG "x.x.x")
 x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
-
-# --------------------------------------------------------------------------------------------------
-# Third party module
-x_tools_add_third_party("glog-0.7.1")
-x_tools_add_third_party("libqrencode-master")
-x_tools_add_third_party("qmdnsengine-master")
 
 # --------------------------------------------------------------------------------------------------
 # Get all source files of the project
@@ -264,7 +261,10 @@ x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
 x_tools_tar_target(xTools)
 # x_tools_deploy_qss(xTools)
+x_tools_install_glog(xTools)
 x_tools_install_qxlsx(xTools)
+x_tools_install_qmdns(xTools)
+x_tools_install_qrencode(xTools)
 
 set(macos_version ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 set(android_dir ${CMAKE_CURRENT_SOURCE_DIR}/android)
@@ -285,7 +285,7 @@ target_link_libraries(
           Qt${QT_VERSION_MAJOR}::Svg
           Qt${QT_VERSION_MAJOR}::Widgets
           glog::glog
-          qrencode
+          ${x_qrencode}
           qmdnsengine)
 
 if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
