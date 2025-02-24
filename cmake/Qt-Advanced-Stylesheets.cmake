@@ -23,9 +23,9 @@ list(APPEND QSS_MGR_SOURCE ${CMAKE_SOURCE_DIR}/3rd/${package_name}/src/acss_glob
 list(APPEND QSS_MGR_SOURCE ${CMAKE_SOURCE_DIR}/3rd/${package_name}/src/QtAdvancedStylesheet.h)
 list(APPEND QSS_MGR_SOURCE ${CMAKE_SOURCE_DIR}/3rd/${package_name}/src/QtAdvancedStylesheet.cpp)
 list(APPEND QSS_MGR_SOURCE ${CMAKE_SOURCE_DIR}/3rd/${package_name}/src/QtAdvancedStylesheet.cpp)
-add_library(QSSMgr STATIC ${QSS_MGR_SOURCE})
-set_property(TARGET QSSMgr PROPERTY FOLDER "3rd")
-target_link_libraries(QSSMgr PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui
+add_library(QssMgr STATIC ${QSS_MGR_SOURCE})
+set_property(TARGET QssMgr PROPERTY FOLDER "3rd")
+target_link_libraries(QssMgr PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui
                                      Qt${QT_VERSION_MAJOR}::Svg Qt${QT_VERSION_MAJOR}::Widgets)
 
 # --------------------------------------------------------------------------------------------------

@@ -14,8 +14,6 @@
 #include <QSettings>
 #include <QtAdvancedStylesheet.h>
 
-namespace xTools {
-
 class QssMgr : public acss::QtAdvancedStylesheet
 {
     Q_OBJECT
@@ -56,5 +54,3 @@ private:
 
     void setApplicationStylesheetEnabled(bool enable);
 };
-
-} // namespace xTools

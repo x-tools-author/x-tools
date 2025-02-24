@@ -7,10 +7,15 @@
  * code directory.
  **************************************************************************************************/
 #include "MainWindow.h"
+#include "application.h"
 #include "xtools.h"
 
 int main(const int argc, char *argv[])
 {
-    const QString version = xTools::xTools::xToolsVersion();
-    return xTools::exec<MainWindow, MainWindow>(argc, argv, QString("xTools"), version);
+    Application app(argc, argv);
+
+    MainWindow window;
+    window.show();
+
+    return app.exec();
 }

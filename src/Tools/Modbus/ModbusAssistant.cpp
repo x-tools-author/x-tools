@@ -119,8 +119,7 @@ ModbusAssistant::ModbusAssistant(QWidget *parent)
     , m_keyCtx(new ModbusSettingKeys)
     , m_textFormat(static_cast<int>(xTools::xIO::TextFormat::Dec))
 {
-    xTools::xTools &xTools = xTools::xTools::singleton();
-    m_settings = xTools.settings();
+    m_settings = xTools::xTools::singleton().settings();
 
     ui->setupUi(this);
 

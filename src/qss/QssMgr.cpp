@@ -15,8 +15,6 @@
 #include <QPainter>
 #include <QStandardPaths>
 
-namespace xTools {
-
 bool QssMgr::m_enableStylesheet = false;
 bool QssMgr::m_awaysEnableStylesheet = false;
 QssMgr::QssMgr(QObject* parent)
@@ -256,5 +254,3 @@ void QssMgr::setApplicationStylesheetEnabled(bool enable)
         }
     }
 }
-
-} // namespace xTools

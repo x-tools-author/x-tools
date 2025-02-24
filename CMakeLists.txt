@@ -249,29 +249,6 @@ else()
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/UI/DataVisualization/2D/ChartsUiSettings.ui)
 endif()
 
-# --------------------------------------------------------------------------------------------------
-# Tools
-set(X_TOOLS_TOOLS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/Tools")
-macro(add_tool dir_name)
-  file(GLOB TOOL_SOURCE "${X_TOOLS_TOOLS_DIR}/${dir_name}/*.*")
-  include_directories(${X_TOOLS_TOOLS_DIR}/${dir_name})
-  list(APPEND X_TOOLS_SOURCE ${TOOL_SOURCE})
-  # away remove main.cpp
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/${dir_name}/main.cpp)
-endmacro()
-# cmake-format: off
-file(GLOB ALL_TOOLS RELATIVE ${X_TOOLS_TOOLS_DIR} ${X_TOOLS_TOOLS_DIR}/*)
-list(REMOVE_ITEM ALL_TOOLS "AssistantFactory.h")
-list(REMOVE_ITEM ALL_TOOLS "AssistantFactory.cpp")
-# cmake-format: on
-if(NOT X_TOOLS_ENABLE_MODULE_SERIALBUS)
-  list(REMOVE_ITEM ALL_TOOLS "CANBus" "Modbus")
-endif()
-
-foreach(tool ${ALL_TOOLS})
-  add_tool(${tool})
-endforeach()
-
 set(X_TOOLS_TOOLS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/Tools)
 include_directories(${X_TOOLS_TOOLS_DIR})
 list(APPEND X_TOOLS_SOURCE ${X_TOOLS_TOOLS_DIR}/AssistantFactory.h)
@@ -305,10 +282,11 @@ set_target_properties(
              MACOSX_BUNDLE TRUE
              WIN32_EXECUTABLE TRUE
              QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
-target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui)
-target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Network)
-target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Svg Qt${QT_VERSION_MAJOR}::Widgets)
-target_link_libraries(xTools PUBLIC glog::glog qrencode qmdnsengine)
+target_link_libraries(
+  xTools
+  PUBLIC Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui Qt${QT_VERSION_MAJOR}::Network
+         Qt${QT_VERSION_MAJOR}::Svg Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(xTools PUBLIC QssMgr glog::glog qrencode qmdnsengine)
 
 if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
   target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::SerialPort)
