@@ -30,7 +30,7 @@
 
 #include "AssistantFactory.h"
 #include "IOPage/IOPage.h"
-#include "xtools.h"
+#include "common/xtools.h"
 
 #ifdef Q_OS_WIN
 #include "SystemTrayIcon.h"

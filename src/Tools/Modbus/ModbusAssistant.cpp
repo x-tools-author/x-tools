@@ -37,7 +37,7 @@
 
 #include "IO/xIO.h"
 #include "ModbusFactory.h"
-#include "xtools.h"
+#include "common/xtools.h"
 
 #define RXCOLOR "green"
 #define TXCOLOR "blue"

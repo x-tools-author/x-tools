@@ -17,7 +17,7 @@
 #include <QTreeWidgetItem>
 
 #include "MdnsServer.h"
-#include "xtools.h"
+#include "common/xtools.h"
 
 MdnsAssistant::MdnsAssistant(QWidget *parent)
     : QWidget(parent)

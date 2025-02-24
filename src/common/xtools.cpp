@@ -7,7 +7,7 @@
  * directory.
  **************************************************************************************************/
 #include "xtools.h"
-#include "xTools_p.h"
+#include "xtools_p.h"
 
 #include <QAction>
 #include <QActionGroup>

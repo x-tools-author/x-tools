@@ -17,7 +17,7 @@
 #include <QMessageBox>
 #include <QVector>
 
-#include "xtools.h"
+#include "common/xtools.h"
 
 CanBusAssistant::CanBusAssistant(QWidget* parent)
     : QWidget{parent}

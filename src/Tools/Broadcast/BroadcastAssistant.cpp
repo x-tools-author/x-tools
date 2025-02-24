@@ -15,7 +15,7 @@
 
 #include "BroadcastThread.h"
 #include "IO/xIO.h"
-#include "xtools.h"
+#include "common/xtools.h"
 
 BroadcastAssistant::BroadcastAssistant(QWidget* parent)
     : QWidget(parent)

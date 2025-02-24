@@ -29,7 +29,7 @@
 
 #include "ChartsUiSettings.h"
 #include "IO/IO/DataVisualization/2D/Charts.h"
-#include "xtools.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
