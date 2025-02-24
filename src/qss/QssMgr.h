@@ -16,18 +16,18 @@
 
 namespace xTools {
 
-class StyleSheetManager : public acss::QtAdvancedStylesheet
+class QssMgr : public acss::QtAdvancedStylesheet
 {
     Q_OBJECT
 private:
-    explicit StyleSheetManager(QObject* parent = Q_NULLPTR);
-    StyleSheetManager(const StyleSheetManager&) = delete;
-    StyleSheetManager& operator=(const StyleSheetManager&) = delete;
+    explicit QssMgr(QObject* parent = Q_NULLPTR);
+    QssMgr(const QssMgr&) = delete;
+    QssMgr& operator=(const QssMgr&) = delete;
 
 public:
-    ~StyleSheetManager();
+    ~QssMgr();
 
-    static StyleSheetManager& singleton();
+    static QssMgr& singleton();
     QMenu* themeMenu() const;
     static void setEnableStyleSheetDefaultValue(bool enabled);
     static void setAwaysEnableStylesheet(bool enabled);

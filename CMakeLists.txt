@@ -48,11 +48,12 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # CMake module
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/QIFW/QIFW.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/xtools.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/git.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/xToolsDeployQt.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/xToolsThirdParty.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/QIFW/QIFW.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/git.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/xToolsDeployQt.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/xToolsThirdParty.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Git module
@@ -62,29 +63,24 @@ x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 
 # --------------------------------------------------------------------------------------------------
-# Get all source files of the project
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
-file(GLOB_RECURSE X_TOOLS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
-
-# --------------------------------------------------------------------------------------------------
 # Third party module
 x_tools_add_third_party("glog-0.7.1")
 x_tools_add_third_party("libqrencode-master")
 x_tools_add_third_party("qmdnsengine-master")
 
 # --------------------------------------------------------------------------------------------------
-# Custom style sheet
-if(ANDROID OR IOS)
-  option(X_TOOLS_ENABLE_MODULE_STYLE_SHEET "Enable Qt advanced style sheet" OFF)
-else()
-  option(X_TOOLS_ENABLE_MODULE_STYLE_SHEET "Enable Qt advanced style sheet" ON)
-endif()
+# Get all source files of the project
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
+file(GLOB_RECURSE X_TOOLS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
 
-if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
-  add_subdirectory("modules/xQSS")
-  include_directories(${CMAKE_SOURCE_DIR}/modules/xQSS/src)
-  include_directories(${CMAKE_SOURCE_DIR}/modules/xQSS/ThirdParty/Qt-Advanced-Stylesheets-main/src)
+# --------------------------------------------------------------------------------------------------
+# QSS module
+if(NOT X_TOOLS_ENABLE_QSS)
+  set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/qss)
+  file(GLOB_RECURSE QSS_MGR_SOURCE "${TMP_DIR}/*.*")
+  foreach(file ${QSS_MGR_SOURCE})
+    list(REMOVE_ITEM X_TOOLS_SOURCE ${file})
+  endforeach(file ${QSS_MGR_SOURCE})
 endif()
 
 # HID
@@ -334,13 +330,11 @@ if(X_TOOLS_ENABLE_MODULE_CHARTS)
   target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Charts QXlsx)
 endif()
 
-if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
-  target_link_libraries(xTools PUBLIC xQSS)
+if(X_TOOLS_ENABLE_QSS)
+  target_link_libraries(xTools PRIVATE QSSMgr)
+  x_tools_deploy_qss(xTools)
 endif()
 
-if(X_TOOLS_ENABLE_MODULE_STYLE_SHEET)
-  x_tools_add_style_sheet_resources(xTools)
-endif()
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
 x_tools_tar_target(xTools)

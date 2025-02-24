@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "StyleSheetManager.h"
+#include "QssMgr.h"
 
 #include <QApplication>
 #include <QDir>
@@ -17,9 +17,9 @@
 
 namespace xTools {
 
-bool StyleSheetManager::m_enableStylesheet = false;
-bool StyleSheetManager::m_awaysEnableStylesheet = false;
-StyleSheetManager::StyleSheetManager(QObject* parent)
+bool QssMgr::m_enableStylesheet = false;
+bool QssMgr::m_awaysEnableStylesheet = false;
+QssMgr::QssMgr(QObject* parent)
     : acss::QtAdvancedStylesheet(parent)
 {
     m_nameFriendlyNameMap.insert("dark_amber", tr("Dark Amber"));
@@ -102,10 +102,7 @@ StyleSheetManager::StyleSheetManager(QObject* parent)
             updateApplicationStylesheet();
         }
 
-        connect(action,
-                &QAction::triggered,
-                this,
-                &StyleSheetManager::setApplicationStylesheetEnabled);
+        connect(action, &QAction::triggered, this, &QssMgr::setApplicationStylesheetEnabled);
 
         m_themeMenu->addAction(action);
         m_themeMenu->addSeparator();
@@ -114,30 +111,30 @@ StyleSheetManager::StyleSheetManager(QObject* parent)
     loadThemes();
 }
 
-StyleSheetManager::~StyleSheetManager() {}
+QssMgr::~QssMgr() {}
 
-StyleSheetManager& StyleSheetManager::singleton()
+QssMgr& QssMgr::singleton()
 {
-    static StyleSheetManager instance;
+    static QssMgr instance;
     return instance;
 }
 
-QMenu* StyleSheetManager::themeMenu() const
+QMenu* QssMgr::themeMenu() const
 {
     return m_themeMenu;
 }
 
-void StyleSheetManager::setEnableStyleSheetDefaultValue(bool enabled)
+void QssMgr::setEnableStyleSheetDefaultValue(bool enabled)
 {
     m_enableStylesheet = enabled;
 }
 
-void StyleSheetManager::setAwaysEnableStylesheet(bool enabled)
+void QssMgr::setAwaysEnableStylesheet(bool enabled)
 {
     m_awaysEnableStylesheet = enabled;
 }
 
-QString StyleSheetManager::themeName()
+QString QssMgr::themeName()
 {
     QString ret = m_settings->value("themeName").toString();
     if (ret.isEmpty()) {
@@ -147,7 +144,7 @@ QString StyleSheetManager::themeName()
     return ret;
 }
 
-void StyleSheetManager::setThemeName(const QString& themeName)
+void QssMgr::setThemeName(const QString& themeName)
 {
     m_settings->setValue("themeName", themeName);
     setCurrentTheme(themeName);
@@ -156,7 +153,7 @@ void StyleSheetManager::setThemeName(const QString& themeName)
     }
 }
 
-void StyleSheetManager::updateApplicationStylesheet()
+void QssMgr::updateApplicationStylesheet()
 {
     if (qApp) {
         updateStylesheet();
@@ -164,7 +161,7 @@ void StyleSheetManager::updateApplicationStylesheet()
     }
 }
 
-void StyleSheetManager::loadThemes()
+void QssMgr::loadThemes()
 {
     QStringList themeList = themes();
     QStringList m_darkThemes;
@@ -182,7 +179,7 @@ void StyleSheetManager::loadThemes()
     setupActions(m_lightThemes, m_themeMenu, m_themeActionGroup);
 }
 
-void StyleSheetManager::updateActions()
+void QssMgr::updateActions()
 {
     for (QAction* action : m_themeActionGroup->actions()) {
         QString theme = action->data().toString();
@@ -191,7 +188,7 @@ void StyleSheetManager::updateActions()
     }
 }
 
-void StyleSheetManager::updateActionIcon(QAction* action, const QString& color)
+void QssMgr::updateActionIcon(QAction* action, const QString& color)
 {
     if (action->isChecked()) {
         action->setIcon(QIcon(":/res/Icons/IconCheck.svg"));
@@ -210,17 +207,17 @@ void StyleSheetManager::updateActionIcon(QAction* action, const QString& color)
     }
 }
 
-bool StyleSheetManager::enableStylesheet()
+bool QssMgr::enableStylesheet()
 {
     return m_settings->value("enableStylesheet", m_enableStylesheet).toBool();
 }
 
-void StyleSheetManager::setEnableStylesheet(bool enable)
+void QssMgr::setEnableStylesheet(bool enable)
 {
     m_settings->setValue("enableStylesheet", enable);
 }
 
-void StyleSheetManager::setupActions(const QStringList& themes, QMenu* menu, QActionGroup* group)
+void QssMgr::setupActions(const QStringList& themes, QMenu* menu, QActionGroup* group)
 {
     for (const QString& theme : themes) {
         bool isValidName = m_nameFriendlyNameMap.contains(theme);
@@ -249,7 +246,7 @@ void StyleSheetManager::setupActions(const QStringList& themes, QMenu* menu, QAc
     }
 }
 
-void StyleSheetManager::setApplicationStylesheetEnabled(bool enable)
+void QssMgr::setApplicationStylesheetEnabled(bool enable)
 {
     setEnableStylesheet(enable);
     for (auto action : m_themeActionGroup->actions()) {

@@ -33,8 +33,8 @@
 
 #include "Common/xTools.h"
 
-#ifdef X_TOOLS_ENABLE_MODULE_STYLE_SHEET
-#include "StyleSheetManager.h"
+#ifdef X_TOOLS_ENABLE_QSS
+#include "qss/QssMgr.h"
 #endif
 
 namespace xTools {
@@ -69,7 +69,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 QIcon MainWindow::cookedIcon(const QString& svgFileName)
 {
-#ifdef X_TOOLS_ENABLE_MODULE_STYLE_SHEET
+#ifdef X_TOOLS_ENABLE_QSS
     QSvgRenderer renderer(svgFileName);
     QImage image(QSize(128, 128), QImage::Format_ARGB32);
     image.fill(Qt::transparent); // Transparent background
@@ -79,7 +79,7 @@ QIcon MainWindow::cookedIcon(const QString& svgFileName)
     renderer.render(&painter);
 
     // Change color
-    QColor color = StyleSheetManager::singleton().themeColor("primaryColor");
+    QColor color = QssMgr::singleton().themeColor("primaryColor");
     for (int y = 0; y < image.height(); y++) {
         for (int x = 0; x < image.width(); x++) {
             QColor ic = image.pixelColor(x, y);
@@ -97,12 +97,12 @@ QIcon MainWindow::cookedIcon(const QString& svgFileName)
 
 QIcon MainWindow::cookedIcon(const QIcon& icon)
 {
-#ifdef X_TOOLS_ENABLE_MODULE_STYLE_SHEET
+#ifdef X_TOOLS_ENABLE_QSS
     QPixmap pixmap = icon.pixmap(QSize(128, 128));
     QPainter painter(&pixmap);
     painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
 
-    QColor color = StyleSheetManager::singleton().themeColor("primaryColor");
+    QColor color = QssMgr::singleton().themeColor("primaryColor");
     painter.fillRect(pixmap.rect(), color);
     QIcon colorIcon = QIcon(pixmap);
     return colorIcon;
@@ -221,8 +221,8 @@ void MainWindow::initOptionMenuAppStyleMenu()
 
     m_appStyleMenu->addActions(m_appStyleActionGroup->actions());
 
-#ifdef X_TOOLS_ENABLE_MODULE_STYLE_SHEET
-    m_themeAction = m_optionMenu->addMenu(StyleSheetManager::singleton().themeMenu());
+#ifdef X_TOOLS_ENABLE_QSS
+    m_themeAction = m_optionMenu->addMenu(QssMgr::singleton().themeMenu());
 #endif
 }
 
