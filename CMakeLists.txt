@@ -49,11 +49,11 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # CMake module
-include(${CMAKE_SOURCE_DIR}/cmake/QIFW/QIFW.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/git.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/xToolsDeployQt.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/xToolsThirdParty.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/QXlsx.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/deployqt.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/QIFW/QIFW.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 
 # --------------------------------------------------------------------------------------------------
@@ -236,7 +236,7 @@ if(NOT Qt${QT_VERSION_MAJOR}Charts_FOUND)
 endif()
 if(X_TOOLS_ENABLE_MODULE_CHARTS)
   add_compile_definitions(X_TOOLS_ENABLE_MODULE_CHARTS)
-  x_tools_add_xlsx()
+  # x_tools_add_xlsx()
 else()
   message(STATUS "Charts module is disable, chart files will be removed.")
   set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/IO)
@@ -263,7 +263,8 @@ qt_add_executable(xTools ${xTools_ICON} ${X_TOOLS_SOURCE} xTools.rc xTools.qrc)
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
 x_tools_tar_target(xTools)
-x_tools_deploy_qss(xTools)
+# x_tools_deploy_qss(xTools)
+x_tools_install_qxlsx(xTools)
 
 set(macos_version ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 set(android_dir ${CMAKE_CURRENT_SOURCE_DIR}/android)
@@ -277,7 +278,8 @@ set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR ${android_
 # Link libraries
 target_link_libraries(
   xTools
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core
+  PRIVATE Qt${QT_VERSION_MAJOR}::CorePrivate
+          Qt${QT_VERSION_MAJOR}::Core
           Qt${QT_VERSION_MAJOR}::Gui
           Qt${QT_VERSION_MAJOR}::Network
           Qt${QT_VERSION_MAJOR}::Svg
@@ -303,7 +305,7 @@ if(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
 endif()
 
 if(X_TOOLS_ENABLE_MODULE_CHARTS)
-  target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Charts QXlsx)
+  target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Charts QXlsx::QXlsx)
 endif()
 
 if(X_TOOLS_ENABLE_QSS)
