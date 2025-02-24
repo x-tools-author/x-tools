@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+// -------------------------------------------------------------------------------------------------
 #include <QApplication>
 #include <QDateTime>
 #include <QMainWindow>
@@ -136,4 +137,4 @@ public:
     Q_INVOKABLE void tryToClearSettings();
 };
 
-}
+} // namespace xTools

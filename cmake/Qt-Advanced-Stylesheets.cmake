@@ -37,7 +37,7 @@ function(x_tools_deploy_qss target)
       ${CMAKE_COMMAND} -E copy_directory_if_different
       "${CMAKE_SOURCE_DIR}/3rd/${package_name}/styles" "$<TARGET_FILE_DIR:${target}>/3rd_styles"
       "||" ${CMAKE_COMMAND} -E true
-    COMMENT "Copy style resources for ${target}...")
+    COMMENT "Copy(auto) style resources for ${target}...")
 
   if(EXISTS "$<TARGET_FILE_DIR:${target}>/3rd_styles")
     return()
@@ -50,5 +50,5 @@ function(x_tools_deploy_qss target)
       ${CMAKE_COMMAND} -E copy_directory_if_different
       "${CMAKE_SOURCE_DIR}/3rd/${package_name}/styles" "$<TARGET_FILE_DIR:${target}>/3rd_styles"
       "||" ${CMAKE_COMMAND} -E true
-    COMMENT "Copy style resources for ${target}...")
+    COMMENT "Copy(manual) style resources for ${target}...")
 endfunction()

@@ -6,9 +6,9 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "MainWindow.h"
 #include "application.h"
 #include "common/xtools.h"
+#include "mainwindow.h"
 
 int main(const int argc, char *argv[])
 {
