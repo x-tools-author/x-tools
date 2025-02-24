@@ -22,7 +22,7 @@
 #include "mainwindow.h"
 
 #ifdef X_TOOLS_ENABLE_QSS
-#include "qss/QssMgr.h"
+#include "qss/qssmgr.h"
 #endif
 
 #define g_xTools xTools::xTools::singleton()
