@@ -16,15 +16,17 @@ if(EXISTS ${glog_dst_dir})
   find_package(glog REQUIRED)
 else()
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${glog_package_name})
+  set_property(TARGET glog PROPERTY FOLDER "3rd")
+  set_property(TARGET glog_internal PROPERTY FOLDER "3rd")
 endif()
 
 # --------------------------------------------------------------------------------------------------
 # Install glog library to libs
 function(x_tools_install_glog target)
   add_custom_target(
-    ${target}_install_glog
+    glog_install
     COMMAND ${CMAKE_COMMAND} --install . --prefix ${glog_dst_dir}
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${glog_package_name}
     SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/glog.cmake)
-  set_property(TARGET ${target}_install_glog PROPERTY FOLDER "install")
+  set_property(TARGET glog_install PROPERTY FOLDER "3rd")
 endfunction()

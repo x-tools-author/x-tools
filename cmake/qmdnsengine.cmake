@@ -16,15 +16,16 @@ if(EXISTS ${qmdns_dst_dir})
   find_package(qmdnsengine REQUIRED)
 else()
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${qmdns_package_name})
+  set_property(TARGET qmdnsengine PROPERTY FOLDER "3rd")
 endif()
 
 # --------------------------------------------------------------------------------------------------
 # Install qmdns library to libs
 function(x_tools_install_qmdns target)
   add_custom_target(
-    ${target}_install_qmdns
+    qmdnsengine_install
     COMMAND ${CMAKE_COMMAND} --install . --prefix ${qmdns_dst_dir}
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${qmdns_package_name}
     SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/qmdnsengine.cmake)
-  set_property(TARGET ${target}_install_qmdns PROPERTY FOLDER "install")
+  set_property(TARGET qmdnsengine_install PROPERTY FOLDER "3rd")
 endfunction()

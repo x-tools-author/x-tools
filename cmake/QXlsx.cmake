@@ -17,15 +17,16 @@ if(EXISTS ${qxlsx_dst_dir})
   find_package(QXlsxQt${QT_VERSION_MAJOR} REQUIRED)
 else()
   add_subdirectory(${CMAKE_SOURCE_DIR}/3rd/${qxlsx_package_name}/QXlsx)
+  set_property(TARGET QXlsx PROPERTY FOLDER "3rd")
 endif()
 
 # --------------------------------------------------------------------------------------------------
 # Install QXlsx library to libs
 function(x_tools_install_qxlsx target)
   add_custom_target(
-    ${target}_install_xlsx
+    QXlsx_install
     COMMAND ${CMAKE_COMMAND} --install . --prefix ${qxlsx_dst_dir}
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${qxlsx_package_name}/QXlsx
     SOURCES ${CMAKE_SOURCE_DIR}/cmake/QXlsx.cmake)
-  set_property(TARGET ${target}_install_xlsx PROPERTY FOLDER "install")
+  set_property(TARGET QXlsx_install PROPERTY FOLDER "3rd")
 endfunction()

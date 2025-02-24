@@ -32,9 +32,9 @@ endif()
 # Install libencode library to libs
 function(x_tools_install_qrencode target)
   add_custom_target(
-    ${target}_install_qrencode
+    qrencode_install
     COMMAND ${CMAKE_COMMAND} --install . --prefix ${qrencode_dst_dir}
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${qrencode_package_name}
     SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/libqrencode.cmake)
-  set_property(TARGET ${target}_install_qrencode PROPERTY FOLDER "install")
+  set_property(TARGET qrencode_install PROPERTY FOLDER "3rd")
 endfunction()
