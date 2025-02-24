@@ -309,7 +309,7 @@ if(X_TOOLS_ENABLE_MODULE_CHARTS)
 endif()
 
 if(X_TOOLS_ENABLE_QSS)
-  target_link_libraries(xTools PRIVATE QSSMgr)
+  target_link_libraries(xTools PRIVATE QssMgr)
 endif()
 
 # --------------------------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -29,8 +29,8 @@
 #include <QVariant>
 
 #include "IOPage/IOPage.h"
-#include "Tools/AssistantFactory.h"
 #include "common/xtools.h"
+#include "tools/AssistantFactory.h"
 
 #ifdef Q_OS_WIN
 #include "SystemTrayIcon.h"
