@@ -30,10 +30,10 @@
 
 #include "IOPage/IOPage.h"
 #include "common/xtools.h"
-#include "tools/AssistantFactory.h"
+#include "tools/assistantfactory.h"
 
 #ifdef Q_OS_WIN
-#include "SystemTrayIcon.h"
+#include "systemtrayicon.h"
 #endif
 
 MainWindow::MainWindow(QWidget* parent)
