@@ -1,34 +1,33 @@
+# --------------------------------------------------------------------------------------------------
 # Get the last tag.
 function(x_tools_git_get_latest_tag working_dir prefix)
   execute_process(
-    COMMAND git tag
+    COMMAND git describe --abbrev=0 --tags
     WORKING_DIRECTORY ${working_dir}
-    OUTPUT_VARIABLE git_tags
+    OUTPUT_VARIABLE GIT_LATEST_TAG
     OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-  if(NOT git_tags)
-    message("No tags found.")
+  if(NOT GIT_LATEST_TAG)
+    message(STATUS "[git] No tags found.")
     return()
   endif()
 
-  if(WIN32)
-    string(REPLACE "\r" "" git_tags ${git_tags})
-  endif()
-  string(REPLACE "\n" ";" git_tags ${git_tags})
-  list(LENGTH git_tags git_tags_count)
-  list(GET git_tags -1 GIT_LATEST_TAG)
   if(${GIT_LATEST_TAG} STREQUAL "" OR ${GIT_LATEST_TAG} STREQUAL "continuous")
-    string(TIMESTAMP target_version "%y.%m.%d")
+    string(TIMESTAMP current_year "%Y")
+    string(TIMESTAMP current_month "%m")
+    string(TIMESTAMP current_day "%d")
+    math(EXPR current_month "${current_month} + 0")
+    math(EXPR current_day "${current_day} + 0")
+    set(target_version "v${current_year}.${current_month}.${current_day}")
     set(GIT_LATEST_TAG ${target_version})
   endif()
-  message("Latest git tag: ${GIT_LATEST_TAG}")
-  set(${prefix}_GIT_TAG="${GIT_LATEST_TAG}" CACHE STRING "Latest git tag" FORCE)
-  set(GIT_TAG
-      "${GIT_LATEST_TAG}"
-      PARENT_SCOPE)
-  add_compile_definitions(${prefix}_GIT_TAG="${GIT_LATEST_TAG}")
+
+  message(STATUS "[git] Latest git tag: ${GIT_LATEST_TAG}")
+  set(${prefix}_LATEST_GIT_TAG="${GIT_LATEST_TAG}" CACHE STRING "Latest git tag" FORCE)
+  add_compile_definitions(${prefix}_LATEST_GIT_TAG="${GIT_LATEST_TAG}")
 endfunction()
 
+# --------------------------------------------------------------------------------------------------
 # Get the last commit.
 function(x_tools_git_get_latest_commit working_dir prefix)
   execute_process(
@@ -36,10 +35,11 @@ function(x_tools_git_get_latest_commit working_dir prefix)
     WORKING_DIRECTORY ${working_dir}
     OUTPUT_VARIABLE GIT_COMMIT
     OUTPUT_STRIP_TRAILING_WHITESPACE)
-  message("Latest git commit(${prefix}_GIT_COMMIT): ${GIT_COMMIT}")
+  message(STATUS "[git] Latest git commit(${prefix}_GIT_COMMIT): ${GIT_COMMIT}")
   add_compile_definitions(${prefix}_GIT_COMMIT="${GIT_COMMIT}")
 endfunction()
 
+# --------------------------------------------------------------------------------------------------
 # Get last commit time.
 function(x_tools_git_get_latest_commit_time working_dir prefix)
   execute_process(
@@ -47,6 +47,6 @@ function(x_tools_git_get_latest_commit_time working_dir prefix)
     WORKING_DIRECTORY ${working_dir}
     OUTPUT_VARIABLE GIT_COMMIT_TIME
     OUTPUT_STRIP_TRAILING_WHITESPACE)
-  message("Latest git commit time: ${GIT_COMMIT_TIME}")
+  message(STATUS "[git] Latest git commit time(${prefix}_GIT_COMMIT_TIME): ${GIT_COMMIT_TIME}")
   add_compile_definitions(${prefix}_GIT_COMMIT_TIME="${GIT_COMMIT_TIME}")
 endfunction()

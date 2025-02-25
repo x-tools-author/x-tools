@@ -12,6 +12,15 @@
 
 int main(const int argc, char *argv[])
 {
+#ifdef X_TOOLS_LATEST_GIT_TAG
+    QString tmp(X_TOOLS_LATEST_GIT_TAG);
+    if (tmp.contains("v")) {
+        tmp.remove("v");
+    }
+    Application::setApplicationVersion(tmp);
+#else
+    Application::setApplicationVersion("0.0.0");
+#endif
     Application app(argc, argv);
 
     MainWindow window;

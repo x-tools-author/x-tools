@@ -315,9 +315,8 @@ if(X_TOOLS_ENABLE_QSS)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# if version contain "v", remove it...
-set(version ${GIT_TAG})
-if(WXT_VERSION MATCHES "^v[0-9].*")
-  string(SUBSTRING ${version} 1 -1 version)
+# if X_TOOLS_LATEST_GIT_TAG contain "v", remove it...
+if(X_TOOLS_LATEST_GIT_TAG MATCHES "^v[0-9].*")
+  string(SUBSTRING ${X_TOOLS_LATEST_GIT_TAG} 1 -1 X_TOOLS_LATEST_GIT_TAG)
 endif()
-x_tools_generate_installer(xTools ${version} ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
+x_tools_generate_installer(xTools ${X_TOOLS_LATEST_GIT_TAG} ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
