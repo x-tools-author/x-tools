@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "SocketClientUi.h"
+#include "socketclientui.h"
 
 namespace xTools {
 

@@ -11,8 +11,8 @@
 #include <QVariantMap>
 #include <QWidget>
 
-#include "../../xIO.h"
-#include "../AbstractIOUi.h"
+#include "IO/xIO.h"
+#include "IO/UI/AbstractIOUi.h"
 
 namespace xTools {
 

@@ -12,7 +12,7 @@
 #include <QThread>
 #include <QVariantMap>
 
-#include "../AbstractIO.h"
+#include "IO/IO/AbstractIO.h"
 
 namespace xTools {
 
@@ -26,7 +26,7 @@ public:
     Q_INVOKABLE void openDevice();
     Q_INVOKABLE void closeDevice();
 
-    void inputBytes(const QByteArray &bytes) override;
+    void inputBytes(const QByteArray &bytes);
 
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};

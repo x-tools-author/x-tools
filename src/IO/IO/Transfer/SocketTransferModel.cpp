@@ -9,7 +9,7 @@
 #include "SocketTransferModel.h"
 
 #include "../../xIO.h"
-#include "../Communication/Socket.h"
+#include "device/socket.h"
 
 namespace xTools {
 

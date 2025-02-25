@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "TcpServerTransferModel.h"
 
-#include "../Communication/TcpServer.h"
+#include "device/tcpserver.h"
 
 namespace xTools {
 

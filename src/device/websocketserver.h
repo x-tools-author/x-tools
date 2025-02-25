@@ -10,7 +10,7 @@
 
 #include <QWebSocketServer>
 
-#include "SocketServer.h"
+#include "socketserver.h"
 
 namespace xTools {
 

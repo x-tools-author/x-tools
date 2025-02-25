@@ -6,14 +6,14 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "BleCentralUi.h"
-#include "ui_BleCentralUi.h"
+#include "blecentralui.h"
+#include "ui_blecentralui.h"
 
 #include <QLowEnergyService>
 #include <QMessageBox>
 
-#include "../../IO/Communication/BleCentral.h"
-#include "../../Unit/BleScanner.h"
+#include "device/blecentral.h"
+#include "IO/Unit/BleScanner.h"
 
 namespace xTools {
 

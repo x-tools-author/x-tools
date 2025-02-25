@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "AbstractIOUi.h"
 
-#include "IO/IO/AbstractIO.h"
+#include "device/communication.h"
 
 namespace xTools {
 

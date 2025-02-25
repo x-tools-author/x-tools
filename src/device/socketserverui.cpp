@@ -6,9 +6,9 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "SocketServerUi.h"
+#include "socketserverui.h"
 
-#include "../../IO/Communication/SocketServer.h"
+#include "device/socketserver.h"
 
 namespace xTools {
 

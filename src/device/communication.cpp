@@ -6,7 +6,7 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "Communication.h"
+#include "communication.h"
 
 #include <QDebug>
 
@@ -15,6 +15,20 @@ namespace xTools {
 Communication::Communication(QObject *parent)
     : AbstractIO(parent)
 {
+    connect(this, &Communication::started, this, [=]() {
+        this->m_isWorking = true;
+        emit this->isWorkingChanged();
+    });
+    connect(this, &Communication::finished, this, [=]() {
+        this->m_isWorking = false;
+        emit this->isWorkingChanged();
+    });
+    connect(this, &Communication::errorOccurred, this, [=](const QString &errorString) {
+        qWarning() << "Error occured: " << errorString;
+        exit();
+        wait();
+    });
+
     connect(this, &Communication::bytesRead, this, [=](const QByteArray &bytes, const QString &) {
         emit outputBytes(bytes);
     });

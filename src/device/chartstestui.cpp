@@ -6,10 +6,10 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "ChartsTestUi.h"
-#include "ui_ChartsTestUi.h"
+#include "chartstestui.h"
+#include "ui_chartstestui.h"
 
-#include "IO/IO/Communication/ChartsTest.h"
+#include "device/chartstest.h"
 
 namespace xTools {
 

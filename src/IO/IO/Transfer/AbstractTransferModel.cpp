@@ -11,7 +11,7 @@
 #include <QEventLoop>
 #include <QTimer>
 
-#include "../../IO/Communication/Communication.h"
+#include "device/communication.h"
 #include "../../xIO.h"
 
 namespace xTools {

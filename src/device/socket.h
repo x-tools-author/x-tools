@@ -10,7 +10,7 @@
 
 #include <QPair>
 
-#include "Communication.h"
+#include "communication.h"
 
 namespace xTools {
 

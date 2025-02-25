@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "UdpClientTransferModel.h"
 
-#include "../Communication/UdpClient.h"
+#include "device/udpclient.h"
 
 namespace xTools {
 

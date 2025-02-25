@@ -10,7 +10,7 @@
 
 #include <QTcpServer>
 
-#include "SocketServer.h"
+#include "socketserver.h"
 
 namespace xTools {
 

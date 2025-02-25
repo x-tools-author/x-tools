@@ -11,21 +11,21 @@
 #include "../xIO.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
-#include "Communication/BleCentralUi.h"
+#include "device/blecentralui.h"
 #endif
-#include "Communication/CommunicationUi.h"
+#include "device/communicationui.h"
 #ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
-#include "Communication/SerialPortUi.h"
+#include "device/serialportui.h"
 #endif
-#include "Communication/TcpClientUi.h"
-#include "Communication/TcpServerUi.h"
-#include "Communication/UdpClientUi.h"
-#include "Communication/UdpServerUi.h"
+#include "device/tcpclientui.h"
+#include "device/tcpserverui.h"
+#include "device/udpclientui.h"
+#include "device/udpserverui.h"
 #ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
-#include "Communication/WebSocketClientUi.h"
-#include "Communication/WebSocketServerUi.h"
+#include "device/websocketclientui.h"
+#include "device/websocketserverui.h"
 #endif
-#include "Communication/ChartsTestUi.h"
+#include "device/chartstestui.h"
 
 namespace xTools {
 

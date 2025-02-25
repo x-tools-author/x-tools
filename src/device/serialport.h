@@ -11,7 +11,7 @@
 #include <QSerialPort>
 #include <QTimer>
 
-#include "Communication.h"
+#include "communication.h"
 
 namespace xTools {
 

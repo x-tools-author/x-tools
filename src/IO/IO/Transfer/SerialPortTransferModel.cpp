@@ -9,7 +9,7 @@
 #include "SerialPortTransferModel.h"
 
 #include "../../xIO.h"
-#include "../Communication/SerialPort.h"
+#include "device/serialport.h"
 
 namespace xTools {
 

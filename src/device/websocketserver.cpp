@@ -6,11 +6,11 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "WebSocketServer.h"
+#include "websocketserver.h"
 
 #include <QWebSocket>
 
-#include "../../xIO.h"
+#include "IO/xIO.h"
 
 namespace xTools {
 

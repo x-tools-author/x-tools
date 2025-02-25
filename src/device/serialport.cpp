@@ -6,12 +6,12 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "SerialPort.h"
+#include "serialport.h"
 
 #include <QTimer>
 #include <QtMath>
 
-#include "../../xIO.h"
+#include "IO/xIO.h"
 
 namespace xTools {
 

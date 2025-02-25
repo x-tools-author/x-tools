@@ -10,7 +10,7 @@
 
 #include <QMutex>
 
-#include "Socket.h"
+#include "socket.h"
 
 namespace xTools {
 

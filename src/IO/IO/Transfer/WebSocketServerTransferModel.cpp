@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "WebSocketServerTransferModel.h"
 
-#include "../Communication/WebSocketServer.h"
+#include "device/websocketserver.h"
 
 namespace xTools {
 

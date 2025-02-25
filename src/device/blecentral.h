@@ -13,7 +13,7 @@
 #include <QLowEnergyController>
 #include <QLowEnergyService>
 
-#include "Communication.h"
+#include "communication.h"
 
 namespace xTools {
 

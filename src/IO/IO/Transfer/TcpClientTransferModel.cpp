@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "TcpClientTransferModel.h"
 
-#include "../Communication/TcpClient.h"
+#include "device/tcpclient.h"
 
 namespace xTools {
 

@@ -6,8 +6,8 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "HidUi.h"
-#include "ui_HidUi.h"
+#include "hidui.h"
+#include "ui_hidui.h"
 
 #include <QHid>
 #include <QHidInfo>

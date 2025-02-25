@@ -12,7 +12,7 @@
 #include <QThread>
 #include <QVariantMap>
 
-#include "Communication.h"
+#include "communication.h"
 
 namespace xTools {
 
@@ -29,7 +29,7 @@ public:
     explicit ChartsTest(QObject *parent = nullptr);
     ~ChartsTest();
 
-    void inputBytes(const QByteArray &bytes) override;
+    void inputBytes(const QByteArray &bytes);
 
 protected:
     void run() override;
