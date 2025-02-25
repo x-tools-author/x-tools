@@ -57,6 +57,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/deployqt.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/QIFW/QIFW.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/hidapi-hidapi.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 
 # --------------------------------------------------------------------------------------------------
@@ -265,6 +266,7 @@ x_tools_install_glog(xTools)
 x_tools_install_qxlsx(xTools)
 x_tools_install_qmdns(xTools)
 x_tools_install_qrencode(xTools)
+x_tools_install_hidapi(xTools)
 
 set(macos_version ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 set(android_dir ${CMAKE_CURRENT_SOURCE_DIR}/android)
