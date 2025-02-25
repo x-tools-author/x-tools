@@ -10,6 +10,16 @@
 
 Application::Application(int argc, char **argv)
     : QApplication(argc, argv)
-{}
+{
+#ifdef X_TOOLS_LATEST_GIT_TAG
+    QString tmp(X_TOOLS_LATEST_GIT_TAG);
+    if (tmp.contains("v")) {
+        tmp.remove("v");
+    }
+    Application::setApplicationVersion(tmp);
+#else
+    Application::setApplicationVersion("0.0.0");
+#endif
+}
 
 Application::~Application() {}
