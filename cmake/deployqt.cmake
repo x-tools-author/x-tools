@@ -71,7 +71,7 @@ function(x_tools_deploy_qt_for_mac target)
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${MACDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app"
+      COMMAND ${MACDEPLOYQT_EXECUTABLE} "${CMAKE_BINARY_DIR}/${target}/${target}.app"
               "-qmldir=${X_TOOLS_QML_PATH} -dmg"
       COMMENT "Running macdeployqt..."
       VERBATIM)
@@ -79,7 +79,7 @@ function(x_tools_deploy_qt_for_mac target)
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${MACDEPLOYQT_EXECUTABLE} "${X_TOOLS_BINARY_DIR}/${target}/${target}.app" "-dmg"
+      COMMAND ${MACDEPLOYQT_EXECUTABLE} "${CMAKE_BINARY_DIR}/${target}/${target}.app" "-dmg"
       COMMENT "Running macdeployqt..."
       VERBATIM)
   endif()
@@ -88,7 +88,7 @@ function(x_tools_deploy_qt_for_mac target)
     TARGET ${target}
     POST_BUILD
     COMMAND sh -c "ls *.dmg > dmgs.txt"
-    WORKING_DIRECTORY "${X_TOOLS_BINARY_DIR}/${target}"
+    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/${target}"
     COMMENT "Scan dmg file"
     VERBATIM)
 
@@ -99,7 +99,7 @@ function(x_tools_deploy_qt_for_mac target)
     COMMAND sh -c "cat dmgs.txt"
     COMMAND sh -c "cat dmgs.txt | xargs -I {} mv {} xtools-macos-13.dmg"
     COMMAND sh -c "rm dmgs.txt || true"
-    WORKING_DIRECTORY "${X_TOOLS_BINARY_DIR}/${target}"
+    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/${target}"
     COMMENT "Rename old dmg file"
     VERBATIM)
 endfunction()

@@ -30,7 +30,7 @@ function(x_tools_generate_installer target version icon)
   endif()
 
   set(args "-DargTarget=${target}")
-  list(APPEND args "-DargRootDir=${X_TOOLS_BINARY_DIR}/Installer/${target}")
+  list(APPEND args "-DargRootDir=${CMAKE_BINARY_DIR}/Installer/${target}")
   list(APPEND args "-DargVersion=${version}")
   list(APPEND args "-DargDataDir=$<TARGET_FILE_DIR:${target}>")
   list(APPEND args "-DargTemperateDir=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/Installer")

@@ -3,8 +3,6 @@ add_compile_definitions(X_TOOLS_AUTHOR_EMAIL="x-tools@outlook.com")
 add_compile_definitions(X_TOOLS_GITEE_REPOSITORY_URL="https://gitee.com/x-tools-author/x-tools")
 add_compile_definitions(X_TOOLS_GITHUB_REPOSITORY_URL="https://github.com/x-tools-author/x-tools")
 
-set(X_TOOLS_BINARY_DIR ${CMAKE_BINARY_DIR}/assets)
-
 # Unzip file and import it as a sub module.
 function(x_tools_add_third_party zip_file_name_without_suffix)
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${zip_file_name_without_suffix}.zip
@@ -19,13 +17,13 @@ function(x_tools_copy_glog target)
       TARGET ${target}
       POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:glog::glog>
-              "${X_TOOLS_BINARY_DIR}/${target}/$<TARGET_FILE_NAME:glog::glog>")
+              "${CMAKE_BINARY_DIR}/${target}/$<TARGET_FILE_NAME:glog::glog>")
   endif()
 endfunction()
 
 # Add executable. It can be used by Qt5 and Qt6.
 function(x_tools_add_executable target)
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${X_TOOLS_BINARY_DIR}/${target}")
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${target}")
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${target} MANUAL_FINALIZATION)
     if(${target} STREQUAL "xTools")
