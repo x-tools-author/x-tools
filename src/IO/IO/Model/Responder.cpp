@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -20,9 +20,7 @@ namespace xTools {
 Responder::Responder(QObject *parent)
     : AbstractModelIO{parent}
     , m_tableModel{new ResponderModel(this)}
-{
-
-}
+{}
 
 QVariant Responder::tableModel() const
 {

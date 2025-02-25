@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -37,19 +37,13 @@ QObject *Hid::initDevice()
 
     qInfo() << "portName:" << m_Hid->portName() << "baudRate:" << m_Hid->baudRate()
             << "dataBits:" << m_Hid->dataBits() << "parity:" << m_Hid->parity()
-            << "stopBits:" << m_Hid->stopBits()
-            << "flowControl:" << m_Hid->flowControl();
+            << "stopBits:" << m_Hid->stopBits() << "flowControl:" << m_Hid->flowControl();
 
     if (m_Hid->open(QIODevice::ReadWrite)) {
-        connect(m_Hid, &QHid::readyRead, m_Hid, [this]() {
-            this->readBytesFromDevice();
+        connect(m_Hid, &QHid::readyRead, m_Hid, [this]() { this->readBytesFromDevice(); });
+        connect(m_Hid, &QHid::errorOccurred, m_Hid, [this](QHid::HidError error) {
+            emit errorOccurred(m_Hid->errorString());
         });
-        connect(m_Hid,
-                &QHid::errorOccurred,
-                m_Hid,
-                [this](QHid::HidError error) {
-                    emit errorOccurred(m_Hid->errorString());
-                });
     } else {
         emit errorOccurred(tr("Failed to open serial port: %1").arg(m_Hid->errorString()));
         m_Hid->deleteLater();

@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -18,30 +18,30 @@
 #include "IO/IO/Model/Preset.h"
 #include "IO/IO/Model/Responder.h"
 #include "IO/IO/Processor/Statistician.h"
-#include "IO/IO/Transfer/TcpClientTransfer.h"
-#include "IO/IO/Transfer/TcpServerTransfer.h"
-#include "IO/IO/Transfer/UdpClientTransfer.h"
-#include "IO/IO/Transfer/UdpServerTransfer.h"
 #include "IO/UI/IOUiFactory.h"
-#include "IO/UI/Transfer/TcpClientTransferUi.h"
-#include "IO/UI/Transfer/TcpServerTransferUi.h"
-#include "IO/UI/Transfer/UdpClientTransferUi.h"
-#include "IO/UI/Transfer/UdpServerTransferUi.h"
 #include "IO/xIO.h"
 #include "device/communication.h"
 #include "device/communicationui.h"
 #include "device/utilities/crc.h"
+#include "devicepage/transfer/tcpclienttransfer.h"
+#include "devicepage/transfer/tcpclienttransferui.h"
+#include "devicepage/transfer/tcpservertransfer.h"
+#include "devicepage/transfer/tcpservertransferui.h"
+#include "devicepage/transfer/udpclienttransfer.h"
+#include "devicepage/transfer/udpclienttransferui.h"
+#include "devicepage/transfer/udpservertransfer.h"
+#include "devicepage/transfer/udpservertransferui.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
-#include "IO/IO/Transfer/SerialPortTransfer.h"
-#include "IO/UI/Transfer/SerialPortTransferUi.h"
+#include "devicepage/transfer/serialporttransfer.h"
+#include "devicepage/transfer/serialporttransferui.h"
 #endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
-#include "IO/IO/Transfer/WebSocketClientTransfer.h"
-#include "IO/IO/Transfer/WebSocketServerTransfer.h"
-#include "IO/UI/Transfer/WebSocketClientTransferUi.h"
-#include "IO/UI/Transfer/WebSocketServerTransferUi.h"
+#include "devicepage/transfer/websocketclienttransfer.h"
+#include "devicepage/transfer/websocketclienttransferui.h"
+#include "devicepage/transfer/websocketservertransfer.h"
+#include "devicepage/transfer/websocketservertransferui.h"
 #endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_CHARTS

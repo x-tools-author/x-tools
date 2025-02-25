@@ -1,15 +1,15 @@
 /***************************************************************************************************
- * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "HidTransferModel.h"
+#include "hidtransfermodel.h"
 
-#include "../../xIO.h"
-#include "../Communication/Hid.h"
+#include "IO/xIO.h"
+#include "device/hid.h"
 
 namespace xTools {
 
@@ -173,9 +173,7 @@ bool HidTransferModel::setData(const QModelIndex &index, const QVariant &value, 
     return true;
 }
 
-QVariant HidTransferModel::headerData(int section,
-                                             Qt::Orientation orientation,
-                                             int role) const
+QVariant HidTransferModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (orientation == Qt::Vertical) {
         return QVariant();
