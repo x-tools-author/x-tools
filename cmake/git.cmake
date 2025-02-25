@@ -24,6 +24,9 @@ function(x_tools_git_get_latest_tag working_dir prefix)
 
   message(STATUS "[git] Latest git tag(${prefix}_LATEST_GIT_TAG): ${GIT_LATEST_TAG}")
   set(${prefix}_LATEST_GIT_TAG="${GIT_LATEST_TAG}" CACHE STRING "Latest git tag" FORCE)
+  set(${prefix}_LATEST_GIT_TAG
+      "${GIT_LATEST_TAG}"
+      PARENT_SCOPE)
   add_compile_definitions(${prefix}_LATEST_GIT_TAG="${GIT_LATEST_TAG}")
 endfunction()
 
