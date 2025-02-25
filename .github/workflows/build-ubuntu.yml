@@ -29,7 +29,7 @@ jobs:
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: install-dependencies
         run: |
-          sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev
+          sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev
       - name: build for linux
         run: |
           git fetch --tags
