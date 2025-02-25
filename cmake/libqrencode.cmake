@@ -28,6 +28,10 @@ else()
   set(x_qrencode "qrencode")
 endif()
 
+if(LINUX)
+  set(x_qrencode "qrencode")
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # Install libencode library to libs
 function(x_tools_install_qrencode target)

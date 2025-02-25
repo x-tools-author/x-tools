@@ -1,12 +1,12 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "MainWindow.h"
+#include "mainwindow.h"
 
 #include <QAction>
 #include <QClipboard>
@@ -28,12 +28,12 @@
 #include <QTextBrowser>
 #include <QVariant>
 
-#include "IOPage/IOPage.h"
-#include "Tools/AssistantFactory.h"
 #include "common/xtools.h"
+#include "devicepage/iopage.h"
+#include "tools/assistantfactory.h"
 
 #ifdef Q_OS_WIN
-#include "SystemTrayIcon.h"
+#include "systemtrayicon.h"
 #endif
 
 MainWindow::MainWindow(QWidget* parent)

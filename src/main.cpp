@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -15,6 +15,7 @@ int main(const int argc, char *argv[])
     Application app(argc, argv);
 
     MainWindow window;
+    window.resize(1024, 768);
     window.show();
 
     return app.exec();

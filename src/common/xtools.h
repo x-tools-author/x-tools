@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded in "utf8 with bom", it is a part of xTools project.
  *
@@ -19,10 +19,10 @@
 #include <QStyleFactory>
 #include <QStyleHints>
 
-#include "MainWindow.h"
+#include "mainwindow.h"
 
 #ifdef X_TOOLS_ENABLE_QSS
-#include "qss/QssMgr.h"
+#include "qss/qssmgr.h"
 #endif
 
 #define g_xTools xTools::xTools::singleton()
