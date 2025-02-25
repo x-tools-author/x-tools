@@ -22,7 +22,7 @@
 #include <QSerialPortInfo>
 #endif
 
-#include "Unit/CRC.h"
+#include "device/utilities/crc.h"
 
 namespace xTools {
 

@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "IpScanner.h"
+#include "ipscanner.h"
 
 #include <QHostAddress>
 #include <QNetworkInterface>

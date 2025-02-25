@@ -6,11 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "TextItemEditor.h"
-#include "ui_TextItemEditor.h"
+#include "textitemeditor.h"
+#include "ui_textitemeditor.h"
 
-#include "../xIO.h"
-#include "CRC.h"
+#include "IO/xIO.h"
+#include "crc.h"
 
 namespace xTools {
 

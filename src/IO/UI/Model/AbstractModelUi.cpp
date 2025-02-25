@@ -18,7 +18,7 @@
 #include <QStandardItemModel>
 
 #include "../../IO/Model/AbstractModelIO.h"
-#include "../../Unit/TextItemEditor.h"
+#include "device/utilities/textitemeditor.h"
 
 namespace xTools {
 

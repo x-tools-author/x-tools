@@ -13,7 +13,7 @@
 #include <QMessageBox>
 
 #include "device/blecentral.h"
-#include "IO/Unit/BleScanner.h"
+#include "device/utilities/blescanner.h"
 
 namespace xTools {
 

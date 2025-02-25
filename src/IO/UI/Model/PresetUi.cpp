@@ -19,8 +19,8 @@
 #include <QTableView>
 
 #include "../../IO/Model/AbstractModelIO.h"
-#include "../../Unit/Menu.h"
 #include "../../xIO.h"
+#include "device/utilities/menu.h"
 
 namespace xTools {
 
