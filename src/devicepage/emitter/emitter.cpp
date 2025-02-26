@@ -6,14 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "Emitter.h"
+#include "emitter.h"
 
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QTimer>
 #include <QVariant>
 
-#include "EmitterModel.h"
+#include "emittermodel.h"
 
 namespace xTools {
 
