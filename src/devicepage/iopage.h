@@ -158,4 +158,5 @@ private:
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;
     Communication *createDevice(int type);
+    CommunicationUi *createDeviceUi(int type);
 };

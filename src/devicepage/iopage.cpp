@@ -13,11 +13,20 @@
 #include <QMessageBox>
 #include <QWidgetAction>
 
-#include "common/xtools.h"
+#include "communicationsettings.h"
+#include "device/chartstest.h"
+#include "device/chartstestui.h"
 #include "device/communication.h"
 #include "device/communicationui.h"
+#include "device/tcpclient.h"
+#include "device/tcpclientui.h"
+#include "device/tcpserver.h"
+#include "device/tcpserverui.h"
+#include "device/udpclient.h"
+#include "device/udpclientui.h"
+#include "device/udpserver.h"
+#include "device/udpserverui.h"
 #include "device/utilities/crc.h"
-#include "devicepage/common/iouifactory.h"
 #include "devicepage/emitter/emitter.h"
 #include "devicepage/preset/preset.h"
 #include "devicepage/responder/responder.h"
@@ -32,41 +41,31 @@
 #include "devicepage/utilities/statistician.h"
 
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT
+#include "device/serialport.h"
+#include "device/serialportui.h"
 #include "devicepage/transfer/serialporttransfer.h"
 #include "devicepage/transfer/serialporttransferui.h"
 #endif
-
 #ifdef X_TOOLS_ENABLE_WEB_SOCKET
+#include "device/websocketclient.h"
+#include "device/websocketclientui.h"
+#include "device/websocketserver.h"
+#include "device/websocketserverui.h"
 #include "devicepage/transfer/websocketclienttransfer.h"
 #include "devicepage/transfer/websocketclienttransferui.h"
 #include "devicepage/transfer/websocketservertransfer.h"
 #include "devicepage/transfer/websocketservertransferui.h"
 #endif
-
 #ifdef X_TOOLS_ENABLE_CHARTS
 #include "devicepage/charts/charts.h"
 #include "devicepage/charts/chartsui.h"
 #endif
-
 #ifdef X_TOOLS_ENABLE_BLUETOOTH
 #include "device/blecentral.h"
+#include "device/blecentralui.h"
 #endif
-#ifdef X_TOOLS_ENABLE_SERIAL_PORT
-#include "device/serialport.h"
-#endif
-#include "device/tcpclient.h"
-#include "device/tcpserver.h"
-#include "device/udpclient.h"
-#include "device/udpserver.h"
-#ifdef X_TOOLS_ENABLE_WEB_SOCKET
-#include "device/websocketclient.h"
-#include "device/websocketserver.h"
-#endif
-#include "common/xtools.h"
-#include "device/chartstest.h"
 
 #include "common/xtools.h"
-#include "communicationsettings.h"
 #include "inputsettings.h"
 #include "outputsettings.h"
 #include "utilities/syntaxhighlighter.h"
@@ -495,7 +494,7 @@ void IOPage::onCommunicationTypeChanged()
     }
 
     int type = ui->comboBoxCommunicationTypes->currentData().toInt();
-    m_ioUi = IOUiFactory::singleton().createDeviceUi(type);
+    m_ioUi = createDeviceUi(type);
     if (m_ioUi) {
         loadControllerParameters();
         ui->verticalLayoutCommunicationController->addWidget(m_ioUi);
@@ -907,6 +906,38 @@ Communication *IOPage::createDevice(int type)
         return new ChartsTest(QCoreApplication::instance());
     default:
         qWarning("Unknown device type:%d", type);
+        return nullptr;
+    }
+}
+
+CommunicationUi *IOPage::createDeviceUi(int type)
+{
+    switch (type) {
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
+    case static_cast<int>(CommunicationType::SerialPort):
+        return new SerialPortUi();
+#endif
+#ifdef X_TOOLS_ENABLE_BLUETOOTH
+    case static_cast<int>(CommunicationType::BleCentral):
+        return new BleCentralUi();
+#endif
+    case static_cast<int>(CommunicationType::UdpClient):
+        return new UdpClientUi();
+    case static_cast<int>(CommunicationType::UdpServer):
+        return new UdpServerUi();
+    case static_cast<int>(CommunicationType::TcpClient):
+        return new TcpClientUi();
+    case static_cast<int>(CommunicationType::TcpServer):
+        return new TcpServerUi();
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
+    case static_cast<int>(CommunicationType::WebSocketClient):
+        return new WebSocketClientUi();
+    case static_cast<int>(CommunicationType::WebSocketServer):
+        return new WebSocketServerUi();
+    case static_cast<int>(CommunicationType::ChartsTest):
+        return new ChartsTestUi();
+#endif
+    default:
         return nullptr;
     }
 }
