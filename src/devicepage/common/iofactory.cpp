@@ -10,7 +10,6 @@
 
 #include <QCoreApplication>
 
-#include "devicepage/common/xio.h"
 #ifdef X_TOOLS_ENABLE_BLUETOOTH
 #include "device/blecentral.h"
 #endif
@@ -26,6 +25,7 @@
 #include "device/websocketserver.h"
 #endif
 #include "device/chartstest.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 
