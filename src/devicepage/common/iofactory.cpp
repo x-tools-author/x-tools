@@ -11,17 +11,17 @@
 #include <QCoreApplication>
 
 #include "devicepage/common/xio.h"
-#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
+#ifdef X_TOOLS_ENABLE_BLUETOOTH
 #include "device/blecentral.h"
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
 #include "device/serialport.h"
 #endif
 #include "device/tcpclient.h"
 #include "device/tcpserver.h"
 #include "device/udpclient.h"
 #include "device/udpserver.h"
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
 #include "device/websocketclient.h"
 #include "device/websocketserver.h"
 #endif
@@ -40,11 +40,11 @@ IOFactory &IOFactory::singleton()
 Communication *IOFactory::createDevice(int type)
 {
     switch (type) {
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
     case static_cast<int>(xIO::CommunicationType::SerialPort):
         return new SerialPort(QCoreApplication::instance());
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
+#ifdef X_TOOLS_ENABLE_BLUETOOTH
     case static_cast<int>(xIO::CommunicationType::BleCentral):
         return new BleCentral(QCoreApplication::instance());
 #endif
@@ -56,7 +56,7 @@ Communication *IOFactory::createDevice(int type)
         return new TcpClient(QCoreApplication::instance());
     case static_cast<int>(xIO::CommunicationType::TcpServer):
         return new TcpServer(QCoreApplication::instance());
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
     case static_cast<int>(xIO::CommunicationType::WebSocketClient):
         return new WebSocketClient(QCoreApplication::instance());
     case static_cast<int>(xIO::CommunicationType::WebSocketServer):

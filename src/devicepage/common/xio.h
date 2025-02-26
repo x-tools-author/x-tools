@@ -154,7 +154,7 @@ public:
     static SerialPortItem defaultSerialPortItem();
     static QJsonObject saveSerialPortItem(const SerialPortItem &context);
     static SerialPortItem loadSerialPortItem(const QJsonObject &obj);
-#if defined(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
+#if defined(X_TOOLS_ENABLE_SERIAL_PORT)
     static void setupPortName(QComboBox *comboBox);
     static void setupBaudRate(QComboBox *comboBox);
     static void setupDataBits(QComboBox *comboBox);

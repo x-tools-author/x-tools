@@ -10,18 +10,18 @@
 
 #include "devicepage/common/xio.h"
 
-#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
+#ifdef X_TOOLS_ENABLE_BLUETOOTH
 #include "device/blecentralui.h"
 #endif
 #include "device/communicationui.h"
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
 #include "device/serialportui.h"
 #endif
 #include "device/tcpclientui.h"
 #include "device/tcpserverui.h"
 #include "device/udpclientui.h"
 #include "device/udpserverui.h"
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
 #include "device/websocketclientui.h"
 #include "device/websocketserverui.h"
 #endif
@@ -40,11 +40,11 @@ IOUiFactory &IOUiFactory::singleton()
 CommunicationUi *IOUiFactory::createDeviceUi(int type)
 {
     switch (type) {
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
     case static_cast<int>(xIO::CommunicationType::SerialPort):
         return new SerialPortUi();
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
+#ifdef X_TOOLS_ENABLE_BLUETOOTH
     case static_cast<int>(xIO::CommunicationType::BleCentral):
         return new BleCentralUi();
 #endif
@@ -56,7 +56,7 @@ CommunicationUi *IOUiFactory::createDeviceUi(int type)
         return new TcpClientUi();
     case static_cast<int>(xIO::CommunicationType::TcpServer):
         return new TcpServerUi();
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
     case static_cast<int>(xIO::CommunicationType::WebSocketClient):
         return new WebSocketClientUi();
     case static_cast<int>(xIO::CommunicationType::WebSocketServer):

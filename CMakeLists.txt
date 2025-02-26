@@ -83,13 +83,13 @@ if(NOT X_TOOLS_ENABLE_QSS)
 endif()
 
 # HID
-option(X_TOOLS_ENABLE_MODULE_HID "Enable HID module" OFF)
-if(X_TOOLS_ENABLE_MODULE_HID)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_HID)
+option(X_TOOLS_ENABLE_HID "Enable HID module" OFF)
+if(X_TOOLS_ENABLE_HID)
+  add_compile_definitions(X_TOOLS_ENABLE_HID)
   set(HIDAPI_WITH_LIBUSB FALSE)
   x_tools_add_third_party("hidapi-hidapi-0.14.0")
 endif()
-if(NOT X_TOOLS_ENABLE_MODULE_HID)
+if(NOT X_TOOLS_ENABLE_HID)
   message(STATUS "HID module is disable, HID files will be removed.")
   set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/hid.h)
@@ -111,13 +111,13 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
-option(X_TOOLS_ENABLE_MODULE_SERIAL_PORT "Enable SerialPort module" ON)
+option(X_TOOLS_ENABLE_SERIAL_PORT "Enable SerialPort module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialPort)
 if(NOT Qt${QT_VERSION_MAJOR}SerialPort_FOUND)
-  set(X_TOOLS_ENABLE_MODULE_SERIAL_PORT OFF)
+  set(X_TOOLS_ENABLE_SERIAL_PORT OFF)
 endif()
-if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
+if(X_TOOLS_ENABLE_SERIAL_PORT)
+  add_compile_definitions(X_TOOLS_ENABLE_SERIAL_PORT)
 else()
   message(STATUS "SerialPort module is disable, serial port files will be removed.")
   set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
@@ -142,13 +142,13 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
-option(X_TOOLS_ENABLE_MODULE_WEB_SOCKET "Enable WebSockets module" ON)
+option(X_TOOLS_ENABLE_WEB_SOCKET "Enable WebSockets module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS WebSockets)
 if(NOT Qt${QT_VERSION_MAJOR}WebSockets_FOUND)
-  set(X_TOOLS_ENABLE_MODULE_WEB_SOCKET OFF)
+  set(X_TOOLS_ENABLE_WEB_SOCKET OFF)
 endif()
-if(X_TOOLS_ENABLE_MODULE_WEB_SOCKET)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_WEB_SOCKET)
+if(X_TOOLS_ENABLE_WEB_SOCKET)
+  add_compile_definitions(X_TOOLS_ENABLE_WEB_SOCKET)
 else()
   message(STATUS "SerialPort module is disable, serial port files will be removed.")
   set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
@@ -181,13 +181,13 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # BLE
-option(X_TOOLS_ENABLE_MODULE_BLUETOOTH "Enable Bluetooth module" ON)
+option(X_TOOLS_ENABLE_BLUETOOTH "Enable Bluetooth module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Bluetooth)
 if((NOT Qt${QT_VERSION_MAJOR}Bluetooth_FOUND) OR (QT_VERSION VERSION_LESS 6.5.0))
-  set(X_TOOLS_ENABLE_MODULE_BLUETOOTH OFF)
+  set(X_TOOLS_ENABLE_BLUETOOTH OFF)
 endif()
-if(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
+if(X_TOOLS_ENABLE_BLUETOOTH)
+  add_compile_definitions(X_TOOLS_ENABLE_BLUETOOTH)
 else()
   message(STATUS "Bluetooth module is disable, bluetooth files will be removed.")
   set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
@@ -202,12 +202,12 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialBus module
-option(X_TOOLS_ENABLE_MODULE_SERIALBUS "Enable SerialBus module" ON)
+option(X_TOOLS_ENABLE_SERIALBUS "Enable SerialBus module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialBus)
 if(Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_SERIALBUS)
+  add_compile_definitions(X_TOOLS_ENABLE_SERIALBUS)
 else()
-  set(X_TOOLS_ENABLE_MODULE_SERIALBUS OFF)
+  set(X_TOOLS_ENABLE_SERIALBUS OFF)
 
   # Remove modbus files
   file(GLOB_RECURSE MODBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/tools/modbus/*.*")
@@ -226,7 +226,7 @@ endif()
 # Qt Charts module
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Charts)
 if(Qt${QT_VERSION_MAJOR}Charts_FOUND)
-  add_compile_definitions(X_TOOLS_ENABLE_MODULE_CHARTS)
+  add_compile_definitions(X_TOOLS_ENABLE_CHARTS)
 else()
   message(STATUS "Charts module is disable, chart files will be removed.")
   file(GLOB_RECURSE CHARTS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/devicepage/charts/*.*")
@@ -274,27 +274,27 @@ target_link_libraries(
           Qt${QT_VERSION_MAJOR}::Network
           Qt${QT_VERSION_MAJOR}::Svg
           Qt${QT_VERSION_MAJOR}::Widgets
-          glog::glog
           ${x_qrencode}
+          glog::glog
           qmdnsengine)
 
-if(X_TOOLS_ENABLE_MODULE_SERIAL_PORT)
+if(X_TOOLS_ENABLE_SERIAL_PORT)
   target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::SerialPort)
 endif()
 
-if(X_TOOLS_ENABLE_MODULE_WEB_SOCKET)
+if(X_TOOLS_ENABLE_WEB_SOCKET)
   target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::WebSockets)
 endif()
 
-if(X_TOOLS_ENABLE_MODULE_SERIALBUS)
+if(X_TOOLS_ENABLE_SERIALBUS)
   target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::SerialBus)
 endif()
 
-if(X_TOOLS_ENABLE_MODULE_BLUETOOTH)
+if(X_TOOLS_ENABLE_BLUETOOTH)
   target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Bluetooth)
 endif()
 
-if(X_TOOLS_ENABLE_MODULE_CHARTS)
+if(X_TOOLS_ENABLE_CHARTS)
   target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::Charts QXlsx::QXlsx)
 endif()
 

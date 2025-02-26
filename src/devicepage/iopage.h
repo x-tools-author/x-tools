@@ -28,7 +28,7 @@ namespace xTools {
 class Preset;
 class Emitter;
 class Responder;
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
 class SerialPortTransfer;
 class SerialPortTransferUi;
 #endif
@@ -40,13 +40,13 @@ class TcpClientTransfer;
 class TcpClientTransferUi;
 class TcpServerTransfer;
 class TcpServerTransferUi;
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
 class WebSocketClientTransfer;
 class WebSocketClientTransferUi;
 class WebSocketServerTransfer;
 class WebSocketServerTransferUi;
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
 class Charts;
 class ChartsUi;
 #endif
@@ -102,7 +102,7 @@ private:
     xTools::Preset *m_preset;
     xTools::Emitter *m_emitter;
     xTools::Responder *m_responder;
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
     xTools::SerialPortTransfer *m_serialPortTransfer;
     xTools::SerialPortTransferUi *m_serialPortTransferUi;
 #endif
@@ -114,13 +114,13 @@ private:
     xTools::TcpClientTransferUi *m_tcpClientTransferUi;
     xTools::TcpServerTransfer *m_tcpServerTransfer;
     xTools::TcpServerTransferUi *m_tcpServerTransferUi;
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
     xTools::WebSocketClientTransfer *m_webSocketClientTransfer;
     xTools::WebSocketClientTransferUi *m_webSocketClientTransferUi;
     xTools::WebSocketServerTransfer *m_webSocketServerTransfer;
     xTools::WebSocketServerTransferUi *m_webSocketServerTransferUi;
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
     xTools::Charts *m_charts;
     xTools::ChartsUi *m_chartsUi;
 #endif

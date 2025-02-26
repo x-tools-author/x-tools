@@ -32,19 +32,19 @@
 #include "devicepage/transfer/udpservertransferui.h"
 #include "devicepage/utilities/statistician.h"
 
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
 #include "devicepage/transfer/serialporttransfer.h"
 #include "devicepage/transfer/serialporttransferui.h"
 #endif
 
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
 #include "devicepage/transfer/websocketclienttransfer.h"
 #include "devicepage/transfer/websocketclienttransferui.h"
 #include "devicepage/transfer/websocketservertransfer.h"
 #include "devicepage/transfer/websocketservertransferui.h"
 #endif
 
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
 #include "devicepage/charts/charts.h"
 #include "devicepage/charts/chartsui.h"
 #endif
@@ -104,7 +104,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     , m_preset{new xTools::Preset(this)}
     , m_emitter{new xTools::Emitter(this)}
     , m_responder{new xTools::Responder(this)}
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
     , m_serialPortTransfer(new xTools::SerialPortTransfer(this))
     , m_serialPortTransferUi(new xTools::SerialPortTransferUi(this))
 #endif
@@ -116,13 +116,13 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     , m_tcpClientTransferUi(new xTools::TcpClientTransferUi())
     , m_tcpServerTransfer(new xTools::TcpServerTransfer(this))
     , m_tcpServerTransferUi(new xTools::TcpServerTransferUi())
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
     , m_webSocketClientTransfer(new xTools::WebSocketClientTransfer(this))
     , m_webSocketClientTransferUi(new xTools::WebSocketClientTransferUi())
     , m_webSocketServerTransfer(new xTools::WebSocketServerTransfer(this))
     , m_webSocketServerTransferUi(new xTools::WebSocketServerTransferUi())
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
     , m_charts{new xTools::Charts(this)}
     , m_chartsUi{new xTools::ChartsUi()}
 #endif
@@ -135,7 +135,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     ui->setupUi(this);
     ui->widgetRxInfo->setupIO(m_rxStatistician);
     ui->widgetTxInfo->setupIO(m_txStatistician);
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
     ui->widgetCharts->setLayout(new QHBoxLayout);
     ui->widgetCharts->layout()->addWidget(m_chartsUi);
     ui->widgetCharts->layout()->setContentsMargins(0, 0, 0, 0);
@@ -153,13 +153,13 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responder
              << m_udpClientTransfer << m_udpServerTransfer << m_tcpClientTransfer
              << m_tcpServerTransfer;
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
     m_ioList << m_serialPortTransfer;
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
     m_ioList << m_webSocketClientTransfer << m_webSocketServerTransfer;
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
     m_ioList << m_charts;
 #endif
 
@@ -216,18 +216,18 @@ QVariantMap IOPage::save()
     map.insert(g_keys.presetItems, ui->tabPresets->save());
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
     map.insert(g_keys.responserItems, ui->tabResponder->save());
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
     map.insert(g_keys.serialPortTransferItems, m_serialPortTransferUi->save());
 #endif
     map.insert(g_keys.udpClientTransferItems, m_udpClientTransferUi->save());
     map.insert(g_keys.udpServerTransferItems, m_udpServerTransferUi->save());
     map.insert(g_keys.tcpClientTransferItems, m_tcpClientTransferUi->save());
     map.insert(g_keys.tcpServerTransferItems, m_tcpServerTransferUi->save());
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
     map.insert(g_keys.webSocketClientTransferItems, m_webSocketClientTransferUi->save());
     map.insert(g_keys.webSocketServerTransferItems, m_webSocketServerTransferUi->save());
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
     map.insert(g_keys.chartsItems, m_chartsUi->save());
 #endif
 
@@ -286,18 +286,18 @@ void IOPage::load(const QVariantMap &parameters)
     ui->tabPresets->load(parameters.value(g_keys.presetItems).toMap());
     ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
     ui->tabResponder->load(parameters.value(g_keys.responserItems).toMap());
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
     m_serialPortTransferUi->load(parameters.value(g_keys.serialPortTransferItems).toMap());
 #endif
     m_udpClientTransferUi->load(parameters.value(g_keys.udpClientTransferItems).toMap());
     m_udpServerTransferUi->load(parameters.value(g_keys.udpServerTransferItems).toMap());
     m_tcpClientTransferUi->load(parameters.value(g_keys.tcpClientTransferItems).toMap());
     m_tcpServerTransferUi->load(parameters.value(g_keys.tcpServerTransferItems).toMap());
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
     m_webSocketClientTransferUi->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
     m_webSocketServerTransferUi->load(parameters.value(g_keys.webSocketServerTransferItems).toMap());
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
     m_chartsUi->load(parameters.value(g_keys.chartsItems).toMap());
 #endif
     // clang-format on
@@ -423,32 +423,32 @@ void IOPage::initUiInputControl()
 
 void IOPage::initUiOutput()
 {
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
     ui->tabWidgetTransfers->addTab(m_serialPortTransferUi, tr("Serial Port"));
 #endif
     ui->tabWidgetTransfers->addTab(m_udpClientTransferUi, tr("UDP Client"));
     ui->tabWidgetTransfers->addTab(m_udpServerTransferUi, tr("UDP Server"));
     ui->tabWidgetTransfers->addTab(m_tcpClientTransferUi, tr("TCP Client"));
     ui->tabWidgetTransfers->addTab(m_tcpServerTransferUi, tr("TCP Server"));
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
     ui->tabWidgetTransfers->addTab(m_webSocketClientTransferUi, tr("WebSocket Client"));
     ui->tabWidgetTransfers->addTab(m_webSocketServerTransferUi, tr("WebSocket Server"));
 #endif
     ui->tabPresets->setupIO(m_preset);
     ui->tabEmitter->setupIO(m_emitter);
     ui->tabResponder->setupIO(m_responder);
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
     m_serialPortTransferUi->setupIO(m_serialPortTransfer);
 #endif
     m_udpClientTransferUi->setupIO(m_udpClientTransfer);
     m_udpServerTransferUi->setupIO(m_udpServerTransfer);
     m_tcpClientTransferUi->setupIO(m_tcpClientTransfer);
     m_tcpServerTransferUi->setupIO(m_tcpServerTransfer);
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
     m_webSocketClientTransferUi->setupIO(m_webSocketClientTransfer);
     m_webSocketServerTransferUi->setupIO(m_webSocketServerTransfer);
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
     m_chartsUi->setupIO(m_charts);
 #endif
 
@@ -607,37 +607,37 @@ void IOPage::openCommunication()
         connect(m_io, &xTools::Communication::errorOccurred, this, &IOPage::onErrorOccurred);
         connect(m_io, &xTools::Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
         connect(m_io, &xTools::Communication::outputBytes, m_responder, &xTools::Responder::inputBytes);
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
         connect(m_io, &xTools::Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
 #endif
         connect(m_io, &xTools::Communication::outputBytes, m_udpClientTransfer, &xTools::UdpClientTransfer::inputBytes);
         connect(m_io, &xTools::Communication::outputBytes, m_udpServerTransfer, &xTools::UdpServerTransfer::inputBytes);
         connect(m_io, &xTools::Communication::outputBytes, m_tcpClientTransfer, &xTools::TcpClientTransfer::inputBytes);
         connect(m_io, &xTools::Communication::outputBytes, m_tcpServerTransfer, &xTools::TcpServerTransfer::inputBytes);
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
         connect(m_io, &xTools::Communication::outputBytes, m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::inputBytes);
         connect(m_io, &xTools::Communication::outputBytes, m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::inputBytes);
 #endif
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
         connect(m_io, &xTools::Communication::outputBytes, m_charts, &xTools::Charts::inputBytes);
 #endif
         connect(m_preset, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_emitter, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_responder, &xTools::Responder::outputBytes, m_io, &xTools::Communication::inputBytes);
-#ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
         connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
 #endif
         connect(m_udpClientTransfer, &xTools::UdpClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_udpServerTransfer, &xTools::UdpServerTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_tcpClientTransfer, &xTools::TcpClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_tcpServerTransfer, &xTools::TcpServerTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
-#ifdef X_TOOLS_ENABLE_MODULE_WEB_SOCKET
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
         connect(m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
         connect(m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
 #endif
         // clang-format on
 
-#ifdef X_TOOLS_ENABLE_MODULE_CHARTS
+#ifdef X_TOOLS_ENABLE_CHARTS
         m_charts->load(m_chartsUi->save());
 #endif
 
