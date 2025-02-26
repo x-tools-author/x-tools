@@ -10,7 +10,7 @@
 
 #include <QAbstractTableModel>
 
-#include "../AbstractIO.h"
+#include "IO/IO/AbstractIO.h"
 
 namespace xTools {
 

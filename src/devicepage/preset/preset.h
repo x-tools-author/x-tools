@@ -10,7 +10,7 @@
 
 #include <QTimer>
 
-#include "IO/IO/Model/AbstractModelIO.h"
+#include "devicepage/common/abstractmodelio.h"
 #include "IO/xIO.h"
 
 namespace xTools {

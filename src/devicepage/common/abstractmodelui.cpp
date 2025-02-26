@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "AbstractModelUi.h"
-#include "ui_AbstractModelUi.h"
+#include "abstractmodelui.h"
+#include "ui_abstractmodelui.h"
 
 #include <QDebug>
 #include <QFile>
@@ -17,7 +17,7 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 
-#include "../../IO/Model/AbstractModelIO.h"
+#include "abstractmodelio.h"
 #include "device/utilities/textitemeditor.h"
 
 namespace xTools {

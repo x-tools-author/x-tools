@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "IO/IO/Model/AbstractModelIO.h"
+#include "devicepage/common/abstractmodelio.h"
 
 namespace xTools {
 

@@ -18,7 +18,7 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
-#include "IO/IO/Model/AbstractModelIO.h"
+#include "devicepage/common/abstractmodelio.h"
 #include "IO/xIO.h"
 #include "device/utilities/menu.h"
 

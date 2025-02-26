@@ -10,7 +10,7 @@
 
 #include <QHeaderView>
 
-#include "IO/UI/Model/AbstractModelUi.h"
+#include "devicepage/common/abstractmodelui.h"
 
 namespace xTools {
 

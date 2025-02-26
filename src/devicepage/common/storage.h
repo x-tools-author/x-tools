@@ -11,7 +11,7 @@
 #include <QMutex>
 #include <QTimer>
 
-#include "AbstractModelIO.h"
+#include "abstractmodelio.h"
 
 namespace xTools {
 
