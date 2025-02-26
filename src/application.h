@@ -9,11 +9,23 @@
 #pragma once
 
 #include <QApplication>
+#include <QSettings>
+#include <QSplashScreen>
 
+class ApplicationPrivate;
 class Application : public QApplication
 {
     Q_OBJECT
 public:
     explicit Application(int argc, char **argv);
     ~Application() override;
+
+    static void installLog();
+    static void uninstallLog();
+    static void setupHdpi();
+
+    QSettings *settings();
+
+private:
+    ApplicationPrivate *d_ptr;
 };

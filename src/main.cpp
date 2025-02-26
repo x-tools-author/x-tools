@@ -11,11 +11,16 @@
 
 int main(const int argc, char *argv[])
 {
+    Application::setOrganizationName("xTools");
+    Application::setApplicationName("xTools");
+    Application::installLog();
     Application app(argc, argv);
 
     MainWindow window;
-    window.resize(1024, 768);
+    window.resize(768 * 1.732, 768);
     window.show();
 
-    return app.exec();
+    int ret = app.exec();
+    Application::uninstallLog();
+    return ret;
 }
