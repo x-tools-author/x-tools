@@ -11,7 +11,7 @@
 #include <QPointF>
 #include <QTimer>
 
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 

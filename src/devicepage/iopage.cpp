@@ -13,16 +13,15 @@
 #include <QMessageBox>
 #include <QWidgetAction>
 
-#include "IO/IO/IOFactory.h"
-#include "devicepage/emitter/emitter.h"
-#include "devicepage/preset/preset.h"
-#include "devicepage/responder/responder.h"
-#include "devicepage/utilities/statistician.h"
-#include "IO/UI/IOUiFactory.h"
-#include "IO/xIO.h"
 #include "device/communication.h"
 #include "device/communicationui.h"
 #include "device/utilities/crc.h"
+#include "devicepage/common/iofactory.h"
+#include "devicepage/common/iouifactory.h"
+#include "devicepage/common/xio.h"
+#include "devicepage/emitter/emitter.h"
+#include "devicepage/preset/preset.h"
+#include "devicepage/responder/responder.h"
 #include "devicepage/transfer/tcpclienttransfer.h"
 #include "devicepage/transfer/tcpclienttransferui.h"
 #include "devicepage/transfer/tcpservertransfer.h"
@@ -31,6 +30,7 @@
 #include "devicepage/transfer/udpclienttransferui.h"
 #include "devicepage/transfer/udpservertransfer.h"
 #include "devicepage/transfer/udpservertransferui.h"
+#include "devicepage/utilities/statistician.h"
 
 #ifdef X_TOOLS_ENABLE_MODULE_SERIAL_PORT
 #include "devicepage/transfer/serialporttransfer.h"

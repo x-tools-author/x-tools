@@ -18,9 +18,9 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
-#include "devicepage/common/abstractmodelio.h"
-#include "IO/xIO.h"
 #include "device/utilities/menu.h"
+#include "devicepage/common/abstractmodelio.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 

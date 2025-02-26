@@ -19,7 +19,7 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 
@@ -84,9 +84,7 @@ public:
 
 ResponserUi::ResponserUi(QWidget *parent)
     : AbstractModelUi(parent)
-{
-
-}
+{}
 
 ResponserUi::~ResponserUi() {}
 

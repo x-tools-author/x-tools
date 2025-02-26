@@ -12,8 +12,8 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 
-#include "./utilities/savethread.h"
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
+#include "devicepage/utilities/savethread.h"
 
 const struct
 {

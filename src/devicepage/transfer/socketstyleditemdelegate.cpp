@@ -13,7 +13,7 @@
 #include <QLineEdit>
 #include <QSpinBox>
 
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 

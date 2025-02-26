@@ -11,7 +11,7 @@
 #include <QAbstractTableModel>
 #include <QMutex>
 
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 

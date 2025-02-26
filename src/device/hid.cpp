@@ -11,7 +11,7 @@
 #include <QTimer>
 #include <QtMath>
 
-#include "../../xIO.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 

@@ -12,7 +12,7 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 

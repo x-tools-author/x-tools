@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "serialporttransfer.h"
 
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
 #include "serialporttransfermodel.h"
 
 namespace xTools {

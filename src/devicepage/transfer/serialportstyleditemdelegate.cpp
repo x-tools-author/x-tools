@@ -12,7 +12,7 @@
 #include <QComboBox>
 #include <QLineEdit>
 
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 

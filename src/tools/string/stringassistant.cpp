@@ -9,7 +9,7 @@
 #include "stringassistant.h"
 #include "ui_stringassistant.h"
 
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
 
 StringAssistant::StringAssistant(QWidget* parent)
     : QWidget(parent)

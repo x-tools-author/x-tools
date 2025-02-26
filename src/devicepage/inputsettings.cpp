@@ -9,8 +9,8 @@
 #include "inputsettings.h"
 #include "ui_inputsettings.h"
 
-#include "IO/xIO.h"
 #include "device/utilities/crc.h"
+#include "devicepage/common/xio.h"
 
 InputSettings::InputSettings(QWidget *parent)
     : QWidget(parent)

@@ -6,11 +6,11 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "IOFactory.h"
+#include "iofactory.h"
 
 #include <QCoreApplication>
 
-#include "../xIO.h"
+#include "devicepage/common/xio.h"
 #ifdef X_TOOLS_ENABLE_MODULE_BLUETOOTH
 #include "device/blecentral.h"
 #endif

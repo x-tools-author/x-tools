@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "hidtransfer.h"
 
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
 #include "hidtransfermodel.h"
 
 namespace xTools {

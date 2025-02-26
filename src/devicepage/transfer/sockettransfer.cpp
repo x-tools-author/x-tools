@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "sockettransfer.h"
 
-#include "IO/xIO.h"
+#include "devicepage/common/xio.h"
 #include "sockettransfermodel.h"
 
 namespace xTools {

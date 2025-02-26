@@ -11,8 +11,8 @@
 #include <QEventLoop>
 #include <QTimer>
 
-#include "IO/xIO.h"
 #include "device/communication.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 

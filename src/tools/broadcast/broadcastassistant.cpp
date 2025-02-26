@@ -13,9 +13,9 @@
 #include <QNetworkAddressEntry>
 #include <QNetworkInterface>
 
-#include "IO/xIO.h"
 #include "broadcastthread.h"
 #include "common/xtools.h"
+#include "devicepage/common/xio.h"
 
 BroadcastAssistant::BroadcastAssistant(QWidget* parent)
     : QWidget(parent)

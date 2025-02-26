@@ -9,8 +9,8 @@
 #include "textitemeditor.h"
 #include "ui_textitemeditor.h"
 
-#include "IO/xIO.h"
 #include "crc.h"
+#include "devicepage/common/xio.h"
 
 namespace xTools {
 
