@@ -13,12 +13,12 @@
 #include <QMessageBox>
 #include <QWidgetAction>
 
+#include "common/xtools.h"
 #include "device/communication.h"
 #include "device/communicationui.h"
 #include "device/utilities/crc.h"
 #include "devicepage/common/iofactory.h"
 #include "devicepage/common/iouifactory.h"
-#include "devicepage/common/xio.h"
 #include "devicepage/emitter/emitter.h"
 #include "devicepage/preset/preset.h"
 #include "devicepage/responder/responder.h"
@@ -364,12 +364,12 @@ void IOPage::initUiCommunication()
     m_ioSettings = new CommunicationSettings();
     setupMenu(target, m_ioSettings);
 
-    xTools::xIO::setupCommunicationTypes(ui->comboBoxCommunicationTypes);
+    xTools::setupCommunicationTypes(ui->comboBoxCommunicationTypes);
 }
 
 void IOPage::initUiOutputControl()
 {
-    xTools::xIO::setupTextFormat(ui->comboBoxOutputFormat);
+    xTools::setupTextFormat(ui->comboBoxOutputFormat);
     ui->checkBoxOutputRx->setChecked(true);
     ui->checkBoxOutputTx->setChecked(true);
     ui->checkBoxOutputTime->setChecked(true);
@@ -405,7 +405,7 @@ void IOPage::initUiInputControl()
             &IOPage::onCycleIntervalChanged);
     connect(ui->pushButtonInputWriteBytes, &QPushButton::clicked, this, &IOPage::writeBytes);
 
-    xTools::xIO::setupTextFormat(ui->comboBoxInputFormat);
+    xTools::setupTextFormat(ui->comboBoxInputFormat);
     ui->comboBoxInputInterval->addItem(tr("Disable"), -1);
     for (int i = 10; i <= 50; i += 10) {
         ui->comboBoxInputInterval->addItem(QString::number(i), i);
@@ -501,7 +501,7 @@ void IOPage::onCycleIntervalChanged()
 void IOPage::onInputFormatChanged()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    xTools::xIO::setupTextFormatValidator(ui->lineEditInput, format);
+    xTools::setupTextFormatValidator(ui->lineEditInput, format);
     ui->lineEditInput->clear();
 }
 
@@ -669,10 +669,10 @@ void IOPage::writeBytes()
     }
 
     auto parameters = m_inputSettings->parameters();
-    QByteArray prefix = xTools::xIO::cookedAffixes(parameters.prefix);
+    QByteArray prefix = xTools::cookedAffixes(parameters.prefix);
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xTools::xIO::cookedAffixes(parameters.suffix);
+    QByteArray suffix = xTools::cookedAffixes(parameters.suffix);
 
     QByteArray bytes;
     if (parameters.appendCrc) {
@@ -690,10 +690,10 @@ void IOPage::updateLabelInfo()
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
 
-    QByteArray prefix = xTools::xIO::cookedAffixes(parameters.prefix);
+    QByteArray prefix = xTools::cookedAffixes(parameters.prefix);
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xTools::xIO::cookedAffixes(parameters.suffix);
+    QByteArray suffix = xTools::cookedAffixes(parameters.suffix);
 
     QString prefixString = QString::fromLatin1(prefix.toHex()).toUpper();
     QString payloadString = QString::fromLatin1(payload.toHex()).toUpper();
@@ -794,7 +794,7 @@ void IOPage::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     }
 
     QString dateTimeString = ::dateTimeString(showDate, showTime, showMs);
-    QString text = xTools::xIO::bytes2string(bytes, format);
+    QString text = xTools::bytes2string(bytes, format);
     QString rxTx = isRx ? QStringLiteral("Rx") : QStringLiteral("Tx");
     rxTx = QString("<font color=%1>%2</font>").arg(isRx ? "blue" : "green", rxTx);
 
@@ -843,8 +843,8 @@ QByteArray IOPage::payload() const
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     QString text = ui->lineEditInput->text();
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    text = xTools::xIO::cookedEscapeCharacter(text, parameters.escapeCharacter);
-    QByteArray payload = xTools::xIO::string2bytes(text, format);
+    text = xTools::cookedEscapeCharacter(text, parameters.escapeCharacter);
+    QByteArray payload = xTools::string2bytes(text, format);
     return payload;
 }
 

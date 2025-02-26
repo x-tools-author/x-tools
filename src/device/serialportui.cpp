@@ -12,12 +12,12 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
 SerialPortUi::SerialPortUi(QWidget *parent)
-    : CommunicationUi(xIO::CommunicationType::SerialPort, parent)
+    : CommunicationUi(CommunicationType::SerialPort, parent)
     , ui(new Ui::SerialPortUi)
 {
     ui->setupUi(this);
@@ -27,17 +27,17 @@ SerialPortUi::SerialPortUi(QWidget *parent)
 
     refresh();
 
-    xIO::setupBaudRate(ui->comboBoxBaudRate);
-    xIO::setupDataBits(ui->comboBoxDataBits);
-    xIO::setupParity(ui->comboBoxParity);
-    xIO::setupStopBits(ui->comboBoxStopBits);
-    xIO::setupFlowControl(ui->comboBoxFlowControl);
+    setupBaudRate(ui->comboBoxBaudRate);
+    setupDataBits(ui->comboBoxDataBits);
+    setupParity(ui->comboBoxParity);
+    setupStopBits(ui->comboBoxStopBits);
+    setupFlowControl(ui->comboBoxFlowControl);
 }
 
 QVariantMap SerialPortUi::save() const
 {
     QVariantMap map;
-    xIO::SerialPortItemKeys keys;
+    SerialPortItemKeys keys;
     map[keys.portName] = ui->comboBoxPortName->currentText();
     map[keys.baudRate] = ui->comboBoxBaudRate->currentText().toInt();
     map[keys.dataBits] = ui->comboBoxDataBits->currentData().toInt();
@@ -53,7 +53,7 @@ void SerialPortUi::load(const QVariantMap &map)
         return;
     }
 
-    xIO::SerialPortItemKeys keys;
+    SerialPortItemKeys keys;
     QString portName = map.value(keys.portName).toString();
     int baudRate = map.value(keys.baudRate).toInt();
     int dataBits = map.value(keys.dataBits).toInt();
@@ -71,7 +71,7 @@ void SerialPortUi::load(const QVariantMap &map)
 
 void SerialPortUi::refresh()
 {
-    xIO::setupPortName(ui->comboBoxPortName);
+    setupPortName(ui->comboBoxPortName);
 }
 
 } // namespace xTools

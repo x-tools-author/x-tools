@@ -45,7 +45,7 @@ QVariant EmitterModel::data(const QModelIndex &index, int role) const
         } else if (column == 2) {
             return item.interval;
         } else if (column == 3) {
-            return xIO::textItem2string(item.textContext);
+            return textItem2string(item.textContext);
         }
     } else if (role == Qt::EditRole) {
         if (column == 0) {
@@ -55,7 +55,7 @@ QVariant EmitterModel::data(const QModelIndex &index, int role) const
         } else if (column == 2) {
             return item.interval;
         } else if (column == 3) {
-            return xIO::saveTextItem(item.textContext);
+            return saveTextItem(item.textContext);
         }
     } else if (role == Qt::TextAlignmentRole) {
         if (column == 0 || column == 1 || column == 2) {
@@ -86,7 +86,7 @@ bool EmitterModel::setData(const QModelIndex &index, const QVariant &value, int 
             item.interval = value.toInt();
             item.interval = qMax(100, item.interval);
         } else if (column == 3) {
-            item.textContext = xIO::loadTextItem(value.toJsonObject());
+            item.textContext = loadTextItem(value.toJsonObject());
         } else {
             result = false;
         }
@@ -100,7 +100,7 @@ bool EmitterModel::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
 
-    xIO::TextItem textContext = xIO::defaultTextItem();
+    TextItem textContext = defaultTextItem();
     for (int i = 0; i < count; i++) {
         Item item{true, tr("Demo") + QString::number(rowCount(QModelIndex())), 1000, textContext};
         m_items.insert(row, item);

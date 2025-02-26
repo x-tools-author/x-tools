@@ -12,7 +12,7 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 #include "devicepage/utilities/savethread.h"
 
 const struct
@@ -33,7 +33,7 @@ CommunicationSettings::CommunicationSettings(QWidget *parent)
     , ui(new Ui::CommunicationSettings)
 {
     ui->setupUi(this);
-    xTools::xIO::setupTextFormat(ui->comboBoxSaveTextFormat);
+    xTools::setupTextFormat(ui->comboBoxSaveTextFormat);
     ui->comboBoxMaxBytes->addItem("16K", 16);
     ui->comboBoxMaxBytes->addItem("32K", 32);
     ui->comboBoxMaxBytes->addItem("64K", 64);

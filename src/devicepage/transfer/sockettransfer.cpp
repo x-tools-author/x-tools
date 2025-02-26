@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "sockettransfer.h"
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 #include "sockettransfermodel.h"
 
 namespace xTools {
@@ -33,21 +33,21 @@ QVariantMap SocketTransfer::saveItem(const int row) const
         return {};
     }
 
-    xIO::SocketItem item;
+    SocketItem item;
     item.clientAddress = model->data(model->index(row, 1), Qt::EditRole).toString();
     item.clientPort = model->data(model->index(row, 2), Qt::EditRole).toInt();
     item.serverAddress = model->data(model->index(row, 3), Qt::EditRole).toString();
     item.serverPort = model->data(model->index(row, 4), Qt::EditRole).toInt();
 
     int channel = model->data(model->index(row, 5), Qt::EditRole).toInt();
-    auto cookedChannel = static_cast<xIO::WebSocketDataChannel>(channel);
+    auto cookedChannel = static_cast<WebSocketDataChannel>(channel);
     item.dataChannel = cookedChannel;
 
     item.authentication = model->data(model->index(row, 6), Qt::EditRole).toBool();
     item.username = model->data(model->index(row, 7), Qt::EditRole).toString();
     item.password = model->data(model->index(row, 8), Qt::EditRole).toString();
 
-    QJsonObject obj = xIO::saveSocketItem(item);
+    QJsonObject obj = saveSocketItem(item);
     obj.insert("enable", model->data(model->index(row, 0), Qt::EditRole).toBool());
     obj.insert("description", model->data(model->index(row, 9), Qt::EditRole).toString());
 
@@ -68,7 +68,7 @@ void SocketTransfer::loadItem(const int row, const QVariantMap &item)
         return;
     }
 
-    xIO::SocketItem socketItem = xIO::loadSocketItem(QJsonObject::fromVariantMap(item));
+    SocketItem socketItem = loadSocketItem(QJsonObject::fromVariantMap(item));
     model->setData(model->index(row, 0), item.value("enable").toBool(), Qt::EditRole);
     model->setData(model->index(row, 1), socketItem.clientAddress, Qt::EditRole);
     model->setData(model->index(row, 2), socketItem.clientPort, Qt::EditRole);

@@ -11,8 +11,8 @@
 #include <QEventLoop>
 #include <QTimer>
 
+#include "common/xtools.h"
 #include "device/communication.h"
-#include "devicepage/common/xio.h"
 
 namespace xTools {
 
@@ -37,7 +37,7 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
         auto transfer = createTransfer();
         connect(transfer, &Communication::outputBytes, this, [=](const QByteArray &bytes) {
             for (auto &transferItem : this->m_transfers) {
-                if (transferItem.option == static_cast<int>(xIO::TransferType::Bidirectional)) {
+                if (transferItem.option == static_cast<int>(TransferType::Bidirectional)) {
                     emit outputBytes(bytes);
                 }
             }
@@ -48,7 +48,7 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
             }
         });
 
-        int option = static_cast<int>(xIO::TransferType::Bidirectional);
+        int option = static_cast<int>(TransferType::Bidirectional);
         m_transfers.insert(row + i, {transfer, tr("Transfer %1").arg(row), option});
         if (m_enableRestartTransfer) {
             transfer->start();
@@ -75,7 +75,7 @@ bool AbstractTransferModel::removeRows(int row, int count, const QModelIndex &pa
 void AbstractTransferModel::inputBytes(const QByteArray &bytes)
 {
     for (auto &item : m_transfers) {
-        if (item.option != static_cast<int>(xIO::TransferType::Disabled)) {
+        if (item.option != static_cast<int>(TransferType::Disabled)) {
             item.transfer->inputBytes(bytes);
         }
     }

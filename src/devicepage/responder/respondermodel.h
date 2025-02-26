@@ -11,7 +11,7 @@
 #include <QAbstractTableModel>
 #include <QMutex>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -35,10 +35,10 @@ private:
     {
         bool enable{true};
         QString description{"Demo"};
-        xIO::ResponseOption option = xIO::ResponseOption::InputEqualReference;
+        ResponseOption option = ResponseOption::InputEqualReference;
         int delay{1000};
-        xIO::TextItem referenceTextContext;
-        xIO::TextItem responseTextContext;
+        TextItem referenceTextContext;
+        TextItem responseTextContext;
     };
 
 private:

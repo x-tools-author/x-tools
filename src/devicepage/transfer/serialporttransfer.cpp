@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "serialporttransfer.h"
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 #include "serialporttransfermodel.h"
 
 namespace xTools {
@@ -42,7 +42,7 @@ QVariantMap SerialPortTransfer::saveItem(const int row) const
         return {};
     }
 
-    xIO::SerialPortItem item;
+    SerialPortItem item;
     item.portName = m_model->data(m_model->index(row, 1), Qt::EditRole).toString();
     item.baudRate = m_model->data(m_model->index(row, 2), Qt::EditRole).toInt();
     item.dataBits = m_model->data(m_model->index(row, 3), Qt::EditRole).toInt();
@@ -50,7 +50,7 @@ QVariantMap SerialPortTransfer::saveItem(const int row) const
     item.parity = m_model->data(m_model->index(row, 5), Qt::EditRole).toInt();
     item.flowControl = m_model->data(m_model->index(row, 6), Qt::EditRole).toInt();
 
-    QJsonObject obj = xIO::saveSerialPortItem(item);
+    QJsonObject obj = saveSerialPortItem(item);
     obj.insert("enable", m_model->data(m_model->index(row, 0), Qt::EditRole).toBool());
     obj.insert("description", m_model->data(m_model->index(row, 7), Qt::EditRole).toString());
 
@@ -65,7 +65,7 @@ void SerialPortTransfer::loadItem(const int row, const QVariantMap &item)
 
     bool enable = item.value("enable").toBool();
     QString description = item.value("description").toString();
-    xIO::SerialPortItem serialPortItem = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(item));
+    SerialPortItem serialPortItem = loadSerialPortItem(QJsonObject::fromVariantMap(item));
 
     m_model->setData(m_model->index(row, 0), enable, Qt::EditRole);
     m_model->setData(m_model->index(row, 1), serialPortItem.portName, Qt::EditRole);

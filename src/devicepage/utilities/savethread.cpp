@@ -15,7 +15,7 @@
 #include <QRegularExpression>
 #include <QTimer>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 SaveThread::SaveThread(QObject *parent)
     : QThread(parent)
@@ -47,7 +47,7 @@ void saveDataToFile(const SaveThread::SaveContext &ctx, QFile *file)
     QString date = now.toString(dateFmt);
     QString time = now.toString(timeFmt);
     QString ms = QString::number(now.time().msec());
-    QString text = xTools::xIO::bytes2string(ctx.data, ctx.parameters.format);
+    QString text = xTools::bytes2string(ctx.data, ctx.parameters.format);
 
     QString line;
     line += ctx.isRx ? "RX " : "TX ";

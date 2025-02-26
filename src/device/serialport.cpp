@@ -11,7 +11,7 @@
 #include <QTimer>
 #include <QtMath>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -24,7 +24,7 @@ SerialPort::~SerialPort() {}
 QObject *SerialPort::initDevice()
 {
     QVariantMap tmp = save();
-    xIO::SerialPortItem item = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(tmp));
+    SerialPortItem item = loadSerialPortItem(QJsonObject::fromVariantMap(tmp));
     m_serialPort = new QSerialPort();
     m_serialPort->setPortName(item.portName);
     m_serialPort->setBaudRate(item.baudRate);

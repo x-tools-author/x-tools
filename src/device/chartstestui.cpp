@@ -14,12 +14,12 @@
 namespace xTools {
 
 ChartsTestUi::ChartsTestUi(QWidget *parent)
-    : CommunicationUi(xIO::CommunicationType::SerialPort, parent)
+    : CommunicationUi(CommunicationType::SerialPort, parent)
     , ui(new Ui::ChartsTestUi)
 {
     ui->setupUi(this);
 
-    xIO::setupChartsDataFormat(ui->comboBoxFormat);
+    setupChartsDataFormat(ui->comboBoxFormat);
 }
 
 QVariantMap ChartsTestUi::save() const

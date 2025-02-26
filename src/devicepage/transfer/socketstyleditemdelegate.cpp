@@ -13,7 +13,7 @@
 #include <QLineEdit>
 #include <QSpinBox>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -58,7 +58,7 @@ void SocketStyledItemDelegate::setEditorData(QWidget *editor, const QModelIndex 
     } else if (column == 0 || column == 1 || column == 3 || column == 5 || column == 7) {
         auto cb = qobject_cast<QComboBox *>(editor);
         if (column == 0) {
-            xIO::setupTransferType(cb);
+            setupTransferType(cb);
             int transferType = index.data(Qt::EditRole).toInt();
             int index = cb->findData(transferType);
             if (index == -1) {
@@ -67,11 +67,11 @@ void SocketStyledItemDelegate::setEditorData(QWidget *editor, const QModelIndex 
                 cb->setCurrentIndex(index);
             }
         } else if (column == 1 || column == 3) {
-            xIO::setupSocketAddress(cb);
+            setupSocketAddress(cb);
             QString text = index.data(Qt::EditRole).toString();
             cb->setCurrentText(text);
         } else if (column == 5) {
-            xIO::setupWebSocketDataChannel(cb);
+            setupWebSocketDataChannel(cb);
             int dataChannel = index.data(Qt::EditRole).toInt();
             int index = cb->findData(dataChannel);
             if (index == -1) {
@@ -82,7 +82,7 @@ void SocketStyledItemDelegate::setEditorData(QWidget *editor, const QModelIndex 
         }
     } else if (column == 2 || column == 4) {
         auto sb = qobject_cast<QSpinBox *>(editor);
-        xIO::setupSocketPort(sb);
+        setupSocketPort(sb);
         sb->setValue(index.data(Qt::EditRole).toInt());
     } else if (column == 7 || column == 8 || column == 9) {
         auto le = qobject_cast<QLineEdit *>(editor);

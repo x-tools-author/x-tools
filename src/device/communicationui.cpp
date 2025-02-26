@@ -12,12 +12,12 @@
 
 namespace xTools {
 
-CommunicationUi::CommunicationUi(xIO::CommunicationType type, QWidget *parent)
+CommunicationUi::CommunicationUi(CommunicationType type, QWidget *parent)
     : AbstractIOUi(parent)
     , m_type(type)
 {}
 
-xIO::CommunicationType CommunicationUi::type() const
+CommunicationType CommunicationUi::type() const
 {
     return m_type;
 }

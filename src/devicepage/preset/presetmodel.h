@@ -10,7 +10,7 @@
 
 #include <QAbstractTableModel>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -34,7 +34,7 @@ private:
     struct Item
     {
         QString description{"Demo"};
-        xIO::TextItem textContext;
+        TextItem textContext;
     };
 
 private:

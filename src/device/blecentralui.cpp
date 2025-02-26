@@ -18,7 +18,7 @@
 namespace xTools {
 
 BleCentralUi::BleCentralUi(QWidget *parent)
-    : CommunicationUi(xIO::CommunicationType::BleCentral, parent)
+    : CommunicationUi(CommunicationType::BleCentral, parent)
     , ui(new Ui::BleCentralUi)
 {
     ui->setupUi(this);

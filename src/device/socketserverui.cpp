@@ -12,7 +12,7 @@
 
 namespace xTools {
 
-SocketServerUi::SocketServerUi(xIO::CommunicationType type, QWidget *parent)
+SocketServerUi::SocketServerUi(CommunicationType type, QWidget *parent)
     : SocketUi(type, parent)
 {}
 

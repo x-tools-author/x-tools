@@ -108,8 +108,8 @@ void Emitter::try2Emit()
 
             QVariant var = m_tableModel->data(m_tableModel->index(i, 3), Qt::EditRole);
             QJsonObject json = var.toJsonObject();
-            xIO::TextItem textItem = xIO::loadTextItem(json);
-            QByteArray bytes = xIO::textItem2array(textItem);
+            TextItem textItem = loadTextItem(json);
+            QByteArray bytes = textItem2array(textItem);
 
             if (m_enable) {
                 emit outputBytes(bytes);

@@ -8,8 +8,8 @@
  **************************************************************************************************/
 #include "sockettransfermodel.h"
 
+#include "common/xtools.h"
 #include "device/socket.h"
-#include "devicepage/common/xio.h"
 
 namespace xTools {
 
@@ -38,12 +38,12 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
     }
 
     QVariantMap parameters = socket->save();
-    xIO::SocketItem socketItem = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
+    SocketItem socketItem = loadSocketItem(QJsonObject::fromVariantMap(parameters));
 
     int column = index.column();
     if (role == Qt::DisplayRole) {
         if (column == 0) {
-            return xIO::transferTypeName(item.option);
+            return transferTypeName(item.option);
         } else if (column == 1) {
             return socketItem.clientAddress;
         } else if (column == 2) {
@@ -54,7 +54,7 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
             return QString::number(socketItem.serverPort);
         } else if (column == 5) {
             auto dataChannel = socketItem.dataChannel;
-            return xIO::webSocketDataChannelName(dataChannel);
+            return webSocketDataChannelName(dataChannel);
         } else if (column == 6) {
             return socketItem.authentication ? tr("Enable") : tr("Disable");
         } else if (column == 7) {
@@ -120,7 +120,7 @@ bool SocketTransferModel::setData(const QModelIndex &index, const QVariant &valu
     } else {
         auto socket = qobject_cast<Socket *>(item.transfer);
         QVariantMap parameters = socket->save();
-        xIO::SocketItem socketItem = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
+        SocketItem socketItem = loadSocketItem(QJsonObject::fromVariantMap(parameters));
 
         if (column == 1) {
             socketItem.clientAddress = value.toString();
@@ -131,7 +131,7 @@ bool SocketTransferModel::setData(const QModelIndex &index, const QVariant &valu
         } else if (column == 4) {
             socketItem.serverPort = value.toInt();
         } else if (column == 5) {
-            socketItem.dataChannel = static_cast<xIO::WebSocketDataChannel>(value.toInt());
+            socketItem.dataChannel = static_cast<WebSocketDataChannel>(value.toInt());
         } else if (column == 6) {
             socketItem.authentication = value.toBool();
         } else if (column == 7) {
@@ -140,7 +140,7 @@ bool SocketTransferModel::setData(const QModelIndex &index, const QVariant &valu
             socketItem.password = value.toString();
         }
 
-        parameters = xIO::saveSocketItem(socketItem).toVariantMap();
+        parameters = saveSocketItem(socketItem).toVariantMap();
         socket->load(parameters);
     }
 
@@ -190,8 +190,8 @@ Communication *SocketTransferModel::createTransfer()
 {
     auto socket = createSocket();
     if (socket) {
-        auto item = xIO::defaultSocketItem();
-        auto cookedItem = xIO::saveSocketItem(item);
+        auto item = defaultSocketItem();
+        auto cookedItem = saveSocketItem(item);
         socket->load(cookedItem.toVariantMap());
     }
 

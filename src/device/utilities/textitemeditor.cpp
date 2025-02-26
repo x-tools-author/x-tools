@@ -9,8 +9,8 @@
 #include "textitemeditor.h"
 #include "ui_textitemeditor.h"
 
+#include "common/xtools.h"
 #include "crc.h"
-#include "devicepage/common/xio.h"
 
 namespace xTools {
 
@@ -20,11 +20,11 @@ TextItemEditor::TextItemEditor(QWidget *parent)
 {
     ui->setupUi(this);
 
-    xIO::setupAddition(ui->comboBoxPrefix);
-    xIO::setupAddition(ui->comboBoxSuffix);
-    xIO::setupEscapeCharacter(ui->comboBoxEscapeCharacter);
+    setupAddition(ui->comboBoxPrefix);
+    setupAddition(ui->comboBoxSuffix);
+    setupEscapeCharacter(ui->comboBoxEscapeCharacter);
     CRC::setupAlgorithm(ui->comboBoxAlgorithm);
-    xIO::setupTextFormat(ui->comboBoxFormat);
+    setupTextFormat(ui->comboBoxFormat);
 
     connect(ui->comboBoxFormat,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -51,7 +51,7 @@ QJsonObject TextItemEditor::save() const
     int crcEndIndex = ui->spinBoxEndIndex->value();
     int format = ui->comboBoxFormat->currentData().toInt();
 
-    xIO::TextItemKeys keys;
+    TextItemKeys keys;
     QJsonObject parameters;
     parameters[keys.text] = text;
     parameters[keys.prefix] = prefix;
@@ -72,7 +72,7 @@ void TextItemEditor::load(const QJsonObject &parameters)
         return;
     }
 
-    xIO::TextItemKeys keys;
+    TextItemKeys keys;
     QString text = parameters.value(keys.text).toString();
     int format = parameters.value(keys.textFormat).toInt();
     int prefix = parameters.value(keys.prefix).toInt();
@@ -106,7 +106,7 @@ void TextItemEditor::onTextFormatChanged()
 {
     ui->lineEditInput->clear();
     int format = ui->comboBoxFormat->currentData().toInt();
-    xIO::setupTextFormatValidator(ui->lineEditInput, format);
+    setupTextFormatValidator(ui->lineEditInput, format);
 }
 
 } // namespace xTools

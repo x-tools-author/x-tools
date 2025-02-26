@@ -18,9 +18,9 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
+#include "common/xtools.h"
 #include "device/utilities/menu.h"
 #include "devicepage/common/abstractmodelio.h"
-#include "devicepage/common/xio.h"
 
 namespace xTools {
 
@@ -64,8 +64,8 @@ void PresetUi::didOutputBytes(int row)
 
     QModelIndex index = m_model->index(row, 1);
     QJsonObject rawItem = m_model->data(index, Qt::EditRole).toJsonObject();
-    xIO::TextItem textItem = xIO::loadTextItem(rawItem);
-    QByteArray bytes = xIO::textItem2array(textItem);
+    TextItem textItem = loadTextItem(rawItem);
+    QByteArray bytes = textItem2array(textItem);
     emit m_io->outputBytes(bytes);
 }
 

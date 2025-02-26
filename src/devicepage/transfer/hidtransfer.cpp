@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "hidtransfer.h"
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 #include "hidtransfermodel.h"
 
 namespace xTools {
@@ -40,7 +40,7 @@ QVariantMap HidTransfer::saveItem(const int row) const
         return {};
     }
 
-    xIO::HidItem item;
+    HidItem item;
     item.portName = m_model->data(m_model->index(row, 1), Qt::EditRole).toString();
     item.baudRate = m_model->data(m_model->index(row, 2), Qt::EditRole).toInt();
     item.dataBits = m_model->data(m_model->index(row, 3), Qt::EditRole).toInt();
@@ -48,7 +48,7 @@ QVariantMap HidTransfer::saveItem(const int row) const
     item.parity = m_model->data(m_model->index(row, 5), Qt::EditRole).toInt();
     item.flowControl = m_model->data(m_model->index(row, 6), Qt::EditRole).toInt();
 
-    QJsonObject obj = xIO::saveHidItem(item);
+    QJsonObject obj = saveHidItem(item);
     obj.insert("enable", m_model->data(m_model->index(row, 0), Qt::EditRole).toBool());
     obj.insert("description", m_model->data(m_model->index(row, 7), Qt::EditRole).toString());
 
@@ -63,7 +63,7 @@ void HidTransfer::loadItem(const int row, const QVariantMap &item)
 
     bool enable = item.value("enable").toBool();
     QString description = item.value("description").toString();
-    xIO::HidItem HidItem = xIO::loadHidItem(QJsonObject::fromVariantMap(item));
+    HidItem HidItem = loadHidItem(QJsonObject::fromVariantMap(item));
 
     m_model->setData(m_model->index(row, 0), enable, Qt::EditRole);
     m_model->setData(m_model->index(row, 1), HidItem.portName, Qt::EditRole);

@@ -11,7 +11,7 @@
 #include <QAbstractTableModel>
 #include <QMutex>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -40,7 +40,7 @@ private:
         bool enable{true};
         QString description{"Demo"};
         int interval{1000};
-        xIO::TextItem textContext;
+        TextItem textContext;
 
         int elapsedTime{0};
     };

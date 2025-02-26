@@ -10,8 +10,8 @@
 
 #include <QTimer>
 
+#include "common/xtools.h"
 #include "devicepage/common/abstractmodelio.h"
-#include "devicepage/common/xio.h"
 
 namespace xTools {
 
@@ -34,7 +34,7 @@ private:
     struct Item
     {
         QString description{"Demo"};
-        xIO::TextItem textContext;
+        TextItem textContext;
     };
     PresetModel *m_tableModel{nullptr};
     int rowCount(const QModelIndex &parent) const;

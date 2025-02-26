@@ -8,8 +8,8 @@
  **************************************************************************************************/
 #include "serialporttransfermodel.h"
 
+#include "common/xtools.h"
 #include "device/serialport.h"
-#include "devicepage/common/xio.h"
 
 namespace xTools {
 
@@ -40,12 +40,12 @@ QVariant SerialPortTransferModel::data(const QModelIndex &index, int role) const
 
     int column = index.column();
     QVariantMap data = serialPort->save();
-    xIO::SerialPortItem serialPortItem = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(data));
+    SerialPortItem serialPortItem = loadSerialPortItem(QJsonObject::fromVariantMap(data));
 
     if (role == Qt::DisplayRole) {
         if (column == 0) {
             int option = m_transfers.at(row).option;
-            return xIO::transferTypeName(option);
+            return transferTypeName(option);
         } else if (column == 1) {
             return serialPortItem.portName;
         } else if (column == 2) {
@@ -130,7 +130,7 @@ bool SerialPortTransferModel::setData(const QModelIndex &index, const QVariant &
     if (column == 0) {
         item.option = value.toInt();
 
-        if (item.option == static_cast<int>(xIO::TransferType::Disabled)) {
+        if (item.option == static_cast<int>(TransferType::Disabled)) {
             item.transfer->setIsEnable(false);
         } else {
             item.transfer->setIsEnable(true);
@@ -148,7 +148,7 @@ bool SerialPortTransferModel::setData(const QModelIndex &index, const QVariant &
         }
 
         QVariantMap data = serialPort->save();
-        auto serialPortItem = xIO::loadSerialPortItem(QJsonObject::fromVariantMap(data));
+        auto serialPortItem = loadSerialPortItem(QJsonObject::fromVariantMap(data));
         if (column == 1) {
             serialPortItem.portName = value.toString();
         } else if (column == 2) {
@@ -165,7 +165,7 @@ bool SerialPortTransferModel::setData(const QModelIndex &index, const QVariant &
             return false;
         }
 
-        auto parametres = xIO::saveSerialPortItem(serialPortItem);
+        auto parametres = saveSerialPortItem(serialPortItem);
         serialPort->load(parametres.toVariantMap());
     }
 
@@ -218,8 +218,8 @@ Qt::ItemFlags SerialPortTransferModel::flags(const QModelIndex &index) const
 Communication *SerialPortTransferModel::createTransfer()
 {
     auto sp = new SerialPort{this};
-    auto item = xIO::defaultSerialPortItem();
-    auto parametres = xIO::saveSerialPortItem(item);
+    auto item = defaultSerialPortItem();
+    auto parametres = saveSerialPortItem(item);
     sp->load(parametres.toVariantMap());
     return sp;
 }

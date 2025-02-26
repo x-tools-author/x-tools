@@ -11,7 +11,7 @@
 #include <QPointF>
 #include <QTimer>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -38,13 +38,13 @@ void ChartsTest::run()
     int dataFormat = parameters.value(keys.dataFormat).toInt();
     int channels = parameters.value(keys.channels).toInt();
     connect(timer, &QTimer::timeout, timer, [this, timer, dataFormat, flag, channels]() {
-        if (dataFormat == static_cast<int>(xIO::ChartsDataFormat::BinaryY)) {
+        if (dataFormat == static_cast<int>(ChartsDataFormat::BinaryY)) {
             emit bytesRead(generateBinaryY(channels), flag);
-        } else if (dataFormat == static_cast<int>(xIO::ChartsDataFormat::TextY)) {
+        } else if (dataFormat == static_cast<int>(ChartsDataFormat::TextY)) {
             emit bytesRead(generateTextY(channels), flag);
-        } else if (dataFormat == static_cast<int>(xIO::ChartsDataFormat::BinaryXY)) {
+        } else if (dataFormat == static_cast<int>(ChartsDataFormat::BinaryXY)) {
             emit bytesRead(generateBinaryXY(channels), flag);
-        } else if (dataFormat == static_cast<int>(xIO::ChartsDataFormat::TextXY)) {
+        } else if (dataFormat == static_cast<int>(ChartsDataFormat::TextXY)) {
             emit bytesRead(generateTextXY(channels), flag);
         } else {
             qWarning() << "Invalid data format(test data)!";

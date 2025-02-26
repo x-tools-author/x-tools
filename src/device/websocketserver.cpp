@@ -10,7 +10,7 @@
 
 #include <QWebSocket>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -101,13 +101,13 @@ void WebSocketServer::setupSocket(QWebSocket *socket)
 void WebSocketServer::writeBytes(QWebSocket *socket, const QByteArray &bytes)
 {
     const QString flag = makeFlag(socket->peerAddress().toString(), socket->peerPort());
-    if (m_channel == static_cast<int>(xIO::WebSocketDataChannel::Binary)) {
+    if (m_channel == static_cast<int>(WebSocketDataChannel::Binary)) {
         if (socket->sendBinaryMessage(bytes) == bytes.size()) {
             emit bytesWritten(bytes, flag + "[B]");
         } else {
             qInfo() << "WebSocketServer: sendBinaryMessage failed:" << socket->errorString();
         }
-    } else if (m_channel == static_cast<int>(xIO::WebSocketDataChannel::Text)) {
+    } else if (m_channel == static_cast<int>(WebSocketDataChannel::Text)) {
         if (socket->sendTextMessage(QString::fromUtf8(bytes)) == bytes.size()) {
             emit bytesWritten(bytes, flag + "[T]");
         } else {

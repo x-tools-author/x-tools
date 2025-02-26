@@ -9,7 +9,7 @@
 #include "stringassistant.h"
 #include "ui_stringassistant.h"
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 StringAssistant::StringAssistant(QWidget* parent)
     : QWidget(parent)
@@ -27,8 +27,8 @@ StringAssistant::StringAssistant(QWidget* parent)
             this,
             &StringAssistant::updateOutputString);
 
-    xTools::xIO::setupTextFormat(ui->outputFormatComboBox);
-    xTools::xIO::setupTextFormat(ui->inputFormatComboBox);
+    xTools::setupTextFormat(ui->outputFormatComboBox);
+    xTools::setupTextFormat(ui->inputFormatComboBox);
 }
 
 StringAssistant::~StringAssistant()
@@ -40,8 +40,8 @@ void StringAssistant::updateOutputString()
 {
     QString inputString = ui->textEdit->toPlainText();
     auto inputFormat = ui->inputFormatComboBox->currentData().toInt();
-    QByteArray inputArray = xTools::xIO::string2bytes(inputString, inputFormat);
+    QByteArray inputArray = xTools::string2bytes(inputString, inputFormat);
     auto outputFormat = ui->outputFormatComboBox->currentData().toInt();
-    auto outputString = xTools::xIO::bytes2string(inputArray, outputFormat);
+    auto outputString = xTools::bytes2string(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);
 }

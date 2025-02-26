@@ -11,7 +11,7 @@
 namespace xTools {
 
 WebSocketClientUi::WebSocketClientUi(QWidget *parent)
-    : SocketClientUi(xIO::CommunicationType::WebSocketClient, parent)
+    : SocketClientUi(CommunicationType::WebSocketClient, parent)
 {
     setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);

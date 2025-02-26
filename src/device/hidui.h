@@ -22,7 +22,7 @@ class HidUi : public CommunicationUi
 {
     Q_OBJECT
 public:
-    HidUi(xIO::CommunicationType type, QWidget *parent = nullptr);
+    HidUi(CommunicationType type, QWidget *parent = nullptr);
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;

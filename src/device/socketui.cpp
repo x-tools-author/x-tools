@@ -9,21 +9,21 @@
 #include "socketui.h"
 #include "ui_socketui.h"
 
+#include "common/xtools.h"
 #include "device/socket.h"
-#include "devicepage/common/xio.h"
 
 namespace xTools {
 
-SocketUi::SocketUi(xIO::CommunicationType type, QWidget *parent)
+SocketUi::SocketUi(CommunicationType type, QWidget *parent)
     : CommunicationUi(type, parent)
     , ui(new Ui::SocketUi)
 {
     ui->setupUi(this);
     ui->spinBoxClientPort->setValue(55443);
     ui->spinBoxServerPort->setValue(34455);
-    xIO::setupSocketAddress(ui->comboBoxClientIp);
-    xIO::setupSocketAddress(ui->comboBoxServerIp);
-    xIO::setupWebSocketDataChannel(ui->comboBoxChannel);
+    setupSocketAddress(ui->comboBoxClientIp);
+    setupSocketAddress(ui->comboBoxServerIp);
+    setupWebSocketDataChannel(ui->comboBoxChannel);
 
     setupClients(QStringList());
     connect(ui->comboBoxWriteTo, &QComboBox::activated, this, [this]() {
@@ -45,12 +45,12 @@ SocketUi::~SocketUi() {}
 
 QVariantMap SocketUi::save() const
 {
-    xIO::SocketItem item;
+    SocketItem item;
     item.clientPort = ui->spinBoxClientPort->value();
     item.clientAddress = ui->comboBoxClientIp->currentText();
     item.serverPort = ui->spinBoxServerPort->value();
     item.serverAddress = ui->comboBoxServerIp->currentText();
-    item.dataChannel = static_cast<xIO::WebSocketDataChannel>(ui->comboBoxChannel->currentIndex());
+    item.dataChannel = static_cast<WebSocketDataChannel>(ui->comboBoxChannel->currentIndex());
     item.authentication = ui->checkBoxAuthentication->isChecked();
     item.username = ui->lineEditUser->text();
     item.password = ui->lineEditPassword->text();
@@ -59,7 +59,7 @@ QVariantMap SocketUi::save() const
     item.enableMulticast = ui->checkBoxEnableMulticast->isChecked();
     item.justMulticast = ui->checkBoxJustMulticast->isChecked();
 
-    return xIO::saveSocketItem(item).toVariantMap();
+    return saveSocketItem(item).toVariantMap();
 }
 
 void SocketUi::load(const QVariantMap &parameters)
@@ -68,8 +68,8 @@ void SocketUi::load(const QVariantMap &parameters)
         return;
     }
 
-    xIO::SocketItemKeys keys;
-    xIO::SocketItem item = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
+    SocketItemKeys keys;
+    SocketItem item = loadSocketItem(QJsonObject::fromVariantMap(parameters));
     ui->spinBoxClientPort->setValue(item.clientPort);
     ui->comboBoxClientIp->setCurrentText(item.clientAddress);
     ui->spinBoxServerPort->setValue(item.serverPort);

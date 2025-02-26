@@ -36,7 +36,6 @@
 #include <QModbusRtuSerialServer>
 
 #include "common/xtools.h"
-#include "devicepage/common/xio.h"
 #include "modbusfactory.h"
 
 #define RXCOLOR "green"
@@ -117,7 +116,7 @@ ModbusAssistant::ModbusAssistant(QWidget *parent)
     , m_modbusDevice(Q_NULLPTR)
     , m_clientRegisterModel(Q_NULLPTR)
     , m_keyCtx(new ModbusSettingKeys)
-    , m_textFormat(static_cast<int>(xTools::xIO::TextFormat::Dec))
+    , m_textFormat(static_cast<int>(xTools::TextFormat::Dec))
 {
     m_settings = xTools::xTools::singleton().settings();
 
@@ -141,10 +140,10 @@ ModbusAssistant::~ModbusAssistant()
 
 void ModbusAssistant::initComponents()
 {
-    int dec = static_cast<int>(xTools::xIO::TextFormat::Dec);
-    ui->comboBoxFormat->addItem(xTools::xIO::textFormatName(xTools::xIO::TextFormat::Dec), dec);
-    int hex = static_cast<int>(xTools::xIO::TextFormat::Hex);
-    ui->comboBoxFormat->addItem(xTools::xIO::textFormatName(xTools::xIO::TextFormat::Hex), hex);
+    int dec = static_cast<int>(xTools::TextFormat::Dec);
+    ui->comboBoxFormat->addItem(xTools::textFormatName(xTools::TextFormat::Dec), dec);
+    int hex = static_cast<int>(xTools::TextFormat::Hex);
+    ui->comboBoxFormat->addItem(xTools::textFormatName(xTools::TextFormat::Hex), hex);
 
     initComponentDevices();
     initComponentAddress();
@@ -378,7 +377,7 @@ void ModbusAssistant::initSettingsClientOperations()
 
     int start = m_settings->value(m_keyCtx->startAddress).toInt();
     int format = m_settings->value(m_keyCtx->inputFormat).toInt();
-    if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+    if (format == static_cast<int>(xTools::TextFormat::Dec)) {
         ui->lineEditStartAddress->setText(QString::number(start));
     } else {
         QString str = QString("%1").arg(QString::number(start, 16), 4, '0');
@@ -398,7 +397,7 @@ void ModbusAssistant::initSettingsInput()
 
 void ModbusAssistant::initSettingsInputControl()
 {
-    int dec = static_cast<int>(xTools::xIO::TextFormat::Dec);
+    int dec = static_cast<int>(xTools::TextFormat::Dec);
     int format = m_settings->value(m_keyCtx->inputFormat, dec).toInt();
     int index = ui->comboBoxFormat->findData(format);
     if (index >= 0 && index < ui->comboBoxFormat->count()) {
@@ -835,7 +834,7 @@ void ModbusAssistant::onDateWritten(QModbusDataUnit::RegisterType table, int add
     size = qMin<int>(data.count(), size);
     for (int i = 0; i < size; i++) {
         int row = address + i;
-        int base = m_textFormat == static_cast<int>(xTools::xIO::TextFormat::Hex) ? 16 : 10;
+        int base = m_textFormat == static_cast<int>(xTools::TextFormat::Hex) ? 16 : 10;
         int width = base == 2 ? 16 : (base == 10 ? 5 : 4);
         int value = data.at(i);
         QString cookedStr = QString::number(value, base);
@@ -893,13 +892,13 @@ void ModbusAssistant::onInputFormatChanged()
 
     QString str = ui->lineEditStartAddress->text().trimmed();
     int value;
-    if (m_textFormat == static_cast<int>(xTools::xIO::TextFormat::Hex)) {
+    if (m_textFormat == static_cast<int>(xTools::TextFormat::Hex)) {
         value = str.toInt(nullptr, 16);
     } else {
         value = str.toInt(nullptr, 10);
     }
 
-    if (currentFormat == static_cast<int>(xTools::xIO::TextFormat::Hex)) {
+    if (currentFormat == static_cast<int>(xTools::TextFormat::Hex)) {
         ui->lineEditStartAddress->setText(QString("%1").arg(QString::number(value, 16), 4, '0'));
     } else {
         ui->lineEditStartAddress->setText(QString::number(value, 10));
@@ -1029,7 +1028,7 @@ void ModbusAssistant::updateClientTableViewData(int currentFormat, int targetFor
         }
 
         QString str = item->text();
-        if (currentFormat == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+        if (currentFormat == static_cast<int>(xTools::TextFormat::Dec)) {
             values.append(str.toInt());
         } else {
             values.append(str.toInt(Q_NULLPTR, 16));
@@ -1050,14 +1049,14 @@ void ModbusAssistant::updateClientTableViewData(const QList<quint16> &values)
         item->setTextAlignment(Qt::AlignCenter);
         QString text = item->text();
         int value = 0;
-        if (m_textFormat == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+        if (m_textFormat == static_cast<int>(xTools::TextFormat::Dec)) {
             value = text.toInt();
         } else {
             value = text.toInt(Q_NULLPTR, 16);
         }
 
         int format = ui->comboBoxFormat->currentData().toInt();
-        if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+        if (format == static_cast<int>(xTools::TextFormat::Dec)) {
             item->setText(QString::number(value));
         } else {
             item->setText(QString("%1").arg(QString::number(value, 16), 4, '0').toUpper());
@@ -1075,7 +1074,7 @@ void ModbusAssistant::updateClientTableViewAddress(QTableView *view, int startAd
         int address = row + startAddress;
         int format = ui->comboBoxFormat->currentData().toInt();
         QString text;
-        if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+        if (format == static_cast<int>(xTools::TextFormat::Dec)) {
             text = QString("%1").arg(QString::number(address), 5, '0');
         } else {
             text = QString("%1").arg(QString::number(address, 16), 4, '0').toUpper();
@@ -1180,7 +1179,7 @@ void ModbusAssistant::updateServerRegistersViews(int currentFormat, int targetFo
             }
 
             quint16 value;
-            int hex = static_cast<int>(xTools::xIO::TextFormat::Hex);
+            int hex = static_cast<int>(xTools::TextFormat::Hex);
             if (currentFormat == hex) {
                 value = item ? item->text().toInt(Q_NULLPTR, 16) : 0;
             } else {
@@ -1219,7 +1218,7 @@ QList<quint16> ModbusAssistant::getClientRegisterValue()
         QStandardItem *item = m_clientRegisterModel->item(row, 1);
         if (item) {
             QString text = item->text();
-            if (m_textFormat == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+            if (m_textFormat == static_cast<int>(xTools::TextFormat::Dec)) {
                 values.append(text.toInt());
             } else {
                 values.append(text.toInt(Q_NULLPTR, 16));
@@ -1373,9 +1372,9 @@ int ModbusAssistant::startAddress()
 {
     QString text = ui->lineEditStartAddress->text();
     int format = ui->comboBoxFormat->currentData().toInt();
-    if (format == static_cast<int>(xTools::xIO::TextFormat::Dec)) {
+    if (format == static_cast<int>(xTools::TextFormat::Dec)) {
         return text.toInt();
-    } else if (format == static_cast<int>(xTools::xIO::TextFormat::Hex)) {
+    } else if (format == static_cast<int>(xTools::TextFormat::Hex)) {
         return text.toInt(Q_NULLPTR, 16);
     }
 

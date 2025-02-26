@@ -45,13 +45,13 @@ QVariant ResponderModel::data(const QModelIndex &index, int role) const
         } else if (column == 1) {
             return item.description;
         } else if (column == 2) {
-            return xIO::responseOptionName(item.option);
+            return responseOptionName(item.option);
         } else if (column == 3) {
             return item.delay;
         } else if (column == 4) {
-            return xIO::textItem2string(item.referenceTextContext);
+            return textItem2string(item.referenceTextContext);
         } else if (column == 5) {
-            return xIO::textItem2string(item.responseTextContext);
+            return textItem2string(item.responseTextContext);
         }
     } else if (role == Qt::EditRole) {
         if (column == 0) {
@@ -63,9 +63,9 @@ QVariant ResponderModel::data(const QModelIndex &index, int role) const
         } else if (column == 3) {
             return item.delay;
         } else if (column == 4) {
-            return xIO::saveTextItem(item.referenceTextContext);
+            return saveTextItem(item.referenceTextContext);
         } else if (column == 5) {
-            return xIO::saveTextItem(item.responseTextContext);
+            return saveTextItem(item.responseTextContext);
         }
     } else if (role == Qt::TextAlignmentRole) {
         if (column == 0 || column == 1 || column == 2 || column == 3) {
@@ -93,14 +93,14 @@ bool ResponderModel::setData(const QModelIndex &index, const QVariant &value, in
         } else if (column == 1) {
             item.description = value.toString();
         } else if (column == 2) {
-            item.option = static_cast<xIO::ResponseOption>(value.toInt());
+            item.option = static_cast<ResponseOption>(value.toInt());
         } else if (column == 3) {
             item.delay = value.toInt();
             item.delay = qMax(0, item.delay);
         } else if (column == 4) {
-            item.referenceTextContext = xIO::loadTextItem(value.toJsonObject());
+            item.referenceTextContext = loadTextItem(value.toJsonObject());
         } else if (column == 5) {
-            item.responseTextContext = xIO::loadTextItem(value.toJsonObject());
+            item.responseTextContext = loadTextItem(value.toJsonObject());
         } else {
             result = false;
         }
@@ -114,9 +114,9 @@ bool ResponderModel::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
 
-    xIO::TextItem referenceTextContext = xIO::defaultTextItem();
-    xIO::TextItem responseTextContext = xIO::defaultTextItem();
-    auto option = xIO::ResponseOption::InputEqualReference;
+    TextItem referenceTextContext = defaultTextItem();
+    TextItem responseTextContext = defaultTextItem();
+    auto option = ResponseOption::InputEqualReference;
     for (int i = 0; i < count; i++) {
         Item item{true,
                   tr("Demo") + QString::number(rowCount(QModelIndex())),

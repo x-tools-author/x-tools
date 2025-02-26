@@ -11,7 +11,7 @@
 namespace xTools {
 
 TcpClientUi::TcpClientUi(QWidget *parent)
-    : SocketClientUi(xIO::CommunicationType::TcpClient, parent)
+    : SocketClientUi(CommunicationType::TcpClient, parent)
 {
     setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);

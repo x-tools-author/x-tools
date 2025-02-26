@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "socket.h"
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -21,9 +21,9 @@ Socket::Socket(QObject *parent)
         qRegisterMetaType<Socket::SocketPrivateSignal>("Socket::SocketPrivateSignal");
     }
 
-    m_channel = static_cast<int>(xIO::WebSocketDataChannel::Text);
+    m_channel = static_cast<int>(WebSocketDataChannel::Text);
 
-    xIO::SocketItemKeys keys;
+    SocketItemKeys keys;
     QVariantMap tmp;
     tmp.insert(keys.clientPort, m_clientPort);
     tmp.insert(keys.clientAddress, m_clientAddress);
@@ -45,7 +45,7 @@ void Socket::load(const QVariantMap &parameters)
 {
     Communication::load(parameters);
 
-    xIO::SocketItem item = xIO::loadSocketItem(QJsonObject::fromVariantMap(parameters));
+    SocketItem item = loadSocketItem(QJsonObject::fromVariantMap(parameters));
     m_clientPort = item.clientPort;
     m_clientAddress = item.clientAddress;
     m_serverPort = item.serverPort;

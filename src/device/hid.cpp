@@ -11,7 +11,7 @@
 #include <QTimer>
 #include <QtMath>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -24,7 +24,7 @@ Hid::~Hid() {}
 QObject *Hid::initDevice()
 {
     m_parametersMutex.lock();
-    xIO::HidItem item = xIO::loadHidItem(QJsonObject::fromVariantMap(m_parameters));
+    HidItem item = loadHidItem(QJsonObject::fromVariantMap(m_parameters));
     m_parametersMutex.unlock();
 
     m_Hid = new QHid();

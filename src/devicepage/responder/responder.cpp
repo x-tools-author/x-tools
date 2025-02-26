@@ -110,14 +110,14 @@ void Responder::inputBytes(const QByteArray &bytes)
         QJsonObject ref = m_tableModel->data(m_tableModel->index(i, 4), Qt::EditRole).toJsonObject();
         QJsonObject res = m_tableModel->data(m_tableModel->index(i, 5), Qt::EditRole).toJsonObject();
 
-        auto cookedOption = static_cast<xIO::ResponseOption>(option);
-        xIO::TextItem cookedRef = xIO::loadTextItem(ref);
-        xIO::TextItem cookedRes = xIO::loadTextItem(res);
+        auto cookedOption = static_cast<ResponseOption>(option);
+        TextItem cookedRef = loadTextItem(ref);
+        TextItem cookedRes = loadTextItem(res);
 
-        QByteArray refBytes = xIO::textItem2array(cookedRef);
-        QByteArray resBytes = xIO::textItem2array(cookedRes);
+        QByteArray refBytes = textItem2array(cookedRef);
+        QByteArray resBytes = textItem2array(cookedRes);
 
-        if (cookedOption == xIO::ResponseOption::Echo) {
+        if (cookedOption == ResponseOption::Echo) {
             QTimer::singleShot(delay, this, [=] { emit outputBytes(bytes); });
             continue;
         }
@@ -126,15 +126,15 @@ void Responder::inputBytes(const QByteArray &bytes)
             continue;
         }
 
-        if (cookedOption == xIO::ResponseOption::InputEqualReference) {
+        if (cookedOption == ResponseOption::InputEqualReference) {
             if (bytes != refBytes) {
                 continue;
             }
-        } else if (cookedOption == xIO::ResponseOption::InputContainReference) {
+        } else if (cookedOption == ResponseOption::InputContainReference) {
             if (!bytes.contains(refBytes)) {
                 continue;
             }
-        } else if (cookedOption == xIO::ResponseOption::InputDoesNotContainReference) {
+        } else if (cookedOption == ResponseOption::InputDoesNotContainReference) {
             if (bytes.contains(refBytes)) {
                 continue;
             }

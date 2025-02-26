@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 

@@ -8,8 +8,8 @@
  **************************************************************************************************/
 #include "hidtransfermodel.h"
 
+#include "common/xtools.h"
 #include "device/hid.h"
-#include "devicepage/common/xio.h"
 
 namespace xTools {
 
@@ -40,12 +40,12 @@ QVariant HidTransferModel::data(const QModelIndex &index, int role) const
 
     int column = index.column();
     QVariantMap data = Hid->parameters();
-    xIO::HidItem HidItem = xIO::loadHidItem(QJsonObject::fromVariantMap(data));
+    HidItem HidItem = loadHidItem(QJsonObject::fromVariantMap(data));
 
     if (role == Qt::DisplayRole) {
         if (column == 0) {
             int option = m_transfers.at(row).option;
-            return xIO::transferTypeName(option);
+            return transferTypeName(option);
         } else if (column == 1) {
             return HidItem.portName;
         } else if (column == 2) {
@@ -130,7 +130,7 @@ bool HidTransferModel::setData(const QModelIndex &index, const QVariant &value, 
     if (column == 0) {
         item.option = value.toInt();
 
-        if (item.option == static_cast<int>(xIO::TransferType::Disabled)) {
+        if (item.option == static_cast<int>(TransferType::Disabled)) {
             item.transfer->setIsEnable(false);
         } else {
             item.transfer->setIsEnable(true);
@@ -148,7 +148,7 @@ bool HidTransferModel::setData(const QModelIndex &index, const QVariant &value, 
         }
 
         QVariantMap data = Hid->parameters();
-        auto HidItem = xIO::loadHidItem(QJsonObject::fromVariantMap(data));
+        auto HidItem = loadHidItem(QJsonObject::fromVariantMap(data));
         if (column == 1) {
             HidItem.portName = value.toString();
         } else if (column == 2) {
@@ -165,7 +165,7 @@ bool HidTransferModel::setData(const QModelIndex &index, const QVariant &value, 
             return false;
         }
 
-        auto parametres = xIO::saveHidItem(HidItem);
+        auto parametres = saveHidItem(HidItem);
         Hid->setParameters(parametres.toVariantMap());
     }
 
@@ -216,8 +216,8 @@ Qt::ItemFlags HidTransferModel::flags(const QModelIndex &index) const
 Communication *HidTransferModel::createTransfer()
 {
     auto sp = new Hid{this};
-    auto item = xIO::defaultHidItem();
-    auto parametres = xIO::saveHidItem(item);
+    auto item = defaultHidItem();
+    auto parametres = saveHidItem(item);
     sp->setParameters(parametres.toVariantMap());
     return sp;
 }

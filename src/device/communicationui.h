@@ -11,8 +11,8 @@
 #include <QVariantMap>
 #include <QWidget>
 
+#include "common/xtools.h"
 #include "devicepage/common/abstractioui.h"
-#include "devicepage/common/xio.h"
 
 namespace xTools {
 
@@ -21,13 +21,13 @@ class CommunicationUi : public AbstractIOUi
 {
     Q_OBJECT
 public:
-    CommunicationUi(xIO::CommunicationType type, QWidget *parent = nullptr);
+    CommunicationUi(CommunicationType type, QWidget *parent = nullptr);
 
-    xIO::CommunicationType type() const;
+    CommunicationType type() const;
     virtual QList<QWidget *> communicationControllers();
 
 private:
-    xIO::CommunicationType const m_type;
+    CommunicationType const m_type;
 };
 
 } // namespace xTools

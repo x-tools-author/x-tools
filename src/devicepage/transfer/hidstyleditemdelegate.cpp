@@ -12,7 +12,7 @@
 #include <QComboBox>
 #include <QLineEdit>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -49,25 +49,25 @@ void HidStyledItemDelegate::setEditorData(QWidget *editor, const QModelIndex &in
         QComboBox *cb = nullptr;
         if (column == 0) {
             cb = qobject_cast<QComboBox *>(editor);
-            xIO::setupTransferType(cb);
+            setupTransferType(cb);
         } else if (column == 1) {
             cb = qobject_cast<QComboBox *>(editor);
-            xIO::setupPortName(cb);
+            setupPortName(cb);
         } else if (column == 2) {
             cb = qobject_cast<QComboBox *>(editor);
-            xIO::setupBaudRate(cb);
+            setupBaudRate(cb);
         } else if (column == 3) {
             cb = qobject_cast<QComboBox *>(editor);
-            xIO::setupDataBits(cb);
+            setupDataBits(cb);
         } else if (column == 4) {
             cb = qobject_cast<QComboBox *>(editor);
-            xIO::setupStopBits(cb);
+            setupStopBits(cb);
         } else if (column == 5) {
             cb = qobject_cast<QComboBox *>(editor);
-            xIO::setupParity(cb);
+            setupParity(cb);
         } else if (column == 6) {
             cb = qobject_cast<QComboBox *>(editor);
-            xIO::setupFlowControl(cb);
+            setupFlowControl(cb);
         }
 
         QVariant value = index.data(Qt::EditRole);

@@ -14,7 +14,7 @@
 
 namespace xTools {
 
-HidUi::HidUi(xIO::CommunicationType type, QWidget *parent)
+HidUi::HidUi(CommunicationType type, QWidget *parent)
     : CommunicationUi(type, parent)
     , ui(new Ui::HidUi)
 {
@@ -22,11 +22,11 @@ HidUi::HidUi(xIO::CommunicationType type, QWidget *parent)
 
     refresh();
 
-    xIO::setupBaudRate(ui->comboBoxBaudRate);
-    xIO::setupDataBits(ui->comboBoxDataBits);
-    xIO::setupParity(ui->comboBoxParity);
-    xIO::setupStopBits(ui->comboBoxStopBits);
-    xIO::setupFlowControl(ui->comboBoxFlowControl);
+    setupBaudRate(ui->comboBoxBaudRate);
+    setupDataBits(ui->comboBoxDataBits);
+    setupParity(ui->comboBoxParity);
+    setupStopBits(ui->comboBoxStopBits);
+    setupFlowControl(ui->comboBoxFlowControl);
 }
 
 QVariantMap HidUi::save() const
@@ -64,7 +64,7 @@ void HidUi::load(const QVariantMap &map)
 
 void HidUi::refresh()
 {
-    xIO::setupPortName(ui->comboBoxPortName);
+    setupPortName(ui->comboBoxPortName);
 }
 
 } // namespace xTools

@@ -19,7 +19,7 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 namespace xTools {
 
@@ -53,10 +53,10 @@ public:
             return;
         }
 
-        auto options = xIO::supportedResponseOptions();
+        auto options = supportedResponseOptions();
         for (auto &option : options) {
-            auto data = static_cast<xIO::ResponseOption>(option);
-            auto text = xIO::responseOptionName(data);
+            auto data = static_cast<ResponseOption>(option);
+            auto text = responseOptionName(data);
             comboBox->addItem(text, option);
         }
 

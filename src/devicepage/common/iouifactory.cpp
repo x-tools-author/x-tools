@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "iouifactory.h"
 
-#include "devicepage/common/xio.h"
+#include "common/xtools.h"
 
 #ifdef X_TOOLS_ENABLE_BLUETOOTH
 #include "device/blecentralui.h"
@@ -41,27 +41,27 @@ CommunicationUi *IOUiFactory::createDeviceUi(int type)
 {
     switch (type) {
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT
-    case static_cast<int>(xIO::CommunicationType::SerialPort):
+    case static_cast<int>(CommunicationType::SerialPort):
         return new SerialPortUi();
 #endif
 #ifdef X_TOOLS_ENABLE_BLUETOOTH
-    case static_cast<int>(xIO::CommunicationType::BleCentral):
+    case static_cast<int>(CommunicationType::BleCentral):
         return new BleCentralUi();
 #endif
-    case static_cast<int>(xIO::CommunicationType::UdpClient):
+    case static_cast<int>(CommunicationType::UdpClient):
         return new UdpClientUi();
-    case static_cast<int>(xIO::CommunicationType::UdpServer):
+    case static_cast<int>(CommunicationType::UdpServer):
         return new UdpServerUi();
-    case static_cast<int>(xIO::CommunicationType::TcpClient):
+    case static_cast<int>(CommunicationType::TcpClient):
         return new TcpClientUi();
-    case static_cast<int>(xIO::CommunicationType::TcpServer):
+    case static_cast<int>(CommunicationType::TcpServer):
         return new TcpServerUi();
 #ifdef X_TOOLS_ENABLE_WEB_SOCKET
-    case static_cast<int>(xIO::CommunicationType::WebSocketClient):
+    case static_cast<int>(CommunicationType::WebSocketClient):
         return new WebSocketClientUi();
-    case static_cast<int>(xIO::CommunicationType::WebSocketServer):
+    case static_cast<int>(CommunicationType::WebSocketServer):
         return new WebSocketServerUi();
-    case static_cast<int>(xIO::CommunicationType::ChartsTest):
+    case static_cast<int>(CommunicationType::ChartsTest):
         return new ChartsTestUi();
 #endif
     default:

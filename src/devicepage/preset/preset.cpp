@@ -20,9 +20,7 @@ namespace xTools {
 Preset::Preset(QObject *parent)
     : AbstractModelIO{parent}
     , m_tableModel{new PresetModel{this}}
-{
-
-}
+{}
 
 QVariant Preset::tableModel() const
 {
@@ -90,15 +88,15 @@ QVariant Preset::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    xIO::TextItem textContext = m_items.at(index.row()).textContext;
-    QJsonObject json = xIO::saveTextItem(textContext);
+    TextItem textContext = m_items.at(index.row()).textContext;
+    QJsonObject json = saveTextItem(textContext);
 
     if (index.column() == 0 && role == Qt::DisplayRole) {
         return m_items.at(index.row()).description;
     } else if (index.column() == 0 && role == Qt::EditRole) {
         return m_items.at(index.row()).description;
     } else if (index.column() == 1 && role == Qt::DisplayRole) {
-        return xIO::textItem2string(textContext);
+        return textItem2string(textContext);
     } else if (index.column() == 1 && role == Qt::EditRole) {
         return QVariant::fromValue(json);
     }
@@ -116,7 +114,7 @@ bool Preset::setData(const QModelIndex &index, const QVariant &value, int role)
     if (index.column() == 0 && role == Qt::EditRole) {
         m_items[index.row()].description = value.toString();
     } else if (index.column() == 1 && role == Qt::EditRole) {
-        auto textContext = xIO::loadTextItem(value.toJsonObject());
+        auto textContext = loadTextItem(value.toJsonObject());
         m_items[index.row()].textContext = textContext;
     } else {
         return false;
@@ -129,7 +127,7 @@ bool Preset::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
 
-    xIO::TextItem textContext = xIO::defaultTextItem();
+    TextItem textContext = defaultTextItem();
     for (int i = 0; i < count; i++) {
         Item item{tr("Demo") + QString::number(rowCount(QModelIndex())), textContext};
         m_items.insert(row, item);
