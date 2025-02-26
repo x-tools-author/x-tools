@@ -149,8 +149,8 @@ struct SerialPortItemKeys
     const QString portName{"portName"};
     const QString baudRate{"baudRate"};
     const QString dataBits{"dataBits"};
-    const QString parity{"parity"};
     const QString stopBits{"stopBits"};
+    const QString parity{"parity"};
     const QString flowControl{"flowControl"};
 };
 SerialPortItem defaultSerialPortItem();
