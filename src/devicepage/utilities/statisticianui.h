@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "../AbstractIOUi.h"
+#include "devicepage/common/abstractioui.h"
 
 namespace Ui {
 class StatisticianUi;

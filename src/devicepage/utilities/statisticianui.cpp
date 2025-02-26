@@ -6,10 +6,10 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "StatisticianUi.h"
-#include "ui_StatisticianUi.h"
+#include "statisticianui.h"
+#include "ui_statisticianui.h"
 
-#include "../../IO/Processor/Statistician.h"
+#include "statistician.h"
 
 namespace xTools {
 

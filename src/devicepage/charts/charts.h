@@ -10,7 +10,7 @@
 
 #include <QPointF>
 
-#include "IO/IO/AbstractIO.h"
+#include "devicepage/common/abstractio.h"
 
 namespace xTools {
 

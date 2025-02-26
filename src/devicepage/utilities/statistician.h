@@ -10,7 +10,7 @@
 
 #include <QMutex>
 
-#include "../AbstractIO.h"
+#include "devicepage/common/abstractio.h"
 
 namespace xTools {
 

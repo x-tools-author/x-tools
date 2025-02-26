@@ -13,7 +13,7 @@
 #include <QValueAxis>
 #include <QXYSeries>
 
-#include "IO/UI/AbstractIOUi.h"
+#include "devicepage/common/abstractioui.h"
 
 namespace Ui {
 class ChartsUi;

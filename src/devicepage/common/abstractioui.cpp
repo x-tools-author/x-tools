@@ -6,7 +6,7 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "AbstractIOUi.h"
+#include "abstractioui.h"
 
 #include "device/communication.h"
 

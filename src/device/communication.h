@@ -12,7 +12,7 @@
 #include <QThread>
 #include <QVariantMap>
 
-#include "IO/IO/AbstractIO.h"
+#include "devicepage/common/abstractio.h"
 
 namespace xTools {
 

@@ -17,7 +17,7 @@
 #include "devicepage/emitter/emitter.h"
 #include "devicepage/preset/preset.h"
 #include "devicepage/responder/responder.h"
-#include "IO/IO/Processor/Statistician.h"
+#include "devicepage/utilities/statistician.h"
 #include "IO/UI/IOUiFactory.h"
 #include "IO/xIO.h"
 #include "device/communication.h"
