@@ -23,7 +23,6 @@ private:
 
 public:
     static IOFactory &singleton();
-    Q_INVOKABLE Communication *createDevice(int type);
 };
 
 } // namespace xTools

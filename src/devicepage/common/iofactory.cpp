@@ -37,37 +37,4 @@ IOFactory &IOFactory::singleton()
     return instance;
 }
 
-Communication *IOFactory::createDevice(int type)
-{
-    switch (type) {
-#ifdef X_TOOLS_ENABLE_SERIAL_PORT
-    case static_cast<int>(CommunicationType::SerialPort):
-        return new SerialPort(QCoreApplication::instance());
-#endif
-#ifdef X_TOOLS_ENABLE_BLUETOOTH
-    case static_cast<int>(CommunicationType::BleCentral):
-        return new BleCentral(QCoreApplication::instance());
-#endif
-    case static_cast<int>(CommunicationType::UdpClient):
-        return new UdpClient(QCoreApplication::instance());
-    case static_cast<int>(CommunicationType::UdpServer):
-        return new UdpServer(QCoreApplication::instance());
-    case static_cast<int>(CommunicationType::TcpClient):
-        return new TcpClient(QCoreApplication::instance());
-    case static_cast<int>(CommunicationType::TcpServer):
-        return new TcpServer(QCoreApplication::instance());
-#ifdef X_TOOLS_ENABLE_WEB_SOCKET
-    case static_cast<int>(CommunicationType::WebSocketClient):
-        return new WebSocketClient(QCoreApplication::instance());
-    case static_cast<int>(CommunicationType::WebSocketServer):
-        return new WebSocketServer(QCoreApplication::instance());
-#endif
-    case static_cast<int>(CommunicationType::ChartsTest):
-        return new ChartsTest(QCoreApplication::instance());
-    default:
-        qWarning("Unknown device type:%d", type);
-        return nullptr;
-    }
-}
-
 } // namespace xTools

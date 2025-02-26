@@ -49,10 +49,30 @@
 #include "devicepage/charts/chartsui.h"
 #endif
 
+#ifdef X_TOOLS_ENABLE_BLUETOOTH
+#include "device/blecentral.h"
+#endif
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
+#include "device/serialport.h"
+#endif
+#include "device/tcpclient.h"
+#include "device/tcpserver.h"
+#include "device/udpclient.h"
+#include "device/udpserver.h"
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
+#include "device/websocketclient.h"
+#include "device/websocketserver.h"
+#endif
+#include "common/xtools.h"
+#include "device/chartstest.h"
+
+#include "common/xtools.h"
 #include "communicationsettings.h"
 #include "inputsettings.h"
 #include "outputsettings.h"
 #include "utilities/syntaxhighlighter.h"
+
+using namespace xTools;
 
 struct ParameterKeys
 {
@@ -99,32 +119,32 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     , m_writeTimer{new QTimer(this)}
     , m_updateLabelInfoTimer{new QTimer(this)}
     , m_highlighter{new SyntaxHighlighter(this)}
-    , m_rxStatistician{new xTools::Statistician(this)}
-    , m_txStatistician{new xTools::Statistician(this)}
-    , m_preset{new xTools::Preset(this)}
-    , m_emitter{new xTools::Emitter(this)}
-    , m_responder{new xTools::Responder(this)}
+    , m_rxStatistician{new Statistician(this)}
+    , m_txStatistician{new Statistician(this)}
+    , m_preset{new Preset(this)}
+    , m_emitter{new Emitter(this)}
+    , m_responder{new Responder(this)}
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT
-    , m_serialPortTransfer(new xTools::SerialPortTransfer(this))
-    , m_serialPortTransferUi(new xTools::SerialPortTransferUi(this))
+    , m_serialPortTransfer(new SerialPortTransfer(this))
+    , m_serialPortTransferUi(new SerialPortTransferUi(this))
 #endif
-    , m_udpClientTransfer(new xTools::UdpClientTransfer(this))
-    , m_udpClientTransferUi(new xTools::UdpClientTransferUi())
-    , m_udpServerTransfer(new xTools::UdpServerTransfer(this))
-    , m_udpServerTransferUi(new xTools::UdpServerTransferUi())
-    , m_tcpClientTransfer(new xTools::TcpClientTransfer(this))
-    , m_tcpClientTransferUi(new xTools::TcpClientTransferUi())
-    , m_tcpServerTransfer(new xTools::TcpServerTransfer(this))
-    , m_tcpServerTransferUi(new xTools::TcpServerTransferUi())
+    , m_udpClientTransfer(new UdpClientTransfer(this))
+    , m_udpClientTransferUi(new UdpClientTransferUi())
+    , m_udpServerTransfer(new UdpServerTransfer(this))
+    , m_udpServerTransferUi(new UdpServerTransferUi())
+    , m_tcpClientTransfer(new TcpClientTransfer(this))
+    , m_tcpClientTransferUi(new TcpClientTransferUi())
+    , m_tcpServerTransfer(new TcpServerTransfer(this))
+    , m_tcpServerTransferUi(new TcpServerTransferUi())
 #ifdef X_TOOLS_ENABLE_WEB_SOCKET
-    , m_webSocketClientTransfer(new xTools::WebSocketClientTransfer(this))
-    , m_webSocketClientTransferUi(new xTools::WebSocketClientTransferUi())
-    , m_webSocketServerTransfer(new xTools::WebSocketServerTransfer(this))
-    , m_webSocketServerTransferUi(new xTools::WebSocketServerTransferUi())
+    , m_webSocketClientTransfer(new WebSocketClientTransfer(this))
+    , m_webSocketClientTransferUi(new WebSocketClientTransferUi())
+    , m_webSocketServerTransfer(new WebSocketServerTransfer(this))
+    , m_webSocketServerTransferUi(new WebSocketServerTransferUi())
 #endif
 #ifdef X_TOOLS_ENABLE_CHARTS
-    , m_charts{new xTools::Charts(this)}
-    , m_chartsUi{new xTools::ChartsUi()}
+    , m_charts{new Charts(this)}
+    , m_chartsUi{new ChartsUi()}
 #endif
     , m_settings{settings}
 {
@@ -364,12 +384,12 @@ void IOPage::initUiCommunication()
     m_ioSettings = new CommunicationSettings();
     setupMenu(target, m_ioSettings);
 
-    xTools::setupCommunicationTypes(ui->comboBoxCommunicationTypes);
+    setupCommunicationTypes(ui->comboBoxCommunicationTypes);
 }
 
 void IOPage::initUiOutputControl()
 {
-    xTools::setupTextFormat(ui->comboBoxOutputFormat);
+    setupTextFormat(ui->comboBoxOutputFormat);
     ui->checkBoxOutputRx->setChecked(true);
     ui->checkBoxOutputTx->setChecked(true);
     ui->checkBoxOutputTime->setChecked(true);
@@ -405,7 +425,7 @@ void IOPage::initUiInputControl()
             &IOPage::onCycleIntervalChanged);
     connect(ui->pushButtonInputWriteBytes, &QPushButton::clicked, this, &IOPage::writeBytes);
 
-    xTools::setupTextFormat(ui->comboBoxInputFormat);
+    setupTextFormat(ui->comboBoxInputFormat);
     ui->comboBoxInputInterval->addItem(tr("Disable"), -1);
     for (int i = 10; i <= 50; i += 10) {
         ui->comboBoxInputInterval->addItem(QString::number(i), i);
@@ -478,7 +498,7 @@ void IOPage::onCommunicationTypeChanged()
     }
 
     int type = ui->comboBoxCommunicationTypes->currentData().toInt();
-    m_ioUi = xTools::IOUiFactory::singleton().createDeviceUi(type);
+    m_ioUi = IOUiFactory::singleton().createDeviceUi(type);
     if (m_ioUi) {
         loadControllerParameters();
         ui->verticalLayoutCommunicationController->addWidget(m_ioUi);
@@ -501,7 +521,7 @@ void IOPage::onCycleIntervalChanged()
 void IOPage::onInputFormatChanged()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    xTools::setupTextFormatValidator(ui->lineEditInput, format);
+    setupTextFormatValidator(ui->lineEditInput, format);
     ui->lineEditInput->clear();
 }
 
@@ -595,45 +615,45 @@ void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
 void IOPage::openCommunication()
 {
     int type = ui->comboBoxCommunicationTypes->currentData().toInt();
-    m_io = xTools::IOFactory::singleton().createDevice(type);
+    m_io = createDevice(type);
     if (m_io) {
         setUiEnabled(false);
 
         // clang-format off
-        connect(m_io, &xTools::Communication::opened, this, &IOPage::onOpened);
-        connect(m_io, &xTools::Communication::closed, this, &IOPage::onClosed);
-        connect(m_io, &xTools::Communication::bytesWritten, this, &IOPage::onBytesWritten);
-        connect(m_io, &xTools::Communication::bytesRead, this, &IOPage::onBytesRead);
-        connect(m_io, &xTools::Communication::errorOccurred, this, &IOPage::onErrorOccurred);
-        connect(m_io, &xTools::Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
-        connect(m_io, &xTools::Communication::outputBytes, m_responder, &xTools::Responder::inputBytes);
+        connect(m_io, &Communication::opened, this, &IOPage::onOpened);
+        connect(m_io, &Communication::closed, this, &IOPage::onClosed);
+        connect(m_io, &Communication::bytesWritten, this, &IOPage::onBytesWritten);
+        connect(m_io, &Communication::bytesRead, this, &IOPage::onBytesRead);
+        connect(m_io, &Communication::errorOccurred, this, &IOPage::onErrorOccurred);
+        connect(m_io, &Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
+        connect(m_io, &Communication::outputBytes, m_responder, &Responder::inputBytes);
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT
-        connect(m_io, &xTools::Communication::outputBytes, m_serialPortTransfer, &xTools::SerialPortTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_serialPortTransfer, &SerialPortTransfer::inputBytes);
 #endif
-        connect(m_io, &xTools::Communication::outputBytes, m_udpClientTransfer, &xTools::UdpClientTransfer::inputBytes);
-        connect(m_io, &xTools::Communication::outputBytes, m_udpServerTransfer, &xTools::UdpServerTransfer::inputBytes);
-        connect(m_io, &xTools::Communication::outputBytes, m_tcpClientTransfer, &xTools::TcpClientTransfer::inputBytes);
-        connect(m_io, &xTools::Communication::outputBytes, m_tcpServerTransfer, &xTools::TcpServerTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_udpClientTransfer, &UdpClientTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_udpServerTransfer, &UdpServerTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_tcpClientTransfer, &TcpClientTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_tcpServerTransfer, &TcpServerTransfer::inputBytes);
 #ifdef X_TOOLS_ENABLE_WEB_SOCKET
-        connect(m_io, &xTools::Communication::outputBytes, m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::inputBytes);
-        connect(m_io, &xTools::Communication::outputBytes, m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_webSocketClientTransfer, &WebSocketClientTransfer::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_webSocketServerTransfer, &WebSocketServerTransfer::inputBytes);
 #endif
 #ifdef X_TOOLS_ENABLE_CHARTS
-        connect(m_io, &xTools::Communication::outputBytes, m_charts, &xTools::Charts::inputBytes);
+        connect(m_io, &Communication::outputBytes, m_charts, &Charts::inputBytes);
 #endif
-        connect(m_preset, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
-        connect(m_emitter, &xTools::Preset::outputBytes, m_io, &xTools::Communication::inputBytes);
-        connect(m_responder, &xTools::Responder::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_preset, &Preset::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_emitter, &Preset::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_responder, &Responder::outputBytes, m_io, &Communication::inputBytes);
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT
-        connect(m_serialPortTransfer, &xTools::SerialPortTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_serialPortTransfer, &SerialPortTransfer::outputBytes, m_io, &Communication::inputBytes);
 #endif
-        connect(m_udpClientTransfer, &xTools::UdpClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
-        connect(m_udpServerTransfer, &xTools::UdpServerTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
-        connect(m_tcpClientTransfer, &xTools::TcpClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
-        connect(m_tcpServerTransfer, &xTools::TcpServerTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_udpServerTransfer, &UdpServerTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_tcpClientTransfer, &TcpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_tcpServerTransfer, &TcpServerTransfer::outputBytes, m_io, &Communication::inputBytes);
 #ifdef X_TOOLS_ENABLE_WEB_SOCKET
-        connect(m_webSocketClientTransfer, &xTools::WebSocketClientTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
-        connect(m_webSocketServerTransfer, &xTools::WebSocketServerTransfer::outputBytes, m_io, &xTools::Communication::inputBytes);
+        connect(m_webSocketClientTransfer, &WebSocketClientTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_webSocketServerTransfer, &WebSocketServerTransfer::outputBytes, m_io, &Communication::inputBytes);
 #endif
         // clang-format on
 
@@ -669,10 +689,10 @@ void IOPage::writeBytes()
     }
 
     auto parameters = m_inputSettings->parameters();
-    QByteArray prefix = xTools::cookedAffixes(parameters.prefix);
+    QByteArray prefix = cookedAffixes(parameters.prefix);
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xTools::cookedAffixes(parameters.suffix);
+    QByteArray suffix = cookedAffixes(parameters.suffix);
 
     QByteArray bytes;
     if (parameters.appendCrc) {
@@ -690,10 +710,10 @@ void IOPage::updateLabelInfo()
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
 
-    QByteArray prefix = xTools::cookedAffixes(parameters.prefix);
+    QByteArray prefix = cookedAffixes(parameters.prefix);
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = xTools::cookedAffixes(parameters.suffix);
+    QByteArray suffix = cookedAffixes(parameters.suffix);
 
     QString prefixString = QString::fromLatin1(prefix.toHex()).toUpper();
     QString payloadString = QString::fromLatin1(payload.toHex()).toUpper();
@@ -794,7 +814,7 @@ void IOPage::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     }
 
     QString dateTimeString = ::dateTimeString(showDate, showTime, showMs);
-    QString text = xTools::bytes2string(bytes, format);
+    QString text = bytes2string(bytes, format);
     QString rxTx = isRx ? QStringLiteral("Rx") : QStringLiteral("Tx");
     rxTx = QString("<font color=%1>%2</font>").arg(isRx ? "blue" : "green", rxTx);
 
@@ -843,20 +863,53 @@ QByteArray IOPage::payload() const
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     QString text = ui->lineEditInput->text();
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    text = xTools::cookedEscapeCharacter(text, parameters.escapeCharacter);
-    QByteArray payload = xTools::string2bytes(text, format);
+    text = cookedEscapeCharacter(text, parameters.escapeCharacter);
+    QByteArray payload = string2bytes(text, format);
     return payload;
 }
 
 QByteArray IOPage::crc(const QByteArray &payload) const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
-    xTools::CRC::Context ctx;
-    ctx.algorithm = static_cast<xTools::CRC::Algorithm>(parameters.algorithm);
+    CRC::Context ctx;
+    ctx.algorithm = static_cast<CRC::Algorithm>(parameters.algorithm);
     ctx.startIndex = parameters.startIndex;
     ctx.endIndex = parameters.endIndex;
     ctx.bigEndian = parameters.bigEndian;
     ctx.data = payload;
 
-    return xTools::CRC::calculate(ctx);
+    return CRC::calculate(ctx);
+}
+
+Communication *IOPage::createDevice(int type)
+{
+    switch (type) {
+#ifdef X_TOOLS_ENABLE_SERIAL_PORT
+    case static_cast<int>(CommunicationType::SerialPort):
+        return new SerialPort(QCoreApplication::instance());
+#endif
+#ifdef X_TOOLS_ENABLE_BLUETOOTH
+    case static_cast<int>(CommunicationType::BleCentral):
+        return new BleCentral(QCoreApplication::instance());
+#endif
+    case static_cast<int>(CommunicationType::UdpClient):
+        return new UdpClient(QCoreApplication::instance());
+    case static_cast<int>(CommunicationType::UdpServer):
+        return new UdpServer(QCoreApplication::instance());
+    case static_cast<int>(CommunicationType::TcpClient):
+        return new TcpClient(QCoreApplication::instance());
+    case static_cast<int>(CommunicationType::TcpServer):
+        return new TcpServer(QCoreApplication::instance());
+#ifdef X_TOOLS_ENABLE_WEB_SOCKET
+    case static_cast<int>(CommunicationType::WebSocketClient):
+        return new WebSocketClient(QCoreApplication::instance());
+    case static_cast<int>(CommunicationType::WebSocketServer):
+        return new WebSocketServer(QCoreApplication::instance());
+#endif
+    case static_cast<int>(CommunicationType::ChartsTest):
+        return new ChartsTest(QCoreApplication::instance());
+    default:
+        qWarning("Unknown device type:%d", type);
+        return nullptr;
+    }
 }

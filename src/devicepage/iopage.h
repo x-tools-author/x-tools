@@ -163,4 +163,5 @@ private:
 
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;
+    xTools::Communication *createDevice(int type);
 };
