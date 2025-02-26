@@ -226,6 +226,7 @@ endif()
 # Qt Charts module
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Charts)
 if(Qt${QT_VERSION_MAJOR}Charts_FOUND)
+  option(X_TOOLS_ENABLE_CHARTS "Enable Charts module" ON)
   add_compile_definitions(X_TOOLS_ENABLE_CHARTS)
 else()
   message(STATUS "Charts module is disable, chart files will be removed.")
