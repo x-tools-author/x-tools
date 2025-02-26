@@ -6,14 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "Responder.h"
+#include "responder.h"
 
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QTimer>
 #include <QVariant>
 
-#include "ResponderModel.h"
+#include "respondermodel.h"
 
 namespace xTools {
 

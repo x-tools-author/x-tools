@@ -10,7 +10,7 @@
 
 #include <QMutex>
 
-#include "AbstractModelIO.h"
+#include "IO/IO/Model/AbstractModelIO.h"
 
 namespace xTools {
 

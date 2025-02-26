@@ -451,7 +451,7 @@
   <customwidget>
    <class>xTools::ResponserUi</class>
    <extends>QWidget</extends>
-   <header location="global">IO/UI/Model/ResponserUi.h</header>
+   <header location="global">devicepage/responder/responserui.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

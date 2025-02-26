@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "AbstractModelUi.h"
+#include "IO/UI/Model/AbstractModelUi.h"
 
 namespace xTools {
 

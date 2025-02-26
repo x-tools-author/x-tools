@@ -16,7 +16,7 @@
 #include "IO/IO/IOFactory.h"
 #include "devicepage/emitter/emitter.h"
 #include "devicepage/preset/preset.h"
-#include "IO/IO/Model/Responder.h"
+#include "devicepage/responder/responder.h"
 #include "IO/IO/Processor/Statistician.h"
 #include "IO/UI/IOUiFactory.h"
 #include "IO/xIO.h"
