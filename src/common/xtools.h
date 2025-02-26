@@ -3,8 +3,8 @@
  *
  * The file is encoded in "utf8 with bom", it is a part of xTools project.
  *
- * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source code
- * directory.
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
+ * code directory.
  **************************************************************************************************/
 #pragma once
 
@@ -28,7 +28,7 @@
 #include "qss/qssmgr.h"
 #endif
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 enum class CommunicationType {
     SerialPort,
     BleCentral,
@@ -39,18 +39,18 @@ enum class CommunicationType {
     TcpServer,
     WebSocketClient,
     WebSocketServer,
-    //------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
     Hid = 0x00200000,
     SctpClient,
     SctpServer,
-    //------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
     ChartsTest = 0x00300000,
 };
 QList<int> supportedCommunicationTypes();
 QString communicationName(int type);
 void setupCommunicationTypes(QComboBox *comboBox);
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 enum class TextFormat { Bin, Oct, Dec, Hex, Ascii, Utf8 };
 QList<int> supportedTextFormats();
 QString textFormatName(TextFormat format);
@@ -60,26 +60,26 @@ QByteArray string2bytes(const QString &text, int format);
 QByteArray arrayAppendArray(const QByteArray &a1, const QByteArray &a2);
 void setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen = 32767);
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 enum class Affixes { None, R, N, RN, NR };
 QList<int> supportedAffixes();
 QString additionName(int affixes);
 void setupAddition(QComboBox *comboBox);
 QByteArray cookedAffixes(int affixes);
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 enum class EscapeCharacter { None, R, N, RN, NR, R_N };
 QList<int> supportedEscapeCharacters();
 QString escapeCharacterName(int character);
 void setupEscapeCharacter(QComboBox *comboBox);
 QString cookedEscapeCharacter(const QString &text, int escapeCharacter);
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 enum class WebSocketDataChannel { Text, Binary };
 QString webSocketDataChannelName(WebSocketDataChannel channel);
 void setupWebSocketDataChannel(QComboBox *comboBox);
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 enum class ResponseOption {
     Echo,   // Response data is the data received.
     Always, // Response automatically when data received.
@@ -92,13 +92,13 @@ QString responseOptionName(ResponseOption option);
 void setupResponseOption(QComboBox *comboBox);
 QByteArray responseData(const QByteArray &data, int option, const QByteArray &reference);
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 QString jsonValue2hexString(const QJsonValue &value);
 QJsonValue hexString2jsonValue(const QString &hexString);
 QString systemDateFormat();
 QString systemTimeFormat();
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 struct TextItem
 {
     TextFormat textFormat;
@@ -134,7 +134,7 @@ QByteArray textItem2array(const TextItem &context);
 TextItem loadTextItem(const QJsonObject &obj);
 QJsonObject saveTextItem(const TextItem &context);
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 struct SerialPortItem
 {
     QString portName;
@@ -165,7 +165,7 @@ void setupStopBits(QComboBox *comboBox);
 void setupFlowControl(QComboBox *comboBox);
 #endif
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 struct SocketItem
 {
     QString clientAddress;
@@ -202,13 +202,13 @@ SocketItem loadSocketItem(const QJsonObject &obj);
 void setupSocketAddress(QComboBox *cb);
 void setupSocketPort(QSpinBox *spinBox);
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 enum class TransferType { Disabled, Bidirectional, Unidirectional };
 QList<int> supportedTransferTypes();
 QString transferTypeName(int type);
 void setupTransferType(QComboBox *comboBox);
 
-/**********************************************************************************************/
+/**************************************************************************************************/
 enum class ChartsDataFormat { BinaryY, BinaryXY, TextY, TextXY };
 QList<int> supportedChartsDataFormats();
 QString chartsDataFormatName(int format);

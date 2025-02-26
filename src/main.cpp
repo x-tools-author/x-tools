@@ -7,7 +7,6 @@
  * code directory.
  **************************************************************************************************/
 #include "application.h"
-#include "common/xtools.h"
 #include "mainwindow.h"
 
 int main(const int argc, char *argv[])

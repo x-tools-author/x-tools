@@ -46,7 +46,7 @@ public:
     {
         QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
         QString path = QStandardPaths::writableLocation(type);
-        QString fileName = QString("%1/%2_v7.ini").arg(path, QCoreApplication::applicationName());
+        QString fileName = QString("%1/%2_v8.ini").arg(path, QCoreApplication::applicationName());
         m_settings = new QSettings(fileName, QSettings::IniFormat, parent);
 
         m_languageFlagNameMap.insert("zh_CN", "简体中文");
