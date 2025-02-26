@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "PresetUi.h"
+#include "presetui.h"
 
 #include <QFile>
 #include <QHeaderView>
@@ -18,8 +18,8 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
-#include "../../IO/Model/AbstractModelIO.h"
-#include "../../xIO.h"
+#include "IO/IO/Model/AbstractModelIO.h"
+#include "IO/xIO.h"
 #include "device/utilities/menu.h"
 
 namespace xTools {

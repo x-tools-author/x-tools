@@ -439,7 +439,7 @@
   <customwidget>
    <class>xTools::PresetUi</class>
    <extends>QWidget</extends>
-   <header location="global">IO/UI/Model/PresetUi.h</header>
+   <header location="global">devicepage/preset/presetui.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
