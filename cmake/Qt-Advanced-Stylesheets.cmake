@@ -56,7 +56,6 @@ function(x_tools_deploy_qss target)
   add_custom_command(
     TARGET ${target}
     POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
     COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${src_dir} ${dst_dir}
     COMMENT "Copy(auto) style resources for ${target}...")
 endfunction()
