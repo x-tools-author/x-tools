@@ -17,7 +17,6 @@
 #include "device/communication.h"
 #include "device/communicationui.h"
 #include "device/utilities/crc.h"
-#include "devicepage/common/iofactory.h"
 #include "devicepage/common/iouifactory.h"
 #include "devicepage/emitter/emitter.h"
 #include "devicepage/preset/preset.h"
