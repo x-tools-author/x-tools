@@ -980,23 +980,6 @@ void xTools::googleLogToQtLog(QtMsgType type, const QMessageLogContext &context,
     }
 }
 
-QString xTools::xToolsVersion()
-{
-    QString version = "0.0.0";
-#if defined(X_TOOLS_LATEST_GIT_TAG)
-    auto tag = QString(X_TOOLS_LATEST_GIT_TAG);
-    if (tag == QString("continuous")) {
-        version = "9.9.9";
-    } else {
-        tag = tag.remove("v");
-        if (tag.split('.').length() == 3) {
-            version = tag;
-        }
-    }
-#endif
-    return version;
-}
-
 QString xTools::xToolsLastCommit()
 {
 #if defined(X_TOOLS_GIT_COMMIT)

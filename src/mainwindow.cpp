@@ -11,6 +11,7 @@
 #include <QAction>
 #include <QClipboard>
 #include <QCloseEvent>
+#include <QCoreApplication>
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QImage>
@@ -751,7 +752,7 @@ void MainWindow::onAboutActionTriggered()
     buildDateTimeFormat += xTools.dtSystemTimeFormat();
     QString buildDateTimeString = xTools.dtBuildDateTimeString(buildDateTimeFormat);
     QString year = xTools.dtBuildDateTimeString("yyyy");
-    const QString version = xTools.xToolsVersion();
+    const QString version = qApp->applicationVersion();
     const QString name = qApp->applicationName();
     QString info;
     info += name + QString(" ") + version + " " + tr("(A Part of xTools Project)") + "\n\n";

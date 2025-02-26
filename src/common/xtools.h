@@ -241,7 +241,6 @@ public:
     void googleLogShutdown();
     void googleLogToQtLog(QtMsgType type, const QMessageLogContext &context, const QString &msg);
     // About git info
-    QString xToolsVersion();
     QString xToolsLastCommit();
     QString xToolsLastCommitTime();
 
