@@ -6,8 +6,8 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "ChartsUi.h"
-#include "ui_ChartsUi.h"
+#include "chartsui.h"
+#include "ui_chartsui.h"
 
 #include <QChartView>
 #include <QCheckBox>
@@ -27,8 +27,8 @@
 
 #include <xlsxdocument.h>
 
-#include "ChartsUiSettings.h"
-#include "IO/IO/DataVisualization/2D/Charts.h"
+#include "chartsuisettings.h"
+#include "charts.h"
 #include "common/xtools.h"
 
 namespace xTools {

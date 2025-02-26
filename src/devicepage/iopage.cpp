@@ -45,8 +45,8 @@
 #endif
 
 #ifdef X_TOOLS_ENABLE_MODULE_CHARTS
-#include "IO/IO/DataVisualization/2D/Charts.h"
-#include "IO/UI/DataVisualization/2D/ChartsUi.h"
+#include "devicepage/charts/charts.h"
+#include "devicepage/charts/chartsui.h"
 #endif
 
 #include "communicationsettings.h"
