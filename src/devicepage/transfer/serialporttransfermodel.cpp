@@ -11,8 +11,6 @@
 #include "common/xtools.h"
 #include "device/serialport.h"
 
-namespace xTools {
-
 SerialPortTransferModel::SerialPortTransferModel(QObject *parent)
     : AbstractTransferModel(parent)
 {}
@@ -232,5 +230,3 @@ bool SerialPortTransferModel::isEnableRestartingColumn(int column) const
 
     return true;
 }
-
-} // namespace xTools

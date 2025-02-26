@@ -10,8 +10,6 @@
 
 #include <QAbstractTableModel>
 
-namespace xTools {
-
 class Communication;
 
 class AbstractTransferModel : public QAbstractTableModel
@@ -50,5 +48,3 @@ protected:
                                const QModelIndex &bottomRight,
                                const QList<int> &roles = QList<int>());
 };
-
-} // namespace xTools

@@ -10,8 +10,6 @@
 
 #include "abstracttransfermodel.h"
 
-namespace xTools {
-
 class SerialPortTransferModel : public AbstractTransferModel
 {
     Q_OBJECT
@@ -29,5 +27,3 @@ protected:
     Communication *createTransfer() override;
     bool isEnableRestartingColumn(int column) const override;
 };
-
-} // namespace xTools

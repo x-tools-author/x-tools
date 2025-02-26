@@ -22,8 +22,6 @@
 #include "device/utilities/menu.h"
 #include "devicepage/common/abstractmodelio.h"
 
-namespace xTools {
-
 PresetUi::PresetUi(QWidget *parent)
     : AbstractModelUi(parent)
 {
@@ -80,5 +78,3 @@ void PresetUi::onDataChanged()
         m_menu->addAction(text, this, [=]() { didOutputBytes(i); });
     }
 }
-
-} // namespace xTools

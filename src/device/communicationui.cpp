@@ -10,8 +10,6 @@
 
 #include "device/communication.h"
 
-namespace xTools {
-
 CommunicationUi::CommunicationUi(CommunicationType type, QWidget *parent)
     : AbstractIOUi(parent)
     , m_type(type)
@@ -26,5 +24,3 @@ QList<QWidget *> CommunicationUi::communicationControllers()
 {
     return {};
 }
-
-} // namespace xTools

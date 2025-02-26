@@ -10,8 +10,6 @@
 
 #include "socketserverui.h"
 
-namespace xTools {
-
 class UdpServerUi : public SocketServerUi
 {
     Q_OBJECT
@@ -21,5 +19,3 @@ public:
 
     void setUiEnabled(bool enabled) override;
 };
-
-} // namespace xTools

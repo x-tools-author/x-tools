@@ -75,20 +75,20 @@ CrcAssistant::~CrcAssistant()
 void CrcAssistant::initParameterModel()
 {
     m_parameterComboBox->clear();
-    QList<int> algorithms = xTools::CRC::supportedAlgorithms();
+    QList<int> algorithms = CRC::supportedAlgorithms();
     for (auto algorithm : algorithms) {
-        auto cookedAlgorithm = static_cast<xTools::CRC::Algorithm>(algorithm);
-        QString name = xTools::CRC::algorithmName(cookedAlgorithm);
+        auto cookedAlgorithm = static_cast<CRC::Algorithm>(algorithm);
+        QString name = CRC::algorithmName(cookedAlgorithm);
         m_parameterComboBox->addItem(name, algorithm);
     }
 
     m_parameterComboBox->setCurrentIndex(0);
     int algorithm = m_parameterComboBox->currentData().toInt();
-    auto cookedAlgorithm = static_cast<xTools::CRC::Algorithm>(algorithm);
+    auto cookedAlgorithm = static_cast<CRC::Algorithm>(algorithm);
 
-    int bitsWidth = xTools::CRC::bitsWidth(static_cast<xTools::CRC::Algorithm>(algorithm));
+    int bitsWidth = CRC::bitsWidth(static_cast<CRC::Algorithm>(algorithm));
     m_widthComboBox->setCurrentIndex(m_widthComboBox->findText(QString::number(bitsWidth)));
-    m_labelPolyFormula->setText(xTools::CRC::algorithmName(cookedAlgorithm));
+    m_labelPolyFormula->setText(CRC::algorithmName(cookedAlgorithm));
 }
 
 void CrcAssistant::calculate()
@@ -114,7 +114,7 @@ void CrcAssistant::calculate()
     }
 
     int algorithm = m_parameterComboBox->currentData().toInt();
-    QByteArray result = xTools::CRC::calculate(inputArray, algorithm);
+    QByteArray result = CRC::calculate(inputArray, algorithm);
     QString crcHexString = QString::fromLatin1(result.toHex());
     QString crcBinString = QString::fromLatin1(result.toHex());
     m_hexCRCOutput->setText(crcHexString);
@@ -149,21 +149,21 @@ void CrcAssistant::changedParameterModel(int index)
     Q_UNUSED(index)
     int bitsWidth = m_widthComboBox->currentText().toInt();
     int algorithm = m_parameterComboBox->currentData().toInt();
-    auto cookedAlgorithm = static_cast<xTools::CRC::Algorithm>(algorithm);
+    auto cookedAlgorithm = static_cast<CRC::Algorithm>(algorithm);
 
     m_widthComboBox->setCurrentIndex(m_widthComboBox->findText(QString::number(bitsWidth)));
-    QString strTmp = QString::number(static_cast<int>(xTools::CRC::poly(cookedAlgorithm)), 16);
+    QString strTmp = QString::number(static_cast<int>(CRC::poly(cookedAlgorithm)), 16);
     m_polyLineEdit->setText(QString("0x%1").arg(strTmp, bitsWidth / 4, '0'));
 
-    strTmp = QString::number(static_cast<int>(xTools::CRC::initialValue(cookedAlgorithm)), 16);
+    strTmp = QString::number(static_cast<int>(CRC::initialValue(cookedAlgorithm)), 16);
     m_initLineEdit->setText(QString("0x%1").arg(strTmp, bitsWidth / 4, '0'));
 
-    strTmp = QString::number(static_cast<int>(xTools::CRC::xorValue(cookedAlgorithm)), 16);
+    strTmp = QString::number(static_cast<int>(CRC::xorValue(cookedAlgorithm)), 16);
     m_xorLineEdit->setText(QString("0x%1").arg(strTmp, bitsWidth / 4, '0'));
 
-    m_refinCheckBox->setChecked(xTools::CRC::isInputReversal(cookedAlgorithm));
-    m_refoutCheckBox->setChecked(xTools::CRC::isOutputReversal(cookedAlgorithm));
-    m_labelPolyFormula->setText(xTools::CRC::friendlyPoly(cookedAlgorithm));
+    m_refinCheckBox->setChecked(CRC::isInputReversal(cookedAlgorithm));
+    m_refoutCheckBox->setChecked(CRC::isOutputReversal(cookedAlgorithm));
+    m_labelPolyFormula->setText(CRC::friendlyPoly(cookedAlgorithm));
 }
 
 bool CrcAssistant::eventFilter(QObject* watched, QEvent* event)

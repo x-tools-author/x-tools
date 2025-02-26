@@ -304,7 +304,7 @@
           </widget>
          </item>
          <item>
-          <widget class="xTools::StatisticianUi" name="widgetRxInfo" native="true"/>
+          <widget class="StatisticianUi" name="widgetRxInfo" native="true"/>
          </item>
          <item>
           <widget class="Line" name="lineRxTx">
@@ -324,7 +324,7 @@
           </widget>
          </item>
          <item>
-          <widget class="xTools::StatisticianUi" name="widgetTxInfo" native="true"/>
+          <widget class="StatisticianUi" name="widgetTxInfo" native="true"/>
          </item>
         </layout>
        </item>
@@ -396,17 +396,17 @@
        </item>
       </layout>
      </widget>
-     <widget class="xTools::PresetUi" name="tabPresets">
+     <widget class="PresetUi" name="tabPresets">
       <attribute name="title">
        <string>Presets</string>
       </attribute>
      </widget>
-     <widget class="xTools::EmitterUi" name="tabEmitter">
+     <widget class="EmitterUi" name="tabEmitter">
       <attribute name="title">
        <string>Emitter</string>
       </attribute>
      </widget>
-     <widget class="xTools::ResponserUi" name="tabResponder">
+     <widget class="ResponserUi" name="tabResponder">
       <attribute name="title">
        <string>Responder</string>
       </attribute>
@@ -431,25 +431,25 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>xTools::StatisticianUi</class>
+   <class>StatisticianUi</class>
    <extends>QWidget</extends>
    <header location="global">devicepage/utilities/statisticianui.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>xTools::PresetUi</class>
+   <class>PresetUi</class>
    <extends>QWidget</extends>
    <header location="global">devicepage/preset/presetui.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>xTools::EmitterUi</class>
+   <class>EmitterUi</class>
    <extends>QWidget</extends>
    <header location="global">devicepage/emitter/emitterui.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>xTools::ResponserUi</class>
+   <class>ResponserUi</class>
    <extends>QWidget</extends>
    <header location="global">devicepage/responder/responserui.h</header>
    <container>1</container>

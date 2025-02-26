@@ -13,8 +13,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 class ResponderModel : public QAbstractTableModel
 {
     Q_OBJECT
@@ -44,5 +42,3 @@ private:
 private:
     QList<Item> m_items;
 };
-
-} // namespace xTools

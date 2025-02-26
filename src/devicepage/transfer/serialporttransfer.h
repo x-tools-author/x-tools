@@ -10,8 +10,6 @@
 
 #include "abstracttransfer.h"
 
-namespace xTools {
-
 class SerialPortTransferModel;
 class SerialPortTransfer : public AbstractTransfer
 {
@@ -29,5 +27,3 @@ public:
 private:
     SerialPortTransferModel *m_model;
 };
-
-} // namespace xTools

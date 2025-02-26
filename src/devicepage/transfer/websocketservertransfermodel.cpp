@@ -10,8 +10,6 @@
 
 #include "device/websocketserver.h"
 
-namespace xTools {
-
 WebSocketServerTransferModel::WebSocketServerTransferModel(QObject *parent)
     : SocketTransferModel(parent)
 {}
@@ -31,5 +29,3 @@ bool WebSocketServerTransferModel::isEnableRestartingColumn(int column) const
 
     return false;
 }
-
-} // namespace xTools

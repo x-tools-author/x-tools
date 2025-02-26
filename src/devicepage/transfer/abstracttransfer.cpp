@@ -10,8 +10,6 @@
 
 #include "abstracttransfermodel.h"
 
-namespace xTools {
-
 AbstractTransfer::AbstractTransfer(QObject *parent)
     : AbstractModelIO{parent}
 {
@@ -56,5 +54,3 @@ void AbstractTransfer::onFinished()
         }
     }
 }
-
-} // namespace xTools

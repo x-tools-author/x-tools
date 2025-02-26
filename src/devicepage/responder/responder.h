@@ -12,8 +12,6 @@
 
 #include "devicepage/common/abstractmodelio.h"
 
-namespace xTools {
-
 class ResponderModel;
 class Responder : public AbstractModelIO
 {
@@ -32,5 +30,3 @@ protected:
 private:
     ResponderModel *m_tableModel{nullptr};
 };
-
-} // namespace xTools

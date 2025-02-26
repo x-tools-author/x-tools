@@ -12,8 +12,6 @@
 
 #include "hidstyleditemdelegate.h"
 
-namespace xTools {
-
 HidTransferUi::HidTransferUi(QWidget *parent)
     : AbstractTransferUi{parent}
 {
@@ -28,5 +26,3 @@ QStyledItemDelegate *HidTransferUi::createItemDelegate() const
 {
     return new HidStyledItemDelegate();
 }
-
-} // namespace xTools

@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "presetmodel.h"
 
-namespace xTools {
-
 PresetModel::PresetModel(QObject *parent)
     : QAbstractTableModel{parent}
 {}
@@ -133,5 +131,3 @@ Qt::ItemFlags PresetModel::flags(const QModelIndex &index) const
         return QAbstractTableModel::flags(index);
     }
 }
-
-} // namespace xTools

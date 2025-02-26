@@ -10,8 +10,6 @@
 
 #include <QTimer>
 
-namespace xTools {
-
 Statistician::Statistician(QObject *parent)
     : AbstractIO{parent}
 {
@@ -77,5 +75,3 @@ void Statistician::updateSpeed()
     m_tempBytes.clear();
     emit speedChanged();
 }
-
-} // namespace xTools

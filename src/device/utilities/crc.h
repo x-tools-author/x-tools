@@ -14,8 +14,6 @@
 #include <QObject>
 #include <QString>
 
-namespace xTools {
-
 class CRC : public QObject
 {
     Q_OBJECT
@@ -63,5 +61,3 @@ public:
     };
     static QByteArray calculate(const Context &ctx);
 };
-
-} // namespace xTools

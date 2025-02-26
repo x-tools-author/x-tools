@@ -12,8 +12,6 @@
 
 #include "socketclient.h"
 
-namespace xTools {
-
 class UdpClient : public SocketClient
 {
     Q_OBJECT
@@ -32,5 +30,3 @@ private:
     void readPendingDatagrams();
     void writeDatagram(const QByteArray &bytes, const QString &ip, quint16 port);
 };
-
-} // namespace xTools

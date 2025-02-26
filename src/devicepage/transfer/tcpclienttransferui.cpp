@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "tcpclienttransferui.h"
 
-namespace xTools {
-
 TcpClientTransferUi::TcpClientTransferUi(QWidget *parent)
     : SocketTransferUi{parent}
 {
@@ -32,5 +30,3 @@ void TcpClientTransferUi::setupIO(AbstractIO *io)
     tv->hideColumn(7);
     tv->hideColumn(8);
 }
-
-} // namespace xTools

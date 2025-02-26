@@ -10,8 +10,6 @@
 
 #include "device/udpserver.h"
 
-namespace xTools {
-
 UdpServerTransferModel::UdpServerTransferModel(QObject *parent)
     : SocketTransferModel(parent)
 {}
@@ -31,5 +29,3 @@ bool UdpServerTransferModel::isEnableRestartingColumn(int column) const
 
     return false;
 }
-
-} // namespace xTools

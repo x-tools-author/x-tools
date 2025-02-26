@@ -15,8 +15,6 @@
 
 #include "respondermodel.h"
 
-namespace xTools {
-
 Responder::Responder(QObject *parent)
     : AbstractModelIO{parent}
     , m_tableModel{new ResponderModel(this)}
@@ -148,5 +146,3 @@ void Responder::run()
 {
     exec();
 }
-
-} // namespace xTools

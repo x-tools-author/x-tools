@@ -8,12 +8,8 @@
  **************************************************************************************************/
 #include "abstracttransferui.h"
 
-namespace xTools {
-
 AbstractTransferUi::AbstractTransferUi(QWidget *parent)
     : AbstractModelUi{parent}
 {}
 
 AbstractTransferUi::~AbstractTransferUi() {}
-
-} // namespace xTools

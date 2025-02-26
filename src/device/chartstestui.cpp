@@ -11,8 +11,6 @@
 
 #include "device/chartstest.h"
 
-namespace xTools {
-
 ChartsTestUi::ChartsTestUi(QWidget *parent)
     : CommunicationUi(CommunicationType::SerialPort, parent)
     , ui(new Ui::ChartsTestUi)
@@ -42,5 +40,3 @@ void ChartsTestUi::load(const QVariantMap &map)
     ui->comboBoxFormat->setCurrentIndex(index < 0 ? 0 : index);
     ui->spinBoxChannels->setValue(map.value(keys.channels).toInt());
 }
-
-} // namespace xTools

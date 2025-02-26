@@ -12,8 +12,6 @@
 #include <QSerialPortInfo>
 #include <QTimer>
 
-namespace xTools {
-
 SerialPortScanner::SerialPortScanner(QObject *parent)
     : QThread{parent}
 {
@@ -146,5 +144,3 @@ void SerialPortScanner::setIsBusy(bool busy)
     m_isBusy.store(busy);
     emit isBusyChanged();
 }
-
-} // namespace xTools

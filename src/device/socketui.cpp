@@ -12,8 +12,6 @@
 #include "common/xtools.h"
 #include "device/socket.h"
 
-namespace xTools {
-
 SocketUi::SocketUi(CommunicationType type, QWidget *parent)
     : CommunicationUi(type, parent)
     , ui(new Ui::SocketUi)
@@ -202,4 +200,3 @@ void SocketUi::setupClients(const QStringList &clients)
         ui->comboBoxWriteTo->setCurrentIndex(index);
     }
 }
-} // namespace xTools

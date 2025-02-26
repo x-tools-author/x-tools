@@ -10,8 +10,6 @@
 
 #include "devicepage/common/abstractmodelio.h"
 
-namespace xTools {
-
 class AbstractTransfer : public AbstractModelIO
 {
     Q_OBJECT
@@ -25,5 +23,3 @@ private:
     void onStarted();
     void onFinished();
 };
-
-} // namespace xTools

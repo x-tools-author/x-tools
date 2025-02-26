@@ -12,8 +12,6 @@
 
 class AbstractIO;
 
-namespace xTools {
-
 class EmitterUi : public AbstractModelUi
 {
     Q_OBJECT
@@ -24,5 +22,3 @@ public:
 protected:
     QList<int> textItemColumns() const override;
 };
-
-} // namespace xTools

@@ -21,8 +21,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 class ResponserItemDelefate : public QStyledItemDelegate
 {
 public:
@@ -104,5 +102,3 @@ QList<int> ResponserUi::textItemColumns() const
 {
     return QList<int>{4, 5};
 }
-
-} // namespace xTools

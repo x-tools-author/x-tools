@@ -27,8 +27,8 @@ StringAssistant::StringAssistant(QWidget* parent)
             this,
             &StringAssistant::updateOutputString);
 
-    xTools::setupTextFormat(ui->outputFormatComboBox);
-    xTools::setupTextFormat(ui->inputFormatComboBox);
+    setupTextFormat(ui->outputFormatComboBox);
+    setupTextFormat(ui->inputFormatComboBox);
 }
 
 StringAssistant::~StringAssistant()
@@ -40,8 +40,8 @@ void StringAssistant::updateOutputString()
 {
     QString inputString = ui->textEdit->toPlainText();
     auto inputFormat = ui->inputFormatComboBox->currentData().toInt();
-    QByteArray inputArray = xTools::string2bytes(inputString, inputFormat);
+    QByteArray inputArray = string2bytes(inputString, inputFormat);
     auto outputFormat = ui->outputFormatComboBox->currentData().toInt();
-    auto outputString = xTools::bytes2string(inputArray, outputFormat);
+    auto outputString = bytes2string(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);
 }

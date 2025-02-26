@@ -15,8 +15,6 @@
 
 #include "emittermodel.h"
 
-namespace xTools {
-
 Emitter::Emitter(QObject *parent)
     : AbstractModelIO{parent}
     , m_tableModel{new EmitterModel(this)}
@@ -117,5 +115,3 @@ void Emitter::try2Emit()
         }
     }
 }
-
-} // namespace xTools

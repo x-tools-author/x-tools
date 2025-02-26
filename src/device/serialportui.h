@@ -16,8 +16,6 @@ class SerialPortUi;
 }
 QT_END_NAMESPACE
 
-namespace xTools {
-
 class SerialPortUi : public CommunicationUi
 {
     Q_OBJECT
@@ -33,5 +31,3 @@ private:
 private:
     void refresh();
 };
-
-} // namespace xTools

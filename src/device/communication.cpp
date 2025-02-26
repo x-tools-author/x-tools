@@ -10,8 +10,6 @@
 
 #include <QDebug>
 
-namespace xTools {
-
 Communication::Communication(QObject *parent)
     : AbstractIO(parent)
 {
@@ -84,5 +82,3 @@ void Communication::run()
     deinitDevice();
     emit closed();
 }
-
-} // namespace xTools

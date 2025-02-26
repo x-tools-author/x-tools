@@ -17,8 +17,6 @@ namespace Ui {
 class ChartsUiSettings;
 }
 
-namespace xTools {
-
 class ChartsUiSettings : public QWidget
 {
     Q_OBJECT
@@ -70,5 +68,3 @@ private:
 
     QString seriesTypeToString(int type) const;
 };
-
-} // namespace xTools

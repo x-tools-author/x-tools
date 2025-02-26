@@ -12,8 +12,6 @@
 
 #include "devicepage/common/abstractio.h"
 
-namespace xTools {
-
 class AbstractModelIO : public AbstractIO
 {
     Q_OBJECT
@@ -24,5 +22,3 @@ public:
     virtual QVariantMap saveItem(const int row) const = 0;
     virtual void loadItem(const int row, const QVariantMap &item) = 0;
 };
-
-} // namespace xTools

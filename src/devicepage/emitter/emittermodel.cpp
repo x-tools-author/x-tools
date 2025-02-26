@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "emittermodel.h"
 
-namespace xTools {
-
 EmitterModel::EmitterModel(QObject *parent)
     : QAbstractTableModel{parent}
 {}
@@ -181,5 +179,3 @@ void EmitterModel::resetElapsedTime(const int row)
         m_items[row].elapsedTime = 0;
     }
 }
-
-} // namespace xTools

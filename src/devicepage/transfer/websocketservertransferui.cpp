@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "websocketservertransferui.h"
 
-namespace xTools {
-
 WebSocketServerTransferUi::WebSocketServerTransferUi(QWidget *parent)
     : SocketTransferUi{parent}
 {
@@ -31,5 +29,3 @@ void WebSocketServerTransferUi::setupIO(AbstractIO *io)
         tv->hideColumn(i);
     }
 }
-
-} // namespace xTools

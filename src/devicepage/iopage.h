@@ -23,8 +23,6 @@ class IOPage;
 }
 QT_END_NAMESPACE
 
-QT_BEGIN_NAMESPACE
-namespace xTools {
 class Preset;
 class Emitter;
 class Responder;
@@ -50,20 +48,16 @@ class WebSocketServerTransferUi;
 class Charts;
 class ChartsUi;
 #endif
-} // namespace xTools
-QT_END_NAMESPACE
 
 class InputSettings;
 class OutputSettings;
 class SyntaxHighlighter;
 class CommunicationSettings;
 
-namespace xTools {
 class AbstractIO;
 class Statistician;
 class Communication;
 class CommunicationUi;
-} // namespace xTools
 
 class IOPage : public QWidget
 {
@@ -89,43 +83,43 @@ signals:
 
 private:
     Ui::IOPage *ui;
-    xTools::Communication *m_io;
-    xTools::CommunicationUi *m_ioUi;
+    Communication *m_io;
+    CommunicationUi *m_ioUi;
     CommunicationSettings *m_ioSettings;
     OutputSettings *m_outputSettings;
     InputSettings *m_inputSettings;
     QTimer *m_writeTimer;
     QTimer *m_updateLabelInfoTimer;
     SyntaxHighlighter *m_highlighter;
-    xTools::Statistician *m_rxStatistician;
-    xTools::Statistician *m_txStatistician;
-    xTools::Preset *m_preset;
-    xTools::Emitter *m_emitter;
-    xTools::Responder *m_responder;
+    Statistician *m_rxStatistician;
+    Statistician *m_txStatistician;
+    Preset *m_preset;
+    Emitter *m_emitter;
+    Responder *m_responder;
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT
-    xTools::SerialPortTransfer *m_serialPortTransfer;
-    xTools::SerialPortTransferUi *m_serialPortTransferUi;
+    SerialPortTransfer *m_serialPortTransfer;
+    SerialPortTransferUi *m_serialPortTransferUi;
 #endif
-    xTools::UdpClientTransfer *m_udpClientTransfer;
-    xTools::UdpClientTransferUi *m_udpClientTransferUi;
-    xTools::UdpServerTransfer *m_udpServerTransfer;
-    xTools::UdpServerTransferUi *m_udpServerTransferUi;
-    xTools::TcpClientTransfer *m_tcpClientTransfer;
-    xTools::TcpClientTransferUi *m_tcpClientTransferUi;
-    xTools::TcpServerTransfer *m_tcpServerTransfer;
-    xTools::TcpServerTransferUi *m_tcpServerTransferUi;
+    UdpClientTransfer *m_udpClientTransfer;
+    UdpClientTransferUi *m_udpClientTransferUi;
+    UdpServerTransfer *m_udpServerTransfer;
+    UdpServerTransferUi *m_udpServerTransferUi;
+    TcpClientTransfer *m_tcpClientTransfer;
+    TcpClientTransferUi *m_tcpClientTransferUi;
+    TcpServerTransfer *m_tcpServerTransfer;
+    TcpServerTransferUi *m_tcpServerTransferUi;
 #ifdef X_TOOLS_ENABLE_WEB_SOCKET
-    xTools::WebSocketClientTransfer *m_webSocketClientTransfer;
-    xTools::WebSocketClientTransferUi *m_webSocketClientTransferUi;
-    xTools::WebSocketServerTransfer *m_webSocketServerTransfer;
-    xTools::WebSocketServerTransferUi *m_webSocketServerTransferUi;
+    WebSocketClientTransfer *m_webSocketClientTransfer;
+    WebSocketClientTransferUi *m_webSocketClientTransferUi;
+    WebSocketServerTransfer *m_webSocketServerTransfer;
+    WebSocketServerTransferUi *m_webSocketServerTransferUi;
 #endif
 #ifdef X_TOOLS_ENABLE_CHARTS
-    xTools::Charts *m_charts;
-    xTools::ChartsUi *m_chartsUi;
+    Charts *m_charts;
+    ChartsUi *m_chartsUi;
 #endif
     QButtonGroup m_pageButtonGroup;
-    QList<xTools::AbstractIO *> m_ioList;
+    QList<AbstractIO *> m_ioList;
     QSettings *m_settings;
 
 private:
@@ -163,5 +157,5 @@ private:
 
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;
-    xTools::Communication *createDevice(int type);
+    Communication *createDevice(int type);
 };

@@ -11,8 +11,6 @@
 #include "common/xtools.h"
 #include "serialporttransfermodel.h"
 
-namespace xTools {
-
 SerialPortTransfer::SerialPortTransfer(QObject *parent)
     : AbstractTransfer{parent}
     , m_model{new SerialPortTransferModel{this}}
@@ -76,5 +74,3 @@ void SerialPortTransfer::loadItem(const int row, const QVariantMap &item)
     m_model->setData(m_model->index(row, 6), serialPortItem.flowControl, Qt::EditRole);
     m_model->setData(m_model->index(row, 7), description, Qt::EditRole);
 }
-
-} // namespace xTools

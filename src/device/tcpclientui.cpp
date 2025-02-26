@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "tcpclientui.h"
 
-namespace xTools {
-
 TcpClientUi::TcpClientUi(QWidget *parent)
     : SocketClientUi(CommunicationType::TcpClient, parent)
 {
@@ -26,5 +24,3 @@ void TcpClientUi::setUiEnabled(bool enabled)
 {
     setServerWidgetsEnabled(enabled);
 }
-
-} // namespace xTools

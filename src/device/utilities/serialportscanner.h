@@ -13,8 +13,6 @@
 #include <QMutex>
 #include <QThread>
 
-namespace xTools {
-
 class SerialPortScanner : public QThread
 {
     Q_OBJECT
@@ -62,5 +60,3 @@ private:
     void setIsBusy(bool busy);
     Q_SIGNAL void isBusyChanged();
 };
-
-} // namespace xTools

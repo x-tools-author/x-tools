@@ -10,8 +10,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 class CommunicationUi;
 class IOUiFactory
 {
@@ -24,5 +22,3 @@ public:
     static IOUiFactory &singleton();
     CommunicationUi *createDeviceUi(int type);
 };
-
-} // namespace xTools

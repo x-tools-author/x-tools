@@ -12,8 +12,6 @@
 
 #include "devicepage/common/abstractio.h"
 
-namespace xTools {
-
 class Statistician : public AbstractIO
 {
     Q_OBJECT
@@ -51,5 +49,3 @@ private:
 private:
     void updateSpeed();
 };
-
-} // namespace xTools

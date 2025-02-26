@@ -10,8 +10,6 @@
 
 #include "device/tcpserver.h"
 
-namespace xTools {
-
 TcpServerTransferModel::TcpServerTransferModel(QObject *parent)
     : SocketTransferModel(parent)
 {}
@@ -31,5 +29,3 @@ bool TcpServerTransferModel::isEnableRestartingColumn(int column) const
 
     return false;
 }
-
-} // namespace xTools

@@ -20,8 +20,6 @@
 #include "abstractmodelio.h"
 #include "device/utilities/textitemeditor.h"
 
-namespace xTools {
-
 AbstractModelUi::AbstractModelUi(QWidget *parent)
     : AbstractIOUi{parent}
     , ui(new Ui::AbstractModelUi)
@@ -243,5 +241,3 @@ void AbstractModelUi::onCellDoubleClicked(const QModelIndex &index)
         m_model->setData(index, parameters, Qt::EditRole);
     }
 }
-
-} // namespace xTools

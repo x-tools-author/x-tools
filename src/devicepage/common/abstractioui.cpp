@@ -10,8 +10,6 @@
 
 #include "device/communication.h"
 
-namespace xTools {
-
 AbstractIOUi::AbstractIOUi(QWidget *parent)
     : QWidget(parent)
 {}
@@ -29,5 +27,3 @@ void AbstractIOUi::setUiEnabled(bool enabled)
 {
     setEnabled(enabled);
 }
-
-} // namespace xTools

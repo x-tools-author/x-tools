@@ -24,8 +24,6 @@ namespace Ui {
 class AbstractModelUi;
 }
 
-namespace xTools {
-
 class TextItemEditor;
 class AbstractModelIO;
 class AbstractModelUi : public AbstractIOUi
@@ -66,5 +64,3 @@ private:
 
     void onCellDoubleClicked(const QModelIndex &index);
 };
-
-} // namespace xTools

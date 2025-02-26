@@ -14,8 +14,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 SerialPortStyledItemDelegate::SerialPortStyledItemDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {}
@@ -95,5 +93,3 @@ void SerialPortStyledItemDelegate::setModelData(QWidget *editor,
         model->setData(index, cb->currentData());
     }
 }
-
-} // namespace xTools

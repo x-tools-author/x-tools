@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "websocketserverui.h"
 
-namespace xTools {
-
 WebSocketServerUi::WebSocketServerUi(QWidget *parent)
     : SocketServerUi(CommunicationType::WebSocketServer, parent)
 {
@@ -24,5 +22,3 @@ void WebSocketServerUi::setUiEnabled(bool enabled)
 {
     setServerWidgetsEnabled(enabled);
 }
-
-} // namespace xTools

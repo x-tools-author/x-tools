@@ -10,8 +10,6 @@
 
 #include "sockettransfer.h"
 
-namespace xTools {
-
 class UdpServerTransferModel;
 class UdpServerTransfer : public SocketTransfer
 {
@@ -25,5 +23,3 @@ public:
 protected:
     UdpServerTransferModel *m_model;
 };
-
-} // namespace xTools

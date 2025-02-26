@@ -10,8 +10,6 @@
 
 #include <QStandardItem>
 
-namespace xTools {
-
 ResponderModel::ResponderModel(QObject *parent)
     : QAbstractTableModel{parent}
 {}
@@ -184,5 +182,3 @@ Qt::ItemFlags ResponderModel::flags(const QModelIndex &index) const
         return QAbstractTableModel::flags(index);
     }
 }
-
-} // namespace xTools

@@ -10,8 +10,6 @@
 
 #include "socketstyleditemdelegate.h"
 
-namespace xTools {
-
 SocketTransferUi::SocketTransferUi(QWidget *parent)
     : AbstractTransferUi(parent)
 {}
@@ -22,5 +20,3 @@ QStyledItemDelegate *SocketTransferUi::createItemDelegate() const
 {
     return new SocketStyledItemDelegate();
 }
-
-} // namespace xTools

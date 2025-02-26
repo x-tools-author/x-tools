@@ -51,7 +51,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     updateWindowTitle();
 
-    xTools::xTools& xTools = xTools::xTools::singleton();
+    xTools& xTools = xTools::singleton();
     m_ioPage00 = new IOPage(IOPage::Left, xTools.settings(), this);
     m_ioPage01 = new IOPage(IOPage::Right, xTools.settings(), this);
     m_ioPage10 = new IOPage(IOPage::Left, xTools.settings(), this);
@@ -143,7 +143,7 @@ QIcon MainWindow::cookedIcon(const QIcon& icon)
 
 void MainWindow::updateWindowTitle()
 {
-    xTools::xTools& xTools = xTools::xTools::singleton();
+    xTools& xTools = xTools::singleton();
     QString title = xTools.appFriendlyName();
     title += " v";
     title += QApplication::applicationVersion();
@@ -566,7 +566,7 @@ void MainWindow::initMenuLanguage()
     m_languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(m_languageMenu);
 
-    xTools::xTools& xTools = xTools::xTools::singleton();
+    xTools& xTools = xTools::singleton();
     QStringList languages = xTools.languageSupportedLanguages();
     QString settingLanguage = xTools.settingsLanguage();
     for (auto& language : languages) {
@@ -611,7 +611,7 @@ void MainWindow::initMenuHelp()
 
 void MainWindow::initOptionMenuAppStyleMenu()
 {
-    xTools::xTools& xTools = xTools::xTools::singleton();
+    xTools& xTools = xTools::singleton();
     m_appStyleMenu = new QMenu(tr("Application Style"), this);
     m_optionMenu->addMenu(m_appStyleMenu);
     QStringList keys = QStyleFactory::keys();
@@ -647,7 +647,7 @@ void MainWindow::initOptionMenuSettingsMenu()
     auto clearAction = new QAction(tr("Clear Settings"), this);
     menu->addAction(clearAction);
     connect(clearAction, &QAction::triggered, this, [=]() {
-        xTools::xTools& xTools = xTools::xTools::singleton();
+        xTools& xTools = xTools::singleton();
         xTools.settingsSetClearSettings(true);
         tryToReboot();
     });
@@ -655,7 +655,7 @@ void MainWindow::initOptionMenuSettingsMenu()
     auto openAction = new QAction(tr("Open Settings Directory"), this);
     menu->addAction(openAction);
     connect(openAction, &QAction::triggered, this, [=]() {
-        xTools::xTools& xTools = xTools::xTools::singleton();
+        xTools& xTools = xTools::singleton();
         QDesktopServices::openUrl(xTools.settingsPath());
     });
 }
@@ -664,7 +664,7 @@ void MainWindow::initOptionMenuHdpiPolicy()
 {
     QMenu* menu = new QMenu(tr("HDPI Policy"));
     QActionGroup* actionGroup = new QActionGroup(this);
-    xTools::xTools& xTools = xTools::xTools::singleton();
+    xTools& xTools = xTools::singleton();
     int currentPolicy = xTools.settingsHdpiPolicy();
     auto supportedPolicies = xTools.hdpiSupportedPolicies();
     for (auto& policy : supportedPolicies) {
@@ -703,7 +703,7 @@ void MainWindow::initOptionMenuColorScheme()
     m_optionMenu->addMenu(m_colorSchemeMenu);
 
     connect(&actionGroup, &QActionGroup::triggered, this, [=](QAction* action) {
-        xTools::xTools& xTools = xTools::xTools::singleton();
+        xTools& xTools = xTools::singleton();
         if (action == dark) {
             xTools.settingsSetColorScheme(static_cast<int>(Qt::ColorScheme::Dark));
         } else if (action == light) {
@@ -717,7 +717,7 @@ void MainWindow::initOptionMenuColorScheme()
         styleHints->setColorScheme(static_cast<Qt::ColorScheme>(currentScheme));
     });
 
-    xTools::xTools& xTools = xTools::xTools::singleton();
+    xTools& xTools = xTools::singleton();
     auto currentScheme = xTools.settingsColorScheme();
     switch (currentScheme) {
     case static_cast<int>(Qt::ColorScheme::Dark):
@@ -738,14 +738,14 @@ void MainWindow::initOptionMenuColorScheme()
 
 void MainWindow::onHdpiPolicyActionTriggered(int policy)
 {
-    xTools::xTools& xTools = xTools::xTools::singleton();
+    xTools& xTools = xTools::singleton();
     xTools.settingsSetHdpiPolicy(int(policy));
     tryToReboot();
 }
 
 void MainWindow::onAboutActionTriggered()
 {
-    xTools::xTools& xTools = xTools::xTools::singleton();
+    xTools& xTools = xTools::singleton();
     QString buildDateTimeFormat = xTools.dtSystemDateFormat();
     buildDateTimeFormat += " ";
     buildDateTimeFormat += xTools.dtSystemTimeFormat();

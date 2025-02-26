@@ -14,8 +14,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 SerialPortUi::SerialPortUi(QWidget *parent)
     : CommunicationUi(CommunicationType::SerialPort, parent)
     , ui(new Ui::SerialPortUi)
@@ -73,5 +71,3 @@ void SerialPortUi::refresh()
 {
     setupPortName(ui->comboBoxPortName);
 }
-
-} // namespace xTools

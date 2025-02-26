@@ -13,8 +13,6 @@
 #include "common/xtools.h"
 #include "devicepage/common/abstractmodelio.h"
 
-namespace xTools {
-
 class PresetModel;
 class Preset : public AbstractModelIO
 {
@@ -46,5 +44,3 @@ private:
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     bool insertRows(int row, int count, const QModelIndex &parent);
 };
-
-} // namespace xTools

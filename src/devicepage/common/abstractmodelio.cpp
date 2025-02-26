@@ -12,12 +12,6 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
-namespace xTools {
-
 AbstractModelIO::AbstractModelIO(QObject *parent)
     : AbstractIO{parent}
-{
-
-}
-
-} // namespace xTools
+{}

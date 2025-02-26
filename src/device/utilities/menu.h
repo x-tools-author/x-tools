@@ -10,8 +10,6 @@
 
 #include <QMenu>
 
-namespace xTools {
-
 class Menu : public QMenu
 {
 public:
@@ -21,5 +19,3 @@ public:
 protected:
     virtual void mouseReleaseEvent(QMouseEvent *e) override;
 };
-
-} // namespace xTools

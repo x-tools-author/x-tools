@@ -19,8 +19,6 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
-namespace xTools {
-
 EmitterUi::EmitterUi(QWidget *parent)
     : AbstractModelUi(parent)
 {
@@ -35,5 +33,3 @@ QList<int> EmitterUi::textItemColumns() const
 {
     return QList<int>{3};
 }
-
-} // namespace xTools

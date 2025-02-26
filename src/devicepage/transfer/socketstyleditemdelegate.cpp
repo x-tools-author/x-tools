@@ -15,8 +15,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 SocketStyledItemDelegate::SocketStyledItemDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {}
@@ -114,5 +112,3 @@ void SocketStyledItemDelegate::setModelData(QWidget *editor,
         model->setData(index, le->text(), Qt::EditRole);
     }
 }
-
-} // namespace xTools

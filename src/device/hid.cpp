@@ -13,8 +13,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 Hid::Hid(QObject *parent)
     : Communication(parent)
 {}
@@ -146,5 +144,3 @@ void Hid::calculateInterFrameDelay()
     }
     m_interFrameDelayMilliseconds = qMax(m_interFrameDelayMilliseconds, delayMilliSeconds);
 }
-
-} // namespace xTools

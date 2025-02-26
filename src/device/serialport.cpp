@@ -13,8 +13,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 SerialPort::SerialPort(QObject *parent)
     : Communication(parent)
 {}
@@ -150,5 +148,3 @@ void SerialPort::calculateInterFrameDelay()
     }
     m_interFrameDelayMilliseconds = qMax(m_interFrameDelayMilliseconds, delayMilliSeconds);
 }
-
-} // namespace xTools

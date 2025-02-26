@@ -10,8 +10,6 @@
 
 #include "abstracttransfer.h"
 
-namespace xTools {
-
 class HidTransferModel;
 class HidTransfer : public AbstractTransfer
 {
@@ -29,5 +27,3 @@ public:
 private:
     HidTransferModel *m_model;
 };
-
-} // namespace xTools

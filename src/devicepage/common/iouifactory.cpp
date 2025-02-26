@@ -27,8 +27,6 @@
 #endif
 #include "device/chartstestui.h"
 
-namespace xTools {
-
 IOUiFactory::IOUiFactory() {}
 
 IOUiFactory &IOUiFactory::singleton()
@@ -68,5 +66,3 @@ CommunicationUi *IOUiFactory::createDeviceUi(int type)
         return nullptr;
     }
 }
-
-} // namespace xTools

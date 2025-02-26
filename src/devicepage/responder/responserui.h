@@ -10,8 +10,6 @@
 
 #include "devicepage/common/abstractmodelui.h"
 
-namespace xTools {
-
 class AbstractIO;
 class ResponserUi : public AbstractModelUi
 {
@@ -25,5 +23,3 @@ public:
 protected:
     QList<int> textItemColumns() const override;
 };
-
-} // namespace xTools

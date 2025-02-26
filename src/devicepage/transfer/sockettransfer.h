@@ -10,8 +10,6 @@
 
 #include "abstracttransfer.h"
 
-namespace xTools {
-
 class SocketTransfer : public AbstractTransfer
 {
 public:
@@ -21,5 +19,3 @@ public:
     QVariantMap saveItem(const int row) const override;
     void loadItem(const int row, const QVariantMap &item) override;
 };
-
-} // namespace xTools

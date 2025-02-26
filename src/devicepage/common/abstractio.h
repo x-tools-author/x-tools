@@ -14,8 +14,6 @@
 #include <QThread>
 #include <QVariantMap>
 
-namespace xTools {
-
 class AbstractIO : public QThread
 {
     Q_OBJECT
@@ -48,5 +46,3 @@ private:
     QVariantMap m_parameters;
     mutable QMutex m_parametersMutex;
 };
-
-} // namespace xTools

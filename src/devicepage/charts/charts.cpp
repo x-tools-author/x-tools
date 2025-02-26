@@ -11,8 +11,6 @@
 #include <QPointF>
 #include <QTimer>
 
-namespace xTools {
-
 Charts::Charts(QObject *parent)
     : AbstractIO(parent)
     , m_binaryTail(QByteArray::fromHex("0000807f"))
@@ -231,5 +229,3 @@ void Charts::handleTextXY(QByteArray &bytes)
         emit newPoints(points);
     }
 }
-
-} // namespace xTools

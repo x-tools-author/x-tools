@@ -15,8 +15,6 @@
 
 #include "presetmodel.h"
 
-namespace xTools {
-
 Preset::Preset(QObject *parent)
     : AbstractModelIO{parent}
     , m_tableModel{new PresetModel{this}}
@@ -160,5 +158,3 @@ QVariant Preset::headerData(int section, Qt::Orientation orientation, int role) 
 
     return QVariant();
 }
-
-} // namespace xTools

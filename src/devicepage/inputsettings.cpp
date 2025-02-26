@@ -18,10 +18,10 @@ InputSettings::InputSettings(QWidget *parent)
 {
     ui->setupUi(this);
 
-    xTools::setupAddition(ui->comboBoxPrefix);
-    xTools::setupAddition(ui->comboBoxSuffix);
-    xTools::setupEscapeCharacter(ui->comboBoxEscapeCharacter);
-    xTools::CRC::setupAlgorithm(ui->comboBoxCrcAlgorithm);
+    setupAddition(ui->comboBoxPrefix);
+    setupAddition(ui->comboBoxSuffix);
+    setupEscapeCharacter(ui->comboBoxEscapeCharacter);
+    CRC::setupAlgorithm(ui->comboBoxCrcAlgorithm);
 }
 
 InputSettings::~InputSettings()

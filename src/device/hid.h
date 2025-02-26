@@ -13,8 +13,6 @@
 
 #include "Communication.h"
 
-namespace xTools {
-
 class Hid : public Communication
 {
     Q_OBJECT
@@ -38,5 +36,3 @@ private:
     void readBytesFromDevice();
     void calculateInterFrameDelay();
 };
-
-} // namespace xTools

@@ -12,8 +12,6 @@
 
 #include "socketserver.h"
 
-namespace xTools {
-
 class TcpServer : public SocketServer
 {
     Q_OBJECT
@@ -37,5 +35,3 @@ private:
     void readBytes(QTcpSocket *socket);
     void removeSocket(QTcpSocket *socket);
 };
-
-} // namespace xTools

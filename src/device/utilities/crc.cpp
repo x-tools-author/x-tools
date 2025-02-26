@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "crc.h"
 
-namespace xTools {
-
 QList<int> CRC::supportedAlgorithms()
 {
     QList<int> Algorithms;
@@ -332,14 +330,14 @@ bool reverseInt(const T &input, T &output)
 template<typename T>
 T crcCalculate(const uint8_t *input, uint64_t length, CRC::Algorithm algorithm)
 {
-    T crcReg = static_cast<T>(xTools::CRC::initialValue(algorithm));
-    T rawPoly = static_cast<T>(xTools::CRC::poly(algorithm));
+    T crcReg = static_cast<T>(CRC::initialValue(algorithm));
+    T rawPoly = static_cast<T>(CRC::poly(algorithm));
     uint8_t byte = 0;
 
     T temp = 1;
     while (length--) {
         byte = *(input++);
-        if (xTools::CRC::isInputReversal(algorithm)) {
+        if (CRC::isInputReversal(algorithm)) {
             reverseInt(byte, byte);
         }
 
@@ -353,11 +351,11 @@ T crcCalculate(const uint8_t *input, uint64_t length, CRC::Algorithm algorithm)
         }
     }
 
-    if (xTools::CRC::isOutputReversal(algorithm)) {
+    if (CRC::isOutputReversal(algorithm)) {
         reverseInt(crcReg, crcReg);
     }
 
-    T crc = (crcReg ^ static_cast<T>(xTools::CRC::xorValue(algorithm)));
+    T crc = (crcReg ^ static_cast<T>(CRC::xorValue(algorithm)));
     return crc;
 }
 
@@ -397,5 +395,3 @@ QByteArray CRC::calculate(const Context &ctx)
     const QByteArray tmpData = ctx.data.mid(ctx.startIndex, length);
     return calculate(tmpData, static_cast<int>(ctx.algorithm), ctx.bigEndian);
 }
-
-} // namespace xTools

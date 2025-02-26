@@ -10,8 +10,6 @@
 
 #include "udpclienttransfermodel.h"
 
-namespace xTools {
-
 UdpClientTransfer::UdpClientTransfer(QObject *parent)
     : SocketTransfer(parent)
     , m_model(new UdpClientTransferModel(this))
@@ -26,5 +24,3 @@ QVariant UdpClientTransfer::tableModel() const
 {
     return QVariant::fromValue(m_model);
 }
-
-} // namespace xTools

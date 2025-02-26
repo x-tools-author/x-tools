@@ -24,8 +24,6 @@
 #include "chartsui.h"
 #include "devicepage/charts/charts.h"
 
-namespace xTools {
-
 ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::ChartsUiSettings)
@@ -250,5 +248,3 @@ QString ChartsUiSettings::seriesTypeToString(int type) const
         return QString();
     }
 }
-
-} // namespace xTools

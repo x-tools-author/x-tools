@@ -10,8 +10,6 @@
 
 #include "tcpservertransfermodel.h"
 
-namespace xTools {
-
 TcpServerTransfer::TcpServerTransfer(QObject *parent)
     : SocketTransfer(parent)
     , m_model(new TcpServerTransferModel(this))
@@ -26,5 +24,3 @@ QVariant TcpServerTransfer::tableModel() const
 {
     return QVariant::fromValue(m_model);
 }
-
-} // namespace xTools

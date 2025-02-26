@@ -11,8 +11,6 @@
 #include "common/xtools.h"
 #include "sockettransfermodel.h"
 
-namespace xTools {
-
 SocketTransfer::SocketTransfer(QObject *parent)
     : AbstractTransfer(parent)
 {}
@@ -82,5 +80,3 @@ void SocketTransfer::loadItem(const int row, const QVariantMap &item)
 
     emit model->dataChanged(model->index(row, 0), model->index(row, 9));
 }
-
-} // namespace xTools

@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "udpclienttransferui.h"
 
-namespace xTools {
-
 UdpClientTransferUi::UdpClientTransferUi(QWidget *parent)
     : SocketTransferUi{parent}
 {
@@ -32,5 +30,3 @@ void UdpClientTransferUi::setupIO(AbstractIO *io)
     tv->hideColumn(7);
     tv->hideColumn(8);
 }
-
-} // namespace xTools

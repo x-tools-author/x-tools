@@ -10,8 +10,6 @@
 
 #include "socketclientui.h"
 
-namespace xTools {
-
 class TcpClientUi : public SocketClientUi
 {
     Q_OBJECT
@@ -21,5 +19,3 @@ public:
 
     void setUiEnabled(bool enabled) override;
 };
-
-} // namespace xTools

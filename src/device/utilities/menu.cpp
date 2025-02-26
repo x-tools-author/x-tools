@@ -10,8 +10,6 @@
 
 #include <QMouseEvent>
 
-namespace xTools {
-
 Menu::Menu(const QString& title, QWidget* parent)
     : QMenu(title, parent)
 {}
@@ -33,5 +31,3 @@ void Menu::mouseReleaseEvent(QMouseEvent* e)
 
     QMenu::mouseReleaseEvent(e);
 }
-
-} // namespace xTools

@@ -10,8 +10,6 @@
 
 #include "abstracttransfermodel.h"
 
-namespace xTools {
-
 class Socket;
 class SocketTransferModel : public AbstractTransferModel
 {
@@ -33,5 +31,3 @@ protected:
                        const QModelIndex &bottomRight,
                        const QList<int> &roles = QList<int>()) override;
 };
-
-} // namespace xTools

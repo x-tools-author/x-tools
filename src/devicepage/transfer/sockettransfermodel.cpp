@@ -11,8 +11,6 @@
 #include "common/xtools.h"
 #include "device/socket.h"
 
-namespace xTools {
-
 SocketTransferModel::SocketTransferModel(QObject *parent)
     : AbstractTransferModel(parent)
 {}
@@ -214,5 +212,3 @@ void SocketTransferModel::onDataChanged(const QModelIndex &topLeft,
         }
     }
 }
-
-} // namespace xTools

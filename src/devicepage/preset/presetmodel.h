@@ -12,8 +12,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 class PresetModel : public QAbstractTableModel
 {
     Q_OBJECT
@@ -40,5 +38,3 @@ private:
 private:
     QList<Item> m_items;
 };
-
-} // namespace xTools

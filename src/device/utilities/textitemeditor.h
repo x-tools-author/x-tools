@@ -17,8 +17,6 @@ class TextItemEditor;
 }
 QT_END_NAMESPACE
 
-namespace xTools {
-
 class TextItemEditor : public QDialog
 {
     Q_OBJECT
@@ -35,5 +33,3 @@ private:
 private:
     void onTextFormatChanged();
 };
-
-} // namespace xTools

@@ -37,8 +37,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 class xToolsPrivate : QObjectPrivate
 {
     Q_DECLARE_PUBLIC(xTools);
@@ -93,5 +91,3 @@ public:
     QMap<QString, QString> m_languageFlagNameMap;
     QStringList m_appSupportedLanguagePrefixes;
 };
-
-} // namespace xTools

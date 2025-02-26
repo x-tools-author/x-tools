@@ -13,8 +13,6 @@
 
 class AbstractIO;
 
-namespace xTools {
-
 class Preset;
 class PresetUi : public AbstractModelUi
 {
@@ -37,5 +35,3 @@ private:
 
     void onDataChanged();
 };
-
-} // namespace xTools

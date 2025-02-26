@@ -11,8 +11,6 @@
 #include "common/xtools.h"
 #include "hidtransfermodel.h"
 
-namespace xTools {
-
 HidTransfer::HidTransfer(QObject *parent)
     : AbstractTransfer{parent}
     , m_model{new HidTransferModel{this}}
@@ -74,5 +72,3 @@ void HidTransfer::loadItem(const int row, const QVariantMap &item)
     m_model->setData(m_model->index(row, 6), HidItem.flowControl, Qt::EditRole);
     m_model->setData(m_model->index(row, 7), description, Qt::EditRole);
 }
-
-} // namespace xTools

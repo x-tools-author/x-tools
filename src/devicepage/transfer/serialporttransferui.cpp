@@ -12,8 +12,6 @@
 
 #include "serialportstyleditemdelegate.h"
 
-namespace xTools {
-
 SerialPortTransferUi::SerialPortTransferUi(QWidget *parent)
     : AbstractTransferUi{parent}
 {
@@ -28,5 +26,3 @@ QStyledItemDelegate *SerialPortTransferUi::createItemDelegate() const
 {
     return new SerialPortStyledItemDelegate();
 }
-
-} // namespace xTools

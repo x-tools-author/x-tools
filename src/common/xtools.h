@@ -28,7 +28,6 @@
 #include "qss/qssmgr.h"
 #endif
 
-namespace xTools {
 /**********************************************************************************************/
 enum class CommunicationType {
     SerialPort,
@@ -214,14 +213,12 @@ enum class ChartsDataFormat { BinaryY, BinaryXY, TextY, TextXY };
 QList<int> supportedChartsDataFormats();
 QString chartsDataFormatName(int format);
 void setupChartsDataFormat(QComboBox *comboBox);
-} // namespace xTools
+
 // -------------------------------------------------------------------------------------------------
 
-#define g_xTools xTools::xTools::singleton()
+#define g_xTools xTools::singleton()
 
 static void (*gOutputLog2Ui)(QtMsgType, const QMessageLogContext &, const QString &);
-
-namespace xTools {
 
 class xToolsPrivate;
 class xTools : public QObject
@@ -325,5 +322,3 @@ public:
     bool tryToReboot();
     void tryToClearSettings();
 };
-
-} // namespace xTools

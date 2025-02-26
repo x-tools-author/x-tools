@@ -11,8 +11,6 @@
 #include "common/xtools.h"
 #include "device/hid.h"
 
-namespace xTools {
-
 HidTransferModel::HidTransferModel(QObject *parent)
     : AbstractTransferModel(parent)
 {}
@@ -230,5 +228,3 @@ bool HidTransferModel::isEnableRestartingColumn(int column) const
 
     return true;
 }
-
-} // namespace xTools

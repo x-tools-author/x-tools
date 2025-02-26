@@ -27,11 +27,9 @@
 
 #include <xlsxdocument.h>
 
-#include "chartsuisettings.h"
 #include "charts.h"
+#include "chartsuisettings.h"
 #include "common/xtools.h"
-
-namespace xTools {
 
 ChartsUi::ChartsUi(QWidget *parent)
     : AbstractIOUi(parent)
@@ -428,5 +426,3 @@ void ChartsUi::onSetChannelName(int channelIndex, const QString &name)
         m_series[channelIndex]->setName(name);
     }
 }
-
-} // namespace xTools

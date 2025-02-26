@@ -12,8 +12,6 @@
 
 #include "socketclient.h"
 
-namespace xTools {
-
 class TcpClient : public SocketClient
 {
     Q_OBJECT
@@ -31,5 +29,3 @@ private:
 private:
     void readBytesFromDevice();
 };
-
-} // namespace xTools

@@ -14,8 +14,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 HidStyledItemDelegate::HidStyledItemDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {}
@@ -94,5 +92,3 @@ void HidStyledItemDelegate::setModelData(QWidget *editor,
         model->setData(index, cb->currentData());
     }
 }
-
-} // namespace xTools

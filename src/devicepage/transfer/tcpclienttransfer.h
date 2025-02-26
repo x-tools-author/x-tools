@@ -10,8 +10,6 @@
 
 #include "sockettransfer.h"
 
-namespace xTools {
-
 class TcpClientTransferModel;
 class TcpClientTransfer : public SocketTransfer
 {
@@ -25,5 +23,3 @@ public:
 protected:
     TcpClientTransferModel *m_model;
 };
-
-} // namespace xTools

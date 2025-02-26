@@ -13,8 +13,6 @@
 #include <QThread>
 #include <QVariant>
 
-namespace xTools {
-
 class BleScanner : public QThread
 {
     Q_OBJECT
@@ -46,5 +44,3 @@ private:
     bool isBusy() const { return m_isBusy; }
     Q_SIGNAL void isBusyChanged();
 };
-
-} // namespace xTools

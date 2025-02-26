@@ -71,8 +71,6 @@
 #include "outputsettings.h"
 #include "utilities/syntaxhighlighter.h"
 
-using namespace xTools;
-
 struct ParameterKeys
 {
     const QString showCharts{"showCharts"};

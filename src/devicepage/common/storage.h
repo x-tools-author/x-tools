@@ -13,8 +13,6 @@
 
 #include "abstractmodelio.h"
 
-namespace xTools {
-
 class Storage : public AbstractModelIO
 {
     Q_OBJECT
@@ -58,5 +56,3 @@ private:
 private:
     void write2file();
 };
-
-} // namespace xTools

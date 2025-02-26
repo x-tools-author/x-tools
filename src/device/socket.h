@@ -12,8 +12,6 @@
 
 #include "communication.h"
 
-namespace xTools {
-
 class Socket : public Communication
 {
     Q_OBJECT
@@ -47,5 +45,3 @@ protected:
     QPair<QString, quint16> splitFlag(const QString &flag) const;
     bool isValidFlag(const QPair<QString, quint16> &pair) const;
 };
-
-} // namespace xTools

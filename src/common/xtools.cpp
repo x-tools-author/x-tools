@@ -46,8 +46,6 @@
 #include "device/utilities/crc.h"
 // -------------------------------------------------------------------------------------------------
 
-namespace xTools {
-
 QList<int> supportedCommunicationTypes()
 {
     static QList<int> deviceTypes;
@@ -874,10 +872,7 @@ void setupChartsDataFormat(QComboBox *comboBox)
     }
 }
 
-} // namespace xTools
 // -------------------------------------------------------------------------------------------------
-
-namespace xTools {
 
 xTools::xTools(QObject *parent)
     : QObject(*new xToolsPrivate, parent)
@@ -1530,5 +1525,3 @@ void xTools::tryToClearSettings()
         }
     }
 }
-
-} // namespace xTools

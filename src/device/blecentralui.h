@@ -19,8 +19,6 @@ class BleCentralUi;
 }
 QT_END_NAMESPACE
 
-namespace xTools {
-
 class BleScanner;
 class BleCentralUi : public CommunicationUi
 {
@@ -58,5 +56,3 @@ private:
     QByteArray notifyValue() const;
     QByteArray disnotifyValue() const;
 };
-
-} // namespace xTools

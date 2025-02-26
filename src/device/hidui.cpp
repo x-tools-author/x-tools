@@ -12,8 +12,6 @@
 #include <QHid>
 #include <QHidInfo>
 
-namespace xTools {
-
 HidUi::HidUi(CommunicationType type, QWidget *parent)
     : CommunicationUi(type, parent)
     , ui(new Ui::HidUi)
@@ -66,5 +64,3 @@ void HidUi::refresh()
 {
     setupPortName(ui->comboBoxPortName);
 }
-
-} // namespace xTools

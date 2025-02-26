@@ -12,8 +12,6 @@
 
 #include "devicepage/common/abstractmodelui.h"
 
-namespace xTools {
-
 class AbstractTransferUi : public AbstractModelUi
 {
     Q_OBJECT
@@ -21,5 +19,3 @@ public:
     explicit AbstractTransferUi(QWidget *parent = nullptr);
     ~AbstractTransferUi() override;
 };
-
-} // namespace xTools

@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "udpserverui.h"
 
-namespace xTools {
-
 UdpServerUi::UdpServerUi(QWidget *parent)
     : SocketServerUi(CommunicationType::UdpServer, parent)
 {
@@ -25,5 +23,3 @@ void UdpServerUi::setUiEnabled(bool enabled)
 {
     setServerWidgetsEnabled(enabled);
 }
-
-} // namespace xTools

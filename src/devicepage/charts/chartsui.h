@@ -19,8 +19,6 @@ namespace Ui {
 class ChartsUi;
 }
 
-namespace xTools {
-
 struct ChartsUiDataKeys
 {
     const QString dataType{"dataType"};
@@ -75,5 +73,3 @@ private:
     void onSetChannelColor(int channelIndex, const QColor &color);
     void onSetChannelName(int channelIndex, const QString &name);
 };
-
-} // namespace xTools

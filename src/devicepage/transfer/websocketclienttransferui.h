@@ -10,8 +10,6 @@
 
 #include "sockettransferui.h"
 
-namespace xTools {
-
 class WebSocketClientTransferUi : public SocketTransferUi
 {
     Q_OBJECT
@@ -21,5 +19,3 @@ public:
 
     void setupIO(AbstractIO *io) override;
 };
-
-} // namespace xTools

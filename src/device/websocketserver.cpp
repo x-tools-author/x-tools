@@ -12,8 +12,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 WebSocketServer::WebSocketServer(QObject *parent)
     : SocketServer(parent)
 {}
@@ -141,5 +139,3 @@ void WebSocketServer::onBinaryMessageReceived(QWebSocket *socket, const QByteArr
         }
     }
 }
-
-} // namespace xTools

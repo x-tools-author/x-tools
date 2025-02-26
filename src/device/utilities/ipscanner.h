@@ -11,8 +11,6 @@
 #include <QObject>
 #include <QTimer>
 
-namespace xTools {
-
 class IpScanner : public QObject
 {
     Q_OBJECT
@@ -51,5 +49,3 @@ private:
     void setEnableAutoRefresh(bool enable);
     Q_SIGNAL void enableAutoRefreshChanged();
 };
-
-} // namespace xTools

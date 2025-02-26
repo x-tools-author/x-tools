@@ -10,8 +10,6 @@
 
 #include "abstracttransferui.h"
 
-namespace xTools {
-
 class HidTransferUi : public AbstractTransferUi
 {
     Q_OBJECT
@@ -22,5 +20,3 @@ public:
 protected:
     QStyledItemDelegate *createItemDelegate() const override;
 };
-
-} // namespace xTools

@@ -10,8 +10,6 @@
 
 #include "websocketclienttransfermodel.h"
 
-namespace xTools {
-
 WebSocketClientTransfer::WebSocketClientTransfer(QObject *parent)
     : SocketTransfer(parent)
     , m_model(new WebSocketClientTransferModel(this))
@@ -26,5 +24,3 @@ QVariant WebSocketClientTransfer::tableModel() const
 {
     return QVariant::fromValue(m_model);
 }
-
-} // namespace xTools

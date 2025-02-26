@@ -14,8 +14,6 @@
 #include <QDir>
 #include <QFile>
 
-namespace xTools {
-
 Storage::Storage(QObject *parent)
     : AbstractModelIO{parent}
 {}
@@ -141,5 +139,3 @@ void Storage::write2file()
         qWarning() << file.errorString();
     }
 }
-
-} // namespace xTools

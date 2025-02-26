@@ -12,8 +12,6 @@
 
 #include "devicepage/common/abstractio.h"
 
-namespace xTools {
-
 class Charts : public AbstractIO
 {
     Q_OBJECT
@@ -50,5 +48,3 @@ private:
     const QByteArray m_binaryTail;
     int m_testAngle{0};
 };
-
-} // namespace xTools

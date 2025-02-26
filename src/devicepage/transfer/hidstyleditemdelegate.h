@@ -10,8 +10,6 @@
 
 #include <QStyledItemDelegate>
 
-namespace xTools {
-
 class HidStyledItemDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
@@ -25,5 +23,3 @@ public:
     void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const override;
     // clang-format on
 };
-
-} // namespace xTools

@@ -13,8 +13,6 @@
 
 #include "common/xtools.h"
 
-namespace xTools {
-
 ChartsTest::ChartsTest(QObject *parent)
     : Communication(parent)
     , m_binaryTail(QByteArray::fromHex("0000807f"))
@@ -110,5 +108,3 @@ QByteArray ChartsTest::generateTextXY(int channels)
     m_testAngle += 1;
     return bytes;
 }
-
-} // namespace xTools

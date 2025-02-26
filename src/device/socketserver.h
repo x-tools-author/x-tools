@@ -12,8 +12,6 @@
 
 #include "socket.h"
 
-namespace xTools {
-
 class SocketServer : public Socket
 {
     Q_OBJECT
@@ -40,5 +38,3 @@ private:
     QString m_currentClientFlag;
     mutable QMutex m_currentClientMutex;
 };
-
-} // namespace xTools

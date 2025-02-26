@@ -10,8 +10,6 @@
 
 #include "sockettransfermodel.h"
 
-namespace xTools {
-
 class WebSocketClientTransferModel : public SocketTransferModel
 {
     Q_OBJECT
@@ -23,5 +21,3 @@ protected:
     Socket *createSocket() override;
     bool isEnableRestartingColumn(int column) const override;
 };
-
-} // namespace xTools

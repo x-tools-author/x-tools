@@ -16,8 +16,6 @@ class ChartsTestUi;
 }
 QT_END_NAMESPACE
 
-namespace xTools {
-
 class ChartsTestUi : public CommunicationUi
 {
     Q_OBJECT
@@ -30,5 +28,3 @@ public:
 private:
     Ui::ChartsTestUi *ui;
 };
-
-} // namespace xTools

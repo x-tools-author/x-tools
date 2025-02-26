@@ -8,12 +8,8 @@
  **************************************************************************************************/
 #include "socketclient.h"
 
-namespace xTools {
-
 SocketClient::SocketClient(QObject *parent)
     : Socket(parent)
 {}
 
 SocketClient::~SocketClient() {}
-
-} // namespace xTools

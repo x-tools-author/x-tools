@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "udpclient.h"
 
-namespace xTools {
-
 UdpClient::UdpClient(QObject *parent)
     : SocketClient(parent)
 {}
@@ -101,5 +99,3 @@ void UdpClient::writeDatagram(const QByteArray &bytes, const QString &ip, quint1
         emit errorOccurred(m_udpSocket->errorString());
     }
 }
-
-} // namespace xTools

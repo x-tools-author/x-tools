@@ -14,8 +14,6 @@
 #include "common/xtools.h"
 #include "devicepage/common/abstractioui.h"
 
-namespace xTools {
-
 class Communication;
 class CommunicationUi : public AbstractIOUi
 {
@@ -29,5 +27,3 @@ public:
 private:
     CommunicationType const m_type;
 };
-
-} // namespace xTools

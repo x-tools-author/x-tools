@@ -14,8 +14,6 @@
 #include "common/xtools.h"
 #include "device/communication.h"
 
-namespace xTools {
-
 AbstractTransferModel::AbstractTransferModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
@@ -137,5 +135,3 @@ void AbstractTransferModel::onDataChanged(const QModelIndex &topLeft,
         transfer->start();
     }
 }
-
-} // namespace xTools

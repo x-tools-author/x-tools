@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "websocketclientui.h"
 
-namespace xTools {
-
 WebSocketClientUi::WebSocketClientUi(QWidget *parent)
     : SocketClientUi(CommunicationType::WebSocketClient, parent)
 {
@@ -25,5 +23,3 @@ void WebSocketClientUi::setUiEnabled(bool enabled)
     setServerWidgetsEnabled(enabled);
     setAuthenticationWidgetsEnabled(enabled);
 }
-
-} // namespace xTools

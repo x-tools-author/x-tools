@@ -12,8 +12,6 @@
 
 #include "devicepage/common/abstractmodelio.h"
 
-namespace xTools {
-
 class EmitterModel;
 class Emitter : public AbstractModelIO
 {
@@ -35,5 +33,3 @@ private:
 private:
     void try2Emit();
 };
-
-} // namespace xTools

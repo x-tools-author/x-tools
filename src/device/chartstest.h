@@ -14,8 +14,6 @@
 
 #include "communication.h"
 
-namespace xTools {
-
 struct ChartsTestDataKeys
 {
     const QString dataFormat{"dataFormat"};
@@ -45,5 +43,3 @@ private:
     int m_testAngle{0};
     int m_channels{16};
 };
-
-} // namespace xTools

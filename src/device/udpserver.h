@@ -12,8 +12,6 @@
 
 #include "socketserver.h"
 
-namespace xTools {
-
 class UdpServer : public SocketServer
 {
     Q_OBJECT
@@ -34,5 +32,3 @@ private:
     void readPendingDatagrams();
     void writeDatagram(const QByteArray &bytes, const QString &flag);
 };
-
-} // namespace xTools

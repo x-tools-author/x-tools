@@ -11,8 +11,6 @@
 #include <QHostAddress>
 #include <QNetworkInterface>
 
-namespace xTools {
-
 IpScanner::IpScanner(QObject* parent)
     : QObject{parent}
 {
@@ -96,5 +94,3 @@ void IpScanner::setEnableAutoRefresh(bool enable)
     m_enableAutoRefresh = enable;
     emit enableAutoRefreshChanged();
 }
-
-} // namespace xTools

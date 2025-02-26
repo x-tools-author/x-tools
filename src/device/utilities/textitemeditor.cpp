@@ -12,8 +12,6 @@
 #include "common/xtools.h"
 #include "crc.h"
 
-namespace xTools {
-
 TextItemEditor::TextItemEditor(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::TextItemEditor)
@@ -108,5 +106,3 @@ void TextItemEditor::onTextFormatChanged()
     int format = ui->comboBoxFormat->currentData().toInt();
     setupTextFormatValidator(ui->lineEditInput, format);
 }
-
-} // namespace xTools

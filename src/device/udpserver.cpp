@@ -8,8 +8,6 @@
  **************************************************************************************************/
 #include "udpserver.h"
 
-namespace xTools {
-
 UdpServer::UdpServer(QObject *parent)
     : SocketServer(parent)
 {}
@@ -106,5 +104,3 @@ void UdpServer::writeDatagram(const QByteArray &bytes, const QString &flag)
 #endif
     }
 }
-
-} // namespace xTools

@@ -10,8 +10,6 @@
 
 #include "sockettransfer.h"
 
-namespace xTools {
-
 class WebSocketClientTransferModel;
 class WebSocketClientTransfer : public SocketTransfer
 {
@@ -25,5 +23,3 @@ public:
 protected:
     WebSocketClientTransferModel *m_model;
 };
-
-} // namespace xTools
