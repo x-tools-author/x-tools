@@ -116,7 +116,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
 #ifdef Q_OS_WIN
     if (settings->value(m_settingsKey.exitToSystemTray).toBool()) {
         hide();
-        event->ignore();
+        event->accept();
         return;
     }
 #endif

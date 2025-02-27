@@ -95,7 +95,7 @@ void Application::installLog(char *argv0)
 
 void Application::uninstallLog()
 {
-#if !defined(QT_RELEASE)
+#if defined(QT_RELEASE)
     google::ShutdownGoogleLogging();
 #endif
 }
