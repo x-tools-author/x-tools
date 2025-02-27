@@ -119,6 +119,11 @@ void Application::setupAppStyle()
 
     QString defaultStyle = Application::style()->name();
     QString style = settings->value(SettingsKey().style, defaultStyle).toString();
+    if (!QStyleFactory::keys().contains(style)) {
+        qWarning() << "The style is not supported:" << style;
+        return;
+    }
+
     Application::setStyle(QStyleFactory::create(style));
     qInfo() << "The current application style is:" << style;
 }
@@ -133,23 +138,33 @@ void Application::execMs(int ms)
     loop.exec();
 }
 
+void setupLanguage(const QString &qmFile)
+{
+    QTranslator *translator = new QTranslator();
+    if (!translator->load(qmFile)) {
+        qWarning("The language file(%1) can not be loaded, English will be used.", qmFile);
+        return;
+    }
+
+    if (!qApp->installTranslator(translator)) {
+        qWarning() << "The language has been setup, English will be used.";
+    } else {
+        qInfo() << "The language has been setup, current language file is:" << qmFile;
+    }
+}
+
 void Application::setupLanguage()
 {
     QSettings *settings = Application::settings();
     QString defaultLanguage = QLocale::system().name();
     QString language = settings->value(SettingsKey().language, defaultLanguage).toString();
 
-    QTranslator *translator = new QTranslator();
-    if (!translator->load(QString(":/res/translations/xTools_%2.qm").arg(language))) {
-        qWarning() << "The language file can not be load to translator, English will be used.";
-        return;
-    }
+    QString appPath = QApplication::applicationDirPath();
+    QString qtQmFile = QString("%1/translations/qt_%2.qm").arg(appPath, language);
+    ::setupLanguage(qtQmFile);
 
-    if (!qApp->installTranslator(translator)) {
-        qInfo() << "The language has been setup, English will be used.";
-    } else {
-        qInfo() << "The language has been setup, current language is:" << language;
-    }
+    QString xToolsQmFile = QString(":/res/translations/xTools_%1.qm").arg(language);
+    ::setupLanguage(xToolsQmFile);
 }
 
 QSettings *Application::settings()
