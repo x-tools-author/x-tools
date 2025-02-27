@@ -17,6 +17,7 @@
 #include <QMessageBox>
 #include <QVector>
 
+#include "application.h"
 #include "common/xtools.h"
 
 CanBusAssistant::CanBusAssistant(QWidget* parent)
@@ -26,8 +27,7 @@ CanBusAssistant::CanBusAssistant(QWidget* parent)
 {
     ui->setupUi(this);
     if (!m_settings) {
-        m_settings = g_xTools.settings();
-        ;
+        m_settings = xApp->settings();
     }
 
     initUi();

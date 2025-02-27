@@ -8,25 +8,11 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QApplication>
 #include <QComboBox>
-#include <QDateTime>
 #include <QJsonObject>
 #include <QLineEdit>
-#include <QMainWindow>
-#include <QObject>
-#include <QSettings>
 #include <QSpinBox>
-#include <QSplashScreen>
-#include <QStyle>
-#include <QStyleFactory>
-#include <QStyleHints>
-
-#include "mainwindow.h"
-
-#ifdef X_TOOLS_ENABLE_QSS
-#include "qss/qssmgr.h"
-#endif
+#include <QString>
 
 /**************************************************************************************************/
 enum class CommunicationType {
@@ -44,7 +30,7 @@ enum class CommunicationType {
     SctpClient,
     SctpServer,
     //----------------------------------------------------------------------------------------------
-    ChartsTest = 0x00300000,
+    ChartsTest = 0x00300000
 };
 QList<int> supportedCommunicationTypes();
 QString communicationName(int type);
@@ -218,111 +204,3 @@ void setupChartsDataFormat(QComboBox *comboBox);
 QString dateTimeString(const QString &format);
 QDateTime buildDateTime();
 QString buildDateTimeString(const QString &format);
-
-// -------------------------------------------------------------------------------------------------
-
-#define g_xTools xTools::singleton()
-
-static void (*gOutputLog2Ui)(QtMsgType, const QMessageLogContext &, const QString &);
-
-class xToolsPrivate;
-class xTools : public QObject
-{
-    Q_OBJECT
-    Q_DECLARE_PRIVATE(xTools)
-private:
-    explicit xTools(QObject *parent = Q_NULLPTR);
-    xTools(const xTools &) = delete;
-    xTools &operator=(const xTools &) = delete;
-
-public:
-    static xTools &singleton();
-    void doSomethingBeforeAppCreated(char *argv[],
-                                     const QString &appName,
-                                     const QString &appVersion = QString("0.0.0"),
-                                     bool forStore = false);
-    void doSomethingAfterAppExited();
-    void googleLogInitializing(char *argv0);
-    void googleLogShutdown();
-    void googleLogToQtLog(QtMsgType type, const QMessageLogContext &context, const QString &msg);
-    // About git info
-    QString xToolsLastCommit();
-    QString xToolsLastCommitTime();
-
-signals:
-    void languageChanged();
-
-public:
-    // About splash screen
-    bool splashScreenIsEnable();
-    void splashScreenSetIsEnable(bool enable);
-    void splashScreenSetMessage(const QString &msg);
-    void splashScreenShow();
-    QSplashScreen *splashScreenGet();
-
-    // About app info
-    QString appFriendlyName();
-    void appSetFriendlyName(const QString &name);
-    void appInitializeHdpi(const QString &appName, bool forStore);
-    QString appVersion();
-
-    // About i18n
-    QString languageDefaultLanguage();
-    QStringList languageSupportedLanguages();
-    QStringList languageSupportedPrefixes();
-    void languageSetSupportedPrefixes(const QStringList &prefixes);
-    void languageSetupAppLanguageWithPrefix(const QString &language, const QString &prefix);
-    void languageSetupAppLanguage(const QString &language = QString());
-
-    // About high dpi policy
-    QVariantList hdpiSupportedPolicies();
-    QString hdpiPolicyName(int policy);
-    bool hdpiIsValidPolicy(int policy);
-
-    // About formater
-    QString formatStringToHexString(const QString &str);
-    QString formatHexStringToString(const QString &str);
-    QByteArray formatByteArray2Hex(const QByteArray &source, char separator = '\0');
-
-    // About date time
-    QString dtDateTimeString(const QString &format);
-    QDateTime dtBuildDateTime();
-    QString dtBuildDateTimeString(const QString &format);
-    QString dtSystemDateFormat();
-    QString dtSystemTimeFormat();
-
-    // About system
-    QString sysDesktopPath();
-    QString sysClipboardText();
-    void sysSetClipboardText(const QString &text);
-    void sysOpenUrl(const QString &url);
-
-    // About icon
-    QIcon iconToThemeIcon(const QIcon &icon);
-    QIcon iconCookedIconFile(const QString &iconFile, const QString &color);
-    QIcon iconCookedIcon(const QIcon &icon, const QString &color);
-
-    // About settings
-    void settingsOpenSettingsFileDir();
-    QString settingsPath();
-    int settingsHdpiPolicy();
-    void settingsSetHdpiPolicy(int policy);
-    QString settingsAppStyle();
-    void settingsSetAppStyle(const QString &style);
-    QString settingsLanguage();
-    void settingsSetLanguage(const QString &lan);
-    bool settingsClearSettings();
-    void settingsSetClearSettings(bool clear);
-    int settingsColorScheme();
-    void settingsSetColorScheme(const int colorScheme);
-    QVariant settingsValue(const QString &key, const QVariant &value = QVariant()) const;
-    void settingsSetValue(const QString &key, const QVariant &value);
-    void settingsSetJsonObjectStringValue(const QString &key, const QString &value);
-    QSettings *settings();
-
-    // Other functions
-    QMainWindow *mainWindow();
-    void moveToScreenCenter(QWidget *widget);
-    bool tryToReboot();
-    void tryToClearSettings();
-};

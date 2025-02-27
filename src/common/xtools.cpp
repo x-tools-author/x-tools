@@ -7,12 +7,13 @@
  * directory.
  **************************************************************************************************/
 #include "xtools.h"
-#include "xtools_p.h"
 
 #include <QAction>
 #include <QActionGroup>
 #include <QApplication>
 #include <QClipboard>
+#include <QComboBox>
+#include <QDateTime>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QFile>
@@ -20,15 +21,23 @@
 #include <QHBoxLayout>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QJsonObject>
 #include <QLabel>
+#include <QLineEdit>
+#include <QMainWindow>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QNetworkInterface>
+#include <QObject>
 #include <QPainter>
 #include <QProcess>
 #include <QScreen>
+#include <QSettings>
+#include <QSpinBox>
+#include <QSplashScreen>
 #include <QStyle>
+#include <QStyleFactory>
 #include <QStyleHints>
 #include <QSvgRenderer>
 #include <QTimer>
@@ -44,7 +53,6 @@
 #include <glog/logging.h>
 
 #include "device/utilities/crc.h"
-// -------------------------------------------------------------------------------------------------
 
 QList<int> supportedCommunicationTypes()
 {
@@ -892,6 +900,7 @@ QString buildDateTimeString(const QString &format)
     return buildDateTime().toString(format);
 }
 
+#if 0
 // -------------------------------------------------------------------------------------------------
 
 xTools::xTools(QObject *parent)
@@ -1528,3 +1537,4 @@ void xTools::tryToClearSettings()
         }
     }
 }
+#endif

@@ -35,6 +35,7 @@
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
 
+#include "application.h"
 #include "common/xtools.h"
 #include "modbusfactory.h"
 
@@ -118,7 +119,7 @@ ModbusAssistant::ModbusAssistant(QWidget *parent)
     , m_keyCtx(new ModbusSettingKeys)
     , m_textFormat(static_cast<int>(TextFormat::Dec))
 {
-    m_settings = xTools::singleton().settings();
+    m_settings = xApp->settings();
 
     ui->setupUi(this);
 

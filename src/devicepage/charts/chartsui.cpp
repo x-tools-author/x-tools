@@ -66,11 +66,10 @@ ChartsUi::ChartsUi(QWidget *parent)
     m_chart->layout()->setContentsMargins(0, 0, 0, 0);
     m_chart->setMargins(QMargins(0, 0, 0, 0));
 
-    xTools &xTools = xTools::singleton();
-    auto currentScheme = xTools.settingsColorScheme();
-    if (currentScheme == static_cast<int>(Qt::ColorScheme::Dark)) {
+    auto currentScheme = qApp->styleHints()->colorScheme();
+    if (currentScheme == Qt::ColorScheme::Dark) {
         m_chart->setTheme(QChart::ChartThemeDark);
-    } else if (currentScheme == static_cast<int>(Qt::ColorScheme::Light)) {
+    } else if (currentScheme == Qt::ColorScheme::Light) {
         m_chart->setTheme(QChart::ChartThemeLight);
     }
 
