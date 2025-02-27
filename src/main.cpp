@@ -17,7 +17,7 @@ int main(const int argc, char *argv[])
     Application app(argc, argv);
 
     MainWindow window;
-    window.resize(768 * 1.732, 768);
+    window.resize(620 * 1.732, 620);
     window.show();
 
     int ret = app.exec();

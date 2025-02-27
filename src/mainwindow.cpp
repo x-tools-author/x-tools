@@ -41,6 +41,13 @@ MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , m_toolMenu(nullptr)
 {
+#if defined(X_TOOLS_MO_YU)
+    setWindowOpacity(0.3);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+    qApp->styleHints()->setColorScheme(Qt::ColorScheme::Dark);
+#endif
+#endif()
+
     m_appStyleActionGroup = new QActionGroup(this);
     m_languageActionGroup = new QActionGroup(this);
     m_appPaletteActionGroup = new QActionGroup(this);

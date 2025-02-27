@@ -44,7 +44,7 @@ function(x_tools_deploy_qss target)
   set(src_dir "${CMAKE_SOURCE_DIR}/3rd/${package_name}/styles")
   set(dst_dir "$<TARGET_FILE_DIR:${target}>/3rd_styles")
   add_custom_target(
-    ${target}-qss
+    ${target}_qss
     COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${src_dir} ${dst_dir}
     COMMENT "Copy(manual) style resources for ${target}...")
 

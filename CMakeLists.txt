@@ -62,10 +62,16 @@ include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Git module
-set(GIT_TAG "x.x.x")
 x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
+
+# --------------------------------------------------------------------------------------------------
+# The magic option...
+option(X_TOOLS_MO_YU "The magic option..." OFF)
+if(X_TOOLS_MO_YU)
+  add_compile_definitions(X_TOOLS_MO_YU)
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # Get all source files of the project
