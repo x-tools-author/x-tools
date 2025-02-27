@@ -140,7 +140,7 @@ void Application::setupLanguage()
     QString language = settings->value(SettingsKey().language, defaultLanguage).toString();
 
     QTranslator *translator = new QTranslator();
-    if (!translator->load(QString(":/res/Translations/xTools_%2.qm").arg(language))) {
+    if (!translator->load(QString(":/res/translations/xTools_%2.qm").arg(language))) {
         qWarning() << "The language file can not be load to translator, English will be used.";
         return;
     }
