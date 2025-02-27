@@ -554,7 +554,7 @@ void IOPage::onShowStatisticianChanged(bool checked)
 
 void IOPage::onOpened()
 {
-    for (auto io : m_ioList) {
+    for (auto &io : m_ioList) {
         io->start();
     }
 
@@ -566,7 +566,7 @@ void IOPage::onOpened()
 
 void IOPage::onClosed()
 {
-    for (auto io : m_ioList) {
+    for (auto &io : m_ioList) {
         io->exit();
         io->wait();
     }
