@@ -16,23 +16,16 @@
 class BleScanner : public QThread
 {
     Q_OBJECT
-    Q_PROPERTY(bool isBusy READ isBusy NOTIFY isBusyChanged FINAL)
 public:
     explicit BleScanner(QObject *parent = nullptr);
     ~BleScanner();
 
-    Q_INVOKABLE void stop();
-
 signals:
     void deviceDiscovered(const QBluetoothDeviceInfo &info);
-    void deviceDiscoveredForQml(const QString &name, const QVariant &info);
     void errorOccurred(const QString &errStr);
 
 protected:
     virtual void run() override;
-
-private:
-    QBluetoothDeviceDiscoveryAgent *m_discover;
 
 private:
     void onDiscoveryFinished();
@@ -40,7 +33,5 @@ private:
     void onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo &info);
 
 private:
-    bool m_isBusy{false};
-    bool isBusy() const { return m_isBusy; }
-    Q_SIGNAL void isBusyChanged();
+    QBluetoothDeviceDiscoveryAgent *m_discover;
 };
