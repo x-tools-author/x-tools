@@ -214,6 +214,11 @@ QList<int> supportedChartsDataFormats();
 QString chartsDataFormatName(int format);
 void setupChartsDataFormat(QComboBox *comboBox);
 
+/**************************************************************************************************/
+QString dateTimeString(const QString &format);
+QDateTime buildDateTime();
+QString buildDateTimeString(const QString &format);
+
 // -------------------------------------------------------------------------------------------------
 
 #define g_xTools xTools::singleton()

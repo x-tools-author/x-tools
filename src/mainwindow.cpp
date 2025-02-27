@@ -9,9 +9,10 @@
 #include "mainwindow.h"
 
 #include <QAction>
+#include <QActionGroup>
+#include <QApplication>
 #include <QClipboard>
 #include <QCloseEvent>
-#include <QCoreApplication>
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QImage>
@@ -21,16 +22,23 @@
 #include <QLayout>
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QMetaEnum>
 #include <QNetworkProxyFactory>
 #include <QPainter>
 #include <QPixmap>
+#include <QProcess>
 #include <QScrollBar>
+#include <QStyle>
+#include <QStyleFactory>
+#include <QStyleHints>
 #include <QSvgRenderer>
 #include <QTextBrowser>
 #include <QVariant>
 
+#include "application.h"
 #include "common/xtools.h"
 #include "devicepage/iopage.h"
+#include "qss/qssmgr.h"
 #include "tools/assistantfactory.h"
 
 #ifdef Q_OS_WIN
@@ -39,31 +47,18 @@
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
-    , m_toolMenu(nullptr)
+    , m_ioPage00(Q_NULLPTR)
+    , m_ioPage01(Q_NULLPTR)
+    , m_ioPage10(Q_NULLPTR)
+    , m_ioPage11(Q_NULLPTR)
 {
 #if defined(X_TOOLS_MO_YU)
     setWindowOpacity(0.3);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     qApp->styleHints()->setColorScheme(Qt::ColorScheme::Dark);
 #endif
-#endif()
+#endif
 
-    m_appStyleActionGroup = new QActionGroup(this);
-    m_languageActionGroup = new QActionGroup(this);
-    m_appPaletteActionGroup = new QActionGroup(this);
-
-    initMenuFile();
-    initMenuOption();
-    initMenuLanguage();
-    initMenuHelp();
-
-    updateWindowTitle();
-
-    xTools& xTools = xTools::singleton();
-    m_ioPage00 = new IOPage(IOPage::Left, xTools.settings(), this);
-    m_ioPage01 = new IOPage(IOPage::Right, xTools.settings(), this);
-    m_ioPage10 = new IOPage(IOPage::Left, xTools.settings(), this);
-    m_ioPage11 = new IOPage(IOPage::Right, xTools.settings(), this);
 #ifdef Q_OS_WIN
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
         auto* systemTrayIcon = new SystemTrayIcon(this);
@@ -76,10 +71,16 @@ MainWindow::MainWindow(QWidget* parent)
     }
 #endif
 
+    QSettings* settings = Application::settings();
+    m_ioPage00 = new IOPage(IOPage::Left, settings, this);
+    m_ioPage01 = new IOPage(IOPage::Right, settings, this);
+    m_ioPage10 = new IOPage(IOPage::Left, settings, this);
+    m_ioPage11 = new IOPage(IOPage::Right, settings, this);
+
     auto* centralWidget = new QWidget();
     auto* layout = new QGridLayout(centralWidget);
-    layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(m_ioPage00, 0, 0);
     layout->addWidget(m_ioPage01, 0, 1);
     layout->addWidget(m_ioPage10, 1, 0);
@@ -87,17 +88,17 @@ MainWindow::MainWindow(QWidget* parent)
     centralWidget->setLayout(layout);
     setCentralWidget(centralWidget);
 
-    setWindowIcon(QIcon(":/res/Images/Logo.png"));
-    initMenuBar();
-
     constexpr int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
     const QString key = m_settingsKey.windowGrid;
-    int rawGrid = xTools.settings()->value(key, defaultGrid).toInt();
+    int rawGrid = settings->value(key, defaultGrid).toInt();
     m_windowGrid = static_cast<WindowGrid>(rawGrid);
-    qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
     updateGrid(m_windowGrid);
+    qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
 
     load();
+    initMenuBar();
+    setWindowIcon(QIcon(":/res/Images/Logo.png"));
+    setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
 }
 
 MainWindow::~MainWindow()
@@ -105,57 +106,22 @@ MainWindow::~MainWindow()
     qInfo() << "MainWindow is destroyed!";
 }
 
-QIcon MainWindow::cookedIcon(const QString& svgFileName)
+void MainWindow::closeEvent(QCloseEvent* event)
 {
-#ifdef X_TOOLS_ENABLE_QSS
-    QSvgRenderer renderer(svgFileName);
-    QImage image(QSize(128, 128), QImage::Format_ARGB32);
-    image.fill(Qt::transparent); // Transparent background
+    save();
 
-    QPainter painter(&image);
-    painter.setRenderHint(QPainter::Antialiasing);
-    renderer.render(&painter);
+    QSettings* settings = xApp->settings();
+    settings->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
 
-    // Change color
-    QColor color = QssMgr::singleton().themeColor("primaryColor");
-    for (int y = 0; y < image.height(); y++) {
-        for (int x = 0; x < image.width(); x++) {
-            QColor ic = image.pixelColor(x, y);
-            if (ic.alpha() > 0) { // If not transparent
-                image.setPixelColor(x, y, color);
-            }
-        }
+#ifdef Q_OS_WIN
+    if (settings->value(m_settingsKey.exitToSystemTray).toBool()) {
+        hide();
+        event->ignore();
+        return;
     }
-
-    return QIcon{QPixmap::fromImage(image)};
-#else
-    return QIcon(svgFileName);
 #endif
-}
 
-QIcon MainWindow::cookedIcon(const QIcon& icon)
-{
-#ifdef X_TOOLS_ENABLE_QSS
-    QPixmap pixmap = icon.pixmap(QSize(128, 128));
-    QPainter painter(&pixmap);
-    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-
-    QColor color = QssMgr::singleton().themeColor("primaryColor");
-    painter.fillRect(pixmap.rect(), color);
-    QIcon colorIcon = QIcon(pixmap);
-    return colorIcon;
-#else
-    return icon;
-#endif
-}
-
-void MainWindow::updateWindowTitle()
-{
-    xTools& xTools = xTools::singleton();
-    QString title = xTools.appFriendlyName();
-    title += " v";
-    title += QApplication::applicationVersion();
-    setWindowTitle(title);
+    QMainWindow::closeEvent(event);
 }
 
 void MainWindow::initMenuBar()
@@ -164,67 +130,54 @@ void MainWindow::initMenuBar()
     initToolMenu();
     initOptionMenu();
     initViewMenu();
+    initMenuLanguage();
     initLinksMenu();
     initHelpMenu();
 }
 
-void MainWindow::closeEvent(QCloseEvent* event)
-{
-    save();
-
-    g_xTools.settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
-#ifdef Q_OS_WIN
-    if (g_xTools.settings()->value(m_settingsKey.exitToSystemTray).toBool()) {
-        hide();
-        event->ignore();
-        return;
-    }
-#endif
-    QMainWindow::closeEvent(event);
-}
-
-QString MainWindow::qtConfFileName()
-{
-    return QCoreApplication::applicationDirPath() + "/qt.conf";
-}
-
 void MainWindow::initFileMenu()
 {
-    auto newWindowAction = m_fileMenu->addAction(tr("New Window"), this, []() {
-        auto* w = new IOPage(IOPage::Left, g_xTools.settings());
-        w->setWindowTitle("xTools");
-        w->show();
-    });
-    newWindowAction->setShortcut(QKeySequence::New);
-
-    m_fileMenu->addSeparator();
-    auto saveAction = m_fileMenu->addAction(tr("Save Parameters"),
-                                            this,
-                                            &MainWindow::onSaveActionTriggered);
-    saveAction->setShortcut(QKeySequence::Save);
-
-    auto importActioni = m_fileMenu->addAction(tr("Import Parameters"),
-                                               this,
-                                               &MainWindow::onImportActionTriggered);
-    importActioni->setShortcut(QKeySequence::Open);
-
-    auto exportAction = m_fileMenu->addAction(tr("Export Parameters"),
-                                              this,
-                                              &MainWindow::onExportActionTriggered);
-    exportAction->setShortcuts(QKeySequence::SaveAs);
-
-    m_fileMenu->addSeparator();
-    m_fileMenu->addAction(m_exitAction);
+    auto fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addAction(
+        tr("New Window"),
+        this,
+        []() {
+            auto* w = new IOPage(IOPage::Left, xApp->settings());
+            w->setWindowTitle("xTools");
+            w->show();
+        },
+        QKeySequence::New);
+    fileMenu->addSeparator();
+    fileMenu->addAction(tr("Save Parameters"),
+                        this,
+                        &MainWindow::onSaveActionTriggered,
+                        QKeySequence::Save);
+    fileMenu->addAction(tr("Import Parameters"),
+                        this,
+                        &MainWindow::onImportActionTriggered,
+                        QKeySequence::Open);
+    fileMenu->addAction(tr("Export Parameters"),
+                        this,
+                        &MainWindow::onExportActionTriggered,
+                        QKeySequence::SaveAs);
+    fileMenu->addSeparator();
+    fileMenu->addAction(
+        tr("Exit Application"),
+        this,
+        []() {
+            QApplication::closeAllWindows();
+            QApplication::quit();
+        },
+        QKeySequence::Quit);
 }
 
 void MainWindow::initToolMenu()
 {
-    m_toolMenu = new QMenu(tr("&Tools"));
-    menuBar()->insertMenu(m_languageMenu->menuAction(), m_toolMenu);
+    auto toolMenu = menuBar()->addMenu(tr("&Tools"));
 
     QList<int> supportedAssistants = AssistantFactory::instance()->supportedAssistants();
-    QMenu* newMenu = m_toolMenu->addMenu(tr("New"));
-    m_toolMenu->addSeparator();
+    QMenu* newMenu = toolMenu->addMenu(tr("New"));
+    toolMenu->addSeparator();
 
     for (auto& type : supportedAssistants) {
         QString name = AssistantFactory::instance()->assistantName(type);
@@ -234,7 +187,7 @@ void MainWindow::initToolMenu()
         Q_ASSERT_X(assistant, __FUNCTION__, "A null assistant widget!");
 
         assistant->hide();
-        m_toolMenu->addAction(action);
+        toolMenu->addAction(action);
         connect(action, &QAction::triggered, this, [=]() {
             if (assistant->isHidden()) {
                 assistant->show();
@@ -259,22 +212,30 @@ void MainWindow::initToolMenu()
 
 void MainWindow::initOptionMenu()
 {
-    m_optionMenu->addSeparator();
-    auto* proxy = m_optionMenu->addAction(tr("Use System Proxy"));
+    auto optionMenu = menuBar()->addMenu(tr("&Options"));
+
+    initOptionMenuHdpiPolicy(optionMenu);
+    initOptionMenuAppStyleMenu(optionMenu);
+    initOptionMenuColorScheme(optionMenu);
+    optionMenu->addSeparator();
+    initOptionMenuSettingsMenu(optionMenu);
+    optionMenu->addSeparator();
+
+    auto* proxy = optionMenu->addAction(tr("Use System Proxy"));
     proxy->setCheckable(true);
-    bool useSystemProxy = g_xTools.settings()->value(m_settingsKey.useSystemProxy).toBool();
+    bool useSystemProxy = xApp->settings()->value(m_settingsKey.useSystemProxy).toBool();
     proxy->setChecked(useSystemProxy);
     QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
     connect(proxy, &QAction::triggered, this, [=]() {
         QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
-        g_xTools.settings()->setValue(m_settingsKey.useSystemProxy, proxy->isChecked());
+        xApp->settings()->setValue(m_settingsKey.useSystemProxy, proxy->isChecked());
     });
 
     auto* trayAction = new QAction(tr("Exit to System Tray"), this);
     trayAction->setCheckable(true);
-    m_optionMenu->addAction(trayAction);
+    optionMenu->addAction(trayAction);
 
-    QVariant v = g_xTools.settings()->value(m_settingsKey.exitToSystemTray);
+    QVariant v = xApp->settings()->value(m_settingsKey.exitToSystemTray);
     if (!v.isNull()) {
         bool isExitToSystemTray = v.toBool();
         trayAction->setChecked(isExitToSystemTray);
@@ -282,14 +243,64 @@ void MainWindow::initOptionMenu()
 
     connect(trayAction, &QAction::triggered, this, [=]() {
         bool keep = trayAction->isChecked();
-        g_xTools.settings()->setValue(m_settingsKey.exitToSystemTray, keep);
+        xApp->settings()->setValue(m_settingsKey.exitToSystemTray, keep);
     });
+}
+
+void MainWindow::initMenuLanguage()
+{
+    QMap<QString, QString> languageFlagNameMap;
+    languageFlagNameMap.insert("zh_CN", "简体中文");
+    languageFlagNameMap.insert("en", "English");
+#if 0
+    languageFlagNameMap.insert("zh_TW", "繁體中文");
+    languageFlagNameMap.insert("ar", "العربية");
+    languageFlagNameMap.insert("cs", "Čeština");
+    languageFlagNameMap.insert("da", "Dansk");
+    languageFlagNameMap.insert("de", "Deutsch");
+    languageFlagNameMap.insert("es", "Español");
+    languageFlagNameMap.insert("fa", "فارسی");
+    languageFlagNameMap.insert("fi", "Suomi");
+    languageFlagNameMap.insert("fr", "Français");
+    languageFlagNameMap.insert("he", "עִבְרִית");
+    languageFlagNameMap.insert("uk", "українська мова");
+    languageFlagNameMap.insert("it", "Italiano");
+    languageFlagNameMap.insert("ja", "日本语");
+    languageFlagNameMap.insert("ko", "한글");
+    languageFlagNameMap.insert("lt", "Lietuvių kalba");
+    languageFlagNameMap.insert("pl", "Polski");
+    languageFlagNameMap.insert("pt", "Português");
+    languageFlagNameMap.insert("ru", "русский язык");
+    languageFlagNameMap.insert("sk", "Slovenčina");
+    languageFlagNameMap.insert("sl", "Slovenščina");
+    languageFlagNameMap.insert("sv", "Svenska");
+#endif
+
+    QMenu* languageMenu = menuBar()->addMenu(tr("&Languages"));
+    static auto languageActionGroup = new QActionGroup(this);
+    for (auto it = languageFlagNameMap.begin(); it != languageFlagNameMap.end(); ++it) {
+        auto* action = new QAction(it.value(), this);
+        action->setCheckable(true);
+        languageMenu->addAction(action);
+        languageActionGroup->addAction(action);
+
+        Application::SettingsKey keys;
+        connect(action, &QAction::triggered, this, [=]() {
+            xApp->settings()->setValue(keys.language, it.key());
+            tryToReboot();
+        });
+
+        QString defaultLanguage = QLocale::system().name();
+        QString language = xApp->settings()->value(keys.language, defaultLanguage).toString();
+        if (language == it.key()) {
+            action->setChecked(true);
+        }
+    }
 }
 
 void MainWindow::initViewMenu()
 {
-    auto* viewMenu = new QMenu(tr("&View"));
-    menuBar()->insertMenu(m_toolMenu->menuAction(), viewMenu);
+    auto viewMenu = menuBar()->addMenu(tr("&View"));
 
     auto a1x1 = viewMenu->addAction("1x1", this, [=]() { updateGrid(WindowGrid::Grid1x1); });
     auto a1x2 = viewMenu->addAction("1x2", this, [=]() { updateGrid(WindowGrid::Grid1x2); });
@@ -317,7 +328,7 @@ void MainWindow::initViewMenu()
         a2x2->setChecked(true);
     }
 
-    auto windowGrid = g_xTools.settings()->value(m_settingsKey.windowGrid).toInt();
+    auto windowGrid = xApp->settings()->value(m_settingsKey.windowGrid).toInt();
     if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
         a1x2->setChecked(true);
         a1x2->trigger();
@@ -333,19 +344,43 @@ void MainWindow::initViewMenu()
     }
 }
 
+void MainWindow::initLinksMenu()
+{
+    auto linksMenu = menuBar()->addMenu(tr("Links"));
+    linksMenu->addAction(tr("Get Sources from Github"), this, []() {
+        QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL));
+    });
+    linksMenu->addAction(tr("Get Sources from Gitee"), this, []() {
+        QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL));
+    });
+}
+
 void MainWindow::initHelpMenu()
 {
+    auto helpMenu = menuBar()->addMenu(tr("&Help"));
+    helpMenu->addAction(tr("About Qt"), qApp, &QApplication::aboutQt);
+    auto aboutAction = helpMenu->addAction(tr("About") + " " + QApplication::applicationName());
+#if defined(QT_DEBUG)
+    helpMenu->addAction(tr("Screenshot"), this, [=]() {
+        QPixmap pix = this->grab();
+        // copy to clipboard
+        QApplication::clipboard()->setPixmap(pix);
+    });
+#endif
+
+    connect(aboutAction, &QAction::triggered, this, &MainWindow::onAboutActionTriggered);
+
 #if defined(Q_OS_WIN) && !defined(X_TOOLS_ENABLE_MODULE_PRIVATE)
-    m_helpMenu->addSeparator();
-    m_helpMenu->addAction(QIcon(":/res/Icons/IconBuy.svg"), tr("Bug from Store"), this, []() {
+    helpMenu->addSeparator();
+    helpMenu->addAction(QIcon(":/res/Icons/IconBuy.svg"), tr("Bug from Store"), this, []() {
         QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
         QDesktopServices::openUrl(url);
     });
 #endif
-    m_helpMenu->addSeparator();
-    m_helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
-    m_helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
-    m_helpMenu->addSeparator();
+    helpMenu->addSeparator();
+    helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
+    helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
+    helpMenu->addSeparator();
     // clang-format off
     QList<QPair<QString, QString>> ctxs;
     ctxs.append(qMakePair("glog", "https://github.com/google/glog"));
@@ -354,27 +389,120 @@ void MainWindow::initHelpMenu()
     ctxs.append(qMakePair("qmdnsengine", "https://github.com/nitroshare/qmdnsengine"));
     ctxs.append(qMakePair("Qt-Advanced-Stylesheets", "https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets"));
     ctxs.append(qMakePair("QXlsx", "https://github.com/QtExcel/QXlsx"));
-    QMenu* thirdPartyMenu = m_helpMenu->addMenu(tr("Third Party Open Source"));
+    QMenu* thirdPartyMenu = helpMenu->addMenu(tr("Third Party Open Source"));
     for (auto& ctx : ctxs) {
         thirdPartyMenu->addAction(ctx.first, this, [ctx]() {
             QDesktopServices::openUrl(QUrl(ctx.second));
         });
     }
-    m_helpMenu->addMenu(thirdPartyMenu);
+    helpMenu->addMenu(thirdPartyMenu);
     // clang-format on
 }
 
-void MainWindow::initLinksMenu()
+void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
 {
-    auto* linksMenu = new QMenu(tr("Links"), this);
-    menuBar()->insertMenu(m_helpMenu->menuAction(), linksMenu);
+    QMenu* appStyleMenu = optionMenu->addMenu(tr("Application Style"));
+    static QActionGroup* appStyleActionGroup = new QActionGroup(this);
+    for (QString& key : QStyleFactory::keys()) {
+        auto* action = new QAction(key, this);
+        action->setCheckable(true);
+        appStyleActionGroup->addAction(action);
 
-    linksMenu->addAction(tr("Get Sources from Github"), this, []() {
-        QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL));
+        if (key == xApp->style()->name()) {
+            action->setChecked(true);
+        }
+
+        connect(action, &QAction::triggered, this, [=]() {
+            Application::SettingsKey settingKeys;
+            xApp->settings()->setValue(settingKeys.style, key);
+            tryToReboot();
+        });
+    }
+
+    appStyleMenu->addActions(appStyleActionGroup->actions());
+#ifdef X_TOOLS_ENABLE_QSS
+    optionMenu->addMenu(QssMgr::singleton().themeMenu());
+#endif
+}
+
+void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
+{
+    QMenu* settingsMenu = new QMenu(tr("Settings"), this);
+    optionMenu->addMenu(settingsMenu);
+
+    auto clearAction = settingsMenu->addAction(tr("Clear Settings"));
+    connect(clearAction, &QAction::triggered, this, [=]() {
+        xApp->settings()->setValue(Application::SettingsKey().clearSettings, true);
+        tryToReboot();
     });
-    linksMenu->addAction(tr("Get Sources from Gitee"), this, []() {
-        QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL));
+
+    auto openAction = settingsMenu->addAction(tr("Open Settings Directory"));
+    connect(openAction, &QAction::triggered, this, [=]() {
+        QDesktopServices::openUrl(xApp->settingsPath());
     });
+}
+
+void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
+{
+    QMenu* menu = optionMenu->addMenu(tr("HDPI Policy"));
+    QActionGroup* actionGroup = new QActionGroup(this);
+
+    typedef Qt::HighDpiScaleFactorRoundingPolicy Policy;
+    QMap<Policy, QString> policyMap;
+    policyMap.insert(Policy::Unset, QObject::tr("System"));
+    policyMap.insert(Policy::Round, QObject::tr("Round up for .5 and above"));
+    policyMap.insert(Policy::Ceil, QObject::tr("Always round up"));
+    policyMap.insert(Policy::Floor, QObject::tr("Always round down"));
+    policyMap.insert(Policy::RoundPreferFloor, QObject::tr("Round up for .75 and above"));
+    policyMap.insert(Policy::PassThrough, QObject::tr("Don't round"));
+
+    for (auto it = policyMap.begin(); it != policyMap.end(); ++it) {
+        QString name = it.value();
+        int policy = static_cast<int>(it.key());
+        auto action = menu->addAction(name, this, [=]() {
+            Application::SettingsKey settingKeys;
+            xApp->settings()->setValue(settingKeys.hdpi, policy);
+            tryToReboot();
+        });
+
+        actionGroup->addAction(action);
+        action->setCheckable(true);
+        if (policy == static_cast<int>(xApp->highDpiScaleFactorRoundingPolicy())) {
+            action->setChecked(true);
+        }
+    }
+
+    menu->addActions(actionGroup->actions());
+    optionMenu->addMenu(menu);
+}
+
+void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
+{
+    auto colorSchemeMenu = new QMenu(tr("Color Scheme"));
+    QMap<Qt::ColorScheme, QString> colorSchemeMap;
+    colorSchemeMap.insert(Qt::ColorScheme::Dark, tr("Dark"));
+    colorSchemeMap.insert(Qt::ColorScheme::Light, tr("Light"));
+    colorSchemeMap.insert(Qt::ColorScheme::Unknown, tr("System"));
+
+    QActionGroup* actionGroup = new QActionGroup(this);
+    for (auto it = colorSchemeMap.begin(); it != colorSchemeMap.end(); ++it) {
+        auto action = new QAction(it.value(), this);
+        action->setCheckable(true);
+        actionGroup->addAction(action);
+        colorSchemeMenu->addAction(action);
+
+        if (it.key() == xApp->styleHints()->colorScheme()) {
+            action->setChecked(true);
+        }
+
+        connect(action, &QAction::triggered, this, [=]() {
+            Application::SettingsKey keys;
+            xApp->settings()->setValue(keys.colorScheme, static_cast<int>(it.key()));
+            xApp->setupColorScheme();
+        });
+    }
+
+    optionMenu->addMenu(colorSchemeMenu);
 }
 
 void MainWindow::updateGrid(WindowGrid grid)
@@ -402,7 +530,7 @@ void MainWindow::updateGrid(WindowGrid grid)
     }
 
     m_windowGrid = grid;
-    g_xTools.settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
+    xApp->settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
 }
 
 void MainWindow::showHistory()
@@ -458,11 +586,42 @@ void MainWindow::showQrCode()
     dialog.exec();
 }
 
+void MainWindow::tryToReboot()
+{
+    QString title = tr("Need to Reboot");
+    QString text = tr("The operation need to reboot to effected, reboot the application now?");
+    int ret = QMessageBox::information(nullptr, title, text, QMessageBox::Ok | QMessageBox::Cancel);
+    if (ret == QMessageBox::Ok) {
+        QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
+        xApp->execMs(100);
+        qApp->closeAllWindows();
+    }
+}
+
+QString MainWindow::qtConfFileName()
+{
+    return QCoreApplication::applicationDirPath() + "/qt.conf";
+}
+
+void MainWindow::createQtConf()
+{
+    QString fileName = qtConfFileName();
+    QFile file(fileName);
+    if (file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate)) {
+        QTextStream out(&file);
+        out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
+        file.close();
+    } else {
+        auto info = QString("Open file(%1) failed: %2").arg(fileName, file.errorString());
+        qWarning() << qPrintable(info);
+    }
+}
+
 void MainWindow::load(const QString& fileName) const
 {
     QString filePath = fileName;
     if (fileName.isEmpty()) {
-        const QString path = g_xTools.settingsPath();
+        const QString path = xApp->settingsPath();
         filePath = path + "/data.json";
     }
 
@@ -499,7 +658,7 @@ void MainWindow::save(const QString& fileName) const
 
     QString filePath = fileName;
     if (fileName.isEmpty()) {
-        const QString path = g_xTools.settingsPath();
+        const QString path = xApp->settingsPath();
         filePath = path + "/data.json";
     }
 
@@ -546,275 +705,24 @@ void MainWindow::onExportActionTriggered()
     save(fileName);
 }
 
-void MainWindow::initMenuFile()
-{
-    QMenuBar* menuBar = this->menuBar();
-    m_fileMenu = menuBar->addMenu(tr("&File"));
-    m_exitAction = m_fileMenu->addAction(tr("Exit Application"), this, []() {
-        QApplication::closeAllWindows();
-        QApplication::quit();
-    });
-    m_exitAction->setShortcut(QKeySequence::Quit);
-}
-
-void MainWindow::initMenuOption()
-{
-    m_optionMenu = new QMenu(tr("&Options"));
-    menuBar()->addMenu(m_optionMenu);
-
-    initOptionMenuHdpiPolicy();
-    initOptionMenuAppStyleMenu();
-    initOptionMenuColorScheme();
-    m_optionMenu->addSeparator();
-    initOptionMenuSettingsMenu();
-}
-
-void MainWindow::initMenuLanguage()
-{
-    m_languageMenu = new QMenu(tr("&Languages"), this);
-    menuBar()->addMenu(m_languageMenu);
-
-    xTools& xTools = xTools::singleton();
-    QStringList languages = xTools.languageSupportedLanguages();
-    QString settingLanguage = xTools.settingsLanguage();
-    for (auto& language : languages) {
-        auto* action = new QAction(language, this);
-        action->setCheckable(true);
-        m_languageMenu->addAction(action);
-        m_languageActionGroup->addAction(action);
-
-        connect(action, &QAction::triggered, this, [=]() {
-            g_xTools.languageSetupAppLanguage(language);
-            g_xTools.tryToReboot();
-        });
-
-        if (settingLanguage.isEmpty()) {
-            if (language == xTools.languageDefaultLanguage()) {
-                action->setChecked(true);
-            }
-        } else {
-            if (language == settingLanguage) {
-                action->setChecked(true);
-            }
-        }
-    }
-}
-
-void MainWindow::initMenuHelp()
-{
-    QMenuBar* menuBar = this->menuBar();
-    m_helpMenu = menuBar->addMenu(tr("&Help"));
-    m_aboutQtAction = m_helpMenu->addAction(tr("About Qt"), qApp, &QApplication::aboutQt);
-    m_aboutAction = m_helpMenu->addAction(tr("About") + " " + QApplication::applicationName());
-#if defined(QT_DEBUG)
-    m_helpMenu->addAction(tr("Screenshot"), this, [=]() {
-        QPixmap pix = this->grab();
-        // copy to clipboard
-        QApplication::clipboard()->setPixmap(pix);
-    });
-#endif
-
-    connect(m_aboutAction, &QAction::triggered, this, &MainWindow::onAboutActionTriggered);
-}
-
-void MainWindow::initOptionMenuAppStyleMenu()
-{
-    xTools& xTools = xTools::singleton();
-    m_appStyleMenu = new QMenu(tr("Application Style"), this);
-    m_optionMenu->addMenu(m_appStyleMenu);
-    QStringList keys = QStyleFactory::keys();
-    const QString style = xTools.settingsAppStyle();
-    for (QString& key : keys) {
-        auto* action = new QAction(key, this);
-        action->setObjectName(key);
-        action->setCheckable(true);
-        m_appStyleActionGroup->addAction(action);
-
-        if (key == style || key.toLower() == style) {
-            action->setChecked(true);
-        }
-
-        connect(action, &QAction::triggered, this, [=]() {
-            g_xTools.settingsSetAppStyle(key);
-            tryToReboot();
-        });
-    }
-
-    m_appStyleMenu->addActions(m_appStyleActionGroup->actions());
-
-#ifdef X_TOOLS_ENABLE_QSS
-    m_themeAction = m_optionMenu->addMenu(QssMgr::singleton().themeMenu());
-#endif
-}
-
-void MainWindow::initOptionMenuSettingsMenu()
-{
-    QMenu* menu = new QMenu(tr("Settings"), this);
-    m_optionMenu->addMenu(menu);
-
-    auto clearAction = new QAction(tr("Clear Settings"), this);
-    menu->addAction(clearAction);
-    connect(clearAction, &QAction::triggered, this, [=]() {
-        xTools& xTools = xTools::singleton();
-        xTools.settingsSetClearSettings(true);
-        tryToReboot();
-    });
-
-    auto openAction = new QAction(tr("Open Settings Directory"), this);
-    menu->addAction(openAction);
-    connect(openAction, &QAction::triggered, this, [=]() {
-        xTools& xTools = xTools::singleton();
-        QDesktopServices::openUrl(xTools.settingsPath());
-    });
-}
-
-void MainWindow::initOptionMenuHdpiPolicy()
-{
-    QMenu* menu = new QMenu(tr("HDPI Policy"));
-    QActionGroup* actionGroup = new QActionGroup(this);
-    xTools& xTools = xTools::singleton();
-    int currentPolicy = xTools.settingsHdpiPolicy();
-    auto supportedPolicies = xTools.hdpiSupportedPolicies();
-    for (auto& policy : supportedPolicies) {
-        auto name = xTools.hdpiPolicyName(policy.toInt());
-        auto action = menu->addAction(name, this, [=]() {
-            onHdpiPolicyActionTriggered(policy.toInt());
-        });
-
-        actionGroup->addAction(action);
-        action->setCheckable(true);
-        if (policy.toInt() == currentPolicy) {
-            action->setChecked(true);
-        }
-    }
-    menu->addActions(actionGroup->actions());
-    m_optionMenu->addMenu(menu);
-}
-
-void MainWindow::initOptionMenuColorScheme()
-{
-    m_colorSchemeMenu = new QMenu(tr("Color Scheme"));
-    static QActionGroup actionGroup(this);
-    auto sys = m_colorSchemeMenu->addAction(tr("System"));
-    auto dark = m_colorSchemeMenu->addAction(tr("Dark"));
-    auto light = m_colorSchemeMenu->addAction(tr("Light"));
-
-    sys->setCheckable(true);
-    dark->setCheckable(true);
-    light->setCheckable(true);
-
-    actionGroup.addAction(sys);
-    actionGroup.addAction(dark);
-    actionGroup.addAction(light);
-
-    m_colorSchemeMenu->addActions(actionGroup.actions());
-    m_optionMenu->addMenu(m_colorSchemeMenu);
-
-    connect(&actionGroup, &QActionGroup::triggered, this, [=](QAction* action) {
-        xTools& xTools = xTools::singleton();
-        if (action == dark) {
-            xTools.settingsSetColorScheme(static_cast<int>(Qt::ColorScheme::Dark));
-        } else if (action == light) {
-            xTools.settingsSetColorScheme(static_cast<int>(Qt::ColorScheme::Light));
-        } else {
-            xTools.settingsSetColorScheme(static_cast<int>(Qt::ColorScheme::Unknown));
-        }
-
-        auto currentScheme = xTools.settingsColorScheme();
-        QStyleHints* styleHints = QApplication::styleHints();
-        styleHints->setColorScheme(static_cast<Qt::ColorScheme>(currentScheme));
-    });
-
-    xTools& xTools = xTools::singleton();
-    auto currentScheme = xTools.settingsColorScheme();
-    switch (currentScheme) {
-    case static_cast<int>(Qt::ColorScheme::Dark):
-        dark->setChecked(true);
-        break;
-    case static_cast<int>(Qt::ColorScheme::Light):
-        light->setChecked(true);
-        break;
-    default:
-        currentScheme = static_cast<int>(Qt::ColorScheme::Unknown);
-        sys->setChecked(true);
-        break;
-    }
-
-    QStyleHints* styleHints = QApplication::styleHints();
-    styleHints->setColorScheme(static_cast<Qt::ColorScheme>(currentScheme));
-}
-
-void MainWindow::onHdpiPolicyActionTriggered(int policy)
-{
-    xTools& xTools = xTools::singleton();
-    xTools.settingsSetHdpiPolicy(int(policy));
-    tryToReboot();
-}
-
 void MainWindow::onAboutActionTriggered()
 {
-    xTools& xTools = xTools::singleton();
-    QString buildDateTimeFormat = xTools.dtSystemDateFormat();
+    QString buildDateTimeFormat = systemDateFormat();
     buildDateTimeFormat += " ";
-    buildDateTimeFormat += xTools.dtSystemTimeFormat();
-    QString buildDateTimeString = xTools.dtBuildDateTimeString(buildDateTimeFormat);
-    QString year = xTools.dtBuildDateTimeString("yyyy");
-    const QString version = qApp->applicationVersion();
-    const QString name = qApp->applicationName();
+    buildDateTimeFormat += systemTimeFormat();
+    QString dtString = buildDateTimeString(buildDateTimeFormat);
+    QString year = buildDateTimeString("yyyy");
+
     QString info;
-    info += name + QString(" ") + version + " " + tr("(A Part of xTools Project)") + "\n\n";
+    info += qApp->applicationName() + " v" + qApp->applicationVersion() + "\n\n";
 #ifdef X_TOOLS_GIT_COMMIT
-    info += tr("Commit") + QString("(xTools)") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
+    info += tr("Commit hash") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
 #endif
-#ifdef X_APP_GIT_COMMIT
-    info += tr("Commit") + QString("(%1)").arg(name) + ": " + X_APP_GIT_COMMIT + "\n\n";
+#ifdef X_TOOLS_GIT_COMMIT_TIME
+    info += tr("Commit time") + ": " + X_TOOLS_GIT_COMMIT_TIME + "\n\n";
 #endif
-    info += tr("Build Date") + ": " + buildDateTimeString + "\n\n";
+    info += tr("Build Date") + ": " + dtString + "\n\n";
     info += QString("Copyright 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
     info += tr("All rights reserved.");
     QMessageBox::about(this, tr("About"), info);
-}
-
-bool MainWindow::tryToReboot()
-{
-    return g_xTools.tryToReboot();
-}
-
-void MainWindow::createQtConf()
-{
-    QString fileName = qtConfFileName();
-    QFile file(fileName);
-    if (file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate)) {
-        QTextStream out(&file);
-        out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
-        file.close();
-    } else {
-        auto info = QString("Open file(%1) failed: %2").arg(fileName, file.errorString());
-        qWarning() << qPrintable(info);
-    }
-}
-
-void MainWindow::showQqQrCode()
-{
-    QDialog dialog;
-    dialog.setWindowTitle(tr("QR Code"));
-
-    typedef QPair<QString, QString> QrCodeInfo;
-    QList<QPair<QString, QString>> qrCodeInfoList;
-    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/res/Images/UserQQ.jpg")}
-                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/res/Images/QtQQ.jpg")};
-
-    QTabWidget* tabWidget = new QTabWidget(&dialog);
-    for (auto& var : qrCodeInfoList) {
-        QLabel* label = new QLabel(tabWidget);
-        label->setPixmap(QPixmap::fromImage(QImage(var.second)));
-        tabWidget->addTab(label, var.first);
-    }
-
-    QHBoxLayout* layout = new QHBoxLayout(&dialog);
-    layout->addWidget(tabWidget);
-    dialog.setLayout(layout);
-    dialog.setModal(true);
-    dialog.show();
-    dialog.exec();
 }

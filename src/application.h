@@ -12,6 +12,8 @@
 #include <QSettings>
 #include <QSplashScreen>
 
+#define xApp (static_cast<Application *>(QCoreApplication::instance()))
+
 class ApplicationPrivate;
 class Application : public QApplication
 {
@@ -22,6 +24,8 @@ public:
         const QString hdpi{"Application/hdpi"};
         const QString style{"Application/style"};
         const QString language{"Application/language"};
+        const QString clearSettings{"Application/clearSettings"};
+        const QString colorScheme{"colorScheme"};
     };
 
 public:
@@ -31,14 +35,14 @@ public:
     static void installLog(char *argv0);
     static void uninstallLog();
     static void setupHdpi();
-    static void setupAppStyle();
-    void execMs(int ms);
-    void setupLanguage();
-
     static QSettings *settings();
     static QString settingsPath();
 
-    // These functions must be called after the application object is created.
-    static QSplashScreen *splashScreen();
-    static void showSplashScreenMessage(const QString &msg);
+    void setupAppStyle();
+    void execMs(int ms);
+    void setupLanguage();
+    void setupColorScheme();
+
+    QSplashScreen *splashScreen();
+    void showSplashScreenMessage(const QString &msg);
 };

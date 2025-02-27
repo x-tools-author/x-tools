@@ -15,15 +15,14 @@ int main(const int argc, char *argv[])
     Application::setApplicationName("xTools");
     Application::installLog(argv[0]);
     Application::setupHdpi();
-    Application::setupAppStyle();
     Application app(argc, argv);
-    app.showSplashScreenMessage(QObject::tr("Application is booting..."));
-    app.execMs(200);
-    app.showSplashScreenMessage(QObject::tr("Setup language..."));
     app.setupLanguage();
+    app.showSplashScreenMessage(QObject::tr("Application is booting..."));
+    app.setupAppStyle();
+    app.setupColorScheme();
 
-    QSplashScreen *splash = Application::splashScreen();
     MainWindow window;
+    QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
     window.resize(620 * 1.732, 620);
     window.show();

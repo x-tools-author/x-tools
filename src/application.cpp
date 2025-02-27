@@ -17,6 +17,7 @@
 #include <QStandardPaths>
 #include <QStyle>
 #include <QStyleFactory>
+#include <QStyleHints>
 #include <QTimer>
 #include <QTranslator>
 
@@ -110,10 +111,27 @@ void Application::setupHdpi()
     qInfo() << "The current high dpi policy is:" << cookedPolicy;
 }
 
+QSettings *Application::settings()
+{
+    QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
+    QString path = QStandardPaths::writableLocation(type);
+    QString fileName = QString("%1/%2_v8.ini").arg(path, applicationName());
+    static QSettings settings(fileName, QSettings::IniFormat);
+
+    return &settings;
+}
+
+QString Application::settingsPath()
+{
+    QSettings *settings = Application::settings();
+    QString path = settings->fileName();
+    return path.left(path.lastIndexOf('/'));
+}
+
 void Application::setupAppStyle()
 {
     QSettings *settings = Application::settings();
-    if (!Application::style()) {
+    if (!qApp || !Application::style()) {
         return;
     }
 
@@ -167,21 +185,13 @@ void Application::setupLanguage()
     ::setupLanguage(xToolsQmFile);
 }
 
-QSettings *Application::settings()
-{
-    QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
-    QString path = QStandardPaths::writableLocation(type);
-    QString fileName = QString("%1/%2_v8.ini").arg(path, applicationName());
-    static QSettings settings(fileName, QSettings::IniFormat);
-
-    return &settings;
-}
-
-QString Application::settingsPath()
+void Application::setupColorScheme()
 {
     QSettings *settings = Application::settings();
-    QString path = settings->fileName();
-    return path.left(path.lastIndexOf('/'));
+    auto def = qApp->styleHints()->colorScheme();
+    int colorScheme = settings->value(SettingsKey().colorScheme, static_cast<int>(def)).toInt();
+    qApp->styleHints()->setColorScheme(static_cast<Qt::ColorScheme>(colorScheme));
+    qInfo() << "The current color scheme is:" << qApp->styleHints()->colorScheme();
 }
 
 QSplashScreen *Application::splashScreen()
