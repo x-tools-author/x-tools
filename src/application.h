@@ -17,15 +17,28 @@ class Application : public QApplication
 {
     Q_OBJECT
 public:
+    struct SettingsKey
+    {
+        const QString hdpi{"Application/hdpi"};
+        const QString style{"Application/style"};
+        const QString language{"Application/language"};
+    };
+
+public:
     explicit Application(int argc, char **argv);
     ~Application() override;
 
-    static void installLog();
+    static void installLog(char *argv0);
     static void uninstallLog();
     static void setupHdpi();
+    static void setupAppStyle();
+    void execMs(int ms);
+    void setupLanguage();
 
-    QSettings *settings();
+    static QSettings *settings();
+    static QString settingsPath();
 
-private:
-    ApplicationPrivate *d_ptr;
+    // These functions must be called after the application object is created.
+    static QSplashScreen *splashScreen();
+    static void showSplashScreenMessage(const QString &msg);
 };
