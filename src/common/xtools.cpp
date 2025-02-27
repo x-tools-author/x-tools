@@ -85,25 +85,25 @@ QString communicationName(int type)
 {
     switch (type) {
     case static_cast<int>(CommunicationType::SerialPort):
-        return QObject::QObject::tr("Serial Port");
+        return QObject::tr("Serial Port");
     case static_cast<int>(CommunicationType::BleCentral):
-        return QObject::QObject::tr("BLE Central");
+        return QObject::tr("BLE Central");
     case static_cast<int>(CommunicationType::BlePeripheral):
-        return QObject::QObject::tr("BLE Peripheral");
+        return QObject::tr("BLE Peripheral");
     case static_cast<int>(CommunicationType::UdpClient):
-        return QObject::QObject::tr("UDP Client");
+        return QObject::tr("UDP Client");
     case static_cast<int>(CommunicationType::UdpServer):
-        return QObject::QObject::tr("UDP Server");
+        return QObject::tr("UDP Server");
     case static_cast<int>(CommunicationType::TcpClient):
-        return QObject::QObject::tr("TCP Client");
+        return QObject::tr("TCP Client");
     case static_cast<int>(CommunicationType::TcpServer):
-        return QObject::QObject::tr("TCP Server");
+        return QObject::tr("TCP Server");
     case static_cast<int>(CommunicationType::WebSocketClient):
-        return QObject::QObject::tr("WebSocket Client");
+        return QObject::tr("WebSocket Client");
     case static_cast<int>(CommunicationType::WebSocketServer):
-        return QObject::QObject::tr("WebSocket Server");
+        return QObject::tr("WebSocket Server");
     case static_cast<int>(CommunicationType::ChartsTest):
-        return QObject::QObject::tr("Charts Test");
+        return QObject::tr("Charts Test");
     default:
         return "Unknown";
     }
@@ -117,7 +117,7 @@ void setupCommunicationTypes(QComboBox *comboBox)
 
     comboBox->clear();
     QList<int> deviceTypes = supportedCommunicationTypes();
-    for (int type : deviceTypes) {
+    for (int &type : deviceTypes) {
         comboBox->addItem(communicationName(type), type);
     }
 
@@ -143,17 +143,17 @@ QString textFormatName(TextFormat format)
 {
     switch (format) {
     case TextFormat::Bin:
-        return QObject::QObject::tr("Binary");
+        return QObject::tr("Binary");
     case TextFormat::Oct:
-        return QObject::QObject::tr("Octal");
+        return QObject::tr("Octal");
     case TextFormat::Dec:
-        return QObject::QObject::tr("Decimal");
+        return QObject::tr("Decimal");
     case TextFormat::Hex:
-        return QObject::QObject::tr("Hexadecimal");
+        return QObject::tr("Hexadecimal");
     case TextFormat::Ascii:
-        return QObject::QObject::tr("ASCII");
+        return QObject::tr("ASCII");
     case TextFormat::Utf8:
-        return QObject::QObject::tr("UTF-8");
+        return QObject::tr("UTF-8");
     default:
         return "Unknown";
     }
@@ -167,7 +167,7 @@ void setupTextFormat(QComboBox *comboBox)
 
     comboBox->clear();
     QList<int> textFormats = supportedTextFormats();
-    for (int format : textFormats) {
+    for (int &format : textFormats) {
         comboBox->addItem(textFormatName(static_cast<TextFormat>(format)), format);
     }
 
@@ -301,7 +301,7 @@ QString additionName(int affixes)
     case static_cast<int>(Affixes::NR):
         return "\\N\\R";
     default:
-        return QObject::QObject::tr("None");
+        return QObject::tr("None");
     }
 }
 
@@ -313,7 +313,7 @@ void setupAddition(QComboBox *comboBox)
 
     comboBox->clear();
     QList<int> additions = supportedAffixes();
-    for (int addition : additions) {
+    for (int &addition : additions) {
         comboBox->addItem(additionName(addition), addition);
     }
 }
@@ -360,7 +360,7 @@ QString escapeCharacterName(int escapeCharacter)
     case static_cast<int>(EscapeCharacter::R_N):
         return "\\r + \\n";
     default:
-        return QObject::QObject::tr("None");
+        return QObject::tr("None");
     }
 }
 
@@ -372,7 +372,7 @@ void setupEscapeCharacter(QComboBox *comboBox)
 
     comboBox->clear();
     QList<int> escapeCharacters = supportedEscapeCharacters();
-    for (int esc : escapeCharacters) {
+    for (int &esc : escapeCharacters) {
         comboBox->addItem(escapeCharacterName(esc), esc);
     }
 }
@@ -456,7 +456,7 @@ void setupResponseOption(QComboBox *comboBox)
     if (comboBox) {
         comboBox->clear();
         QList<int> options = supportedResponseOptions();
-        for (int option : options) {
+        for (int &option : options) {
             comboBox->addItem(responseOptionName(static_cast<ResponseOption>(option)), option);
         }
     }
@@ -674,7 +674,7 @@ SerialPortItem loadSerialPortItem(const QJsonObject &obj)
 void setupPortName(QComboBox *comboBox)
 {
     QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();
-    for (const auto &info : infos) {
+    for (auto &info : infos) {
         comboBox->addItem(info.portName());
     }
 }
@@ -682,7 +682,7 @@ void setupPortName(QComboBox *comboBox)
 void setupBaudRate(QComboBox *comboBox)
 {
     QList<int> baudRates = QSerialPortInfo::standardBaudRates();
-    for (const auto &baudRate : baudRates) {
+    for (auto &baudRate : baudRates) {
         comboBox->addItem(QString::number(baudRate), baudRate);
     }
     comboBox->setCurrentText("9600");
@@ -838,7 +838,7 @@ void setupTransferType(QComboBox *comboBox)
     comboBox->clear();
 
     auto types = supportedTransferTypes();
-    for (const auto &type : types) {
+    for (auto &type : types) {
         comboBox->addItem(transferTypeName(type), type);
     }
 }
@@ -875,7 +875,7 @@ void setupChartsDataFormat(QComboBox *comboBox)
     comboBox->clear();
 
     auto formats = supportedChartsDataFormats();
-    for (const auto &format : formats) {
+    for (auto &format : formats) {
         comboBox->addItem(chartsDataFormatName(format), format);
     }
 }
