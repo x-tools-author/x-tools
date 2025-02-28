@@ -7,12 +7,9 @@ function(x_tools_git_get_latest_tag working_dir prefix)
     OUTPUT_VARIABLE GIT_LATEST_TAG
     OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-  if(NOT GIT_LATEST_TAG)
-    message(STATUS "[git] No tags found.")
-    return()
-  endif()
-
-  if(${GIT_LATEST_TAG} STREQUAL "" OR ${GIT_LATEST_TAG} STREQUAL "continuous")
+  if(NOT GIT_LATEST_TAG
+     OR ${GIT_LATEST_TAG} STREQUAL ""
+     OR ${GIT_LATEST_TAG} STREQUAL "continuous")
     string(TIMESTAMP current_year "%Y")
     string(TIMESTAMP current_month "%m")
     string(TIMESTAMP current_day "%d")
