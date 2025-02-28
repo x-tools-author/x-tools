@@ -314,7 +314,9 @@ endif()
 if(X_TOOLS_LATEST_GIT_TAG MATCHES "^v[0-9].*")
   string(SUBSTRING ${X_TOOLS_LATEST_GIT_TAG} 1 -1 X_TOOLS_LATEST_GIT_TAG)
 endif()
-if(WIN32)
+if(WIN32
+   AND X_TOOLS_LATEST_GIT_TAG
+   AND NOT X_TOOLS_LATEST_GIT_TAG STREQUAL "")
   x_tools_generate_installer(xTools ${X_TOOLS_LATEST_GIT_TAG}
                              ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
 endif()
