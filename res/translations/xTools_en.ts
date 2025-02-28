@@ -2332,11 +2332,87 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
+        <location filename="../../src/common/xtools.cpp" line="146"/>
         <location filename="../../src/common/xtools.cpp" line="404"/>
         <location filename="../../src/common/xtools.cpp" line="861"/>
         <location filename="../../src/common/xtools.cpp" line="863"/>
         <source>Binary</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="88"/>
+        <source>Serial Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="90"/>
+        <source>BLE Central</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="92"/>
+        <source>BLE Peripheral</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="94"/>
+        <source>UDP Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="96"/>
+        <source>UDP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="98"/>
+        <source>TCP Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="100"/>
+        <source>TCP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="102"/>
+        <source>WebSocket Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="104"/>
+        <source>WebSocket Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="106"/>
+        <source>Charts Test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="148"/>
+        <source>Octal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="150"/>
+        <source>Decimal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="152"/>
+        <source>Hexadecimal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="154"/>
+        <source>ASCII</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="156"/>
+        <source>UTF-8</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="439"/>
@@ -2465,6 +2541,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
+        <location filename="../../src/common/xtools.cpp" line="304"/>
+        <location filename="../../src/common/xtools.cpp" line="363"/>
         <location filename="../../src/common/xtools.cpp" line="701"/>
         <location filename="../../src/common/xtools.cpp" line="719"/>
         <source>None</source>
@@ -2473,95 +2551,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/main.cpp" line="20"/>
         <source>Application is booting...</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>QObject::QObject</name>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="88"/>
-        <source>Serial Port</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="90"/>
-        <source>BLE Central</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="92"/>
-        <source>BLE Peripheral</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="94"/>
-        <source>UDP Client</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="96"/>
-        <source>UDP Server</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="98"/>
-        <source>TCP Client</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="100"/>
-        <source>TCP Server</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="102"/>
-        <source>WebSocket Client</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="104"/>
-        <source>WebSocket Server</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="106"/>
-        <source>Charts Test</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="146"/>
-        <source>Binary</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="148"/>
-        <source>Octal</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="150"/>
-        <source>Decimal</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="152"/>
-        <source>Hexadecimal</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="154"/>
-        <source>ASCII</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="156"/>
-        <source>UTF-8</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="304"/>
-        <location filename="../../src/common/xtools.cpp" line="363"/>
-        <source>None</source>
         <translation></translation>
     </message>
 </context>

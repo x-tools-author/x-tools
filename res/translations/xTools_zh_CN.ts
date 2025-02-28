@@ -2364,29 +2364,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <source>Critical Error</source>
-        <translation type="vanished">严重错误</translation>
+        <location filename="../../src/common/xtools.cpp" line="88"/>
+        <source>Serial Port</source>
+        <translation>串口助手</translation>
     </message>
     <message>
-        <source>The application has been crashed, clear settings file(all settings data of the application will be clear!) and reboot the application?</source>
-        <translation type="vanished">软件已崩溃，是否清空缓存后重启软件？</translation>
+        <location filename="../../src/common/xtools.cpp" line="90"/>
+        <source>BLE Central</source>
+        <translation>蓝牙助手</translation>
     </message>
     <message>
-        <source>(Store)</source>
-        <translation type="vanished">（商店）</translation>
+        <location filename="../../src/common/xtools.cpp" line="92"/>
+        <source>BLE Peripheral</source>
+        <translation>蓝牙助手</translation>
     </message>
     <message>
-        <source>Neet to Reboot</source>
-        <translation type="vanished">需要重启</translation>
+        <location filename="../../src/common/xtools.cpp" line="94"/>
+        <source>UDP Client</source>
+        <translation>UDP客户端</translation>
     </message>
     <message>
-        <source>The operation need to reboot to effectived, reboot the applicaion now?</source>
-        <translation type="vanished">该操作需要重启软件生效，是否立即重启？</translation>
+        <location filename="../../src/common/xtools.cpp" line="96"/>
+        <source>UDP Server</source>
+        <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/crc.cpp" line="66"/>
-        <source>Unknown</source>
-        <translation></translation>
+        <location filename="../../src/common/xtools.cpp" line="98"/>
+        <source>TCP Client</source>
+        <translation>TCP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="100"/>
+        <source>TCP Server</source>
+        <translation>TCP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="102"/>
+        <source>WebSocket Client</source>
+        <translation>WebSocket客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="104"/>
+        <source>WebSocket Server</source>
+        <translation>WebSocket服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="106"/>
+        <source>Charts Test</source>
+        <translation>表格测试</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="146"/>
+        <location filename="../../src/common/xtools.cpp" line="404"/>
+        <location filename="../../src/common/xtools.cpp" line="861"/>
+        <location filename="../../src/common/xtools.cpp" line="863"/>
+        <source>Binary</source>
+        <translation>二进制</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="148"/>
+        <source>Octal</source>
+        <translation>八进制</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="150"/>
+        <source>Decimal</source>
+        <translation>十进制</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="152"/>
+        <source>Hexadecimal</source>
+        <translation>16进制</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="154"/>
+        <source>ASCII</source>
+        <translation>ASCII</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="156"/>
+        <source>UTF-8</source>
+        <translation>UTF-8</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="304"/>
+        <location filename="../../src/common/xtools.cpp" line="363"/>
+        <location filename="../../src/common/xtools.cpp" line="701"/>
+        <location filename="../../src/common/xtools.cpp" line="719"/>
+        <source>None</source>
+        <translation>无</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="402"/>
@@ -2408,17 +2474,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="441"/>
         <source>Input Equal Reference</source>
-        <translation>输入等于参考</translation>
+        <translation>输入数据等于参考数据</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="442"/>
         <source>Input Contain Reference</source>
-        <translation>输入包含参考</translation>
+        <translation>输入数据包含参考数据</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="444"/>
         <source>Input Does not Contain Reference</source>
-        <translation>输入不包含参考</translation>
+        <translation>输入数据不包含参考数据</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="702"/>
@@ -2443,22 +2509,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="721"/>
         <source>RTS/CTS</source>
-        <translation>硬件</translation>
+        <translation>硬件流控</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="722"/>
         <source>X-ON/X-OFF</source>
-        <translation>软件</translation>
+        <translation>软件流控</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="724"/>
         <source>Hardware</source>
-        <translation>硬件</translation>
+        <translation>硬件流控</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="725"/>
         <source>Software</source>
-        <translation>软件</translation>
+        <translation>软件流控</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="826"/>
@@ -2485,7 +2551,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="1234"/>
         <location filename="../../src/mainwindow.cpp" line="453"/>
         <source>Round up for .5 and above</source>
-        <translation>缩放至x.5倍</translation>
+        <translation>缩放之x.5倍</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="1235"/>
@@ -2522,171 +2588,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>该操作需要重启软件生效，立即重启软件吗？</translation>
     </message>
     <message>
-        <source>The operation need to reboot to effective, reboot the application now?</source>
-        <translation type="vanished">该操作需要重启软件生效，是否立即重启？</translation>
-    </message>
-    <message>
-        <source>Serial Port</source>
-        <translation type="vanished">串口助手</translation>
-    </message>
-    <message>
-        <source>BLE Central</source>
-        <translation type="vanished">蓝牙助手</translation>
-    </message>
-    <message>
-        <source>BLE Peripheral</source>
-        <translation type="vanished">BLE外围设备</translation>
-    </message>
-    <message>
-        <source>UDP Client</source>
-        <translation type="vanished">UDP客户端</translation>
-    </message>
-    <message>
-        <source>UDP Server</source>
-        <translation type="vanished">UDP服务器</translation>
-    </message>
-    <message>
-        <source>TCP Client</source>
-        <translation type="vanished">TCP客户端</translation>
-    </message>
-    <message>
-        <source>TCP Server</source>
-        <translation type="vanished">TCP服务器</translation>
-    </message>
-    <message>
-        <source>WebSocket Client</source>
-        <translation type="vanished">WebSocket客户端</translation>
-    </message>
-    <message>
-        <source>WebSocket Server</source>
-        <translation type="vanished">WebSocket服务器</translation>
-    </message>
-    <message>
-        <source>Charts Test</source>
-        <translation type="vanished">图表测试</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="404"/>
-        <location filename="../../src/common/xtools.cpp" line="861"/>
-        <location filename="../../src/common/xtools.cpp" line="863"/>
-        <source>Binary</source>
-        <translation>二进制</translation>
-    </message>
-    <message>
-        <source>Octal</source>
-        <translation type="vanished">八进制</translation>
-    </message>
-    <message>
-        <source>Decimal</source>
-        <translation type="vanished">10进制</translation>
-    </message>
-    <message>
-        <source>Hexadecimal</source>
-        <translation type="vanished">16进制</translation>
-    </message>
-    <message>
-        <source>ASCII</source>
-        <translation type="vanished">ASCII</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="701"/>
-        <location filename="../../src/common/xtools.cpp" line="719"/>
-        <source>None</source>
-        <translation>无</translation>
+        <location filename="../../src/device/utilities/crc.cpp" line="66"/>
+        <source>Unknown</source>
+        <translation>（未知）</translation>
     </message>
     <message>
         <location filename="../../src/main.cpp" line="20"/>
         <source>Application is booting...</source>
-        <translation>应用正在启动...</translation>
-    </message>
-</context>
-<context>
-    <name>QObject::QObject</name>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="88"/>
-        <source>Serial Port</source>
-        <translation>串口助手</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="90"/>
-        <source>BLE Central</source>
-        <translation>蓝牙助手</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="92"/>
-        <source>BLE Peripheral</source>
-        <translation>BLE外围设备</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="94"/>
-        <source>UDP Client</source>
-        <translation>UDP客户端</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="96"/>
-        <source>UDP Server</source>
-        <translation>UDP服务器</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="98"/>
-        <source>TCP Client</source>
-        <translation>TCP客户端</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="100"/>
-        <source>TCP Server</source>
-        <translation>TCP服务器</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="102"/>
-        <source>WebSocket Client</source>
-        <translation>WebSocket客户端</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="104"/>
-        <source>WebSocket Server</source>
-        <translation>WebSocket服务器</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="106"/>
-        <source>Charts Test</source>
-        <translation>图表测试</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="146"/>
-        <source>Binary</source>
-        <translation>二进制</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="148"/>
-        <source>Octal</source>
-        <translation>八进制</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="150"/>
-        <source>Decimal</source>
-        <translation>10进制</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="152"/>
-        <source>Hexadecimal</source>
-        <translation>16进制</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="154"/>
-        <source>ASCII</source>
-        <translation>ASCII</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="156"/>
-        <source>UTF-8</source>
-        <translation>UTF-8</translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="304"/>
-        <location filename="../../src/common/xtools.cpp" line="363"/>
-        <source>None</source>
-        <translation>无</translation>
+        <translation>软件正在启动...</translation>
     </message>
 </context>
 <context>
@@ -3295,741 +3204,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/device/utilities/textitemeditor.ui" line="161"/>
         <source>Format</source>
         <translation>数据格式</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::AbstractModelUi</name>
-    <message>
-        <source>Clear</source>
-        <translation type="vanished">清空数据</translation>
-    </message>
-    <message>
-        <source>Are you sure to clear all items?</source>
-        <translation type="vanished">确定删除全部数据吗？</translation>
-    </message>
-    <message>
-        <source>No Item be Selected</source>
-        <translation type="vanished">没有被选中的数据</translation>
-    </message>
-    <message>
-        <source>Please select a item first!</source>
-        <translation type="vanished">请先选择需要删除的数据！</translation>
-    </message>
-    <message>
-        <source>Import data</source>
-        <translation type="vanished">导入数据</translation>
-    </message>
-    <message>
-        <source>JSON (*.json);;All (*)</source>
-        <translation type="vanished">json(*.json);;所有文件（*）</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::AbstractTransferModel</name>
-    <message>
-        <source>Transfer %1</source>
-        <translation type="vanished">转发器 %1</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::Application</name>
-    <message>
-        <source>Initialize application...</source>
-        <translation type="vanished">初始化程序....</translation>
-    </message>
-    <message>
-        <source>System</source>
-        <translation type="vanished">禁用</translation>
-    </message>
-    <message>
-        <source>Round up for .5 and above</source>
-        <translation type="vanished">缩放至x.5倍</translation>
-    </message>
-    <message>
-        <source>Always round up</source>
-        <translation type="vanished">总是放大</translation>
-    </message>
-    <message>
-        <source>Always round down</source>
-        <translation type="vanished">总是缩小</translation>
-    </message>
-    <message>
-        <source>Round up for .75 and above</source>
-        <translation type="vanished">缩放至x.75倍</translation>
-    </message>
-    <message>
-        <source>Don&apos;t round</source>
-        <translation type="vanished">不缩放</translation>
-    </message>
-    <message>
-        <source>Reboot application to effective</source>
-        <translation type="vanished">重启软件生效</translation>
-    </message>
-    <message>
-        <source>Need to reboot, reboot to effective now?</source>
-        <translation type="vanished">需要重启生效，立即重启？</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::BleCentral</name>
-    <message>
-        <source>Characteristic does not support write</source>
-        <translation type="vanished">特征值不支持写操作</translation>
-    </message>
-    <message>
-        <source>Characteristic does not support write without response</source>
-        <translation type="vanished">特征值不支持写操作: 无应答写选项</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::BleCentralUi</name>
-    <message>
-        <source>Stop</source>
-        <translation type="vanished">停止扫描</translation>
-    </message>
-    <message>
-        <source>Scan</source>
-        <translation type="vanished">开始扫描</translation>
-    </message>
-    <message>
-        <source>Error Occurred</source>
-        <translation type="vanished">出现错误</translation>
-    </message>
-    <message>
-        <source>Disnotify</source>
-        <translation type="vanished">取消通知</translation>
-    </message>
-    <message>
-        <source>Notify</source>
-        <translation type="vanished">通知</translation>
-    </message>
-    <message>
-        <source>With Response</source>
-        <translation type="vanished">有应答</translation>
-    </message>
-    <message>
-        <source>Without Response</source>
-        <translation type="vanished">无应答</translation>
-    </message>
-    <message>
-        <source>(No name)</source>
-        <translation type="vanished">（未命名）</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::ChartsTest</name>
-    <message>
-        <source>ChartsTest</source>
-        <translation type="vanished">图表测试</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::ChartsUi</name>
-    <message>
-        <source>Import Data from Excel</source>
-        <translation type="vanished">从Excel表格导入</translation>
-    </message>
-    <message>
-        <source>Export Data to Excel</source>
-        <translation type="vanished">导出至Excel表格</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::ChartsUiSettings</name>
-    <message>
-        <source>Binary</source>
-        <translation type="vanished">二进制</translation>
-    </message>
-    <message>
-        <source>Text</source>
-        <translation type="vanished">文本</translation>
-    </message>
-    <message>
-        <source>Channel</source>
-        <translation type="vanished">通道</translation>
-    </message>
-    <message>
-        <source>Visible</source>
-        <translation type="vanished">可见</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="vanished">类型</translation>
-    </message>
-    <message>
-        <source>Color</source>
-        <translation type="vanished">颜色</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">名称</translation>
-    </message>
-    <message>
-        <source>Line</source>
-        <translation type="vanished">折线</translation>
-    </message>
-    <message>
-        <source>Spline</source>
-        <translation type="vanished">曲线</translation>
-    </message>
-    <message>
-        <source>Scatter</source>
-        <translation type="vanished">散点图</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::EmitterModel</name>
-    <message>
-        <source>Enable</source>
-        <translation type="vanished">使能</translation>
-    </message>
-    <message>
-        <source>Disable</source>
-        <translation type="vanished">禁止</translation>
-    </message>
-    <message>
-        <source>Demo</source>
-        <translation type="vanished">测试</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="vanished">描述</translation>
-    </message>
-    <message>
-        <source>Interval</source>
-        <translation type="vanished">间隔</translation>
-    </message>
-    <message>
-        <source>Data</source>
-        <translation type="vanished">数据</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::MainWindow</name>
-    <message>
-        <source>&amp;File</source>
-        <translation type="vanished">文件(&amp;F)</translation>
-    </message>
-    <message>
-        <source>&amp;Exit</source>
-        <translation type="vanished">退出(&amp;E)</translation>
-    </message>
-    <message>
-        <source>Exit Application</source>
-        <translation type="vanished">退出应用</translation>
-    </message>
-    <message>
-        <source>&amp;Options</source>
-        <translation type="vanished">选项(&amp;O)</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="vanished">语言(&amp;L)</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation type="vanished">帮助(&amp;H)</translation>
-    </message>
-    <message>
-        <source>&amp;About</source>
-        <translation type="vanished">关于</translation>
-    </message>
-    <message>
-        <source>About Qt</source>
-        <translation type="vanished">关于Qt</translation>
-    </message>
-    <message>
-        <source>Screenshot</source>
-        <translation type="vanished">截图并复制</translation>
-    </message>
-    <message>
-        <source>Application Style</source>
-        <translation type="vanished">应用风格</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">配置信息</translation>
-    </message>
-    <message>
-        <source>Clear Settings</source>
-        <translation type="vanished">清空配置</translation>
-    </message>
-    <message>
-        <source>Open Settings Directory</source>
-        <translation type="vanished">打开配置目录</translation>
-    </message>
-    <message>
-        <source>HDPI Policy</source>
-        <translation type="vanished">适配策略</translation>
-    </message>
-    <message>
-        <source>Color Scheme</source>
-        <translation type="vanished">主题颜色</translation>
-    </message>
-    <message>
-        <source>System</source>
-        <translation type="vanished">系统</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation type="vanished">暗黑</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation type="vanished">明亮</translation>
-    </message>
-    <message>
-        <source>(A Part of xTools Project)</source>
-        <translation type="vanished">(xTools 系列软件)</translation>
-    </message>
-    <message>
-        <source>Commit</source>
-        <translation type="vanished">最后提交</translation>
-    </message>
-    <message>
-        <source>Build Date</source>
-        <translation type="vanished">构建日期</translation>
-    </message>
-    <message>
-        <source>All rights reserved.</source>
-        <translation type="vanished">保留所有版权。</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="vanished">关于</translation>
-    </message>
-    <message>
-        <source>Reboot application to effective</source>
-        <translation type="vanished">重启软件生效</translation>
-    </message>
-    <message>
-        <source>Need to reboot, reboot to effective now?</source>
-        <translation type="vanished">需要重启生效，立即重启？</translation>
-    </message>
-    <message>
-        <source>QR Code</source>
-        <translation type="vanished">二维码</translation>
-    </message>
-    <message>
-        <source>User QQ Group</source>
-        <translation type="vanished">用户交流QQ群</translation>
-    </message>
-    <message>
-        <source>Qt QQ Group</source>
-        <translation type="vanished">Qt技术交流QQ群</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::Preset</name>
-    <message>
-        <source>Demo</source>
-        <translation type="vanished">示例</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="vanished">描述</translation>
-    </message>
-    <message>
-        <source>Data</source>
-        <translation type="vanished">数据</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::PresetModel</name>
-    <message>
-        <source>Demo</source>
-        <translation type="vanished">示例</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="vanished">描述</translation>
-    </message>
-    <message>
-        <source>Data</source>
-        <translation type="vanished">数据</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::ResponderModel</name>
-    <message>
-        <source>Enable</source>
-        <translation type="vanished">使能</translation>
-    </message>
-    <message>
-        <source>Disable</source>
-        <translation type="vanished">禁止</translation>
-    </message>
-    <message>
-        <source>Demo</source>
-        <translation type="vanished">示例</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="vanished">描述</translation>
-    </message>
-    <message>
-        <source>Option</source>
-        <translation type="vanished">应答选项</translation>
-    </message>
-    <message>
-        <source>Delay</source>
-        <translation type="vanished">延时</translation>
-    </message>
-    <message>
-        <source>Reference Data</source>
-        <translation type="vanished">参考数据</translation>
-    </message>
-    <message>
-        <source>Response Data</source>
-        <translation type="vanished">应答数据</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::SerialPort</name>
-    <message>
-        <source>Failed to open serial port: %1</source>
-        <translation type="vanished">打开串口失败：%1</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::SerialPortTransferModel</name>
-    <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
-        <source>Odd</source>
-        <translation type="vanished">奇校验</translation>
-    </message>
-    <message>
-        <source>Even</source>
-        <translation type="vanished">偶校验</translation>
-    </message>
-    <message>
-        <source>Mark</source>
-        <translation type="vanished">标记校验</translation>
-    </message>
-    <message>
-        <source>Space</source>
-        <translation type="vanished">空格校验</translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation type="vanished">无</translation>
-    </message>
-    <message>
-        <source>Hardware</source>
-        <translation type="vanished">硬件</translation>
-    </message>
-    <message>
-        <source>Software</source>
-        <translation type="vanished">软件</translation>
-    </message>
-    <message>
-        <source>Transfer Option</source>
-        <translation type="vanished">转发选项</translation>
-    </message>
-    <message>
-        <source>Port Name</source>
-        <translation type="vanished">端口名</translation>
-    </message>
-    <message>
-        <source>Baud Rate</source>
-        <translation type="vanished">波特率</translation>
-    </message>
-    <message>
-        <source>Data Bits</source>
-        <translation type="vanished">数据位</translation>
-    </message>
-    <message>
-        <source>Stop Bits</source>
-        <translation type="vanished">停止位</translation>
-    </message>
-    <message>
-        <source>Parity</source>
-        <translation type="vanished">奇偶位</translation>
-    </message>
-    <message>
-        <source>Flow Control</source>
-        <translation type="vanished">流控位</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="vanished">描述</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::SocketTransferModel</name>
-    <message>
-        <source>Enable</source>
-        <translation type="vanished">使能</translation>
-    </message>
-    <message>
-        <source>Disable</source>
-        <translation type="vanished">禁止</translation>
-    </message>
-    <message>
-        <source>Transfer Option</source>
-        <translation type="vanished">转发选项</translation>
-    </message>
-    <message>
-        <source>Client Address</source>
-        <translation type="vanished">客户端地址</translation>
-    </message>
-    <message>
-        <source>Client Port</source>
-        <translation type="vanished">客户端端口</translation>
-    </message>
-    <message>
-        <source>Server Address</source>
-        <translation type="vanished">服务器地址</translation>
-    </message>
-    <message>
-        <source>Server Port</source>
-        <translation type="vanished">服务器端口</translation>
-    </message>
-    <message>
-        <source>Data Channel</source>
-        <translation type="vanished">数据通道</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation type="vanished">校验</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation type="vanished">用户名</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="vanished">密码</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="vanished">描述</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::SocketUi</name>
-    <message>
-        <source>All clients</source>
-        <translation type="vanished">所有客户端</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::StatisticianUi</name>
-    <message>
-        <source>%1 frames, %2 bytes, %3B/s</source>
-        <translation type="vanished">%1 帧, %2 字节, %3B/s</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::StyleSheetManager</name>
-    <message>
-        <source>Dark Amber</source>
-        <translation type="vanished">深色-黄褐色</translation>
-    </message>
-    <message>
-        <source>Dark Blue</source>
-        <translation type="vanished">深色-蓝色</translation>
-    </message>
-    <message>
-        <source>Dark Cyan</source>
-        <translation type="vanished">深色-青色</translation>
-    </message>
-    <message>
-        <source>Dark Light Green</source>
-        <translation type="vanished">深色-浅绿色</translation>
-    </message>
-    <message>
-        <source>Dark Pink</source>
-        <translation type="vanished">深色-粉红色</translation>
-    </message>
-    <message>
-        <source>Dark Purple</source>
-        <translation type="vanished">深色-紫色</translation>
-    </message>
-    <message>
-        <source>Dark Red</source>
-        <translation type="vanished">深色-红色</translation>
-    </message>
-    <message>
-        <source>Dark Teal</source>
-        <translation type="vanished">深色-蓝绿色</translation>
-    </message>
-    <message>
-        <source>Dark Yellow</source>
-        <translation type="vanished">深色-黄色</translation>
-    </message>
-    <message>
-        <source>Light Amber</source>
-        <translation type="vanished">浅色-黄褐色</translation>
-    </message>
-    <message>
-        <source>Light Blue</source>
-        <translation type="vanished">浅色-蓝色</translation>
-    </message>
-    <message>
-        <source>Light Cyan</source>
-        <translation type="vanished">浅色-青色</translation>
-    </message>
-    <message>
-        <source>Light Cyan(500)</source>
-        <translation type="vanished">浅色-青色（500）</translation>
-    </message>
-    <message>
-        <source>Light Light Green</source>
-        <translation type="vanished">浅色-浅绿色</translation>
-    </message>
-    <message>
-        <source>Light Pink</source>
-        <translation type="vanished">浅色-粉红色</translation>
-    </message>
-    <message>
-        <source>Light Purple</source>
-        <translation type="vanished">浅色-紫色</translation>
-    </message>
-    <message>
-        <source>Light Red</source>
-        <translation type="vanished">浅色-红色</translation>
-    </message>
-    <message>
-        <source>Light Teal</source>
-        <translation type="vanished">浅色-蓝绿色</translation>
-    </message>
-    <message>
-        <source>Light Yellow</source>
-        <translation type="vanished">浅色-黄色</translation>
-    </message>
-    <message>
-        <source>Enable Stylesheet</source>
-        <translation type="vanished">允许自定义样式</translation>
-    </message>
-    <message>
-        <source>Application Stylesheet</source>
-        <translation type="vanished">应用样式</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Please enable stylesheet first!</source>
-        <translation type="vanished">请使能自定义样式后重试！</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::xIO</name>
-    <message>
-        <source>Text</source>
-        <translation type="vanished">文本</translation>
-    </message>
-    <message>
-        <source>Binary</source>
-        <translation type="vanished">二进制</translation>
-    </message>
-    <message>
-        <source>Echo</source>
-        <translation type="vanished">回显</translation>
-    </message>
-    <message>
-        <source>Always</source>
-        <translation type="vanished">总是</translation>
-    </message>
-    <message>
-        <source>Input Equal Reference</source>
-        <translation type="vanished">输入等于参考</translation>
-    </message>
-    <message>
-        <source>Input Contain Reference</source>
-        <translation type="vanished">输入包含参考</translation>
-    </message>
-    <message>
-        <source>Input Does not Contain Reference</source>
-        <translation type="vanished">输入不包含参考</translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation type="vanished">无</translation>
-    </message>
-    <message>
-        <source>Even</source>
-        <translation type="vanished">偶校验</translation>
-    </message>
-    <message>
-        <source>Odd</source>
-        <translation type="vanished">奇校验</translation>
-    </message>
-    <message>
-        <source>Space</source>
-        <translation type="vanished">空格</translation>
-    </message>
-    <message>
-        <source>Mark</source>
-        <translation type="vanished">标记校验</translation>
-    </message>
-    <message>
-        <source>Hardware</source>
-        <translation type="vanished">硬件</translation>
-    </message>
-    <message>
-        <source>Software</source>
-        <translation type="vanished">软件</translation>
-    </message>
-    <message>
-        <source>Disabled</source>
-        <translation type="vanished">禁止</translation>
-    </message>
-    <message>
-        <source>Bidirectional</source>
-        <translation type="vanished">双向</translation>
-    </message>
-    <message>
-        <source>Unidirectional</source>
-        <translation type="vanished">单项</translation>
-    </message>
-</context>
-<context>
-    <name>xTools::xTools</name>
-    <message>
-        <source>System</source>
-        <translation type="vanished">系统</translation>
-    </message>
-    <message>
-        <source>Round up for .5 and above</source>
-        <translation type="vanished">缩放至x.5倍</translation>
-    </message>
-    <message>
-        <source>Always round up</source>
-        <translation type="vanished">总是放大</translation>
-    </message>
-    <message>
-        <source>Always round down</source>
-        <translation type="vanished">总是缩小</translation>
-    </message>
-    <message>
-        <source>Round up for .75 and above</source>
-        <translation type="vanished">缩放至x.75倍</translation>
-    </message>
-    <message>
-        <source>Don&apos;t round</source>
-        <translation type="vanished">不缩放</translation>
-    </message>
-    <message>
-        <source>Need to Reboot</source>
-        <translation type="vanished">需要重启</translation>
-    </message>
-    <message>
-        <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="vanished">该操作需要重启软件生效，立即重启软件吗？</translation>
     </message>
 </context>
 </TS>
