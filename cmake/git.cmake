@@ -7,9 +7,18 @@ function(x_tools_git_get_latest_tag working_dir prefix)
     OUTPUT_VARIABLE GIT_LATEST_TAG
     OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-  if(NOT GIT_LATEST_TAG
-     OR ${GIT_LATEST_TAG} STREQUAL ""
-     OR ${GIT_LATEST_TAG} STREQUAL "continuous")
+  set(USING_DATE_TIME FALSE)
+  if(NOT GIT_LATEST_TAG)
+    set(USING_DATE_TIME TRUE)
+  else()
+    if(${GIT_LATEST_TAG} STREQUAL "")
+      set(USING_DATE_TIME TRUE)
+    elseif(${GIT_LATEST_TAG} STREQUAL "continuous")
+      set(USING_DATE_TIME TRUE)
+    endif()
+  endif()
+
+  if(USING_DATE_TIME)
     string(TIMESTAMP current_year "%Y")
     string(TIMESTAMP current_month "%m")
     string(TIMESTAMP current_day "%d")
