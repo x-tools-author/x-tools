@@ -65,7 +65,7 @@
         <file>res/Images/StartUi.jpg</file>
         <file>res/Images/Windows.png</file>
         <file>res/Images/Zip.png</file>
-        <file>res/Files/History.txt</file>
+        <file>res/files/history.txt</file>
         <file>res/translations/xTools_en.qm</file>
         <file>res/translations/xTools_zh_CN.qm</file>
         <file>res/Icons/IconChart.svg</file>
