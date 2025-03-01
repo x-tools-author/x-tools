@@ -9,5 +9,7 @@
         <file>res/icons/iconcheck.svg</file>
         <file>res/translations/xTools_en.qm</file>
         <file>res/translations/xTools_zh_CN.qm</file>
+        <file>res/icons/buy.svg</file>
+        <file>res/icons/logo.svg</file>
     </qresource>
 </RCC>
