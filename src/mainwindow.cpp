@@ -97,7 +97,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     load();
     initMenuBar();
-    setWindowIcon(QIcon(":/res/Images/Logo.png"));
+    setWindowIcon(QIcon(":/res/icons/logo.svg"));
     setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
 }
 
@@ -372,7 +372,7 @@ void MainWindow::initHelpMenu()
 
 #if defined(Q_OS_WIN) && !defined(X_TOOLS_ENABLE_MODULE_PRIVATE)
     helpMenu->addSeparator();
-    helpMenu->addAction(QIcon(":/res/Icons/IconBuy.svg"), tr("Bug from Store"), this, []() {
+    helpMenu->addAction(QIcon(":/res/icons/buy.svg"), tr("Bug from Store"), this, []() {
         QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
         QDesktopServices::openUrl(url);
     });

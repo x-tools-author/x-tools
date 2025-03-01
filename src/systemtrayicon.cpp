@@ -15,7 +15,7 @@
 SystemTrayIcon::SystemTrayIcon(QObject *parent)
     : QSystemTrayIcon(parent)
 {
-    setIcon(QIcon(":/res/Images/Logo.png"));
+    setIcon(QIcon(":/res/icons/logo.svg"));
     setToolTip(tr("xTools"));
 
     QMenu *menu = new QMenu();
