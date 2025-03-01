@@ -160,8 +160,9 @@ void setupLanguage(const QString &qmFile)
 {
     QTranslator *translator = new QTranslator();
     if (!translator->load(qmFile)) {
-        qWarning("The language file(%1) can not be loaded, English will be used.",
-                 qmFile.toUtf8().data());
+        auto info = QString("The language file(%1) can not be loaded, English will be used.")
+                        .arg(qmFile);
+        qWarning() << info;
         return;
     }
 

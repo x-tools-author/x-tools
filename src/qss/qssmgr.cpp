@@ -179,7 +179,7 @@ void QssMgr::loadThemes()
 
 void QssMgr::updateActions()
 {
-    for (QAction* action : m_themeActionGroup->actions()) {
+    for (QAction*& action : m_themeActionGroup->actions()) {
         QString theme = action->data().toString();
         QString color = m_primaryColorMap.value(theme);
         updateActionIcon(action, color);
@@ -189,7 +189,7 @@ void QssMgr::updateActions()
 void QssMgr::updateActionIcon(QAction* action, const QString& color)
 {
     if (action->isChecked()) {
-        action->setIcon(QIcon(":/res/Icons/IconCheck.svg"));
+        action->setIcon(QIcon(":/res/icons/iconcheck.svg"));
     } else {
         QPixmap pixmap(64, 64);
         pixmap.fill(color);
@@ -247,7 +247,7 @@ void QssMgr::setupActions(const QStringList& themes, QMenu* menu, QActionGroup* 
 void QssMgr::setApplicationStylesheetEnabled(bool enable)
 {
     setEnableStylesheet(enable);
-    for (auto action : m_themeActionGroup->actions()) {
+    for (auto& action : m_themeActionGroup->actions()) {
         if (action->isChecked() && enable) {
             emit action->triggered();
             break;
