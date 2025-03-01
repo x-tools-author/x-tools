@@ -7,7 +7,7 @@
         <file>res/icons/iconchart.svg</file>
         <file>res/icons/iconlist.svg</file>
         <file>res/icons/iconcheck.svg</file>
-        <file>res/translations/xtools_en.qm</file>
-        <file>res/translations/xtools_zh_cn.qm</file>
+        <file>res/translations/xTools_en.qm</file>
+        <file>res/translations/xTools_zh_cn.qm</file>
     </qresource>
 </RCC>
