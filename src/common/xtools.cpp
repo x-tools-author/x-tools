@@ -50,8 +50,6 @@
 #include <QSerialPortInfo>
 #endif
 
-#include <glog/logging.h>
-
 #include "device/utilities/crc.h"
 
 QList<int> supportedCommunicationTypes()
