@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/files/history.txt</file>
+        <file>res/icons/iconsplineseries.svg</file>
+        <file>res/icons/iconscatterseries.svg</file>
+        <file>res/icons/iconlineseries.svg</file>
+        <file>res/icons/iconchart.svg</file>
+        <file>res/icons/iconlist.svg</file>
+        <file>res/icons/iconcheck.svg</file>
+        <file>res/translations/xtools_en.qm</file>
+        <file>res/translations/xtools_zh_cn.qm</file>
+    </qresource>
+</RCC>
