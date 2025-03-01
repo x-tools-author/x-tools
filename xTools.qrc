@@ -1,50 +1,12 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/Icons/IconAdd.svg</file>
-        <file>res/Icons/IconAttachment.svg</file>
-        <file>res/Icons/IconBlueTooth.svg</file>
-        <file>res/Icons/IconBranch.svg</file>
         <file>res/Icons/IconBuy.svg</file>
-        <file>res/Icons/IconCanBus.svg</file>
         <file>res/Icons/IconCheck.svg</file>
-        <file>res/Icons/IconClear.svg</file>
-        <file>res/Icons/IconClose.svg</file>
-        <file>res/Icons/IconDate.svg</file>
-        <file>res/Icons/IconEnter.svg</file>
-        <file>res/Icons/IconEsc.svg</file>
-        <file>res/Icons/IconFormat.svg</file>
-        <file>res/Icons/IconHeader.svg</file>
-        <file>res/Icons/IconHistory.svg</file>
-        <file>res/Icons/IconInfo.svg</file>
-        <file>res/Icons/IconLanguage.svg</file>
         <file>res/Icons/IconList.svg</file>
-        <file>res/Icons/IconListWithIcon.svg</file>
-        <file>res/Icons/IconLog.svg</file>
-        <file>res/Icons/IconMaximized.svg</file>
-        <file>res/Icons/IconMenu.svg</file>
-        <file>res/Icons/IconMinimized.svg</file>
-        <file>res/Icons/IconModbus.svg</file>
-        <file>res/Icons/IconMs.svg</file>
-        <file>res/Icons/IconPing.ico</file>
-        <file>res/Icons/IconPlay.svg</file>
         <file>res/Icons/IconQQGray.svg</file>
         <file>res/Icons/IconSend.svg</file>
         <file>res/Icons/IconSerialPort.svg</file>
         <file>res/Icons/IconSettings.svg</file>
-        <file>res/Icons/IconStop.svg</file>
-        <file>res/Icons/IconTail.svg</file>
-        <file>res/Icons/IconTcpClient.svg</file>
-        <file>res/Icons/IconTcpServer.svg</file>
-        <file>res/Icons/IconTime.svg</file>
-        <file>res/Icons/IconTimer.svg</file>
-        <file>res/Icons/IconTx.svg</file>
-        <file>res/Icons/IconUdpClient.svg</file>
-        <file>res/Icons/IconUdpServer.svg</file>
-        <file>res/Icons/IconWebSocketClient.svg</file>
-        <file>res/Icons/IconWebSocketServer.svg</file>
-        <file>res/Icons/IconWindowed.svg</file>
-        <file>res/Icons/IconZoomIn.svg</file>
-        <file>res/Icons/IconZoomOut.svg</file>
         <file>res/Images/Android.png</file>
         <file>res/Images/AndroidLogo.png</file>
         <file>res/Images/Gitee.png</file>
