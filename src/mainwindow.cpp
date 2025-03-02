@@ -566,8 +566,8 @@ void MainWindow::showQrCode()
     };
     QList<QrCodeInfo> qrCodeInfoList;
 
-    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/res/Images/QSAKQQ.jpg")}
-                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/res/Images/QtQQ.jpg")};
+    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/res/images/xtools_qq.jpg")}
+                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/res/images/qt_qq.jpg")};
 
     auto* tabWidget = new QTabWidget(&dialog);
     for (auto& var : qrCodeInfoList) {

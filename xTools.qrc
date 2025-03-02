@@ -11,5 +11,7 @@
         <file>res/translations/xTools_zh_CN.qm</file>
         <file>res/icons/buy.svg</file>
         <file>res/icons/logo.svg</file>
+        <file>res/images/qt_qq.jpg</file>
+        <file>res/images/xtools_qq.jpg</file>
     </qresource>
 </RCC>
