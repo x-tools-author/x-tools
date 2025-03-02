@@ -1,0 +1,5 @@
+package: argPacketName
+version: argVersion
+architecture: amd64
+maintainer: x-tools@outlook.com
+description:https://github.com/x-tools-author/wx-tools
