@@ -122,5 +122,7 @@ endif()
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename "all" "${argTarget}"
                 WORKING_DIRECTORY ${argRootDir}/packages)
-execute_process(COMMAND ${argBinarycreator} -c config/config.xml -p packages ${output_file}
-                        COMMAND_ECHO STDOUT WORKING_DIRECTORY ${argRootDir})
+execute_process(
+  COMMAND ${argBinarycreator} -c ${argTarget}-installer/config/config.xml -p
+          ${argTarget}-installer/packages ${output_file} COMMAND_ECHO STDOUT
+  WORKING_DIRECTORY ${argRootDir}/../)

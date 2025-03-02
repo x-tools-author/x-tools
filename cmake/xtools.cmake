@@ -63,17 +63,17 @@ function(x_tools_add_executable target)
                WIN32_EXECUTABLE TRUE)
 endfunction()
 
-function(x_tools_tar_target target)
+function(x_tools_tar_target target version)
   if(WIN32)
     string(TOLOWER ${target} lower_target)
     string(TOLOWER ${CMAKE_HOST_SYSTEM_NAME} lower_system_name)
     string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} lower_system_processor)
-    set(TAR_FILE_NAME ${lower_target}-${lower_system_name}-${lower_system_processor})
-    add_custom_command(
-      TARGET ${target}
-      POST_BUILD
+    set(TAR_FILE_NAME ${lower_target}-${lower_system_name}-${lower_system_processor}-v${version})
+    add_custom_target(
+      ${target}-zip
       COMMAND ${CMAKE_COMMAND} -E tar "cf" ${TAR_FILE_NAME}.zip "--format=zip" ${target}
-      WORKING_DIRECTORY "$<TARGET_FILE_DIR:${target}>/../")
+      WORKING_DIRECTORY "$<TARGET_FILE_DIR:${target}>/../"
+      SOURCES cmake/xtools.cmake)
   endif()
 endfunction()
 

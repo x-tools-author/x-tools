@@ -30,23 +30,23 @@ function(x_tools_generate_installer target version icon)
   endif()
 
   set(args "-DargTarget=${target}")
-  list(APPEND args "-DargRootDir=${CMAKE_BINARY_DIR}/Installer/${target}")
+  list(APPEND args "-DargRootDir=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}-installer")
   list(APPEND args "-DargVersion=${version}")
   list(APPEND args "-DargDataDir=$<TARGET_FILE_DIR:${target}>")
-  list(APPEND args "-DargTemperateDir=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/Installer")
+  list(APPEND args "-DargTemperateDir=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/installer")
   list(APPEND args "-DargBinarycreator=${binarycreator}")
   list(APPEND args "-DargIcon=${icon}")
 
   set(RESOURCES_DIR ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
   set(QIFW_SOURCE ${RESOURCES_DIR}/QIFW.cmake)
-  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/QIFWScript.cmake)
-  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/config/config.xml)
-  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/packages/all/meta/package.xml)
-  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/Installer/packages/all/meta/installscript.js)
+  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/qifwscript.cmake)
+  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/installer/config/config.xml)
+  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/installer/packages/all/meta/package.xml)
+  list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/installer/packages/all/meta/installscript.js)
 
   add_custom_target(
     ${target}_installer
-    COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/QIFWScript.cmake
+    COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/qifwscript.cmake
     SOURCES ${QIFW_SOURCE}
     COMMENT "Start making installer packet for ${target}")
 endfunction()
