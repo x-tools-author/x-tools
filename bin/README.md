@@ -1,0 +1,3 @@
+# The bin directory
+
+> cmake runtime output directory...
