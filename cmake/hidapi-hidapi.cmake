@@ -19,6 +19,10 @@ else()
   if(WIN32)
     set_property(TARGET hidapi_winapi PROPERTY FOLDER "3rd")
   endif()
+  if(LINUX)
+    set_property(TARGET hidapi_libusb PROPERTY FOLDER "3rd")
+    set_property(TARGET hidapi_hidraw PROPERTY FOLDER "3rd")
+  endif()
 endif()
 
 # --------------------------------------------------------------------------------------------------

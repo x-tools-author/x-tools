@@ -1,5 +1,5 @@
 function(x_tools_make_package target packetName friendlyName version is_deb)
-  file(GLOB_RECURSE RES_FILES ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/app/*)
+  file(GLOB_RECURSE RES_FILES ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/*)
 
   # target to lower case
   string(TOLOWER ${target} lower_target)
@@ -20,6 +20,7 @@ function(x_tools_make_package target packetName friendlyName version is_deb)
   list(APPEND args "-DargTool=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/tools/linuxdeployqt")
   list(APPEND args "-DargSrcDir=${CMAKE_SOURCE_DIR}")
   list(APPEND args "-DargPackageType=${package_type}")
+  list(APPEND args "-DargQmakePath=${QT_DIR}/../../../bin/qmake")
 
   # cmake-format: off
   add_custom_target(${target}-${package_type}
@@ -27,7 +28,7 @@ function(x_tools_make_package target packetName friendlyName version is_deb)
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${package_type}/${target} "||" ${CMAKE_COMMAND} -E true
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/app ${CMAKE_BINARY_DIR}/${package_type}/${target} "||" ${CMAKE_COMMAND} -E true
     COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${target}> ${CMAKE_BINARY_DIR}/${package_type}/${target}/usr/bin/${packetName}
-    COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/LinuxScript.cmake
+    COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/linuxscript.cmake
     SOURCES ${RES_FILES})
   # cmake-format: on
 endfunction()
