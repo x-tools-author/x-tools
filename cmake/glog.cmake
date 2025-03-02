@@ -10,7 +10,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Add glog module...
-set(glog_dst_dir ${CMAKE_CURRENT_SOURCE_DIR}/libs/${CMAKE_BUILD_TYPE}/${glog_package_name})
+set(glog_dst_dir ${X_TOOLS_DEPLOY_LIBS_DIR}/${glog_package_name})
 if(EXISTS ${glog_dst_dir})
   set(CMAKE_PREFIX_PATH ${glog_dst_dir} ${CMAKE_PREFIX_PATH})
   find_package(glog REQUIRED)

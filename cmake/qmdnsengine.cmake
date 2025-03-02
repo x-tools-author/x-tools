@@ -10,7 +10,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Add qmdns module...
-set(qmdns_dst_dir ${CMAKE_CURRENT_SOURCE_DIR}/libs/${CMAKE_BUILD_TYPE}/${qmdns_package_name})
+set(qmdns_dst_dir ${X_TOOLS_DEPLOY_LIBS_DIR}/${qmdns_package_name})
 if(EXISTS ${qmdns_dst_dir})
   set(CMAKE_PREFIX_PATH ${qmdns_dst_dir} ${CMAKE_PREFIX_PATH})
   find_package(qmdnsengine REQUIRED)

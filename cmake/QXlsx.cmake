@@ -10,7 +10,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Add QXlsx module...
-set(qxlsx_dst_dir ${CMAKE_SOURCE_DIR}/libs/${CMAKE_BUILD_TYPE}/${qxlsx_package_name})
+set(qxlsx_dst_dir ${X_TOOLS_DEPLOY_LIBS_DIR}/${qxlsx_package_name})
 if(EXISTS ${qxlsx_dst_dir})
   set(CMAKE_PREFIX_PATH ${qxlsx_dst_dir} ${CMAKE_PREFIX_PATH})
   include_directories(${qxlsx_dst_dir}/include/QXlsxQt${QT_VERSION_MAJOR})
