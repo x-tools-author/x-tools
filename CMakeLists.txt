@@ -54,7 +54,6 @@ include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/QXlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/deployqt.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/qifw/qifw.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/hidapi-hidapi.cmake)
@@ -311,12 +310,26 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # if X_TOOLS_LATEST_GIT_TAG contain "v", remove it...
+if(NOT X_TOOLS_LATEST_GIT_TAG)
+  set(X_TOOLS_LATEST_GIT_TAG "9.9.9")
+endif()
+
 if(X_TOOLS_LATEST_GIT_TAG MATCHES "^v[0-9].*")
   string(SUBSTRING ${X_TOOLS_LATEST_GIT_TAG} 1 -1 X_TOOLS_LATEST_GIT_TAG)
 endif()
-if(WIN32
-   AND X_TOOLS_LATEST_GIT_TAG
-   AND NOT X_TOOLS_LATEST_GIT_TAG STREQUAL "")
-  x_tools_generate_installer(xTools ${X_TOOLS_LATEST_GIT_TAG}
-                             ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
+
+# --------------------------------------------------------------------------------------------------
+# Make installer for Windows
+if(WIN32 AND X_TOOLS_LATEST_GIT_TAG)
+  include(${CMAKE_SOURCE_DIR}/cmake/qifw/qifw.cmake)
+  set(icon ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
+  x_tools_generate_installer(xTools ${X_TOOLS_LATEST_GIT_TAG} ${icon})
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# Make package for linux(deb or appimage)
+if(LINUX)
+  include(cmake/linux/linux.cmake)
+  x_tools_make_package(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} FALSE)
+  x_tools_make_package(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} TRUE)
 endif()
