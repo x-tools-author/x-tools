@@ -7,7 +7,7 @@ on:
 #    branches:
 #      - master
 env:
-  QT_VERSION: 6.8.1
+  QT_VERSION: 6.5.*
 jobs:
   build:
     name: Build for Android
