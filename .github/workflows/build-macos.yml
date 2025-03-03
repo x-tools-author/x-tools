@@ -1,11 +1,11 @@
 ﻿name: build-macos
-on:
-  schedule:
-    - cron: '0 0 * * *'
 # on:
-#  push:
-#    branches:
-#      - master
+#   schedule:
+#     - cron: '0 0 * * *'
+on:
+ push:
+   branches:
+     - master
 jobs:
   build:
     name: Build
@@ -38,4 +38,5 @@ jobs:
           cd build
           cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release ../
           cmake --build . --target all
+          ls ../bin
           cmake --build . --target xTools_dmg

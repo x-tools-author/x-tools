@@ -350,7 +350,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Make dmg for macOS
-if(MACROS)
+if(APPLE)
   include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
   x_tools_generate_dmg(xTools ${X_TOOLS_LATEST_GIT_TAG})
 endif()
