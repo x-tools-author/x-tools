@@ -54,13 +54,12 @@ jobs:
     - name: Build for Windows
       shell: cmd
       run: |
-        git fetch --tags
         mkdir build
         cd build
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
         cmake --build . --target xTools
-        cmake --build . --target xTools-zip
+        cmake --build . --target xTools_zip
         dir bin
         dir bin\Windows\Release
     - name: Upload Release Asset for Windnows
