@@ -8,4 +8,4 @@ cmake -DCMAKE_PREFIX_PATH='D:/512/Qt/Qt/6.8.2/msvc2022_64' -DCMAKE_BUILD_TYPE=Re
 cmake --build . --target xTools
 cmake --build . --target xTools_zip
 dir ..\..\bin\Windows\Release
-for %%f in (bin\Windows\Release\xTools-zip\*.zip) do echo "zip file: %%f"
+for %%f in (..\..\bin\Windows\Release\xTools-zip\*.zip) do echo "zip file: %%f"
