@@ -347,3 +347,10 @@ if(LINUX)
   x_tools_make_package(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} FALSE)
   x_tools_make_package(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} TRUE)
 endif()
+
+# --------------------------------------------------------------------------------------------------
+# Make dmg for macOS
+if(MACROS)
+  include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
+  x_tools_generate_dmg(xTools ${X_TOOLS_LATEST_GIT_TAG})
+endif()

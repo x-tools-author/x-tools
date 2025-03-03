@@ -137,17 +137,7 @@ endfunction()
 # --------------------------------------------------------------------------------------------------
 # Deploy Qt for macOS
 function(x_tools_deploy_qt_for_mac target)
-  if(NOT MACDEPLOYQT_EXECUTABLE)
-    return()
-  endif()
-
-  add_custom_command(
-    TARGET ${target}
-    POST_BUILD
-    COMMAND ${MACDEPLOYQT_EXECUTABLE} "${target}.app" "-dmg"
-    COMMAND sh -c "ls *.dmg | xargs -I {} mv {} xtools-macos-13.dmg"
-    COMMENT "Running macdeployqt..."
-    WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+  # Do nothing...
 endfunction()
 
 # --------------------------------------------------------------------------------------------------
