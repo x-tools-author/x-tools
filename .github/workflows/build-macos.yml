@@ -41,6 +41,7 @@ jobs:
       - name: make dmg
         run: |
           ls bin
+          ls bin/Darwin
           cd build
           cmake --build . --target xTools_dmg
-          ls ../bin
+          ls ../bin/Darwin
