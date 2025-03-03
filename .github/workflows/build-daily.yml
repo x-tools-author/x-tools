@@ -54,6 +54,7 @@ jobs:
     - name: Build for Windows
       shell: cmd
       run: |
+        git fetch --tags
         mkdir build
         cd build
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
@@ -90,9 +91,8 @@ jobs:
         cd build
         cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/linux_gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -G "Ninja"
         cmake --build . --target xTools
-        cmake --build . --target xTools-deb
-        cmake --build . --target xTools-appimage
-        dir && dir ./xTools
+        cmake --build . --target xTools_deb
+        cmake --build . --target xTools_appimage
     - name: Upload Release Asset for Linux
       run: |
         dir bin/Linux/Release

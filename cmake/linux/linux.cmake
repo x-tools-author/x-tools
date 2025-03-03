@@ -32,7 +32,7 @@ function(x_tools_make_package target packetName friendlyName version is_deb)
   endforeach()
 
   # cmake-format: off
-  add_custom_target(${target}-${package_type}
+  add_custom_target(${target}_${package_type}
     COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/linuxscript.cmake
     SOURCES ${RES_FILES})
   # cmake-format: on
