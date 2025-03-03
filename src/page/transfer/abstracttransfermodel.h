@@ -10,7 +10,7 @@
 
 #include <QAbstractTableModel>
 
-class Communication;
+class Device;
 
 class AbstractTransferModel : public QAbstractTableModel
 {
@@ -34,7 +34,7 @@ signals:
 protected:
     struct Item
     {
-        Communication *transfer{nullptr};
+        Device *transfer{nullptr};
         QString description;
         int option;
     };
@@ -42,7 +42,7 @@ protected:
     bool m_enableRestartTransfer{false};
 
 protected:
-    virtual Communication *createTransfer() = 0;
+    virtual Device *createTransfer() = 0;
     virtual bool isEnableRestartingColumn(int column) const;
     virtual void onDataChanged(const QModelIndex &topLeft,
                                const QModelIndex &bottomRight,

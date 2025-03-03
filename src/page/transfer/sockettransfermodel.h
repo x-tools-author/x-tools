@@ -26,7 +26,7 @@ public:
 
 protected:
     virtual Socket *createSocket() = 0;
-    Communication *createTransfer() override;
+    Device *createTransfer() override;
     void onDataChanged(const QModelIndex &topLeft,
                        const QModelIndex &bottomRight,
                        const QList<int> &roles = QList<int>()) override;

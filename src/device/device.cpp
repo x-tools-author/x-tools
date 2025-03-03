@@ -6,40 +6,40 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "communication.h"
+#include "device.h"
 
 #include <QDebug>
 
-Communication::Communication(QObject *parent)
+Device::Device(QObject *parent)
     : AbstractIO(parent)
 {
-    connect(this, &Communication::started, this, [=]() {
+    connect(this, &Device::started, this, [=]() {
         this->m_isWorking = true;
         emit this->isWorkingChanged();
     });
-    connect(this, &Communication::finished, this, [=]() {
+    connect(this, &Device::finished, this, [=]() {
         this->m_isWorking = false;
         emit this->isWorkingChanged();
     });
-    connect(this, &Communication::errorOccurred, this, [=](const QString &errorString) {
+    connect(this, &Device::errorOccurred, this, [=](const QString &errorString) {
         qWarning() << "Error occured: " << errorString;
         exit();
         wait();
     });
 
-    connect(this, &Communication::bytesRead, this, [=](const QByteArray &bytes, const QString &) {
+    connect(this, &Device::bytesRead, this, [=](const QByteArray &bytes, const QString &) {
         emit outputBytes(bytes);
     });
 }
 
-Communication::~Communication()
+Device::~Device()
 {
     if (isRunning()) {
         closeDevice();
     }
 }
 
-void Communication::openDevice()
+void Device::openDevice()
 {
     if (isRunning()) {
         closeDevice();
@@ -48,13 +48,13 @@ void Communication::openDevice()
     start();
 }
 
-void Communication::closeDevice()
+void Device::closeDevice()
 {
     exit();
     wait();
 }
 
-void Communication::inputBytes(const QByteArray &bytes)
+void Device::inputBytes(const QByteArray &bytes)
 {
     if (bytes.isEmpty()) {
         qInfo() << "The input bytes is empty.";
@@ -64,7 +64,7 @@ void Communication::inputBytes(const QByteArray &bytes)
     emit invokeWriteBytes(bytes);
 }
 
-void Communication::run()
+void Device::run()
 {
     QObject *obj = initDevice();
     if (!obj) {
@@ -72,7 +72,7 @@ void Communication::run()
         return;
     }
 
-    connect(this, &Communication::invokeWriteBytes, obj, [this](const QByteArray &bytes) {
+    connect(this, &Device::invokeWriteBytes, obj, [this](const QByteArray &bytes) {
         writeBytes(bytes);
     });
 

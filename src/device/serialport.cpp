@@ -14,7 +14,7 @@
 #include "common/xtools.h"
 
 SerialPort::SerialPort(QObject *parent)
-    : Communication(parent)
+    : Device(parent)
 {}
 
 SerialPort::~SerialPort() {}

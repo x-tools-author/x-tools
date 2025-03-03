@@ -6,19 +6,18 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "iopage.h"
-#include "ui_iopage.h"
+#include "page.h"
+#include "ui_page.h"
 
 #include <QMenu>
 #include <QMessageBox>
 #include <QWidgetAction>
 
 #include "common/crc.h"
-#include "communicationsettings.h"
 #include "device/chartstest.h"
 #include "device/chartstestui.h"
-#include "device/communication.h"
-#include "device/communicationui.h"
+#include "device/device.h"
+#include "device/deviceui.h"
 #include "device/tcpclient.h"
 #include "device/tcpclientui.h"
 #include "device/tcpserver.h"
@@ -27,6 +26,7 @@
 #include "device/udpclientui.h"
 #include "device/udpserver.h"
 #include "device/udpserverui.h"
+#include "devicesettings.h"
 #include "page/emitter/emitter.h"
 #include "page/preset/preset.h"
 #include "page/responder/responder.h"
@@ -104,9 +104,9 @@ struct ParameterKeys
     const QString chartsItems{"chartsItems"};
 } g_keys;
 
-IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *parent)
+Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     : QWidget{parent}
-    , ui{new Ui::IOPage}
+    , ui{new Ui::Page}
     , m_io{nullptr}
     , m_ioUi{nullptr}
     , m_ioSettings{nullptr}
@@ -162,7 +162,7 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
         ui->widgetCharts->setVisible(!ui->widgetCharts->isVisible());
     });
-    connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &IOPage::writeBytes);
+    connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
 #else
     ui->toolButtonCharts->setVisible(false);
 #endif
@@ -188,10 +188,10 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     }
 
     m_writeTimer->setInterval(1000);
-    connect(m_writeTimer, &QTimer::timeout, this, &IOPage::writeBytes);
+    connect(m_writeTimer, &QTimer::timeout, this, &Page::writeBytes);
 
     m_updateLabelInfoTimer->setInterval(100);
-    connect(m_updateLabelInfoTimer, &QTimer::timeout, this, &IOPage::updateLabelInfo);
+    connect(m_updateLabelInfoTimer, &QTimer::timeout, this, &Page::updateLabelInfo);
     m_updateLabelInfoTimer->start();
 
     initUi();
@@ -199,13 +199,13 @@ IOPage::IOPage(ControllerDirection direction, QSettings *settings, QWidget *pare
     onShowStatisticianChanged(false);
 }
 
-IOPage::~IOPage()
+Page::~Page()
 {
     saveControllerParameters();
     delete ui;
 }
 
-QVariantMap IOPage::save()
+QVariantMap Page::save()
 {
     QVariantMap map;
     map.insert(g_keys.communicationType, ui->comboBoxCommunicationTypes->currentData());
@@ -250,7 +250,7 @@ QVariantMap IOPage::save()
     return map;
 }
 
-void IOPage::load(const QVariantMap &parameters)
+void Page::load(const QVariantMap &parameters)
 {
     if (parameters.isEmpty()) {
         return;
@@ -319,34 +319,34 @@ void IOPage::load(const QVariantMap &parameters)
     // clang-format on
 }
 
-QTabWidget *IOPage::tabWidget()
+QTabWidget *Page::tabWidget()
 {
     return ui->tabWidget;
 }
 
-QToolButton *IOPage::presetToolButton()
+QToolButton *Page::presetToolButton()
 {
     return ui->toolButtonInputPreset;
 }
 
-void IOPage::inputBytes(const QByteArray &bytes)
+void Page::inputBytes(const QByteArray &bytes)
 {
     if (m_io && m_io->isWorking()) {
         m_io->inputBytes(bytes);
     }
 }
 
-void IOPage::prependOutputControl(QWidget *widget)
+void Page::prependOutputControl(QWidget *widget)
 {
     ui->horizontalLayoutOutput->insertWidget(0, widget);
 }
 
-void IOPage::appendOutputControl(QWidget *widget)
+void Page::appendOutputControl(QWidget *widget)
 {
     ui->horizontalLayoutOutput->addWidget(widget);
 }
 
-void IOPage::initUi()
+void Page::initUi()
 {
 #if 0
     const QIcon icon = QIcon(":/res/icons/iconsettings.svg");
@@ -365,25 +365,25 @@ void IOPage::initUi()
     initUiInput();
 }
 
-void IOPage::initUiCommunication()
+void Page::initUiCommunication()
 {
     connect(ui->comboBoxCommunicationTypes,
             qOverload<int>(&QComboBox::currentIndexChanged),
             this,
-            &IOPage::onCommunicationTypeChanged);
+            &Page::onCommunicationTypeChanged);
     connect(ui->pushButtonCommunicationOpen,
             &QPushButton::clicked,
             this,
-            &IOPage::onOpenButtonClicked);
+            &Page::onOpenButtonClicked);
 
     QPushButton *target = ui->pushButtonCommunicationSettings;
-    m_ioSettings = new CommunicationSettings();
+    m_ioSettings = new DeviceSettings();
     setupMenu(target, m_ioSettings);
 
     setupCommunicationTypes(ui->comboBoxCommunicationTypes);
 }
 
-void IOPage::initUiOutputControl()
+void Page::initUiOutputControl()
 {
     setupTextFormat(ui->comboBoxOutputFormat);
     ui->checkBoxOutputRx->setChecked(true);
@@ -396,30 +396,30 @@ void IOPage::initUiOutputControl()
     connect(m_outputSettings,
             &OutputSettings::highlighterEnableChanged,
             this,
-            &IOPage::onHighlighterEnableChanged);
+            &Page::onHighlighterEnableChanged);
 
     connect(m_outputSettings,
             &OutputSettings::highlighterKeywordsChanged,
             this,
-            &IOPage::onHighlighterKeywordsChanged);
+            &Page::onHighlighterKeywordsChanged);
     connect(m_outputSettings,
             &OutputSettings::showStatisticianChanged,
             this,
-            &IOPage::onShowStatisticianChanged);
+            &Page::onShowStatisticianChanged);
     m_highlighter->setDocument(ui->textBrowserOutput->document());
 }
 
-void IOPage::initUiInputControl()
+void Page::initUiInputControl()
 {
     connect(ui->comboBoxInputFormat,
             qOverload<int>(&QComboBox::currentIndexChanged),
             this,
-            &IOPage::onInputFormatChanged);
+            &Page::onInputFormatChanged);
     connect(ui->comboBoxInputInterval,
             qOverload<int>(&QComboBox::currentIndexChanged),
             this,
-            &IOPage::onCycleIntervalChanged);
-    connect(ui->pushButtonInputWriteBytes, &QPushButton::clicked, this, &IOPage::writeBytes);
+            &Page::onCycleIntervalChanged);
+    connect(ui->pushButtonInputWriteBytes, &QPushButton::clicked, this, &Page::writeBytes);
 
     setupTextFormat(ui->comboBoxInputFormat);
     ui->comboBoxInputInterval->addItem(tr("Disable"), -1);
@@ -437,7 +437,7 @@ void IOPage::initUiInputControl()
     setupMenu(ui->pushButtonInputSettings, m_inputSettings);
 }
 
-void IOPage::initUiOutput()
+void Page::initUiOutput()
 {
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT
     ui->tabWidgetTransfers->addTab(m_serialPortTransferUi, tr("Serial Port"));
@@ -474,12 +474,12 @@ void IOPage::initUiOutput()
     ui->tabWidgetTransfers->setCurrentIndex(0);
 }
 
-void IOPage::initUiInput()
+void Page::initUiInput()
 {
     // Nothing to do
 }
 
-void IOPage::onCommunicationTypeChanged()
+void Page::onCommunicationTypeChanged()
 {
     if (m_ioUi != nullptr) {
         saveControllerParameters();
@@ -504,7 +504,7 @@ void IOPage::onCommunicationTypeChanged()
     }
 }
 
-void IOPage::onCycleIntervalChanged()
+void Page::onCycleIntervalChanged()
 {
     int interval = ui->comboBoxInputInterval->currentData().toInt();
     if (interval > 0) {
@@ -514,14 +514,14 @@ void IOPage::onCycleIntervalChanged()
     }
 }
 
-void IOPage::onInputFormatChanged()
+void Page::onInputFormatChanged()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
     setupTextFormatValidator(ui->lineEditInput, format);
     ui->lineEditInput->clear();
 }
 
-void IOPage::onOpenButtonClicked()
+void Page::onOpenButtonClicked()
 {
     ui->pushButtonCommunicationOpen->setEnabled(false);
     if (m_io) {
@@ -531,19 +531,19 @@ void IOPage::onOpenButtonClicked()
     }
 }
 
-void IOPage::onHighlighterEnableChanged()
+void Page::onHighlighterEnableChanged()
 {
     bool enabled = m_outputSettings->isEnableHighlighter();
     m_highlighter->setEnabled(enabled);
 }
 
-void IOPage::onHighlighterKeywordsChanged()
+void Page::onHighlighterKeywordsChanged()
 {
     QStringList keywords = m_outputSettings->highlighterKeywords();
     m_highlighter->setKeywords(keywords);
 }
 
-void IOPage::onShowStatisticianChanged(bool checked)
+void Page::onShowStatisticianChanged(bool checked)
 {
     ui->labelRx->setVisible(checked);
     ui->labelTx->setVisible(checked);
@@ -552,7 +552,7 @@ void IOPage::onShowStatisticianChanged(bool checked)
     ui->widgetTxInfo->setVisible(checked);
 }
 
-void IOPage::onOpened()
+void Page::onOpened()
 {
     for (auto &io : m_ioList) {
         io->start();
@@ -564,7 +564,7 @@ void IOPage::onOpened()
     onCycleIntervalChanged();
 }
 
-void IOPage::onClosed()
+void Page::onClosed()
 {
     for (auto &io : m_ioList) {
         io->exit();
@@ -577,7 +577,7 @@ void IOPage::onClosed()
     ui->pushButtonCommunicationOpen->setText(tr("Open"));
 }
 
-void IOPage::onErrorOccurred(const QString &error)
+void Page::onErrorOccurred(const QString &error)
 {
     closeCommunication();
     if (!error.isEmpty()) {
@@ -585,12 +585,12 @@ void IOPage::onErrorOccurred(const QString &error)
     }
 }
 
-void IOPage::onWarningOccurred(const QString &warning)
+void Page::onWarningOccurred(const QString &warning)
 {
     QMessageBox::warning(this, tr("Warning"), warning);
 }
 
-void IOPage::onBytesRead(const QByteArray &bytes, const QString &from)
+void Page::onBytesRead(const QByteArray &bytes, const QString &from)
 {
     m_ioSettings->saveData(bytes, false);
     m_rxStatistician->inputBytes(bytes);
@@ -599,7 +599,7 @@ void IOPage::onBytesRead(const QByteArray &bytes, const QString &from)
     emit bytesRead(bytes, from);
 }
 
-void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
+void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
 {
     m_ioSettings->saveData(bytes, true);
     m_txStatistician->inputBytes(bytes);
@@ -608,7 +608,7 @@ void IOPage::onBytesWritten(const QByteArray &bytes, const QString &to)
     emit bytesWritten(bytes, to);
 }
 
-void IOPage::openCommunication()
+void Page::openCommunication()
 {
     int type = ui->comboBoxCommunicationTypes->currentData().toInt();
     m_io = createDevice(type);
@@ -616,40 +616,40 @@ void IOPage::openCommunication()
         setUiEnabled(false);
 
         // clang-format off
-        connect(m_io, &Communication::opened, this, &IOPage::onOpened);
-        connect(m_io, &Communication::closed, this, &IOPage::onClosed);
-        connect(m_io, &Communication::bytesWritten, this, &IOPage::onBytesWritten);
-        connect(m_io, &Communication::bytesRead, this, &IOPage::onBytesRead);
-        connect(m_io, &Communication::errorOccurred, this, &IOPage::onErrorOccurred);
-        connect(m_io, &Communication::warningOccurred, this, &::IOPage::onWarningOccurred);
-        connect(m_io, &Communication::outputBytes, m_responder, &Responder::inputBytes);
+        connect(m_io, &Device::opened, this, &Page::onOpened);
+        connect(m_io, &Device::closed, this, &Page::onClosed);
+        connect(m_io, &Device::bytesWritten, this, &Page::onBytesWritten);
+        connect(m_io, &Device::bytesRead, this, &Page::onBytesRead);
+        connect(m_io, &Device::errorOccurred, this, &Page::onErrorOccurred);
+        connect(m_io, &Device::warningOccurred, this, &::Page::onWarningOccurred);
+        connect(m_io, &Device::outputBytes, m_responder, &Responder::inputBytes);
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT
-        connect(m_io, &Communication::outputBytes, m_serialPortTransfer, &SerialPortTransfer::inputBytes);
+        connect(m_io, &Device::outputBytes, m_serialPortTransfer, &SerialPortTransfer::inputBytes);
 #endif
-        connect(m_io, &Communication::outputBytes, m_udpClientTransfer, &UdpClientTransfer::inputBytes);
-        connect(m_io, &Communication::outputBytes, m_udpServerTransfer, &UdpServerTransfer::inputBytes);
-        connect(m_io, &Communication::outputBytes, m_tcpClientTransfer, &TcpClientTransfer::inputBytes);
-        connect(m_io, &Communication::outputBytes, m_tcpServerTransfer, &TcpServerTransfer::inputBytes);
+        connect(m_io, &Device::outputBytes, m_udpClientTransfer, &UdpClientTransfer::inputBytes);
+        connect(m_io, &Device::outputBytes, m_udpServerTransfer, &UdpServerTransfer::inputBytes);
+        connect(m_io, &Device::outputBytes, m_tcpClientTransfer, &TcpClientTransfer::inputBytes);
+        connect(m_io, &Device::outputBytes, m_tcpServerTransfer, &TcpServerTransfer::inputBytes);
 #ifdef X_TOOLS_ENABLE_WEB_SOCKET
-        connect(m_io, &Communication::outputBytes, m_webSocketClientTransfer, &WebSocketClientTransfer::inputBytes);
-        connect(m_io, &Communication::outputBytes, m_webSocketServerTransfer, &WebSocketServerTransfer::inputBytes);
+        connect(m_io, &Device::outputBytes, m_webSocketClientTransfer, &WebSocketClientTransfer::inputBytes);
+        connect(m_io, &Device::outputBytes, m_webSocketServerTransfer, &WebSocketServerTransfer::inputBytes);
 #endif
 #ifdef X_TOOLS_ENABLE_CHARTS
-        connect(m_io, &Communication::outputBytes, m_charts, &Charts::inputBytes);
+        connect(m_io, &Device::outputBytes, m_charts, &Charts::inputBytes);
 #endif
-        connect(m_preset, &Preset::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_emitter, &Preset::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_responder, &Responder::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_preset, &Preset::outputBytes, m_io, &Device::inputBytes);
+        connect(m_emitter, &Preset::outputBytes, m_io, &Device::inputBytes);
+        connect(m_responder, &Responder::outputBytes, m_io, &Device::inputBytes);
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT
-        connect(m_serialPortTransfer, &SerialPortTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_serialPortTransfer, &SerialPortTransfer::outputBytes, m_io, &Device::inputBytes);
 #endif
-        connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_udpServerTransfer, &UdpServerTransfer::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_tcpClientTransfer, &TcpClientTransfer::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_tcpServerTransfer, &TcpServerTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, m_io, &Device::inputBytes);
+        connect(m_udpServerTransfer, &UdpServerTransfer::outputBytes, m_io, &Device::inputBytes);
+        connect(m_tcpClientTransfer, &TcpClientTransfer::outputBytes, m_io, &Device::inputBytes);
+        connect(m_tcpServerTransfer, &TcpServerTransfer::outputBytes, m_io, &Device::inputBytes);
 #ifdef X_TOOLS_ENABLE_WEB_SOCKET
-        connect(m_webSocketClientTransfer, &WebSocketClientTransfer::outputBytes, m_io, &Communication::inputBytes);
-        connect(m_webSocketServerTransfer, &WebSocketServerTransfer::outputBytes, m_io, &Communication::inputBytes);
+        connect(m_webSocketClientTransfer, &WebSocketClientTransfer::outputBytes, m_io, &Device::inputBytes);
+        connect(m_webSocketServerTransfer, &WebSocketServerTransfer::outputBytes, m_io, &Device::inputBytes);
 #endif
         // clang-format on
 
@@ -664,7 +664,7 @@ void IOPage::openCommunication()
     }
 }
 
-void IOPage::closeCommunication()
+void Page::closeCommunication()
 {
     if (m_io) {
         m_io->exit();
@@ -678,7 +678,7 @@ void IOPage::closeCommunication()
     }
 }
 
-void IOPage::writeBytes()
+void Page::writeBytes()
 {
     if (!m_io) {
         return;
@@ -702,7 +702,7 @@ void IOPage::writeBytes()
     }
 }
 
-void IOPage::updateLabelInfo()
+void Page::updateLabelInfo()
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
 
@@ -735,7 +735,7 @@ void IOPage::updateLabelInfo()
     }
 }
 
-void IOPage::setupMenu(QPushButton *target, QWidget *actionWidget)
+void Page::setupMenu(QPushButton *target, QWidget *actionWidget)
 {
     QMenu *menu = new QMenu(target);
     QWidgetAction *action = new QWidgetAction(menu);
@@ -744,7 +744,7 @@ void IOPage::setupMenu(QPushButton *target, QWidget *actionWidget)
     target->setMenu(menu);
 }
 
-void IOPage::setUiEnabled(bool enabled)
+void Page::setUiEnabled(bool enabled)
 {
     if (m_ioUi) {
         m_ioUi->setUiEnabled(enabled);
@@ -791,7 +791,7 @@ QString flagString(bool isRx, const QString &flag)
     return str;
 }
 
-void IOPage::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
+void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
 {
     bool showRx = ui->checkBoxOutputRx->isChecked();
     bool showTx = ui->checkBoxOutputTx->isChecked();
@@ -836,7 +836,7 @@ void IOPage::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     }
 }
 
-void IOPage::saveControllerParameters()
+void Page::saveControllerParameters()
 {
     if (m_ioUi != nullptr) {
         auto parameters = m_ioUi->save();
@@ -845,7 +845,7 @@ void IOPage::saveControllerParameters()
     }
 }
 
-void IOPage::loadControllerParameters()
+void Page::loadControllerParameters()
 {
     int type = ui->comboBoxCommunicationTypes->currentData().toInt();
     auto parameters = m_settings->value(QString("controller_%1").arg(type));
@@ -854,7 +854,7 @@ void IOPage::loadControllerParameters()
     }
 }
 
-QByteArray IOPage::payload() const
+QByteArray Page::payload() const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     QString text = ui->lineEditInput->text();
@@ -864,7 +864,7 @@ QByteArray IOPage::payload() const
     return payload;
 }
 
-QByteArray IOPage::crc(const QByteArray &payload) const
+QByteArray Page::crc(const QByteArray &payload) const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     CRC::Context ctx;
@@ -877,7 +877,7 @@ QByteArray IOPage::crc(const QByteArray &payload) const
     return CRC::calculate(ctx);
 }
 
-Communication *IOPage::createDevice(int type)
+Device *Page::createDevice(int type)
 {
     switch (type) {
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT
@@ -910,7 +910,7 @@ Communication *IOPage::createDevice(int type)
     }
 }
 
-CommunicationUi *IOPage::createDeviceUi(int type)
+DeviceUi *Page::createDeviceUi(int type)
 {
     switch (type) {
 #ifdef X_TOOLS_ENABLE_SERIAL_PORT

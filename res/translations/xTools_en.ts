@@ -4,65 +4,65 @@
 <context>
     <name>AbstractModelUi</name>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="14"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="14"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="32"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="32"/>
         <source>Add</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="39"/>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="157"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="39"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="157"/>
         <source>Clear</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="46"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="46"/>
         <source>Delete</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="61"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="61"/>
         <source>Disable all items</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="70"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="70"/>
         <source>Import</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="90"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="90"/>
         <source>Export</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="158"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="158"/>
         <source>Are you sure to clear all items?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="169"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="169"/>
         <source>No Item be Selected</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="169"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="169"/>
         <source>Please select a item first!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="179"/>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="204"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="179"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="204"/>
         <source>Import data</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="181"/>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="206"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="181"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="206"/>
         <source>JSON (*.json);;All (*)</source>
         <translation></translation>
     </message>
@@ -70,7 +70,7 @@
 <context>
     <name>AbstractTransferModel</name>
     <message>
-        <location filename="../../src/devicepage/transfer/abstracttransfermodel.cpp" line="50"/>
+        <location filename="../../src/page/transfer/abstracttransfermodel.cpp" line="50"/>
         <source>Transfer %1</source>
         <translation></translation>
     </message>
@@ -808,12 +808,12 @@
 <context>
     <name>ChartsUi</name>
     <message>
-        <location filename="../../src/devicepage/charts/chartsui.cpp" line="244"/>
+        <location filename="../../src/page/charts/chartsui.cpp" line="244"/>
         <source>Import Data from Excel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsui.cpp" line="275"/>
+        <location filename="../../src/page/charts/chartsui.cpp" line="275"/>
         <source>Export Data to Excel</source>
         <translation></translation>
     </message>
@@ -821,140 +821,86 @@
 <context>
     <name>ChartsUiSettings</name>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="125"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="125"/>
         <source>Clear</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="132"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="132"/>
         <source>Export</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="139"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="139"/>
         <source>Import</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="58"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="58"/>
         <source>Data type</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="68"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="68"/>
         <source>Legend</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="75"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="75"/>
         <source>Cache points</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="34"/>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="37"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="34"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="37"/>
         <source>Binary</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="35"/>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="38"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="35"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="38"/>
         <source>Text</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="62"/>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="231"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="62"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="231"/>
         <source>Channel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="63"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="63"/>
         <source>Visible</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="64"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="64"/>
         <source>Type</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="67"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="67"/>
         <source>Color</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="68"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="68"/>
         <source>Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="242"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="242"/>
         <source>Line</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="244"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="244"/>
         <source>Spline</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="246"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="246"/>
         <source>Scatter</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>CommunicationSettings</name>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="22"/>
-        <source>Save tx data</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="32"/>
-        <source>Browser</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="59"/>
-        <source>Save Date</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="69"/>
-        <location filename="../../src/devicepage/communicationsettings.cpp" line="149"/>
-        <source>Save to file</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="39"/>
-        <source>Save millisecond</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="49"/>
-        <source>Save rx data</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="76"/>
-        <source>Save Time</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="94"/>
-        <source>Save format</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="104"/>
-        <source>Max bytes</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.cpp" line="151"/>
-        <source>Text File(*.txt)</source>
         <translation></translation>
     </message>
 </context>
@@ -1075,35 +1021,89 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>DeviceSettings</name>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="22"/>
+        <source>Save tx data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="32"/>
+        <source>Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="39"/>
+        <source>Save millisecond</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="49"/>
+        <source>Save rx data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="59"/>
+        <source>Save Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="69"/>
+        <location filename="../../src/page/devicesettings.cpp" line="149"/>
+        <source>Save to file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="76"/>
+        <source>Save Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="94"/>
+        <source>Save format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="104"/>
+        <source>Max bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.cpp" line="151"/>
+        <source>Text File(*.txt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EmitterModel</name>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="40"/>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="131"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="40"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="131"/>
         <source>Enable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="40"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="40"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="103"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="103"/>
         <source>Demo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="133"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="133"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="135"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="135"/>
         <source>Interval</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="137"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="137"/>
         <source>Data</source>
         <translation></translation>
     </message>
@@ -1261,231 +1261,49 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>IOPage</name>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="40"/>
-        <source>Output control</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="60"/>
-        <location filename="../../src/devicepage/iopage.ui" line="171"/>
-        <source>Text format</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="72"/>
-        <location filename="../../src/devicepage/iopage.ui" line="143"/>
-        <location filename="../../src/devicepage/iopage.ui" line="233"/>
-        <source>Settings</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="79"/>
-        <location filename="../../src/devicepage/iopage.cpp" line="577"/>
-        <source>Open</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="88"/>
-        <source>Cycle interval</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="107"/>
-        <source>Input control</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="150"/>
-        <source>Send</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="164"/>
-        <source>Communication control</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="180"/>
-        <source>Rx</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="187"/>
-        <source>Tx</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="194"/>
-        <source>Date</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="201"/>
-        <source>Flag</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="208"/>
-        <source>Time</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="215"/>
-        <source>Ms</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="240"/>
-        <source>Clear</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="259"/>
-        <source>IO</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="272"/>
-        <source>Output</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="354"/>
-        <source>Input</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="391"/>
-        <source>📄</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="401"/>
-        <source>Presets</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="406"/>
-        <source>Emitter</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="411"/>
-        <source>Responder</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="416"/>
-        <source>Transfers</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="425"/>
-        <source>Disable</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="443"/>
-        <source>Serial Port</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="445"/>
-        <source>UDP Client</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="446"/>
-        <source>UDP Server</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="447"/>
-        <source>TCP Client</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="448"/>
-        <source>TCP Server</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="450"/>
-        <source>WebSocket Client</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="451"/>
-        <source>WebSocket Server</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="563"/>
-        <source>Close</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="584"/>
-        <source>Error Occurred</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="590"/>
-        <source>Warning</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="728"/>
-        <source>[%1][%2][%3][%4]</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
     <name>InputSettings</name>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="20"/>
+        <location filename="../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="32"/>
+        <location filename="../../src/page/inputsettings.ui" line="32"/>
         <source>Append prefix</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="45"/>
+        <location filename="../../src/page/inputsettings.ui" line="45"/>
         <source>Append suffix</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="52"/>
+        <location filename="../../src/page/inputsettings.ui" line="52"/>
         <source>Escape character</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="93"/>
+        <location filename="../../src/page/inputsettings.ui" line="93"/>
         <source>CRC end index</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="109"/>
+        <location filename="../../src/page/inputsettings.ui" line="109"/>
         <source>CRC start index</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="122"/>
+        <location filename="../../src/page/inputsettings.ui" line="122"/>
         <source>CRC arithmetic</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="131"/>
+        <location filename="../../src/page/inputsettings.ui" line="131"/>
         <source>Append CRC</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="138"/>
+        <location filename="../../src/page/inputsettings.ui" line="138"/>
         <source>Big endian</source>
         <translation></translation>
     </message>
@@ -2136,29 +1954,211 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputSettings</name>
     <message>
-        <location filename="../../src/devicepage/outputsettings.ui" line="20"/>
+        <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable highlighter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/outputsettings.ui" line="33"/>
+        <location filename="../../src/page/outputsettings.ui" line="33"/>
         <source>Filter text</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/outputsettings.ui" line="43"/>
+        <location filename="../../src/page/outputsettings.ui" line="43"/>
         <source>Hello,Word</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/outputsettings.ui" line="53"/>
+        <location filename="../../src/page/outputsettings.ui" line="53"/>
         <source>Show statistician</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/outputsettings.ui" line="60"/>
+        <location filename="../../src/page/outputsettings.ui" line="60"/>
         <source>Enable filter</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>Page</name>
+    <message>
+        <location filename="../../src/page/page.ui" line="40"/>
+        <source>Output control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="60"/>
+        <location filename="../../src/page/page.ui" line="171"/>
+        <source>Text format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="72"/>
+        <location filename="../../src/page/page.ui" line="143"/>
+        <location filename="../../src/page/page.ui" line="233"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="79"/>
+        <location filename="../../src/page/page.cpp" line="577"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="88"/>
+        <source>Cycle interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="107"/>
+        <source>Input control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="150"/>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="164"/>
+        <source>Communication control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="180"/>
+        <source>Rx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="187"/>
+        <source>Tx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="194"/>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="201"/>
+        <source>Flag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="208"/>
+        <source>Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="215"/>
+        <source>Ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="240"/>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="259"/>
+        <source>IO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="272"/>
+        <source>Output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="354"/>
+        <source>Input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="391"/>
+        <source>📄</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="401"/>
+        <source>Presets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="406"/>
+        <source>Emitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="411"/>
+        <source>Responder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="416"/>
+        <source>Transfers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="425"/>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="443"/>
+        <source>Serial Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="445"/>
+        <source>UDP Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="446"/>
+        <source>UDP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="447"/>
+        <source>TCP Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="448"/>
+        <source>TCP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="450"/>
+        <source>WebSocket Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="451"/>
+        <source>WebSocket Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="563"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="584"/>
+        <source>Error Occurred</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="590"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="728"/>
+        <source>[%1][%2][%3][%4]</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2284,17 +2284,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Preset</name>
     <message>
-        <location filename="../../src/devicepage/preset/preset.cpp" line="130"/>
+        <location filename="../../src/page/preset/preset.cpp" line="130"/>
         <source>Demo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/preset/preset.cpp" line="153"/>
+        <location filename="../../src/page/preset/preset.cpp" line="153"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/preset/preset.cpp" line="155"/>
+        <location filename="../../src/page/preset/preset.cpp" line="155"/>
         <source>Data</source>
         <translation></translation>
     </message>
@@ -2302,17 +2302,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetModel</name>
     <message>
-        <location filename="../../src/devicepage/preset/presetmodel.cpp" line="85"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="85"/>
         <source>Demo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/preset/presetmodel.cpp" line="113"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="113"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/preset/presetmodel.cpp" line="115"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="115"/>
         <source>Data</source>
         <translation></translation>
     </message>
@@ -2320,231 +2320,231 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/device/utilities/crc.cpp" line="66"/>
+        <location filename="../../src/common/crc.cpp" line="66"/>
         <source>Unknown</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="402"/>
+        <location filename="../../src/common/xtools.cpp" line="400"/>
+        <location filename="../../src/common/xtools.cpp" line="863"/>
         <location filename="../../src/common/xtools.cpp" line="865"/>
-        <location filename="../../src/common/xtools.cpp" line="867"/>
         <source>Text</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="146"/>
-        <location filename="../../src/common/xtools.cpp" line="404"/>
+        <location filename="../../src/common/xtools.cpp" line="144"/>
+        <location filename="../../src/common/xtools.cpp" line="402"/>
+        <location filename="../../src/common/xtools.cpp" line="859"/>
         <location filename="../../src/common/xtools.cpp" line="861"/>
-        <location filename="../../src/common/xtools.cpp" line="863"/>
         <source>Binary</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="88"/>
+        <location filename="../../src/common/xtools.cpp" line="86"/>
         <source>Serial Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="90"/>
+        <location filename="../../src/common/xtools.cpp" line="88"/>
         <source>BLE Central</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="92"/>
+        <location filename="../../src/common/xtools.cpp" line="90"/>
         <source>BLE Peripheral</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="94"/>
+        <location filename="../../src/common/xtools.cpp" line="92"/>
         <source>UDP Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="96"/>
+        <location filename="../../src/common/xtools.cpp" line="94"/>
         <source>UDP Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="98"/>
+        <location filename="../../src/common/xtools.cpp" line="96"/>
         <source>TCP Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="100"/>
+        <location filename="../../src/common/xtools.cpp" line="98"/>
         <source>TCP Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="102"/>
+        <location filename="../../src/common/xtools.cpp" line="100"/>
         <source>WebSocket Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="104"/>
+        <location filename="../../src/common/xtools.cpp" line="102"/>
         <source>WebSocket Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="106"/>
+        <location filename="../../src/common/xtools.cpp" line="104"/>
         <source>Charts Test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="148"/>
+        <location filename="../../src/common/xtools.cpp" line="146"/>
         <source>Octal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="150"/>
+        <location filename="../../src/common/xtools.cpp" line="148"/>
         <source>Decimal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="152"/>
+        <location filename="../../src/common/xtools.cpp" line="150"/>
         <source>Hexadecimal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="154"/>
+        <location filename="../../src/common/xtools.cpp" line="152"/>
         <source>ASCII</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="156"/>
+        <location filename="../../src/common/xtools.cpp" line="154"/>
         <source>UTF-8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="439"/>
+        <location filename="../../src/common/xtools.cpp" line="437"/>
         <source>Echo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="440"/>
+        <location filename="../../src/common/xtools.cpp" line="438"/>
         <source>Always</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="441"/>
+        <location filename="../../src/common/xtools.cpp" line="439"/>
         <source>Input Equal Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="442"/>
+        <location filename="../../src/common/xtools.cpp" line="440"/>
         <source>Input Contain Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="444"/>
+        <location filename="../../src/common/xtools.cpp" line="442"/>
         <source>Input Does not Contain Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="702"/>
+        <location filename="../../src/common/xtools.cpp" line="700"/>
         <source>Even</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="703"/>
+        <location filename="../../src/common/xtools.cpp" line="701"/>
         <source>Odd</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="704"/>
+        <location filename="../../src/common/xtools.cpp" line="702"/>
         <source>Space</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="705"/>
+        <location filename="../../src/common/xtools.cpp" line="703"/>
         <source>Mark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="721"/>
+        <location filename="../../src/common/xtools.cpp" line="719"/>
         <source>RTS/CTS</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="722"/>
+        <location filename="../../src/common/xtools.cpp" line="720"/>
         <source>X-ON/X-OFF</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="724"/>
+        <location filename="../../src/common/xtools.cpp" line="722"/>
         <source>Hardware</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="725"/>
+        <location filename="../../src/common/xtools.cpp" line="723"/>
         <source>Software</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="826"/>
+        <location filename="../../src/common/xtools.cpp" line="824"/>
         <source>Disabled</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="828"/>
+        <location filename="../../src/common/xtools.cpp" line="826"/>
         <source>Bidirectional</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="830"/>
+        <location filename="../../src/common/xtools.cpp" line="828"/>
         <source>Unidirectional</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1233"/>
+        <location filename="../../src/common/xtools.cpp" line="1231"/>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>System</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1234"/>
+        <location filename="../../src/common/xtools.cpp" line="1232"/>
         <location filename="../../src/mainwindow.cpp" line="453"/>
         <source>Round up for .5 and above</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1235"/>
+        <location filename="../../src/common/xtools.cpp" line="1233"/>
         <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Always round up</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1236"/>
+        <location filename="../../src/common/xtools.cpp" line="1234"/>
         <location filename="../../src/mainwindow.cpp" line="455"/>
         <source>Always round down</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1237"/>
+        <location filename="../../src/common/xtools.cpp" line="1235"/>
         <location filename="../../src/mainwindow.cpp" line="456"/>
         <source>Round up for .75 and above</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1238"/>
+        <location filename="../../src/common/xtools.cpp" line="1236"/>
         <location filename="../../src/mainwindow.cpp" line="457"/>
         <source>Don&apos;t round</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1510"/>
+        <location filename="../../src/common/xtools.cpp" line="1508"/>
         <source>Need to Reboot</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1511"/>
+        <location filename="../../src/common/xtools.cpp" line="1509"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="304"/>
-        <location filename="../../src/common/xtools.cpp" line="363"/>
-        <location filename="../../src/common/xtools.cpp" line="701"/>
-        <location filename="../../src/common/xtools.cpp" line="719"/>
+        <location filename="../../src/common/xtools.cpp" line="302"/>
+        <location filename="../../src/common/xtools.cpp" line="361"/>
+        <location filename="../../src/common/xtools.cpp" line="699"/>
+        <location filename="../../src/common/xtools.cpp" line="717"/>
         <source>None</source>
         <translation></translation>
     </message>
@@ -2708,43 +2708,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ResponderModel</name>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="42"/>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="157"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="42"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="157"/>
         <source>Enable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="42"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="42"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="120"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="120"/>
         <source>Demo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="159"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="159"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="161"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="161"/>
         <source>Option</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="163"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="163"/>
         <source>Delay</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="165"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="165"/>
         <source>Reference Data</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="167"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="167"/>
         <source>Response Data</source>
         <translation></translation>
     </message>
@@ -2760,93 +2760,93 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPortTransferModel</name>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="55"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="55"/>
         <source>1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="57"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="57"/>
         <source>1.5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="59"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="59"/>
         <source>2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="65"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="65"/>
         <source>Odd</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="67"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="67"/>
         <source>Even</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="69"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="69"/>
         <source>Mark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="71"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="71"/>
         <source>Space</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="73"/>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="81"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="73"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="81"/>
         <source>None</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="77"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="77"/>
         <source>Hardware</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="79"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="79"/>
         <source>Software</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="184"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="184"/>
         <source>Transfer Option</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="186"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="186"/>
         <source>Port Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="188"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="188"/>
         <source>Baud Rate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="190"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="190"/>
         <source>Data Bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="192"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="192"/>
         <source>Stop Bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="194"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="194"/>
         <source>Parity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="196"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="196"/>
         <source>Flow Control</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="198"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="198"/>
         <source>Description</source>
         <translation></translation>
     </message>
@@ -2887,62 +2887,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SocketTransferModel</name>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="57"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="57"/>
         <source>Enable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="57"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="57"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="157"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="157"/>
         <source>Transfer Option</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="159"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="159"/>
         <source>Client Address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="161"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="161"/>
         <source>Client Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="163"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="163"/>
         <source>Server Address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="165"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="165"/>
         <source>Server Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="167"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="167"/>
         <source>Data Channel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="169"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="169"/>
         <source>Authentication</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="171"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="171"/>
         <source>Username</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="173"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="173"/>
         <source>Password</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="175"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="175"/>
         <source>Description</source>
         <translation></translation>
     </message>
@@ -3028,12 +3028,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>StatisticianUi</name>
     <message>
-        <location filename="../../src/devicepage/utilities/statisticianui.ui" line="20"/>
+        <location filename="../../src/page/utilities/statisticianui.ui" line="20"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/utilities/statisticianui.cpp" line="66"/>
+        <location filename="../../src/page/utilities/statisticianui.cpp" line="66"/>
         <source>%1 frames, %2 bytes, %3B/s</source>
         <translation></translation>
     </message>

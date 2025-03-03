@@ -184,7 +184,7 @@ Qt::ItemFlags SocketTransferModel::flags(const QModelIndex &index) const
     return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
 }
 
-Communication *SocketTransferModel::createTransfer()
+Device *SocketTransferModel::createTransfer()
 {
     auto socket = createSocket();
     if (socket) {

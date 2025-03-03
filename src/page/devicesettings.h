@@ -12,17 +12,17 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class CommunicationSettings;
+class DeviceSettings;
 }
 QT_END_NAMESPACE
 
 class SaveThread;
-class CommunicationSettings : public QWidget
+class DeviceSettings : public QWidget
 {
     Q_OBJECT
 public:
-    CommunicationSettings(QWidget *parent = nullptr);
-    ~CommunicationSettings();
+    DeviceSettings(QWidget *parent = nullptr);
+    ~DeviceSettings();
 
     void saveData(const QByteArray &data, bool isRx);
     QVariantMap save();
@@ -36,7 +36,7 @@ private:
     } m_settingKeys;
 
 private:
-    Ui::CommunicationSettings *ui;
+    Ui::DeviceSettings *ui;
     SaveThread *m_saveThread;
     QString m_fileName;
 

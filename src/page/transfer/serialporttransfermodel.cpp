@@ -213,7 +213,7 @@ Qt::ItemFlags SerialPortTransferModel::flags(const QModelIndex &index) const
     return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
 }
 
-Communication *SerialPortTransferModel::createTransfer()
+Device *SerialPortTransferModel::createTransfer()
 {
     auto sp = new SerialPort{this};
     auto item = defaultSerialPortItem();

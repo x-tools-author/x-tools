@@ -4,65 +4,65 @@
 <context>
     <name>AbstractModelUi</name>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="14"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="14"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="32"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="32"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="39"/>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="157"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="39"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="157"/>
         <source>Clear</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="46"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="46"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="61"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="61"/>
         <source>Disable all items</source>
         <translation>禁止所有</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="70"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="70"/>
         <source>Import</source>
         <translation>导入</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.ui" line="90"/>
+        <location filename="../../src/page/common/abstractmodelui.ui" line="90"/>
         <source>Export</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="158"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="158"/>
         <source>Are you sure to clear all items?</source>
         <translation>确定删除全部数据吗？</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="169"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="169"/>
         <source>No Item be Selected</source>
         <translation>没有被选中的数据</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="169"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="169"/>
         <source>Please select a item first!</source>
         <translation>请先选择需要删除的数据！</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="179"/>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="204"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="179"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="204"/>
         <source>Import data</source>
         <translation>导入数据</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="181"/>
-        <location filename="../../src/devicepage/common/abstractmodelui.cpp" line="206"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="181"/>
+        <location filename="../../src/page/common/abstractmodelui.cpp" line="206"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>json(*.json);;所有文件（*）</translation>
     </message>
@@ -70,7 +70,7 @@
 <context>
     <name>AbstractTransferModel</name>
     <message>
-        <location filename="../../src/devicepage/transfer/abstracttransfermodel.cpp" line="50"/>
+        <location filename="../../src/page/transfer/abstracttransfermodel.cpp" line="50"/>
         <source>Transfer %1</source>
         <translation>转发器 %1</translation>
     </message>
@@ -812,12 +812,12 @@
 <context>
     <name>ChartsUi</name>
     <message>
-        <location filename="../../src/devicepage/charts/chartsui.cpp" line="244"/>
+        <location filename="../../src/page/charts/chartsui.cpp" line="244"/>
         <source>Import Data from Excel</source>
         <translation>从Excel表格导入</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsui.cpp" line="275"/>
+        <location filename="../../src/page/charts/chartsui.cpp" line="275"/>
         <source>Export Data to Excel</source>
         <translation>导出至Excel表格</translation>
     </message>
@@ -825,141 +825,87 @@
 <context>
     <name>ChartsUiSettings</name>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="125"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="125"/>
         <source>Clear</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="132"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="132"/>
         <source>Export</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="139"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="139"/>
         <source>Import</source>
         <translation>导入</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="58"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="58"/>
         <source>Data type</source>
         <translation>数据类型</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="68"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="68"/>
         <source>Legend</source>
         <translation>显示图例</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.ui" line="75"/>
+        <location filename="../../src/page/charts/chartsuisettings.ui" line="75"/>
         <source>Cache points</source>
         <translation>缓存点数</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="34"/>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="37"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="34"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="37"/>
         <source>Binary</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="35"/>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="38"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="35"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="38"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="62"/>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="231"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="62"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="231"/>
         <source>Channel</source>
         <translation>发送通道</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="63"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="63"/>
         <source>Visible</source>
         <translation>可见</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="64"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="64"/>
         <source>Type</source>
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="67"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="67"/>
         <source>Color</source>
         <translation>颜色</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="68"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="68"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="242"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="242"/>
         <source>Line</source>
         <translation>折线</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="244"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="244"/>
         <source>Spline</source>
         <translation>曲线</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/charts/chartsuisettings.cpp" line="246"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="246"/>
         <source>Scatter</source>
         <translation>散点图</translation>
-    </message>
-</context>
-<context>
-    <name>CommunicationSettings</name>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="22"/>
-        <source>Save tx data</source>
-        <translation>保存发送</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="32"/>
-        <source>Browser</source>
-        <translation>浏览文件</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="59"/>
-        <source>Save Date</source>
-        <translation>保存日期</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="69"/>
-        <location filename="../../src/devicepage/communicationsettings.cpp" line="149"/>
-        <source>Save to file</source>
-        <translation>写入文件</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="39"/>
-        <source>Save millisecond</source>
-        <translation>保存毫秒</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="49"/>
-        <source>Save rx data</source>
-        <translation>保存接收</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="76"/>
-        <source>Save Time</source>
-        <translation>保存时间</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="94"/>
-        <source>Save format</source>
-        <translation>保存格式</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.ui" line="104"/>
-        <source>Max bytes</source>
-        <translation>最大字节</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/communicationsettings.cpp" line="151"/>
-        <source>Text File(*.txt)</source>
-        <translation>文本文件(*.txt)</translation>
     </message>
 </context>
 <context>
@@ -1079,35 +1025,89 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>DeviceSettings</name>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="22"/>
+        <source>Save tx data</source>
+        <translation>保存发送</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="32"/>
+        <source>Browser</source>
+        <translation>浏览文件</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="39"/>
+        <source>Save millisecond</source>
+        <translation>保存毫秒</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="49"/>
+        <source>Save rx data</source>
+        <translation>保存接收</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="59"/>
+        <source>Save Date</source>
+        <translation>保存日期</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="69"/>
+        <location filename="../../src/page/devicesettings.cpp" line="149"/>
+        <source>Save to file</source>
+        <translation>写入文件</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="76"/>
+        <source>Save Time</source>
+        <translation>保存时间</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="94"/>
+        <source>Save format</source>
+        <translation>保存格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.ui" line="104"/>
+        <source>Max bytes</source>
+        <translation>最大字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/devicesettings.cpp" line="151"/>
+        <source>Text File(*.txt)</source>
+        <translation>文本文件(*.txt)</translation>
+    </message>
+</context>
+<context>
     <name>EmitterModel</name>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="40"/>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="131"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="40"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="131"/>
         <source>Enable</source>
         <translation>使能</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="40"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="40"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="103"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="103"/>
         <source>Demo</source>
         <translation>示例</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="133"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="133"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="135"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="135"/>
         <source>Interval</source>
         <translation>间隔</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/emitter/emittermodel.cpp" line="137"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="137"/>
         <source>Data</source>
         <translation>数据</translation>
     </message>
@@ -1265,231 +1265,49 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>IOPage</name>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="40"/>
-        <source>Output control</source>
-        <translation>输出控制</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="60"/>
-        <location filename="../../src/devicepage/iopage.ui" line="171"/>
-        <source>Text format</source>
-        <translation>文本格式</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="72"/>
-        <location filename="../../src/devicepage/iopage.ui" line="143"/>
-        <location filename="../../src/devicepage/iopage.ui" line="233"/>
-        <source>Settings</source>
-        <translation>更多设置</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="79"/>
-        <location filename="../../src/devicepage/iopage.cpp" line="577"/>
-        <source>Open</source>
-        <translation>打开设备</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="88"/>
-        <source>Cycle interval</source>
-        <translation>循环发送</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="107"/>
-        <source>Input control</source>
-        <translation>输入控制</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="150"/>
-        <source>Send</source>
-        <translation>发送</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="164"/>
-        <source>Communication control</source>
-        <translation>通信控制</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="180"/>
-        <source>Rx</source>
-        <translation>接收</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="187"/>
-        <source>Tx</source>
-        <translation>发送</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="194"/>
-        <source>Date</source>
-        <translation>日期</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="201"/>
-        <source>Flag</source>
-        <translation>标志</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="208"/>
-        <source>Time</source>
-        <translation>时间</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="215"/>
-        <source>Ms</source>
-        <translation>毫秒</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="240"/>
-        <source>Clear</source>
-        <translation>清空输出</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="259"/>
-        <source>IO</source>
-        <translation>输入输出</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="272"/>
-        <source>Output</source>
-        <translation>输出</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="354"/>
-        <source>Input</source>
-        <translation>输入</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="391"/>
-        <source>📄</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="401"/>
-        <source>Presets</source>
-        <translation>数据预设</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="406"/>
-        <source>Emitter</source>
-        <translation>定时发送</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="411"/>
-        <source>Responder</source>
-        <translation>自动应答</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.ui" line="416"/>
-        <source>Transfers</source>
-        <translation>数据转发</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="425"/>
-        <source>Disable</source>
-        <translation>禁止</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="443"/>
-        <source>Serial Port</source>
-        <translation>串口</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="445"/>
-        <source>UDP Client</source>
-        <translation>UDP客户端</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="446"/>
-        <source>UDP Server</source>
-        <translation>UDP服务器</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="447"/>
-        <source>TCP Client</source>
-        <translation>TCP客户端</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="448"/>
-        <source>TCP Server</source>
-        <translation>TCP服务器</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="450"/>
-        <source>WebSocket Client</source>
-        <translation>WebSocket客户端</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="451"/>
-        <source>WebSocket Server</source>
-        <translation>WebSocket服务器</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="563"/>
-        <source>Close</source>
-        <translation>关闭设备</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="584"/>
-        <source>Error Occurred</source>
-        <translation>出现错误</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="590"/>
-        <source>Warning</source>
-        <translation>警告</translation>
-    </message>
-    <message>
-        <location filename="../../src/devicepage/iopage.cpp" line="728"/>
-        <source>[%1][%2][%3][%4]</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
     <name>InputSettings</name>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="20"/>
+        <location filename="../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
         <translation>显示预览数据</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="32"/>
+        <location filename="../../src/page/inputsettings.ui" line="32"/>
         <source>Append prefix</source>
         <translation>数据前缀</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="45"/>
+        <location filename="../../src/page/inputsettings.ui" line="45"/>
         <source>Append suffix</source>
         <translation>数据后缀</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="52"/>
+        <location filename="../../src/page/inputsettings.ui" line="52"/>
         <source>Escape character</source>
         <translation>转义字符</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="93"/>
+        <location filename="../../src/page/inputsettings.ui" line="93"/>
         <source>CRC end index</source>
         <translation>CRC结束字节</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="109"/>
+        <location filename="../../src/page/inputsettings.ui" line="109"/>
         <source>CRC start index</source>
         <translation>CRC起始字节</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="122"/>
+        <location filename="../../src/page/inputsettings.ui" line="122"/>
         <source>CRC arithmetic</source>
         <translation>CRC算法模型</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="131"/>
+        <location filename="../../src/page/inputsettings.ui" line="131"/>
         <source>Append CRC</source>
         <translation>追加CRC数据</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/inputsettings.ui" line="138"/>
+        <location filename="../../src/page/inputsettings.ui" line="138"/>
         <source>Big endian</source>
         <translation>大端字节序</translation>
     </message>
@@ -2180,29 +1998,211 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputSettings</name>
     <message>
-        <location filename="../../src/devicepage/outputsettings.ui" line="20"/>
+        <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable highlighter</source>
         <translation>高亮显示</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/outputsettings.ui" line="33"/>
+        <location filename="../../src/page/outputsettings.ui" line="33"/>
         <source>Filter text</source>
         <translation>过滤文件</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/outputsettings.ui" line="43"/>
+        <location filename="../../src/page/outputsettings.ui" line="43"/>
         <source>Hello,Word</source>
         <translation>Hello, Word</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/outputsettings.ui" line="53"/>
+        <location filename="../../src/page/outputsettings.ui" line="53"/>
         <source>Show statistician</source>
         <translation>显示统计信息</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/outputsettings.ui" line="60"/>
+        <location filename="../../src/page/outputsettings.ui" line="60"/>
         <source>Enable filter</source>
         <translation>过滤使能</translation>
+    </message>
+</context>
+<context>
+    <name>Page</name>
+    <message>
+        <location filename="../../src/page/page.ui" line="40"/>
+        <source>Output control</source>
+        <translation>输出控制</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="60"/>
+        <location filename="../../src/page/page.ui" line="171"/>
+        <source>Text format</source>
+        <translation>文本格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="72"/>
+        <location filename="../../src/page/page.ui" line="143"/>
+        <location filename="../../src/page/page.ui" line="233"/>
+        <source>Settings</source>
+        <translation>更多设置</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="79"/>
+        <location filename="../../src/page/page.cpp" line="577"/>
+        <source>Open</source>
+        <translation>打开设备</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="88"/>
+        <source>Cycle interval</source>
+        <translation>循环发送</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="107"/>
+        <source>Input control</source>
+        <translation>输入控制</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="150"/>
+        <source>Send</source>
+        <translation>发送</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="164"/>
+        <source>Communication control</source>
+        <translation>设备控制</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="180"/>
+        <source>Rx</source>
+        <translation>接收</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="187"/>
+        <source>Tx</source>
+        <translation>发送</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="194"/>
+        <source>Date</source>
+        <translation>日期</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="201"/>
+        <source>Flag</source>
+        <translation>标志</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="208"/>
+        <source>Time</source>
+        <translation>时间</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="215"/>
+        <source>Ms</source>
+        <translation>毫秒</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="240"/>
+        <source>Clear</source>
+        <translation>清空输出</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="259"/>
+        <source>IO</source>
+        <translation>输入输出</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="272"/>
+        <source>Output</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="354"/>
+        <source>Input</source>
+        <translation>输入</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="391"/>
+        <source>📄</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="401"/>
+        <source>Presets</source>
+        <translation>数据预设</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="406"/>
+        <source>Emitter</source>
+        <translation>定时发送</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="411"/>
+        <source>Responder</source>
+        <translation>自动应答</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="416"/>
+        <source>Transfers</source>
+        <translation>数据转发</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="425"/>
+        <source>Disable</source>
+        <translation>禁止</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="443"/>
+        <source>Serial Port</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="445"/>
+        <source>UDP Client</source>
+        <translation>UDP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="446"/>
+        <source>UDP Server</source>
+        <translation>UDP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="447"/>
+        <source>TCP Client</source>
+        <translation>TCP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="448"/>
+        <source>TCP Server</source>
+        <translation>TCP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="450"/>
+        <source>WebSocket Client</source>
+        <translation>WebSocket客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="451"/>
+        <source>WebSocket Server</source>
+        <translation>WebSocket服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="563"/>
+        <source>Close</source>
+        <translation>关闭设备</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="584"/>
+        <source>Error Occurred</source>
+        <translation>出现错误</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="590"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="728"/>
+        <source>[%1][%2][%3][%4]</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2328,17 +2328,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Preset</name>
     <message>
-        <location filename="../../src/devicepage/preset/preset.cpp" line="130"/>
+        <location filename="../../src/page/preset/preset.cpp" line="130"/>
         <source>Demo</source>
         <translation>示例</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/preset/preset.cpp" line="153"/>
+        <location filename="../../src/page/preset/preset.cpp" line="153"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/preset/preset.cpp" line="155"/>
+        <location filename="../../src/page/preset/preset.cpp" line="155"/>
         <source>Data</source>
         <translation>数据</translation>
     </message>
@@ -2346,17 +2346,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetModel</name>
     <message>
-        <location filename="../../src/devicepage/preset/presetmodel.cpp" line="85"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="85"/>
         <source>Demo</source>
         <translation>示例</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/preset/presetmodel.cpp" line="113"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="113"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/preset/presetmodel.cpp" line="115"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="115"/>
         <source>Data</source>
         <translation>数据</translation>
     </message>
@@ -2364,231 +2364,231 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="88"/>
+        <location filename="../../src/common/xtools.cpp" line="86"/>
         <source>Serial Port</source>
         <translation>串口助手</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="90"/>
+        <location filename="../../src/common/xtools.cpp" line="88"/>
         <source>BLE Central</source>
         <translation>蓝牙助手</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="92"/>
+        <location filename="../../src/common/xtools.cpp" line="90"/>
         <source>BLE Peripheral</source>
         <translation>蓝牙助手</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="94"/>
+        <location filename="../../src/common/xtools.cpp" line="92"/>
         <source>UDP Client</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="96"/>
+        <location filename="../../src/common/xtools.cpp" line="94"/>
         <source>UDP Server</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="98"/>
+        <location filename="../../src/common/xtools.cpp" line="96"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="100"/>
+        <location filename="../../src/common/xtools.cpp" line="98"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="102"/>
+        <location filename="../../src/common/xtools.cpp" line="100"/>
         <source>WebSocket Client</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="104"/>
+        <location filename="../../src/common/xtools.cpp" line="102"/>
         <source>WebSocket Server</source>
         <translation>WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="106"/>
+        <location filename="../../src/common/xtools.cpp" line="104"/>
         <source>Charts Test</source>
         <translation>表格测试</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="146"/>
-        <location filename="../../src/common/xtools.cpp" line="404"/>
+        <location filename="../../src/common/xtools.cpp" line="144"/>
+        <location filename="../../src/common/xtools.cpp" line="402"/>
+        <location filename="../../src/common/xtools.cpp" line="859"/>
         <location filename="../../src/common/xtools.cpp" line="861"/>
-        <location filename="../../src/common/xtools.cpp" line="863"/>
         <source>Binary</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="148"/>
+        <location filename="../../src/common/xtools.cpp" line="146"/>
         <source>Octal</source>
         <translation>八进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="150"/>
+        <location filename="../../src/common/xtools.cpp" line="148"/>
         <source>Decimal</source>
         <translation>十进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="152"/>
+        <location filename="../../src/common/xtools.cpp" line="150"/>
         <source>Hexadecimal</source>
         <translation>16进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="154"/>
+        <location filename="../../src/common/xtools.cpp" line="152"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="156"/>
+        <location filename="../../src/common/xtools.cpp" line="154"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="304"/>
-        <location filename="../../src/common/xtools.cpp" line="363"/>
-        <location filename="../../src/common/xtools.cpp" line="701"/>
-        <location filename="../../src/common/xtools.cpp" line="719"/>
+        <location filename="../../src/common/xtools.cpp" line="302"/>
+        <location filename="../../src/common/xtools.cpp" line="361"/>
+        <location filename="../../src/common/xtools.cpp" line="699"/>
+        <location filename="../../src/common/xtools.cpp" line="717"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="402"/>
+        <location filename="../../src/common/xtools.cpp" line="400"/>
+        <location filename="../../src/common/xtools.cpp" line="863"/>
         <location filename="../../src/common/xtools.cpp" line="865"/>
-        <location filename="../../src/common/xtools.cpp" line="867"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="439"/>
+        <location filename="../../src/common/xtools.cpp" line="437"/>
         <source>Echo</source>
         <translation>回显</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="440"/>
+        <location filename="../../src/common/xtools.cpp" line="438"/>
         <source>Always</source>
         <translation>总是</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="441"/>
+        <location filename="../../src/common/xtools.cpp" line="439"/>
         <source>Input Equal Reference</source>
         <translation>输入数据等于参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="442"/>
+        <location filename="../../src/common/xtools.cpp" line="440"/>
         <source>Input Contain Reference</source>
         <translation>输入数据包含参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="444"/>
+        <location filename="../../src/common/xtools.cpp" line="442"/>
         <source>Input Does not Contain Reference</source>
         <translation>输入数据不包含参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="702"/>
+        <location filename="../../src/common/xtools.cpp" line="700"/>
         <source>Even</source>
         <translation>偶校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="703"/>
+        <location filename="../../src/common/xtools.cpp" line="701"/>
         <source>Odd</source>
         <translation>奇校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="704"/>
+        <location filename="../../src/common/xtools.cpp" line="702"/>
         <source>Space</source>
         <translation>0校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="705"/>
+        <location filename="../../src/common/xtools.cpp" line="703"/>
         <source>Mark</source>
         <translation>1校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="721"/>
+        <location filename="../../src/common/xtools.cpp" line="719"/>
         <source>RTS/CTS</source>
         <translation>硬件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="722"/>
+        <location filename="../../src/common/xtools.cpp" line="720"/>
         <source>X-ON/X-OFF</source>
         <translation>软件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="724"/>
+        <location filename="../../src/common/xtools.cpp" line="722"/>
         <source>Hardware</source>
         <translation>硬件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="725"/>
+        <location filename="../../src/common/xtools.cpp" line="723"/>
         <source>Software</source>
         <translation>软件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="826"/>
+        <location filename="../../src/common/xtools.cpp" line="824"/>
         <source>Disabled</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="828"/>
+        <location filename="../../src/common/xtools.cpp" line="826"/>
         <source>Bidirectional</source>
         <translation>双向</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="830"/>
+        <location filename="../../src/common/xtools.cpp" line="828"/>
         <source>Unidirectional</source>
         <translation>单向</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1233"/>
+        <location filename="../../src/common/xtools.cpp" line="1231"/>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1234"/>
+        <location filename="../../src/common/xtools.cpp" line="1232"/>
         <location filename="../../src/mainwindow.cpp" line="453"/>
         <source>Round up for .5 and above</source>
         <translation>缩放之x.5倍</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1235"/>
+        <location filename="../../src/common/xtools.cpp" line="1233"/>
         <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Always round up</source>
         <translation>总是放大</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1236"/>
+        <location filename="../../src/common/xtools.cpp" line="1234"/>
         <location filename="../../src/mainwindow.cpp" line="455"/>
         <source>Always round down</source>
         <translation>总是缩小</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1237"/>
+        <location filename="../../src/common/xtools.cpp" line="1235"/>
         <location filename="../../src/mainwindow.cpp" line="456"/>
         <source>Round up for .75 and above</source>
         <translation>缩放至x.75倍</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1238"/>
+        <location filename="../../src/common/xtools.cpp" line="1236"/>
         <location filename="../../src/mainwindow.cpp" line="457"/>
         <source>Don&apos;t round</source>
         <translation>不缩放</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1510"/>
+        <location filename="../../src/common/xtools.cpp" line="1508"/>
         <source>Need to Reboot</source>
         <translation>需要重启</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1511"/>
+        <location filename="../../src/common/xtools.cpp" line="1509"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>该操作需要重启软件生效，立即重启软件吗？</translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/crc.cpp" line="66"/>
+        <location filename="../../src/common/crc.cpp" line="66"/>
         <source>Unknown</source>
         <translation>（未知）</translation>
     </message>
@@ -2752,43 +2752,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ResponderModel</name>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="42"/>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="157"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="42"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="157"/>
         <source>Enable</source>
         <translation>使能</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="42"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="42"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="120"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="120"/>
         <source>Demo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="159"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="159"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="161"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="161"/>
         <source>Option</source>
         <translation>应答选项</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="163"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="163"/>
         <source>Delay</source>
         <translation>延时</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="165"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="165"/>
         <source>Reference Data</source>
         <translation>参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/responder/respondermodel.cpp" line="167"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="167"/>
         <source>Response Data</source>
         <translation>应答数据</translation>
     </message>
@@ -2804,93 +2804,93 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPortTransferModel</name>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="55"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="55"/>
         <source>1</source>
         <translation>1</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="57"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="57"/>
         <source>1.5</source>
         <translation>1.5</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="59"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="59"/>
         <source>2</source>
         <translation>2</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="65"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="65"/>
         <source>Odd</source>
         <translation>奇校验</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="67"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="67"/>
         <source>Even</source>
         <translation>偶校验</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="69"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="69"/>
         <source>Mark</source>
         <translation>1校验</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="71"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="71"/>
         <source>Space</source>
         <translation>0校验</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="73"/>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="81"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="73"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="81"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="77"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="77"/>
         <source>Hardware</source>
         <translation>硬件</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="79"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="79"/>
         <source>Software</source>
         <translation>软件</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="184"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="184"/>
         <source>Transfer Option</source>
         <translation>转发选项</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="186"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="186"/>
         <source>Port Name</source>
         <translation>端口名</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="188"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="188"/>
         <source>Baud Rate</source>
         <translation>波特率</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="190"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="190"/>
         <source>Data Bits</source>
         <translation>数据位</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="192"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="192"/>
         <source>Stop Bits</source>
         <translation>停止位</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="194"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="194"/>
         <source>Parity</source>
         <translation>奇偶位</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="196"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="196"/>
         <source>Flow Control</source>
         <translation>流控位</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/serialporttransfermodel.cpp" line="198"/>
+        <location filename="../../src/page/transfer/serialporttransfermodel.cpp" line="198"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
@@ -2931,62 +2931,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SocketTransferModel</name>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="57"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="57"/>
         <source>Enable</source>
         <translation>使能</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="57"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="57"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="157"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="157"/>
         <source>Transfer Option</source>
         <translation>转发选项</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="159"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="159"/>
         <source>Client Address</source>
         <translation>客户端地址</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="161"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="161"/>
         <source>Client Port</source>
         <translation>客户端端口</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="163"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="163"/>
         <source>Server Address</source>
         <translation>服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="165"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="165"/>
         <source>Server Port</source>
         <translation>服务器端口</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="167"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="167"/>
         <source>Data Channel</source>
         <translation>数据通道</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="169"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="169"/>
         <source>Authentication</source>
         <translation>认证</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="171"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="171"/>
         <source>Username</source>
         <translation>用户名</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="173"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="173"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/transfer/sockettransfermodel.cpp" line="175"/>
+        <location filename="../../src/page/transfer/sockettransfermodel.cpp" line="175"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
@@ -3072,12 +3072,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>StatisticianUi</name>
     <message>
-        <location filename="../../src/devicepage/utilities/statisticianui.ui" line="20"/>
+        <location filename="../../src/page/utilities/statisticianui.ui" line="20"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/devicepage/utilities/statisticianui.cpp" line="66"/>
+        <location filename="../../src/page/utilities/statisticianui.cpp" line="66"/>
         <source>%1 frames, %2 bytes, %3B/s</source>
         <translation>%1 帧, %2 字节, %3B/s</translation>
     </message>

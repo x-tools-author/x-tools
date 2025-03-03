@@ -13,9 +13,9 @@
 #include <QLowEnergyController>
 #include <QLowEnergyService>
 
-#include "communication.h"
+#include "device.h"
 
-class BleCentral : public Communication
+class BleCentral : public Device
 {
     Q_OBJECT
 public:

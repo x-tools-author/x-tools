@@ -6,8 +6,8 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "communicationsettings.h"
-#include "ui_communicationsettings.h"
+#include "devicesettings.h"
+#include "ui_devicesettings.h"
 
 #include <QFileDialog>
 #include <QStandardPaths>
@@ -28,9 +28,9 @@ const struct
     const QString maxKBytes = "maxKBytes";
 } gKeys;
 
-CommunicationSettings::CommunicationSettings(QWidget *parent)
+DeviceSettings::DeviceSettings(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::CommunicationSettings)
+    , ui(new Ui::DeviceSettings)
 {
     ui->setupUi(this);
     setupTextFormat(ui->comboBoxSaveTextFormat);
@@ -53,15 +53,15 @@ CommunicationSettings::CommunicationSettings(QWidget *parent)
     connect(ui->pushButtonSavePathBrowser,
             &QPushButton::clicked,
             this,
-            &CommunicationSettings::onBrowserButtonClicked);
+            &DeviceSettings::onBrowserButtonClicked);
 }
 
-CommunicationSettings::~CommunicationSettings()
+DeviceSettings::~DeviceSettings()
 {
     delete ui;
 }
 
-void CommunicationSettings::saveData(const QByteArray &data, bool isRx)
+void DeviceSettings::saveData(const QByteArray &data, bool isRx)
 {
     SaveThread::SaveParameters params;
     params.saveToFile = ui->checkBoxSaveToFile->isChecked();
@@ -77,7 +77,7 @@ void CommunicationSettings::saveData(const QByteArray &data, bool isRx)
     m_saveThread->saveData(params, data, isRx);
 }
 
-QVariantMap CommunicationSettings::save()
+QVariantMap DeviceSettings::save()
 {
     QVariantMap map;
     map[gKeys.saveToFile] = ui->checkBoxSaveToFile->isChecked();
@@ -92,7 +92,7 @@ QVariantMap CommunicationSettings::save()
     return map;
 }
 
-void CommunicationSettings::load(const QVariantMap &data)
+void DeviceSettings::load(const QVariantMap &data)
 {
     bool saveToFile = data.value(gKeys.saveToFile).toBool();
     m_fileName = data.value(gKeys.fileName).toString();
@@ -118,7 +118,7 @@ void CommunicationSettings::load(const QVariantMap &data)
     ui->comboBoxMaxBytes->setCurrentIndex(index);
 }
 
-void CommunicationSettings::addWidgets(QList<QWidget *> widgets)
+void DeviceSettings::addWidgets(QList<QWidget *> widgets)
 {
     auto *layout = this->layout();
     if (!layout) {
@@ -139,7 +139,7 @@ static const QString settingsFileName()
     return ret;
 }
 
-void CommunicationSettings::onBrowserButtonClicked()
+void DeviceSettings::onBrowserButtonClicked()
 {
     QStandardPaths::StandardLocation location = QStandardPaths::DesktopLocation;
     QString defaultPath = QStandardPaths::writableLocation(location);

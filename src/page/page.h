@@ -19,7 +19,7 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class IOPage;
+class Page;
 }
 QT_END_NAMESPACE
 
@@ -52,22 +52,22 @@ class ChartsUi;
 class InputSettings;
 class OutputSettings;
 class SyntaxHighlighter;
-class CommunicationSettings;
+class DeviceSettings;
 
 class AbstractIO;
 class Statistician;
-class Communication;
-class CommunicationUi;
+class Device;
+class DeviceUi;
 
-class IOPage : public QWidget
+class Page : public QWidget
 {
     Q_OBJECT
 public:
     enum ControllerDirection { Left, Right };
 
 public:
-    explicit IOPage(ControllerDirection direction, QSettings *settings, QWidget *parent = nullptr);
-    ~IOPage() override;
+    explicit Page(ControllerDirection direction, QSettings *settings, QWidget *parent = nullptr);
+    ~Page() override;
 
     QVariantMap save();
     void load(const QVariantMap &parameters);
@@ -82,10 +82,10 @@ signals:
     void bytesRead(const QByteArray &bytes, const QString &from);
 
 private:
-    Ui::IOPage *ui;
-    Communication *m_io;
-    CommunicationUi *m_ioUi;
-    CommunicationSettings *m_ioSettings;
+    Ui::Page *ui;
+    Device *m_io;
+    DeviceUi *m_ioUi;
+    DeviceSettings *m_ioSettings;
     OutputSettings *m_outputSettings;
     InputSettings *m_inputSettings;
     QTimer *m_writeTimer;
@@ -157,6 +157,6 @@ private:
 
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;
-    Communication *createDevice(int type);
-    CommunicationUi *createDeviceUi(int type);
+    Device *createDevice(int type);
+    DeviceUi *createDeviceUi(int type);
 };

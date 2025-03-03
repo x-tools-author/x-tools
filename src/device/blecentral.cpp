@@ -9,7 +9,7 @@
 #include "blecentral.h"
 
 BleCentral::BleCentral(QObject *parent)
-    : Communication(parent)
+    : Device(parent)
 {}
 
 BleCentral::~BleCentral() {}

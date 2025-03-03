@@ -11,7 +11,7 @@
 #include "common/xtools.h"
 
 Socket::Socket(QObject *parent)
-    : Communication(parent)
+    : Device(parent)
 {
     static bool registered = false;
     if (!registered) {
@@ -41,7 +41,7 @@ Socket::Socket(QObject *parent)
 
 void Socket::load(const QVariantMap &parameters)
 {
-    Communication::load(parameters);
+    Device::load(parameters);
 
     SocketItem item = loadSocketItem(QJsonObject::fromVariantMap(parameters));
     m_clientPort = item.clientPort;

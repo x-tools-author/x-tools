@@ -11,7 +11,7 @@
 #include <QMainWindow>
 #include <QMenu>
 
-class IOPage;
+class Page;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -33,10 +33,10 @@ private:
     } m_settingsKey;
 
     WindowGrid m_windowGrid{WindowGrid::Grid1x1};
-    IOPage* m_ioPage00;
-    IOPage* m_ioPage01;
-    IOPage* m_ioPage10;
-    IOPage* m_ioPage11;
+    Page* m_iopage00;
+    Page* m_iopage01;
+    Page* m_iopage10;
+    Page* m_iopage11;
 
 private:
     void initMenuBar();

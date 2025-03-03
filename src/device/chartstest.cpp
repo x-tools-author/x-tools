@@ -14,7 +14,7 @@
 #include "common/xtools.h"
 
 ChartsTest::ChartsTest(QObject *parent)
-    : Communication(parent)
+    : Device(parent)
     , m_binaryTail(QByteArray::fromHex("0000807f"))
 {}
 

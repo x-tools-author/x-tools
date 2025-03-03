@@ -14,12 +14,12 @@
 #include "common/xtools.h"
 #include "page/common/abstractioui.h"
 
-class Communication;
-class CommunicationUi : public AbstractIOUi
+class Device;
+class DeviceUi : public AbstractIOUi
 {
     Q_OBJECT
 public:
-    CommunicationUi(CommunicationType type, QWidget *parent = nullptr);
+    DeviceUi(CommunicationType type, QWidget *parent = nullptr);
 
     CommunicationType type() const;
     virtual QList<QWidget *> communicationControllers();

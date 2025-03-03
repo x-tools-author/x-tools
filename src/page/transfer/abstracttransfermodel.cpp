@@ -12,7 +12,7 @@
 #include <QTimer>
 
 #include "common/xtools.h"
-#include "device/communication.h"
+#include "device/device.h"
 
 AbstractTransferModel::AbstractTransferModel(QObject *parent)
     : QAbstractTableModel(parent)
@@ -33,14 +33,14 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
     beginInsertRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {
         auto transfer = createTransfer();
-        connect(transfer, &Communication::outputBytes, this, [=](const QByteArray &bytes) {
+        connect(transfer, &Device::outputBytes, this, [=](const QByteArray &bytes) {
             for (auto &transferItem : this->m_transfers) {
                 if (transferItem.option == static_cast<int>(TransferType::Bidirectional)) {
                     emit outputBytes(bytes);
                 }
             }
         });
-        connect(transfer, &Communication::finished, this, [=]() {
+        connect(transfer, &Device::finished, this, [=]() {
             if (this->m_enableRestartTransfer) {
                 transfer->start();
             }

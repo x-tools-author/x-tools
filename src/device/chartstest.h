@@ -12,7 +12,7 @@
 #include <QThread>
 #include <QVariantMap>
 
-#include "communication.h"
+#include "device.h"
 
 struct ChartsTestDataKeys
 {
@@ -20,7 +20,7 @@ struct ChartsTestDataKeys
     const QString channels{"channels"};
 };
 
-class ChartsTest : public Communication
+class ChartsTest : public Device
 {
     Q_OBJECT
 public:

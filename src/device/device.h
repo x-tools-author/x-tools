@@ -14,12 +14,12 @@
 
 #include "page/common/abstractio.h"
 
-class Communication : public AbstractIO
+class Device : public AbstractIO
 {
     Q_OBJECT
 public:
-    explicit Communication(QObject *parent = nullptr);
-    ~Communication() override;
+    explicit Device(QObject *parent = nullptr);
+    ~Device() override;
 
     Q_INVOKABLE void openDevice();
     Q_INVOKABLE void closeDevice();

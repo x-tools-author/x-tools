@@ -37,7 +37,7 @@
 
 #include "application.h"
 #include "common/xtools.h"
-#include "page/iopage.h"
+#include "page/page.h"
 #include "qss/qssmgr.h"
 #include "tools/assistantfactory.h"
 
@@ -47,10 +47,10 @@
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
-    , m_ioPage00(Q_NULLPTR)
-    , m_ioPage01(Q_NULLPTR)
-    , m_ioPage10(Q_NULLPTR)
-    , m_ioPage11(Q_NULLPTR)
+    , m_iopage00(Q_NULLPTR)
+    , m_iopage01(Q_NULLPTR)
+    , m_iopage10(Q_NULLPTR)
+    , m_iopage11(Q_NULLPTR)
 {
 #if defined(X_TOOLS_MO_YU)
     setWindowOpacity(0.3);
@@ -72,19 +72,19 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 
     QSettings* settings = Application::settings();
-    m_ioPage00 = new IOPage(IOPage::Left, settings, this);
-    m_ioPage01 = new IOPage(IOPage::Right, settings, this);
-    m_ioPage10 = new IOPage(IOPage::Left, settings, this);
-    m_ioPage11 = new IOPage(IOPage::Right, settings, this);
+    m_iopage00 = new Page(Page::Left, settings, this);
+    m_iopage01 = new Page(Page::Right, settings, this);
+    m_iopage10 = new Page(Page::Left, settings, this);
+    m_iopage11 = new Page(Page::Right, settings, this);
 
     auto* centralWidget = new QWidget();
     auto* layout = new QGridLayout(centralWidget);
     layout->setSpacing(0);
     layout->setContentsMargins(0, 0, 0, 0);
-    layout->addWidget(m_ioPage00, 0, 0);
-    layout->addWidget(m_ioPage01, 0, 1);
-    layout->addWidget(m_ioPage10, 1, 0);
-    layout->addWidget(m_ioPage11, 1, 1);
+    layout->addWidget(m_iopage00, 0, 0);
+    layout->addWidget(m_iopage01, 0, 1);
+    layout->addWidget(m_iopage10, 1, 0);
+    layout->addWidget(m_iopage11, 1, 1);
     centralWidget->setLayout(layout);
     setCentralWidget(centralWidget);
 
@@ -142,7 +142,7 @@ void MainWindow::initFileMenu()
         tr("New Window"),
         this,
         []() {
-            auto* w = new IOPage(IOPage::Left, xApp->settings());
+            auto* w = new Page(Page::Left, xApp->settings());
             w->setWindowTitle("xTools");
             w->show();
         },
@@ -508,25 +508,25 @@ void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
 void MainWindow::updateGrid(WindowGrid grid)
 {
     if (grid == WindowGrid::Grid1x2) {
-        m_ioPage00->show();
-        m_ioPage01->show();
-        m_ioPage10->hide();
-        m_ioPage11->hide();
+        m_iopage00->show();
+        m_iopage01->show();
+        m_iopage10->hide();
+        m_iopage11->hide();
     } else if (grid == WindowGrid::Grid2x1) {
-        m_ioPage00->show();
-        m_ioPage01->hide();
-        m_ioPage10->show();
-        m_ioPage11->hide();
+        m_iopage00->show();
+        m_iopage01->hide();
+        m_iopage10->show();
+        m_iopage11->hide();
     } else if (grid == WindowGrid::Grid2x2) {
-        m_ioPage00->show();
-        m_ioPage01->show();
-        m_ioPage10->show();
-        m_ioPage11->show();
+        m_iopage00->show();
+        m_iopage01->show();
+        m_iopage10->show();
+        m_iopage11->show();
     } else {
-        m_ioPage00->show();
-        m_ioPage01->hide();
-        m_ioPage10->hide();
-        m_ioPage11->hide();
+        m_iopage00->show();
+        m_iopage01->hide();
+        m_iopage10->hide();
+        m_iopage11->hide();
     }
 
     m_windowGrid = grid;
@@ -639,19 +639,19 @@ void MainWindow::load(const QString& fileName) const
 
     QJsonDocument doc = QJsonDocument::fromJson(data);
     QJsonObject obj = doc.object();
-    m_ioPage00->load(obj.value("page00").toObject().toVariantMap());
-    m_ioPage01->load(obj.value("page01").toObject().toVariantMap());
-    m_ioPage10->load(obj.value("page10").toObject().toVariantMap());
-    m_ioPage11->load(obj.value("page11").toObject().toVariantMap());
+    m_iopage00->load(obj.value("page00").toObject().toVariantMap());
+    m_iopage01->load(obj.value("page01").toObject().toVariantMap());
+    m_iopage10->load(obj.value("page10").toObject().toVariantMap());
+    m_iopage11->load(obj.value("page11").toObject().toVariantMap());
 }
 
 void MainWindow::save(const QString& fileName) const
 {
     QJsonObject obj;
-    obj.insert("page00", QJsonObject::fromVariantMap(m_ioPage00->save()));
-    obj.insert("page01", QJsonObject::fromVariantMap(m_ioPage01->save()));
-    obj.insert("page10", QJsonObject::fromVariantMap(m_ioPage10->save()));
-    obj.insert("page11", QJsonObject::fromVariantMap(m_ioPage11->save()));
+    obj.insert("page00", QJsonObject::fromVariantMap(m_iopage00->save()));
+    obj.insert("page01", QJsonObject::fromVariantMap(m_iopage01->save()));
+    obj.insert("page10", QJsonObject::fromVariantMap(m_iopage10->save()));
+    obj.insert("page11", QJsonObject::fromVariantMap(m_iopage11->save()));
 
     QJsonDocument doc;
     doc.setObject(obj);

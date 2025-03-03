@@ -10,9 +10,9 @@
 
 #include <QPair>
 
-#include "communication.h"
+#include "device.h"
 
-class Socket : public Communication
+class Socket : public Device
 {
     Q_OBJECT
 public:

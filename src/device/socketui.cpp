@@ -13,7 +13,7 @@
 #include "device/socket.h"
 
 SocketUi::SocketUi(CommunicationType type, QWidget *parent)
-    : CommunicationUi(type, parent)
+    : DeviceUi(type, parent)
     , ui(new Ui::SocketUi)
 {
     ui->setupUi(this);

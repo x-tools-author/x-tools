@@ -24,6 +24,6 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const override;
 
 protected:
-    Communication *createTransfer() override;
+    Device *createTransfer() override;
     bool isEnableRestartingColumn(int column) const override;
 };

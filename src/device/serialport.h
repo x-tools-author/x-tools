@@ -11,9 +11,9 @@
 #include <QSerialPort>
 #include <QTimer>
 
-#include "communication.h"
+#include "device.h"
 
-class SerialPort : public Communication
+class SerialPort : public Device
 {
     Q_OBJECT
 public:
