@@ -15,19 +15,24 @@ function(x_tools_make_package target packetName friendlyName version is_deb)
   list(APPEND args "-DargPacketName=${packetName}")
   list(APPEND args "-DargFriendlyName=${friendlyName}")
   list(APPEND args "-DargVersion=${version}")
-  list(APPEND args "-DargWorkingDir=${CMAKE_BINARY_DIR}/${package_type}/${target}")
+  if(is_deb)
+    list(APPEND args "-DargWorkingDir=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}-deb")
+  else()
+    list(APPEND args "-DargWorkingDir=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}-appimage")
+  endif()
   list(APPEND args "-DargLowerTargetName=${lower_target}")
   list(APPEND args "-DargTool=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/tools/linuxdeployqt")
   list(APPEND args "-DargSrcDir=${CMAKE_SOURCE_DIR}")
   list(APPEND args "-DargPackageType=${package_type}")
   list(APPEND args "-DargQmakePath=${QT_DIR}/../../../bin/qmake")
+  list(APPEND args "-DargTargetFile=$<TARGET_FILE:${target}>")
+
+  foreach(arg ${args})
+    message(STATUS "[${package_type}]arg: ${arg}")
+  endforeach()
 
   # cmake-format: off
   add_custom_target(${target}-${package_type}
-    COMMAND ${CMAKE_COMMAND} -E remove_directory {CMAKE_BINARY_DIR}/${package_type}/${target} "||" ${CMAKE_COMMAND} -E true
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${package_type}/${target} "||" ${CMAKE_COMMAND} -E true
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/app ${CMAKE_BINARY_DIR}/${package_type}/${target} "||" ${CMAKE_COMMAND} -E true
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${target}> ${CMAKE_BINARY_DIR}/${package_type}/${target}/usr/bin/${packetName}
     COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/linuxscript.cmake
     SOURCES ${RES_FILES})
   # cmake-format: on
