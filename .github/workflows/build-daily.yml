@@ -1,11 +1,11 @@
 name: build-daily
-on:
-  schedule:
-    - cron: '0 0 * * *'
 # on:
-#  push:
-#    branches:
-#      - master
+#   schedule:
+#     - cron: '0 0 * * *'
+on:
+ push:
+   branches:
+     - master
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -63,10 +63,12 @@ jobs:
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
         cmake -DWITH_TOOLS:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
         cmake --build . --target xTools
+        cmake --build . --target xTools-zip
         dir && dir .xTools
     - name: Upload Release Asset for Windnows
       run: |
-        dir && gh release upload continuous 'build\xTools\xtools-windows-amd64.zip'
+        dir bin\Windows\Release
+        for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f"
   release-for-linux:
     runs-on: ubuntu-20.04
     needs: update-release
@@ -91,10 +93,13 @@ jobs:
         cd build
         cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/linux_gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -DX_TOOLS_LINUX_MAKE_APP_IMAGE_XTOOLS:BOOL=TRUE -G "Unix Makefiles"
         cmake --build . --target xTools
+        make --build . --target xTools-deb
+        make --build . --target xTools-appimage
         dir && dir ./xTools
     - name: Upload Release Asset for Linux
       run: |
-        dir && gh release upload continuous 'build/xtools-linux-x86_64.AppImage'
+        find bin/Linux/Release/xTools-deb -name "*.deb" -exec gh release upload continuous {} \;
+        find bin/Linux/Release/xTools-appimage -name "*.AppImage" -exec gh release upload continuous {} \;
   release-for-macos:
     runs-on: macos-13
     needs: update-release
