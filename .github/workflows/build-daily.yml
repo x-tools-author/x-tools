@@ -128,11 +128,11 @@ jobs:
         cd build
         cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release
         cmake --build . --target xTools
-        ls ./xTools
+        cmake --build . --target xTools_dmg
     - name: Upload Release Asset for macOS
       run: |
-        ls bin
-        ls && gh release upload continuous 'build/xTools/xtools-macos-13.dmg'
+        ls bin/Darwin/Release/xTools
+        find bin/Darwin/Release/xTools -name "*.dmg" -exec gh release upload continuous {} \;
   release-for-android:
     runs-on: windows-2022
     needs: update-release

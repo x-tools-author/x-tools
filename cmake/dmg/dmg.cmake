@@ -13,6 +13,7 @@ function(x_tools_generate_dmg target version)
   add_custom_target(
     ${target}_dmg
     COMMAND ${MACDEPLOYQT_EXECUTABLE} "${target}.app" "-dmg"
+    COMMAND ${CMAKE_COMMAND} -E rename "${old_name}" "${new_name}"
     COMMENT "Making dmg..."
     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 endfunction()
