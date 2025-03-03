@@ -44,5 +44,5 @@ jobs:
           cd build
           cmake --build . --target xTools_dmg
           ls ../bin/Darwin/Release/xTools
-          find bin/Darwin/Release/xTools -name "*.dmg" -exec echo "dmg file is: {}" \;
+          find ../bin/Darwin/Release/xTools -name "*.dmg" -exec echo "dmg file is: {}" \;
 
