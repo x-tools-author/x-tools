@@ -24,3 +24,4 @@ compile_commands.json
 *.aps
 libs
 bin
+scripts

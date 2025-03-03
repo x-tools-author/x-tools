@@ -1,11 +1,11 @@
 name: build-daily
-# on:
-#   schedule:
-#     - cron: '0 0 * * *'
 on:
- push:
-   branches:
-     - master
+  schedule:
+    - cron: '0 0 * * *'
+# on:
+#  push:
+#    branches:
+#      - master
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
