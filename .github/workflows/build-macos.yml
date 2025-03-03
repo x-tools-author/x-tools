@@ -43,4 +43,4 @@ jobs:
           ls bin/Darwin/Release/xTools
           cd build
           cmake --build . --target xTools_dmg
-          ls ../bin/Darwin
+          ls ../bin/Darwin/Release/xTools
