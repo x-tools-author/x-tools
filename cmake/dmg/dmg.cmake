@@ -8,7 +8,7 @@ function(x_tools_generate_dmg target version)
   endif()
 
   set(old_name ${target}.dmg)
-  set(new_name ${target}-${CMAKE_SYSTEM}-${version}.dmg)
+  set(new_name ${target}-${CMAKE_SYSTEM}-v${version}.dmg)
 
   add_custom_target(
     ${target}_dmg

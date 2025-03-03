@@ -27,7 +27,7 @@ jobs:
           arch: 'clang_64'
           host: 'mac'
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-      - name: build for macos
+      - name: build all
         run: |
           # brew uninstall --force node
           # brew unlink unixodbc
@@ -40,7 +40,7 @@ jobs:
           cmake --build . --target all
       - name: make dmg
         run: |
-          ls bin
+          tree bin
           cd build
           cmake --build . --target xTools_dmg
           ls ../bin
