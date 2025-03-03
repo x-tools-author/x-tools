@@ -126,11 +126,21 @@ function(x_tools_deploy_qt_for_windows target)
       COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_1.dll"
               $<TARGET_FILE_DIR:${target}>
       COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_2.dll"
-              $<TARGET_FILE_DIR:${target}>
-      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libcrypto-3-x64.dll"
-              $<TARGET_FILE_DIR:${target}>
-      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libssl-3-x64.dll"
               $<TARGET_FILE_DIR:${target}>)
+    if(EXISTS "${QT_DIR}/../../../bin/libcrypto-3-x64.dll")
+      add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND -${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libcrypto-3-x64.dll"
+                $<TARGET_FILE_DIR:${target}>)
+    endif()
+    if(EXISTS "${QT_DIR}/../../../bin/libssl-3-x64.dll")
+      add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND -${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libssl-3-x64.dll"
+                $<TARGET_FILE_DIR:${target}>)
+    endif()
   endif()
 endfunction()
 
