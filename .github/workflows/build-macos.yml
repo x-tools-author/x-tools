@@ -40,8 +40,7 @@ jobs:
           cmake --build . --target all
       - name: make dmg
         run: |
-          ls bin
-          ls bin/Darwin
+          ls bin/Darwin/Release
           cd build
           cmake --build . --target xTools_dmg
           ls ../bin/Darwin
