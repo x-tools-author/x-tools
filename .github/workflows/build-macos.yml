@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-13]
+        os: [macos-14]
         version: [6.8.*]
     steps:
       - name: checkout
@@ -38,5 +38,9 @@ jobs:
           cd build
           cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release ../
           cmake --build . --target all
-          ls ../bin
+      - name: make dmg
+        run: |
+          ls bin
+          cd build
           cmake --build . --target xTools_dmg
+          ls ../bin

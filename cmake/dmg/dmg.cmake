@@ -7,10 +7,13 @@ function(x_tools_generate_dmg target version)
     return()
   endif()
 
+  set(old_name ${target}.dmg)
+  set(new_name ${target}-${CMAKE_SYSTEM}-${version}.dmg)
+
   add_custom_target(
     ${target}_dmg
-    COMMAND ${MACDEPLOYQT_EXECUTABLE} "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${target}.app" "-dmg"
-    COMMENT "Running macdeployqt..."
+    COMMAND ${MACDEPLOYQT_EXECUTABLE} "${target}.app" "-dmg"
+    COMMAND ${CMAKE_COMMAND} -E mv ${old_name} ${new_name}
+    COMMENT "Making dmg..."
     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-
 endfunction()
