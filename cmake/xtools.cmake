@@ -1,26 +1,4 @@
-add_compile_definitions(X_TOOLS_AUTHOR="x-tools-author")
-add_compile_definitions(X_TOOLS_AUTHOR_EMAIL="x-tools@outlook.com")
-add_compile_definitions(X_TOOLS_GITEE_REPOSITORY_URL="https://gitee.com/x-tools-author/x-tools")
-add_compile_definitions(X_TOOLS_GITHUB_REPOSITORY_URL="https://github.com/x-tools-author/x-tools")
-
-# Unzip file and import it as a sub module.
-function(x_tools_add_third_party zip_file_name_without_suffix)
-  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${zip_file_name_without_suffix}.zip
-                  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
-  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${zip_file_name_without_suffix})
-  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${zip_file_name_without_suffix})
-endfunction()
-
-function(x_tools_copy_glog target)
-  if(${BUILD_SHARED_LIBS})
-    add_custom_command(
-      TARGET ${target}
-      POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:glog::glog>
-              "${CMAKE_BINARY_DIR}/${target}/$<TARGET_FILE_NAME:glog::glog>")
-  endif()
-endfunction()
-
+# --------------------------------------------------------------------------------------------------
 # Add executable. It can be used by Qt5 and Qt6.
 function(x_tools_add_executable target)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${target}")
@@ -63,6 +41,8 @@ function(x_tools_add_executable target)
                WIN32_EXECUTABLE TRUE)
 endfunction()
 
+# --------------------------------------------------------------------------------------------------
+# Generate zip file
 function(x_tools_generate_zip target version)
   if(WIN32)
     string(TOLOWER ${target} lower_target)
@@ -81,6 +61,8 @@ function(x_tools_generate_zip target version)
   endif()
 endfunction()
 
+# --------------------------------------------------------------------------------------------------
+# Generate translations files
 function(x_tools_generate_translations target)
   if(QT_VERSION VERSION_LESS "6.2.0")
     return()
@@ -113,4 +95,75 @@ function(x_tools_generate_translations target)
             ${CMAKE_CURRENT_SOURCE_DIR}/res/translations/${target}_zh_CN.qm
     DEPENDS ${target}_lrelease
     COMMENT "Generate translations for ${target}...")
+endfunction()
+
+# --------------------------------------------------------------------------------------------------
+# Deploy Qt for Windows
+function(x_tools_deploy_qt_for_windows target)
+  if(NOT DEFINED WINDEPLOYQT_EXECUTABLE)
+    set(WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
+  endif()
+
+  add_custom_command(
+    TARGET ${target}
+    POST_BUILD
+    COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime
+    COMMENT "Deploy Qt for Windows..."
+    VERBATIM)
+
+  if(MSVC AND ("${CMAKE_BUILD_TYPE}" STREQUAL "Release"))
+    cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
+    # add '-' to ignore error if the file does not exist
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140.dll"
+              $<TARGET_FILE_DIR:${target}>
+      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140_1.dll"
+              $<TARGET_FILE_DIR:${target}>
+      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140.dll"
+              $<TARGET_FILE_DIR:${target}>
+      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_1.dll"
+              $<TARGET_FILE_DIR:${target}>
+      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_2.dll"
+              $<TARGET_FILE_DIR:${target}>
+      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libcrypto-3-x64.dll"
+              $<TARGET_FILE_DIR:${target}>
+      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libssl-3-x64.dll"
+              $<TARGET_FILE_DIR:${target}>)
+  endif()
+endfunction()
+
+# --------------------------------------------------------------------------------------------------
+# Deploy Qt for macOS
+function(x_tools_deploy_qt_for_mac target)
+  if(NOT MACDEPLOYQT_EXECUTABLE)
+    return()
+  endif()
+
+  add_custom_command(
+    TARGET ${target}
+    POST_BUILD
+    COMMAND ${MACDEPLOYQT_EXECUTABLE} "${target}.app" "-dmg"
+    COMMAND sh -c "ls *.dmg | xargs -I {} mv {} xtools-macos-13.dmg"
+    COMMENT "Running macdeployqt..."
+    WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+endfunction()
+
+# --------------------------------------------------------------------------------------------------
+# Deploy Qt for linux
+function(x_tools_deploy_qt_for_linux target)
+  # Do nothing...
+endfunction()
+
+# --------------------------------------------------------------------------------------------------
+# Deploy Qt
+function(x_tools_deploy_qt target)
+  if(WIN32)
+    x_tools_deploy_qt_for_windows(${target})
+  elseif(UNIX AND NOT APPLE)
+    x_tools_deploy_qt_for_linux(${target})
+  elseif(APPLE)
+    x_tools_deploy_qt_for_mac(${target})
+  endif()
 endfunction()

@@ -348,10 +348,10 @@ void MainWindow::initLinksMenu()
 {
     auto linksMenu = menuBar()->addMenu(tr("Links"));
     linksMenu->addAction(tr("Get Sources from Github"), this, []() {
-        QDesktopServices::openUrl(QUrl(X_TOOLS_GITHUB_REPOSITORY_URL));
+        QDesktopServices::openUrl(QUrl("https://github.com/x-tools-author/x-tools"));
     });
     linksMenu->addAction(tr("Get Sources from Gitee"), this, []() {
-        QDesktopServices::openUrl(QUrl(X_TOOLS_GITEE_REPOSITORY_URL));
+        QDesktopServices::openUrl(QUrl("https://gitee.com/x-tools-author/x-tools"));
     });
 }
 
