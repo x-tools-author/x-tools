@@ -333,9 +333,11 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Make installer for Windows
 if(WIN32 AND X_TOOLS_LATEST_GIT_TAG)
+  include(${CMAKE_SOURCE_DIR}/cmake/msix/msix.cmake)
   include(${CMAKE_SOURCE_DIR}/cmake/qifw/qifw.cmake)
   set(icon ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
-  x_tools_tar_target(xTools ${X_TOOLS_LATEST_GIT_TAG})
+  x_tools_generate_zip(xTools ${X_TOOLS_LATEST_GIT_TAG})
+  x_tools_generate_msix(xTools "xToolsPro" "xTools Pro" ${X_TOOLS_LATEST_GIT_TAG} TRUE)
   x_tools_generate_installer(xTools ${X_TOOLS_LATEST_GIT_TAG} ${icon})
 endif()
 
