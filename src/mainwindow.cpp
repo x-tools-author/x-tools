@@ -138,37 +138,29 @@ void MainWindow::initMenuBar()
 void MainWindow::initFileMenu()
 {
     auto fileMenu = menuBar()->addMenu(tr("&File"));
-    fileMenu->addAction(
-        tr("New Window"),
-        this,
-        []() {
-            auto* w = new Page(Page::Left, xApp->settings());
-            w->setWindowTitle("xTools");
-            w->show();
-        },
-        QKeySequence::New);
+    QAction* action = fileMenu->addAction(tr("New Window"), this, []() {
+        auto* w = new Page(Page::Left, xApp->settings());
+        w->setWindowTitle("xTools");
+        w->show();
+    });
+    action->setShortcut(QKeySequence::New);
     fileMenu->addSeparator();
-    fileMenu->addAction(tr("Save Parameters"),
-                        this,
-                        &MainWindow::onSaveActionTriggered,
-                        QKeySequence::Save);
-    fileMenu->addAction(tr("Import Parameters"),
-                        this,
-                        &MainWindow::onImportActionTriggered,
-                        QKeySequence::Open);
-    fileMenu->addAction(tr("Export Parameters"),
-                        this,
-                        &MainWindow::onExportActionTriggered,
-                        QKeySequence::SaveAs);
+    action = fileMenu->addAction(tr("Save Parameters"), this, &MainWindow::onSaveActionTriggered);
+    action->setShortcut(QKeySequence::Save);
+    action = fileMenu->addAction(tr("Import Parameters"),
+                                 this,
+                                 &MainWindow::onImportActionTriggered);
+    action->setShortcut(QKeySequence::Open);
+    action = fileMenu->addAction(tr("Export Parameters"),
+                                 this,
+                                 &MainWindow::onExportActionTriggered);
+    action->setShortcut(QKeySequence::SaveAs);
     fileMenu->addSeparator();
-    fileMenu->addAction(
-        tr("Exit Application"),
-        this,
-        []() {
-            QApplication::closeAllWindows();
-            QApplication::quit();
-        },
-        QKeySequence::Quit);
+    action = fileMenu->addAction(tr("Exit Application"), this, []() {
+        QApplication::closeAllWindows();
+        QApplication::quit();
+    });
+    action->setShortcut(QKeySequence::Quit);
 }
 
 void MainWindow::initToolMenu()
@@ -478,13 +470,18 @@ void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
 
 void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
 {
-    auto colorSchemeMenu = new QMenu(tr("Color Scheme"));
+    static QActionGroup* actionGroup = Q_NULLPTR;
+    if (actionGroup) {
+        return;
+    }
+
+    actionGroup = new QActionGroup(this);
+    auto colorSchemeMenu = optionMenu->addMenu(tr("Color Scheme"));
     QMap<Qt::ColorScheme, QString> colorSchemeMap;
     colorSchemeMap.insert(Qt::ColorScheme::Dark, tr("Dark"));
     colorSchemeMap.insert(Qt::ColorScheme::Light, tr("Light"));
     colorSchemeMap.insert(Qt::ColorScheme::Unknown, tr("System"));
 
-    QActionGroup* actionGroup = new QActionGroup(this);
     for (auto it = colorSchemeMap.begin(); it != colorSchemeMap.end(); ++it) {
         auto action = new QAction(it.value(), this);
         action->setCheckable(true);
@@ -501,8 +498,6 @@ void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
             xApp->setupColorScheme();
         });
     }
-
-    optionMenu->addMenu(colorSchemeMenu);
 }
 
 void MainWindow::updateGrid(WindowGrid grid)
