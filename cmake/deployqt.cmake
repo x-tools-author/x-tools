@@ -105,58 +105,7 @@ function(x_tools_deploy_qt_for_mac target)
 endfunction()
 
 function(x_tools_deploy_qt_for_linux target)
-  set(X_TOOLS_QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Qml)
-  string(TOUPPER ${target} upper_target_name)
-  string(TOLOWER ${target} lower_target_name)
-  option(X_TOOLS_LINUX_MAKE_APP_IMAGE_${upper_target_name} "Pack target tp a app image file" OFF)
-
-  if(NOT X_TOOLS_LINUX_MAKE_APP_IMAGE_${upper_target_name})
-    return()
-  endif()
-
-  execute_process(
-    COMMAND git rev-parse --short HEAD
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    OUTPUT_VARIABLE GIT_SHORT_COMMIT
-    OUTPUT_STRIP_TRAILING_WHITESPACE)
-
-  set(APP_DIR ${CMAKE_BINARY_DIR}/AppImage)
-  set(APP_DIR_BIN ${APP_DIR}/bin)
-  set(APP_IMAGE_TEMPLATE ${CMAKE_SOURCE_DIR}/resources/Platforms/Unix/AppImage)
-  set(APP_LOGO "${CMAKE_SOURCE_DIR}/resources/Images/256x256.png")
-  set(TOOLS_PATH ${CMAKE_SOURCE_DIR}/resources/Tools/Ubuntu20.04)
-  set(appimagetool ${TOOLS_PATH}/appimagetool-x86_64.AppImage)
-  set(linuxdeployqt ${TOOLS_PATH}/linuxdeployqt-continuous-x86_64.AppImage)
-  set(applications_dir ${APP_DIR}/share/applications)
-  set(desktop_file "${applications_dir}/${target}.desktop")
-  set(app_image_file "${target}-${GIT_SHORT_COMMIT}-x86_64.AppImage")
-
-  if(${QT_QMAKE_EXECUTABLE})
-    set(qmake_executable ${QT_QMAKE_EXECUTABLE})
-  else()
-    set(qmake_executable ${QT_DIR}/../../../bin/qmake)
-  endif()
-
-  add_custom_command(
-    TARGET ${target}
-    POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${APP_IMAGE_TEMPLATE} ${APP_DIR}
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${APP_DIR_BIN}
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${target}> ${APP_DIR_BIN}
-    COMMAND sed -i "s/AppImage/${target}/g" "${applications_dir}/AppImage.desktop"
-    COMMAND ${CMAKE_COMMAND} -E rename "${applications_dir}/AppImage.desktop" ${desktop_file}
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${APP_IMAGE_TEMPLATE} ${APP_DIR}
-    COMMAND chmod +x ${appimagetool}
-    COMMAND chmod +x ${linuxdeployqt}
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${APP_LOGO} "${CMAKE_BINARY_DIR}/${target}.png"
-    COMMAND ${linuxdeployqt} ${desktop_file} "-qmake=${qmake_executable}" "-appimage"
-            "-bundle-non-qt-libs"
-    COMMAND ${CMAKE_COMMAND} -E rm -f ${lower_target_name}-linux-x86_64.AppImage "||"
-            ${CMAKE_COMMAND} -E true
-    COMMAND ${CMAKE_COMMAND} -E rename ${app_image_file} ${lower_target_name}-linux-x86_64.AppImage
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMENT "Creating app image file..."
-    VERBATIM)
+  # Do nothing...
 endfunction()
 
 function(x_tools_deploy_qt target)
