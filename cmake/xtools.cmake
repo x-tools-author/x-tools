@@ -75,8 +75,7 @@ function(x_tools_generate_zip target version)
 
     add_custom_target(
       ${target}_zip
-      COMMAND ${CMAKE_COMMAND} -E tar "cf" ${target}-zip/${TAR_FILE_NAME}.zip "--format=zip"
-              ${target}
+      COMMAND ${CMAKE_COMMAND} -E tar "cfz" ${target}-zip/${TAR_FILE_NAME}.zip ${target}
       WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../"
       SOURCES cmake/xtools.cmake)
   endif()
