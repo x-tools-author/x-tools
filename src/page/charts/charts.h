@@ -10,7 +10,7 @@
 
 #include <QPointF>
 
-#include "devicepage/common/abstractio.h"
+#include "page/common/abstractio.h"
 
 class Charts : public AbstractIO
 {

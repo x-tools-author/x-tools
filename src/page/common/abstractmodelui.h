@@ -18,7 +18,7 @@
 #include <QTableView>
 #include <QWidget>
 
-#include "devicepage/common/abstractioui.h"
+#include "page/common/abstractioui.h"
 
 namespace Ui {
 class AbstractModelUi;

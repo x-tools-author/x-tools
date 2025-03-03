@@ -10,7 +10,7 @@
 
 #include <QHeaderView>
 
-#include "devicepage/common/abstractmodelui.h"
+#include "page/common/abstractmodelui.h"
 
 class AbstractTransferUi : public AbstractModelUi
 {

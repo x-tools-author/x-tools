@@ -10,7 +10,7 @@
 
 #include <QAbstractTableModel>
 
-#include "devicepage/common/abstractio.h"
+#include "page/common/abstractio.h"
 
 class AbstractModelIO : public AbstractIO
 {

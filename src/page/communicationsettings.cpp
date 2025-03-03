@@ -13,7 +13,7 @@
 #include <QStandardPaths>
 
 #include "common/xtools.h"
-#include "devicepage/utilities/savethread.h"
+#include "page/utilities/savethread.h"
 
 const struct
 {

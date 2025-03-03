@@ -12,7 +12,7 @@
 #include <QThread>
 #include <QVariantMap>
 
-#include "devicepage/common/abstractio.h"
+#include "page/common/abstractio.h"
 
 class Communication : public AbstractIO
 {

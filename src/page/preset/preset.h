@@ -11,7 +11,7 @@
 #include <QTimer>
 
 #include "common/xtools.h"
-#include "devicepage/common/abstractmodelio.h"
+#include "page/common/abstractmodelio.h"
 
 class PresetModel;
 class Preset : public AbstractModelIO

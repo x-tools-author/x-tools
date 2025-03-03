@@ -20,7 +20,7 @@
 
 #include "common/xtools.h"
 #include "device/utilities/menu.h"
-#include "devicepage/common/abstractmodelio.h"
+#include "page/common/abstractmodelio.h"
 
 PresetUi::PresetUi(QWidget *parent)
     : AbstractModelUi(parent)

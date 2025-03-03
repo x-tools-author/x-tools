@@ -12,7 +12,7 @@
 #include <QWidget>
 
 #include "common/xtools.h"
-#include "devicepage/common/abstractioui.h"
+#include "page/common/abstractioui.h"
 
 class Communication;
 class CommunicationUi : public AbstractIOUi

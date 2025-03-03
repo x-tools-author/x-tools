@@ -433,25 +433,25 @@
   <customwidget>
    <class>StatisticianUi</class>
    <extends>QWidget</extends>
-   <header location="global">devicepage/utilities/statisticianui.h</header>
+   <header location="global">page/utilities/statisticianui.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>PresetUi</class>
    <extends>QWidget</extends>
-   <header location="global">devicepage/preset/presetui.h</header>
+   <header location="global">page/preset/presetui.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>EmitterUi</class>
    <extends>QWidget</extends>
-   <header location="global">devicepage/emitter/emitterui.h</header>
+   <header location="global">page/emitter/emitterui.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>ResponserUi</class>
    <extends>QWidget</extends>
-   <header location="global">devicepage/responder/responserui.h</header>
+   <header location="global">page/responder/responserui.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

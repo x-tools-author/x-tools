@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "devicepage/common/abstractmodelui.h"
+#include "page/common/abstractmodelui.h"
 
 class AbstractIO;
 class ResponserUi : public AbstractModelUi

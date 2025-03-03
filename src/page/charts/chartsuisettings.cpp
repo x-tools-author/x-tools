@@ -22,7 +22,7 @@
 #include <QTimer>
 
 #include "chartsui.h"
-#include "devicepage/charts/charts.h"
+#include "page/charts/charts.h"
 
 ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     : QWidget(parent)

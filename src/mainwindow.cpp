@@ -37,7 +37,7 @@
 
 #include "application.h"
 #include "common/xtools.h"
-#include "devicepage/iopage.h"
+#include "page/iopage.h"
 #include "qss/qssmgr.h"
 #include "tools/assistantfactory.h"
 

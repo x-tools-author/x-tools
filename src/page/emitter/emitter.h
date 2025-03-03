@@ -10,7 +10,7 @@
 
 #include <QMutex>
 
-#include "devicepage/common/abstractmodelio.h"
+#include "page/common/abstractmodelio.h"
 
 class EmitterModel;
 class Emitter : public AbstractModelIO
