@@ -61,7 +61,8 @@ jobs:
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
         cmake --build . --target xTools
         cmake --build . --target xTools-zip
-        dir && dir .xTools
+        dir bin
+        dir bin\Windows\Release
     - name: Upload Release Asset for Windnows
       run: |
         dir bin\Windows\Release
