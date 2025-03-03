@@ -13,6 +13,7 @@
 #include <QMessageBox>
 #include <QWidgetAction>
 
+#include "common/crc.h"
 #include "communicationsettings.h"
 #include "device/chartstest.h"
 #include "device/chartstestui.h"
@@ -26,7 +27,6 @@
 #include "device/udpclientui.h"
 #include "device/udpserver.h"
 #include "device/udpserverui.h"
-#include "device/utilities/crc.h"
 #include "devicepage/emitter/emitter.h"
 #include "devicepage/preset/preset.h"
 #include "devicepage/responder/responder.h"

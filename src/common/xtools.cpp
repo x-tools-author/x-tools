@@ -50,7 +50,7 @@
 #include <QSerialPortInfo>
 #endif
 
-#include "device/utilities/crc.h"
+#include "common/crc.h"
 
 QList<int> supportedCommunicationTypes()
 {

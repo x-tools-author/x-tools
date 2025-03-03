@@ -9,8 +9,8 @@
 #include "textitemeditor.h"
 #include "ui_textitemeditor.h"
 
+#include "common/crc.h"
 #include "common/xtools.h"
-#include "crc.h"
 
 TextItemEditor::TextItemEditor(QWidget *parent)
     : QDialog(parent)
