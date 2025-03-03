@@ -9,7 +9,7 @@
 #include "application.h"
 #include "mainwindow.h"
 
-int main(const int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     Application::setOrganizationName("xTools");
     Application::setApplicationName("xTools");
