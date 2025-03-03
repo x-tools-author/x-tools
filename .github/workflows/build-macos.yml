@@ -40,7 +40,7 @@ jobs:
           cmake --build . --target all
       - name: make dmg
         run: |
-          tree bin
+          ls bin
           cd build
           cmake --build . --target xTools_dmg
           ls ../bin
