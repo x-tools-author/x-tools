@@ -77,7 +77,7 @@ function(x_tools_generate_zip target version)
       ${target}_zip
       COMMAND ${CMAKE_COMMAND} -E tar "cf" ${target}-zip/${TAR_FILE_NAME}.zip "--format=zip"
               ${target}
-      WORKING_DIRECTORY "$<TARGET_FILE_DIR:${target}>/../"
+      WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../"
       SOURCES cmake/xtools.cmake)
   endif()
 endfunction()
