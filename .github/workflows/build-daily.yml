@@ -90,8 +90,8 @@ jobs:
         cd build
         cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/linux_gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -G "Ninja"
         cmake --build . --target xTools
-        make --build . --target xTools-deb
-        make --build . --target xTools-appimage
+        cmake --build . --target xTools-deb
+        cmake --build . --target xTools-appimage
         dir && dir ./xTools
     - name: Upload Release Asset for Linux
       run: |
