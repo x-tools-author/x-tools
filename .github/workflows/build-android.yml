@@ -1,12 +1,13 @@
 name: build-android
-on:
-  schedule:
-    - cron: '0 0 * * *'
 # on:
-#  push:
-#    branches:
-#      - master
+#   schedule:
+#     - cron: '0 0 * * *'
+on:
+ push:
+   branches:
+     - master
 env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   build:
@@ -20,7 +21,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install Qt for Android
+      - name: Install Qt(android)
         uses: jurplel/install-qt-action@v4
         with:
           target: android
@@ -29,7 +30,7 @@ jobs:
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
           version: ${{ matrix.version }}
-      - name: Install Qt for Desktop(mingw)
+      - name: Install Qt(mingw)
         uses: jurplel/install-qt-action@v4
         with:
           target: desktop
@@ -73,13 +74,16 @@ jobs:
       - name: Deploy for Android
         shell: cmd
         env:
-          ANDROID_RELEASE_KEYS: ${{ secrets.ANDROID_RELEASE_KEYS }}
+          QT_ANDROID_KEYSTORE_PATH: ${{ github.workspace }}\res\android\android_release.keystore
+          QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+          QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
+          QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
         run: |
           set JAVA_HOME=%JAVA_HOME_11_X64%
           echo %JAVA_HOME%
           ${{ github.workspace }}\Qt\${{ matrix.version }}\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
-          --android-platform android-34 ^
-          --sign ${{ github.workspace }}\res\android\android_release.keystore %secrets.ANDROID_RELEASE_KEYS% --storepass  %secrets.ANDROID_RELEASE_KEYS%  --keypass %secrets.ANDROID_RELEASE_KEYS%  ^
+          --android-platform android-23 ^
           --jdk %JAVA_HOME% --gradle --release
+          #--sign ${{ github.workspace }}\res\android\android_release.keystore %secrets.ANDROID_RELEASE_KEYS% --storepass  %secrets.ANDROID_RELEASE_KEYS%  --keypass %secrets.ANDROID_RELEASE_KEYS%  ^
