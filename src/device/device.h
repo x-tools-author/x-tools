@@ -24,7 +24,7 @@ public:
     Q_INVOKABLE void openDevice();
     Q_INVOKABLE void closeDevice();
 
-    void inputBytes(const QByteArray &bytes);
+    void inputBytes(const QByteArray &bytes) override;
 
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};

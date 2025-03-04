@@ -27,7 +27,7 @@ public:
     explicit ChartsTest(QObject *parent = nullptr);
     ~ChartsTest();
 
-    void inputBytes(const QByteArray &bytes);
+    void inputBytes(const QByteArray &bytes) override;
 
 protected:
     void run() override;
