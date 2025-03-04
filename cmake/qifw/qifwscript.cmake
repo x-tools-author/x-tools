@@ -4,7 +4,8 @@
 # * argTemperateDir:  安装模板目录 *
 # * argBinarycreator: Qt Installer Framework
 # * argRootDir:       工作目录
-# * argIcon:      图标文件
+# * argIcon:          图标文件
+# * argAssetName:     安装包名称
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E rm -rf ${argRootDir} "||" ${CMAKE_COMMAND} -E true)
 execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${argRootDir})
@@ -115,9 +116,9 @@ execute_process(
   WORKING_DIRECTORY ${argRootDir})
 # --------------------------------------------------------------------------------------------------
 if(WIN32)
-  set(output_file "${argTarget}-${argVersion}-installer.exe")
+  set(output_file "${argAssetName}-installer.exe")
 elseif(UNIX AND NOT APPLE)
-  set(output_file "${argTarget}-${argVersion}-installer.run")
+  set(output_file "${argAssetName}-installer.run")
 endif()
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename "all" "${argTarget}"

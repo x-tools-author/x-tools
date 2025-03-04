@@ -24,19 +24,6 @@ set(WITH_TOOLS
     CACHE BOOL "Reset option" FORCE)
 
 # --------------------------------------------------------------------------------------------------
-# Target platform
-message(STATUS "[xTools]Target platform: ${CMAKE_SYSTEM_NAME}")
-message(STATUS "[xTools]Build type: ${CMAKE_BUILD_TYPE}")
-message(STATUS "[xTools]CMake version: ${CMAKE_VERSION}")
-message(STATUS "[xTools]CMake generator: ${CMAKE_GENERATOR}")
-message(STATUS "[xTools]CMake system: ${CMAKE_SYSTEM}")
-message(STATUS "[xTools]CMake system processor: ${CMAKE_SYSTEM_PROCESSOR}")
-
-set(X_TOOLS_DEPLOY_LIBS_DIR
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
-message(STATUS "[xTools]Deploy libraries directory: ${X_TOOLS_DEPLOY_LIBS_DIR}")
-
-# --------------------------------------------------------------------------------------------------
 # Qt module
 list(APPEND X_TOOLS_QT_COMPONENTS Gui)
 list(APPEND X_TOOLS_QT_COMPONENTS Svg)
@@ -76,6 +63,27 @@ include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
+
+# --------------------------------------------------------------------------------------------------
+# Target platform
+message(STATUS "------------------------------------------------------------")
+message(STATUS "[xTools]Target platform: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "[xTools]Build type: ${CMAKE_BUILD_TYPE}")
+message(STATUS "[xTools]CMake version: ${CMAKE_VERSION}")
+message(STATUS "[xTools]CMake generator: ${CMAKE_GENERATOR}")
+message(STATUS "[xTools]CMake system: ${CMAKE_SYSTEM}")
+message(STATUS "[xTools]CMake system processor: ${CMAKE_SYSTEM_PROCESSOR}")
+message(STATUS "[xTools]CMake host system: ${CMAKE_HOST_SYSTEM}")
+
+set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_TOOLS_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
+string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
+message(STATUS "[xTools]Asset name: ${X_ASSET_NAME}")
+
+set(X_TOOLS_DEPLOY_LIBS_DIR
+    ${CMAKE_CURRENT_SOURCE_DIR}/libs/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
+message(STATUS "[xTools]Deploy libraries directory: ${X_TOOLS_DEPLOY_LIBS_DIR}")
+
+message(STATUS "------------------------------------------------------------")
 
 # --------------------------------------------------------------------------------------------------
 # The magic option...

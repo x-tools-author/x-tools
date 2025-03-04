@@ -8,9 +8,7 @@ function(x_tools_generate_dmg target version)
   endif()
 
   set(old_name ${target}.dmg)
-  set(new_name ${target}-${CMAKE_SYSTEM_NAME}-v${version}.dmg)
-  # new_name to lower case
-  string(TOLOWER ${new_name} new_name)
+  set(new_name ${X_ASSET_NAME}.dmg)
 
   add_custom_target(
     ${target}_dmg

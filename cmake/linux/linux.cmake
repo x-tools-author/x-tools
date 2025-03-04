@@ -26,6 +26,7 @@ function(x_tools_make_package target packetName friendlyName version is_deb)
   list(APPEND args "-DargPackageType=${package_type}")
   list(APPEND args "-DargQmakePath=${QT_DIR}/../../../bin/qmake")
   list(APPEND args "-DargTargetFile=$<TARGET_FILE:${target}>")
+  list(APPEND args "-DargAssetName=${X_ASSET_NAME}")
 
   foreach(arg ${args})
     message(STATUS "[${package_type}]arg: ${arg}")

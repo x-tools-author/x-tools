@@ -48,14 +48,13 @@ function(x_tools_generate_zip target version)
     string(TOLOWER ${target} lower_target)
     string(TOLOWER ${CMAKE_HOST_SYSTEM_NAME} lower_system_name)
     string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} lower_system_processor)
-    set(TAR_FILE_NAME ${lower_target}-${lower_system_name}-${lower_system_processor}-v${version})
 
     execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${target}-zip
                     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../)
 
     add_custom_target(
       ${target}_zip
-      COMMAND ${CMAKE_COMMAND} -E tar "cfz" ${target}-zip/${TAR_FILE_NAME}.zip ${target}
+      COMMAND ${CMAKE_COMMAND} -E tar "cfz" ${target}-zip/${X_ASSET_NAME}.zip ${target}
       WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../"
       SOURCES cmake/xtools.cmake)
   endif()

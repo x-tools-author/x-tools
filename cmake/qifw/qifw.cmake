@@ -36,6 +36,7 @@ function(x_tools_generate_installer target version icon)
   list(APPEND args "-DargTemperateDir=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/installer")
   list(APPEND args "-DargBinarycreator=${binarycreator}")
   list(APPEND args "-DargIcon=${icon}")
+  list(APPEND args "-DargAssetName=${X_ASSET_NAME}")
 
   set(RESOURCES_DIR ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
   set(QIFW_SOURCE ${RESOURCES_DIR}/QIFW.cmake)
