@@ -1,8 +1,7 @@
 name: build-test
 on:
- push:
-   branches:
-     - master
+ workflow_dispatch: # Allows you to run the workflow manually from the Actions tab
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -11,15 +10,28 @@ jobs:
     name: Windows Test
     runs-on: windows-latest
     steps:
-      - name: echo
-        shell: cmd
-        run: |
-          echo "hello world"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: '==3.1.*'
+          version: '6.8.2'
+          host: 'windows'
+          target: 'android'
+          arch: 'android_armv7'
   Linux:
     name: Ubuntu Test
     runs-on: ubuntu-latest
     steps:
-      - name: echo
-        run: |
-          echo "hello world"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: '==3.1.*'
+          version: '6.8.2'
+          host: 'windows'
+          target: 'android'
+          arch: 'android_armv7'
 
