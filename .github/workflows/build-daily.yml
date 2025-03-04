@@ -135,6 +135,11 @@ jobs:
   release-for-android:
     runs-on: windows-2022
     needs: update-release
+    env:
+      QT_ANDROID_KEYSTORE_PATH: ${{ github.workspace }}\res\android\android_release.keystore
+      QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+      QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
+      QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -189,11 +194,6 @@ jobs:
             copy .\build\armeabi_v7a\libxTools_armeabi-v7a.so .\build\armeabi_v7a\android-build\libs\armeabi-v7a /y
       - name: Deploy for Android
         shell: cmd
-        env:
-          QT_ANDROID_KEYSTORE_PATH: ${{ github.workspace }}\res\android\android_release.keystore
-          QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
-          QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
-          QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
         run: |
           set JAVA_HOME=%JAVA_HOME_17_X64%
           echo %JAVA_HOME%
@@ -201,8 +201,8 @@ jobs:
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-35 ^
+          --sign ${{ env.QT_ANDROID_KEYSTORE_PATH }} ${{ env.QT_ANDROID_KEYSTORE_ALIAS }} --storepass  ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}  --keypass ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }} ^
           --jdk %JAVA_HOME% --gradle --release
-        #  --sign ${{ github.workspace }}\Resources\Platforms\Android\xTools.keystore xTools --storepass xTools --keypass xTools ^
       - name: Upload Release Asset for Android
         run: |
           cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-armeabi_v7a.apk
