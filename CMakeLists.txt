@@ -1,8 +1,7 @@
+# cmake-format: off
 cmake_minimum_required(VERSION 3.22)
-project(
-  xTools
-  VERSION 8.0
-  LANGUAGES C CXX)
+project(xTools VERSION 8.0 LANGUAGES C CXX)
+# cmake-format: on
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -14,14 +13,12 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # --------------------------------------------------------------------------------------------------
 # Some options for 3rd party libraries
+# cmake-format: off
 set(WITH_GFLAGS OFF)
 set(BUILD_TESTING OFF)
-set(BUILD_SHARED_LIBS
-    OFF
-    CACHE BOOL "Reset option" FORCE)
-set(WITH_TOOLS
-    OFF
-    CACHE BOOL "Reset option" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Reset option" FORCE)
+set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
+# cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
 # Qt module
@@ -101,6 +98,7 @@ endif()
 # Get all source files of the project
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 file(GLOB_RECURSE X_TOOLS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
+list(APPEND X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 
 # --------------------------------------------------------------------------------------------------
 # QSS module
@@ -187,10 +185,10 @@ else()
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/websocketclientui.h)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/websocketclientui.ui)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/websocketclientui.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/transfer/websocketclienttransfer.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/transfer/websocketclienttransfer.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/transfer/websocketclienttransfermodel.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/transfer/websocketclienttransfermodel.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketclienttransfer.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketclienttransfer.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketclienttransfermodel.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketclienttransfermodel.cpp)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketclienttransferui.h)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketclienttransferui.cpp)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketclienttransferui.h)
@@ -201,10 +199,10 @@ else()
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/websocketserverui.h)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/websocketserverui.ui)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/websocketserverui.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/transfer/websocketservertransfer.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/transfer/websocketservertransfer.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/transfer/websocketservertransfermodel.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/transfer/websocketservertransfermodel.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketservertransfer.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketservertransfer.cpp)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketservertransfermodel.h)
+  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketservertransfermodel.cpp)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketservertransferui.h)
   list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/websocketservertransferui.cpp)
 endif()
@@ -271,35 +269,34 @@ endif()
 # xTools application
 set(bin ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/xTools)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
-if(CMAKE_HOST_APPLE)
+if(APPLE)
   set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
   set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
   set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+  list(APPEND X_TOOLS_SOURCE ${xTools_ICON})
 endif()
 
-x_tools_add_executable(xTools ${xTools_ICON} ${X_TOOLS_SOURCE} xTools.rc xTools.qrc)
+if(WIN32)
+  list(APPEND X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
+endif()
+
+x_tools_add_executable(xTools ${X_TOOLS_SOURCE})
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
 x_tools_deploy_qss(xTools)
 x_tools_install_glog(xTools)
 x_tools_install_qxlsx(xTools)
 x_tools_install_qmdns(xTools)
-x_tools_install_qrencode(xTools)
 x_tools_install_hidapi(xTools)
+x_tools_install_qrencode(xTools)
 
-# --------------------------------------------------------------------------------------------------
-# Link libraries
-target_link_libraries(
-  xTools
-  PRIVATE Qt${QT_VERSION_MAJOR}::CorePrivate
-          Qt${QT_VERSION_MAJOR}::Core
-          Qt${QT_VERSION_MAJOR}::Gui
-          Qt${QT_VERSION_MAJOR}::Network
-          Qt${QT_VERSION_MAJOR}::Svg
-          Qt${QT_VERSION_MAJOR}::Widgets
-          ${x_qrencode}
-          glog::glog
-          qmdnsengine)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::CorePrivate)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Network)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Svg)
+target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(xTools PRIVATE ${x_qrencode} glog::glog qmdnsengine)
 
 if(X_TOOLS_ENABLE_SERIAL_PORT)
   target_link_libraries(xTools PUBLIC Qt${QT_VERSION_MAJOR}::SerialPort)

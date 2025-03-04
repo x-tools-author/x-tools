@@ -708,6 +708,17 @@ void MainWindow::onAboutActionTriggered()
     QString dtString = buildDateTimeString(buildDateTimeFormat);
     QString year = buildDateTimeString("yyyy");
 
+    // X_TOOLS_GIT_COMMIT_TIME(Tue Mar 4 11:33:30 2025 +0800) to QDateTime
+    // X_TOOLS_GIT_COMMIT_TIME is defined in CMakeLists.txt
+#if defined(X_TOOLS_GIT_COMMIT_TIME)
+    QString commitTime = QString(X_TOOLS_GIT_COMMIT_TIME);
+    commitTime = commitTime.left(commitTime.lastIndexOf(" "));
+    QDateTime commitDateTime = QDateTime::fromString(commitTime, "ddd MMM d hh:mm:ss yyyy");
+    commitTime = commitDateTime.toString(buildDateTimeFormat);
+#else
+    QString commitTime = tr("Unknown");
+#endif
+
     QString info;
     info += qApp->applicationName() + " v" + qApp->applicationVersion() + "\n\n";
 #ifdef X_TOOLS_GIT_COMMIT

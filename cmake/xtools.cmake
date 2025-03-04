@@ -1,13 +1,14 @@
 # --------------------------------------------------------------------------------------------------
 # Add executable. It can be used by Qt5 and Qt6.
 function(x_tools_add_executable target)
+  # ARGN: all unnamed arguments
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(${target} MANUAL_FINALIZATION)
+    qt_add_executable(${target} ${ARGN} MANUAL_FINALIZATION)
   else()
     if(ANDROID)
-      add_library(${target} SHARED ${ARGS})
+      add_library(${target} SHARED ${ARGN})
     else()
-      add_executable(${target} ${ARGS})
+      add_executable(${target} ${ARGN})
     endif()
   endif()
 
