@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-2022]
-        version: [6.5.3 6.8.2]
+        version: [6.5.3]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
           host: windows
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
-          version: '6.5.3'
+          version: ${{ matrix.version }}
       - name: CMake for Android
         shell: cmd
         run: |
