@@ -88,7 +88,7 @@ MainWindow::MainWindow(QWidget* parent)
     centralWidget->setLayout(layout);
     setCentralWidget(centralWidget);
 
-    constexpr int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
+    const int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
     const QString key = m_settingsKey.windowGrid;
     int rawGrid = settings->value(key, defaultGrid).toInt();
     m_windowGrid = static_cast<WindowGrid>(rawGrid);
