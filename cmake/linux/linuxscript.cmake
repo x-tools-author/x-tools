@@ -68,14 +68,11 @@ else()
                   usr/share/applications/${argPacketName}.desktop -always-overwrite
                   -bundle-non-qt-libs -qmake=${argQmakePath} -appimage
                   WORKING_DIRECTORY ${argWorkingDir})
-  # Find all AppImage in ${argWorkingDir} and rename it with lower case, such as "xTools-x86_64.AppImage" -> "xtools-x86_64.AppImage"
-  # Take care: the suffix is AppImage, not appimage. the insert "linux-" after the first '-', such as "xtools-x86_64.AppImage" -> "xtools-linux-x86_64.AppImage"
+  # Rename the AppImage
   file(GLOB appimages ${argWorkingDir}/*.AppImage)
   foreach(appimage ${appimages})
-    get_filename_component(appimage_name ${appimage} NAME)
-    string(TOLOWER ${appimage_name} argAssetName)
-    string(REGEX REPLACE "appimage" "AppImage" appimage_name ${appimage_name})
-    execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${appimage} ${appimage_name} WORKING_DIRECTORY ${argWorkingDir})
+    execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${appimage} ${argAssetName}.AppImage WORKING_DIRECTORY ${argWorkingDir})
+    break()
   endforeach()
 endif()
 # cmake-format: on

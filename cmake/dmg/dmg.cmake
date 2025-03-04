@@ -7,13 +7,10 @@ function(x_tools_generate_dmg target version)
     return()
   endif()
 
-  set(old_name ${target}.dmg)
-  set(new_name ${X_ASSET_NAME}.dmg)
-
   add_custom_target(
     ${target}_dmg
     COMMAND ${MACDEPLOYQT_EXECUTABLE} "${target}.app" "-dmg"
-    COMMAND ${CMAKE_COMMAND} -E rename "${old_name}" "${new_name}"
+    COMMAND ${CMAKE_COMMAND} -E rename "${target}.dmg" "${X_ASSET_NAME}.dmg"
     COMMENT "Making dmg..."
     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 endfunction()
