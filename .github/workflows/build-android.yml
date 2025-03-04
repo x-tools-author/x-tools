@@ -1,11 +1,11 @@
 name: build-android
+# on:
+#   schedule:
+#     - cron: '0 0 * * *'
 on:
-  schedule:
-    - cron: '0 0 * * *'
-#on:
-#  push:
-#    branches:
-#      - master
+ push:
+   branches:
+     - master
 env:
   QT_VERSION: 6.5.*
 jobs:
@@ -76,5 +76,5 @@ jobs:
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-34 ^
-          --sign ${{ github.workspace }}\Resources\Platforms\Android\xTools.keystore xTools --storepass xTools --keypass xTools ^
+          --sign ${{ github.workspace }}\res\android\android_release.keystore  ${{ env.ANDROID_KEY }}  --storepass  ${{ env.ANDROID_KEY }}  --keypass  ${{ env.ANDROID_KEY }}  ^
           --jdk %JAVA_HOME% --gradle --release
