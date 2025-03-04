@@ -1,33 +1,34 @@
-name: build environment
+name: build-test
 on:
  push:
    branches:
      - master
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  QT_ANDROID_KEYSTORE_PATH: ${{ github.workspace }}\res\android\android_release.keystore
+  QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+  QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
+  QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
 jobs:
   Windows:
     name: Windows Test
     runs-on: windows-latest
-    env:
-      QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
-      QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
-      QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
     steps:
       - name: echo
         shell: cmd
         run: |
-          echo "ANDROID_RELEASE_KEYS1: ${{ env.QT_ANDROID_KEYSTORE_ALIAS }}"
-          echo "ANDROID_RELEASE_KEYS2: ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}"
-          echo "ANDROID_RELEASE_KEYS3: ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }}"
+          echo "QT_ANDROID_KEYSTORE_PATH: ${{ env.QT_ANDROID_KEYSTORE_PATH }}"
+          echo "QT_ANDROID_KEYSTORE_ALIAS: ${{ env.QT_ANDROID_KEYSTORE_ALIAS }}"
+          echo "QT_ANDROID_KEYSTORE_STORE_PASS: ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}"
+          echo "QT_ANDROID_KEYSTORE_KEY_PASS: ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }}"
   Linux:
     name: Ubuntu Test
     runs-on: ubuntu-latest
     steps:
       - name: echo
         run: |
-          echo "ANDROID_RELEASE_KEYS1: ${{ env.QT_ANDROID_KEYSTORE_ALIAS }}"
-          echo "ANDROID_RELEASE_KEYS2: ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}"
-          echo "ANDROID_RELEASE_KEYS3: ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }}"
-
+          echo "QT_ANDROID_KEYSTORE_PATH: ${{ env.QT_ANDROID_KEYSTORE_PATH }}"
+          echo "QT_ANDROID_KEYSTORE_ALIAS: ${{ env.QT_ANDROID_KEYSTORE_ALIAS }}"
+          echo "QT_ANDROID_KEYSTORE_STORE_PASS: ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}"
+          echo "QT_ANDROID_KEYSTORE_KEY_PASS: ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }}"
 

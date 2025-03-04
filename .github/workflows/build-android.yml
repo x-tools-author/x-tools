@@ -39,7 +39,7 @@ jobs:
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
           version: ${{ matrix.version }}
-      - name: CMake for Android
+      - name: Configure for android
         shell: cmd
         run: |
           git fetch --tags
@@ -55,7 +55,7 @@ jobs:
           -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%" ^
           -DBUILD_SHARED_LIBS:BOOL=OFF ^
           -DWITH_TOOLS:BOOL=OFF
-      - name: Directory of build\armeabi_v7a
+      - name: Dir build\armeabi_v7a
         shell: cmd
         run: dir build\armeabi_v7a
       - name: Build for android
@@ -84,6 +84,7 @@ jobs:
           ${{ github.workspace }}\Qt\${{ matrix.version }}\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
-          --android-platform android-23 ^
+          --android-platform android-35 ^
           --jdk %JAVA_HOME% --gradle --release
-          #--sign ${{ github.workspace }}\res\android\android_release.keystore %secrets.ANDROID_RELEASE_KEYS% --storepass  %secrets.ANDROID_RELEASE_KEYS%  --keypass %secrets.ANDROID_RELEASE_KEYS%  ^
+
+        # --sign ${{ github.workspace }}\res\android\android_release.keystore %secrets.ANDROID_RELEASE_KEYS% --storepass  %secrets.ANDROID_RELEASE_KEYS%  --keypass %secrets.ANDROID_RELEASE_KEYS%  ^
