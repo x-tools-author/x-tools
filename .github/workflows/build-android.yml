@@ -17,13 +17,14 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-2022]
-        version: [6.5.3]
+        version: [6.8.2]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install Qt(android)
         uses: jurplel/install-qt-action@v4
         with:
+          aqtversion: '==3.1.*'
           target: android
           arch: android_armv7
           host: windows
@@ -33,6 +34,7 @@ jobs:
       - name: Install Qt(mingw)
         uses: jurplel/install-qt-action@v4
         with:
+          aqtversion: '==3.1.*'
           target: desktop
           arch: win64_mingw
           host: windows
