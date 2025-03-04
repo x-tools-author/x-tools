@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-13 macos-14]
+        os: [macos-14]
         version: [6.8.*]
     steps:
       - name: checkout
