@@ -189,11 +189,13 @@ void Application::setupLanguage()
 
 void Application::setupColorScheme()
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     QSettings *settings = Application::settings();
     auto def = qApp->styleHints()->colorScheme();
     int colorScheme = settings->value(SettingsKey().colorScheme, static_cast<int>(def)).toInt();
     qApp->styleHints()->setColorScheme(static_cast<Qt::ColorScheme>(colorScheme));
     qInfo() << "The current color scheme is:" << qApp->styleHints()->colorScheme();
+#endif
 }
 
 QSplashScreen *Application::splashScreen()

@@ -24,7 +24,7 @@ OutputSettings::OutputSettings(QWidget *parent)
             &QCheckBox::clicked,
             this,
             &OutputSettings::highlighterEnableChanged);
-    connect(ui->checkBoxShowStatistician, &QCheckBox::checkStateChanged, this, [this]() {
+    connect(ui->checkBoxShowStatistician, &QCheckBox::clicked, this, [this]() {
         if (ui->checkBoxShowStatistician->checkState() == Qt::Checked) {
             emit showStatisticianChanged(true);
         } else {
