@@ -1,10 +1,10 @@
-name: Action Test
+name: build environment
 on:
  push:
    branches:
      - master
 env:
-  ANDROID_RELEASE_KEYS: ${{ secrets.ANDROID_RELEASE_KEYS }}
+  ANDROID_RELEASE_KEYS: ${{secrets.ANDROID_RELEASE_KEYS}}
 jobs:
   Windows:
     name: Windows Test
@@ -15,6 +15,7 @@ jobs:
         run: |
           echo "ANDROID_RELEASE_KEYS1: ${{ secrets.ANDROID_RELEASE_KEYS }}"
           echo "ANDROID_RELEASE_KEYS2: %ANDROID_RELEASE_KEYS%"
+          echo "ANDROID_RELEASE_KEYS3: ${{ vars.ANDROID_RELEASE_KEYS }}"
   Linux:
     name: Ubuntu Test
     runs-on: ubuntu-latest
@@ -23,5 +24,6 @@ jobs:
         run: |
           echo "ANDROID_RELEASE_KEYS1: ${{ secrets.ANDROID_RELEASE_KEYS }}"
           echo "ANDROID_RELEASE_KEYS2: $ANDROID_RELEASE_KEYS"
+          echo "ANDROID_RELEASE_KEYS3: ${{ vars.ANDROID_RELEASE_KEYS }}"
 
 
