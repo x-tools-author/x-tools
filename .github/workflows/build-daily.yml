@@ -64,8 +64,6 @@ jobs:
     - name: Upload Release Asset for Windnows
       run: |
         dir bin\Windows\Release
-        # Rename all zip with lower case
-        for %%f in (bin\Windows\Release\xTools-zip\*.zip) do ren "%%f" "%%~nf.zip"
         for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f"
   release-for-linux:
     runs-on: ubuntu-20.04
@@ -96,11 +94,7 @@ jobs:
     - name: Upload Release Asset for Linux
       run: |
         dir bin/Linux/Release
-        # Rename all deb with lower case
-        find bin/Linux/Release/xTools-deb -name "*.deb" -exec sh -c 'mv "$1" "${1%/*}/$(echo "${1##*/}" | tr "[:upper:]" "[:lower:]")' _ {} \;
         find bin/Linux/Release/xTools-deb -name "*.deb" -exec gh release upload continuous {} \;
-        # Rename all AppImage with lower case, but suffix is .AppImage
-        find bin/Linux/Release/xTools-appimage -name "*.AppImage" -exec sh -c 'mv "$1" "${1%/*}/$(echo "${1##*/}" | tr "[:upper:]" "[:lower:]")' _ {} \;
         find bin/Linux/Release/xTools-appimage -name "*.AppImage" -exec gh release upload continuous {} \;
   release-for-macos:
     runs-on: macos-14

@@ -62,7 +62,9 @@ if(${argPackageType} STREQUAL "deb")
   execute_process(COMMAND ${CMAKE_COMMAND} -E rm ${argPacketName}.desktop -f WORKING_DIRECTORY ${argWorkingDir})
   execute_process(COMMAND ${CMAKE_COMMAND} -E rm ${argPacketName}.png -f WORKING_DIRECTORY ${argWorkingDir})
   execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory usr/share/doc WORKING_DIRECTORY ${argWorkingDir})
-  execute_process(COMMAND dpkg -b ./ ${argLowerTargetName}-${CMAKE_SYSTEM_NAME}-v${argVersion}-amd64.deb WORKING_DIRECTORY ${argWorkingDir})
+  set(deb_name ${argLowerTargetName}-ubuntu20.04-v${argVersion}-amd64.deb)
+  string(deb_name ${new_name} deb_name)
+  execute_process(COMMAND dpkg -b ./ ${deb_name} WORKING_DIRECTORY ${argWorkingDir})
 else()
   execute_process(COMMAND ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
                   usr/share/applications/${argPacketName}.desktop -always-overwrite
