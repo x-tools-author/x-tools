@@ -44,5 +44,7 @@ jobs:
           cd build
           cmake --build . --target xTools_dmg
           ls ../bin/Darwin/Release/xTools
+          # rename all dmg with lower case
+          find ../bin/Darwin/Release/xTools -name "*.dmg" -exec sh -c 'mv "$1" "${1%/*}/$(echo "${1##*/}" | tr "[:upper:]" "[:lower:]")' _ {} \;
           find ../bin/Darwin/Release/xTools -name "*.dmg" -exec echo "dmg file is: {}" \;
 
