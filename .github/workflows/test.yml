@@ -1,0 +1,27 @@
+name: Action Test
+on:
+ push:
+   branches:
+     - master
+env:
+  ANDROID_RELEASE_KEYS: ${{ secrets.ANDROID_RELEASE_KEYS }}
+jobs:
+  Windows:
+    name: Windows Test
+    runs-on: windows-latest
+    steps:
+      - name: echo
+        shell: cmd
+        run: |
+          echo "ANDROID_RELEASE_KEYS1: ${{ secrets.ANDROID_RELEASE_KEYS }}"
+          echo "ANDROID_RELEASE_KEYS2: %ANDROID_RELEASE_KEYS%"
+  Linux:
+    name: Ubuntu Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: |
+          echo "ANDROID_RELEASE_KEYS1: ${{ secrets.ANDROID_RELEASE_KEYS }}"
+          echo "ANDROID_RELEASE_KEYS2: $ANDROID_RELEASE_KEYS"
+
+
