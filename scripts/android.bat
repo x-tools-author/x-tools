@@ -32,9 +32,9 @@ xcopy build\armeabi_v7a\libxTools_armeabi-v7a.so build\armeabi_v7a\libs\libxTool
 
 :: Generate APK
 set QT_ANDROID_KEYSTORE_PATH=res/android/android_release.keystore
-set QT_ANDROID_KEYSTORE_ALIAS=xtools
-set QT_ANDROID_KEYSTORE_STORE_PASS=xtools
-set QT_ANDROID_KEYSTORE_KEY_PASS=xtools
+set QT_ANDROID_KEYSTORE_ALIAS=123
+set QT_ANDROID_KEYSTORE_STORE_PASS=123
+set QT_ANDROID_KEYSTORE_KEY_PASS=123
 
 echo "Generating APK..."
 D:\512\Qt\Qt\6.5.3\mingw_64\bin\androiddeployqt.exe ^

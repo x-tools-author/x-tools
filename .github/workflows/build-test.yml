@@ -5,10 +5,7 @@ on:
      - master
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  QT_ANDROID_KEYSTORE_PATH: ${{ github.workspace }}\res\android\android_release.keystore
-  QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
-  QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
-  QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
+
 jobs:
   Windows:
     name: Windows Test
@@ -17,18 +14,12 @@ jobs:
       - name: echo
         shell: cmd
         run: |
-          echo "QT_ANDROID_KEYSTORE_PATH: ${{ env.QT_ANDROID_KEYSTORE_PATH }}"
-          echo "QT_ANDROID_KEYSTORE_ALIAS: ${{ env.QT_ANDROID_KEYSTORE_ALIAS }}"
-          echo "QT_ANDROID_KEYSTORE_STORE_PASS: ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}"
-          echo "QT_ANDROID_KEYSTORE_KEY_PASS: ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }}"
+          echo "hello world"
   Linux:
     name: Ubuntu Test
     runs-on: ubuntu-latest
     steps:
       - name: echo
         run: |
-          echo "QT_ANDROID_KEYSTORE_PATH: ${{ env.QT_ANDROID_KEYSTORE_PATH }}"
-          echo "QT_ANDROID_KEYSTORE_ALIAS: ${{ env.QT_ANDROID_KEYSTORE_ALIAS }}"
-          echo "QT_ANDROID_KEYSTORE_STORE_PASS: ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}"
-          echo "QT_ANDROID_KEYSTORE_KEY_PASS: ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }}"
+          echo "hello world"
 

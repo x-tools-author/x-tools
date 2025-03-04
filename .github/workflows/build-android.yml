@@ -43,7 +43,7 @@ jobs:
         shell: cmd
         run: |
           git fetch --tags
-          set JAVA_HOME=%JAVA_HOME_11_X64%
+          set JAVA_HOME=%JAVA_HOME_17_X64%
           ${{ github.workspace }}\Qt\${{ matrix.version }}\android_armv7\bin\qt-cmake.bat ^
           -G "MinGW Makefiles" ^
           -S . ^
@@ -61,7 +61,7 @@ jobs:
       - name: Build for android
         shell: cmd
         run: |
-          set JAVA_HOME=%JAVA_HOME_11_X64%
+          set JAVA_HOME=%JAVA_HOME_17_X64%
           echo %JAVA_HOME%
           cmake --build build\armeabi_v7a --target xTools --config Release
       - name: Copy File for Deploy
@@ -79,7 +79,7 @@ jobs:
           QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
           QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
         run: |
-          set JAVA_HOME=%JAVA_HOME_11_X64%
+          set JAVA_HOME=%JAVA_HOME_17_X64%
           echo %JAVA_HOME%
           ${{ github.workspace }}\Qt\${{ matrix.version }}\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
