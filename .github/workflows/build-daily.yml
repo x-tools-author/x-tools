@@ -62,8 +62,8 @@ jobs:
         cmake --build . --target xTools
         cmake --build . --target xTools_zip
     - name: Upload Release Asset for Windnows
+      shell: cmd
       run: |
-        shell: cmd
         for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f"
   release-for-linux:
     runs-on: ubuntu-20.04
@@ -97,8 +97,11 @@ jobs:
         find bin/Linux/Release/xTools-deb -name "*.deb" -exec gh release upload continuous {} \;
         find bin/Linux/Release/xTools-appimage -name "*.AppImage" -exec gh release upload continuous {} \;
   release-for-macos:
-    runs-on: macos-14
+    runs-on: ${{ matrix.os }}
     needs: update-release
+    strategy:
+      matrix:
+        os: [macos-13 macos-14]
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -130,8 +133,6 @@ jobs:
     - name: Upload Release Asset for macOS
       run: |
         ls bin/Darwin/Release/xTools
-        # rename all dmg with lower case
-        find bin/Darwin/Release/xTools -name "*.dmg" -exec sh -c 'mv "$1" "${1%/*}/$(echo "${1##*/}" | tr "[:upper:]" "[:lower:]")' _ {} \;
         find bin/Darwin/Release/xTools -name "*.dmg" -exec gh release upload continuous {} \;
   release-for-android:
     runs-on: windows-2022

@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14]
+        os: [macos-13 macos-14]
         version: [6.8.*]
     steps:
       - name: checkout
@@ -45,6 +45,5 @@ jobs:
           cmake --build . --target xTools_dmg
           ls ../bin/Darwin/Release/xTools
           # rename all dmg with lower case
-          find ../bin/Darwin/Release/xTools -name "*.dmg" -exec sh -c 'mv "$1" "${1%/*}/$(echo "${1##*/}" | tr "[:upper:]" "[:lower:]")' _ {} \;
           find ../bin/Darwin/Release/xTools -name "*.dmg" -exec echo "dmg file is: {}" \;
 

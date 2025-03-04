@@ -30,5 +30,5 @@ jobs:
           mkdir build
           cd build
           call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
           nmake
