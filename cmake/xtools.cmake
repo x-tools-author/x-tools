@@ -117,28 +117,28 @@ function(x_tools_deploy_qt_for_windows target)
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140.dll"
-              $<TARGET_FILE_DIR:${target}>
-      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/VCRUNTIME140_1.dll"
-              $<TARGET_FILE_DIR:${target}>
-      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140.dll"
-              $<TARGET_FILE_DIR:${target}>
-      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_1.dll"
-              $<TARGET_FILE_DIR:${target}>
-      COMMAND -${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/MSVCP140_2.dll"
-              $<TARGET_FILE_DIR:${target}>)
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/vcruntime140.dll"
+              $<TARGET_FILE_DIR:${target}> "||" ${CMAKE_COMMAND} -E true
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/vcruntime140_1.dll"
+              $<TARGET_FILE_DIR:${target}> "||" ${CMAKE_COMMAND} -E true
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/msvcp140.dll"
+              $<TARGET_FILE_DIR:${target}> "||" ${CMAKE_COMMAND} -E true
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/msvcp140_1.dll"
+              $<TARGET_FILE_DIR:${target}> "||" ${CMAKE_COMMAND} -E true
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/msvcp140_2.dll"
+              $<TARGET_FILE_DIR:${target}> "||" ${CMAKE_COMMAND} -E true)
     if(EXISTS "${QT_DIR}/../../../bin/libcrypto-3-x64.dll")
       add_custom_command(
         TARGET ${target}
         POST_BUILD
-        COMMAND -${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libcrypto-3-x64.dll"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libcrypto-3-x64.dll"
                 $<TARGET_FILE_DIR:${target}>)
     endif()
     if(EXISTS "${QT_DIR}/../../../bin/libssl-3-x64.dll")
       add_custom_command(
         TARGET ${target}
         POST_BUILD
-        COMMAND -${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libssl-3-x64.dll"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${QT_DIR}/../../../bin/libssl-3-x64.dll"
                 $<TARGET_FILE_DIR:${target}>)
     endif()
   endif()
