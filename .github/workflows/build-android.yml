@@ -13,9 +13,10 @@ jobs:
     name: Build for Android
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-2022]
-        version: [6.5.3]
+        version: [6.5.3 6.8.2]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -78,5 +79,5 @@ jobs:
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-34 ^
-          --sign ${{ github.workspace }}\res\android\android_release.keystore  ${{ env.ANDROID_KEY }}  --storepass  ${{ env.ANDROID_KEY }}  --keypass  ${{ env.ANDROID_KEY }}  ^
+          --sign ${{ github.workspace }}\res\android\android_release.keystore ${{ secrets.ANDROID_RELEASE_KEYS }} --storepass  ${{ secrets.ANDROID_RELEASE_KEYS }}  --keypass ${{ secrets.ANDROID_RELEASE_KEYS }}  ^
           --jdk %JAVA_HOME% --gradle --release
