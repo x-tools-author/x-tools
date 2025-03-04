@@ -4,26 +4,30 @@ on:
    branches:
      - master
 env:
-  ANDROID_RELEASE_KEYS: ${{secrets.ANDROID_RELEASE_KEYS}}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   Windows:
     name: Windows Test
     runs-on: windows-latest
+    env:
+      QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+      QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
+      QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
     steps:
       - name: echo
         shell: cmd
         run: |
-          echo "ANDROID_RELEASE_KEYS1: ${{ secrets.ANDROID_RELEASE_KEYS }}"
-          echo "ANDROID_RELEASE_KEYS2: %ANDROID_RELEASE_KEYS%"
-          echo "ANDROID_RELEASE_KEYS3: ${{ vars.ANDROID_RELEASE_KEYS }}"
+          echo "ANDROID_RELEASE_KEYS1: ${{ env.QT_ANDROID_KEYSTORE_ALIAS }}"
+          echo "ANDROID_RELEASE_KEYS2: ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}"
+          echo "ANDROID_RELEASE_KEYS3: ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }}"
   Linux:
     name: Ubuntu Test
     runs-on: ubuntu-latest
     steps:
       - name: echo
         run: |
-          echo "ANDROID_RELEASE_KEYS1: ${{ secrets.ANDROID_RELEASE_KEYS }}"
-          echo "ANDROID_RELEASE_KEYS2: $ANDROID_RELEASE_KEYS"
-          echo "ANDROID_RELEASE_KEYS3: ${{ vars.ANDROID_RELEASE_KEYS }}"
+          echo "ANDROID_RELEASE_KEYS1: ${{ env.QT_ANDROID_KEYSTORE_ALIAS }}"
+          echo "ANDROID_RELEASE_KEYS2: ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}"
+          echo "ANDROID_RELEASE_KEYS3: ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }}"
 
 
