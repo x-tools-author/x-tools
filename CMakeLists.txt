@@ -50,6 +50,12 @@ if(WIN32 AND MSVC)
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# Get all source files of the project
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
+file(GLOB_RECURSE X_TOOLS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
+list(APPEND X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
+
+# --------------------------------------------------------------------------------------------------
 # CMake module
 include(${CMAKE_SOURCE_DIR}/cmake/git.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
@@ -86,7 +92,6 @@ message(STATUS "[xTools]Asset name: ${X_ASSET_NAME}")
 set(X_TOOLS_DEPLOY_LIBS_DIR
     ${CMAKE_CURRENT_SOURCE_DIR}/libs/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
 message(STATUS "[xTools]Deploy libraries directory: ${X_TOOLS_DEPLOY_LIBS_DIR}")
-
 message(STATUS "------------------------------------------------------------")
 
 # --------------------------------------------------------------------------------------------------
@@ -94,49 +99,6 @@ message(STATUS "------------------------------------------------------------")
 option(X_TOOLS_MO_YU "The magic option..." OFF)
 if(X_TOOLS_MO_YU)
   add_compile_definitions(X_TOOLS_MO_YU)
-endif()
-
-# --------------------------------------------------------------------------------------------------
-# Get all source files of the project
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
-file(GLOB_RECURSE X_TOOLS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
-list(APPEND X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
-
-# --------------------------------------------------------------------------------------------------
-# QSS module
-if(NOT X_TOOLS_ENABLE_QSS)
-  set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/qss)
-  file(GLOB_RECURSE QSS_MGR_SOURCE "${TMP_DIR}/*.*")
-  foreach(file ${QSS_MGR_SOURCE})
-    list(REMOVE_ITEM X_TOOLS_SOURCE ${file})
-  endforeach(file ${QSS_MGR_SOURCE})
-endif()
-
-# HID
-option(X_TOOLS_ENABLE_HID "Enable HID module" OFF)
-if(X_TOOLS_ENABLE_HID)
-  add_compile_definitions(X_TOOLS_ENABLE_HID)
-  set(HIDAPI_WITH_LIBUSB FALSE)
-  x_tools_add_third_party("hidapi-hidapi-0.14.0")
-endif()
-if(NOT X_TOOLS_ENABLE_HID)
-  message(STATUS "HID module is disable, HID files will be removed.")
-  set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/hid.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/hid.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/hidui.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/hidui.ui)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/device/hidui.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/hidtransfer.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/hidtransfer.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/hidtransfermodel.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/hidtransfermodel.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/hidtransferui.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/hidtransferui.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/hidstyledItemdelegate.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/hidstyledItemdelegate.cpp)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/hidtransferui.h)
-  list(REMOVE_ITEM X_TOOLS_SOURCE ${TMP_DIR}/page/transfer/hidtransferui.cpp)
 endif()
 
 # --------------------------------------------------------------------------------------------------
@@ -358,4 +320,10 @@ endif()
 if(APPLE)
   include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
   x_tools_generate_dmg(xTools ${X_TOOLS_LATEST_GIT_TAG})
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# ???
+if(QT_VERSION_MAJOR EQUAL 6)
+  qt_finalize_executable(xTools)
 endif()

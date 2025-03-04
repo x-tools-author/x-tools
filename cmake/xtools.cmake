@@ -3,7 +3,7 @@
 function(x_tools_add_executable target)
   # ARGN: all unnamed arguments
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(${target} ${ARGN} MANUAL_FINALIZATION)
+    qt_add_executable(${target} MANUAL_FINALIZATION ${ARGN})
   else()
     if(ANDROID)
       add_library(${target} SHARED ${ARGN})

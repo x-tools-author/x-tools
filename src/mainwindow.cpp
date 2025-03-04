@@ -38,8 +38,11 @@
 #include "application.h"
 #include "common/xtools.h"
 #include "page/page.h"
-#include "qss/qssmgr.h"
 #include "tools/assistantfactory.h"
+
+#ifdef X_TOOLS_ENABLE_QSS
+#include "qss/qssmgr.h"
+#endif
 
 #ifdef Q_OS_WIN
 #include "systemtrayicon.h"
