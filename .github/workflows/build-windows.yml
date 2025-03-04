@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-2022
     strategy:
       matrix:
-        version: [6.8.*]
+        version: [6.8.2]
     steps:
       - name: Pull code
         uses: actions/checkout@v4
