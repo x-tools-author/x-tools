@@ -30,6 +30,7 @@ message(STATUS "[xTools]Build type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "[xTools]CMake version: ${CMAKE_VERSION}")
 message(STATUS "[xTools]CMake generator: ${CMAKE_GENERATOR}")
 message(STATUS "[xTools]CMake system: ${CMAKE_SYSTEM}")
+message(STATUS "[xTools]CMake system processor: ${CMAKE_SYSTEM_PROCESSOR}")
 
 set(X_TOOLS_DEPLOY_LIBS_DIR
     ${CMAKE_CURRENT_SOURCE_DIR}/libs/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
