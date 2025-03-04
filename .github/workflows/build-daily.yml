@@ -10,7 +10,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  QT_VERSION: 6.8.*
+  QT_VERSION: 6.8.2
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   update-tag:
@@ -75,6 +75,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
+        aqtversion: '==3.1.*'
         version: ${{env.QT_VERSION}}
         target: 'desktop'
         arch: 'linux_gcc_64'
