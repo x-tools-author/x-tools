@@ -16,7 +16,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
-          version: '6.8.*'
+          version: '6.8.2'
           host: 'windows'
           target: 'android'
           arch: 'android_armv7'
@@ -30,7 +30,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
-          version: '6.8.*'
+          version: '6.8.2'
           host: 'windows'
           target: 'android'
           arch: 'android_armv7'
