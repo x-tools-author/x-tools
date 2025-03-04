@@ -1,15 +1,8 @@
 # --------------------------------------------------------------------------------------------------
 # Add executable. It can be used by Qt5 and Qt6.
 function(x_tools_add_executable target)
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${target}")
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${target} MANUAL_FINALIZATION)
-    if(${target} STREQUAL "xTools")
-      set_property(
-        TARGET ${target}
-        APPEND
-        PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
-    endif()
   else()
     if(ANDROID)
       add_library(${target} SHARED ${ARGS})
@@ -18,27 +11,13 @@ function(x_tools_add_executable target)
     endif()
   endif()
 
-  set(INDEX 0)
-  while(INDEX LESS ${ARGC})
-    math(EXPR INDEX "${INDEX} + 1")
-    target_sources(${target} PRIVATE ${ARGV${INDEX}})
-  endwhile()
-
-  if(ANDROID)
-    add_custom_command(
-      TARGET ${target}
-      POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_FILE:${target}>"
-              "${CMAKE_BINARY_DIR}/android-build/libs/${ANDROID_ABI}/$<TARGET_FILE_NAME:${target}>")
-  endif()
-
-  set_target_properties(
-    ${target}
-    PROPERTIES # MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appuntitled3
-               MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-               MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-               MACOSX_BUNDLE TRUE
-               WIN32_EXECUTABLE TRUE)
+  set(macos_version ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
+  set(android_dir ${CMAKE_CURRENT_SOURCE_DIR}/res/android/6.8)
+  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE TRUE WIN32_EXECUTABLE TRUE)
+  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER xtools.xtools)
+  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION})
+  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_SHORT_VERSION_STRING ${macos_version})
+  set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR ${android_dir})
 endfunction()
 
 # --------------------------------------------------------------------------------------------------

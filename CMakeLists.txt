@@ -36,6 +36,11 @@ list(APPEND X_TOOLS_QT_COMPONENTS LinguistTools)
 find_package(QT NAMES Qt5 Qt6 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 
+# Qt 6.8.0 or later is recommended, or output a warning message
+if(QT_VERSION VERSION_LESS "6.8.0")
+  message(WARNING "Qt 6.8.0 or later is recommended")
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # Don't change X_TOOLS_STATIC_VC_RUNTIME_LIBRARY option unless you know what you are doing.
 # QT_TARGET_TYPE is SHARED_LIBRARY or STATIC_LIBRARY
@@ -272,7 +277,7 @@ if(CMAKE_HOST_APPLE)
   set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 endif()
 
-qt_add_executable(xTools ${xTools_ICON} ${X_TOOLS_SOURCE} xTools.rc xTools.qrc)
+x_tools_add_executable(xTools ${xTools_ICON} ${X_TOOLS_SOURCE} xTools.rc xTools.qrc)
 x_tools_generate_translations(xTools)
 x_tools_deploy_qt(xTools)
 x_tools_deploy_qss(xTools)
@@ -281,14 +286,6 @@ x_tools_install_qxlsx(xTools)
 x_tools_install_qmdns(xTools)
 x_tools_install_qrencode(xTools)
 x_tools_install_hidapi(xTools)
-
-set(macos_version ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
-set(android_dir ${CMAKE_CURRENT_SOURCE_DIR}/android)
-set_target_properties(xTools PROPERTIES MACOSX_BUNDLE TRUE WIN32_EXECUTABLE TRUE)
-set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER xtools.xtools)
-set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION})
-set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_SHORT_VERSION_STRING ${macos_version})
-set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR ${android_dir})
 
 # --------------------------------------------------------------------------------------------------
 # Link libraries
