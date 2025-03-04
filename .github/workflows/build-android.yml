@@ -66,14 +66,7 @@ jobs:
         run: |
           set JAVA_HOME=%JAVA_HOME_17_X64%
           echo %JAVA_HOME%
-          cmake --build build\armeabi_v7a --target xTools --config Release
-      - name: Copy File for Deploy
-        shell: cmd
-        run: |
-          mkdir  build\armeabi_v7a\android-build\libs\armeabi-v7a
-          dir build\armeabi_v7a
-          copy .\build\armeabi_v7a\libxTools_armeabi-v7a.so .\build\armeabi_v7a\android-build\libs\armeabi-v7a /y
-        continue-on-error: true
+          cmake --build build\armeabi_v7a --target all --config Release
       - name: Deploy for Android
         shell: cmd
         env:
@@ -88,6 +81,6 @@ jobs:
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-35 ^
+          --sign ${{ github.workspace }}\res\android\android_release.keystore  ${{ env.QT_ANDROID_KEYSTORE_ALIAS }} --storepass  ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}  --keypass ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }} ^
           --jdk %JAVA_HOME% --gradle --release
 
-        # --sign ${{ github.workspace }}\res\android\android_release.keystore %secrets.ANDROID_RELEASE_KEYS% --storepass  %secrets.ANDROID_RELEASE_KEYS%  --keypass %secrets.ANDROID_RELEASE_KEYS%  ^
