@@ -18,7 +18,7 @@
 #include <QStandardItemModel>
 
 #include "abstractmodelio.h"
-#include "device/utilities/textitemeditor.h"
+#include "page/utilities/textitemeditor.h"
 
 AbstractModelUi::AbstractModelUi(QWidget *parent)
     : AbstractIOUi{parent}
