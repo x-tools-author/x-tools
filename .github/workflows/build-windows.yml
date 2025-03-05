@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-2022
     strategy:
       matrix:
-        version: [6.8.2]
+        version: [6.2.* 6.5.* 6.8.*]
     steps:
       - name: Pull code
         uses: actions/checkout@v4
@@ -33,4 +33,3 @@ jobs:
           call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
           cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
           cmake --build . --target all --config Release
-  
