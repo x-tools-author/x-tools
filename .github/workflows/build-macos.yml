@@ -12,9 +12,10 @@ jobs:
     name: Build
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-14]
-        version: [6.8.*]
+        version: [6.2.4, 6.5.3, 6.8.2]
     steps:
       - name: checkout
         uses: actions/checkout@v4

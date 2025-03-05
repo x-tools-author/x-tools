@@ -7,6 +7,11 @@ function(x_tools_generate_dmg target version)
     return()
   endif()
 
+  # Just for Qt 6.5 or later
+  if(QT_VERSION VERSION_LESS "6.5.0")
+    return()
+  endif()
+
   add_custom_target(
     ${target}_dmg
     COMMAND ${MACDEPLOYQT_EXECUTABLE} "${target}.app" "-dmg"
