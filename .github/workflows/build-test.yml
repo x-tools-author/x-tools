@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         version: [5.9.9, 5.12.12, 5.15.2]
-        exclude:
+        include:
           - version: 5.9.9
             arch: win64_msvc2017_64
           - version: 5.12.12
