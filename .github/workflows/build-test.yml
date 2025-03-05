@@ -24,6 +24,7 @@ jobs:
         with:
           aqtversion: '==3.1.*'
           version: ${{ matrix.version }}
+          host: 'linux_arm64'
           target: 'desktop'
           arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
