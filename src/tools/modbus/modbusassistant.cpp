@@ -32,8 +32,13 @@
 #include <QTextBrowser>
 #include <QtEndian>
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
+#else
+#include <QModbusRtuSerialMaster>
+#include <QModbusRtuSerialSlave>
+#endif
 
 #include "application.h"
 #include "common/xtools.h"
@@ -423,7 +428,7 @@ void ModbusAssistant::initSignals()
 void ModbusAssistant::initSignalsDevice()
 {
     connect(ui->comboBoxDeviceList,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &ModbusAssistant::onDeviceTypeChanged);
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &ModbusAssistant::onOpenClicked);
@@ -449,7 +454,7 @@ void ModbusAssistant::initSignalsSerialPort()
             this,
             &ModbusAssistant::onPortNameChanged);
     connect(ui->comboBoxParity,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &ModbusAssistant::onParityChanged);
     connect(ui->comboBoxBaudRate,
@@ -457,11 +462,11 @@ void ModbusAssistant::initSignalsSerialPort()
             this,
             &ModbusAssistant::onBaudRateChanged);
     connect(ui->comboBoxDataBits,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &ModbusAssistant::onDataBitsChanged);
     connect(ui->comboBoxStopBits,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &ModbusAssistant::onStopBistChanged);
 }
@@ -528,7 +533,7 @@ void ModbusAssistant::initSignalsInput()
 void ModbusAssistant::initSignalsInputControl()
 {
     connect(ui->comboBoxFormat,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &ModbusAssistant::onInputFormatChanged);
 }
@@ -769,12 +774,11 @@ void ModbusAssistant::onWriteClicked()
     int start_address = startAddress();
     int spinBoxServerAddress = ui->spinBoxDeviceAddress->value();
     quint8 function_code = getClientFunctionCode();
-    QList<quint16> values = getClientRegisterValue();
     ModbusFactory *factory = ModbusFactory::Instance();
     QModbusReply *reply = factory->sendWriteRequest(m_modbusDevice,
                                                     registerType,
                                                     start_address,
-                                                    values,
+                                                    getClientRegisterValue(),
                                                     spinBoxServerAddress);
     if (ModbusFactory::Instance()->isValidModbusReply(reply)) {
         connect(reply, &QModbusReply::finished, this, [=]() {
@@ -1020,8 +1024,12 @@ void ModbusAssistant::updateClientTableView(int currentFormat, int targetFormat)
 
 void ModbusAssistant::updateClientTableViewData(int currentFormat, int targetFormat)
 {
-    int row = m_clientRegisterModel->rowCount();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     QList<quint16> values;
+#else
+    QVector<quint16> values;
+#endif
+    int row = m_clientRegisterModel->rowCount();
     for (int i = 0; i < row; i++) {
         auto item = m_clientRegisterModel->item(i, 1);
         if (!item) {
@@ -1039,7 +1047,11 @@ void ModbusAssistant::updateClientTableViewData(int currentFormat, int targetFor
     updateClientTableViewData(values);
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 void ModbusAssistant::updateClientTableViewData(const QList<quint16> &values)
+#else
+void ModbusAssistant::updateClientTableViewData(const QVector<quint16> &values)
+#endif
 {
     for (int row = 0; row < values.count(); row++) {
         auto *item = m_clientRegisterModel->item(row, 1);
@@ -1212,9 +1224,17 @@ quint8 ModbusAssistant::getClientFunctionCode()
     return 0;
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 QList<quint16> ModbusAssistant::getClientRegisterValue()
+#else
+QVector<quint16> ModbusAssistant::getClientRegisterValue()
+#endif
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     QList<quint16> values;
+#else
+    QVector<quint16> values;
+#endif
     for (int row = 0; row < m_clientRegisterModel->rowCount(); row++) {
         QStandardItem *item = m_clientRegisterModel->item(row, 1);
         if (item) {

@@ -84,14 +84,17 @@ message(STATUS "[xTools]CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
 message(STATUS "[xTools]CMAKE_HOST_SYSTEM: ${CMAKE_HOST_SYSTEM}")
 message(STATUS "[xTools]CMAKE_HOST_SYSTEM_NAME: ${CMAKE_HOST_SYSTEM_NAME}")
 message(STATUS "[xTools]CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
+message(STATUS "[xTools]CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "[xTools]CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 
 set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_TOOLS_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
 string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
 message(STATUS "[xTools]Asset name: ${X_ASSET_NAME}")
 
-set(X_TOOLS_DEPLOY_LIBS_DIR
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
-message(STATUS "[xTools]Deploy libraries directory: ${X_TOOLS_DEPLOY_LIBS_DIR}")
+set(libs_dir1 ${CMAKE_CURRENT_SOURCE_DIR}/libs)
+set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/${QT_VERSION}/${CMAKE_CXX_COMPILER_ID})
+set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
+message(STATUS "[xTools]Deploy libraries directory: ${X_DEPLOY_LIBS_DIR}")
 message(STATUS "------------------------------------------------------------")
 
 # --------------------------------------------------------------------------------------------------

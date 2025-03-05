@@ -137,7 +137,10 @@ bool Preset::insertRows(int row, int count, const QModelIndex &parent)
 bool Preset::removeRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent)
-    m_items.remove(row, count);
+
+    for (int i = 0; i < count; i++) {
+        m_items.removeAt(row);
+    }
 
     return true;
 }

@@ -15,6 +15,7 @@
 #include <QMetaEnum>
 
 #include "common/crc.h"
+#include "common/xtools.h"
 
 CrcAssistant::CrcAssistant(QWidget* parent)
     : QWidget(parent)
@@ -60,7 +61,7 @@ CrcAssistant::CrcAssistant(QWidget* parent)
 
     initParameterModel();
     connect(m_parameterComboBox,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &CrcAssistant::changedParameterModel);
     connect(m_calculatedBt, &QPushButton::clicked, this, &CrcAssistant::calculate);

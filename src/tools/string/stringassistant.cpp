@@ -18,7 +18,7 @@ StringAssistant::StringAssistant(QWidget* parent)
     ui->setupUi(this);
     connect(ui->textEdit, &QTextEdit::textChanged, this, &StringAssistant::updateOutputString);
     connect(ui->inputFormatComboBox,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &StringAssistant::updateOutputString);
     connect(ui->createPushButton, &QPushButton::clicked, this, &StringAssistant::updateOutputString);

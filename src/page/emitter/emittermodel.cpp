@@ -115,7 +115,9 @@ bool EmitterModel::removeRows(int row, int count, const QModelIndex &parent)
     }
 
     beginRemoveRows(parent, row, row + count - 1);
-    m_items.remove(row, count);
+    for (int i = 0; i < count; i++) {
+        m_items.removeAt(row);
+    }
     endRemoveRows();
     return true;
 }

@@ -107,9 +107,15 @@ bool AbstractTransferModel::isEnableRestartingColumn(int column) const
     return false;
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 void AbstractTransferModel::onDataChanged(const QModelIndex &topLeft,
                                           const QModelIndex &bottomRight,
                                           const QList<int> &roles)
+#else
+void AbstractTransferModel::onDataChanged(const QModelIndex &topLeft,
+                                          const QModelIndex &bottomRight,
+                                          const QVector<int> &roles)
+#endif
 {
     if (topLeft != bottomRight) {
         return;

@@ -28,6 +28,18 @@
 #define xEnableColorScheme 0
 #endif
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+#define xComboBoxActivated &QComboBox::activated
+#else
+#define xComboBoxActivated qOverload<int>(&QComboBox::activated)
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 1, 0)
+#define xDefaultStyleName Application::style()->name()
+#else
+#define xDefaultStyleName QString("fusion")
+#endif
+
 /**************************************************************************************************/
 enum class DeviceType {
     SerialPort,

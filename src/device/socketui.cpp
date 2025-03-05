@@ -24,7 +24,7 @@ SocketUi::SocketUi(DeviceType type, QWidget *parent)
     setupWebSocketDataChannel(ui->comboBoxChannel);
 
     setupClients(QStringList());
-    connect(ui->comboBoxWriteTo, &QComboBox::activated, this, [this]() {
+    connect(ui->comboBoxWriteTo, xComboBoxActivated, this, [this]() {
         QString const flag = ui->comboBoxWriteTo->currentData().toString();
         emit currentClientChanged(flag);
     });
@@ -32,7 +32,7 @@ SocketUi::SocketUi(DeviceType type, QWidget *parent)
             &QToolButton::clicked,
             this,
             &SocketUi::invokeDisconnectAll);
-    connect(ui->comboBoxChannel, &QComboBox::activated, this, [this]() {
+    connect(ui->comboBoxChannel, xComboBoxActivated, this, [this]() {
         if (this->m_socket) {
             this->m_socket->setDataChannel(ui->comboBoxChannel->currentIndex());
         }

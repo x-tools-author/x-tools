@@ -8,8 +8,10 @@
  **************************************************************************************************/
 #include "charts.h"
 
+#include <QDebug>
 #include <QPointF>
 #include <QTimer>
+#include <QtMath>
 
 Charts::Charts(QObject *parent)
     : AbstractIO(parent)

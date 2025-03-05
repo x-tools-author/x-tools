@@ -137,7 +137,7 @@ void Application::setupAppStyle()
         return;
     }
 
-    QString defaultStyle = Application::style()->name();
+    QString defaultStyle = xDefaultStyleName;
     QString style = settings->value(SettingsKey().style, defaultStyle).toString();
     if (!QStyleFactory::keys().contains(style)) {
         qWarning() << "The style is not supported:" << style;

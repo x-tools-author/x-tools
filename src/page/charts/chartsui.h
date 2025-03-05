@@ -15,6 +15,12 @@
 
 #include "page/common/abstractioui.h"
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
+using QtCharts::QChart;
+using QtCharts::QValueAxis;
+using QtCharts::QXYSeries;
+#endif
+
 namespace Ui {
 class ChartsUi;
 }

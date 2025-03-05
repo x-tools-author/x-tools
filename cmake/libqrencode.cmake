@@ -16,7 +16,7 @@ else()
   set(x_qrencode "qrencoded")
 endif()
 
-set(qrencode_dst_dir ${X_TOOLS_DEPLOY_LIBS_DIR}/${qrencode_package_name})
+set(qrencode_dst_dir ${X_DEPLOY_LIBS_DIR}/${qrencode_package_name})
 if(EXISTS ${qrencode_dst_dir})
   set(CMAKE_PREFIX_PATH ${qrencode_dst_dir} ${CMAKE_PREFIX_PATH})
   link_directories(${qrencode_dst_dir}/lib)

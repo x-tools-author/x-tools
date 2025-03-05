@@ -116,7 +116,11 @@ private:
     void updateUiState(bool connected);
     void updateClientTableView(int currentFormat, int targetFormat);
     void updateClientTableViewData(int currentFormat, int targetFormat);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     void updateClientTableViewData(const QList<quint16> &values);
+#else
+    void updateClientTableViewData(const QVector<quint16> &values);
+#endif
     void updateClientTableViewAddress(QTableView *view, int startAddress);
     void updateClientReadWriteButtonState();
     void updateClientParameters();
@@ -125,7 +129,11 @@ private:
     void updateServerRegistersViews(int currentFormat, int targetFormat);
 
     quint8 getClientFunctionCode();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     QList<quint16> getClientRegisterValue();
+#else
+    QVector<quint16> getClientRegisterValue();
+#endif
     QByteArray getClientPdu();
     QTableView *getTableView(QModbusDataUnit::RegisterType table);
     QList<quint16> getTableValues(QTableView *tableView, int row, int count);

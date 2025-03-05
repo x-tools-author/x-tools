@@ -60,11 +60,19 @@ public:
     QModbusDevice *createTcpDevice(int deviceType, QString address, int port);
     void setClientDeviceParameters(QModbusDevice *client, int timeout, int number_of_retries);
     void setServerDeviceParameters(QModbusDevice *server, int address, bool isBusy, bool listenOnly);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     QModbusReply *sendWriteRequest(QModbusDevice *modbus_device,
                                    int register_type,
                                    int start_address,
                                    QList<quint16> values,
                                    int server_address);
+#else
+    QModbusReply *sendWriteRequest(QModbusDevice *modbus_device,
+                                   int register_type,
+                                   int start_address,
+                                   QVector<quint16> values,
+                                   int server_address);
+#endif
     QModbusReply *sendRawRequest(QModbusDevice *modbus_device,
                                  int server_address,
                                  int function_code,

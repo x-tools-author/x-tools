@@ -44,7 +44,13 @@ protected:
 protected:
     virtual Device *createTransfer() = 0;
     virtual bool isEnableRestartingColumn(int column) const;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     virtual void onDataChanged(const QModelIndex &topLeft,
                                const QModelIndex &bottomRight,
                                const QList<int> &roles = QList<int>());
+#else
+    virtual void onDataChanged(const QModelIndex &topLeft,
+                               const QModelIndex &bottomRight,
+                               const QVector<int> &roles = QVector<int>());
+#endif
 };

@@ -10,6 +10,7 @@
 
 #include <QPointF>
 #include <QTimer>
+#include <QtMath>
 
 #include "common/xtools.h"
 

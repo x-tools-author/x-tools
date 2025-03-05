@@ -27,7 +27,13 @@ public:
 protected:
     virtual Socket *createSocket() = 0;
     Device *createTransfer() override;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     void onDataChanged(const QModelIndex &topLeft,
                        const QModelIndex &bottomRight,
                        const QList<int> &roles = QList<int>()) override;
+#else
+    void onDataChanged(const QModelIndex &topLeft,
+                       const QModelIndex &bottomRight,
+                       const QVector<int> &roles = QVector<int>()) override;
+#endif
 };

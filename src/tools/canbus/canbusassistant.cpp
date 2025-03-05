@@ -80,23 +80,23 @@ void CanBusAssistant::initUiSpecifyConfiguration()
             this,
             &CanBusAssistant::onCustomConfigurationChanged);
     connect(ui->loopbackComboBox,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &CanBusAssistant::onLoopbackIndexChanged);
     connect(ui->receivOwnComboBox,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &CanBusAssistant::onReceiveOwnIndexChanged);
     connect(ui->canFdComboBox,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &CanBusAssistant::onCanFdIndexChanged);
     connect(ui->bitrateComboBox,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &CanBusAssistant::onBitrateChanged);
     connect(ui->dataBitrateComboBox,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &CanBusAssistant::onDataBitrateChanged);
 }
@@ -109,7 +109,7 @@ void CanBusAssistant::initUiCanFrame()
     ui->frameTypeComboBox->addItem(tr("RemoteRequestFrame"), QCanBusFrame::RemoteRequestFrame);
 
     connect(ui->frameTypeComboBox,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &CanBusAssistant::onFrameTypeChanged);
     connect(ui->extendedFormatCheckBox,

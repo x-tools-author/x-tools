@@ -196,9 +196,15 @@ Device *SocketTransferModel::createTransfer()
     return socket;
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 void SocketTransferModel::onDataChanged(const QModelIndex &topLeft,
                                         const QModelIndex &bottomRight,
                                         const QList<int> &roles)
+#else
+void SocketTransferModel::onDataChanged(const QModelIndex &topLeft,
+                                        const QModelIndex &bottomRight,
+                                        const QVector<int> &roles)
+#endif
 {
     AbstractTransferModel::onDataChanged(topLeft, bottomRight, roles);
 

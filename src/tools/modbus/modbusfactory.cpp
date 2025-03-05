@@ -10,10 +10,18 @@
 
 #include <QCoreApplication>
 #include <QDebug>
-#include <QModbusRtuSerialClient>
-#include <QModbusRtuSerialServer>
 #include <QModbusTcpClient>
 #include <QModbusTcpServer>
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <QModbusRtuSerialClient>
+#include <QModbusRtuSerialServer>
+#else
+#include <QModbusRtuSerialMaster>
+#include <QModbusRtuSerialSlave>
+typedef QModbusRtuSerialMaster QModbusRtuSerialClient;
+typedef QModbusRtuSerialSlave QModbusRtuSerialServer;
+#endif
 
 ModbusFactory::ModbusFactory(QObject *parent)
     : QObject(parent)
@@ -283,11 +291,19 @@ void ModbusFactory::setServerDeviceParameters(QModbusDevice *server,
     }
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 QModbusReply *ModbusFactory::sendWriteRequest(QModbusDevice *modbus_device,
                                               int register_type,
                                               int start_address,
                                               QList<quint16> values,
                                               int server_address)
+#else
+QModbusReply *ModbusFactory::sendWriteRequest(QModbusDevice *modbus_device,
+                                              int register_type,
+                                              int start_address,
+                                              QVector<quint16> values,
+                                              int server_address)
+#endif
 {
     if (modbus_device && isClientDevice(modbus_device)) {
         auto cooked_type = QModbusDataUnit::RegisterType(register_type);

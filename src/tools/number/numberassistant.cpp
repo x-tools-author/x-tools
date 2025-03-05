@@ -40,7 +40,7 @@ NumberAssistant::NumberAssistant(QWidget *parent)
     connect(ui->lineEditCookedDec, &QLineEdit::textEdited, this, &NumberAssistant::updateRawData);
     connect(ui->lineEditRawData, &QLineEdit::textEdited, this, &NumberAssistant::updateCookedData);
     connect(ui->comboBoxCookedDataType,
-            static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
             this,
             &NumberAssistant::onCookedDataTypeChanged);
 

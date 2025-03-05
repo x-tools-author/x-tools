@@ -378,12 +378,12 @@ void MainWindow::initHelpMenu()
     helpMenu->addSeparator();
     // clang-format off
     QList<QPair<QString, QString>> ctxs;
-    ctxs.append(qMakePair("glog", "https://github.com/google/glog"));
-    ctxs.append(qMakePair("hidapi", "https://github.com/libusb/hidapi"));
-    ctxs.append(qMakePair("libqrencode", "https://github.com/fukuchi/libqrencode"));
-    ctxs.append(qMakePair("qmdnsengine", "https://github.com/nitroshare/qmdnsengine"));
-    ctxs.append(qMakePair("Qt-Advanced-Stylesheets", "https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets"));
-    ctxs.append(qMakePair("QXlsx", "https://github.com/QtExcel/QXlsx"));
+    ctxs.append(qMakePair(QString("glog"), QString("https://github.com/google/glog")));
+    ctxs.append(qMakePair(QString("hidapi"), QString("https://github.com/libusb/hidapi")));
+    ctxs.append(qMakePair(QString("libqrencode"), QString("https://github.com/fukuchi/libqrencode")));
+    ctxs.append(qMakePair(QString("qmdnsengine"), QString("https://github.com/nitroshare/qmdnsengine")));
+    ctxs.append(qMakePair(QString("Qt-Advanced-Stylesheets"), QString("https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets")));
+    ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
     QMenu* thirdPartyMenu = helpMenu->addMenu(tr("Third Party Open Source"));
     for (auto& ctx : ctxs) {
         thirdPartyMenu->addAction(ctx.first, this, [ctx]() {
@@ -403,7 +403,7 @@ void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
         action->setCheckable(true);
         appStyleActionGroup->addAction(action);
 
-        if (key == xApp->style()->name()) {
+        if (key == xDefaultStyleName) {
             action->setChecked(true);
         }
 

@@ -21,11 +21,11 @@ BleCentralUi::BleCentralUi(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->comboBoxServices,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            QOverload<int>::of(xComboBoxActivated),
             this,
             &BleCentralUi::onServiceIndexChanged);
     connect(ui->comboBoxCharacteristics,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            QOverload<int>::of(xComboBoxActivated),
             this,
             &BleCentralUi::onCharacteristicIndexChanged);
     connect(ui->pushButtonNotify, &QPushButton::clicked, this, &BleCentralUi::onNotifyButtonClicked);

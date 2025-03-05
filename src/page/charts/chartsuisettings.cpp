@@ -22,7 +22,12 @@
 #include <QTimer>
 
 #include "chartsui.h"
+#include "common/xtools.h"
 #include "page/charts/charts.h"
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
+using namespace QtCharts;
+#endif
 
 ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     : QWidget(parent)
@@ -37,7 +42,7 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     cb->addItem(tr("Binary") + "-XY", static_cast<int>(Charts::DataFormat::BinaryXY));
     cb->addItem(tr("Text") + "-XY", static_cast<int>(Charts::DataFormat::TextXY));
 #endif
-    connect(ui->comboBoxDataType, &QComboBox::currentIndexChanged, this, [=]() {
+    connect(ui->comboBoxDataType, xComboBoxActivated, this, [=]() {
         emit this->invokeSetDataType(ui->comboBoxDataType->currentData().toInt());
     });
 
@@ -68,7 +73,13 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     parametersGridLayout->addWidget(new QLabel(tr("Name"), this), 0, 4, Qt::AlignCenter);
 
     const int channelNumber = channelCount();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    while (m_channelContexts.size() < channelNumber) {
+        m_channelContexts.append({nullptr});
+    }
+#else
     m_channelContexts.resize(channelNumber);
+#endif
     for (int i = 0; i < channelNumber; ++i) {
         int row = i + 1;
         QString str = QString::number(row);
@@ -206,7 +217,7 @@ void ChartsUiSettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
     comboBox->addItem(QIcon(":/res/icons/scatter_series.svg"),
                       seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeScatter),
                       QAbstractSeries::SeriesType::SeriesTypeScatter);
-    connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=](int index) {
+    connect(comboBox, QOverload<int>::of(xComboBoxActivated), this, [=](int index) {
         emit invokeSetChannelType(channelIndex, comboBox->itemData(index).toInt());
     });
 }
