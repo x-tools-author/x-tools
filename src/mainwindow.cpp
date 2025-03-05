@@ -731,11 +731,9 @@ void MainWindow::onAboutActionTriggered()
 #ifdef X_TOOLS_GIT_COMMIT
     info += tr("Commit hash") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
 #endif
-#ifdef X_TOOLS_GIT_COMMIT_TIME
-    info += tr("Commit time") + ": " + X_TOOLS_GIT_COMMIT_TIME + "\n\n";
-#endif
+    info += tr("Commit time") + ": " + commitTime + "\n\n";
     info += tr("Build Date") + ": " + dtString + "\n\n";
-    info += QString("Copyright 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
+    info += tr("Copyright") + QString(" 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
     info += tr("All rights reserved.");
     QMessageBox::about(this, tr("About"), info);
 }

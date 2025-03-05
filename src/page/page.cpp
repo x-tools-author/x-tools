@@ -318,6 +318,9 @@ void Page::load(const QVariantMap &parameters)
     m_chartsUi->load(parameters.value(g_keys.chartsItems).toMap());
 #endif
     // clang-format on
+
+    onDeviceTypeChanged();
+    onInputFormatChanged();
 }
 
 QTabWidget *Page::tabWidget()
