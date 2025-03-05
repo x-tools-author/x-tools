@@ -1,6 +1,6 @@
-﻿title: xTools用户手册
-description: xTools用户手册
-theme: minima
+﻿title: xTools Project Documentation
+description: Comprehensive documentation for the xTools project.
+theme: jekyll-theme-cayman
 url: https://x-tools-author.github.io/x-tools
 baseurl: /x-tools/docs
 author:
@@ -9,3 +9,7 @@ author:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-toc
+markdown: kramdown
+highlighter: rouge
