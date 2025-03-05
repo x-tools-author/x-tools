@@ -370,7 +370,7 @@ void Page::initUiCommunication()
     connect(ui->comboBoxCommunicationTypes,
             qOverload<int>(&QComboBox::currentIndexChanged),
             this,
-            &Page::onCommunicationTypeChanged);
+            &Page::onDeviceTypeChanged);
     connect(ui->pushButtonCommunicationOpen,
             &QPushButton::clicked,
             this,
@@ -479,7 +479,7 @@ void Page::initUiInput()
     // Nothing to do
 }
 
-void Page::onCommunicationTypeChanged()
+void Page::onDeviceTypeChanged()
 {
     if (m_ioUi != nullptr) {
         saveControllerParameters();

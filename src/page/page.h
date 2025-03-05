@@ -130,7 +130,7 @@ private:
     void initUiOutput();
     void initUiInput();
 
-    void onCommunicationTypeChanged();
+    void onDeviceTypeChanged();
     void onCycleIntervalChanged();
     void onInputFormatChanged();
     void onOpenButtonClicked();
