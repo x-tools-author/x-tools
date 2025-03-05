@@ -14,7 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [6.2.* 6.5.* 6.8.*]
+        version: [6.2.4 6.5.3 6.8.2]
+        arch: [win64_msvc2019_64 win64_mingw]
     steps:
       - name: Pull code
         uses: actions/checkout@v4
@@ -24,7 +25,7 @@ jobs:
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
           target: desktop
-          arch: win64_msvc2022_64
+          arch: ${{ matrix.arch }}
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: build-msvc
         shell: cmd
