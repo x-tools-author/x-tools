@@ -233,14 +233,16 @@ QSplashScreen *Application::splashScreen()
 
 void Application::showSplashScreenMessage(const QString &msg)
 {
-    if (!qApp) {
+    QSplashScreen *splashScreen = Application::splashScreen();
+    if (!splashScreen) {
         return;
     }
 
-    static QSplashScreen *splashScreen = Application::splashScreen();
-    if (splashScreen) {
-        splashScreen->show();
-        splashScreen->showMessage(msg, Qt::AlignBottom | Qt::AlignLeft, Qt::white);
-        QApplication::processEvents();
-    }
+#if defined(QT_OS_ANDROID)
+    splashScreen->showFullScreen();
+#else
+    splashScreen->show();
+#endif
+    splashScreen->showMessage(msg, Qt::AlignBottom | Qt::AlignLeft, Qt::white);
+    QApplication::processEvents();
 }

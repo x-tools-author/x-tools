@@ -45,7 +45,6 @@ private:
     void initOptionMenu();
     void initMenuLanguage();
     void initViewMenu();
-    void initLinksMenu();
     void initHelpMenu();
 
     void initOptionMenuAppStyleMenu(QMenu* optionMenu);

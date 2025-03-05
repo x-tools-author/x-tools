@@ -523,6 +523,7 @@ void Page::onInputFormatChanged()
     int format = ui->comboBoxInputFormat->currentData().toInt();
     setupTextFormatValidator(ui->lineEditInput, format);
     ui->lineEditInput->clear();
+    ui->lineEditInput->setPlaceholderText(bytes2string(QByteArray("(null)"), format));
 }
 
 void Page::onOpenButtonClicked()
@@ -862,6 +863,10 @@ QByteArray Page::payload() const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     QString text = ui->lineEditInput->text();
+    if (text.isEmpty()) {
+        text = ui->lineEditInput->placeholderText();
+    }
+
     int format = ui->comboBoxInputFormat->currentData().toInt();
     text = cookedEscapeCharacter(text, parameters.escapeCharacter);
     QByteArray payload = string2bytes(text, format);

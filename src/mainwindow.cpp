@@ -134,7 +134,6 @@ void MainWindow::initMenuBar()
     initOptionMenu();
     initViewMenu();
     initMenuLanguage();
-    initLinksMenu();
     initHelpMenu();
 }
 
@@ -295,6 +294,11 @@ void MainWindow::initMenuLanguage()
 
 void MainWindow::initViewMenu()
 {
+    static QActionGroup group(this);
+    if (!group.actions().isEmpty()) {
+        return;
+    }
+
     auto viewMenu = menuBar()->addMenu(tr("&View"));
 
     auto a1x1 = viewMenu->addAction("1x1", this, [=]() { updateGrid(WindowGrid::Grid1x1); });
@@ -307,7 +311,6 @@ void MainWindow::initViewMenu()
     a2x1->setCheckable(true);
     a2x2->setCheckable(true);
 
-    static QActionGroup group(this);
     group.addAction(a1x1);
     group.addAction(a1x2);
     group.addAction(a2x1);
@@ -323,7 +326,8 @@ void MainWindow::initViewMenu()
         a2x2->setChecked(true);
     }
 
-    auto windowGrid = xApp->settings()->value(m_settingsKey.windowGrid).toInt();
+    int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
+    int windowGrid = xApp->settings()->value(m_settingsKey.windowGrid, defaultGrid).toInt();
     if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
         a1x2->setChecked(true);
         a1x2->trigger();
@@ -339,22 +343,13 @@ void MainWindow::initViewMenu()
     }
 }
 
-void MainWindow::initLinksMenu()
-{
-    auto linksMenu = menuBar()->addMenu(tr("Links"));
-    linksMenu->addAction(tr("Get Sources from Github"), this, []() {
-        QDesktopServices::openUrl(QUrl("https://github.com/x-tools-author/x-tools"));
-    });
-    linksMenu->addAction(tr("Get Sources from Gitee"), this, []() {
-        QDesktopServices::openUrl(QUrl("https://gitee.com/x-tools-author/x-tools"));
-    });
-}
-
 void MainWindow::initHelpMenu()
 {
     auto helpMenu = menuBar()->addMenu(tr("&Help"));
     helpMenu->addAction(tr("About Qt"), qApp, &QApplication::aboutQt);
     auto aboutAction = helpMenu->addAction(tr("About") + " " + QApplication::applicationName());
+    connect(aboutAction, &QAction::triggered, this, &MainWindow::onAboutActionTriggered);
+
 #if defined(QT_DEBUG)
     helpMenu->addAction(tr("Screenshot"), this, [=]() {
         QPixmap pix = this->grab();
@@ -363,35 +358,41 @@ void MainWindow::initHelpMenu()
     });
 #endif
 
-    connect(aboutAction, &QAction::triggered, this, &MainWindow::onAboutActionTriggered);
-
-#if defined(Q_OS_WIN) && !defined(X_TOOLS_ENABLE_MODULE_PRIVATE)
+#if defined(Q_OS_WIN)
     helpMenu->addSeparator();
     helpMenu->addAction(QIcon(":/res/icons/buy.svg"), tr("Bug from Store"), this, []() {
         QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
         QDesktopServices::openUrl(url);
     });
 #endif
+
     helpMenu->addSeparator();
     helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
     helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
     helpMenu->addSeparator();
+
+    helpMenu->addAction(tr("Get Sources from Github"), this, []() {
+        QDesktopServices::openUrl(QUrl("https://github.com/x-tools-author/x-tools"));
+    });
+    helpMenu->addAction(tr("Get Sources from Gitee"), this, []() {
+        QDesktopServices::openUrl(QUrl("https://gitee.com/x-tools-author/x-tools"));
+    });
+    helpMenu->addSeparator();
+
     // clang-format off
     QList<QPair<QString, QString>> ctxs;
     ctxs.append(qMakePair(QString("glog"), QString("https://github.com/google/glog")));
+    ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
     ctxs.append(qMakePair(QString("hidapi"), QString("https://github.com/libusb/hidapi")));
     ctxs.append(qMakePair(QString("libqrencode"), QString("https://github.com/fukuchi/libqrencode")));
     ctxs.append(qMakePair(QString("qmdnsengine"), QString("https://github.com/nitroshare/qmdnsengine")));
     ctxs.append(qMakePair(QString("Qt-Advanced-Stylesheets"), QString("https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets")));
-    ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
-    QMenu* thirdPartyMenu = helpMenu->addMenu(tr("Third Party Open Source"));
-    for (auto& ctx : ctxs) {
-        thirdPartyMenu->addAction(ctx.first, this, [ctx]() {
-            QDesktopServices::openUrl(QUrl(ctx.second));
-        });
-    }
-    helpMenu->addMenu(thirdPartyMenu);
     // clang-format on
+
+    QMenu* menu = helpMenu->addMenu(tr("Third Party Open Source"));
+    for (auto& ctx : ctxs) {
+        menu->addAction(ctx.first, this, [ctx]() { QDesktopServices::openUrl(QUrl(ctx.second)); });
+    }
 }
 
 void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
@@ -537,7 +538,7 @@ void MainWindow::updateGrid(WindowGrid grid)
 
 void MainWindow::showHistory()
 {
-    QDialog dialog;
+    QDialog dialog(this);
     dialog.setModal(true);
     dialog.setWindowTitle(tr("Release History"));
     dialog.resize(600, 400);
@@ -558,7 +559,7 @@ void MainWindow::showHistory()
 
 void MainWindow::showQrCode()
 {
-    QDialog dialog;
+    QDialog dialog(this);
     dialog.setWindowTitle(tr("QR Code"));
 
     struct QrCodeInfo
@@ -575,7 +576,7 @@ void MainWindow::showQrCode()
     for (auto& var : qrCodeInfoList) {
         auto* label = new QLabel(tabWidget);
         QPixmap pix = QPixmap::fromImage(QImage(var.qrCode));
-        pix = pix.scaledToWidth(400, Qt::SmoothTransformation);
+        pix = pix.scaledToHeight(600, Qt::SmoothTransformation);
         label->setPixmap(pix);
         tabWidget->addTab(label, var.title);
     }
