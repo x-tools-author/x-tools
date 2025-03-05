@@ -19,8 +19,8 @@
 #include <QTableView>
 
 #include "common/xtools.h"
-#include "device/utilities/menu.h"
 #include "page/common/abstractmodelio.h"
+#include "page/utilities/menu.h"
 
 PresetUi::PresetUi(QWidget *parent)
     : AbstractModelUi(parent)
