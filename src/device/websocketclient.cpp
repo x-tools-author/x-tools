@@ -30,7 +30,7 @@ QObject *WebSocketClient::initDevice()
     connect(m_webSocket, &QWebSocket::disconnected, m_webSocket, [this]() {
         emit errorOccurred("");
     });
-    connect(m_webSocket, &QWebSocket::errorOccurred, m_webSocket, [this]() {
+    connect(m_webSocket, xWebSocketErrorOccurred, m_webSocket, [this]() {
         emit errorOccurred(m_webSocket->errorString());
     });
 

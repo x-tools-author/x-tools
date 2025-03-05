@@ -86,7 +86,7 @@ void WebSocketServer::setupSocket(QWebSocket *socket)
         onBinaryMessageReceived(socket, message);
     });
 
-    connect(socket, &QWebSocket::errorOccurred, socket, [this, flag, socket]() {
+    connect(socket, xWebSocketErrorOccurred, socket, [this, flag, socket]() {
         this->m_sockets.removeAll(socket);
         this->removeClient(flag);
     });
