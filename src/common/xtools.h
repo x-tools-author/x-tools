@@ -22,6 +22,12 @@
 #define xWebSocketErrorOccurred qOverload<QAbstractSocket::SocketError>(&QWebSocket::error)
 #endif
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+#define xEnableColorScheme 1
+#else
+#define xEnableColorScheme 0
+#endif
+
 /**************************************************************************************************/
 enum class CommunicationType {
     SerialPort,

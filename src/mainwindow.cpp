@@ -473,6 +473,7 @@ void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
 
 void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
 {
+#if xEnableColorScheme
     static QActionGroup* actionGroup = Q_NULLPTR;
     if (actionGroup) {
         return;
@@ -501,6 +502,9 @@ void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
             xApp->setupColorScheme();
         });
     }
+#else
+    Q_UNUSED(optionMenu);
+#endif
 }
 
 void MainWindow::updateGrid(WindowGrid grid)

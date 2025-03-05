@@ -21,6 +21,8 @@
 #include <QTimer>
 #include <QTranslator>
 
+#include "common/xtools.h"
+
 Application::Application(int argc, char **argv)
     : QApplication(argc, argv)
 {
@@ -189,7 +191,7 @@ void Application::setupLanguage()
 
 void Application::setupColorScheme()
 {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+#if xEnableColorScheme
     QSettings *settings = Application::settings();
     auto def = qApp->styleHints()->colorScheme();
     int colorScheme = settings->value(SettingsKey().colorScheme, static_cast<int>(def)).toInt();
