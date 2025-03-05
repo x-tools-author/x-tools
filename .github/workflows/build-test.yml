@@ -15,7 +15,7 @@ jobs:
       matrix:
         os: [ubuntu-22.04-arm]
         version: [6.8.2]
-        arch: [glinux_gcc_arm64]
+        arch: [linux_gcc_arm64]
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -24,7 +24,7 @@ jobs:
         with:
           aqtversion: '==3.1.*'
           version: ${{ matrix.version }}
-          host: 'linux_arm64'
+          host: 'linux'
           target: 'desktop'
           arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
