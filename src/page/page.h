@@ -26,7 +26,7 @@ QT_END_NAMESPACE
 class Preset;
 class Emitter;
 class Responder;
-#ifdef X_TOOLS_ENABLE_SERIAL_PORT
+#ifdef X_ENABLE_SERIAL_PORT
 class SerialPortTransfer;
 class SerialPortTransferUi;
 #endif
@@ -38,13 +38,13 @@ class TcpClientTransfer;
 class TcpClientTransferUi;
 class TcpServerTransfer;
 class TcpServerTransferUi;
-#ifdef X_TOOLS_ENABLE_WEB_SOCKET
+#ifdef X_ENABLE_WEB_SOCKET
 class WebSocketClientTransfer;
 class WebSocketClientTransferUi;
 class WebSocketServerTransfer;
 class WebSocketServerTransferUi;
 #endif
-#ifdef X_TOOLS_ENABLE_CHARTS
+#ifdef X_ENABLE_CHARTS
 class Charts;
 class ChartsUi;
 #endif
@@ -96,7 +96,7 @@ private:
     Preset *m_preset;
     Emitter *m_emitter;
     Responder *m_responder;
-#ifdef X_TOOLS_ENABLE_SERIAL_PORT
+#ifdef X_ENABLE_SERIAL_PORT
     SerialPortTransfer *m_serialPortTransfer;
     SerialPortTransferUi *m_serialPortTransferUi;
 #endif
@@ -108,13 +108,13 @@ private:
     TcpClientTransferUi *m_tcpClientTransferUi;
     TcpServerTransfer *m_tcpServerTransfer;
     TcpServerTransferUi *m_tcpServerTransferUi;
-#ifdef X_TOOLS_ENABLE_WEB_SOCKET
+#ifdef X_ENABLE_WEB_SOCKET
     WebSocketClientTransfer *m_webSocketClientTransfer;
     WebSocketClientTransferUi *m_webSocketClientTransferUi;
     WebSocketServerTransfer *m_webSocketServerTransfer;
     WebSocketServerTransferUi *m_webSocketServerTransferUi;
 #endif
-#ifdef X_TOOLS_ENABLE_CHARTS
+#ifdef X_ENABLE_CHARTS
     Charts *m_charts;
     ChartsUi *m_chartsUi;
 #endif
@@ -124,7 +124,7 @@ private:
 
 private:
     void initUi();
-    void initUiCommunication();
+    void initUiDeviceControl();
     void initUiOutputControl();
     void initUiInputControl();
     void initUiOutput();
@@ -145,8 +145,8 @@ private:
     void onBytesRead(const QByteArray &bytes, const QString &from);
     void onBytesWritten(const QByteArray &bytes, const QString &to);
 
-    void openCommunication();
-    void closeCommunication();
+    void openDevice();
+    void closeDevice();
     void writeBytes();
     void updateLabelInfo();
     void setupMenu(QPushButton *target, QWidget *actionWidget);
@@ -157,6 +157,6 @@ private:
 
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;
-    Device *createDevice(int type);
-    DeviceUi *createDeviceUi(int type);
+    Device *newDevice(int type);
+    DeviceUi *newDeviceUi(int type);
 };
