@@ -21,7 +21,7 @@ class SocketUi : public DeviceUi
 {
     Q_OBJECT
 public:
-    SocketUi(CommunicationType type, QWidget *parent = nullptr);
+    SocketUi(DeviceType type, QWidget *parent = nullptr);
     ~SocketUi();
 
     QVariantMap save() const override;

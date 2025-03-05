@@ -16,7 +16,7 @@
 #include "device/utilities/blescanner.h"
 
 BleCentralUi::BleCentralUi(QWidget *parent)
-    : DeviceUi(CommunicationType::BleCentral, parent)
+    : DeviceUi(DeviceType::BleCentral, parent)
     , ui(new Ui::BleCentralUi)
 {
     ui->setupUi(this);

@@ -10,12 +10,12 @@
 
 #include "device/device.h"
 
-DeviceUi::DeviceUi(CommunicationType type, QWidget *parent)
+DeviceUi::DeviceUi(DeviceType type, QWidget *parent)
     : AbstractIOUi(parent)
     , m_type(type)
 {}
 
-CommunicationType DeviceUi::type() const
+DeviceType DeviceUi::type() const
 {
     return m_type;
 }

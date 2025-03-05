@@ -9,7 +9,7 @@
 #include "tcpclientui.h"
 
 TcpClientUi::TcpClientUi(QWidget *parent)
-    : SocketClientUi(CommunicationType::TcpClient, parent)
+    : SocketClientUi(DeviceType::TcpClient, parent)
 {
     setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);

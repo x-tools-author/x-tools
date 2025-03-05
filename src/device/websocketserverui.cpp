@@ -9,7 +9,7 @@
 #include "websocketserverui.h"
 
 WebSocketServerUi::WebSocketServerUi(QWidget *parent)
-    : SocketServerUi(CommunicationType::WebSocketServer, parent)
+    : SocketServerUi(DeviceType::WebSocketServer, parent)
 {
     setClientWidgetsVisible(false);
     setAuthenticationWidgetsVisible(false);

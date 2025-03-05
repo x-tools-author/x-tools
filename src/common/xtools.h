@@ -22,14 +22,14 @@
 #define xWebSocketErrorOccurred qOverload<QAbstractSocket::SocketError>(&QWebSocket::error)
 #endif
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 #define xEnableColorScheme 1
 #else
 #define xEnableColorScheme 0
 #endif
 
 /**************************************************************************************************/
-enum class CommunicationType {
+enum class DeviceType {
     SerialPort,
     BleCentral,
     BlePeripheral,
@@ -46,9 +46,9 @@ enum class CommunicationType {
     //----------------------------------------------------------------------------------------------
     ChartsTest = 0x00300000
 };
-QList<int> supportedCommunicationTypes();
-QString communicationName(int type);
-void setupCommunicationTypes(QComboBox *comboBox);
+QList<int> supportedDeviceTypes();
+QString deviceName(int type);
+void setupDeviceTypes(QComboBox *comboBox);
 
 /**************************************************************************************************/
 enum class TextFormat { Bin, Oct, Dec, Hex, Ascii, Utf8 };

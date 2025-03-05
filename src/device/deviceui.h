@@ -19,11 +19,11 @@ class DeviceUi : public AbstractIOUi
 {
     Q_OBJECT
 public:
-    DeviceUi(CommunicationType type, QWidget *parent = nullptr);
+    DeviceUi(DeviceType type, QWidget *parent = nullptr);
 
-    CommunicationType type() const;
+    DeviceType type() const;
     virtual QList<QWidget *> communicationControllers();
 
 private:
-    CommunicationType const m_type;
+    DeviceType const m_type;
 };

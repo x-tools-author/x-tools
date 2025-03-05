@@ -9,7 +9,7 @@
 #include "tcpserverui.h"
 
 TcpServerUi::TcpServerUi(QWidget *parent)
-    : SocketServerUi(CommunicationType::TcpServer, parent)
+    : SocketServerUi(DeviceType::TcpServer, parent)
 {
     setClientWidgetsVisible(false);
     setChannelWidgetsVisible(false);

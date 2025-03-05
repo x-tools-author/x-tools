@@ -9,7 +9,7 @@
 #include "udpserverui.h"
 
 UdpServerUi::UdpServerUi(QWidget *parent)
-    : SocketServerUi(CommunicationType::UdpServer, parent)
+    : SocketServerUi(DeviceType::UdpServer, parent)
 {
     setClientWidgetsVisible(false);
     setChannelWidgetsVisible(false);

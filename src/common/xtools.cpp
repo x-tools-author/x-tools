@@ -52,74 +52,74 @@
 
 #include "common/crc.h"
 
-QList<int> supportedCommunicationTypes()
+QList<int> supportedDeviceTypes()
 {
     static QList<int> deviceTypes;
     if (deviceTypes.isEmpty()) {
 #ifdef X_ENABLE_SERIAL_PORT
-        deviceTypes << static_cast<int>(CommunicationType::SerialPort);
+        deviceTypes << static_cast<int>(DeviceType::SerialPort);
 #endif
 #ifdef X_ENABLE_BLUETOOTH
-        deviceTypes << static_cast<int>(CommunicationType::BleCentral);
+        deviceTypes << static_cast<int>(DeviceType::BleCentral);
 #endif
 #if 0
             deviceTypes << static_cast<int>(DeviceType::BlePeripheral);
 #endif
-        deviceTypes << static_cast<int>(CommunicationType::UdpClient);
-        deviceTypes << static_cast<int>(CommunicationType::UdpServer);
-        deviceTypes << static_cast<int>(CommunicationType::TcpClient);
-        deviceTypes << static_cast<int>(CommunicationType::TcpServer);
+        deviceTypes << static_cast<int>(DeviceType::UdpClient);
+        deviceTypes << static_cast<int>(DeviceType::UdpServer);
+        deviceTypes << static_cast<int>(DeviceType::TcpClient);
+        deviceTypes << static_cast<int>(DeviceType::TcpServer);
 #ifdef X_ENABLE_WEB_SOCKET
-        deviceTypes << static_cast<int>(CommunicationType::WebSocketClient);
-        deviceTypes << static_cast<int>(CommunicationType::WebSocketServer);
+        deviceTypes << static_cast<int>(DeviceType::WebSocketClient);
+        deviceTypes << static_cast<int>(DeviceType::WebSocketServer);
 #endif
-        deviceTypes << static_cast<int>(CommunicationType::ChartsTest);
+        deviceTypes << static_cast<int>(DeviceType::ChartsTest);
     }
 
     return deviceTypes;
 }
 
-QString communicationName(int type)
+QString deviceName(int type)
 {
     switch (type) {
-    case static_cast<int>(CommunicationType::SerialPort):
+    case static_cast<int>(DeviceType::SerialPort):
         return QObject::tr("Serial Port");
-    case static_cast<int>(CommunicationType::BleCentral):
+    case static_cast<int>(DeviceType::BleCentral):
         return QObject::tr("BLE Central");
-    case static_cast<int>(CommunicationType::BlePeripheral):
+    case static_cast<int>(DeviceType::BlePeripheral):
         return QObject::tr("BLE Peripheral");
-    case static_cast<int>(CommunicationType::UdpClient):
+    case static_cast<int>(DeviceType::UdpClient):
         return QObject::tr("UDP Client");
-    case static_cast<int>(CommunicationType::UdpServer):
+    case static_cast<int>(DeviceType::UdpServer):
         return QObject::tr("UDP Server");
-    case static_cast<int>(CommunicationType::TcpClient):
+    case static_cast<int>(DeviceType::TcpClient):
         return QObject::tr("TCP Client");
-    case static_cast<int>(CommunicationType::TcpServer):
+    case static_cast<int>(DeviceType::TcpServer):
         return QObject::tr("TCP Server");
-    case static_cast<int>(CommunicationType::WebSocketClient):
+    case static_cast<int>(DeviceType::WebSocketClient):
         return QObject::tr("WebSocket Client");
-    case static_cast<int>(CommunicationType::WebSocketServer):
+    case static_cast<int>(DeviceType::WebSocketServer):
         return QObject::tr("WebSocket Server");
-    case static_cast<int>(CommunicationType::ChartsTest):
+    case static_cast<int>(DeviceType::ChartsTest):
         return QObject::tr("Charts Test");
     default:
         return "Unknown";
     }
 }
 
-void setupCommunicationTypes(QComboBox *comboBox)
+void setupDeviceTypes(QComboBox *comboBox)
 {
     if (!comboBox) {
         return;
     }
 
     comboBox->clear();
-    QList<int> deviceTypes = supportedCommunicationTypes();
+    QList<int> deviceTypes = supportedDeviceTypes();
     for (int &type : deviceTypes) {
-        comboBox->addItem(communicationName(type), type);
+        comboBox->addItem(deviceName(type), type);
     }
 
-    comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(CommunicationType::SerialPort)));
+    comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(DeviceType::SerialPort)));
 }
 
 QList<int> supportedTextFormats()

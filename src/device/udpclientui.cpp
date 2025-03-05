@@ -9,7 +9,7 @@
 #include "udpclientui.h"
 
 UdpClientUi::UdpClientUi(QWidget *parent)
-    : SocketClientUi(CommunicationType::UdpClient, parent)
+    : SocketClientUi(DeviceType::UdpClient, parent)
 {
 #if 1
     setClientWidgetsVisible(true);

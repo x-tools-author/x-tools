@@ -14,7 +14,7 @@ class SocketServerUi : public SocketUi
 {
     Q_OBJECT
 public:
-    explicit SocketServerUi(CommunicationType type, QWidget *parent = nullptr);
+    explicit SocketServerUi(DeviceType type, QWidget *parent = nullptr);
     ~SocketServerUi() override;
 
     void setupIO(AbstractIO *io) override;

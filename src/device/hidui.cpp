@@ -12,7 +12,7 @@
 #include <QHid>
 #include <QHidInfo>
 
-HidUi::HidUi(CommunicationType type, QWidget *parent)
+HidUi::HidUi(DeviceType type, QWidget *parent)
     : CommunicationUi(type, parent)
     , ui(new Ui::HidUi)
 {

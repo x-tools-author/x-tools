@@ -12,7 +12,7 @@
 #include "common/xtools.h"
 #include "device/socket.h"
 
-SocketUi::SocketUi(CommunicationType type, QWidget *parent)
+SocketUi::SocketUi(DeviceType type, QWidget *parent)
     : DeviceUi(type, parent)
     , ui(new Ui::SocketUi)
 {

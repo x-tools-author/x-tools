@@ -9,7 +9,7 @@
 #include "websocketclientui.h"
 
 WebSocketClientUi::WebSocketClientUi(QWidget *parent)
-    : SocketClientUi(CommunicationType::WebSocketClient, parent)
+    : SocketClientUi(DeviceType::WebSocketClient, parent)
 {
     setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);

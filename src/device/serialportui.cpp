@@ -15,7 +15,7 @@
 #include "common/xtools.h"
 
 SerialPortUi::SerialPortUi(QWidget *parent)
-    : DeviceUi(CommunicationType::SerialPort, parent)
+    : DeviceUi(DeviceType::SerialPort, parent)
     , ui(new Ui::SerialPortUi)
 {
     ui->setupUi(this);

@@ -12,7 +12,7 @@
 #include "device/chartstest.h"
 
 ChartsTestUi::ChartsTestUi(QWidget *parent)
-    : DeviceUi(CommunicationType::SerialPort, parent)
+    : DeviceUi(DeviceType::SerialPort, parent)
     , ui(new Ui::ChartsTestUi)
 {
     ui->setupUi(this);

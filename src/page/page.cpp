@@ -380,7 +380,7 @@ void Page::initUiDeviceControl()
     m_ioSettings = new DeviceSettings();
     setupMenu(target, m_ioSettings);
 
-    setupCommunicationTypes(ui->comboBoxDeviceTypes);
+    setupDeviceTypes(ui->comboBoxDeviceTypes);
 }
 
 void Page::initUiOutputControl()
@@ -881,28 +881,28 @@ Device *Page::newDevice(int type)
 {
     switch (type) {
 #ifdef X_ENABLE_SERIAL_PORT
-    case static_cast<int>(CommunicationType::SerialPort):
+    case static_cast<int>(DeviceType::SerialPort):
         return new SerialPort(QCoreApplication::instance());
 #endif
 #ifdef X_ENABLE_BLUETOOTH
-    case static_cast<int>(CommunicationType::BleCentral):
+    case static_cast<int>(DeviceType::BleCentral):
         return new BleCentral(QCoreApplication::instance());
 #endif
-    case static_cast<int>(CommunicationType::UdpClient):
+    case static_cast<int>(DeviceType::UdpClient):
         return new UdpClient(QCoreApplication::instance());
-    case static_cast<int>(CommunicationType::UdpServer):
+    case static_cast<int>(DeviceType::UdpServer):
         return new UdpServer(QCoreApplication::instance());
-    case static_cast<int>(CommunicationType::TcpClient):
+    case static_cast<int>(DeviceType::TcpClient):
         return new TcpClient(QCoreApplication::instance());
-    case static_cast<int>(CommunicationType::TcpServer):
+    case static_cast<int>(DeviceType::TcpServer):
         return new TcpServer(QCoreApplication::instance());
 #ifdef X_ENABLE_WEB_SOCKET
-    case static_cast<int>(CommunicationType::WebSocketClient):
+    case static_cast<int>(DeviceType::WebSocketClient):
         return new WebSocketClient(QCoreApplication::instance());
-    case static_cast<int>(CommunicationType::WebSocketServer):
+    case static_cast<int>(DeviceType::WebSocketServer):
         return new WebSocketServer(QCoreApplication::instance());
 #endif
-    case static_cast<int>(CommunicationType::ChartsTest):
+    case static_cast<int>(DeviceType::ChartsTest):
         return new ChartsTest(QCoreApplication::instance());
     default:
         qWarning("Unknown device type:%d", type);
@@ -914,27 +914,27 @@ DeviceUi *Page::newDeviceUi(int type)
 {
     switch (type) {
 #ifdef X_ENABLE_SERIAL_PORT
-    case static_cast<int>(CommunicationType::SerialPort):
+    case static_cast<int>(DeviceType::SerialPort):
         return new SerialPortUi();
 #endif
 #ifdef X_ENABLE_BLUETOOTH
-    case static_cast<int>(CommunicationType::BleCentral):
+    case static_cast<int>(DeviceType::BleCentral):
         return new BleCentralUi();
 #endif
-    case static_cast<int>(CommunicationType::UdpClient):
+    case static_cast<int>(DeviceType::UdpClient):
         return new UdpClientUi();
-    case static_cast<int>(CommunicationType::UdpServer):
+    case static_cast<int>(DeviceType::UdpServer):
         return new UdpServerUi();
-    case static_cast<int>(CommunicationType::TcpClient):
+    case static_cast<int>(DeviceType::TcpClient):
         return new TcpClientUi();
-    case static_cast<int>(CommunicationType::TcpServer):
+    case static_cast<int>(DeviceType::TcpServer):
         return new TcpServerUi();
 #ifdef X_ENABLE_WEB_SOCKET
-    case static_cast<int>(CommunicationType::WebSocketClient):
+    case static_cast<int>(DeviceType::WebSocketClient):
         return new WebSocketClientUi();
-    case static_cast<int>(CommunicationType::WebSocketServer):
+    case static_cast<int>(DeviceType::WebSocketServer):
         return new WebSocketServerUi();
-    case static_cast<int>(CommunicationType::ChartsTest):
+    case static_cast<int>(DeviceType::ChartsTest):
         return new ChartsTestUi();
 #endif
     default:
