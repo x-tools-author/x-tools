@@ -9,48 +9,42 @@ on:
 #      - master
 jobs:
   build:
-    name: Build with Qt6
-    runs-on: windows-2022
+    name: Build
+    runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
       matrix:
+        os: [macos-14]
         version: [6.2.4, 6.5.3, 6.8.2]
-        arch: [win64_msvc2019_64, win64_msvc2022_64, win64_mingw]
-        exclude:
-          - version: 6.2.4
-            arch: win64_msvc2022_64
-          - version: 6.5.3
-            arch: win64_msvc2022_64
-          - version: 6.8.2
-            arch: win64_msvc2019_64
-          - version: 6.8.2
-            arch: win64_mingw
     steps:
-      - name: Pull code
+      - name: checkout
         uses: actions/checkout@v4
-      - name: Install Qt
+      - name: install qt
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
-          target: desktop
-          arch: ${{ matrix.arch }}
+          target: 'desktop'
+          arch: 'clang_64'
+          host: 'mac'
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-      - name: build-msvc
-        shell: cmd
-        if: matrix.arch == 'win64_msvc2019_64' || matrix.arch == 'win64_msvc2022_64'
+      - name: build all
         run: |
+          # brew uninstall --force node
+          # brew unlink unixodbc
+          # brew install libiodbc
+          mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
+          ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
           mkdir build
           cd build
-          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
-          cmake --build . --target all --config Release
-      - name: build-mingw
-        shell: cmd
-        if: matrix.arch == 'win64_mingw'
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release ../
+          cmake --build . --target all
+      - name: make dmg
         run: |
-          mkdir build
+          ls bin/Darwin/Release/xTools
           cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "MinGW Makefiles" ../
-          cmake --build . --target all --config Release
+          cmake --build . --target xTools_dmg
+          ls ../bin/Darwin/Release/xTools
+          # rename all dmg with lower case
+          find ../bin/Darwin/Release/xTools -name "*.dmg" -exec echo "dmg file is: {}" \;
+
