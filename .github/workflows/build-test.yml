@@ -9,13 +9,20 @@ on:
 #      - master
 jobs:
   build:
-    name: Build MSVC
+    name: Build with Qt6
     runs-on: windows-2022
     strategy:
       fail-fast: false
       matrix:
-        version: [6.8.2]
-        arch: [win64_mingw]
+        version: [6.2.4, 6.5.3, 6.8.2]
+        arch: [win64_msvc2019_64, win64_msvc2022_64, win64_mingw]
+        exclude:
+          - version: 6.2.4
+            arch: win64_msvc2022_64
+          - version: 6.5.3
+            arch: win64_msvc2022_64
+          - version: 6.8.2
+            arch: win64_msvc2019_64
     steps:
       - name: Pull code
         uses: actions/checkout@v4
@@ -30,9 +37,18 @@ jobs:
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: build-msvc
         shell: cmd
+        if: matrix.arch == 'win64_msvc2019_64' || matrix.arch == 'win64_msvc2022_64'
         run: |
           mkdir build
           cd build
-          set PATH=${{ github.workspace }}\Qt\Tools\MinGW\bin;%PATH%
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
           cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+          cmake --build . --target all --config Release
+      - name: build-mingw
+        shell: cmd
+        if: matrix.arch == 'win64_mingw'
+        run: |
+          mkdir build
+          cd build
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ../
           cmake --build . --target all --config Release
