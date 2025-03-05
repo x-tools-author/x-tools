@@ -1,1 +1,11 @@
-﻿
+﻿title: xTools用户手册
+description: xTools用户手册
+theme: minima
+url: https://x-tools-author.github.io/x-tools
+baseurl: /x-tools/docs
+author:
+  name: x-tools-author
+  email: x-tools@outlook.com
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
