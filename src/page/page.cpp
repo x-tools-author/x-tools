@@ -156,7 +156,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     ui->widgetCharts->layout()->addWidget(m_chartsUi);
     ui->widgetCharts->layout()->setContentsMargins(0, 0, 0, 0);
     ui->toolButtonCharts->setCheckable(true);
-    ui->toolButtonCharts->setIcon(QIcon(":/res/icons/iconchart.svg"));
+    ui->toolButtonCharts->setIcon(QIcon(":/res/icons/charts.svg"));
     ui->toolButtonCharts->setMenu(m_chartsUi->settingsMenu());
     ui->toolButtonCharts->setPopupMode(QToolButton::MenuButtonPopup);
     connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
@@ -349,12 +349,12 @@ void Page::appendOutputControl(QWidget *widget)
 void Page::initUi()
 {
 #if 0
-    const QIcon icon = QIcon(":/res/icons/iconsettings.svg");
+    const QIcon icon = QIcon(":/res/icons/settings.svg");
     ui->pushButtonCommunicationSettings->setIcon(icon);
     ui->pushButtonOutputSettings->setIcon(icon);
     ui->pushButtonInputSettings->setIcon(icon);
 #endif
-    ui->toolButtonInputPreset->setIcon(QIcon(":/res/icons/iconlist.svg"));
+    ui->toolButtonInputPreset->setIcon(QIcon(":/res/icons/list.svg"));
     ui->toolButtonInputPreset->setToolButtonStyle(Qt::ToolButtonIconOnly);
     ui->toolButtonInputPreset->setStyleSheet("QToolButton::menu-indicator{image: none;}");
 

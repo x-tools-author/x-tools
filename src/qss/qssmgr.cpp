@@ -189,7 +189,7 @@ void QssMgr::updateActions()
 void QssMgr::updateActionIcon(QAction* action, const QString& color)
 {
     if (action->isChecked()) {
-        action->setIcon(QIcon(":/res/icons/iconcheck.svg"));
+        action->setIcon(QIcon(":/res/icons/check.svg"));
     } else {
         QPixmap pixmap(64, 64);
         pixmap.fill(color);

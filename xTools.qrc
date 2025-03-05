@@ -1,17 +1,17 @@
 <RCC>
     <qresource prefix="/">
         <file>res/files/history.txt</file>
-        <file>res/icons/iconsplineseries.svg</file>
-        <file>res/icons/iconscatterseries.svg</file>
-        <file>res/icons/iconlineseries.svg</file>
-        <file>res/icons/iconchart.svg</file>
-        <file>res/icons/iconlist.svg</file>
-        <file>res/icons/iconcheck.svg</file>
+        <file>res/icons/spline_series.svg</file>
+        <file>res/icons/scatter_series.svg</file>
+        <file>res/icons/line_series.svg</file>
+        <file>res/icons/charts.svg</file>
+        <file>res/icons/list.svg</file>
+        <file>res/icons/check.svg</file>
         <file>res/translations/xTools_en.qm</file>
         <file>res/translations/xTools_zh_CN.qm</file>
         <file>res/icons/buy.svg</file>
         <file>res/icons/logo.svg</file>
         <file>res/images/qt_qq.jpg</file>
-        <file>res/images/xtools_qq.jpg</file>
+        <file>res/images/x_tools_qq.jpg</file>
     </qresource>
 </RCC>
