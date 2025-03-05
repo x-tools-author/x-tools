@@ -1,37 +1,38 @@
-name: build-test
+name: build-windows
 on:
- workflow_dispatch: # Allows you to run the workflow manually from the Actions tab
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Enables manually
+# on:
+#  push:
+#    branches:
+#      - master
 jobs:
-  Windows:
-    name: Windows Test
-    runs-on: windows-latest
+  build:
+    name: Build MSVC
+    runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [6.8.2]
+        arch: [win64_mingw]
     steps:
-      - name: Checkout
+      - name: Pull code
         uses: actions/checkout@v4
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
-          version: '6.8.2'
-          host: 'windows'
-          target: 'android'
-          arch: 'android_armv7'
-  Linux:
-    name: Ubuntu Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          aqtversion: '==3.1.*'
-          version: '6.8.2'
-          host: 'windows'
-          target: 'android'
-          arch: 'android_armv7'
-
+          dir: ${{ github.workspace }}
+          version: ${{ matrix.version }}
+          target: desktop
+          arch: ${{ matrix.arch }}
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+      - name: build-msvc
+        shell: cmd
+        run: |
+          mkdir build
+          cd build
+          set PATH=${{ github.workspace }}\Qt\Tools\MinGW\bin;%PATH%
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+          cmake --build . --target all --config Release

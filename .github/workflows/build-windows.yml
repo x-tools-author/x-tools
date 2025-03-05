@@ -9,20 +9,17 @@ on:
 #      - master
 jobs:
   build:
-    name: Build
+    name: Build MSVC
     runs-on: windows-2022
     strategy:
       fail-fast: false
       matrix:
-        version: [6.2.4, 6.5.3, 6.8.2]
-        arch: [win64_msvc2019_64, win64_msvc2022_64, win64_mingw]
-        exclude:
-          - version: 6.2.4
-            arch: win64_msvc2022_64
+        version: [6.5.3, 6.8.2]
+        include:
           - version: 6.5.3
-            arch: win64_msvc2022_64
-          - version: 6.8.2
             arch: win64_msvc2019_64
+          - version: 6.8.2
+            arch: win64_msvc2022_64
     steps:
       - name: Pull code
         uses: actions/checkout@v4
