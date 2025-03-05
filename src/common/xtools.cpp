@@ -493,43 +493,6 @@ QByteArray responseData(const QByteArray &data, int option, const QByteArray &re
     }
 }
 
-QString jsonValue2hexString(const QJsonValue &value)
-{
-    QJsonDocument doc;
-    if (value.isObject()) {
-        doc.setObject(value.toObject());
-    } else if (value.isArray()) {
-        doc.setArray(value.toArray());
-    } else {
-        return QString{};
-    }
-
-    return QString::fromUtf8(doc.toJson(QJsonDocument::Compact).toHex());
-}
-
-QJsonValue hexString2jsonValue(const QString &hexString)
-{
-    QByteArray bytes = QByteArray::fromHex(hexString.toUtf8());
-    QJsonDocument doc = QJsonDocument::fromJson(bytes);
-    if (doc.isArray()) {
-        return doc.array();
-    } else if (doc.isObject()) {
-        return doc.object();
-    } else {
-        return QJsonValue{};
-    }
-}
-
-QString systemDateFormat()
-{
-    return QLocale::system().dateFormat();
-}
-
-QString systemTimeFormat()
-{
-    return QLocale::system().timeFormat();
-}
-
 TextItem defaultTextItem()
 {
     TextItem context;
@@ -876,6 +839,16 @@ void setupChartsDataFormat(QComboBox *comboBox)
     for (auto &format : formats) {
         comboBox->addItem(chartsDataFormatName(format), format);
     }
+}
+
+QString systemDateFormat()
+{
+    return QLocale::system().dateFormat();
+}
+
+QString systemTimeFormat()
+{
+    return QLocale::system().timeFormat();
 }
 
 QString dateTimeString(const QString &format)

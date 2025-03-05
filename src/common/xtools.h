@@ -105,12 +105,6 @@ void setupResponseOption(QComboBox *comboBox);
 QByteArray responseData(const QByteArray &data, int option, const QByteArray &reference);
 
 /**************************************************************************************************/
-QString jsonValue2hexString(const QJsonValue &value);
-QJsonValue hexString2jsonValue(const QString &hexString);
-QString systemDateFormat();
-QString systemTimeFormat();
-
-/**************************************************************************************************/
 struct TextItem
 {
     TextFormat textFormat;
@@ -227,6 +221,8 @@ QString chartsDataFormatName(int format);
 void setupChartsDataFormat(QComboBox *comboBox);
 
 /**************************************************************************************************/
+QString systemDateFormat();
+QString systemTimeFormat();
 QString dateTimeString(const QString &format);
 QDateTime buildDateTime();
 QString buildDateTimeString(const QString &format);
