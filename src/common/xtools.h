@@ -19,7 +19,7 @@
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 #define xWebSocketErrorOccurred &QWebSocket::errorOccurred
 #else
-#define xWebSocketErrorOccurred qOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error)
+#define xWebSocketErrorOccurred qOverload<QAbstractSocket::SocketError>(&QWebSocket::error)
 #endif
 
 /**************************************************************************************************/

@@ -78,7 +78,9 @@ void WebSocketServer::setupSocket(QWebSocket *socket)
     QString flag = makeFlag(socket->peerAddress().toString(), socket->peerPort());
     addClient(flag);
 
-    connect(socket, &QWebSocket::disconnected, socket, [this, flag]() { removeClient(flag); });
+    connect(socket, &QWebSocket::disconnected, socket, [=]() { removeClient(flag); });
+    connect(socket, &QWebSocket::disconnected, socket, [=]() { this->m_sockets.removeAll(socket); });
+
     connect(socket, &QWebSocket::textMessageReceived, socket, [=](const QString &message) {
         onTextMessageReceived(socket, message);
     });
@@ -86,11 +88,7 @@ void WebSocketServer::setupSocket(QWebSocket *socket)
         onBinaryMessageReceived(socket, message);
     });
 
-    connect(socket, xWebSocketErrorOccurred, socket, [this, flag, socket]() {
-        this->m_sockets.removeAll(socket);
-        this->removeClient(flag);
-    });
-    connect(socket, &QWebSocket::disconnected, socket, [this, flag, socket]() {
+    connect(socket, xWebSocketErrorOccurred, socket, [=]() {
         this->m_sockets.removeAll(socket);
         this->removeClient(flag);
     });
