@@ -371,6 +371,9 @@ void MainWindow::initHelpMenu()
     helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
     helpMenu->addSeparator();
 
+    helpMenu->addAction(tr("Online Manual"), this, []() {
+        QDesktopServices::openUrl(QUrl("https://x-tools-author.github.io/x-tools"));
+    });
     helpMenu->addAction(tr("Get Sources from Github"), this, []() {
         QDesktopServices::openUrl(QUrl("https://github.com/x-tools-author/x-tools"));
     });
