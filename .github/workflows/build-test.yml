@@ -9,42 +9,36 @@ on:
 #      - master
 jobs:
   build:
-    name: Build
-    runs-on: ${{ matrix.os }}
+    name: Build with Qt6
+    runs-on: windows-2022
     strategy:
+      fail-fast: false
       matrix:
-        os: [macos-14]
-        version: [6.2.4, 6.5.3, 6.8.2]
+        version: [5.9.9, 5.12.12, 5.15.2]
+        exclude:
+          - version: 5.9.9
+            arch: win64_msvc2017_64
+          - version: 5.12.12
+            arch: win64_msvc2017_64
+          - version: 5.15.2
+            arch: win64_msvc2019_64
     steps:
-      - name: checkout
+      - name: Pull code
         uses: actions/checkout@v4
-      - name: install qt
+      - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
-          target: 'desktop'
-          arch: 'clang_64'
-          host: 'mac'
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-      - name: build all
+          target: desktop
+          arch: ${{ matrix.arch }}
+          modules: 'qtcharts'
+      - name: build-msvc
+        shell: cmd
         run: |
-          # brew uninstall --force node
-          # brew unlink unixodbc
-          # brew install libiodbc
-          mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
-          ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
           mkdir build
           cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release ../
-          cmake --build . --target all
-      - name: make dmg
-        run: |
-          ls bin/Darwin/Release/xTools
-          cd build
-          cmake --build . --target xTools_dmg
-          ls ../bin/Darwin/Release/xTools
-          # rename all dmg with lower case
-          find ../bin/Darwin/Release/xTools -name "*.dmg" -exec echo "dmg file is: {}" \;
-
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+          cmake --build . --target all --config Release
