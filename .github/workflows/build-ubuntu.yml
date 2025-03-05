@@ -14,8 +14,15 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04]
-        version: [6.8.*]
-        arch: [linux_gcc_64]
+        version: [6.2.4, 6.5.3, 6.8.2]
+        arch: [gcc_64, linux_gcc_64]
+        exclude:
+          - version: 6.2.4
+            arch: linux_gcc_64
+          - version: 6.5.3
+            arch: linux_gcc_64
+          - version: 6.8.2
+            arch: gcc_64
     steps:
       - name: checkout
         uses: actions/checkout@v4

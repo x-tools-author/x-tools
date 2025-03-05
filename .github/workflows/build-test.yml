@@ -23,6 +23,8 @@ jobs:
             arch: win64_msvc2022_64
           - version: 6.8.2
             arch: win64_msvc2019_64
+          - version: 6.8.2
+            arch: win64_mingw
     steps:
       - name: Pull code
         uses: actions/checkout@v4
