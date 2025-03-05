@@ -197,6 +197,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     initUi();
 
     onShowStatisticianChanged(false);
+    onDeviceTypeChanged();
 }
 
 Page::~Page()
