@@ -1,5 +1,6 @@
 ---
 title: xTools
+layout: default
 nav_order: 1
 ---
 
