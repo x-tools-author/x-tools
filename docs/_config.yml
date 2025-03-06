@@ -4,10 +4,15 @@ theme: just-the-docs
 
 url: https://x-tools-author.github.io/x-tools
 
-aux_links: # remove if you don't want this link to appear on your pages
-  xTools Repository on Github: https://github.com/x-tools-author/x-tools
+aux_links_new_tab: true
+aux_links:
+  访问xTools项目仓库: https://github.com/x-tools-author/x-tools
 
 permalink: pretty
+
+# logo
+logo: "/assets/images/logo.png"
+favicon_ico: "/assets/images/logo.ico"
 
 defaults:
   - scope:
