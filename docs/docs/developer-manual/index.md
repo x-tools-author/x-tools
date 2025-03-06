@@ -1,5 +1,5 @@
 ---
-title: Developer Manual
+title: 开发者手册
 nav_order: 3
 ---
 
@@ -7,5 +7,10 @@ nav_order: 3
 
 {: .no_toc }
 
-CSS utility classes come in handy when you want to override default styles to create additional whitespace (margins/padding), correct unexpected shifts in font size or weight, add color, or hide (or show) something at a specific screen size.
-{: .fs-6 .fw-300 }
+*xTools*实用一般步骤：
+
+1. 选择设备类型（目前支持串口，蓝牙（BLE），UDP客户端，UDP服务器，TCP客户端，TCP服务器，WebSocket客户端和WebSocket服务器）
+2. 配置设备参数
+3. 点击“打开设备”按钮
+4. 输入想要发送的数据
+5. 点击“发送”即可发送数据，接收到数据后会显示在输出区域
