@@ -1,7 +1,7 @@
 ﻿---
-title: Layout
+title: Developer Manual
 layout: default
-nav_order: 3
+nav_order:
 ---
 
 # Layout
