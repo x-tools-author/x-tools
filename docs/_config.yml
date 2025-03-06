@@ -20,9 +20,3 @@ defaults:
       type: "pages"
     values:
       layout: "default"
-
-plugins:
-  - jekyll-seo-tag
-  - jekyll-github-metadata
-  - jekyll-include-cache
-  - jekyll-sitemap
