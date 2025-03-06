@@ -2,4 +2,10 @@ title: Just the Docs Template
 description: A starter template for a Jeykll site using the Just the Docs theme!
 theme: just-the-docs
 
-url: https://github.com/x-tools-author/x-tools
+url: https://x-tools-author.github.io/x-tools
+
+aux_links: # remove if you don't want this link to appear on your pages
+  Template Repository: https://github.com/x-tools-author/x-tools
+
+plugins:
+  - jekyll-default-layout
