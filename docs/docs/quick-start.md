@@ -1,6 +1,6 @@
 ---
-title: 快速入门xTools
+title: 快速开始
 nav_order: 3
 ---
 
-# 快速入门xTools
+# 快速开始
