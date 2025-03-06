@@ -9,7 +9,7 @@ aux_links: # remove if you don't want this link to appear on your pages
 
 defaults:
   - scope:
-      path: "" # an empty string here means all files in the project
+      path: "docs" # an empty string here means all files in the project
       type: "pages"
     values:
       layout: "default"

@@ -1,7 +1,7 @@
 ﻿---
-title: 用户手册
-nav_order: 2
+title: 如何构建
 layout: default
+nav_order: 3
 ---
 
 # Utilities
