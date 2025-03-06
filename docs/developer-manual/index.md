@@ -1,9 +1,9 @@
 ---
-title: User Manual
+title: Developer Manual
 nav_order: 3
 ---
 
-# User Manual
+# Developer Manual
 
 {: .no_toc }
 
