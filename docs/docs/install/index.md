@@ -5,7 +5,7 @@ nav_order: 2
 
 # 安装
 
-访问[发布页面]下载所需版本即可。
+访问[发布页面]下载所需版本即可。[立即下载](https://github.com/x-tools-author/x-tools/releases){: .btn .btn-green }
 
 {: .note }
 > “Continuous Build”是日常构建版本，包含最新的功能，也意味着包含最新的BUG
@@ -33,7 +33,7 @@ nav_order: 2
 > deb包是基于ubuntu-20.04构建的，使用于ubuntu 20.04或更新版本系统
 
 {: .important-title }
-> 关于deb包
+> 关于apk包
 >
 > 安卓包未经测试，只是按原样提供
 
