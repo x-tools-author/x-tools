@@ -12,7 +12,7 @@ permalink: pretty
 
 # logo
 logo: "/assets/images/logo.png"
-favicon_ico: "/assets/images/logo.ico"
+# favicon_ico: "/assets/images/logo.ico"
 
 defaults:
   - scope:
