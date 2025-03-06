@@ -1,6 +1,6 @@
 ---
-title: 安装
+title: 安装xTools
 nav_order: 2
 ---
 
-# 安装
+# 安装xTools

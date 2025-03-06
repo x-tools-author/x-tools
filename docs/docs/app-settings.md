@@ -1,6 +1,6 @@
 ---
-title: 快速开始
-nav_order: 11
+title: 软件配置
+nav_order: 10
 ---
 
-# 快速开始
+# 软件配置

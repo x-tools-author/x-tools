@@ -1,6 +1,6 @@
 ---
-title: 设备参数
-nav_order: 4
+title: 输入参数说明
+nav_order: 4.2
 ---
 
-# 设备参数
+# 输入参数说明
