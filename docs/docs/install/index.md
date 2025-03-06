@@ -22,10 +22,18 @@ nav_order: 2
 * apk: 安卓安装包
 * dmg: macOS软件包
 
-{: .important }
+{: .important-title }
+> 关于AppImage包
+>
 > 下载AppImage包后可能需要执行"*sudo chmod +x xtools-xxx-xxx-xxx.AppImage*"来赋予可执行权限后才能运行
+
+{: .important-title }
+> 关于deb包
 >
 > deb包是基于ubuntu-20.04构建的，使用于ubuntu 20.04或更新版本系统
+
+{: .important-title }
+> 关于deb包
 >
 > 安卓包未经测试，只是按原样提供
 
