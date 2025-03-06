@@ -3,7 +3,7 @@ title: User Manual
 nav_order: 2
 ---
 
-# User Manual
+# 用户手册
 
 {: .no_toc }
 

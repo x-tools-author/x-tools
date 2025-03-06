@@ -11,8 +11,8 @@ aux_links:
 permalink: pretty
 
 # logo
-logo: "/assets/images/logo.png"
-# favicon_ico: "/assets/images/logo.ico"
+# logo: "/assets/images/logo.png"
+favicon_ico: "/assets/images/logo.ico"
 
 defaults:
   - scope:

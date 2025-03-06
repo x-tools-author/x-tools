@@ -3,7 +3,7 @@ title: Developer Manual
 nav_order: 3
 ---
 
-# Developer Manual
+# 开发者手册
 
 {: .no_toc }
 
