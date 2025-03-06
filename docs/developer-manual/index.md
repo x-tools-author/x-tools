@@ -1,6 +1,7 @@
 ﻿---
 title: 如何构建
 nav_order: 3
+layout: default
 ---
 
 # Utilities

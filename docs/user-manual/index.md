@@ -1,6 +1,7 @@
 ﻿---
 title: 用户手册
 nav_order: 2
+layout: default
 ---
 
 # Utilities
