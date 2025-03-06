@@ -1,7 +1,7 @@
 ﻿---
 title: Developer Manual
 layout: default
-nav_order:
+nav_order: 6
 ---
 
 # Developer Manual
