@@ -2166,7 +2166,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.cpp" line="447"/>
         <source>Serial Port</source>
-        <translation></translation>
+        <translation>串口</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="449"/>

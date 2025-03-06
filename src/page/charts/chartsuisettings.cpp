@@ -211,7 +211,7 @@ void ChartsUiSettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
     comboBox->addItem(QIcon(":/res/icons/line_series.svg"),
                       seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeLine),
                       QAbstractSeries::SeriesType::SeriesTypeLine);
-    comboBox->addItem(QIcon(":/res/icons/iconsplineseries.svg"),
+    comboBox->addItem(QIcon(":/res/icons/spline_series.svg"),
                       seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeSpline),
                       QAbstractSeries::SeriesType::SeriesTypeSpline);
     comboBox->addItem(QIcon(":/res/icons/scatter_series.svg"),
