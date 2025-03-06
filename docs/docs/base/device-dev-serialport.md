@@ -1,6 +1,7 @@
 ---
-title: 串口参数
-nav_order: 4.22
+title: 串口设备参数
+parent: 设备参数
+nav_order: 4
 ---
 
-# 串口参数
+# 串口设备参数

@@ -1,6 +1,7 @@
 ---
-title: 设备参数
-nav_order: 4.1
+title: 设备通用参数
+parent: 设备参数
+nav_order: 1
 ---
 
-# 设备参数
+# 设备通用参数
