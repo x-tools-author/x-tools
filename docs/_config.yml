@@ -7,3 +7,9 @@ url: https://x-tools-author.github.io/x-tools
 aux_links: # remove if you don't want this link to appear on your pages
   Template Repository: https://github.com/x-tools-author/x-tools
 
+defaults:
+  - scope:
+      path: "docs" # an empty string here means all files in the project
+      type: "pages"
+    values:
+      layout: "default"
