@@ -787,7 +787,7 @@
 <context>
     <name>ChartsTest</name>
     <message>
-        <location filename="../../src/device/chartstest.cpp" line="33"/>
+        <location filename="../../src/device/chartstest.cpp" line="34"/>
         <source>ChartsTest</source>
         <translation></translation>
     </message>
@@ -808,12 +808,12 @@
 <context>
     <name>ChartsUi</name>
     <message>
-        <location filename="../../src/page/charts/chartsui.cpp" line="244"/>
+        <location filename="../../src/page/charts/chartsui.cpp" line="251"/>
         <source>Import Data from Excel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsui.cpp" line="275"/>
+        <location filename="../../src/page/charts/chartsui.cpp" line="282"/>
         <source>Export Data to Excel</source>
         <translation></translation>
     </message>
@@ -851,55 +851,55 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="34"/>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="37"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="39"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="42"/>
         <source>Binary</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="35"/>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="38"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="40"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="43"/>
         <source>Text</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="62"/>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="231"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="67"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="242"/>
         <source>Channel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="63"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="68"/>
         <source>Visible</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="64"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="69"/>
         <source>Type</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="67"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="72"/>
         <source>Color</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="68"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="73"/>
         <source>Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="242"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="253"/>
         <source>Line</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="244"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="255"/>
         <source>Spline</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="246"/>
+        <location filename="../../src/page/charts/chartsuisettings.cpp" line="257"/>
         <source>Scatter</source>
         <translation></translation>
     </message>
@@ -1078,7 +1078,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>EmitterModel</name>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="40"/>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="131"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="133"/>
         <source>Enable</source>
         <translation></translation>
     </message>
@@ -1093,17 +1093,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="133"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="135"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="135"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="137"/>
         <source>Interval</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="137"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="139"/>
         <source>Data</source>
         <translation></translation>
     </message>
@@ -1311,222 +1311,232 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="142"/>
+        <location filename="../../src/mainwindow.cpp" line="143"/>
         <source>New Window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="151"/>
+        <location filename="../../src/mainwindow.cpp" line="150"/>
         <source>Save Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="155"/>
-        <location filename="../../src/mainwindow.cpp" line="684"/>
+        <location filename="../../src/mainwindow.cpp" line="152"/>
+        <location filename="../../src/mainwindow.cpp" line="690"/>
         <source>Import Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="159"/>
-        <location filename="../../src/mainwindow.cpp" line="697"/>
+        <location filename="../../src/mainwindow.cpp" line="156"/>
+        <location filename="../../src/mainwindow.cpp" line="703"/>
         <source>Export Parameters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="165"/>
+        <location filename="../../src/mainwindow.cpp" line="161"/>
         <source>Exit Application</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="176"/>
+        <location filename="../../src/mainwindow.cpp" line="170"/>
         <source>&amp;Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="179"/>
+        <location filename="../../src/mainwindow.cpp" line="173"/>
         <source>New</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="215"/>
+        <location filename="../../src/mainwindow.cpp" line="209"/>
         <source>&amp;Options</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="224"/>
+        <location filename="../../src/mainwindow.cpp" line="218"/>
         <source>Use System Proxy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="234"/>
+        <location filename="../../src/mainwindow.cpp" line="228"/>
         <source>Exit to System Tray</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="279"/>
+        <location filename="../../src/mainwindow.cpp" line="273"/>
         <source>&amp;Languages</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="303"/>
+        <location filename="../../src/mainwindow.cpp" line="302"/>
         <source>&amp;View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="360"/>
+        <location filename="../../src/mainwindow.cpp" line="348"/>
         <source>&amp;Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="361"/>
+        <location filename="../../src/mainwindow.cpp" line="349"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
-        <location filename="../../src/mainwindow.cpp" line="727"/>
+        <location filename="../../src/mainwindow.cpp" line="350"/>
+        <location filename="../../src/mainwindow.cpp" line="742"/>
         <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="364"/>
+        <location filename="../../src/mainwindow.cpp" line="354"/>
         <source>Screenshot</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="375"/>
+        <location filename="../../src/mainwindow.cpp" line="363"/>
         <source>Bug from Store</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="392"/>
+        <location filename="../../src/mainwindow.cpp" line="374"/>
+        <source>Online Manual</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="395"/>
         <source>Third Party Open Source</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="719"/>
+        <location filename="../../src/mainwindow.cpp" line="730"/>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="736"/>
         <source>Commit hash</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="722"/>
+        <location filename="../../src/mainwindow.cpp" line="738"/>
         <source>Commit time</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
         <source>Build Date</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="726"/>
+        <location filename="../../src/mainwindow.cpp" line="740"/>
+        <source>Copyright</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="741"/>
         <source>All rights reserved.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="350"/>
+        <location filename="../../src/mainwindow.cpp" line="377"/>
         <source>Get Sources from Github</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="353"/>
+        <location filename="../../src/mainwindow.cpp" line="380"/>
         <source>Get Sources from Gitee</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="381"/>
-        <location filename="../../src/mainwindow.cpp" line="540"/>
+        <location filename="../../src/mainwindow.cpp" line="370"/>
+        <location filename="../../src/mainwindow.cpp" line="546"/>
         <source>Release History</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="382"/>
+        <location filename="../../src/mainwindow.cpp" line="371"/>
         <source>Join in QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="349"/>
-        <source>Links</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="140"/>
+        <location filename="../../src/mainwindow.cpp" line="142"/>
         <source>&amp;File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="404"/>
+        <location filename="../../src/mainwindow.cpp" line="403"/>
         <source>Application Style</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="430"/>
+        <location filename="../../src/mainwindow.cpp" line="429"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="433"/>
+        <location filename="../../src/mainwindow.cpp" line="432"/>
         <source>Clear Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="439"/>
+        <location filename="../../src/mainwindow.cpp" line="438"/>
         <source>Open Settings Directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="447"/>
+        <location filename="../../src/mainwindow.cpp" line="446"/>
         <source>HDPI Policy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="481"/>
+        <location filename="../../src/mainwindow.cpp" line="487"/>
         <source>Color Scheme</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="483"/>
+        <location filename="../../src/mainwindow.cpp" line="489"/>
         <source>Dark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="484"/>
+        <location filename="../../src/mainwindow.cpp" line="490"/>
         <source>Light</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="485"/>
+        <location filename="../../src/mainwindow.cpp" line="491"/>
         <source>System</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="560"/>
+        <location filename="../../src/mainwindow.cpp" line="566"/>
         <source>QR Code</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="569"/>
+        <location filename="../../src/mainwindow.cpp" line="575"/>
         <source>User QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="570"/>
+        <location filename="../../src/mainwindow.cpp" line="576"/>
         <source>Qt QQ Group</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="591"/>
+        <location filename="../../src/mainwindow.cpp" line="597"/>
         <source>Need to Reboot</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="592"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
-        <location filename="../../src/mainwindow.cpp" line="699"/>
+        <location filename="../../src/mainwindow.cpp" line="692"/>
+        <location filename="../../src/mainwindow.cpp" line="705"/>
         <source>Json Files (*.json)</source>
         <translation></translation>
     </message>
@@ -1634,7 +1644,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="951"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Address</source>
         <translation></translation>
     </message>
@@ -1749,143 +1759,143 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="164"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
         <source>RtuClient</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="165"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
         <source>RtuServer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="166"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
         <source>TcpClient</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="167"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
         <source>TcpServer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="221"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="226"/>
         <source>NoParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="222"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
         <source>EvenParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="223"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
         <source>OddParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="224"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
         <source>SpaceParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="225"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
         <source>MarkParity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
         <source>0x01-ReadCoils</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="231"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
         <source>0x02-ReadDiscreteInputs</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="232"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
         <source>0x03-ReadHoldingRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="233"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
         <source>0x04-ReadInputRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="234"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
         <source>0x05-WriteSingleCoil</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
         <source>0x06-WriteSingleRegister</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
         <source>0x0f-WriteMultipleCoils</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
         <source>0x10-WriteMultipleRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="279"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
         <source>Coils</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="279"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
         <source>DiscreteInputs</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="280"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>InputRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="280"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>HoldingRegisters</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="542"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1297"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1317"/>
         <source>Error occured</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="619"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="624"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="622"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="627"/>
         <source>Can not open device</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="951"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="951"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1347"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
         <source>Device is not Ready</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1348"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1368"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation></translation>
     </message>
@@ -1893,22 +1903,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ModbusFactory</name>
     <message>
-        <location filename="../../src/tools/modbus/modbusfactory.cpp" line="38"/>
+        <location filename="../../src/tools/modbus/modbusfactory.cpp" line="46"/>
         <source>RTU Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusfactory.cpp" line="40"/>
+        <location filename="../../src/tools/modbus/modbusfactory.cpp" line="48"/>
         <source>RTU Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusfactory.cpp" line="42"/>
+        <location filename="../../src/tools/modbus/modbusfactory.cpp" line="50"/>
         <source>TCP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusfactory.cpp" line="44"/>
+        <location filename="../../src/tools/modbus/modbusfactory.cpp" line="52"/>
         <source>TCP Server</source>
         <translation></translation>
     </message>
@@ -1982,181 +1992,181 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Page</name>
     <message>
-        <location filename="../../src/page/page.ui" line="40"/>
+        <location filename="../../src/page/page.ui" line="208"/>
         <source>Output control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="60"/>
-        <location filename="../../src/page/page.ui" line="171"/>
+        <location filename="../../src/page/page.ui" line="35"/>
+        <location filename="../../src/page/page.ui" line="218"/>
         <source>Text format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="72"/>
-        <location filename="../../src/page/page.ui" line="143"/>
-        <location filename="../../src/page/page.ui" line="233"/>
+        <location filename="../../src/page/page.ui" line="129"/>
+        <location filename="../../src/page/page.ui" line="161"/>
+        <location filename="../../src/page/page.ui" line="179"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="79"/>
-        <location filename="../../src/page/page.cpp" line="577"/>
+        <location filename="../../src/page/page.ui" line="186"/>
+        <location filename="../../src/page/page.cpp" line="582"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="88"/>
+        <location filename="../../src/page/page.ui" line="145"/>
         <source>Cycle interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="107"/>
+        <location filename="../../src/page/page.ui" line="234"/>
         <source>Input control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="150"/>
+        <location filename="../../src/page/page.ui" line="168"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="164"/>
+        <location filename="../../src/page/page.ui" line="74"/>
         <source>Communication control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="180"/>
+        <location filename="../../src/page/page.ui" line="83"/>
         <source>Rx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="187"/>
+        <location filename="../../src/page/page.ui" line="90"/>
         <source>Tx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="194"/>
+        <location filename="../../src/page/page.ui" line="97"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="201"/>
+        <location filename="../../src/page/page.ui" line="104"/>
         <source>Flag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="208"/>
+        <location filename="../../src/page/page.ui" line="111"/>
         <source>Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="215"/>
+        <location filename="../../src/page/page.ui" line="118"/>
         <source>Ms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="240"/>
+        <location filename="../../src/page/page.ui" line="136"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="259"/>
+        <location filename="../../src/page/page.ui" line="255"/>
         <source>IO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="272"/>
+        <location filename="../../src/page/page.ui" line="269"/>
         <source>Output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="354"/>
+        <location filename="../../src/page/page.ui" line="352"/>
         <source>Input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="391"/>
+        <location filename="../../src/page/page.ui" line="386"/>
         <source>📄</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="401"/>
+        <location filename="../../src/page/page.ui" line="396"/>
         <source>Presets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="406"/>
+        <location filename="../../src/page/page.ui" line="401"/>
         <source>Emitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="411"/>
+        <location filename="../../src/page/page.ui" line="406"/>
         <source>Responder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="416"/>
+        <location filename="../../src/page/page.ui" line="411"/>
         <source>Transfers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="425"/>
+        <location filename="../../src/page/page.cpp" line="429"/>
         <source>Disable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="443"/>
+        <location filename="../../src/page/page.cpp" line="447"/>
         <source>Serial Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="445"/>
+        <location filename="../../src/page/page.cpp" line="449"/>
         <source>UDP Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="446"/>
+        <location filename="../../src/page/page.cpp" line="450"/>
         <source>UDP Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="447"/>
+        <location filename="../../src/page/page.cpp" line="451"/>
         <source>TCP Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="448"/>
+        <location filename="../../src/page/page.cpp" line="452"/>
         <source>TCP Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="450"/>
+        <location filename="../../src/page/page.cpp" line="454"/>
         <source>WebSocket Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="451"/>
+        <location filename="../../src/page/page.cpp" line="455"/>
         <source>WebSocket Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="563"/>
+        <location filename="../../src/page/page.cpp" line="568"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="584"/>
+        <location filename="../../src/page/page.cpp" line="589"/>
         <source>Error Occurred</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="590"/>
+        <location filename="../../src/page/page.cpp" line="595"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="728"/>
+        <location filename="../../src/page/page.cpp" line="733"/>
         <source>[%1][%2][%3][%4]</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2289,12 +2299,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/preset.cpp" line="153"/>
+        <location filename="../../src/page/preset/preset.cpp" line="156"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/preset.cpp" line="155"/>
+        <location filename="../../src/page/preset/preset.cpp" line="158"/>
         <source>Data</source>
         <translation></translation>
     </message>
@@ -2307,12 +2317,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="113"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="115"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="115"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="117"/>
         <source>Data</source>
         <translation></translation>
     </message>
@@ -2326,16 +2336,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="400"/>
-        <location filename="../../src/common/xtools.cpp" line="863"/>
-        <location filename="../../src/common/xtools.cpp" line="865"/>
+        <location filename="../../src/common/xtools.cpp" line="826"/>
+        <location filename="../../src/common/xtools.cpp" line="828"/>
         <source>Text</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="144"/>
         <location filename="../../src/common/xtools.cpp" line="402"/>
-        <location filename="../../src/common/xtools.cpp" line="859"/>
-        <location filename="../../src/common/xtools.cpp" line="861"/>
+        <location filename="../../src/common/xtools.cpp" line="822"/>
+        <location filename="../../src/common/xtools.cpp" line="824"/>
         <source>Binary</source>
         <translation></translation>
     </message>
@@ -2440,111 +2450,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="700"/>
+        <location filename="../../src/common/xtools.cpp" line="663"/>
         <source>Even</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="701"/>
+        <location filename="../../src/common/xtools.cpp" line="664"/>
         <source>Odd</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="702"/>
+        <location filename="../../src/common/xtools.cpp" line="665"/>
         <source>Space</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="703"/>
+        <location filename="../../src/common/xtools.cpp" line="666"/>
         <source>Mark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="719"/>
+        <location filename="../../src/common/xtools.cpp" line="682"/>
         <source>RTS/CTS</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="720"/>
+        <location filename="../../src/common/xtools.cpp" line="683"/>
         <source>X-ON/X-OFF</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="722"/>
+        <location filename="../../src/common/xtools.cpp" line="685"/>
         <source>Hardware</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="723"/>
+        <location filename="../../src/common/xtools.cpp" line="686"/>
         <source>Software</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="824"/>
+        <location filename="../../src/common/xtools.cpp" line="787"/>
         <source>Disabled</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="826"/>
+        <location filename="../../src/common/xtools.cpp" line="789"/>
         <source>Bidirectional</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="828"/>
+        <location filename="../../src/common/xtools.cpp" line="791"/>
         <source>Unidirectional</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1231"/>
-        <location filename="../../src/mainwindow.cpp" line="452"/>
+        <location filename="../../src/mainwindow.cpp" line="451"/>
         <source>System</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1232"/>
-        <location filename="../../src/mainwindow.cpp" line="453"/>
+        <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>Round up for .5 and above</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1233"/>
-        <location filename="../../src/mainwindow.cpp" line="454"/>
+        <location filename="../../src/mainwindow.cpp" line="453"/>
         <source>Always round up</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1234"/>
-        <location filename="../../src/mainwindow.cpp" line="455"/>
+        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Always round down</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1235"/>
-        <location filename="../../src/mainwindow.cpp" line="456"/>
+        <location filename="../../src/mainwindow.cpp" line="455"/>
         <source>Round up for .75 and above</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="1236"/>
-        <location filename="../../src/mainwindow.cpp" line="457"/>
+        <location filename="../../src/mainwindow.cpp" line="456"/>
         <source>Don&apos;t round</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="1508"/>
-        <source>Need to Reboot</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="1509"/>
-        <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="302"/>
         <location filename="../../src/common/xtools.cpp" line="361"/>
-        <location filename="../../src/common/xtools.cpp" line="699"/>
-        <location filename="../../src/common/xtools.cpp" line="717"/>
+        <location filename="../../src/common/xtools.cpp" line="662"/>
+        <location filename="../../src/common/xtools.cpp" line="680"/>
         <source>None</source>
         <translation></translation>
     </message>
@@ -2854,32 +2848,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPortUi</name>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="41"/>
+        <location filename="../../src/device/serialportui.ui" line="45"/>
         <source>Parity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="54"/>
+        <location filename="../../src/device/serialportui.ui" line="58"/>
         <source>Port name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="67"/>
+        <location filename="../../src/device/serialportui.ui" line="71"/>
         <source>Baud rate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="80"/>
+        <location filename="../../src/device/serialportui.ui" line="84"/>
         <source>Stop bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="93"/>
+        <location filename="../../src/device/serialportui.ui" line="97"/>
         <source>Data bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="116"/>
+        <location filename="../../src/device/serialportui.ui" line="120"/>
         <source>Flow control</source>
         <translation></translation>
     </message>
@@ -3087,77 +3081,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>TextItemEditor</name>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="14"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="14"/>
         <source>Data Editor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="20"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="20"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="27"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="47"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="47"/>
         <source>Preprocessing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="53"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>Prefix</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="63"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
         <source>Suffix</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="73"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="73"/>
         <source>Escape character</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="99"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
         <source>CRC</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="105"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="105"/>
         <source>Algorithm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="115"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="115"/>
         <source>Start index</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="125"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="125"/>
         <source>End index</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="135"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="135"/>
         <source>Append</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="142"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="142"/>
         <source>Big endian</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="155"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="155"/>
         <source>Payload</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/utilities/textitemeditor.ui" line="161"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="161"/>
         <source>Format</source>
         <translation></translation>
     </message>
