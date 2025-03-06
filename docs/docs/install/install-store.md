@@ -5,3 +5,8 @@ nav_order: 2.1
 ---
 
 # 从应用商店安装
+
+{: .note-title }
+> My note title
+>
+> A paragraph with a custom title callout
