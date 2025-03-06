@@ -1,6 +1,5 @@
 ﻿---
 title: 如何构建
-layout: default
 nav_order: 3
 ---
 

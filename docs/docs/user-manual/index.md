@@ -1,6 +1,5 @@
 ﻿---
 title: 用户手册
-layout: default
 nav_order: 2
 ---
 
