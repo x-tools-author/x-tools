@@ -291,37 +291,81 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="labelRx">
-           <property name="styleSheet">
-            <string notr="true">color:blue</string>
+          <widget class="QWidget" name="widgetRxTxInfo" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
            </property>
-           <property name="text">
-            <string notr="true">Rx</string>
-           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="labelRx">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color:blue</string>
+              </property>
+              <property name="text">
+               <string notr="true">Rx</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelRxInfo">
+              <property name="text">
+               <string notr="true"/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_4">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelTx">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color:green</string>
+              </property>
+              <property name="text">
+               <string notr="true">Tx</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelTxInfo">
+              <property name="text">
+               <string notr="true"/>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
-         </item>
-         <item>
-          <widget class="StatisticianUi" name="widgetRxInfo" native="true"/>
-         </item>
-         <item>
-          <widget class="Line" name="lineRxTx">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelTx">
-           <property name="styleSheet">
-            <string notr="true">color:green</string>
-           </property>
-           <property name="text">
-            <string notr="true">Tx</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="StatisticianUi" name="widgetTxInfo" native="true"/>
          </item>
         </layout>
        </item>
@@ -425,12 +469,6 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>StatisticianUi</class>
-   <extends>QWidget</extends>
-   <header location="global">page/utilities/statisticianui.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>PresetUi</class>
    <extends>QWidget</extends>

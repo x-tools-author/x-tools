@@ -10,68 +10,44 @@
 
 #include <QTimer>
 
-Statistician::Statistician(QObject *parent)
-    : AbstractIO{parent}
+Statistician::Statistician(QLabel *view, QObject *parent)
+    : QObject{parent}
+    , m_frames{0}
+    , m_bytes{0}
+    , m_speed{0}
+    , m_view{view}
 {
     QTimer *timer = new QTimer(this);
     timer->setInterval(1000);
-    connect(timer, &QTimer::timeout, this, &Statistician::updateSpeed);
-
-    connect(this, &Statistician::started, this, [this, timer]() {
-        this->m_frames = 0;
-        this->m_bytes = 0;
-        this->m_speed = 0;
-
-        emit this->framesChanged();
-        emit this->bytesChanged();
-        emit this->speedChanged();
-
-        timer->start();
+    connect(timer, &QTimer::timeout, this, [=]() {
+        this->m_speed = m_tempBytes.size();
+        this->m_tempBytes.clear();
+        updateLabel();
     });
-
-    connect(this, &Statistician::finished, this, [timer]() { timer->stop(); });
-}
-
-int Statistician::frames()
-{
-    return m_frames;
-}
-
-int Statistician::bytes()
-{
-    return m_bytes;
-}
-
-int Statistician::speed()
-{
-    return m_speed;
+    timer->start();
 }
 
 void Statistician::inputBytes(const QByteArray &bytes)
 {
-    if (isEnable()) {
-        if (isWorking()) {
-            m_frames++;
-            m_bytes += bytes.size();
+    m_frames++;
+    m_bytes += bytes.size();
+    m_tempBytes.append(bytes);
 
-            emit framesChanged();
-            emit bytesChanged();
-
-            m_tempBytes.append(bytes);
-        }
-    } else {
-        emit outputBytes(bytes);
-    }
+    updateLabel();
 }
 
-void Statistician::run()
+void Statistician::reset()
 {
-    exec();
-}
-
-void Statistician::updateSpeed()
-{
-    m_speed = m_tempBytes.size();
+    m_frames = 0;
+    m_bytes = 0;
+    m_speed = 0;
     m_tempBytes.clear();
-    emit speedChanged();
+    updateLabel();
+}
+
+void Statistician::updateLabel()
+{
+    if (m_view) {
+        m_view->setText(tr("%1 frames, %2 bytes, %3B/s").arg(m_frames).arg(m_bytes).arg(m_speed));
+    }
 }

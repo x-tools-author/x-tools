@@ -114,8 +114,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     , m_writeTimer{new QTimer(this)}
     , m_updateLabelInfoTimer{new QTimer(this)}
     , m_highlighter{new SyntaxHighlighter(this)}
-    , m_rxStatistician{new Statistician(this)}
-    , m_txStatistician{new Statistician(this)}
     , m_preset{new Preset(this)}
     , m_emitter{new Emitter(this)}
     , m_responder{new Responder(this)}
@@ -148,8 +146,9 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     }
 
     ui->setupUi(this);
-    ui->widgetRxInfo->setupIO(m_rxStatistician);
-    ui->widgetTxInfo->setupIO(m_txStatistician);
+    m_rxStatistician = new Statistician(ui->labelRxInfo, this);
+    m_txStatistician = new Statistician(ui->labelTxInfo, this);
+
 #ifdef X_ENABLE_CHARTS
     ui->widgetCharts->setLayout(new QHBoxLayout);
     ui->widgetCharts->layout()->addWidget(m_chartsUi);
@@ -165,9 +164,8 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 #else
     ui->toolButtonCharts->setVisible(false);
 #endif
-    m_ioList << m_rxStatistician << m_txStatistician << m_preset << m_emitter << m_responder
-             << m_udpClientTransfer << m_udpServerTransfer << m_tcpClientTransfer
-             << m_tcpServerTransfer;
+    m_ioList << m_preset << m_emitter << m_responder << m_udpClientTransfer << m_udpServerTransfer
+             << m_tcpClientTransfer << m_tcpServerTransfer;
 #ifdef X_ENABLE_SERIAL_PORT
     m_ioList << m_serialPortTransfer;
 #endif
@@ -550,11 +548,7 @@ void Page::onHighlighterKeywordsChanged()
 
 void Page::onShowStatisticianChanged(bool checked)
 {
-    ui->labelRx->setVisible(checked);
-    ui->labelTx->setVisible(checked);
-    ui->lineRxTx->setVisible(checked);
-    ui->widgetRxInfo->setVisible(checked);
-    ui->widgetTxInfo->setVisible(checked);
+    ui->widgetRxTxInfo->setVisible(checked);
 }
 
 void Page::onOpened()

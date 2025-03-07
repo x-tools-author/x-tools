@@ -82,6 +82,46 @@ signals:
     void bytesRead(const QByteArray &bytes, const QString &from);
 
 private:
+    void initUi();
+    void initUiDeviceControl();
+    void initUiOutputControl();
+    void initUiInputControl();
+    void initUiOutput();
+    void initUiInput();
+
+    void onDeviceTypeChanged();
+    void onCycleIntervalChanged();
+    void onInputFormatChanged();
+    void onOpenButtonClicked();
+    void onHighlighterEnableChanged();
+    void onHighlighterKeywordsChanged();
+    void onShowStatisticianChanged(bool checked);
+
+    void onOpened();
+    void onClosed();
+    void onErrorOccurred(const QString &error);
+    void onWarningOccurred(const QString &warning);
+    void onBytesRead(const QByteArray &bytes, const QString &from);
+    void onBytesWritten(const QByteArray &bytes, const QString &to);
+
+    void openDevice();
+    void closeDevice();
+    void setupDevice(Device *device);
+    void writeBytes();
+    void updateLabelInfo();
+    void setupMenu(QPushButton *target, QWidget *actionWidget);
+    void setUiEnabled(bool enabled);
+    void outputText(const QByteArray &bytes, const QString &flag, bool isRx);
+    void saveControllerParameters();
+    void loadControllerParameters();
+
+    QByteArray payload() const;
+    QByteArray crc(const QByteArray &payload) const;
+    DeviceUi *newDeviceUi(int type);
+
+private:
+    quint64 m_txBytes;
+    quint64 m_rxBytes;
     Ui::Page *ui;
     DeviceUi *m_deviceController;
     DeviceSettings *m_ioSettings;
@@ -121,42 +161,4 @@ private:
     Charts *m_charts;
     ChartsUi *m_chartsUi;
 #endif
-
-private:
-    void initUi();
-    void initUiDeviceControl();
-    void initUiOutputControl();
-    void initUiInputControl();
-    void initUiOutput();
-    void initUiInput();
-
-    void onDeviceTypeChanged();
-    void onCycleIntervalChanged();
-    void onInputFormatChanged();
-    void onOpenButtonClicked();
-    void onHighlighterEnableChanged();
-    void onHighlighterKeywordsChanged();
-    void onShowStatisticianChanged(bool checked);
-
-    void onOpened();
-    void onClosed();
-    void onErrorOccurred(const QString &error);
-    void onWarningOccurred(const QString &warning);
-    void onBytesRead(const QByteArray &bytes, const QString &from);
-    void onBytesWritten(const QByteArray &bytes, const QString &to);
-
-    void openDevice();
-    void closeDevice();
-    void setupDevice(Device *device);
-    void writeBytes();
-    void updateLabelInfo();
-    void setupMenu(QPushButton *target, QWidget *actionWidget);
-    void setUiEnabled(bool enabled);
-    void outputText(const QByteArray &bytes, const QString &flag, bool isRx);
-    void saveControllerParameters();
-    void loadControllerParameters();
-
-    QByteArray payload() const;
-    QByteArray crc(const QByteArray &payload) const;
-    DeviceUi *newDeviceUi(int type);
 };

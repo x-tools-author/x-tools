@@ -8,44 +8,25 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QMutex>
+#include <QLabel>
+#include <QObject>
 
-#include "page/common/abstractio.h"
-
-class Statistician : public AbstractIO
+class Statistician : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int frames READ frames NOTIFY framesChanged)
-    Q_PROPERTY(int bytes READ bytes NOTIFY bytesChanged)
-    Q_PROPERTY(int speed READ speed NOTIFY speedChanged)
 public:
-    explicit Statistician(QObject *parent = nullptr);
+    explicit Statistician(QLabel *view, QObject *parent = nullptr);
 
-    void inputBytes(const QByteArray &bytes) override;
+    void inputBytes(const QByteArray &bytes);
+    void reset();
 
-    int frames();
-    int bytes();
-    int speed();
-
-    QString framesString();
-    QString bytesString();
-    QString speedString();
-
-signals:
-    void framesChanged();
-    void bytesChanged();
-    void speedChanged();
-
-protected:
-    virtual void run() final;
+private:
+    void updateLabel();
 
 private:
     int m_frames{0};
     int m_bytes{0};
     int m_speed{0};
-
     QByteArray m_tempBytes;
-
-private:
-    void updateSpeed();
+    QLabel *m_view;
 };
