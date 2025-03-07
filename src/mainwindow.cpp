@@ -294,8 +294,8 @@ void MainWindow::initMenuLanguage()
 
 void MainWindow::initViewMenu()
 {
-    static QActionGroup group(this);
-    if (!group.actions().isEmpty()) {
+    static QActionGroup* group = new QActionGroup(this);
+    if (!group->actions().isEmpty()) {
         return;
     }
 
@@ -311,10 +311,10 @@ void MainWindow::initViewMenu()
     a2x1->setCheckable(true);
     a2x2->setCheckable(true);
 
-    group.addAction(a1x1);
-    group.addAction(a1x2);
-    group.addAction(a2x1);
-    group.addAction(a2x2);
+    group->addAction(a1x1);
+    group->addAction(a1x2);
+    group->addAction(a2x1);
+    group->addAction(a2x2);
 
     if (m_windowGrid == WindowGrid::Grid1x1) {
         a1x1->setChecked(true);
