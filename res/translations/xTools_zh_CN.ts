@@ -870,7 +870,7 @@
         <location filename="../../src/page/charts/chartsuisettings.cpp" line="67"/>
         <location filename="../../src/page/charts/chartsuisettings.cpp" line="242"/>
         <source>Channel</source>
-        <translation>发送通道</translation>
+        <translation>通道</translation>
     </message>
     <message>
         <location filename="../../src/page/charts/chartsuisettings.cpp" line="68"/>
