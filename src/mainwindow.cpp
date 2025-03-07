@@ -499,9 +499,10 @@ void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
             action->setChecked(true);
         }
 
+        Qt::ColorScheme colorScheme = it.key();
         connect(action, &QAction::triggered, this, [=]() {
             Application::SettingsKey keys;
-            xApp->settings()->setValue(keys.colorScheme, static_cast<int>(it.key()));
+            xApp->settings()->setValue(keys.colorScheme, static_cast<int>(colorScheme));
             xApp->setupColorScheme();
         });
     }
