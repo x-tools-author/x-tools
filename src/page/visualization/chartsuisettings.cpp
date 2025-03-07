@@ -23,7 +23,7 @@
 
 #include "chartsui.h"
 #include "common/xtools.h"
-#include "page/charts/charts.h"
+#include "page/visualization/charts.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using namespace QtCharts;

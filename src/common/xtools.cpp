@@ -120,6 +120,11 @@ void setupDeviceTypes(QComboBox *comboBox)
     }
 
     comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(DeviceType::SerialPort)));
+
+    int testIndex = comboBox->findData(static_cast<int>(DeviceType::ChartsTest));
+    if (testIndex != -1) {
+        comboBox->insertSeparator(testIndex);
+    }
 }
 
 QList<int> supportedTextFormats()

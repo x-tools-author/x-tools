@@ -812,12 +812,12 @@
 <context>
     <name>ChartsUi</name>
     <message>
-        <location filename="../../src/page/charts/chartsui.cpp" line="251"/>
+        <location filename="../../src/page/visualization/chartsui.cpp" line="251"/>
         <source>Import Data from Excel</source>
         <translation>从Excel表格导入</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsui.cpp" line="282"/>
+        <location filename="../../src/page/visualization/chartsui.cpp" line="282"/>
         <source>Export Data to Excel</source>
         <translation>导出至Excel表格</translation>
     </message>
@@ -825,85 +825,85 @@
 <context>
     <name>ChartsUiSettings</name>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.ui" line="125"/>
+        <location filename="../../src/page/visualization/chartsuisettings.ui" line="125"/>
         <source>Clear</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.ui" line="132"/>
+        <location filename="../../src/page/visualization/chartsuisettings.ui" line="132"/>
         <source>Export</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.ui" line="139"/>
+        <location filename="../../src/page/visualization/chartsuisettings.ui" line="139"/>
         <source>Import</source>
         <translation>导入</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.ui" line="58"/>
+        <location filename="../../src/page/visualization/chartsuisettings.ui" line="58"/>
         <source>Data type</source>
         <translation>数据类型</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.ui" line="68"/>
+        <location filename="../../src/page/visualization/chartsuisettings.ui" line="68"/>
         <source>Legend</source>
         <translation>显示图例</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.ui" line="75"/>
+        <location filename="../../src/page/visualization/chartsuisettings.ui" line="75"/>
         <source>Cache points</source>
         <translation>缓存点数</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="39"/>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="42"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="39"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="42"/>
         <source>Binary</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="40"/>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="43"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="40"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="43"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="67"/>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="242"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="67"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="242"/>
         <source>Channel</source>
         <translation>通道</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="68"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="68"/>
         <source>Visible</source>
         <translation>可见</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="69"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="69"/>
         <source>Type</source>
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="72"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="72"/>
         <source>Color</source>
         <translation>颜色</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="73"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="73"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="253"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="253"/>
         <source>Line</source>
         <translation>折线</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="255"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="255"/>
         <source>Spline</source>
         <translation>曲线</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/chartsuisettings.cpp" line="257"/>
+        <location filename="../../src/page/visualization/chartsuisettings.cpp" line="257"/>
         <source>Scatter</source>
         <translation>散点图</translation>
     </message>

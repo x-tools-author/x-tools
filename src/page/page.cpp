@@ -56,8 +56,8 @@
 #include "page/transfer/websocketservertransferui.h"
 #endif
 #ifdef X_ENABLE_CHARTS
-#include "page/charts/charts.h"
-#include "page/charts/chartsui.h"
+#include "page/visualization/charts.h"
+#include "page/visualization/chartsui.h"
 #endif
 #ifdef X_ENABLE_BLUETOOTH
 #include "device/blecentral.h"
