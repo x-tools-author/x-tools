@@ -54,20 +54,11 @@ void Device::closeDevice()
     wait();
 }
 
-void Device::inputBytes(const QByteArray &bytes)
-{
-    if (bytes.isEmpty()) {
-        qInfo() << "The input bytes is empty.";
-        return;
-    }
-
-    emit invokeWriteBytes(bytes);
-}
-
 void Device::run()
 {
     QObject *obj = initDevice();
     if (!obj) {
+        qWarning() << "Failed to init device";
         emit closed();
         return;
     }

@@ -21,12 +21,11 @@ class SocketUi : public DeviceUi
 {
     Q_OBJECT
 public:
-    SocketUi(DeviceType type, QWidget *parent = nullptr);
+    SocketUi(QWidget *parent = nullptr);
     ~SocketUi();
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-    void setupIO(AbstractIO *io) override;
 
 signals:
     void currentClientChanged(const QString &flag);

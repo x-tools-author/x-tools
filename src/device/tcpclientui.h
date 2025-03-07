@@ -17,5 +17,6 @@ public:
     explicit TcpClientUi(QWidget *parent = nullptr);
     ~TcpClientUi() override;
 
+    Device *newDevice() override;
     void setUiEnabled(bool enabled) override;
 };

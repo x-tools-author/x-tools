@@ -9,15 +9,21 @@
 #include "chartstestui.h"
 #include "ui_chartstestui.h"
 
-#include "device/chartstest.h"
+#include "chartstest.h"
+#include "common/xtools.h"
 
 ChartsTestUi::ChartsTestUi(QWidget *parent)
-    : DeviceUi(DeviceType::SerialPort, parent)
+    : DeviceUi(parent)
     , ui(new Ui::ChartsTestUi)
 {
     ui->setupUi(this);
 
     setupChartsDataFormat(ui->comboBoxFormat);
+}
+
+Device *ChartsTestUi::newDevice()
+{
+    return new ChartsTest(this);
 }
 
 QVariantMap ChartsTestUi::save() const

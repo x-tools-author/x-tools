@@ -27,9 +27,9 @@ public:
     explicit BleCentralUi(QWidget *parent = nullptr);
     ~BleCentralUi() override;
 
+    Device *newDevice() override;
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-    void setupIO(AbstractIO *device) override;
     void setUiEnabled(bool enabled) override;
 
 private:

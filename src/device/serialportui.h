@@ -22,6 +22,7 @@ class SerialPortUi : public DeviceUi
 public:
     SerialPortUi(QWidget *parent = nullptr);
 
+    Device *newDevice() override;
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
 

@@ -10,13 +10,14 @@
 
 #include "socketui.h"
 
+class SocketServer;
 class SocketServerUi : public SocketUi
 {
     Q_OBJECT
 public:
-    explicit SocketServerUi(DeviceType type, QWidget *parent = nullptr);
+    explicit SocketServerUi(QWidget *parent = nullptr);
     ~SocketServerUi() override;
 
-    void setupIO(AbstractIO *io) override;
+    void setupServer(SocketServer *server);
     void setUiEnabled(bool enabled) override;
 };

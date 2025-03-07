@@ -13,9 +13,10 @@
 #include <QSerialPortInfo>
 
 #include "common/xtools.h"
+#include "serialport.h"
 
 SerialPortUi::SerialPortUi(QWidget *parent)
-    : DeviceUi(DeviceType::SerialPort, parent)
+    : DeviceUi(parent)
     , ui(new Ui::SerialPortUi)
 {
     ui->setupUi(this);
@@ -30,6 +31,11 @@ SerialPortUi::SerialPortUi(QWidget *parent)
     setupParity(ui->comboBoxParity);
     setupStopBits(ui->comboBoxStopBits);
     setupFlowControl(ui->comboBoxFlowControl);
+}
+
+Device *SerialPortUi::newDevice()
+{
+    return new SerialPort(this);
 }
 
 QVariantMap SerialPortUi::save() const
@@ -53,18 +59,18 @@ void SerialPortUi::load(const QVariantMap &map)
 
     SerialPortItemKeys keys;
     QString portName = map.value(keys.portName).toString();
-    int baudRate = map.value(keys.baudRate).toInt();
-    int dataBits = map.value(keys.dataBits).toInt();
-    int parity = map.value(keys.parity).toInt();
-    int stopBits = map.value(keys.stopBits).toInt();
-    int flowControl = map.value(keys.flowControl).toInt();
+    int baudRate = map.value(keys.baudRate, 9600).toInt();
+    int dataBits = map.value(keys.dataBits, static_cast<int>(QSerialPort::Data8)).toInt();
+    int parity = map.value(keys.parity, static_cast<int>(QSerialPort::NoParity)).toInt();
+    int stopBits = map.value(keys.stopBits, static_cast<int>(QSerialPort::OneStop)).toInt();
+    int fc = map.value(keys.flowControl, static_cast<int>(QSerialPort::NoFlowControl)).toInt();
 
     ui->comboBoxPortName->setCurrentText(portName);
     ui->comboBoxBaudRate->setCurrentText(QString::number(baudRate));
     ui->comboBoxDataBits->setCurrentIndex(ui->comboBoxDataBits->findData(dataBits));
     ui->comboBoxParity->setCurrentIndex(ui->comboBoxParity->findData(parity));
     ui->comboBoxStopBits->setCurrentIndex(ui->comboBoxStopBits->findData(stopBits));
-    ui->comboBoxFlowControl->setCurrentIndex(ui->comboBoxFlowControl->findData(flowControl));
+    ui->comboBoxFlowControl->setCurrentIndex(ui->comboBoxFlowControl->findData(fc));
 }
 
 void SerialPortUi::refresh()

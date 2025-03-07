@@ -12,8 +12,8 @@
 #include "common/xtools.h"
 #include "device/socket.h"
 
-SocketUi::SocketUi(DeviceType type, QWidget *parent)
-    : DeviceUi(type, parent)
+SocketUi::SocketUi(QWidget *parent)
+    : DeviceUi(parent)
     , ui(new Ui::SocketUi)
 {
     ui->setupUi(this);
@@ -80,11 +80,6 @@ void SocketUi::load(const QVariantMap &parameters)
     ui->spinBoxMulticastPort->setValue(item.multicastPort);
     ui->checkBoxEnableMulticast->setChecked(item.enableMulticast);
     ui->checkBoxJustMulticast->setChecked(item.justMulticast);
-}
-
-void SocketUi::setupIO(AbstractIO *io)
-{
-    m_socket = dynamic_cast<Socket *>(io);
 }
 
 void SocketUi::setClientWidgetsVisible(bool visible)

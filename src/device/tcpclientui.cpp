@@ -8,8 +8,10 @@
  **************************************************************************************************/
 #include "tcpclientui.h"
 
+#include "tcpclient.h"
+
 TcpClientUi::TcpClientUi(QWidget *parent)
-    : SocketClientUi(DeviceType::TcpClient, parent)
+    : SocketClientUi(parent)
 {
     setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);
@@ -19,6 +21,11 @@ TcpClientUi::TcpClientUi(QWidget *parent)
 }
 
 TcpClientUi::~TcpClientUi() {}
+
+Device *TcpClientUi::newDevice()
+{
+    return new TcpClient(this);
+}
 
 void TcpClientUi::setUiEnabled(bool enabled)
 {

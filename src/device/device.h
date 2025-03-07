@@ -21,10 +21,8 @@ public:
     explicit Device(QObject *parent = nullptr);
     ~Device() override;
 
-    Q_INVOKABLE void openDevice();
-    Q_INVOKABLE void closeDevice();
-
-    void inputBytes(const QByteArray &bytes) override;
+    void openDevice();
+    void closeDevice();
 
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};

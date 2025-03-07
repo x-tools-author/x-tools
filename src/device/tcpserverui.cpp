@@ -8,8 +8,10 @@
  **************************************************************************************************/
 #include "tcpserverui.h"
 
+#include "tcpserver.h"
+
 TcpServerUi::TcpServerUi(QWidget *parent)
-    : SocketServerUi(DeviceType::TcpServer, parent)
+    : SocketServerUi(parent)
 {
     setClientWidgetsVisible(false);
     setChannelWidgetsVisible(false);
@@ -18,6 +20,13 @@ TcpServerUi::TcpServerUi(QWidget *parent)
 }
 
 TcpServerUi::~TcpServerUi() {}
+
+Device *TcpServerUi::newDevice()
+{
+    auto server = new TcpServer(this);
+    setupServer(server);
+    return server;
+}
 
 void TcpServerUi::setUiEnabled(bool enabled)
 {

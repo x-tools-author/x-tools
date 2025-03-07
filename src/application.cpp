@@ -216,10 +216,10 @@ QSplashScreen *Application::splashScreen()
         int width = fontMetrics.boundingRect(displayName).width() * 1.2;
 
         QPixmap pixMap(width < 600 ? 600 : width, 260);
-        pixMap.fill(QColor(0x2d2d30));
+        pixMap.fill(QColor(0x1f1f1f));
 
         QPainter painter(&pixMap);
-        painter.setPen(QColor(Qt::white));
+        painter.setPen(QColor(0x2d2d30));
         painter.setFont(font);
         painter.drawText(pixMap.rect(), Qt::AlignHCenter | Qt::AlignVCenter, displayName);
         painter.drawRect(pixMap.rect() - QMargins(1, 1, 1, 1));

@@ -12,11 +12,12 @@
 #include <QLowEnergyService>
 #include <QMessageBox>
 
-#include "device/blecentral.h"
-#include "device/utilities/blescanner.h"
+#include "blecentral.h"
+#include "common/xtools.h"
+#include "utilities/blescanner.h"
 
 BleCentralUi::BleCentralUi(QWidget *parent)
-    : DeviceUi(DeviceType::BleCentral, parent)
+    : DeviceUi(parent)
     , ui(new Ui::BleCentralUi)
 {
     ui->setupUi(this);
@@ -64,6 +65,25 @@ BleCentralUi::~BleCentralUi()
     delete ui;
 }
 
+Device *BleCentralUi::newDevice()
+{
+    BleCentral *device = new BleCentral(this);
+
+    ui->pushButtonScan->setEnabled(false);
+    ui->comboBoxServices->clear();
+    ui->comboBoxCharacteristics->clear();
+    ui->progressBarOpening->show();
+    connect(device, &BleCentral::discoveryFinished, this, [this]() {
+        ui->progressBarOpening->hide();
+    });
+    connect(device, &BleCentral::serviceDiscovered, this, [this](QLowEnergyService *service) {
+        setupLowEnergyService(service);
+        ui->comboBoxServices->addItem(service->serviceName(), QVariant::fromValue(service));
+    });
+
+    return device;
+}
+
 QVariantMap BleCentralUi::save() const
 {
     QVariantMap map;
@@ -77,31 +97,6 @@ QVariantMap BleCentralUi::save() const
 void BleCentralUi::load(const QVariantMap &parameters)
 {
     Q_UNUSED(parameters);
-}
-
-void BleCentralUi::setupIO(AbstractIO *device)
-{
-    BleCentral *central = qobject_cast<BleCentral *>(device);
-    if (!central) {
-        resetVisible();
-
-        ui->comboBoxServices->clear();
-        ui->comboBoxCharacteristics->clear();
-        ui->pushButtonScan->setEnabled(true);
-        return;
-    }
-
-    ui->pushButtonScan->setEnabled(false);
-    ui->comboBoxServices->clear();
-    ui->comboBoxCharacteristics->clear();
-    ui->progressBarOpening->show();
-    connect(central, &BleCentral::discoveryFinished, this, [this]() {
-        ui->progressBarOpening->hide();
-    });
-    connect(central, &BleCentral::serviceDiscovered, this, [this](QLowEnergyService *service) {
-        setupLowEnergyService(service);
-        ui->comboBoxServices->addItem(service->serviceName(), QVariant::fromValue(service));
-    });
 }
 
 void BleCentralUi::setUiEnabled(bool enabled)

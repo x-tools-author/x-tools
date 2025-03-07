@@ -58,16 +58,7 @@ list(APPEND X_TOOLS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 # --------------------------------------------------------------------------------------------------
 # CMake module
 include(${CMAKE_SOURCE_DIR}/cmake/git.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/QXlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/hidapi-hidapi.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
-
-# --------------------------------------------------------------------------------------------------
-# Git module
 x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
 x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
@@ -96,6 +87,15 @@ set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/${QT_VERSION}/${CMAKE_CXX
 set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
 message(STATUS "[xTools]Deploy libraries directory: ${X_DEPLOY_LIBS_DIR}")
 message(STATUS "------------------------------------------------------------")
+
+# --------------------------------------------------------------------------------------------------
+# 3rd module
+include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/QXlsx.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/hidapi-hidapi.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # The magic option...

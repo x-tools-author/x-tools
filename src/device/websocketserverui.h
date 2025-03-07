@@ -17,5 +17,6 @@ public:
     explicit WebSocketServerUi(QWidget *parent = nullptr);
     ~WebSocketServerUi() override;
 
+    Device *newDevice() override;
     void setUiEnabled(bool enabled) override;
 };

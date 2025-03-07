@@ -8,8 +8,10 @@
  **************************************************************************************************/
 #include "websocketserverui.h"
 
+#include "websocketserver.h"
+
 WebSocketServerUi::WebSocketServerUi(QWidget *parent)
-    : SocketServerUi(DeviceType::WebSocketServer, parent)
+    : SocketServerUi(parent)
 {
     setClientWidgetsVisible(false);
     setAuthenticationWidgetsVisible(false);
@@ -17,6 +19,13 @@ WebSocketServerUi::WebSocketServerUi(QWidget *parent)
 }
 
 WebSocketServerUi::~WebSocketServerUi() {}
+
+Device *WebSocketServerUi::newDevice()
+{
+    auto server = new WebSocketServer(this);
+    setupServer(server);
+    return server;
+}
 
 void WebSocketServerUi::setUiEnabled(bool enabled)
 {

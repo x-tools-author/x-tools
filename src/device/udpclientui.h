@@ -17,5 +17,6 @@ public:
     explicit UdpClientUi(QWidget *parent = nullptr);
     ~UdpClientUi() override;
 
+    Device *newDevice() override;
     void setUiEnabled(bool enabled) override;
 };

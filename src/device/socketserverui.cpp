@@ -10,21 +10,14 @@
 
 #include "device/socketserver.h"
 
-SocketServerUi::SocketServerUi(DeviceType type, QWidget *parent)
-    : SocketUi(type, parent)
+SocketServerUi::SocketServerUi(QWidget *parent)
+    : SocketUi(parent)
 {}
 
 SocketServerUi::~SocketServerUi() {}
 
-void SocketServerUi::setupIO(AbstractIO *io)
+void SocketServerUi::setupServer(SocketServer *server)
 {
-    SocketUi::setupIO(io);
-
-    SocketServer *server = qobject_cast<SocketServer *>(io);
-    if (!server) {
-        return;
-    }
-
     connect(server, &SocketServer::clientsChanged, this, [=]() { setupClients(server->clients()); });
     connect(this, &SocketServerUi::invokeDisconnectAll, server, &SocketServer::disconnectAllClients);
     connect(this, &SocketServerUi::currentClientChanged, server, [=](const QString &flag) {

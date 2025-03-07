@@ -83,8 +83,7 @@ signals:
 
 private:
     Ui::Page *ui;
-    Device *m_io;
-    DeviceUi *m_ioUi;
+    DeviceUi *m_deviceController;
     DeviceSettings *m_ioSettings;
     OutputSettings *m_outputSettings;
     InputSettings *m_inputSettings;
@@ -96,6 +95,10 @@ private:
     Preset *m_preset;
     Emitter *m_emitter;
     Responder *m_responder;
+    QButtonGroup m_pageButtonGroup;
+    QList<AbstractIO *> m_ioList;
+    QSettings *m_settings;
+
 #ifdef X_ENABLE_SERIAL_PORT
     SerialPortTransfer *m_serialPortTransfer;
     SerialPortTransferUi *m_serialPortTransferUi;
@@ -109,18 +112,15 @@ private:
     TcpServerTransfer *m_tcpServerTransfer;
     TcpServerTransferUi *m_tcpServerTransferUi;
 #ifdef X_ENABLE_WEB_SOCKET
-    WebSocketClientTransfer *m_webSocketClientTransfer;
-    WebSocketClientTransferUi *m_webSocketClientTransferUi;
-    WebSocketServerTransfer *m_webSocketServerTransfer;
-    WebSocketServerTransferUi *m_webSocketServerTransferUi;
+    WebSocketClientTransfer *m_wsClientTransfer;
+    WebSocketClientTransferUi *m_wsClientTransferUi;
+    WebSocketServerTransfer *m_wsServerTransfer;
+    WebSocketServerTransferUi *m_wsServerTransferUi;
 #endif
 #ifdef X_ENABLE_CHARTS
     Charts *m_charts;
     ChartsUi *m_chartsUi;
 #endif
-    QButtonGroup m_pageButtonGroup;
-    QList<AbstractIO *> m_ioList;
-    QSettings *m_settings;
 
 private:
     void initUi();
@@ -147,6 +147,7 @@ private:
 
     void openDevice();
     void closeDevice();
+    void setupDevice(Device *device);
     void writeBytes();
     void updateLabelInfo();
     void setupMenu(QPushButton *target, QWidget *actionWidget);
@@ -157,6 +158,5 @@ private:
 
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;
-    Device *newDevice(int type);
     DeviceUi *newDeviceUi(int type);
 };

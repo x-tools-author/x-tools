@@ -11,19 +11,26 @@
 #include <QVariantMap>
 #include <QWidget>
 
-#include "common/xtools.h"
-#include "page/common/abstractioui.h"
-
 class Device;
-class DeviceUi : public AbstractIOUi
+class DeviceUi : public QWidget
 {
     Q_OBJECT
 public:
-    DeviceUi(DeviceType type, QWidget *parent = nullptr);
+    DeviceUi(QWidget *parent = nullptr);
+    ~DeviceUi() override;
 
-    DeviceType type() const;
-    virtual QList<QWidget *> communicationControllers();
+    void openDevice();
+    void closeDevice();
+    Device *device();
+
+    virtual QVariantMap save() const;
+    virtual void load(const QVariantMap &parameters);
+    virtual QList<QWidget *> deviceControllers();
+    virtual void setUiEnabled(bool enabled);
+
+protected:
+    virtual Device *newDevice() = 0;
 
 private:
-    DeviceType const m_type;
+    Device *m_device;
 };

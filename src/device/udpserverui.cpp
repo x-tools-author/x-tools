@@ -8,8 +8,10 @@
  **************************************************************************************************/
 #include "udpserverui.h"
 
+#include "udpserver.h"
+
 UdpServerUi::UdpServerUi(QWidget *parent)
-    : SocketServerUi(DeviceType::UdpServer, parent)
+    : SocketServerUi(parent)
 {
     setClientWidgetsVisible(false);
     setChannelWidgetsVisible(false);
@@ -18,6 +20,13 @@ UdpServerUi::UdpServerUi(QWidget *parent)
 }
 
 UdpServerUi::~UdpServerUi() {}
+
+Device *UdpServerUi::newDevice()
+{
+    auto server = new UdpServer(this);
+    setupServer(server);
+    return server;
+}
 
 void UdpServerUi::setUiEnabled(bool enabled)
 {

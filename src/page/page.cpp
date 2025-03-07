@@ -107,8 +107,7 @@ struct ParameterKeys
 Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     : QWidget{parent}
     , ui{new Ui::Page}
-    , m_io{nullptr}
-    , m_ioUi{nullptr}
+    , m_deviceController{nullptr}
     , m_ioSettings{nullptr}
     , m_outputSettings{nullptr}
     , m_inputSettings{nullptr}
@@ -133,10 +132,10 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     , m_tcpServerTransfer(new TcpServerTransfer(this))
     , m_tcpServerTransferUi(new TcpServerTransferUi())
 #ifdef X_ENABLE_WEB_SOCKET
-    , m_webSocketClientTransfer(new WebSocketClientTransfer(this))
-    , m_webSocketClientTransferUi(new WebSocketClientTransferUi())
-    , m_webSocketServerTransfer(new WebSocketServerTransfer(this))
-    , m_webSocketServerTransferUi(new WebSocketServerTransferUi())
+    , m_wsClientTransfer(new WebSocketClientTransfer(this))
+    , m_wsClientTransferUi(new WebSocketClientTransferUi())
+    , m_wsServerTransfer(new WebSocketServerTransfer(this))
+    , m_wsServerTransferUi(new WebSocketServerTransferUi())
 #endif
 #ifdef X_ENABLE_CHARTS
     , m_charts{new Charts(this)}
@@ -173,7 +172,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_ioList << m_serialPortTransfer;
 #endif
 #ifdef X_ENABLE_WEB_SOCKET
-    m_ioList << m_webSocketClientTransfer << m_webSocketServerTransfer;
+    m_ioList << m_wsClientTransfer << m_wsServerTransfer;
 #endif
 #ifdef X_ENABLE_CHARTS
     m_ioList << m_charts;
@@ -211,8 +210,8 @@ QVariantMap Page::save()
     QVariantMap map;
     map.insert(g_keys.communicationType, ui->comboBoxDeviceTypes->currentData());
     map.insert(g_keys.communicationSettings, m_ioSettings->save());
-    if (m_ioUi) {
-        map.insert(g_keys.communication, m_ioUi->save());
+    if (m_deviceController) {
+        map.insert(g_keys.communication, m_deviceController->save());
     }
 
     map.insert(g_keys.showCharts, ui->toolButtonCharts->isChecked());
@@ -241,8 +240,8 @@ QVariantMap Page::save()
     map.insert(g_keys.tcpClientTransferItems, m_tcpClientTransferUi->save());
     map.insert(g_keys.tcpServerTransferItems, m_tcpServerTransferUi->save());
 #ifdef X_ENABLE_WEB_SOCKET
-    map.insert(g_keys.webSocketClientTransferItems, m_webSocketClientTransferUi->save());
-    map.insert(g_keys.webSocketServerTransferItems, m_webSocketServerTransferUi->save());
+    map.insert(g_keys.webSocketClientTransferItems, m_wsClientTransferUi->save());
+    map.insert(g_keys.webSocketServerTransferItems, m_wsServerTransferUi->save());
 #endif
 #ifdef X_ENABLE_CHARTS
     map.insert(g_keys.chartsItems, m_chartsUi->save());
@@ -262,8 +261,8 @@ void Page::load(const QVariantMap &parameters)
     QVariantMap communicationSettings = parameters.value(g_keys.communicationSettings).toMap();
     m_ioSettings->load(communicationSettings);
     ui->comboBoxDeviceTypes->setCurrentIndex(index == -1 ? 0 : index);
-    if (m_ioUi) {
-        m_ioUi->load(parameters.value(g_keys.communication).toMap());
+    if (m_deviceController) {
+        m_deviceController->load(parameters.value(g_keys.communication).toMap());
     }
 
     bool showCharts = parameters.value(g_keys.showCharts).toBool();
@@ -311,8 +310,8 @@ void Page::load(const QVariantMap &parameters)
     m_tcpClientTransferUi->load(parameters.value(g_keys.tcpClientTransferItems).toMap());
     m_tcpServerTransferUi->load(parameters.value(g_keys.tcpServerTransferItems).toMap());
 #ifdef X_ENABLE_WEB_SOCKET
-    m_webSocketClientTransferUi->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
-    m_webSocketServerTransferUi->load(parameters.value(g_keys.webSocketServerTransferItems).toMap());
+    m_wsClientTransferUi->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
+    m_wsServerTransferUi->load(parameters.value(g_keys.webSocketServerTransferItems).toMap());
 #endif
 #ifdef X_ENABLE_CHARTS
     m_chartsUi->load(parameters.value(g_keys.chartsItems).toMap());
@@ -335,8 +334,8 @@ QToolButton *Page::presetToolButton()
 
 void Page::inputBytes(const QByteArray &bytes)
 {
-    if (m_io && m_io->isWorking()) {
-        m_io->inputBytes(bytes);
+    if (m_deviceController->device() && m_deviceController->device()->isRunning()) {
+        m_deviceController->device()->inputBytes(bytes);
     }
 }
 
@@ -375,10 +374,7 @@ void Page::initUiDeviceControl()
             qOverload<int>(xComboBoxActivated),
             this,
             &Page::onDeviceTypeChanged);
-    connect(ui->pushButtonCommunicationOpen,
-            &QPushButton::clicked,
-            this,
-            &Page::onOpenButtonClicked);
+    connect(ui->pushButtonDeviceOpen, &QPushButton::clicked, this, &Page::onOpenButtonClicked);
 
     QPushButton *target = ui->pushButtonCommunicationSettings;
     m_ioSettings = new DeviceSettings();
@@ -451,8 +447,8 @@ void Page::initUiOutput()
     ui->tabWidgetTransfers->addTab(m_tcpClientTransferUi, tr("TCP Client"));
     ui->tabWidgetTransfers->addTab(m_tcpServerTransferUi, tr("TCP Server"));
 #ifdef X_ENABLE_WEB_SOCKET
-    ui->tabWidgetTransfers->addTab(m_webSocketClientTransferUi, tr("WebSocket Client"));
-    ui->tabWidgetTransfers->addTab(m_webSocketServerTransferUi, tr("WebSocket Server"));
+    ui->tabWidgetTransfers->addTab(m_wsClientTransferUi, tr("WebSocket Client"));
+    ui->tabWidgetTransfers->addTab(m_wsServerTransferUi, tr("WebSocket Server"));
 #endif
     ui->tabPresets->setupIO(m_preset);
     ui->tabEmitter->setupIO(m_emitter);
@@ -465,8 +461,8 @@ void Page::initUiOutput()
     m_tcpClientTransferUi->setupIO(m_tcpClientTransfer);
     m_tcpServerTransferUi->setupIO(m_tcpServerTransfer);
 #ifdef X_ENABLE_WEB_SOCKET
-    m_webSocketClientTransferUi->setupIO(m_webSocketClientTransfer);
-    m_webSocketServerTransferUi->setupIO(m_webSocketServerTransfer);
+    m_wsClientTransferUi->setupIO(m_wsClientTransfer);
+    m_wsServerTransferUi->setupIO(m_wsServerTransfer);
 #endif
 #ifdef X_ENABLE_CHARTS
     m_chartsUi->setupIO(m_charts);
@@ -485,12 +481,12 @@ void Page::initUiInput()
 
 void Page::onDeviceTypeChanged()
 {
-    if (m_ioUi != nullptr) {
+    if (m_deviceController != nullptr) {
         saveControllerParameters();
 
-        m_ioUi->setParent(nullptr);
-        m_ioUi->deleteLater();
-        m_ioUi = nullptr;
+        m_deviceController->setParent(nullptr);
+        m_deviceController->deleteLater();
+        m_deviceController = nullptr;
     }
 
     if (!ui->comboBoxDeviceTypes->count()) {
@@ -498,14 +494,17 @@ void Page::onDeviceTypeChanged()
     }
 
     int type = ui->comboBoxDeviceTypes->currentData().toInt();
-    m_ioUi = newDeviceUi(type);
-    if (m_ioUi) {
-        loadControllerParameters();
-        ui->verticalLayoutCommunicationController->addWidget(m_ioUi);
-
-        QList<QWidget *> widgets = m_ioUi->communicationControllers();
-        m_ioSettings->addWidgets(widgets);
+    m_deviceController = newDeviceUi(type);
+    if (!m_deviceController) {
+        qWarning() << "Failed to create device controller";
+        return;
     }
+
+    loadControllerParameters();
+    ui->verticalLayoutDeviceController->addWidget(m_deviceController);
+
+    QList<QWidget *> widgets = m_deviceController->deviceControllers();
+    m_ioSettings->addWidgets(widgets);
 }
 
 void Page::onCycleIntervalChanged()
@@ -528,8 +527,8 @@ void Page::onInputFormatChanged()
 
 void Page::onOpenButtonClicked()
 {
-    ui->pushButtonCommunicationOpen->setEnabled(false);
-    if (m_io) {
+    ui->pushButtonDeviceOpen->setEnabled(false);
+    if (m_deviceController->device() && m_deviceController->device()->isRunning()) {
         closeDevice();
     } else {
         openDevice();
@@ -564,8 +563,8 @@ void Page::onOpened()
     }
 
     setUiEnabled(false);
-    ui->pushButtonCommunicationOpen->setEnabled(true);
-    ui->pushButtonCommunicationOpen->setText(tr("Close"));
+    ui->pushButtonDeviceOpen->setEnabled(true);
+    ui->pushButtonDeviceOpen->setText(tr("Close"));
     onCycleIntervalChanged();
 }
 
@@ -578,8 +577,8 @@ void Page::onClosed()
 
     m_writeTimer->stop();
     setUiEnabled(true);
-    ui->pushButtonCommunicationOpen->setEnabled(true);
-    ui->pushButtonCommunicationOpen->setText(tr("Open"));
+    ui->pushButtonDeviceOpen->setEnabled(true);
+    ui->pushButtonDeviceOpen->setText(tr("Open"));
 }
 
 void Page::onErrorOccurred(const QString &error)
@@ -615,77 +614,65 @@ void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
 
 void Page::openDevice()
 {
-    int type = ui->comboBoxDeviceTypes->currentData().toInt();
-    m_io = newDevice(type);
-    if (m_io) {
-        setUiEnabled(false);
-
-        // clang-format off
-        connect(m_io, &Device::opened, this, &Page::onOpened);
-        connect(m_io, &Device::closed, this, &Page::onClosed);
-        connect(m_io, &Device::bytesWritten, this, &Page::onBytesWritten);
-        connect(m_io, &Device::bytesRead, this, &Page::onBytesRead);
-        connect(m_io, &Device::errorOccurred, this, &Page::onErrorOccurred);
-        connect(m_io, &Device::warningOccurred, this, &::Page::onWarningOccurred);
-        connect(m_io, &Device::outputBytes, m_responder, &Responder::inputBytes);
-#ifdef X_ENABLE_SERIAL_PORT
-        connect(m_io, &Device::outputBytes, m_serialPortTransfer, &SerialPortTransfer::inputBytes);
-#endif
-        connect(m_io, &Device::outputBytes, m_udpClientTransfer, &UdpClientTransfer::inputBytes);
-        connect(m_io, &Device::outputBytes, m_udpServerTransfer, &UdpServerTransfer::inputBytes);
-        connect(m_io, &Device::outputBytes, m_tcpClientTransfer, &TcpClientTransfer::inputBytes);
-        connect(m_io, &Device::outputBytes, m_tcpServerTransfer, &TcpServerTransfer::inputBytes);
-#ifdef X_ENABLE_WEB_SOCKET
-        connect(m_io, &Device::outputBytes, m_webSocketClientTransfer, &WebSocketClientTransfer::inputBytes);
-        connect(m_io, &Device::outputBytes, m_webSocketServerTransfer, &WebSocketServerTransfer::inputBytes);
-#endif
-#ifdef X_ENABLE_CHARTS
-        connect(m_io, &Device::outputBytes, m_charts, &Charts::inputBytes);
-#endif
-        connect(m_preset, &Preset::outputBytes, m_io, &Device::inputBytes);
-        connect(m_emitter, &Preset::outputBytes, m_io, &Device::inputBytes);
-        connect(m_responder, &Responder::outputBytes, m_io, &Device::inputBytes);
-#ifdef X_ENABLE_SERIAL_PORT
-        connect(m_serialPortTransfer, &SerialPortTransfer::outputBytes, m_io, &Device::inputBytes);
-#endif
-        connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, m_io, &Device::inputBytes);
-        connect(m_udpServerTransfer, &UdpServerTransfer::outputBytes, m_io, &Device::inputBytes);
-        connect(m_tcpClientTransfer, &TcpClientTransfer::outputBytes, m_io, &Device::inputBytes);
-        connect(m_tcpServerTransfer, &TcpServerTransfer::outputBytes, m_io, &Device::inputBytes);
-#ifdef X_ENABLE_WEB_SOCKET
-        connect(m_webSocketClientTransfer, &WebSocketClientTransfer::outputBytes, m_io, &Device::inputBytes);
-        connect(m_webSocketServerTransfer, &WebSocketServerTransfer::outputBytes, m_io, &Device::inputBytes);
-#endif
-        // clang-format on
-
-#ifdef X_ENABLE_CHARTS
-        m_charts->load(m_chartsUi->save());
-#endif
-
-        QVariantMap parameters = m_ioUi->save();
-        m_ioUi->setupIO(m_io);
-        m_io->load(parameters);
-        m_io->openDevice();
+    Device *device = m_deviceController->device();
+    if (!device) {
+        qWarning() << "Failed to create device";
+        return;
     }
+
+    setUiEnabled(false);
+    setupDevice(device);
+
+#ifdef X_ENABLE_CHARTS
+    m_charts->load(m_chartsUi->save());
+#endif
+    m_deviceController->openDevice();
 }
 
 void Page::closeDevice()
 {
-    if (m_io) {
-        m_io->exit();
-        m_io->wait();
-        m_io->deleteLater();
-        m_io = nullptr;
-    }
+    m_deviceController->closeDevice();
+}
 
-    if (m_ioUi) {
-        m_ioUi->setupIO(nullptr);
-    }
+void Page::setupDevice(Device *device)
+{
+    connect(device, &Device::opened, this, &Page::onOpened);
+    connect(device, &Device::closed, this, &Page::onClosed);
+    connect(device, &Device::bytesWritten, this, &Page::onBytesWritten);
+    connect(device, &Device::bytesRead, this, &Page::onBytesRead);
+    connect(device, &Device::errorOccurred, this, &Page::onErrorOccurred);
+    connect(device, &Device::warningOccurred, this, &::Page::onWarningOccurred);
+    connect(device, &Device::outputBytes, m_responder, &Responder::inputBytes);
+    connect(device, &Device::outputBytes, m_udpClientTransfer, &UdpClientTransfer::inputBytes);
+    connect(device, &Device::outputBytes, m_udpServerTransfer, &UdpServerTransfer::inputBytes);
+    connect(device, &Device::outputBytes, m_tcpClientTransfer, &TcpClientTransfer::inputBytes);
+    connect(device, &Device::outputBytes, m_tcpServerTransfer, &TcpServerTransfer::inputBytes);
+    connect(m_preset, &Preset::outputBytes, device, &Device::inputBytes);
+    connect(m_emitter, &Preset::outputBytes, device, &Device::inputBytes);
+    connect(m_responder, &Responder::outputBytes, device, &Device::inputBytes);
+    connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, device, &Device::inputBytes);
+    connect(m_udpServerTransfer, &UdpServerTransfer::outputBytes, device, &Device::inputBytes);
+    connect(m_tcpClientTransfer, &TcpClientTransfer::outputBytes, device, &Device::inputBytes);
+    connect(m_tcpServerTransfer, &TcpServerTransfer::outputBytes, device, &Device::inputBytes);
+
+#ifdef X_ENABLE_SERIAL_PORT
+    connect(device, &Device::outputBytes, m_serialPortTransfer, &SerialPortTransfer::inputBytes);
+    connect(m_serialPortTransfer, &SerialPortTransfer::outputBytes, device, &Device::inputBytes);
+#endif
+#ifdef X_ENABLE_WEB_SOCKET
+    connect(device, &Device::outputBytes, m_wsClientTransfer, &WebSocketClientTransfer::inputBytes);
+    connect(device, &Device::outputBytes, m_wsServerTransfer, &WebSocketServerTransfer::inputBytes);
+    connect(m_wsClientTransfer, &WebSocketClientTransfer::outputBytes, device, &Device::inputBytes);
+    connect(m_wsServerTransfer, &WebSocketServerTransfer::outputBytes, device, &Device::inputBytes);
+#endif
+#ifdef X_ENABLE_CHARTS
+    connect(device, &Device::outputBytes, m_charts, &Charts::inputBytes);
+#endif
 }
 
 void Page::writeBytes()
 {
-    if (!m_io) {
+    if (!m_deviceController->device()) {
         return;
     }
 
@@ -703,7 +690,7 @@ void Page::writeBytes()
     }
 
     if (!bytes.isEmpty()) {
-        m_io->inputBytes(bytes);
+        m_deviceController->device()->writeBytes(bytes);
     }
 }
 
@@ -751,8 +738,8 @@ void Page::setupMenu(QPushButton *target, QWidget *actionWidget)
 
 void Page::setUiEnabled(bool enabled)
 {
-    if (m_ioUi) {
-        m_ioUi->setUiEnabled(enabled);
+    if (m_deviceController) {
+        m_deviceController->setUiEnabled(enabled);
     }
 
     ui->comboBoxDeviceTypes->setEnabled(enabled);
@@ -843,11 +830,13 @@ void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
 
 void Page::saveControllerParameters()
 {
+#if 0
     if (m_ioUi != nullptr) {
         auto parameters = m_ioUi->save();
         int type = static_cast<int>(m_ioUi->type());
         m_settings->setValue(QString("controller_%1").arg(type), parameters);
     }
+#endif
 }
 
 void Page::loadControllerParameters()
@@ -855,7 +844,7 @@ void Page::loadControllerParameters()
     int type = ui->comboBoxDeviceTypes->currentData().toInt();
     auto parameters = m_settings->value(QString("controller_%1").arg(type));
     if (!parameters.isNull()) {
-        m_ioUi->load(parameters.toMap());
+        m_deviceController->load(parameters.toMap());
     }
 }
 
@@ -886,6 +875,7 @@ QByteArray Page::crc(const QByteArray &payload) const
     return CRC::calculate(ctx);
 }
 
+#if 0
 Device *Page::newDevice(int type)
 {
     switch (type) {
@@ -918,6 +908,7 @@ Device *Page::newDevice(int type)
         return nullptr;
     }
 }
+#endif
 
 DeviceUi *Page::newDeviceUi(int type)
 {

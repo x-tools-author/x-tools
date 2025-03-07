@@ -8,8 +8,10 @@
  **************************************************************************************************/
 #include "websocketclientui.h"
 
+#include "websocketclient.h"
+
 WebSocketClientUi::WebSocketClientUi(QWidget *parent)
-    : SocketClientUi(DeviceType::WebSocketClient, parent)
+    : SocketClientUi(parent)
 {
     setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);
@@ -17,6 +19,11 @@ WebSocketClientUi::WebSocketClientUi(QWidget *parent)
 }
 
 WebSocketClientUi::~WebSocketClientUi() {}
+
+Device *WebSocketClientUi::newDevice()
+{
+    return new WebSocketClient(this);
+}
 
 void WebSocketClientUi::setUiEnabled(bool enabled)
 {

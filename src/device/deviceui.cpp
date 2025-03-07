@@ -8,19 +8,62 @@
  **************************************************************************************************/
 #include "deviceui.h"
 
-#include "device/device.h"
+#include "common/xtools.h"
+#include "device.h"
 
-DeviceUi::DeviceUi(DeviceType type, QWidget *parent)
-    : AbstractIOUi(parent)
-    , m_type(type)
+DeviceUi::DeviceUi(QWidget *parent)
+    : QWidget(parent)
+    , m_device(nullptr)
 {}
 
-DeviceType DeviceUi::type() const
+DeviceUi::~DeviceUi()
 {
-    return m_type;
+    closeDevice();
 }
 
-QList<QWidget *> DeviceUi::communicationControllers()
+void DeviceUi::openDevice()
 {
-    return {};
+    closeDevice();
+
+    Device *device = this->device();
+    device->load(save());
+    device->openDevice();
+}
+
+void DeviceUi::closeDevice()
+{
+    if (m_device) {
+        m_device->closeDevice();
+    }
+
+    m_device = nullptr;
+}
+
+Device *DeviceUi::device()
+{
+    if (!m_device) {
+        m_device = newDevice();
+    }
+
+    return m_device;
+}
+
+QVariantMap DeviceUi::save() const
+{
+    return QVariantMap();
+}
+
+void DeviceUi::load(const QVariantMap &parameters)
+{
+    Q_UNUSED(parameters);
+}
+
+QList<QWidget *> DeviceUi::deviceControllers()
+{
+    return QList<QWidget *>();
+}
+
+void DeviceUi::setUiEnabled(bool enabled)
+{
+    Q_UNUSED(enabled);
 }

@@ -8,8 +8,10 @@
  **************************************************************************************************/
 #include "udpclientui.h"
 
+#include "udpclient.h"
+
 UdpClientUi::UdpClientUi(QWidget *parent)
-    : SocketClientUi(DeviceType::UdpClient, parent)
+    : SocketClientUi(parent)
 {
 #if 1
     setClientWidgetsVisible(true);
@@ -20,6 +22,11 @@ UdpClientUi::UdpClientUi(QWidget *parent)
 }
 
 UdpClientUi::~UdpClientUi() {}
+
+Device *UdpClientUi::newDevice()
+{
+    return new UdpClient(this);
+}
 
 void UdpClientUi::setUiEnabled(bool enabled)
 {
