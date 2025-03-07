@@ -351,7 +351,7 @@ void Page::initUi()
 {
 #if 0
     const QIcon icon = QIcon(":/res/icons/settings.svg");
-    ui->pushButtonCommunicationSettings->setIcon(icon);
+    ui->pushButtonDeviceSettings->setIcon(icon);
     ui->pushButtonOutputSettings->setIcon(icon);
     ui->pushButtonInputSettings->setIcon(icon);
 #endif
@@ -374,7 +374,7 @@ void Page::initUiDeviceControl()
             &Page::onDeviceTypeChanged);
     connect(ui->pushButtonDeviceOpen, &QPushButton::clicked, this, &Page::onOpenButtonClicked);
 
-    QPushButton *target = ui->pushButtonCommunicationSettings;
+    QPushButton *target = ui->pushButtonDeviceSettings;
     m_ioSettings = new DeviceSettings();
     setupMenu(target, m_ioSettings);
 
@@ -637,6 +637,8 @@ void Page::openDevice()
 #ifdef X_ENABLE_CHARTS
     m_charts->load(m_chartsUi->save());
 #endif
+    m_rxStatistician->reset();
+    m_txStatistician->reset();
     m_deviceController->openDevice();
 }
 
@@ -831,21 +833,19 @@ void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
 
 void Page::saveControllerParameters()
 {
-#if 0
-    if (m_ioUi != nullptr) {
-        auto parameters = m_ioUi->save();
-        int type = static_cast<int>(m_ioUi->type());
-        m_settings->setValue(QString("controller_%1").arg(type), parameters);
+    if (m_deviceController) {
+        auto parameters = m_deviceController->save();
+        m_settings->setValue(m_deviceController->metaObject()->className(), parameters);
     }
-#endif
 }
 
 void Page::loadControllerParameters()
 {
-    int type = ui->comboBoxDeviceTypes->currentData().toInt();
-    auto parameters = m_settings->value(QString("controller_%1").arg(type));
-    if (!parameters.isNull()) {
-        m_deviceController->load(parameters.toMap());
+    if (m_deviceController) {
+        auto parameters = m_settings->value(m_deviceController->metaObject()->className());
+        if (!parameters.isNull() && parameters.isValid()) {
+            m_deviceController->load(parameters.toMap());
+        }
     }
 }
 
@@ -875,41 +875,6 @@ QByteArray Page::crc(const QByteArray &payload) const
 
     return CRC::calculate(ctx);
 }
-
-#if 0
-Device *Page::newDevice(int type)
-{
-    switch (type) {
-#ifdef X_ENABLE_SERIAL_PORT
-    case static_cast<int>(DeviceType::SerialPort):
-        return new SerialPort(QCoreApplication::instance());
-#endif
-#ifdef X_ENABLE_BLUETOOTH
-    case static_cast<int>(DeviceType::BleCentral):
-        return new BleCentral(QCoreApplication::instance());
-#endif
-    case static_cast<int>(DeviceType::UdpClient):
-        return new UdpClient(QCoreApplication::instance());
-    case static_cast<int>(DeviceType::UdpServer):
-        return new UdpServer(QCoreApplication::instance());
-    case static_cast<int>(DeviceType::TcpClient):
-        return new TcpClient(QCoreApplication::instance());
-    case static_cast<int>(DeviceType::TcpServer):
-        return new TcpServer(QCoreApplication::instance());
-#ifdef X_ENABLE_WEB_SOCKET
-    case static_cast<int>(DeviceType::WebSocketClient):
-        return new WebSocketClient(QCoreApplication::instance());
-    case static_cast<int>(DeviceType::WebSocketServer):
-        return new WebSocketServer(QCoreApplication::instance());
-#endif
-    case static_cast<int>(DeviceType::ChartsTest):
-        return new ChartsTest(QCoreApplication::instance());
-    default:
-        qWarning("Unknown device type:%d", type);
-        return nullptr;
-    }
-}
-#endif
 
 DeviceUi *Page::newDeviceUi(int type)
 {

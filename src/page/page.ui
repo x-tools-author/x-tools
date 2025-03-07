@@ -174,7 +174,7 @@
       <item row="5" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QPushButton" name="pushButtonCommunicationSettings">
+         <widget class="QPushButton" name="pushButtonDeviceSettings">
           <property name="text">
            <string>Settings</string>
           </property>
@@ -490,7 +490,7 @@
  </customwidgets>
  <tabstops>
   <tabstop>comboBoxDeviceTypes</tabstop>
-  <tabstop>pushButtonCommunicationSettings</tabstop>
+  <tabstop>pushButtonDeviceSettings</tabstop>
   <tabstop>pushButtonDeviceOpen</tabstop>
   <tabstop>comboBoxOutputFormat</tabstop>
   <tabstop>checkBoxOutputRx</tabstop>

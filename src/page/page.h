@@ -120,8 +120,6 @@ private:
     DeviceUi *newDeviceUi(int type);
 
 private:
-    quint64 m_txBytes;
-    quint64 m_rxBytes;
     Ui::Page *ui;
     DeviceUi *m_deviceController;
     DeviceSettings *m_ioSettings;
@@ -135,14 +133,9 @@ private:
     Preset *m_preset;
     Emitter *m_emitter;
     Responder *m_responder;
-    QButtonGroup m_pageButtonGroup;
     QList<AbstractIO *> m_ioList;
     QSettings *m_settings;
 
-#ifdef X_ENABLE_SERIAL_PORT
-    SerialPortTransfer *m_serialPortTransfer;
-    SerialPortTransferUi *m_serialPortTransferUi;
-#endif
     UdpClientTransfer *m_udpClientTransfer;
     UdpClientTransferUi *m_udpClientTransferUi;
     UdpServerTransfer *m_udpServerTransfer;
@@ -151,6 +144,10 @@ private:
     TcpClientTransferUi *m_tcpClientTransferUi;
     TcpServerTransfer *m_tcpServerTransfer;
     TcpServerTransferUi *m_tcpServerTransferUi;
+#ifdef X_ENABLE_SERIAL_PORT
+    SerialPortTransfer *m_serialPortTransfer;
+    SerialPortTransferUi *m_serialPortTransferUi;
+#endif
 #ifdef X_ENABLE_WEB_SOCKET
     WebSocketClientTransfer *m_wsClientTransfer;
     WebSocketClientTransferUi *m_wsClientTransferUi;
