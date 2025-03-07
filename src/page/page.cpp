@@ -500,6 +500,7 @@ void Page::onDeviceTypeChanged()
         return;
     }
 
+    setupDevice(m_deviceController->device());
     loadControllerParameters();
     ui->verticalLayoutDeviceController->addWidget(m_deviceController);
 
@@ -563,19 +564,20 @@ void Page::onOpened()
     }
 
     setUiEnabled(false);
+    onCycleIntervalChanged();
+
     ui->pushButtonDeviceOpen->setEnabled(true);
     ui->pushButtonDeviceOpen->setText(tr("Close"));
-    onCycleIntervalChanged();
 }
 
 void Page::onClosed()
 {
+    m_writeTimer->stop();
     for (auto &io : m_ioList) {
         io->exit();
         io->wait();
     }
 
-    m_writeTimer->stop();
     setUiEnabled(true);
     ui->pushButtonDeviceOpen->setEnabled(true);
     ui->pushButtonDeviceOpen->setText(tr("Open"));
@@ -614,14 +616,12 @@ void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
 
 void Page::openDevice()
 {
-    Device *device = m_deviceController->device();
-    if (!device) {
+    if (!m_deviceController->device()) {
         qWarning() << "Failed to create device";
         return;
     }
 
     setUiEnabled(false);
-    setupDevice(device);
 
 #ifdef X_ENABLE_CHARTS
     m_charts->load(m_chartsUi->save());

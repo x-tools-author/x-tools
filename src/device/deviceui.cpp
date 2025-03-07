@@ -35,8 +35,6 @@ void DeviceUi::closeDevice()
     if (m_device) {
         m_device->closeDevice();
     }
-
-    m_device = nullptr;
 }
 
 Device *DeviceUi::device()
@@ -65,5 +63,5 @@ QList<QWidget *> DeviceUi::deviceControllers()
 
 void DeviceUi::setUiEnabled(bool enabled)
 {
-    Q_UNUSED(enabled);
+    setEnabled(enabled);
 }

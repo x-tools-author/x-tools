@@ -33,11 +33,6 @@ SerialPortUi::SerialPortUi(QWidget *parent)
     setupFlowControl(ui->comboBoxFlowControl);
 }
 
-Device *SerialPortUi::newDevice()
-{
-    return new SerialPort(this);
-}
-
 QVariantMap SerialPortUi::save() const
 {
     QVariantMap map;
@@ -71,6 +66,11 @@ void SerialPortUi::load(const QVariantMap &map)
     ui->comboBoxParity->setCurrentIndex(ui->comboBoxParity->findData(parity));
     ui->comboBoxStopBits->setCurrentIndex(ui->comboBoxStopBits->findData(stopBits));
     ui->comboBoxFlowControl->setCurrentIndex(ui->comboBoxFlowControl->findData(fc));
+}
+
+Device *SerialPortUi::newDevice()
+{
+    return new SerialPort(this);
 }
 
 void SerialPortUi::refresh()

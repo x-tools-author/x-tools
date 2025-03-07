@@ -219,9 +219,10 @@ QSplashScreen *Application::splashScreen()
         pixMap.fill(QColor(0x1f1f1f));
 
         QPainter painter(&pixMap);
-        painter.setPen(QColor(0x2d2d30));
+        painter.setPen(QColor(Qt::white));
         painter.setFont(font);
         painter.drawText(pixMap.rect(), Qt::AlignHCenter | Qt::AlignVCenter, displayName);
+        painter.setPen(QColor(0x1f2c9f));
         painter.drawRect(pixMap.rect() - QMargins(1, 1, 1, 1));
 
         splashScreen = new QSplashScreen(pixMap);
