@@ -100,7 +100,6 @@ include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/QXlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/hidapi-hidapi.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 
 # --------------------------------------------------------------------------------------------------
@@ -260,7 +259,6 @@ x_tools_deploy_qss(xTools)
 x_tools_install_glog(xTools)
 x_tools_install_qxlsx(xTools)
 x_tools_install_qmdns(xTools)
-x_tools_install_hidapi(xTools)
 x_tools_install_qrencode(xTools)
 
 target_link_libraries(xTools PRIVATE Qt${QT_VERSION_MAJOR}::CorePrivate)

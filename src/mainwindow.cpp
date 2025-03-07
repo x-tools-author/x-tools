@@ -386,7 +386,6 @@ void MainWindow::initHelpMenu()
     QList<QPair<QString, QString>> ctxs;
     ctxs.append(qMakePair(QString("glog"), QString("https://github.com/google/glog")));
     ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
-    ctxs.append(qMakePair(QString("hidapi"), QString("https://github.com/libusb/hidapi")));
     ctxs.append(qMakePair(QString("libqrencode"), QString("https://github.com/fukuchi/libqrencode")));
     ctxs.append(qMakePair(QString("qmdnsengine"), QString("https://github.com/nitroshare/qmdnsengine")));
     ctxs.append(qMakePair(QString("Qt-Advanced-Stylesheets"), QString("https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets")));
