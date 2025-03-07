@@ -24,7 +24,6 @@ public:
     virtual QVariantMap save() const;
     virtual void load(const QVariantMap &data);
 
-    bool isWorking();
     bool isEnable();
     void setIsEnable(bool enable);
 
@@ -37,7 +36,6 @@ signals:
     void isEnableChanged();
 
 protected:
-    std::atomic_bool m_isWorking{false};
     std::atomic_bool m_enable{true};
 
 private:

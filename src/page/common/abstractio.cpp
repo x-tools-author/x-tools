@@ -15,14 +15,6 @@
 AbstractIO::AbstractIO(QObject *parent)
     : QThread{parent}
 {
-    connect(this, &AbstractIO::started, this, [=]() {
-        this->m_isWorking = true;
-        emit this->isWorkingChanged();
-    });
-    connect(this, &AbstractIO::finished, this, [=]() {
-        this->m_isWorking = false;
-        emit this->isWorkingChanged();
-    });
     connect(this, &AbstractIO::errorOccurred, this, [=](const QString &errorString) {
         qWarning() << "Error occurred: " << errorString;
         exit();
@@ -65,11 +57,6 @@ void AbstractIO::load(const QVariantMap &data)
     m_parametersMutex.unlock();
 
     emit isEnableChanged();
-}
-
-bool AbstractIO::isWorking()
-{
-    return m_isWorking;
 }
 
 bool AbstractIO::isEnable()
