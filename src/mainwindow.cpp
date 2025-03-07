@@ -316,30 +316,18 @@ void MainWindow::initViewMenu()
     group->addAction(a2x1);
     group->addAction(a2x2);
 
-    if (m_windowGrid == WindowGrid::Grid1x1) {
-        a1x1->setChecked(true);
-    } else if (m_windowGrid == WindowGrid::Grid1x2) {
-        a1x2->setChecked(true);
-    } else if (m_windowGrid == WindowGrid::Grid2x1) {
-        a2x1->setChecked(true);
-    } else if (m_windowGrid == WindowGrid::Grid2x2) {
-        a2x2->setChecked(true);
-    }
-
     int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
     int windowGrid = xApp->settings()->value(m_settingsKey.windowGrid, defaultGrid).toInt();
+    m_windowGrid = static_cast<WindowGrid>(windowGrid);
+    updateGrid(m_windowGrid);
     if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
         a1x2->setChecked(true);
-        a1x2->trigger();
     } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x1)) {
         a2x1->setChecked(true);
-        a2x1->trigger();
     } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x2)) {
         a2x2->setChecked(true);
-        a2x2->trigger();
     } else {
         a1x1->setChecked(true);
-        a1x1->trigger();
     }
 }
 
