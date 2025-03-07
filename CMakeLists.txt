@@ -33,6 +33,12 @@ list(APPEND X_TOOLS_QT_COMPONENTS LinguistTools)
 find_package(QT NAMES Qt5 Qt6 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 
+# --------------------------------------------------------------------------------------------------
+# Check Qt version
+if(QT_VERSION VERSION_LESS "5.6.0")
+  message(FATAL_ERROR "Qt 5.6.0 or later is required")
+endif()
+
 # Qt 6.8.0 or later is recommended, or output a warning message
 if(QT_VERSION VERSION_LESS "6.8.0")
   message(WARNING "Qt 6.8.0 or later is recommended")

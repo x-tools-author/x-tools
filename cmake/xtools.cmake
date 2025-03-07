@@ -45,27 +45,42 @@ endfunction()
 # --------------------------------------------------------------------------------------------------
 # Generate translations files
 function(x_tools_generate_translations target)
-  if(QT_VERSION VERSION_LESS "6.2.0")
+  if(QT_VERSION VERSION_LESS "5.6.0")
     return()
   endif()
 
   set(APP_TS_FILES "")
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/res/translations/${target}_en.ts)
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/res/translations/${target}_zh_CN.ts)
-  # cmake-format: off
-  if(NOT QT_VERSION VERSION_LESS "6.7.0")
-    qt_add_lupdate(SOURCE_TARGETS ${target} TS_FILES ${APP_TS_FILES} LUPDATE_TARGET ${target}_lupdate NO_GLOBAL_TARGET)
-  else()
-    set(O_PATH "${CMAKE_CURRENT_SOURCE_DIR}/res/translations")
-    qt_add_lupdate(${target} TS_FILES ${APP_TS_FILES})
-  endif()
-  # cmake-format: on
 
-  set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR})
-  if(NOT QT_VERSION VERSION_LESS "6.7.0")
-    qt_add_lrelease(TS_FILES ${APP_TS_FILES} LRELEASE_TARGET ${target}_lrelease NO_GLOBAL_TARGET)
+  if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    if(QT_VERSION VERSION_LESS "6.2.0")
+      return()
+    endif()
+
+    # cmake-format: off
+    if(NOT QT_VERSION VERSION_LESS "6.7.0")
+      qt_add_lupdate(SOURCE_TARGETS ${target} TS_FILES ${APP_TS_FILES} LUPDATE_TARGET ${target}_lupdate NO_GLOBAL_TARGET)
+    else()
+      qt_add_lupdate(${target} TS_FILES ${APP_TS_FILES})
+    endif()
+    # cmake-format: on
+
+    set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR})
+    if(NOT QT_VERSION VERSION_LESS "6.7.0")
+      qt_add_lrelease(TS_FILES ${APP_TS_FILES} LRELEASE_TARGET ${target}_lrelease NO_GLOBAL_TARGET)
+    else()
+      qt_add_lrelease(${target} TS_FILES ${APP_TS_FILES})
+    endif()
   else()
-    qt_add_lrelease(${target} TS_FILES ${APP_TS_FILES})
+    if(QT_VERSION VERSION_LESS "5.6.0")
+      return()
+    endif()
+
+    # cmake-format: off
+    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${APP_TS_FILES} OPTIONS -no-obsolete TARGET ${target}_lupdate)
+    qt5_add_translation(QM_FILES ${APP_TS_FILES})
+    # cmake-format: on
   endif()
 
   add_custom_target(
