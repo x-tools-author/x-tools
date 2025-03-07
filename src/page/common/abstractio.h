@@ -17,14 +17,12 @@
 class AbstractIO : public QThread
 {
     Q_OBJECT
-    Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
-    Q_PROPERTY(bool isEnable READ isEnable WRITE setIsEnable NOTIFY isEnableChanged)
 public:
     explicit AbstractIO(QObject *parent = Q_NULLPTR);
     virtual ~AbstractIO();
-    virtual Q_INVOKABLE void inputBytes(const QByteArray &bytes);
-    Q_INVOKABLE virtual QVariantMap save() const;
-    Q_INVOKABLE virtual void load(const QVariantMap &data);
+    virtual void inputBytes(const QByteArray &bytes);
+    virtual QVariantMap save() const;
+    virtual void load(const QVariantMap &data);
 
     bool isWorking();
     bool isEnable();

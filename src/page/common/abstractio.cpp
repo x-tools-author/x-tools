@@ -24,7 +24,7 @@ AbstractIO::AbstractIO(QObject *parent)
         emit this->isWorkingChanged();
     });
     connect(this, &AbstractIO::errorOccurred, this, [=](const QString &errorString) {
-        qWarning() << "Error occured: " << errorString;
+        qWarning() << "Error occurred: " << errorString;
         exit();
         wait();
     });
