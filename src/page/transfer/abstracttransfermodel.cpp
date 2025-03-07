@@ -33,7 +33,7 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
     beginInsertRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {
         auto transfer = createTransfer();
-        connect(transfer, &Device::outputBytes, this, [=](const QByteArray &bytes) {
+        connect(transfer, &Device::bytesRead, this, [=](const QByteArray &bytes, const QString &) {
             for (auto &transferItem : this->m_transfers) {
                 if (transferItem.option == static_cast<int>(TransferType::Bidirectional)) {
                     emit outputBytes(bytes);
@@ -74,7 +74,7 @@ void AbstractTransferModel::inputBytes(const QByteArray &bytes)
 {
     for (auto &item : m_transfers) {
         if (item.option != static_cast<int>(TransferType::Disabled)) {
-            item.transfer->inputBytes(bytes);
+            item.transfer->writeBytes(bytes);
         }
     }
 }
@@ -82,7 +82,7 @@ void AbstractTransferModel::inputBytes(const QByteArray &bytes)
 void AbstractTransferModel::startAll()
 {
     for (auto &item : m_transfers) {
-        if (item.transfer->isEnable()) {
+        if (item.isEnable) {
             item.transfer->start();
         }
     }

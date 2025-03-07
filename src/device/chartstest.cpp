@@ -21,11 +21,6 @@ ChartsTest::ChartsTest(QObject *parent)
 
 ChartsTest::~ChartsTest() {}
 
-void ChartsTest::inputBytes(const QByteArray &bytes)
-{
-    Q_UNUSED(bytes);
-}
-
 void ChartsTest::run()
 {
     QTimer *timer = new QTimer();
@@ -47,7 +42,7 @@ void ChartsTest::run()
             emit bytesRead(generateTextXY(channels), flag);
         } else {
             qWarning() << "Invalid data format(test data)!";
-            emit outputBytes(QByteArray("Invalid data format(test data)!"));
+            emit errorOccurred(QString("Invalid data format(test data)!"));
         }
     });
 

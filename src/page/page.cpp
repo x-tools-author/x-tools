@@ -335,7 +335,7 @@ QToolButton *Page::presetToolButton()
 void Page::inputBytes(const QByteArray &bytes)
 {
     if (m_deviceController->device() && m_deviceController->device()->isRunning()) {
-        m_deviceController->device()->inputBytes(bytes);
+        m_deviceController->device()->writeBytes(bytes);
     }
 }
 
@@ -602,6 +602,23 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     m_rxStatistician->inputBytes(bytes);
     outputText(bytes, from, true);
 
+    m_responder->inputBytes(bytes);
+    m_udpClientTransfer->inputBytes(bytes);
+    m_udpServerTransfer->inputBytes(bytes);
+    m_tcpClientTransfer->inputBytes(bytes);
+    m_tcpServerTransfer->inputBytes(bytes);
+
+#ifdef X_ENABLE_SERIAL_PORT
+    m_serialPortTransfer->inputBytes(bytes);
+#endif
+#ifdef X_ENABLE_WEB_SOCKET
+    m_wsClientTransfer->inputBytes(bytes);
+    m_wsServerTransfer->inputBytes(bytes);
+#endif
+#ifdef X_ENABLE_CHARTS
+    m_charts->inputBytes(bytes);
+#endif
+
     emit bytesRead(bytes, from);
 }
 
@@ -642,31 +659,21 @@ void Page::setupDevice(Device *device)
     connect(device, &Device::bytesRead, this, &Page::onBytesRead);
     connect(device, &Device::errorOccurred, this, &Page::onErrorOccurred);
     connect(device, &Device::warningOccurred, this, &::Page::onWarningOccurred);
-    connect(device, &Device::outputBytes, m_responder, &Responder::inputBytes);
-    connect(device, &Device::outputBytes, m_udpClientTransfer, &UdpClientTransfer::inputBytes);
-    connect(device, &Device::outputBytes, m_udpServerTransfer, &UdpServerTransfer::inputBytes);
-    connect(device, &Device::outputBytes, m_tcpClientTransfer, &TcpClientTransfer::inputBytes);
-    connect(device, &Device::outputBytes, m_tcpServerTransfer, &TcpServerTransfer::inputBytes);
-    connect(m_preset, &Preset::outputBytes, device, &Device::inputBytes);
-    connect(m_emitter, &Preset::outputBytes, device, &Device::inputBytes);
-    connect(m_responder, &Responder::outputBytes, device, &Device::inputBytes);
-    connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, device, &Device::inputBytes);
-    connect(m_udpServerTransfer, &UdpServerTransfer::outputBytes, device, &Device::inputBytes);
-    connect(m_tcpClientTransfer, &TcpClientTransfer::outputBytes, device, &Device::inputBytes);
-    connect(m_tcpServerTransfer, &TcpServerTransfer::outputBytes, device, &Device::inputBytes);
+    connect(m_preset, &Preset::outputBytes, device, &Device::writeBytes);
+    connect(m_emitter, &Preset::outputBytes, device, &Device::writeBytes);
+    connect(m_responder, &Responder::outputBytes, device, &Device::writeBytes);
+    connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, device, &Device::writeBytes);
+    connect(m_udpServerTransfer, &UdpServerTransfer::outputBytes, device, &Device::writeBytes);
+    connect(m_tcpClientTransfer, &TcpClientTransfer::outputBytes, device, &Device::writeBytes);
+    connect(m_tcpServerTransfer, &TcpServerTransfer::outputBytes, device, &Device::writeBytes);
 
 #ifdef X_ENABLE_SERIAL_PORT
-    connect(device, &Device::outputBytes, m_serialPortTransfer, &SerialPortTransfer::inputBytes);
-    connect(m_serialPortTransfer, &SerialPortTransfer::outputBytes, device, &Device::inputBytes);
+
+    connect(m_serialPortTransfer, &SerialPortTransfer::outputBytes, device, &Device::writeBytes);
 #endif
 #ifdef X_ENABLE_WEB_SOCKET
-    connect(device, &Device::outputBytes, m_wsClientTransfer, &WebSocketClientTransfer::inputBytes);
-    connect(device, &Device::outputBytes, m_wsServerTransfer, &WebSocketServerTransfer::inputBytes);
-    connect(m_wsClientTransfer, &WebSocketClientTransfer::outputBytes, device, &Device::inputBytes);
-    connect(m_wsServerTransfer, &WebSocketServerTransfer::outputBytes, device, &Device::inputBytes);
-#endif
-#ifdef X_ENABLE_CHARTS
-    connect(device, &Device::outputBytes, m_charts, &Charts::inputBytes);
+    connect(m_wsClientTransfer, &WebSocketClientTransfer::outputBytes, device, &Device::writeBytes);
+    connect(m_wsServerTransfer, &WebSocketServerTransfer::outputBytes, device, &Device::writeBytes);
 #endif
 }
 

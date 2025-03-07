@@ -11,26 +11,8 @@
 #include <QDebug>
 
 Device::Device(QObject *parent)
-    : AbstractIO(parent)
-{
-    connect(this, &Device::started, this, [=]() {
-        this->m_isWorking = true;
-        emit this->isWorkingChanged();
-    });
-    connect(this, &Device::finished, this, [=]() {
-        this->m_isWorking = false;
-        emit this->isWorkingChanged();
-    });
-    connect(this, &Device::errorOccurred, this, [=](const QString &errorString) {
-        qWarning() << "Error occured: " << errorString;
-        exit();
-        wait();
-    });
-
-    connect(this, &Device::bytesRead, this, [=](const QByteArray &bytes, const QString &) {
-        emit outputBytes(bytes);
-    });
-}
+    : QThread(parent)
+{}
 
 Device::~Device()
 {
@@ -52,6 +34,16 @@ void Device::closeDevice()
 {
     exit();
     wait();
+}
+
+QVariantMap Device::save() const
+{
+    return m_parameters;
+}
+
+void Device::load(const QVariantMap &data)
+{
+    m_parameters = data;
 }
 
 void Device::run()

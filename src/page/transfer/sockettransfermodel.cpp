@@ -64,7 +64,7 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
         }
     } else if (role == Qt::EditRole) {
         if (column == 0) {
-            return item.transfer->isEnable();
+            return item.isEnable;
         } else if (column == 1) {
             return socketItem.clientAddress;
         } else if (column == 2) {

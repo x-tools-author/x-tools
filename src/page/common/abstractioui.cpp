@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "abstractioui.h"
 
-#include "device/device.h"
+#include "abstractio.h"
 
 AbstractIOUi::AbstractIOUi(QWidget *parent)
     : QWidget(parent)

@@ -37,6 +37,7 @@ protected:
         Device *transfer{nullptr};
         QString description;
         int option;
+        bool isEnable;
     };
     QList<Item> m_transfers;
     bool m_enableRestartTransfer{false};
