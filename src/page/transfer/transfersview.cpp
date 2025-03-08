@@ -8,17 +8,11 @@
  **************************************************************************************************/
 #include "transfersview.h"
 
-// #include "page/transfer/tcpclienttransfer.h"
-// #include "page/transfer/tcpclienttransferui.h"
-// #include "page/transfer/tcpservertransfer.h"
-// #include "page/transfer/tcpservertransferui.h"
-// #include "page/transfer/udpclienttransfer.h"
-// #include "page/transfer/udpclienttransferui.h"
-// #include "page/transfer/udpservertransfer.h"
-// #include "page/transfer/udpservertransferui.h"
+#include "socket/tcp/tcpclienttransferview.h"
+#include "socket/tcp/tcpservertransferview.h"
 
 #ifdef X_ENABLE_SERIAL_PORT
-#include "page/transfer/serialport/serialporttransferview.h"
+#include "serialport/serialporttransferview.h"
 #endif
 // #ifdef X_ENABLE_WEB_SOCKET
 // #include "device/websocketclient.h"
@@ -39,13 +33,23 @@
 TransfersView::TransfersView(QWidget *parent)
     : QTabWidget(parent)
 {
-#ifdef X_ENABLE_SERIAL_PORT
     TransfersContext ctx;
+#ifdef X_ENABLE_SERIAL_PORT
     auto serialPortTransfers = new SerialPortTransferView(this);
     ctx.name = tr("Serial Port");
     ctx.view = serialPortTransfers;
     m_transfersContextList.append(ctx);
 #endif
+
+    auto tcpClientTransfer = new TcpClientTransferView(this);
+    ctx.name = tr("TCP Client");
+    ctx.view = tcpClientTransfer;
+    m_transfersContextList.append(ctx);
+
+    auto tcpServerTransfer = new TcpServerTransferView(this);
+    ctx.name = tr("TCP Server");
+    ctx.view = tcpServerTransfer;
+    m_transfersContextList.append(ctx);
 
     for (auto &ctx : m_transfersContextList) {
         addTab(ctx.view, ctx.name);
@@ -93,7 +97,7 @@ QVariantMap TransfersView::save() const
 {
     QVariantMap map;
     for (auto &ctx : m_transfersContextList) {
-        map.insert(ctx.name, ctx.view->save());
+        map.insert(ctx.view->metaObject()->className(), ctx.view->save());
     }
 
     return map;
@@ -106,7 +110,7 @@ void TransfersView::load(const QVariantMap &data)
     }
 
     for (auto &ctx : m_transfersContextList) {
-        ctx.view->load(data.value(ctx.name).toMap());
+        ctx.view->load(data.value(ctx.view->metaObject()->className()).toMap());
     }
 }
 
