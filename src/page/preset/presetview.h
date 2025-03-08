@@ -8,30 +8,27 @@
  **************************************************************************************************/
 #pragma once
 
-#include "page/common/abstractmodelui.h"
 #include <QMenu>
 
-class AbstractIO;
+#include "page/common/tableview.h"
 
-class Preset;
-class PresetUi : public AbstractModelUi
+class PresetModel;
+class PresetView : public TableView
 {
     Q_OBJECT
 public:
-    explicit PresetUi(QWidget *parent = nullptr);
-    ~PresetUi();
+    explicit PresetView(QWidget *parent = nullptr);
+    ~PresetView();
     QMenu *menu();
-
-    void setupIO(AbstractIO *io) override;
 
 protected:
     QList<int> textItemColumns() const override;
 
 private:
     QMenu *m_menu{nullptr};
+    PresetModel *m_tableModel;
 
 private:
-    void didOutputBytes(int row);
-
+    void onActionTriggered(int row);
     void onDataChanged();
 };

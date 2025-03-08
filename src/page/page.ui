@@ -248,7 +248,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
@@ -435,7 +435,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="PresetUi" name="tabPresets">
+     <widget class="PresetView" name="tabPreset">
       <attribute name="title">
        <string>Presets</string>
       </attribute>
@@ -470,9 +470,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>PresetUi</class>
+   <class>PresetView</class>
    <extends>QWidget</extends>
-   <header location="global">page/preset/presetui.h</header>
+   <header location="global">page/preset/presetview.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

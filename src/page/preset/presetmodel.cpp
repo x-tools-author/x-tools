@@ -9,8 +9,40 @@
 #include "presetmodel.h"
 
 PresetModel::PresetModel(QObject *parent)
-    : QAbstractTableModel{parent}
+    : TableModel{parent}
 {}
+
+QVariantMap PresetModel::saveRow(const int row)
+{
+    if (row < 0 || row >= rowCount(QModelIndex())) {
+        qWarning() << "Invalid index row: " << row;
+        return QVariantMap();
+    }
+
+    QVariant var = data(index(row, 0), Qt::DisplayRole);
+    QString description = var.toString();
+
+    var = data(index(row, 1), Qt::EditRole);
+    QJsonObject item = var.toJsonObject();
+
+    QVariantMap map = item.toVariantMap();
+    map.insert("description", description);
+    return map;
+}
+
+void PresetModel::loadRow(const int row, const QVariantMap &item)
+{
+    if (row < 0 || row >= rowCount(QModelIndex())) {
+        qWarning() << "Invalid index row: " << row;
+        return;
+    }
+
+    QString description = item.value("description").toString();
+    setData(index(row, 0), description, Qt::EditRole);
+
+    QJsonObject json = QJsonObject::fromVariantMap(item);
+    setData(index(row, 1), json, Qt::EditRole);
+}
 
 int PresetModel::rowCount(const QModelIndex &parent) const
 {

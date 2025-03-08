@@ -8,17 +8,19 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QAbstractTableModel>
-
 #include "common/xtools.h"
+#include "page/common/tablemodel.h"
 
-class PresetModel : public QAbstractTableModel
+class PresetModel : public TableModel
 {
     Q_OBJECT
 public:
     explicit PresetModel(QObject *parent = nullptr);
 
 public:
+    QVariantMap saveRow(const int row) override;
+    void loadRow(const int row, const QVariantMap &item) override;
+
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;

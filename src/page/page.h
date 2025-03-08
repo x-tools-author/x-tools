@@ -23,7 +23,6 @@ class Page;
 }
 QT_END_NAMESPACE
 
-class Preset;
 class Responder;
 #ifdef X_ENABLE_SERIAL_PORT
 class SerialPortTransfer;
@@ -129,7 +128,6 @@ private:
     SyntaxHighlighter *m_highlighter;
     Statistician *m_rxStatistician;
     Statistician *m_txStatistician;
-    Preset *m_preset;
     Responder *m_responder;
     QList<AbstractIO *> m_ioList;
     QSettings *m_settings;

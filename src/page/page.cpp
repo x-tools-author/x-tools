@@ -27,7 +27,7 @@
 #include "device/udpserverui.h"
 #include "devicesettings.h"
 #include "emitter/emitterview.h"
-#include "page/preset/preset.h"
+#include "page/preset/presetview.h"
 #include "page/responder/responder.h"
 #include "page/transfer/tcpclienttransfer.h"
 #include "page/transfer/tcpclienttransferui.h"
@@ -114,7 +114,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     , m_writeTimer{new QTimer(this)}
     , m_updateLabelInfoTimer{new QTimer(this)}
     , m_highlighter{new SyntaxHighlighter(this)}
-    , m_preset{new Preset(this)}
     , m_responder{new Responder(this)}
 #ifdef X_ENABLE_SERIAL_PORT
     , m_serialPortTransfer(new SerialPortTransfer(this))
@@ -163,8 +162,8 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 #else
     ui->toolButtonCharts->setVisible(false);
 #endif
-    m_ioList << m_preset << m_responder << m_udpClientTransfer << m_udpServerTransfer
-             << m_tcpClientTransfer << m_tcpServerTransfer;
+    m_ioList << m_responder << m_udpClientTransfer << m_udpServerTransfer << m_tcpClientTransfer
+             << m_tcpServerTransfer;
 #ifdef X_ENABLE_SERIAL_PORT
     m_ioList << m_serialPortTransfer;
 #endif
@@ -226,7 +225,7 @@ QVariantMap Page::save()
     map.insert(g_keys.inputFormat, ui->comboBoxInputFormat->currentData());
     map.insert(g_keys.inputSettings, m_inputSettings->save());
 
-    map.insert(g_keys.presetItems, ui->tabPresets->save());
+    map.insert(g_keys.presetItems, ui->tabPreset->save());
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
     map.insert(g_keys.responserItems, ui->tabResponder->save());
 #ifdef X_ENABLE_SERIAL_PORT
@@ -296,7 +295,7 @@ void Page::load(const QVariantMap &parameters)
     m_inputSettings->load(inputSettings);
 
     // clang-format off
-    ui->tabPresets->load(parameters.value(g_keys.presetItems).toMap());
+    ui->tabPreset->load(parameters.value(g_keys.presetItems).toMap());
     ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
     ui->tabResponder->load(parameters.value(g_keys.responserItems).toMap());
 #ifdef X_ENABLE_SERIAL_PORT
@@ -447,7 +446,6 @@ void Page::initUiOutput()
     ui->tabWidgetTransfers->addTab(m_wsClientTransferUi, tr("WebSocket Client"));
     ui->tabWidgetTransfers->addTab(m_wsServerTransferUi, tr("WebSocket Server"));
 #endif
-    ui->tabPresets->setupIO(m_preset);
     ui->tabResponder->setupIO(m_responder);
 #ifdef X_ENABLE_SERIAL_PORT
     m_serialPortTransferUi->setupIO(m_serialPortTransfer);
@@ -465,7 +463,7 @@ void Page::initUiOutput()
 #endif
 
     ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
-    ui->toolButtonInputPreset->setMenu(ui->tabPresets->menu());
+    ui->toolButtonInputPreset->setMenu(ui->tabPreset->menu());
     ui->tabWidget->setCurrentIndex(0);
     ui->tabWidgetTransfers->setCurrentIndex(0);
 }
@@ -653,7 +651,7 @@ void Page::setupDevice(Device *device)
     connect(device, &Device::bytesRead, this, &Page::onBytesRead);
     connect(device, &Device::errorOccurred, this, &Page::onErrorOccurred);
     connect(device, &Device::warningOccurred, this, &::Page::onWarningOccurred);
-    connect(m_preset, &Preset::outputBytes, device, &Device::writeBytes);
+    connect(ui->tabPreset, &PresetView::outputBytes, device, &Device::writeBytes);
     connect(ui->tabEmitter, &EmitterView::outputBytes, device, &Device::writeBytes);
     connect(m_responder, &Responder::outputBytes, device, &Device::writeBytes);
     connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, device, &Device::writeBytes);

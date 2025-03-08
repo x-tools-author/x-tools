@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "presetui.h"
+#include "presetview.h"
 
 #include <QFile>
 #include <QHeaderView>
@@ -19,62 +19,61 @@
 #include <QTableView>
 
 #include "common/xtools.h"
-#include "page/common/abstractmodelio.h"
 #include "page/utilities/menu.h"
+#include "presetmodel.h"
 
-PresetUi::PresetUi(QWidget *parent)
-    : AbstractModelUi(parent)
+PresetView::PresetView(QWidget *parent)
+    : TableView(parent)
 {
     m_menu = new Menu();
-    setDisableCheckBoxVisible(false);
+
+    setIdDisableCheckBoxVisible(false);
+
+    m_tableModel = new PresetModel(this);
+    connect(m_tableModel, &QAbstractTableModel::dataChanged, this, &PresetView::onDataChanged);
+    connect(m_tableModel, &QAbstractTableModel::rowsRemoved, this, &PresetView::onDataChanged);
+    connect(m_tableModel, &QAbstractTableModel::rowsInserted, this, &PresetView::onDataChanged);
+    setTableModel(m_tableModel);
 
     auto *tv = tableView();
     auto hHeader = tv->horizontalHeader();
     hHeader->setStretchLastSection(true);
 }
 
-PresetUi::~PresetUi() {}
+PresetView::~PresetView() {}
 
-QMenu *PresetUi::menu()
+QMenu *PresetView::menu()
 {
     return m_menu;
 }
 
-void PresetUi::setupIO(AbstractIO *io)
-{
-    AbstractModelUi::setupIO(io);
-    connect(m_model, &QAbstractTableModel::dataChanged, this, &PresetUi::onDataChanged);
-    connect(m_model, &QAbstractTableModel::rowsRemoved, this, &PresetUi::onDataChanged);
-    connect(m_model, &QAbstractTableModel::rowsInserted, this, &PresetUi::onDataChanged);
-}
-
-QList<int> PresetUi::textItemColumns() const
+QList<int> PresetView::textItemColumns() const
 {
     return QList<int>{1};
 }
 
-void PresetUi::didOutputBytes(int row)
+void PresetView::onActionTriggered(int row)
 {
-    auto rows = m_model->rowCount();
+    auto rows = m_tableModel->rowCount(QModelIndex());
     if (row < 0 || row >= rows) {
         return;
     }
 
-    QModelIndex index = m_model->index(row, 1);
-    QJsonObject rawItem = m_model->data(index, Qt::EditRole).toJsonObject();
+    QModelIndex index = m_tableModel->index(row, 1);
+    QJsonObject rawItem = m_tableModel->data(index, Qt::EditRole).toJsonObject();
     TextItem textItem = loadTextItem(rawItem);
     QByteArray bytes = textItem2array(textItem);
-    emit m_io->outputBytes(bytes);
+    emit outputBytes(bytes);
 }
 
-void PresetUi::onDataChanged()
+void PresetView::onDataChanged()
 {
     m_menu->clear();
-    int rows = m_model->rowCount();
+    int rows = m_tableModel->rowCount(QModelIndex());
 
     for (int i = 0; i < rows; ++i) {
-        auto index = m_model->index(i, 0);
-        auto text = m_model->data(index, Qt::DisplayRole).toString();
-        m_menu->addAction(text, this, [=]() { didOutputBytes(i); });
+        auto index = m_tableModel->index(i, 0);
+        auto text = m_tableModel->data(index, Qt::DisplayRole).toString();
+        m_menu->addAction(text, this, [=]() { onActionTriggered(i); });
     }
 }
