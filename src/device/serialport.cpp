@@ -76,7 +76,7 @@ void SerialPort::deinitDevice()
     }
 }
 
-void SerialPort::writeBytes(const QByteArray &bytes)
+void SerialPort::writeActually(const QByteArray &bytes)
 {
     if (m_serialPort) {
         qint64 ret = m_serialPort->write(bytes);

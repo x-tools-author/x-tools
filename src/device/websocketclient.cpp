@@ -61,7 +61,7 @@ void WebSocketClient::deinitDevice()
     m_webSocket = nullptr;
 }
 
-void WebSocketClient::writeBytes(const QByteArray &bytes)
+void WebSocketClient::writeActually(const QByteArray &bytes)
 {
     if (m_channel == static_cast<int>(WebSocketDataChannel::Text)) {
         if (m_webSocket->sendTextMessage(QString::fromUtf8(bytes)) > 0) {

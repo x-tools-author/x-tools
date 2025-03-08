@@ -21,12 +21,12 @@ public:
 
     void openDevice();
     void closeDevice();
+    void writeBytes(const QByteArray &bytes);
 
     virtual QVariantMap save() const;
     virtual void load(const QVariantMap &data);
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};
-    virtual void writeBytes(const QByteArray &bytes) { Q_UNUSED(bytes); };
 
 signals:
     void opened();
@@ -40,6 +40,7 @@ signals:
 
 protected:
     void run() override;
+    virtual void writeActually(const QByteArray &bytes) { Q_UNUSED(bytes); };
 
 private:
     Q_SIGNAL void invokeWriteBytes(const QByteArray &bytes);

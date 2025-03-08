@@ -21,7 +21,7 @@ public:
 
     QObject *initDevice() override;
     void deinitDevice() override;
-    void writeBytes(const QByteArray &bytes) override;
+    void writeActually(const QByteArray &bytes) override;
 
 private:
     QUdpSocket *m_udpSocket{nullptr};

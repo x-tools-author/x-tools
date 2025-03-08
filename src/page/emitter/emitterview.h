@@ -8,28 +8,22 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QMutex>
-
-#include "page/common/abstractmodelio.h"
+#include "page/common/tableview.h"
 
 class EmitterModel;
-class Emitter : public AbstractModelIO
+class EmitterView : public TableView
 {
     Q_OBJECT
 public:
-    explicit Emitter(QObject *parent = Q_NULLPTR);
-
-    QVariant tableModel() const override;
-    QVariantMap saveItem(const int row) const override;
-    void loadItem(const int row, const QVariantMap &item) override;
-    void inputBytes(const QByteArray &bytes) override;
+    explicit EmitterView(QWidget *parent = nullptr);
+    ~EmitterView();
 
 protected:
-    void run() override;
+    QList<int> textItemColumns() const override;
 
 private:
-    EmitterModel *m_tableModel{nullptr};
+    void try2Output();
 
 private:
-    void try2Emit();
+    EmitterModel *m_tableModel;
 };

@@ -36,6 +36,13 @@ void Device::closeDevice()
     wait();
 }
 
+void Device::writeBytes(const QByteArray &bytes)
+{
+    if (isRunning()) {
+        emit invokeWriteBytes(bytes);
+    }
+}
+
 QVariantMap Device::save() const
 {
     return m_parameters;
@@ -56,7 +63,7 @@ void Device::run()
     }
 
     connect(this, &Device::invokeWriteBytes, obj, [this](const QByteArray &bytes) {
-        writeBytes(bytes);
+        writeActually(bytes);
     });
 
     emit opened();

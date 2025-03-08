@@ -21,7 +21,7 @@ public:
 
     QObject *initDevice() override;
     void deinitDevice() override;
-    void writeBytes(const QByteArray &bytes) override;
+    void writeActually(const QByteArray &bytes) override;
 
 private:
     QWebSocketServer *m_webSocketServer{nullptr};
@@ -29,7 +29,7 @@ private:
 
 private:
     void setupSocket(QWebSocket *socket);
-    void writeBytes(QWebSocket *socket, const QByteArray &bytes);
+    void writeActually(QWebSocket *socket, const QByteArray &bytes);
 
     void onTextMessageReceived(QWebSocket *socket, const QString &message);
     void onBinaryMessageReceived(QWebSocket *socket, const QByteArray &message);

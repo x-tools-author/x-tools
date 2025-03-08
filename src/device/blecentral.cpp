@@ -68,7 +68,7 @@ void BleCentral::deinitDevice()
     m_controller = nullptr;
 }
 
-void BleCentral::writeBytes(const QByteArray &bytes)
+void BleCentral::writeActually(const QByteArray &bytes)
 {
     QVariantMap parameters = save();
     auto service = parameters["service"].value<QLowEnergyService *>();

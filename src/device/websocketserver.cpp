@@ -56,17 +56,17 @@ void WebSocketServer::deinitDevice()
     }
 }
 
-void WebSocketServer::writeBytes(const QByteArray &bytes)
+void WebSocketServer::writeActually(const QByteArray &bytes)
 {
     QString currentFlag = currentClientFlag();
     if (currentFlag.isEmpty()) {
         for (auto &socket : m_sockets) {
-            writeBytes(socket, bytes);
+            writeActually(socket, bytes);
         }
     } else {
         for (auto &socket : m_sockets) {
             if (currentFlag == makeFlag(socket->peerAddress().toString(), socket->peerPort())) {
-                writeBytes(socket, bytes);
+                writeActually(socket, bytes);
                 break;
             }
         }
@@ -94,7 +94,7 @@ void WebSocketServer::setupSocket(QWebSocket *socket)
     });
 }
 
-void WebSocketServer::writeBytes(QWebSocket *socket, const QByteArray &bytes)
+void WebSocketServer::writeActually(QWebSocket *socket, const QByteArray &bytes)
 {
     const QString flag = makeFlag(socket->peerAddress().toString(), socket->peerPort());
     if (m_channel == static_cast<int>(WebSocketDataChannel::Binary)) {

@@ -9,8 +9,57 @@
 #include "emittermodel.h"
 
 EmitterModel::EmitterModel(QObject *parent)
-    : QAbstractTableModel{parent}
+    : TableModel{parent}
 {}
+
+QVariantMap EmitterModel::saveRow(const int row)
+{
+    if (row < 0 || row >= rowCount(QModelIndex())) {
+        qWarning() << "Invalid index row: " << row;
+        return QVariantMap();
+    }
+
+    QVariant var = data(index(row, 0), Qt::EditRole);
+    bool enable = var.toBool();
+
+    var = data(index(row, 1), Qt::DisplayRole);
+    QString description = var.toString();
+
+    var = data(index(row, 2), Qt::EditRole);
+    int interval = var.toInt();
+
+    var = data(index(row, 3), Qt::EditRole);
+    QJsonObject item = var.toJsonObject();
+
+    ItemKeys keys;
+    QVariantMap map;
+    map.insert(keys.textItem, item.toVariantMap());
+    map.insert(keys.description, description);
+    map.insert(keys.interval, interval);
+    map.insert(keys.enable, enable);
+    return map;
+}
+
+void EmitterModel::loadRow(const int row, const QVariantMap &item)
+{
+    if (row < 0 || row >= rowCount(QModelIndex())) {
+        qWarning() << "Invalid index row: " << row;
+        return;
+    }
+
+    ItemKeys keys;
+    bool enable = item.value(keys.enable).toBool();
+    setData(index(row, 0), enable, Qt::EditRole);
+
+    QString description = item.value(keys.description).toString();
+    setData(index(row, 1), description, Qt::EditRole);
+
+    int interval = item.value(keys.interval).toInt();
+    setData(index(row, 2), interval, Qt::EditRole);
+
+    QJsonObject json = item.value(keys.textItem).toJsonObject();
+    setData(index(row, 3), json, Qt::EditRole);
+}
 
 int EmitterModel::rowCount(const QModelIndex &parent) const
 {
@@ -43,7 +92,7 @@ QVariant EmitterModel::data(const QModelIndex &index, int role) const
         } else if (column == 2) {
             return item.interval;
         } else if (column == 3) {
-            return textItem2string(item.textContext);
+            return textItem2string(item.textItem);
         }
     } else if (role == Qt::EditRole) {
         if (column == 0) {
@@ -53,7 +102,7 @@ QVariant EmitterModel::data(const QModelIndex &index, int role) const
         } else if (column == 2) {
             return item.interval;
         } else if (column == 3) {
-            return saveTextItem(item.textContext);
+            return saveTextItem(item.textItem);
         }
     } else if (role == Qt::TextAlignmentRole) {
         if (column == 0 || column == 1 || column == 2) {
@@ -84,7 +133,7 @@ bool EmitterModel::setData(const QModelIndex &index, const QVariant &value, int 
             item.interval = value.toInt();
             item.interval = qMax(100, item.interval);
         } else if (column == 3) {
-            item.textContext = loadTextItem(value.toJsonObject());
+            item.textItem = loadTextItem(value.toJsonObject());
         } else {
             result = false;
         }

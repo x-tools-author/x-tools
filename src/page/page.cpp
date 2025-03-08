@@ -26,7 +26,7 @@
 #include "device/udpserver.h"
 #include "device/udpserverui.h"
 #include "devicesettings.h"
-#include "page/emitter/emitter.h"
+#include "emitter/emitterview.h"
 #include "page/preset/preset.h"
 #include "page/responder/responder.h"
 #include "page/transfer/tcpclienttransfer.h"
@@ -115,7 +115,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     , m_updateLabelInfoTimer{new QTimer(this)}
     , m_highlighter{new SyntaxHighlighter(this)}
     , m_preset{new Preset(this)}
-    , m_emitter{new Emitter(this)}
     , m_responder{new Responder(this)}
 #ifdef X_ENABLE_SERIAL_PORT
     , m_serialPortTransfer(new SerialPortTransfer(this))
@@ -164,7 +163,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 #else
     ui->toolButtonCharts->setVisible(false);
 #endif
-    m_ioList << m_preset << m_emitter << m_responder << m_udpClientTransfer << m_udpServerTransfer
+    m_ioList << m_preset << m_responder << m_udpClientTransfer << m_udpServerTransfer
              << m_tcpClientTransfer << m_tcpServerTransfer;
 #ifdef X_ENABLE_SERIAL_PORT
     m_ioList << m_serialPortTransfer;
@@ -449,7 +448,6 @@ void Page::initUiOutput()
     ui->tabWidgetTransfers->addTab(m_wsServerTransferUi, tr("WebSocket Server"));
 #endif
     ui->tabPresets->setupIO(m_preset);
-    ui->tabEmitter->setupIO(m_emitter);
     ui->tabResponder->setupIO(m_responder);
 #ifdef X_ENABLE_SERIAL_PORT
     m_serialPortTransferUi->setupIO(m_serialPortTransfer);
@@ -656,7 +654,7 @@ void Page::setupDevice(Device *device)
     connect(device, &Device::errorOccurred, this, &Page::onErrorOccurred);
     connect(device, &Device::warningOccurred, this, &::Page::onWarningOccurred);
     connect(m_preset, &Preset::outputBytes, device, &Device::writeBytes);
-    connect(m_emitter, &Preset::outputBytes, device, &Device::writeBytes);
+    connect(ui->tabEmitter, &EmitterView::outputBytes, device, &Device::writeBytes);
     connect(m_responder, &Responder::outputBytes, device, &Device::writeBytes);
     connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, device, &Device::writeBytes);
     connect(m_udpServerTransfer, &UdpServerTransfer::outputBytes, device, &Device::writeBytes);

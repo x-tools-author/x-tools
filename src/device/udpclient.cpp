@@ -65,7 +65,7 @@ void UdpClient::deinitDevice()
     m_udpSocket = nullptr;
 }
 
-void UdpClient::writeBytes(const QByteArray &bytes)
+void UdpClient::writeActually(const QByteArray &bytes)
 {
     if (m_enableMulticast) {
         writeDatagram(bytes, m_multicastAddress, m_multicastPort);

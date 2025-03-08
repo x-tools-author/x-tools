@@ -47,17 +47,17 @@ void TcpServer::deinitDevice()
     m_tcpServer = nullptr;
 }
 
-void TcpServer::writeBytes(const QByteArray &bytes)
+void TcpServer::writeActually(const QByteArray &bytes)
 {
     QString flag = currentClientFlag();
     if (flag.isEmpty()) {
         for (auto client : m_sockets) {
-            writeBytes(client, bytes);
+            writeActually(client, bytes);
         }
     } else {
         for (auto client : m_sockets) {
             if (makeFlag(client->peerAddress().toString(), client->peerPort()) == flag) {
-                writeBytes(client, bytes);
+                writeActually(client, bytes);
                 break;
             }
         }
@@ -74,7 +74,7 @@ void TcpServer::disconnectAllClients()
     m_sockets.clear();
 }
 
-void TcpServer::writeBytes(QTcpSocket *socket, const QByteArray &bytes)
+void TcpServer::writeActually(QTcpSocket *socket, const QByteArray &bytes)
 {
     qint64 ret = socket->write(bytes);
     if (ret == bytes.length()) {

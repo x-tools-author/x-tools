@@ -8,16 +8,19 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QAbstractTableModel>
 #include <QMutex>
 
 #include "common/xtools.h"
+#include "page/common/tablemodel.h"
 
-class EmitterModel : public QAbstractTableModel
+class EmitterModel : public TableModel
 {
     Q_OBJECT
 public:
     explicit EmitterModel(QObject *parent = nullptr);
+
+    QVariantMap saveRow(const int row) override;
+    void loadRow(const int row, const QVariantMap &item) override;
 
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
@@ -38,9 +41,16 @@ private:
         bool enable{true};
         QString description{"Demo"};
         int interval{1000};
-        TextItem textContext;
+        TextItem textItem;
 
         int elapsedTime{0};
+    };
+    struct ItemKeys
+    {
+        const QString enable{"enable"};
+        const QString description{"description"};
+        const QString interval{"interval"};
+        QString textItem{"textItem"};
     };
 
 private:

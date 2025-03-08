@@ -21,7 +21,7 @@ public:
 
     QObject *initDevice() override;
     void deinitDevice() override;
-    void writeBytes(const QByteArray &bytes) override;
+    void writeActually(const QByteArray &bytes) override;
 
     void disconnectAllClients() override;
 
@@ -31,7 +31,7 @@ private:
 
 private:
     void setupClient(QTcpSocket *socket);
-    void writeBytes(QTcpSocket *socket, const QByteArray &bytes);
+    void writeActually(QTcpSocket *socket, const QByteArray &bytes);
     void readBytes(QTcpSocket *socket);
     void removeSocket(QTcpSocket *socket);
 };

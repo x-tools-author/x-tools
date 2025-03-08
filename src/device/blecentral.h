@@ -24,7 +24,7 @@ public:
 
     QObject *initDevice() override;
     void deinitDevice() override;
-    void writeBytes(const QByteArray &bytes) override;
+    void writeActually(const QByteArray &bytes) override;
 
     QList<QBluetoothUuid> services() const;
     QString serviceName(const QBluetoothUuid &uuid) const;
