@@ -38,6 +38,10 @@ TextItemEditor::~TextItemEditor()
 QJsonObject TextItemEditor::save() const
 {
     QString text = ui->lineEditInput->text();
+    if (text.isEmpty()) {
+        text = ui->lineEditInput->placeholderText();
+    }
+
     int prefix = ui->comboBoxPrefix->currentData().toInt();
     int suffix = ui->comboBoxSuffix->currentData().toInt();
     int escapeCharacter = ui->comboBoxEscapeCharacter->currentData().toInt();
@@ -87,6 +91,8 @@ void TextItemEditor::load(const QJsonObject &parameters)
     int suffixIndex = ui->comboBoxSuffix->findData(suffix);
     int escapeCharacterIndex = ui->comboBoxEscapeCharacter->findData(escapeCharacter);
     int crcAlgorithmIndex = ui->comboBoxAlgorithm->findData(crcAlgorithm);
+
+    ui->lineEditInput->setPlaceholderText(bytes2string(QByteArray("(null)"), format));
 
     ui->comboBoxPrefix->setCurrentIndex(prefixIndex);
     ui->comboBoxSuffix->setCurrentIndex(suffixIndex);
