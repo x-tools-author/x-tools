@@ -8,16 +8,12 @@
  **************************************************************************************************/
 #pragma once
 
-#include "page/transfer/socket/sockettransfermodel.h"
+#include "page/transfer/socket/sockettransferview.h"
 
-class UdpClientTransferModel : public SocketTransferModel
+class WsServerTransferView : public SocketTransferView
 {
     Q_OBJECT
 public:
-    UdpClientTransferModel(QObject *parent = nullptr);
-    ~UdpClientTransferModel() override;
-
-protected:
-    Socket *createSocket() override;
-    bool isEnableRestartColumn(int column) const override;
+    WsServerTransferView(QWidget *parent = nullptr);
+    ~WsServerTransferView() override;
 };

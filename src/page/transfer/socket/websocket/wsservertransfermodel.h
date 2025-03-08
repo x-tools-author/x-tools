@@ -10,12 +10,12 @@
 
 #include "page/transfer/socket/sockettransfermodel.h"
 
-class UdpClientTransferModel : public SocketTransferModel
+class WsServerTransferModel : public SocketTransferModel
 {
     Q_OBJECT
 public:
-    UdpClientTransferModel(QObject *parent = nullptr);
-    ~UdpClientTransferModel() override;
+    WsServerTransferModel(QObject *parent = nullptr);
+    ~WsServerTransferModel() override;
 
 protected:
     Socket *createSocket() override;

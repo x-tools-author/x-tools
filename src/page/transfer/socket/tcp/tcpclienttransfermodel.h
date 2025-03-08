@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "page/transfer/socket/common/sockettransfermodel.h"
+#include "page/transfer/socket/sockettransfermodel.h"
 
 class TcpClientTransferModel : public SocketTransferModel
 {

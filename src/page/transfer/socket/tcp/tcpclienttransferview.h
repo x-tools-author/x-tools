@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "page/transfer/socket/common/sockettransferview.h"
+#include "page/transfer/socket/sockettransferview.h"
 
 class TcpClientTransferView : public SocketTransferView
 {
