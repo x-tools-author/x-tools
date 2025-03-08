@@ -11,8 +11,71 @@
 #include <QStandardItem>
 
 ResponderModel::ResponderModel(QObject *parent)
-    : QAbstractTableModel{parent}
+    : TableModel{parent}
 {}
+
+QVariantMap ResponderModel::saveRow(const int row)
+{
+    if (row < 0 || row >= rowCount(QModelIndex())) {
+        qWarning() << "Invalid index row: " << row;
+        return QVariantMap();
+    }
+
+    QVariant var = data(index(row, 0), Qt::DisplayRole);
+    bool enable = var.toBool();
+
+    var = data(index(row, 1), Qt::DisplayRole);
+    QString description = var.toString();
+
+    var = data(index(row, 2), Qt::EditRole);
+    int option = var.toInt();
+
+    var = data(index(row, 3), Qt::EditRole);
+    int delay = var.toInt();
+
+    var = data(index(row, 4), Qt::EditRole);
+    QJsonObject referenceItem = var.toJsonObject();
+
+    var = data(index(row, 4), Qt::EditRole);
+    QJsonObject responseItem = var.toJsonObject();
+
+    QVariantMap map;
+    ItemKeys keys;
+    map.insert(keys.enable, enable);
+    map.insert(keys.description, description);
+    map.insert(keys.option, option);
+    map.insert(keys.delay, delay);
+    map.insert(keys.reference, referenceItem);
+    map.insert(keys.response, responseItem);
+    return map;
+}
+
+void ResponderModel::loadRow(const int row, const QVariantMap &item)
+{
+    if (row < 0 || row >= rowCount(QModelIndex())) {
+        qWarning() << "Invalid index row: " << row;
+        return;
+    }
+
+    ItemKeys keys;
+    bool enable = item.value(keys.enable).toBool();
+    setData(index(row, 0), enable, Qt::EditRole);
+
+    QString description = item.value(keys.description).toString();
+    setData(index(row, 1), description, Qt::EditRole);
+
+    int option = item.value(keys.option).toInt();
+    setData(index(row, 2), option, Qt::EditRole);
+
+    int interval = item.value(keys.delay).toInt();
+    setData(index(row, 3), interval, Qt::EditRole);
+
+    QJsonObject json = item.value(keys.reference).toJsonObject();
+    setData(index(row, 4), json, Qt::EditRole);
+
+    json = item.value(keys.response).toJsonObject();
+    setData(index(row, 5), json, Qt::EditRole);
+}
 
 int ResponderModel::rowCount(const QModelIndex &parent) const
 {
@@ -175,7 +238,7 @@ Qt::ItemFlags ResponderModel::flags(const QModelIndex &index) const
 {
     int column = index.column();
     if (column == 0) {
-        return QAbstractTableModel::flags(index) | Qt::ItemIsUserCheckable;
+        return QAbstractTableModel::flags(index) | Qt::ItemIsUserCheckable | Qt::ItemIsEditable;
     } else if (column == 1 || column == 2 || column == 3) {
         return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
     } else {

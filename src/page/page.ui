@@ -248,7 +248,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
@@ -445,7 +445,7 @@
        <string>Emitter</string>
       </attribute>
      </widget>
-     <widget class="ResponserUi" name="tabResponder">
+     <widget class="ResponderView" name="tabResponder">
       <attribute name="title">
        <string>Responder</string>
       </attribute>
@@ -476,9 +476,9 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>ResponserUi</class>
+   <class>ResponderView</class>
    <extends>QWidget</extends>
-   <header location="global">page/responder/responserui.h</header>
+   <header location="global">page/responder/responderview.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

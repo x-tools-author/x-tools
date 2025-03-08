@@ -28,7 +28,7 @@
 #include "devicesettings.h"
 #include "emitter/emitterview.h"
 #include "page/preset/presetview.h"
-#include "page/responder/responder.h"
+#include "page/responder/responderview.h"
 #include "page/transfer/tcpclienttransfer.h"
 #include "page/transfer/tcpclienttransferui.h"
 #include "page/transfer/tcpservertransfer.h"
@@ -114,7 +114,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     , m_writeTimer{new QTimer(this)}
     , m_updateLabelInfoTimer{new QTimer(this)}
     , m_highlighter{new SyntaxHighlighter(this)}
-    , m_responder{new Responder(this)}
 #ifdef X_ENABLE_SERIAL_PORT
     , m_serialPortTransfer(new SerialPortTransfer(this))
     , m_serialPortTransferUi(new SerialPortTransferUi(this))
@@ -162,7 +161,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 #else
     ui->toolButtonCharts->setVisible(false);
 #endif
-    m_ioList << m_responder << m_udpClientTransfer << m_udpServerTransfer << m_tcpClientTransfer
+    m_ioList << m_udpClientTransfer << m_udpServerTransfer << m_tcpClientTransfer
              << m_tcpServerTransfer;
 #ifdef X_ENABLE_SERIAL_PORT
     m_ioList << m_serialPortTransfer;
@@ -446,7 +445,6 @@ void Page::initUiOutput()
     ui->tabWidgetTransfers->addTab(m_wsClientTransferUi, tr("WebSocket Client"));
     ui->tabWidgetTransfers->addTab(m_wsServerTransferUi, tr("WebSocket Server"));
 #endif
-    ui->tabResponder->setupIO(m_responder);
 #ifdef X_ENABLE_SERIAL_PORT
     m_serialPortTransferUi->setupIO(m_serialPortTransfer);
 #endif
@@ -592,7 +590,7 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     m_rxStatistician->inputBytes(bytes);
     outputText(bytes, from, true);
 
-    m_responder->inputBytes(bytes);
+    ui->tabResponder->inputBytes(bytes);
     m_udpClientTransfer->inputBytes(bytes);
     m_udpServerTransfer->inputBytes(bytes);
     m_tcpClientTransfer->inputBytes(bytes);
@@ -653,14 +651,13 @@ void Page::setupDevice(Device *device)
     connect(device, &Device::warningOccurred, this, &::Page::onWarningOccurred);
     connect(ui->tabPreset, &PresetView::outputBytes, device, &Device::writeBytes);
     connect(ui->tabEmitter, &EmitterView::outputBytes, device, &Device::writeBytes);
-    connect(m_responder, &Responder::outputBytes, device, &Device::writeBytes);
+    connect(ui->tabResponder, &ResponderView::outputBytes, device, &Device::writeBytes);
     connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, device, &Device::writeBytes);
     connect(m_udpServerTransfer, &UdpServerTransfer::outputBytes, device, &Device::writeBytes);
     connect(m_tcpClientTransfer, &TcpClientTransfer::outputBytes, device, &Device::writeBytes);
     connect(m_tcpServerTransfer, &TcpServerTransfer::outputBytes, device, &Device::writeBytes);
 
 #ifdef X_ENABLE_SERIAL_PORT
-
     connect(m_serialPortTransfer, &SerialPortTransfer::outputBytes, device, &Device::writeBytes);
 #endif
 #ifdef X_ENABLE_WEB_SOCKET

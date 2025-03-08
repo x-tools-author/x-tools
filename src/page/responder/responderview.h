@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -8,24 +8,20 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QMutex>
-
-#include "page/common/abstractmodelio.h"
+#include "page/common/tableview.h"
 
 class ResponderModel;
-class Responder : public AbstractModelIO
+class ResponderView : public TableView
 {
     Q_OBJECT
 public:
-    explicit Responder(QObject *parent = Q_NULLPTR);
+    explicit ResponderView(QWidget *parent = nullptr);
+    ~ResponderView();
 
-    QVariant tableModel() const override;
-    QVariantMap saveItem(const int row) const override;
-    void loadItem(const int row, const QVariantMap &item) override;
     void inputBytes(const QByteArray &bytes) override;
 
 protected:
-    void run() override;
+    QList<int> textItemColumns() const override;
 
 private:
     ResponderModel *m_tableModel{nullptr};

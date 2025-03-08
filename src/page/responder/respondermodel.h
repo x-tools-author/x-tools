@@ -8,16 +8,17 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QAbstractTableModel>
-#include <QMutex>
-
 #include "common/xtools.h"
+#include "page/common/tablemodel.h"
 
-class ResponderModel : public QAbstractTableModel
+class ResponderModel : public TableModel
 {
     Q_OBJECT
 public:
     explicit ResponderModel(QObject *parent = nullptr);
+
+    QVariantMap saveRow(const int row) override;
+    void loadRow(const int row, const QVariantMap &item) override;
 
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
@@ -37,6 +38,15 @@ private:
         int delay{1000};
         TextItem referenceTextContext;
         TextItem responseTextContext;
+    };
+    struct ItemKeys
+    {
+        QString enable{"enable"};
+        QString description{"description"};
+        QString option{"option"};
+        QString delay{"delay"};
+        QString reference{"reference"};
+        QString response{"response"};
     };
 
 private:
