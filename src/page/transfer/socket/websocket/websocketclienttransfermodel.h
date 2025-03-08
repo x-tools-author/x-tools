@@ -6,26 +6,18 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "wsclienttransfermodel.h"
+#pragma once
 
-#include "device/websocketclient.h"
+#include "page/transfer/socket/sockettransfermodel.h"
 
-WsClientTransferModel::WsClientTransferModel(QObject *parent)
-    : SocketTransferModel(parent)
-{}
-
-WsClientTransferModel::~WsClientTransferModel() {}
-
-Socket *WsClientTransferModel::createSocket()
+class WebSocketClientTransferModel : public SocketTransferModel
 {
-    return new WebSocketClient(this);
-}
+    Q_OBJECT
+public:
+    WebSocketClientTransferModel(QObject *parent = nullptr);
+    ~WebSocketClientTransferModel() override;
 
-bool WsClientTransferModel::isEnableRestartColumn(int column) const
-{
-    if (column == 3 || column == 4) {
-        return true;
-    }
-
-    return false;
-}
+protected:
+    Socket *createSocket() override;
+    bool isEnableRestartColumn(int column) const override;
+};

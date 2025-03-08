@@ -6,16 +6,19 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "wsservertransferview.h"
+#include "websocketservertransferview.h"
 
-#include "wsservertransfermodel.h"
+#include "websocketservertransfermodel.h"
 
-WsServerTransferView::WsServerTransferView(QWidget *parent)
+WebSocketServerTransferView::WebSocketServerTransferView(QWidget *parent)
     : SocketTransferView{parent}
 {
-    auto model = new WsServerTransferModel(this);
+    auto model = new WebSocketServerTransferModel(this);
     setTableModel(model);
-    connect(model, &WsServerTransferModel::outputBytes, this, &WsServerTransferView::outputBytes);
+    connect(model,
+            &WebSocketServerTransferModel::outputBytes,
+            this,
+            &WebSocketServerTransferView::outputBytes);
 
     auto tv = tableView();
     tv->hideColumn(1);
@@ -28,4 +31,4 @@ WsServerTransferView::WsServerTransferView(QWidget *parent)
     hHeader->setStretchLastSection(true);
 }
 
-WsServerTransferView::~WsServerTransferView() {}
+WebSocketServerTransferView::~WebSocketServerTransferView() {}

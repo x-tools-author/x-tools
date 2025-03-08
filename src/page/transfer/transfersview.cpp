@@ -53,12 +53,12 @@ TransfersView::TransfersView(QWidget *parent)
     m_transfersContextList.append(ctx);
 
 #ifdef X_ENABLE_WEB_SOCKET
-    auto wsClientTransfer = new WsClientTransferView(this);
+    auto wsClientTransfer = new WebSocketClientTransferView(this);
     ctx.name = tr("WebSocket Client");
     ctx.view = wsClientTransfer;
     m_transfersContextList.append(ctx);
 
-    auto wsServerTransfer = new WsServerTransferView(this);
+    auto wsServerTransfer = new WebSocketServerTransferView(this);
     ctx.name = tr("WebSocket Server");
     ctx.view = wsServerTransfer;
     m_transfersContextList.append(ctx);
