@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "socketstyleditemdelegate.h"
+#include "sockettransferdelegate.h"
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -15,15 +15,15 @@
 
 #include "common/xtools.h"
 
-SocketStyledItemDelegate::SocketStyledItemDelegate(QObject *parent)
+SocketTransferDelegate::SocketTransferDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {}
 
-SocketStyledItemDelegate::~SocketStyledItemDelegate() {}
+SocketTransferDelegate::~SocketTransferDelegate() {}
 
-QWidget *SocketStyledItemDelegate::createEditor(QWidget *parent,
-                                                const QStyleOptionViewItem &option,
-                                                const QModelIndex &index) const
+QWidget *SocketTransferDelegate::createEditor(QWidget *parent,
+                                              const QStyleOptionViewItem &option,
+                                              const QModelIndex &index) const
 {
     Q_UNUSED(option);
     switch (index.column()) {
@@ -46,7 +46,7 @@ QWidget *SocketStyledItemDelegate::createEditor(QWidget *parent,
     }
 }
 
-void SocketStyledItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
+void SocketTransferDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     //0:transfer type, 1:client address, 2:client port, 3:server address, 4:server port, 5:data channel
     //6:authentication, 7:username, 8:password, 9:description
@@ -88,9 +88,9 @@ void SocketStyledItemDelegate::setEditorData(QWidget *editor, const QModelIndex 
     }
 }
 
-void SocketStyledItemDelegate::setModelData(QWidget *editor,
-                                            QAbstractItemModel *model,
-                                            const QModelIndex &index) const
+void SocketTransferDelegate::setModelData(QWidget *editor,
+                                          QAbstractItemModel *model,
+                                          const QModelIndex &index) const
 {
     //0:transfer type, 1:client address, 2:client port, 3:server address, 4:server port, 5:data channel
     //6:authentication, 7:username, 8:password, 9:description

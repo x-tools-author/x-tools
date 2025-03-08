@@ -30,7 +30,7 @@ public:
     void setIdDisableCheckBoxVisible(bool visible);
 
     TableModel *tableModel();
-    void setTableModel(TableModel *model);
+    virtual void setTableModel(TableModel *model);
     QTableView *tableView() const;
     virtual QVariantMap save() const;
     virtual void load(const QVariantMap &parameters);

@@ -248,7 +248,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
@@ -450,19 +450,10 @@
        <string>Responder</string>
       </attribute>
      </widget>
-     <widget class="QWidget" name="tabTransfers">
+     <widget class="TransfersView" name="tabTransfers">
       <attribute name="title">
        <string>Transfers</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="0">
-        <widget class="QTabWidget" name="tabWidgetTransfers">
-         <property name="currentIndex">
-          <number>-1</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </widget>
     </widget>
    </item>
@@ -487,6 +478,12 @@
    <header location="global">page/emitter/emitterview.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>TransfersView</class>
+   <extends>QWidget</extends>
+   <header location="global">page/transfer/transfersview.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>comboBoxDeviceTypes</tabstop>
@@ -509,7 +506,6 @@
   <tabstop>textBrowserOutput</tabstop>
   <tabstop>lineEditInput</tabstop>
   <tabstop>toolButtonInputPreset</tabstop>
-  <tabstop>tabWidgetTransfers</tabstop>
  </tabstops>
  <resources/>
  <connections>

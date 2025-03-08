@@ -12,10 +12,51 @@
 #include "device/serialport.h"
 
 SerialPortTransferModel::SerialPortTransferModel(QObject *parent)
-    : AbstractTransferModel(parent)
+    : TransferModel(parent)
 {}
 
 SerialPortTransferModel::~SerialPortTransferModel() {}
+
+QVariantMap SerialPortTransferModel::saveRow(const int row)
+{
+    if (row < 0 || row >= rowCount()) {
+        return {};
+    }
+
+    SerialPortItem item;
+    item.portName = data(index(row, 1), Qt::EditRole).toString();
+    item.baudRate = data(index(row, 2), Qt::EditRole).toInt();
+    item.dataBits = data(index(row, 3), Qt::EditRole).toInt();
+    item.stopBits = data(index(row, 4), Qt::EditRole).toInt();
+    item.parity = data(index(row, 5), Qt::EditRole).toInt();
+    item.flowControl = data(index(row, 6), Qt::EditRole).toInt();
+
+    QJsonObject obj = saveSerialPortItem(item);
+    obj.insert("enable", data(index(row, 0), Qt::EditRole).toBool());
+    obj.insert("description", data(index(row, 7), Qt::EditRole).toString());
+
+    return obj.toVariantMap();
+}
+
+void SerialPortTransferModel::loadRow(const int row, const QVariantMap &item)
+{
+    if (row < 0 || row >= rowCount()) {
+        return;
+    }
+
+    bool enable = item.value("enable").toBool();
+    QString description = item.value("description").toString();
+    SerialPortItem serialPortItem = loadSerialPortItem(QJsonObject::fromVariantMap(item));
+
+    setData(index(row, 0), enable, Qt::EditRole);
+    setData(index(row, 1), serialPortItem.portName, Qt::EditRole);
+    setData(index(row, 2), serialPortItem.baudRate, Qt::EditRole);
+    setData(index(row, 3), serialPortItem.dataBits, Qt::EditRole);
+    setData(index(row, 4), serialPortItem.stopBits, Qt::EditRole);
+    setData(index(row, 5), serialPortItem.parity, Qt::EditRole);
+    setData(index(row, 6), serialPortItem.flowControl, Qt::EditRole);
+    setData(index(row, 7), description, Qt::EditRole);
+}
 
 int SerialPortTransferModel::columnCount(const QModelIndex &parent) const
 {
@@ -52,13 +93,13 @@ QVariant SerialPortTransferModel::data(const QModelIndex &index, int role) const
             return QString::number(serialPortItem.dataBits);
         } else if (column == 4) {
             if (serialPortItem.stopBits == QSerialPort::OneStop) {
-                return tr("1");
+                return QString("1");
             } else if (serialPortItem.stopBits == QSerialPort::OneAndHalfStop) {
-                return tr("1.5");
+                return QString("1.5");
             } else if (serialPortItem.stopBits == QSerialPort::TwoStop) {
-                return tr("2");
+                return QString("2");
             } else {
-                return ("(Unknown)");
+                return QString("(Unknown)");
             }
         } else if (column == 5) {
             if (serialPortItem.parity == QSerialPort::OddParity) {
@@ -217,12 +258,12 @@ Device *SerialPortTransferModel::createTransfer()
 {
     auto sp = new SerialPort{this};
     auto item = defaultSerialPortItem();
-    auto parametres = saveSerialPortItem(item);
-    sp->load(parametres.toVariantMap());
+    auto parameters = saveSerialPortItem(item);
+    sp->load(parameters.toVariantMap());
     return sp;
 }
 
-bool SerialPortTransferModel::isEnableRestartingColumn(int column) const
+bool SerialPortTransferModel::isEnableRestartColumn(int column) const
 {
     if ((column == 0) && (column == (columnCount() - 1))) {
         return false;

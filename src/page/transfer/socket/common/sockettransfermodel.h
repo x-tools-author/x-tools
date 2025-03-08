@@ -8,15 +8,18 @@
  **************************************************************************************************/
 #pragma once
 
-#include "abstracttransfermodel.h"
+#include "page/transfer/common/transfermodel.h"
 
 class Socket;
-class SocketTransferModel : public AbstractTransferModel
+class SocketTransferModel : public TransferModel
 {
     Q_OBJECT
 public:
     SocketTransferModel(QObject *parent = nullptr);
     ~SocketTransferModel() override;
+
+    QVariantMap saveRow(const int row) override;
+    void loadRow(const int row, const QVariantMap &item) override;
 
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role) const override;

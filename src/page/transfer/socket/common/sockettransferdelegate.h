@@ -10,12 +10,12 @@
 
 #include <QStyledItemDelegate>
 
-class SocketStyledItemDelegate : public QStyledItemDelegate
+class SocketTransferDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:
-    SocketStyledItemDelegate(QObject *parent = Q_NULLPTR);
-    ~SocketStyledItemDelegate() override;
+    SocketTransferDelegate(QObject *parent = Q_NULLPTR);
+    ~SocketTransferDelegate() override;
 
     // clang-format off
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const override;

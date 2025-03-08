@@ -11,6 +11,7 @@
 
 #include <QMenu>
 #include <QMessageBox>
+#include <QTimer>
 #include <QWidgetAction>
 
 #include "device/chartstest.h"
@@ -29,45 +30,33 @@
 #include "emitter/emitterview.h"
 #include "page/preset/presetview.h"
 #include "page/responder/responderview.h"
-#include "page/transfer/tcpclienttransfer.h"
-#include "page/transfer/tcpclienttransferui.h"
-#include "page/transfer/tcpservertransfer.h"
-#include "page/transfer/tcpservertransferui.h"
-#include "page/transfer/udpclienttransfer.h"
-#include "page/transfer/udpclienttransferui.h"
-#include "page/transfer/udpservertransfer.h"
-#include "page/transfer/udpservertransferui.h"
-#include "page/utilities/statistician.h"
 
 #ifdef X_ENABLE_SERIAL_PORT
 #include "device/serialport.h"
 #include "device/serialportui.h"
-#include "page/transfer/serialporttransfer.h"
-#include "page/transfer/serialporttransferui.h"
 #endif
 #ifdef X_ENABLE_WEB_SOCKET
 #include "device/websocketclient.h"
 #include "device/websocketclientui.h"
 #include "device/websocketserver.h"
 #include "device/websocketserverui.h"
-#include "page/transfer/websocketclienttransfer.h"
-#include "page/transfer/websocketclienttransferui.h"
-#include "page/transfer/websocketservertransfer.h"
-#include "page/transfer/websocketservertransferui.h"
 #endif
-#ifdef X_ENABLE_CHARTS
-#include "page/visualization/charts.h"
-#include "page/visualization/chartsui.h"
-#endif
+
 #ifdef X_ENABLE_BLUETOOTH
 #include "device/blecentral.h"
 #include "device/blecentralui.h"
+#endif
+
+#ifdef X_ENABLE_CHARTS
+#include "page/visualization/charts.h"
+#include "page/visualization/chartsui.h"
 #endif
 
 #include "common/crc.h"
 #include "common/xtools.h"
 #include "inputsettings.h"
 #include "outputsettings.h"
+#include "utilities/statistician.h"
 #include "utilities/syntaxhighlighter.h"
 
 struct ParameterKeys
@@ -93,13 +82,7 @@ struct ParameterKeys
     const QString presetItems{"presetItems"};
     const QString emitterItems{"emitterItems"};
     const QString responserItems{"responserItems"};
-    const QString serialPortTransferItems{"serialPortTransferItems"};
-    const QString udpClientTransferItems{"udpClientTransferItems"};
-    const QString udpServerTransferItems{"udpServerTransferItems"};
-    const QString tcpClientTransferItems{"tcpClientTransferItems"};
-    const QString tcpServerTransferItems{"tcpServerTransferItems"};
-    const QString webSocketClientTransferItems{"webSocketClientTransferItems"};
-    const QString webSocketServerTransferItems{"webSocketServerTransferItems"};
+    const QString transfers{"transfers"};
 
     const QString chartsItems{"chartsItems"};
 } g_keys;
@@ -114,24 +97,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     , m_writeTimer{new QTimer(this)}
     , m_updateLabelInfoTimer{new QTimer(this)}
     , m_highlighter{new SyntaxHighlighter(this)}
-#ifdef X_ENABLE_SERIAL_PORT
-    , m_serialPortTransfer(new SerialPortTransfer(this))
-    , m_serialPortTransferUi(new SerialPortTransferUi(this))
-#endif
-    , m_udpClientTransfer(new UdpClientTransfer(this))
-    , m_udpClientTransferUi(new UdpClientTransferUi())
-    , m_udpServerTransfer(new UdpServerTransfer(this))
-    , m_udpServerTransferUi(new UdpServerTransferUi())
-    , m_tcpClientTransfer(new TcpClientTransfer(this))
-    , m_tcpClientTransferUi(new TcpClientTransferUi())
-    , m_tcpServerTransfer(new TcpServerTransfer(this))
-    , m_tcpServerTransferUi(new TcpServerTransferUi())
-#ifdef X_ENABLE_WEB_SOCKET
-    , m_wsClientTransfer(new WebSocketClientTransfer(this))
-    , m_wsClientTransferUi(new WebSocketClientTransferUi())
-    , m_wsServerTransfer(new WebSocketServerTransfer(this))
-    , m_wsServerTransferUi(new WebSocketServerTransferUi())
-#endif
 #ifdef X_ENABLE_CHARTS
     , m_charts{new Charts(this)}
     , m_chartsUi{new ChartsUi()}
@@ -160,17 +125,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
 #else
     ui->toolButtonCharts->setVisible(false);
-#endif
-    m_ioList << m_udpClientTransfer << m_udpServerTransfer << m_tcpClientTransfer
-             << m_tcpServerTransfer;
-#ifdef X_ENABLE_SERIAL_PORT
-    m_ioList << m_serialPortTransfer;
-#endif
-#ifdef X_ENABLE_WEB_SOCKET
-    m_ioList << m_wsClientTransfer << m_wsServerTransfer;
-#endif
-#ifdef X_ENABLE_CHARTS
-    m_ioList << m_charts;
 #endif
 
     if (direction == ControllerDirection::Right) {
@@ -227,17 +181,8 @@ QVariantMap Page::save()
     map.insert(g_keys.presetItems, ui->tabPreset->save());
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
     map.insert(g_keys.responserItems, ui->tabResponder->save());
-#ifdef X_ENABLE_SERIAL_PORT
-    map.insert(g_keys.serialPortTransferItems, m_serialPortTransferUi->save());
-#endif
-    map.insert(g_keys.udpClientTransferItems, m_udpClientTransferUi->save());
-    map.insert(g_keys.udpServerTransferItems, m_udpServerTransferUi->save());
-    map.insert(g_keys.tcpClientTransferItems, m_tcpClientTransferUi->save());
-    map.insert(g_keys.tcpServerTransferItems, m_tcpServerTransferUi->save());
-#ifdef X_ENABLE_WEB_SOCKET
-    map.insert(g_keys.webSocketClientTransferItems, m_wsClientTransferUi->save());
-    map.insert(g_keys.webSocketServerTransferItems, m_wsServerTransferUi->save());
-#endif
+    map.insert(g_keys.transfers, ui->tabTransfers->save());
+
 #ifdef X_ENABLE_CHARTS
     map.insert(g_keys.chartsItems, m_chartsUi->save());
 #endif
@@ -297,17 +242,8 @@ void Page::load(const QVariantMap &parameters)
     ui->tabPreset->load(parameters.value(g_keys.presetItems).toMap());
     ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
     ui->tabResponder->load(parameters.value(g_keys.responserItems).toMap());
-#ifdef X_ENABLE_SERIAL_PORT
-    m_serialPortTransferUi->load(parameters.value(g_keys.serialPortTransferItems).toMap());
-#endif
-    m_udpClientTransferUi->load(parameters.value(g_keys.udpClientTransferItems).toMap());
-    m_udpServerTransferUi->load(parameters.value(g_keys.udpServerTransferItems).toMap());
-    m_tcpClientTransferUi->load(parameters.value(g_keys.tcpClientTransferItems).toMap());
-    m_tcpServerTransferUi->load(parameters.value(g_keys.tcpServerTransferItems).toMap());
-#ifdef X_ENABLE_WEB_SOCKET
-    m_wsClientTransferUi->load(parameters.value(g_keys.webSocketClientTransferItems).toMap());
-    m_wsServerTransferUi->load(parameters.value(g_keys.webSocketServerTransferItems).toMap());
-#endif
+    ui->tabTransfers->load(parameters.value(g_keys.transfers).toMap());
+
 #ifdef X_ENABLE_CHARTS
     m_chartsUi->load(parameters.value(g_keys.chartsItems).toMap());
 #endif
@@ -434,28 +370,6 @@ void Page::initUiInputControl()
 
 void Page::initUiOutput()
 {
-#ifdef X_ENABLE_SERIAL_PORT
-    ui->tabWidgetTransfers->addTab(m_serialPortTransferUi, tr("Serial Port"));
-#endif
-    ui->tabWidgetTransfers->addTab(m_udpClientTransferUi, tr("UDP Client"));
-    ui->tabWidgetTransfers->addTab(m_udpServerTransferUi, tr("UDP Server"));
-    ui->tabWidgetTransfers->addTab(m_tcpClientTransferUi, tr("TCP Client"));
-    ui->tabWidgetTransfers->addTab(m_tcpServerTransferUi, tr("TCP Server"));
-#ifdef X_ENABLE_WEB_SOCKET
-    ui->tabWidgetTransfers->addTab(m_wsClientTransferUi, tr("WebSocket Client"));
-    ui->tabWidgetTransfers->addTab(m_wsServerTransferUi, tr("WebSocket Server"));
-#endif
-#ifdef X_ENABLE_SERIAL_PORT
-    m_serialPortTransferUi->setupIO(m_serialPortTransfer);
-#endif
-    m_udpClientTransferUi->setupIO(m_udpClientTransfer);
-    m_udpServerTransferUi->setupIO(m_udpServerTransfer);
-    m_tcpClientTransferUi->setupIO(m_tcpClientTransfer);
-    m_tcpServerTransferUi->setupIO(m_tcpServerTransfer);
-#ifdef X_ENABLE_WEB_SOCKET
-    m_wsClientTransferUi->setupIO(m_wsClientTransfer);
-    m_wsServerTransferUi->setupIO(m_wsServerTransfer);
-#endif
 #ifdef X_ENABLE_CHARTS
     m_chartsUi->setupIO(m_charts);
 #endif
@@ -463,7 +377,7 @@ void Page::initUiOutput()
     ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
     ui->toolButtonInputPreset->setMenu(ui->tabPreset->menu());
     ui->tabWidget->setCurrentIndex(0);
-    ui->tabWidgetTransfers->setCurrentIndex(0);
+    ui->tabTransfers->setCurrentIndex(0);
 }
 
 void Page::initUiInput()
@@ -547,10 +461,6 @@ void Page::onShowStatisticianChanged(bool checked)
 
 void Page::onOpened()
 {
-    for (auto &io : m_ioList) {
-        io->start();
-    }
-
     setUiEnabled(false);
     onCycleIntervalChanged();
 
@@ -561,10 +471,6 @@ void Page::onOpened()
 void Page::onClosed()
 {
     m_writeTimer->stop();
-    for (auto &io : m_ioList) {
-        io->exit();
-        io->wait();
-    }
 
     setUiEnabled(true);
     ui->pushButtonDeviceOpen->setEnabled(true);
@@ -591,18 +497,7 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     outputText(bytes, from, true);
 
     ui->tabResponder->inputBytes(bytes);
-    m_udpClientTransfer->inputBytes(bytes);
-    m_udpServerTransfer->inputBytes(bytes);
-    m_tcpClientTransfer->inputBytes(bytes);
-    m_tcpServerTransfer->inputBytes(bytes);
-
-#ifdef X_ENABLE_SERIAL_PORT
-    m_serialPortTransfer->inputBytes(bytes);
-#endif
-#ifdef X_ENABLE_WEB_SOCKET
-    m_wsClientTransfer->inputBytes(bytes);
-    m_wsServerTransfer->inputBytes(bytes);
-#endif
+    ui->tabTransfers->inputBytes(bytes);
 #ifdef X_ENABLE_CHARTS
     m_charts->inputBytes(bytes);
 #endif
@@ -652,18 +547,6 @@ void Page::setupDevice(Device *device)
     connect(ui->tabPreset, &PresetView::outputBytes, device, &Device::writeBytes);
     connect(ui->tabEmitter, &EmitterView::outputBytes, device, &Device::writeBytes);
     connect(ui->tabResponder, &ResponderView::outputBytes, device, &Device::writeBytes);
-    connect(m_udpClientTransfer, &UdpClientTransfer::outputBytes, device, &Device::writeBytes);
-    connect(m_udpServerTransfer, &UdpServerTransfer::outputBytes, device, &Device::writeBytes);
-    connect(m_tcpClientTransfer, &TcpClientTransfer::outputBytes, device, &Device::writeBytes);
-    connect(m_tcpServerTransfer, &TcpServerTransfer::outputBytes, device, &Device::writeBytes);
-
-#ifdef X_ENABLE_SERIAL_PORT
-    connect(m_serialPortTransfer, &SerialPortTransfer::outputBytes, device, &Device::writeBytes);
-#endif
-#ifdef X_ENABLE_WEB_SOCKET
-    connect(m_wsClientTransfer, &WebSocketClientTransfer::outputBytes, device, &Device::writeBytes);
-    connect(m_wsServerTransfer, &WebSocketServerTransfer::outputBytes, device, &Device::writeBytes);
-#endif
 }
 
 void Page::writeBytes()

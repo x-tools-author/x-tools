@@ -9,13 +9,18 @@
 #pragma once
 
 #include <QHeaderView>
+#include <QStyledItemDelegate>
 
-#include "page/common/abstractmodelui.h"
+#include "page/common/tableview.h"
 
-class AbstractTransferUi : public AbstractModelUi
+class TransferView : public TableView
 {
     Q_OBJECT
 public:
-    explicit AbstractTransferUi(QWidget *parent = nullptr);
-    ~AbstractTransferUi() override;
+    explicit TransferView(QWidget *parent = nullptr);
+    ~TransferView() override;
+
+    void inputBytes(const QByteArray &bytes) override;
+    void startAll();
+    void stopAll();
 };

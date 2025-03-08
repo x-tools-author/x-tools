@@ -12,10 +12,58 @@
 #include "device/socket.h"
 
 SocketTransferModel::SocketTransferModel(QObject *parent)
-    : AbstractTransferModel(parent)
+    : TransferModel(parent)
 {}
 
 SocketTransferModel::~SocketTransferModel() {}
+
+QVariantMap SocketTransferModel::saveRow(const int row)
+{
+    if (row < 0 || row >= rowCount()) {
+        return {};
+    }
+
+    SocketItem item;
+    item.clientAddress = data(index(row, 1), Qt::EditRole).toString();
+    item.clientPort = data(index(row, 2), Qt::EditRole).toInt();
+    item.serverAddress = data(index(row, 3), Qt::EditRole).toString();
+    item.serverPort = data(index(row, 4), Qt::EditRole).toInt();
+
+    int channel = data(index(row, 5), Qt::EditRole).toInt();
+    auto cookedChannel = static_cast<WebSocketDataChannel>(channel);
+    item.dataChannel = cookedChannel;
+
+    item.authentication = data(index(row, 6), Qt::EditRole).toBool();
+    item.username = data(index(row, 7), Qt::EditRole).toString();
+    item.password = data(index(row, 8), Qt::EditRole).toString();
+
+    QJsonObject obj = saveSocketItem(item);
+    obj.insert("enable", data(index(row, 0), Qt::EditRole).toBool());
+    obj.insert("description", data(index(row, 9), Qt::EditRole).toString());
+
+    return obj.toVariantMap();
+}
+
+void SocketTransferModel::loadRow(const int row, const QVariantMap &item)
+{
+    if (row < 0 || row >= rowCount()) {
+        return;
+    }
+
+    SocketItem socketItem = loadSocketItem(QJsonObject::fromVariantMap(item));
+    setData(index(row, 0), item.value("enable").toBool(), Qt::EditRole);
+    setData(index(row, 1), socketItem.clientAddress, Qt::EditRole);
+    setData(index(row, 2), socketItem.clientPort, Qt::EditRole);
+    setData(index(row, 3), socketItem.serverAddress, Qt::EditRole);
+    setData(index(row, 4), socketItem.serverPort, Qt::EditRole);
+    setData(index(row, 5), static_cast<int>(socketItem.dataChannel), Qt::EditRole);
+    setData(index(row, 6), socketItem.authentication, Qt::EditRole);
+    setData(index(row, 7), socketItem.username, Qt::EditRole);
+    setData(index(row, 8), socketItem.password, Qt::EditRole);
+    setData(index(row, 9), item.value("description").toString(), Qt::EditRole);
+
+    emit dataChanged(index(row, 0), index(row, 9));
+}
 
 int SocketTransferModel::columnCount(const QModelIndex &parent) const
 {
@@ -206,7 +254,7 @@ void SocketTransferModel::onDataChanged(const QModelIndex &topLeft,
                                         const QVector<int> &roles)
 #endif
 {
-    AbstractTransferModel::onDataChanged(topLeft, bottomRight, roles);
+    TransferModel::onDataChanged(topLeft, bottomRight, roles);
 
     auto row = topLeft.row();
     if (row >= 0 && row < m_transfers.size()) {

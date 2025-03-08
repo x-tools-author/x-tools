@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "abstracttransfermodel.h"
+#include "transfermodel.h"
 
 #include <QEventLoop>
 #include <QTimer>
@@ -14,21 +14,21 @@
 #include "common/xtools.h"
 #include "device/device.h"
 
-AbstractTransferModel::AbstractTransferModel(QObject *parent)
-    : QAbstractTableModel(parent)
+TransferModel::TransferModel(QObject *parent)
+    : TableModel(parent)
 {
-    connect(this, &AbstractTransferModel::dataChanged, this, &AbstractTransferModel::onDataChanged);
+    connect(this, &TransferModel::dataChanged, this, &TransferModel::onDataChanged);
 }
 
-AbstractTransferModel::~AbstractTransferModel() {}
+TransferModel::~TransferModel() {}
 
-int AbstractTransferModel::rowCount(const QModelIndex &parent) const
+int TransferModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     return m_transfers.size();
 }
 
-bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &parent)
+bool TransferModel::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {
@@ -40,23 +40,17 @@ bool AbstractTransferModel::insertRows(int row, int count, const QModelIndex &pa
                 }
             }
         });
-        connect(transfer, &Device::finished, this, [=]() {
-            if (this->m_enableRestartTransfer) {
-                transfer->start();
-            }
-        });
+        connect(transfer, &Device::finished, this, [=]() { transfer->start(); });
 
         int option = static_cast<int>(TransferType::Bidirectional);
         m_transfers.insert(row + i, {transfer, tr("Transfer %1").arg(row), option});
-        if (m_enableRestartTransfer) {
-            transfer->start();
-        }
+        transfer->start();
     }
     endInsertRows();
     return true;
 }
 
-bool AbstractTransferModel::removeRows(int row, int count, const QModelIndex &parent)
+bool TransferModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {
@@ -70,7 +64,7 @@ bool AbstractTransferModel::removeRows(int row, int count, const QModelIndex &pa
     return true;
 }
 
-void AbstractTransferModel::inputBytes(const QByteArray &bytes)
+void TransferModel::inputBytes(const QByteArray &bytes)
 {
     for (auto &item : m_transfers) {
         if (item.option != static_cast<int>(TransferType::Disabled)) {
@@ -79,8 +73,9 @@ void AbstractTransferModel::inputBytes(const QByteArray &bytes)
     }
 }
 
-void AbstractTransferModel::startAll()
+void TransferModel::startAll()
 {
+    m_enableRestart = true;
     for (auto &item : m_transfers) {
         if (item.isEnable) {
             item.transfer->start();
@@ -88,44 +83,39 @@ void AbstractTransferModel::startAll()
     }
 }
 
-void AbstractTransferModel::stopAll()
+void TransferModel::stopAll()
 {
-    m_enableRestartTransfer = false;
+    m_enableRestart = false;
     for (auto &item : m_transfers) {
         item.transfer->exit();
         item.transfer->wait();
     }
 }
 
-void AbstractTransferModel::setEnableRestartTransfer(bool enable)
-{
-    m_enableRestartTransfer = enable;
-}
-
-bool AbstractTransferModel::isEnableRestartingColumn(int column) const
+bool TransferModel::isEnableRestartColumn(int column) const
 {
     return false;
 }
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-void AbstractTransferModel::onDataChanged(const QModelIndex &topLeft,
-                                          const QModelIndex &bottomRight,
-                                          const QList<int> &roles)
+void TransferModel::onDataChanged(const QModelIndex &topLeft,
+                                  const QModelIndex &bottomRight,
+                                  const QList<int> &roles)
 #else
-void AbstractTransferModel::onDataChanged(const QModelIndex &topLeft,
-                                          const QModelIndex &bottomRight,
-                                          const QVector<int> &roles)
+void TransferModel::onDataChanged(const QModelIndex &topLeft,
+                                  const QModelIndex &bottomRight,
+                                  const QVector<int> &roles)
 #endif
 {
     if (topLeft != bottomRight) {
         return;
     }
 
-    if (!isEnableRestartingColumn(topLeft.column())) {
+    if (!isEnableRestartColumn(topLeft.column())) {
         return;
     }
 
-    if (!m_enableRestartTransfer) {
+    if (!m_enableRestart) {
         return;
     }
 
@@ -138,6 +128,7 @@ void AbstractTransferModel::onDataChanged(const QModelIndex &topLeft,
         QEventLoop *loop = new QEventLoop(this);
         QTimer::singleShot(1000, this, [loop]() { loop->exit(); });
         loop->exec();
+
         transfer->start();
     }
 }

@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "serialportstyleditemdelegate.h"
+#include "serialporttransferdelegate.h"
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -14,15 +14,15 @@
 
 #include "common/xtools.h"
 
-SerialPortStyledItemDelegate::SerialPortStyledItemDelegate(QObject *parent)
+SerialPortTransferDelegate::SerialPortTransferDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {}
 
-SerialPortStyledItemDelegate::~SerialPortStyledItemDelegate() {}
+SerialPortTransferDelegate::~SerialPortTransferDelegate() {}
 
-QWidget *SerialPortStyledItemDelegate::createEditor(QWidget *parent,
-                                                    const QStyleOptionViewItem &option,
-                                                    const QModelIndex &index) const
+QWidget *SerialPortTransferDelegate::createEditor(QWidget *parent,
+                                                  const QStyleOptionViewItem &option,
+                                                  const QModelIndex &index) const
 {
     Q_UNUSED(option);
     switch (index.column()) {
@@ -41,7 +41,7 @@ QWidget *SerialPortStyledItemDelegate::createEditor(QWidget *parent,
     }
 }
 
-void SerialPortStyledItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
+void SerialPortTransferDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     int column = index.column();
     if (column >= 0 && column <= 6) {
@@ -80,9 +80,9 @@ void SerialPortStyledItemDelegate::setEditorData(QWidget *editor, const QModelIn
     }
 }
 
-void SerialPortStyledItemDelegate::setModelData(QWidget *editor,
-                                                QAbstractItemModel *model,
-                                                const QModelIndex &index) const
+void SerialPortTransferDelegate::setModelData(QWidget *editor,
+                                              QAbstractItemModel *model,
+                                              const QModelIndex &index) const
 {
     int column = index.column();
     if (column == 1) {

@@ -1,4 +1,4 @@
-﻿/***************************************************************************************************
+/***************************************************************************************************
  * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
@@ -8,18 +8,16 @@
  **************************************************************************************************/
 #pragma once
 
-#include "sockettransfer.h"
+#include "page/transfer/common/transferview.h"
 
-class TcpClientTransferModel;
-class TcpClientTransfer : public SocketTransfer
+class SerialPortTransferModel;
+class SerialPortTransferView : public TransferView
 {
     Q_OBJECT
 public:
-    TcpClientTransfer(QObject *parent = nullptr);
-    virtual ~TcpClientTransfer();
+    explicit SerialPortTransferView(QWidget *parent = nullptr);
+    ~SerialPortTransferView() override;
 
-    QVariant tableModel() const override;
-
-protected:
-    TcpClientTransferModel *m_model;
+private:
+    SerialPortTransferModel *m_model{nullptr};
 };

@@ -6,10 +6,40 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "abstracttransferui.h"
+#include "transferview.h"
 
-AbstractTransferUi::AbstractTransferUi(QWidget *parent)
-    : AbstractModelUi{parent}
+#include "transfermodel.h"
+
+TransferView::TransferView(QWidget *parent)
+    : TableView{parent}
 {}
 
-AbstractTransferUi::~AbstractTransferUi() {}
+TransferView::~TransferView() {}
+
+void TransferView::inputBytes(const QByteArray &bytes)
+{
+    if (isDisableAll()) {
+        return;
+    }
+
+    TransferModel *model = qobject_cast<TransferModel *>(tableModel());
+    if (model) {
+        model->inputBytes(bytes);
+    }
+}
+
+void TransferView::startAll()
+{
+    TransferModel *model = qobject_cast<TransferModel *>(tableModel());
+    if (model) {
+        model->startAll();
+    }
+}
+
+void TransferView::stopAll()
+{
+    TransferModel *model = qobject_cast<TransferModel *>(tableModel());
+    if (model) {
+        model->stopAll();
+    }
+}

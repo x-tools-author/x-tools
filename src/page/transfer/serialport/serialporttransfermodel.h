@@ -8,14 +8,17 @@
  **************************************************************************************************/
 #pragma once
 
-#include "abstracttransfermodel.h"
+#include "page/transfer/common/transfermodel.h"
 
-class SerialPortTransferModel : public AbstractTransferModel
+class SerialPortTransferModel : public TransferModel
 {
     Q_OBJECT
 public:
     SerialPortTransferModel(QObject *parent = nullptr);
     ~SerialPortTransferModel() override;
+
+    virtual QVariantMap saveRow(const int row) override;
+    virtual void loadRow(const int row, const QVariantMap &item) override;
 
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role) const override;
@@ -25,5 +28,5 @@ public:
 
 protected:
     Device *createTransfer() override;
-    bool isEnableRestartingColumn(int column) const override;
+    bool isEnableRestartColumn(int column) const override;
 };

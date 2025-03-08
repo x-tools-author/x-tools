@@ -23,39 +23,19 @@ class Page;
 }
 QT_END_NAMESPACE
 
-#ifdef X_ENABLE_SERIAL_PORT
-class SerialPortTransfer;
-class SerialPortTransferUi;
-#endif
-class UdpClientTransfer;
-class UdpClientTransferUi;
-class UdpServerTransfer;
-class UdpServerTransferUi;
-class TcpClientTransfer;
-class TcpClientTransferUi;
-class TcpServerTransfer;
-class TcpServerTransferUi;
-#ifdef X_ENABLE_WEB_SOCKET
-class WebSocketClientTransfer;
-class WebSocketClientTransferUi;
-class WebSocketServerTransfer;
-class WebSocketServerTransferUi;
-#endif
 #ifdef X_ENABLE_CHARTS
 class Charts;
 class ChartsUi;
 #endif
 
+class Statistician;
 class InputSettings;
 class OutputSettings;
-class SyntaxHighlighter;
 class DeviceSettings;
+class SyntaxHighlighter;
 
-class AbstractIO;
-class Statistician;
 class Device;
 class DeviceUi;
-
 class Page : public QWidget
 {
     Q_OBJECT
@@ -122,32 +102,14 @@ private:
     DeviceSettings *m_ioSettings;
     OutputSettings *m_outputSettings;
     InputSettings *m_inputSettings;
-    QTimer *m_writeTimer;
-    QTimer *m_updateLabelInfoTimer;
     SyntaxHighlighter *m_highlighter;
     Statistician *m_rxStatistician;
     Statistician *m_txStatistician;
-    QList<AbstractIO *> m_ioList;
+
+    QTimer *m_writeTimer;
+    QTimer *m_updateLabelInfoTimer;
     QSettings *m_settings;
 
-    UdpClientTransfer *m_udpClientTransfer;
-    UdpClientTransferUi *m_udpClientTransferUi;
-    UdpServerTransfer *m_udpServerTransfer;
-    UdpServerTransferUi *m_udpServerTransferUi;
-    TcpClientTransfer *m_tcpClientTransfer;
-    TcpClientTransferUi *m_tcpClientTransferUi;
-    TcpServerTransfer *m_tcpServerTransfer;
-    TcpServerTransferUi *m_tcpServerTransferUi;
-#ifdef X_ENABLE_SERIAL_PORT
-    SerialPortTransfer *m_serialPortTransfer;
-    SerialPortTransferUi *m_serialPortTransferUi;
-#endif
-#ifdef X_ENABLE_WEB_SOCKET
-    WebSocketClientTransfer *m_wsClientTransfer;
-    WebSocketClientTransferUi *m_wsClientTransferUi;
-    WebSocketServerTransfer *m_wsServerTransfer;
-    WebSocketServerTransferUi *m_wsServerTransferUi;
-#endif
 #ifdef X_ENABLE_CHARTS
     Charts *m_charts;
     ChartsUi *m_chartsUi;

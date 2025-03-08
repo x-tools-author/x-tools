@@ -6,21 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "websocketclienttransfer.h"
+#pragma once
 
-#include "websocketclienttransfermodel.h"
+#include "page/transfer/common/transferview.h"
 
-WebSocketClientTransfer::WebSocketClientTransfer(QObject *parent)
-    : SocketTransfer(parent)
-    , m_model(new WebSocketClientTransferModel(this))
-
+class SocketTransferView : public TransferView
 {
-    connect(m_model, &AbstractTransferModel::outputBytes, this, &AbstractTransfer::outputBytes);
-}
-
-WebSocketClientTransfer::~WebSocketClientTransfer() {}
-
-QVariant WebSocketClientTransfer::tableModel() const
-{
-    return QVariant::fromValue(m_model);
-}
+    Q_OBJECT
+public:
+    SocketTransferView(QWidget *parent = nullptr);
+    ~SocketTransferView() override;
+};

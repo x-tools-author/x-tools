@@ -10,12 +10,12 @@
 
 #include <QStyledItemDelegate>
 
-class SerialPortStyledItemDelegate : public QStyledItemDelegate
+class SerialPortTransferDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:
-    SerialPortStyledItemDelegate(QObject *parent = Q_NULLPTR);
-    ~SerialPortStyledItemDelegate() override;
+    SerialPortTransferDelegate(QObject *parent = Q_NULLPTR);
+    ~SerialPortTransferDelegate() override;
 
     // clang-format off
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const override;

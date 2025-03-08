@@ -8,16 +8,16 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QAbstractTableModel>
+#include "page/common/tablemodel.h"
 
 class Device;
 
-class AbstractTransferModel : public QAbstractTableModel
+class TransferModel : public TableModel
 {
     Q_OBJECT
 public:
-    AbstractTransferModel(QObject *parent = nullptr);
-    ~AbstractTransferModel() override;
+    TransferModel(QObject *parent = nullptr);
+    ~TransferModel() override;
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     bool insertRows(int row, int count, const QModelIndex &parent) override;
@@ -26,7 +26,6 @@ public:
     void inputBytes(const QByteArray &bytes);
     void startAll();
     void stopAll();
-    void setEnableRestartTransfer(bool enable);
 
 signals:
     void outputBytes(const QByteArray &bytes);
@@ -40,11 +39,11 @@ protected:
         bool isEnable;
     };
     QList<Item> m_transfers;
-    bool m_enableRestartTransfer{false};
+    bool m_enableRestart{false};
 
 protected:
     virtual Device *createTransfer() = 0;
-    virtual bool isEnableRestartingColumn(int column) const;
+    virtual bool isEnableRestartColumn(int column) const;
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     virtual void onDataChanged(const QModelIndex &topLeft,
                                const QModelIndex &bottomRight,
