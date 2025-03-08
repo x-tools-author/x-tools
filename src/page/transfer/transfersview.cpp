@@ -17,8 +17,8 @@
 #include "serialport/serialporttransferview.h"
 #endif
 #ifdef X_ENABLE_WEB_SOCKET
-#include "socket/websocket/wsclienttransferview.h"
-#include "socket/websocket/wsservertransferview.h"
+#include "socket/websocket/websocketclienttransferview.h"
+#include "socket/websocket/websocketservertransferview.h"
 #endif
 
 TransfersView::TransfersView(QWidget *parent)
