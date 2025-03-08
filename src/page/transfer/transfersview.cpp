@@ -10,6 +10,8 @@
 
 #include "socket/tcp/tcpclienttransferview.h"
 #include "socket/tcp/tcpservertransferview.h"
+#include "socket/udp/udpclienttransferview.h"
+#include "socket/udp/udpservertransferview.h"
 
 #ifdef X_ENABLE_SERIAL_PORT
 #include "serialport/serialporttransferview.h"
@@ -49,6 +51,16 @@ TransfersView::TransfersView(QWidget *parent)
     auto tcpServerTransfer = new TcpServerTransferView(this);
     ctx.name = tr("TCP Server");
     ctx.view = tcpServerTransfer;
+    m_transfersContextList.append(ctx);
+
+    auto udpClientTransfer = new UdpClientTransferView(this);
+    ctx.name = tr("UDP Client");
+    ctx.view = udpClientTransfer;
+    m_transfersContextList.append(ctx);
+
+    auto udpServerTransfer = new UdpServerTransferView(this);
+    ctx.name = tr("UDP Server");
+    ctx.view = udpServerTransfer;
     m_transfersContextList.append(ctx);
 
     for (auto &ctx : m_transfersContextList) {
