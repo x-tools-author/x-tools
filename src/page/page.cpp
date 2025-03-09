@@ -14,17 +14,12 @@
 #include <QTimer>
 #include <QWidgetAction>
 
-#include "device/chartstest.h"
 #include "device/chartstestui.h"
 #include "device/device.h"
 #include "device/deviceui.h"
-#include "device/tcpclient.h"
 #include "device/tcpclientui.h"
-#include "device/tcpserver.h"
 #include "device/tcpserverui.h"
-#include "device/udpclient.h"
 #include "device/udpclientui.h"
-#include "device/udpserver.h"
 #include "device/udpserverui.h"
 #include "devicesettings.h"
 #include "emitter/emitterview.h"
@@ -32,24 +27,19 @@
 #include "page/responder/responderview.h"
 
 #ifdef X_ENABLE_SERIAL_PORT
-#include "device/serialport.h"
 #include "device/serialportui.h"
 #endif
 #ifdef X_ENABLE_WEB_SOCKET
-#include "device/websocketclient.h"
 #include "device/websocketclientui.h"
-#include "device/websocketserver.h"
 #include "device/websocketserverui.h"
 #endif
 
 #ifdef X_ENABLE_BLUETOOTH
-#include "device/blecentral.h"
 #include "device/blecentralui.h"
 #endif
 
 #ifdef X_ENABLE_CHARTS
-#include "page/charts/charts.h"
-#include "page/charts/chartsui.h"
+#include "page/charts/chartsmanager.h"
 #endif
 
 #include "common/crc.h"
@@ -97,10 +87,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     , m_writeTimer{new QTimer(this)}
     , m_updateLabelInfoTimer{new QTimer(this)}
     , m_highlighter{new SyntaxHighlighter(this)}
-#ifdef X_ENABLE_CHARTS
-    , m_charts{new Charts(this)}
-    , m_chartsUi{new ChartsUi()}
-#endif
     , m_settings{settings}
 {
     if (settings == nullptr) {
@@ -112,17 +98,25 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_txStatistician = new Statistician(ui->labelTxInfo, this);
 
 #ifdef X_ENABLE_CHARTS
+    m_chartsMgr = new ChartsManager(this);
     ui->widgetCharts->setLayout(new QHBoxLayout);
-    ui->widgetCharts->layout()->addWidget(m_chartsUi);
     ui->widgetCharts->layout()->setContentsMargins(0, 0, 0, 0);
+    for (auto &w : m_chartsMgr->chartViews()) {
+        ui->widgetCharts->layout()->addWidget(w);
+    }
+
+    ui->widgetChartsController->setLayout(new QHBoxLayout);
+    ui->widgetChartsController->layout()->setContentsMargins(0, 0, 0, 0);
+    for (auto &w : m_chartsMgr->chartControllers()) {
+        ui->widgetChartsController->layout()->addWidget(w);
+    }
+
     ui->toolButtonCharts->setCheckable(true);
     ui->toolButtonCharts->setIcon(QIcon(":/res/icons/charts.svg"));
-    ui->toolButtonCharts->setMenu(m_chartsUi->settingsMenu());
-    ui->toolButtonCharts->setPopupMode(QToolButton::MenuButtonPopup);
     connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
         ui->widgetCharts->setVisible(!ui->widgetCharts->isVisible());
+        ui->widgetChartsController->setVisible(ui->toolButtonCharts->isChecked());
     });
-    connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
 #else
     ui->toolButtonCharts->setVisible(false);
 #endif
@@ -141,6 +135,8 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_updateLabelInfoTimer->setInterval(100);
     connect(m_updateLabelInfoTimer, &QTimer::timeout, this, &Page::updateLabelInfo);
     m_updateLabelInfoTimer->start();
+
+    connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
 
     initUi();
 
@@ -184,7 +180,7 @@ QVariantMap Page::save()
     map.insert(g_keys.transfers, ui->tabTransfers->save());
 
 #ifdef X_ENABLE_CHARTS
-    map.insert(g_keys.chartsItems, m_chartsUi->save());
+    map.insert(g_keys.chartsItems, m_chartsMgr->save());
 #endif
 
     return map;
@@ -238,16 +234,14 @@ void Page::load(const QVariantMap &parameters)
     ui->comboBoxInputFormat->setCurrentIndex(index == -1 ? 0 : index);
     m_inputSettings->load(inputSettings);
 
-    // clang-format off
+#ifdef X_ENABLE_CHARTS
+    m_chartsMgr->load(parameters.value(g_keys.chartsItems).toMap());
+#endif
+
     ui->tabPreset->load(parameters.value(g_keys.presetItems).toMap());
     ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
     ui->tabResponder->load(parameters.value(g_keys.responserItems).toMap());
     ui->tabTransfers->load(parameters.value(g_keys.transfers).toMap());
-
-#ifdef X_ENABLE_CHARTS
-    m_chartsUi->load(parameters.value(g_keys.chartsItems).toMap());
-#endif
-    // clang-format on
 
     onDeviceTypeChanged();
     onInputFormatChanged();
@@ -370,10 +364,6 @@ void Page::initUiInputControl()
 
 void Page::initUiOutput()
 {
-#ifdef X_ENABLE_CHARTS
-    m_chartsUi->setupIO(m_charts);
-#endif
-
     ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
     ui->toolButtonInputPreset->setMenu(ui->tabPreset->menu());
     ui->tabWidget->setCurrentIndex(0);
@@ -496,11 +486,12 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     m_rxStatistician->inputBytes(bytes);
     outputText(bytes, from, true);
 
+#ifdef X_ENABLE_CHARTS
+    m_chartsMgr->inputBytes(bytes);
+#endif
+
     ui->tabResponder->inputBytes(bytes);
     ui->tabTransfers->inputBytes(bytes);
-#ifdef X_ENABLE_CHARTS
-    m_charts->inputBytes(bytes);
-#endif
 
     emit bytesRead(bytes, from);
 }
@@ -523,9 +514,6 @@ void Page::openDevice()
 
     setUiEnabled(false);
 
-#ifdef X_ENABLE_CHARTS
-    m_charts->load(m_chartsUi->save());
-#endif
     m_rxStatistician->reset();
     m_txStatistician->reset();
     m_deviceController->openDevice();

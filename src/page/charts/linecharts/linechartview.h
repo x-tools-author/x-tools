@@ -9,11 +9,10 @@
 #pragma once
 
 #include <QChart>
+#include <QChartView>
 #include <QMenu>
 #include <QValueAxis>
 #include <QXYSeries>
-
-#include "page/common/abstractioui.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using QtCharts::QChart;
@@ -39,17 +38,16 @@ struct ChartsUiDataKeys
     const QString channelType{"channelType"};
 };
 
-class ChartsUiSettings;
-class ChartsUi : public AbstractIOUi
+class linechartsettings;
+class LineChartView : public QChartView
 {
     Q_OBJECT
 public:
-    explicit ChartsUi(QWidget *parent = Q_NULLPTR);
-    ~ChartsUi() override;
+    explicit LineChartView(QWidget *parent = Q_NULLPTR);
+    ~LineChartView() override;
 
-    QVariantMap save() const override;
-    void load(const QVariantMap &parameters) override;
-    void setupIO(AbstractIO *io) override;
+    QVariantMap save() const;
+    void load(const QVariantMap &parameters);
 
     QMenu *settingsMenu();
     QWidget *settingsWidget();
@@ -57,13 +55,12 @@ public:
 
 private:
     Ui::ChartsUi *ui;
-    ChartsUiSettings *m_settings;
+    linechartsettings *m_settings;
     QMenu *m_settingsMenu{nullptr};
     QList<QXYSeries *> m_series;
     QChart *m_chart;
     QValueAxis *m_axisX;
     QValueAxis *m_axisY;
-    AbstractIO *m_io{nullptr};
 
 private:
     void onNewValues(const QList<double> &values);

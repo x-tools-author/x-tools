@@ -9,10 +9,11 @@
 #pragma once
 
 #include <QPointF>
+#include <QThread>
+#include <QToolButton>
+#include <QVariantMap>
 
-#include "page/common/abstractio.h"
-
-class Charts : public AbstractIO
+class ChartsManager : public QThread
 {
     Q_OBJECT
 public:
@@ -20,14 +21,20 @@ public:
     Q_ENUM(DataFormat);
 
 public:
-    Charts(QObject *parent = Q_NULLPTR);
-    virtual ~Charts() override;
+    ChartsManager(QObject *parent = Q_NULLPTR);
+    virtual ~ChartsManager() override;
 
-    virtual void inputBytes(const QByteArray &bytes) override;
+    QList<QWidget *> chartViews();
+    QList<QToolButton *> chartControllers();
+
+    void inputBytes(const QByteArray &bytes);
+    QVariantMap save();
+    void load(const QVariantMap &parameters);
 
 signals:
     void newValues(const QList<double> &values);
     void newPoints(const QList<QPointF> &points);
+    void outputBytes(const QByteArray &bytes);
 
 protected:
     void run() override;
@@ -42,9 +49,12 @@ protected:
     void handleBinaryXY(QByteArray &bytes);
     void handleTextXY(QByteArray &bytes);
 
+private:
     Q_SIGNAL void input2run(const QByteArray &bytes);
 
 private:
     const QByteArray m_binaryTail;
     int m_testAngle{0};
+    QList<QWidget *> m_chartViews;
+    QList<QToolButton *> m_chartControllers;
 };

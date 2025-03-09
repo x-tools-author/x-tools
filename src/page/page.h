@@ -24,8 +24,7 @@ class Page;
 QT_END_NAMESPACE
 
 #ifdef X_ENABLE_CHARTS
-class Charts;
-class ChartsUi;
+class ChartsManager;
 #endif
 
 class Statistician;
@@ -109,9 +108,7 @@ private:
     QTimer *m_writeTimer;
     QTimer *m_updateLabelInfoTimer;
     QSettings *m_settings;
-
 #ifdef X_ENABLE_CHARTS
-    Charts *m_charts;
-    ChartsUi *m_chartsUi;
+    ChartsManager *m_chartsMgr;
 #endif
 };

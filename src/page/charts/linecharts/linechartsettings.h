@@ -14,15 +14,15 @@
 #include <QPushButton>
 
 namespace Ui {
-class ChartsUiSettings;
+class LineChartSettings;
 }
 
-class ChartsUiSettings : public QWidget
+class linechartsettings : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ChartsUiSettings(QWidget *parent = Q_NULLPTR);
-    ~ChartsUiSettings() override;
+    explicit linechartsettings(QWidget *parent = Q_NULLPTR);
+    ~linechartsettings() override;
 
     static int channelCount();
 
@@ -57,7 +57,7 @@ private:
         QPushButton *colorButton;
         QLineEdit *nameLineEdit;
     };
-    Ui::ChartsUiSettings *ui;
+    Ui::LineChartSettings *ui;
     QList<ChannelContext> m_channelContexts;
 
 private:

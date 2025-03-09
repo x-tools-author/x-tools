@@ -6,8 +6,8 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "chartsuisettings.h"
-#include "ui_chartsuisettings.h"
+#include "linechartsettings.h"
+#include "ui_linechartsettings.h"
 
 #include <QAbstractSeries>
 #include <QChartView>
@@ -21,23 +21,23 @@
 #include <QPointF>
 #include <QTimer>
 
-#include "chartsui.h"
+#include "linechartview.h"
 #include "common/xtools.h"
-#include "page/charts/charts.h"
+#include "page/charts/chartsmanager.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using namespace QtCharts;
 #endif
 
-ChartsUiSettings::ChartsUiSettings(QWidget *parent)
+linechartsettings::linechartsettings(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::ChartsUiSettings)
+    , ui(new Ui::LineChartSettings)
 {
     ui->setupUi(this);
     ui->checkBoxLegend->setChecked(true);
     QComboBox *cb = ui->comboBoxDataType;
-    cb->addItem(tr("Binary") + "-Y", static_cast<int>(Charts::DataFormat::BinaryY));
-    cb->addItem(tr("Text") + "-Y", static_cast<int>(Charts::DataFormat::TextY));
+    cb->addItem(tr("Binary") + "-Y", static_cast<int>(ChartsManager::DataFormat::BinaryY));
+    cb->addItem(tr("Text") + "-Y", static_cast<int>(ChartsManager::DataFormat::TextY));
 #if 0
     cb->addItem(tr("Binary") + "-XY", static_cast<int>(Charts::DataFormat::BinaryXY));
     cb->addItem(tr("Text") + "-XY", static_cast<int>(Charts::DataFormat::TextXY));
@@ -49,19 +49,19 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     connect(ui->checkBoxLegend,
             &QCheckBox::clicked,
             this,
-            &ChartsUiSettings::invokeSetLegendVisible);
+            &linechartsettings::invokeSetLegendVisible);
     connect(ui->pushButtonClear,
             &QPushButton::clicked,
             this,
-            &ChartsUiSettings::invokeClearChannels);
+            &linechartsettings::invokeClearChannels);
     connect(ui->pushButtonImport,
             &QPushButton::clicked,
             this,
-            &ChartsUiSettings::invokeImportChannels);
+            &linechartsettings::invokeImportChannels);
     connect(ui->pushButtonExport,
             &QPushButton::clicked,
             this,
-            &ChartsUiSettings::invokeExportChannels);
+            &linechartsettings::invokeExportChannels);
 
     QGridLayout *parametersGridLayout = new QGridLayout(ui->widgetControl);
     parametersGridLayout->addWidget(new QLabel(tr("Channel"), this), 0, 0, Qt::AlignCenter);
@@ -105,22 +105,22 @@ ChartsUiSettings::ChartsUiSettings(QWidget *parent)
     }
 }
 
-ChartsUiSettings::~ChartsUiSettings()
+linechartsettings::~linechartsettings()
 {
     delete ui;
 }
 
-int ChartsUiSettings::channelCount()
+int linechartsettings::channelCount()
 {
     return 16;
 }
 
-int ChartsUiSettings::dataType()
+int linechartsettings::dataType()
 {
     return ui->comboBoxDataType->currentData().toInt();
 }
 
-void ChartsUiSettings::setDataType(int type)
+void linechartsettings::setDataType(int type)
 {
     int index = ui->comboBoxDataType->findData(type);
     if (index != -1) {
@@ -128,27 +128,27 @@ void ChartsUiSettings::setDataType(int type)
     }
 }
 
-bool ChartsUiSettings::legendVisible()
+bool linechartsettings::legendVisible()
 {
     return ui->checkBoxLegend->isChecked();
 }
 
-void ChartsUiSettings::setLegendVisible(bool visible)
+void linechartsettings::setLegendVisible(bool visible)
 {
     ui->checkBoxLegend->setChecked(true);
 }
 
-int ChartsUiSettings::cachePoints()
+int linechartsettings::cachePoints()
 {
     return ui->spinBoxCachePoints->value();
 }
 
-void ChartsUiSettings::setCachePoints(int points)
+void linechartsettings::setCachePoints(int points)
 {
     ui->spinBoxCachePoints->setValue(points);
 }
 
-void ChartsUiSettings::load(const QVariantMap &parameters)
+void linechartsettings::load(const QVariantMap &parameters)
 {
     if (parameters.isEmpty()) {
         return;
@@ -189,12 +189,12 @@ void ChartsUiSettings::load(const QVariantMap &parameters)
     }
 }
 
-void ChartsUiSettings::updateUiState(bool ioIsOpened)
+void linechartsettings::updateUiState(bool ioIsOpened)
 {
     ui->comboBoxDataType->setEnabled(!ioIsOpened);
 }
 
-void ChartsUiSettings::setupVisibleCheckBox(QCheckBox *checkBox, int channelIndex)
+void linechartsettings::setupVisibleCheckBox(QCheckBox *checkBox, int channelIndex)
 {
     checkBox->setCheckable(true);
     checkBox->setChecked(true);
@@ -204,7 +204,7 @@ void ChartsUiSettings::setupVisibleCheckBox(QCheckBox *checkBox, int channelInde
     });
 }
 
-void ChartsUiSettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
+void linechartsettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
 {
     m_channelContexts[channelIndex].typeComboBox = comboBox;
     comboBox->clear();
@@ -222,7 +222,7 @@ void ChartsUiSettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
     });
 }
 
-void ChartsUiSettings::setupColorButton(QPushButton *button, int channelIndex)
+void linechartsettings::setupColorButton(QPushButton *button, int channelIndex)
 {
     m_channelContexts[channelIndex].colorButton = button;
     button->setStyleSheet("background-color: rgb(0, 0, 255);");
@@ -236,7 +236,7 @@ void ChartsUiSettings::setupColorButton(QPushButton *button, int channelIndex)
     });
 }
 
-void ChartsUiSettings::setupNameLineEdit(QLineEdit *lineEdit, int channelIndex)
+void linechartsettings::setupNameLineEdit(QLineEdit *lineEdit, int channelIndex)
 {
     m_channelContexts[channelIndex].nameLineEdit = lineEdit;
     lineEdit->setText(tr("Channel") + " " + QString::number(channelIndex + 1));
@@ -246,7 +246,7 @@ void ChartsUiSettings::setupNameLineEdit(QLineEdit *lineEdit, int channelIndex)
     });
 }
 
-QString ChartsUiSettings::seriesTypeToString(int type) const
+QString linechartsettings::seriesTypeToString(int type) const
 {
     switch (type) {
     case QAbstractSeries::SeriesType::SeriesTypeLine:
