@@ -48,8 +48,8 @@
 #endif
 
 #ifdef X_ENABLE_CHARTS
-#include "page/visualization/charts.h"
-#include "page/visualization/chartsui.h"
+#include "page/charts/charts.h"
+#include "page/charts/chartsui.h"
 #endif
 
 #include "common/crc.h"
