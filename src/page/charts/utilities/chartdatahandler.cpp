@@ -6,97 +6,64 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "chartsmanager.h"
+#include "chartdatahandler.h"
 
 #include <QDebug>
 #include <QPointF>
+#include <QStackedLayout>
 #include <QTimer>
 #include <QtMath>
 
-#include "linecharts/linechartview.h"
-
-ChartsManager::ChartsManager(QObject *parent)
+ChartDataHandler::ChartDataHandler(QObject *parent)
     : QThread(parent)
     , m_binaryTail(QByteArray::fromHex("0000807f"))
 {
-    LineChartView *lineChartView = new LineChartView();
-    m_chartViews.append(lineChartView);
 
-    QToolButton *lineChartController = new QToolButton();
-    lineChartController->setText(tr());
-    m_chartControllers.append(lineChartController);
 }
 
-ChartsManager::~ChartsManager() {}
-
-QList<QWidget *> ChartsManager::chartViews()
+ChartDataHandler::~ChartDataHandler()
 {
-    return QList<QWidget *>();
+    exit();
+    wait();
 }
 
-QList<QToolButton *> ChartsManager::chartControllers()
+void ChartDataHandler::inputBytes(const QByteArray &bytes)
 {
-    return QList<QToolButton *>();
-}
-
-void ChartsManager::inputBytes(const QByteArray &bytes)
-{
-    if (!bytes.isEmpty() && isRunning()) {
+    if (!bytes.isEmpty()) {
         emit input2run(bytes);
     }
 }
 
-QVariantMap ChartsManager::save()
+QVariantMap ChartDataHandler::save()
 {
     return QVariantMap();
 }
 
-void ChartsManager::load(const QVariantMap &parameters)
+void ChartDataHandler::load(const QVariantMap &parameters)
 {
     Q_UNUSED(parameters);
 }
 
-void ChartsManager::run()
+void ChartDataHandler::run()
 {
-    QByteArray tmp;
+    m_cache.clear();
     QTimer *timer = new QTimer();
-    m_testAngle = 0;
 
     QVariantMap parameters = save();
     int dataFormat = parameters.value("dataType").toInt();
-    bool isTestData = parameters.value("testData").toBool();
-    connect(this, &ChartsManager::input2run, timer, [&tmp, this, isTestData](const QByteArray &bytes) {
-        if (!isTestData) {
-            tmp.append(bytes);
-        }
+    connect(this, &ChartDataHandler::input2run, timer, [this](const QByteArray &bytes) {
+        this->m_cache.append(bytes);
     });
 
-    if (isTestData) {
-        connect(timer, &QTimer::timeout, timer, [&tmp, this, timer, dataFormat]() {
-            if (dataFormat == static_cast<int>(DataFormat::BinaryY)) {
-                tmp.append(handleBinaryY());
-            } else if (dataFormat == static_cast<int>(DataFormat::TextY)) {
-                tmp.append(handleTextY());
-            } else if (dataFormat == static_cast<int>(DataFormat::BinaryXY)) {
-                tmp.append(handleBinaryXY());
-            } else if (dataFormat == static_cast<int>(DataFormat::TextXY)) {
-                tmp.append(handleTextXY());
-            } else {
-                qWarning() << "Invalid data format(test data)!";
-                emit outputBytes(QByteArray("Invalid data format(test data)!"));
-            }
-        });
-    }
-
-    connect(timer, &QTimer::timeout, timer, [&tmp, this, timer, dataFormat] {
+    connect(timer, &QTimer::timeout, timer, [this, timer, dataFormat] {
         if (dataFormat == static_cast<int>(DataFormat::BinaryY)) {
-            handleBinaryY(tmp);
+            handleBinaryY(this->m_cache);
         } else if (dataFormat == static_cast<int>(DataFormat::TextY)) {
-            handleTextY(tmp);
+            handleTextY(this->m_cache);
         } else if (dataFormat == static_cast<int>(DataFormat::BinaryXY)) {
-            handleBinaryXY(tmp);
+            handleBinaryXY(this->m_cache);
         } else if (dataFormat == static_cast<int>(DataFormat::TextXY)) {
-            handleTextXY(tmp);
+            handleTextXY(this->m_cache);
         } else {
             qWarning() << "Invalid data format!";
             emit outputBytes(QByteArray("Invalid data format!"));
@@ -114,60 +81,7 @@ void ChartsManager::run()
     timer->deleteLater();
 }
 
-QByteArray ChartsManager::handleBinaryY()
-{
-    QByteArray bytes;
-    for (int i = 0; i < 16; ++i) {
-        float y = 10 * (i + 1) * qSin(m_testAngle * 3.1415926 / 180.0);
-        bytes.append(reinterpret_cast<const char *>(&y), sizeof(y));
-    };
-
-    bytes.append(m_binaryTail);
-    m_testAngle += 1;
-    return bytes;
-}
-
-QByteArray ChartsManager::handleTextY()
-{
-    QString str;
-    for (int i = 0; i < 16; ++i) {
-        qreal y = 10 * (i + 1) * qSin(m_testAngle * 3.1415926 / 180.0);
-        str.append(QString::number(y, 'f', 3) + (i == 15 ? "" : ","));
-    };
-
-    str = str.trimmed();
-    str.append("\n");
-    m_testAngle += 1;
-    return str.toUtf8();
-}
-
-QByteArray ChartsManager::handleBinaryXY()
-{
-    QByteArray bytes;
-    for (int i = 0; i < 16; ++i) {
-        float y = 10 * (i + 1) * qSin(m_testAngle * 3.1415926 / 180.0);
-        bytes.append(reinterpret_cast<const char *>(&y), sizeof(y));
-    };
-
-    bytes.append(m_binaryTail);
-    m_testAngle += 1;
-    return bytes;
-}
-
-QByteArray ChartsManager::handleTextXY()
-{
-    QByteArray bytes;
-    for (int i = 0; i < 16; ++i) {
-        qreal y = 10 * (i + 1) * qSin(m_testAngle * 3.1415926 / 180.0);
-        bytes.append(reinterpret_cast<const char *>(&y), sizeof(y));
-    };
-
-    bytes.append(m_binaryTail);
-    m_testAngle += 1;
-    return bytes;
-}
-
-void ChartsManager::handleBinaryY(QByteArray &bytes)
+void ChartDataHandler::handleBinaryY(QByteArray &bytes)
 {
     while (bytes.indexOf(m_binaryTail) != -1 && !bytes.isEmpty()) {
         int index = bytes.indexOf(m_binaryTail);
@@ -189,7 +103,7 @@ void ChartsManager::handleBinaryY(QByteArray &bytes)
     }
 }
 
-void ChartsManager::handleTextY(QByteArray &bytes)
+void ChartDataHandler::handleTextY(QByteArray &bytes)
 {
     // 1.000,2.000,3.000,4.000,5.000\n
     while (bytes.indexOf('\n') != -1 && !bytes.isEmpty()) {
@@ -206,14 +120,14 @@ void ChartsManager::handleTextY(QByteArray &bytes)
 
         QStringList yList = str.split(',', Qt::SkipEmptyParts);
         QList<double> values;
-        for (const QString &y : yList) {
+        for (QString &y : yList) {
             values.append(y.trimmed().toDouble());
         }
         emit newValues(values);
     }
 }
 
-void ChartsManager::handleBinaryXY(QByteArray &bytes)
+void ChartDataHandler::handleBinaryXY(QByteArray &bytes)
 {
     while (bytes.indexOf(m_binaryTail) != -1 && !bytes.isEmpty()) {
         int index = bytes.indexOf(m_binaryTail);
@@ -238,7 +152,7 @@ void ChartsManager::handleBinaryXY(QByteArray &bytes)
     }
 }
 
-void ChartsManager::handleTextXY(QByteArray &bytes)
+void ChartDataHandler::handleTextXY(QByteArray &bytes)
 {
     //1.000,2.000,3.000,4.000\n
     while (bytes.indexOf('\n') != -1 && !bytes.isEmpty()) {

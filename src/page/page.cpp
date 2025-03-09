@@ -39,7 +39,7 @@
 #endif
 
 #ifdef X_ENABLE_CHARTS
-#include "page/charts/chartsmanager.h"
+#include "page/charts/chartsview.h"
 #endif
 
 #include "common/crc.h"
@@ -98,16 +98,14 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_txStatistician = new Statistician(ui->labelTxInfo, this);
 
 #ifdef X_ENABLE_CHARTS
-    m_chartsMgr = new ChartsManager(this);
+    m_chartsView = new ChartsView(this);
     ui->widgetCharts->setLayout(new QHBoxLayout);
     ui->widgetCharts->layout()->setContentsMargins(0, 0, 0, 0);
-    for (auto &w : m_chartsMgr->chartViews()) {
-        ui->widgetCharts->layout()->addWidget(w);
-    }
+    ui->widgetCharts->layout()->addWidget(m_chartsView);
 
     ui->widgetChartsController->setLayout(new QHBoxLayout);
     ui->widgetChartsController->layout()->setContentsMargins(0, 0, 0, 0);
-    for (auto &w : m_chartsMgr->chartControllers()) {
+    for (auto &w : m_chartsView->chartControllers()) {
         ui->widgetChartsController->layout()->addWidget(w);
     }
 
@@ -115,10 +113,12 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     ui->toolButtonCharts->setIcon(QIcon(":/res/icons/charts.svg"));
     connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
         ui->widgetCharts->setVisible(!ui->widgetCharts->isVisible());
-        ui->widgetChartsController->setVisible(ui->toolButtonCharts->isChecked());
+        ui->widgetChartsController->setVisible(ui->widgetCharts->isVisible());
     });
 #else
     ui->toolButtonCharts->setVisible(false);
+    ui->widgetCharts->setVisible(false);
+    ui->widgetChartsController->setVisible(false);
 #endif
 
     if (direction == ControllerDirection::Right) {
@@ -180,7 +180,7 @@ QVariantMap Page::save()
     map.insert(g_keys.transfers, ui->tabTransfers->save());
 
 #ifdef X_ENABLE_CHARTS
-    map.insert(g_keys.chartsItems, m_chartsMgr->save());
+    map.insert(g_keys.chartsItems, m_chartsView->save());
 #endif
 
     return map;
@@ -235,7 +235,7 @@ void Page::load(const QVariantMap &parameters)
     m_inputSettings->load(inputSettings);
 
 #ifdef X_ENABLE_CHARTS
-    m_chartsMgr->load(parameters.value(g_keys.chartsItems).toMap());
+    m_chartsView->load(parameters.value(g_keys.chartsItems).toMap());
 #endif
 
     ui->tabPreset->load(parameters.value(g_keys.presetItems).toMap());
@@ -487,7 +487,7 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     outputText(bytes, from, true);
 
 #ifdef X_ENABLE_CHARTS
-    m_chartsMgr->inputBytes(bytes);
+    m_chartsView->inputBytes(bytes);
 #endif
 
     ui->tabResponder->inputBytes(bytes);

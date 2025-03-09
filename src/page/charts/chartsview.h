@@ -9,11 +9,11 @@
 #pragma once
 
 #include <QPointF>
-#include <QThread>
 #include <QToolButton>
 #include <QVariantMap>
+#include <QWidget>
 
-class ChartsManager : public QThread
+class ChartsView : public QWidget
 {
     Q_OBJECT
 public:
@@ -21,10 +21,9 @@ public:
     Q_ENUM(DataFormat);
 
 public:
-    ChartsManager(QObject *parent = Q_NULLPTR);
-    virtual ~ChartsManager() override;
+    ChartsView(QWidget *parent = Q_NULLPTR);
+    virtual ~ChartsView() override;
 
-    QList<QWidget *> chartViews();
     QList<QToolButton *> chartControllers();
 
     void inputBytes(const QByteArray &bytes);
@@ -37,7 +36,7 @@ signals:
     void outputBytes(const QByteArray &bytes);
 
 protected:
-    void run() override;
+    void run();
 
     QByteArray handleBinaryY();
     QByteArray handleTextY();
@@ -55,6 +54,5 @@ private:
 private:
     const QByteArray m_binaryTail;
     int m_testAngle{0};
-    QList<QWidget *> m_chartViews;
     QList<QToolButton *> m_chartControllers;
 };

@@ -23,7 +23,7 @@
 
 #include "linechartview.h"
 #include "common/xtools.h"
-#include "page/charts/chartsmanager.h"
+#include "page/charts/chartsview.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using namespace QtCharts;
@@ -36,8 +36,8 @@ linechartsettings::linechartsettings(QWidget *parent)
     ui->setupUi(this);
     ui->checkBoxLegend->setChecked(true);
     QComboBox *cb = ui->comboBoxDataType;
-    cb->addItem(tr("Binary") + "-Y", static_cast<int>(ChartsManager::DataFormat::BinaryY));
-    cb->addItem(tr("Text") + "-Y", static_cast<int>(ChartsManager::DataFormat::TextY));
+    cb->addItem(tr("Binary") + "-Y", static_cast<int>(ChartsView::DataFormat::BinaryY));
+    cb->addItem(tr("Text") + "-Y", static_cast<int>(ChartsView::DataFormat::TextY));
 #if 0
     cb->addItem(tr("Binary") + "-XY", static_cast<int>(Charts::DataFormat::BinaryXY));
     cb->addItem(tr("Text") + "-XY", static_cast<int>(Charts::DataFormat::TextXY));
