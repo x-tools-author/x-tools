@@ -240,9 +240,7 @@ void Page::load(const QVariantMap &parameters)
 
     onDeviceTypeChanged();
     onInputFormatChanged();
-#if 0
     updateChartUi();
-#endif
 }
 
 QTabWidget *Page::tabWidget()
