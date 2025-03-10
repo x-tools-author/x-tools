@@ -19,6 +19,21 @@ namespace Ui {
 class BarChartSettings;
 }
 
+struct BarChartSettingsKeys
+{
+    const QString dataFormat{"dataFormat"};
+    const QString legendVisible{"legendVisible"};
+    const QString cachePoints{"cachePoints"};
+    const QString channels{"channels"};
+
+    const struct
+    {
+        const QString channelName{"channelName"};
+        const QString channelVisible{"channelVisible"};
+        const QString channelColor{"channelColor"};
+    } channel;
+};
+
 class BarChartSettings : public ChartSettings
 {
     Q_OBJECT
@@ -43,16 +58,13 @@ public:
     void updateUiState(bool ioIsOpened);
 
 signals:
-    void dataFormatChanged(int type);
     void invokeSetLegendVisible(bool visible);
+
+    void dataFormatChanged(int dataFormat);
     void channelVisibleChanged(int channelIndex, bool visible);
     void channelTypeChanged(int channelIndex, int type);
     void channelColorChanged(int channelIndex, const QColor &color);
     void channelNameChanged(int channelIndex, const QString &name);
-
-    void invokeClearChannels();
-    void invokeImportChannels();
-    void invokeExportChannels();
 
 private:
     struct ChannelContext

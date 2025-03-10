@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QComboBox>
 #include <QMutex>
 #include <QThread>
 #include <QVariantMap>
@@ -27,6 +28,7 @@ public:
     void setDataFormat(int type);
 
     void inputBytes(const QByteArray &bytes);
+    void setupDataFormat(QComboBox *comboBox);
 
 signals:
     void newValues(const QList<double> &values);

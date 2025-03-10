@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QBarSeries>
+#include <QCategoryAxis>
 #include <QChart>
 #include <QChartView>
 #include <QMenu>
@@ -24,20 +26,6 @@ using QtCharts::QXYSeries;
 namespace Ui {
 class ChartsUi;
 }
-
-struct BarChartSettings1
-{
-    const QString dataType{"dataType"};
-    const QString testData{"testData"};
-    const QString channels{"channels"};
-    const QString legendVisible{"legendVisible"};
-    const QString cachePoints{"cachePoints"};
-
-    const QString channelName{"channelName"};
-    const QString channelVisible{"channelVisible"};
-    const QString channelColor{"channelColor"};
-    const QString channelType{"channelType"};
-};
 
 class BarChartSettings;
 class BarChartView : public ChartView
@@ -56,7 +44,7 @@ private:
     Ui::ChartsUi *ui;
     BarChartSettings *m_settings;
     QList<QXYSeries *> m_series;
-    QValueAxis *m_axisX;
+    QCategoryAxis *m_axisX;
     QValueAxis *m_axisY;
 
 private:

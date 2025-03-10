@@ -14,6 +14,8 @@
 #include <QTimer>
 #include <QtMath>
 
+#include "common/xtools.h"
+
 ChartDataHandler::ChartDataHandler(QObject *parent)
     : QThread(parent)
     , m_binaryTail(QByteArray::fromHex("0000807f"))
@@ -49,6 +51,25 @@ void ChartDataHandler::inputBytes(const QByteArray &bytes)
         m_cache.append(bytes);
         m_cacheMutex.unlock();
     }
+}
+
+void ChartDataHandler::setupDataFormat(QComboBox *comboBox)
+{
+    if (!comboBox) {
+        return;
+    }
+
+    comboBox->addItem(tr("Binary") + "-Y", static_cast<int>(DataFormat::BinaryY));
+    comboBox->addItem(tr("Text") + "-Y", static_cast<int>(DataFormat::TextY));
+#if 0
+    comboBox->addItem(tr("Binary") + "-XY", static_cast<int>(DataFormat::BinaryXY));
+    comboBox->addItem(tr("Text") + "-XY", static_cast<int>(DataFormat::TextXY));
+#endif
+
+    connect(comboBox, xComboBoxActivated, this, [=]() {
+        int type = comboBox->currentData().toInt();
+        setDataFormat(type);
+    });
 }
 
 void ChartDataHandler::run()

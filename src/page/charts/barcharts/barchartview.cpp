@@ -38,16 +38,12 @@ BarChartView::BarChartView(QWidget *parent)
     // clang-format off
     connect(m_settings, &BarChartSettings::dataFormatChanged, this, &BarChartView::onDataFormatChanged);
     connect(m_settings, &BarChartSettings::invokeSetLegendVisible, this, &BarChartView::onSetLegendVisible);
-    connect(m_settings, &BarChartSettings::invokeClearChannels, this, &BarChartView::onClearChannels);
-    connect(m_settings, &BarChartSettings::invokeImportChannels, this, &BarChartView::onImportChannels);
-    connect(m_settings, &BarChartSettings::invokeExportChannels, this, &BarChartView::onExportChannels);
     connect(m_settings, &BarChartSettings::channelVisibleChanged, this, &BarChartView::onSetChannelVisible);
-    connect(m_settings, &BarChartSettings::channelTypeChanged, this, &BarChartView::onSetChannelType);
     connect(m_settings, &BarChartSettings::channelColorChanged, this, &BarChartView::onSetChannelColor);
     connect(m_settings, &BarChartSettings::channelNameChanged, this, &BarChartView::onSetChannelName);
     // clang-format on
 
-    m_axisX = new QValueAxis();
+    m_axisX = new QCategoryAxis();
     m_axisX->setRange(0, 100);
     m_axisY = new QValueAxis();
     m_axisY->setRange(0, 1);
@@ -90,21 +86,19 @@ QVariantMap BarChartView::save() const
 {
     QVariantMap data;
 
-    BarChartSettings1 keys;
-    data[keys.dataType] = m_settings->dataType();
+    BarChartSettingsKeys keys;
+    data[keys.dataFormat] = m_settings->dataType();
     data[keys.legendVisible] = m_settings->legendVisible();
     data[keys.cachePoints] = m_settings->cachePoints();
     QJsonArray channels;
     for (int i = 0; i < m_series.size(); ++i) {
         QJsonObject obj;
-        obj[keys.channelName] = m_series[i]->name();
-        obj[keys.channelVisible] = m_series[i]->isVisible();
-        obj[keys.channelColor] = m_series[i]->color().name();
-        obj[keys.channelType] = m_series[i]->type();
+        obj[keys.channel.channelName] = m_series[i]->name();
+        obj[keys.channel.channelVisible] = m_series[i]->isVisible();
+        obj[keys.channel.channelColor] = m_series[i]->color().name();
         channels.append(obj);
     }
 
-    data[keys.channels] = channels;
     return data;
 }
 
@@ -114,7 +108,7 @@ void BarChartView::load(const QVariantMap &parameters)
         return;
     }
 
-    BarChartSettings1 keys;
+    BarChartSettingsKeys keys;
     m_settings->load(parameters);
     QJsonArray channels = parameters.value(keys.channels).toJsonArray();
 
@@ -125,42 +119,14 @@ void BarChartView::load(const QVariantMap &parameters)
 
     for (int i = 0; i < channels.size(); ++i) {
         QJsonObject obj = channels[i].toObject();
-        QString name = obj.value(keys.channelName).toString();
-        QString color = obj.value(keys.channelColor).toString();
-        int type = obj.value(keys.channelType).toInt();
-        bool visible = channels[i].toObject().value(keys.channelVisible).toBool();
+        QString name = obj.value(keys.channel.channelName).toString();
+        QString color = obj.value(keys.channel.channelColor).toString();
+        bool visible = channels[i].toObject().value(keys.channel.channelVisible).toBool();
 
-        QXYSeries *oldSeries = m_series[i];
-        oldSeries->setName(name);
-        oldSeries->setVisible(visible);
-        oldSeries->setColor(color);
-        if (type != oldSeries->type()) {
-            QXYSeries *newSeries = nullptr;
-            if (type == QAbstractSeries::SeriesType::SeriesTypeLine) {
-                newSeries = new QLineSeries();
-            } else if (type == QAbstractSeries::SeriesType::SeriesTypeSpline) {
-                newSeries = new QSplineSeries();
-            } else if (type == QAbstractSeries::SeriesType::SeriesTypeScatter) {
-                newSeries = new QScatterSeries();
-            } else {
-                qWarning() << "Unknown series type.";
-            }
-
-            if (newSeries) {
-                newSeries->setName(name);
-                newSeries->setVisible(visible);
-                newSeries->setColor(color);
-                newSeries->replace(oldSeries->points());
-                newSeries->attachAxis(m_axisX);
-                newSeries->attachAxis(m_axisY);
-                newSeries->setUseOpenGL(true);
-
-                m_chart->removeSeries(oldSeries);
-                oldSeries->setParent(nullptr);
-                oldSeries->deleteLater();
-                oldSeries = nullptr;
-            }
-        }
+        QXYSeries *series = m_series[i];
+        series->setName(name);
+        series->setVisible(visible);
+        series->setColor(color);
     }
 }
 
