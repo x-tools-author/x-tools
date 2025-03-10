@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QMutex>
 #include <QThread>
 #include <QVariantMap>
 
@@ -22,14 +23,14 @@ public:
     ChartDataHandler(QObject *parent = Q_NULLPTR);
     virtual ~ChartDataHandler() override;
 
+    int dataFormat() const;
+    void setDataFormat(int type);
+
     void inputBytes(const QByteArray &bytes);
-    QVariantMap save();
-    void load(const QVariantMap &parameters);
 
 signals:
     void newValues(const QList<double> &values);
     void newPoints(const QList<QPointF> &points);
-    void outputBytes(const QByteArray &bytes);
 
 protected:
     void run() override;
@@ -40,9 +41,9 @@ protected:
     void handleTextXY(QByteArray &bytes);
 
 private:
-    Q_SIGNAL void input2run(const QByteArray &bytes);
-
-private:
-    QByteArray m_binaryTail;
+    const QByteArray m_binaryTail;
     QByteArray m_cache;
+    QMutex m_cacheMutex;
+    int m_dataFormat;
+    mutable QMutex m_dataFormatMutex;
 };

@@ -28,27 +28,23 @@
 
 #include "common/xtools.h"
 #include "linechartsettings.h"
+#include "page/charts/utilities/chartdatahandler.h"
 
 LineChartView::LineChartView(QWidget *parent)
-    : QChartView(parent)
+    : ChartView(parent)
 {
-    setContentsMargins(0, 0, 0, 0);
-    setRenderHint(QPainter::Antialiasing);
-    setAttribute(Qt::WA_TranslucentBackground);
-    viewport()->setAttribute(Qt::WA_TranslucentBackground);
-
-    m_settings = new linechartsettings();
+    m_settings = new LineChartSettings();
 
     // clang-format off
-    connect(m_settings, &linechartsettings::invokeSetDataType, this, &LineChartView::onSetDataType);
-    connect(m_settings, &linechartsettings::invokeSetLegendVisible, this, &LineChartView::onSetLegendVisible);
-    connect(m_settings, &linechartsettings::invokeClearChannels, this, &LineChartView::onClearChannels);
-    connect(m_settings, &linechartsettings::invokeImportChannels, this, &LineChartView::onImportChannels);
-    connect(m_settings, &linechartsettings::invokeExportChannels, this, &LineChartView::onExportChannels);
-    connect(m_settings, &linechartsettings::invokeSetChannelVisible, this, &LineChartView::onSetChannelVisible);
-    connect(m_settings, &linechartsettings::invokeSetChannelType, this, &LineChartView::onSetChannelType);
-    connect(m_settings, &linechartsettings::invokeSetChannelColor, this, &LineChartView::onSetChannelColor);
-    connect(m_settings, &linechartsettings::invokeSetChannelName, this, &LineChartView::onSetChannelName);
+    connect(m_settings, &LineChartSettings::dataFormatChanged, this, &LineChartView::onDataFormatChanged);
+    connect(m_settings, &LineChartSettings::invokeSetLegendVisible, this, &LineChartView::onSetLegendVisible);
+    connect(m_settings, &LineChartSettings::invokeClearChannels, this, &LineChartView::onClearChannels);
+    connect(m_settings, &LineChartSettings::invokeImportChannels, this, &LineChartView::onImportChannels);
+    connect(m_settings, &LineChartSettings::invokeExportChannels, this, &LineChartView::onExportChannels);
+    connect(m_settings, &LineChartSettings::channelVisibleChanged, this, &LineChartView::onSetChannelVisible);
+    connect(m_settings, &LineChartSettings::channelTypeChanged, this, &LineChartView::onSetChannelType);
+    connect(m_settings, &LineChartSettings::channelColorChanged, this, &LineChartView::onSetChannelColor);
+    connect(m_settings, &LineChartSettings::channelNameChanged, this, &LineChartView::onSetChannelName);
     // clang-format on
 
     m_axisX = new QValueAxis();
@@ -56,7 +52,6 @@ LineChartView::LineChartView(QWidget *parent)
     m_axisY = new QValueAxis();
     m_axisY->setRange(0, 1);
 
-    m_chart = new QChart();
     m_chart->addAxis(m_axisX, Qt::AlignBottom);
     m_chart->addAxis(m_axisY, Qt::AlignLeft);
     m_chart->layout()->setContentsMargins(0, 0, 0, 0);
@@ -71,8 +66,7 @@ LineChartView::LineChartView(QWidget *parent)
     }
 #endif
 
-    setChart(m_chart);
-    int channelCount = linechartsettings::channelCount();
+    int channelCount = LineChartSettings::channelCount();
     for (int i = 0; i < channelCount; ++i) {
         QLineSeries *series = new QLineSeries();
         m_chart->addSeries(series);
@@ -170,58 +164,24 @@ void LineChartView::load(const QVariantMap &parameters)
     }
 }
 
-#if 0
-void lineChartView::setupIO(AbstractIO *io)
-{
-    AbstractIOUi::setupIO(io);
-
-    auto *charts = qobject_cast<Charts *>(io);
-    if (!charts) {
-        return;
-    }
-
-    m_io = io;
-    int type = Qt::AutoConnection | Qt::UniqueConnection;
-    auto cookedType = static_cast<Qt::ConnectionType>(type);
-    connect(charts, &Charts::newValues, this, &lineChartView::onNewValues, cookedType);
-    connect(charts, &Charts::newPoints, this, &lineChartView::onNewPoints, cookedType);
-    connect(io, &AbstractIO::started, this, [this]() {
-        this->m_settings->updateUiState(true);
-        onClearChannels();
-    });
-    connect(io, &AbstractIO::finished, this, [this]() { this->m_settings->updateUiState(false); });
-}
-#endif
-
-QMenu *LineChartView::settingsMenu()
-{
-    if (!m_settingsMenu) {
-        m_settingsMenu = new QMenu(this);
-        QWidgetAction *action = new QWidgetAction(m_settingsMenu);
-        action->setDefaultWidget(m_settings);
-        m_settingsMenu->addAction(action);
-    }
-
-    return m_settingsMenu;
-}
-
-QWidget *LineChartView::settingsWidget()
+ChartSettings *LineChartView::chartSettingsWidget()
 {
     return m_settings;
 }
 
-void LineChartView::updateChartsTheme(bool darkMode)
+void LineChartView::resetChart()
 {
-    m_chart->setTheme(darkMode ? QChart::ChartThemeDark : QChart::ChartThemeLight);
+    for (auto &series : m_series) {
+        series->clear();
+    }
+
+    m_axisX->setRange(0, 100);
+    m_axisY->setRange(0, 1);
 }
 
-void LineChartView::onSetDataType(int type)
+void LineChartView::onDataFormatChanged(int type)
 {
-#if 0
-    if (m_io) {
-        m_io->load(save());
-    }
-#endif
+    m_chartDataHandler->setDataFormat(type);
 }
 
 void LineChartView::onSetLegendVisible(bool visible)
@@ -281,7 +241,7 @@ void LineChartView::onExportChannels()
     }
 
     QXlsx::Document xlsx;
-    for (int i = 0; i < linechartsettings::channelCount(); ++i) {
+    for (int i = 0; i < LineChartSettings::channelCount(); ++i) {
         xlsx.addSheet(m_series.at(i)->name());
         xlsx.selectSheet(i);
         xlsx.write(1, 1, "x");

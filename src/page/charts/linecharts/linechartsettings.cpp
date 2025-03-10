@@ -21,16 +21,16 @@
 #include <QPointF>
 #include <QTimer>
 
-#include "linechartview.h"
 #include "common/xtools.h"
+#include "linechartview.h"
 #include "page/charts/chartsview.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using namespace QtCharts;
 #endif
 
-linechartsettings::linechartsettings(QWidget *parent)
-    : QWidget(parent)
+LineChartSettings::LineChartSettings(QWidget *parent)
+    : ChartSettings(parent)
     , ui(new Ui::LineChartSettings)
 {
     ui->setupUi(this);
@@ -43,25 +43,25 @@ linechartsettings::linechartsettings(QWidget *parent)
     cb->addItem(tr("Text") + "-XY", static_cast<int>(Charts::DataFormat::TextXY));
 #endif
     connect(ui->comboBoxDataType, xComboBoxActivated, this, [=]() {
-        emit this->invokeSetDataType(ui->comboBoxDataType->currentData().toInt());
+        emit this->dataFormatChanged(ui->comboBoxDataType->currentData().toInt());
     });
 
     connect(ui->checkBoxLegend,
             &QCheckBox::clicked,
             this,
-            &linechartsettings::invokeSetLegendVisible);
+            &LineChartSettings::invokeSetLegendVisible);
     connect(ui->pushButtonClear,
             &QPushButton::clicked,
             this,
-            &linechartsettings::invokeClearChannels);
+            &LineChartSettings::invokeClearChannels);
     connect(ui->pushButtonImport,
             &QPushButton::clicked,
             this,
-            &linechartsettings::invokeImportChannels);
+            &LineChartSettings::invokeImportChannels);
     connect(ui->pushButtonExport,
             &QPushButton::clicked,
             this,
-            &linechartsettings::invokeExportChannels);
+            &LineChartSettings::invokeExportChannels);
 
     QGridLayout *parametersGridLayout = new QGridLayout(ui->widgetControl);
     parametersGridLayout->addWidget(new QLabel(tr("Channel"), this), 0, 0, Qt::AlignCenter);
@@ -105,50 +105,17 @@ linechartsettings::linechartsettings(QWidget *parent)
     }
 }
 
-linechartsettings::~linechartsettings()
+LineChartSettings::~LineChartSettings()
 {
     delete ui;
 }
 
-int linechartsettings::channelCount()
+QVariantMap LineChartSettings::save() const
 {
-    return 16;
+    return QVariantMap();
 }
 
-int linechartsettings::dataType()
-{
-    return ui->comboBoxDataType->currentData().toInt();
-}
-
-void linechartsettings::setDataType(int type)
-{
-    int index = ui->comboBoxDataType->findData(type);
-    if (index != -1) {
-        ui->comboBoxDataType->setCurrentIndex(index);
-    }
-}
-
-bool linechartsettings::legendVisible()
-{
-    return ui->checkBoxLegend->isChecked();
-}
-
-void linechartsettings::setLegendVisible(bool visible)
-{
-    ui->checkBoxLegend->setChecked(true);
-}
-
-int linechartsettings::cachePoints()
-{
-    return ui->spinBoxCachePoints->value();
-}
-
-void linechartsettings::setCachePoints(int points)
-{
-    ui->spinBoxCachePoints->setValue(points);
-}
-
-void linechartsettings::load(const QVariantMap &parameters)
+void LineChartSettings::load(const QVariantMap &parameters)
 {
     if (parameters.isEmpty()) {
         return;
@@ -189,22 +156,60 @@ void linechartsettings::load(const QVariantMap &parameters)
     }
 }
 
-void linechartsettings::updateUiState(bool ioIsOpened)
+int LineChartSettings::channelCount()
+{
+    return 16;
+}
+
+int LineChartSettings::dataType()
+{
+    return ui->comboBoxDataType->currentData().toInt();
+}
+
+void LineChartSettings::setDataType(int type)
+{
+    int index = ui->comboBoxDataType->findData(type);
+    if (index != -1) {
+        ui->comboBoxDataType->setCurrentIndex(index);
+    }
+}
+
+bool LineChartSettings::legendVisible()
+{
+    return ui->checkBoxLegend->isChecked();
+}
+
+void LineChartSettings::setLegendVisible(bool visible)
+{
+    ui->checkBoxLegend->setChecked(true);
+}
+
+int LineChartSettings::cachePoints()
+{
+    return ui->spinBoxCachePoints->value();
+}
+
+void LineChartSettings::setCachePoints(int points)
+{
+    ui->spinBoxCachePoints->setValue(points);
+}
+
+void LineChartSettings::updateUiState(bool ioIsOpened)
 {
     ui->comboBoxDataType->setEnabled(!ioIsOpened);
 }
 
-void linechartsettings::setupVisibleCheckBox(QCheckBox *checkBox, int channelIndex)
+void LineChartSettings::setupVisibleCheckBox(QCheckBox *checkBox, int channelIndex)
 {
     checkBox->setCheckable(true);
     checkBox->setChecked(true);
     m_channelContexts[channelIndex].visibleCheckBox = checkBox;
     connect(checkBox, &QCheckBox::clicked, this, [=](bool checked) {
-        emit invokeSetChannelVisible(channelIndex, checked);
+        emit channelVisibleChanged(channelIndex, checked);
     });
 }
 
-void linechartsettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
+void LineChartSettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
 {
     m_channelContexts[channelIndex].typeComboBox = comboBox;
     comboBox->clear();
@@ -218,11 +223,11 @@ void linechartsettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
                       seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeScatter),
                       QAbstractSeries::SeriesType::SeriesTypeScatter);
     connect(comboBox, QOverload<int>::of(xComboBoxActivated), this, [=](int index) {
-        emit invokeSetChannelType(channelIndex, comboBox->itemData(index).toInt());
+        emit channelTypeChanged(channelIndex, comboBox->itemData(index).toInt());
     });
 }
 
-void linechartsettings::setupColorButton(QPushButton *button, int channelIndex)
+void LineChartSettings::setupColorButton(QPushButton *button, int channelIndex)
 {
     m_channelContexts[channelIndex].colorButton = button;
     button->setStyleSheet("background-color: rgb(0, 0, 255);");
@@ -231,22 +236,22 @@ void linechartsettings::setupColorButton(QPushButton *button, int channelIndex)
         QColor color = QColorDialog::getColor(Qt::blue, this);
         if (color.isValid()) {
             button->setStyleSheet("background-color: " + color.name() + ";");
-            emit invokeSetChannelColor(channelIndex, color);
+            emit channelColorChanged(channelIndex, color);
         }
     });
 }
 
-void linechartsettings::setupNameLineEdit(QLineEdit *lineEdit, int channelIndex)
+void LineChartSettings::setupNameLineEdit(QLineEdit *lineEdit, int channelIndex)
 {
     m_channelContexts[channelIndex].nameLineEdit = lineEdit;
     lineEdit->setText(tr("Channel") + " " + QString::number(channelIndex + 1));
 
     connect(lineEdit, &QLineEdit::textEdited, this, [=]() {
-        emit invokeSetChannelName(channelIndex, lineEdit->text());
+        emit channelNameChanged(channelIndex, lineEdit->text());
     });
 }
 
-QString linechartsettings::seriesTypeToString(int type) const
+QString LineChartSettings::seriesTypeToString(int type) const
 {
     switch (type) {
     case QAbstractSeries::SeriesType::SeriesTypeLine:

@@ -13,16 +13,21 @@
 #include <QLineEdit>
 #include <QPushButton>
 
+#include "page/charts/common/chartsettings.h"
+
 namespace Ui {
 class LineChartSettings;
 }
 
-class linechartsettings : public QWidget
+class LineChartSettings : public ChartSettings
 {
     Q_OBJECT
 public:
-    explicit linechartsettings(QWidget *parent = Q_NULLPTR);
-    ~linechartsettings() override;
+    explicit LineChartSettings(QWidget *parent = Q_NULLPTR);
+    ~LineChartSettings() override;
+
+    QVariantMap save() const override;
+    void load(const QVariantMap &parameters) override;
 
     static int channelCount();
 
@@ -35,19 +40,19 @@ public:
     int cachePoints();
     void setCachePoints(int points);
 
-    void load(const QVariantMap &parameters);
     void updateUiState(bool ioIsOpened);
 
 signals:
-    void invokeSetDataType(int type);
+    void dataFormatChanged(int type);
     void invokeSetLegendVisible(bool visible);
+    void channelVisibleChanged(int channelIndex, bool visible);
+    void channelTypeChanged(int channelIndex, int type);
+    void channelColorChanged(int channelIndex, const QColor &color);
+    void channelNameChanged(int channelIndex, const QString &name);
+
     void invokeClearChannels();
     void invokeImportChannels();
     void invokeExportChannels();
-    void invokeSetChannelVisible(int channelIndex, bool visible);
-    void invokeSetChannelType(int channelIndex, int type);
-    void invokeSetChannelColor(int channelIndex, const QColor &color);
-    void invokeSetChannelName(int channelIndex, const QString &name);
 
 private:
     struct ChannelContext

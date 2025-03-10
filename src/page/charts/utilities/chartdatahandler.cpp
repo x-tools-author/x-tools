@@ -18,7 +18,7 @@ ChartDataHandler::ChartDataHandler(QObject *parent)
     : QThread(parent)
     , m_binaryTail(QByteArray::fromHex("0000807f"))
 {
-
+    m_dataFormat = static_cast<int>(DataFormat::BinaryY);
 }
 
 ChartDataHandler::~ChartDataHandler()
@@ -27,35 +27,40 @@ ChartDataHandler::~ChartDataHandler()
     wait();
 }
 
+int ChartDataHandler::dataFormat() const
+{
+    m_dataFormatMutex.lock();
+    int tmp = m_dataFormat;
+    m_dataFormatMutex.unlock();
+    return tmp;
+}
+
+void ChartDataHandler::setDataFormat(int type)
+{
+    m_dataFormatMutex.lock();
+    m_dataFormat = type;
+    m_dataFormatMutex.unlock();
+}
+
 void ChartDataHandler::inputBytes(const QByteArray &bytes)
 {
     if (!bytes.isEmpty()) {
-        emit input2run(bytes);
+        m_cacheMutex.lock();
+        m_cache.append(bytes);
+        m_cacheMutex.unlock();
     }
-}
-
-QVariantMap ChartDataHandler::save()
-{
-    return QVariantMap();
-}
-
-void ChartDataHandler::load(const QVariantMap &parameters)
-{
-    Q_UNUSED(parameters);
 }
 
 void ChartDataHandler::run()
 {
+    m_cacheMutex.lock();
     m_cache.clear();
+    m_cacheMutex.unlock();
+
     QTimer *timer = new QTimer();
-
-    QVariantMap parameters = save();
-    int dataFormat = parameters.value("dataType").toInt();
-    connect(this, &ChartDataHandler::input2run, timer, [this](const QByteArray &bytes) {
-        this->m_cache.append(bytes);
-    });
-
-    connect(timer, &QTimer::timeout, timer, [this, timer, dataFormat] {
+    connect(timer, &QTimer::timeout, timer, [this, timer] {
+        int dataFormat = this->dataFormat();
+        this->m_cacheMutex.lock();
         if (dataFormat == static_cast<int>(DataFormat::BinaryY)) {
             handleBinaryY(this->m_cache);
         } else if (dataFormat == static_cast<int>(DataFormat::TextY)) {
@@ -66,9 +71,8 @@ void ChartDataHandler::run()
             handleTextXY(this->m_cache);
         } else {
             qWarning() << "Invalid data format!";
-            emit outputBytes(QByteArray("Invalid data format!"));
         }
-
+        this->m_cacheMutex.unlock();
         timer->start();
     });
     timer->setSingleShot(true);
@@ -90,7 +94,6 @@ void ChartDataHandler::handleBinaryY(QByteArray &bytes)
 
         if (yOfPoints.size() % 4 != 0) {
             qWarning() << "Data error: " << yOfPoints;
-            emit outputBytes(QByteArray("Data error: ") + yOfPoints);
             continue;
         }
 
@@ -114,7 +117,6 @@ void ChartDataHandler::handleTextY(QByteArray &bytes)
         QString str = QString::fromLatin1(yOfPoints);
         if (str.isEmpty()) {
             qWarning() << "Data error: " << yOfPoints;
-            emit outputBytes(QByteArray("Data error: ") + yOfPoints);
             continue;
         }
 
@@ -135,7 +137,6 @@ void ChartDataHandler::handleBinaryXY(QByteArray &bytes)
         bytes.remove(0, index + m_binaryTail.size());
 
         if (xyOfPoints.size() % 8 != 0) {
-            emit outputBytes(QByteArray("Data error: ") + xyOfPoints);
             continue;
         }
 
@@ -162,7 +163,6 @@ void ChartDataHandler::handleTextXY(QByteArray &bytes)
 
         QString str = QString::fromLatin1(xyOfPoints);
         if (str.isEmpty()) {
-            emit outputBytes(QByteArray("Data error: ") + xyOfPoints);
             continue;
         }
 

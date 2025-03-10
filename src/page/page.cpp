@@ -451,6 +451,10 @@ void Page::onShowStatisticianChanged(bool checked)
 
 void Page::onOpened()
 {
+#ifdef X_ENABLE_CHARTS
+    m_chartsView->resetCharts();
+#endif
+
     setUiEnabled(false);
     onCycleIntervalChanged();
 
@@ -764,6 +768,8 @@ DeviceUi *Page::newDeviceUi(int type)
         return new WebSocketClientUi();
     case static_cast<int>(DeviceType::WebSocketServer):
         return new WebSocketServerUi();
+#endif
+#ifdef X_ENABLE_CHARTS
     case static_cast<int>(DeviceType::ChartsTest):
         return new ChartsTestUi();
 #endif

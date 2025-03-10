@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include "page/charts/common/chartview.h"
 #include <QChart>
 #include <QChartView>
 #include <QMenu>
@@ -15,7 +16,6 @@
 #include <QXYSeries>
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-using QtCharts::QChart;
 using QtCharts::QValueAxis;
 using QtCharts::QXYSeries;
 #endif
@@ -38,35 +38,31 @@ struct ChartsUiDataKeys
     const QString channelType{"channelType"};
 };
 
-class linechartsettings;
-class LineChartView : public QChartView
+class LineChartSettings;
+class LineChartView : public ChartView
 {
     Q_OBJECT
 public:
     explicit LineChartView(QWidget *parent = Q_NULLPTR);
     ~LineChartView() override;
 
-    QVariantMap save() const;
-    void load(const QVariantMap &parameters);
-
-    QMenu *settingsMenu();
-    QWidget *settingsWidget();
-    void updateChartsTheme(bool darkMode);
+    QVariantMap save() const override;
+    void load(const QVariantMap &parameters) override;
+    ChartSettings *chartSettingsWidget() override;
+    void resetChart() override;
 
 private:
     Ui::ChartsUi *ui;
-    linechartsettings *m_settings;
-    QMenu *m_settingsMenu{nullptr};
+    LineChartSettings *m_settings;
     QList<QXYSeries *> m_series;
-    QChart *m_chart;
     QValueAxis *m_axisX;
     QValueAxis *m_axisY;
 
 private:
-    void onNewValues(const QList<double> &values);
-    void onNewPoints(const QList<QPointF> &points);
+    void onNewValues(const QList<double> &values) override;
+    void onNewPoints(const QList<QPointF> &points) override;
 
-    void onSetDataType(int type);
+    void onDataFormatChanged(int type);
     void onSetLegendVisible(bool visible);
     void onClearChannels();
     void onImportChannels();

@@ -13,6 +13,7 @@
 #include <QVariantMap>
 #include <QWidget>
 
+class ChartView;
 class ChartsView : public QWidget
 {
     Q_OBJECT
@@ -26,33 +27,12 @@ public:
 
     QList<QToolButton *> chartControllers();
 
+    void resetCharts();
     void inputBytes(const QByteArray &bytes);
     QVariantMap save();
     void load(const QVariantMap &parameters);
 
-signals:
-    void newValues(const QList<double> &values);
-    void newPoints(const QList<QPointF> &points);
-    void outputBytes(const QByteArray &bytes);
-
-protected:
-    void run();
-
-    QByteArray handleBinaryY();
-    QByteArray handleTextY();
-    QByteArray handleBinaryXY();
-    QByteArray handleTextXY();
-
-    void handleBinaryY(QByteArray &bytes);
-    void handleTextY(QByteArray &bytes);
-    void handleBinaryXY(QByteArray &bytes);
-    void handleTextXY(QByteArray &bytes);
-
 private:
-    Q_SIGNAL void input2run(const QByteArray &bytes);
-
-private:
-    const QByteArray m_binaryTail;
-    int m_testAngle{0};
+    QList<ChartView *> m_chartViews;
     QList<QToolButton *> m_chartControllers;
 };
