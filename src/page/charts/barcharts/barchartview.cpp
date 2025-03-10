@@ -62,15 +62,12 @@ BarChartView::BarChartView(QWidget *parent)
     }
 #endif
 
-    int channelCount = BarChartSettings::channelCount();
+    m_barSeries = new QStackedBarSeries(m_chart);
+    m_barSeries->setUseOpenGL(true);
+    const int channelCount = 16;
     for (int i = 0; i < channelCount; ++i) {
-        QLineSeries *series = new QLineSeries();
-        m_chart->addSeries(series);
-        series->attachAxis(m_axisX);
-        series->attachAxis(m_axisY);
-        series->setName(QString::number(i + 1));
-        series->setUseOpenGL(true);
-        m_series.append(series);
+        QBarSet *set = new QBarSet("", m_chart);
+        m_barSeries->append(set);
     }
 
     m_settings->load(BarChartView::save());
@@ -91,12 +88,12 @@ QVariantMap BarChartView::save() const
     data[keys.legendVisible] = m_settings->legendVisible();
     data[keys.cachePoints] = m_settings->cachePoints();
     QJsonArray channels;
-    for (int i = 0; i < m_series.size(); ++i) {
+    for (int i = 0; i < m_barSets.size(); ++i) {
         QJsonObject obj;
-        obj[keys.channel.channelName] = m_series[i]->name();
-        obj[keys.channel.channelVisible] = m_series[i]->isVisible();
-        obj[keys.channel.channelColor] = m_series[i]->color().name();
-        channels.append(obj);
+        // obj[keys.channel.channelName] = m_axisX->categoriesLabels().at(i);
+        // obj[keys.channel.channelVisible] = m_barSets[i].hid
+        // obj[keys.channel.channelColor] = m_barSets[i]->color().name();
+        // channels.append(obj);
     }
 
     return data;
@@ -112,7 +109,7 @@ void BarChartView::load(const QVariantMap &parameters)
     m_settings->load(parameters);
     QJsonArray channels = parameters.value(keys.channels).toJsonArray();
 
-    if (channels.size() != m_series.size()) {
+    if (channels.size() != m_barSets.size()) {
         qWarning() << "The number of channels is not equal to the number of series.";
         return;
     }
@@ -123,10 +120,10 @@ void BarChartView::load(const QVariantMap &parameters)
         QString color = obj.value(keys.channel.channelColor).toString();
         bool visible = channels[i].toObject().value(keys.channel.channelVisible).toBool();
 
-        QXYSeries *series = m_series[i];
-        series->setName(name);
-        series->setVisible(visible);
-        series->setColor(color);
+        // QBarSet *series = m_barSets[i];
+        // series->setName(name);
+        // series->setVisible(visible);
+        // series->setColor(color);
     }
 }
 
@@ -137,9 +134,9 @@ ChartSettings *BarChartView::chartSettingsWidget()
 
 void BarChartView::resetChart()
 {
-    for (auto &series : m_series) {
-        series->clear();
-    }
+    // for (auto &series : m_barSets) {
+    //     series->clear();
+    // }
 
     m_axisX->setRange(0, 100);
     m_axisY->setRange(0, 1);
@@ -157,9 +154,9 @@ void BarChartView::onSetLegendVisible(bool visible)
 
 void BarChartView::onClearChannels()
 {
-    for (auto &series : m_series) {
-        series->clear();
-    }
+    // for (auto &series : m_barSets) {
+    //     series->clear();
+    // }
 
     m_axisX->setRange(0, 100);
     m_axisY->setRange(0, 1);
@@ -190,8 +187,8 @@ void BarChartView::onImportChannels()
             points.append(QPointF(x.toDouble(), y.toDouble()));
         }
 
-        if (i < m_series.size()) {
-            m_series[i]->replace(points);
+        if (i < m_barSets.size()) {
+            //m_barSets[i]->replace(points);
         }
     }
 }
@@ -207,18 +204,18 @@ void BarChartView::onExportChannels()
     }
 
     QXlsx::Document xlsx;
-    for (int i = 0; i < BarChartSettings::channelCount(); ++i) {
-        xlsx.addSheet(m_series.at(i)->name());
-        xlsx.selectSheet(i);
-        xlsx.write(1, 1, "x");
-        xlsx.write(1, 2, "y");
+    // for (int i = 0; i < BarChartSettings::channelCount(); ++i) {
+    //     xlsx.addSheet(m_barSets.at(i)->name());
+    //     xlsx.selectSheet(i);
+    //     xlsx.write(1, 1, "x");
+    //     xlsx.write(1, 2, "y");
 
-        QList<QPointF> points = m_series.at(i)->points();
-        for (int j = 0; j < points.size(); ++j) {
-            xlsx.write(j + 2, 1, points.at(j).x());
-            xlsx.write(j + 2, 2, points.at(j).y());
-        }
-    }
+    //     QList<QPointF> points = m_barSets.at(i)->points();
+    //     for (int j = 0; j < points.size(); ++j) {
+    //         xlsx.write(j + 2, 1, points.at(j).x());
+    //         xlsx.write(j + 2, 2, points.at(j).y());
+    //     }
+    // }
 
     xlsx.selectSheet(0);
     if (xlsx.saveAs(fileName)) {
@@ -230,125 +227,125 @@ void BarChartView::onExportChannels()
 
 void BarChartView::onNewValues(const QList<double> &values)
 {
-    int count = qMin(values.size(), m_series.size());
-    for (int i = 0; i < count; ++i) {
-        double value = values[i];
-        QXYSeries *series = m_series[i];
+    int count = qMin(values.size(), m_barSets.size());
+    // for (int i = 0; i < count; ++i) {
+    //     double value = values[i];
+    //     QXYSeries *series = m_barSets[i];
 
-        QPointF pos = QPointF(series->count(), value);
-        series->append(pos);
+    //     QPointF pos = QPointF(series->count(), value);
+    //     series->append(pos);
 
-        if (m_settings->cachePoints() > 0 && series->count() > m_settings->cachePoints()) {
-            if (pos.x() > m_axisX->max()) {
-                m_axisX->setMax(pos.x());
-                m_axisX->setMin(pos.x() - m_settings->cachePoints());
-            }
-        }
+    //     if (m_settings->cachePoints() > 0 && series->count() > m_settings->cachePoints()) {
+    //         if (pos.x() > m_axisX->max()) {
+    //             m_axisX->setMax(pos.x());
+    //             m_axisX->setMin(pos.x() - m_settings->cachePoints());
+    //         }
+    //     }
 
-        if (value > m_axisY->max()) {
-            m_axisY->setMax(value);
-        }
+    //     if (value > m_axisY->max()) {
+    //         m_axisY->setMax(value);
+    //     }
 
-        if (value < m_axisY->min()) {
-            m_axisY->setMin(value);
-        };
+    //     if (value < m_axisY->min()) {
+    //         m_axisY->setMin(value);
+    //     };
 
-        if (pos.x() > m_axisX->max()) {
-            m_axisX->setMax(pos.x());
-        }
-    }
+    //     if (pos.x() > m_axisX->max()) {
+    //         m_axisX->setMax(pos.x());
+    //     }
+    // }
 }
 
 void BarChartView::onNewPoints(const QList<QPointF> &points)
 {
-    int count = qMin(points.size(), m_series.size());
-    for (int i = 0; i < count; ++i) {
-        m_series[i]->append(points[i]);
+    int count = qMin(points.size(), m_barSets.size());
+    // for (int i = 0; i < count; ++i) {
+    //     m_barSets[i]->append(points[i]);
 
-        if (m_settings->cachePoints() > 0 && m_series[i]->count() > m_settings->cachePoints()) {
-            m_series[i]->remove(0);
-        }
+    //     if (m_settings->cachePoints() > 0 && m_barSets[i]->count() > m_settings->cachePoints()) {
+    //         m_barSets[i]->remove(0);
+    //     }
 
-        if (points[i].y() > m_axisY->max()) {
-            m_axisY->setMax(points[i].y() + points[i].y() * 0.1);
-        }
+    //     if (points[i].y() > m_axisY->max()) {
+    //         m_axisY->setMax(points[i].y() + points[i].y() * 0.1);
+    //     }
 
-        if (points[i].y() < m_axisY->min()) {
-            m_axisY->setMin(points[i].y() - points[i].y() * 0.1);
-        }
+    //     if (points[i].y() < m_axisY->min()) {
+    //         m_axisY->setMin(points[i].y() - points[i].y() * 0.1);
+    //     }
 
-        if (points[i].x() > m_axisX->max()) {
-            m_axisX->setMax(points[i].x() + points[i].x() * 0.1);
-        }
+    //     if (points[i].x() > m_axisX->max()) {
+    //         m_axisX->setMax(points[i].x() + points[i].x() * 0.1);
+    //     }
 
-        if (points[i].x() < m_axisX->min()) {
-            m_axisX->setMin(points[i].x() - points[i].x() * 0.1);
-        }
-    }
+    //     if (points[i].x() < m_axisX->min()) {
+    //         m_axisX->setMin(points[i].x() - points[i].x() * 0.1);
+    //     }
+    // }
 }
 
 void BarChartView::onSetChannelVisible(int channelIndex, bool visible)
 {
-    if (channelIndex >= 0 && channelIndex < m_series.size()) {
-        m_series[channelIndex]->setVisible(visible);
-    }
+    // if (channelIndex >= 0 && channelIndex < m_barSets.size()) {
+    //     m_barSets[channelIndex]->setVisible(visible);
+    // }
 }
 
 void BarChartView::onSetChannelType(int channelIndex, int type)
 {
-    if (channelIndex >= 0 && channelIndex < m_series.size()) {
-        QAbstractSeries::SeriesType seriesType = static_cast<QAbstractSeries::SeriesType>(type);
-        if (m_series[channelIndex]->type() != seriesType) {
-            QXYSeries *newSeries = nullptr;
-            if (seriesType == QAbstractSeries::SeriesType::SeriesTypeLine) {
-                newSeries = new QLineSeries();
-            } else if (seriesType == QAbstractSeries::SeriesType::SeriesTypeSpline) {
-                newSeries = new QSplineSeries();
-            } else if (seriesType == QAbstractSeries::SeriesType::SeriesTypeScatter) {
-                newSeries = new QScatterSeries();
-            } else {
-                qWarning() << "Unknown series type.";
-            }
+    // if (channelIndex >= 0 && channelIndex < m_barSets.size()) {
+    //     QAbstractSeries::SeriesType seriesType = static_cast<QAbstractSeries::SeriesType>(type);
+    //     if (m_barSets[channelIndex]->type() != seriesType) {
+    //         QXYSeries *newSeries = nullptr;
+    //         if (seriesType == QAbstractSeries::SeriesType::SeriesTypeLine) {
+    //             newSeries = new QLineSeries();
+    //         } else if (seriesType == QAbstractSeries::SeriesType::SeriesTypeSpline) {
+    //             newSeries = new QSplineSeries();
+    //         } else if (seriesType == QAbstractSeries::SeriesType::SeriesTypeScatter) {
+    //             newSeries = new QScatterSeries();
+    //         } else {
+    //             qWarning() << "Unknown series type.";
+    //         }
 
-            if (newSeries) {
-                auto *oldSeries = m_series[channelIndex];
-                m_series[channelIndex] = newSeries;
-                m_chart->addSeries(newSeries);
+    //         if (newSeries) {
+    //             auto *oldSeries = m_barSets[channelIndex];
+    //             m_barSets[channelIndex] = newSeries;
+    //             m_chart->addSeries(newSeries);
 
-                newSeries->setName(oldSeries->name());
-                newSeries->setVisible(oldSeries->isVisible());
-                newSeries->setColor(oldSeries->color());
-                newSeries->replace(oldSeries->points());
-                newSeries->attachAxis(m_axisX);
-                newSeries->attachAxis(m_axisY);
-                newSeries->setUseOpenGL(true);
+    //             newSeries->setName(oldSeries->name());
+    //             newSeries->setVisible(oldSeries->isVisible());
+    //             newSeries->setColor(oldSeries->color());
+    //             newSeries->replace(oldSeries->points());
+    //             newSeries->attachAxis(m_axisX);
+    //             newSeries->attachAxis(m_axisY);
+    //             newSeries->setUseOpenGL(true);
 
-                oldSeries->setParent(nullptr);
-                oldSeries->deleteLater();
-                oldSeries = newSeries;
+    //             oldSeries->setParent(nullptr);
+    //             oldSeries->deleteLater();
+    //             oldSeries = newSeries;
 
-                for (auto &series : m_series) {
-                    m_chart->removeSeries(series);
-                }
+    //             for (auto &series : m_barSets) {
+    //                 m_chart->removeSeries(series);
+    //             }
 
-                for (auto &series : m_series) {
-                    m_chart->addSeries(series);
-                }
-            }
-        }
-    }
+    //             for (auto &series : m_barSets) {
+    //                 m_chart->addSeries(series);
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 void BarChartView::onSetChannelColor(int channelIndex, const QColor &color)
 {
-    if (channelIndex >= 0 && channelIndex < m_series.size()) {
-        m_series[channelIndex]->setColor(color);
+    if (channelIndex >= 0 && channelIndex < m_barSets.size()) {
+        m_barSets[channelIndex]->setColor(color);
     }
 }
 
 void BarChartView::onSetChannelName(int channelIndex, const QString &name)
 {
-    if (channelIndex >= 0 && channelIndex < m_series.size()) {
-        m_series[channelIndex]->setName(name);
-    }
+    // if (channelIndex >= 0 && channelIndex < m_barSets.size()) {
+    //     m_barSets[channelIndex]->setName(name);
+    // }
 }

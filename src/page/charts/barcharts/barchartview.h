@@ -8,11 +8,12 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QBarSeries>
+#include <QBarSet>
 #include <QCategoryAxis>
 #include <QChart>
 #include <QChartView>
 #include <QMenu>
+#include <QStackedBarSeries>
 #include <QValueAxis>
 #include <QXYSeries>
 
@@ -43,7 +44,8 @@ public:
 private:
     Ui::ChartsUi *ui;
     BarChartSettings *m_settings;
-    QList<QXYSeries *> m_series;
+    QList<QBarSet *> m_barSets;
+    QStackedBarSeries *m_barSeries;
     QCategoryAxis *m_axisX;
     QValueAxis *m_axisY;
 
