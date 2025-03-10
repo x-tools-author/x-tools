@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -25,7 +25,7 @@ namespace Ui {
 class ChartsUi;
 }
 
-struct ChartsUiDataKeys
+struct BarChartSettings1
 {
     const QString dataType{"dataType"};
     const QString testData{"testData"};
@@ -39,13 +39,13 @@ struct ChartsUiDataKeys
     const QString channelType{"channelType"};
 };
 
-class LineChartSettings;
-class LineChartView : public ChartView
+class BarChartSettings;
+class BarChartView : public ChartView
 {
     Q_OBJECT
 public:
-    explicit LineChartView(QWidget *parent = Q_NULLPTR);
-    ~LineChartView() override;
+    explicit BarChartView(QWidget *parent = Q_NULLPTR);
+    ~BarChartView() override;
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
@@ -54,7 +54,7 @@ public:
 
 private:
     Ui::ChartsUi *ui;
-    LineChartSettings *m_settings;
+    BarChartSettings *m_settings;
     QList<QXYSeries *> m_series;
     QValueAxis *m_axisX;
     QValueAxis *m_axisY;
