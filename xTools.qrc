@@ -13,5 +13,6 @@
         <file>res/icons/logo.svg</file>
         <file>res/images/qt_qq.jpg</file>
         <file>res/images/x_tools_qq.jpg</file>
+        <file>res/icons/bar.svg</file>
     </qresource>
 </RCC>

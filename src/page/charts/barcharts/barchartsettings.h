@@ -22,14 +22,11 @@ class BarChartSettings;
 struct BarChartSettingsKeys
 {
     const QString dataFormat{"dataFormat"};
-    const QString legendVisible{"legendVisible"};
-    const QString cachePoints{"cachePoints"};
     const QString channels{"channels"};
 
     const struct
     {
         const QString channelName{"channelName"};
-        const QString channelVisible{"channelVisible"};
         const QString channelColor{"channelColor"};
     } channel;
 };
@@ -48,12 +45,6 @@ public:
 
     int dataType();
     void setDataType(int type);
-
-    bool legendVisible();
-    void setLegendVisible(bool visible);
-
-    int cachePoints();
-    void setCachePoints(int points);
 
     void updateUiState(bool ioIsOpened);
 
@@ -78,8 +69,6 @@ private:
     QList<ChannelContext> m_channelContexts;
 
 private:
-    void setupVisibleCheckBox(QCheckBox *checkBox, int channelIndex);
-    void setupTypeComboBox(QComboBox *comboBox, int channelIndex);
     void setupColorButton(QPushButton *button, int channelIndex);
     void setupNameLineEdit(QLineEdit *lineEdit, int channelIndex);
 

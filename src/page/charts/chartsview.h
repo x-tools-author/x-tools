@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QPointF>
+#include <QStackedLayout>
 #include <QToolButton>
 #include <QVariantMap>
 #include <QWidget>
@@ -35,4 +36,20 @@ public:
 private:
     QList<ChartView *> m_chartViews;
     QList<QToolButton *> m_chartControllers;
+
+private:
+    template<typename T>
+    void addChartView(const QString &icon, int index, QStackedLayout *layout)
+    {
+        T *chartView = new T();
+        layout->addWidget(chartView);
+        m_chartViews.append(chartView);
+
+        QToolButton *controller = new QToolButton();
+        controller->setIcon(QIcon(icon));
+        controller->setMenu(chartView->chartSettingsMenu());
+        controller->setPopupMode(QToolButton::MenuButtonPopup);
+        m_chartControllers.append(controller);
+        connect(controller, &QToolButton::clicked, this, [=]() { layout->setCurrentIndex(index); });
+    }
 };

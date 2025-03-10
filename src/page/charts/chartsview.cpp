@@ -14,6 +14,7 @@
 #include <QTimer>
 #include <QtMath>
 
+#include "barcharts/barchartview.h"
 #include "linecharts/linechartview.h"
 #include "utilities/chartdatahandler.h"
 
@@ -22,18 +23,9 @@ ChartsView::ChartsView(QWidget *parent)
 {
     QStackedLayout *layout = new QStackedLayout(this);
     setLayout(layout);
-    LineChartView *lineChartView = new LineChartView();
-    layout->addWidget(lineChartView);
-    m_chartViews.append(lineChartView);
 
-    QToolButton *lineChartController = new QToolButton();
-    lineChartController->setIcon(QIcon(":/res/icons/line_series.svg"));
-    lineChartController->setMenu(lineChartView->chartSettingsMenu());
-    lineChartController->setPopupMode(QToolButton::MenuButtonPopup);
-    m_chartControllers.append(lineChartController);
-    connect(lineChartController, &QToolButton::clicked, layout, [layout]() {
-        layout->setCurrentIndex(0);
-    });
+    addChartView<LineChartView>(QString(":/res/icons/line_series.svg"), 0, layout);
+    addChartView<BarChartView>(QString(":/res/icons/bar.svg"), 1, layout);
 }
 
 ChartsView::~ChartsView() {}
@@ -45,7 +37,7 @@ QList<QToolButton *> ChartsView::chartControllers()
 
 void ChartsView::resetCharts()
 {
-    for (ChartView *view : m_chartViews) {
+    for (ChartView *&view : m_chartViews) {
         view->resetChart();
     }
 }
@@ -56,7 +48,7 @@ void ChartsView::inputBytes(const QByteArray &bytes)
         return;
     }
 
-    for (ChartView *view : m_chartViews) {
+    for (ChartView *&view : m_chartViews) {
         auto dataHandler = view->chartDataHandler();
         dataHandler->inputBytes(bytes);
     }
@@ -65,7 +57,7 @@ void ChartsView::inputBytes(const QByteArray &bytes)
 QVariantMap ChartsView::save()
 {
     QVariantMap data;
-    for (ChartView *view : m_chartViews) {
+    for (ChartView *&view : m_chartViews) {
         data.insert(view->metaObject()->className(), view->save());
     }
     return data;
@@ -73,7 +65,7 @@ QVariantMap ChartsView::save()
 
 void ChartsView::load(const QVariantMap &parameters)
 {
-    for (ChartView *view : m_chartViews) {
+    for (ChartView *&view : m_chartViews) {
         view->load(parameters.value(view->metaObject()->className()).toMap());
     }
 }

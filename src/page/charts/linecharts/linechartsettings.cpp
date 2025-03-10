@@ -34,14 +34,9 @@ LineChartSettings::LineChartSettings(QWidget *parent)
     , ui(new Ui::LineChartSettings)
 {
     ui->setupUi(this);
+
+    setupChartsDataFormat(ui->comboBoxDataType);
     ui->checkBoxLegend->setChecked(true);
-    QComboBox *cb = ui->comboBoxDataType;
-    cb->addItem(tr("Binary") + "-Y", static_cast<int>(ChartsView::DataFormat::BinaryY));
-    cb->addItem(tr("Text") + "-Y", static_cast<int>(ChartsView::DataFormat::TextY));
-#if 0
-    cb->addItem(tr("Binary") + "-XY", static_cast<int>(Charts::DataFormat::BinaryXY));
-    cb->addItem(tr("Text") + "-XY", static_cast<int>(Charts::DataFormat::TextXY));
-#endif
     connect(ui->comboBoxDataType, xComboBoxActivated, this, [=]() {
         emit this->dataFormatChanged(ui->comboBoxDataType->currentData().toInt());
     });
@@ -73,13 +68,10 @@ LineChartSettings::LineChartSettings(QWidget *parent)
     parametersGridLayout->addWidget(new QLabel(tr("Name"), this), 0, 4, Qt::AlignCenter);
 
     const int channelNumber = channelCount();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     while (m_channelContexts.size() < channelNumber) {
         m_channelContexts.append({nullptr});
     }
-#else
-    m_channelContexts.resize(channelNumber);
-#endif
+
     for (int i = 0; i < channelNumber; ++i) {
         int row = i + 1;
         QString str = QString::number(row);

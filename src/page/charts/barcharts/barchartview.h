@@ -8,8 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QBarCategoryAxis>
 #include <QBarSet>
-#include <QCategoryAxis>
 #include <QChart>
 #include <QChartView>
 #include <QMenu>
@@ -46,7 +46,7 @@ private:
     BarChartSettings *m_settings;
     QList<QBarSet *> m_barSets;
     QStackedBarSeries *m_barSeries;
-    QCategoryAxis *m_axisX;
+    QBarCategoryAxis *m_axisX;
     QValueAxis *m_axisY;
 
 private:
@@ -54,12 +54,6 @@ private:
     void onNewPoints(const QList<QPointF> &points) override;
 
     void onDataFormatChanged(int type);
-    void onSetLegendVisible(bool visible);
-    void onClearChannels();
-    void onImportChannels();
-    void onExportChannels();
-    void onSetChannelVisible(int channelIndex, bool visible);
-    void onSetChannelType(int channelIndex, int type);
-    void onSetChannelColor(int channelIndex, const QColor &color);
-    void onSetChannelName(int channelIndex, const QString &name);
+    void onChannelColorChanged(int channelIndex, const QColor &color);
+    void onChannelNameChanged(int channelIndex, const QString &name);
 };

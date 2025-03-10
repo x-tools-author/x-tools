@@ -8,9 +8,11 @@
  **************************************************************************************************/
 #include "chartview.h"
 
+#include <QStyleHints>
 #include <QWidgetAction>
 
 #include "chartsettings.h"
+#include "common/xtools.h"
 #include "page/charts/utilities/chartdatahandler.h"
 
 ChartView::ChartView(QWidget *parent)
@@ -32,6 +34,15 @@ ChartView::ChartView(QWidget *parent)
     connect(m_chartDataHandler, &ChartDataHandler::newValues, this, &ChartView::onNewValues);
     connect(m_chartDataHandler, &ChartDataHandler::newPoints, this, &ChartView::onNewPoints);
     m_chartDataHandler->start();
+
+#if xEnableColorScheme
+    auto currentScheme = qApp->styleHints()->colorScheme();
+    if (currentScheme == Qt::ColorScheme::Dark) {
+        m_chart->setTheme(QChart::ChartThemeDark);
+    } else if (currentScheme == Qt::ColorScheme::Light) {
+        m_chart->setTheme(QChart::ChartThemeLight);
+    }
+#endif
 }
 
 ChartView::~ChartView() {}
