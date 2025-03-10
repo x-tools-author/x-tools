@@ -63,6 +63,8 @@ struct ParameterKeys
     const QString outputDate{"outputDate"};
     const QString outputTime{"outputTime"};
     const QString outputMs{"outputMs"};
+    const QString outputWrap{"outputWrap"};
+    const QString outputTerminalMode{"outputTerminalMode"};
     const QString outputSettings{"outputSettings"};
 
     const QString cycleInterval{"cycleInterval"};
@@ -134,6 +136,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_updateLabelInfoTimer->start();
 
     connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
+    connect(ui->checkBoxWrap, &QCheckBox::clicked, this, &Page::onWrapModeChanged);
 
     initUi();
 
@@ -166,6 +169,8 @@ QVariantMap Page::save()
     map.insert(g_keys.outputTime, ui->checkBoxOutputTime->isChecked());
     map.insert(g_keys.outputMs, ui->checkBoxOutputMs->isChecked());
     map.insert(g_keys.outputSettings, m_outputSettings->save());
+    map.insert(g_keys.outputWrap, ui->checkBoxWrap->isChecked());
+    map.insert(g_keys.outputTerminalMode, ui->checkBoxTerminalMode->isChecked());
 
     map.insert(g_keys.cycleInterval, ui->comboBoxInputInterval->currentData());
     map.insert(g_keys.inputFormat, ui->comboBoxInputFormat->currentData());
@@ -206,6 +211,8 @@ void Page::load(const QVariantMap &parameters)
     bool outputDate = parameters.value(g_keys.outputDate).toBool();
     bool outputTime = parameters.value(g_keys.outputTime).toBool();
     bool outputMs = parameters.value(g_keys.outputMs).toBool();
+    bool outputWrap = parameters.value(g_keys.outputWrap).toBool();
+    bool outputTerminalMode = parameters.value(g_keys.outputTerminalMode).toBool();
     QVariantMap outputSettings = parameters.value(g_keys.outputSettings).toMap();
 
     ui->toolButtonCharts->setChecked(showCharts);
@@ -217,6 +224,8 @@ void Page::load(const QVariantMap &parameters)
     ui->checkBoxOutputDate->setChecked(outputDate);
     ui->checkBoxOutputTime->setChecked(outputTime);
     ui->checkBoxOutputMs->setChecked(outputMs);
+    ui->checkBoxWrap->setChecked(outputWrap);
+    ui->checkBoxTerminalMode->setChecked(outputTerminalMode);
     m_outputSettings->load(outputSettings);
 
     int inputInterval = parameters.value(g_keys.cycleInterval).toInt();
@@ -240,6 +249,7 @@ void Page::load(const QVariantMap &parameters)
 
     onDeviceTypeChanged();
     onInputFormatChanged();
+    onWrapModeChanged();
     updateChartUi();
 }
 
@@ -505,6 +515,15 @@ void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
     emit bytesWritten(bytes, to);
 }
 
+void Page::onWrapModeChanged()
+{
+    if (ui->checkBoxWrap->isChecked()) {
+        ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapMode::WordWrap);
+    } else {
+        ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapMode::NoWrap);
+    }
+}
+
 void Page::openDevice()
 {
     if (!m_deviceController->device()) {
@@ -658,7 +677,19 @@ void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     bool showDate = ui->checkBoxOutputDate->isChecked();
     bool showTime = ui->checkBoxOutputTime->isChecked();
     bool showMs = ui->checkBoxOutputMs->isChecked();
+    bool isTerminal = ui->checkBoxTerminalMode->isChecked();
     int format = ui->comboBoxOutputFormat->currentData().toInt();
+
+    if (isTerminal) {
+        if (!isRx) {
+            return;
+        }
+
+        QString text = bytes2string(bytes, format);
+        ui->textBrowserOutput->moveCursor(QTextCursor::MoveOperation::End);
+        ui->textBrowserOutput->insertPlainText(text);
+        return;
+    }
 
     if (isRx && !showRx) {
         return;

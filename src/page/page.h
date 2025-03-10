@@ -79,6 +79,7 @@ private:
     void onWarningOccurred(const QString &warning);
     void onBytesRead(const QByteArray &bytes, const QString &from);
     void onBytesWritten(const QByteArray &bytes, const QString &to);
+    void onWrapModeChanged();
 
     void openDevice();
     void closeDevice();
