@@ -19,6 +19,9 @@ public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
     ~MainWindow() override;
 
+    void load(const QString& fileName = QString()) const;
+    void save(const QString& fileName = QString()) const;
+
 protected:
     void closeEvent(QCloseEvent* event) override;
 
@@ -58,9 +61,6 @@ private:
     void tryToReboot();
     QString qtConfFileName();
     void createQtConf();
-
-    void load(const QString& fileName = QString()) const;
-    void save(const QString& fileName = QString()) const;
 
     void onSaveActionTriggered() const;
     void onImportActionTriggered();

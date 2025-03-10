@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     splash->finish(&window);
     window.resize(620 * 1.732, 620);
     window.show();
+    window.load();
 
     int ret = app.exec();
     Application::uninstallLog();

@@ -98,7 +98,6 @@ MainWindow::MainWindow(QWidget* parent)
     updateGrid(m_windowGrid);
     qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
 
-    load();
     initMenuBar();
     setWindowIcon(QIcon(":/res/icons/logo.svg"));
     setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
@@ -107,6 +106,62 @@ MainWindow::MainWindow(QWidget* parent)
 MainWindow::~MainWindow()
 {
     qInfo() << "MainWindow is destroyed!";
+}
+
+void MainWindow::load(const QString& fileName) const
+{
+    QString filePath = fileName;
+    if (fileName.isEmpty()) {
+        const QString path = xApp->settingsPath();
+        filePath = path + "/data.json";
+    }
+
+    if (!QFile::exists(filePath)) {
+        return;
+    }
+
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        return;
+    }
+
+    QByteArray data = file.readAll();
+    file.close();
+
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    QJsonObject obj = doc.object();
+    m_iopage00->load(obj.value("page00").toObject().toVariantMap());
+    m_iopage01->load(obj.value("page01").toObject().toVariantMap());
+    m_iopage10->load(obj.value("page10").toObject().toVariantMap());
+    m_iopage11->load(obj.value("page11").toObject().toVariantMap());
+}
+
+void MainWindow::save(const QString& fileName) const
+{
+    QJsonObject obj;
+    obj.insert("page00", QJsonObject::fromVariantMap(m_iopage00->save()));
+    obj.insert("page01", QJsonObject::fromVariantMap(m_iopage01->save()));
+    obj.insert("page10", QJsonObject::fromVariantMap(m_iopage10->save()));
+    obj.insert("page11", QJsonObject::fromVariantMap(m_iopage11->save()));
+
+    QJsonDocument doc;
+    doc.setObject(obj);
+
+    QString filePath = fileName;
+    if (fileName.isEmpty()) {
+        const QString path = xApp->settingsPath();
+        filePath = path + "/data.json";
+    }
+
+    QFile file(filePath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+        qWarning() << "Failed to open file: " << filePath << file.errorString();
+        return;
+    }
+
+    QTextStream out(&file);
+    out << doc.toJson();
+    file.close();
 }
 
 void MainWindow::closeEvent(QCloseEvent* event)
@@ -609,62 +664,6 @@ void MainWindow::createQtConf()
         auto info = QString("Open file(%1) failed: %2").arg(fileName, file.errorString());
         qWarning() << qPrintable(info);
     }
-}
-
-void MainWindow::load(const QString& fileName) const
-{
-    QString filePath = fileName;
-    if (fileName.isEmpty()) {
-        const QString path = xApp->settingsPath();
-        filePath = path + "/data.json";
-    }
-
-    if (!QFile::exists(filePath)) {
-        return;
-    }
-
-    QFile file(filePath);
-    if (!file.open(QIODevice::ReadOnly)) {
-        return;
-    }
-
-    QByteArray data = file.readAll();
-    file.close();
-
-    QJsonDocument doc = QJsonDocument::fromJson(data);
-    QJsonObject obj = doc.object();
-    m_iopage00->load(obj.value("page00").toObject().toVariantMap());
-    m_iopage01->load(obj.value("page01").toObject().toVariantMap());
-    m_iopage10->load(obj.value("page10").toObject().toVariantMap());
-    m_iopage11->load(obj.value("page11").toObject().toVariantMap());
-}
-
-void MainWindow::save(const QString& fileName) const
-{
-    QJsonObject obj;
-    obj.insert("page00", QJsonObject::fromVariantMap(m_iopage00->save()));
-    obj.insert("page01", QJsonObject::fromVariantMap(m_iopage01->save()));
-    obj.insert("page10", QJsonObject::fromVariantMap(m_iopage10->save()));
-    obj.insert("page11", QJsonObject::fromVariantMap(m_iopage11->save()));
-
-    QJsonDocument doc;
-    doc.setObject(obj);
-
-    QString filePath = fileName;
-    if (fileName.isEmpty()) {
-        const QString path = xApp->settingsPath();
-        filePath = path + "/data.json";
-    }
-
-    QFile file(filePath);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        qWarning() << "Failed to open file: " << filePath << file.errorString();
-        return;
-    }
-
-    QTextStream out(&file);
-    out << doc.toJson();
-    file.close();
 }
 
 void MainWindow::onSaveActionTriggered() const
