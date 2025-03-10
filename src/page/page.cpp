@@ -111,10 +111,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 
     ui->toolButtonCharts->setCheckable(true);
     ui->toolButtonCharts->setIcon(QIcon(":/res/icons/charts.svg"));
-    connect(ui->toolButtonCharts, &QToolButton::clicked, this, [this](bool checked) {
-        ui->widgetCharts->setVisible(!ui->widgetCharts->isVisible());
-        ui->widgetChartsController->setVisible(ui->widgetCharts->isVisible());
-    });
+    connect(ui->toolButtonCharts, &QToolButton::clicked, this, &Page::updateChartUi);
 #else
     ui->toolButtonCharts->setVisible(false);
     ui->widgetCharts->setVisible(false);
@@ -211,9 +208,7 @@ void Page::load(const QVariantMap &parameters)
     bool outputMs = parameters.value(g_keys.outputMs).toBool();
     QVariantMap outputSettings = parameters.value(g_keys.outputSettings).toMap();
 
-    ui->toolButtonCharts->setCheckable(showCharts);
-    ui->widgetCharts->setVisible(showCharts);
-
+    ui->toolButtonCharts->setChecked(showCharts);
     index = ui->comboBoxOutputFormat->findData(outputFormat);
     ui->comboBoxOutputFormat->setCurrentIndex(index == -1 ? 0 : index);
     ui->checkBoxOutputRx->setChecked(outputRx);
@@ -245,6 +240,9 @@ void Page::load(const QVariantMap &parameters)
 
     onDeviceTypeChanged();
     onInputFormatChanged();
+#if 0
+    updateChartUi();
+#endif
 }
 
 QTabWidget *Page::tabWidget()
@@ -715,6 +713,12 @@ void Page::loadControllerParameters()
             m_deviceController->load(parameters.toMap());
         }
     }
+}
+
+void Page::updateChartUi()
+{
+    ui->widgetCharts->setVisible(ui->toolButtonCharts->isChecked());
+    ui->widgetChartsController->setVisible(ui->toolButtonCharts->isChecked());
 }
 
 QByteArray Page::payload() const

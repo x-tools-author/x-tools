@@ -90,6 +90,7 @@ private:
     void outputText(const QByteArray &bytes, const QString &flag, bool isRx);
     void saveControllerParameters();
     void loadControllerParameters();
+    void updateChartUi();
 
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;
