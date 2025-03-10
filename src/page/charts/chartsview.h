@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QButtonGroup>
 #include <QPointF>
 #include <QStackedLayout>
 #include <QToolButton>
@@ -36,20 +37,26 @@ public:
 private:
     QList<ChartView *> m_chartViews;
     QList<QToolButton *> m_chartControllers;
+    QStackedLayout *m_layout;
+    QButtonGroup *m_buttonGroup;
 
 private:
     template<typename T>
-    void addChartView(const QString &icon, int index, QStackedLayout *layout)
+    void addChartView(const QString &icon, int index)
     {
         T *chartView = new T();
-        layout->addWidget(chartView);
+        m_layout->addWidget(chartView);
         m_chartViews.append(chartView);
 
         QToolButton *controller = new QToolButton();
+        controller->setCheckable(true);
         controller->setIcon(QIcon(icon));
         controller->setMenu(chartView->chartSettingsMenu());
         controller->setPopupMode(QToolButton::MenuButtonPopup);
         m_chartControllers.append(controller);
-        connect(controller, &QToolButton::clicked, this, [=]() { layout->setCurrentIndex(index); });
+        m_buttonGroup->addButton(controller);
+        connect(controller, &QToolButton::clicked, this, [=]() {
+            m_layout->setCurrentIndex(index);
+        });
     }
 };

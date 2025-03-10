@@ -52,7 +52,8 @@ QMenu *ChartView::chartSettingsMenu()
     if (!m_settingsMenu) {
         m_settingsMenu = new QMenu(this);
         QWidgetAction *action = new QWidgetAction(m_settingsMenu);
-        action->setDefaultWidget(chartSettingsWidget());
+        ChartSettings *settings = chartSettingsWidget();
+        action->setDefaultWidget(settings);
         m_settingsMenu->addAction(action);
     }
 

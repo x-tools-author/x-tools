@@ -21,11 +21,12 @@
 ChartsView::ChartsView(QWidget *parent)
     : QWidget(parent)
 {
-    QStackedLayout *layout = new QStackedLayout(this);
-    setLayout(layout);
+    m_buttonGroup = new QButtonGroup(this);
+    m_layout = new QStackedLayout(this);
+    setLayout(m_layout);
 
-    addChartView<LineChartView>(QString(":/res/icons/line_series.svg"), 0, layout);
-    addChartView<BarChartView>(QString(":/res/icons/bar.svg"), 1, layout);
+    addChartView<LineChartView>(QString(":/res/icons/line_series.svg"), 0);
+    addChartView<BarChartView>(QString(":/res/icons/bar.svg"), 1);
 }
 
 ChartsView::~ChartsView() {}
@@ -57,6 +58,8 @@ void ChartsView::inputBytes(const QByteArray &bytes)
 QVariantMap ChartsView::save()
 {
     QVariantMap data;
+    data.insert("currentIndex", m_layout->currentIndex());
+
     for (ChartView *&view : m_chartViews) {
         data.insert(view->metaObject()->className(), view->save());
     }
@@ -65,6 +68,12 @@ QVariantMap ChartsView::save()
 
 void ChartsView::load(const QVariantMap &parameters)
 {
+    int index = parameters.value("currentIndex").toInt();
+    if (index >= 0 && index < m_layout->count()) {
+        m_chartControllers.at(index)->setChecked(true);
+        m_layout->setCurrentIndex(index);
+    }
+
     for (ChartView *&view : m_chartViews) {
         view->load(parameters.value(view->metaObject()->className()).toMap());
     }
