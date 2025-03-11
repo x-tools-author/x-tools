@@ -111,7 +111,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
-option(X_ENABLE_SERIAL_PORT "Enable SerialPort module" OFF)
+option(X_ENABLE_SERIAL_PORT "Enable SerialPort module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialPort)
 if(NOT Qt${QT_VERSION_MAJOR}SerialPort_FOUND)
   set(X_ENABLE_SERIAL_PORT OFF)
@@ -129,7 +129,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt WebSockets module
-option(X_ENABLE_WEB_SOCKET "Enable WebSockets module" OFF)
+option(X_ENABLE_WEB_SOCKET "Enable WebSockets module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS WebSockets)
 if(NOT Qt${QT_VERSION_MAJOR}WebSockets_FOUND)
   set(X_ENABLE_WEB_SOCKET OFF)
