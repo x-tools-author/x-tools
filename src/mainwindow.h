@@ -33,6 +33,7 @@ private:
         const QString pageIndex{"MainWindow/pageIndex"};
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
         const QString useSystemProxy{"MainWindow/useSystemProxy"};
+        const QString staysOnTop{"MainWindow/staysOnTop"};
     } m_settingsKey;
 
     WindowGrid m_windowGrid{WindowGrid::Grid1x1};
@@ -46,19 +47,22 @@ private:
     void initFileMenu();
     void initToolMenu();
     void initOptionMenu();
-    void initMenuLanguage();
-    void initViewMenu();
-    void initHelpMenu();
-
     void initOptionMenuAppStyleMenu(QMenu* optionMenu);
     void initOptionMenuSettingsMenu(QMenu* optionMenu);
     void initOptionMenuHdpiPolicy(QMenu* optionMenu);
     void initOptionMenuColorScheme(QMenu* optionMenu);
+    void initMenuLanguage();
+    void initViewMenu();
+    void initViewMenuGrid(QMenu* viewMenu);
+    void initViewMenuStayOnTop(QMenu* viewMenu);
+    void initHelpMenu();
 
     void updateGrid(WindowGrid grid);
     void showHistory();
     void showQrCode();
     void tryToReboot();
+
+    // HDPI Policy for Windows
     QString qtConfFileName();
     void createQtConf();
 

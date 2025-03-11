@@ -296,150 +296,6 @@ void MainWindow::initOptionMenu()
     });
 }
 
-void MainWindow::initMenuLanguage()
-{
-    QMap<QString, QString> languageFlagNameMap;
-    languageFlagNameMap.insert("zh_CN", "简体中文");
-    languageFlagNameMap.insert("en", "English");
-#if 0
-    languageFlagNameMap.insert("zh_TW", "繁體中文");
-    languageFlagNameMap.insert("ar", "العربية");
-    languageFlagNameMap.insert("cs", "Čeština");
-    languageFlagNameMap.insert("da", "Dansk");
-    languageFlagNameMap.insert("de", "Deutsch");
-    languageFlagNameMap.insert("es", "Español");
-    languageFlagNameMap.insert("fa", "فارسی");
-    languageFlagNameMap.insert("fi", "Suomi");
-    languageFlagNameMap.insert("fr", "Français");
-    languageFlagNameMap.insert("he", "עִבְרִית");
-    languageFlagNameMap.insert("uk", "українська мова");
-    languageFlagNameMap.insert("it", "Italiano");
-    languageFlagNameMap.insert("ja", "日本语");
-    languageFlagNameMap.insert("ko", "한글");
-    languageFlagNameMap.insert("lt", "Lietuvių kalba");
-    languageFlagNameMap.insert("pl", "Polski");
-    languageFlagNameMap.insert("pt", "Português");
-    languageFlagNameMap.insert("ru", "русский язык");
-    languageFlagNameMap.insert("sk", "Slovenčina");
-    languageFlagNameMap.insert("sl", "Slovenščina");
-    languageFlagNameMap.insert("sv", "Svenska");
-#endif
-
-    QMenu* languageMenu = menuBar()->addMenu(tr("&Languages"));
-    static auto languageActionGroup = new QActionGroup(this);
-    for (auto it = languageFlagNameMap.begin(); it != languageFlagNameMap.end(); ++it) {
-        auto* action = new QAction(it.value(), this);
-        action->setCheckable(true);
-        languageMenu->addAction(action);
-        languageActionGroup->addAction(action);
-
-        Application::SettingsKey keys;
-        connect(action, &QAction::triggered, this, [=]() {
-            xApp->settings()->setValue(keys.language, it.key());
-            tryToReboot();
-        });
-
-        QString defaultLanguage = QLocale::system().name();
-        QString language = xApp->settings()->value(keys.language, defaultLanguage).toString();
-        if (language == it.key()) {
-            action->setChecked(true);
-        }
-    }
-}
-
-void MainWindow::initViewMenu()
-{
-    static QActionGroup* group = new QActionGroup(this);
-    if (!group->actions().isEmpty()) {
-        return;
-    }
-
-    auto viewMenu = menuBar()->addMenu(tr("&View"));
-
-    auto a1x1 = viewMenu->addAction("1x1", this, [=]() { updateGrid(WindowGrid::Grid1x1); });
-    auto a1x2 = viewMenu->addAction("1x2", this, [=]() { updateGrid(WindowGrid::Grid1x2); });
-    auto a2x1 = viewMenu->addAction("2x1", this, [=]() { updateGrid(WindowGrid::Grid2x1); });
-    auto a2x2 = viewMenu->addAction("2x2", this, [=]() { updateGrid(WindowGrid::Grid2x2); });
-
-    a1x1->setCheckable(true);
-    a1x2->setCheckable(true);
-    a2x1->setCheckable(true);
-    a2x2->setCheckable(true);
-
-    group->addAction(a1x1);
-    group->addAction(a1x2);
-    group->addAction(a2x1);
-    group->addAction(a2x2);
-
-    int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
-    int windowGrid = xApp->settings()->value(m_settingsKey.windowGrid, defaultGrid).toInt();
-    m_windowGrid = static_cast<WindowGrid>(windowGrid);
-    updateGrid(m_windowGrid);
-    if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
-        a1x2->setChecked(true);
-    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x1)) {
-        a2x1->setChecked(true);
-    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x2)) {
-        a2x2->setChecked(true);
-    } else {
-        a1x1->setChecked(true);
-    }
-}
-
-void MainWindow::initHelpMenu()
-{
-    auto helpMenu = menuBar()->addMenu(tr("&Help"));
-    helpMenu->addAction(tr("About Qt"), qApp, &QApplication::aboutQt);
-    auto aboutAction = helpMenu->addAction(tr("About") + " " + QApplication::applicationName());
-    connect(aboutAction, &QAction::triggered, this, &MainWindow::onAboutActionTriggered);
-
-#if defined(QT_DEBUG)
-    helpMenu->addAction(tr("Screenshot"), this, [=]() {
-        QPixmap pix = this->grab();
-        // copy to clipboard
-        QApplication::clipboard()->setPixmap(pix);
-    });
-#endif
-
-#if defined(Q_OS_WIN)
-    helpMenu->addSeparator();
-    helpMenu->addAction(QIcon(":/res/icons/buy.svg"), tr("Bug from Store"), this, []() {
-        QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
-        QDesktopServices::openUrl(url);
-    });
-#endif
-
-    helpMenu->addSeparator();
-    helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
-    helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
-    helpMenu->addSeparator();
-
-    helpMenu->addAction(tr("Online Manual"), this, []() {
-        QDesktopServices::openUrl(QUrl("https://x-tools-author.github.io/x-tools"));
-    });
-    helpMenu->addAction(tr("Get Sources from Github"), this, []() {
-        QDesktopServices::openUrl(QUrl("https://github.com/x-tools-author/x-tools"));
-    });
-    helpMenu->addAction(tr("Get Sources from Gitee"), this, []() {
-        QDesktopServices::openUrl(QUrl("https://gitee.com/x-tools-author/x-tools"));
-    });
-    helpMenu->addSeparator();
-
-    // clang-format off
-    QList<QPair<QString, QString>> ctxs;
-    ctxs.append(qMakePair(QString("glog"), QString("https://github.com/google/glog")));
-    ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
-    ctxs.append(qMakePair(QString("libqrencode"), QString("https://github.com/fukuchi/libqrencode")));
-    ctxs.append(qMakePair(QString("qmdnsengine"), QString("https://github.com/nitroshare/qmdnsengine")));
-    ctxs.append(qMakePair(QString("Qt-Advanced-Stylesheets"), QString("https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets")));
-    // clang-format on
-
-    QMenu* menu = helpMenu->addMenu(tr("Third Party Open Source"));
-    for (auto& ctx : ctxs) {
-        menu->addAction(ctx.first, this, [ctx]() { QDesktopServices::openUrl(QUrl(ctx.second)); });
-    }
-}
-
 void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
 {
     QMenu* appStyleMenu = optionMenu->addMenu(tr("Application Style"));
@@ -552,6 +408,175 @@ void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
 #else
     Q_UNUSED(optionMenu);
 #endif
+}
+
+void MainWindow::initMenuLanguage()
+{
+    QMap<QString, QString> languageFlagNameMap;
+    languageFlagNameMap.insert("zh_CN", "简体中文");
+    languageFlagNameMap.insert("en", "English");
+#if 0
+    languageFlagNameMap.insert("zh_TW", "繁體中文");
+    languageFlagNameMap.insert("ar", "العربية");
+    languageFlagNameMap.insert("cs", "Čeština");
+    languageFlagNameMap.insert("da", "Dansk");
+    languageFlagNameMap.insert("de", "Deutsch");
+    languageFlagNameMap.insert("es", "Español");
+    languageFlagNameMap.insert("fa", "فارسی");
+    languageFlagNameMap.insert("fi", "Suomi");
+    languageFlagNameMap.insert("fr", "Français");
+    languageFlagNameMap.insert("he", "עִבְרִית");
+    languageFlagNameMap.insert("uk", "українська мова");
+    languageFlagNameMap.insert("it", "Italiano");
+    languageFlagNameMap.insert("ja", "日本语");
+    languageFlagNameMap.insert("ko", "한글");
+    languageFlagNameMap.insert("lt", "Lietuvių kalba");
+    languageFlagNameMap.insert("pl", "Polski");
+    languageFlagNameMap.insert("pt", "Português");
+    languageFlagNameMap.insert("ru", "русский язык");
+    languageFlagNameMap.insert("sk", "Slovenčina");
+    languageFlagNameMap.insert("sl", "Slovenščina");
+    languageFlagNameMap.insert("sv", "Svenska");
+#endif
+
+    QMenu* languageMenu = menuBar()->addMenu(tr("&Languages"));
+    static auto languageActionGroup = new QActionGroup(this);
+    for (auto it = languageFlagNameMap.begin(); it != languageFlagNameMap.end(); ++it) {
+        auto* action = new QAction(it.value(), this);
+        action->setCheckable(true);
+        languageMenu->addAction(action);
+        languageActionGroup->addAction(action);
+
+        Application::SettingsKey keys;
+        connect(action, &QAction::triggered, this, [=]() {
+            xApp->settings()->setValue(keys.language, it.key());
+            tryToReboot();
+        });
+
+        QString defaultLanguage = QLocale::system().name();
+        QString language = xApp->settings()->value(keys.language, defaultLanguage).toString();
+        if (language == it.key()) {
+            action->setChecked(true);
+        }
+    }
+}
+
+void MainWindow::initViewMenu()
+{
+    QMenu* viewMenu = menuBar()->addMenu(tr("&View"));
+    initViewMenuGrid(viewMenu);
+    viewMenu->addSeparator();
+    initViewMenuStayOnTop(viewMenu);
+}
+
+void MainWindow::initViewMenuGrid(QMenu* viewMenu)
+{
+    static QActionGroup* group = new QActionGroup(this);
+    if (!group->actions().isEmpty()) {
+        return;
+    }
+
+    auto a1x1 = viewMenu->addAction("1x1", this, [=]() { updateGrid(WindowGrid::Grid1x1); });
+    auto a1x2 = viewMenu->addAction("1x2", this, [=]() { updateGrid(WindowGrid::Grid1x2); });
+    auto a2x1 = viewMenu->addAction("2x1", this, [=]() { updateGrid(WindowGrid::Grid2x1); });
+    auto a2x2 = viewMenu->addAction("2x2", this, [=]() { updateGrid(WindowGrid::Grid2x2); });
+
+    a1x1->setCheckable(true);
+    a1x2->setCheckable(true);
+    a2x1->setCheckable(true);
+    a2x2->setCheckable(true);
+
+    group->addAction(a1x1);
+    group->addAction(a1x2);
+    group->addAction(a2x1);
+    group->addAction(a2x2);
+
+    int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
+    int windowGrid = xApp->settings()->value(m_settingsKey.windowGrid, defaultGrid).toInt();
+    m_windowGrid = static_cast<WindowGrid>(windowGrid);
+    updateGrid(m_windowGrid);
+    if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
+        a1x2->setChecked(true);
+    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x1)) {
+        a2x1->setChecked(true);
+    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x2)) {
+        a2x2->setChecked(true);
+    } else {
+        a1x1->setChecked(true);
+    }
+}
+
+void MainWindow::initViewMenuStayOnTop(QMenu* viewMenu)
+{
+    QAction* action = viewMenu->addAction(tr("Stays on Top"));
+    connect(action, &QAction::triggered, this, [=]() {
+        if (action->isChecked()) {
+            setWindowFlag(Qt::WindowStaysOnTopHint, true);
+        } else {
+            setWindowFlag(Qt::WindowStaysOnTopHint, false);
+        }
+
+        xApp->settings()->setValue(m_settingsKey.staysOnTop, action->isChecked());
+        show();
+    });
+    action->setCheckable(true);
+
+    bool staysOnTop = xApp->settings()->value(m_settingsKey.staysOnTop, false).toBool();
+    action->setChecked(staysOnTop);
+}
+
+void MainWindow::initHelpMenu()
+{
+    auto helpMenu = menuBar()->addMenu(tr("&Help"));
+    helpMenu->addAction(tr("About Qt"), qApp, &QApplication::aboutQt);
+    auto aboutAction = helpMenu->addAction(tr("About") + " " + QApplication::applicationName());
+    connect(aboutAction, &QAction::triggered, this, &MainWindow::onAboutActionTriggered);
+
+#if defined(QT_DEBUG)
+    helpMenu->addAction(tr("Screenshot"), this, [=]() {
+        QPixmap pix = this->grab();
+        // copy to clipboard
+        QApplication::clipboard()->setPixmap(pix);
+    });
+#endif
+
+#if defined(Q_OS_WIN)
+    helpMenu->addSeparator();
+    helpMenu->addAction(QIcon(":/res/icons/buy.svg"), tr("Bug from Store"), this, []() {
+        QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
+        QDesktopServices::openUrl(url);
+    });
+#endif
+
+    helpMenu->addSeparator();
+    helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
+    helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
+    helpMenu->addSeparator();
+
+    helpMenu->addAction(tr("Online Manual"), this, []() {
+        QDesktopServices::openUrl(QUrl("https://x-tools-author.github.io/x-tools"));
+    });
+    helpMenu->addAction(tr("Get Sources from Github"), this, []() {
+        QDesktopServices::openUrl(QUrl("https://github.com/x-tools-author/x-tools"));
+    });
+    helpMenu->addAction(tr("Get Sources from Gitee"), this, []() {
+        QDesktopServices::openUrl(QUrl("https://gitee.com/x-tools-author/x-tools"));
+    });
+    helpMenu->addSeparator();
+
+    // clang-format off
+    QList<QPair<QString, QString>> ctxs;
+    ctxs.append(qMakePair(QString("glog"), QString("https://github.com/google/glog")));
+    ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
+    ctxs.append(qMakePair(QString("libqrencode"), QString("https://github.com/fukuchi/libqrencode")));
+    ctxs.append(qMakePair(QString("qmdnsengine"), QString("https://github.com/nitroshare/qmdnsengine")));
+    ctxs.append(qMakePair(QString("Qt-Advanced-Stylesheets"), QString("https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets")));
+    // clang-format on
+
+    QMenu* menu = helpMenu->addMenu(tr("Third Party Open Source"));
+    for (auto& ctx : ctxs) {
+        menu->addAction(ctx.first, this, [ctx]() { QDesktopServices::openUrl(QUrl(ctx.second)); });
+    }
 }
 
 void MainWindow::updateGrid(WindowGrid grid)
