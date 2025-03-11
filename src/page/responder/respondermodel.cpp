@@ -36,7 +36,7 @@ QVariantMap ResponderModel::saveRow(const int row)
     var = data(index(row, 4), Qt::EditRole);
     QJsonObject referenceItem = var.toJsonObject();
 
-    var = data(index(row, 4), Qt::EditRole);
+    var = data(index(row, 5), Qt::EditRole);
     QJsonObject responseItem = var.toJsonObject();
 
     QVariantMap map;
