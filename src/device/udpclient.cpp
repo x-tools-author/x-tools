@@ -20,19 +20,9 @@ QObject *UdpClient::initDevice()
     if (!m_udpSocket->open(QUdpSocket::ReadWrite)) {
         qWarning() << "Failed to open udp socket:" << m_udpSocket->errorString();
         m_udpSocket->deleteLater();
-        m_udpSocket = nullptr;
+        m_udpSocket = Q_NULLPTR;
+        return Q_NULLPTR;
     }
-#if 1
-    if (!m_udpSocket->bind(QHostAddress(m_clientAddress), m_clientPort)) {
-        qWarning() << "Failed to bind to address" << m_clientAddress << "and port" << m_clientPort
-                   << ":" << m_udpSocket->errorString();
-        m_udpSocket->deleteLater();
-        m_udpSocket = nullptr;
-        return nullptr;
-    } else {
-        qInfo() << "UDP client address:" << m_clientAddress << "port:" << m_clientPort;
-    }
-#endif
 
     if (m_enableMulticast) {
         if (!m_udpSocket->joinMulticastGroup(QHostAddress(m_multicastAddress))) {
@@ -71,7 +61,7 @@ void UdpClient::writeActually(const QByteArray &bytes)
         writeDatagram(bytes, m_multicastAddress, m_multicastPort);
     }
 
-    if (!(m_enableMulticast && m_justMulticast)) {
+    if (!m_justMulticast) {
         writeDatagram(bytes, m_serverAddress, m_serverPort);
     }
 }

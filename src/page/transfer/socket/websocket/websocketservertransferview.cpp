@@ -21,11 +21,9 @@ WebSocketServerTransferView::WebSocketServerTransferView(QWidget *parent)
             &WebSocketServerTransferView::outputBytes);
 
     auto tv = tableView();
-    tv->hideColumn(1);
-    tv->hideColumn(2);
-    for (int i = 6; i < 9; ++i) {
-        tv->hideColumn(i);
-    }
+    tv->hideColumn(SOCKET_ROW_USERNAME);
+    tv->hideColumn(SOCKET_ROW_PASSWORD);
+    tv->hideColumn(SOCKET_ROW_AUTHENTICATION);
 
     auto hHeader = tv->horizontalHeader();
     hHeader->setStretchLastSection(true);

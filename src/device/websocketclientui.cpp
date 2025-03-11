@@ -13,7 +13,6 @@
 WebSocketClientUi::WebSocketClientUi(QWidget *parent)
     : SocketClientUi(parent)
 {
-    setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);
     setMulticastWidgetsVisible(false);
 }

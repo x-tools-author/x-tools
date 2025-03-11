@@ -178,8 +178,6 @@ void setupFlowControl(QComboBox *comboBox);
 /**************************************************************************************************/
 struct SocketItem
 {
-    QString clientAddress;
-    quint16 clientPort;
     QString serverAddress;
     quint16 serverPort;
     WebSocketDataChannel dataChannel;
@@ -193,8 +191,6 @@ struct SocketItem
 };
 struct SocketItemKeys
 {
-    const QString clientAddress{"clientAddress"};
-    const QString clientPort{"clientPort"};
     const QString serverAddress{"serverAddress"};
     const QString serverPort{"serverPort"};
     const QString dataChannel{"dataChannel"};
@@ -207,8 +203,8 @@ struct SocketItemKeys
     const QString justMulticast{"justMulticast"};
 };
 SocketItem defaultSocketItem();
-QJsonObject saveSocketItem(const SocketItem &context);
-SocketItem loadSocketItem(const QJsonObject &obj);
+QVariantMap saveSocketItem(const SocketItem &context);
+SocketItem loadSocketItem(const QVariantMap &obj);
 void setupSocketAddress(QComboBox *cb);
 void setupSocketPort(QSpinBox *spinBox);
 

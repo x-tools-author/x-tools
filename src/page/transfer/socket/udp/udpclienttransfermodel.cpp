@@ -23,7 +23,7 @@ Socket *UdpClientTransferModel::createSocket()
 
 bool UdpClientTransferModel::isEnableRestartColumn(int column) const
 {
-    if (column == 1 || column == 2 || column == 3 || column == 4) {
+    if (column == SOCKET_ROW_ADDRESS || column == SOCKET_ROW_PORT) {
         return true;
     }
 

@@ -707,23 +707,23 @@ void setupFlowControl(QComboBox *comboBox)
 SocketItem defaultSocketItem()
 {
     SocketItem item;
-    item.clientAddress = "127.0.0.1";
-    item.clientPort = 54321;
     item.serverAddress = "127.0.0.1";
-    item.serverPort = 12345;
+    item.serverPort = 54687;
     item.dataChannel = WebSocketDataChannel::Text;
     item.authentication = false;
     item.username = "";
     item.password = "";
+    item.multicastAddress = "239.168.3.255";
+    item.multicastPort = 53625;
+    item.enableMulticast = false;
+    item.justMulticast = false;
     return item;
 }
 
-QJsonObject saveSocketItem(const SocketItem &context)
+QVariantMap saveSocketItem(const SocketItem &context)
 {
-    QJsonObject obj;
+    QVariantMap obj;
     const SocketItemKeys keys;
-    obj.insert(keys.clientAddress, context.clientAddress);
-    obj.insert(keys.clientPort, context.clientPort);
     obj.insert(keys.serverAddress, context.serverAddress);
     obj.insert(keys.serverPort, context.serverPort);
     obj.insert(keys.dataChannel, static_cast<int>(context.dataChannel));
@@ -737,12 +737,10 @@ QJsonObject saveSocketItem(const SocketItem &context)
     return obj;
 }
 
-SocketItem loadSocketItem(const QJsonObject &obj)
+SocketItem loadSocketItem(const QVariantMap &obj)
 {
     SocketItem ctx;
     const SocketItemKeys keys;
-    ctx.clientAddress = obj.value(keys.clientAddress).toString();
-    ctx.clientPort = obj.value(keys.clientPort).toInt();
     ctx.serverAddress = obj.value(keys.serverAddress).toString();
     ctx.serverPort = obj.value(keys.serverPort).toInt();
     ctx.dataChannel = static_cast<WebSocketDataChannel>(obj.value(keys.dataChannel).toInt());

@@ -13,7 +13,6 @@
 TcpClientUi::TcpClientUi(QWidget *parent)
     : SocketClientUi(parent)
 {
-    setClientWidgetsVisible(false);
     setWriteToWidgetsVisible(false);
     setChannelWidgetsVisible(false);
     setAuthenticationWidgetsVisible(false);

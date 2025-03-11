@@ -17,9 +17,7 @@ SocketUi::SocketUi(QWidget *parent)
     , ui(new Ui::SocketUi)
 {
     ui->setupUi(this);
-    ui->spinBoxClientPort->setValue(55443);
     ui->spinBoxServerPort->setValue(34455);
-    setupSocketAddress(ui->comboBoxClientIp);
     setupSocketAddress(ui->comboBoxServerIp);
     setupWebSocketDataChannel(ui->comboBoxChannel);
 
@@ -44,8 +42,6 @@ SocketUi::~SocketUi() {}
 QVariantMap SocketUi::save() const
 {
     SocketItem item;
-    item.clientPort = ui->spinBoxClientPort->value();
-    item.clientAddress = ui->comboBoxClientIp->currentText();
     item.serverPort = ui->spinBoxServerPort->value();
     item.serverAddress = ui->comboBoxServerIp->currentText();
     item.dataChannel = static_cast<WebSocketDataChannel>(ui->comboBoxChannel->currentIndex());
@@ -57,7 +53,7 @@ QVariantMap SocketUi::save() const
     item.enableMulticast = ui->checkBoxEnableMulticast->isChecked();
     item.justMulticast = ui->checkBoxJustMulticast->isChecked();
 
-    return saveSocketItem(item).toVariantMap();
+    return saveSocketItem(item);
 }
 
 void SocketUi::load(const QVariantMap &parameters)
@@ -67,9 +63,7 @@ void SocketUi::load(const QVariantMap &parameters)
     }
 
     SocketItemKeys keys;
-    SocketItem item = loadSocketItem(QJsonObject::fromVariantMap(parameters));
-    ui->spinBoxClientPort->setValue(item.clientPort);
-    ui->comboBoxClientIp->setCurrentText(item.clientAddress);
+    SocketItem item = loadSocketItem(parameters);
     ui->spinBoxServerPort->setValue(item.serverPort);
     ui->comboBoxServerIp->setCurrentText(item.serverAddress);
     ui->comboBoxChannel->setCurrentIndex(static_cast<int>(item.dataChannel));
@@ -80,14 +74,6 @@ void SocketUi::load(const QVariantMap &parameters)
     ui->spinBoxMulticastPort->setValue(item.multicastPort);
     ui->checkBoxEnableMulticast->setChecked(item.enableMulticast);
     ui->checkBoxJustMulticast->setChecked(item.justMulticast);
-}
-
-void SocketUi::setClientWidgetsVisible(bool visible)
-{
-    ui->labelClientIp->setVisible(visible);
-    ui->labelClientPort->setVisible(visible);
-    ui->comboBoxClientIp->setVisible(visible);
-    ui->spinBoxClientPort->setVisible(visible);
 }
 
 void SocketUi::setServerWidgetsVisible(bool visible)
@@ -128,14 +114,6 @@ void SocketUi::setMulticastWidgetsVisible(bool visible)
     ui->spinBoxMulticastPort->setVisible(visible);
     ui->checkBoxEnableMulticast->setVisible(visible);
     ui->checkBoxJustMulticast->setVisible(visible);
-}
-
-void SocketUi::setClientWidgetsEnabled(bool enabled)
-{
-    ui->labelClientIp->setEnabled(enabled);
-    ui->labelClientPort->setEnabled(enabled);
-    ui->comboBoxClientIp->setEnabled(enabled);
-    ui->spinBoxClientPort->setEnabled(enabled);
 }
 
 void SocketUi::setServerWidgetsEnabled(bool enabled)
@@ -180,7 +158,7 @@ void SocketUi::setMulticastWidgetsEnabled(bool enabled)
 
 void SocketUi::setupClients(const QStringList &clients)
 {
-    QString current = ui->comboBoxClientIp->currentData().toString();
+    QString current = ui->comboBoxWriteTo->currentData().toString();
     ui->comboBoxWriteTo->clear();
     ui->comboBoxWriteTo->addItem(tr("All clients"), QString(""));
 

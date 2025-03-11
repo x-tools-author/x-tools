@@ -14,6 +14,7 @@
 #include <QSpinBox>
 
 #include "common/xtools.h"
+#include "sockettransfermodel.h"
 
 SocketTransferDelegate::SocketTransferDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
@@ -27,19 +28,17 @@ QWidget *SocketTransferDelegate::createEditor(QWidget *parent,
 {
     Q_UNUSED(option);
     switch (index.column()) {
-    case 6: // authentication
+    case SOCKET_ROW_AUTHENTICATION:
         return new QCheckBox(parent);
-    case 0: // option
-    case 1: // client address
-    case 3: // server address
-    case 5: // data channel
+    case SOCKET_ROW_OPTION:
+    case SOCKET_ROW_ADDRESS:
+    case SOCKET_ROW_CHANNEL:
         return new QComboBox(parent);
-    case 2: // client port
-    case 4: // server port
+    case SOCKET_ROW_PORT:
         return new QSpinBox(parent);
-    case 7: // username
-    case 8: // password
-    case 9: // description
+    case SOCKET_ROW_USERNAME:
+    case SOCKET_ROW_PASSWORD:
+    case SOCKET_ROW_DESCRIPTION:
         return new QLineEdit(parent);
     default:
         return nullptr;
@@ -48,14 +47,13 @@ QWidget *SocketTransferDelegate::createEditor(QWidget *parent,
 
 void SocketTransferDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
-    //0:transfer type, 1:client address, 2:client port, 3:server address, 4:server port, 5:data channel
-    //6:authentication, 7:username, 8:password, 9:description
     int column = index.column();
-    if (column == 6) {
+    if (column == SOCKET_ROW_AUTHENTICATION) {
         qobject_cast<QCheckBox *>(editor)->setChecked(index.data(Qt::EditRole).toBool());
-    } else if (column == 0 || column == 1 || column == 3 || column == 5 || column == 7) {
+    } else if (column == SOCKET_ROW_OPTION || column == SOCKET_ROW_ADDRESS
+               || column == SOCKET_ROW_CHANNEL) {
         auto cb = qobject_cast<QComboBox *>(editor);
-        if (column == 0) {
+        if (column == SOCKET_ROW_OPTION) {
             setupTransferType(cb);
             int transferType = index.data(Qt::EditRole).toInt();
             int index = cb->findData(transferType);
@@ -64,11 +62,11 @@ void SocketTransferDelegate::setEditorData(QWidget *editor, const QModelIndex &i
             } else {
                 cb->setCurrentIndex(index);
             }
-        } else if (column == 1 || column == 3) {
+        } else if (column == SOCKET_ROW_ADDRESS) {
             setupSocketAddress(cb);
             QString text = index.data(Qt::EditRole).toString();
             cb->setCurrentText(text);
-        } else if (column == 5) {
+        } else if (column == SOCKET_ROW_CHANNEL) {
             setupWebSocketDataChannel(cb);
             int dataChannel = index.data(Qt::EditRole).toInt();
             int index = cb->findData(dataChannel);
@@ -78,11 +76,12 @@ void SocketTransferDelegate::setEditorData(QWidget *editor, const QModelIndex &i
                 cb->setCurrentIndex(index);
             }
         }
-    } else if (column == 2 || column == 4) {
+    } else if (column == SOCKET_ROW_PORT) {
         auto sb = qobject_cast<QSpinBox *>(editor);
         setupSocketPort(sb);
         sb->setValue(index.data(Qt::EditRole).toInt());
-    } else if (column == 7 || column == 8 || column == 9) {
+    } else if (column == SOCKET_ROW_USERNAME || column == SOCKET_ROW_PASSWORD
+               || column == SOCKET_ROW_DESCRIPTION) {
         auto le = qobject_cast<QLineEdit *>(editor);
         le->setText(index.data(Qt::EditRole).toString());
     }
@@ -92,22 +91,22 @@ void SocketTransferDelegate::setModelData(QWidget *editor,
                                           QAbstractItemModel *model,
                                           const QModelIndex &index) const
 {
-    //0:transfer type, 1:client address, 2:client port, 3:server address, 4:server port, 5:data channel
-    //6:authentication, 7:username, 8:password, 9:description
     int column = index.column();
-    if (column == 6) {
+    if (column == SOCKET_ROW_AUTHENTICATION) {
         model->setData(index, qobject_cast<QCheckBox *>(editor)->isChecked(), Qt::EditRole);
-    } else if (column == 0 || column == 1 || column == 3 || column == 5) {
+    } else if (column == SOCKET_ROW_ADDRESS || column == SOCKET_ROW_CHANNEL
+               || column == SOCKET_ROW_OPTION) {
         auto cb = qobject_cast<QComboBox *>(editor);
-        if (column == 0 || column == 5) {
+        if (column == SOCKET_ROW_CHANNEL || column == SOCKET_ROW_OPTION) {
             model->setData(index, cb->currentData(), Qt::EditRole);
         } else {
             model->setData(index, cb->currentText());
         }
-    } else if (column == 2 || column == 4) {
+    } else if (column == SOCKET_ROW_AUTHENTICATION) {
         auto sb = qobject_cast<QSpinBox *>(editor);
         model->setData(index, sb->value(), Qt::EditRole);
-    } else if (column == 7 || column == 8 || column == 9) {
+    } else if (column == SOCKET_ROW_USERNAME || column == SOCKET_ROW_PASSWORD
+               || column == SOCKET_ROW_DESCRIPTION) {
         auto le = qobject_cast<QLineEdit *>(editor);
         model->setData(index, le->text(), Qt::EditRole);
     }

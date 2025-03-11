@@ -23,7 +23,7 @@ Socket *WebSocketServerTransferModel::createSocket()
 
 bool WebSocketServerTransferModel::isEnableRestartColumn(int column) const
 {
-    if (column == 3 || column == 4) {
+    if (column == SOCKET_ROW_ADDRESS || column == SOCKET_ROW_PORT) {
         return true;
     }
 

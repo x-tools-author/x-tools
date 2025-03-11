@@ -23,7 +23,9 @@ Socket *WebSocketClientTransferModel::createSocket()
 
 bool WebSocketClientTransferModel::isEnableRestartColumn(int column) const
 {
-    if (column == 3 || column == 4) {
+    if (column == SOCKET_ROW_ADDRESS || column == SOCKET_ROW_PORT
+        || column == SOCKET_ROW_AUTHENTICATION || column == SOCKET_ROW_USERNAME
+        || column == SOCKET_ROW_PASSWORD) {
         return true;
     }
 

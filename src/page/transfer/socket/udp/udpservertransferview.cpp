@@ -18,12 +18,10 @@ UdpServerTransferView::UdpServerTransferView(QWidget *parent)
     connect(model, &SocketTransferModel::outputBytes, this, &UdpServerTransferView::outputBytes);
 
     auto tv = tableView();
-    tv->hideColumn(1);
-    tv->hideColumn(2);
-    tv->hideColumn(5);
-    tv->hideColumn(6);
-    tv->hideColumn(7);
-    tv->hideColumn(8);
+    tv->hideColumn(SOCKET_ROW_CHANNEL);
+    tv->hideColumn(SOCKET_ROW_USERNAME);
+    tv->hideColumn(SOCKET_ROW_PASSWORD);
+    tv->hideColumn(SOCKET_ROW_AUTHENTICATION);
     auto hHeader = tv->horizontalHeader();
     hHeader->setStretchLastSection(true);
 }

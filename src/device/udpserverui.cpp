@@ -13,7 +13,6 @@
 UdpServerUi::UdpServerUi(QWidget *parent)
     : SocketServerUi(parent)
 {
-    setClientWidgetsVisible(false);
     setChannelWidgetsVisible(false);
     setAuthenticationWidgetsVisible(false);
     setMulticastWidgetsVisible(false);

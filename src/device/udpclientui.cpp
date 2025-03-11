@@ -13,9 +13,6 @@
 UdpClientUi::UdpClientUi(QWidget *parent)
     : SocketClientUi(parent)
 {
-#if 1
-    setClientWidgetsVisible(true);
-#endif
     setWriteToWidgetsVisible(false);
     setChannelWidgetsVisible(false);
     setAuthenticationWidgetsVisible(false);
@@ -30,7 +27,6 @@ Device *UdpClientUi::newDevice()
 
 void UdpClientUi::setUiEnabled(bool enabled)
 {
-    setClientWidgetsEnabled(enabled);
     setServerWidgetsEnabled(enabled);
     setMulticastWidgetsEnabled(enabled);
 }

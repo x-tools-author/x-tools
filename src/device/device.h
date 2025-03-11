@@ -24,7 +24,7 @@ public:
     void writeBytes(const QByteArray &bytes);
 
     virtual QVariantMap save() const;
-    virtual void load(const QVariantMap &data);
+    virtual void load(const QVariantMap &parameters);
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};
 
@@ -47,4 +47,5 @@ private:
 
 private:
     QVariantMap m_parameters;
+    mutable QMutex m_parametersMutex;
 };

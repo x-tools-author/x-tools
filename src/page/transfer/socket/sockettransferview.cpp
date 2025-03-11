@@ -12,6 +12,8 @@
 
 SocketTransferView::SocketTransferView(QWidget *parent)
     : TransferView(parent)
-{}
+{
+    tableView()->setItemDelegate(new SocketTransferDelegate(this));
+}
 
 SocketTransferView::~SocketTransferView() {}

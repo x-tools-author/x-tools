@@ -21,8 +21,6 @@ WebSocketClientTransferView::WebSocketClientTransferView(QWidget *parent)
             &WebSocketClientTransferView::outputBytes);
 
     auto tv = tableView();
-    tv->hideColumn(1);
-    tv->hideColumn(2);
     auto hHeader = tv->horizontalHeader();
     hHeader->setStretchLastSection(true);
 }

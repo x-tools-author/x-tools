@@ -45,12 +45,18 @@ void Device::writeBytes(const QByteArray &bytes)
 
 QVariantMap Device::save() const
 {
-    return m_parameters;
+    m_parametersMutex.lock();
+    QVariantMap tmp = m_parameters;
+    m_parametersMutex.unlock();
+
+    return tmp;
 }
 
-void Device::load(const QVariantMap &data)
+void Device::load(const QVariantMap &parameters)
 {
-    m_parameters = data;
+    m_parametersMutex.lock();
+    m_parameters = parameters;
+    m_parametersMutex.unlock();
 }
 
 void Device::run()

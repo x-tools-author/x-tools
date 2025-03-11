@@ -35,14 +35,12 @@ protected:
     Socket *m_socket{nullptr};
 
 protected:
-    void setClientWidgetsVisible(bool visible);
     void setServerWidgetsVisible(bool visible);
     void setChannelWidgetsVisible(bool visible);
     void setAuthenticationWidgetsVisible(bool visible);
     void setWriteToWidgetsVisible(bool visible);
     void setMulticastWidgetsVisible(bool visible);
 
-    void setClientWidgetsEnabled(bool enabled);
     void setServerWidgetsEnabled(bool enabled);
     void setChannelWidgetsEnabled(bool enabled);
     void setAuthenticationWidgetsEnabled(bool enabled);

@@ -13,39 +13,14 @@
 Socket::Socket(QObject *parent)
     : Device(parent)
 {
-    static bool registered = false;
-    if (!registered) {
-        registered = true;
-        qRegisterMetaType<Socket::SocketPrivateSignal>("Socket::SocketPrivateSignal");
-    }
-
-    m_channel = static_cast<int>(WebSocketDataChannel::Text);
-
-    SocketItemKeys keys;
-    QVariantMap tmp;
-    tmp.insert(keys.clientPort, m_clientPort);
-    tmp.insert(keys.clientAddress, m_clientAddress);
-    tmp.insert(keys.serverPort, m_serverPort);
-    tmp.insert(keys.serverAddress, m_serverAddress);
-    tmp.insert(keys.dataChannel, m_channel);
-    tmp.insert(keys.authentication, m_authentication);
-    tmp.insert(keys.username, m_username);
-    tmp.insert(keys.password, m_password);
-    tmp.insert(keys.multicastAddress, m_multicastAddress);
-    tmp.insert(keys.multicastPort, m_multicastPort);
-    tmp.insert(keys.enableMulticast, m_enableMulticast);
-    tmp.insert(keys.justMulticast, m_justMulticast);
-
-    Socket::load(tmp);
+    Socket::load(saveSocketItem(defaultSocketItem()));
 }
 
 void Socket::load(const QVariantMap &parameters)
 {
     Device::load(parameters);
 
-    SocketItem item = loadSocketItem(QJsonObject::fromVariantMap(parameters));
-    m_clientPort = item.clientPort;
-    m_clientAddress = item.clientAddress;
+    SocketItem item = loadSocketItem(parameters);
     m_serverPort = item.serverPort;
     m_serverAddress = item.serverAddress;
     m_channel = static_cast<int>(item.dataChannel);
@@ -60,6 +35,9 @@ void Socket::load(const QVariantMap &parameters)
 
 void Socket::setDataChannel(int channel)
 {
+    QVariantMap tmp = save();
+    tmp.insert(SocketItemKeys().dataChannel, channel);
+    load(tmp);
     m_channel = channel;
 }
 

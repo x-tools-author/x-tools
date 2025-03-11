@@ -18,11 +18,9 @@ class Socket : public Device
 public:
     explicit Socket(QObject *parent = nullptr);
     void load(const QVariantMap &parameters) override;
-    Q_INVOKABLE void setDataChannel(int channel);
+    void setDataChannel(int channel);
 
 protected:
-    quint16 m_clientPort{12347};
-    QString m_clientAddress{"127.0.0.1"};
     quint16 m_serverPort{12347};
     QString m_serverAddress{"127.0.0.1"};
 
@@ -35,10 +33,6 @@ protected:
     QString m_multicastAddress{"239.168.3.255"};
     bool m_enableMulticast{false};
     bool m_justMulticast{false};
-
-    // clang-format off
-    struct SocketPrivateSignal{};
-    // clang-format on
 
 protected:
     QString makeFlag(const QString &address, quint16 port) const;

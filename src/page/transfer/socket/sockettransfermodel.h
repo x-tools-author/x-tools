@@ -10,6 +10,15 @@
 
 #include "page/transfer/common/transfermodel.h"
 
+#define SOCKET_ROW_OPTION 0
+#define SOCKET_ROW_ADDRESS 1
+#define SOCKET_ROW_PORT 2
+#define SOCKET_ROW_CHANNEL 3
+#define SOCKET_ROW_AUTHENTICATION 4
+#define SOCKET_ROW_USERNAME 5
+#define SOCKET_ROW_PASSWORD 6
+#define SOCKET_ROW_DESCRIPTION 7
+
 class Socket;
 class SocketTransferModel : public TransferModel
 {
