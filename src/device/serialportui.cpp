@@ -14,6 +14,7 @@
 
 #include "common/xtools.h"
 #include "serialport.h"
+#include "utilities/serialportscanner.h"
 
 SerialPortUi::SerialPortUi(QWidget *parent)
     : DeviceUi(parent)
@@ -24,7 +25,13 @@ SerialPortUi::SerialPortUi(QWidget *parent)
     ui->comboBoxPortName->setEditable(true);
 #endif
 
-    refresh();
+    m_scanner = new SerialPortScanner(this);
+    connect(m_scanner, &SerialPortScanner::portNamesChanged, this, &SerialPortUi::onPortNameChanged);
+    m_scanner->start();
+
+    connect(ui->checkBoxIgnoredBusyDevices, &QCheckBox::clicked, this, [=](bool checked) {
+        m_scanner->setIsBusyDevicesIgnored(checked);
+    });
 
     setupBaudRate(ui->comboBoxBaudRate);
     setupDataBits(ui->comboBoxDataBits);
@@ -43,6 +50,8 @@ QVariantMap SerialPortUi::save() const
     map[keys.parity] = ui->comboBoxParity->currentData().toInt();
     map[keys.stopBits] = ui->comboBoxStopBits->currentData().toInt();
     map[keys.flowControl] = ui->comboBoxFlowControl->currentData().toInt();
+    map[keys.ignoredBusyDevices] = ui->checkBoxIgnoredBusyDevices->isChecked();
+    map[keys.optimizedFrame] = ui->checkBoxOptimizedFrame->isChecked();
     return map;
 }
 
@@ -59,6 +68,10 @@ void SerialPortUi::load(const QVariantMap &map)
     int parity = map.value(keys.parity, static_cast<int>(QSerialPort::NoParity)).toInt();
     int stopBits = map.value(keys.stopBits, static_cast<int>(QSerialPort::OneStop)).toInt();
     int fc = map.value(keys.flowControl, static_cast<int>(QSerialPort::NoFlowControl)).toInt();
+    bool ignoredBusyDevices = map.value(keys.ignoredBusyDevices, false).toBool();
+    bool optimizedFrame = map.value(keys.optimizedFrame, false).toBool();
+
+    m_scanner->setIsBusyDevicesIgnored(ignoredBusyDevices);
 
     ui->comboBoxPortName->setCurrentText(portName);
     ui->comboBoxBaudRate->setCurrentText(QString::number(baudRate));
@@ -66,6 +79,8 @@ void SerialPortUi::load(const QVariantMap &map)
     ui->comboBoxParity->setCurrentIndex(ui->comboBoxParity->findData(parity));
     ui->comboBoxStopBits->setCurrentIndex(ui->comboBoxStopBits->findData(stopBits));
     ui->comboBoxFlowControl->setCurrentIndex(ui->comboBoxFlowControl->findData(fc));
+    ui->checkBoxIgnoredBusyDevices->setChecked(ignoredBusyDevices);
+    ui->checkBoxOptimizedFrame->setChecked(optimizedFrame);
 }
 
 Device *SerialPortUi::newDevice()
@@ -76,4 +91,25 @@ Device *SerialPortUi::newDevice()
 void SerialPortUi::refresh()
 {
     setupPortName(ui->comboBoxPortName);
+}
+
+void SerialPortUi::onPortNameChanged(const QStringList &portName)
+{
+    if (!ui->comboBoxPortName->isEnabled()) {
+        return;
+    }
+
+    QStringList items;
+    for (int i = 0; i < ui->comboBoxPortName->count(); i++) {
+        items.append(ui->comboBoxPortName->itemText(i));
+    }
+
+    if (items == portName) {
+        return;
+    }
+
+    QString currentPortName = ui->comboBoxPortName->currentText();
+    ui->comboBoxPortName->clear();
+    ui->comboBoxPortName->addItems(portName);
+    ui->comboBoxPortName->setCurrentText(currentPortName);
 }

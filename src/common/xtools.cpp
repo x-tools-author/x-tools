@@ -63,7 +63,7 @@ QList<int> supportedDeviceTypes()
         deviceTypes << static_cast<int>(DeviceType::BleCentral);
 #endif
 #if 0
-            deviceTypes << static_cast<int>(DeviceType::BlePeripheral);
+        deviceTypes << static_cast<int>(DeviceType::BlePeripheral);
 #endif
         deviceTypes << static_cast<int>(DeviceType::UdpClient);
         deviceTypes << static_cast<int>(DeviceType::UdpServer);
@@ -120,6 +120,11 @@ void setupDeviceTypes(QComboBox *comboBox)
     }
 
     comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(DeviceType::SerialPort)));
+
+    int udpClientIndex = comboBox->findData(static_cast<int>(DeviceType::UdpClient));
+    if (udpClientIndex != -1) {
+        comboBox->insertSeparator(udpClientIndex);
+    }
 
     int testIndex = comboBox->findData(static_cast<int>(DeviceType::ChartsTest));
     if (testIndex != -1) {
@@ -606,6 +611,9 @@ SerialPortItem defaultSerialPortItem()
     context.parity = 0;
     context.stopBits = 1;
     context.flowControl = 0;
+    context.ignoredBusyDevices = false;
+    context.ignoredBusyDevices = false;
+    context.optimizedFrame = false;
 
     return context;
 }
@@ -620,6 +628,8 @@ QJsonObject saveSerialPortItem(const SerialPortItem &context)
     obj.insert(keys.parity, context.parity);
     obj.insert(keys.stopBits, context.stopBits);
     obj.insert(keys.flowControl, context.flowControl);
+    obj.insert(keys.ignoredBusyDevices, context.ignoredBusyDevices);
+    obj.insert(keys.optimizedFrame, context.optimizedFrame);
     return obj;
 }
 
@@ -633,6 +643,7 @@ SerialPortItem loadSerialPortItem(const QJsonObject &obj)
     ctx.parity = obj.value(keys.parity).toInt();
     ctx.stopBits = obj.value(keys.stopBits).toInt();
     ctx.flowControl = obj.value(keys.flowControl).toInt();
+    ctx.optimizedFrame = obj.value(keys.optimizedFrame).toBool();
     return ctx;
 }
 

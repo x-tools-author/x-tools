@@ -149,6 +149,8 @@ struct SerialPortItem
     int parity;
     int stopBits;
     int flowControl;
+    bool ignoredBusyDevices;
+    bool optimizedFrame;
 };
 struct SerialPortItemKeys
 {
@@ -158,6 +160,8 @@ struct SerialPortItemKeys
     const QString stopBits{"stopBits"};
     const QString parity{"parity"};
     const QString flowControl{"flowControl"};
+    const QString ignoredBusyDevices{"ignoredBusyDevices"};
+    const QString optimizedFrame{"optimizedFrame"};
 };
 SerialPortItem defaultSerialPortItem();
 QJsonObject saveSerialPortItem(const SerialPortItem &context);

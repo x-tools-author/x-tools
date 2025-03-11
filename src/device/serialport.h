@@ -25,14 +25,11 @@ public:
     void writeActually(const QByteArray &bytes) override;
 
 private:
-    static constexpr int s_recommendedDelay = 2;
     QSerialPort *m_serialPort{nullptr};
-    int m_interFrameDelayMilliseconds = s_recommendedDelay;
-    QByteArray m_frameBuffer;
-    QTimer *m_interFrameTimer{nullptr};
-    QElapsedTimer m_interFrameTimerElapsed;
 
 private:
     void readBytesFromDevice();
-    void calculateInterFrameDelay();
+    void readBytesFromDeviceNormal();
+    void readBytesFromDeviceOptimized();
+    int calculateInterFrameDelay();
 };

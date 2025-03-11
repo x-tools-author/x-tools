@@ -16,6 +16,7 @@ class SerialPortUi;
 }
 QT_END_NAMESPACE
 
+class SerialPortScanner;
 class SerialPortUi : public DeviceUi
 {
     Q_OBJECT
@@ -29,8 +30,10 @@ protected:
     Device *newDevice() override;
 
 private:
-    Ui::SerialPortUi *ui;
+    void refresh();
+    void onPortNameChanged(const QStringList &portName);
 
 private:
-    void refresh();
+    Ui::SerialPortUi *ui;
+    SerialPortScanner *m_scanner{nullptr};
 };

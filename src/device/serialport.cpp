@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "serialport.h"
 
+#include <QElapsedTimer>
 #include <QTimer>
 #include <QtMath>
 
@@ -52,24 +53,12 @@ QObject *SerialPort::initDevice()
         m_serialPort = nullptr;
     }
 
-    m_interFrameTimer = new QTimer();
-    m_interFrameTimer->setInterval(m_interFrameDelayMilliseconds);
-    m_interFrameTimer->setSingleShot(true);
-    connect(m_interFrameTimer, &QTimer::timeout, m_interFrameTimer, [this]() {
-        if (!this->m_frameBuffer.isEmpty()) {
-            emit bytesRead(this->m_frameBuffer, m_serialPort->portName());
-            this->m_frameBuffer.clear();
-        }
-    });
     return m_serialPort;
 }
 
 void SerialPort::deinitDevice()
 {
     if (m_serialPort) {
-        delete m_interFrameTimer;
-        m_interFrameTimer = nullptr;
-
         m_serialPort->close();
         m_serialPort->deleteLater();
         m_serialPort = nullptr;
@@ -92,53 +81,56 @@ void SerialPort::readBytesFromDevice()
         return;
     }
 
-#if 1
+    QVariantMap tmp = save();
+    SerialPortItem item = loadSerialPortItem(QJsonObject::fromVariantMap(tmp));
+    if (item.optimizedFrame) {
+        readBytesFromDeviceOptimized();
+    } else {
+        readBytesFromDeviceNormal();
+    }
+}
+
+void SerialPort::readBytesFromDeviceNormal()
+{
     QByteArray bytes = m_serialPort->readAll();
     if (!bytes.isEmpty()) {
         emit bytesRead(bytes, m_serialPort->portName());
     }
-#else
-#if 0
-    m_interFrameTimer->start(Qt::PreciseTimer);
-    qint64 const size = m_serialPort->size();
-    m_frameBuffer += m_serialPort->read(size);
-    if (m_frameBuffer.size() > 1024) {
-        emit bytesRead(m_frameBuffer, m_serialPort->portName());
-        m_frameBuffer.clear();
-    }
-#else
-    m_interFrameTimerElapsed.start();
-    while (1) {
-        qint64 const size = m_serialPort->size();
-        if (size == 0) {
-            if (m_interFrameTimerElapsed.elapsed() > m_interFrameDelayMilliseconds) {
-                if (!m_frameBuffer.isEmpty()) {
-                    emit bytesRead(m_frameBuffer, m_serialPort->portName());
-                    m_frameBuffer.clear();
-                }
-
-                break;
-            }
-
-            continue;
-        }
-
-        m_frameBuffer += m_serialPort->read(size);
-        m_interFrameTimerElapsed.restart();
-        if (m_frameBuffer.size() > 1024) {
-            emit bytesRead(m_frameBuffer, m_serialPort->portName());
-            m_frameBuffer.clear();
-        }
-    }
-#endif
-#endif
 }
 
-void SerialPort::calculateInterFrameDelay()
+void SerialPort::readBytesFromDeviceOptimized()
+{
+    QElapsedTimer elapsedTimer;
+    elapsedTimer.start();
+    QByteArray tmp;
+    int delay = calculateInterFrameDelay();
+    while (1) {
+        QByteArray const data = m_serialPort->readAll();
+        if (data.size() == 0) {
+            if (elapsedTimer.elapsed() > delay) {
+                if (!tmp.isEmpty()) {
+                    emit bytesRead(tmp, m_serialPort->portName());
+                }
+
+                return;
+            } else {
+                continue;
+            }
+        }
+
+        tmp.append(data);
+        if (tmp.size() > 1024) {
+            emit bytesRead(tmp, m_serialPort->portName());
+            tmp.clear();
+        }
+    }
+}
+
+int SerialPort::calculateInterFrameDelay()
 {
     // The spec recommends a timeout value of 1.750 msec. Without such
     // precise single-shot timers use a approximated value of 1.750 msec.
-    int delayMilliSeconds = s_recommendedDelay;
+    int delayMilliSeconds = 2;
     qint32 baudRate = m_serialPort->baudRate();
     if (baudRate < 19200) {
         // Example: 9600 baud, 11 bit per packet -> 872 char/sec so:
@@ -146,5 +138,6 @@ void SerialPort::calculateInterFrameDelay()
         // Always round up because the spec requests at least 3.5 char.
         delayMilliSeconds = qCeil(3500. / (qreal(baudRate) / 11.));
     }
-    m_interFrameDelayMilliseconds = qMax(m_interFrameDelayMilliseconds, delayMilliSeconds);
+
+    return qMax(2, delayMilliSeconds);
 }
