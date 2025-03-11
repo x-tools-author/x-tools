@@ -2259,17 +2259,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="405"/>
-        <location filename="../../src/common/xtools.cpp" line="831"/>
-        <location filename="../../src/common/xtools.cpp" line="833"/>
+        <location filename="../../src/common/xtools.cpp" line="410"/>
+        <location filename="../../src/common/xtools.cpp" line="842"/>
+        <location filename="../../src/common/xtools.cpp" line="844"/>
         <source>Text</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="149"/>
-        <location filename="../../src/common/xtools.cpp" line="407"/>
-        <location filename="../../src/common/xtools.cpp" line="827"/>
-        <location filename="../../src/common/xtools.cpp" line="829"/>
+        <location filename="../../src/common/xtools.cpp" line="154"/>
+        <location filename="../../src/common/xtools.cpp" line="412"/>
+        <location filename="../../src/common/xtools.cpp" line="838"/>
+        <location filename="../../src/common/xtools.cpp" line="840"/>
         <source>Binary</source>
         <translation></translation>
     </message>
@@ -2324,107 +2324,107 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="151"/>
+        <location filename="../../src/common/xtools.cpp" line="156"/>
         <source>Octal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="153"/>
+        <location filename="../../src/common/xtools.cpp" line="158"/>
         <source>Decimal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="155"/>
+        <location filename="../../src/common/xtools.cpp" line="160"/>
         <source>Hexadecimal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="157"/>
+        <location filename="../../src/common/xtools.cpp" line="162"/>
         <source>ASCII</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="159"/>
+        <location filename="../../src/common/xtools.cpp" line="164"/>
         <source>UTF-8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="442"/>
+        <location filename="../../src/common/xtools.cpp" line="447"/>
         <source>Echo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="443"/>
+        <location filename="../../src/common/xtools.cpp" line="448"/>
         <source>Always</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="444"/>
+        <location filename="../../src/common/xtools.cpp" line="449"/>
         <source>Input Equal Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="445"/>
+        <location filename="../../src/common/xtools.cpp" line="450"/>
         <source>Input Contain Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="447"/>
+        <location filename="../../src/common/xtools.cpp" line="452"/>
         <source>Input Does not Contain Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="668"/>
+        <location filename="../../src/common/xtools.cpp" line="679"/>
         <source>Even</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="669"/>
+        <location filename="../../src/common/xtools.cpp" line="680"/>
         <source>Odd</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="670"/>
+        <location filename="../../src/common/xtools.cpp" line="681"/>
         <source>Space</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="671"/>
+        <location filename="../../src/common/xtools.cpp" line="682"/>
         <source>Mark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="687"/>
+        <location filename="../../src/common/xtools.cpp" line="698"/>
         <source>RTS/CTS</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="688"/>
+        <location filename="../../src/common/xtools.cpp" line="699"/>
         <source>X-ON/X-OFF</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="690"/>
+        <location filename="../../src/common/xtools.cpp" line="701"/>
         <source>Hardware</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="691"/>
+        <location filename="../../src/common/xtools.cpp" line="702"/>
         <source>Software</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="792"/>
+        <location filename="../../src/common/xtools.cpp" line="803"/>
         <source>Disabled</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="794"/>
+        <location filename="../../src/common/xtools.cpp" line="805"/>
         <source>Bidirectional</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="796"/>
+        <location filename="../../src/common/xtools.cpp" line="807"/>
         <source>Unidirectional</source>
         <translation></translation>
     </message>
@@ -2459,10 +2459,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="307"/>
-        <location filename="../../src/common/xtools.cpp" line="366"/>
-        <location filename="../../src/common/xtools.cpp" line="667"/>
-        <location filename="../../src/common/xtools.cpp" line="685"/>
+        <location filename="../../src/common/xtools.cpp" line="312"/>
+        <location filename="../../src/common/xtools.cpp" line="371"/>
+        <location filename="../../src/common/xtools.cpp" line="678"/>
+        <location filename="../../src/common/xtools.cpp" line="696"/>
         <source>None</source>
         <translation></translation>
     </message>
@@ -2670,7 +2670,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPort</name>
     <message>
-        <location filename="../../src/device/serialport.cpp" line="50"/>
+        <location filename="../../src/device/serialport.cpp" line="51"/>
         <source>Failed to open serial port: %1</source>
         <translation></translation>
     </message>
@@ -2757,32 +2757,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPortUi</name>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="45"/>
+        <location filename="../../src/device/serialportui.ui" line="117"/>
         <source>Parity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="58"/>
+        <location filename="../../src/device/serialportui.ui" line="101"/>
         <source>Port name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="71"/>
+        <location filename="../../src/device/serialportui.ui" line="38"/>
         <source>Baud rate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="84"/>
+        <location filename="../../src/device/serialportui.ui" line="71"/>
         <source>Stop bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="97"/>
+        <location filename="../../src/device/serialportui.ui" line="85"/>
+        <source>Ignored busy device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/serialportui.ui" line="130"/>
         <source>Data bits</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="120"/>
+        <location filename="../../src/device/serialportui.ui" line="162"/>
+        <source>Optimized frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/serialportui.ui" line="58"/>
         <source>Flow control</source>
         <translation></translation>
     </message>
