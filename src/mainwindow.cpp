@@ -195,6 +195,7 @@ void MainWindow::initMenuBar()
 void MainWindow::initFileMenu()
 {
     auto fileMenu = menuBar()->addMenu(tr("&File"));
+#if defined(Q_OS_WIN) || defined(Q_OS_LINUX) || defined(Q_OS_MAC)
     QAction* action = fileMenu->addAction(tr("New Window"), this, []() {
         auto* w = new Page(Page::Left, xApp->settings());
         w->setWindowTitle("xTools");
@@ -202,6 +203,7 @@ void MainWindow::initFileMenu()
     });
     action->setShortcut(QKeySequence::New);
     fileMenu->addSeparator();
+#endif
     action = fileMenu->addAction(tr("Save Parameters"), this, &MainWindow::onSaveActionTriggered);
     action->setShortcut(QKeySequence::Save);
     action = fileMenu->addAction(tr("Import Parameters"),
