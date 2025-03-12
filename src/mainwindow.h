@@ -10,23 +10,34 @@
 
 #include <QMainWindow>
 #include <QMenu>
+#include <QUrl>
 
 class Page;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
+    enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
+
+public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
     ~MainWindow() override;
 
     void load(const QString& fileName = QString()) const;
     void save(const QString& fileName = QString()) const;
+    void updateGrid(WindowGrid grid);
 
 protected:
     void closeEvent(QCloseEvent* event) override;
+    virtual QUrl storeUrl() const;
+
+protected:
+    Page* m_iopage00;
+    Page* m_iopage01;
+    Page* m_iopage10;
+    Page* m_iopage11;
 
 private:
-    enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
     struct SettingsKeys
     {
         const QString windowGrid{"MainWindow/windowGrid"};
@@ -37,10 +48,6 @@ private:
     } m_settingsKey;
 
     WindowGrid m_windowGrid{WindowGrid::Grid1x1};
-    Page* m_iopage00;
-    Page* m_iopage01;
-    Page* m_iopage10;
-    Page* m_iopage11;
 
 private:
     void initMenuBar();
@@ -57,7 +64,6 @@ private:
     void initViewMenuStayOnTop(QMenu* viewMenu);
     void initHelpMenu();
 
-    void updateGrid(WindowGrid grid);
     void showHistory();
     void showQrCode();
     void tryToReboot();

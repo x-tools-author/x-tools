@@ -52,6 +52,8 @@ public:
     void inputBytes(const QByteArray &bytes);
     void prependOutputControl(QWidget *widget);
     void appendOutputControl(QWidget *widget);
+    void hideChartsWidgets();
+    void hideTransferWidgets();
 
 signals:
     void bytesWritten(const QByteArray &bytes, const QString &to);
@@ -112,5 +114,6 @@ private:
     QSettings *m_settings;
 #ifdef X_ENABLE_CHARTS
     ChartsView *m_chartsView;
+    bool m_enableChars{true};
 #endif
 };

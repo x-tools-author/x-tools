@@ -164,6 +164,34 @@ void MainWindow::save(const QString& fileName) const
     file.close();
 }
 
+void MainWindow::updateGrid(WindowGrid grid)
+{
+    if (grid == WindowGrid::Grid1x2) {
+        m_iopage00->show();
+        m_iopage01->show();
+        m_iopage10->hide();
+        m_iopage11->hide();
+    } else if (grid == WindowGrid::Grid2x1) {
+        m_iopage00->show();
+        m_iopage01->hide();
+        m_iopage10->show();
+        m_iopage11->hide();
+    } else if (grid == WindowGrid::Grid2x2) {
+        m_iopage00->show();
+        m_iopage01->show();
+        m_iopage10->show();
+        m_iopage11->show();
+    } else {
+        m_iopage00->show();
+        m_iopage01->hide();
+        m_iopage10->hide();
+        m_iopage11->hide();
+    }
+
+    m_windowGrid = grid;
+    xApp->settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
+}
+
 void MainWindow::closeEvent(QCloseEvent* event)
 {
     save();
@@ -180,6 +208,11 @@ void MainWindow::closeEvent(QCloseEvent* event)
 #endif
 
     QMainWindow::closeEvent(event);
+}
+
+QUrl MainWindow::storeUrl() const
+{
+    return QUrl("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
 }
 
 void MainWindow::initMenuBar()
@@ -466,8 +499,10 @@ void MainWindow::initMenuLanguage()
 void MainWindow::initViewMenu()
 {
     QMenu* viewMenu = menuBar()->addMenu(tr("&View"));
+    viewMenu->setObjectName("ViewMenu");
     initViewMenuGrid(viewMenu);
-    viewMenu->addSeparator();
+    QAction* action = viewMenu->addSeparator();
+    action->setObjectName("PageViewAction");
     initViewMenuStayOnTop(viewMenu);
 }
 
@@ -482,6 +517,11 @@ void MainWindow::initViewMenuGrid(QMenu* viewMenu)
     auto a1x2 = viewMenu->addAction("1x2", this, [=]() { updateGrid(WindowGrid::Grid1x2); });
     auto a2x1 = viewMenu->addAction("2x1", this, [=]() { updateGrid(WindowGrid::Grid2x1); });
     auto a2x2 = viewMenu->addAction("2x2", this, [=]() { updateGrid(WindowGrid::Grid2x2); });
+
+    a1x1->setObjectName("PageViewAction");
+    a1x2->setObjectName("PageViewAction");
+    a2x1->setObjectName("PageViewAction");
+    a2x2->setObjectName("PageViewAction");
 
     a1x1->setCheckable(true);
     a1x2->setCheckable(true);
@@ -544,9 +584,8 @@ void MainWindow::initHelpMenu()
 
 #if defined(Q_OS_WIN)
     helpMenu->addSeparator();
-    helpMenu->addAction(QIcon(":/res/icons/buy.svg"), tr("Bug from Store"), this, []() {
-        QUrl url("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
-        QDesktopServices::openUrl(url);
+    helpMenu->addAction(QIcon(":/res/icons/buy.svg"), tr("Buy from Store"), this, [=]() {
+        QDesktopServices::openUrl(storeUrl());
     });
 #endif
 
@@ -579,34 +618,6 @@ void MainWindow::initHelpMenu()
     for (auto& ctx : ctxs) {
         menu->addAction(ctx.first, this, [ctx]() { QDesktopServices::openUrl(QUrl(ctx.second)); });
     }
-}
-
-void MainWindow::updateGrid(WindowGrid grid)
-{
-    if (grid == WindowGrid::Grid1x2) {
-        m_iopage00->show();
-        m_iopage01->show();
-        m_iopage10->hide();
-        m_iopage11->hide();
-    } else if (grid == WindowGrid::Grid2x1) {
-        m_iopage00->show();
-        m_iopage01->hide();
-        m_iopage10->show();
-        m_iopage11->hide();
-    } else if (grid == WindowGrid::Grid2x2) {
-        m_iopage00->show();
-        m_iopage01->show();
-        m_iopage10->show();
-        m_iopage11->show();
-    } else {
-        m_iopage00->show();
-        m_iopage01->hide();
-        m_iopage10->hide();
-        m_iopage11->hide();
-    }
-
-    m_windowGrid = grid;
-    xApp->settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
 }
 
 void MainWindow::showHistory()

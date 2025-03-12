@@ -115,9 +115,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     ui->toolButtonCharts->setIcon(QIcon(":/res/icons/charts.svg"));
     connect(ui->toolButtonCharts, &QToolButton::clicked, this, &Page::updateChartUi);
 #else
-    ui->toolButtonCharts->setVisible(false);
-    ui->widgetCharts->setVisible(false);
-    ui->widgetChartsController->setVisible(false);
+    hideChartsWidgets();
 #endif
 
     if (direction == ControllerDirection::Right) {
@@ -179,7 +177,10 @@ QVariantMap Page::save()
     map.insert(g_keys.presetItems, ui->tabPreset->save());
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
     map.insert(g_keys.responserItems, ui->tabResponder->save());
-    map.insert(g_keys.transfers, ui->tabTransfers->save());
+
+    if (ui->tabTransfers->isEnabled()) {
+        map.insert(g_keys.transfers, ui->tabTransfers->save());
+    }
 
 #ifdef X_ENABLE_CHARTS
     map.insert(g_keys.chartsItems, m_chartsView->save());
@@ -278,6 +279,21 @@ void Page::prependOutputControl(QWidget *widget)
 void Page::appendOutputControl(QWidget *widget)
 {
     ui->horizontalLayoutOutput->addWidget(widget);
+}
+
+void Page::hideChartsWidgets()
+{
+    m_enableChars = false;
+    ui->toolButtonCharts->setVisible(false);
+    ui->widgetCharts->setVisible(false);
+    ui->widgetChartsController->setVisible(false);
+}
+
+void Page::hideTransferWidgets()
+{
+    ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabTransfers));
+    ui->tabTransfers->setEnabled(false);
+    ui->tabTransfers->hide();
 }
 
 void Page::initUi()
@@ -497,11 +513,16 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     outputText(bytes, from, true);
 
 #ifdef X_ENABLE_CHARTS
-    m_chartsView->inputBytes(bytes);
+    if (m_enableChars) {
+        m_chartsView->inputBytes(bytes);
+    }
 #endif
 
     ui->tabResponder->inputBytes(bytes);
-    ui->tabTransfers->inputBytes(bytes);
+
+    if (ui->tabTransfers->isEnabled()) {
+        ui->tabTransfers->inputBytes(bytes);
+    }
 
     emit bytesRead(bytes, from);
 }

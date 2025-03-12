@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -7,12 +7,12 @@
  * code directory.
  **************************************************************************************************/
 #include "application.h"
-#include "mainwindow.h"
+#include "xassistant.h"
 
 int main(int argc, char *argv[])
 {
-    Application::setOrganizationName("xTools");
-    Application::setApplicationName("xTools");
+    Application::setOrganizationName("xAssistant");
+    Application::setApplicationName("xAssistant");
     Application::installLog(argv[0]);
     Application::setupHdpi();
     Application app(argc, argv);
@@ -21,12 +21,13 @@ int main(int argc, char *argv[])
     app.setupAppStyle();
     app.setupColorScheme();
 
-    MainWindow window;
+    xAssistant window;
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
-    window.resize(1366, 768);
+    window.resize(620 * 1.732, 620);
     window.show();
     window.load();
+    window.updateGrid(MainWindow::WindowGrid::Grid1x2);
 
     int ret = app.exec();
     Application::uninstallLog();
