@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "serialportscanner.h"
 
+#include <QJsonArray>
+#include <QJsonObject>
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QTimer>
@@ -27,6 +29,17 @@ void SerialPortScanner::setIsBusyDevicesIgnored(bool ignored)
     m_isBusyDevicesIgnored.store(ignored);
 }
 
+QStringList SerialPortScanner::baudRates() const
+{
+    QList<qint32> baudRates = QSerialPortInfo::standardBaudRates();
+    QStringList result;
+    for (qint32 &rate : baudRates) {
+        result.append(QString::number(rate));
+    }
+
+    return result;
+}
+
 void SerialPortScanner::run()
 {
     QTimer *timer = new QTimer();
@@ -37,6 +50,7 @@ void SerialPortScanner::run()
         timer->start();
     });
 
+    refresh();
     timer->start();
     exec();
     timer->stop();

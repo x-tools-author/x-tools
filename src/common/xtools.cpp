@@ -643,6 +643,7 @@ SerialPortItem loadSerialPortItem(const QJsonObject &obj)
     ctx.parity = obj.value(keys.parity).toInt();
     ctx.stopBits = obj.value(keys.stopBits).toInt();
     ctx.flowControl = obj.value(keys.flowControl).toInt();
+    ctx.ignoredBusyDevices = obj.value(keys.ignoredBusyDevices).toBool();
     ctx.optimizedFrame = obj.value(keys.optimizedFrame).toBool();
     return ctx;
 }

@@ -44,7 +44,7 @@ public:
     void setupColorScheme();
 
     QSplashScreen *splashScreen();
-    void showSplashScreenMessage(const QString &msg);
+    Q_INVOKABLE void showSplashScreenMessage(const QString &msg);
 
     QString left2rightTips() const;
     QString right2leftTips() const;

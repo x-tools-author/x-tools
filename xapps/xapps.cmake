@@ -15,3 +15,7 @@ foreach(source ${X_APPS_SOURCES})
 endforeach()
 
 include(${CMAKE_CURRENT_LIST_DIR}/xassistant/xassistant.cmake)
+
+if(NOT QT_VERSION VERSION_LESS "6.8.0")
+  include(${CMAKE_CURRENT_LIST_DIR}/xdebug/xdebug.cmake)
+endif()

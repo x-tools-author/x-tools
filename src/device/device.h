@@ -19,12 +19,12 @@ public:
     explicit Device(QObject *parent = nullptr);
     ~Device() override;
 
-    void openDevice();
-    void closeDevice();
-    void writeBytes(const QByteArray &bytes);
+    Q_INVOKABLE void openDevice();
+    Q_INVOKABLE void closeDevice();
+    Q_INVOKABLE void writeBytes(const QByteArray &bytes);
 
     virtual QVariantMap save() const;
-    virtual void load(const QVariantMap &parameters);
+    Q_INVOKABLE virtual void load(const QVariantMap &parameters);
     virtual QObject *initDevice() { return nullptr; };
     virtual void deinitDevice() {};
 

@@ -12,6 +12,7 @@
 
 #include <QMutex>
 #include <QThread>
+#include <QVariantList>
 
 class SerialPortScanner : public QThread
 {
@@ -20,7 +21,8 @@ public:
     explicit SerialPortScanner(QObject *parent = nullptr);
     ~SerialPortScanner() override;
 
-    void setIsBusyDevicesIgnored(bool ignored);
+    Q_INVOKABLE void setIsBusyDevicesIgnored(bool ignored);
+    Q_INVOKABLE QStringList baudRates() const;
 
 signals:
     void portNamesChanged(const QStringList &portNames);
