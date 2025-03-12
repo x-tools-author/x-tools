@@ -271,7 +271,7 @@ if(WIN32 AND X_TOOLS_LATEST_GIT_TAG)
   include(${CMAKE_SOURCE_DIR}/cmake/qifw/qifw.cmake)
   set(icon ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
   x_tools_generate_zip(xTools ${X_TOOLS_LATEST_GIT_TAG})
-  x_tools_generate_msix(xTools "xToolsPro" "xTools Pro" ${X_TOOLS_LATEST_GIT_TAG} TRUE)
+  x_tools_generate_msix(xTools "QSAK" "xTools Pro" ${X_TOOLS_LATEST_GIT_TAG} FALSE)
   x_tools_generate_installer(xTools ${X_TOOLS_LATEST_GIT_TAG} ${icon})
 endif()
 

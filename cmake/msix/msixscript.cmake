@@ -18,8 +18,12 @@ if(argRenameTarget)
                           "${argPacketName}" WORKING_DIRECTORY ${argRoot})
   set(argTarget ${argPacketName})
 else()
+  execute_process(COMMAND ${CMAKE_COMMAND} -E rm -rf ${argTarget} || true
+                  WORKING_DIRECTORY ${argRoot})
+  execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ../${argTarget} ${argTarget}
+                  WORKING_DIRECTORY ${argRoot})
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar "cf" ${argTarget}.zip "--format=zip"
-                          "../${argTarget}" WORKING_DIRECTORY ${argRoot})
+                          "${argTarget}" WORKING_DIRECTORY ${argRoot})
 endif()
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${argTemplate} ${argTarget}.xml
                 WORKING_DIRECTORY ${argRoot})
