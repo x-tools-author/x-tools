@@ -6,6 +6,9 @@ description: "xTools项目简介。"
 permalink: /
 ---
 
+{: .note }
+> xTools始于2018...
+
 *xTools*(曾用名：QtSwissArmyKnife，瑞士军刀，QSAK)是一款开始于2018年基于Qt开发的开源、免费，跨平台、多功能的开发调试工具，支持串口，蓝牙，UDP，TCP, Web Socket, Modbus和CAN Bus调试。*xTools*旨在为开发者提供一个强大的调试平台，简化各种通信协议的调试过程，提高开发效率。
 
 *xTools*提供但不限于以下功能：
