@@ -64,9 +64,9 @@ int main(int argc, char *argv[])
     QSplashScreen *xSplash = app.splashScreen();
     QQmlApplicationEngine qmlAppEngine;
 #ifdef X_TOOLS_MO_YU
-    qmlAppEngine.rootContext()->setContextProperty("xMoYu", true);
+    qmlAppEngine.rootContext()->setContextProperty("xMoYu", QVariant(true));
 #else
-    qmlAppEngine.rootContext()->setContextProperty("xMoYu", false);
+    qmlAppEngine.rootContext()->setContextProperty("xMoYu", QVariant(false));
 #endif
     qmlAppEngine.rootContext()->setContextProperty("xApp", &app);
     qmlAppEngine.rootContext()->setContextProperty("xCrc", xCrc);
@@ -116,5 +116,7 @@ int main(int argc, char *argv[])
                      });
 
     qmlAppEngine.load(qml);
-    return app.exec();
+    int ret = app.exec();
+    app.uninstallLog();
+    return ret;
 }

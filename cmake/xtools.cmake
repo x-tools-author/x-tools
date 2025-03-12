@@ -43,6 +43,15 @@ function(x_tools_generate_zip target version)
 endfunction()
 
 # --------------------------------------------------------------------------------------------------
+# Just for test
+function(x_tools_output_env flag)
+  message(STATUS "[${flag}]CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+  message(STATUS "[${flag}]CMAKE_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
+  message(STATUS "[${flag}]CMAKE_CURRENT_LIST_DIR: ${CMAKE_CURRENT_LIST_DIR}")
+  message(STATUS "[${flag}]CMAKE_CURRENT_FUNCTION_LIST_DIR: ${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
+endfunction()
+
+# --------------------------------------------------------------------------------------------------
 # Generate translations files
 function(x_tools_generate_translations target)
   if(QT_VERSION VERSION_LESS "5.6.0")
@@ -50,8 +59,8 @@ function(x_tools_generate_translations target)
   endif()
 
   set(APP_TS_FILES "")
-  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/res/translations/${target}_en.ts)
-  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/res/translations/${target}_zh_CN.ts)
+  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_en.ts)
+  list(APPEND APP_TS_FILES ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_zh_CN.ts)
 
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     if(QT_VERSION VERSION_LESS "6.2.0")
@@ -86,9 +95,9 @@ function(x_tools_generate_translations target)
   add_custom_target(
     ${target}_lupgrade
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_en.qm
-            ${CMAKE_CURRENT_SOURCE_DIR}/res/translations/${target}_en.qm
+            ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_en.qm
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_zh_CN.qm
-            ${CMAKE_CURRENT_SOURCE_DIR}/res/translations/${target}_zh_CN.qm
+            ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_zh_CN.qm
     DEPENDS ${target}_lrelease
     COMMENT "Generate translations for ${target}...")
 endfunction()
@@ -100,12 +109,22 @@ function(x_tools_deploy_qt_for_windows target)
     set(WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
   endif()
 
-  add_custom_command(
-    TARGET ${target}
-    POST_BUILD
-    COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime
-    COMMENT "Deploy Qt for Windows..."
-    VERBATIM)
+  if(EXISTS ${CMAKE_CURRENT_LIST_DIR}/qml)
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime --qmldir
+              "${CMAKE_CURRENT_LIST_DIR}/qml"
+      COMMENT "Deploy Qt for Windows..."
+      VERBATIM)
+  else()
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime
+      COMMENT "Deploy Qt for Windows..."
+      VERBATIM)
+  endif()
 
   if(MSVC AND ("${CMAKE_BUILD_TYPE}" STREQUAL "Release"))
     cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)

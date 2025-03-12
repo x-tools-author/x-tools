@@ -9,7 +9,7 @@ Menu {
     property string lanugage: {
         var tmp = xSettings.value(settingKeys.language)
         if (!tmp) {
-            tmp = xApp.defaultLanguage()
+            tmp = "en" //xApp.defaultLanguage()
         }
         return tmp
     }

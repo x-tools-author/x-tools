@@ -99,7 +99,7 @@ Item {
         anchors.bottom: parent.bottom
         visible: tableView.rows === 0
         Image {
-            source: "qrc:/Resources/Icons/NoData.svg"
+            source: "qrc:/res/icons/NoData.svg"
             width: parent.width * 0.6
             height: parent.height * 0.6
             anchors.centerIn: parent

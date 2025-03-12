@@ -9,36 +9,42 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "Common/xTools.h"
-#include "TableModel.h"
+#include "settings.h"
+#include "tablemodel.h"
+#include "xping.h"
 
 int main(int argc, char *argv[])
 {
-    Q_INIT_RESOURCE(xTools);
-    Q_INIT_RESOURCE(xApp);
     qputenv("QT_QUICK_CONTROLS_MATERIAL_VARIANT", "Dense");
 
-    xTools::xTools::doSomethingBeforeAppCreated(argv, "xPing");
-    QApplication::setApplicationVersion(QString(X_PING_VERSION));
-    QApplication app(argc, argv);
-    g_xTools.splashScreenShow();
+    xPing::setOrganizationName("xPing");
+    xPing::setApplicationName("xPing");
+    xPing::installLog(argv[0]);
+    xPing::setupHdpi();
+    xPing app(argc, argv);
+    app.setupLanguage();
+    app.showSplashScreenMessage(QObject::tr("Application is booting..."));
+
     QQmlApplicationEngine engine;
 
+    Settings *xSettings = new Settings();
+    QSplashScreen *xSplash = app.splashScreen();
     qmlRegisterUncreatableType<TableModel>("xPing", 1, 0, "XTableModel", "Uncreatable type");
-    engine.rootContext()->setContextProperty("xSettings", g_xTools.settings());
+    engine.rootContext()->setContextProperty("xApp", &app);
+    engine.rootContext()->setContextProperty("xSettings", xSettings);
 
-    QObject::connect(&g_xTools, &xTools::xTools::languageChanged, &engine, [&engine]() {
-        engine.retranslate();
+    // QObject::connect(&g_xTools, &xTools::xTools::languageChanged, &engine, [&engine]() {
+    //     engine.retranslate();
+    // });
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [=]() {
+        xSplash->close();
     });
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [&app]() {
-        g_xTools.splashScreenGet()->close();
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed, &app, [=]() {
+        xSplash->close();
     });
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed, &app, [&app]() {
-        g_xTools.splashScreenGet()->close();
-    });
-    engine.load(QUrl(QStringLiteral("qrc:/Qml/MainWindow.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qml/MainWindow.qml")));
 
     int ret = app.exec();
-    xTools::xTools::doSomethingAfterAppExited();
+    app.uninstallLog();
     return ret;
 }

@@ -218,6 +218,7 @@ endif()
 
 x_tools_add_executable(xTools ${X_TOOLS_SOURCES})
 x_tools_generate_translations(xTools)
+x_tools_output_env(xTools)
 x_tools_deploy_qt(xTools)
 x_tools_deploy_qss(xTools)
 x_tools_install_glog(xTools)

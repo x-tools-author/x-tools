@@ -1,15 +1,15 @@
 <RCC>
     <qresource prefix="/">
-        <file>Qml/MainWindow.qml</file>
-        <file>Qml/MainWindowController.qml</file>
-        <file>Qml/MainWindowTableView.qml</file>
-        <file>Qml/MainWindowTableViewCell.qml</file>
-        <file>Qml/MainWindowTitleBar.qml</file>
-        <file>Resources/Icons/xPing.svg</file>
-        <file>Qml/MainWindowSettings.qml</file>
-        <file>Resources/Icons/close.svg</file>
-        <file>Resources/Icons/NoData.svg</file>
-        <file>Resources/Translations/xPing_en.qm</file>
-        <file>Resources/Translations/xPing_zh_CN.qm</file>
+        <file>qml/MainWindow.qml</file>
+        <file>qml/MainWindowController.qml</file>
+        <file>qml/MainWindowTableView.qml</file>
+        <file>qml/MainWindowTableViewCell.qml</file>
+        <file>qml/MainWindowTitleBar.qml</file>
+        <file>qml/MainWindowSettings.qml</file>
+        <file>res/icons/xPing.svg</file>
+        <file>res/icons/close.svg</file>
+        <file>res/icons/NoData.svg</file>
+        <file>res/translations/xPing_en.qm</file>
+        <file>res/translations/xPing_zh_CN.qm</file>
     </qresource>
 </RCC>

@@ -30,7 +30,7 @@ Item {
 
     ToolButton {
         id: xPingButton
-        icon.source: "qrc:/Resources/Icons/xPing.svg"
+        icon.source: "qrc:/res/icons/xPing.svg"
         icon.color: xPingPrimaryColor
         display: AbstractButton.IconOnly
         anchors.verticalCenter: parent.verticalCenter
@@ -89,7 +89,7 @@ Item {
         }
         Image {
             id: closeIcon
-            source: "qrc:/Resources/Icons/close.svg"
+            source: "qrc:/res/icons/close.svg"
             anchors.centerIn: parent
             width: parent.width * 0.4
             height: parent.height * 0.4
