@@ -27,6 +27,7 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QProcess>
+#include <QScreen>
 #include <QScrollBar>
 #include <QStyle>
 #include <QStyleFactory>
@@ -190,6 +191,19 @@ void MainWindow::updateGrid(WindowGrid grid)
 
     m_windowGrid = grid;
     xApp->settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
+}
+
+void MainWindow::moveToCenter()
+{
+    QRect screenRect = QApplication::primaryScreen()->geometry();
+    bool tooWidth = (width() > screenRect.width());
+    bool tooHeight = (height() > screenRect.height());
+    if (tooWidth || tooHeight) {
+        showMaximized();
+        qInfo() << "The screen is too small.";
+    } else {
+        move((screenRect.width() - width()) / 2, (screenRect.height() - height()) / 2);
+    }
 }
 
 void MainWindow::closeEvent(QCloseEvent* event)

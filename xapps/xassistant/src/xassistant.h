@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -10,7 +10,6 @@
 
 #include "mainwindow.h"
 
-class Page;
 class xAssistant : public MainWindow
 {
     Q_OBJECT

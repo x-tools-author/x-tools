@@ -45,4 +45,7 @@ public:
 
     QSplashScreen *splashScreen();
     void showSplashScreenMessage(const QString &msg);
+
+    QString left2rightTips() const;
+    QString right2leftTips() const;
 };

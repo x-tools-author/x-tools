@@ -26,6 +26,7 @@ public:
     void load(const QString& fileName = QString()) const;
     void save(const QString& fileName = QString()) const;
     void updateGrid(WindowGrid grid);
+    void moveToCenter();
 
 protected:
     void closeEvent(QCloseEvent* event) override;

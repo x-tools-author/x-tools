@@ -24,10 +24,11 @@ int main(int argc, char *argv[])
     xAssistant window;
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
-    window.resize(620 * 1.732, 620);
+    window.resize(1280, 620);
     window.show();
     window.load();
     window.updateGrid(MainWindow::WindowGrid::Grid1x2);
+    window.moveToCenter();
 
     int ret = app.exec();
     Application::uninstallLog();

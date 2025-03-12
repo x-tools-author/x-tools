@@ -12,23 +12,30 @@
 #include <QToolButton>
 
 class Page;
-class Pipeline : public QObject
+class Pipe : public QObject
 {
     Q_OBJECT
 public:
-    Pipeline(Page *leftPage, Page *rightPage, QObject *parent = nullptr);
-    ~Pipeline();
+    Pipe(Page *leftPage, Page *rightPage, QObject *parent = nullptr);
+    ~Pipe();
 
 private:
     Page *m_leftPage;
     Page *m_rightPage;
-    QToolButton *m_left2rightButton;
-    QToolButton *m_right2leftButton;
+    QToolButton *m_leftButton;
+    QToolButton *m_rightButton;
 
 private:
-    void onLeft2RightButtonClicked();
-    void onRight2LeftButtonClicked();
+    struct
+    {
+        const QString left2right{"MainWindow/left2right"};
+        const QString right2left{"MainWindow/right2left"};
+    } m_keys;
 
-    void onLeftPageBytesRead(const QByteArray &bytes);
-    void onRightPageBytesRead(const QByteArray &bytes);
+private:
+    void onLeftButtonClicked();
+    void onRightButtonClicked();
+
+    void onLeftPageBytesRead(const QByteArray &bytes, const QString &from);
+    void onRightPageBytesRead(const QByteArray &bytes, const QString &from);
 };

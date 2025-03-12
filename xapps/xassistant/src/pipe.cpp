@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -8,71 +8,78 @@
  **************************************************************************************************/
 #include "pipe.h"
 
+#include <QSettings>
+
+#include "application.h"
 #include "device/device.h"
 #include "page/page.h"
 
-Pipeline::Pipeline(Page *leftPage, Page *rightPage, QObject *parent)
+Pipe::Pipe(Page *leftPage, Page *rightPage, QObject *parent)
     : QObject(parent)
     , m_leftPage(leftPage)
     , m_rightPage(rightPage)
 {
-    // QToolButton *leftPageLeftButton = m_leftPage->outputPanel()->leftButton();
-    // m_left2rightButton = m_leftPage->outputPanel()->rightButton();
-    // m_right2leftButton = m_rightPage->outputPanel()->leftButton();
-    // QToolButton *rightPageRightButton = m_rightPage->outputPanel()->rightButton();
-    // leftPageLeftButton->setVisible(false);
-    // rightPageRightButton->setVisible(false);
-    // m_left2rightButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
-    // m_right2leftButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
-    // m_left2rightButton->setCheckable(true);
-    // m_right2leftButton->setCheckable(true);
-    // m_left2rightButton->setIcon(QIcon(":/Resource/Icons/RightGray.svg"));
-    // m_right2leftButton->setIcon(QIcon(":/Resource/Icons/LeftGray.svg"));
-    // m_left2rightButton->setToolTip(tr("Transmit the data received by the right page"));
-    // m_right2leftButton->setToolTip(tr("Transmit the data received by the left page"));
-    // connect(m_left2rightButton, &QToolButton::clicked, this, &Pipeline::onLeft2RightButtonClicked);
-    // connect(m_right2leftButton, &QToolButton::clicked, this, &Pipeline::onRight2LeftButtonClicked);
+    m_leftButton = new QToolButton();
+    m_rightButton = new QToolButton();
+    m_leftButton->setCheckable(true);
+    m_rightButton->setCheckable(true);
+    m_leftButton->setToolTip(xApp->left2rightTips());
+    m_rightButton->setToolTip(xApp->right2leftTips());
+    leftPage->appendOutputControl(m_leftButton);
+    rightPage->prependOutputControl(m_rightButton);
 
-    // connect(m_leftPage, &Page::bytesRead, this, &Pipeline::onLeftPageBytesRead);
-    // connect(m_rightPage, &Page::bytesRead, this, &Pipeline::onRightPageBytesRead);
+    connect(m_leftButton, &QToolButton::clicked, this, &Pipe::onLeftButtonClicked);
+    connect(m_rightButton, &QToolButton::clicked, this, &Pipe::onRightButtonClicked);
+
+    connect(leftPage, &Page::bytesRead, this, &Pipe::onLeftPageBytesRead);
+    connect(rightPage, &Page::bytesRead, this, &Pipe::onRightPageBytesRead);
+
+    QSettings *settings = xApp->settings();
+    bool left2right = settings->value(m_keys.left2right, false).toBool();
+    bool right2left = settings->value(m_keys.right2left, false).toBool();
+    m_leftButton->setChecked(left2right);
+    m_rightButton->setChecked(right2left);
+
+    onLeftButtonClicked();
+    onRightButtonClicked();
 }
 
-Pipeline::~Pipeline() {}
+Pipe::~Pipe() {}
 
-void Pipeline::onLeft2RightButtonClicked()
+void Pipe::onLeftButtonClicked()
 {
-    if (m_left2rightButton->isChecked()) {
-        m_left2rightButton->setIcon(QIcon(":/Resource/Icons/RightGreen.svg"));
+    if (m_leftButton->isChecked()) {
+        m_leftButton->setIcon(QIcon(":/res/icons/right_gray.svg"));
     } else {
-        m_left2rightButton->setIcon(QIcon(":/Resource/Icons/RightGray.svg"));
+        m_leftButton->setIcon(QIcon(":/res/icons/right_blue.svg"));
+    }
+
+    xApp->settings()->setValue(m_keys.left2right, m_leftButton->isChecked());
+}
+
+void Pipe::onRightButtonClicked()
+{
+    if (m_rightButton->isChecked()) {
+        m_rightButton->setIcon(QIcon(":/res/icons/left_gray.svg"));
+    } else {
+        m_rightButton->setIcon(QIcon(":/res/icons/left_blue.svg"));
+    }
+
+    xApp->settings()->setValue(m_keys.right2left, m_rightButton->isChecked());
+}
+
+void Pipe::onLeftPageBytesRead(const QByteArray &bytes, const QString &from)
+{
+    Q_UNUSED(from);
+    if (m_leftButton->isChecked()) {
+        m_rightPage->inputBytes(bytes);
     }
 }
 
-void Pipeline::onRight2LeftButtonClicked()
+void Pipe::onRightPageBytesRead(const QByteArray &bytes, const QString &from)
 {
-    if (m_right2leftButton->isChecked()) {
-        m_right2leftButton->setIcon(QIcon(":/Resource/Icons/LeftGreen.svg"));
-    } else {
-        m_right2leftButton->setIcon(QIcon(":/Resource/Icons/LeftGray.svg"));
+    Q_UNUSED(from);
+    if (m_rightButton->isChecked()) {
+        m_leftPage->inputBytes(bytes);
     }
-}
-
-void Pipeline::onLeftPageBytesRead(const QByteArray &bytes)
-{
-    // if (m_left2rightButton->isChecked()) {
-    //     Device *device = m_leftPage->device();
-    //     if (device) {
-    //         device->writeBytes(bytes);
-    //     }
-    // }
-}
-
-void Pipeline::onRightPageBytesRead(const QByteArray &bytes)
-{
-    // if (m_right2leftButton->isChecked()) {
-    //     Device *device = m_rightPage->device();
-    //     if (device) {
-    //         device->writeBytes(bytes);
-    //     }
-    // }
 }

@@ -247,3 +247,13 @@ void Application::showSplashScreenMessage(const QString &msg)
     splashScreen->showMessage(msg, Qt::AlignBottom | Qt::AlignLeft, Qt::white);
     QApplication::processEvents();
 }
+
+QString Application::left2rightTips() const
+{
+    return tr("Transfer rx bytes with right page");
+}
+
+QString Application::right2leftTips() const
+{
+    return tr("Transfer rx bytes with left page");
+}

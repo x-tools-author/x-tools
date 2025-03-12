@@ -266,7 +266,7 @@ QToolButton *Page::presetToolButton()
 
 void Page::inputBytes(const QByteArray &bytes)
 {
-    if (m_deviceController->device() && m_deviceController->device()->isRunning()) {
+    if (m_deviceController->device()) {
         m_deviceController->device()->writeBytes(bytes);
     }
 }
@@ -294,6 +294,17 @@ void Page::hideTransferWidgets()
     ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabTransfers));
     ui->tabTransfers->setEnabled(false);
     ui->tabTransfers->hide();
+}
+
+void Page::removeTestDevices()
+{
+    for (int i = 0; i < ui->comboBoxDeviceTypes->count(); i++) {
+        int type = ui->comboBoxDeviceTypes->itemData(i).toInt();
+        if (type == static_cast<int>(DeviceType::ChartsTest)) {
+            ui->comboBoxDeviceTypes->removeItem(i);
+            break;
+        }
+    }
 }
 
 void Page::initUi()

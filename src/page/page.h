@@ -54,6 +54,7 @@ public:
     void appendOutputControl(QWidget *widget);
     void hideChartsWidgets();
     void hideTransferWidgets();
+    void removeTestDevices();
 
 signals:
     void bytesWritten(const QByteArray &bytes, const QString &to);

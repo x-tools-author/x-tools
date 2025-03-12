@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -11,6 +11,7 @@
 #include <QMenuBar>
 
 #include "page/page.h"
+#include "pipe.h"
 
 xAssistant::xAssistant(QWidget* parent)
     : MainWindow(parent)
@@ -42,6 +43,14 @@ xAssistant::xAssistant(QWidget* parent)
     m_iopage01->hideChartsWidgets();
     m_iopage10->hideChartsWidgets();
     m_iopage11->hideChartsWidgets();
+
+    m_iopage00->removeTestDevices();
+    m_iopage01->removeTestDevices();
+    m_iopage10->removeTestDevices();
+    m_iopage11->removeTestDevices();
+
+    Pipe* pipe = new Pipe(m_iopage00, m_iopage01, this);
+    Q_UNUSED(pipe);
 }
 
 xAssistant::~xAssistant() {}

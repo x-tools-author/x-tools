@@ -24,9 +24,10 @@ int main(int argc, char *argv[])
     MainWindow window;
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
-    window.resize(1366, 768);
+    window.resize(620 * 1.732, 620);
     window.show();
     window.load();
+    window.moveToCenter();
 
     int ret = app.exec();
     Application::uninstallLog();
