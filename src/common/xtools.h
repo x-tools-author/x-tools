@@ -51,6 +51,8 @@ enum class DeviceType {
     TcpServer,
     WebSocketClient,
     WebSocketServer,
+    LocalSocket,
+    LocalServer,
     //----------------------------------------------------------------------------------------------
     Hid = 0x00200000,
     SctpClient,

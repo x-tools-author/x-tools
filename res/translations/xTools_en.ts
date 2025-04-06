@@ -1289,6 +1289,40 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>LocalServer</name>
+    <message>
+        <location filename="../../src/device/localserver.cpp" line="88"/>
+        <source>Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LocalServerUi</name>
+    <message>
+        <location filename="../../src/device/localserverui.ui" line="32"/>
+        <source>Write to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/localserverui.ui" line="45"/>
+        <source>Server name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/localserverui.cpp" line="20"/>
+        <source>All</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LocalSocketUi</name>
+    <message>
+        <location filename="../../src/device/localsocketui.ui" line="32"/>
+        <source>Server name</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../../src/mainwindow.cpp" line="246"/>
@@ -1996,7 +2030,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="173"/>
-        <location filename="../../src/page/page.cpp" line="504"/>
+        <location filename="../../src/page/page.cpp" line="506"/>
         <source>Open</source>
         <translation></translation>
     </message>
@@ -2106,27 +2140,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="383"/>
+        <location filename="../../src/page/page.cpp" line="385"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="495"/>
+        <location filename="../../src/page/page.cpp" line="497"/>
         <source>Close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="511"/>
+        <location filename="../../src/page/page.cpp" line="513"/>
         <source>Error Occurred</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="517"/>
+        <location filename="../../src/page/page.cpp" line="519"/>
         <source>Warning</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="638"/>
+        <location filename="../../src/page/page.cpp" line="640"/>
         <source>[%1][%2][%3][%4]</source>
         <translation></translation>
     </message>
@@ -2277,172 +2311,182 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="410"/>
-        <location filename="../../src/common/xtools.cpp" line="841"/>
-        <location filename="../../src/common/xtools.cpp" line="843"/>
+        <location filename="../../src/common/xtools.cpp" line="416"/>
+        <location filename="../../src/common/xtools.cpp" line="847"/>
+        <location filename="../../src/common/xtools.cpp" line="849"/>
         <source>Text</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="154"/>
-        <location filename="../../src/common/xtools.cpp" line="412"/>
-        <location filename="../../src/common/xtools.cpp" line="837"/>
-        <location filename="../../src/common/xtools.cpp" line="839"/>
+        <location filename="../../src/common/xtools.cpp" line="160"/>
+        <location filename="../../src/common/xtools.cpp" line="418"/>
+        <location filename="../../src/common/xtools.cpp" line="843"/>
+        <location filename="../../src/common/xtools.cpp" line="845"/>
         <source>Binary</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="86"/>
+        <location filename="../../src/common/xtools.cpp" line="88"/>
         <source>Serial Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="88"/>
+        <location filename="../../src/common/xtools.cpp" line="90"/>
         <source>BLE Central</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="90"/>
+        <location filename="../../src/common/xtools.cpp" line="92"/>
         <source>BLE Peripheral</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="92"/>
+        <location filename="../../src/common/xtools.cpp" line="94"/>
         <source>UDP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="94"/>
+        <location filename="../../src/common/xtools.cpp" line="96"/>
         <source>UDP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="96"/>
+        <location filename="../../src/common/xtools.cpp" line="98"/>
         <source>TCP Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="98"/>
+        <location filename="../../src/common/xtools.cpp" line="100"/>
         <source>TCP Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="100"/>
+        <location filename="../../src/common/xtools.cpp" line="102"/>
         <source>WebSocket Client</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="102"/>
+        <location filename="../../src/common/xtools.cpp" line="104"/>
         <source>WebSocket Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="104"/>
+        <location filename="../../src/common/xtools.cpp" line="106"/>
+        <source>Local Socket</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="108"/>
+        <source>Local Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="110"/>
         <source>Charts Test</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="156"/>
+        <location filename="../../src/common/xtools.cpp" line="162"/>
         <source>Octal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="158"/>
+        <location filename="../../src/common/xtools.cpp" line="164"/>
         <source>Decimal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="160"/>
+        <location filename="../../src/common/xtools.cpp" line="166"/>
         <source>Hexadecimal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="162"/>
+        <location filename="../../src/common/xtools.cpp" line="168"/>
         <source>ASCII</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="164"/>
+        <location filename="../../src/common/xtools.cpp" line="170"/>
         <source>UTF-8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="447"/>
+        <location filename="../../src/common/xtools.cpp" line="453"/>
         <source>Echo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="448"/>
+        <location filename="../../src/common/xtools.cpp" line="454"/>
         <source>Always</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="449"/>
+        <location filename="../../src/common/xtools.cpp" line="455"/>
         <source>Input Equal Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="450"/>
+        <location filename="../../src/common/xtools.cpp" line="456"/>
         <source>Input Contain Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="452"/>
+        <location filename="../../src/common/xtools.cpp" line="458"/>
         <source>Input Does not Contain Reference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="680"/>
+        <location filename="../../src/common/xtools.cpp" line="686"/>
         <source>Even</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="681"/>
+        <location filename="../../src/common/xtools.cpp" line="687"/>
         <source>Odd</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="682"/>
+        <location filename="../../src/common/xtools.cpp" line="688"/>
         <source>Space</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="683"/>
+        <location filename="../../src/common/xtools.cpp" line="689"/>
         <source>Mark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="699"/>
+        <location filename="../../src/common/xtools.cpp" line="705"/>
         <source>RTS/CTS</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="700"/>
+        <location filename="../../src/common/xtools.cpp" line="706"/>
         <source>X-ON/X-OFF</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="702"/>
+        <location filename="../../src/common/xtools.cpp" line="708"/>
         <source>Hardware</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="703"/>
+        <location filename="../../src/common/xtools.cpp" line="709"/>
         <source>Software</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="802"/>
+        <location filename="../../src/common/xtools.cpp" line="808"/>
         <source>Disabled</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="804"/>
+        <location filename="../../src/common/xtools.cpp" line="810"/>
         <source>Bidirectional</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="806"/>
+        <location filename="../../src/common/xtools.cpp" line="812"/>
         <source>Unidirectional</source>
         <translation></translation>
     </message>
@@ -2477,10 +2521,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="312"/>
-        <location filename="../../src/common/xtools.cpp" line="371"/>
-        <location filename="../../src/common/xtools.cpp" line="679"/>
-        <location filename="../../src/common/xtools.cpp" line="697"/>
+        <location filename="../../src/common/xtools.cpp" line="318"/>
+        <location filename="../../src/common/xtools.cpp" line="377"/>
+        <location filename="../../src/common/xtools.cpp" line="685"/>
+        <location filename="../../src/common/xtools.cpp" line="703"/>
         <source>None</source>
         <translation></translation>
     </message>

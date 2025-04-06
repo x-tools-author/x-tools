@@ -73,6 +73,8 @@ QList<int> supportedDeviceTypes()
         deviceTypes << static_cast<int>(DeviceType::WebSocketClient);
         deviceTypes << static_cast<int>(DeviceType::WebSocketServer);
 #endif
+        deviceTypes << static_cast<int>(DeviceType::LocalSocket);
+        deviceTypes << static_cast<int>(DeviceType::LocalServer);
         deviceTypes << static_cast<int>(DeviceType::ChartsTest);
     }
 
@@ -100,6 +102,10 @@ QString deviceName(int type)
         return QObject::tr("WebSocket Client");
     case static_cast<int>(DeviceType::WebSocketServer):
         return QObject::tr("WebSocket Server");
+    case static_cast<int>(DeviceType::LocalSocket):
+        return QObject::tr("Local Socket");
+    case static_cast<int>(DeviceType::LocalServer):
+        return QObject::tr("Local Server");
     case static_cast<int>(DeviceType::ChartsTest):
         return QObject::tr("Charts Test");
     default:
