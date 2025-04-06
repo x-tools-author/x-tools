@@ -17,6 +17,8 @@
 #include "device/chartstestui.h"
 #include "device/device.h"
 #include "device/deviceui.h"
+#include "device/localserverui.h"
+#include "device/localsocketui.h"
 #include "device/tcpclientui.h"
 #include "device/tcpserverui.h"
 #include "device/udpclientui.h"
@@ -834,6 +836,10 @@ DeviceUi *Page::newDeviceUi(int type)
     case static_cast<int>(DeviceType::WebSocketServer):
         return new WebSocketServerUi();
 #endif
+    case static_cast<int>(DeviceType::LocalSocket):
+        return new LocalSocketUi();
+    case static_cast<int>(DeviceType::LocalServer):
+        return new LocalServerUi();
 #ifdef X_ENABLE_CHARTS
     case static_cast<int>(DeviceType::ChartsTest):
         return new ChartsTestUi();

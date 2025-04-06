@@ -1293,6 +1293,40 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>LocalServer</name>
+    <message>
+        <location filename="../../src/device/localserver.cpp" line="88"/>
+        <source>Client</source>
+        <translation>客户端</translation>
+    </message>
+</context>
+<context>
+    <name>LocalServerUi</name>
+    <message>
+        <location filename="../../src/device/localserverui.ui" line="32"/>
+        <source>Write to</source>
+        <translation>发送目标</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/localserverui.ui" line="45"/>
+        <source>Server name</source>
+        <translation>服务名称</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/localserverui.cpp" line="20"/>
+        <source>All</source>
+        <translation>所有客户端</translation>
+    </message>
+</context>
+<context>
+    <name>LocalSocketUi</name>
+    <message>
+        <location filename="../../src/device/localsocketui.ui" line="32"/>
+        <source>Server name</source>
+        <translation>服务名称</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../../src/mainwindow.cpp" line="246"/>
@@ -2048,7 +2082,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="173"/>
-        <location filename="../../src/page/page.cpp" line="504"/>
+        <location filename="../../src/page/page.cpp" line="506"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -2158,7 +2192,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="383"/>
+        <location filename="../../src/page/page.cpp" line="385"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
@@ -2191,22 +2225,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="495"/>
+        <location filename="../../src/page/page.cpp" line="497"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="511"/>
+        <location filename="../../src/page/page.cpp" line="513"/>
         <source>Error Occurred</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="517"/>
+        <location filename="../../src/page/page.cpp" line="519"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="638"/>
+        <location filename="../../src/page/page.cpp" line="640"/>
         <source>[%1][%2][%3][%4]</source>
         <translation></translation>
     </message>
@@ -2352,180 +2386,190 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="86"/>
+        <location filename="../../src/common/xtools.cpp" line="88"/>
         <source>Serial Port</source>
         <translation>串口助手</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="88"/>
+        <location filename="../../src/common/xtools.cpp" line="90"/>
         <source>BLE Central</source>
         <translation>蓝牙助手</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="90"/>
+        <location filename="../../src/common/xtools.cpp" line="92"/>
         <source>BLE Peripheral</source>
         <translation>蓝牙助手</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="92"/>
+        <location filename="../../src/common/xtools.cpp" line="94"/>
         <source>UDP Client</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="94"/>
+        <location filename="../../src/common/xtools.cpp" line="96"/>
         <source>UDP Server</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="96"/>
+        <location filename="../../src/common/xtools.cpp" line="98"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="98"/>
+        <location filename="../../src/common/xtools.cpp" line="100"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="100"/>
+        <location filename="../../src/common/xtools.cpp" line="102"/>
         <source>WebSocket Client</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="102"/>
+        <location filename="../../src/common/xtools.cpp" line="104"/>
         <source>WebSocket Server</source>
         <translation>WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="104"/>
+        <location filename="../../src/common/xtools.cpp" line="106"/>
+        <source>Local Socket</source>
+        <translation>本地客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="108"/>
+        <source>Local Server</source>
+        <translation>本地服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="110"/>
         <source>Charts Test</source>
         <translation>表格测试</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="154"/>
-        <location filename="../../src/common/xtools.cpp" line="412"/>
-        <location filename="../../src/common/xtools.cpp" line="837"/>
-        <location filename="../../src/common/xtools.cpp" line="839"/>
+        <location filename="../../src/common/xtools.cpp" line="160"/>
+        <location filename="../../src/common/xtools.cpp" line="418"/>
+        <location filename="../../src/common/xtools.cpp" line="843"/>
+        <location filename="../../src/common/xtools.cpp" line="845"/>
         <source>Binary</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="156"/>
+        <location filename="../../src/common/xtools.cpp" line="162"/>
         <source>Octal</source>
         <translation>八进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="158"/>
+        <location filename="../../src/common/xtools.cpp" line="164"/>
         <source>Decimal</source>
         <translation>十进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="160"/>
+        <location filename="../../src/common/xtools.cpp" line="166"/>
         <source>Hexadecimal</source>
         <translation>16进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="162"/>
+        <location filename="../../src/common/xtools.cpp" line="168"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="164"/>
+        <location filename="../../src/common/xtools.cpp" line="170"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="312"/>
-        <location filename="../../src/common/xtools.cpp" line="371"/>
-        <location filename="../../src/common/xtools.cpp" line="679"/>
-        <location filename="../../src/common/xtools.cpp" line="697"/>
+        <location filename="../../src/common/xtools.cpp" line="318"/>
+        <location filename="../../src/common/xtools.cpp" line="377"/>
+        <location filename="../../src/common/xtools.cpp" line="685"/>
+        <location filename="../../src/common/xtools.cpp" line="703"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="410"/>
-        <location filename="../../src/common/xtools.cpp" line="841"/>
-        <location filename="../../src/common/xtools.cpp" line="843"/>
+        <location filename="../../src/common/xtools.cpp" line="416"/>
+        <location filename="../../src/common/xtools.cpp" line="847"/>
+        <location filename="../../src/common/xtools.cpp" line="849"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="447"/>
+        <location filename="../../src/common/xtools.cpp" line="453"/>
         <source>Echo</source>
         <translation>回显</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="448"/>
+        <location filename="../../src/common/xtools.cpp" line="454"/>
         <source>Always</source>
         <translation>总是</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="449"/>
+        <location filename="../../src/common/xtools.cpp" line="455"/>
         <source>Input Equal Reference</source>
         <translation>输入数据等于参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="450"/>
+        <location filename="../../src/common/xtools.cpp" line="456"/>
         <source>Input Contain Reference</source>
         <translation>输入数据包含参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="452"/>
+        <location filename="../../src/common/xtools.cpp" line="458"/>
         <source>Input Does not Contain Reference</source>
         <translation>输入数据不包含参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="680"/>
+        <location filename="../../src/common/xtools.cpp" line="686"/>
         <source>Even</source>
         <translation>偶校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="681"/>
+        <location filename="../../src/common/xtools.cpp" line="687"/>
         <source>Odd</source>
         <translation>奇校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="682"/>
+        <location filename="../../src/common/xtools.cpp" line="688"/>
         <source>Space</source>
         <translation>0校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="683"/>
+        <location filename="../../src/common/xtools.cpp" line="689"/>
         <source>Mark</source>
         <translation>1校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="699"/>
+        <location filename="../../src/common/xtools.cpp" line="705"/>
         <source>RTS/CTS</source>
         <translation>硬件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="700"/>
+        <location filename="../../src/common/xtools.cpp" line="706"/>
         <source>X-ON/X-OFF</source>
         <translation>软件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="702"/>
+        <location filename="../../src/common/xtools.cpp" line="708"/>
         <source>Hardware</source>
         <translation>硬件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="703"/>
+        <location filename="../../src/common/xtools.cpp" line="709"/>
         <source>Software</source>
         <translation>软件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="802"/>
+        <location filename="../../src/common/xtools.cpp" line="808"/>
         <source>Disabled</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="804"/>
+        <location filename="../../src/common/xtools.cpp" line="810"/>
         <source>Bidirectional</source>
         <translation>双向</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="806"/>
+        <location filename="../../src/common/xtools.cpp" line="812"/>
         <source>Unidirectional</source>
         <translation>单向</translation>
     </message>
