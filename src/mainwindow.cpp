@@ -56,7 +56,7 @@ MainWindow::MainWindow(QWidget* parent)
     , m_iopage10(Q_NULLPTR)
     , m_iopage11(Q_NULLPTR)
 {
-#if defined(X_TOOLS_MO_YU)
+#if defined(X_TOOLS_MAGIC)
     setWindowOpacity(0.3);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     qApp->styleHints()->setColorScheme(Qt::ColorScheme::Dark);

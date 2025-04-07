@@ -1,4 +1,10 @@
 # cmake-format: off
+# --------------------------------------------------------------------------------------------------
+# Do something make CMake happy
+if(NOT ${CMAKE_VERSION} VERSION_LESS "4.0.0")
+  set(CMAKE_POLICY_VERSION_MINIMUM "3.16" CACHE STRING "CMake policy version" FORCE)
+endif()
+
 cmake_minimum_required(VERSION 3.22)
 project(xTools VERSION 8.0 LANGUAGES C CXX)
 # cmake-format: on
@@ -104,9 +110,9 @@ include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # The magic option...
-option(X_TOOLS_MO_YU "The magic option..." OFF)
-if(X_TOOLS_MO_YU)
-  add_compile_definitions(X_TOOLS_MO_YU)
+option(X_TOOLS_MAGIC "The magic option..." OFF)
+if(X_TOOLS_MAGIC)
+  add_compile_definitions(X_TOOLS_MAGIC)
 endif()
 
 # --------------------------------------------------------------------------------------------------

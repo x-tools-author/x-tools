@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     Settings *xSettings = new Settings();
     QSplashScreen *xSplash = app.splashScreen();
     QQmlApplicationEngine qmlAppEngine;
-#ifdef X_TOOLS_MO_YU
+#ifdef X_TOOLS_MAGIC
     qmlAppEngine.rootContext()->setContextProperty("xMoYu", QVariant(true));
 #else
     qmlAppEngine.rootContext()->setContextProperty("xMoYu", QVariant(false));
