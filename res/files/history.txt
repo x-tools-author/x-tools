@@ -6,7 +6,12 @@
     添加ble外围设备调试功能（非windows平台）
     添加sctp客户端与服务器调试功能（非windows平台）
 
-V7.1.0 2024年03月11日
+V7.2.0 2025年xx月xx日
+    新特性：
+    01. 添加本地通信（QLocalSocket）
+    02. 添加高级搜索功能（感谢le-cheng的pull-requests（https://github.com/x-tools-author/x-tools/pull/36）, GitHub主页：https://github.com/le-cheng）
+
+V7.1.0 2025年03月11日
     新特性：
     01. UDP客户端可以指定IP和端口，添加组播
     02. 输入框可以通过快捷键Enter发送数据
