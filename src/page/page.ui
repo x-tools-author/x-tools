@@ -295,6 +295,16 @@
           <widget class="QWidget" name="widgetChartsController" native="true"/>
          </item>
          <item>
+          <widget class="QToolButton" name="toolButtonSearch">
+           <property name="toolTip">
+            <string>Advanced search</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QLabel" name="label_8">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -404,16 +414,16 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <widget class="QTextBrowser" name="textBrowserOutput"/>
-          <property name="minimumSize">
+         <property name="minimumSize">
           <size>
            <width>0</width>
            <height>150</height>
           </size>
-          </property>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <widget class="QTextBrowser" name="textBrowserOutput"/>
          <widget class="QWidget" name="widgetSearch" native="true">
           <layout class="QVBoxLayout" name="verticalLayoutSearch">
            <property name="leftMargin">

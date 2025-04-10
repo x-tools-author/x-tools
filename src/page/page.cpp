@@ -54,6 +54,7 @@
 struct ParameterKeys
 {
     const QString showCharts{"showCharts"};
+    const QString showSearch{"showSearch"};
     const QString communicationType{"communicationType"};
     const QString communicationSettings{"communicationSettings"};
     const QString communication{"communication"};
@@ -128,6 +129,14 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
         }
     }
 
+    // Search tool button
+    ui->widgetSearch->hide();
+    ui->toolButtonSearch->setCheckable(true);
+    ui->toolButtonSearch->setIcon(QIcon(":/res/icons/search.svg"));
+    connect(ui->toolButtonSearch, &QToolButton::clicked, this, [this](bool checked) {
+        ui->widgetSearch->setVisible(checked);
+    });
+
     m_writeTimer->setInterval(1000);
     connect(m_writeTimer, &QTimer::timeout, this, &Page::writeBytes);
 
@@ -160,6 +169,7 @@ QVariantMap Page::save()
     }
 
     map.insert(g_keys.showCharts, ui->toolButtonCharts->isChecked());
+    map.insert(g_keys.showSearch, ui->toolButtonSearch->isChecked());
 
     map.insert(g_keys.outputFormat, ui->comboBoxOutputFormat->currentData());
     map.insert(g_keys.outputRx, ui->checkBoxOutputRx->isChecked());
@@ -207,6 +217,7 @@ void Page::load(const QVariantMap &parameters)
     }
 
     bool showCharts = parameters.value(g_keys.showCharts).toBool();
+    bool showSearch = parameters.value(g_keys.showSearch).toBool();
     int outputFormat = parameters.value(g_keys.outputFormat).toInt();
     bool outputRx = parameters.value(g_keys.outputRx).toBool();
     bool outputTx = parameters.value(g_keys.outputTx).toBool();
@@ -219,6 +230,8 @@ void Page::load(const QVariantMap &parameters)
     QVariantMap outputSettings = parameters.value(g_keys.outputSettings).toMap();
 
     ui->toolButtonCharts->setChecked(showCharts);
+    ui->toolButtonSearch->setChecked(showSearch);
+    ui->widgetSearch->setVisible(showSearch);
     index = ui->comboBoxOutputFormat->findData(outputFormat);
     ui->comboBoxOutputFormat->setCurrentIndex(index == -1 ? 0 : index);
     ui->checkBoxOutputRx->setChecked(outputRx);
@@ -407,9 +420,15 @@ void Page::initUiOutput()
     // 连接搜索相关的信号和槽
     connect(ui->pushButtonSearch, &QPushButton::clicked, this, &Page::onSearchButtonClicked);
     connect(ui->lineEditSearch, &QLineEdit::textChanged, this, &Page::onSearchTextChanged);
-    connect(ui->checkBoxRegex, &QCheckBox::checkStateChanged, this, [this](int) { performSearch(); });
-    connect(ui->checkBoxMatchCase, &QCheckBox::checkStateChanged, this, [this](int) { performSearch(); });
-    connect(ui->checkBoxWholeWord, &QCheckBox::checkStateChanged, this, [this](int) { performSearch(); });
+    connect(ui->checkBoxRegex, &QCheckBox::checkStateChanged, this, [this](int) {
+        performSearch();
+    });
+    connect(ui->checkBoxMatchCase, &QCheckBox::checkStateChanged, this, [this](int) {
+        performSearch();
+    });
+    connect(ui->checkBoxWholeWord, &QCheckBox::checkStateChanged, this, [this](int) {
+        performSearch();
+    });
 }
 
 void Page::initUiInput()
@@ -758,8 +777,13 @@ void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     outputText = outputText.replace("\r", "\\r");
     outputText = outputText.replace("\n", "\\n");
 #else
-    header = QString("<font color=silver style='font-family: \"Segoe UI\", Arial; font-size: 12px;'>[%1]</font>").arg(header.trimmed());
-    QString outputText = QString("<pre style='margin:0; font-family: \"JetBrains Mono\", Consolas, Monaco, monospace; font-size: 13px; line-height: 1.1; padding: 2px 0;'>%1 %2</pre>").arg(header, text);
+    header = QString("<font color=silver style='font-family: \"Segoe UI\", Arial; font-size: "
+                     "12px;'>[%1]</font>")
+                 .arg(header.trimmed());
+    QString outputText
+        = QString("<pre style='margin:0; font-family: \"JetBrains Mono\", Consolas, Monaco, "
+                  "monospace; font-size: 13px; line-height: 1.1; padding: 2px 0;'>%1 %2</pre>")
+              .arg(header, text);
 #endif
 
     // 在添加到输出前进行搜索匹配
@@ -912,7 +936,8 @@ void Page::highlightSearchResults(const QString &text, const QRegularExpression 
     }
 
     // 显示匹配数量
-    ui->textBrowserSearchResult->setHtml(QString("<p style='color:gray'>找到 %1 个匹配项</p>").arg(matchCount));
+    ui->textBrowserSearchResult->setHtml(
+        QString("<p style='color:gray'>找到 %1 个匹配项</p>").arg(matchCount));
 
     // 获取文本的行
     QStringList lines = text.split('\n');
@@ -943,22 +968,25 @@ void Page::highlightSearchResults(const QString &text, const QRegularExpression 
         int matchStartInLine = posInLine;
         int matchEndInLine = matchStartInLine + matchedText.length();
 
-        QString highlightedLine = matchLine.left(matchStartInLine) +
-                                  QString("<span style='background-color:yellow;'>%1</span>").arg(matchedText) +
-                                  matchLine.mid(matchEndInLine);
+        QString highlightedLine = matchLine.left(matchStartInLine)
+                                  + QString("<span style='background-color:yellow;'>%1</span>")
+                                        .arg(matchedText)
+                                  + matchLine.mid(matchEndInLine);
 
         // 构建HTML显示上下文
         QString html = "<div style='margin-bottom:10px;'>";
         html += QString("<p style='color:gray;margin:0;'>行 %1:</p>").arg(lineNumber + 1);
 
         if (!contextBefore.isEmpty()) {
-            html += QString("<pre style='margin:0;color:gray;'>%1</pre>").arg(contextBefore.toHtmlEscaped());
+            html += QString("<pre style='margin:0;color:gray;'>%1</pre>")
+                        .arg(contextBefore.toHtmlEscaped());
         }
 
         html += QString("<pre style='margin:0;'>%1</pre>").arg(highlightedLine);
 
         if (!contextAfter.isEmpty()) {
-            html += QString("<pre style='margin:0;color:gray;'>%1</pre>").arg(contextAfter.toHtmlEscaped());
+            html += QString("<pre style='margin:0;color:gray;'>%1</pre>")
+                        .arg(contextAfter.toHtmlEscaped());
         }
 
         html += "</div>";
@@ -994,9 +1022,10 @@ void Page::highlightSearchResultsForLine(const QString &line, const QRegularExpr
         int matchEnd = matchStart + matchedText.length();
 
         // 在匹配行中高亮匹配文本，使用与highlightSearchResults相同的逻辑
-        QString highlightedLine = originalText.left(matchStart) +
-                                  QString("<span style='background-color:yellow;'>%1</span>").arg(matchedText) +
-                                  originalText.mid(matchEnd);
+        QString highlightedLine = originalText.left(matchStart)
+                                  + QString("<span style='background-color:yellow;'>%1</span>")
+                                        .arg(matchedText)
+                                  + originalText.mid(matchEnd);
 
         // 构建HTML显示
         QString html = "<div style='margin-bottom:5px;'>";
@@ -1013,7 +1042,8 @@ void Page::highlightSearchResultsForLine(const QString &line, const QRegularExpr
         QTextCursor cursor = ui->textBrowserSearchResult->textCursor();
         cursor.setPosition(0);
         cursor.movePosition(QTextCursor::EndOfBlock, QTextCursor::KeepAnchor);
-        cursor.insertHtml(QString("<p style='color:gray'>实时搜索结果：找到 %1 个匹配项</p>").arg(matchCount));
+        cursor.insertHtml(
+            QString("<p style='color:gray'>实时搜索结果：找到 %1 个匹配项</p>").arg(matchCount));
     }
 }
 
