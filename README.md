@@ -11,22 +11,6 @@
 
 > **You can get *xTools* form [Micorsoft Store(sponsor)](https://www.microsoft.com/store/apps/9P29H1NDNKBB)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
 
-![xTools.gif](res/images/xtools.gif)
-
-![charts.gif](res/images/charts.gif)
-
-## Dark theme
-
-![xToolsDark.png](res/images/dark.png)
-
-## Light theme
-
-![xToolsLight.png](res/images/light.png)
-
-## Custom theme
-
-![xToolsCustom.png](res/images/custom.png)
-
 ## Build
 
 ### Arch Linux
@@ -56,3 +40,25 @@ yay -Syu x-tools
 |GitHub| <https://github.com/x-tools-author/x-tools>|
 |Sponsor|<https://apps.microsoft.com/search/publisher?name=x-tools-author>|
 |Third party|[glog](https://github.com/google/glog) [libqrencode](https://github.com/fukuchi/libqrencode) [qmdnsengine](https://github.com/nitroshare/qmdnsengine) [Qt-Advanced-Stylesheets](https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets) [QXlsx](https://github.com/QtExcel/QXlsx)|
+
+## Screenshot
+
+![xTools.gif](res/images/xtools.gif)
+
+![charts.gif](res/images/charts.gif)
+
+![search.gif](res/images/search.png)
+
+## Dark theme
+
+![xToolsDark.png](res/images/dark.png)
+
+## Light theme
+
+![xToolsLight.png](res/images/light.png)
+
+## Custom theme
+
+![xToolsCustom.png](res/images/custom.png)
+
+
