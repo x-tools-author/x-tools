@@ -420,15 +420,9 @@ void Page::initUiOutput()
     // 连接搜索相关的信号和槽
     connect(ui->pushButtonSearch, &QPushButton::clicked, this, &Page::onSearchButtonClicked);
     connect(ui->lineEditSearch, &QLineEdit::textChanged, this, &Page::onSearchTextChanged);
-    connect(ui->checkBoxRegex, &QCheckBox::checkStateChanged, this, [this](int) {
-        performSearch();
-    });
-    connect(ui->checkBoxMatchCase, &QCheckBox::checkStateChanged, this, [this](int) {
-        performSearch();
-    });
-    connect(ui->checkBoxWholeWord, &QCheckBox::checkStateChanged, this, [this](int) {
-        performSearch();
-    });
+    connect(ui->checkBoxRegex, &QCheckBox::clicked, this, [this](int) { performSearch(); });
+    connect(ui->checkBoxMatchCase, &QCheckBox::clicked, this, [this](int) { performSearch(); });
+    connect(ui->checkBoxWholeWord, &QCheckBox::clicked, this, [this](int) { performSearch(); });
 }
 
 void Page::initUiInput()
