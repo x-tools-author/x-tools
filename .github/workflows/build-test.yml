@@ -13,28 +13,19 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-22.04-arm]
-        version: [6.8.2]
-        arch: [linux_gcc_arm64]
+        os: [ubuntu-24.04]
+        version: [6.8.3]
+        arch: [linux_gcc_64]
     steps:
+      - name: docker-test
+        run: |
+          docker pull ubuntu:20.04
+          docker run -it ubuntu:20.04 bash -c "echo hello world"
       - name: checkout
         uses: actions/checkout@v4
       - name: install qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          aqtversion: '==3.1.*'
-          version: ${{ matrix.version }}
-          target: 'desktop'
-          arch: ${{ matrix.arch }}
-          dir: ${{ github.workspace }}
-      - name: install-dependencies
         run: |
-          sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev  libudev-dev libusb-dev libusb-1.0-0-dev
-      - name: build for linux
-        run: |
-          git fetch --tags
-          cmake --version
-          mkdir build
-          cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
-          cmake --build . --target all
+          pip install -U pip
+          pip install aqtinstall
+          aqt install-qt linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets
+          tree -L 3
