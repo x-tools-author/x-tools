@@ -10,7 +10,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  QT_VERSION: 6.8.2
+  QT_VERSION: 6.8.3
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   update-tag:
@@ -67,7 +67,7 @@ jobs:
       run: |
         for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f"
   release-for-linux:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: update-release
     steps:
     - name: Checkout
