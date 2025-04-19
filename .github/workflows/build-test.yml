@@ -3,29 +3,14 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch: # Enables manually
-# on:
-#  push:
-#    branches:
-#      - master
 jobs:
   build:
     name: Build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-24.04]
-        version: [6.8.3]
-        arch: [linux_gcc_64]
+    runs-on: ubuntu-latest
     steps:
-      - name: docker-test
+      - name: Start and setup Ubuntu container
         run: |
           docker pull ubuntu:20.04
-          docker run -it ubuntu:20.04 bash -c "echo hello world"
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: install qt
-        run: |
-          pip install -U pip
-          pip install aqtinstall
-          aqt install-qt linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets
-          tree -L 3
+          docker run  ubuntu:20.04 bash -c apt-get update
+          docker run  ubuntu:20.04 bash -c apt-get install -y build-essential cmake git libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev
+
