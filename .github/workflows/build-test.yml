@@ -11,8 +11,8 @@ jobs:
       - name: Start and setup Ubuntu container
         run: |
           docker pull ubuntu:20.04
-          docker run  ubuntu:20.04 bash -c apt update
-          docker run  ubuntu:20.04 bash -c apt install -y python3 python3-pip python3-dev
-          docker run  ubuntu:20.04 bash -c apt install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev
-          docker run  ubuntu:20.04 bash -c apt install -y git
+          docker run ubuntu:20.04 bash -c "echo 'Hello from inside the container!'"
+      - name: Install dependencies
+        run: |
+          docker run -v ${{ github.workspace }}:/workspace ubuntu:20.04 bash -c "apt-get update && apt-get install -y build-essential cmake git libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev"
 
