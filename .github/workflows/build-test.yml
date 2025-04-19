@@ -8,11 +8,17 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Start and setup Ubuntu container
-        run: |
-          docker pull ubuntu:20.04
-          docker run ubuntu:20.04 bash -c "echo 'Hello from inside the container!'"
-      - name: Install dependencies
-        run: |
-          docker run -v ${{ github.workspace }}:/workspace ubuntu:20.04 bash -c "apt-get update && apt-get install -y build-essential cmake git libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev"
+      - name: Pull Ubuntu image
+        run: docker pull ubuntu:20.04
 
+      - name: Start Ubuntu container
+        run: docker run -d --name ubuntu-20.04 ubuntu:20.04 sleep infinity
+
+      - name: Update and install Python
+        run: docker exec ubuntu-20.04 bash -c "apt-get update && apt-get install -y python3 python3-pip python3-dev"
+
+      - name: Install additional dependencies
+        run: docker exec ubuntu-20.04 bash -c "apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev git"
+
+      - name: Verify Python installation
+        run: docker exec ubuntu-20.04 bash -c "python3 --version && pip3 --version"
