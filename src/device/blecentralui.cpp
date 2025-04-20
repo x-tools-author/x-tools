@@ -21,35 +21,19 @@ BleCentralUi::BleCentralUi(QWidget *parent)
     , ui(new Ui::BleCentralUi)
 {
     ui->setupUi(this);
-    connect(ui->comboBoxServices,
-            QOverload<int>::of(xComboBoxIndexChanged),
-            this,
-            &BleCentralUi::onServiceIndexChanged);
-    connect(ui->comboBoxCharacteristics,
-            QOverload<int>::of(xComboBoxIndexChanged),
-            this,
-            &BleCentralUi::onCharacteristicIndexChanged);
+    // clang-format off
+    connect(ui->comboBoxServices, xComboBoxIndexChanged, this, &BleCentralUi::onServiceIndexChanged);
+    connect(ui->comboBoxCharacteristics, xComboBoxIndexChanged, this, &BleCentralUi::onCharacteristicIndexChanged);
     connect(ui->pushButtonNotify, &QPushButton::clicked, this, &BleCentralUi::onNotifyButtonClicked);
     connect(ui->pushButtonRead, &QPushButton::clicked, this, &BleCentralUi::onReadButtonClicked);
+    // clang-format on
 
     m_scanner = new BleScanner(this);
     connect(ui->pushButtonScan, &QPushButton::clicked, this, &BleCentralUi::onScanButtonClicked);
-    connect(m_scanner, &BleScanner::started, this, [this]() {
-        ui->pushButtonScan->setText(tr("Stop"));
-        ui->pushButtonScan->setEnabled(true);
-        ui->progressBarScanning->show();
-    });
-    connect(m_scanner, &BleScanner::finished, this, [this]() {
-        ui->pushButtonScan->setText(tr("Scan"));
-        ui->pushButtonScan->setEnabled(true);
-        ui->progressBarScanning->hide();
-    });
-    connect(m_scanner, &BleScanner::deviceDiscovered, this, [this](const QBluetoothDeviceInfo &info) {
-        this->ui->comboBoxDevices->addItem(info.name(), QVariant::fromValue(info));
-    });
-    connect(m_scanner, &BleScanner::errorOccurred, this, [this](const QString &errStr) {
-        QMessageBox::warning(this, tr("Error Occurred"), errStr);
-    });
+    connect(m_scanner, &BleScanner::started, this, &BleCentralUi::onScanningStarted);
+    connect(m_scanner, &BleScanner::finished, this, &BleCentralUi::onScanningFinished);
+    connect(m_scanner, &BleScanner::deviceDiscovered, this, &BleCentralUi::onDeviceDiscovered);
+    connect(m_scanner, &BleScanner::errorOccurred, this, &BleCentralUi::onErrorOccurred);
 
     ui->progressBarOpening->hide();
     ui->progressBarScanning->hide();
@@ -322,6 +306,30 @@ void BleCentralUi::onReadButtonClicked()
     }
 
     service->readCharacteristic(characteristic);
+}
+
+void BleCentralUi::onScanningStarted()
+{
+    ui->pushButtonScan->setText(tr("Stop"));
+    ui->pushButtonScan->setEnabled(true);
+    ui->progressBarScanning->show();
+}
+
+void BleCentralUi::onScanningFinished()
+{
+    ui->pushButtonScan->setText(tr("Scan"));
+    ui->pushButtonScan->setEnabled(true);
+    ui->progressBarScanning->hide();
+}
+
+void BleCentralUi::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
+{
+    this->ui->comboBoxDevices->addItem(info.name(), QVariant::fromValue(info));
+}
+
+void BleCentralUi::onErrorOccurred(const QString &errStr)
+{
+    QMessageBox::warning(this, tr("Error Occurred"), errStr);
 }
 
 QByteArray BleCentralUi::notifyValue() const
