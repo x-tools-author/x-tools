@@ -30,7 +30,7 @@ jobs:
       # - name: Install Python3.13
       #  run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "wget https://www.python.org/ftp/python/${{ env.PY_VERSION}}/Python-${{ env.PY_VERSION}}.tgz && tar -xzf Python-${{ env.PY_VERSION}}.tgz && cd Python-${{ env.PY_VERSION}} && ./configure --enable-optimizations && make && sudo make altinstall"
       - name: Install Python3.13
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "add-apt-repository ppa:deadsnakes/ppa && apt-get update && apt-get install -y python3.13 python3.13-dev python3.13-venv python3-pip"
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt-get update && apt-get install -y python3.13 python3.13-dev python3.13-venv python3-pip"
       - name: Verify Python installation
         run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "python3 --version && pip3 --version"
       - name: Install qtinstall
