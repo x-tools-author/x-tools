@@ -4,7 +4,7 @@ parent: 安装
 nav_order: 2.1
 ---
 
-# 从应用商店安装
+## 从应用商店安装
 
 {: .note-title }
 > My note title
