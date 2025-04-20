@@ -150,7 +150,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     initUi();
 
     onShowStatisticianChanged(false);
-    onDeviceTypeChanged();
 }
 
 Page::~Page()
@@ -789,7 +788,8 @@ void Page::saveControllerParameters()
 {
     if (m_deviceController) {
         auto parameters = m_deviceController->save();
-        m_settings->setValue(m_deviceController->metaObject()->className(), parameters);
+        m_settings->setValue(m_deviceController->metaObject()->className(),
+                             QVariant::fromValue(parameters));
     }
 }
 
@@ -798,7 +798,8 @@ void Page::loadControllerParameters()
     if (m_deviceController) {
         auto parameters = m_settings->value(m_deviceController->metaObject()->className());
         if (!parameters.isNull() && parameters.isValid()) {
-            m_deviceController->load(parameters.toMap());
+            QVariantMap map = parameters.value<QVariantMap>();
+            m_deviceController->load(map);
         }
     }
 }

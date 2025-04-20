@@ -23,6 +23,7 @@ public:
 
     Q_INVOKABLE void setIsBusyDevicesIgnored(bool ignored);
     Q_INVOKABLE QStringList baudRates() const;
+    QStringList portNames();
 
 signals:
     void portNamesChanged(const QStringList &portNames);
@@ -31,7 +32,7 @@ protected:
     void run() override;
 
 private:
-    void refresh();
+    QStringList refresh();
     bool isBusyDevice(const QString &portName);
 
 private:

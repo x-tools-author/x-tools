@@ -26,6 +26,7 @@ SerialPortUi::SerialPortUi(QWidget *parent)
 #endif
 
     m_scanner = new SerialPortScanner(this);
+    onPortNameChanged(m_scanner->portNames());
     connect(m_scanner, &SerialPortScanner::portNamesChanged, this, &SerialPortUi::onPortNameChanged);
     m_scanner->start();
 
