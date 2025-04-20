@@ -36,7 +36,7 @@ list(APPEND X_TOOLS_QT_COMPONENTS Network)
 list(APPEND X_TOOLS_QT_COMPONENTS LinguistTools)
 
 # Qt6 is preferred, but Qt5 is also supported
-find_package(QT NAMES Qt5 Qt6 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
+find_package(Qt NAMES Qt5 Qt6 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 
 # --------------------------------------------------------------------------------------------------
@@ -286,8 +286,7 @@ endif()
 # Make package for linux(deb or appimage)
 if(LINUX)
   include(cmake/linux/linux.cmake)
-  x_tools_make_package(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} FALSE)
-  x_tools_make_package(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} TRUE)
+  x_build_deb(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} ${CMAKE_SOURCE_DIR}/xTools.png)
 endif()
 
 # --------------------------------------------------------------------------------------------------
