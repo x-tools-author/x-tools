@@ -95,8 +95,8 @@ jobs:
     - name: Upload Release Asset for Linux
       run: |
         dir bin/Linux/Release
-        find bin/Linux/Release/xTools-deb -name "*.deb" -exec gh release upload continuous {} \;
-        find bin/Linux/Release/xTools-appimage -name "*.AppImage" -exec gh release upload continuous {} \;
+        find bin/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
+        find bin/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
   release-for-macos:
     runs-on: macos-14
     needs: update-release
