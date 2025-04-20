@@ -23,7 +23,7 @@
 
 #include "common/xtools.h"
 
-Application::Application(int argc, char **argv)
+Application::Application(int &argc, char **argv)
     : QApplication(argc, argv)
 {
 #ifdef X_TOOLS_LATEST_GIT_TAG
