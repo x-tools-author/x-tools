@@ -34,7 +34,10 @@ void DeviceUi::closeDevice()
 {
     if (m_device) {
         m_device->closeDevice();
+        m_device->deleteLater();
     }
+
+    m_device = nullptr;
 }
 
 Device *DeviceUi::device()
