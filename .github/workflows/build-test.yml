@@ -25,6 +25,8 @@ jobs:
         run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev git"
       - name: Install wget
         run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y wget"
+      - name: Install Python build dependencies
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y pkg-config build-essential checkinstall zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev tk-dev libreadline-dev libffi-dev curl"
       - name: Install Python3.13
         run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "wget https://www.python.org/ftp/python/${{ env.PY_VERSION}}/Python-${{ env.PY_VERSION}}.tgz && tar -xzf Python-${{ env.PY_VERSION}}.tgz && cd Python-${{ env.PY_VERSION}} && ./configure --enable-optimizations && make && sudo make altinstall"
       - name: Verify Python installation
