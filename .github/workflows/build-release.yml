@@ -79,13 +79,12 @@ jobs:
         cd build
         cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/linux_gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -G "Ninja"
         cmake --build . --target xTools
-        cmake --build . --target xTools_deb
-        cmake --build . --target xTools_appimage
+        cmake --build . --target xTools_linux
     - name: Upload Release Asset for Linux
       run: |
         dir bin/Linux/Release
-        find bin/Linux/Release/xTools-deb -name "*.deb" -exec gh release upload  ${{ github.ref_name }} {} \;
-        find bin/Linux/Release/xTools-appimage -name "*.AppImage" -exec gh release upload  ${{ github.ref_name }} {} \;
+        find bin/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload  ${{ github.ref_name }} {} \;
+        find bin/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload  ${{ github.ref_name }} {} \;
   release-for-macos:
     runs-on: macos-14
     needs: update-release
