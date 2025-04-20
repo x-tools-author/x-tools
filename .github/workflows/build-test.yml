@@ -29,6 +29,8 @@ jobs:
       #  run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y pkg-config build-essential checkinstall zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev tk-dev libreadline-dev libffi-dev curl"
       # - name: Install Python3.13
       #  run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "wget https://www.python.org/ftp/python/${{ env.PY_VERSION}}/Python-${{ env.PY_VERSION}}.tgz && tar -xzf Python-${{ env.PY_VERSION}}.tgz && cd Python-${{ env.PY_VERSION}} && ./configure --enable-optimizations && make && sudo make altinstall"
+      - name: Install Python3.13 dependencies
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y dialog"
       - name: Install Python3.13
         run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt-get update && apt-get install -y python3.13 python3.13-dev python3.13-venv python3-pip"
       - name: Verify Python installation
