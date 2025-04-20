@@ -36,7 +36,7 @@ list(APPEND X_TOOLS_QT_COMPONENTS Network)
 list(APPEND X_TOOLS_QT_COMPONENTS LinguistTools)
 
 # Qt6 is preferred, but Qt5 is also supported
-find_package(Qt NAMES Qt5 Qt6 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
+find_package(QT NAMES Qt5 Qt6 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
 
 # --------------------------------------------------------------------------------------------------

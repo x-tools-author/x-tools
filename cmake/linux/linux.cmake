@@ -20,7 +20,7 @@ function(x_build_deb target packetName friendlyName version icon)
   list(APPEND args "-DargAssetName=${X_ASSET_NAME}")
 
   foreach(arg ${args})
-    message(STATUS "[${package_type}]arg: ${arg}")
+    message(STATUS "[deb]arg: ${arg}")
   endforeach()
 
   # cmake-format: off
