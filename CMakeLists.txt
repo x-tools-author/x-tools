@@ -286,8 +286,7 @@ endif()
 # Make package for linux(deb or appimage)
 if(LINUX)
   include(cmake/linux/linux.cmake)
-  x_tools_make_package(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} FALSE)
-  x_tools_make_package(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} TRUE)
+  x_build_deb(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} ${CMAKE_SOURCE_DIR}/xTools.png)
 endif()
 
 # --------------------------------------------------------------------------------------------------

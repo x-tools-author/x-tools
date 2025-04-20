@@ -10,7 +10,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  QT_VERSION: 6.8.2
+  QT_VERSION: 6.8.3
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 jobs:
   update-tag:
@@ -67,7 +67,7 @@ jobs:
       run: |
         for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f"
   release-for-linux:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: update-release
     steps:
     - name: Checkout
@@ -83,7 +83,7 @@ jobs:
         modules: ${{env.QT_MODULES}}
     - name: install-dependencies
       run: |
-        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build
+        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build libfuse-dev
     - name: Build for Linux
       run: |
         git fetch --tags
@@ -91,13 +91,12 @@ jobs:
         cd build
         cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/linux_gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -G "Ninja"
         cmake --build . --target xTools
-        cmake --build . --target xTools_deb
-        cmake --build . --target xTools_appimage
+        cmake --build . --target xTools_linux
     - name: Upload Release Asset for Linux
       run: |
         dir bin/Linux/Release
-        find bin/Linux/Release/xTools-deb -name "*.deb" -exec gh release upload continuous {} \;
-        find bin/Linux/Release/xTools-appimage -name "*.AppImage" -exec gh release upload continuous {} \;
+        find bin/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
+        find bin/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
   release-for-macos:
     runs-on: macos-14
     needs: update-release

@@ -53,6 +53,11 @@ private:
     void onNotifyButtonClicked();
     void onReadButtonClicked();
 
+    void onScanningStarted();
+    void onScanningFinished();
+    void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
+    void onErrorOccurred(const QString &errStr);
+
     QByteArray notifyValue() const;
     QByteArray disnotifyValue() const;
 };

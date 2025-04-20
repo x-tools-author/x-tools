@@ -6,10 +6,14 @@
     添加ble外围设备调试功能（非windows平台）
     添加sctp客户端与服务器调试功能（非windows平台）
 
-V7.2.0 2025年xx月xx日
+V7.2.0 2025年04月xx日
     新特性：
     01. 添加本地通信（QLocalSocket）
     02. 添加高级搜索功能（感谢le-cheng的pull-requests（https://github.com/x-tools-author/x-tools/pull/36）, GitHub主页：https://github.com/le-cheng）
+    bug修复：
+    01. Linux平台程序后奔溃
+    02. 设备参数无法正确从配置文件加载
+    03. BLE的一些问题
 
 V7.1.0 2025年03月11日
     新特性：

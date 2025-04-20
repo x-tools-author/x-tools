@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-2022]
-        version: [6.8.2]
+        version: [6.8.3]
     env:
       QT_ANDROID_KEYSTORE_PATH: ${{ github.workspace }}\res\android\android_release.keystore
       QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}

@@ -32,5 +32,5 @@ protected:
     virtual Device *newDevice() = 0;
 
 private:
-    Device *m_device;
+    Device *m_device{nullptr};
 };

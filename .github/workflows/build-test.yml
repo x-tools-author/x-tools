@@ -3,19 +3,15 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch: # Enables manually
-# on:
-#  push:
-#    branches:
-#      - master
+
+env:
+  QT_VERSION: 6.8.3
+  UBUNTU_VERSION: 22.04
+
 jobs:
   build:
     name: Build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-22.04-arm]
-        version: [6.8.2]
-        arch: [linux_gcc_arm64]
+    runs-on: ubuntu-22.04
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -23,10 +19,11 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
-          version: ${{ matrix.version }}
+          version: ${{ env.QT_VERSION }}
           target: 'desktop'
-          arch: ${{ matrix.arch }}
+          arch: linux_gcc_64
           dir: ${{ github.workspace }}
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: install-dependencies
         run: |
           sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev  libudev-dev libusb-dev libusb-1.0-0-dev
@@ -36,5 +33,5 @@ jobs:
           cmake --version
           mkdir build
           cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
-          cmake --build . --target all
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/linux_gcc_64' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
+          cmake --build . --target xTools --config Release --parallel 8 --verbose

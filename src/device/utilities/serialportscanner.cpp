@@ -40,6 +40,11 @@ QStringList SerialPortScanner::baudRates() const
     return result;
 }
 
+QStringList SerialPortScanner::portNames()
+{
+    return refresh();
+}
+
 void SerialPortScanner::run()
 {
     QTimer *timer = new QTimer();
@@ -58,7 +63,7 @@ void SerialPortScanner::run()
     timer = nullptr;
 }
 
-void SerialPortScanner::refresh()
+QStringList SerialPortScanner::refresh()
 {
     QStringList portNames;
     auto infos = QSerialPortInfo::availablePorts();
@@ -73,6 +78,7 @@ void SerialPortScanner::refresh()
     }
 
     emit portNamesChanged(portNames);
+    return portNames;
 }
 
 bool SerialPortScanner::isBusyDevice(const QString &portName)

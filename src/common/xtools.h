@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QCheckBox>
 #include <QComboBox>
 #include <QJsonObject>
 #include <QLineEdit>
@@ -34,10 +35,22 @@
 #define xComboBoxActivated qOverload<int>(&QComboBox::activated)
 #endif
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+#define xComboBoxIndexChanged &QComboBox::currentIndexChanged
+#else
+#define xComboBoxIndexChanged qOverload<int>(&QComboBox::currentIndexChanged)
+#endif
+
 #if QT_VERSION >= QT_VERSION_CHECK(6, 1, 0)
 #define xDefaultStyleName Application::style()->name()
 #else
 #define xDefaultStyleName QString("fusion")
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+#define xCheckStateChanged &QCheckBox::checkStateChanged
+#else
+#define xCheckStateChanged qOverload<int>(&QCheckBox::stateChanged)
 #endif
 
 /**************************************************************************************************/

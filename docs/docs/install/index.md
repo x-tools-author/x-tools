@@ -3,7 +3,7 @@ title: 安装
 nav_order: 2
 ---
 
-# 安装
+## 安装
 
 访问[发布页面]下载所需版本即可。
 
@@ -32,7 +32,7 @@ nav_order: 2
 {: .important-title }
 > 关于deb包
 >
-> deb包是基于ubuntu-20.04构建的，使用于ubuntu 20.04或更新版本系统
+> deb包是基于ubuntu-22.04构建的，使用于ubuntu 22.04或更新版本系统
 
 {: .important-title }
 > 关于apk包
