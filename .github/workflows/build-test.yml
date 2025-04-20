@@ -6,40 +6,32 @@ on:
 
 env:
   QT_VERSION: 6.8.3
-  PY_VERSION: 3.13.3
-  CMAKE_VERSION: 3.30.8 # It must be 3.30.x
-  UBUNTU_VERSION: 20.04
+  UBUNTU_VERSION: 22.04
 
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-      - name: Pull Ubuntu image
-        run: docker pull ubuntu:${{ env.UBUNTU_VERSION }}
-      - name: Start Ubuntu container
-        run: docker run -d --name ubuntu-${{ env.UBUNTU_VERSION }} ubuntu:${{ env.UBUNTU_VERSION }} sleep infinity
-      - name: Install gcc and g++
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get update && apt-get install -y gcc g++"
-      - name: Install additional dependencies
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev git"
-      - name: Install wget
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y wget"
-      # - name: Install Python build dependencies
-      #  run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y pkg-config build-essential checkinstall zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev tk-dev libreadline-dev libffi-dev curl"
-      # - name: Install Python3.13
-      #  run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "wget https://www.python.org/ftp/python/${{ env.PY_VERSION}}/Python-${{ env.PY_VERSION}}.tgz && tar -xzf Python-${{ env.PY_VERSION}}.tgz && cd Python-${{ env.PY_VERSION}} && ./configure --enable-optimizations && make && sudo make altinstall"
-      - name: Install Python3.13 dependencies
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y dialog"
-      - name: Install Python3.13
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt-get update && apt-get install -y python3.13 python3.13-dev python3.13-venv python3-pip"
-      - name: Verify Python installation
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "python3 --version && pip3 --version"
-      - name: Install qtinstall
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "pip install aqtinstall"
-      - name: Install Qt
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "aqt install-qt linux desktop ${{env.QT_VERSION}} linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets"
-      - name: Install CMake version ${{ env.CMAKE_VERSION}}
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "wget https://cmake.org/files/v3.30/cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64.tar.gz && tar -xzf cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64.tar.gz && sudo cp -r cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64/* /usr/local/"
-      - name: Verify CMake installation
-        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "cmake --version"
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: install qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: '==3.1.*'
+          version: ${{ env.QT_VERSION }}
+          target: 'desktop'
+          arch: linux_gcc_64
+          dir: ${{ github.workspace }}
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+      - name: install-dependencies
+        run: |
+          sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev  libudev-dev libusb-dev libusb-1.0-0-dev
+      - name: build for linux
+        run: |
+          git fetch --tags
+          cmake --version
+          mkdir build
+          cd build
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/linux_gcc_64' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
+          cmake --build . --target xTools --config Release --parallel 8 --verbose
