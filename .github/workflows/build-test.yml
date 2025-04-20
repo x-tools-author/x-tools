@@ -3,28 +3,36 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch: # Enables manually
+
+env:
+  QT_VERSION: "6.8.3"
+  PY_VERSION: "3.13.0"
+  CMAKE_VERSION: "${{ env.CMAKE_VERSION}}"
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Pull Ubuntu image
-        run: docker pull ubuntu:20.04
+        run: docker pull ubuntu:${{ env.QT_VERSION }}
       - name: Start Ubuntu container
-        run: docker run -d --name ubuntu-20.04 ubuntu:20.04 sleep infinity
+        run: docker run -d --name ubuntu-${{ env.QT_VERSION }} ubuntu:${{ env.QT_VERSION }} sleep infinity
       - name: Install gcc and g++
-        run: docker exec ubuntu-20.04 bash -c "apt-get update && apt-get install -y gcc g++"
+        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "apt-get update && apt-get install -y gcc g++"
       - name: Install additional dependencies
-        run: docker exec ubuntu-20.04 bash -c "apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev git"
+        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev git"
+      - name: Install wget
+        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "apt-get install -y wget"
       - name: Install Python3.13
-        run: docker exec ubuntu-20.04 bash -c "wget https://www.python.org/ftp/python/3.13.0/Python-3.13.0.tgz && tar -xzf Python-3.13.0.tgz && cd Python-3.13.0 && ./configure --enable-optimizations && make && sudo make altinstall"
+        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "wget https://www.python.org/ftp/python/${{ env.PY_VERSION}}/Python-${{ env.PY_VERSION}}.tgz && tar -xzf Python-${{ env.PY_VERSION}}.tgz && cd Python-${{ env.PY_VERSION}} && ./configure --enable-optimizations && make && sudo make altinstall"
       - name: Verify Python installation
-        run: docker exec ubuntu-20.04 bash -c "python3 --version && pip3 --version"
+        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "python3 --version && pip3 --version"
       - name: Install qtinstall
-        run: docker exec ubuntu-20.04 bash -c "pip install aqtinstall"
+        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "pip install aqtinstall"
       - name: Install Qt
-        run: docker exec ubuntu-20.04 bash -c "aqt install-qt linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets"
-      - name: Install CMake version 3.30.8
-        run: docker exec ubuntu-20.04 bash -c "wget https://cmake.org/files/v3.30/cmake-3.30.8-Linux-x86_64.tar.gz && tar -xzf cmake-3.30.8-Linux-x86_64.tar.gz && sudo cp -r cmake-3.30.8-Linux-x86_64/* /usr/local/"
+        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "aqt install-qt linux desktop ${{env.QT_VERSION}} linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets"
+      - name: Install CMake version ${{ env.CMAKE_VERSION}}
+        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "wget https://cmake.org/files/v3.30/cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64.tar.gz && tar -xzf cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64.tar.gz && sudo cp -r cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64/* /usr/local/"
       - name: Verify CMake installation
-        run: docker exec ubuntu-20.04 bash -c "cmake --version"
+        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "cmake --version"
