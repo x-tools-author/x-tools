@@ -22,11 +22,11 @@ BleCentralUi::BleCentralUi(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->comboBoxServices,
-            QOverload<int>::of(xComboBoxActivated),
+            QOverload<int>::of(xComboBoxIndexChanged),
             this,
             &BleCentralUi::onServiceIndexChanged);
     connect(ui->comboBoxCharacteristics,
-            QOverload<int>::of(xComboBoxActivated),
+            QOverload<int>::of(xComboBoxIndexChanged),
             this,
             &BleCentralUi::onCharacteristicIndexChanged);
     connect(ui->pushButtonNotify, &QPushButton::clicked, this, &BleCentralUi::onNotifyButtonClicked);
@@ -58,6 +58,7 @@ BleCentralUi::BleCentralUi(QWidget *parent)
     ui->comboBoxWriteMode->hide();
     ui->pushButtonRead->hide();
     ui->pushButtonNotify->hide();
+    ui->pushButtonScan->setEnabled(true);
 }
 
 BleCentralUi::~BleCentralUi()
@@ -68,11 +69,8 @@ BleCentralUi::~BleCentralUi()
 Device *BleCentralUi::newDevice()
 {
     BleCentral *device = new BleCentral(this);
-
-    ui->pushButtonScan->setEnabled(false);
     ui->comboBoxServices->clear();
     ui->comboBoxCharacteristics->clear();
-    ui->progressBarOpening->show();
     connect(device, &BleCentral::discoveryFinished, this, [this]() {
         ui->progressBarOpening->hide();
     });
@@ -99,10 +97,7 @@ void BleCentralUi::load(const QVariantMap &parameters)
     Q_UNUSED(parameters);
 }
 
-void BleCentralUi::setUiEnabled(bool enabled)
-{
-    ui->comboBoxDevices->setEnabled(enabled);
-}
+void BleCentralUi::setUiEnabled(bool enabled) {}
 
 void BleCentralUi::updateNotifyText()
 {

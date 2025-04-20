@@ -35,6 +35,12 @@
 #define xComboBoxActivated qOverload<int>(&QComboBox::activated)
 #endif
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+#define xComboBoxIndexChanged &QComboBox::currentIndexChanged
+#else
+#define xComboBoxIndexChanged qOverload<int>(&QComboBox::currentIndexChanged)
+#endif
+
 #if QT_VERSION >= QT_VERSION_CHECK(6, 1, 0)
 #define xDefaultStyleName Application::style()->name()
 #else
