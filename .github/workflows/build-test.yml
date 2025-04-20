@@ -12,10 +12,12 @@ jobs:
         run: docker pull ubuntu:20.04
       - name: Start Ubuntu container
         run: docker run -d --name ubuntu-20.04 ubuntu:20.04 sleep infinity
-      - name: Update and install Python
-        run: docker exec ubuntu-20.04 bash -c "apt-get update && apt-get install -y python3 python3-pip python3-dev"
+      - name: Install gcc and g++
+        run: docker exec ubuntu-20.04 bash -c "apt-get update && apt-get install -y gcc g++"
       - name: Install additional dependencies
         run: docker exec ubuntu-20.04 bash -c "apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev git"
+      - name: Install Python3.13
+        run: docker exec ubuntu-20.04 bash -c "wget https://www.python.org/ftp/python/3.13.0/Python-3.13.0.tgz && tar -xzf Python-3.13.0.tgz && cd Python-3.13.0 && ./configure --enable-optimizations && make && sudo make altinstall"
       - name: Verify Python installation
         run: docker exec ubuntu-20.04 bash -c "python3 --version && pip3 --version"
       - name: Install qtinstall
