@@ -5,9 +5,9 @@ on:
   workflow_dispatch: # Enables manually
 
 env:
-  QT_VERSION: "6.8.3"
-  PY_VERSION: "3.13.0"
-  CMAKE_VERSION: "${{ env.CMAKE_VERSION}}"
+  QT_VERSION: 6.8.3
+  PY_VERSION: 3.13.3
+  CMAKE_VERSION: 3.30.8 # It must be 3.30.x
 
 jobs:
   build:
