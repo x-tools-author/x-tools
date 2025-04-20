@@ -144,7 +144,7 @@ QVariantList BleCentral::getCharacteristics(const QVariant &service) const
     }
 
     auto characteristics = cookedService->characteristics();
-    for (const auto &characteristic : characteristics) {
+    for (auto &characteristic : characteristics) {
         result.append(QVariant::fromValue(characteristic));
     }
     return result;
@@ -241,9 +241,6 @@ void BleCentral::switchNotify(const QVariant &service, const QVariant &character
     }
 
     QByteArray value = descriptor.value() == notifyValue() ? unnotifyValue() : notifyValue();
-#if 0
-    qInfo() << "Invoke write descriptor:" << descriptor.name() << value.toHex();
-#endif
     cookedService->writeDescriptor(descriptor, value);
 }
 
@@ -266,10 +263,6 @@ void BleCentral::readNotify(const QVariant &service, const QVariant &characteris
         return;
     }
 
-    QByteArray value = descriptor.value() == notifyValue() ? unnotifyValue() : notifyValue();
-#if 0
-    qInfo() << "Invoke write descriptor:" << descriptor.name() << value.toHex();
-#endif
     cookedService->readDescriptor(descriptor);
 }
 

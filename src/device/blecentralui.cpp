@@ -182,7 +182,7 @@ void BleCentralUi::onServiceIndexChanged(int index)
     }
 
     ui->comboBoxCharacteristics->clear();
-    for (const QLowEnergyCharacteristic &characteristic : service->characteristics()) {
+    for (QLowEnergyCharacteristic &characteristic : service->characteristics()) {
         QVariant var = QVariant::fromValue(characteristic);
         QString name = characteristic.name();
         name = name.trimmed();

@@ -8,7 +8,6 @@
  **************************************************************************************************/
 #include "deviceui.h"
 
-#include "common/xtools.h"
 #include "device.h"
 
 DeviceUi::DeviceUi(QWidget *parent)
@@ -25,19 +24,16 @@ void DeviceUi::openDevice()
 {
     closeDevice();
 
-    m_device = this->device();
-    m_device->load(save());
-    m_device->openDevice();
+    Device *device = this->device();
+    device->load(save());
+    device->openDevice();
 }
 
 void DeviceUi::closeDevice()
 {
     if (m_device) {
         m_device->closeDevice();
-        m_device->deleteLater();
     }
-
-    m_device = nullptr;
 }
 
 Device *DeviceUi::device()
