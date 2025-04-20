@@ -55,6 +55,7 @@ Device *BleCentralUi::newDevice()
     BleCentral *device = new BleCentral(this);
     ui->comboBoxServices->clear();
     ui->comboBoxCharacteristics->clear();
+    connect(device, &BleCentral::started, this, [this]() { ui->progressBarOpening->show(); });
     connect(device, &BleCentral::discoveryFinished, this, [this]() {
         ui->progressBarOpening->hide();
     });
