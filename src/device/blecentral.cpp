@@ -332,7 +332,7 @@ void BleCentral::onDiscoveryFinished()
     emit discoveryFinished();
     emit opened();
     QList<QBluetoothUuid> uuids = m_controller->services();
-    for (const QBluetoothUuid &uuid : uuids) {
+    for (QBluetoothUuid &uuid : uuids) {
         QLowEnergyService *service = m_controller->createServiceObject(uuid);
         if (!service) {
             continue;

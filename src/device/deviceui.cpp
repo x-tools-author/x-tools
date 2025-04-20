@@ -24,9 +24,9 @@ void DeviceUi::openDevice()
 {
     closeDevice();
 
-    Device *device = this->device();
-    device->load(save());
-    device->openDevice();
+    Device *dev = device();
+    dev->load(save());
+    dev->openDevice();
 }
 
 void DeviceUi::closeDevice()

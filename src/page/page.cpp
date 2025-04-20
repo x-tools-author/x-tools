@@ -324,12 +324,6 @@ void Page::removeTestDevices()
 
 void Page::initUi()
 {
-#if 0
-    const QIcon icon = QIcon(":/res/icons/settings.svg");
-    ui->pushButtonDeviceSettings->setIcon(icon);
-    ui->pushButtonOutputSettings->setIcon(icon);
-    ui->pushButtonInputSettings->setIcon(icon);
-#endif
     ui->toolButtonInputPreset->setIcon(QIcon(":/res/icons/list.svg"));
     ui->toolButtonInputPreset->setToolButtonStyle(Qt::ToolButtonIconOnly);
     ui->toolButtonInputPreset->setStyleSheet("QToolButton::menu-indicator{image: none;}");
@@ -343,10 +337,7 @@ void Page::initUi()
 
 void Page::initUiDeviceControl()
 {
-    connect(ui->comboBoxDeviceTypes,
-            qOverload<int>(xComboBoxActivated),
-            this,
-            &Page::onDeviceTypeChanged);
+    connect(ui->comboBoxDeviceTypes, xComboBoxIndexChanged, this, &Page::onDeviceTypeChanged);
     connect(ui->pushButtonDeviceOpen, &QPushButton::clicked, this, &Page::onOpenButtonClicked);
 
     QPushButton *target = ui->pushButtonDeviceSettings;
@@ -384,14 +375,8 @@ void Page::initUiOutputControl()
 
 void Page::initUiInputControl()
 {
-    connect(ui->comboBoxInputFormat,
-            qOverload<int>(xComboBoxActivated),
-            this,
-            &Page::onInputFormatChanged);
-    connect(ui->comboBoxInputInterval,
-            qOverload<int>(xComboBoxActivated),
-            this,
-            &Page::onCycleIntervalChanged);
+    connect(ui->comboBoxInputFormat, xComboBoxIndexChanged, this, &Page::onInputFormatChanged);
+    connect(ui->comboBoxInputInterval, xComboBoxIndexChanged, this, &Page::onCycleIntervalChanged);
     connect(ui->pushButtonInputWriteBytes, &QPushButton::clicked, this, &Page::writeBytes);
 
     setupTextFormat(ui->comboBoxInputFormat);
@@ -480,7 +465,12 @@ void Page::onInputFormatChanged()
 void Page::onOpenButtonClicked()
 {
     ui->pushButtonDeviceOpen->setEnabled(false);
-    if (m_deviceController->device() && m_deviceController->device()->isRunning()) {
+    Device *device = m_deviceController->device();
+    if (!device) {
+        return;
+    }
+
+    if (device->isRunning()) {
         closeDevice();
     } else {
         openDevice();
@@ -599,15 +589,16 @@ void Page::closeDevice()
 
 void Page::setupDevice(Device *device)
 {
-    connect(device, &Device::opened, this, &Page::onOpened);
-    connect(device, &Device::closed, this, &Page::onClosed);
-    connect(device, &Device::bytesWritten, this, &Page::onBytesWritten);
-    connect(device, &Device::bytesRead, this, &Page::onBytesRead);
-    connect(device, &Device::errorOccurred, this, &Page::onErrorOccurred);
-    connect(device, &Device::warningOccurred, this, &::Page::onWarningOccurred);
-    connect(ui->tabPreset, &PresetView::outputBytes, device, &Device::writeBytes);
-    connect(ui->tabEmitter, &EmitterView::outputBytes, device, &Device::writeBytes);
-    connect(ui->tabResponder, &ResponderView::outputBytes, device, &Device::writeBytes);
+    auto type = static_cast<Qt::ConnectionType>(Qt::AutoConnection | Qt::UniqueConnection);
+    connect(device, &Device::opened, this, &Page::onOpened, type);
+    connect(device, &Device::closed, this, &Page::onClosed, type);
+    connect(device, &Device::bytesWritten, this, &Page::onBytesWritten, type);
+    connect(device, &Device::bytesRead, this, &Page::onBytesRead, type);
+    connect(device, &Device::errorOccurred, this, &Page::onErrorOccurred, type);
+    connect(device, &Device::warningOccurred, this, &::Page::onWarningOccurred, type);
+    connect(ui->tabPreset, &PresetView::outputBytes, device, &Device::writeBytes, type);
+    connect(ui->tabEmitter, &EmitterView::outputBytes, device, &Device::writeBytes, type);
+    connect(ui->tabResponder, &ResponderView::outputBytes, device, &Device::writeBytes, type);
 }
 
 void Page::writeBytes()
