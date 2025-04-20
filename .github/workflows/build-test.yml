@@ -8,6 +8,7 @@ env:
   QT_VERSION: 6.8.3
   PY_VERSION: 3.13.3
   CMAKE_VERSION: 3.30.8 # It must be 3.30.x
+  UBUNTU_VERSION: 20.04
 
 jobs:
   build:
@@ -15,24 +16,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pull Ubuntu image
-        run: docker pull ubuntu:${{ env.QT_VERSION }}
+        run: docker pull ubuntu:${{ env.UBUNTU_VERSION }}
       - name: Start Ubuntu container
-        run: docker run -d --name ubuntu-${{ env.QT_VERSION }} ubuntu:${{ env.QT_VERSION }} sleep infinity
+        run: docker run -d --name ubuntu-${{ env.UBUNTU_VERSION }} ubuntu:${{ env.UBUNTU_VERSION }} sleep infinity
       - name: Install gcc and g++
-        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "apt-get update && apt-get install -y gcc g++"
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get update && apt-get install -y gcc g++"
       - name: Install additional dependencies
-        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev git"
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev git"
       - name: Install wget
-        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "apt-get install -y wget"
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get install -y wget"
       - name: Install Python3.13
-        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "wget https://www.python.org/ftp/python/${{ env.PY_VERSION}}/Python-${{ env.PY_VERSION}}.tgz && tar -xzf Python-${{ env.PY_VERSION}}.tgz && cd Python-${{ env.PY_VERSION}} && ./configure --enable-optimizations && make && sudo make altinstall"
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "wget https://www.python.org/ftp/python/${{ env.PY_VERSION}}/Python-${{ env.PY_VERSION}}.tgz && tar -xzf Python-${{ env.PY_VERSION}}.tgz && cd Python-${{ env.PY_VERSION}} && ./configure --enable-optimizations && make && sudo make altinstall"
       - name: Verify Python installation
-        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "python3 --version && pip3 --version"
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "python3 --version && pip3 --version"
       - name: Install qtinstall
-        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "pip install aqtinstall"
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "pip install aqtinstall"
       - name: Install Qt
-        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "aqt install-qt linux desktop ${{env.QT_VERSION}} linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets"
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "aqt install-qt linux desktop ${{env.QT_VERSION}} linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets"
       - name: Install CMake version ${{ env.CMAKE_VERSION}}
-        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "wget https://cmake.org/files/v3.30/cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64.tar.gz && tar -xzf cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64.tar.gz && sudo cp -r cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64/* /usr/local/"
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "wget https://cmake.org/files/v3.30/cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64.tar.gz && tar -xzf cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64.tar.gz && sudo cp -r cmake-${{ env.CMAKE_VERSION}}-Linux-x86_64/* /usr/local/"
       - name: Verify CMake installation
-        run: docker exec ubuntu-${{ env.QT_VERSION }} bash -c "cmake --version"
+        run: docker exec ubuntu-${{ env.UBUNTU_VERSION }} bash -c "cmake --version"
