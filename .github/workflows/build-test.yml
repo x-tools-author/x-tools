@@ -34,5 +34,6 @@ jobs:
           docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get -y install python3-venv"
       - name: install aqtinstall
         run: |
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "python3-pip iinstall aqtinstall"
+          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "pip install -U pip"
+          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "pip install aqtinstall"
           docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "aqt install-qt linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets"
