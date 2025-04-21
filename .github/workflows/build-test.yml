@@ -23,7 +23,8 @@ jobs:
           docker run -d --name ubuntu-${{ env.UBUNTU_VERSION }} -v ${{ github.workspace }}:/workspace ubuntu:${{ env.UBUNTU_VERSION }} tail -f /dev/null
       - name: install dependencies
         run: |
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt -y install software-properties-common"
+          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get update"
+          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get -y install software-properties-common"
           docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "add-apt-repository ppa:deadsnakes/ppa -y"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt update"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt -y install python3.13"
+          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get update"
+          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get -y install python3.13"
