@@ -20,7 +20,7 @@ jobs:
           docker pull ubuntu:${{ env.UBUNTU_VERSION }}
       - name: run docker container
         run: |
-          docker run -d --name ubuntu-${{ env.UBUNTU_VERSION }} -v ${{ github.workspace }}:/workspace ubuntu:${{ env.UBUNTU_VERSION }} tail -f /dev/null
+          docker run -d --name ubuntu-${{ env.UBUNTU_VERSION }} -v ${{ github.workspace }}:/workspace -w /workspace ubuntu:${{ env.UBUNTU_VERSION }} tail -f /dev/null
       - name: install dependencies
         run: |
           docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get update"
