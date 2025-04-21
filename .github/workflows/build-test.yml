@@ -15,15 +15,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: install qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          aqtversion: '==3.1.*'
-          version: ${{ env.QT_VERSION }}
-          target: 'desktop'
-          arch: linux_gcc_64
-          dir: ${{ github.workspace }}
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: pull ubuntu docker image
         run: |
           docker pull ubuntu:${{ env.UBUNTU_VERSION }}
@@ -32,7 +23,7 @@ jobs:
           docker run -d --name ubuntu-${{ env.UBUNTU_VERSION }} -v ${{ github.workspace }}:/workspace ubuntu:${{ env.UBUNTU_VERSION }} tail -f /dev/null
       - name: install dependencies
         run: |
-          docker exec -it ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt -y install software-properties-common"
-          docker exec -it ubuntu-${{ env.UBUNTU_VERSION }} bash -c "add-apt-repository ppa:deadsnakes/ppa -y"
-          docker exec -it ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt update"
-          docker exec -it ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt -y install python3.13"
+          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt -y install software-properties-common"
+          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "add-apt-repository ppa:deadsnakes/ppa -y"
+          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt update"
+          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt -y install python3.13"
