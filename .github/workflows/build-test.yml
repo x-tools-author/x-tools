@@ -5,33 +5,21 @@ on:
   workflow_dispatch: # Enables manually
 
 env:
-  QT_VERSION: 6.8.3
-  UBUNTU_VERSION: 22.04
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: install qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          aqtversion: '==3.1.*'
-          version: ${{ env.QT_VERSION }}
-          target: 'desktop'
-          arch: linux_gcc_64
-          dir: ${{ github.workspace }}
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-      - name: install-dependencies
+      - name: build docker image
         run: |
-          sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev  libudev-dev libusb-dev libusb-1.0-0-dev
-      - name: build for linux
+          docker build -t x-tools:ubuntu-22.04 .
+          ls -l
+      - name: push docker image to github registry
         run: |
-          git fetch --tags
-          cmake --version
-          mkdir build
-          cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/linux_gcc_64' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
-          cmake --build . --target xTools --config Release --parallel 8 --verbose
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker tag x-tools:ubuntu-22.04 ghcr.io/x-tools/x-tools:ubuntu-22.04
+          docker push ghcr.io/x-tools/x-tools:ubuntu-22.04
