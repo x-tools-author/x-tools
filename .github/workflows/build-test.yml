@@ -14,3 +14,4 @@ jobs:
       - name: build docker image
         run: |
           docker build -t x-tools:ubuntu-22.04 .
+          ls -l
