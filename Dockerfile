@@ -17,4 +17,4 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 
 
 RUN pip3 install aqtinstall
-RUN aqt install-qt linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebview
+RUN aqt install-qt --outputdir /opt/qt linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebview
