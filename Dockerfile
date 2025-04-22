@@ -9,7 +9,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     git \
     cmake \
-    python3.13 \
+    python3.10 \
     python3-pip \
     build-essential \
     libdbus-1-3 \
@@ -21,6 +21,6 @@ RUN ln -sf /usr/bin/python3.13 /usr/bin/python3
 RUN which python3
 RUN python3 --version
 
-RUN pip3 install -U pip3
-RUN pip3 install aqtinstall
+RUN pip install -U pip
+RUN pip install aqtinstall
 #RUN aqt install-qt --outputdir /opt/qt linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebview
