@@ -1,38 +1,22 @@
-﻿FROM ubuntu:20.04
+﻿FROM ubuntu:18.04
 
-RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
-RUN add-apt-repository -y ppa:deadsnakes/ppa
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
+RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     git \
     cmake \
-    python3.13 \
+    python3 \
     python3-pip \
     build-essential \
     libdbus-1-3 \
-    libpulse-mainloop-glib0 \
-    python3-requests \
-    python3-semantic-version \
-    patch \
-    python3-texttable \
-    python3-bs4 \
-    python3-defusedxml \
-    python3-six
+    libpulse-mainloop-glib0
 
-RUN which pip
-RUN python3 --version
-RUN ls -l /usr/bin/ | grep python
-RUN ls -l /usr/bin/ | grep pip
-RUN ln -sf /usr/bin/python3.13 /usr/bin/python3
-RUN pip install -U pip
-RUN pip install six py7zr
-RUN pip install aqtinstall
+RUN pip3 install aqtinstall
 
-ARG QT=6.8.3
-ARG QT_MODULES="qtcharts qtserialbus qtserialport qtwebsockets"
+ARG QT=5.12.9
+ARG QT_MODULES=
 ARG QT_HOST=linux
 ARG QT_TARGET=desktop
-ARG QT_ARCH= linux_gcc_64
-RUN aqt install-qt --outputdir /opt/qt ${QT_HOST} ${QT_TARGET} ${QT} ${QT_ARCH} -m ${QT_MODULES}
+ARG QT_ARCH=
+RUN aqt install --outputdir /opt/qt ${QT} ${QT_HOST} ${QT_TARGET} ${QT_ARCH} -m ${QT_MODULES}
 
 ENV PATH /opt/qt/${QT}/gcc_64/bin:$PATH
 ENV QT_PLUGIN_PATH /opt/qt/${QT}/gcc_64/plugins/
