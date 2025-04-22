@@ -24,7 +24,8 @@ RUN ls -l /usr/bin/ | grep python
 RUN ls -l /usr/bin/ | grep pip
 RUN ln -sf /usr/bin/python3.13 /usr/bin/python3
 RUN pip install -U pip
-RUN pip install py7zr aqtinstall
+RUN pip install six py7zr
+RUN pip install aqtinstall
 
 ARG QT=6.8.3
 ARG QT_MODULES="qtcharts qtserialbus qtserialport qtwebsockets"
