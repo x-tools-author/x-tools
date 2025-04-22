@@ -1,9 +1,11 @@
-﻿FROM ubuntu:22.04
+﻿FROM ubuntu:20.04
 
+RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
+RUN add-apt-repository -y ppa:deadsnakes/ppa
 RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     git \
     cmake \
-    python3 \
+    python3.13 \
     python3-pip \
     build-essential \
     libdbus-1-3 \
@@ -12,7 +14,7 @@ RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
 RUN pip3 install aqtinstall
 
 ARG QT=6.8.3
-ARG QT_MODULES= "qtcharts qtserialbus qtserialport qtwebsockets"
+ARG QT_MODULES=qtcharts qtserialbus qtserialport qtwebsockets
 ARG QT_HOST=linux
 ARG QT_TARGET=desktop
 ARG QT_ARCH= linux_gcc_64
