@@ -37,4 +37,4 @@ jobs:
         run: | # https://github.com/vslotman/docker-aqtinstall/blob/master/Dockerfile
           docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "pip install -U pip"
           docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "pip install aqtinstall"
-          docker exec -i --workdir /workspace ubuntu-${{ env.UBUNTU_VERSION }} bash -c "aqt install-qt linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets"
+          docker exec -i --workdir /workspace ubuntu-${{ env.UBUNTU_VERSION }} bash -c "aqt install-qt --outputdir /workspace linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets"
