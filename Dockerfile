@@ -10,6 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     git \
     cmake \
     python3.13 \
+    python3-pip \
     build-essential \
     libdbus-1-3 \
     libpulse-mainloop-glib0
