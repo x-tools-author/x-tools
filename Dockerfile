@@ -10,13 +10,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     build-essential \
     libdbus-1-3 \
     libpulse-mainloop-glib0 \
-    requests \
-    semantic_version \
-    patch \
-    py7zr \
-    texttable \
-    bs4 \
-    defusedxml
+    python3-requests \
+    python3-semantic_version \
+    python3-patch \
+    python3-py7zr \
+    python3-texttable \
+    python3-bs4 \
+    python3-defusedxml
 
 RUN which pip
 RUN python3 --version
