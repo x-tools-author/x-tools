@@ -1,4 +1,6 @@
-﻿FROM ubuntu:20.04
+﻿# https://github.com/vslotman/docker-aqtinstall/blob/master/Dockerfile
+
+FROM ubuntu:20.04
 
 RUN apt-get -y update
 RUN apt-get -y install software-properties-common
