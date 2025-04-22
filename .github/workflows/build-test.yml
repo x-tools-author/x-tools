@@ -4,10 +4,6 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch: # Enables manually
 
-env:
-  QT_VERSION: 6.8.3
-  UBUNTU_VERSION: 20.04
-
 jobs:
   build:
     name: Build
@@ -15,28 +11,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: pull ubuntu docker image
+      - name: build docker image
         run: |
-          pwd
-          docker pull ubuntu:${{ env.UBUNTU_VERSION }}
-      - name: run docker container
-        run: | # 启动docker容器时，挂载当前目录到容器内的/workspace目录
-          docker run -d --name ubuntu-${{ env.UBUNTU_VERSION }} -v ${{ github.workspace }}:/workspace -w /workspace ubuntu:${{ env.UBUNTU_VERSION }} tail -f /dev/null
-      - name: install dependencies
-        run: |
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get update"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get -y install software-properties-common"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "add-apt-repository ppa:deadsnakes/ppa -y"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get update"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get -y install python3.13"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get -y install python3-pip"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get -y install python3-setuptools"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get -y install python3-dev"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get -y install python3-venv"
-      - name: install aqtinstall
-        run: | # https://github.com/vslotman/docker-aqtinstall/blob/master/Dockerfile
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "apt-get -y install tree"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "tree /workspace -L 3"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "pip install -U pip"
-          docker exec -i ubuntu-${{ env.UBUNTU_VERSION }} bash -c "pip install aqtinstall"
-          docker exec -i --workdir /workspace ubuntu-${{ env.UBUNTU_VERSION }} bash -c "aqt install-qt --outputdir /workspace linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebsockets"
+          docker build -t x-tools:ubuntu-22.04 .
