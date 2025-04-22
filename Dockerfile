@@ -16,8 +16,8 @@ RUN python3 --version
 RUN ls -l /usr/bin/ | grep python
 RUN ls -l /usr/bin/ | grep pip
 RUN ln -sf /usr/bin/python3.13 /usr/bin/python3
-RUN pip3 install -U pip3
-RUN pip3 install aqtinstall
+RUN pip install -U pip
+RUN pip install aqtinstall
 
 ARG QT=6.8.3
 ARG QT_MODULES="qtcharts qtserialbus qtserialport qtwebsockets"
