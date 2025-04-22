@@ -2,14 +2,21 @@
 
 RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
 RUN add-apt-repository -y ppa:deadsnakes/ppa
-RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     git \
     cmake \
     python3.13 \
     python3-pip \
     build-essential \
     libdbus-1-3 \
-    libpulse-mainloop-glib0
+    libpulse-mainloop-glib0 \
+    requests \
+    semantic_version \
+    patch \
+    py7zr \
+    texttable \
+    bs4 \
+    defusedxml
 
 RUN which pip
 RUN python3 --version
