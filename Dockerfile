@@ -15,7 +15,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     patch \
     python3-texttable \
     python3-bs4 \
-    python3-defusedxml
+    python3-defusedxml \
+    python3-six
 
 RUN which pip
 RUN python3 --version
