@@ -19,7 +19,7 @@ ARG QT_MODULES=qtcharts qtserialbus qtserialport qtwebsockets
 ARG QT_HOST=linux
 ARG QT_TARGET=desktop
 ARG QT_ARCH= linux_gcc_64
-RUN aqt install --outputdir /opt/qt ${QT} ${QT_HOST} ${QT_TARGET} ${QT_ARCH} -m ${QT_MODULES}
+RUN aqt install-qt --outputdir /opt/qt ${QT} ${QT_HOST} ${QT_TARGET} ${QT_ARCH} -m ${QT_MODULES}
 
 ENV PATH /opt/qt/${QT}/gcc_64/bin:$PATH
 ENV QT_PLUGIN_PATH /opt/qt/${QT}/gcc_64/plugins/
