@@ -13,7 +13,8 @@ RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
 
 RUN which pip
 RUN python3 --version
-RUN ls -l /usr/bin/
+RUN ls -l /usr/bin/ | grep python
+RUN ls -l /usr/bin/ | grep pip
 RUN ln -sf /usr/bin/python3.13 /usr/bin/python3
 RUN pip3 install -U pip3
 RUN pip3 install aqtinstall
