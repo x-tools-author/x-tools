@@ -11,9 +11,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     libdbus-1-3 \
     libpulse-mainloop-glib0 \
     python3-requests \
-    python3-semantic_version \
-    python3-patch \
-    python3-py7zr \
+    python3-semantic-version \
+    patch \
     python3-texttable \
     python3-bs4 \
     python3-defusedxml
@@ -24,7 +23,7 @@ RUN ls -l /usr/bin/ | grep python
 RUN ls -l /usr/bin/ | grep pip
 RUN ln -sf /usr/bin/python3.13 /usr/bin/python3
 RUN pip install -U pip
-RUN pip install aqtinstall
+RUN pip install py7zr aqtinstall
 
 ARG QT=6.8.3
 ARG QT_MODULES="qtcharts qtserialbus qtserialport qtwebsockets"
