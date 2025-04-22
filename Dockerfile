@@ -19,6 +19,6 @@ RUN ln -sf /usr/bin/python3.13 /usr/bin/python3
 RUN which python3
 RUN python3 --version
 
-RUN pip install -U pip
+RUN pip3 install -U pip3
 RUN pip3 install aqtinstall
 RUN aqt install-qt --outputdir /opt/qt linux desktop 6.8.3 linux_gcc_64 -m qtcharts qtserialbus qtserialport qtwebview
