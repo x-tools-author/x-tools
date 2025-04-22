@@ -15,7 +15,7 @@ RUN ls -s /usr/bin/python3.13 /usr/bin/python3
 RUN pip3 install aqtinstall
 
 ARG QT=6.8.3
-ARG QT_MODULES=qtcharts qtserialbus qtserialport qtwebsockets
+ARG QT_MODULES="qtcharts qtserialbus qtserialport qtwebsockets"
 ARG QT_HOST=linux
 ARG QT_TARGET=desktop
 ARG QT_ARCH= linux_gcc_64
