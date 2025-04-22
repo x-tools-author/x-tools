@@ -1,4 +1,4 @@
-﻿FROM ubuntu:18.04
+﻿FROM ubuntu:20.04
 
 RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     git \
