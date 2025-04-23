@@ -102,7 +102,7 @@ void TableView::load(const QVariantMap &parameters)
         return;
     }
 
-    m_model->removeColumns(0, m_model->rowCount());
+    m_model->removeRows(0, m_model->rowCount());
     for (int i = 0; i < items.size(); i++) {
         auto item = items.at(i).toObject();
         m_model->insertRows(i, 1);
@@ -124,7 +124,7 @@ void TableView::onPushButtonClearClicked()
     int count = m_model->rowCount();
     auto ret = QMessageBox::warning(this,
                                     tr("Clear"),
-                                    tr("Are you sure to clear all items?").arg(count),
+                                    tr("Are you sure to clear all items?"),
                                     QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::Yes) {
         m_model->removeRows(0, count);
@@ -161,18 +161,17 @@ void TableView::onPushButtonImportClicked()
     }
 
     QFile file(fileName);
-    if (file.open(QFile::ReadOnly)) {
-        QByteArray json = file.readAll();
-        QJsonDocument doc = QJsonDocument::fromJson(json);
-        QJsonArray array = doc.array();
-        for (int i = 0; i < json.size(); i++) {
-            auto obj = array.at(i).toObject();
-            m_model->insertRows(m_model->rowCount(), 1);
-        }
-        file.close();
-    } else {
+    if (!file.open(QFile::ReadOnly)) {
         qWarning() << "Can not open file:" << file.errorString();
+        return;
     }
+
+    QByteArray json = file.readAll();
+    file.close();
+
+    QJsonDocument doc = QJsonDocument::fromJson(json);
+    QJsonObject obj = doc.object();
+    load(obj.toVariantMap());
 }
 
 void TableView::onPushButtonExportClicked()
