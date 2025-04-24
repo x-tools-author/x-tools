@@ -2,7 +2,7 @@
 
 RUN apt-get -y update
 RUN apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev ninja-build libopengl-dev libglu1-mesa-dev mesa-common-dev
-RUN apt-get install -y gcc g++ wget p7zip-full
+RUN apt-get install -y gcc g++ wget p7zip-full libicu-dev
 RUN apt-get install -y libxkb*
 
 # CMake
