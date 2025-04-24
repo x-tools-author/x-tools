@@ -69,29 +69,16 @@ jobs:
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
+    env:
+      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v4
-      with:
-        aqtversion: '==3.1.*'
-        version: ${{env.QT_VERSION}}
-        target: 'desktop'
-        arch: 'linux_gcc_64'
-        dir: ${{ github.workspace }}
-        modules: ${{env.QT_MODULES}}
-    - name: install-dependencies
-      run: |
-        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build libfuse-dev
     - name: Build for Linux
       run: |
         git fetch --tags
-        mkdir build
-        cd build
-        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/linux_gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -G "Ninja"
-        cmake --build . --target xTools
-        cmake --build . --target xTools_linux
+        docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+        cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
     - name: Upload Release Asset for Linux
       run: |
         dir bin/Linux/Release
