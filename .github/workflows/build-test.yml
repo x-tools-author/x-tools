@@ -20,3 +20,4 @@ jobs:
           docker pull ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
           docker run --rm -v ${{ github.workspace }}:/workspace ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64 /bin/bash -c "\
           cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
+          tree ./bin
