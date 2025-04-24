@@ -19,5 +19,5 @@ jobs:
           echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           docker pull ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
           docker run --rm -v ${{ github.workspace }}:/workspace ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64 /bin/bash -c "\
-          ls Qt/6.8.3/gcc_64/lib | grep libicu -l \
+          ls /opt/qt/lib | grep libicu -l \
           cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
