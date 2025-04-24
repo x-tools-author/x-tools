@@ -11,14 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CR_PAT: ${{ secrets.CR_PAT }}
-      DOCKER_IMAGE: x-tools-ubuntu-20.04:x86_64
+      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: build docker image
+      - name: pull docker image
         run: |
           echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-          docker pull ghcr.io/x-tools-author/${{ env.DOCKER_IMAGE }}
+          docker pull ${{ env.DOCKER_IMAGE }}
+      - name: check environment
+        run: |
           docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "ls /opt/qt/lib -l | grep libicu"
+      - name: build for linux with docker
+        run: |
           docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
           cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
