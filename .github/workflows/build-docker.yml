@@ -8,7 +8,6 @@ env:
 jobs:
   build:
     name: Build
-    permissions: write-all
     runs-on: ubuntu-latest
     env:
       CR_PAT: ${{ secrets.CR_PAT }}
