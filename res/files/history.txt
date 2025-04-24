@@ -6,6 +6,10 @@
     添加ble外围设备调试功能（非windows平台）
     添加sctp客户端与服务器调试功能（非windows平台）
 
+V7.x.x 2025年xx月xx日
+    bug修复：
+    01. linux平台下应用样式设置不生效
+
 V7.2.0 2025年04月23日
     新特性：
     01. 添加本地通信（QLocalSocket）
