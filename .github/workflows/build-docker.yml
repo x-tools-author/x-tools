@@ -19,6 +19,6 @@ jobs:
           ls -l
       - name: push docker image to github registry
         run: |
-          echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u USERNAME --password-stdin
+          echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u x-tools-author --password-stdin
           docker tag x-tools:ubuntu-20.04 ghcr.io/x-tools/x-tools:ubuntu-20.04
           docker push ghcr.io/x-tools/x-tools:ubuntu-20.04
