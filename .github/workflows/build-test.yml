@@ -28,7 +28,7 @@ jobs:
           docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "tree /opt/qt/lib -L 2"
       - name: build for linux with docker
         run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+          docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
           cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
       - name: check output files
         run: |
