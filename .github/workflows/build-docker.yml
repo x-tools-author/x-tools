@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
       - name: build docker image
         run: |
-          docker build -t x-tools-ubuntu-20.04:x86_64 .
+          docker build -t x-tools-ubuntu-20.04:x86_64 . -f docker/dockerfile-20.04
           ls -l
       - name: push docker image to github registry
         run: |
