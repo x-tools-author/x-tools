@@ -18,7 +18,7 @@ jobs:
       - name: install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y tree fuse libfuse2 fuse3 libfuse-dev
+          sudo apt-get install -y tree fuse libfuse2 libfuse-dev
           sudo modprobe fuse
           sudo lsmod | grep fuse
       - name: pull docker image
