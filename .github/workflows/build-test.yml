@@ -26,3 +26,6 @@ jobs:
         run: |
           docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
           cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
+      - name: check output files
+        run: |
+          tree ./bin/Linux/Release/xTools-linux -L 2
