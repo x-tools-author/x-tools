@@ -17,8 +17,10 @@ jobs:
         uses: actions/checkout@v4
       - name: install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y tree fuse libfuse2 fuse3 libfuse-dev
+          apt-get update
+          apt-get install -y tree fuse libfuse2 fuse3 libfuse-dev
+          modprobe fuse
+          lsmod | grep fuse
       - name: pull docker image
         run: |
           echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
