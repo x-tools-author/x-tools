@@ -21,7 +21,7 @@ jobs:
           docker pull ${{ env.DOCKER_IMAGE }}
       - name: check environment
         run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "tree /opt/qt/lib && ls /opt/qt/lib -l | grep libicu || true"
+          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "tree /opt/qt/lib -L 2"
       - name: build for linux with docker
         run: |
           docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\

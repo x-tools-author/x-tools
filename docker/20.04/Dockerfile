@@ -40,7 +40,7 @@ RUN 7z x qtserialbus.7z -o${QT_PREFIX} && rm qtserialbus.7z
 RUN 7z x qtwebsockets.7z -o${QT_PREFIX} && rm qtwebsockets.7z
 RUN 7z x qtsvg.7z -o${QT_PREFIX} && rm qtsvg.7z
 RUN 7z x qttools.7z -o${QT_PREFIX} && rm qttools.7z
-RUN 7z x icu.7z -o${QT_PREFIX} && rm icu.7z
+RUN 7z x icu.7z -o${QT_PREFIX}/lib && rm icu.7z
 
 # Set environment variables for Qt
 ENV LD_LIBRARY_PATH ${QT_PREFIX}/lib:$LD_LIBRARY_PATH
