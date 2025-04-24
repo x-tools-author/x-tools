@@ -1,7 +1,7 @@
 ﻿FROM ubuntu:20.04
 
 RUN apt-get -y update
-RUN apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev ninja-build
+RUN apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev ninja-build libopengl-dev ibglu1-mesa-dev mesa-common-dev
 RUN apt-get install -y gcc g++ wget p7zip-full
 
 # CMake
