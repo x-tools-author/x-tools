@@ -16,8 +16,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - name: pull docker image
-        run: |
-          echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        run: | # echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           docker pull ${{ env.DOCKER_IMAGE }}
       - name: check environment
         run: |
