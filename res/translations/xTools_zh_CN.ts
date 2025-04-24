@@ -2443,7 +2443,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="110"/>
         <source>Charts Test</source>
-        <translation>表格测试</translation>
+        <translation>图表测试</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="160"/>
