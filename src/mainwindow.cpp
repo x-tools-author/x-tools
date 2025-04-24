@@ -354,13 +354,13 @@ void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
         action->setCheckable(true);
         appStyleActionGroup->addAction(action);
 
-        if (key == xDefaultStyleName) {
+        if (key.toUpper() == xDefaultStyleName.toUpper()) {
             action->setChecked(true);
         }
 
         connect(action, &QAction::triggered, this, [=]() {
-            Application::SettingsKey settingKeys;
-            xApp->settings()->setValue(settingKeys.style, key);
+            Application::SettingsKey keys;
+            xApp->settings()->setValue(keys.style, key.toLower());
             tryToReboot();
         });
     }

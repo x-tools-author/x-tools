@@ -139,12 +139,12 @@ void Application::setupAppStyle()
 
     QString defaultStyle = xDefaultStyleName;
     QString style = settings->value(SettingsKey().style, defaultStyle).toString();
-    if (!QStyleFactory::keys().contains(style)) {
-        qWarning() << "The style is not supported:" << style;
-        return;
+    for (QString &key : QStyleFactory::keys()) {
+        if (key.toLower() == style.toLower()) {
+            Application::setStyle(QStyleFactory::create(style));
+        }
     }
 
-    Application::setStyle(QStyleFactory::create(style));
     qInfo() << "The current application style is:" << style;
 }
 
