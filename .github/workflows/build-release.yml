@@ -5,7 +5,7 @@ on:
       - 'v*'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  QT_VERSION: 6.8.2
+  QT_VERSION: 6.8.3
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 
 jobs:
@@ -52,7 +52,7 @@ jobs:
       run: |
         for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ github.ref_name }} "%%f"
   release-for-linux:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: update-release
     steps:
     - name: Checkout
@@ -71,7 +71,7 @@ jobs:
         modules: ${{env.QT_MODULES}}
     - name: install-dependencies
       run: |
-        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build
+        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build libfuse-dev
     - name: Build for Linux
       run: |
         git fetch --tags

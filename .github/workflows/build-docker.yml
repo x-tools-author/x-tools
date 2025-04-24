@@ -1,0 +1,23 @@
+name: build-test
+on:
+  workflow_dispatch: # Enables manually
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: build docker image
+        run: |
+          docker build -t x-tools:ubuntu-20.04 .
+          ls -l
+      - name: push docker image to github registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker tag x-tools:ubuntu-20.04 ghcr.io/x-tools/x-tools:ubuntu-20.04
+          docker push ghcr.io/x-tools/x-tools:ubuntu-20.04
