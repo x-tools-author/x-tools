@@ -29,7 +29,7 @@ jobs:
       - name: build for linux with docker
         run: |
           docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-          modprobe fuse && cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
+          cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
       - name: check output files
         run: |
           tree ./bin/Linux/Release/xTools-linux -L 2
