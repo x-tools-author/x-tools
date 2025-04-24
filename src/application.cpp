@@ -195,7 +195,9 @@ void Application::setupColorScheme()
     QSettings *settings = Application::settings();
     auto def = qApp->styleHints()->colorScheme();
     int colorScheme = settings->value(SettingsKey().colorScheme, static_cast<int>(def)).toInt();
-    qApp->styleHints()->setColorScheme(static_cast<Qt::ColorScheme>(colorScheme));
+    Qt::ColorScheme cookedColorScheme = static_cast<Qt::ColorScheme>(colorScheme);
+    QStyleHints *hints = qApp->styleHints();
+    hints->setColorScheme(cookedColorScheme);
     qInfo() << "The current color scheme is:" << qApp->styleHints()->colorScheme();
 #endif
 }

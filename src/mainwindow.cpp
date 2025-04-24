@@ -450,6 +450,7 @@ void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
         Qt::ColorScheme colorScheme = it.key();
         connect(action, &QAction::triggered, this, [=]() {
             Application::SettingsKey keys;
+            qInfo() << colorScheme;
             xApp->settings()->setValue(keys.colorScheme, static_cast<int>(colorScheme));
             xApp->setupColorScheme();
         });

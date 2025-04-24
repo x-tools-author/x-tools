@@ -69,7 +69,7 @@ QssMgr::QssMgr(QObject* parent)
     }
 
     QString fileName = m_settings->fileName();
-    QString settingsPath = fileName.left(fileName.lastIndexOf('/') + 1);
+    QString settingsPath = fileName.left(fileName.lastIndexOf('/'));
 
     QDir dir(settingsPath);
     if (!dir.exists("output")) {
