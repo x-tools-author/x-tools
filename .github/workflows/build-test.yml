@@ -12,4 +12,4 @@ jobs:
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
           dir c:
-          echo %PATH%
+          echo %%PATH%%
