@@ -14,7 +14,7 @@ chmod +x /opt/qt/6.8.3/android_armv7/bin/qt-cmake
     -S . \
     -B build/android_armv7 \
     -DANDROID_ABI=armeabi-v7a \
-    -DQT_HOST_PATH:PATH="/opt/qt/gcc_64" \
+    -DQT_HOST_PATH:PATH="/opt/qt/6.8.3/gcc_64" \
     -DCMAKE_CXX_COMPILER:FILEPATH="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++" \
     -DCMAKE_BUILD_TYPE:STRING=Release
 
@@ -30,7 +30,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-/opt/qt/gcc_64/bin/androiddeployqt \
+/opt/qt/6.8.3/gcc_64/bin/androiddeployqt \
     --input build\armeabi_v7a\android-xTools-deployment-settings.json \
     --output build\armeabi_v7a\android-build \
     --android-platform android-35 \
