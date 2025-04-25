@@ -4,7 +4,6 @@
 [![build-ubuntu](https://github.com/x-tools-author/x-tools/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-ubuntu.yml)
 [![build-macos](https://github.com/x-tools-author/x-tools/actions/workflows/build-macos.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-macos.yml)
 [![build-android(docker)](https://github.com/x-tools-author/x-tools/actions/workflows/build-android-linux.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-android-linux.yml)
-[![build-android(windows)](https://github.com/x-tools-author/x-tools/actions/workflows/build-android-windows.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-android-windows.yml)
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/x-tools.svg)](https://repology.org/project/x-tools/versions)
 
