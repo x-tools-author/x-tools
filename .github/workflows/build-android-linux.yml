@@ -37,7 +37,7 @@ jobs:
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
           version: ${{ matrix.version }}
-      - name: Install Qt(mingw)
+      - name: Install Qt(linux_gcc_64)
         uses: jurplel/install-qt-action@v4
         with:
           aqtversion: '==3.1.*'
@@ -48,10 +48,9 @@ jobs:
           modules: ${{env.QT_MODULES}}
           version: ${{ matrix.version }}
       - name: Configure for android
-        shell: cmd
         run: |
           git fetch --tags
-          set JAVA_HOME=%JAVA_HOME_17_X64%
+          export JAVA_HOME=%JAVA_HOME_17_X64%
           ${{ github.workspace }}\Qt\${{ matrix.version }}\android_armv7\bin\qt-cmake.bat ^
           -G "MinGW Makefiles" ^
           -S . ^
@@ -69,13 +68,13 @@ jobs:
       - name: Build for android
         shell: cmd
         run: |
-          set JAVA_HOME=%JAVA_HOME_17_X64%
+          export JAVA_HOME=%JAVA_HOME_17_X64%
           echo %JAVA_HOME%
           cmake --build build\armeabi_v7a --target all --config Release
       - name: Deploy for Android
         shell: cmd
         run: |
-          set JAVA_HOME=%JAVA_HOME_17_X64%
+          export JAVA_HOME=%JAVA_HOME_17_X64%
           echo %JAVA_HOME%
           ${{ github.workspace }}\Qt\${{ matrix.version }}\mingw_64\bin\androiddeployqt.exe ^
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
