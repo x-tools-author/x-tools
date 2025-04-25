@@ -60,7 +60,6 @@ ENV ANDROID_SDK_ROOT=${HOST_ANDROID_SDK_ROOT}
 COPY sdk/build-tools $ANDROID_HOME/build-tools
 COPY sdk/cmdline-tools $ANDROID_HOME/cmdline-tools
 COPY sdk/extras $ANDROID_HOME/extras
-COPY sdk/Jdk $ANDROID_HOME/Jdk
 COPY sdk/licenses $ANDROID_HOME/licenses
 COPY sdk/ndk/27.2.12479018 $ANDROID_HOME/ndk/27.2.12479018
 COPY sdk/sdk/platforms/android-35 $ANDROID_HOME/platforms/android-35

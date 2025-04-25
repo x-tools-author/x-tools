@@ -38,7 +38,6 @@ jobs:
           mkdir -p sdk/build-tools
           mkdir -p sdk/cmdline-tools
           mkdir -p sdk/extras
-          mkdir -p sdk/Jdk
           mkdir -p sdk/licenses
           mkdir -p sdk/ndk/27.2.12479018
           mkdir -p sdk/platforms
@@ -46,7 +45,6 @@ jobs:
           cp -r $ANDROID_HOME/build-tools sdk/build-tools
           cp -r $ANDROID_HOME/cmdline-tools sdk/cmdline-tools
           cp -r $ANDROID_HOME/extras sdk/extras
-          cp -r $ANDROID_HOME/Jdk sdk/Jdk
           cp -r $ANDROID_HOME/licenses sdk/licenses
           cp -r $ANDROID_HOME/ndk/27.2.12479018 sdk/ndk/27.2.12479018
           cp -r $ANDROID_HOME/platforms/android-35 sdk/platforms/android-35
