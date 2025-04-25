@@ -93,12 +93,12 @@ ENV ANDROID_SDK_ROOT=${ANDROID_HOME}
 
 # 分开复制，避免文件过大
 # failed to walk /var/lib/docker/tmp/buildkit-mount...: no such file or directory
-COPY ${HOST_ANDROID_HOME}/build-tools ${ANDROID_HOME}/build-tools
-COPY ${HOST_ANDROID_HOME}/cmake ${ANDROID_HOME}/cmake
-COPY ${HOST_ANDROID_HOME}/cmdline-tools ${ANDROID_HOME}/cmdline-tools
-COPY ${HOST_ANDROID_HOME}/extras ${ANDROID_HOME}/extras
-COPY ${HOST_ANDROID_HOME}/licenses ${ANDROID_HOME}/licenses
-COPY ${HOST_ANDROID_HOME}/ndk/${HOST_NDK_VERSION} ${ANDROID_HOME}/ndk/${HOST_NDK_VERSION}
-COPY ${HOST_ANDROID_HOME}/packages-list.txt ${ANDROID_HOME}/packages-list.txt
-COPY ${HOST_ANDROID_HOME}/platform-tools ${ANDROID_HOME}/platform-tools
-COPY ${HOST_ANDROID_HOME}/platforms/android-34 ${ANDROID_HOME}/platforms/android-34
+# COPY ${HOST_ANDROID_HOME}/build-tools ${ANDROID_HOME}/build-tools
+# COPY ${HOST_ANDROID_HOME}/cmake ${ANDROID_HOME}/cmake
+# COPY ${HOST_ANDROID_HOME}/cmdline-tools ${ANDROID_HOME}/cmdline-tools
+# COPY ${HOST_ANDROID_HOME}/extras ${ANDROID_HOME}/extras
+# COPY ${HOST_ANDROID_HOME}/licenses ${ANDROID_HOME}/licenses
+# COPY ${HOST_ANDROID_HOME}/ndk/${HOST_NDK_VERSION} ${ANDROID_HOME}/ndk/${HOST_NDK_VERSION}
+# COPY ${HOST_ANDROID_HOME}/packages-list.txt ${ANDROID_HOME}/packages-list.txt
+# COPY ${HOST_ANDROID_HOME}/platform-tools ${ANDROID_HOME}/platform-tools
+# COPY ${HOST_ANDROID_HOME}/platforms/android-34 ${ANDROID_HOME}/platforms/android-34
