@@ -13,6 +13,7 @@ RUN chmod +x cmake-3.30.8-linux-x86_64.sh
 RUN ./cmake-3.30.8-linux-x86_64.sh --skip-license --prefix=/usr/local
 RUN rm cmake-3.30.8-linux-x86_64.sh
 
+#---------------------------------------------------------------------------------------------------
 # Qt
 ENV QT_BAST_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345qtbase-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
 ENV QT_CHARTS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.addons.qtcharts.linux_gcc_64/6.8.3-0-202503201345qtcharts-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
@@ -22,10 +23,10 @@ ENV QT_WEB_SOCKETS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/d
 ENV QT_SVG_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345qtsvg-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
 ENV QT_TOOLS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345qttools-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
 ENV QT_ICU_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345icu-linux-Rhel8.6-x86_64.7z
-ENV QT_PREFIX=/opt/qt
+ENV QT_PREFIX_GCC=/opt/qt/gcc_64
 
 # Extract Qt
-RUN mkdir -p ${QT_PREFIX}
+RUN mkdir -p ${QT_PREFIX_GCC}
 RUN wget ${QT_BAST_URL} -O qtbase.7z
 RUN wget ${QT_CHARTS_URL} -O qtcharts.7z
 RUN wget ${QT_SERIAL_PORT_URL} -O qtserialport.7z
@@ -35,18 +36,21 @@ RUN wget ${QT_SVG_URL} -O qtsvg.7z
 RUN wget ${QT_TOOLS_URL} -O qttools.7z
 RUN wget ${QT_ICU_URL} -O icu.7z
 
-RUN 7z x qtbase.7z -o${QT_PREFIX} && rm qtbase.7z
-RUN 7z x qtcharts.7z -o${QT_PREFIX} && rm qtcharts.7z
-RUN 7z x qtserialport.7z -o${QT_PREFIX} && rm qtserialport.7z
-RUN 7z x qtserialbus.7z -o${QT_PREFIX} && rm qtserialbus.7z
-RUN 7z x qtwebsockets.7z -o${QT_PREFIX} && rm qtwebsockets.7z
-RUN 7z x qtsvg.7z -o${QT_PREFIX} && rm qtsvg.7z
-RUN 7z x qttools.7z -o${QT_PREFIX} && rm qttools.7z
-RUN 7z x icu.7z -o${QT_PREFIX}/lib && rm icu.7z
+RUN 7z x qtbase.7z -o${QT_PREFIX_GCC} && rm qtbase.7z
+RUN 7z x qtcharts.7z -o${QT_PREFIX_GCC} && rm qtcharts.7z
+RUN 7z x qtserialport.7z -o${QT_PREFIX_GCC} && rm qtserialport.7z
+RUN 7z x qtserialbus.7z -o${QT_PREFIX_GCC} && rm qtserialbus.7z
+RUN 7z x qtwebsockets.7z -o${QT_PREFIX_GCC} && rm qtwebsockets.7z
+RUN 7z x qtsvg.7z -o${QT_PREFIX_GCC} && rm qtsvg.7z
+RUN 7z x qttools.7z -o${QT_PREFIX_GCC} && rm qttools.7z
+RUN 7z x icu.7z -o${QT_PREFIX_GCC}/lib && rm icu.7z
 
 # Set environment variables for Qt
-ENV LD_LIBRARY_PATH ${QT_PREFIX}/lib:$LD_LIBRARY_PATH
-ENV PATH ${QT_PREFIX}/bin:$PATH
-ENV QT_PLUGIN_PATH ${QT_PREFIX}/plugins/
-ENV QML_IMPORT_PATH ${QT_PREFIX}/qml/
-ENV QML2_IMPORT_PATH ${QT_PREFIX}/qml/
+ENV LD_LIBRARY_PATH ${QT_PREFIX_GCC}/lib:$LD_LIBRARY_PATH
+ENV PATH ${QT_PREFIX_GCC}/bin:$PATH
+ENV QT_PLUGIN_PATH ${QT_PREFIX_GCC}/plugins/
+ENV QML_IMPORT_PATH ${QT_PREFIX_GCC}/qml/
+ENV QML2_IMPORT_PATH ${QT_PREFIX_GCC}/qml/
+
+#---------------------------------------------------------------------------------------------------
+# Qt Android
