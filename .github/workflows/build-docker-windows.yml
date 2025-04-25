@@ -15,31 +15,21 @@ jobs:
     steps:
       - name: Pull respository
         uses: actions/checkout@v4
-      # - name: Install Qt(android)
-      #   uses: jurplel/install-qt-action@v4
-      #   with:
-      #     aqtversion: '==3.1.*'
-      #     target: android
-      #     arch: android_armv7
-      #     host: linux
-      #     dir: ${{ github.workspace }}
-      #     modules: ${{env.QT_MODULES}}
-      #     version: ${{ env.QT_VERSION }}
-      # - name: Install Qt(linux_gcc_64)
-      #   uses: jurplel/install-qt-action@v4
-      #   with:
-      #     aqtversion: '==3.1.*'
-      #     target: desktop
-      #     arch: linux_gcc_64
-      #     host: linux
-      #     dir: ${{ github.workspace }}
-      #     modules: ${{env.QT_MODULES}}
-      #     version: ${{ env.QT_VERSION }}
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: '==3.1.*'
+          dir: ${{ github.workspace }}
+          version: ${{ env.QT_VERSION }}
+          target: desktop
+          arch: win64_msvc2022_64
+          modules: ${{ env.QT_MODULES }}
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
           docker build -t x-tools-windows-2022:amd64 . -f docker/win-ltsc2022/Dockerfile
       - name: Push docker image to github registry
         run: |
+          dir c:
           echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           docker rmi ghcr.io/x-tools-author/x-tools-windows-2022:amd64 || true
           docker tag x-tools-windows-2022:amd64 ghcr.io/x-tools-author/x-tools-windows-2022:amd64
