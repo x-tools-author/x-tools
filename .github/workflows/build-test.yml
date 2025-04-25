@@ -37,15 +37,14 @@ jobs:
         run: | # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
           echo $ANDROID_HOME
           sudo tree -L 2 $ANDROID_HOME
-          DOCKER_BUILDKIT=0
-          sudo docker build --no-cache -t x-tools-ubuntu-20.04-1:x86_64 . -f docker/20.04-android/Dockerfile \
+          docker build -t x-tools-ubuntu-20.04-1:x86_64 . -f docker/20.04-android/Dockerfile \
             --build-arg HOST_QT_ROOT=${{ github.workspace }}/Qt \
             --build-arg HOST_JAVA_HOME=$JAVA_HOME_17_X64 \
             --build-arg HOST_ANDROID_HOME=$ANDROID_HOME \
             --build-arg HOST_NDK_VERSION=21.4.7075529
-      - name: push docker image to github registry
-        run: |
-          echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-          docker rmi ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64 || true
-          docker tag x-tools-ubuntu-20.04-1:x86_64 ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64
-          docker push ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64
+      # - name: push docker image to github registry
+      #   run: |
+      #     echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      #     docker rmi ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64 || true
+      #     docker tag x-tools-ubuntu-20.04-1:x86_64 ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64
+      #     docker push ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64
