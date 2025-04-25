@@ -12,7 +12,7 @@ chmod +x /opt/qt/6.8.3/android_armv7/bin/qt-cmake
 /opt/qt/6.8.3/android_armv7/bin/qt-cmake \
     -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles" \
     -S . \
-    -B build/android_armv7 \
+    -B build/armeabi_v7a \
     -DANDROID_ABI=armeabi-v7a \
     -DQT_HOST_PATH:PATH="/opt/qt/6.8.3/gcc_64" \
     -DCMAKE_CXX_COMPILER:FILEPATH="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++" \
