@@ -35,8 +35,8 @@ jobs:
       #     version: ${{ env.QT_VERSION }}
       - name: build docker image
         run: | # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
-          cp $ANDROID_HOME sdk
-          cp $JAVA_HOME_17_X64 jdk
+          cp -r $ANDROID_HOME sdk
+          cp -r $JAVA_HOME_17_X64 jdk
           sudo docker build -t x-tools-ubuntu-20.04-1:x86_64 . -f docker/20.04-android/Dockerfile \
           --build-arg HOST_JAVA_HOME=${JAVA_HOME_17_X64} \
           --build-arg HOST_ANDROID_NDK=${ANDROID_NDK} \
