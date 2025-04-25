@@ -38,12 +38,12 @@ jobs:
           docker build -t x-tools-ubuntu-20.04-1:x86_64 . -f docker/20.04-android/Dockerfile \
             --build-arg HOST_QT_ROOT=${{ github.workspace }}/Qt \
             --build-arg HOST_JAVA_HOME=$JAVA_HOME_17_X64 \
-            --build-arg HOST_ANDROID_HOME=$ANDROID_HOME \
-            --build-arg HOST_ANDROID_NDK=$HOST_ANDROID_NDK \
-            --build-arg HOST_ANDROID_NDK_HOME=$ANDROID_NDK_HOME \
-            --build-arg HOST_ANDROID_NDK_LATEST_HOME=$ANDROID_NDK_LATEST_HOME \
-            --build-arg HOST_ANDROID_NDK_ROOT=$ANDROID_NDK_ROOT \
-            --build-arg HOST_ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT
+            --build-arg HOST_ANDROID_HOME=${ANDROID_HOME} \
+            --build-arg HOST_ANDROID_NDK=${HOST_ANDROID_NDK} \
+            --build-arg HOST_ANDROID_NDK_HOME=${ANDROID_NDK_HOME} \
+            --build-arg HOST_ANDROID_NDK_LATEST_HOME=${ANDROID_NDK_LATEST_HOME} \
+            --build-arg HOST_ANDROID_NDK_ROOT=${ANDROID_NDK_ROOT} \
+            --build-arg HOST_ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT}
       - name: push docker image to github registry
         run: |
           echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
