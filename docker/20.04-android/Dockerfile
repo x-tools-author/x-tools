@@ -15,15 +15,15 @@ RUN rm cmake-3.30.8-linux-x86_64.sh
 
 #---------------------------------------------------------------------------------------------------
 # Qt
-ENV QT_BAST_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345qtbase-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
-ENV QT_CHARTS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.addons.qtcharts.linux_gcc_64/6.8.3-0-202503201345qtcharts-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
-ENV QT_SERIAL_PORT_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.addons.qtserialport.linux_gcc_64/6.8.3-0-202503201345qtserialport-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
-ENV QT_SERIAL_BUS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.addons.qtserialbus.linux_gcc_64/6.8.3-0-202503201345qtserialbus-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
-ENV QT_WEB_SOCKETS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.addons.qtwebsockets.linux_gcc_64/6.8.3-0-202503201345qtwebsockets-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
-ENV QT_SVG_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345qtsvg-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
-ENV QT_TOOLS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345qttools-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
-ENV QT_ICU_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345icu-linux-Rhel8.6-x86_64.7z
-ENV QT_PREFIX_GCC=/opt/qt/gcc_64
+ARG QT_BAST_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345qtbase-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
+ARG QT_CHARTS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.addons.qtcharts.linux_gcc_64/6.8.3-0-202503201345qtcharts-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
+ARG QT_SERIAL_PORT_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.addons.qtserialport.linux_gcc_64/6.8.3-0-202503201345qtserialport-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
+ARG QT_SERIAL_BUS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.addons.qtserialbus.linux_gcc_64/6.8.3-0-202503201345qtserialbus-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
+ARG QT_WEB_SOCKETS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.addons.qtwebsockets.linux_gcc_64/6.8.3-0-202503201345qtwebsockets-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
+ARG QT_SVG_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345qtsvg-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
+ARG QT_TOOLS_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345qttools-Linux-RHEL_8_10-GCC-Linux-RHEL_8_10-X86_64.7z
+ARG QT_ICU_URL=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/qt.qt6.683.linux_gcc_64/6.8.3-0-202503201345icu-linux-Rhel8.6-x86_64.7z
+ARG QT_PREFIX_GCC=/opt/qt/gcc_64
 
 # Extract Qt
 RUN mkdir -p ${QT_PREFIX_GCC}
@@ -54,3 +54,29 @@ ENV QML2_IMPORT_PATH ${QT_PREFIX_GCC}/qml/
 
 #---------------------------------------------------------------------------------------------------
 # Qt Android
+ARG QT_BAST_ARMv7_URL=https://download.qt.io/online/qtsdkrepository/all_os/android/qt6_683/qt6_683_armv7/qt.qt6.683.android_armv7/6.8.3-0-202503201334qtbase-Windows-Windows_10_22H2-Clang-Android-Android_ANY-ARMv7.7z
+ARG QT_CHARTS_ARMv7_URL=https://download.qt.io/online/qtsdkrepository/all_os/android/qt6_683/qt6_683_armv7/qt.qt6.683.addons.qtcharts.android_armv7/6.8.3-0-202503201334qtcharts-Windows-Windows_10_22H2-Clang-Android-Android_ANY-ARMv7.7z
+ARG QT_SERIAL_PORT_ARMv7_URL=https://download.qt.io/online/qtsdkrepository/all_os/android/qt6_683/qt6_683_armv7/qt.qt6.683.addons.qtserialport.android_armv7/6.8.3-0-202503201334qtserialport-Windows-Windows_10_22H2-Clang-Android-Android_ANY-ARMv7.7z
+ARG QT_SERIAL_BUS_ARMv7_URL=https://download.qt.io/online/qtsdkrepository/all_os/android/qt6_683/qt6_683_armv7/qt.qt6.683.addons.qtserialbus.android_armv7/6.8.3-0-202503201334qtserialbus-Windows-Windows_10_22H2-Clang-Android-Android_ANY-ARMv7.7z
+ARG QT_WEB_SOCKETS_ARMv7_URL=https://download.qt.io/online/qtsdkrepository/all_os/android/qt6_683/qt6_683_armv7/qt.qt6.683.addons.qtwebsockets.android_armv7/6.8.3-0-202503201334qtwebsockets-Windows-Windows_10_22H2-Clang-Android-Android_ANY-ARMv7.7z
+ARG QT_SVG_ARMv7_URL=https://download.qt.io/online/qtsdkrepository/all_os/android/qt6_683/qt6_683_armv7/qt.qt6.683.android_armv7/6.8.3-0-202503201334qtsvg-Windows-Windows_10_22H2-Clang-Android-Android_ANY-ARMv7.7z
+ARG QT_TOOLS_ARMv7_URL=https://download.qt.io/online/qtsdkrepository/all_os/android/qt6_683/qt6_683_armv7/qt.qt6.683.android_armv7/6.8.3-0-202503201334qttools-Windows-Windows_10_22H2-Clang-Android-Android_ANY-ARMv7.7z
+ARG QT_PREFIX_ARMv7=/opt/qt/android_armv7
+
+# Extract Qt
+RUN mkdir -p ${QT_PREFIX_ARMv7}
+RUN wget ${QT_BAST_ARMv7_URL} -O qtbase.7z
+RUN wget ${QT_CHARTS_ARMv7_URL} -O qtcharts.7z
+RUN wget ${QT_SERIAL_PORT_ARMv7_URL} -O qtserialport.7z
+RUN wget ${QT_SERIAL_BUS_ARMv7_URL} -O qtserialbus.7z
+RUN wget ${QT_WEB_SOCKETS_ARMv7_URL} -O qtwebsockets.7z
+RUN wget ${QT_SVG_ARMv7_URL} -O qtsvg.7z
+RUN wget ${QT_TOOLS_ARMv7_URL} -O qttools.7z
+
+RUN 7z x qtbase.7z -o${QT_PREFIX_ARMv7} && rm qtbase.7z
+RUN 7z x qtcharts.7z -o${QT_PREFIX_ARMv7} && rm qtcharts.7z
+RUN 7z x qtserialport.7z -o${QT_PREFIX_ARMv7} && rm qtserialport.7z
+RUN 7z x qtserialbus.7z -o${QT_PREFIX_ARMv7} && rm qtserialbus.7z
+RUN 7z x qtwebsockets.7z -o${QT_PREFIX_ARMv7} && rm qtwebsockets.7z
+RUN 7z x qtsvg.7z -o${QT_PREFIX_ARMv7} && rm qtsvg.7z
+RUN 7z x qttools.7z -o${QT_PREFIX_ARMv7} && rm qttools.7z

@@ -1,0 +1,26 @@
+name: build-docker-android
+on:
+  workflow_dispatch: # Enables manually
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      CR_PAT: ${{ secrets.CR_PAT }}
+      QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: build docker image
+        run: |
+          docker build -t x-tools-android:armv7 . -f docker/20.04-android/Dockerfile
+      - name: push docker image to github registry
+        run: |
+          echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker rmi ghcr.io/x-tools-author/x-tools-android:armv7 || true
+          docker tag x-tools-android:armv7 ghcr.io/x-tools-author/x-tools-android:armv7
+          docker push ghcr.io/x-tools-author/x-tools-android:armv7
