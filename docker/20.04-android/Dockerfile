@@ -16,7 +16,7 @@ RUN rm cmake-3.30.8-linux-x86_64.sh
 # Copy Qt files from host to container
 ARG HOST_QT_ROOT=Qt
 ENV QT_ROOT=/opt/qt
-COPY ${HOST_QT_ROOT} ${QT_ROOT}
+# COPY ${HOST_QT_ROOT} ${QT_ROOT}
 
 # Copy Android JDK from host to container
 ARG HOST_JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
