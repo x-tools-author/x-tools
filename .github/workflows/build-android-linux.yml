@@ -20,7 +20,8 @@ jobs:
         os: [ubuntu-24.04]
         version: [6.8.3]
     env:
-      QT_ANDROID_KEYSTORE_PATH: ${{ github.workspace }}/res/android/android_release.keystore
+      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
+      QT_ANDROID_KEYSTORE_PATH: res/android/android_release.keystore
       QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
       QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
       QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
@@ -30,7 +31,7 @@ jobs:
       - name: Build for Android with Docker
         run: |
           git fetch --tags
-          docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
           cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-android-armv7.sh \
           ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
 
