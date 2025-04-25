@@ -8,5 +8,5 @@
 # $4: ANDROID_KEYSTORE_KEY_PASS
 
 tree -L 3 /opt/qt
-cmake -DCMAKE_PREFIX_PATH='/opt/qt/6.8.3/android_armv7' -DCMAKE_BUILD_TYPE:STRING=Release -G "Ninja"
+cmake -DCMAKE_PREFIX_PATH='/opt/qt/6.8.3/android_armv7' -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles"
 cmake --build . --target xTools
