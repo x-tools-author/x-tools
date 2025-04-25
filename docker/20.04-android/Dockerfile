@@ -80,3 +80,40 @@ RUN 7z x qtserialbus.7z -o${QT_PREFIX_ARMv7} && rm qtserialbus.7z
 RUN 7z x qtwebsockets.7z -o${QT_PREFIX_ARMv7} && rm qtwebsockets.7z
 RUN 7z x qtsvg.7z -o${QT_PREFIX_ARMv7} && rm qtsvg.7z
 RUN 7z x qttools.7z -o${QT_PREFIX_ARMv7} && rm qttools.7z
+
+#---------------------------------------------------------------------------------------------------
+# JDK 17
+ARG JDK17_URL=https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz
+ARG JDK17_PREFIX=/opt/jdk17
+RUN wget ${JDK17_URL} -O jdk17.tar.gz
+RUN mkdir -p ${JDK17_PREFIX}
+RUN tar -xzf jdk17.tar.gz -C ${JDK17_PREFIX} --strip-components=1
+RUN rm jdk17.tar.gz
+
+ENV JAVA_HOME ${JDK17_PREFIX}
+
+#---------------------------------------------------------------------------------------------------
+# NDK 25
+ARG NDK25_URL=https://dl.google.com/android/repository/android-ndk-r25-linux.zip
+ARG NDK25_PREFIX=/opt/android-ndk-r25
+RUN wget ${NDK25_URL} -O android-ndk-r25-linux.zip
+RUN mkdir -p ${NDK25_PREFIX}
+RUN unzip android-ndk-r25-linux.zip -d ${NDK25_PREFIX} && rm android-ndk-r25-linux.zip
+
+ENV NDK_HOME ${NDK25_PREFIX}
+ENV ANDROID_NDK_HOME ${NDK25_PREFIX}
+ENV PATH ${NDK25_PREFIX}/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
+ENV PATH ${NDK25_PREFIX}/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH
+
+#---------------------------------------------------------------------------------------------------
+# SDK 34
+ARG SDK34_URL=https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
+ARG SDK34_PREFIX=/opt/android-sdk
+RUN wget ${SDK34_URL} -O commandlinetools-linux.zip
+RUN mkdir -p ${SDK34_PREFIX}/cmdline-tools
+RUN unzip commandlinetools-linux.zip -d ${SDK34_PREFIX}/cmdline-tools && rm commandlinetools-linux.zip
+RUN mv ${SDK34_PREFIX}/cmdline-tools/cmdline-tools ${SDK34_PREFIX}/cmdline-tools/latest
+RUN yes | ${SDK34_PREFIX}/cmdline-tools/latest/bin/sdkmanager --sdk_root=${SDK34_PREFIX} --licenses
+
+ENV ANDROID_HOME ${SDK34_PREFIX}
+ENV ANDROID_SDK_ROOT ${SDK34_PREFIX}
