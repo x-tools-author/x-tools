@@ -7,62 +7,12 @@ jobs:
     name: Build
     runs-on: ubuntu-22.04
     env:
-      CR_PAT: ${{ secrets.CR_PAT }}
-      QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
-      QT_VERSION: 6.8.3
+      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
     steps:
-      - name: Pull respository
+      - name: checkout
         uses: actions/checkout@v4
-      # - name: Install Qt(android)
-      #   uses: jurplel/install-qt-action@v4
-      #   with:
-      #     aqtversion: '==3.1.*'
-      #     target: android
-      #     arch: android_armv7
-      #     host: linux
-      #     dir: ${{ github.workspace }}
-      #     modules: ${{env.QT_MODULES}}
-      #     version: ${{ env.QT_VERSION }}
-      # - name: Install Qt(linux_gcc_64)
-      #   uses: jurplel/install-qt-action@v4
-      #   with:
-      #     aqtversion: '==3.1.*'
-      #     target: desktop
-      #     arch: linux_gcc_64
-      #     host: linux
-      #     dir: ${{ github.workspace }}
-      #     modules: ${{env.QT_MODULES}}
-      #     version: ${{ env.QT_VERSION }}
-      - name: Build docker image
-        run: | # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
-          mkdir -p sdk/build-tools
-          mkdir -p sdk/cmdline-tools
-          mkdir -p sdk/extras
-          mkdir -p sdk/licenses
-          mkdir -p sdk/ndk/27.2.12479018
-          mkdir -p sdk/platforms
-          mkdir -p sdk/platform-tools
-          cp -r $ANDROID_HOME/build-tools sdk/build-tools
-          cp -r $ANDROID_HOME/cmdline-tools sdk/cmdline-tools
-          cp -r $ANDROID_HOME/extras sdk/extras
-          cp -r $ANDROID_HOME/licenses sdk/licenses
-          cp -r $ANDROID_HOME/ndk/27.2.12479018 sdk/ndk/27.2.12479018
-          cp -r $ANDROID_HOME/platforms/android-35 sdk/platforms/android-35
-          cp -r $ANDROID_HOME/platform-tools sdk/platform-tools
-          cp -r $ANDROID_HOME/.knownPackages sdk/.knownPackages
-          cp -r $JAVA_HOME_17_X64 jdk
-          ls -l
-          sudo docker build -t x-tools-ubuntu-20.04-1:x86_64 . -f docker/20.04-android/Dockerfile \
-          --build-arg HOST_JAVA_HOME=${JAVA_HOME_17_X64} \
-          --build-arg HOST_ANDROID_NDK=${ANDROID_NDK} \
-          --build-arg HOST_ANDROID_NDK_HOME=${ANDROID_NDK_HOME} \
-          --build-arg HOST_ANDROID_NDK_LATEST_HOME=${ANDROID_NDK_LATEST_HOME} \
-          --build-arg HOST_ANDROID_NDK_ROOT=${ANDROID_NDK_ROOT} \
-          --build-arg HOST_ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT}
-
-      # - name: push docker image to github registry
-      #   run: |
-      #     echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-      #     docker rmi ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64 || true
-      #     docker tag x-tools-ubuntu-20.04-1:x86_64 ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64
-      #     docker push ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64
+      - name: Build for Linux
+        run: |
+          git fetch --tags
+          docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+          cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
