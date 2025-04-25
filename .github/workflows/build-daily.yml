@@ -13,7 +13,7 @@ env:
   QT_VERSION: 6.8.3
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
   DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
-  QT_ANDROID_KEYSTORE_PATH: res\android\android_release.keystore
+  QT_ANDROID_KEYSTORE_PATH: res/android/android_release.keystore
   QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
   QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
   QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
