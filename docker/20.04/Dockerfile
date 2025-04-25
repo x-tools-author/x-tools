@@ -37,13 +37,9 @@ RUN rm cmake-3.30.8-linux-x86_64.sh
 
 # Copy Qt files from host to container
 ENV QT_ROOT=/opt/qt
-COPY Qt ${QT_ROOT}
+#COPY Qt ${QT_ROOT}
 
-# Copy jdk files from host to container
-ARG HOST_JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-ENV JAVA_HOME=${HOST_JAVA_HOME}
-COPY jdk ${JAVA_HOME}
-
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV ANDROID_HOME=/usr/local/lib/android/sdk
 ENV ANDROID_NDK=${HOST_ANDROID_NDK}/ndk/27.2.12479018
 ENV ANDROID_NDK_HOME=${ANDROID_HOME}/ndk/27.2.12479018
@@ -63,5 +59,5 @@ RUN wget https://dl.google.com/android/repository/commandlinetools-linux-9477386
 
 # Accept the licenses then install the required SDK components
 RUN yes | sdkmanager --licenses
-RUN sdkmanager "platform-tools" "platforms;android-35" "build-tools;33.0.2" "ndk;27.2.12479018"
+RUN sdkmanager "platform-tools" "platforms;android-35" "build-tools;33.0.2", "build-tools;35.0.1" "ndk;27.2.12479018"
 RUN tree ${ANDROID_SDK_ROOT} -L 2

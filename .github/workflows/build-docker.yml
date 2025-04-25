@@ -16,26 +16,26 @@ jobs:
     steps:
       - name: Pull respository
         uses: actions/checkout@v4
-      - name: Install Qt(android)
-        uses: jurplel/install-qt-action@v4
-        with:
-          aqtversion: '==3.1.*'
-          target: android
-          arch: android_armv7
-          host: linux
-          dir: ${{ github.workspace }}
-          modules: ${{env.QT_MODULES}}
-          version: ${{ env.QT_VERSION }}
-      - name: Install Qt(linux_gcc_64)
-        uses: jurplel/install-qt-action@v4
-        with:
-          aqtversion: '==3.1.*'
-          target: desktop
-          arch: linux_gcc_64
-          host: linux
-          dir: ${{ github.workspace }}
-          modules: ${{env.QT_MODULES}}
-          version: ${{ env.QT_VERSION }}
+      # - name: Install Qt(android)
+      #   uses: jurplel/install-qt-action@v4
+      #   with:
+      #     aqtversion: '==3.1.*'
+      #     target: android
+      #     arch: android_armv7
+      #     host: linux
+      #     dir: ${{ github.workspace }}
+      #     modules: ${{env.QT_MODULES}}
+      #     version: ${{ env.QT_VERSION }}
+      # - name: Install Qt(linux_gcc_64)
+      #   uses: jurplel/install-qt-action@v4
+      #   with:
+      #     aqtversion: '==3.1.*'
+      #     target: desktop
+      #     arch: linux_gcc_64
+      #     host: linux
+      #     dir: ${{ github.workspace }}
+      #     modules: ${{env.QT_MODULES}}
+      #     version: ${{ env.QT_VERSION }}
       - name: Build docker image
         run: | # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
           docker build -t x-tools-ubuntu-20.04:x86_64 . -f docker/20.04/Dockerfile
