@@ -45,27 +45,23 @@ ENV JAVA_HOME=${HOST_JAVA_HOME}
 COPY jdk ${JAVA_HOME}
 
 ENV ANDROID_HOME=/usr/local/lib/android/sdk
-ENV ANDROID_NDK=${HOST_ANDROID_NDK}
-ENV ANDROID_NDK_HOME=${HOST_ANDROID_NDK_HOME}
-ENV ANDROID_NDK_LATEST_HOME=${HOST_ANDROID_NDK_LATEST_HOME}
-ENV ANDROID_NDK_ROOT=${HOST_ANDROID_NDK_ROOT}
-ENV ANDROID_SDK_ROOT=${HOST_ANDROID_SDK_ROOT}
+ENV ANDROID_NDK=${HOST_ANDROID_NDK}/ndk/27.2.12479018
+ENV ANDROID_NDK_HOME=${ANDROID_HOME}/ndk/27.2.12479018
+ENV ANDROID_NDK_LATEST_HOME=${ANDROID_HOME}/ndk/27.2.12479018
+ENV ANDROID_NDK_ROOT=${ANDROID_HOME}/ndk/27.2.12479018
+ENV ANDROID_SDK_ROOT=${ANDROID_HOME}
 ENV PATH=${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${PATH}
 
-# 创建 SDK 目录
+# Make sure the Android SDK directory exists
 RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools
 
-# 下载并解压 Android Command Line Tools
+# Download and extract Android Command Line Tools
 RUN wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O cmdline-tools.zip && \
     unzip cmdline-tools.zip -d ${ANDROID_SDK_ROOT}/cmdline-tools && \
     mv ${ANDROID_SDK_ROOT}/cmdline-tools/cmdline-tools ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
     rm cmdline-tools.zip
 
-# 接受所有 SDK 许可协议
+# Accept the licenses then install the required SDK components
 RUN yes | sdkmanager --licenses
-
-# 安装 SDK 和 NDK
 RUN sdkmanager "platform-tools" "platforms;android-35" "build-tools;33.0.2" "ndk;27.2.12479018"
-
-# 验证安装
 RUN tree ${ANDROID_SDK_ROOT} -L 2
