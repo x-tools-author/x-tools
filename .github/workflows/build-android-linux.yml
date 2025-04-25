@@ -51,17 +51,17 @@ jobs:
         run: |
           git fetch --tags
           export JAVA_HOME=%JAVA_HOME_17_X64%
-          cmake ^
-          -G "MinGW Makefiles" ^
-          -S . ^
-          -B "build/armeabi_v7a" ^
-          -DQT_HOST_PATH:PATH="${{ github.workspace }}/Qt/${{ matrix.version }}/linux_gcc_64" ^
-          -DCMAKE_BUILD_TYPE:STRING=Release ^
-          -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++" ^
-          -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
-          -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%" ^
-          -DBUILD_SHARED_LIBS:BOOL=OFF ^
-          -DWITH_TOOLS:BOOL=OFF ^
+          cmake \
+          -G "MinGW Makefiles" \
+          -S . \
+          -B "build/armeabi_v7a" \
+          -DQT_HOST_PATH:PATH="${{ github.workspace }}/Qt/${{ matrix.version }}/linux_gcc_64" \
+          -DCMAKE_BUILD_TYPE:STRING=Release \
+          -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++" \
+          -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" \
+          -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%" \
+          -DBUILD_SHARED_LIBS:BOOL=OFF \
+          -DWITH_TOOLS:BOOL=OFF \
           -DCMAKE_PREFIX_PATH:PATH="${{ github.workspace }}/Qt/${{ matrix.version }}/android_armv7"
       - name: Dir build/armeabi_v7a
         run: |
@@ -75,10 +75,10 @@ jobs:
         run: |
           export JAVA_HOME=%JAVA_HOME_17_X64%
           echo %JAVA_HOME%
-          ${{ github.workspace }}/Qt/${{ matrix.version }}/linux_gcc_64/bin/androiddeployqt ^
-          --input build/armeabi_v7a/android-xTools-deployment-settings.json ^
-          --output build/armeabi_v7a/android-build ^
-          --android-platform android-35 ^
-          --sign ${{ env.QT_ANDROID_KEYSTORE_PATH }} ${{ env.QT_ANDROID_KEYSTORE_ALIAS }} --storepass  ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}  --keypass ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }} ^
+          ${{ github.workspace }}/Qt/${{ matrix.version }}/linux_gcc_64/bin/androiddeployqt \
+          --input build/armeabi_v7a/android-xTools-deployment-settings.json \
+          --output build/armeabi_v7a/android-build \
+          --android-platform android-35 \
+          --sign ${{ env.QT_ANDROID_KEYSTORE_PATH }} ${{ env.QT_ANDROID_KEYSTORE_ALIAS }} --storepass  ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}  --keypass ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }} \
           --jdk %JAVA_HOME% --gradle --release
 
