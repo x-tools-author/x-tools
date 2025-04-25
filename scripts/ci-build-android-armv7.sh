@@ -30,6 +30,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+chomod +x /opt/qt/6.8.3/gcc_64/bin/androiddeployqt
 /opt/qt/6.8.3/gcc_64/bin/androiddeployqt \
     --input build\armeabi_v7a\android-xTools-deployment-settings.json \
     --output build\armeabi_v7a\android-build \
