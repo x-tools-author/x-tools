@@ -37,7 +37,7 @@ jobs:
       #     version: ${{ env.QT_VERSION }}
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
-          docker build -t x-tools-windows-2022:amd64 . -f docker/win-ltsc2022/Dockerfile
+          docker buildx build --platform windows/amd64 -t x-tools-windows-2022:amd64 . -f docker/win-ltsc2022/Dockerfile
       - name: Push docker image to github registry
         run: |
           echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
