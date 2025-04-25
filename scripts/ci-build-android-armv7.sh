@@ -23,7 +23,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-cmake --build build\armeabi_v7a --target all --config Release
+cmake --build build/armeabi_v7a --target all --config Release
 
 if [ $? -ne 0 ]; then
     echo "CMake build failed"
@@ -32,8 +32,8 @@ fi
 
 chomod +x /opt/qt/6.8.3/gcc_64/bin/androiddeployqt
 /opt/qt/6.8.3/gcc_64/bin/androiddeployqt \
-    --input build\armeabi_v7a\android-xTools-deployment-settings.json \
-    --output build\armeabi_v7a\android-build \
+    --input build/armeabi_v7a/android-xTools-deployment-settings.json \
+    --output build/armeabi_v7a/android-build \
     --android-platform android-35 \
     --sign $1 $2 --storepass $3 --keypass $4
 
