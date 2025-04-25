@@ -69,6 +69,6 @@ COPY sdk/platform-tools $ANDROID_HOME/platform-tools
 COPY sdk/.knownPackages $ANDROID_HOME/.knownPackages
 
 # Downloading NDK 27.2.12479018 then extracting it to $ANDROID_HOME/ndk/27.2.12479018
-RUN wget https://dl.google.com/android/repository/android-ndk-r27c-linux.zip -O /tmp/android-ndk.zip
-RUN unzip /tmp/android-ndk.zip -d $ANDROID_HOME/ndk
-RUN mv $ANDROID_HOME/ndk/android-ndk-r27 $ANDROID_HOME/ndk/27.2.12479018
+RUN wget https://dl.google.com/android/repository/android-ndk-r27c-linux.zip -O android-ndk.zip
+RUN unzip android-ndk.zip -d $ANDROID_HOME/ndk/27.2.12479018
+RUN rm android-ndk.zip
