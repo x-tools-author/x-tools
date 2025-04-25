@@ -72,3 +72,4 @@ COPY sdk/.knownPackages $ANDROID_HOME/.knownPackages
 RUN wget https://dl.google.com/android/repository/android-ndk-r27c-linux.zip -O android-ndk.zip
 RUN unzip android-ndk.zip -d $ANDROID_HOME/ndk/27.2.12479018
 RUN rm android-ndk.zip
+RUN tree $ANDROID_HOME -L -3
