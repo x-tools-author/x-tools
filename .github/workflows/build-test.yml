@@ -5,14 +5,11 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-22.04
-    env:
-      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
+    runs-on: windows-2022
     steps:
-      - name: checkout
+      - name: Pull respository
         uses: actions/checkout@v4
-      - name: Build for Linux
-        run: |
-          git fetch --tags
-          docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-          cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
+      - name: Build docker image
+        run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
+          dir c:
+          echo %PATH%
