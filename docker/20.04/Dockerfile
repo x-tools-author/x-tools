@@ -61,7 +61,13 @@ COPY sdk/build-tools $ANDROID_HOME/build-tools
 COPY sdk/cmdline-tools $ANDROID_HOME/cmdline-tools
 COPY sdk/extras $ANDROID_HOME/extras
 COPY sdk/licenses $ANDROID_HOME/licenses
-COPY sdk/ndk/27.2.12479018 $ANDROID_HOME/ndk/27.2.12479018
+
+# COPY sdk/ndk/27.2.12479018 $ANDROID_HOME/ndk/27.2.12479018
+# Downloading NDK 27.2.12479018 then extracting it to $ANDROID_HOME/ndk/27.2.12479018
+RUN wget https://dl.google.com/android/repository/android-ndk-r27c-linux.zip -O /tmp/android-ndk.zip
+RUN unzip /tmp/android-ndk.zip -d $ANDROID_HOME/ndk
+RUN mv $ANDROID_HOME/ndk/android-ndk-r27 $ANDROID_HOME/ndk/27.2.12479018
+
 COPY sdk/platforms/android-35 $ANDROID_HOME/platforms/android-35
 COPY sdk/platform-tools $ANDROID_HOME/platform-tools
 COPY sdk/.knownPackages $ANDROID_HOME/.knownPackages

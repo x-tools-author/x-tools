@@ -49,7 +49,7 @@ jobs:
           cp -r $ANDROID_HOME/cmdline-tools sdk/cmdline-tools
           cp -r $ANDROID_HOME/extras sdk/extras
           cp -r $ANDROID_HOME/licenses sdk/licenses
-          cp -r $ANDROID_HOME/ndk/27.2.12479018 sdk/ndk/27.2.12479018
+          echo "cp -r $ANDROID_HOME/ndk/27.2.12479018 sdk/ndk/27.2.12479018"
           cp -r $ANDROID_HOME/platforms/android-35 sdk/platforms/android-35
           cp -r $ANDROID_HOME/platform-tools sdk/platform-tools
           cp -r $ANDROID_HOME/.knownPackages sdk/.knownPackages
