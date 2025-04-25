@@ -12,6 +12,12 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   QT_VERSION: 6.8.3
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
+  DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
+  QT_ANDROID_KEYSTORE_PATH: ${{ github.workspace }}\res\android\android_release.keystore
+  QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+  QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
+  QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
+
 jobs:
   update-tag:
     runs-on: ubuntu-latest
@@ -69,8 +75,6 @@ jobs:
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
-    env:
-      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -120,76 +124,18 @@ jobs:
         ls bin/Darwin/Release/xTools
         find bin/Darwin/Release/xTools -name "*.dmg" -exec gh release upload continuous {} \;
   release-for-android:
-    runs-on: windows-2022
+    runs-on: ubuntu-24.04
     needs: update-release
-    env:
-      QT_ANDROID_KEYSTORE_PATH: ${{ github.workspace }}\res\android\android_release.keystore
-      QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
-      QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
-      QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install Qt for Android
-        uses: jurplel/install-qt-action@v4
-        with:
-          aqtversion: '==3.1.*'
-          target: android
-          arch: android_armv7
-          host: windows
-          dir: ${{ github.workspace }}
-          modules: ${{env.QT_MODULES}}
-          version: ${{env.QT_VERSION}}
-      - name: Install Qt for Desktop(mingw)
-        uses: jurplel/install-qt-action@v4
-        with:
-          aqtversion: '==3.1.*'
-          target: desktop
-          arch: win64_mingw
-          host: windows
-          dir: ${{ github.workspace }}
-          modules: ${{env.QT_MODULES}}
-          version: ${{env.QT_VERSION}}
-      - name: CMake for Android
-        shell: cmd
+      - name: Build for Android with Docker
         run: |
           git fetch --tags
-          set JAVA_HOME=%JAVA_HOME_17_X64%
-          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat ^
-          -G "MinGW Makefiles" ^
-          -S . ^
-          -B "build\armeabi_v7a" ^
-          -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64" ^
-          -DCMAKE_BUILD_TYPE:STRING=Release ^
-          -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
-          -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
-          -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%" ^
-          -DBUILD_SHARED_LIBS:BOOL=OFF ^
-          -DWITH_TOOLS:BOOL=OFF ^
-          -DWITHOUT_PNG:BOOL=ON
-      - name: Build for android
-        shell: cmd
-        run: |
-          set JAVA_HOME=%JAVA_HOME_17_X64%
-          echo %JAVA_HOME%
-          cmake --build build\armeabi_v7a --target xTools --config Release
-      - name: Copy File for Deploy
-        shell: cmd
-        run: |
-            mkdir  build\armeabi_v7a\android-build\libs\armeabi-v7a
-            dir build\armeabi_v7a
-            copy .\build\armeabi_v7a\libxTools_armeabi-v7a.so .\build\armeabi_v7a\android-build\libs\armeabi-v7a /y
-      - name: Deploy for Android
-        shell: cmd
-        run: |
-          set JAVA_HOME=%JAVA_HOME_17_X64%
-          echo %JAVA_HOME%
-          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
-          --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
-          --output build\armeabi_v7a\android-build ^
-          --android-platform android-35 ^
-          --sign ${{ env.QT_ANDROID_KEYSTORE_PATH }} ${{ env.QT_ANDROID_KEYSTORE_ALIAS }} --storepass  ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}  --keypass ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }} ^
-          --jdk %JAVA_HOME% --gradle --release
+          docker pull ${{ env.DOCKER_IMAGE }}
+          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+          cd /workspace && chmod +x ./scripts/ci-build-android-armv7.sh && ./scripts/ci-build-android-armv7.sh \
+          ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
       - name: Upload Release Asset for Android
         run: |
           cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-armeabi_v7a.apk
