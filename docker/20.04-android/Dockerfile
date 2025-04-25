@@ -103,4 +103,3 @@ COPY ${HOST_ANDROID_HOME}/packages-list.txt ${ANDROID_HOME}/packages-list.txt
 COPY ${HOST_ANDROID_HOME}/platform-tools ${ANDROID_HOME}/platform-tools
 COPY ${HOST_ANDROID_HOME}/platforms/android-34 ${ANDROID_HOME}/platforms/android-34
 COPY ${HOST_ANDROID_HOME}/platforms/android-35 ${ANDROID_HOME}/platforms/android-35
-COPY ${HOST_ANDROID_HOME}/platforms/android-36 ${ANDROID_HOME}/platforms/android-36
