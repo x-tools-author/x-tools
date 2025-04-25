@@ -9,13 +9,13 @@
 
 #---------------------------------------------------------------------------------------------------
 # CMake build for Android ARMv7
-tree -L 4 /opt/qt
+# tree -L 4 /opt/qt
+# -DCMAKE_CXX_COMPILER:FILEPATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++
 chmod +x /opt/qt/6.8.3/android_armv7/bin/qt-cmake
 /opt/qt/6.8.3/android_armv7/bin/qt-cmake \
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DANDROID_ABI=armeabi-v7a \
     -DQT_HOST_PATH:PATH=/opt/qt/6.8.3/gcc_64 \
-    -DCMAKE_CXX_COMPILER:FILEPATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ \
     -G "Unix Makefiles" \
     -S . \
     -B build/armeabi_v7a
