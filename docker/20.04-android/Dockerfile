@@ -1,8 +1,6 @@
 ﻿FROM ubuntu:20.04
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get -y update && apt-get install -y \
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get -y update && apt-get install -y \
     libxcb-xinerama0 \
     libxcb-cursor-dev \
     libudev-dev \
@@ -18,7 +16,7 @@ RUN apt-get -y update && apt-get install -y \
     git \
     libglib2.0-dev \
     libxkb* \
-    libdbus \
+    libdbus* \
     libegl1-mesa-dev \
     libfontconfig1-dev  \
     libfreetype6-dev  \
@@ -38,3 +36,25 @@ RUN rm cmake-3.30.8-linux-x86_64.sh
 # Copy Qt files from host to container
 ENV QT_ROOT=/opt/qt
 COPY Qt ${QT_ROOT}
+
+# Copy jdk files from host to container
+ARG HOST_JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV JAVA_HOME=${HOST_JAVA_HOME}
+COPY jdk ${JAVA_HOME}
+
+# Copy Android SDK files from host to container
+ARG HOST_ANDROID_HOME=/usr/local/lib/android/sdk
+ARG HOST_ANDROID_NDK=/usr/local/lib/android/sdk/ndk/27.2.12479018
+ARG HOST_ANDROID_NDK_HOME=/usr/local/lib/android/sdk/ndk/27.2.12479018
+ARG HOST_ANDROID_NDK_LATEST_HOME=/usr/local/lib/android/sdk/ndk/27.2.12479018
+ARG HOST_ANDROID_NDK_ROOT=/usr/local/lib/android/sdk/ndk/27.2.12479018
+ARG HOST_ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
+
+ENV ANDROID_HOME=${HOST_ANDROID_HOME}
+ENV ANDROID_NDK=${HOST_ANDROID_NDK}
+ENV ANDROID_NDK_HOME=${HOST_ANDROID_NDK_HOME}
+ENV ANDROID_NDK_LATEST_HOME=${HOST_ANDROID_NDK_LATEST_HOME}
+ENV ANDROID_NDK_ROOT=${HOST_ANDROID_NDK_ROOT}
+ENV ANDROID_SDK_ROOT=${HOST_ANDROID_SDK_ROOT}
+
+COPY sdk ${ANDROID_HOME}
