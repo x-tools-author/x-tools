@@ -63,16 +63,13 @@ jobs:
           -DBUILD_SHARED_LIBS:BOOL=OFF ^
           -DWITH_TOOLS:BOOL=OFF
       - name: Dir build\armeabi_v7a
-        shell: cmd
         run: dir build\armeabi_v7a
       - name: Build for android
-        shell: cmd
         run: |
           export JAVA_HOME=%JAVA_HOME_17_X64%
           echo %JAVA_HOME%
           cmake --build build\armeabi_v7a --target all --config Release
       - name: Deploy for Android
-        shell: cmd
         run: |
           export JAVA_HOME=%JAVA_HOME_17_X64%
           echo %JAVA_HOME%
