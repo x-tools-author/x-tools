@@ -59,5 +59,5 @@ RUN wget https://dl.google.com/android/repository/commandlinetools-linux-9477386
 
 # Accept the licenses then install the required SDK components
 RUN yes | sdkmanager --licenses
-RUN sdkmanager "platform-tools" "platforms;android-35" "build-tools;33.0.2", "build-tools;35.0.1" "ndk;27.2.12479018"
+RUN sdkmanager "platform-tools" "platforms;android-35" "build-tools;33.0.2" "build-tools;35.0.1" "ndk;27.2.12479018"
 RUN tree ${ANDROID_SDK_ROOT} -L 2
