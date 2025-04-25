@@ -4,7 +4,7 @@ RUN apt-get -y update
 RUN apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev ninja-build libopengl-dev libglu1-mesa-dev mesa-common-dev
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get install -y gcc g++ wget p7zip-full libicu-dev tree grep git libglib2.0-dev
 RUN apt-get install -y libxkb* libdbus*
-RUN apt-get install -y libegl1-mesa-dev libfontconfig1-dev  libfreetype6-dev  libfreetype-dev
+RUN apt-get install -y libegl1-mesa-dev libfontconfig1-dev  libfreetype6-dev  libfreetype-dev unzip
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get install -y fuse libfuse2 libfuse-dev kmod
 
 # CMake
