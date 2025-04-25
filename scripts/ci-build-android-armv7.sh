@@ -8,6 +8,7 @@
 # $4: ANDROID_KEYSTORE_KEY_PASS
 
 tree -L 3 /opt/qt
+chmod +x /opt/qt/6.8.3/android_armv7/bin/qt-cmake
 /opt/qt/6.8.3/android_armv7/bin/qt-cmake \
     -DCMAKE_BUILD_TYPE:STRING=Release -G "Unix Makefiles" \
     -S . \
