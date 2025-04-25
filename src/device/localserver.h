@@ -34,7 +34,7 @@ signals:
     void socketDisconnected(QLocalSocket *socket);
 
 protected:
-    void writeActually(const QByteArray &bytes);
+    void writeActually(const QByteArray &bytes) override;
 
 private:
     QString getClientName(QLocalSocket *socket);
