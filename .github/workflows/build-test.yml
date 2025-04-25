@@ -11,20 +11,39 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CR_PAT: ${{ secrets.CR_PAT }}
-      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
+      QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: pull docker image
-        run: | # echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-          docker pull ${{ env.DOCKER_IMAGE }}
-      - name: check environment
+      - name: Install Qt(android)
+        uses: jurplel/install-qt-action@v4
+        with:
+          aqtversion: '==3.1.*'
+          target: android
+          arch: android_armv7
+          host: linux
+          dir: ${{ github.workspace }}
+          modules: ${{env.QT_MODULES}}
+          version: ${{ matrix.version }}
+      - name: Install Qt(linux_gcc_64)
+        uses: jurplel/install-qt-action@v4
+        with:
+          aqtversion: '==3.1.*'
+          target: desktop
+          arch: linux_gcc_64
+          host: linux
+          dir: ${{ github.workspace }}
+          modules: ${{env.QT_MODULES}}
+          version: ${{ matrix.version }}
+      - name: build docker image
         run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "tree /opt/qt/lib -L 2"
-      - name: build for linux with docker
+          docker build -t x-tools-ubuntu-20.04-1:x86_64 . -f docker/20.04-android/Dockerfile \
+            --build-arg HOST_QT_ROOT=${{ github.workspace }}/Qt \
+            --build-arg HOST_JAVA_HOME=$JAVA_HOME_17_X64 \
+            --build-arg HOST_ANDROID_HOME=$ANDROID_HOME \
+      - name: push docker image to github registry
         run: |
-          docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-          cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
-      - name: check output files
-        run: |
-          tree ./bin/Linux/Release/xTools-linux -L 2
+          echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker rmi ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64 || true
+          docker tag x-tools-ubuntu-20.04-1:x86_64 ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64
+          docker push ghcr.io/x-tools-author/x-tools-ubuntu-20.04-1:x86_64

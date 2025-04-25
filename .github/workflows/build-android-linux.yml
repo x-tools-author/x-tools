@@ -47,12 +47,15 @@ jobs:
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
           version: ${{ matrix.version }}
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y ninja-build
       - name: Configure for android
         run: |
           git fetch --tags
           export JAVA_HOME=$JAVA_HOME_17_X64
           cmake \
-          -G "Unix Makefiles" \
+          -G "Ninja" \
           -S . \
           -B "build/armeabi_v7a" \
           -DQT_HOST_PATH:PATH="${{ github.workspace }}/Qt/${{ matrix.version }}/linux_gcc_64" \
