@@ -1,4 +1,4 @@
-name: build-android
+name: build-android(windows)
 on:
   workflow_dispatch: # Enables manually
   # schedule:
