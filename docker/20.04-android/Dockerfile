@@ -23,7 +23,7 @@ ARG HOST_JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV JAVA_HOME=/opt/jdk
 COPY ${HOST_JAVA_HOME} ${JAVA_HOME}
 
-# copy Android NDK from host to container
+# Copy Android NDK from host to container
 ARG HOST_ANDROID_HOME=/usr/local/lib/android/sdk
 ARG HOST_ANDROID_NDK=/usr/local/lib/android/sdk/ndk/27.2.12479018
 ARG HOST_ANDROID_NDK_HOME=/usr/local/lib/android/sdk/ndk/27.2.12479018
@@ -38,4 +38,5 @@ ENV ANDROID_NDK_LATEST_HOME=${HOST_ANDROID_NDK_LATEST_HOME}
 ENV ANDROID_NDK_ROOT=${HOST_ANDROID_NDK_ROOT}
 ENV ANDROID_SDK_ROOT=${HOST_ANDROID_SDK_ROOT}
 
+RUN mkdir -p ${ANDROID_HOME}
 COPY ${HOST_ANDROID_HOME} ${ANDROID_HOME}
