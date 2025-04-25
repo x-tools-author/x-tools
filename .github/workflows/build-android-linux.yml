@@ -1,4 +1,4 @@
-name: build-android-linux
+name: build-android(docker)
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -27,61 +27,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install Qt(android)
-        uses: jurplel/install-qt-action@v4
-        with:
-          aqtversion: '==3.1.*'
-          target: android
-          arch: android_armv7
-          host: linux
-          dir: ${{ github.workspace }}
-          modules: ${{env.QT_MODULES}}
-          version: ${{ matrix.version }}
-      - name: Install Qt(linux_gcc_64)
-        uses: jurplel/install-qt-action@v4
-        with:
-          aqtversion: '==3.1.*'
-          target: desktop
-          arch: linux_gcc_64
-          host: linux
-          dir: ${{ github.workspace }}
-          modules: ${{env.QT_MODULES}}
-          version: ${{ matrix.version }}
-      - name: Install dependencies
-        run: |
-          sudo apt-get install -y ninja-build
-      - name: Configure for android
+      - name: Build for Android with Docker
         run: |
           git fetch --tags
-          export JAVA_HOME=$JAVA_HOME_17_X64
-          cmake \
-          -G "Ninja" \
-          -S . \
-          -B "build/armeabi_v7a" \
-          -DQT_HOST_PATH:PATH="${{ github.workspace }}/Qt/${{ matrix.version }}/linux_gcc_64" \
-          -DCMAKE_BUILD_TYPE:STRING=Release \
-          -DCMAKE_CXX_COMPILER:FILEPATH="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++" \
-          -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" \
-          -DANDROID_NDK_ROOT:PATH="$ANDROID_NDK_ROOT" \
-          -DBUILD_SHARED_LIBS:BOOL=OFF \
-          -DWITH_TOOLS:BOOL=OFF \
-          -DCMAKE_PREFIX_PATH:PATH="${{ github.workspace }}/Qt/${{ matrix.version }}/android_armv7"
-      - name: Dir build/armeabi_v7a
-        run: |
-          dir build/armeabi_v7a
-      - name: Build for android
-        run: |
-          export JAVA_HOME=$JAVA_HOME_17_X64
-          echo $JAVA_HOME
-          cmake --build build/armeabi_v7a --target all --config Release
-      - name: Deploy for Android
-        run: |
-          export JAVA_HOME=$JAVA_HOME_17_X64
-          echo $JAVA_HOME
-          ${{ github.workspace }}/Qt/${{ matrix.version }}/linux_gcc_64/bin/androiddeployqt \
-          --input build/armeabi_v7a/android-xTools-deployment-settings.json \
-          --output build/armeabi_v7a/android-build \
-          --android-platform android-35 \
-          --sign ${{ env.QT_ANDROID_KEYSTORE_PATH }} ${{ env.QT_ANDROID_KEYSTORE_ALIAS }} --storepass  ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}  --keypass ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }} \
-          --jdk $JAVA_HOME --gradle --release
+          docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+          cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-android-armv7.sh"
 
