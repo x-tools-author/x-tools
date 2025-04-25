@@ -25,7 +25,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get -y update && apt-get instal
     fuse \
     libfuse2 \
     libfuse-dev \
-    kmod
+    kmod \
+    openjdk-17-jdk-headless \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # CMake
 RUN wget https://cmake.org/files/v3.30/cmake-3.30.8-linux-x86_64.sh
@@ -42,36 +44,28 @@ ARG HOST_JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV JAVA_HOME=${HOST_JAVA_HOME}
 COPY jdk ${JAVA_HOME}
 
-# Copy Android SDK files from host to container
-ARG HOST_ANDROID_HOME=/usr/local/lib/android/sdk
-ARG HOST_ANDROID_NDK=/usr/local/lib/android/sdk/ndk/27.2.12479018
-ARG HOST_ANDROID_NDK_HOME=/usr/local/lib/android/sdk/ndk/27.2.12479018
-ARG HOST_ANDROID_NDK_LATEST_HOME=/usr/local/lib/android/sdk/ndk/27.2.12479018
-ARG HOST_ANDROID_NDK_ROOT=/usr/local/lib/android/sdk/ndk/27.2.12479018
-ARG HOST_ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
-
-ENV ANDROID_HOME=${HOST_ANDROID_HOME}
+ENV ANDROID_HOME=/usr/local/lib/android/sdk
 ENV ANDROID_NDK=${HOST_ANDROID_NDK}
 ENV ANDROID_NDK_HOME=${HOST_ANDROID_NDK_HOME}
 ENV ANDROID_NDK_LATEST_HOME=${HOST_ANDROID_NDK_LATEST_HOME}
 ENV ANDROID_NDK_ROOT=${HOST_ANDROID_NDK_ROOT}
 ENV ANDROID_SDK_ROOT=${HOST_ANDROID_SDK_ROOT}
+ENV PATH=${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${PATH}
 
-COPY sdk/build-tools $ANDROID_HOME/build-tools
-COPY sdk/cmdline-tools $ANDROID_HOME/cmdline-tools
-COPY sdk/extras $ANDROID_HOME/extras
-COPY sdk/licenses $ANDROID_HOME/licenses
+# 创建 SDK 目录
+RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools
 
-# COPY sdk/ndk/27.2.12479018 $ANDROID_HOME/ndk/27.2.12479018
+# 下载并解压 Android Command Line Tools
+RUN wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O cmdline-tools.zip && \
+    unzip cmdline-tools.zip -d ${ANDROID_SDK_ROOT}/cmdline-tools && \
+    mv ${ANDROID_SDK_ROOT}/cmdline-tools/cmdline-tools ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+    rm cmdline-tools.zip
 
-COPY sdk/platforms/android-35 $ANDROID_HOME/platforms/android-35
-COPY sdk/platform-tools $ANDROID_HOME/platform-tools
-COPY sdk/.knownPackages $ANDROID_HOME/.knownPackages
+# 接受所有 SDK 许可协议
+RUN yes | sdkmanager --licenses
 
-# Downloading NDK 27.2.12479018 then extracting it to $ANDROID_HOME/ndk/27.2.12479018
-RUN wget https://dl.google.com/android/repository/android-ndk-r27c-linux.zip -O android-ndk.zip
-RUN mkdir -p ${ANDROID_HOME}/ndk
-RUN unzip android-ndk.zip -d ${ANDROID_HOME}/ndk
-RUN mv ${ANDROID_HOME}/ndk/android-ndk-r27c ${ANDROID_HOME}/ndk/27.2.12479018
-RUN rm android-ndk.zip
-RUN tree $ANDROID_HOME -L -3
+# 安装 SDK 和 NDK
+RUN sdkmanager "platform-tools" "platforms;android-35" "build-tools;33.0.2" "ndk;27.2.12479018"
+
+# 验证安装
+RUN tree ${ANDROID_SDK_ROOT} -L 2
