@@ -52,7 +52,7 @@ jobs:
           git fetch --tags
           export JAVA_HOME=%JAVA_HOME_17_X64%
           cmake \
-          -G "MinGW Makefiles" \
+          -G "Unix Makefiles" \
           -S . \
           -B "build/armeabi_v7a" \
           -DQT_HOST_PATH:PATH="${{ github.workspace }}/Qt/${{ matrix.version }}/linux_gcc_64" \
