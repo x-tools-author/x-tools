@@ -51,7 +51,7 @@ jobs:
         run: |
           git fetch --tags
           export JAVA_HOME=%JAVA_HOME_17_X64%
-          ${{ github.workspace }}\Qt\${{ matrix.version }}\android_armv7\bin\qt-cmake.bat ^
+          ${{ github.workspace }}\Qt\${{ matrix.version }}\android_armv7\bin\qt-cmake.sh ^
           -G "MinGW Makefiles" ^
           -S . ^
           -B "build\armeabi_v7a" ^
@@ -74,7 +74,7 @@ jobs:
         run: |
           export JAVA_HOME=%JAVA_HOME_17_X64%
           echo %JAVA_HOME%
-          ${{ github.workspace }}\Qt\${{ matrix.version }}\mingw_64\bin\androiddeployqt.exe ^
+          ${{ github.workspace }}\Qt\${{ matrix.version }}\linux_gcc_64\bin\androiddeployqt ^
           --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
           --output build\armeabi_v7a\android-build ^
           --android-platform android-35 ^
