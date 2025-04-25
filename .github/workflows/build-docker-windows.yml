@@ -26,10 +26,11 @@ jobs:
           modules: ${{ env.QT_MODULES }}
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
+          dir c:
+          echo %PATH%
           docker build -t x-tools-windows-2022:amd64 . -f docker/win-ltsc2022/Dockerfile
       - name: Push docker image to github registry
         run: |
-          dir c:
           echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           docker rmi ghcr.io/x-tools-author/x-tools-windows-2022:amd64 || true
           docker tag x-tools-windows-2022:amd64 ghcr.io/x-tools-author/x-tools-windows-2022:amd64
