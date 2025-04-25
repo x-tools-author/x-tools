@@ -36,7 +36,7 @@ jobs:
       - name: build docker image
         run: | # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
           echo $ANDROID_HOME
-          docker build --no-cache -t x-tools-ubuntu-20.04-1:x86_64 . -f docker/20.04-android/Dockerfile \
+          sudo docker build --no-cache -t x-tools-ubuntu-20.04-1:x86_64 . -f docker/20.04-android/Dockerfile \
             --build-arg HOST_QT_ROOT=${{ github.workspace }}/Qt \
             --build-arg HOST_JAVA_HOME=$JAVA_HOME_17_X64 \
             --build-arg HOST_ANDROID_HOME=$ANDROID_HOME \
