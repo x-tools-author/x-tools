@@ -62,6 +62,6 @@ COPY sdk/cmdline-tools $ANDROID_HOME/cmdline-tools
 COPY sdk/extras $ANDROID_HOME/extras
 COPY sdk/licenses $ANDROID_HOME/licenses
 COPY sdk/ndk/27.2.12479018 $ANDROID_HOME/ndk/27.2.12479018
-COPY sdk/sdk/platforms/android-35 $ANDROID_HOME/platforms/android-35
-COPY sdk/sdk/platform-tools $ANDROID_HOME/platform-tools
+COPY sdk/platforms/android-35 $ANDROID_HOME/platforms/android-35
+COPY sdk/platform-tools $ANDROID_HOME/platform-tools
 COPY sdk/.knownPackages $ANDROID_HOME/.knownPackages
