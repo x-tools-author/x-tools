@@ -13,12 +13,7 @@ env:
 jobs:
   build:
     name: Build for Android
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-24.04]
-        version: [6.8.3]
+    runs-on: ubuntu-24.04
     env:
       DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
       QT_ANDROID_KEYSTORE_PATH: res/android/android_release.keystore
