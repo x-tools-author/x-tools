@@ -31,5 +31,5 @@ private:
     QLocalSocket *m_socket{nullptr};
 
 protected:
-    void writeActually(const QByteArray &bytes);
+    void writeActually(const QByteArray &bytes) override;
 };
