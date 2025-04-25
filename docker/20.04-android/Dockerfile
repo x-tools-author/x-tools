@@ -36,6 +36,5 @@ RUN ./cmake-3.30.8-linux-x86_64.sh --skip-license --prefix=/usr/local
 RUN rm cmake-3.30.8-linux-x86_64.sh
 
 # Copy Qt files from host to container
-ARG HOST_QT_ROOT=Qt
 ENV QT_ROOT=/opt/qt
-COPY ${HOST_QT_ROOT} ${QT_ROOT}
+COPY Qt ${QT_ROOT}

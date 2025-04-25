@@ -39,9 +39,7 @@ jobs:
           sudo tree -L 2 $ANDROID_HOME
           sudo chmod -R 755 $JAVA_HOME_17_X64
           sudo chmod -R 755 $ANDROID_HOME
-          sudo docker build -t x-tools-ubuntu-20.04-1:x86_64 . \
-          -f docker/20.04-android/Dockerfile \
-          --build-arg HOST_QT_ROOT=${{ github.workspace }}/Qt
+          sudo docker build -t x-tools-ubuntu-20.04-1:x86_64 . -f docker/20.04-android/Dockerfile
       # - name: push docker image to github registry
       #   run: |
       #     echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
