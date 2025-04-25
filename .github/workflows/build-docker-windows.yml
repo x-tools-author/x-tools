@@ -4,15 +4,14 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  CR_PAT: ${{ secrets.CR_PAT }}
+  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
+  QT_VERSION: 6.8.3
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-22.04
-    env:
-      CR_PAT: ${{ secrets.CR_PAT }}
-      QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
-      QT_VERSION: 6.8.3
     steps:
       - name: Pull respository
         uses: actions/checkout@v4
