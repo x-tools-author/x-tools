@@ -15,15 +15,15 @@ jobs:
     steps:
       - name: Pull respository
         uses: actions/checkout@v4
-      # - name: Install Qt
-      #   uses: jurplel/install-qt-action@v3
-      #   with:
-      #     aqtversion: '==3.1.*'
-      #     dir: ${{ github.workspace }}
-      #     version: ${{ env.QT_VERSION }}
-      #     target: desktop
-      #     arch: win64_msvc2022_64
-      #     modules: ${{ env.QT_MODULES }}
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: '==3.1.*'
+          dir: ${{ github.workspace }}
+          version: ${{ env.QT_VERSION }}
+          target: desktop
+          arch: win64_msvc2022_64
+          modules: ${{ env.QT_MODULES }}
       - name: Copy tools
         run: |
           copy "C:\MinGW64" "${{ github.workspace }}\MinGW64"
@@ -31,7 +31,6 @@ jobs:
           dir
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
-          dir c:
           echo %PATH%
           docker build -t x-tools-windows-2022:amd64 . -f docker/win-ltsc2022/Dockerfile
       - name: Push docker image to github registry
