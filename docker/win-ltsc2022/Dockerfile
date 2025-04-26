@@ -28,3 +28,16 @@ RUN powershell -Command \
     Expand-Archive -Path C:\\mingw.7z -DestinationPath %MINGW_DIR%; \
     Remove-Item -Force C:\\mingw.7z
 ENV PATH="%MINGW_DIR%/bin;%PATH%"
+
+#---------------------------------------------------------------------------------------------------
+# Ninja
+ENV NINJA_VERSION=1.12.1
+ENV NINJA_URL=https://github.com/ninja-build/ninja/releases/download/v${NINJA_VERSION}/ninja-win.zip
+ENV NINJA_DIR=C:/Ninja
+
+# Download and install Ninja
+RUN powershell -Command \
+    Invoke-WebRequest -Uri %NINJA_URL% -OutFile C:\\ninja.zip; \
+    Expand-Archive -Path C:\\ninja.zip -DestinationPath %NINJA_DIR%; \
+    Remove-Item -Force C:\\ninja.zip
+ENV PATH="%NINJA_DIR%;%PATH%"
