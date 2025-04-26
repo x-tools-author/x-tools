@@ -26,7 +26,7 @@ jobs:
       #     modules: ${{ env.QT_MODULES }}
       - name: Copy tools
         run: |
-          copy "C:\Program Files\PowerShell\7" PowerShel
+          copy "C:\Program Files\PowerShell\7" ${{ github.workspace }}\PowerShel
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
           dir c:
