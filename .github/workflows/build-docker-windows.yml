@@ -15,15 +15,15 @@ jobs:
     steps:
       - name: Pull respository
         uses: actions/checkout@v4
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          aqtversion: '==3.1.*'
-          dir: ${{ github.workspace }}
-          version: ${{ env.QT_VERSION }}
-          target: desktop
-          arch: win64_msvc2022_64
-          modules: ${{ env.QT_MODULES }}
+      # - name: Install Qt
+      #   uses: jurplel/install-qt-action@v3
+      #   with:
+      #     aqtversion: '==3.1.*'
+      #     dir: ${{ github.workspace }}
+      #     version: ${{ env.QT_VERSION }}
+      #     target: desktop
+      #     arch: win64_msvc2022_64
+      #     modules: ${{ env.QT_MODULES }}
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
           dir c:
