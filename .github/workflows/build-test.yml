@@ -16,5 +16,5 @@ jobs:
         run: |
           git fetch --tags 
           docker pull ${{ env.DOCKER_IMAGE }}
-          docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} cmd /c "\
+          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} cmd /c "\
           cd /workspace && scripts/ci-build-windows-mingw.bat"
