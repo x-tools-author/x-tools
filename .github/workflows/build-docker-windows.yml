@@ -31,7 +31,7 @@ jobs:
           docker build -t x-tools-windows-2022:amd64 . -f docker/win-ltsc2022/Dockerfile
       - name: Copy tools
         run: |
-          copy C:\Program Files\PowerShel\7 PowerShel
+          copy C:\Program Files\PowerShel\7 ${{ github.workspace }}\PowerShel
       - name: Push docker image to github registry
         run: |
           echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
