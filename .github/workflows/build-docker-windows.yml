@@ -27,6 +27,7 @@ jobs:
       - name: Copy tools
         run: |
           copy "C:\Program Files\PowerShell\7" ${{ github.workspace }}\PowerShell
+          dir ${{ github.workspace }}\PowerShell\
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
           dir c:
