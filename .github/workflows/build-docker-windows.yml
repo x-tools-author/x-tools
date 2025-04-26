@@ -22,7 +22,7 @@ jobs:
           dir: ${{ github.workspace }}
           version: ${{ env.QT_VERSION }}
           target: desktop
-          arch: win64_msvc2022_64
+          arch: win64_mingw
           modules: ${{ env.QT_MODULES }}
       - name: Copy tools
         run: |
