@@ -26,8 +26,9 @@ jobs:
       #     modules: ${{ env.QT_MODULES }}
       - name: Copy tools
         run: |
-          copy "C:\Program Files\PowerShell\7" ${{ github.workspace }}\PowerShell
-          tree ${{ github.workspace }}\PowerShell\
+          copy "C:\MinGW64" "${{ github.workspace }}\MinGW64"
+          copy "C:\Program Files\CMake" "CMake"
+          dir
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
           dir c:
