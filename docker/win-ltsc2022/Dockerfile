@@ -5,6 +5,18 @@
 COPY Qt C:/Qt
 
 #---------------------------------------------------------------------------------------------------
+# Install PowerShell
+ENV POWERSHELL_VERSION=7.5.1
+ENV POWERSHELL_URL=https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/PowerShell-${POWERSHELL_VERSION}-win-x64.zip
+ENV POWERSHELL_DIR=C:/PowerShell
+
+# Download and install PowerShell
+RUN curl.exe -L -o C:\\powershell.zip %POWERSHELL_URL% && \
+    tar.exe -xf C:\\powershell.zip -C C:\\ && \
+    del C:\\powershell.zip
+ENV PATH="%POWERSHELL_DIR%;%PATH%"
+
+#---------------------------------------------------------------------------------------------------
 # CMake ENV
 ENV CMAKE_VERSION=3.30.8
 ENV CMAKE_URL=https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-windows-x86_64.zip
