@@ -2,19 +2,11 @@
 RUN echo %PATH%
 
 #---------------------------------------------------------------------------------------------------
-# Copy Qt to Container
-#COPY Qt C:/Qt
+# Copy File to Container
+# COPY Qt C:/Qt
+COPY PowerShell C:/PowerShell
 
-#---------------------------------------------------------------------------------------------------
-# Install PowerShell
-ENV POWERSHELL_URL=https://github.com/PowerShell/PowerShell/releases/download/v7.5.1/PowerShell-7.5.1-win-x64.zip
-ENV POWERSHELL_DIR=C:/PowerShell
-
-# Download and install PowerShell
-RUN curl.exe -L -o C:/powershell.zip %POWERSHELL_URL% 
-RUN tar.exe -xf C:/powershell.zip -C C:/PowerShell 
-RUN del C:/powershell.zip
-ENV PATH="%POWERSHELL_DIR%;%PATH%"
+ENV PATH="C:/PowerShell;%PATH%"
 
 #---------------------------------------------------------------------------------------------------
 # CMake ENV
@@ -22,7 +14,7 @@ ENV CMAKE_VERSION=3.30.8
 ENV CMAKE_URL=https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-windows-x86_64.zip
 ENV CMAKE_DIR=C:/CMake
 # Dlownload CMake
-RUN powershell -Command \
+RUN pwsh -Command \
     Invoke-WebRequest -Uri %CMAKE_URL% -OutFile C:\\cmake.zip; \
     Expand-Archive -Path C:\\cmake.zip -DestinationPath %CMAKE_DIR%; \
     Remove-Item -Force C:\\cmake.zip
@@ -35,7 +27,7 @@ ENV MINGW_URL=https://github.com/niXman/mingw-builds-binaries/releases/download/
 ENV MINGW_DIR=C:/MinGW
 
 # Download MinGW
-RUN powershell -Command \
+RUN pwsh -Command \
     Invoke-WebRequest -Uri %MINGW_URL% -OutFile C:\\mingw.7z; \
     Expand-Archive -Path C:\\mingw.7z -DestinationPath %MINGW_DIR%; \
     Remove-Item -Force C:\\mingw.7z
@@ -48,7 +40,7 @@ ENV NINJA_URL=https://github.com/ninja-build/ninja/releases/download/v${NINJA_VE
 ENV NINJA_DIR=C:/Ninja
 
 # Download and install Ninja
-RUN powershell -Command \
+RUN pwsh -Command \
     Invoke-WebRequest -Uri %NINJA_URL% -OutFile C:\\ninja.zip; \
     Expand-Archive -Path C:\\ninja.zip -DestinationPath %NINJA_DIR%; \
     Remove-Item -Force C:\\ninja.zip
