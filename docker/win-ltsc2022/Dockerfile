@@ -6,13 +6,12 @@ COPY Qt C:/Qt
 
 #---------------------------------------------------------------------------------------------------
 # Install PowerShell
-ENV POWERSHELL_VERSION=7.5.1
-ENV POWERSHELL_URL=https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/PowerShell-${POWERSHELL_VERSION}-win-x64.zip
+ENV POWERSHELL_URL=https://github.com/PowerShell/PowerShell/releases/download/v7.5.1/PowerShell-7.5.1-win-x64.zip
 ENV POWERSHELL_DIR=C:/PowerShell
 
 # Download and install PowerShell
 RUN curl.exe -L -o powershell.zip %POWERSHELL_URL% && \
-    tar.exe -xf powershell.zip -C C:\\ && \
+    tar.exe -xf powershell.zip -C C:\\PowerShell && \
     del powershell.zip
 ENV PATH="%POWERSHELL_DIR%;%PATH%"
 
