@@ -7,7 +7,7 @@ RUN echo %PATH%
 COPY PowerShell C:/PowerShell
 
 ENV PATH="C:/PowerShell;%PATH%"
-ENV PWSH=C:/PowerShell/pwsh
+ENV PWSH="C:/PowerShell/pwsh"
 
 #---------------------------------------------------------------------------------------------------
 # CMake ENV
@@ -15,7 +15,7 @@ ENV CMAKE_VERSION=3.30.8
 ENV CMAKE_URL=https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-windows-x86_64.zip
 ENV CMAKE_DIR=C:/CMake
 # Dlownload CMake
-RUN ${PWSH} -Command \
+RUN %PWSH% -Command \
     Invoke-WebRequest -Uri %CMAKE_URL% -OutFile C:\\cmake.zip; \
     Expand-Archive -Path C:\\cmake.zip -DestinationPath %CMAKE_DIR%; \
     Remove-Item -Force C:\\cmake.zip
@@ -28,7 +28,7 @@ ENV MINGW_URL=https://github.com/niXman/mingw-builds-binaries/releases/download/
 ENV MINGW_DIR=C:/MinGW
 
 # Download MinGW
-RUN ${PWSH} -Command \
+RUN %PWSH% -Command \
     Invoke-WebRequest -Uri %MINGW_URL% -OutFile C:\\mingw.7z; \
     Expand-Archive -Path C:\\mingw.7z -DestinationPath %MINGW_DIR%; \
     Remove-Item -Force C:\\mingw.7z
@@ -41,7 +41,7 @@ ENV NINJA_URL=https://github.com/ninja-build/ninja/releases/download/v${NINJA_VE
 ENV NINJA_DIR=C:/Ninja
 
 # Download and install Ninja
-RUN ${PWSH} -Command \
+RUN %PWSH% -Command \
     Invoke-WebRequest -Uri %NINJA_URL% -OutFile C:\\ninja.zip; \
     Expand-Archive -Path C:\\ninja.zip -DestinationPath %NINJA_DIR%; \
     Remove-Item -Force C:\\ninja.zip
