@@ -27,7 +27,7 @@ jobs:
       - name: Copy tools
         run: |
           copy "C:\MinGW64" "${{ github.workspace }}\MinGW64"
-          copy "C:\Program Files\CMake" "CMake"
+          copy "C:\Program Files\CMake" "CMake3"
           dir
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md

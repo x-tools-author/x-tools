@@ -5,10 +5,12 @@ RUN echo %PATH%
 # Copy File to Container
 # COPY Qt C:/Qt
 COPY MinGW64 C:/MinGW64
-COPY CMake C:/CMake
+COPY CMake3 C:/CMake
 
-ENV PATH="C:/PowerShell;%PATH%"
-ENV PWSH="C:/PowerShell/pwsh"
+ENV PATH="C:/MinGW64/bin;C:/CMake/bin;%PATH%"
+RUN cmake --version
+RUN gcc -v
+RUN g++ -v
 
 #---------------------------------------------------------------------------------------------------
 # CMake ENV
