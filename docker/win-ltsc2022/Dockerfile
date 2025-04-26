@@ -11,9 +11,9 @@ ENV POWERSHELL_URL=https://github.com/PowerShell/PowerShell/releases/download/v$
 ENV POWERSHELL_DIR=C:/PowerShell
 
 # Download and install PowerShell
-RUN curl.exe -L -o C:\\powershell.zip %POWERSHELL_URL% && \
-    tar.exe -xf C:\\powershell.zip -C C:\\ && \
-    del C:\\powershell.zip
+RUN curl.exe -L -o powershell.zip %POWERSHELL_URL% && \
+    tar.exe -xf powershell.zip -C C:\\ && \
+    del powershell.zip
 ENV PATH="%POWERSHELL_DIR%;%PATH%"
 
 #---------------------------------------------------------------------------------------------------
