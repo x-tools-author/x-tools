@@ -1,8 +1,6 @@
 ﻿FROM mcr.microsoft.com/windows/nanoserver:ltsc2022
 RUN echo %PATH%
 
-WORKDIR C:/Temp
-
 #---------------------------------------------------------------------------------------------------
 # Copy Qt to Container
 #COPY Qt C:/Qt
@@ -13,9 +11,9 @@ ENV POWERSHELL_URL=https://github.com/PowerShell/PowerShell/releases/download/v7
 ENV POWERSHELL_DIR=C:/PowerShell
 
 # Download and install PowerShell
-RUN curl.exe -L -o powershell.zip %POWERSHELL_URL% 
-RUN tar.exe -xf powershell.zip -C C:\\PowerShell 
-RUN del powershell.zip
+RUN curl.exe -L -o C:\\powershell.zip %POWERSHELL_URL% 
+RUN tar.exe -xf C:\\powershell.zip -C C:\\PowerShell 
+RUN del C:\\powershell.zip
 ENV PATH="%POWERSHELL_DIR%;%PATH%"
 
 #---------------------------------------------------------------------------------------------------
