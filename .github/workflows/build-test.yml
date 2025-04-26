@@ -17,5 +17,5 @@ jobs:
           git fetch --tags 
           docker pull ${{ env.DOCKER_IMAGE }}
           for /f "usebackq tokens=*" %%i in (`cd`) do set WORKSPACE=%%i
-          docker run --rm -v /%WORKSPACE:/workspace ${{ env.DOCKER_IMAGE }} cmd /c "\
+          docker run --rm -v /%WORKSPACE%:/workspace ${{ env.DOCKER_IMAGE }} cmd /c "\
           cd /workspace && scripts/ci-build-windows-mingw.bat"
