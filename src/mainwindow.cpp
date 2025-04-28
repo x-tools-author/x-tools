@@ -57,6 +57,11 @@
 #include "mqtt/server/mqttserverui.h"
 #endif
 
+#ifdef X_TOOLS_ENABLE_SERIALBUS
+#include "canbus/canbusassistant.h"
+#include "modbus/modbusassistant.h"
+#endif
+
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , m_page4x4(Q_NULLPTR)
@@ -82,13 +87,8 @@ MainWindow::MainWindow(QWidget* parent)
 
     QSettings* settings = Application::settings();
     m_toolBarActionGroup = new QActionGroup(this);
-    m_stackedWidget = new QStackedWidget(this);
-    m_toolBar = new QToolBar(this);
-    m_toolBar->setMovable(false);
-    m_toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
-    m_toolBar->setMovable(false);
-    addToolBar(Qt::TopToolBarArea, m_toolBar);
-    setCentralWidget(m_stackedWidget);
+    m_tabWidget = new QTabWidget(this);
+    setCentralWidget(m_tabWidget);
 
     setupPages();
     initMenuBar();
@@ -625,36 +625,26 @@ void MainWindow::tryToReboot()
 void MainWindow::setupPages()
 {
     m_page4x4 = new Page4x4(xApp->settings(), this);
-    addPage(tr("General"), m_page4x4, ":/res/icons/device_hub.svg", tr("General Device"));
+    m_tabWidget->addTab(m_page4x4, tr("General"));
 
+#ifdef X_TOOLS_ENABLE_SERIALBUS
+    auto modbus = new ModbusAssistant(this);
+    auto canbus = new CanBusAssistant(this);
+    m_tabWidget->addTab(modbus, QString("Modbus"));
+    m_tabWidget->addTab(canbus, QString("CAN Bus"));
+#endif
+
+#ifdef X_ENABLE_MQTT
     auto* mqttClient = new MqttClientUi(this);
-    addPage(tr("MQTT Client"), mqttClient, ":/res/icons/mqtt.svg", tr("MQTT Client"));
     auto* mqttServer = new MqttServerUi(this);
-    addPage(tr("MQTT Server"), mqttServer, ":/res/icons/mqtt.svg", tr("MQTT Server"));
-}
-
-void MainWindow::addPage(const QString& name,
-                         QWidget* page,
-                         const QString& iconName,
-                         const QString& tooltip)
-{
-    m_stackedWidget->addWidget(page);
-    QAction* action = m_toolBar->addAction(name, page, [=]() {
-        m_stackedWidget->setCurrentWidget(page);
-    });
-
-    action->setCheckable(true);
-    action->setIcon(QIcon(iconName));
-    action->setToolTip(tooltip);
-    m_toolBarActionGroup->addAction(action);
+    m_tabWidget->addTab(mqttClient, QString("MQTT-C"));
+    m_tabWidget->addTab(mqttServer, QString("MQTT-S"));
+#endif
 
     int pageIndex = xApp->settings()->value(m_settingsKey.pageIndex, 0).toInt();
-    if (pageIndex == m_stackedWidget->count() - 1) {
-        action->setChecked(true);
-        m_stackedWidget->setCurrentWidget(page);
-    } else {
-        action->setChecked(false);
-    }
+    pageIndex = qMax(0, pageIndex);
+    pageIndex = qMin(pageIndex, m_tabWidget->count() - 1);
+    m_tabWidget->setCurrentIndex(pageIndex);
 }
 
 QString MainWindow::qtConfFileName()

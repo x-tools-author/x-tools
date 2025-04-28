@@ -181,13 +181,13 @@ else()
   set(X_TOOLS_ENABLE_SERIALBUS OFF)
 
   # Remove modbus files
-  file(GLOB_RECURSE MODBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/tools/modbus/*.*")
+  file(GLOB_RECURSE MODBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/modbus/*.*")
   foreach(file ${MODBUS_SOURCE})
     list(REMOVE_ITEM X_TOOLS_SOURCES ${file})
   endforeach(file ${MODBUS_SOURCE})
 
   # Remove canbus files
-  file(GLOB_RECURSE CANBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/tools/canbus/*.*")
+  file(GLOB_RECURSE CANBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/canbus/*.*")
   foreach(file ${CANBUS_SOURCE})
     list(REMOVE_ITEM X_TOOLS_SOURCES ${file})
   endforeach(file ${CANBUS_SOURCE})

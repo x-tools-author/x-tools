@@ -11,7 +11,7 @@
 #include <QActionGroup>
 #include <QMainWindow>
 #include <QMenu>
-#include <QToolBar>
+#include <QTabWidget>
 #include <QUrl>
 
 class Page4x4;
@@ -34,8 +34,7 @@ protected:
 
 protected:
     Page4x4* m_page4x4{nullptr};
-    QStackedWidget* m_stackedWidget{nullptr};
-    QToolBar* m_toolBar{nullptr};
+    QTabWidget* m_tabWidget{nullptr};
     QActionGroup* m_toolBarActionGroup{nullptr};
 
 private:
@@ -66,10 +65,6 @@ private:
     void showQrCode();
     void tryToReboot();
     void setupPages();
-    void addPage(const QString& name,
-                 QWidget* page,
-                 const QString& iconName,
-                 const QString& tooltip = QString());
 
     // HDPI Policy for Windows
     QString qtConfFileName();

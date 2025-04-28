@@ -24,9 +24,9 @@ int main(int argc, char *argv[])
     MainWindow window;
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
-    window.resize(620 * 1.732, 620);
     window.show();
     window.load();
+    window.resize(620 * 1.732, 620);
     window.moveToCenter();
 
     int ret = app.exec();
