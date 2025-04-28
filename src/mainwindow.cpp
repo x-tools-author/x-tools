@@ -29,6 +29,7 @@
 #include <QProcess>
 #include <QScreen>
 #include <QScrollBar>
+#include <QStackedWidget>
 #include <QStyle>
 #include <QStyleFactory>
 #include <QStyleHints>
@@ -39,6 +40,8 @@
 #include "application.h"
 #include "common/xtools.h"
 #include "page/page.h"
+#include "page/page4x4.h"
+#include "systemtrayicon.h"
 #include "tools/assistantfactory.h"
 
 #ifdef X_TOOLS_ENABLE_QSS
@@ -49,12 +52,14 @@
 #include "systemtrayicon.h"
 #endif
 
+#ifdef X_ENABLE_MQTT
+#include "mqtt/client/mqttclientui.h"
+#include "mqtt/server/mqttserverui.h"
+#endif
+
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
-    , m_iopage00(Q_NULLPTR)
-    , m_iopage01(Q_NULLPTR)
-    , m_iopage10(Q_NULLPTR)
-    , m_iopage11(Q_NULLPTR)
+    , m_page4x4(Q_NULLPTR)
 {
 #if defined(X_TOOLS_MAGIC)
     setWindowOpacity(0.3);
@@ -76,29 +81,16 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 
     QSettings* settings = Application::settings();
-    m_iopage00 = new Page(Page::Left, settings, this);
-    m_iopage01 = new Page(Page::Right, settings, this);
-    m_iopage10 = new Page(Page::Left, settings, this);
-    m_iopage11 = new Page(Page::Right, settings, this);
+    m_toolBarActionGroup = new QActionGroup(this);
+    m_stackedWidget = new QStackedWidget(this);
+    m_toolBar = new QToolBar(this);
+    m_toolBar->setMovable(false);
+    m_toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    m_toolBar->setMovable(false);
+    addToolBar(Qt::TopToolBarArea, m_toolBar);
+    setCentralWidget(m_stackedWidget);
 
-    auto* centralWidget = new QWidget();
-    auto* layout = new QGridLayout(centralWidget);
-    layout->setSpacing(0);
-    layout->setContentsMargins(0, 0, 0, 0);
-    layout->addWidget(m_iopage00, 0, 0);
-    layout->addWidget(m_iopage01, 0, 1);
-    layout->addWidget(m_iopage10, 1, 0);
-    layout->addWidget(m_iopage11, 1, 1);
-    centralWidget->setLayout(layout);
-    setCentralWidget(centralWidget);
-
-    const int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
-    const QString key = m_settingsKey.windowGrid;
-    int rawGrid = settings->value(key, defaultGrid).toInt();
-    m_windowGrid = static_cast<WindowGrid>(rawGrid);
-    updateGrid(m_windowGrid);
-    qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
-
+    setupPages();
     initMenuBar();
     setWindowIcon(QIcon(":/res/icons/logo.svg"));
     setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
@@ -131,19 +123,13 @@ void MainWindow::load(const QString& fileName) const
 
     QJsonDocument doc = QJsonDocument::fromJson(data);
     QJsonObject obj = doc.object();
-    m_iopage00->load(obj.value("page00").toObject().toVariantMap());
-    m_iopage01->load(obj.value("page01").toObject().toVariantMap());
-    m_iopage10->load(obj.value("page10").toObject().toVariantMap());
-    m_iopage11->load(obj.value("page11").toObject().toVariantMap());
+    m_page4x4->load(obj.value("general").toObject().toVariantMap());
 }
 
 void MainWindow::save(const QString& fileName) const
 {
     QJsonObject obj;
-    obj.insert("page00", QJsonObject::fromVariantMap(m_iopage00->save()));
-    obj.insert("page01", QJsonObject::fromVariantMap(m_iopage01->save()));
-    obj.insert("page10", QJsonObject::fromVariantMap(m_iopage10->save()));
-    obj.insert("page11", QJsonObject::fromVariantMap(m_iopage11->save()));
+    obj.insert("general", QJsonObject::fromVariantMap(m_page4x4->save()));
 
     QJsonDocument doc;
     doc.setObject(obj);
@@ -165,32 +151,9 @@ void MainWindow::save(const QString& fileName) const
     file.close();
 }
 
-void MainWindow::updateGrid(WindowGrid grid)
+void MainWindow::updateGrid(int grid)
 {
-    if (grid == WindowGrid::Grid1x2) {
-        m_iopage00->show();
-        m_iopage01->show();
-        m_iopage10->hide();
-        m_iopage11->hide();
-    } else if (grid == WindowGrid::Grid2x1) {
-        m_iopage00->show();
-        m_iopage01->hide();
-        m_iopage10->show();
-        m_iopage11->hide();
-    } else if (grid == WindowGrid::Grid2x2) {
-        m_iopage00->show();
-        m_iopage01->show();
-        m_iopage10->show();
-        m_iopage11->show();
-    } else {
-        m_iopage00->show();
-        m_iopage01->hide();
-        m_iopage10->hide();
-        m_iopage11->hide();
-    }
-
-    m_windowGrid = grid;
-    xApp->settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
+    m_page4x4->updateGrid(static_cast<Page4x4::WindowGrid>(grid));
 }
 
 void MainWindow::moveToCenter()
@@ -210,10 +173,8 @@ void MainWindow::closeEvent(QCloseEvent* event)
 {
     save();
 
-    QSettings* settings = xApp->settings();
-    settings->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
-
 #ifdef Q_OS_WIN
+    QSettings* settings = xApp->settings();
     if (settings->value(m_settingsKey.exitToSystemTray).toBool()) {
         hide();
         event->accept();
@@ -515,52 +476,13 @@ void MainWindow::initViewMenu()
 {
     QMenu* viewMenu = menuBar()->addMenu(tr("&View"));
     viewMenu->setObjectName("ViewMenu");
-    initViewMenuGrid(viewMenu);
+    QList<QAction*> actions = m_page4x4->actions();
+    for (auto& action : actions) {
+        viewMenu->addAction(action);
+    }
     QAction* action = viewMenu->addSeparator();
     action->setObjectName("PageViewAction");
     initViewMenuStayOnTop(viewMenu);
-}
-
-void MainWindow::initViewMenuGrid(QMenu* viewMenu)
-{
-    static QActionGroup* group = new QActionGroup(this);
-    if (!group->actions().isEmpty()) {
-        return;
-    }
-
-    auto a1x1 = viewMenu->addAction("1x1", this, [=]() { updateGrid(WindowGrid::Grid1x1); });
-    auto a1x2 = viewMenu->addAction("1x2", this, [=]() { updateGrid(WindowGrid::Grid1x2); });
-    auto a2x1 = viewMenu->addAction("2x1", this, [=]() { updateGrid(WindowGrid::Grid2x1); });
-    auto a2x2 = viewMenu->addAction("2x2", this, [=]() { updateGrid(WindowGrid::Grid2x2); });
-
-    a1x1->setObjectName("PageViewAction");
-    a1x2->setObjectName("PageViewAction");
-    a2x1->setObjectName("PageViewAction");
-    a2x2->setObjectName("PageViewAction");
-
-    a1x1->setCheckable(true);
-    a1x2->setCheckable(true);
-    a2x1->setCheckable(true);
-    a2x2->setCheckable(true);
-
-    group->addAction(a1x1);
-    group->addAction(a1x2);
-    group->addAction(a2x1);
-    group->addAction(a2x2);
-
-    int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
-    int windowGrid = xApp->settings()->value(m_settingsKey.windowGrid, defaultGrid).toInt();
-    m_windowGrid = static_cast<WindowGrid>(windowGrid);
-    updateGrid(m_windowGrid);
-    if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
-        a1x2->setChecked(true);
-    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x1)) {
-        a2x1->setChecked(true);
-    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x2)) {
-        a2x2->setChecked(true);
-    } else {
-        a1x1->setChecked(true);
-    }
 }
 
 void MainWindow::initViewMenuStayOnTop(QMenu* viewMenu)
@@ -697,6 +619,41 @@ void MainWindow::tryToReboot()
         QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
         xApp->execMs(100);
         qApp->closeAllWindows();
+    }
+}
+
+void MainWindow::setupPages()
+{
+    m_page4x4 = new Page4x4(xApp->settings(), this);
+    addPage(tr("General"), m_page4x4, ":/res/icons/device_hub.svg", tr("General Device"));
+
+    auto* mqttClient = new MqttClientUi(this);
+    addPage(tr("MQTT Client"), mqttClient, ":/res/icons/mqtt.svg", tr("MQTT Client"));
+    auto* mqttServer = new MqttServerUi(this);
+    addPage(tr("MQTT Server"), mqttServer, ":/res/icons/mqtt.svg", tr("MQTT Server"));
+}
+
+void MainWindow::addPage(const QString& name,
+                         QWidget* page,
+                         const QString& iconName,
+                         const QString& tooltip)
+{
+    m_stackedWidget->addWidget(page);
+    QAction* action = m_toolBar->addAction(name, page, [=]() {
+        m_stackedWidget->setCurrentWidget(page);
+    });
+
+    action->setCheckable(true);
+    action->setIcon(QIcon(iconName));
+    action->setToolTip(tooltip);
+    m_toolBarActionGroup->addAction(action);
+
+    int pageIndex = xApp->settings()->value(m_settingsKey.pageIndex, 0).toInt();
+    if (pageIndex == m_stackedWidget->count() - 1) {
+        action->setChecked(true);
+        m_stackedWidget->setCurrentWidget(page);
+    } else {
+        action->setChecked(false);
     }
 }
 

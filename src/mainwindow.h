@@ -8,24 +8,24 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QActionGroup>
 #include <QMainWindow>
 #include <QMenu>
+#include <QToolBar>
 #include <QUrl>
 
-class Page;
+class Page4x4;
+class QStackedWidget;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-public:
-    enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
-
 public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
     ~MainWindow() override;
 
     void load(const QString& fileName = QString()) const;
     void save(const QString& fileName = QString()) const;
-    void updateGrid(WindowGrid grid);
+    void updateGrid(int grid);
     void moveToCenter();
 
 protected:
@@ -33,22 +33,20 @@ protected:
     virtual QUrl storeUrl() const;
 
 protected:
-    Page* m_iopage00;
-    Page* m_iopage01;
-    Page* m_iopage10;
-    Page* m_iopage11;
+    Page4x4* m_page4x4{nullptr};
+    QStackedWidget* m_stackedWidget{nullptr};
+    QToolBar* m_toolBar{nullptr};
+    QActionGroup* m_toolBarActionGroup{nullptr};
 
 private:
     struct SettingsKeys
     {
-        const QString windowGrid{"MainWindow/windowGrid"};
         const QString pageIndex{"MainWindow/pageIndex"};
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
         const QString useSystemProxy{"MainWindow/useSystemProxy"};
         const QString staysOnTop{"MainWindow/staysOnTop"};
+        const QString language{"MainWindow/pageIndex"};
     } m_settingsKey;
-
-    WindowGrid m_windowGrid{WindowGrid::Grid1x1};
 
 private:
     void initMenuBar();
@@ -61,13 +59,17 @@ private:
     void initOptionMenuColorScheme(QMenu* optionMenu);
     void initMenuLanguage();
     void initViewMenu();
-    void initViewMenuGrid(QMenu* viewMenu);
     void initViewMenuStayOnTop(QMenu* viewMenu);
     void initHelpMenu();
 
     void showHistory();
     void showQrCode();
     void tryToReboot();
+    void setupPages();
+    void addPage(const QString& name,
+                 QWidget* page,
+                 const QString& iconName,
+                 const QString& tooltip = QString());
 
     // HDPI Policy for Windows
     QString qtConfFileName();
