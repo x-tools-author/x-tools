@@ -4,6 +4,7 @@
 COPY Qt C:/Qt
 RUN dir C:\Qt
 RUN dir C:\Qt\6.8.3
-RUN echo "Qt directory copied successfully."
+RUN dir C:\Qt\6.8.3\mingw_64
+RUN dir C:\Qt\6.8.3\mingw_64\bin
 ENV PATH=C:\Qt\6.8.3\mingw_64\bin;%PATH%
 RUN C:\Qt\6.8.3\mingw_64\bin\qmake --version
