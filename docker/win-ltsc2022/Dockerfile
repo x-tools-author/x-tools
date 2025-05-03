@@ -7,4 +7,4 @@ RUN dir C:\Qt\6.8.3
 RUN dir C:\Qt\6.8.3\mingw_64
 RUN dir C:\Qt\6.8.3\mingw_64\bin
 ENV PATH=C:\Qt\6.8.3\mingw_64\bin;%PATH%
-RUN C:\Qt\6.8.3\mingw_64\bin\qmake --version
+RUN C:\Qt\6.8.3\mingw_64\bin\qmake.exe --version
