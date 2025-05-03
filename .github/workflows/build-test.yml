@@ -15,5 +15,5 @@ jobs:
         shell: cmd
         run: |
           git fetch --tags 
-          call 'scripts\win-path-to-linux-path.bat'
+          call scripts\win-path-to-linux-path.bat
           echo %WORKSPACE_UNIX%
