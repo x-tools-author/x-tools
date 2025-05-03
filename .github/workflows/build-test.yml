@@ -9,11 +9,16 @@ jobs:
     env:
       DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-windows-2022:amd64
     steps:
-      - name: Pull respository
+      - name: Pull Respository
         uses: actions/checkout@v4
+      - name: Pull Image
+        run: |
+          docker pull ${{ env.DOCKER_IMAGE }}
       - name: Build docker image
         shell: cmd
         run: |
           git fetch --tags 
           call scripts\win-path-to-linux-path.bat
           echo %WORKSPACE_UNIX%
+          docker run --rm -v %WORKSPACE_UNIX%:/workspace ${{ env.DOCKER_IMAGE }} cmd /c "\
+          cd /workspace && scripts/ci-build-windows-mingw.bat"
