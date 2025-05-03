@@ -18,6 +18,7 @@ jobs:
       - name: Build docker image
         shell: cmd
         run: |
+          where.exe cmake.exe
           git fetch --tags 
           echo ${{ github.workspace }}
           docker run --rm -v ${{ github.workspace }}:C:\workspace -w "C:\workspace" ${{ env.DOCKER_IMAGE }} cmd /c ^
