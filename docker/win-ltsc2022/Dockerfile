@@ -3,4 +3,4 @@
 # Copy File to Container
 COPY Qt C:\Qt
 RUN DIR C:\Qt
-ENV PATH=C:/Qt/6.8.3/mingw_64/bin;%PATH%
+ENV PATH=C:\Qt\6.8.3\mingw_64\bin;%PATH%
