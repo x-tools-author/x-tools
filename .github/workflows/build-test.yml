@@ -19,9 +19,10 @@ jobs:
         shell: cmd
         run: |
           git fetch --tags 
-          docker run --rm -v ${{ github.workspace }}:C:\workspace -w "C:\workspace" ${{ env.DOCKER_IMAGE }} cmd /c "^
+          docker run --rm -v ${{ github.workspace }}:C:\workspace -w "C:\workspace" ${{ env.DOCKER_IMAGE }} cmd /c " ^
           set PATH=C:\Qt\6.8.3\mingw_64\bin;%PATH% ^
           && echo %PATH%  ^
           && dir C:\ ^
-          && dir D:\ "
+          && dir D:\ ^
+          && dir D:\a"
 
