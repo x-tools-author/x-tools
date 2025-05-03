@@ -26,6 +26,8 @@ jobs:
           modules: ${{ env.QT_MODULES }}
       - name: Copy tools
         run: |
+          where.exe gcc.exe
+          where.exe cmake.exe
           copy "C:\MinGW64" "${{ github.workspace }}\MinGW64"
           copy "C:\Program Files\CMake" "CMake3"
           dir
