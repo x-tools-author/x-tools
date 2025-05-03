@@ -19,6 +19,6 @@ jobs:
         run: |
           git fetch --tags 
           echo ${{ github.workspace }}
-          docker run --rm -v ${{ github.workspace }}:c:\workspace ${{ env.DOCKER_IMAGE }} cmd /c " ^
-          cd c:\workspace && scripts\ci-build-windows-mingw.bat"
+          docker run --rm -v ${{ github.workspace }}:C:\workspace ${{ env.DOCKER_IMAGE }} cmd /c " ^
+          cd C:\workspace && scripts\ci-build-windows-mingw.bat"
 
