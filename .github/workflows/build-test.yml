@@ -12,7 +12,6 @@ jobs:
       - name: Pull Respository
         uses: actions/checkout@v4
       - name: Pull Image
-        if: false
         run: |
            docker pull ${{ env.DOCKER_IMAGE }}
       - name: Build docker image
@@ -20,3 +19,5 @@ jobs:
         run: |
           git fetch --tags 
           echo ${{ github.workspace }}
+          docker run --rm -v ${{ github.workspace }}:c:\workspace ${{ env.DOCKER_IMAGE }} cmd /c "\
+          cd c:\workspace && scripts\ci-build-windows-mingw.bat"
