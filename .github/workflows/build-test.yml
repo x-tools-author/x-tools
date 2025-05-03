@@ -21,4 +21,4 @@ jobs:
           call scripts\win-path-to-linux-path.bat
           echo %WORKSPACE_UNIX%
           docker run --rm -v %WORKSPACE_UNIX%:/c/workspace ${{ env.DOCKER_IMAGE }} cmd /c "\
-          cd /workspace && scripts/ci-build-windows-mingw.bat"
+          cd c:/workspace && scripts/ci-build-windows-mingw.bat"
