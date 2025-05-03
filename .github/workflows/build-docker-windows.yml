@@ -28,7 +28,6 @@ jobs:
         run: |
           where.exe gcc.exe
           where.exe cmake.exe
-          copy "C:\MinGW64" "${{ github.workspace }}\MinGW64"
           dir
       - name: Build docker image
         run: | #https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
