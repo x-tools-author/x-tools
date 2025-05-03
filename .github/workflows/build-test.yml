@@ -24,6 +24,5 @@ jobs:
           && dir C: ^
           && dir D: ^
           && echo %PATH%  ^
-          && C:\Qt\6.8.3\mingw_64\bin\qmake --version ^
-          && scripts\ci-build-windows-mingw.bat"
+          && C:\Qt\6.8.3\mingw_64\bin\qmake --version"
 
