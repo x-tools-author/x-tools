@@ -18,7 +18,6 @@ jobs:
         shell: cmd
         run: |
           git fetch --tags 
-          call scripts\win-path-to-linux-path.bat
-          echo %WORKSPACE_UNIX%
-          docker run --rm -v %WORKSPACE_UNIX%:/c/workspace ${{ env.DOCKER_IMAGE }} cmd /c "\
-          cd c:/workspace && scripts/ci-build-windows-mingw.bat"
+          set WORKSPACE=%cd% && echo %WORKSPACE%
+          docker run --rm -v %WORKSPACE%:c:\workspace ${{ env.DOCKER_IMAGE }} cmd /c "\
+          cd c:\workspace && scripts\ci-build-windows-mingw.bat"
