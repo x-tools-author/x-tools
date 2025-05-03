@@ -21,6 +21,8 @@ jobs:
           git fetch --tags 
           docker run --rm -v ${{ github.workspace }}:C:\workspace -w "C:\workspace" ${{ env.DOCKER_IMAGE }} cmd /c "^
           set PATH=C:\Qt\6.8.3\mingw_64\bin;%PATH% ^
+          && dir C: ^
           && echo %PATH%  ^
+          && C:\Qt\6.8.3\mingw_64\bin\qmake --version ^
           && scripts\ci-build-windows-mingw.bat"
 
