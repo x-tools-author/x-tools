@@ -71,6 +71,7 @@ function(x_tools_generate_translations target)
 
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     if(QT_VERSION VERSION_LESS "6.2.0")
+      message(STATUS "[Linguist] Generating translations is ignored, because Qt version tool low")
       return()
     endif()
 
@@ -94,8 +95,8 @@ function(x_tools_generate_translations target)
     endif()
 
     # cmake-format: off
-    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${APP_TS_FILES} OPTIONS -no-obsolete TARGET ${target}_lupdate)
     qt5_add_translation(QM_FILES ${APP_TS_FILES})
+    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${APP_TS_FILES})
     # cmake-format: on
   endif()
 

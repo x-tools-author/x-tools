@@ -151,6 +151,10 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 
     onShowStatisticianChanged(false);
     onDeviceTypeChanged();
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    ui->widgetController->setMaximumWidth(256);
+#endif
 }
 
 Page::~Page()

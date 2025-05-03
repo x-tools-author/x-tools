@@ -30,6 +30,13 @@
 #include "linechartsettings.h"
 #include "page/charts/utilities/chartdatahandler.h"
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
+using QtCharts::QAbstractSeries;
+using QtCharts::QLineSeries;
+using QtCharts::QScatterSeries;
+using QtCharts::QSplineSeries;
+#endif
+
 LineChartView::LineChartView(QWidget *parent)
     : ChartView(parent)
 {

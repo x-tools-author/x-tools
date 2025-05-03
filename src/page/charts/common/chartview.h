@@ -16,6 +16,7 @@
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using QtCharts::QChart;
+using QtCharts::QChartView;
 #endif
 
 class ChartSettings;
