@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "broadcastthread.h"
 
+#include <QDebug>
 #include <QTimer>
 #include <QUdpSocket>
 
