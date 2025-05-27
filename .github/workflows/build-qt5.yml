@@ -48,8 +48,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [5.15.2]
-        arch: [gcc_64]
+        version: [5.9.9, 5.12.12, 5.15.2]
     steps:
       - name: Pull code
         uses: actions/checkout@v4
@@ -60,7 +59,7 @@ jobs:
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
           target: desktop
-          arch: ${{ matrix.arch }}
+          arch: 'gcc_64'
           modules: 'qtcharts'
       - name: build-gcc
         run: |
