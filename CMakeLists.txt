@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------------------------------
 # Do something make CMake happy
 if(NOT ${CMAKE_VERSION} VERSION_LESS "4.0.0")
-  set(CMAKE_POLICY_VERSION_MINIMUM "3.16" CACHE STRING "CMake policy version" FORCE)
+  set(CMAKE_POLICY_VERSION_MINIMUM "3.22" CACHE STRING "CMake policy version" FORCE)
 endif()
 
 cmake_minimum_required(VERSION 3.22)
