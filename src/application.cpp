@@ -105,6 +105,7 @@ void Application::uninstallLog()
 
 void Application::setupHdpi()
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QSettings *settings = Application::settings();
     int defaultPolicy = static_cast<int>(QGuiApplication::highDpiScaleFactorRoundingPolicy());
     int policy = settings->value(SettingsKey().hdpi, defaultPolicy).toInt();
@@ -112,6 +113,7 @@ void Application::setupHdpi()
     const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
     qInfo() << "The current high dpi policy is:" << cookedPolicy;
+#endif
 }
 
 QSettings *Application::settings()

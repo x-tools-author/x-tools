@@ -390,6 +390,7 @@ void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
 
 void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QMenu* menu = optionMenu->addMenu(tr("HDPI Policy"));
     QActionGroup* actionGroup = new QActionGroup(this);
 
@@ -420,6 +421,9 @@ void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
 
     menu->addActions(actionGroup->actions());
     optionMenu->addMenu(menu);
+#else
+    Q_UNUSED(optionMenu);
+#endif
 }
 
 void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
