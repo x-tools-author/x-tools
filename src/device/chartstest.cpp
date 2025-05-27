@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "chartstest.h"
 
+#include <QDebug>
 #include <QPointF>
 #include <QTimer>
 #include <QtMath>
