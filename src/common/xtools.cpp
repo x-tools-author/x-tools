@@ -225,7 +225,7 @@ QByteArray string2bytes(const QString &text, int format)
 {
     auto cookString = [](const QString &str, const int base) -> QByteArray {
         QByteArray data;
-        const QStringList strList = str.split(' ', Qt::SkipEmptyParts);
+        const QStringList strList = str.split(' ', xSkipEmptyParts);
         for (auto &string : strList) {
             auto value = static_cast<qint8>(string.toInt(Q_NULLPTR, base));
             data.append(reinterpret_cast<char *>(&value), 1);

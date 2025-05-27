@@ -141,7 +141,7 @@ void ChartDataHandler::handleTextY(QByteArray &bytes)
             continue;
         }
 
-        QStringList yList = str.split(',', Qt::SkipEmptyParts);
+        QStringList yList = str.split(',', xSkipEmptyParts);
         QList<double> values;
         for (QString &y : yList) {
             values.append(y.trimmed().toDouble());

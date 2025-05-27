@@ -1216,7 +1216,7 @@ void ModbusAssistant::updateServerRegistersViews(int currentFormat, int targetFo
 quint8 ModbusAssistant::getClientFunctionCode()
 {
     QString txt = ui->comboBoxFunctionCode->currentText();
-    QStringList list = txt.split('-', Qt::SkipEmptyParts);
+    QStringList list = txt.split('-', xSkipEmptyParts);
     if (list.length()) {
         return list.first().toInt(Q_NULLPTR, 16);
     }
@@ -1255,7 +1255,7 @@ QVector<quint16> ModbusAssistant::getClientRegisterValue()
 QByteArray ModbusAssistant::getClientPdu()
 {
     QString text = ui->lineEditPdu->text();
-    QStringList valueList = text.split(' ', Qt::SkipEmptyParts);
+    QStringList valueList = text.split(' ', xSkipEmptyParts);
     QByteArray data;
     for (QString &value : valueList) {
         data.append(char(value.toInt(Q_NULLPTR, 16)));

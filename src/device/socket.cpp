@@ -48,7 +48,7 @@ QString Socket::makeFlag(const QString &address, quint16 port) const
 
 QPair<QString, quint16> Socket::splitFlag(const QString &flag) const
 {
-    QStringList list = flag.split(":", Qt::SkipEmptyParts);
+    QStringList list = flag.split(":", xSkipEmptyParts);
     if (list.size() == 2) {
         return qMakePair(list.at(0), list.at(1).toUShort());
     }

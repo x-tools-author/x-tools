@@ -55,7 +55,7 @@ QString OutputSettings::filterText() const
 
 QStringList OutputSettings::highlighterKeywords() const
 {
-    return ui->lineEditHighlighter->text().split(",", Qt::SkipEmptyParts);
+    return ui->lineEditHighlighter->text().split(",", xSkipEmptyParts);
 }
 
 QVariantMap OutputSettings::save()

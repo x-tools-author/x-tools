@@ -83,7 +83,7 @@ void ping(xPing *app, const QString &ip)
     QString allString = QString::fromUtf8(all);
     QString description = ip;
     if (allString.contains("TTL=")) {
-        QStringList list = allString.split(" ", Qt::SkipEmptyParts);
+        QStringList list = allString.split(" ", xSkipEmptyParts);
         if (list.length() >= 2) {
             description = list.at(2);
         }

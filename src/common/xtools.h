@@ -53,6 +53,12 @@
 #define xCheckStateChanged qOverload<int>(&QCheckBox::stateChanged)
 #endif
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+#define xSkipEmptyParts Qt::SkipEmptyParts
+#else
+#define xSkipEmptyParts QString::SkipEmptyParts
+#endif
+
 /**************************************************************************************************/
 enum class DeviceType {
     SerialPort,
