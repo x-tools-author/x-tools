@@ -3,7 +3,7 @@
 [![build-windows](https://github.com/x-tools-author/x-tools/actions/workflows/build-windows.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-windows.yml)
 [![build-ubuntu](https://github.com/x-tools-author/x-tools/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-ubuntu.yml)
 [![build-macos](https://github.com/x-tools-author/x-tools/actions/workflows/build-macos.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-macos.yml)
-[![build-android(docker)](https://github.com/x-tools-author/x-tools/actions/workflows/build-android-linux.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-android-linux.yml)
+[![build-android](https://github.com/x-tools-author/x-tools/actions/workflows/build-android.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-android.yml)
 [![build-qt5](https://github.com/x-tools-author/x-tools/actions/workflows/build-qt5.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-qt5.yml)
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/x-tools.svg)](https://repology.org/project/x-tools/versions)
