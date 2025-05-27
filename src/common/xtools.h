@@ -29,6 +29,18 @@
 #define xLocalSocketErrorOccurred qOverload<QLocalSocket::LocalSocketError>(&QLocalSocket::error)
 #endif
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+#define xTcpSocketErrorOccurred &QTcpSocket::errorOccurred
+#else
+#define xTcpSocketErrorOccurred qOverload<QAbstractSocket::SocketError>(&QTcpSocket::error)
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+#define xUdpSocketErrorOccurred &QUdpSocket::errorOccurred
+#else
+#define xUdpSocketErrorOccurred qOverload<QAbstractSocket::SocketError>(&QUdpSocket::error)
+#endif
+
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 #define xEnableColorScheme 1
 #else

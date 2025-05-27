@@ -9,6 +9,7 @@
 #include "tableview.h"
 #include "ui_tableview.h"
 
+#include <QDebug>
 #include <QFileDialog>
 #include <QJsonArray>
 #include <QJsonDocument>

@@ -10,6 +10,8 @@
 
 #include <QHostAddress>
 
+#include "common/xtools.h"
+
 TcpClient::TcpClient(QObject *parent)
     : SocketClient(parent)
 {}
@@ -25,7 +27,7 @@ QObject *TcpClient::initDevice()
         emit errorOccurred("Disconnected!");
 #endif
     });
-    connect(m_tcpSocket, &QTcpSocket::errorOccurred, m_tcpSocket, [this]() {
+    connect(m_tcpSocket, xTcpSocketErrorOccurred, m_tcpSocket, [this]() {
         emit errorOccurred(m_tcpSocket->errorString());
     });
 #if 0

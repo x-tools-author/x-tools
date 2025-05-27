@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "presetmodel.h"
 
+#include <QDebug>
+
 PresetModel::PresetModel(QObject *parent)
     : TableModel{parent}
 {}

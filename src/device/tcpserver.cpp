@@ -10,6 +10,8 @@
 
 #include <QTcpSocket>
 
+#include "common/xtools.h"
+
 TcpServer::TcpServer(QObject *parent)
     : SocketServer(parent)
 {}
@@ -91,7 +93,7 @@ void TcpServer::setupClient(QTcpSocket *socket)
 
     connect(socket, &QTcpSocket::readyRead, socket, [socket, this]() { readBytes(socket); });
     connect(socket, &QTcpSocket::disconnected, socket, [socket, this]() { removeSocket(socket); });
-    connect(socket, &QTcpSocket::errorOccurred, socket, [socket, this]() { removeSocket(socket); });
+    connect(socket, xTcpSocketErrorOccurred, socket, [socket, this]() { removeSocket(socket); });
 }
 
 void TcpServer::readBytes(QTcpSocket *socket)

@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "udpserver.h"
 
+#include "common/xtools.h"
+
 UdpServer::UdpServer(QObject *parent)
     : SocketServer(parent)
 {}
@@ -25,7 +27,7 @@ QObject *UdpServer::initDevice()
     }
 
     connect(m_udpSocket, &QUdpSocket::readyRead, m_udpSocket, [this]() { readPendingDatagrams(); });
-    connect(m_udpSocket, &QUdpSocket::errorOccurred, m_udpSocket, [this]() {
+    connect(m_udpSocket, xUdpSocketErrorOccurred, m_udpSocket, [this]() {
         emit errorOccurred(m_udpSocket->errorString());
     });
 

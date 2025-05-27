@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "emittermodel.h"
 
+#include <QDebug>
+
 EmitterModel::EmitterModel(QObject *parent)
     : TableModel{parent}
 {}

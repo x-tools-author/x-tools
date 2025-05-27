@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "respondermodel.h"
 
+#include <QDebug>
 #include <QStandardItem>
 
 ResponderModel::ResponderModel(QObject *parent)

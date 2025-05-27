@@ -9,6 +9,8 @@
 #include "devicesettings.h"
 #include "ui_devicesettings.h"
 
+#include <QDateTime>
+#include <QDebug>
 #include <QFileDialog>
 #include <QStandardPaths>
 

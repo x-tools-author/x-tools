@@ -1,4 +1,4 @@
-/***************************************************************************************************
+﻿/***************************************************************************************************
  * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
@@ -9,6 +9,8 @@
 #include "page.h"
 #include "ui_page.h"
 
+#include <QDateTime>
+#include <QDebug>
 #include <QMenu>
 #include <QMessageBox>
 #include <QTimer>

@@ -9,6 +9,7 @@
 #include "savethread.h"
 
 #include <QDateTime>
+#include <QDebug>
 #include <QFile>
 #include <QFileInfo>
 #include <QLocale>

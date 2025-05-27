@@ -10,6 +10,7 @@
 
 #include <QChartView>
 #include <QCheckBox>
+#include <QDebug>
 #include <QFileDialog>
 #include <QGraphicsLayout>
 #include <QJsonArray>

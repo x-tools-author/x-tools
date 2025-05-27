@@ -13,6 +13,7 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QCloseEvent>
+#include <QDateTime>
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QImage>
