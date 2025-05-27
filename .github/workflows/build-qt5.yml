@@ -9,7 +9,7 @@ on:
 #      - master
 jobs:
   build-windows:
-    name: Build with Qt5
+    name: Build with Qt5(windows)
     runs-on: windows-2022
     strategy:
       fail-fast: false
@@ -43,7 +43,7 @@ jobs:
           cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
           cmake --build . --target all --config Release
   build-linux:
-    name: Build with Qt5
+    name: Build with Qt5(linux)
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
