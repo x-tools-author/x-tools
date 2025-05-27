@@ -24,6 +24,8 @@
 #include <QStyle>
 #include <QThreadPool>
 
+#include "common/xtools.h"
+
 static const QString fileName()
 {
     QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
@@ -179,14 +181,14 @@ void PingAssistant::initToolBar()
 void PingAssistant::initRunToolBar()
 {
     QIcon icon = QApplication::style()->standardIcon(QStyle::SP_MediaPlay);
-    m_playAction = m_toolBar->addAction(icon, "", [=]() { this->play(); });
+    m_playAction = m_toolBar->addAction(icon, "", this, [=]() { this->play(); });
     m_playAction->setToolTip(tr("Start scan"));
     connect(m_playAction, &QAction::hovered, this, [=]() {
         m_statusBar->showMessage(m_playAction->toolTip(), 3 * 1000);
     });
 
     icon = QApplication::style()->standardIcon(QStyle::SP_MediaPause);
-    m_pauseAction = m_toolBar->addAction(icon, "", [=]() { this->pause(); });
+    m_pauseAction = m_toolBar->addAction(icon, "", this, [=]() { this->pause(); });
     m_pauseAction->setEnabled(false);
     m_pauseAction->setToolTip(tr("Pause scan"));
     connect(m_pauseAction, &QAction::hovered, this, [=]() {
@@ -194,7 +196,7 @@ void PingAssistant::initRunToolBar()
     });
 
     icon = QApplication::style()->standardIcon(QStyle::SP_MediaStop);
-    m_stopAction = m_toolBar->addAction(icon, "", [=]() { this->stop(); });
+    m_stopAction = m_toolBar->addAction(icon, "", this, [=]() { this->stop(); });
     m_stopAction->setEnabled(false);
     m_stopAction->setToolTip(tr("Stop scan"));
     connect(m_stopAction, &QAction::hovered, this, [=]() {
