@@ -10,6 +10,7 @@
 
 #include <glog/logging.h>
 
+#include <QDebug>
 #include <QDir>
 #include <QEventLoop>
 #include <QLocale>
