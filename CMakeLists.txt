@@ -18,7 +18,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # --------------------------------------------------------------------------------------------------
-if(APPLE)
+if(IOS)
+message(FATAL_ERROR "xTools does not support iOS platform yet...")
+endif()
+
+if(APPLE AND NOT IOS)
 if(QT_VERSION VERSION_LESS "6.0.0")
 set(CMAKE_OSX_ARCHITECTURES "x86_64")
 endif()
