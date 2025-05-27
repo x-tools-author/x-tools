@@ -18,6 +18,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # --------------------------------------------------------------------------------------------------
+if(APPLE)
+if(QT_VERSION VERSION_LESS "6.0.0")
+set(CMAKE_OSX_ARCHITECTURES "x86_64")
+endif()
+endif()
+
+# --------------------------------------------------------------------------------------------------
 # Some options for 3rd party libraries
 # cmake-format: off
 set(WITH_GFLAGS OFF)
