@@ -70,3 +70,43 @@ jobs:
           cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
           cmake --build . --target xTools
           cmake --build . --target xTools_linux
+  build-macos:
+    name: Build with Qt5(macos)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-14]
+        version: [5.9.9, 5.12.12, 5.15.2]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: install qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: '==3.1.*'
+          dir: ${{ github.workspace }}
+          version: ${{ matrix.version }}
+          target: 'desktop'
+          arch: 'clang_64'
+          host: 'mac'
+          modules: 'qtcharts'
+      - name: build all
+        run: |
+          # brew uninstall --force node
+          # brew unlink unixodbc
+          # brew install libiodbc
+          mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
+          ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
+          mkdir build
+          cd build
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release ../
+          cmake --build . --target all
+      - name: make dmg
+        run: |
+          ls bin/Darwin/Release/xTools
+          cd build
+          cmake --build . --target xTools_dmg
+          ls ../bin/Darwin/Release/xTools
+          # rename all dmg with lower case
+          find ../bin/Darwin/Release/xTools -name "*.dmg" -exec echo "dmg file is: {}" \;
