@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "localsocket.h"
 
+#include "common/xtools.h"
+
 LocalSocket::LocalSocket(QObject *parent)
     : Device(parent)
 {}
@@ -23,12 +25,9 @@ QObject *LocalSocket::initDevice()
         QByteArray bytes = this->m_socket->readAll();
         emit bytesRead(bytes, m_socket->serverName());
     });
-    connect(m_socket,
-            &QLocalSocket::errorOccurred,
-            this,
-            [this](QLocalSocket::LocalSocketError error) {
-                emit errorOccurred(m_socket->errorString());
-            });
+    connect(m_socket, xLocalSocketErrorOccurred, this, [this](QLocalSocket::LocalSocketError error) {
+        emit errorOccurred(m_socket->errorString());
+    });
 
     QVariantMap parameters = save();
     LocalSocketParametersKeys keys;
@@ -50,8 +49,9 @@ void LocalSocket::deinitDevice()
 void LocalSocket::writeActually(const QByteArray &bytes)
 {
     if (m_socket && m_socket->state() == QLocalSocket::ConnectedState) {
-        qint64 ret = m_socket->write(bytes);
-        emit bytesWritten(bytes, m_socket->serverName());
+        if (m_socket->write(bytes) > 0) {
+            emit bytesWritten(bytes, m_socket->serverName());
+        }
     } else {
         emit errorOccurred("Socket is not connected");
     }

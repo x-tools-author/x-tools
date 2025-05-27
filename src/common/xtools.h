@@ -23,6 +23,12 @@
 #define xWebSocketErrorOccurred qOverload<QAbstractSocket::SocketError>(&QWebSocket::error)
 #endif
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+#define xLocalSocketErrorOccurred &QLocalSocket::errorOccurred
+#else
+#define xLocalSocketErrorOccurred qOverload<QLocalSocket::LocalSocketError>(&QLocalSocket::error)
+#endif
+
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 #define xEnableColorScheme 1
 #else
