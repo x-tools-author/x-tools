@@ -1,4 +1,4 @@
-name: build-docker(linux)
+name: build-docker
 on:
   workflow_dispatch: # Enables manually
 
