@@ -65,11 +65,13 @@ void LocalServer::writeActually(const QByteArray &bytes)
     }
 
     if (m_target == nullptr) {
-        for (QLocalSocket *socket : m_server->findChildren<QLocalSocket *>()) {
+        auto sockets = m_server->findChildren<QLocalSocket *>();
+        for (auto &socket : sockets) {
             socket->write(bytes);
         }
     } else {
-        for (QLocalSocket *socket : m_server->findChildren<QLocalSocket *>()) {
+        auto sockets = m_server->findChildren<QLocalSocket *>();
+        for (auto &socket : sockets) {
             if (socket == m_target) {
                 socket->write(bytes);
                 break;
