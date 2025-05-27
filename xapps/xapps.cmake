@@ -1,5 +1,5 @@
-option(X_ENABLE_APPS "Enable apps" OFF)
-if(NOT X_ENABLE_APPS)
+option(X_ENABLE_X_APPS "Enable apps" OFF)
+if(NOT X_ENABLE_X_APPS)
   return()
 endif()
 
