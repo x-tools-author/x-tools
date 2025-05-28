@@ -8,7 +8,9 @@
  **************************************************************************************************/
 #include "application.h"
 
+#if !defined(X_DISABLE_GLOG)
 #include <glog/logging.h>
+#endif
 
 #include <QDebug>
 #include <QDir>
@@ -40,6 +42,7 @@ Application::Application(int &argc, char **argv)
 
 void googleLogToQtLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
+#if !defined(X_DISABLE_GLOG)
     QByteArray localMsg = msg.toUtf8();
     const char *file = context.file ? context.file : "";
     const int line = context.line;
@@ -58,6 +61,11 @@ void googleLogToQtLog(QtMsgType type, const QMessageLogContext &context, const Q
         google::LogMessage(file, line, google::GLOG_INFO).stream() << localMsg.data();
         break;
     }
+#else
+    Q_UNUSED(type);
+    Q_UNUSED(context);
+    Q_UNUSED(msg);
+#endif
 }
 
 void Application::installLog(char *argv0)
@@ -66,7 +74,7 @@ void Application::installLog(char *argv0)
     // Google log is just for release edition.
     return;
 #endif
-
+#if !defined(X_DISABLE_GLOG)
     // Redirect the log message to Qt log.
     qInstallMessageHandler(googleLogToQtLog);
 
@@ -92,12 +100,17 @@ void Application::installLog(char *argv0)
 
     google::InitGoogleLogging(argv0);
     qInfo() << "The logging path is:" << qPrintable(logPath);
+#else
+    Q_UNUSED(argv0);
+#endif
 }
 
 void Application::uninstallLog()
 {
+#if !defined(X_DISABLE_GLOG)
 #if defined(QT_RELEASE)
     google::ShutdownGoogleLogging();
+#endif
 #endif
 }
 

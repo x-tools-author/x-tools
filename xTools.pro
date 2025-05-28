@@ -7,7 +7,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-warning("CMake is recommended for building this project, but you are using qmake.")
+#warning("CMake is recommended for building this project, but you are using qmake.")
 #------------------------------------------------------------------------------
 # Android settings
 X_APP_NAME        = "xTools"
@@ -57,9 +57,27 @@ X_UI_FILES = $$files(src/*.ui, true)
 # --------------------------------------------------------------------------------------------------
 # 3rd module
 DEFINES += \
-  X_DISABLE_GOOGLE_LOG \
+  X_DISABLE_GLOG \
   X_DISABLE_MDNS \
   X_DISABLE_QR_CODE
+
+# --------------------------------------------------------------------------------------------------
+# Remove mdns files
+TEMP_FILES = $$files(src/tools/mdns/*.*)
+for(f, TEMP_FILES): {
+  X_H_FILES -= $${f}
+  X_CPP_FILES -= $${f}
+  X_UI_FILES -= $${f}
+}
+
+# --------------------------------------------------------------------------------------------------
+# Remove QR code files
+TEMP_FILES = $$files(src/tools/qrcode/*.*)
+for(f, TEMP_FILES): {
+  X_H_FILES -= $${f}
+  X_CPP_FILES -= $${f}
+  X_UI_FILES -= $${f}
+}
 
 # --------------------------------------------------------------------------------------------------
 # SerialPort module
@@ -99,12 +117,20 @@ qtHaveModule(serialbus): {
 
 # --------------------------------------------------------------------------------------------------
 # Charts module
-qtHaveModule(charts): {
-  QT += charts
-  DEFINES += X_ENABLE_CHARTS
-} else: {
-
+# --------------------------------------------------------------------------------------------------
+# Remove QR code files
+TEMP_FILES = $$files(src/page/charts/*.*, true)
+for(f, TEMP_FILES): {
+  X_H_FILES -= $${f}
+  X_CPP_FILES -= $${f}
+  X_UI_FILES -= $${f}
 }
+# qtHaveModule(charts): {
+#   QT += charts
+#   DEFINES += X_ENABLE_CHARTS
+# } else: {
+
+# }
 
 # --------------------------------------------------------------------------------------------------
 # The used files of the project

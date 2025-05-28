@@ -16,7 +16,6 @@
 #include <QTimer>
 #include <QWidgetAction>
 
-#include "device/chartstestui.h"
 #include "device/device.h"
 #include "device/deviceui.h"
 #include "device/localserverui.h"
@@ -91,9 +90,9 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     , m_ioSettings{nullptr}
     , m_outputSettings{nullptr}
     , m_inputSettings{nullptr}
+    , m_highlighter{new SyntaxHighlighter(this)}
     , m_writeTimer{new QTimer(this)}
     , m_updateLabelInfoTimer{new QTimer(this)}
-    , m_highlighter{new SyntaxHighlighter(this)}
     , m_settings{settings}
 {
     if (settings == nullptr) {

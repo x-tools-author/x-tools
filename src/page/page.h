@@ -121,8 +121,8 @@ private:
     QTimer *m_writeTimer;
     QTimer *m_updateLabelInfoTimer;
     QSettings *m_settings;
+    bool m_enableCharts{true};
 #ifdef X_ENABLE_CHARTS
     ChartsView *m_chartsView;
-    bool m_enableCharts{true};
 #endif
 };
