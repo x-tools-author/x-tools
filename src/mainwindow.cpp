@@ -73,11 +73,16 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 
     QSettings* settings = Application::settings();
+    xApp->showSplashScreenMessage(QString("Create page 1..."));
     m_iopage00 = new Page(Page::Left, settings, this);
+    xApp->showSplashScreenMessage(QString("Create page 2..."));
     m_iopage01 = new Page(Page::Right, settings, this);
+    xApp->showSplashScreenMessage(QString("Create page 3..."));
     m_iopage10 = new Page(Page::Left, settings, this);
+    xApp->showSplashScreenMessage(QString("Create page 4..."));
     m_iopage11 = new Page(Page::Right, settings, this);
 
+    xApp->showSplashScreenMessage(QString("Create main window..."));
     auto* centralWidget = new QWidget();
     auto* layout = new QGridLayout(centralWidget);
     layout->setSpacing(0);
@@ -96,6 +101,7 @@ MainWindow::MainWindow(QWidget* parent)
     updateGrid(m_windowGrid);
     qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
 
+    xApp->showSplashScreenMessage(QString("Create menu bar of main window..."));
     initMenuBar();
     setWindowIcon(QIcon(":/res/icons/logo.svg"));
     setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
@@ -228,11 +234,17 @@ QUrl MainWindow::storeUrl() const
 
 void MainWindow::initMenuBar()
 {
+    xApp->showSplashScreenMessage(QString("Create file menu..."));
     initFileMenu();
+    xApp->showSplashScreenMessage(QString("Create tool menu..."));
     initToolMenu();
+    xApp->showSplashScreenMessage(QString("Create option menu..."));
     initOptionMenu();
+    xApp->showSplashScreenMessage(QString("Create view menu..."));
     initViewMenu();
+    xApp->showSplashScreenMessage(QString("Create language menu..."));
     initMenuLanguage();
+    xApp->showSplashScreenMessage(QString("Create help menu..."));
     initHelpMenu();
 }
 
