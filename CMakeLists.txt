@@ -328,7 +328,3 @@ endif()
 if(QT_VERSION_MAJOR EQUAL 6)
   qt_finalize_executable(xTools)
 endif()
-
-# --------------------------------------------------------------------------------------------------
-# Some apps base xTools
-include(${CMAKE_SOURCE_DIR}/xapps/xapps.cmake)
