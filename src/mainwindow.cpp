@@ -624,7 +624,6 @@ void MainWindow::initHelpMenu()
     ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
     ctxs.append(qMakePair(QString("libqrencode"), QString("https://github.com/fukuchi/libqrencode")));
     ctxs.append(qMakePair(QString("qmdnsengine"), QString("https://github.com/nitroshare/qmdnsengine")));
-    ctxs.append(qMakePair(QString("Qt-Advanced-Stylesheets"), QString("https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets")));
     // clang-format on
 
     QMenu* menu = helpMenu->addMenu(tr("Third Party Open Source"));
