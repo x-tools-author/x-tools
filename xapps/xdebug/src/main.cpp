@@ -36,8 +36,9 @@ int main(int argc, char *argv[])
 {
     qputenv("QT_QUICK_CONTROLS_MATERIAL_VARIANT", "Dense");
 
-    xDebug::setOrganizationName("xDebug");
+    xDebug::setOrganizationName("xTools");
     xDebug::setApplicationName("xDebug");
+    xDebug::setApplicationVersion(X_DEBUG_VERSION);
     xDebug::installLog(argv[0]);
     xDebug::setupHdpi();
     xDebug app(argc, argv);
