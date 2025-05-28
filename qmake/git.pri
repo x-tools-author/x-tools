@@ -22,6 +22,6 @@ defineReplace(x_git_get_latest_commit) {
 }
 
 defineReplace(x_git_get_latest_commit_time) {
-    tmp = "111222333"
+    tmp = $$system(git log -1 --format=%cd)
     return($$tmp)
 }

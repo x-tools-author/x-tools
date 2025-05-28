@@ -48,8 +48,12 @@ include(qmake/git.pri)
 
 #------------------------------------------------------------------------------
 # Git env
-X_GIT_COMMIT_TIME = $${x_git_get_latest_commit_time()}
-DEFINES += X_GIT_COMMIT_TIME="\\\"$$X_GIT_COMMIT_TIME\\\""
+# tmp = $$system(git log -1 --format=%cd)
+# DEFINES += X_GIT_COMMIT_TIME=\\\"$$tmp\\\"
+# tmp = $$system(git log -1 --format=%cd)
+# DEFINES += X_GIT_COMMIT_TIME=\"\\\"$${tmp}\\\"\"
+# DEFINES += X_GIT_COMMIT_TIME=\\\"$$tmp\\\"
+# message("[xTools.git]X_GIT_COMMIT_TIME:$$tmp")
 
 #--------------------------------------------------------------------------------------------
 #I18N
