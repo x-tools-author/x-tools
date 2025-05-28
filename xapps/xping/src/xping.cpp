@@ -10,6 +10,7 @@
 
 #include <thread>
 
+#include <QDesktopServices>
 #include <QHostAddress>
 #include <QPainter>
 #include <QProcess>
@@ -293,6 +294,14 @@ void xPing::showSplashScreenMessage(const QString &msg)
 #endif
     splashScreen->showMessage(msg, Qt::AlignBottom | Qt::AlignLeft, Qt::white);
     QApplication::processEvents();
+}
+
+void xPing::openSettingsFileDir()
+{
+    Settings *settings = this->settings();
+    QString settingsFile = settings->fileName();
+    QString path = settingsFile.left(settingsFile.lastIndexOf('/'));
+    QDesktopServices::openUrl(QUrl::fromLocalFile(path));
 }
 
 void xPing::updateTableModelInner(const QString &ip, bool isOnline, const QString &description)

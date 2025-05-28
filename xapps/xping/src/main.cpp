@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 
     QApplication::setOrganizationName("xTools");
     QApplication::setApplicationName("xPing");
+    QApplication::setApplicationVersion(X_PING_VERSION);
     xPing app(argc, argv);
     app.setupLanguage();
     app.showSplashScreenMessage(QObject::tr("Application is booting..."));

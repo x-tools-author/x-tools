@@ -48,6 +48,7 @@ public:
 
     QSplashScreen *splashScreen();
     Q_INVOKABLE void showSplashScreenMessage(const QString &msg);
+    Q_INVOKABLE void openSettingsFileDir();
 
 signals:
     void pingFinished();

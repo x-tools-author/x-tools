@@ -21,6 +21,7 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Make installer for Windows
 set(X_PING_VERSION "2.1.0")
+add_compile_definitions(X_PING_VERSION="${X_PING_VERSION}")
 if(WIN32)
   include(${CMAKE_SOURCE_DIR}/cmake/msix/msix.cmake)
   include(${CMAKE_SOURCE_DIR}/cmake/qifw/qifw.cmake)

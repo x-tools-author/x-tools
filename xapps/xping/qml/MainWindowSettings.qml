@@ -116,7 +116,7 @@ Menu {
     Action {
         text: qsTr("Open Settings Path")
         onTriggered: {
-            xSettings.openSettingsFileDir()
+            xApp.openSettingsFileDir()
         }
     }
     MenuSeparator {}
