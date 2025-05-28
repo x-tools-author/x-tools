@@ -28,6 +28,9 @@ public:
         const QString colorScheme{"colorScheme"};
     };
 
+signals:
+    void languageChanged();
+
 public:
     explicit Application(int &argc, char **argv);
 

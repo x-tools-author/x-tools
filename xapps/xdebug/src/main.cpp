@@ -63,10 +63,10 @@ int main(int argc, char *argv[])
     Settings *xSettings = new Settings();
     QSplashScreen *xSplash = app.splashScreen();
     QQmlApplicationEngine qmlAppEngine;
-#ifdef X_TOOLS_MAGIC
-    qmlAppEngine.rootContext()->setContextProperty("xMoYu", QVariant(true));
+#ifdef X_MAGIC
+    qmlAppEngine.rootContext()->setContextProperty("xMagic", 0.3);
 #else
-    qmlAppEngine.rootContext()->setContextProperty("xMoYu", QVariant(false));
+    qmlAppEngine.rootContext()->setContextProperty("xMagic", 1.0);
 #endif
     qmlAppEngine.rootContext()->setContextProperty("xApp", &app);
     qmlAppEngine.rootContext()->setContextProperty("xCrc", xCrc);
@@ -98,22 +98,25 @@ int main(int argc, char *argv[])
     // clang-format on
 
     const QUrl qml = QStringLiteral("qrc:/qml/MainWindow.qml");
-    // QObject::connect(&g_xTools, &xTools::xTools::languageChanged, &qmlAppEngine, [&qmlAppEngine]() {
-    //     qmlAppEngine.retranslate();
-    // });
-    QObject::connect(&qmlAppEngine,
-                     &QQmlApplicationEngine::objectCreationFailed,
-                     QCoreApplication::instance(),
-                     QCoreApplication::quit,
-                     Qt::QueuedConnection);
-    QObject::connect(&qmlAppEngine,
-                     &QQmlApplicationEngine::objectCreated,
-                     QCoreApplication::instance(),
-                     [xSplash, qml](QObject *, const QUrl &url) {
-                         if (qml == url) {
-                             xSplash->hide();
-                         }
-                     });
+    QObject::connect(&app, &xDebug::languageChanged, &qmlAppEngine, [&qmlAppEngine]() {
+        qmlAppEngine.retranslate();
+    });
+    QObject::connect(
+        &qmlAppEngine,
+        &QQmlApplicationEngine::objectCreationFailed,
+        xApp,
+        [xSplash]() { xSplash->hide(); },
+        Qt::QueuedConnection);
+    QObject::connect(
+        &qmlAppEngine,
+        &QQmlApplicationEngine::objectCreated,
+        xApp,
+        [xSplash, qml](QObject *, const QUrl &url) {
+            if (qml == url) {
+                xSplash->hide();
+            }
+        },
+        Qt::QueuedConnection);
 
     qmlAppEngine.load(qml);
     int ret = app.exec();

@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.Layouts
 import QtQuick.Controls.Material
 import QtQuick.Dialogs
 
@@ -13,7 +12,7 @@ Window {
     color: "#00000000"
     title: qsTr("Easy Debug")
     flags: Qt.FramelessWindowHint | Qt.Window
-    opacity: xMoYu ? 0.3 : 1.0
+    opacity: xMagic
 
     property string xDisabledText: qsTr("Disable")
     property string xNoneText: qsTr("None")
