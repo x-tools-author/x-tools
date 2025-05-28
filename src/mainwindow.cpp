@@ -42,10 +42,6 @@
 #include "page/page.h"
 #include "tools/assistantfactory.h"
 
-#ifdef X_ENABLE_QSS
-#include "qss/qssmgr.h"
-#endif
-
 #ifdef Q_OS_WIN
 #include "systemtrayicon.h"
 #endif
@@ -367,9 +363,6 @@ void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
     }
 
     appStyleMenu->addActions(appStyleActionGroup->actions());
-#ifdef X_ENABLE_QSS
-    optionMenu->addMenu(QssMgr::singleton().themeMenu());
-#endif
 }
 
 void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)

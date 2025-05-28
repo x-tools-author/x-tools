@@ -40,15 +40,7 @@ yay -Syu x-tools
 |Gitee| <https://gitee.com/x-tools-author/x-tools>|
 |GitHub| <https://github.com/x-tools-author/x-tools>|
 |Sponsor|<https://apps.microsoft.com/search/publisher?name=x-tools-author>|
-|Third party|[glog](https://github.com/google/glog) [libqrencode](https://github.com/fukuchi/libqrencode) [qmdnsengine](https://github.com/nitroshare/qmdnsengine) [Qt-Advanced-Stylesheets](https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets) [QXlsx](https://github.com/QtExcel/QXlsx)|
-
-## Screenshot
-
-![xTools.gif](res/images/xtools.gif)
-
-![charts.gif](res/images/charts.gif)
-
-![search.gif](res/images/search.png)
+|Third party|[glog](https://github.com/google/glog) [libqrencode](https://github.com/fukuchi/libqrencode) [qmdnsengine](https://github.com/nitroshare/qmdnsengine) [QXlsx](https://github.com/QtExcel/QXlsx)|
 
 ## Dark theme
 
@@ -58,6 +50,11 @@ yay -Syu x-tools
 
 ![xToolsLight.png](res/images/light.png)
 
-## Custom theme
+## Screenshot
 
-![xToolsCustom.png](res/images/custom.png)
+![xTools.gif](res/images/xtools.gif)
+
+![charts.gif](res/images/charts.gif)
+
+![search.gif](res/images/search.png)
+

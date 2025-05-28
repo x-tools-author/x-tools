@@ -19,13 +19,13 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # --------------------------------------------------------------------------------------------------
 if(IOS)
-message(FATAL_ERROR "xTools does not support iOS platform yet...")
+  message(FATAL_ERROR "xTools does not support iOS platform yet...")
 endif()
 
 if(APPLE AND NOT IOS)
-if(QT_VERSION VERSION_LESS "6.0.0")
-set(CMAKE_OSX_ARCHITECTURES "x86_64")
-endif()
+  if(QT_VERSION VERSION_LESS "6.0.0")
+    set(CMAKE_OSX_ARCHITECTURES "x86_64")
+  endif()
 endif()
 
 # --------------------------------------------------------------------------------------------------
@@ -62,8 +62,8 @@ if(QT_VERSION VERSION_LESS "6.8.0")
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Don't change X_STATIC_VC_RUNTIME_LIBRARY option unless you know what you are doing.
-# QT_TARGET_TYPE is SHARED_LIBRARY or STATIC_LIBRARY
+# Don't change X_STATIC_VC_RUNTIME_LIBRARY option unless you know what you are doing. QT_TARGET_TYPE
+# is SHARED_LIBRARY or STATIC_LIBRARY
 get_target_property(QT_TARGET_TYPE Qt${QT_VERSION_MAJOR}::Core TYPE)
 option(X_STATIC_VC_RUNTIME_LIBRARY "Using static vc runtime library" OFF)
 if(WIN32 AND MSVC)
@@ -121,7 +121,6 @@ include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/QXlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # The magic option...
@@ -241,7 +240,6 @@ x_add_executable(xTools ${X_SOURCES})
 x_generate_translations(xTools)
 x_output_env(xTools)
 x_deploy_qt(xTools)
-x_deploy_qss(xTools)
 x_install_glog(xTools)
 x_install_qxlsx(xTools)
 x_install_qmdns(xTools)
@@ -269,9 +267,6 @@ if(X_ENABLE_BLUETOOTH)
 endif()
 if(X_ENABLE_CHARTS)
   list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Charts QXlsx::QXlsx)
-endif()
-if(X_ENABLE_QSS)
-  list(APPEND X_LIBS QssMgr)
 endif()
 
 target_link_libraries(xTools PRIVATE ${X_LIBS})
