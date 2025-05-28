@@ -8,8 +8,8 @@
  **************************************************************************************************/
 #include "settings.h"
 
-Settings::Settings(QObject *parent)
-    : QSettings("xDebug.ini", QSettings::IniFormat, parent)
+Settings::Settings(const QString &fileName, Format format, QObject *parent)
+    : QSettings(fileName, format, parent)
 {}
 
 Settings::~Settings() {}

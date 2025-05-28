@@ -1,40 +1,29 @@
 import QtQuick
 import QtQuick.Controls.Material
-import QtQuick.Layouts
-import Qt.labs.qmlmodels
 
 Menu {
     id: root
 
-    property string lanugage: {
-        var tmp = xSettings.value(settingKeys.language)
-        if (!tmp) {
-            tmp = "en" //xApp.defaultLanguage()
-        }
-        return tmp
-    }
-
-    QtObject {
-        id: settingKeys
-        readonly property string language: "language"
-    }
     ButtonGroup {
         id: languageActionGroup
     }
     Menu {
         title: qsTr("Language")
         Repeater {
-            model: xApp.supportedLanguages()
+            model: [{
+                    "text": "English",
+                    "code": "en"
+                }, {
+                    "text": "简体中文",
+                    "code": "zh_CN"
+                }]
             MenuItem {
                 id: languageAction
-                text: modelData
+                text: modelData["text"]
                 checkable: true
-                onTriggered: {
-                    xApp.setupLanguage(modelData)
-                    xSettings.setValue(settingKeys.language, modelData)
-                }
+                onTriggered: xPingMainWindow.invoke //xApp.setupLanguage(modelData["code"])
                 Component.onCompleted: {
-                    if (root.lanugage === modelData) {
+                    if (xApp.language() === modelData["code"]) {
                         checked = true
                     }
                     languageActionGroup.addButton(languageAction)

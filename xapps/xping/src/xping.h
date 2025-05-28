@@ -10,47 +10,56 @@
 
 #include <QApplication>
 #include <QMutex>
+#include <QSettings>
+#include <QSplashScreen>
 
 #include "sortfilterproxymodel.h"
 #include "tablemodel.h"
 
+class Settings;
 class xPing : public QApplication
 {
     Q_OBJECT
-public:
-    explicit xPing(int &argc, char **argv);
-    ~xPing() override;
-
-    // Q_INVOKABLE QString bytes2string(const QByteArray &bytes, int format);
-    // Q_INVOKABLE QByteArray string2bytes(const QString &txt, int format);
-    // Q_INVOKABLE QByteArray arrayAppendArray(const QByteArray &array1, const QByteArray &array2);
-    // Q_INVOKABLE QString cookedEscapeCharacter(const QString &txt, int esc);
-    // Q_INVOKABLE QByteArray cookedAffixes(int affixes);
-    // Q_INVOKABLE void setQuickTextDocumentMaximumBlockCount(QVariant textDocument, int count);
-    // Q_INVOKABLE QString dateTimeString(const QString &format);
-
-private:
     Q_PROPERTY(QVariant proxyModel READ proxyModel NOTIFY proxyModelChanged FINAL)
     Q_PROPERTY(int total READ total NOTIFY totalChanged FINAL)
     Q_PROPERTY(int active READ active NOTIFY activeChanged FINAL)
     Q_PROPERTY(int finished READ finished NOTIFY finishedChanged FINAL)
     Q_PROPERTY(bool beepEnable READ beepEnable WRITE setBeepEnable NOTIFY beepEnableChanged FINAL)
+public:
+    explicit xPing(int &argc, char **argv);
+    ~xPing() override;
+
+    static Settings *settings();
+    static QString settingsPath();
 
 public:
+    struct SettingsKey
+    {
+        const QString hdpi{"Application/hdpi"};
+        const QString style{"Application/style"};
+        const QString language{"Application/language"};
+        const QString clearSettings{"Application/clearSettings"};
+        const QString colorScheme{"colorScheme"};
+    };
+
     Q_INVOKABLE void startPing(const QString &startIp, const QString &endIp);
     Q_INVOKABLE QString checkParameters(const QString &startIp, const QString &endIp);
     Q_INVOKABLE void updateTableModel(const QString &ip, bool isOnline, const QString &description);
     Q_INVOKABLE void setFilterText(const QString &text);
     Q_INVOKABLE void setFilterTextDelta();
-    Q_INVOKABLE QStringList supportedLanguages();
-    Q_INVOKABLE QString language();
     Q_INVOKABLE QString version();
 
     Q_INVOKABLE QString onlineText();
     Q_INVOKABLE QString offlineText();
+    Q_INVOKABLE QString language();
+    Q_INVOKABLE void setupLanguage(const QString &code = QString());
+
+    QSplashScreen *splashScreen();
+    Q_INVOKABLE void showSplashScreenMessage(const QString &msg);
 
 signals:
     void pingFinished();
+    void languageChanged();
 
 private:
     TableModel *m_tableModel{nullptr};

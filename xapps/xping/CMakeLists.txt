@@ -1,3 +1,22 @@
+# cmake-format: off
+# --------------------------------------------------------------------------------------------------
+# Do something make CMake happy
+if(NOT ${CMAKE_VERSION} VERSION_LESS "4.0.0")
+  set(CMAKE_POLICY_VERSION_MINIMUM "3.22" CACHE STRING "CMake policy version" FORCE)
+endif()
+
+cmake_minimum_required(VERSION 3.22)
+project(xPing VERSION 1.0 LANGUAGES C CXX)
+# cmake-format: on
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 find_package(Qt6 REQUIRED COMPONENTS Widgets Qml Quick QuickControls2)
 
 file(GLOB X_PING_QML ${CMAKE_CURRENT_LIST_DIR}/qml/*.*)

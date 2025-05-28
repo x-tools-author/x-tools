@@ -11,8 +11,13 @@
 #include <thread>
 
 #include <QHostAddress>
+#include <QPainter>
 #include <QProcess>
 #include <QQuickTextDocument>
+#include <QStandardPaths>
+#include <QTranslator>
+
+#include "settings.h"
 
 xPing::xPing(int &argc, char **argv)
     : QApplication(argc, argv)
@@ -22,23 +27,22 @@ xPing::xPing(int &argc, char **argv)
 
 xPing::~xPing() {}
 
-// void xPing::setQuickTextDocumentMaximumBlockCount(QVariant textDocument, int count)
-// {
-//     if (textDocument.canConvert<QQuickTextDocument *>()) {
-//         QQuickTextDocument *doc = textDocument.value<QQuickTextDocument *>();
-//         if (doc) {
-//             QTextDocument *textDoc = doc->textDocument();
-//             if (textDoc) {
-//                 textDoc->setMaximumBlockCount(count);
-//             }
-//         }
-//     }
-// }
+Settings *xPing::settings()
+{
+    QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
+    QString path = QStandardPaths::writableLocation(type);
+    QString fileName = QString("%1/%2.ini").arg(path, applicationName());
+    static Settings settings(fileName, QSettings::IniFormat);
 
-// QString xPing::dateTimeString(const QString &format)
-// {
-//     return QDateTime::currentDateTime().toString(format);
-// }
+    return &settings;
+}
+
+QString xPing::settingsPath()
+{
+    Settings *settings = xPing::settings();
+    QString path = settings->fileName();
+    return path.left(path.lastIndexOf('/'));
+}
 
 void ping(xPing *app, const QString &ip)
 {
@@ -180,16 +184,6 @@ void xPing::setFilterTextDelta()
     m_proxyModel->setFilterRegularExpression(QString("^[+-]$"));
 }
 
-QStringList xPing::supportedLanguages()
-{
-    return QStringList();
-}
-
-QString xPing::language()
-{
-    return QString();
-}
-
 QString xPing::version()
 {
     return xPing::applicationVersion();
@@ -203,6 +197,95 @@ QString xPing::onlineText()
 QString xPing::offlineText()
 {
     return TableModel::cookedStatus(TableModel::RawStatusOffline);
+}
+
+QString xPing::language()
+{
+    QSettings *settings = xPing::settings();
+    QString language = settings->value(SettingsKey().language, "en").toString();
+    return language;
+}
+
+void setupLanguage(const QString &qmFile)
+{
+    QTranslator *translator = new QTranslator();
+    if (!translator->load(qmFile)) {
+        auto info = QString("The language file(%1) can not be loaded, English will be used.")
+                        .arg(qmFile);
+        qWarning() << info;
+        return;
+    }
+
+    if (!qApp->installTranslator(translator)) {
+        qWarning() << "The language has been setup, English will be used.";
+    } else {
+        qInfo() << "The language has been setup, current language file is:" << qmFile;
+    }
+}
+
+void xPing::setupLanguage(const QString &code)
+{
+    QSettings *settings = xPing::settings();
+    QString defaultLanguage = QLocale::system().name();
+    QString language = code;
+    if (language.isEmpty()) {
+        language = settings->value(SettingsKey().language, defaultLanguage).toString();
+    }
+
+    QString appPath = QApplication::applicationDirPath();
+    QString qtQmFile = QString("%1/translations/qt_%2.qm").arg(appPath, language);
+    ::setupLanguage(qtQmFile);
+
+    QString xToolsQmFile = QString(":/res/translations/xPing_%1.qm").arg(language);
+    ::setupLanguage(xToolsQmFile);
+}
+
+QSplashScreen *xPing::splashScreen()
+{
+    if (!qApp) {
+        return Q_NULLPTR;
+    }
+
+    static QSplashScreen *splashScreen = Q_NULLPTR;
+    if (!splashScreen) {
+        QFont font = qApp->font();
+        font.setPixelSize(52);
+
+        QFontMetrics fontMetrics(font);
+        const QString displayName = applicationName();
+        int width = fontMetrics.boundingRect(displayName).width() * 1.2;
+
+        QPixmap pixMap(width < 600 ? 600 : width, 260);
+        pixMap.fill(QColor(0x1f1f1f));
+
+        QPainter painter(&pixMap);
+        painter.setPen(QColor(Qt::white));
+        painter.setFont(font);
+        painter.drawText(pixMap.rect(), Qt::AlignHCenter | Qt::AlignVCenter, displayName);
+        painter.setPen(QColor(0x1f2c9f));
+        painter.drawRect(pixMap.rect() - QMargins(1, 1, 1, 1));
+
+        splashScreen = new QSplashScreen(pixMap);
+        splashScreen->setDisabled(true);
+    }
+
+    return splashScreen;
+}
+
+void xPing::showSplashScreenMessage(const QString &msg)
+{
+    QSplashScreen *splashScreen = xPing::splashScreen();
+    if (!splashScreen) {
+        return;
+    }
+
+#if defined(QT_OS_ANDROID)
+    splashScreen->showFullScreen();
+#else
+    splashScreen->show();
+#endif
+    splashScreen->showMessage(msg, Qt::AlignBottom | Qt::AlignLeft, Qt::white);
+    QApplication::processEvents();
 }
 
 void xPing::updateTableModelInner(const QString &ip, bool isOnline, const QString &description)

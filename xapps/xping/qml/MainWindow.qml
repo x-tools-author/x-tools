@@ -12,6 +12,8 @@ Window {
     flags: Qt.Window | Qt.FramelessWindowHint
     color: "#00000000"
 
+    signal invokeChangeLanguage(string code)
+
     property var xPingCentralRectangle: centralRectangle
     property alias xPingSettingKeys: settingKeys
     property int xPingTableViewRow: 0

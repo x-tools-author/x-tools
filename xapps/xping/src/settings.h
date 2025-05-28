@@ -14,7 +14,7 @@ class Settings : public QSettings
 {
     Q_OBJECT
 public:
-    explicit Settings(QObject *parent = nullptr);
+    explicit Settings(const QString &fileName, Format format, QObject *parent = nullptr);
     ~Settings();
 
     Q_INVOKABLE QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const;
