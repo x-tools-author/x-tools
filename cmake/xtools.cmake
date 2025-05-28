@@ -1,6 +1,6 @@
 # --------------------------------------------------------------------------------------------------
 # Add executable. It can be used by Qt5 and Qt6.
-function(x_tools_add_executable target)
+function(x_add_executable target)
   # ARGN: all unnamed arguments
   if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${target} MANUAL_FINALIZATION ${ARGN})
@@ -31,7 +31,7 @@ endfunction()
 
 # --------------------------------------------------------------------------------------------------
 # Generate zip file
-function(x_tools_generate_zip target version)
+function(x_generate_zip target version)
   if(WIN32)
     string(TOLOWER ${target} lower_target)
     string(TOLOWER ${CMAKE_HOST_SYSTEM_NAME} lower_system_name)
@@ -51,7 +51,7 @@ endfunction()
 
 # --------------------------------------------------------------------------------------------------
 # Just for test
-function(x_tools_output_env flag)
+function(x_output_env flag)
   message(STATUS "[${flag}]CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
   message(STATUS "[${flag}]CMAKE_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
   message(STATUS "[${flag}]CMAKE_CURRENT_LIST_DIR: ${CMAKE_CURRENT_LIST_DIR}")
@@ -60,7 +60,7 @@ endfunction()
 
 # --------------------------------------------------------------------------------------------------
 # Generate translations files
-function(x_tools_generate_translations target)
+function(x_generate_translations target)
   if(QT_VERSION VERSION_LESS "5.6.0")
     return()
   endif()
@@ -112,7 +112,7 @@ endfunction()
 
 # --------------------------------------------------------------------------------------------------
 # Deploy Qt for Windows
-function(x_tools_deploy_qt_for_windows target)
+function(x_deploy_qt_for_windows target)
   if(NOT DEFINED WINDEPLOYQT_EXECUTABLE)
     set(WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
   endif()
@@ -169,24 +169,24 @@ endfunction()
 
 # --------------------------------------------------------------------------------------------------
 # Deploy Qt for macOS
-function(x_tools_deploy_qt_for_mac target)
+function(x_deploy_qt_for_mac target)
   # Do nothing...
 endfunction()
 
 # --------------------------------------------------------------------------------------------------
 # Deploy Qt for linux
-function(x_tools_deploy_qt_for_linux target)
+function(x_deploy_qt_for_linux target)
   # Do nothing...
 endfunction()
 
 # --------------------------------------------------------------------------------------------------
 # Deploy Qt
-function(x_tools_deploy_qt target)
+function(x_deploy_qt target)
   if(WIN32)
-    x_tools_deploy_qt_for_windows(${target})
+    x_deploy_qt_for_windows(${target})
   elseif(UNIX AND NOT APPLE)
-    x_tools_deploy_qt_for_linux(${target})
+    x_deploy_qt_for_linux(${target})
   elseif(APPLE)
-    x_tools_deploy_qt_for_mac(${target})
+    x_deploy_qt_for_mac(${target})
   endif()
 endfunction()

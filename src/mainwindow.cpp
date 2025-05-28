@@ -42,7 +42,7 @@
 #include "page/page.h"
 #include "tools/assistantfactory.h"
 
-#ifdef X_TOOLS_ENABLE_QSS
+#ifdef X_ENABLE_QSS
 #include "qss/qssmgr.h"
 #endif
 
@@ -57,7 +57,7 @@ MainWindow::MainWindow(QWidget* parent)
     , m_iopage10(Q_NULLPTR)
     , m_iopage11(Q_NULLPTR)
 {
-#if defined(X_TOOLS_MAGIC)
+#if defined(X_MAGIC)
     setWindowOpacity(0.3);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     qApp->styleHints()->setColorScheme(Qt::ColorScheme::Dark);
@@ -367,7 +367,7 @@ void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
     }
 
     appStyleMenu->addActions(appStyleActionGroup->actions());
-#ifdef X_TOOLS_ENABLE_QSS
+#ifdef X_ENABLE_QSS
     optionMenu->addMenu(QssMgr::singleton().themeMenu());
 #endif
 }
@@ -673,7 +673,7 @@ void MainWindow::showQrCode()
     };
     QList<QrCodeInfo> qrCodeInfoList;
 
-    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/res/images/x_tools_qq.jpg")}
+    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/res/images/x_qq.jpg")}
                    << QrCodeInfo{tr("Qt QQ Group"), QString(":/res/images/qt_qq.jpg")};
 
     auto* tabWidget = new QTabWidget(&dialog);
@@ -764,10 +764,10 @@ void MainWindow::onAboutActionTriggered()
     QString dtString = buildDateTimeString(buildDateTimeFormat);
     QString year = buildDateTimeString("yyyy");
 
-    // X_TOOLS_GIT_COMMIT_TIME(Tue Mar 4 11:33:30 2025 +0800) to QDateTime
-    // X_TOOLS_GIT_COMMIT_TIME is defined in CMakeLists.txt
-#if defined(X_TOOLS_GIT_COMMIT_TIME)
-    QString commitTime = QString(X_TOOLS_GIT_COMMIT_TIME);
+    // X_GIT_COMMIT_TIME(Tue Mar 4 11:33:30 2025 +0800) to QDateTime
+    // X_GIT_COMMIT_TIME is defined in CMakeLists.txt
+#if defined(X_GIT_COMMIT_TIME)
+    QString commitTime = QString(X_GIT_COMMIT_TIME);
     commitTime = commitTime.left(commitTime.lastIndexOf(" "));
     QDateTime commitDateTime = QDateTime::fromString(commitTime, "ddd MMM d hh:mm:ss yyyy");
     commitTime = commitDateTime.toString(buildDateTimeFormat);
@@ -777,8 +777,8 @@ void MainWindow::onAboutActionTriggered()
 
     QString info;
     info += qApp->applicationName() + " v" + qApp->applicationVersion() + "\n\n";
-#ifdef X_TOOLS_GIT_COMMIT
-    info += tr("Commit hash") + ": " + X_TOOLS_GIT_COMMIT + "\n\n";
+#ifdef X_GIT_COMMIT
+    info += tr("Commit hash") + ": " + X_GIT_COMMIT + "\n\n";
 #endif
     info += tr("Commit time") + ": " + commitTime + "\n\n";
     info += tr("Build Date") + ": " + dtString + "\n\n";

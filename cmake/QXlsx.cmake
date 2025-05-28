@@ -22,7 +22,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Install QXlsx library to libs
-function(x_tools_install_qxlsx target)
+function(x_install_qxlsx target)
   add_custom_target(
     QXlsx_install
     COMMAND ${CMAKE_COMMAND} --install . --prefix ${qxlsx_dst_dir}

@@ -21,7 +21,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Install qmdns library to libs
-function(x_tools_install_qmdns target)
+function(x_install_qmdns target)
   add_custom_target(
     qmdnsengine_install
     COMMAND ${CMAKE_COMMAND} --install . --prefix ${qmdns_dst_dir}

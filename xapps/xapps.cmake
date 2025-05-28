@@ -3,8 +3,8 @@ if(NOT X_ENABLE_X_APPS)
   return()
 endif()
 
-# Remove all main.cpp xTools.rc  files from X_TOOLS_SOURCES
-set(X_APPS_SOURCES ${X_TOOLS_SOURCES})
+# Remove all main.cpp xTools.rc  files from X_SOURCES
+set(X_APPS_SOURCES ${X_SOURCES})
 foreach(source ${X_APPS_SOURCES})
   if(${source} MATCHES "main.cpp")
     list(REMOVE_ITEM X_APPS_SOURCES ${source})

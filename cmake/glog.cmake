@@ -22,7 +22,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Install glog library to libs
-function(x_tools_install_glog target)
+function(x_install_glog target)
   add_custom_target(
     glog_install
     COMMAND ${CMAKE_COMMAND} --install . --prefix ${glog_dst_dir}

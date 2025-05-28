@@ -1,21 +1,21 @@
 # https://github.com/githubuser0xFFFF/Qt-Advanced-Stylesheets
 if(ANDROID OR IOS)
-  option(X_TOOLS_ENABLE_QSS "Enable Qt advanced style sheet" OFF)
+  option(X_ENABLE_QSS "Enable Qt advanced style sheet" OFF)
 
   set(TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/qss)
   file(GLOB_RECURSE QSS_MGR_SOURCE "${TMP_DIR}/*.*")
   foreach(file ${QSS_MGR_SOURCE})
     message(STATUS "[QSS]Remove file: ${file}")
-    list(REMOVE_ITEM X_TOOLS_SOURCES ${file})
+    list(REMOVE_ITEM X_SOURCES ${file})
   endforeach()
 else()
-  option(X_TOOLS_ENABLE_QSS "Enable Qt advanced style sheet" ON)
+  option(X_ENABLE_QSS "Enable Qt advanced style sheet" ON)
 endif()
 
 # --------------------------------------------------------------------------------------------------
 # Copy style resources for ${target}...
-function(x_tools_deploy_qss target)
-  if(NOT X_TOOLS_ENABLE_QSS)
+function(x_deploy_qss target)
+  if(NOT X_ENABLE_QSS)
     return()
   endif()
 
@@ -39,9 +39,9 @@ function(x_tools_deploy_qss target)
 endfunction()
 
 # --------------------------------------------------------------------------------------------------
-# If X_TOOLS_ENABLE_QSS is OFF, return...
-if(X_TOOLS_ENABLE_QSS)
-  add_compile_definitions(X_TOOLS_ENABLE_QSS)
+# If X_ENABLE_QSS is OFF, return...
+if(X_ENABLE_QSS)
+  add_compile_definitions(X_ENABLE_QSS)
 else()
   return()
 endif()

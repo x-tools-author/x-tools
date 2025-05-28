@@ -1,30 +1,30 @@
-﻿set(X_TOOLS_QIFW_LATEST_VERSION "none")
+﻿set(X_QIFW_LATEST_VERSION "none")
 if(EXISTS ${QT_DIR}/../../../../../Tools/QtInstallerFramework)
   file(GLOB all_sub_dirs_tmp ${QT_DIR}/../../../../../Tools/QtInstallerFramework/*)
   foreach(dir ${all_sub_dirs_tmp})
     if(IS_DIRECTORY ${dir})
       file(RELATIVE_PATH relative_dir ${QT_DIR}/../../../../../Tools/QtInstallerFramework ${dir})
       list(APPEND version_list ${relative_dir})
-      set(X_TOOLS_QIFW_LATEST_VERSION ${relative_dir})
+      set(X_QIFW_LATEST_VERSION ${relative_dir})
     endif()
   endforeach()
 
   message(STATUS "version_list:${version_list}")
-  set(X_TOOLS_QIFW_VERSION
-      ${X_TOOLS_QIFW_LATEST_VERSION}
+  set(X_QIFW_VERSION
+      ${X_QIFW_LATEST_VERSION}
       CACHE STRING "Using the version of Qt Installer Framework")
-  set_property(CACHE X_TOOLS_QIFW_VERSION PROPERTY STRINGS ${version_list})
+  set_property(CACHE X_QIFW_VERSION PROPERTY STRINGS ${version_list})
 endif()
 
 if(WIN32)
-  set(temp Tools/QtInstallerFramework/${X_TOOLS_QIFW_VERSION}/bin/binarycreator.exe)
+  set(temp Tools/QtInstallerFramework/${X_QIFW_VERSION}/bin/binarycreator.exe)
   set(binarycreator ${QT_DIR}/../../../../../${temp})
 elseif(UNIX AND NOT APPLE)
-  set(temp Tools/QtInstallerFramework/${X_TOOLS_QIFW_VERSION}/bin/binarycreator)
+  set(temp Tools/QtInstallerFramework/${X_QIFW_VERSION}/bin/binarycreator)
   set(binarycreator ${QT_DIR}/../../../../../${temp})
 endif()
 
-function(x_tools_generate_installer target version icon)
+function(x_generate_installer target version icon)
   if(APPLE)
     return()
   endif()

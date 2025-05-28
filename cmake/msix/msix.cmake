@@ -1,4 +1,4 @@
-﻿function(x_tools_generate_msix target packet_name display_name packet_version rename_target)
+﻿function(x_generate_msix target packet_name display_name packet_version rename_target)
   set(root_dir ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}-msix)
   set(template ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/template.xml)
   set(args -DargTarget=${target})

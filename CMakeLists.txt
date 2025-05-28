@@ -39,16 +39,16 @@ set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
 
 # --------------------------------------------------------------------------------------------------
 # Qt module
-list(APPEND X_TOOLS_QT_COMPONENTS Gui)
-list(APPEND X_TOOLS_QT_COMPONENTS Svg)
-list(APPEND X_TOOLS_QT_COMPONENTS Core)
-list(APPEND X_TOOLS_QT_COMPONENTS Widgets)
-list(APPEND X_TOOLS_QT_COMPONENTS Network)
-list(APPEND X_TOOLS_QT_COMPONENTS LinguistTools)
+list(APPEND X_QT_COMPONENTS Gui)
+list(APPEND X_QT_COMPONENTS Svg)
+list(APPEND X_QT_COMPONENTS Core)
+list(APPEND X_QT_COMPONENTS Widgets)
+list(APPEND X_QT_COMPONENTS Network)
+list(APPEND X_QT_COMPONENTS LinguistTools)
 
 # Qt6 is preferred, but Qt5 is also supported
-find_package(QT NAMES Qt5 Qt6 REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_TOOLS_QT_COMPONENTS})
+find_package(QT NAMES Qt5 Qt6 REQUIRED COMPONENTS ${X_QT_COMPONENTS})
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_QT_COMPONENTS})
 
 # --------------------------------------------------------------------------------------------------
 # Check Qt version
@@ -62,12 +62,12 @@ if(QT_VERSION VERSION_LESS "6.8.0")
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Don't change X_TOOLS_STATIC_VC_RUNTIME_LIBRARY option unless you know what you are doing.
+# Don't change X_STATIC_VC_RUNTIME_LIBRARY option unless you know what you are doing.
 # QT_TARGET_TYPE is SHARED_LIBRARY or STATIC_LIBRARY
 get_target_property(QT_TARGET_TYPE Qt${QT_VERSION_MAJOR}::Core TYPE)
-option(X_TOOLS_STATIC_VC_RUNTIME_LIBRARY "Using static vc runtime library" OFF)
+option(X_STATIC_VC_RUNTIME_LIBRARY "Using static vc runtime library" OFF)
 if(WIN32 AND MSVC)
-  if(QT_TARGET_TYPE STREQUAL "STATIC_LIBRARY" AND X_TOOLS_STATIC_VC_RUNTIME_LIBRARY)
+  if(QT_TARGET_TYPE STREQUAL "STATIC_LIBRARY" AND X_STATIC_VC_RUNTIME_LIBRARY)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
   endif()
 endif()
@@ -75,16 +75,16 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Get all source files of the project
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
-file(GLOB_RECURSE X_TOOLS_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
-list(APPEND X_TOOLS_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
+file(GLOB_RECURSE X_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
+list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 
 # --------------------------------------------------------------------------------------------------
 # CMake module
 include(${CMAKE_SOURCE_DIR}/cmake/git.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
-x_tools_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
-x_tools_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
-x_tools_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X_TOOLS")
+x_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X")
+x_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X")
+x_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X")
 
 # --------------------------------------------------------------------------------------------------
 # Target platform
@@ -101,7 +101,7 @@ message(STATUS "[xTools]CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESS
 message(STATUS "[xTools]CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "[xTools]CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 
-set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_TOOLS_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
+set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
 if(QT_VERSION VERSION_LESS 6.0.0 AND WIN32)
   set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
 endif()
@@ -125,9 +125,9 @@ include(${CMAKE_SOURCE_DIR}/cmake/Qt-Advanced-Stylesheets.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # The magic option...
-option(X_TOOLS_MAGIC "The magic option..." OFF)
-if(X_TOOLS_MAGIC)
-  add_compile_definitions(X_TOOLS_MAGIC)
+option(X_MAGIC "The magic option..." OFF)
+if(X_MAGIC)
+  add_compile_definitions(X_MAGIC)
 endif()
 
 # --------------------------------------------------------------------------------------------------
@@ -143,7 +143,7 @@ else()
   message(STATUS "SerialPort module is disable, SerialPort files will be removed.")
   file(GLOB_RECURSE SERIAL_PORT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/serialport*")
   foreach(file ${SERIAL_PORT_FILES})
-    list(REMOVE_ITEM X_TOOLS_SOURCES ${file})
+    list(REMOVE_ITEM X_SOURCES ${file})
     message(STATUS "[SerialPort]Remove file: ${file}")
   endforeach()
 endif()
@@ -162,7 +162,7 @@ else()
 
   file(GLOB_RECURSE SERIAL_PORT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/websocket*")
   foreach(file ${SERIAL_PORT_FILES})
-    list(REMOVE_ITEM X_TOOLS_SOURCES ${file})
+    list(REMOVE_ITEM X_SOURCES ${file})
     message(STATUS "[WebSockets]Remove file: ${file}")
   endforeach()
 endif()
@@ -180,30 +180,30 @@ else()
   message(STATUS "Bluetooth module is disable, Bluetooth files will be removed.")
   file(GLOB_RECURSE SERIAL_PORT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/ble*")
   foreach(file ${SERIAL_PORT_FILES})
-    list(REMOVE_ITEM X_TOOLS_SOURCES ${file})
+    list(REMOVE_ITEM X_SOURCES ${file})
     message(STATUS "[Bluetooth]Remove file: ${file}")
   endforeach()
 endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialBus module
-option(X_TOOLS_ENABLE_SERIALBUS "Enable SerialBus module" ON)
+option(X_ENABLE_SERIALBUS "Enable SerialBus module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialBus)
 if(Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
-  add_compile_definitions(X_TOOLS_ENABLE_SERIALBUS)
+  add_compile_definitions(X_ENABLE_SERIALBUS)
 else()
-  set(X_TOOLS_ENABLE_SERIALBUS OFF)
+  set(X_ENABLE_SERIALBUS OFF)
 
   # Remove modbus files
   file(GLOB_RECURSE MODBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/tools/modbus/*.*")
   foreach(file ${MODBUS_SOURCE})
-    list(REMOVE_ITEM X_TOOLS_SOURCES ${file})
+    list(REMOVE_ITEM X_SOURCES ${file})
   endforeach(file ${MODBUS_SOURCE})
 
   # Remove canbus files
   file(GLOB_RECURSE CANBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/tools/canbus/*.*")
   foreach(file ${CANBUS_SOURCE})
-    list(REMOVE_ITEM X_TOOLS_SOURCES ${file})
+    list(REMOVE_ITEM X_SOURCES ${file})
   endforeach(file ${CANBUS_SOURCE})
 endif()
 
@@ -218,7 +218,7 @@ else()
   file(GLOB_RECURSE CHARTS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/page/charts/*.*")
   foreach(file ${CHARTS_SOURCE})
     message(STATUS "[Charts]Remove file: ${file}")
-    list(REMOVE_ITEM X_TOOLS_SOURCES ${file})
+    list(REMOVE_ITEM X_SOURCES ${file})
   endforeach()
 endif()
 
@@ -230,85 +230,85 @@ if(APPLE)
   set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
   set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
   set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
-  list(APPEND X_TOOLS_SOURCES ${xTools_ICON})
+  list(APPEND X_SOURCES ${xTools_ICON})
 endif()
 
 if(WIN32)
-  list(APPEND X_TOOLS_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
+  list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
 endif()
 
-x_tools_add_executable(xTools ${X_TOOLS_SOURCES})
-x_tools_generate_translations(xTools)
-x_tools_output_env(xTools)
-x_tools_deploy_qt(xTools)
-x_tools_deploy_qss(xTools)
-x_tools_install_glog(xTools)
-x_tools_install_qxlsx(xTools)
-x_tools_install_qmdns(xTools)
-x_tools_install_qrencode(xTools)
+x_add_executable(xTools ${X_SOURCES})
+x_generate_translations(xTools)
+x_output_env(xTools)
+x_deploy_qt(xTools)
+x_deploy_qss(xTools)
+x_install_glog(xTools)
+x_install_qxlsx(xTools)
+x_install_qmdns(xTools)
+x_install_qrencode(xTools)
 
-set(X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::CorePrivate)
-list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::CorePrivate)
-list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::Core)
-list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::Gui)
-list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::Network)
-list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::Svg)
-list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
-list(APPEND X_TOOLS_LIBS ${x_qrencode} glog::glog qmdnsengine)
+set(X_LIBS Qt${QT_VERSION_MAJOR}::CorePrivate)
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::CorePrivate)
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Core)
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Gui)
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Network)
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Svg)
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
+list(APPEND X_LIBS ${x_qrencode} glog::glog qmdnsengine)
 if(X_ENABLE_SERIAL_PORT)
-  list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::SerialPort)
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::SerialPort)
 endif()
 if(X_ENABLE_WEB_SOCKET)
-  list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::WebSockets)
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::WebSockets)
 endif()
-if(X_TOOLS_ENABLE_SERIALBUS)
-  list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::SerialBus)
+if(X_ENABLE_SERIALBUS)
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::SerialBus)
 endif()
 if(X_ENABLE_BLUETOOTH)
-  list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::Bluetooth)
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Bluetooth)
 endif()
 if(X_ENABLE_CHARTS)
-  list(APPEND X_TOOLS_LIBS Qt${QT_VERSION_MAJOR}::Charts QXlsx::QXlsx)
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Charts QXlsx::QXlsx)
 endif()
-if(X_TOOLS_ENABLE_QSS)
-  list(APPEND X_TOOLS_LIBS QssMgr)
+if(X_ENABLE_QSS)
+  list(APPEND X_LIBS QssMgr)
 endif()
 
-target_link_libraries(xTools PRIVATE ${X_TOOLS_LIBS})
+target_link_libraries(xTools PRIVATE ${X_LIBS})
 
 # --------------------------------------------------------------------------------------------------
-# if X_TOOLS_LATEST_GIT_TAG contain "v", remove it...
-if(NOT X_TOOLS_LATEST_GIT_TAG)
-  set(X_TOOLS_LATEST_GIT_TAG "9.9.9")
+# if X_LATEST_GIT_TAG contain "v", remove it...
+if(NOT X_LATEST_GIT_TAG)
+  set(X_LATEST_GIT_TAG "9.9.9")
 endif()
 
-if(X_TOOLS_LATEST_GIT_TAG MATCHES "^v[0-9].*")
-  string(SUBSTRING ${X_TOOLS_LATEST_GIT_TAG} 1 -1 X_TOOLS_LATEST_GIT_TAG)
+if(X_LATEST_GIT_TAG MATCHES "^v[0-9].*")
+  string(SUBSTRING ${X_LATEST_GIT_TAG} 1 -1 X_LATEST_GIT_TAG)
 endif()
 
 # --------------------------------------------------------------------------------------------------
 # Make installer for Windows
-if(WIN32 AND X_TOOLS_LATEST_GIT_TAG)
+if(WIN32 AND X_LATEST_GIT_TAG)
   include(${CMAKE_SOURCE_DIR}/cmake/msix/msix.cmake)
   include(${CMAKE_SOURCE_DIR}/cmake/qifw/qifw.cmake)
   set(icon ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
-  x_tools_generate_zip(xTools ${X_TOOLS_LATEST_GIT_TAG})
-  x_tools_generate_msix(xTools "QSAK" "xTools Pro" ${X_TOOLS_LATEST_GIT_TAG} FALSE)
-  x_tools_generate_installer(xTools ${X_TOOLS_LATEST_GIT_TAG} ${icon})
+  x_generate_zip(xTools ${X_LATEST_GIT_TAG})
+  x_generate_msix(xTools "QSAK" "xTools Pro" ${X_LATEST_GIT_TAG} FALSE)
+  x_generate_installer(xTools ${X_LATEST_GIT_TAG} ${icon})
 endif()
 
 # --------------------------------------------------------------------------------------------------
 # Make package for linux(deb or appimage)
 if(LINUX)
   include(cmake/linux/linux.cmake)
-  x_build_deb(xTools "x-tools" "xTools" ${X_TOOLS_LATEST_GIT_TAG} ${CMAKE_SOURCE_DIR}/xTools.png)
+  x_build_deb(xTools "x-tools" "xTools" ${X_LATEST_GIT_TAG} ${CMAKE_SOURCE_DIR}/xTools.png)
 endif()
 
 # --------------------------------------------------------------------------------------------------
 # Make dmg for macOS
 if(APPLE)
   include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
-  x_tools_generate_dmg(xTools ${X_TOOLS_LATEST_GIT_TAG})
+  x_generate_dmg(xTools ${X_LATEST_GIT_TAG})
 endif()
 
 # --------------------------------------------------------------------------------------------------

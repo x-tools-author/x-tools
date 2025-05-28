@@ -34,7 +34,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Install libencode library to libs
-function(x_tools_install_qrencode target)
+function(x_install_qrencode target)
   add_custom_target(
     qrencode_install
     COMMAND ${CMAKE_COMMAND} --install . --prefix ${qrencode_dst_dir}
