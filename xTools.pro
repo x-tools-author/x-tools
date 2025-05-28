@@ -7,7 +7,6 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-#warning("CMake is recommended for building this project, but you are using qmake.")
 #------------------------------------------------------------------------------
 # Android settings
 X_APP_NAME        = "xTools"
