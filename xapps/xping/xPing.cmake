@@ -1,13 +1,9 @@
 find_package(Qt6 REQUIRED COMPONENTS Qml Quick QuickControls2)
-
-file(GLOB X_PING_QML ${CMAKE_CURRENT_LIST_DIR}/qml/*.*)
-file(GLOB X_PING_SOURCES ${CMAKE_CURRENT_LIST_DIR}/src/*.*)
-list(APPEND X_PING_SOURCES ${CMAKE_CURRENT_LIST_DIR}/xPing.rc)
-list(APPEND X_PING_SOURCES ${CMAKE_CURRENT_LIST_DIR}/xPing.qrc)
-list(APPEND X_PING_SOURCES ${X_PING_SOURCES} ${X_PING_QML})
-
+set(X_BASE_PATH ${CMAKE_SOURCE_DIR}/xapps/xping)
+file(GLOB X_PING_SOURCES ${X_BASE_PATH}/src/*.*)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/src)
-add_executable(xPing ${X_PING_SOURCES})
+qt_add_executable(xPing MANUAL_FINALIZATION ${X_PING_SOURCES} ${X_BASE_PATH}/xPing.qrc
+                  ${X_BASE_PATH}/xPing.rc)
 x_deploy_qt(xPing)
 x_generate_translations(xPing)
 x_output_env(xPing)
