@@ -33,15 +33,6 @@ public:
     static QString settingsPath();
 
 public:
-    struct SettingsKey
-    {
-        const QString hdpi{"Application/hdpi"};
-        const QString style{"Application/style"};
-        const QString language{"Application/language"};
-        const QString clearSettings{"Application/clearSettings"};
-        const QString colorScheme{"colorScheme"};
-    };
-
     Q_INVOKABLE void startPing(const QString &startIp, const QString &endIp);
     Q_INVOKABLE QString checkParameters(const QString &startIp, const QString &endIp);
     Q_INVOKABLE void updateTableModel(const QString &ip, bool isOnline, const QString &description);
@@ -52,7 +43,8 @@ public:
     Q_INVOKABLE QString onlineText();
     Q_INVOKABLE QString offlineText();
     Q_INVOKABLE QString language();
-    Q_INVOKABLE void setupLanguage(const QString &code = QString());
+    Q_INVOKABLE void setupLanguage();
+    Q_INVOKABLE void setupLanguageFile(const QString &qmFile);
 
     QSplashScreen *splashScreen();
     Q_INVOKABLE void showSplashScreenMessage(const QString &msg);

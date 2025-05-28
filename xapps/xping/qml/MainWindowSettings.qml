@@ -21,7 +21,10 @@ Menu {
                 id: languageAction
                 text: modelData["text"]
                 checkable: true
-                onTriggered: xApp.setupLanguage(modelData["code"])
+                onTriggered: {
+                    xSettings.setValue("language", modelData["code"])
+                    xApp.setupLanguage()
+                }
                 Component.onCompleted: {
                     if (xApp.language() === modelData["code"]) {
                         checked = true

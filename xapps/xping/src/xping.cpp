@@ -202,42 +202,49 @@ QString xPing::offlineText()
 QString xPing::language()
 {
     QSettings *settings = xPing::settings();
-    QString language = settings->value(SettingsKey().language, "en").toString();
+    QString language = settings->value("language", "en").toString();
     return language;
 }
 
-void setupLanguage(const QString &qmFile)
+void xPing::setupLanguage()
 {
-    QTranslator *translator = new QTranslator();
+    auto translators = qApp->findChildren<QTranslator *>();
+    for (auto &translator : translators) {
+        if (translator) {
+            removeTranslator(translator);
+            translator->deleteLater();
+        }
+    }
+
+    const QString languageKey("language");
+    QSettings *settings = xPing::settings();
+    QString defaultLanguage = QLocale::system().name();
+    QString language = settings->value(languageKey, defaultLanguage).toString();
+
+    QString appPath = QApplication::applicationDirPath();
+    QString qtQmFile = QString("%1/translations/qt_%2.qm").arg(appPath, language);
+    setupLanguageFile(qtQmFile);
+
+    QString xToolsQmFile = QString(":/res/translations/xPing_%1.qm").arg(language);
+    setupLanguageFile(xToolsQmFile);
+
+    settings->setValue(languageKey, language);
+    emit languageChanged();
+}
+
+void xPing::setupLanguageFile(const QString &qmFile)
+{
+    QTranslator *translator = new QTranslator(this);
     if (!translator->load(qmFile)) {
-        auto info = QString("The language file(%1) can not be loaded, English will be used.")
-                        .arg(qmFile);
-        qWarning() << info;
+        qWarning("The language file(%s) can not be loaded!", qmFile.toLatin1().constData());
         return;
     }
 
     if (!qApp->installTranslator(translator)) {
-        qWarning() << "The language has been setup, English will be used.";
+        qWarning("The language file(%s) has been setup failed!", qmFile.toLatin1().constData());
     } else {
-        qInfo() << "The language has been setup, current language file is:" << qmFile;
+        qInfo("The language file(%s) has been setup.", qmFile.toLatin1().constData());
     }
-}
-
-void xPing::setupLanguage(const QString &code)
-{
-    QSettings *settings = xPing::settings();
-    QString defaultLanguage = QLocale::system().name();
-    QString language = code;
-    if (language.isEmpty()) {
-        language = settings->value(SettingsKey().language, defaultLanguage).toString();
-    }
-
-    QString appPath = QApplication::applicationDirPath();
-    QString qtQmFile = QString("%1/translations/qt_%2.qm").arg(appPath, language);
-    ::setupLanguage(qtQmFile);
-
-    QString xToolsQmFile = QString(":/res/translations/xPing_%1.qm").arg(language);
-    ::setupLanguage(xToolsQmFile);
 }
 
 QSplashScreen *xPing::splashScreen()

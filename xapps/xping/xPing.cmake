@@ -1,15 +1,17 @@
 find_package(Qt6 REQUIRED COMPONENTS Qml Quick QuickControls2)
 set(X_BASE_PATH ${CMAKE_SOURCE_DIR}/xapps/xping)
-file(GLOB X_PING_SOURCES ${X_BASE_PATH}/src/*.*)
+file(GLOB_RECURSE X_PING_SOURCES ${X_BASE_PATH}/src/*.*)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/src)
-qt_add_executable(xPing MANUAL_FINALIZATION ${X_PING_SOURCES} ${X_BASE_PATH}/xPing.qrc
-                  ${X_BASE_PATH}/xPing.rc)
+
+set(bin ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/xPing)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
+qt_add_executable(xPing MANUAL_FINALIZATION ${X_PING_SOURCES} ${CMAKE_CURRENT_LIST_DIR}/xPing.rc
+                  ${CMAKE_CURRENT_LIST_DIR}/xPing.qrc)
+x_output_env(xPing)
 x_deploy_qt(xPing)
 x_generate_translations(xPing)
-x_output_env(xPing)
 
-target_link_libraries(xPing PRIVATE ${X_TOOLS_LIBS} Qt6::Widgets Qt6::Qml Qt6::Quick
-                                    Qt6::QuickControls2)
+target_link_libraries(xPing PRIVATE Qt6::Widgets Qt6::Qml Qt6::Quick Qt6::QuickControls2)
 if(X_USING_VS_CODE)
   set_target_properties(xPing PROPERTIES MACOSX_BUNDLE TRUE)
 else()
