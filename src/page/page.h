@@ -122,6 +122,6 @@ private:
     QSettings *m_settings;
 #ifdef X_ENABLE_CHARTS
     ChartsView *m_chartsView;
-    bool m_enableChars{true};
+    bool m_enableCharts{true};
 #endif
 };

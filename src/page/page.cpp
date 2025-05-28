@@ -304,7 +304,7 @@ void Page::appendOutputControl(QWidget *widget)
 
 void Page::hideChartsWidgets()
 {
-    m_enableChars = false;
+    m_enableCharts = false;
     ui->toolButtonCharts->setVisible(false);
     ui->widgetCharts->setVisible(false);
     ui->widgetChartsController->setVisible(false);
@@ -552,7 +552,7 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     outputText(bytes, from, true);
 
 #ifdef X_ENABLE_CHARTS
-    if (m_enableChars) {
+    if (m_enableCharts) {
         m_chartsView->inputBytes(bytes);
     }
 #endif
