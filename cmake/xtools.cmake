@@ -8,7 +8,7 @@ function(x_add_executable target)
     if(ANDROID)
       add_library(${target} SHARED ${ARGN})
     else()
-      add_executable(${target} ${ARGN})
+      qt_add_executable(${target} ${ARGN})
     endif()
   endif()
 
