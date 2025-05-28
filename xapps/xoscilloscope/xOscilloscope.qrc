@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/serial_port_plotter">
+        <file>Resources/icons/serial_port_icon.icns</file>
+        <file>Resources/styles/style.qss</file>
+        <file alias="play_dis.png">Resources/icons/lynny-2x/Play.png</file>
+        <file alias="pause_dis.png">Resources/icons/lynny-2x/Pause.png</file>
+        <file alias="stop_dis.png">Resources/icons/lynny-2x/Stop.png</file>
+        <file alias="clear_dis.png">Resources/icons/lynny-2x/No Entry.png</file>
+        <file alias="help_dis.png">Resources/icons/lynny-2x/Help.png</file>
+        <file alias="play_nor.png">Resources/icons/lynny-2x_text/Play.png</file>
+        <file alias="pause_nor.png">Resources/icons/lynny-2x_text/Pause.png</file>
+        <file alias="stop_nor.png">Resources/icons/lynny-2x_text/Stop.png</file>
+        <file alias="clear_nor.png">Resources/icons/lynny-2x_text/No Entry.png</file>
+        <file alias="help_nor.png">Resources/icons/lynny-2x_text/Help.png</file>
+        <file alias="play_act.png">Resources/icons/lynny-2x_white/Play.png</file>
+        <file alias="pause_act.png">Resources/icons/lynny-2x_white/Pause.png</file>
+        <file alias="stop_act.png">Resources/icons/lynny-2x_white/Stop.png</file>
+        <file alias="clear_act.png">Resources/icons/lynny-2x_white/No Entry.png</file>
+        <file alias="help_act.png">Resources/icons/lynny-2x_white/Help.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>Resources/icons/line_icon_set/document.png</file>
+        <file>Resources/icons/line_icon_set_text/document.png</file>
+        <file>Resources/icons/logo.ico</file>
+        <file>Resources/Translations/SerialPortOscilloscope_en.qm</file>
+        <file>Resources/Translations/SerialPortOscilloscope_zh_CN.qm</file>
+    </qresource>
+</RCC>
