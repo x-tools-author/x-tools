@@ -222,6 +222,22 @@ else()
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# xApplications selector
+set(X_APPS "xTools")
+list(APPEND X_APPS "xPing")
+list(APPEND X_APPS "xAssistant")
+list(APPEND X_APPS "xDebug")
+set(X_APP
+    "xTools"
+    CACHE STRING "Select the x-app to build")
+set_property(CACHE X_APP PROPERTY STRINGS ${X_APPS})
+if(EXISTS ${CMAKE_SOURCE_DIR}/xapps/${X_APP})
+  string(TOLOWER ${X_APP} LOWER_X_APP)
+  include(${CMAKE_SOURCE_DIR}/xapps/${LOWER_X_APP}/${X_APP}.cmake)
+  return()
+endif()
+
+# --------------------------------------------------------------------------------------------------
 # xTools application
 set(bin ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/xTools)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})

@@ -11,6 +11,7 @@ Window {
     title: qsTr("Ping Ping")
     flags: Qt.Window | Qt.FramelessWindowHint
     color: "#00000000"
+    opacity: xMagic
 
     signal invokeChangeLanguage(string code)
 

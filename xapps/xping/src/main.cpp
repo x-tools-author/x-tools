@@ -31,6 +31,11 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<TableModel>("xPing", 1, 0, "XTableModel", "Uncreatable type");
     engine.rootContext()->setContextProperty("xApp", &app);
     engine.rootContext()->setContextProperty("xSettings", xSettings);
+#ifdef X_MAGIC
+    engine.rootContext()->setContextProperty("xMagic", 0.3);
+#else
+    engine.rootContext()->setContextProperty("xMagic", 1.0);
+#endif
 
     QObject::connect(&app, &xPing::languageChanged, &engine, [&engine]() { engine.retranslate(); });
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [=]() {
