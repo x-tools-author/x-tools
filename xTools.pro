@@ -85,7 +85,12 @@ qtHaveModule(serialport): {
   QT += serialport
   DEFINES += X_ENABLE_SERIAL_PORT
 } else: {
-
+  TEMP_FILES = $$files(src/*serialport*.*, true)
+  for(f, TEMP_FILES): {
+    X_H_FILES -= $${f}
+    X_CPP_FILES -= $${f}
+    X_UI_FILES -= $${f}
+  }
 }
 
 # --------------------------------------------------------------------------------------------------
@@ -94,16 +99,31 @@ qtHaveModule(websockets): {
   QT += websockets
   DEFINES += X_ENABLE_WEB_SOCKET
 } else: {
-
+  TEMP_FILES = $$files(src/*websocket*.*, true)
+  for(f, TEMP_FILES): {
+    X_H_FILES -= $${f}
+    X_CPP_FILES -= $${f}
+    X_UI_FILES -= $${f}
+  }
 }
 
 # --------------------------------------------------------------------------------------------------
-# Bluetooth module
-qtHaveModule(bluetooth): {
-  QT += bluetooth
-  DEFINES += X_ENABLE_BLUETOOTH
-} else: {
-
+# Bluetooth module(qt6.8.0 or later)
+isEqual(QT_MAJOR_VERSION, 6): {
+  greaterThan(QT_MAJOR_VERSION, 7): {
+    qtHaveModule(bluetooth): {
+      QT += bluetooth
+      DEFINES += X_ENABLE_BLUETOOTH
+    }
+  }
+}
+!contains(bluetooth, QT): {
+  TEMP_FILES = $$files(src/*ble*.*, true)
+  for(f, TEMP_FILES): {
+    X_H_FILES -= $${f}
+    X_CPP_FILES -= $${f}
+    X_UI_FILES -= $${f}
+  }
 }
 
 # --------------------------------------------------------------------------------------------------
@@ -112,25 +132,40 @@ qtHaveModule(serialbus): {
   QT += serialbus
   DEFINES += X_ENABLE_SERIALBUS
 } else: {
+  TEMP_FILES = $$files(src/tools/modbus/*.*, true)
+  for(f, TEMP_FILES): {
+    X_H_FILES -= $${f}
+    X_CPP_FILES -= $${f}
+    X_UI_FILES -= $${f}
+  }
 
+  TEMP_FILES = $$files(src/tools/canbus/*.*, true)
+  for(f, TEMP_FILES): {
+    X_H_FILES -= $${f}
+    X_CPP_FILES -= $${f}
+    X_UI_FILES -= $${f}
+  }
 }
 
 # --------------------------------------------------------------------------------------------------
 # Charts module
-# --------------------------------------------------------------------------------------------------
-# Remove QR code files
+# qtHaveModule(charts): {
+#   QT += charts
+#   DEFINES += X_ENABLE_CHARTS
+# } else: {
+#   TEMP_FILES = $$files(src/page/charts/*.*, true)
+#   for(f, TEMP_FILES): {
+#     X_H_FILES -= $${f}
+#     X_CPP_FILES -= $${f}
+#     X_UI_FILES -= $${f}
+#   }
+# }
 TEMP_FILES = $$files(src/page/charts/*.*, true)
 for(f, TEMP_FILES): {
   X_H_FILES -= $${f}
   X_CPP_FILES -= $${f}
   X_UI_FILES -= $${f}
 }
-# qtHaveModule(charts): {
-#   QT += charts
-#   DEFINES += X_ENABLE_CHARTS
-# } else: {
-
-# }
 
 # --------------------------------------------------------------------------------------------------
 # The used files of the project
