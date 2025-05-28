@@ -71,9 +71,9 @@ int main(int argc, char *argv[])
     qmlAppEngine.rootContext()->setContextProperty("xApp", &app);
     qmlAppEngine.rootContext()->setContextProperty("xCrc", xCrc);
     qmlAppEngine.rootContext()->setContextProperty("xSettings", xSettings);
-    qmlAppEngine.rootContext()->setContextProperty("xDebugCommit", X_TOOLS_GIT_COMMIT);
-    qmlAppEngine.rootContext()->setContextProperty("xDebugCommitTime", X_TOOLS_GIT_COMMIT_TIME);
-    qmlAppEngine.rootContext()->setContextProperty("xDebugVersion", X_TOOLS_LATEST_GIT_TAG);
+    qmlAppEngine.rootContext()->setContextProperty("xDebugCommit", X_GIT_COMMIT);
+    qmlAppEngine.rootContext()->setContextProperty("xDebugCommitTime", X_GIT_COMMIT_TIME);
+    qmlAppEngine.rootContext()->setContextProperty("xDebugVersion", X_DEBUG_VERSION);
 
     // clang-format off
     qmlAppEngine.rootContext()->setContextProperty("xBin", QVariant(static_cast<int>(TextFormat::Bin)));
