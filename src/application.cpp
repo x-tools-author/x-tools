@@ -38,8 +38,6 @@ Application::Application(int &argc, char **argv)
 #endif
 }
 
-Application::~Application() {}
-
 void googleLogToQtLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QByteArray localMsg = msg.toUtf8();

@@ -30,7 +30,6 @@ public:
 
 public:
     explicit Application(int &argc, char **argv);
-    ~Application() override;
 
     static void installLog(char *argv0);
     static void uninstallLog();
