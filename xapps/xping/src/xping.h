@@ -8,28 +8,26 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QMenu>
+#include <QApplication>
 #include <QMutex>
 
-#include "application.h"
 #include "sortfilterproxymodel.h"
 #include "tablemodel.h"
 
-class xPing : public Application
+class xPing : public QApplication
 {
     Q_OBJECT
 public:
-    explicit xPing(int argc, char **argv);
+    explicit xPing(int &argc, char **argv);
     ~xPing() override;
 
-    Q_INVOKABLE QString version();
-    Q_INVOKABLE QString bytes2string(const QByteArray &bytes, int format);
-    Q_INVOKABLE QByteArray string2bytes(const QString &txt, int format);
-    Q_INVOKABLE QByteArray arrayAppendArray(const QByteArray &array1, const QByteArray &array2);
-    Q_INVOKABLE QString cookedEscapeCharacter(const QString &txt, int esc);
-    Q_INVOKABLE QByteArray cookedAffixes(int affixes);
-    Q_INVOKABLE void setQuickTextDocumentMaximumBlockCount(QVariant textDocument, int count);
-    Q_INVOKABLE QString dateTimeString(const QString &format);
+    // Q_INVOKABLE QString bytes2string(const QByteArray &bytes, int format);
+    // Q_INVOKABLE QByteArray string2bytes(const QString &txt, int format);
+    // Q_INVOKABLE QByteArray arrayAppendArray(const QByteArray &array1, const QByteArray &array2);
+    // Q_INVOKABLE QString cookedEscapeCharacter(const QString &txt, int esc);
+    // Q_INVOKABLE QByteArray cookedAffixes(int affixes);
+    // Q_INVOKABLE void setQuickTextDocumentMaximumBlockCount(QVariant textDocument, int count);
+    // Q_INVOKABLE QString dateTimeString(const QString &format);
 
 private:
     Q_PROPERTY(QVariant proxyModel READ proxyModel NOTIFY proxyModelChanged FINAL)
@@ -44,8 +42,9 @@ public:
     Q_INVOKABLE void updateTableModel(const QString &ip, bool isOnline, const QString &description);
     Q_INVOKABLE void setFilterText(const QString &text);
     Q_INVOKABLE void setFilterTextDelta();
-    Q_INVOKABLE QStringList supportedLanguages2();
-    Q_INVOKABLE QString language2();
+    Q_INVOKABLE QStringList supportedLanguages();
+    Q_INVOKABLE QString language();
+    Q_INVOKABLE QString version();
 
     Q_INVOKABLE QString onlineText();
     Q_INVOKABLE QString offlineText();

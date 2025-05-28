@@ -24,7 +24,7 @@ Menu {
     Menu {
         title: qsTr("Language")
         Repeater {
-            model: xApp.supportedLanguages
+            model: xApp.supportedLanguages()
             MenuItem {
                 id: languageAction
                 text: modelData

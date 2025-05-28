@@ -14,61 +14,31 @@
 #include <QProcess>
 #include <QQuickTextDocument>
 
-#include "common/xtools.h"
-
-xPing::xPing(int argc, char **argv)
-    : Application(argc, argv)
-{}
+xPing::xPing(int &argc, char **argv)
+    : QApplication(argc, argv)
+{
+    m_proxyModel = new SortFilterProxyModel(this);
+}
 
 xPing::~xPing() {}
 
-QString xPing::version()
-{
-    return xPing::applicationVersion();
-}
+// void xPing::setQuickTextDocumentMaximumBlockCount(QVariant textDocument, int count)
+// {
+//     if (textDocument.canConvert<QQuickTextDocument *>()) {
+//         QQuickTextDocument *doc = textDocument.value<QQuickTextDocument *>();
+//         if (doc) {
+//             QTextDocument *textDoc = doc->textDocument();
+//             if (textDoc) {
+//                 textDoc->setMaximumBlockCount(count);
+//             }
+//         }
+//     }
+// }
 
-QString xPing::bytes2string(const QByteArray &bytes, int format)
-{
-    return ::bytes2string(bytes, format);
-}
-
-QByteArray xPing::string2bytes(const QString &txt, int format)
-{
-    return ::string2bytes(txt, format);
-}
-
-QByteArray xPing::arrayAppendArray(const QByteArray &array1, const QByteArray &array2)
-{
-    return ::arrayAppendArray(array1, array2);
-}
-
-QString xPing::cookedEscapeCharacter(const QString &txt, int esc)
-{
-    return ::cookedEscapeCharacter(txt, esc);
-}
-
-QByteArray xPing::cookedAffixes(int affixes)
-{
-    return ::cookedAffixes(affixes);
-}
-
-void xPing::setQuickTextDocumentMaximumBlockCount(QVariant textDocument, int count)
-{
-    if (textDocument.canConvert<QQuickTextDocument *>()) {
-        QQuickTextDocument *doc = textDocument.value<QQuickTextDocument *>();
-        if (doc) {
-            QTextDocument *textDoc = doc->textDocument();
-            if (textDoc) {
-                textDoc->setMaximumBlockCount(count);
-            }
-        }
-    }
-}
-
-QString xPing::dateTimeString(const QString &format)
-{
-    return ::dateTimeString(format);
-}
+// QString xPing::dateTimeString(const QString &format)
+// {
+//     return QDateTime::currentDateTime().toString(format);
+// }
 
 void ping(xPing *app, const QString &ip)
 {
@@ -83,7 +53,7 @@ void ping(xPing *app, const QString &ip)
     QString allString = QString::fromUtf8(all);
     QString description = ip;
     if (allString.contains("TTL=")) {
-        QStringList list = allString.split(" ", xSkipEmptyParts);
+        QStringList list = allString.split(" ", Qt::SkipEmptyParts);
         if (list.length() >= 2) {
             description = list.at(2);
         }
@@ -210,14 +180,19 @@ void xPing::setFilterTextDelta()
     m_proxyModel->setFilterRegularExpression(QString("^[+-]$"));
 }
 
-QStringList xPing::supportedLanguages2()
+QStringList xPing::supportedLanguages()
 {
     return QStringList();
 }
 
-QString xPing::language2()
+QString xPing::language()
 {
     return QString();
+}
+
+QString xPing::version()
+{
+    return xPing::applicationVersion();
 }
 
 QString xPing::onlineText()
