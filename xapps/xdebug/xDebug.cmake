@@ -18,5 +18,5 @@ list(APPEND X_DEBUG_SOURCES ${CMAKE_CURRENT_LIST_DIR}/xDebug.rc)
 
 set(bin ${CMAKE_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/xDebug)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
-add_executable(xDebug ${X_DEBUG_SOURCES})
-target_link_libraries(xDebug PRIVATE ${X_TOOLS_LIBS} Qt6::Qml Qt6::Quick Qt6::QuickControls2)
+qt_add_executable(xDebug MANUAL_FINALIZATION ${X_DEBUG_SOURCES})
+target_link_libraries(xDebug PRIVATE ${X_LIBS} Qt6::Qml Qt6::Quick Qt6::QuickControls2)
