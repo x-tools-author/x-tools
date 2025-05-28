@@ -48,10 +48,10 @@
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
-    , m_iopage00(Q_NULLPTR)
-    , m_iopage01(Q_NULLPTR)
-    , m_iopage10(Q_NULLPTR)
-    , m_iopage11(Q_NULLPTR)
+    , m_ioPage00(Q_NULLPTR)
+    , m_ioPage01(Q_NULLPTR)
+    , m_ioPage10(Q_NULLPTR)
+    , m_ioPage11(Q_NULLPTR)
 {
 #if defined(X_MAGIC)
     setWindowOpacity(0.3);
@@ -74,23 +74,23 @@ MainWindow::MainWindow(QWidget* parent)
 
     QSettings* settings = Application::settings();
     xApp->showSplashScreenMessage(QString("Create page 1..."));
-    m_iopage00 = new Page(Page::Left, settings, this);
+    m_ioPage00 = new Page(Page::Left, settings, this);
     xApp->showSplashScreenMessage(QString("Create page 2..."));
-    m_iopage01 = new Page(Page::Right, settings, this);
+    m_ioPage01 = new Page(Page::Right, settings, this);
     xApp->showSplashScreenMessage(QString("Create page 3..."));
-    m_iopage10 = new Page(Page::Left, settings, this);
+    m_ioPage10 = new Page(Page::Left, settings, this);
     xApp->showSplashScreenMessage(QString("Create page 4..."));
-    m_iopage11 = new Page(Page::Right, settings, this);
+    m_ioPage11 = new Page(Page::Right, settings, this);
 
     xApp->showSplashScreenMessage(QString("Create main window..."));
     auto* centralWidget = new QWidget();
     auto* layout = new QGridLayout(centralWidget);
     layout->setSpacing(0);
     layout->setContentsMargins(0, 0, 0, 0);
-    layout->addWidget(m_iopage00, 0, 0);
-    layout->addWidget(m_iopage01, 0, 1);
-    layout->addWidget(m_iopage10, 1, 0);
-    layout->addWidget(m_iopage11, 1, 1);
+    layout->addWidget(m_ioPage00, 0, 0);
+    layout->addWidget(m_ioPage01, 0, 1);
+    layout->addWidget(m_ioPage10, 1, 0);
+    layout->addWidget(m_ioPage11, 1, 1);
     centralWidget->setLayout(layout);
     setCentralWidget(centralWidget);
 
@@ -134,19 +134,19 @@ void MainWindow::load(const QString& fileName) const
 
     QJsonDocument doc = QJsonDocument::fromJson(data);
     QJsonObject obj = doc.object();
-    m_iopage00->load(obj.value("page00").toObject().toVariantMap());
-    m_iopage01->load(obj.value("page01").toObject().toVariantMap());
-    m_iopage10->load(obj.value("page10").toObject().toVariantMap());
-    m_iopage11->load(obj.value("page11").toObject().toVariantMap());
+    m_ioPage00->load(obj.value("page00").toObject().toVariantMap());
+    m_ioPage01->load(obj.value("page01").toObject().toVariantMap());
+    m_ioPage10->load(obj.value("page10").toObject().toVariantMap());
+    m_ioPage11->load(obj.value("page11").toObject().toVariantMap());
 }
 
 void MainWindow::save(const QString& fileName) const
 {
     QJsonObject obj;
-    obj.insert("page00", QJsonObject::fromVariantMap(m_iopage00->save()));
-    obj.insert("page01", QJsonObject::fromVariantMap(m_iopage01->save()));
-    obj.insert("page10", QJsonObject::fromVariantMap(m_iopage10->save()));
-    obj.insert("page11", QJsonObject::fromVariantMap(m_iopage11->save()));
+    obj.insert("page00", QJsonObject::fromVariantMap(m_ioPage00->save()));
+    obj.insert("page01", QJsonObject::fromVariantMap(m_ioPage01->save()));
+    obj.insert("page10", QJsonObject::fromVariantMap(m_ioPage10->save()));
+    obj.insert("page11", QJsonObject::fromVariantMap(m_ioPage11->save()));
 
     QJsonDocument doc;
     doc.setObject(obj);
@@ -171,25 +171,25 @@ void MainWindow::save(const QString& fileName) const
 void MainWindow::updateGrid(WindowGrid grid)
 {
     if (grid == WindowGrid::Grid1x2) {
-        m_iopage00->show();
-        m_iopage01->show();
-        m_iopage10->hide();
-        m_iopage11->hide();
+        m_ioPage00->show();
+        m_ioPage01->show();
+        m_ioPage10->hide();
+        m_ioPage11->hide();
     } else if (grid == WindowGrid::Grid2x1) {
-        m_iopage00->show();
-        m_iopage01->hide();
-        m_iopage10->show();
-        m_iopage11->hide();
+        m_ioPage00->show();
+        m_ioPage01->hide();
+        m_ioPage10->show();
+        m_ioPage11->hide();
     } else if (grid == WindowGrid::Grid2x2) {
-        m_iopage00->show();
-        m_iopage01->show();
-        m_iopage10->show();
-        m_iopage11->show();
+        m_ioPage00->show();
+        m_ioPage01->show();
+        m_ioPage10->show();
+        m_ioPage11->show();
     } else {
-        m_iopage00->show();
-        m_iopage01->hide();
-        m_iopage10->hide();
-        m_iopage11->hide();
+        m_ioPage00->show();
+        m_ioPage01->hide();
+        m_ioPage10->hide();
+        m_ioPage11->hide();
     }
 
     m_windowGrid = grid;
@@ -206,6 +206,13 @@ void MainWindow::moveToCenter()
         qInfo() << "The screen is too small.";
     } else {
         move((screenRect.width() - width()) / 2, (screenRect.height() - height()) / 2);
+    }
+}
+
+void MainWindow::hideHistoryAction()
+{
+    if (m_historyAction) {
+        m_historyAction->setVisible(false);
     }
 }
 
@@ -236,7 +243,7 @@ void MainWindow::initMenuBar()
 {
     xApp->showSplashScreenMessage(QString("Create file menu..."));
     initFileMenu();
-    xApp->showSplashScreenMessage(QString("Create tool menu..."));
+    xApp->showSplashScreenMessage(QString("Create tools menu..."));
     initToolMenu();
     xApp->showSplashScreenMessage(QString("Create option menu..."));
     initOptionMenu();
@@ -615,7 +622,7 @@ void MainWindow::initHelpMenu()
 #endif
 
     helpMenu->addSeparator();
-    helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
+    m_historyAction = helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
     helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
     helpMenu->addSeparator();
 

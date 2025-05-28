@@ -10,13 +10,16 @@
 
 #include "mainwindow.h"
 
+class Pipe;
 class xAssistant : public MainWindow
 {
     Q_OBJECT
 public:
     xAssistant(QWidget* parent = Q_NULLPTR);
-    ~xAssistant() override;
 
 protected:
     QUrl storeUrl() const override;
+
+private:
+    Pipe* m_pipe;
 };

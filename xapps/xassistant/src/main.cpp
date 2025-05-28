@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     Application::installLog(argv[0]);
     Application::setupHdpi();
     Application app(argc, argv);
+    app.setApplicationVersion(X_ASSISTANT_VERSION);
     app.setupLanguage();
     app.showSplashScreenMessage(QObject::tr("Application is booting..."));
     app.setupAppStyle();

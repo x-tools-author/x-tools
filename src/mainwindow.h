@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QAction>
 #include <QMainWindow>
 #include <QMenu>
 #include <QUrl>
@@ -27,16 +28,18 @@ public:
     void save(const QString& fileName = QString()) const;
     void updateGrid(WindowGrid grid);
     void moveToCenter();
+    void hideHistoryAction();
 
 protected:
     void closeEvent(QCloseEvent* event) override;
     virtual QUrl storeUrl() const;
 
 protected:
-    Page* m_iopage00;
-    Page* m_iopage01;
-    Page* m_iopage10;
-    Page* m_iopage11;
+    Page* m_ioPage00;
+    Page* m_ioPage01;
+    Page* m_ioPage10;
+    Page* m_ioPage11;
+    QAction* m_historyAction{nullptr};
 
 private:
     struct SettingsKeys

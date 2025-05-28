@@ -54,6 +54,7 @@ public:
     void prependOutputControl(QWidget *widget);
     void appendOutputControl(QWidget *widget);
     void hideChartsWidgets();
+    void hideSearchWidgets();
     void hideTransferWidgets();
     void removeTestDevices();
 

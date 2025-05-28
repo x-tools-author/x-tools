@@ -11,7 +11,6 @@
 #include <QSettings>
 
 #include "application.h"
-#include "device/device.h"
 #include "page/page.h"
 
 Pipe::Pipe(Page *leftPage, Page *rightPage, QObject *parent)

@@ -9,16 +9,18 @@
 #include "xassistant.h"
 
 #include <QMenuBar>
+#include <QtGui/qaction.h>
 
 #include "page/page.h"
 #include "pipe.h"
 
 xAssistant::xAssistant(QWidget* parent)
     : MainWindow(parent)
+    , m_pipe(nullptr)
 {
     QMenuBar* menuBar = this->menuBar();
     QList<QAction*> actions = menuBar->actions();
-    for (QAction* action : actions) {
+    for (auto& action : std::as_const(actions)) {
         if (!action->menu()) {
             continue;
         }
@@ -26,7 +28,7 @@ xAssistant::xAssistant(QWidget* parent)
         QMenu* menu = action->menu();
         if (menu->objectName() == "ViewMenu") {
             QList<QAction*> actions = menu->actions();
-            for (QAction* action : actions) {
+            for (auto& action : std::as_const(actions)) {
                 if (action->objectName() == QString("PageViewAction")) {
                     menu->removeAction(action);
                 }
@@ -34,28 +36,33 @@ xAssistant::xAssistant(QWidget* parent)
         }
     }
 
-    m_iopage00->hideTransferWidgets();
-    m_iopage01->hideTransferWidgets();
-    m_iopage10->hideTransferWidgets();
-    m_iopage11->hideTransferWidgets();
+    hideHistoryAction();
 
-    m_iopage00->hideChartsWidgets();
-    m_iopage01->hideChartsWidgets();
-    m_iopage10->hideChartsWidgets();
-    m_iopage11->hideChartsWidgets();
+    m_ioPage00->hideTransferWidgets();
+    m_ioPage01->hideTransferWidgets();
+    m_ioPage10->hideTransferWidgets();
+    m_ioPage11->hideTransferWidgets();
 
-    m_iopage00->removeTestDevices();
-    m_iopage01->removeTestDevices();
-    m_iopage10->removeTestDevices();
-    m_iopage11->removeTestDevices();
+    m_ioPage00->hideChartsWidgets();
+    m_ioPage01->hideChartsWidgets();
+    m_ioPage10->hideChartsWidgets();
+    m_ioPage11->hideChartsWidgets();
 
-    Pipe* pipe = new Pipe(m_iopage00, m_iopage01, this);
-    Q_UNUSED(pipe);
+    m_ioPage00->hideSearchWidgets();
+    m_ioPage01->hideSearchWidgets();
+    m_ioPage10->hideSearchWidgets();
+    m_ioPage11->hideSearchWidgets();
+
+    m_ioPage00->removeTestDevices();
+    m_ioPage01->removeTestDevices();
+    m_ioPage10->removeTestDevices();
+    m_ioPage11->removeTestDevices();
+
+    m_pipe = new Pipe(m_ioPage00, m_ioPage01, this);
+    Q_UNUSED(m_pipe);
 }
-
-xAssistant::~xAssistant() {}
 
 QUrl xAssistant::storeUrl() const
 {
-    return QUrl("https://www.microsoft.com/store/apps/9n5n5n35vqjf");
+    return QUrl("https://apps.microsoft.com/detail/9n5n5n35vqjf");
 }

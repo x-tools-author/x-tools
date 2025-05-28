@@ -310,6 +310,12 @@ void Page::hideChartsWidgets()
     ui->widgetChartsController->setVisible(false);
 }
 
+void Page::hideSearchWidgets()
+{
+    ui->toolButtonSearch->hide();
+    ui->widgetSearch->hide();
+}
+
 void Page::hideTransferWidgets()
 {
     ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabTransfers));
