@@ -75,7 +75,7 @@ void CRC::setupAlgorithm(QComboBox *comboBox)
 
     comboBox->clear();
     QList<int> algorithms = supportedAlgorithms();
-    for (int algorithm : algorithms) {
+    for (const int &algorithm : std::as_const(algorithms)) {
         comboBox->addItem(algorithmName(static_cast<Algorithm>(algorithm)), algorithm);
     }
 }
