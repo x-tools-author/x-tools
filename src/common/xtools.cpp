@@ -75,7 +75,9 @@ QList<int> supportedDeviceTypes()
 #endif
         deviceTypes << static_cast<int>(DeviceType::LocalSocket);
         deviceTypes << static_cast<int>(DeviceType::LocalServer);
+#ifdef X_ENABLE_CHARTS
         deviceTypes << static_cast<int>(DeviceType::ChartsTest);
+#endif
     }
 
     return deviceTypes;
