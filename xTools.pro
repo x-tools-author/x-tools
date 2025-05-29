@@ -1,4 +1,4 @@
-QT       += core gui widgets svg
+QT       += core gui widgets svg network
 
 CONFIG += c++17
 
@@ -29,30 +29,29 @@ win32 {
 # pri file
 include(qmake/git.pri)
 include(qmake/qxlsx.pri)
+include(qmake/xtools.pri)
 
 #------------------------------------------------------------------------------
 # Git env
 tmp = $$x_git_get_latest_tag()
-DEFINES += X_LATEST_GIT_TAG=\\\"$$tmp\\\"
 version_tmp = $$tmp
+DEFINES += X_LATEST_GIT_TAG=\\\"$$tmp\\\"
+message("[xTools] X_LATEST_GIT_TAG: $$version_tmp")
 tmp = $$x_git_get_latest_commit()
 DEFINES += X_GIT_COMMIT=\\\"$$tmp\\\"
+message("[xTools] X_GIT_COMMIT: $$tmp")
 tmp = $$x_git_get_latest_commit_time()
 DEFINES += X_GIT_COMMIT_TIME=\\\"$$tmp\\\"
+message("[xTools] X_GIT_COMMIT_TIME: $$tmp")
 
 #------------------------------------------------------------------------------
 # Application settings
-X_APP_NAME        = "xTools"
-X_ORG_NAME        = "xTools"
-X_ORG_DOMAIN      = "IT"
-X_APP_DESCRIPTION = "xTools"
-X_APP_COPYRIGHT   = "Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved."
 win32 {
-    QMAKE_TARGET_COMPANY        = "$${X_ORG_NAME}"
-    QMAKE_TARGET_DESCRIPTION    = "$${X_APP_DESCRIPTION}"
-    QMAKE_TARGET_COPYRIGHT      = "$${X_APP_COPYRIGHT}"
-    QMAKE_TARGET_PRODUCT        = "$${X_APP_NAME}"
-    QMAKE_TARGET_VERSION        = "$${version_tmp}"
+    QMAKE_TARGET_COMPANY        = "xTools"
+    QMAKE_TARGET_DESCRIPTION    = "xTools"
+    QMAKE_TARGET_COPYRIGHT      = "Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved."
+    QMAKE_TARGET_PRODUCT        = "xTools"
+    QMAKE_TARGET_VERSION        = $$version_tmp
 }
 
 #--------------------------------------------------------------------------------------------
