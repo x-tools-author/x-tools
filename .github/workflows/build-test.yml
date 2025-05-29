@@ -3,26 +3,38 @@ on:
   workflow_dispatch: # Enables manually
 
 jobs:
-  build:
-    name: Build
+  build-windows:
+    name: Build with Qt5(windows)
     runs-on: windows-2022
-    env:
-      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-windows-2022:amd64
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [5.9.9, 5.12.12, 5.15.2]
+        include:
+          - version: 5.9.9
+            arch: win64_msvc2017_64
+          - version: 5.12.12
+            arch: win64_msvc2017_64
+          - version: 5.15.2
+            arch: win64_msvc2019_64
     steps:
-      - name: Pull Respository
+      - name: Pull code
         uses: actions/checkout@v4
-      - name: Pull Image
-        run: |
-          echo %PATH%
-          docker pull ${{ env.DOCKER_IMAGE }}
-      - name: Build docker image
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: '==3.1.*'
+          dir: ${{ github.workspace }}
+          version: ${{ matrix.version }}
+          target: desktop
+          arch: ${{ matrix.arch }}
+          modules: 'qtcharts'
+      - name: build-msvc
         shell: cmd
         run: |
-          git fetch --tags 
-          docker run --rm -v ${{ github.workspace }}:C:\workspace -w "C:\workspace" ${{ env.DOCKER_IMAGE }} cmd /c " ^
-          set PATH=C:\Qt\6.8.3\mingw_64\bin;%PATH% ^
-          && echo %PATH%  ^
-          && dir C:\ ^
-          && dir D:\ ^
-          && dir D:\a"
+          mkdir build
+          cd build
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+          cmake --build . --target all --config Release
 
