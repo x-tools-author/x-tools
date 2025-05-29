@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "crc.h"
 
+#include <utility>
+
 QList<int> CRC::supportedAlgorithms()
 {
     QList<int> Algorithms;
