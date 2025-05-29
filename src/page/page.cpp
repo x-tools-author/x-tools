@@ -29,6 +29,10 @@
 #include "page/preset/presetview.h"
 #include "page/responder/responderview.h"
 
+#ifdef X_ENABLE_CHARTS
+#include "device/chartstestui.h"
+#endif
+
 #ifdef X_ENABLE_SERIAL_PORT
 #include "device/serialportui.h"
 #endif

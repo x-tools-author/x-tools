@@ -88,6 +88,7 @@ int ResponderModel::rowCount(const QModelIndex &parent) const
 
 int ResponderModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return 6;
 }
 

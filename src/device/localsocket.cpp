@@ -25,7 +25,7 @@ QObject *LocalSocket::initDevice()
         QByteArray bytes = this->m_socket->readAll();
         emit bytesRead(bytes, m_socket->serverName());
     });
-    connect(m_socket, xLocalSocketErrorOccurred, this, [this](QLocalSocket::LocalSocketError error) {
+    connect(m_socket, xLocalSocketErrorOccurred, this, [this]() {
         emit errorOccurred(m_socket->errorString());
     });
 

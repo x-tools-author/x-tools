@@ -94,6 +94,7 @@ void TransferModel::stopAll()
 
 bool TransferModel::isEnableRestartColumn(int column) const
 {
+    Q_UNUSED(column);
     return false;
 }
 
@@ -107,6 +108,7 @@ void TransferModel::onDataChanged(const QModelIndex &topLeft,
                                   const QVector<int> &roles)
 #endif
 {
+    Q_UNUSED(roles);
     if (topLeft != bottomRight) {
         return;
     }

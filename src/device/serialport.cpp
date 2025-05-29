@@ -42,12 +42,9 @@ QObject *SerialPort::initDevice()
         connect(m_serialPort, &QSerialPort::readyRead, m_serialPort, [this]() {
             this->readBytesFromDevice();
         });
-        connect(m_serialPort,
-                &QSerialPort::errorOccurred,
-                m_serialPort,
-                [this](QSerialPort::SerialPortError error) {
-                    emit errorOccurred(m_serialPort->errorString());
-                });
+        connect(m_serialPort, &QSerialPort::errorOccurred, m_serialPort, [this]() {
+            emit errorOccurred(m_serialPort->errorString());
+        });
     } else {
         emit errorOccurred(tr("Failed to open serial port: %1").arg(m_serialPort->errorString()));
         m_serialPort->deleteLater();

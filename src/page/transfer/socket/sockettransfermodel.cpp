@@ -63,6 +63,7 @@ void SocketTransferModel::loadRow(const int row, const QVariantMap &item)
 
 int SocketTransferModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return 8;
 }
 

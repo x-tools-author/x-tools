@@ -73,6 +73,7 @@ int EmitterModel::rowCount(const QModelIndex &parent) const
 
 int EmitterModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return 4;
 }
 

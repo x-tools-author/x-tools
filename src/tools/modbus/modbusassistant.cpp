@@ -1024,6 +1024,7 @@ void ModbusAssistant::updateClientTableView(int currentFormat, int targetFormat)
 
 void ModbusAssistant::updateClientTableViewData(int currentFormat, int targetFormat)
 {
+    Q_UNUSED(targetFormat);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     QList<quint16> values;
 #else

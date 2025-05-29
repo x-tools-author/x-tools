@@ -34,6 +34,7 @@ public:
                           const QStyleOptionViewItem &option,
                           const QModelIndex &index) const override
     {
+        Q_UNUSED(option);
         if (index.column() != 2) {
             return nullptr;
         }
