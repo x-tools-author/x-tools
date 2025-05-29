@@ -25,6 +25,7 @@ win32: msvc: lessThan(QT_MAJOR_VERSION, 6) {
 include(qmake/git.pri)
 include(qmake/qxlsx.pri)
 include(qmake/xtools.pri)
+#include(qmake/libqrencode.pri)
 
 # --------------------------------------------------------------------------------------------------
 # Git env
@@ -50,10 +51,10 @@ win32 {
   QMAKE_TARGET_INTERNALNAME       = "xTools"
   QMAKE_TARGET_COMMENTS           = "xTools"
   QMAKE_TARGET_TRADEMARKS         = "xTools"
-  #QMAKE_MANIFEST                  = "xTools"
-  #RC_CODEPAGE                     =
+  QMAKE_MANIFEST                  =
+  RC_CODEPAGE                     =
   RC_ICONS                        = xTools.ico
-  #RC_LANG                         =
+  RC_LANG                         =
   VERSION                         = $$version_tmp
 }
 
@@ -71,10 +72,9 @@ X_UI_FILES = $$files(src/*.ui, true)
 
 # --------------------------------------------------------------------------------------------------
 # 3rd module
-DEFINES += \
-  X_DISABLE_GLOG \
-  X_DISABLE_MDNS \
-  X_DISABLE_QR_CODE
+DEFINES += X_DISABLE_GLOG
+DEFINES += X_DISABLE_MDNS
+DEFINES += X_DISABLE_QR_CODE
 
 # --------------------------------------------------------------------------------------------------
 # Remove mdns files
@@ -87,11 +87,13 @@ for(f, TEMP_FILES): {
 
 # --------------------------------------------------------------------------------------------------
 # Remove QR code files
+contains(DEFINES, X_DISABLE_QR_CODE) {
 TEMP_FILES = $$files(src/tools/qrcode/*.*)
-for(f, TEMP_FILES): {
-  X_H_FILES -= $$f
-  X_CPP_FILES -= $$f
-  X_UI_FILES -= $$f
+  for(f, TEMP_FILES): {
+    X_H_FILES -= $$f
+    X_CPP_FILES -= $$f
+    X_UI_FILES -= $$f
+  }
 }
 
 # --------------------------------------------------------------------------------------------------
