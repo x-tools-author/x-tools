@@ -287,6 +287,8 @@ x_install_qxlsx(xTools)
 x_install_qmdns(xTools)
 x_install_qrencode(xTools)
 target_link_libraries(xTools PRIVATE ${X_LIBS})
+set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER com.xtools.xtools)
+set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_NAME com.xtools.xtools)
 
 # --------------------------------------------------------------------------------------------------
 # if X_LATEST_GIT_TAG contain "v", remove it...
