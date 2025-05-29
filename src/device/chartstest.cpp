@@ -32,7 +32,7 @@ void ChartsTest::run()
     ChartsTestDataKeys keys;
     int dataFormat = parameters.value(keys.dataFormat).toInt();
     int channels = parameters.value(keys.channels).toInt();
-    connect(timer, &QTimer::timeout, timer, [this, timer, dataFormat, flag, channels]() {
+    connect(timer, &QTimer::timeout, timer, [this, dataFormat, flag, channels]() {
         if (dataFormat == static_cast<int>(ChartsDataFormat::BinaryY)) {
             emit bytesRead(generateBinaryY(channels), flag);
         } else if (dataFormat == static_cast<int>(ChartsDataFormat::TextY)) {
