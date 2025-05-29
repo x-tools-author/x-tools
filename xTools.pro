@@ -7,22 +7,6 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-#------------------------------------------------------------------------------
-# Android settings
-X_APP_NAME        = "xTools"
-X_ORG_NAME        = "xTools"
-X_ORG_DOMAIN      = "IT"
-X_APP_DESCRIPTION = "xTools"
-X_APP_COPYRIGHT   = "Copyright 2018-2022 x-tools-author(x-tools@outlook.com). All rights reserved."
-X_VERSION         = "1.0.0"
-win32 {
-    QMAKE_TARGET_COMPANY        = "$${X_ORG_NAME}"
-    QMAKE_TARGET_DESCRIPTION    = "$${X_APP_DESCRIPTION}"
-    QMAKE_TARGET_COPYRIGHT      = "$${X_APP_COPYRIGHT}"
-    QMAKE_TARGET_PRODUCT        = "$${X_APP_NAME}"
-    QMAKE_TARGET_VERSION        = "$${X_VERSION}"
-}
-
 #--------------------------------------------------------------------------------------------
 #Output directory
 UI_DIR      = $$OUT_PWD/ui
@@ -44,16 +28,32 @@ win32 {
 #------------------------------------------------------------------------------
 # pri file
 include(qmake/git.pri)
-
+include(qmake/qxlsx.pri)
 
 #------------------------------------------------------------------------------
 # Git env
 tmp = $$x_git_get_latest_tag()
 DEFINES += X_LATEST_GIT_TAG=\\\"$$tmp\\\"
+version_tmp = $$tmp
 tmp = $$x_git_get_latest_commit()
 DEFINES += X_GIT_COMMIT=\\\"$$tmp\\\"
 tmp = $$x_git_get_latest_commit_time()
 DEFINES += X_GIT_COMMIT_TIME=\\\"$$tmp\\\"
+
+#------------------------------------------------------------------------------
+# Application settings
+X_APP_NAME        = "xTools"
+X_ORG_NAME        = "xTools"
+X_ORG_DOMAIN      = "IT"
+X_APP_DESCRIPTION = "xTools"
+X_APP_COPYRIGHT   = "Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved."
+win32 {
+    QMAKE_TARGET_COMPANY        = "$${X_ORG_NAME}"
+    QMAKE_TARGET_DESCRIPTION    = "$${X_APP_DESCRIPTION}"
+    QMAKE_TARGET_COPYRIGHT      = "$${X_APP_COPYRIGHT}"
+    QMAKE_TARGET_PRODUCT        = "$${X_APP_NAME}"
+    QMAKE_TARGET_VERSION        = "$${version_tmp}"
+}
 
 #--------------------------------------------------------------------------------------------
 #I18N
@@ -162,25 +162,27 @@ qtHaveModule(serialbus): {
 }
 
 # --------------------------------------------------------------------------------------------------
-# Charts module
-# qtHaveModule(charts): {
-#   QT += charts
-#   DEFINES += X_ENABLE_CHARTS
-# } else: {
-#   TEMP_FILES = $$files(src/page/charts/*.*, true)
-#   for(f, TEMP_FILES): {
-#     X_H_FILES -= $$f
-#     X_CPP_FILES -= $$f
-#     X_UI_FILES -= $$f
-#   }
-# }
-TEMP_FILES = $$files(src/page/charts/*.*, true)
-for(f, TEMP_FILES): {
-  X_H_FILES -= $$f
-  X_CPP_FILES -= $$f
-  X_UI_FILES -= $$f
-}
+# Charts module(Qt 6.5.0 or later))
+exists(3rd/QXlsx-1.4.7/QXlsx/QXlsx.pri): {
+  greaterThan(QT_MAJOR_VERSION, 5): {
+    greaterThan(QT_MINOR_VERSION, 4): {
+      qtHaveModule(charts): {
+        QT += charts
+        DEFINES += X_ENABLE_CHARTS
+        include(3rd/QXlsx-1.4.7/QXlsx/QXlsx.pri)
+      }
+    }
+  }
 
+  !contains(QT, charts): {
+    TEMP_FILES = $$files(src/page/charts/*.*, true)
+    for(f, TEMP_FILES): {
+      X_H_FILES -= $$f
+      X_CPP_FILES -= $$f
+      X_UI_FILES -= $$f
+    }
+  }
+}
 # --------------------------------------------------------------------------------------------------
 # The used files of the project
 INCLUDEPATH += src

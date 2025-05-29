@@ -14,6 +14,7 @@ TableModel::TableModel(QObject *parent)
 
 QVariantMap TableModel::saveRow(int row)
 {
+    Q_UNUSED(row);
     QVariantMap data;
     return data;
 }

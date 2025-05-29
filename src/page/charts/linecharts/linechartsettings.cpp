@@ -173,6 +173,7 @@ bool LineChartSettings::legendVisible()
 
 void LineChartSettings::setLegendVisible(bool visible)
 {
+    Q_UNUSED(visible);
     ui->checkBoxLegend->setChecked(true);
 }
 
