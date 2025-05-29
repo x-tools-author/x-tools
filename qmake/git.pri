@@ -16,7 +16,6 @@ defineReplace(x_git_get_latest_tag) {
 }
 
 defineReplace(x_git_get_latest_commit) {
-    # Get the last commit.
     tmp = $$system(git log -1 --pretty=%H)
     return($$tmp)
 }

@@ -122,19 +122,22 @@ qtHaveModule(websockets): {
 
 # --------------------------------------------------------------------------------------------------
 # Bluetooth module(qt6.8.0 or later)
-# isEqual(QT_MAJOR_VERSION, 6): {
-#   greaterThan(QT_MAJOR_VERSION, 7): {
-#     qtHaveModule(bluetooth): {
-#       QT += bluetooth
-#       DEFINES += X_ENABLE_BLUETOOTH
-#     }
-#   }
-# }
-TEMP_FILES = $$files(src/ble*.*, true)
-for(f, TEMP_FILES): {
-  X_H_FILES -= $$f
-  X_CPP_FILES -= $$f
-  X_UI_FILES -= $$f
+greaterThan(QT_MAJOR_VERSION, 5): {
+  greaterThan(QT_MINOR_VERSION, 7): {
+    qtHaveModule(bluetooth): {
+      QT += bluetooth
+      DEFINES += X_ENABLE_BLUETOOTH
+    }
+  }
+}
+
+!contains(QT, bluetooth): {
+  TEMP_FILES = $$files(src/ble*.*, true)
+  for(f, TEMP_FILES): {
+    X_H_FILES -= $$f
+    X_CPP_FILES -= $$f
+    X_UI_FILES -= $$f
+  }
 }
 
 # --------------------------------------------------------------------------------------------------

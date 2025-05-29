@@ -82,7 +82,10 @@ void BleCentralUi::load(const QVariantMap &parameters)
     Q_UNUSED(parameters);
 }
 
-void BleCentralUi::setUiEnabled(bool enabled) {}
+void BleCentralUi::setUiEnabled(bool enabled)
+{
+    Q_UNUSED(enabled);
+}
 
 void BleCentralUi::updateNotifyText()
 {
