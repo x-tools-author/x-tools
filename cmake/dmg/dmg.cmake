@@ -1,4 +1,4 @@
-function(x_tools_generate_dmg target version)
+function(x_generate_dmg target version)
   if(NOT APPLE)
     return()
   endif()
