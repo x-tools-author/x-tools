@@ -52,7 +52,7 @@ endfunction()
 # Get last commit time.
 function(x_git_get_latest_commit_time working_dir prefix)
   execute_process(
-    COMMAND git log -1 --format=%cd
+    COMMAND git log -1 --format='%ad' --date='format:%Y.%m.%d-%H:%M:%S'
     WORKING_DIRECTORY ${working_dir}
     OUTPUT_VARIABLE GIT_COMMIT_TIME
     OUTPUT_STRIP_TRAILING_WHITESPACE)

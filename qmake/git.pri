@@ -1,27 +1,27 @@
 defineReplace(x_git_get_latest_tag) {
-    # Get the last tag.
-    system(git describe --abbrev=0 --tags > $$1)
-    !exists($$1) {
-        error("Failed to get latest git tag.")
-    }
-    !system(git describe --abbrev=0 --tags | grep -q '^continuous$$') {
-        !system(git describe --abbrev=0 --tags | grep -q '^$$') {
-            !exists($$1) {
-                system(date +%Y.%m.%d > $$1)
-            }
+    tmp = $$system(git describe --abbrev=0 --tags)
+    # if tmp == "" or tmp == "continuous", using date info, such as: 2025.05.29
+    isEqual($$tmp, "") | isEqual($$tmp, "continuous"): {
+        date =
+        win32: {
+            date = $$system(git log -1 --format=%ad --date=format:%Y.%m.%d)
+            date = $$system(powershell -Command "$d='$$date';$d -replace '(\d{4})\.0?(\d{1,2})\.0?(\d{1,2})','$1.$2.$3'")
+        } else: {
+            date = $$system(git log -1 --format=%ad --date=format:%Y.%-m.%d)
         }
+        return($$date)
     }
+
+    return($$tmp)
 }
 
 defineReplace(x_git_get_latest_commit) {
     # Get the last commit.
-    system(git log -1 --pretty=%H > $$1)
-    !exists($$1) {
-        error("Failed to get latest git commit.")
-    }
+    tmp = $$system(git log -1 --pretty=%H)
+    return($$tmp)
 }
 
 defineReplace(x_git_get_latest_commit_time) {
-    tmp = $$system(git log -1 --format=%cd)
+    tmp = $$system(git log -1 --format='%ad' --date='format:%Y.%m.%d-%H:%M:%S')
     return($$tmp)
 }

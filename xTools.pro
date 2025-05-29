@@ -48,12 +48,12 @@ include(qmake/git.pri)
 
 #------------------------------------------------------------------------------
 # Git env
-# tmp = $$system(git log -1 --format=%cd)
-# DEFINES += X_GIT_COMMIT_TIME=\\\"$$tmp\\\"
-# tmp = $$system(git log -1 --format=%cd)
-# DEFINES += X_GIT_COMMIT_TIME=\"\\\"$${tmp}\\\"\"
-# DEFINES += X_GIT_COMMIT_TIME=\\\"$$tmp\\\"
-# message("[xTools.git]X_GIT_COMMIT_TIME:$$tmp")
+tmp = $$x_git_get_latest_tag()
+DEFINES += X_LATEST_GIT_TAG=\\\"$$tmp\\\"
+tmp = $$x_git_get_latest_commit()
+DEFINES += X_GIT_COMMIT=\\\"$$tmp\\\"
+tmp = $$x_git_get_latest_commit_time()
+DEFINES += X_GIT_COMMIT_TIME=\\\"$$tmp\\\"
 
 #--------------------------------------------------------------------------------------------
 #I18N
@@ -78,18 +78,18 @@ DEFINES += \
 # Remove mdns files
 TEMP_FILES = $$files(src/tools/mdns/*.*)
 for(f, TEMP_FILES): {
-  X_H_FILES -= $${f}
-  X_CPP_FILES -= $${f}
-  X_UI_FILES -= $${f}
+  X_H_FILES -= $$f
+  X_CPP_FILES -= $$f
+  X_UI_FILES -= $$f
 }
 
 # --------------------------------------------------------------------------------------------------
 # Remove QR code files
 TEMP_FILES = $$files(src/tools/qrcode/*.*)
 for(f, TEMP_FILES): {
-  X_H_FILES -= $${f}
-  X_CPP_FILES -= $${f}
-  X_UI_FILES -= $${f}
+  X_H_FILES -= $$f
+  X_CPP_FILES -= $$f
+  X_UI_FILES -= $$f
 }
 
 # --------------------------------------------------------------------------------------------------
@@ -100,9 +100,9 @@ qtHaveModule(serialport): {
 } else: {
   TEMP_FILES = $$files(src/*serialport*.*, true)
   for(f, TEMP_FILES): {
-    X_H_FILES -= $${f}
-    X_CPP_FILES -= $${f}
-    X_UI_FILES -= $${f}
+    X_H_FILES -= $$f
+    X_CPP_FILES -= $$f
+    X_UI_FILES -= $$f
   }
 }
 
@@ -114,29 +114,27 @@ qtHaveModule(websockets): {
 } else: {
   TEMP_FILES = $$files(src/*websocket*.*, true)
   for(f, TEMP_FILES): {
-    X_H_FILES -= $${f}
-    X_CPP_FILES -= $${f}
-    X_UI_FILES -= $${f}
+    X_H_FILES -= $$f
+    X_CPP_FILES -= $$f
+    X_UI_FILES -= $$f
   }
 }
 
 # --------------------------------------------------------------------------------------------------
 # Bluetooth module(qt6.8.0 or later)
-isEqual(QT_MAJOR_VERSION, 6): {
-  greaterThan(QT_MAJOR_VERSION, 7): {
-    qtHaveModule(bluetooth): {
-      QT += bluetooth
-      DEFINES += X_ENABLE_BLUETOOTH
-    }
-  }
-}
-!contains(bluetooth, QT): {
-  TEMP_FILES = $$files(src/*ble*.*, true)
-  for(f, TEMP_FILES): {
-    X_H_FILES -= $${f}
-    X_CPP_FILES -= $${f}
-    X_UI_FILES -= $${f}
-  }
+# isEqual(QT_MAJOR_VERSION, 6): {
+#   greaterThan(QT_MAJOR_VERSION, 7): {
+#     qtHaveModule(bluetooth): {
+#       QT += bluetooth
+#       DEFINES += X_ENABLE_BLUETOOTH
+#     }
+#   }
+# }
+TEMP_FILES = $$files(src/ble*.*, true)
+for(f, TEMP_FILES): {
+  X_H_FILES -= $$f
+  X_CPP_FILES -= $$f
+  X_UI_FILES -= $$f
 }
 
 # --------------------------------------------------------------------------------------------------
@@ -147,16 +145,16 @@ qtHaveModule(serialbus): {
 } else: {
   TEMP_FILES = $$files(src/tools/modbus/*.*, true)
   for(f, TEMP_FILES): {
-    X_H_FILES -= $${f}
-    X_CPP_FILES -= $${f}
-    X_UI_FILES -= $${f}
+    X_H_FILES -= $$f
+    X_CPP_FILES -= $$f
+    X_UI_FILES -= $$f
   }
 
   TEMP_FILES = $$files(src/tools/canbus/*.*, true)
   for(f, TEMP_FILES): {
-    X_H_FILES -= $${f}
-    X_CPP_FILES -= $${f}
-    X_UI_FILES -= $${f}
+    X_H_FILES -= $$f
+    X_CPP_FILES -= $$f
+    X_UI_FILES -= $$f
   }
 }
 
@@ -168,16 +166,16 @@ qtHaveModule(serialbus): {
 # } else: {
 #   TEMP_FILES = $$files(src/page/charts/*.*, true)
 #   for(f, TEMP_FILES): {
-#     X_H_FILES -= $${f}
-#     X_CPP_FILES -= $${f}
-#     X_UI_FILES -= $${f}
+#     X_H_FILES -= $$f
+#     X_CPP_FILES -= $$f
+#     X_UI_FILES -= $$f
 #   }
 # }
 TEMP_FILES = $$files(src/page/charts/*.*, true)
 for(f, TEMP_FILES): {
-  X_H_FILES -= $${f}
-  X_CPP_FILES -= $${f}
-  X_UI_FILES -= $${f}
+  X_H_FILES -= $$f
+  X_CPP_FILES -= $$f
+  X_UI_FILES -= $$f
 }
 
 # --------------------------------------------------------------------------------------------------
