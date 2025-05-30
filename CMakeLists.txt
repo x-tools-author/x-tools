@@ -264,6 +264,16 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/xapps/${X_APP})
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# if X_LATEST_GIT_TAG contain "v", remove it...
+if(NOT X_LATEST_GIT_TAG)
+  set(X_LATEST_GIT_TAG "9.9.9")
+endif()
+
+if(X_LATEST_GIT_TAG MATCHES "^v[0-9].*")
+  string(SUBSTRING ${X_LATEST_GIT_TAG} 1 -1 X_LATEST_GIT_TAG)
+endif()
+
+# --------------------------------------------------------------------------------------------------
 # xTools application
 set(bin ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/xTools)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
@@ -289,17 +299,10 @@ x_install_qrencode(xTools)
 target_link_libraries(xTools PRIVATE ${X_LIBS})
 set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER com.xtools.xtools)
 set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_NAME com.xtools.xtools)
-set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "res/android/6.8")
-
-# --------------------------------------------------------------------------------------------------
-# if X_LATEST_GIT_TAG contain "v", remove it...
-if(NOT X_LATEST_GIT_TAG)
-  set(X_LATEST_GIT_TAG "9.9.9")
-endif()
-
-if(X_LATEST_GIT_TAG MATCHES "^v[0-9].*")
-  string(SUBSTRING ${X_LATEST_GIT_TAG} 1 -1 X_LATEST_GIT_TAG)
-endif()
+set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_VERSION_NAME ${X_LATEST_GIT_TAG})
+set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_DISPLAY_NAME "xTools")
+set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR
+                                        ${CMAKE_SOURCE_DIR}/res/android/6.8)
 
 # --------------------------------------------------------------------------------------------------
 # Make installer for Windows

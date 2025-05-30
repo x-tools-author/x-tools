@@ -255,7 +255,7 @@ void Application::showSplashScreenMessage(const QString &msg)
         return;
     }
 
-#if defined(QT_OS_ANDROID)
+#if defined(Q_OS_ANDROID)
     splashScreen->showFullScreen();
 #else
     splashScreen->show();
