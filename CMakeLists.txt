@@ -59,6 +59,10 @@ endif()
 # Qt 6.8.0 or later is recommended, or output a warning message
 if(QT_VERSION VERSION_LESS "6.8.0")
   message(WARNING "Qt 6.8.0 or later is recommended")
+
+  if(ANDROID)
+    message(FATAL_ERROR "Qt 6.8.0 or later is required for Android platform")
+  endif()
 endif()
 
 # --------------------------------------------------------------------------------------------------
