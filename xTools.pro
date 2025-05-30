@@ -21,11 +21,46 @@ win32: msvc: lessThan(QT_MAJOR_VERSION, 6) {
 }
 
 # --------------------------------------------------------------------------------------------------
+# Get all source files in src directory
+X_H_FILES = $$files(src/*.h, true)
+X_CPP_FILES = $$files(src/*.cpp, true)
+X_UI_FILES = $$files(src/*.ui, true)
+
+# --------------------------------------------------------------------------------------------------
 # pri file
 include(qmake/git.pri)
 include(qmake/qxlsx.pri)
 include(qmake/xtools.pri)
-#include(qmake/libqrencode.pri)
+
+# 3rd module
+DEFINES += X_DISABLE_GLOG
+#DEFINES += X_DISABLE_MDNS
+DEFINES += X_DISABLE_QR_CODE
+
+# Remove QR code files
+contains(DEFINES, X_DISABLE_QR_CODE) {
+  TEMP_FILES = $$files(src/tools/qrcode/*.*)
+  for(f, TEMP_FILES): {
+    X_H_FILES -= $$f
+    X_CPP_FILES -= $$f
+    X_UI_FILES -= $$f
+  }
+} else {
+  include(qmake/libqrencode.pri)
+}
+
+# Remove mdns files
+contains(DEFINES, X_DISABLE_MDNS) {
+  TEMP_FILES = $$files(src/tools/mdns/*.*)
+  for(f, TEMP_FILES): {
+    X_H_FILES -= $$f
+    X_CPP_FILES -= $$f
+    X_UI_FILES -= $$f
+  }
+} else {
+  include(qmake/qmdnsengine.pri)
+}
+
 
 # --------------------------------------------------------------------------------------------------
 # Git env
@@ -63,38 +98,6 @@ win32 {
 TRANSLATIONS  += \
     res/translations/xTools_en.ts \
     res/translations/xTools_zh_CN.ts
-
-# --------------------------------------------------------------------------------------------------
-# Get all source files in src directory
-X_H_FILES = $$files(src/*.h, true)
-X_CPP_FILES = $$files(src/*.cpp, true)
-X_UI_FILES = $$files(src/*.ui, true)
-
-# --------------------------------------------------------------------------------------------------
-# 3rd module
-DEFINES += X_DISABLE_GLOG
-DEFINES += X_DISABLE_MDNS
-DEFINES += X_DISABLE_QR_CODE
-
-# --------------------------------------------------------------------------------------------------
-# Remove mdns files
-TEMP_FILES = $$files(src/tools/mdns/*.*)
-for(f, TEMP_FILES): {
-  X_H_FILES -= $$f
-  X_CPP_FILES -= $$f
-  X_UI_FILES -= $$f
-}
-
-# --------------------------------------------------------------------------------------------------
-# Remove QR code files
-contains(DEFINES, X_DISABLE_QR_CODE) {
-TEMP_FILES = $$files(src/tools/qrcode/*.*)
-  for(f, TEMP_FILES): {
-    X_H_FILES -= $$f
-    X_CPP_FILES -= $$f
-    X_UI_FILES -= $$f
-  }
-}
 
 # --------------------------------------------------------------------------------------------------
 # SerialPort module
