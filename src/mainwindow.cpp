@@ -243,8 +243,10 @@ void MainWindow::initMenuBar()
 {
     xApp->showSplashScreenMessage(QString("Create file menu..."));
     initFileMenu();
+#if !defined(Q_OS_ANDROID)
     xApp->showSplashScreenMessage(QString("Create tools menu..."));
     initToolMenu();
+#endif
     xApp->showSplashScreenMessage(QString("Create option menu..."));
     initOptionMenu();
     xApp->showSplashScreenMessage(QString("Create view menu..."));

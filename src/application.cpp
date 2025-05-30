@@ -17,6 +17,7 @@
 #include <QEventLoop>
 #include <QLocale>
 #include <QPainter>
+#include <QScreen>
 #include <QStandardPaths>
 #include <QStyle>
 #include <QStyleFactory>
@@ -229,9 +230,21 @@ QSplashScreen *Application::splashScreen()
 
         QFontMetrics fontMetrics(font);
         const QString displayName = applicationName();
+#if defined(Q_OS_ANDROID)
+        QScreen *screen = QGuiApplication::primaryScreen();
+        int w = 600;
+        int h = 260;
+        if (screen) {
+            QSize size = screen->availableSize();
+            w = size.width();
+            h = size.height();
+        }
+        QPixmap pixMap(w, h);
+        Q_UNUSED(fontMetrics);
+#else
         int width = fontMetrics.boundingRect(displayName).width() * 1.2;
-
         QPixmap pixMap(width < 600 ? 600 : width, 260);
+#endif
         pixMap.fill(QColor(0x1f1f1f));
 
         QPainter painter(&pixMap);
