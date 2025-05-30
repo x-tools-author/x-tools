@@ -33,9 +33,9 @@ include(qmake/qxlsx.pri)
 include(qmake/xtools.pri)
 
 # 3rd module
-DEFINES += X_DISABLE_GLOG
-#DEFINES += X_DISABLE_MDNS
-DEFINES += X_DISABLE_QR_CODE
+DEFINES += X_DISABLE_GLOG # QMake is not supported by glog, so disable it
+# DEFINES += X_DISABLE_MDNS
+# DEFINES += X_DISABLE_QR_CODE
 
 # Remove QR code files
 contains(DEFINES, X_DISABLE_QR_CODE) {
