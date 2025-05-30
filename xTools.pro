@@ -61,7 +61,6 @@ contains(DEFINES, X_DISABLE_MDNS) {
   include(qmake/qmdnsengine.pri)
 }
 
-
 # --------------------------------------------------------------------------------------------------
 # Git env
 tmp = $$x_git_get_latest_tag()
