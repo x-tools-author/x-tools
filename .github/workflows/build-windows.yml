@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [6.2.4, 6.5.3, 6.8.3, 6.9.0]
+        version: [6.2.4, 6.5.3, 6.8.3, 6.9.1]
         arch: [win64_msvc2019_64, win64_msvc2022_64, win64_mingw]
         exclude:
           - version: 6.2.4
