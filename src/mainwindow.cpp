@@ -517,8 +517,9 @@ void MainWindow::initMenuLanguage()
         languageActionGroup->addAction(action);
 
         Application::SettingsKey keys;
+        QString key = it.key();
         connect(action, &QAction::triggered, this, [=]() {
-            xApp->settings()->setValue(keys.language, it.key());
+            xApp->settings()->setValue(keys.language, key);
             tryToReboot();
         });
 
