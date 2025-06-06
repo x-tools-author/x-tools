@@ -23,5 +23,6 @@
     SOURCES ${msix_source}
     DEPENDS ${target}
     WORKING_DIRECTORY ${root_dir}
-    COMMENT "Start making msix packet for ${target}")
+    USES_TERMINAL
+    COMMENT "Start making msix packet for ${target}, the args are: ${args}")
 endfunction()
