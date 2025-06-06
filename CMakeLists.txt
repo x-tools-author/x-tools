@@ -252,22 +252,24 @@ if(X_ENABLE_CHARTS)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# xApplications selector
-set(X_APPS "xTools")
-list(APPEND X_APPS "xSvg")
-list(APPEND X_APPS "xPing")
-list(APPEND X_APPS "xDebug")
-list(APPEND X_APPS "xAssistant")
-list(APPEND X_APPS "xOscilloscope")
-# cmake-format: off
-set(X_APP "xTools" CACHE STRING "Select a x-app to build")
-set_property(CACHE X_APP PROPERTY STRINGS ${X_APPS})
-if(EXISTS ${CMAKE_SOURCE_DIR}/xapps/${X_APP})
-  string(TOLOWER ${X_APP} LOWER_X_APP)
-  include(${CMAKE_SOURCE_DIR}/xapps/${LOWER_X_APP}/${X_APP}.cmake)
-  return()
+# xApplications selector(just for Qt6.8.0 or later)
+if(NOT QT_VERSION VERSION_LESS "6.8.0")
+  set(X_APPS "xTools")
+  list(APPEND X_APPS "xSvg")
+  list(APPEND X_APPS "xPing")
+  list(APPEND X_APPS "xDebug")
+  list(APPEND X_APPS "xAssistant")
+  list(APPEND X_APPS "xOscilloscope")
+  # cmake-format: off
+  set(X_APP "xTools" CACHE STRING "Select a x-app to build")
+  set_property(CACHE X_APP PROPERTY STRINGS ${X_APPS})
+  if(EXISTS ${CMAKE_SOURCE_DIR}/xapps/${X_APP})
+    string(TOLOWER ${X_APP} LOWER_X_APP)
+    include(${CMAKE_SOURCE_DIR}/xapps/${LOWER_X_APP}/${X_APP}.cmake)
+    return()
+  endif()
+  # cmake-format: on
 endif()
-# cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
 # if X_LATEST_GIT_TAG contain "v", remove it...
