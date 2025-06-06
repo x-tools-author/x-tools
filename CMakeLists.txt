@@ -284,6 +284,8 @@ endif()
 # xTools application
 set(bin ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/xTools)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
+
+# Apple platforms settings
 if(APPLE)
   set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
   set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
@@ -306,7 +308,6 @@ x_install_qxlsx(xTools)
 x_install_qmdns(xTools)
 x_install_qrencode(xTools)
 
-# --------------------------------------------------------------------------------------------------
 # Android specific settings
 if(ANDROID)
   set(x_android_source ${CMAKE_SOURCE_DIR}/res/android/6.8)
@@ -314,7 +315,6 @@ if(ANDROID)
   set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR ${x_android_source})
 endif()
 
-# --------------------------------------------------------------------------------------------------
 # MacOS specific settings
 if(APPLE AND NOT IOS)
   set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools")
