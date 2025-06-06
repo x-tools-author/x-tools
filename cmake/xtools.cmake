@@ -58,10 +58,6 @@ endfunction()
 # --------------------------------------------------------------------------------------------------
 # Generate translations files
 function(x_generate_translations target)
-  if(QT_VERSION VERSION_LESS "5.6.0")
-    return()
-  endif()
-
   set(APP_TS_FILES "")
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_en.ts)
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_zh_CN.ts)
@@ -87,10 +83,6 @@ function(x_generate_translations target)
       qt_add_lrelease(${target} TS_FILES ${APP_TS_FILES})
     endif()
   else()
-    if(QT_VERSION VERSION_LESS "5.6.0")
-      return()
-    endif()
-
     # cmake-format: off
     qt5_add_translation(QM_FILES ${APP_TS_FILES})
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${APP_TS_FILES})
