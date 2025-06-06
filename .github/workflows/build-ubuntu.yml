@@ -23,7 +23,7 @@ jobs:
             arch: linux_gcc_64
           - version: 6.8.3
             arch: gcc_64
-          - version: 6.9.0
+          - version: 6.9.1
             arch: gcc_64
     steps:
       - name: checkout
