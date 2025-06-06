@@ -260,7 +260,7 @@ list(APPEND X_APPS "xDebug")
 list(APPEND X_APPS "xAssistant")
 list(APPEND X_APPS "xOscilloscope")
 # cmake-format: off
-set(X_APP "xTools" CACHE STRING "Select the x-app to build")
+set(X_APP "xTools" CACHE STRING "Select a x-app to build")
 set_property(CACHE X_APP PROPERTY STRINGS ${X_APPS})
 if(EXISTS ${CMAKE_SOURCE_DIR}/xapps/${X_APP})
   string(TOLOWER ${X_APP} LOWER_X_APP)
@@ -339,5 +339,5 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # ???
 if(QT_VERSION_MAJOR EQUAL 6)
-  qt_finalize_executable(xTools)
+  qt_finalize_target(xTools)
 endif()
