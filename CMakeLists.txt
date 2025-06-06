@@ -122,7 +122,7 @@ message(STATUS "------------------------------------------------------------")
 # --------------------------------------------------------------------------------------------------
 # 3rd module
 include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/QXlsx.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/qxlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
 
