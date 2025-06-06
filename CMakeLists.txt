@@ -254,9 +254,11 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # xApplications selector
 set(X_APPS "xTools")
+list(APPEND X_APPS "xSvg")
 list(APPEND X_APPS "xPing")
-list(APPEND X_APPS "xAssistant")
 list(APPEND X_APPS "xDebug")
+list(APPEND X_APPS "xAssistant")
+list(APPEND X_APPS "xOscilloscope")
 set(X_APP
     "xTools"
     CACHE STRING "Select the x-app to build")

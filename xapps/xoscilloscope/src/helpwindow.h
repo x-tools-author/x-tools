@@ -1,4 +1,4 @@
-﻿/***************************************************************************************************
+/***************************************************************************************************
  * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
@@ -6,17 +6,25 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "helpwindow.h"
-#include "ui_helpwindow.h"
+#ifndef HELPWINDOW_HPP
+#define HELPWINDOW_HPP
 
-HelpWindow::HelpWindow(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::HelpWindow)
-{
-    ui->setupUi(this);
+#include <QDialog>
+
+namespace Ui {
+class HelpWindow;
 }
 
-HelpWindow::~HelpWindow()
+class HelpWindow : public QDialog
 {
-    delete ui;
-}
+    Q_OBJECT
+
+public:
+    explicit HelpWindow(QWidget *parent = 0);
+    ~HelpWindow();
+
+private:
+    Ui::HelpWindow *ui;
+};
+
+#endif // HELPWINDOW_HPP
