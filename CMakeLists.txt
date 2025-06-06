@@ -52,8 +52,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_QT_COMPONENTS})
 
 # --------------------------------------------------------------------------------------------------
 # Check Qt version
-if(QT_VERSION VERSION_LESS "5.6.0")
-  message(FATAL_ERROR "Qt 5.6.0 or later is required")
+if(QT_VERSION VERSION_LESS "5.9.0")
+  message(FATAL_ERROR "Qt 5.9.0 or later is required")
 endif()
 
 # Qt 6.8.0 or later is recommended, or output a warning message
