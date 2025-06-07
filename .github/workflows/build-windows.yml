@@ -16,7 +16,7 @@ jobs:
       matrix:
         version: [6.8.3, 6.9.1]
         arch: [win64_msvc2022_64, win64_mingw]
-        app: [xassistant, xcode, xoscilloscope]
+        app: [xassistant, xdebug, xcode, xoscilloscope, xping]
     steps:
       - name: Pull code
         uses: actions/checkout@v4
