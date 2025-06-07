@@ -25,9 +25,12 @@
 
 #include "common/crc.h"
 #include "common/xtools.h"
-#include "device/utilities/blescanner.h"
 #include "device/utilities/ipscanner.h"
 #include "device/utilities/serialportscanner.h"
+
+#ifdef X_ENABLE_BLUETOOTH
+#include "device/utilities/blescanner.h"
+#endif
 
 #include "settings.h"
 #include "xdebug.h"
@@ -53,8 +56,10 @@ int main(int argc, char *argv[])
     qmlRegisterType<TcpClient>("xTools.xDebug", 1, 0, "TcpClient");
     qmlRegisterType<TcpServer>("xTools.xDebug", 1, 0, "TcpServer");
     qmlRegisterType<IpScanner>("xTools.xDebug", 1, 0, "IpScanner");
+#ifdef X_ENABLE_BLUETOOTH
     qmlRegisterType<BleScanner>("xTools.xDebug", 1, 0, "BleScanner");
     qmlRegisterType<BleCentral>("xTools.xDebug", 1, 0, "BleCentral");
+#endif
     qmlRegisterType<SerialPort>("xTools.xDebug", 1, 0, "Serialport");
     qmlRegisterType<WebSocketServer>("xTools.xDebug", 1, 0, "WebSocketServer");
     qmlRegisterType<WebSocketClient>("xTools.xDebug", 1, 0, "WebSocketClient");
