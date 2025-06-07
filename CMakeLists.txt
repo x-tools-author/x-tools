@@ -344,3 +344,9 @@ if(APPLE)
   include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
   x_generate_dmg(xTools ${X_LATEST_GIT_TAG})
 endif()
+
+# --------------------------------------------------------------------------------------------------
+# ???
+if(QT_VERSION_MAJOR EQUAL 6)
+  qt_finalize_target(xTools)
+endif()
