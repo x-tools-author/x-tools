@@ -1,4 +1,4 @@
-﻿name: build-windows
+﻿name: build-apps
 on:
   schedule:
     - cron: '0 0 * * *'
