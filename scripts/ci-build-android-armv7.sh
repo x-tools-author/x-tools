@@ -34,7 +34,7 @@ fi
 
 #---------------------------------------------------------------------------------------------------
 # Make the APK
-chomod +x /opt/qt/6.8.3/gcc_64/bin/androiddeployqt
+chmod +x /opt/qt/6.8.3/gcc_64/bin/androiddeployqt
 /opt/qt/6.8.3/gcc_64/bin/androiddeployqt \
     --release \
     --input build/armeabi_v7a/android-xTools-deployment-settings.json \
