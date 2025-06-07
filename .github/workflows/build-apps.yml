@@ -1,4 +1,4 @@
-﻿name: build-apps
+﻿name: build-windows
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -8,28 +8,15 @@ on:
 #    branches:
 #      - master
 jobs:
-  build-windows:
-    name: Build with Qt5(windows)
+  build:
+    name: Build with Qt6
     runs-on: windows-2022
     strategy:
       fail-fast: false
       matrix:
-        version: [5.15.2]
-        include:
-          - version: 5.9.9
-            arch: win64_msvc2017_64
-          - version: 5.10.1
-            arch: win64_msvc2017_64
-          - version: 5.11.3
-            arch: win64_msvc2017_64
-          - version: 5.12.12
-            arch: win64_msvc2017_64
-          - version: 5.13.2
-            arch: win64_msvc2017_64
-          - version: 5.14.2
-            arch: win64_msvc2017_64
-          - version: 5.15.2
-            arch: win64_msvc2019_64
+        version: [6.8.3, 6.9.1]
+        arch: [win64_msvc2022_64, win64_mingw]
+        app: [xassistant, xdebug, xcode, xoscilloscope, xping]
     steps:
       - name: Pull code
         uses: actions/checkout@v4
@@ -41,72 +28,21 @@ jobs:
           version: ${{ matrix.version }}
           target: desktop
           arch: ${{ matrix.arch }}
-          modules: 'qtcharts'
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: build-msvc
         shell: cmd
+        if: matrix.arch == 'win64_msvc2019_64' || matrix.arch == 'win64_msvc2022_64'
         run: |
           mkdir build
           cd build
           call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -DX_APP:STRING=${{ matrix.app }} -G "Ninja" ../
           cmake --build . --target all --config Release
-  build-linux:
-    name: Build with Qt5(linux)
-    runs-on: ubuntu-24.04
-    strategy:
-      fail-fast: false
-      matrix:
-        version: [5.9.9, 5.10.1, 5.11.3, 5.12.12, 5.13.2, 5.14.2, 5.15.2]
-    steps:
-      - name: Pull code
-        uses: actions/checkout@v4
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          aqtversion: '==3.1.*'
-          dir: ${{ github.workspace }}
-          version: ${{ matrix.version }}
-          target: desktop
-          arch: 'gcc_64'
-          modules: 'qtcharts'
-      - name: build-gcc
+      - name: build-mingw
+        shell: cmd
+        if: matrix.arch == 'win64_mingw'
         run: |
-          git fetch --tags
-          cmake --version
           mkdir build
           cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
-          cmake --build . --target xTools
-          cmake --build . --target xTools_linux
-  build-macos:
-    name: Build with Qt5(macos)
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [macos-14]
-        version: [5.9.9, 5.10.1, 5.11.3, 5.12.12, 5.13.2, 5.14.2, 5.15.2]
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: install qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          aqtversion: '==3.1.*'
-          dir: ${{ github.workspace }}
-          version: ${{ matrix.version }}
-          target: 'desktop'
-          arch: 'clang_64'
-          host: 'mac'
-          modules: 'qtcharts'
-      - name: build-clang
-        run: |
-          # brew uninstall --force node
-          # brew unlink unixodbc
-          # brew install libiodbc
-          mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
-          ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
-          mkdir build
-          cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release ../
-          cmake --build . --target all
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -DX_APP:STRING=${{ matrix.app }} -G "MinGW Makefiles" ../
+          cmake --build . --target all --config Release
