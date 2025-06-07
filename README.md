@@ -1,4 +1,4 @@
-# xTools [![LGPL License](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.html) ![CodeSize](https://img.shields.io/github/languages/code-size/x-tools-author/x-tools) ![RepoSize](https://img.shields.io/github/repo-size/x-tools-author/x-tools) [![Static Badge](https://img.shields.io/badge/sponsor-Microsoft_Sotre-blue)](https://apps.microsoft.com/detail/9p29h1ndnkbb) [![build-daily](https://github.com/x-tools-author/x-tools/actions/workflows/build-daily.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-daily.yml)
+# xTools ![CodeSize](https://img.shields.io/github/languages/code-size/x-tools-author/x-tools) ![RepoSize](https://img.shields.io/github/repo-size/x-tools-author/x-tools) [![Static Badge](https://img.shields.io/badge/sponsor-Microsoft_Sotre-blue)](https://apps.microsoft.com/detail/9p29h1ndnkbb) [![build-daily](https://github.com/x-tools-author/x-tools/actions/workflows/build-daily.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-daily.yml)
 
 [![build-windows](https://github.com/x-tools-author/x-tools/actions/workflows/build-windows.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-windows.yml)
 [![build-ubuntu](https://github.com/x-tools-author/x-tools/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/x-tools-author/x-tools/actions/workflows/build-ubuntu.yml)
@@ -57,4 +57,3 @@ yay -Syu x-tools
 ![charts.gif](res/images/charts.gif)
 
 ![search.gif](res/images/search.png)
-
