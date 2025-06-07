@@ -6,11 +6,11 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "SvgFileDataModel.h"
+#include "svgfiledatamodel.h"
 
 #include <QDir>
 
-#include "SvgScanner.h"
+#include "svgscanner.h"
 
 SvgFileDataModel::SvgFileDataModel(int column, QObject *parent)
     : QAbstractTableModel{parent}

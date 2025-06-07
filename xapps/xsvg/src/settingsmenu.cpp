@@ -6,10 +6,10 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "SettingsMenu.h"
-#include "ui_SettingsMenu.h"
+#include "settingsmenu.h"
+#include "ui_settingsmenu.h"
 
-#include "Common/xTools.h"
+#include "common/xtools.h"
 
 SettingsMenu::SettingsMenu(QWidget *parent)
     : QWidget{parent}

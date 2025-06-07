@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "MainWindow.h"
-#include "ui_MainWindow.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 #include <QClipboard>
 #include <QColorDialog>
@@ -25,11 +25,10 @@
 #include <QVBoxLayout>
 #include <QWidgetAction>
 
-#include "Common/xTools.h"
-#include "SettingsMenu.h"
-#include "SvgFileDataModel.h"
-#include "SvgItemDelegate.h"
-#include "xLicense/Source/LicenseManager.h"
+#include "common/xtools.h"
+#include "settingsmenu.h"
+#include "svgfiledatamodel.h"
+#include "svgitemdelegate.h"
 
 namespace xSvg {
 

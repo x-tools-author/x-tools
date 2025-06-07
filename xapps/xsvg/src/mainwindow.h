@@ -10,9 +10,8 @@
 
 #include <atomic>
 
+#include <QMainWindow>
 #include <QModelIndexList>
-
-#include "xApp/Source/MainWindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,7 +22,7 @@ class SvgFileDataModel;
 
 namespace xSvg {
 
-class MainWindow : public xApp::MainWindow
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
@@ -84,7 +83,7 @@ private:
     void saveAs();
     void copyFullPath();
     void copyFileName();
-    void updateView();    
+    void updateView();
 };
 
 } // namespace xSvg
