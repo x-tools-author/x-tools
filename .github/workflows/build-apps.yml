@@ -14,8 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [6.8.3, 6.9.1]
-        arch: [win64_msvc2022_64, win64_mingw]
+        version: [6.8.3]
+        arch: [win64_msvc2022_64]
         app: [xAssistant, xDebug, xCode, xOscilloscope, xPing]
     steps:
       - name: Pull code
