@@ -10,10 +10,21 @@
 
 #include <QMAinWindow>
 
+namespace Ui {
+class xCode;
+}
+
 class xCode : public QMainWindow
 {
     Q_OBJECT
 public:
     explicit xCode(QWidget *parent = nullptr);
     ~xCode() override;
+
+private:
+    Ui::xCode *ui;
+
+private:
+    void onExportButtonClicked();
+    void onRefreshButtonClicked();
 };
