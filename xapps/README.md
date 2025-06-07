@@ -1,6 +1,6 @@
 # xApps
 
-> Qt 6.8 is supported only.
+> Qt 6.8 is supported only. Other versions maybe work, but not tested.
 
 ## xApps List
 
