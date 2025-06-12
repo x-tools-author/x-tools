@@ -179,3 +179,31 @@ function(x_deploy_qt target)
     x_deploy_qt_for_mac(${target})
   endif()
 endfunction()
+
+# --------------------------------------------------------------------------------------------------
+# 3rd party libraries(Using cmake for project management)
+function(x_setup_3rd_library zip_url package_name)
+  # Download the package if it does not exist
+  if(NOT EXISTS ${CMAKE_SOURCE_DIR}/cmake/${package_name}.zip)
+    message(STATUS "Downloading ${package_name} from ${zip_url}")
+    file(
+      DOWNLOAD ${zip_url} ${CMAKE_SOURCE_DIR}/3rd/${package_name}.zip
+      SHOW_PROGRESS
+      STATUS status)
+    if(NOT status EQUAL 0)
+      message(FATAL_ERROR "Failed to download ${package_name} from ${package_url}")
+    endif()
+  endif()
+
+  # Extract the package
+  if(NOT EXISTS ${CMAKE_SOURCE_DIR}/3rd/${package_name})
+    message(STATUS "Extracting ${package_name}")
+    execute_process(
+      COMMAND ${CMAKE_COMMAND} -E tar "xzf" ${CMAKE_SOURCE_DIR}/3rd/${package_name}.zip
+      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/3rd
+      RESULT_VARIABLE result)
+    if(result)
+      message(FATAL_ERROR "Failed to extract ${package_name}")
+    endif()
+  endif()
+endfunction()
