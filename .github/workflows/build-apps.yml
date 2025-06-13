@@ -15,8 +15,8 @@ jobs:
       fail-fast: false
       matrix:
         version: [6.8.3]
-        arch: [win64_msvc2022_64]
-        app: [xAssistant, xCode, xOscilloscope, xPing]
+        arch: [win64_mingw, win64_msvc2022_64]
+        app: [xAssistant, xCode, xOscilloscope, xPing, xHash]
     steps:
       - name: Pull code
         uses: actions/checkout@v4
@@ -31,7 +31,7 @@ jobs:
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: build-msvc
         shell: cmd
-        if: matrix.arch == 'win64_msvc2019_64' || matrix.arch == 'win64_msvc2022_64'
+        if: matrix.arch == 'win64_msvc2022_64'
         run: |
           mkdir build
           cd build
