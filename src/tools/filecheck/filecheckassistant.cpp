@@ -136,6 +136,7 @@ void FileCheckAssistant::changeRemainTime(QString remainTime)
 
 void FileCheckAssistant::finished()
 {
+    QApplication::beep();
     onStartStopPushButtonClicked();
 }
 
