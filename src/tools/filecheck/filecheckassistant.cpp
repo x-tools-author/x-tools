@@ -116,7 +116,7 @@ void FileCheckAssistant::outputMessage(QString msg, bool isErrMsg)
         QApplication::beep();
         msg = QString("<font color=red>%1</font>").arg(msg);
     } else {
-        msg = QString("<font color=blue>%1</font>").arg(msg);
+        msg = QString("<font color=green>%1</font>").arg(msg);
     }
 
     m_messageLabel->setText(msg);
@@ -176,6 +176,7 @@ void FileCheckAssistant::onStartStopPushButtonClicked()
         m_calculator->start();
         m_startStopPushButton->setText(tr("StopCalculating"));
         setUiEnable(false);
+        ui->remainTimeLabel->clear();
     }
 }
 

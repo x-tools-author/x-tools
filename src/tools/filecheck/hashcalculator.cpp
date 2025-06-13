@@ -60,7 +60,7 @@ void HashCalculator::run()
         qint64 secondsTemp = 0;
 
         // The number of bytes read at a time
-        int dataBlock = 1024 * 1024;
+        const int dataBlock = 100 * 1024 * 1024;
 
         while (1) {
             startTime = QDateTime::currentDateTime().toMSecsSinceEpoch();

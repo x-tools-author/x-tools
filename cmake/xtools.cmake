@@ -76,7 +76,9 @@ function(x_generate_translations target)
     endif()
     # cmake-format: on
 
-    set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR})
+    # set(out_dir "$<TARGET_FILE_DIR:${target}>/translations")
+    set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations")
+    set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${out_dir})
     if(NOT QT_VERSION VERSION_LESS "6.7.0")
       qt_add_lrelease(TS_FILES ${APP_TS_FILES} LRELEASE_TARGET ${target}_lrelease NO_GLOBAL_TARGET)
     else()
@@ -91,9 +93,9 @@ function(x_generate_translations target)
 
   add_custom_target(
     ${target}_lupgrade
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_en.qm
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${out_dir}/${target}_en.qm
             ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_en.qm
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/${target}_zh_CN.qm
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${out_dir}/${target}_zh_CN.qm
             ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_zh_CN.qm
     DEPENDS ${target}_lrelease
     COMMENT "Generate translations for ${target}...")
@@ -123,7 +125,7 @@ function(x_deploy_qt_for_windows target)
       VERBATIM)
   endif()
 
-  if(MSVC AND ("${CMAKE_BUILD_TYPE}" STREQUAL "Release"))
+  if(MSVC AND NOT ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug"))
     cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
     # add '-' to ignore error if the file does not exist
     add_custom_command(

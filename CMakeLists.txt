@@ -117,6 +117,7 @@ set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/${QT_VERSION}/${CMAKE_CXX
 set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
 message(STATUS "[xTools]Deploy libraries directory: ${X_DEPLOY_LIBS_DIR}")
 message(STATUS "------------------------------------------------------------")
+set(X_BIN ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
 
 # --------------------------------------------------------------------------------------------------
 # 3rd module
@@ -256,6 +257,7 @@ if(NOT QT_VERSION VERSION_LESS "6.8.0")
   set(X_APPS "xTools")
   list(APPEND X_APPS "xSvg")
   list(APPEND X_APPS "xCode")
+  list(APPEND X_APPS "xHash")
   list(APPEND X_APPS "xPing")
   list(APPEND X_APPS "xDebug")
   list(APPEND X_APPS "xAssistant")
@@ -264,6 +266,7 @@ if(NOT QT_VERSION VERSION_LESS "6.8.0")
   set(X_APP "xTools" CACHE STRING "Select a x-app to build")
   set_property(CACHE X_APP PROPERTY STRINGS ${X_APPS})
   if(EXISTS ${CMAKE_SOURCE_DIR}/xapps/${X_APP})
+    include_directories(${CMAKE_SOURCE_DIR}/xapps)
     string(TOLOWER ${X_APP} LOWER_X_APP)
     include(${CMAKE_SOURCE_DIR}/xapps/${LOWER_X_APP}/${X_APP}.cmake)
     return()
@@ -283,7 +286,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # xTools application
-set(bin ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/xTools)
+set(bin ${X_BIN}/xTools)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
 
 # Apple platforms settings
