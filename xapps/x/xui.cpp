@@ -88,9 +88,11 @@ void xUi::initMenuBarOptionLanguage()
     languageFlagNameMap.insert("sv", "Svenska");         // 瑞典语
 
     SettingKeys keys;
-    QString currentLanguage = xAPP->value(keys.language, "en").toString();
+    QString defaultLanguage = QLocale::system().name();
+    QString currentLanguage = xAPP->value(keys.language, defaultLanguage).toString();
     static QActionGroup *actionGroup = new QActionGroup(this);
-    for (const QString &lang : languageFlagNameMap.keys()) {
+    QStringList nameKeys = languageFlagNameMap.keys();
+    for (const QString &lang : std::as_const(nameKeys)) {
         QString name = languageFlagNameMap.value(lang);
         QAction *action = menu->addAction(name);
         action->setCheckable(true);
