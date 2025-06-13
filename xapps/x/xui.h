@@ -41,6 +41,7 @@ private:
     void initMenuBarViewTheme();
     void initializeMenuBarViewStaysOnTop();
     void initMenuBarHelp();
+    void initMenuBarHelpGrab();
 
     void showAboutInfo();
 };

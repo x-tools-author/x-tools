@@ -9,12 +9,15 @@
 #include "xui.h"
 
 #include <QActionGroup>
+#include <QClipboard>
 #include <QDateTime>
 #include <QDesktopServices>
+#include <QFileDialog>
 #include <QLocale>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QScreen>
+#include <QStandardPaths>
 #include <QStyleHints>
 #include <QUrl>
 
@@ -223,6 +226,9 @@ void xUi::initMenuBarHelp()
 
     QAction *aboutAction = m_helpMenu->addAction(tr("About") + " " + qApp->applicationName());
     connect(aboutAction, &QAction::triggered, this, &xUi::showAboutInfo);
+
+    m_helpMenu->addSeparator();
+    initMenuBarHelpGrab();
     m_helpMenu->addSeparator();
 
     struct Item
@@ -230,14 +236,40 @@ void xUi::initMenuBarHelp()
         QString name;
         QString url;
     };
-    QList<Item> items = {{tr("Get Source from Gitee"), "https://gitee.com/x-tools-author/x-tools"},
-                         {tr("Get Source from Github"), "https://github.com/x-tools-author/x-tools"},
-                         {tr("Visit Author Home Page"), "https://github.com/x-tools-author"}};
+    QList<Item> items = {
+        {tr("Get Source from Gitee"), "https://gitee.com/x-tools-author/x-tools"},
+        {tr("Get Source from Github"), "https://github.com/x-tools-author/x-tools"},
+        {tr("Visit Author Home Page"), "https://github.com/x-tools-author"},
+        {tr("Visit App Store"), "https://apps.microsoft.com/search/publisher?name=x-tools-author"},
+    };
     for (const Item &item : items) {
         QAction *action = m_helpMenu->addAction(item.name);
         QString url = item.url;
         connect(action, &QAction::triggered, this, [=]() { QDesktopServices::openUrl(QUrl(url)); });
     }
+}
+
+void xUi::initMenuBarHelpGrab()
+{
+    m_helpMenu->addAction(tr("Grab and Save"), this, [=]() {
+        QString desktop = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+        QString fileName
+            = QFileDialog::getSaveFileName(this,
+                                           tr("Save Grabbed Image"),
+                                           desktop + "/" + xAPP->applicationName() + ".png",
+                                           QString("PNG (*.png );; JPEG (*.jpg);; BMP (*.bmp)"));
+        if (fileName.isEmpty()) {
+            return; // User canceled the save dialog
+        }
+
+        QPixmap pix = grab();
+        pix.save(fileName);
+    });
+
+    m_helpMenu->addAction(tr("Grab and Copy"), this, [=]() {
+        QPixmap pix = grab();
+        QApplication::clipboard()->setPixmap(pix);
+    });
 }
 
 void xUi::showAboutInfo()

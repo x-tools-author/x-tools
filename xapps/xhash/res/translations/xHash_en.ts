@@ -35,7 +35,7 @@
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
-        <location filename="../../../../src/tools/filecheck/filecheckassistant.cpp" line="171"/>
+        <location filename="../../../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -55,7 +55,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../../src/tools/filecheck/filecheckassistant.cpp" line="177"/>
+        <location filename="../../../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
         <source>StopCalculating</source>
         <translation type="unfinished"></translation>
     </message>
@@ -280,138 +280,158 @@
 <context>
     <name>xUi</name>
     <message>
-        <location filename="../../../x/xui.cpp" line="42"/>
+        <location filename="../../../x/xui.cpp" line="45"/>
         <source>Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="43"/>
+        <location filename="../../../x/xui.cpp" line="46"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="44"/>
+        <location filename="../../../x/xui.cpp" line="47"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="60"/>
+        <location filename="../../../x/xui.cpp" line="63"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="111"/>
+        <location filename="../../../x/xui.cpp" line="114"/>
         <source>Open Settings Directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="116"/>
+        <location filename="../../../x/xui.cpp" line="119"/>
         <source>Clear Settings File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="138"/>
+        <location filename="../../../x/xui.cpp" line="141"/>
         <source>Round up for .5 and above</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="140"/>
+        <location filename="../../../x/xui.cpp" line="143"/>
         <source>Always round up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="142"/>
+        <location filename="../../../x/xui.cpp" line="145"/>
         <source>Always round down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="144"/>
+        <location filename="../../../x/xui.cpp" line="147"/>
         <source>Round up for .75 and above</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="146"/>
+        <location filename="../../../x/xui.cpp" line="149"/>
         <source>Don&apos;t round</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="151"/>
+        <location filename="../../../x/xui.cpp" line="154"/>
         <source>High DPI Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="177"/>
+        <location filename="../../../x/xui.cpp" line="180"/>
         <source>Dark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="178"/>
+        <location filename="../../../x/xui.cpp" line="181"/>
         <source>Light</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="179"/>
+        <location filename="../../../x/xui.cpp" line="182"/>
         <source>System Default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="184"/>
+        <location filename="../../../x/xui.cpp" line="187"/>
         <source>Application Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="206"/>
+        <location filename="../../../x/xui.cpp" line="209"/>
         <source>Stays on Top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="221"/>
+        <location filename="../../../x/xui.cpp" line="224"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="224"/>
-        <location filename="../../../x/xui.cpp" line="271"/>
+        <location filename="../../../x/xui.cpp" line="227"/>
+        <location filename="../../../x/xui.cpp" line="303"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="233"/>
+        <location filename="../../../x/xui.cpp" line="240"/>
         <source>Get Source from Gitee</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="234"/>
+        <location filename="../../../x/xui.cpp" line="241"/>
         <source>Get Source from Github</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="235"/>
+        <location filename="../../../x/xui.cpp" line="242"/>
         <source>Visit Author Home Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="251"/>
-        <source>Commit time</source>
+        <location filename="../../../x/xui.cpp" line="243"/>
+        <source>Visit App Store</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../x/xui.cpp" line="254"/>
+        <source>Grab and Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="258"/>
-        <source>Commit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../x/xui.cpp" line="268"/>
-        <source>Build Date</source>
+        <source>Save Grabbed Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="269"/>
+        <source>Grab and Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../x/xui.cpp" line="283"/>
+        <source>Commit time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../x/xui.cpp" line="290"/>
+        <source>Commit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../x/xui.cpp" line="300"/>
+        <source>Build Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../x/xui.cpp" line="301"/>
         <source>Copyright</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="270"/>
+        <location filename="../../../x/xui.cpp" line="302"/>
         <source>All rights reserved.</source>
         <translation type="unfinished"></translation>
     </message>
