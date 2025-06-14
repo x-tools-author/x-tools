@@ -37,6 +37,7 @@ public:
     QString settingsPath();
     QVariant value(QAnyStringView key, const QVariant &defaultValue = QVariant());
     void setValue(QAnyStringView key, const QVariant &value);
+    QString appLanguageFlag();
 
     QSplashScreen *splashScreen();
     void showSplashScreenMessage(const QString &msg);

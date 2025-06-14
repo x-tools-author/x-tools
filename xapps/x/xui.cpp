@@ -62,14 +62,12 @@ void xUi::initMenuBarOptionLanguage()
 {
     QMenu *menu = m_optionMenu->addMenu(tr("Language"));
     QMap<QString, QString> languageFlagNameMap;
-    languageFlagNameMap.insert("zh_CN", "简体中文");     // 简体中文
-    languageFlagNameMap.insert("en", "English");         // 英语
-    languageFlagNameMap.insert("zh_TW", "繁體中文");     // 繁體中文
     languageFlagNameMap.insert("ar", "العربية");         // 阿拉伯语
     languageFlagNameMap.insert("cs", "Čeština");         // 捷克语
     languageFlagNameMap.insert("da", "Dansk");           // 丹麦语
     languageFlagNameMap.insert("de", "Deutsch");         // 德语
     languageFlagNameMap.insert("es", "Español");         // 西班牙语
+    languageFlagNameMap.insert("en", "English");         // 英语
     languageFlagNameMap.insert("fa", "فارسی");           // 波斯语
     languageFlagNameMap.insert("fi", "Suomi");           // 芬兰语
     languageFlagNameMap.insert("fr", "Français");        // 法语
@@ -86,10 +84,10 @@ void xUi::initMenuBarOptionLanguage()
     languageFlagNameMap.insert("sk", "Slovenčina");      // 斯洛伐克语
     languageFlagNameMap.insert("sl", "Slovenščina");     // 斯洛文尼亚语
     languageFlagNameMap.insert("sv", "Svenska");         // 瑞典语
+    languageFlagNameMap.insert("zh_CN", "简体中文");     // 简体中文
+    languageFlagNameMap.insert("zh_TW", "繁體中文");     // 繁體中文
 
-    SettingKeys keys;
-    QString defaultLanguage = QLocale::system().name();
-    QString currentLanguage = xAPP->value(keys.language, defaultLanguage).toString();
+    QString appLanguage = xAPP->appLanguageFlag();
     static QActionGroup *actionGroup = new QActionGroup(this);
     QStringList nameKeys = languageFlagNameMap.keys();
     for (const QString &lang : std::as_const(nameKeys)) {
@@ -98,7 +96,7 @@ void xUi::initMenuBarOptionLanguage()
         action->setCheckable(true);
         action->setData(lang);
         actionGroup->addAction(action);
-        if (lang == currentLanguage) {
+        if (lang == appLanguage) {
             action->setChecked(true);
         }
 

@@ -60,6 +60,20 @@ void xApp::setValue(QAnyStringView key, const QVariant &value)
     settings->setValue(key, value);
 }
 
+QString xApp::appLanguageFlag()
+{
+    QSettings *settings = xAPP->settings();
+    QString defaultLanguage = QLocale::system().name();
+    QString language = settings->value(SettingKeys().language, defaultLanguage).toString();
+    QString appPath = QApplication::applicationDirPath();
+    QString qmFile = QString("%1/translations/%2_%3.qm").arg(appPath, applicationName(), language);
+    if (!QFile::exists(qmFile)) {
+        return "en";
+    }
+
+    return language;
+}
+
 QSplashScreen *xApp::splashScreen()
 {
     if (!qApp) {
@@ -156,10 +170,7 @@ void setupLanguage(const QString &qmFile)
 
 void xApp::setupLanguage()
 {
-    SettingKeys keys;
-    QSettings *settings = xAPP->settings();
-    QString defaultLanguage = QLocale::system().name();
-    QString language = settings->value(keys.language, defaultLanguage).toString();
+    QString language = appLanguageFlag();
 
     QString appPath = QApplication::applicationDirPath();
     QString qtQmFile = QString("%1/translations/qt_%2.qm").arg(appPath, language);
