@@ -267,12 +267,12 @@
 <context>
     <name>xApp</name>
     <message>
-        <location filename="../../../x/xapp.cpp" line="119"/>
+        <location filename="../../../x/xapp.cpp" line="133"/>
         <source>Need to Reboot</source>
         <translation>需要重启软件</translation>
     </message>
     <message>
-        <location filename="../../../x/xapp.cpp" line="120"/>
+        <location filename="../../../x/xapp.cpp" line="134"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>该操作需要重启软件以生效，立即重启软件？</translation>
     </message>
@@ -280,158 +280,163 @@
 <context>
     <name>xUi</name>
     <message>
-        <location filename="../../../x/xui.cpp" line="45"/>
+        <location filename="../../../x/xui.cpp" line="59"/>
         <source>Option</source>
         <translation>选项</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="46"/>
+        <location filename="../../../x/xui.cpp" line="60"/>
         <source>View</source>
         <translation>视图</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="47"/>
+        <location filename="../../../x/xui.cpp" line="61"/>
         <source>Help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="63"/>
+        <location filename="../../../x/xui.cpp" line="77"/>
         <source>Language</source>
         <translation>应用语言</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="116"/>
+        <location filename="../../../x/xui.cpp" line="128"/>
         <source>Open Settings Directory</source>
         <translation>配置目录</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="121"/>
+        <location filename="../../../x/xui.cpp" line="133"/>
         <source>Clear Settings File</source>
         <translation>清空配置</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="143"/>
+        <location filename="../../../x/xui.cpp" line="155"/>
         <source>Round up for .5 and above</source>
         <translation>缩放至x.5倍</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="145"/>
+        <location filename="../../../x/xui.cpp" line="159"/>
         <source>Always round up</source>
         <translation>总是放大</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="147"/>
+        <location filename="../../../x/xui.cpp" line="161"/>
         <source>Always round down</source>
         <translation>总是缩小</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="149"/>
+        <location filename="../../../x/xui.cpp" line="157"/>
         <source>Round up for .75 and above</source>
         <translation>缩放至x.75倍</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="151"/>
+        <location filename="../../../x/xui.cpp" line="163"/>
         <source>Don&apos;t round</source>
         <translation>不缩放</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="156"/>
+        <location filename="../../../x/xui.cpp" line="168"/>
         <source>High DPI Settings</source>
         <translation>适配策略</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="182"/>
+        <location filename="../../../x/xui.cpp" line="194"/>
         <source>Dark</source>
         <translation>暗黑</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="183"/>
+        <location filename="../../../x/xui.cpp" line="195"/>
         <source>Light</source>
         <translation>明亮</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="184"/>
+        <location filename="../../../x/xui.cpp" line="196"/>
         <source>System Default</source>
         <translation>默认</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="189"/>
+        <location filename="../../../x/xui.cpp" line="201"/>
         <source>Application Theme</source>
         <translation>应用主题</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="211"/>
+        <location filename="../../../x/xui.cpp" line="226"/>
         <source>Stays on Top</source>
         <translation>窗口置顶</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="226"/>
+        <location filename="../../../x/xui.cpp" line="241"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="229"/>
-        <location filename="../../../x/xui.cpp" line="305"/>
+        <location filename="../../../x/xui.cpp" line="244"/>
+        <location filename="../../../x/xui.cpp" line="333"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="242"/>
+        <location filename="../../../x/xui.cpp" line="257"/>
         <source>Get Source from Gitee</source>
         <translation>从Gitee获取源码</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="243"/>
+        <location filename="../../../x/xui.cpp" line="258"/>
         <source>Get Source from Github</source>
         <translation>从Github获取源码</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="244"/>
+        <location filename="../../../x/xui.cpp" line="259"/>
         <source>Visit Author Home Page</source>
         <translation>访问作者主页</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="245"/>
+        <location filename="../../../x/xui.cpp" line="260"/>
         <source>Visit App Store</source>
         <translation>访问应用商店</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="256"/>
+        <location filename="../../../x/xui.cpp" line="270"/>
+        <source>User Feedback</source>
+        <translation>用户反馈</translation>
+    </message>
+    <message>
+        <location filename="../../../x/xui.cpp" line="284"/>
         <source>Grab and Save</source>
         <translation>截取窗口并保存</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="260"/>
+        <location filename="../../../x/xui.cpp" line="288"/>
         <source>Save Grabbed Image</source>
         <translation>保存截图图片</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="271"/>
+        <location filename="../../../x/xui.cpp" line="299"/>
         <source>Grab and Copy</source>
         <translation>截取窗口并复制</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="285"/>
+        <location filename="../../../x/xui.cpp" line="313"/>
         <source>Commit time</source>
         <translation>提交时间</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="292"/>
+        <location filename="../../../x/xui.cpp" line="320"/>
         <source>Commit</source>
         <translation>提交记录</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="302"/>
+        <location filename="../../../x/xui.cpp" line="330"/>
         <source>Build Date</source>
         <translation>构建日期</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="303"/>
+        <location filename="../../../x/xui.cpp" line="331"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="304"/>
+        <location filename="../../../x/xui.cpp" line="332"/>
         <source>All rights reserved.</source>
         <translation>保留所有版权。</translation>
     </message>
