@@ -260,6 +260,7 @@ if(NOT QT_VERSION VERSION_LESS "6.8.0")
   list(APPEND X_APPS "xHash")
   list(APPEND X_APPS "xPing")
   list(APPEND X_APPS "xDebug")
+  list(APPEND X_APPS "xLinguist")
   list(APPEND X_APPS "xAssistant")
   list(APPEND X_APPS "xOscilloscope")
   # cmake-format: off
