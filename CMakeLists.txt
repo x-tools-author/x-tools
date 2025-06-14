@@ -260,9 +260,13 @@ if(NOT QT_VERSION VERSION_LESS "6.8.0")
   list(APPEND X_APPS "xHash")
   list(APPEND X_APPS "xPing")
   list(APPEND X_APPS "xDebug")
-  list(APPEND X_APPS "xLinguist")
   list(APPEND X_APPS "xAssistant")
   list(APPEND X_APPS "xOscilloscope")
+
+  if(EXISTS ${CMAKE_SOURCE_DIR}/xapps/xprivate)
+
+  endif()
+
   # cmake-format: off
   set(X_APP "xTools" CACHE STRING "Select a x-app to build")
   set_property(CACHE X_APP PROPERTY STRINGS ${X_APPS})
