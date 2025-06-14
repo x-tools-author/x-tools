@@ -21,12 +21,26 @@
 #include <QStyleHints>
 #include <QUrl>
 
+#if defined(_MSC_VER)
+#include <dwmapi.h>
+
+#include <QColor>
+#include <QSysInfo>
+#include <QWindow>
+#endif
+
+#ifdef Q_OS_MACOS
+#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#endif
+
 #include "common/xtools.h"
 #include "xapp.h"
 
 xUi::xUi(QWidget *parent)
     : QMainWindow(parent)
 {
+    winId(); // Ensure the window is created before moving it to the center
     initMenuBar();
 }
 
@@ -139,12 +153,12 @@ void xUi::initMenuBarViewHdpi()
     };
     QList<item> items = {{static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::Round),
                           tr("Round up for .5 and above")},
+                         {static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor),
+                          tr("Round up for .75 and above")},
                          {static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::Ceil),
                           tr("Always round up")},
                          {static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::Floor),
                           tr("Always round down")},
-                         {static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor),
-                          tr("Round up for .75 and above")},
                          {static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough),
                           tr("Don't round")}};
 
@@ -200,8 +214,11 @@ void xUi::initMenuBarViewTheme()
             auto theme = static_cast<Qt::ColorScheme>(action->data().toInt());
             qApp->styleHints()->setColorScheme(theme);
             xAPP->setValue(xApp::SettingKeys().theme, static_cast<int>(theme));
+            updateWindowTitleArea(this);
         });
     }
+
+    updateWindowTitleArea(this);
 }
 
 void xUi::initializeMenuBarViewStaysOnTop()
@@ -301,4 +318,47 @@ void xUi::showAboutInfo()
     info += tr("Copyright") + QString(" 2025-%1 x-tools-author(x-tools@outlook.com).").arg(year);
     info += tr("All rights reserved.");
     QMessageBox::about(this, tr("About") + QString(" ") + xAPP->applicationName(), info);
+}
+
+void xUi::updateWindowTitleArea(QWidget *widget)
+{
+#if defined(_MSC_VER)
+    if (QSysInfo::productVersion().contains("11")) {
+        // const DWORD attribute = 35;
+        // DWMWINDOWATTRIBUTE::DWMWA_CAPTION_COLOR
+        QWindow *window = widget->windowHandle();
+        if (window) {
+            QColor c = xAPP->palette().color(QPalette::Window);
+            COLORREF colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
+            DwmSetWindowAttribute((HWND) window->winId(),
+                                  DWMWA_CAPTION_COLOR,
+                                  &colorref,
+                                  sizeof(colorref));
+#if 0
+            c = currentTheme.primaryColor;
+            colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
+            DwmSetWindowAttribute((HWND) window->winId(),
+                                  DWMWA_BORDER_COLOR,
+                                  &colorref,
+                                  sizeof(colorref));
+#endif
+        }
+    }
+#endif
+
+#if defined(Q_OS_LINUX)
+    // Nothing to do yet...
+#endif
+
+#if defined(Q_OS_MACOS)
+    NSView *view = reinterpret_cast<NSView *>(winId());
+    NSWindow *w = [view window];
+
+    [w setStyleMask:([w styleMask] | NSWindowStyleMaskFullSizeContentView)];
+    [w setTitlebarAppearsTransparent:YES];
+    [w setTitleVisibility:NSWindowTitleHidden];
+
+    NSButton *zoomButton = [w standardWindowButton:NSWindowZoomButton];
+    [zoomButton setEnabled:YES];
+#endif
 }
