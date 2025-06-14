@@ -264,7 +264,22 @@ if(NOT QT_VERSION VERSION_LESS "6.8.0")
   list(APPEND X_APPS "xOscilloscope")
 
   if(EXISTS ${CMAKE_SOURCE_DIR}/xapps/xprivate)
-
+    # Get all directories in xapps/xprivate
+    file(GLOB PRIVATE_APPS "${CMAKE_SOURCE_DIR}/xapps/xprivate/*")
+    foreach(private_app ${PRIVATE_APPS})
+      if(IS_DIRECTORY ${private_app})
+        get_filename_component(app_name ${private_app} NAME)
+        # * The second char of the app name should be uppercase
+        # * if app_name == xlinguist, the char2 is 'l', it will be converted to 'L'
+        # * if app_name == xlinguist, the rest_of_name is 'inguist'
+        # * if app_name == xlinguist, the app_name will be 'xLinguist'(x + L + inguist)
+        string(SUBSTRING ${app_name} 1 1 char2)
+        string(TOUPPER ${char2} char2)
+        string(SUBSTRING "${app_name}" 2 -1 rest_of_name)
+        string(CONCAT app_name "x${char2}${rest_of_name}")
+        list(APPEND X_APPS "${app_name}")
+      endif()
+    endforeach()
   endif()
 
   # cmake-format: off
@@ -274,6 +289,10 @@ if(NOT QT_VERSION VERSION_LESS "6.8.0")
   if(EXISTS ${CMAKE_SOURCE_DIR}/xapps/${LOWER_X_APP})
     include_directories(${CMAKE_SOURCE_DIR}/xapps)
     include(${CMAKE_SOURCE_DIR}/xapps/${LOWER_X_APP}/${X_APP}.cmake)
+    return()
+  elseif(EXISTS ${CMAKE_SOURCE_DIR}/xapps/xprivate/${LOWER_X_APP})
+    include_directories(${CMAKE_SOURCE_DIR}/xapps)
+    include(${CMAKE_SOURCE_DIR}/xapps/xprivate/${LOWER_X_APP}/${X_APP}.cmake)
     return()
   endif()
   # cmake-format: on
