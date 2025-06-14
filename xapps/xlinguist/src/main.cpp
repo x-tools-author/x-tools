@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
 
     MainWindow window;
     window.show();
-    window.moveToCenter();
 
     return app.exec();
 }

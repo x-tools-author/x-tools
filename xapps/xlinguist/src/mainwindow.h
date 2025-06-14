@@ -16,4 +16,16 @@ class MainWindow : public xUi
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
+
+    void initFileMenu();
+    void initFileMenuRecentFiles();
+    void initToolBar();
+
+private:
+    QMenu *m_fileMenu{nullptr};
+
+private:
+    void onOpen();
+    void onSave();
+    void onSaveAs();
 };
