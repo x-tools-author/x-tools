@@ -6,5 +6,5 @@ xHash is a simple and efficient hash calculator for files, supporting multiple h
 
 |Dark|Light|
 |---|---|
-|![xHash](docs/en-b.png) | ![xHash](docs/en-l.png)|
 |![xHash](docs/zh_CN-b.png)|![xHash](docs/zh_CN-l.png)|
+|![xHash](docs/en-b.png) | ![xHash](docs/en-l.png)|
