@@ -259,11 +259,24 @@ void xUi::initMenuBarHelp()
         {tr("Visit Author Home Page"), "https://github.com/x-tools-author"},
         {tr("Visit App Store"), "https://apps.microsoft.com/search/publisher?name=x-tools-author"},
     };
+
     for (const Item &item : items) {
         QAction *action = m_helpMenu->addAction(item.name);
         QString url = item.url;
         connect(action, &QAction::triggered, this, [=]() { QDesktopServices::openUrl(QUrl(url)); });
     }
+
+    m_helpMenu->addSeparator();
+    const QString feedback = tr("User Feedback");
+    QString name = QLocale::system().name();
+    QString url = "https://github.com/x-tools-author/x-tools/issues";
+    if (name == "zh_CN" || name == "zh_TW") {
+        url = "https://gitee.com/x-tools-author/x-tools/issues";
+    }
+    QAction *feedbackAction = m_helpMenu->addAction(feedback);
+    connect(feedbackAction, &QAction::triggered, this, [=]() {
+        QDesktopServices::openUrl(QUrl(url));
+    });
 }
 
 void xUi::initMenuBarHelpGrab()
