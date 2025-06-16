@@ -231,3 +231,13 @@ function(x_setup_3rd_library zip_url package_name)
     endif()
   endif()
 endfunction()
+
+# --------------------------------------------------------------------------------------------------
+# Install 3rd party libraries
+function(x_install_3rd_library target_name dir_name)
+  add_custom_target(
+    ${target_name}-deploy
+    COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_DEPLOY_LIBS_DIR}/${dir_name}
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${dir_name}
+    COMMENT "Deploy 3rd libraries")
+endfunction()

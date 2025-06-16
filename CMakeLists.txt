@@ -9,13 +9,72 @@ cmake_minimum_required(VERSION 3.22)
 project(xTools VERSION 8.0 LANGUAGES C CXX)
 # cmake-format: on
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# --------------------------------------------------------------------------------------------------
+# Some options for 3rd party libraries
+# cmake-format: off
+set(WITH_GFLAGS OFF)
+set(BUILD_TESTING OFF)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Reset option" FORCE)
+set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
+# cmake-format: on
+
+# --------------------------------------------------------------------------------------------------
+# CMake module
+include(${CMAKE_SOURCE_DIR}/cmake/git.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
+x_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X")
+x_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X")
+x_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X")
+
+# --------------------------------------------------------------------------------------------------
+# Target platform
+message(STATUS "------------------------------------------------------------")
+message(STATUS "[xTools]CMAKE_VERSION: ${CMAKE_VERSION}")
+message(STATUS "[xTools]CMAKE_GENERATOR: ${CMAKE_GENERATOR}")
+message(STATUS "[xTools]CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+message(STATUS "[xTools]CMAKE_SYSTEM: ${CMAKE_SYSTEM}")
+message(STATUS "[xTools]CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "[xTools]CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
+message(STATUS "[xTools]CMAKE_HOST_SYSTEM: ${CMAKE_HOST_SYSTEM}")
+message(STATUS "[xTools]CMAKE_HOST_SYSTEM_NAME: ${CMAKE_HOST_SYSTEM_NAME}")
+message(STATUS "[xTools]CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
+message(STATUS "[xTools]CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "[xTools]CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
+
+set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
+if(QT_VERSION VERSION_LESS 6.0.0 AND WIN32)
+  set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
+endif()
+
+string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
+message(STATUS "[xTools]Asset name: ${X_ASSET_NAME}")
+
+set(libs_dir1 ${CMAKE_CURRENT_SOURCE_DIR}/libs)
+set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/${QT_VERSION}/${CMAKE_CXX_COMPILER_ID})
+set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
+message(STATUS "[xTools]Deploy libraries directory: ${X_DEPLOY_LIBS_DIR}")
+message(STATUS "------------------------------------------------------------")
+set(X_BIN ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
+
+# --------------------------------------------------------------------------------------------------
+# Qt or wxWidgets
+set(X_APP_FRAMEWORKS "Qt" "wxWidgets")
+set(X_APP_FRAMEWORK
+    "Qt"
+    CACHE STRING "Select a framework to build")
+set_property(CACHE X_APP_FRAMEWORK PROPERTY STRINGS ${X_APP_FRAMEWORKS})
+if(X_APP_FRAMEWORK STREQUAL "wxWidgets")
+  include(${CMAKE_SOURCE_DIR}/wxapps/wxApps.cmake)
+  return()
+endif()
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
 # --------------------------------------------------------------------------------------------------
 if(IOS)
@@ -27,15 +86,6 @@ if(APPLE AND NOT IOS)
     set(CMAKE_OSX_ARCHITECTURES "x86_64")
   endif()
 endif()
-
-# --------------------------------------------------------------------------------------------------
-# Some options for 3rd party libraries
-# cmake-format: off
-set(WITH_GFLAGS OFF)
-set(BUILD_TESTING OFF)
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "Reset option" FORCE)
-set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
-# cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
 # Qt module
@@ -80,44 +130,6 @@ endif()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 file(GLOB_RECURSE X_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
-
-# --------------------------------------------------------------------------------------------------
-# CMake module
-include(${CMAKE_SOURCE_DIR}/cmake/git.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
-x_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X")
-x_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X")
-x_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X")
-
-# --------------------------------------------------------------------------------------------------
-# Target platform
-message(STATUS "------------------------------------------------------------")
-message(STATUS "[xTools]CMAKE_VERSION: ${CMAKE_VERSION}")
-message(STATUS "[xTools]CMAKE_GENERATOR: ${CMAKE_GENERATOR}")
-message(STATUS "[xTools]CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
-message(STATUS "[xTools]CMAKE_SYSTEM: ${CMAKE_SYSTEM}")
-message(STATUS "[xTools]CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
-message(STATUS "[xTools]CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
-message(STATUS "[xTools]CMAKE_HOST_SYSTEM: ${CMAKE_HOST_SYSTEM}")
-message(STATUS "[xTools]CMAKE_HOST_SYSTEM_NAME: ${CMAKE_HOST_SYSTEM_NAME}")
-message(STATUS "[xTools]CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
-message(STATUS "[xTools]CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
-message(STATUS "[xTools]CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
-
-set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
-if(QT_VERSION VERSION_LESS 6.0.0 AND WIN32)
-  set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
-endif()
-
-string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
-message(STATUS "[xTools]Asset name: ${X_ASSET_NAME}")
-
-set(libs_dir1 ${CMAKE_CURRENT_SOURCE_DIR}/libs)
-set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/${QT_VERSION}/${CMAKE_CXX_COMPILER_ID})
-set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
-message(STATUS "[xTools]Deploy libraries directory: ${X_DEPLOY_LIBS_DIR}")
-message(STATUS "------------------------------------------------------------")
-set(X_BIN ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
 
 # --------------------------------------------------------------------------------------------------
 # 3rd module

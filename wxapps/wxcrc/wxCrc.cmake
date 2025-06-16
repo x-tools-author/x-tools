@@ -1,0 +1,12 @@
+﻿file(GLOB_RECURSE wx_src "${CMAKE_CURRENT_LIST_DIR}/src/*.*")
+list(APPEND wx_src "${CMAKE_CURRENT_LIST_DIR}/wxCrc.rc")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_BIN}/wxCrc)
+add_executable(wxCrc ${wx_src} ${wx_files})
+target_link_libraries(wxCrc PRIVATE ${wxWidgets_LIBRARIES} glog::glog)
+set_target_properties(wxCrc PROPERTIES MACOSX_BUNDLE TRUE WIN32_EXECUTABLE TRUE)
+
+if(WIN32)
+  target_link_libraries(wxCrc PRIVATE Dwmapi User32)
+elseif(LINUX)
+  target_link_libraries(wxCrc PRIVATE dl)
+endif()
