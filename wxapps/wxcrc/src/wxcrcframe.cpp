@@ -40,8 +40,10 @@ wxCrcFrame::wxCrcFrame()
 
     m_ui.upper = new wxCheckBox(this, wxID_ANY, _("Upper Case Result"));
     m_ui.calculate = new wxButton(this, wxID_ANY, _("Calculate"));
+    m_ui.clear = new wxButton(this, wxID_ANY, _("Clear"));
     leftSizer->Add(m_ui.upper, wxGBPosition(6, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 0);
-    leftSizer->Add(m_ui.calculate, wxGBPosition(7, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 0);
+    leftSizer->Add(m_ui.clear, wxGBPosition(7, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 0);
+    leftSizer->Add(m_ui.calculate, wxGBPosition(8, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 0);
 
     wxGridBagSizer* sizer = new wxGridBagSizer(4, 4);
     sizer->Add(leftSizer, wxGBPosition(0, 0), wxGBSpan(2, 1), wxEXPAND | wxALL, 4);

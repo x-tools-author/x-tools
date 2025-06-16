@@ -29,6 +29,7 @@ private:
         wxTextCtrl* data;
         wxTextCtrl* result;
         wxCheckBox* upper;
+        wxButton* clear;
         wxButton* calculate;
     } m_ui;
 };
