@@ -73,7 +73,7 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # wxApps
 file(GLOB_RECURSE wx_files "${CMAKE_CURRENT_LIST_DIR}/wx/*.*")
-set(X_APPS "xCrc")
+set(WX_APPS "")
 file(GLOB PRIVATE_APPS "${CMAKE_SOURCE_DIR}/wxapps/*")
 foreach(private_app ${PRIVATE_APPS})
   if(NOT IS_DIRECTORY ${private_app})
@@ -101,9 +101,10 @@ foreach(private_app ${PRIVATE_APPS})
 endforeach()
 
 # cmake-format: off
-set(X_APP "xTools" CACHE STRING "Select a x-app to build")
-set_property(CACHE X_APP PROPERTY STRINGS ${X_APPS})
-string(TOLOWER ${X_APP} LOWER_X_APP)
+set(WX_APP "wxCrc" CACHE STRING "Select a x-app to build")
+set_property(CACHE WX_APP PROPERTY STRINGS ${X_APPS})
+string(TOLOWER ${WX_APP} LOWER_X_APP)
 include_directories(${CMAKE_SOURCE_DIR}/wxapps)
-include(${CMAKE_SOURCE_DIR}/wxapps/${LOWER_X_APP}/${X_APP}.cmake)
+message(STATUS "[wxApps] WX_APP: ${WX_APP}")
+include(${CMAKE_SOURCE_DIR}/wxapps/${LOWER_X_APP}/${WX_APP}.cmake)
 # cmake-format: on
