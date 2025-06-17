@@ -42,6 +42,9 @@ xUi::xUi(QWidget *parent)
 {
     winId(); // Ensure the window is created before moving it to the center
     initMenuBar();
+#ifdef X_MAGIC
+    setWindowOpacity(0.3);
+#endif
 }
 
 xUi::~xUi() {}

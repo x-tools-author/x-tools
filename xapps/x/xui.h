@@ -31,6 +31,8 @@ protected:
     QMenu *m_viewMenu{nullptr};
     QMenu *m_helpMenu{nullptr};
 
+    QMenu *m_languageMenu{nullptr};
+
 private:
     void initMenuBar();
     void initMenuBarOption();
