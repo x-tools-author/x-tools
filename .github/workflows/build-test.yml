@@ -3,38 +3,34 @@ on:
   workflow_dispatch: # Enables manually
 
 jobs:
-  build-windows:
-    name: Build with Qt5(windows)
-    runs-on: windows-2022
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
       matrix:
-        version: [5.9.9, 5.12.12, 5.15.2]
-        include:
-          - version: 5.9.9
-            arch: win64_msvc2017_64
-          - version: 5.12.12
-            arch: win64_msvc2017_64
-          - version: 5.15.2
-            arch: win64_msvc2019_64
+        os: [ubuntu-22.04-arm]
+        version: [6.8.3, 6.9.1]
+        arch: [linux_gcc_64]
     steps:
-      - name: Pull code
+      - name: checkout
         uses: actions/checkout@v4
-      - name: Install Qt
+      - name: install qt
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
-          dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
-          target: desktop
+          target: 'desktop'
           arch: ${{ matrix.arch }}
-          modules: 'qtcharts'
-      - name: build-msvc
-        shell: cmd
+          dir: ${{ github.workspace }}
+          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+      - name: install-dependencies
         run: |
+          sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev  libudev-dev libusb-dev libusb-1.0-0-dev
+      - name: build for linux
+        run: |
+          git fetch --tags
+          cmake --version
           mkdir build
           cd build
-          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
-          cmake --build . --target all --config Release
-
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
+          cmake --build . --target xTools
