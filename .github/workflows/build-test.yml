@@ -20,7 +20,6 @@ jobs:
           aqtversion: '==3.1.*'
           version: ${{ matrix.version }}
           target: 'desktop'
-          host: linux_arm64
           arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
