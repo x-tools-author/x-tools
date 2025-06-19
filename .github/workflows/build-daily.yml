@@ -71,7 +71,7 @@ jobs:
     - name: Upload Release Asset for Windnows
       shell: cmd
       run: |
-        for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f --clobber"
+        for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
   release-for-windows7:
     runs-on: windows-2022
     needs: update-release
@@ -99,7 +99,7 @@ jobs:
     - name: Upload Release Asset for Windnows
       shell: cmd
       run: |
-        for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f --clobber"
+        for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
