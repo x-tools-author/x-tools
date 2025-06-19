@@ -45,47 +45,28 @@ message(STATUS "[xTools]CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESS
 message(STATUS "[xTools]CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "[xTools]CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 
-set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
-if(QT_VERSION VERSION_LESS 6.0.0 AND WIN32)
-  set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
-endif()
-
-string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
-message(STATUS "[xTools]Asset name: ${X_ASSET_NAME}")
-
-set(libs_dir1 ${CMAKE_CURRENT_SOURCE_DIR}/libs)
-set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/${QT_VERSION}/${CMAKE_CXX_COMPILER_ID})
-set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
-message(STATUS "[xTools]Deploy libraries directory: ${X_DEPLOY_LIBS_DIR}")
-message(STATUS "------------------------------------------------------------")
+# --------------------------------------------------------------------------------------------------
+# Global variables
 set(X_BIN ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
+option(X_MAGIC "The magic option..." OFF)
+if(X_MAGIC)
+  add_compile_definitions(X_MAGIC)
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt or wxWidgets
+# cmake-format: off
 set(X_APP_FRAMEWORKS "Qt" "wxWidgets")
-set(X_APP_FRAMEWORK
-    "Qt"
-    CACHE STRING "Select a framework to build")
+set(X_APP_FRAMEWORK "Qt" CACHE STRING "Select a framework to build")
 set_property(CACHE X_APP_FRAMEWORK PROPERTY STRINGS ${X_APP_FRAMEWORKS})
 if(X_APP_FRAMEWORK STREQUAL "wxWidgets")
+  set(libs_dir1 ${CMAKE_CURRENT_SOURCE_DIR}/libs)
+  set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/wxApps/${CMAKE_CXX_COMPILER_ID})
+  set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
   include(${CMAKE_SOURCE_DIR}/wxapps/wxApps.cmake)
   return()
 endif()
-
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
-# --------------------------------------------------------------------------------------------------
-if(IOS)
-  message(FATAL_ERROR "xTools does not support iOS platform yet...")
-endif()
-
-if(APPLE AND NOT IOS)
-  if(QT_VERSION VERSION_LESS "6.0.0")
-    set(CMAKE_OSX_ARCHITECTURES "x86_64")
-  endif()
-endif()
+# cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
 # Qt module
@@ -96,9 +77,38 @@ list(APPEND X_QT_COMPONENTS Widgets)
 list(APPEND X_QT_COMPONENTS Network)
 list(APPEND X_QT_COMPONENTS LinguistTools)
 
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
 # Qt6 is preferred, but Qt5 is also supported
 find_package(QT NAMES Qt5 Qt6 REQUIRED COMPONENTS ${X_QT_COMPONENTS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_QT_COMPONENTS})
+
+set(libs_dir1 ${CMAKE_CURRENT_SOURCE_DIR}/libs)
+set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/${QT_VERSION}/${CMAKE_CXX_COMPILER_ID})
+set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
+message(STATUS "[xTools]Deploy libraries directory: ${X_DEPLOY_LIBS_DIR}")
+message(STATUS "------------------------------------------------------------")
+
+set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
+if(${QT_VERSION} VERSION_LESS "6.0.0" AND WIN32)
+  set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
+endif()
+string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
+message(STATUS "[xTools]Asset name: ${X_ASSET_NAME}")
+
+# --------------------------------------------------------------------------------------------------
+# Do something for Apple platforms
+if(IOS)
+  message(FATAL_ERROR "xTools does not support iOS platform yet...")
+endif()
+# Do something for Qt5
+if(APPLE AND NOT IOS)
+  if(QT_VERSION VERSION_LESS "6.0.0")
+    set(CMAKE_OSX_ARCHITECTURES "x86_64")
+  endif()
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # Check Qt version
@@ -137,13 +147,6 @@ include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qxlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
-
-# --------------------------------------------------------------------------------------------------
-# The magic option...
-option(X_MAGIC "The magic option..." OFF)
-if(X_MAGIC)
-  add_compile_definitions(X_MAGIC)
-endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
