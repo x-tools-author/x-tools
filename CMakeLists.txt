@@ -147,6 +147,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qxlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/libiconv.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
