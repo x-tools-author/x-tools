@@ -659,9 +659,10 @@ void MainWindow::initViewMenuStayOnTop(QMenu* viewMenu)
         show();
     });
     action->setCheckable(true);
-
+#if 0
     bool staysOnTop = xApp->settings()->value(m_settingsKey.staysOnTop, false).toBool();
     action->setChecked(staysOnTop);
+#endif
 }
 
 void MainWindow::initHelpMenu()
