@@ -154,6 +154,12 @@ QList<int> supportedTextFormats()
         textFormats << static_cast<int>(TextFormat::Hex);
         textFormats << static_cast<int>(TextFormat::Ascii);
         textFormats << static_cast<int>(TextFormat::Utf8);
+#if defined(X_ICONV)
+        textFormats << static_cast<int>(TextFormat::GB2312);
+        textFormats << static_cast<int>(TextFormat::CSGB2312);
+        textFormats << static_cast<int>(TextFormat::GBK);
+        textFormats << static_cast<int>(TextFormat::GB18030);
+#endif
     }
 
     return textFormats;
@@ -174,6 +180,15 @@ QString textFormatName(TextFormat format)
         return QObject::tr("ASCII");
     case TextFormat::Utf8:
         return QObject::tr("UTF-8");
+    case TextFormat::GB2312:
+        return QString("GB2312");
+    case TextFormat::CSGB2312:
+        return QString("CSGB2312");
+    case TextFormat::GBK:
+        return QString("GBK");
+    case TextFormat::GB18030:
+        return QString("GB18030");
+
     default:
         return "Unknown";
     }
@@ -192,6 +207,29 @@ void setupTextFormat(QComboBox *comboBox)
     }
 
     comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(TextFormat::Hex)));
+}
+
+QByteArray convertEncoding(const QByteArray &input, const char *fromCharset, const char *toCharset)
+{
+    iconv_t cd = iconv_open(toCharset, fromCharset);
+    if (cd == (iconv_t) -1) {
+        return QByteArray();
+    }
+
+    size_t inBytesLeft = input.size();
+    size_t outBytesLeft = inBytesLeft * 4 + 1;
+    QByteArray output(outBytesLeft, 0);
+    const char *inBuf = input.constData();
+    char *outBuf = output.data();
+    size_t result = iconv(cd, &inBuf, &inBytesLeft, &outBuf, &outBytesLeft);
+    iconv_close(cd);
+
+    if (result == (size_t) -1) {
+        return input;
+    }
+
+    output.resize(output.size() - outBytesLeft);
+    return output;
 }
 
 QString bytes2string(const QByteArray &bytes, int format)
@@ -222,7 +260,27 @@ QString bytes2string(const QByteArray &bytes, int format)
         return QString::fromLatin1(bytes);
     } else if (static_cast<int>(TextFormat::Utf8) == format) {
         return QString::fromUtf8(bytes);
-    } else {
+    }
+#if defined(X_ICONV)
+    else if (static_cast<int>(TextFormat::GB2312) == format) {
+        QString name = textFormatName(TextFormat::GB2312);
+        QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
+        return QString::fromUtf8(utf8);
+    } else if (static_cast<int>(TextFormat::CSGB2312) == format) {
+        QString name = textFormatName(TextFormat::CSGB2312);
+        QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
+        return QString::fromUtf8(utf8);
+    } else if (static_cast<int>(TextFormat::GBK) == format) {
+        QString name = textFormatName(TextFormat::GBK);
+        QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
+        return QString::fromUtf8(utf8);
+    } else if (static_cast<int>(TextFormat::GB18030) == format) {
+        QString name = textFormatName(TextFormat::GB18030);
+        QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
+        return QString::fromUtf8(utf8);
+    }
+#endif
+    else {
         return QString("Unsupported text format: %1").arg(static_cast<int>(format));
     }
 }
@@ -251,7 +309,23 @@ QByteArray string2bytes(const QString &text, int format)
         data = cookString(text, 16);
     } else if (format == static_cast<int>(TextFormat::Ascii)) {
         data = text.toLatin1();
-    } else {
+    }
+#if defined(X_ICONV)
+    else if (format == static_cast<int>(TextFormat::GB2312)) {
+        QString name = textFormatName(TextFormat::GB2312);
+        data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
+    } else if (format == static_cast<int>(TextFormat::CSGB2312)) {
+        QString name = textFormatName(TextFormat::CSGB2312);
+        data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
+    } else if (format == static_cast<int>(TextFormat::GBK)) {
+        QString name = textFormatName(TextFormat::GBK);
+        data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
+    } else if (format == static_cast<int>(TextFormat::GB18030)) {
+        QString name = textFormatName(TextFormat::GB18030);
+        data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
+    }
+#endif
+    else {
         data = text.toUtf8();
     }
 
@@ -265,21 +339,25 @@ QByteArray arrayAppendArray(const QByteArray &a1, const QByteArray &a2)
 
 void setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen)
 {
+    if (!lineEdit) {
+        return;
+    }
+
     static QMap<int, QRegularExpressionValidator *> regularExpressionMap;
     if (regularExpressionMap.isEmpty()) {
         // clang-format off
-            const QString binStr = "([01][01][01][01][01][01][01][01][ ])*";
-            const QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*";
-            const QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( (25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
-            const QString hexStr = "([0-9a-fA-F][0-9a-fA-F][ ])*";
+        const QString binStr = "([01][01][01][01][01][01][01][01][ ])*";
+        const QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*";
+        const QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( (25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
+        const QString hexStr = "([0-9a-fA-F][0-9a-fA-F][ ])*";
         // clang-format on
 
         // clang-format off
-            auto const binValidator = new QRegularExpressionValidator(QRegularExpression(binStr));
-            auto const otcValidator = new QRegularExpressionValidator(QRegularExpression(octStr)); //0-377
-            auto const decValidator = new QRegularExpressionValidator(QRegularExpression(decStr)); // 0-255;
-            auto const hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
-            auto const asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
+        auto const binValidator = new QRegularExpressionValidator(QRegularExpression(binStr));
+        auto const otcValidator = new QRegularExpressionValidator(QRegularExpression(octStr)); //0-377
+        auto const decValidator = new QRegularExpressionValidator(QRegularExpression(decStr)); // 0-255;
+        auto const hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
+        auto const asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
         // clang-format on
 
         regularExpressionMap.insert(static_cast<int>(TextFormat::Bin), binValidator);
@@ -290,12 +368,27 @@ void setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen)
         regularExpressionMap.insert(static_cast<int>(TextFormat::Utf8), nullptr);
     }
 
-    if (lineEdit && regularExpressionMap.contains(format)) {
+    if (regularExpressionMap.contains(format)) {
         lineEdit->setMaxLength(maxLen);
         lineEdit->setValidator(regularExpressionMap.value(format));
     } else {
-        qWarning() << "Invalid parameter, the operation will be ignored!";
+        lineEdit->setMaxLength(maxLen);
+        lineEdit->setValidator(nullptr);
     }
+}
+
+int print_encoding(unsigned int namescount, const char *const *names, void *data)
+{
+    for (unsigned int i = 0; i < namescount; ++i) {
+        qInfo() << names[i];
+    }
+    return 0;
+}
+
+QStringList printSupportedIconvEncodings()
+{
+    iconvlist(print_encoding, nullptr);
+    return QStringList();
 }
 
 QList<int> supportedAffixes()

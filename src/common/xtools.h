@@ -102,7 +102,7 @@ QString deviceName(int type);
 void setupDeviceTypes(QComboBox *comboBox);
 
 /**************************************************************************************************/
-enum class TextFormat { Bin, Oct, Dec, Hex, Ascii, Utf8 };
+enum class TextFormat { Bin, Oct, Dec, Hex, Ascii, Utf8, GB2312, CSGB2312, GBK, GB18030 };
 QList<int> supportedTextFormats();
 QString textFormatName(TextFormat format);
 void setupTextFormat(QComboBox *comboBox);
@@ -110,6 +110,7 @@ QString bytes2string(const QByteArray &bytes, int format);
 QByteArray string2bytes(const QString &text, int format);
 QByteArray arrayAppendArray(const QByteArray &a1, const QByteArray &a2);
 void setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen = 32767);
+QStringList printSupportedIconvEncodings();
 
 /**************************************************************************************************/
 enum class Affixes { None, R, N, RN, NR };
