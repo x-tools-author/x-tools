@@ -355,7 +355,7 @@ x_install_qxlsx(xTools)
 x_install_qmdns(xTools)
 x_install_qrencode(xTools)
 
-if(WIN32)
+if(WIN32 AND MSVC)
   target_link_libraries(xTools PRIVATE Dwmapi)
 elseif(LINUX)
   target_link_libraries(xTools PRIVATE dl)
