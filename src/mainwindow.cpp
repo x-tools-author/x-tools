@@ -26,6 +26,7 @@
 #include <QMetaEnum>
 #include <QNetworkProxyFactory>
 #include <QPainter>
+#include <QPalette>
 #include <QPixmap>
 #include <QProcess>
 #include <QScreen>
@@ -44,6 +45,19 @@
 
 #ifdef Q_OS_WIN
 #include "systemtrayicon.h"
+#endif
+
+#if defined(_MSC_VER)
+#include <dwmapi.h>
+
+#include <QColor>
+#include <QSysInfo>
+#include <QWindow>
+#endif
+
+#ifdef Q_OS_MACOS
+#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 #endif
 
 MainWindow::MainWindow(QWidget* parent)
@@ -72,6 +86,7 @@ MainWindow::MainWindow(QWidget* parent)
     }
 #endif
 
+    winId();
     QSettings* settings = Application::settings();
     xApp->showSplashScreenMessage(QString("Create page 1..."));
     m_ioPage00 = new Page(Page::Left, settings, this);
@@ -214,6 +229,50 @@ void MainWindow::hideHistoryAction()
     if (m_historyAction) {
         m_historyAction->setVisible(false);
     }
+}
+
+void MainWindow::updateWindowTitleArea()
+{
+#if defined(_MSC_VER)
+    if (QSysInfo::productVersion().contains("11")) {
+        QPalette paletee = xApp->palette();
+        // Change color of the caption
+        //const DWORD attribute = 35; // DWMWINDOWATTRIBUTE::DWMWA_CAPTION_COLOR
+        QWindow* window = windowHandle();
+        if (window) {
+            QColor c = paletee.color(QPalette::Window);
+            COLORREF colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
+            DwmSetWindowAttribute((HWND) window->winId(),
+                                  DWMWA_CAPTION_COLOR,
+                                  &colorref,
+                                  sizeof(colorref));
+#if 0
+            c = currentTheme.primaryColor;
+            colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
+            DwmSetWindowAttribute((HWND) window->winId(),
+                                  DWMWA_BORDER_COLOR,
+                                  &colorref,
+                                  sizeof(colorref));
+#endif
+        }
+    }
+#endif
+
+#if defined(Q_OS_LINUX)
+    // Nothing to do yet...
+#endif
+
+#if defined(Q_OS_MACOS)
+    NSView* view = reinterpret_cast<NSView*>(winId());
+    NSWindow* w = [view window];
+
+    [w setStyleMask:([w styleMask] | NSWindowStyleMaskFullSizeContentView)];
+    [w setTitlebarAppearsTransparent:YES];
+    [w setTitleVisibility:NSWindowTitleHidden];
+
+    NSButton* zoomButton = [w standardWindowButton:NSWindowZoomButton];
+    [zoomButton setEnabled:YES];
+#endif
 }
 
 void MainWindow::closeEvent(QCloseEvent* event)
@@ -472,8 +531,11 @@ void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
             qInfo() << colorScheme;
             xApp->settings()->setValue(keys.colorScheme, static_cast<int>(colorScheme));
             xApp->setupColorScheme();
+            updateWindowTitleArea();
         });
     }
+
+    updateWindowTitleArea();
 #else
     Q_UNUSED(optionMenu);
 #endif

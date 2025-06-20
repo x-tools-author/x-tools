@@ -29,6 +29,7 @@ public:
     void updateGrid(WindowGrid grid);
     void moveToCenter();
     void hideHistoryAction();
+    void updateWindowTitleArea();
 
 protected:
     void closeEvent(QCloseEvent* event) override;

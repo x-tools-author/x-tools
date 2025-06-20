@@ -355,6 +355,12 @@ x_install_qxlsx(xTools)
 x_install_qmdns(xTools)
 x_install_qrencode(xTools)
 
+if(WIN32)
+  target_link_libraries(xTools PRIVATE Dwmapi)
+elseif(LINUX)
+  target_link_libraries(xTools PRIVATE dl)
+endif()
+
 # Android specific settings
 if(ANDROID)
   set(x_android_source ${CMAKE_SOURCE_DIR}/res/android/6.8)
