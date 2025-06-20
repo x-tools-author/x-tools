@@ -52,6 +52,10 @@
 
 #include "common/crc.h"
 
+#ifdef X_ICONV
+#include <iconv.h>
+#endif
+
 QList<int> supportedDeviceTypes()
 {
     static QList<int> deviceTypes;

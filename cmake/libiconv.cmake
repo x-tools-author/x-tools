@@ -42,6 +42,25 @@ if(NOT EXISTS ${CMAKE_SOURCE_DIR}/3rd/${file_name})
   endif()
 endif()
 
-if(NOT EXISTS ${CMAKE_SOURCE_DIR}/3rd/${file_name}/build-VS2022/x64/Release/libiconv.lib)
-  # Build libiconv if it does not exist
+# Build libiconv if it does not exist
+if(WIN32)
+  set(working_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name}/build-VS2022)
+  if(NOT EXISTS ${working_dir}/x64/Release/libiconv.lib)
+    cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
+    set(devenv ${COMPILER_PATH}/../../../../../../../Common7/IDE/devenv.exe)
+    message(STATUS "[libiconv] ${devenv}")
+    message(STATUS "[libiconv] Building libiconv using Visual Studio")
+    execute_process(COMMAND ${devenv} libiconv.sln /Build "Release"
+                    WORKING_DIRECTORY ${working_dir})
+  endif()
+
+  set(X_ICONV
+      ON
+      CACHE BOOL "Enable iconv option" FORCE)
+  set(X_ICONV "libiconv-static")
+  add_compile_definitions(X_ICONV)
+  include_directories(${CMAKE_SOURCE_DIR}/3rd/${file_name}/include)
+  link_directories(${working_dir}/x64/Release)
+  message(STATUS "[libiconv] ${working_dir}/x64/Release")
+  return()
 endif()

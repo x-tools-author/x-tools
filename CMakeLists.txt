@@ -266,6 +266,9 @@ endif()
 if(X_ENABLE_CHARTS)
   list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Charts QXlsx::QXlsx)
 endif()
+if(X_ICONV)
+  list(APPEND X_LIBS ${X_ICONV})
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # xApplications selector(just for Qt6.8.0 or later)
