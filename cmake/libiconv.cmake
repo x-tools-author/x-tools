@@ -14,7 +14,7 @@ if(WIN32)
       "https://github.com/kiyolee/libiconv-win-build/archive/refs/tags/${file_name}.${file_suffix}")
 else()
   set(file_name "libiconv-1.18")
-  set(file_suffix ".tar.gz")
+  set(file_suffix "tar.gz")
   set(file_url "https://ftp.gnu.org/pub/gnu/libiconv/${file_name}.${file_suffix}")
 endif()
 
@@ -63,4 +63,22 @@ if(WIN32)
   link_directories(${working_dir}/x64/Release)
   message(STATUS "[libiconv] ${working_dir}/x64/Release")
   return()
+endif()
+
+set(working_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name})
+if(NOT EXISTS ${working_dir}/out/lib/libiconv.so)
+  execute_process(COMMAND ./configure --prefix=${working_dir}/out
+                  WORKING_DIRECTORY ${working_dir})
+  execute_process(COMMAND make WORKING_DIRECTORY ${working_dir})
+  execute_process(COMMAND make install WORKING_DIRECTORY ${working_dir})
+endif()
+
+if(EXISTS ${working_dir}/out/lib/libiconv.so)
+  # cmake-format: off
+  set(X_ICONV ON CACHE BOOL "Enable iconv option" FORCE)
+  set(X_ICONV "iconv" "charset")
+  add_compile_definitions(X_ICONV)
+  include_directories(${working_dir}/out/include)
+  link_directories(${working_dir}/out/lib)
+  # cmake-format: on
 endif()

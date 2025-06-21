@@ -221,7 +221,12 @@ QByteArray convertEncoding(const QByteArray &input, const char *fromCharset, con
     QByteArray output(outBytesLeft, 0);
     const char *inBuf = input.constData();
     char *outBuf = output.data();
+#if defined(Q_OS_WIN32)
     size_t result = iconv(cd, &inBuf, &inBytesLeft, &outBuf, &outBytesLeft);
+#else
+    char *tmp = const_cast<char *>(inBuf);
+    size_t result = iconv(cd, &tmp, &inBytesLeft, &outBuf, &outBytesLeft);
+#endif
     iconv_close(cd);
 
     if (result == (size_t) -1) {
