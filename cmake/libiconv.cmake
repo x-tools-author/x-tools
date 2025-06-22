@@ -7,6 +7,11 @@ if(MINGW)
   return()
 endif()
 
+if(ANDROID OR APPLE)
+  message(STATUS "Using Android or iOS, macOS, skipping libiconv download and extraction")
+  return()
+endif()
+
 if(WIN32)
   set(file_name "v1.17-p1")
   set(file_suffix "zip")
