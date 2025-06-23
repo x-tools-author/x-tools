@@ -55,11 +55,6 @@
 #include <QWindow>
 #endif
 
-#ifdef Q_OS_MACOS
-#import <Cocoa/Cocoa.h>
-#import <Foundation/Foundation.h>
-#endif
-
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , m_ioPage00(Q_NULLPTR)
@@ -256,22 +251,6 @@ void MainWindow::updateWindowTitleArea()
 #endif
         }
     }
-#endif
-
-#if defined(Q_OS_LINUX)
-    // Nothing to do yet...
-#endif
-
-#if defined(Q_OS_MACOS)
-    NSView* view = reinterpret_cast<NSView*>(winId());
-    NSWindow* w = [view window];
-
-    [w setStyleMask:([w styleMask] | NSWindowStyleMaskFullSizeContentView)];
-    [w setTitlebarAppearsTransparent:YES];
-    [w setTitleVisibility:NSWindowTitleHidden];
-
-    NSButton* zoomButton = [w standardWindowButton:NSWindowZoomButton];
-    [zoomButton setEnabled:YES];
 #endif
 }
 
