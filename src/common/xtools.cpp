@@ -396,10 +396,13 @@ int print_encoding(unsigned int namescount, const char *const *names, void *data
     return 0;
 }
 
-QStringList printSupportedIconvEncodings()
+void printSupportedIconvEncodings()
 {
+#ifdef X_ICONV
     iconvlist(print_encoding, nullptr);
-    return QStringList();
+#else
+    qWarning() << "Iconv is not enabled in this build.";
+#endif
 }
 
 QList<int> supportedAffixes()

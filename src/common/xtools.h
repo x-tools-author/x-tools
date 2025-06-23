@@ -110,7 +110,7 @@ QString bytes2string(const QByteArray &bytes, int format);
 QByteArray string2bytes(const QString &text, int format);
 QByteArray arrayAppendArray(const QByteArray &a1, const QByteArray &a2);
 void setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen = 32767);
-QStringList printSupportedIconvEncodings();
+void printSupportedIconvEncodings();
 
 /**************************************************************************************************/
 enum class Affixes { None, R, N, RN, NR };
