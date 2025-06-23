@@ -3,10 +3,13 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch: # Enables manually
-# on:
-#  push:
-#    branches:
-#      - master
+  pull_request:
+    branches:
+      - master
+    types: [opened, synchronize, reopened]
+  # push:
+  #   branches:
+  #     - master
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
