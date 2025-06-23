@@ -161,6 +161,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/qxlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libiconv.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/qcustomplot.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
@@ -281,6 +282,9 @@ if(X_ENABLE_CHARTS)
 endif()
 if(X_ICONV)
   list(APPEND X_LIBS ${X_ICONV})
+endif()
+if(X_PLOT)
+  list(APPEND X_LIBS QCustomPlot)
 endif()
 
 # --------------------------------------------------------------------------------------------------
