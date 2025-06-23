@@ -7,7 +7,9 @@ if(MINGW)
   return()
 endif()
 
-if(ANDROID OR APPLE)
+if(ANDROID
+   OR IOS
+   OR MACOS)
   message(STATUS "Using Android or iOS, macOS, skipping libiconv download and extraction")
   return()
 endif()
@@ -72,8 +74,7 @@ endif()
 
 set(working_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name})
 if(NOT EXISTS ${working_dir}/out/lib/libiconv.so)
-  execute_process(COMMAND ./configure --prefix=${working_dir}/out
-                  WORKING_DIRECTORY ${working_dir})
+  execute_process(COMMAND ./configure --prefix=${working_dir}/out WORKING_DIRECTORY ${working_dir})
   execute_process(COMMAND make WORKING_DIRECTORY ${working_dir})
   execute_process(COMMAND make install WORKING_DIRECTORY ${working_dir})
 endif()

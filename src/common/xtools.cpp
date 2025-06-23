@@ -211,6 +211,7 @@ void setupTextFormat(QComboBox *comboBox)
 
 QByteArray convertEncoding(const QByteArray &input, const char *fromCharset, const char *toCharset)
 {
+#if defined(X_ICONV)
     iconv_t cd = iconv_open(toCharset, fromCharset);
     if (cd == (iconv_t) -1) {
         return QByteArray();
@@ -235,6 +236,11 @@ QByteArray convertEncoding(const QByteArray &input, const char *fromCharset, con
 
     output.resize(output.size() - outBytesLeft);
     return output;
+#else
+    Q_UNUSED(fromCharset);
+    Q_UNUSED(toCharset);
+    return input;
+#endif
 }
 
 QString bytes2string(const QByteArray &bytes, int format)
