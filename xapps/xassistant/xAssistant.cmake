@@ -30,6 +30,12 @@ else()
   set_target_properties(xAssistant PROPERTIES MACOSX_BUNDLE TRUE WIN32_EXECUTABLE TRUE)
 endif()
 
+if(WIN32 AND MSVC)
+  target_link_libraries(xAssistant PRIVATE Dwmapi)
+elseif(LINUX)
+  target_link_libraries(xAssistant PRIVATE dl)
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # Make installer for Windows
 set(X_ASSISTANT_VERSION "1.1.0")

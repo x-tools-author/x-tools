@@ -22,6 +22,10 @@ else()
   set_target_properties(xHash PROPERTIES MACOSX_BUNDLE TRUE WIN32_EXECUTABLE TRUE)
 endif()
 
+if(X_ICONV)
+  target_link_libraries(xHash PRIVATE ${X_ICONV})
+endif()
+
 if(WIN32)
   target_link_libraries(xHash PRIVATE Dwmapi)
 elseif(LINUX)
