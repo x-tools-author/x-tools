@@ -103,6 +103,19 @@ message(STATUS "[xTools]Asset name: ${X_ASSET_NAME}")
 if(IOS)
   message(FATAL_ERROR "xTools does not support iOS platform yet...")
 endif()
+
+# Set macOS deployment target (minimum macOS version)
+if(APPLE AND NOT IOS)
+  # Set minimum macOS version - you can adjust this as needed Common options: 11.0 (Big Sur), 12.0
+  # (Monterey), 13.0 (Ventura), 14.0 (Sonoma)
+  if(NOT CMAKE_OSX_DEPLOYMENT_TARGET)
+    set(CMAKE_OSX_DEPLOYMENT_TARGET
+        "11.0"
+        CACHE STRING "Minimum macOS deployment version")
+  endif()
+  message(STATUS "[xTools]macOS deployment target: ${CMAKE_OSX_DEPLOYMENT_TARGET}")
+endif()
+
 # Do something for Qt5
 if(APPLE AND NOT IOS)
   if(QT_VERSION VERSION_LESS "6.0.0")
