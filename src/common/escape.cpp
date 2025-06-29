@@ -41,7 +41,7 @@ QString cEscape(const QStringView src)
         } else {
             if (++sPos >= src.size()) {
                 // skip past the '\\'
-                return QString{src};
+                return QString(src.constData(), src.size());
             }
         }
         if (sPos == src.size())
@@ -95,7 +95,7 @@ QString cEscape(const QStringView src)
             if (sPos + 1 < src.size() && isOctalDigit(src[sPos + 1]))
                 ch = ch * 8 + src[++sPos].digitValue(); // digit 3
             if (ch > 0xff) {
-                return QString{src};
+                return QString(src.constData(), src.size());
             }
             (dst)[dPos++] = static_cast<char>(ch);
             break;
@@ -103,7 +103,7 @@ QString cEscape(const QStringView src)
         case u'x':
         case u'X': {
             if (sPos + 1 >= src.size() || !isHexDigit(src[sPos + 1])) {
-                return QString{src};
+                return QString(src.constData(), src.size());
             }
             unsigned int ch = 0;
             while (sPos + 1 < src.size() && isHexDigit(src[sPos + 1])) {
@@ -111,7 +111,7 @@ QString cEscape(const QStringView src)
                 ch = (ch << 4) + hexDigitValue(src[++sPos]);
             }
             if (ch > 0xFF) {
-                return QString{src};
+                return QString(src.constData(), src.size());
             }
             dst[dPos++] = QChar(ch);
             break;
@@ -120,19 +120,19 @@ QString cEscape(const QStringView src)
             // \uhhhh => convert 4 hex digits to UTF-16
             char32_t rune = 0;
             if (sPos + 4 >= src.size()) {
-                return QString{src};
+                return QString(src.constData(), src.size());
             }
             for (int i = 0; i < 4; ++i) {
                 // Look one char ahead.
                 if (isHexDigit(src[sPos + 1])) {
                     rune = (rune << 4) + hexDigitValue(src[++sPos]);
                 } else {
-                    return QString{src};
+                    return QString(src.constData(), src.size());
                 }
             }
 
             if (QChar::isSurrogate(rune)) {
-                return QString{src};
+                return QString(src.constData(), src.size());
             }
             auto usc4 = QChar::fromUcs4(rune);
             for (const char16_t u : usc4) {
@@ -145,7 +145,7 @@ QString cEscape(const QStringView src)
             char32_t rune = 0;
             auto hex_start = sPos;
             if (sPos + 8 >= src.size()) {
-                return QString{src};
+                return QString(src.constData(), src.size());
             }
             for (int i = 0; i < 8; ++i) {
                 // Look one char ahead.
@@ -154,15 +154,15 @@ QString cEscape(const QStringView src)
                     // is within the Unicode limit, but do advance sPos.
                     uint32_t newrune = (rune << 4) + hexDigitValue(src[++sPos]);
                     if (newrune > 0x10FFFF) {
-                        return QString{src};
+                        return QString(src.constData(), src.size());
                     }
                     rune = newrune;
                 } else {
-                    return QString{src};
+                    return QString(src.constData(), src.size());
                 }
             }
             if (QChar::isSurrogate(rune)) {
-                return QString{src};
+                return QString(src.constData(), src.size());
             }
             auto usc4 = QChar::fromUcs4(rune);
             for (const char16_t u : usc4) {
@@ -171,7 +171,7 @@ QString cEscape(const QStringView src)
             break;
         }
         default: {
-            return QString{src};
+            return QString(src.constData(), src.size());
         }
         }
         sPos++; // Read past letter we escaped.
