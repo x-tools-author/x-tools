@@ -7,6 +7,7 @@
  * directory.
  **************************************************************************************************/
 #include "xtools.h"
+#include "escape.h"
 
 #include <QAction>
 #include <QActionGroup>
@@ -470,6 +471,7 @@ QList<int> supportedEscapeCharacters()
     escapeCharacters << static_cast<int>(EscapeCharacter::RN);
     escapeCharacters << static_cast<int>(EscapeCharacter::NR);
     escapeCharacters << static_cast<int>(EscapeCharacter::R_N);
+    escapeCharacters << static_cast<int>(EscapeCharacter::C);
     return escapeCharacters;
 }
 
@@ -486,6 +488,8 @@ QString escapeCharacterName(int escapeCharacter)
         return "\\n\\r";
     case static_cast<int>(EscapeCharacter::R_N):
         return "\\r + \\n";
+    case static_cast<int>(EscapeCharacter::C):
+        return "C-Style";
     default:
         return QObject::tr("None");
     }
@@ -518,6 +522,8 @@ QString cookedEscapeCharacter(const QString &text, int escapeCharacter)
     } else if (escapeCharacter == static_cast<int>(EscapeCharacter::R_N)) {
         newStr.replace("\\r", "\r");
         newStr.replace("\\n", "\n");
+    } else if (escapeCharacter == static_cast<int>(EscapeCharacter::C)) {
+        newStr = cEscape(text);
     }
 
     return newStr;
