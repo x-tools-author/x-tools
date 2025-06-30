@@ -30,7 +30,8 @@ static bool isOctalDigit(const QChar ch)
 // https://github.com/abseil/abseil-cpp/blob/master/absl/strings/escaping.cc
 QString cEscape(const QStringView src)
 {
-    QString dst{src.size(), '\0'};
+    QString dst{};
+    dst.resize(src.size());
 
     QStringView::size_type sPos = 0; // src current pos
     QString::size_type dPos = 0; // dest current pos
@@ -41,142 +42,142 @@ QString cEscape(const QStringView src)
         } else {
             if (++sPos >= src.size()) {
                 // skip past the '\\'
-                return QString(src.constData(), src.size());
+                return QString(src.data(), src.size());
             }
-        }
-        if (sPos == src.size())
-            break;
-        switch (src[sPos].unicode()) {
-        case u'a':
-            (dst)[dPos++] = '\a';
-            break;
-        case u'b':
-            (dst)[dPos++] = '\b';
-            break;
-        case u'f':
-            (dst)[dPos++] = '\f';
-            break;
-        case u'n':
-            (dst)[dPos++] = '\n';
-            break;
-        case u'r':
-            (dst)[dPos++] = '\r';
-            break;
-        case u't':
-            (dst)[dPos++] = '\t';
-            break;
-        case u'v':
-            (dst)[dPos++] = '\v';
-            break;
-        case u'\\':
-            (dst)[dPos++] = '\\';
-            break;
-        case u'?':
-            (dst)[dPos++] = '\?';
-            break;
-        case u'\'':
-            (dst)[dPos++] = '\'';
-            break;
-        case u'"':
-            (dst)[dPos++] = '\"';
-            break;
-        case u'0':
-        case u'1':
-        case u'2':
-        case u'3':
-        case u'4':
-        case u'5':
-        case u'6':
-        case u'7': {
-            // octal digit: 1 to 3 digits
-            unsigned int ch = src[sPos].digitValue(); // digit 1
-            if (sPos + 1 < src.size() && isOctalDigit(src[sPos + 1]))
-                ch = ch * 8 + src[++sPos].digitValue(); // digit 2
-            if (sPos + 1 < src.size() && isOctalDigit(src[sPos + 1]))
-                ch = ch * 8 + src[++sPos].digitValue(); // digit 3
-            if (ch > 0xff) {
-                return QString(src.constData(), src.size());
-            }
-            (dst)[dPos++] = static_cast<char>(ch);
-            break;
-        }
-        case u'x':
-        case u'X': {
-            if (sPos + 1 >= src.size() || !isHexDigit(src[sPos + 1])) {
-                return QString(src.constData(), src.size());
-            }
-            unsigned int ch = 0;
-            while (sPos + 1 < src.size() && isHexDigit(src[sPos + 1])) {
-                // Arbitrarily many hex digits
-                ch = (ch << 4) + hexDigitValue(src[++sPos]);
-            }
-            if (ch > 0xFF) {
-                return QString(src.constData(), src.size());
-            }
-            dst[dPos++] = QChar(ch);
-            break;
-        }
-        case u'u': {
-            // \uhhhh => convert 4 hex digits to UTF-16
-            char32_t rune = 0;
-            if (sPos + 4 >= src.size()) {
-                return QString(src.constData(), src.size());
-            }
-            for (int i = 0; i < 4; ++i) {
-                // Look one char ahead.
-                if (isHexDigit(src[sPos + 1])) {
-                    rune = (rune << 4) + hexDigitValue(src[++sPos]);
-                } else {
-                    return QString(src.constData(), src.size());
+            switch (src[sPos].unicode()) {
+            case u'a':
+                (dst)[dPos++] = '\a';
+                break;
+            case u'b':
+                (dst)[dPos++] = '\b';
+                break;
+            case u'f':
+                (dst)[dPos++] = '\f';
+                break;
+            case u'n':
+                (dst)[dPos++] = '\n';
+                break;
+            case u'r':
+                (dst)[dPos++] = '\r';
+                break;
+            case u't':
+                (dst)[dPos++] = '\t';
+                break;
+            case u'v':
+                (dst)[dPos++] = '\v';
+                break;
+            case u'\\':
+                (dst)[dPos++] = '\\';
+                break;
+            case u'?':
+                (dst)[dPos++] = '\?';
+                break;
+            case u'\'':
+                (dst)[dPos++] = '\'';
+                break;
+            case u'"':
+                (dst)[dPos++] = '\"';
+                break;
+            case u'0':
+            case u'1':
+            case u'2':
+            case u'3':
+            case u'4':
+            case u'5':
+            case u'6':
+            case u'7': {
+                // octal digit: 1 to 3 digits
+                unsigned int ch = src[sPos].digitValue(); // digit 1
+                if (sPos + 1 < src.size() && isOctalDigit(src[sPos + 1]))
+                    ch = ch * 8 + src[++sPos].digitValue(); // digit 2
+                if (sPos + 1 < src.size() && isOctalDigit(src[sPos + 1]))
+                    ch = ch * 8 + src[++sPos].digitValue(); // digit 3
+                if (ch > 0xff) {
+                    return QString(src.data(), src.size());
                 }
+                (dst)[dPos++] = static_cast<char>(ch);
+                break;
             }
-
-            if (QChar::isSurrogate(rune)) {
-                return QString(src.constData(), src.size());
+            case u'x':
+            case u'X': {
+                if (sPos + 1 >= src.size() || !isHexDigit(src[sPos + 1])) {
+                    return QString(src.data(), src.size());
+                }
+                unsigned int ch = 0;
+                while (sPos + 1 < src.size() && isHexDigit(src[sPos + 1])) {
+                    // Arbitrarily many hex digits
+                    ch = (ch << 4) + hexDigitValue(src[++sPos]);
+                }
+                if (ch > 0xFF) {
+                    return QString(src.data(), src.size());
+                }
+                dst[dPos++] = QChar(ch);
+                break;
             }
-            auto usc4 = QChar::fromUcs4(rune);
-            for (const char16_t u : usc4) {
-                dst[dPos++] = u;
-            }
-            break;
-        }
-        case u'U': {
-            // \Uhhhhhhhh => convert 8 hex digits to UTF-16
-            char32_t rune = 0;
-            auto hex_start = sPos;
-            if (sPos + 8 >= src.size()) {
-                return QString(src.constData(), src.size());
-            }
-            for (int i = 0; i < 8; ++i) {
-                // Look one char ahead.
-                if (isHexDigit(src[sPos + 1])) {
-                    // Don't change rune until we're sure this
-                    // is within the Unicode limit, but do advance sPos.
-                    uint32_t newrune = (rune << 4) + hexDigitValue(src[++sPos]);
-                    if (newrune > 0x10FFFF) {
-                        return QString(src.constData(), src.size());
+            case u'u': {
+                // \uhhhh => convert 4 hex digits to UTF-16
+                char32_t rune = 0;
+                if (sPos + 4 >= src.size()) {
+                    return QString(src.data(), src.size());
+                }
+                for (int i = 0; i < 4; ++i) {
+                    // Look one char ahead.
+                    if (isHexDigit(src[sPos + 1])) {
+                        rune = (rune << 4) + hexDigitValue(src[++sPos]);
+                    } else {
+                        return QString(src.data(), src.size());
                     }
-                    rune = newrune;
-                } else {
-                    return QString(src.constData(), src.size());
                 }
-            }
-            if (QChar::isSurrogate(rune)) {
-                return QString(src.constData(), src.size());
-            }
-            auto usc4 = QChar::fromUcs4(rune);
-            for (const char16_t u : usc4) {
-                dst[dPos++] = u;
-            }
-            break;
-        }
-        default: {
-            return QString(src.constData(), src.size());
-        }
-        }
-        sPos++; // Read past letter we escaped.
-    }
 
-    dst.erase(dst.begin() + dPos, dst.end());
+                if (QChar::isSurrogate(rune)) {
+                    return QString(src.data(), src.size());
+                }
+                if (QChar::requiresSurrogates(rune)) {
+                    dst[dPos++] = QChar::highSurrogate(rune);
+                    dst[dPos++] = QChar::lowSurrogate(rune);
+                } else {
+                    dst[dPos++] = QChar(rune);
+                }
+                break;
+            }
+            case u'U': {
+                // \Uhhhhhhhh => convert 8 hex digits to UTF-16
+                char32_t rune = 0;
+                if (sPos + 8 >= src.size()) {
+                    return QString(src.data(), src.size());
+                }
+                for (int i = 0; i < 8; ++i) {
+                    // Look one char ahead.
+                    if (isHexDigit(src[sPos + 1])) {
+                        // Don't change rune until we're sure this
+                        // is within the Unicode limit, but do advance sPos.
+                        uint32_t newrune = (rune << 4) + hexDigitValue(src[++sPos]);
+                        if (newrune > 0x10FFFF) {
+                            return QString(src.data(), src.size());
+                        }
+                        rune = newrune;
+                    } else {
+                        return QString(src.data(), src.size());
+                    }
+                }
+                if (QChar::isSurrogate(rune)) {
+                    return QString(src.data(), src.size());
+                }
+                if (QChar::requiresSurrogates(rune)) {
+                    dst[dPos++] = QChar::highSurrogate(rune);
+                    dst[dPos++] = QChar::lowSurrogate(rune);
+                } else {
+                    dst[dPos++] = QChar::highSurrogate(rune);
+                }
+                break;
+            }
+            default: {
+                return QString(src.data(), src.size());
+            }
+            }
+            sPos++; // Read past letter we escaped.
+        }
+    }
+    dst.remove(dPos, dst.size() - dPos);
     return dst;
 }
