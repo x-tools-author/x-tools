@@ -28,12 +28,12 @@ static bool isOctalDigit(const QChar ch)
 }
 
 // https://github.com/abseil/abseil-cpp/blob/master/absl/strings/escaping.cc
-QString cEscape(const QStringView src)
+QString cEscape(const QString& src)
 {
     QString dst{};
     dst.resize(src.size());
 
-    QStringView::size_type sPos = 0; // src current pos
+    QString::size_type sPos = 0; // src current pos
     QString::size_type dPos = 0; // dest current pos
 
     while (sPos < src.size()) {
