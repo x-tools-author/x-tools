@@ -120,7 +120,7 @@ void setupAddition(QComboBox *comboBox);
 QByteArray cookedAffixes(int affixes);
 
 /**************************************************************************************************/
-enum class EscapeCharacter { None, R, N, RN, NR, R_N };
+enum class EscapeCharacter { None, R, N, RN, NR, R_N, C };
 QList<int> supportedEscapeCharacters();
 QString escapeCharacterName(int character);
 void setupEscapeCharacter(QComboBox *comboBox);
