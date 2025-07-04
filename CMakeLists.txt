@@ -5,6 +5,15 @@ if(NOT ${CMAKE_VERSION} VERSION_LESS "4.0.0")
   set(CMAKE_POLICY_VERSION_MINIMUM "3.22" CACHE STRING "CMake policy version" FORCE)
 endif()
 
+# --------------------------------------------------------------------------------------------------
+# Using vcpkg(The 'x64-windows-static' triplet is supported only)
+option(X_VCPKG "Using vcpkg" OFF)
+if(X_VCPKG)
+set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "")
+set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Please specify your own vcpkg file" FORCE)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
+
 cmake_minimum_required(VERSION 3.22)
 project(xTools VERSION 8.0 LANGUAGES C CXX)
 # cmake-format: on
@@ -134,6 +143,12 @@ if(QT_VERSION VERSION_LESS "6.8.0")
   message(WARNING "Qt 6.8.0 or later is recommended")
   if(ANDROID)
     message(FATAL_ERROR "Qt 6.8.0 or later is required for Android platform")
+  endif()
+endif()
+
+if(QT_VERSION_MAJOR EQUAL 5)
+  if(MSVC)
+    add_compile_options(/execution-charset:utf-8)
   endif()
 endif()
 

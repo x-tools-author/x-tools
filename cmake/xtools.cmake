@@ -130,6 +130,10 @@ function(x_deploy_qt_for_windows target)
     set(WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
   endif()
 
+  if (NOT EXISTS ${WINDEPLOYQT_EXECUTABLE})
+    return()
+  endif()
+
   if(EXISTS ${CMAKE_CURRENT_LIST_DIR}/qml)
     add_custom_command(
       TARGET ${target}
