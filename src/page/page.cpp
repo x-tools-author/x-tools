@@ -588,8 +588,10 @@ void Page::onWrapModeChanged()
 {
     if (ui->checkBoxWrap->isChecked()) {
         ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapMode::WordWrap);
+        ui->textBrowserOutput->setLineWrapMode(QTextEdit::WidgetWidth);
     } else {
         ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapMode::NoWrap);
+        ui->textBrowserOutput->setLineWrapMode(QTextEdit::NoWrap);
     }
 }
 
