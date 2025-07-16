@@ -558,6 +558,19 @@
           </widget>
          </item>
          <item>
+          <widget class="QToolButton" name="toolButtonInputPreset">
+           <property name="toolTip">
+            <string>Preset data list</string>
+           </property>
+           <property name="text">
+            <string notr="true">📄</string>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonStyle::ToolButtonTextOnly</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QLabel" name="labelInfo">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -580,16 +593,9 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QLineEdit" name="lineEditInput"/>
-         </item>
-         <item>
-          <widget class="QToolButton" name="toolButtonInputPreset">
-           <property name="text">
-            <string>📄</string>
-           </property>
-          </widget>
          </item>
         </layout>
        </item>
@@ -665,7 +671,6 @@
   <tabstop>tabWidget</tabstop>
   <tabstop>textBrowserOutput</tabstop>
   <tabstop>lineEditInput</tabstop>
-  <tabstop>toolButtonInputPreset</tabstop>
  </tabstops>
  <resources/>
  <connections>

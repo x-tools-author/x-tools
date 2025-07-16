@@ -5,6 +5,7 @@
     添加http调试功能
     添加ble外围设备调试功能（非windows平台）
     添加sctp客户端与服务器调试功能（非windows平台）
+    重构蓝牙调试功能
 
 V7.3.0 2025年xx月xx日
     bug修复：
