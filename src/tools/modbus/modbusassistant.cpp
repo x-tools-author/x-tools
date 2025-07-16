@@ -1054,21 +1054,20 @@ void ModbusAssistant::updateClientTableViewData(const QList<quint16> &values)
 void ModbusAssistant::updateClientTableViewData(const QVector<quint16> &values)
 #endif
 {
+    qInfo() << "Update client table view data, values:" << values;
     for (int row = 0; row < values.count(); row++) {
+        if (row >= m_clientRegisterModel->rowCount()) {
+            return;
+        }
+
         auto *item = m_clientRegisterModel->item(row, 1);
         if (!item) {
-            continue;
+            item = new QStandardItem();
+            m_clientRegisterModel->setItem(row, 1, item);
         }
 
         item->setTextAlignment(Qt::AlignCenter);
-        QString text = item->text();
-        int value = 0;
-        if (m_textFormat == static_cast<int>(TextFormat::Dec)) {
-            value = text.toInt();
-        } else {
-            value = text.toInt(Q_NULLPTR, 16);
-        }
-
+        int value = values.at(row);
         int format = ui->comboBoxFormat->currentData().toInt();
         if (format == static_cast<int>(TextFormat::Dec)) {
             item->setText(QString::number(value));
