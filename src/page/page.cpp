@@ -587,17 +587,9 @@ void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
 void Page::onWrapModeChanged()
 {
     if (ui->checkBoxWrap->isChecked()) {
-        ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapMode::WordWrap);
-        ui->textBrowserOutput->setLineWrapMode(QTextEdit::WidgetWidth);
-        QTextOption option = ui->textBrowserOutput->document()->defaultTextOption();
-        option.setWrapMode(QTextOption::WrapMode::WordWrap);
-        ui->textBrowserOutput->document()->setDefaultTextOption(option);
+        ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapAnywhere);
     } else {
-        ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapMode::NoWrap);
-        ui->textBrowserOutput->setLineWrapMode(QTextEdit::NoWrap);
-        QTextOption option = ui->textBrowserOutput->document()->defaultTextOption();
-        option.setWrapMode(QTextOption::WrapMode::NoWrap);
-        ui->textBrowserOutput->document()->setDefaultTextOption(option);
+        ui->textBrowserOutput->setWordWrapMode(QTextOption::NoWrap);
     }
 }
 
