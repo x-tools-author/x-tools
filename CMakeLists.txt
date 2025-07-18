@@ -229,16 +229,19 @@ if(Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
 else()
   set(X_ENABLE_SERIALBUS OFF)
 
+  message(STATUS "SerialBus module is disable, SerialBus files will be removed.")
   # Remove modbus files
-  file(GLOB_RECURSE MODBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/tools/modbus/*.*")
+  file(GLOB_RECURSE MODBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/modbus/*.*")
   foreach(file ${MODBUS_SOURCE})
     list(REMOVE_ITEM X_SOURCES ${file})
+    message(STATUS "[Modbus]Remove file: ${file}")
   endforeach(file ${MODBUS_SOURCE})
 
   # Remove canbus files
-  file(GLOB_RECURSE CANBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/tools/canbus/*.*")
+  file(GLOB_RECURSE CANBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/canbus/*.*")
   foreach(file ${CANBUS_SOURCE})
     list(REMOVE_ITEM X_SOURCES ${file})
+    message(STATUS "[Canbus]Remove file: ${file}")
   endforeach(file ${CANBUS_SOURCE})
 endif()
 
