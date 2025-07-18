@@ -63,21 +63,6 @@ if(X_MAGIC)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Qt or wxWidgets
-# cmake-format: off
-set(X_APP_FRAMEWORKS "Qt" "wxWidgets")
-set(X_APP_FRAMEWORK "Qt" CACHE STRING "Select a framework to build")
-set_property(CACHE X_APP_FRAMEWORK PROPERTY STRINGS ${X_APP_FRAMEWORKS})
-if(X_APP_FRAMEWORK STREQUAL "wxWidgets")
-  set(libs_dir1 ${CMAKE_CURRENT_SOURCE_DIR}/libs)
-  set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/wxApps/${CMAKE_CXX_COMPILER_ID})
-  set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
-  include(${CMAKE_SOURCE_DIR}/wxapps/wxApps.cmake)
-  return()
-endif()
-# cmake-format: on
-
-# --------------------------------------------------------------------------------------------------
 # Qt module
 list(APPEND X_QT_COMPONENTS Gui)
 list(APPEND X_QT_COMPONENTS Svg)
@@ -304,7 +289,10 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # xApplications selector(just for Qt6.8.0 or later)
-if(NOT QT_VERSION VERSION_LESS "6.8.0")
+set(X_APPS_ENABLED
+    OFF
+    CACHE BOOL "Enable x-apps selector" FORCE)
+if(NOT QT_VERSION VERSION_LESS "6.8.0" AND X_APPS_ENABLED)
   set(X_APPS "xTools")
   list(APPEND X_APPS "xSvg")
   list(APPEND X_APPS "xCode")

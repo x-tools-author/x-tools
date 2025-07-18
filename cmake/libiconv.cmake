@@ -7,6 +7,13 @@ if(MINGW)
   return()
 endif()
 
+if(MSVC)
+  if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.30")
+    message(STATUS "Using MSVC 2022 or later, skipping libiconv download and extraction")
+    return()
+  endif()
+endif()
+
 if(ANDROID
    OR IOS
    OR MACOS)
