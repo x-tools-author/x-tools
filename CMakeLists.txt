@@ -69,8 +69,6 @@ list(APPEND X_QT_COMPONENTS Svg)
 list(APPEND X_QT_COMPONENTS Core)
 list(APPEND X_QT_COMPONENTS Widgets)
 list(APPEND X_QT_COMPONENTS Network)
-list(APPEND X_QT_COMPONENTS CorePrivate)
-list(APPEND X_QT_COMPONENTS GuiPrivate)
 list(APPEND X_QT_COMPONENTS LinguistTools)
 
 set(CMAKE_AUTOUIC ON)
@@ -263,7 +261,6 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Libs
 set(X_LIBS Qt${QT_VERSION_MAJOR}::CorePrivate)
-list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::CorePrivate)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Core)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Gui)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Network)
