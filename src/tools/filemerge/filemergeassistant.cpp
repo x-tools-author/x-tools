@@ -163,7 +163,7 @@ void FileMergeAssistant::onDownPushButtonClicked()
 void FileMergeAssistant::onRemovePushButtonClicked()
 {
     auto items = ui->listWidget->selectedItems();
-    for (auto item : items) {
+    for (auto &item : items) {
         ui->listWidget->removeItemWidget(item);
         delete item;
     }
@@ -175,9 +175,10 @@ void FileMergeAssistant::setProgressBarRange()
     for (int i = 0; i < ui->listWidget->count(); ++i) {
         QString fileName = ui->listWidget->item(i)->text();
         QFile file(fileName);
-        file.open(QFile::ReadOnly);
-        allBytes += file.size();
-        file.close();
+        if (file.open(QFile::ReadOnly)) {
+            allBytes += file.size();
+            file.close();
+        }
     }
 
     ui->progressBar->setRange(0, allBytes);
