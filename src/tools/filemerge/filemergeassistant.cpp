@@ -65,7 +65,7 @@ void FileMergeAssistant::onImportPushButtonClicked()
     }
 
     ui->listWidget->clear();
-    for (const auto &file : files) {
+    for (const auto &file : std::as_const(files)) {
         ui->listWidget->addItem(file);
     }
 }
