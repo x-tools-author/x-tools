@@ -151,11 +151,13 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 
     connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
     connect(ui->checkBoxWrap, &QCheckBox::clicked, this, &Page::onWrapModeChanged);
+    connect(ui->checkBoxTerminalMode, &QCheckBox::clicked, this, &Page::onTerminalModeChanged);
 
     initUi();
 
     onShowStatisticianChanged(false);
     onDeviceTypeChanged();
+    onTerminalModeChanged();
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     ui->widgetController->setMaximumWidth(256);
@@ -588,9 +590,23 @@ void Page::onWrapModeChanged()
 {
     if (ui->checkBoxWrap->isChecked()) {
         ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapAnywhere);
+        ui->textBrowserOutput->setLineWrapMode(QTextEdit::WidgetWidth);
     } else {
         ui->textBrowserOutput->setWordWrapMode(QTextOption::NoWrap);
+        ui->textBrowserOutput->setLineWrapMode(QTextEdit::NoWrap);
     }
+}
+
+void Page::onTerminalModeChanged()
+{
+    bool terminalMode = ui->checkBoxTerminalMode->isChecked();
+    ui->checkBoxOutputRx->setEnabled(!terminalMode);
+    ui->checkBoxOutputTx->setEnabled(!terminalMode);
+    ui->checkBoxOutputFlag->setEnabled(!terminalMode);
+    ui->checkBoxOutputDate->setEnabled(!terminalMode);
+    ui->checkBoxOutputTime->setEnabled(!terminalMode);
+    ui->checkBoxOutputMs->setEnabled(!terminalMode);
+    ui->checkBoxWholeWord->setEnabled(terminalMode);
 }
 
 void Page::openDevice()

@@ -85,8 +85,10 @@ private:
     void onBytesRead(const QByteArray &bytes, const QString &from);
     void onBytesWritten(const QByteArray &bytes, const QString &to);
     void onWrapModeChanged();
+    void onTerminalModeChanged();
     void onSearchButtonClicked();
     void onSearchTextChanged();
+
     void performSearch();
     void highlightSearchResults(const QString &text, const QRegularExpression &regex);
     void highlightSearchResultsForLine(const QString &line, const QRegularExpression &regex);
