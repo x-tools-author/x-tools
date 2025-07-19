@@ -38,7 +38,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Make installer for Windows
-set(X_ASSISTANT_VERSION "1.1.0")
+set(X_ASSISTANT_VERSION "1.2.0")
 add_compile_definitions(X_ASSISTANT_VERSION="${X_ASSISTANT_VERSION}")
 if(WIN32)
   include(${CMAKE_SOURCE_DIR}/cmake/msix/msix.cmake)

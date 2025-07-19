@@ -296,9 +296,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # xApplications selector(just for Qt6.8.0 or later)
-set(X_APPS_ENABLED
-    OFF
-    CACHE BOOL "Enable x-apps selector" FORCE)
+option(X_APPS_ENABLED "Enable xApplications selector" OFF)
 if(NOT QT_VERSION VERSION_LESS "6.8.0" AND X_APPS_ENABLED)
   set(X_APPS "xTools")
   list(APPEND X_APPS "xSvg")
