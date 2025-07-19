@@ -601,6 +601,16 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QPlainTextEdit" name="plainTextEditInput">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>

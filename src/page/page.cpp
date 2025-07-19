@@ -492,6 +492,18 @@ void Page::onInputFormatChanged()
     setupTextFormatValidator(ui->lineEditInput, format);
     ui->lineEditInput->clear();
     ui->lineEditInput->setPlaceholderText(bytes2string(QByteArray("(null)"), format));
+
+    bool usingLineEdit = format == static_cast<int>(TextFormat::Bin);
+    usingLineEdit |= format == static_cast<int>(TextFormat::Oct);
+    usingLineEdit |= format == static_cast<int>(TextFormat::Dec);
+    usingLineEdit |= format == static_cast<int>(TextFormat::Hex);
+    if (usingLineEdit) {
+        ui->lineEditInput->show();
+        ui->plainTextEditInput->hide();
+    } else {
+        ui->lineEditInput->hide();
+        ui->plainTextEditInput->show();
+    }
 }
 
 void Page::onOpenButtonClicked()
@@ -1075,9 +1087,14 @@ void Page::highlightSearchResultsForLine(const QString &line, const QRegularExpr
 QByteArray Page::payload() const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
-    QString text = ui->lineEditInput->text();
-    if (text.isEmpty()) {
-        text = ui->lineEditInput->placeholderText();
+    QString text;
+    if (ui->lineEditInput->isVisible()) {
+        text = ui->lineEditInput->text();
+        if (text.isEmpty()) {
+            text = ui->lineEditInput->placeholderText();
+        }
+    } else {
+        text = ui->plainTextEditInput->toPlainText();
     }
 
     int format = ui->comboBoxInputFormat->currentData().toInt();
