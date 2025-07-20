@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>178</width>
-    <height>89</height>
+    <height>110</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,6 +45,12 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="labelMulticastIp">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Multicast IP</string>
      </property>
@@ -69,6 +75,12 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="labelMulticastPort">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Multicast Port</string>
      </property>

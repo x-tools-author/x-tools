@@ -91,6 +91,7 @@ enum class DeviceType {
     LocalSocket,
     LocalServer,
     UdpMulticast,
+    UdpBroadcast,
     //----------------------------------------------------------------------------------------------
     Hid = 0x00200000,
     SctpClient,

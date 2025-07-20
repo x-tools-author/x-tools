@@ -22,6 +22,7 @@
 #include "device/localsocketui.h"
 #include "device/tcpclientui.h"
 #include "device/tcpserverui.h"
+#include "device/udpbroadcastui.h"
 #include "device/udpclientui.h"
 #include "device/udpmulticastui.h"
 #include "device/udpserverui.h"
@@ -1125,6 +1126,8 @@ DeviceUi *Page::newDeviceUi(int type)
         return new UdpServerUi();
     case static_cast<int>(DeviceType::UdpMulticast):
         return new UdpMulticastUi();
+    case static_cast<int>(DeviceType::UdpBroadcast):
+        return new UdpBroadcastUi();
     case static_cast<int>(DeviceType::TcpClient):
         return new TcpClientUi();
     case static_cast<int>(DeviceType::TcpServer):
