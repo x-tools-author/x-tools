@@ -33,13 +33,17 @@ public:
         CRC_16_XMODEM,
         CRC_16_DNP,
         CRC_32,
-        CRC_32_MPEG2
+        CRC_32_MPEG2,
+        SUM_8 = 0x00100000,
+        SUM_16,
+        SUM_32,
+        SUM_64
     };
     Q_ENUM(Algorithm);
 
-    static QList<int> supportedAlgorithms();
+    static QList<int> supportedAlgorithms(bool enableSumChecks = false);
     static QString algorithmName(Algorithm algorithm);
-    static void setupAlgorithm(QComboBox *comboBox);
+    static void setupAlgorithm(QComboBox *comboBox, bool enableSumChecks = false);
     static uint32_t poly(Algorithm algorithm);
     static uint32_t xorValue(Algorithm algorithm);
     static uint32_t initialValue(Algorithm algorithm);

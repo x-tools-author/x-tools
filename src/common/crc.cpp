@@ -10,7 +10,7 @@
 
 #include <utility>
 
-QList<int> CRC::supportedAlgorithms()
+QList<int> CRC::supportedAlgorithms(bool enableSumChecks)
 {
     QList<int> Algorithms;
     Algorithms << static_cast<int>(Algorithm::CRC_8);
@@ -28,6 +28,14 @@ QList<int> CRC::supportedAlgorithms()
     Algorithms << static_cast<int>(Algorithm::CRC_16_DNP);
     Algorithms << static_cast<int>(Algorithm::CRC_32);
     Algorithms << static_cast<int>(Algorithm::CRC_32_MPEG2);
+
+    if (enableSumChecks) {
+        Algorithms << static_cast<int>(Algorithm::SUM_8);
+        Algorithms << static_cast<int>(Algorithm::SUM_16);
+        Algorithms << static_cast<int>(Algorithm::SUM_32);
+        Algorithms << static_cast<int>(Algorithm::SUM_64);
+    }
+
     return Algorithms;
 }
 
@@ -64,21 +72,34 @@ QString CRC::algorithmName(Algorithm Algorithm)
         return "CRC-32";
     case Algorithm::CRC_32_MPEG2:
         return "CRC-32/MPEG-2";
+    case Algorithm::SUM_8:
+        return "Sum 8-bit";
+    case Algorithm::SUM_16:
+        return "Sum 16-bit";
+    case Algorithm::SUM_32:
+        return "Sum 32-bit";
+    case Algorithm::SUM_64:
+        return "Sum 64-bit";
     default:
         return QObject::tr("Unknown");
     }
 }
 
-void CRC::setupAlgorithm(QComboBox *comboBox)
+void CRC::setupAlgorithm(QComboBox *comboBox, bool enableSumChecks)
 {
     if (!comboBox) {
         return;
     }
 
     comboBox->clear();
-    QList<int> algorithms = supportedAlgorithms();
+    QList<int> algorithms = supportedAlgorithms(enableSumChecks);
     for (const int &algorithm : std::as_const(algorithms)) {
         comboBox->addItem(algorithmName(static_cast<Algorithm>(algorithm)), algorithm);
+    }
+
+    int index = comboBox->findData(static_cast<int>(Algorithm::SUM_8));
+    if (index != -1) {
+        comboBox->insertSeparator(index);
     }
 }
 
@@ -113,6 +134,9 @@ uint32_t CRC::poly(CRC::Algorithm algorithm)
     case CRC::Algorithm::CRC_32:
     case CRC::Algorithm::CRC_32_MPEG2:
         poly = 0x04c11db7;
+        break;
+    default:
+        poly = 0x00000000; // Default case for unsupported algorithms
         break;
     }
 
@@ -151,6 +175,9 @@ uint32_t CRC::xorValue(CRC::Algorithm algorithm)
     case CRC::Algorithm::CRC_32_MPEG2:
         value = 0x00000000;
         break;
+    default:
+        value = 0x00000000; // Default case for unsupported algorithms
+        break;
     }
 
     return value;
@@ -186,6 +213,9 @@ uint32_t CRC::initialValue(CRC::Algorithm algorithm)
     case CRC::Algorithm::CRC_32_MPEG2:
         init = 0xffffffff;
         break;
+    default:
+        init = 0x00000000; // Default case for unsupported algorithms
+        break;
     }
 
     return init;
@@ -214,6 +244,9 @@ bool CRC::isInputReversal(CRC::Algorithm algorithm)
     case CRC::Algorithm::CRC_16_DNP:
     case CRC::Algorithm::CRC_32:
         reversal = true;
+        break;
+    default:
+        reversal = false; // Default case for unsupported algorithms
         break;
     }
 
@@ -244,6 +277,9 @@ bool CRC::isOutputReversal(CRC::Algorithm algorithm)
     case CRC::Algorithm::CRC_32:
         reversal = true;
         break;
+    default:
+        reversal = false; // Default case for unsupported algorithms
+        break;
     }
 
     return reversal;
@@ -273,6 +309,9 @@ int CRC::bitsWidth(CRC::Algorithm algorithm)
     case CRC::Algorithm::CRC_32:
     case CRC::Algorithm::CRC_32_MPEG2:
         ret = 32;
+        break;
+    default:
+        ret = -1; // Unsupported algorithm
         break;
     }
     return ret;
@@ -307,6 +346,9 @@ QString CRC::friendlyPoly(Algorithm algorithm)
     case Algorithm::CRC_32:
     case Algorithm::CRC_32_MPEG2:
         formula = QString("x32+x6+x3+x2+x6+x2+x1+x0+x8+x7+x5+x4+x2+x+1");
+        break;
+    default:
+        formula = QString("Unknown algorithm");
         break;
     }
 
@@ -361,10 +403,46 @@ T crcCalculate(const uint8_t *input, uint64_t length, CRC::Algorithm algorithm)
     return crc;
 }
 
+QByteArray sumCalculate(const QByteArray &data, CRC::Algorithm algorithm)
+{
+    QByteArray retBytes;
+    if (algorithm == CRC::Algorithm::SUM_8) {
+        uint8_t sum = 0;
+        for (char byte : data) {
+            sum += static_cast<uint8_t>(byte);
+        }
+        retBytes = QByteArray(reinterpret_cast<char *>(&sum), sizeof(sum));
+    } else if (algorithm == CRC::Algorithm::SUM_16) {
+        uint16_t sum = 0;
+        for (char byte : data) {
+            sum += static_cast<uint8_t>(byte);
+        }
+        retBytes = QByteArray(reinterpret_cast<char *>(&sum), sizeof(sum));
+    } else if (algorithm == CRC::Algorithm::SUM_32) {
+        uint32_t sum = 0;
+        for (char byte : data) {
+            sum += static_cast<uint8_t>(byte);
+        }
+        retBytes = QByteArray(reinterpret_cast<char *>(&sum), sizeof(sum));
+    } else if (algorithm == CRC::Algorithm::SUM_64) {
+        uint64_t sum = 0;
+        for (char byte : data) {
+            sum += static_cast<uint8_t>(byte);
+        }
+        retBytes = QByteArray(reinterpret_cast<char *>(&sum), sizeof(sum));
+    }
+
+    return retBytes;
+}
+
 QByteArray CRC::calculate(const QByteArray &data, int algorithm)
 {
     QByteArray retBytes;
     auto cookedAlgorithm = static_cast<CRC::Algorithm>(algorithm);
+    if (cookedAlgorithm >= CRC::Algorithm::SUM_8 && cookedAlgorithm <= CRC::Algorithm::SUM_64) {
+        return sumCalculate(data, cookedAlgorithm);
+    }
+
     auto const bw = bitsWidth(cookedAlgorithm);
     auto *ptr = reinterpret_cast<const uint8_t *>(data.constData());
     if (bw == 8) {
