@@ -10,6 +10,10 @@
 
 #include "common/xtools.h"
 
+#if 0
+#define X_UDP_CLIENT_MULTICAST
+#endif
+
 UdpClient::UdpClient(QObject *parent)
     : SocketClient(parent)
 {}
@@ -26,6 +30,7 @@ QObject *UdpClient::initDevice()
         return Q_NULLPTR;
     }
 
+#ifdef X_UDP_CLIENT_MULTICAST
     if (m_enableMulticast) {
         if (!m_udpSocket->joinMulticastGroup(QHostAddress(m_multicastAddress))) {
             qWarning() << "Failed to join multicast group:" << m_multicastAddress << ":"
@@ -38,6 +43,7 @@ QObject *UdpClient::initDevice()
                     << ", port is:" << m_multicastPort;
         }
     }
+#endif
 
     connect(m_udpSocket, &QUdpSocket::readyRead, m_udpSocket, [this]() { readPendingDatagrams(); });
     connect(m_udpSocket, xUdpSocketErrorOccurred, m_udpSocket, [this]() {
@@ -59,6 +65,7 @@ void UdpClient::deinitDevice()
 
 void UdpClient::writeActually(const QByteArray &bytes)
 {
+#ifdef X_UDP_CLIENT_MULTICAST
     if (m_enableMulticast) {
         writeDatagram(bytes, m_multicastAddress, m_multicastPort);
     }
@@ -66,6 +73,9 @@ void UdpClient::writeActually(const QByteArray &bytes)
     if (!m_justMulticast) {
         writeDatagram(bytes, m_serverAddress, m_serverPort);
     }
+#else
+    writeDatagram(bytes, m_serverAddress, m_serverPort);
+#endif
 }
 
 void UdpClient::readPendingDatagrams()
