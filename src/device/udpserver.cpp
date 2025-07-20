@@ -28,6 +28,10 @@ QObject *UdpServer::initDevice()
 
     connect(m_udpSocket, &QUdpSocket::readyRead, m_udpSocket, [this]() { readPendingDatagrams(); });
     connect(m_udpSocket, xUdpSocketErrorOccurred, m_udpSocket, [this]() {
+        if (m_udpSocket->error() == QAbstractSocket::ConnectionRefusedError) {
+            return;
+        }
+
         emit errorOccurred(m_udpSocket->errorString());
     });
 
@@ -94,15 +98,14 @@ void UdpServer::writeDatagram(const QByteArray &bytes, const QString &flag)
 
     QString const address = client.first;
     quint16 const port = client.second;
-
     qint64 ret = m_udpSocket->writeDatagram(bytes, QHostAddress(address), port);
     if (ret == bytes.length()) {
-        emit bytesWritten(bytes, makeFlag(address, port));
+        if (m_udpSocket->error() == QAbstractSocket::ConnectionRefusedError) {
+            removeClient(flag);
+        } else {
+            emit bytesWritten(bytes, makeFlag(address, port));
+        }
     } else {
-#if 0
-        emit errorOccurred(m_udpSocket->errorString());
-#else
         removeClient(flag);
-#endif
     }
 }
