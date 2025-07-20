@@ -90,6 +90,7 @@ enum class DeviceType {
     WebSocketServer,
     LocalSocket,
     LocalServer,
+    UdpMulticast,
     //----------------------------------------------------------------------------------------------
     Hid = 0x00200000,
     SctpClient,

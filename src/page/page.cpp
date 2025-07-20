@@ -23,6 +23,7 @@
 #include "device/tcpclientui.h"
 #include "device/tcpserverui.h"
 #include "device/udpclientui.h"
+#include "device/udpmulticastui.h"
 #include "device/udpserverui.h"
 #include "devicesettings.h"
 #include "emitter/emitterview.h"
@@ -1122,6 +1123,8 @@ DeviceUi *Page::newDeviceUi(int type)
         return new UdpClientUi();
     case static_cast<int>(DeviceType::UdpServer):
         return new UdpServerUi();
+    case static_cast<int>(DeviceType::UdpMulticast):
+        return new UdpMulticastUi();
     case static_cast<int>(DeviceType::TcpClient):
         return new TcpClientUi();
     case static_cast<int>(DeviceType::TcpServer):

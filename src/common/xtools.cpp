@@ -72,6 +72,7 @@ QList<int> supportedDeviceTypes()
 #endif
         deviceTypes << static_cast<int>(DeviceType::UdpClient);
         deviceTypes << static_cast<int>(DeviceType::UdpServer);
+        deviceTypes << static_cast<int>(DeviceType::UdpMulticast);
         deviceTypes << static_cast<int>(DeviceType::TcpClient);
         deviceTypes << static_cast<int>(DeviceType::TcpServer);
 #ifdef X_ENABLE_WEB_SOCKET
@@ -101,6 +102,8 @@ QString deviceName(int type)
         return QObject::tr("UDP Client");
     case static_cast<int>(DeviceType::UdpServer):
         return QObject::tr("UDP Server");
+    case static_cast<int>(DeviceType::UdpMulticast):
+        return QObject::tr("UDP Multicast");
     case static_cast<int>(DeviceType::TcpClient):
         return QObject::tr("TCP Client");
     case static_cast<int>(DeviceType::TcpServer):
