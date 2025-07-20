@@ -360,10 +360,7 @@ void Page::initUi()
 
 void Page::initUiDeviceControl()
 {
-    connect(ui->comboBoxDeviceTypes,
-            qOverload<int>(xComboBoxActivated),
-            this,
-            &Page::onDeviceTypeChanged);
+    connect(ui->comboBoxDeviceTypes, xComboBoxActivated, this, &Page::onDeviceTypeChanged);
     connect(ui->pushButtonDeviceOpen, &QPushButton::clicked, this, &Page::onOpenButtonClicked);
 
     QPushButton *target = ui->pushButtonDeviceSettings;
@@ -401,14 +398,8 @@ void Page::initUiOutputControl()
 
 void Page::initUiInputControl()
 {
-    connect(ui->comboBoxInputFormat,
-            qOverload<int>(xComboBoxActivated),
-            this,
-            &Page::onInputFormatChanged);
-    connect(ui->comboBoxInputInterval,
-            qOverload<int>(xComboBoxActivated),
-            this,
-            &Page::onCycleIntervalChanged);
+    connect(ui->comboBoxInputFormat, xComboBoxActivated, this, &Page::onInputFormatChanged);
+    connect(ui->comboBoxInputInterval, xComboBoxActivated, this, &Page::onCycleIntervalChanged);
     connect(ui->pushButtonInputWriteBytes, &QPushButton::clicked, this, &Page::writeBytes);
 
     setupTextFormat(ui->comboBoxInputFormat);
