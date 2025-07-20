@@ -76,7 +76,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
 # Qt6 is preferred, but Qt5 is also supported
-find_package(QT NAMES Qt5 Qt6)
+find_package(QT NAMES Qt5 Qt6 REQUIRED)
 if(QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
   list(APPEND X_QT_COMPONENTS CorePrivate)
   list(APPEND X_QT_COMPONENTS GuiPrivate)
