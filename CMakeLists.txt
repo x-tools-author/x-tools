@@ -59,6 +59,8 @@ message(STATUS "[xTools]CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION
 # --------------------------------------------------------------------------------------------------
 # Global variables
 set(X_BIN ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
+set(tmp ${CMAKE_CURRENT_SOURCE_DIR}/libs)
+set(X_LIBS ${tmp}/${CMAKE_BUILD_TYPE}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
 option(X_MAGIC "The magic option..." OFF)
 if(X_MAGIC)
   add_compile_definitions(X_MAGIC)
@@ -170,6 +172,16 @@ include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libiconv.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qcustomplot.cmake)
+
+# --------------------------------------------------------------------------------------------------
+# Lua module
+if(NOT X_LUA)
+  file(GLOB LUA_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/common/luarunner*")
+  foreach(file ${LUA_FILES})
+    list(REMOVE_ITEM X_SOURCES ${file})
+    message(STATUS "[Lua]Remove file: ${file}")
+  endforeach()
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
@@ -297,8 +309,10 @@ if(X_PLOT)
   list(APPEND X_LIBS QCustomPlot)
 endif()
 if(X_LUA)
-  list(APPEND X_LIBS ${xLuaLib})
+  list(APPEND X_LIBS ${X_LUA_LIB})
 endif()
+
+message(STATUS "[xTools]Link libraries: ${X_LIBS}")
 
 # --------------------------------------------------------------------------------------------------
 # xApplications selector(just for Qt6.8.0 or later)
