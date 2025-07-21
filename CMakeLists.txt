@@ -161,6 +161,7 @@ list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 
 # --------------------------------------------------------------------------------------------------
 # 3rd module
+include(${CMAKE_SOURCE_DIR}/cmake/lua.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qxlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
@@ -292,6 +293,9 @@ if(X_ICONV)
 endif()
 if(X_PLOT)
   list(APPEND X_LIBS QCustomPlot)
+endif()
+if(X_LUA)
+  list(APPEND X_LIBS ${xLuaLib})
 endif()
 
 # --------------------------------------------------------------------------------------------------
