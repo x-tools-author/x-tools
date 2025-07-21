@@ -126,6 +126,11 @@ endfunction()
 # --------------------------------------------------------------------------------------------------
 # Deploy Qt for Windows
 function(x_deploy_qt_for_windows target)
+  get_target_property(QT_TARGET_TYPE Qt${QT_VERSION_MAJOR}::Core TYPE)
+  if(QT_TARGET_TYPE STREQUAL "STATIC_LIBRARY")
+    return()
+  endif()
+
   if(NOT DEFINED WINDEPLOYQT_EXECUTABLE)
     set(WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
   endif()
