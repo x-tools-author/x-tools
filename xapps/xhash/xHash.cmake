@@ -10,7 +10,7 @@ list(APPEND PRO_FILES ${TOOLS_FILES})
 list(APPEND PRO_FILES ${X_HASH_FILES})
 
 include_directories(${CMAKE_SOURCE_DIR}/xapps)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_BIN}/xHash)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_BINS_DIR}/xHash)
 qt_add_executable(xHash ${PRO_FILES})
 x_deploy_qt(xHash)
 x_generate_translations(xHash)

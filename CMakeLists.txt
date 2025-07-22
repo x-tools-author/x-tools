@@ -78,13 +78,13 @@ endif()
 
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_QT_COMPONENTS})
 
-set(libs_dir1 ${CMAKE_CURRENT_SOURCE_DIR}/libs)
-set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/${QT_VERSION}/${CMAKE_CXX_COMPILER_ID})
-set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
-
 # --------------------------------------------------------------------------------------------------
 # Global variables
-set(X_BIN ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
+
+# Binaries
+set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
+
+# Libraries
 set(tmp ${CMAKE_CURRENT_SOURCE_DIR}/libs/${QT_VERSION}/${CMAKE_BUILD_TYPE})
 set(X_LIBS_DIR ${tmp}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
 message(STATUS "[xTools]X_LIBS_DIR: ${X_LIBS_DIR}")
@@ -377,7 +377,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # xTools application
-set(bin ${X_BIN}/xTools)
+set(bin ${X_BINS_DIR}/xTools)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
 
 # Apple platforms settings
