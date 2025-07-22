@@ -57,16 +57,6 @@ message(STATUS "[xTools]CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "[xTools]CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 
 # --------------------------------------------------------------------------------------------------
-# Global variables
-set(X_BIN ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
-set(tmp ${CMAKE_CURRENT_SOURCE_DIR}/libs)
-set(X_LIBS ${tmp}/${CMAKE_BUILD_TYPE}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
-option(X_MAGIC "The magic option..." OFF)
-if(X_MAGIC)
-  add_compile_definitions(X_MAGIC)
-endif()
-
-# --------------------------------------------------------------------------------------------------
 # Qt module
 list(APPEND X_QT_COMPONENTS Gui)
 list(APPEND X_QT_COMPONENTS Svg)
@@ -91,8 +81,19 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_QT_COMPONENTS})
 set(libs_dir1 ${CMAKE_CURRENT_SOURCE_DIR}/libs)
 set(libs_dir2 ${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/${QT_VERSION}/${CMAKE_CXX_COMPILER_ID})
 set(X_DEPLOY_LIBS_DIR ${libs_dir1}/${libs_dir2})
-message(STATUS "[xTools]Deploy libraries directory: ${X_DEPLOY_LIBS_DIR}")
+
+# --------------------------------------------------------------------------------------------------
+# Global variables
+set(X_BIN ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
+set(tmp ${CMAKE_CURRENT_SOURCE_DIR}/libs/${QT_VERSION}/${CMAKE_BUILD_TYPE})
+set(X_LIBS_DIR ${tmp}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
+message(STATUS "[xTools]X_LIBS_DIR: ${X_LIBS_DIR}")
 message(STATUS "------------------------------------------------------------")
+
+option(X_MAGIC "The magic option..." OFF)
+if(X_MAGIC)
+  add_compile_definitions(X_MAGIC)
+endif()
 
 set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
 if(${QT_VERSION} VERSION_LESS "6.0.0" AND WIN32)

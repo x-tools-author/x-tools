@@ -16,7 +16,7 @@ else()
   set(x_qrencode "qrencoded")
 endif()
 
-set(qrencode_dst_dir ${X_LIBS}/${qrencode_package_name})
+set(qrencode_dst_dir ${X_LIBS_DIR}/${qrencode_package_name})
 if(EXISTS ${qrencode_dst_dir})
   link_directories(${qrencode_dst_dir}/lib)
   include_directories(${qrencode_dst_dir}/include)
@@ -26,13 +26,13 @@ else()
   set_property(TARGET qrencode PROPERTY FOLDER "3rd")
 
   add_custom_command(
-    OUTPUT ${X_LIBS}/${qrencode_package_name}/install.stamp
-    COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_LIBS}/${qrencode_package_name}
-    COMMAND ${CMAKE_COMMAND} -E touch ${X_LIBS}/${qrencode_package_name}/install.stamp
+    OUTPUT ${X_LIBS_DIR}/${qrencode_package_name}/install.stamp
+    COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_LIBS_DIR}/${qrencode_package_name}
+    COMMAND ${CMAKE_COMMAND} -E touch ${X_LIBS_DIR}/${qrencode_package_name}/install.stamp
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${qrencode_package_name}
-    COMMENT "Installing qrencode to ${X_LIBS}/${qrencode_package_name}")
+    COMMENT "Installing qrencode to ${X_LIBS_DIR}/${qrencode_package_name}")
   add_custom_target(qrencode_auto_install ALL
-                    DEPENDS ${X_LIBS}/${qrencode_package_name}/install.stamp)
+                    DEPENDS ${X_LIBS_DIR}/${qrencode_package_name}/install.stamp)
   add_dependencies(qrencode_auto_install qrencode)
   set_property(TARGET qrencode_auto_install PROPERTY FOLDER "3rd")
 endif()

@@ -135,7 +135,7 @@ function(x_deploy_qt_for_windows target)
     set(WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
   endif()
 
-  if (NOT EXISTS ${WINDEPLOYQT_EXECUTABLE})
+  if(NOT EXISTS ${WINDEPLOYQT_EXECUTABLE})
     return()
   endif()
 
@@ -246,7 +246,7 @@ endfunction()
 function(x_install_3rd_library target_name dir_name)
   add_custom_target(
     ${target_name}-deploy
-    COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_DEPLOY_LIBS_DIR}/${dir_name}
+    COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_LIBS_DIR}/${dir_name}
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${dir_name}
     COMMENT "Deploy 3rd libraries")
 endfunction()

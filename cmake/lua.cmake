@@ -29,9 +29,9 @@ include_directories(${lua_root})
 message(STATUS "[lua] Include dir: ${lua_root}")
 
 if(MSVC)
-  set(lua_lib_file ${X_LIBS}/lua-${lua_version}/lua.lib)
+  set(lua_lib_file ${X_LIBS_DIR}/lua-${lua_version}/lua.lib)
 else()
-  set(lua_lib_file ${X_LIBS}/lua-${lua_version}/lua.a)
+  set(lua_lib_file ${X_LIBS_DIR}/lua-${lua_version}/lua.a)
 endif()
 
 get_filename_component(lua_lib_dir ${lua_lib_file} DIRECTORY)

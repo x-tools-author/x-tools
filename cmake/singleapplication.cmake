@@ -26,7 +26,7 @@ endif()
 # Unsupported yet...
 return()
 
-set(lib_dir "${X_LIBS}/${package_name}")
+set(lib_dir "${X_LIBS_DIR}/${package_name}")
 if(EXISTS "${lib_dir}/include")
   set(CMAKE_PREFIX_PATH "${lib_dir}" ${CMAKE_PREFIX_PATH})
   find_package(SingleApplication REQUIRED)
@@ -35,14 +35,14 @@ else()
   set_property(TARGET SingleApplication PROPERTY FOLDER "3rd")
 
   add_custom_command(
-    OUTPUT "${X_LIBS}/${package_name}/install.stamp"
-    COMMAND ${CMAKE_COMMAND} --install . --prefix "${X_LIBS}/${package_name}"
-    COMMAND ${CMAKE_COMMAND} -E touch "${X_LIBS}/${package_name}/install.stamp"
+    OUTPUT "${X_LIBS_DIR}/${package_name}/install.stamp"
+    COMMAND ${CMAKE_COMMAND} --install . --prefix "${X_LIBS_DIR}/${package_name}"
+    COMMAND ${CMAKE_COMMAND} -E touch "${X_LIBS_DIR}/${package_name}/install.stamp"
     WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/3rd/${package_name}"
-    COMMENT "Installing SingleApplication to ${X_LIBS}/${package_name}")
+    COMMENT "Installing SingleApplication to ${X_LIBS_DIR}/${package_name}")
   add_custom_target(SingleApplication_auto_install ALL
-                    DEPENDS "${X_LIBS}/${package_name}/install.stamp")
+                    DEPENDS "${X_LIBS_DIR}/${package_name}/install.stamp")
   add_dependencies(SingleApplication_auto_install SingleApplication)
   set_property(TARGET SingleApplication_auto_install PROPERTY FOLDER "3rd")
-  message(STATUS "SingleApplication installed to ${X_LIBS}/${package_name}")
+  message(STATUS "SingleApplication installed to ${X_LIBS_DIR}/${package_name}")
 endif()

@@ -28,9 +28,9 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/3rd/qcustomplot")
 endif()
 
 if(MSVC)
-  set(lib_file "${X_LIBS}/qcustomplot-${packet_version}/QCustomPlot.lib")
+  set(lib_file "${X_LIBS_DIR}/qcustomplot-${packet_version}/QCustomPlot.lib")
 else()
-  set(lib_file "${X_LIBS}/qcustomplot-${packet_version}/QCustomPlot.a")
+  set(lib_file "${X_LIBS_DIR}/qcustomplot-${packet_version}/QCustomPlot.a")
 endif()
 
 include_directories(${CMAKE_SOURCE_DIR}/3rd/qcustomplot)

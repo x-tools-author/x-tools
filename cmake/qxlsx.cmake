@@ -24,7 +24,7 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Add QXlsx module...
 string(TOLOWER ${qxlsx_package_name} qxlsx_package_name_lower)
-set(qxlsx_dst_dir ${X_LIBS}/${qxlsx_package_name_lower})
+set(qxlsx_dst_dir ${X_LIBS_DIR}/${qxlsx_package_name_lower})
 if(EXISTS ${qxlsx_dst_dir}/install.stamp)
   set(CMAKE_PREFIX_PATH ${qxlsx_dst_dir} ${CMAKE_PREFIX_PATH})
   include_directories(${qxlsx_dst_dir}/include/QXlsxQt${QT_VERSION_MAJOR})
@@ -34,13 +34,13 @@ else()
   set_property(TARGET QXlsx PROPERTY FOLDER "3rd")
 
   add_custom_command(
-    OUTPUT ${X_LIBS}/${qxlsx_package_name_lower}/install.stamp
-    COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_LIBS}/${qxlsx_package_name_lower}
-    COMMAND ${CMAKE_COMMAND} -E touch ${X_LIBS}/${qxlsx_package_name_lower}/install.stamp
+    OUTPUT ${X_LIBS_DIR}/${qxlsx_package_name_lower}/install.stamp
+    COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_LIBS_DIR}/${qxlsx_package_name_lower}
+    COMMAND ${CMAKE_COMMAND} -E touch ${X_LIBS_DIR}/${qxlsx_package_name_lower}/install.stamp
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${qxlsx_package_name_lower}/QXlsx
-    COMMENT "Installing QXlsx to ${X_LIBS}/${qxlsx_package_name_lower}")
+    COMMENT "Installing QXlsx to ${X_LIBS_DIR}/${qxlsx_package_name_lower}")
   add_custom_target(QXlsx_auto_install ALL
-                    DEPENDS ${X_LIBS}/${qxlsx_package_name_lower}/install.stamp)
+                    DEPENDS ${X_LIBS_DIR}/${qxlsx_package_name_lower}/install.stamp)
   add_dependencies(QXlsx_auto_install QXlsx)
   set_property(TARGET QXlsx_auto_install PROPERTY FOLDER "3rd")
 endif()
