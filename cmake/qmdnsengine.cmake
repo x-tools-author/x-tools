@@ -10,22 +10,22 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Add qmdns module...
-set(qmdns_dst_dir ${X_DEPLOY_LIBS_DIR}/${qmdns_package_name})
-if(EXISTS ${qmdns_dst_dir})
+set(qmdns_dst_dir ${X_LIBS}/${qmdns_package_name})
+if(EXISTS ${qmdns_dst_dir}/include)
   set(CMAKE_PREFIX_PATH ${qmdns_dst_dir} ${CMAKE_PREFIX_PATH})
   find_package(qmdnsengine REQUIRED)
 else()
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${qmdns_package_name})
   set_property(TARGET qmdnsengine PROPERTY FOLDER "3rd")
-endif()
 
-# --------------------------------------------------------------------------------------------------
-# Install qmdns library to libs
-function(x_install_qmdns target)
-  add_custom_target(
-    qmdnsengine_install
-    COMMAND ${CMAKE_COMMAND} --install . --prefix ${qmdns_dst_dir}
+  add_custom_command(
+    OUTPUT ${X_LIBS}/${qmdns_package_name}/install.stamp
+    COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_LIBS}/${qmdns_package_name}
+    COMMAND ${CMAKE_COMMAND} -E touch ${X_LIBS}/${qmdns_package_name}/install.stamp
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${qmdns_package_name}
-    SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/qmdnsengine.cmake)
-  set_property(TARGET qmdnsengine_install PROPERTY FOLDER "3rd")
-endfunction()
+    COMMENT "Installing qmdnsengine to ${X_LIBS}/${qmdns_package_name}")
+  add_custom_target(qmdnsengine_auto_install ALL
+                    DEPENDS ${X_LIBS}/${qmdns_package_name}/install.stamp)
+  add_dependencies(qmdnsengine_auto_install qmdnsengine)
+  set_property(TARGET qmdnsengine_auto_install PROPERTY FOLDER "3rd")
+endif()

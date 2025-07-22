@@ -27,7 +27,13 @@ endif()
 set(lua_root ${CMAKE_CURRENT_SOURCE_DIR}/3rd/lua-${lua_version})
 include_directories(${lua_root})
 message(STATUS "[lua] Include dir: ${lua_root}")
-set(lua_lib_file ${X_LIBS}/lua-${lua_version}/lua.lib)
+
+if(MSVC)
+  set(lua_lib_file ${X_LIBS}/lua-${lua_version}/lua.lib)
+else()
+  set(lua_lib_file ${X_LIBS}/lua-${lua_version}/lua.a)
+endif()
+
 get_filename_component(lua_lib_dir ${lua_lib_file} DIRECTORY)
 
 file(GLOB LUA_H ${lua_root}/*.h)

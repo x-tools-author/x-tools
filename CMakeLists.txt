@@ -172,6 +172,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libiconv.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qcustomplot.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/singleapplication.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Lua module
@@ -286,7 +287,7 @@ list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Gui)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Network)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Svg)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
-list(APPEND X_LIBS ${x_qrencode} glog::glog qmdnsengine)
+list(APPEND X_LIBS qrencode glog::glog qmdnsengine)
 if(X_ENABLE_SERIAL_PORT)
   list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::SerialPort)
 endif()
@@ -392,13 +393,9 @@ endif()
 
 x_add_executable(xTools ${X_SOURCES})
 target_link_libraries(xTools PRIVATE ${X_LIBS})
-
 x_generate_translations(xTools)
 x_output_env(xTools)
 x_deploy_qt(xTools)
-x_install_qxlsx(xTools)
-x_install_qmdns(xTools)
-x_install_qrencode(xTools)
 
 if(WIN32 AND MSVC)
   target_link_libraries(xTools PRIVATE Dwmapi)

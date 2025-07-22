@@ -11,7 +11,7 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Add glog module...
 set(glog_dst_dir ${X_LIBS}/${glog_package_name})
-if(EXISTS ${glog_dst_dir})
+if(EXISTS ${glog_dst_dir}/include)
   set(CMAKE_PREFIX_PATH ${glog_dst_dir} ${CMAKE_PREFIX_PATH})
   find_package(glog REQUIRED)
 else()
@@ -24,6 +24,7 @@ else()
     COMMAND ${CMAKE_COMMAND} -E touch ${X_LIBS}/${glog_package_name}/install.stamp
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${glog_package_name}
     COMMENT "Installing glog to ${X_LIBS}/${glog_package_name}")
-  add_custom_target(glog_install ALL DEPENDS ${X_LIBS}/${glog_package_name}/install.stamp)
-  add_dependencies(glog_install glog)
+  add_custom_target(glog_auto_install ALL DEPENDS ${X_LIBS}/${glog_package_name}/install.stamp)
+  add_dependencies(glog_auto_install glog)
+  set_property(TARGET glog_auto_install PROPERTY FOLDER "3rd")
 endif()

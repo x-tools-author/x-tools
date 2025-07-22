@@ -27,13 +27,21 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/3rd/qcustomplot")
   endif()
 endif()
 
-# cmake-format: off
-set(X_PLOT ON CACHE BOOL "Enable the custom plot library" FORCE)
-if(X_PLOT)
-  add_compile_definitions(X_PLOT)
-  set(tmp "${CMAKE_SOURCE_DIR}/3rd/qcustomplot")
-  add_library(QCustomPlot STATIC "${tmp}/qcustomplot.cpp" "${tmp}/qcustomplot.h")
-  target_link_libraries(QCustomPlot PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui
-                        Qt${QT_VERSION_MAJOR}::Widgets)
+if(MSVC)
+  set(lib_file "${X_LIBS}/qcustomplot-${packet_version}/QCustomPlot.lib")
+else()
+  set(lib_file "${X_LIBS}/qcustomplot-${packet_version}/QCustomPlot.a")
 endif()
-# cmake-format: on
+
+include_directories(${CMAKE_SOURCE_DIR}/3rd/qcustomplot)
+get_filename_component(lib_dir ${lib_file} DIRECTORY)
+if(EXISTS ${lib_file})
+  link_directories(${lib_dir})
+else()
+  file(GLOB QCUSTOMPLOT_FILES "${CMAKE_SOURCE_DIR}/3rd/qcustomplot/*.*")
+  add_library(QCustomPlot STATIC ${QCUSTOMPLOT_FILES})
+  target_link_libraries(QCustomPlot Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui
+                        Qt${QT_VERSION_MAJOR}::Widgets)
+  set_target_properties(QCustomPlot PROPERTIES FOLDER "3rd")
+  set_target_properties(QCustomPlot PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${lib_dir})
+endif()
