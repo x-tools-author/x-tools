@@ -37,7 +37,7 @@ else()
     OUTPUT ${X_LIBS_DIR}/${qxlsx_package_name_lower}/install.stamp
     COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_LIBS_DIR}/${qxlsx_package_name_lower}
     COMMAND ${CMAKE_COMMAND} -E touch ${X_LIBS_DIR}/${qxlsx_package_name_lower}/install.stamp
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${qxlsx_package_name_lower}/QXlsx
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${qxlsx_package_name}/QXlsx
     COMMENT "Installing QXlsx to ${X_LIBS_DIR}/${qxlsx_package_name_lower}")
   add_custom_target(QXlsx_auto_install ALL
                     DEPENDS ${X_LIBS_DIR}/${qxlsx_package_name_lower}/install.stamp)
