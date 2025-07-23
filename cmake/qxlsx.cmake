@@ -30,7 +30,7 @@ if(EXISTS ${qxlsx_dst_dir}/install.stamp)
   include_directories(${qxlsx_dst_dir}/include/QXlsxQt${QT_VERSION_MAJOR})
   find_package(QXlsxQt${QT_VERSION_MAJOR} REQUIRED)
 else()
-  add_subdirectory(${CMAKE_SOURCE_DIR}/3rd/${qxlsx_package_name_lower}/QXlsx)
+  add_subdirectory(${CMAKE_SOURCE_DIR}/3rd/${qxlsx_package_name}/QXlsx)
   set_property(TARGET QXlsx PROPERTY FOLDER "3rd")
 
   add_custom_command(
