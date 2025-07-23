@@ -274,7 +274,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
 
 QUrl MainWindow::storeUrl() const
 {
-    return QUrl("https://www.microsoft.com/store/apps/9P29H1NDNKBB");
+    return QUrl("https://apps.microsoft.com/detail/9p29h1ndnkbb");
 }
 
 void MainWindow::initMenuBar()
