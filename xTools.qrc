@@ -15,5 +15,6 @@
         <file>res/images/x_tools_qq.jpg</file>
         <file>res/icons/bar.svg</file>
         <file>res/icons/search.svg</file>
+        <file>res/icons/function.svg</file>
     </qresource>
 </RCC>

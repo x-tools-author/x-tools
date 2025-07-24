@@ -160,6 +160,8 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     onShowStatisticianChanged(false);
     onDeviceTypeChanged();
     onTerminalModeChanged();
+    onInputFormatChanged();
+    updateChartUi();
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     ui->widgetController->setMaximumWidth(256);
@@ -482,9 +484,11 @@ void Page::onCycleIntervalChanged()
 void Page::onInputFormatChanged()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
+    QString placeholderText = bytes2string(QByteArray("(null)"), format);
     setupTextFormatValidator(ui->lineEditInput, format);
     ui->lineEditInput->clear();
-    ui->lineEditInput->setPlaceholderText(bytes2string(QByteArray("(null)"), format));
+    ui->lineEditInput->setPlaceholderText(placeholderText);
+    ui->plainTextEditInput->setPlaceholderText(placeholderText);
 
     bool usingLineEdit = format == static_cast<int>(TextFormat::Bin);
     usingLineEdit |= format == static_cast<int>(TextFormat::Oct);
@@ -1088,6 +1092,9 @@ QByteArray Page::payload() const
         }
     } else {
         text = ui->plainTextEditInput->toPlainText();
+        if (text.isEmpty()) {
+            text = ui->plainTextEditInput->placeholderText();
+        }
     }
 
     int format = ui->comboBoxInputFormat->currentData().toInt();
