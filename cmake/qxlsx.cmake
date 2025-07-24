@@ -3,6 +3,11 @@
 set(qxlsx_version "1.4.10")
 set(qxlsx_package_name "QXlsx-${qxlsx_version}")
 
+if(NOT QT_VERSION VERSION_GREATER_EQUAL "5.11.0")
+  set(qxlsx_version "1.4.7")
+  set(qxlsx_package_name "QXlsx-${qxlsx_version}")
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # Download QXlsx zip...
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/3rd/${qxlsx_package_name}.zip)
