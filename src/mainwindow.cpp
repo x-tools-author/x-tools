@@ -525,7 +525,7 @@ void MainWindow::initMenuLanguage()
     QMap<QString, QString> languageFlagNameMap;
     languageFlagNameMap.insert("zh_CN", "简体中文");
     languageFlagNameMap.insert("en", "English");
-#if 0
+#if 1
     languageFlagNameMap.insert("zh_TW", "繁體中文");
     languageFlagNameMap.insert("ar", "العربية");
     languageFlagNameMap.insert("cs", "Čeština");
