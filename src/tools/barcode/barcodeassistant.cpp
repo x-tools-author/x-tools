@@ -9,7 +9,11 @@
 #include "barcodeassistant.h"
 #include "ui_barcodeassistant.h"
 
+#if defined(X_ZINT_USING_SRC)
+#include <backend_qt/qzint.h>
+#else
 #include <qzint.h>
+#endif
 
 #include <QCompleter>
 #include <QFileDialog>
@@ -17,6 +21,8 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QStringListModel>
+
+#include "common/xtools.h"
 
 #if 0
 #define X_ENABLE_COMPLETER
@@ -30,7 +36,7 @@ BarCodeAssistant::BarCodeAssistant(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle(tr("Barcode Assistant"));
-    resize(800, 600);
+    resize(720, 480);
 
     setupTypeComboBox();
 
@@ -48,10 +54,7 @@ BarCodeAssistant::BarCodeAssistant(QWidget *parent)
             this,
             &BarCodeAssistant::onTypeComboBoxTextChanged);
 #endif
-    connect(ui->comboBoxType,
-            &QComboBox::activated,
-            this,
-            &BarCodeAssistant::onRefreshButtonClicked);
+    connect(ui->comboBoxType, xComboBoxActivated, this, &BarCodeAssistant::onRefreshButtonClicked);
     connect(ui->plainTextEdit,
             &QPlainTextEdit::textChanged,
             this,

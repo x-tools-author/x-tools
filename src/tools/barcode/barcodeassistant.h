@@ -20,7 +20,7 @@ class BarCodeAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    explicit BarCodeAssistant(QWidget *parent = nullptr);
+    Q_INVOKABLE explicit BarCodeAssistant(QWidget *parent = nullptr);
     ~BarCodeAssistant();
 
     void onExportButtonClicked();

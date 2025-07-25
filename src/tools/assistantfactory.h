@@ -30,8 +30,9 @@ private:
         AssistantTypePing,
         AssistantTypeFileMerge,
         AssistantTypeQRCode,
-        AssistantTypeCANBus,
-        AssistantTypeModbus,
+        AssistantTypeBarcode,
+        AssistantTypeCANBus = 100,
+        AssistantTypeModbus
     };
 
 public:

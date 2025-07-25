@@ -55,6 +55,7 @@ else()
   add_custom_target(QZint_auto_install ALL DEPENDS ${X_LIBS_DIR}/${file_name}/install.stamp)
   add_dependencies(QZint_auto_install QZint zint-qt zint-static)
   set_property(TARGET QZint_auto_install PROPERTY FOLDER "3rd")
+  add_compile_definitions(X_ZINT_USING_SRC)
 endif()
 
 set(X_ZINT
