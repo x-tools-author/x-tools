@@ -7,13 +7,28 @@
  * code directory.
  **************************************************************************************************/
 #include <QApplication>
+#include <QDateTime>
 
+#include "x/xapp.h"
 #include "xcode.h"
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication::setOrganizationName("xTools");
+    QApplication::setApplicationName("xCode");
+    QApplication::setApplicationVersion("1.0.0");
+
+    xApp app(argc, argv);
+
+    auto settings = app.settings();
+    settings->setValue("Application/boost", QDateTime::currentDateTime().toString(Qt::ISODate));
+
+    app.setupHdpi();
+    app.setupTheme();
+    app.setupLanguage();
+
     xCode w;
     w.show();
-    return a.exec();
+    w.generateBarcode();
+    return app.exec();
 }

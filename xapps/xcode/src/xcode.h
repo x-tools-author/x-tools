@@ -8,23 +8,18 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QMAinWindow>
+#include "xui.h"
 
-namespace Ui {
-class xCode;
-}
-
-class xCode : public QMainWindow
+class BarCodeAssistant;
+class xCode : public xUi
 {
     Q_OBJECT
 public:
     explicit xCode(QWidget *parent = nullptr);
     ~xCode() override;
 
-private:
-    Ui::xCode *ui;
+    void generateBarcode();
 
 private:
-    void onExportButtonClicked();
-    void onRefreshButtonClicked();
+    BarCodeAssistant *m_barCodeAssistant{nullptr};
 };

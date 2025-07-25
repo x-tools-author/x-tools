@@ -7,51 +7,31 @@
  * code directory.
  **************************************************************************************************/
 #include "xcode.h"
-#include "ui_xcode.h"
-
-#include <backend_qt/qzint.h>
 
 #include <QFileDialog>
 #include <QMessageBox>
 
+#include "tools/barcode/barcodeassistant.h"
+
 xCode::xCode(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::xCode)
+    : xUi(parent)
 {
-    ui->setupUi(this);
+    m_barCodeAssistant = new BarCodeAssistant(this);
+    setFixedSize(720, 480);
+    setCentralWidget(m_barCodeAssistant);
+    setWindowFlag(Qt::WindowMaximizeButtonHint, false);
+    setWindowFlag(Qt::WindowMinimizeButtonHint, false);
     setWindowTitle(tr("xCode - Barcode/QR code Generator"));
-    connect(ui->pushButtonExport, &QPushButton::clicked, this, &xCode::onExportButtonClicked);
-    connect(ui->pushButtonRefresh, &QPushButton::clicked, this, &xCode::onRefreshButtonClicked);
 }
 
-xCode::~xCode()
-{
-    delete ui;
-}
+xCode::~xCode() {}
 
-void xCode::onExportButtonClicked()
+void xCode::generateBarcode()
 {
-    QString fileName = QFileDialog::getSaveFileName(
-        this, tr("Save Image"), "", tr("PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)"));
-    if (fileName.isEmpty()) {
+    if (!m_barCodeAssistant) {
+        QMessageBox::warning(this, tr("Error"), tr("Barcode Assistant is not initialized."));
         return;
     }
 
-    QPixmap pixmap = ui->labelImage->pixmap(Qt::ReturnByValue);
-    if (!pixmap.save(fileName)) {
-        QMessageBox::warning(this, tr("Save Image"), tr("Failed to save image."));
-    }
-}
-
-void xCode::onRefreshButtonClicked()
-{
-    Zint::QZint code;
-    Zint::QZint::AspectRatioMode mode = Zint::QZint::KeepAspectRatio;
-    code.setSymbol(BARCODE_MICROQR);
-    code.setSecurityLevel(0);
-    code.setText(ui->lineEditDetail->text());
-    QImage image(ui->labelImage->size(), QImage::Format_ARGB32);
-    QPainter painter(&image);
-    code.render(painter, image.rect(), mode);
-    ui->labelImage->setPixmap(QPixmap::fromImage(image));
+    m_barCodeAssistant->onRefreshButtonClicked();
 }
