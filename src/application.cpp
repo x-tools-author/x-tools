@@ -200,7 +200,7 @@ void Application::setupLanguage()
     QString qtQmFile = QString("%1/translations/qt_%2.qm").arg(appPath, language);
     ::setupLanguage(qtQmFile);
 
-    QString xToolsQmFile = QString(":/res/translations/xTools_%1.qm").arg(language);
+    QString xToolsQmFile = QString("%1/translations/xTools_%2.qm").arg(appPath, language);
     ::setupLanguage(xToolsQmFile);
 }
 
