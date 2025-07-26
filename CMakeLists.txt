@@ -173,7 +173,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/qxlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libiconv.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/qcustomplot.cmake)
+# include(${CMAKE_SOURCE_DIR}/cmake/qcustomplot.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/singleapplication.cmake)
 
 # --------------------------------------------------------------------------------------------------

@@ -79,7 +79,7 @@ if(WIN32)
     set(devenv ${COMPILER_PATH}/../../../../../../../Common7/IDE/devenv.exe)
     message(STATUS "[libiconv] ${devenv}")
     message(STATUS "[libiconv] Building libiconv using Visual Studio")
-    execute_process(COMMAND ${devenv} libiconv.sln /Build "Release"
+    execute_process(COMMAND ${devenv} libiconv.sln /Build "Release|x64"
                     WORKING_DIRECTORY ${working_dir})
   endif()
 
