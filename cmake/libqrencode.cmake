@@ -11,11 +11,12 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Add libencode module...
 if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-  set(x_qrencode "qrencode")
+  set(X_QRENCODE_LIB "qrencode")
 else()
-  set(x_qrencode "qrencoded")
+  set(X_QRENCODE_LIB "qrencoded")
 endif()
 
+message(STATUS "[qrencode] X_QRENCODE_LIB: ${X_QRENCODE_LIB}")
 set(qrencode_dst_dir ${X_LIBS_DIR}/${qrencode_package_name})
 if(EXISTS ${qrencode_dst_dir})
   link_directories(${qrencode_dst_dir}/lib)
