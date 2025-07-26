@@ -34,6 +34,14 @@ endif()
 if(EXISTS "${X_LIBS_DIR}/${file_name}/include/zint.h")
   include_directories(${X_LIBS_DIR}/${file_name}/include)
   link_directories(${X_LIBS_DIR}/${file_name}/lib)
+  set(CMAKE_PREFIX_PATH ${X_LIBS_DIR}/${file_name} ${CMAKE_PREFIX_PATH})
+  find_package(zint REQUIRED)
+  if(NOT zint_FOUND)
+    message(FATAL_ERROR "[zint] Failed to find Zint in ${X_LIBS_DIR}/${file_name}")
+  endif()
+  set(X_ZINT_USING_SRC
+      OFF
+      CACHE BOOL "Use Zint source code")
 else()
   # Add the Zint subdirectory to the project
   include_directories(${CMAKE_SOURCE_DIR}/3rd/${file_name})
@@ -59,6 +67,9 @@ else()
   add_custom_target(QZint_auto_install ALL DEPENDS ${X_LIBS_DIR}/${file_name}/install.stamp)
   add_dependencies(QZint_auto_install QZint zint-qt zint-static)
   set_property(TARGET QZint_auto_install PROPERTY FOLDER "3rd")
+  set(X_ZINT_USING_SRC
+      ON
+      CACHE BOOL "Use Zint source code")
   add_compile_definitions(X_ZINT_USING_SRC)
 endif()
 
@@ -67,4 +78,7 @@ set(X_ZINT
     CACHE BOOL "Use Zint")
 set(X_ZINT_LIBS zint-static)
 list(APPEND X_ZINT_LIBS QZint)
+if(NOT X_ZINT_USING_SRC)
+  list(APPEND X_ZINT_LIBS PNG::PNG)
+endif()
 add_compile_definitions(X_ZINT)
