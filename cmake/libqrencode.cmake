@@ -10,10 +10,10 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Add libencode module...
-if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-  set(X_QRENCODE_LIB "qrencode")
-else()
+if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
   set(X_QRENCODE_LIB "qrencoded")
+else()
+  set(X_QRENCODE_LIB "qrencode")
 endif()
 
 message(STATUS "[qrencode] X_QRENCODE_LIB: ${X_QRENCODE_LIB}")
