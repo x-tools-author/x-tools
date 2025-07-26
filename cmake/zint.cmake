@@ -6,7 +6,9 @@ set(file_url "https://codeload.github.com/zint/zint/zip/refs/tags/${package_vers
 set(ZINT_SHARED OFF CACHE BOOL "Shared Zint" FORCE)
 set(ZINT_STATIC ON CACHE BOOL "Static Zint" FORCE)
 set(ZINT_USE_QT ON CACHE BOOL "Use Qt" FORCE)
-set(ZINT_QT6 ON CACHE BOOL "Use Qt6" FORCE)
+if(QT_VERSION_MAJOR EQUAL 6)
+  set(ZINT_QT6 ON CACHE BOOL "Use Qt6" FORCE)
+endif()
 # cmake-format: on
 
 # Download and unzip the Zint repository if it does not exist
