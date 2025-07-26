@@ -11,6 +11,10 @@ if(QT_VERSION_MAJOR EQUAL 6)
 endif()
 # cmake-format: on
 
+if(ANDROID OR IOS)
+  return()
+endif()
+
 # Download and unzip the Zint repository if it does not exist
 if(NOT EXISTS "${CMAKE_SOURCE_DIR}/3rd/${file_name}.zip")
   message(STATUS "[zint] Downloading Zint repository from ${file_url}...")
