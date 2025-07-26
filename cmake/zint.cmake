@@ -78,7 +78,7 @@ else()
   set_property(TARGET zint-qt PROPERTY FOLDER "3rd")
   set_property(TARGET zint-static PROPERTY FOLDER "3rd")
 
-  if(QT_VERSION VERSION_GREATER_EQUAL "6.8.0")
+  if(QT_VERSION VERSION_GREATER_EQUAL "6.8.0" AND WIN32)
     # Auto install Zint
     add_custom_command(
       OUTPUT ${X_LIBS_DIR}/${file_name}/install.stamp
