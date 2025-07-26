@@ -2,6 +2,7 @@
 # https://github.com/kiyolee/libiconv-win-build/archive/refs/tags/v1.17-p1.zip devenv libiconv.sln
 # /Build
 
+set(X_ICONV OFF)
 if(MINGW)
   message(STATUS "Using MinGW, skipping libiconv download and extraction")
   return()
@@ -79,13 +80,11 @@ if(WIN32)
   if(EXISTS ${working_dir}/x64/Release)
     set(lib_dir ${working_dir}/x64/Release)
   else()
-    set(lib_dir ${working_dir}/Release)
+    return()
   endif()
   message(STATUS "[libiconv] Library directory: ${lib_dir}")
 
-  set(X_ICONV
-      ON
-      CACHE BOOL "Enable iconv option" FORCE)
+  set(X_ICONV ON)
   set(X_ICONV_LIB "libiconv-static")
   add_compile_definitions(X_ICONV)
   include_directories(${CMAKE_SOURCE_DIR}/3rd/${file_name}/include)
@@ -101,12 +100,10 @@ else()
   endif()
 
   if(EXISTS ${working_dir}/out/lib/libiconv.so)
-    # cmake-format: off
-    set(X_ICONV ON CACHE BOOL "Enable iconv option" FORCE)
+    set(X_ICONV ON)
     set(X_ICONV_LIB "iconv" "charset")
     add_compile_definitions(X_ICONV)
     include_directories(${working_dir}/out/include)
     link_directories(${working_dir}/out/lib)
-    # cmake-format: on
   endif()
 endif()
