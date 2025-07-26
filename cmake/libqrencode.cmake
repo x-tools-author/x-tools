@@ -25,7 +25,7 @@ if(EXISTS ${qrencode_dst_dir})
 else()
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${qrencode_package_name})
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${qrencode_package_name})
-  link_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rd/${qrencode_package_name})
+  link_directories(${CMAKE_BINARY_DIR}/3rd/${qrencode_package_name})
   set_property(TARGET qrencode PROPERTY FOLDER "3rd")
 
   add_custom_command(
