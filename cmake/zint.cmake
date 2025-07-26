@@ -12,10 +12,20 @@ endif()
 # cmake-format: on
 
 if(ANDROID OR IOS)
-  set(X_ZINT
-      OFF
-      CACHE BOOL "Use Zint")
+  set(X_ZINT OFF)
   return()
+endif()
+
+if(QT_VERSION VERSION_LESS "5.11.0")
+  set(X_ZINT OFF)
+  return()
+endif()
+
+if(APPLE)
+  if(QT_VERSION VERSION_LESS "6.2.0")
+    set(X_ZINT OFF)
+    return()
+  endif()
 endif()
 
 # Download and unzip the Zint repository if it does not exist
