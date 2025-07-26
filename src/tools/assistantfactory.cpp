@@ -12,7 +12,6 @@
 #include <QWidget>
 
 #include "ascii/asciiassistant.h"
-#include "barcode/barcodeassistant.h"
 #include "base64/base64assistant.h"
 #include "broadcast/broadcastassistant.h"
 #include "crc/crcassistant.h"
@@ -21,6 +20,10 @@
 #include "number/numberassistant.h"
 #include "ping/pingassistant.h"
 #include "string/stringassistant.h"
+
+#if defined(X_ZINT)
+#include "barcode/barcodeassistant.h"
+#endif
 
 #if !defined(X_DISABLE_MDNS)
 #include "mdns/mdnsassistant.h"
@@ -50,9 +53,11 @@ AssistantFactory::AssistantFactory(QObject* parent)
     addAssistant<BroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));
     addAssistant<FileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
     addAssistant<FileMergeAssistant>(AssistantTypeFileMerge, tr("File Merge Assistant"));
-    addAssistant<BarCodeAssistant>(AssistantTypeBarcode, tr("Barcode Assistant"));
 #if !defined(X_DISABLE_QR_CODE)
     addAssistant<QRCodeAssistant>(AssistantTypeQRCode, tr("QR Code Assistant"));
+#endif
+#if defined(X_ZINT)
+    addAssistant<BarCodeAssistant>(AssistantTypeBarcode, tr("Barcode Assistant"));
 #endif
 #ifdef X_ENABLE_SERIALBUS
     addAssistant<CanBusAssistant>(AssistantTypeCANBus, tr("CAN Bus Assistant"));

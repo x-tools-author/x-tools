@@ -12,6 +12,9 @@ endif()
 # cmake-format: on
 
 if(ANDROID OR IOS)
+  set(X_ZINT
+      OFF
+      CACHE BOOL "Use Zint")
   return()
 endif()
 

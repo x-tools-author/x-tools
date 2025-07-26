@@ -187,6 +187,16 @@ if(NOT X_LUA)
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# Zint module
+if(NOT X_ZINT)
+  file(GLOB_RECURSE ZINT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/barcode/*.*")
+  foreach(file ${ZINT_FILES})
+    list(REMOVE_ITEM X_SOURCES ${file})
+    message(STATUS "[Zint]Remove file: ${file}")
+  endforeach()
+endif()
+
+# --------------------------------------------------------------------------------------------------
 # Qt SerialPort module
 option(X_ENABLE_SERIAL_PORT "Enable SerialPort module" ON)
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialPort)
