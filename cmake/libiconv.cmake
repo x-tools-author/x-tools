@@ -66,7 +66,7 @@ endif()
 # Build libiconv if it does not exist
 if(WIN32)
   set(working_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name}/build-${X_VS})
-  if(${X_VS} STREQUAL "VS2022")
+  if(EXISTS ${working_dir}/x64/Release)
     set(lib_dir ${working_dir}/x64/Release)
   else()
     set(lib_dir ${working_dir}/Release)
