@@ -6,6 +6,8 @@ set(file_url "https://codeload.github.com/zint/zint/zip/refs/tags/${package_vers
 set(ZINT_SHARED OFF CACHE BOOL "Shared Zint" FORCE)
 set(ZINT_STATIC ON CACHE BOOL "Static Zint" FORCE)
 set(ZINT_USE_QT ON CACHE BOOL "Use Qt" FORCE)
+set(ZINT_USE_PNG OFF CACHE BOOL "Use PNG" FORCE)
+set(ZINT_FRONTEND OFF CACHE BOOL "Build Zint frontend" FORCE)
 if(QT_VERSION_MAJOR EQUAL 6)
   set(ZINT_QT6 ON CACHE BOOL "Use Qt6" FORCE)
 endif()
@@ -60,9 +62,7 @@ if(EXISTS "${X_LIBS_DIR}/${file_name}/include/zint.h")
   if(NOT zint_FOUND)
     message(FATAL_ERROR "[zint] Failed to find Zint in ${X_LIBS_DIR}/${file_name}")
   endif()
-  set(X_ZINT_USING_SRC
-      OFF
-      CACHE BOOL "Use Zint source code")
+  set(X_ZINT_USING_SRC OFF)
 else()
   # Add the Zint subdirectory to the project
   include_directories(${CMAKE_SOURCE_DIR}/3rd/${file_name})
@@ -74,7 +74,6 @@ else()
   if(WIN32)
     set_property(TARGET zint_bundled_getopt PROPERTY FOLDER "3rd")
   endif()
-  set_property(TARGET zint_frontend PROPERTY FOLDER "3rd")
   set_property(TARGET zint-qt PROPERTY FOLDER "3rd")
   set_property(TARGET zint-static PROPERTY FOLDER "3rd")
 
@@ -90,18 +89,11 @@ else()
     add_dependencies(QZint_auto_install QZint zint-qt zint-static)
     set_property(TARGET QZint_auto_install PROPERTY FOLDER "3rd")
   endif()
-  set(X_ZINT_USING_SRC
-      ON
-      CACHE BOOL "Use Zint source code")
+  set(X_ZINT_USING_SRC ON)
   add_compile_definitions(X_ZINT_USING_SRC)
 endif()
 
-set(X_ZINT
-    ON
-    CACHE BOOL "Use Zint")
+set(X_ZINT ON)
 set(X_ZINT_LIBS zint-static)
 list(APPEND X_ZINT_LIBS QZint)
-if(NOT X_ZINT_USING_SRC)
-  list(APPEND X_ZINT_LIBS PNG::PNG)
-endif()
 add_compile_definitions(X_ZINT)
