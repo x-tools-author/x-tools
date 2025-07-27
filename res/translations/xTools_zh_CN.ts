@@ -2552,8 +2552,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="179"/>
         <location filename="../../src/common/xtools.cpp" line="543"/>
-        <location filename="../../src/common/xtools.cpp" line="968"/>
-        <location filename="../../src/common/xtools.cpp" line="970"/>
+        <location filename="../../src/common/xtools.cpp" line="971"/>
+        <location filename="../../src/common/xtools.cpp" line="973"/>
         <source>Binary</source>
         <translation>二进制</translation>
     </message>
@@ -2592,8 +2592,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="541"/>
-        <location filename="../../src/common/xtools.cpp" line="972"/>
-        <location filename="../../src/common/xtools.cpp" line="974"/>
+        <location filename="../../src/common/xtools.cpp" line="975"/>
+        <location filename="../../src/common/xtools.cpp" line="977"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
@@ -2663,17 +2663,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>软件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="933"/>
+        <location filename="../../src/common/xtools.cpp" line="936"/>
         <source>Disabled</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="935"/>
+        <location filename="../../src/common/xtools.cpp" line="938"/>
         <source>Bidirectional</source>
         <translation>双向</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="937"/>
+        <location filename="../../src/common/xtools.cpp" line="940"/>
         <source>Unidirectional</source>
         <translation>单向</translation>
     </message>
@@ -3112,67 +3112,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">客户端端口</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="158"/>
+        <location filename="../../src/device/socketui.ui" line="63"/>
         <source>Server IP</source>
         <translation>服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="181"/>
+        <location filename="../../src/device/socketui.ui" line="147"/>
         <source>Server port</source>
         <translation>服务器端口</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="168"/>
+        <location filename="../../src/device/socketui.ui" line="70"/>
         <source>Write to</source>
         <translation>发送目标</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="50"/>
+        <location filename="../../src/device/socketui.ui" line="169"/>
         <source>Disconnect all clients</source>
         <translation>断开所有客户端链接</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="129"/>
+        <location filename="../../src/device/socketui.ui" line="34"/>
         <source>Enable multicast</source>
         <translation>使能组播</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="136"/>
+        <location filename="../../src/device/socketui.ui" line="41"/>
         <source>Just multicast</source>
         <translation>仅组播</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="32"/>
+        <location filename="../../src/device/socketui.ui" line="50"/>
         <source>Channel</source>
         <translation>数据通道</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="106"/>
+        <location filename="../../src/device/socketui.ui" line="181"/>
         <source>Multicast IP</source>
         <translation>组播地址</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="113"/>
+        <location filename="../../src/device/socketui.ui" line="188"/>
+        <source>Path</source>
+        <translation>服务器路由</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="195"/>
+        <source>post/hello</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="134"/>
         <source>Authentication</source>
         <translation>启用用户验证</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="86"/>
+        <location filename="../../src/device/socketui.ui" line="97"/>
         <source>Multicast Port</source>
         <translation>组播端口</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="69"/>
+        <location filename="../../src/device/socketui.ui" line="114"/>
         <source>User name</source>
         <translation>用户名称</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="145"/>
+        <location filename="../../src/device/socketui.ui" line="154"/>
         <source>Password</source>
         <translation>用户密码</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.cpp" line="163"/>
+        <location filename="../../src/device/socketui.cpp" line="182"/>
         <source>All clients</source>
         <translation>所有客户端</translation>
     </message>
@@ -3310,57 +3320,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="47"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
         <source>Preprocessing</source>
         <translation>数据预处理</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
         <source>Prefix</source>
         <translation>前缀</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
         <source>Suffix</source>
         <translation>后缀</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="73"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
         <source>Escape character</source>
         <translation>转义字符</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
         <translation>CRC</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="105"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="33"/>
         <source>Algorithm</source>
         <translation>算法模型</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="115"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="43"/>
         <source>Start index</source>
         <translation>起始字节</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="125"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>End index</source>
         <translation>结束字节</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="135"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
         <source>Append</source>
         <translation>追加CRC</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="142"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
         <translation>大端字节序</translation>
     </message>
@@ -3370,7 +3380,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>数据负载</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="161"/>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
         <translation>数据格式</translation>
     </message>
