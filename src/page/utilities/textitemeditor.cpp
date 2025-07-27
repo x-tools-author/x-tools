@@ -24,10 +24,8 @@ TextItemEditor::TextItemEditor(QWidget *parent)
     CRC::setupAlgorithm(ui->comboBoxAlgorithm);
     setupTextFormat(ui->comboBoxFormat);
 
-    connect(ui->comboBoxFormat,
-            QOverload<int>::of(xComboBoxActivated),
-            this,
-            &TextItemEditor::onTextFormatChanged);
+    connect(ui->comboBoxFormat, xComboBoxActivated, this, &TextItemEditor::onTextFormatChanged);
+    onTextFormatChanged();
 }
 
 TextItemEditor::~TextItemEditor()
@@ -37,9 +35,19 @@ TextItemEditor::~TextItemEditor()
 
 QJsonObject TextItemEditor::save() const
 {
-    QString text = ui->lineEditInput->text();
+    QString text;
+    if (ui->lineEditInput->isEnabled()) {
+        text = ui->lineEditInput->text();
+    } else {
+        text = ui->plainTextEditInput->toPlainText();
+    }
+
     if (text.isEmpty()) {
-        text = ui->lineEditInput->placeholderText();
+        if (ui->lineEditInput->isEnabled()) {
+            text = ui->lineEditInput->placeholderText();
+        } else {
+            text = ui->plainTextEditInput->placeholderText();
+        }
     }
 
     int prefix = ui->comboBoxPrefix->currentData().toInt();
@@ -92,7 +100,9 @@ void TextItemEditor::load(const QJsonObject &parameters)
     int escapeCharacterIndex = ui->comboBoxEscapeCharacter->findData(escapeCharacter);
     int crcAlgorithmIndex = ui->comboBoxAlgorithm->findData(crcAlgorithm);
 
-    ui->lineEditInput->setPlaceholderText(bytes2string(QByteArray("(null)"), format));
+    const QString placeholderText = bytes2string(QByteArray("(null)"), format);
+    ui->lineEditInput->setPlaceholderText(placeholderText);
+    ui->plainTextEditInput->setPlaceholderText(placeholderText);
 
     ui->comboBoxPrefix->setCurrentIndex(prefixIndex);
     ui->comboBoxSuffix->setCurrentIndex(suffixIndex);
@@ -103,12 +113,27 @@ void TextItemEditor::load(const QJsonObject &parameters)
     ui->spinBoxStartIndex->setValue(crcStartIndex);
     ui->spinBoxEndIndex->setValue(crcEndIndex);
     ui->comboBoxFormat->setCurrentIndex(ui->comboBoxFormat->findData(format));
+    onTextFormatChanged();
     ui->lineEditInput->setText(text);
+    ui->plainTextEditInput->setPlainText(text);
 }
 
 void TextItemEditor::onTextFormatChanged()
 {
     ui->lineEditInput->clear();
+    ui->plainTextEditInput->clear();
+
     int format = ui->comboBoxFormat->currentData().toInt();
     setupTextFormatValidator(ui->lineEditInput, format);
+
+    bool isSingleLine = (format == static_cast<int>(TextFormat::Bin)
+                         || format == static_cast<int>(TextFormat::Oct)
+                         || format == static_cast<int>(TextFormat::Dec)
+                         || format == static_cast<int>(TextFormat::Hex));
+    ui->lineEditInput->setEnabled(isSingleLine);
+    ui->plainTextEditInput->setEnabled(!isSingleLine);
+
+    const QString placeholderText = bytes2string(QByteArray("(null)"), format);
+    ui->lineEditInput->setPlaceholderText(placeholderText);
+    ui->plainTextEditInput->setPlaceholderText(placeholderText);
 }
