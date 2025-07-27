@@ -849,6 +849,7 @@ SocketItem defaultSocketItem()
     item.multicastPort = 53625;
     item.enableMulticast = false;
     item.justMulticast = false;
+    item.path = "";
     return item;
 }
 
@@ -866,6 +867,7 @@ QVariantMap saveSocketItem(const SocketItem &context)
     obj.insert(keys.multicastPort, context.multicastPort);
     obj.insert(keys.enableMulticast, context.enableMulticast);
     obj.insert(keys.justMulticast, context.justMulticast);
+    obj.insert(keys.path, context.path);
     return obj;
 }
 
@@ -883,6 +885,7 @@ SocketItem loadSocketItem(const QVariantMap &obj)
     ctx.multicastPort = obj.value(keys.multicastPort).toInt();
     ctx.enableMulticast = obj.value(keys.enableMulticast).toBool();
     ctx.justMulticast = obj.value(keys.justMulticast).toBool();
+    ctx.path = obj.value(keys.path).toString();
     return ctx;
 }
 

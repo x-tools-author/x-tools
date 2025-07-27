@@ -31,6 +31,7 @@ void Socket::load(const QVariantMap &parameters)
     m_multicastPort = item.multicastPort;
     m_enableMulticast = item.enableMulticast;
     m_justMulticast = item.justMulticast;
+    m_path = item.path;
 }
 
 void Socket::setDataChannel(int channel)

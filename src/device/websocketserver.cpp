@@ -42,7 +42,10 @@ QObject *WebSocketServer::initDevice()
         return nullptr;
     }
 
-    qInfo("Web socket server info:%s:%d", m_serverAddress.toLatin1().data(), m_serverPort);
+    qInfo("Web socket server info: %s:%d/%s",
+          m_serverAddress.toLatin1().data(),
+          m_serverPort,
+          m_path.toLatin1().data());
 
     return m_webSocketServer;
 }

@@ -35,6 +35,8 @@ SocketUi::SocketUi(QWidget *parent)
             this->m_socket->setDataChannel(ui->comboBoxChannel->currentIndex());
         }
     });
+
+    setPathWidgetsVisible(false);
 }
 
 SocketUi::~SocketUi() {}
@@ -52,6 +54,7 @@ QVariantMap SocketUi::save() const
     item.multicastPort = ui->spinBoxMulticastPort->value();
     item.enableMulticast = ui->checkBoxEnableMulticast->isChecked();
     item.justMulticast = ui->checkBoxJustMulticast->isChecked();
+    item.path = ui->lineEditPath->text();
 
     return saveSocketItem(item);
 }
@@ -74,6 +77,7 @@ void SocketUi::load(const QVariantMap &parameters)
     ui->spinBoxMulticastPort->setValue(item.multicastPort);
     ui->checkBoxEnableMulticast->setChecked(item.enableMulticast);
     ui->checkBoxJustMulticast->setChecked(item.justMulticast);
+    ui->lineEditPath->setText(item.path);
 }
 
 void SocketUi::setServerWidgetsVisible(bool visible)
@@ -116,6 +120,12 @@ void SocketUi::setMulticastWidgetsVisible(bool visible)
     ui->checkBoxJustMulticast->setVisible(visible);
 }
 
+void SocketUi::setPathWidgetsVisible(bool visible)
+{
+    ui->labelPath->setVisible(visible);
+    ui->lineEditPath->setVisible(visible);
+}
+
 void SocketUi::setServerWidgetsEnabled(bool enabled)
 {
     ui->labelServerIp->setEnabled(enabled);
@@ -128,6 +138,9 @@ void SocketUi::setChannelWidgetsEnabled(bool enabled)
 {
     ui->labelChannel->setEnabled(enabled);
     ui->comboBoxChannel->setEnabled(enabled);
+
+    ui->labelPath->setEnabled(enabled);
+    ui->lineEditPath->setEnabled(enabled);
 }
 
 void SocketUi::setAuthenticationWidgetsEnabled(bool enabled)
@@ -154,6 +167,12 @@ void SocketUi::setMulticastWidgetsEnabled(bool enabled)
     ui->spinBoxMulticastPort->setEnabled(enabled);
     ui->checkBoxEnableMulticast->setEnabled(enabled);
     ui->checkBoxJustMulticast->setEnabled(enabled);
+}
+
+void SocketUi::setPathWidgetsEnabled(bool enabled)
+{
+    ui->labelPath->setEnabled(enabled);
+    ui->lineEditPath->setEnabled(enabled);
 }
 
 void SocketUi::setupClients(const QStringList &clients)

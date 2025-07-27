@@ -230,6 +230,7 @@ struct SocketItem
     quint16 multicastPort;
     bool enableMulticast;
     bool justMulticast;
+    QString path; // For WebSocket
 };
 struct SocketItemKeys
 {
@@ -243,6 +244,7 @@ struct SocketItemKeys
     const QString multicastPort{"multicastPort"};
     const QString enableMulticast{"enableMulticast"};
     const QString justMulticast{"justMulticast"};
+    const QString path{"path"}; // For WebSocket
 };
 SocketItem defaultSocketItem();
 QVariantMap saveSocketItem(const SocketItem &context);

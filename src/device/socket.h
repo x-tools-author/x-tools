@@ -34,6 +34,8 @@ protected:
     bool m_enableMulticast{false};
     bool m_justMulticast{false};
 
+    QString m_path{""}; // For WebSocket
+
 protected:
     QString makeFlag(const QString &address, quint16 port) const;
     QPair<QString, quint16> splitFlag(const QString &flag) const;

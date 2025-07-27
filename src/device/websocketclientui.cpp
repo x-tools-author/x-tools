@@ -15,6 +15,7 @@ WebSocketClientUi::WebSocketClientUi(QWidget *parent)
 {
     setWriteToWidgetsVisible(false);
     setMulticastWidgetsVisible(false);
+    setPathWidgetsVisible(true);
 }
 
 WebSocketClientUi::~WebSocketClientUi() {}
@@ -28,4 +29,5 @@ void WebSocketClientUi::setUiEnabled(bool enabled)
 {
     setServerWidgetsEnabled(enabled);
     setAuthenticationWidgetsEnabled(enabled);
+    setPathWidgetsEnabled(enabled);
 }
