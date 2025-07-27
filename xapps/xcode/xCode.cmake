@@ -25,7 +25,7 @@ target_link_libraries(
           Qt6::Widgets
           Qt6::Network
           Qt6::SerialPort
-          ${X_ICONV})
+          ${X_ICONV_LIB})
 target_link_libraries(xCode PRIVATE ${X_ZINT_LIBS})
 x_deploy_qt(xCode)
 if(WIN32 AND MSVC)
