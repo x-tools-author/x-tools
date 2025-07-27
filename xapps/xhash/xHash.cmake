@@ -23,7 +23,7 @@ else()
 endif()
 
 if(X_ICONV)
-  target_link_libraries(xHash PRIVATE ${X_ICONV})
+  target_link_libraries(xHash PRIVATE ${X_ICONV_LIB})
 endif()
 
 if(WIN32)
