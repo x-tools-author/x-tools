@@ -225,67 +225,72 @@
 <context>
     <name>AssistantFactory</name>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="40"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="44"/>
         <source>CRC Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="42"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="46"/>
         <source>mDNS Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="44"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
         <source>Ping Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="45"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="49"/>
         <source>ASCII Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="46"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
         <source>Base64 Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="47"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="51"/>
         <source>Number Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
         <source>String Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="49"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
         <source>Broadcast Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
         <source>File Check Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="51"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
         <source>QR Code Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="56"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
+        <source>Barcode Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
         <source>CAN Bus Assistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
         <source>Modbus Assistant</source>
         <translation></translation>
     </message>
@@ -326,6 +331,60 @@
         <location filename="../../src/page/charts/barcharts/barchartsettings.cpp" line="163"/>
         <source>Scatter</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>BarCodeAssistant</name>
+    <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
+        <source>CRC Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="32"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="52"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="59"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="66"/>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="89"/>
+        <source>010000000000</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
+        <source>Barcode Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
+        <source>Save Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
+        <source>PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
+        <source>Failed to save image.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2030,7 +2089,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="173"/>
-        <location filename="../../src/page/page.cpp" line="548"/>
+        <location filename="../../src/page/page.cpp" line="552"/>
         <source>Open</source>
         <translation></translation>
     </message>
@@ -2175,27 +2234,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="408"/>
+        <location filename="../../src/page/page.cpp" line="410"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="539"/>
+        <location filename="../../src/page/page.cpp" line="543"/>
         <source>Close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="555"/>
+        <location filename="../../src/page/page.cpp" line="559"/>
         <source>Error Occurred</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="561"/>
+        <location filename="../../src/page/page.cpp" line="565"/>
         <source>Warning</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="696"/>
+        <location filename="../../src/page/page.cpp" line="700"/>
         <source>[%1][%2][%3][%4]</source>
         <translation></translation>
     </message>
@@ -2341,7 +2400,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/common/crc.cpp" line="68"/>
+        <location filename="../../src/common/crc.cpp" line="84"/>
         <source>Unknown</source>
         <translation></translation>
     </message>
