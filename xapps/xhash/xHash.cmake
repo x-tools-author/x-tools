@@ -9,6 +9,14 @@ list(APPEND PRO_FILES ${COMMON_FILES})
 list(APPEND PRO_FILES ${TOOLS_FILES})
 list(APPEND PRO_FILES ${X_HASH_FILES})
 
+file(GLOB LUA_FILES "${CMAKE_SOURCE_DIR}/src/common/luarunner.*")
+# Remove Lua files from the list if they exist
+foreach(LUA_FILE ${LUA_FILES})
+  if(EXISTS ${LUA_FILE})
+    list(REMOVE_ITEM PRO_FILES ${LUA_FILE})
+  endif()
+endforeach()
+
 include_directories(${CMAKE_SOURCE_DIR}/xapps)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_BINS_DIR}/xHash)
 qt_add_executable(xHash ${PRO_FILES})
