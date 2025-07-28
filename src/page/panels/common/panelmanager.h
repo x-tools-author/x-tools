@@ -48,6 +48,8 @@ public:
         m_buttonGroup.addButton(button);
         connect(button, &QToolButton::clicked, this, [this, panel]() {
             this->m_layout->setCurrentWidget(panel);
+            this->setVisible(true);
+            this->m_panelButton->setChecked(true);
         });
 
         if (m_layout->count() == 1) {

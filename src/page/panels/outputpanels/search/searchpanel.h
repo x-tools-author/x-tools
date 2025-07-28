@@ -1,12 +1,10 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
- *
- * The file is encoded using "utf8 with bom", it is a part of eTools project.
- *
- * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
- * code directory.
+ * Copyright 2025-2025 le-cheng(https://github.com/le-cheng). All rights reserved.
  **************************************************************************************************/
 #pragma once
+
+#include <QRegularExpression>
+#include <QTextBrowser>
 
 #include "page/panels/common/panel.h"
 
@@ -20,7 +18,19 @@ class SearchPanel : public Panel
 public:
     explicit SearchPanel(QWidget *parent = nullptr);
     ~SearchPanel();
+    void setOriginalTextBrowser(QTextBrowser *textBrowser);
+    void performSearch(QString &line);
+    void setWholeWordCheckBoxEnabled(bool checked);
 
 private:
     Ui::SearchPanel *ui;
+    QTextBrowser *m_originalTextBrowser;
+
+private:
+    void onSearchButtonClicked();
+    void onSearchTextChanged();
+
+    void performSearch();
+    void highlightSearchResults(const QString &text, const QRegularExpression &regex);
+    void highlightSearchResultsForLine(const QString &line, const QRegularExpression &regex);
 };

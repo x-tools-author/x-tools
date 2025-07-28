@@ -14,6 +14,18 @@
    <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayoutSearch">
      <property name="leftMargin">
@@ -37,14 +49,14 @@
         </sizepolicy>
        </property>
        <property name="placeholderText">
-        <string>搜索日志内容</string>
+        <string>Search text</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButtonSearch">
        <property name="text">
-        <string>搜索</string>
+        <string>Search</string>
        </property>
       </widget>
      </item>
@@ -67,21 +79,21 @@
      <item>
       <widget class="QCheckBox" name="checkBoxRegex">
        <property name="text">
-        <string>正则表达式</string>
+        <string>Regular expression</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QCheckBox" name="checkBoxMatchCase">
        <property name="text">
-        <string>区分大小写</string>
+        <string>Case sensitive</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QCheckBox" name="checkBoxWholeWord">
        <property name="text">
-        <string>全字匹配</string>
+        <string>Whole word</string>
        </property>
       </widget>
      </item>

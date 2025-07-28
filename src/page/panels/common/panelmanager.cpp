@@ -26,19 +26,14 @@ PanelManager::PanelManager(QWidget *parent)
     m_panelButton->setCheckable(true);
     m_panelButton->setToolTip(tr("Hide/Show Panels"));
     m_panelButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
-    m_panelButton->setChecked(true);
+    m_panelButton->setChecked(false);
     connect(m_panelButton, &QToolButton::clicked, this, [this](bool checked) {
         this->setVisible(checked);
         emit visibleChanged(checked);
-#if 1
-        auto buttons = this->m_buttonGroup.buttons();
-        for (auto button : buttons) {
-            button->setVisible(checked);
-        }
-#endif
     });
 
     m_layout->setCurrentIndex(0);
+    setVisible(false);
 }
 
 PanelManager::~PanelManager() {}
