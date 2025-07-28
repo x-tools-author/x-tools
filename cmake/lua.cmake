@@ -3,10 +3,10 @@ set(lua_version "5.4.8")
 get_filename_component(COMPILER_DIR ${CMAKE_CXX_COMPILER} DIRECTORY)
 message(STATUS "[lua] Compiler dir: ${COMPILER_DIR}")
 
-# Download lua: https://codeload.github.com/lua/lua/zip/refs/tags/v5.4.8
+# Download lua: https://github.com/lua/lua/archive/refs/tags/v5.4.8.zip
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/3rd/lua-${lua_version}.zip)
   message(STATUS "[lua] Downloading lua")
-  set(lua_url "https://codeload.github.com/lua/lua/zip/refs/tags/v${lua_version}")
+  set(lua_url "https://github.com/lua/lua/archive/refs/tags/v${lua_version}.zip")
   file(
     DOWNLOAD ${lua_url} ${CMAKE_CURRENT_SOURCE_DIR}/3rd/lua-${lua_version}.zip
     SHOW_PROGRESS
