@@ -20,8 +20,8 @@
 OutputPanelsManager::OutputPanelsManager(QWidget *parent)
     : PanelManager(parent)
 {
-    addPanel<LuaPanel>(tr("Lua Script"), ":/res/icons/lua.svg");
     addPanel<SearchPanel>(tr("Search"), ":/res/icons/search.svg");
+    addPanel<LuaPanel>(tr("Lua Script"), ":/res/icons/lua.svg");
 #ifdef X_PLOT
     addPanel<LinePlotPanel>(tr("Line Chart"), ":/res/icons/line_series.svg");
     addPanel<BarPlotPanel>(tr("Bar Chart"), ":/res/icons/bar.svg");
