@@ -142,13 +142,14 @@ void SearchPanel::highlightSearchResults(const QString &text, const QRegularExpr
 
     // 如果没有匹配项，显示提示信息
     if (matchCount == 0) {
-        ui->textBrowserSearchResult->setHtml(QString("<p style='color:gray'>未找到匹配项</p>"));
+        QString info = tr("Could not find any matches.");
+        ui->textBrowserSearchResult->setHtml(QString("<p style='color:gray'>%1</p>").arg(info));
         return;
     }
 
     // 显示匹配数量
-    ui->textBrowserSearchResult->setHtml(
-        QString("<p style='color:gray'>找到 %1 个匹配项</p>").arg(matchCount));
+    QString info = tr("Found %1 matches.").arg(matchCount);
+    ui->textBrowserSearchResult->setHtml(QString("<p style='color:gray'>%1</p>").arg(info));
 
     // 获取文本的行
     QStringList lines = text.split('\n');
@@ -186,7 +187,8 @@ void SearchPanel::highlightSearchResults(const QString &text, const QRegularExpr
 
         // 构建HTML显示上下文
         QString html = "<div style='margin-bottom:10px;'>";
-        html += QString("<p style='color:gray;margin:0;'>行 %1:</p>").arg(lineNumber + 1);
+        info = tr("Line %1:").arg(lineNumber + 1);
+        html += QString("<p style='color:gray;margin:0;'>%1</p>").arg(info);
 
         if (!contextBefore.isEmpty()) {
             html += QString("<pre style='margin:0;color:gray;'>%1</pre>")
@@ -219,7 +221,8 @@ void SearchPanel::highlightSearchResultsForLine(const QString &line, const QRegu
 
     // 如果这是第一个匹配项，初始化搜索结果区域
     if (ui->textBrowserSearchResult->document()->isEmpty()) {
-        ui->textBrowserSearchResult->setHtml(QString("<p style='color:gray'>实时搜索结果：</p>"));
+        QString info = tr("Search results:");
+        ui->textBrowserSearchResult->setHtml(QString("<p style='color:gray'>%1</p>").arg(info));
     }
 
     // 使用原始文本进行匹配和高亮，与highlightSearchResults保持一致
@@ -253,7 +256,7 @@ void SearchPanel::highlightSearchResultsForLine(const QString &line, const QRegu
         QTextCursor cursor = ui->textBrowserSearchResult->textCursor();
         cursor.setPosition(0);
         cursor.movePosition(QTextCursor::EndOfBlock, QTextCursor::KeepAnchor);
-        cursor.insertHtml(
-            QString("<p style='color:gray'>实时搜索结果：找到 %1 个匹配项</p>").arg(matchCount));
+        QString title = QString("Search Results (%1 matches):").arg(matchCount);
+        cursor.insertHtml(QString("<p style='color:gray'>%1</p>").arg(title));
     }
 }
