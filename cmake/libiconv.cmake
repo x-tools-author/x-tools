@@ -68,6 +68,14 @@ endif()
 if(WIN32)
   set(working_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name}/build-${X_VS})
   message(STATUS "[libiconv] Working directory: ${working_dir}")
+
+  if(EXISTS ${working_dir}/x64/Release)
+    set(lib_dir ${working_dir}/x64/Release)
+  else()
+    return()
+  endif()
+  message(STATUS "[libiconv] Library directory: ${lib_dir}")
+
   if(NOT EXISTS ${lib_dir}/libiconv.lib)
     cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
     set(devenv ${COMPILER_PATH}/../../../../../../../Common7/IDE/devenv.exe)
@@ -76,13 +84,6 @@ if(WIN32)
     execute_process(COMMAND ${devenv} libiconv.sln /Build "Release|x64"
                     WORKING_DIRECTORY ${working_dir})
   endif()
-
-  if(EXISTS ${working_dir}/x64/Release)
-    set(lib_dir ${working_dir}/x64/Release)
-  else()
-    return()
-  endif()
-  message(STATUS "[libiconv] Library directory: ${lib_dir}")
 
   set(X_ICONV ON)
   set(X_ICONV_LIB "libiconv-static")
