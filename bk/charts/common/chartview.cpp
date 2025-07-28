@@ -11,9 +11,9 @@
 #include <QStyleHints>
 #include <QWidgetAction>
 
+#include "../utilities/chartdatahandler.h"
 #include "chartsettings.h"
 #include "common/xtools.h"
-#include "page/charts/utilities/chartdatahandler.h"
 
 ChartView::ChartView(QWidget *parent)
     : QChartView(parent)

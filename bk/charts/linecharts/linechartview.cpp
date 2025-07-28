@@ -27,9 +27,9 @@
 
 #include <xlsxdocument.h>
 
+#include "../utilities/chartdatahandler.h"
 #include "common/xtools.h"
 #include "linechartsettings.h"
-#include "page/charts/utilities/chartdatahandler.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using QtCharts::QAbstractSeries;

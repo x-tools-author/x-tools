@@ -14,7 +14,7 @@
 #include <QValueAxis>
 #include <QXYSeries>
 
-#include "page/charts/common/chartview.h"
+#include "../common/chartview.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using QtCharts::QValueAxis;

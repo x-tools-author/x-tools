@@ -29,7 +29,7 @@
 
 #include "barchartsettings.h"
 
-#include "page/charts/utilities/chartdatahandler.h"
+#include "../utilities/chartdatahandler.h"
 
 BarChartView::BarChartView(QWidget *parent)
     : ChartView(parent)

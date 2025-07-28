@@ -34,8 +34,8 @@ public:
     QTableView *tableView() const;
     virtual QVariantMap save() const;
     virtual void load(const QVariantMap &parameters);
-
     virtual void inputBytes(const QByteArray &bytes);
+
 signals:
     void outputBytes(const QByteArray &bytes);
 

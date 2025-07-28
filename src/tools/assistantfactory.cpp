@@ -33,7 +33,7 @@
 #include "qrcode/qrcodeassistant.h"
 #endif
 
-#ifdef X_ENABLE_SERIALBUS
+#ifdef X_ENABLE_SERIAL_BUS
 #include "canbus/canbusassistant.h"
 #include "modbus/modbusassistant.h"
 #endif
@@ -59,7 +59,7 @@ AssistantFactory::AssistantFactory(QObject* parent)
 #if defined(X_ZINT)
     addAssistant<BarCodeAssistant>(AssistantTypeBarcode, tr("Barcode Assistant"));
 #endif
-#ifdef X_ENABLE_SERIALBUS
+#ifdef X_ENABLE_SERIAL_BUS
     addAssistant<CanBusAssistant>(AssistantTypeCANBus, tr("CAN Bus Assistant"));
     addAssistant<ModbusAssistant>(AssistantTypeModbus, tr("Modbus Assistant"));
 #endif

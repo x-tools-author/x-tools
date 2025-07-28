@@ -14,5 +14,10 @@
         <file>res/icons/bar.svg</file>
         <file>res/icons/search.svg</file>
         <file>res/icons/function.svg</file>
+        <file>res/icons/lua.svg</file>
+        <file>res/icons/right_panel_close.svg</file>
+        <file>res/icons/counter_1.svg</file>
+        <file>res/icons/xy.svg</file>
+        <file>res/icons/dock_to_right.svg</file>
     </qresource>
 </RCC>

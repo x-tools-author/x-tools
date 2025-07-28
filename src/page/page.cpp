@@ -28,6 +28,7 @@
 #include "device/udpserverui.h"
 #include "devicesettings.h"
 #include "emitter/emitterview.h"
+#include "page/panels/inputpanels/inputpanelsmanager.h"
 #include "page/preset/presetview.h"
 #include "page/responder/responderview.h"
 
@@ -45,10 +46,6 @@
 
 #ifdef X_ENABLE_BLUETOOTH
 #include "device/blecentralui.h"
-#endif
-
-#ifdef X_ENABLE_CHARTS
-#include "page/charts/chartsview.h"
 #endif
 
 #include "common/crc.h"
@@ -109,7 +106,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_rxStatistician = new Statistician(ui->labelRxInfo, this);
     m_txStatistician = new Statistician(ui->labelTxInfo, this);
 
-#ifdef X_ENABLE_CHARTS
+#if 0
     m_chartsView = new ChartsView(this);
     ui->widgetCharts->setLayout(new QHBoxLayout);
     ui->widgetCharts->layout()->setContentsMargins(0, 0, 0, 0);
@@ -124,8 +121,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     ui->toolButtonCharts->setCheckable(true);
     ui->toolButtonCharts->setIcon(QIcon(":/res/icons/charts.svg"));
     connect(ui->toolButtonCharts, &QToolButton::clicked, this, &Page::updateChartUi);
-#else
-    hideChartsWidgets();
 #endif
 
     if (direction == ControllerDirection::Right) {
@@ -135,14 +130,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
             l->addItem(item);
         }
     }
-
-    // Search tool button
-    ui->widgetSearch->hide();
-    ui->toolButtonSearch->setCheckable(true);
-    ui->toolButtonSearch->setIcon(QIcon(":/res/icons/search.svg"));
-    connect(ui->toolButtonSearch, &QToolButton::clicked, this, [this](bool checked) {
-        ui->widgetSearch->setVisible(checked);
-    });
 
     m_writeTimer->setInterval(1000);
     connect(m_writeTimer, &QTimer::timeout, this, &Page::writeBytes);
@@ -154,6 +141,10 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
     connect(ui->checkBoxWrap, &QCheckBox::clicked, this, &Page::onWrapModeChanged);
     connect(ui->checkBoxTerminalMode, &QCheckBox::clicked, this, &Page::onTerminalModeChanged);
+    connect(ui->widgetInputPanels,
+            &InputPanelsManager::visibleChanged,
+            this,
+            &Page::onInputFormatChanged);
 
     initUi();
 
@@ -161,7 +152,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     onDeviceTypeChanged();
     onTerminalModeChanged();
     onInputFormatChanged();
-    updateChartUi();
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     ui->widgetController->setMaximumWidth(256);
@@ -182,9 +172,6 @@ QVariantMap Page::save()
     if (m_deviceController) {
         map.insert(g_keys.communication, m_deviceController->save());
     }
-
-    map.insert(g_keys.showCharts, ui->toolButtonCharts->isChecked());
-    map.insert(g_keys.showSearch, ui->toolButtonSearch->isChecked());
 
     map.insert(g_keys.outputFormat, ui->comboBoxOutputFormat->currentData());
     map.insert(g_keys.outputRx, ui->checkBoxOutputRx->isChecked());
@@ -209,7 +196,7 @@ QVariantMap Page::save()
         map.insert(g_keys.transfers, ui->tabTransfers->save());
     }
 
-#ifdef X_ENABLE_CHARTS
+#if 0
     map.insert(g_keys.chartsItems, m_chartsView->save());
 #endif
 
@@ -244,9 +231,6 @@ void Page::load(const QVariantMap &parameters)
     bool outputTerminalMode = parameters.value(g_keys.outputTerminalMode).toBool();
     QVariantMap outputSettings = parameters.value(g_keys.outputSettings).toMap();
 
-    ui->toolButtonCharts->setChecked(showCharts);
-    ui->toolButtonSearch->setChecked(showSearch);
-    ui->widgetSearch->setVisible(showSearch);
     index = ui->comboBoxOutputFormat->findData(outputFormat);
     ui->comboBoxOutputFormat->setCurrentIndex(index == -1 ? 0 : index);
     ui->checkBoxOutputRx->setChecked(outputRx);
@@ -269,7 +253,7 @@ void Page::load(const QVariantMap &parameters)
     ui->comboBoxInputFormat->setCurrentIndex(index == -1 ? 0 : index);
     m_inputSettings->load(inputSettings);
 
-#ifdef X_ENABLE_CHARTS
+#if 0
     m_chartsView->load(parameters.value(g_keys.chartsItems).toMap());
 #endif
 
@@ -281,7 +265,6 @@ void Page::load(const QVariantMap &parameters)
     onDeviceTypeChanged();
     onInputFormatChanged();
     onWrapModeChanged();
-    updateChartUi();
 }
 
 QTabWidget *Page::tabWidget()
@@ -309,20 +292,6 @@ void Page::prependOutputControl(QWidget *widget)
 void Page::appendOutputControl(QWidget *widget)
 {
     ui->horizontalLayoutOutput->addWidget(widget);
-}
-
-void Page::hideChartsWidgets()
-{
-    m_enableCharts = false;
-    ui->toolButtonCharts->setVisible(false);
-    ui->widgetCharts->setVisible(false);
-    ui->widgetChartsController->setVisible(false);
-}
-
-void Page::hideSearchWidgets()
-{
-    ui->toolButtonSearch->hide();
-    ui->widgetSearch->hide();
 }
 
 void Page::hideTransferWidgets()
@@ -429,17 +398,27 @@ void Page::initUiOutput()
     ui->tabWidget->setCurrentIndex(0);
     ui->tabTransfers->setCurrentIndex(0);
 
+#if 0
     // 连接搜索相关的信号和槽
     connect(ui->pushButtonSearch, &QPushButton::clicked, this, &Page::onSearchButtonClicked);
     connect(ui->lineEditSearch, &QLineEdit::textChanged, this, &Page::onSearchTextChanged);
     connect(ui->checkBoxRegex, &QCheckBox::clicked, this, [this](int) { performSearch(); });
     connect(ui->checkBoxMatchCase, &QCheckBox::clicked, this, [this](int) { performSearch(); });
     connect(ui->checkBoxWholeWord, &QCheckBox::clicked, this, [this](int) { performSearch(); });
+#endif
+
+    QList<QToolButton *> buttons = ui->widgetOutputPanels->buttons();
+    for (auto &button : buttons) {
+        ui->horizontalLayoutOutputPanelsController->addWidget(button);
+    }
 }
 
 void Page::initUiInput()
 {
-    // Nothing to do
+    QList<QToolButton *> buttons = ui->widgetInputPanels->buttons();
+    for (auto &button : buttons) {
+        ui->horizontalLayoutInputPanelsController->addWidget(button);
+    }
 }
 
 void Page::onDeviceTypeChanged()
@@ -494,12 +473,18 @@ void Page::onInputFormatChanged()
     usingLineEdit |= format == static_cast<int>(TextFormat::Oct);
     usingLineEdit |= format == static_cast<int>(TextFormat::Dec);
     usingLineEdit |= format == static_cast<int>(TextFormat::Hex);
-    if (usingLineEdit) {
-        ui->lineEditInput->show();
-        ui->plainTextEditInput->hide();
-    } else {
-        ui->lineEditInput->hide();
-        ui->plainTextEditInput->show();
+
+    ui->lineEditInput->setEnabled(usingLineEdit);
+    ui->plainTextEditInput->setEnabled(!usingLineEdit);
+    ui->lineEditInput->setVisible(true);
+    ui->plainTextEditInput->setVisible(true);
+
+    // If the input panels are visible, hide the line edit or plain text edit
+    // to make ui simple.
+    bool rightPanelVisible = ui->widgetInputPanels->isVisible();
+    if (!rightPanelVisible) {
+        ui->lineEditInput->setVisible(usingLineEdit);
+        ui->plainTextEditInput->setVisible(!usingLineEdit);
     }
 }
 
@@ -532,7 +517,7 @@ void Page::onShowStatisticianChanged(bool checked)
 
 void Page::onOpened()
 {
-#ifdef X_ENABLE_CHARTS
+#if 0
     m_chartsView->resetCharts();
 #endif
 
@@ -571,7 +556,7 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     m_rxStatistician->inputBytes(bytes);
     outputText(bytes, from, true);
 
-#ifdef X_ENABLE_CHARTS
+#if 0
     if (m_enableCharts) {
         m_chartsView->inputBytes(bytes);
     }
@@ -615,7 +600,7 @@ void Page::onTerminalModeChanged()
     ui->checkBoxOutputDate->setEnabled(!terminalMode);
     ui->checkBoxOutputTime->setEnabled(!terminalMode);
     ui->checkBoxOutputMs->setEnabled(!terminalMode);
-    ui->checkBoxWholeWord->setEnabled(terminalMode);
+    //ui->checkBoxWholeWord->setEnabled(terminalMode);
 }
 
 void Page::openDevice()
@@ -820,10 +805,12 @@ void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
               .arg(header, text);
 #endif
 
+#if 0
     // 在添加到输出前进行搜索匹配
     if (!ui->lineEditSearch->text().isEmpty()) {
         performSearch(outputText);
     }
+#endif
 
     if (m_outputSettings->isEnableFilter()) {
         QString filter = m_outputSettings->filterText();
@@ -852,12 +839,7 @@ void Page::loadControllerParameters()
     }
 }
 
-void Page::updateChartUi()
-{
-    ui->widgetCharts->setVisible(ui->toolButtonCharts->isChecked());
-    ui->widgetChartsController->setVisible(ui->toolButtonCharts->isChecked());
-}
-
+#if 0
 void Page::onSearchButtonClicked()
 {
     performSearch();
@@ -1080,12 +1062,12 @@ void Page::highlightSearchResultsForLine(const QString &line, const QRegularExpr
             QString("<p style='color:gray'>实时搜索结果：找到 %1 个匹配项</p>").arg(matchCount));
     }
 }
-
+#endif
 QByteArray Page::payload() const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     QString text;
-    if (ui->lineEditInput->isVisible()) {
+    if (ui->lineEditInput->isEnabled()) {
         text = ui->lineEditInput->text();
         if (text.isEmpty()) {
             text = ui->lineEditInput->placeholderText();

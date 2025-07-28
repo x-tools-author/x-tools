@@ -21,9 +21,9 @@
 #include <QPointF>
 #include <QTimer>
 
+#include "../chartsview.h"
 #include "common/xtools.h"
 #include "linechartview.h"
-#include "page/charts/chartsview.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using namespace QtCharts;

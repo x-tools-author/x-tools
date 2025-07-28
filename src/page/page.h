@@ -53,8 +53,6 @@ public:
     void inputBytes(const QByteArray &bytes);
     void prependOutputControl(QWidget *widget);
     void appendOutputControl(QWidget *widget);
-    void hideChartsWidgets();
-    void hideSearchWidgets();
     void hideTransferWidgets();
     void removeTestDevices();
 
@@ -86,6 +84,7 @@ private:
     void onBytesWritten(const QByteArray &bytes, const QString &to);
     void onWrapModeChanged();
     void onTerminalModeChanged();
+#if 0
     void onSearchButtonClicked();
     void onSearchTextChanged();
 
@@ -93,6 +92,7 @@ private:
     void highlightSearchResults(const QString &text, const QRegularExpression &regex);
     void highlightSearchResultsForLine(const QString &line, const QRegularExpression &regex);
     void performSearch(QString &line);
+#endif
 
     void openDevice();
     void closeDevice();
@@ -104,7 +104,6 @@ private:
     void outputText(const QByteArray &bytes, const QString &flag, bool isRx);
     void saveControllerParameters();
     void loadControllerParameters();
-    void updateChartUi();
 
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;

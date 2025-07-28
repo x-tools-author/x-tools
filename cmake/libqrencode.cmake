@@ -1,6 +1,7 @@
 ﻿# https://github.com/fukuchi/libqrencode
 set(qrencode_package_name "libqrencode-master")
 
+set(X_QR_ENCODE OFF)
 # --------------------------------------------------------------------------------------------------
 # Extract libencode zip...
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/3rd/${qrencode_package_name})
@@ -16,6 +17,8 @@ else()
   set(X_QRENCODE_LIB "qrencode")
 endif()
 
+set(X_QR_ENCODE ON)
+add_compile_definitions(X_QR_ENCODE)
 message(STATUS "[qrencode] X_QRENCODE_LIB: ${X_QRENCODE_LIB}")
 set(qrencode_dst_dir ${X_LIBS_DIR}/${qrencode_package_name})
 if(EXISTS ${qrencode_dst_dir})
