@@ -16,4 +16,7 @@ class LinePlotPanel : public PlotPanel
 public:
     explicit LinePlotPanel(QWidget *parent = nullptr);
     ~LinePlotPanel() override;
+
+private:
+    QList<QCPCurve *> m_curves;
 };

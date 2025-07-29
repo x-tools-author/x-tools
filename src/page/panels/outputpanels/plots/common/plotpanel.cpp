@@ -8,10 +8,27 @@
  **************************************************************************************************/
 #include "plotpanel.h"
 
+#include <QApplication>
+#include <QHBoxLayout>
+#include <QPainter>
+
+#include "plotpanelpalette.h"
+
 PlotPanel::PlotPanel(QWidget *parent)
     : Panel(parent)
 {
-    // Initialization code can be added here if needed
+    m_plot = new QCustomPlot(this);
+    m_plot->setBackground(qApp->palette().button());
+    QHBoxLayout *layout = new QHBoxLayout(this);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setSpacing(0);
+    layout->addWidget(m_plot);
+    setLayout(layout);
+
+    connect(&PlotPanelPalette::singleton(), &PlotPanelPalette::paletteChanged, this, [this]() {
+        m_plot->setBackground(qApp->palette().button());
+        m_plot->replot();
+    });
 }
 
 PlotPanel::~PlotPanel()

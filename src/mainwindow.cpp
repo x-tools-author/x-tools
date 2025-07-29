@@ -41,6 +41,7 @@
 #include "application.h"
 #include "common/xtools.h"
 #include "page/page.h"
+#include "page/panels/outputpanels/plots/common/plotpanelpalette.h"
 #include "tools/assistantfactory.h"
 
 #ifdef Q_OS_WIN
@@ -511,6 +512,7 @@ void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
             xApp->settings()->setValue(keys.colorScheme, static_cast<int>(colorScheme));
             xApp->setupColorScheme();
             updateWindowTitleArea();
+            PlotPanelPalette::singleton().notifyAll();
         });
     }
 

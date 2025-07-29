@@ -11,7 +11,14 @@
 BarPlotPanel::BarPlotPanel(QWidget *parent)
     : PlotPanel(parent)
 {
-    // Initialization code can be added here if needed
+    QCPBars *bars = new QCPBars(m_plot->xAxis, m_plot->yAxis);
+    bars->setPen(QPen(Qt::red));
+    QVector<double> xData, yData;
+    for (int i = 0; i < 10; ++i) {
+        xData.append(i);
+        yData.append(i);
+    }
+    bars->setData(xData, yData);
 }
 
 BarPlotPanel::~BarPlotPanel()

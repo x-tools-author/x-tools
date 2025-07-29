@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <qcustomplot.h>
+
 #include "../../../common/panel.h"
 
 class PlotPanel : public Panel
@@ -16,4 +18,8 @@ class PlotPanel : public Panel
 public:
     explicit PlotPanel(QWidget *parent = nullptr);
     ~PlotPanel() override;
+
+protected:
+    QCustomPlot *m_plot;
+    const int m_maxChannels = 16;
 };

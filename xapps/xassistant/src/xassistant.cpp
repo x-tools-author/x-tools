@@ -43,16 +43,6 @@ xAssistant::xAssistant(QWidget* parent)
     m_ioPage10->hideTransferWidgets();
     m_ioPage11->hideTransferWidgets();
 
-    m_ioPage00->hideChartsWidgets();
-    m_ioPage01->hideChartsWidgets();
-    m_ioPage10->hideChartsWidgets();
-    m_ioPage11->hideChartsWidgets();
-
-    m_ioPage00->hideSearchWidgets();
-    m_ioPage01->hideSearchWidgets();
-    m_ioPage10->hideSearchWidgets();
-    m_ioPage11->hideSearchWidgets();
-
     m_ioPage00->removeTestDevices();
     m_ioPage01->removeTestDevices();
     m_ioPage10->removeTestDevices();

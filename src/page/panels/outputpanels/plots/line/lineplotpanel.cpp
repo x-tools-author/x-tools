@@ -11,7 +11,11 @@
 LinePlotPanel::LinePlotPanel(QWidget *parent)
     : PlotPanel(parent)
 {
-    // Initialization code can be added here if needed
+    for (int i = 0; i < m_maxChannels; ++i) {
+        QCPCurve *curve = new QCPCurve(m_plot->xAxis, m_plot->yAxis);
+        curve->setName(QString("ch %1").arg(i + 1));
+        m_curves.append(curve);
+    }
 }
 
 LinePlotPanel::~LinePlotPanel()
