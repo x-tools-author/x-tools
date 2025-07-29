@@ -41,7 +41,7 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-    ChartSettings *chartSettingsWidget() override;
+    PlotSettings *chartSettingsWidget() override;
     void resetChart() override;
 
 private:

@@ -13,13 +13,13 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-#include "../common/chartsettings.h"
+#include "../common/plotsettings.h"
 
 namespace Ui {
-class BarChartSettings;
+class BarPlotSettings;
 }
 
-struct BarChartSettingsKeys
+struct BarPlotSettingsKeys
 {
     const QString dataFormat{"dataFormat"};
     const QString channels{"channels"};
@@ -31,12 +31,12 @@ struct BarChartSettingsKeys
     } channel;
 };
 
-class BarChartSettings : public ChartSettings
+class BarPlotSettings : public PlotSettings
 {
     Q_OBJECT
 public:
-    explicit BarChartSettings(QWidget *parent = Q_NULLPTR);
-    ~BarChartSettings() override;
+    explicit BarPlotSettings(QWidget *parent = Q_NULLPTR);
+    ~BarPlotSettings() override;
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
@@ -65,7 +65,7 @@ private:
         QPushButton *colorButton;
         QLineEdit *nameLineEdit;
     };
-    Ui::BarChartSettings *ui;
+    Ui::BarPlotSettings *ui;
     QList<ChannelContext> m_channelContexts;
 
 private:

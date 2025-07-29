@@ -8,8 +8,8 @@
  **************************************************************************************************/
 #include "plotsettings.h"
 
-ChartSettings::ChartSettings(QWidget *parent)
+PlotSettings::PlotSettings(QWidget *parent)
     : QWidget(parent)
 {}
 
-ChartSettings::~ChartSettings() {}
+PlotSettings::~PlotSettings() {}

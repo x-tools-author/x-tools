@@ -8,18 +8,9 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QChart>
-#include <QChartView>
 #include <QMenu>
-#include <QValueAxis>
-#include <QXYSeries>
 
-#include "../common/chartview.h"
-
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-using QtCharts::QValueAxis;
-using QtCharts::QXYSeries;
-#endif
+#include "../common/plotpanel.h"
 
 namespace Ui {
 class ChartsUi;
@@ -49,15 +40,12 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-    ChartSettings *chartSettingsWidget() override;
+    PlotSettings *chartSettingsWidget() override;
     void resetChart() override;
 
 private:
     Ui::ChartsUi *ui;
     LineChartSettings *m_settings;
-    QList<QXYSeries *> m_series;
-    QValueAxis *m_axisX;
-    QValueAxis *m_axisY;
 
 private:
     void onNewValues(const QList<double> &values) override;

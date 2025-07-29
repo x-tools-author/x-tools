@@ -19,7 +19,7 @@ namespace Ui {
 class LineChartSettings;
 }
 
-class LineChartSettings : public ChartSettings
+class LineChartSettings : public PlotSettings
 {
     Q_OBJECT
 public:

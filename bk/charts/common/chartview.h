@@ -19,7 +19,7 @@ using QtCharts::QChart;
 using QtCharts::QChartView;
 #endif
 
-class ChartSettings;
+class PlotSettings;
 class ChartDataHandler;
 class ChartView : public QChartView
 {
@@ -30,7 +30,7 @@ public:
 
     virtual QVariantMap save() const = 0;
     virtual void load(const QVariantMap &parameters) = 0;
-    virtual ChartSettings *chartSettingsWidget() = 0;
+    virtual PlotSettings *chartSettingsWidget() = 0;
     virtual void resetChart() = 0;
 
     QMenu *chartSettingsMenu();
