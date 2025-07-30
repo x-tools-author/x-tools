@@ -22,10 +22,6 @@
 #include "common/xtools.h"
 #include "lineplotpanel.h"
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-using namespace QtCharts;
-#endif
-
 LinePlotSettings::LinePlotSettings(QWidget *parent)
     : PlotSettings(parent)
     , ui(new Ui::LinePlotSettings)

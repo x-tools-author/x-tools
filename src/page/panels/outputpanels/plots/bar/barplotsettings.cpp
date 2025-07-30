@@ -22,10 +22,6 @@
 #include "barplotpanel.h"
 #include "common/xtools.h"
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-using namespace QtCharts;
-#endif
-
 BarPlotSettings::BarPlotSettings(QWidget *parent)
     : PlotSettings(parent)
     , ui(new Ui::BarPlotSettings)
