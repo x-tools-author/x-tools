@@ -8,8 +8,11 @@
  **************************************************************************************************/
 #include "lineplotpanel.h"
 
+#include "lineplotsettings.h"
+
 LinePlotPanel::LinePlotPanel(QWidget *parent)
     : PlotPanel(parent)
+    , m_settings(nullptr)
 {
     for (int i = 0; i < m_maxChannels; ++i) {
         QCPCurve *curve = new QCPCurve(m_plot->xAxis, m_plot->yAxis);
@@ -21,4 +24,13 @@ LinePlotPanel::LinePlotPanel(QWidget *parent)
 LinePlotPanel::~LinePlotPanel()
 {
     // Destructor implementation can be added here if needed
+}
+
+QWidget *LinePlotPanel::menuWidget()
+{
+    if (!m_settings) {
+        m_settings = new LinePlotSettings(this);
+    }
+
+    return m_settings;
 }

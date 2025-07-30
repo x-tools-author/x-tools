@@ -72,3 +72,10 @@ QList<QToolButton *> PanelManager::buttons() const
 
     return buttonList;
 }
+
+void PanelManager::inputBytes(const QByteArray &bytes)
+{
+    for (Panel *panel : m_panels) {
+        panel->inputBytes(bytes);
+    }
+}

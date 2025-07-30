@@ -21,6 +21,8 @@ public:
 
     virtual QVariantMap save() const;
     virtual void load(const QVariantMap &parameters);
+    virtual QWidget *menuWidget();
+    virtual void inputBytes(const QByteArray &bytes);
 
 private:
     QVariantMap m_parameters;

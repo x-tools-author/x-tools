@@ -23,3 +23,13 @@ void Panel::load(const QVariantMap &parameters)
 {
     m_parameters = parameters;
 }
+
+QWidget *Panel::menuWidget()
+{
+    return nullptr;
+}
+
+void Panel::inputBytes(const QByteArray &bytes)
+{
+    Q_UNUSED(bytes);
+}

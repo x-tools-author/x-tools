@@ -11,6 +11,7 @@
 #include <qcustomplot.h>
 
 #include "../../../common/panel.h"
+#include "../common/plotdatahandler.h"
 
 class PlotPanel : public Panel
 {
@@ -18,8 +19,15 @@ class PlotPanel : public Panel
 public:
     explicit PlotPanel(QWidget *parent = nullptr);
     ~PlotPanel() override;
+    void inputBytes(const QByteArray &bytes) override;
 
 protected:
     QCustomPlot *m_plot;
     const int m_maxChannels = 16;
+
+protected:
+    virtual void onNewValues(const QList<double> &values);
+
+private:
+    PlotDataHandler *m_dataHandler;
 };

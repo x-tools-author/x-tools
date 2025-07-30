@@ -10,10 +10,12 @@
 
 #include <QButtonGroup>
 #include <QList>
+#include <QMenu>
 #include <QStackedLayout>
 #include <QToolButton>
 #include <QVariantMap>
 #include <QWidget>
+#include <QWidgetAction>
 
 class Panel;
 class PanelManager : public QWidget
@@ -26,6 +28,7 @@ public:
     QVariantMap save() const;
     void load(const QVariantMap &parameters);
     QList<QToolButton *> buttons() const;
+    void inputBytes(const QByteArray &bytes);
 
 signals:
     void visibleChanged(bool visible);
@@ -51,6 +54,16 @@ public:
             this->setVisible(true);
             this->m_panelButton->setChecked(true);
         });
+
+        QWidget *menuWidget = panel->menuWidget();
+        if (menuWidget) {
+            QMenu *menu = new QMenu(button);
+            QWidgetAction *menuAction = new QWidgetAction(menu);
+            menuAction->setDefaultWidget(menuWidget);
+            menu->addAction(menuAction);
+            button->setMenu(menu);
+            button->setPopupMode(QToolButton::MenuButtonPopup);
+        }
 
         if (m_layout->count() == 1) {
             button->setChecked(true);

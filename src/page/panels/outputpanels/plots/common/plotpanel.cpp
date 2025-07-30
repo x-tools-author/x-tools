@@ -12,10 +12,12 @@
 #include <QHBoxLayout>
 #include <QPainter>
 
+#include "../common/plotdatahandler.h"
 #include "plotpanelpalette.h"
 
 PlotPanel::PlotPanel(QWidget *parent)
     : Panel(parent)
+    , m_dataHandler(nullptr)
 {
     m_plot = new QCustomPlot(this);
     m_plot->setBackground(qApp->palette().button());
@@ -29,9 +31,22 @@ PlotPanel::PlotPanel(QWidget *parent)
         m_plot->setBackground(qApp->palette().button());
         m_plot->replot();
     });
+
+    m_dataHandler = new PlotDataHandler(this);
+    connect(m_dataHandler, &PlotDataHandler::newValues, this, [this](const QList<double> &values) {
+        this->onNewValues(values);
+    });
+    m_dataHandler->start();
 }
 
-PlotPanel::~PlotPanel()
+PlotPanel::~PlotPanel() {}
+
+void PlotPanel::inputBytes(const QByteArray &bytes)
 {
-    // Destructor implementation can be added here if needed
+    m_dataHandler->inputBytes(bytes);
+}
+
+void PlotPanel::onNewValues(const QList<double> &values)
+{
+    Q_UNUSED(values);
 }

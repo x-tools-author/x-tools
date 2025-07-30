@@ -553,12 +553,7 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     m_rxStatistician->inputBytes(bytes);
     outputText(bytes, from, true);
 
-#if 0
-    if (m_enableCharts) {
-        m_chartsView->inputBytes(bytes);
-    }
-#endif
-
+    ui->widgetOutputPanels->inputBytes(bytes);
     ui->tabResponder->inputBytes(bytes);
 
     if (ui->tabTransfers->isEnabled()) {

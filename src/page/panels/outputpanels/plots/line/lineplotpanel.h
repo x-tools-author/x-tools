@@ -10,6 +10,7 @@
 
 #include "../common/plotpanel.h"
 
+class LinePlotSettings;
 class LinePlotPanel : public PlotPanel
 {
     Q_OBJECT
@@ -17,6 +18,9 @@ public:
     explicit LinePlotPanel(QWidget *parent = nullptr);
     ~LinePlotPanel() override;
 
+    QWidget *menuWidget() override;
+
 private:
     QList<QCPCurve *> m_curves;
+    LinePlotSettings *m_settings;
 };

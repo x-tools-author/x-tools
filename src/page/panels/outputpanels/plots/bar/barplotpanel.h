@@ -8,12 +8,23 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QList>
+
 #include "../common/plotpanel.h"
 
+class BarPlotSettings;
 class BarPlotPanel : public PlotPanel
 {
     Q_OBJECT
 public:
     explicit BarPlotPanel(QWidget *parent = nullptr);
     ~BarPlotPanel() override;
+    QWidget *menuWidget() override;
+
+protected:
+    void onNewValues(const QList<double> &values) override;
+
+private:
+    QList<QCPBars *> m_bars;
+    BarPlotSettings *m_settings;
 };
