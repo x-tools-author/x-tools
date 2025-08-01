@@ -37,6 +37,7 @@ SocketUi::SocketUi(QWidget *parent)
     });
 
     setPathWidgetsVisible(false);
+    setSecureModeWidgetsVisible(false);
 }
 
 SocketUi::~SocketUi() {}
@@ -54,7 +55,10 @@ QVariantMap SocketUi::save() const
     item.multicastPort = ui->spinBoxMulticastPort->value();
     item.enableMulticast = ui->checkBoxEnableMulticast->isChecked();
     item.justMulticast = ui->checkBoxJustMulticast->isChecked();
+#if 0
     item.path = ui->lineEditPath->text();
+#endif
+    item.secureMode = ui->checkBoxSecureMode->isChecked();
 
     return saveSocketItem(item);
 }
@@ -77,7 +81,10 @@ void SocketUi::load(const QVariantMap &parameters)
     ui->spinBoxMulticastPort->setValue(item.multicastPort);
     ui->checkBoxEnableMulticast->setChecked(item.enableMulticast);
     ui->checkBoxJustMulticast->setChecked(item.justMulticast);
+#if 0
     ui->lineEditPath->setText(item.path);
+#endif
+    ui->checkBoxSecureMode->setChecked(item.secureMode);
 }
 
 void SocketUi::setServerWidgetsVisible(bool visible)
@@ -124,6 +131,11 @@ void SocketUi::setPathWidgetsVisible(bool visible)
 {
     ui->labelPath->setVisible(visible);
     ui->lineEditPath->setVisible(visible);
+}
+
+void SocketUi::setSecureModeWidgetsVisible(bool visible)
+{
+    ui->checkBoxSecureMode->setVisible(visible);
 }
 
 void SocketUi::setServerWidgetsEnabled(bool enabled)
@@ -173,6 +185,11 @@ void SocketUi::setPathWidgetsEnabled(bool enabled)
 {
     ui->labelPath->setEnabled(enabled);
     ui->lineEditPath->setEnabled(enabled);
+}
+
+void SocketUi::setSecureWidgetsEnabled(bool enabled)
+{
+    ui->checkBoxSecureMode->setEnabled(enabled);
 }
 
 void SocketUi::setupClients(const QStringList &clients)

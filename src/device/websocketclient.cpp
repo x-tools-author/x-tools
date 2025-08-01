@@ -28,13 +28,19 @@ QObject *WebSocketClient::initDevice()
             m_webSocket,
             [this](const QByteArray &message) { onBinaryMessageReceived(message); });
     connect(m_webSocket, &QWebSocket::disconnected, m_webSocket, [this]() {
+        qInfo() << "WebSocketClient disconnected:" << m_webSocket->errorString();
         emit errorOccurred("");
     });
     connect(m_webSocket, xWebSocketErrorOccurred, m_webSocket, [this]() {
         emit errorOccurred(m_webSocket->errorString());
     });
 
-    QString url = QString("ws://%1:%2/%3").arg(m_serverAddress).arg(m_serverPort).arg(m_path);
+    QString flag = m_secureMode ? "wss" : "ws";
+    QString url = flag + QString("://%2:%3/%4").arg(m_serverAddress).arg(m_serverPort).arg(m_path);
+    if (url.lastIndexOf('/') == url.length() - 1) {
+        url.chop(1); // Remove trailing slash if present
+    }
+
     if (m_authentication) {
         QNetworkRequest request(url);
         QString username = m_username;

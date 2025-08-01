@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "websocketserver.h"
 
+#include <QSslConfiguration>
 #include <QWebSocket>
 
 #include "common/xtools.h"
@@ -20,8 +21,18 @@ WebSocketServer::~WebSocketServer() {}
 
 QObject *WebSocketServer::initDevice()
 {
-    m_webSocketServer = new QWebSocketServer(QStringLiteral("WebSocket Server"),
-                                             QWebSocketServer::NonSecureMode);
+    if (m_secureMode) {
+        m_webSocketServer = new QWebSocketServer(QStringLiteral("WebSocket Server"),
+                                                 QWebSocketServer::SecureMode);
+        QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
+        sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
+        m_webSocketServer->setSslConfiguration(sslConfig);
+        qInfo() << "WebSocketServer: using secure mode";
+
+    } else {
+        m_webSocketServer = new QWebSocketServer(QStringLiteral("WebSocket Server"),
+                                                 QWebSocketServer::NonSecureMode);
+    }
     connect(m_webSocketServer, &QWebSocketServer::acceptError, m_webSocketServer, [this]() {
         emit errorOccurred(m_webSocketServer->errorString());
     });
@@ -32,21 +43,23 @@ QObject *WebSocketServer::initDevice()
         m_sockets.append(socket);
         this->setupSocket(socket);
     });
+    connect(m_webSocketServer, &QWebSocketServer::serverError, m_webSocketServer, [this]() {
+        qInfo() << "WebSocketServer: server error occurred:" << m_webSocketServer->errorString();
+    });
+    connect(m_webSocketServer,
+            &QWebSocketServer::sslErrors,
+            m_webSocketServer,
+            [this](QList<QSslError> errors) { qInfo() << "SSL errors:" << errors; });
 
     if (!m_webSocketServer->listen(QHostAddress(m_serverAddress), m_serverPort)) {
         m_webSocketServer->deleteLater();
         m_webSocketServer = nullptr;
 
         qWarning() << "WebSocketServer: listen failed";
-
         return nullptr;
     }
 
-    qInfo("Web socket server info: %s:%d/%s",
-          m_serverAddress.toLatin1().data(),
-          m_serverPort,
-          m_path.toLatin1().data());
-
+    qInfo("Web socket server info: %s:%d", m_serverAddress.toLatin1().data(), m_serverPort);
     return m_webSocketServer;
 }
 

@@ -884,6 +884,7 @@ QVariantMap saveSocketItem(const SocketItem &context)
     obj.insert(keys.enableMulticast, context.enableMulticast);
     obj.insert(keys.justMulticast, context.justMulticast);
     obj.insert(keys.path, context.path);
+    obj.insert(keys.secureMode, context.secureMode);
     return obj;
 }
 
@@ -902,6 +903,7 @@ SocketItem loadSocketItem(const QVariantMap &obj)
     ctx.enableMulticast = obj.value(keys.enableMulticast).toBool();
     ctx.justMulticast = obj.value(keys.justMulticast).toBool();
     ctx.path = obj.value(keys.path).toString();
+    ctx.secureMode = obj.value(keys.secureMode).toBool();
     return ctx;
 }
 

@@ -32,6 +32,11 @@ void Socket::load(const QVariantMap &parameters)
     m_enableMulticast = item.enableMulticast;
     m_justMulticast = item.justMulticast;
     m_path = item.path;
+#if 0
+    m_secureMode = item.secureMode;
+#else
+    m_secureMode = false;
+#endif
 }
 
 void Socket::setDataChannel(int channel)

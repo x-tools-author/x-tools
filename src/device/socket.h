@@ -35,6 +35,7 @@ protected:
     bool m_justMulticast{false};
 
     QString m_path{""}; // For WebSocket
+    bool m_secureMode{false};
 
 protected:
     QString makeFlag(const QString &address, quint16 port) const;
