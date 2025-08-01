@@ -18,13 +18,13 @@ if(QT_VERSION_MAJOR EQUAL 6)
 endif()
 # cmake-format: on
 
-function(x_remove_zint_files)
+macro(x_remove_zint_files)
   file(GLOB_RECURSE ZINT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/barcode/*.*")
   foreach(file ${ZINT_FILES})
     list(REMOVE_ITEM X_SOURCES ${file})
     message(STATUS "[Zint]Remove file: ${file}")
   endforeach()
-endfunction()
+endmacro()
 
 if(ANDROID OR IOS)
   x_remove_zint_files()
