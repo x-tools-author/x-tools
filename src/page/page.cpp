@@ -107,23 +107,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_rxStatistician = new Statistician(ui->labelRxInfo, this);
     m_txStatistician = new Statistician(ui->labelTxInfo, this);
 
-#if 0
-    m_chartsView = new ChartsView(this);
-    ui->widgetCharts->setLayout(new QHBoxLayout);
-    ui->widgetCharts->layout()->setContentsMargins(0, 0, 0, 0);
-    ui->widgetCharts->layout()->addWidget(m_chartsView);
-
-    ui->widgetChartsController->setLayout(new QHBoxLayout);
-    ui->widgetChartsController->layout()->setContentsMargins(0, 0, 0, 0);
-    for (auto &w : m_chartsView->chartControllers()) {
-        ui->widgetChartsController->layout()->addWidget(w);
-    }
-
-    ui->toolButtonCharts->setCheckable(true);
-    ui->toolButtonCharts->setIcon(QIcon(":/res/icons/charts.svg"));
-    connect(ui->toolButtonCharts, &QToolButton::clicked, this, &Page::updateChartUi);
-#endif
-
     if (direction == ControllerDirection::Right) {
         auto *l = dynamic_cast<QHBoxLayout *>(layout());
         if (l) {
