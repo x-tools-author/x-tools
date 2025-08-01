@@ -27,7 +27,7 @@
 
 #include <xlsxdocument.h>
 
-#include "../utilities/chartdatahandler.h"
+#include "../common/chartdatahandler.h"
 #include "common/xtools.h"
 #include "linesettings.h"
 

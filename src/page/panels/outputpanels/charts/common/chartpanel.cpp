@@ -12,7 +12,7 @@
 #include <QVBoxLayout>
 #include <QWidgetAction>
 
-#include "../utilities/chartdatahandler.h"
+#include "../common/chartdatahandler.h"
 #include "chartsettings.h"
 #include "common/xtools.h"
 

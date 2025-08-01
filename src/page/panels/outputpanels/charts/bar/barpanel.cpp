@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "barpanel.h"
 
+#include <xlsxdocument.h>
+
 #include <QChartView>
 #include <QCheckBox>
 #include <QDebug>
@@ -25,11 +27,8 @@
 #include <QTimer>
 #include <QWidgetAction>
 
-#include <xlsxdocument.h>
-
+#include "../common/chartdatahandler.h"
 #include "barsettings.h"
-
-#include "../utilities/chartdatahandler.h"
 
 BarPanel::BarPanel(QWidget *parent)
     : ChartPanel(parent)

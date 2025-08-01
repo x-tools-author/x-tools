@@ -21,7 +21,6 @@
 #include <QPointF>
 #include <QTimer>
 
-#include "../chartsview.h"
 #include "common/xtools.h"
 #include "linepanel.h"
 
