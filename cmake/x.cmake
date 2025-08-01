@@ -104,7 +104,7 @@ function(x_generate_zip target version)
       COMMAND ${CMAKE_COMMAND} -E make_directory ${target}-zip
       COMMAND ${CMAKE_COMMAND} -E tar "cfv" ${target}-zip/${X_ASSET_NAME}.zip --format=zip ${target}
       WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../"
-      SOURCES cmake/xtools.cmake)
+      SOURCES cmake/x.cmake)
   endif()
 endfunction()
 
