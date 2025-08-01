@@ -15,7 +15,7 @@
 #include <QVariantMap>
 #include <QWidget>
 
-class ChartView;
+class ChartPanel;
 class ChartsView : public QWidget
 {
     Q_OBJECT
@@ -35,7 +35,7 @@ public:
     void load(const QVariantMap &parameters);
 
 private:
-    QList<ChartView *> m_chartViews;
+    QList<ChartPanel *> m_chartViews;
     QList<QToolButton *> m_chartControllers;
     QStackedLayout *m_layout;
     QButtonGroup *m_buttonGroup;

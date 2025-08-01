@@ -9,8 +9,10 @@
 #pragma once
 
 #include <QMenu>
+#include <QValueAxis>
+#include <QXYSeries>
 
-#include "../common/plotpanel.h"
+#include "../common/chartpanel.h"
 
 namespace Ui {
 class ChartsUi;
@@ -30,8 +32,9 @@ struct ChartsUiDataKeys
     const QString channelType{"channelType"};
 };
 
+class ChartSettings;
 class LineChartSettings;
-class LineChartView : public ChartView
+class LineChartView : public ChartPanel
 {
     Q_OBJECT
 public:
@@ -40,12 +43,15 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-    PlotSettings *chartSettingsWidget() override;
+    ChartSettings *chartSettingsWidget() override;
     void resetChart() override;
 
 private:
     Ui::ChartsUi *ui;
     LineChartSettings *m_settings;
+    QList<QXYSeries *> m_series;
+    QValueAxis *m_axisX;
+    QValueAxis *m_axisY;
 
 private:
     void onNewValues(const QList<double> &values) override;

@@ -39,7 +39,7 @@ using QtCharts::QSplineSeries;
 #endif
 
 LineChartView::LineChartView(QWidget *parent)
-    : ChartView(parent)
+    : ChartPanel(parent)
 {
     m_settings = new LineChartSettings();
 

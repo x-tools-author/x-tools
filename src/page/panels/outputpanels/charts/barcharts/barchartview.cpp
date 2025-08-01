@@ -32,7 +32,7 @@
 #include "../utilities/chartdatahandler.h"
 
 BarChartView::BarChartView(QWidget *parent)
-    : ChartView(parent)
+    : ChartPanel(parent)
 {
     m_settings = new BarChartSettings();
 

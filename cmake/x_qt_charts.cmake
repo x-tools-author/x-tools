@@ -1,0 +1,19 @@
+set(X_ENABLE_PLOT OFF)
+find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Charts)
+
+if(Qt${QT_VERSION_MAJOR}Charts_FOUND)
+  set(X_ENABLE_PLOT ON)
+  add_compile_definitions(X_ENABLE_PLOT)
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Charts)
+  list(APPEND X_LIBS QXlsx::QXlsx)
+  message(STATUS "[Charts]Qt Charts found, enabling X_ENABLE_PLOT")
+  return()
+else()
+  # If Qt Charts is not found, we need to remove the files that depend on it
+  file(GLOB_RECURSE X_PLOT_FILES
+       "${CMAKE_CURRENT_LIST_DIR}/src/page/panels/outputpanels/charts/*.*")
+  message(STATUS "[Charts]Remove Qt Charts files from X_SOURCES")
+  foreach(file ${X_PLOT_FILES})
+    message(STATUS "[Charts]Remove file: ${file}")
+  endforeach()
+endif()

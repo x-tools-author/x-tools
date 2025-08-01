@@ -14,23 +14,23 @@
 #include <QPointF>
 #include <QVariantMap>
 
+#include "../../../common/panel.h"
+
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using QtCharts::QChart;
 using QtCharts::QChartView;
 #endif
 
-class PlotSettings;
+class ChartSettings;
 class ChartDataHandler;
-class ChartView : public QChartView
+class ChartPanel : public Panel
 {
     Q_OBJECT
 public:
-    explicit ChartView(QWidget *parent = Q_NULLPTR);
-    ~ChartView() override;
+    explicit ChartPanel(QWidget *parent = Q_NULLPTR);
+    ~ChartPanel() override;
 
-    virtual QVariantMap save() const = 0;
-    virtual void load(const QVariantMap &parameters) = 0;
-    virtual PlotSettings *chartSettingsWidget() = 0;
+    virtual ChartSettings *chartSettingsWidget() = 0;
     virtual void resetChart() = 0;
 
     QMenu *chartSettingsMenu();
@@ -44,6 +44,7 @@ protected:
 protected:
     ChartDataHandler *m_chartDataHandler;
     QChart *m_chart;
+    QChartView *m_chartView;
 
 private:
     QMenu *m_settingsMenu;

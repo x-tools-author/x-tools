@@ -17,7 +17,7 @@
 #include <QValueAxis>
 #include <QXYSeries>
 
-#include "../common/chartview.h"
+#include "../common/chartpanel.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using QtCharts::QBarCategoryAxis;
@@ -31,8 +31,9 @@ namespace Ui {
 class ChartsUi;
 }
 
+class ChartSettings;
 class BarChartSettings;
-class BarChartView : public ChartView
+class BarChartView : public ChartPanel
 {
     Q_OBJECT
 public:
@@ -41,7 +42,7 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-    PlotSettings *chartSettingsWidget() override;
+    ChartSettings *chartSettingsWidget() override;
     void resetChart() override;
 
 private:

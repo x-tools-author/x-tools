@@ -31,7 +31,7 @@ struct BarChartSettingsKeys
     } channel;
 };
 
-class BarChartSettings : public PlotSettings
+class BarChartSettings : public ChartSettings
 {
     Q_OBJECT
 public:

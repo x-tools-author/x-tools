@@ -12,20 +12,11 @@
 #include "page/panels/outputpanels/search/searchpanel.h"
 #include "page/panels/outputpanels/xymodem/xymodemreceiver.h"
 
-#ifdef X_PLOT
-#include "page/panels/outputpanels/plots/bar/barplotpanel.h"
-#include "page/panels/outputpanels/plots/line/lineplotpanel.h"
-#endif
-
 OutputPanelsManager::OutputPanelsManager(QWidget *parent)
     : PanelManager(parent)
 {
     addPanel<SearchPanel>(tr("Search"), ":/res/icons/search.svg");
     addPanel<LuaPanel>(tr("Lua Script"), ":/res/icons/lua.svg");
-#ifdef X_PLOT
-    addPanel<LinePlotPanel>(tr("Line Chart"), ":/res/icons/line_series.svg");
-    addPanel<BarPlotPanel>(tr("Bar Chart"), ":/res/icons/bar.svg");
-#endif
 #if 0
     addPanel<XYModemReceiver>(tr("XY-Modem Receiver"), ":/res/icons/xy.svg");
 #endif

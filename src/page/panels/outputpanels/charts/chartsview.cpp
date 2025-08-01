@@ -38,7 +38,7 @@ QList<QToolButton *> ChartsView::chartControllers()
 
 void ChartsView::resetCharts()
 {
-    for (ChartView *&view : m_chartViews) {
+    for (ChartPanel *&view : m_chartViews) {
         view->resetChart();
     }
 }
@@ -49,7 +49,7 @@ void ChartsView::inputBytes(const QByteArray &bytes)
         return;
     }
 
-    for (ChartView *&view : m_chartViews) {
+    for (ChartPanel *&view : m_chartViews) {
         auto dataHandler = view->chartDataHandler();
         dataHandler->inputBytes(bytes);
     }
@@ -60,7 +60,7 @@ QVariantMap ChartsView::save()
     QVariantMap data;
     data.insert("currentIndex", m_layout->currentIndex());
 
-    for (ChartView *&view : m_chartViews) {
+    for (ChartPanel *&view : m_chartViews) {
         data.insert(view->metaObject()->className(), view->save());
     }
     return data;
@@ -74,7 +74,7 @@ void ChartsView::load(const QVariantMap &parameters)
         m_layout->setCurrentIndex(index);
     }
 
-    for (ChartView *&view : m_chartViews) {
+    for (ChartPanel *&view : m_chartViews) {
         view->load(parameters.value(view->metaObject()->className()).toMap());
     }
 }

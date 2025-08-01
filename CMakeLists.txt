@@ -64,7 +64,6 @@ list(APPEND X_QT_COMPONENTS Core)
 list(APPEND X_QT_COMPONENTS Widgets)
 list(APPEND X_QT_COMPONENTS Network)
 list(APPEND X_QT_COMPONENTS LinguistTools)
-list(APPEND X_QT_COMPONENTS PrintSupport)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -78,6 +77,15 @@ if(QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
 endif()
 
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_QT_COMPONENTS})
+set(X_LIBS Qt${QT_VERSION_MAJOR}::Core)
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Gui)
+if(QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::CorePrivate)
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::GuiPrivate)
+endif()
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Network)
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Svg)
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
 
 # --------------------------------------------------------------------------------------------------
 # Global variables
@@ -166,6 +174,10 @@ file(GLOB_RECURSE X_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 
 # --------------------------------------------------------------------------------------------------
+# Optionally enable Qt Charts module
+include(${CMAKE_SOURCE_DIR}/cmake/x_qt_charts.cmake)
+
+# --------------------------------------------------------------------------------------------------
 # 3rd module
 include(${CMAKE_SOURCE_DIR}/cmake/lua.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
@@ -174,7 +186,6 @@ include(${CMAKE_SOURCE_DIR}/cmake/qxlsx.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/libiconv.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/qcustomplot.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/singleapplication.cmake)
 
 # --------------------------------------------------------------------------------------------------
@@ -278,9 +289,6 @@ else()
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Qt Custom Plot module
-
-# --------------------------------------------------------------------------------------------------
 # Libs
 macro(x_try_to_add_qt_libs flag)
   if(${flag})
@@ -300,13 +308,6 @@ macro(x_try_to_add_3rd_libs flag)
   endif()
 endmacro()
 
-set(X_LIBS Qt${QT_VERSION_MAJOR}::CorePrivate)
-list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Core)
-list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Gui)
-list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Network)
-list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Svg)
-list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
-list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::PrintSupport)
 list(APPEND X_LIBS glog::glog qmdnsengine)
 
 x_try_to_add_qt_libs(X_ENABLE_SERIAL_PORT SerialPort)
@@ -315,7 +316,6 @@ x_try_to_add_qt_libs(X_ENABLE_SERIAL_BUS SerialBus)
 x_try_to_add_qt_libs(X_ENABLE_BLUETOOTH Bluetooth)
 
 x_try_to_add_3rd_libs(X_LUA ${X_LUA_LIB})
-x_try_to_add_3rd_libs(X_PLOT QCustomPlot)
 x_try_to_add_3rd_libs(X_ZINT ${X_ZINT_LIBS})
 x_try_to_add_3rd_libs(X_ICONV ${X_ICONV_LIB})
 x_try_to_add_3rd_libs(X_QR_ENCODE ${X_QRENCODE_LIB})
