@@ -6,8 +6,8 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "barchartsettings.h"
-#include "ui_barchartsettings.h"
+#include "barsettings.h"
+#include "ui_barsettings.h"
 
 #include <QAbstractSeries>
 #include <QChartView>
@@ -21,16 +21,16 @@
 #include <QPointF>
 #include <QTimer>
 
-#include "barchartview.h"
+#include "barpanel.h"
 #include "common/xtools.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using namespace QtCharts;
 #endif
 
-BarChartSettings::BarChartSettings(QWidget *parent)
+BarSettings::BarSettings(QWidget *parent)
     : ChartSettings(parent)
-    , ui(new Ui::BarChartSettings)
+    , ui(new Ui::BarSettings)
 {
     ui->setupUi(this);
 
@@ -65,23 +65,23 @@ BarChartSettings::BarChartSettings(QWidget *parent)
     }
 }
 
-BarChartSettings::~BarChartSettings()
+BarSettings::~BarSettings()
 {
     delete ui;
 }
 
-QVariantMap BarChartSettings::save() const
+QVariantMap BarSettings::save() const
 {
     return QVariantMap();
 }
 
-void BarChartSettings::load(const QVariantMap &parameters)
+void BarSettings::load(const QVariantMap &parameters)
 {
     if (parameters.isEmpty()) {
         return;
     }
 
-    BarChartSettingsKeys keys;
+    BarSettingsKeys keys;
 
     setDataType(parameters.value(keys.dataFormat).toInt());
 
@@ -105,17 +105,17 @@ void BarChartSettings::load(const QVariantMap &parameters)
     }
 }
 
-int BarChartSettings::channelCount()
+int BarSettings::channelCount()
 {
     return 16;
 }
 
-int BarChartSettings::dataType()
+int BarSettings::dataType()
 {
     return ui->comboBoxDataFormat->currentData().toInt();
 }
 
-void BarChartSettings::setDataType(int type)
+void BarSettings::setDataType(int type)
 {
     int index = ui->comboBoxDataFormat->findData(type);
     if (index != -1) {
@@ -123,12 +123,12 @@ void BarChartSettings::setDataType(int type)
     }
 }
 
-void BarChartSettings::updateUiState(bool ioIsOpened)
+void BarSettings::updateUiState(bool ioIsOpened)
 {
     ui->comboBoxDataFormat->setEnabled(!ioIsOpened);
 }
 
-void BarChartSettings::setupColorButton(QPushButton *button, int channelIndex)
+void BarSettings::setupColorButton(QPushButton *button, int channelIndex)
 {
     m_channelContexts[channelIndex].colorButton = button;
     button->setStyleSheet("background-color: rgb(0, 0, 255);");
@@ -142,7 +142,7 @@ void BarChartSettings::setupColorButton(QPushButton *button, int channelIndex)
     });
 }
 
-void BarChartSettings::setupNameLineEdit(QLineEdit *lineEdit, int channelIndex)
+void BarSettings::setupNameLineEdit(QLineEdit *lineEdit, int channelIndex)
 {
     m_channelContexts[channelIndex].nameLineEdit = lineEdit;
     lineEdit->setText(QString::number(channelIndex + 1));
@@ -152,7 +152,7 @@ void BarChartSettings::setupNameLineEdit(QLineEdit *lineEdit, int channelIndex)
     });
 }
 
-QString BarChartSettings::seriesTypeToString(int type) const
+QString BarSettings::seriesTypeToString(int type) const
 {
     switch (type) {
     case QAbstractSeries::SeriesType::SeriesTypeLine:

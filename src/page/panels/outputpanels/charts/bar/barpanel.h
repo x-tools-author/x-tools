@@ -32,13 +32,13 @@ class ChartsUi;
 }
 
 class ChartSettings;
-class BarChartSettings;
-class BarChartView : public ChartPanel
+class BarSettings;
+class BarPanel : public ChartPanel
 {
     Q_OBJECT
 public:
-    explicit BarChartView(QWidget *parent = Q_NULLPTR);
-    ~BarChartView() override;
+    explicit BarPanel(QWidget *parent = Q_NULLPTR);
+    ~BarPanel() override;
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
@@ -47,7 +47,7 @@ public:
 
 private:
     Ui::ChartsUi *ui;
-    BarChartSettings *m_settings;
+    BarSettings *m_settings;
     QList<QBarSet *> m_barSets;
     QStackedBarSeries *m_barSeries;
     QBarCategoryAxis *m_axisX;

@@ -16,10 +16,10 @@
 #include "../common/chartsettings.h"
 
 namespace Ui {
-class BarChartSettings;
+class BarSettings;
 }
 
-struct BarChartSettingsKeys
+struct BarSettingsKeys
 {
     const QString dataFormat{"dataFormat"};
     const QString channels{"channels"};
@@ -31,12 +31,12 @@ struct BarChartSettingsKeys
     } channel;
 };
 
-class BarChartSettings : public ChartSettings
+class BarSettings : public ChartSettings
 {
     Q_OBJECT
 public:
-    explicit BarChartSettings(QWidget *parent = Q_NULLPTR);
-    ~BarChartSettings() override;
+    explicit BarSettings(QWidget *parent = Q_NULLPTR);
+    ~BarSettings() override;
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
@@ -65,7 +65,7 @@ private:
         QPushButton *colorButton;
         QLineEdit *nameLineEdit;
     };
-    Ui::BarChartSettings *ui;
+    Ui::BarSettings *ui;
     QList<ChannelContext> m_channelContexts;
 
 private:

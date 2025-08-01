@@ -6,7 +6,7 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "barchartview.h"
+#include "barpanel.h"
 
 #include <QChartView>
 #include <QCheckBox>
@@ -27,19 +27,19 @@
 
 #include <xlsxdocument.h>
 
-#include "barchartsettings.h"
+#include "barsettings.h"
 
 #include "../utilities/chartdatahandler.h"
 
-BarChartView::BarChartView(QWidget *parent)
+BarPanel::BarPanel(QWidget *parent)
     : ChartPanel(parent)
 {
-    m_settings = new BarChartSettings();
+    m_settings = new BarSettings();
 
     // clang-format off
-    connect(m_settings, &BarChartSettings::dataFormatChanged, this, &BarChartView::onDataFormatChanged);
-    connect(m_settings, &BarChartSettings::channelColorChanged, this, &BarChartView::onChannelColorChanged);
-    connect(m_settings, &BarChartSettings::channelNameChanged, this, &BarChartView::onChannelNameChanged);
+    connect(m_settings, &BarSettings::dataFormatChanged, this, &BarPanel::onDataFormatChanged);
+    connect(m_settings, &BarSettings::channelColorChanged, this, &BarPanel::onChannelColorChanged);
+    connect(m_settings, &BarSettings::channelNameChanged, this, &BarPanel::onChannelNameChanged);
     // clang-format on
 
     m_axisX = new QBarCategoryAxis();
@@ -79,20 +79,20 @@ BarChartView::BarChartView(QWidget *parent)
         m_barSets[i]->replace(i, i + 1);
     }
 
-    m_settings->load(BarChartView::save());
+    m_settings->load(BarPanel::save());
 }
 
-BarChartView::~BarChartView()
+BarPanel::~BarPanel()
 {
     m_chart->deleteLater();
     m_settings->deleteLater();
 }
 
-QVariantMap BarChartView::save() const
+QVariantMap BarPanel::save() const
 {
     QVariantMap data;
 
-    BarChartSettingsKeys keys;
+    BarSettingsKeys keys;
     data[keys.dataFormat] = m_settings->dataType();
     QJsonArray channels;
     for (int i = 0; i < m_barSets.size(); ++i) {
@@ -106,13 +106,13 @@ QVariantMap BarChartView::save() const
     return data;
 }
 
-void BarChartView::load(const QVariantMap &parameters)
+void BarPanel::load(const QVariantMap &parameters)
 {
     if (parameters.isEmpty()) {
         return;
     }
 
-    BarChartSettingsKeys keys;
+    BarSettingsKeys keys;
     m_settings->load(parameters);
 
     QJsonArray channels = parameters.value(keys.channels).toJsonArray();
@@ -135,12 +135,12 @@ void BarChartView::load(const QVariantMap &parameters)
     m_axisX->setCategories(categories);
 }
 
-ChartSettings *BarChartView::chartSettingsWidget()
+ChartSettings *BarPanel::chartSettingsWidget()
 {
     return m_settings;
 }
 
-void BarChartView::resetChart()
+void BarPanel::resetChart()
 {
     for (int i = 0; i < m_barSets.size(); ++i) {
         m_barSets[i]->replace(i, 0);
@@ -149,12 +149,12 @@ void BarChartView::resetChart()
     m_axisY->setRange(0, 1);
 }
 
-void BarChartView::onDataFormatChanged(int type)
+void BarPanel::onDataFormatChanged(int type)
 {
     m_chartDataHandler->setDataFormat(type);
 }
 
-void BarChartView::onNewValues(const QList<double> &values)
+void BarPanel::onNewValues(const QList<double> &values)
 {
     int count = qMin(values.size(), m_barSets.size());
     for (int i = 0; i < count; ++i) {
@@ -169,19 +169,19 @@ void BarChartView::onNewValues(const QList<double> &values)
     }
 }
 
-void BarChartView::onNewPoints(const QList<QPointF> &points)
+void BarPanel::onNewPoints(const QList<QPointF> &points)
 {
     Q_UNUSED(points);
 }
 
-void BarChartView::onChannelColorChanged(int channelIndex, const QColor &color)
+void BarPanel::onChannelColorChanged(int channelIndex, const QColor &color)
 {
     if (channelIndex >= 0 && channelIndex < m_barSets.size()) {
         m_barSets[channelIndex]->setColor(color);
     }
 }
 
-void BarChartView::onChannelNameChanged(int channelIndex, const QString &name)
+void BarPanel::onChannelNameChanged(int channelIndex, const QString &name)
 {
     QStringList categories = m_axisX->categories();
     if (channelIndex >= 0 && m_barSets.size() > channelIndex) {

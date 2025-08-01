@@ -33,13 +33,13 @@ struct ChartsUiDataKeys
 };
 
 class ChartSettings;
-class LineChartSettings;
-class LineChartView : public ChartPanel
+class LineSettings;
+class LinePanel : public ChartPanel
 {
     Q_OBJECT
 public:
-    explicit LineChartView(QWidget *parent = Q_NULLPTR);
-    ~LineChartView() override;
+    explicit LinePanel(QWidget *parent = Q_NULLPTR);
+    ~LinePanel() override;
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
@@ -48,7 +48,7 @@ public:
 
 private:
     Ui::ChartsUi *ui;
-    LineChartSettings *m_settings;
+    LineSettings *m_settings;
     QList<QXYSeries *> m_series;
     QValueAxis *m_axisX;
     QValueAxis *m_axisY;

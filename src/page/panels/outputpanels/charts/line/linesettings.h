@@ -16,15 +16,15 @@
 #include "../common/chartsettings.h"
 
 namespace Ui {
-class LineChartSettings;
+class LineSettings;
 }
 
-class LineChartSettings : public ChartSettings
+class LineSettings : public ChartSettings
 {
     Q_OBJECT
 public:
-    explicit LineChartSettings(QWidget *parent = Q_NULLPTR);
-    ~LineChartSettings() override;
+    explicit LineSettings(QWidget *parent = Q_NULLPTR);
+    ~LineSettings() override;
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
@@ -62,7 +62,7 @@ private:
         QPushButton *colorButton;
         QLineEdit *nameLineEdit;
     };
-    Ui::LineChartSettings *ui;
+    Ui::LineSettings *ui;
     QList<ChannelContext> m_channelContexts;
 
 private:

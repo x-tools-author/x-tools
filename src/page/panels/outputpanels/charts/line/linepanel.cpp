@@ -6,7 +6,7 @@
  * eTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "linechartview.h"
+#include "linepanel.h"
 
 #include <QChartView>
 #include <QCheckBox>
@@ -29,7 +29,7 @@
 
 #include "../utilities/chartdatahandler.h"
 #include "common/xtools.h"
-#include "linechartsettings.h"
+#include "linesettings.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using QtCharts::QAbstractSeries;
@@ -38,21 +38,21 @@ using QtCharts::QScatterSeries;
 using QtCharts::QSplineSeries;
 #endif
 
-LineChartView::LineChartView(QWidget *parent)
+LinePanel::LinePanel(QWidget *parent)
     : ChartPanel(parent)
 {
-    m_settings = new LineChartSettings();
+    m_settings = new LineSettings();
 
     // clang-format off
-    connect(m_settings, &LineChartSettings::dataFormatChanged, this, &LineChartView::onDataFormatChanged);
-    connect(m_settings, &LineChartSettings::invokeSetLegendVisible, this, &LineChartView::onSetLegendVisible);
-    connect(m_settings, &LineChartSettings::invokeClearChannels, this, &LineChartView::onClearChannels);
-    connect(m_settings, &LineChartSettings::invokeImportChannels, this, &LineChartView::onImportChannels);
-    connect(m_settings, &LineChartSettings::invokeExportChannels, this, &LineChartView::onExportChannels);
-    connect(m_settings, &LineChartSettings::channelVisibleChanged, this, &LineChartView::onSetChannelVisible);
-    connect(m_settings, &LineChartSettings::channelTypeChanged, this, &LineChartView::onSetChannelType);
-    connect(m_settings, &LineChartSettings::channelColorChanged, this, &LineChartView::onSetChannelColor);
-    connect(m_settings, &LineChartSettings::channelNameChanged, this, &LineChartView::onSetChannelName);
+    connect(m_settings, &LineSettings::dataFormatChanged, this, &LinePanel::onDataFormatChanged);
+    connect(m_settings, &LineSettings::invokeSetLegendVisible, this, &LinePanel::onSetLegendVisible);
+    connect(m_settings, &LineSettings::invokeClearChannels, this, &LinePanel::onClearChannels);
+    connect(m_settings, &LineSettings::invokeImportChannels, this, &LinePanel::onImportChannels);
+    connect(m_settings, &LineSettings::invokeExportChannels, this, &LinePanel::onExportChannels);
+    connect(m_settings, &LineSettings::channelVisibleChanged, this, &LinePanel::onSetChannelVisible);
+    connect(m_settings, &LineSettings::channelTypeChanged, this, &LinePanel::onSetChannelType);
+    connect(m_settings, &LineSettings::channelColorChanged, this, &LinePanel::onSetChannelColor);
+    connect(m_settings, &LineSettings::channelNameChanged, this, &LinePanel::onSetChannelName);
     // clang-format on
 
     m_axisX = new QValueAxis();
@@ -74,7 +74,7 @@ LineChartView::LineChartView(QWidget *parent)
     }
 #endif
 
-    int channelCount = LineChartSettings::channelCount();
+    int channelCount = LineSettings::channelCount();
     for (int i = 0; i < channelCount; ++i) {
         QLineSeries *series = new QLineSeries();
         m_chart->addSeries(series);
@@ -85,16 +85,16 @@ LineChartView::LineChartView(QWidget *parent)
         m_series.append(series);
     }
 
-    m_settings->load(LineChartView::save());
+    m_settings->load(LinePanel::save());
 }
 
-LineChartView::~LineChartView()
+LinePanel::~LinePanel()
 {
     m_chart->deleteLater();
     m_settings->deleteLater();
 }
 
-QVariantMap LineChartView::save() const
+QVariantMap LinePanel::save() const
 {
     QVariantMap data;
 
@@ -116,7 +116,7 @@ QVariantMap LineChartView::save() const
     return data;
 }
 
-void LineChartView::load(const QVariantMap &parameters)
+void LinePanel::load(const QVariantMap &parameters)
 {
     if (parameters.isEmpty()) {
         return;
@@ -172,12 +172,12 @@ void LineChartView::load(const QVariantMap &parameters)
     }
 }
 
-ChartSettings *LineChartView::chartSettingsWidget()
+ChartSettings *LinePanel::chartSettingsWidget()
 {
     return m_settings;
 }
 
-void LineChartView::resetChart()
+void LinePanel::resetChart()
 {
     for (auto &series : m_series) {
         series->clear();
@@ -187,17 +187,17 @@ void LineChartView::resetChart()
     m_axisY->setRange(0, 1);
 }
 
-void LineChartView::onDataFormatChanged(int type)
+void LinePanel::onDataFormatChanged(int type)
 {
     m_chartDataHandler->setDataFormat(type);
 }
 
-void LineChartView::onSetLegendVisible(bool visible)
+void LinePanel::onSetLegendVisible(bool visible)
 {
     m_chart->legend()->setVisible(visible);
 }
 
-void LineChartView::onClearChannels()
+void LinePanel::onClearChannels()
 {
     for (auto &series : m_series) {
         series->clear();
@@ -207,7 +207,7 @@ void LineChartView::onClearChannels()
     m_axisY->setRange(0, 1);
 }
 
-void LineChartView::onImportChannels()
+void LinePanel::onImportChannels()
 {
     const QString fileName = QFileDialog::getOpenFileName(nullptr,
                                                           tr("Import Data from Excel"),
@@ -238,7 +238,7 @@ void LineChartView::onImportChannels()
     }
 }
 
-void LineChartView::onExportChannels()
+void LinePanel::onExportChannels()
 {
     const QString fileName = QFileDialog::getSaveFileName(nullptr,
                                                           tr("Export Data to Excel"),
@@ -249,7 +249,7 @@ void LineChartView::onExportChannels()
     }
 
     QXlsx::Document xlsx;
-    for (int i = 0; i < LineChartSettings::channelCount(); ++i) {
+    for (int i = 0; i < LineSettings::channelCount(); ++i) {
         xlsx.addSheet(m_series.at(i)->name());
         xlsx.selectSheet(i);
         xlsx.write(1, 1, "x");
@@ -270,7 +270,7 @@ void LineChartView::onExportChannels()
     }
 }
 
-void LineChartView::onNewValues(const QList<double> &values)
+void LinePanel::onNewValues(const QList<double> &values)
 {
     int count = qMin(values.size(), m_series.size());
     for (int i = 0; i < count; ++i) {
@@ -301,7 +301,7 @@ void LineChartView::onNewValues(const QList<double> &values)
     }
 }
 
-void LineChartView::onNewPoints(const QList<QPointF> &points)
+void LinePanel::onNewPoints(const QList<QPointF> &points)
 {
     int count = qMin(points.size(), m_series.size());
     for (int i = 0; i < count; ++i) {
@@ -329,14 +329,14 @@ void LineChartView::onNewPoints(const QList<QPointF> &points)
     }
 }
 
-void LineChartView::onSetChannelVisible(int channelIndex, bool visible)
+void LinePanel::onSetChannelVisible(int channelIndex, bool visible)
 {
     if (channelIndex >= 0 && channelIndex < m_series.size()) {
         m_series[channelIndex]->setVisible(visible);
     }
 }
 
-void LineChartView::onSetChannelType(int channelIndex, int type)
+void LinePanel::onSetChannelType(int channelIndex, int type)
 {
     if (channelIndex >= 0 && channelIndex < m_series.size()) {
         QAbstractSeries::SeriesType seriesType = static_cast<QAbstractSeries::SeriesType>(type);
@@ -381,14 +381,14 @@ void LineChartView::onSetChannelType(int channelIndex, int type)
     }
 }
 
-void LineChartView::onSetChannelColor(int channelIndex, const QColor &color)
+void LinePanel::onSetChannelColor(int channelIndex, const QColor &color)
 {
     if (channelIndex >= 0 && channelIndex < m_series.size()) {
         m_series[channelIndex]->setColor(color);
     }
 }
 
-void LineChartView::onSetChannelName(int channelIndex, const QString &name)
+void LinePanel::onSetChannelName(int channelIndex, const QString &name)
 {
     if (channelIndex >= 0 && channelIndex < m_series.size()) {
         m_series[channelIndex]->setName(name);

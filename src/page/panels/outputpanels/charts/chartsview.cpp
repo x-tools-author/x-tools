@@ -14,8 +14,8 @@
 #include <QTimer>
 #include <QtMath>
 
-#include "barcharts/barchartview.h"
-#include "linecharts/linechartview.h"
+#include "bar/barpanel.h"
+#include "line/linepanel.h"
 #include "utilities/chartdatahandler.h"
 
 ChartsView::ChartsView(QWidget *parent)
@@ -25,8 +25,8 @@ ChartsView::ChartsView(QWidget *parent)
     m_layout = new QStackedLayout(this);
     setLayout(m_layout);
 
-    addChartView<LineChartView>(QString(":/res/icons/line_series.svg"), 0);
-    addChartView<BarChartView>(QString(":/res/icons/bar.svg"), 1);
+    addChartView<LinePanel>(QString(":/res/icons/line_series.svg"), 0);
+    addChartView<BarPanel>(QString(":/res/icons/bar.svg"), 1);
 }
 
 ChartsView::~ChartsView() {}

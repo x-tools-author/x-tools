@@ -27,6 +27,10 @@ class ChartPanel : public Panel
 {
     Q_OBJECT
 public:
+    enum class DataFormat { Binary, Text };
+    Q_ENUM(DataFormat);
+
+public:
     explicit ChartPanel(QWidget *parent = Q_NULLPTR);
     ~ChartPanel() override;
 
