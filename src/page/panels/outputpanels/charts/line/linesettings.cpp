@@ -101,7 +101,7 @@ void LineSettings::load(const QVariantMap &parameters)
         return;
     }
 
-    ChartsUiDataKeys keys;
+    LinePanel::DataKeys keys;
 
     setDataType(parameters.value(keys.dataType).toInt());
 

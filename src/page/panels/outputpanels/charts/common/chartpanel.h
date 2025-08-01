@@ -27,7 +27,7 @@ class ChartPanel : public Panel
 {
     Q_OBJECT
 public:
-    enum class DataFormat { Binary, Text };
+    enum class DataFormat { BinaryY, BinaryXY, TextY, TextXY };
     Q_ENUM(DataFormat);
 
 public:

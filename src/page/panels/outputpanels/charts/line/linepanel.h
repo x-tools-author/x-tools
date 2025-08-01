@@ -18,25 +18,25 @@ namespace Ui {
 class ChartsUi;
 }
 
-struct ChartsUiDataKeys
-{
-    const QString dataType{"dataType"};
-    const QString testData{"testData"};
-    const QString channels{"channels"};
-    const QString legendVisible{"legendVisible"};
-    const QString cachePoints{"cachePoints"};
-
-    const QString channelName{"channelName"};
-    const QString channelVisible{"channelVisible"};
-    const QString channelColor{"channelColor"};
-    const QString channelType{"channelType"};
-};
-
-class ChartSettings;
 class LineSettings;
 class LinePanel : public ChartPanel
 {
     Q_OBJECT
+public:
+    struct DataKeys
+    {
+        const QString dataType{"dataType"};
+        const QString testData{"testData"};
+        const QString channels{"channels"};
+        const QString legendVisible{"legendVisible"};
+        const QString cachePoints{"cachePoints"};
+
+        const QString channelName{"channelName"};
+        const QString channelVisible{"channelVisible"};
+        const QString channelColor{"channelColor"};
+        const QString channelType{"channelType"};
+    };
+
 public:
     explicit LinePanel(QWidget *parent = Q_NULLPTR);
     ~LinePanel() override;

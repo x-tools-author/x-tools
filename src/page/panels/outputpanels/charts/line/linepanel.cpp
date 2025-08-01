@@ -98,7 +98,7 @@ QVariantMap LinePanel::save() const
 {
     QVariantMap data;
 
-    ChartsUiDataKeys keys;
+    DataKeys keys;
     data[keys.dataType] = m_settings->dataType();
     data[keys.legendVisible] = m_settings->legendVisible();
     data[keys.cachePoints] = m_settings->cachePoints();
@@ -122,7 +122,7 @@ void LinePanel::load(const QVariantMap &parameters)
         return;
     }
 
-    ChartsUiDataKeys keys;
+    DataKeys keys;
     m_settings->load(parameters);
     QJsonArray channels = parameters.value(keys.channels).toJsonArray();
 
