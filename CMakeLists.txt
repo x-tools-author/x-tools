@@ -225,7 +225,6 @@ endif()
 # Android specific settings
 if(ANDROID)
   set(x_android_source ${CMAKE_SOURCE_DIR}/res/android/6.8)
-  target_link_libraries(xTools PRIVATE ${X_LIBS})
   set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR ${x_android_source})
 endif()
 
