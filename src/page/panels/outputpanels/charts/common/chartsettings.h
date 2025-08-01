@@ -10,12 +10,12 @@
 
 #include <QWidget>
 
-class PlotSettings : public QWidget
+class ChartSettings : public QWidget
 {
     Q_OBJECT
 public:
     explicit ChartSettings(QWidget *parent = Q_NULLPTR);
-    ~PlotSettings() override;
+    ~ChartSettings() override;
 
     virtual QVariantMap save() const = 0;
     virtual void load(const QVariantMap &parameters) = 0;
