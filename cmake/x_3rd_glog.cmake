@@ -28,3 +28,5 @@ else()
   add_dependencies(glog_auto_install glog)
   set_property(TARGET glog_auto_install PROPERTY FOLDER "3rd")
 endif()
+
+list(APPEND X_LIBS glog::glog)

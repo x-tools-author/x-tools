@@ -29,3 +29,5 @@ else()
   add_dependencies(qmdnsengine_auto_install qmdnsengine)
   set_property(TARGET qmdnsengine_auto_install PROPERTY FOLDER "3rd")
 endif()
+
+list(APPEND X_LIBS qmdnsengine)

@@ -87,8 +87,6 @@ list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Svg)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
 
 # --------------------------------------------------------------------------------------------------
-# Global variables
-
 # Binaries
 set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
 
@@ -104,7 +102,7 @@ if(X_MAGIC)
   add_compile_definitions(X_MAGIC)
 endif()
 
-# Do not change X_LUA option unless you know what you are doing
+# Do not change X_ENABLE_LUA option unless you know what you are doing
 set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
 if(${QT_VERSION} VERSION_LESS "6.0.0" AND WIN32)
   set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
@@ -176,54 +174,6 @@ list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 
 include(${CMAKE_SOURCE_DIR}/cmake/x_3rd.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
-
-# --------------------------------------------------------------------------------------------------
-# Lua module
-if(NOT X_LUA)
-  file(GLOB LUA_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/common/luarunner*")
-  foreach(file ${LUA_FILES})
-    list(REMOVE_ITEM X_SOURCES ${file})
-    message(STATUS "[Lua]Remove file: ${file}")
-  endforeach()
-endif()
-
-# --------------------------------------------------------------------------------------------------
-# Zint module
-if(NOT X_ZINT)
-  file(GLOB_RECURSE ZINT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/barcode/*.*")
-  foreach(file ${ZINT_FILES})
-    list(REMOVE_ITEM X_SOURCES ${file})
-    message(STATUS "[Zint]Remove file: ${file}")
-  endforeach()
-endif()
-
-# --------------------------------------------------------------------------------------------------
-# Libs
-macro(x_try_to_add_qt_libs flag)
-  if(${flag})
-    foreach(argv ${ARGN})
-      list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::${argv})
-      message(STATUS "[xTools]Add Qt lib: Qt${QT_VERSION_MAJOR}::${argv}")
-    endforeach()
-  endif()
-endmacro()
-
-macro(x_try_to_add_3rd_libs flag)
-  if(${flag})
-    foreach(argv ${ARGN})
-      list(APPEND X_LIBS ${argv})
-      message(STATUS "[xTools]Third party libs: ${argv}")
-    endforeach()
-  endif()
-endmacro()
-
-list(APPEND X_LIBS glog::glog qmdnsengine)
-
-x_try_to_add_3rd_libs(X_LUA ${X_LUA_LIB})
-x_try_to_add_3rd_libs(X_ZINT ${X_ZINT_LIBS})
-x_try_to_add_3rd_libs(X_ICONV ${X_ICONV_LIB})
-x_try_to_add_3rd_libs(X_QR_ENCODE ${X_QRENCODE_LIB})
-
 message(STATUS "[xTools]Link libraries: ${X_LIBS}")
 
 # --------------------------------------------------------------------------------------------------

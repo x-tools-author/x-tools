@@ -2,7 +2,6 @@ find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Charts)
 if(Qt${QT_VERSION_MAJOR}Charts_FOUND)
   add_compile_definitions(X_ENABLE_CHARTS)
   list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Charts)
-  list(APPEND X_LIBS QXlsx::QXlsx)
 else()
   # If Qt Charts is not found, we need to remove the files that depend on it
   file(GLOB_RECURSE CHARTS_FILES "${CMAKE_SOURCE_DIR}/src/page/panels/outputpanels/charts/*.*")

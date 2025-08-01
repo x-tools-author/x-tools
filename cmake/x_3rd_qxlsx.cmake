@@ -49,3 +49,6 @@ else()
   add_dependencies(QXlsx_auto_install QXlsx)
   set_property(TARGET QXlsx_auto_install PROPERTY FOLDER "3rd")
 endif()
+
+list(APPEND X_LIBS QXlsx::QXlsx)
+add_compile_definitions(X_ENABLE_QXLSX)

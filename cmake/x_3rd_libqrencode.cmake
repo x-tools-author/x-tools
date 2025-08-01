@@ -42,3 +42,5 @@ else()
   add_dependencies(qrencode_auto_install qrencode)
   set_property(TARGET qrencode_auto_install PROPERTY FOLDER "3rd")
 endif()
+
+list(APPEND X_LIBS ${X_QRENCODE_LIB})
