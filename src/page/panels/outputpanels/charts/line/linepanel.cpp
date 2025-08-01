@@ -173,6 +173,7 @@ void LinePanel::resetChart()
         series->clear();
     }
 
+    m_x = 0.0;
     m_axisX->setRange(0, 100);
     m_axisY->setRange(0, 1);
 }
