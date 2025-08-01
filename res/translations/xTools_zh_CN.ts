@@ -1951,7 +1951,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
         <source>0x04-ReadInputRegisters</source>
-        <translation>0x40-读输入寄存器</translation>
+        <translation>0x04-读输入寄存器</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>

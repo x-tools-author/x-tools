@@ -232,14 +232,14 @@ void ModbusAssistant::initComponentParity()
 
 void ModbusAssistant::initComponentFunctionCode()
 {
-    const QString str0x01 = tr("0x01-ReadCoils");
-    const QString str0x02 = tr("0x02-ReadDiscreteInputs");
-    const QString str0x03 = tr("0x03-ReadHoldingRegisters");
-    const QString str0x04 = tr("0x04-ReadInputRegisters");
-    const QString str0x05 = tr("0x05-WriteSingleCoil");
-    const QString str0x06 = tr("0x06-WriteSingleRegister");
-    const QString str0x0f = tr("0x0f-WriteMultipleCoils");
-    const QString str0x10 = tr("0x10-WriteMultipleRegisters");
+    const QString str0x01 = "0x01-" + tr("ReadCoils");
+    const QString str0x02 = "0x02-" + tr("ReadDiscreteInputs");
+    const QString str0x03 = "0x03-" + tr("ReadHoldingRegisters");
+    const QString str0x04 = "0x04-" + tr("ReadInputRegisters");
+    const QString str0x05 = "0x05-" + tr("WriteSingleCoil");
+    const QString str0x06 = "0x06-" + tr("WriteSingleRegister");
+    const QString str0x0f = "0x0f-" + tr("WriteMultipleCoils");
+    const QString str0x10 = "0x10-" + tr("WriteMultipleRegisters");
 
     int func0x01 = QModbusDataUnit::Coils;
     int func0x02 = QModbusDataUnit::DiscreteInputs;

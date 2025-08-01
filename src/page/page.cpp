@@ -480,7 +480,10 @@ void Page::onInputFormatChanged()
     // If the input panels are visible, hide the line edit or plain text edit
     // to make ui simple.
     bool rightPanelVisible = ui->widgetInputPanels->isVisible();
-    if (!rightPanelVisible) {
+    if (rightPanelVisible) {
+        ui->lineEditInput->setVisible(true);
+        ui->plainTextEditInput->setVisible(true);
+    } else {
         ui->lineEditInput->setVisible(usingLineEdit);
         ui->plainTextEditInput->setVisible(!usingLineEdit);
     }

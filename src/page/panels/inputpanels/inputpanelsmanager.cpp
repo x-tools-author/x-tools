@@ -16,8 +16,8 @@ InputPanelsManager::InputPanelsManager(QWidget *parent)
     : PanelManager(parent)
 {
     addPanel<LuaPanel>(tr("Lua Script"), ":/res/icons/lua.svg");
-    addPanel<FrameSerialNumber>(tr("Frame Serial Number"), ":/res/icons/counter_1.svg");
 #if 0
+    addPanel<FrameSerialNumber>(tr("Frame Serial Number"), ":/res/icons/counter_1.svg");
     addPanel<XYModemSender>(tr("XYModem Sender"), ":/res/icons/xy.svg");
 #endif
 }
