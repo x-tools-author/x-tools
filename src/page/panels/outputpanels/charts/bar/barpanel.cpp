@@ -27,19 +27,14 @@
 #include <QTimer>
 #include <QWidgetAction>
 
-#include "../common/chartdatahandler.h"
 #include "barsettings.h"
 
 BarPanel::BarPanel(QWidget *parent)
     : ChartPanel(parent)
 {
     m_settings = new BarSettings();
-
-    // clang-format off
-    connect(m_settings, &BarSettings::dataFormatChanged, this, &BarPanel::onDataFormatChanged);
     connect(m_settings, &BarSettings::channelColorChanged, this, &BarPanel::onChannelColorChanged);
     connect(m_settings, &BarSettings::channelNameChanged, this, &BarPanel::onChannelNameChanged);
-    // clang-format on
 
     m_axisX = new QBarCategoryAxis();
     QStringList labels;
@@ -146,11 +141,6 @@ void BarPanel::resetChart()
     }
 
     m_axisY->setRange(0, 1);
-}
-
-void BarPanel::onDataFormatChanged(int type)
-{
-    m_chartDataHandler->setDataFormat(type);
 }
 
 void BarPanel::onNewValues(const QList<double> &values)
