@@ -14,6 +14,11 @@
 
 #include "../common/chartpanel.h"
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
+using QtCharts::QValueAxis;
+using QtCharts::QXYSeries;
+#endif
+
 namespace Ui {
 class ChartsUi;
 }
