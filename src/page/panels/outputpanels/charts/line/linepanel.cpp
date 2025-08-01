@@ -28,7 +28,6 @@
 #include <xlsxdocument.h>
 
 #include "../common/chartdatahandler.h"
-#include "common/xtools.h"
 #include "linesettings.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
@@ -65,15 +64,6 @@ LinePanel::LinePanel(QWidget *parent)
     m_chart->layout()->setContentsMargins(0, 0, 0, 0);
     m_chart->setMargins(QMargins(0, 0, 0, 0));
 
-#if xEnableColorScheme
-    auto currentScheme = qApp->styleHints()->colorScheme();
-    if (currentScheme == Qt::ColorScheme::Dark) {
-        m_chart->setTheme(QChart::ChartThemeDark);
-    } else if (currentScheme == Qt::ColorScheme::Light) {
-        m_chart->setTheme(QChart::ChartThemeLight);
-    }
-#endif
-
     int channelCount = LineSettings::channelCount();
     for (int i = 0; i < channelCount; ++i) {
         QLineSeries *series = new QLineSeries();
@@ -92,6 +82,11 @@ LinePanel::~LinePanel()
 {
     m_chart->deleteLater();
     m_settings->deleteLater();
+}
+
+QWidget *LinePanel::menuWidget()
+{
+    return m_settings;
 }
 
 QVariantMap LinePanel::save() const
@@ -170,11 +165,6 @@ void LinePanel::load(const QVariantMap &parameters)
             }
         }
     }
-}
-
-ChartSettings *LinePanel::chartSettingsWidget()
-{
-    return m_settings;
 }
 
 void LinePanel::resetChart()
@@ -277,7 +267,7 @@ void LinePanel::onNewValues(const QList<double> &values)
         double value = values[i];
         QXYSeries *series = m_series[i];
 
-        QPointF pos = QPointF(series->count(), value);
+        QPointF pos = QPointF(m_x, value);
         series->append(pos);
 
         if (m_settings->cachePoints() > 0 && series->count() > m_settings->cachePoints()) {
@@ -299,6 +289,8 @@ void LinePanel::onNewValues(const QList<double> &values)
             m_axisX->setMax(pos.x());
         }
     }
+
+    m_x += 1.0;
 }
 
 void LinePanel::onNewPoints(const QList<QPointF> &points)

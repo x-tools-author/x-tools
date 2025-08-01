@@ -33,13 +33,11 @@ public:
 public:
     explicit ChartPanel(QWidget *parent = Q_NULLPTR);
     ~ChartPanel() override;
+    void inputBytes(const QByteArray &bytes) override;
 
-    virtual ChartSettings *chartSettingsWidget() = 0;
     virtual void resetChart() = 0;
 
-    QMenu *chartSettingsMenu();
     ChartDataHandler *chartDataHandler() const;
-    void updateChartsTheme(bool darkMode);
 
 protected:
     virtual void onNewValues(const QList<double> &values) = 0;
@@ -49,7 +47,4 @@ protected:
     ChartDataHandler *m_chartDataHandler;
     QChart *m_chart;
     QChartView *m_chartView;
-
-private:
-    QMenu *m_settingsMenu;
 };

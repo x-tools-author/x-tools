@@ -41,9 +41,10 @@ public:
     explicit LinePanel(QWidget *parent = Q_NULLPTR);
     ~LinePanel() override;
 
+    QWidget *menuWidget() override;
+
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-    ChartSettings *chartSettingsWidget() override;
     void resetChart() override;
 
 private:
@@ -52,6 +53,7 @@ private:
     QList<QXYSeries *> m_series;
     QValueAxis *m_axisX;
     QValueAxis *m_axisY;
+    qreal m_x{0.0};
 
 private:
     void onNewValues(const QList<double> &values) override;

@@ -87,6 +87,11 @@ BarPanel::~BarPanel()
     m_settings->deleteLater();
 }
 
+QWidget *BarPanel::menuWidget()
+{
+    return m_settings;
+}
+
 QVariantMap BarPanel::save() const
 {
     QVariantMap data;
@@ -132,11 +137,6 @@ void BarPanel::load(const QVariantMap &parameters)
     }
 
     m_axisX->setCategories(categories);
-}
-
-ChartSettings *BarPanel::chartSettingsWidget()
-{
-    return m_settings;
 }
 
 void BarPanel::resetChart()
