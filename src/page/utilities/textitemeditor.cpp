@@ -129,7 +129,9 @@ void TextItemEditor::onTextFormatChanged()
     bool isSingleLine = (format == static_cast<int>(TextFormat::Bin)
                          || format == static_cast<int>(TextFormat::Oct)
                          || format == static_cast<int>(TextFormat::Dec)
-                         || format == static_cast<int>(TextFormat::Hex));
+                         || format == static_cast<int>(TextFormat::Hex)
+                         || format == static_cast<int>(TextFormat::HexWithoutSpace));
+
     ui->lineEditInput->setEnabled(isSingleLine);
     ui->plainTextEditInput->setEnabled(!isSingleLine);
 

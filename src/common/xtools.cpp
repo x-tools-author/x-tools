@@ -159,6 +159,7 @@ QList<int> supportedTextFormats()
         textFormats << static_cast<int>(TextFormat::Oct);
         textFormats << static_cast<int>(TextFormat::Dec);
         textFormats << static_cast<int>(TextFormat::Hex);
+        textFormats << static_cast<int>(TextFormat::HexWithoutSpace);
         textFormats << static_cast<int>(TextFormat::Ascii);
         textFormats << static_cast<int>(TextFormat::Utf8);
 #if defined(X_ENABLE_ICONV)
@@ -183,6 +184,8 @@ QString textFormatName(TextFormat format)
         return QObject::tr("Decimal");
     case TextFormat::Hex:
         return QObject::tr("Hexadecimal");
+    case TextFormat::HexWithoutSpace:
+        return QObject::tr("Hexadecimal(No Space)");
     case TextFormat::Ascii:
         return QObject::tr("ASCII");
     case TextFormat::Utf8:
@@ -274,6 +277,8 @@ QString bytes2string(const QByteArray &bytes, int format)
         return cookedArray(bytes, 10, 3);
     } else if (static_cast<int>(TextFormat::Hex) == format) {
         return cookedArray(bytes, 16, 2);
+    } else if (static_cast<int>(TextFormat::HexWithoutSpace) == format) {
+        return cookedArray(bytes, 16, 2).replace(" ", "");
     } else if (static_cast<int>(TextFormat::Ascii) == format) {
         return QString::fromLatin1(bytes);
     } else if (static_cast<int>(TextFormat::Utf8) == format) {
@@ -325,6 +330,13 @@ QByteArray string2bytes(const QString &text, int format)
         data = cookString(text, 10);
     } else if (format == static_cast<int>(TextFormat::Hex)) {
         data = cookString(text, 16);
+    } else if (format == static_cast<int>(TextFormat::HexWithoutSpace)) {
+        if (text.length() % 2 != 0) {
+            QString paddedText = text + "0"; // Pad with '0' if odd length
+            data = QByteArray::fromHex(paddedText.toLatin1());
+        } else {
+            data = QByteArray::fromHex(text.toLatin1());
+        }
     } else if (format == static_cast<int>(TextFormat::Ascii)) {
         data = text.toLatin1();
     }
@@ -368,6 +380,7 @@ void setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen)
         const QString octStr = "^(0[0-7]{0,2}|[1-3][0-7]{2})( (0[0-7]{0,2}|[1-3][0-7]{2}))*";
         const QString decStr = "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9])( (25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))*";
         const QString hexStr = "([0-9a-fA-F][0-9a-fA-F][ ])*";
+        const QString hexWithoutSpaceStr = "([0-9a-fA-F][0-9a-fA-F])*"; // No space between hex digits
         // clang-format on
 
         // clang-format off
@@ -375,6 +388,7 @@ void setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen)
         auto const otcValidator = new QRegularExpressionValidator(QRegularExpression(octStr)); //0-377
         auto const decValidator = new QRegularExpressionValidator(QRegularExpression(decStr)); // 0-255;
         auto const hexValidator = new QRegularExpressionValidator(QRegularExpression(hexStr));
+        auto const hexWithoutSpaceValidator = new QRegularExpressionValidator(QRegularExpression(hexWithoutSpaceStr));
         auto const asciiValidator = new QRegularExpressionValidator(QRegularExpression("([ -~])*"));
         // clang-format on
 
@@ -382,6 +396,8 @@ void setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen)
         regularExpressionMap.insert(static_cast<int>(TextFormat::Oct), otcValidator);
         regularExpressionMap.insert(static_cast<int>(TextFormat::Dec), decValidator);
         regularExpressionMap.insert(static_cast<int>(TextFormat::Hex), hexValidator);
+        regularExpressionMap.insert(static_cast<int>(TextFormat::HexWithoutSpace),
+                                    hexWithoutSpaceValidator);
         regularExpressionMap.insert(static_cast<int>(TextFormat::Ascii), asciiValidator);
         regularExpressionMap.insert(static_cast<int>(TextFormat::Utf8), nullptr);
     }

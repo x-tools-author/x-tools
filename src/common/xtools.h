@@ -104,7 +104,19 @@ QString deviceName(int type);
 void setupDeviceTypes(QComboBox *comboBox);
 
 /**************************************************************************************************/
-enum class TextFormat { Bin, Oct, Dec, Hex, Ascii, Utf8, GB2312, CSGB2312, GBK, GB18030 };
+enum class TextFormat {
+    Bin,
+    Oct,
+    Dec,
+    Hex,
+    Ascii,
+    Utf8,
+    GB2312,
+    CSGB2312,
+    GBK,
+    GB18030,
+    HexWithoutSpace
+};
 QList<int> supportedTextFormats();
 QString textFormatName(TextFormat format);
 void setupTextFormat(QComboBox *comboBox);

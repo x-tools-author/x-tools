@@ -470,6 +470,7 @@ void Page::onInputFormatChanged()
     usingLineEdit |= format == static_cast<int>(TextFormat::Oct);
     usingLineEdit |= format == static_cast<int>(TextFormat::Dec);
     usingLineEdit |= format == static_cast<int>(TextFormat::Hex);
+    usingLineEdit |= format == static_cast<int>(TextFormat::HexWithoutSpace);
 
     ui->lineEditInput->setEnabled(usingLineEdit);
     ui->plainTextEditInput->setEnabled(!usingLineEdit);
