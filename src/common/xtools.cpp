@@ -46,7 +46,7 @@
 #include <QUrl>
 #include <QVariant>
 
-#if defined(X_ENABLE_SERIAL_PORT)
+#if defined(X_ENABLE_SERIALPORT)
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #endif
@@ -61,7 +61,7 @@ QList<int> supportedDeviceTypes()
 {
     static QList<int> deviceTypes;
     if (deviceTypes.isEmpty()) {
-#ifdef X_ENABLE_SERIAL_PORT
+#ifdef X_ENABLE_SERIALPORT
         deviceTypes << static_cast<int>(DeviceType::SerialPort);
 #endif
 #ifdef X_ENABLE_BLUETOOTH
@@ -76,7 +76,7 @@ QList<int> supportedDeviceTypes()
         deviceTypes << static_cast<int>(DeviceType::UdpBroadcast);
         deviceTypes << static_cast<int>(DeviceType::TcpClient);
         deviceTypes << static_cast<int>(DeviceType::TcpServer);
-#ifdef X_ENABLE_WEB_SOCKET
+#ifdef X_ENABLE_WEBSOCKETS
         deviceTypes << static_cast<int>(DeviceType::WebSocketClient);
         deviceTypes << static_cast<int>(DeviceType::WebSocketServer);
 #endif
@@ -779,7 +779,7 @@ SerialPortItem loadSerialPortItem(const QJsonObject &obj)
     return ctx;
 }
 
-#if defined(X_ENABLE_SERIAL_PORT)
+#if defined(X_ENABLE_SERIALPORT)
 void setupPortName(QComboBox *comboBox)
 {
     QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();

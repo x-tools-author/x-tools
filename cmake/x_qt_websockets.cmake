@@ -1,0 +1,13 @@
+find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS WebSockets)
+if(Qt${QT_VERSION_MAJOR}WebSockets_FOUND)
+  add_compile_definitions(X_ENABLE_WEBSOCKETS)
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::WebSockets)
+else()
+  message(STATUS "WebSockets module is disable, WebSockets files will be removed.")
+
+  file(GLOB_RECURSE SERIAL_PORT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/websocket*")
+  foreach(file ${SERIAL_PORT_FILES})
+    list(REMOVE_ITEM X_SOURCES ${file})
+    message(STATUS "[WebSockets]Remove file: ${file}")
+  endforeach()
+endif()

@@ -37,10 +37,10 @@
 #include "device/chartstestui.h"
 #endif
 
-#ifdef X_ENABLE_SERIAL_PORT
+#ifdef X_ENABLE_SERIALPORT
 #include "device/serialportui.h"
 #endif
-#ifdef X_ENABLE_WEB_SOCKET
+#ifdef X_ENABLE_WEBSOCKETS
 #include "device/websocketclientui.h"
 #include "device/websocketserverui.h"
 #endif
@@ -874,7 +874,7 @@ QByteArray Page::crc(const QByteArray &payload) const
 DeviceUi *Page::newDeviceUi(int type)
 {
     switch (type) {
-#ifdef X_ENABLE_SERIAL_PORT
+#ifdef X_ENABLE_SERIALPORT
     case static_cast<int>(DeviceType::SerialPort):
         return new SerialPortUi();
 #endif
@@ -894,7 +894,7 @@ DeviceUi *Page::newDeviceUi(int type)
         return new TcpClientUi();
     case static_cast<int>(DeviceType::TcpServer):
         return new TcpServerUi();
-#ifdef X_ENABLE_WEB_SOCKET
+#ifdef X_ENABLE_WEBSOCKETS
     case static_cast<int>(DeviceType::WebSocketClient):
         return new WebSocketClientUi();
     case static_cast<int>(DeviceType::WebSocketServer):

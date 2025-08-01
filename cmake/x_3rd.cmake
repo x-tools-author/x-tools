@@ -1,0 +1,8 @@
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_lua.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_glog.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_zint.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_qxlsx.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_qmdnsengine.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_libqrencode.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_libiconv.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_singleapplication.cmake)

@@ -13,10 +13,10 @@
 #include "socket/udp/udpclienttransferview.h"
 #include "socket/udp/udpservertransferview.h"
 
-#ifdef X_ENABLE_SERIAL_PORT
+#ifdef X_ENABLE_SERIALPORT
 #include "serialport/serialporttransferview.h"
 #endif
-#ifdef X_ENABLE_WEB_SOCKET
+#ifdef X_ENABLE_WEBSOCKETS
 #include "socket/websocket/websocketclienttransferview.h"
 #include "socket/websocket/websocketservertransferview.h"
 #endif
@@ -25,7 +25,7 @@ TransfersView::TransfersView(QWidget *parent)
     : QTabWidget(parent)
 {
     TransfersContext ctx;
-#ifdef X_ENABLE_SERIAL_PORT
+#ifdef X_ENABLE_SERIALPORT
     auto serialPortTransfers = new SerialPortTransferView(this);
     ctx.name = tr("Serial Port");
     ctx.view = serialPortTransfers;
@@ -52,7 +52,7 @@ TransfersView::TransfersView(QWidget *parent)
     ctx.view = udpServerTransfer;
     m_transfersContextList.append(ctx);
 
-#ifdef X_ENABLE_WEB_SOCKET
+#ifdef X_ENABLE_WEBSOCKETS
     auto wsClientTransfer = new WebSocketClientTransferView(this);
     ctx.name = tr("WebSocket Client");
     ctx.view = wsClientTransfer;

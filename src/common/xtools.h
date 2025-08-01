@@ -208,7 +208,7 @@ struct SerialPortItemKeys
 SerialPortItem defaultSerialPortItem();
 QJsonObject saveSerialPortItem(const SerialPortItem &context);
 SerialPortItem loadSerialPortItem(const QJsonObject &obj);
-#if defined(X_ENABLE_SERIAL_PORT)
+#if defined(X_ENABLE_SERIALPORT)
 void setupPortName(QComboBox *comboBox);
 void setupBaudRate(QComboBox *comboBox);
 void setupDataBits(QComboBox *comboBox);

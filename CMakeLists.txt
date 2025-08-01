@@ -35,8 +35,7 @@ set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
 
 # --------------------------------------------------------------------------------------------------
 # CMake module
-include(${CMAKE_SOURCE_DIR}/cmake/git.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/xtools.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x.cmake)
 x_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X")
 x_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X")
 x_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X")
@@ -99,11 +98,13 @@ set(X_LIBS_DIR ${tmp}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
 message(STATUS "[xTools]X_LIBS_DIR: ${X_LIBS_DIR}")
 message(STATUS "------------------------------------------------------------")
 
+# Do not change X_LATEST_GIT_TAG unless you know what you are doing
 option(X_MAGIC "The magic option..." OFF)
 if(X_MAGIC)
   add_compile_definitions(X_MAGIC)
 endif()
 
+# Do not change X_LUA option unless you know what you are doing
 set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
 if(${QT_VERSION} VERSION_LESS "6.0.0" AND WIN32)
   set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
@@ -173,20 +174,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 file(GLOB_RECURSE X_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 
-# --------------------------------------------------------------------------------------------------
-# Optionally enable Qt Charts module
-include(${CMAKE_SOURCE_DIR}/cmake/x_qt_charts.cmake)
-
-# --------------------------------------------------------------------------------------------------
-# 3rd module
-include(${CMAKE_SOURCE_DIR}/cmake/lua.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/glog.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/zint.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/qxlsx.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/qmdnsengine.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/libqrencode.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/libiconv.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/singleapplication.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # Lua module
@@ -206,86 +195,6 @@ if(NOT X_ZINT)
     list(REMOVE_ITEM X_SOURCES ${file})
     message(STATUS "[Zint]Remove file: ${file}")
   endforeach()
-endif()
-
-# --------------------------------------------------------------------------------------------------
-# Qt SerialPort module
-option(X_ENABLE_SERIAL_PORT "Enable SerialPort module" ON)
-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialPort)
-if(NOT Qt${QT_VERSION_MAJOR}SerialPort_FOUND)
-  set(X_ENABLE_SERIAL_PORT OFF)
-endif()
-if(X_ENABLE_SERIAL_PORT)
-  add_compile_definitions(X_ENABLE_SERIAL_PORT)
-else()
-  message(STATUS "SerialPort module is disable, SerialPort files will be removed.")
-  file(GLOB_RECURSE SERIAL_PORT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/serialport*")
-  foreach(file ${SERIAL_PORT_FILES})
-    list(REMOVE_ITEM X_SOURCES ${file})
-    message(STATUS "[SerialPort]Remove file: ${file}")
-  endforeach()
-endif()
-
-# --------------------------------------------------------------------------------------------------
-# Qt WebSockets module
-option(X_ENABLE_WEB_SOCKET "Enable WebSockets module" ON)
-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS WebSockets)
-if(NOT Qt${QT_VERSION_MAJOR}WebSockets_FOUND)
-  set(X_ENABLE_WEB_SOCKET OFF)
-endif()
-if(X_ENABLE_WEB_SOCKET)
-  add_compile_definitions(X_ENABLE_WEB_SOCKET)
-else()
-  message(STATUS "WebSockets module is disable, WebSockets files will be removed.")
-
-  file(GLOB_RECURSE SERIAL_PORT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/websocket*")
-  foreach(file ${SERIAL_PORT_FILES})
-    list(REMOVE_ITEM X_SOURCES ${file})
-    message(STATUS "[WebSockets]Remove file: ${file}")
-  endforeach()
-endif()
-
-# --------------------------------------------------------------------------------------------------
-# Qt Bluetooth module
-option(X_ENABLE_BLUETOOTH "Enable Bluetooth module" ON)
-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Bluetooth)
-if((NOT Qt${QT_VERSION_MAJOR}Bluetooth_FOUND) OR (QT_VERSION VERSION_LESS 6.5.0))
-  set(X_ENABLE_BLUETOOTH OFF)
-endif()
-if(X_ENABLE_BLUETOOTH)
-  add_compile_definitions(X_ENABLE_BLUETOOTH)
-else()
-  message(STATUS "Bluetooth module is disable, Bluetooth files will be removed.")
-  file(GLOB_RECURSE SERIAL_PORT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/ble*")
-  foreach(file ${SERIAL_PORT_FILES})
-    list(REMOVE_ITEM X_SOURCES ${file})
-    message(STATUS "[Bluetooth]Remove file: ${file}")
-  endforeach()
-endif()
-
-# --------------------------------------------------------------------------------------------------
-# Qt SerialBus module
-option(X_ENABLE_SERIAL_BUS "Enable SerialBus module" ON)
-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS SerialBus)
-if(Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
-  add_compile_definitions(X_ENABLE_SERIAL_BUS)
-else()
-  set(X_ENABLE_SERIAL_BUS OFF)
-
-  message(STATUS "SerialBus module is disable, SerialBus files will be removed.")
-  # Remove modbus files
-  file(GLOB_RECURSE MODBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/modbus/*.*")
-  foreach(file ${MODBUS_SOURCE})
-    list(REMOVE_ITEM X_SOURCES ${file})
-    message(STATUS "[Modbus]Remove file: ${file}")
-  endforeach(file ${MODBUS_SOURCE})
-
-  # Remove canbus files
-  file(GLOB_RECURSE CANBUS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/canbus/*.*")
-  foreach(file ${CANBUS_SOURCE})
-    list(REMOVE_ITEM X_SOURCES ${file})
-    message(STATUS "[Canbus]Remove file: ${file}")
-  endforeach(file ${CANBUS_SOURCE})
 endif()
 
 # --------------------------------------------------------------------------------------------------
@@ -309,11 +218,6 @@ macro(x_try_to_add_3rd_libs flag)
 endmacro()
 
 list(APPEND X_LIBS glog::glog qmdnsengine)
-
-x_try_to_add_qt_libs(X_ENABLE_SERIAL_PORT SerialPort)
-x_try_to_add_qt_libs(X_ENABLE_WEB_SOCKET WebSockets)
-x_try_to_add_qt_libs(X_ENABLE_SERIAL_BUS SerialBus)
-x_try_to_add_qt_libs(X_ENABLE_BLUETOOTH Bluetooth)
 
 x_try_to_add_3rd_libs(X_LUA ${X_LUA_LIB})
 x_try_to_add_3rd_libs(X_ZINT ${X_ZINT_LIBS})
