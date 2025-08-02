@@ -53,6 +53,7 @@ public:
             this->m_layout->setCurrentWidget(panel);
             this->setVisible(true);
             this->m_panelButton->setChecked(true);
+            emit visibleChanged(true);
         });
 
         QWidget *menuWidget = panel->menuWidget();

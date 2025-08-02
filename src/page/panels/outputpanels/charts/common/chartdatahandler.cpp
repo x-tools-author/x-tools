@@ -57,8 +57,8 @@ void ChartDataHandler::setupDataFormat(QComboBox *comboBox)
         return;
     }
 
-    comboBox->addItem(tr("Binary") + "-Y", static_cast<int>(DataFormat::BinaryY));
-    comboBox->addItem(tr("Text") + "-Y", static_cast<int>(DataFormat::TextY));
+    comboBox->addItem(tr("Binary"), static_cast<int>(DataFormat::BinaryY));
+    comboBox->addItem(tr("Text"), static_cast<int>(DataFormat::TextY));
 #if 0
     comboBox->addItem(tr("Binary") + "-XY", static_cast<int>(DataFormat::BinaryXY));
     comboBox->addItem(tr("Text") + "-XY", static_cast<int>(DataFormat::TextXY));

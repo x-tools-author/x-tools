@@ -79,7 +79,8 @@ LineSettings::LineSettings(QWidget *parent)
         setupColorButton(colorButton, i);
 
         auto *nameLineEdit = new QLineEdit(this);
-        parametersGridLayout->addWidget(nameLineEdit, row, 4, Qt::AlignCenter);
+        nameLineEdit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        parametersGridLayout->addWidget(nameLineEdit, row, 4, Qt::AlignLeft);
         setupNameLineEdit(nameLineEdit, i);
     }
 }
