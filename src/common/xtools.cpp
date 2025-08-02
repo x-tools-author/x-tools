@@ -986,11 +986,11 @@ QList<int> supportedChartsDataFormats()
 QString chartsDataFormatName(int format)
 {
     if (format == static_cast<int>(ChartsDataFormat::BinaryY)) {
-        return QObject::tr("Binary") + "-Y";
+        return QObject::tr("Binary"); // + "-Y";
     } else if (format == static_cast<int>(ChartsDataFormat::BinaryXY)) {
         return QObject::tr("Binary") + "-XY";
     } else if (format == static_cast<int>(ChartsDataFormat::TextY)) {
-        return QObject::tr("Text") + "-Y";
+        return QObject::tr("Text"); // + "-Y";
     } else if (format == static_cast<int>(ChartsDataFormat::TextXY)) {
         return QObject::tr("Text") + "-XY";
     } else {
