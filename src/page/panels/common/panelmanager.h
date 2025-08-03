@@ -56,14 +56,31 @@ public:
             emit visibleChanged(true);
         });
 
+        QMenu *menu = nullptr;
         QWidget *menuWidget = panel->menuWidget();
         if (menuWidget) {
-            QMenu *menu = new QMenu(button);
+            menu = new QMenu(button);
             QWidgetAction *menuAction = new QWidgetAction(menu);
             menuAction->setDefaultWidget(menuWidget);
             menu->addAction(menuAction);
             button->setMenu(menu);
             button->setPopupMode(QToolButton::MenuButtonPopup);
+        } else {
+            menu = panel->buttonMenu();
+            if (menu) {
+                button->setMenu(menu);
+                button->setPopupMode(QToolButton::MenuButtonPopup);
+            }
+        }
+
+        if (menu) {
+            connect(menu, &QMenu::aboutToShow, this, [this, button, panel]() {
+                button->setChecked(true);
+                this->m_layout->setCurrentWidget(panel);
+                this->setVisible(true);
+                this->m_panelButton->setChecked(true);
+                emit visibleChanged(true);
+            });
         }
 
         if (m_layout->count() == 1) {

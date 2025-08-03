@@ -19,5 +19,7 @@
         <file>res/icons/counter_1.svg</file>
         <file>res/icons/xy.svg</file>
         <file>res/icons/dock_to_right.svg</file>
+        <file>res/scripts/lua/default.lua</file>
+        <file>res/scripts/lua/check_sum.lua</file>
     </qresource>
 </RCC>

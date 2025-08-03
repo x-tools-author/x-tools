@@ -29,6 +29,11 @@ QWidget *Panel::menuWidget()
     return nullptr;
 }
 
+QMenu *Panel::buttonMenu() const
+{
+    return nullptr;
+}
+
 void Panel::inputBytes(const QByteArray &bytes)
 {
     Q_UNUSED(bytes);

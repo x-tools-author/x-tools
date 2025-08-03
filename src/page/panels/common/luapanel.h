@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "panel.h"
 
+#include <QMenu>
+
 namespace Ui {
 class LuaPanel;
 }
@@ -21,7 +23,13 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
+    QMenu *buttonMenu() const override;
 
 private:
     Ui::LuaPanel *ui;
+    QMenu *m_menu;
+
+private:
+    void onDefaultLuaScriptTriggered();
+    void onCheckSumLuaScriptTriggered();
 };
