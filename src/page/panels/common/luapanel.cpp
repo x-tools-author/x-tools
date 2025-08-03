@@ -11,6 +11,9 @@
 
 #include <QFile>
 
+#include "common/luarunner.h"
+#include "common/xtools.h"
+
 LuaPanel::LuaPanel(QWidget *parent)
     : Panel(parent)
     , ui(new Ui::LuaPanel)
@@ -22,6 +25,17 @@ LuaPanel::LuaPanel(QWidget *parent)
     m_menu->addAction(tr("Default Lua Script"), this, &LuaPanel::onDefaultLuaScriptTriggered);
     m_menu->addAction(tr("Checksum Lua Script"), this, &LuaPanel::onCheckSumLuaScriptTriggered);
     onDefaultLuaScriptTriggered();
+
+    m_luaRunner = new LuaRunner(this);
+    m_luaRunner->start();
+
+    connect(ui->pushButtonTest, &QPushButton::clicked, this, &LuaPanel::onTestButtonClicked);
+    connect(ui->comboBoxTestFormat, xComboBoxActivated, this, &LuaPanel::onTestFormatChanged);
+    connect(ui->comboBoxResultFormat, xComboBoxActivated, this, &LuaPanel::onResultFormatChanged);
+    setupTextFormat(ui->comboBoxTestFormat);
+    setupTextFormat(ui->comboBoxResultFormat);
+    onTestFormatChanged();
+    onResultFormatChanged();
 }
 
 LuaPanel::~LuaPanel()
@@ -64,5 +78,37 @@ void LuaPanel::onCheckSumLuaScriptTriggered()
         QString script = file.readAll();
         ui->plainTextEditScript->setPlainText(script);
         file.close();
+    }
+}
+
+void LuaPanel::onTestFormatChanged()
+{
+    int format = ui->comboBoxTestFormat->currentData().toInt();
+    setupTextFormatValidator(ui->lineEditTestData, format);
+    ui->lineEditTestData->setText(bytes2string(m_testData, format));
+}
+
+void LuaPanel::onResultFormatChanged()
+{
+    int format = ui->comboBoxResultFormat->currentData().toInt();
+    setupTextFormatValidator(ui->lineEditResultData, format);
+    ui->lineEditResultData->setText(bytes2string(m_resultData, format));
+}
+
+void LuaPanel::onTestButtonClicked()
+{
+    ui->labelInfo->clear();
+
+    QString script = ui->plainTextEditScript->toPlainText();
+    int testFormat = ui->comboBoxTestFormat->currentData().toInt();
+    QByteArray data = string2bytes(ui->lineEditTestData->text(), testFormat);
+    int resultFormat = ui->comboBoxResultFormat->currentData().toInt();
+    m_resultData = m_luaRunner->execute(script, data);
+    QString str = bytes2string(m_resultData, resultFormat);
+    ui->lineEditResultData->setText(str);
+
+    if (m_resultData.isEmpty()) {
+        QString errStr = m_luaRunner->error();
+        ui->labelInfo->setText(errStr);
     }
 }

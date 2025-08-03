@@ -24,6 +24,7 @@ public:
     ~LuaRunner() override;
 
     QByteArray execute(const QString &script, const QByteArray &data);
+    QString error() const;
 
 protected:
     void run() override;

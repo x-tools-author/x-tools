@@ -14,6 +14,7 @@ namespace Ui {
 class LuaPanel;
 }
 
+class LuaRunner;
 class LuaPanel : public Panel
 {
     Q_OBJECT
@@ -28,8 +29,15 @@ public:
 private:
     Ui::LuaPanel *ui;
     QMenu *m_menu;
+    LuaRunner *m_luaRunner;
+    const QByteArray m_testData{"Hello, Lua!"};
+    QByteArray m_resultData;
 
 private:
     void onDefaultLuaScriptTriggered();
     void onCheckSumLuaScriptTriggered();
+    void onTestFormatChanged();
+    void onResultFormatChanged();
+
+    void onTestButtonClicked();
 };
