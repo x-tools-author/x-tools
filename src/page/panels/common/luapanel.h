@@ -23,6 +23,8 @@ public:
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
     QMenu *buttonMenu() const override;
+    QByteArray handleData(const QByteArray &data) const;
+    bool isBypassed() const;
 
 private:
     Ui::LuaPanel *ui;

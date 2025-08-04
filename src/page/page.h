@@ -24,18 +24,13 @@ class Page;
 }
 QT_END_NAMESPACE
 
-#ifdef X_ENABLE_CHARTS
-class ChartsView;
-#endif
-
+class Device;
+class DeviceUi;
 class Statistician;
 class InputSettings;
 class OutputSettings;
 class DeviceSettings;
 class SyntaxHighlighter;
-
-class Device;
-class DeviceUi;
 class Page : public QWidget
 {
     Q_OBJECT
@@ -122,8 +117,4 @@ private:
     QTimer *m_writeTimer;
     QTimer *m_updateLabelInfoTimer;
     QSettings *m_settings;
-    bool m_enableCharts{true};
-#ifdef X_ENABLE_CHARTS
-    ChartsView *m_chartsView;
-#endif
 };

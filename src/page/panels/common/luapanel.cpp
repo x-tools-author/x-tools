@@ -14,6 +14,15 @@
 #include "common/luarunner.h"
 #include "common/xtools.h"
 
+struct LuaPanelDataKeys
+{
+    const QString Script = "script";
+    const QString TestFormat = "testFormat";
+    const QString ResultFormat = "resultFormat";
+    const QString Bypass = "bypass";
+    const QString testData = "testData";
+};
+
 LuaPanel::LuaPanel(QWidget *parent)
     : Panel(parent)
     , ui(new Ui::LuaPanel)
@@ -46,19 +55,61 @@ LuaPanel::~LuaPanel()
 QVariantMap LuaPanel::save() const
 {
     QVariantMap map = Panel::save();
-    // Add LuaPanel specific data to the map
+    LuaPanelDataKeys keys;
+    map[keys.Script] = ui->plainTextEditScript->toPlainText();
+    map[keys.TestFormat] = ui->comboBoxTestFormat->currentData().toInt();
+    map[keys.ResultFormat] = ui->comboBoxResultFormat->currentData().toInt();
+    map[keys.Bypass] = ui->checkBoxBypass->isChecked();
+    map[keys.testData] = ui->lineEditTestData->text();
     return map;
 }
 
 void LuaPanel::load(const QVariantMap &parameters)
 {
     Panel::load(parameters);
-    // Load LuaPanel specific data from the map
+
+    int defaultTestFormat = static_cast<int>(TextFormat::Hex);
+    QString defaultTestData = bytes2string(m_testData, defaultTestFormat);
+    LuaPanelDataKeys keys;
+    ui->plainTextEditScript->setPlainText(parameters[keys.Script].toString());
+    if (ui->plainTextEditScript->toPlainText().isEmpty()) {
+        onDefaultLuaScriptTriggered();
+    }
+
+    int testFormat = parameters.value(keys.TestFormat, defaultTestFormat).toInt();
+    int index = ui->comboBoxTestFormat->findData(testFormat);
+    ui->comboBoxTestFormat->setCurrentIndex(index);
+    setupTextFormatValidator(ui->lineEditTestData, testFormat);
+
+    int resultFormat = parameters.value(keys.ResultFormat, testFormat).toInt();
+    index = ui->comboBoxResultFormat->findData(resultFormat);
+    ui->comboBoxResultFormat->setCurrentIndex(index);
+    setupTextFormatValidator(ui->lineEditResultData, resultFormat);
+
+    bool bypass = parameters.value(keys.Bypass, false).toBool();
+    ui->checkBoxBypass->setChecked(bypass);
+
+    QString testData = parameters.value(keys.testData, defaultTestData).toString();
+    ui->lineEditTestData->setText(testData);
 }
 
 QMenu *LuaPanel::buttonMenu() const
 {
     return m_menu;
+}
+
+QByteArray LuaPanel::handleData(const QByteArray &data) const
+{
+    if (ui->checkBoxBypass->isChecked()) {
+        return data;
+    } else {
+        return m_luaRunner->execute(ui->plainTextEditScript->toPlainText(), data);
+    }
+}
+
+bool LuaPanel::isBypassed() const
+{
+    return ui->checkBoxBypass->isChecked();
 }
 
 void LuaPanel::onDefaultLuaScriptTriggered()

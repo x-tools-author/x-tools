@@ -35,6 +35,12 @@
 
 #ifdef X_ENABLE_CHARTS
 #include "device/chartstestui.h"
+#include "page/panels/outputpanels/charts/bar/barpanel.h"
+#include "page/panels/outputpanels/charts/line/linepanel.h"
+#endif
+
+#ifdef X_ENABLE_LUA
+#include "page/panels/common/luapanel.h"
 #endif
 
 #ifdef X_ENABLE_SERIALPORT
@@ -58,8 +64,6 @@
 
 struct ParameterKeys
 {
-    const QString showCharts{"showCharts"};
-    const QString showSearch{"showSearch"};
     const QString communicationType{"communicationType"};
     const QString communicationSettings{"communicationSettings"};
     const QString communication{"communication"};
@@ -84,7 +88,8 @@ struct ParameterKeys
     const QString responserItems{"responserItems"};
     const QString transfers{"transfers"};
 
-    const QString chartsItems{"chartsItems"};
+    const QString inputPanels{"inputPanels"};
+    const QString outputPanels{"outputPanels"};
 } g_keys;
 
 Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
@@ -176,13 +181,12 @@ QVariantMap Page::save()
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
     map.insert(g_keys.responserItems, ui->tabResponder->save());
 
+    map.insert(g_keys.inputPanels, ui->widgetInputPanels->save());
+    map.insert(g_keys.outputPanels, ui->widgetOutputPanels->save());
+
     if (ui->tabTransfers->isEnabled()) {
         map.insert(g_keys.transfers, ui->tabTransfers->save());
     }
-
-#if 0
-    map.insert(g_keys.chartsItems, m_chartsView->save());
-#endif
 
     return map;
 }
@@ -202,8 +206,6 @@ void Page::load(const QVariantMap &parameters)
         m_deviceController->load(parameters.value(g_keys.communication).toMap());
     }
 
-    bool showCharts = parameters.value(g_keys.showCharts).toBool();
-    bool showSearch = parameters.value(g_keys.showSearch).toBool();
     int outputFormat = parameters.value(g_keys.outputFormat).toInt();
     bool outputRx = parameters.value(g_keys.outputRx).toBool();
     bool outputTx = parameters.value(g_keys.outputTx).toBool();
@@ -237,14 +239,13 @@ void Page::load(const QVariantMap &parameters)
     ui->comboBoxInputFormat->setCurrentIndex(index == -1 ? 0 : index);
     m_inputSettings->load(inputSettings);
 
-#if 0
-    m_chartsView->load(parameters.value(g_keys.chartsItems).toMap());
-#endif
-
     ui->tabPreset->load(parameters.value(g_keys.presetItems).toMap());
     ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
     ui->tabResponder->load(parameters.value(g_keys.responserItems).toMap());
     ui->tabTransfers->load(parameters.value(g_keys.transfers).toMap());
+
+    ui->widgetInputPanels->load(parameters.value(g_keys.inputPanels).toMap());
+    ui->widgetOutputPanels->load(parameters.value(g_keys.outputPanels).toMap());
 
     onDeviceTypeChanged();
     onInputFormatChanged();
@@ -501,8 +502,16 @@ void Page::onShowStatisticianChanged(bool checked)
 
 void Page::onOpened()
 {
-#if 0
-    m_chartsView->resetCharts();
+#if X_ENABLE_CHARTS
+    LinePanel *linePanel = ui->widgetOutputPanels->getPanel<LinePanel>();
+    if (linePanel) {
+        linePanel->resetChart();
+    }
+
+    BarPanel *barPanel = ui->widgetOutputPanels->getPanel<BarPanel>();
+    if (barPanel) {
+        barPanel->resetChart();
+    }
 #endif
 
     setUiEnabled(false);
@@ -536,27 +545,53 @@ void Page::onWarningOccurred(const QString &warning)
 
 void Page::onBytesRead(const QByteArray &bytes, const QString &from)
 {
-    m_ioSettings->saveData(bytes, false);
-    m_rxStatistician->inputBytes(bytes);
-    outputText(bytes, from, true);
+    QByteArray cookedBytes = bytes;
+    QString cookedFrom = from;
+#ifdef X_ENABLE_LUA
+    LuaPanel *luaPanel = ui->widgetOutputPanels->getPanel<LuaPanel>();
+    if (luaPanel && !luaPanel->isBypassed()) {
+        QByteArray result = luaPanel->handleData(bytes);
+        if (!result.isEmpty()) {
+            cookedBytes = result;
+            cookedFrom = from + " (Lua)";
+        }
+    }
+#endif
 
-    ui->widgetOutputPanels->inputBytes(bytes);
-    ui->tabResponder->inputBytes(bytes);
+    m_ioSettings->saveData(cookedBytes, false);
+    m_rxStatistician->inputBytes(cookedBytes);
+    outputText(cookedBytes, cookedFrom, true);
+
+    ui->widgetOutputPanels->inputBytes(cookedBytes);
+    ui->tabResponder->inputBytes(cookedBytes);
 
     if (ui->tabTransfers->isEnabled()) {
-        ui->tabTransfers->inputBytes(bytes);
+        ui->tabTransfers->inputBytes(cookedBytes);
     }
 
-    emit bytesRead(bytes, from);
+    emit bytesRead(cookedBytes, cookedFrom);
 }
 
 void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
 {
-    m_ioSettings->saveData(bytes, true);
-    m_txStatistician->inputBytes(bytes);
-    outputText(bytes, to, false);
+    QByteArray cookedBytes = bytes;
+    QString cookedTo = to;
+#ifdef X_ENABLE_LUA
+    LuaPanel *luaPanel = ui->widgetOutputPanels->getPanel<LuaPanel>();
+    if (luaPanel && !luaPanel->isBypassed()) {
+        QByteArray result = luaPanel->handleData(bytes);
+        if (!result.isEmpty()) {
+            cookedBytes = result;
+            cookedTo = to + " (Lua)";
+        }
+    }
+#endif
 
-    emit bytesWritten(bytes, to);
+    m_ioSettings->saveData(cookedBytes, true);
+    m_txStatistician->inputBytes(cookedBytes);
+    outputText(cookedBytes, cookedTo, false);
+
+    emit bytesWritten(cookedBytes, cookedTo);
 }
 
 void Page::onWrapModeChanged()
@@ -638,6 +673,15 @@ void Page::writeBytes()
     }
 
     if (!bytes.isEmpty()) {
+#ifdef X_ENABLE_LUA
+        LuaPanel *luaPanel = ui->widgetInputPanels->getPanel<LuaPanel>();
+        if (luaPanel) {
+            QByteArray result = luaPanel->handleData(bytes);
+            if (!result.isEmpty()) {
+                bytes = result;
+            }
+        }
+#endif
         m_deviceController->device()->writeBytes(bytes);
     }
 }
