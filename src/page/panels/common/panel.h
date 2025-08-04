@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QMenu>
 #include <QVariantMap>
 #include <QWidget>
 
