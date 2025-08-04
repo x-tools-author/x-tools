@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs">
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
         <location filename="../../src/application.cpp" line="282"/>
         <source>Transfer rx bytes with right page</source>
-        <translation type="unfinished"></translation>
+        <translation>Přenos rx bajtů s pravou stránkou</translation>
     </message>
     <message>
         <location filename="../../src/application.cpp" line="287"/>
         <source>Transfer rx bytes with left page</source>
-        <translation type="unfinished"></translation>
+        <translation>Přenos rx bajtů s levou stránkou</translation>
     </message>
 </context>
 <context>
@@ -19,207 +19,207 @@
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.ui" line="26"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtr</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.ui" line="49"/>
         <source>Preserve case</source>
-        <translation type="unfinished"></translation>
+        <translation>Zachovat velikost písmen</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Bin</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>Okt</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>Des</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation>Hex</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="63"/>
         <source>NUL (NULL)</source>
-        <translation type="unfinished"></translation>
+        <translation>NUL (NULL)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="64"/>
         <source>SOH (Start Of Headling)</source>
-        <translation type="unfinished"></translation>
+        <translation>SOH (Začátek záhlaví)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="65"/>
         <source>STX (Start Of Text)</source>
-        <translation type="unfinished"></translation>
+        <translation>STX (Začátek textu)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="66"/>
         <source>ETX (End Of Text)</source>
-        <translation type="unfinished"></translation>
+        <translation>ETX (Konec textu)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="67"/>
         <source>EOT (End Of Transmission)</source>
-        <translation type="unfinished"></translation>
+        <translation>EOT (Konec přenosu)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="68"/>
         <source>ENQ (Enquiry)</source>
-        <translation type="unfinished"></translation>
+        <translation>ENQ (Dotaz)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="69"/>
         <source>ACK (Acknowledge)</source>
-        <translation type="unfinished"></translation>
+        <translation>ACK (Potvrzení)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="70"/>
         <source>BEL (Bell)</source>
-        <translation type="unfinished"></translation>
+        <translation>BEL (Zvonek)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="71"/>
         <source>BS (Backspace)</source>
-        <translation type="unfinished"></translation>
+        <translation>BS (Backspace)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="72"/>
         <source>HT (Horizontal Tab)</source>
-        <translation type="unfinished"></translation>
+        <translation>HT (Horizontální tabulátor)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="73"/>
         <source>LF/NL(Line Feed/New Line)</source>
-        <translation type="unfinished"></translation>
+        <translation>LF/NL (Posun řádku/Nový řádek)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="74"/>
         <source>VT (Vertical Tab)</source>
-        <translation type="unfinished"></translation>
+        <translation>VT (Vertikální tabulátor)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="75"/>
         <source>FF/NP (Form Feed/New Page)</source>
-        <translation type="unfinished"></translation>
+        <translation>FF/NP (Posun stránky/Nová stránka)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="76"/>
         <source>CR (Carriage Return)</source>
-        <translation type="unfinished"></translation>
+        <translation>CR (Návrat vozíku)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="77"/>
         <source>SO (Shift Out)</source>
-        <translation type="unfinished"></translation>
+        <translation>SO (Shift Out)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="78"/>
         <source>SI (Shift In)</source>
-        <translation type="unfinished"></translation>
+        <translation>SI (Shift In)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="79"/>
         <source>DLE (Data Link Escape)</source>
-        <translation type="unfinished"></translation>
+        <translation>DLE (Escape datového spojení)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="80"/>
         <source>DC1/XON(Device Control 1/Transmission On)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC1/XON (Ovládání zařízení 1/Přenos zapnut)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="81"/>
         <source>DC2 (Device Control 2)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC2 (Ovládání zařízení 2)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="82"/>
         <source>DC3/XOFF(Device Control 3/Transmission Off)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC3/XOFF (Ovládání zařízení 3/Přenos vypnut)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="83"/>
         <source>DC4 (Device Control 4)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC4 (Ovládání zařízení 4)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="84"/>
         <source>NAK (Negative Acknowledge)</source>
-        <translation type="unfinished"></translation>
+        <translation>NAK (Záporné potvrzení)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="85"/>
         <source>SYN (Synchronous Idle)</source>
-        <translation type="unfinished"></translation>
+        <translation>SYN (Synchronní nečinnost)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="86"/>
         <source>ETB (End of Transmission Block)</source>
-        <translation type="unfinished"></translation>
+        <translation>ETB (Konec přenosového bloku)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="87"/>
         <source>CAN (Cancel)</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN (Storno)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="88"/>
         <source>EM (End of Medium)</source>
-        <translation type="unfinished"></translation>
+        <translation>EM (Konec média)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="89"/>
         <source>SUB (Substitute)</source>
-        <translation type="unfinished"></translation>
+        <translation>SUB (Náhrada)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="90"/>
         <source>ESC (Escape)</source>
-        <translation type="unfinished"></translation>
+        <translation>ESC (Escape)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="91"/>
         <source>FS (File Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>FS (Oddělovač souborů)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="92"/>
         <source>GS (Group Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>GS (Oddělovač skupin)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="93"/>
         <source>RS (Record Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>RS (Oddělovač záznamů)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="94"/>
         <source>US (Unit Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>US (Oddělovač jednotek)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="95"/>
         <source>(Space)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Mezera)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="96"/>
         <source>DEL (Delete)</source>
-        <translation type="unfinished"></translation>
+        <translation>DEL (Smazat)</translation>
     </message>
 </context>
 <context>
@@ -227,72 +227,72 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="44"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="46"/>
         <source>mDNS Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>mDNS Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
         <source>Ping Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Ping Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="49"/>
         <source>ASCII Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Base64 Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="51"/>
         <source>Number Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Číselný Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
         <source>String Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Řetězcový Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent Kontroly Souborů</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent Slučování Souborů</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
         <source>QR Code Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>QR Kód Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Čárový Kód Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
         <source>CAN Bus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN Bus Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
         <source>Modbus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Modbus Asistent</translation>
     </message>
 </context>
 <context>
@@ -300,53 +300,53 @@
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="32"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovit</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="52"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="59"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovat</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="66"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Data</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="89"/>
         <source>010000000000</source>
-        <translation type="unfinished"></translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent Čárových Kódů</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Save Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit Obrázek</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <source>PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>PNG Obrázek (*.png);;JPEG Obrázek (*.jpg);;BMP Obrázek (*.bmp)</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Failed to save image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodařilo se uložit obrázek.</translation>
     </message>
 </context>
 <context>
@@ -354,37 +354,37 @@
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát dat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanál</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Barva</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Čára</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>Křivka</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>Bodový</translation>
     </message>
 </context>
 <context>
@@ -392,42 +392,42 @@
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Base64 Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation type="unfinished"></translation>
+        <translation>Čistý text</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation type="unfinished"></translation>
+        <translation>Šifrovaný text</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrázek</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Dešifrovat</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Šifrovat</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba dat</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data can not convert image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Data nelze převést na obrázek.</translation>
     </message>
 </context>
 <context>
@@ -435,12 +435,12 @@
     <message>
         <location filename="../../src/device/blecentral.cpp" line="92"/>
         <source>Characteristic does not support write</source>
-        <translation type="unfinished"></translation>
+        <translation>Charakteristika nepodporuje zápis</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentral.cpp" line="98"/>
         <source>Characteristic does not support write without response</source>
-        <translation type="unfinished"></translation>
+        <translation>Charakteristika nepodporuje zápis bez odpovědi</translation>
     </message>
 </context>
 <context>
@@ -448,89 +448,89 @@
     <message>
         <location filename="../../src/device/blecentralui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="41"/>
         <source>Characteristic</source>
-        <translation type="unfinished"></translation>
+        <translation>Charakteristika</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="61"/>
         <source>(Unsupported characteristic)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Nepodporovaná charakteristika)</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="77"/>
         <source>BLE Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>BLE Zařízení</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="87"/>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
         <source>Scan</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenovat</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="96"/>
         <location filename="../../src/device/blecentralui.cpp" line="125"/>
         <source>Notify</source>
-        <translation type="unfinished"></translation>
+        <translation>Upozornit</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="103"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Číst</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="115"/>
         <source>Service scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenování služeb</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="150"/>
         <source>Write mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Režim zápisu</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="163"/>
         <source>Service</source>
-        <translation type="unfinished"></translation>
+        <translation>Služba</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="170"/>
         <source>Device scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenování zařízení</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
         <source>Disnotify</source>
-        <translation type="unfinished"></translation>
+        <translation>Vypnout upozornění</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="135"/>
         <source>With Response</source>
-        <translation type="unfinished"></translation>
+        <translation>S odpovědí</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="140"/>
         <source>Without Response</source>
-        <translation type="unfinished"></translation>
+        <translation>Bez odpovědi</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="193"/>
         <source>(No name)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Bez názvu)</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="317"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastavit</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="336"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Došlo k chybě</translation>
     </message>
 </context>
 <context>
@@ -538,83 +538,83 @@
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="20"/>
         <source>Output control</source>
-        <translation type="unfinished"></translation>
+        <translation>Ovládání výstupu</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="32"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát výstupu</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
         <source>Broadcast parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametry vysílání</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="67"/>
         <source>Broadcast address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresa vysílání</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="80"/>
         <source>55443</source>
-        <translation type="unfinished"></translation>
+        <translation>55443</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="100"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát dat</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="119"/>
         <source>Broadcast prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Předpona vysílání</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="132"/>
         <source>Broadcast interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Interval vysílání</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="151"/>
         <source>Broadcast suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Přípona vysílání</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="164"/>
         <source>Broadcast port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port vysílání</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="187"/>
         <source>Broadcast data</source>
-        <translation type="unfinished"></translation>
+        <translation>Data vysílání</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="194"/>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation>Vysílat</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="223"/>
         <source>Information output</source>
-        <translation type="unfinished"></translation>
+        <translation>Výstup informací</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent Vysílání</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Terminate</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukončit</translation>
     </message>
 </context>
 <context>
@@ -622,202 +622,202 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="14"/>
         <source>CANBus Studio</source>
-        <translation type="unfinished"></translation>
+        <translation>CANBus Studio</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="38"/>
         <source>CAN Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN Rámec</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="57"/>
         <source>Extended format</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozšířený formát</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="64"/>
         <source>Flexible data rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Flexibilní rychlost dat</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="71"/>
         <source>Frame ID</source>
-        <translation type="unfinished"></translation>
+        <translation>ID rámce</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="91"/>
         <source>Frame type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ rámce</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="101"/>
         <source>Frame options</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnosti rámce</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="114"/>
         <source>Bitrate switch</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepínač bitové rychlosti</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="150"/>
         <source>Device Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Ovládání zařízení</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="171"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpojit</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="178"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Připojit</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="192"/>
         <source>Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Plugin</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="221"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="251"/>
         <source>Data View</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazení dat</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="295"/>
         <source>Specify Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Určit konfiguraci</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="323"/>
         <source>Error filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtr chyb</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="333"/>
         <source>Custom configurations</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastní konfigurace</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="346"/>
         <source>CAN FD</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN FD</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="373"/>
         <source>Loopback</source>
-        <translation type="unfinished"></translation>
+        <translation>Zpětná smyčka</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="386"/>
         <source>Data bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitová rychlost dat</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="409"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitová rychlost</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="422"/>
         <source>Receive own</source>
-        <translation type="unfinished"></translation>
+        <translation>Přijímat vlastní</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="451"/>
         <source>CAN Frame Payload</source>
-        <translation type="unfinished"></translation>
+        <translation>Datová část CAN rámce</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="489"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Odeslat</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
         <source>can0</source>
-        <translation type="unfinished"></translation>
+        <translation>can0</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="107"/>
         <source>DataFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový rámec</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
         <source>ErrorFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>Chybový rámec</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
         <source>RemoteRequestFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>Rámec vzdáleného požadavku</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="131"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation>Hex</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="208"/>
         <source>Interface Name is Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Název rozhraní je prázdný</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface name is empty, please input the name then try again!</source>
-        <translation type="unfinished"></translation>
+        <translation>Název rozhraní je prázdný, zadejte název a zkuste znovu!</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Došlo k chybě</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="232"/>
         <source>Connection Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba připojení</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
         <source>Connection error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba připojení: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="314"/>
         <source>Device is Not Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>Zařízení není připraveno</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
         <source>Device is not ready, please connect the device then try angin!</source>
-        <translation type="unfinished"></translation>
+        <translation>Zařízení není připraveno, připojte zařízení a zkuste znovu!</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="355"/>
         <source>Error Occure</source>
-        <translation type="unfinished"></translation>
+        <translation>Došlo k chybě</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="391"/>
         <source>unspecified</source>
-        <translation type="unfinished"></translation>
+        <translation>nespecifikováno</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="393"/>
         <source>false</source>
-        <translation type="unfinished"></translation>
+        <translation>nepravda</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
         <source>true</source>
-        <translation type="unfinished"></translation>
+        <translation>pravda</translation>
     </message>
 </context>
 <context>
@@ -826,13 +826,13 @@
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="60"/>
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="63"/>
         <source>Binary</source>
-        <translation type="unfinished"></translation>
+        <translation>Binární</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="61"/>
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="64"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Text</translation>
     </message>
 </context>
 <context>
@@ -840,7 +840,7 @@
     <message>
         <location filename="../../src/device/chartstest.cpp" line="30"/>
         <source>ChartsTest</source>
-        <translation type="unfinished"></translation>
+        <translation>Test grafů</translation>
     </message>
 </context>
 <context>
@@ -848,12 +848,12 @@
     <message>
         <location filename="../../src/device/chartstestui.ui" line="38"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát</translation>
     </message>
     <message>
         <location filename="../../src/device/chartstestui.ui" line="48"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanály</translation>
     </message>
 </context>
 <context>
@@ -861,88 +861,88 @@
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC Asistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnota polynomu</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation type="unfinished"></translation>
+        <translation>Počáteční hodnota</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="34"/>
         <location filename="../../src/tools/crc/crcassistant.ui" line="235"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovat</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="unfinished"></translation>
+        <translation>Více informací o výpočtu CRC na http://www.ip33.com/crc.html (dvojklik pro návštěvu)</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>Obracení vstupu</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>Obracení výstupu</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>Vypočítat</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametry</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation type="unfinished"></translation>
+        <translation>XOR hodnota</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="unfinished"></translation>
+        <translation>Vysoké bity jsou vlevo a nízké bity vpravo</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="157"/>
         <source>HEX</source>
-        <translation type="unfinished"></translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation type="unfinished"></translation>
+        <translation>Výsledek(HEX)</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation type="unfinished"></translation>
+        <translation>Model parametrů</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="214"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Šířka</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="221"/>
@@ -954,22 +954,29 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="265"/>
         <source>Paloy</source>
-        <translation type="unfinished"></translation>
+        <translation>Polynom</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="279"/>
         <source>Input data</source>
-        <translation type="unfinished"></translation>
+        <translation>Vstupní data</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="286"/>
         <source>Result(BIN)</source>
-        <translation type="unfinished"></translation>
+        <translation>Výsledek(BIN)</translation>
     </message>
 </context>
 <context>
@@ -977,53 +984,53 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/devicesettings.ui" line="22"/>
         <source>Save tx data</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit odeslaná data</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="32"/>
         <source>Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Prohlížeč</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="39"/>
         <source>Save millisecond</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit milisekundy</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="49"/>
         <source>Save rx data</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit přijatá data</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="59"/>
         <source>Save Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit datum</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="69"/>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
         <source>Save to file</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit do souboru</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="76"/>
         <source>Save Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit čas</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="94"/>
         <source>Save format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát ukládání</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="104"/>
         <source>Max bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Maximální počet bajtů</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
         <source>Text File(*.txt)</source>
-        <translation type="unfinished"></translation>
+        <translation>Textový soubor(*.txt)</translation>
     </message>
 </context>
 <context>
@@ -1032,32 +1039,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/emitter/emittermodel.cpp" line="92"/>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="185"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="92"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázat</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="155"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>Demo</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="187"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="189"/>
         <source>Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Interval</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="191"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Data</translation>
     </message>
 </context>
 <context>
@@ -1065,58 +1072,58 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation type="unfinished"></translation>
+        <translation>Horní výsledek</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrolovaný soubor</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Průběh kontroly</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Algoritmus kontroly</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation type="unfinished"></translation>
+        <translation>Výsledek kontroly</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>Vypočítat</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent Kontroly Souborů</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
+        <translation>Zbývající čas</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
         <source>StopCalculating</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastavit výpočet</translation>
     </message>
 </context>
 <context>
@@ -1124,84 +1131,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="26"/>
         <source>File list</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam souborů</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="60"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovat</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="74"/>
         <source>Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahoru</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="81"/>
         <source>Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Dolů</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="88"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Odebrat</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="95"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="102"/>
         <source>Merge</source>
-        <translation type="unfinished"></translation>
+        <translation>Sloučit</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
         <source>Import Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovat soubory</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="62"/>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="91"/>
         <source>Bin file(*.bin);;All file(*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Binární soubor(*.bin);;Všechny soubory(*)</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="77"/>
         <source>Open File Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevření souboru se nezdařilo</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="78"/>
         <source>Open file(%1) failed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevření souboru(%1) se nezdařilo:</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="83"/>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="127"/>
         <source>Merge Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Sloučit soubory</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="84"/>
         <source>No file to merge, please import files first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádný soubor ke sloučení, nejprve importujte soubory.</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="89"/>
         <source>Save Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit soubory</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="127"/>
         <source>Merge files successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubory úspěšně sloučeny.</translation>
     </message>
 </context>
 <context>
@@ -1209,7 +1216,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filecheck/hashcalculator.cpp" line="84"/>
         <source>Calculating finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Výpočet dokončen</translation>
     </message>
 </context>
 <context>
@@ -1217,17 +1224,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="18"/>
         <source>Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Lua skript</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="20"/>
         <source>Frame Serial Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Sériové číslo rámce</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="21"/>
         <source>XYModem Sender</source>
-        <translation type="unfinished"></translation>
+        <translation>XYModem odesílatel</translation>
     </message>
 </context>
 <context>
@@ -1235,47 +1242,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázat náhled dat</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="32"/>
         <source>Append prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat předponu</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="45"/>
         <source>Append suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat příponu</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="52"/>
         <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation>Únikový znak</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="93"/>
         <source>CRC end index</source>
-        <translation type="unfinished"></translation>
+        <translation>Konec indexu CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="109"/>
         <source>CRC start index</source>
-        <translation type="unfinished"></translation>
+        <translation>Začátek indexu CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="122"/>
         <source>CRC arithmetic</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC aritmetika</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="131"/>
         <source>Append CRC</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="138"/>
         <source>Big endian</source>
-        <translation type="unfinished"></translation>
+        <translation>Big endian</translation>
     </message>
 </context>
 <context>
@@ -1283,12 +1290,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="204"/>
         <source>Import Data from Excel</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovat data z Excelu</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="235"/>
         <source>Export Data to Excel</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovat data do Excelu</translation>
     </message>
 </context>
 <context>
@@ -1296,73 +1303,73 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="58"/>
         <source>Data type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ dat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="68"/>
         <source>Legend</source>
-        <translation type="unfinished"></translation>
+        <translation>Legenda</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="75"/>
         <source>Cache points</source>
-        <translation type="unfinished"></translation>
+        <translation>Mezery mezi body</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="139"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanál</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Viditelné</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="54"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Barva</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Čára</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>Křivka</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>Bodový</translation>
     </message>
 </context>
 <context>
@@ -1370,7 +1377,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localserver.cpp" line="90"/>
         <source>Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Klient</translation>
     </message>
 </context>
 <context>
@@ -1378,17 +1385,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localserverui.ui" line="32"/>
         <source>Write to</source>
-        <translation type="unfinished"></translation>
+        <translation>Psát do</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.ui" line="45"/>
         <source>Server name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název serveru</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>Vše</translation>
     </message>
 </context>
 <context>
@@ -1396,7 +1403,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localsocketui.ui" line="32"/>
         <source>Server name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název serveru</translation>
     </message>
 </context>
 <context>
@@ -1404,17 +1411,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
-        <source>Test data</source>
-        <translation type="unfinished"></translation>
+        <source>Test</source>
+        <translation>Test</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="42"/>
-        <source>Test</source>
-        <translation type="unfinished"></translation>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="45"/>
+        <source>Result data</source>
+        <translation>Výsledná data</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="65"/>
+        <source>Test data</source>
+        <translation>Testovací data</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="82"/>
+        <source>Bypass</source>
+        <translation>Obejít</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="34"/>
+        <source>Default Lua Script</source>
+        <translation>Výchozí Lua skript</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="35"/>
+        <source>Checksum Lua Script</source>
+        <translation>Kontrolní součet Lua skript</translation>
     </message>
 </context>
 <context>
@@ -1422,237 +1449,237 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="300"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Soubor</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="302"/>
         <source>New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Nové okno</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="310"/>
         <source>Save Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit parametry</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="312"/>
         <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Import Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Načíst parametry</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="316"/>
         <location filename="../../src/mainwindow.cpp" line="804"/>
         <source>Export Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovat parametry</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="321"/>
         <source>Exit Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukončit aplikaci</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="330"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nástroje</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="333"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="369"/>
         <source>&amp;Options</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Možnosti</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="378"/>
         <source>Use System Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít systémový proxy</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="388"/>
         <source>Exit to System Tray</source>
-        <translation type="unfinished"></translation>
+        <translation>Minimálně do systémové lišty</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="406"/>
         <source>Application Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Styl aplikace</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="429"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
         <source>Clear Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat nastavení</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="438"/>
         <source>Open Settings Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít adresář s nastavením</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="447"/>
         <source>HDPI Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>HDPI Politika</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="491"/>
         <source>Color Scheme</source>
-        <translation type="unfinished"></translation>
+        <translation>Barevné schéma</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="493"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Tmavý</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="494"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Světlý</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="495"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>Systém</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="552"/>
         <source>&amp;Languages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Jazyky</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zobrazit</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="629"/>
         <source>Stays on Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Zůstat nahoře</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="649"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nápověda</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="650"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>O Qt</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="651"/>
         <location filename="../../src/mainwindow.cpp" line="847"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O aplikaci</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="655"/>
         <source>Screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Snímek obrazovky</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="664"/>
         <source>Buy from Store</source>
-        <translation type="unfinished"></translation>
+        <translation>Koupit v obchodě</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="670"/>
         <location filename="../../src/mainwindow.cpp" line="703"/>
         <source>Release History</source>
-        <translation type="unfinished"></translation>
+        <translation>Historie verzí</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>Join in QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Připojit se do QQ skupiny</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>Online Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Online příručka</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="677"/>
         <source>Get Sources from Github</source>
-        <translation type="unfinished"></translation>
+        <translation>Získat zdrojové kódy z Githubu</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>Get Sources from Gitee</source>
-        <translation type="unfinished"></translation>
+        <translation>Získat zdrojové kódy z Gitee</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Third Party Open Source</source>
-        <translation type="unfinished"></translation>
+        <translation>Open source třetích stran</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="723"/>
         <source>QR Code</source>
-        <translation type="unfinished"></translation>
+        <translation>QR Kód</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="732"/>
         <source>User QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Uživatelská QQ skupina</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="733"/>
         <source>Qt QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt QQ skupina</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="754"/>
         <source>Need to Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Je třeba restartovat</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="755"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Operace vyžaduje restartování, chcete nyní restartovat aplikaci?</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="793"/>
         <location filename="../../src/mainwindow.cpp" line="806"/>
         <source>Json Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>Json soubory (*.json)</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="835"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Neznámý</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="841"/>
         <source>Commit hash</source>
-        <translation type="unfinished"></translation>
+        <translation>Hash commitu</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="843"/>
         <source>Commit time</source>
-        <translation type="unfinished"></translation>
+        <translation>Čas commitu</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="844"/>
         <source>Build Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum sestavení</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="845"/>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation>Autorská práva</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="846"/>
         <source>All rights reserved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Všechna práva vyhrazena.</translation>
     </message>
 </context>
 <context>
@@ -1660,48 +1687,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ služby</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.ui" line="27"/>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Spustit</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="64"/>
         <source>Error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Došlo k chybě</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="65"/>
         <source>Service type can not be empty, please input then try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ služby nemůže být prázdný, zadejte ho a zkuste to znovu.</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="97"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="101"/>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Název hostitele</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="105"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="109"/>
         <source>Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Atributy</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastavit</translation>
     </message>
 </context>
 <context>
@@ -1709,309 +1736,309 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="49"/>
         <source>Console</source>
-        <translation type="unfinished"></translation>
+        <translation>Konsole</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="90"/>
         <source>Server Register</source>
-        <translation type="unfinished"></translation>
+        <translation>Registr serveru</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="125"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Odeslat</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="141"/>
         <source>Custom Protocol Data Unit</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastní datová jednotka protokolu</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="154"/>
         <source>Client Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>Registry klienta</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="189"/>
         <source>Device list</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam zařízení</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="213"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Zavřít</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="220"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="235"/>
         <source>Device Operations</source>
-        <translation type="unfinished"></translation>
+        <translation>Operace se zařízením</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresa</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="286"/>
         <source>Network Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení sítě</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="306"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="337"/>
         <source>Baud rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Rychlost přenosu</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="357"/>
         <source>Data bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Datové bity</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="370"/>
         <source>Serial Port Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení sériového portu</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="390"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Parita</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="409"/>
         <source>Port name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název portu</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="425"/>
         <source>Stop bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop bity</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="450"/>
         <source>Device busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Zařízení je zaneprázdněno</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="463"/>
         <source>Server Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametry serveru</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="470"/>
         <source>Server address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresa serveru</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="484"/>
         <source>Listen only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Režim pouze pro poslech</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="560"/>
         <source>Target address</source>
-        <translation type="unfinished"></translation>
+        <translation>Cílová adresa</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="569"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Číst</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="576"/>
         <source>Write</source>
-        <translation type="unfinished"></translation>
+        <translation>Šifrovat</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="591"/>
         <source>Function code</source>
-        <translation type="unfinished"></translation>
+        <translation>Funkční kód</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="604"/>
         <source>Address number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo adresy</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="617"/>
         <source>Start address</source>
-        <translation type="unfinished"></translation>
+        <translation>Začátek adresy</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="666"/>
         <source>Repeat times</source>
-        <translation type="unfinished"></translation>
+        <translation>Počet opakování</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="679"/>
         <source>Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Časový limit</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="692"/>
         <source>Client Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametry klienta</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="717"/>
         <source>Input Control(address and value)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ovládání vstupu (adresa a hodnota)</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="732"/>
         <source>Input format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát vstupu</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
         <source>RtuClient</source>
-        <translation type="unfinished"></translation>
+        <translation>RtuKlient</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
         <source>RtuServer</source>
-        <translation type="unfinished"></translation>
+        <translation>RtuServer</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
         <source>TcpClient</source>
-        <translation type="unfinished"></translation>
+        <translation>TcpKlient</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
         <source>TcpServer</source>
-        <translation type="unfinished"></translation>
+        <translation>TcpServer</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="226"/>
         <source>NoParity</source>
-        <translation type="unfinished"></translation>
+        <translation>Bez parity</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
         <source>EvenParity</source>
-        <translation type="unfinished"></translation>
+        <translation>Sudá parita</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
         <source>OddParity</source>
-        <translation type="unfinished"></translation>
+        <translation>Největší parita</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
         <source>SpaceParity</source>
-        <translation type="unfinished"></translation>
+        <translation>Mezery parita</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
         <source>MarkParity</source>
-        <translation type="unfinished"></translation>
+        <translation>Známka parita</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
         <source>ReadCoils</source>
-        <translation type="unfinished"></translation>
+        <translation>Číst cívky</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
         <source>ReadDiscreteInputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Číst diskrétní vstupy</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
         <source>ReadHoldingRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation>Číst registrační držáky</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
         <source>ReadInputRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation>Číst vstupní registry</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
         <source>WriteSingleCoil</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapsat jednu cívku</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
         <source>WriteSingleRegister</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapsat jeden registr</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
         <source>WriteMultipleCoils</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapsat více cívek</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
         <source>WriteMultipleRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapsat více registrů</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
         <source>Coils</source>
-        <translation type="unfinished"></translation>
+        <translation>Cívky</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
         <source>DiscreteInputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Diskrétní vstupy</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>InputRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation>Vstupní registry</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>HoldingRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation>Držící registry</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1317"/>
         <source>Error occured</source>
-        <translation type="unfinished"></translation>
+        <translation>Došlo k chybě</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="624"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze otevřít zařízení: %1. Zkontrolujte parametry a zkuste to znovu!</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="627"/>
         <source>Can not open device</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze otevřít zařízení</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnota</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
         <source>Device is not Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>Zařízení není připraveno</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1368"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
-        <translation type="unfinished"></translation>
+        <translation>Zařízení modbus není připraveno, zkontrolujte nastavení a zkuste to znovu později!</translation>
     </message>
 </context>
 <context>
@@ -2019,22 +2046,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusfactory.cpp" line="46"/>
         <source>RTU Client</source>
-        <translation type="unfinished"></translation>
+        <translation>RTU Klient</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusfactory.cpp" line="48"/>
         <source>RTU Server</source>
-        <translation type="unfinished"></translation>
+        <translation>RTU Server</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusfactory.cpp" line="50"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP Klient</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusfactory.cpp" line="52"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP Server</translation>
     </message>
 </context>
 <context>
@@ -2042,37 +2069,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="32"/>
         <source>Raw data</source>
-        <translation type="unfinished"></translation>
+        <translation>Nezpracovaná data</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="39"/>
         <source>Cooked data(Hex)</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravená data (Hex)</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="53"/>
         <source>Cooked data type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ upravených dat</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="89"/>
         <source>Cooked data(Dec)</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravená data (Dec)</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="102"/>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation type="unfinished"></translation>
+        <translation>Například: 1, -1, 1.1, -1.1</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="109"/>
         <source>Cooked data(Bin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravená data (Bin)</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="119"/>
         <source>From left to right is high to low</source>
-        <translation type="unfinished"></translation>
+        <translation>Zleva doprava je od vysokých po nízké</translation>
     </message>
 </context>
 <context>
@@ -2080,27 +2107,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="23"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="24"/>
         <source>Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Lua skript</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
         <source>Line Chart</source>
-        <translation type="unfinished"></translation>
+        <translation>Čárový graf</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
         <source>Bar Chart</source>
-        <translation type="unfinished"></translation>
+        <translation>Sloupcový graf</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
         <source>XY-Modem Receiver</source>
-        <translation type="unfinished"></translation>
+        <translation>XY-Modem příjemce</translation>
     </message>
 </context>
 <context>
@@ -2108,197 +2135,190 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable highlighter</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit zvýraznění</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="33"/>
         <source>Filter text</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtr textu</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="43"/>
         <source>Hello,Word</source>
-        <translation type="unfinished"></translation>
+        <translation>Ahoj, světe</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="53"/>
         <source>Show statistician</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázat statistiku</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="60"/>
         <source>Enable filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit filtr</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
+        <location filename="../../src/page/page.ui" line="47"/>
+        <source>Cycle interval</source>
+        <translation>Interval cyklu</translation>
+    </message>
+    <message>
         <location filename="../../src/page/page.ui" line="56"/>
         <location filename="../../src/page/page.ui" line="74"/>
         <location filename="../../src/page/page.ui" line="244"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="251"/>
-        <source>Send</source>
-        <translation type="unfinished"></translation>
+        <location filename="../../src/page/page.ui" line="63"/>
+        <location filename="../../src/page/page.cpp" line="530"/>
+        <source>Open</source>
+        <translation>Otevřít</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="81"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="122"/>
+        <source>Rx</source>
+        <translation>Rx</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="129"/>
+        <source>Tx</source>
+        <translation>Tx</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="136"/>
+        <source>Date</source>
+        <translation>Datum</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="143"/>
+        <source>Flag</source>
+        <translation>Označení</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="150"/>
+        <source>Time</source>
+        <translation>Čas</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="157"/>
+        <source>Ms</source>
+        <translation>Ms</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="177"/>
+        <source>Output control</source>
+        <translation>Ovládání výstupu</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="199"/>
+        <source>Input control</source>
+        <translation>Ovládání vstupu</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="208"/>
+        <source>Wrap</source>
+        <translation>Pokračovat na další řádek</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="215"/>
+        <source>Terminal</source>
+        <translation>Terminál</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="235"/>
+        <source>Communication control</source>
+        <translation>Ovládání komunikace</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="251"/>
+        <source>Send</source>
+        <translation>Odeslat</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="260"/>
         <location filename="../../src/page/page.ui" line="267"/>
         <source>Text format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="122"/>
-        <source>Rx</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="129"/>
-        <source>Tx</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="136"/>
-        <source>Date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="143"/>
-        <source>Flag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="150"/>
-        <source>Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="157"/>
-        <source>Ms</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="63"/>
-        <location filename="../../src/page/page.cpp" line="521"/>
-        <source>Open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="177"/>
-        <source>Output control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="199"/>
-        <source>Input control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="235"/>
-        <source>Communication control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="47"/>
-        <source>Cycle interval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="208"/>
-        <source>Wrap</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="215"/>
-        <source>Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Textový formát</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="288"/>
         <source>IO</source>
-        <translation type="unfinished"></translation>
+        <translation>IO</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="335"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Výstup</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="498"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>Vstup</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="505"/>
         <source>Preset data list</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam přednastavených dat</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="547"/>
         <source>Presets</source>
-        <translation type="unfinished"></translation>
+        <translation>Předvolby</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="552"/>
         <source>Emitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Vysílač</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="557"/>
         <source>Responder</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpovídač</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="562"/>
         <source>Transfers</source>
-        <translation type="unfinished"></translation>
+        <translation>Přenosy</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="363"/>
+        <location filename="../../src/page/page.cpp" line="364"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázat</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="512"/>
+        <location filename="../../src/page/page.cpp" line="521"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Zavřít</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="528"/>
+        <location filename="../../src/page/page.cpp" line="537"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Došlo k chybě</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="534"/>
+        <location filename="../../src/page/page.cpp" line="543"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Upozornění</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="668"/>
+        <location filename="../../src/page/page.cpp" line="712"/>
         <source>[%1][%2][%3][%4]</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PanelManager</name>
-    <message>
-        <location filename="../../src/page/panels/common/panelmanager.cpp" line="24"/>
-        <source>Panels</source>
-        <translation type="unfinished"></translation>
+        <translation>[%1][%2][%3][%4]</translation>
+        <translation>[%1][%2][%3][%4]</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/panelmanager.cpp" line="27"/>
         <source>Hide/Show Panels</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryt/Zobrazit panely</translation>
     </message>
 </context>
 <context>
@@ -2306,119 +2326,119 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="156"/>
         <source>Total: --, Active: --, Finished: --, Remain: --</source>
-        <translation type="unfinished"></translation>
+        <translation>Celkem: --, Aktivní: --, Dokončeno: --, Zbývá: --</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
         <source>Target Address</source>
-        <translation type="unfinished"></translation>
+        <translation> cílová adresa</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
         <source>Online Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Stav online</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
         <source>Comparing</source>
-        <translation type="unfinished"></translation>
+        <translation>Porovnávání</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Host Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostitelské jméno</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="185"/>
         <source>Start scan</source>
-        <translation type="unfinished"></translation>
+        <translation>Spustit skenování</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="193"/>
         <source>Pause scan</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozastavit skenování</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="201"/>
         <source>Stop scan</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukončit skenování</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="214"/>
         <source>Start address</source>
-        <translation type="unfinished"></translation>
+        <translation>Počáteční adresa</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="224"/>
         <source>End address</source>
-        <translation type="unfinished"></translation>
+        <translation>Končící adresa</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="235"/>
         <source>Timeout(S)</source>
-        <translation type="unfinished"></translation>
+        <translation>Časový limit (S)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="254"/>
         <source>Show all</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit vše</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="255"/>
         <source>Show online</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit online</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="386"/>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="401"/>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="410"/>
         <source>IP Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba IP</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
         <source>IP settings error, the start ip and end ip must be set, please check and try again. </source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba nastavení IP, počáteční a koncová IP musí být nastaveny, zkontrolujte a zkuste to znovu.</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
         <source>IP settings error, the start ip and end ip must be in the same network segment, please check and try again. </source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba nastavení IP, počáteční a koncová IP musí být ve stejném síťovém segmentu, zkontrolujte a zkuste to znovu.</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
         <source>IP settings error, the start ip must be less than the end ip, please check and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba nastavení IP, počáteční IP musí být menší než koncová IP, zkontrolujte a zkuste to znovu.</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="457"/>
         <source>Total：%1，Active：%2，Finished：%3，Remain：%4</source>
-        <translation type="unfinished"></translation>
+        <translation>Celkem：%1，Aktivní：%2，Dokončeno：%3，Zbývá：%4</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="516"/>
         <source>Scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>Probíhá skenování</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
         <source>Online</source>
-        <translation type="unfinished"></translation>
+        <translation>Online</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
         <source>Offline</source>
-        <translation type="unfinished"></translation>
+        <translation>Offline</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="564"/>
         <source>Scanning Finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Skener byl dokončen</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
         <source>Scanning finished, you can screen out the result by the toolbar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Skener byl dokončen, můžete výsledky filtrovat pomocí panelu nástrojů.</translation>
     </message>
 </context>
 <context>
@@ -2426,17 +2446,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="119"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázka</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="151"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Data</translation>
     </message>
 </context>
 <context>
@@ -2444,77 +2464,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/crc.cpp" line="84"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Neznámý</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="97"/>
         <source>Serial Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Řadový port</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="99"/>
         <source>BLE Central</source>
-        <translation type="unfinished"></translation>
+        <translation>BLE Centrální</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="101"/>
         <source>BLE Peripheral</source>
-        <translation type="unfinished"></translation>
+        <translation>BLE Periferní</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="103"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP Klient</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="105"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP Server</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="107"/>
         <source>UDP Multicast</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP Multicast</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="109"/>
         <source>UDP Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP Broadcast</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="111"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP Klient</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="113"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP Server</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="115"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket Klient</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="117"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket Server</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="119"/>
         <source>Local Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokální soket</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="121"/>
         <source>Local Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokální server</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="123"/>
         <source>Charts Test</source>
-        <translation type="unfinished"></translation>
+        <translation>Charts Test</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="180"/>
@@ -2522,37 +2542,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="989"/>
         <location filename="../../src/common/xtools.cpp" line="991"/>
         <source>Binary</source>
-        <translation type="unfinished"></translation>
+        <translation>Binární</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="182"/>
         <source>Octal</source>
-        <translation type="unfinished"></translation>
+        <translation>Octal</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="184"/>
         <source>Decimal</source>
-        <translation type="unfinished"></translation>
+        <translation>Desetinný</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="186"/>
         <source>Hexadecimal</source>
-        <translation type="unfinished"></translation>
+        <translation>Hexadecimální</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="188"/>
         <source>Hexadecimal(No Space)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hexadecimální (bez mezer)</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="190"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="192"/>
         <source>UTF-8</source>
-        <translation type="unfinished"></translation>
+        <translation>UTF-8</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="454"/>
@@ -2560,129 +2580,129 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="826"/>
         <location filename="../../src/common/xtools.cpp" line="844"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádný</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="557"/>
         <location filename="../../src/common/xtools.cpp" line="993"/>
         <location filename="../../src/common/xtools.cpp" line="995"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="594"/>
         <source>Echo</source>
-        <translation type="unfinished"></translation>
+        <translation>Echo</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="595"/>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>Vždy</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="596"/>
         <source>Input Equal Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Vstupní rovná reference</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="597"/>
         <source>Input Contain Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Vstupní obsahuje referenci</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="599"/>
         <source>Input Does not Contain Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Vstupní neobsahuje referenci</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="827"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Sudý</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="828"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Nejmenší</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="829"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Mezera</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="830"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="846"/>
         <source>RTS/CTS</source>
-        <translation type="unfinished"></translation>
+        <translation>RTS/CTS</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="847"/>
         <source>X-ON/X-OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>X-ON/X-OFF</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="849"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>Hardware</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="850"/>
         <source>Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Software</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="954"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktivováno</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="956"/>
         <source>Bidirectional</source>
-        <translation type="unfinished"></translation>
+        <translation>Obousměrný</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="958"/>
         <source>Unidirectional</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednosměrný</translation>
     </message>
     <message>
         <location filename="../../src/main.cpp" line="20"/>
         <source>Application is booting...</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádná akce</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>System</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="453"/>
         <source>Round up for .5 and above</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaokrouhlit na celé číslo pro .5 a vyšší</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Always round up</source>
-        <translation type="unfinished"></translation>
+        <translation>Vždy zaokrouhlit nahoru</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="455"/>
         <source>Always round down</source>
-        <translation type="unfinished"></translation>
+        <translation>Vždy zaokrouhlit dolů</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="456"/>
         <source>Round up for .75 and above</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaokrouhlit na celé číslo pro .75 a vyšší</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="457"/>
         <source>Don&apos;t round</source>
-        <translation type="unfinished"></translation>
+        <translation>Nezaokrouhlovat</translation>
     </message>
 </context>
 <context>
@@ -2690,32 +2710,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="20"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovat</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="37"/>
         <source>Generate</source>
-        <translation type="unfinished"></translation>
+        <translation>Generovat</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Varování</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
         <source>Please input the data to generate QR code.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosím zadejte data pro generování QR kódu.</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="90"/>
         <source>Save QR Code Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit obrázek QR kódu</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="92"/>
         <source>PNG Images (*.png);;JPG Images (*.jpg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrázky PNG (*.png);;Obrázky JPG (*.jpg)</translation>
     </message>
 </context>
 <context>
@@ -2724,42 +2744,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/responder/respondermodel.cpp" line="107"/>
         <location filename="../../src/page/responder/respondermodel.cpp" line="222"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivovat</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="107"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktivovat</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="185"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázka</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="224"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="226"/>
         <source>Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnost</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="228"/>
         <source>Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Prodleva</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="230"/>
         <source>Reference Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Referenční data</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="232"/>
         <source>Response Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpovědní data</translation>
     </message>
 </context>
 <context>
@@ -2767,47 +2787,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="52"/>
         <source>Search text</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat text</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="59"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="82"/>
         <source>Regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulární výraz</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozlišovat velká/malá písmena</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation type="unfinished"></translation>
+        <translation>Celé slovo</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
         <source>Could not find any matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nebyly nalezeny žádné shody.</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="151"/>
         <source>Found %1 matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nalezeno %1 shod.</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="190"/>
         <source>Line %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Řádek %1:</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="224"/>
         <source>Search results:</source>
-        <translation type="unfinished"></translation>
+        <translation>Výsledky hledání:</translation>
     </message>
 </context>
 <context>
@@ -2815,7 +2835,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/serialport.cpp" line="49"/>
         <source>Failed to open serial port: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodařilo se otevřít sériový port: %1</translation>
     </message>
 </context>
 <context>
@@ -2823,78 +2843,78 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="106"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Lichá</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="108"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Sudá</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="110"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
+        <translation>Značka</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="112"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Mezera</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="114"/>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="122"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádný</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="118"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>Hardware</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="120"/>
         <source>Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Software</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="225"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnost přenosu</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="227"/>
         <source>Port Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název portu</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="229"/>
         <source>Baud Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Rychlost přenosu</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="231"/>
         <source>Data Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Datové bity</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="233"/>
         <source>Stop Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop bity</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="235"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Parita</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="237"/>
         <source>Flow Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Řízení toku</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="239"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
 </context>
 <context>
@@ -2902,42 +2922,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/serialportui.ui" line="38"/>
         <source>Baud rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Rychlost přenosu</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="58"/>
         <source>Flow control</source>
-        <translation type="unfinished"></translation>
+        <translation>Řízení toku</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="71"/>
         <source>Stop bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop bity</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="85"/>
         <source>Ignored busy device</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorované zaneprázdněné zařízení</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="101"/>
         <source>Port name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název portu</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="117"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Parita</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="130"/>
         <source>Data bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Datové bity</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="162"/>
         <source>Optimized frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Optimalizovaný rámec</translation>
     </message>
 </context>
 <context>
@@ -2945,135 +2965,135 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivovat</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktivovat</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="190"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnost přenosu</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="192"/>
         <source>Server Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresa serveru</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="194"/>
         <source>Server Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port serveru</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="196"/>
         <source>Data Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový kanál</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="198"/>
         <source>Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Autentifikace</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="200"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="202"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Heslo</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="204"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
 </context>
 <context>
     <name>SocketUi</name>
     <message>
-        <location filename="../../src/device/socketui.ui" line="195"/>
-        <source>Channel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/device/socketui.ui" line="43"/>
         <source>Disconnect all clients</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="188"/>
-        <source>User name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="62"/>
-        <source>Multicast Port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="148"/>
-        <source>Multicast IP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="79"/>
-        <source>Authentication</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="118"/>
-        <source>Enable multicast</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="125"/>
-        <source>Just multicast</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="134"/>
-        <source>Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="202"/>
-        <source>Secure Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="109"/>
-        <source>Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="86"/>
-        <source>post/hello</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="171"/>
-        <source>Server IP</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpojit všechny klienty</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="55"/>
         <source>Write to</source>
-        <translation type="unfinished"></translation>
+        <translation>Psát do</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="62"/>
+        <source>Multicast Port</source>
+        <translation>Port multicastu</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="79"/>
+        <source>Authentication</source>
+        <translation>Autentifikace</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="86"/>
+        <source>post/hello</source>
+        <translation>post/hello</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="102"/>
         <source>Server port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port serveru</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="109"/>
+        <source>Path</source>
+        <translation>Cesta</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="118"/>
+        <source>Enable multicast</source>
+        <translation>Povolit multicast</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="125"/>
+        <source>Just multicast</source>
+        <translation>Pouze multicast</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="134"/>
+        <source>Password</source>
+        <translation>Heslo</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="148"/>
+        <source>Multicast IP</source>
+        <translation>IP multicastu</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="171"/>
+        <source>Server IP</source>
+        <translation>IP serveru</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="188"/>
+        <source>User name</source>
+        <translation>Uživatelské jméno</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="195"/>
+        <source>Channel</source>
+        <translation>Kanál</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="202"/>
+        <source>Secure Mode</source>
+        <translation>Bezpečný režim</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
         <source>All clients</source>
-        <translation type="unfinished"></translation>
+        <translation>Všichni klienti</translation>
     </message>
 </context>
 <context>
@@ -3081,7 +3101,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/statistician.cpp" line="51"/>
         <source>%1 frames, %2 bytes, %3B/s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 rámců, %2 bajtů, %3B/s</translation>
     </message>
 </context>
 <context>
@@ -3089,27 +3109,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="20"/>
         <source>Raw data</source>
-        <translation type="unfinished"></translation>
+        <translation>Nezpracovaná data</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="64"/>
         <source>Input format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát vstupu</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="77"/>
         <source>Cooked data</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravená data</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="100"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát výstupu</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="110"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořit</translation>
     </message>
 </context>
 <context>
@@ -3117,17 +3137,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="19"/>
         <source>xTools</source>
-        <translation type="unfinished"></translation>
+        <translation>xTools</translation>
     </message>
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="22"/>
         <source>Open main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít hlavní okno</translation>
     </message>
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="24"/>
         <source>Exit program</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukončit program</translation>
     </message>
 </context>
 <context>
@@ -3135,65 +3155,65 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovat</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="39"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="46"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="56"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovat</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="68"/>
         <source>Disable all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázat všechny položky</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="77"/>
         <location filename="../../src/page/common/tableview.cpp" line="127"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="128"/>
         <source>Are you sure to clear all items?</source>
-        <translation type="unfinished"></translation>
+        <translation>Opravdu chcete vymazat všechny položky?</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="143"/>
         <source>No Item be Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádná položka není vybrána</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="143"/>
         <source>Please select a item first!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nejprve vyberte položku!</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="153"/>
         <location filename="../../src/page/common/tableview.cpp" line="181"/>
         <source>Import data</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovat data</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="155"/>
         <location filename="../../src/page/common/tableview.cpp" line="183"/>
         <source>JSON (*.json);;All (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON (*.json);;Všechny (*)</translation>
     </message>
 </context>
 <context>
@@ -3201,77 +3221,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="14"/>
         <source>Data Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor dat</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="20"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
-        <source>Preprocessing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
-        <source>Prefix</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
-        <source>Suffix</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
-        <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="33"/>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Algoritmus</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="43"/>
         <source>Start index</source>
-        <translation type="unfinished"></translation>
+        <translation>Počáteční index</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>End index</source>
-        <translation type="unfinished"></translation>
+        <translation>Konečný index</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
         <source>Append</source>
-        <translation type="unfinished"></translation>
+        <translation>Připojit</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
-        <translation type="unfinished"></translation>
+        <translation>Big endian</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
+        <source>Preprocessing</source>
+        <translation>Předpracování</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
+        <source>Prefix</source>
+        <translation>Předpona</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
+        <source>Suffix</source>
+        <translation>Přípona</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
+        <source>Escape character</source>
+        <translation>Únikový znak</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
+        <source>OK</source>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="155"/>
         <source>Payload</source>
-        <translation type="unfinished"></translation>
+        <translation>Datová část</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát</translation>
     </message>
 </context>
 <context>
@@ -3279,7 +3299,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/common/transfermodel.cpp" line="46"/>
         <source>Transfer %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Přenos %1</translation>
     </message>
 </context>
 <context>
@@ -3287,37 +3307,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="30"/>
         <source>Serial Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Sériový port</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="36"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP klient</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="41"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP server</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="46"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP klient</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="51"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP server</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="57"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket klient</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="62"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket server</translation>
     </message>
 </context>
 <context>
@@ -3325,7 +3345,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpbroadcast.cpp" line="64"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodařilo se navázat UDP socket: %1</translation>
     </message>
 </context>
 <context>
@@ -3333,17 +3353,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpbroadcastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte síťové rozhraní:</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.ui" line="58"/>
         <source>Broadcast Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port vysílání</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
         <source>All Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Všechna rozhraní</translation>
     </message>
 </context>
 <context>
@@ -3351,22 +3371,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="68"/>
         <source>Invalid network interface: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Neplatné síťové rozhraní: %1</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="75"/>
         <source>Network interface %1 does not support multicast</source>
-        <translation type="unfinished"></translation>
+        <translation>Síťové rozhraní %1 nepodporuje multicast</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="93"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodařilo se navázat UDP socket: %1</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="102"/>
         <source>Failed to join multicast group %1:%2: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodařilo se připojit k multicast skupině %1:%2: %3</translation>
     </message>
 </context>
 <context>
@@ -3374,22 +3394,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte síťové rozhraní:</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="55"/>
         <source>Multicast IP</source>
-        <translation type="unfinished"></translation>
+        <translation>IP multicastu</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="85"/>
         <source>Multicast Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port multicastu</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="92"/>
         <source>Multicast loopback</source>
-        <translation type="unfinished"></translation>
+        <translation>Multicast zpětná smyčka</translation>
     </message>
 </context>
 </TS>

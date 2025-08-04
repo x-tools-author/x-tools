@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de">
+<TS version="2.1" language="de_DE">
 <context>
     <name>Application</name>
     <message>
         <location filename="../../src/application.cpp" line="282"/>
         <source>Transfer rx bytes with right page</source>
-        <translation type="unfinished"></translation>
+        <translation>Rx-Bytes mit rechter Seite übertragen</translation>
     </message>
     <message>
         <location filename="../../src/application.cpp" line="287"/>
         <source>Transfer rx bytes with left page</source>
-        <translation type="unfinished"></translation>
+        <translation>Rx-Bytes mit linker Seite übertragen</translation>
     </message>
 </context>
 <context>
@@ -19,207 +19,207 @@
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.ui" line="26"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.ui" line="49"/>
         <source>Preserve case</source>
-        <translation type="unfinished"></translation>
+        <translation>Groß-/Kleinschreibung beibehalten</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Binär</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>Oktal</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezimal</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation>Hexadezimal</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="63"/>
         <source>NUL (NULL)</source>
-        <translation type="unfinished"></translation>
+        <translation>NUL (NULL)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="64"/>
         <source>SOH (Start Of Headling)</source>
-        <translation type="unfinished"></translation>
+        <translation>SOH (Textanfang)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="65"/>
         <source>STX (Start Of Text)</source>
-        <translation type="unfinished"></translation>
+        <translation>STX (Textbeginn)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="66"/>
         <source>ETX (End Of Text)</source>
-        <translation type="unfinished"></translation>
+        <translation>ETX (Textende)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="67"/>
         <source>EOT (End Of Transmission)</source>
-        <translation type="unfinished"></translation>
+        <translation>EOT (Übertragungsende)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="68"/>
         <source>ENQ (Enquiry)</source>
-        <translation type="unfinished"></translation>
+        <translation>ENQ (Anfrage)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="69"/>
         <source>ACK (Acknowledge)</source>
-        <translation type="unfinished"></translation>
+        <translation>ACK (Bestätigung)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="70"/>
         <source>BEL (Bell)</source>
-        <translation type="unfinished"></translation>
+        <translation>BEL (Glocke)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="71"/>
         <source>BS (Backspace)</source>
-        <translation type="unfinished"></translation>
+        <translation>BS (Rücktaste)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="72"/>
         <source>HT (Horizontal Tab)</source>
-        <translation type="unfinished"></translation>
+        <translation>HT (Horizontaler Tab)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="73"/>
         <source>LF/NL(Line Feed/New Line)</source>
-        <translation type="unfinished"></translation>
+        <translation>LF/NL (Zeilenvorschub/Neue Zeile)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="74"/>
         <source>VT (Vertical Tab)</source>
-        <translation type="unfinished"></translation>
+        <translation>VT (Vertikaler Tab)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="75"/>
         <source>FF/NP (Form Feed/New Page)</source>
-        <translation type="unfinished"></translation>
+        <translation>FF/NP (Seitenvorschub/Neue Seite)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="76"/>
         <source>CR (Carriage Return)</source>
-        <translation type="unfinished"></translation>
+        <translation>CR (Wagenrücklauf)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="77"/>
         <source>SO (Shift Out)</source>
-        <translation type="unfinished"></translation>
+        <translation>SO (Umschaltung raus)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="78"/>
         <source>SI (Shift In)</source>
-        <translation type="unfinished"></translation>
+        <translation>SI (Umschaltung rein)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="79"/>
         <source>DLE (Data Link Escape)</source>
-        <translation type="unfinished"></translation>
+        <translation>DLE (Datenverbindung Escape)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="80"/>
         <source>DC1/XON(Device Control 1/Transmission On)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC1/XON (Gerätekontrolle 1/Übertragung Ein)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="81"/>
         <source>DC2 (Device Control 2)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC2 (Gerätekontrolle 2)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="82"/>
         <source>DC3/XOFF(Device Control 3/Transmission Off)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC3/XOFF (Gerätekontrolle 3/Übertragung Aus)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="83"/>
         <source>DC4 (Device Control 4)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC4 (Gerätekontrolle 4)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="84"/>
         <source>NAK (Negative Acknowledge)</source>
-        <translation type="unfinished"></translation>
+        <translation>NAK (Negative Bestätigung)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="85"/>
         <source>SYN (Synchronous Idle)</source>
-        <translation type="unfinished"></translation>
+        <translation>SYN (Synchroner Leerlauf)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="86"/>
         <source>ETB (End of Transmission Block)</source>
-        <translation type="unfinished"></translation>
+        <translation>ETB (Ende des Übertragungsblocks)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="87"/>
         <source>CAN (Cancel)</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN (Abbrechen)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="88"/>
         <source>EM (End of Medium)</source>
-        <translation type="unfinished"></translation>
+        <translation>EM (Medienende)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="89"/>
         <source>SUB (Substitute)</source>
-        <translation type="unfinished"></translation>
+        <translation>SUB (Ersatz)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="90"/>
         <source>ESC (Escape)</source>
-        <translation type="unfinished"></translation>
+        <translation>ESC (Escape)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="91"/>
         <source>FS (File Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>FS (Dateitrennzeichen)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="92"/>
         <source>GS (Group Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>GS (Gruppentrennzeichen)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="93"/>
         <source>RS (Record Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>RS (Datensatztrennzeichen)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="94"/>
         <source>US (Unit Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>US (Einheitstrennzeichen)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="95"/>
         <source>(Space)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Leerzeichen)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="96"/>
         <source>DEL (Delete)</source>
-        <translation type="unfinished"></translation>
+        <translation>DEL (Löschen)</translation>
     </message>
 </context>
 <context>
@@ -227,72 +227,72 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="44"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="46"/>
         <source>mDNS Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>mDNS-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
         <source>Ping Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Ping-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="49"/>
         <source>ASCII Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Base64-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="51"/>
         <source>Number Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahlen-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
         <source>String Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>String-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiprüf-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateifusions-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
         <source>QR Code Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>QR-Code-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Barcode-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
         <source>CAN Bus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN-Bus-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
         <source>Modbus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Modbus-Assistent</translation>
     </message>
 </context>
 <context>
@@ -300,53 +300,53 @@
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="32"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="52"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="59"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportieren</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="66"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Daten</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="89"/>
         <source>010000000000</source>
-        <translation type="unfinished"></translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Barcode-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Save Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild speichern</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <source>PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>PNG-Bild (*.png);;JPEG-Bild (*.jpg);;BMP-Bild (*.bmp)</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Failed to save image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Speichern des Bildes.</translation>
     </message>
 </context>
 <context>
@@ -354,37 +354,37 @@
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenformat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Farbe</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Linie</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>Spline</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>Streuung</translation>
     </message>
 </context>
 <context>
@@ -392,42 +392,42 @@
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Base64-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation type="unfinished"></translation>
+        <translation>Klartext</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiffretext</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Entschlüsseln</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Verschlüsseln</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data error</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenfehler</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data can not convert image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Daten können nicht in Bild konvertiert werden.</translation>
     </message>
 </context>
 <context>
@@ -435,12 +435,12 @@
     <message>
         <location filename="../../src/device/blecentral.cpp" line="92"/>
         <source>Characteristic does not support write</source>
-        <translation type="unfinished"></translation>
+        <translation>Charakteristik unterstützt kein Schreiben</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentral.cpp" line="98"/>
         <source>Characteristic does not support write without response</source>
-        <translation type="unfinished"></translation>
+        <translation>Charakteristik unterstützt kein Schreiben ohne Antwort</translation>
     </message>
 </context>
 <context>
@@ -448,89 +448,89 @@
     <message>
         <location filename="../../src/device/blecentralui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="41"/>
         <source>Characteristic</source>
-        <translation type="unfinished"></translation>
+        <translation>Charakteristik</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="61"/>
         <source>(Unsupported characteristic)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Nicht unterstützte Charakteristik)</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="77"/>
         <source>BLE Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>BLE-Geräte</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="87"/>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
         <source>Scan</source>
-        <translation type="unfinished"></translation>
+        <translation>Scannen</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="96"/>
         <location filename="../../src/device/blecentralui.cpp" line="125"/>
         <source>Notify</source>
-        <translation type="unfinished"></translation>
+        <translation>Benachrichtigen</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="103"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Lesen</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="115"/>
         <source>Service scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>Service-Scan</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="150"/>
         <source>Write mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Schreibmodus</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="163"/>
         <source>Service</source>
-        <translation type="unfinished"></translation>
+        <translation>Service</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="170"/>
         <source>Device scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>Geräte-Scan</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
         <source>Disnotify</source>
-        <translation type="unfinished"></translation>
+        <translation>Benachrichtigung deaktivieren</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="135"/>
         <source>With Response</source>
-        <translation type="unfinished"></translation>
+        <translation>Mit Antwort</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="140"/>
         <source>Without Response</source>
-        <translation type="unfinished"></translation>
+        <translation>Ohne Antwort</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="193"/>
         <source>(No name)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Kein Name)</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="317"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="336"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler aufgetreten</translation>
     </message>
 </context>
 <context>
@@ -538,83 +538,83 @@
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="20"/>
         <source>Output control</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabesteuerung</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="32"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabeformat</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
         <source>Broadcast parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-Parameter</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="67"/>
         <source>Broadcast address</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-Adresse</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="80"/>
         <source>55443</source>
-        <translation type="unfinished"></translation>
+        <translation>55443</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="100"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenformat</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="119"/>
         <source>Broadcast prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-Präfix</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="132"/>
         <source>Broadcast interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-Intervall</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="151"/>
         <source>Broadcast suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-Suffix</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="164"/>
         <source>Broadcast port</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-Port</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="187"/>
         <source>Broadcast data</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-Daten</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="194"/>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation>Senden</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="223"/>
         <source>Information output</source>
-        <translation type="unfinished"></translation>
+        <translation>Informationsausgabe</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Terminate</source>
-        <translation type="unfinished"></translation>
+        <translation>Beenden</translation>
     </message>
 </context>
 <context>
@@ -622,202 +622,202 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="14"/>
         <source>CANBus Studio</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN-Bus Studio</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="38"/>
         <source>CAN Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN-Frame</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="57"/>
         <source>Extended format</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweitertes Format</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="64"/>
         <source>Flexible data rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Flexible Datenrate</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="71"/>
         <source>Frame ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Frame-ID</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="91"/>
         <source>Frame type</source>
-        <translation type="unfinished"></translation>
+        <translation>Frame-Typ</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="101"/>
         <source>Frame options</source>
-        <translation type="unfinished"></translation>
+        <translation>Frame-Optionen</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="114"/>
         <source>Bitrate switch</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitrate-Umschaltung</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="150"/>
         <source>Device Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerätesteuerung</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="171"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Trennen</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="178"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbinden</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="192"/>
         <source>Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Plugin</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="221"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="251"/>
         <source>Data View</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenansicht</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="295"/>
         <source>Specify Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfiguration festlegen</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="323"/>
         <source>Error filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehlerfilter</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="333"/>
         <source>Custom configurations</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefinierte Konfigurationen</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="346"/>
         <source>CAN FD</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN FD</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="373"/>
         <source>Loopback</source>
-        <translation type="unfinished"></translation>
+        <translation>Loopback</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="386"/>
         <source>Data bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Daten-Bitrate</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="409"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitrate</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="422"/>
         <source>Receive own</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigene empfangen</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="451"/>
         <source>CAN Frame Payload</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN-Frame-Nutzdaten</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="489"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Senden</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
         <source>can0</source>
-        <translation type="unfinished"></translation>
+        <translation>can0</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="107"/>
         <source>DataFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenframe</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
         <source>ErrorFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehlerframe</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
         <source>RemoteRequestFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>Remote-Request-Frame</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="131"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation>Hex</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="208"/>
         <source>Interface Name is Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Schnittstellenname ist leer</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface name is empty, please input the name then try again!</source>
-        <translation type="unfinished"></translation>
+        <translation>Schnittstellenname ist leer, bitte geben Sie den Namen ein und versuchen Sie es erneut!</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler aufgetreten</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="232"/>
         <source>Connection Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbindungsfehler</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
         <source>Connection error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbindungsfehler: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="314"/>
         <source>Device is Not Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerät ist nicht bereit</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
         <source>Device is not ready, please connect the device then try angin!</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerät ist nicht bereit, bitte verbinden Sie das Gerät und versuchen Sie es erneut!</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="355"/>
         <source>Error Occure</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler aufgetreten</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="391"/>
         <source>unspecified</source>
-        <translation type="unfinished"></translation>
+        <translation>nicht spezifiziert</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="393"/>
         <source>false</source>
-        <translation type="unfinished"></translation>
+        <translation>falsch</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
         <source>true</source>
-        <translation type="unfinished"></translation>
+        <translation>wahr</translation>
     </message>
 </context>
 <context>
@@ -826,13 +826,13 @@
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="60"/>
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="63"/>
         <source>Binary</source>
-        <translation type="unfinished"></translation>
+        <translation>Binär</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="61"/>
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="64"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Text</translation>
     </message>
 </context>
 <context>
@@ -840,7 +840,7 @@
     <message>
         <location filename="../../src/device/chartstest.cpp" line="30"/>
         <source>ChartsTest</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagramm-Test</translation>
     </message>
 </context>
 <context>
@@ -848,12 +848,12 @@
     <message>
         <location filename="../../src/device/chartstestui.ui" line="38"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Format</translation>
     </message>
     <message>
         <location filename="../../src/device/chartstestui.ui" line="48"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanäle</translation>
     </message>
 </context>
 <context>
@@ -861,88 +861,88 @@
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation type="unfinished"></translation>
+        <translation>Polynom-Wert</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation type="unfinished"></translation>
+        <translation>Anfangswert</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="34"/>
         <location filename="../../src/tools/crc/crcassistant.ui" line="235"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopieren</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="unfinished"></translation>
+        <translation>Weitere Informationen zur CRC-Berechnung finden Sie unter http://www.ip33.com/crc.html (Doppelklick zum Besuchen)</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabe-Umkehrung</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabe-Umkehrung</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>Berechnen</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation type="unfinished"></translation>
+        <translation>XOR-Wert</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="unfinished"></translation>
+        <translation>Höchste Bits links und niedrigste Bits rechts</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="157"/>
         <source>HEX</source>
-        <translation type="unfinished"></translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ergebnis (HEX)</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametermodell</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="214"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Breite</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="221"/>
@@ -954,22 +954,29 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="265"/>
         <source>Paloy</source>
-        <translation type="unfinished"></translation>
+        <translation>Polynom</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="279"/>
         <source>Input data</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabedaten</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="286"/>
         <source>Result(BIN)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ergebnis (BIN)</translation>
     </message>
 </context>
 <context>
@@ -977,53 +984,53 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/devicesettings.ui" line="22"/>
         <source>Save tx data</source>
-        <translation type="unfinished"></translation>
+        <translation>TX-Daten speichern</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="32"/>
         <source>Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Browser</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="39"/>
         <source>Save millisecond</source>
-        <translation type="unfinished"></translation>
+        <translation>Millisekunden speichern</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="49"/>
         <source>Save rx data</source>
-        <translation type="unfinished"></translation>
+        <translation>RX-Daten speichern</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="59"/>
         <source>Save Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum speichern</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="69"/>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
         <source>Save to file</source>
-        <translation type="unfinished"></translation>
+        <translation>In Datei speichern</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="76"/>
         <source>Save Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeit speichern</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="94"/>
         <source>Save format</source>
-        <translation type="unfinished"></translation>
+        <translation>Speicherformat</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="104"/>
         <source>Max bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Max. Bytes</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
         <source>Text File(*.txt)</source>
-        <translation type="unfinished"></translation>
+        <translation>Textdatei (*.txt)</translation>
     </message>
 </context>
 <context>
@@ -1032,32 +1039,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/emitter/emittermodel.cpp" line="92"/>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="185"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivieren</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="92"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktivieren</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="155"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>Demo</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="187"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="189"/>
         <source>Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Intervall</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="191"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Daten</translation>
     </message>
 </context>
 <context>
@@ -1065,58 +1072,58 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation type="unfinished"></translation>
+        <translation>Ergebnis in Großbuchstaben</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation type="unfinished"></translation>
+        <translation>Geprüfte Datei</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Prüffortschritt</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Prüfalgorithmus</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation type="unfinished"></translation>
+        <translation>Prüfergebnis</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>Berechnen</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Öffnen</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiprüf-Assistent</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbleibende Zeit</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
         <source>StopCalculating</source>
-        <translation type="unfinished"></translation>
+        <translation>Berechnung stoppen</translation>
     </message>
 </context>
 <context>
@@ -1124,84 +1131,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="26"/>
         <source>File list</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiliste</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="60"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importieren</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="74"/>
         <source>Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach oben</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="81"/>
         <source>Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach unten</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="88"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Entfernen</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="95"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="102"/>
         <source>Merge</source>
-        <translation type="unfinished"></translation>
+        <translation>Zusammenführen</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
         <source>Import Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateien importieren</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="62"/>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="91"/>
         <source>Bin file(*.bin);;All file(*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bin-Datei (*.bin);;Alle Dateien (*)</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="77"/>
         <source>Open File Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei öffnen fehlgeschlagen</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="78"/>
         <source>Open file(%1) failed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei (%1) öffnen fehlgeschlagen:</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="83"/>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="127"/>
         <source>Merge Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateien zusammenführen</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="84"/>
         <source>No file to merge, please import files first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Dateien zum Zusammenführen, bitte importieren Sie zuerst Dateien.</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="89"/>
         <source>Save Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateien speichern</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="127"/>
         <source>Merge files successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateien erfolgreich zusammengeführt.</translation>
     </message>
 </context>
 <context>
@@ -1209,7 +1216,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filecheck/hashcalculator.cpp" line="84"/>
         <source>Calculating finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Berechnung abgeschlossen</translation>
     </message>
 </context>
 <context>
@@ -1217,17 +1224,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="18"/>
         <source>Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Lua-Skript</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="20"/>
         <source>Frame Serial Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Frame-Seriennummer</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="21"/>
         <source>XYModem Sender</source>
-        <translation type="unfinished"></translation>
+        <translation>XYModem-Sender</translation>
     </message>
 </context>
 <context>
@@ -1235,47 +1242,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenvorschau anzeigen</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="32"/>
         <source>Append prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Präfix anhängen</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="45"/>
         <source>Append suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Suffix anhängen</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="52"/>
         <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation>Escape-Zeichen</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="93"/>
         <source>CRC end index</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC-Endindex</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="109"/>
         <source>CRC start index</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC-Startindex</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="122"/>
         <source>CRC arithmetic</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC-Arithmetik</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="131"/>
         <source>Append CRC</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC anhängen</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="138"/>
         <source>Big endian</source>
-        <translation type="unfinished"></translation>
+        <translation>Big Endian</translation>
     </message>
 </context>
 <context>
@@ -1283,12 +1290,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="204"/>
         <source>Import Data from Excel</source>
-        <translation type="unfinished"></translation>
+        <translation>Daten aus Excel importieren</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="235"/>
         <source>Export Data to Excel</source>
-        <translation type="unfinished"></translation>
+        <translation>Daten nach Excel exportieren</translation>
     </message>
 </context>
 <context>
@@ -1296,73 +1303,73 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="58"/>
         <source>Data type</source>
-        <translation type="unfinished"></translation>
+        <translation>Datentyp</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="68"/>
         <source>Legend</source>
-        <translation type="unfinished"></translation>
+        <translation>Legende</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="75"/>
         <source>Cache points</source>
-        <translation type="unfinished"></translation>
+        <translation>Zwischenpunkte speichern</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportieren</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="139"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importieren</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Sichtbar</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="54"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Farbe</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Linie</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>Spline</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>Streuung</translation>
     </message>
 </context>
 <context>
@@ -1370,7 +1377,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localserver.cpp" line="90"/>
         <source>Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Client</translation>
     </message>
 </context>
 <context>
@@ -1378,17 +1385,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localserverui.ui" line="32"/>
         <source>Write to</source>
-        <translation type="unfinished"></translation>
+        <translation>Schreiben nach</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.ui" line="45"/>
         <source>Server name</source>
-        <translation type="unfinished"></translation>
+        <translation>Servername</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle</translation>
     </message>
 </context>
 <context>
@@ -1396,7 +1403,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localsocketui.ui" line="32"/>
         <source>Server name</source>
-        <translation type="unfinished"></translation>
+        <translation>Servername</translation>
     </message>
 </context>
 <context>
@@ -1404,17 +1411,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
-        <source>Test data</source>
-        <translation type="unfinished"></translation>
+        <source>Test</source>
+        <translation>Test</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="42"/>
-        <source>Test</source>
-        <translation type="unfinished"></translation>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="45"/>
+        <source>Result data</source>
+        <translation>Ergebnisdaten</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="65"/>
+        <source>Test data</source>
+        <translation>Testdaten</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="82"/>
+        <source>Bypass</source>
+        <translation>Umgehen</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="34"/>
+        <source>Default Lua Script</source>
+        <translation>Standard-Lua-Skript</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="35"/>
+        <source>Checksum Lua Script</source>
+        <translation>Prüfsummen-Lua-Skript</translation>
     </message>
 </context>
 <context>
@@ -1422,237 +1449,237 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="300"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Datei</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="302"/>
         <source>New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Neues Fenster</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="310"/>
         <source>Save Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter speichern</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="312"/>
         <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Import Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter importieren</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="316"/>
         <location filename="../../src/mainwindow.cpp" line="804"/>
         <source>Export Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter exportieren</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="321"/>
         <source>Exit Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Anwendung beenden</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="330"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Werkzeuge</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="333"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Neu</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="369"/>
         <source>&amp;Options</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Optionen</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="378"/>
         <source>Use System Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>System-Proxy verwenden</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="388"/>
         <source>Exit to System Tray</source>
-        <translation type="unfinished"></translation>
+        <translation>In Systembereich minimieren</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="406"/>
         <source>Application Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Anwendungsstil</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="429"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
         <source>Clear Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen löschen</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="438"/>
         <source>Open Settings Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungsordner öffnen</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="447"/>
         <source>HDPI Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>HDPI-Richtlinie</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="491"/>
         <source>Color Scheme</source>
-        <translation type="unfinished"></translation>
+        <translation>Farbschema</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="493"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Dunkel</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="494"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Hell</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="495"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>System</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="552"/>
         <source>&amp;Languages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sprachen</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ansicht</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="629"/>
         <source>Stays on Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Immer im Vordergrund</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="649"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hilfe</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="650"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Qt</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="651"/>
         <location filename="../../src/mainwindow.cpp" line="847"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="655"/>
         <source>Screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildschirmfoto</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="664"/>
         <source>Buy from Store</source>
-        <translation type="unfinished"></translation>
+        <translation>Im Store kaufen</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="670"/>
         <location filename="../../src/mainwindow.cpp" line="703"/>
         <source>Release History</source>
-        <translation type="unfinished"></translation>
+        <translation>Versionshistorie</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>Join in QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>QQ-Gruppe beitreten</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>Online Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Online-Handbuch</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="677"/>
         <source>Get Sources from Github</source>
-        <translation type="unfinished"></translation>
+        <translation>Quellcode von GitHub herunterladen</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>Get Sources from Gitee</source>
-        <translation type="unfinished"></translation>
+        <translation>Quellcode von Gitee herunterladen</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Third Party Open Source</source>
-        <translation type="unfinished"></translation>
+        <translation>Drittanbieter-Open-Source</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="723"/>
         <source>QR Code</source>
-        <translation type="unfinished"></translation>
+        <translation>QR-Code</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="732"/>
         <source>User QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzer-QQ-Gruppe</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="733"/>
         <source>Qt QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt-QQ-Gruppe</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="754"/>
         <source>Need to Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Neustart erforderlich</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="755"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Änderung erfordert einen Neustart, um wirksam zu werden. Anwendung jetzt neu starten?</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="793"/>
         <location filename="../../src/mainwindow.cpp" line="806"/>
         <source>Json Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON-Dateien (*.json)</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="835"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Unbekannt</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="841"/>
         <source>Commit hash</source>
-        <translation type="unfinished"></translation>
+        <translation>Commit-Hash</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="843"/>
         <source>Commit time</source>
-        <translation type="unfinished"></translation>
+        <translation>Commit-Zeit</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="844"/>
         <source>Build Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Build-Datum</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="845"/>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation>Urheberrecht</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="846"/>
         <source>All rights reserved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Rechte vorbehalten.</translation>
     </message>
 </context>
 <context>
@@ -1660,48 +1687,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
-        <translation type="unfinished"></translation>
+        <translation>Service-Typ</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.ui" line="27"/>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Start</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="64"/>
         <source>Error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler aufgetreten</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="65"/>
         <source>Service type can not be empty, please input then try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Service-Typ darf nicht leer sein, bitte geben Sie ihn ein und versuchen Sie es erneut.</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="97"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="101"/>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostname</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="105"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="109"/>
         <source>Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Attribute</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop</translation>
     </message>
 </context>
 <context>
@@ -1709,309 +1736,309 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="49"/>
         <source>Console</source>
-        <translation type="unfinished"></translation>
+        <translation>Konsole</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="90"/>
         <source>Server Register</source>
-        <translation type="unfinished"></translation>
+        <translation>Server-Register</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="125"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Senden</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="141"/>
         <source>Custom Protocol Data Unit</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefinierte Protokolldateneinheit</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="154"/>
         <source>Client Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>Client-Register</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="189"/>
         <source>Device list</source>
-        <translation type="unfinished"></translation>
+        <translation>Geräteliste</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="213"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Schließen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="220"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Öffnen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="235"/>
         <source>Device Operations</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerätevorgänge</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresse</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="286"/>
         <source>Network Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Netzwerkeinstellungen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="306"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="337"/>
         <source>Baud rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Baudrate</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="357"/>
         <source>Data bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbits</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="370"/>
         <source>Serial Port Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Serielle Port-Einstellungen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="390"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Parität</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="409"/>
         <source>Port name</source>
-        <translation type="unfinished"></translation>
+        <translation>Port-Name</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="425"/>
         <source>Stop bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Stoppbits</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="450"/>
         <source>Device busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerät belegt</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="463"/>
         <source>Server Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Server-Parameter</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="470"/>
         <source>Server address</source>
-        <translation type="unfinished"></translation>
+        <translation>Server-Adresse</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="484"/>
         <source>Listen only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur-Abhör-Modus</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="560"/>
         <source>Target address</source>
-        <translation type="unfinished"></translation>
+        <translation>Zieladresse</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="569"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Lesen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="576"/>
         <source>Write</source>
-        <translation type="unfinished"></translation>
+        <translation>Schreiben</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="591"/>
         <source>Function code</source>
-        <translation type="unfinished"></translation>
+        <translation>Funktionscode</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="604"/>
         <source>Address number</source>
-        <translation type="unfinished"></translation>
+        <translation>Adressnummer</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="617"/>
         <source>Start address</source>
-        <translation type="unfinished"></translation>
+        <translation>Startadresse</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="666"/>
         <source>Repeat times</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiederholungszeiten</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="679"/>
         <source>Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeitüberschreitung</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="692"/>
         <source>Client Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Client-Parameter</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="717"/>
         <source>Input Control(address and value)</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabesteuerung (Adresse und Wert)</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="732"/>
         <source>Input format</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabeformat</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
         <source>RtuClient</source>
-        <translation type="unfinished"></translation>
+        <translation>RTU-Client</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
         <source>RtuServer</source>
-        <translation type="unfinished"></translation>
+        <translation>RTU-Server</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
         <source>TcpClient</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-Client</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
         <source>TcpServer</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-Server</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="226"/>
         <source>NoParity</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Parität</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
         <source>EvenParity</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerade Parität</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
         <source>OddParity</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungerade Parität</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
         <source>SpaceParity</source>
-        <translation type="unfinished"></translation>
+        <translation>Leerzeichen-Parität</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
         <source>MarkParity</source>
-        <translation type="unfinished"></translation>
+        <translation>Markierungs-Parität</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
         <source>ReadCoils</source>
-        <translation type="unfinished"></translation>
+        <translation>Spulen lesen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
         <source>ReadDiscreteInputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Diskrete Eingänge lesen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
         <source>ReadHoldingRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation>Halteregister lesen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
         <source>ReadInputRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingaberegister lesen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
         <source>WriteSingleCoil</source>
-        <translation type="unfinished"></translation>
+        <translation>Einzelne Spule schreiben</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
         <source>WriteSingleRegister</source>
-        <translation type="unfinished"></translation>
+        <translation>Einzelnes Register schreiben</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
         <source>WriteMultipleCoils</source>
-        <translation type="unfinished"></translation>
+        <translation>Mehrere Spulen schreiben</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
         <source>WriteMultipleRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation>Mehrere Register schreiben</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
         <source>Coils</source>
-        <translation type="unfinished"></translation>
+        <translation>Spulen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
         <source>DiscreteInputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Diskrete Eingänge</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>InputRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingaberegister</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>HoldingRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation>Halteregister</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1317"/>
         <source>Error occured</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler aufgetreten</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="624"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerät kann nicht geöffnet werden: %1. Bitte überprüfen Sie die Parameter und versuchen Sie es erneut!</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="627"/>
         <source>Can not open device</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerät kann nicht geöffnet werden</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Wert</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
         <source>Device is not Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerät ist nicht bereit</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1368"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Modbus-Gerät ist nicht bereit, bitte überprüfen Sie die Einstellungen und versuchen Sie es später erneut!</translation>
     </message>
 </context>
 <context>
@@ -2019,22 +2046,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusfactory.cpp" line="46"/>
         <source>RTU Client</source>
-        <translation type="unfinished"></translation>
+        <translation>RTU-Client</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusfactory.cpp" line="48"/>
         <source>RTU Server</source>
-        <translation type="unfinished"></translation>
+        <translation>RTU-Server</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusfactory.cpp" line="50"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-Client</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusfactory.cpp" line="52"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-Server</translation>
     </message>
 </context>
 <context>
@@ -2042,37 +2069,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="32"/>
         <source>Raw data</source>
-        <translation type="unfinished"></translation>
+        <translation>Rohdaten</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="39"/>
         <source>Cooked data(Hex)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeitete Daten (Hex)</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="53"/>
         <source>Cooked data type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ der bearbeiteten Daten</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="89"/>
         <source>Cooked data(Dec)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeitete Daten (Dez)</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="102"/>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zum Beispiel: 1, -1, 1.1, -1.1</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="109"/>
         <source>Cooked data(Bin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeitete Daten (Bin)</translation>
     </message>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="119"/>
         <source>From left to right is high to low</source>
-        <translation type="unfinished"></translation>
+        <translation>Von links nach rechts ist hoch bis niedrig</translation>
     </message>
 </context>
 <context>
@@ -2080,27 +2107,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="23"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchen</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="24"/>
         <source>Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Lua-Skript</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
         <source>Line Chart</source>
-        <translation type="unfinished"></translation>
+        <translation>Liniendiagramm</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
         <source>Bar Chart</source>
-        <translation type="unfinished"></translation>
+        <translation>Balkendiagramm</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
         <source>XY-Modem Receiver</source>
-        <translation type="unfinished"></translation>
+        <translation>XY-Modem-Empfänger</translation>
     </message>
 </context>
 <context>
@@ -2108,184 +2135,184 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable highlighter</source>
-        <translation type="unfinished"></translation>
+        <translation>Texthervorhebung aktivieren</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="33"/>
         <source>Filter text</source>
-        <translation type="unfinished"></translation>
+        <translation>Text filtern</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="43"/>
         <source>Hello,Word</source>
-        <translation type="unfinished"></translation>
+        <translation>Hallo, Welt</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="53"/>
         <source>Show statistician</source>
-        <translation type="unfinished"></translation>
+        <translation>Statistiken anzeigen</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="60"/>
         <source>Enable filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter aktivieren</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
+        <location filename="../../src/page/page.ui" line="47"/>
+        <source>Cycle interval</source>
+        <translation>Zyklus-Intervall</translation>
+    </message>
+    <message>
         <location filename="../../src/page/page.ui" line="56"/>
         <location filename="../../src/page/page.ui" line="74"/>
         <location filename="../../src/page/page.ui" line="244"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="251"/>
-        <source>Send</source>
-        <translation type="unfinished"></translation>
+        <location filename="../../src/page/page.ui" line="63"/>
+        <location filename="../../src/page/page.cpp" line="530"/>
+        <source>Open</source>
+        <translation>Öffnen</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="81"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="122"/>
+        <source>Rx</source>
+        <translation>Empfangen</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="129"/>
+        <source>Tx</source>
+        <translation>Senden</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="136"/>
+        <source>Date</source>
+        <translation>Datum</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="143"/>
+        <source>Flag</source>
+        <translation>Kennzeichen</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="150"/>
+        <source>Time</source>
+        <translation>Zeit</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="157"/>
+        <source>Ms</source>
+        <translation>Ms</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="177"/>
+        <source>Output control</source>
+        <translation>Ausgabesteuerung</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="199"/>
+        <source>Input control</source>
+        <translation>Eingabesteuerung</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="208"/>
+        <source>Wrap</source>
+        <translation>Umbrechen</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="215"/>
+        <source>Terminal</source>
+        <translation>Terminal</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="235"/>
+        <source>Communication control</source>
+        <translation>Kommunikationssteuerung</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="251"/>
+        <source>Send</source>
+        <translation>Senden</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="260"/>
         <location filename="../../src/page/page.ui" line="267"/>
         <source>Text format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="122"/>
-        <source>Rx</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="129"/>
-        <source>Tx</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="136"/>
-        <source>Date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="143"/>
-        <source>Flag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="150"/>
-        <source>Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="157"/>
-        <source>Ms</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="63"/>
-        <location filename="../../src/page/page.cpp" line="521"/>
-        <source>Open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="177"/>
-        <source>Output control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="199"/>
-        <source>Input control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="235"/>
-        <source>Communication control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="47"/>
-        <source>Cycle interval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="208"/>
-        <source>Wrap</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="215"/>
-        <source>Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Textformat</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="288"/>
         <source>IO</source>
-        <translation type="unfinished"></translation>
+        <translation>Ein-/Ausgabe</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="335"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabe</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="498"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabe</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="505"/>
         <source>Preset data list</source>
-        <translation type="unfinished"></translation>
+        <translation>Vordefinierte Datenliste</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="547"/>
         <source>Presets</source>
-        <translation type="unfinished"></translation>
+        <translation>Voreinstellungen</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="552"/>
         <source>Emitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Sender</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="557"/>
         <source>Responder</source>
-        <translation type="unfinished"></translation>
+        <translation>Antwortgeber</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="562"/>
         <source>Transfers</source>
-        <translation type="unfinished"></translation>
+        <translation>Übertragungen</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="363"/>
+        <location filename="../../src/page/page.cpp" line="364"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktivieren</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="512"/>
+        <location filename="../../src/page/page.cpp" line="521"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Schließen</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="528"/>
+        <location filename="../../src/page/page.cpp" line="537"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler aufgetreten</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="534"/>
+        <location filename="../../src/page/page.cpp" line="543"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Warnung</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="668"/>
+        <location filename="../../src/page/page.cpp" line="712"/>
         <source>[%1][%2][%3][%4]</source>
-        <translation type="unfinished"></translation>
+        <translation>[%1][%2][%3][%4]</translation>
     </message>
 </context>
 <context>
@@ -2996,18 +3023,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SocketUi</name>
     <message>
-        <location filename="../../src/device/socketui.ui" line="195"/>
-        <source>Channel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/device/socketui.ui" line="43"/>
         <source>Disconnect all clients</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="188"/>
-        <source>User name</source>
+        <location filename="../../src/device/socketui.ui" line="55"/>
+        <source>Write to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3016,13 +3038,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="148"/>
-        <source>Multicast IP</source>
+        <location filename="../../src/device/socketui.ui" line="79"/>
+        <source>Authentication</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="79"/>
-        <source>Authentication</source>
+        <location filename="../../src/device/socketui.ui" line="86"/>
+        <source>post/hello</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="102"/>
+        <source>Server port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="109"/>
+        <source>Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3041,18 +3073,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="202"/>
-        <source>Secure Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="109"/>
-        <source>Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="86"/>
-        <source>post/hello</source>
+        <location filename="../../src/device/socketui.ui" line="148"/>
+        <source>Multicast IP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3061,13 +3083,18 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="55"/>
-        <source>Write to</source>
+        <location filename="../../src/device/socketui.ui" line="188"/>
+        <source>User name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="102"/>
-        <source>Server port</source>
+        <location filename="../../src/device/socketui.ui" line="195"/>
+        <source>Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="202"/>
+        <source>Secure Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3209,31 +3236,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
-        <source>Preprocessing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
-        <source>Prefix</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
-        <source>Suffix</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
-        <source>Escape character</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
         <translation type="unfinished"></translation>
@@ -3261,6 +3263,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
+        <source>Preprocessing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
+        <source>Prefix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
+        <source>Suffix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
+        <source>Escape character</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
+        <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

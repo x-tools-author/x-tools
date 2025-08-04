@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US" sourcelanguage="en_US">
+<TS version="2.1" language="en_US">
 <context>
     <name>Application</name>
     <message>
         <location filename="../../src/application.cpp" line="282"/>
         <source>Transfer rx bytes with right page</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/application.cpp" line="287"/>
         <source>Transfer rx bytes with left page</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -282,7 +282,7 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
@@ -300,53 +300,53 @@
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="32"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="52"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="59"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="66"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="89"/>
         <source>010000000000</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Save Image</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <source>PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Failed to save image.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -354,37 +354,37 @@
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -503,16 +503,6 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="317"/>
-        <source>Stop</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/blecentralui.cpp" line="336"/>
-        <source>Error Occurred</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
         <source>Disnotify</source>
         <translation></translation>
@@ -530,6 +520,16 @@
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="193"/>
         <source>(No name)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/blecentralui.cpp" line="317"/>
+        <source>Stop</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/blecentralui.cpp" line="336"/>
+        <source>Error Occurred</source>
         <translation></translation>
     </message>
 </context>
@@ -1217,17 +1217,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="18"/>
         <source>Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="20"/>
         <source>Frame Serial Number</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="21"/>
         <source>XYModem Sender</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1283,12 +1283,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="204"/>
         <source>Import Data from Excel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="235"/>
         <source>Export Data to Excel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1296,73 +1296,73 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="58"/>
         <source>Data type</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="68"/>
         <source>Legend</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="75"/>
         <source>Cache points</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="139"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="54"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1370,7 +1370,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localserver.cpp" line="90"/>
         <source>Client</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1378,17 +1378,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localserverui.ui" line="32"/>
         <source>Write to</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.ui" line="45"/>
         <source>Server name</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1396,7 +1396,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localsocketui.ui" line="32"/>
         <source>Server name</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1404,21 +1404,46 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
-        <source>Test data</source>
-        <translation type="unfinished"></translation>
+        <source>Test</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="42"/>
-        <source>Test</source>
-        <translation type="unfinished"></translation>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="45"/>
+        <source>Result data</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="65"/>
+        <source>Test data</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="82"/>
+        <source>Bypass</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="34"/>
+        <source>Default Lua Script</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="35"/>
+        <source>Checksum Lua Script</source>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="300"/>
+        <source>&amp;File</source>
+        <translation></translation>
+    </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="302"/>
         <source>New Window</source>
@@ -1472,108 +1497,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="552"/>
-        <source>&amp;Languages</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="577"/>
-        <source>&amp;View</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="629"/>
-        <source>Stays on Top</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="649"/>
-        <source>&amp;Help</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="650"/>
-        <source>About Qt</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="651"/>
-        <location filename="../../src/mainwindow.cpp" line="847"/>
-        <source>About</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="655"/>
-        <source>Screenshot</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
-        <source>Online Manual</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
-        <source>Third Party Open Source</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="835"/>
-        <source>Unknown</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="841"/>
-        <source>Commit hash</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="843"/>
-        <source>Commit time</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="844"/>
-        <source>Build Date</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="845"/>
-        <source>Copyright</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="846"/>
-        <source>All rights reserved.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
-        <source>Get Sources from Github</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
-        <source>Get Sources from Gitee</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="670"/>
-        <location filename="../../src/mainwindow.cpp" line="703"/>
-        <source>Release History</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
-        <source>Join in QQ Group</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/mainwindow.cpp" line="300"/>
-        <source>&amp;File</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="406"/>
         <source>Application Style</source>
         <translation></translation>
@@ -1619,9 +1542,76 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
+        <location filename="../../src/mainwindow.cpp" line="552"/>
+        <source>&amp;Languages</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="577"/>
+        <source>&amp;View</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="629"/>
+        <source>Stays on Top</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="649"/>
+        <source>&amp;Help</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="650"/>
+        <source>About Qt</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="651"/>
+        <location filename="../../src/mainwindow.cpp" line="847"/>
+        <source>About</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="655"/>
+        <source>Screenshot</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="../../src/mainwindow.cpp" line="664"/>
         <source>Buy from Store</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="670"/>
+        <location filename="../../src/mainwindow.cpp" line="703"/>
+        <source>Release History</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <source>Join in QQ Group</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <source>Online Manual</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <source>Get Sources from Github</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <source>Get Sources from Gitee</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <source>Third Party Open Source</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="723"/>
@@ -1652,6 +1642,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="793"/>
         <location filename="../../src/mainwindow.cpp" line="806"/>
         <source>Json Files (*.json)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="835"/>
+        <source>Unknown</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="841"/>
+        <source>Commit hash</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="843"/>
+        <source>Commit time</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="844"/>
+        <source>Build Date</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="845"/>
+        <source>Copyright</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="846"/>
+        <source>All rights reserved.</source>
         <translation></translation>
     </message>
 </context>
@@ -1707,8 +1727,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ModbusAssistant</name>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="235"/>
-        <source>Device Operations</source>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="49"/>
+        <source>Console</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="90"/>
+        <source>Server Register</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="125"/>
+        <source>Send</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="141"/>
+        <source>Custom Protocol Data Unit</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="154"/>
+        <source>Client Registers</source>
         <translation></translation>
     </message>
     <message>
@@ -1727,33 +1767,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="49"/>
-        <source>Console</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="154"/>
-        <source>Client Registers</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="141"/>
-        <source>Custom Protocol Data Unit</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="125"/>
-        <source>Send</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="90"/>
-        <source>Server Register</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="286"/>
-        <source>Network Settings</source>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="235"/>
+        <source>Device Operations</source>
         <translation></translation>
     </message>
     <message>
@@ -1763,78 +1778,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="286"/>
+        <source>Network Settings</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="306"/>
         <source>Port</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="617"/>
-        <source>Start address</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="560"/>
-        <source>Target address</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="679"/>
-        <source>Timeout</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="604"/>
-        <source>Address number</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="569"/>
-        <source>Read</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="576"/>
-        <source>Write</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="666"/>
-        <source>Repeat times</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="692"/>
-        <source>Client Parameters</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="717"/>
-        <source>Input Control(address and value)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="732"/>
-        <source>Input format</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="591"/>
-        <source>Function code</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="370"/>
-        <source>Serial Port Settings</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="357"/>
-        <source>Data bits</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="409"/>
-        <source>Port name</source>
         <translation></translation>
     </message>
     <message>
@@ -1843,13 +1793,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="425"/>
-        <source>Stop bits</source>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="357"/>
+        <source>Data bits</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="370"/>
+        <source>Serial Port Settings</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="390"/>
         <source>Parity</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="409"/>
+        <source>Port name</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="425"/>
+        <source>Stop bits</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="450"/>
+        <source>Device busy</source>
         <translation></translation>
     </message>
     <message>
@@ -1868,8 +1838,58 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="450"/>
-        <source>Device busy</source>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="560"/>
+        <source>Target address</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="569"/>
+        <source>Read</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="576"/>
+        <source>Write</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="591"/>
+        <source>Function code</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="604"/>
+        <source>Address number</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="617"/>
+        <source>Start address</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="666"/>
+        <source>Repeat times</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="679"/>
+        <source>Timeout</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="692"/>
+        <source>Client Parameters</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="717"/>
+        <source>Input Control(address and value)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="732"/>
+        <source>Input format</source>
         <translation></translation>
     </message>
     <message>
@@ -1920,42 +1940,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
         <source>ReadCoils</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
         <source>ReadDiscreteInputs</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
         <source>ReadHoldingRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
         <source>ReadInputRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
         <source>WriteSingleCoil</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
         <source>WriteSingleRegister</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
         <source>WriteMultipleCoils</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
         <source>WriteMultipleRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
@@ -2080,27 +2100,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="23"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="24"/>
         <source>Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
         <source>Line Chart</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
         <source>Bar Chart</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
         <source>XY-Modem Receiver</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2134,14 +2154,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Page</name>
     <message>
-        <location filename="../../src/page/page.ui" line="177"/>
-        <source>Output control</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="260"/>
-        <location filename="../../src/page/page.ui" line="267"/>
-        <source>Text format</source>
+        <location filename="../../src/page/page.ui" line="47"/>
+        <source>Cycle interval</source>
         <translation></translation>
     </message>
     <message>
@@ -2153,28 +2167,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="63"/>
-        <location filename="../../src/page/page.cpp" line="521"/>
+        <location filename="../../src/page/page.cpp" line="530"/>
         <source>Open</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="47"/>
-        <source>Cycle interval</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="199"/>
-        <source>Input control</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="251"/>
-        <source>Send</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="235"/>
-        <source>Communication control</source>
+        <location filename="../../src/page/page.ui" line="81"/>
+        <source>Clear</source>
         <translation></translation>
     </message>
     <message>
@@ -2208,19 +2207,40 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="81"/>
-        <source>Clear</source>
+        <location filename="../../src/page/page.ui" line="177"/>
+        <source>Output control</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="199"/>
+        <source>Input control</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="208"/>
         <source>Wrap</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="215"/>
         <source>Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="235"/>
+        <source>Communication control</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="251"/>
+        <source>Send</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="260"/>
+        <location filename="../../src/page/page.ui" line="267"/>
+        <source>Text format</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="288"/>
@@ -2240,7 +2260,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.ui" line="505"/>
         <source>Preset data list</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="547"/>
@@ -2263,27 +2283,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="363"/>
+        <location filename="../../src/page/page.cpp" line="364"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="512"/>
+        <location filename="../../src/page/page.cpp" line="521"/>
         <source>Close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="528"/>
+        <location filename="../../src/page/page.cpp" line="537"/>
         <source>Error Occurred</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="534"/>
+        <location filename="../../src/page/page.cpp" line="543"/>
         <source>Warning</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="668"/>
+        <location filename="../../src/page/page.cpp" line="712"/>
         <source>[%1][%2][%3][%4]</source>
         <translation></translation>
     </message>
@@ -2293,12 +2313,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/common/panelmanager.cpp" line="24"/>
         <source>Panels</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/panelmanager.cpp" line="27"/>
         <source>Hide/Show Panels</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2447,21 +2467,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="557"/>
-        <location filename="../../src/common/xtools.cpp" line="993"/>
-        <location filename="../../src/common/xtools.cpp" line="995"/>
-        <source>Text</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="180"/>
-        <location filename="../../src/common/xtools.cpp" line="559"/>
-        <location filename="../../src/common/xtools.cpp" line="989"/>
-        <location filename="../../src/common/xtools.cpp" line="991"/>
-        <source>Binary</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../../src/common/xtools.cpp" line="97"/>
         <source>Serial Port</source>
         <translation></translation>
@@ -2489,12 +2494,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="107"/>
         <source>UDP Multicast</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="109"/>
         <source>UDP Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="111"/>
@@ -2519,16 +2524,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="119"/>
         <source>Local Socket</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="121"/>
         <source>Local Server</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="123"/>
         <source>Charts Test</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="180"/>
+        <location filename="../../src/common/xtools.cpp" line="559"/>
+        <location filename="../../src/common/xtools.cpp" line="989"/>
+        <location filename="../../src/common/xtools.cpp" line="991"/>
+        <source>Binary</source>
         <translation></translation>
     </message>
     <message>
@@ -2549,7 +2562,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="188"/>
         <source>Hexadecimal(No Space)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="190"/>
@@ -2559,6 +2572,21 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="192"/>
         <source>UTF-8</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="454"/>
+        <location filename="../../src/common/xtools.cpp" line="516"/>
+        <location filename="../../src/common/xtools.cpp" line="826"/>
+        <location filename="../../src/common/xtools.cpp" line="844"/>
+        <source>None</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xtools.cpp" line="557"/>
+        <location filename="../../src/common/xtools.cpp" line="993"/>
+        <location filename="../../src/common/xtools.cpp" line="995"/>
+        <source>Text</source>
         <translation></translation>
     </message>
     <message>
@@ -2642,6 +2670,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
+        <location filename="../../src/main.cpp" line="20"/>
+        <source>Application is booting...</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>System</source>
         <translation></translation>
@@ -2669,19 +2702,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="457"/>
         <source>Don&apos;t round</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/common/xtools.cpp" line="454"/>
-        <location filename="../../src/common/xtools.cpp" line="516"/>
-        <location filename="../../src/common/xtools.cpp" line="826"/>
-        <location filename="../../src/common/xtools.cpp" line="844"/>
-        <source>None</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/main.cpp" line="20"/>
-        <source>Application is booting...</source>
         <translation></translation>
     </message>
 </context>
@@ -2767,47 +2787,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="52"/>
         <source>Search text</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="59"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="82"/>
         <source>Regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
         <source>Could not find any matches.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="151"/>
         <source>Found %1 matches.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="190"/>
         <source>Line %1:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="224"/>
         <source>Search results:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2900,18 +2920,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPortUi</name>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="117"/>
-        <source>Parity</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/serialportui.ui" line="101"/>
-        <source>Port name</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../../src/device/serialportui.ui" line="38"/>
         <source>Baud rate</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/serialportui.ui" line="58"/>
+        <source>Flow control</source>
         <translation></translation>
     </message>
     <message>
@@ -2922,7 +2937,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/serialportui.ui" line="85"/>
         <source>Ignored busy device</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/serialportui.ui" line="101"/>
+        <source>Port name</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/serialportui.ui" line="117"/>
+        <source>Parity</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="130"/>
@@ -2932,11 +2957,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/serialportui.ui" line="162"/>
         <source>Optimized frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/serialportui.ui" line="58"/>
-        <source>Flow control</source>
         <translation></translation>
     </message>
 </context>
@@ -2996,13 +3016,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SocketUi</name>
     <message>
-        <location filename="../../src/device/socketui.ui" line="171"/>
-        <source>Server IP</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="102"/>
-        <source>Server port</source>
+        <location filename="../../src/device/socketui.ui" line="43"/>
+        <source>Disconnect all clients</source>
         <translation></translation>
     </message>
     <message>
@@ -3011,8 +3026,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="43"/>
-        <source>Disconnect all clients</source>
+        <location filename="../../src/device/socketui.ui" line="62"/>
+        <source>Multicast Port</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="79"/>
+        <source>Authentication</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="86"/>
+        <source>post/hello</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="102"/>
+        <source>Server port</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="109"/>
+        <source>Path</source>
         <translation></translation>
     </message>
     <message>
@@ -3026,14 +3061,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="195"/>
-        <source>Channel</source>
+        <location filename="../../src/device/socketui.ui" line="134"/>
+        <source>Password</source>
         <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="202"/>
-        <source>Secure Mode</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="148"/>
@@ -3041,23 +3071,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="109"/>
-        <source>Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="86"/>
-        <source>post/hello</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="79"/>
-        <source>Authentication</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="62"/>
-        <source>Multicast Port</source>
+        <location filename="../../src/device/socketui.ui" line="171"/>
+        <source>Server IP</source>
         <translation></translation>
     </message>
     <message>
@@ -3066,8 +3081,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="134"/>
-        <source>Password</source>
+        <location filename="../../src/device/socketui.ui" line="195"/>
+        <source>Channel</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="202"/>
+        <source>Secure Mode</source>
         <translation></translation>
     </message>
     <message>
@@ -3209,31 +3229,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
-        <source>OK</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
-        <source>Preprocessing</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
-        <source>Prefix</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
-        <source>Suffix</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
-        <source>Escape character</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
         <translation></translation>
@@ -3261,6 +3256,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
+        <source>Preprocessing</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
+        <source>Prefix</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
+        <source>Suffix</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
+        <source>Escape character</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
+        <source>OK</source>
         <translation></translation>
     </message>
     <message>
@@ -3325,7 +3345,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpbroadcast.cpp" line="64"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -3333,17 +3353,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpbroadcastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.ui" line="58"/>
         <source>Broadcast Port</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
         <source>All Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -3351,22 +3371,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="68"/>
         <source>Invalid network interface: %1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="75"/>
         <source>Network interface %1 does not support multicast</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="93"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="102"/>
         <source>Failed to join multicast group %1:%2: %3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -3374,22 +3394,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="55"/>
         <source>Multicast IP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="85"/>
         <source>Multicast Port</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="92"/>
         <source>Multicast loopback</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

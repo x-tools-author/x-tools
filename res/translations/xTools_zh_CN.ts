@@ -296,37 +296,6 @@
     </message>
 </context>
 <context>
-    <name>BarChartSettings</name>
-    <message>
-        <source>Data format</source>
-        <translation type="vanished">数据格式</translation>
-    </message>
-    <message>
-        <source>Channel</source>
-        <translation type="vanished">通道</translation>
-    </message>
-    <message>
-        <source>Color</source>
-        <translation type="vanished">颜色</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">名称</translation>
-    </message>
-    <message>
-        <source>Line</source>
-        <translation type="vanished">折线</translation>
-    </message>
-    <message>
-        <source>Spline</source>
-        <translation type="vanished">曲线</translation>
-    </message>
-    <message>
-        <source>Scatter</source>
-        <translation type="vanished">散点图</translation>
-    </message>
-</context>
-<context>
     <name>BarCodeAssistant</name>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
@@ -1314,76 +1283,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>LineChartSettings</name>
-    <message>
-        <source>Data type</source>
-        <translation type="vanished">数据类型</translation>
-    </message>
-    <message>
-        <source>Legend</source>
-        <translation type="vanished">显示图例</translation>
-    </message>
-    <message>
-        <source>Cache points</source>
-        <translation type="vanished">缓存点数</translation>
-    </message>
-    <message>
-        <source>Clear</source>
-        <translation type="vanished">清空</translation>
-    </message>
-    <message>
-        <source>Export</source>
-        <translation type="vanished">导出</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">导入</translation>
-    </message>
-    <message>
-        <source>Channel</source>
-        <translation type="vanished">通道</translation>
-    </message>
-    <message>
-        <source>Visible</source>
-        <translation type="vanished">可见</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="vanished">类型</translation>
-    </message>
-    <message>
-        <source>Color</source>
-        <translation type="vanished">颜色</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">名称</translation>
-    </message>
-    <message>
-        <source>Line</source>
-        <translation type="vanished">折线</translation>
-    </message>
-    <message>
-        <source>Spline</source>
-        <translation type="vanished">曲线</translation>
-    </message>
-    <message>
-        <source>Scatter</source>
-        <translation type="vanished">散点图</translation>
-    </message>
-</context>
-<context>
-    <name>LineChartView</name>
-    <message>
-        <source>Import Data from Excel</source>
-        <translation type="vanished">从Excel表格导入</translation>
-    </message>
-    <message>
-        <source>Export Data to Excel</source>
-        <translation type="vanished">导出至Excel表格</translation>
-    </message>
-</context>
-<context>
     <name>LinePanel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="204"/>
@@ -1512,14 +1411,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="45"/>
+        <source>Result data</source>
+        <translation>测试结果</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="65"/>
         <source>Test data</source>
         <translation>测试数据</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="42"/>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="82"/>
+        <source>Bypass</source>
+        <translation>禁用脚本</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
         <source>Test</source>
         <translation>测试</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="34"/>
+        <source>Default Lua Script</source>
+        <translation>默认Lua脚本</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="35"/>
+        <source>Checksum Lua Script</source>
+        <translation>和校验(SUM8)</translation>
     </message>
 </context>
 <context>
@@ -2338,7 +2257,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="63"/>
-        <location filename="../../src/page/page.cpp" line="521"/>
+        <location filename="../../src/page/page.cpp" line="530"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -2452,7 +2371,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="363"/>
+        <location filename="../../src/page/page.cpp" line="364"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
@@ -2485,22 +2404,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="512"/>
+        <location filename="../../src/page/page.cpp" line="521"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="528"/>
+        <location filename="../../src/page/page.cpp" line="537"/>
         <source>Error Occurred</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="534"/>
+        <location filename="../../src/page/page.cpp" line="543"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="668"/>
+        <location filename="../../src/page/page.cpp" line="712"/>
         <source>[%1][%2][%3][%4]</source>
         <translation></translation>
     </message>
@@ -2941,101 +2860,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="92"/>
         <source>PNG Images (*.png);;JPG Images (*.jpg)</source>
         <translation>PNG (*.png);;JPG (*.jpg)</translation>
-    </message>
-</context>
-<context>
-    <name>QssMgr</name>
-    <message>
-        <source>Dark Amber</source>
-        <translation type="vanished">深色-黄褐色</translation>
-    </message>
-    <message>
-        <source>Dark Blue</source>
-        <translation type="vanished">深色-蓝色</translation>
-    </message>
-    <message>
-        <source>Dark Cyan</source>
-        <translation type="vanished">深色-青色</translation>
-    </message>
-    <message>
-        <source>Dark Light Green</source>
-        <translation type="vanished">深色-浅绿色</translation>
-    </message>
-    <message>
-        <source>Dark Pink</source>
-        <translation type="vanished">深色-粉红色</translation>
-    </message>
-    <message>
-        <source>Dark Purple</source>
-        <translation type="vanished">深色-紫色</translation>
-    </message>
-    <message>
-        <source>Dark Red</source>
-        <translation type="vanished">深色-红色</translation>
-    </message>
-    <message>
-        <source>Dark Teal</source>
-        <translation type="vanished">深色-蓝绿色</translation>
-    </message>
-    <message>
-        <source>Dark Yellow</source>
-        <translation type="vanished">深色-黄色</translation>
-    </message>
-    <message>
-        <source>Light Amber</source>
-        <translation type="vanished">浅色-黄褐色</translation>
-    </message>
-    <message>
-        <source>Light Blue</source>
-        <translation type="vanished">浅色-蓝色</translation>
-    </message>
-    <message>
-        <source>Light Cyan</source>
-        <translation type="vanished">浅色-青色</translation>
-    </message>
-    <message>
-        <source>Light Cyan(500)</source>
-        <translation type="vanished">浅色-青色（500）</translation>
-    </message>
-    <message>
-        <source>Light Light Green</source>
-        <translation type="vanished">浅色-浅绿色</translation>
-    </message>
-    <message>
-        <source>Light Pink</source>
-        <translation type="vanished">浅色-粉红色</translation>
-    </message>
-    <message>
-        <source>Light Purple</source>
-        <translation type="vanished">浅色-紫色</translation>
-    </message>
-    <message>
-        <source>Light Red</source>
-        <translation type="vanished">浅色-红色</translation>
-    </message>
-    <message>
-        <source>Light Teal</source>
-        <translation type="vanished">浅色-蓝绿色</translation>
-    </message>
-    <message>
-        <source>Light Yellow</source>
-        <translation type="vanished">浅色-黄色</translation>
-    </message>
-    <message>
-        <source>Application Stylesheet</source>
-        <translation type="vanished">应用样式</translation>
-    </message>
-    <message>
-        <source>Enable Stylesheet</source>
-        <translation type="vanished">允许自定义样式</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Please enable stylesheet first!</source>
-        <translation type="vanished">请使能自定义样式后重试！</translation>
     </message>
 </context>
 <context>

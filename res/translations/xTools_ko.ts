@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ko">
+<TS version="2.1" language="ko_KR">
 <context>
     <name>Application</name>
     <message>
@@ -1408,12 +1408,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
+        <source>Test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="45"/>
+        <source>Result data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="65"/>
         <source>Test data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="42"/>
-        <source>Test</source>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="82"/>
+        <source>Bypass</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="34"/>
+        <source>Default Lua Script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="35"/>
+        <source>Checksum Lua Script</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2134,6 +2154,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Page</name>
     <message>
+        <location filename="../../src/page/page.ui" line="47"/>
+        <source>Cycle interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/page/page.ui" line="56"/>
         <location filename="../../src/page/page.ui" line="74"/>
         <location filename="../../src/page/page.ui" line="244"/>
@@ -2141,19 +2166,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="251"/>
-        <source>Send</source>
+        <location filename="../../src/page/page.ui" line="63"/>
+        <location filename="../../src/page/page.cpp" line="530"/>
+        <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="81"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="260"/>
-        <location filename="../../src/page/page.ui" line="267"/>
-        <source>Text format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2187,12 +2207,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="63"/>
-        <location filename="../../src/page/page.cpp" line="521"/>
-        <source>Open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/page/page.ui" line="177"/>
         <source>Output control</source>
         <translation type="unfinished"></translation>
@@ -2203,16 +2217,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="235"/>
-        <source>Communication control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/page.ui" line="47"/>
-        <source>Cycle interval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/page/page.ui" line="208"/>
         <source>Wrap</source>
         <translation type="unfinished"></translation>
@@ -2220,6 +2224,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.ui" line="215"/>
         <source>Terminal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="235"/>
+        <source>Communication control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="251"/>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.ui" line="260"/>
+        <location filename="../../src/page/page.ui" line="267"/>
+        <source>Text format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2263,27 +2283,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="363"/>
+        <location filename="../../src/page/page.cpp" line="364"/>
         <source>Disable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="512"/>
+        <location filename="../../src/page/page.cpp" line="521"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="528"/>
+        <location filename="../../src/page/page.cpp" line="537"/>
         <source>Error Occurred</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="534"/>
+        <location filename="../../src/page/page.cpp" line="543"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="668"/>
+        <location filename="../../src/page/page.cpp" line="712"/>
         <source>[%1][%2][%3][%4]</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2996,18 +3016,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SocketUi</name>
     <message>
-        <location filename="../../src/device/socketui.ui" line="195"/>
-        <source>Channel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/device/socketui.ui" line="43"/>
         <source>Disconnect all clients</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="188"/>
-        <source>User name</source>
+        <location filename="../../src/device/socketui.ui" line="55"/>
+        <source>Write to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3016,13 +3031,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="148"/>
-        <source>Multicast IP</source>
+        <location filename="../../src/device/socketui.ui" line="79"/>
+        <source>Authentication</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="79"/>
-        <source>Authentication</source>
+        <location filename="../../src/device/socketui.ui" line="86"/>
+        <source>post/hello</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="102"/>
+        <source>Server port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="109"/>
+        <source>Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3041,18 +3066,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="202"/>
-        <source>Secure Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="109"/>
-        <source>Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/device/socketui.ui" line="86"/>
-        <source>post/hello</source>
+        <location filename="../../src/device/socketui.ui" line="148"/>
+        <source>Multicast IP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3061,13 +3076,18 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="55"/>
-        <source>Write to</source>
+        <location filename="../../src/device/socketui.ui" line="188"/>
+        <source>User name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="102"/>
-        <source>Server port</source>
+        <location filename="../../src/device/socketui.ui" line="195"/>
+        <source>Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/socketui.ui" line="202"/>
+        <source>Secure Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3209,31 +3229,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
-        <source>Preprocessing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
-        <source>Prefix</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
-        <source>Suffix</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
-        <source>Escape character</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
         <translation type="unfinished"></translation>
@@ -3261,6 +3256,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
+        <source>Preprocessing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
+        <source>Prefix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
+        <source>Suffix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
+        <source>Escape character</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
+        <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
