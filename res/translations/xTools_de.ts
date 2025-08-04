@@ -2320,12 +2320,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/common/panelmanager.cpp" line="24"/>
         <source>Panels</source>
-        <translation type="unfinished"></translation>
+        <translation>Panels</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/panelmanager.cpp" line="27"/>
         <source>Hide/Show Panels</source>
-        <translation type="unfinished"></translation>
+        <translation>Panels verstecken/anzeigen</translation>
     </message>
 </context>
 <context>
@@ -2333,119 +2333,119 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="156"/>
         <source>Total: --, Active: --, Finished: --, Remain: --</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesamt: --, Aktiv: --, Abgeschlossen: --, Verbleibend: --</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
         <source>Target Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Zieladresse</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
         <source>Online Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Online-Status</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
         <source>Comparing</source>
-        <translation type="unfinished"></translation>
+        <translation>Vergleichen</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Host Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostname</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="185"/>
         <source>Start scan</source>
-        <translation type="unfinished"></translation>
+        <translation>Scan starten</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="193"/>
         <source>Pause scan</source>
-        <translation type="unfinished"></translation>
+        <translation>Scan pausieren</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="201"/>
         <source>Stop scan</source>
-        <translation type="unfinished"></translation>
+        <translation>Scan stoppen</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="214"/>
         <source>Start address</source>
-        <translation type="unfinished"></translation>
+        <translation>Startadresse</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="224"/>
         <source>End address</source>
-        <translation type="unfinished"></translation>
+        <translation>Endadresse</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="235"/>
         <source>Timeout(S)</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeitüberschreitung (S)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="254"/>
         <source>Show all</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle anzeigen</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="255"/>
         <source>Show online</source>
-        <translation type="unfinished"></translation>
+        <translation>Online anzeigen</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="386"/>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="401"/>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="410"/>
         <source>IP Error</source>
-        <translation type="unfinished"></translation>
+        <translation>IP-Fehler</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
         <source>IP settings error, the start ip and end ip must be set, please check and try again. </source>
-        <translation type="unfinished"></translation>
+        <translation>IP-Einstellungsfehler: Start-IP und End-IP müssen gesetzt werden, bitte überprüfen und erneut versuchen. </translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
         <source>IP settings error, the start ip and end ip must be in the same network segment, please check and try again. </source>
-        <translation type="unfinished"></translation>
+        <translation>IP-Einstellungsfehler: Start-IP und End-IP müssen im gleichen Netzwerksegment liegen, bitte überprüfen und erneut versuchen. </translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
         <source>IP settings error, the start ip must be less than the end ip, please check and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>IP-Einstellungsfehler: Die Start-IP muss kleiner als die End-IP sein, bitte überprüfen und erneut versuchen.</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="457"/>
         <source>Total：%1，Active：%2，Finished：%3，Remain：%4</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesamt: %1, Aktiv: %2, Abgeschlossen: %3, Verbleibend: %4</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="516"/>
         <source>Scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>Scannen</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
         <source>Online</source>
-        <translation type="unfinished"></translation>
+        <translation>Online</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
         <source>Offline</source>
-        <translation type="unfinished"></translation>
+        <translation>Offline</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="564"/>
         <source>Scanning Finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Scan abgeschlossen</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
         <source>Scanning finished, you can screen out the result by the toolbar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Scan abgeschlossen, Sie können das Ergebnis über die Symbolleiste filtern.</translation>
     </message>
 </context>
 <context>
@@ -2453,17 +2453,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="119"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>Demo</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="151"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Daten</translation>
     </message>
 </context>
 <context>
@@ -2471,77 +2471,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/crc.cpp" line="84"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Unbekannt</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="97"/>
         <source>Serial Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Serieller Port</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="99"/>
         <source>BLE Central</source>
-        <translation type="unfinished"></translation>
+        <translation>BLE-Zentrale</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="101"/>
         <source>BLE Peripheral</source>
-        <translation type="unfinished"></translation>
+        <translation>BLE-Peripherie</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="103"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP-Client</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="105"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP-Server</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="107"/>
         <source>UDP Multicast</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP-Multicast</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="109"/>
         <source>UDP Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP-Broadcast</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="111"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-Client</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="113"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-Server</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="115"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket-Client</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="117"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket-Server</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="119"/>
         <source>Local Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokaler Socket</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="121"/>
         <source>Local Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokaler Server</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="123"/>
         <source>Charts Test</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagramm-Test</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="180"/>
@@ -2549,37 +2549,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="989"/>
         <location filename="../../src/common/xtools.cpp" line="991"/>
         <source>Binary</source>
-        <translation type="unfinished"></translation>
+        <translation>Binär</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="182"/>
         <source>Octal</source>
-        <translation type="unfinished"></translation>
+        <translation>Oktal</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="184"/>
         <source>Decimal</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezimal</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="186"/>
         <source>Hexadecimal</source>
-        <translation type="unfinished"></translation>
+        <translation>Hexadezimal</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="188"/>
         <source>Hexadecimal(No Space)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hexadezimal (ohne Leerzeichen)</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="190"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="192"/>
         <source>UTF-8</source>
-        <translation type="unfinished"></translation>
+        <translation>UTF-8</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="454"/>
@@ -2587,129 +2587,129 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="826"/>
         <location filename="../../src/common/xtools.cpp" line="844"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="557"/>
         <location filename="../../src/common/xtools.cpp" line="993"/>
         <location filename="../../src/common/xtools.cpp" line="995"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="594"/>
         <source>Echo</source>
-        <translation type="unfinished"></translation>
+        <translation>Echo</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="595"/>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>Immer</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="596"/>
         <source>Input Equal Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabe gleich Referenz</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="597"/>
         <source>Input Contain Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabe enthält Referenz</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="599"/>
         <source>Input Does not Contain Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabe enthält nicht Referenz</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="827"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerade</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="828"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungerade</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="829"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Leerzeichen</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="830"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
+        <translation>Markierung</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="846"/>
         <source>RTS/CTS</source>
-        <translation type="unfinished"></translation>
+        <translation>RTS/CTS</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="847"/>
         <source>X-ON/X-OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>X-ON/X-OFF</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="849"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>Hardware</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="850"/>
         <source>Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Software</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="954"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktiviert</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="956"/>
         <source>Bidirectional</source>
-        <translation type="unfinished"></translation>
+        <translation>Bidirektional</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="958"/>
         <source>Unidirectional</source>
-        <translation type="unfinished"></translation>
+        <translation>Unidirektional</translation>
     </message>
     <message>
         <location filename="../../src/main.cpp" line="20"/>
         <source>Application is booting...</source>
-        <translation type="unfinished"></translation>
+        <translation>Anwendung startet...</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>System</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="453"/>
         <source>Round up for .5 and above</source>
-        <translation type="unfinished"></translation>
+        <translation>Bei 0,5 und darüber aufrunden</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Always round up</source>
-        <translation type="unfinished"></translation>
+        <translation>Immer aufrunden</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="455"/>
         <source>Always round down</source>
-        <translation type="unfinished"></translation>
+        <translation>Immer abrunden</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="456"/>
         <source>Round up for .75 and above</source>
-        <translation type="unfinished"></translation>
+        <translation>Bei 0,75 und darüber aufrunden</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="457"/>
         <source>Don&apos;t round</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht runden</translation>
     </message>
 </context>
 <context>
@@ -2717,32 +2717,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="20"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportieren</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="37"/>
         <source>Generate</source>
-        <translation type="unfinished"></translation>
+        <translation>Generieren</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Warnung</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
         <source>Please input the data to generate QR code.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte geben Sie die Daten zur QR-Code-Generierung ein.</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="90"/>
         <source>Save QR Code Image</source>
-        <translation type="unfinished"></translation>
+        <translation>QR-Code-Bild speichern</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="92"/>
         <source>PNG Images (*.png);;JPG Images (*.jpg)</source>
-        <translation type="unfinished"></translation>
+        <translation>PNG-Bilder (*.png);;JPG-Bilder (*.jpg)</translation>
     </message>
 </context>
 <context>
@@ -2751,42 +2751,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/responder/respondermodel.cpp" line="107"/>
         <location filename="../../src/page/responder/respondermodel.cpp" line="222"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivieren</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="107"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktivieren</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="185"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>Demo</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="224"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="226"/>
         <source>Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Option</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="228"/>
         <source>Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzögerung</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="230"/>
         <source>Reference Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Referenzdaten</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="232"/>
         <source>Response Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Antwortdaten</translation>
     </message>
 </context>
 <context>
@@ -2794,47 +2794,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="52"/>
         <source>Search text</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchtext</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="59"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchen</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="82"/>
         <source>Regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulärer Ausdruck</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Groß-/Kleinschreibung beachten</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation type="unfinished"></translation>
+        <translation>Ganzes Wort</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
         <source>Could not find any matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Übereinstimmungen gefunden.</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="151"/>
         <source>Found %1 matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Übereinstimmungen gefunden.</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="190"/>
         <source>Line %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeile %1:</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="224"/>
         <source>Search results:</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchergebnisse:</translation>
     </message>
 </context>
 <context>
@@ -2842,7 +2842,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/serialport.cpp" line="49"/>
         <source>Failed to open serial port: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Öffnen des seriellen Ports: %1</translation>
     </message>
 </context>
 <context>
@@ -2850,78 +2850,78 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="106"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungerade</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="108"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerade</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="110"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
+        <translation>Markierung</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="112"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Leerzeichen</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="114"/>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="122"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="118"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>Hardware</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="120"/>
         <source>Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Software</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="225"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Übertragungsoption</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="227"/>
         <source>Port Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Port-Name</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="229"/>
         <source>Baud Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Baudrate</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="231"/>
         <source>Data Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbits</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="233"/>
         <source>Stop Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Stoppbits</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="235"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Parität</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="237"/>
         <source>Flow Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Flusskontrolle</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="239"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
 </context>
 <context>
@@ -2929,42 +2929,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/serialportui.ui" line="38"/>
         <source>Baud rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Baudrate</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="58"/>
         <source>Flow control</source>
-        <translation type="unfinished"></translation>
+        <translation>Flusskontrolle</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="71"/>
         <source>Stop bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Stoppbits</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="85"/>
         <source>Ignored busy device</source>
-        <translation type="unfinished"></translation>
+        <translation>Belegte Geräte ignorieren</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="101"/>
         <source>Port name</source>
-        <translation type="unfinished"></translation>
+        <translation>Port-Name</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="117"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Parität</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="130"/>
         <source>Data bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbits</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="162"/>
         <source>Optimized frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Optimierter Rahmen</translation>
     </message>
 </context>
 <context>
@@ -2972,52 +2972,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivieren</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktivieren</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="190"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Übertragungsoption</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="192"/>
         <source>Server Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Server-Adresse</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="194"/>
         <source>Server Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Server-Port</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="196"/>
         <source>Data Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenkanal</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="198"/>
         <source>Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Authentifizierung</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="200"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="202"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="204"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
 </context>
 <context>
@@ -3025,82 +3025,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/socketui.ui" line="43"/>
         <source>Disconnect all clients</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Clients trennen</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="55"/>
         <source>Write to</source>
-        <translation type="unfinished"></translation>
+        <translation>Schreiben an</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="62"/>
         <source>Multicast Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Multicast-Port</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="79"/>
         <source>Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Authentifizierung</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="86"/>
         <source>post/hello</source>
-        <translation type="unfinished"></translation>
+        <translation>post/hello</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="102"/>
         <source>Server port</source>
-        <translation type="unfinished"></translation>
+        <translation>Server-Port</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="109"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Pfad</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="118"/>
         <source>Enable multicast</source>
-        <translation type="unfinished"></translation>
+        <translation>Multicast aktivieren</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="125"/>
         <source>Just multicast</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur Multicast</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="134"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="148"/>
         <source>Multicast IP</source>
-        <translation type="unfinished"></translation>
+        <translation>Multicast-IP</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="171"/>
         <source>Server IP</source>
-        <translation type="unfinished"></translation>
+        <translation>Server-IP</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="188"/>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="195"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="202"/>
         <source>Secure Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Sicherer Modus</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
         <source>All clients</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Clients</translation>
     </message>
 </context>
 <context>
@@ -3108,7 +3108,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/statistician.cpp" line="51"/>
         <source>%1 frames, %2 bytes, %3B/s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Frames, %2 Bytes, %3B/s</translation>
     </message>
 </context>
 <context>
@@ -3116,27 +3116,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="20"/>
         <source>Raw data</source>
-        <translation type="unfinished"></translation>
+        <translation>Rohdaten</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="64"/>
         <source>Input format</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabeformat</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="77"/>
         <source>Cooked data</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeitete Daten</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="100"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabeformat</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="110"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstellen</translation>
     </message>
 </context>
 <context>
@@ -3144,17 +3144,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="19"/>
         <source>xTools</source>
-        <translation type="unfinished"></translation>
+        <translation>xTools</translation>
     </message>
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="22"/>
         <source>Open main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Hauptfenster öffnen</translation>
     </message>
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="24"/>
         <source>Exit program</source>
-        <translation type="unfinished"></translation>
+        <translation>Programm beenden</translation>
     </message>
 </context>
 <context>
@@ -3162,65 +3162,65 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportieren</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="39"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="46"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Hinzufügen</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="56"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importieren</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="68"/>
         <source>Disable all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Elemente deaktivieren</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="77"/>
         <location filename="../../src/page/common/tableview.cpp" line="127"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="128"/>
         <source>Are you sure to clear all items?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sind Sie sicher, dass Sie alle Elemente löschen möchten?</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="143"/>
         <source>No Item be Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Kein Element ausgewählt</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="143"/>
         <source>Please select a item first!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte wählen Sie zuerst ein Element aus!</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="153"/>
         <location filename="../../src/page/common/tableview.cpp" line="181"/>
         <source>Import data</source>
-        <translation type="unfinished"></translation>
+        <translation>Daten importieren</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="155"/>
         <location filename="../../src/page/common/tableview.cpp" line="183"/>
         <source>JSON (*.json);;All (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON (*.json);;Alle (*)</translation>
     </message>
 </context>
 <context>
@@ -3228,77 +3228,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="14"/>
         <source>Data Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateneditor</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="20"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="33"/>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Algorithmus</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="43"/>
         <source>Start index</source>
-        <translation type="unfinished"></translation>
+        <translation>Startindex</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>End index</source>
-        <translation type="unfinished"></translation>
+        <translation>Endindex</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
         <source>Append</source>
-        <translation type="unfinished"></translation>
+        <translation>Anhängen</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
-        <translation type="unfinished"></translation>
+        <translation>Big Endian</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
         <source>Preprocessing</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorverarbeitung</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
         <source>Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Präfix</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
         <source>Suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Suffix</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
         <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation>Escape-Zeichen</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="155"/>
         <source>Payload</source>
-        <translation type="unfinished"></translation>
+        <translation>Nutzdaten</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Format</translation>
     </message>
 </context>
 <context>
@@ -3306,7 +3306,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/common/transfermodel.cpp" line="46"/>
         <source>Transfer %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Übertragung %1</translation>
     </message>
 </context>
 <context>
@@ -3314,37 +3314,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="30"/>
         <source>Serial Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Serielle Schnittstelle</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="36"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-Client</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="41"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-Server</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="46"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP-Client</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="51"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP-Server</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="57"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket-Client</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="62"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket-Server</translation>
     </message>
 </context>
 <context>
@@ -3352,7 +3352,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpbroadcast.cpp" line="64"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP-Socket konnte nicht gebunden werden: %1</translation>
     </message>
 </context>
 <context>
@@ -3360,17 +3360,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpbroadcastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="unfinished"></translation>
+        <translation>Netzwerkschnittstelle auswählen:</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.ui" line="58"/>
         <source>Broadcast Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-Port</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
         <source>All Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Schnittstellen</translation>
     </message>
 </context>
 <context>
@@ -3378,22 +3378,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="68"/>
         <source>Invalid network interface: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungültige Netzwerkschnittstelle: %1</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="75"/>
         <source>Network interface %1 does not support multicast</source>
-        <translation type="unfinished"></translation>
+        <translation>Netzwerkschnittstelle %1 unterstützt kein Multicast</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="93"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP-Socket konnte nicht gebunden werden: %1</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="102"/>
         <source>Failed to join multicast group %1:%2: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Multicast-Gruppe %1:%2 konnte nicht beigetreten werden: %3</translation>
     </message>
 </context>
 <context>
@@ -3401,22 +3401,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="unfinished"></translation>
+        <translation>Netzwerkschnittstelle auswählen:</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="55"/>
         <source>Multicast IP</source>
-        <translation type="unfinished"></translation>
+        <translation>Multicast-IP</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="85"/>
         <source>Multicast Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Multicast-Port</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="92"/>
         <source>Multicast loopback</source>
-        <translation type="unfinished"></translation>
+        <translation>Multicast-Loopback</translation>
     </message>
 </context>
 </TS>

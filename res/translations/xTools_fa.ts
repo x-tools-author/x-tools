@@ -6,12 +6,12 @@
     <message>
         <location filename="../../src/application.cpp" line="282"/>
         <source>Transfer rx bytes with right page</source>
-        <translation type="unfinished"></translation>
+        <translation>انتقال بایت‌های دریافتی با صفحه راست</translation>
     </message>
     <message>
         <location filename="../../src/application.cpp" line="287"/>
         <source>Transfer rx bytes with left page</source>
-        <translation type="unfinished"></translation>
+        <translation>انتقال بایت‌های دریافتی با صفحه چپ</translation>
     </message>
 </context>
 <context>
@@ -19,207 +19,207 @@
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.ui" line="26"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>فیلتر</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.ui" line="49"/>
         <source>Preserve case</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ حالت حروف</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Bin</source>
-        <translation type="unfinished"></translation>
+        <translation>باینری</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>هشتی</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>دهدهی</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation>هگزادسیمال</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>توضیحات</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="63"/>
         <source>NUL (NULL)</source>
-        <translation type="unfinished"></translation>
+        <translation>NUL (NULL)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="64"/>
         <source>SOH (Start Of Headling)</source>
-        <translation type="unfinished"></translation>
+        <translation>SOH (شروع سرعنوان)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="65"/>
         <source>STX (Start Of Text)</source>
-        <translation type="unfinished"></translation>
+        <translation>STX (شروع متن)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="66"/>
         <source>ETX (End Of Text)</source>
-        <translation type="unfinished"></translation>
+        <translation>ETX (پایان متن)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="67"/>
         <source>EOT (End Of Transmission)</source>
-        <translation type="unfinished"></translation>
+        <translation>EOT (پایان انتقال)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="68"/>
         <source>ENQ (Enquiry)</source>
-        <translation type="unfinished"></translation>
+        <translation>ENQ (پرس‌وجو)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="69"/>
         <source>ACK (Acknowledge)</source>
-        <translation type="unfinished"></translation>
+        <translation>ACK (تأیید)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="70"/>
         <source>BEL (Bell)</source>
-        <translation type="unfinished"></translation>
+        <translation>BEL (زنگ)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="71"/>
         <source>BS (Backspace)</source>
-        <translation type="unfinished"></translation>
+        <translation>BS (عقبگرد)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="72"/>
         <source>HT (Horizontal Tab)</source>
-        <translation type="unfinished"></translation>
+        <translation>HT (تب افقی)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="73"/>
         <source>LF/NL(Line Feed/New Line)</source>
-        <translation type="unfinished"></translation>
+        <translation>LF/NL (خط جدید)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="74"/>
         <source>VT (Vertical Tab)</source>
-        <translation type="unfinished"></translation>
+        <translation>VT (تب عمودی)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="75"/>
         <source>FF/NP (Form Feed/New Page)</source>
-        <translation type="unfinished"></translation>
+        <translation>FF/NP (خورد فرم/صفحه جدید)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="76"/>
         <source>CR (Carriage Return)</source>
-        <translation type="unfinished"></translation>
+        <translation>CR (بازگشت کریج)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="77"/>
         <source>SO (Shift Out)</source>
-        <translation type="unfinished"></translation>
+        <translation>SO (تغییر بیرون)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="78"/>
         <source>SI (Shift In)</source>
-        <translation type="unfinished"></translation>
+        <translation>SI (تغییر داخل)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="79"/>
         <source>DLE (Data Link Escape)</source>
-        <translation type="unfinished"></translation>
+        <translation>DLE (گریز لینک داده)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="80"/>
         <source>DC1/XON(Device Control 1/Transmission On)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC1/XON (کنترل دستگاه 1/انتقال روشن)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="81"/>
         <source>DC2 (Device Control 2)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC2 (کنترل دستگاه 2)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="82"/>
         <source>DC3/XOFF(Device Control 3/Transmission Off)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC3/XOFF (کنترل دستگاه 3/انتقال خاموش)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="83"/>
         <source>DC4 (Device Control 4)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC4 (کنترل دستگاه 4)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="84"/>
         <source>NAK (Negative Acknowledge)</source>
-        <translation type="unfinished"></translation>
+        <translation>NAK (عدم تأیید)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="85"/>
         <source>SYN (Synchronous Idle)</source>
-        <translation type="unfinished"></translation>
+        <translation>SYN (بیکار همزمان)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="86"/>
         <source>ETB (End of Transmission Block)</source>
-        <translation type="unfinished"></translation>
+        <translation>ETB (پایان بلوک انتقال)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="87"/>
         <source>CAN (Cancel)</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN (لغو)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="88"/>
         <source>EM (End of Medium)</source>
-        <translation type="unfinished"></translation>
+        <translation>EM (پایان رسانه)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="89"/>
         <source>SUB (Substitute)</source>
-        <translation type="unfinished"></translation>
+        <translation>SUB (جایگزین)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="90"/>
         <source>ESC (Escape)</source>
-        <translation type="unfinished"></translation>
+        <translation>ESC (گریز)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="91"/>
         <source>FS (File Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>FS (جداکننده فایل)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="92"/>
         <source>GS (Group Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>GS (جداکننده گروه)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="93"/>
         <source>RS (Record Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>RS (جداکننده رکورد)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="94"/>
         <source>US (Unit Separator)</source>
-        <translation type="unfinished"></translation>
+        <translation>US (جداکننده واحد)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="95"/>
         <source>(Space)</source>
-        <translation type="unfinished"></translation>
+        <translation>(فاصله)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="96"/>
         <source>DEL (Delete)</source>
-        <translation type="unfinished"></translation>
+        <translation>DEL (حذف)</translation>
     </message>
 </context>
 <context>
@@ -227,72 +227,72 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="44"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار CRC</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="46"/>
         <source>mDNS Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار mDNS</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
         <source>Ping Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار Ping</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="49"/>
         <source>ASCII Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار ASCII</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار Base64</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="51"/>
         <source>Number Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار اعداد</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
         <source>String Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار رشته</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار بررسی فایل</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار ادغام فایل</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
         <source>QR Code Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار کد QR</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار بارکد</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
         <source>CAN Bus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار باس CAN</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
         <source>Modbus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار Modbus</translation>
     </message>
 </context>
 <context>
@@ -300,53 +300,53 @@
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار CRC</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="32"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>بازخوانی</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="52"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="59"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>صادرات</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="66"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>داده</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="89"/>
         <source>010000000000</source>
-        <translation type="unfinished"></translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار بارکد</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Save Image</source>
-        <translation type="unfinished"></translation>
+        <translation>ذخیره تصویر</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <source>PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>تصویر PNG (*.png);;تصویر JPEG (*.jpg);;تصویر BMP (*.bmp)</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Failed to save image.</source>
-        <translation type="unfinished"></translation>
+        <translation>ذخیره تصویر ناموفق بود.</translation>
     </message>
 </context>
 <context>
@@ -354,37 +354,37 @@
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>فرمت داده</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>کانال</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>رنگ</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>نام</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>خط</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>اسپلاین</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>پراکنده</translation>
     </message>
 </context>
 <context>
@@ -392,42 +392,42 @@
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار Base64</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation type="unfinished"></translation>
+        <translation>متن ساده</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation type="unfinished"></translation>
+        <translation>متن رمزی</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>تصویر</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>رمزگشایی</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>رمزگذاری</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data error</source>
-        <translation type="unfinished"></translation>
+        <translation>خطای داده</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data can not convert image.</source>
-        <translation type="unfinished"></translation>
+        <translation>داده نمی‌تواند به تصویر تبدیل شود.</translation>
     </message>
 </context>
 <context>
@@ -435,12 +435,12 @@
     <message>
         <location filename="../../src/device/blecentral.cpp" line="92"/>
         <source>Characteristic does not support write</source>
-        <translation type="unfinished"></translation>
+        <translation>ویژگی از نوشتن پشتیبانی نمی‌کند</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentral.cpp" line="98"/>
         <source>Characteristic does not support write without response</source>
-        <translation type="unfinished"></translation>
+        <translation>ویژگی از نوشتن بدون پاسخ پشتیبانی نمی‌کند</translation>
     </message>
 </context>
 <context>
@@ -448,89 +448,89 @@
     <message>
         <location filename="../../src/device/blecentralui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="41"/>
         <source>Characteristic</source>
-        <translation type="unfinished"></translation>
+        <translation>ویژگی</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="61"/>
         <source>(Unsupported characteristic)</source>
-        <translation type="unfinished"></translation>
+        <translation>(ویژگی پشتیبانی نشده)</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="77"/>
         <source>BLE Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>دستگاه‌های BLE</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="87"/>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
         <source>Scan</source>
-        <translation type="unfinished"></translation>
+        <translation>اسکن</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="96"/>
         <location filename="../../src/device/blecentralui.cpp" line="125"/>
         <source>Notify</source>
-        <translation type="unfinished"></translation>
+        <translation>اعلان</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="103"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>خواندن</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="115"/>
         <source>Service scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>اسکن سرویس</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="150"/>
         <source>Write mode</source>
-        <translation type="unfinished"></translation>
+        <translation>حالت نوشتن</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="163"/>
         <source>Service</source>
-        <translation type="unfinished"></translation>
+        <translation>سرویس</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="170"/>
         <source>Device scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>اسکن دستگاه</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
         <source>Disnotify</source>
-        <translation type="unfinished"></translation>
+        <translation>عدم اعلان</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="135"/>
         <source>With Response</source>
-        <translation type="unfinished"></translation>
+        <translation>با پاسخ</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="140"/>
         <source>Without Response</source>
-        <translation type="unfinished"></translation>
+        <translation>بدون پاسخ</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="193"/>
         <source>(No name)</source>
-        <translation type="unfinished"></translation>
+        <translation>(بدون نام)</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="317"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>توقف</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="336"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>خطا رخ داد</translation>
     </message>
 </context>
 <context>
@@ -538,27 +538,27 @@
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="20"/>
         <source>Output control</source>
-        <translation type="unfinished"></translation>
+        <translation>کنترل خروجی</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="32"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>فرمت خروجی</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
         <source>Broadcast parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>پارامترهای پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="67"/>
         <source>Broadcast address</source>
-        <translation type="unfinished"></translation>
+        <translation>آدرس پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="80"/>
@@ -568,53 +568,53 @@
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="100"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>فرمت داده</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="119"/>
         <source>Broadcast prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>پیشوند پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="132"/>
         <source>Broadcast interval</source>
-        <translation type="unfinished"></translation>
+        <translation>فاصله پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="151"/>
         <source>Broadcast suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>پسوند پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="164"/>
         <source>Broadcast port</source>
-        <translation type="unfinished"></translation>
+        <translation>پورت پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="187"/>
         <source>Broadcast data</source>
-        <translation type="unfinished"></translation>
+        <translation>داده پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="194"/>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation>پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="223"/>
         <source>Information output</source>
-        <translation type="unfinished"></translation>
+        <translation>خروجی اطلاعات</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Terminate</source>
-        <translation type="unfinished"></translation>
+        <translation>خاتمه</translation>
     </message>
 </context>
 <context>
@@ -622,202 +622,202 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="14"/>
         <source>CANBus Studio</source>
-        <translation type="unfinished"></translation>
+        <translation>استودیو CANBus</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="38"/>
         <source>CAN Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>فریم CAN</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="57"/>
         <source>Extended format</source>
-        <translation type="unfinished"></translation>
+        <translation>فرمت گسترده</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="64"/>
         <source>Flexible data rate</source>
-        <translation type="unfinished"></translation>
+        <translation>نرخ داده انعطاف‌پذیر</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="71"/>
         <source>Frame ID</source>
-        <translation type="unfinished"></translation>
+        <translation>شناسه فریم</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="91"/>
         <source>Frame type</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع فریم</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="101"/>
         <source>Frame options</source>
-        <translation type="unfinished"></translation>
+        <translation>گزینه‌های فریم</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="114"/>
         <source>Bitrate switch</source>
-        <translation type="unfinished"></translation>
+        <translation>سوئیچ نرخ بیت</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="150"/>
         <source>Device Control</source>
-        <translation type="unfinished"></translation>
+        <translation>کنترل دستگاه</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="171"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>قطع اتصال</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="178"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>اتصال</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="192"/>
         <source>Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>پلاگین</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="221"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>نام</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="251"/>
         <source>Data View</source>
-        <translation type="unfinished"></translation>
+        <translation>نمای داده</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="295"/>
         <source>Specify Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>تعیین پیکربندی</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="323"/>
         <source>Error filter</source>
-        <translation type="unfinished"></translation>
+        <translation>فیلتر خطا</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="333"/>
         <source>Custom configurations</source>
-        <translation type="unfinished"></translation>
+        <translation>پیکربندی‌های سفارشی</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="346"/>
         <source>CAN FD</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN FD</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="373"/>
         <source>Loopback</source>
-        <translation type="unfinished"></translation>
+        <translation>حلقه برگشت</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="386"/>
         <source>Data bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>نرخ بیت داده</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="409"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>نرخ بیت</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="422"/>
         <source>Receive own</source>
-        <translation type="unfinished"></translation>
+        <translation>دریافت خود</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="451"/>
         <source>CAN Frame Payload</source>
-        <translation type="unfinished"></translation>
+        <translation>محتوای فریم CAN</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="489"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>ارسال</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
         <source>can0</source>
-        <translation type="unfinished"></translation>
+        <translation>can0</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="107"/>
         <source>DataFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>فریم داده</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
         <source>ErrorFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>فریم خطا</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
         <source>RemoteRequestFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>فریم درخواست راه دور</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="131"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation>هگزادسیمال</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="208"/>
         <source>Interface Name is Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>نام رابط خالی است</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface name is empty, please input the name then try again!</source>
-        <translation type="unfinished"></translation>
+        <translation>نام رابط خالی است، لطفاً نام را وارد کنید و دوباره تلاش کنید!</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>خطا رخ داد</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="232"/>
         <source>Connection Error</source>
-        <translation type="unfinished"></translation>
+        <translation>خطای اتصال</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
         <source>Connection error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>خطای اتصال: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="314"/>
         <source>Device is Not Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>دستگاه آماده نیست</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
         <source>Device is not ready, please connect the device then try angin!</source>
-        <translation type="unfinished"></translation>
+        <translation>دستگاه آماده نیست، لطفاً دستگاه را متصل کنید و دوباره تلاش کنید!</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="355"/>
         <source>Error Occure</source>
-        <translation type="unfinished"></translation>
+        <translation>خطا رخ داد</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="391"/>
         <source>unspecified</source>
-        <translation type="unfinished"></translation>
+        <translation>نامشخص</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="393"/>
         <source>false</source>
-        <translation type="unfinished"></translation>
+        <translation>نادرست</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
         <source>true</source>
-        <translation type="unfinished"></translation>
+        <translation>درست</translation>
     </message>
 </context>
 <context>
@@ -826,13 +826,13 @@
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="60"/>
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="63"/>
         <source>Binary</source>
-        <translation type="unfinished"></translation>
+        <translation>باینری</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="61"/>
         <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="64"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>متن</translation>
     </message>
 </context>
 <context>
@@ -840,7 +840,7 @@
     <message>
         <location filename="../../src/device/chartstest.cpp" line="30"/>
         <source>ChartsTest</source>
-        <translation type="unfinished"></translation>
+        <translation>تست نمودارها</translation>
     </message>
 </context>
 <context>
@@ -848,12 +848,12 @@
     <message>
         <location filename="../../src/device/chartstestui.ui" line="38"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>فرمت</translation>
     </message>
     <message>
         <location filename="../../src/device/chartstestui.ui" line="48"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>کانال‌ها</translation>
     </message>
 </context>
 <context>
@@ -861,88 +861,88 @@
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار CRC</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation type="unfinished"></translation>
+        <translation>مقدار Poly</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation type="unfinished"></translation>
+        <translation>مقدار اولیه</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="34"/>
         <location filename="../../src/tools/crc/crcassistant.ui" line="235"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>کپی</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="unfinished"></translation>
+        <translation>برای اطلاعات بیشتر درباره محاسبه crc، به http://www.ip33.com/crc.html مراجعه کنید (دوبار کلیک کنید)</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>معکوس ورودی</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>معکوس خروجی</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>محاسبه</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>پارامترها</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation type="unfinished"></translation>
+        <translation>مقدار XOR</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="unfinished"></translation>
+        <translation>بیت‌های بالا در سمت چپ و بیت‌های پایین در سمت راست</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="157"/>
         <source>HEX</source>
-        <translation type="unfinished"></translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation type="unfinished"></translation>
+        <translation>نتیجه (HEX)</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation type="unfinished"></translation>
+        <translation>مدل پارامتر</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="214"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>عرض</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="221"/>
@@ -959,17 +959,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="265"/>
         <source>Paloy</source>
-        <translation type="unfinished"></translation>
+        <translation>Poly</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="279"/>
         <source>Input data</source>
-        <translation type="unfinished"></translation>
+        <translation>داده ورودی</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="286"/>
         <source>Result(BIN)</source>
-        <translation type="unfinished"></translation>
+        <translation>نتیجه (BIN)</translation>
     </message>
 </context>
 <context>
@@ -977,53 +977,53 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/devicesettings.ui" line="22"/>
         <source>Save tx data</source>
-        <translation type="unfinished"></translation>
+        <translation>ذخیره داده‌های ارسالی</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="32"/>
         <source>Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>مرورگر</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="39"/>
         <source>Save millisecond</source>
-        <translation type="unfinished"></translation>
+        <translation>ذخیره میلی‌ثانیه</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="49"/>
         <source>Save rx data</source>
-        <translation type="unfinished"></translation>
+        <translation>ذخیره داده‌های دریافتی</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="59"/>
         <source>Save Date</source>
-        <translation type="unfinished"></translation>
+        <translation>ذخیره تاریخ</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="69"/>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
         <source>Save to file</source>
-        <translation type="unfinished"></translation>
+        <translation>ذخیره در فایل</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="76"/>
         <source>Save Time</source>
-        <translation type="unfinished"></translation>
+        <translation>ذخیره زمان</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="94"/>
         <source>Save format</source>
-        <translation type="unfinished"></translation>
+        <translation>فرمت ذخیره</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="104"/>
         <source>Max bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>حداکثر بایت</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
         <source>Text File(*.txt)</source>
-        <translation type="unfinished"></translation>
+        <translation>فایل متنی (*.txt)</translation>
     </message>
 </context>
 <context>
@@ -1032,32 +1032,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/emitter/emittermodel.cpp" line="92"/>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="185"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>فعال</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="92"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>غیرفعال</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="155"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>نمونه</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="187"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>توضیحات</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="189"/>
         <source>Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>فاصله</translation>
     </message>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="191"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>داده</translation>
     </message>
 </context>
 <context>
@@ -1065,58 +1065,58 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation type="unfinished"></translation>
+        <translation>نتیجه بزرگ</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation type="unfinished"></translation>
+        <translation>فایل بررسی شده</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation type="unfinished"></translation>
+        <translation>پیشرفت بررسی</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>الگوریتم بررسی</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation type="unfinished"></translation>
+        <translation>نتیجه بررسی</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>محاسبه</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>باز کردن</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار بررسی فایل</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
+        <translation>زمان باقی‌مانده</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
         <source>StopCalculating</source>
-        <translation type="unfinished"></translation>
+        <translation>توقف محاسبه</translation>
     </message>
 </context>
 <context>
@@ -1124,84 +1124,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="26"/>
         <source>File list</source>
-        <translation type="unfinished"></translation>
+        <translation>فهرست فایل</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="60"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>وارد کردن</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="74"/>
         <source>Up</source>
-        <translation type="unfinished"></translation>
+        <translation>بالا</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="81"/>
         <source>Down</source>
-        <translation type="unfinished"></translation>
+        <translation>پایین</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="88"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="95"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="102"/>
         <source>Merge</source>
-        <translation type="unfinished"></translation>
+        <translation>ادغام</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
         <source>Import Files</source>
-        <translation type="unfinished"></translation>
+        <translation>وارد کردن فایل‌ها</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="62"/>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="91"/>
         <source>Bin file(*.bin);;All file(*)</source>
-        <translation type="unfinished"></translation>
+        <translation>فایل باینری (*.bin);;همه فایل‌ها (*)</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="77"/>
         <source>Open File Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>باز کردن فایل ناموفق</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="78"/>
         <source>Open file(%1) failed:</source>
-        <translation type="unfinished"></translation>
+        <translation>باز کردن فایل (%1) ناموفق:</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="83"/>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="127"/>
         <source>Merge Files</source>
-        <translation type="unfinished"></translation>
+        <translation>ادغام فایل‌ها</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="84"/>
         <source>No file to merge, please import files first.</source>
-        <translation type="unfinished"></translation>
+        <translation>هیچ فایلی برای ادغام وجود ندارد، لطفاً ابتدا فایل‌ها را وارد کنید.</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="89"/>
         <source>Save Files</source>
-        <translation type="unfinished"></translation>
+        <translation>ذخیره فایل‌ها</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="127"/>
         <source>Merge files successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>ادغام فایل‌ها با موفقیت انجام شد.</translation>
     </message>
 </context>
 <context>
@@ -1209,7 +1209,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filecheck/hashcalculator.cpp" line="84"/>
         <source>Calculating finished</source>
-        <translation type="unfinished"></translation>
+        <translation>محاسبه تمام شد</translation>
     </message>
 </context>
 <context>
@@ -1217,17 +1217,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="18"/>
         <source>Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>اسکریپت Lua</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="20"/>
         <source>Frame Serial Number</source>
-        <translation type="unfinished"></translation>
+        <translation>شماره سریال فریم</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="21"/>
         <source>XYModem Sender</source>
-        <translation type="unfinished"></translation>
+        <translation>ارسالکننده XYModem</translation>
     </message>
 </context>
 <context>
@@ -1235,47 +1235,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
-        <translation type="unfinished"></translation>
+        <translation>نمایش پیش‌نمایش داده</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="32"/>
         <source>Append prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>افزودن پیشوند</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="45"/>
         <source>Append suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>افزودن پسوند</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="52"/>
         <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation>کاراکتر فرار</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="93"/>
         <source>CRC end index</source>
-        <translation type="unfinished"></translation>
+        <translation>ایندکس پایان CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="109"/>
         <source>CRC start index</source>
-        <translation type="unfinished"></translation>
+        <translation>ایندکس شروع CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="122"/>
         <source>CRC arithmetic</source>
-        <translation type="unfinished"></translation>
+        <translation>محاسبه CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="131"/>
         <source>Append CRC</source>
-        <translation type="unfinished"></translation>
+        <translation>افزودن CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="138"/>
         <source>Big endian</source>
-        <translation type="unfinished"></translation>
+        <translation>بایت‌چینی بزرگ</translation>
     </message>
 </context>
 <context>
@@ -1283,12 +1283,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="204"/>
         <source>Import Data from Excel</source>
-        <translation type="unfinished"></translation>
+        <translation>وارد کردن داده از Excel</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="235"/>
         <source>Export Data to Excel</source>
-        <translation type="unfinished"></translation>
+        <translation>صادرات داده به Excel</translation>
     </message>
 </context>
 <context>
@@ -1296,73 +1296,73 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="58"/>
         <source>Data type</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع داده</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="68"/>
         <source>Legend</source>
-        <translation type="unfinished"></translation>
+        <translation>راهنما</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="75"/>
         <source>Cache points</source>
-        <translation type="unfinished"></translation>
+        <translation>نقاط حافظه پنهان</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>صادرات</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="139"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>وارد کردن</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>کانال</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>نمایان</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="54"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>رنگ</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>نام</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>خط</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>اسپلاین</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>پراکنده</translation>
     </message>
 </context>
 <context>
@@ -1404,37 +1404,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
         <source>Test</source>
-        <translation type="unfinished"></translation>
+        <translation>تست</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="45"/>
         <source>Result data</source>
-        <translation type="unfinished"></translation>
+        <translation>داده‌های نتیجه</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="65"/>
         <source>Test data</source>
-        <translation type="unfinished"></translation>
+        <translation>داده‌های تست</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="82"/>
         <source>Bypass</source>
-        <translation type="unfinished"></translation>
+        <translation>بایپس</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="34"/>
         <source>Default Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>اسکریپت Lua پیش‌فرض</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="35"/>
         <source>Checksum Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>اسکریپت Lua چک‌سام</translation>
     </message>
 </context>
 <context>
@@ -1442,237 +1442,237 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="300"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;فایل</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="302"/>
         <source>New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>پنجره جدید</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="310"/>
         <source>Save Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>ذخیره پارامترها</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="312"/>
         <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Import Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>وارد کردن پارامترها</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="316"/>
         <location filename="../../src/mainwindow.cpp" line="804"/>
         <source>Export Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>صادرات پارامترها</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="321"/>
         <source>Exit Application</source>
-        <translation type="unfinished"></translation>
+        <translation>خروج از برنامه</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="330"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;ابزارها</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="333"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>جدید</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="369"/>
         <source>&amp;Options</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;گزینه‌ها</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="378"/>
         <source>Use System Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>استفاده از پروکسی سیستم</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="388"/>
         <source>Exit to System Tray</source>
-        <translation type="unfinished"></translation>
+        <translation>خروج به سیستم تری</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="406"/>
         <source>Application Style</source>
-        <translation type="unfinished"></translation>
+        <translation>سبک برنامه</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="429"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>تنظیمات</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
         <source>Clear Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>پاک کردن تنظیمات</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="438"/>
         <source>Open Settings Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>باز کردن دایرکتوری تنظیمات</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="447"/>
         <source>HDPI Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>سیاست HDPI</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="491"/>
         <source>Color Scheme</source>
-        <translation type="unfinished"></translation>
+        <translation>طرح رنگی</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="493"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>تاریک</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="494"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>روشن</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="495"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>سیستم</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="552"/>
         <source>&amp;Languages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;زبان‌ها</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;نمایش</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="629"/>
         <source>Stays on Top</source>
-        <translation type="unfinished"></translation>
+        <translation>ماندن در بالا</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="649"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;راهنما</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="650"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>درباره Qt</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="651"/>
         <location filename="../../src/mainwindow.cpp" line="847"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>درباره</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="655"/>
         <source>Screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>عکس صفحه</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="664"/>
         <source>Buy from Store</source>
-        <translation type="unfinished"></translation>
+        <translation>خرید از فروشگاه</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="670"/>
         <location filename="../../src/mainwindow.cpp" line="703"/>
         <source>Release History</source>
-        <translation type="unfinished"></translation>
+        <translation>تاریخچه انتشار</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>Join in QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>عضویت در گروه QQ</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>Online Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>راهنمای آنلاین</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="677"/>
         <source>Get Sources from Github</source>
-        <translation type="unfinished"></translation>
+        <translation>دریافت منابع از Github</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>Get Sources from Gitee</source>
-        <translation type="unfinished"></translation>
+        <translation>دریافت منابع از Gitee</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Third Party Open Source</source>
-        <translation type="unfinished"></translation>
+        <translation>متن باز شخص ثالث</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="723"/>
         <source>QR Code</source>
-        <translation type="unfinished"></translation>
+        <translation>کد QR</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="732"/>
         <source>User QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>گروه QQ کاربران</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="733"/>
         <source>Qt QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>گروه QQ Qt</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="754"/>
         <source>Need to Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>نیاز به راه‌اندازی مجدد</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="755"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="unfinished"></translation>
+        <translation>این عملیات برای اعمال تغییرات نیاز به راه‌اندازی مجدد دارد، آیا الان برنامه را راه‌اندازی مجدد کنیم؟</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="793"/>
         <location filename="../../src/mainwindow.cpp" line="806"/>
         <source>Json Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>فایل‌های Json (*.json)</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="835"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>نامشخص</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="841"/>
         <source>Commit hash</source>
-        <translation type="unfinished"></translation>
+        <translation>هش کامیت</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="843"/>
         <source>Commit time</source>
-        <translation type="unfinished"></translation>
+        <translation>زمان کامیت</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="844"/>
         <source>Build Date</source>
-        <translation type="unfinished"></translation>
+        <translation>تاریخ ساخت</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="845"/>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation>حق نشر</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="846"/>
         <source>All rights reserved.</source>
-        <translation type="unfinished"></translation>
+        <translation>تمام حقوق محفوظ است.</translation>
     </message>
 </context>
 <context>
@@ -1680,48 +1680,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع سرویس</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.ui" line="27"/>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>شروع</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="64"/>
         <source>Error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>خطا رخ داد</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="65"/>
         <source>Service type can not be empty, please input then try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع سرویس نمی‌تواند خالی باشد، لطفاً وارد کنید و دوباره تلاش کنید.</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="97"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="101"/>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>نام میزبان</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="105"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>پورت</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="109"/>
         <source>Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>ویژگی‌ها</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>توقف</translation>
     </message>
 </context>
 <context>
@@ -1729,93 +1729,93 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="49"/>
         <source>Console</source>
-        <translation type="unfinished"></translation>
+        <translation>کنسول</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="90"/>
         <source>Server Register</source>
-        <translation type="unfinished"></translation>
+        <translation>رجیستر سرور</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="125"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>ارسال</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="141"/>
         <source>Custom Protocol Data Unit</source>
-        <translation type="unfinished"></translation>
+        <translation>واحد داده پروتکل سفارشی</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="154"/>
         <source>Client Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>رجیسترهای کلاینت</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="189"/>
         <source>Device list</source>
-        <translation type="unfinished"></translation>
+        <translation>فهرست دستگاه</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="213"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>بستن</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="220"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>باز کردن</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="235"/>
         <source>Device Operations</source>
-        <translation type="unfinished"></translation>
+        <translation>عملیات دستگاه</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>آدرس</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="286"/>
         <source>Network Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>تنظیمات شبکه</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="306"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>پورت</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="337"/>
         <source>Baud rate</source>
-        <translation type="unfinished"></translation>
+        <translation>نرخ باد</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="357"/>
         <source>Data bits</source>
-        <translation type="unfinished"></translation>
+        <translation>بیت‌های داده</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="370"/>
         <source>Serial Port Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>تنظیمات پورت سریال</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="390"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>پریتی</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="409"/>
         <source>Port name</source>
-        <translation type="unfinished"></translation>
+        <translation>نام پورت</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="425"/>
         <source>Stop bits</source>
-        <translation type="unfinished"></translation>
+        <translation>بیت‌های توقف</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="450"/>
@@ -1845,7 +1845,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="569"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>خواندن</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="576"/>
@@ -2021,7 +2021,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>توضیحات</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
@@ -2105,7 +2105,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="24"/>
         <source>Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>اسکریپت Lua</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
@@ -2169,12 +2169,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/page.ui" line="63"/>
         <location filename="../../src/page/page.cpp" line="530"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>باز کردن</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="81"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="122"/>
@@ -2209,7 +2209,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.ui" line="177"/>
         <source>Output control</source>
-        <translation type="unfinished"></translation>
+        <translation>کنترل خروجی</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="199"/>
@@ -2234,7 +2234,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.ui" line="251"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>ارسال</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="260"/>
@@ -2285,7 +2285,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.cpp" line="364"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>غیرفعال</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="521"/>
@@ -2295,7 +2295,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.cpp" line="537"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>خطا رخ داد</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="543"/>
@@ -2446,17 +2446,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="119"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>نمونه</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>توضیحات</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="151"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>داده</translation>
     </message>
 </context>
 <context>
@@ -2542,7 +2542,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="989"/>
         <location filename="../../src/common/xtools.cpp" line="991"/>
         <source>Binary</source>
-        <translation type="unfinished"></translation>
+        <translation>باینری</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="182"/>
@@ -2567,7 +2567,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="190"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="192"/>
@@ -2587,7 +2587,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="993"/>
         <location filename="../../src/common/xtools.cpp" line="995"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>متن</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="594"/>
@@ -2710,7 +2710,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="20"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>صادرات</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="37"/>
@@ -2744,22 +2744,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/responder/respondermodel.cpp" line="107"/>
         <location filename="../../src/page/responder/respondermodel.cpp" line="222"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>فعال</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="107"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>غیرفعال</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="185"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>نمونه</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="224"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>توضیحات</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="226"/>
@@ -2914,7 +2914,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="239"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>توضیحات</translation>
     </message>
 </context>
 <context>
@@ -2965,12 +2965,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>فعال</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>غیرفعال</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="190"/>
@@ -3010,7 +3010,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="204"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>توضیحات</translation>
     </message>
 </context>
 <context>
@@ -3083,7 +3083,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/socketui.ui" line="195"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>کانال</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="202"/>
@@ -3124,7 +3124,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="100"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>فرمت خروجی</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="110"/>
@@ -3155,12 +3155,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>صادرات</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="39"/>
@@ -3175,7 +3175,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/common/tableview.ui" line="56"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>وارد کردن</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="68"/>
@@ -3186,7 +3186,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/common/tableview.ui" line="77"/>
         <location filename="../../src/page/common/tableview.cpp" line="127"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="128"/>
@@ -3256,7 +3256,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
-        <translation type="unfinished"></translation>
+        <translation>بایت‌چینی بزرگ</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
@@ -3276,7 +3276,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
         <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation>کاراکتر فرار</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
@@ -3291,7 +3291,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>فرمت</translation>
     </message>
 </context>
 <context>
