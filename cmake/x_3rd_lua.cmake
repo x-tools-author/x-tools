@@ -60,12 +60,18 @@ endif()
 add_compile_definitions(X_ENABLE_LUA)
 list(APPEND X_LIBS liblua)
 
-option(X_ENABLE_LUA "Enable Lua support" OFF)
-if(WIN32 AND X_ENABLE_LUA)
+option(X_ENABLE_LUA_APP "Enable Lua support" OFF)
+if(MSVC AND X_ENABLE_LUA_APP)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_BINS_DIR}/lua)
   add_executable(lua ${lua_root}/onelua.c)
+  # cmake-format: off
+  set_target_properties(lua PROPERTIES CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+  # cmake-format: on
   if(EXISTS ${lua_root}/luac.c) # 这个文件从官网下载的源码包才有，github 上的源码包没有
     add_executable(luac ${lua_root}/onelua.c)
     target_compile_definitions(luac PRIVATE MAKE_LUAC)
+    # cmake-format: off
+    set_target_properties(luac PROPERTIES CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+    # cmake-format: on
   endif()
 endif()
