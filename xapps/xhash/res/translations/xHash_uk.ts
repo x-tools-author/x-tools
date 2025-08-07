@@ -6,58 +6,58 @@
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation type="unfinished"></translation>
+        <translation>Верхній результат</translation>
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевірений файл</translation>
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Прогрес перевірки</translation>
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Алгоритм перевірки</translation>
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation type="unfinished"></translation>
+        <translation>Результат перевірки</translation>
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>Обчислити</translation>
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Відкрити</translation>
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Помічник перевірки файлів</translation>
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
+        <translation>Час, що залишився</translation>
     </message>
     <message>
         <location filename="../../../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
         <source>StopCalculating</source>
-        <translation type="unfinished"></translation>
+        <translation>Зупинити обчислення</translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../../../../src/tools/filecheck/hashcalculator.cpp" line="84"/>
         <source>Calculating finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Обчислення завершено</translation>
     </message>
 </context>
 <context>
@@ -73,67 +73,67 @@
     <message>
         <location filename="../../../../src/common/crc.cpp" line="68"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Невідомо</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="90"/>
         <source>Serial Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Послідовний порт</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="92"/>
         <source>BLE Central</source>
-        <translation type="unfinished"></translation>
+        <translation>BLE Центральний</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="94"/>
         <source>BLE Peripheral</source>
-        <translation type="unfinished"></translation>
+        <translation>BLE Периферійний</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="96"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP Клієнт</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="98"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP Сервер</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="100"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP Клієнт</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="102"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP Сервер</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="104"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket Клієнт</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="106"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket Сервер</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="108"/>
         <source>Local Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Локальний сокет</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="110"/>
         <source>Local Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Локальний сервер</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="112"/>
         <source>Charts Test</source>
-        <translation type="unfinished"></translation>
+        <translation>Тест діаграм</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="162"/>
@@ -141,32 +141,32 @@
         <location filename="../../../../src/common/xtools.cpp" line="845"/>
         <location filename="../../../../src/common/xtools.cpp" line="847"/>
         <source>Binary</source>
-        <translation type="unfinished"></translation>
+        <translation>Двійковий</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="164"/>
         <source>Octal</source>
-        <translation type="unfinished"></translation>
+        <translation>Вісімковий</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="166"/>
         <source>Decimal</source>
-        <translation type="unfinished"></translation>
+        <translation>Десятковий</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="168"/>
         <source>Hexadecimal</source>
-        <translation type="unfinished"></translation>
+        <translation>Шістнадцятковий</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="170"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="172"/>
         <source>UTF-8</source>
-        <translation type="unfinished"></translation>
+        <translation>UTF-8</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="320"/>
@@ -174,94 +174,94 @@
         <location filename="../../../../src/common/xtools.cpp" line="687"/>
         <location filename="../../../../src/common/xtools.cpp" line="705"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="418"/>
         <location filename="../../../../src/common/xtools.cpp" line="849"/>
         <location filename="../../../../src/common/xtools.cpp" line="851"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="455"/>
         <source>Echo</source>
-        <translation type="unfinished"></translation>
+        <translation>Відлуння</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="456"/>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>Завжди</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="457"/>
         <source>Input Equal Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Вхід дорівнює еталону</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="458"/>
         <source>Input Contain Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Вхід містить еталон</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="460"/>
         <source>Input Does not Contain Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Вхід не містить еталон</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="688"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Парний</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="689"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Непарний</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="690"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Пробіл</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="691"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
+        <translation>Мітка</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="707"/>
         <source>RTS/CTS</source>
-        <translation type="unfinished"></translation>
+        <translation>RTS/CTS</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="708"/>
         <source>X-ON/X-OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>X-ON/X-OFF</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="710"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>Апаратне забезпечення</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="711"/>
         <source>Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Програмне забезпечення</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="810"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимкнено</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="812"/>
         <source>Bidirectional</source>
-        <translation type="unfinished"></translation>
+        <translation>Двонаправлений</translation>
     </message>
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="814"/>
         <source>Unidirectional</source>
-        <translation type="unfinished"></translation>
+        <translation>Однонаправлений</translation>
     </message>
 </context>
 <context>
@@ -269,12 +269,12 @@
     <message>
         <location filename="../../../x/xapp.cpp" line="133"/>
         <source>Need to Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Потрібне перезавантаження</translation>
     </message>
     <message>
         <location filename="../../../x/xapp.cpp" line="134"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Операція потребує перезавантаження для набуття чинності, перезавантажити програму зараз?</translation>
     </message>
 </context>
 <context>
@@ -282,163 +282,163 @@
     <message>
         <location filename="../../../x/xui.cpp" line="59"/>
         <source>Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Параметр</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="60"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Вигляд</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="61"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Довідка</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="77"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Мова</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="128"/>
         <source>Open Settings Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Відкрити каталог налаштувань</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="133"/>
         <source>Clear Settings File</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистити файл налаштувань</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="155"/>
         <source>Round up for .5 and above</source>
-        <translation type="unfinished"></translation>
+        <translation>Округлювати вгору для 0,5 і вище</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="159"/>
         <source>Always round up</source>
-        <translation type="unfinished"></translation>
+        <translation>Завжди округлювати вгору</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="161"/>
         <source>Always round down</source>
-        <translation type="unfinished"></translation>
+        <translation>Завжди округлювати вниз</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="157"/>
         <source>Round up for .75 and above</source>
-        <translation type="unfinished"></translation>
+        <translation>Округлювати вгору для 0,75 і вище</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="163"/>
         <source>Don&apos;t round</source>
-        <translation type="unfinished"></translation>
+        <translation>Не округлювати</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="168"/>
         <source>High DPI Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Налаштування високого DPI</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="194"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Темна</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="195"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Світла</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="196"/>
         <source>System Default</source>
-        <translation type="unfinished"></translation>
+        <translation>За замовчуванням системи</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="201"/>
         <source>Application Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Тема програми</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="226"/>
         <source>Stays on Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Поверх усіх вікон</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="241"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Про Qt</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="244"/>
         <location filename="../../../x/xui.cpp" line="333"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Про програму</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="257"/>
         <source>Get Source from Gitee</source>
-        <translation type="unfinished"></translation>
+        <translation>Отримати код з Gitee</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="258"/>
         <source>Get Source from Github</source>
-        <translation type="unfinished"></translation>
+        <translation>Отримати код з GitHub</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="259"/>
         <source>Visit Author Home Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Відвідати домашню сторінку автора</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="260"/>
         <source>Visit App Store</source>
-        <translation type="unfinished"></translation>
+        <translation>Відвідати App Store</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="270"/>
         <source>User Feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>Відгуки користувачів</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="284"/>
         <source>Grab and Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Захопити та зберегти</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="288"/>
         <source>Save Grabbed Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Зберегти захоплене зображення</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="299"/>
         <source>Grab and Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Захопити та скопіювати</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="313"/>
         <source>Commit time</source>
-        <translation type="unfinished"></translation>
+        <translation>Час коміту</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="320"/>
         <source>Commit</source>
-        <translation type="unfinished"></translation>
+        <translation>Коміт</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="330"/>
         <source>Build Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Дата збірки</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="331"/>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation>Авторські права</translation>
     </message>
     <message>
         <location filename="../../../x/xui.cpp" line="332"/>
         <source>All rights reserved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Усі права захищено.</translation>
     </message>
 </context>
 </TS>

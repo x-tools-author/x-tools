@@ -30,7 +30,7 @@ else()
   set_target_properties(xHash PROPERTIES MACOSX_BUNDLE TRUE WIN32_EXECUTABLE TRUE)
 endif()
 
-if(X_ENABLE_ICONV)
+if(DEFINED X_ICONV_LIBS)
   target_link_libraries(xHash PRIVATE ${X_ICONV_LIBS})
 endif()
 
