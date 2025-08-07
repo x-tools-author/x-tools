@@ -252,6 +252,15 @@ void Page::load(const QVariantMap &parameters)
     onDeviceTypeChanged();
     onInputFormatChanged();
     onWrapModeChanged();
+
+#if 0
+    while (ui->tabWidget->count() > 1) {
+        QWidget *w = ui->tabWidget->widget(ui->tabWidget->count() - 1);
+        ui->tabWidget->removeTab(ui->tabWidget->count() - 1);
+        qInfo() << "Remove tab:" << w->metaObject()->className();
+        w->deleteLater();
+    }
+#endif
 }
 
 QTabWidget *Page::tabWidget()
