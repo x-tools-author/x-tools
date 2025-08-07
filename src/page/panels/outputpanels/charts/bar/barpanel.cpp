@@ -78,7 +78,6 @@ BarPanel::BarPanel(QWidget *parent)
 
 BarPanel::~BarPanel()
 {
-    m_chart->deleteLater();
     m_settings->deleteLater();
 }
 
