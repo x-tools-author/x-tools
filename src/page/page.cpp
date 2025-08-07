@@ -114,13 +114,12 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     connect(m_updateLabelInfoTimer, &QTimer::timeout, this, &Page::updateLabelInfo);
     m_updateLabelInfoTimer->start();
 
+    // clang-format off
     connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
     connect(ui->checkBoxWrap, &QCheckBox::clicked, this, &Page::onWrapModeChanged);
     connect(ui->checkBoxTerminalMode, &QCheckBox::clicked, this, &Page::onTerminalModeChanged);
-    connect(ui->widgetInputPanels,
-            &InputPanelsManager::visibleChanged,
-            this,
-            &Page::onInputFormatChanged);
+    connect(ui->widgetInputPanels, &InputPanelsManager::visibleChanged, this, &Page::onInputFormatChanged);
+    // clang-format on
 
     initUi();
 
