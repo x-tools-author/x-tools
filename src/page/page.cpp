@@ -64,10 +64,12 @@
 
 struct ParameterKeys
 {
+    // Communication settings
     const QString communicationType{"communicationType"};
     const QString communicationSettings{"communicationSettings"};
     const QString communication{"communication"};
 
+    // Output settings
     const QString outputFormat{"outputFormat"};
     const QString outputRx{"outputRx"};
     const QString outputTx{"outputTx"};
@@ -79,15 +81,19 @@ struct ParameterKeys
     const QString outputTerminalMode{"outputTerminalMode"};
     const QString outputSettings{"outputSettings"};
 
+    // Input settings
     const QString cycleInterval{"cycleInterval"};
     const QString inputFormat{"inputFormat"};
     const QString inputSettings{"inputSettings"};
 
+    // Tabs
+    const QString tabIndex{"tabIndex"};
     const QString presetItems{"presetItems"};
     const QString emitterItems{"emitterItems"};
     const QString responserItems{"responserItems"};
     const QString transfers{"transfers"};
 
+    // Panels
     const QString inputPanels{"inputPanels"};
     const QString outputPanels{"outputPanels"};
 } g_keys;
@@ -177,6 +183,7 @@ QVariantMap Page::save()
     map.insert(g_keys.inputFormat, ui->comboBoxInputFormat->currentData());
     map.insert(g_keys.inputSettings, m_inputSettings->save());
 
+    map.insert(g_keys.tabIndex, ui->tabWidget->currentIndex());
     map.insert(g_keys.presetItems, ui->tabPreset->save());
     map.insert(g_keys.emitterItems, ui->tabEmitter->save());
     map.insert(g_keys.responserItems, ui->tabResponder->save());
@@ -239,6 +246,7 @@ void Page::load(const QVariantMap &parameters)
     ui->comboBoxInputFormat->setCurrentIndex(index == -1 ? 0 : index);
     m_inputSettings->load(inputSettings);
 
+    ui->tabWidget->setCurrentIndex(parameters.value(g_keys.tabIndex, 0).toInt());
     ui->tabPreset->load(parameters.value(g_keys.presetItems).toMap());
     ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
     ui->tabResponder->load(parameters.value(g_keys.responserItems).toMap());
