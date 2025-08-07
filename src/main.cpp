@@ -54,5 +54,6 @@ int main(int argc, char *argv[])
 
     int ret = app.exec();
     Application::uninstallLog();
+    qInfo() << "Application exited with code:" << ret;
     return ret;
 }
