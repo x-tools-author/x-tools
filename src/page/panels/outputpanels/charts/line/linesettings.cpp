@@ -203,7 +203,7 @@ void LineSettings::setupTypeComboBox(QComboBox *comboBox, int channelIndex)
     comboBox->addItem(QIcon(":/res/icons/scatter_series.svg"),
                       seriesTypeToString(QAbstractSeries::SeriesType::SeriesTypeScatter),
                       QAbstractSeries::SeriesType::SeriesTypeScatter);
-    connect(comboBox, QOverload<int>::of(xComboBoxActivated), this, [=](int index) {
+    connect(comboBox, xComboBoxActivated, this, [=](int index) {
         emit channelTypeChanged(channelIndex, comboBox->itemData(index).toInt());
     });
 }
