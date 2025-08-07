@@ -650,6 +650,10 @@ void Page::closeDevice()
 
 void Page::setupDevice(Device *device)
 {
+    if (!device) {
+        return;
+    }
+
     connect(device, &Device::opened, this, &Page::onOpened);
     connect(device, &Device::closed, this, &Page::onClosed);
     connect(device, &Device::bytesWritten, this, &Page::onBytesWritten);
