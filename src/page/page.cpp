@@ -155,6 +155,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 
 Page::~Page()
 {
+    m_updateLabelInfoTimer->stop();
     saveControllerParameters();
     delete ui;
 }

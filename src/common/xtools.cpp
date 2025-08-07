@@ -68,7 +68,7 @@ QList<int> supportedDeviceTypes()
         deviceTypes << static_cast<int>(DeviceType::BleCentral);
 #endif
 #if 0
-        deviceTypes << static_cast<int>(DeviceType::BlePeripheral);
+                deviceTypes << static_cast<int>(DeviceType::BlePeripheral);
 #endif
         deviceTypes << static_cast<int>(DeviceType::UdpClient);
         deviceTypes << static_cast<int>(DeviceType::UdpServer);
