@@ -17,15 +17,9 @@
 #include <QWidgetAction>
 
 #include "device/device.h"
+#include "device/devicemanager.h"
 #include "device/deviceui.h"
-#include "device/localserverui.h"
-#include "device/localsocketui.h"
-#include "device/tcpclientui.h"
-#include "device/tcpserverui.h"
-#include "device/udpbroadcastui.h"
-#include "device/udpclientui.h"
-#include "device/udpmulticastui.h"
-#include "device/udpserverui.h"
+
 #include "devicesettings.h"
 #include "emitter/emitterview.h"
 #include "page/panels/inputpanels/inputpanelsmanager.h"
@@ -34,25 +28,12 @@
 #include "page/responder/responderview.h"
 
 #ifdef X_ENABLE_CHARTS
-#include "device/chartstestui.h"
 #include "page/panels/outputpanels/charts/bar/barpanel.h"
 #include "page/panels/outputpanels/charts/line/linepanel.h"
 #endif
 
 #ifdef X_ENABLE_LUA
 #include "page/panels/common/luapanel.h"
-#endif
-
-#ifdef X_ENABLE_SERIALPORT
-#include "device/serialportui.h"
-#endif
-#ifdef X_ENABLE_WEBSOCKETS
-#include "device/websocketclientui.h"
-#include "device/websocketserverui.h"
-#endif
-
-#ifdef X_ENABLE_BLUETOOTH
-#include "device/blecentralui.h"
 #endif
 
 #include "common/crc.h"
@@ -299,7 +280,7 @@ void Page::removeTestDevices()
 {
     for (int i = 0; i < ui->comboBoxDeviceTypes->count(); i++) {
         int type = ui->comboBoxDeviceTypes->itemData(i).toInt();
-        if (type == static_cast<int>(DeviceType::ChartsTest)) {
+        if (type == static_cast<int>(DeviceManager::ChartsTest)) {
             ui->comboBoxDeviceTypes->removeItem(i);
             break;
         }
@@ -334,7 +315,7 @@ void Page::initUiDeviceControl()
     m_ioSettings = new DeviceSettings();
     setupMenu(target, m_ioSettings);
 
-    setupDeviceTypes(ui->comboBoxDeviceTypes);
+    xDevMgr.setupDeviceTypes(ui->comboBoxDeviceTypes);
 }
 
 void Page::initUiOutputControl()
@@ -426,7 +407,7 @@ void Page::onDeviceTypeChanged()
     }
 
     int type = ui->comboBoxDeviceTypes->currentData().toInt();
-    m_deviceController = newDeviceUi(type);
+    m_deviceController = xDevMgr.newDeviceUi(type);
     if (!m_deviceController) {
         qWarning() << "Failed to create device controller";
         return;
@@ -913,46 +894,4 @@ QByteArray Page::crc(const QByteArray &payload) const
     ctx.data = payload;
 
     return CRC::calculate(ctx);
-}
-
-DeviceUi *Page::newDeviceUi(int type)
-{
-    switch (type) {
-#ifdef X_ENABLE_SERIALPORT
-    case static_cast<int>(DeviceType::SerialPort):
-        return new SerialPortUi();
-#endif
-#ifdef X_ENABLE_BLUETOOTH
-    case static_cast<int>(DeviceType::BleCentral):
-        return new BleCentralUi();
-#endif
-    case static_cast<int>(DeviceType::UdpClient):
-        return new UdpClientUi();
-    case static_cast<int>(DeviceType::UdpServer):
-        return new UdpServerUi();
-    case static_cast<int>(DeviceType::UdpMulticast):
-        return new UdpMulticastUi();
-    case static_cast<int>(DeviceType::UdpBroadcast):
-        return new UdpBroadcastUi();
-    case static_cast<int>(DeviceType::TcpClient):
-        return new TcpClientUi();
-    case static_cast<int>(DeviceType::TcpServer):
-        return new TcpServerUi();
-#ifdef X_ENABLE_WEBSOCKETS
-    case static_cast<int>(DeviceType::WebSocketClient):
-        return new WebSocketClientUi();
-    case static_cast<int>(DeviceType::WebSocketServer):
-        return new WebSocketServerUi();
-#endif
-    case static_cast<int>(DeviceType::LocalSocket):
-        return new LocalSocketUi();
-    case static_cast<int>(DeviceType::LocalServer):
-        return new LocalServerUi();
-#ifdef X_ENABLE_CHARTS
-    case static_cast<int>(DeviceType::ChartsTest):
-        return new ChartsTestUi();
-#endif
-    default:
-        return nullptr;
-    }
 }
