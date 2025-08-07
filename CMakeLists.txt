@@ -89,7 +89,7 @@ list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
 # --------------------------------------------------------------------------------------------------
 # Binaries
 set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
-
+set(X_3RD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
 # Libraries
 set(tmp ${CMAKE_CURRENT_SOURCE_DIR}/libs/${QT_VERSION}/${CMAKE_BUILD_TYPE})
 set(X_LIBS_DIR ${tmp}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})

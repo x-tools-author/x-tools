@@ -6,8 +6,14 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include <QMessageBox>
+
 #include "application.h"
 #include "mainwindow.h"
+
+#if defined(X_ENABLE_SINGLEAPPLICATION)
+#include "singleapplication.h"
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +22,14 @@ int main(int argc, char *argv[])
     Application::installLog(argv[0]);
     Application::setupHdpi();
     Application app(argc, argv);
+
+#if defined(X_ENABLE_SINGLEAPPLICATION)
+    SingleApplication sApp(argc, argv);
+    if (sApp.isSecondary()) {
+        return 0;
+    }
+#endif
+
     app.setupLanguage();
     app.showSplashScreenMessage(QObject::tr("Application is booting..."));
     app.setupAppStyle();
@@ -28,6 +42,15 @@ int main(int argc, char *argv[])
     window.show();
     window.load();
     window.moveToCenter();
+
+#if defined(X_ENABLE_SINGLEAPPLICATION)
+    QObject::connect(&sApp, &SingleApplication::instanceStarted, &window, [&window]() {
+        window.show();
+        window.raise();
+        window.activateWindow();
+        QApplication::beep();
+    });
+#endif
 
     int ret = app.exec();
     Application::uninstallLog();
