@@ -117,10 +117,7 @@ MainWindow::MainWindow(QWidget* parent)
     setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
 }
 
-MainWindow::~MainWindow()
-{
-    qInfo() << "MainWindow is destroyed!";
-}
+MainWindow::~MainWindow() {}
 
 void MainWindow::load(const QString& fileName) const
 {

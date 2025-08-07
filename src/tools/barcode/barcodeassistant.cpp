@@ -265,7 +265,9 @@ void BarCodeAssistant::setupTypeComboBox()
     m_completer = new QCompleter(m_filterModel, this);
     m_completer->setCaseSensitivity(Qt::CaseInsensitive);
     m_completer->setFilterMode(Qt::MatchContains);
-    ui->comboBoxType->setCompleter(m_completer);
+    if (ui->comboBoxType->isEditable()) {
+        ui->comboBoxType->setCompleter(m_completer);
+    }
 
     // Fill the ComboBox with all barcode types initially
     updateComboBoxItems();

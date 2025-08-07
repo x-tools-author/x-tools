@@ -71,7 +71,11 @@ LinePanel::LinePanel(QWidget *parent)
         series->attachAxis(m_axisX);
         series->attachAxis(m_axisY);
         series->setName(QString::number(i + 1));
+#if 0
+        // TODO: error message is output after close main window.
+        // qt.core.qobject.connect: QObject::disconnect: Unexpected nullptr parameter
         series->setUseOpenGL(true);
+#endif
         m_series.append(series);
     }
 
@@ -80,7 +84,6 @@ LinePanel::LinePanel(QWidget *parent)
 
 LinePanel::~LinePanel()
 {
-    m_chart->deleteLater();
     m_settings->deleteLater();
 }
 
@@ -361,6 +364,7 @@ void LinePanel::onSetChannelType(int channelIndex, int type)
                 oldSeries->setParent(nullptr);
                 oldSeries->deleteLater();
                 oldSeries = newSeries;
+                Q_UNUSED(oldSeries);
 
                 for (auto &series : m_series) {
                     m_chart->removeSeries(series);

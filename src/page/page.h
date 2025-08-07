@@ -102,7 +102,6 @@ private:
 
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;
-    DeviceUi *newDeviceUi(int type);
 
 private:
     Ui::Page *ui;

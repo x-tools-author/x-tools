@@ -78,32 +78,6 @@
 #endif
 
 /**************************************************************************************************/
-enum class DeviceType {
-    SerialPort,
-    BleCentral,
-    BlePeripheral,
-    UdpClient,
-    UdpServer,
-    TcpClient,
-    TcpServer,
-    WebSocketClient,
-    WebSocketServer,
-    LocalSocket,
-    LocalServer,
-    UdpMulticast,
-    UdpBroadcast,
-    //----------------------------------------------------------------------------------------------
-    Hid = 0x00200000,
-    SctpClient,
-    SctpServer,
-    //----------------------------------------------------------------------------------------------
-    ChartsTest = 0x00300000
-};
-QList<int> supportedDeviceTypes();
-QString deviceName(int type);
-void setupDeviceTypes(QComboBox *comboBox);
-
-/**************************************************************************************************/
 enum class TextFormat {
     Bin,
     Oct,

@@ -268,10 +268,12 @@ void Application::showSplashScreenMessage(const QString &msg)
         return;
     }
 
-#if defined(Q_OS_ANDROID)
+#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
     splashScreen->showFullScreen();
 #else
+#if !defined(X_MAGIC)
     splashScreen->show();
+#endif
 #endif
     splashScreen->showMessage(msg, Qt::AlignBottom | Qt::AlignLeft, Qt::white);
     QApplication::processEvents();

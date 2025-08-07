@@ -27,6 +27,7 @@ QWidget *SocketTransferDelegate::createEditor(QWidget *parent,
                                               const QModelIndex &index) const
 {
     Q_UNUSED(option);
+    QComboBox *tmp = nullptr;
     switch (index.column()) {
     case SOCKET_ROW_AUTHENTICATION:
         return new QCheckBox(parent);
@@ -64,6 +65,7 @@ void SocketTransferDelegate::setEditorData(QWidget *editor, const QModelIndex &i
             }
         } else if (column == SOCKET_ROW_ADDRESS) {
             setupSocketAddress(cb);
+            cb->setEditable(true);
             QString text = index.data(Qt::EditRole).toString();
             cb->setCurrentText(text);
         } else if (column == SOCKET_ROW_CHANNEL) {
@@ -102,12 +104,14 @@ void SocketTransferDelegate::setModelData(QWidget *editor,
         } else {
             model->setData(index, cb->currentText());
         }
-    } else if (column == SOCKET_ROW_AUTHENTICATION) {
+    } else if (column == SOCKET_ROW_AUTHENTICATION || column == SOCKET_ROW_PORT) {
         auto sb = qobject_cast<QSpinBox *>(editor);
         model->setData(index, sb->value(), Qt::EditRole);
     } else if (column == SOCKET_ROW_USERNAME || column == SOCKET_ROW_PASSWORD
                || column == SOCKET_ROW_DESCRIPTION) {
         auto le = qobject_cast<QLineEdit *>(editor);
         model->setData(index, le->text(), Qt::EditRole);
+    } else {
+        qWarning() << "SocketTransferDelegate::setModelData: Unsupported column" << column;
     }
 }

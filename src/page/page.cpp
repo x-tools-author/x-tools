@@ -17,15 +17,9 @@
 #include <QWidgetAction>
 
 #include "device/device.h"
+#include "device/devicemanager.h"
 #include "device/deviceui.h"
-#include "device/localserverui.h"
-#include "device/localsocketui.h"
-#include "device/tcpclientui.h"
-#include "device/tcpserverui.h"
-#include "device/udpbroadcastui.h"
-#include "device/udpclientui.h"
-#include "device/udpmulticastui.h"
-#include "device/udpserverui.h"
+
 #include "devicesettings.h"
 #include "emitter/emitterview.h"
 #include "page/panels/inputpanels/inputpanelsmanager.h"
@@ -34,25 +28,12 @@
 #include "page/responder/responderview.h"
 
 #ifdef X_ENABLE_CHARTS
-#include "device/chartstestui.h"
 #include "page/panels/outputpanels/charts/bar/barpanel.h"
 #include "page/panels/outputpanels/charts/line/linepanel.h"
 #endif
 
 #ifdef X_ENABLE_LUA
 #include "page/panels/common/luapanel.h"
-#endif
-
-#ifdef X_ENABLE_SERIALPORT
-#include "device/serialportui.h"
-#endif
-#ifdef X_ENABLE_WEBSOCKETS
-#include "device/websocketclientui.h"
-#include "device/websocketserverui.h"
-#endif
-
-#ifdef X_ENABLE_BLUETOOTH
-#include "device/blecentralui.h"
 #endif
 
 #include "common/crc.h"
@@ -64,10 +45,12 @@
 
 struct ParameterKeys
 {
+    // Communication settings
     const QString communicationType{"communicationType"};
     const QString communicationSettings{"communicationSettings"};
     const QString communication{"communication"};
 
+    // Output settings
     const QString outputFormat{"outputFormat"};
     const QString outputRx{"outputRx"};
     const QString outputTx{"outputTx"};
@@ -79,18 +62,22 @@ struct ParameterKeys
     const QString outputTerminalMode{"outputTerminalMode"};
     const QString outputSettings{"outputSettings"};
 
+    // Input settings
     const QString cycleInterval{"cycleInterval"};
     const QString inputFormat{"inputFormat"};
     const QString inputSettings{"inputSettings"};
 
+    // Tabs
+    const QString tabIndex{"tabIndex"};
     const QString presetItems{"presetItems"};
     const QString emitterItems{"emitterItems"};
     const QString responserItems{"responserItems"};
     const QString transfers{"transfers"};
 
+    // Panels
     const QString inputPanels{"inputPanels"};
     const QString outputPanels{"outputPanels"};
-} g_keys;
+};
 
 Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     : QWidget{parent}
@@ -113,7 +100,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_txStatistician = new Statistician(ui->labelTxInfo, this);
 
     if (direction == ControllerDirection::Right) {
-        auto *l = dynamic_cast<QHBoxLayout *>(layout());
+        QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
         if (l) {
             auto item = l->takeAt(0);
             l->addItem(item);
@@ -123,17 +110,17 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_writeTimer->setInterval(1000);
     connect(m_writeTimer, &QTimer::timeout, this, &Page::writeBytes);
 
+    // TODO: Do not use timer to update label info, use signal-slot mechanism instead.
     m_updateLabelInfoTimer->setInterval(100);
     connect(m_updateLabelInfoTimer, &QTimer::timeout, this, &Page::updateLabelInfo);
     m_updateLabelInfoTimer->start();
 
+    // clang-format off
     connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
     connect(ui->checkBoxWrap, &QCheckBox::clicked, this, &Page::onWrapModeChanged);
     connect(ui->checkBoxTerminalMode, &QCheckBox::clicked, this, &Page::onTerminalModeChanged);
-    connect(ui->widgetInputPanels,
-            &InputPanelsManager::visibleChanged,
-            this,
-            &Page::onInputFormatChanged);
+    connect(ui->widgetInputPanels, &InputPanelsManager::visibleChanged, this, &Page::onInputFormatChanged);
+    // clang-format on
 
     initUi();
 
@@ -149,6 +136,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 
 Page::~Page()
 {
+    m_updateLabelInfoTimer->stop();
     saveControllerParameters();
     delete ui;
 }
@@ -156,37 +144,43 @@ Page::~Page()
 QVariantMap Page::save()
 {
     QVariantMap map;
-    map.insert(g_keys.communicationType, ui->comboBoxDeviceTypes->currentData());
-    map.insert(g_keys.communicationSettings, m_ioSettings->save());
+    ParameterKeys keys;
+    // Communication settings
+    map.insert(keys.communicationType, ui->comboBoxDeviceTypes->currentData());
+    map.insert(keys.communicationSettings, m_ioSettings->save());
     if (m_deviceController) {
-        map.insert(g_keys.communication, m_deviceController->save());
+        map.insert(keys.communication, m_deviceController->save());
     }
 
-    map.insert(g_keys.outputFormat, ui->comboBoxOutputFormat->currentData());
-    map.insert(g_keys.outputRx, ui->checkBoxOutputRx->isChecked());
-    map.insert(g_keys.outputTx, ui->checkBoxOutputTx->isChecked());
-    map.insert(g_keys.outputFlag, ui->checkBoxOutputFlag->isChecked());
-    map.insert(g_keys.outputDate, ui->checkBoxOutputDate->isChecked());
-    map.insert(g_keys.outputTime, ui->checkBoxOutputTime->isChecked());
-    map.insert(g_keys.outputMs, ui->checkBoxOutputMs->isChecked());
-    map.insert(g_keys.outputSettings, m_outputSettings->save());
-    map.insert(g_keys.outputWrap, ui->checkBoxWrap->isChecked());
-    map.insert(g_keys.outputTerminalMode, ui->checkBoxTerminalMode->isChecked());
+    // Output settings
+    map.insert(keys.outputFormat, ui->comboBoxOutputFormat->currentData());
+    map.insert(keys.outputRx, ui->checkBoxOutputRx->isChecked());
+    map.insert(keys.outputTx, ui->checkBoxOutputTx->isChecked());
+    map.insert(keys.outputFlag, ui->checkBoxOutputFlag->isChecked());
+    map.insert(keys.outputDate, ui->checkBoxOutputDate->isChecked());
+    map.insert(keys.outputTime, ui->checkBoxOutputTime->isChecked());
+    map.insert(keys.outputMs, ui->checkBoxOutputMs->isChecked());
+    map.insert(keys.outputSettings, m_outputSettings->save());
+    map.insert(keys.outputWrap, ui->checkBoxWrap->isChecked());
+    map.insert(keys.outputTerminalMode, ui->checkBoxTerminalMode->isChecked());
 
-    map.insert(g_keys.cycleInterval, ui->comboBoxInputInterval->currentData());
-    map.insert(g_keys.inputFormat, ui->comboBoxInputFormat->currentData());
-    map.insert(g_keys.inputSettings, m_inputSettings->save());
+    // Input settings
+    map.insert(keys.cycleInterval, ui->comboBoxInputInterval->currentData());
+    map.insert(keys.inputFormat, ui->comboBoxInputFormat->currentData());
+    map.insert(keys.inputSettings, m_inputSettings->save());
 
-    map.insert(g_keys.presetItems, ui->tabPreset->save());
-    map.insert(g_keys.emitterItems, ui->tabEmitter->save());
-    map.insert(g_keys.responserItems, ui->tabResponder->save());
-
-    map.insert(g_keys.inputPanels, ui->widgetInputPanels->save());
-    map.insert(g_keys.outputPanels, ui->widgetOutputPanels->save());
-
+    // Tabs
+    map.insert(keys.tabIndex, ui->tabWidget->currentIndex());
+    map.insert(keys.presetItems, ui->tabPreset->save());
+    map.insert(keys.emitterItems, ui->tabEmitter->save());
+    map.insert(keys.responserItems, ui->tabResponder->save());
     if (ui->tabTransfers->isEnabled()) {
-        map.insert(g_keys.transfers, ui->tabTransfers->save());
+        map.insert(keys.transfers, ui->tabTransfers->save());
     }
+
+    // Panels
+    map.insert(keys.inputPanels, ui->widgetInputPanels->save());
+    map.insert(keys.outputPanels, ui->widgetOutputPanels->save());
 
     return map;
 }
@@ -197,25 +191,29 @@ void Page::load(const QVariantMap &parameters)
         return;
     }
 
-    int communicationType = parameters.value(g_keys.communicationType).toInt();
+    ParameterKeys keys;
+
+    // Communication settings
+    int communicationType = parameters.value(keys.communicationType).toInt();
     int index = ui->comboBoxDeviceTypes->findData(communicationType);
-    QVariantMap communicationSettings = parameters.value(g_keys.communicationSettings).toMap();
+    QVariantMap communicationSettings = parameters.value(keys.communicationSettings).toMap();
     m_ioSettings->load(communicationSettings);
     ui->comboBoxDeviceTypes->setCurrentIndex(index == -1 ? 0 : index);
     if (m_deviceController) {
-        m_deviceController->load(parameters.value(g_keys.communication).toMap());
+        m_deviceController->load(parameters.value(keys.communication).toMap());
     }
 
-    int outputFormat = parameters.value(g_keys.outputFormat).toInt();
-    bool outputRx = parameters.value(g_keys.outputRx).toBool();
-    bool outputTx = parameters.value(g_keys.outputTx).toBool();
-    bool outputFlag = parameters.value(g_keys.outputFlag).toBool();
-    bool outputDate = parameters.value(g_keys.outputDate).toBool();
-    bool outputTime = parameters.value(g_keys.outputTime).toBool();
-    bool outputMs = parameters.value(g_keys.outputMs).toBool();
-    bool outputWrap = parameters.value(g_keys.outputWrap).toBool();
-    bool outputTerminalMode = parameters.value(g_keys.outputTerminalMode).toBool();
-    QVariantMap outputSettings = parameters.value(g_keys.outputSettings).toMap();
+    // Output settings
+    int outputFormat = parameters.value(keys.outputFormat).toInt();
+    bool outputRx = parameters.value(keys.outputRx).toBool();
+    bool outputTx = parameters.value(keys.outputTx).toBool();
+    bool outputFlag = parameters.value(keys.outputFlag).toBool();
+    bool outputDate = parameters.value(keys.outputDate).toBool();
+    bool outputTime = parameters.value(keys.outputTime).toBool();
+    bool outputMs = parameters.value(keys.outputMs).toBool();
+    bool outputWrap = parameters.value(keys.outputWrap).toBool();
+    bool outputTerminalMode = parameters.value(keys.outputTerminalMode).toBool();
+    QVariantMap outputSettings = parameters.value(keys.outputSettings).toMap();
 
     index = ui->comboBoxOutputFormat->findData(outputFormat);
     ui->comboBoxOutputFormat->setCurrentIndex(index == -1 ? 0 : index);
@@ -229,9 +227,10 @@ void Page::load(const QVariantMap &parameters)
     ui->checkBoxTerminalMode->setChecked(outputTerminalMode);
     m_outputSettings->load(outputSettings);
 
-    int inputInterval = parameters.value(g_keys.cycleInterval).toInt();
-    int inputFormat = parameters.value(g_keys.inputFormat).toInt();
-    QVariantMap inputSettings = parameters.value(g_keys.inputSettings).toMap();
+    // Input settings
+    int inputInterval = parameters.value(keys.cycleInterval).toInt();
+    int inputFormat = parameters.value(keys.inputFormat).toInt();
+    QVariantMap inputSettings = parameters.value(keys.inputSettings).toMap();
 
     index = ui->comboBoxInputInterval->findData(inputInterval);
     ui->comboBoxInputInterval->setCurrentIndex(index == -1 ? 0 : index);
@@ -239,17 +238,29 @@ void Page::load(const QVariantMap &parameters)
     ui->comboBoxInputFormat->setCurrentIndex(index == -1 ? 0 : index);
     m_inputSettings->load(inputSettings);
 
-    ui->tabPreset->load(parameters.value(g_keys.presetItems).toMap());
-    ui->tabEmitter->load(parameters.value(g_keys.emitterItems).toMap());
-    ui->tabResponder->load(parameters.value(g_keys.responserItems).toMap());
-    ui->tabTransfers->load(parameters.value(g_keys.transfers).toMap());
+    // Load Tabs
+    ui->tabWidget->setCurrentIndex(parameters.value(keys.tabIndex, 0).toInt());
+    ui->tabPreset->load(parameters.value(keys.presetItems).toMap());
+    ui->tabEmitter->load(parameters.value(keys.emitterItems).toMap());
+    ui->tabResponder->load(parameters.value(keys.responserItems).toMap());
+    ui->tabTransfers->load(parameters.value(keys.transfers).toMap());
 
-    ui->widgetInputPanels->load(parameters.value(g_keys.inputPanels).toMap());
-    ui->widgetOutputPanels->load(parameters.value(g_keys.outputPanels).toMap());
+    // Load Panels
+    ui->widgetInputPanels->load(parameters.value(keys.inputPanels).toMap());
+    ui->widgetOutputPanels->load(parameters.value(keys.outputPanels).toMap());
 
     onDeviceTypeChanged();
     onInputFormatChanged();
     onWrapModeChanged();
+
+#if 0
+    while (ui->tabWidget->count() > 1) {
+        QWidget *w = ui->tabWidget->widget(ui->tabWidget->count() - 1);
+        ui->tabWidget->removeTab(ui->tabWidget->count() - 1);
+        qInfo() << "Remove tab:" << w->metaObject()->className();
+        w->deleteLater();
+    }
+#endif
 }
 
 QTabWidget *Page::tabWidget()
@@ -290,7 +301,7 @@ void Page::removeTestDevices()
 {
     for (int i = 0; i < ui->comboBoxDeviceTypes->count(); i++) {
         int type = ui->comboBoxDeviceTypes->itemData(i).toInt();
-        if (type == static_cast<int>(DeviceType::ChartsTest)) {
+        if (type == static_cast<int>(DeviceManager::ChartsTest)) {
             ui->comboBoxDeviceTypes->removeItem(i);
             break;
         }
@@ -325,7 +336,7 @@ void Page::initUiDeviceControl()
     m_ioSettings = new DeviceSettings();
     setupMenu(target, m_ioSettings);
 
-    setupDeviceTypes(ui->comboBoxDeviceTypes);
+    xDevMgr.setupDeviceTypes(ui->comboBoxDeviceTypes);
 }
 
 void Page::initUiOutputControl()
@@ -417,7 +428,7 @@ void Page::onDeviceTypeChanged()
     }
 
     int type = ui->comboBoxDeviceTypes->currentData().toInt();
-    m_deviceController = newDeviceUi(type);
+    m_deviceController = xDevMgr.newDeviceUi(type);
     if (!m_deviceController) {
         qWarning() << "Failed to create device controller";
         return;
@@ -642,6 +653,10 @@ void Page::closeDevice()
 
 void Page::setupDevice(Device *device)
 {
+    if (!device) {
+        return;
+    }
+
     connect(device, &Device::opened, this, &Page::onOpened);
     connect(device, &Device::closed, this, &Page::onClosed);
     connect(device, &Device::bytesWritten, this, &Page::onBytesWritten);
@@ -900,46 +915,4 @@ QByteArray Page::crc(const QByteArray &payload) const
     ctx.data = payload;
 
     return CRC::calculate(ctx);
-}
-
-DeviceUi *Page::newDeviceUi(int type)
-{
-    switch (type) {
-#ifdef X_ENABLE_SERIALPORT
-    case static_cast<int>(DeviceType::SerialPort):
-        return new SerialPortUi();
-#endif
-#ifdef X_ENABLE_BLUETOOTH
-    case static_cast<int>(DeviceType::BleCentral):
-        return new BleCentralUi();
-#endif
-    case static_cast<int>(DeviceType::UdpClient):
-        return new UdpClientUi();
-    case static_cast<int>(DeviceType::UdpServer):
-        return new UdpServerUi();
-    case static_cast<int>(DeviceType::UdpMulticast):
-        return new UdpMulticastUi();
-    case static_cast<int>(DeviceType::UdpBroadcast):
-        return new UdpBroadcastUi();
-    case static_cast<int>(DeviceType::TcpClient):
-        return new TcpClientUi();
-    case static_cast<int>(DeviceType::TcpServer):
-        return new TcpServerUi();
-#ifdef X_ENABLE_WEBSOCKETS
-    case static_cast<int>(DeviceType::WebSocketClient):
-        return new WebSocketClientUi();
-    case static_cast<int>(DeviceType::WebSocketServer):
-        return new WebSocketServerUi();
-#endif
-    case static_cast<int>(DeviceType::LocalSocket):
-        return new LocalSocketUi();
-    case static_cast<int>(DeviceType::LocalServer):
-        return new LocalServerUi();
-#ifdef X_ENABLE_CHARTS
-    case static_cast<int>(DeviceType::ChartsTest):
-        return new ChartsTestUi();
-#endif
-    default:
-        return nullptr;
-    }
 }
