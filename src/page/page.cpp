@@ -100,7 +100,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_txStatistician = new Statistician(ui->labelTxInfo, this);
 
     if (direction == ControllerDirection::Right) {
-        auto *l = dynamic_cast<QHBoxLayout *>(layout());
+        QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
         if (l) {
             auto item = l->takeAt(0);
             l->addItem(item);
@@ -110,6 +110,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_writeTimer->setInterval(1000);
     connect(m_writeTimer, &QTimer::timeout, this, &Page::writeBytes);
 
+    // TODO: Do not use timer to update label info, use signal-slot mechanism instead.
     m_updateLabelInfoTimer->setInterval(100);
     connect(m_updateLabelInfoTimer, &QTimer::timeout, this, &Page::updateLabelInfo);
     m_updateLabelInfoTimer->start();
