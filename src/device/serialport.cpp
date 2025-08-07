@@ -36,7 +36,8 @@ QObject *SerialPort::initDevice()
     qInfo() << "portName:" << m_serialPort->portName() << "baudRate:" << m_serialPort->baudRate()
             << "dataBits:" << m_serialPort->dataBits() << "parity:" << m_serialPort->parity()
             << "stopBits:" << m_serialPort->stopBits()
-            << "flowControl:" << m_serialPort->flowControl();
+            << "flowControl:" << m_serialPort->flowControl()
+            << "optimizedFrame:" << item.optimizedFrame;
 
     if (m_serialPort->open(QIODevice::ReadWrite)) {
         connect(m_serialPort, &QSerialPort::readyRead, m_serialPort, [this]() {
