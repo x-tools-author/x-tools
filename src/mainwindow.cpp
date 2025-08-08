@@ -681,10 +681,14 @@ void MainWindow::initHelpMenu()
 
     // clang-format off
     QList<QPair<QString, QString>> ctxs;
+    ctxs.append(qMakePair(QString("lua"), QString("https://github.com/lua/lua")));
     ctxs.append(qMakePair(QString("glog"), QString("https://github.com/google/glog")));
+    ctxs.append(qMakePair(QString("zint"), QString("https://github.com/zint/zint")));
     ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
+    ctxs.append(qMakePair(QString("libiconv"), QString("https://ftp.gnu.org/pub/gnu/libiconv")));
     ctxs.append(qMakePair(QString("libqrencode"), QString("https://github.com/fukuchi/libqrencode")));
     ctxs.append(qMakePair(QString("qmdnsengine"), QString("https://github.com/nitroshare/qmdnsengine")));
+    ctxs.append(qMakePair(QString("SingleApplication"), QString("https://github.com/itay-grudev/SingleApplication")));
     // clang-format on
 
     QMenu* menu = helpMenu->addMenu(tr("Third Party Open Source"));
