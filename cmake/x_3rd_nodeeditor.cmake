@@ -12,6 +12,24 @@ macro(remove_all_files_of_flow)
   endforeach()
 endmacro()
 
+# Not supported on Android or iOS
+if(ANDROID OR IOS)
+  remove_all_files_of_flow()
+  return()
+endif()
+
+# Not supported on Qt versions less than 6.8.0
+if(QT_VERSION VERSION_LESS "6.8.0")
+  remove_all_files_of_flow()
+  return()
+endif()
+
+# Just for windows now
+if(NOT WIN32)
+  remove_all_files_of_flow()
+  return()
+endif()
+
 # Download the packet if it doesn't exist
 if(NOT EXISTS "${X_3RD_DIR}/${packet_name}.zip")
   file(
@@ -25,18 +43,6 @@ if(NOT EXISTS "${X_3RD_DIR}/${packet_name}.zip")
     remove_all_files_of_flow()
     return()
   endif()
-endif()
-
-# Not supported on Android or iOS
-if(ANDROID OR IOS)
-  remove_all_files_of_flow()
-  return()
-endif()
-
-# Not supported on Qt versions less than 6.8.0
-if(QT_VERSION VERSION_LESS "6.8.0")
-  remove_all_files_of_flow()
-  return()
 endif()
 
 x_auto_import_package(${packet_name} QtNodes)
