@@ -31,15 +31,18 @@
 #include <QProcess>
 #include <QScreen>
 #include <QScrollBar>
+#include <QStackedLayout>
 #include <QStyle>
 #include <QStyleFactory>
 #include <QStyleHints>
 #include <QSvgRenderer>
 #include <QTextBrowser>
 #include <QVariant>
+#include <QWidgetAction>
 
 #include "application.h"
 #include "common/xtools.h"
+#include "layoutmanager.h"
 #include "page/page.h"
 #include "tools/assistantfactory.h"
 
@@ -93,16 +96,26 @@ MainWindow::MainWindow(QWidget* parent)
     m_ioPage11 = new Page(Page::Right, settings, this);
 
     xApp->showSplashScreenMessage(QString("Create main window..."));
-    auto* centralWidget = new QWidget();
-    auto* layout = new QGridLayout(centralWidget);
+    QWidget* ioLayoutWidget = new QWidget();
+    auto* layout = new QGridLayout(ioLayoutWidget);
     layout->setSpacing(0);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(m_ioPage00, 0, 0);
     layout->addWidget(m_ioPage01, 0, 1);
     layout->addWidget(m_ioPage10, 1, 0);
     layout->addWidget(m_ioPage11, 1, 1);
-    centralWidget->setLayout(layout);
+    ioLayoutWidget->setLayout(layout);
+
+    auto* centralWidget = new QWidget();
+    QStackedLayout* sl = new QStackedLayout(centralWidget);
+    sl->setContentsMargins(0, 0, 0, 0);
+    centralWidget->setLayout(sl);
     setCentralWidget(centralWidget);
+    m_layoutManager = new LayoutManager(sl, this);
+    m_layoutManager->addLayoutPage(tr("General "), ioLayoutWidget);
+    m_layoutManager->setupPages();
+    menuBar()->setCornerWidget(m_layoutManager->controller(), Qt::TopRightCorner);
+    menuBar()->adjustSize();
 
     const int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
     const QString key = m_settingsKey.windowGrid;

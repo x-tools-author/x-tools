@@ -14,6 +14,7 @@
 #include <QUrl>
 
 class Page;
+class LayoutManager;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -41,6 +42,7 @@ protected:
     Page* m_ioPage10;
     Page* m_ioPage11;
     QAction* m_historyAction{nullptr};
+    LayoutManager* m_layoutManager{nullptr};
 
 private:
     struct SettingsKeys
