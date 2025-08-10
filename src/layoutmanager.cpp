@@ -31,13 +31,16 @@ LayoutManager::LayoutManager(QStackedLayout* layout, QWidget* mw, QObject* paren
     m_controller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 
     m_buttonGroup = new QButtonGroup(m_controller);
-    connect(m_buttonGroup, &QButtonGroup::buttonClicked, this, [this](QAbstractButton* button) {
-        auto buttons = m_buttonGroup->buttons();
-        int index = buttons.indexOf(button);
-        if (index != -1 && index < m_layout->count()) {
-            m_layout->setCurrentIndex(index);
-        }
-    });
+    connect(m_buttonGroup,
+            qOverload<QAbstractButton*>(&QButtonGroup::buttonClicked),
+            this,
+            [this](QAbstractButton* button) {
+                auto buttons = m_buttonGroup->buttons();
+                int index = buttons.indexOf(button);
+                if (index != -1 && index < m_layout->count()) {
+                    m_layout->setCurrentIndex(index);
+                }
+            });
 
     if (!m_layout) {
         qWarning("LayoutManager: m_layout is null");
