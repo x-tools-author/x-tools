@@ -19,6 +19,10 @@ LayoutManager::LayoutManager(QStackedLayout* layout, QWidget* mw, QObject* paren
     , m_layout(layout)
     , m_mainWindow(mw)
 {
+    if (!m_layout) {
+        qWarning("LayoutManager: m_layout is null");
+    }
+
     m_controller = new QWidget(m_mainWindow);
     m_leftLabel = new QLabel(m_controller);
     m_rightLabel = new QLabel(m_controller);
@@ -34,17 +38,7 @@ LayoutManager::LayoutManager(QStackedLayout* layout, QWidget* mw, QObject* paren
     connect(m_buttonGroup,
             qOverload<QAbstractButton*>(&QButtonGroup::buttonClicked),
             this,
-            [this](QAbstractButton* button) {
-                auto buttons = m_buttonGroup->buttons();
-                int index = buttons.indexOf(button);
-                if (index != -1 && index < m_layout->count()) {
-                    m_layout->setCurrentIndex(index);
-                }
-            });
-
-    if (!m_layout) {
-        qWarning("LayoutManager: m_layout is null");
-    }
+            &LayoutManager::onGroupButtonClicked);
 }
 
 LayoutManager::~LayoutManager()
@@ -84,4 +78,13 @@ void LayoutManager::setupPages()
     m_nodeEditor = new xFlow::NodeEditor(m_mainWindow);
     addLayoutPage(tr("Node Editor"), m_nodeEditor);
 #endif
+}
+
+void LayoutManager::onGroupButtonClicked(QAbstractButton* button)
+{
+    auto buttons = m_buttonGroup->buttons();
+    int index = buttons.indexOf(button);
+    if (m_layout && index != -1 && index < m_layout->count()) {
+        m_layout->setCurrentIndex(index);
+    }
 }

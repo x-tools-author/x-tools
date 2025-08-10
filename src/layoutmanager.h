@@ -32,6 +32,9 @@ public:
     void setupPages();
 
 private:
+    void onGroupButtonClicked(QAbstractButton* button);
+
+private:
     QStackedLayout* m_layout{nullptr};
     QWidget* m_controller{nullptr};
     QHBoxLayout* m_hLayout{nullptr};
