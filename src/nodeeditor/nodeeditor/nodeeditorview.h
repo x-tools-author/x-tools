@@ -6,26 +6,24 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "nodeeditor.h"
-#include "ui_nodeeditor.h"
+#pragma once
 
-#include <QVBoxLayout>
-
-#include "nodeeditornavigator.h"
+#include <QtNodes/DataFlowGraphicsScene>
+#include <QtNodes/GraphicsView>
 
 namespace xFlow {
 
-NodeEditor::NodeEditor(QWidget* parent)
-    : QWidget(parent)
-    , ui(new Ui::NodeEditor)
+class NodeEditorModel;
+class NodeEditorScene;
+class NodeEditorView : public QtNodes::GraphicsView
 {
-    ui->setupUi(this);
-    ui->widgetNavigator->setupScrollArea(ui->scrollArea);
-}
+public:
+    NodeEditorView(QWidget *parent = nullptr);
+    ~NodeEditorView();
 
-NodeEditor::~NodeEditor()
-{
-    delete ui;
-}
+private:
+    NodeEditorModel *m_model;
+    NodeEditorScene *m_scene;
+};
 
 } // namespace xFlow

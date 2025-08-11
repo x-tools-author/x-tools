@@ -8,83 +8,53 @@
  **************************************************************************************************/
 #include "layoutmanager.h"
 
-#include <QToolButton>
+#include <QAction>
 
 #if defined(X_ENABLE_XFLOW)
 #include "nodeeditor/nodeeditor.h"
 #endif
 
-LayoutManager::LayoutManager(QStackedLayout* layout, QWidget* mw, QObject* parent)
+LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
     : QObject(parent)
     , m_layout(layout)
-    , m_mainWindow(mw)
+    , m_mainMenuBar(menuBar)
 {
     if (!m_layout) {
         qWarning("LayoutManager: m_layout is null");
     }
 
-    m_controller = new QWidget(m_mainWindow);
-    m_leftLabel = new QLabel(m_controller);
-    m_rightLabel = new QLabel(m_controller);
-    m_rightLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    m_hLayout = new QHBoxLayout(m_controller);
-    m_hLayout->setContentsMargins(0, 0, 0, 0);
-    m_hLayout->addWidget(m_leftLabel);
-    m_hLayout->addWidget(m_rightLabel);
-    m_controller->setLayout(m_hLayout);
-    m_controller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    if (menuBar) {
+        QLabel* label = new QLabel(tr("Layout:"), menuBar);
+        label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    }
 
-    m_buttonGroup = new QButtonGroup(m_controller);
-    connect(m_buttonGroup,
-            qOverload<QAbstractButton*>(&QButtonGroup::buttonClicked),
-            this,
-            &LayoutManager::onGroupButtonClicked);
+    m_group = new QActionGroup(this);
+    m_group->setExclusive(true);
 }
 
-LayoutManager::~LayoutManager()
-{
-    // Clean up resources if needed
-    m_controller->deleteLater();
-}
+LayoutManager::~LayoutManager() {}
 
-void LayoutManager::addLayoutPage(const QString& name, QWidget* page)
+QAction* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
 {
     if (!m_layout) {
         qWarning("LayoutManager: m_layout is null");
-        return;
+        return nullptr;
     }
 
-    QToolButton* button = new QToolButton(m_controller);
-    button->setText(name);
-    button->setCheckable(true);
-    m_hLayout->addWidget(button);
-    m_buttonGroup->addButton(button);
-    m_hLayout->removeWidget(m_rightLabel);
-    m_hLayout->addWidget(m_rightLabel);
+    QAction* action = new QAction(name, this);
+    action->setCheckable(true);
+    m_group->addAction(action);
     m_layout->addWidget(page);
-    if (m_layout->count() == 1) {
-        button->setChecked(true);
-    }
-}
+    m_mainMenuBar->addAction(action);
+    connect(action, &QAction::triggered, this, [=]() { m_layout->setCurrentWidget(page); });
 
-QWidget* LayoutManager::controller()
-{
-    return m_controller;
+    return action;
 }
 
 void LayoutManager::setupPages()
 {
 #if defined(X_ENABLE_XFLOW)
-    m_nodeEditor = new xFlow::NodeEditor(m_mainWindow);
+    m_nodeEditor = new xFlow::NodeEditor(m_layout->parentWidget());
     addLayoutPage(tr("Node Editor"), m_nodeEditor);
 #endif
-}
-
-void LayoutManager::onGroupButtonClicked(QAbstractButton* button)
-{
-    auto buttons = m_buttonGroup->buttons();
-    int index = buttons.indexOf(button);
-    if (m_layout && index != -1 && index < m_layout->count()) {
-        m_layout->setCurrentIndex(index);
-    }
 }

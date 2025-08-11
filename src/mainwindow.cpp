@@ -111,11 +111,6 @@ MainWindow::MainWindow(QWidget* parent)
     sl->setContentsMargins(0, 0, 0, 0);
     centralWidget->setLayout(sl);
     setCentralWidget(centralWidget);
-    m_layoutManager = new LayoutManager(sl, this);
-    m_layoutManager->addLayoutPage(tr("General "), ioLayoutWidget);
-    m_layoutManager->setupPages();
-    menuBar()->setCornerWidget(m_layoutManager->controller(), Qt::TopRightCorner);
-    menuBar()->adjustSize();
 
     const int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
     const QString key = m_settingsKey.windowGrid;
@@ -128,6 +123,13 @@ MainWindow::MainWindow(QWidget* parent)
     initMenuBar();
     setWindowIcon(QIcon(":/res/icons/logo.svg"));
     setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
+
+    // Initialize layout manager
+    menuBar()->addSeparator();
+    m_layoutManager = new LayoutManager(sl, menuBar(), this);
+    QAction* action = m_layoutManager->addLayoutPage(tr("General "), ioLayoutWidget);
+    m_layoutManager->setupPages();
+    action->setChecked(true);
 }
 
 MainWindow::~MainWindow() {}

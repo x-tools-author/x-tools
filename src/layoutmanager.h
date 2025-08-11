@@ -8,12 +8,13 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QButtonGroup>
+#include <QActionGroup>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QMenuBar>
 #include <QObject>
 #include <QStackedLayout>
-#include <QWidget>
+#include <QToolButton>
 
 namespace xFlow {
 class NodeEditor;
@@ -23,26 +24,16 @@ class LayoutManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit LayoutManager(QStackedLayout* layout, QWidget* mw, QObject* parent = nullptr);
+    explicit LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent = nullptr);
     ~LayoutManager() override;
 
-    void addLayoutPage(const QString& name, QWidget* page);
-    QWidget* controller();
-
+    QAction* addLayoutPage(const QString& name, QWidget* page);
     void setupPages();
 
 private:
-    void onGroupButtonClicked(QAbstractButton* button);
-
-private:
     QStackedLayout* m_layout{nullptr};
-    QWidget* m_controller{nullptr};
-    QHBoxLayout* m_hLayout{nullptr};
-    QButtonGroup* m_buttonGroup{nullptr};
-    QLabel* m_leftLabel{nullptr};
-    QLabel* m_rightLabel{nullptr};
+    QActionGroup* m_group{nullptr};
 
-private:
-    QWidget* m_mainWindow{nullptr};
+    QMenuBar* m_mainMenuBar{nullptr};
     xFlow::NodeEditor* m_nodeEditor{nullptr};
 };
