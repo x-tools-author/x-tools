@@ -57,3 +57,9 @@ yay -Syu x-tools
 ![charts.gif](res/images/charts.gif)
 
 ![search.gif](res/images/search.png)
+
+## Do Something Make Linux Happy
+
+```shell
+sudo apt install libegl1-mesa-dev
+```
