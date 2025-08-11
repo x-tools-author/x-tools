@@ -10,6 +10,11 @@ if(ANDROID OR IOS)
   return()
 endif()
 
+if(NOT WIN32)
+  message(STATUS "[SingleApplication]SingleApplication is not supported on this platform.")
+  return()
+endif()
+
 if(QT_VERSION VERSION_LESS "6.8.0")
   message(STATUS "[SingleApplication]SingleApplication requires Qt 6.8 or higher.")
   return()
