@@ -21,34 +21,51 @@ LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject*
 {
     if (!m_layout) {
         qWarning("LayoutManager: m_layout is null");
+        return;
     }
 
-    if (menuBar) {
-        QLabel* label = new QLabel(tr("Layout:"), menuBar);
-        label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    if (!menuBar) {
+        qWarning("LayoutManager: menuBar is null");
+        return;
     }
 
-    m_group = new QActionGroup(this);
-    m_group->setExclusive(true);
+    m_controller = new QWidget();
+    m_controllerLayout = new QHBoxLayout(m_controller);
+    m_controller->setLayout(m_controllerLayout);
+    m_leftLabel = new QLabel(m_controller);
+    m_rightLabel = new QLabel(m_controller);
+    m_controllerLayout->addWidget(m_leftLabel);
+    m_controllerLayout->addWidget(m_rightLabel);
+
+    m_group = new QButtonGroup(this);
+#if defined(X_ENABLE_PAGES)
+    menuBar->setCornerWidget(m_controller, Qt::TopRightCorner);
+#else
+    m_controller->hide();
+#endif
 }
 
 LayoutManager::~LayoutManager() {}
 
-QAction* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
+QToolButton* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
 {
     if (!m_layout) {
         qWarning("LayoutManager: m_layout is null");
         return nullptr;
     }
 
-    QAction* action = new QAction(name, this);
-    action->setCheckable(true);
-    m_group->addAction(action);
+    QToolButton* button = new QToolButton();
+    button->setText(name);
+    button->setCheckable(true);
+    m_group->addButton(button);
     m_layout->addWidget(page);
-    m_mainMenuBar->addAction(action);
-    connect(action, &QAction::triggered, this, [=]() { m_layout->setCurrentWidget(page); });
+    m_controllerLayout->addWidget(button);
+    connect(button, &QToolButton::clicked, this, [=]() { m_layout->setCurrentWidget(page); });
 
-    return action;
+    m_controllerLayout->removeWidget(m_rightLabel);
+    m_controllerLayout->addWidget(m_rightLabel);
+
+    return button;
 }
 
 void LayoutManager::setupPages()

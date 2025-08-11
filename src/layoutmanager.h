@@ -8,13 +8,14 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QActionGroup>
+#include <QButtonGroup>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QMenuBar>
 #include <QObject>
 #include <QStackedLayout>
 #include <QToolButton>
+#include <QWidget>
 
 namespace xFlow {
 class NodeEditor;
@@ -27,13 +28,16 @@ public:
     explicit LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent = nullptr);
     ~LayoutManager() override;
 
-    QAction* addLayoutPage(const QString& name, QWidget* page);
+    QToolButton* addLayoutPage(const QString& name, QWidget* page);
     void setupPages();
 
 private:
     QStackedLayout* m_layout{nullptr};
-    QActionGroup* m_group{nullptr};
-
+    QButtonGroup* m_group{nullptr};
+    QWidget* m_controller{nullptr};
+    QHBoxLayout* m_controllerLayout{nullptr};
+    QLabel* m_leftLabel{nullptr};
+    QLabel* m_rightLabel{nullptr};
     QMenuBar* m_mainMenuBar{nullptr};
     xFlow::NodeEditor* m_nodeEditor{nullptr};
 };
