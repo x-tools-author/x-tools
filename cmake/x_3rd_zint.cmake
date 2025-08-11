@@ -109,7 +109,7 @@ else()
 endif()
 
 set(X_ZINT ON)
-set(X_ZINT_LIBS zint-static)
+set(X_ZINT_LIBS zint::zint-static)
 list(APPEND X_ZINT_LIBS QZint)
 if(PNG_FOUND AND NOT X_ZINT_USING_SRC)
   list(APPEND X_ZINT_LIBS PNG::PNG)
