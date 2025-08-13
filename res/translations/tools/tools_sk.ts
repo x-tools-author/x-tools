@@ -6,72 +6,72 @@
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="44"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent CRC</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="46"/>
         <source>mDNS Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent mDNS</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="48"/>
         <source>Ping Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent Ping</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="49"/>
         <source>ASCII Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent ASCII</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="50"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent Base64</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="51"/>
         <source>Number Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent čísel</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="52"/>
         <source>String Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent reťazcov</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="53"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent vysielania</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="54"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent kontroly súborov</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent zlúčenia súborov</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="57"/>
         <source>QR Code Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent QR kódov</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="60"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent čiarových kódov</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="63"/>
         <source>CAN Bus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent CAN zbernice</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="64"/>
         <source>Modbus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent Modbus</translation>
     </message>
 </context>
 </TS>

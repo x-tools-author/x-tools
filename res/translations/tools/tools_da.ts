@@ -6,72 +6,72 @@
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="44"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC-assistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="46"/>
         <source>mDNS Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>mDNS-assistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="48"/>
         <source>Ping Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Ping-assistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="49"/>
         <source>ASCII Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII-assistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="50"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Base64-assistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="51"/>
         <source>Number Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummerassistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="52"/>
         <source>String Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Strengassistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="53"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast-assistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="54"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Filkontrolassistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Filfusionsassistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="57"/>
         <source>QR Code Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>QR-kodeassistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="60"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Stregkodeassistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="63"/>
         <source>CAN Bus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN-busassistent</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="64"/>
         <source>Modbus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Modbus-assistent</translation>
     </message>
 </context>
 </TS>

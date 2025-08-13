@@ -6,72 +6,72 @@
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="44"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik CRC</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="46"/>
         <source>mDNS Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik mDNS</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="48"/>
         <source>Ping Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik Ping</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="49"/>
         <source>ASCII Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik ASCII</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="50"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik Base64</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="51"/>
         <source>Number Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik številk</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="52"/>
         <source>String Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik nizov</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="53"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik oddajanja</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="54"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik preverjanja datotek</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik združevanja datotek</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="57"/>
         <source>QR Code Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik QR kode</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="60"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik črtne kode</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="63"/>
         <source>CAN Bus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik CAN vodila</translation>
     </message>
     <message>
         <location filename="../../../src/tools/assistantfactory.cpp" line="64"/>
         <source>Modbus Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik Modbus</translation>
     </message>
 </context>
 </TS>
