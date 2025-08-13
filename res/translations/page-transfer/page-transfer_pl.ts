@@ -6,78 +6,78 @@
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="106"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieparzysty</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="108"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Parzysty</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="110"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
+        <translation>Znacznik</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="112"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Spacja</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="114"/>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="122"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Brak</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="118"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprzęt</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="120"/>
         <source>Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprogramowanie</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="225"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcja Transferu</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="227"/>
         <source>Port Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa Portu</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="229"/>
         <source>Baud Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Szybkość Transmisji</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="231"/>
         <source>Data Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Bity Danych</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="233"/>
         <source>Stop Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Bity Stopu</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="235"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Parzystość</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="237"/>
         <source>Flow Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrola Przepływu</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="239"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Opis</translation>
     </message>
 </context>
 <context>
@@ -85,52 +85,52 @@
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Włącz</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłącz</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="190"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcja Transferu</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="192"/>
         <source>Server Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adres Serwera</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="194"/>
         <source>Server Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port Serwera</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="196"/>
         <source>Data Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanał Danych</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="198"/>
         <source>Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Uwierzytelnienie</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="200"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa Użytkownika</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="202"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Hasło</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="204"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Opis</translation>
     </message>
 </context>
 <context>
@@ -138,7 +138,7 @@
     <message>
         <location filename="../../../src/page/transfer/common/transfermodel.cpp" line="46"/>
         <source>Transfer %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Transfer %1</translation>
     </message>
 </context>
 <context>
@@ -146,37 +146,37 @@
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="30"/>
         <source>Serial Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port Szeregowy</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="36"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Klient TCP</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="41"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Serwer TCP</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="46"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Klient UDP</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="51"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Serwer UDP</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="57"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Klient WebSocket</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="62"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Serwer WebSocket</translation>
     </message>
 </context>
 </TS>

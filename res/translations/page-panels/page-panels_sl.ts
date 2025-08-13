@@ -258,47 +258,47 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="52"/>
         <source>Search text</source>
-        <translation type="unfinished"></translation>
+        <translation>Iskano besedilo</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="59"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Išči</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="82"/>
         <source>Regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Regularni izraz</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Razlikuj velike/male črke</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation type="unfinished"></translation>
+        <translation>Cela beseda</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
         <source>Could not find any matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ni bilo najdenih zadetkov.</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="151"/>
         <source>Found %1 matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Najdenih %1 zadetkov.</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="190"/>
         <source>Line %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrstica %1:</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="224"/>
         <source>Search results:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rezultati iskanja:</translation>
     </message>
 </context>
 </TS>

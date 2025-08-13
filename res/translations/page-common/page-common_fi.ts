@@ -6,65 +6,65 @@
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Lomake</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Vie</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="39"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="46"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisää</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="56"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuo</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="68"/>
         <source>Disable all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista kaikki kohteet käytöstä</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="77"/>
         <location filename="../../../src/page/common/tableview.cpp" line="127"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyhjennä</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="128"/>
         <source>Are you sure to clear all items?</source>
-        <translation type="unfinished"></translation>
+        <translation>Oletko varma, että haluat tyhjentää kaikki kohteet?</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="143"/>
         <source>No Item be Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Kohdetta ei ole valittu</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="143"/>
         <source>Please select a item first!</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse ensin kohde!</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="153"/>
         <location filename="../../../src/page/common/tableview.cpp" line="181"/>
         <source>Import data</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuo tietoja</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="155"/>
         <location filename="../../../src/page/common/tableview.cpp" line="183"/>
         <source>JSON (*.json);;All (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON (*.json);;Kaikki (*)</translation>
     </message>
 </context>
 </TS>

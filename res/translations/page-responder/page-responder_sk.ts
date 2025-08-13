@@ -7,42 +7,42 @@
         <location filename="../../../src/page/responder/respondermodel.cpp" line="107"/>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="222"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Povoliť</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="107"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázať</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="185"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>Demo</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="224"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="226"/>
         <source>Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnosť</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="228"/>
         <source>Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Oneskorenie</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="230"/>
         <source>Reference Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Referenčné údaje</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="232"/>
         <source>Response Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Údaje odpovede</translation>
     </message>
 </context>
 </TS>

@@ -6,37 +6,37 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>データ形式</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>チャンネル</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>色</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>名前</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>線グラフ</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>スプライン</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>散布図</translation>
     </message>
 </context>
 <context>
@@ -121,7 +121,7 @@
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>チャンネル</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
@@ -136,27 +136,27 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="54"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>色</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>名前</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>線グラフ</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>スプライン</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>散布図</translation>
     </message>
 </context>
 <context>

@@ -6,17 +6,17 @@
     <message>
         <location filename="../../../src/page/preset/presetmodel.cpp" line="119"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>示範</translation>
     </message>
     <message>
         <location filename="../../../src/page/preset/presetmodel.cpp" line="149"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
     <message>
         <location filename="../../../src/page/preset/presetmodel.cpp" line="151"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>資料</translation>
     </message>
 </context>
 </TS>

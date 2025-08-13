@@ -47,7 +47,7 @@
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="227"/>
         <source>Port Name</source>
-        <translation>端口名称</translation>
+        <translation>端口号</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="229"/>
@@ -72,7 +72,7 @@
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="237"/>
         <source>Flow Control</source>
-        <translation>流控</translation>
+        <translation>流控位</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="239"/>

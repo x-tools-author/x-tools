@@ -6,37 +6,37 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат данных</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Канал</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Цвет</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Линия</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>Сплайн</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>Точечная диаграмма</translation>
     </message>
 </context>
 <context>
@@ -45,13 +45,13 @@
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="60"/>
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="63"/>
         <source>Binary</source>
-        <translation type="unfinished"></translation>
+        <translation>Двоичный</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="61"/>
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="64"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст</translation>
     </message>
 </context>
 <context>
@@ -258,47 +258,47 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="52"/>
         <source>Search text</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст для поиска</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="59"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Поиск</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="82"/>
         <source>Regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Регулярное выражение</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Учитывать регистр</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation type="unfinished"></translation>
+        <translation>Целое слово</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
         <source>Could not find any matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Совпадений не найдено.</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="151"/>
         <source>Found %1 matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Найдено %1 совпадений.</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="190"/>
         <source>Line %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Строка %1:</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="224"/>
         <source>Search results:</source>
-        <translation type="unfinished"></translation>
+        <translation>Результаты поиска:</translation>
     </message>
 </context>
 </TS>

@@ -6,7 +6,7 @@
     <message>
         <location filename="../../../src/page/utilities/statistician.cpp" line="51"/>
         <source>%1 frames, %2 bytes, %3B/s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 trames, %2 octets, %3B/s</translation>
     </message>
 </context>
 <context>
@@ -14,77 +14,77 @@
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="14"/>
         <source>Data Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Éditeur de données</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="20"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="33"/>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Algorithme</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="43"/>
         <source>Start index</source>
-        <translation type="unfinished"></translation>
+        <translation>Index de début</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>End index</source>
-        <translation type="unfinished"></translation>
+        <translation>Index de fin</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="63"/>
         <source>Append</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
-        <translation type="unfinished"></translation>
+        <translation>Big endian</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="83"/>
         <source>Preprocessing</source>
-        <translation type="unfinished"></translation>
+        <translation>Prétraitement</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="89"/>
         <source>Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Préfixe</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="99"/>
         <source>Suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Suffixe</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="109"/>
         <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation>Caractère d'échappement</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="148"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="155"/>
         <source>Payload</source>
-        <translation type="unfinished"></translation>
+        <translation>Charge utile</translation>
     </message>
     <message>
         <location filename="../../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Format</translation>
     </message>
 </context>
 </TS>

@@ -6,65 +6,65 @@
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>表單</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>匯出</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="39"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>刪除</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="46"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>新增</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="56"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>匯入</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="68"/>
         <source>Disable all items</source>
-        <translation type="unfinished"></translation>
+        <translation>停用所有項目</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="77"/>
         <location filename="../../../src/page/common/tableview.cpp" line="127"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清除</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="128"/>
         <source>Are you sure to clear all items?</source>
-        <translation type="unfinished"></translation>
+        <translation>確定要清除所有項目嗎？</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="143"/>
         <source>No Item be Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>未選擇任何項目</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="143"/>
         <source>Please select a item first!</source>
-        <translation type="unfinished"></translation>
+        <translation>請先選擇一個項目！</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="153"/>
         <location filename="../../../src/page/common/tableview.cpp" line="181"/>
         <source>Import data</source>
-        <translation type="unfinished"></translation>
+        <translation>匯入資料</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="155"/>
         <location filename="../../../src/page/common/tableview.cpp" line="183"/>
         <source>JSON (*.json);;All (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON (*.json);;全部 (*)</translation>
     </message>
 </context>
 </TS>

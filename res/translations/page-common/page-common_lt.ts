@@ -6,65 +6,65 @@
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportuoti</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="39"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Ištrinti</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="46"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridėti</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="56"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuoti</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="68"/>
         <source>Disable all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Išjungti visus elementus</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="77"/>
         <location filename="../../../src/page/common/tableview.cpp" line="127"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="128"/>
         <source>Are you sure to clear all items?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ar tikrai norite išvalyti visus elementus?</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="143"/>
         <source>No Item be Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepasirinktas elementas</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="143"/>
         <source>Please select a item first!</source>
-        <translation type="unfinished"></translation>
+        <translation>Pirmiausia pasirinkite elementą!</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="153"/>
         <location filename="../../../src/page/common/tableview.cpp" line="181"/>
         <source>Import data</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuoti duomenis</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="155"/>
         <location filename="../../../src/page/common/tableview.cpp" line="183"/>
         <source>JSON (*.json);;All (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON (*.json);;Visi (*)</translation>
     </message>
 </context>
 </TS>

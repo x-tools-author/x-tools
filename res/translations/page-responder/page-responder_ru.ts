@@ -7,42 +7,42 @@
         <location filename="../../../src/page/responder/respondermodel.cpp" line="107"/>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="222"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Включить</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="107"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Отключить</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="185"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>Демо</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="224"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Описание</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="226"/>
         <source>Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Опция</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="228"/>
         <source>Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Задержка</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="230"/>
         <source>Reference Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Эталонные данные</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="232"/>
         <source>Response Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Данные ответа</translation>
     </message>
 </context>
 </TS>

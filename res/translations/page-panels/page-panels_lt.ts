@@ -6,37 +6,37 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>Duomenų formatas</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanalas</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Spalva</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Pavadinimas</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Linija</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>Splinas</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>Sklaidos</translation>
     </message>
 </context>
 <context>
@@ -45,13 +45,13 @@
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="60"/>
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="63"/>
         <source>Binary</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvejetainis</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="61"/>
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="64"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstas</translation>
     </message>
 </context>
 <context>
@@ -59,17 +59,17 @@
     <message>
         <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="18"/>
         <source>Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Lua scenarijus</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="20"/>
         <source>Frame Serial Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Kadro serijos numeris</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="21"/>
         <source>XYModem Sender</source>
-        <translation type="unfinished"></translation>
+        <translation>XYModem siuntėjas</translation>
     </message>
 </context>
 <context>
@@ -77,12 +77,12 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="207"/>
         <source>Import Data from Excel</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuoti duomenis iš Excel</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="238"/>
         <source>Export Data to Excel</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportuoti duomenis į Excel</translation>
     </message>
 </context>
 <context>
@@ -90,73 +90,73 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="58"/>
         <source>Data type</source>
-        <translation type="unfinished"></translation>
+        <translation>Duomenų tipas</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="68"/>
         <source>Legend</source>
-        <translation type="unfinished"></translation>
+        <translation>Legenda</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="75"/>
         <source>Cache points</source>
-        <translation type="unfinished"></translation>
+        <translation>Talpyklos taškai</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportuoti</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="139"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuoti</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanalas</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Matomas</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipas</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="54"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Spalva</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Pavadinimas</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Linija</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>Splinas</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>Sklaidos</translation>
     </message>
 </context>
 <context>

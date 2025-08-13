@@ -7,32 +7,32 @@
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="92"/>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="185"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Įjungti</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="92"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Išjungti</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="155"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>Demo</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="187"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Aprašymas</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="189"/>
         <source>Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Intervalas</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="191"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Duomenys</translation>
     </message>
 </context>
 </TS>

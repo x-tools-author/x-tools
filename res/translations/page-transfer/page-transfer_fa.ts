@@ -6,78 +6,78 @@
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="106"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>فرد</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="108"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>زوج</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="110"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
+        <translation>علامت</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="112"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>فضا</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="114"/>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="122"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>هیچ</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="118"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>سخت‌افزار</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="120"/>
         <source>Software</source>
-        <translation type="unfinished"></translation>
+        <translation>نرم‌افزار</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="225"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>گزینه انتقال</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="227"/>
         <source>Port Name</source>
-        <translation type="unfinished"></translation>
+        <translation>نام پورت</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="229"/>
         <source>Baud Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>نرخ باد</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="231"/>
         <source>Data Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>بیت‌های داده</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="233"/>
         <source>Stop Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>بیت‌های توقف</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="235"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>زوجیت</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="237"/>
         <source>Flow Control</source>
-        <translation type="unfinished"></translation>
+        <translation>کنترل جریان</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="239"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>توضیحات</translation>
     </message>
 </context>
 <context>
@@ -85,52 +85,52 @@
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>فعال</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>غیرفعال</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="190"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>گزینه انتقال</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="192"/>
         <source>Server Address</source>
-        <translation type="unfinished"></translation>
+        <translation>آدرس سرور</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="194"/>
         <source>Server Port</source>
-        <translation type="unfinished"></translation>
+        <translation>پورت سرور</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="196"/>
         <source>Data Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>کانال داده</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="198"/>
         <source>Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>احراز هویت</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="200"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>نام کاربری</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="202"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>رمز عبور</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="204"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>توضیحات</translation>
     </message>
 </context>
 <context>
@@ -138,7 +138,7 @@
     <message>
         <location filename="../../../src/page/transfer/common/transfermodel.cpp" line="46"/>
         <source>Transfer %1</source>
-        <translation type="unfinished"></translation>
+        <translation>انتقال %1</translation>
     </message>
 </context>
 <context>
@@ -146,37 +146,37 @@
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="30"/>
         <source>Serial Port</source>
-        <translation type="unfinished"></translation>
+        <translation>پورت سریال</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="36"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>کلاینت TCP</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="41"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>سرور TCP</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="46"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>کلاینت UDP</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="51"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>سرور UDP</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="57"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation>کلاینت WebSocket</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="62"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation>سرور WebSocket</translation>
     </message>
 </context>
 </TS>

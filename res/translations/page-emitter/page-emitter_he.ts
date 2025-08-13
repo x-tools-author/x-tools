@@ -7,32 +7,32 @@
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="92"/>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="185"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>הפעל</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="92"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>בטל</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="155"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>הדגמה</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="187"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>תיאור</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="189"/>
         <source>Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>מרווח</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="191"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>נתונים</translation>
     </message>
 </context>
 </TS>

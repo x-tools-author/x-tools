@@ -6,78 +6,78 @@
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="106"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Нечетный</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="108"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Четный</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="110"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
+        <translation>Метка</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="112"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Пробел</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="114"/>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="122"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="118"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>Аппаратный</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="120"/>
         <source>Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Программный</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="225"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Параметры передачи</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="227"/>
         <source>Port Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя порта</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="229"/>
         <source>Baud Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Скорость передачи</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="231"/>
         <source>Data Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Биты данных</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="233"/>
         <source>Stop Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Стоп-биты</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="235"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Четность</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="237"/>
         <source>Flow Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Управление потоком</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="239"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Описание</translation>
     </message>
 </context>
 <context>
@@ -85,52 +85,52 @@
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Включить</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Отключить</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="190"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Параметры передачи</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="192"/>
         <source>Server Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адрес сервера</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="194"/>
         <source>Server Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт сервера</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="196"/>
         <source>Data Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Канал данных</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="198"/>
         <source>Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Аутентификация</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="200"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя пользователя</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="202"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/socket/sockettransfermodel.cpp" line="204"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Описание</translation>
     </message>
 </context>
 <context>
@@ -138,7 +138,7 @@
     <message>
         <location filename="../../../src/page/transfer/common/transfermodel.cpp" line="46"/>
         <source>Transfer %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Передача %1</translation>
     </message>
 </context>
 <context>
@@ -146,37 +146,37 @@
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="30"/>
         <source>Serial Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Последовательный порт</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="36"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP клиент</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="41"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP сервер</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="46"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP клиент</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="51"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP сервер</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="57"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket клиент</translation>
     </message>
     <message>
         <location filename="../../../src/page/transfer/transfersview.cpp" line="62"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket сервер</translation>
     </message>
 </context>
 </TS>

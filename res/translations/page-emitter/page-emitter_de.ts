@@ -7,32 +7,32 @@
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="92"/>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="185"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivieren</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="92"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktivieren</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="155"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>Demo</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="187"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="189"/>
         <source>Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Intervall</translation>
     </message>
     <message>
         <location filename="../../../src/page/emitter/emittermodel.cpp" line="191"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Daten</translation>
     </message>
 </context>
 </TS>

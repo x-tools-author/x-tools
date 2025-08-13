@@ -6,65 +6,65 @@
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Експорт</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="39"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="46"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="56"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Імпорт</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="68"/>
         <source>Disable all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимкнути всі елементи</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.ui" line="77"/>
         <location filename="../../../src/page/common/tableview.cpp" line="127"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистити</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="128"/>
         <source>Are you sure to clear all items?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ви впевнені, що хочете очистити всі елементи?</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="143"/>
         <source>No Item be Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Елемент не вибрано</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="143"/>
         <source>Please select a item first!</source>
-        <translation type="unfinished"></translation>
+        <translation>Будь ласка, спочатку виберіть елемент!</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="153"/>
         <location filename="../../../src/page/common/tableview.cpp" line="181"/>
         <source>Import data</source>
-        <translation type="unfinished"></translation>
+        <translation>Імпорт даних</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="155"/>
         <location filename="../../../src/page/common/tableview.cpp" line="183"/>
         <source>JSON (*.json);;All (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON (*.json);;Усі (*)</translation>
     </message>
 </context>
 </TS>

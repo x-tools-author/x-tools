@@ -7,42 +7,42 @@
         <location filename="../../../src/page/responder/respondermodel.cpp" line="107"/>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="222"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>啟用</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="107"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>停用</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="185"/>
         <source>Demo</source>
-        <translation type="unfinished"></translation>
+        <translation>示範</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="224"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="226"/>
         <source>Option</source>
-        <translation type="unfinished"></translation>
+        <translation>選項</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="228"/>
         <source>Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>延遲</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="230"/>
         <source>Reference Data</source>
-        <translation type="unfinished"></translation>
+        <translation>參考資料</translation>
     </message>
     <message>
         <location filename="../../../src/page/responder/respondermodel.cpp" line="232"/>
         <source>Response Data</source>
-        <translation type="unfinished"></translation>
+        <translation>回應資料</translation>
     </message>
 </context>
 </TS>

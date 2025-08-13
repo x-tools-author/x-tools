@@ -26,12 +26,12 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
         <source>Line</source>
-        <translation>折线</translation>
+        <translation>线条</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
         <source>Spline</source>
-        <translation>样条曲线</translation>
+        <translation>样条</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="20"/>
         <source>Frame Serial Number</source>
-        <translation>帧序号</translation>
+        <translation>帧序列号</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="21"/>
@@ -146,12 +146,12 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
         <source>Line</source>
-        <translation>折线</translation>
+        <translation>线条</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
         <source>Spline</source>
-        <translation>样条曲线</translation>
+        <translation>样条</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
@@ -184,12 +184,12 @@
     <message>
         <location filename="../../../src/page/panels/common/luapanel.ui" line="73"/>
         <source>Bypass</source>
-        <translation>旁路(直通)</translation>
+        <translation>跳过</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/common/luapanel.ui" line="90"/>
         <source>Table Parameters</source>
-        <translation>数组参数</translation>
+        <translation>表格参数</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/common/luapanel.ui" line="112"/>
@@ -209,7 +209,7 @@
     <message>
         <location filename="../../../src/page/panels/common/luapanel.cpp" line="39"/>
         <source>Lua Script(String)</source>
-        <translation>Lua脚本（字符串）</translation>
+        <translation>Lua脚本(字符串)</translation>
     </message>
 </context>
 <context>
@@ -278,7 +278,7 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation>全字匹配</translation>
+        <translation>全词匹配</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -288,12 +288,12 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="151"/>
         <source>Found %1 matches.</source>
-        <translation>找到%1个匹配项。</translation>
+        <translation>找到 %1 个匹配项。</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="190"/>
         <source>Line %1:</source>
-        <translation>第%1行：</translation>
+        <translation>第 %1 行：</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/search/searchpanel.cpp" line="224"/>

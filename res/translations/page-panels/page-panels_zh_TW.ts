@@ -6,37 +6,37 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>資料格式</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>通道</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>顏色</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>名稱</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>線圖</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>樣條線</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>散點圖</translation>
     </message>
 </context>
 <context>

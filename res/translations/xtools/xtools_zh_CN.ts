@@ -59,7 +59,7 @@
     <message>
         <location filename="../../../src/mainwindow.cpp" line="333"/>
         <source>Exit Application</source>
-        <translation>退出应用程序</translation>
+        <translation>退出程序</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="342"/>
@@ -109,7 +109,7 @@
     <message>
         <location filename="../../../src/mainwindow.cpp" line="459"/>
         <source>HDPI Policy</source>
-        <translation>高DPI策略</translation>
+        <translation>适配策略</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="503"/>

@@ -6,37 +6,37 @@
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>데이터 형식</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>채널</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>색상</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>이름</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>선</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>스플라인</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
         <source>Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>산점도</translation>
     </message>
 </context>
 <context>
@@ -45,13 +45,13 @@
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="60"/>
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="63"/>
         <source>Binary</source>
-        <translation type="unfinished"></translation>
+        <translation>바이너리</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="61"/>
         <location filename="../../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="64"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>텍스트</translation>
     </message>
 </context>
 <context>
@@ -59,17 +59,17 @@
     <message>
         <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="18"/>
         <source>Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Lua 스크립트</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="20"/>
         <source>Frame Serial Number</source>
-        <translation type="unfinished"></translation>
+        <translation>프레임 일련번호</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="21"/>
         <source>XYModem Sender</source>
-        <translation type="unfinished"></translation>
+        <translation>XYModem 송신기</translation>
     </message>
 </context>
 <context>
