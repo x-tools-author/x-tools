@@ -1427,29 +1427,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Probar</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="45"/>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="63"/>
         <source>Result data</source>
         <translation>Datos de resultado</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="65"/>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="90"/>
+        <source>Table Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="112"/>
+        <source>String Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="39"/>
         <source>Test data</source>
         <translation>Datos de prueba</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="82"/>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="73"/>
         <source>Bypass</source>
         <translation>Omitir</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="34"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="36"/>
         <source>Default Lua Script</source>
         <translation>Script Lua por defecto</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="35"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="37"/>
         <source>Checksum Lua Script</source>
         <translation>Script Lua de suma de verificación</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="39"/>
+        <source>Lua Script(String)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1476,13 +1491,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="324"/>
-        <location filename="../../src/mainwindow.cpp" line="807"/>
+        <location filename="../../src/mainwindow.cpp" line="806"/>
         <source>Import Parameters</source>
         <translation>Importar parámetros</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="328"/>
-        <location filename="../../src/mainwindow.cpp" line="820"/>
+        <location filename="../../src/mainwindow.cpp" line="819"/>
         <source>Export Parameters</source>
         <translation>Exportar parámetros</translation>
     </message>
@@ -1562,135 +1577,135 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="564"/>
+        <location filename="../../src/mainwindow.cpp" line="563"/>
         <source>&amp;Languages</source>
         <translation>&amp;Idiomas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="589"/>
+        <location filename="../../src/mainwindow.cpp" line="588"/>
         <source>&amp;View</source>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="641"/>
+        <location filename="../../src/mainwindow.cpp" line="640"/>
         <source>Stays on Top</source>
         <translation>Permanecer en primer plano</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="661"/>
+        <location filename="../../src/mainwindow.cpp" line="660"/>
         <source>&amp;Help</source>
         <translation>&amp;Ayuda</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="661"/>
         <source>About Qt</source>
         <translation>Acerca de Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="663"/>
-        <location filename="../../src/mainwindow.cpp" line="863"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="862"/>
         <source>About</source>
         <translation>Acerca de</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="667"/>
+        <location filename="../../src/mainwindow.cpp" line="666"/>
         <source>Screenshot</source>
         <translation>Captura de pantalla</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="676"/>
+        <location filename="../../src/mainwindow.cpp" line="675"/>
         <source>Buy from Store</source>
         <translation>Comprar en la tienda</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="682"/>
-        <location filename="../../src/mainwindow.cpp" line="719"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="718"/>
         <source>Release History</source>
         <translation>Historial de versiones</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="683"/>
+        <location filename="../../src/mainwindow.cpp" line="682"/>
         <source>Join in QQ Group</source>
         <translation>Unirse al grupo QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../src/mainwindow.cpp" line="685"/>
         <source>Online Manual</source>
         <translation>Manual en línea</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="689"/>
+        <location filename="../../src/mainwindow.cpp" line="688"/>
         <source>Get Sources from Github</source>
         <translation>Obtener fuentes de Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="692"/>
+        <location filename="../../src/mainwindow.cpp" line="691"/>
         <source>Get Sources from Gitee</source>
         <translation>Obtener fuentes de Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="709"/>
+        <location filename="../../src/mainwindow.cpp" line="708"/>
         <source>Third Party Open Source</source>
         <translation>Código abierto de terceros</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="738"/>
         <source>QR Code</source>
         <translation>Código QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="748"/>
+        <location filename="../../src/mainwindow.cpp" line="747"/>
         <source>User QQ Group</source>
         <translation>Grupo de usuarios QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="749"/>
+        <location filename="../../src/mainwindow.cpp" line="748"/>
         <source>Qt QQ Group</source>
         <translation>Grupo Qt QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="770"/>
+        <location filename="../../src/mainwindow.cpp" line="769"/>
         <source>Need to Reboot</source>
         <translation>Necesita reiniciar</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="771"/>
+        <location filename="../../src/mainwindow.cpp" line="770"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>La operación necesita reiniciar para tomar efecto, ¿reiniciar la aplicación ahora?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="809"/>
-        <location filename="../../src/mainwindow.cpp" line="822"/>
+        <location filename="../../src/mainwindow.cpp" line="808"/>
+        <location filename="../../src/mainwindow.cpp" line="821"/>
         <source>Json Files (*.json)</source>
         <translation>Archivos Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="851"/>
+        <location filename="../../src/mainwindow.cpp" line="850"/>
         <source>Unknown</source>
         <translation>Desconocido</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="857"/>
+        <location filename="../../src/mainwindow.cpp" line="856"/>
         <source>Commit hash</source>
         <translation>Hash de confirmación</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="859"/>
+        <location filename="../../src/mainwindow.cpp" line="858"/>
         <source>Commit time</source>
         <translation>Hora de confirmación</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="860"/>
+        <location filename="../../src/mainwindow.cpp" line="859"/>
         <source>Build Date</source>
         <translation>Fecha de compilación</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="861"/>
+        <location filename="../../src/mainwindow.cpp" line="860"/>
         <source>Copyright</source>
         <translation>Derechos de autor</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="862"/>
+        <location filename="../../src/mainwindow.cpp" line="861"/>
         <source>All rights reserved.</source>
         <translation>Todos los derechos reservados.</translation>
     </message>
