@@ -6,32 +6,32 @@
     <message>
         <location filename="../../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
         <source>Please input the data to generate QR code.</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入数据以生成二维码。</translation>
     </message>
     <message>
         <location filename="../../../src/tools/qrcode/qrcodeassistant.cpp" line="90"/>
         <source>Save QR Code Image</source>
-        <translation type="unfinished"></translation>
+        <translation>保存二维码图片</translation>
     </message>
     <message>
         <location filename="../../../src/tools/qrcode/qrcodeassistant.cpp" line="92"/>
         <source>PNG Images (*.png);;JPG Images (*.jpg)</source>
-        <translation type="unfinished"></translation>
+        <translation>PNG图片 (*.png);;JPG图片 (*.jpg)</translation>
     </message>
     <message>
         <location filename="../../../src/tools/qrcode/qrcodeassistant.ui" line="20"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>导出</translation>
     </message>
     <message>
         <location filename="../../../src/tools/qrcode/qrcodeassistant.ui" line="37"/>
         <source>Generate</source>
-        <translation type="unfinished"></translation>
+        <translation>生成</translation>
     </message>
 </context>
 </TS>
