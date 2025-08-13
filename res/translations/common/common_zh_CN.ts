@@ -141,5 +141,13 @@
         <source>Unidirectional</source>
         <translation>单向</translation>
     </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
 </context>
 </TS>
