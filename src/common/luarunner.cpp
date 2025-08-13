@@ -23,9 +23,9 @@ LuaRunner::~LuaRunner()
     }
 }
 
-QByteArray LuaRunner::execute(const QString &script, const QByteArray &data)
+QByteArray LuaRunner::execute(const QString &script, const QByteArray &data, int type)
 {
-    emit invokeExecute(script, data);
+    emit invokeExecute(script, data, type);
 
     QEventLoop loop;
     connect(this, &LuaRunner::executed, &loop, &QEventLoop::quit);
@@ -48,8 +48,8 @@ void LuaRunner::run()
     connect(this,
             &LuaRunner::invokeExecute,
             obj,
-            [this](const QString &functionName, const QByteArray &data) {
-                executeInThread(functionName, data);
+            [this](const QString &functionName, const QByteArray &data, int type) {
+                executeInThread(functionName, data, type);
             });
 
     exec();
@@ -58,7 +58,7 @@ void LuaRunner::run()
     obj = Q_NULLPTR;
 }
 
-void LuaRunner::executeInThread(const QString &script, const QByteArray &data)
+void LuaRunner::executeInThread(const QString &script, const QByteArray &data, int type)
 {
     m_error.clear();
     m_result.clear();
@@ -79,6 +79,15 @@ void LuaRunner::executeInThread(const QString &script, const QByteArray &data)
         return;
     }
 
+    if (type == ParameterTypeTable) {
+        executeInThreadTable(script, data);
+    } else if (type == ParameterTypeString) {
+        executeInThreadString(script, data);
+    }
+}
+
+void LuaRunner::executeInThreadTable(const QString &script, const QByteArray &data)
+{
     // 创建 Lua 表（数组）来存储字节数据
     lua_newtable(m_lua);
     for (int i = 0; i < data.size(); ++i) {
@@ -138,5 +147,28 @@ void LuaRunner::executeInThread(const QString &script, const QByteArray &data)
     }
 
     lua_pop(m_lua, 1); // 清除数据值
+    emit executed();
+}
+
+void LuaRunner::executeInThreadString(const QString &script, const QByteArray &data)
+{
+    lua_pushstring(m_lua, data);
+    if (lua_pcall(m_lua, 1, 1, 0) != LUA_OK) {
+        const char *err = lua_tostring(m_lua, -1);
+        m_error = QString("Failed to call the lua script: %1").arg(err);
+        lua_pop(m_lua, 1);
+        emit executed();
+        return;
+    }
+
+    if (!lua_isstring(m_lua, -1)) {
+        m_error = "Lua function 'data_handler' must return a string.";
+        lua_pop(m_lua, 1);
+        emit executed();
+        return;
+    }
+
+    m_result = lua_tostring(m_lua, -1);
+    lua_pop(m_lua, 1);
     emit executed();
 }

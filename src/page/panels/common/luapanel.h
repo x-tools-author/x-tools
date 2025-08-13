@@ -36,6 +36,7 @@ private:
 private:
     void onDefaultLuaScriptTriggered();
     void onCheckSumLuaScriptTriggered();
+    void onDefaultLuaScriptStringTriggered();
     void onTestFormatChanged();
     void onResultFormatChanged();
 

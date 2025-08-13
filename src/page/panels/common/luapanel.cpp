@@ -16,10 +16,12 @@
 
 struct LuaPanelDataKeys
 {
-    const QString Script = "script";
-    const QString TestFormat = "testFormat";
-    const QString ResultFormat = "resultFormat";
-    const QString Bypass = "bypass";
+    const QString type = "type";
+    const QString scriptTable = "scriptTable";
+    const QString scriptString = "scriptString";
+    const QString testFormat = "testFormat";
+    const QString resultFormat = "resultFormat";
+    const QString bypass = "bypass";
     const QString testData = "testData";
 };
 
@@ -33,6 +35,8 @@ LuaPanel::LuaPanel(QWidget *parent)
     m_menu = new QMenu(this);
     m_menu->addAction(tr("Default Lua Script"), this, &LuaPanel::onDefaultLuaScriptTriggered);
     m_menu->addAction(tr("Checksum Lua Script"), this, &LuaPanel::onCheckSumLuaScriptTriggered);
+    m_menu->addSeparator();
+    m_menu->addAction(tr("Lua Script(String)"), this, &LuaPanel::onDefaultLuaScriptStringTriggered);
     onDefaultLuaScriptTriggered();
 
     m_luaRunner = new LuaRunner(this);
@@ -56,10 +60,13 @@ QVariantMap LuaPanel::save() const
 {
     QVariantMap map = Panel::save();
     LuaPanelDataKeys keys;
-    map[keys.Script] = ui->plainTextEditScript->toPlainText();
-    map[keys.TestFormat] = ui->comboBoxTestFormat->currentData().toInt();
-    map[keys.ResultFormat] = ui->comboBoxResultFormat->currentData().toInt();
-    map[keys.Bypass] = ui->checkBoxBypass->isChecked();
+
+    map[keys.type] = ui->tabWidgetLua->currentIndex();
+    map[keys.scriptTable] = ui->plainTextEditScriptTable->toPlainText();
+    map[keys.scriptString] = ui->plainTextEditScriptString->toPlainText();
+    map[keys.testFormat] = ui->comboBoxTestFormat->currentData().toInt();
+    map[keys.resultFormat] = ui->comboBoxResultFormat->currentData().toInt();
+    map[keys.bypass] = ui->checkBoxBypass->isChecked();
     map[keys.testData] = ui->lineEditTestData->text();
     return map;
 }
@@ -71,22 +78,31 @@ void LuaPanel::load(const QVariantMap &parameters)
     int defaultTestFormat = static_cast<int>(TextFormat::Hex);
     QString defaultTestData = bytes2string(m_testData, defaultTestFormat);
     LuaPanelDataKeys keys;
-    ui->plainTextEditScript->setPlainText(parameters[keys.Script].toString());
-    if (ui->plainTextEditScript->toPlainText().isEmpty()) {
+
+    int type = parameters.value(keys.type, 0).toInt();
+    ui->tabWidgetLua->setCurrentIndex(type);
+
+    ui->plainTextEditScriptTable->setPlainText(parameters[keys.scriptTable].toString());
+    if (ui->plainTextEditScriptTable->toPlainText().isEmpty()) {
         onDefaultLuaScriptTriggered();
     }
 
-    int testFormat = parameters.value(keys.TestFormat, defaultTestFormat).toInt();
+    ui->plainTextEditScriptString->setPlainText(parameters[keys.scriptString].toString());
+    if (ui->plainTextEditScriptString->toPlainText().isEmpty()) {
+        onDefaultLuaScriptStringTriggered();
+    }
+
+    int testFormat = parameters.value(keys.testFormat, defaultTestFormat).toInt();
     int index = ui->comboBoxTestFormat->findData(testFormat);
     ui->comboBoxTestFormat->setCurrentIndex(index);
     setupTextFormatValidator(ui->lineEditTestData, testFormat);
 
-    int resultFormat = parameters.value(keys.ResultFormat, testFormat).toInt();
+    int resultFormat = parameters.value(keys.resultFormat, testFormat).toInt();
     index = ui->comboBoxResultFormat->findData(resultFormat);
     ui->comboBoxResultFormat->setCurrentIndex(index);
     setupTextFormatValidator(ui->lineEditResultData, resultFormat);
 
-    bool bypass = parameters.value(keys.Bypass, false).toBool();
+    bool bypass = parameters.value(keys.bypass, false).toBool();
     ui->checkBoxBypass->setChecked(bypass);
 
     QString testData = parameters.value(keys.testData, defaultTestData).toString();
@@ -103,7 +119,12 @@ QByteArray LuaPanel::handleData(const QByteArray &data) const
     if (ui->checkBoxBypass->isChecked()) {
         return data;
     } else {
-        return m_luaRunner->execute(ui->plainTextEditScript->toPlainText(), data);
+        int type = ui->tabWidgetLua->currentIndex();
+        if (type == LuaRunner::ParameterTypeTable) {
+            return m_luaRunner->execute(ui->plainTextEditScriptTable->toPlainText(), data, type);
+        } else {
+            return m_luaRunner->execute(ui->plainTextEditScriptString->toPlainText(), data, type);
+        }
     }
 }
 
@@ -117,9 +138,11 @@ void LuaPanel::onDefaultLuaScriptTriggered()
     QFile file(":/res/scripts/lua/default.lua");
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QString script = file.readAll();
-        ui->plainTextEditScript->setPlainText(script);
+        ui->plainTextEditScriptTable->setPlainText(script);
         file.close();
     }
+
+    ui->tabWidgetLua->setCurrentIndex(0);
 }
 
 void LuaPanel::onCheckSumLuaScriptTriggered()
@@ -127,9 +150,23 @@ void LuaPanel::onCheckSumLuaScriptTriggered()
     QFile file(":/res/scripts/lua/check_sum.lua");
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QString script = file.readAll();
-        ui->plainTextEditScript->setPlainText(script);
+        ui->plainTextEditScriptTable->setPlainText(script);
         file.close();
     }
+
+    ui->tabWidgetLua->setCurrentIndex(0);
+}
+
+void LuaPanel::onDefaultLuaScriptStringTriggered()
+{
+    QFile file(":/res/scripts/lua/default_string.lua");
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QString script = file.readAll();
+        ui->plainTextEditScriptString->setPlainText(script);
+        file.close();
+    }
+
+    ui->tabWidgetLua->setCurrentIndex(1);
 }
 
 void LuaPanel::onTestFormatChanged()
@@ -150,11 +187,19 @@ void LuaPanel::onTestButtonClicked()
 {
     ui->labelInfo->clear();
 
-    QString script = ui->plainTextEditScript->toPlainText();
+    int type = ui->tabWidgetLua->currentIndex();
+    QString script;
+    if (type == LuaRunner::ParameterTypeTable) {
+        script = ui->plainTextEditScriptTable->toPlainText();
+    } else {
+        script = ui->plainTextEditScriptString->toPlainText();
+    }
+
     int testFormat = ui->comboBoxTestFormat->currentData().toInt();
     QByteArray data = string2bytes(ui->lineEditTestData->text(), testFormat);
     int resultFormat = ui->comboBoxResultFormat->currentData().toInt();
-    m_resultData = m_luaRunner->execute(script, data);
+
+    m_resultData = m_luaRunner->execute(script, data, type);
     QString str = bytes2string(m_resultData, resultFormat);
     ui->lineEditResultData->setText(str);
 

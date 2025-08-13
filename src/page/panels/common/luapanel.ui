@@ -26,47 +26,28 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="2" column="3">
+   <item row="2" column="4">
     <widget class="QPushButton" name="pushButtonTest">
      <property name="text">
       <string>Test</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="4">
-    <widget class="QPlainTextEdit" name="plainTextEditScript"/>
-   </item>
    <item row="2" column="1">
-    <widget class="QComboBox" name="comboBoxTestFormat"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Result data</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QComboBox" name="comboBoxResultFormat"/>
-   </item>
-   <item row="3" column="2">
-    <widget class="QLineEdit" name="lineEditResultData">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QLineEdit" name="lineEditTestData"/>
-   </item>
-   <item row="2" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Test data</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="4">
+   <item row="3" column="3">
+    <widget class="QLineEdit" name="lineEditResultData">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="4">
     <widget class="QLabel" name="labelInfo">
      <property name="styleSheet">
       <string notr="true">color:red</string>
@@ -76,11 +57,78 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="3">
+   <item row="3" column="1">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Result data</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QLineEdit" name="lineEditTestData"/>
+   </item>
+   <item row="3" column="4">
     <widget class="QCheckBox" name="checkBoxBypass">
      <property name="text">
       <string>Bypass</string>
      </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QComboBox" name="comboBoxTestFormat"/>
+   </item>
+   <item row="3" column="2">
+    <widget class="QComboBox" name="comboBoxResultFormat"/>
+   </item>
+   <item row="0" column="1" colspan="4">
+    <widget class="QTabWidget" name="tabWidgetLua">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabTable">
+      <attribute name="title">
+       <string>Table Parameters</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>4</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>4</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QPlainTextEdit" name="plainTextEditScriptTable"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabString">
+      <attribute name="title">
+       <string>String Parameters</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>4</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>4</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QPlainTextEdit" name="plainTextEditScriptString"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
   </layout>

@@ -20,10 +20,13 @@ class LuaRunner : public QThread
 {
     Q_OBJECT
 public:
+    enum ParameterType { ParameterTypeTable, ParameterTypeString };
+
+public:
     explicit LuaRunner(QObject *parent = nullptr);
     ~LuaRunner() override;
 
-    QByteArray execute(const QString &script, const QByteArray &data);
+    QByteArray execute(const QString &script, const QByteArray &data, int type);
     QString error() const;
 
 protected:
@@ -35,8 +38,10 @@ private:
     lua_State *m_lua{nullptr};
 
 private:
-    Q_SIGNAL void invokeExecute(const QString &functionName, const QByteArray &data);
+    Q_SIGNAL void invokeExecute(const QString &functionName, const QByteArray &data, int type);
     Q_SIGNAL void executed();
 
-    void executeInThread(const QString &script, const QByteArray &data);
+    void executeInThread(const QString &script, const QByteArray &data, int type);
+    void executeInThreadTable(const QString &script, const QByteArray &data);
+    void executeInThreadString(const QString &script, const QByteArray &data);
 };

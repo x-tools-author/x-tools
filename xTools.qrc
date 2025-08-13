@@ -21,5 +21,6 @@
         <file>res/icons/dock_to_right.svg</file>
         <file>res/scripts/lua/default.lua</file>
         <file>res/scripts/lua/check_sum.lua</file>
+        <file>res/scripts/lua/default_string.lua</file>
     </qresource>
 </RCC>
