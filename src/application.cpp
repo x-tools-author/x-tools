@@ -15,6 +15,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QEventLoop>
+#include <QFileInfoList>
 #include <QLocale>
 #include <QPainter>
 #include <QScreen>
@@ -175,18 +176,36 @@ void Application::execMs(int ms)
 
 void setupLanguage(const QString &qmFile)
 {
+    QString appPath = QCoreApplication::applicationDirPath();
+    QString tmp = qmFile;
+    tmp = tmp.remove(appPath + "/");
+
     QTranslator *translator = new QTranslator();
     if (!translator->load(qmFile)) {
-        auto info = QString("The language file(%1) can not be loaded, English will be used.")
-                        .arg(qmFile);
-        qWarning() << info;
+        qWarning() << QString("The qm file(%1) can not be loaded.").arg(tmp);
         return;
     }
 
     if (!qApp->installTranslator(translator)) {
-        qWarning() << "The language has been setup, English will be used.";
-    } else {
-        qInfo() << "The language has been setup, current language file is:" << qmFile;
+        qWarning() << QString("The qm file(%1) can not be installed.").arg(tmp);
+    }
+
+    qInfo() << QString("The qm file(%1) is installed.").arg(tmp);
+}
+
+void findQmFile(const QString &path, const QString &language, QStringList &qmFiles)
+{
+    QDir dir(path);
+    QFileInfoList infos = dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
+    for (const QFileInfo &info : infos) {
+        if (info.isDir()) {
+            findQmFile(info.absoluteFilePath(), language, qmFiles);
+        } else if (info.isFile() && info.suffix().toLower() == "qm") {
+            QString fileName = info.fileName();
+            if (fileName.endsWith("_" + language + ".qm")) {
+                qmFiles.append(info.absoluteFilePath());
+            }
+        }
     }
 }
 
@@ -197,11 +216,11 @@ void Application::setupLanguage()
     QString language = settings->value(SettingsKey().language, defaultLanguage).toString();
 
     QString appPath = QApplication::applicationDirPath();
-    QString qtQmFile = QString("%1/translations/qt_%2.qm").arg(appPath, language);
-    ::setupLanguage(qtQmFile);
-
-    QString xToolsQmFile = QString("%1/translations/xTools_%2.qm").arg(appPath, language);
-    ::setupLanguage(xToolsQmFile);
+    QStringList qmFiles;
+    findQmFile(appPath + "/translations", language, qmFiles);
+    for (const QString &qmFile : qmFiles) {
+        ::setupLanguage(qmFile);
+    }
 }
 
 void Application::setupColorScheme()
