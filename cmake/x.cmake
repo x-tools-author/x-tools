@@ -119,6 +119,35 @@ endfunction()
 
 # --------------------------------------------------------------------------------------------------
 # Generate translations files
+# cmake-format: off
+set(X_LANGUAGES "en" "zh_CN" "zh_TW" "ar" "cs" "da" "de" "es" "fa" "fi" "fr" "he" "uk" "it" "ja" "ko" "lt" "nl" "pl" "pt" "ru" "sk" "sl" "sv")
+# cmake-format: on
+
+# Generate translations files for module
+function(x_generate_module_translations module_name dir recurse)
+  if(QT_VERSION VERSION_LESS "6.7.0")
+    return()
+  endif()
+
+  set(ts_files "")
+  foreach(lang IN LISTS X_LANGUAGES)
+    set(ts_file ${CMAKE_CURRENT_LIST_DIR}/res/translations/${module_name}/${module_name}_${lang}.ts)
+    list(APPEND ts_files ${ts_file})
+  endforeach()
+
+  if(recurse)
+    file(GLOB_RECURSE files ${dir}/*.h ${dir}/*.cpp ${dir}/*.ui)
+  else()
+    file(GLOB files ${dir}/*.h ${dir}/*.cpp ${dir}/*.ui)
+  endif()
+  qt_add_lupdate(TS_FILES ${ts_files} LUPDATE_TARGET ${module_name}_lupdate SOURCES ${files})
+  set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations")
+  set_source_files_properties(${ts_files} PROPERTIES OUTPUT_LOCATION ${out_dir})
+  qt_add_lrelease(TS_FILES ${ts_files})
+  set_property(TARGET ${module_name}_lupdate PROPERTY FOLDER "i18n")
+endfunction()
+
+# Generate translations files for application
 function(x_generate_translations target)
   set(APP_TS_FILES "")
   list(APPEND APP_TS_FILES ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_en.ts)
@@ -156,7 +185,7 @@ function(x_generate_translations target)
     if(NOT QT_VERSION VERSION_LESS "6.7.0")
       qt_add_lupdate(SOURCE_TARGETS ${target} TS_FILES ${APP_TS_FILES} LUPDATE_TARGET ${target}_lupdate NO_GLOBAL_TARGET)
     else()
-      qt_add_lupdate(${target} TS_FILES ${APP_TS_FILES})
+      qt_add_lupdate( TS_FILES ${APP_TS_FILES})
     endif()
     # cmake-format: on
 
