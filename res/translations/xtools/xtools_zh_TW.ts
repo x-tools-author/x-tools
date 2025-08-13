@@ -6,12 +6,12 @@
     <message>
         <location filename="../../../src/application.cpp" line="284"/>
         <source>Transfer rx bytes with right page</source>
-        <translation type="unfinished"></translation>
+        <translation>以右頁面傳輸接收位元組</translation>
     </message>
     <message>
         <location filename="../../../src/application.cpp" line="289"/>
         <source>Transfer rx bytes with left page</source>
-        <translation type="unfinished"></translation>
+        <translation>以左頁面傳輸接收位元組</translation>
     </message>
 </context>
 <context>
@@ -19,7 +19,7 @@
     <message>
         <location filename="../../../src/layoutmanager.cpp" line="75"/>
         <source>Node Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>節點編輯器</translation>
     </message>
 </context>
 <context>
@@ -27,242 +27,242 @@
     <message>
         <location filename="../../../src/mainwindow.cpp" line="130"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>一般</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="312"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>檔案(&amp;F)</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="314"/>
         <source>New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>新視窗</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="322"/>
         <source>Save Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>儲存參數</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="324"/>
         <location filename="../../../src/mainwindow.cpp" line="806"/>
         <source>Import Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>匯入參數</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="328"/>
         <location filename="../../../src/mainwindow.cpp" line="819"/>
         <source>Export Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>匯出參數</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="333"/>
         <source>Exit Application</source>
-        <translation type="unfinished"></translation>
+        <translation>退出應用程式</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="342"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>工具(&amp;T)</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="345"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>新增</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="381"/>
         <source>&amp;Options</source>
-        <translation type="unfinished"></translation>
+        <translation>選項(&amp;O)</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="390"/>
         <source>Use System Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>使用系統代理</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="400"/>
         <source>Exit to System Tray</source>
-        <translation type="unfinished"></translation>
+        <translation>退出到系統托盤</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="418"/>
         <source>Application Style</source>
-        <translation type="unfinished"></translation>
+        <translation>應用程式樣式</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="441"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="444"/>
         <source>Clear Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>清除設定</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="450"/>
         <source>Open Settings Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>開啟設定目錄</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="459"/>
         <source>HDPI Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>HDPI 政策</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="503"/>
         <source>Color Scheme</source>
-        <translation type="unfinished"></translation>
+        <translation>色彩方案</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="505"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>深色</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="506"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>淺色</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="507"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>系統</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="563"/>
         <source>&amp;Languages</source>
-        <translation type="unfinished"></translation>
+        <translation>語言(&amp;L)</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="588"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>檢視(&amp;V)</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="640"/>
         <source>Stays on Top</source>
-        <translation type="unfinished"></translation>
+        <translation>置頂顯示</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="660"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>說明(&amp;H)</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="661"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>關於 Qt</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="662"/>
         <location filename="../../../src/mainwindow.cpp" line="862"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>關於</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="666"/>
         <source>Screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>螢幕截圖</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="675"/>
         <source>Buy from Store</source>
-        <translation type="unfinished"></translation>
+        <translation>商店購買</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="681"/>
         <location filename="../../../src/mainwindow.cpp" line="718"/>
         <source>Release History</source>
-        <translation type="unfinished"></translation>
+        <translation>版本歷史</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="682"/>
         <source>Join in QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>加入 QQ 群</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="685"/>
         <source>Online Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>線上手冊</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="688"/>
         <source>Get Sources from Github</source>
-        <translation type="unfinished"></translation>
+        <translation>從 Github 取得原始碼</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="691"/>
         <source>Get Sources from Gitee</source>
-        <translation type="unfinished"></translation>
+        <translation>從 Gitee 取得原始碼</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="708"/>
         <source>Third Party Open Source</source>
-        <translation type="unfinished"></translation>
+        <translation>第三方開源</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="738"/>
         <source>QR Code</source>
-        <translation type="unfinished"></translation>
+        <translation>QR 碼</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="747"/>
         <source>User QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>用戶 QQ 群</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="748"/>
         <source>Qt QQ Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt QQ 群</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="769"/>
         <source>Need to Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>需要重啟</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="770"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="unfinished"></translation>
+        <translation>此操作需要重啟才能生效，現在重啟應用程式嗎？</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="808"/>
         <location filename="../../../src/mainwindow.cpp" line="821"/>
         <source>Json Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>Json 檔案 (*.json)</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="850"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>未知</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="856"/>
         <source>Commit hash</source>
-        <translation type="unfinished"></translation>
+        <translation>提交雜湊</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="858"/>
         <source>Commit time</source>
-        <translation type="unfinished"></translation>
+        <translation>提交時間</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="859"/>
         <source>Build Date</source>
-        <translation type="unfinished"></translation>
+        <translation>建置日期</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="860"/>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation>版權</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="861"/>
         <source>All rights reserved.</source>
-        <translation type="unfinished"></translation>
+        <translation>保留所有權利。</translation>
     </message>
 </context>
 <context>
@@ -270,37 +270,37 @@
     <message>
         <location filename="../../../src/main.cpp" line="35"/>
         <source>Application is booting...</source>
-        <translation type="unfinished"></translation>
+        <translation>通過右頁傳輸接收字節</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="464"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>通過左頁傳輸接收字節</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="465"/>
         <source>Round up for .5 and above</source>
-        <translation type="unfinished"></translation>
+        <translation>0.5 及以上四捨五入</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="466"/>
         <source>Always round up</source>
-        <translation type="unfinished"></translation>
+        <translation>總是四捨五入</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="467"/>
         <source>Always round down</source>
-        <translation type="unfinished"></translation>
+        <translation>總是向下取整</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="468"/>
         <source>Round up for .75 and above</source>
-        <translation type="unfinished"></translation>
+        <translation>0.75 及以上四捨五入</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="469"/>
         <source>Don&apos;t round</source>
-        <translation type="unfinished"></translation>
+        <translation>不取整</translation>
     </message>
 </context>
 <context>
@@ -308,17 +308,17 @@
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="19"/>
         <source>xTools</source>
-        <translation type="unfinished"></translation>
+        <translation>xTools</translation>
     </message>
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="22"/>
         <source>Open main window</source>
-        <translation type="unfinished"></translation>
+        <translation>開啟主視窗</translation>
     </message>
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="24"/>
         <source>Exit program</source>
-        <translation type="unfinished"></translation>
+        <translation>退出程式</translation>
     </message>
 </context>
 </TS>
