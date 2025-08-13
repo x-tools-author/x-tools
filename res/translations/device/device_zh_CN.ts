@@ -250,7 +250,7 @@
     <message>
         <location filename="../../../src/device/serialportui.ui" line="58"/>
         <source>Flow control</source>
-        <translation>流控</translation>
+        <translation>流控位</translation>
     </message>
     <message>
         <location filename="../../../src/device/serialportui.ui" line="71"/>
@@ -260,12 +260,12 @@
     <message>
         <location filename="../../../src/device/serialportui.ui" line="85"/>
         <source>Ignored busy device</source>
-        <translation>忽略忙设备</translation>
+        <translation>忽略被占用设备</translation>
     </message>
     <message>
         <location filename="../../../src/device/serialportui.ui" line="101"/>
         <source>Port name</source>
-        <translation>端口名称</translation>
+        <translation>端口号</translation>
     </message>
     <message>
         <location filename="../../../src/device/serialportui.ui" line="117"/>
@@ -280,7 +280,7 @@
     <message>
         <location filename="../../../src/device/serialportui.ui" line="162"/>
         <source>Optimized frame</source>
-        <translation>优化帧</translation>
+        <translation>优化帧处理（粘包处理）</translation>
     </message>
 </context>
 <context>
@@ -298,7 +298,7 @@
     <message>
         <location filename="../../../src/device/socketui.ui" line="55"/>
         <source>Write to</source>
-        <translation>写入到</translation>
+        <translation>发送至</translation>
     </message>
     <message>
         <location filename="../../../src/device/socketui.ui" line="62"/>

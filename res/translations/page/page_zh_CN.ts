@@ -6,7 +6,7 @@
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="22"/>
         <source>Save tx data</source>
-        <translation>保存发送数据</translation>
+        <translation>保存发送</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="32"/>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="49"/>
         <source>Save rx data</source>
-        <translation>保存接收数据</translation>
+        <translation>保存接收</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="59"/>
@@ -204,7 +204,7 @@
     <message>
         <location filename="../../../src/page/page.ui" line="215"/>
         <source>Terminal</source>
-        <translation>终端</translation>
+        <translation>终端模式</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="235"/>
@@ -245,22 +245,22 @@
     <message>
         <location filename="../../../src/page/page.ui" line="547"/>
         <source>Presets</source>
-        <translation>预设</translation>
+        <translation>预设数据</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="552"/>
         <source>Emitter</source>
-        <translation>发送端</translation>
+        <translation>定时发送</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="557"/>
         <source>Responder</source>
-        <translation>响应端</translation>
+        <translation>自动应答</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="562"/>
         <source>Transfers</source>
-        <translation>传输</translation>
+        <translation>数据转发</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.cpp" line="375"/>
