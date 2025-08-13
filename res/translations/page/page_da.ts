@@ -6,53 +6,53 @@
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="22"/>
         <source>Save tx data</source>
-        <translation type="unfinished"></translation>
+        <translation>Gem tx-data</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="32"/>
         <source>Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Browser</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="39"/>
         <source>Save millisecond</source>
-        <translation type="unfinished"></translation>
+        <translation>Gem millisekund</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="49"/>
         <source>Save rx data</source>
-        <translation type="unfinished"></translation>
+        <translation>Gem rx-data</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="59"/>
         <source>Save Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Gem dato</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="69"/>
         <location filename="../../../src/page/devicesettings.cpp" line="151"/>
         <source>Save to file</source>
-        <translation type="unfinished"></translation>
+        <translation>Gem til fil</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="76"/>
         <source>Save Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Gem tid</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="94"/>
         <source>Save format</source>
-        <translation type="unfinished"></translation>
+        <translation>Gem format</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="104"/>
         <source>Max bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Maks bytes</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.cpp" line="153"/>
         <source>Text File(*.txt)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstfil (*.txt)</translation>
     </message>
 </context>
 <context>
@@ -60,47 +60,47 @@
     <message>
         <location filename="../../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis datavisning</translation>
     </message>
     <message>
         <location filename="../../../src/page/inputsettings.ui" line="32"/>
         <source>Append prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj præfiks</translation>
     </message>
     <message>
         <location filename="../../../src/page/inputsettings.ui" line="45"/>
         <source>Append suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj suffiks</translation>
     </message>
     <message>
         <location filename="../../../src/page/inputsettings.ui" line="52"/>
         <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation>Escape-tegn</translation>
     </message>
     <message>
         <location filename="../../../src/page/inputsettings.ui" line="93"/>
         <source>CRC end index</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC slutindeks</translation>
     </message>
     <message>
         <location filename="../../../src/page/inputsettings.ui" line="109"/>
         <source>CRC start index</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC startindeks</translation>
     </message>
     <message>
         <location filename="../../../src/page/inputsettings.ui" line="122"/>
         <source>CRC arithmetic</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC aritmetik</translation>
     </message>
     <message>
         <location filename="../../../src/page/inputsettings.ui" line="131"/>
         <source>Append CRC</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj CRC</translation>
     </message>
     <message>
         <location filename="../../../src/page/inputsettings.ui" line="138"/>
         <source>Big endian</source>
-        <translation type="unfinished"></translation>
+        <translation>Big endian</translation>
     </message>
 </context>
 <context>
@@ -108,27 +108,27 @@
     <message>
         <location filename="../../../src/page/outputsettings.ui" line="20"/>
         <source>Enable highlighter</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivér fremhævning</translation>
     </message>
     <message>
         <location filename="../../../src/page/outputsettings.ui" line="33"/>
         <source>Filter text</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrer tekst</translation>
     </message>
     <message>
         <location filename="../../../src/page/outputsettings.ui" line="43"/>
         <source>Hello,Word</source>
-        <translation type="unfinished"></translation>
+        <translation>Hej, Verden</translation>
     </message>
     <message>
         <location filename="../../../src/page/outputsettings.ui" line="53"/>
         <source>Show statistician</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis statistik</translation>
     </message>
     <message>
         <location filename="../../../src/page/outputsettings.ui" line="60"/>
         <source>Enable filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivér filter</translation>
     </message>
 </context>
 <context>
@@ -136,156 +136,156 @@
     <message>
         <location filename="../../../src/page/page.ui" line="47"/>
         <source>Cycle interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Cykelinterval</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="56"/>
         <location filename="../../../src/page/page.ui" line="74"/>
         <location filename="../../../src/page/page.ui" line="244"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Indstillinger</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="63"/>
         <location filename="../../../src/page/page.cpp" line="541"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Åbn</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="81"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryd</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="122"/>
         <source>Rx</source>
-        <translation type="unfinished"></translation>
+        <translation>Rx</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="129"/>
         <source>Tx</source>
-        <translation type="unfinished"></translation>
+        <translation>Tx</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="136"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Dato</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="143"/>
         <source>Flag</source>
-        <translation type="unfinished"></translation>
+        <translation>Flag</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="150"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Tid</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="157"/>
         <source>Ms</source>
-        <translation type="unfinished"></translation>
+        <translation>Ms</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="177"/>
         <source>Output control</source>
-        <translation type="unfinished"></translation>
+        <translation>Outputkontrol</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="199"/>
         <source>Input control</source>
-        <translation type="unfinished"></translation>
+        <translation>Inputkontrol</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="208"/>
         <source>Wrap</source>
-        <translation type="unfinished"></translation>
+        <translation>Ombryd</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="215"/>
         <source>Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="235"/>
         <source>Communication control</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommunikationskontrol</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="251"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Send</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="260"/>
         <location filename="../../../src/page/page.ui" line="267"/>
         <source>Text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstformat</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="288"/>
         <source>IO</source>
-        <translation type="unfinished"></translation>
+        <translation>IO</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="335"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Output</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="498"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>Input</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="505"/>
         <source>Preset data list</source>
-        <translation type="unfinished"></translation>
+        <translation>Forudindstillet dataliste</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="547"/>
         <source>Presets</source>
-        <translation type="unfinished"></translation>
+        <translation>Forudindstillinger</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="552"/>
         <source>Emitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Sender</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="557"/>
         <source>Responder</source>
-        <translation type="unfinished"></translation>
+        <translation>Modtager</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="562"/>
         <source>Transfers</source>
-        <translation type="unfinished"></translation>
+        <translation>Overførsler</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.cpp" line="375"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktiver</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.cpp" line="532"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Luk</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.cpp" line="548"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Der opstod en fejl</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.cpp" line="554"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Advarsel</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.cpp" line="727"/>
         <source>[%1][%2][%3][%4]</source>
-        <translation type="unfinished"></translation>
+        <translation>[%1][%2][%3][%4]</translation>
     </message>
 </context>
 </TS>
