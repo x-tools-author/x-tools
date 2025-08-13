@@ -298,7 +298,7 @@
     <message>
         <location filename="../../../src/device/socketui.ui" line="55"/>
         <source>Write to</source>
-        <translation>发送至</translation>
+        <translation>发送的目标</translation>
     </message>
     <message>
         <location filename="../../../src/device/socketui.ui" line="62"/>
@@ -308,7 +308,7 @@
     <message>
         <location filename="../../../src/device/socketui.ui" line="79"/>
         <source>Authentication</source>
-        <translation>认证</translation>
+        <translation>启用用户密码认证</translation>
     </message>
     <message>
         <location filename="../../../src/device/socketui.ui" line="86"/>
@@ -343,22 +343,22 @@
     <message>
         <location filename="../../../src/device/socketui.ui" line="148"/>
         <source>Multicast IP</source>
-        <translation>组播IP</translation>
+        <translation>组播地址</translation>
     </message>
     <message>
         <location filename="../../../src/device/socketui.ui" line="171"/>
         <source>Server IP</source>
-        <translation>服务器IP</translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <location filename="../../../src/device/socketui.ui" line="188"/>
         <source>User name</source>
-        <translation>用户名</translation>
+        <translation>用户</translation>
     </message>
     <message>
         <location filename="../../../src/device/socketui.ui" line="195"/>
         <source>Channel</source>
-        <translation>通道</translation>
+        <translation>数据的通道</translation>
     </message>
     <message>
         <location filename="../../../src/device/socketui.ui" line="202"/>
@@ -425,7 +425,7 @@
     <message>
         <location filename="../../../src/device/udpmulticastui.ui" line="55"/>
         <source>Multicast IP</source>
-        <translation>组播IP</translation>
+        <translation>组播地址</translation>
     </message>
     <message>
         <location filename="../../../src/device/udpmulticastui.ui" line="85"/>

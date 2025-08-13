@@ -89,12 +89,12 @@
     <message>
         <location filename="../../../src/mainwindow.cpp" line="418"/>
         <source>Application Style</source>
-        <translation>应用程序样式</translation>
+        <translation>应用样式</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="441"/>
         <source>Settings</source>
-        <translation>设置</translation>
+        <translation>配置目录</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="444"/>
@@ -170,7 +170,7 @@
     <message>
         <location filename="../../../src/mainwindow.cpp" line="675"/>
         <source>Buy from Store</source>
-        <translation>在商店购买</translation>
+        <translation>从商店购买</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="681"/>

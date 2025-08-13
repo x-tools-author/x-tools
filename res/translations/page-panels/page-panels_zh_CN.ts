@@ -184,12 +184,12 @@
     <message>
         <location filename="../../../src/page/panels/common/luapanel.ui" line="73"/>
         <source>Bypass</source>
-        <translation>旁路</translation>
+        <translation>旁路(直通)</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/common/luapanel.ui" line="90"/>
         <source>Table Parameters</source>
-        <translation>表参数</translation>
+        <translation>数组参数</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/common/luapanel.ui" line="112"/>

@@ -32,7 +32,7 @@
         <location filename="../../../src/page/devicesettings.ui" line="69"/>
         <location filename="../../../src/page/devicesettings.cpp" line="151"/>
         <source>Save to file</source>
-        <translation>保存到文件</translation>
+        <translation>存至文件</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="76"/>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="104"/>
         <source>Max bytes</source>
-        <translation>最大字节数</translation>
+        <translation>最大字节</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.cpp" line="153"/>
@@ -143,7 +143,7 @@
         <location filename="../../../src/page/page.ui" line="74"/>
         <location filename="../../../src/page/page.ui" line="244"/>
         <source>Settings</source>
-        <translation>设置</translation>
+        <translation>更多设置</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="63"/>

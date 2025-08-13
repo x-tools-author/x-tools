@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>232</width>
-    <height>326</height>
+    <height>328</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,8 +26,19 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="12" column="1">
-    <widget class="QLineEdit" name="lineEditUser"/>
+   <item row="7" column="0">
+    <widget class="QLabel" name="labelWriteTo">
+     <property name="text">
+      <string>Write to</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="labelPath">
+     <property name="text">
+      <string>Path</string>
+     </property>
+    </widget>
    </item>
    <item row="7" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -49,17 +60,37 @@
      </item>
     </layout>
    </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="labelWriteTo">
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="lineEditMulticastIp">
      <property name="text">
-      <string>Write to</string>
+      <string notr="true">239.168.3.255</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="labelMulticastPort">
+   <item row="11" column="0" colspan="2">
+    <widget class="QCheckBox" name="checkBoxAuthentication">
      <property name="text">
-      <string>Multicast Port</string>
+      <string>Authentication</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="labelServerIp">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Server IP</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="labelChannel">
+     <property name="text">
+      <string>Channel</string>
      </property>
     </widget>
    </item>
@@ -73,40 +104,10 @@
      </property>
     </widget>
    </item>
-   <item row="11" column="0" colspan="2">
-    <widget class="QCheckBox" name="checkBoxAuthentication">
-     <property name="text">
-      <string>Authentication</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="lineEditPath">
-     <property name="placeholderText">
-      <string>post/hello</string>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="1">
-    <widget class="QLineEdit" name="lineEditPassword"/>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="labelServerPort">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Server port</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="labelPath">
-     <property name="text">
-      <string>Path</string>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="comboBoxServerIp">
+     <property name="editable">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -128,17 +129,27 @@
      </item>
     </layout>
    </item>
-   <item row="13" column="0">
-    <widget class="QLabel" name="labelPassword">
-     <property name="text">
-      <string>Password</string>
+   <item row="9" column="1">
+    <widget class="QComboBox" name="comboBoxChannel"/>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="lineEditPath">
+     <property name="placeholderText">
+      <string>post/hello</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="lineEditMulticastIp">
+   <item row="10" column="0" colspan="2">
+    <widget class="QCheckBox" name="checkBoxSecureMode">
      <property name="text">
-      <string notr="true">239.168.3.255</string>
+      <string>Secure Mode</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="labelMulticastPort">
+     <property name="text">
+      <string>Multicast Port</string>
      </property>
     </widget>
    </item>
@@ -146,6 +157,19 @@
     <widget class="QLabel" name="labelMulticastIp">
      <property name="text">
       <string>Multicast IP</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="labelServerPort">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Server port</string>
      </property>
     </widget>
    </item>
@@ -159,49 +183,29 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="labelServerIp">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Server IP</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QComboBox" name="comboBoxServerIp">
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="1">
-    <widget class="QComboBox" name="comboBoxChannel"/>
-   </item>
-   <item row="12" column="0">
-    <widget class="QLabel" name="labelUser">
-     <property name="text">
-      <string>User name</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0">
-    <widget class="QLabel" name="labelChannel">
-     <property name="text">
-      <string>Channel</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="0" colspan="2">
-    <widget class="QCheckBox" name="checkBoxSecureMode">
-     <property name="text">
-      <string>Secure Mode</string>
-     </property>
-    </widget>
+   <item row="12" column="0" colspan="2">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelUser">
+       <property name="text">
+        <string>User name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEditUser"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelPassword">
+       <property name="text">
+        <string>Password</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEditPassword"/>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
