@@ -4,43 +4,43 @@
 <context>
     <name>MdnsAssistant</name>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="64"/>
         <source>Error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Сталася помилка</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="65"/>
         <source>Service type can not be empty, please input then try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип служби не може бути порожнім, введіть його й спробуйте ще раз.</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="97"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="101"/>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім’я хоста</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="105"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="109"/>
         <source>Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Атрибути</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Зупинити</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
+        <translation>Тип служби</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Запустити</translation>
+    </message>
+</context>
+</TS>
         <translation type="unfinished"></translation>
     </message>
     <message>

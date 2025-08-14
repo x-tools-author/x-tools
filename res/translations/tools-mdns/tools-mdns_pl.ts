@@ -4,43 +4,43 @@
 <context>
     <name>MdnsAssistant</name>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="64"/>
         <source>Error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Wystąpił błąd</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="65"/>
         <source>Service type can not be empty, please input then try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ usługi nie może być pusty. Wprowadź go i spróbuj ponownie.</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="97"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="101"/>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa hosta</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="105"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="109"/>
         <source>Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Atrybuty</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Zatrzymaj</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
+        <translation>Typ usługi</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Uruchom</translation>
+    </message>
+</context>
+</TS>
         <translation type="unfinished"></translation>
     </message>
     <message>

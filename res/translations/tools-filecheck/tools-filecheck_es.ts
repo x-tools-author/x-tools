@@ -4,58 +4,58 @@
 <context>
     <name>FileCheckAssistant</name>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistente de verificación de archivos</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiempo restante</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulario</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation type="unfinished"></translation>
+        <translation>Resultado superior</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivo verificado</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Progreso de la verificación</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Algoritmo de verificación</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation type="unfinished"></translation>
+        <translation>Resultado de la verificación</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>Calcular</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
+        <source>StopCalculating</source>
+        <translation>Detener cálculo</translation>
+    </message>
+</context>
+<context>
+    <name>HashCalculator</name>
+    <message>
+        <source>Calculating finished</source>
+        <translation>Cálculo finalizado</translation>
+    </message>
+</context>
+</TS>
         <source>StopCalculating</source>
         <translation type="unfinished"></translation>
     </message>

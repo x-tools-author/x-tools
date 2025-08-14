@@ -6,202 +6,202 @@
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="76"/>
         <source>can0</source>
-        <translation type="unfinished"></translation>
+        <translation>can0</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="107"/>
         <source>DataFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenrahmen</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="108"/>
         <source>ErrorFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehlerrahmen</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="109"/>
         <source>RemoteRequestFrame</source>
-        <translation type="unfinished"></translation>
+        <translation>Remote-Request-Rahmen</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="131"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation>Hex</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="208"/>
         <source>Interface Name is Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Schnittstellenname ist leer</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface name is empty, please input the name then try again!</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Schnittstellenname ist leer, bitte geben Sie den Namen ein und versuchen Sie es erneut!</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="217"/>
         <source>Error Occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler aufgetreten</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="232"/>
         <source>Connection Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbindungsfehler</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="233"/>
         <source>Connection error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbindungsfehler: %1</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="314"/>
         <source>Device is Not Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerät ist nicht bereit</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="315"/>
         <source>Device is not ready, please connect the device then try angin!</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerät ist nicht bereit, bitte Gerät verbinden und erneut versuchen!</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="355"/>
         <source>Error Occure</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler aufgetreten</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="391"/>
         <source>unspecified</source>
-        <translation type="unfinished"></translation>
+        <translation>nicht angegeben</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="393"/>
         <source>false</source>
-        <translation type="unfinished"></translation>
+        <translation>falsch</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="394"/>
         <source>true</source>
-        <translation type="unfinished"></translation>
+        <translation>wahr</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="14"/>
         <source>CANBus Studio</source>
-        <translation type="unfinished"></translation>
+        <translation>CANBus Studio</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="38"/>
         <source>CAN Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN-Rahmen</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="57"/>
         <source>Extended format</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweitertes Format</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="64"/>
         <source>Flexible data rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Flexible Datenrate</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="71"/>
         <source>Frame ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Rahmen-ID</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="91"/>
         <source>Frame type</source>
-        <translation type="unfinished"></translation>
+        <translation>Rahmentyp</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="101"/>
         <source>Frame options</source>
-        <translation type="unfinished"></translation>
+        <translation>Rahmenoptionen</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="114"/>
         <source>Bitrate switch</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitraten-Umschalter</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="150"/>
         <source>Device Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Geräte-Steuerung</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="171"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Trennen</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="178"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbinden</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="192"/>
         <source>Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Plug-in</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="221"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="251"/>
         <source>Data View</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenansicht</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="295"/>
         <source>Specify Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfiguration angeben</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="323"/>
         <source>Error filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehlerfilter</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="333"/>
         <source>Custom configurations</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefinierte Konfigurationen</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="346"/>
         <source>CAN FD</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN FD</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="373"/>
         <source>Loopback</source>
-        <translation type="unfinished"></translation>
+        <translation>Loopback</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="386"/>
         <source>Data bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbitrate</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="409"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitrate</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="422"/>
         <source>Receive own</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenes empfangen</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="451"/>
         <source>CAN Frame Payload</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN-Rahmen-Nutzdaten</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.ui" line="489"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Senden</translation>
     </message>
 </context>
 </TS>

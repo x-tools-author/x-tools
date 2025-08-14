@@ -4,58 +4,58 @@
 <context>
     <name>FileCheckAssistant</name>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent kontroly súborov</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
+        <translation>Zostávajúci čas</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulár</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation type="unfinished"></translation>
+        <translation>Horný výsledok</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation type="unfinished"></translation>
+        <translation>Skontrolovaný súbor</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Priebeh kontroly</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrolný algoritmus</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation type="unfinished"></translation>
+        <translation>Výsledok kontroly</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>Vypočítať</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvoriť</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
+        <source>StopCalculating</source>
+        <translation>Zastaviť výpočet</translation>
+    </message>
+</context>
+<context>
+    <name>HashCalculator</name>
+    <message>
+        <source>Calculating finished</source>
+        <translation>Výpočet dokončený</translation>
+    </message>
+</context>
+</TS>
         <source>StopCalculating</source>
         <translation type="unfinished"></translation>
     </message>

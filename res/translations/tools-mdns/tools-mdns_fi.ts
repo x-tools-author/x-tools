@@ -4,43 +4,43 @@
 <context>
     <name>MdnsAssistant</name>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="64"/>
         <source>Error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Tapahtui virhe</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="65"/>
         <source>Service type can not be empty, please input then try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Palvelutyyppi ei voi olla tyhjä. Anna se ja yritä uudelleen.</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="97"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyyppi</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="101"/>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Isäntänimi</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="105"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Portti</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="109"/>
         <source>Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Määritteet</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Pysäytä</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
+        <translation>Palvelutyyppi</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Käynnistä</translation>
+    </message>
+</context>
+</TS>
         <translation type="unfinished"></translation>
     </message>
     <message>

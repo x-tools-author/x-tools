@@ -4,58 +4,58 @@
 <context>
     <name>FileCheckAssistant</name>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Filkontrolassistent</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
+        <translation>Resterende tid</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation type="unfinished"></translation>
+        <translation>Øverste resultat</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrolleret fil</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrolfremskridt</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrolalgoritme</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrolresultat</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>Beregn</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Åbn</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
+        <source>StopCalculating</source>
+        <translation>Stop beregning</translation>
+    </message>
+</context>
+<context>
+    <name>HashCalculator</name>
+    <message>
+        <source>Calculating finished</source>
+        <translation>Beregning fuldført</translation>
+    </message>
+</context>
+</TS>
         <source>StopCalculating</source>
         <translation type="unfinished"></translation>
     </message>

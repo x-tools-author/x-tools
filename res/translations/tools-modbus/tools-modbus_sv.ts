@@ -3,13 +3,13 @@
 <TS version="2.1" language="sv">
 <context>
     <name>ModbusAssistant</name>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="169"/>
-        <source>RtuClient</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="170"/>
+    <!-- TODO: 待添加与其它语言一致的 <message> 列表并完成瑞典语翻译 -->
+</context>
+<context>
+    <name>ModbusFactory</name>
+    <!-- TODO: 待添加与其它语言一致的 <message> 列表并完成瑞典语翻译 -->
+</context>
+</TS>
         <source>RtuServer</source>
         <translation type="unfinished"></translation>
     </message>

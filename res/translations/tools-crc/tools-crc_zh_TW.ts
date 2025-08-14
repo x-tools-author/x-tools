@@ -6,88 +6,88 @@
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC 助手</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation type="unfinished"></translation>
+        <translation>多項式值</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation type="unfinished"></translation>
+        <translation>初始值</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="34"/>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="235"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>複製</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="unfinished"></translation>
+        <translation>關於 CRC 計算的更多資訊，請訪問 http://www.ip33.com/crc.html（雙擊以開啟）</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>輸入反轉</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>輸出反轉</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清除</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>計算</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>參數</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation type="unfinished"></translation>
+        <translation>異或值</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="unfinished"></translation>
+        <translation>高位在左，低位在右</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="157"/>
         <source>HEX</source>
-        <translation type="unfinished"></translation>
+        <translation>十六進位</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation type="unfinished"></translation>
+        <translation>結果（HEX）</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation type="unfinished"></translation>
+        <translation>參數模型</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="214"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>寬度</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="221"/>
@@ -104,17 +104,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="265"/>
         <source>Paloy</source>
-        <translation type="unfinished"></translation>
+        <translation>多項式</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="279"/>
         <source>Input data</source>
-        <translation type="unfinished"></translation>
+        <translation>輸入資料</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="286"/>
         <source>Result(BIN)</source>
-        <translation type="unfinished"></translation>
+        <translation>結果（BIN）</translation>
     </message>
 </context>
 </TS>

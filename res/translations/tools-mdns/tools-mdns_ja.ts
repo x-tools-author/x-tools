@@ -4,43 +4,43 @@
 <context>
     <name>MdnsAssistant</name>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="64"/>
         <source>Error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>エラーが発生しました</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="65"/>
         <source>Service type can not be empty, please input then try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>サービスタイプを空にすることはできません。入力してから再試行してください。</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="97"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>種類</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="101"/>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>ホスト名</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="105"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>ポート</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="109"/>
         <source>Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>属性</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>停止</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
+        <translation>サービスタイプ</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>開始</translation>
+    </message>
+</context>
+</TS>
         <translation type="unfinished"></translation>
     </message>
     <message>

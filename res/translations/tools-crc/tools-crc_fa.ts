@@ -6,88 +6,88 @@
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>دستیار CRC</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation type="unfinished"></translation>
+        <translation>مقدار چندجمله‌ای</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation type="unfinished"></translation>
+        <translation>مقدار اولیه</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="34"/>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="235"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>کپی</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="unfinished"></translation>
+        <translation>اطلاعات بیشتر درباره محاسبه CRC: http://www.ip33.com/crc.html (برای بازدید دوبار کلیک کنید)</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>معکوس‌سازی ورودی</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>معکوس‌سازی خروجی</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>محاسبه</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>پارامترها</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation type="unfinished"></translation>
+        <translation>مقدار XOR</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="unfinished"></translation>
+        <translation>بیت‌های پرارزش در چپ، کم‌ارزش در راست</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="157"/>
         <source>HEX</source>
-        <translation type="unfinished"></translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation type="unfinished"></translation>
+        <translation>نتیجه (HEX)</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation type="unfinished"></translation>
+        <translation>مدل پارامتر</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="214"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>عرض</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="221"/>
@@ -99,22 +99,22 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>چندجمله‌ای</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="265"/>
         <source>Paloy</source>
-        <translation type="unfinished"></translation>
+        <translation>چندجمله‌ای</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="279"/>
         <source>Input data</source>
-        <translation type="unfinished"></translation>
+        <translation>داده‌های ورودی</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="286"/>
         <source>Result(BIN)</source>
-        <translation type="unfinished"></translation>
+        <translation>نتیجه (BIN)</translation>
     </message>
 </context>
 </TS>

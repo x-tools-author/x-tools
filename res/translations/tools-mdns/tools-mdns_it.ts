@@ -4,43 +4,43 @@
 <context>
     <name>MdnsAssistant</name>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="64"/>
         <source>Error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Si è verificato un errore</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="65"/>
         <source>Service type can not be empty, please input then try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il tipo di servizio non può essere vuoto. Inseriscilo e riprova.</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="97"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="101"/>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome host</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="105"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Porta</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="109"/>
         <source>Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Attributi</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Arresta</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
+        <translation>Tipo di servizio</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Avvia</translation>
+    </message>
+</context>
+</TS>
         <translation type="unfinished"></translation>
     </message>
     <message>

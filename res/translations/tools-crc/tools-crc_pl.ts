@@ -6,88 +6,88 @@
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asystent CRC</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation type="unfinished"></translation>
+        <translation>Wartość wielomianu</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation type="unfinished"></translation>
+        <translation>Wartość początkowa</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="34"/>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="235"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiuj</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="unfinished"></translation>
+        <translation>Więcej informacji o obliczaniu CRC: http://www.ip33.com/crc.html (kliknij dwukrotnie, aby odwiedzić)</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>Odwrócenie wejścia</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>Odwrócenie wyjścia</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyczyść</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>Oblicz</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametry</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation type="unfinished"></translation>
+        <translation>Wartość XOR</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="unfinished"></translation>
+        <translation>Starsze bity po lewej, młodsze po prawej</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="157"/>
         <source>HEX</source>
-        <translation type="unfinished"></translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wynik (HEX)</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation type="unfinished"></translation>
+        <translation>Model parametrów</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="214"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Szerokość</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="221"/>
@@ -104,17 +104,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="265"/>
         <source>Paloy</source>
-        <translation type="unfinished"></translation>
+        <translation>Wielomian</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="279"/>
         <source>Input data</source>
-        <translation type="unfinished"></translation>
+        <translation>Dane wejściowe</translation>
     </message>
     <message>
         <location filename="../../../src/tools/crc/crcassistant.ui" line="286"/>
         <source>Result(BIN)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wynik (BIN)</translation>
     </message>
 </context>
 </TS>
