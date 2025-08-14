@@ -143,8 +143,11 @@ function(x_generate_module_translations module_name dir recurse)
   qt_add_lupdate(TS_FILES ${ts_files} LUPDATE_TARGET ${module_name}_lupdate SOURCES ${files})
   set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations/${module_name}")
   set_source_files_properties(${ts_files} PROPERTIES OUTPUT_LOCATION ${out_dir})
-  qt_add_lrelease(TS_FILES ${ts_files})
+  qt_add_lrelease(TS_FILES ${ts_files} LRELEASE_TARGET ${module_name}_lrelease)
   set_property(TARGET ${module_name}_lupdate PROPERTY FOLDER "i18n")
+  set_property(TARGET ${module_name}_lrelease PROPERTY FOLDER "i18n")
+  set_property(TARGET update_translations PROPERTY FOLDER "i18n")
+  set_property(TARGET release_translations PROPERTY FOLDER "i18n")
 endfunction()
 
 # Generate translations files for application
