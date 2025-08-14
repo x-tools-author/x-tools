@@ -4,29 +4,39 @@
 <context>
     <name>AsciiAssistant</name>
     <message>
+        <location filename="../../../src/tools/ascii/asciiassistant.ui" line="26"/>
+        <source>Filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/ascii/asciiassistant.ui" line="49"/>
+        <source>Preserve case</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Bin</source>
-        <translation>Bin</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Oct</source>
-        <translation>Oct</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Dec</source>
-        <translation>Dec</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Hex</source>
-        <translation>Hex</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Description</source>
-        <translation>Description</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="63"/>
@@ -197,16 +207,6 @@
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="96"/>
         <source>DEL (Delete)</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.ui" line="26"/>
-        <source>Filter</source>
-        <translation>Filter</translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.ui" line="49"/>
-        <source>Preserve case</source>
-        <translation>Preserve case</translation>
     </message>
 </context>
 </TS>

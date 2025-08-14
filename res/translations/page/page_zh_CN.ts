@@ -63,42 +63,42 @@
         <translation>显示数据预览</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="32"/>
+        <location filename="../../../src/page/inputsettings.ui" line="38"/>
         <source>Append prefix</source>
         <translation>追加前缀</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="45"/>
+        <location filename="../../../src/page/inputsettings.ui" line="57"/>
         <source>Append suffix</source>
         <translation>追加后缀</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="52"/>
+        <location filename="../../../src/page/inputsettings.ui" line="70"/>
         <source>Escape character</source>
         <translation>转义字符</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="93"/>
+        <location filename="../../../src/page/inputsettings.ui" line="111"/>
         <source>CRC end index</source>
         <translation>CRC结束索引</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="109"/>
+        <location filename="../../../src/page/inputsettings.ui" line="127"/>
         <source>CRC start index</source>
         <translation>CRC起始索引</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="122"/>
+        <location filename="../../../src/page/inputsettings.ui" line="140"/>
         <source>CRC arithmetic</source>
         <translation>CRC算法</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="131"/>
+        <location filename="../../../src/page/inputsettings.ui" line="149"/>
         <source>Append CRC</source>
         <translation>追加CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="138"/>
+        <location filename="../../../src/page/inputsettings.ui" line="156"/>
         <source>Big endian</source>
         <translation>大端序</translation>
     </message>

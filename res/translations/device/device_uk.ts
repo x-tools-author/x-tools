@@ -148,7 +148,7 @@
     <message>
         <location filename="../../../src/device/localserverui.ui" line="45"/>
         <source>Server name</source>
-        <translation>Ім'я сервера</translation>
+        <translation>Ім&apos;я сервера</translation>
     </message>
 </context>
 <context>
@@ -156,7 +156,7 @@
     <message>
         <location filename="../../../src/device/localsocketui.ui" line="32"/>
         <source>Server name</source>
-        <translation>Ім'я сервера</translation>
+        <translation>Ім&apos;я сервера</translation>
     </message>
 </context>
 <context>
@@ -291,77 +291,77 @@
         <translation>Всі клієнти</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="43"/>
+        <location filename="../../../src/device/socketui.ui" line="54"/>
         <source>Disconnect all clients</source>
         <translation>Відключити всіх клієнтів</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="55"/>
+        <location filename="../../../src/device/socketui.ui" line="32"/>
         <source>Write to</source>
         <translation>Записати до</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="62"/>
+        <location filename="../../../src/device/socketui.ui" line="152"/>
         <source>Multicast Port</source>
         <translation>Порт Multicast</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="79"/>
+        <location filename="../../../src/device/socketui.ui" line="73"/>
         <source>Authentication</source>
         <translation>Аутентифікація</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="86"/>
+        <location filename="../../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
         <translation>post/привіт</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="102"/>
+        <location filename="../../../src/device/socketui.ui" line="172"/>
         <source>Server port</source>
         <translation>Порт сервера</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="109"/>
+        <location filename="../../../src/device/socketui.ui" line="39"/>
         <source>Path</source>
         <translation>Шлях</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="118"/>
+        <location filename="../../../src/device/socketui.ui" line="119"/>
         <source>Enable multicast</source>
         <translation>Увімкнути multicast</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="125"/>
+        <location filename="../../../src/device/socketui.ui" line="126"/>
         <source>Just multicast</source>
         <translation>Тільки multicast</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="134"/>
+        <location filename="../../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="148"/>
+        <location filename="../../../src/device/socketui.ui" line="159"/>
         <source>Multicast IP</source>
         <translation>IP Multicast</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="171"/>
+        <location filename="../../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
         <translation>IP сервера</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="188"/>
+        <location filename="../../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
-        <translation>Ім'я користувача</translation>
+        <translation>Ім&apos;я користувача</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="195"/>
+        <location filename="../../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
         <translation>Канал</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="202"/>
+        <location filename="../../../src/device/socketui.ui" line="145"/>
         <source>Secure Mode</source>
         <translation>Безпечний режим</translation>
     </message>
@@ -371,7 +371,7 @@
     <message>
         <location filename="../../../src/device/udpbroadcast.cpp" line="64"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation>Не вдалося прив'язати UDP-сокет: %1</translation>
+        <translation>Не вдалося прив&apos;язати UDP-сокет: %1</translation>
     </message>
 </context>
 <context>
@@ -407,7 +407,7 @@
     <message>
         <location filename="../../../src/device/udpmulticast.cpp" line="93"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation>Не вдалося прив'язати UDP-сокет: %1</translation>
+        <translation>Не вдалося прив&apos;язати UDP-сокет: %1</translation>
     </message>
     <message>
         <location filename="../../../src/device/udpmulticast.cpp" line="102"/>

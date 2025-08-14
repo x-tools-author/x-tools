@@ -31,12 +31,12 @@
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="208"/>
         <source>Interface Name is Empty</source>
-        <translation>Il nome dell'interfaccia è vuoto</translation>
+        <translation>Il nome dell&apos;interfaccia è vuoto</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface name is empty, please input the name then try again!</source>
-        <translation>Il nome dell'interfaccia è vuoto, inserisci il nome e riprova.</translation>
+        <translation>Il nome dell&apos;interfaccia è vuoto, inserisci il nome e riprova.</translation>
     </message>
     <message>
         <location filename="../../../src/tools/canbus/canbusassistant.cpp" line="217"/>

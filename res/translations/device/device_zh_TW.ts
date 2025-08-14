@@ -291,77 +291,77 @@
         <translation>所有客戶端</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="43"/>
+        <location filename="../../../src/device/socketui.ui" line="54"/>
         <source>Disconnect all clients</source>
         <translation>斷開所有客戶端</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="55"/>
+        <location filename="../../../src/device/socketui.ui" line="32"/>
         <source>Write to</source>
         <translation>寫入到</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="62"/>
+        <location filename="../../../src/device/socketui.ui" line="152"/>
         <source>Multicast Port</source>
         <translation>多播埠</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="79"/>
+        <location filename="../../../src/device/socketui.ui" line="73"/>
         <source>Authentication</source>
         <translation>驗證</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="86"/>
+        <location filename="../../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
         <translation>post/hello</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="102"/>
+        <location filename="../../../src/device/socketui.ui" line="172"/>
         <source>Server port</source>
         <translation>伺服器埠</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="109"/>
+        <location filename="../../../src/device/socketui.ui" line="39"/>
         <source>Path</source>
         <translation>路徑</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="118"/>
+        <location filename="../../../src/device/socketui.ui" line="119"/>
         <source>Enable multicast</source>
         <translation>啟用多播</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="125"/>
+        <location filename="../../../src/device/socketui.ui" line="126"/>
         <source>Just multicast</source>
         <translation>僅多播</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="134"/>
+        <location filename="../../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
         <translation>密碼</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="148"/>
+        <location filename="../../../src/device/socketui.ui" line="159"/>
         <source>Multicast IP</source>
         <translation>多播 IP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="171"/>
+        <location filename="../../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
         <translation>伺服器 IP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="188"/>
+        <location filename="../../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
         <translation>使用者名稱</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="195"/>
+        <location filename="../../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
         <translation>頻道</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="202"/>
+        <location filename="../../../src/device/socketui.ui" line="145"/>
         <source>Secure Mode</source>
         <translation>安全模式</translation>
     </message>

@@ -37,7 +37,7 @@
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="76"/>
         <source>Save Time</source>
-        <translation>Enregistrer l'heure</translation>
+        <translation>Enregistrer l&apos;heure</translation>
     </message>
     <message>
         <location filename="../../../src/page/devicesettings.ui" line="94"/>
@@ -60,45 +60,45 @@
     <message>
         <location filename="../../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
-        <translation>Afficher l'aperçu des données</translation>
+        <translation>Afficher l&apos;aperçu des données</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="32"/>
+        <location filename="../../../src/page/inputsettings.ui" line="38"/>
         <source>Append prefix</source>
         <translation>Ajouter un préfixe</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="45"/>
+        <location filename="../../../src/page/inputsettings.ui" line="57"/>
         <source>Append suffix</source>
         <translation>Ajouter un suffixe</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="52"/>
+        <location filename="../../../src/page/inputsettings.ui" line="70"/>
         <source>Escape character</source>
-        <translation>Caractère d'échappement</translation>
+        <translation>Caractère d&apos;échappement</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="93"/>
+        <location filename="../../../src/page/inputsettings.ui" line="111"/>
         <source>CRC end index</source>
         <translation>Index de fin CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="109"/>
+        <location filename="../../../src/page/inputsettings.ui" line="127"/>
         <source>CRC start index</source>
         <translation>Index de début CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="122"/>
+        <location filename="../../../src/page/inputsettings.ui" line="140"/>
         <source>CRC arithmetic</source>
         <translation>Calcul CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="131"/>
+        <location filename="../../../src/page/inputsettings.ui" line="149"/>
         <source>Append CRC</source>
         <translation>Ajouter CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="138"/>
+        <location filename="../../../src/page/inputsettings.ui" line="156"/>
         <source>Big endian</source>
         <translation>Big endian</translation>
     </message>
@@ -194,7 +194,7 @@
     <message>
         <location filename="../../../src/page/page.ui" line="199"/>
         <source>Input control</source>
-        <translation>Contrôle d'entrée</translation>
+        <translation>Contrôle d&apos;entrée</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="208"/>

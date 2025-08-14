@@ -63,42 +63,42 @@
         <translation>Mostra anteprima dati</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="32"/>
+        <location filename="../../../src/page/inputsettings.ui" line="38"/>
         <source>Append prefix</source>
         <translation>Aggiungi prefisso</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="45"/>
+        <location filename="../../../src/page/inputsettings.ui" line="57"/>
         <source>Append suffix</source>
         <translation>Aggiungi suffisso</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="52"/>
+        <location filename="../../../src/page/inputsettings.ui" line="70"/>
         <source>Escape character</source>
         <translation>Carattere di escape</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="93"/>
+        <location filename="../../../src/page/inputsettings.ui" line="111"/>
         <source>CRC end index</source>
         <translation>Indice finale CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="109"/>
+        <location filename="../../../src/page/inputsettings.ui" line="127"/>
         <source>CRC start index</source>
         <translation>Indice iniziale CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="122"/>
+        <location filename="../../../src/page/inputsettings.ui" line="140"/>
         <source>CRC arithmetic</source>
         <translation>Aritmetica CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="131"/>
+        <location filename="../../../src/page/inputsettings.ui" line="149"/>
         <source>Append CRC</source>
         <translation>Aggiungi CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="138"/>
+        <location filename="../../../src/page/inputsettings.ui" line="156"/>
         <source>Big endian</source>
         <translation>Big endian</translation>
     </message>

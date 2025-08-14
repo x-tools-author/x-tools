@@ -291,77 +291,77 @@
         <translation>Все клиенты</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="43"/>
+        <location filename="../../../src/device/socketui.ui" line="54"/>
         <source>Disconnect all clients</source>
         <translation>Отключить всех клиентов</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="55"/>
+        <location filename="../../../src/device/socketui.ui" line="32"/>
         <source>Write to</source>
         <translation>Записать в</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="62"/>
+        <location filename="../../../src/device/socketui.ui" line="152"/>
         <source>Multicast Port</source>
         <translation>Порт мультикаста</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="79"/>
+        <location filename="../../../src/device/socketui.ui" line="73"/>
         <source>Authentication</source>
         <translation>Аутентификация</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="86"/>
+        <location filename="../../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
         <translation>post/привет</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="102"/>
+        <location filename="../../../src/device/socketui.ui" line="172"/>
         <source>Server port</source>
         <translation>Порт сервера</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="109"/>
+        <location filename="../../../src/device/socketui.ui" line="39"/>
         <source>Path</source>
         <translation>Путь</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="118"/>
+        <location filename="../../../src/device/socketui.ui" line="119"/>
         <source>Enable multicast</source>
         <translation>Включить мультикаст</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="125"/>
+        <location filename="../../../src/device/socketui.ui" line="126"/>
         <source>Just multicast</source>
         <translation>Только мультикаст</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="134"/>
+        <location filename="../../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="148"/>
+        <location filename="../../../src/device/socketui.ui" line="159"/>
         <source>Multicast IP</source>
         <translation>IP мультикаста</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="171"/>
+        <location filename="../../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
         <translation>IP сервера</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="188"/>
+        <location filename="../../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
         <translation>Имя пользователя</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="195"/>
+        <location filename="../../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
         <translation>Канал</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="202"/>
+        <location filename="../../../src/device/socketui.ui" line="145"/>
         <source>Secure Mode</source>
         <translation>Безопасный режим</translation>
     </message>

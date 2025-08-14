@@ -22,7 +22,7 @@
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Failed to save image.</source>
-        <translation>Impossibile salvare l'immagine.</translation>
+        <translation>Impossibile salvare l&apos;immagine.</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.ui" line="14"/>

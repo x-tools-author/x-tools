@@ -291,77 +291,77 @@
         <translation>כל הלקוחות</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="43"/>
+        <location filename="../../../src/device/socketui.ui" line="54"/>
         <source>Disconnect all clients</source>
         <translation>נתק את כל הלקוחות</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="55"/>
+        <location filename="../../../src/device/socketui.ui" line="32"/>
         <source>Write to</source>
         <translation>כתוב ל</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="62"/>
+        <location filename="../../../src/device/socketui.ui" line="152"/>
         <source>Multicast Port</source>
         <translation>פורט מולטיקאסט</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="79"/>
+        <location filename="../../../src/device/socketui.ui" line="73"/>
         <source>Authentication</source>
         <translation>אימות</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="86"/>
+        <location filename="../../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
         <translation>post/hello</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="102"/>
+        <location filename="../../../src/device/socketui.ui" line="172"/>
         <source>Server port</source>
         <translation>פורט שרת</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="109"/>
+        <location filename="../../../src/device/socketui.ui" line="39"/>
         <source>Path</source>
         <translation>נתיב</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="118"/>
+        <location filename="../../../src/device/socketui.ui" line="119"/>
         <source>Enable multicast</source>
         <translation>הפעל מולטיקאסט</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="125"/>
+        <location filename="../../../src/device/socketui.ui" line="126"/>
         <source>Just multicast</source>
         <translation>רק מולטיקאסט</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="134"/>
+        <location filename="../../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
         <translation>סיסמה</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="148"/>
+        <location filename="../../../src/device/socketui.ui" line="159"/>
         <source>Multicast IP</source>
         <translation>IP מולטיקאסט</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="171"/>
+        <location filename="../../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
         <translation>IP שרת</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="188"/>
+        <location filename="../../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
         <translation>שם משתמש</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="195"/>
+        <location filename="../../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
         <translation>ערוץ</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="202"/>
+        <location filename="../../../src/device/socketui.ui" line="145"/>
         <source>Secure Mode</source>
         <translation>מצב מאובטח</translation>
     </message>

@@ -4,60 +4,60 @@
 <context>
     <name>FileCheckAssistant</name>
     <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
-        <source>File Check Assistant</source>
-        <translation>文件檢查助手</translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
-        <source>Remaining time</source>
-        <translation>剩餘時間</translation>
-    </message>
-    <message>
         <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation>表單</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation>上方結果</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation>已檢查的檔案</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation>檢查進度</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation>檢查演算法</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation>檢查結果</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
         <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
-        <translation>計算</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation>開啟</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
+        <source>File Check Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
+        <source>Remaining time</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
         <source>StopCalculating</source>
-        <translation>停止計算</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../../../src/tools/filecheck/hashcalculator.cpp" line="84"/>
         <source>Calculating finished</source>
-        <translation>計算完成</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

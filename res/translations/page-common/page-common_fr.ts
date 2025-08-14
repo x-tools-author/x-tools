@@ -52,7 +52,7 @@
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="143"/>
         <source>Please select a item first!</source>
-        <translation>Veuillez d'abord sélectionner un élément !</translation>
+        <translation>Veuillez d&apos;abord sélectionner un élément !</translation>
     </message>
     <message>
         <location filename="../../../src/page/common/tableview.cpp" line="153"/>

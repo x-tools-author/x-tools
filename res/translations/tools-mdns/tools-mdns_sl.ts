@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sl">
+<TS version="2.1" language="sl_SI">
 <context>
     <name>MdnsAssistant</name>
     <message>
-        <source>Error occurred</source>
-        <translation>Prišlo je do napake</translation>
-    </message>
-    <message>
-        <source>Service type can not be empty, please input then try again.</source>
-        <translation>Vrsta storitve ne sme biti prazna. Vnesite jo in poskusite znova.</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Vrsta</translation>
-    </message>
-    <message>
-        <source>Hostname</source>
-        <translation>Ime gostitelja</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation>Vrata</translation>
-    </message>
-    <message>
-        <source>Attributes</source>
-        <translation>Atributi</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Ustavi</translation>
-    </message>
-    <message>
+        <location filename="../../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
-        <translation>Vrsta storitve</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation>Začni</translation>
-    </message>
-</context>
-</TS>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/tools/mdns/mdnsassistant.ui" line="27"/>
         <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="64"/>
+        <source>Error occurred</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="65"/>
+        <source>Service type can not be empty, please input then try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="97"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="101"/>
+        <source>Hostname</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="105"/>
+        <source>Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="109"/>
+        <source>Attributes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
+        <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

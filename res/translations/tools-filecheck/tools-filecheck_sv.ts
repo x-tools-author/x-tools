@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sv">
+<TS version="2.1" language="sv_SE">
 <context>
     <name>FileCheckAssistant</name>
     <message>
-        <source>File Check Assistant</source>
-        <translation>Filkontrollassistent</translation>
-    </message>
-    <message>
-        <source>Remaining time</source>
-        <translation>Återstående tid</translation>
-    </message>
-    <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation>Formulär</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation>Övre resultat</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation>Kontrollerad fil</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation>Kontrollförlopp</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation>Kontrollalgoritm</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation>Kontrollresultat</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
-        <translation>Beräkna</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation>Öppna</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>StopCalculating</source>
-        <translation>Stoppa beräkning</translation>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
+        <source>File Check Assistant</source>
+        <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>HashCalculator</name>
     <message>
-        <source>Calculating finished</source>
-        <translation>Beräkning slutförd</translation>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
+        <source>Remaining time</source>
+        <translation type="unfinished"></translation>
     </message>
-</context>
-</TS>
+    <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
         <source>StopCalculating</source>
         <translation type="unfinished"></translation>
     </message>

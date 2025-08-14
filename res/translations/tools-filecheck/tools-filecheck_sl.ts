@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sl">
+<TS version="2.1" language="sl_SI">
 <context>
     <name>FileCheckAssistant</name>
     <message>
-        <source>File Check Assistant</source>
-        <translation>Pomočnik za preverjanje datotek</translation>
-    </message>
-    <message>
-        <source>Remaining time</source>
-        <translation>Preostali čas</translation>
-    </message>
-    <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation>Obrazec</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation>Zgornji rezultat</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation>Preverjena datoteka</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation>Napredek preverjanja</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation>Algoritem preverjanja</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation>Rezultat preverjanja</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
-        <translation>Izračunaj</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation>Odpri</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>StopCalculating</source>
-        <translation>Ustavi izračun</translation>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
+        <source>File Check Assistant</source>
+        <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>HashCalculator</name>
     <message>
-        <source>Calculating finished</source>
-        <translation>Izračun končan</translation>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
+        <source>Remaining time</source>
+        <translation type="unfinished"></translation>
     </message>
-</context>
-</TS>
+    <message>
+        <location filename="../../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
         <source>StopCalculating</source>
         <translation type="unfinished"></translation>
     </message>

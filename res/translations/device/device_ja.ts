@@ -291,77 +291,77 @@
         <translation>全クライアント</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="43"/>
+        <location filename="../../../src/device/socketui.ui" line="54"/>
         <source>Disconnect all clients</source>
         <translation>全クライアント切断</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="55"/>
+        <location filename="../../../src/device/socketui.ui" line="32"/>
         <source>Write to</source>
         <translation>書き込み先</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="62"/>
+        <location filename="../../../src/device/socketui.ui" line="152"/>
         <source>Multicast Port</source>
         <translation>マルチキャストポート</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="79"/>
+        <location filename="../../../src/device/socketui.ui" line="73"/>
         <source>Authentication</source>
         <translation>認証</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="86"/>
+        <location filename="../../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
         <translation>post/hello</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="102"/>
+        <location filename="../../../src/device/socketui.ui" line="172"/>
         <source>Server port</source>
         <translation>サーバーポート</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="109"/>
+        <location filename="../../../src/device/socketui.ui" line="39"/>
         <source>Path</source>
         <translation>パス</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="118"/>
+        <location filename="../../../src/device/socketui.ui" line="119"/>
         <source>Enable multicast</source>
         <translation>マルチキャスト有効化</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="125"/>
+        <location filename="../../../src/device/socketui.ui" line="126"/>
         <source>Just multicast</source>
         <translation>マルチキャストのみ</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="134"/>
+        <location filename="../../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
         <translation>パスワード</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="148"/>
+        <location filename="../../../src/device/socketui.ui" line="159"/>
         <source>Multicast IP</source>
         <translation>マルチキャストIP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="171"/>
+        <location filename="../../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
         <translation>サーバーIP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="188"/>
+        <location filename="../../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
         <translation>ユーザー名</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="195"/>
+        <location filename="../../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
         <translation>チャンネル</translation>
     </message>
     <message>
-        <location filename="../../../src/device/socketui.ui" line="202"/>
+        <location filename="../../../src/device/socketui.ui" line="145"/>
         <source>Secure Mode</source>
         <translation>セキュアモード</translation>
     </message>

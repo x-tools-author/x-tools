@@ -1,129 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sv">
+<TS version="2.1" language="sv_SE">
 <context>
     <name>ModbusAssistant</name>
-    <!-- TODO: 待添加与其它语言一致的 <message> 列表并完成瑞典语翻译 -->
-</context>
-<context>
-    <name>ModbusFactory</name>
-    <!-- TODO: 待添加与其它语言一致的 <message> 列表并完成瑞典语翻译 -->
-</context>
-</TS>
-        <source>RtuServer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="171"/>
-        <source>TcpClient</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="172"/>
-        <source>TcpServer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="226"/>
-        <source>NoParity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="227"/>
-        <source>EvenParity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="228"/>
-        <source>OddParity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="229"/>
-        <source>SpaceParity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="230"/>
-        <source>MarkParity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="235"/>
-        <source>ReadCoils</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="236"/>
-        <source>ReadDiscreteInputs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="237"/>
-        <source>ReadHoldingRegisters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="238"/>
-        <source>ReadInputRegisters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="239"/>
-        <source>WriteSingleCoil</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="240"/>
-        <source>WriteSingleRegister</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="241"/>
-        <source>WriteMultipleCoils</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="242"/>
-        <source>WriteMultipleRegisters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="284"/>
-        <source>Coils</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="284"/>
-        <source>DiscreteInputs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="285"/>
-        <source>InputRegisters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="285"/>
-        <source>HoldingRegisters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="547"/>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="1317"/>
-        <source>Error occured</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="624"/>
-        <source>Can not open device: %1.Please check the parameters and try again!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="627"/>
-        <source>Can not open device</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../../../src/tools/modbus/modbusassistant.ui" line="49"/>
         <source>Console</source>
@@ -288,6 +167,127 @@
     <message>
         <location filename="../../../src/tools/modbus/modbusassistant.ui" line="732"/>
         <source>Input format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="169"/>
+        <source>RtuClient</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="170"/>
+        <source>RtuServer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="171"/>
+        <source>TcpClient</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="172"/>
+        <source>TcpServer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="226"/>
+        <source>NoParity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="227"/>
+        <source>EvenParity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="228"/>
+        <source>OddParity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="229"/>
+        <source>SpaceParity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="230"/>
+        <source>MarkParity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="235"/>
+        <source>ReadCoils</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="236"/>
+        <source>ReadDiscreteInputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="237"/>
+        <source>ReadHoldingRegisters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="238"/>
+        <source>ReadInputRegisters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="239"/>
+        <source>WriteSingleCoil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="240"/>
+        <source>WriteSingleRegister</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="241"/>
+        <source>WriteMultipleCoils</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="242"/>
+        <source>WriteMultipleRegisters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="284"/>
+        <source>Coils</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="284"/>
+        <source>DiscreteInputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="285"/>
+        <source>InputRegisters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="285"/>
+        <source>HoldingRegisters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="547"/>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="1317"/>
+        <source>Error occured</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="624"/>
+        <source>Can not open device: %1.Please check the parameters and try again!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/tools/modbus/modbusassistant.cpp" line="627"/>
+        <source>Can not open device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -12,7 +12,7 @@
         <location filename="../../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <location filename="../../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Save Image</source>
-        <translation>Enregistrer l'image</translation>
+        <translation>Enregistrer l&apos;image</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
@@ -22,7 +22,7 @@
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Failed to save image.</source>
-        <translation>Impossible d'enregistrer l'image.</translation>
+        <translation>Impossible d&apos;enregistrer l&apos;image.</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.ui" line="14"/>
