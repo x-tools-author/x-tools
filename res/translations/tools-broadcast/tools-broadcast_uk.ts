@@ -6,83 +6,83 @@
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Помічник трансляції</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Terminate</source>
-        <translation type="unfinished"></translation>
+        <translation>Завершити</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="20"/>
         <source>Output control</source>
-        <translation type="unfinished"></translation>
+        <translation>Керування виводом</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="32"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат виводу</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистити</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
         <source>Broadcast parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Параметри трансляції</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="67"/>
         <source>Broadcast address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адреса трансляції</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="80"/>
         <source>55443</source>
-        <translation type="unfinished"></translation>
+        <translation>55443</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="100"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат даних</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="119"/>
         <source>Broadcast prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Префікс трансляції</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="132"/>
         <source>Broadcast interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Інтервал трансляції</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="151"/>
         <source>Broadcast suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Суфікс трансляції</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="164"/>
         <source>Broadcast port</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт трансляції</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="187"/>
         <source>Broadcast data</source>
-        <translation type="unfinished"></translation>
+        <translation>Дані трансляції</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="194"/>
         <location filename="../../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation>Трансляція</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="223"/>
         <source>Information output</source>
-        <translation type="unfinished"></translation>
+        <translation>Виведення інформації</translation>
     </message>
 </context>
 </TS>

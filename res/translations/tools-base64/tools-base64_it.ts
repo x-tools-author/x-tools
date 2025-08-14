@@ -6,42 +6,42 @@
     <message>
         <location filename="../../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data error</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore dati</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data can not convert image.</source>
-        <translation type="unfinished"></translation>
+        <translation>I dati non possono essere convertiti in immagine.</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Assistente Base64</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation type="unfinished"></translation>
+        <translation>Testo in chiaro</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation type="unfinished"></translation>
+        <translation>Testo cifrato</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Immagine</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Decifrare</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Cifrare</translation>
     </message>
 </context>
 </TS>

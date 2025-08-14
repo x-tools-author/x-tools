@@ -6,27 +6,27 @@
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Bin</translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>Oct</translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>Dec</translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation>Hex</translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Description</translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="63"/>
@@ -201,12 +201,12 @@
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.ui" line="26"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../../../src/tools/ascii/asciiassistant.ui" line="49"/>
         <source>Preserve case</source>
-        <translation type="unfinished"></translation>
+        <translation>Preserve case</translation>
     </message>
 </context>
 </TS>

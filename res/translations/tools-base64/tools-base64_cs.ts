@@ -6,42 +6,42 @@
     <message>
         <location filename="../../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba dat</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data can not convert image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Data nelze převést na obrázek.</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistent Base64</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation type="unfinished"></translation>
+        <translation>Prostý text</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation type="unfinished"></translation>
+        <translation>Šifrovaný text</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrázek</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Dešifrovat</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Šifrovat</translation>
     </message>
 </context>
 </TS>

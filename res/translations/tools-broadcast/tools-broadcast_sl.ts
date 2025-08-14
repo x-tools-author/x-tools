@@ -6,83 +6,83 @@
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomočnik za oddajanje</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Terminate</source>
-        <translation type="unfinished"></translation>
+        <translation>Končaj</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="20"/>
         <source>Output control</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadzor izhoda</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="32"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>Izhodni format</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Počisti</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
         <source>Broadcast parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametri oddajanja</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="67"/>
         <source>Broadcast address</source>
-        <translation type="unfinished"></translation>
+        <translation>Naslov oddajanja</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="80"/>
         <source>55443</source>
-        <translation type="unfinished"></translation>
+        <translation>55443</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="100"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>Format podatkov</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="119"/>
         <source>Broadcast prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Predpona oddajanja</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="132"/>
         <source>Broadcast interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Interval oddajanja</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="151"/>
         <source>Broadcast suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Pripona oddajanja</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="164"/>
         <source>Broadcast port</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrata za oddajanje</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="187"/>
         <source>Broadcast data</source>
-        <translation type="unfinished"></translation>
+        <translation>Podatki oddajanja</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="194"/>
         <location filename="../../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation>Oddajaj</translation>
     </message>
     <message>
         <location filename="../../../src/tools/broadcast/broadcastassistant.ui" line="223"/>
         <source>Information output</source>
-        <translation type="unfinished"></translation>
+        <translation>Izhod informacij</translation>
     </message>
 </context>
 </TS>

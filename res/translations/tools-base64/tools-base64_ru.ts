@@ -6,42 +6,42 @@
     <message>
         <location filename="../../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка данных</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data can not convert image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Данные не могут быть преобразованы в изображение.</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Помощник Base64</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation type="unfinished"></translation>
+        <translation>Открытый текст</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation type="unfinished"></translation>
+        <translation>Шифротекст</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Изображение</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Расшифровать</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Зашифровать</translation>
     </message>
 </context>
 </TS>

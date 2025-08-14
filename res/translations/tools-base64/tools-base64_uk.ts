@@ -6,42 +6,42 @@
     <message>
         <location filename="../../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data error</source>
-        <translation type="unfinished"></translation>
+        <translation>Помилка даних</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data can not convert image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Дані неможливо перетворити на зображення.</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Помічник Base64</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation type="unfinished"></translation>
+        <translation>Відкритий текст</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation type="unfinished"></translation>
+        <translation>Шифротекст</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Зображення</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Розшифрувати</translation>
     </message>
     <message>
         <location filename="../../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation type="unfinished"></translation>
+        <translation>Зашифрувати</translation>
     </message>
 </context>
 </TS>

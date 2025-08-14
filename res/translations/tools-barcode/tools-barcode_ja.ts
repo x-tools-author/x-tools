@@ -6,53 +6,53 @@
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
         <source>Barcode Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>バーコードアシスタント</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <location filename="../../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Save Image</source>
-        <translation type="unfinished"></translation>
+        <translation>画像を保存</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <source>PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>PNG 画像 (*.png);;JPEG 画像 (*.jpg);;BMP 画像 (*.bmp)</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Failed to save image.</source>
-        <translation type="unfinished"></translation>
+        <translation>画像を保存できませんでした。</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC アシスタント</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.ui" line="32"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>更新</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.ui" line="52"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>種類</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.ui" line="59"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>エクスポート</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.ui" line="66"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>データ</translation>
     </message>
     <message>
         <location filename="../../../src/tools/barcode/barcodeassistant.ui" line="89"/>
         <source>010000000000</source>
-        <translation type="unfinished"></translation>
+        <translation>010000000000</translation>
     </message>
 </context>
 </TS>

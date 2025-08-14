@@ -4,171 +4,171 @@
 <context>
     <name>AsciiAssistant</name>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Bin</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>Oct</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>Dec</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation>Hex</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Description</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="63"/>
         <source>NUL (NULL)</source>
-        <translation type="unfinished"></translation>
+        <translation>NUL (NULL)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="64"/>
         <source>SOH (Start Of Headling)</source>
-        <translation type="unfinished"></translation>
+        <translation>SOH (Début de l'en-tête)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="65"/>
         <source>STX (Start Of Text)</source>
-        <translation type="unfinished"></translation>
+        <translation>STX (Début du texte)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="66"/>
         <source>ETX (End Of Text)</source>
-        <translation type="unfinished"></translation>
+        <translation>ETX (Fin du texte)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="67"/>
         <source>EOT (End Of Transmission)</source>
-        <translation type="unfinished"></translation>
+        <translation>EOT (Fin de la transmission)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="68"/>
         <source>ENQ (Enquiry)</source>
-        <translation type="unfinished"></translation>
+        <translation>ENQ (Demande)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="69"/>
         <source>ACK (Acknowledge)</source>
-        <translation type="unfinished"></translation>
+        <translation>ACK (Accuser réception)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="70"/>
         <source>BEL (Bell)</source>
-        <translation type="unfinished"></translation>
+        <translation>BEL (Sonnette)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="71"/>
         <source>BS (Backspace)</source>
-        <translation type="unfinished"></translation>
+        <translation>BS (Retour arrière)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="72"/>
         <source>HT (Horizontal Tab)</source>
-        <translation type="unfinished"></translation>
+        <translation>HT (Tabulation horizontale)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="73"/>
         <source>LF/NL(Line Feed/New Line)</source>
-        <translation type="unfinished"></translation>
+        <translation>LF/NL (Saut de ligne/Nouvelle ligne)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="74"/>
         <source>VT (Vertical Tab)</source>
-        <translation type="unfinished"></translation>
+        <translation>VT (Tabulation verticale)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="75"/>
         <source>FF/NP (Form Feed/New Page)</source>
-        <translation type="unfinished"></translation>
+        <translation>FF/NP (Saut de formulaire/Nouvelle page)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="76"/>
         <source>CR (Carriage Return)</source>
-        <translation type="unfinished"></translation>
+        <translation>CR (Retour chariot)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="77"/>
         <source>SO (Shift Out)</source>
-        <translation type="unfinished"></translation>
+        <translation>SO (Sortie décalage)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="78"/>
         <source>SI (Shift In)</source>
-        <translation type="unfinished"></translation>
+        <translation>SI (Entrée décalage)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="79"/>
         <source>DLE (Data Link Escape)</source>
-        <translation type="unfinished"></translation>
+        <translation>DLE (Échappement liaison de données)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="80"/>
         <source>DC1/XON(Device Control 1/Transmission On)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC1/XON (Contrôle d'appareil 1/Transmission activée)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="81"/>
         <source>DC2 (Device Control 2)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC2 (Contrôle d'appareil 2)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="82"/>
         <source>DC3/XOFF(Device Control 3/Transmission Off)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC3/XOFF (Contrôle d'appareil 3/Transmission désactivée)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="83"/>
         <source>DC4 (Device Control 4)</source>
-        <translation type="unfinished"></translation>
+        <translation>DC4 (Contrôle d'appareil 4)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="84"/>
         <source>NAK (Negative Acknowledge)</source>
-        <translation type="unfinished"></translation>
+        <translation>NAK (Accusé de réception négatif)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="85"/>
         <source>SYN (Synchronous Idle)</source>
-        <translation type="unfinished"></translation>
+        <translation>SYN (Inactif synchrone)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="86"/>
         <source>ETB (End of Transmission Block)</source>
-        <translation type="unfinished"></translation>
+        <translation>ETB (Fin du bloc de transmission)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="87"/>
         <source>CAN (Cancel)</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN (Annuler)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="88"/>
         <source>EM (End of Medium)</source>
-        <translation type="unfinished"></translation>
+        <translation>EM (Fin du support)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="89"/>
         <source>SUB (Substitute)</source>
-        <translation type="unfinished"></translation>
+        <translation>SUB (Substitut)</translation>
     </message>
     <message>
-        <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="90"/>
         <source>ESC (Escape)</source>
-        <translation type="unfinished"></translation>
+        <translation>ESC (Échapper)</translation>
     </message>
     <message>
+        <source>FS (File Separator)</source>
+        <translation>FS (Séparateur de fichier)</translation>
+    </message>
+    <message>
+        <source>GS (Group Separator)</source>
+        <translation>GS (Séparateur de groupe)</translation>
+    </message>
+    <message>
+        <source>RS (Record Separator)</source>
+        <translation>RS (Séparateur d'enregistrement)</translation>
+    </message>
+    <message>
+        <source>US (Unit Separator)</source>
+        <translation>US (Séparateur d'unité)</translation>
+    </message>
+    <message>
+        <source>(Space)</source>
+        <translation>(Espace)</translation>
+    </message>
+    <message>
+        <source>DEL (Delete)</source>
+        <translation>DEL (Supprimer)</translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation>Filter</translation>
+    </message>
+    <message>
+        <source>Preserve case</source>
+        <translation>Preserve case</translation>
+    </message>
+</context>
+</TS>
         <location filename="../../../src/tools/ascii/asciiassistant.cpp" line="91"/>
         <source>FS (File Separator)</source>
         <translation type="unfinished"></translation>
