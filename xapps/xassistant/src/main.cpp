@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     xAssistant window;
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
-    window.resize(1280, 620);
+    window.resize(1366, 768);
     window.show();
     window.load();
     window.updateGrid(MainWindow::WindowGrid::Grid1x2);

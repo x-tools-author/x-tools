@@ -156,6 +156,8 @@ function(x_using_x_tools_translations target)
   set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations")
   set_source_files_properties(${ts_files} PROPERTIES OUTPUT_LOCATION ${out_dir})
   qt_add_lrelease(TS_FILES ${ts_files} LRELEASE_TARGET ${target}_lrelease)
+  set_property(TARGET release_translations PROPERTY FOLDER "i18n")
+  set_property(TARGET ${target}_lrelease PROPERTY FOLDER "i18n")
 endfunction()
 
 # Generate translations files for application

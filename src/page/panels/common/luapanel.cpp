@@ -102,7 +102,7 @@ void LuaPanel::load(const QVariantMap &parameters)
     ui->comboBoxResultFormat->setCurrentIndex(index);
     setupTextFormatValidator(ui->lineEditResultData, resultFormat);
 
-    bool bypass = parameters.value(keys.bypass, false).toBool();
+    bool bypass = parameters.value(keys.bypass, true).toBool();
     ui->checkBoxBypass->setChecked(bypass);
 
     QString testData = parameters.value(keys.testData, defaultTestData).toString();
