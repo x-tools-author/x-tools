@@ -184,7 +184,7 @@
     <message>
         <location filename="../../../src/page/panels/common/luapanel.ui" line="73"/>
         <source>Bypass</source>
-        <translation>跳过</translation>
+        <translation>直通(禁用脚本)</translation>
     </message>
     <message>
         <location filename="../../../src/page/panels/common/luapanel.ui" line="90"/>
