@@ -52,6 +52,8 @@ yay -Syu x-tools
 
 ## Screenshot
 
+![xTools.gif](res/images/gif.gif)
+
 ![xTools.gif](res/images/xtools.gif)
 
 ![charts.gif](res/images/charts.gif)
