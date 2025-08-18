@@ -39,7 +39,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Make installer for Windows
-set(X_ASSISTANT_VERSION "1.3.0")
+set(X_ASSISTANT_VERSION ${X_LATEST_GIT_TAG})
 add_compile_definitions(X_ASSISTANT_VERSION="${X_ASSISTANT_VERSION}")
 if(WIN32)
   include(${CMAKE_SOURCE_DIR}/cmake/msix/msix.cmake)

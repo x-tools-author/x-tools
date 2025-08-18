@@ -177,13 +177,6 @@ include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
 message(STATUS "[xTools]Link libraries: ${X_LIBS}")
 
 # --------------------------------------------------------------------------------------------------
-# xApplications selector(just for Qt6.8.0 or later)
-include(${CMAKE_SOURCE_DIR}/xapps/xApp.cmake)
-if(NOT ${X_APP} STREQUAL "xTools")
-  return()
-endif()
-
-# --------------------------------------------------------------------------------------------------
 # if X_LATEST_GIT_TAG contain "v", remove it...
 if(NOT X_LATEST_GIT_TAG)
   set(X_LATEST_GIT_TAG "9.9.9")
@@ -191,6 +184,13 @@ endif()
 
 if(X_LATEST_GIT_TAG MATCHES "^v[0-9].*")
   string(SUBSTRING ${X_LATEST_GIT_TAG} 1 -1 X_LATEST_GIT_TAG)
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# xApplications selector(just for Qt6.8.0 or later)
+include(${CMAKE_SOURCE_DIR}/xapps/xApp.cmake)
+if(NOT ${X_APP} STREQUAL "xTools")
+  return()
 endif()
 
 # --------------------------------------------------------------------------------------------------
