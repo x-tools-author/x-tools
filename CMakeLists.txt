@@ -96,13 +96,12 @@ set(X_LIBS_DIR ${tmp}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
 message(STATUS "[xTools]X_LIBS_DIR: ${X_LIBS_DIR}")
 message(STATUS "------------------------------------------------------------")
 
-# Do not change X_LATEST_GIT_TAG unless you know what you are doing
 option(X_MAGIC "The magic option..." OFF)
 if(X_MAGIC)
   add_compile_definitions(X_MAGIC)
 endif()
 
-# Do not change X_ENABLE_LUA option unless you know what you are doing
+# Do not change X_LATEST_GIT_TAG unless you know what you are doing
 set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
 if(${QT_VERSION} VERSION_LESS "6.0.0" AND WIN32)
   set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
