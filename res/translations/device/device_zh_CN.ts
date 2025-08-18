@@ -164,7 +164,7 @@
     <message>
         <location filename="../../../src/device/devicemanager.cpp" line="85"/>
         <source>Serial Port</source>
-        <translation>串口</translation>
+        <translation>串口助手</translation>
     </message>
     <message>
         <location filename="../../../src/device/devicemanager.cpp" line="87"/>
@@ -237,7 +237,7 @@
     <message>
         <location filename="../../../src/device/serialport.cpp" line="50"/>
         <source>Failed to open serial port: %1</source>
-        <translation>打开串口失败：%1</translation>
+        <translation>打开串口助手助手失败：%1</translation>
     </message>
 </context>
 <context>
