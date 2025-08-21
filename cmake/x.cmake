@@ -276,7 +276,17 @@ endfunction()
 # --------------------------------------------------------------------------------------------------
 # Deploy Qt for macOS
 function(x_deploy_qt_for_mac target)
-  # Do nothing...
+  if(NOT DEFINED MACDEPLOYQT_EXECUTABLE)
+    return()
+  endif()
+
+  message(STATUS "Target path of macOS is: $<TARGET_FILE:${target}>")
+  add_custom_command(
+    TARGET ${target}
+    POST_BUILD
+    COMMAND ${MACDEPLOYQT_EXECUTABLE} "$<TARGET_FILE:${target}>/../../../"
+    COMMENT "Deploy Qt for macOS..."
+    VERBATIM)
 endfunction()
 
 # --------------------------------------------------------------------------------------------------
@@ -290,10 +300,10 @@ endfunction()
 function(x_deploy_qt target)
   if(WIN32)
     x_deploy_qt_for_windows(${target})
-  elseif(UNIX AND NOT APPLE)
-    x_deploy_qt_for_linux(${target})
   elseif(APPLE)
     x_deploy_qt_for_mac(${target})
+  elseif(UNIX)
+    x_deploy_qt_for_linux(${target})
   endif()
 endfunction()
 
