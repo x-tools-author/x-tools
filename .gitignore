@@ -27,3 +27,4 @@ bin
 scripts
 xapps/xprivate
 .DS_Store
+./xprivate
