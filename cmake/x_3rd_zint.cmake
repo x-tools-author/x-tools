@@ -69,7 +69,7 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/3rd/${file_name}/CMakeLists.txt")
                   WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/3rd")
 endif()
 
-if(EXISTS "${X_LIBS_DIR}/${file_name}/include/zint.h" AND WIN32)
+if(EXISTS "${X_LIBS_DIR}/${file_name}/include/zint.h" AND (WIN32 OR APPLE))
   include_directories(${X_LIBS_DIR}/${file_name}/include)
   link_directories(${X_LIBS_DIR}/${file_name}/lib)
   set(CMAKE_PREFIX_PATH ${X_LIBS_DIR}/${file_name} ${CMAKE_PREFIX_PATH})
@@ -79,7 +79,14 @@ if(EXISTS "${X_LIBS_DIR}/${file_name}/include/zint.h" AND WIN32)
     return()
   endif()
 
-  set(X_ZINT_LIBS zint::zint-static)
+  if(WIN32)
+    set(X_ZINT_LIBS zint::zint-static)
+  elseif(APPLE)
+    execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+                    ${X_LIBS_DIR}/${file_name}/lib/libzint.a 
+                    ${X_LIBS_DIR}/${file_name}/lib/libzint-static.a)
+    set(X_ZINT_LIBS zint)
+  endif()
 else()
   # Add the Zint subdirectory to the project
   include_directories(${CMAKE_SOURCE_DIR}/3rd/${file_name})
@@ -94,7 +101,7 @@ else()
   set_property(TARGET zint-qt PROPERTY FOLDER "3rd")
   set_property(TARGET zint-static PROPERTY FOLDER "3rd")
 
-  if(QT_VERSION VERSION_GREATER_EQUAL "6.8.0" AND NOT APPLE)
+  if(QT_VERSION VERSION_GREATER_EQUAL "6.8.0")
     # Auto install Zint
     add_custom_command(
       OUTPUT ${X_LIBS_DIR}/${file_name}/install.stamp
