@@ -215,9 +215,13 @@ void Application::setupLanguage()
     QString defaultLanguage = QLocale::system().name();
     QString language = settings->value(SettingsKey().language, defaultLanguage).toString();
 
-    QString appPath = QApplication::applicationDirPath();
+    const QString appPath = QApplication::applicationDirPath();
+    const QString qmFilesPath = appPath + "/translations";
+
+    qInfo() << "The qm files path is: 1" << qmFilesPath;
+
     QStringList qmFiles;
-    findQmFile(appPath + "/translations", language, qmFiles);
+    findQmFile(qmFilesPath, language, qmFiles);
     for (const QString &qmFile : qmFiles) {
         ::setupLanguage(qmFile);
     }
