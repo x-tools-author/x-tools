@@ -71,10 +71,10 @@ function(x_deploy_qt_for_mac target)
     return()
   endif()
 
-  message(STATUS "Target path of macOS is: $<TARGET_FILE_DIR:${target}>")
   add_custom_command(
     TARGET ${target}
     POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E echo "Target path of macOS is: $<TARGET_FILE_DIR:${target}>"
     COMMAND ${MACDEPLOYQT_EXECUTABLE} "${target}.app"
     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     COMMENT "Making dmg...")
