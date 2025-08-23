@@ -109,12 +109,6 @@ endif()
 string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
 message(STATUS "[xTools]Asset name: ${X_ASSET_NAME}")
 
-# --------------------------------------------------------------------------------------------------
-# Do something for Apple platforms
-if(IOS)
-  message(FATAL_ERROR "xTools does not support iOS platform yet...")
-endif()
-
 # Set macOS deployment target (minimum macOS version)
 if(APPLE AND NOT IOS)
   # Set minimum macOS version - you can adjust this as needed Common options: 11.0 (Big Sur), 12.0
@@ -266,15 +260,15 @@ if(APPLE AND NOT IOS)
   set_target_properties(
     xTools
     PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "xTools"
-                MACOSX_BUNDLE_BUNDLE_VERSION "${X_LATEST_GIT_TAG}"
-                MACOSX_BUNDLE_SHORT_VERSION_STRING "${X_LATEST_GIT_TAG}"
-                MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools"
-                XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon"
-                XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconFile "AppIcon"
-                XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconName "AppIcon"
-                XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleDisplayName "xTools"
-                XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleName "xTools"
-                XCODE_ATTRIBUTE_PRODUCT_NAME "xTools")
+               MACOSX_BUNDLE_BUNDLE_VERSION "${X_LATEST_GIT_TAG}"
+               MACOSX_BUNDLE_SHORT_VERSION_STRING "${X_LATEST_GIT_TAG}"
+               MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools"
+               XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon"
+               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconFile "AppIcon"
+               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconName "AppIcon"
+               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleDisplayName "xTools"
+               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleName "xTools"
+               XCODE_ATTRIBUTE_PRODUCT_NAME "xTools")
 endif()
 
 # --------------------------------------------------------------------------------------------------

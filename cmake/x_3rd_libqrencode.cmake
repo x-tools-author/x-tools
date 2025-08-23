@@ -11,6 +11,10 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Add libencode module...
+if(NOT DEFINED CMAKE_BUILD_TYPE)
+  return()
+endif()
+
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
   set(X_QRENCODE_LIB "qrencoded")
 else()

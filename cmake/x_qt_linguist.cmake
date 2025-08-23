@@ -10,6 +10,10 @@ function(x_generate_module_translations module_name dir recurse)
     return()
   endif()
 
+  if(IOS)
+    return()
+  endif()
+
   set(ts_files "")
   foreach(lang IN LISTS X_LANGUAGES)
     set(ts_file ${CMAKE_CURRENT_LIST_DIR}/res/translations/${module_name}/${module_name}_${lang}.ts)
