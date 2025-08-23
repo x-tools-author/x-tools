@@ -35,6 +35,8 @@ message(STATUS "[lua] Include dir: ${lua_root}")
 
 if(MSVC)
   set(lua_lib_file ${X_LIBS_DIR}/lua-${lua_version}/liblua.lib)
+elseif(APPLE)
+  set(lua_lib_file ${X_LIBS_DIR}/lua-${lua_version}/liblua.a)
 else()
   set(lua_lib_file ${X_LIBS_DIR}/lua-${lua_version}/lua.a)
 endif()
