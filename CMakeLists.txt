@@ -263,7 +263,18 @@ endif()
 
 # MacOS specific settings
 if(APPLE AND NOT IOS)
-  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools")
+  set_target_properties(
+    xTools
+    PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "xTools"
+                MACOSX_BUNDLE_BUNDLE_VERSION "${X_LATEST_GIT_TAG}"
+                MACOSX_BUNDLE_SHORT_VERSION_STRING "${X_LATEST_GIT_TAG}"
+                MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools"
+                XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon"
+                XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconFile "AppIcon"
+                XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconName "AppIcon"
+                XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleDisplayName "xTools"
+                XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleName "xTools"
+                XCODE_ATTRIBUTE_PRODUCT_NAME "xTools")
 endif()
 
 # --------------------------------------------------------------------------------------------------
