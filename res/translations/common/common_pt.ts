@@ -9,7 +9,6 @@
         <translation>Desconhecido</translation>
     </message>
     <message>
-        <location filename="../../../src/common/xtools.cpp" line="86"/>
         <location filename="../../../src/common/xtools.cpp" line="465"/>
         <location filename="../../../src/common/xtools.cpp" line="895"/>
         <location filename="../../../src/common/xtools.cpp" line="897"/>
@@ -17,24 +16,45 @@
         <translation>Binário</translation>
     </message>
     <message>
-        <location filename="../../../src/common/xtools.cpp" line="88"/>
         <source>Octal</source>
-        <translation>Octal</translation>
+        <translation type="vanished">Octal</translation>
+    </message>
+    <message>
+        <source>Decimal</source>
+        <translation type="vanished">Decimal</translation>
+    </message>
+    <message>
+        <source>Hexadecimal</source>
+        <translation type="vanished">Hexadecimal</translation>
+    </message>
+    <message>
+        <source>Hexadecimal(No Space)</source>
+        <translation type="vanished">Hexadecimal(Sem Espaço)</translation>
+    </message>
+    <message>
+        <location filename="../../../src/common/xtools.cpp" line="86"/>
+        <source>Bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/common/xtools.cpp" line="88"/>
+        <source>Oct</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="90"/>
-        <source>Decimal</source>
-        <translation>Decimal</translation>
+        <source>Dec</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="92"/>
-        <source>Hexadecimal</source>
-        <translation>Hexadecimal</translation>
+        <source>Hex</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="94"/>
-        <source>Hexadecimal(No Space)</source>
-        <translation>Hexadecimal(Sem Espaço)</translation>
+        <source>Hex(No Space)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="96"/>

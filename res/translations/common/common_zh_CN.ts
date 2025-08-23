@@ -9,7 +9,6 @@
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../../../src/common/xtools.cpp" line="86"/>
         <location filename="../../../src/common/xtools.cpp" line="465"/>
         <location filename="../../../src/common/xtools.cpp" line="895"/>
         <location filename="../../../src/common/xtools.cpp" line="897"/>
@@ -17,23 +16,44 @@
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../../src/common/xtools.cpp" line="88"/>
         <source>Octal</source>
+        <translation type="vanished">八进制</translation>
+    </message>
+    <message>
+        <source>Decimal</source>
+        <translation type="vanished">十进制</translation>
+    </message>
+    <message>
+        <source>Hexadecimal</source>
+        <translation type="vanished">十六进制</translation>
+    </message>
+    <message>
+        <source>Hexadecimal(No Space)</source>
+        <translation type="vanished">十六进制(无空格)</translation>
+    </message>
+    <message>
+        <location filename="../../../src/common/xtools.cpp" line="86"/>
+        <source>Bin</source>
+        <translation>二进制</translation>
+    </message>
+    <message>
+        <location filename="../../../src/common/xtools.cpp" line="88"/>
+        <source>Oct</source>
         <translation>八进制</translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="90"/>
-        <source>Decimal</source>
+        <source>Dec</source>
         <translation>十进制</translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="92"/>
-        <source>Hexadecimal</source>
-        <translation>十六进制</translation>
+        <source>Hex</source>
+        <translation>16进制</translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="94"/>
-        <source>Hexadecimal(No Space)</source>
+        <source>Hex(No Space)</source>
         <translation>十六进制(无空格)</translation>
     </message>
     <message>

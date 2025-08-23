@@ -83,15 +83,15 @@ QString textFormatName(TextFormat format)
 {
     switch (format) {
     case TextFormat::Bin:
-        return QObject::tr("Binary");
+        return QObject::tr("Bin");
     case TextFormat::Oct:
-        return QObject::tr("Octal");
+        return QObject::tr("Oct");
     case TextFormat::Dec:
-        return QObject::tr("Decimal");
+        return QObject::tr("Dec");
     case TextFormat::Hex:
-        return QObject::tr("Hexadecimal");
+        return QObject::tr("Hex");
     case TextFormat::HexWithoutSpace:
-        return QObject::tr("Hexadecimal(No Space)");
+        return QObject::tr("Hex(No Space)");
     case TextFormat::Ascii:
         return QObject::tr("ASCII");
     case TextFormat::Utf8:

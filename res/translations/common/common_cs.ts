@@ -9,7 +9,6 @@
         <translation>Neznámý</translation>
     </message>
     <message>
-        <location filename="../../../src/common/xtools.cpp" line="86"/>
         <location filename="../../../src/common/xtools.cpp" line="465"/>
         <location filename="../../../src/common/xtools.cpp" line="895"/>
         <location filename="../../../src/common/xtools.cpp" line="897"/>
@@ -17,24 +16,45 @@
         <translation>Binární</translation>
     </message>
     <message>
-        <location filename="../../../src/common/xtools.cpp" line="88"/>
         <source>Octal</source>
-        <translation>Oktalový</translation>
+        <translation type="vanished">Oktalový</translation>
+    </message>
+    <message>
+        <source>Decimal</source>
+        <translation type="vanished">Desítkový</translation>
+    </message>
+    <message>
+        <source>Hexadecimal</source>
+        <translation type="vanished">Hexadecimální</translation>
+    </message>
+    <message>
+        <source>Hexadecimal(No Space)</source>
+        <translation type="vanished">Hexadecimální (bez mezery)</translation>
+    </message>
+    <message>
+        <location filename="../../../src/common/xtools.cpp" line="86"/>
+        <source>Bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/common/xtools.cpp" line="88"/>
+        <source>Oct</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="90"/>
-        <source>Decimal</source>
-        <translation>Desítkový</translation>
+        <source>Dec</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="92"/>
-        <source>Hexadecimal</source>
-        <translation>Hexadecimální</translation>
+        <source>Hex</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="94"/>
-        <source>Hexadecimal(No Space)</source>
-        <translation>Hexadecimální (bez mezery)</translation>
+        <source>Hex(No Space)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="96"/>

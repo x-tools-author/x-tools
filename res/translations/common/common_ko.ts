@@ -9,7 +9,6 @@
         <translation>알 수 없음</translation>
     </message>
     <message>
-        <location filename="../../../src/common/xtools.cpp" line="86"/>
         <location filename="../../../src/common/xtools.cpp" line="465"/>
         <location filename="../../../src/common/xtools.cpp" line="895"/>
         <location filename="../../../src/common/xtools.cpp" line="897"/>
@@ -17,24 +16,45 @@
         <translation>이진수</translation>
     </message>
     <message>
-        <location filename="../../../src/common/xtools.cpp" line="88"/>
         <source>Octal</source>
-        <translation>8진수</translation>
+        <translation type="vanished">8진수</translation>
+    </message>
+    <message>
+        <source>Decimal</source>
+        <translation type="vanished">10진수</translation>
+    </message>
+    <message>
+        <source>Hexadecimal</source>
+        <translation type="vanished">16진수</translation>
+    </message>
+    <message>
+        <source>Hexadecimal(No Space)</source>
+        <translation type="vanished">16진수(공백 없음)</translation>
+    </message>
+    <message>
+        <location filename="../../../src/common/xtools.cpp" line="86"/>
+        <source>Bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/common/xtools.cpp" line="88"/>
+        <source>Oct</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="90"/>
-        <source>Decimal</source>
-        <translation>10진수</translation>
+        <source>Dec</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="92"/>
-        <source>Hexadecimal</source>
-        <translation>16진수</translation>
+        <source>Hex</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="94"/>
-        <source>Hexadecimal(No Space)</source>
-        <translation>16진수(공백 없음)</translation>
+        <source>Hex(No Space)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="96"/>

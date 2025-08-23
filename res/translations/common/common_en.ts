@@ -9,7 +9,6 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../src/common/xtools.cpp" line="86"/>
         <location filename="../../../src/common/xtools.cpp" line="465"/>
         <location filename="../../../src/common/xtools.cpp" line="895"/>
         <location filename="../../../src/common/xtools.cpp" line="897"/>
@@ -17,24 +16,29 @@
         <translation></translation>
     </message>
     <message>
+        <location filename="../../../src/common/xtools.cpp" line="86"/>
+        <source>Bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../../src/common/xtools.cpp" line="88"/>
-        <source>Octal</source>
-        <translation></translation>
+        <source>Oct</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="90"/>
-        <source>Decimal</source>
-        <translation></translation>
+        <source>Dec</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="92"/>
-        <source>Hexadecimal</source>
-        <translation></translation>
+        <source>Hex</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="94"/>
-        <source>Hexadecimal(No Space)</source>
-        <translation></translation>
+        <source>Hex(No Space)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../../src/common/xtools.cpp" line="96"/>
