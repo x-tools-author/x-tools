@@ -91,8 +91,7 @@ list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
 set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
 set(X_3RD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
 # Libraries
-set(tmp ${CMAKE_CURRENT_SOURCE_DIR}/libs/${QT_VERSION}/${CMAKE_BUILD_TYPE})
-set(X_LIBS_DIR ${tmp}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
+set(X_LIBS_DIR ${X_3RD_DIR}/libs/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
 message(STATUS "[xTools]X_LIBS_DIR: ${X_LIBS_DIR}")
 message(STATUS "------------------------------------------------------------")
 
@@ -171,7 +170,7 @@ message(STATUS "[xTools]Link libraries: ${X_LIBS}")
 
 # --------------------------------------------------------------------------------------------------
 # if X_LATEST_GIT_TAG contain "v", remove it...
-if(NOT X_LATEST_GIT_TAG)
+if(NOT DEFINED X_LATEST_GIT_TAG)
   set(X_LATEST_GIT_TAG "9.9.9")
 endif()
 
@@ -255,25 +254,9 @@ if(ANDROID)
   set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR ${x_android_source})
 endif()
 
-# MacOS specific settings
-if(APPLE AND NOT IOS)
-  set_target_properties(
-    xTools
-    PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "xTools"
-               MACOSX_BUNDLE_BUNDLE_VERSION "${X_LATEST_GIT_TAG}"
-               MACOSX_BUNDLE_SHORT_VERSION_STRING "${X_LATEST_GIT_TAG}"
-               MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools"
-               XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon"
-               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconFile "AppIcon"
-               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconName "AppIcon"
-               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleDisplayName "xTools"
-               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleName "xTools"
-               XCODE_ATTRIBUTE_PRODUCT_NAME "xTools")
-endif()
-
 # --------------------------------------------------------------------------------------------------
 # Make installer for Windows
-if(WIN32 AND X_LATEST_GIT_TAG)
+if(WIN32)
   include(${CMAKE_SOURCE_DIR}/cmake/msix/msix.cmake)
   include(${CMAKE_SOURCE_DIR}/cmake/qifw/qifw.cmake)
   set(icon ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
@@ -292,8 +275,30 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Make dmg for macOS
 if(APPLE)
+  set_target_properties(
+    xTools
+    PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "xTools"
+               MACOSX_BUNDLE_BUNDLE_VERSION "${X_LATEST_GIT_TAG}"
+               MACOSX_BUNDLE_SHORT_VERSION_STRING "${X_LATEST_GIT_TAG}"
+               MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools"
+               XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon"
+               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconFile "AppIcon"
+               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconName "AppIcon"
+               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleDisplayName "xTools"
+               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleName "xTools"
+               XCODE_ATTRIBUTE_PRODUCT_NAME "xTools")
+
   include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
   x_generate_dmg(xTools ${X_LATEST_GIT_TAG})
+
+  include(${CMAKE_SOURCE_DIR}/cmake/pkg/pkg.cmake)
+  set(XTOOLS_DEV_ID_APPLICATION
+      "Developer ID Application: Your Name \(XXXXXXXXXX\)"
+      CACHE STRING "Developer ID Application")
+  set(XTOOLS_DEV_ID_INSTALLER
+      "Developer ID Installer: Your Name \(XXXXXXXXXX\)"
+      CACHE STRING "Developer ID Installer")
+  x_generate_pkg(xTools ${X_LATEST_GIT_TAG} ${XTOOLS_DEV_ID_APPLICATION} ${XTOOLS_DEV_ID_INSTALLER})
 endif()
 
 # --------------------------------------------------------------------------------------------------
