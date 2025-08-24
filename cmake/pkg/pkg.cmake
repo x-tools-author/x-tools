@@ -12,8 +12,7 @@ function(x_generate_pkg target version developer_id_application developer_id_ins
     COMMAND ${CMAKE_COMMAND} -E remove_directory "${target}.app" "||" ${CMAKE_COMMAND} -E true
     COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different "../${target}.app" "${target}.app" "||" ${CMAKE_COMMAND} -E true
     COMMAND ${MACDEPLOYQT_EXECUTABLE} ${target}.app
-    COMMAND codesign --deep --force --verbose --sign "${developer_id_application}" "${target}.app"
-    COMMAND productbuild --component "${target}.app" /Applications/ --sign "${developer_id_installer}" --product "${target}.app/Contents/Info.plist" "${target}.pkg")
+    COMMAND codesign --deep --force --verbose --sign "${developer_id_application}" "${target}.app")
   add_dependencies(${target}_pkg ${target})
   # cmake-format: on
 endfunction()
