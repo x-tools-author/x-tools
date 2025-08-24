@@ -11,7 +11,9 @@ function(x_generate_pkg target version developer_id_application developer_id_ins
   add_custom_target(${target}_pkg VERBATIM COMMENT "Making pkg..." WORKING_DIRECTORY ${pkg_root}
     COMMAND ${CMAKE_COMMAND} -E remove_directory "${target}.app" "||" ${CMAKE_COMMAND} -E true
     COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different "../${target}.app" "${target}.app" "||" ${CMAKE_COMMAND} -E true
+    COMMAND ${CMAKE_COMMAND} -E echo "${MACDEPLOYQT_EXECUTABLE} ${target}.app"
     COMMAND ${MACDEPLOYQT_EXECUTABLE} ${target}.app
+    COMMAND ${CMAKE_COMMAND} -E echo "codesign --deep --force --verbose --sign "${developer_id_application}" "${target}.app""
     COMMAND codesign --deep --force --verbose --sign "${developer_id_application}" "${target}.app")
   add_dependencies(${target}_pkg ${target})
   # cmake-format: on
