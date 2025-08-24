@@ -113,11 +113,10 @@ if(APPLE AND NOT IOS)
   # Set minimum macOS version - you can adjust this as needed Common options: 11.0 (Big Sur), 12.0
   # (Monterey), 13.0 (Ventura), 14.0 (Sonoma)
   if(NOT CMAKE_OSX_DEPLOYMENT_TARGET)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET
-        "11.0"
-        CACHE STRING "Minimum macOS deployment version")
+    # cmake-format: off
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0" CACHE STRING "Minimum macOS deployment version")
+    # cmake-format: on
   endif()
-  message(STATUS "[xTools]macOS deployment target: ${CMAKE_OSX_DEPLOYMENT_TARGET}")
 endif()
 
 # Do something for Qt5
