@@ -40,6 +40,7 @@
 #include "common/xtools.h"
 #include "inputsettings.h"
 #include "outputsettings.h"
+#include "scripts/scriptsmanager.h"
 #include "utilities/statistician.h"
 #include "utilities/syntaxhighlighter.h"
 
@@ -49,6 +50,7 @@ struct ParameterKeys
     const QString communicationType{"communicationType"};
     const QString communicationSettings{"communicationSettings"};
     const QString communication{"communication"};
+    const QString communicationShowScriptPanel{"communicationShowScriptPanel"};
 
     // Output settings
     const QString outputFormat{"outputFormat"};
@@ -98,6 +100,12 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     ui->setupUi(this);
     m_rxStatistician = new Statistician(ui->labelRxInfo, this);
     m_txStatistician = new Statistician(ui->labelTxInfo, this);
+
+    ui->pushButtonExternalPanel->setCheckable(true);
+    connect(ui->pushButtonExternalPanel,
+            &QPushButton::clicked,
+            this,
+            &Page::onPushButtonExternalPanelClicked);
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
@@ -151,6 +159,7 @@ QVariantMap Page::save()
     if (m_deviceController) {
         map.insert(keys.communication, m_deviceController->save());
     }
+    map.insert(keys.communicationShowScriptPanel, ui->pushButtonExternalPanel->isChecked());
 
     // Output settings
     map.insert(keys.outputFormat, ui->comboBoxOutputFormat->currentData());
@@ -202,6 +211,9 @@ void Page::load(const QVariantMap &parameters)
     if (m_deviceController) {
         m_deviceController->load(parameters.value(keys.communication).toMap());
     }
+    bool showScriptPanel = parameters.value(keys.communicationShowScriptPanel, false).toBool();
+    ui->pushButtonExternalPanel->setChecked(showScriptPanel);
+    onPushButtonExternalPanelClicked(showScriptPanel);
 
     // Output settings
     int outputFormat = parameters.value(keys.outputFormat).toInt();
@@ -630,6 +642,13 @@ void Page::onTerminalModeChanged()
     if (searchPanel) {
         searchPanel->setWholeWordCheckBoxEnabled(terminalMode);
     }
+}
+
+void Page::onPushButtonExternalPanelClicked(bool checked)
+{
+    ui->widgetScripts->setVisible(checked);
+    ui->pushButtonExternalPanel->setText(checked ? tr("Hide Scripts Panels")
+                                                 : tr("Show Scripts Panels"));
 }
 
 void Page::openDevice()

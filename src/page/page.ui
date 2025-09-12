@@ -49,18 +49,25 @@
        </widget>
       </item>
       <item row="5" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
          <widget class="QPushButton" name="pushButtonDeviceSettings">
           <property name="text">
            <string>Settings</string>
           </property>
          </widget>
         </item>
-        <item>
+        <item row="0" column="1">
          <widget class="QPushButton" name="pushButtonDeviceOpen">
           <property name="text">
            <string>Open</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="pushButtonExternalPanel">
+          <property name="text">
+           <string notr="true">PushButton</string>
           </property>
          </widget>
         </item>
@@ -281,7 +288,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
@@ -564,6 +571,16 @@
      </widget>
     </widget>
    </item>
+   <item>
+    <widget class="ScriptsManager" name="widgetScripts" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -601,6 +618,12 @@
    <class>OutputPanelsManager</class>
    <extends>QWidget</extends>
    <header location="global">page/panels/outputpanels/outputpanelsmanager.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ScriptsManager</class>
+   <extends>QWidget</extends>
+   <header location="global">page/scripts/scriptsmanager.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
