@@ -12,6 +12,12 @@ macro(remove_all_files_of_flow)
   endforeach()
 endmacro()
 
+option(X_ENABLE_XFLOW "Enable xFlow (NodeEditor) support" OFF)
+if(NOT X_ENABLE_XFLOW)
+  remove_all_files_of_flow()
+  return()
+endif()
+
 # Not supported on Android or iOS
 if(ANDROID OR IOS)
   remove_all_files_of_flow()
