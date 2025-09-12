@@ -45,8 +45,13 @@ if(NOT EXISTS "${X_3RD_DIR}/${packet_name}.zip")
   endif()
 endif()
 
+find_package(Qt6 REQUIRED COMPONENTS Qml)
 x_auto_import_package(${packet_name} QtNodes)
 set(X_ENABLE_XFLOW true)
 add_compile_definitions(X_ENABLE_XFLOW)
-list(APPEND X_LIBS QtNodes::QtNodes)
+list(APPEND X_LIBS QtNodes::QtNodes Qt6::Qml)
 message(STATUS "[xFlow]Enabled xFlow support.")
+include_directories(${CMAKE_SOURCE_DIR}/src/nodeeditor)
+
+# Qt-AES
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_qtaes.cmake)
