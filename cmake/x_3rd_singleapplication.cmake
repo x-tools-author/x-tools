@@ -51,5 +51,5 @@ set_property(TARGET SingleApplication PROPERTY FOLDER "3rd")
 set_target_properties(SingleApplication PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${sapp_lib_dir})
 
 list(APPEND X_LIBS SingleApplication)
-add_compile_definitions(X_ENABLE_SINGLEAPPLICATION)
-set(X_ENABLE_SINGLEAPPLICATION ON)
+add_compile_definitions(X_ENABLE_SINGLE_APPLICATION)
+set(X_ENABLE_SINGLE_APPLICATION ON)
