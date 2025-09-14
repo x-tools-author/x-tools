@@ -24,6 +24,7 @@ public:
 
 protected:
     virtual ScriptRunner *newRunner();
+    virtual QString helpUrl() const;
 
 private:
     void onRunButtonClicked(bool checked);
