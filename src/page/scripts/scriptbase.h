@@ -14,6 +14,7 @@ namespace Ui {
 class ScriptBase;
 }
 
+class ScriptRunner;
 class ScriptBase : public QWidget
 {
     Q_OBJECT
@@ -21,6 +22,20 @@ public:
     explicit ScriptBase(QWidget *parent = nullptr);
     ~ScriptBase() override;
 
+protected:
+    virtual ScriptRunner *newRunner();
+
+private:
+    void onRunButtonClicked(bool checked);
+    void onNewButtonClicked();
+    void onOpenButtonClicked();
+    void onRefreshButtonClicked();
+    void onHelpButtonClicked();
+
+    void startRunner();
+    void stopRunner();
+
 private:
     Ui::ScriptBase *ui = nullptr;
+    ScriptRunner *m_runner = nullptr;
 };
