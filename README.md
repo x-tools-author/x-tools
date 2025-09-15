@@ -60,6 +60,9 @@ yay -Syu x-tools
 
 ![search.gif](res/images/search.png)
 
+![lua.png](docs/assets/images/lua.png)
+![js.png](docs/assets/images/js.png)
+
 ## Do Something Make Linux Happy
 
 ```shell
