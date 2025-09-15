@@ -184,7 +184,10 @@ void ScriptBase::onOpenButtonClicked()
     QDesktopServices::openUrl(QUrl(filePath));
 }
 
-void ScriptBase::onRefreshButtonClicked() {}
+void ScriptBase::onRefreshButtonClicked()
+{
+    loadScripts();
+}
 
 void ScriptBase::onHelpButtonClicked()
 {
@@ -231,6 +234,7 @@ void ScriptBase::updateUiEnabled(bool running)
     ui->toolButtonRefresh->setEnabled(!running);
     ui->textEditScript->setEnabled(!running);
     ui->comboBoxFile->setEnabled(!running);
+    ui->toolButtonRefresh->setEnabled(!running);
 }
 
 void ScriptBase::onRunnerStarted()
