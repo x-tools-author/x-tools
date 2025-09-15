@@ -140,150 +140,165 @@
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="56"/>
-        <location filename="../../../src/page/page.ui" line="74"/>
-        <location filename="../../../src/page/page.ui" line="244"/>
+        <location filename="../../../src/page/page.ui" line="81"/>
+        <location filename="../../../src/page/page.ui" line="251"/>
         <source>Settings</source>
         <translation>更多设置</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="63"/>
-        <location filename="../../../src/page/page.cpp" line="541"/>
+        <location filename="../../../src/page/page.cpp" line="568"/>
         <source>Open</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="81"/>
+        <location filename="../../../src/page/page.ui" line="88"/>
         <source>Clear</source>
         <translation>清除</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="122"/>
+        <location filename="../../../src/page/page.ui" line="129"/>
         <source>Rx</source>
         <translation>接收</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="129"/>
+        <location filename="../../../src/page/page.ui" line="136"/>
         <source>Tx</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="136"/>
+        <location filename="../../../src/page/page.ui" line="143"/>
         <source>Date</source>
         <translation>日期</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="143"/>
+        <location filename="../../../src/page/page.ui" line="150"/>
         <source>Flag</source>
         <translation>标志</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="150"/>
+        <location filename="../../../src/page/page.ui" line="157"/>
         <source>Time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="157"/>
+        <location filename="../../../src/page/page.ui" line="164"/>
         <source>Ms</source>
         <translation>毫秒</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="177"/>
+        <location filename="../../../src/page/page.ui" line="184"/>
         <source>Output control</source>
         <translation>输出控制</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="199"/>
+        <location filename="../../../src/page/page.ui" line="206"/>
         <source>Input control</source>
         <translation>输入控制</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="208"/>
+        <location filename="../../../src/page/page.ui" line="215"/>
         <source>Wrap</source>
         <translation>自动换行</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="215"/>
+        <location filename="../../../src/page/page.ui" line="222"/>
         <source>Terminal</source>
         <translation>终端模式</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="235"/>
+        <location filename="../../../src/page/page.ui" line="242"/>
         <source>Communication control</source>
         <translation>通信控制</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="251"/>
+        <location filename="../../../src/page/page.ui" line="258"/>
         <source>Send</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="260"/>
         <location filename="../../../src/page/page.ui" line="267"/>
+        <location filename="../../../src/page/page.ui" line="274"/>
         <source>Text format</source>
         <translation>文本格式</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="288"/>
+        <location filename="../../../src/page/page.ui" line="295"/>
         <source>IO</source>
         <translation>输入输出</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="335"/>
+        <location filename="../../../src/page/page.ui" line="342"/>
         <source>Output</source>
         <translation>输出</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="498"/>
+        <location filename="../../../src/page/page.ui" line="505"/>
         <source>Input</source>
         <translation>输入</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="505"/>
+        <location filename="../../../src/page/page.ui" line="512"/>
         <source>Preset data list</source>
         <translation>预设数据列表</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="547"/>
+        <location filename="../../../src/page/page.ui" line="554"/>
         <source>Presets</source>
         <translation>预设数据</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="552"/>
+        <location filename="../../../src/page/page.ui" line="559"/>
         <source>Emitter</source>
         <translation>定时发送</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="557"/>
+        <location filename="../../../src/page/page.ui" line="564"/>
         <source>Responder</source>
         <translation>自动应答</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="562"/>
+        <location filename="../../../src/page/page.ui" line="569"/>
         <source>Transfers</source>
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="375"/>
+        <location filename="../../../src/page/page.cpp" line="300"/>
+        <source>Error: No device is opened.</source>
+        <translation>错误：设备未打开。</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/page.cpp" line="402"/>
         <source>Disable</source>
         <translation>禁用</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="532"/>
+        <location filename="../../../src/page/page.cpp" line="559"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="548"/>
+        <location filename="../../../src/page/page.cpp" line="575"/>
         <source>Error Occurred</source>
         <translation>发生错误</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="554"/>
+        <location filename="../../../src/page/page.cpp" line="581"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="727"/>
+        <location filename="../../../src/page/page.cpp" line="666"/>
+        <source>Hide Scripts Panels</source>
+        <translation>隐藏脚本面板</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/page.cpp" line="667"/>
+        <source>Show Scripts Panels</source>
+        <translation>显示脚本面板</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/page.cpp" line="762"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>

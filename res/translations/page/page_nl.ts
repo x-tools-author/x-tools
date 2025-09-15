@@ -140,150 +140,165 @@
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="56"/>
-        <location filename="../../../src/page/page.ui" line="74"/>
-        <location filename="../../../src/page/page.ui" line="244"/>
+        <location filename="../../../src/page/page.ui" line="81"/>
+        <location filename="../../../src/page/page.ui" line="251"/>
         <source>Settings</source>
         <translation>Instellingen</translation>
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="63"/>
-        <location filename="../../../src/page/page.cpp" line="541"/>
+        <location filename="../../../src/page/page.cpp" line="568"/>
         <source>Open</source>
         <translation>Openen</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="81"/>
+        <location filename="../../../src/page/page.ui" line="88"/>
         <source>Clear</source>
         <translation>Wissen</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="122"/>
+        <location filename="../../../src/page/page.ui" line="129"/>
         <source>Rx</source>
         <translation>Ontvangst</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="129"/>
+        <location filename="../../../src/page/page.ui" line="136"/>
         <source>Tx</source>
         <translation>Verzending</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="136"/>
+        <location filename="../../../src/page/page.ui" line="143"/>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="143"/>
+        <location filename="../../../src/page/page.ui" line="150"/>
         <source>Flag</source>
         <translation>Vlag</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="150"/>
+        <location filename="../../../src/page/page.ui" line="157"/>
         <source>Time</source>
         <translation>Tijd</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="157"/>
+        <location filename="../../../src/page/page.ui" line="164"/>
         <source>Ms</source>
         <translation>Ms</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="177"/>
+        <location filename="../../../src/page/page.ui" line="184"/>
         <source>Output control</source>
         <translation>Uitvoerregeling</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="199"/>
+        <location filename="../../../src/page/page.ui" line="206"/>
         <source>Input control</source>
         <translation>Invoerregeling</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="208"/>
+        <location filename="../../../src/page/page.ui" line="215"/>
         <source>Wrap</source>
         <translation>Regelafbreking</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="215"/>
+        <location filename="../../../src/page/page.ui" line="222"/>
         <source>Terminal</source>
         <translation>Terminal</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="235"/>
+        <location filename="../../../src/page/page.ui" line="242"/>
         <source>Communication control</source>
         <translation>Communicatieregeling</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="251"/>
+        <location filename="../../../src/page/page.ui" line="258"/>
         <source>Send</source>
         <translation>Verzenden</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="260"/>
         <location filename="../../../src/page/page.ui" line="267"/>
+        <location filename="../../../src/page/page.ui" line="274"/>
         <source>Text format</source>
         <translation>Tekstformaat</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="288"/>
+        <location filename="../../../src/page/page.ui" line="295"/>
         <source>IO</source>
         <translation>IO</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="335"/>
+        <location filename="../../../src/page/page.ui" line="342"/>
         <source>Output</source>
         <translation>Uitvoer</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="498"/>
+        <location filename="../../../src/page/page.ui" line="505"/>
         <source>Input</source>
         <translation>Invoer</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="505"/>
+        <location filename="../../../src/page/page.ui" line="512"/>
         <source>Preset data list</source>
         <translation>Vooraf ingestelde gegevenslijst</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="547"/>
+        <location filename="../../../src/page/page.ui" line="554"/>
         <source>Presets</source>
         <translation>Voorinstellingen</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="552"/>
+        <location filename="../../../src/page/page.ui" line="559"/>
         <source>Emitter</source>
         <translation>Zender</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="557"/>
+        <location filename="../../../src/page/page.ui" line="564"/>
         <source>Responder</source>
         <translation>Ontvanger</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.ui" line="562"/>
+        <location filename="../../../src/page/page.ui" line="569"/>
         <source>Transfers</source>
         <translation>Overdrachten</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="375"/>
+        <location filename="../../../src/page/page.cpp" line="300"/>
+        <source>Error: No device is opened.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/page.cpp" line="402"/>
         <source>Disable</source>
         <translation>Uitschakelen</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="532"/>
+        <location filename="../../../src/page/page.cpp" line="559"/>
         <source>Close</source>
         <translation>Sluiten</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="548"/>
+        <location filename="../../../src/page/page.cpp" line="575"/>
         <source>Error Occurred</source>
         <translation>Er is een fout opgetreden</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="554"/>
+        <location filename="../../../src/page/page.cpp" line="581"/>
         <source>Warning</source>
         <translation>Waarschuwing</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="727"/>
+        <location filename="../../../src/page/page.cpp" line="666"/>
+        <source>Hide Scripts Panels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/page.cpp" line="667"/>
+        <source>Show Scripts Panels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/page.cpp" line="762"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>

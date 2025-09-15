@@ -229,6 +229,7 @@ x_generate_module_translations(page-preset ${CMAKE_CURRENT_SOURCE_DIR}/src/page/
 x_generate_module_translations(page-responder ${CMAKE_CURRENT_SOURCE_DIR}/src/page/responder ON)
 x_generate_module_translations(page-transfer ${CMAKE_CURRENT_SOURCE_DIR}/src/page/transfer ON)
 x_generate_module_translations(page-utilities ${CMAKE_CURRENT_SOURCE_DIR}/src/page/utilities ON)
+x_generate_module_translations(page-scripts ${CMAKE_CURRENT_SOURCE_DIR}/src/page/scripts ON)
 
 # xTools Tools
 x_generate_module_translations(tools-ascii ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/ascii ON)
