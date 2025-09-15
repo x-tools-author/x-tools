@@ -86,8 +86,7 @@ QStringList ScriptBase::ignoredFiles() const
 
 void ScriptBase::loadScriptsApp()
 {
-    QString appDir = QApplication::applicationDirPath();
-    QString dir = appDir + QString("/scripts/") + scriptDir();
+    QString dir = applicationScriptDir();
     QDir d(dir);
     if (!d.exists()) {
         return;
@@ -105,6 +104,13 @@ void ScriptBase::loadScriptsApp()
 
         ui->comboBoxFile->addItem(fileName, f.absoluteFilePath());
     }
+}
+
+QString ScriptBase::applicationScriptDir()
+{
+    QString appDir = QApplication::applicationDirPath();
+    QString dir = appDir + QString("/scripts/") + scriptDir();
+    return dir;
 }
 
 void ScriptBase::loadScriptsUser() {}
@@ -130,7 +136,6 @@ void ScriptBase::onScriptComboBoxCurrentIndexChanged()
 
 void ScriptBase::onRunButtonClicked(bool checked)
 {
-    qInfo() << "ScriptBase::onRunButtonClicked" << checked;
     ui->toolButtonRun->setEnabled(false);
     if (checked) {
         startRunner();
@@ -152,10 +157,10 @@ void ScriptBase::onNewButtonClicked()
         txt += '.' + scriptSuffix();
     }
 
-    QString filePath = QApplication::applicationDirPath();
-    filePath += QString("/scripts/");
+    QString filePath = applicationScriptDir();
+    filePath += "/";
     filePath += scriptDir();
-    filePath += '/';
+    filePath += "/";
     filePath += txt;
     QFile file(filePath);
     if (file.exists()) {

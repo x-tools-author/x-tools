@@ -46,6 +46,7 @@ protected:
 
     virtual QStringList ignoredFiles() const;
     void loadScriptsApp();
+    QString applicationScriptDir();
     virtual void loadScriptsUser();
 
 private:
