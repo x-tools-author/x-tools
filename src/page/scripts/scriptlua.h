@@ -16,4 +16,12 @@ class ScriptLua : public ScriptBase
 public:
     explicit ScriptLua(QWidget *parent = nullptr);
     ~ScriptLua();
+
+protected:
+    ScriptRunner *newRunner() override;
+    QString helpUrl() const override;
+    QString scriptSuffix() const override;
+    QString scriptDir() const override;
+
+    QStringList ignoredFiles() const override;
 };

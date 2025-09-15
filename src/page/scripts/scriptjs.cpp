@@ -8,8 +8,30 @@
  **************************************************************************************************/
 #include "scriptjs.h"
 
+#include "scriptrunnerjs.h"
+
 ScriptJs::ScriptJs(QWidget *parent)
     : ScriptBase(parent)
 {}
 
 ScriptJs::~ScriptJs() {}
+
+ScriptRunner *ScriptJs::newRunner()
+{
+    return new ScriptRunnerJs(this);
+}
+
+QString ScriptJs::helpUrl() const
+{
+    return QStringLiteral("https://developer.mozilla.org/en-US/docs/Web/JavaScript");
+}
+
+QString ScriptJs::scriptSuffix() const
+{
+    return QStringLiteral("js");
+}
+
+QString ScriptJs::scriptDir() const
+{
+    return QStringLiteral("js");
+}

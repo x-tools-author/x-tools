@@ -8,8 +8,36 @@
  **************************************************************************************************/
 #include "scriptlua.h"
 
+#include "scriptrunnerlua.h"
+
 ScriptLua::ScriptLua(QWidget *parent)
     : ScriptBase(parent)
 {}
 
 ScriptLua::~ScriptLua() {}
+
+ScriptRunner *ScriptLua::newRunner()
+{
+    return new ScriptRunnerLua(this);
+}
+
+QString ScriptLua::helpUrl() const
+{
+    return QStringLiteral("https://www.lua.org/manual/5.3/");
+}
+
+QString ScriptLua::scriptSuffix() const
+{
+    return QStringLiteral("lua");
+}
+
+QString ScriptLua::scriptDir() const
+{
+    return QStringLiteral("lua");
+}
+
+QStringList ScriptLua::ignoredFiles() const
+{
+    return QStringList() << "check_sum.lua"
+                         << "default_string.lua" << "default.lua";
+}

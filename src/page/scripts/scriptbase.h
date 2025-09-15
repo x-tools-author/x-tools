@@ -22,11 +22,20 @@ public:
     explicit ScriptBase(QWidget *parent = nullptr);
     ~ScriptBase() override;
 
+    void loadScripts();
+
 protected:
-    virtual ScriptRunner *newRunner();
-    virtual QString helpUrl() const;
+    virtual ScriptRunner *newRunner() = 0;
+    virtual QString helpUrl() const = 0;
+    virtual QString scriptSuffix() const = 0;
+    virtual QString scriptDir() const = 0;
+
+    virtual QStringList ignoredFiles() const;
+    void loadScriptsApp();
+    virtual void loadScriptsUser();
 
 private:
+    void onScriptComboBoxCurrentIndexChanged();
     void onRunButtonClicked(bool checked);
     void onNewButtonClicked();
     void onOpenButtonClicked();
@@ -35,6 +44,7 @@ private:
 
     void startRunner();
     void stopRunner();
+    void updateUiEnabled(bool running);
 
 private:
     Ui::ScriptBase *ui = nullptr;

@@ -212,6 +212,7 @@ x_add_executable(xTools ${X_SOURCES})
 target_link_libraries(xTools PRIVATE ${X_LIBS})
 x_output_env(xTools)
 x_deploy_qt(xTools)
+x_deploy_lua(xTools)
 # xTools modules
 x_generate_module_translations(common ${CMAKE_CURRENT_SOURCE_DIR}/src/common ON)
 x_generate_module_translations(device ${CMAKE_CURRENT_SOURCE_DIR}/src/device ON)

@@ -16,4 +16,10 @@ class ScriptJs : public ScriptBase
 public:
     explicit ScriptJs(QWidget *parent = nullptr);
     ~ScriptJs();
+
+protected:
+    ScriptRunner *newRunner() override;
+    QString helpUrl() const override;
+    QString scriptSuffix() const override;
+    QString scriptDir() const override;
 };
