@@ -27,7 +27,7 @@ ScriptRunner *ScriptLua::newRunner()
 
 QString ScriptLua::helpUrl() const
 {
-    return QStringLiteral("https://www.lua.org/manual/5.3/");
+    return QStringLiteral("https://x-tools-author.github.io/x-tools/docs/06.scripts/1.lua/");
 }
 
 QString ScriptLua::scriptSuffix() const

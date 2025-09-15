@@ -27,7 +27,7 @@ ScriptRunner *ScriptJs::newRunner()
 
 QString ScriptJs::helpUrl() const
 {
-    return QStringLiteral("https://developer.mozilla.org/en-US/docs/Web/JavaScript");
+    return QStringLiteral("https://x-tools-author.github.io/x-tools/docs/06.scripts/2.javascript/");
 }
 
 QString ScriptJs::scriptSuffix() const
