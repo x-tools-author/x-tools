@@ -61,6 +61,15 @@ SyntaxHighlighterJs::SyntaxHighlighterJs(QTextDocument *parent)
     numberRule.pattern = QRegularExpression("\\b[0-9]+(\\.[0-9]+)?\\b");
     numberRule.format = numberFormat;
     highlightingRules.append(numberRule);
+
+    // 函数名称
+    QTextCharFormat functionFormat;
+    functionFormat.setForeground(QColor("#d0a348"));
+    functionFormat.setFontWeight(QFont::Bold);
+    HighlightingRule functionRule;
+    functionRule.pattern = QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()");
+    functionRule.format = functionFormat;
+    highlightingRules.append(functionRule);
 }
 
 void SyntaxHighlighterJs::highlightBlock(const QString &text)
