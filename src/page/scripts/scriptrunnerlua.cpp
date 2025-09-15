@@ -60,7 +60,6 @@ void ScriptRunnerLua::run()
         lua_pop(m_lua, 1); // Remove error message from the stack
     }
 
-    exec();
     lua_close(m_lua);
     m_lua = nullptr;
 }

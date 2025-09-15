@@ -18,8 +18,9 @@ class ScriptsManager;
 
 struct ScriptsManagerParameterKeys
 {
-    const QString lua = QStringLiteral("lua");
-    const QString js = QStringLiteral("js");
+    const QString tabIndex{"tabIndex"};
+    const QString lua{"lua"};
+    const QString js{"js"};
 };
 
 class ScriptLua;

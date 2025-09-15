@@ -154,3 +154,16 @@ function(x_install_3rd_library target_name dir_name)
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${dir_name}
     COMMENT "Deploy 3rd libraries")
 endfunction()
+
+function(x_deploy_resources TARGET)
+  set(dst_dir $<TARGET_FILE_DIR:${TARGET}>/scripts)
+  if(APPLE)
+    set(dst_dir ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../Resources/scripts)
+  endif()
+  make_directory(${dst_dir})
+  add_custom_command(
+    TARGET ${TARGET}
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/res/scripts ${dst_dir}
+    COMMENT "Copy lua scripts to output dir")
+endfunction()

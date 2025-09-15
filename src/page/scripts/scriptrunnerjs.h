@@ -8,6 +8,9 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsEngine>
+#include <QJsValue>
+
 #include "scriptrunner.h"
 
 class ScriptRunnerJs : public ScriptRunner
@@ -17,6 +20,16 @@ public:
     explicit ScriptRunnerJs(QObject *parent = nullptr);
     ~ScriptRunnerJs();
 
+    void onBytesRead(const QByteArray &data) override;
+
+    Q_INVOKABLE void xWriteBytes(const QJSValue &value);
+    Q_INVOKABLE bool xIsInterruptionRequested();
+    Q_INVOKABLE void xSleep(int ms);
+    Q_INVOKABLE void xPrint(const QString &text);
+
 protected:
     void run() override;
+
+private:
+    QJSEngine *m_engine{nullptr};
 };

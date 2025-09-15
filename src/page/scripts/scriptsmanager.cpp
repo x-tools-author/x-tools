@@ -39,6 +39,12 @@ void ScriptsManager::load(const QJsonObject &obj)
     ScriptsManagerParameterKeys keys;
     m_lua->load(obj.value(keys.lua).toObject(QJsonObject()));
     m_js->load(obj.value(keys.js).toObject(QJsonObject()));
+
+    int index = obj.value(keys.tabIndex).toInt(0);
+    if (index < 0 || index >= ui->tabWidget->count()) {
+        index = 0;
+    }
+    ui->tabWidget->setCurrentIndex(index);
 }
 
 QJsonObject ScriptsManager::save()
@@ -47,6 +53,7 @@ QJsonObject ScriptsManager::save()
     QJsonObject obj;
     obj.insert(keys.lua, m_lua->save());
     obj.insert(keys.js, m_js->save());
+    obj.insert(keys.tabIndex, ui->tabWidget->currentIndex());
     return obj;
 }
 

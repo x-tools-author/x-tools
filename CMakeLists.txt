@@ -59,6 +59,7 @@ message(STATUS "[xTools]CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION
 # Qt module
 list(APPEND X_QT_COMPONENTS Gui)
 list(APPEND X_QT_COMPONENTS Svg)
+list(APPEND X_QT_COMPONENTS Qml)
 list(APPEND X_QT_COMPONENTS Core)
 list(APPEND X_QT_COMPONENTS Widgets)
 list(APPEND X_QT_COMPONENTS Network)
@@ -84,6 +85,7 @@ if(QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
 endif()
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Network)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Svg)
+list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Qml)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
 
 # --------------------------------------------------------------------------------------------------
@@ -212,7 +214,7 @@ x_add_executable(xTools ${X_SOURCES})
 target_link_libraries(xTools PRIVATE ${X_LIBS})
 x_output_env(xTools)
 x_deploy_qt(xTools)
-x_deploy_lua(xTools)
+x_deploy_resources(xTools)
 # xTools modules
 x_generate_module_translations(common ${CMAKE_CURRENT_SOURCE_DIR}/src/common ON)
 x_generate_module_translations(device ${CMAKE_CURRENT_SOURCE_DIR}/src/device ON)

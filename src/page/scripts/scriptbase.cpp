@@ -20,8 +20,6 @@ ScriptBase::ScriptBase(QWidget *parent)
     , ui(new Ui::ScriptBase)
 {
     ui->setupUi(this);
-    ui->toolButtonRun->setCheckable(true);
-
     connect(ui->comboBoxFile,
             qOverload<int>(&QComboBox::currentIndexChanged),
             this,
@@ -136,11 +134,10 @@ void ScriptBase::onScriptComboBoxCurrentIndexChanged()
 
 void ScriptBase::onRunButtonClicked(bool checked)
 {
-    ui->toolButtonRun->setEnabled(false);
-    if (checked) {
-        startRunner();
-    } else {
+    if (m_runner) {
         stopRunner();
+    } else {
+        startRunner();
     }
 }
 
@@ -150,9 +147,13 @@ void ScriptBase::onNewButtonClicked()
                                         tr("New Script"),
                                         tr("Please input the script name:"),
                                         QLineEdit::Normal,
-                                        QString("NewScript") + QString(".") + scriptSuffix(),
+                                        QString("NewScript"),
                                         nullptr,
                                         Qt::WindowCloseButtonHint);
+    if (txt.isEmpty()) {
+        return;
+    }
+
     if (!txt.endsWith('.' + scriptSuffix())) {
         txt += '.' + scriptSuffix();
     }
@@ -243,6 +244,8 @@ void ScriptBase::onRunnerStarted()
 
 void ScriptBase::onRunnerFinished()
 {
+    stopRunner();
+
     ui->toolButtonRun->setEnabled(true);
     updateUiEnabled(false);
 
