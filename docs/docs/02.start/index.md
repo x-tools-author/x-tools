@@ -1,6 +1,6 @@
 ---
 title: 快速开始
-nav_order: 3
+nav_order: 2
 ---
 
-# 快速开始
+## 快速开始

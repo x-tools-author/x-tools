@@ -1,6 +1,6 @@
 ---
 title: 安装
-nav_order: 2
+nav_order: 1
 ---
 
 ## 安装

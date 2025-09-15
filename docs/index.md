@@ -1,7 +1,7 @@
 ---
 title: 项目简介
 layout: home
-nav_order: 1
+nav_order: 0
 description: "xTools项目简介。"
 permalink: /
 ---
