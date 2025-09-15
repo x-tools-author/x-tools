@@ -8,6 +8,12 @@
  **************************************************************************************************/
 #pragma once
 
+extern "C" {
+#include "lauxlib.h"
+#include "lua.h"
+#include "lualib.h"
+}
+
 #include "scriptrunner.h"
 
 class ScriptRunnerLua : public ScriptRunner
@@ -17,6 +23,17 @@ public:
     explicit ScriptRunnerLua(QObject *parent = nullptr);
     ~ScriptRunnerLua();
 
+    void onBytesRead(const QByteArray &data) override;
+
 protected:
     void run() override;
+
+private:
+    static int luaPrint(lua_State *L);
+    static int luaWrite(lua_State *L);
+    static int luaSleep(lua_State *L);
+    static int luaIsInterruptionRequested(lua_State *L);
+
+private:
+    lua_State *m_lua = nullptr;
 };

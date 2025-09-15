@@ -17,6 +17,13 @@ public:
     explicit ScriptRunner(QObject *parent = nullptr);
     ~ScriptRunner();
 
+    void execute(const QString &scriptFile);
+    virtual void onBytesRead(const QByteArray &data);
+
+signals:
+    void logOutput(const QString &text);
+    void invokeWrite(const QByteArray &data);
+
 protected:
-    void run() override;
+    QString m_scriptFile;
 };

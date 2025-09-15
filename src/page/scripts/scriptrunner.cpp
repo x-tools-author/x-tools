@@ -14,4 +14,13 @@ ScriptRunner::ScriptRunner(QObject *parent)
 
 ScriptRunner::~ScriptRunner() {}
 
-void ScriptRunner::run() {}
+void ScriptRunner::execute(const QString &scriptFile)
+{
+    m_scriptFile = scriptFile;
+    start();
+}
+
+void ScriptRunner::onBytesRead(const QByteArray &data)
+{
+    Q_UNUSED(data);
+}
