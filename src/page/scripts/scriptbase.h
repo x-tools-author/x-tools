@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QJsonObject>
+#include <QTextDocument>
 #include <QWidget>
 
 namespace Ui {
@@ -34,6 +35,7 @@ public:
 
     virtual void load(const QJsonObject &obj);
     virtual QJsonObject save();
+    QTextDocument *scriptDocument() const;
 
 signals:
     void invokeWrite(const QByteArray &data);

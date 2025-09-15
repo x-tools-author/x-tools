@@ -12,6 +12,7 @@
 #include <QFile>
 
 #include "common/luarunner.h"
+#include "common/syntaxhighlighterlua.h"
 #include "common/xtools.h"
 
 struct LuaPanelDataKeys
@@ -49,6 +50,11 @@ LuaPanel::LuaPanel(QWidget *parent)
     setupTextFormat(ui->comboBoxResultFormat);
     onTestFormatChanged();
     onResultFormatChanged();
+
+    auto ret = new SyntaxHighlighterLua(ui->plainTextEditScriptTable->document());
+    Q_UNUSED(ret);
+    ret = new SyntaxHighlighterLua(ui->plainTextEditScriptString->document());
+    Q_UNUSED(ret);
 }
 
 LuaPanel::~LuaPanel()

@@ -77,6 +77,11 @@ QJsonObject ScriptBase::save()
     return obj;
 }
 
+QTextDocument *ScriptBase::scriptDocument() const
+{
+    return ui->textEditScript->document();
+}
+
 QStringList ScriptBase::ignoredFiles() const
 {
     return QStringList();
