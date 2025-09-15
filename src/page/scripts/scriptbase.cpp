@@ -20,16 +20,20 @@ ScriptBase::ScriptBase(QWidget *parent)
     , ui(new Ui::ScriptBase)
 {
     ui->setupUi(this);
+    ui->toolButtonRun->setCheckable(true);
 
     connect(ui->comboBoxFile,
             qOverload<int>(&QComboBox::currentIndexChanged),
             this,
             &ScriptBase::onScriptComboBoxCurrentIndexChanged);
-    connect(ui->toolButtonOpen, &QToolButton::clicked, this, &ScriptBase::onRunButtonClicked);
+    connect(ui->toolButtonRun, &QToolButton::clicked, this, &ScriptBase::onRunButtonClicked);
     connect(ui->toolButtonNew, &QToolButton::clicked, this, &ScriptBase::onNewButtonClicked);
     connect(ui->toolButtonDir, &QToolButton::clicked, this, &ScriptBase::onOpenButtonClicked);
     connect(ui->toolButtonRefresh, &QToolButton::clicked, this, &ScriptBase::onRefreshButtonClicked);
     connect(ui->toolButtonHelp, &QToolButton::clicked, this, &ScriptBase::onHelpButtonClicked);
+    connect(ui->textEditScript, &QTextEdit::textChanged, this, &ScriptBase::onScriptTextChanged);
+
+    onRunnerFinished();
 }
 
 ScriptBase::~ScriptBase()
@@ -42,6 +46,13 @@ void ScriptBase::loadScripts()
     ui->comboBoxFile->clear();
     loadScriptsApp();
     loadScriptsUser();
+}
+
+void ScriptBase::onBytesRead(const QByteArray &data)
+{
+    if (m_runner) {
+        m_runner->onBytesRead(data);
+    }
 }
 
 QStringList ScriptBase::ignoredFiles() const
@@ -95,7 +106,8 @@ void ScriptBase::onScriptComboBoxCurrentIndexChanged()
 
 void ScriptBase::onRunButtonClicked(bool checked)
 {
-    ui->toolButtonOpen->setEnabled(false);
+    qInfo() << "ScriptBase::onRunButtonClicked" << checked;
+    ui->toolButtonRun->setEnabled(false);
     if (checked) {
         startRunner();
     } else {
@@ -163,15 +175,13 @@ void ScriptBase::startRunner()
         return;
     }
 
-    connect(m_runner, &QThread::finished, this, [this]() {
-        ui->toolButtonOpen->setEnabled(true);
-        updateUiEnabled(false);
-    });
-    connect(m_runner, &QThread::started, this, [this]() {
-        ui->toolButtonOpen->setEnabled(true);
-        updateUiEnabled(true);
-    });
-    m_runner->start();
+    connect(m_runner, &QThread::finished, this, &ScriptBase::onRunnerFinished);
+    connect(m_runner, &QThread::started, this, &ScriptBase::onRunnerStarted);
+    connect(m_runner, &ScriptRunner::logOutput, ui->textBrowserLog, &QTextBrowser::append);
+    connect(m_runner, &ScriptRunner::invokeWrite, this, &ScriptBase::invokeWrite);
+
+    const QString fileName = ui->comboBoxFile->currentData().toString();
+    m_runner->execute(fileName);
 }
 
 void ScriptBase::stopRunner()
@@ -190,4 +200,40 @@ void ScriptBase::updateUiEnabled(bool running)
     ui->toolButtonNew->setEnabled(!running);
     ui->toolButtonRefresh->setEnabled(!running);
     ui->textEditScript->setEnabled(!running);
+}
+
+void ScriptBase::onRunnerStarted()
+{
+    ui->toolButtonRun->setEnabled(true);
+    updateUiEnabled(true);
+
+    ui->toolButtonRun->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStop));
+    ui->toolButtonRun->setToolTip(tr("Stop the script"));
+}
+
+void ScriptBase::onRunnerFinished()
+{
+    ui->toolButtonRun->setEnabled(true);
+    updateUiEnabled(false);
+
+    ui->toolButtonRun->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart));
+    ui->toolButtonRun->setToolTip(tr("Run the script"));
+}
+
+void ScriptBase::onScriptTextChanged()
+{
+    QString fileName = ui->comboBoxFile->currentData().toString();
+    QString txt = ui->textEditScript->toPlainText();
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        return;
+    }
+
+    QByteArray ba = txt.toUtf8();
+    file.write(ba);
+    file.close();
 }

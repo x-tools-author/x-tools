@@ -24,6 +24,9 @@ ScriptsManager::ScriptsManager(QWidget *parent)
 
     m_lua->loadScripts();
     m_js->loadScripts();
+
+    connect(m_lua, &ScriptLua::invokeWrite, this, &ScriptsManager::invokeWrite);
+    connect(m_js, &ScriptJs::invokeWrite, this, &ScriptsManager::invokeWrite);
 }
 
 ScriptsManager::~ScriptsManager()
@@ -37,3 +40,9 @@ QJsonObject ScriptsManager::load()
 }
 
 void ScriptsManager::save(const QJsonObject &obj) {}
+
+void ScriptsManager::onBytesRead(const QByteArray &data)
+{
+    m_lua->onBytesRead(data);
+    m_js->onBytesRead(data);
+}

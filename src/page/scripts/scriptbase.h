@@ -23,6 +23,10 @@ public:
     ~ScriptBase() override;
 
     void loadScripts();
+    void onBytesRead(const QByteArray &data);
+
+signals:
+    void invokeWrite(const QByteArray &data);
 
 protected:
     virtual ScriptRunner *newRunner() = 0;
@@ -45,6 +49,9 @@ private:
     void startRunner();
     void stopRunner();
     void updateUiEnabled(bool running);
+    void onRunnerStarted();
+    void onRunnerFinished();
+    void onScriptTextChanged();
 
 private:
     Ui::ScriptBase *ui = nullptr;

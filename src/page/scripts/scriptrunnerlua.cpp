@@ -53,6 +53,8 @@ void ScriptRunnerLua::run()
     lua_register(m_lua, "x_sleep", &ScriptRunnerLua::luaSleep);
     lua_register(m_lua, "x_is_interruption_requested", &ScriptRunnerLua::luaIsInterruptionRequested);
 
+    qInfo() << "Executing Lua script:" << m_scriptFile;
+
     int ret = luaL_dofile(m_lua, m_scriptFile.toUtf8().constData());
     if (ret != LUA_OK) {
         const char *errorMsg = lua_tostring(m_lua, -1);

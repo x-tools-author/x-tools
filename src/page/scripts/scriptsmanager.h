@@ -28,6 +28,11 @@ public:
     QJsonObject load();
     void save(const QJsonObject &obj);
 
+    void onBytesRead(const QByteArray &data);
+
+signals:
+    void invokeWrite(const QByteArray &data);
+
 private:
     Ui::ScriptsManager *ui = nullptr;
     ScriptLua *m_lua = nullptr;

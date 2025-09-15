@@ -57,7 +57,7 @@
    <item row="0" column="1">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="1">
-      <widget class="QToolButton" name="toolButtonOpen">
+      <widget class="QToolButton" name="toolButtonRun">
        <property name="text">
         <string notr="true">...</string>
        </property>

@@ -106,6 +106,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
             &QPushButton::clicked,
             this,
             &Page::onPushButtonExternalPanelClicked);
+    connect(ui->widgetScripts, &ScriptsManager::invokeWrite, this, &Page::inputBytes);
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
@@ -287,8 +288,12 @@ QToolButton *Page::presetToolButton()
 
 void Page::inputBytes(const QByteArray &bytes)
 {
-    if (m_deviceController->device()) {
-        m_deviceController->device()->writeBytes(bytes);
+    auto device = m_deviceController ? m_deviceController->device() : nullptr;
+    if (device && device->isRunning()) {
+        device->writeBytes(bytes);
+    } else {
+        QString msg = tr("Error: No device is opened.");
+        ui->textBrowserOutput->append(QString("<span style=\"color:#FF0000;\">%1</span>").arg(msg));
     }
 }
 
@@ -592,6 +597,7 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
         ui->tabTransfers->inputBytes(cookedBytes);
     }
 
+    ui->widgetScripts->onBytesRead(bytes);
     emit bytesRead(cookedBytes, cookedFrom);
 }
 

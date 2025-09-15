@@ -2,7 +2,7 @@
 
 while true do
     print("Current time: " .. os.date("%H:%M:%S"))
-    x_read_write(os.date("%H:%M:%S") .. "\n")
+    x_write(os.date("%H:%M:%S") .. "\n")
 
     ret = x_is_interruption_requested()
     if ret then
