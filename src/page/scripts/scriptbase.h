@@ -8,11 +8,17 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QWidget>
 
 namespace Ui {
 class ScriptBase;
 }
+
+struct ScriptBaseParameterKeys
+{
+    const QString scriptIndex = QStringLiteral("scriptIndex");
+};
 
 class ScriptRunner;
 class ScriptBase : public QWidget
@@ -24,6 +30,10 @@ public:
 
     void loadScripts();
     void onBytesRead(const QByteArray &data);
+    void aboutToClose();
+
+    virtual void load(const QJsonObject &obj);
+    virtual QJsonObject save();
 
 signals:
     void invokeWrite(const QByteArray &data);

@@ -34,15 +34,30 @@ ScriptsManager::~ScriptsManager()
     delete ui;
 }
 
-QJsonObject ScriptsManager::load()
+void ScriptsManager::load(const QJsonObject &obj)
 {
-    return QJsonObject();
+    ScriptsManagerParameterKeys keys;
+    m_lua->load(obj.value(keys.lua).toObject(QJsonObject()));
+    m_js->load(obj.value(keys.js).toObject(QJsonObject()));
 }
 
-void ScriptsManager::save(const QJsonObject &obj) {}
+QJsonObject ScriptsManager::save()
+{
+    ScriptsManagerParameterKeys keys;
+    QJsonObject obj;
+    obj.insert(keys.lua, m_lua->save());
+    obj.insert(keys.js, m_js->save());
+    return obj;
+}
 
 void ScriptsManager::onBytesRead(const QByteArray &data)
 {
     m_lua->onBytesRead(data);
     m_js->onBytesRead(data);
+}
+
+void ScriptsManager::aboutToClose()
+{
+    m_lua->aboutToClose();
+    m_js->aboutToClose();
 }

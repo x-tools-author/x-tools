@@ -55,6 +55,30 @@ void ScriptBase::onBytesRead(const QByteArray &data)
     }
 }
 
+void ScriptBase::aboutToClose()
+{
+    stopRunner();
+}
+
+void ScriptBase::load(const QJsonObject &obj)
+{
+    ScriptBaseParameterKeys keys;
+    int index = obj.value(keys.scriptIndex).toInt(0);
+    if (index >= 0 && index < ui->comboBoxFile->count()) {
+        ui->comboBoxFile->setCurrentIndex(index);
+    }
+
+    onScriptComboBoxCurrentIndexChanged();
+}
+
+QJsonObject ScriptBase::save()
+{
+    QJsonObject obj;
+    ScriptBaseParameterKeys keys;
+    obj.insert(keys.scriptIndex, ui->comboBoxFile->currentIndex());
+    return obj;
+}
+
 QStringList ScriptBase::ignoredFiles() const
 {
     return QStringList();
@@ -200,6 +224,7 @@ void ScriptBase::updateUiEnabled(bool running)
     ui->toolButtonNew->setEnabled(!running);
     ui->toolButtonRefresh->setEnabled(!running);
     ui->textEditScript->setEnabled(!running);
+    ui->comboBoxFile->setEnabled(!running);
 }
 
 void ScriptBase::onRunnerStarted()

@@ -51,6 +51,7 @@ struct ParameterKeys
     const QString communicationSettings{"communicationSettings"};
     const QString communication{"communication"};
     const QString communicationShowScriptPanel{"communicationShowScriptPanel"};
+    const QString communicationScriptPanel{"communicationSScriptPanel"};
 
     // Output settings
     const QString outputFormat{"outputFormat"};
@@ -161,6 +162,7 @@ QVariantMap Page::save()
         map.insert(keys.communication, m_deviceController->save());
     }
     map.insert(keys.communicationShowScriptPanel, ui->pushButtonExternalPanel->isChecked());
+    map.insert(keys.communicationScriptPanel, ui->widgetScripts->save().toVariantMap());
 
     // Output settings
     map.insert(keys.outputFormat, ui->comboBoxOutputFormat->currentData());
@@ -208,6 +210,9 @@ void Page::load(const QVariantMap &parameters)
     int index = ui->comboBoxDeviceTypes->findData(communicationType);
     QVariantMap communicationSettings = parameters.value(keys.communicationSettings).toMap();
     m_ioSettings->load(communicationSettings);
+    QVariantMap scriptPanel = parameters.value(keys.communicationScriptPanel).toMap();
+    ui->widgetScripts->load(QJsonObject::fromVariantMap(scriptPanel));
+
     ui->comboBoxDeviceTypes->setCurrentIndex(index == -1 ? 0 : index);
     if (m_deviceController) {
         m_deviceController->load(parameters.value(keys.communication).toMap());
@@ -323,6 +328,11 @@ void Page::removeTestDevices()
             break;
         }
     }
+}
+
+void Page::aboutToClose()
+{
+    ui->widgetScripts->aboutToClose();
 }
 
 void Page::initUi()

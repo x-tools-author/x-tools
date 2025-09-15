@@ -50,6 +50,7 @@ public:
     void appendOutputControl(QWidget *widget);
     void hideTransferWidgets();
     void removeTestDevices();
+    void aboutToClose();
 
 signals:
     void bytesWritten(const QByteArray &bytes, const QString &to);

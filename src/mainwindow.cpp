@@ -268,6 +268,11 @@ void MainWindow::updateWindowTitleArea()
 
 void MainWindow::closeEvent(QCloseEvent* event)
 {
+    m_ioPage00->aboutToClose();
+    m_ioPage01->aboutToClose();
+    m_ioPage10->aboutToClose();
+    m_ioPage11->aboutToClose();
+
     save();
 
     QSettings* settings = xApp->settings();

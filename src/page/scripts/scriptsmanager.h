@@ -16,6 +16,12 @@ namespace Ui {
 class ScriptsManager;
 }
 
+struct ScriptsManagerParameterKeys
+{
+    const QString lua = QStringLiteral("lua");
+    const QString js = QStringLiteral("js");
+};
+
 class ScriptLua;
 class ScriptJs;
 class ScriptsManager : public QWidget
@@ -25,10 +31,11 @@ public:
     explicit ScriptsManager(QWidget *parent = nullptr);
     ~ScriptsManager();
 
-    QJsonObject load();
-    void save(const QJsonObject &obj);
+    void load(const QJsonObject &obj);
+    QJsonObject save();
 
     void onBytesRead(const QByteArray &data);
+    void aboutToClose();
 
 signals:
     void invokeWrite(const QByteArray &data);
