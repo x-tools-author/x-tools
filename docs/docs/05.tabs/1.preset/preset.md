@@ -1,6 +1,7 @@
 ---
-title: 数据预设
-nav_order: 6
+title: 预设数据
+nav_order: 1
+parent: 功能模块
 ---
 
-# 数据预设
+## 预设数据
