@@ -1,6 +1,6 @@
 ---
-title: 数据可视化
-nav_order: 9
+title: 扩展脚本
+nav_order: 6
 ---
 
-# 数据可视化
+## 扩展脚本
