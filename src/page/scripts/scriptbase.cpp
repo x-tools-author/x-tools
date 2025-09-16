@@ -247,7 +247,7 @@ void ScriptBase::onRunnerStarted()
     ui->toolButtonRun->setEnabled(true);
     updateUiEnabled(true);
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0)
     ui->toolButtonRun->setIcon(qApp->style()->standardIcon(QStyle::SP_MediaStop));
 #else
     ui->toolButtonRun->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStop));
@@ -262,7 +262,7 @@ void ScriptBase::onRunnerFinished()
     ui->toolButtonRun->setEnabled(true);
     updateUiEnabled(false);
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0)
     ui->toolButtonRun->setIcon(qApp->style()->standardIcon(QStyle::SP_MediaPlay));
 #else
     ui->toolButtonRun->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart));
