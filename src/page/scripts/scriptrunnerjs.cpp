@@ -117,19 +117,12 @@ void ScriptRunnerJs::run()
     m_engine->installExtensions(QJSEngine::AllExtensions);
     QJSValue obj = m_engine->newQObject(this);
     m_engine->globalObject().setProperty("jsRunner", obj);
-    QStringList exceptionStack;
-    QJSValue result = m_engine->evaluate(script, m_scriptFile, 1, &exceptionStack);
+    QJSValue result = m_engine->evaluate(script, m_scriptFile, 1);
     if (result.isError()) {
         QString errorMsg = tr("Uncaught exception at line %1: %2")
                                .arg(result.property("lineNumber").toInt())
                                .arg(result.toString());
         emit logOutput(errorMsg);
-        if (!exceptionStack.isEmpty()) {
-            emit logOutput(tr("Stack trace:"));
-            for (const QString &line : qAsConst(exceptionStack)) {
-                emit logOutput(line);
-            }
-        }
     } else {
         emit logOutput(tr("Script executed successfully."));
     }
