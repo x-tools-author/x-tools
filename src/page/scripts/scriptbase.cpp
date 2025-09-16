@@ -247,7 +247,8 @@ void ScriptBase::onRunnerStarted()
     ui->toolButtonRun->setEnabled(true);
     updateUiEnabled(true);
 
-    ui->toolButtonRun->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStop));
+    qApp->style()->standardIcon(QStyle::SP_MediaStop);
+    ui->toolButtonRun->setIcon(qApp->style()->standardIcon(QStyle::SP_MediaStop));
     ui->toolButtonRun->setToolTip(tr("Stop the script"));
 }
 
@@ -258,7 +259,7 @@ void ScriptBase::onRunnerFinished()
     ui->toolButtonRun->setEnabled(true);
     updateUiEnabled(false);
 
-    ui->toolButtonRun->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart));
+    ui->toolButtonRun->setIcon(qApp->style()->standardIcon(QStyle::SP_MediaPlay));
     ui->toolButtonRun->setToolTip(tr("Run the script"));
 }
 
