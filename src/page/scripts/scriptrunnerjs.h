@@ -8,8 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QJsEngine>
-#include <QJsValue>
+#include <QJSEngine>
+#include <QJSValue>
 
 #include "scriptrunner.h"
 
