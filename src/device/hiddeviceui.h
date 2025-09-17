@@ -9,19 +9,19 @@
 #pragma once
 
 #include "deviceui.h"
+#include "utilities/hidscanner.h"
 
-QT_BEGIN_NAMESPACE
 namespace Ui {
 class HidDeviceUi;
 }
-QT_END_NAMESPACE
 
-class SerialPortScanner;
+class HidScanner;
 class HidDeviceUi : public DeviceUi
 {
     Q_OBJECT
 public:
     HidDeviceUi(QWidget *parent = nullptr);
+    ~HidDeviceUi() override;
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
@@ -32,8 +32,10 @@ protected:
 private:
     void refresh();
     void onPortNameChanged(const QStringList &portName);
+    void onDevicesChanged(const QList<HidDeviceInfo> &infos);
+    void onDeviceIndexChanged(int index);
 
 private:
     Ui::HidDeviceUi *ui;
-    SerialPortScanner *m_scanner{nullptr};
+    HidScanner *m_hidScanner{nullptr};
 };

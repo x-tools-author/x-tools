@@ -14,6 +14,7 @@
 
 #include "common/xtools.h"
 #include "serialport.h"
+#include "utilities/hidscanner.h"
 #include "utilities/serialportscanner.h"
 
 HidDeviceUi::HidDeviceUi(QWidget *parent)
@@ -21,38 +22,37 @@ HidDeviceUi::HidDeviceUi(QWidget *parent)
     , ui(new Ui::HidDeviceUi)
 {
     ui->setupUi(this);
-#if defined(Q_OS_LINUX)
-    ui->comboBoxPortName->setEditable(true);
-#endif
 
-    m_scanner = new SerialPortScanner(this);
-    onPortNameChanged(m_scanner->portNames());
-    connect(m_scanner, &SerialPortScanner::portNamesChanged, this, &HidDeviceUi::onPortNameChanged);
-    m_scanner->start();
+    m_hidScanner = new HidScanner(this);
+    auto infos = m_hidScanner->hidInfos();
+    onDevicesChanged(infos);
+    connect(m_hidScanner, &HidScanner::devicesChanged, this, &HidDeviceUi::onDevicesChanged);
 
+    connect(ui->comboBoxPortHid,
+            qOverload<int>(&QComboBox::currentIndexChanged),
+            this,
+            &HidDeviceUi::onDeviceIndexChanged);
     connect(ui->checkBoxIgnoredBusyDevices, &QCheckBox::clicked, this, [=](bool checked) {
-        m_scanner->setIsBusyDevicesIgnored(checked);
+        m_hidScanner->setIsBusyDevicesIgnored(checked);
     });
 
-    setupBaudRate(ui->comboBoxBaudRate);
-    setupDataBits(ui->comboBoxDataBits);
-    setupParity(ui->comboBoxParity);
-    setupStopBits(ui->comboBoxStopBits);
-    setupFlowControl(ui->comboBoxFlowControl);
+    m_hidScanner->start();
+}
+
+HidDeviceUi::~HidDeviceUi()
+{
+    if (m_hidScanner->isRunning()) {
+        m_hidScanner->quit();
+        m_hidScanner->wait();
+    }
+
+    delete ui;
 }
 
 QVariantMap HidDeviceUi::save() const
 {
     QVariantMap map;
-    SerialPortItemKeys keys;
-    map[keys.portName] = ui->comboBoxPortName->currentText();
-    map[keys.baudRate] = ui->comboBoxBaudRate->currentText().toInt();
-    map[keys.dataBits] = ui->comboBoxDataBits->currentData().toInt();
-    map[keys.parity] = ui->comboBoxParity->currentData().toInt();
-    map[keys.stopBits] = ui->comboBoxStopBits->currentData().toInt();
-    map[keys.flowControl] = ui->comboBoxFlowControl->currentData().toInt();
-    map[keys.ignoredBusyDevices] = ui->checkBoxIgnoredBusyDevices->isChecked();
-    map[keys.optimizedFrame] = ui->checkBoxOptimizedFrame->isChecked();
+
     return map;
 }
 
@@ -72,16 +72,7 @@ void HidDeviceUi::load(const QVariantMap &map)
     bool ignoredBusyDevices = map.value(keys.ignoredBusyDevices, false).toBool();
     bool optimizedFrame = map.value(keys.optimizedFrame, false).toBool();
 
-    m_scanner->setIsBusyDevicesIgnored(ignoredBusyDevices);
-
-    ui->comboBoxPortName->setCurrentText(portName);
-    ui->comboBoxBaudRate->setCurrentText(QString::number(baudRate));
-    ui->comboBoxDataBits->setCurrentIndex(ui->comboBoxDataBits->findData(dataBits));
-    ui->comboBoxParity->setCurrentIndex(ui->comboBoxParity->findData(parity));
-    ui->comboBoxStopBits->setCurrentIndex(ui->comboBoxStopBits->findData(stopBits));
-    ui->comboBoxFlowControl->setCurrentIndex(ui->comboBoxFlowControl->findData(fc));
-    ui->checkBoxIgnoredBusyDevices->setChecked(ignoredBusyDevices);
-    ui->checkBoxOptimizedFrame->setChecked(optimizedFrame);
+    m_hidScanner->setIsBusyDevicesIgnored(ignoredBusyDevices);
 }
 
 Device *HidDeviceUi::newDevice()
@@ -91,26 +82,85 @@ Device *HidDeviceUi::newDevice()
 
 void HidDeviceUi::refresh()
 {
-    setupPortName(ui->comboBoxPortName);
+    setupPortName(ui->comboBoxPortHid);
 }
 
 void HidDeviceUi::onPortNameChanged(const QStringList &portName)
 {
-    if (!ui->comboBoxPortName->isEnabled()) {
+    if (!ui->comboBoxPortHid->isEnabled()) {
         return;
     }
 
     QStringList items;
-    for (int i = 0; i < ui->comboBoxPortName->count(); i++) {
-        items.append(ui->comboBoxPortName->itemText(i));
+    for (int i = 0; i < ui->comboBoxPortHid->count(); i++) {
+        items.append(ui->comboBoxPortHid->itemText(i));
     }
 
     if (items == portName) {
         return;
     }
 
-    QString currentPortName = ui->comboBoxPortName->currentText();
-    ui->comboBoxPortName->clear();
-    ui->comboBoxPortName->addItems(portName);
-    ui->comboBoxPortName->setCurrentText(currentPortName);
+    QString currentPortName = ui->comboBoxPortHid->currentText();
+    ui->comboBoxPortHid->clear();
+    ui->comboBoxPortHid->addItems(portName);
+    ui->comboBoxPortHid->setCurrentText(currentPortName);
+}
+
+QString unsignedShortToString(unsigned short v)
+{
+    QString str = QString::number(v, 16).toUpper();
+    if (v < 256) {
+        while (str.length() < 2) {
+            str = "0" + str;
+        }
+    } else {
+        while (str.length() < 4) {
+            str = "0" + str;
+        }
+    }
+
+    return "0x" + str;
+}
+
+void HidDeviceUi::onDevicesChanged(const QList<HidDeviceInfo> &infos)
+{
+    if (!ui->comboBoxPortHid->isEnabled()) {
+        return;
+    }
+
+    QString tmp = ui->comboBoxPortHid->currentText();
+    ui->comboBoxPortHid->clear();
+    for (const auto &info : infos) {
+        ui->comboBoxPortHid->addItem(info.productString, info.path);
+
+        QString tooltip = tr("Path") + ": " + info.path + "\n";
+        tooltip += tr("Vendor ID") + ": " + unsignedShortToString(info.vendorId) + "\n";
+        tooltip += tr("Product ID") + ": " + unsignedShortToString(info.productId) + "\n";
+        tooltip += tr("Serial Number") + ": " + info.serialNumber + "\n";
+        tooltip += tr("Release Number") + ": " + QString::number(info.releaseNumber) + "\n";
+        tooltip += tr("Manufacturer") + ": " + info.manufacturerString + "\n";
+        tooltip += tr("Product") + ": " + info.productString + "\n";
+        tooltip += tr("Usage Page") + ": " + unsignedShortToString(info.usagePage) + "\n";
+        tooltip += tr("Usage") + ": " + unsignedShortToString(info.usage) + "\n";
+        tooltip += tr("Interface Number") + ": " + QString::number(info.interfaceNumber) + "\n";
+        tooltip += tr("Bus Type") + ": " + unsignedShortToString(info.busType);
+
+        ui->comboBoxPortHid->setItemData(ui->comboBoxPortHid->count() - 1, tooltip, Qt::ToolTipRole);
+    }
+
+    int index = ui->comboBoxPortHid->findText(tmp);
+    if (index >= 0) {
+        ui->comboBoxPortHid->setCurrentIndex(index);
+        onDeviceIndexChanged(index);
+    } else {
+        if (ui->comboBoxPortHid->count() > 0) {
+            onDeviceIndexChanged(ui->comboBoxPortHid->currentIndex());
+        }
+    }
+}
+
+void HidDeviceUi::onDeviceIndexChanged(int index)
+{
+    QString ts = ui->comboBoxPortHid->itemData(index, Qt::ToolTipRole).toString();
+    ui->comboBoxPortHid->setToolTip(ts);
 }

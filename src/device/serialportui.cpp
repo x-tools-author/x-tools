@@ -41,6 +41,16 @@ SerialPortUi::SerialPortUi(QWidget *parent)
     setupFlowControl(ui->comboBoxFlowControl);
 }
 
+SerialPortUi::~SerialPortUi()
+{
+    if (m_scanner->isRunning()) {
+        m_scanner->quit();
+        m_scanner->wait();
+    }
+
+    delete ui;
+}
+
 QVariantMap SerialPortUi::save() const
 {
     QVariantMap map;
