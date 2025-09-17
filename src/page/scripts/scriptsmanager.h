@@ -19,12 +19,9 @@ class ScriptsManager;
 struct ScriptsManagerParameterKeys
 {
     const QString tabIndex{"tabIndex"};
-    const QString lua{"lua"};
-    const QString js{"js"};
 };
 
-class ScriptLua;
-class ScriptJs;
+class ScriptBase;
 class ScriptsManager : public QWidget
 {
     Q_OBJECT
@@ -43,6 +40,5 @@ signals:
 
 private:
     Ui::ScriptsManager *ui = nullptr;
-    ScriptLua *m_lua = nullptr;
-    ScriptJs *m_js = nullptr;
+    QList<ScriptBase *> m_scripts;
 };

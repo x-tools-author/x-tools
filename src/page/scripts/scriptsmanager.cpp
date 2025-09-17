@@ -17,16 +17,19 @@ ScriptsManager::ScriptsManager(QWidget *parent)
     , ui(new Ui::ScriptsManager)
 {
     ui->setupUi(this);
-    m_lua = new ScriptLua(this);
-    m_js = new ScriptJs(this);
-    ui->tabWidget->addTab(m_lua, QString("Lua"));
-    ui->tabWidget->addTab(m_js, QString("JavaScript"));
 
-    m_lua->loadScripts();
-    m_js->loadScripts();
+    ScriptBase *tmp = new ScriptLua(this);
+    m_scripts.append(tmp);
+    ui->tabWidget->addTab(tmp, QString("Lua"));
 
-    connect(m_lua, &ScriptLua::invokeWrite, this, &ScriptsManager::invokeWrite);
-    connect(m_js, &ScriptJs::invokeWrite, this, &ScriptsManager::invokeWrite);
+    tmp = new ScriptJs(this);
+    m_scripts.append(tmp);
+    ui->tabWidget->addTab(tmp, QString("JavaScript"));
+
+    for (ScriptBase *script : std::as_const(m_scripts)) {
+        script->loadScripts();
+        connect(script, &ScriptBase::invokeWrite, this, &ScriptsManager::invokeWrite);
+    }
 }
 
 ScriptsManager::~ScriptsManager()
@@ -37,34 +40,40 @@ ScriptsManager::~ScriptsManager()
 void ScriptsManager::load(const QJsonObject &obj)
 {
     ScriptsManagerParameterKeys keys;
-    m_lua->load(obj.value(keys.lua).toObject(QJsonObject()));
-    m_js->load(obj.value(keys.js).toObject(QJsonObject()));
-
     int index = obj.value(keys.tabIndex).toInt(0);
-    if (index < 0 || index >= ui->tabWidget->count()) {
-        index = 0;
-    }
+    index = index < 0 ? 0 : (index >= ui->tabWidget->count() ? 0 : index);
     ui->tabWidget->setCurrentIndex(index);
+
+    for (ScriptBase *script : std::as_const(m_scripts)) {
+        if (obj.contains(script->metaObject()->className())) {
+            script->load(obj.value(script->metaObject()->className()).toObject());
+        }
+    }
 }
 
 QJsonObject ScriptsManager::save()
 {
     ScriptsManagerParameterKeys keys;
     QJsonObject obj;
-    obj.insert(keys.lua, m_lua->save());
-    obj.insert(keys.js, m_js->save());
     obj.insert(keys.tabIndex, ui->tabWidget->currentIndex());
+
+    for (ScriptBase *script : std::as_const(m_scripts)) {
+        obj.insert(script->metaObject()->className(), script->save());
+    }
+
     return obj;
 }
 
 void ScriptsManager::onBytesRead(const QByteArray &data)
 {
-    m_lua->onBytesRead(data);
-    m_js->onBytesRead(data);
+    for (ScriptBase *script : std::as_const(m_scripts)) {
+        script->onBytesRead(data);
+    }
 }
 
 void ScriptsManager::aboutToClose()
 {
-    m_lua->aboutToClose();
-    m_js->aboutToClose();
+    for (ScriptBase *script : std::as_const(m_scripts)) {
+        script->aboutToClose();
+    }
 }
