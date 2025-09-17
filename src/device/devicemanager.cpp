@@ -32,6 +32,9 @@
 #ifdef X_ENABLE_CHARTS
 #include "chartstestui.h"
 #endif
+#ifdef X_ENABLE_HID
+#include "hiddeviceui.h"
+#endif
 
 DeviceManager::DeviceManager(QObject *parent)
     : QObject(parent)
@@ -51,6 +54,9 @@ QList<int> DeviceManager::supportedDeviceTypes()
     if (deviceTypes.isEmpty()) {
 #ifdef X_ENABLE_SERIALPORT
         deviceTypes << static_cast<int>(DeviceType::SerialPort);
+#endif
+#ifdef X_ENABLE_HID
+        deviceTypes << static_cast<int>(DeviceType::Hid);
 #endif
 #ifdef X_ENABLE_BLUETOOTH
         deviceTypes << static_cast<int>(DeviceType::BleCentral);
@@ -82,33 +88,35 @@ QString DeviceManager::deviceName(int type)
 {
     switch (type) {
     case static_cast<int>(DeviceType::SerialPort):
-        return QObject::tr("Serial Port");
+        return tr("Serial Port");
+    case static_cast<int>(DeviceType::Hid):
+        return tr("HID Device");
     case static_cast<int>(DeviceType::BleCentral):
-        return QObject::tr("BLE Central");
+        return tr("BLE Central");
     case static_cast<int>(DeviceType::BlePeripheral):
-        return QObject::tr("BLE Peripheral");
+        return tr("BLE Peripheral");
     case static_cast<int>(DeviceType::UdpClient):
-        return QObject::tr("UDP Client");
+        return tr("UDP Client");
     case static_cast<int>(DeviceType::UdpServer):
-        return QObject::tr("UDP Server");
+        return tr("UDP Server");
     case static_cast<int>(DeviceType::UdpMulticast):
-        return QObject::tr("UDP Multicast");
+        return tr("UDP Multicast");
     case static_cast<int>(DeviceType::UdpBroadcast):
-        return QObject::tr("UDP Broadcast");
+        return tr("UDP Broadcast");
     case static_cast<int>(DeviceType::TcpClient):
-        return QObject::tr("TCP Client");
+        return tr("TCP Client");
     case static_cast<int>(DeviceType::TcpServer):
-        return QObject::tr("TCP Server");
+        return tr("TCP Server");
     case static_cast<int>(DeviceType::WebSocketClient):
-        return QObject::tr("WebSocket Client");
+        return tr("WebSocket Client");
     case static_cast<int>(DeviceType::WebSocketServer):
-        return QObject::tr("WebSocket Server");
+        return tr("WebSocket Server");
     case static_cast<int>(DeviceType::LocalSocket):
-        return QObject::tr("Local Socket");
+        return tr("Local Socket");
     case static_cast<int>(DeviceType::LocalServer):
-        return QObject::tr("Local Server");
+        return tr("Local Server");
     case static_cast<int>(DeviceType::ChartsTest):
-        return QObject::tr("Charts Test");
+        return tr("Charts Test");
     default:
         return "Unknown";
     }
@@ -145,6 +153,10 @@ DeviceUi *DeviceManager::newDeviceUi(int type)
 #ifdef X_ENABLE_SERIALPORT
     case static_cast<int>(DeviceManager::SerialPort):
         return new SerialPortUi();
+#endif
+#ifdef X_ENABLE_HID
+    case static_cast<int>(DeviceManager::Hid):
+        return new HidDeviceUi();
 #endif
 #ifdef X_ENABLE_BLUETOOTH
     case static_cast<int>(DeviceManager::BleCentral):

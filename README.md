@@ -8,7 +8,7 @@
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/x-tools.svg)](https://repology.org/project/x-tools/versions)
 
-*xTools* is a user-friendly, open-source, cross-platform debugging tool-set based on Qt (Qt6.8 is recommended). It offers extensive support for serial port, BLE, UDP, TCP, web socket, Modbus and CAN Bus debugging functionalities.
+*xTools* is a user-friendly, open-source, cross-platform, easily extendable(using Lua and JavaScript) debugging tool-set based on Qt (Qt6.8 is recommended). It offers extensive support for serial port, BLE, UDP, TCP, web socket, Modbus and CAN Bus debugging functionalities.
 
 > **You can get *xTools* form [Micorsoft Store(sponsor)](https://apps.microsoft.com/detail/9p29h1ndnkbb)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
 

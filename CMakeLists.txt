@@ -215,7 +215,10 @@ target_link_libraries(xTools PRIVATE ${X_LIBS})
 x_output_env(xTools)
 x_deploy_qt(xTools)
 x_deploy_resources(xTools)
-# xTools modules
+
+message(STATUS "[xTools]X_LIBS: ${X_LIBS}")
+
+# xTools translations
 x_generate_module_translations(common ${CMAKE_CURRENT_SOURCE_DIR}/src/common ON)
 x_generate_module_translations(device ${CMAKE_CURRENT_SOURCE_DIR}/src/device ON)
 x_generate_module_translations(nodeeditor ${CMAKE_CURRENT_SOURCE_DIR}/src/nodeeditor ON)
