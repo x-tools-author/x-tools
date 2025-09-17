@@ -27,3 +27,4 @@ bin
 xapps/xprivate
 .DS_Store
 ./xprivate
+.VSCodeCounter
