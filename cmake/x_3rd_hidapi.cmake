@@ -33,18 +33,14 @@ if(NOT EXISTS ${X_3RD_DIR}/${package_name}.zip)
   endif()
 endif()
 
-if(WIN32)
-  set(hidapi_target "hidapi_winapi")
-else()
-  remove_all_files_of_hidapi()
-  return()
-endif()
-
 set(HIDAPI_WITH_TESTS
     OFF
     CACHE BOOL "Build HIDAPI (unit-)tests" FORCE)
 include_directories(${X_3RD_DIR}/${package_name}/hidapi)
-x_auto_import_package(${package_name} ${hidapi_target})
+x_auto_import_package(${package_name} hidapi)
+if(WIN32)
+  set_property(TARGET hidapi_winapi PROPERTY FOLDER "3rd")
+endif()
 
 option(X_ENABLE_HID "Enable HIDAPI support" OFF)
 if(X_ENABLE_HID)
