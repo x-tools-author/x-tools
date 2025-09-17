@@ -9,7 +9,7 @@ set(package_md5 "f4c3c3b6a5e2e7f0e6f3d6e8b7e8f9a1")
 
 macro(remove_all_files_of_hidapi)
   message(STATUS "[xTools-hidapi]Removing all flow files...")
-  file(GLOB_RECURSE files "${CMAKE_SOURCE_DIR}/src/hid.*")
+  file(GLOB_RECURSE files "${CMAKE_SOURCE_DIR}/src/hid*.*")
   foreach(file ${files})
     list(REMOVE_ITEM X_SOURCES ${file})
     message(STATUS "[xTools-hidapi]Removed file: ${file}")
