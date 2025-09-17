@@ -216,7 +216,8 @@ x_output_env(xTools)
 x_deploy_qt(xTools)
 x_deploy_resources(xTools)
 
-message(STATUS "[xTools]X_LIBS: ${X_LIBS}")
+get_target_property(tmp xTools LINK_LIBRARIES)
+message(STATUS "[xTools]X_LIBS: ${tmp}")
 
 # xTools translations
 x_generate_module_translations(common ${CMAKE_CURRENT_SOURCE_DIR}/src/common ON)
