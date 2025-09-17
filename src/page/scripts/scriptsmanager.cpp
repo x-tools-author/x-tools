@@ -19,8 +19,8 @@ ScriptsManager::ScriptsManager(QWidget *parent)
     ui->setupUi(this);
     m_lua = new ScriptLua(this);
     m_js = new ScriptJs(this);
-    ui->tabWidget->addTab(m_lua, tr("Lua"));
-    ui->tabWidget->addTab(m_js, tr("JavaScript"));
+    ui->tabWidget->addTab(m_lua, QString("Lua"));
+    ui->tabWidget->addTab(m_js, QString("JavaScript"));
 
     m_lua->loadScripts();
     m_js->loadScripts();
