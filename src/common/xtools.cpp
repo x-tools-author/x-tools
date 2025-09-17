@@ -749,8 +749,8 @@ void setupFlowControl(QComboBox *comboBox)
 {
     comboBox->addItem(QObject::tr("None"), QSerialPort::NoFlowControl);
 #if 0
-        comboBox->addItem(QObject::tr("RTS/CTS"), QSerialPort::HardwareControl);
-        comboBox->addItem(QObject::tr("X-ON/X-OFF"), QSerialPort::SoftwareControl);
+    comboBox->addItem(QObject::tr("RTS/CTS"), QSerialPort::HardwareControl);
+    comboBox->addItem(QObject::tr("X-ON/X-OFF"), QSerialPort::SoftwareControl);
 #else
     comboBox->addItem(QObject::tr("Hardware"), QSerialPort::HardwareControl);
     comboBox->addItem(QObject::tr("Software"), QSerialPort::SoftwareControl);
