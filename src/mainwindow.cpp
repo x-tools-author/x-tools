@@ -708,6 +708,7 @@ void MainWindow::initHelpMenu()
     ctxs.append(qMakePair(QString("libqrencode"), QString("https://github.com/fukuchi/libqrencode")));
     ctxs.append(qMakePair(QString("qmdnsengine"), QString("https://github.com/nitroshare/qmdnsengine")));
     ctxs.append(qMakePair(QString("SingleApplication"), QString("https://github.com/itay-grudev/SingleApplication")));
+    ctxs.append(qMakePair(QString("hidapi"), QString("https://github.com/libusb/hidapi")));
     // clang-format on
 
     QMenu* menu = helpMenu->addMenu(tr("Third Party Open Source"));
