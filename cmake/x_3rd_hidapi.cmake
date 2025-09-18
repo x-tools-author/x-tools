@@ -16,6 +16,12 @@ macro(remove_all_files_of_hidapi)
   endforeach()
 endmacro()
 
+if(ANDROID OR IOS)
+  message(STATUS "[xTools-hidapi]HIDAPI is not supported on Android or iOS.")
+  remove_all_files_of_hidapi()
+  return()
+endif()
+
 # Download package
 if(NOT EXISTS ${X_3RD_DIR}/${package_name}.zip)
   message(STATUS "Downloading ${package_name}...")
