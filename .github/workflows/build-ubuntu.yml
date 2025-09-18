@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-22.04]
-        version: [6.2.4, 6.5.3, 6.8.3, 6.9.1]
+        version: [6.2.4, 6.5.3, 6.8.3, 6.9.2]
         arch: [gcc_64, linux_gcc_64]
         exclude:
           - version: 6.2.4
@@ -26,7 +26,7 @@ jobs:
             arch: linux_gcc_64
           - version: 6.8.3
             arch: gcc_64
-          - version: 6.9.1
+          - version: 6.9.2
             arch: gcc_64
     steps:
       - name: checkout
