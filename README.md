@@ -8,7 +8,7 @@
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/x-tools.svg)](https://repology.org/project/x-tools/versions)
 
-*xTools* is a user-friendly, open-source, cross-platform, easily extendable(using Lua and JavaScript) debugging tool-set based on Qt (Qt6.8 is recommended). It offers extensive support for serial port, BLE, UDP, TCP, web socket, Modbus and CAN Bus debugging functionalities.
+*xTools* is a user-friendly, open-source, cross-platform, easily extendable(using Lua and JavaScript) debugging tool-set based on Qt (Qt6.9 is recommended). It offers extensive support for serial port, BLE, UDP, TCP, web socket, Modbus and CAN Bus debugging functionalities.
 
 > [!WARNING]
 > Qt 6.9.2 is required to build xTools on macOS 26.0(and later).
@@ -26,7 +26,30 @@ Arch Linux can install x-tools via the [AUR](https://aur.archlinux.org/packages/
 yay -Syu x-tools
 ```
 
-## About the Project
+## Dark theme
+
+![xToolsDark.png](res/images/dark.png)
+
+## Light theme
+
+![xToolsLight.png](res/images/light.png)
+
+<details>
+
+<summary>🖼️More Screenshots</summary>
+
+<!-- https://github.com/ikatyang/emoji-cheat-sheet/blob/github-actions-auto-update/README.md -->
+
+![xTools.gif](res/images/gif.gif)
+![xTools.gif](res/images/xtools.gif)
+![charts.gif](res/images/charts.gif)
+![search.gif](res/images/search.png)
+![lua.png](docs/assets/images/lua.png)
+![js.png](docs/assets/images/js.png)
+
+</details>
+
+## Other
 
 <!--https://sdpro.top/blog/html/article/1016.html-->
 [![stars](https://img.shields.io/github/stars/x-tools-author/x-tools?style=social)](https://img.shields.io/github/stars/x-tools-author/x-tools?style=social)
@@ -45,24 +68,3 @@ yay -Syu x-tools
 |GitHub| <https://github.com/x-tools-author/x-tools>|
 |Sponsor|<https://apps.microsoft.com/search/publisher?name=x-tools-author>|
 |Third party|[glog](https://github.com/google/glog) [libqrencode](https://github.com/fukuchi/libqrencode) [qmdnsengine](https://github.com/nitroshare/qmdnsengine) [QXlsx](https://github.com/QtExcel/QXlsx)|
-
-## Dark theme
-
-![xToolsDark.png](res/images/dark.png)
-
-## Light theme
-
-![xToolsLight.png](res/images/light.png)
-
-<details>
-
-<summary>More Screenshots</summary>
-
-![xTools.gif](res/images/gif.gif)
-![xTools.gif](res/images/xtools.gif)
-![charts.gif](res/images/charts.gif)
-![search.gif](res/images/search.png)
-![lua.png](docs/assets/images/lua.png)
-![js.png](docs/assets/images/js.png)
-
-</details>
