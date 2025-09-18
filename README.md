@@ -14,7 +14,7 @@
 > Qt 6.9.2 is required to build xTools on macOS 26.0(and later).
 
 >[!NOTE]
-> **You can get *xTools* form [Micorsoft Store(sponsor)](https://apps.microsoft.com/detail/9p29h1ndnkbb)** or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
+> You can get *xTools* form [Micorsoft Store(sponsor)](https://apps.microsoft.com/detail/9p29h1ndnkbb) or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
 
 ## Build
 
@@ -54,18 +54,18 @@ yay -Syu x-tools
 
 ![xToolsLight.png](res/images/light.png)
 
-## Screenshot
+<details>
+
+<summary>More Screenshots</summary>
 
 ![xTools.gif](res/images/gif.gif)
-
 ![xTools.gif](res/images/xtools.gif)
-
 ![charts.gif](res/images/charts.gif)
-
 ![search.gif](res/images/search.png)
-
 ![lua.png](docs/assets/images/lua.png)
 ![js.png](docs/assets/images/js.png)
+
+</details>
 
 ## Do Something Make Linux Happy
 
