@@ -134,11 +134,17 @@ void DeviceManager::setupDeviceTypes(QComboBox *comboBox)
         comboBox->addItem(deviceName(type), type);
     }
 
+    comboBox->setMaxVisibleItems(deviceTypes.size() + 3);
     comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(DeviceType::SerialPort)));
 
     int udpClientIndex = comboBox->findData(static_cast<int>(DeviceType::UdpClient));
     if (udpClientIndex != -1) {
         comboBox->insertSeparator(udpClientIndex);
+    }
+
+    int localSocketIndex = comboBox->findData(static_cast<int>(DeviceType::LocalSocket));
+    if (localSocketIndex != -1) {
+        comboBox->insertSeparator(localSocketIndex);
     }
 
     int testIndex = comboBox->findData(static_cast<int>(DeviceType::ChartsTest));
