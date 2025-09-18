@@ -66,9 +66,3 @@ yay -Syu x-tools
 ![js.png](docs/assets/images/js.png)
 
 </details>
-
-## Do Something Make Linux Happy
-
-```shell
-sudo apt install libegl1-mesa-dev
-```
