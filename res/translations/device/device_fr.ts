@@ -126,6 +126,165 @@
     </message>
 </context>
 <context>
+    <name>DeviceManager</name>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="91"/>
+        <source>Serial Port</source>
+        <translation type="unfinished">Port série</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="93"/>
+        <source>HID Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="95"/>
+        <source>BLE Central</source>
+        <translation type="unfinished">BLE Central</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="97"/>
+        <source>BLE Peripheral</source>
+        <translation type="unfinished">BLE Périphérique</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="99"/>
+        <source>UDP Client</source>
+        <translation type="unfinished">Client UDP</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="101"/>
+        <source>UDP Server</source>
+        <translation type="unfinished">Serveur UDP</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="103"/>
+        <source>UDP Multicast</source>
+        <translation type="unfinished">UDP Multicast</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="105"/>
+        <source>UDP Broadcast</source>
+        <translation type="unfinished">UDP Broadcast</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="107"/>
+        <source>TCP Client</source>
+        <translation type="unfinished">Client TCP</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="109"/>
+        <source>TCP Server</source>
+        <translation type="unfinished">Serveur TCP</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="111"/>
+        <source>WebSocket Client</source>
+        <translation type="unfinished">Client WebSocket</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="113"/>
+        <source>WebSocket Server</source>
+        <translation type="unfinished">Serveur WebSocket</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="115"/>
+        <source>Local Socket</source>
+        <translation type="unfinished">Socket local</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="117"/>
+        <source>Local Server</source>
+        <translation type="unfinished">Serveur local</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="119"/>
+        <source>Charts Test</source>
+        <translation type="unfinished">Test de graphiques</translation>
+    </message>
+</context>
+<context>
+    <name>HidDevice</name>
+    <message>
+        <location filename="../../../src/device/hiddevice.cpp" line="33"/>
+        <source>HID device path is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddevice.cpp" line="39"/>
+        <source>Failed to open HID device &quot;%1&quot;. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddevice.cpp" line="72"/>
+        <source>Write HID device error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HidDeviceUi</name>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.ui" line="45"/>
+        <source>Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="98"/>
+        <source>Path</source>
+        <translation type="unfinished">Chemin</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="99"/>
+        <source>Vendor ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="100"/>
+        <source>Product ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="101"/>
+        <source>Serial Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="102"/>
+        <source>Release Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="103"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="104"/>
+        <source>Product</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="105"/>
+        <source>Usage Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="106"/>
+        <source>Usage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="107"/>
+        <source>Interface Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="108"/>
+        <source>Bus Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LocalServer</name>
     <message>
         <location filename="../../../src/device/localserver.cpp" line="90"/>
@@ -162,74 +321,60 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="85"/>
         <source>Serial Port</source>
-        <translation>Port série</translation>
+        <translation type="vanished">Port série</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="87"/>
         <source>BLE Central</source>
-        <translation>BLE Central</translation>
+        <translation type="vanished">BLE Central</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="89"/>
         <source>BLE Peripheral</source>
-        <translation>BLE Périphérique</translation>
+        <translation type="vanished">BLE Périphérique</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="91"/>
         <source>UDP Client</source>
-        <translation>Client UDP</translation>
+        <translation type="vanished">Client UDP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="93"/>
         <source>UDP Server</source>
-        <translation>Serveur UDP</translation>
+        <translation type="vanished">Serveur UDP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="95"/>
         <source>UDP Multicast</source>
-        <translation>UDP Multicast</translation>
+        <translation type="vanished">UDP Multicast</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="97"/>
         <source>UDP Broadcast</source>
-        <translation>UDP Broadcast</translation>
+        <translation type="vanished">UDP Broadcast</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="99"/>
         <source>TCP Client</source>
-        <translation>Client TCP</translation>
+        <translation type="vanished">Client TCP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="101"/>
         <source>TCP Server</source>
-        <translation>Serveur TCP</translation>
+        <translation type="vanished">Serveur TCP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="103"/>
         <source>WebSocket Client</source>
-        <translation>Client WebSocket</translation>
+        <translation type="vanished">Client WebSocket</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="105"/>
         <source>WebSocket Server</source>
-        <translation>Serveur WebSocket</translation>
+        <translation type="vanished">Serveur WebSocket</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="107"/>
         <source>Local Socket</source>
-        <translation>Socket local</translation>
+        <translation type="vanished">Socket local</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="109"/>
         <source>Local Server</source>
-        <translation>Serveur local</translation>
+        <translation type="vanished">Serveur local</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="111"/>
         <source>Charts Test</source>
-        <translation>Test de graphiques</translation>
+        <translation type="vanished">Test de graphiques</translation>
     </message>
 </context>
 <context>

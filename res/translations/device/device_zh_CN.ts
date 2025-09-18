@@ -126,6 +126,165 @@
     </message>
 </context>
 <context>
+    <name>DeviceManager</name>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="91"/>
+        <source>Serial Port</source>
+        <translation>串口助手</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="93"/>
+        <source>HID Device</source>
+        <translation>HID设备</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="95"/>
+        <source>BLE Central</source>
+        <translation>BLE中心</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="97"/>
+        <source>BLE Peripheral</source>
+        <translation>BLE外设</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="99"/>
+        <source>UDP Client</source>
+        <translation>UDP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="101"/>
+        <source>UDP Server</source>
+        <translation>UDP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="103"/>
+        <source>UDP Multicast</source>
+        <translation>UDP组播</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="105"/>
+        <source>UDP Broadcast</source>
+        <translation>UDP广播</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="107"/>
+        <source>TCP Client</source>
+        <translation>TCP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="109"/>
+        <source>TCP Server</source>
+        <translation>TCP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="111"/>
+        <source>WebSocket Client</source>
+        <translation>WebSocket客户端</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="113"/>
+        <source>WebSocket Server</source>
+        <translation>WebSocket服务器</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="115"/>
+        <source>Local Socket</source>
+        <translation>本地套接字</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="117"/>
+        <source>Local Server</source>
+        <translation>本地服务器</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="119"/>
+        <source>Charts Test</source>
+        <translation>图表测试</translation>
+    </message>
+</context>
+<context>
+    <name>HidDevice</name>
+    <message>
+        <location filename="../../../src/device/hiddevice.cpp" line="33"/>
+        <source>HID device path is empty.</source>
+        <translation>HID设备路径为空。</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddevice.cpp" line="39"/>
+        <source>Failed to open HID device &quot;%1&quot;. </source>
+        <translation>打开HID设备失败&quot;%1&quot;。 </translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddevice.cpp" line="72"/>
+        <source>Write HID device error: %1</source>
+        <translation>写HID设备失败：%1</translation>
+    </message>
+</context>
+<context>
+    <name>HidDeviceUi</name>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.ui" line="45"/>
+        <source>Device</source>
+        <translation>设备</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="98"/>
+        <source>Path</source>
+        <translation>设备路径</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="99"/>
+        <source>Vendor ID</source>
+        <translation>品牌标识</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="100"/>
+        <source>Product ID</source>
+        <translation>产品标识</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="101"/>
+        <source>Serial Number</source>
+        <translation>产品序号</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="102"/>
+        <source>Release Number</source>
+        <translation>发布标识</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="103"/>
+        <source>Manufacturer</source>
+        <translation>生产厂商</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="104"/>
+        <source>Product</source>
+        <translation>产品名称</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="105"/>
+        <source>Usage Page</source>
+        <translation>使用页面</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="106"/>
+        <source>Usage</source>
+        <translation>使用方法</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="107"/>
+        <source>Interface Number</source>
+        <translation>接口标识</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="108"/>
+        <source>Bus Type</source>
+        <translation>繁忙标识</translation>
+    </message>
+</context>
+<context>
     <name>LocalServer</name>
     <message>
         <location filename="../../../src/device/localserver.cpp" line="90"/>
@@ -162,74 +321,60 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="85"/>
         <source>Serial Port</source>
-        <translation>串口助手</translation>
+        <translation type="vanished">串口助手</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="87"/>
         <source>BLE Central</source>
-        <translation>BLE中心</translation>
+        <translation type="vanished">BLE中心</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="89"/>
         <source>BLE Peripheral</source>
-        <translation>BLE外设</translation>
+        <translation type="vanished">BLE外设</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="91"/>
         <source>UDP Client</source>
-        <translation>UDP客户端</translation>
+        <translation type="vanished">UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="93"/>
         <source>UDP Server</source>
-        <translation>UDP服务器</translation>
+        <translation type="vanished">UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="95"/>
         <source>UDP Multicast</source>
-        <translation>UDP组播</translation>
+        <translation type="vanished">UDP组播</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="97"/>
         <source>UDP Broadcast</source>
-        <translation>UDP广播</translation>
+        <translation type="vanished">UDP广播</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="99"/>
         <source>TCP Client</source>
-        <translation>TCP客户端</translation>
+        <translation type="vanished">TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="101"/>
         <source>TCP Server</source>
-        <translation>TCP服务器</translation>
+        <translation type="vanished">TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="103"/>
         <source>WebSocket Client</source>
-        <translation>WebSocket客户端</translation>
+        <translation type="vanished">WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="105"/>
         <source>WebSocket Server</source>
-        <translation>WebSocket服务器</translation>
+        <translation type="vanished">WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="107"/>
         <source>Local Socket</source>
-        <translation>本地套接字</translation>
+        <translation type="vanished">本地套接字</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="109"/>
         <source>Local Server</source>
-        <translation>本地服务器</translation>
+        <translation type="vanished">本地服务器</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="111"/>
         <source>Charts Test</source>
-        <translation>图表测试</translation>
+        <translation type="vanished">图表测试</translation>
     </message>
 </context>
 <context>

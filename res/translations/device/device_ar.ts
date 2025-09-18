@@ -126,6 +126,165 @@
     </message>
 </context>
 <context>
+    <name>DeviceManager</name>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="91"/>
+        <source>Serial Port</source>
+        <translation type="unfinished">منفذ تسلسلي</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="93"/>
+        <source>HID Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="95"/>
+        <source>BLE Central</source>
+        <translation type="unfinished">مركز BLE</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="97"/>
+        <source>BLE Peripheral</source>
+        <translation type="unfinished">طرف BLE</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="99"/>
+        <source>UDP Client</source>
+        <translation type="unfinished">عميل UDP</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="101"/>
+        <source>UDP Server</source>
+        <translation type="unfinished">خادم UDP</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="103"/>
+        <source>UDP Multicast</source>
+        <translation type="unfinished">بث متعدد UDP</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="105"/>
+        <source>UDP Broadcast</source>
+        <translation type="unfinished">بث UDP</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="107"/>
+        <source>TCP Client</source>
+        <translation type="unfinished">عميل TCP</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="109"/>
+        <source>TCP Server</source>
+        <translation type="unfinished">خادم TCP</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="111"/>
+        <source>WebSocket Client</source>
+        <translation type="unfinished">عميل WebSocket</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="113"/>
+        <source>WebSocket Server</source>
+        <translation type="unfinished">خادم WebSocket</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="115"/>
+        <source>Local Socket</source>
+        <translation type="unfinished">مقبس محلي</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="117"/>
+        <source>Local Server</source>
+        <translation type="unfinished">خادم محلي</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/devicemanager.cpp" line="119"/>
+        <source>Charts Test</source>
+        <translation type="unfinished">اختبار المخططات</translation>
+    </message>
+</context>
+<context>
+    <name>HidDevice</name>
+    <message>
+        <location filename="../../../src/device/hiddevice.cpp" line="33"/>
+        <source>HID device path is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddevice.cpp" line="39"/>
+        <source>Failed to open HID device &quot;%1&quot;. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddevice.cpp" line="72"/>
+        <source>Write HID device error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HidDeviceUi</name>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.ui" line="45"/>
+        <source>Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="98"/>
+        <source>Path</source>
+        <translation type="unfinished">المسار</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="99"/>
+        <source>Vendor ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="100"/>
+        <source>Product ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="101"/>
+        <source>Serial Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="102"/>
+        <source>Release Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="103"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="104"/>
+        <source>Product</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="105"/>
+        <source>Usage Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="106"/>
+        <source>Usage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="107"/>
+        <source>Interface Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/hiddeviceui.cpp" line="108"/>
+        <source>Bus Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LocalServer</name>
     <message>
         <location filename="../../../src/device/localserver.cpp" line="90"/>
@@ -162,74 +321,60 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="85"/>
         <source>Serial Port</source>
-        <translation>منفذ تسلسلي</translation>
+        <translation type="vanished">منفذ تسلسلي</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="87"/>
         <source>BLE Central</source>
-        <translation>مركز BLE</translation>
+        <translation type="vanished">مركز BLE</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="89"/>
         <source>BLE Peripheral</source>
-        <translation>طرف BLE</translation>
+        <translation type="vanished">طرف BLE</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="91"/>
         <source>UDP Client</source>
-        <translation>عميل UDP</translation>
+        <translation type="vanished">عميل UDP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="93"/>
         <source>UDP Server</source>
-        <translation>خادم UDP</translation>
+        <translation type="vanished">خادم UDP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="95"/>
         <source>UDP Multicast</source>
-        <translation>بث متعدد UDP</translation>
+        <translation type="vanished">بث متعدد UDP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="97"/>
         <source>UDP Broadcast</source>
-        <translation>بث UDP</translation>
+        <translation type="vanished">بث UDP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="99"/>
         <source>TCP Client</source>
-        <translation>عميل TCP</translation>
+        <translation type="vanished">عميل TCP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="101"/>
         <source>TCP Server</source>
-        <translation>خادم TCP</translation>
+        <translation type="vanished">خادم TCP</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="103"/>
         <source>WebSocket Client</source>
-        <translation>عميل WebSocket</translation>
+        <translation type="vanished">عميل WebSocket</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="105"/>
         <source>WebSocket Server</source>
-        <translation>خادم WebSocket</translation>
+        <translation type="vanished">خادم WebSocket</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="107"/>
         <source>Local Socket</source>
-        <translation>مقبس محلي</translation>
+        <translation type="vanished">مقبس محلي</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="109"/>
         <source>Local Server</source>
-        <translation>خادم محلي</translation>
+        <translation type="vanished">خادم محلي</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="111"/>
         <source>Charts Test</source>
-        <translation>اختبار المخططات</translation>
+        <translation type="vanished">اختبار المخططات</translation>
     </message>
 </context>
 <context>
