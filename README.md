@@ -8,7 +8,7 @@
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/x-tools.svg)](https://repology.org/project/x-tools/versions)
 
-*xTools* is a user-friendly, open-source, cross-platform, easily extendable(using Lua and JavaScript) debugging tool-set based on Qt (Qt6.9 is recommended). It offers extensive support for serial port, BLE, UDP, TCP, web socket, Modbus and CAN Bus debugging functionalities.
+*xTools* is a user-friendly, open-source, cross-platform, easily extendable(using Lua and JavaScript) debugging tool-set based on Qt (Qt6.9 is recommended). It offers extensive support for serial port, HID, BLE, UDP, TCP, web socket, Modbus and CAN Bus debugging functionalities.
 
 > [!WARNING]
 > Qt 6.9.2 is required to build xTools on macOS 26.0(and later).
