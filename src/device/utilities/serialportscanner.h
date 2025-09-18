@@ -11,6 +11,7 @@
 #include <atomic>
 
 #include <QMutex>
+#include <QSerialPortInfo>
 #include <QThread>
 #include <QVariantList>
 
@@ -24,9 +25,11 @@ public:
     Q_INVOKABLE void setIsBusyDevicesIgnored(bool ignored);
     Q_INVOKABLE QStringList baudRates() const;
     QStringList portNames();
+    QList<QSerialPortInfo> deviceInfos();
 
 signals:
     void portNamesChanged(const QStringList &portNames);
+    void devicesChanged(const QList<QSerialPortInfo> &devices);
 
 protected:
     void run() override;
@@ -37,4 +40,5 @@ private:
 
 private:
     std::atomic_bool m_isBusyDevicesIgnored{false};
+    QList<QSerialPortInfo> m_lastDevices;
 };

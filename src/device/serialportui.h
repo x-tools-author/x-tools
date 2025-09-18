@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QSerialPortInfo>
+
 #include "deviceui.h"
 
 QT_BEGIN_NAMESPACE
@@ -33,6 +35,8 @@ protected:
 private:
     void refresh();
     void onPortNameChanged(const QStringList &portName);
+    void onDevicesChanged(const QList<QSerialPortInfo> &devices);
+    void onDeviceIndexChanged(int index);
 
 private:
     Ui::SerialPortUi *ui;

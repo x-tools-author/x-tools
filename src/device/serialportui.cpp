@@ -26,10 +26,14 @@ SerialPortUi::SerialPortUi(QWidget *parent)
 #endif
 
     m_scanner = new SerialPortScanner(this);
-    onPortNameChanged(m_scanner->portNames());
-    connect(m_scanner, &SerialPortScanner::portNamesChanged, this, &SerialPortUi::onPortNameChanged);
+    onDevicesChanged(m_scanner->deviceInfos());
+    connect(m_scanner, &SerialPortScanner::devicesChanged, this, &SerialPortUi::onDevicesChanged);
     m_scanner->start();
 
+    connect(ui->comboBoxPortName,
+            qOverload<int>(&QComboBox::currentIndexChanged),
+            this,
+            &SerialPortUi::onDeviceIndexChanged);
     connect(ui->checkBoxIgnoredBusyDevices, &QCheckBox::clicked, this, [=](bool checked) {
         m_scanner->setIsBusyDevicesIgnored(checked);
     });
@@ -39,6 +43,8 @@ SerialPortUi::SerialPortUi(QWidget *parent)
     setupParity(ui->comboBoxParity);
     setupStopBits(ui->comboBoxStopBits);
     setupFlowControl(ui->comboBoxFlowControl);
+
+    onDeviceIndexChanged(0);
 }
 
 SerialPortUi::~SerialPortUi()
@@ -123,4 +129,38 @@ void SerialPortUi::onPortNameChanged(const QStringList &portName)
     ui->comboBoxPortName->clear();
     ui->comboBoxPortName->addItems(portName);
     ui->comboBoxPortName->setCurrentText(currentPortName);
+}
+
+void SerialPortUi::onDevicesChanged(const QList<QSerialPortInfo> &devices)
+{
+    if (!ui->comboBoxPortName->isEnabled()) {
+        return;
+    }
+
+    if (devices.isEmpty()) {
+        ui->comboBoxPortName->clear();
+        return;
+    }
+
+    const QString tmp = ui->comboBoxPortName->currentText();
+    ui->comboBoxPortName->clear();
+    for (const QSerialPortInfo &info : devices) {
+        ui->comboBoxPortName->addItem(info.portName());
+        const int index = ui->comboBoxPortName->count() - 1;
+        ui->comboBoxPortName->setItemData(index, info.description(), Qt::ToolTipRole);
+    }
+
+    int index = ui->comboBoxPortName->findText(tmp);
+    index = index < 0 ? 0 : index;
+    ui->comboBoxPortName->setCurrentIndex(index);
+}
+
+void SerialPortUi::onDeviceIndexChanged(int index)
+{
+    if (index < 0 || index >= ui->comboBoxPortName->count()) {
+        return;
+    }
+
+    const QString tips = ui->comboBoxPortName->itemData(index, Qt::ToolTipRole).toString();
+    ui->comboBoxPortName->setToolTip(tips);
 }

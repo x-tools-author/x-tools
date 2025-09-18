@@ -11,12 +11,14 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QSerialPort>
-#include <QSerialPortInfo>
 #include <QTimer>
 
 SerialPortScanner::SerialPortScanner(QObject *parent)
     : QThread{parent}
-{}
+{
+    m_isBusyDevicesIgnored.store(false);
+    refresh();
+}
 
 SerialPortScanner::~SerialPortScanner()
 {
@@ -43,6 +45,11 @@ QStringList SerialPortScanner::baudRates() const
 QStringList SerialPortScanner::portNames()
 {
     return refresh();
+}
+
+QList<QSerialPortInfo> SerialPortScanner::deviceInfos()
+{
+    return m_lastDevices;
 }
 
 void SerialPortScanner::run()
@@ -80,6 +87,18 @@ QStringList SerialPortScanner::refresh()
         } else {
             portNames.append(info.portName());
         }
+    }
+
+    bool isEqual = std::equal(portNames.begin(),
+                              portNames.end(),
+                              m_lastDevices.begin(),
+                              m_lastDevices.end(),
+                              [](const QString &name, const QSerialPortInfo &info) {
+                                  return name == info.portName();
+                              });
+    if (!isEqual) {
+        m_lastDevices = infos;
+        emit devicesChanged(infos);
     }
 
     emit portNamesChanged(portNames);
