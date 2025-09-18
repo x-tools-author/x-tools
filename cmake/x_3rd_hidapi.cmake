@@ -5,7 +5,6 @@ set(X_3RD_VERSION_HIDAPI
 set(package_version ${X_3RD_VERSION_HIDAPI})
 set(package_name "hidapi-hidapi-${package_version}")
 set(package_url "https://codeload.github.com/libusb/hidapi/zip/refs/tags/hidapi-${package_version}")
-set(package_md5 "f4c3c3b6a5e2e7f0e6f3d6e8b7e8f9a1")
 
 macro(remove_all_files_of_hidapi)
   message(STATUS "[xTools-hidapi]Removing all flow files...")

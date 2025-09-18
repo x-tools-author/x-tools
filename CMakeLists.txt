@@ -168,7 +168,6 @@ list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 
 include(${CMAKE_SOURCE_DIR}/cmake/x_3rd.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
-message(STATUS "[xTools]Link libraries: ${X_LIBS}")
 
 # --------------------------------------------------------------------------------------------------
 # if X_LATEST_GIT_TAG contain "v", remove it...
@@ -215,9 +214,7 @@ target_link_libraries(xTools PRIVATE ${X_LIBS})
 x_output_env(xTools)
 x_deploy_qt(xTools)
 x_deploy_resources(xTools)
-
-get_target_property(tmp xTools LINK_LIBRARIES)
-message(STATUS "[xTools]X_LIBS: ${tmp}")
+message(STATUS "[xTools]xTools linked libs: ${X_LIBS}")
 
 # xTools translations
 x_generate_module_translations(common ${CMAKE_CURRENT_SOURCE_DIR}/src/common ON)
