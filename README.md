@@ -67,4 +67,4 @@ yay -Syu x-tools
 |Gitee| <https://gitee.com/x-tools-author/x-tools>|
 |GitHub| <https://github.com/x-tools-author/x-tools>|
 |Sponsor|<https://apps.microsoft.com/search/publisher?name=x-tools-author>|
-|Third party|[glog](https://github.com/google/glog) [libqrencode](https://github.com/fukuchi/libqrencode) [qmdnsengine](https://github.com/nitroshare/qmdnsengine) [QXlsx](https://github.com/QtExcel/QXlsx)|
+|Third party|[lua](https://github.com/lua/lua) [zint](https://github.com/zint/zint) [glog](https://github.com/google/glog) [libqrencode](https://github.com/fukuchi/libqrencode) [qmdnsengine](https://github.com/nitroshare/qmdnsengine) [QXlsx](https://github.com/QtExcel/QXlsx) [hidapi](https://github.com/libusb/hidapi) [libiconv](https://ftp.gnu.org/pub/gnu/libiconv) [SingleApplication](https://github.com/itay-grudev/SingleApplication)|
