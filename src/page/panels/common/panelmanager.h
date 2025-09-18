@@ -37,13 +37,19 @@ public:
     template<typename T>
     T *addPanel(const QString &name, const QString &icon)
     {
+        return addPanel<T>(name, QIcon(icon));
+    }
+
+    template<typename T>
+    T *addPanel(const QString &name, const QIcon &icon)
+    {
         static_assert(std::is_base_of<Panel, T>::value, "T must inherit from Panel");
         T *panel = new T();
         m_layout->addWidget(panel);
 
         QToolButton *button = new QToolButton();
         button->setText(name);
-        button->setIcon(QIcon(icon));
+        button->setIcon(icon);
         button->setCheckable(true);
         button->setToolTip(name);
         // Show icon only

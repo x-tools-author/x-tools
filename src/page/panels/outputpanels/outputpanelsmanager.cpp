@@ -20,7 +20,11 @@
 OutputPanelsManager::OutputPanelsManager(QWidget *parent)
     : PanelManager(parent)
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0)
     addPanel<SearchPanel>(tr("Search"), ":/res/icons/search.svg");
+#else
+    addPanel<SearchPanel>(tr("Search"), QIcon::fromTheme(QIcon::ThemeIcon::SystemSearch));
+#endif
     addPanel<LuaPanel>(tr("Lua Script"), ":/res/icons/lua.svg");
 #ifdef X_ENABLE_CHARTS
     addPanel<LinePanel>(tr("Line Chart"), ":/res/icons/line_series.svg");

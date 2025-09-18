@@ -109,6 +109,11 @@ if(QT_VERSION VERSION_LESS 6.5.0)
   return()
 endif()
 
+if(IOS OR ANDROID)
+  message(STATUS "[xTools]Skipping optional Qt modules on mobile platform.")
+  return()
+endif()
+
 x_import_qt_optional_module("qtmqtt" "Mqtt")
 x_import_qt_optional_module("qtcoap" "Coap")
 # x_import_qt_optional_module("qtopcua" "OpcUa")
