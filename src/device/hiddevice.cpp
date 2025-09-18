@@ -16,6 +16,7 @@
 #include <QtMath>
 
 #include "common/xtools.h"
+#include "utilities/hidscanner.h"
 
 HidDevice::HidDevice(QObject *parent)
     : Device(parent)
@@ -26,119 +27,66 @@ HidDevice::~HidDevice() {}
 QObject *HidDevice::initDevice()
 {
     QVariantMap tmp = save();
-    SerialPortItem item = loadSerialPortItem(QJsonObject::fromVariantMap(tmp));
-    m_serialPort = new QSerialPort();
-    m_serialPort->setPortName(item.portName);
-    m_serialPort->setBaudRate(item.baudRate);
-    m_serialPort->setDataBits(static_cast<QSerialPort::DataBits>(item.dataBits));
-    m_serialPort->setParity(static_cast<QSerialPort::Parity>(item.parity));
-    m_serialPort->setStopBits(static_cast<QSerialPort::StopBits>(item.stopBits));
-    m_serialPort->setFlowControl(static_cast<QSerialPort::FlowControl>(item.flowControl));
-
-    qInfo() << "portName:" << m_serialPort->portName() << "baudRate:" << m_serialPort->baudRate()
-            << "dataBits:" << m_serialPort->dataBits() << "parity:" << m_serialPort->parity()
-            << "stopBits:" << m_serialPort->stopBits()
-            << "flowControl:" << m_serialPort->flowControl()
-            << "optimizedFrame:" << item.optimizedFrame;
-
-    if (m_serialPort->open(QIODevice::ReadWrite)) {
-        connect(m_serialPort, &QSerialPort::readyRead, m_serialPort, [this]() {
-            this->readBytesFromDevice();
-        });
-        connect(m_serialPort, &QSerialPort::errorOccurred, m_serialPort, [this]() {
-            emit errorOccurred(m_serialPort->errorString());
-        });
-    } else {
-        emit errorOccurred(tr("Failed to open serial port: %1").arg(m_serialPort->errorString()));
-        m_serialPort->deleteLater();
-        m_serialPort = nullptr;
+    HidDeviceParameterKeys keys;
+    QString path = tmp.value(keys.path).toString();
+    if (path.isEmpty()) {
+        emit errorOccurred(tr("HID device path is empty."));
+        return nullptr;
     }
 
-    return m_serialPort;
+    m_hidDevice = hid_open_path(path.toUtf8().constData());
+    if (!m_hidDevice) {
+        emit errorOccurred(tr("Failed to open HID device \"%1\". ").arg(path));
+        return nullptr;
+    }
+
+    hid_set_nonblocking(m_hidDevice, 1);
+    m_readTimer = new QTimer();
+    m_readTimer->setInterval(50);
+    connect(m_readTimer, &QTimer::timeout, m_readTimer, [this]() { readBytesFromDevice(); });
+    m_readTimer->start();
+    return m_readTimer;
 }
 
 void HidDevice::deinitDevice()
 {
-    if (m_serialPort) {
-        m_serialPort->close();
-        m_serialPort->deleteLater();
-        m_serialPort = nullptr;
+    if (m_readTimer) {
+        m_readTimer->stop();
+        m_readTimer->deleteLater();
+        m_readTimer = nullptr;
+    }
+
+    if (m_hidDevice) {
+        hid_close(m_hidDevice);
+        m_hidDevice = nullptr;
     }
 }
 
 void HidDevice::writeActually(const QByteArray &bytes)
 {
-    if (m_serialPort) {
-        qint64 ret = m_serialPort->write(bytes);
-        if (ret == bytes.size()) {
-            emit bytesWritten(bytes, m_serialPort->portName());
+    if (m_hidDevice) {
+        const unsigned char *data = reinterpret_cast<const unsigned char *>(bytes.constData());
+        int ret = hid_write(m_hidDevice, data, bytes.size());
+        if (ret == -1) {
+            QString errStr = QString::fromWCharArray(hid_error(m_hidDevice));
+            emit errorOccurred(tr("Write HID device error: %1").arg(errStr));
+        } else {
+            emit bytesWritten(bytes, QString("HID"));
         }
     }
 }
 
 void HidDevice::readBytesFromDevice()
 {
-    if (!m_serialPort) {
+    if (!m_hidDevice) {
         return;
     }
 
-    QVariantMap tmp = save();
-    SerialPortItem item = loadSerialPortItem(QJsonObject::fromVariantMap(tmp));
-    if (item.optimizedFrame) {
-        readBytesFromDeviceOptimized();
-    } else {
-        readBytesFromDeviceNormal();
+    const int bufSize = 128;
+    unsigned char buf[bufSize];
+    int res = hid_read(m_hidDevice, buf, bufSize);
+    if (res > 0) {
+        QByteArray bytes = QByteArray::fromRawData(reinterpret_cast<const char *>(buf), res);
+        emit bytesRead(bytes, QString("HID"));
     }
-}
-
-void HidDevice::readBytesFromDeviceNormal()
-{
-    QByteArray bytes = m_serialPort->readAll();
-    if (!bytes.isEmpty()) {
-        emit bytesRead(bytes, m_serialPort->portName());
-    }
-}
-
-void HidDevice::readBytesFromDeviceOptimized()
-{
-    QElapsedTimer elapsedTimer;
-    elapsedTimer.start();
-    QByteArray tmp;
-    int delay = calculateInterFrameDelay();
-    while (1) {
-        QByteArray const data = m_serialPort->readAll();
-        if (data.size() == 0) {
-            if (elapsedTimer.elapsed() > delay) {
-                if (!tmp.isEmpty()) {
-                    emit bytesRead(tmp, m_serialPort->portName());
-                }
-
-                return;
-            } else {
-                continue;
-            }
-        }
-
-        tmp.append(data);
-        if (tmp.size() > 1024) {
-            emit bytesRead(tmp, m_serialPort->portName());
-            tmp.clear();
-        }
-    }
-}
-
-int HidDevice::calculateInterFrameDelay()
-{
-    // The spec recommends a timeout value of 1.750 msec. Without such
-    // precise single-shot timers use a approximated value of 1.750 msec.
-    int delayMilliSeconds = 2;
-    qint32 baudRate = m_serialPort->baudRate();
-    if (baudRate < 19200) {
-        // Example: 9600 baud, 11 bit per packet -> 872 char/sec so:
-        // 1000 ms / 872 char = 1.147 ms/char * 3.5 character = 4.0145 ms
-        // Always round up because the spec requests at least 3.5 char.
-        delayMilliSeconds = qCeil(3500. / (qreal(baudRate) / 11.));
-    }
-
-    return qMax(2, delayMilliSeconds);
 }

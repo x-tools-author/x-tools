@@ -9,13 +9,9 @@
 #include "hiddeviceui.h"
 #include "ui_hiddeviceui.h"
 
-#include <QSerialPort>
-#include <QSerialPortInfo>
-
 #include "common/xtools.h"
-#include "serialport.h"
+#include "device/hiddevice.h"
 #include "utilities/hidscanner.h"
-#include "utilities/serialportscanner.h"
 
 HidDeviceUi::HidDeviceUi(QWidget *parent)
     : DeviceUi(parent)
@@ -26,15 +22,11 @@ HidDeviceUi::HidDeviceUi(QWidget *parent)
     m_hidScanner = new HidScanner(this);
     auto infos = m_hidScanner->hidInfos();
     onDevicesChanged(infos);
-    connect(m_hidScanner, &HidScanner::devicesChanged, this, &HidDeviceUi::onDevicesChanged);
 
-    connect(ui->comboBoxPortHid,
-            qOverload<int>(&QComboBox::currentIndexChanged),
-            this,
-            &HidDeviceUi::onDeviceIndexChanged);
-    connect(ui->checkBoxIgnoredBusyDevices, &QCheckBox::clicked, this, [=](bool checked) {
-        m_hidScanner->setIsBusyDevicesIgnored(checked);
-    });
+    // clang-format off
+    connect(m_hidScanner, &HidScanner::devicesChanged, this, &HidDeviceUi::onDevicesChanged);
+    connect(ui->comboBoxPortHid, qOverload<int>(&QComboBox::currentIndexChanged), this, &HidDeviceUi::onDeviceIndexChanged);
+    // clang-format on
 
     m_hidScanner->start();
 }
@@ -52,58 +44,28 @@ HidDeviceUi::~HidDeviceUi()
 QVariantMap HidDeviceUi::save() const
 {
     QVariantMap map;
-
+    HidDeviceParameterKeys keys;
+    QString path = ui->comboBoxPortHid->currentData().toString();
+    map.insert(keys.path, path);
     return map;
 }
 
 void HidDeviceUi::load(const QVariantMap &map)
 {
-    if (map.isEmpty()) {
-        return;
+    HidDeviceParameterKeys keys;
+    QString path = map.value(keys.path).toString();
+    for (int i = 0; i < ui->comboBoxPortHid->count(); ++i) {
+        HidDeviceInfo itemInfo = ui->comboBoxPortHid->itemData(i).value<HidDeviceInfo>();
+        if (itemInfo.path == path) {
+            ui->comboBoxPortHid->setCurrentIndex(i);
+            break;
+        }
     }
-
-    SerialPortItemKeys keys;
-    QString portName = map.value(keys.portName).toString();
-    int baudRate = map.value(keys.baudRate, 9600).toInt();
-    int dataBits = map.value(keys.dataBits, static_cast<int>(QSerialPort::Data8)).toInt();
-    int parity = map.value(keys.parity, static_cast<int>(QSerialPort::NoParity)).toInt();
-    int stopBits = map.value(keys.stopBits, static_cast<int>(QSerialPort::OneStop)).toInt();
-    int fc = map.value(keys.flowControl, static_cast<int>(QSerialPort::NoFlowControl)).toInt();
-    bool ignoredBusyDevices = map.value(keys.ignoredBusyDevices, false).toBool();
-    bool optimizedFrame = map.value(keys.optimizedFrame, false).toBool();
-
-    m_hidScanner->setIsBusyDevicesIgnored(ignoredBusyDevices);
 }
 
 Device *HidDeviceUi::newDevice()
 {
-    return new SerialPort(this);
-}
-
-void HidDeviceUi::refresh()
-{
-    setupPortName(ui->comboBoxPortHid);
-}
-
-void HidDeviceUi::onPortNameChanged(const QStringList &portName)
-{
-    if (!ui->comboBoxPortHid->isEnabled()) {
-        return;
-    }
-
-    QStringList items;
-    for (int i = 0; i < ui->comboBoxPortHid->count(); i++) {
-        items.append(ui->comboBoxPortHid->itemText(i));
-    }
-
-    if (items == portName) {
-        return;
-    }
-
-    QString currentPortName = ui->comboBoxPortHid->currentText();
-    ui->comboBoxPortHid->clear();
-    ui->comboBoxPortHid->addItems(portName);
-    ui->comboBoxPortHid->setCurrentText(currentPortName);
+    return new HidDevice(this);
 }
 
 QString unsignedShortToString(unsigned short v)

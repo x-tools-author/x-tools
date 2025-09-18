@@ -30,8 +30,6 @@ protected:
     Device *newDevice() override;
 
 private:
-    void refresh();
-    void onPortNameChanged(const QStringList &portName);
     void onDevicesChanged(const QList<HidDeviceInfo> &infos);
     void onDeviceIndexChanged(int index);
 

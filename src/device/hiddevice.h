@@ -8,10 +8,16 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QSerialPort>
+#include <hidapi.h>
+
 #include <QTimer>
 
 #include "device.h"
+
+struct HidDeviceParameterKeys
+{
+    const QString path{"path"};
+};
 
 class HidDevice : public Device
 {
@@ -25,11 +31,9 @@ public:
     void writeActually(const QByteArray &bytes) override;
 
 private:
-    QSerialPort *m_serialPort{nullptr};
+    hid_device *m_hidDevice{nullptr};
+    QTimer *m_readTimer{nullptr};
 
 private:
     void readBytesFromDevice();
-    void readBytesFromDeviceNormal();
-    void readBytesFromDeviceOptimized();
-    int calculateInterFrameDelay();
 };

@@ -9,6 +9,10 @@
 #include <QDebug>
 #include <QMessageBox>
 
+#if defined(X_ENABLE_HID)
+#include <hidapi.h>
+#endif
+
 #include "application.h"
 #include "mainwindow.h"
 
@@ -36,6 +40,10 @@ int main(int argc, char *argv[])
     app.setupAppStyle();
     app.setupColorScheme();
 
+#if defined(X_ENABLE_HID)
+    hid_init();
+#endif
+
     MainWindow window;
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
@@ -54,6 +62,11 @@ int main(int argc, char *argv[])
 #endif
 
     int ret = app.exec();
+
+#if defined(X_ENABLE_HID)
+    hid_exit();
+#endif
+
     Application::uninstallLog();
     qInfo() << "Application exited with code:" << ret;
     return ret;
