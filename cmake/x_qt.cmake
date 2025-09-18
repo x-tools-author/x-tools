@@ -114,6 +114,11 @@ if(IOS OR ANDROID)
   return()
 endif()
 
+if(APPLE)
+  message(STATUS "[xTools]Skipping optional Qt modules on macOS platform.")
+  return()
+endif()
+
 x_import_qt_optional_module("qtmqtt" "Mqtt")
 x_import_qt_optional_module("qtcoap" "Coap")
 # x_import_qt_optional_module("qtopcua" "OpcUa")
