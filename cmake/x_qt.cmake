@@ -119,6 +119,7 @@ if(APPLE)
   return()
 endif()
 
+option(X_ENABLE_OPTIONAL_QT_MODULES "Enable optional Qt modules (Qt 6.5+)" OFF)
 x_import_qt_optional_module("qtmqtt" "Mqtt")
 x_import_qt_optional_module("qtcoap" "Coap")
 # x_import_qt_optional_module("qtopcua" "OpcUa")
