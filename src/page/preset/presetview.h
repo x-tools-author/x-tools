@@ -13,6 +13,7 @@
 #include "page/common/tableview.h"
 
 class PresetModel;
+class PresetViewGroupEditor;
 class PresetView : public TableView
 {
     Q_OBJECT
@@ -21,12 +22,17 @@ public:
     ~PresetView();
     QMenu *menu();
 
+signals:
+    void invokeComeHere();
+
 protected:
     QList<int> textItemColumns() const override;
 
 private:
     QMenu *m_menu{nullptr};
+    QMenu *groupMenu{nullptr};
     PresetModel *m_tableModel;
+    PresetViewGroupEditor *m_groupEditor{nullptr};
 
 private:
     void onActionTriggered(int row);

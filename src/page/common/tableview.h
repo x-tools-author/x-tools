@@ -28,6 +28,8 @@ public:
     bool isDisableAll() const;
     void setIsDisableAll(bool disable);
     void setIdDisableCheckBoxVisible(bool visible);
+    void addControlWidgets(QWidget *w);
+    void setVerticalHeaderVisible(bool visible);
 
     TableModel *tableModel();
     virtual void setTableModel(TableModel *model);

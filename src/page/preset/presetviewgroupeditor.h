@@ -8,17 +8,19 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QAbstractTableModel>
+#include <QWidget>
 
-class TableModel : public QAbstractTableModel
+namespace Ui {
+class PresetViewGroupEditor;
+}
+
+class PresetViewGroupEditor : public QWidget
 {
     Q_OBJECT
 public:
-    explicit TableModel(QObject *parent = nullptr);
+    explicit PresetViewGroupEditor(QWidget *parent = nullptr);
+    ~PresetViewGroupEditor();
 
-    virtual QVariantMap saveRow(int row);
-    virtual void loadRow(int row, const QVariantMap &data);
-    virtual QVariant headerData(int section,
-                                Qt::Orientation orientation,
-                                int role = Qt::DisplayRole) const override;
+private:
+    Ui::PresetViewGroupEditor *ui;
 };

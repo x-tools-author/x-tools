@@ -109,6 +109,9 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
             this,
             &Page::onPushButtonExternalPanelClicked);
     connect(ui->widgetScripts, &ScriptsManager::invokeWrite, this, &Page::inputBytes);
+    connect(ui->tabPreset, &PresetView::invokeComeHere, this, [this]() {
+        ui->tabWidget->setCurrentWidget(ui->tabPreset);
+    });
 
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());

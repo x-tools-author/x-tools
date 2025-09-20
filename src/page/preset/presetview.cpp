@@ -14,6 +14,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLineEdit>
+#include <QPushButton>
 #include <QStandardItemModel>
 #include <QStyledItemDelegate>
 #include <QTableView>
@@ -21,11 +22,13 @@
 #include "common/xtools.h"
 #include "page/utilities/menu.h"
 #include "presetmodel.h"
+#include "presetviewgroupeditor.h"
 
 PresetView::PresetView(QWidget *parent)
     : TableView(parent)
 {
     m_menu = new Menu();
+    groupMenu = new Menu(tr("Group Sending"));
 
     setIdDisableCheckBoxVisible(false);
 
@@ -37,10 +40,31 @@ PresetView::PresetView(QWidget *parent)
 
     auto *tv = tableView();
     auto hHeader = tv->horizontalHeader();
+    hHeader->setSectionResizeMode(0, QHeaderView::ResizeToContents);
     hHeader->setStretchLastSection(true);
+
+    const QString title = tr("Group Editor");
+    m_groupEditor = new PresetViewGroupEditor();
+    m_groupEditor->hide();
+    m_groupEditor->setWindowTitle(title);
+
+    QPushButton *btn = new QPushButton(this);
+    btn->setText(title);
+    addControlWidgets(btn);
+    setVerticalHeaderVisible(true);
+
+    connect(btn, &QPushButton::clicked, this, [this]() {
+        m_groupEditor->show();
+        m_groupEditor->raise();
+        m_groupEditor->activateWindow();
+    });
 }
 
-PresetView::~PresetView() {}
+PresetView::~PresetView()
+{
+    m_menu->deleteLater();
+    m_groupEditor->deleteLater();
+}
 
 QMenu *PresetView::menu()
 {
@@ -69,6 +93,13 @@ void PresetView::onActionTriggered(int row)
 void PresetView::onDataChanged()
 {
     m_menu->clear();
+    m_menu->addAction(tr("Edit Datas..."), this, [this]() {
+        emit invokeComeHere();
+        m_menu->hide();
+    });
+
+    m_menu->addMenu(groupMenu);
+    m_menu->addSeparator();
     int rows = m_tableModel->rowCount(QModelIndex());
 
     for (int i = 0; i < rows; ++i) {

@@ -82,9 +82,7 @@ QVariant PresetModel::data(const QModelIndex &index, int role) const
             return QVariant::fromValue(json);
         }
     } else if (role == Qt::TextAlignmentRole) {
-        if (column == 0) {
-            return Qt::AlignCenter;
-        }
+        return int(Qt::AlignLeft | Qt::AlignVCenter);
     }
 
     return QVariant();
@@ -140,8 +138,8 @@ bool PresetModel::removeRows(int row, int count, const QModelIndex &parent)
 
 QVariant PresetModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    if (orientation == Qt::Vertical) {
-        return QVariant();
+    if (orientation == Qt::Vertical && role == Qt::DisplayRole) {
+        return QVariant(QString::number(section + 1));
     }
 
     if (role == Qt::DisplayRole) {
@@ -151,9 +149,7 @@ QVariant PresetModel::headerData(int section, Qt::Orientation orientation, int r
             return tr("Data");
         }
     } else if (role == Qt::TextAlignmentRole) {
-        if (section == 1) {
-            return Qt::AlignLeft;
-        }
+        return Qt::AlignLeft;
     }
 
     return QVariant();

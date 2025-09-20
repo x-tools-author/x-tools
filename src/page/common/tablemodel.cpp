@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "tablemodel.h"
 
+#include <QSize>
+
 TableModel::TableModel(QObject *parent)
     : QAbstractTableModel(parent)
 {}
@@ -23,4 +25,13 @@ void TableModel::loadRow(int row, const QVariantMap &data)
 {
     Q_UNUSED(row);
     Q_UNUSED(data);
+}
+
+QVariant TableModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if (role == Qt::DisplayRole) {
+        return QStringLiteral("%1").arg(section + 1);
+    }
+
+    return QAbstractTableModel::headerData(section, orientation, role);
 }

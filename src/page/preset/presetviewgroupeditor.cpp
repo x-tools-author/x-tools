@@ -6,19 +6,17 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#pragma once
+#include "presetviewgroupeditor.h"
+#include "ui_presetviewgroupeditor.h"
 
-#include <QAbstractTableModel>
-
-class TableModel : public QAbstractTableModel
+PresetViewGroupEditor::PresetViewGroupEditor(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::PresetViewGroupEditor)
 {
-    Q_OBJECT
-public:
-    explicit TableModel(QObject *parent = nullptr);
+    ui->setupUi(this);
+}
 
-    virtual QVariantMap saveRow(int row);
-    virtual void loadRow(int row, const QVariantMap &data);
-    virtual QVariant headerData(int section,
-                                Qt::Orientation orientation,
-                                int role = Qt::DisplayRole) const override;
-};
+PresetViewGroupEditor::~PresetViewGroupEditor()
+{
+    delete ui;
+}

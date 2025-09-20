@@ -62,6 +62,17 @@ void TableView::setIdDisableCheckBoxVisible(bool visible)
     ui->checkBoxDisable->setVisible(visible);
 }
 
+void TableView::addControlWidgets(QWidget *w)
+{
+    ui->horizontalLayoutWidgets->addWidget(w);
+}
+
+void TableView::setVerticalHeaderVisible(bool visible)
+{
+    ui->tableView->verticalHeader()->setVisible(visible);
+    ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+}
+
 TableModel *TableView::tableModel()
 {
     return m_model;
