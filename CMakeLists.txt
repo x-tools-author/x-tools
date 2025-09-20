@@ -1,24 +1,30 @@
-# cmake-format: off
-# --------------------------------------------------------------------------------------------------
-# Do something make CMake happy
+# Do something for CMake 4.0.0 or later
 if(NOT ${CMAKE_VERSION} VERSION_LESS "4.0.0")
-  set(CMAKE_POLICY_VERSION_MINIMUM "3.22" CACHE STRING "CMake policy version" FORCE)
+  set(CMAKE_POLICY_VERSION_MINIMUM
+      "3.22"
+      CACHE STRING "CMake policy version" FORCE)
 endif()
 
-# --------------------------------------------------------------------------------------------------
-# Using vcpkg(The 'x64-windows-static' triplet is supported only)
-option(X_VCPKG "Using vcpkg" OFF)
-if(X_VCPKG)
-  set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "vcpkg target triplet")
-  set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Please specify your own vcpkg file")
-  if (${VCPKG_TARGET_TRIPLET} STREQUAL "x64-windows-static")
+# Using vcpkg, you must set the environment variable VCPKG_ROOT first
+option(X_USING_VCPKG "Using vcpkg" OFF)
+if(X_USING_VCPKG)
+  set(VCPKG_TARGET_TRIPLET
+      "x64-windows-static"
+      CACHE STRING "vcpkg target triplet")
+  set(CMAKE_TOOLCHAIN_FILE
+      "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+      CACHE STRING "Please specify your own vcpkg file")
+  if(${VCPKG_TARGET_TRIPLET} STREQUAL "x64-windows-static")
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
   endif()
 endif()
 
 cmake_minimum_required(VERSION 3.22)
-project(xTools VERSION 8.0 LANGUAGES C CXX)
-# cmake-format: on
+project(
+  xTools
+  VERSION 8.0
+  LANGUAGES C CXX
+  DESCRIPTION "xTools - All in one toolbox for developers and engineers")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -43,17 +49,17 @@ x_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X")
 # --------------------------------------------------------------------------------------------------
 # Target platform
 message(STATUS "------------------------------------------------------------")
-message(STATUS "[xTools]CMAKE_VERSION: ${CMAKE_VERSION}")
-message(STATUS "[xTools]CMAKE_GENERATOR: ${CMAKE_GENERATOR}")
-message(STATUS "[xTools]CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
-message(STATUS "[xTools]CMAKE_SYSTEM: ${CMAKE_SYSTEM}")
-message(STATUS "[xTools]CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
-message(STATUS "[xTools]CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
-message(STATUS "[xTools]CMAKE_HOST_SYSTEM: ${CMAKE_HOST_SYSTEM}")
-message(STATUS "[xTools]CMAKE_HOST_SYSTEM_NAME: ${CMAKE_HOST_SYSTEM_NAME}")
-message(STATUS "[xTools]CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
-message(STATUS "[xTools]CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
-message(STATUS "[xTools]CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
+message(STATUS "[xTools] CMAKE_VERSION: ${CMAKE_VERSION}")
+message(STATUS "[xTools] CMAKE_GENERATOR: ${CMAKE_GENERATOR}")
+message(STATUS "[xTools] CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+message(STATUS "[xTools] CMAKE_SYSTEM: ${CMAKE_SYSTEM}")
+message(STATUS "[xTools] CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "[xTools] CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
+message(STATUS "[xTools] CMAKE_HOST_SYSTEM: ${CMAKE_HOST_SYSTEM}")
+message(STATUS "[xTools] CMAKE_HOST_SYSTEM_NAME: ${CMAKE_HOST_SYSTEM_NAME}")
+message(STATUS "[xTools] CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
+message(STATUS "[xTools] CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "[xTools] CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 
 # --------------------------------------------------------------------------------------------------
 # Qt module
@@ -89,15 +95,15 @@ list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Qml)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
 
 # --------------------------------------------------------------------------------------------------
-# Binaries
+# Global settings
 set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
 set(X_3RD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
-# Libraries
 set(tmp ${CMAKE_SOURCE_DIR}/libs)
 set(X_LIBS_DIR ${tmp}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
-message(STATUS "[xTools]X_LIBS_DIR: ${X_LIBS_DIR}")
+message(STATUS "[xTools] X_LIBS_DIR: ${X_LIBS_DIR}")
 message(STATUS "------------------------------------------------------------")
 
+# Do not change X_MAGIC option unless you know what you are doing
 option(X_MAGIC "The magic option..." OFF)
 if(X_MAGIC)
   add_compile_definitions(X_MAGIC)
@@ -109,23 +115,22 @@ if(${QT_VERSION} VERSION_LESS "6.0.0" AND WIN32)
   set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
 endif()
 string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
-message(STATUS "[xTools]Asset name: ${X_ASSET_NAME}")
+message(STATUS "[xTools] Asset name: ${X_ASSET_NAME}")
 
 # Set macOS deployment target (minimum macOS version)
 if(APPLE AND NOT IOS)
-  # Set minimum macOS version - you can adjust this as needed Common options: 11.0 (Big Sur), 12.0
-  # (Monterey), 13.0 (Ventura), 14.0 (Sonoma)
+  # Set minimum macOS version - you can adjust this as needed Common options: 12.0 (Monterey), 13.0
+  # (Ventura), 14.0 (Sonoma), 15.0 (Sequoia), 26.0 (Tahoe)
   if(NOT CMAKE_OSX_DEPLOYMENT_TARGET)
     # cmake-format: off
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0" CACHE STRING "Minimum macOS deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "12.0" CACHE STRING "Minimum macOS deployment version")
     # cmake-format: on
   endif()
-endif()
 
-# Do something for Qt5
-if(APPLE AND NOT IOS)
   if(QT_VERSION VERSION_LESS "6.0.0")
     set(CMAKE_OSX_ARCHITECTURES "x86_64")
+  else()
+    set(CMAKE_OSX_ARCHITECTURES "arm64")
   endif()
 endif()
 
@@ -137,21 +142,21 @@ endif()
 
 # Qt 6.8.0 or later is recommended, or output a warning message
 if(QT_VERSION VERSION_LESS "6.8.0")
-  message(WARNING "Qt 6.8.0 or later is recommended")
   if(ANDROID)
     message(FATAL_ERROR "Qt 6.8.0 or later is required for Android platform")
+  else()
+    message(WARNING "Qt 6.8.0 or later is recommended")
   endif()
 endif()
 
-if(QT_VERSION_MAJOR EQUAL 5)
-  if(MSVC)
-    add_compile_options(/execution-charset:utf-8)
-  endif()
+# Do something for Qt5(vc++)
+if(QT_VERSION_MAJOR EQUAL 5 AND MSVC)
+  add_compile_options(/execution-charset:utf-8)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Don't change X_STATIC_VC_RUNTIME_LIBRARY option unless you know what you are doing. QT_TARGET_TYPE
-# is SHARED_LIBRARY or STATIC_LIBRARY
+# * Don't change X_STATIC_VC_RUNTIME_LIBRARY option unless you know what you are doing.
+# * QT_TARGET_TYPE is SHARED_LIBRARY or STATIC_LIBRARY
 get_target_property(QT_TARGET_TYPE Qt${QT_VERSION_MAJOR}::Core TYPE)
 option(X_STATIC_VC_RUNTIME_LIBRARY "Using static vc runtime library" OFF)
 if(WIN32 AND MSVC)
@@ -214,14 +219,12 @@ target_link_libraries(xTools PRIVATE ${X_LIBS})
 x_output_env(xTools)
 x_deploy_qt(xTools)
 x_deploy_resources(xTools)
-message(STATUS "[xTools]xTools linked libs: ${X_LIBS}")
 
-# xTools translations
-x_generate_module_translations(common ${CMAKE_CURRENT_SOURCE_DIR}/src/common ON)
-x_generate_module_translations(device ${CMAKE_CURRENT_SOURCE_DIR}/src/device ON)
-x_generate_module_translations(nodeeditor ${CMAKE_CURRENT_SOURCE_DIR}/src/nodeeditor ON)
-x_generate_module_translations(tools ${CMAKE_CURRENT_SOURCE_DIR}/src/tools OFF)
+# --------------------------------------------------------------------------------------------------
+# xTools translations(i18n)
 x_generate_module_translations(xtools ${CMAKE_CURRENT_SOURCE_DIR}/src OFF)
+
+# Page modules
 x_generate_module_translations(page ${CMAKE_CURRENT_SOURCE_DIR}/src/page OFF)
 x_generate_module_translations(page-common ${CMAKE_CURRENT_SOURCE_DIR}/src/page/common ON)
 x_generate_module_translations(page-emitter ${CMAKE_CURRENT_SOURCE_DIR}/src/page/emitter ON)
@@ -232,7 +235,8 @@ x_generate_module_translations(page-transfer ${CMAKE_CURRENT_SOURCE_DIR}/src/pag
 x_generate_module_translations(page-utilities ${CMAKE_CURRENT_SOURCE_DIR}/src/page/utilities ON)
 x_generate_module_translations(page-scripts ${CMAKE_CURRENT_SOURCE_DIR}/src/page/scripts ON)
 
-# xTools Tools
+# Tools modules
+x_generate_module_translations(tools ${CMAKE_CURRENT_SOURCE_DIR}/src/tools OFF)
 x_generate_module_translations(tools-ascii ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/ascii ON)
 x_generate_module_translations(tools-barcode ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/barcode ON)
 x_generate_module_translations(tools-base64 ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/base64 ON)
@@ -247,21 +251,18 @@ x_generate_module_translations(tools-ping ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/
 x_generate_module_translations(tools-qrcode ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/qrcode ON)
 x_generate_module_translations(tools-string ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/string ON)
 
-if(WIN32 AND MSVC)
-  target_link_libraries(xTools PRIVATE Dwmapi)
-elseif(LINUX)
-  target_link_libraries(xTools PRIVATE dl)
-endif()
-
-# Android specific settings
-if(ANDROID)
-  set(x_android_source ${CMAKE_SOURCE_DIR}/res/android/6.8)
-  set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR ${x_android_source})
-endif()
+# Other modules
+x_generate_module_translations(common ${CMAKE_CURRENT_SOURCE_DIR}/src/common ON)
+x_generate_module_translations(device ${CMAKE_CURRENT_SOURCE_DIR}/src/device ON)
+x_generate_module_translations(nodeeditor ${CMAKE_CURRENT_SOURCE_DIR}/src/nodeeditor ON)
 
 # --------------------------------------------------------------------------------------------------
-# Make installer for Windows
+# Windows
 if(WIN32)
+  if(MSVC)
+    target_link_libraries(xTools PRIVATE Dwmapi)
+  endif()
+
   include(${CMAKE_SOURCE_DIR}/cmake/msix/msix.cmake)
   include(${CMAKE_SOURCE_DIR}/cmake/qifw/qifw.cmake)
   set(icon ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
@@ -271,14 +272,22 @@ if(WIN32)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Make package for linux(deb or appimage)
-if(LINUX)
+# Android
+if(ANDROID)
+  set(x_android_source ${CMAKE_SOURCE_DIR}/res/android/6.8)
+  set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR ${x_android_source})
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# Linux
+if(LINUX AND NOT APPLE)
+  target_link_libraries(xTools PRIVATE dl)
   include(cmake/linux/linux.cmake)
   x_build_deb(xTools "x-tools" "xTools" ${X_LATEST_GIT_TAG} ${CMAKE_SOURCE_DIR}/xTools.png)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Make dmg for macOS
+# Apple (macOS, iOS...)
 if(APPLE)
   set_target_properties(
     xTools
@@ -311,7 +320,14 @@ endif()
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/otiose)
 
 # --------------------------------------------------------------------------------------------------
-# ???
+# ......
+get_target_property(X_LIBS_LINKED_LIBS xTools LINK_LIBRARIES)
+message(STATUS "[xTools] xTools linked libs: ${X_LIBS_LINKED_LIBS}")
+get_target_property(XTOOLS_RUNTIME_OUTPUT_DIR xTools RUNTIME_OUTPUT_DIRECTORY)
+message(STATUS "[xTools] xTools runtime output directory: ${XTOOLS_RUNTIME_OUTPUT_DIR}")
+
+# --------------------------------------------------------------------------------------------------
+# ???(I don't know why)
 if(QT_VERSION_MAJOR EQUAL 6)
   qt_finalize_target(xTools)
 endif()

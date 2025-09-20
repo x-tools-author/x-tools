@@ -28,7 +28,7 @@ function(x_git_get_latest_tag working_dir prefix)
     set(GIT_LATEST_TAG ${target_version})
   endif()
 
-  message(STATUS "[git] Latest git tag(${prefix}_LATEST_GIT_TAG): ${GIT_LATEST_TAG}")
+  message(STATUS "[xTools-git] Latest git tag(${prefix}_LATEST_GIT_TAG): ${GIT_LATEST_TAG}")
   set(${prefix}_LATEST_GIT_TAG="${GIT_LATEST_TAG}" CACHE STRING "Latest git tag" FORCE)
   set(${prefix}_LATEST_GIT_TAG
       "${GIT_LATEST_TAG}"
@@ -44,7 +44,7 @@ function(x_git_get_latest_commit working_dir prefix)
     WORKING_DIRECTORY ${working_dir}
     OUTPUT_VARIABLE GIT_COMMIT
     OUTPUT_STRIP_TRAILING_WHITESPACE)
-  message(STATUS "[git] Latest git commit(${prefix}_GIT_COMMIT): ${GIT_COMMIT}")
+  message(STATUS "[xTools-git] Latest git commit(${prefix}_GIT_COMMIT): ${GIT_COMMIT}")
   add_compile_definitions(${prefix}_GIT_COMMIT="${GIT_COMMIT}")
 endfunction()
 
@@ -56,7 +56,8 @@ function(x_git_get_latest_commit_time working_dir prefix)
     WORKING_DIRECTORY ${working_dir}
     OUTPUT_VARIABLE GIT_COMMIT_TIME
     OUTPUT_STRIP_TRAILING_WHITESPACE)
-  message(STATUS "[git] Latest git commit time(${prefix}_GIT_COMMIT_TIME): ${GIT_COMMIT_TIME}")
+  message(
+    STATUS "[xTools-git] Latest git commit time(${prefix}_GIT_COMMIT_TIME): ${GIT_COMMIT_TIME}")
   add_compile_definitions(${prefix}_GIT_COMMIT_TIME="${GIT_COMMIT_TIME}")
 endfunction()
 
@@ -111,10 +112,10 @@ endfunction()
 # --------------------------------------------------------------------------------------------------
 # Just for test
 function(x_output_env flag)
-  message(STATUS "[${flag}]CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
-  message(STATUS "[${flag}]CMAKE_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
-  message(STATUS "[${flag}]CMAKE_CURRENT_LIST_DIR: ${CMAKE_CURRENT_LIST_DIR}")
-  message(STATUS "[${flag}]CMAKE_CURRENT_FUNCTION_LIST_DIR: ${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
+  message(STATUS "[${flag}] CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+  message(STATUS "[${flag}] CMAKE_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
+  message(STATUS "[${flag}] CMAKE_CURRENT_LIST_DIR: ${CMAKE_CURRENT_LIST_DIR}")
+  message(STATUS "[${flag}] CMAKE_CURRENT_FUNCTION_LIST_DIR: ${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
 endfunction()
 
 # --------------------------------------------------------------------------------------------------

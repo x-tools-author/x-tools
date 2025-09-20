@@ -1,22 +1,22 @@
 ﻿# https://github.com/lua/lua
 set(lua_version "5.4.8")
 get_filename_component(COMPILER_DIR ${CMAKE_CXX_COMPILER} DIRECTORY)
-message(STATUS "[lua] Compiler dir: ${COMPILER_DIR}")
+message(STATUS "[xTools-lua] Compiler dir: ${COMPILER_DIR}")
 
 # Download lua: https://github.com/lua/lua/archive/refs/tags/v5.4.8.zip
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/3rd/lua-${lua_version}.zip)
-  message(STATUS "[lua] Downloading lua")
+  message(STATUS "[xTools-lua] Downloading lua")
   set(lua_url "https://github.com/lua/lua/archive/refs/tags/v${lua_version}.zip")
   file(
     DOWNLOAD ${lua_url} ${CMAKE_CURRENT_SOURCE_DIR}/3rd/lua-${lua_version}.zip
     SHOW_PROGRESS
     STATUS lua_download_status)
   if(NOT lua_download_status EQUAL 0)
-    message(WARNING "[lua] Failed to download lua, lua functionality will be disabled")
+    message(WARNING "[xTools-lua] Failed to download lua, lua functionality will be disabled")
     file(GLOB LUA_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/common/luarunner*")
     foreach(file ${LUA_FILES})
       list(REMOVE_ITEM X_SOURCES ${file})
-      message(STATUS "[Lua]Remove file: ${file}")
+      message(STATUS "[xTools-lua]Remove file: ${file}")
     endforeach()
     return()
   endif()
@@ -31,7 +31,7 @@ endif()
 
 set(lua_root ${CMAKE_CURRENT_SOURCE_DIR}/3rd/lua-${lua_version})
 include_directories(${lua_root})
-message(STATUS "[lua] Include dir: ${lua_root}")
+message(STATUS "[xTools-lua] Include dir: ${lua_root}")
 
 if(MSVC)
   set(lua_lib_file ${X_LIBS_DIR}/lua-${lua_version}/liblua.lib)

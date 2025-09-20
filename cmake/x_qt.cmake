@@ -110,18 +110,18 @@ if(QT_VERSION VERSION_LESS 6.5.0)
 endif()
 
 if(IOS OR ANDROID)
-  message(STATUS "[xTools]Skipping optional Qt modules on mobile platform.")
+  message(STATUS "[xTools] Skipping optional Qt modules on mobile platform.")
   return()
 endif()
 
 if(APPLE)
-  message(STATUS "[xTools]Skipping optional Qt modules on macOS platform.")
+  message(STATUS "[xTools] Skipping optional Qt modules on macOS platform.")
   return()
 endif()
 
 option(X_ENABLE_OPTIONAL_QT_MODULES "Enable optional Qt modules (Qt 6.5+)" OFF)
 if(NOT X_ENABLE_OPTIONAL_QT_MODULES)
-  message(STATUS "[xTools]Skipping optional Qt modules.")
+  message(STATUS "[xTools] Skipping optional Qt modules.")
   return()
 endif()
 

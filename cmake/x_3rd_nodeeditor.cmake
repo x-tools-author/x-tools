@@ -4,11 +4,11 @@ set(packet_name nodeeditor-${packet_version})
 set(packet_url "https://codeload.github.com/paceholder/nodeeditor/zip/refs/tags/${packet_version}")
 
 macro(remove_all_files_of_flow)
-  message(STATUS "[xFlow]Removing all flow files...")
+  message(STATUS "[xTools-nodeeditor] Removing all node editor files...")
   file(GLOB_RECURSE files "${CMAKE_SOURCE_DIR}/src/nodeeditor/*.*")
   foreach(file ${files})
     list(REMOVE_ITEM X_SOURCES ${file})
-    message(STATUS "[xFlow]Removed file: ${file}")
+    # message(STATUS "[xTools-nodeeditor] Removed file: ${file}")
   endforeach()
 endmacro()
 
@@ -56,7 +56,7 @@ x_auto_import_package(${packet_name} QtNodes)
 set(X_ENABLE_XFLOW true)
 add_compile_definitions(X_ENABLE_XFLOW)
 list(APPEND X_LIBS QtNodes::QtNodes Qt6::Qml)
-message(STATUS "[xFlow]Enabled xFlow support.")
+message(STATUS "[xTools-nodeeditor] Enabled xFlow support.")
 include_directories(${CMAKE_SOURCE_DIR}/src/nodeeditor)
 
 # Qt-AES
