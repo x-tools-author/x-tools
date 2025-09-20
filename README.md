@@ -11,7 +11,7 @@
 *xTools* is a user-friendly, open-source, cross-platform, easily extendable(using Lua and JavaScript) debugging tool-set based on Qt (Qt6.8 is recommended). It offers extensive support for serial port, HID, BLE, UDP, TCP, web socket, Modbus and CAN Bus debugging functionalities.
 
 > [!WARNING]
-> Qt 6.9.2 is required to build xTools on macOS 26.0(and later).
+> Qt 6.9.2 is required to build xTools on macOS 26.0(and later). Qt 6.8(Other will be nice but is not test) is required to build for Android platform.
 
 >[!NOTE]
 > You can get *xTools* form [Micorsoft Store(sponsor)](https://apps.microsoft.com/detail/9p29h1ndnkbb) or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
