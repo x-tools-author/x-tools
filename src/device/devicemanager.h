@@ -52,4 +52,5 @@ public:
     QString deviceName(int type);
     void setupDeviceTypes(QComboBox *comboBox);
     DeviceUi *newDeviceUi(int type);
+    QString deviceIconPath(int type);
 };

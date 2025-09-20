@@ -10,6 +10,7 @@
 
 #include <QComboBox>
 
+#include "common/iconengine.h"
 #include "localserverui.h"
 #include "localsocketui.h"
 #include "tcpclientui.h"
@@ -132,6 +133,9 @@ void DeviceManager::setupDeviceTypes(QComboBox *comboBox)
     QList<int> deviceTypes = supportedDeviceTypes();
     for (int &type : deviceTypes) {
         comboBox->addItem(deviceName(type), type);
+
+        QString iconPath = deviceIconPath(type);
+        comboBox->setItemIcon(comboBox->count() - 1, xIcon(iconPath));
     }
 
     comboBox->setMaxVisibleItems(deviceTypes.size() + 3);
@@ -196,5 +200,35 @@ DeviceUi *DeviceManager::newDeviceUi(int type)
 #endif
     default:
         return nullptr;
+    }
+}
+
+QString DeviceManager::deviceIconPath(int type)
+{
+    switch (type) {
+#ifdef X_ENABLE_SERIALPORT
+    case static_cast<int>(DeviceManager::SerialPort):
+#endif
+#ifdef X_ENABLE_HID
+    case static_cast<int>(DeviceManager::Hid):
+#endif
+        return QString(":/res/icons/cable.svg");
+
+#ifdef X_ENABLE_BLUETOOTH
+    case static_cast<int>(DeviceManager::BleCentral):
+        return QString(":/res/icons/bluetooth_searching.svg");
+#endif
+
+    case static_cast<int>(DeviceManager::LocalSocket):
+    case static_cast<int>(DeviceManager::LocalServer):
+        return QString(":/res/icons/bring_your_own_ip.svg");
+
+#ifdef X_ENABLE_CHARTS
+    case static_cast<int>(DeviceManager::ChartsTest):
+        return QString(":/res/icons/finance_mode.svg");
+#endif
+
+    default:
+        return QString(":/res/icons/globe.svg");
     }
 }

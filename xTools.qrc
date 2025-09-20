@@ -22,5 +22,12 @@
         <file>res/scripts/lua/default.lua</file>
         <file>res/scripts/lua/check_sum.lua</file>
         <file>res/scripts/lua/default_string.lua</file>
+        <file>res/icons/globe_asia.svg</file>
+        <file>res/icons/globe.svg</file>
+        <file>res/icons/bluetooth.svg</file>
+        <file>res/icons/bluetooth_searching.svg</file>
+        <file>res/icons/bring_your_own_ip.svg</file>
+        <file>res/icons/cable.svg</file>
+        <file>res/icons/finance_mode.svg</file>
     </qresource>
 </RCC>
