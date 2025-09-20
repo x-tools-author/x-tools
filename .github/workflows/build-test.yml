@@ -3,14 +3,14 @@ on:
   workflow_dispatch: # Enables manually
 
 jobs:
-  build:
-    name: Build
+  build-macos:
+    name: Build with Qt5(macos)
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-22.04-arm]
-        version: [6.8.3]
-        arch: [linux_gcc_arm64]
+        os: [macos-14]
+        version: [5.15.2]
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -18,19 +18,20 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: '==3.1.*'
+          dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
           target: 'desktop'
-          arch: ${{ matrix.arch }}
-          dir: ${{ github.workspace }}
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-      - name: install-dependencies
+          arch: 'clang_64'
+          host: 'mac'
+          modules: 'qtcharts'
+      - name: build-clang
         run: |
-          sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev  libudev-dev libusb-dev libusb-1.0-0-dev
-      - name: build for linux
-        run: |
-          git fetch --tags
-          cmake --version
+          # brew uninstall --force node
+          # brew unlink unixodbc
+          # brew install libiodbc
+          mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
+          ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
           mkdir build
           cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../
-          cmake --build . --target xTools
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/clang_64' -DCMAKE_BUILD_TYPE=Release ../
+          cmake --build . --target all
