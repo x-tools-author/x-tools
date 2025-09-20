@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "outputpanelsmanager.h"
 
+#include "common/iconengine.h"
 #include "page/panels/common/luapanel.h"
 #include "page/panels/outputpanels/search/searchpanel.h"
 #include "page/panels/outputpanels/xymodem/xymodemreceiver.h"
@@ -20,18 +21,14 @@
 OutputPanelsManager::OutputPanelsManager(QWidget *parent)
     : PanelManager(parent)
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0)
-    addPanel<SearchPanel>(tr("Search"), ":/res/icons/search.svg");
-#else
-    addPanel<SearchPanel>(tr("Search"), QIcon::fromTheme(QIcon::ThemeIcon::SystemSearch));
-#endif
-    addPanel<LuaPanel>(tr("Lua Script"), ":/res/icons/lua.svg");
+    addPanel<SearchPanel>(tr("Search"), QIcon(new IconEngine(":/res/icons/search.svg")));
+    addPanel<LuaPanel>(tr("Lua Script"), QIcon(new IconEngine(":/res/icons/lua.svg")));
 #ifdef X_ENABLE_CHARTS
-    addPanel<LinePanel>(tr("Line Chart"), ":/res/icons/line_series.svg");
-    addPanel<BarPanel>(tr("Bar Chart"), ":/res/icons/bar.svg");
+    addPanel<LinePanel>(tr("Line Chart"), QIcon(new IconEngine(":/res/icons/line_series.svg")));
+    addPanel<BarPanel>(tr("Bar Chart"), QIcon(new IconEngine(":/res/icons/bar.svg")));
 #endif
 #if 0
-    addPanel<XYModemReceiver>(tr("XY-Modem Receiver"), ":/res/icons/xy.svg");
+    addPanel<XYModemReceiver>(tr("XY-Modem Receiver"), QIcon(new IconEngine(":/res/icons/xy.svg")));
 #endif
 }
 

@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "inputpanelsmanager.h"
 
+#include "common/iconengine.h"
 #include "page/panels/common/luapanel.h"
 #include "page/panels/inputpanels/framserialnumber/frameserialnumber.h"
 #include "page/panels/inputpanels/xymodem/xymodemsender.h"
@@ -15,7 +16,7 @@
 InputPanelsManager::InputPanelsManager(QWidget *parent)
     : PanelManager(parent)
 {
-    addPanel<LuaPanel>(tr("Lua Script"), ":/res/icons/lua.svg");
+    addPanel<LuaPanel>(tr("Lua Script"), xIcon(":/res/icons/lua.svg"));
 #if 0
     addPanel<FrameSerialNumber>(tr("Frame Serial Number"), ":/res/icons/counter_1.svg");
     addPanel<XYModemSender>(tr("XYModem Sender"), ":/res/icons/xy.svg");

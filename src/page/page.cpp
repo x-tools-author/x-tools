@@ -37,6 +37,7 @@
 #endif
 
 #include "common/crc.h"
+#include "common/iconengine.h"
 #include "common/xtools.h"
 #include "inputsettings.h"
 #include "outputsettings.h"
@@ -343,7 +344,7 @@ void Page::initUi()
     ui->pushButtonOutputSettings->setIcon(icon);
     ui->pushButtonInputSettings->setIcon(icon);
 #endif
-    ui->toolButtonInputPreset->setIcon(QIcon(":/res/icons/list.svg"));
+    ui->toolButtonInputPreset->setIcon(QIcon(new IconEngine(":/res/icons/list.svg")));
     ui->toolButtonInputPreset->setToolButtonStyle(Qt::ToolButtonIconOnly);
     ui->toolButtonInputPreset->setStyleSheet("QToolButton::menu-indicator{image: none;}");
 
