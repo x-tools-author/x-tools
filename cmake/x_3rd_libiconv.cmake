@@ -7,6 +7,10 @@ if(MINGW)
   return()
 endif()
 
+if(APPLE)
+  return()
+endif()
+
 if(MSVC)
   if(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.30")
     set(X_VS "VS2022")
