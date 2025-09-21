@@ -10,7 +10,7 @@
 
 #include <utility>
 
-QList<int> CRC::supportedAlgorithms(bool enableSumChecks)
+QList<int> CRC::supportedAlgorithms(bool enableSumChecks, bool enableLrc)
 {
     QList<int> Algorithms;
     Algorithms << static_cast<int>(Algorithm::CRC_8);
@@ -34,6 +34,10 @@ QList<int> CRC::supportedAlgorithms(bool enableSumChecks)
         Algorithms << static_cast<int>(Algorithm::SUM_16);
         Algorithms << static_cast<int>(Algorithm::SUM_32);
         Algorithms << static_cast<int>(Algorithm::SUM_64);
+    }
+
+    if (enableLrc) {
+        Algorithms << static_cast<int>(Algorithm::LRC);
     }
 
     return Algorithms;
@@ -80,19 +84,21 @@ QString CRC::algorithmName(Algorithm Algorithm)
         return "Sum 32-bit";
     case Algorithm::SUM_64:
         return "Sum 64-bit";
+    case Algorithm::LRC:
+        return "LRC";
     default:
         return QObject::tr("Unknown");
     }
 }
 
-void CRC::setupAlgorithm(QComboBox *comboBox, bool enableSumChecks)
+void CRC::setupAlgorithm(QComboBox *comboBox, bool enableSumChecks, bool enableLrc)
 {
     if (!comboBox) {
         return;
     }
 
     comboBox->clear();
-    QList<int> algorithms = supportedAlgorithms(enableSumChecks);
+    QList<int> algorithms = supportedAlgorithms(enableSumChecks, enableLrc);
     for (const int &algorithm : std::as_const(algorithms)) {
         comboBox->addItem(algorithmName(static_cast<Algorithm>(algorithm)), algorithm);
     }
@@ -101,6 +107,13 @@ void CRC::setupAlgorithm(QComboBox *comboBox, bool enableSumChecks)
     if (index != -1) {
         comboBox->insertSeparator(index);
     }
+
+    int lrcIndex = comboBox->findData(static_cast<int>(Algorithm::LRC));
+    if (lrcIndex != -1) {
+        comboBox->insertSeparator(lrcIndex);
+    }
+
+    comboBox->setMaxVisibleItems(30);
 }
 
 uint32_t CRC::poly(CRC::Algorithm algorithm)
@@ -441,6 +454,16 @@ QByteArray CRC::calculate(const QByteArray &data, int algorithm)
     auto cookedAlgorithm = static_cast<CRC::Algorithm>(algorithm);
     if (cookedAlgorithm >= CRC::Algorithm::SUM_8 && cookedAlgorithm <= CRC::Algorithm::SUM_64) {
         return sumCalculate(data, cookedAlgorithm);
+    }
+
+    if (cookedAlgorithm == CRC::Algorithm::LRC) {
+        uint8_t lrc = 0;
+        for (char byte : data) {
+            lrc += static_cast<uint8_t>(byte);
+        }
+        lrc = static_cast<uint8_t>((~lrc + 1) & 0xFF); // Two's complement
+        retBytes = QByteArray(reinterpret_cast<char *>(&lrc), sizeof(lrc));
+        return retBytes;
     }
 
     auto const bw = bitsWidth(cookedAlgorithm);

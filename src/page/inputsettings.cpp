@@ -21,7 +21,7 @@ InputSettings::InputSettings(QWidget *parent)
     setupAddition(ui->comboBoxPrefix);
     setupAddition(ui->comboBoxSuffix);
     setupEscapeCharacter(ui->comboBoxEscapeCharacter);
-    CRC::setupAlgorithm(ui->comboBoxCrcAlgorithm, true);
+    CRC::setupAlgorithm(ui->comboBoxCrcAlgorithm, true, true);
 }
 
 InputSettings::~InputSettings()

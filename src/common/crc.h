@@ -37,13 +37,16 @@ public:
         SUM_8 = 0x00100000,
         SUM_16,
         SUM_32,
-        SUM_64
+        SUM_64,
+        LRC = 0x00200000
     };
     Q_ENUM(Algorithm);
 
-    static QList<int> supportedAlgorithms(bool enableSumChecks = false);
+    static QList<int> supportedAlgorithms(bool enableSumChecks = false, bool enableLrc = false);
     static QString algorithmName(Algorithm algorithm);
-    static void setupAlgorithm(QComboBox *comboBox, bool enableSumChecks = false);
+    static void setupAlgorithm(QComboBox *comboBox,
+                               bool enableSumChecks = false,
+                               bool enableLrc = false);
     static uint32_t poly(Algorithm algorithm);
     static uint32_t xorValue(Algorithm algorithm);
     static uint32_t initialValue(Algorithm algorithm);
