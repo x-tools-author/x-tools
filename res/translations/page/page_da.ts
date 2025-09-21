@@ -63,42 +63,78 @@
         <translation>Vis datavisning</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="38"/>
+        <location filename="../../../src/page/inputsettings.ui" line="48"/>
         <source>Append prefix</source>
         <translation>Tilføj præfiks</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="57"/>
+        <location filename="../../../src/page/inputsettings.ui" line="89"/>
+        <source>Data Preprocessing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="102"/>
+        <source>Append checking data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="121"/>
+        <source>Start from Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="128"/>
+        <source>Start from right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="141"/>
+        <source>Arithmetic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="161"/>
+        <source>Start index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="174"/>
+        <source>End index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="186"/>
+        <source>Data Checking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="35"/>
         <source>Append suffix</source>
         <translation>Tilføj suffiks</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="70"/>
+        <location filename="../../../src/page/inputsettings.ui" line="64"/>
         <source>Escape character</source>
         <translation>Escape-tegn</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="111"/>
         <source>CRC end index</source>
-        <translation>CRC slutindeks</translation>
+        <translation type="vanished">CRC slutindeks</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="127"/>
         <source>CRC start index</source>
-        <translation>CRC startindeks</translation>
+        <translation type="vanished">CRC startindeks</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="140"/>
         <source>CRC arithmetic</source>
-        <translation>CRC aritmetik</translation>
+        <translation type="vanished">CRC aritmetik</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="149"/>
         <source>Append CRC</source>
-        <translation>Tilføj CRC</translation>
+        <translation type="vanished">Tilføj CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="156"/>
+        <location filename="../../../src/page/inputsettings.ui" line="109"/>
         <source>Big endian</source>
         <translation>Big endian</translation>
     </message>
@@ -147,7 +183,7 @@
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="63"/>
-        <location filename="../../../src/page/page.cpp" line="568"/>
+        <location filename="../../../src/page/page.cpp" line="577"/>
         <source>Open</source>
         <translation>Åbn</translation>
     </message>
@@ -263,42 +299,43 @@
         <translation>Overførsler</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="300"/>
+        <location filename="../../../src/page/page.cpp" line="309"/>
+        <location filename="../../../src/page/page.cpp" line="751"/>
         <source>Error: No device is opened.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="402"/>
+        <location filename="../../../src/page/page.cpp" line="411"/>
         <source>Disable</source>
         <translation>Deaktiver</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="559"/>
+        <location filename="../../../src/page/page.cpp" line="568"/>
         <source>Close</source>
         <translation>Luk</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="575"/>
+        <location filename="../../../src/page/page.cpp" line="584"/>
         <source>Error Occurred</source>
         <translation>Der opstod en fejl</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="581"/>
+        <location filename="../../../src/page/page.cpp" line="590"/>
         <source>Warning</source>
         <translation>Advarsel</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="666"/>
+        <location filename="../../../src/page/page.cpp" line="675"/>
         <source>Hide Scripts Panels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="667"/>
+        <location filename="../../../src/page/page.cpp" line="676"/>
         <source>Show Scripts Panels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="762"/>
+        <location filename="../../../src/page/page.cpp" line="779"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>

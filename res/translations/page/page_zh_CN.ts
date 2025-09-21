@@ -63,42 +63,78 @@
         <translation>显示数据预览</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="38"/>
+        <location filename="../../../src/page/inputsettings.ui" line="48"/>
         <source>Append prefix</source>
         <translation>追加前缀</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="57"/>
+        <location filename="../../../src/page/inputsettings.ui" line="89"/>
+        <source>Data Preprocessing</source>
+        <translation>数据预处理</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="102"/>
+        <source>Append checking data</source>
+        <translation>追加校验数据</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="121"/>
+        <source>Start from Left</source>
+        <translation>从左到右，第一个字节为0</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="128"/>
+        <source>Start from right</source>
+        <translation>从右到左，第一个字节为0</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="141"/>
+        <source>Arithmetic</source>
+        <translation>校验算法</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="161"/>
+        <source>Start index</source>
+        <translation>起始字节</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="174"/>
+        <source>End index</source>
+        <translation>结束字节</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="186"/>
+        <source>Data Checking</source>
+        <translation>数据校验</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/inputsettings.ui" line="35"/>
         <source>Append suffix</source>
         <translation>追加后缀</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="70"/>
+        <location filename="../../../src/page/inputsettings.ui" line="64"/>
         <source>Escape character</source>
         <translation>转义字符</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="111"/>
         <source>CRC end index</source>
-        <translation>CRC结束索引</translation>
+        <translation type="vanished">CRC结束索引</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="127"/>
         <source>CRC start index</source>
-        <translation>CRC起始索引</translation>
+        <translation type="vanished">CRC起始索引</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="140"/>
         <source>CRC arithmetic</source>
-        <translation>CRC算法</translation>
+        <translation type="vanished">CRC算法</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="149"/>
         <source>Append CRC</source>
-        <translation>追加CRC</translation>
+        <translation type="vanished">追加CRC</translation>
     </message>
     <message>
-        <location filename="../../../src/page/inputsettings.ui" line="156"/>
+        <location filename="../../../src/page/inputsettings.ui" line="109"/>
         <source>Big endian</source>
         <translation>大端序</translation>
     </message>
@@ -147,7 +183,7 @@
     </message>
     <message>
         <location filename="../../../src/page/page.ui" line="63"/>
-        <location filename="../../../src/page/page.cpp" line="568"/>
+        <location filename="../../../src/page/page.cpp" line="577"/>
         <source>Open</source>
         <translation>打开</translation>
     </message>
@@ -263,42 +299,43 @@
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="300"/>
+        <location filename="../../../src/page/page.cpp" line="309"/>
+        <location filename="../../../src/page/page.cpp" line="751"/>
         <source>Error: No device is opened.</source>
         <translation>错误：设备未打开。</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="402"/>
+        <location filename="../../../src/page/page.cpp" line="411"/>
         <source>Disable</source>
         <translation>禁用</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="559"/>
+        <location filename="../../../src/page/page.cpp" line="568"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="575"/>
+        <location filename="../../../src/page/page.cpp" line="584"/>
         <source>Error Occurred</source>
         <translation>发生错误</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="581"/>
+        <location filename="../../../src/page/page.cpp" line="590"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="666"/>
+        <location filename="../../../src/page/page.cpp" line="675"/>
         <source>Hide Scripts Panels</source>
         <translation>隐藏脚本面板</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="667"/>
+        <location filename="../../../src/page/page.cpp" line="676"/>
         <source>Show Scripts Panels</source>
         <translation>显示脚本面板</translation>
     </message>
     <message>
-        <location filename="../../../src/page/page.cpp" line="762"/>
+        <location filename="../../../src/page/page.cpp" line="779"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
