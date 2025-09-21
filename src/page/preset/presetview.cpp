@@ -46,6 +46,7 @@ PresetView::PresetView(QWidget *parent)
     m_groupEditor = new PresetViewGroupEditor();
     m_groupEditor->hide();
     m_groupEditor->setWindowTitle(title);
+    connect(m_groupEditor, &PresetViewGroupEditor::invokeSend, this, &PresetView::onInvokeSend);
 
     QPushButton *btn = new QPushButton(this);
     btn->setText(title);
@@ -124,4 +125,13 @@ void PresetView::onDataChanged()
         auto text = m_tableModel->data(index, Qt::DisplayRole).toString();
         m_menu->addAction(text, this, [=]() { onActionTriggered(i); });
     }
+}
+
+void PresetView::onInvokeSend(int row)
+{
+    if (row < 0 || row >= m_tableModel->rowCount(QModelIndex())) {
+        return;
+    }
+
+    onActionTriggered(row);
 }

@@ -8,17 +8,18 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QEventLoop>
 #include <QJsonObject>
+#include <QListWidgetItem>
 #include <QMenu>
+#include <QTimer>
 #include <QWidget>
 
 namespace Ui {
 class PresetViewGroupEditor;
 }
 
-struct PresetViewGroupEditorParameterKey
-{};
-
+struct PresetViewGroupEditorGroupItem;
 class PresetViewGroupEditor : public QWidget
 {
     Q_OBJECT
@@ -30,15 +31,26 @@ public:
     QJsonObject save();
     void load(const QJsonObject &obj);
 
+signals:
+    void invokeSend(int row);
+
 private:
     void onAddButtonClicked();
     void onRemoveButtonClicked();
     void onUpButtonClicked();
     void onDownButtonClicked();
+    void onItemDoubleClicked(QListWidgetItem *item);
 
+    void addGroupsAction();
+    void addItem(const PresetViewGroupEditorGroupItem *item);
     void sendGroups();
+    void sendGroupItem(const QListWidgetItem *item);
+    void delayMs(int ms);
 
 private:
     Ui::PresetViewGroupEditor *ui;
     QMenu *m_menu{nullptr};
+    QAction *m_groupsAction{nullptr};
+    QTimer *m_timer{nullptr};
+    QEventLoop *m_eventLoop{nullptr};
 };

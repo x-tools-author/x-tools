@@ -95,6 +95,7 @@ private:
     void closeDevice();
     void setupDevice(Device *device);
     void writeBytes();
+    void writeSpecifiedBytes(const QByteArray &bytes);
     void updateLabelInfo();
     void setupMenu(QPushButton *target, QWidget *actionWidget);
     void setUiEnabled(bool enabled);

@@ -129,6 +129,8 @@ void TableView::load(const QVariantMap &parameters)
         m_model->insertRows(i, 1);
         m_model->loadRow(i, item.toVariantMap());
     }
+
+    ui->tableView->resizeColumnsToContents();
 }
 
 void TableView::inputBytes(const QByteArray &bytes)

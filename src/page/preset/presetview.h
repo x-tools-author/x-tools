@@ -39,4 +39,5 @@ private:
 private:
     void onActionTriggered(int row);
     void onDataChanged();
+    void onInvokeSend(int row);
 };

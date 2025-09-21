@@ -103,6 +103,10 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     m_rxStatistician = new Statistician(ui->labelRxInfo, this);
     m_txStatistician = new Statistician(ui->labelTxInfo, this);
 
+    connect(ui->tabPreset, &PresetView::outputBytes, this, &Page::writeSpecifiedBytes);
+    connect(ui->tabEmitter, &EmitterView::outputBytes, this, &Page::writeSpecifiedBytes);
+    connect(ui->tabResponder, &ResponderView::outputBytes, this, &Page::writeSpecifiedBytes);
+
     ui->pushButtonExternalPanel->setCheckable(true);
     connect(ui->pushButtonExternalPanel,
             &QPushButton::clicked,
@@ -702,9 +706,6 @@ void Page::setupDevice(Device *device)
     connect(device, &Device::bytesRead, this, &Page::onBytesRead);
     connect(device, &Device::errorOccurred, this, &Page::onErrorOccurred);
     connect(device, &Device::warningOccurred, this, &::Page::onWarningOccurred);
-    connect(ui->tabPreset, &PresetView::outputBytes, device, &Device::writeBytes);
-    connect(ui->tabEmitter, &EmitterView::outputBytes, device, &Device::writeBytes);
-    connect(ui->tabResponder, &ResponderView::outputBytes, device, &Device::writeBytes);
 }
 
 void Page::writeBytes()
@@ -737,6 +738,17 @@ void Page::writeBytes()
         }
 #endif
         m_deviceController->device()->writeBytes(bytes);
+    }
+}
+
+void Page::writeSpecifiedBytes(const QByteArray &bytes)
+{
+    auto device = m_deviceController ? m_deviceController->device() : nullptr;
+    if (device && device->isRunning()) {
+        device->writeBytes(bytes);
+    } else {
+        QString msg = tr("Error: No device is opened.");
+        ui->textBrowserOutput->append(QString("<span style=\"color:#d24373;\">%1</span>").arg(msg));
     }
 }
 
