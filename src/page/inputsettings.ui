@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>222</width>
-    <height>266</height>
+    <width>273</width>
+    <height>293</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,29 +23,7 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="1" column="1">
-      <widget class="QComboBox" name="comboBoxPrefix"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Append prefix</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="comboBoxSuffix"/>
-     </item>
-     <item row="3" column="1">
-      <widget class="QComboBox" name="comboBoxEscapeCharacter"/>
-     </item>
-     <item row="2" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="label_2">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -58,7 +36,23 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Append prefix</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="comboBoxSuffix"/>
+     </item>
+     <item row="4" column="0">
       <widget class="QLabel" name="label_3">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -71,6 +65,12 @@
        </property>
       </widget>
      </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="comboBoxEscapeCharacter"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="comboBoxPrefix"/>
+     </item>
      <item row="0" column="0" colspan="2">
       <widget class="Line" name="line_2">
        <property name="orientation">
@@ -78,75 +78,28 @@
        </property>
       </widget>
      </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QLabel" name="label_7">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Data Preprocessing</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
     <layout class="QGridLayout" name="gridLayout_4">
-     <item row="0" column="1">
-      <widget class="QSpinBox" name="spinBoxCrcStartIndex"/>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="comboBoxCrcAlgorithm">
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>CRC end index</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QSpinBox" name="spinBoxCrcEndIndex"/>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_4">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>CRC start index</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>CRC arithmetic</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0" colspan="2">
+     <item row="4" column="0" colspan="2">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QCheckBox" name="checkBoxAppendCrc">
          <property name="text">
-          <string>Append CRC</string>
+          <string>Append checking data</string>
          </property>
         </widget>
        </item>
@@ -161,6 +114,78 @@
         </widget>
        </item>
       </layout>
+     </item>
+     <item row="1" column="1">
+      <widget class="QSpinBox" name="spinBoxCrcStartIndex">
+       <property name="toolTip">
+        <string>Start from Left</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QSpinBox" name="spinBoxCrcEndIndex">
+       <property name="toolTip">
+        <string>Start from right</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Arithmetic</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="comboBoxCrcAlgorithm">
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Start index</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>End index</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" colspan="2">
+      <widget class="QLabel" name="label_8">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Data Checking</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
