@@ -22,9 +22,9 @@ if(ANDROID OR IOS)
 endif()
 
 if(LINUX AND NOT APPLE)
-  message(STATUS "[xTools-hidapi] HIDAPI is not supported on Linux.")
-  remove_all_files_of_hidapi()
-  return()
+  # * message(STATUS "[xTools-hidapi] HIDAPI is not supported on Linux.")
+  # * remove_all_files_of_hidapi()
+  # * return()
 endif()
 
 # Download package
