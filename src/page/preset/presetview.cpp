@@ -28,7 +28,6 @@ PresetView::PresetView(QWidget *parent)
     : TableView(parent)
 {
     m_menu = new Menu();
-    groupMenu = new Menu(tr("Group Sending"));
 
     setIdDisableCheckBoxVisible(false);
 
@@ -72,6 +71,23 @@ QMenu *PresetView::menu()
     return m_menu;
 }
 
+QVariantMap PresetView::save() const
+{
+    QVariantMap map = TableView::save();
+    map["groups"] = m_groupEditor->save().toVariantMap();
+    return map;
+}
+
+void PresetView::load(const QVariantMap &parameters)
+{
+    TableView::load(parameters);
+    if (parameters.contains("groups")) {
+        QVariantMap map = parameters.value("groups").toMap();
+        QJsonObject obj = QJsonObject::fromVariantMap(map);
+        m_groupEditor->load(obj);
+    }
+}
+
 QList<int> PresetView::textItemColumns() const
 {
     return QList<int>{1};
@@ -99,7 +115,7 @@ void PresetView::onDataChanged()
         m_menu->hide();
     });
 
-    m_menu->addMenu(groupMenu);
+    m_menu->addMenu(m_groupEditor->groupMenu());
     m_menu->addSeparator();
     int rows = m_tableModel->rowCount(QModelIndex());
 

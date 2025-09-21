@@ -8,11 +8,16 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
+#include <QMenu>
 #include <QWidget>
 
 namespace Ui {
 class PresetViewGroupEditor;
 }
+
+struct PresetViewGroupEditorParameterKey
+{};
 
 class PresetViewGroupEditor : public QWidget
 {
@@ -21,6 +26,19 @@ public:
     explicit PresetViewGroupEditor(QWidget *parent = nullptr);
     ~PresetViewGroupEditor();
 
+    QMenu *groupMenu() const;
+    QJsonObject save();
+    void load(const QJsonObject &obj);
+
+private:
+    void onAddButtonClicked();
+    void onRemoveButtonClicked();
+    void onUpButtonClicked();
+    void onDownButtonClicked();
+
+    void sendGroups();
+
 private:
     Ui::PresetViewGroupEditor *ui;
+    QMenu *m_menu{nullptr};
 };

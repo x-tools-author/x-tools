@@ -14,9 +14,43 @@ PresetViewGroupEditor::PresetViewGroupEditor(QWidget *parent)
     , ui(new Ui::PresetViewGroupEditor)
 {
     ui->setupUi(this);
+    m_menu = new QMenu(tr("Group Sending"));
+    m_menu->addAction(tr("Send Groups"), this, &PresetViewGroupEditor::sendGroups);
+    m_menu->addSeparator();
+    // clang-format off
+    connect(ui->pushButtonAdd, &QPushButton::clicked, this, &PresetViewGroupEditor::onAddButtonClicked);
+    connect(ui->pushButtonDelete, &QPushButton::clicked, this, &PresetViewGroupEditor::onRemoveButtonClicked);
+    connect(ui->pushButtonUp, &QPushButton::clicked, this, &PresetViewGroupEditor::onUpButtonClicked);
+    connect(ui->pushButtonDown, &QPushButton::clicked, this, &PresetViewGroupEditor::onDownButtonClicked);
+    // clang-format on
 }
 
 PresetViewGroupEditor::~PresetViewGroupEditor()
 {
     delete ui;
 }
+
+QMenu *PresetViewGroupEditor::groupMenu() const
+{
+    return m_menu;
+}
+
+QJsonObject PresetViewGroupEditor::save()
+{
+    return QJsonObject();
+}
+
+void PresetViewGroupEditor::load(const QJsonObject &obj)
+{
+    Q_UNUSED(obj);
+}
+
+void PresetViewGroupEditor::onRemoveButtonClicked() {}
+
+void PresetViewGroupEditor::onAddButtonClicked() {}
+
+void PresetViewGroupEditor::onUpButtonClicked() {}
+
+void PresetViewGroupEditor::onDownButtonClicked() {}
+
+void PresetViewGroupEditor::sendGroups() {}

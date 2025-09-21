@@ -22,6 +22,9 @@ public:
     ~PresetView();
     QMenu *menu();
 
+    QVariantMap save() const override;
+    void load(const QVariantMap &parameters) override;
+
 signals:
     void invokeComeHere();
 
@@ -30,7 +33,6 @@ protected:
 
 private:
     QMenu *m_menu{nullptr};
-    QMenu *groupMenu{nullptr};
     PresetModel *m_tableModel;
     PresetViewGroupEditor *m_groupEditor{nullptr};
 
