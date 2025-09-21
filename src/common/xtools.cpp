@@ -123,6 +123,7 @@ void setupTextFormat(QComboBox *comboBox)
     }
 
     comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(TextFormat::Hex)));
+    comboBox->setMaxVisibleItems(20);
 }
 
 QByteArray convertEncoding(const QByteArray &input, const char *fromCharset, const char *toCharset)
