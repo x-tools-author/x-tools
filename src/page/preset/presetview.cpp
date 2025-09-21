@@ -94,7 +94,7 @@ void PresetView::onActionTriggered(int row)
 void PresetView::onDataChanged()
 {
     m_menu->clear();
-    m_menu->addAction(tr("Edit Datas..."), this, [this]() {
+    m_menu->addAction(tr("Edit Data"), this, [this]() {
         emit invokeComeHere();
         m_menu->hide();
     });

@@ -32,6 +32,7 @@ LuaPanel::LuaPanel(QWidget *parent)
     , m_menu(nullptr)
 {
     ui->setupUi(this);
+    ui->checkBoxBypass->setChecked(true);
 
     m_menu = new QMenu(this);
     m_menu->addAction(tr("Default Lua Script"), this, &LuaPanel::onDefaultLuaScriptTriggered);
@@ -108,8 +109,10 @@ void LuaPanel::load(const QVariantMap &parameters)
     ui->comboBoxResultFormat->setCurrentIndex(index);
     setupTextFormatValidator(ui->lineEditResultData, resultFormat);
 
+#if 0
     bool bypass = parameters.value(keys.bypass, true).toBool();
     ui->checkBoxBypass->setChecked(bypass);
+#endif
 
     QString testData = parameters.value(keys.testData, defaultTestData).toString();
     ui->lineEditTestData->setText(testData);
