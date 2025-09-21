@@ -66,6 +66,7 @@ jobs:
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
         cmake --build . --target all
+        cmake --build . --target xTools_zip
     - name: Upload Release Asset for Windnows
       shell: cmd
       run: |
@@ -93,6 +94,7 @@ jobs:
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
         cmake --build . --target all
+        cmake --build . --target xTools_zip
     - name: Upload Release Asset for Windnows
       shell: cmd
       run: |
