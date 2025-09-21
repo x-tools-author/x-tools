@@ -146,6 +146,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     onDeviceTypeChanged();
     onTerminalModeChanged();
     onInputFormatChanged();
+    onPushButtonExternalPanelClicked(false);
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     ui->widgetController->setMaximumWidth(256);
