@@ -52,6 +52,7 @@ PresetView::PresetView(QWidget *parent)
     btn->setText(title);
     addControlWidgets(btn);
     setVerticalHeaderVisible(true);
+    setMoveRowEnabled(true);
 
     connect(btn, &QPushButton::clicked, this, [this]() {
         m_groupEditor->show();

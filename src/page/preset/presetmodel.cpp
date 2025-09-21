@@ -163,3 +163,30 @@ Qt::ItemFlags PresetModel::flags(const QModelIndex &index) const
         return QAbstractTableModel::flags(index);
     }
 }
+
+bool PresetModel::moveRows(const QModelIndex &sourceParent,
+                           int sourceRow,
+                           int count,
+                           const QModelIndex &destinationParent,
+                           int destinationChild)
+{
+    if (sourceRow < 0 || sourceRow >= m_items.count() || destinationChild < 0
+        || destinationChild > m_items.count()
+        || (sourceRow <= destinationChild && destinationChild < sourceRow + 1)) {
+        qWarning() << "Invalid moveRows parameters: "
+                   << "sourceRow=" << sourceRow << ", count=" << 1
+                   << ", destinationChild=" << destinationChild;
+        return false;
+    }
+
+    Item sourceItem = m_items.at(sourceRow);
+    Item destinationItem = m_items.at(destinationChild);
+    m_items.replace(destinationChild, sourceItem);
+    m_items.replace(sourceRow, destinationItem);
+
+    QModelIndex topLeft = index(sourceRow, 0);
+    QModelIndex bottomRight = index(sourceRow, columnCount(QModelIndex()) - 1);
+    emit dataChanged(topLeft, bottomRight);
+
+    return true;
+}

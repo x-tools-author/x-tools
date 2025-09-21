@@ -30,6 +30,7 @@ public:
     void setIdDisableCheckBoxVisible(bool visible);
     void addControlWidgets(QWidget *w);
     void setVerticalHeaderVisible(bool visible);
+    void setMoveRowEnabled(bool enable);
 
     TableModel *tableModel();
     virtual void setTableModel(TableModel *model);
@@ -48,6 +49,8 @@ protected:
     void onPushButtonExportClicked();
     void onPushButtonAddClicked();
     void onCellDoubleClicked(const QModelIndex &index);
+    void onUpButtonClicked();
+    void onDownButtonClicked();
 
     virtual QList<int> textItemColumns() const;
 

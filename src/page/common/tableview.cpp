@@ -35,11 +35,14 @@ TableView::TableView(QWidget *parent)
     connect(ui->pushButtonImport, &QPushButton::clicked, this, &TableView::onPushButtonImportClicked);
     connect(ui->pushButtonExport, &QPushButton::clicked, this, &TableView::onPushButtonExportClicked);
     connect(ui->pushButtonAdd, &QPushButton::clicked, this, &TableView::onPushButtonAddClicked);
+    connect(ui->pushButtonUp, &QPushButton::clicked, this, &TableView::onUpButtonClicked);
+    connect(ui->pushButtonDown, &QPushButton::clicked, this, &TableView::onDownButtonClicked);
     // clang-format on
 
     m_editor = new TextItemEditor(this);
     m_editor->setMinimumWidth(700);
     m_editor->hide();
+    setMoveRowEnabled(false);
 }
 
 TableView::~TableView()
@@ -71,6 +74,12 @@ void TableView::setVerticalHeaderVisible(bool visible)
 {
     ui->tableView->verticalHeader()->setVisible(visible);
     ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+}
+
+void TableView::setMoveRowEnabled(bool enable)
+{
+    ui->pushButtonUp->setVisible(enable);
+    ui->pushButtonDown->setVisible(enable);
 }
 
 TableModel *TableView::tableModel()
@@ -235,6 +244,36 @@ void TableView::onCellDoubleClicked(const QModelIndex &index)
     if (ret == QDialog::Accepted) {
         auto parameters = m_editor->save();
         m_model->setData(index, parameters, Qt::EditRole);
+    }
+}
+
+void TableView::onUpButtonClicked()
+{
+    if (!m_model) {
+        return;
+    }
+
+    QModelIndex index = ui->tableView->currentIndex();
+    if (index.isValid() && index.row() > 0) {
+        qInfo() << "Moving row" << index.row() << "to" << index.row() - 1;
+        QModelIndex parent = index.parent();
+        m_model->moveRows(parent, index.row(), 1, parent, index.row() - 1);
+        ui->tableView->setCurrentIndex(m_model->index(index.row() - 1, index.column()));
+    }
+}
+
+void TableView::onDownButtonClicked()
+{
+    if (!m_model) {
+        return;
+    }
+
+    auto index = ui->tableView->currentIndex();
+    if (index.isValid() && index.row() < m_model->rowCount() - 1) {
+        qInfo() << "Moving row" << index.row() << "to" << index.row() + 1;
+        QModelIndex parent = index.parent();
+        m_model->moveRows(parent, index.row(), 1, parent, index.row() + 1);
+        ui->tableView->setCurrentIndex(m_model->index(index.row() + 1, index.column()));
     }
 }
 
