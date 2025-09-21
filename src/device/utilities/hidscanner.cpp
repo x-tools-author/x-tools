@@ -83,9 +83,15 @@ QList<HidDeviceInfo> HidScanner::refresh()
         info.interfaceNumber = dev->interface_number;
         info.busType = static_cast<int>(dev->bus_type);
 
-        infos.append(info);
         dev = dev->next;
+        if (!info.productString.isEmpty()) {
+            infos.append(info);
+        }
     }
+
+    std::sort(infos.begin(), infos.end(), [](const HidDeviceInfo &a, const HidDeviceInfo &b) {
+        return a.productString < b.productString;
+    });
 
     hid_free_enumeration(dev);
     bool isEqual = std::equal(m_lastInfos.begin(),
@@ -93,6 +99,7 @@ QList<HidDeviceInfo> HidScanner::refresh()
                               infos.begin(),
                               infos.end(),
                               [](const HidDeviceInfo &a, const HidDeviceInfo &b) {
+#if 0
                                   bool isEqual = (a.path == b.path);
                                   isEqual &= (a.vendorId == b.vendorId);
                                   isEqual &= (a.productId == b.productId);
@@ -105,6 +112,9 @@ QList<HidDeviceInfo> HidScanner::refresh()
                                   isEqual &= (a.interfaceNumber == b.interfaceNumber);
                                   isEqual &= (a.busType == b.busType);
                                   return isEqual;
+#else
+                                  return (a.path == b.path);
+#endif
                               });
     if (!isEqual) {
         m_lastInfos = infos;
