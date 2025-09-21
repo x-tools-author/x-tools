@@ -29,5 +29,6 @@
         <file>res/icons/bring_your_own_ip.svg</file>
         <file>res/icons/cable.svg</file>
         <file>res/icons/finance_mode.svg</file>
+        <file>res/icons/dock_to_left.svg</file>
     </qresource>
 </RCC>

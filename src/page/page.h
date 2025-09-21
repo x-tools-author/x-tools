@@ -80,7 +80,7 @@ private:
     void onBytesWritten(const QByteArray &bytes, const QString &to);
     void onWrapModeChanged();
     void onTerminalModeChanged();
-    void onPushButtonExternalPanelClicked(bool checked);
+    void onExternalPanelButtonClicked(bool checked);
 #if 0
     void onSearchButtonClicked();
     void onSearchTextChanged();

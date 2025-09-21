@@ -107,11 +107,12 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     connect(ui->tabEmitter, &EmitterView::outputBytes, this, &Page::writeSpecifiedBytes);
     connect(ui->tabResponder, &ResponderView::outputBytes, this, &Page::writeSpecifiedBytes);
 
-    ui->pushButtonExternalPanel->setCheckable(true);
-    connect(ui->pushButtonExternalPanel,
-            &QPushButton::clicked,
+    ui->toolButtonRightPanel->setCheckable(true);
+    ui->toolButtonRightPanel->setIcon(xIcon(":/res/icons/dock_to_left.svg"));
+    connect(ui->toolButtonRightPanel,
+            &QToolButton::clicked,
             this,
-            &Page::onPushButtonExternalPanelClicked);
+            &Page::onExternalPanelButtonClicked);
     connect(ui->widgetScripts, &ScriptsManager::invokeWrite, this, &Page::inputBytes);
     connect(ui->tabPreset, &PresetView::invokeComeHere, this, [this]() {
         ui->tabWidget->setCurrentWidget(ui->tabPreset);
@@ -146,7 +147,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     onDeviceTypeChanged();
     onTerminalModeChanged();
     onInputFormatChanged();
-    onPushButtonExternalPanelClicked(false);
+    onExternalPanelButtonClicked(false);
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     ui->widgetController->setMaximumWidth(256);
@@ -170,7 +171,7 @@ QVariantMap Page::save()
     if (m_deviceController) {
         map.insert(keys.communication, m_deviceController->save());
     }
-    map.insert(keys.communicationShowScriptPanel, ui->pushButtonExternalPanel->isChecked());
+    map.insert(keys.communicationShowScriptPanel, ui->toolButtonRightPanel->isChecked());
     map.insert(keys.communicationScriptPanel, ui->widgetScripts->save().toVariantMap());
 
     // Output settings
@@ -227,8 +228,8 @@ void Page::load(const QVariantMap &parameters)
         m_deviceController->load(parameters.value(keys.communication).toMap());
     }
     bool showScriptPanel = parameters.value(keys.communicationShowScriptPanel, false).toBool();
-    ui->pushButtonExternalPanel->setChecked(showScriptPanel);
-    onPushButtonExternalPanelClicked(showScriptPanel);
+    ui->toolButtonRightPanel->setChecked(showScriptPanel);
+    onExternalPanelButtonClicked(showScriptPanel);
 
     // Output settings
     int outputFormat = parameters.value(keys.outputFormat).toInt();
@@ -669,10 +670,10 @@ void Page::onTerminalModeChanged()
     }
 }
 
-void Page::onPushButtonExternalPanelClicked(bool checked)
+void Page::onExternalPanelButtonClicked(bool checked)
 {
     ui->widgetScripts->setVisible(checked);
-    ui->pushButtonExternalPanel->setText(checked ? tr("Hide Scripts Panels")
+    ui->toolButtonRightPanel->setToolTip(checked ? tr("Hide Scripts Panels")
                                                  : tr("Show Scripts Panels"));
 }
 
