@@ -28,7 +28,7 @@ private:
     QSerialPort *m_serialPort{nullptr};
 
 private:
-    void readBytesFromDevice();
+    void readBytesFromDevice(bool optimizedFrame);
     void readBytesFromDeviceNormal();
     void readBytesFromDeviceOptimized();
     int calculateInterFrameDelay();

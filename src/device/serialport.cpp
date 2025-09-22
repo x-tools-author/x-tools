@@ -40,8 +40,9 @@ QObject *SerialPort::initDevice()
             << "optimizedFrame:" << item.optimizedFrame;
 
     if (m_serialPort->open(QIODevice::ReadWrite)) {
-        connect(m_serialPort, &QSerialPort::readyRead, m_serialPort, [this]() {
-            this->readBytesFromDevice();
+        bool optimizedFrame = item.optimizedFrame;
+        connect(m_serialPort, &QSerialPort::readyRead, m_serialPort, [this, optimizedFrame]() {
+            this->readBytesFromDevice(optimizedFrame);
         });
         connect(m_serialPort, &QSerialPort::errorOccurred, m_serialPort, [this]() {
             emit errorOccurred(m_serialPort->errorString());
@@ -74,15 +75,13 @@ void SerialPort::writeActually(const QByteArray &bytes)
     }
 }
 
-void SerialPort::readBytesFromDevice()
+void SerialPort::readBytesFromDevice(bool optimizedFrame)
 {
     if (!m_serialPort) {
         return;
     }
 
-    QVariantMap tmp = save();
-    SerialPortItem item = loadSerialPortItem(QJsonObject::fromVariantMap(tmp));
-    if (item.optimizedFrame) {
+    if (optimizedFrame) {
         readBytesFromDeviceOptimized();
     } else {
         readBytesFromDeviceNormal();
