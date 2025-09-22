@@ -6,6 +6,11 @@ macro(x_remove_all_files_of_canbus)
   endforeach()
 endmacro()
 
+if(NOT X_ENABLE_X_APPS)
+  x_remove_all_files_of_canbus()
+  return()
+endif()
+
 if(QT_VERSION VERSION_LESS "6.8.0")
   x_remove_all_files_of_canbus()
   return()
