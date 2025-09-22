@@ -18,6 +18,10 @@
 #include "modbus/xmodbus.h"
 #endif
 
+#if defined(X_ENABLE_X_MQTT)
+#include "mqtt/xmqtt.h"
+#endif
+
 LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
     : QObject(parent)
     , m_layout(layout)
@@ -80,5 +84,9 @@ void LayoutManager::setupPages()
 #if defined(X_ENABLE_X_MODBUS)
     m_modbus = new xModbus::xModbus(m_layout->parentWidget());
     addLayoutPage(tr("Modbus"), m_modbus);
+#endif
+#if defined(X_ENABLE_X_MQTT)
+    m_mqtt = new xMqtt::xMqtt(m_layout->parentWidget());
+    addLayoutPage(tr("MQTT"), m_mqtt);
 #endif
 }

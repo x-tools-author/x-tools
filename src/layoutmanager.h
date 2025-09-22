@@ -23,6 +23,9 @@ class NodeEditor;
 namespace xModbus {
 class xModbus;
 }
+namespace xMqtt {
+class xMqtt;
+}
 class LayoutManager : public QObject
 {
     Q_OBJECT
@@ -43,4 +46,5 @@ private:
     QMenuBar* m_mainMenuBar{nullptr};
     xFlow::NodeEditor* m_nodeEditor{nullptr};
     xModbus::xModbus* m_modbus{nullptr};
+    xMqtt::xMqtt* m_mqtt{nullptr};
 };
