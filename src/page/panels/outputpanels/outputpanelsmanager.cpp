@@ -10,6 +10,7 @@
 
 #include "common/iconengine.h"
 #include "page/panels/common/luapanel.h"
+#include "page/panels/outputpanels/datarecords/datarecordsview.h"
 #include "page/panels/outputpanels/search/searchpanel.h"
 #include "page/panels/outputpanels/xymodem/xymodemreceiver.h"
 
@@ -21,6 +22,7 @@
 OutputPanelsManager::OutputPanelsManager(QWidget *parent)
     : PanelManager(parent)
 {
+    addPanel<DataRecordsView>(tr("Data Records"), QIcon(new IconEngine(":/res/icons/list.svg")));
     addPanel<SearchPanel>(tr("Search"), QIcon(new IconEngine(":/res/icons/search.svg")));
     addPanel<LuaPanel>(tr("Lua Script"), QIcon(new IconEngine(":/res/icons/lua.svg")));
 #ifdef X_ENABLE_CHARTS
