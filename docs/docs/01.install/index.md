@@ -40,3 +40,8 @@ nav_order: 1
 > 安卓包未经测试，只是按原样提供
 
 [发布页面]: https://github.com/x-tools-author/x-tools/releases
+
+```shell
+sudo apt install libusb-1.0-0-dev
+sudo apt install libudev-dev
+```
