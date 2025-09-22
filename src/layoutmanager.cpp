@@ -10,7 +10,7 @@
 
 #include <QAction>
 
-#if defined(X_ENABLE_XFLOW)
+#if defined(X_ENABLE_xFlow)
 #include "nodeeditor/nodeeditor.h"
 #endif
 
@@ -38,9 +38,8 @@ LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject*
     m_controllerLayout->addWidget(m_rightLabel);
 
     m_group = new QButtonGroup(this);
-#if defined(X_ENABLE_PAGES)
     menuBar->setCornerWidget(m_controller, Qt::TopRightCorner);
-#else
+#if !defined(X_ENABLE_xApps)
     m_controller->hide();
 #endif
 }
@@ -70,7 +69,7 @@ QToolButton* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
 
 void LayoutManager::setupPages()
 {
-#if defined(X_ENABLE_XFLOW)
+#if defined(X_ENABLE_xFlow)
     m_nodeEditor = new xFlow::NodeEditor(m_layout->parentWidget());
     addLayoutPage(tr("Node Editor"), m_nodeEditor);
 #endif

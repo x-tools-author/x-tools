@@ -208,9 +208,9 @@ if(WIN32)
   list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
 endif()
 
-option(X_ENABLE_PAGES "Enable xFlow support" OFF)
-if(X_ENABLE_PAGES)
-  add_compile_definitions(X_ENABLE_PAGES)
+option(X_ENABLE_xApps "Enable xFlow support" OFF)
+if(X_ENABLE_xApps)
+  add_compile_definitions(X_ENABLE_xApps)
 endif()
 
 # xTools
