@@ -668,6 +668,7 @@ SerialPortItem defaultSerialPortItem()
     context.ignoredBusyDevices = false;
     context.ignoredBusyDevices = false;
     context.optimizedFrame = false;
+    context.interFrameDelayMilliseconds = 20;
 
     return context;
 }
@@ -684,6 +685,7 @@ QJsonObject saveSerialPortItem(const SerialPortItem &context)
     obj.insert(keys.flowControl, context.flowControl);
     obj.insert(keys.ignoredBusyDevices, context.ignoredBusyDevices);
     obj.insert(keys.optimizedFrame, context.optimizedFrame);
+    obj.insert(keys.interFrameDelayMilliseconds, context.interFrameDelayMilliseconds);
     return obj;
 }
 
@@ -699,6 +701,7 @@ SerialPortItem loadSerialPortItem(const QJsonObject &obj)
     ctx.flowControl = obj.value(keys.flowControl).toInt();
     ctx.ignoredBusyDevices = obj.value(keys.ignoredBusyDevices).toBool();
     ctx.optimizedFrame = obj.value(keys.optimizedFrame).toBool();
+    ctx.interFrameDelayMilliseconds = obj.value(keys.interFrameDelayMilliseconds).toInt(20);
     return ctx;
 }
 

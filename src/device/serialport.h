@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QPair>
 #include <QSerialPort>
 #include <QTimer>
 
@@ -26,10 +27,11 @@ public:
 
 private:
     QSerialPort *m_serialPort{nullptr};
+    QList<QPair<qint64, QByteArray>> m_cache; // <time, data>
+    QTimer *m_checkTimer{nullptr};
+    int m_interFrameDelayMilliseconds{20}; // Default inter-frame delay in milliseconds
 
 private:
     void readBytesFromDevice(bool optimizedFrame);
-    void readBytesFromDeviceNormal();
-    void readBytesFromDeviceOptimized();
-    int calculateInterFrameDelay();
+    void processCache();
 };

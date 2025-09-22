@@ -9,7 +9,6 @@
 #include "serialport.h"
 
 #include <QDebug>
-#include <QElapsedTimer>
 #include <QTimer>
 #include <QtMath>
 
@@ -32,32 +31,45 @@ QObject *SerialPort::initDevice()
     m_serialPort->setParity(static_cast<QSerialPort::Parity>(item.parity));
     m_serialPort->setStopBits(static_cast<QSerialPort::StopBits>(item.stopBits));
     m_serialPort->setFlowControl(static_cast<QSerialPort::FlowControl>(item.flowControl));
+    m_interFrameDelayMilliseconds = item.interFrameDelayMilliseconds;
 
     qInfo() << "portName:" << m_serialPort->portName() << "baudRate:" << m_serialPort->baudRate()
             << "dataBits:" << m_serialPort->dataBits() << "parity:" << m_serialPort->parity()
             << "stopBits:" << m_serialPort->stopBits()
             << "flowControl:" << m_serialPort->flowControl()
-            << "optimizedFrame:" << item.optimizedFrame;
+            << "optimizedFrame:" << item.optimizedFrame
+            << "interFrameDelayMilliseconds:" << m_interFrameDelayMilliseconds;
 
-    if (m_serialPort->open(QIODevice::ReadWrite)) {
-        bool optimizedFrame = item.optimizedFrame;
-        connect(m_serialPort, &QSerialPort::readyRead, m_serialPort, [this, optimizedFrame]() {
-            this->readBytesFromDevice(optimizedFrame);
-        });
-        connect(m_serialPort, &QSerialPort::errorOccurred, m_serialPort, [this]() {
-            emit errorOccurred(m_serialPort->errorString());
-        });
-    } else {
+    if (!m_serialPort->open(QIODevice::ReadWrite)) {
         emit errorOccurred(tr("Failed to open serial port: %1").arg(m_serialPort->errorString()));
         m_serialPort->deleteLater();
-        m_serialPort = nullptr;
+        return nullptr;
     }
+
+    bool optimizedFrame = item.optimizedFrame;
+    connect(m_serialPort, &QSerialPort::readyRead, m_serialPort, [this, optimizedFrame]() {
+        this->readBytesFromDevice(optimizedFrame);
+    });
+    connect(m_serialPort, &QSerialPort::errorOccurred, m_serialPort, [this]() {
+        emit errorOccurred(m_serialPort->errorString());
+    });
+
+    m_checkTimer = new QTimer();
+    m_checkTimer->setInterval(50);
+    connect(m_checkTimer, &QTimer::timeout, m_checkTimer, [this]() { processCache(); });
+    m_checkTimer->start();
 
     return m_serialPort;
 }
 
 void SerialPort::deinitDevice()
 {
+    if (m_checkTimer) {
+        m_checkTimer->stop();
+        m_checkTimer->deleteLater();
+        m_checkTimer = nullptr;
+    }
+
     if (m_serialPort) {
         m_serialPort->close();
         m_serialPort->deleteLater();
@@ -81,61 +93,50 @@ void SerialPort::readBytesFromDevice(bool optimizedFrame)
         return;
     }
 
-    if (optimizedFrame) {
-        readBytesFromDeviceOptimized();
-    } else {
-        readBytesFromDeviceNormal();
-    }
-}
-
-void SerialPort::readBytesFromDeviceNormal()
-{
     QByteArray bytes = m_serialPort->readAll();
-    if (!bytes.isEmpty()) {
+    if (bytes.isEmpty()) {
+        return;
+    }
+
+    if (optimizedFrame) {
+        m_cache.append(qMakePair(QDateTime::currentMSecsSinceEpoch(), bytes));
+    } else {
         emit bytesRead(bytes, m_serialPort->portName());
     }
 }
 
-void SerialPort::readBytesFromDeviceOptimized()
+void SerialPort::processCache()
 {
-    QElapsedTimer elapsedTimer;
-    elapsedTimer.start();
-    QByteArray tmp;
-    int delay = calculateInterFrameDelay();
-    while (1) {
-        QByteArray const data = m_serialPort->readAll();
-        if (data.size() == 0) {
-            if (elapsedTimer.elapsed() > delay) {
-                if (!tmp.isEmpty()) {
-                    emit bytesRead(tmp, m_serialPort->portName());
-                }
+    if (m_cache.isEmpty()) {
+        return;
+    }
 
-                return;
+    QPair<qint64, QByteArray> lastItem = m_cache.last();
+    qint64 endTime = lastItem.first;
+    qint64 currentTime = QDateTime::currentMSecsSinceEpoch();
+    if (currentTime < (lastItem.first + m_interFrameDelayMilliseconds)) {
+        // Waiting for more time...
+        return;
+    }
+
+    while (!m_cache.isEmpty()) {
+        QPair<qint64, QByteArray> firstItem = m_cache.first();
+        qint64 toTime = firstItem.first + m_interFrameDelayMilliseconds;
+        QByteArray frame;
+        int n = 0;
+        for (int i = 0; i < m_cache.size(); ++i) {
+            QPair<qint64, QByteArray> item = m_cache.at(i);
+            if (item.first <= toTime) {
+                frame.append(item.second);
+                n++;
             } else {
-                continue;
+                break;
             }
         }
 
-        tmp.append(data);
-        if (tmp.size() > 1024) {
-            emit bytesRead(tmp, m_serialPort->portName());
-            tmp.clear();
+        m_cache.remove(0, n);
+        if (!frame.isEmpty()) {
+            emit bytesRead(frame, m_serialPort->portName());
         }
     }
-}
-
-int SerialPort::calculateInterFrameDelay()
-{
-    // The spec recommends a timeout value of 1.750 msec. Without such
-    // precise single-shot timers use a approximated value of 1.750 msec.
-    int delayMilliSeconds = 2;
-    qint32 baudRate = m_serialPort->baudRate();
-    if (baudRate < 19200) {
-        // Example: 9600 baud, 11 bit per packet -> 872 char/sec so:
-        // 1000 ms / 872 char = 1.147 ms/char * 3.5 character = 4.0145 ms
-        // Always round up because the spec requests at least 3.5 char.
-        delayMilliSeconds = qCeil(3500. / (qreal(baudRate) / 11.));
-    }
-
-    return qMax(2, delayMilliSeconds);
 }

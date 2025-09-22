@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>168</width>
-    <height>226</height>
+    <height>257</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,6 +26,9 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
+   <item row="5" column="1">
+    <widget class="QComboBox" name="comboBoxFlowControl"/>
+   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_2">
      <property name="sizePolicy">
@@ -36,6 +39,52 @@
      </property>
      <property name="text">
       <string>Baud rate</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QComboBox" name="comboBoxParity"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Parity</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QCheckBox" name="checkBoxIgnoredBusyDevices">
+     <property name="text">
+      <string>Ignored busy device</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="comboBoxStopBits"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="comboBoxBaudRate">
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Data bits</string>
      </property>
     </widget>
    </item>
@@ -72,64 +121,8 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="comboBoxBaudRate">
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="2">
-    <widget class="QCheckBox" name="checkBoxIgnoredBusyDevices">
-     <property name="text">
-      <string>Ignored busy device</string>
-     </property>
-    </widget>
-   </item>
    <item row="2" column="1">
     <widget class="QComboBox" name="comboBoxDataBits"/>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Port name</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QComboBox" name="comboBoxFlowControl"/>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_5">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Parity</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Data bits</string>
-     </property>
-    </widget>
    </item>
    <item row="6" column="0" colspan="2">
     <widget class="QPushButton" name="pushButton">
@@ -150,18 +143,58 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QComboBox" name="comboBoxParity"/>
-   </item>
-   <item row="3" column="1">
-    <widget class="QComboBox" name="comboBoxStopBits"/>
-   </item>
-   <item row="8" column="0" colspan="2">
-    <widget class="QCheckBox" name="checkBoxOptimizedFrame">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
-      <string>Optimized frame</string>
+      <string>Port name</string>
      </property>
     </widget>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="1" column="0">
+      <widget class="QSpinBox" name="spinBoxFrameInterval">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimum">
+        <number>10</number>
+       </property>
+       <property name="maximum">
+        <number>1000</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+       <property name="value">
+        <number>20</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string notr="true">ms</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" colspan="2">
+      <widget class="QCheckBox" name="checkBoxOptimizedFrame">
+       <property name="text">
+        <string>Enable frame interval</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

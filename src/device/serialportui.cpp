@@ -69,6 +69,7 @@ QVariantMap SerialPortUi::save() const
     map[keys.flowControl] = ui->comboBoxFlowControl->currentData().toInt();
     map[keys.ignoredBusyDevices] = ui->checkBoxIgnoredBusyDevices->isChecked();
     map[keys.optimizedFrame] = ui->checkBoxOptimizedFrame->isChecked();
+    map[keys.interFrameDelayMilliseconds] = ui->spinBoxFrameInterval->value();
     return map;
 }
 
@@ -87,6 +88,7 @@ void SerialPortUi::load(const QVariantMap &map)
     int fc = map.value(keys.flowControl, static_cast<int>(QSerialPort::NoFlowControl)).toInt();
     bool ignoredBusyDevices = map.value(keys.ignoredBusyDevices, false).toBool();
     bool optimizedFrame = map.value(keys.optimizedFrame, false).toBool();
+    int interFrameDelayMilliseconds = map.value(keys.interFrameDelayMilliseconds, 20).toInt();
 
     m_scanner->setIsBusyDevicesIgnored(ignoredBusyDevices);
 
@@ -98,6 +100,7 @@ void SerialPortUi::load(const QVariantMap &map)
     ui->comboBoxFlowControl->setCurrentIndex(ui->comboBoxFlowControl->findData(fc));
     ui->checkBoxIgnoredBusyDevices->setChecked(ignoredBusyDevices);
     ui->checkBoxOptimizedFrame->setChecked(optimizedFrame);
+    ui->spinBoxFrameInterval->setValue(interFrameDelayMilliseconds);
 }
 
 Device *SerialPortUi::newDevice()

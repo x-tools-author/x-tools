@@ -179,6 +179,7 @@ struct SerialPortItem
     int flowControl;
     bool ignoredBusyDevices;
     bool optimizedFrame;
+    int interFrameDelayMilliseconds;
 };
 struct SerialPortItemKeys
 {
@@ -190,6 +191,7 @@ struct SerialPortItemKeys
     const QString flowControl{"flowControl"};
     const QString ignoredBusyDevices{"ignoredBusyDevices"};
     const QString optimizedFrame{"optimizedFrame"};
+    const QString interFrameDelayMilliseconds{"interFrameDelayMilliseconds"};
 };
 SerialPortItem defaultSerialPortItem();
 QJsonObject saveSerialPortItem(const SerialPortItem &context);
