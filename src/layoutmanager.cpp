@@ -51,9 +51,6 @@ LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject*
 
     m_group = new QButtonGroup(this);
     menuBar->setCornerWidget(m_controller, Qt::TopRightCorner);
-#if !defined(X_ENABLE_X_APPS)
-    m_controller->hide();
-#endif
 }
 
 LayoutManager::~LayoutManager() {}
