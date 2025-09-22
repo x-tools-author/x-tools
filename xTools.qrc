@@ -30,5 +30,14 @@
         <file>res/icons/cable.svg</file>
         <file>res/icons/finance_mode.svg</file>
         <file>res/icons/dock_to_left.svg</file>
+        <file>res/icons/left_panel_open.svg</file>
+        <file>res/icons/right_panel_open.svg</file>
+        <file>res/icons/arrow_downward.svg</file>
+        <file>res/icons/arrow_upward.svg</file>
+        <file>res/icons/account_tree.svg</file>
+        <file>res/icons/remove.svg</file>
+        <file>res/icons/add.svg</file>
+        <file>res/icons/stop.svg</file>
+        <file>res/icons/play_arrow.svg</file>
     </qresource>
 </RCC>

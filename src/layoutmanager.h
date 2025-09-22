@@ -20,7 +20,9 @@
 namespace xFlow {
 class NodeEditor;
 }
-
+namespace xModbus {
+class xModbus;
+}
 class LayoutManager : public QObject
 {
     Q_OBJECT
@@ -40,4 +42,5 @@ private:
     QLabel* m_rightLabel{nullptr};
     QMenuBar* m_mainMenuBar{nullptr};
     xFlow::NodeEditor* m_nodeEditor{nullptr};
+    xModbus::xModbus* m_modbus{nullptr};
 };
