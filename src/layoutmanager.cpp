@@ -22,6 +22,10 @@
 #include "mqtt/xmqtt.h"
 #endif
 
+#if defined(X_ENABLE_X_CANBUS)
+#include "canbus/xcanbus.h"
+#endif
+
 LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
     : QObject(parent)
     , m_layout(layout)
@@ -47,7 +51,7 @@ LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject*
 
     m_group = new QButtonGroup(this);
     menuBar->setCornerWidget(m_controller, Qt::TopRightCorner);
-#if !defined(X_ENABLE_xApps)
+#if !defined(X_ENABLE_X_APPS)
     m_controller->hide();
 #endif
 }
@@ -88,5 +92,9 @@ void LayoutManager::setupPages()
 #if defined(X_ENABLE_X_MQTT)
     m_mqtt = new xMqtt::xMqtt(m_layout->parentWidget());
     addLayoutPage(tr("MQTT"), m_mqtt);
+#endif
+#if defined(X_ENABLE_X_CANBUS)
+    m_canbus = new xCanBus::xCanBus(m_layout->parentWidget());
+    addLayoutPage(tr("CAN Bus"), m_canbus);
 #endif
 }

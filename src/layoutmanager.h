@@ -17,15 +17,12 @@
 #include <QToolButton>
 #include <QWidget>
 
-namespace xFlow {
-class NodeEditor;
-}
-namespace xModbus {
-class xModbus;
-}
-namespace xMqtt {
-class xMqtt;
-}
+// clang-format off
+namespace xFlow { class NodeEditor; }
+namespace xModbus { class xModbus; }
+namespace xMqtt { class xMqtt; }
+namespace xCanBus { class xCanBus; }
+// clang-format on
 class LayoutManager : public QObject
 {
     Q_OBJECT
@@ -47,4 +44,5 @@ private:
     xFlow::NodeEditor* m_nodeEditor{nullptr};
     xModbus::xModbus* m_modbus{nullptr};
     xMqtt::xMqtt* m_mqtt{nullptr};
+    xCanBus::xCanBus* m_canbus{nullptr};
 };
