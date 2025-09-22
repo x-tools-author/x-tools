@@ -97,4 +97,8 @@ void LayoutManager::setupPages()
     m_canbus = new xCanBus::xCanBus(m_layout->parentWidget());
     addLayoutPage(tr("CAN Bus"), m_canbus);
 #endif
+
+    if (m_layout->count() == 1) {
+        m_controller->hide();
+    }
 }
