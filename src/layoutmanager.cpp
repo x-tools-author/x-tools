@@ -10,19 +10,19 @@
 
 #include <QAction>
 
-#if defined(X_ENABLE_X_NODE_EDITOR)
+#if X_ENABLE_X_NODE_EDITOR
 #include "nodeeditor/nodeeditor.h"
 #endif
 
-#if defined(X_ENABLE_X_MODBUS)
+#if X_ENABLE_X_MODBUS
 #include "modbus/xmodbus.h"
 #endif
 
-#if defined(X_ENABLE_X_MQTT)
+#if X_ENABLE_X_MQTT
 #include "mqtt/xmqtt.h"
 #endif
 
-#if defined(X_ENABLE_X_CANBUS)
+#if X_ENABLE_X_CANBUS
 #include "canbus/xcanbus.h"
 #endif
 
@@ -78,21 +78,21 @@ QToolButton* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
 
 void LayoutManager::setupPages()
 {
-#if defined(X_ENABLE_X_NODE_EDITOR)
+#if X_ENABLE_X_NODE_EDITOR
     m_nodeEditor = new xFlow::NodeEditor(m_layout->parentWidget());
     addLayoutPage(tr("Node Editor"), m_nodeEditor);
 #endif
-#if defined(X_ENABLE_X_MODBUS)
+#if X_ENABLE_X_MODBUS
     m_modbus = new xModbus::xModbus(m_layout->parentWidget());
-    addLayoutPage(tr("Modbus"), m_modbus);
+    addLayoutPage(QString("Modbus"), m_modbus);
 #endif
-#if defined(X_ENABLE_X_MQTT)
+#if X_ENABLE_X_MQTT
     m_mqtt = new xMqtt::xMqtt(m_layout->parentWidget());
-    addLayoutPage(tr("MQTT"), m_mqtt);
+    addLayoutPage(QString("MQTT"), m_mqtt);
 #endif
-#if defined(X_ENABLE_X_CANBUS)
+#if X_ENABLE_X_CANBUS
     m_canbus = new xCanBus::xCanBus(m_layout->parentWidget());
-    addLayoutPage(tr("CAN Bus"), m_canbus);
+    addLayoutPage(QString("CAN Bus"), m_canbus);
 #endif
 
     if (m_layout->count() == 1) {

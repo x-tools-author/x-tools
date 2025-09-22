@@ -18,10 +18,10 @@
 #include <QWidget>
 
 // clang-format off
-namespace xFlow { class NodeEditor; }
-namespace xModbus { class xModbus; }
 namespace xMqtt { class xMqtt; }
 namespace xCanBus { class xCanBus; }
+namespace xModbus { class xModbus; }
+namespace xFlow { class NodeEditor; }
 // clang-format on
 class LayoutManager : public QObject
 {
@@ -41,6 +41,7 @@ private:
     QLabel* m_leftLabel{nullptr};
     QLabel* m_rightLabel{nullptr};
     QMenuBar* m_mainMenuBar{nullptr};
+
     xFlow::NodeEditor* m_nodeEditor{nullptr};
     xModbus::xModbus* m_modbus{nullptr};
     xMqtt::xMqtt* m_mqtt{nullptr};
