@@ -34,7 +34,7 @@ QMenu *Panel::buttonMenu() const
     return nullptr;
 }
 
-void Panel::inputBytes(const QByteArray &bytes)
+void Panel::inputBytes(const QByteArray &bytes, const QString &flag)
 {
     Q_UNUSED(bytes);
 }

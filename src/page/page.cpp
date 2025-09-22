@@ -610,7 +610,7 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     m_rxStatistician->inputBytes(cookedBytes);
     outputText(cookedBytes, cookedFrom, true);
 
-    ui->widgetOutputPanels->inputBytes(cookedBytes);
+    ui->widgetOutputPanels->inputBytes(cookedBytes, cookedFrom);
     ui->tabResponder->inputBytes(cookedBytes);
 
     if (ui->tabTransfers->isEnabled()) {

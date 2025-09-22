@@ -33,7 +33,7 @@ public:
 public:
     explicit ChartPanel(QWidget *parent = Q_NULLPTR);
     ~ChartPanel() override;
-    void inputBytes(const QByteArray &bytes) override;
+    void inputBytes(const QByteArray &bytes, const QString &flag) override;
 
     virtual void resetChart() = 0;
 

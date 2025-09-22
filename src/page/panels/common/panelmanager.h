@@ -28,7 +28,7 @@ public:
     QVariantMap save() const;
     void load(const QVariantMap &parameters);
     QList<QToolButton *> buttons() const;
-    void inputBytes(const QByteArray &bytes);
+    void inputBytes(const QByteArray &bytes, const QString &flag);
 
 signals:
     void visibleChanged(bool visible);
