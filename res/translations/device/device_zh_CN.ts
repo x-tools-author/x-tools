@@ -128,77 +128,77 @@
 <context>
     <name>DeviceManager</name>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="91"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="92"/>
         <source>Serial Port</source>
         <translation>串口助手</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="93"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="94"/>
         <source>HID Device</source>
         <translation>HID设备</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="95"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="96"/>
         <source>BLE Central</source>
         <translation>BLE中心</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="97"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="98"/>
         <source>BLE Peripheral</source>
         <translation>BLE外设</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="99"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="100"/>
         <source>UDP Client</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="101"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="102"/>
         <source>UDP Server</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="103"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="104"/>
         <source>UDP Multicast</source>
         <translation>UDP组播</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="105"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="106"/>
         <source>UDP Broadcast</source>
         <translation>UDP广播</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="107"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="108"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="109"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="110"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="111"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="112"/>
         <source>WebSocket Client</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="113"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="114"/>
         <source>WebSocket Server</source>
         <translation>WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="115"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="116"/>
         <source>Local Socket</source>
         <translation>本地套接字</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="117"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="118"/>
         <source>Local Server</source>
         <translation>本地服务器</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="119"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="120"/>
         <source>Charts Test</source>
         <translation>图表测试</translation>
     </message>
@@ -380,7 +380,7 @@
 <context>
     <name>SerialPort</name>
     <message>
-        <location filename="../../../src/device/serialport.cpp" line="50"/>
+        <location filename="../../../src/device/serialport.cpp" line="44"/>
         <source>Failed to open serial port: %1</source>
         <translation>打开串口助手助手失败：%1</translation>
     </message>
@@ -388,44 +388,48 @@
 <context>
     <name>SerialPortUi</name>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="38"/>
+        <location filename="../../../src/device/serialportui.ui" line="41"/>
         <source>Baud rate</source>
         <translation>波特率</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="58"/>
+        <location filename="../../../src/device/serialportui.ui" line="107"/>
         <source>Flow control</source>
         <translation>流控位</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="71"/>
+        <location filename="../../../src/device/serialportui.ui" line="120"/>
         <source>Stop bits</source>
         <translation>停止位</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="85"/>
+        <location filename="../../../src/device/serialportui.ui" line="193"/>
+        <source>Enable frame interval</source>
+        <translation>优化帧处理(指定帧间隔)</translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/serialportui.ui" line="64"/>
         <source>Ignored busy device</source>
         <translation>忽略被占用设备</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="101"/>
+        <location filename="../../../src/device/serialportui.ui" line="155"/>
         <source>Port name</source>
         <translation>端口号</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="117"/>
+        <location filename="../../../src/device/serialportui.ui" line="57"/>
         <source>Parity</source>
         <translation>校验位</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="130"/>
+        <location filename="../../../src/device/serialportui.ui" line="87"/>
         <source>Data bits</source>
         <translation>数据位</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="162"/>
         <source>Optimized frame</source>
-        <translation>优化帧处理（粘包处理）</translation>
+        <translation type="vanished">优化帧处理（粘包处理）</translation>
     </message>
 </context>
 <context>

@@ -128,77 +128,77 @@
 <context>
     <name>DeviceManager</name>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="91"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="92"/>
         <source>Serial Port</source>
         <translation type="unfinished">Sarjaportti</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="93"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="94"/>
         <source>HID Device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="95"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="96"/>
         <source>BLE Central</source>
         <translation type="unfinished">BLE-keskus</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="97"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="98"/>
         <source>BLE Peripheral</source>
         <translation type="unfinished">BLE-reuna</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="99"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="100"/>
         <source>UDP Client</source>
         <translation type="unfinished">UDP-asiakas</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="101"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="102"/>
         <source>UDP Server</source>
         <translation type="unfinished">UDP-palvelin</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="103"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="104"/>
         <source>UDP Multicast</source>
         <translation type="unfinished">UDP-multicast</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="105"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="106"/>
         <source>UDP Broadcast</source>
         <translation type="unfinished">UDP-lähetys</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="107"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="108"/>
         <source>TCP Client</source>
         <translation type="unfinished">TCP-asiakas</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="109"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="110"/>
         <source>TCP Server</source>
         <translation type="unfinished">TCP-palvelin</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="111"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="112"/>
         <source>WebSocket Client</source>
         <translation type="unfinished">WebSocket-asiakas</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="113"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="114"/>
         <source>WebSocket Server</source>
         <translation type="unfinished">WebSocket-palvelin</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="115"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="116"/>
         <source>Local Socket</source>
         <translation type="unfinished">Paikallinen pistorasia</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="117"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="118"/>
         <source>Local Server</source>
         <translation type="unfinished">Paikallinen palvelin</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="119"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="120"/>
         <source>Charts Test</source>
         <translation type="unfinished">Kaaviotesti</translation>
     </message>
@@ -380,7 +380,7 @@
 <context>
     <name>SerialPort</name>
     <message>
-        <location filename="../../../src/device/serialport.cpp" line="50"/>
+        <location filename="../../../src/device/serialport.cpp" line="44"/>
         <source>Failed to open serial port: %1</source>
         <translation>Sarjaportin avaaminen epäonnistui: %1</translation>
     </message>
@@ -388,44 +388,48 @@
 <context>
     <name>SerialPortUi</name>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="38"/>
+        <location filename="../../../src/device/serialportui.ui" line="41"/>
         <source>Baud rate</source>
         <translation>Baudinopeus</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="58"/>
+        <location filename="../../../src/device/serialportui.ui" line="107"/>
         <source>Flow control</source>
         <translation>Virranhallinta</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="71"/>
+        <location filename="../../../src/device/serialportui.ui" line="120"/>
         <source>Stop bits</source>
         <translation>Pysäytysbitit</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="85"/>
+        <location filename="../../../src/device/serialportui.ui" line="193"/>
+        <source>Enable frame interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/serialportui.ui" line="64"/>
         <source>Ignored busy device</source>
         <translation>Ohitettu varattu laite</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="101"/>
+        <location filename="../../../src/device/serialportui.ui" line="155"/>
         <source>Port name</source>
         <translation>Portin nimi</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="117"/>
+        <location filename="../../../src/device/serialportui.ui" line="57"/>
         <source>Parity</source>
         <translation>Pariteetti</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="130"/>
+        <location filename="../../../src/device/serialportui.ui" line="87"/>
         <source>Data bits</source>
         <translation>Databitit</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="162"/>
         <source>Optimized frame</source>
-        <translation>Optimoitu kehys</translation>
+        <translation type="vanished">Optimoitu kehys</translation>
     </message>
 </context>
 <context>

@@ -128,77 +128,77 @@
 <context>
     <name>DeviceManager</name>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="91"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="92"/>
         <source>Serial Port</source>
         <translation type="unfinished">シリアルポート</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="93"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="94"/>
         <source>HID Device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="95"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="96"/>
         <source>BLE Central</source>
         <translation type="unfinished">BLEセントラル</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="97"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="98"/>
         <source>BLE Peripheral</source>
         <translation type="unfinished">BLEペリフェラル</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="99"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="100"/>
         <source>UDP Client</source>
         <translation type="unfinished">UDPクライアント</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="101"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="102"/>
         <source>UDP Server</source>
         <translation type="unfinished">UDPサーバー</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="103"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="104"/>
         <source>UDP Multicast</source>
         <translation type="unfinished">UDPマルチキャスト</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="105"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="106"/>
         <source>UDP Broadcast</source>
         <translation type="unfinished">UDPブロードキャスト</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="107"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="108"/>
         <source>TCP Client</source>
         <translation type="unfinished">TCPクライアント</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="109"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="110"/>
         <source>TCP Server</source>
         <translation type="unfinished">TCPサーバー</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="111"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="112"/>
         <source>WebSocket Client</source>
         <translation type="unfinished">WebSocketクライアント</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="113"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="114"/>
         <source>WebSocket Server</source>
         <translation type="unfinished">WebSocketサーバー</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="115"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="116"/>
         <source>Local Socket</source>
         <translation type="unfinished">ローカルソケット</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="117"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="118"/>
         <source>Local Server</source>
         <translation type="unfinished">ローカルサーバー</translation>
     </message>
     <message>
-        <location filename="../../../src/device/devicemanager.cpp" line="119"/>
+        <location filename="../../../src/device/devicemanager.cpp" line="120"/>
         <source>Charts Test</source>
         <translation type="unfinished">チャートテスト</translation>
     </message>
@@ -380,7 +380,7 @@
 <context>
     <name>SerialPort</name>
     <message>
-        <location filename="../../../src/device/serialport.cpp" line="50"/>
+        <location filename="../../../src/device/serialport.cpp" line="44"/>
         <source>Failed to open serial port: %1</source>
         <translation>シリアルポートのオープンに失敗しました: %1</translation>
     </message>
@@ -388,44 +388,48 @@
 <context>
     <name>SerialPortUi</name>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="38"/>
+        <location filename="../../../src/device/serialportui.ui" line="41"/>
         <source>Baud rate</source>
         <translation>ボーレート</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="58"/>
+        <location filename="../../../src/device/serialportui.ui" line="107"/>
         <source>Flow control</source>
         <translation>フロー制御</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="71"/>
+        <location filename="../../../src/device/serialportui.ui" line="120"/>
         <source>Stop bits</source>
         <translation>ストップビット</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="85"/>
+        <location filename="../../../src/device/serialportui.ui" line="193"/>
+        <source>Enable frame interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/device/serialportui.ui" line="64"/>
         <source>Ignored busy device</source>
         <translation>ビジーデバイスを無視</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="101"/>
+        <location filename="../../../src/device/serialportui.ui" line="155"/>
         <source>Port name</source>
         <translation>ポート名</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="117"/>
+        <location filename="../../../src/device/serialportui.ui" line="57"/>
         <source>Parity</source>
         <translation>パリティ</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="130"/>
+        <location filename="../../../src/device/serialportui.ui" line="87"/>
         <source>Data bits</source>
         <translation>データビット</translation>
     </message>
     <message>
-        <location filename="../../../src/device/serialportui.ui" line="162"/>
         <source>Optimized frame</source>
-        <translation>最適化フレーム</translation>
+        <translation type="vanished">最適化フレーム</translation>
     </message>
 </context>
 <context>
