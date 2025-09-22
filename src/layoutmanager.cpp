@@ -10,7 +10,7 @@
 
 #include <QAction>
 
-#if defined(X_ENABLE_xFlow)
+#if defined(X_ENABLE_X_NODE_EDITOR)
 #include "nodeeditor/nodeeditor.h"
 #endif
 
@@ -73,7 +73,7 @@ QToolButton* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
 
 void LayoutManager::setupPages()
 {
-#if defined(X_ENABLE_xFlow)
+#if defined(X_ENABLE_X_NODE_EDITOR)
     m_nodeEditor = new xFlow::NodeEditor(m_layout->parentWidget());
     addLayoutPage(tr("Node Editor"), m_nodeEditor);
 #endif
