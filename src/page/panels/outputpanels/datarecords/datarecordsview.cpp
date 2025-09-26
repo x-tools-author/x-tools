@@ -19,7 +19,6 @@
 struct DataRecordsViewParameterKeys
 {
     const QString type{"type"};
-    const QString flag{"flag"};
     const QString format{"format"};
     const QString records{"records"};
     const QString searchText{"searchText"};
@@ -84,11 +83,39 @@ void DataRecordsView::onBytesWritten(const QByteArray &bytes, const QString &fla
     tryAddFlag(flag);
 }
 
-void DataRecordsView::load(const QVariantMap &parameters) {}
+void DataRecordsView::load(const QVariantMap &parameters)
+{
+    Panel::load(parameters);
+    DataRecordsViewParameterKeys keys;
+    int type = parameters.value(keys.type, DataRecordsModel::DataRecordsModelItemTypeAll).toInt();
+    int format = parameters.value(keys.format, static_cast<int>(TextFormat::Hex)).toInt();
+    int records = parameters.value(keys.records, -1).toInt();
+    QString searchText = parameters.value(keys.searchText, QString()).toString();
+
+    int index = ui->comboBoxTypes->findData(type);
+    ui->comboBoxTypes->setCurrentIndex(index != -1 ? index : 0);
+    index = ui->comboBoxFormats->findData(format);
+    ui->comboBoxFormats->setCurrentIndex(index != -1 ? index : 0);
+    index = ui->comboBoxRecords->findData(records);
+    ui->comboBoxRecords->setCurrentIndex(index != -1 ? index : 0);
+    ui->lineEditData->setText(searchText);
+
+    onTypeChanged();
+    onFlagChanged();
+    onFormatChanged();
+    onRecordsCountChanged();
+    onSearchTextChanged(ui->lineEditData->text());
+}
 
 QVariantMap DataRecordsView::save() const
 {
-    return QVariantMap{};
+    QVariantMap map = Panel::save();
+    DataRecordsViewParameterKeys keys;
+    map.insert(keys.type, ui->comboBoxTypes->currentData());
+    map.insert(keys.format, ui->comboBoxFormats->currentData());
+    map.insert(keys.records, ui->comboBoxRecords->currentData());
+    map.insert(keys.searchText, ui->lineEditData->text());
+    return map;
 }
 
 void DataRecordsView::tryAddFlag(const QString &flag)

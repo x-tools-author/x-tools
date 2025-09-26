@@ -14,46 +14,17 @@
    <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
-    <number>0</number>
-   </property>
-   <item row="0" column="4">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>Format</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="7">
-    <widget class="QLineEdit" name="lineEditData">
-     <property name="placeholderText">
-      <string>Search data...</string>
-     </property>
-     <property name="clearButtonEnabled">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="12">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Records</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>Types</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="comboBoxTypes">
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
      </property>
     </widget>
    </item>
@@ -64,9 +35,6 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="14">
-    <widget class="QTableView" name="tableView"/>
-   </item>
    <item row="0" column="3">
     <widget class="QComboBox" name="comboBoxFlags">
      <property name="sizeAdjustPolicy">
@@ -74,14 +42,28 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="13">
-    <widget class="QComboBox" name="comboBoxRecords">
+   <item row="0" column="4">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Format</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QComboBox" name="comboBoxFormats">
      <property name="sizeAdjustPolicy">
       <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
      </property>
     </widget>
    </item>
-   <item row="0" column="11">
+   <item row="0" column="6">
+    <widget class="QToolButton" name="toolButtonClear">
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="7">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Orientation::Horizontal</enum>
@@ -94,33 +76,39 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="1">
-    <widget class="QComboBox" name="comboBoxTypes">
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Records</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="comboBoxRecords">
      <property name="sizeAdjustPolicy">
       <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
      </property>
     </widget>
    </item>
-   <item row="0" column="10">
-    <widget class="QToolButton" name="toolButtonClear">
-     <property name="text">
-      <string>...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="6">
+   <item row="1" column="2">
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Data</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="5">
-    <widget class="QComboBox" name="comboBoxFormats">
-     <property name="sizeAdjustPolicy">
-      <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+   <item row="1" column="3" colspan="5">
+    <widget class="QLineEdit" name="lineEditData">
+     <property name="placeholderText">
+      <string>Search data...</string>
+     </property>
+     <property name="clearButtonEnabled">
+      <bool>true</bool>
      </property>
     </widget>
+   </item>
+   <item row="2" column="0" colspan="8">
+    <widget class="QTableView" name="tableView"/>
    </item>
   </layout>
  </widget>
