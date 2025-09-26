@@ -55,19 +55,101 @@
     </message>
 </context>
 <context>
+    <name>DataRecordsModel</name>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsmodel.cpp" line="155"/>
+        <source>Date Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsmodel.cpp" line="157"/>
+        <source>Type</source>
+        <translation type="unfinished">Typ</translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsmodel.cpp" line="159"/>
+        <source>Flag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsmodel.cpp" line="161"/>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DataRecordsView</name>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="20"/>
+        <source>Types</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="34"/>
+        <source>Flags</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="48"/>
+        <source>Format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="62"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="82"/>
+        <source>Records</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="96"/>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="103"/>
+        <source>Search data...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="37"/>
+        <source>All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="39"/>
+        <source>No Limit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="147"/>
+        <source>Clear Records</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="148"/>
+        <source>Are you sure to clear all records?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InputPanelsManager</name>
     <message>
-        <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="18"/>
+        <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="19"/>
         <source>Lua Script</source>
         <translation>Lua skript</translation>
     </message>
     <message>
-        <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="20"/>
+        <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="21"/>
         <source>Frame Serial Number</source>
         <translation>Sériové číslo rámce</translation>
     </message>
     <message>
-        <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="21"/>
+        <location filename="../../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="22"/>
         <source>XYModem Sender</source>
         <translation>XYModem odesílatel</translation>
     </message>
@@ -197,17 +279,17 @@
         <translation>Parametry řetězce</translation>
     </message>
     <message>
-        <location filename="../../../src/page/panels/common/luapanel.cpp" line="36"/>
+        <location filename="../../../src/page/panels/common/luapanel.cpp" line="38"/>
         <source>Default Lua Script</source>
         <translation>Výchozí Lua skript</translation>
     </message>
     <message>
-        <location filename="../../../src/page/panels/common/luapanel.cpp" line="37"/>
+        <location filename="../../../src/page/panels/common/luapanel.cpp" line="39"/>
         <source>Checksum Lua Script</source>
         <translation>Kontrolní součet Lua skript</translation>
     </message>
     <message>
-        <location filename="../../../src/page/panels/common/luapanel.cpp" line="39"/>
+        <location filename="../../../src/page/panels/common/luapanel.cpp" line="41"/>
         <source>Lua Script(String)</source>
         <translation>Lua skript (řetězec)</translation>
     </message>
@@ -215,27 +297,32 @@
 <context>
     <name>OutputPanelsManager</name>
     <message>
-        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="23"/>
+        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="25"/>
+        <source>Data Records</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
         <source>Search</source>
         <translation>Hledat</translation>
     </message>
     <message>
-        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="24"/>
+        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
         <source>Lua Script</source>
         <translation>Lua skript</translation>
     </message>
     <message>
-        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
+        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="29"/>
         <source>Line Chart</source>
         <translation>Čárový graf</translation>
     </message>
     <message>
-        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
+        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
         <source>Bar Chart</source>
         <translation>Sloupcový graf</translation>
     </message>
     <message>
-        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
+        <location filename="../../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="33"/>
         <source>XY-Modem Receiver</source>
         <translation>XY-Modem přijímač</translation>
     </message>
@@ -243,12 +330,12 @@
 <context>
     <name>PanelManager</name>
     <message>
-        <location filename="../../../src/page/panels/common/panelmanager.cpp" line="24"/>
+        <location filename="../../../src/page/panels/common/panelmanager.cpp" line="25"/>
         <source>Panels</source>
         <translation>Panely</translation>
     </message>
     <message>
-        <location filename="../../../src/page/panels/common/panelmanager.cpp" line="27"/>
+        <location filename="../../../src/page/panels/common/panelmanager.cpp" line="28"/>
         <source>Hide/Show Panels</source>
         <translation>Skrýt/Zobrazit panely</translation>
     </message>
