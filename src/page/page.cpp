@@ -152,6 +152,15 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     ui->widgetController->setMaximumWidth(256);
 #endif
+
+    connect(ui->tabTransfers,
+            &TransfersView::bytesRead,
+            ui->widgetOutputPanels,
+            &OutputPanelsManager::onBytesRead);
+    connect(ui->tabTransfers,
+            &TransfersView::bytesWritten,
+            ui->widgetOutputPanels,
+            &OutputPanelsManager::onBytesWritten);
 }
 
 Page::~Page()

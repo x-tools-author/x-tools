@@ -59,11 +59,7 @@ DataRecordsView::DataRecordsView(QWidget *parent)
     connect(ui->toolButtonClear, &QToolButton::clicked, this, &DataRecordsView::onClear);
     connect(ui->lineEditData, &QLineEdit::textChanged, this, &DataRecordsView::onSearchTextChanged);
 
-    onTypeChanged();
-    onFlagChanged();
-    onFormatChanged();
-    onRecordsCountChanged();
-    onSearchTextChanged(ui->lineEditData->text());
+    syncParametersFromUi();
 }
 
 DataRecordsView::~DataRecordsView()
@@ -100,11 +96,7 @@ void DataRecordsView::load(const QVariantMap &parameters)
     ui->comboBoxRecords->setCurrentIndex(index != -1 ? index : 0);
     ui->lineEditData->setText(searchText);
 
-    onTypeChanged();
-    onFlagChanged();
-    onFormatChanged();
-    onRecordsCountChanged();
-    onSearchTextChanged(ui->lineEditData->text());
+    syncParametersFromUi();
 }
 
 QVariantMap DataRecordsView::save() const
@@ -123,6 +115,15 @@ void DataRecordsView::tryAddFlag(const QString &flag)
     if (ui->comboBoxFlags->findData(flag) == -1) {
         ui->comboBoxFlags->addItem(flag, flag);
     }
+}
+
+void DataRecordsView::syncParametersFromUi()
+{
+    onTypeChanged();
+    onFlagChanged();
+    onFormatChanged();
+    onRecordsCountChanged();
+    onSearchTextChanged(ui->lineEditData->text());
 }
 
 void DataRecordsView::onTypeChanged()
@@ -154,6 +155,8 @@ void DataRecordsView::onClear()
             ui->comboBoxFlags->removeItem(i);
         }
     }
+
+    syncParametersFromUi();
 }
 
 void DataRecordsView::onRecordsCountChanged()

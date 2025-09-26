@@ -40,6 +40,8 @@ bool TransferModel::insertRows(int row, int count, const QModelIndex &parent)
                 }
             }
         });
+        connect(transfer, &Device::bytesRead, this, &TransferModel::bytesRead);
+        connect(transfer, &Device::bytesWritten, this, &TransferModel::bytesWritten);
         connect(transfer, &Device::finished, this, [=]() { transfer->start(); });
 
         int option = static_cast<int>(TransferType::Bidirectional);

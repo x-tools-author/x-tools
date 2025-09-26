@@ -38,6 +38,7 @@ private:
 
 private:
     void tryAddFlag(const QString &flag);
+    void syncParametersFromUi();
 
     void onTypeChanged();
     void onFlagChanged();

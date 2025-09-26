@@ -29,6 +29,8 @@ public:
 
 signals:
     void outputBytes(const QByteArray &bytes);
+    void bytesRead(const QByteArray &bytes, const QString &flag);
+    void bytesWritten(const QByteArray &bytes, const QString &flag);
 
 protected:
     struct Item
