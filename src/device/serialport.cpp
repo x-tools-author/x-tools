@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "serialport.h"
 
+#include <QDateTime>
 #include <QDebug>
 #include <QTimer>
 #include <QtMath>
