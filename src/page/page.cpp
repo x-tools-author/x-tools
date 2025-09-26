@@ -610,7 +610,8 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     m_rxStatistician->inputBytes(cookedBytes);
     outputText(cookedBytes, cookedFrom, true);
 
-    ui->widgetOutputPanels->inputBytes(cookedBytes, cookedFrom);
+    ui->widgetOutputPanels->inputBytes(bytes, from);
+    ui->widgetOutputPanels->onBytesRead(bytes, from);
     ui->tabResponder->inputBytes(cookedBytes);
 
     if (ui->tabTransfers->isEnabled()) {
@@ -639,7 +640,8 @@ void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
     m_ioSettings->saveData(cookedBytes, true);
     m_txStatistician->inputBytes(cookedBytes);
     outputText(cookedBytes, cookedTo, false);
-
+    ui->widgetOutputPanels->inputBytes(bytes, to);
+    ui->widgetOutputPanels->onBytesWritten(bytes, to);
     emit bytesWritten(cookedBytes, cookedTo);
 }
 

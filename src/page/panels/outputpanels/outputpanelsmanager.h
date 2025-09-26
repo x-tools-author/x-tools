@@ -10,6 +10,7 @@
 
 #include "page/panels/common/panelmanager.h"
 
+class DataRecordsView;
 class OutputPanelsManager : public PanelManager
 {
     Q_OBJECT

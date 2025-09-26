@@ -26,6 +26,9 @@ public:
     virtual QMenu *buttonMenu() const;
     virtual void inputBytes(const QByteArray &bytes, const QString &flag);
 
+    virtual void onBytesRead(const QByteArray &bytes, const QString &flag);
+    virtual void onBytesWritten(const QByteArray &bytes, const QString &flag);
+
 private:
     QVariantMap m_parameters;
 };

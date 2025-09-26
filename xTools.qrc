@@ -39,5 +39,6 @@
         <file>res/icons/add.svg</file>
         <file>res/icons/stop.svg</file>
         <file>res/icons/play_arrow.svg</file>
+        <file>res/icons/cleaning_services.svg</file>
     </qresource>
 </RCC>

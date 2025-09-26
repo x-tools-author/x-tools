@@ -16,4 +16,16 @@ class DataRecordsModelFilter : public QSortFilterProxyModel
 public:
     explicit DataRecordsModelFilter(QObject *parent = nullptr);
     ~DataRecordsModelFilter();
+
+    void setType(int type);
+    void setFlag(const QString &flag);
+    void setSearchText(const QString &text);
+
+protected:
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
+
+private:
+    int m_type;
+    QString m_flag;
+    QString m_searchText;
 };

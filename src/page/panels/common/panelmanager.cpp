@@ -80,3 +80,17 @@ void PanelManager::inputBytes(const QByteArray &bytes, const QString &flag)
         panel->inputBytes(bytes, flag);
     }
 }
+
+void PanelManager::onBytesRead(const QByteArray &bytes, const QString &flag)
+{
+    for (Panel *panel : m_panels) {
+        panel->onBytesRead(bytes, flag);
+    }
+}
+
+void PanelManager::onBytesWritten(const QByteArray &bytes, const QString &flag)
+{
+    for (Panel *panel : m_panels) {
+        panel->onBytesWritten(bytes, flag);
+    }
+}

@@ -30,6 +30,9 @@ public:
     QList<QToolButton *> buttons() const;
     void inputBytes(const QByteArray &bytes, const QString &flag);
 
+    void onBytesRead(const QByteArray &bytes, const QString &flag);
+    void onBytesWritten(const QByteArray &bytes, const QString &flag);
+
 signals:
     void visibleChanged(bool visible);
 

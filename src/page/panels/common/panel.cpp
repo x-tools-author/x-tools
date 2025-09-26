@@ -38,3 +38,15 @@ void Panel::inputBytes(const QByteArray &bytes, const QString &flag)
 {
     Q_UNUSED(bytes);
 }
+
+void Panel::onBytesRead(const QByteArray &bytes, const QString &flag)
+{
+    Q_UNUSED(bytes);
+    Q_UNUSED(flag);
+}
+
+void Panel::onBytesWritten(const QByteArray &bytes, const QString &flag)
+{
+    Q_UNUSED(bytes);
+    Q_UNUSED(flag);
+}
