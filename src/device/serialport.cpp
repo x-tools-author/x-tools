@@ -135,7 +135,10 @@ void SerialPort::processCache()
             }
         }
 
-        m_cache.remove(0, n);
+        for (int i = 0; i < n; ++i) {
+            m_cache.removeFirst();
+        }
+
         if (!frame.isEmpty()) {
             emit bytesRead(frame, m_serialPort->portName());
         }
