@@ -4,6 +4,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get -y update && apt-get instal
     libxcb-xinerama0 \
     libxcb-cursor-dev \
     libudev-dev \
+    libusb-dev \
     ninja-build \
     libopengl-dev \
     libglu1-mesa-dev \
