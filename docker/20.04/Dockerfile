@@ -29,6 +29,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get -y update && apt-get instal
     libusb-1.0-0-dev \
     libudev-dev \
     openjdk-17-jdk-headless \
+    libtirpc-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # CMake
