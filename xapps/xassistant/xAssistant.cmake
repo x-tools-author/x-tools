@@ -17,7 +17,7 @@ list(APPEND X_ASSISTANT_SOURCES ${X_APPS_SOURCES})
 list(APPEND X_ASSISTANT_SOURCES ${CMAKE_CURRENT_LIST_DIR}/xAssistant.rc)
 list(APPEND X_ASSISTANT_SOURCES ${CMAKE_CURRENT_LIST_DIR}/xAssistant.qrc)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/src)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/src/modbus)
+include_directories(${CMAKE_SOURCE_DIR}/src/modbus)
 
 set(bin ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/xAssistant)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
