@@ -4,7 +4,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get -y update && apt-get instal
     libxcb-xinerama0 \
     libxcb-cursor-dev \
     libudev-dev \
+    libudev1 \
     libusb-dev \
+    libusb-1.0-0-dev \
     ninja-build \
     libopengl-dev \
     libglu1-mesa-dev \
@@ -27,10 +29,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get -y update && apt-get instal
     libfuse2 \
     libfuse-dev \
     kmod \
-    libusb-1.0-0-dev \
-    libudev-dev \
     openjdk-17-jdk-headless \
     libtirpc-dev \
+    pkg-config \
+    systemd-dev
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # CMake
