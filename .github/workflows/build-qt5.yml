@@ -72,6 +72,9 @@ jobs:
           target: desktop
           arch: 'gcc_64'
           modules: 'qtcharts'
+      - name: install-dependencies
+        run: |
+          sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev  libudev-dev libusb-dev libusb-1.0-0-dev
       - name: build-gcc
         run: |
           git fetch --tags
