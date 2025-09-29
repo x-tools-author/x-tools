@@ -28,7 +28,7 @@
 #include "device/utilities/ipscanner.h"
 #include "device/utilities/serialportscanner.h"
 
-#ifdef X_ENABLE_BLUETOOTH
+#if X_ENABLE_BLUETOOTH
 #include "device/utilities/blescanner.h"
 #endif
 
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<TcpClient>("xTools.xDebug", 1, 0, "TcpClient");
     qmlRegisterType<TcpServer>("xTools.xDebug", 1, 0, "TcpServer");
     qmlRegisterType<IpScanner>("xTools.xDebug", 1, 0, "IpScanner");
-#ifdef X_ENABLE_BLUETOOTH
+#if X_ENABLE_BLUETOOTH
     qmlRegisterType<BleScanner>("xTools.xDebug", 1, 0, "BleScanner");
     qmlRegisterType<BleCentral>("xTools.xDebug", 1, 0, "BleCentral");
 #endif

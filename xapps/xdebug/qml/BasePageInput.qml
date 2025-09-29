@@ -39,44 +39,44 @@ ColumnLayout {
             Layout.alignment: Qt.AlignVCenter
             onEnabledChanged: {
                 if (enabled && Number(value) !== -1) {
-                    txTimer.start()
+                    txTimer.start();
                 } else {
-                    txTimer.stop()
+                    txTimer.stop();
                 }
             }
             onValueChanged: {
                 if (value == -1) {
-                    txTimer.stop()
+                    txTimer.stop();
                 } else {
                     if (isWorking) {
-                        txTimer.interval = value
-                        txTimer.restart()
+                        txTimer.interval = value;
+                        txTimer.restart();
                     }
                 }
             }
             menuItemContext: {
-                var tmp = []
-                tmp.push([xDisabledText, -1])
+                var tmp = [];
+                tmp.push([xDisabledText, -1]);
                 for (var i = 20; i <= 100; i += 20) {
-                    var item = []
-                    item.push(i.toString() + "ms")
-                    item.push(i)
-                    tmp.push(item)
+                    var item = [];
+                    item.push(i.toString() + "ms");
+                    item.push(i);
+                    tmp.push(item);
                 }
                 for (i = 200; i <= 1000; i += 100) {
-                    item = []
-                    item.push(i.toString() + "ms")
-                    item.push(i)
-                    tmp.push(item)
+                    item = [];
+                    item.push(i.toString() + "ms");
+                    item.push(i);
+                    tmp.push(item);
                 }
                 for (i = 2000; i <= 10000; i += 2000) {
-                    item = []
-                    item.push(i.toString() + "ms")
-                    item.push(i)
-                    tmp.push(item)
+                    item = [];
+                    item.push(i.toString() + "ms");
+                    item.push(i);
+                    tmp.push(item);
                 }
 
-                return tmp
+                return tmp;
             }
         }
         BasePageIconItem {
@@ -98,14 +98,14 @@ ColumnLayout {
             Layout.alignment: Qt.AlignVCenter
             onHasBeenTriggered: xSettings.setValue(settingKeys.esc, value)
             menuItemContext: {
-                var tmp = []
-                tmp.push([xNoneText, xEscNone])
-                tmp.push(["\\n", xEscN])
-                tmp.push(["\\r", xEscR])
-                tmp.push(["\\r\\n", xEscRN])
-                tmp.push(["\\n\\r", xEscNR])
-                tmp.push(["\\r || \\n", xEscR_N])
-                return tmp
+                var tmp = [];
+                tmp.push([xNoneText, xEscNone]);
+                tmp.push(["\\n", xEscN]);
+                tmp.push(["\\r", xEscR]);
+                tmp.push(["\\r\\n", xEscRN]);
+                tmp.push(["\\n\\r", xEscNR]);
+                tmp.push(["\\r || \\n", xEscR_N]);
+                return tmp;
             }
         }
         BasePageIconItem {
@@ -137,32 +137,32 @@ ColumnLayout {
             Layout.alignment: Qt.AlignVCenter
             onHasBeenTriggered: xSettings.setValue(settingKeys.crc, value)
             menuItemContext: {
-                var tmp = []
-                tmp.push([xNoneText, -1])
-                tmp.push(["CRC_8", CRC.Algorithm.CRC_8])
-                tmp.push(["CRC_8_ITU", CRC.Algorithm.CRC_8_ITU])
-                tmp.push(["CRC_8_ROHC", CRC.Algorithm.CRC_8_ROHC])
-                tmp.push(["CRC_8_MAXIM", CRC.Algorithm.CRC_8_MAXIM])
+                var tmp = [];
+                tmp.push([xNoneText, -1]);
+                tmp.push(["CRC_8", CRC.Algorithm.CRC_8]);
+                tmp.push(["CRC_8_ITU", CRC.Algorithm.CRC_8_ITU]);
+                tmp.push(["CRC_8_ROHC", CRC.Algorithm.CRC_8_ROHC]);
+                tmp.push(["CRC_8_MAXIM", CRC.Algorithm.CRC_8_MAXIM]);
 
-                tmp.push(["CRC_16_IBM", CRC.Algorithm.CRC_16_IBM])
-                tmp.push(["CRC_16_MAXIM", CRC.Algorithm.CRC_16_MAXIM])
-                tmp.push(["CRC_16_USB", CRC.Algorithm.CRC_16_USB])
-                tmp.push(["CRC_16_MODBUS", CRC.Algorithm.CRC_16_MODBUS])
-                tmp.push(["CRC_16_CCITT", CRC.Algorithm.CRC_16_CCITT])
-                tmp.push(["CRC_16_CCITT_FALSE", CRC.Algorithm.CRC_16_CCITT_FALSE])
-                tmp.push(["CRC_16_x25", CRC.Algorithm.CRC_16_x25])
-                tmp.push(["CRC_16_XMODEM", CRC.Algorithm.CRC_16_XMODEM])
-                tmp.push(["CRC_16_DNP", CRC.Algorithm.CRC_16_DNP])
+                tmp.push(["CRC_16_IBM", CRC.Algorithm.CRC_16_IBM]);
+                tmp.push(["CRC_16_MAXIM", CRC.Algorithm.CRC_16_MAXIM]);
+                tmp.push(["CRC_16_USB", CRC.Algorithm.CRC_16_USB]);
+                tmp.push(["CRC_16_MODBUS", CRC.Algorithm.CRC_16_MODBUS]);
+                tmp.push(["CRC_16_CCITT", CRC.Algorithm.CRC_16_CCITT]);
+                tmp.push(["CRC_16_CCITT_FALSE", CRC.Algorithm.CRC_16_CCITT_FALSE]);
+                tmp.push(["CRC_16_x25", CRC.Algorithm.CRC_16_x25]);
+                tmp.push(["CRC_16_XMODEM", CRC.Algorithm.CRC_16_XMODEM]);
+                tmp.push(["CRC_16_DNP", CRC.Algorithm.CRC_16_DNP]);
 
-                tmp.push(["CRC_32", CRC.Algorithm.CRC_32])
-                tmp.push(["CRC_32_MPEG2", CRC.Algorithm.CRC_32_MPEG2])
-                return tmp
+                tmp.push(["CRC_32", CRC.Algorithm.CRC_32]);
+                tmp.push(["CRC_32_MPEG2", CRC.Algorithm.CRC_32_MPEG2]);
+                return tmp;
             }
         }
         Label {
             Layout.fillWidth: true
         }
-        ToolButton {
+        ControlsToolButton {
             icon.source: "qrc:/res/icons/clear.svg"
             onClicked: inputTextComboBox.clear()
             Layout.alignment: Qt.AlignVCenter
@@ -183,17 +183,17 @@ ColumnLayout {
             validator: {
                 switch (validatorType) {
                 case xBin:
-                    return binREV
+                    return binREV;
                 case xOct:
-                    return octREV
+                    return octREV;
                 case xDec:
-                    return decREV
+                    return decREV;
                 case xHex:
-                    return hexREV
+                    return hexREV;
                 case xAscii:
-                    return asciiREV
+                    return asciiREV;
                 default:
-                    return null
+                    return null;
                 }
             }
             property string settingKey: ""
@@ -235,48 +235,48 @@ ColumnLayout {
     }
 
     Component.onCompleted: {
-        xApp.showSplashScreenMessage("Loading input settings for: " + settingsGroup)
+        xApp.showSplashScreenMessage("Loading input settings for: " + settingsGroup);
 
-        var format = xSettings.value(settingKeys.format, xHex)
-        var esc = xSettings.value(settingKeys.esc, xEscNone)
-        var prefix = xSettings.value(settingKeys.prefix, xAffixesNone)
-        var suffix = xSettings.value(settingKeys.suffix, xAffixesNone)
-        var crc = xSettings.value(settingKeys.crc, -1)
+        var format = xSettings.value(settingKeys.format, xHex);
+        var esc = xSettings.value(settingKeys.esc, xEscNone);
+        var prefix = xSettings.value(settingKeys.prefix, xAffixesNone);
+        var suffix = xSettings.value(settingKeys.suffix, xAffixesNone);
+        var crc = xSettings.value(settingKeys.crc, -1);
 
-        formatToolItem.setValue(format)
-        escToolItem.setValue(esc)
-        prefixToolItem.setValue(prefix)
-        suffixToolItem.setValue(suffix)
-        crcToolItem.setValue(crc)
+        formatToolItem.setValue(format);
+        escToolItem.setValue(esc);
+        prefixToolItem.setValue(prefix);
+        suffixToolItem.setValue(suffix);
+        crcToolItem.setValue(crc);
     }
 
     function writeBytes() {
-        var format = formatToolItem.value
-        var esc = escToolItem.value
-        var header = prefixToolItem.value
-        var tail = suffixToolItem.value
-        var crc = crcToolItem.value
+        var format = formatToolItem.value;
+        var esc = escToolItem.value;
+        var header = prefixToolItem.value;
+        var tail = suffixToolItem.value;
+        var crc = crcToolItem.value;
 
-        var txt = inputTextComboBox.text
+        var txt = inputTextComboBox.text;
         if (txt === "") {
-            txt = "(null)"
-            format = xAscii
+            txt = "(null)";
+            format = xAscii;
         }
 
-        var inputString = xApp.cookedEscapeCharacter(txt, esc)
-        var prefixStr = xApp.cookedAffixes(header)
-        var suffixStr = xApp.cookedAffixes(tail)
+        var inputString = xApp.cookedEscapeCharacter(txt, esc);
+        var prefixStr = xApp.cookedAffixes(header);
+        var suffixStr = xApp.cookedAffixes(tail);
 
-        var prefixBytes = xApp.string2bytes(prefixStr, format)
-        var inputBytes = xApp.string2bytes(inputString, format)
-        var crcBytes = xCrc.calculate(inputBytes, crc)
-        var suffixBytes = xApp.string2bytes(suffixStr, format)
+        var prefixBytes = xApp.string2bytes(prefixStr, format);
+        var inputBytes = xApp.string2bytes(inputString, format);
+        var crcBytes = xCrc.calculate(inputBytes, crc);
+        var suffixBytes = xApp.string2bytes(suffixStr, format);
 
-        var cookedBytes = xApp.arrayAppendArray(prefixBytes, inputBytes)
-        cookedBytes = xApp.arrayAppendArray(cookedBytes, crcBytes)
-        cookedBytes = xApp.arrayAppendArray(cookedBytes, suffixBytes)
+        var cookedBytes = xApp.arrayAppendArray(prefixBytes, inputBytes);
+        cookedBytes = xApp.arrayAppendArray(cookedBytes, crcBytes);
+        cookedBytes = xApp.arrayAppendArray(cookedBytes, suffixBytes);
         if (device) {
-            device.writeBytes(cookedBytes)
+            device.writeBytes(cookedBytes);
         }
     }
 }

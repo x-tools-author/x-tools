@@ -1,10 +1,10 @@
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Bluetooth)
 if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND AND QT_VERSION VERSION_GREATER_EQUAL "6.5.0")
-  add_compile_definitions(X_ENABLE_BLUETOOTH)
+  add_compile_definitions(X_ENABLE_BLUETOOTH=1)
   list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Bluetooth)
 else()
   message(STATUS "Bluetooth module is disable, Bluetooth files will be removed.")
-
+  add_compile_definitions(X_ENABLE_BLUETOOTH=0)
   file(GLOB_RECURSE BLE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/ble*")
   foreach(file ${BLE_FILES})
     list(REMOVE_ITEM X_SOURCES ${file})

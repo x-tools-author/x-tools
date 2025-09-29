@@ -19,18 +19,18 @@ Row {
 
     signal hasBeenTriggered
 
-    ToolButton {
+    ControlsToolButton {
         id: toolButton
         display: ToolButton.IconOnly
         anchors.verticalCenter: parent.verticalCenter
         ToolTip.visible: hovered
         ToolTip.text: root.toolTipText
         onClicked: {
-            toolButtonMenu.x = (toolButton.width - toolButtonMenu.width) / 2
+            toolButtonMenu.x = (toolButton.width - toolButtonMenu.width) / 2;
             if (menuShowOnTop) {
-                toolButtonMenu.y = 0 - toolButtonMenu.height
+                toolButtonMenu.y = 0 - toolButtonMenu.height;
             }
-            toolButtonMenu.open()
+            toolButtonMenu.open();
         }
     }
     Label {
@@ -52,21 +52,21 @@ Row {
                 text: modelData[0]
                 onCheckedChanged: {
                     if (checked) {
-                        nameLabel.text = modelData[0]
+                        nameLabel.text = modelData[0];
                     }
                 }
                 onTriggered: {
-                    root.value = modelData[1]
-                    root.hasBeenTriggered()
+                    root.value = modelData[1];
+                    root.hasBeenTriggered();
                 }
 
                 property var data: modelData[1]
 
                 Component.onCompleted: {
                     if (isActionGroup) {
-                        buttonGroup.addButton(menuItem)
+                        buttonGroup.addButton(menuItem);
                         if (index === defaultIndex) {
-                            menuItem.checked = true
+                            menuItem.checked = true;
                         }
                     }
                 }
@@ -75,12 +75,12 @@ Row {
     }
 
     function setValue(v) {
-        root.value = v
+        root.value = v;
         for (var i = 0; i < toolButtonMenu.count; i++) {
-            var item = toolButtonMenu.itemAt(i)
+            var item = toolButtonMenu.itemAt(i);
             if (Number(item.data) === Number(v)) {
-                item.checked = true
-                break
+                item.checked = true;
+                break;
             }
         }
     }

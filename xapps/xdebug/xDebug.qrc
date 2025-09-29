@@ -38,7 +38,6 @@
         <file>res/translations/xDebug_zh_CN.qm</file>
         <file>qml/MainWindow.qml</file>
         <file>qml/MainWindowPages.qml</file>
-        <file>qml/MainWindowTitleBar.qml</file>
         <file>qml/MainWindowToolBar.qml</file>
         <file>qml/BasePage.qml</file>
         <file>qml/BasePageController.qml</file>
@@ -72,5 +71,6 @@
         <file>qml/ControllerUdpServer.qml</file>
         <file>qml/ControllerWebSocketClient.qml</file>
         <file>qml/ControllerWebSocketServer.qml</file>
+        <file>qml/ControlsToolButton.qml</file>
     </qresource>
 </RCC>

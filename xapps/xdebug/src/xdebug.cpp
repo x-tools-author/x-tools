@@ -12,6 +12,14 @@
 
 #include "common/xtools.h"
 
+#if defined(_MSC_VER)
+#include <dwmapi.h>
+
+#include <QColor>
+#include <QSysInfo>
+#include <QWindow>
+#endif
+
 xDebug::xDebug(int argc, char **argv)
     : Application(argc, argv)
 {}
@@ -64,4 +72,18 @@ void xDebug::setQuickTextDocumentMaximumBlockCount(QVariant textDocument, int co
 QString xDebug::dateTimeString(const QString &format)
 {
     return ::dateTimeString(format);
+}
+
+void xDebug::updateWindowStyle(QWindow *window, const QString &color)
+{
+#if defined(_MSC_VER)
+    if (!window) {
+        return;
+    }
+
+    qInfo() << color;
+    QColor c(color);
+    COLORREF colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
+    DwmSetWindowAttribute((HWND) window->winId(), DWMWA_CAPTION_COLOR, &colorref, sizeof(colorref));
+#endif
 }

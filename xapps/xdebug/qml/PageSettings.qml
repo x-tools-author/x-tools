@@ -49,31 +49,31 @@ Item {
 
                 onActivated: xSettings.hdpiPolicy = hidComboBox.currentValue
                 Component.onCompleted: {
-                    var v = xSettings.hdpiPolicy
-                    var ret = hidComboBox.indexOfValue(v)
+                    var v = xSettings.hdpiPolicy;
+                    var ret = hidComboBox.indexOfValue(v);
                     if (ret >= 0 && ret < hidComboBox.count) {
-                        hidComboBox.currentIndex = ret
+                        hidComboBox.currentIndex = ret;
                     }
                 }
             }
             Label {
                 text: qsTr("Language")
             }
-            ControlsComboBox {// model: xApp.supportedLanguages
-                // onActivated: {
-                //     xSettings.setLanguage(displayText)
-                //     xApp.setupLanguage(displayText)
-                // }
-                // Layout.minimumWidth: 248
-                // Component.onCompleted: {
-                //     var language = xSettings.language()
-                //     if (!language) {
-                //         language = xApp.defaultLanguage()
-                //     }
-                //     var index = model.indexOf(language)
-                //     currentIndex = index
-                // }
-            }
+            // model: xApp.supportedLanguages
+            // onActivated: {
+            //     xSettings.setLanguage(displayText)
+            //     xApp.setupLanguage(displayText)
+            // }
+            // Layout.minimumWidth: 248
+            // Component.onCompleted: {
+            //     var language = xSettings.language()
+            //     if (!language) {
+            //         language = xApp.defaultLanguage()
+            //     }
+            //     var index = model.indexOf(language)
+            //     currentIndex = index
+            // }
+            ControlsComboBox {}
             Label {
                 text: qsTr("Theme")
                 font.bold: true
@@ -85,13 +85,16 @@ Item {
                 textRole: "text"
                 valueRole: "value"
                 onActivated: {
-                    xMaterialTheme = currentValue
-                    xSettings.setValue(xKeysObj.materialTheme, currentValue)
+                    xMaterialTheme = currentValue;
+                    xSettings.setValue(xKeysObj.materialTheme, currentValue);
+
+                    xApp.updateWindowStyle(mainWindow, Material.backgroundColor);
                 }
                 Layout.minimumWidth: 248
                 Component.onCompleted: {
-                    var index = indexOfValue(xMaterialTheme)
-                    currentIndex = index
+                    var index = indexOfValue(xMaterialTheme);
+                    currentIndex = index;
+                    xApp.updateWindowStyle(mainWindow, Material.backgroundColor);
                 }
                 model: ListModel {
                     ListElement {
@@ -117,14 +120,14 @@ Item {
                         width: 32
                         height: 32
                         color: {
-                            var shade = xMaterialTheme === Material.Dark ? Material.Shade200 : Material.Shade500
-                            return Material.color(modelData, shade)
+                            var shade = xMaterialTheme === Material.Dark ? Material.Shade200 : Material.Shade500;
+                            return Material.color(modelData, shade);
                         }
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                xMaterialPrimary = modelData
-                                xSettings.setValue(xKeysObj.materialPrimary, modelData)
+                                xMaterialPrimary = modelData;
+                                xSettings.setValue(xKeysObj.materialPrimary, modelData);
                             }
                         }
                         CheckBox {
@@ -140,26 +143,26 @@ Item {
     }
 
     function themeColors() {
-        var tmp = []
-        tmp.push(Material.Red)
-        tmp.push(Material.Pink)
-        tmp.push(Material.Purple)
-        tmp.push(Material.DeepPurple)
-        tmp.push(Material.Indigo)
-        tmp.push(Material.Blue)
-        tmp.push(Material.LightBlue)
-        tmp.push(Material.Cyan)
-        tmp.push(Material.Teal)
-        tmp.push(Material.Green)
-        tmp.push(Material.LightGreen)
-        tmp.push(Material.Lime)
-        tmp.push(Material.Yellow)
-        tmp.push(Material.Amber)
-        tmp.push(Material.Orange)
-        tmp.push(Material.DeepOrange)
-        tmp.push(Material.Brown)
-        tmp.push(Material.Grey)
-        tmp.push(Material.BlueGrey)
-        return tmp
+        var tmp = [];
+        tmp.push(Material.Red);
+        tmp.push(Material.Pink);
+        tmp.push(Material.Purple);
+        tmp.push(Material.DeepPurple);
+        tmp.push(Material.Indigo);
+        tmp.push(Material.Blue);
+        tmp.push(Material.LightBlue);
+        tmp.push(Material.Cyan);
+        tmp.push(Material.Teal);
+        tmp.push(Material.Green);
+        tmp.push(Material.LightGreen);
+        tmp.push(Material.Lime);
+        tmp.push(Material.Yellow);
+        tmp.push(Material.Amber);
+        tmp.push(Material.Orange);
+        tmp.push(Material.DeepOrange);
+        tmp.push(Material.Brown);
+        tmp.push(Material.Grey);
+        tmp.push(Material.BlueGrey);
+        return tmp;
     }
 }

@@ -25,4 +25,6 @@ public:
     Q_INVOKABLE QByteArray cookedAffixes(int affixes);
     Q_INVOKABLE void setQuickTextDocumentMaximumBlockCount(QVariant textDocument, int count);
     Q_INVOKABLE QString dateTimeString(const QString &format);
+
+    Q_INVOKABLE void updateWindowStyle(QWindow *window, const QString &color);
 };

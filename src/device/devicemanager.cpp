@@ -27,7 +27,7 @@
 #include "websocketclientui.h"
 #include "websocketserverui.h"
 #endif
-#ifdef X_ENABLE_BLUETOOTH
+#if X_ENABLE_BLUETOOTH
 #include "blecentralui.h"
 #endif
 #ifdef X_ENABLE_CHARTS
@@ -59,7 +59,7 @@ QList<int> DeviceManager::supportedDeviceTypes()
 #ifdef X_ENABLE_HID
         deviceTypes << static_cast<int>(DeviceType::Hid);
 #endif
-#ifdef X_ENABLE_BLUETOOTH
+#if X_ENABLE_BLUETOOTH
         deviceTypes << static_cast<int>(DeviceType::BleCentral);
 #endif
 #if 0
@@ -168,7 +168,7 @@ DeviceUi *DeviceManager::newDeviceUi(int type)
     case static_cast<int>(DeviceManager::Hid):
         return new HidDeviceUi();
 #endif
-#ifdef X_ENABLE_BLUETOOTH
+#if X_ENABLE_BLUETOOTH
     case static_cast<int>(DeviceManager::BleCentral):
         return new BleCentralUi();
 #endif
@@ -214,7 +214,7 @@ QString DeviceManager::deviceIconPath(int type)
 #endif
         return QString(":/res/icons/cable.svg");
 
-#ifdef X_ENABLE_BLUETOOTH
+#if X_ENABLE_BLUETOOTH
     case static_cast<int>(DeviceManager::BleCentral):
         return QString(":/res/icons/bluetooth_searching.svg");
 #endif

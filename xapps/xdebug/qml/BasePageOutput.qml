@@ -47,17 +47,17 @@ Item {
 
             Repeater {
                 model: {
-                    var tmp = []
-                    tmp.push([qsTr("Show read text"), "qrc:/res/icons/rx.svg"])
-                    tmp.push([qsTr("Show written data"), "qrc:/res/icons/tx.svg"])
-                    tmp.push([qsTr("Show date "), "qrc:/res/icons/date.svg"])
-                    tmp.push([qsTr("Show time "), "qrc:/res/icons/time.svg"])
-                    tmp.push([qsTr("Show ms "), "qrc:/res/icons/ms.svg"])
-                    tmp.push([qsTr("Auto wrap"), "qrc:/res/icons/enter.svg"])
-                    return tmp
+                    var tmp = [];
+                    tmp.push([qsTr("Show read text"), "qrc:/res/icons/rx.svg"]);
+                    tmp.push([qsTr("Show written data"), "qrc:/res/icons/tx.svg"]);
+                    tmp.push([qsTr("Show date "), "qrc:/res/icons/date.svg"]);
+                    tmp.push([qsTr("Show time "), "qrc:/res/icons/time.svg"]);
+                    tmp.push([qsTr("Show ms "), "qrc:/res/icons/ms.svg"]);
+                    tmp.push([qsTr("Auto wrap"), "qrc:/res/icons/enter.svg"]);
+                    return tmp;
                 }
 
-                ToolButton {
+                ControlsToolButton {
                     id: tb
                     icon.source: modelData[1]
                     checkable: true
@@ -66,52 +66,52 @@ Item {
                     Layout.alignment: Qt.AlignVCenter
                     onClicked: {
                         if (index === 0) {
-                            showRx = checked
-                            xSettings.setValue(settingKeys.showRx, checked)
+                            showRx = checked;
+                            xSettings.setValue(settingKeys.showRx, checked);
                         } else if (index === 1) {
-                            showTx = checked
-                            xSettings.setValue(settingKeys.showTx, checked)
+                            showTx = checked;
+                            xSettings.setValue(settingKeys.showTx, checked);
                         } else if (index === 2) {
-                            showDate = checked
-                            xSettings.setValue(settingKeys.showDate, checked)
+                            showDate = checked;
+                            xSettings.setValue(settingKeys.showDate, checked);
                         } else if (index === 3) {
-                            showTime = checked
-                            xSettings.setValue(settingKeys.showTime, checked)
+                            showTime = checked;
+                            xSettings.setValue(settingKeys.showTime, checked);
                         } else if (index === 4) {
-                            showMs = checked
-                            xSettings.setValue(settingKeys.showMs, checked)
+                            showMs = checked;
+                            xSettings.setValue(settingKeys.showMs, checked);
                         } else if (index === 5) {
-                            autoWrap = checked
-                            xSettings.setValue(settingKeys.autoWrap, checked)
+                            autoWrap = checked;
+                            xSettings.setValue(settingKeys.autoWrap, checked);
                         }
                     }
                     Component.onCompleted: {
                         if (index === 0) {
                             // console.info(settingsGroup, "123", ret, typeof ret)
                             // ret是string类型
-                            var ret = xSettings.value(settingKeys.showRx, true)
-                            checked = true //(ret === xTrue ? true : false)
-                            showRx = checked
+                            var ret = xSettings.value(settingKeys.showRx, true);
+                            checked = true; //(ret === xTrue ? true : false)
+                            showRx = checked;
                         } else if (index === 1) {
-                            ret = xSettings.value(settingKeys.showTx, true)
-                            checked = true //(ret === xTrue ? true : false)
-                            showTx = checked
+                            ret = xSettings.value(settingKeys.showTx, true);
+                            checked = true; //(ret === xTrue ? true : false)
+                            showTx = checked;
                         } else if (index === 2) {
-                            ret = xSettings.value(settingKeys.showDate, false)
-                            checked = (ret === xTrue ? true : false)
-                            showDate = checked
+                            ret = xSettings.value(settingKeys.showDate, false);
+                            checked = (ret === xTrue ? true : false);
+                            showDate = checked;
                         } else if (index === 3) {
-                            ret = xSettings.value(settingKeys.showTime, true)
-                            checked = (ret === xTrue ? true : false)
-                            showTime = checked
+                            ret = xSettings.value(settingKeys.showTime, true);
+                            checked = (ret === xTrue ? true : false);
+                            showTime = checked;
                         } else if (index === 4) {
-                            ret = xSettings.value(settingKeys.showMs, false)
-                            checked = (ret === xTrue ? true : false)
-                            showMs = checked
+                            ret = xSettings.value(settingKeys.showMs, false);
+                            checked = (ret === xTrue ? true : false);
+                            showMs = checked;
                         } else if (index === 5) {
-                            ret = xSettings.value(settingKeys.autoWrap, false)
-                            checked = (ret === xTrue ? true : false)
-                            autoWrap = checked
+                            ret = xSettings.value(settingKeys.autoWrap, false);
+                            checked = (ret === xTrue ? true : false);
+                            autoWrap = checked;
                         }
                     }
                 }
@@ -120,7 +120,7 @@ Item {
                 height: 1
                 Layout.fillWidth: true
             }
-            ToolButton {
+            ControlsToolButton {
                 id: clearToolButton
                 icon.source: "qrc:/res/icons/clear.svg"
                 onClicked: outputTextArea.clear()
@@ -154,56 +154,56 @@ Item {
     Connections {
         target: device
         function onBytesRead(bytes, from) {
-            var txt = xApp.bytes2string(bytes, format)
+            var txt = xApp.bytes2string(bytes, format);
             if (showRx) {
-                outputText(txt, from, true)
+                outputText(txt, from, true);
             }
         }
         function onBytesWritten(bytes, to) {
-            var txt = xApp.bytes2string(bytes, format)
+            var txt = xApp.bytes2string(bytes, format);
             if (showTx) {
-                outputText(txt, to, false)
+                outputText(txt, to, false);
             }
         }
     }
 
     Component.onCompleted: {
-        xApp.showSplashScreenMessage("Loading output settings for: " + settingsGroup)
+        xApp.showSplashScreenMessage("Loading output settings for: " + settingsGroup);
 
-        var format = xSettings.value(settingKeys.format, xHex)
-        formatToolItem.setValue(format ? format : xHex)
+        var format = xSettings.value(settingKeys.format, xHex);
+        formatToolItem.setValue(format ? format : xHex);
     }
 
     function outputText(txt, fromTo, isRx) {
-        var dtFlag = dateTimeFlag()
-        var outFlag = outputFlag(isRx, fromTo, dtFlag)
-        var cookedTxt = "<font color=%1>%2</font>"
-        cookedTxt = cookedTxt.arg(Material.foreground).arg(txt)
-        outputTextArea.append(outFlag + cookedTxt)
+        var dtFlag = dateTimeFlag();
+        var outFlag = outputFlag(isRx, fromTo, dtFlag);
+        var cookedTxt = "<font color=%1>%2</font>";
+        cookedTxt = cookedTxt.arg(Material.foreground).arg(txt);
+        outputTextArea.append(outFlag + cookedTxt);
     }
 
     function outputFlag(isRx, target, dateTime) {
-        var outputColor = isRx ? rxColor : txColor
-        var fromTo = isRx ? "Rx" : "Tx"
+        var outputColor = isRx ? rxColor : txColor;
+        var fromTo = isRx ? "Rx" : "Tx";
         //&lt; <
         //&gt; >
-        var flag = isRx ? ("%1&lt;-").arg(target) : ("-&gt;%1").arg(target)
-        var txt = "<font color=silver>[<font color=%1>%2</font> (%3) %4] </font>"
-        txt = txt.arg(outputColor).arg(fromTo).arg(flag).arg(dateTime)
-        return txt
+        var flag = isRx ? ("%1&lt;-").arg(target) : ("-&gt;%1").arg(target);
+        var txt = "<font color=silver>[<font color=%1>%2</font> (%3) %4] </font>";
+        txt = txt.arg(outputColor).arg(fromTo).arg(flag).arg(dateTime);
+        return txt;
     }
 
     function dateTimeFlag() {
-        var str = ""
+        var str = "";
         if (showDate) {
-            str = str + xApp.dateTimeString("yyyy-MM-dd ")
+            str = str + xApp.dateTimeString("yyyy-MM-dd ");
         }
         if (showTime) {
-            str = str + xApp.dateTimeString("hh:mm:ss")
+            str = str + xApp.dateTimeString("hh:mm:ss");
             if (showMs) {
-                str = str + "." + xApp.dateTimeString("zzz")
+                str = str + "." + xApp.dateTimeString("zzz");
             }
         }
-        return str
+        return str;
     }
 }
