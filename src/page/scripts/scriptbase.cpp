@@ -176,8 +176,9 @@ void ScriptBase::onNewButtonClicked()
     QString fileName = file.fileName();
     ui->comboBoxFile->addItem(txt, fileName);
     ui->comboBoxFile->setCurrentIndex(ui->comboBoxFile->count() - 1);
-    file.open(QIODevice::WriteOnly);
-    file.close();
+    if (file.open(QIODevice::WriteOnly)) {
+        file.close();
+    }
 }
 
 void ScriptBase::onOpenButtonClicked()
