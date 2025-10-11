@@ -11,7 +11,7 @@
     XMODEM, YMODEM, ZMODEM
     ftp
 
-V7.5.0 2025年09月xx日
+V7.5.0 2025年10月xx日
     新特性：
     01. 支持自定义Lua脚本和JavaScript脚本扩展
     02. 支持HID设备调试
