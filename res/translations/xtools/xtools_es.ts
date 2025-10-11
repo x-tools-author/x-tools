@@ -4,22 +4,22 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../../src/application.cpp" line="284"/>
+        <location filename="../../../src/application.cpp" line="319"/>
         <source>Transfer rx bytes with right page</source>
-    <translation>Transferir bytes recibidos con la página derecha</translation>
+        <translation>Transferir bytes recibidos con la página derecha</translation>
     </message>
     <message>
-        <location filename="../../../src/application.cpp" line="289"/>
+        <location filename="../../../src/application.cpp" line="324"/>
         <source>Transfer rx bytes with left page</source>
-    <translation>Transferir bytes recibidos con la página izquierda</translation>
+        <translation>Transferir bytes recibidos con la página izquierda</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
-        <location filename="../../../src/layoutmanager.cpp" line="75"/>
+        <location filename="../../../src/layoutmanager.cpp" line="83"/>
         <source>Node Editor</source>
-    <translation>Editor de nodos</translation>
+        <translation>Editor de nodos</translation>
     </message>
 </context>
 <context>
@@ -27,280 +27,285 @@
     <message>
         <location filename="../../../src/mainwindow.cpp" line="130"/>
         <source>General</source>
-    <translation>General</translation>
+        <translation>General</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="312"/>
+        <location filename="../../../src/mainwindow.cpp" line="317"/>
         <source>&amp;File</source>
-    <translation>&amp;Archivo</translation>
+        <translation>&amp;Archivo</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="314"/>
+        <location filename="../../../src/mainwindow.cpp" line="319"/>
         <source>New Window</source>
-    <translation>Nueva ventana</translation>
+        <translation>Nueva ventana</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="322"/>
+        <location filename="../../../src/mainwindow.cpp" line="327"/>
         <source>Save Parameters</source>
-    <translation>Guardar parámetros</translation>
+        <translation>Guardar parámetros</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="324"/>
-        <location filename="../../../src/mainwindow.cpp" line="806"/>
-        <source>Import Parameters</source>
-    <translation>Importar parámetros</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="328"/>
+        <location filename="../../../src/mainwindow.cpp" line="329"/>
         <location filename="../../../src/mainwindow.cpp" line="819"/>
-        <source>Export Parameters</source>
-    <translation>Exportar parámetros</translation>
+        <source>Import Parameters</source>
+        <translation>Importar parámetros</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="333"/>
+        <location filename="../../../src/mainwindow.cpp" line="832"/>
+        <source>Export Parameters</source>
+        <translation>Exportar parámetros</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="338"/>
         <source>Exit Application</source>
-    <translation>Salir de la aplicación</translation>
+        <translation>Salir de la aplicación</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../../src/mainwindow.cpp" line="347"/>
         <source>&amp;Tools</source>
-    <translation>&amp;Herramientas</translation>
+        <translation>&amp;Herramientas</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="345"/>
+        <location filename="../../../src/mainwindow.cpp" line="350"/>
         <source>New</source>
-    <translation>Nuevo</translation>
+        <translation>Nuevo</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="381"/>
+        <location filename="../../../src/mainwindow.cpp" line="386"/>
         <source>&amp;Options</source>
-    <translation>&amp;Opciones</translation>
+        <translation>&amp;Opciones</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="390"/>
+        <location filename="../../../src/mainwindow.cpp" line="395"/>
         <source>Use System Proxy</source>
-    <translation>Usar proxy del sistema</translation>
+        <translation>Usar proxy del sistema</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="400"/>
+        <location filename="../../../src/mainwindow.cpp" line="405"/>
         <source>Exit to System Tray</source>
-    <translation>Salir a la bandeja del sistema</translation>
+        <translation>Salir a la bandeja del sistema</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="418"/>
+        <location filename="../../../src/mainwindow.cpp" line="423"/>
         <source>Application Style</source>
-    <translation>Estilo de la aplicación</translation>
+        <translation>Estilo de la aplicación</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="441"/>
+        <location filename="../../../src/mainwindow.cpp" line="446"/>
         <source>Settings</source>
-    <translation>Configuración</translation>
+        <translation>Configuración</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="444"/>
+        <location filename="../../../src/mainwindow.cpp" line="449"/>
         <source>Clear Settings</source>
-    <translation>Borrar configuración</translation>
+        <translation>Borrar configuración</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="450"/>
+        <location filename="../../../src/mainwindow.cpp" line="455"/>
         <source>Open Settings Directory</source>
-    <translation>Abrir directorio de configuración</translation>
+        <translation>Abrir directorio de configuración</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="459"/>
+        <location filename="../../../src/mainwindow.cpp" line="464"/>
         <source>HDPI Policy</source>
-    <translation>Política HDPI</translation>
+        <translation>Política HDPI</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="503"/>
+        <location filename="../../../src/mainwindow.cpp" line="508"/>
         <source>Color Scheme</source>
-    <translation>Esquema de colores</translation>
+        <translation>Esquema de colores</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="505"/>
+        <location filename="../../../src/mainwindow.cpp" line="510"/>
         <source>Dark</source>
-    <translation>Oscuro</translation>
+        <translation>Oscuro</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="506"/>
+        <location filename="../../../src/mainwindow.cpp" line="511"/>
         <source>Light</source>
-    <translation>Claro</translation>
+        <translation>Claro</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="507"/>
+        <location filename="../../../src/mainwindow.cpp" line="512"/>
         <source>System</source>
-    <translation>Sistema</translation>
+        <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="563"/>
+        <location filename="../../../src/mainwindow.cpp" line="568"/>
         <source>&amp;Languages</source>
-    <translation>&amp;Idiomas</translation>
+        <translation>&amp;Idiomas</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="588"/>
+        <location filename="../../../src/mainwindow.cpp" line="593"/>
         <source>&amp;View</source>
-    <translation>&amp;Vista</translation>
+        <translation>&amp;Vista</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="640"/>
+        <location filename="../../../src/mainwindow.cpp" line="645"/>
         <source>Stays on Top</source>
-    <translation>Permanecer arriba</translation>
+        <translation>Permanecer arriba</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="660"/>
+        <location filename="../../../src/mainwindow.cpp" line="665"/>
         <source>&amp;Help</source>
-    <translation>&amp;Ayuda</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="661"/>
-        <source>About Qt</source>
-    <translation>Acerca de Qt</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="662"/>
-        <location filename="../../../src/mainwindow.cpp" line="862"/>
-        <source>About</source>
-    <translation>Acerca de</translation>
+        <translation>&amp;Ayuda</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="666"/>
+        <source>About Qt</source>
+        <translation>Acerca de Qt</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="667"/>
+        <location filename="../../../src/mainwindow.cpp" line="875"/>
+        <source>About</source>
+        <translation>Acerca de</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="671"/>
         <source>Screenshot</source>
-    <translation>Captura de pantalla</translation>
+        <translation>Captura de pantalla</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="675"/>
+        <location filename="../../../src/mainwindow.cpp" line="680"/>
         <source>Buy from Store</source>
-    <translation>Comprar en la tienda</translation>
+        <translation>Comprar en la tienda</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="681"/>
-        <location filename="../../../src/mainwindow.cpp" line="718"/>
+        <location filename="../../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../../src/mainwindow.cpp" line="724"/>
         <source>Release History</source>
-    <translation>Historial de versiones</translation>
+        <translation>Historial de versiones</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../../src/mainwindow.cpp" line="687"/>
         <source>Join in QQ Group</source>
-    <translation>Unirse al grupo QQ</translation>
+        <translation>Unirse al grupo QQ</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="685"/>
+        <location filename="../../../src/mainwindow.cpp" line="690"/>
         <source>Online Manual</source>
-    <translation>Manual en línea</translation>
+        <translation>Manual en línea</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="688"/>
+        <location filename="../../../src/mainwindow.cpp" line="693"/>
         <source>Get Sources from Github</source>
-    <translation>Obtener fuentes de Github</translation>
+        <translation>Obtener fuentes de Github</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="691"/>
+        <location filename="../../../src/mainwindow.cpp" line="696"/>
         <source>Get Sources from Gitee</source>
-    <translation>Obtener fuentes de Gitee</translation>
+        <translation>Obtener fuentes de Gitee</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="708"/>
+        <location filename="../../../src/mainwindow.cpp" line="714"/>
         <source>Third Party Open Source</source>
-    <translation>Código abierto de terceros</translation>
+        <translation>Código abierto de terceros</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="738"/>
+        <location filename="../../../src/mainwindow.cpp" line="744"/>
         <source>QR Code</source>
-    <translation>Código QR</translation>
+        <translation>Código QR</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="747"/>
+        <location filename="../../../src/mainwindow.cpp" line="753"/>
         <source>User QQ Group</source>
-    <translation>Grupo de usuarios QQ</translation>
+        <translation>Grupo de usuarios QQ</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="748"/>
+        <location filename="../../../src/mainwindow.cpp" line="754"/>
         <source>Qt QQ Group</source>
-    <translation>Grupo Qt QQ</translation>
+        <translation>Grupo Qt QQ</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="769"/>
+        <location filename="../../../src/mainwindow.cpp" line="775"/>
         <source>Need to Reboot</source>
-    <translation>Necesita reiniciar</translation>
+        <translation>Necesita reiniciar</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="770"/>
+        <location filename="../../../src/mainwindow.cpp" line="776"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-    <translation>La operación requiere reiniciar para que surta efecto, ¿reiniciar la aplicación ahora?</translation>
+        <translation>La operación requiere reiniciar para que surta efecto, ¿reiniciar la aplicación ahora?</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="808"/>
+        <location filename="../../../src/mainwindow.cpp" line="778"/>
+        <source>(Please reboot your application manually.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../../src/mainwindow.cpp" line="821"/>
+        <location filename="../../../src/mainwindow.cpp" line="834"/>
         <source>Json Files (*.json)</source>
-    <translation>Archivos Json (*.json)</translation>
+        <translation>Archivos Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="850"/>
+        <location filename="../../../src/mainwindow.cpp" line="863"/>
         <source>Unknown</source>
-    <translation>Desconocido</translation>
+        <translation>Desconocido</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="856"/>
+        <location filename="../../../src/mainwindow.cpp" line="869"/>
         <source>Commit hash</source>
-    <translation>Hash de commit</translation>
+        <translation>Hash de commit</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="858"/>
+        <location filename="../../../src/mainwindow.cpp" line="871"/>
         <source>Commit time</source>
-    <translation>Hora de commit</translation>
+        <translation>Hora de commit</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="859"/>
+        <location filename="../../../src/mainwindow.cpp" line="872"/>
         <source>Build Date</source>
-    <translation>Fecha de compilación</translation>
+        <translation>Fecha de compilación</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="860"/>
+        <location filename="../../../src/mainwindow.cpp" line="873"/>
         <source>Copyright</source>
-    <translation>Copyright</translation>
+        <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="861"/>
+        <location filename="../../../src/mainwindow.cpp" line="874"/>
         <source>All rights reserved.</source>
-    <translation>Todos los derechos reservados.</translation>
+        <translation>Todos los derechos reservados.</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../../src/main.cpp" line="35"/>
+        <location filename="../../../src/main.cpp" line="39"/>
         <source>Application is booting...</source>
-    <translation>La aplicación se está iniciando...</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="464"/>
-        <source>System</source>
-    <translation>Sistema</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="465"/>
-        <source>Round up for .5 and above</source>
-    <translation>Redondear hacia arriba para .5 y superior</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="466"/>
-        <source>Always round up</source>
-    <translation>Siempre redondear hacia arriba</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="467"/>
-        <source>Always round down</source>
-    <translation>Siempre redondear hacia abajo</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="468"/>
-        <source>Round up for .75 and above</source>
-    <translation>Redondear hacia arriba para .75 y superior</translation>
+        <translation>La aplicación se está iniciando...</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="469"/>
+        <source>System</source>
+        <translation>Sistema</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="470"/>
+        <source>Round up for .5 and above</source>
+        <translation>Redondear hacia arriba para .5 y superior</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="471"/>
+        <source>Always round up</source>
+        <translation>Siempre redondear hacia arriba</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="472"/>
+        <source>Always round down</source>
+        <translation>Siempre redondear hacia abajo</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="473"/>
+        <source>Round up for .75 and above</source>
+        <translation>Redondear hacia arriba para .75 y superior</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="474"/>
         <source>Don&apos;t round</source>
-    <translation>No redondear</translation>
+        <translation>No redondear</translation>
     </message>
 </context>
 <context>
@@ -308,17 +313,17 @@
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="19"/>
         <source>xTools</source>
-    <translation>xTools</translation>
+        <translation>xTools</translation>
     </message>
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="22"/>
         <source>Open main window</source>
-    <translation>Abrir ventana principal</translation>
+        <translation>Abrir ventana principal</translation>
     </message>
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="24"/>
         <source>Exit program</source>
-    <translation>Salir del programa</translation>
+        <translation>Salir del programa</translation>
     </message>
 </context>
 </TS>

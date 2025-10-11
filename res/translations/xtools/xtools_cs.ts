@@ -4,22 +4,22 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../../src/application.cpp" line="284"/>
+        <location filename="../../../src/application.cpp" line="319"/>
         <source>Transfer rx bytes with right page</source>
-    <translation>Přenést přijaté bajty s pravou stránkou</translation>
+        <translation>Přenést přijaté bajty s pravou stránkou</translation>
     </message>
     <message>
-        <location filename="../../../src/application.cpp" line="289"/>
+        <location filename="../../../src/application.cpp" line="324"/>
         <source>Transfer rx bytes with left page</source>
-    <translation>Přenést přijaté bajty s levou stránkou</translation>
+        <translation>Přenést přijaté bajty s levou stránkou</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
-        <location filename="../../../src/layoutmanager.cpp" line="75"/>
+        <location filename="../../../src/layoutmanager.cpp" line="83"/>
         <source>Node Editor</source>
-    <translation>Editor uzlů</translation>
+        <translation>Editor uzlů</translation>
     </message>
 </context>
 <context>
@@ -27,280 +27,285 @@
     <message>
         <location filename="../../../src/mainwindow.cpp" line="130"/>
         <source>General</source>
-    <translation>Obecné</translation>
+        <translation>Obecné</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="312"/>
+        <location filename="../../../src/mainwindow.cpp" line="317"/>
         <source>&amp;File</source>
-    <translation>&amp;Soubor</translation>
+        <translation>&amp;Soubor</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="314"/>
+        <location filename="../../../src/mainwindow.cpp" line="319"/>
         <source>New Window</source>
-    <translation>Nové okno</translation>
+        <translation>Nové okno</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="322"/>
+        <location filename="../../../src/mainwindow.cpp" line="327"/>
         <source>Save Parameters</source>
-    <translation>Uložit parametry</translation>
+        <translation>Uložit parametry</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="324"/>
-        <location filename="../../../src/mainwindow.cpp" line="806"/>
-        <source>Import Parameters</source>
-    <translation>Importovat parametry</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="328"/>
+        <location filename="../../../src/mainwindow.cpp" line="329"/>
         <location filename="../../../src/mainwindow.cpp" line="819"/>
-        <source>Export Parameters</source>
-    <translation>Exportovat parametry</translation>
+        <source>Import Parameters</source>
+        <translation>Importovat parametry</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="333"/>
+        <location filename="../../../src/mainwindow.cpp" line="832"/>
+        <source>Export Parameters</source>
+        <translation>Exportovat parametry</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="338"/>
         <source>Exit Application</source>
-    <translation>Ukončit aplikaci</translation>
+        <translation>Ukončit aplikaci</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../../src/mainwindow.cpp" line="347"/>
         <source>&amp;Tools</source>
-    <translation>&amp;Nástroje</translation>
+        <translation>&amp;Nástroje</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="345"/>
+        <location filename="../../../src/mainwindow.cpp" line="350"/>
         <source>New</source>
-    <translation>Nový</translation>
+        <translation>Nový</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="381"/>
+        <location filename="../../../src/mainwindow.cpp" line="386"/>
         <source>&amp;Options</source>
-    <translation>&amp;Možnosti</translation>
+        <translation>&amp;Možnosti</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="390"/>
+        <location filename="../../../src/mainwindow.cpp" line="395"/>
         <source>Use System Proxy</source>
-    <translation>Použít systémový proxy</translation>
+        <translation>Použít systémový proxy</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="400"/>
+        <location filename="../../../src/mainwindow.cpp" line="405"/>
         <source>Exit to System Tray</source>
-    <translation>Ukončit do systémové lišty</translation>
+        <translation>Ukončit do systémové lišty</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="418"/>
+        <location filename="../../../src/mainwindow.cpp" line="423"/>
         <source>Application Style</source>
-    <translation>Styl aplikace</translation>
+        <translation>Styl aplikace</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="441"/>
+        <location filename="../../../src/mainwindow.cpp" line="446"/>
         <source>Settings</source>
-    <translation>Nastavení</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="444"/>
+        <location filename="../../../src/mainwindow.cpp" line="449"/>
         <source>Clear Settings</source>
-    <translation>Vymazat nastavení</translation>
+        <translation>Vymazat nastavení</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="450"/>
+        <location filename="../../../src/mainwindow.cpp" line="455"/>
         <source>Open Settings Directory</source>
-    <translation>Otevřít adresář nastavení</translation>
+        <translation>Otevřít adresář nastavení</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="459"/>
+        <location filename="../../../src/mainwindow.cpp" line="464"/>
         <source>HDPI Policy</source>
-    <translation>HDPI politika</translation>
+        <translation>HDPI politika</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="503"/>
+        <location filename="../../../src/mainwindow.cpp" line="508"/>
         <source>Color Scheme</source>
-    <translation>Barevné schéma</translation>
+        <translation>Barevné schéma</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="505"/>
+        <location filename="../../../src/mainwindow.cpp" line="510"/>
         <source>Dark</source>
-    <translation>Tmavé</translation>
+        <translation>Tmavé</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="506"/>
+        <location filename="../../../src/mainwindow.cpp" line="511"/>
         <source>Light</source>
-    <translation>Světlé</translation>
+        <translation>Světlé</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="507"/>
+        <location filename="../../../src/mainwindow.cpp" line="512"/>
         <source>System</source>
-    <translation>Systém</translation>
+        <translation>Systém</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="563"/>
+        <location filename="../../../src/mainwindow.cpp" line="568"/>
         <source>&amp;Languages</source>
-    <translation>&amp;Jazyky</translation>
+        <translation>&amp;Jazyky</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="588"/>
+        <location filename="../../../src/mainwindow.cpp" line="593"/>
         <source>&amp;View</source>
-    <translation>&amp;Zobrazení</translation>
+        <translation>&amp;Zobrazení</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="640"/>
+        <location filename="../../../src/mainwindow.cpp" line="645"/>
         <source>Stays on Top</source>
-    <translation>Zůstává nahoře</translation>
+        <translation>Zůstává nahoře</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="660"/>
+        <location filename="../../../src/mainwindow.cpp" line="665"/>
         <source>&amp;Help</source>
-    <translation>&amp;Nápověda</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="661"/>
-        <source>About Qt</source>
-    <translation>O Qt</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="662"/>
-        <location filename="../../../src/mainwindow.cpp" line="862"/>
-        <source>About</source>
-    <translation>O aplikaci</translation>
+        <translation>&amp;Nápověda</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="666"/>
+        <source>About Qt</source>
+        <translation>O Qt</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="667"/>
+        <location filename="../../../src/mainwindow.cpp" line="875"/>
+        <source>About</source>
+        <translation>O aplikaci</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="671"/>
         <source>Screenshot</source>
-    <translation>Snímek obrazovky</translation>
+        <translation>Snímek obrazovky</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="675"/>
+        <location filename="../../../src/mainwindow.cpp" line="680"/>
         <source>Buy from Store</source>
-    <translation>Koupit v obchodě</translation>
+        <translation>Koupit v obchodě</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="681"/>
-        <location filename="../../../src/mainwindow.cpp" line="718"/>
+        <location filename="../../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../../src/mainwindow.cpp" line="724"/>
         <source>Release History</source>
-    <translation>Historie vydání</translation>
+        <translation>Historie vydání</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../../src/mainwindow.cpp" line="687"/>
         <source>Join in QQ Group</source>
-    <translation>Připojit se ke skupině QQ</translation>
+        <translation>Připojit se ke skupině QQ</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="685"/>
+        <location filename="../../../src/mainwindow.cpp" line="690"/>
         <source>Online Manual</source>
-    <translation>Online manuál</translation>
+        <translation>Online manuál</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="688"/>
+        <location filename="../../../src/mainwindow.cpp" line="693"/>
         <source>Get Sources from Github</source>
-    <translation>Získat zdroje z Githubu</translation>
+        <translation>Získat zdroje z Githubu</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="691"/>
+        <location filename="../../../src/mainwindow.cpp" line="696"/>
         <source>Get Sources from Gitee</source>
-    <translation>Získat zdroje z Gitee</translation>
+        <translation>Získat zdroje z Gitee</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="708"/>
+        <location filename="../../../src/mainwindow.cpp" line="714"/>
         <source>Third Party Open Source</source>
-    <translation>Open source třetích stran</translation>
+        <translation>Open source třetích stran</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="738"/>
+        <location filename="../../../src/mainwindow.cpp" line="744"/>
         <source>QR Code</source>
-    <translation>QR kód</translation>
+        <translation>QR kód</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="747"/>
+        <location filename="../../../src/mainwindow.cpp" line="753"/>
         <source>User QQ Group</source>
-    <translation>Uživatelská skupina QQ</translation>
+        <translation>Uživatelská skupina QQ</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="748"/>
+        <location filename="../../../src/mainwindow.cpp" line="754"/>
         <source>Qt QQ Group</source>
-    <translation>Qt QQ skupina</translation>
+        <translation>Qt QQ skupina</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="769"/>
+        <location filename="../../../src/mainwindow.cpp" line="775"/>
         <source>Need to Reboot</source>
-    <translation>Je třeba restartovat</translation>
+        <translation>Je třeba restartovat</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="770"/>
+        <location filename="../../../src/mainwindow.cpp" line="776"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-    <translation>Operace vyžaduje restartování, restartovat aplikaci nyní?</translation>
+        <translation>Operace vyžaduje restartování, restartovat aplikaci nyní?</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="808"/>
+        <location filename="../../../src/mainwindow.cpp" line="778"/>
+        <source>(Please reboot your application manually.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../../src/mainwindow.cpp" line="821"/>
+        <location filename="../../../src/mainwindow.cpp" line="834"/>
         <source>Json Files (*.json)</source>
-    <translation>Soubory Json (*.json)</translation>
+        <translation>Soubory Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="850"/>
+        <location filename="../../../src/mainwindow.cpp" line="863"/>
         <source>Unknown</source>
-    <translation>Neznámé</translation>
+        <translation>Neznámé</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="856"/>
+        <location filename="../../../src/mainwindow.cpp" line="869"/>
         <source>Commit hash</source>
-    <translation>Hash commitu</translation>
+        <translation>Hash commitu</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="858"/>
+        <location filename="../../../src/mainwindow.cpp" line="871"/>
         <source>Commit time</source>
-    <translation>Čas commitu</translation>
+        <translation>Čas commitu</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="859"/>
+        <location filename="../../../src/mainwindow.cpp" line="872"/>
         <source>Build Date</source>
-    <translation>Datum sestavení</translation>
+        <translation>Datum sestavení</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="860"/>
+        <location filename="../../../src/mainwindow.cpp" line="873"/>
         <source>Copyright</source>
-    <translation>Copyright</translation>
+        <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="861"/>
+        <location filename="../../../src/mainwindow.cpp" line="874"/>
         <source>All rights reserved.</source>
-    <translation>Všechna práva vyhrazena.</translation>
+        <translation>Všechna práva vyhrazena.</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../../src/main.cpp" line="35"/>
+        <location filename="../../../src/main.cpp" line="39"/>
         <source>Application is booting...</source>
-    <translation>Aplikace se spouští...</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="464"/>
-        <source>System</source>
-    <translation>Systém</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="465"/>
-        <source>Round up for .5 and above</source>
-    <translation>Zaokrouhlit nahoru pro .5 a více</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="466"/>
-        <source>Always round up</source>
-    <translation>Vždy zaokrouhlit nahoru</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="467"/>
-        <source>Always round down</source>
-    <translation>Vždy zaokrouhlit dolů</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="468"/>
-        <source>Round up for .75 and above</source>
-    <translation>Zaokrouhlit nahoru pro .75 a více</translation>
+        <translation>Aplikace se spouští...</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="469"/>
+        <source>System</source>
+        <translation>Systém</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="470"/>
+        <source>Round up for .5 and above</source>
+        <translation>Zaokrouhlit nahoru pro .5 a více</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="471"/>
+        <source>Always round up</source>
+        <translation>Vždy zaokrouhlit nahoru</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="472"/>
+        <source>Always round down</source>
+        <translation>Vždy zaokrouhlit dolů</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="473"/>
+        <source>Round up for .75 and above</source>
+        <translation>Zaokrouhlit nahoru pro .75 a více</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="474"/>
         <source>Don&apos;t round</source>
-    <translation>Nezaokrouhlovat</translation>
+        <translation>Nezaokrouhlovat</translation>
     </message>
 </context>
 <context>
@@ -308,17 +313,17 @@
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="19"/>
         <source>xTools</source>
-    <translation>xTools</translation>
+        <translation>xTools</translation>
     </message>
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="22"/>
         <source>Open main window</source>
-    <translation>Otevřít hlavní okno</translation>
+        <translation>Otevřít hlavní okno</translation>
     </message>
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="24"/>
         <source>Exit program</source>
-    <translation>Ukončit program</translation>
+        <translation>Ukončit program</translation>
     </message>
 </context>
 </TS>

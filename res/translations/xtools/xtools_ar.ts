@@ -4,22 +4,22 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../../src/application.cpp" line="284"/>
+        <location filename="../../../src/application.cpp" line="319"/>
         <source>Transfer rx bytes with right page</source>
-    <translation>نقل وحدات البايت المستلمة مع الصفحة اليمنى</translation>
+        <translation>نقل وحدات البايت المستلمة مع الصفحة اليمنى</translation>
     </message>
     <message>
-        <location filename="../../../src/application.cpp" line="289"/>
+        <location filename="../../../src/application.cpp" line="324"/>
         <source>Transfer rx bytes with left page</source>
-    <translation>نقل وحدات البايت المستلمة مع الصفحة اليسرى</translation>
+        <translation>نقل وحدات البايت المستلمة مع الصفحة اليسرى</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
-        <location filename="../../../src/layoutmanager.cpp" line="75"/>
+        <location filename="../../../src/layoutmanager.cpp" line="83"/>
         <source>Node Editor</source>
-    <translation>محرر العقدة</translation>
+        <translation>محرر العقدة</translation>
     </message>
 </context>
 <context>
@@ -27,280 +27,285 @@
     <message>
         <location filename="../../../src/mainwindow.cpp" line="130"/>
         <source>General</source>
-    <translation>عام</translation>
+        <translation>عام</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="312"/>
+        <location filename="../../../src/mainwindow.cpp" line="317"/>
         <source>&amp;File</source>
-    <translation>ملف</translation>
+        <translation>ملف</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="314"/>
+        <location filename="../../../src/mainwindow.cpp" line="319"/>
         <source>New Window</source>
-    <translation>نافذة جديدة</translation>
+        <translation>نافذة جديدة</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="322"/>
+        <location filename="../../../src/mainwindow.cpp" line="327"/>
         <source>Save Parameters</source>
-    <translation>حفظ المعلمات</translation>
+        <translation>حفظ المعلمات</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="324"/>
-        <location filename="../../../src/mainwindow.cpp" line="806"/>
-        <source>Import Parameters</source>
-    <translation>استيراد المعلمات</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="328"/>
+        <location filename="../../../src/mainwindow.cpp" line="329"/>
         <location filename="../../../src/mainwindow.cpp" line="819"/>
-        <source>Export Parameters</source>
-    <translation>تصدير المعلمات</translation>
+        <source>Import Parameters</source>
+        <translation>استيراد المعلمات</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="333"/>
+        <location filename="../../../src/mainwindow.cpp" line="832"/>
+        <source>Export Parameters</source>
+        <translation>تصدير المعلمات</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="338"/>
         <source>Exit Application</source>
-    <translation>خروج من التطبيق</translation>
+        <translation>خروج من التطبيق</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../../src/mainwindow.cpp" line="347"/>
         <source>&amp;Tools</source>
-    <translation>أدوات</translation>
+        <translation>أدوات</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="345"/>
+        <location filename="../../../src/mainwindow.cpp" line="350"/>
         <source>New</source>
-    <translation>جديد</translation>
+        <translation>جديد</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="381"/>
+        <location filename="../../../src/mainwindow.cpp" line="386"/>
         <source>&amp;Options</source>
-    <translation>خيارات</translation>
+        <translation>خيارات</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="390"/>
+        <location filename="../../../src/mainwindow.cpp" line="395"/>
         <source>Use System Proxy</source>
-    <translation>استخدام وكيل النظام</translation>
+        <translation>استخدام وكيل النظام</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="400"/>
+        <location filename="../../../src/mainwindow.cpp" line="405"/>
         <source>Exit to System Tray</source>
-    <translation>الخروج إلى علبة النظام</translation>
+        <translation>الخروج إلى علبة النظام</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="418"/>
+        <location filename="../../../src/mainwindow.cpp" line="423"/>
         <source>Application Style</source>
-    <translation>نمط التطبيق</translation>
+        <translation>نمط التطبيق</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="441"/>
+        <location filename="../../../src/mainwindow.cpp" line="446"/>
         <source>Settings</source>
-    <translation>الإعدادات</translation>
+        <translation>الإعدادات</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="444"/>
+        <location filename="../../../src/mainwindow.cpp" line="449"/>
         <source>Clear Settings</source>
-    <translation>مسح الإعدادات</translation>
+        <translation>مسح الإعدادات</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="450"/>
+        <location filename="../../../src/mainwindow.cpp" line="455"/>
         <source>Open Settings Directory</source>
-    <translation>فتح دليل الإعدادات</translation>
+        <translation>فتح دليل الإعدادات</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="459"/>
+        <location filename="../../../src/mainwindow.cpp" line="464"/>
         <source>HDPI Policy</source>
-    <translation>سياسة HDPI</translation>
+        <translation>سياسة HDPI</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="503"/>
+        <location filename="../../../src/mainwindow.cpp" line="508"/>
         <source>Color Scheme</source>
-    <translation>نظام الألوان</translation>
+        <translation>نظام الألوان</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="505"/>
+        <location filename="../../../src/mainwindow.cpp" line="510"/>
         <source>Dark</source>
-    <translation>داكن</translation>
+        <translation>داكن</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="506"/>
+        <location filename="../../../src/mainwindow.cpp" line="511"/>
         <source>Light</source>
-    <translation>فاتح</translation>
+        <translation>فاتح</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="507"/>
+        <location filename="../../../src/mainwindow.cpp" line="512"/>
         <source>System</source>
-    <translation>النظام</translation>
+        <translation>النظام</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="563"/>
+        <location filename="../../../src/mainwindow.cpp" line="568"/>
         <source>&amp;Languages</source>
-    <translation>اللغات</translation>
+        <translation>اللغات</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="588"/>
+        <location filename="../../../src/mainwindow.cpp" line="593"/>
         <source>&amp;View</source>
-    <translation>عرض</translation>
+        <translation>عرض</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="640"/>
+        <location filename="../../../src/mainwindow.cpp" line="645"/>
         <source>Stays on Top</source>
-    <translation>يبقى في الأعلى</translation>
+        <translation>يبقى في الأعلى</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="660"/>
+        <location filename="../../../src/mainwindow.cpp" line="665"/>
         <source>&amp;Help</source>
-    <translation>مساعدة</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="661"/>
-        <source>About Qt</source>
-    <translation>حول Qt</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="662"/>
-        <location filename="../../../src/mainwindow.cpp" line="862"/>
-        <source>About</source>
-    <translation>حول</translation>
+        <translation>مساعدة</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="666"/>
+        <source>About Qt</source>
+        <translation>حول Qt</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="667"/>
+        <location filename="../../../src/mainwindow.cpp" line="875"/>
+        <source>About</source>
+        <translation>حول</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="671"/>
         <source>Screenshot</source>
-    <translation>لقطة شاشة</translation>
+        <translation>لقطة شاشة</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="675"/>
+        <location filename="../../../src/mainwindow.cpp" line="680"/>
         <source>Buy from Store</source>
-    <translation>شراء من المتجر</translation>
+        <translation>شراء من المتجر</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="681"/>
-        <location filename="../../../src/mainwindow.cpp" line="718"/>
+        <location filename="../../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../../src/mainwindow.cpp" line="724"/>
         <source>Release History</source>
-    <translation>تاريخ الإصدارات</translation>
+        <translation>تاريخ الإصدارات</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../../src/mainwindow.cpp" line="687"/>
         <source>Join in QQ Group</source>
-    <translation>انضم إلى مجموعة QQ</translation>
+        <translation>انضم إلى مجموعة QQ</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="685"/>
+        <location filename="../../../src/mainwindow.cpp" line="690"/>
         <source>Online Manual</source>
-    <translation>دليل عبر الإنترنت</translation>
+        <translation>دليل عبر الإنترنت</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="688"/>
+        <location filename="../../../src/mainwindow.cpp" line="693"/>
         <source>Get Sources from Github</source>
-    <translation>الحصول على المصادر من Github</translation>
+        <translation>الحصول على المصادر من Github</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="691"/>
+        <location filename="../../../src/mainwindow.cpp" line="696"/>
         <source>Get Sources from Gitee</source>
-    <translation>الحصول على المصادر من Gitee</translation>
+        <translation>الحصول على المصادر من Gitee</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="708"/>
+        <location filename="../../../src/mainwindow.cpp" line="714"/>
         <source>Third Party Open Source</source>
-    <translation>مصدر مفتوح من طرف ثالث</translation>
+        <translation>مصدر مفتوح من طرف ثالث</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="738"/>
+        <location filename="../../../src/mainwindow.cpp" line="744"/>
         <source>QR Code</source>
-    <translation>رمز الاستجابة السريعة</translation>
+        <translation>رمز الاستجابة السريعة</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="747"/>
+        <location filename="../../../src/mainwindow.cpp" line="753"/>
         <source>User QQ Group</source>
-    <translation>مجموعة مستخدمي QQ</translation>
+        <translation>مجموعة مستخدمي QQ</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="748"/>
+        <location filename="../../../src/mainwindow.cpp" line="754"/>
         <source>Qt QQ Group</source>
-    <translation>مجموعة Qt QQ</translation>
+        <translation>مجموعة Qt QQ</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="769"/>
+        <location filename="../../../src/mainwindow.cpp" line="775"/>
         <source>Need to Reboot</source>
-    <translation>بحاجة إلى إعادة التشغيل</translation>
+        <translation>بحاجة إلى إعادة التشغيل</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="770"/>
+        <location filename="../../../src/mainwindow.cpp" line="776"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-    <translation>تتطلب العملية إعادة التشغيل لتصبح سارية المفعول، هل تريد إعادة تشغيل التطبيق الآن؟</translation>
+        <translation>تتطلب العملية إعادة التشغيل لتصبح سارية المفعول، هل تريد إعادة تشغيل التطبيق الآن؟</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="808"/>
+        <location filename="../../../src/mainwindow.cpp" line="778"/>
+        <source>(Please reboot your application manually.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../../src/mainwindow.cpp" line="821"/>
+        <location filename="../../../src/mainwindow.cpp" line="834"/>
         <source>Json Files (*.json)</source>
-    <translation>ملفات Json (*.json)</translation>
+        <translation>ملفات Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="850"/>
+        <location filename="../../../src/mainwindow.cpp" line="863"/>
         <source>Unknown</source>
-    <translation>غير معروف</translation>
+        <translation>غير معروف</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="856"/>
+        <location filename="../../../src/mainwindow.cpp" line="869"/>
         <source>Commit hash</source>
-    <translation>تجزئة الالتزام</translation>
+        <translation>تجزئة الالتزام</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="858"/>
+        <location filename="../../../src/mainwindow.cpp" line="871"/>
         <source>Commit time</source>
-    <translation>وقت الالتزام</translation>
+        <translation>وقت الالتزام</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="859"/>
+        <location filename="../../../src/mainwindow.cpp" line="872"/>
         <source>Build Date</source>
-    <translation>تاريخ البناء</translation>
+        <translation>تاريخ البناء</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="860"/>
+        <location filename="../../../src/mainwindow.cpp" line="873"/>
         <source>Copyright</source>
-    <translation>حقوق النشر</translation>
+        <translation>حقوق النشر</translation>
     </message>
     <message>
-        <location filename="../../../src/mainwindow.cpp" line="861"/>
+        <location filename="../../../src/mainwindow.cpp" line="874"/>
         <source>All rights reserved.</source>
-    <translation>جميع الحقوق محفوظة.</translation>
+        <translation>جميع الحقوق محفوظة.</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../../src/main.cpp" line="35"/>
+        <location filename="../../../src/main.cpp" line="39"/>
         <source>Application is booting...</source>
-    <translation>يتم تشغيل التطبيق...</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="464"/>
-        <source>System</source>
-    <translation>النظام</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="465"/>
-        <source>Round up for .5 and above</source>
-    <translation>التقريب للأعلى لـ .5 وما فوق</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="466"/>
-        <source>Always round up</source>
-    <translation>دائما تقريب للأعلى</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="467"/>
-        <source>Always round down</source>
-    <translation>دائما تقريب للأسفل</translation>
-    </message>
-    <message>
-        <location filename="../../../src/mainwindow.cpp" line="468"/>
-        <source>Round up for .75 and above</source>
-    <translation>التقريب للأعلى لـ .75 وما فوق</translation>
+        <translation>يتم تشغيل التطبيق...</translation>
     </message>
     <message>
         <location filename="../../../src/mainwindow.cpp" line="469"/>
+        <source>System</source>
+        <translation>النظام</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="470"/>
+        <source>Round up for .5 and above</source>
+        <translation>التقريب للأعلى لـ .5 وما فوق</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="471"/>
+        <source>Always round up</source>
+        <translation>دائما تقريب للأعلى</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="472"/>
+        <source>Always round down</source>
+        <translation>دائما تقريب للأسفل</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="473"/>
+        <source>Round up for .75 and above</source>
+        <translation>التقريب للأعلى لـ .75 وما فوق</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mainwindow.cpp" line="474"/>
         <source>Don&apos;t round</source>
-    <translation>لا تقرب</translation>
+        <translation>لا تقرب</translation>
     </message>
 </context>
 <context>
@@ -308,17 +313,17 @@
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="19"/>
         <source>xTools</source>
-    <translation>xTools</translation>
+        <translation>xTools</translation>
     </message>
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="22"/>
         <source>Open main window</source>
-    <translation>فتح النافذة الرئيسية</translation>
+        <translation>فتح النافذة الرئيسية</translation>
     </message>
     <message>
         <location filename="../../../src/systemtrayicon.cpp" line="24"/>
         <source>Exit program</source>
-    <translation>خروج من البرنامج</translation>
+        <translation>خروج من البرنامج</translation>
     </message>
 </context>
 </TS>

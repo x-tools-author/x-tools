@@ -40,6 +40,18 @@ Application::Application(int &argc, char **argv)
 #else
     Application::setApplicationVersion("0.0.0");
 #endif
+
+    bool clearSettings = Application::settings()->value(SettingsKey().clearSettings, false).toBool();
+    if (clearSettings) {
+        Application::settings()->clear();
+        Application::settings()->setValue(SettingsKey().clearSettings, false);
+
+        QString path = Application::settingsPath();
+        QString dataJson = path + "/data.json";
+        if (QFile::remove(dataJson)) {
+            qInfo() << "The data.json is removed.";
+        }
+    }
 }
 
 void googleLogToQtLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)

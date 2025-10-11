@@ -449,7 +449,7 @@ void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
     auto clearAction = settingsMenu->addAction(tr("Clear Settings"));
     connect(clearAction, &QAction::triggered, this, [=]() {
         xApp->settings()->setValue(Application::SettingsKey().clearSettings, true);
-        tryToReboot();
+        tryToReboot(true);
     });
 
     auto openAction = settingsMenu->addAction(tr("Open Settings Directory"));
@@ -770,13 +770,20 @@ void MainWindow::showQrCode()
     dialog.exec();
 }
 
-void MainWindow::tryToReboot()
+void MainWindow::tryToReboot(bool doNotReboot)
 {
     QString title = tr("Need to Reboot");
     QString text = tr("The operation need to reboot to effected, reboot the application now?");
+    if (doNotReboot) {
+        text += tr("(Please reboot your application manually.)");
+    }
+
     int ret = QMessageBox::information(nullptr, title, text, QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok) {
-        QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
+        if (!doNotReboot) {
+            QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
+        }
+
         xApp->execMs(100);
         qApp->closeAllWindows();
     }

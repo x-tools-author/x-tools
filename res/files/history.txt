@@ -11,6 +11,11 @@
     XMODEM, YMODEM, ZMODEM
     ftp
 
+V7.6.0 2025年xx月xx日
+    新特性：
+    01. 全新设计的modbus调试功能
+    02. 全新设计的BLE调试功能
+
 V7.5.0 2025年10月xx日
     新特性：
     01. 支持自定义Lua脚本和JavaScript脚本扩展
