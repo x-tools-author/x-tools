@@ -1,0 +1,33 @@
+/***************************************************************************************************
+ * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part of xTools project.
+ *
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
+ * code directory.
+ **************************************************************************************************/
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include <QQuickStyle>
+
+int main(int argc, char *argv[])
+{
+    qputenv("QT_QUICK_CONTROLS_MATERIAL_VARIANT", "Dense");
+
+    QGuiApplication app(argc, argv);
+    QQuickStyle::setStyle("Material");
+
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("xMagic", 1); // just for test
+
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreationFailed,
+        &app,
+        []() { QCoreApplication::exit(-1); },
+        Qt::QueuedConnection);
+    engine.loadFromModule("xToolsQml", "Main");
+
+    return app.exec();
+}

@@ -1,3 +1,9 @@
+option(X_TOOLS_V8 "Build xTools version 8" OFF)
+if(X_TOOLS_V8)
+  include(xToolsV8.cmake)
+  return()
+endif()
+
 # Do something for CMake 4.0.0 or later
 if(NOT ${CMAKE_VERSION} VERSION_LESS "4.0.0")
   set(CMAKE_POLICY_VERSION_MINIMUM
