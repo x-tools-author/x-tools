@@ -3,7 +3,7 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 
 MenuBar {
-    id: menuBar
+    id: root
     Menu {
         title: qsTr("File")
         MenuItem {

@@ -15,9 +15,12 @@ ApplicationWindow {
     RowLayout {
         anchors.fill: parent
         MainContextNav {
+            id: nav
             Layout.fillHeight: true
         }
         MainContextPages {
+            id: pages
+            currentIndex: nav.navIndex
             Layout.fillWidth: true
             Layout.fillHeight: true
         }

@@ -49,7 +49,6 @@
         <file>v8/res/icons/graph_1.svg</file>
         <file>v8/res/icons/mqtt.svg</file>
         <file>v8/res/icons/modbus.svg</file>
-        <file>v8/res/icons/CAN@2x.svg</file>
         <file>v8/res/icons/CANBus.svg</file>
     </qresource>
 </RCC>
