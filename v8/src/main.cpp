@@ -23,6 +23,9 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("xMagic", 1); // just for test
     engine.rootContext()->setContextProperty("xApp", &app);
 
+    static const QString reason = QStringLiteral("Cannot create instance of Application");
+    qmlRegisterUncreatableType<Application>("xTools", 1, 0, "App", reason);
+
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,

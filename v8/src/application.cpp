@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QEventLoop>
+#include <QJsonObject>
 #include <QLocale>
 #include <QMessageBox>
 #include <QPainter>
@@ -54,6 +55,31 @@ QString Application::buildDateTime(const QString &format)
     }
 }
 
+QJsonArray Application::supportedLanguages()
+{
+    QString appPath = QApplication::applicationDirPath();
+    appPath += "/translations";
+    QDir dir(appPath);
+    QStringList filters;
+    filters << QString("xTools_*.qm");
+    QList<QFileInfo> fileNames = dir.entryInfoList(filters, QDir::Files | QDir::NoDotAndDotDot);
+    QJsonArray languages;
+    for (const QFileInfo &fileName : std::as_const(fileNames)) {
+        QString baseName = fileName.baseName();
+        baseName.remove("xTools_");
+        baseName.remove(".qm");
+        QLocale locale(baseName);
+        if (!locale.language()) {
+            continue;
+        }
+        QJsonObject lang;
+        lang["value"] = baseName;
+        lang["text"] = locale.nativeLanguageName();
+        languages.append(lang);
+    }
+    return languages;
+}
+
 QSettings *Application::settings()
 {
     QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
@@ -71,13 +97,13 @@ QString Application::settingsPath()
     return path.left(path.lastIndexOf('/'));
 }
 
-QVariant Application::value(QAnyStringView key, const QVariant &defaultValue)
+QVariant Application::settingsValue(const QString &key, const QVariant &defaultValue)
 {
     QSettings *settings = Application::settings();
     return settings->value(key, defaultValue);
 }
 
-void Application::setValue(QAnyStringView key, const QVariant &value)
+void Application::setSettingsValue(const QString &key, const QVariant &value)
 {
     QSettings *settings = Application::settings();
     settings->setValue(key, value);
