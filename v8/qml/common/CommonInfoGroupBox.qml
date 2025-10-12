@@ -20,7 +20,7 @@ GroupBox {
                 enabled: modelData[2] ? modelData[2] : false
                 width: parent.width
                 height: infoRowLayout.height
-                cursorShape: Qt.PointingHandCursor
+                cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
                 onClicked: {
                     Qt.openUrlExternally(modelData[1]);
                 }

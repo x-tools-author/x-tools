@@ -2,6 +2,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import "common"
+
 ApplicationWindow {
     id: xMainWindow
     width: 1280
@@ -12,17 +14,24 @@ ApplicationWindow {
 
     menuBar: MainHeader {}
 
-    RowLayout {
+    Item {
         anchors.fill: parent
-        MainContextNav {
-            id: nav
-            Layout.fillHeight: true
+
+        RowLayout {
+            anchors.fill: parent
+            MainContextNav {
+                id: nav
+                Layout.fillHeight: true
+            }
+            MainContextPages {
+                id: pages
+                currentIndex: nav.navIndex
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+            }
         }
-        MainContextPages {
-            id: pages
-            currentIndex: nav.navIndex
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+        CommonSeparator {
+            edge: Qt.TopEdge
         }
     }
 }
