@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     QQuickStyle::setStyle("Material");
 
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("xMagic", 1); // just for test
+    engine.rootContext()->setContextProperty("xMagic", 0); // just for test
     engine.rootContext()->setContextProperty("xApp", &app);
 
     QObject::connect(
