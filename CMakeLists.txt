@@ -1,6 +1,6 @@
 option(X_TOOLS_V8 "Build xTools version 8" OFF)
 if(X_TOOLS_V8)
-  include(xToolsV8.cmake)
+  include(v8/xTools.cmake)
   return()
 endif()
 

@@ -117,6 +117,7 @@ Pane {
             text: " "
         }
         ControlLabel {
+            id: libsTitleLabel
             text: qsTr("The third-party open source libraries used in this application")
             font.bold: true
         }
@@ -124,6 +125,10 @@ Pane {
             text: " "
         }
         Column {
+            id: libsColumn
+
+            property int maxLabelLen: 0
+
             Repeater {
                 model: {
                     var tmp = [];
@@ -131,21 +136,40 @@ Pane {
                     tmp.push(["glog", "https://github.com/google/glog"]);
                     tmp.push(["zint", "https://github.com/zint/zint"]);
                     tmp.push(["QXlsx", "https://github.com/QtExcel/QXlsx"]);
+                    tmp.push(["hidapi", "https://github.com/libusb/hidapi"]);
                     tmp.push(["libiconv", "https://ftp.gnu.org/pub/gnu/libiconv"]);
                     tmp.push(["libqrencode", "https://github.com/fukuchi/libqrencode"]);
                     tmp.push(["qmdnsengine", "https://github.com/nitroshare/qmdnsengine"]);
                     tmp.push(["SingleApplication", "https://github.com/itay-grudev/SingleApplication"]);
-                    tmp.push(["hidapi", "https://github.com/libusb/hidapi"]);
                     return tmp;
                 }
 
-                ControlLabel {
-                    text: modelData[0] + " - " + modelData[1]
-                    MouseArea {
-                        anchors.fill: parent
-                        cursorShape: Qt.PointingHandCursor
-                        onClicked: {
-                            Qt.openUrlExternally(modelData[1]);
+                MouseArea {
+                    width: libRow.width
+                    height: libsTitleLabel.height
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        Qt.openUrlExternally(modelData[1]);
+                    }
+                    RowLayout {
+                        id: libRow
+                        ControlLabel {
+                            text: modelData[0]
+                            Component.onCompleted: {
+                                if (width > libsColumn.maxLabelLen) {
+                                    libsColumn.maxLabelLen = width;
+                                }
+
+                                Layout.minimumWidth = Qt.binding(function () {
+                                    return libsColumn.maxLabelLen;
+                                });
+                            }
+                        }
+                        ControlLabel {
+                            text: ":"
+                        }
+                        ControlLabel {
+                            text: modelData[1]
                         }
                     }
                 }
