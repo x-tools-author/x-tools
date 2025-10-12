@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 
 ApplicationWindow {
     id: xMainWindow
@@ -9,9 +10,16 @@ ApplicationWindow {
     title: "xTools"
     opacity: xMagic ? 0.3 : 1.0
 
-    footer: MainFooter {}
+    menuBar: MainHeader {}
 
-    MainContext {
+    RowLayout {
         anchors.fill: parent
+        MainContextNav {
+            Layout.fillHeight: true
+        }
+        MainContextPages {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+        }
     }
 }

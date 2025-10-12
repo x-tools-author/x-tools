@@ -20,7 +20,7 @@ qt_standard_project_setup(REQUIRES 6.8)
 file(GLOB_RECURSE cpp_files "v8/src/*.*")
 set(X_BIN "${CMAKE_BINARY_DIR}/xTools")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/xTools")
-qt_add_executable(xTools ${cpp_files})
+qt_add_executable(xTools ${cpp_files} xTools.qrc)
 target_link_libraries(xTools PRIVATE Qt6::Quick Qt6::QuickControls2)
 
 # --------------------------------------------------------------------------------------------------
