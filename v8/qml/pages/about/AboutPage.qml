@@ -35,7 +35,7 @@ Pane {
                 text: ":"
             }
             ControlLabel {
-                text: "0000000000000000"
+                text: xApp.gitCommit()
             }
 
             ControlLabel {
@@ -45,7 +45,7 @@ Pane {
                 text: ":"
             }
             ControlLabel {
-                text: "2025-08-06 10:00:00"
+                text: xApp.buildDateTime()
             }
 
             ControlLabel {
@@ -55,7 +55,15 @@ Pane {
                 text: ":"
             }
             ControlLabel {
-                text: "2025-08-06 10:00:00"
+                id: githubLabel
+                text: "https://github.com/x-tools-author/x-tools"
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        Qt.openUrlExternally(githubLabel.text);
+                    }
+                }
             }
 
             ControlLabel {
@@ -65,7 +73,33 @@ Pane {
                 text: ":"
             }
             ControlLabel {
-                text: "2025-08-06 10:00:00"
+                id: giteeLabel
+                text: "https://gitee.com/x-tools-author/x-tools"
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        Qt.openUrlExternally(giteeLabel.text);
+                    }
+                }
+            }
+
+            ControlLabel {
+                text: qsTr("Online Documentation")
+            }
+            ControlLabel {
+                text: ":"
+            }
+            ControlLabel {
+                id: onlineLabel
+                text: "https://x-tools-author.github.io/x-tools/"
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        Qt.openUrlExternally(onlineLabel.text);
+                    }
+                }
             }
 
             ControlLabel {
@@ -75,7 +109,7 @@ Pane {
                 text: ":"
             }
             ControlLabel {
-                text: "Copyright (C) 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved."
+                text: "Copyright © 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved."
             }
         }
 

@@ -6,20 +6,22 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQuickStyle>
+
+#include "application.h"
 
 int main(int argc, char *argv[])
 {
     qputenv("QT_QUICK_CONTROLS_MATERIAL_VARIANT", "Dense");
 
-    QGuiApplication app(argc, argv);
+    Application app(argc, argv);
     QQuickStyle::setStyle("Material");
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("xMagic", 1); // just for test
+    engine.rootContext()->setContextProperty("xApp", &app);
 
     QObject::connect(
         &engine,
