@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls.Material
 import QtQuick.Layouts
 
 import "controls"
@@ -41,6 +41,7 @@ Pane {
                 onClicked: root.navIndex = index
                 ToolTip.text: modelData[0]
                 ToolTip.visible: false
+                Layout.fillWidth: true
                 Component.onCompleted: {
                     btnGroup.addButton(btn1);
                     if (index === root.navIndex) {
@@ -73,6 +74,7 @@ Pane {
                 text: modelData[0]
                 ToolTip.text: modelData[0]
                 ToolTip.visible: false
+                Layout.fillWidth: true
                 Component.onCompleted: {
                     btnGroup.addButton(btn2);
                     if (index + navRepeater1.count === root.navIndex) {

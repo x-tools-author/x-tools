@@ -1,6 +1,5 @@
-import QtQuick.Controls.Material
+import QtQuick.Controls
 
 TextField {
     id: root
-    implicitHeight: Material.buttonHeight
 }

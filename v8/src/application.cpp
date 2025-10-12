@@ -24,6 +24,14 @@
 #include <QTimer>
 #include <QTranslator>
 
+#if defined(_MSC_VER)
+#include <dwmapi.h>
+
+#include <QColor>
+#include <QSysInfo>
+#include <QWindow>
+#endif
+
 Application::Application(int &argc, char **argv)
     : QApplication(argc, argv)
 {}
@@ -80,6 +88,20 @@ QJsonArray Application::supportedLanguages()
     return languages;
 }
 
+QString Application::appLanguageFlag()
+{
+    QSettings *settings = xApp->settings();
+    QString defaultLanguage = QLocale::system().name();
+    QString language = settings->value(SettingKeys().language, defaultLanguage).toString();
+    QString appPath = QApplication::applicationDirPath();
+    QString qmFile = QString("%1/translations/%2_%3.qm").arg(appPath, applicationName(), language);
+    if (!QFile::exists(qmFile)) {
+        return "en";
+    }
+
+    return language;
+}
+
 QSettings *Application::settings()
 {
     QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
@@ -97,30 +119,16 @@ QString Application::settingsPath()
     return path.left(path.lastIndexOf('/'));
 }
 
-QVariant Application::settingsValue(const QString &key, const QVariant &defaultValue)
+QVariant Application::settingsValue(const QString &key, const QVariant &dv)
 {
     QSettings *settings = Application::settings();
-    return settings->value(key, defaultValue);
+    return settings->value(key, dv);
 }
 
 void Application::setSettingsValue(const QString &key, const QVariant &value)
 {
     QSettings *settings = Application::settings();
     settings->setValue(key, value);
-}
-
-QString Application::appLanguageFlag()
-{
-    QSettings *settings = xApp->settings();
-    QString defaultLanguage = QLocale::system().name();
-    QString language = settings->value(SettingKeys().language, defaultLanguage).toString();
-    QString appPath = QApplication::applicationDirPath();
-    QString qmFile = QString("%1/translations/%2_%3.qm").arg(appPath, applicationName(), language);
-    if (!QFile::exists(qmFile)) {
-        return "en";
-    }
-
-    return language;
 }
 
 QSplashScreen *Application::splashScreen()
@@ -165,6 +173,23 @@ void Application::showSplashScreenMessage(const QString &msg)
     splashScreen->show();
     splashScreen->showMessage(msg, Qt::AlignBottom | Qt::AlignLeft, Qt::white);
     QApplication::processEvents();
+}
+
+void Application::updateWindowStyle(QWindow *window, const QColor &color)
+{
+    if (!window) {
+        return;
+    }
+
+    if (!color.isValid()) {
+        return;
+    }
+
+#if defined(_MSC_VER)
+    QColor c(color);
+    COLORREF colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
+    DwmSetWindowAttribute((HWND) window->winId(), DWMWA_CAPTION_COLOR, &colorref, sizeof(colorref));
+#endif
 }
 
 void Application::execMs(int ms)

@@ -1,6 +1,5 @@
-import QtQuick.Controls.Material
+import QtQuick.Controls
 
 ComboBox {
     id: root
-    implicitHeight: Material.buttonHeight
 }

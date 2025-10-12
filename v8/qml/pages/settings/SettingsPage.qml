@@ -1,8 +1,9 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
+import QtQuick.Controls.Material
 
 import "../../controls"
+import xTools
 
 Item {
     id: root
@@ -36,23 +37,23 @@ Item {
                     id: hidListModel
                     ListElement {
                         text: qsTr("Round up for .5 and above.")
-                        value: 1
+                        value: App.Round
                     }
                     ListElement {
                         text: qsTr("Always round up.")
-                        value: 2
+                        value: App.Ceil
                     }
                     ListElement {
                         text: qsTr("Always round down.")
-                        value: 3
+                        value: App.Floor
                     }
                     ListElement {
                         text: qsTr("Round up for .75 and above.")
-                        value: 4
+                        value: App.RoundPreferFloor
                     }
                     ListElement {
                         text: qsTr("Don't round.")
-                        value: 5
+                        value: App.PassThrough
                     }
                 }
 
@@ -95,26 +96,25 @@ Item {
             ControlComboBox {
                 textRole: "text"
                 valueRole: "value"
-                onActivated:
-                //xMaterialTheme = currentValue;
-                //xSettings.setValue(xKeysObj.materialTheme, currentValue);
-
-                //xApp.updateWindowStyle(mainWindow, Material.backgroundColor);
-                {}
+                onActivated: {
+                    //xMaterialTheme = currentValue;
+                    //xSettings.setValue(xKeysObj.materialTheme, currentValue);
+                    xApp.updateWindowStyle(xMainWindow, Material.backgroundColor);
+                }
                 Layout.minimumWidth: 248
-                Component.onCompleted:
-                //var index = indexOfValue(xMaterialTheme);
-                //currentIndex = index;
-                //xApp.updateWindowStyle(mainWindow, Material.backgroundColor);
-                {}
+                Component.onCompleted: {
+                    //var index = indexOfValue(xMaterialTheme);
+                    //currentIndex = index;
+                    xApp.updateWindowStyle(xMainWindow, Material.backgroundColor);
+                }
                 model: ListModel {
                     ListElement {
                         text: qsTr("Dark")
-                        value: Material.Dark
+                        value: 0//Material.Dark
                     }
                     ListElement {
                         text: qsTr("Light")
-                        value: Material.Light
+                        value: 0//Material.Light
                     }
                 }
             }

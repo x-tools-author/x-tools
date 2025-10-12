@@ -35,6 +35,9 @@ qt_add_executable(xTools ${cpp_files} xTools.qrc)
 x_deploy_qt(xTools)
 x_generate_translations(xTools)
 target_link_libraries(xTools PRIVATE Qt6::Widgets Qt6::Quick Qt6::QuickControls2)
+if(MSVC)
+  target_link_libraries(xTools PRIVATE Dwmapi)
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # QML setup

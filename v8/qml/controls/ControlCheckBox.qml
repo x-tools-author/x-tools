@@ -1,4 +1,4 @@
-import QtQuick.Controls.Material
+import QtQuick.Controls
 
 CheckBox {
     id: root

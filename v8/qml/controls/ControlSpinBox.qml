@@ -1,6 +1,5 @@
-import QtQuick.Controls.Material
+import QtQuick.Controls
 
 SpinBox {
     id: root
-    implicitHeight: Material.buttonHeight
 }

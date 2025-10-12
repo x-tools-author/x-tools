@@ -28,16 +28,6 @@ public:
         const QString theme{"Application/theme"};
     };
 
-#if 0
-    enum class Theme {
-        System = static_cast<int>(Qt::ColorScheme::Unknown),
-        Light = static_cast<int>(Qt::ColorScheme::Unknown),
-        Dark = static_cast<int>(Qt::ColorScheme::Unknown)
-    };
-    Q_ENUM(Theme)
-#endif
-
-#if 0
     enum class HdpiPolicy {
         Round = static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::Ceil),
         Ceil = static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::Ceil),
@@ -46,7 +36,6 @@ public:
         PassThrough = static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough)
     };
     Q_ENUM(HdpiPolicy)
-#endif
 
 signals:
     void languageChanged();
@@ -58,16 +47,16 @@ public:
     Q_INVOKABLE QString gitCommit();
     Q_INVOKABLE QString buildDateTime(const QString &format = QString());
     Q_INVOKABLE QJsonArray supportedLanguages();
+    Q_INVOKABLE QString appLanguageFlag();
 
     QSettings *settings();
     QString settingsPath();
-    Q_INVOKABLE QVariant settingsValue(const QString &key,
-                                       const QVariant &defaultValue = QVariant());
+    Q_INVOKABLE QVariant settingsValue(const QString &key, const QVariant &dv = QVariant());
     Q_INVOKABLE void setSettingsValue(const QString &key, const QVariant &value);
-    Q_INVOKABLE QString appLanguageFlag();
 
     QSplashScreen *splashScreen();
     void showSplashScreenMessage(const QString &msg);
+    Q_INVOKABLE void updateWindowStyle(QWindow *window, const QColor &color);
 
     void execMs(int ms);
     void tryToReboot();

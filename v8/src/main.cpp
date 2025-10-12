@@ -18,6 +18,10 @@ int main(int argc, char *argv[])
 
     Application app(argc, argv);
     QQuickStyle::setStyle("Material");
+    //QQuickStyle::setStyle("Fusion");
+    //QQuickStyle::setStyle("FluentWinUI3");
+    //QQuickStyle::setStyle("Imagine");
+    //QQuickStyle::setStyle("Universal");
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("xMagic", 1); // just for test

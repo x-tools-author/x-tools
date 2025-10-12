@@ -1,6 +1,6 @@
-import QtQuick.Controls.Material
+import QtQuick.Controls
 
 Button {
     id: root
-    Material.roundedScale: Material.ExtraSmallScale
+    Material.roundedScale: Material
 }
