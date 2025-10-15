@@ -11,7 +11,7 @@ Item {
     QtObject {
         id: settingKeys
 
-        readonly property string hdpiPolicy: "Application/hdpi"
+        readonly property string highDpiPolicy: "Application/highDpiPolicy"
         readonly property string language: "Application/language"
         readonly property string materialTheme: "Application/theme"
     }
@@ -57,9 +57,9 @@ Item {
                     }
                 }
 
-                onActivated: xApp.setSettingsValue(settingKeys.hdpiPolicy, hidComboBox.currentValue)
+                onActivated: xApp.setSettingsValue(settingKeys.highDpiPolicy, hidComboBox.currentValue)
                 Component.onCompleted: {
-                    var v = xApp.settingsValue(settingKeys.hdpiPolicy, 5);
+                    var v = xApp.settingsValue(settingKeys.highDpiPolicy, 5);
                     var ret = hidComboBox.indexOfValue(v);
                     if (ret >= 0 && ret < hidComboBox.count) {
                         hidComboBox.currentIndex = ret;
@@ -78,6 +78,7 @@ Item {
                 onActivated: {
                     var v = languageComboBox.currentValue;
                     xApp.setSettingsValue(settingKeys.language, v);
+                    xApp.setupLanguage();
                 }
                 Component.onCompleted: {
                     var flag = xApp.appLanguageFlag();
@@ -96,26 +97,30 @@ Item {
             ControlComboBox {
                 textRole: "text"
                 valueRole: "value"
+                model: ListModel {
+                    ListElement {
+                        text: qsTr("System")
+                        value: Material.System
+                    }
+                    ListElement {
+                        text: qsTr("Dark")
+                        value: Material.Dark
+                    }
+                    ListElement {
+                        text: qsTr("Light")
+                        value: Material.Light
+                    }
+                }
                 onActivated: {
-                    //xMaterialTheme = currentValue;
-                    //xSettings.setValue(xKeysObj.materialTheme, currentValue);
+                    xMaterialTheme = currentValue;
+                    xApp.setSettingsValue(xKeysObj.materialTheme, currentValue);
                     xApp.updateWindowStyle(xMainWindow, Material.backgroundColor);
                 }
                 Layout.minimumWidth: 248
                 Component.onCompleted: {
-                    //var index = indexOfValue(xMaterialTheme);
-                    //currentIndex = index;
+                    var index = indexOfValue(xMaterialTheme);
+                    currentIndex = index;
                     xApp.updateWindowStyle(xMainWindow, Material.backgroundColor);
-                }
-                model: ListModel {
-                    ListElement {
-                        text: qsTr("Dark")
-                        value: 0//Material.Dark
-                    }
-                    ListElement {
-                        text: qsTr("Light")
-                        value: 0//Material.Light
-                    }
                 }
             }
             Label {
@@ -131,20 +136,19 @@ Item {
                         width: 32
                         height: 32
                         color: {
-                            //var shade = xMaterialTheme === Material.Dark ? Material.Shade200 : Material.Shade500;
-                            //return Material.color(modelData, shade);
-                            return "#ffffff";
+                            var shade = xMaterialTheme === Material.Dark ? Material.Shade200 : Material.Shade500;
+                            return Material.color(modelData, shade);
                         }
                         MouseArea {
                             anchors.fill: parent
-                            onClicked:
-                            //xMaterialPrimary = modelData;
-                            //xSettings.setValue(xKeysObj.materialPrimary, modelData);
-                            {}
+                            onClicked: {
+                                xMaterialPrimary = modelData;
+                                xApp.setSettingsValue(xKeysObj.materialPrimary, modelData);
+                            }
                         }
                         CheckBox {
                             checked: true
-                            //visible: xMaterialPrimary === modelData
+                            visible: xMaterialPrimary === modelData
                             anchors.centerIn: parent
                             enabled: false
                         }

@@ -225,7 +225,29 @@ void Application::setupHdpi()
     qInfo() << "The current high dpi policy is:" << cookedPolicy;
 }
 
-void setupLanguage(const QString &qmFile)
+
+void Application::setupLanguage()
+{
+    if (m_translators.count() > 0) {
+        for (QTranslator *translator : std::as_const(m_translators)) {
+            qApp->removeTranslator(translator);
+            translator->deleteLater();
+        }
+        m_translators.clear();
+    }
+
+    QString language = appLanguageFlag();
+    QString appPath = QApplication::applicationDirPath();
+    QString qtQmFile = QString("%1/translations/qt_%2.qm").arg(appPath, language);
+    setupLanguage(qtQmFile);
+
+    QString appQmFile = QString("%1/translations/%2_%3.qm").arg(appPath, applicationName(), language);
+    setupLanguage(appQmFile);
+
+    emit languageChanged();
+}
+
+void Application::setupLanguage(const QString &qmFile)
 {
     QTranslator *translator = new QTranslator();
     if (!translator->load(qmFile)) {
@@ -238,20 +260,9 @@ void setupLanguage(const QString &qmFile)
     if (!qApp->installTranslator(translator)) {
         qWarning() << "The language has been setup, English will be used.";
     } else {
+        m_translators.append(translator);
         qInfo() << "The language has been setup, current language file is:" << qmFile;
     }
-}
-
-void Application::setupLanguage()
-{
-    QString language = appLanguageFlag();
-
-    QString appPath = QApplication::applicationDirPath();
-    QString qtQmFile = QString("%1/translations/qt_%2.qm").arg(appPath, language);
-    ::setupLanguage(qtQmFile);
-
-    QString appQmFile = QString("%1/translations/%2_%3.qm").arg(appPath, applicationName(), language);
-    ::setupLanguage(appQmFile);
 }
 
 void Application::setupTheme()

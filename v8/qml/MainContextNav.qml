@@ -87,4 +87,13 @@ Pane {
             }
         }
     }
+
+    function setChecked(index) {
+        if (index < navRepeater1.count) {
+            navRepeater1.itemAt(index).checked = true;
+        } else {
+            index = index - navRepeater1.count;
+            navRepeater2.itemAt(index).checked = true;
+        }
+    }
 }

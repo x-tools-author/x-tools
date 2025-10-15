@@ -28,3 +28,4 @@ xapps/xprivate
 .DS_Store
 ./xprivate
 .VSCodeCounter
+.qmlls.ini

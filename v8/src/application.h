@@ -23,7 +23,7 @@ class Application : public QApplication
 public:
     struct SettingKeys
     {
-        const QString hdpi{"Application/hdpi"};
+        const QString hdpi{"Application/highDpiPolicy"};
         const QString language{"Application/language"};
         const QString theme{"Application/theme"};
     };
@@ -62,6 +62,10 @@ public:
     void tryToReboot();
 
     void setupHdpi();
-    void setupLanguage();
+    Q_INVOKABLE void setupLanguage();
+    void setupLanguage(const QString &qmFile);
     void setupTheme();
+
+private:
+    QList<QTranslator *> m_translators;
 };

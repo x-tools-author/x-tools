@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     qputenv("QT_QUICK_CONTROLS_MATERIAL_VARIANT", "Dense");
 
     Application app(argc, argv);
+    app.setupLanguage();
     QQuickStyle::setStyle("Material");
     //QQuickStyle::setStyle("Fusion");
     //QQuickStyle::setStyle("FluentWinUI3");
@@ -30,6 +31,7 @@ int main(int argc, char *argv[])
     static const QString reason = QStringLiteral("Cannot create instance of Application");
     qmlRegisterUncreatableType<Application>("xTools", 1, 0, "App", reason);
 
+    QObject::connect(&app, &Application::languageChanged, &engine, &QQmlEngine::retranslate);
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,
