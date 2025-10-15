@@ -11,6 +11,7 @@
 #include <QQuickStyle>
 
 #include "application.h"
+#include "tools/toos.h"
 
 int main(int argc, char *argv[])
 {
@@ -27,6 +28,8 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("xMagic", 1); // just for test
     engine.rootContext()->setContextProperty("xApp", &app);
+
+    Tools::registerAllTools();
 
     static const QString reason = QStringLiteral("Cannot create instance of Application");
     qmlRegisterUncreatableType<Application>("xTools", 1, 0, "App", reason);

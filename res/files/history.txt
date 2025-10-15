@@ -11,10 +11,15 @@
     XMODEM, YMODEM, ZMODEM
     ftp
 
-V7.6.0 2025年xx月xx日
+V8.0.0 2025年xx月xx日
     新特性：
-    01. 全新设计的modbus调试功能
-    02. 全新设计的BLE调试功能
+    01. 全新的基于QML的现代化UI
+    02. 全新的Modbus调试工具
+    03. 全新的CAN-Bus调试工具
+    04. 全新的数据转发工具
+    05. 添加mqtt调试功能
+    06. 自定义协议调试工具
+    07. WebSocket支持wss
 
 V7.5.0 2025年10月xx日
     新特性：

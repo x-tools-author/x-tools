@@ -8,11 +8,9 @@ Pane {
     id: root
     padding: 0
     Material.elevation: 4
-    Component.onCompleted: {
-        width = navLayout.width;
-    }
 
     property int navIndex: 0
+    property alias display: ctrlBtn.display
 
     ButtonGroup {
         id: btnGroup
@@ -76,6 +74,10 @@ Pane {
                 ToolTip.visible: false
                 Layout.fillWidth: true
                 Component.onCompleted: {
+                    if (index === 1) {
+                        visible = false;
+                    }
+
                     btnGroup.addButton(btn2);
                     if (index + navRepeater1.count === root.navIndex) {
                         btn2.checked = true;
@@ -86,6 +88,33 @@ Pane {
                 }
             }
         }
+        ControlNavToolButton {
+            id: ctrlBtn
+            visible: false
+            icon.source: "qrc:/v8/res/icons/construction.svg"
+            display: ToolButton.TextBesideIcon
+            ToolTip.text: text
+            ToolTip.visible: hovered
+            Layout.fillWidth: true
+            text: display === ToolButton.IconOnly ? "Expand" : "Collapse"
+            onClicked: {
+                if (display === ToolButton.IconOnly) {
+                    display = ToolButton.TextBesideIcon;
+                } else {
+                    display = ToolButton.IconOnly;
+                }
+
+                xApp.setSettingsValue("navDisplay", display);
+            }
+            Component.onCompleted:
+            //var displayVal = xApp.settingsValue("navDisplay", ToolButton.TextBesideIcon);
+            //ctrlBtn.display = Number(displayVal);
+            {}
+        }
+    }
+
+    Component.onCompleted: {
+        width = navLayout.width;
     }
 
     function setChecked(index) {
