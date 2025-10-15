@@ -1,9 +1,3 @@
-option(X_TOOLS_V8 "Build xTools version 8" OFF)
-if(X_TOOLS_V8)
-  include(v8/xTools.cmake)
-  return()
-endif()
-
 # Do something for CMake 4.0.0 or later
 if(NOT ${CMAKE_VERSION} VERSION_LESS "4.0.0")
   set(CMAKE_POLICY_VERSION_MINIMUM
@@ -32,7 +26,12 @@ project(
   LANGUAGES C CXX
   DESCRIPTION "xTools - All in one toolbox for developers and engineers")
 
-set(CMAKE_CXX_STANDARD 17)
+option(X_TOOLS_V8 "Build xTools version 8" OFF)
+if(X_TOOLS_V8)
+  set(CMAKE_CXX_STANDARD 20)
+else()
+  set(CMAKE_CXX_STANDARD 17)
+endif()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -195,6 +194,15 @@ endif()
 include(${CMAKE_SOURCE_DIR}/xapps/xApp.cmake)
 if(NOT ${X_APP} STREQUAL "xTools")
   return()
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# xTools version 8 (Qt6.8.0 or later)
+if(QT_VERSION VERSION_GREATER_EQUAL "6.8.0")
+  if(X_TOOLS_V8)
+    include(v8/xTools.cmake)
+    return()
+  endif()
 endif()
 
 # --------------------------------------------------------------------------------------------------

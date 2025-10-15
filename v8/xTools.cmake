@@ -1,32 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
-project(
-  xTools
-  VERSION 8.0
-  LANGUAGES C CXX
-  DESCRIPTION "xTools - All in one toolbox for developers and engineers")
-
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-find_package(QT NAMES Qt6 Required)
-find_package(Qt6 REQUIRED COMPONENTS Widgets Quick QuickControls2 LinguistTools)
-qt_standard_project_setup(REQUIRES 6.8)
-
-# --------------------------------------------------------------------------------------------------
-# Git info
-include(${CMAKE_SOURCE_DIR}/cmake/x.cmake)
-x_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X")
-x_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X")
-x_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X")
-
-# --------------------------------------------------------------------------------------------------
-# App setup
-include(cmake/x_qt_linguist.cmake)
-include(cmake/x_qt_deploy.cmake)
+find_package(Qt6 COMPONENTS Widgets Quick QuickControls2 REQUIRED)
 
 file(GLOB_RECURSE cpp_files "v8/src/*.*")
 set(X_BIN "${CMAKE_BINARY_DIR}/xTools")

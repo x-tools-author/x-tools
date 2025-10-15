@@ -24,6 +24,7 @@ ApplicationWindow {
     readonly property string xTrue: "true"
     readonly property string xFalse: "false"
     property int xColorShade: xMaterialTheme === Material.Dark ? Material.Shade200 : Material.Shade500
+    property int xPreferredWidth: 800
 
     Material.theme: xMaterialTheme
     Material.accent: Material.color(xMaterialPrimary, xColorShade)
