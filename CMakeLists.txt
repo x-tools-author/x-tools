@@ -40,5 +40,5 @@ set_property(CACHE X_TOOLS_FRAMEWORK PROPERTY STRINGS ${x_tools_framework_verson
 if(${X_TOOLS_FRAMEWORK} STREQUAL "Widgets")
   include(xToolsV7.cmake)
 else()
-  include(xToolsV8.cmake)
+  include(v8/xTools.cmake)
 endif()
