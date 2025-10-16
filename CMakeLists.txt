@@ -184,6 +184,11 @@ else()
   include(v8/xToolsV8.cmake)
 endif()
 
+get_target_property(X_LIBS_LINKED_LIBS xTools LINK_LIBRARIES)
+message(STATUS "[xTools] xTools linked libs: ${X_LIBS_LINKED_LIBS}")
+get_target_property(XTOOLS_RUNTIME_OUTPUT_DIR xTools RUNTIME_OUTPUT_DIRECTORY)
+message(STATUS "[xTools] xTools runtime output directory: ${XTOOLS_RUNTIME_OUTPUT_DIR}")
+
 # --------------------------------------------------------------------------------------------------
 # Windows
 if(WIN32)
@@ -233,19 +238,10 @@ if(APPLE)
   include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
   x_generate_dmg(xTools ${X_LATEST_GIT_TAG})
 
+  # cmake-format: off
   include(${CMAKE_SOURCE_DIR}/cmake/pkg/pkg.cmake)
-  set(XTOOLS_DEV_ID_APPLICATION
-      "Developer ID Application: Your Name \(XXXXXXXXXX\)"
-      CACHE STRING "Developer ID Application")
-  set(XTOOLS_DEV_ID_INSTALLER
-      "Developer ID Installer: Your Name \(XXXXXXXXXX\)"
-      CACHE STRING "Developer ID Installer")
+  set(XTOOLS_DEV_ID_APPLICATION "Developer ID Application: Your Name \(XXXXXXXXXX\)" CACHE STRING "Developer ID Application")
+  set(XTOOLS_DEV_ID_INSTALLER "Developer ID Installer: Your Name \(XXXXXXXXXX\)" CACHE STRING "Developer ID Installer")
   x_generate_pkg(xTools ${X_LATEST_GIT_TAG} ${XTOOLS_DEV_ID_APPLICATION} ${XTOOLS_DEV_ID_INSTALLER})
+  # cmake-format: on
 endif()
-
-# --------------------------------------------------------------------------------------------------
-# ......
-get_target_property(X_LIBS_LINKED_LIBS xTools LINK_LIBRARIES)
-message(STATUS "[xTools] xTools linked libs: ${X_LIBS_LINKED_LIBS}")
-get_target_property(XTOOLS_RUNTIME_OUTPUT_DIR xTools RUNTIME_OUTPUT_DIRECTORY)
-message(STATUS "[xTools] xTools runtime output directory: ${XTOOLS_RUNTIME_OUTPUT_DIR}")
