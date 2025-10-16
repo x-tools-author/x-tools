@@ -7,7 +7,6 @@
  * code directory.
  **************************************************************************************************/
 #include "barcodeassistant.h"
-#include "ui_barcodeassistant.h"
 
 #if defined(X_ZINT_USING_SRC)
 #include <backend_qt/qzint.h>
@@ -22,43 +21,26 @@
 #include <QPixmap>
 #include <QStringListModel>
 
-#include "common/xtools.h"
-
 #if 0
 #define X_ENABLE_COMPLETER
 #endif
 
 BarCodeAssistant::BarCodeAssistant(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::BarCodeAssistant)
     , m_completer(nullptr)
     , m_filterModel(nullptr)
 {
-    ui->setupUi(this);
     setWindowTitle(tr("Barcode Assistant"));
     resize(720, 480);
 
     setupTypeComboBox();
 
-    connect(ui->pushButtonExport,
-            &QPushButton::clicked,
-            this,
-            &BarCodeAssistant::onExportButtonClicked);
-    connect(ui->pushButtonRefresh,
-            &QPushButton::clicked,
-            this,
-            &BarCodeAssistant::onRefreshButtonClicked);
 #if defined(X_ENABLE_COMPLETER)
     connect(ui->comboBoxType,
             &QComboBox::currentTextChanged,
             this,
             &BarCodeAssistant::onTypeComboBoxTextChanged);
 #endif
-    connect(ui->comboBoxType, xComboBoxActivated, this, &BarCodeAssistant::onRefreshButtonClicked);
-    connect(ui->plainTextEdit,
-            &QPlainTextEdit::textChanged,
-            this,
-            &BarCodeAssistant::onRefreshButtonClicked);
 }
 
 BarCodeAssistant::~BarCodeAssistant()
@@ -69,7 +51,6 @@ BarCodeAssistant::~BarCodeAssistant()
     if (m_filterModel) {
         delete m_filterModel;
     }
-    delete ui;
 }
 
 void BarCodeAssistant::onExportButtonClicked()
@@ -83,7 +64,7 @@ void BarCodeAssistant::onExportButtonClicked()
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     QPixmap pixmap = *ui->labelImage->pixmap();
 #else
-    QPixmap pixmap = ui->labelImage->pixmap(Qt::ReturnByValue);
+    QPixmap pixmap; // = ui->labelImage->pixmap(Qt::ReturnByValue);
 #endif
     if (!pixmap.save(fileName)) {
         QMessageBox::warning(this, tr("Save Image"), tr("Failed to save image."));
@@ -94,7 +75,7 @@ void BarCodeAssistant::onRefreshButtonClicked()
 {
     Zint::QZint code;
     Zint::QZint::AspectRatioMode mode = Zint::QZint::KeepAspectRatio;
-
+#if 0
     // Get the barcode type from current selection
     int barcodeType = BARCODE_MICROQR; // Default fallback
 
@@ -124,6 +105,7 @@ void BarCodeAssistant::onRefreshButtonClicked()
     QPainter painter(&image);
     code.render(painter, image.rect(), mode);
     ui->labelImage->setPixmap(QPixmap::fromImage(image));
+#endif
 }
 
 void BarCodeAssistant::onTypeComboBoxTextChanged(const QString &text)
@@ -248,7 +230,7 @@ void BarCodeAssistant::setupTypeComboBox()
     m_allItems.append({BARCODE_BC412, QString("IBM BC412 (SEMI T1-95)")});
     m_allItems.append({BARCODE_DXFILMEDGE, QString("DX Film Edge Barcode")});
     // clang-format on
-
+#if 0
     // Set ComboBox to be editable for search functionality
 #if defined(X_ENABLE_COMPLETER)
     ui->comboBoxType->setEditable(true);
@@ -268,13 +250,14 @@ void BarCodeAssistant::setupTypeComboBox()
     if (ui->comboBoxType->isEditable()) {
         ui->comboBoxType->setCompleter(m_completer);
     }
-
+#endif
     // Fill the ComboBox with all barcode types initially
     updateComboBoxItems();
 }
 
 void BarCodeAssistant::updateComboBoxItems(const QString &filter)
 {
+#if 0
     // Clear current items
     ui->comboBoxType->blockSignals(true);
     ui->comboBoxType->clear();
@@ -305,4 +288,5 @@ void BarCodeAssistant::updateComboBoxItems(const QString &filter)
         }
     }
     ui->comboBoxType->blockSignals(false);
+#endif
 }

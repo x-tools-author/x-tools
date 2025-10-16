@@ -12,10 +12,6 @@
 #include <QStringListModel>
 #include <QWidget>
 
-namespace Ui {
-class BarCodeAssistant;
-}
-
 class BarCodeAssistant : public QWidget
 {
     Q_OBJECT
@@ -27,7 +23,6 @@ public:
     void onRefreshButtonClicked();
 
 private:
-    Ui::BarCodeAssistant *ui;
     QCompleter *m_completer;
     QStringListModel *m_filterModel;
     QList<QPair<int, QString>> m_allItems;

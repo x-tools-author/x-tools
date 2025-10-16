@@ -1,4 +1,7 @@
-find_package(Qt6 COMPONENTS Widgets Quick QuickControls2 REQUIRED)
+find_package(
+  Qt6
+  COMPONENTS Widgets Quick QuickControls2
+  REQUIRED)
 
 file(GLOB_RECURSE cpp_files "v8/src/*.*")
 set(X_BIN "${CMAKE_BINARY_DIR}/xTools")
@@ -6,7 +9,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/xTools")
 qt_add_executable(xTools ${cpp_files} xTools.qrc)
 x_deploy_qt(xTools)
 x_generate_translations(xTools)
-target_link_libraries(xTools PRIVATE Qt6::Widgets Qt6::Quick Qt6::QuickControls2)
+target_link_libraries(xTools PRIVATE ${X_LIBS} Qt6::QuickControls2)
 if(MSVC)
   target_link_libraries(xTools PRIVATE Dwmapi)
 endif()

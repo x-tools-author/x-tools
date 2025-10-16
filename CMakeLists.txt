@@ -197,6 +197,11 @@ if(NOT ${X_APP} STREQUAL "xTools")
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# xTools application
+set(bin ${X_BINS_DIR}/xTools)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
+
+# --------------------------------------------------------------------------------------------------
 # xTools version 8 (Qt6.8.0 or later)
 if(QT_VERSION VERSION_GREATER_EQUAL "6.8.0")
   if(X_TOOLS_V8)
@@ -206,10 +211,6 @@ if(QT_VERSION VERSION_GREATER_EQUAL "6.8.0")
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# xTools application
-set(bin ${X_BINS_DIR}/xTools)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
-
 # Apple platforms settings
 if(APPLE)
   set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
