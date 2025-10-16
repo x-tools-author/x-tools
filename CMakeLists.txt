@@ -1,50 +1,34 @@
-# --------------------------------------------------------------------------------------------------
 # Do something for CMake 4.0.0 or later
 if(NOT ${CMAKE_VERSION} VERSION_LESS "4.0.0")
-  # cmake-format: off
-  set(CMAKE_POLICY_VERSION_MINIMUM "3.22" CACHE STRING "CMake policy version" FORCE)
-  # cmake-format: on
+  set(CMAKE_POLICY_VERSION_MINIMUM
+      "3.22"
+      CACHE STRING "CMake policy version" FORCE)
 endif()
 
-# --------------------------------------------------------------------------------------------------
 # Using vcpkg, you must set the environment variable VCPKG_ROOT first
 option(X_USING_VCPKG "Using vcpkg" OFF)
 if(X_USING_VCPKG)
-  # cmake-format: off
-  set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "vcpkg target triplet")
-  set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Please specify your own vcpkg file")
+  set(VCPKG_TARGET_TRIPLET
+      "x64-windows-static"
+      CACHE STRING "vcpkg target triplet")
+  set(CMAKE_TOOLCHAIN_FILE
+      "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+      CACHE STRING "Please specify your own vcpkg file")
   if(${VCPKG_TARGET_TRIPLET} STREQUAL "x64-windows-static")
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
   endif()
-  # cmake-format: on
 endif()
 
-# cmake-format: off
 cmake_minimum_required(VERSION 3.22)
-project( xTools VERSION 8.0 LANGUAGES C CXX DESCRIPTION "xTools - All in one toolbox for developers and engineers")
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-# cmake-format: on
+project(
+  xTools
+  VERSION 8.0
+  LANGUAGES C CXX
+  DESCRIPTION "xTools - All in one toolbox for developers and engineers")
 
-# --------------------------------------------------------------------------------------------------
-# Choose xTools framework version
-# cmake-format: off
-set(x_tools_framework_verson "Widgets")
-list(APPEND x_tools_framework_verson "Qml")
-set(X_TOOLS_FRAMEWORK "Widgets" CACHE STRING "The version of xTools framework to use")
-set_property(CACHE X_TOOLS_FRAMEWORK PROPERTY STRINGS ${x_tools_framework_verson})
-# cmake-format: on
-
-if(${X_TOOLS_FRAMEWORK} STREQUAL "Widgets")
-  set(CMAKE_CXX_STANDARD 17)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
-  set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-else()
-  set(CMAKE_CXX_STANDARD 20)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
-  set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-endif()
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # --------------------------------------------------------------------------------------------------
 # Some options for 3rd party libraries
@@ -86,6 +70,10 @@ list(APPEND X_QT_COMPONENTS Core)
 list(APPEND X_QT_COMPONENTS Widgets)
 list(APPEND X_QT_COMPONENTS Network)
 list(APPEND X_QT_COMPONENTS LinguistTools)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
 # Qt6 is preferred, but Qt5 is also supported
 find_package(QT NAMES Qt5 Qt6 REQUIRED)
@@ -178,16 +166,93 @@ if(WIN32 AND MSVC)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-if(${X_TOOLS_FRAMEWORK} STREQUAL "Widgets")
-  include(xToolsV7.cmake)
-else()
-  include(v8/xToolsV8.cmake)
+# Get all source files of the project
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
+file(GLOB_RECURSE X_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
+list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
+
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
+
+# --------------------------------------------------------------------------------------------------
+# if X_LATEST_GIT_TAG contain "v", remove it...
+if(NOT DEFINED X_LATEST_GIT_TAG)
+  set(X_LATEST_GIT_TAG "9.9.9")
 endif()
 
-get_target_property(X_LIBS_LINKED_LIBS xTools LINK_LIBRARIES)
-message(STATUS "[xTools] xTools linked libs: ${X_LIBS_LINKED_LIBS}")
-get_target_property(XTOOLS_RUNTIME_OUTPUT_DIR xTools RUNTIME_OUTPUT_DIRECTORY)
-message(STATUS "[xTools] xTools runtime output directory: ${XTOOLS_RUNTIME_OUTPUT_DIR}")
+if(X_LATEST_GIT_TAG MATCHES "^v[0-9].*")
+  string(SUBSTRING ${X_LATEST_GIT_TAG} 1 -1 X_LATEST_GIT_TAG)
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# xApplications selector(just for Qt6.8.0 or later)
+include(${CMAKE_SOURCE_DIR}/xapps/xApp.cmake)
+if(NOT ${X_APP} STREQUAL "xTools")
+  return()
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# xTools application
+set(bin ${X_BINS_DIR}/xTools)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
+
+# Apple platforms settings
+if(APPLE)
+  set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
+  set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
+  set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+  list(APPEND X_SOURCES ${xTools_ICON})
+endif()
+
+if(WIN32)
+  list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
+endif()
+
+# Inner xApps
+include(${CMAKE_SOURCE_DIR}/cmake/x_apps.cmake)
+
+# xTools
+x_add_executable(xTools ${X_SOURCES})
+target_link_libraries(xTools PRIVATE ${X_LIBS})
+x_output_env(xTools)
+x_deploy_qt(xTools)
+x_deploy_resources(xTools)
+
+# --------------------------------------------------------------------------------------------------
+# xTools translations(i18n)
+x_generate_module_translations(xtools ${CMAKE_CURRENT_SOURCE_DIR}/src OFF)
+
+# Page modules
+x_generate_module_translations(page ${CMAKE_CURRENT_SOURCE_DIR}/src/page OFF)
+x_generate_module_translations(page-common ${CMAKE_CURRENT_SOURCE_DIR}/src/page/common ON)
+x_generate_module_translations(page-emitter ${CMAKE_CURRENT_SOURCE_DIR}/src/page/emitter ON)
+x_generate_module_translations(page-panels ${CMAKE_CURRENT_SOURCE_DIR}/src/page/panels ON)
+x_generate_module_translations(page-preset ${CMAKE_CURRENT_SOURCE_DIR}/src/page/preset ON)
+x_generate_module_translations(page-responder ${CMAKE_CURRENT_SOURCE_DIR}/src/page/responder ON)
+x_generate_module_translations(page-transfer ${CMAKE_CURRENT_SOURCE_DIR}/src/page/transfer ON)
+x_generate_module_translations(page-utilities ${CMAKE_CURRENT_SOURCE_DIR}/src/page/utilities ON)
+x_generate_module_translations(page-scripts ${CMAKE_CURRENT_SOURCE_DIR}/src/page/scripts ON)
+
+# Tools modules
+x_generate_module_translations(tools ${CMAKE_CURRENT_SOURCE_DIR}/src/tools OFF)
+x_generate_module_translations(tools-ascii ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/ascii ON)
+x_generate_module_translations(tools-barcode ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/barcode ON)
+x_generate_module_translations(tools-base64 ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/base64 ON)
+x_generate_module_translations(tools-broadcast ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/broadcast ON)
+x_generate_module_translations(tools-canbus ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/canbus ON)
+x_generate_module_translations(tools-crc ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/crc ON)
+x_generate_module_translations(tools-filecheck ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/filecheck ON)
+x_generate_module_translations(tools-mdns ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/mdns ON)
+x_generate_module_translations(tools-modbus ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/modbus ON)
+x_generate_module_translations(tools-number ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/number ON)
+x_generate_module_translations(tools-ping ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/ping ON)
+x_generate_module_translations(tools-qrcode ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/qrcode ON)
+x_generate_module_translations(tools-string ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/string ON)
+
+# Other modules
+x_generate_module_translations(common ${CMAKE_CURRENT_SOURCE_DIR}/src/common ON)
+x_generate_module_translations(device ${CMAKE_CURRENT_SOURCE_DIR}/src/device ON)
+x_generate_module_translations(nodeeditor ${CMAKE_CURRENT_SOURCE_DIR}/src/nodeeditor ON)
 
 # --------------------------------------------------------------------------------------------------
 # Windows
@@ -238,10 +303,29 @@ if(APPLE)
   include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
   x_generate_dmg(xTools ${X_LATEST_GIT_TAG})
 
-  # cmake-format: off
   include(${CMAKE_SOURCE_DIR}/cmake/pkg/pkg.cmake)
-  set(XTOOLS_DEV_ID_APPLICATION "Developer ID Application: Your Name \(XXXXXXXXXX\)" CACHE STRING "Developer ID Application")
-  set(XTOOLS_DEV_ID_INSTALLER "Developer ID Installer: Your Name \(XXXXXXXXXX\)" CACHE STRING "Developer ID Installer")
+  set(XTOOLS_DEV_ID_APPLICATION
+      "Developer ID Application: Your Name \(XXXXXXXXXX\)"
+      CACHE STRING "Developer ID Application")
+  set(XTOOLS_DEV_ID_INSTALLER
+      "Developer ID Installer: Your Name \(XXXXXXXXXX\)"
+      CACHE STRING "Developer ID Installer")
   x_generate_pkg(xTools ${X_LATEST_GIT_TAG} ${XTOOLS_DEV_ID_APPLICATION} ${XTOOLS_DEV_ID_INSTALLER})
-  # cmake-format: on
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# otiose
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/otiose)
+
+# --------------------------------------------------------------------------------------------------
+# ......
+get_target_property(X_LIBS_LINKED_LIBS xTools LINK_LIBRARIES)
+message(STATUS "[xTools] xTools linked libs: ${X_LIBS_LINKED_LIBS}")
+get_target_property(XTOOLS_RUNTIME_OUTPUT_DIR xTools RUNTIME_OUTPUT_DIRECTORY)
+message(STATUS "[xTools] xTools runtime output directory: ${XTOOLS_RUNTIME_OUTPUT_DIR}")
+
+# --------------------------------------------------------------------------------------------------
+# ???(I don't know why)
+if(QT_VERSION_MAJOR EQUAL 6)
+  qt_finalize_target(xTools)
 endif()
