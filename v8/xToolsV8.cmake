@@ -1,39 +1,5 @@
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# --------------------------------------------------------------------------------------------------
-# Some options for 3rd party libraries
-# cmake-format: off
-set(WITH_GFLAGS OFF)
-set(BUILD_TESTING OFF)
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "Reset option" FORCE)
-set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
-# cmake-format: on
 
-# --------------------------------------------------------------------------------------------------
-# CMake module
-include(${CMAKE_SOURCE_DIR}/cmake/x.cmake)
-x_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X")
-x_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X")
-x_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X")
-
-# --------------------------------------------------------------------------------------------------
-# Target platform
-message(STATUS "------------------------------------------------------------")
-message(STATUS "[xTools] CMAKE_VERSION: ${CMAKE_VERSION}")
-message(STATUS "[xTools] CMAKE_GENERATOR: ${CMAKE_GENERATOR}")
-message(STATUS "[xTools] CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
-message(STATUS "[xTools] CMAKE_SYSTEM: ${CMAKE_SYSTEM}")
-message(STATUS "[xTools] CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
-message(STATUS "[xTools] CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
-message(STATUS "[xTools] CMAKE_HOST_SYSTEM: ${CMAKE_HOST_SYSTEM}")
-message(STATUS "[xTools] CMAKE_HOST_SYSTEM_NAME: ${CMAKE_HOST_SYSTEM_NAME}")
-message(STATUS "[xTools] CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
-message(STATUS "[xTools] CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
-message(STATUS "[xTools] CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
-
-# --------------------------------------------------------------------------------------------------
 # Qt module
 list(APPEND X_QT_COMPONENTS Gui)
 list(APPEND X_QT_COMPONENTS Svg)
