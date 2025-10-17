@@ -315,7 +315,10 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # otiose
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/otiose)
+option(X_ENABLE_OTIOSE "Build otiose module" OFF)
+if(X_ENABLE_OTIOSE)
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/otiose)
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # ......
