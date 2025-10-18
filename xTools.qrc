@@ -40,15 +40,5 @@
         <file>res/icons/stop.svg</file>
         <file>res/icons/play_arrow.svg</file>
         <file>res/icons/cleaning_services.svg</file>
-        <file>v8/res/icons/bluetooth.svg</file>
-        <file>v8/res/icons/construction.svg</file>
-        <file>v8/res/icons/info.svg</file>
-        <file>v8/res/icons/send.svg</file>
-        <file>v8/res/icons/settings.svg</file>
-        <file>v8/res/icons/bug_report.svg</file>
-        <file>v8/res/icons/graph_1.svg</file>
-        <file>v8/res/icons/mqtt.svg</file>
-        <file>v8/res/icons/modbus.svg</file>
-        <file>v8/res/icons/CANBus.svg</file>
     </qresource>
 </RCC>
