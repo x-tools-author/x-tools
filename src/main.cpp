@@ -16,7 +16,7 @@
 #include "application.h"
 #include "mainwindow.h"
 
-#if defined(X_ENABLE_SINGLE_APPLICATION)
+#if X_ENABLE_SINGLE_APPLICATION
 #include "singleapplication.h"
 #endif
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     Application::setupHdpi();
     Application app(argc, argv);
 
-#if defined(X_ENABLE_SINGLE_APPLICATION)
+#if X_ENABLE_SINGLE_APPLICATION
     SingleApplication sApp(argc, argv);
     if (sApp.isSecondary()) {
         return 0;
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     window.load();
     window.moveToCenter();
 
-#if defined(X_ENABLE_SINGLE_APPLICATION)
+#if X_ENABLE_SINGLE_APPLICATION
     QObject::connect(&sApp, &SingleApplication::instanceStarted, &window, [&window]() {
         window.show();
         window.raise();

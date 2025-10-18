@@ -5,6 +5,9 @@ set(package_name "SingleApplication-${package_version}")
 set(tmp "https://codeload.github.com/itay-grudev/SingleApplication/zip/refs/tags")
 set(package_url "${tmp}/v${package_version}")
 
+add_compile_definitions(X_ENABLE_SINGLE_APPLICATION=0)
+return()
+
 if(ANDROID OR IOS)
   message(STATUS "[SingleApplication]SingleApplication is not supported on Android or iOS.")
   return()
@@ -51,5 +54,5 @@ set_property(TARGET SingleApplication PROPERTY FOLDER "3rd")
 set_target_properties(SingleApplication PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${sapp_lib_dir})
 
 list(APPEND X_LIBS SingleApplication)
-add_compile_definitions(X_ENABLE_SINGLE_APPLICATION)
+add_compile_definitions(X_ENABLE_SINGLE_APPLICATION=1)
 set(X_ENABLE_SINGLE_APPLICATION ON)
