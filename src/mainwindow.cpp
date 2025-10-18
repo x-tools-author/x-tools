@@ -538,51 +538,38 @@ void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
 
 void MainWindow::initMenuLanguage()
 {
-    QMap<QString, QString> languageFlagNameMap;
-    languageFlagNameMap.insert("zh_CN", "简体中文");
-    languageFlagNameMap.insert("en", "English");
-#if 1
-    languageFlagNameMap.insert("zh_TW", "繁體中文");
-    languageFlagNameMap.insert("ar", "العربية");
-    languageFlagNameMap.insert("cs", "Čeština");
-    languageFlagNameMap.insert("da", "Dansk");
-    languageFlagNameMap.insert("de", "Deutsch");
-    languageFlagNameMap.insert("es", "Español");
-    languageFlagNameMap.insert("fa", "فارسی");
-    languageFlagNameMap.insert("fi", "Suomi");
-    languageFlagNameMap.insert("fr", "Français");
-    languageFlagNameMap.insert("he", "עִבְרִית");
-    languageFlagNameMap.insert("uk", "українська мова");
-    languageFlagNameMap.insert("it", "Italiano");
-    languageFlagNameMap.insert("ja", "日本语");
-    languageFlagNameMap.insert("ko", "한글");
-    languageFlagNameMap.insert("lt", "Lietuvių kalba");
-    languageFlagNameMap.insert("pl", "Polski");
-    languageFlagNameMap.insert("pt", "Português");
-    languageFlagNameMap.insert("ru", "русский язык");
-    languageFlagNameMap.insert("sk", "Slovenčina");
-    languageFlagNameMap.insert("sl", "Slovenščina");
-    languageFlagNameMap.insert("sv", "Svenska");
-#endif
+    QString path = QCoreApplication::applicationDirPath();
+    path += "/translations/";
+    QDir dir(path);
+    QFileInfoList fileInfoList = dir.entryInfoList(QStringList("xTools_*.qm"),
+                                                   QDir::Files | QDir::NoDotAndDotDot);
+    QStringList languages;
+    for (const QFileInfo& fileInfo : fileInfoList) {
+        QString baseName = fileInfo.baseName();    // e.g., xTools_zh_CN
+        QString locale = baseName.section('_', 1); // e.g., zh_CN
+        languages.append(locale);
+    }
 
     QMenu* languageMenu = menuBar()->addMenu(tr("&Languages"));
     static auto languageActionGroup = new QActionGroup(this);
-    for (auto it = languageFlagNameMap.begin(); it != languageFlagNameMap.end(); ++it) {
-        auto* action = new QAction(it.value(), this);
+    for (const QString& language : std::as_const(languages)) {
+        QString name = language;
+        QString nativeName = QLocale(language).nativeLanguageName();
+        QLocale locale(language);
+        auto* action = new QAction(nativeName, this);
         action->setCheckable(true);
         languageMenu->addAction(action);
         languageActionGroup->addAction(action);
 
         Application::SettingsKey keys;
-        QString key = it.key();
         connect(action, &QAction::triggered, this, [=]() {
-            xApp->settings()->setValue(keys.language, key);
+            xApp->settings()->setValue(keys.language, language);
             tryToReboot();
         });
 
         QString defaultLanguage = QLocale::system().name();
-        QString language = xApp->settings()->value(keys.language, defaultLanguage).toString();
-        if (language == it.key()) {
+        QString tmp = xApp->settings()->value(keys.language, defaultLanguage).toString();
+        if (tmp == name) {
             action->setChecked(true);
         }
     }
