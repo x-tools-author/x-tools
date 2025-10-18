@@ -1054,7 +1054,6 @@ void ModbusAssistant::updateClientTableViewData(const QList<quint16> &values)
 void ModbusAssistant::updateClientTableViewData(const QVector<quint16> &values)
 #endif
 {
-    qInfo() << "Update client table view data, values:" << values;
     for (int row = 0; row < values.count(); row++) {
         if (row >= m_clientRegisterModel->rowCount()) {
             return;
