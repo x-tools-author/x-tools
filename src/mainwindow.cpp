@@ -545,8 +545,8 @@ void MainWindow::initMenuLanguage()
                                                    QDir::Files | QDir::NoDotAndDotDot);
     QStringList languages;
     for (const QFileInfo& fileInfo : fileInfoList) {
-        QString baseName = fileInfo.baseName();    // e.g., xTools_zh_CN
-        QString locale = baseName.section('_', 1); // e.g., zh_CN
+        QString baseName = fileInfo.baseName();      // e.g., xTools_zh_CN
+        QString locale = baseName.remove("xTools_"); // e.g., zh_CN
         languages.append(locale);
     }
 
