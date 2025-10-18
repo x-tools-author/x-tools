@@ -213,46 +213,16 @@ include(${CMAKE_SOURCE_DIR}/cmake/x_apps.cmake)
 
 # xTools
 x_add_executable(xTools ${X_SOURCES})
-target_link_libraries(xTools PRIVATE ${X_LIBS})
 x_output_env(xTools)
 x_deploy_qt(xTools)
 x_deploy_resources(xTools)
+x_generate_translations(xTools)
 
-# --------------------------------------------------------------------------------------------------
-# xTools translations(i18n)
-x_generate_module_translations(xtools ${CMAKE_CURRENT_SOURCE_DIR}/src OFF)
-
-# Page modules
-x_generate_module_translations(page ${CMAKE_CURRENT_SOURCE_DIR}/src/page OFF)
-x_generate_module_translations(page-common ${CMAKE_CURRENT_SOURCE_DIR}/src/page/common ON)
-x_generate_module_translations(page-emitter ${CMAKE_CURRENT_SOURCE_DIR}/src/page/emitter ON)
-x_generate_module_translations(page-panels ${CMAKE_CURRENT_SOURCE_DIR}/src/page/panels ON)
-x_generate_module_translations(page-preset ${CMAKE_CURRENT_SOURCE_DIR}/src/page/preset ON)
-x_generate_module_translations(page-responder ${CMAKE_CURRENT_SOURCE_DIR}/src/page/responder ON)
-x_generate_module_translations(page-transfer ${CMAKE_CURRENT_SOURCE_DIR}/src/page/transfer ON)
-x_generate_module_translations(page-utilities ${CMAKE_CURRENT_SOURCE_DIR}/src/page/utilities ON)
-x_generate_module_translations(page-scripts ${CMAKE_CURRENT_SOURCE_DIR}/src/page/scripts ON)
-
-# Tools modules
-x_generate_module_translations(tools ${CMAKE_CURRENT_SOURCE_DIR}/src/tools OFF)
-x_generate_module_translations(tools-ascii ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/ascii ON)
-x_generate_module_translations(tools-barcode ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/barcode ON)
-x_generate_module_translations(tools-base64 ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/base64 ON)
-x_generate_module_translations(tools-broadcast ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/broadcast ON)
-x_generate_module_translations(tools-canbus ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/canbus ON)
-x_generate_module_translations(tools-crc ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/crc ON)
-x_generate_module_translations(tools-filecheck ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/filecheck ON)
-x_generate_module_translations(tools-mdns ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/mdns ON)
-x_generate_module_translations(tools-modbus ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/modbus ON)
-x_generate_module_translations(tools-number ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/number ON)
-x_generate_module_translations(tools-ping ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/ping ON)
-x_generate_module_translations(tools-qrcode ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/qrcode ON)
-x_generate_module_translations(tools-string ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/string ON)
-
-# Other modules
-x_generate_module_translations(common ${CMAKE_CURRENT_SOURCE_DIR}/src/common ON)
-x_generate_module_translations(device ${CMAKE_CURRENT_SOURCE_DIR}/src/device ON)
-x_generate_module_translations(nodeeditor ${CMAKE_CURRENT_SOURCE_DIR}/src/nodeeditor ON)
+target_link_libraries(xTools PRIVATE ${X_LIBS})
+get_target_property(X_LIBS_LINKED_LIBS xTools LINK_LIBRARIES)
+message(STATUS "[xTools] xTools linked libs: ${X_LIBS_LINKED_LIBS}")
+get_target_property(XTOOLS_RUNTIME_OUTPUT_DIR xTools RUNTIME_OUTPUT_DIRECTORY)
+message(STATUS "[xTools] xTools runtime output directory: ${XTOOLS_RUNTIME_OUTPUT_DIR}")
 
 # --------------------------------------------------------------------------------------------------
 # Windows
@@ -319,13 +289,6 @@ option(X_ENABLE_OTIOSE "Build otiose module" OFF)
 if(X_ENABLE_OTIOSE)
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/otiose)
 endif()
-
-# --------------------------------------------------------------------------------------------------
-# ......
-get_target_property(X_LIBS_LINKED_LIBS xTools LINK_LIBRARIES)
-message(STATUS "[xTools] xTools linked libs: ${X_LIBS_LINKED_LIBS}")
-get_target_property(XTOOLS_RUNTIME_OUTPUT_DIR xTools RUNTIME_OUTPUT_DIRECTORY)
-message(STATUS "[xTools] xTools runtime output directory: ${XTOOLS_RUNTIME_OUTPUT_DIR}")
 
 # --------------------------------------------------------------------------------------------------
 # ???(I don't know why)
