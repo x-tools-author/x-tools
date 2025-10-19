@@ -3384,12 +3384,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="109"/>
         <source>Cannot open script file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося відкрити файл скрипта: %1</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="127"/>
         <source>Script executed successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Скрипт виконано успішно.</translation>
     </message>
 </context>
 <context>
@@ -3397,47 +3397,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="52"/>
         <source>Search text</source>
-        <translation type="unfinished"></translation>
+        <translation>Пошуковий текст</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="59"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Пошук</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="82"/>
         <source>Regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Регулярний вираз</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Чутливий до регістру</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation type="unfinished"></translation>
+        <translation>Цілі слова</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
         <source>Could not find any matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не знайдено жодних збігів.</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="151"/>
         <source>Found %1 matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Знайдено %1 збігів.</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="190"/>
         <source>Line %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Рядок %1:</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="224"/>
         <source>Search results:</source>
-        <translation type="unfinished"></translation>
+        <translation>Результати пошуку:</translation>
     </message>
 </context>
 <context>
@@ -3445,7 +3445,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/serialport.cpp" line="45"/>
         <source>Failed to open serial port: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося відкрити послідовний порт: %1</translation>
     </message>
 </context>
 <context>
@@ -3453,78 +3453,78 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="106"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Непарна</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="108"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Парна</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="110"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
+        <translation>Мітка</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="112"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Пробіл</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="114"/>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="122"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="118"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>Апаратне</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="120"/>
         <source>Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Програмне</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="225"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Опція передачі</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="227"/>
         <source>Port Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім'я порту</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="229"/>
         <source>Baud Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Швидкість передачі</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="231"/>
         <source>Data Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Біти даних</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="233"/>
         <source>Stop Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Стопові біти</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="235"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Парність</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="237"/>
         <source>Flow Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Керування потоком</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="239"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Опис</translation>
     </message>
 </context>
 <context>
@@ -3532,42 +3532,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/serialportui.ui" line="41"/>
         <source>Baud rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Швидкість передачі</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="57"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Парність</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="64"/>
         <source>Ignored busy device</source>
-        <translation type="unfinished"></translation>
+        <translation>Ігнорувати зайнятий пристрій</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="87"/>
         <source>Data bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Біти даних</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="107"/>
         <source>Flow control</source>
-        <translation type="unfinished"></translation>
+        <translation>Керування потоком</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="120"/>
         <source>Stop bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Стопові біти</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="155"/>
         <source>Port name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім'я порту</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="193"/>
         <source>Enable frame interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Увімкнути інтервал рамки</translation>
     </message>
 </context>
 <context>
@@ -3575,52 +3575,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Увімкнути</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="98"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимкнути</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="190"/>
         <source>Transfer Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Опція передачі</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="192"/>
         <source>Server Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адреса сервера</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="194"/>
         <source>Server Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт сервера</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="196"/>
         <source>Data Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Канал даних</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="198"/>
         <source>Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Автентифікація</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="200"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім'я користувача</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="202"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="204"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Опис</translation>
     </message>
 </context>
 <context>
@@ -3628,82 +3628,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/socketui.ui" line="32"/>
         <source>Write to</source>
-        <translation type="unfinished"></translation>
+        <translation>Записати в</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="39"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="54"/>
         <source>Disconnect all clients</source>
-        <translation type="unfinished"></translation>
+        <translation>Відключити всіх клієнтів</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="73"/>
         <source>Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Автентифікація</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
-        <translation type="unfinished"></translation>
+        <translation>IP сервера</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Канал</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="119"/>
         <source>Enable multicast</source>
-        <translation type="unfinished"></translation>
+        <translation>Увімкнути мультикаст</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="126"/>
         <source>Just multicast</source>
-        <translation type="unfinished"></translation>
+        <translation>Тільки мультикаст</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
-        <translation type="unfinished"></translation>
+        <translation>post/hello</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="145"/>
         <source>Secure Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Безпечний режим</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="152"/>
         <source>Multicast Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт мультикаста</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="159"/>
         <source>Multicast IP</source>
-        <translation type="unfinished"></translation>
+        <translation>IP мультикаста</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="172"/>
         <source>Server port</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт сервера</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім'я користувача</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
         <source>All clients</source>
-        <translation type="unfinished"></translation>
+        <translation>Всі клієнти</translation>
     </message>
 </context>
 <context>
@@ -3711,7 +3711,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/statistician.cpp" line="51"/>
         <source>%1 frames, %2 bytes, %3B/s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 кадрів, %2 байтів, %3Б/с</translation>
     </message>
 </context>
 <context>
@@ -3719,27 +3719,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="20"/>
         <source>Raw data</source>
-        <translation type="unfinished"></translation>
+        <translation>Сирі дані</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="64"/>
         <source>Input format</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат введення</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="77"/>
         <source>Cooked data</source>
-        <translation type="unfinished"></translation>
+        <translation>Оброблені дані</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="100"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат виходу</translation>
     </message>
     <message>
         <location filename="../../src/tools/string/stringassistant.ui" line="110"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Створити</translation>
     </message>
 </context>
 <context>
@@ -3747,17 +3747,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="19"/>
         <source>xTools</source>
-        <translation type="unfinished"></translation>
+        <translation>xTools</translation>
     </message>
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="22"/>
         <source>Open main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Відкрити головне вікно</translation>
     </message>
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="24"/>
         <source>Exit program</source>
-        <translation type="unfinished"></translation>
+        <translation>Вийти з програми</translation>
     </message>
 </context>
 <context>
@@ -3765,75 +3765,75 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортувати</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="44"/>
         <source>Disable all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимкнути всі елементи</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="69"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="79"/>
         <source>Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Вгору</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="86"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="93"/>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистити</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="100"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Імпортувати</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="107"/>
         <source>Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Вниз</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
         <source>Are you sure to clear all items?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ви впевнені, що хочете очистити всі елементи?</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="165"/>
         <source>No Item be Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Жоден елемент не вибрано</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="165"/>
         <source>Please select a item first!</source>
-        <translation type="unfinished"></translation>
+        <translation>Будь ласка, спочатку виберіть елемент!</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <location filename="../../src/page/common/tableview.cpp" line="203"/>
         <source>Import data</source>
-        <translation type="unfinished"></translation>
+        <translation>Імпортувати дані</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="177"/>
         <location filename="../../src/page/common/tableview.cpp" line="205"/>
         <source>JSON (*.json);;All (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON (*.json);;Всі (*)</translation>
     </message>
 </context>
 <context>
@@ -3841,77 +3841,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="14"/>
         <source>Data Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Редактор даних</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="20"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Скасувати</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="33"/>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Алгоритм</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="43"/>
         <source>Start index</source>
-        <translation type="unfinished"></translation>
+        <translation>Індекс початку</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>End index</source>
-        <translation type="unfinished"></translation>
+        <translation>Кінцевий індекс</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
         <source>Append</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
-        <translation type="unfinished"></translation>
+        <translation>Великий ендіан</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
         <source>Preprocessing</source>
-        <translation type="unfinished"></translation>
+        <translation>Попередня обробка</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
         <source>Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Префікс</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
         <source>Suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Суфікс</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
         <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation>Символ escape</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="155"/>
         <source>Payload</source>
-        <translation type="unfinished"></translation>
+        <translation>Корисне навантаження</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат</translation>
     </message>
 </context>
 <context>
@@ -3919,7 +3919,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/common/transfermodel.cpp" line="48"/>
         <source>Transfer %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Передача %1</translation>
     </message>
 </context>
 <context>
@@ -3927,37 +3927,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="32"/>
         <source>Serial Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Послідовний порт</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="41"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP Клієнт</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="49"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP Сервер</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="57"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP Клієнт</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="65"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP Сервер</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="74"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket Клієнт</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/transfersview.cpp" line="82"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket Сервер</translation>
     </message>
 </context>
 <context>
@@ -3965,7 +3965,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpbroadcast.cpp" line="64"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося прив'язати UDP сокет: %1</translation>
     </message>
 </context>
 <context>
@@ -3973,17 +3973,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpbroadcastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="unfinished"></translation>
+        <translation>Виберіть мережевий інтерфейс:</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.ui" line="58"/>
         <source>Broadcast Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт трансляції</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
         <source>All Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Всі інтерфейси</translation>
     </message>
 </context>
 <context>
@@ -3991,22 +3991,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="68"/>
         <source>Invalid network interface: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Недійсний мережевий інтерфейс: %1</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="75"/>
         <source>Network interface %1 does not support multicast</source>
-        <translation type="unfinished"></translation>
+        <translation>Мережевий інтерфейс %1 не підтримує мультикаст</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="93"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося прив'язати UDP сокет: %1</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="102"/>
         <source>Failed to join multicast group %1:%2: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося приєднатися до групи мультикаста %1:%2: %3</translation>
     </message>
 </context>
 <context>
@@ -4014,22 +4014,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="unfinished"></translation>
+        <translation>Виберіть мережевий інтерфейс:</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="55"/>
         <source>Multicast IP</source>
-        <translation type="unfinished"></translation>
+        <translation>IP мультикаста</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="85"/>
         <source>Multicast Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт мультикаста</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="92"/>
         <source>Multicast loopback</source>
-        <translation type="unfinished"></translation>
+        <translation>Зворотний зв'язок мультикаста</translation>
     </message>
 </context>
 <context>
@@ -4037,22 +4037,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="37"/>
         <source>Coils</source>
-        <translation type="unfinished"></translation>
+        <translation>Котушки</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="41"/>
         <source>Discrete Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Дискретні входи</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="45"/>
         <source>Holding Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>Регістри утримування</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="49"/>
         <source>Input Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>Регістри введення</translation>
     </message>
 </context>
 <context>
@@ -4060,32 +4060,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="43"/>
         <source>New RTU Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий RTU пристрій</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="44"/>
         <source>New TCP Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий TCP пристрій</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="46"/>
         <source>New Coils</source>
-        <translation type="unfinished"></translation>
+        <translation>Нові котушки</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="47"/>
         <source>New Discrete Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Нові дискретні входи</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="48"/>
         <source>New Holding Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>Нові регістри утримування</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="49"/>
         <source>New Input Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>Нові регістри введення</translation>
     </message>
 </context>
 </TS>
