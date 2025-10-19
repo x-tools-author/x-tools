@@ -77,38 +77,30 @@ void xUi::initMenuBarOption()
 
 void xUi::initMenuBarOptionLanguage()
 {
-    QMenu *menu = m_optionMenu->addMenu(tr("Language"));
-    QMap<QString, QString> languageFlagNameMap;
-    languageFlagNameMap.insert("ar", "العربية");         // 阿拉伯语
-    languageFlagNameMap.insert("cs", "Čeština");         // 捷克语
-    languageFlagNameMap.insert("da", "Dansk");           // 丹麦语
-    languageFlagNameMap.insert("de", "Deutsch");         // 德语
-    languageFlagNameMap.insert("es", "Español");         // 西班牙语
-    languageFlagNameMap.insert("en", "English");         // 英语
-    languageFlagNameMap.insert("fa", "فارسی");           // 波斯语
-    languageFlagNameMap.insert("fi", "Suomi");           // 芬兰语
-    languageFlagNameMap.insert("fr", "Français");        // 法语
-    languageFlagNameMap.insert("he", "עִבְרִית");           // 希伯来语
-    languageFlagNameMap.insert("uk", "українська мова"); // 乌克兰语
-    languageFlagNameMap.insert("it", "Italiano");        // 意大利语
-    languageFlagNameMap.insert("ja", "日本语");          // 日语
-    languageFlagNameMap.insert("ko", "한글");            // 韩语
-    languageFlagNameMap.insert("lt", "Lietuvių kalba");  // 立陶宛语
-    languageFlagNameMap.insert("nl", "Nederlands");      // 荷兰语
-    languageFlagNameMap.insert("pl", "Polski");          // 波兰语
-    languageFlagNameMap.insert("pt", "Português");       // 葡萄牙语
-    languageFlagNameMap.insert("ru", "русский язык");    // 俄语
-    languageFlagNameMap.insert("sk", "Slovenčina");      // 斯洛伐克语
-    languageFlagNameMap.insert("sl", "Slovenščina");     // 斯洛文尼亚语
-    languageFlagNameMap.insert("sv", "Svenska");         // 瑞典语
-    languageFlagNameMap.insert("zh_CN", "简体中文");     // 简体中文
-    languageFlagNameMap.insert("zh_TW", "繁體中文");     // 繁體中文
+    QString path = QCoreApplication::applicationDirPath();
+    path += "/translations/";
+    QDir dir(path);
+    QString appName = qApp->applicationName();
+    QString filter = QString("%1_*.qm").arg(appName);
+    QFileInfoList fileInfoList = dir.entryInfoList(QStringList(filter),
+                                                   QDir::Files | QDir::NoDotAndDotDot);
+    QStringList languages;
+    for (const QFileInfo &fileInfo : fileInfoList) {
+        QString baseName = fileInfo.baseName();                        // e.g., xTools_zh_CN
+        QString locale = baseName.remove(QString("%1_").arg(appName)); // e.g., zh_CN
+        languages.append(locale);
+    }
 
+    QMenu *menu = m_optionMenu->addMenu(tr("Language"));
     QString appLanguage = xAPP->appLanguageFlag();
     static QActionGroup *actionGroup = new QActionGroup(this);
-    QStringList nameKeys = languageFlagNameMap.keys();
-    for (const QString &lang : std::as_const(nameKeys)) {
-        QString name = languageFlagNameMap.value(lang);
+    for (const QString &lang : std::as_const(languages)) {
+        QLocale locale(lang);
+        QString name = locale.nativeLanguageName();
+        if (name.isEmpty()) {
+            continue;
+        }
+
         QAction *action = menu->addAction(name);
         action->setCheckable(true);
         action->setData(lang);

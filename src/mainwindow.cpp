@@ -555,6 +555,10 @@ void MainWindow::initMenuLanguage()
     for (const QString& language : std::as_const(languages)) {
         QString name = language;
         QString nativeName = QLocale(language).nativeLanguageName();
+        if (nativeName.isEmpty()) {
+            continue;
+        }
+
         QLocale locale(language);
         auto* action = new QAction(nativeName, this);
         action->setCheckable(true);
