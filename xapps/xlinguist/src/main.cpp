@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
     app.setupLanguage();
 
     xUi window;
-
     window.setWindowIcon(QIcon(":/res/icons/logo.svg"));
     auto flags = window.windowFlags();
     flags &= ~Qt::WindowMinMaxButtonsHint;
