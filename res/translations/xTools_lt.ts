@@ -6,12 +6,12 @@
     <message>
         <location filename="../../src/application.cpp" line="319"/>
         <source>Transfer rx bytes with right page</source>
-        <translation>Perduoti gautus baitus su dešiniuoju puslapiu</translation>
+        <translation>Perkelti rx baitus su dešiniu puslapiu</translation>
     </message>
     <message>
         <location filename="../../src/application.cpp" line="324"/>
         <source>Transfer rx bytes with left page</source>
-        <translation>Perduoti gautus baitus su kairiuoju puslapiu</translation>
+        <translation>Perkelti rx baitus su kairiuoju puslapiu</translation>
     </message>
 </context>
 <context>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.ui" line="49"/>
         <source>Preserve case</source>
-        <translation>Išlaikyti raidžių dydį</translation>
+        <translation>Išsaugoti registrą</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -54,162 +54,162 @@
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="63"/>
         <source>NUL (NULL)</source>
-        <translation>NUL (TUŠČIAS)</translation>
+        <translation>NUL (tuščias)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="64"/>
         <source>SOH (Start Of Headling)</source>
-        <translation>SOH (Antraštės pradžia)</translation>
+        <translation>SOH (antraštės pradžia)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="65"/>
         <source>STX (Start Of Text)</source>
-        <translation>STX (Teksto pradžia)</translation>
+        <translation>STX (teksto pradžia)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="66"/>
         <source>ETX (End Of Text)</source>
-        <translation>ETX (Teksto pabaiga)</translation>
+        <translation>ETX (teksto pabaiga)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="67"/>
         <source>EOT (End Of Transmission)</source>
-        <translation>EOT (Perdavimo pabaiga)</translation>
+        <translation>EOT (perdavimo pabaiga)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="68"/>
         <source>ENQ (Enquiry)</source>
-        <translation>ENQ (Užklausa)</translation>
+        <translation>ENQ (užklausa)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="69"/>
         <source>ACK (Acknowledge)</source>
-        <translation>ACK (Patvirtinimas)</translation>
+        <translation>ACK (patvirtinimas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="70"/>
         <source>BEL (Bell)</source>
-        <translation>BEL (Skambutis)</translation>
+        <translation>BEL (skambutis)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="71"/>
         <source>BS (Backspace)</source>
-        <translation>BS (Naikinimas atgal)</translation>
+        <translation>BS (grįžimas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="72"/>
         <source>HT (Horizontal Tab)</source>
-        <translation>HT (Horizontalus tabuliatorius)</translation>
+        <translation>HT (horizontalus tabuliatorius)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="73"/>
         <source>LF/NL(Line Feed/New Line)</source>
-        <translation>LF/NL (Eilutės paslinkimas/Nauja eilutė)</translation>
+        <translation>LF/NL (eilutės tiekimas/nauja eilutė)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="74"/>
         <source>VT (Vertical Tab)</source>
-        <translation>VT (Vertikalus tabuliatorius)</translation>
+        <translation>VT (vertikalus tabuliatorius)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="75"/>
         <source>FF/NP (Form Feed/New Page)</source>
-        <translation>FF/NP (Lapo paslinkimas/Naujas puslapis)</translation>
+        <translation>FF/NP (formos tiekimas/naujas puslapis)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="76"/>
         <source>CR (Carriage Return)</source>
-        <translation>CR (Eilutės grąžinimas)</translation>
+        <translation>CR (vežimėlio grįžimas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="77"/>
         <source>SO (Shift Out)</source>
-        <translation>SO (Išjungimas)</translation>
+        <translation>SO (perjungimas išorė)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="78"/>
         <source>SI (Shift In)</source>
-        <translation>SI (Įjungimas)</translation>
+        <translation>SI (perjungimas vidus)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="79"/>
         <source>DLE (Data Link Escape)</source>
-        <translation>DLE (Duomenų ryšio pabėgimas)</translation>
+        <translation>DLE (duomenų ryšio escape)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="80"/>
         <source>DC1/XON(Device Control 1/Transmission On)</source>
-        <translation>DC1/XON (Įrenginio valdymas 1/Perdavimas įjungtas)</translation>
+        <translation>DC1/XON (įrenginio valdymas 1/perdavimas įjungtas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="81"/>
         <source>DC2 (Device Control 2)</source>
-        <translation>DC2 (Įrenginio valdymas 2)</translation>
+        <translation>DC2 (įrenginio valdymas 2)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="82"/>
         <source>DC3/XOFF(Device Control 3/Transmission Off)</source>
-        <translation>DC3/XOFF (Įrenginio valdymas 3/Perdavimas išjungtas)</translation>
+        <translation>DC3/XOFF (įrenginio valdymas 3/perdavimas išjungtas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="83"/>
         <source>DC4 (Device Control 4)</source>
-        <translation>DC4 (Įrenginio valdymas 4)</translation>
+        <translation>DC4 (įrenginio valdymas 4)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="84"/>
         <source>NAK (Negative Acknowledge)</source>
-        <translation>NAK (Neigiamas patvirtinimas)</translation>
+        <translation>NAK (neigiamas patvirtinimas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="85"/>
         <source>SYN (Synchronous Idle)</source>
-        <translation>SYN (Sinchroninis laukimas)</translation>
+        <translation>SYN (sinchroninis neveikimas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="86"/>
         <source>ETB (End of Transmission Block)</source>
-        <translation>ETB (Perdavimo bloko pabaiga)</translation>
+        <translation>ETB (perdavimo bloko pabaiga)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="87"/>
         <source>CAN (Cancel)</source>
-        <translation>CAN (Atšaukimas)</translation>
+        <translation>CAN (atšaukti)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="88"/>
         <source>EM (End of Medium)</source>
-        <translation>EM (Laikmenos pabaiga)</translation>
+        <translation>EM (terpės pabaiga)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="89"/>
         <source>SUB (Substitute)</source>
-        <translation>SUB (Pakeitimas)</translation>
+        <translation>SUB (pakaitalas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="90"/>
         <source>ESC (Escape)</source>
-        <translation>ESC (Pabėgimas)</translation>
+        <translation>ESC (escape)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="91"/>
         <source>FS (File Separator)</source>
-        <translation>FS (Failo skirtukas)</translation>
+        <translation>FS (failų skirtukas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="92"/>
         <source>GS (Group Separator)</source>
-        <translation>GS (Grupės skirtukas)</translation>
+        <translation>GS (grupių skirtukas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="93"/>
         <source>RS (Record Separator)</source>
-        <translation>RS (Įrašo skirtukas)</translation>
+        <translation>RS (įrašų skirtukas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="94"/>
         <source>US (Unit Separator)</source>
-        <translation>US (Vieneto skirtukas)</translation>
+        <translation>US (vienetų skirtukas)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="95"/>
@@ -219,7 +219,7 @@
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="96"/>
         <source>DEL (Delete)</source>
-        <translation>DEL (Šalinimas)</translation>
+        <translation>DEL (trinti)</translation>
     </message>
 </context>
 <context>
@@ -257,22 +257,22 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
         <source>String Assistant</source>
-        <translation>Teksto asistentas</translation>
+        <translation>Eilučių asistentas</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
         <source>Broadcast Assistant</source>
-        <translation>Broadcast asistentas</translation>
+        <translation>Transliavimo asistentas</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
         <source>File Check Assistant</source>
-        <translation>Failo tikrinimo asistentas</translation>
+        <translation>Failų tikrinimo asistentas</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
-        <translation>Failo sujungimo asistentas</translation>
+        <translation>Failų sujungimo asistentas</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
@@ -282,7 +282,7 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
         <source>Barcode Assistant</source>
-        <translation>Juostelės kodo asistentas</translation>
+        <translation>Brūkšninio kodo asistentas</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
@@ -330,13 +330,13 @@
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
         <source>Barcode Assistant</source>
-        <translation>Juostelės kodo asistentas</translation>
+        <translation>Brūkšninio kodo asistentas</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Save Image</source>
-        <translation>Įrašyti vaizdą</translation>
+        <translation>Išsaugoti vaizdą</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
@@ -346,7 +346,7 @@
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Failed to save image.</source>
-        <translation>Nepavyko įrašyti vaizdo.</translation>
+        <translation>Nepavyko išsaugoti vaizdo.</translation>
     </message>
 </context>
 <context>
@@ -548,7 +548,7 @@
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation>Valyti</translation>
+        <translation>Išvalyti</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
@@ -632,7 +632,7 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="57"/>
         <source>Extended format</source>
-        <translation>Pratęstas formatas</translation>
+        <translation>Išplėstas formatas</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="64"/>
@@ -732,7 +732,7 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="451"/>
         <source>CAN Frame Payload</source>
-        <translation>CAN rėmelio turinys</translation>
+        <translation>CAN rėmelio apkrova</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="489"/>
@@ -802,7 +802,7 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="355"/>
         <source>Error Occure</source>
-        <translation>Klaida įvyko</translation>
+        <translation>Įvyko klaida</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="391"/>
@@ -892,12 +892,12 @@
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation>Išvesties apvertimas</translation>
+        <translation> Išvesties apvertimas</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation>Valyti</translation>
+        <translation>Išvalyti</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="94"/>
@@ -954,14 +954,7 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="265"/>
@@ -1053,7 +1046,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="147"/>
         <source>Clear Records</source>
-        <translation>Valyti įrašus</translation>
+        <translation>Išvalyti įrašus</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="148"/>
@@ -1245,7 +1238,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/devicesettings.ui" line="22"/>
         <source>Save tx data</source>
-        <translation>Įrašyti tx duomenis</translation>
+        <translation>Išsaugoti tx duomenis</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="32"/>
@@ -1255,33 +1248,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/devicesettings.ui" line="39"/>
         <source>Save millisecond</source>
-        <translation>Įrašyti milisekundes</translation>
+        <translation>Išsaugoti milisekundes</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="49"/>
         <source>Save rx data</source>
-        <translation>Įrašyti rx duomenis</translation>
+        <translation>Išsaugoti rx duomenis</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="59"/>
         <source>Save Date</source>
-        <translation>Įrašyti datą</translation>
+        <translation>Išsaugoti datą</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="69"/>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
         <source>Save to file</source>
-        <translation>Įrašyti į failą</translation>
+        <translation>Išsaugoti į failą</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="76"/>
         <source>Save Time</source>
-        <translation>Įrašyti laiką</translation>
+        <translation>Išsaugoti laiką</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="94"/>
         <source>Save format</source>
-        <translation>Įrašymo formatas</translation>
+        <translation>Išsaugojimo formatas</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="104"/>
@@ -1374,7 +1367,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
         <source>File Check Assistant</source>
-        <translation>Failo tikrinimo asistentas</translation>
+        <translation>Failų tikrinimo asistentas</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
@@ -1422,7 +1415,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="95"/>
         <source>Clear</source>
-        <translation>Valyti</translation>
+        <translation>Išvalyti</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="102"/>
@@ -1464,7 +1457,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="89"/>
         <source>Save Files</source>
-        <translation>Įrašyti failus</translation>
+        <translation>Išsaugoti failus</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="127"/>
@@ -1558,7 +1551,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="108"/>
         <source>Bus Type</source>
-        <translation>Magistralės tipas</translation>
+        <translation>Autobuso tipas</translation>
     </message>
 </context>
 <context>
@@ -1639,7 +1632,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/inputsettings.ui" line="174"/>
         <source>End index</source>
-        <translation>Baigimo indeksas</translation>
+        <translation>Baigiamojo indekso</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="186"/>
@@ -1652,7 +1645,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/layoutmanager.cpp" line="83"/>
         <source>Node Editor</source>
-        <translation>Mazgo redaktorius</translation>
+        <translation>Vietos redaktorius</translation>
     </message>
 </context>
 <context>
@@ -1688,7 +1681,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
         <source>Clear</source>
-        <translation>Valyti</translation>
+        <translation>Išvalyti</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
@@ -1811,7 +1804,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="112"/>
         <source>String Parameters</source>
-        <translation>Teksto parametrai</translation>
+        <translation>Simbolių parametrai</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1826,7 +1819,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="41"/>
         <source>Lua Script(String)</source>
-        <translation>Lua scenarijus (String)</translation>
+        <translation>Lua scenarijus (eilutė)</translation>
     </message>
 </context>
 <context>
@@ -1834,7 +1827,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="130"/>
         <source>General</source>
-        <translation>Bendra</translation>
+        <translation>Bendras</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="317"/>
@@ -1844,29 +1837,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="319"/>
         <source>New Window</source>
-        <translation>New Window</translation>
+        <translation>Naujas langas</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="327"/>
         <source>Save Parameters</source>
-        <translation>Įrašyti parametrus</translation>
+        <translation>Išsaugoti parametrus</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="329"/>
-        <location filename="../../src/mainwindow.cpp" line="819"/>
+        <location filename="../../src/mainwindow.cpp" line="810"/>
         <source>Import Parameters</source>
         <translation>Importuoti parametrus</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="333"/>
-        <location filename="../../src/mainwindow.cpp" line="832"/>
+        <location filename="../../src/mainwindow.cpp" line="823"/>
         <source>Export Parameters</source>
         <translation>Eksportuoti parametrus</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="338"/>
         <source>Exit Application</source>
-        <translation>Uždaryti programą</translation>
+        <translation>Išeiti iš programos</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="347"/>
@@ -1886,12 +1879,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="395"/>
         <source>Use System Proxy</source>
-        <translation>Naudoti sistemos tarpinį serverį</translation>
+        <translation>Naudoti sistemos proxy</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="405"/>
         <source>Exit to System Tray</source>
-        <translation>Minimizuoti į sistemos dėklą</translation>
+        <translation>Išeiti į sistemos dėklą</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="423"/>
@@ -1906,7 +1899,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>Clear Settings</source>
-        <translation>Valyti nustatymus</translation>
+        <translation>Išvalyti nustatymus</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="455"/>
@@ -1926,153 +1919,153 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="510"/>
         <source>Dark</source>
-        <translation>Tamsus</translation>
+        <translation>Tamsi</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>Light</source>
-        <translation>Šviesus</translation>
+        <translation>Šviesi</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="512"/>
         <source>System</source>
-        <translation>Sistema</translation>
+        <translation>Sistemos</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="553"/>
         <source>&amp;Languages</source>
         <translation>&amp;Kalbos</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="593"/>
+        <location filename="../../src/mainwindow.cpp" line="584"/>
         <source>&amp;View</source>
         <translation>&amp;Peržiūra</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="636"/>
         <source>Stays on Top</source>
         <translation>Visada viršuje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="665"/>
+        <location filename="../../src/mainwindow.cpp" line="656"/>
         <source>&amp;Help</source>
         <translation>&amp;Pagalba</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="666"/>
+        <location filename="../../src/mainwindow.cpp" line="657"/>
         <source>About Qt</source>
         <translation>Apie Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="667"/>
-        <location filename="../../src/mainwindow.cpp" line="875"/>
+        <location filename="../../src/mainwindow.cpp" line="658"/>
+        <location filename="../../src/mainwindow.cpp" line="866"/>
         <source>About</source>
         <translation>Apie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>Screenshot</source>
-        <translation>Ekrano nuotrauka</translation>
+        <translation>Ekrano kopija</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>Buy from Store</source>
         <translation>Pirkti parduotuvėje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="715"/>
         <source>Release History</source>
-        <translation>Leidimo istorija</translation>
+        <translation>Leidimų istorija</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="687"/>
+        <location filename="../../src/mainwindow.cpp" line="678"/>
         <source>Join in QQ Group</source>
         <translation>Prisijungti prie QQ grupės</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="690"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>Online Manual</source>
-        <translation>Interneto vadovas</translation>
+        <translation>Internetinis vadovas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="684"/>
         <source>Get Sources from Github</source>
         <translation>Gauti šaltinius iš Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="687"/>
         <source>Get Sources from Gitee</source>
         <translation>Gauti šaltinius iš Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="714"/>
+        <location filename="../../src/mainwindow.cpp" line="705"/>
         <source>Third Party Open Source</source>
-        <translation>Trečiųjų šalių atvirojo kodo programinė įranga</translation>
+        <translation>Trečiųjų šalių atviras kodas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="744"/>
+        <location filename="../../src/mainwindow.cpp" line="735"/>
         <source>QR Code</source>
         <translation>QR kodas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="753"/>
+        <location filename="../../src/mainwindow.cpp" line="744"/>
         <source>User QQ Group</source>
-        <translation>Vartotojo QQ grupė</translation>
+        <translation>Vartotojų QQ grupė</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="754"/>
+        <location filename="../../src/mainwindow.cpp" line="745"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ grupė</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="775"/>
+        <location filename="../../src/mainwindow.cpp" line="766"/>
         <source>Need to Reboot</source>
         <translation>Reikia perkrauti</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="776"/>
+        <location filename="../../src/mainwindow.cpp" line="767"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation>Operacija reikalauja perkrovimo, ar norite dabar perkrauti programą?</translation>
+        <translation>Operacijai įsigalioti reikia perkrovimo, perkrauti programą dabar?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="778"/>
+        <location filename="../../src/mainwindow.cpp" line="769"/>
         <source>(Please reboot your application manually.)</source>
-        <translation>(Prašome rankiniu būdu perkrauti programą.)</translation>
+        <translation>(Prašome perkrauti programą rankiniu būdu.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="821"/>
-        <location filename="../../src/mainwindow.cpp" line="834"/>
+        <location filename="../../src/mainwindow.cpp" line="812"/>
+        <location filename="../../src/mainwindow.cpp" line="825"/>
         <source>Json Files (*.json)</source>
         <translation>Json failai (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="863"/>
+        <location filename="../../src/mainwindow.cpp" line="854"/>
         <source>Unknown</source>
-        <translation>Nežinoma</translation>
+        <translation>Nežinomas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="869"/>
+        <location filename="../../src/mainwindow.cpp" line="860"/>
         <source>Commit hash</source>
-        <translation>Įsipareigojimo hash</translation>
+        <translation>Commit hash</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="871"/>
+        <location filename="../../src/mainwindow.cpp" line="862"/>
         <source>Commit time</source>
-        <translation>Įsipareigojimo laikas</translation>
+        <translation>Commit laikas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="872"/>
+        <location filename="../../src/mainwindow.cpp" line="863"/>
         <source>Build Date</source>
-        <translation>Komplektavimo data</translation>
+        <translation>Kompiliavimo data</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="873"/>
+        <location filename="../../src/mainwindow.cpp" line="864"/>
         <source>Copyright</source>
         <translation>Autorių teisės</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="874"/>
+        <location filename="../../src/mainwindow.cpp" line="865"/>
         <source>All rights reserved.</source>
         <translation>Visos teisės saugomos.</translation>
     </message>
@@ -2357,7 +2350,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
         <source>ReadInputRegisters</source>
-        <translation>Perskaityti įvesties registrus</translation>
+        <translation>Perskaityti įėjimo registrus</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
@@ -2392,7 +2385,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>InputRegisters</source>
-        <translation>Įvesties registrai</translation>
+        <translation>Įėjimo registrai</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
@@ -2401,9 +2394,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1317"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1316"/>
         <source>Error occured</source>
-        <translation>Klaida įvyko</translation>
+        <translation>Įvyko klaida</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="624"/>
@@ -2426,12 +2419,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Aprašymas</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1366"/>
         <source>Device is not Ready</source>
         <translation>Įrenginys nėra paruoštas</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1368"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation>Modbus įrenginys nėra paruoštas, prašome patikrinti nustatymus ir bandyti vėliau!</translation>
     </message>
@@ -2494,7 +2487,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="119"/>
         <source>From left to right is high to low</source>
-        <translation>Nuo kairės į dešinę - nuo aukšto iki žemo</translation>
+        <translation>Nuo kairės į dešinę - nuo aukštos iki žemos</translation>
     </message>
 </context>
 <context>
@@ -2581,7 +2574,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.ui" line="81"/>
         <source>Clear</source>
-        <translation>Valyti</translation>
+        <translation>Išvalyti</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="122"/>
@@ -2667,12 +2660,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.ui" line="521"/>
         <source>Preset data list</source>
-        <translation>Išankstinių duomenų sąrašas</translation>
+        <translation>Numatytųjų duomenų sąrašas</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="563"/>
         <source>Presets</source>
-        <translation>Išankstiniai nustatymai</translation>
+        <translation>Numatytieji nustatymai</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="568"/>
@@ -2759,7 +2752,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
         <source>Online Status</source>
-        <translation>Interneto būsena</translation>
+        <translation>Interneto būsenos</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
@@ -2794,12 +2787,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="224"/>
         <source>End address</source>
-        <translation>Baigimo adresas</translation>
+        <translation>Baigiamojo adreso</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="235"/>
         <source>Timeout(S)</source>
-        <translation>Laikas iki išjungimo (S)</translation>
+        <translation>Laikas iki išjungimo (s)</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="254"/>
@@ -2821,17 +2814,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
         <source>IP settings error, the start ip and end ip must be set, please check and try again. </source>
-        <translation>IP nustatymų klaida, pradžios ir pabaigos IP turi būti nustatyti, prašome patikrinti ir bandyti dar kartą.</translation>
+        <translation>IP nustatymų klaida, pradinis ir galinis IP turi būti nustatyti, prašome patikrinti ir bandyti dar kartą.</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
         <source>IP settings error, the start ip and end ip must be in the same network segment, please check and try again. </source>
-        <translation>IP nustatymų klaida, pradžios ir pabaigos IP turi būti toje pačioje tinklo dalyje, prašome patikrinti ir bandyti dar kartą.</translation>
+        <translation>IP nustatymų klaida, pradinis ir galinis IP turi būti toje pačioje tinklo dalyje, prašome patikrinti ir bandyti dar kartą.</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
         <source>IP settings error, the start ip must be less than the end ip, please check and try again.</source>
-        <translation>IP nustatymų klaida, pradžios IP turi būti mažesnis už pabaigos IP, prašome patikrinti ir bandyti dar kartą.</translation>
+        <translation>IP nustatymų klaida, pradinis IP turi būti mažesnis už galinį IP, prašome patikrinti ir bandyti dar kartą.</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="457"/>
@@ -2856,7 +2849,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="564"/>
         <source>Scanning Finished</source>
-        <translation>Skenavimo pabaiga</translation>
+        <translation>Skenavimas baigtas</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
@@ -2985,7 +2978,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/crc.cpp" line="90"/>
         <source>Unknown</source>
-        <translation>Nežinoma</translation>
+        <translation>Nežinomas</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="86"/>
@@ -3029,7 +3022,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="754"/>
         <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="48"/>
         <source>None</source>
-        <translation>Be</translation>
+        <translation>Jokio</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="464"/>
@@ -3107,7 +3100,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="759"/>
         <source>Hardware</source>
-        <translation>Hardveras</translation>
+        <translation>Įranga</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="760"/>
@@ -3147,7 +3140,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="471"/>
         <source>Always round up</source>
-        <translation>Visada apvalinti aukštyn</translation>
+        <translation>Visada apvalinti į viršų</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="472"/>
@@ -3240,12 +3233,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
         <source>Please input the data to generate QR code.</source>
-        <translation>Prašome įvesti duomenis, kad būtų sugeneruotas QR kodas.</translation>
+        <translation>Prašome įvesti duomenis, kad sugeneruotumėte QR kodą.</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="90"/>
         <source>Save QR Code Image</source>
-        <translation>Įrašyti QR kodo vaizdą</translation>
+        <translation>Išsaugoti QR kodo vaizdą</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="92"/>
@@ -3307,7 +3300,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/scripts/scriptbase.ui" line="22"/>
         <source>Clear log</source>
-        <translation>Valyti žurnalą</translation>
+        <translation>Išvalyti žurnalą</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.ui" line="50"/>
@@ -3332,7 +3325,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/scripts/scriptbase.ui" line="111"/>
         <source>Online manual</source>
-        <translation>Interneto vadovas</translation>
+        <translation>Internetinis vadovas</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.ui" line="129"/>
@@ -3366,17 +3359,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="38"/>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="122"/>
         <source>Uncaught exception at line %1: %2</source>
-        <translation>Nepaga išimtis eilutėje %1: %2</translation>
+        <translation>Nepagauta išimtis %1 eilutėje: %2</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="61"/>
         <source>Array element at index %1 is out of byte range: %2</source>
-        <translation>Masyvo elementas indekse %1 yra už baitų ribų: %2</translation>
+        <translation>Masyvo elementas indeksu %1 yra už baitų ribų: %2</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="68"/>
         <source>Array element at index %1 is not a number</source>
-        <translation>Masyvo elementas indekse %1 nėra skaičius</translation>
+        <translation>Masyvo elementas indeksu %1 nėra skaičius</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="74"/>
@@ -3419,7 +3412,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation>Skirti didžiąsias ir mažąsias raides</translation>
+        <translation>Atitikimas didžiosioms/mažosioms raidėms</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
@@ -3452,7 +3445,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/serialport.cpp" line="45"/>
         <source>Failed to open serial port: %1</source>
-        <translation>Negalima atidaryti serijinio prievado: %1</translation>
+        <translation>Nepavyko atidaryti serijinio prievado: %1</translation>
     </message>
 </context>
 <context>
@@ -3481,12 +3474,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="114"/>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="122"/>
         <source>None</source>
-        <translation>Be</translation>
+        <translation>Jokio</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="118"/>
         <source>Hardware</source>
-        <translation>Hardveras</translation>
+        <translation>Įranga</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="120"/>
@@ -3660,7 +3653,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
-        <translation>Kanalo</translation>
+        <translation>Kanalas</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="119"/>
@@ -3675,7 +3668,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
-        <translation>post/hello</translation>
+        <translation>siųsti/sveiki</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="145"/>
@@ -3764,7 +3757,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="24"/>
         <source>Exit program</source>
-        <translation>Baigti programą</translation>
+        <translation>Išeiti iš programos</translation>
     </message>
 </context>
 <context>
@@ -3803,7 +3796,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/common/tableview.ui" line="93"/>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
         <source>Clear</source>
-        <translation>Valyti</translation>
+        <translation>Išvalyti</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="100"/>
@@ -3873,7 +3866,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>End index</source>
-        <translation>Baigimo indeksas</translation>
+        <translation>Baigiamojo indekso</translation>
     </message>
     <message>
         <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
@@ -3926,7 +3919,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/common/transfermodel.cpp" line="48"/>
         <source>Transfer %1</source>
-        <translation>Perduoti %1</translation>
+        <translation>Perkelti %1</translation>
     </message>
 </context>
 <context>
@@ -4059,7 +4052,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="49"/>
         <source>Input Registers</source>
-        <translation>Įvesties registrai</translation>
+        <translation>Įėjimo registrai</translation>
     </message>
 </context>
 <context>
@@ -4067,32 +4060,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="43"/>
         <source>New RTU Device</source>
-        <translation>New RTU įrenginys</translation>
+        <translation>Naujas RTU įrenginys</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="44"/>
         <source>New TCP Device</source>
-        <translation>New TCP įrenginys</translation>
+        <translation>Naujas TCP įrenginys</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="46"/>
         <source>New Coils</source>
-        <translation>New ritės</translation>
+        <translation>Naujos ritės</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="47"/>
         <source>New Discrete Inputs</source>
-        <translation>New diskretiniai įėjimai</translation>
+        <translation>Nauji diskretiniai įėjimai</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="48"/>
         <source>New Holding Registers</source>
-        <translation>New laikymo registrai</translation>
+        <translation>Nauji laikymo registrai</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="49"/>
         <source>New Input Registers</source>
-        <translation>New įvesties registrai</translation>
+        <translation>Nauji įėjimo registrai</translation>
     </message>
 </context>
 </TS>

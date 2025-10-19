@@ -346,7 +346,7 @@
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
         <source>Failed to save image.</source>
-        <translation>Impossibile salvare l'immagine.</translation>
+        <translation>Impossibile salvare l&apos;immagine.</translation>
     </message>
 </context>
 <context>
@@ -767,12 +767,12 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="208"/>
         <source>Interface Name is Empty</source>
-        <translation>Il nome dell'interfaccia è vuoto</translation>
+        <translation>Il nome dell&apos;interfaccia è vuoto</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface name is empty, please input the name then try again!</source>
-        <translation>Il nome dell'interfaccia è vuoto, inserisci il nome e riprova!</translation>
+        <translation>Il nome dell&apos;interfaccia è vuoto, inserisci il nome e riprova!</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
@@ -1846,20 +1846,20 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="329"/>
-        <location filename="../../src/mainwindow.cpp" line="819"/>
+        <location filename="../../src/mainwindow.cpp" line="810"/>
         <source>Import Parameters</source>
         <translation>Importa parametri</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="333"/>
-        <location filename="../../src/mainwindow.cpp" line="832"/>
+        <location filename="../../src/mainwindow.cpp" line="823"/>
         <source>Export Parameters</source>
         <translation>Esporta parametri</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="338"/>
         <source>Exit Application</source>
-        <translation>Esci dall'applicazione</translation>
+        <translation>Esci dall&apos;applicazione</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="347"/>
@@ -1889,7 +1889,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="423"/>
         <source>Application Style</source>
-        <translation>Stile dell'applicazione</translation>
+        <translation>Stile dell&apos;applicazione</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="446"/>
@@ -1932,140 +1932,140 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Di sistema</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="553"/>
         <source>&amp;Languages</source>
         <translation>&amp;Lingue</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="593"/>
+        <location filename="../../src/mainwindow.cpp" line="584"/>
         <source>&amp;View</source>
         <translation>&amp;Visualizza</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="636"/>
         <source>Stays on Top</source>
         <translation>Rimani in alto</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="665"/>
+        <location filename="../../src/mainwindow.cpp" line="656"/>
         <source>&amp;Help</source>
         <translation>&amp;Aiuto</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="666"/>
+        <location filename="../../src/mainwindow.cpp" line="657"/>
         <source>About Qt</source>
         <translation>Informazioni su Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="667"/>
-        <location filename="../../src/mainwindow.cpp" line="875"/>
+        <location filename="../../src/mainwindow.cpp" line="658"/>
+        <location filename="../../src/mainwindow.cpp" line="866"/>
         <source>About</source>
         <translation>Informazioni</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>Screenshot</source>
         <translation>Cattura schermo</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>Buy from Store</source>
         <translation>Acquista dal negozio</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="715"/>
         <source>Release History</source>
         <translation>Storia delle versioni</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="687"/>
+        <location filename="../../src/mainwindow.cpp" line="678"/>
         <source>Join in QQ Group</source>
         <translation>Unisciti al gruppo QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="690"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>Online Manual</source>
         <translation>Manuale online</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="684"/>
         <source>Get Sources from Github</source>
         <translation>Ottieni sorgenti da Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="687"/>
         <source>Get Sources from Gitee</source>
         <translation>Ottieni sorgenti da Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="714"/>
+        <location filename="../../src/mainwindow.cpp" line="705"/>
         <source>Third Party Open Source</source>
         <translation>Terze parti Open Source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="744"/>
+        <location filename="../../src/mainwindow.cpp" line="735"/>
         <source>QR Code</source>
         <translation>Codice QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="753"/>
+        <location filename="../../src/mainwindow.cpp" line="744"/>
         <source>User QQ Group</source>
         <translation>Gruppo QQ utenti</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="754"/>
+        <location filename="../../src/mainwindow.cpp" line="745"/>
         <source>Qt QQ Group</source>
         <translation>Gruppo QQ Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="775"/>
+        <location filename="../../src/mainwindow.cpp" line="766"/>
         <source>Need to Reboot</source>
         <translation>È necessario riavviare</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="776"/>
+        <location filename="../../src/mainwindow.cpp" line="767"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation>L'operazione richiede il riavvio per avere effetto, riavviare l'applicazione ora?</translation>
+        <translation>L&apos;operazione richiede il riavvio per avere effetto, riavviare l&apos;applicazione ora?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="778"/>
+        <location filename="../../src/mainwindow.cpp" line="769"/>
         <source>(Please reboot your application manually.)</source>
-        <translation>(Si prega di riavviare manualmente l'applicazione.)</translation>
+        <translation>(Si prega di riavviare manualmente l&apos;applicazione.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="821"/>
-        <location filename="../../src/mainwindow.cpp" line="834"/>
+        <location filename="../../src/mainwindow.cpp" line="812"/>
+        <location filename="../../src/mainwindow.cpp" line="825"/>
         <source>Json Files (*.json)</source>
         <translation>File Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="863"/>
+        <location filename="../../src/mainwindow.cpp" line="854"/>
         <source>Unknown</source>
         <translation> sconosciuto</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="869"/>
+        <location filename="../../src/mainwindow.cpp" line="860"/>
         <source>Commit hash</source>
         <translation>Hash di commit</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="871"/>
+        <location filename="../../src/mainwindow.cpp" line="862"/>
         <source>Commit time</source>
         <translation>Data di commit</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="872"/>
+        <location filename="../../src/mainwindow.cpp" line="863"/>
         <source>Build Date</source>
         <translation>Data di costruzione</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="873"/>
+        <location filename="../../src/mainwindow.cpp" line="864"/>
         <source>Copyright</source>
         <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="874"/>
+        <location filename="../../src/mainwindow.cpp" line="865"/>
         <source>All rights reserved.</source>
         <translation>Tutti i diritti riservati.</translation>
     </message>
@@ -2394,7 +2394,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1317"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1316"/>
         <source>Error occured</source>
         <translation>Si è verificato un errore</translation>
     </message>
@@ -2419,12 +2419,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Descrizione</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1366"/>
         <source>Device is not Ready</source>
         <translation>Il dispositivo non è pronto</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1368"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation>Il dispositivo modbus non è pronto, controlla le impostazioni e riprova più tardi!</translation>
     </message>
@@ -2814,17 +2814,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
         <source>IP settings error, the start ip and end ip must be set, please check and try again. </source>
-        <translation>Errore nelle impostazioni IP, l'IP di inizio e di fine devono essere impostati, controlla e riprova.</translation>
+        <translation>Errore nelle impostazioni IP, l&apos;IP di inizio e di fine devono essere impostati, controlla e riprova.</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
         <source>IP settings error, the start ip and end ip must be in the same network segment, please check and try again. </source>
-        <translation>Errore nelle impostazioni IP, l'IP di inizio e di fine devono essere nella stessa rete, controlla e riprova.</translation>
+        <translation>Errore nelle impostazioni IP, l&apos;IP di inizio e di fine devono essere nella stessa rete, controlla e riprova.</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
         <source>IP settings error, the start ip must be less than the end ip, please check and try again.</source>
-        <translation>Errore nelle impostazioni IP, l'IP di inizio deve essere minore di quello di fine, controlla e riprova.</translation>
+        <translation>Errore nelle impostazioni IP, l&apos;IP di inizio deve essere minore di quello di fine, controlla e riprova.</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="457"/>
@@ -3125,7 +3125,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/main.cpp" line="39"/>
         <source>Application is booting...</source>
-        <translation>L'applicazione si sta avviando...</translation>
+        <translation>L&apos;applicazione si sta avviando...</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="469"/>
@@ -3364,17 +3364,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="61"/>
         <source>Array element at index %1 is out of byte range: %2</source>
-        <translation>Elemento dell'array all'indice %1 è fuori intervallo byte: %2</translation>
+        <translation>Elemento dell&apos;array all&apos;indice %1 è fuori intervallo byte: %2</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="68"/>
         <source>Array element at index %1 is not a number</source>
-        <translation>Elemento dell'array all'indice %1 non è un numero</translation>
+        <translation>Elemento dell&apos;array all&apos;indice %1 non è un numero</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="74"/>
         <source>The &apos;length&apos; property of the array is not a number</source>
-        <translation>La proprietà 'lunghezza' dell'array non è un numero</translation>
+        <translation>La proprietà &apos;lunghezza&apos; dell&apos;array non è un numero</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="77"/>
@@ -3615,7 +3615,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="202"/>
         <source>Password</source>
-        <translation>Parola d'ordine</translation>
+        <translation>Parola d&apos;ordine</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="204"/>
@@ -3698,7 +3698,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
-        <translation>Parola d'ordine</translation>
+        <translation>Parola d&apos;ordine</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3973,7 +3973,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpbroadcastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation>Seleziona un'interfaccia di rete:</translation>
+        <translation>Seleziona un&apos;interfaccia di rete:</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.ui" line="58"/>
@@ -3996,7 +3996,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="75"/>
         <source>Network interface %1 does not support multicast</source>
-        <translation>L'interfaccia di rete %1 non supporta il multicast</translation>
+        <translation>L&apos;interfaccia di rete %1 non supporta il multicast</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="93"/>
@@ -4014,7 +4014,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation>Seleziona un'interfaccia di rete:</translation>
+        <translation>Seleziona un&apos;interfaccia di rete:</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="55"/>

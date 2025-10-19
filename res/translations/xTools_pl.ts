@@ -1853,13 +1853,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="329"/>
-        <location filename="../../src/mainwindow.cpp" line="819"/>
+        <location filename="../../src/mainwindow.cpp" line="810"/>
         <source>Import Parameters</source>
         <translation>Importuj parametry</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="333"/>
-        <location filename="../../src/mainwindow.cpp" line="832"/>
+        <location filename="../../src/mainwindow.cpp" line="823"/>
         <source>Export Parameters</source>
         <translation>Eksportuj parametry</translation>
     </message>
@@ -1939,140 +1939,140 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Systemowy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="553"/>
         <source>&amp;Languages</source>
         <translation>&amp;Języki</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="593"/>
+        <location filename="../../src/mainwindow.cpp" line="584"/>
         <source>&amp;View</source>
         <translation>&amp;Widok</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="636"/>
         <source>Stays on Top</source>
         <translation>Zawsze na wierzchu</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="665"/>
+        <location filename="../../src/mainwindow.cpp" line="656"/>
         <source>&amp;Help</source>
         <translation>&amp;Pomoc</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="666"/>
+        <location filename="../../src/mainwindow.cpp" line="657"/>
         <source>About Qt</source>
         <translation>O Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="667"/>
-        <location filename="../../src/mainwindow.cpp" line="875"/>
+        <location filename="../../src/mainwindow.cpp" line="658"/>
+        <location filename="../../src/mainwindow.cpp" line="866"/>
         <source>About</source>
         <translation>O programie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>Screenshot</source>
         <translation>Zrzut ekranu</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>Buy from Store</source>
         <translation>Kup w sklepie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="715"/>
         <source>Release History</source>
         <translation>Historia wydań</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="687"/>
+        <location filename="../../src/mainwindow.cpp" line="678"/>
         <source>Join in QQ Group</source>
         <translation>Dołącz do grupy QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="690"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>Online Manual</source>
         <translation>Podręcznik online</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="684"/>
         <source>Get Sources from Github</source>
         <translation>Pobierz źródła z Githuba</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="687"/>
         <source>Get Sources from Gitee</source>
         <translation>Pobierz źródła z Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="714"/>
+        <location filename="../../src/mainwindow.cpp" line="705"/>
         <source>Third Party Open Source</source>
         <translation>Otwarte oprogramowanie innych firm</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="744"/>
+        <location filename="../../src/mainwindow.cpp" line="735"/>
         <source>QR Code</source>
         <translation>Kod QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="753"/>
+        <location filename="../../src/mainwindow.cpp" line="744"/>
         <source>User QQ Group</source>
         <translation>Grupa użytkowników QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="754"/>
+        <location filename="../../src/mainwindow.cpp" line="745"/>
         <source>Qt QQ Group</source>
         <translation>Grupa Qt QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="775"/>
+        <location filename="../../src/mainwindow.cpp" line="766"/>
         <source>Need to Reboot</source>
         <translation>Wymagana ponowna instalacja</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="776"/>
+        <location filename="../../src/mainwindow.cpp" line="767"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operacja wymaga ponownego uruchomienia, czy chcesz teraz ponownie uruchomić aplikację?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="778"/>
+        <location filename="../../src/mainwindow.cpp" line="769"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Proszę ręcznie ponownie uruchomić aplikację.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="821"/>
-        <location filename="../../src/mainwindow.cpp" line="834"/>
+        <location filename="../../src/mainwindow.cpp" line="812"/>
+        <location filename="../../src/mainwindow.cpp" line="825"/>
         <source>Json Files (*.json)</source>
         <translation>Pliki Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="863"/>
+        <location filename="../../src/mainwindow.cpp" line="854"/>
         <source>Unknown</source>
         <translation>Nieznany</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="869"/>
+        <location filename="../../src/mainwindow.cpp" line="860"/>
         <source>Commit hash</source>
         <translation>Hash zatwierdzenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="871"/>
+        <location filename="../../src/mainwindow.cpp" line="862"/>
         <source>Commit time</source>
         <translation>Czas zatwierdzenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="872"/>
+        <location filename="../../src/mainwindow.cpp" line="863"/>
         <source>Build Date</source>
         <translation>Data kompilacji</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="873"/>
+        <location filename="../../src/mainwindow.cpp" line="864"/>
         <source>Copyright</source>
         <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="874"/>
+        <location filename="../../src/mainwindow.cpp" line="865"/>
         <source>All rights reserved.</source>
         <translation>Wszelkie prawa zastrzeżone.</translation>
     </message>
@@ -2401,7 +2401,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1317"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1316"/>
         <source>Error occured</source>
         <translation>Wystąpił błąd</translation>
     </message>
@@ -2426,12 +2426,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Opis</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1366"/>
         <source>Device is not Ready</source>
         <translation>Urządzenie nie jest gotowe</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1368"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation>Urządzenie modbus nie jest gotowe, sprawdź ustawienia i spróbuj ponownie później!</translation>
     </message>
@@ -3381,7 +3381,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="74"/>
         <source>The &apos;length&apos; property of the array is not a number</source>
-        <translation>Właściwość 'length' tablicy nie jest liczbą</translation>
+        <translation>Właściwość &apos;length&apos; tablicy nie jest liczbą</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="77"/>

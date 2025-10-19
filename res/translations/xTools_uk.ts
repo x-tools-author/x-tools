@@ -272,7 +272,7 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
-        <translation>Асистент об'єднання файлів</translation>
+        <translation>Асистент об&apos;єднання файлів</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
@@ -369,7 +369,7 @@
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Name</source>
-        <translation>Ім'я</translation>
+        <translation>Ім&apos;я</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
@@ -682,7 +682,7 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="221"/>
         <source>Name</source>
-        <translation>Ім'я</translation>
+        <translation>Ім&apos;я</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="251"/>
@@ -767,12 +767,12 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="208"/>
         <source>Interface Name is Empty</source>
-        <translation>Ім'я інтерфейсу порожнє</translation>
+        <translation>Ім&apos;я інтерфейсу порожнє</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface name is empty, please input the name then try again!</source>
-        <translation>Ім'я інтерфейсу порожнє, будь ласка, введіть ім'я та спробуйте ще раз!</translation>
+        <translation>Ім&apos;я інтерфейсу порожнє, будь ласка, введіть ім&apos;я та спробуйте ще раз!</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
@@ -782,12 +782,12 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="232"/>
         <source>Connection Error</source>
-        <translation>Помилка з'єднання</translation>
+        <translation>Помилка з&apos;єднання</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
         <source>Connection error: %1</source>
-        <translation>Помилка з'єднання: %1</translation>
+        <translation>Помилка з&apos;єднання: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="314"/>
@@ -1064,7 +1064,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="33"/>
         <source>Connection parameters</source>
-        <translation>Параметри з'єднання</translation>
+        <translation>Параметри з&apos;єднання</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="56"/>
@@ -1139,7 +1139,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="286"/>
         <source>Device Name</source>
-        <translation>Ім'я пристрою</translation>
+        <translation>Ім&apos;я пристрою</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="296"/>
@@ -1420,7 +1420,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="102"/>
         <source>Merge</source>
-        <translation>Об'єднати</translation>
+        <translation>Об&apos;єднати</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1447,12 +1447,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="83"/>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="127"/>
         <source>Merge Files</source>
-        <translation>Об'єднати файли</translation>
+        <translation>Об&apos;єднати файли</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="84"/>
         <source>No file to merge, please import files first.</source>
-        <translation>Немає файлів для об'єднання, будь ласка, спочатку імпортуйте файли.</translation>
+        <translation>Немає файлів для об&apos;єднання, будь ласка, спочатку імпортуйте файли.</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="89"/>
@@ -1462,7 +1462,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="127"/>
         <source>Merge files successfully.</source>
-        <translation>Файли успішно об'єднані.</translation>
+        <translation>Файли успішно об&apos;єднані.</translation>
     </message>
 </context>
 <context>
@@ -1717,7 +1717,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Name</source>
-        <translation>Ім'я</translation>
+        <translation>Ім&apos;я</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
@@ -1753,7 +1753,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localserverui.ui" line="45"/>
         <source>Server name</source>
-        <translation>Ім'я сервера</translation>
+        <translation>Ім&apos;я сервера</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1766,7 +1766,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/localsocketui.ui" line="32"/>
         <source>Server name</source>
-        <translation>Ім'я сервера</translation>
+        <translation>Ім&apos;я сервера</translation>
     </message>
 </context>
 <context>
@@ -1846,13 +1846,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="329"/>
-        <location filename="../../src/mainwindow.cpp" line="819"/>
+        <location filename="../../src/mainwindow.cpp" line="810"/>
         <source>Import Parameters</source>
         <translation>Імпортувати параметри</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="333"/>
-        <location filename="../../src/mainwindow.cpp" line="832"/>
+        <location filename="../../src/mainwindow.cpp" line="823"/>
         <source>Export Parameters</source>
         <translation>Експортувати параметри</translation>
     </message>
@@ -1932,140 +1932,140 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Системна</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="553"/>
         <source>&amp;Languages</source>
         <translation>&amp;Мови</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="593"/>
+        <location filename="../../src/mainwindow.cpp" line="584"/>
         <source>&amp;View</source>
         <translation>&amp;Перегляд</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="636"/>
         <source>Stays on Top</source>
         <translation>Завжди зверху</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="665"/>
+        <location filename="../../src/mainwindow.cpp" line="656"/>
         <source>&amp;Help</source>
         <translation>&amp;Допомога</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="666"/>
+        <location filename="../../src/mainwindow.cpp" line="657"/>
         <source>About Qt</source>
         <translation>Про Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="667"/>
-        <location filename="../../src/mainwindow.cpp" line="875"/>
+        <location filename="../../src/mainwindow.cpp" line="658"/>
+        <location filename="../../src/mainwindow.cpp" line="866"/>
         <source>About</source>
         <translation>Про програму</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>Screenshot</source>
         <translation>Знімок екрану</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>Buy from Store</source>
         <translation>Купити в магазині</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="715"/>
         <source>Release History</source>
         <translation>Історія версій</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="687"/>
+        <location filename="../../src/mainwindow.cpp" line="678"/>
         <source>Join in QQ Group</source>
         <translation>Приєднатися до групи QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="690"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>Online Manual</source>
         <translation>Онлайн посібник</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="684"/>
         <source>Get Sources from Github</source>
         <translation>Отримати вихідні дані з Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="687"/>
         <source>Get Sources from Gitee</source>
         <translation>Отримати вихідні дані з Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="714"/>
+        <location filename="../../src/mainwindow.cpp" line="705"/>
         <source>Third Party Open Source</source>
         <translation>Відкритий код третьої сторони</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="744"/>
+        <location filename="../../src/mainwindow.cpp" line="735"/>
         <source>QR Code</source>
         <translation>QR Код</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="753"/>
+        <location filename="../../src/mainwindow.cpp" line="744"/>
         <source>User QQ Group</source>
         <translation>Користувацька група QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="754"/>
+        <location filename="../../src/mainwindow.cpp" line="745"/>
         <source>Qt QQ Group</source>
         <translation>Група Qt QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="775"/>
+        <location filename="../../src/mainwindow.cpp" line="766"/>
         <source>Need to Reboot</source>
         <translation>Потрібен перезапуск</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="776"/>
+        <location filename="../../src/mainwindow.cpp" line="767"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Операція потребує перезавантаження для застосування, перезавантажити програму зараз?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="778"/>
+        <location filename="../../src/mainwindow.cpp" line="769"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Будь ласка, перезавантажте вашу програму вручну.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="821"/>
-        <location filename="../../src/mainwindow.cpp" line="834"/>
+        <location filename="../../src/mainwindow.cpp" line="812"/>
+        <location filename="../../src/mainwindow.cpp" line="825"/>
         <source>Json Files (*.json)</source>
         <translation>Файли Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="863"/>
+        <location filename="../../src/mainwindow.cpp" line="854"/>
         <source>Unknown</source>
         <translation>Невідомо</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="869"/>
+        <location filename="../../src/mainwindow.cpp" line="860"/>
         <source>Commit hash</source>
         <translation>Хеш коміту</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="871"/>
+        <location filename="../../src/mainwindow.cpp" line="862"/>
         <source>Commit time</source>
         <translation>Час коміту</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="872"/>
+        <location filename="../../src/mainwindow.cpp" line="863"/>
         <source>Build Date</source>
         <translation>Дата збірки</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="873"/>
+        <location filename="../../src/mainwindow.cpp" line="864"/>
         <source>Copyright</source>
         <translation>Авторське право</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="874"/>
+        <location filename="../../src/mainwindow.cpp" line="865"/>
         <source>All rights reserved.</source>
         <translation>Всі права захищені.</translation>
     </message>
@@ -2101,7 +2101,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="101"/>
         <source>Hostname</source>
-        <translation>Ім'я хоста</translation>
+        <translation>Ім&apos;я хоста</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="105"/>
@@ -2205,7 +2205,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="409"/>
         <source>Port name</source>
-        <translation>Ім'я порту</translation>
+        <translation>Ім&apos;я порту</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="425"/>
@@ -2394,7 +2394,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1317"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1316"/>
         <source>Error occured</source>
         <translation>Виникла помилка</translation>
     </message>
@@ -2419,12 +2419,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Опис</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1366"/>
         <source>Device is not Ready</source>
         <translation>Пристрій не готовий</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1368"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation>Пристрій modbus не готовий, будь ласка, перевірте налаштування та спробуйте ще раз пізніше!</translation>
     </message>
@@ -2629,7 +2629,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.ui" line="235"/>
         <source>Communication control</source>
-        <translation>Керування зв'язком</translation>
+        <translation>Керування зв&apos;язком</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="251"/>
@@ -2762,7 +2762,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Host Name</source>
-        <translation>Ім'я хоста</translation>
+        <translation>Ім&apos;я хоста</translation>
     </message>
     <message>
         <location filename="../../src/tools/ping/pingassistant.cpp" line="185"/>
@@ -2928,7 +2928,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="139"/>
         <source>Name</source>
-        <translation>Ім'я</translation>
+        <translation>Ім&apos;я</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="146"/>
@@ -2955,7 +2955,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="165"/>
         <source>The group name cannot be empty.</source>
-        <translation>Ім'я групи не може бути порожнім.</translation>
+        <translation>Ім&apos;я групи не може бути порожнім.</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="171"/>
@@ -2965,7 +2965,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
-        <translation>Ім'я групи &quot;%1&quot; вже існує. Замінити його?</translation>
+        <translation>Ім&apos;я групи &quot;%1&quot; вже існує. Замінити його?</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="240"/>
@@ -3340,7 +3340,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="153"/>
         <source>Please input the script name:</source>
-        <translation>Будь ласка, введіть ім'я скрипта:</translation>
+        <translation>Будь ласка, введіть ім&apos;я скрипта:</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="256"/>
@@ -3374,7 +3374,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="74"/>
         <source>The &apos;length&apos; property of the array is not a number</source>
-        <translation>Властивість 'length' масиву не є числом</translation>
+        <translation>Властивість &apos;length&apos; масиву не є числом</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="77"/>
@@ -3494,7 +3494,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="227"/>
         <source>Port Name</source>
-        <translation>Ім'я порту</translation>
+        <translation>Ім&apos;я порту</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="229"/>
@@ -3562,7 +3562,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/serialportui.ui" line="155"/>
         <source>Port name</source>
-        <translation>Ім'я порту</translation>
+        <translation>Ім&apos;я порту</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="193"/>
@@ -3610,7 +3610,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="200"/>
         <source>Username</source>
-        <translation>Ім'я користувача</translation>
+        <translation>Ім&apos;я користувача</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="202"/>
@@ -3693,7 +3693,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
-        <translation>Ім'я користувача</translation>
+        <translation>Ім&apos;я користувача</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="201"/>
@@ -3965,7 +3965,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpbroadcast.cpp" line="64"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation>Не вдалося прив'язати UDP сокет: %1</translation>
+        <translation>Не вдалося прив&apos;язати UDP сокет: %1</translation>
     </message>
 </context>
 <context>
@@ -4001,7 +4001,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="93"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation>Не вдалося прив'язати UDP сокет: %1</translation>
+        <translation>Не вдалося прив&apos;язати UDP сокет: %1</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="102"/>
@@ -4029,7 +4029,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticastui.ui" line="92"/>
         <source>Multicast loopback</source>
-        <translation>Зворотний зв'язок мультикаста</translation>
+        <translation>Зворотний зв&apos;язок мультикаста</translation>
     </message>
 </context>
 <context>
