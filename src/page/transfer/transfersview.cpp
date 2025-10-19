@@ -15,7 +15,7 @@
 #include "socket/udp/udpclienttransferview.h"
 #include "socket/udp/udpservertransferview.h"
 
-#ifdef X_ENABLE_SERIALPORT
+#if X_ENABLE_SERIALPORT
 #include "serialport/serialporttransferview.h"
 #endif
 #ifdef X_ENABLE_WEBSOCKETS
@@ -27,7 +27,7 @@ TransfersView::TransfersView(QWidget *parent)
     : QTabWidget(parent)
 {
     TransfersContext ctx;
-#ifdef X_ENABLE_SERIALPORT
+#if X_ENABLE_SERIALPORT
     auto serialPortTransfers = new SerialPortTransferView(this);
     ctx.name = tr("Serial Port");
     ctx.view = serialPortTransfers;

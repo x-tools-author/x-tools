@@ -20,7 +20,7 @@
 #include "udpmulticastui.h"
 #include "udpserverui.h"
 
-#ifdef X_ENABLE_SERIALPORT
+#if X_ENABLE_SERIALPORT
 #include "serialportui.h"
 #endif
 #ifdef X_ENABLE_WEBSOCKETS
@@ -53,7 +53,7 @@ QList<int> DeviceManager::supportedDeviceTypes()
 {
     static QList<int> deviceTypes;
     if (deviceTypes.isEmpty()) {
-#ifdef X_ENABLE_SERIALPORT
+#if X_ENABLE_SERIALPORT
         deviceTypes << static_cast<int>(DeviceType::SerialPort);
 #endif
 #ifdef X_ENABLE_HID
@@ -160,7 +160,7 @@ void DeviceManager::setupDeviceTypes(QComboBox *comboBox)
 DeviceUi *DeviceManager::newDeviceUi(int type)
 {
     switch (type) {
-#ifdef X_ENABLE_SERIALPORT
+#if X_ENABLE_SERIALPORT
     case static_cast<int>(DeviceManager::SerialPort):
         return new SerialPortUi();
 #endif
@@ -206,7 +206,7 @@ DeviceUi *DeviceManager::newDeviceUi(int type)
 QString DeviceManager::deviceIconPath(int type)
 {
     switch (type) {
-#ifdef X_ENABLE_SERIALPORT
+#if X_ENABLE_SERIALPORT
     case static_cast<int>(DeviceManager::SerialPort):
 #endif
 #ifdef X_ENABLE_HID

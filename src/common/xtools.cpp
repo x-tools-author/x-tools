@@ -46,7 +46,7 @@
 #include <QUrl>
 #include <QVariant>
 
-#if defined(X_ENABLE_SERIALPORT)
+#if X_ENABLE_SERIALPORT
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #endif
@@ -705,7 +705,7 @@ SerialPortItem loadSerialPortItem(const QJsonObject &obj)
     return ctx;
 }
 
-#if defined(X_ENABLE_SERIALPORT)
+#if X_ENABLE_SERIALPORT
 void setupPortName(QComboBox *comboBox)
 {
     QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();
