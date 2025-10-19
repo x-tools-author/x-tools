@@ -1,7 +1,6 @@
 {
     "recommendations": [
-        "ms-vscode.cpptools-extension-pack",
         "cheshirekow.cmake-format",
-        "theqtcompany.qt"
+        "theqtcompany.qt-cpp-pack"
     ]
 }
