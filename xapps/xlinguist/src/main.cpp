@@ -26,11 +26,8 @@ int main(int argc, char *argv[])
     app.setupTheme();
     app.setupLanguage();
 
-    xUi window;
+    MainWindow window;
     window.setWindowIcon(QIcon(":/res/icons/logo.svg"));
-    auto flags = window.windowFlags();
-    flags &= ~Qt::WindowMinMaxButtonsHint;
-    window.setWindowFlags(Qt::WindowFlags(flags));
     window.resize(1280, 600);
     window.show();
     window.moveToCenter();
