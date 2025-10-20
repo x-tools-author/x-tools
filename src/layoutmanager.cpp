@@ -11,19 +11,19 @@
 #include <QAction>
 
 #if X_ENABLE_X_NODE_EDITOR
-#include "nodeeditor/nodeeditor.h"
+#include "x/nodeeditor/nodeeditor.h"
 #endif
 
 #if X_ENABLE_X_MODBUS
-#include "modbus/xmodbus.h"
+#include "x/modbus/xmodbus.h"
 #endif
 
 #if X_ENABLE_X_MQTT
-#include "mqtt/xmqtt.h"
+#include "x/mqtt/xmqtt.h"
 #endif
 
 #if X_ENABLE_X_CANBUS
-#include "canbus/xcanbus.h"
+#include "x/canbus/xcanbus.h"
 #endif
 
 LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
