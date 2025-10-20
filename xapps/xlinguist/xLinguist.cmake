@@ -2,7 +2,7 @@ file(GLOB_RECURSE x_common ${CMAKE_SOURCE_DIR}/xapps/x/*.*)
 file(GLOB_RECURSE x_linguist_src ${CMAKE_SOURCE_DIR}/xapps/xlinguist/src/*.*)
 file(GLOB_RECURSE x_tools_common ${CMAKE_SOURCE_DIR}/src/common/*.*)
 set(res_file ${CMAKE_CURRENT_LIST_DIR}/xLinguist.qrc)
-set(res_file ${CMAKE_CURRENT_LIST_DIR}/xLinguist.rc)
+list(APPEND res_file ${CMAKE_CURRENT_LIST_DIR}/xLinguist.rc)
 
 include_directories(${CMAKE_SOURCE_DIR}/xapps)
 include_directories(${CMAKE_SOURCE_DIR}/xapps/xlinguist/src)

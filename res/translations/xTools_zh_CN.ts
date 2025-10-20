@@ -3693,7 +3693,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/scripts/scriptbase.ui" line="50"/>
         <source>Log</source>
-        <translation>日志输出是能</translation>
+        <translation>日志输出</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.ui" line="72"/>
@@ -3805,17 +3805,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation>全车匹配</translation>
+        <translation>全词匹配</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
         <source>Could not find any matches.</source>
-        <translation>无法扎到匹配数据项。</translation>
+        <translation>无法找到匹配项。</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="151"/>
         <source>Found %1 matches.</source>
-        <translation>发现 %1 匹配。</translation>
+        <translation>发现 %1 个匹配项。</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="190"/>

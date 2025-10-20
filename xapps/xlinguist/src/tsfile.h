@@ -8,33 +8,12 @@
  **************************************************************************************************/
 #pragma once
 
-#include "x/xui.h"
+#include <QObject>
 
-namespace Ui {
-class MainWindow;
-}
-
-class MainWindow : public xUi
+class TsFile : public QObject
 {
     Q_OBJECT
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow() override;
-
-private:
-    struct SettingKeys
-    {
-        const QString lastOpenedDirectory{"xlinguist/last_opened_directory"};
-    } m_keys;
-
-private:
-    Ui::MainWindow *ui;
-    QString m_rootPath;
-
-private:
-    void onStartButtonClicked();
-    void onStopButtonClicked();
-    void onBrowseButtonClicked();
-
-    void loadTranslationFiles(const QString &dir);
+    explicit TsFile(const QString &filePath, QObject *parent = nullptr);
+    ~TsFile() override;
 };
