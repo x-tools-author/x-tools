@@ -33,7 +33,7 @@
 #ifdef X_ENABLE_CHARTS
 #include "chartstestui.h"
 #endif
-#ifdef X_ENABLE_HID
+#if X_ENABLE_HID
 #include "hiddeviceui.h"
 #endif
 
@@ -56,7 +56,7 @@ QList<int> DeviceManager::supportedDeviceTypes()
 #if X_ENABLE_SERIALPORT
         deviceTypes << static_cast<int>(DeviceType::SerialPort);
 #endif
-#ifdef X_ENABLE_HID
+#if X_ENABLE_HID
         deviceTypes << static_cast<int>(DeviceType::Hid);
 #endif
 #if X_ENABLE_BLUETOOTH
@@ -164,7 +164,7 @@ DeviceUi *DeviceManager::newDeviceUi(int type)
     case static_cast<int>(DeviceManager::SerialPort):
         return new SerialPortUi();
 #endif
-#ifdef X_ENABLE_HID
+#if X_ENABLE_HID
     case static_cast<int>(DeviceManager::Hid):
         return new HidDeviceUi();
 #endif
@@ -209,7 +209,7 @@ QString DeviceManager::deviceIconPath(int type)
 #if X_ENABLE_SERIALPORT
     case static_cast<int>(DeviceManager::SerialPort):
 #endif
-#ifdef X_ENABLE_HID
+#if X_ENABLE_HID
     case static_cast<int>(DeviceManager::Hid):
 #endif
         return QString(":/res/icons/cable.svg");
