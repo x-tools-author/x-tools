@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QMessageBox>
 
-#if defined(X_ENABLE_HID)
+#if X_ENABLE_HID
 #include <hidapi.h>
 #endif
 
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     app.setupAppStyle();
     app.setupColorScheme();
 
-#if defined(X_ENABLE_HID)
+#if X_ENABLE_HID
     hid_init();
 #endif
 
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
 
     int ret = app.exec();
 
-#if defined(X_ENABLE_HID)
+#if X_ENABLE_HID
     hid_exit();
 #endif
 

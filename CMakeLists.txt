@@ -179,7 +179,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
 if(NOT DEFINED X_LATEST_GIT_TAG)
   set(X_LATEST_GIT_TAG "9.9.9")
 endif()
-
+# Remove "v" prefix if exists
 if(X_LATEST_GIT_TAG MATCHES "^v[0-9].*")
   string(SUBSTRING ${X_LATEST_GIT_TAG} 1 -1 X_LATEST_GIT_TAG)
 endif()
