@@ -3,7 +3,7 @@
 # * argFriendlyName: desktop entry file name
 # * argVersion: the application version
 # * argWorkingDir: working dir
-# * argLowerTargetName: lower case of argTarget, such as "wxTools" -> "wxtools"
+# * argLowerTargetName: lower case of argTarget, such as "xTools" -> "xtools"
 # * argTool: linuxdeployqt tool path
 # * argSrcDir: project source dir
 # * DargPackageType: deb or appimage
@@ -54,6 +54,13 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${old_text} ${new_text})
 set(old_text icon.png)
 set(new_text ${argPacketName})
 execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${desktop_file_name})
+
+# Get directory from argTargetFile
+get_filename_component(target_dir ${argTargetFile} DIRECTORY)
+
+# Copy files to bin
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/translations" ${argWorkingDir}/usr/bin/translations)
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/scripts" ${argWorkingDir}/usr/bin/scripts)
 
 # Make deb directory from appimage
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory appimage deb WORKING_DIRECTORY ${argWorkingDir}/../)
