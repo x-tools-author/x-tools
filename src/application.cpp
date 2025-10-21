@@ -230,7 +230,7 @@ void Application::setupLanguage()
     const QString appPath = QApplication::applicationDirPath();
     const QString qmFilesPath = appPath + "/translations";
 
-    qInfo() << "The qm files path is: 1" << qmFilesPath;
+    qInfo() << "The qm files path is:" << qmFilesPath;
 
     QStringList qmFiles;
     findQmFile(qmFilesPath, language, qmFiles);
