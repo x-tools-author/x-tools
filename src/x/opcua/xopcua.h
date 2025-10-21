@@ -10,10 +10,19 @@
 
 #include <QWidget>
 
-class ProtocolFactory : public QWidget
+namespace Ui {
+class xOpcUa;
+}
+
+namespace xOpcUa {
+class xOpcUa : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ProtocolFactory(QWidget *parent = nullptr);
-    ~ProtocolFactory() override;
+    explicit xOpcUa(QWidget* parent = nullptr);
+    ~xOpcUa();
+
+private:
+    Ui::xOpcUa* ui;
 };
+} // namespace xOpcUa

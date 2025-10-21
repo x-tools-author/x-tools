@@ -4,14 +4,10 @@
     添加ble外围设备调试功能（非windows平台）
     添加sctp客户端与服务器调试功能（非windows平台）
     重构蓝牙调试功能
-    JT808
-    opc ua
-    通用协议解析器
-    数据面板
-    XMODEM, YMODEM, ZMODEM
-    ftp
+    opcua,coap,ftp,sftp,JT808，XMODEM, YMODEM, ZMODEM
+    通用协议解析器,数据面板
 
-V7.5.0 2025年10月xx日
+V7.5.0 2025年10月2x日
     新特性：
     01. 支持自定义Lua脚本和JavaScript脚本扩展
     02. 支持HID设备调试

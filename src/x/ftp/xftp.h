@@ -10,10 +10,19 @@
 
 #include <QWidget>
 
-class ProtocolFactory : public QWidget
+namespace Ui {
+class xFtp;
+}
+
+namespace xFtp {
+class xFtp : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ProtocolFactory(QWidget *parent = nullptr);
-    ~ProtocolFactory() override;
+    explicit xFtp(QWidget* parent = nullptr);
+    ~xFtp();
+
+private:
+    Ui::xFtp* ui;
 };
+} // namespace xFtp

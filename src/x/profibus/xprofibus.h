@@ -10,10 +10,19 @@
 
 #include <QWidget>
 
-class ProtocolFactory : public QWidget
+namespace Ui {
+class xProfibus;
+}
+
+namespace xProfibus {
+class xProfibus : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ProtocolFactory(QWidget *parent = nullptr);
-    ~ProtocolFactory() override;
+    explicit xProfibus(QWidget* parent = nullptr);
+    ~xProfibus();
+
+private:
+    Ui::xProfibus* ui;
 };
+} // namespace xProfibus
