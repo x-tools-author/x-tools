@@ -9,7 +9,7 @@
 #include "tsfile.h"
 
 TsFile::TsFile(const QString &filePath, QObject *parent)
-    : QObject(parent)
+    : QStandardItemModel(parent)
 {
     Q_UNUSED(filePath);
 }

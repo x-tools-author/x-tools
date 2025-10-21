@@ -8,12 +8,12 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QStandardItemModel>
+#include <QSortFilterProxyModel>
 
-class TsFile : public QStandardItemModel
+class TsFileFilter : public QSortFilterProxyModel
 {
     Q_OBJECT
 public:
-    explicit TsFile(const QString &filePath, QObject *parent = nullptr);
-    ~TsFile() override;
+    explicit TsFileFilter(QObject *parent = nullptr);
+    ~TsFileFilter() override;
 };

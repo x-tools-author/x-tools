@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2024 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -11,9 +11,11 @@
 
 #include <QFileDialog>
 #include <QLocale>
+#include <QMessageBox>
 #include <QMetaEnum>
 
 #include "common/iconengine.h"
+#include "tsfile.h"
 #include "x/xapp.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -25,6 +27,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButtonStart, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
     connect(ui->pushButtonStop, &QPushButton::clicked, this, &MainWindow::onStopButtonClicked);
     connect(ui->pushButtonBrowse, &QPushButton::clicked, this, &MainWindow::onBrowseButtonClicked);
+    connect(ui->toolButtonRemove, &QToolButton::clicked, this, &MainWindow::onRemoveButtonClicked);
+    connect(ui->listWidget,
+            &QListWidget::itemDoubleClicked,
+            this,
+            &MainWindow::onListWidgetItemDoubleClicked);
 
     m_rootPath = xAPP->value(m_keys.lastOpenedDirectory, QDir::currentPath()).toString();
     loadTranslationFiles(m_rootPath);
@@ -84,6 +91,34 @@ void MainWindow::onBrowseButtonClicked()
     loadTranslationFiles(m_rootPath);
 }
 
+void MainWindow::onRemoveButtonClicked()
+{
+    QListWidgetItem *item = ui->listWidget->currentItem();
+    if (!item) {
+        QMessageBox::warning(this, tr("Warning"), tr("Please select an item to remove."));
+        return;
+    }
+
+    int ret = QMessageBox::question(this,
+                                    tr("Confirm Removal"),
+                                    tr("Are you sure you want to remove the selected item?"),
+                                    QMessageBox::Yes | QMessageBox::No);
+    if (ret == QMessageBox::Yes) {
+        ui->listWidget->removeItemWidget(item);
+        delete item;
+    }
+}
+
+void MainWindow::onListWidgetItemDoubleClicked(QListWidgetItem *item)
+{
+    if (!item) {
+        return;
+    }
+
+    int row = ui->listWidget->row(item);
+    qInfo() << "Double-clicked item at row:" << row << "with text:" << item->text();
+}
+
 void MainWindow::loadTranslationFiles(const QString &dir)
 {
     ui->listWidget->clear();
@@ -94,8 +129,15 @@ void MainWindow::loadTranslationFiles(const QString &dir)
         return;
     }
 
+    while (!m_tsFiles.isEmpty()) {
+        TsFile *tsFile = m_tsFiles.takeFirst();
+        tsFile->deleteLater();
+    }
+
     for (const QFileInfo &info : std::as_const(fileInfoList)) {
         ui->listWidget->addItem(info.fileName());
+        TsFile *tsFile = new TsFile(info.absoluteFilePath(), this);
+        m_tsFiles.append(tsFile);
     }
 
     ui->listWidget->setCurrentRow(0);

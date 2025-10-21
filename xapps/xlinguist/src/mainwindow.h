@@ -8,12 +8,15 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QListWidgetItem>
+
 #include "x/xui.h"
 
 namespace Ui {
 class MainWindow;
 }
 
+class TsFile;
 class MainWindow : public xUi
 {
     Q_OBJECT
@@ -24,17 +27,20 @@ public:
 private:
     struct SettingKeys
     {
-        const QString lastOpenedDirectory{"xlinguist/last_opened_directory"};
+        const QString lastOpenedDirectory{"xLinguist/last_opened_directory"};
     } m_keys;
 
 private:
     Ui::MainWindow *ui;
     QString m_rootPath;
+    QList<TsFile *> m_tsFiles;
 
 private:
     void onStartButtonClicked();
     void onStopButtonClicked();
     void onBrowseButtonClicked();
+    void onRemoveButtonClicked();
+    void onListWidgetItemDoubleClicked(QListWidgetItem *item);
 
     void loadTranslationFiles(const QString &dir);
 };

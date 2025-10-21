@@ -8,12 +8,12 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QStandardItemModel>
+#include <QListView>
 
-class TsFile : public QStandardItemModel
+class TsFileView : public QListView
 {
     Q_OBJECT
 public:
-    explicit TsFile(const QString &filePath, QObject *parent = nullptr);
-    ~TsFile() override;
+    explicit TsFileView(QWidget *parent = nullptr);
+    ~TsFileView() override;
 };
