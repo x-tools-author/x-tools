@@ -11,11 +11,11 @@
 
 #include <QJsonObject>
 
-#include "../common/modbuscommon.h"
+#include "modbuscommon.h"
 
 namespace xModbus {
 
-DeviceEditor::DeviceEditor(QWidget *parent)
+ModbusDeviceEditor::ModbusDeviceEditor(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DeviceEditor)
 {
@@ -31,21 +31,21 @@ DeviceEditor::DeviceEditor(QWidget *parent)
     connect(ui->pushButtonRefresh,
             &QPushButton::clicked,
             this,
-            &DeviceEditor::onRefreshButtonClicked);
+            &ModbusDeviceEditor::onRefreshButtonClicked);
     connect(ui->comboBoxDeviceType,
             &QComboBox::currentIndexChanged,
             this,
-            &DeviceEditor::onDeviceTypeChanged);
+            &ModbusDeviceEditor::onDeviceTypeChanged);
 
     onDeviceTypeChanged();
 }
 
-DeviceEditor::~DeviceEditor()
+ModbusDeviceEditor::~ModbusDeviceEditor()
 {
     delete ui;
 }
 
-void DeviceEditor::load(const QJsonObject &parameters)
+void ModbusDeviceEditor::load(const QJsonObject &parameters)
 {
     DeviceConnectionParameters params = json2DeviceConnectionParameters(parameters);
 
@@ -64,7 +64,7 @@ void DeviceEditor::load(const QJsonObject &parameters)
     ui->checkBoxListenOnlyMode->setChecked(params.listenOnlyMode);
 }
 
-QJsonObject DeviceEditor::save() const
+QJsonObject ModbusDeviceEditor::save() const
 {
     DeviceConnectionParameters parameters;
     parameters.deviceName = ui->lineEditDeviceName->text();
@@ -84,12 +84,12 @@ QJsonObject DeviceEditor::save() const
     return deviceConnectionParameters2Json(parameters);
 }
 
-void DeviceEditor::onRefreshButtonClicked()
+void ModbusDeviceEditor::onRefreshButtonClicked()
 {
     setupRtuNames(ui->comboBoxRtuNames);
 }
 
-void DeviceEditor::onDeviceTypeChanged()
+void ModbusDeviceEditor::onDeviceTypeChanged()
 {
     int currentType = ui->comboBoxDeviceType->currentData().toInt();
     bool isRtu = (currentType == static_cast<int>(XModbusType::RtuClient)

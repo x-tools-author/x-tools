@@ -13,12 +13,12 @@
 #include <QMainWindow>
 #include <QMenu>
 
-#include "../common/modbuscommon.h"
-#include "../device/modbusdevice.h"
-
 #include "common/iconengine.h"
+
 #include "deviceeditor.h"
 #include "devicelistmodel.h"
+#include "modbuscommon.h"
+#include "modbusdevice.h"
 
 namespace xModbus {
 
@@ -59,7 +59,7 @@ DeviceListView::~DeviceListView()
 
 void DeviceListView::onNewDevice()
 {
-    DeviceEditor editor(xMainWindow);
+    ModbusDeviceEditor editor(xMainWindow);
     editor.setModal(true);
     int ret = editor.exec();
     if (ret != QDialog::Accepted) {

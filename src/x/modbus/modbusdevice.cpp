@@ -14,7 +14,7 @@
 #include <QModbusTcpClient>
 #include <QModbusTcpServer>
 
-#include "../common/modbuscommon.h"
+#include "modbuscommon.h"
 
 #include "registermodel.h"
 

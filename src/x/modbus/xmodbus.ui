@@ -60,7 +60,7 @@
   <customwidget>
    <class>xModbus::DeviceListView</class>
    <extends>QWidget</extends>
-   <header location="global">x/modbus/devicelist/devicelistview.h</header>
+   <header location="global">x/modbus/devicelistview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
