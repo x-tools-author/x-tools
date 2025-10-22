@@ -145,7 +145,7 @@ QSettings *Application::settings()
 {
     QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
     QString path = QStandardPaths::writableLocation(type);
-    QString fileName = QString("%1/%2_v8.ini").arg(path, applicationName());
+    QString fileName = QString("%1/%2.ini").arg(path, applicationName());
     static QSettings settings(fileName, QSettings::IniFormat);
 
     return &settings;
