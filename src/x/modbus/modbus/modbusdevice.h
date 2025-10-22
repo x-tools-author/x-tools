@@ -37,13 +37,13 @@ protected:
     void run() override;
 
 private:
-    void setupClient(QModbusClient *client);
-    void setupServer(QModbusServer *server);
-
-private:
     QJsonObject m_parameters;
     QJsonObject m_registers;
     mutable QMutex m_contextMutex;
+
+private:
+    void setupClient(QModbusClient *client);
+    void setupServer(QModbusServer *server);
 };
 
 } // namespace xModbus

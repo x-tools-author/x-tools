@@ -16,6 +16,8 @@
 
 #include "../common/xmodbuscommon.h"
 
+#include "registermodel.h"
+
 namespace xModbus {
 
 ModbusDevice::ModbusDevice(QObject *parent)

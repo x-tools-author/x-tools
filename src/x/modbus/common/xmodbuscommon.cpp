@@ -47,10 +47,10 @@ void setupRtuNames(QComboBox *cb)
 void setupRtuDataBits(QComboBox *cb)
 {
     cb->clear();
-    cb->addItem(QObject::tr("5"), QSerialPort::Data5);
-    cb->addItem(QObject::tr("6"), QSerialPort::Data6);
-    cb->addItem(QObject::tr("7"), QSerialPort::Data7);
-    cb->addItem(QObject::tr("8"), QSerialPort::Data8);
+    cb->addItem(QString("5"), QSerialPort::Data5);
+    cb->addItem(QString("6"), QSerialPort::Data6);
+    cb->addItem(QString("7"), QSerialPort::Data7);
+    cb->addItem(QString("8"), QSerialPort::Data8);
 
     cb->setCurrentIndex(3);
 }
@@ -68,11 +68,11 @@ void setupRtuParity(QComboBox *cb)
 void setupRtuStopBits(QComboBox *cb)
 {
     cb->clear();
-    cb->addItem(QObject::tr("1"), QSerialPort::OneStop);
+    cb->addItem(QString("1"), QSerialPort::OneStop);
 #if defined(Q_OS_WIN)
-    cb->addItem(QObject::tr("1.5"), QSerialPort::OneAndHalfStop);
+    cb->addItem(QString("1.5"), QSerialPort::OneAndHalfStop);
 #endif
-    cb->addItem(QObject::tr("2"), QSerialPort::TwoStop);
+    cb->addItem(QString("2"), QSerialPort::TwoStop);
 }
 
 void setupRtuBaudRate(QComboBox *cb)

@@ -13,6 +13,7 @@
 namespace xModbus {
 
 class ModbusDevice;
+class RegisterModel;
 class DeviceListModel : public QStandardItemModel
 {
     Q_OBJECT
@@ -21,6 +22,7 @@ public:
     ~DeviceListModel() override;
 
     void addDevice(ModbusDevice *device);
+    void addRegisterTable(ModbusDevice *device, RegisterModel *model);
 };
 
 } // namespace xModbus

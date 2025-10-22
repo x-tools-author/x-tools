@@ -28,13 +28,13 @@ struct RegisterItemKeys
 struct RegisterItem
 {
     QModbusDataUnit::RegisterType type; // 寄存器类型
-    QString name;                       //名称
+    QString name;                       // 名称
     QString unit;                       // 单位
-    QString description;                //描述（说明）
+    QString description;                // 描述（说明）
     quint16 address;                    // 地址
-    int min;                            // 最小值
-    int max;                            //最大值
-    int decimals;                       //小数位
+    double min;                         // 最小值
+    double max;                         // 最大值
+    int decimals;                       // 小数位
 };
 
 RegisterItem jsonObject2RegisterItem(const QJsonObject &json);

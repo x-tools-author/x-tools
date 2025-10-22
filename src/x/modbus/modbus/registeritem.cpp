@@ -14,14 +14,15 @@ RegisterItem jsonObject2RegisterItem(const QJsonObject &json)
 {
     RegisterItemKeys keus;
     RegisterItem item;
-    item.type = static_cast<QModbusDataUnit::RegisterType>(json.value(keus.type).toInt());
-    item.name = json.value(keus.name).toString();
-    item.unit = json.value(keus.unit).toString();
-    item.description = json.value(keus.description).toString();
-    item.address = static_cast<quint16>(json.value(keus.address).toInt());
-    item.min = json.value(keus.min).toInt();
-    item.max = json.value(keus.max).toInt();
-    item.decimals = json.value(keus.decimals).toInt();
+    int defaultType = static_cast<int>(QModbusDataUnit::Invalid);
+    item.type = static_cast<QModbusDataUnit::RegisterType>(json.value(keus.type).toInt(defaultType));
+    item.name = json.value(keus.name).toString(QString("Untitled"));
+    item.unit = json.value(keus.unit).toString("");
+    item.description = json.value(keus.description).toString("");
+    item.address = static_cast<quint16>(json.value(keus.address).toInt(1));
+    item.min = json.value(keus.min).toDouble(0);
+    item.max = json.value(keus.max).toDouble(65535);
+    item.decimals = json.value(keus.decimals).toInt(0);
     return item;
 }
 
