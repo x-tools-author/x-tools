@@ -14,7 +14,7 @@
 #include <QModbusTcpClient>
 #include <QModbusTcpServer>
 
-#include "../common/xmodbuscommon.h"
+#include "../common/modbuscommon.h"
 
 #include "registermodel.h"
 
@@ -22,6 +22,11 @@ namespace xModbus {
 
 ModbusDevice::ModbusDevice(QObject *parent)
     : QThread(parent)
+{}
+
+ModbusDevice::ModbusDevice(const QJsonObject &parameters, QObject *parent)
+    : QThread(parent)
+    , m_parameters(parameters)
 {}
 
 ModbusDevice::~ModbusDevice()

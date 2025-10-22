@@ -11,7 +11,7 @@
 
 #include <QJsonObject>
 
-#include "../common/xmodbuscommon.h"
+#include "../common/modbuscommon.h"
 
 namespace xModbus {
 

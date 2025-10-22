@@ -21,6 +21,7 @@ class ModbusDevice : public QThread
     Q_OBJECT
 public:
     explicit ModbusDevice(QObject *parent = nullptr);
+    explicit ModbusDevice(const QJsonObject &parameters, QObject *parent = nullptr);
     ~ModbusDevice() override;
 
     QJsonObject parameters() const;

@@ -13,9 +13,8 @@
 #include <QMainWindow>
 #include <QMenu>
 
-#include "../common/xmodbuscommon.h"
+#include "../common/modbuscommon.h"
 #include "../modbus/modbusdevice.h"
-#include "../modbus/modbusdevicefactory.h"
 #include "../utilities/deviceconnectionparametereditor.h"
 
 #include "common/iconengine.h"
@@ -68,7 +67,7 @@ void DeviceListView::onNewDevice()
     }
 
     QJsonObject parameters = editor.save();
-    ModbusDevice *device = gDevMgr.newDevice(parameters);
+    ModbusDevice *device = new ModbusDevice(parameters, this);
     m_model->addDevice(device);
 }
 
