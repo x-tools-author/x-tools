@@ -60,7 +60,6 @@ void ModbusDeviceListModel::addRegisterTable(ModbusDevice *device, RegisterModel
 Qt::ItemFlags ModbusDeviceListModel::flags(const QModelIndex &index) const
 {
     auto defaultFlags = QStandardItemModel::flags(index);
-    // Remove Editable flag to make items non-editable
     return defaultFlags & ~Qt::ItemIsEditable;
 }
 

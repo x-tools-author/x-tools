@@ -1,34 +1,29 @@
-# Do something for CMake 4.0.0 or later
-if(NOT ${CMAKE_VERSION} VERSION_LESS "4.0.0")
-  set(CMAKE_POLICY_VERSION_MINIMUM
-      "3.22"
-      CACHE STRING "CMake policy version" FORCE)
-endif()
+# cmake-format: off
+cmake_minimum_required(VERSION 3.22)
+set(CMAKE_POLICY_VERSION_MINIMUM "3.22" CACHE STRING "CMake policy version" FORCE)
+# cmake-format: on
 
+# --------------------------------------------------------------------------------------------------
+# cmake-format: off
 # Using vcpkg, you must set the environment variable VCPKG_ROOT first
 option(X_USING_VCPKG "Using vcpkg" OFF)
 if(X_USING_VCPKG)
-  set(VCPKG_TARGET_TRIPLET
-      "x64-windows-static"
-      CACHE STRING "vcpkg target triplet")
-  set(CMAKE_TOOLCHAIN_FILE
-      "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
-      CACHE STRING "Please specify your own vcpkg file")
+  set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "vcpkg target triplet")
+  set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Please specify your own vcpkg file")
   if(${VCPKG_TARGET_TRIPLET} STREQUAL "x64-windows-static")
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
   endif()
 endif()
+# cmake-format: on
 
-cmake_minimum_required(VERSION 3.22)
-project(
-  xTools
-  VERSION 8.0
-  LANGUAGES C CXX
-  DESCRIPTION "xTools - All in one toolbox for developers and engineers")
-
+# --------------------------------------------------------------------------------------------------
+# cmake-format: off
+# Project settings
+project(xTools VERSION 7.0 LANGUAGES C CXX DESCRIPTION "xTools - All in one toolbox for developers and engineers.")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
 # Some options for 3rd party libraries
