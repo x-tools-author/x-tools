@@ -12,7 +12,7 @@
 #include <QMainWindow>
 #include <QMenu>
 
-#include "../modbus/modbusdevice.h"
+#include "../device/modbusdevice.h"
 
 #define USER_ROLE_MODBUS_DEVICE Qt::UserRole + 1
 

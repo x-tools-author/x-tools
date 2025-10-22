@@ -14,7 +14,7 @@
 #include <QMenu>
 
 #include "../common/modbuscommon.h"
-#include "../modbus/modbusdevice.h"
+#include "../device/modbusdevice.h"
 
 #include "common/iconengine.h"
 #include "deviceeditor.h"
