@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "deviceconnectionparametereditor.h"
-#include "ui_deviceconnectionparametereditor.h"
+#include "deviceeditor.h"
+#include "ui_deviceeditor.h"
 
 #include <QJsonObject>
 
@@ -15,9 +15,9 @@
 
 namespace xModbus {
 
-DeviceConnectionParameterEditor::DeviceConnectionParameterEditor(QWidget *parent)
+DeviceEditor::DeviceEditor(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::DeviceConnectionParameterEditor)
+    , ui(new Ui::DeviceEditor)
 {
     ui->setupUi(this);
 
@@ -31,21 +31,21 @@ DeviceConnectionParameterEditor::DeviceConnectionParameterEditor(QWidget *parent
     connect(ui->pushButtonRefresh,
             &QPushButton::clicked,
             this,
-            &DeviceConnectionParameterEditor::onRefreshButtonClicked);
+            &DeviceEditor::onRefreshButtonClicked);
     connect(ui->comboBoxDeviceType,
             &QComboBox::currentIndexChanged,
             this,
-            &DeviceConnectionParameterEditor::onDeviceTypeChanged);
+            &DeviceEditor::onDeviceTypeChanged);
 
     onDeviceTypeChanged();
 }
 
-DeviceConnectionParameterEditor::~DeviceConnectionParameterEditor()
+DeviceEditor::~DeviceEditor()
 {
     delete ui;
 }
 
-void DeviceConnectionParameterEditor::load(const QJsonObject &parameters)
+void DeviceEditor::load(const QJsonObject &parameters)
 {
     DeviceConnectionParameters params = json2DeviceConnectionParameters(parameters);
 
@@ -64,7 +64,7 @@ void DeviceConnectionParameterEditor::load(const QJsonObject &parameters)
     ui->checkBoxListenOnlyMode->setChecked(params.listenOnlyMode);
 }
 
-QJsonObject DeviceConnectionParameterEditor::save() const
+QJsonObject DeviceEditor::save() const
 {
     DeviceConnectionParameters parameters;
     parameters.deviceName = ui->lineEditDeviceName->text();
@@ -84,12 +84,12 @@ QJsonObject DeviceConnectionParameterEditor::save() const
     return deviceConnectionParameters2Json(parameters);
 }
 
-void DeviceConnectionParameterEditor::onRefreshButtonClicked()
+void DeviceEditor::onRefreshButtonClicked()
 {
     setupRtuNames(ui->comboBoxRtuNames);
 }
 
-void DeviceConnectionParameterEditor::onDeviceTypeChanged()
+void DeviceEditor::onDeviceTypeChanged()
 {
     int currentType = ui->comboBoxDeviceType->currentData().toInt();
     bool isRtu = (currentType == static_cast<int>(XModbusType::RtuClient)

@@ -15,9 +15,9 @@
 
 #include "../common/modbuscommon.h"
 #include "../modbus/modbusdevice.h"
-#include "../utilities/deviceconnectionparametereditor.h"
 
 #include "common/iconengine.h"
+#include "deviceeditor.h"
 #include "devicelistmodel.h"
 
 namespace xModbus {
@@ -59,7 +59,7 @@ DeviceListView::~DeviceListView()
 
 void DeviceListView::onNewDevice()
 {
-    DeviceConnectionParameterEditor editor(xMainWindow);
+    DeviceEditor editor(xMainWindow);
     editor.setModal(true);
     int ret = editor.exec();
     if (ret != QDialog::Accepted) {
