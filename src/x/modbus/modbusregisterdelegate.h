@@ -12,12 +12,12 @@
 
 namespace xModbus {
 
-class RegisterItemDelegate : public QStyledItemDelegate
+class ModbusRegisterDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:
-    explicit RegisterItemDelegate(QObject *parent = nullptr);
-    ~RegisterItemDelegate() override;
+    explicit ModbusRegisterDelegate(QObject *parent = nullptr);
+    ~ModbusRegisterDelegate() override;
 };
 
 } // namespace xModbus

@@ -6,8 +6,8 @@
  * xModbus is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "devicelistview.h"
-#include "ui_devicelistview.h"
+#include "modbusdevicelistview.h"
+#include "ui_modbusdevicelistview.h"
 
 #include <QApplication>
 #include <QMainWindow>
@@ -15,16 +15,16 @@
 
 #include "common/iconengine.h"
 
-#include "deviceeditor.h"
-#include "devicelistmodel.h"
 #include "modbuscommon.h"
 #include "modbusdevice.h"
+#include "modbusdeviceeditor.h"
+#include "modbusdevicelistmodel.h"
 
 namespace xModbus {
 
-DeviceListView::DeviceListView(QWidget *parent)
+ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::DeviceListView)
+    , ui(new Ui::ModbusDeviceListView)
 {
     ui->setupUi(this);
     ui->toolButtonAdd->setIcon(xIcon(":/res/icons/add.svg"));
@@ -35,29 +35,31 @@ DeviceListView::DeviceListView(QWidget *parent)
     ui->toolButtonClose->setIcon(xIcon(":/res/icons/stop.svg"));
     ui->toolButtonOpen->setIcon(xIcon(":/res/icons/play_arrow.svg"));
 
-    m_model = new DeviceListModel(ui->treeView);
+    m_model = new ModbusDeviceListModel(ui->treeView);
     ui->treeView->setModel(m_model);
     ui->treeView->header()->hide();
 
     QMenu *addMenu = new QMenu(this);
-    addMenu->addAction(tr("New RTU Device"), this, &DeviceListView::onNewRtuDevice);
-    addMenu->addAction(tr("New TCP Device"), this, &DeviceListView::onNewTcpDevice);
+    addMenu->addAction(tr("New RTU Device"), this, &ModbusDeviceListView::onNewRtuDevice);
+    addMenu->addAction(tr("New TCP Device"), this, &ModbusDeviceListView::onNewTcpDevice);
     addMenu->addSeparator();
-    addMenu->addAction(tr("New Coils"), this, &DeviceListView::onNewCoils);
-    addMenu->addAction(tr("New Discrete Inputs"), this, &DeviceListView::onNewDiscreteInputs);
-    addMenu->addAction(tr("New Holding Registers"), this, &DeviceListView::onNewHoldingRegisters);
-    addMenu->addAction(tr("New Input Registers"), this, &DeviceListView::onNewInputRegisters);
+    addMenu->addAction(tr("New Coils"), this, &ModbusDeviceListView::onNewCoils);
+    addMenu->addAction(tr("New Discrete Inputs"), this, &ModbusDeviceListView::onNewDiscreteInputs);
+    addMenu->addAction(tr("New Holding Registers"),
+                       this,
+                       &ModbusDeviceListView::onNewHoldingRegisters);
+    addMenu->addAction(tr("New Input Registers"), this, &ModbusDeviceListView::onNewInputRegisters);
     ui->toolButtonAdd->setMenu(addMenu);
     ui->toolButtonAdd->setPopupMode(QToolButton::MenuButtonPopup);
-    connect(ui->toolButtonAdd, &QToolButton::clicked, this, &DeviceListView::onNewDevice);
+    connect(ui->toolButtonAdd, &QToolButton::clicked, this, &ModbusDeviceListView::onNewDevice);
 }
 
-DeviceListView::~DeviceListView()
+ModbusDeviceListView::~ModbusDeviceListView()
 {
     delete ui;
 }
 
-void DeviceListView::onNewDevice()
+void ModbusDeviceListView::onNewDevice()
 {
     ModbusDeviceEditor editor(xMainWindow);
     editor.setModal(true);
@@ -71,32 +73,32 @@ void DeviceListView::onNewDevice()
     m_model->addDevice(device);
 }
 
-void DeviceListView::onNewRtuDevice()
+void ModbusDeviceListView::onNewRtuDevice()
 {
     // Logic to create a new RTU device, e.g., open a dialog to configure the RTU device.
 }
 
-void DeviceListView::onNewTcpDevice()
+void ModbusDeviceListView::onNewTcpDevice()
 {
     // Logic to create a new TCP device, e.g., open a dialog to configure the TCP device.
 }
 
-void DeviceListView::onNewCoils()
+void ModbusDeviceListView::onNewCoils()
 {
     // Logic to create a new Coils device, e.g., open a dialog to configure the Coils.
 }
 
-void DeviceListView::onNewDiscreteInputs()
+void ModbusDeviceListView::onNewDiscreteInputs()
 {
     // Logic to create a new Discrete Inputs device, e.g., open a dialog to configure the Discrete Inputs.
 }
 
-void DeviceListView::onNewHoldingRegisters()
+void ModbusDeviceListView::onNewHoldingRegisters()
 {
     // Logic to create a new Holding Registers device, e.g., open a dialog to configure the Holding Registers.
 }
 
-void DeviceListView::onNewInputRegisters()
+void ModbusDeviceListView::onNewInputRegisters()
 {
     // Logic to create a new Input Registers device, e.g., open a dialog to configure the Input Registers.
 }

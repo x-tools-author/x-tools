@@ -6,7 +6,7 @@
  * xModbus is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "devicelistmodel.h"
+#include "modbusdevicelistmodel.h"
 
 #include <QApplication>
 #include <QMainWindow>
@@ -18,13 +18,13 @@
 
 namespace xModbus {
 
-DeviceListModel::DeviceListModel(QWidget *parent)
+ModbusDeviceListModel::ModbusDeviceListModel(QWidget *parent)
     : QStandardItemModel(parent)
 {}
 
-DeviceListModel::~DeviceListModel() {}
+ModbusDeviceListModel::~ModbusDeviceListModel() {}
 
-void DeviceListModel::addDevice(ModbusDevice *device)
+void ModbusDeviceListModel::addDevice(ModbusDevice *device)
 {
     if (!device) {
         return;

@@ -6,8 +6,8 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "deviceeditor.h"
-#include "ui_deviceeditor.h"
+#include "modbusdeviceeditor.h"
+#include "ui_modbusdeviceeditor.h"
 
 #include <QJsonObject>
 
@@ -17,7 +17,7 @@ namespace xModbus {
 
 ModbusDeviceEditor::ModbusDeviceEditor(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::DeviceEditor)
+    , ui(new Ui::ModbusDeviceEditor)
 {
     ui->setupUi(this);
 

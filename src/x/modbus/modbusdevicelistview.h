@@ -11,19 +11,19 @@
 #include <QWidget>
 
 namespace Ui {
-class DeviceListView;
+class ModbusDeviceListView;
 }
 
 namespace xModbus {
 
 class ModbusDevice;
-class DeviceListModel;
-class DeviceListView : public QWidget
+class ModbusDeviceListModel;
+class ModbusDeviceListView : public QWidget
 {
     Q_OBJECT
 public:
-    explicit DeviceListView(QWidget *parent = nullptr);
-    ~DeviceListView() override;
+    explicit ModbusDeviceListView(QWidget *parent = nullptr);
+    ~ModbusDeviceListView() override;
 
 signals:
     void currentDeviceChanged(ModbusDevice *device);
@@ -38,8 +38,8 @@ private:
     void onNewInputRegisters();
 
 private:
-    Ui::DeviceListView *ui;
-    DeviceListModel *m_model;
+    Ui::ModbusDeviceListView *ui;
+    ModbusDeviceListModel *m_model;
 };
 
 } // namespace xModbus

@@ -16,7 +16,7 @@
 
 #include "modbuscommon.h"
 
-#include "registermodel.h"
+#include "modbusregistertable.h"
 
 namespace xModbus {
 

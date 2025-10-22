@@ -10,16 +10,16 @@
 
 #include <QAbstractTableModel>
 
-#include "registeritem.h"
+#include "modbusregister.h"
 
 namespace xModbus {
 
-class RegisterModel : public QAbstractTableModel
+class ModbusRegisterTable : public QAbstractTableModel
 {
     Q_OBJECT
 public:
-    explicit RegisterModel(QObject *parent = nullptr);
-    ~RegisterModel() override;
+    explicit ModbusRegisterTable(QObject *parent = nullptr);
+    ~ModbusRegisterTable() override;
 
     void addRegisterItem(const RegisterItem &item);
     void addRegisterItems(const QList<RegisterItem> &items);

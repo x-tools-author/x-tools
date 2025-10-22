@@ -6,14 +6,14 @@
  * xModbus is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "registeritemdelegate.h"
+#include "modbusregisterdelegate.h"
 
 namespace xModbus {
 
-RegisterItemDelegate::RegisterItemDelegate(QObject *parent)
+ModbusRegisterDelegate::ModbusRegisterDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {}
 
-RegisterItemDelegate::~RegisterItemDelegate() {}
+ModbusRegisterDelegate::~ModbusRegisterDelegate() {}
 
 } // namespace xModbus

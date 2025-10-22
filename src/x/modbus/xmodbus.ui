@@ -39,7 +39,7 @@
     </widget>
    </item>
    <item row="0" column="0">
-    <widget class="xModbus::DeviceListView" name="widgetDeviceListView" native="true">
+    <widget class="xModbus::ModbusDeviceListView" name="widgetDeviceListView" native="true">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -58,9 +58,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>xModbus::DeviceListView</class>
+   <class>xModbus::ModbusDeviceListView</class>
    <extends>QWidget</extends>
-   <header location="global">x/modbus/devicelistview.h</header>
+   <header location="global">x/modbus/modbusdevicelistview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

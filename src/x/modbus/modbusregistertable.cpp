@@ -6,7 +6,7 @@
  * xModbus is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "registermodel.h"
+#include "modbusregistertable.h"
 
 #define REGISTER_TABLE_ADDRESS 0
 #define REGISTER_TABLE_NAME 1
@@ -19,37 +19,37 @@
 
 namespace xModbus {
 
-RegisterModel::RegisterModel(QObject *parent)
+ModbusRegisterTable::ModbusRegisterTable(QObject *parent)
     : QAbstractTableModel(parent)
 {}
 
-RegisterModel::~RegisterModel() {}
+ModbusRegisterTable::~ModbusRegisterTable() {}
 
-void RegisterModel::addRegisterItem(const RegisterItem &item)
+void ModbusRegisterTable::addRegisterItem(const RegisterItem &item)
 {
     RegisterItem *newItem = new RegisterItem(item);
     m_registerItems.append(newItem);
     insertRows(m_registerItems.count() - 1, 1, QModelIndex());
 }
 
-void RegisterModel::addRegisterItems(const QList<RegisterItem> &items)
+void ModbusRegisterTable::addRegisterItems(const QList<RegisterItem> &items)
 {
     for (const RegisterItem &item : items) {
         addRegisterItem(item);
     }
 }
 
-int RegisterModel::rowCount(const QModelIndex &parent) const
+int ModbusRegisterTable::rowCount(const QModelIndex &parent) const
 {
     return m_registerItems.count();
 }
 
-int RegisterModel::columnCount(const QModelIndex &parent) const
+int ModbusRegisterTable::columnCount(const QModelIndex &parent) const
 {
     return 8;
 }
 
-QVariant RegisterModel::data(const QModelIndex &index, int role) const
+QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
 {
     if (role != Qt::DisplayRole)
         return QVariant();
@@ -80,7 +80,7 @@ QVariant RegisterModel::data(const QModelIndex &index, int role) const
     }
 }
 
-bool RegisterModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (role != Qt::EditRole)
         return false;
@@ -122,7 +122,7 @@ bool RegisterModel::setData(const QModelIndex &index, const QVariant &value, int
     return true;
 }
 
-QVariant RegisterModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant ModbusRegisterTable::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (role != Qt::DisplayRole)
         return QVariant();
@@ -153,7 +153,7 @@ QVariant RegisterModel::headerData(int section, Qt::Orientation orientation, int
     }
 }
 
-bool RegisterModel::insertRows(int row, int count, const QModelIndex &parent)
+bool ModbusRegisterTable::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {
@@ -165,7 +165,7 @@ bool RegisterModel::insertRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-bool RegisterModel::removeRows(int row, int count, const QModelIndex &parent)
+bool ModbusRegisterTable::removeRows(int row, int count, const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {

@@ -4040,7 +4040,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xModbus::DeviceListModel</name>
+    <name>xModbus::ModbusDeviceListView</name>
     <message>
         <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="37"/>
         <source>Coils</source>

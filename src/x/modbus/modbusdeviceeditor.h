@@ -11,23 +11,23 @@
 #include <QDialog>
 
 namespace Ui {
-class DeviceEditor;
+class ModbusDeviceEditor;
 }
 
 namespace xModbus {
 
-class DeviceEditor : public QDialog
+class ModbusDeviceEditor : public QDialog
 {
     Q_OBJECT
 public:
-    explicit DeviceEditor(QWidget *parent = nullptr);
-    ~DeviceEditor() override;
+    explicit ModbusDeviceEditor(QWidget *parent = nullptr);
+    ~ModbusDeviceEditor() override;
 
     void load(const QJsonObject &parameters);
     QJsonObject save() const;
 
 private:
-    Ui::DeviceEditor *ui;
+    Ui::ModbusDeviceEditor *ui;
 
 private:
     void onRefreshButtonClicked();
