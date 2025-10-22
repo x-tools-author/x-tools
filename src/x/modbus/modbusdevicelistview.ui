@@ -87,6 +87,9 @@
     </layout>
    </item>
    <item>
+    <widget class="QComboBox" name="comboBoxProject"/>
+   </item>
+   <item>
     <widget class="QLineEdit" name="lineEditSearch">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">

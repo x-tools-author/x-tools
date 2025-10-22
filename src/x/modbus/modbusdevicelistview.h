@@ -28,17 +28,54 @@ public:
 signals:
     void currentDeviceChanged(ModbusDevice *device);
 
+protected:
+    void contextMenuEvent(QContextMenuEvent *event) override;
+
 private:
+    struct
+    {
+        QAction *device;
+
+        QAction *coils;
+        QAction *discreteInputs;
+        QAction *holdingRegisters;
+        QAction *inputRegisters;
+        QAction *singleRegister;
+        QAction *multiRegister;
+
+        QAction *copy;
+        QAction *paste;
+        QAction *cut;
+
+        QAction *redo;
+        QAction *undo;
+
+        QAction *remove;
+    } m_addActions;
+
+private:
+    Ui::ModbusDeviceListView *ui;
+    ModbusDeviceListModel *m_model;
+
+private:
+    int depth(const QModelIndex &index);
+
     void onNewDevice();
     void onNewCoils();
     void onNewDiscreteInputs();
     void onNewHoldingRegisters();
     void onNewInputRegisters();
+    void onNewSingleRegister();
+    void onNewMultiRegister();
+    void onCopy();
+    void onPaste();
+    void onCut();
+    void onUndo();
+    void onRedo();
+    void onRemove();
     void onItemDoubleClicked(const QModelIndex &index);
-
-private:
-    Ui::ModbusDeviceListView *ui;
-    ModbusDeviceListModel *m_model;
+    void onAddMenuAboutToShow();
+    void onAddMenuAboutToHide();
 };
 
 } // namespace xModbus
