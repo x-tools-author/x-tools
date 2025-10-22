@@ -280,7 +280,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>DeviceConnectionParameterEditor</receiver>
+   <receiver>ModbusDeviceEditor</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -296,7 +296,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>DeviceConnectionParameterEditor</receiver>
+   <receiver>ModbusDeviceEditor</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
