@@ -40,22 +40,19 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     ui->treeView->header()->hide();
 
     QMenu *addMenu = new QMenu(this);
-    addMenu->addAction(tr("New RTU Device"), this, &ModbusDeviceListView::onNewRtuDevice);
-    addMenu->addAction(tr("New TCP Device"), this, &ModbusDeviceListView::onNewTcpDevice);
-    addMenu->addSeparator();
+    // clang-format off
     addMenu->addAction(tr("New Coils"), this, &ModbusDeviceListView::onNewCoils);
     addMenu->addAction(tr("New Discrete Inputs"), this, &ModbusDeviceListView::onNewDiscreteInputs);
-    addMenu->addAction(tr("New Holding Registers"),
-                       this,
-                       &ModbusDeviceListView::onNewHoldingRegisters);
+    addMenu->addAction(tr("New Holding Registers"), this, &ModbusDeviceListView::onNewHoldingRegisters);
     addMenu->addAction(tr("New Input Registers"), this, &ModbusDeviceListView::onNewInputRegisters);
+    // clang-format on
     ui->toolButtonAdd->setMenu(addMenu);
     ui->toolButtonAdd->setPopupMode(QToolButton::MenuButtonPopup);
+
+    // clang-format off
     connect(ui->toolButtonAdd, &QToolButton::clicked, this, &ModbusDeviceListView::onNewDevice);
-    connect(ui->treeView,
-            &QTreeView::doubleClicked,
-            this,
-            &ModbusDeviceListView::onItemDoubleClicked);
+    connect(ui->treeView, &QTreeView::doubleClicked, this, &ModbusDeviceListView::onItemDoubleClicked);
+    // clang-format on
 }
 
 ModbusDeviceListView::~ModbusDeviceListView()
@@ -75,16 +72,6 @@ void ModbusDeviceListView::onNewDevice()
     QJsonObject parameters = editor.save();
     ModbusDevice *device = new ModbusDevice(parameters, this);
     m_model->addDevice(device);
-}
-
-void ModbusDeviceListView::onNewRtuDevice()
-{
-    // Logic to create a new RTU device, e.g., open a dialog to configure the RTU device.
-}
-
-void ModbusDeviceListView::onNewTcpDevice()
-{
-    // Logic to create a new TCP device, e.g., open a dialog to configure the TCP device.
 }
 
 void ModbusDeviceListView::onNewCoils()
@@ -109,7 +96,7 @@ void ModbusDeviceListView::onNewInputRegisters()
 
 void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
 {
-    qInfo() << "Item double-clicked at row:" << index.row() << "column:" << index.column();
+    // Nothing to do yet...
 }
 
 } // namespace xModbus

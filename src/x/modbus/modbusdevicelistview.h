@@ -30,8 +30,6 @@ signals:
 
 private:
     void onNewDevice();
-    void onNewRtuDevice();
-    void onNewTcpDevice();
     void onNewCoils();
     void onNewDiscreteInputs();
     void onNewHoldingRegisters();
