@@ -13,6 +13,7 @@
 #include <QMainWindow>
 #include <QMenu>
 
+#include "../common/xmodbuscommon.h"
 #include "../modbus/modbusdevice.h"
 #include "../modbus/modbusdevicefactory.h"
 #include "../utilities/deviceconnectionparametereditor.h"
@@ -59,9 +60,7 @@ DeviceListView::~DeviceListView()
 
 void DeviceListView::onNewDevice()
 {
-    auto widgets = qApp->findChildren<QMainWindow *>();
-    QMainWindow *parentWidget = widgets.isEmpty() ? nullptr : widgets.first();
-    DeviceConnectionParameterEditor editor(parentWidget);
+    DeviceConnectionParameterEditor editor(xMainWindow);
     editor.setModal(true);
     int ret = editor.exec();
     if (ret != QDialog::Accepted) {

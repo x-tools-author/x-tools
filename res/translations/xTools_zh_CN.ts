@@ -1139,7 +1139,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="165"/>
         <source>Port</source>
-        <translation>端口</translation>
+        <translation>网络端口</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="185"/>
@@ -1149,17 +1149,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="208"/>
         <source>Timeout(ms)</source>
-        <translation>超时时间(毫秒)</translation>
+        <translation>超时(毫秒)</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="221"/>
-        <source>Number of retries</source>
+        <source>Retries</source>
         <translation>重连次数</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="241"/>
         <source>Address</source>
-        <translation>地址</translation>
+        <translation>设备地址</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="251"/>

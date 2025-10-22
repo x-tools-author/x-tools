@@ -78,21 +78,21 @@ QToolButton* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
 
 void LayoutManager::setupPages()
 {
-#if X_ENABLE_X_NODE_EDITOR
-    m_nodeEditor = new xFlow::NodeEditor(m_layout->parentWidget());
-    addLayoutPage(tr("Node Editor"), m_nodeEditor);
-#endif
 #if X_ENABLE_X_MODBUS
     m_modbus = new xModbus::xModbus(m_layout->parentWidget());
-    addLayoutPage(QString("Modbus"), m_modbus);
+    addLayoutPage(QString("xModbus"), m_modbus);
 #endif
 #if X_ENABLE_X_MQTT
     m_mqtt = new xMqtt::xMqtt(m_layout->parentWidget());
-    addLayoutPage(QString("MQTT"), m_mqtt);
+    addLayoutPage(QString("xMQTT"), m_mqtt);
 #endif
 #if X_ENABLE_X_CANBUS
     m_canbus = new xCanBus::xCanBus(m_layout->parentWidget());
-    addLayoutPage(QString("CAN Bus"), m_canbus);
+    addLayoutPage(QString("xCANBus"), m_canbus);
+#endif
+#if X_ENABLE_X_NODE_EDITOR
+    m_nodeEditor = new xFlow::NodeEditor(m_layout->parentWidget());
+    addLayoutPage(QString("xFlow"), m_nodeEditor);
 #endif
 
     if (m_layout->count() == 1) {

@@ -11,8 +11,13 @@
 #include <QComboBox>
 #include <QJsonObject>
 #include <QSerialPort>
+#include <QWidget>
+
+#define xMainWindow xModbus::topLevelMainWindow()
 
 namespace xModbus {
+
+QWidget *topLevelMainWindow();
 
 enum class XModbusType { RtuClient, RtuServer, TcpClient, TcpServer };
 void setupModebusDeviceType(QComboBox *cb);

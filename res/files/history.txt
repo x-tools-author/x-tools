@@ -7,6 +7,10 @@
     opcua,coap,ftp,sftp,JT808，XMODEM, YMODEM, ZMODEM
     通用协议解析器,数据面板
 
+V7.6.0 2025年xx月xx日
+    新特性：
+    01. 全新的Modbus调试功能
+
 V7.5.0 2025年10月21日
     新特性：
     01. 支持自定义Lua脚本和JavaScript脚本扩展

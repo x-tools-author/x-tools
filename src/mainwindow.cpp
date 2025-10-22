@@ -127,7 +127,7 @@ MainWindow::MainWindow(QWidget* parent)
     // Initialize layout manager
     menuBar()->addSeparator();
     m_layoutManager = new LayoutManager(sl, menuBar(), this);
-    QToolButton* button = m_layoutManager->addLayoutPage(tr("General"), ioLayoutWidget);
+    QToolButton* button = m_layoutManager->addLayoutPage(QString("xTools"), ioLayoutWidget);
     m_layoutManager->setupPages();
     button->setChecked(true);
 }

@@ -28,6 +28,11 @@ public:
 
 private:
     Ui::DeviceConnectionParameterEditor *ui;
+
+private:
+    void onRefreshButtonClicked();
+
+    void onDeviceTypeChanged();
 };
 
 } // namespace xModbus

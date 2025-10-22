@@ -8,10 +8,23 @@
  **************************************************************************************************/
 #include "xmodbuscommon.h"
 
+#include <QApplication>
+#include <QMainWindow>
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
 namespace xModbus {
+
+QWidget *topLevelMainWindow()
+{
+    auto widgets = qApp->topLevelWidgets();
+    for (QWidget *widget : widgets) {
+        if (QMainWindow *mainWin = qobject_cast<QMainWindow *>(widget)) {
+            return mainWin;
+        }
+    }
+    return nullptr;
+}
 
 void setupModebusDeviceType(QComboBox *cb)
 {

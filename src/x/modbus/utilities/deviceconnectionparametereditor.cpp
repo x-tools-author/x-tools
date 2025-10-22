@@ -27,6 +27,17 @@ DeviceConnectionParameterEditor::DeviceConnectionParameterEditor(QWidget *parent
     setupRtuParity(ui->comboBoxRtuParity);
     setupRtuStopBits(ui->comboBoxRtuStopBits);
     setupRtuBaudRate(ui->comboBoxRtuBaudRate);
+
+    connect(ui->pushButtonRefresh,
+            &QPushButton::clicked,
+            this,
+            &DeviceConnectionParameterEditor::onRefreshButtonClicked);
+    connect(ui->comboBoxDeviceType,
+            &QComboBox::currentIndexChanged,
+            this,
+            &DeviceConnectionParameterEditor::onDeviceTypeChanged);
+
+    onDeviceTypeChanged();
 }
 
 DeviceConnectionParameterEditor::~DeviceConnectionParameterEditor()
@@ -71,6 +82,52 @@ QJsonObject DeviceConnectionParameterEditor::save() const
     parameters.listenOnlyMode = ui->checkBoxListenOnlyMode->isChecked();
 
     return deviceConnectionParameters2Json(parameters);
+}
+
+void DeviceConnectionParameterEditor::onRefreshButtonClicked()
+{
+    setupRtuNames(ui->comboBoxRtuNames);
+}
+
+void DeviceConnectionParameterEditor::onDeviceTypeChanged()
+{
+    int currentType = ui->comboBoxDeviceType->currentData().toInt();
+    bool isRtu = (currentType == static_cast<int>(XModbusType::RtuClient)
+                  || currentType == static_cast<int>(XModbusType::RtuServer));
+    bool isClient = (currentType == static_cast<int>(XModbusType::RtuClient)
+                     || currentType == static_cast<int>(XModbusType::TcpClient));
+
+    ui->lineSerialPort->setVisible(isRtu);
+    ui->labelPortName->setVisible(isRtu);
+    ui->labelBaudRate->setVisible(isRtu);
+    ui->labelParity->setVisible(isRtu);
+    ui->labelDataBits->setVisible(isRtu);
+    ui->labelStopBits->setVisible(isRtu);
+    ui->comboBoxRtuNames->setVisible(isRtu);
+    ui->comboBoxRtuBaudRate->setVisible(isRtu);
+    ui->comboBoxRtuParity->setVisible(isRtu);
+    ui->comboBoxRtuDataBits->setVisible(isRtu);
+    ui->comboBoxRtuStopBits->setVisible(isRtu);
+    ui->pushButtonRefresh->setVisible(isRtu);
+
+    ui->lineNetwork->setVisible(!isRtu);
+    ui->labelIp->setVisible(!isRtu);
+    ui->labelPort->setVisible(!isRtu);
+    ui->comboBoxTcpAddress->setVisible(!isRtu);
+    ui->spinBoxTcpPort->setVisible(!isRtu);
+
+    ui->lineClient->setVisible(isClient);
+    ui->labelRetries->setVisible(isClient);
+    ui->labelTimeout->setVisible(isClient);
+    ui->spinBoxNumberOfRetries->setVisible(isClient);
+    ui->spinBoxTimeout->setVisible(isClient);
+
+    ui->lineServer->setVisible(!isClient);
+    ui->spinBoxServerAddress->setVisible(!isClient);
+    ui->labelAddress->setVisible(!isClient);
+    ui->checkBoxListenOnlyMode->setVisible(!isClient);
+
+    adjustSize();
 }
 
 } // namespace xModbus
