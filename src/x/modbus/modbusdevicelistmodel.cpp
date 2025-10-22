@@ -51,4 +51,17 @@ void ModbusDeviceListModel::addDevice(ModbusDevice *device)
     item->appendRow(inputRegistersItem);
 }
 
+void ModbusDeviceListModel::addRegisterTable(ModbusDevice *device, RegisterModel *model)
+{
+    Q_UNUSED(device)
+    Q_UNUSED(model)
+}
+
+Qt::ItemFlags ModbusDeviceListModel::flags(const QModelIndex &index) const
+{
+    auto defaultFlags = QStandardItemModel::flags(index);
+    // Remove Editable flag to make items non-editable
+    return defaultFlags & ~Qt::ItemIsEditable;
+}
+
 } // namespace xModbus

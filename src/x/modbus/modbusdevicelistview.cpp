@@ -52,6 +52,10 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     ui->toolButtonAdd->setMenu(addMenu);
     ui->toolButtonAdd->setPopupMode(QToolButton::MenuButtonPopup);
     connect(ui->toolButtonAdd, &QToolButton::clicked, this, &ModbusDeviceListView::onNewDevice);
+    connect(ui->treeView,
+            &QTreeView::doubleClicked,
+            this,
+            &ModbusDeviceListView::onItemDoubleClicked);
 }
 
 ModbusDeviceListView::~ModbusDeviceListView()
@@ -101,6 +105,11 @@ void ModbusDeviceListView::onNewHoldingRegisters()
 void ModbusDeviceListView::onNewInputRegisters()
 {
     // Logic to create a new Input Registers device, e.g., open a dialog to configure the Input Registers.
+}
+
+void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
+{
+    qInfo() << "Item double-clicked at row:" << index.row() << "column:" << index.column();
 }
 
 } // namespace xModbus

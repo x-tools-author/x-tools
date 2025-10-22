@@ -36,6 +36,7 @@ private:
     void onNewDiscreteInputs();
     void onNewHoldingRegisters();
     void onNewInputRegisters();
+    void onItemDoubleClicked(const QModelIndex &index);
 
 private:
     Ui::ModbusDeviceListView *ui;
