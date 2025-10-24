@@ -8,13 +8,30 @@
  **************************************************************************************************/
 #pragma once
 
+#include <atomic>
+
 #include <QRunnable>
+#include <QString>
 
 class Translator : public QRunnable
 {
 public:
-    explicit Translator();
+    explicit Translator(const QString &from,
+                        const QString &to,
+                        const QString &fileName,
+                        const QString &sourceText,
+                        int sourceLineNumber);
     ~Translator();
+    static void setRequestInterrupted(bool interrupted);
 
     void run() override;
+
+private:
+    static std::atomic_bool s_requestInterrupted;
+
+    QString m_from;
+    QString m_to;
+    QString m_fileName;
+    QString m_sourceText;
+    int m_sourceLineNumber;
 };

@@ -13,25 +13,32 @@
 #include <QLocale>
 #include <QMessageBox>
 #include <QMetaEnum>
+#include <QThreadPool>
 
 #include "common/iconengine.h"
-#include "tsfile.h"
 #include "x/xapp.h"
+
+#include "translator.h"
+#include "tsfile.h"
+#include "tsfilemanager.h"
+#include "tsfileview.h"
+#include "tsitem.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : xUi(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->tableView->horizontalHeader()->setStretchLastSection(true);
+    ui->tableView->verticalHeader()->hide();
+    ui->pushButtonStop->setEnabled(false);
 
     connect(ui->pushButtonStart, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
     connect(ui->pushButtonStop, &QPushButton::clicked, this, &MainWindow::onStopButtonClicked);
     connect(ui->pushButtonBrowse, &QPushButton::clicked, this, &MainWindow::onBrowseButtonClicked);
-    connect(ui->toolButtonRemove, &QToolButton::clicked, this, &MainWindow::onRemoveButtonClicked);
-    connect(ui->listWidget,
-            &QListWidget::itemDoubleClicked,
-            this,
-            &MainWindow::onListWidgetItemDoubleClicked);
+    connect(ui->pushButtonRemove, &QPushButton::clicked, this, &MainWindow::onRemoveButtonClicked);
+    connect(ui->tableView, &QTableView::doubleClicked, this, &MainWindow::onViewDoubleClicked);
 
     m_rootPath = xAPP->value(m_keys.lastOpenedDirectory, QDir::currentPath()).toString();
     loadTranslationFiles(m_rootPath);
@@ -54,8 +61,8 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
 #endif
-    ui->toolButtonRemove->setIcon(xIcon(":/res/icons/remove.svg"));
-    setWindowTitle(QString("xLinguist") + QString(" - ") + tr("Translation Assistant"));
+    ui->tableView->setModel(&TsFileManager::instance());
+    setWindowTitle(QString("xLinguist") + QString(" - ") + tr("A Translation Assistant"));
 }
 
 MainWindow::~MainWindow()
@@ -63,20 +70,53 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    onStopButtonClicked();
+    QMainWindow::closeEvent(event);
+}
+
 void MainWindow::onStartButtonClicked()
 {
-    for (int i = 0; i < ui->listWidget->count(); ++i) {
-        QListWidgetItem *item = ui->listWidget->item(i);
-        if (item) {
-            QString fullFilePath = QDir(m_rootPath).filePath(item->text());
-            qInfo() << "Translating file:" << fullFilePath;
+    Translator::setRequestInterrupted(false);
+    ui->pushButtonStart->setEnabled(false);
+    ui->pushButtonStop->setEnabled(true);
+    m_translators.clear();
+
+    auto tsFileViews = gTsFileMgr.tsFileViews();
+    for (TsFileView *view : tsFileViews) {
+        TsFile *tsFile = view->tsFile();
+        auto tsItems = tsFile->tsItems();
+        for (TsItem *item : tsItems) {
+            if (item->isFinishedTranslation()) {
+                continue;
+            }
+
+            if (!item->isSource()) {
+                continue;
+            }
+
+            QString sourceText = item->cookedText();
+            QString fromLanguage = ui->comboBoxLanguage->currentData().toString();
+            QString toLanguage = tsFile->targetLanguage();
+
+            Translator *translator = new Translator(fromLanguage,
+                                                    toLanguage,
+                                                    tsFile->filePath(),
+                                                    sourceText,
+                                                    item->lineNumber());
+            m_translators.append(translator);
+            QThreadPool::globalInstance()->start(translator);
         }
     }
 }
 
 void MainWindow::onStopButtonClicked()
 {
-    // Stop button clicked logic
+    ui->pushButtonStop->setEnabled(false);
+    Translator::setRequestInterrupted(true);
+    QThreadPool::globalInstance()->waitForDone();
+    ui->pushButtonStart->setEnabled(true);
 }
 
 void MainWindow::onBrowseButtonClicked()
@@ -93,52 +133,57 @@ void MainWindow::onBrowseButtonClicked()
 
 void MainWindow::onRemoveButtonClicked()
 {
-    QListWidgetItem *item = ui->listWidget->currentItem();
-    if (!item) {
+    QModelIndex index = ui->tableView->currentIndex();
+    if (!index.isValid()) {
         QMessageBox::warning(this, tr("Warning"), tr("Please select an item to remove."));
         return;
     }
 
-    int ret = QMessageBox::question(this,
-                                    tr("Confirm Removal"),
-                                    tr("Are you sure you want to remove the selected item?"),
-                                    QMessageBox::Yes | QMessageBox::No);
-    if (ret == QMessageBox::Yes) {
-        ui->listWidget->removeItemWidget(item);
-        delete item;
-    }
-}
-
-void MainWindow::onListWidgetItemDoubleClicked(QListWidgetItem *item)
-{
-    if (!item) {
+    int ret = QMessageBox::question(
+        this,
+        tr("Confirm Removal"),
+        tr("Are you sure you want to remove the selected translation file?"),
+        QMessageBox::Yes | QMessageBox::No);
+    if (ret != QMessageBox::Yes) {
         return;
     }
 
-    int row = ui->listWidget->row(item);
-    qInfo() << "Double-clicked item at row:" << row << "with text:" << item->text();
+    int row = index.row();
+    TsFileView *tsFileView = gTsFileMgr.tsFileViewAt(row);
+    if (tsFileView) {
+        ui->tabWidget->removeTab(ui->tabWidget->indexOf(tsFileView));
+    }
+
+    gTsFileMgr.removeRows(row, 1);
+}
+
+void MainWindow::onViewDoubleClicked(const QModelIndex &index)
+{
+    if (!index.isValid()) {
+        return;
+    }
+
+    int row = index.row();
+    int tabIndex = row + 1;
+    if (tabIndex < ui->tabWidget->count()) {
+        ui->tabWidget->setCurrentIndex(tabIndex);
+    }
 }
 
 void MainWindow::loadTranslationFiles(const QString &dir)
 {
-    ui->listWidget->clear();
-    QDir directory(dir);
-    directory.setNameFilters(QStringList() << "*.ts");
-    QFileInfoList fileInfoList = directory.entryInfoList(QDir::Files | QDir::NoDotAndDotDot);
-    if (fileInfoList.isEmpty()) {
-        return;
+    for (int i = 1; i < ui->tabWidget->count(); ++i) {
+        QWidget *tab = ui->tabWidget->widget(i);
+        if (tab) {
+            ui->tabWidget->removeTab(i);
+            --i;
+        }
     }
 
-    while (!m_tsFiles.isEmpty()) {
-        TsFile *tsFile = m_tsFiles.takeFirst();
-        tsFile->deleteLater();
-    }
+    gTsFileMgr.loadTranslationFiles(dir);
 
-    for (const QFileInfo &info : std::as_const(fileInfoList)) {
-        ui->listWidget->addItem(info.fileName());
-        TsFile *tsFile = new TsFile(info.absoluteFilePath(), this);
-        m_tsFiles.append(tsFile);
+    const QList<TsFileView *> tsFileViews = gTsFileMgr.tsFileViews();
+    for (TsFileView *view : tsFileViews) {
+        ui->tabWidget->addTab(view, view->windowTitle());
     }
-
-    ui->listWidget->setCurrentRow(0);
 }

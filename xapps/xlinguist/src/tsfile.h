@@ -10,10 +10,26 @@
 
 #include <QStandardItemModel>
 
+#include "tsitem.h"
+
+#define TS_FILE_ITEM_ROLE (Qt::UserRole + 1)
+
 class TsFile : public QStandardItemModel
 {
     Q_OBJECT
 public:
     explicit TsFile(const QString &filePath, QObject *parent = nullptr);
     ~TsFile() override;
+
+    QString baseName() const;
+    QString targetLanguage() const;
+    QString translationStatus() const;
+    QString filePath() const;
+
+    QList<TsItem *> tsItems() const;
+    void updateTranslation(const QString &translation, int sourceLineNumber);
+
+private:
+    QString m_filePath;
+    QString m_targetLanguage;
 };

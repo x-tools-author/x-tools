@@ -10,10 +10,18 @@
 
 #include <QListView>
 
+class TsFile;
+class TsFileFilter;
 class TsFileView : public QListView
 {
     Q_OBJECT
 public:
-    explicit TsFileView(QWidget *parent = nullptr);
+    explicit TsFileView(const QString &filePath, QWidget *parent = nullptr);
     ~TsFileView() override;
+
+    TsFile *tsFile() const;
+
+private:
+    TsFile *m_tsFile{nullptr};
+    TsFileFilter *m_filterModel{nullptr};
 };

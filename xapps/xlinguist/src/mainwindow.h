@@ -17,12 +17,16 @@ class MainWindow;
 }
 
 class TsFile;
+class Translator;
 class MainWindow : public xUi
 {
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     struct SettingKeys
@@ -33,14 +37,14 @@ private:
 private:
     Ui::MainWindow *ui;
     QString m_rootPath;
-    QList<TsFile *> m_tsFiles;
+    QList<Translator *> m_translators;
 
 private:
     void onStartButtonClicked();
     void onStopButtonClicked();
     void onBrowseButtonClicked();
     void onRemoveButtonClicked();
-    void onListWidgetItemDoubleClicked(QListWidgetItem *item);
+    void onViewDoubleClicked(const QModelIndex &index);
 
     void loadTranslationFiles(const QString &dir);
 };

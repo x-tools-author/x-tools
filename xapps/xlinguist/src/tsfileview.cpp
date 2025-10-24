@@ -8,8 +8,27 @@
  **************************************************************************************************/
 #include "tsfileview.h"
 
-TsFileView::TsFileView(QWidget *parent)
+#include <QFileInfo>
+
+#include "tsfile.h"
+#include "tsfilefilter.h"
+
+TsFileView::TsFileView(const QString &filePath, QWidget *parent)
     : QListView(parent)
-{}
+{
+    QFileInfo fileInfo(filePath);
+    this->setWindowTitle(fileInfo.fileName());
+
+    m_tsFile = new TsFile(filePath, this);
+    m_filterModel = new TsFileFilter(this);
+    m_filterModel->setSourceModel(m_tsFile);
+    this->setModel(m_filterModel);
+    this->setAlternatingRowColors(true);
+}
 
 TsFileView::~TsFileView() {}
+
+TsFile *TsFileView::tsFile() const
+{
+    return m_tsFile;
+}
