@@ -33,19 +33,22 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
     ui->tableView->verticalHeader()->hide();
     ui->pushButtonStop->setEnabled(false);
+    ui->comboBoxEngine->addItem(tr("Google Translate"), "google");
+    ui->comboBoxLanguage->addItem(tr("Auto"), QString("auto"));
+    ui->comboBoxLanguage->setMaxVisibleItems(50);
+    ui->tableView->setModel(&TsFileManager::instance());
 
+    setWindowTitle(QString("xLinguist") + QString(" - ") + tr("A Translation Assistant"));
     connect(ui->pushButtonStart, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
     connect(ui->pushButtonStop, &QPushButton::clicked, this, &MainWindow::onStopButtonClicked);
     connect(ui->pushButtonBrowse, &QPushButton::clicked, this, &MainWindow::onBrowseButtonClicked);
     connect(ui->pushButtonRemove, &QPushButton::clicked, this, &MainWindow::onRemoveButtonClicked);
     connect(ui->tableView, &QTableView::doubleClicked, this, &MainWindow::onViewDoubleClicked);
 
-    m_rootPath = xAPP->value(m_keys.lastOpenedDirectory, QDir::currentPath()).toString();
-    loadTranslationFiles(m_rootPath);
+    m_checkThreadPoolTimer = new QTimer(this);
+    m_checkThreadPoolTimer->setInterval(1000);
+    connect(m_checkThreadPoolTimer, &QTimer::timeout, this, &MainWindow::onCheckThreadPoolTimeout);
 
-    ui->comboBoxEngine->addItem(tr("Google Translate"), "google");
-    ui->comboBoxLanguage->addItem(tr("Auto"), QString("auto"));
-    ui->comboBoxLanguage->setMaxVisibleItems(50);
 #if 0
     QMetaEnum territoryEnum = QMetaEnum::fromType<QLocale::Territory>();
     ui->comboBoxLanguage->insertSeparator(1);
@@ -61,8 +64,9 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
 #endif
-    ui->tableView->setModel(&TsFileManager::instance());
-    setWindowTitle(QString("xLinguist") + QString(" - ") + tr("A Translation Assistant"));
+
+    m_rootPath = xAPP->value(m_keys.lastOpenedDirectory, QDir::currentPath()).toString();
+    loadTranslationFiles(m_rootPath);
 }
 
 MainWindow::~MainWindow()
@@ -99,7 +103,6 @@ void MainWindow::onStartButtonClicked()
             QString sourceText = item->cookedText();
             QString fromLanguage = ui->comboBoxLanguage->currentData().toString();
             QString toLanguage = tsFile->targetLanguage();
-
             Translator *translator = new Translator(fromLanguage,
                                                     toLanguage,
                                                     tsFile->filePath(),
@@ -109,10 +112,13 @@ void MainWindow::onStartButtonClicked()
             QThreadPool::globalInstance()->start(translator);
         }
     }
+
+    m_checkThreadPoolTimer->start();
 }
 
 void MainWindow::onStopButtonClicked()
 {
+    m_checkThreadPoolTimer->stop();
     ui->pushButtonStop->setEnabled(false);
     Translator::setRequestInterrupted(true);
     QThreadPool::globalInstance()->waitForDone();
@@ -150,8 +156,9 @@ void MainWindow::onRemoveButtonClicked()
 
     int row = index.row();
     TsFileView *tsFileView = gTsFileMgr.tsFileViewAt(row);
-    if (tsFileView) {
-        ui->tabWidget->removeTab(ui->tabWidget->indexOf(tsFileView));
+    int tabIndex = ui->tabWidget->indexOf(tsFileView);
+    if (tsFileView && tabIndex != -1) {
+        ui->tabWidget->removeTab(tabIndex);
     }
 
     gTsFileMgr.removeRows(row, 1);
@@ -167,6 +174,13 @@ void MainWindow::onViewDoubleClicked(const QModelIndex &index)
     int tabIndex = row + 1;
     if (tabIndex < ui->tabWidget->count()) {
         ui->tabWidget->setCurrentIndex(tabIndex);
+    }
+}
+
+void MainWindow::onCheckThreadPoolTimeout()
+{
+    if (QThreadPool::globalInstance()->activeThreadCount() == 0) {
+        onStopButtonClicked();
     }
 }
 

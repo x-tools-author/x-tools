@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QListWidgetItem>
+#include <QTimer>
 
 #include "x/xui.h"
 
@@ -38,6 +39,7 @@ private:
     Ui::MainWindow *ui;
     QString m_rootPath;
     QList<Translator *> m_translators;
+    QTimer *m_checkThreadPoolTimer{nullptr};
 
 private:
     void onStartButtonClicked();
@@ -45,6 +47,7 @@ private:
     void onBrowseButtonClicked();
     void onRemoveButtonClicked();
     void onViewDoubleClicked(const QModelIndex &index);
+    void onCheckThreadPoolTimeout();
 
     void loadTranslationFiles(const QString &dir);
 };
