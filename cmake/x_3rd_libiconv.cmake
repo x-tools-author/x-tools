@@ -34,7 +34,8 @@ if(ANDROID
 endif()
 
 if(WIN32)
-  set(file_name "v1.17-p1")
+  set(iconv_version "1.18")
+  set(file_name "v${iconv_version}")
   set(file_suffix "zip")
   set(file_url
       "https://github.com/kiyolee/libiconv-win-build/archive/refs/tags/${file_name}.${file_suffix}")
@@ -62,7 +63,7 @@ if(NOT EXISTS ${CMAKE_SOURCE_DIR}/3rd/${file_name})
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${file_name}.${file_suffix}
                   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/3rd)
   if(WIN32)
-    set(tmp_dir libiconv-win-build-1.17-p1)
+    set(tmp_dir libiconv-win-build-${iconv_version})
     execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${tmp_dir} ${file_name}
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/3rd)
   endif()
