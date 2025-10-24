@@ -44,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButtonBrowse, &QPushButton::clicked, this, &MainWindow::onBrowseButtonClicked);
     connect(ui->pushButtonRemove, &QPushButton::clicked, this, &MainWindow::onRemoveButtonClicked);
     connect(ui->tableView, &QTableView::doubleClicked, this, &MainWindow::onViewDoubleClicked);
+    connect(ui->pushButtonOpen, &QPushButton::clicked, this, &MainWindow::onOpenButtonClicked);
 
     m_checkThreadPoolTimer = new QTimer(this);
     m_checkThreadPoolTimer->setInterval(1000);
@@ -66,7 +67,8 @@ MainWindow::MainWindow(QWidget *parent)
 #endif
 
     m_rootPath = xAPP->value(m_keys.lastOpenedDirectory, QDir::currentPath()).toString();
-    loadTranslationFiles(m_rootPath);
+    m_lastOpenedFile = xAPP->value(m_keys.lastOpenedFile, QString()).toString();
+    loadTranslationFiles(m_rootPath, m_lastOpenedFile);
 }
 
 MainWindow::~MainWindow()
@@ -137,6 +139,22 @@ void MainWindow::onBrowseButtonClicked()
     loadTranslationFiles(m_rootPath);
 }
 
+void MainWindow::onOpenButtonClicked()
+{
+    QString filePath = QFileDialog::getOpenFileName(this,
+                                                    tr("Open Translation File"),
+                                                    m_rootPath,
+                                                    tr("Translation Files (*.ts)"));
+    if (filePath.isEmpty()) {
+        return;
+    }
+
+    m_lastOpenedFile = filePath;
+    xAPP->setValue(m_keys.lastOpenedFile, m_lastOpenedFile);
+    QFileInfo fileInfo(m_lastOpenedFile);
+    loadTranslationFiles(fileInfo.absolutePath(), m_lastOpenedFile);
+}
+
 void MainWindow::onRemoveButtonClicked()
 {
     QModelIndex index = ui->tableView->currentIndex();
@@ -184,7 +202,7 @@ void MainWindow::onCheckThreadPoolTimeout()
     }
 }
 
-void MainWindow::loadTranslationFiles(const QString &dir)
+void MainWindow::loadTranslationFiles(const QString &dir, const QString &specifiedFile)
 {
     for (int i = 1; i < ui->tabWidget->count(); ++i) {
         QWidget *tab = ui->tabWidget->widget(i);
@@ -194,7 +212,7 @@ void MainWindow::loadTranslationFiles(const QString &dir)
         }
     }
 
-    gTsFileMgr.loadTranslationFiles(dir);
+    gTsFileMgr.loadTranslationFiles(dir, specifiedFile);
 
     const QList<TsFileView *> tsFileViews = gTsFileMgr.tsFileViews();
     for (TsFileView *view : tsFileViews) {

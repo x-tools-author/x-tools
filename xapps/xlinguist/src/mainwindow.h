@@ -33,11 +33,13 @@ private:
     struct SettingKeys
     {
         const QString lastOpenedDirectory{"xLinguist/last_opened_directory"};
+        const QString lastOpenedFile{"xLinguist/last_opened_file"};
     } m_keys;
 
 private:
     Ui::MainWindow *ui;
     QString m_rootPath;
+    QString m_lastOpenedFile;
     QList<Translator *> m_translators;
     QTimer *m_checkThreadPoolTimer{nullptr};
 
@@ -45,9 +47,10 @@ private:
     void onStartButtonClicked();
     void onStopButtonClicked();
     void onBrowseButtonClicked();
+    void onOpenButtonClicked();
     void onRemoveButtonClicked();
     void onViewDoubleClicked(const QModelIndex &index);
     void onCheckThreadPoolTimeout();
 
-    void loadTranslationFiles(const QString &dir);
+    void loadTranslationFiles(const QString &dir, const QString &specifiedFile = QString());
 };

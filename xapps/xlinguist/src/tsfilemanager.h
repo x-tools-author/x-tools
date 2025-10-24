@@ -27,7 +27,7 @@ public:
     static TsFileManager &instance();
     TsFileView *tsFileViewAt(int index) const;
     QList<TsFileView *> tsFileViews() const;
-    void loadTranslationFiles(const QString &dir);
+    void loadTranslationFiles(const QString &dir, const QString &specifiedFile = QString());
 
     void updateTranslation(const QString &file, const QString &translation, int sourceLineNumber);
 

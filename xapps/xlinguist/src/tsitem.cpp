@@ -72,6 +72,15 @@ int TsItem::lineNumber() const
     return m_lineNumber;
 }
 
+void TsItem::updateTranslation(const QString &translation)
+{
+    // translation as: <translation type="unfinished"></translation>
+    // translation as: <translation>翻译引擎</translation>
+    QString left = m_text.left(m_text.indexOf('<'));
+    QString tmp = left + "<translation>" + translation + "</translation>";
+    m_text = tmp;
+}
+
 TsItem *TsItem::preTsItem() const
 {
     return m_preTsItem;

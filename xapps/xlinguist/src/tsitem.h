@@ -22,6 +22,7 @@ public:
     QString text() const;
     QString cookedText() const;
     int lineNumber() const;
+    void updateTranslation(const QString &translation);
 
     TsItem *preTsItem() const;
     TsItem *nextTsItem() const;

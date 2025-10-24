@@ -44,7 +44,7 @@ QList<TsFileView *> TsFileManager::tsFileViews() const
     return m_tsFileViews;
 }
 
-void TsFileManager::loadTranslationFiles(const QString &dir)
+void TsFileManager::loadTranslationFiles(const QString &dir, const QString &specifiedFile)
 {
     beginResetModel();
     while (!m_tsFileViews.isEmpty()) {
@@ -61,6 +61,10 @@ void TsFileManager::loadTranslationFiles(const QString &dir)
     }
 
     for (const QFileInfo &info : std::as_const(fileInfoList)) {
+        if (!specifiedFile.isEmpty() && info.absoluteFilePath() != specifiedFile) {
+            continue;
+        }
+
         TsFileView *tsFileView = new TsFileView(info.absoluteFilePath());
         m_tsFileViews.append(tsFileView);
     }

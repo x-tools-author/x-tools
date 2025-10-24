@@ -30,6 +30,12 @@ public:
     void updateTranslation(const QString &translation, int sourceLineNumber);
 
 private:
+    Q_SIGNAL void invokeUpdateTranslation(const QString &translation, int sourceLineNumber);
+
+private:
     QString m_filePath;
     QString m_targetLanguage;
+
+private:
+    void updateTranslationThreadSafe(const QString &translation, int sourceLineNumber);
 };
