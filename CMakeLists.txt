@@ -20,18 +20,20 @@ endif()
 # cmake-format: off
 # Project settings
 project(xTools VERSION 7.0 LANGUAGES C CXX DESCRIPTION "xTools - All in one toolbox for developers and engineers.")
+# cmake-format: on
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-# cmake-format: on
 
-# --------------------------------------------------------------------------------------------------
-# Some options for 3rd party libraries
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
 # cmake-format: off
 set(WITH_GFLAGS OFF)
 set(BUILD_TESTING OFF)
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "Reset option" FORCE)
 set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Reset option" FORCE)
 # cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
@@ -65,10 +67,6 @@ list(APPEND X_QT_COMPONENTS Core)
 list(APPEND X_QT_COMPONENTS Widgets)
 list(APPEND X_QT_COMPONENTS Network)
 list(APPEND X_QT_COMPONENTS LinguistTools)
-
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
 
 # Qt6 is preferred, but Qt5 is also supported
 find_package(QT NAMES Qt5 Qt6 REQUIRED)
