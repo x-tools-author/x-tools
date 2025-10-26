@@ -13,3 +13,22 @@ TsFileItemDelegate::TsFileItemDelegate(QObject *parent)
 {}
 
 TsFileItemDelegate::~TsFileItemDelegate() {}
+
+QWidget *TsFileItemDelegate::createEditor(QWidget *parent,
+                                          const QStyleOptionViewItem &option,
+                                          const QModelIndex &index) const
+{
+    return QStyledItemDelegate::createEditor(parent, option, index);
+}
+
+void TsFileItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
+{
+    QStyledItemDelegate::setEditorData(editor, index);
+}
+
+void TsFileItemDelegate::setModelData(QWidget *editor,
+                                      QAbstractItemModel *model,
+                                      const QModelIndex &index) const
+{
+    QStyledItemDelegate::setModelData(editor, model, index);
+}

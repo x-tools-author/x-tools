@@ -12,10 +12,13 @@
 
 #include "tsfile.h"
 #include "tsfilefilter.h"
+#include "tsfileitemdelegate.h"
 
 TsFileView::TsFileView(const QString &filePath, QWidget *parent)
     : QListView(parent)
 {
+    setItemDelegateForColumn(0, new TsFileItemDelegate(this));
+
     QFileInfo fileInfo(filePath);
     this->setWindowTitle(fileInfo.fileName());
 
