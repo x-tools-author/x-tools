@@ -51,6 +51,7 @@ private:
     void onRemoveButtonClicked();
     void onViewDoubleClicked(const QModelIndex &index);
     void onCheckThreadPoolTimeout();
+    void onSavePushButtonClicked();
 
     void loadTranslationFiles(const QString &dir, const QString &specifiedFile = QString());
 };

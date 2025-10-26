@@ -11,6 +11,7 @@
 
 #include <QFileDialog>
 #include <QLocale>
+#include <QMenuBar>
 #include <QMessageBox>
 #include <QMetaEnum>
 #include <QThreadPool>
@@ -45,6 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButtonRemove, &QPushButton::clicked, this, &MainWindow::onRemoveButtonClicked);
     connect(ui->tableView, &QTableView::doubleClicked, this, &MainWindow::onViewDoubleClicked);
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &MainWindow::onOpenButtonClicked);
+    connect(ui->pushButtonSave, &QPushButton::clicked, this, &MainWindow::onSavePushButtonClicked);
 
     m_checkThreadPoolTimer = new QTimer(this);
     m_checkThreadPoolTimer->setInterval(1000);
@@ -69,6 +71,21 @@ MainWindow::MainWindow(QWidget *parent)
     m_rootPath = xAPP->value(m_keys.lastOpenedDirectory, QDir::currentPath()).toString();
     m_lastOpenedFile = xAPP->value(m_keys.lastOpenedFile, QString()).toString();
     loadTranslationFiles(m_rootPath, m_lastOpenedFile);
+
+    QMenu *fileMenu = new QMenu(tr("File"), this);
+    menuBar()->insertMenu(m_optionMenu->menuAction(), fileMenu);
+    // clang-format off
+    fileMenu->addAction(ui->pushButtonSave->text(), this, &MainWindow::onSavePushButtonClicked, QKeySequence::Save);
+    fileMenu->addSeparator();
+    fileMenu->addAction(ui->pushButtonOpen->text(), this, &MainWindow::onOpenButtonClicked, QKeySequence::Open);
+    fileMenu->addAction(ui->pushButtonBrowse->text(), this, &MainWindow::onBrowseButtonClicked, QKeySequence::New);
+    fileMenu->addSeparator();
+    fileMenu->addAction(ui->pushButtonRemove->text(), this, &MainWindow::onRemoveButtonClicked, QKeySequence::Delete);
+    fileMenu->addAction(ui->pushButtonStart->text(), this, &MainWindow::onStartButtonClicked, QKeySequence::Refresh);
+    fileMenu->addAction(ui->pushButtonStop->text(), this, &MainWindow::onStopButtonClicked, QKeySequence::Cancel);
+    fileMenu->addSeparator();
+    fileMenu->addAction(tr("Exit"), this, &QWidget::close, QKeySequence::Quit);
+    // clang-format on
 }
 
 MainWindow::~MainWindow()
@@ -84,6 +101,10 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::onStartButtonClicked()
 {
+    if (QThreadPool::globalInstance()->activeThreadCount() > 0) {
+        return;
+    }
+
     Translator::setRequestInterrupted(false);
     ui->pushButtonStart->setEnabled(false);
     ui->pushButtonStop->setEnabled(true);
@@ -201,6 +222,8 @@ void MainWindow::onCheckThreadPoolTimeout()
         onStopButtonClicked();
     }
 }
+
+void MainWindow::onSavePushButtonClicked() {}
 
 void MainWindow::loadTranslationFiles(const QString &dir, const QString &specifiedFile)
 {

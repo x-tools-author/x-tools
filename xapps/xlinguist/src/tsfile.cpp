@@ -123,30 +123,29 @@ void TsFile::updateTranslation(const QString &translation, int sourceLineNumber)
 
 void TsFile::updateTranslationThreadSafe(const QString &translation, int sourceLineNumber)
 {
-    QStandardItem *sourceItem = this->item(sourceLineNumber - 1);
+    int srcLineIndex = sourceLineNumber - 1;
+    QStandardItem *sourceItem = this->item(srcLineIndex);
     if (!sourceItem) {
         qWarning() << "No standard item found for line number:" << sourceLineNumber;
         return;
     }
 
-    TsItem *sourceTsItem = static_cast<TsItem *>(
-        sourceItem->data(TS_FILE_ITEM_ROLE).value<void *>());
-    if (!sourceTsItem) {
+    TsItem *srcTsItem = static_cast<TsItem *>(sourceItem->data(TS_FILE_ITEM_ROLE).value<void *>());
+    if (!srcTsItem) {
         qWarning() << "No TsItem found for line number:" << sourceLineNumber;
         return;
     }
 
-    TsItem *translationItem = sourceTsItem->nextTsItem();
+    TsItem *translationItem = srcTsItem->nextTsItem();
     if (!(translationItem && translationItem->isTranslation())) {
         qWarning() << "No translation item found for source line number:" << sourceLineNumber;
         return;
     }
 
     translationItem->updateTranslation(translation);
-    QStandardItem *stdTranslationItem = this->item(sourceLineNumber + 1); // next line
+    QStandardItem *stdTranslationItem = this->item(srcLineIndex + 1); // next line
     if (!stdTranslationItem) {
-        qWarning() << "No standard translation item found for line number:"
-                   << (sourceLineNumber + 1);
+        qWarning() << "No standard translation item found for line number:" << (srcLineIndex + 1);
         return;
     }
 
