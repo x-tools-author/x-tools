@@ -13,3 +13,30 @@ TsDictionary::TsDictionary(QObject *parent)
 {}
 
 TsDictionary::~TsDictionary() {}
+
+int TsDictionary::rowCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent);
+    return 0;
+}
+
+int TsDictionary::columnCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent);
+    return 0;
+}
+
+QVariant TsDictionary::data(const QModelIndex &index, int role) const
+{
+    Q_UNUSED(index);
+    Q_UNUSED(role);
+    return QVariant();
+}
+
+bool TsDictionary::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    Q_UNUSED(index);
+    Q_UNUSED(value);
+    Q_UNUSED(role);
+    return false;
+}
