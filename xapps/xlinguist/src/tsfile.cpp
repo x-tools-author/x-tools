@@ -104,6 +104,28 @@ QString TsFile::filePath() const
     return m_filePath;
 }
 
+bool TsFile::saveToFile(const QString &filePath)
+{
+    QString savePath = filePath;
+    if (savePath.isEmpty()) {
+        savePath = m_filePath;
+    }
+
+    QFile file(savePath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
+        qWarning() << "Failed to open file for writing:" << savePath;
+        return false;
+    }
+
+    QTextStream out(&file);
+    for (int row = 0; row < this->rowCount(); ++row) {
+        QStandardItem *item = this->item(row);
+        out << item->text() << Qt::endl;
+    }
+    file.close();
+    return true;
+}
+
 QList<TsItem *> TsFile::tsItems() const
 {
     QList<TsItem *> itemList;

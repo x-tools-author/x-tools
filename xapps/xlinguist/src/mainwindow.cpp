@@ -223,7 +223,16 @@ void MainWindow::onCheckThreadPoolTimeout()
     }
 }
 
-void MainWindow::onSavePushButtonClicked() {}
+void MainWindow::onSavePushButtonClicked()
+{
+    QList<TsFileView *> tsFileViews = gTsFileMgr.tsFileViews();
+    for (TsFileView *view : tsFileViews) {
+        TsFile *tsFile = view->tsFile();
+        if (!tsFile->saveToFile()) {
+            qInfo() << "Failed to save file:" << tsFile->filePath();
+        }
+    }
+}
 
 void MainWindow::loadTranslationFiles(const QString &dir, const QString &specifiedFile)
 {

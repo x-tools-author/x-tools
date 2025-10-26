@@ -25,6 +25,7 @@ public:
     QString targetLanguage() const;
     QString translationStatus() const;
     QString filePath() const;
+    bool saveToFile(const QString &filePath = QString());
 
     QList<TsItem *> tsItems() const;
     void updateTranslation(const QString &translation, int sourceLineNumber);
