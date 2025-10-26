@@ -20,6 +20,7 @@
 #include "x/xapp.h"
 
 #include "translator.h"
+#include "tsdictionaryview.h"
 #include "tsfile.h"
 #include "tsfilemanager.h"
 #include "tsfileview.h"
@@ -38,6 +39,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBoxLanguage->addItem(tr("Auto"), QString("auto"));
     ui->comboBoxLanguage->setMaxVisibleItems(50);
     ui->tableView->setModel(&TsFileManager::instance());
+
+    m_dictionaryView = new TsDictionaryView(this);
+    ui->tabWidget->addTab(m_dictionaryView, tr("Dictionary"));
 
     setWindowTitle(QString("xLinguist") + QString(" - ") + tr("A Translation Assistant"));
     connect(ui->pushButtonStart, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
@@ -236,7 +240,7 @@ void MainWindow::onSavePushButtonClicked()
 
 void MainWindow::loadTranslationFiles(const QString &dir, const QString &specifiedFile)
 {
-    for (int i = 1; i < ui->tabWidget->count(); ++i) {
+    for (int i = 2; i < ui->tabWidget->count(); ++i) {
         QWidget *tab = ui->tabWidget->widget(i);
         if (tab) {
             ui->tabWidget->removeTab(i);

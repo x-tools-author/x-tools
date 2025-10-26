@@ -19,6 +19,7 @@ class MainWindow;
 
 class TsFile;
 class Translator;
+class TsDictionaryView;
 class MainWindow : public xUi
 {
     Q_OBJECT
@@ -42,6 +43,7 @@ private:
     QString m_lastOpenedFile;
     QList<Translator *> m_translators;
     QTimer *m_checkThreadPoolTimer{nullptr};
+    TsDictionaryView *m_dictionaryView{nullptr};
 
 private:
     void onStartButtonClicked();
