@@ -68,62 +68,67 @@
         <translation>浏览</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="37"/>
+        <location filename="../../src/mainwindow.cpp" line="38"/>
         <source>Google Translate</source>
         <translation>谷歌翻译</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="38"/>
+        <location filename="../../src/mainwindow.cpp" line="39"/>
         <source>Auto</source>
         <translation>汽车</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="42"/>
+        <location filename="../../src/mainwindow.cpp" line="44"/>
+        <source>Dictionary</source>
+        <translation>字典</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="46"/>
         <source>A Translation Assistant</source>
         <translation>翻译助理</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="75"/>
+        <location filename="../../src/mainwindow.cpp" line="79"/>
         <source>File</source>
         <translation>文件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="87"/>
+        <location filename="../../src/mainwindow.cpp" line="91"/>
         <source>Exit</source>
         <translation>出口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="154"/>
+        <location filename="../../src/mainwindow.cpp" line="158"/>
         <source>Select Directory</source>
         <translation>选择目录</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="166"/>
+        <location filename="../../src/mainwindow.cpp" line="170"/>
         <source>Open Translation File</source>
         <translation>打开翻译文件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="168"/>
+        <location filename="../../src/mainwindow.cpp" line="172"/>
         <source>Translation Files (*.ts)</source>
         <translation>翻译文件 (*.ts)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="183"/>
+        <location filename="../../src/mainwindow.cpp" line="187"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="183"/>
+        <location filename="../../src/mainwindow.cpp" line="187"/>
         <source>Please select an item to remove.</source>
         <translation>请选择要删除的项目。</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="189"/>
+        <location filename="../../src/mainwindow.cpp" line="193"/>
         <source>Confirm Removal</source>
         <translation>确认删除</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="190"/>
+        <location filename="../../src/mainwindow.cpp" line="194"/>
         <source>Are you sure you want to remove the selected translation file?</source>
         <translation>您确定要删除选定的翻译文件吗？</translation>
     </message>
@@ -271,6 +276,14 @@
         <location filename="../../../../src/common/xtools.cpp" line="868"/>
         <source>Unidirectional</source>
         <translation>单向</translation>
+    </message>
+</context>
+<context>
+    <name>TsDictionaryView</name>
+    <message>
+        <location filename="../../src/tsdictionaryview.ui" line="35"/>
+        <source>Filter</source>
+        <translation>筛选</translation>
     </message>
 </context>
 <context>

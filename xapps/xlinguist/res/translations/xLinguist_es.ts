@@ -64,62 +64,67 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="37"/>
+        <location filename="../../src/mainwindow.cpp" line="38"/>
         <source>Google Translate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="38"/>
+        <location filename="../../src/mainwindow.cpp" line="39"/>
         <source>Auto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="42"/>
+        <location filename="../../src/mainwindow.cpp" line="44"/>
+        <source>Dictionary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="46"/>
         <source>A Translation Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="75"/>
+        <location filename="../../src/mainwindow.cpp" line="79"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="87"/>
+        <location filename="../../src/mainwindow.cpp" line="91"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="154"/>
+        <location filename="../../src/mainwindow.cpp" line="158"/>
         <source>Select Directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="166"/>
+        <location filename="../../src/mainwindow.cpp" line="170"/>
         <source>Open Translation File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="168"/>
+        <location filename="../../src/mainwindow.cpp" line="172"/>
         <source>Translation Files (*.ts)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="183"/>
+        <location filename="../../src/mainwindow.cpp" line="187"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="183"/>
+        <location filename="../../src/mainwindow.cpp" line="187"/>
         <source>Please select an item to remove.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="189"/>
+        <location filename="../../src/mainwindow.cpp" line="193"/>
         <source>Confirm Removal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="190"/>
+        <location filename="../../src/mainwindow.cpp" line="194"/>
         <source>Are you sure you want to remove the selected translation file?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -266,6 +271,14 @@
     <message>
         <location filename="../../../../src/common/xtools.cpp" line="868"/>
         <source>Unidirectional</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TsDictionaryView</name>
+    <message>
+        <location filename="../../src/tsdictionaryview.ui" line="35"/>
+        <source>Filter</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
