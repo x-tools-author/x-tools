@@ -16,4 +16,12 @@ class TsDictionaryFilter : public QSortFilterProxyModel
 public:
     explicit TsDictionaryFilter(QObject *parent = nullptr);
     ~TsDictionaryFilter() override;
+
+    void setColumnsVisible(int column, bool visible);
+
+public:
+    bool filterAcceptsColumn(int sourceColumn, const QModelIndex &sourceParent) const override;
+
+private:
+    QSet<int> m_visibleColumns;
 };

@@ -14,6 +14,8 @@ namespace Ui {
 class TsDictionaryView;
 }
 
+class TsDictionary;
+class TsDictionaryFilter;
 class TsDictionaryView : public QWidget
 {
     Q_OBJECT
@@ -23,4 +25,13 @@ public:
 
 private:
     Ui::TsDictionaryView *ui;
+    TsDictionary *m_dictionaryModel{nullptr};
+    TsDictionaryFilter *m_dictionaryFilterModel{nullptr};
+
+private:
+    void onAddPushButtonClicked();
+    void onRemovePushButtonClicked();
+    void onImportPushButtonClicked();
+    void onExportPushButtonClicked();
+    void onFilterLineEditTextChanged(const QString &text);
 };

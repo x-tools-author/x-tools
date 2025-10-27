@@ -26,16 +26,73 @@
    <property name="bottomMargin">
     <number>4</number>
    </property>
-   <item row="1" column="0" colspan="2">
-    <widget class="QTableView" name="tableView"/>
+   <item row="0" column="5">
+    <widget class="QToolButton" name="toolButtonColumns">
+     <property name="toolTip">
+      <string>Columns visible settings</string>
+     </property>
+     <property name="text">
+      <string notr="true"/>
+     </property>
+    </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLineEdit" name="lineEdit">
+   <item row="0" column="1">
+    <widget class="QToolButton" name="toolButtonRemove">
+     <property name="toolTip">
+      <string>Remove an item</string>
+     </property>
+     <property name="text">
+      <string notr="true"/>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QToolButton" name="toolButtonImport">
+     <property name="toolTip">
+      <string>Import items</string>
+     </property>
+     <property name="text">
+      <string notr="true"/>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QToolButton" name="toolButtonExport">
+     <property name="toolTip">
+      <string>Export items</string>
+     </property>
+     <property name="text">
+      <string notr="true"/>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="6" colspan="2">
+    <widget class="QLineEdit" name="lineEditFilter">
      <property name="placeholderText">
       <string>Filter</string>
      </property>
      <property name="clearButtonEnabled">
       <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="8">
+    <widget class="QTableView" name="tableView"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QToolButton" name="toolButtonAdd">
+     <property name="toolTip">
+      <string>Add an item</string>
+     </property>
+     <property name="text">
+      <string notr="true"/>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
     </widget>
    </item>

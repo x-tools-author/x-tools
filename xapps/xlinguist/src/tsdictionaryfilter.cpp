@@ -13,3 +13,24 @@ TsDictionaryFilter::TsDictionaryFilter(QObject *parent)
 {}
 
 TsDictionaryFilter::~TsDictionaryFilter() {}
+
+void TsDictionaryFilter::setColumnsVisible(int column, bool visible)
+{
+    if (visible) {
+        m_visibleColumns.insert(column);
+    } else {
+        m_visibleColumns.remove(column);
+    }
+
+    invalidateFilter();
+}
+
+bool TsDictionaryFilter::filterAcceptsColumn(int sourceColumn, const QModelIndex &sourceParent) const
+{
+    Q_UNUSED(sourceParent);
+    if (sourceColumn == 0) {
+        return true;
+    }
+
+    return m_visibleColumns.contains(sourceColumn);
+}

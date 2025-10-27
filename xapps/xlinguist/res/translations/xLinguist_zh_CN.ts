@@ -36,7 +36,7 @@
     <message>
         <location filename="../../src/mainwindow.ui" line="79"/>
         <source>LogView</source>
-        <translation>日志查看器</translation>
+        <translation>日志预览</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.ui" line="97"/>
@@ -80,7 +80,7 @@
     <message>
         <location filename="../../src/mainwindow.cpp" line="44"/>
         <source>Dictionary</source>
-        <translation>字典</translation>
+        <translation>字典列表</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="46"/>
