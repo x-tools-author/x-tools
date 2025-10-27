@@ -30,7 +30,7 @@ QWidget *TsFileItemDelegate::createEditor(QWidget *parent,
         return nullptr;
     }
 
-    int lineIndex = index.row();
+    int lineIndex = tsFileFilter->mapToSource(index).row();
     const TsFile *tsFile = qobject_cast<const TsFile *>(tsFileFilter->sourceModel());
     TsItem *tsItem = tsFile->tsItemAtLine(lineIndex);
     if (!tsItem) {
@@ -58,7 +58,8 @@ void TsFileItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index
     const TsFile *tsFile = qobject_cast<const TsFile *>(tsFileFilter->sourceModel());
     QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
     if (lineEdit && tsFile) {
-        TsItem *tsItem = tsFile->tsItemAtLine(index.row());
+        int row = tsFileFilter->mapToSource(index).row();
+        TsItem *tsItem = tsFile->tsItemAtLine(row);
         if (tsItem) {
             lineEdit->setText(tsItem->translationText());
         }
@@ -78,7 +79,8 @@ void TsFileItemDelegate::setModelData(QWidget *editor,
     TsFile *tsFile = qobject_cast<TsFile *>(tsFileFilter->sourceModel());
     QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
     if (lineEdit && tsFile) {
-        TsItem *tsItem = tsFile->tsItemAtLine(index.row());
+        int row = tsFileFilter->mapToSource(index).row();
+        TsItem *tsItem = tsFile->tsItemAtLine(row);
         if (tsItem) {
             tsFile->updateTranslation(lineEdit->text(), tsItem->preTsItem()->lineNumber());
         }

@@ -127,11 +127,11 @@ void MainWindow::onStartButtonClicked()
         TsFile *tsFile = view->tsFile();
         auto tsItems = tsFile->tsItems();
         for (TsItem *item : tsItems) {
-            if (item->isFinishedTranslation()) {
+            if (!item->isSource()) {
                 continue;
             }
 
-            if (!item->isSource()) {
+            if (item->nextTsItem()->isFinishedTranslation()) {
                 continue;
             }
 
