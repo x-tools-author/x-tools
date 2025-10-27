@@ -13,7 +13,18 @@
 class TsFileFilter : public QSortFilterProxyModel
 {
     Q_OBJECT
+
 public:
     explicit TsFileFilter(QObject *parent = nullptr);
     ~TsFileFilter() override;
+
+public:
+    enum FilterType { AllItems, TranslationItems, UnfinishedItems };
+    void setFilterType(int type);
+
+protected:
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
+
+private:
+    FilterType m_filterType{AllItems};
 };

@@ -4,66 +4,71 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.ui" line="33"/>
+        <location filename="../../src/mainwindow.ui" line="140"/>
         <source>Ignore finished item</source>
         <translation>忽略已完成的语句</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="135"/>
+        <location filename="../../src/mainwindow.ui" line="100"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="153"/>
+        <location filename="../../src/mainwindow.ui" line="133"/>
         <source>Engine</source>
         <translation>引擎</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="59"/>
+        <location filename="../../src/mainwindow.ui" line="111"/>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="43"/>
+        <location filename="../../src/mainwindow.ui" line="61"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="66"/>
+        <location filename="../../src/mainwindow.ui" line="118"/>
         <source>Start</source>
         <translation>开始</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="79"/>
+        <location filename="../../src/mainwindow.ui" line="154"/>
         <source>LogView</source>
-        <translation>日志预览</translation>
+        <translation>日志输出</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="97"/>
+        <location filename="../../src/mainwindow.ui" line="167"/>
+        <source>Using dictionary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.ui" line="35"/>
         <source>Remove</source>
         <translation>消除</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="104"/>
+        <location filename="../../src/mainwindow.ui" line="42"/>
         <source>Open</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="128"/>
+        <location filename="../../src/mainwindow.ui" line="93"/>
         <source>File list</source>
         <translation>文件列表</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="160"/>
+        <location filename="../../src/mainwindow.ui" line="75"/>
         <source>Source Language</source>
         <translation>源语言</translation>
     </message>
     <message>
         <source>OpenFile</source>
-        <translation>打开文件</translation>
+        <translation type="vanished">打开文件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="111"/>
+        <location filename="../../src/mainwindow.ui" line="49"/>
         <source>Browse</source>
         <translation>浏览</translation>
     </message>
@@ -98,37 +103,37 @@
         <translation>出口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="158"/>
+        <location filename="../../src/mainwindow.cpp" line="166"/>
         <source>Select Directory</source>
         <translation>选择目录</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="170"/>
+        <location filename="../../src/mainwindow.cpp" line="178"/>
         <source>Open Translation File</source>
         <translation>打开翻译文件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="172"/>
+        <location filename="../../src/mainwindow.cpp" line="180"/>
         <source>Translation Files (*.ts)</source>
         <translation>翻译文件 (*.ts)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="187"/>
+        <location filename="../../src/mainwindow.cpp" line="195"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="187"/>
+        <location filename="../../src/mainwindow.cpp" line="195"/>
         <source>Please select an item to remove.</source>
         <translation>请选择要删除的项目。</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="193"/>
+        <location filename="../../src/mainwindow.cpp" line="201"/>
         <source>Confirm Removal</source>
         <translation>确认删除</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="194"/>
+        <location filename="../../src/mainwindow.cpp" line="202"/>
         <source>Are you sure you want to remove the selected translation file?</source>
         <translation>您确定要删除选定的翻译文件吗？</translation>
     </message>
@@ -279,11 +284,104 @@
     </message>
 </context>
 <context>
+    <name>TsDictionary</name>
+    <message>
+        <location filename="../../src/tsdictionary.cpp" line="127"/>
+        <source>Source Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TsDictionaryView</name>
     <message>
-        <location filename="../../src/tsdictionaryview.ui" line="35"/>
+        <location filename="../../src/tsdictionaryview.ui" line="32"/>
+        <source>Columns visible settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.ui" line="42"/>
+        <source>Remove an item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.ui" line="52"/>
+        <source>Import items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.ui" line="62"/>
+        <source>Export items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.ui" line="72"/>
         <source>Filter</source>
         <translation>筛选</translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.ui" line="85"/>
+        <source>Add an item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="79"/>
+        <source>Add New Dictionary Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="80"/>
+        <source>Source Text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="98"/>
+        <location filename="../../src/tsdictionaryview.cpp" line="104"/>
+        <source>Remove Dictionary Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="99"/>
+        <source>Please select an item to remove.</source>
+        <translation type="unfinished">请选择要删除的项目。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="105"/>
+        <source>Are you sure you want to remove the selected item?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="119"/>
+        <location filename="../../src/tsdictionaryview.cpp" line="130"/>
+        <source>Import Dictionary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="121"/>
+        <location filename="../../src/tsdictionaryview.cpp" line="147"/>
+        <source>Dictionary Files (*.json)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="131"/>
+        <source>Failed to open file for writing: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="145"/>
+        <location filename="../../src/tsdictionaryview.cpp" line="155"/>
+        <location filename="../../src/tsdictionaryview.cpp" line="167"/>
+        <source>Export Dictionary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="156"/>
+        <source>Failed to open file for reading: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsdictionaryview.cpp" line="168"/>
+        <source>Failed to parse JSON: %1 at offset %2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -302,6 +400,29 @@
         <location filename="../../src/tsfilemanager.cpp" line="151"/>
         <source>STATUS</source>
         <translation>地位</translation>
+    </message>
+</context>
+<context>
+    <name>TsFileView</name>
+    <message>
+        <location filename="../../src/tsfileview.ui" line="22"/>
+        <source>All items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsfileview.ui" line="32"/>
+        <source>Translation items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsfileview.ui" line="39"/>
+        <source>Unfinished items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tsfileview.ui" line="46"/>
+        <source>Filter</source>
+        <translation type="unfinished">筛选</translation>
     </message>
 </context>
 <context>

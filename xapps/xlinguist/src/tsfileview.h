@@ -32,6 +32,7 @@ private:
 
 private:
     void onAllItemsChecked(bool checked);
-    void onSourceItemsChecked(bool checked);
     void onTranslationItemsChecked(bool checked);
+    void onUnfinishedItemsChecked(bool checked);
+    void onFilterTextChanged(const QString &text);
 };

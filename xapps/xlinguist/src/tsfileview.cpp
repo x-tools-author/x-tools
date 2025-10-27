@@ -33,10 +33,19 @@ TsFileView::TsFileView(const QString &filePath, QWidget *parent)
     this->setWindowTitle(fileInfo.fileName());
 
     // clang-format off
-    connect(ui->checkBoxAll, &QCheckBox::clicked, this, &TsFileView::onAllItemsChecked);
-    connect(ui->checkBoxSource, &QCheckBox::clicked, this, &TsFileView::onSourceItemsChecked);
-    connect(ui->checkBoxTranslation, &QCheckBox::clicked, this, &TsFileView::onTranslationItemsChecked);
+    connect(ui->radioButtonAll, &QRadioButton::clicked, this, &TsFileView::onAllItemsChecked);
+    connect(ui->radioButtonTranslation, &QRadioButton::clicked, this, &TsFileView::onTranslationItemsChecked);
+    connect(ui->radioButtonUnfinished, &QRadioButton::clicked, this, &TsFileView::onUnfinishedItemsChecked);
+    connect(ui->lineEditFilter, &QLineEdit::textChanged, this, &TsFileView::onFilterTextChanged);
     // clang-format on
+
+    if (ui->radioButtonAll->isChecked()) {
+        onAllItemsChecked(true);
+    } else if (ui->radioButtonTranslation->isChecked()) {
+        onTranslationItemsChecked(true);
+    } else if (ui->radioButtonUnfinished->isChecked()) {
+        onUnfinishedItemsChecked(true);
+    }
 }
 
 TsFileView::~TsFileView()
@@ -49,8 +58,22 @@ TsFile *TsFileView::tsFile() const
     return m_tsFile;
 }
 
-void TsFileView::onAllItemsChecked(bool checked) {}
+void TsFileView::onAllItemsChecked(bool checked)
+{
+    m_filterModel->setFilterType(TsFileFilter::AllItems);
+}
 
-void TsFileView::onSourceItemsChecked(bool checked) {}
+void TsFileView::onTranslationItemsChecked(bool checked)
+{
+    m_filterModel->setFilterType(TsFileFilter::TranslationItems);
+}
 
-void TsFileView::onTranslationItemsChecked(bool checked) {}
+void TsFileView::onUnfinishedItemsChecked(bool checked)
+{
+    m_filterModel->setFilterType(TsFileFilter::UnfinishedItems);
+}
+
+void TsFileView::onFilterTextChanged(const QString &text)
+{
+    m_filterModel->setFilterFixedString(text);
+}

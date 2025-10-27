@@ -17,23 +17,26 @@
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QCheckBox" name="checkBoxAll">
+      <widget class="QRadioButton" name="radioButtonAll">
        <property name="text">
-        <string>All item</string>
+        <string>All items</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBoxSource">
+      <widget class="QRadioButton" name="radioButtonTranslation">
        <property name="text">
-        <string>Source item</string>
+        <string>Translation items</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBoxTranslation">
+      <widget class="QRadioButton" name="radioButtonUnfinished">
        <property name="text">
-        <string>Translatioin item</string>
+        <string>Unfinished items</string>
        </property>
       </widget>
      </item>
