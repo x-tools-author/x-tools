@@ -97,9 +97,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::load() {}
+
+void MainWindow::save()
+{
+    // Implementation moved from constructor
+}
+
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     onStopButtonClicked();
+    save();
     QMainWindow::closeEvent(event);
 }
 

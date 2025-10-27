@@ -9,6 +9,7 @@
 #include "tsitem.h"
 
 #include <QDebug>
+#include <QRegularExpression>
 
 TsItem::TsItem(const QString &filePath, int lineNumber, const QString &lineText, TsItem *preItem)
     : m_filePath(filePath)
@@ -79,6 +80,21 @@ void TsItem::updateTranslation(const QString &translation)
     QString left = m_text.left(m_text.indexOf('<'));
     QString tmp = left + "<translation>" + translation + "</translation>";
     m_text = tmp;
+}
+
+QString TsItem::translationText() const
+{
+    if (!isTranslation()) {
+        return QString();
+    }
+
+    QString tmp = m_text.trimmed(); // translation as: <translation type="unfinished"></translation>
+    static QRegularExpression regExp("<translation[^>]*>(.*)</translation>");
+    QRegularExpressionMatch match = regExp.match(tmp);
+    if (match.hasMatch()) {
+        return match.captured(1);
+    }
+    return QString();
 }
 
 TsItem *TsItem::preTsItem() const

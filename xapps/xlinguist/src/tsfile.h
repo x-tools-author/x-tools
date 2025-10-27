@@ -28,7 +28,9 @@ public:
     bool saveToFile(const QString &filePath = QString());
 
     QList<TsItem *> tsItems() const;
+    TsItem *tsItemAtLine(int lineIndex) const;
     void updateTranslation(const QString &translation, int sourceLineNumber);
+    Qt::ItemFlags flags(const QModelIndex &index) const override;
 
 private:
     Q_SIGNAL void invokeUpdateTranslation(const QString &translation, int sourceLineNumber);

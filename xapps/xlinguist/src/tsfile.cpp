@@ -138,9 +138,36 @@ QList<TsItem *> TsFile::tsItems() const
     return itemList;
 }
 
+TsItem *TsFile::tsItemAtLine(int lineIndex) const
+{
+    QStandardItem *item = this->item(lineIndex);
+    if (!item) {
+        return nullptr;
+    }
+
+    QVariant var = item->data(TS_FILE_ITEM_ROLE);
+    TsItem *tsItem = static_cast<TsItem *>(var.value<void *>());
+    return tsItem;
+}
+
 void TsFile::updateTranslation(const QString &translation, int sourceLineNumber)
 {
     emit invokeUpdateTranslation(translation, sourceLineNumber);
+}
+
+Qt::ItemFlags TsFile::flags(const QModelIndex &index) const
+{
+    auto flags = QStandardItemModel::flags(index);
+    QStandardItem *item = this->itemFromIndex(index);
+    if (item) {
+        TsItem *tsItem = static_cast<TsItem *>(item->data(TS_FILE_ITEM_ROLE).value<void *>());
+        if (tsItem && tsItem->isTranslation()) {
+            flags |= Qt::ItemIsEditable;
+        } else {
+            flags &= ~Qt::ItemIsEditable;
+        }
+    }
+    return flags;
 }
 
 void TsFile::updateTranslationThreadSafe(const QString &translation, int sourceLineNumber)

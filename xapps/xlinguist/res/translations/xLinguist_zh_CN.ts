@@ -6,12 +6,12 @@
     <message>
         <location filename="../../src/mainwindow.ui" line="33"/>
         <source>Ignore finished item</source>
-        <translation>忽略成品</translation>
+        <translation>忽略已完成的语句</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.ui" line="135"/>
         <source>Save</source>
-        <translation>节省</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.ui" line="153"/>

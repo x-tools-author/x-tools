@@ -8,6 +8,12 @@
  **************************************************************************************************/
 #include "tsfileitemdelegate.h"
 
+#include <QLineEdit>
+
+#include "tsfile.h"
+#include "tsfilefilter.h"
+#include "tsitem.h"
+
 TsFileItemDelegate::TsFileItemDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {}
@@ -18,17 +24,63 @@ QWidget *TsFileItemDelegate::createEditor(QWidget *parent,
                                           const QStyleOptionViewItem &option,
                                           const QModelIndex &index) const
 {
-    return QStyledItemDelegate::createEditor(parent, option, index);
+    const TsFileFilter *tsFileFilter = qobject_cast<const TsFileFilter *>(index.model());
+    if (!tsFileFilter) {
+        qWarning() << "Failed to cast model to TsFile.";
+        return nullptr;
+    }
+
+    int lineIndex = index.row();
+    const TsFile *tsFile = qobject_cast<const TsFile *>(tsFileFilter->sourceModel());
+    TsItem *tsItem = tsFile->tsItemAtLine(lineIndex);
+    if (!tsItem) {
+        qWarning() << "Failed to get TsItem at line:" << lineIndex + 1;
+        return nullptr;
+    }
+
+    if (tsItem->isTranslation()) {
+        QLineEdit *editor = new QLineEdit(parent);
+        return editor;
+    }
+
+    qWarning() << "Not a translation item at line:" << lineIndex + 1;
+    return nullptr;
 }
 
 void TsFileItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
-    QStyledItemDelegate::setEditorData(editor, index);
+    const TsFileFilter *tsFileFilter = qobject_cast<const TsFileFilter *>(index.model());
+    if (!tsFileFilter) {
+        qWarning() << "Failed to cast model to TsFile.";
+        return;
+    }
+
+    const TsFile *tsFile = qobject_cast<const TsFile *>(tsFileFilter->sourceModel());
+    QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
+    if (lineEdit && tsFile) {
+        TsItem *tsItem = tsFile->tsItemAtLine(index.row());
+        if (tsItem) {
+            lineEdit->setText(tsItem->translationText());
+        }
+    }
 }
 
 void TsFileItemDelegate::setModelData(QWidget *editor,
                                       QAbstractItemModel *model,
                                       const QModelIndex &index) const
 {
-    QStyledItemDelegate::setModelData(editor, model, index);
+    const TsFileFilter *tsFileFilter = qobject_cast<const TsFileFilter *>(index.model());
+    if (!tsFileFilter) {
+        qWarning() << "Failed to cast model to TsFile.";
+        return;
+    }
+
+    TsFile *tsFile = qobject_cast<TsFile *>(tsFileFilter->sourceModel());
+    QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
+    if (lineEdit && tsFile) {
+        TsItem *tsItem = tsFile->tsItemAtLine(index.row());
+        if (tsItem) {
+            tsFile->updateTranslation(lineEdit->text(), tsItem->preTsItem()->lineNumber());
+        }
+    }
 }

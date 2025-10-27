@@ -8,11 +8,15 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QListView>
+#include <QWidget>
+
+namespace Ui {
+class TsFileView;
+};
 
 class TsFile;
 class TsFileFilter;
-class TsFileView : public QListView
+class TsFileView : public QWidget
 {
     Q_OBJECT
 public:
@@ -22,6 +26,12 @@ public:
     TsFile *tsFile() const;
 
 private:
+    Ui::TsFileView *ui;
     TsFile *m_tsFile{nullptr};
     TsFileFilter *m_filterModel{nullptr};
+
+private:
+    void onAllItemsChecked(bool checked);
+    void onSourceItemsChecked(bool checked);
+    void onTranslationItemsChecked(bool checked);
 };
