@@ -19,8 +19,8 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
+#include "common/menu.h"
 #include "common/xtools.h"
-#include "page/utilities/menu.h"
 #include "presetmodel.h"
 #include "presetviewgroupeditor.h"
 

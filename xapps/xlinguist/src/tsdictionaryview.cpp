@@ -19,6 +19,8 @@
 #include <QMessageBox>
 #include <QTextStream>
 
+#include "common/menu.h"
+
 #include "tsdictionary.h"
 #include "tsdictionaryfilter.h"
 
@@ -35,7 +37,7 @@ TsDictionaryView::TsDictionaryView(QWidget *parent)
     ui->tableView->setAlternatingRowColors(true);
 
     QStringList flags = m_dictionaryModel->languageFlags();
-    QMenu *menu = new QMenu(this);
+    Menu *menu = new Menu(this);
     ui->toolButtonColumns->setMenu(menu);
     ui->toolButtonColumns->setPopupMode(QToolButton::InstantPopup);
     for (const auto &flag : flags) {
