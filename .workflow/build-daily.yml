@@ -2,14 +2,14 @@ version: '1.0'
 name: build-daily
 displayName: build-daily
 triggers:
-  trigger: manual
+  trigger: auto
   push:
     branches:
       prefix:
         - ''
 stages:
-  - name: stage-7272a7be
-    displayName: T未命名1
+  - name: build
+    displayName: 构建
     strategy: naturally
     trigger: auto
     executor: []
