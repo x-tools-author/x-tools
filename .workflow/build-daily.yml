@@ -1,9 +1,33 @@
 version: '1.0'
-name: build-daily
-displayName: build-daily
+name: pipeline-20251031
+displayName: pipeline-20251031
 triggers:
   trigger: auto
   push:
     branches:
       prefix:
         - ''
+stages:
+  - name: stage-3c749d47
+    displayName: 未命名
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: build@gcc
+        name: build_gcc
+        displayName: GCC编译
+        gccVersion: '10.3'
+        commands:
+          - '# 新建build目录，切换到build目录'
+          - 'mkdir build && cd build '
+          - '# 生成Unix平台的makefiles文件并执行构建'
+          - cmake -G 'Unix Makefiles' ../ && make -j
+        artifacts:
+          - name: BUILD_ARTIFACT
+            path:
+              - ./bin
+        caches: []
+        notify: []
+        strategy:
+          retry: '0'
