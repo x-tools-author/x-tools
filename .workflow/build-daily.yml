@@ -1,0 +1,9 @@
+version: '1.0'
+name: build-daily
+displayName: build-daily
+triggers:
+  trigger: auto
+  push:
+    branches:
+      prefix:
+        - ''
