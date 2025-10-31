@@ -15,11 +15,11 @@ stages:
     executor: []
     steps:
       - step: build@gcc
-        name: build_gcc
-        displayName: GCC 构建
+        name: build_pro
+        displayName: 构建项目
         gccVersion: '9.4'
         commands:
-          - lsb_release -a
+          - sudo apt install qt5*
           - '# 新建build目录，切换到build目录'
           - 'mkdir build && cd build '
           - '# 生成Unix平台的makefiles文件并执行构建'
