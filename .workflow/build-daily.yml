@@ -1,6 +1,6 @@
 version: '1.0'
-name: pipeline-20251031
-displayName: pipeline-20251031
+name: build-daily
+displayName: build-daily
 triggers:
   trigger: auto
   push:
@@ -8,16 +8,16 @@ triggers:
       prefix:
         - ''
 stages:
-  - name: stage-3c749d47
-    displayName: 未命名
+  - name: stage-7272a7be
+    displayName: T未命名1
     strategy: naturally
     trigger: auto
     executor: []
     steps:
       - step: build@gcc
         name: build_gcc
-        displayName: GCC编译
-        gccVersion: '10.3'
+        displayName: GCC 构建
+        gccVersion: '9.4'
         commands:
           - '# 新建build目录，切换到build目录'
           - 'mkdir build && cd build '
