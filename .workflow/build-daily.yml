@@ -19,7 +19,7 @@ stages:
         displayName: 构建项目
         gccVersion: '9.4'
         commands:
-          - apt-get update -y
+          - '# apt-get update -y'
           - apt-get install qt5* --fix-missing
           - '# 新建build目录，切换到build目录'
           - 'mkdir build && cd build '
