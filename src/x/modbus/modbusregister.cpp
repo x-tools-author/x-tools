@@ -12,17 +12,18 @@ namespace xModbus {
 
 RegisterItem jsonObject2RegisterItem(const QJsonObject &json)
 {
-    RegisterItemKeys keus;
+    RegisterItemKeys keys;
     RegisterItem item;
     int defaultType = static_cast<int>(QModbusDataUnit::Invalid);
-    item.type = static_cast<QModbusDataUnit::RegisterType>(json.value(keus.type).toInt(defaultType));
-    item.name = json.value(keus.name).toString(QString("Untitled"));
-    item.unit = json.value(keus.unit).toString("");
-    item.description = json.value(keus.description).toString("");
-    item.address = static_cast<quint16>(json.value(keus.address).toInt(1));
-    item.min = json.value(keus.min).toDouble(0);
-    item.max = json.value(keus.max).toDouble(65535);
-    item.decimals = json.value(keus.decimals).toInt(0);
+    item.type = static_cast<QModbusDataUnit::RegisterType>(json.value(keys.type).toInt(defaultType));
+    item.name = json.value(keys.name).toString(QString("Untitled"));
+    item.unit = json.value(keys.unit).toString("");
+    item.description = json.value(keys.description).toString("");
+    item.address = static_cast<quint16>(json.value(keys.address).toInt(1));
+    item.min = json.value(keys.min).toDouble(0);
+    item.max = json.value(keys.max).toDouble(65535);
+    item.decimals = json.value(keys.decimals).toInt(0);
+    item.value = static_cast<qint16>(json.value(keys.value).toInt(0));
     return item;
 }
 
@@ -38,6 +39,7 @@ QJsonObject registerItem2JsonObject(const RegisterItem &item)
     json.insert(keus.min, item.min);
     json.insert(keus.max, item.max);
     json.insert(keus.decimals, item.decimals);
+    json.insert(keus.value, item.value);
     return json;
 }
 

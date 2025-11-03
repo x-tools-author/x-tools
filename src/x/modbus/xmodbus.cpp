@@ -10,7 +10,7 @@
 #include "ui_xmodbus.h"
 
 #include "modbusdevicelistview.h"
-#include "modbusregisterview.h"
+#include "modbusregistertableview.h"
 
 namespace xModbus {
 

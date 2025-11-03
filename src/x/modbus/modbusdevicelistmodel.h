@@ -27,9 +27,6 @@ public:
     explicit ModbusDeviceListModel(QWidget *parent = nullptr);
     ~ModbusDeviceListModel() override;
 
-    void addDevice(ModbusDevice *device);
-    void addRegisterTable(ModbusDevice *device, RegisterModel *model);
-
     Qt::ItemFlags flags(const QModelIndex &index) const override;
 
 public:

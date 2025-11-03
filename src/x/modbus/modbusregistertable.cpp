@@ -9,13 +9,14 @@
 #include "modbusregistertable.h"
 
 #define REGISTER_TABLE_ADDRESS 0
-#define REGISTER_TABLE_NAME 1
-#define REGISTER_TABLE_TYPE 2
-#define REGISTER_TABLE_UNIT 3
-#define REGISTER_TABLE_DESCRIPTION 4
-#define REGISTER_TABLE_MIN 5
-#define REGISTER_TABLE_MAX 6
-#define REGISTER_TABLE_DECIMALS 7
+#define REGISTER_TABLE_TYPE 1
+#define REGISTER_TABLE_MIN 2
+#define REGISTER_TABLE_MAX 3
+#define REGISTER_TABLE_DECIMALS 4
+#define REGISTER_TABLE_NAME 5
+#define REGISTER_TABLE_VALUE 6
+#define REGISTER_TABLE_UNIT 7
+#define REGISTER_TABLE_DESCRIPTION 8
 
 namespace xModbus {
 
@@ -28,8 +29,9 @@ ModbusRegisterTable::~ModbusRegisterTable() {}
 RegisterItem *ModbusRegisterTable::addRegisterItem(const RegisterItem &item)
 {
     RegisterItem *newItem = new RegisterItem(item);
+    beginInsertRows(QModelIndex(), m_registerItems.count(), m_registerItems.count());
     m_registerItems.append(newItem);
-    insertRows(m_registerItems.count() - 1, 1, QModelIndex());
+    endInsertRows();
     return newItem;
 }
 
@@ -47,21 +49,31 @@ int ModbusRegisterTable::rowCount(const QModelIndex &parent) const
 
 int ModbusRegisterTable::columnCount(const QModelIndex &parent) const
 {
-    return 8;
+    return 9;
 }
 
 QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
 {
-    if (role != Qt::DisplayRole)
-        return QVariant();
+    if (role == Qt::TextAlignmentRole) {
+        if (index.column() == REGISTER_TABLE_DESCRIPTION) {
+            return int(Qt::AlignLeft | Qt::AlignVCenter);
+        } else {
+            return Qt::AlignCenter;
+        }
+    }
 
-    if (index.row() < 0 || index.row() >= m_registerItems.count())
+    if (role != Qt::DisplayRole) {
         return QVariant();
+    }
+
+    if (index.row() < 0 || index.row() >= m_registerItems.count()) {
+        return QVariant();
+    }
 
     const RegisterItem *item = m_registerItems.at(index.row());
     switch (index.column()) {
     case REGISTER_TABLE_ADDRESS:
-        return item->address;
+        return QString("0x%1").arg(item->address, 4, 16, QChar('0').toUpper());
     case REGISTER_TABLE_NAME:
         return item->name;
     case REGISTER_TABLE_TYPE:
@@ -76,6 +88,8 @@ QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
         return item->max;
     case REGISTER_TABLE_DECIMALS:
         return item->decimals;
+    case REGISTER_TABLE_VALUE:
+        return item->value;
     default:
         return QVariant();
     }
@@ -115,6 +129,9 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
     case REGISTER_TABLE_DECIMALS:
         item->decimals = value.toInt();
         break;
+    case REGISTER_TABLE_VALUE:
+        item->value = static_cast<qint16>(value.toInt());
+        break;
     default:
         return false;
     }
@@ -125,33 +142,44 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
 
 QVariant ModbusRegisterTable::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    if (role != Qt::DisplayRole)
-        return QVariant();
-
-    if (orientation == Qt::Horizontal) {
-        switch (section) {
-        case REGISTER_TABLE_ADDRESS:
-            return tr("Address");
-        case REGISTER_TABLE_NAME:
-            return tr("Name");
-        case REGISTER_TABLE_TYPE:
-            return tr("Type");
-        case REGISTER_TABLE_UNIT:
-            return tr("Unit");
-        case REGISTER_TABLE_DESCRIPTION:
-            return tr("Description");
-        case REGISTER_TABLE_MIN:
-            return tr("Min");
-        case REGISTER_TABLE_MAX:
-            return tr("Max");
-        case REGISTER_TABLE_DECIMALS:
-            return tr("Decimals");
-        default:
-            return QVariant();
+    if (role == Qt::DisplayRole) {
+        if (orientation == Qt::Horizontal) {
+            switch (section) {
+            case REGISTER_TABLE_ADDRESS:
+                return tr("Address");
+            case REGISTER_TABLE_NAME:
+                return tr("Name");
+            case REGISTER_TABLE_TYPE:
+                return tr("Type");
+            case REGISTER_TABLE_UNIT:
+                return tr("Unit");
+            case REGISTER_TABLE_DESCRIPTION:
+                return tr("Description");
+            case REGISTER_TABLE_MIN:
+                return tr("Min");
+            case REGISTER_TABLE_MAX:
+                return tr("Max");
+            case REGISTER_TABLE_DECIMALS:
+                return tr("Decimals");
+            case REGISTER_TABLE_VALUE:
+                return tr("Value");
+            default:
+                return QVariant();
+            }
+        } else {
+            return section + 1;
         }
-    } else {
-        return section + 1;
+    } else if (role == Qt::TextAlignmentRole) {
+        if (orientation == Qt::Horizontal) {
+            if (section == REGISTER_TABLE_DESCRIPTION) {
+                return int(Qt::AlignLeft | Qt::AlignVCenter);
+            } else {
+                return Qt::AlignCenter;
+            }
+        }
     }
+
+    return QAbstractTableModel::headerData(section, orientation, role);
 }
 
 bool ModbusRegisterTable::insertRows(int row, int count, const QModelIndex &parent)

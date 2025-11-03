@@ -20,7 +20,7 @@
 #include "modbusdevice.h"
 #include "modbusdeviceeditor.h"
 #include "modbusdevicelistmodel.h"
-#include "modbusregisterview.h"
+#include "modbusregistertableview.h"
 
 #define MODBUS_INVALID_DEPTH -1
 #define MODBUS_DEVICE_DEPTH 0   // Modbus Device
@@ -82,6 +82,13 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     connect(ui->toolButtonAdd, &QToolButton::clicked, this, &ModbusDeviceListView::onNewDevice);
     connect(ui->treeView, &QTreeView::doubleClicked, this, &ModbusDeviceListView::onItemDoubleClicked);
     // clang-format on
+
+#if 1
+    ModbusDeviceEditor editor(xMainWindow);
+    QJsonObject parameters = editor.save();
+    m_model->newDevice(parameters);
+    ui->treeView->expandAll();
+#endif
 }
 
 ModbusDeviceListView::~ModbusDeviceListView()

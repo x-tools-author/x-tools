@@ -8,29 +8,16 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QWidget>
-
-namespace Ui {
-class ModbusRegisterTableView;
-}
+#include <QSortFilterProxyModel>
 
 namespace xModbus {
 
-class ModbusRegisterTable;
-class ModbusRegisterTableFilter;
-class ModbusRegisterTableView : public QWidget
+class ModbusRegisterTableFilter : public QSortFilterProxyModel
 {
     Q_OBJECT
 public:
-    explicit ModbusRegisterTableView(QWidget *parent = nullptr);
-    ~ModbusRegisterTableView() override;
-
-    ModbusRegisterTable *registerTable() const;
-
-private:
-    ModbusRegisterTable *m_registerTable{nullptr};
-    ModbusRegisterTableFilter *m_registerTableFilter{nullptr};
-    Ui::ModbusRegisterTableView *ui{nullptr};
+    explicit ModbusRegisterTableFilter(QObject *parent = nullptr);
+    ~ModbusRegisterTableFilter() override;
 };
 
 } // namespace xModbus

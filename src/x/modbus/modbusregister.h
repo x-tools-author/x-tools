@@ -23,6 +23,7 @@ struct RegisterItemKeys
     const QString min{"min"};
     const QString max{"max"};
     const QString decimals{"decimals"};
+    const QString value{"value"};
 };
 
 struct RegisterItem
@@ -35,6 +36,7 @@ struct RegisterItem
     double min;                         // 最小值
     double max;                         // 最大值
     int decimals;                       // 小数位
+    qint16 value;                       // 寄存器值
 };
 
 RegisterItem jsonObject2RegisterItem(const QJsonObject &json);

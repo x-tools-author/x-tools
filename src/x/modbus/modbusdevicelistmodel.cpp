@@ -15,7 +15,7 @@
 #include "modbuscommon.h"
 #include "modbusdevice.h"
 #include "modbusregistertable.h"
-#include "modbusregisterview.h"
+#include "modbusregistertableview.h"
 
 namespace xModbus {
 
@@ -24,39 +24,6 @@ ModbusDeviceListModel::ModbusDeviceListModel(QWidget *parent)
 {}
 
 ModbusDeviceListModel::~ModbusDeviceListModel() {}
-
-void ModbusDeviceListModel::addDevice(ModbusDevice *device)
-{
-    if (!device) {
-        return;
-    }
-
-    QStandardItem *item = new QStandardItem("Modbus Device");
-    item->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
-    appendRow(item);
-
-    QStandardItem *coilsItem = new QStandardItem(tr("Coils"));
-    coilsItem->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
-    item->appendRow(coilsItem);
-
-    QStandardItem *discreteInputsItem = new QStandardItem(tr("Discrete Inputs"));
-    discreteInputsItem->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
-    item->appendRow(discreteInputsItem);
-
-    QStandardItem *holdingRegistersItem = new QStandardItem(tr("Holding Registers"));
-    holdingRegistersItem->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
-    item->appendRow(holdingRegistersItem);
-
-    QStandardItem *inputRegistersItem = new QStandardItem(tr("Input Registers"));
-    inputRegistersItem->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
-    item->appendRow(inputRegistersItem);
-}
-
-void ModbusDeviceListModel::addRegisterTable(ModbusDevice *device, RegisterModel *model)
-{
-    Q_UNUSED(device)
-    Q_UNUSED(model)
-}
 
 Qt::ItemFlags ModbusDeviceListModel::flags(const QModelIndex &index) const
 {
@@ -115,11 +82,11 @@ void ModbusDeviceListModel::newRegisters(QStandardItem *tableItem,
         return;
     }
 
-    for (int i = 0; i < quantity; ++i) {
+    for (int i = startAddress; i < startAddress + quantity; ++i) {
         ModbusRegisterTable *registerTable = registerView->registerTable();
         RegisterItem item = RegisterItem();
         item.type = type;
-        item.address = startAddress + i;
+        item.address = i;
         item.name = QString("0x%1").arg(item.address, 4, 16, QChar('0').toUpper());
         item.unit = "";
         item.min = 0.0;
