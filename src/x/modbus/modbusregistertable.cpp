@@ -26,20 +26,11 @@ ModbusRegisterTable::ModbusRegisterTable(QObject *parent)
 
 ModbusRegisterTable::~ModbusRegisterTable() {}
 
-RegisterItem *ModbusRegisterTable::addRegisterItem(const RegisterItem &item)
+void ModbusRegisterTable::addRegisterItem(ModbusRegister *item)
 {
-    RegisterItem *newItem = new RegisterItem(item);
     beginInsertRows(QModelIndex(), m_registerItems.count(), m_registerItems.count());
-    m_registerItems.append(newItem);
+    m_registerItems.append(item);
     endInsertRows();
-    return newItem;
-}
-
-void ModbusRegisterTable::addRegisterItems(const QList<RegisterItem> &items)
-{
-    for (const RegisterItem &item : items) {
-        addRegisterItem(item);
-    }
 }
 
 int ModbusRegisterTable::rowCount(const QModelIndex &parent) const
@@ -70,7 +61,7 @@ QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    const RegisterItem *item = m_registerItems.at(index.row());
+    const ModbusRegister *item = m_registerItems.at(index.row());
     switch (index.column()) {
     case REGISTER_TABLE_ADDRESS:
         return QString("0x%1").arg(item->address, 4, 16, QChar('0').toUpper());
@@ -103,7 +94,7 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
     if (index.row() < 0 || index.row() >= m_registerItems.count())
         return false;
 
-    RegisterItem *item = m_registerItems.at(index.row());
+    ModbusRegister *item = m_registerItems.at(index.row());
     switch (index.column()) {
     case REGISTER_TABLE_ADDRESS:
         item->address = value.toUInt();
@@ -186,7 +177,7 @@ bool ModbusRegisterTable::insertRows(int row, int count, const QModelIndex &pare
 {
     beginInsertRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {
-        RegisterItem *newItem = new RegisterItem();
+        ModbusRegister *newItem = new ModbusRegister();
         m_registerItems.insert(row, newItem);
     }
     endInsertRows();
@@ -198,7 +189,7 @@ bool ModbusRegisterTable::removeRows(int row, int count, const QModelIndex &pare
 {
     beginRemoveRows(parent, row, row + count - 1);
     for (int i = 0; i < count; ++i) {
-        RegisterItem *item = m_registerItems.takeAt(row);
+        ModbusRegister *item = m_registerItems.takeAt(row);
         delete item;
     }
     endRemoveRows();

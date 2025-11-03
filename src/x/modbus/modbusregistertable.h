@@ -21,8 +21,7 @@ public:
     explicit ModbusRegisterTable(QObject *parent = nullptr);
     ~ModbusRegisterTable() override;
 
-    RegisterItem *addRegisterItem(const RegisterItem &item);
-    void addRegisterItems(const QList<RegisterItem> &items);
+    void addRegisterItem(ModbusRegister *item);
 
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
@@ -34,7 +33,7 @@ public:
     bool removeRows(int row, int count, const QModelIndex &parent) override;
 
 private:
-    QList<RegisterItem *> m_registerItems;
+    QList<ModbusRegister *> m_registerItems;
 };
 
 } // namespace xModbus

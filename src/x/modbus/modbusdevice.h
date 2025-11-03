@@ -14,20 +14,26 @@
 #include <QMutex>
 #include <QThread>
 
+#include "modbuscommon.h"
+#include "modbusregister.h"
+
 namespace xModbus {
 
+class ModbusRegister;
+struct DeviceConnectionParameters;
 class ModbusDevice : public QThread
 {
     Q_OBJECT
 public:
     explicit ModbusDevice(QObject *parent = nullptr);
-    explicit ModbusDevice(const QJsonObject &parameters, QObject *parent = nullptr);
     ~ModbusDevice() override;
 
-    QJsonObject parameters() const;
-    void setParameters(const QJsonObject &parameters);
-    QJsonObject registers() const;
-    void setRegisters(const QJsonObject &registers);
+    bool isClient() const;
+
+    DeviceConnectionParameters parameters() const;
+    void setParameters(const DeviceConnectionParameters &parameters);
+    QList<ModbusRegister *> modbusRegisters() const;
+    void setModbusRegisters(const QList<ModbusRegister *> &registers);
 
 signals:
     void deviceConnected();
@@ -38,13 +44,15 @@ protected:
     void run() override;
 
 private:
-    QJsonObject m_parameters;
-    QJsonObject m_registers;
+    DeviceConnectionParameters m_connectionParameters;
+    QList<ModbusRegister *> m_registers;
     mutable QMutex m_contextMutex;
 
 private:
-    void setupClient(QModbusClient *client);
-    void setupServer(QModbusServer *server);
+    QModbusDevice *newModbusDevice(const DeviceConnectionParameters &params);
+    QModbusDataUnitMap dataUnitMap() const;
+
+    void onErrorOccurred(QModbusDevice::Error error);
 };
 
 } // namespace xModbus

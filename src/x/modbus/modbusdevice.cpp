@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "modbusdevice.h"
 
+#include <QModbusDataUnit>
 #include <QModbusDevice>
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
@@ -15,18 +16,13 @@
 #include <QModbusTcpServer>
 
 #include "modbuscommon.h"
-
+#include "modbusregister.h"
 #include "modbusregistertable.h"
 
 namespace xModbus {
 
 ModbusDevice::ModbusDevice(QObject *parent)
     : QThread(parent)
-{}
-
-ModbusDevice::ModbusDevice(const QJsonObject &parameters, QObject *parent)
-    : QThread(parent)
-    , m_parameters(parameters)
 {}
 
 ModbusDevice::~ModbusDevice()
@@ -37,54 +33,80 @@ ModbusDevice::~ModbusDevice()
     }
 }
 
-QJsonObject ModbusDevice::parameters() const
+bool ModbusDevice::isClient() const
 {
-    QJsonObject parameters;
     m_contextMutex.lock();
-    parameters = m_parameters;
+    bool result = m_connectionParameters.deviceType == static_cast<int>(XModbusType::RtuClient);
+    result |= m_connectionParameters.deviceType == static_cast<int>(XModbusType::TcpClient);
     m_contextMutex.unlock();
-    return parameters;
+    return result;
 }
 
-void ModbusDevice::setParameters(const QJsonObject &parameters)
+DeviceConnectionParameters ModbusDevice::parameters() const
 {
     m_contextMutex.lock();
-    m_parameters = parameters;
+    DeviceConnectionParameters params = m_connectionParameters;
     m_contextMutex.unlock();
+    return params;
 }
 
-QJsonObject ModbusDevice::registers() const
-{
-    QJsonObject registers;
-    m_contextMutex.lock();
-    registers = m_registers;
-    m_contextMutex.unlock();
-    return registers;
-}
-
-void ModbusDevice::setRegisters(const QJsonObject &registers)
+void ModbusDevice::setParameters(const DeviceConnectionParameters &parameters)
 {
     m_contextMutex.lock();
-    m_registers = registers;
+    m_connectionParameters = parameters;
     m_contextMutex.unlock();
 }
 
-bool isModbusClient(int type)
+QList<ModbusRegister *> ModbusDevice::modbusRegisters() const
 {
-    if (type == static_cast<int>(XModbusType::RtuClient)
-        || type == static_cast<int>(XModbusType::TcpClient)) {
-        return true;
-    } else {
-        return false;
+    m_contextMutex.lock();
+    QList<ModbusRegister *> regs = m_registers;
+    m_contextMutex.unlock();
+    return regs;
+}
+
+void ModbusDevice::setModbusRegisters(const QList<ModbusRegister *> &registers)
+{
+    m_contextMutex.lock();
+    for (ModbusRegister *reg : registers) {
+        m_registers.append(reg);
     }
+    m_contextMutex.unlock();
 }
 
 void ModbusDevice::run()
 {
-    QJsonObject tmp = parameters();
-    DeviceConnectionParameters params = json2DeviceConnectionParameters(tmp);
+    DeviceConnectionParameters params = parameters();
+    QModbusDevice *device = newModbusDevice(params);
+    if (!device) {
+        qInfo() << "Failed to create Modbus device.";
+        return;
+    }
+
+    // Set connection parameters
+    device->setConnectionParameter(QModbusDevice::SerialPortNameParameter, params.portName);
+    device->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, params.dataBits);
+    device->setConnectionParameter(QModbusDevice::SerialParityParameter, params.parity);
+    device->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, params.stopBits);
+    device->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, params.baudRate);
+    device->setConnectionParameter(QModbusDevice::NetworkAddressParameter, params.tcpAddress);
+    device->setConnectionParameter(QModbusDevice::NetworkPortParameter, params.tcpPort);
+
+    if (!device->connectDevice()) {
+        qInfo() << "Failed to connect Modbus device:" << device->errorString();
+        return;
+    }
+
+    exec();
+    device->disconnectDevice();
+    device->deleteLater();
+    device = nullptr;
+}
+
+QModbusDevice *ModbusDevice::newModbusDevice(const DeviceConnectionParameters &params)
+{
     QModbusDevice *device = nullptr;
-    if (isModbusClient(params.deviceType)) {
+    if (isClient()) {
         if (params.deviceType == static_cast<int>(XModbusType::RtuClient)) {
             device = new QModbusRtuSerialClient();
         } else {
@@ -98,33 +120,11 @@ void ModbusDevice::run()
         }
     }
 
-    connect(device, &QModbusDevice::errorOccurred, device, [=]() {
-        qWarning() << "Modbus device error:" << device->errorString();
-        emit errorOccurred(device->errorString());
-    });
-    connect(device, &QModbusDevice::stateChanged, device, [=]() {
-        if (device->state() == QModbusDevice::UnconnectedState) {
-            emit deviceDisconnected();
-        } else if (device->state() == QModbusDevice::ConnectedState) {
-            emit deviceConnected();
-        }
-    });
-
-    // Set connection parameters
-    device->setConnectionParameter(QModbusDevice::SerialPortNameParameter, params.portName);
-    device->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, params.dataBits);
-    device->setConnectionParameter(QModbusDevice::SerialParityParameter, params.parity);
-    device->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, params.stopBits);
-    device->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, params.baudRate);
-    device->setConnectionParameter(QModbusDevice::NetworkAddressParameter, params.tcpAddress);
-    device->setConnectionParameter(QModbusDevice::NetworkPortParameter, params.tcpPort);
-
     // Set additional parameters for client
     QModbusTcpClient *client = qobject_cast<QModbusTcpClient *>(device);
     if (client) {
         client->setNumberOfRetries(params.numberOfRetries);
         client->setTimeout(params.timeout);
-        setupClient(client);
     }
 
     // Set additional parameters for server
@@ -132,21 +132,31 @@ void ModbusDevice::run()
     if (server) {
         server->setServerAddress(params.serverAddress);
         server->setValue(QModbusServer::ListenOnlyMode, params.listenOnlyMode);
-        setupServer(server);
+        server->setMap(dataUnitMap());
     }
 
-    if (!device->connectDevice()) {
-        return;
-    }
+    connect(device, &QModbusDevice::errorOccurred, device, [=](QModbusDevice::Error error) {
+        this->onErrorOccurred(error);
+    });
 
-    exec();
-    device->disconnectDevice();
-    device->deleteLater();
-    device = nullptr;
+    return device;
 }
 
-void ModbusDevice::setupClient(QModbusClient *client) {}
+QModbusDataUnitMap ModbusDevice::dataUnitMap() const
+{
+    QModbusDataUnitMap dataUnitMap;
 
-void ModbusDevice::setupServer(QModbusServer *server) {}
+    dataUnitMap.insert(xCoils, QModbusDataUnit(xCoils, 0, 65535));
+    dataUnitMap.insert(xDiscreteInputs, QModbusDataUnit(xDiscreteInputs, 0, 65535));
+    dataUnitMap.insert(xInputRegisters, QModbusDataUnit(xInputRegisters, 0, 65535));
+    dataUnitMap.insert(xHoldingRegisters, QModbusDataUnit(xHoldingRegisters, 0, 65535));
+
+    return dataUnitMap;
+}
+
+void ModbusDevice::onErrorOccurred(QModbusDevice::Error error)
+{
+    qInfo() << "Modbus device error occurred:" << error;
+}
 
 } // namespace xModbus

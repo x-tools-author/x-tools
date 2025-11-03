@@ -10,6 +10,7 @@
 
 #include <QJsonObject>
 #include <QModbusDataUnit>
+#include <QObject>
 
 namespace xModbus {
 
@@ -26,8 +27,21 @@ struct RegisterItemKeys
     const QString value{"value"};
 };
 
-struct RegisterItem
+class ModbusRegister : public QObject
 {
+    Q_OBJECT
+
+public:
+    ModbusRegister(QObject *parent = nullptr);
+    ModbusRegister(const ModbusRegister &other);
+    ModbusRegister &operator=(const ModbusRegister &other) = delete;
+    ~ModbusRegister() override;
+
+public:
+    void load(const QJsonObject &json);
+    QJsonObject save();
+
+public:
     QModbusDataUnit::RegisterType type; // 寄存器类型
     QString name;                       // 名称
     QString unit;                       // 单位
@@ -37,9 +51,13 @@ struct RegisterItem
     double max;                         // 最大值
     int decimals;                       // 小数位
     qint16 value;                       // 寄存器值
-};
 
-RegisterItem jsonObject2RegisterItem(const QJsonObject &json);
-QJsonObject registerItem2JsonObject(const RegisterItem &item);
+public:
+    qint16 getValue() const;
+    void setValue(qint16 newValue);
+
+signals:
+    void valueChanged();
+};
 
 } // namespace xModbus

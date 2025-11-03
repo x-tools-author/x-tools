@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QStandardItem>
 #include <QWidget>
 
 namespace Ui {
@@ -17,6 +18,7 @@ class ModbusDeviceListView;
 namespace xModbus {
 
 class ModbusDevice;
+class ModbusRegister;
 class ModbusDeviceListModel;
 class ModbusRegisterTableView;
 class ModbusDeviceListView : public QWidget
@@ -78,6 +80,12 @@ private:
     void onItemDoubleClicked(const QModelIndex &index);
     void onAddMenuAboutToShow();
     void onAddMenuAboutToHide();
+    void onStartButtonClicked();
+    void onStopButtonClicked();
+
+    QList<ModbusDevice *> devices();
+    QStandardItem *itemFromDevice(ModbusDevice *device);
+    QList<ModbusRegister *> registers(ModbusDevice *device);
 };
 
 } // namespace xModbus

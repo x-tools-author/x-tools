@@ -10,37 +10,69 @@
 
 namespace xModbus {
 
-RegisterItem jsonObject2RegisterItem(const QJsonObject &json)
+ModbusRegister::ModbusRegister(QObject *parent)
+    : QObject(parent)
 {
-    RegisterItemKeys keys;
-    RegisterItem item;
-    int defaultType = static_cast<int>(QModbusDataUnit::Invalid);
-    item.type = static_cast<QModbusDataUnit::RegisterType>(json.value(keys.type).toInt(defaultType));
-    item.name = json.value(keys.name).toString(QString("Untitled"));
-    item.unit = json.value(keys.unit).toString("");
-    item.description = json.value(keys.description).toString("");
-    item.address = static_cast<quint16>(json.value(keys.address).toInt(1));
-    item.min = json.value(keys.min).toDouble(0);
-    item.max = json.value(keys.max).toDouble(65535);
-    item.decimals = json.value(keys.decimals).toInt(0);
-    item.value = static_cast<qint16>(json.value(keys.value).toInt(0));
-    return item;
+    load(QJsonObject());
 }
 
-QJsonObject registerItem2JsonObject(const RegisterItem &item)
+ModbusRegister::ModbusRegister(const ModbusRegister &other)
 {
-    RegisterItemKeys keus;
+    type = other.type;
+    name = other.name;
+    unit = other.unit;
+    description = other.description;
+    address = other.address;
+    min = other.min;
+    max = other.max;
+    decimals = other.decimals;
+    value = other.value;
+}
+
+ModbusRegister::~ModbusRegister() {}
+
+void ModbusRegister::load(const QJsonObject &json)
+{
+    RegisterItemKeys keys;
+    int defaultType = static_cast<int>(QModbusDataUnit::Invalid);
+    type = static_cast<QModbusDataUnit::RegisterType>(json.value(keys.type).toInt(defaultType));
+    name = json.value(keys.name).toString(QString("Untitled"));
+    unit = json.value(keys.unit).toString("");
+    description = json.value(keys.description).toString("");
+    address = static_cast<quint16>(json.value(keys.address).toInt(1));
+    min = json.value(keys.min).toDouble(0);
+    max = json.value(keys.max).toDouble(65535);
+    decimals = json.value(keys.decimals).toInt(0);
+    value = static_cast<qint16>(json.value(keys.value).toInt(0));
+}
+
+QJsonObject ModbusRegister::save()
+{
+    RegisterItemKeys keys;
     QJsonObject json;
-    json.insert(keus.type, static_cast<int>(item.type));
-    json.insert(keus.name, item.name);
-    json.insert(keus.unit, item.unit);
-    json.insert(keus.description, item.description);
-    json.insert(keus.address, static_cast<int>(item.address));
-    json.insert(keus.min, item.min);
-    json.insert(keus.max, item.max);
-    json.insert(keus.decimals, item.decimals);
-    json.insert(keus.value, item.value);
+    json.insert(keys.type, static_cast<int>(type));
+    json.insert(keys.name, name);
+    json.insert(keys.unit, unit);
+    json.insert(keys.description, description);
+    json.insert(keys.address, static_cast<int>(address));
+    json.insert(keys.min, min);
+    json.insert(keys.max, max);
+    json.insert(keys.decimals, decimals);
+    json.insert(keys.value, value);
     return json;
+}
+
+qint16 ModbusRegister::getValue() const
+{
+    return value;
+}
+
+void ModbusRegister::setValue(qint16 newValue)
+{
+    if (value != newValue) {
+        value = newValue;
+        emit valueChanged();
+    }
 }
 
 } // namespace xModbus

@@ -34,7 +34,8 @@ Qt::ItemFlags ModbusDeviceListModel::flags(const QModelIndex &index) const
 void ModbusDeviceListModel::newDevice(const QJsonObject &parameters)
 {
     DeviceConnectionParameters ctx = json2DeviceConnectionParameters(parameters);
-    ModbusDevice *device = new ModbusDevice(parameters, this);
+    ModbusDevice *device = new ModbusDevice(this);
+    device->setParameters(ctx);
     QStandardItem *item = new QStandardItem(ctx.deviceName);
     item->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
     appendRow(item);
@@ -84,19 +85,19 @@ void ModbusDeviceListModel::newRegisters(QStandardItem *tableItem,
 
     for (int i = startAddress; i < startAddress + quantity; ++i) {
         ModbusRegisterTable *registerTable = registerView->registerTable();
-        RegisterItem item = RegisterItem();
-        item.type = type;
-        item.address = i;
-        item.name = QString("0x%1").arg(item.address, 4, 16, QChar('0').toUpper());
-        item.unit = "";
-        item.min = 0.0;
-        item.max = 65535.0;
+        ModbusRegister *item = new ModbusRegister(registerTable);
+        item->type = type;
+        item->address = i;
+        item->name = QString("0x%1").arg(item->address, 4, 16, QChar('0').toUpper());
+        item->unit = "";
+        item->min = 0.0;
+        item->max = 65535.0;
 
-        RegisterItem *registerItem = registerTable->addRegisterItem(item);
-        QStandardItem *stdItem = new QStandardItem(registerItem->name);
+        registerTable->addRegisterItem(item);
+        QStandardItem *stdItem = new QStandardItem(item->name);
         stdItem->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
         stdItem->setData(QVariant::fromValue(registerView), USER_ROLE_MODBUS_TABLE);
-        stdItem->setData(QVariant::fromValue(registerItem), USER_ROLE_MODBUS_REGISTER);
+        stdItem->setData(QVariant::fromValue(item), USER_ROLE_MODBUS_REGISTER);
         tableItem->appendRow(stdItem);
     }
 }

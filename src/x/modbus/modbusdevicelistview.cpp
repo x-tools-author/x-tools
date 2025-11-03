@@ -20,6 +20,7 @@
 #include "modbusdevice.h"
 #include "modbusdeviceeditor.h"
 #include "modbusdevicelistmodel.h"
+#include "modbusregister.h"
 #include "modbusregistertableview.h"
 
 #define MODBUS_INVALID_DEPTH -1
@@ -81,6 +82,8 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     connect(addMenu, &QMenu::aboutToHide, this, &ModbusDeviceListView::onAddMenuAboutToHide);
     connect(ui->toolButtonAdd, &QToolButton::clicked, this, &ModbusDeviceListView::onNewDevice);
     connect(ui->treeView, &QTreeView::doubleClicked, this, &ModbusDeviceListView::onItemDoubleClicked);
+    connect(ui->toolButtonOpen, &QToolButton::clicked, this, &ModbusDeviceListView::onStartButtonClicked);
+    connect(ui->toolButtonClose, &QToolButton::clicked, this, &ModbusDeviceListView::onStopButtonClicked);
     // clang-format on
 
 #if 1
@@ -226,6 +229,104 @@ void ModbusDeviceListView::onAddMenuAboutToHide()
     m_addActions.inputRegisters->setEnabled(true);
     m_addActions.singleRegister->setEnabled(true);
     m_addActions.multiRegister->setEnabled(true);
+}
+
+void ModbusDeviceListView::onStartButtonClicked()
+{
+    QList<ModbusDevice *> devices = this->devices();
+
+    // Start server first
+    for (ModbusDevice *device : devices) {
+        if (!device->isClient()) {
+            if (!device->isRunning()) {
+                device->start();
+            }
+        }
+    }
+
+    // Start client second
+    for (ModbusDevice *device : devices) {
+        if (device->isClient()) {
+            if (!device->isRunning()) {
+                device->start();
+            }
+        }
+    }
+}
+
+void ModbusDeviceListView::onStopButtonClicked()
+{
+    QList<ModbusDevice *> devices = this->devices();
+    // Stop client first
+    for (ModbusDevice *device : devices) {
+        if (device->isClient()) {
+            if (device->isRunning()) {
+                device->requestInterruption();
+                device->wait();
+            }
+        }
+    }
+
+    // Stop server second
+    for (ModbusDevice *device : devices) {
+        if (!device->isClient()) {
+            if (device->isRunning()) {
+                device->requestInterruption();
+                device->wait();
+            }
+        }
+    }
+}
+
+QList<ModbusDevice *> ModbusDeviceListView::devices()
+{
+    int rowCount = m_model->rowCount();
+    QList<ModbusDevice *> devices;
+    for (int i = 0; i < rowCount; ++i) {
+        QStandardItem *item = m_model->item(i);
+        ModbusDevice *device = item->data(USER_ROLE_MODBUS_DEVICE).value<ModbusDevice *>();
+        if (device) {
+            devices.append(device);
+        }
+    }
+    return devices;
+}
+
+QStandardItem *ModbusDeviceListView::itemFromDevice(ModbusDevice *device)
+{
+    int rowCount = m_model->rowCount();
+    for (int i = 0; i < rowCount; ++i) {
+        QStandardItem *item = m_model->item(i);
+        ModbusDevice *dev = item->data(USER_ROLE_MODBUS_DEVICE).value<ModbusDevice *>();
+        if (dev == device) {
+            return item;
+        }
+    }
+    return nullptr;
+}
+
+QList<ModbusRegister *> ModbusDeviceListView::registers(ModbusDevice *device)
+{
+    QList<ModbusRegister *> registers;
+    QStandardItem *deviceItem = itemFromDevice(device);
+    if (!deviceItem) {
+        return registers;
+    }
+
+    int tableCount = deviceItem->rowCount();
+    for (int i = 0; i < tableCount; ++i) {
+        QStandardItem *tableItem = deviceItem->child(i);
+        int registerCount = tableItem->rowCount();
+        for (int j = 0; j < registerCount; ++j) {
+            QStandardItem *registerItem = tableItem->child(j);
+            ModbusRegister *reg = registerItem->data(USER_ROLE_MODBUS_REGISTER)
+                                      .value<ModbusRegister *>();
+            if (reg) {
+                registers.append(reg);
+            }
+        }
+    }
+    return registers;
 }
 
 } // namespace xModbus
