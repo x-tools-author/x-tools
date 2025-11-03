@@ -11,15 +11,15 @@
 
 namespace xModbus {
 
-RegisterView::RegisterView(QWidget *parent)
+ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     : QWidget(parent)
 {
     m_registerTable = new ModbusRegisterTable(this);
 }
 
-RegisterView::~RegisterView() {}
+ModbusRegisterTableView::~ModbusRegisterTableView() {}
 
-ModbusRegisterTable *RegisterView::registerTable() const
+ModbusRegisterTable *ModbusRegisterTableView::registerTable() const
 {
     return m_registerTable;
 }

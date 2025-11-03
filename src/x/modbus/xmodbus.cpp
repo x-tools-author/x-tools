@@ -31,7 +31,7 @@ xModbus::~xModbus()
     delete ui;
 }
 
-void xModbus::onInvokeShowRegisterView(RegisterView* registerView)
+void xModbus::onInvokeShowRegisterView(ModbusRegisterTableView* registerView)
 {
     int index = ui->tabWidget->indexOf(registerView);
     if (index == -1) {
