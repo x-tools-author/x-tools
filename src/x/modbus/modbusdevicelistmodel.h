@@ -8,7 +8,13 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
+#include <QModbusDataUnit>
 #include <QStandardItemModel>
+
+#define USER_ROLE_MODBUS_DEVICE Qt::UserRole + 1
+#define USER_ROLE_MODBUS_TABLE Qt::UserRole + 2
+#define USER_ROLE_MODBUS_REGISTER Qt::UserRole + 3
 
 namespace xModbus {
 
@@ -25,6 +31,14 @@ public:
     void addRegisterTable(ModbusDevice *device, RegisterModel *model);
 
     Qt::ItemFlags flags(const QModelIndex &index) const override;
+
+public:
+    void newDevice(const QJsonObject &parameters);
+    void newDefaultTables(QStandardItem *deviceItem);
+    void newRegisters(QStandardItem *tableItem,
+                      QModbusDataUnit::RegisterType type,
+                      int startAddress,
+                      int quantity);
 };
 
 } // namespace xModbus

@@ -7,13 +7,21 @@
  * code directory.
  **************************************************************************************************/
 #include "modbusregisterview.h"
+#include "modbusregistertable.h"
 
 namespace xModbus {
 
 RegisterView::RegisterView(QWidget *parent)
     : QWidget(parent)
-{}
+{
+    m_registerTable = new ModbusRegisterTable(this);
+}
 
 RegisterView::~RegisterView() {}
+
+ModbusRegisterTable *RegisterView::registerTable() const
+{
+    return m_registerTable;
+}
 
 } // namespace xModbus

@@ -16,6 +16,7 @@ class ModbusDeviceListView;
 
 namespace xModbus {
 
+class RegisterView;
 class ModbusDevice;
 class ModbusDeviceListModel;
 class ModbusDeviceListView : public QWidget
@@ -27,6 +28,7 @@ public:
 
 signals:
     void currentDeviceChanged(ModbusDevice *device);
+    void invokeShowRegisterView(RegisterView *view);
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event) override;

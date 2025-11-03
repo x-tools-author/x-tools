@@ -25,11 +25,12 @@ ModbusRegisterTable::ModbusRegisterTable(QObject *parent)
 
 ModbusRegisterTable::~ModbusRegisterTable() {}
 
-void ModbusRegisterTable::addRegisterItem(const RegisterItem &item)
+RegisterItem *ModbusRegisterTable::addRegisterItem(const RegisterItem &item)
 {
     RegisterItem *newItem = new RegisterItem(item);
     m_registerItems.append(newItem);
     insertRows(m_registerItems.count() - 1, 1, QModelIndex());
+    return newItem;
 }
 
 void ModbusRegisterTable::addRegisterItems(const QList<RegisterItem> &items)

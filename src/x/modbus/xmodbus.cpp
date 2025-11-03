@@ -9,16 +9,37 @@
 #include "xmodbus.h"
 #include "ui_xmodbus.h"
 
+#include "modbusdevicelistview.h"
+#include "modbusregisterview.h"
+
 namespace xModbus {
+
 xModbus::xModbus(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::xModbus)
 {
     ui->setupUi(this);
+
+    connect(ui->widgetDeviceListView,
+            &ModbusDeviceListView::invokeShowRegisterView,
+            this,
+            &xModbus::onInvokeShowRegisterView);
 }
 
 xModbus::~xModbus()
 {
     delete ui;
 }
+
+void xModbus::onInvokeShowRegisterView(RegisterView* registerView)
+{
+    int index = ui->tabWidget->indexOf(registerView);
+    if (index == -1) {
+        ui->tabWidget->addTab(registerView, registerView->windowTitle());
+        index = ui->tabWidget->indexOf(registerView);
+    }
+
+    ui->tabWidget->setCurrentIndex(index);
+}
+
 } // namespace xModbus

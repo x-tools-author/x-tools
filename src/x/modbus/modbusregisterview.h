@@ -12,12 +12,18 @@
 
 namespace xModbus {
 
+class ModbusRegisterTable;
 class RegisterView : public QWidget
 {
     Q_OBJECT
 public:
     explicit RegisterView(QWidget *parent = nullptr);
     ~RegisterView() override;
+
+    ModbusRegisterTable *registerTable() const;
+
+private:
+    ModbusRegisterTable *m_registerTable{nullptr};
 };
 
 } // namespace xModbus

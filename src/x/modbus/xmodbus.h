@@ -15,6 +15,7 @@ class xModbus;
 }
 
 namespace xModbus {
+class RegisterView;
 class xModbus : public QWidget
 {
     Q_OBJECT
@@ -24,5 +25,8 @@ public:
 
 private:
     Ui::xModbus* ui;
+
+private:
+    void onInvokeShowRegisterView(RegisterView* registerView);
 };
 } // namespace xModbus

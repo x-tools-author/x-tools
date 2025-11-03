@@ -20,11 +20,12 @@
 #include "modbusdevice.h"
 #include "modbusdeviceeditor.h"
 #include "modbusdevicelistmodel.h"
+#include "modbusregisterview.h"
 
 #define MODBUS_INVALID_DEPTH -1
-#define MODBUS_DEVICE_DEPTH 0
-#define MODBUS_REG_GROUP_DEPTH 1
-#define MODBUS_REG_ITEM_DEPTH 2
+#define MODBUS_DEVICE_DEPTH 0   // Modbus Device
+#define MODBUS_TABLE_DEPTH 1    // Register Table
+#define MODBUS_REGISTER_DEPTH 2 // Register Item
 
 namespace xModbus {
 
@@ -105,7 +106,7 @@ void ModbusDeviceListView::contextMenuEvent(QContextMenuEvent *event)
             contextMenu.addAction(m_addActions.discreteInputs);
             contextMenu.addAction(m_addActions.holdingRegisters);
             contextMenu.addAction(m_addActions.inputRegisters);
-        } else if (depth == MODBUS_REG_GROUP_DEPTH) {
+        } else if (depth == MODBUS_TABLE_DEPTH) {
             contextMenu.addAction(m_addActions.singleRegister);
             contextMenu.addAction(m_addActions.multiRegister);
         }
@@ -139,8 +140,8 @@ void ModbusDeviceListView::onNewDevice()
     }
 
     QJsonObject parameters = editor.save();
-    ModbusDevice *device = new ModbusDevice(parameters, this);
-    m_model->addDevice(device);
+    m_model->newDevice(parameters);
+    ui->treeView->expandAll();
 }
 
 void ModbusDeviceListView::onNewCoils()
@@ -181,7 +182,14 @@ void ModbusDeviceListView::onRemove() {}
 
 void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
 {
-    // Nothing to do yet...
+    int depth = this->depth(index);
+    if (depth == MODBUS_REGISTER_DEPTH) {
+        QStandardItem *item = m_model->itemFromIndex(index);
+        RegisterView *registerView = item->data(USER_ROLE_MODBUS_TABLE).value<RegisterView *>();
+        if (registerView) {
+            emit invokeShowRegisterView(registerView);
+        }
+    }
 }
 
 void ModbusDeviceListView::onAddMenuAboutToShow()
@@ -190,7 +198,7 @@ void ModbusDeviceListView::onAddMenuAboutToShow()
     int d = depth(currentIndex);
 
     bool isDeviceSelected = (d == MODBUS_DEVICE_DEPTH);
-    bool isRegGroupSelected = (d == MODBUS_REG_GROUP_DEPTH);
+    bool isRegGroupSelected = (d == MODBUS_TABLE_DEPTH);
 
     m_addActions.coils->setEnabled(isDeviceSelected);
     m_addActions.discreteInputs->setEnabled(isDeviceSelected);

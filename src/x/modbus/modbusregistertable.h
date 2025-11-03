@@ -21,7 +21,7 @@ public:
     explicit ModbusRegisterTable(QObject *parent = nullptr);
     ~ModbusRegisterTable() override;
 
-    void addRegisterItem(const RegisterItem &item);
+    RegisterItem *addRegisterItem(const RegisterItem &item);
     void addRegisterItems(const QList<RegisterItem> &items);
 
     int rowCount(const QModelIndex &parent) const override;
