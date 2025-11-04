@@ -26,7 +26,8 @@ QWidget *ModbusRegisterDelegate::createEditor(QWidget *parent,
                                               const QModelIndex &index) const
 {
     //return QStyledItemDelegate::createEditor(parent, option, index);
-    return nullptr;
+    QLineEdit *editor = new QLineEdit(parent);
+    return editor;
 }
 
 void ModbusRegisterDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
