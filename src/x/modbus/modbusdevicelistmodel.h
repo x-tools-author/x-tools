@@ -19,7 +19,7 @@
 namespace xModbus {
 
 class ModbusDevice;
-class RegisterModel;
+class ModbusRegister;
 class ModbusDeviceListModel : public QStandardItemModel
 {
     Q_OBJECT
@@ -28,6 +28,7 @@ public:
     ~ModbusDeviceListModel() override;
 
     Qt::ItemFlags flags(const QModelIndex &index) const override;
+    QList<ModbusRegister *> allRegisters(ModbusDevice *device) const;
 
 public:
     void newDevice(const QJsonObject &parameters);

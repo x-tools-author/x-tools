@@ -10,6 +10,7 @@
 
 #include <QApplication>
 #include <QMainWindow>
+#include <QNetworkInterface>
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
@@ -84,6 +85,19 @@ void setupRtuBaudRate(QComboBox *cb)
     }
 
     cb->setCurrentText("9600");
+}
+
+void setupIpAddresses(QComboBox *cb)
+{
+    cb->clear();
+
+    cb->addItem("127.0.0.1", "127.0.0.1");
+    const auto allAddresses = QNetworkInterface::allAddresses();
+    for (const QHostAddress &address : allAddresses) {
+        if (address.protocol() == QAbstractSocket::IPv4Protocol && !address.isLoopback()) {
+            cb->addItem(address.toString(), address.toString());
+        }
+    }
 }
 
 QJsonObject deviceConnectionParameters2Json(const DeviceConnectionParameters &params)

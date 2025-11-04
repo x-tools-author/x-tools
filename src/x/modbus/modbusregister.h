@@ -25,6 +25,7 @@ struct RegisterItemKeys
     const QString max{"max"};
     const QString decimals{"decimals"};
     const QString value{"value"};
+    const QString serverAddress{"serverAddress"};
 };
 
 class ModbusRegister : public QObject
@@ -51,6 +52,7 @@ public:
     double max;                         // 最大值
     int decimals;                       // 小数位
     qint16 value;                       // 寄存器值
+    int serverAddress{1};               // 服务器地址(仅对客户端设备有效)
 
 public:
     qint16 getValue() const;

@@ -8,11 +8,16 @@
  **************************************************************************************************/
 #pragma once
 
+#include <atomic>
+
 #include <QJsonObject>
+#include <QMap>
 #include <QModbusClient>
+#include <QModbusDataUnit>
 #include <QModbusServer>
 #include <QMutex>
 #include <QThread>
+#include <QTimer>
 
 #include "modbuscommon.h"
 #include "modbusregister.h"
@@ -48,10 +53,24 @@ private:
     QList<ModbusRegister *> m_registers;
     mutable QMutex m_contextMutex;
 
+    QModbusDevice *m_device{nullptr};
+    std::atomic_int m_readRequestIndex{0};
+    QTimer *m_sendReadRequestsTimer = nullptr;
+
+    struct DataUnit
+    {
+        int serverAddress;
+        QModbusDataUnit dataUnit;
+    };
+    QList<DataUnit> m_pendingReadDataUnits;
+
 private:
     QModbusDevice *newModbusDevice(const DeviceConnectionParameters &params);
     QModbusDataUnitMap dataUnitMap() const;
+    void updateReadRequestDataUnits();
+    void setupModbusReply(QModbusReply *reply);
 
+    void onSendReadRequestsTimerTimeout();
     void onErrorOccurred(QModbusDevice::Error error);
 };
 

@@ -27,6 +27,7 @@ ModbusRegister::ModbusRegister(const ModbusRegister &other)
     max = other.max;
     decimals = other.decimals;
     value = other.value;
+    serverAddress = other.serverAddress;
 }
 
 ModbusRegister::~ModbusRegister() {}
@@ -44,6 +45,7 @@ void ModbusRegister::load(const QJsonObject &json)
     max = json.value(keys.max).toDouble(65535);
     decimals = json.value(keys.decimals).toInt(0);
     value = static_cast<qint16>(json.value(keys.value).toInt(0));
+    serverAddress = json.value(keys.serverAddress).toInt(1);
 }
 
 QJsonObject ModbusRegister::save()
@@ -59,6 +61,7 @@ QJsonObject ModbusRegister::save()
     json.insert(keys.max, max);
     json.insert(keys.decimals, decimals);
     json.insert(keys.value, value);
+    json.insert(keys.serverAddress, serverAddress);
     return json;
 }
 

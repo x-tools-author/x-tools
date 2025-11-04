@@ -23,6 +23,9 @@ public:
     explicit ModbusDeviceEditor(QWidget *parent = nullptr);
     ~ModbusDeviceEditor() override;
 
+    void setDeviceName(const QString &name);
+    void setDeviceType(int type);
+
     void load(const QJsonObject &parameters);
     QJsonObject save() const;
 

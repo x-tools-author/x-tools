@@ -31,6 +31,31 @@ Qt::ItemFlags ModbusDeviceListModel::flags(const QModelIndex &index) const
     return defaultFlags & ~Qt::ItemIsEditable;
 }
 
+QList<ModbusRegister *> ModbusDeviceListModel::allRegisters(ModbusDevice *device) const
+{
+    QList<ModbusRegister *> registers;
+    for (int i = 0; i < rowCount(); ++i) {
+        QStandardItem *deviceItem = this->item(i);
+        ModbusDevice *itemDevice = deviceItem->data(USER_ROLE_MODBUS_DEVICE).value<ModbusDevice *>();
+        if (itemDevice != device) {
+            continue;
+        }
+
+        for (int j = 0; j < deviceItem->rowCount(); ++j) {
+            QStandardItem *tableItem = deviceItem->child(j);
+            for (int k = 0; k < tableItem->rowCount(); ++k) {
+                QStandardItem *registerItem = tableItem->child(k);
+                ModbusRegister *reg = registerItem->data(USER_ROLE_MODBUS_REGISTER)
+                                          .value<ModbusRegister *>();
+                if (reg) {
+                    registers.append(reg);
+                }
+            }
+        }
+    }
+    return registers;
+}
+
 void ModbusDeviceListModel::newDevice(const QJsonObject &parameters)
 {
     DeviceConnectionParameters ctx = json2DeviceConnectionParameters(parameters);

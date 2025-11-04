@@ -27,6 +27,7 @@ ModbusDeviceEditor::ModbusDeviceEditor(QWidget *parent)
     setupRtuParity(ui->comboBoxRtuParity);
     setupRtuStopBits(ui->comboBoxRtuStopBits);
     setupRtuBaudRate(ui->comboBoxRtuBaudRate);
+    setupIpAddresses(ui->comboBoxTcpAddress);
 
     connect(ui->pushButtonRefresh,
             &QPushButton::clicked,
@@ -43,6 +44,17 @@ ModbusDeviceEditor::ModbusDeviceEditor(QWidget *parent)
 ModbusDeviceEditor::~ModbusDeviceEditor()
 {
     delete ui;
+}
+
+void ModbusDeviceEditor::setDeviceName(const QString &name)
+{
+    ui->lineEditDeviceName->setText(name);
+}
+
+void ModbusDeviceEditor::setDeviceType(int type)
+{
+    int index = ui->comboBoxDeviceType->findData(type);
+    ui->comboBoxDeviceType->setCurrentIndex(index == -1 ? 0 : index);
 }
 
 void ModbusDeviceEditor::load(const QJsonObject &parameters)

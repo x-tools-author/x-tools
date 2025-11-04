@@ -88,7 +88,13 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
 
 #if 1
     ModbusDeviceEditor editor(xMainWindow);
+    editor.setDeviceName("TCP Client Device");
+    editor.setDeviceType(static_cast<int>(XModbusType::TcpClient));
     QJsonObject parameters = editor.save();
+    m_model->newDevice(parameters);
+    editor.setDeviceName("TCP Server Device");
+    editor.setDeviceType(static_cast<int>(XModbusType::TcpServer));
+    parameters = editor.save();
     m_model->newDevice(parameters);
     ui->treeView->expandAll();
 #endif
@@ -246,11 +252,22 @@ void ModbusDeviceListView::onStartButtonClicked()
 
     // Start client second
     for (ModbusDevice *device : devices) {
-        if (device->isClient()) {
-            if (!device->isRunning()) {
-                device->start();
-            }
+        if (!device->isClient()) {
+            continue;
         }
+
+        if (device->isRunning()) {
+            continue;
+        }
+
+        QStandardItem *item = itemFromDevice(device);
+        if (!item) {
+            continue;
+        }
+
+        QList<ModbusRegister *> registers = m_model->allRegisters(device);
+        device->setModbusRegisters(registers);
+        device->start();
     }
 }
 
@@ -262,6 +279,7 @@ void ModbusDeviceListView::onStopButtonClicked()
         if (device->isClient()) {
             if (device->isRunning()) {
                 device->requestInterruption();
+                device->exit();
                 device->wait();
             }
         }
@@ -272,6 +290,7 @@ void ModbusDeviceListView::onStopButtonClicked()
         if (!device->isClient()) {
             if (device->isRunning()) {
                 device->requestInterruption();
+                device->exit();
                 device->wait();
             }
         }

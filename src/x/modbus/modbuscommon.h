@@ -32,6 +32,8 @@ void setupRtuParity(QComboBox *cb);
 void setupRtuStopBits(QComboBox *cb);
 void setupRtuBaudRate(QComboBox *cb);
 
+void setupIpAddresses(QComboBox *cb);
+
 struct DeviceConnectionParameterKeys
 {
     const QString deviceName{"deviceName"};

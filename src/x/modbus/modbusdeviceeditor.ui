@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>320</width>
-    <height>450</height>
+    <height>479</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -44,7 +44,17 @@
     </widget>
    </item>
    <item row="11" column="1">
-    <widget class="QSpinBox" name="spinBoxTcpPort"/>
+    <widget class="QSpinBox" name="spinBoxTcpPort">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>65535</number>
+     </property>
+     <property name="value">
+      <number>502</number>
+     </property>
+    </widget>
    </item>
    <item row="14" column="0">
     <widget class="QLabel" name="labelTimeout">
@@ -112,7 +122,11 @@
     </widget>
    </item>
    <item row="13" column="1">
-    <widget class="QSpinBox" name="spinBoxNumberOfRetries"/>
+    <widget class="QSpinBox" name="spinBoxNumberOfRetries">
+     <property name="value">
+      <number>1</number>
+     </property>
+    </widget>
    </item>
    <item row="1" column="1">
     <widget class="QComboBox" name="comboBoxDeviceType"/>
@@ -192,7 +206,17 @@
     </widget>
    </item>
    <item row="16" column="1">
-    <widget class="QSpinBox" name="spinBoxServerAddress"/>
+    <widget class="QSpinBox" name="spinBoxServerAddress">
+     <property name="maximum">
+      <number>256</number>
+     </property>
+     <property name="value">
+      <number>1</number>
+     </property>
+     <property name="displayIntegerBase">
+      <number>10</number>
+     </property>
+    </widget>
    </item>
    <item row="10" column="1">
     <widget class="QComboBox" name="comboBoxTcpAddress"/>
@@ -201,7 +225,14 @@
     <widget class="QComboBox" name="comboBoxRtuParity"/>
    </item>
    <item row="14" column="1">
-    <widget class="QSpinBox" name="spinBoxTimeout"/>
+    <widget class="QSpinBox" name="spinBoxTimeout">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+     <property name="value">
+      <number>10</number>
+     </property>
+    </widget>
    </item>
    <item row="6" column="0">
     <widget class="QLabel" name="labelDataBits">
