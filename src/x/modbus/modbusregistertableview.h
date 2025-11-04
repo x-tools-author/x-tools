@@ -18,6 +18,7 @@ namespace xModbus {
 
 class ModbusRegisterTable;
 class ModbusRegisterTableFilter;
+class ModbusRegisterDelegate;
 class ModbusRegisterTableView : public QWidget
 {
     Q_OBJECT
@@ -31,6 +32,7 @@ private:
     ModbusRegisterTable *m_registerTable{nullptr};
     ModbusRegisterTableFilter *m_registerTableFilter{nullptr};
     Ui::ModbusRegisterTableView *ui{nullptr};
+    ModbusRegisterDelegate *m_registerDelegate{nullptr};
 };
 
 } // namespace xModbus

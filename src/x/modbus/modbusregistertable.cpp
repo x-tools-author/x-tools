@@ -9,14 +9,15 @@
 #include "modbusregistertable.h"
 
 #define REGISTER_TABLE_ADDRESS 0
-#define REGISTER_TABLE_TYPE 1
-#define REGISTER_TABLE_MIN 2
-#define REGISTER_TABLE_MAX 3
-#define REGISTER_TABLE_DECIMALS 4
-#define REGISTER_TABLE_NAME 5
-#define REGISTER_TABLE_VALUE 6
-#define REGISTER_TABLE_UNIT 7
-#define REGISTER_TABLE_DESCRIPTION 8
+#define REGISTER_TABLE_SERVER_ADDRESS 1
+#define REGISTER_TABLE_TYPE 2
+#define REGISTER_TABLE_MIN 3
+#define REGISTER_TABLE_MAX 4
+#define REGISTER_TABLE_DECIMALS 5
+#define REGISTER_TABLE_NAME 6
+#define REGISTER_TABLE_VALUE 7
+#define REGISTER_TABLE_UNIT 8
+#define REGISTER_TABLE_DESCRIPTION 9
 
 namespace xModbus {
 
@@ -40,7 +41,7 @@ int ModbusRegisterTable::rowCount(const QModelIndex &parent) const
 
 int ModbusRegisterTable::columnCount(const QModelIndex &parent) const
 {
-    return 9;
+    return 10;
 }
 
 QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
@@ -65,6 +66,8 @@ QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
     switch (index.column()) {
     case REGISTER_TABLE_ADDRESS:
         return QString("0x%1").arg(item->address, 4, 16, QChar('0').toUpper());
+    case REGISTER_TABLE_SERVER_ADDRESS:
+        return item->serverAddress;
     case REGISTER_TABLE_NAME:
         return item->name;
     case REGISTER_TABLE_TYPE:
@@ -98,6 +101,9 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
     switch (index.column()) {
     case REGISTER_TABLE_ADDRESS:
         item->address = value.toUInt();
+        break;
+    case REGISTER_TABLE_SERVER_ADDRESS:
+        item->serverAddress = value.toInt();
         break;
     case REGISTER_TABLE_NAME:
         item->name = value.toString();
@@ -137,9 +143,11 @@ QVariant ModbusRegisterTable::headerData(int section, Qt::Orientation orientatio
         if (orientation == Qt::Horizontal) {
             switch (section) {
             case REGISTER_TABLE_ADDRESS:
-                return tr("Address");
+                return tr("Register Address");
             case REGISTER_TABLE_NAME:
                 return tr("Name");
+            case REGISTER_TABLE_SERVER_ADDRESS:
+                return tr("Server Address");
             case REGISTER_TABLE_TYPE:
                 return tr("Type");
             case REGISTER_TABLE_UNIT:

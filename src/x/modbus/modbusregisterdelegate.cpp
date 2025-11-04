@@ -8,6 +8,11 @@
  **************************************************************************************************/
 #include "modbusregisterdelegate.h"
 
+#include <QCheckbox>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QSpinBox>
+
 namespace xModbus {
 
 ModbusRegisterDelegate::ModbusRegisterDelegate(QObject *parent)
@@ -15,5 +20,25 @@ ModbusRegisterDelegate::ModbusRegisterDelegate(QObject *parent)
 {}
 
 ModbusRegisterDelegate::~ModbusRegisterDelegate() {}
+
+QWidget *ModbusRegisterDelegate::createEditor(QWidget *parent,
+                                              const QStyleOptionViewItem &option,
+                                              const QModelIndex &index) const
+{
+    //return QStyledItemDelegate::createEditor(parent, option, index);
+    return nullptr;
+}
+
+void ModbusRegisterDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
+{
+    //QStyledItemDelegate::setEditorData(editor, index);
+}
+
+void ModbusRegisterDelegate::setModelData(QWidget *editor,
+                                          QAbstractItemModel *model,
+                                          const QModelIndex &index) const
+{
+    //QStyledItemDelegate::setModelData(editor, model, index);
+}
 
 } // namespace xModbus

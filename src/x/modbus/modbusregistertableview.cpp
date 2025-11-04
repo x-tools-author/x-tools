@@ -9,6 +9,7 @@
 #include "modbusregistertableview.h"
 #include "ui_modbusregistertableview.h"
 
+#include "modbusregisterdelegate.h"
 #include "modbusregistertable.h"
 #include "modbusregistertablefilter.h"
 
@@ -21,11 +22,13 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     ui->setupUi(this);
     m_registerTable = new ModbusRegisterTable(this);
     m_registerTableFilter = new ModbusRegisterTableFilter(this);
+    m_registerDelegate = new ModbusRegisterDelegate(this);
     m_registerTableFilter->setSourceModel(m_registerTable);
     ui->tableView->setModel(m_registerTableFilter);
     ui->tableView->setAlternatingRowColors(true);
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
+    ui->tableView->setItemDelegate(m_registerDelegate);
 }
 
 ModbusRegisterTableView::~ModbusRegisterTableView()
