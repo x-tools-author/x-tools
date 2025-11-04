@@ -8,10 +8,14 @@
  **************************************************************************************************/
 #include "modbusregisterdelegate.h"
 
+#include <QAbstractItemModel>
 #include <QCheckbox>
 #include <QComboBox>
 #include <QLineEdit>
 #include <QSpinBox>
+
+#include "modbusregistertable.h"
+#include "modbusregistertablefilter.h"
 
 namespace xModbus {
 
@@ -21,25 +25,58 @@ ModbusRegisterDelegate::ModbusRegisterDelegate(QObject *parent)
 
 ModbusRegisterDelegate::~ModbusRegisterDelegate() {}
 
+ModbusRegisterTable *getRegisterTable(const QModelIndex &index)
+{
+    const auto *model = index.model();
+    const auto *filter = qobject_cast<const ModbusRegisterTableFilter *>(model);
+    if (!filter) {
+        return nullptr;
+    }
+
+    const auto *sourceModel = filter->sourceModel();
+    const auto *registerTable = qobject_cast<const ModbusRegisterTable *>(sourceModel);
+    return const_cast<ModbusRegisterTable *>(registerTable);
+}
+
 QWidget *ModbusRegisterDelegate::createEditor(QWidget *parent,
                                               const QStyleOptionViewItem &option,
                                               const QModelIndex &index) const
 {
-    //return QStyledItemDelegate::createEditor(parent, option, index);
-    QLineEdit *editor = new QLineEdit(parent);
-    return editor;
+    int column = index.column();
+    switch (column) {
+    case REGISTER_TABLE_TYPE:
+        return new QComboBox(parent);
+    case REGISTER_TABLE_SERVER_ADDRESS:
+    case REGISTER_TABLE_MIN:
+    case REGISTER_TABLE_MAX:
+    case REGISTER_TABLE_DECIMALS:
+    case REGISTER_TABLE_VALUE:
+        return new QSpinBox(parent);
+    case REGISTER_TABLE_NAME:
+    case REGISTER_TABLE_UNIT:
+    case REGISTER_TABLE_DESCRIPTION:
+        return new QLineEdit(parent);
+    default:
+        return nullptr;
+    }
 }
 
 void ModbusRegisterDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
-    //QStyledItemDelegate::setEditorData(editor, index);
+    if (!editor || !index.isValid()) {
+        return;
+    }
+
+    QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
+    if (lineEdit) {
+        QString value = index.model()->data(index, Qt::DisplayRole).toString();
+        lineEdit->setText(value);
+    }
 }
 
 void ModbusRegisterDelegate::setModelData(QWidget *editor,
                                           QAbstractItemModel *model,
                                           const QModelIndex &index) const
-{
-    //QStyledItemDelegate::setModelData(editor, model, index);
-}
+{}
 
 } // namespace xModbus

@@ -8,17 +8,6 @@
  **************************************************************************************************/
 #include "modbusregistertable.h"
 
-#define REGISTER_TABLE_ADDRESS 0
-#define REGISTER_TABLE_SERVER_ADDRESS 1
-#define REGISTER_TABLE_TYPE 2
-#define REGISTER_TABLE_MIN 3
-#define REGISTER_TABLE_MAX 4
-#define REGISTER_TABLE_DECIMALS 5
-#define REGISTER_TABLE_NAME 6
-#define REGISTER_TABLE_VALUE 7
-#define REGISTER_TABLE_UNIT 8
-#define REGISTER_TABLE_DESCRIPTION 9
-
 namespace xModbus {
 
 ModbusRegisterTable::ModbusRegisterTable(QObject *parent)
@@ -203,6 +192,20 @@ bool ModbusRegisterTable::removeRows(int row, int count, const QModelIndex &pare
     endRemoveRows();
 
     return true;
+}
+
+Qt::ItemFlags ModbusRegisterTable::flags(const QModelIndex &index) const
+{
+    if (!index.isValid()) {
+        return QAbstractTableModel::flags(index);
+    }
+
+    auto defaultFlags = QAbstractTableModel::flags(index);
+    if (index.column() != REGISTER_TABLE_ADDRESS) {
+        return defaultFlags | Qt::ItemIsEditable;
+    }
+
+    return defaultFlags;
 }
 
 } // namespace xModbus
