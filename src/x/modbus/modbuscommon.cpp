@@ -136,6 +136,7 @@ DeviceConnectionParameters json2DeviceConnectionParameters(const QJsonObject &pa
     DeviceConnectionParameters connectionParams;
     DeviceConnectionParameterKeys keys;
 
+    QString defaultDeviceName = QObject::tr("Untitled");
     int defaultDeviceType = static_cast<int>(XModbusType::RtuClient);
     int defaultDataBits = QSerialPort::Data8;
     int defaultParity = QSerialPort::NoParity;
@@ -147,7 +148,7 @@ DeviceConnectionParameters json2DeviceConnectionParameters(const QJsonObject &pa
     int defaultServerAddress = 0;
     bool defaultListenOnlyMode = false;
 
-    connectionParams.deviceName = params.value(keys.deviceName).toString("Untitled");
+    connectionParams.deviceName = params.value(keys.deviceName).toString(defaultDeviceName);
     connectionParams.deviceType = params.value(keys.deviceType).toInt(defaultDeviceType);
     connectionParams.portName = params.value(keys.portName).toString();
     connectionParams.dataBits = params.value(keys.dataBits).toInt(defaultDataBits);
