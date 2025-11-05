@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonArray>
 #include <QJsonObject>
 #include <QModbusDataUnit>
 #include <QStandardItemModel>
@@ -29,9 +30,11 @@ public:
 
     Qt::ItemFlags flags(const QModelIndex &index) const override;
     QList<ModbusRegister *> allRegisters(ModbusDevice *device) const;
+    QJsonArray save() const;
+    void load(const QJsonArray &array);
 
 public:
-    void newDevice(const QJsonObject &parameters);
+    QStandardItem *newDevice(const QJsonObject &parameters);
     void newDefaultTables(QStandardItem *deviceItem);
     void newRegisters(QStandardItem *tableItem,
                       QModbusDataUnit::RegisterType type,

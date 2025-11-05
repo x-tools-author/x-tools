@@ -114,6 +114,9 @@ void ModbusDeviceListView::load(const QJsonObject &obj)
     QJsonArray devicesArray = obj.value(keys.devices).toArray();
     if (devicesArray.isEmpty()) {
         createDefaultDevices();
+    } else {
+        m_model->load(devicesArray);
+        ui->treeView->expandAll();
     }
 }
 
@@ -372,14 +375,19 @@ QList<ModbusRegister *> ModbusDeviceListView::registers(ModbusDevice *device)
 void ModbusDeviceListView::createDefaultDevices()
 {
     ModbusDeviceEditor editor(xMainWindow);
+
     editor.setDeviceName("TCP Client Device");
     editor.setDeviceType(static_cast<int>(XModbusType::TcpClient));
     QJsonObject parameters = editor.save();
-    m_model->newDevice(parameters);
+    QStandardItem *item = m_model->newDevice(parameters);
+    m_model->newDefaultTables(item);
+
     editor.setDeviceName("TCP Server Device");
     editor.setDeviceType(static_cast<int>(XModbusType::TcpServer));
     parameters = editor.save();
-    m_model->newDevice(parameters);
+    item = m_model->newDevice(parameters);
+    m_model->newDefaultTables(item);
+
     ui->treeView->expandAll();
 }
 

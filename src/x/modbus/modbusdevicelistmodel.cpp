@@ -56,7 +56,21 @@ QList<ModbusRegister *> ModbusDeviceListModel::allRegisters(ModbusDevice *device
     return registers;
 }
 
-void ModbusDeviceListModel::newDevice(const QJsonObject &parameters)
+QJsonArray ModbusDeviceListModel::save() const
+{
+    QJsonArray array;
+    return array;
+}
+
+void ModbusDeviceListModel::load(const QJsonArray &array)
+{
+    for (int i = 0; i < array.size(); ++i) {
+        QJsonObject deviceObj = array.at(i).toObject();
+        newDevice(deviceObj);
+    }
+}
+
+QStandardItem *ModbusDeviceListModel::newDevice(const QJsonObject &parameters)
 {
     DeviceConnectionParameters ctx = json2DeviceConnectionParameters(parameters);
     ModbusDevice *device = new ModbusDevice(this);
@@ -64,8 +78,7 @@ void ModbusDeviceListModel::newDevice(const QJsonObject &parameters)
     QStandardItem *item = new QStandardItem(ctx.deviceName);
     item->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
     appendRow(item);
-
-    newDefaultTables(item);
+    return item;
 }
 
 void ModbusDeviceListModel::newDefaultTables(QStandardItem *deviceItem)

@@ -75,6 +75,10 @@ quint16 ModbusRegister::getValue() const
 
 void ModbusRegister::setValue(quint16 newValue)
 {
+    if (type == QModbusDataUnit::Coils || type == QModbusDataUnit::DiscreteInputs) {
+        newValue = (newValue != 0) ? 1 : 0;
+    }
+
     bool changed = false;
     m_valueMutex.lock();
     if (value != newValue) {
