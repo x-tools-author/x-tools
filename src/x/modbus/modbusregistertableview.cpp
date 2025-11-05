@@ -44,10 +44,20 @@ ModbusRegisterTable *ModbusRegisterTableView::registerTable() const
 
 void ModbusRegisterTableView::selectRow(int row)
 {
-    QModelIndex idx = m_registerTableFilter->index(row, REGISTER_TABLE_NAME);
+    QModelIndex idx = m_registerTableFilter->index(row, 0);
+    if (!idx.isValid()) {
+        qWarning("ModbusRegisterTableView::selectRow: invalid row %d", row);
+        return;
+    }
+
+    ui->tableView->clearSelection();
     ui->tableView->setCurrentIndex(idx);
     ui->tableView->scrollTo(idx, QAbstractItemView::PositionAtTop);
-    ui->tableView->setFocus();
+}
+
+void ModbusRegisterTableView::setServerAddressColumnVisible(bool visible)
+{
+    ui->tableView->setColumnHidden(REGISTER_TABLE_SERVER_ADDRESS, !visible);
 }
 
 } // namespace xModbus

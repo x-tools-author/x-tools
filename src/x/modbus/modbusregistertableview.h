@@ -28,6 +28,7 @@ public:
 
     ModbusRegisterTable *registerTable() const;
     void selectRow(int row);
+    void setServerAddressColumnVisible(bool visible);
 
 private:
     ModbusRegisterTable *m_registerTable{nullptr};

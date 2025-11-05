@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "modbusregistertable.h"
 
+#include "modbuscommon.h"
+
 namespace xModbus {
 
 ModbusRegisterTable::ModbusRegisterTable(QObject *parent)
@@ -58,7 +60,7 @@ QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
         case REGISTER_TABLE_NAME:
             return item->name;
         case REGISTER_TABLE_TYPE:
-            return item->type;
+            return registerTypeToString(item->type);
         case REGISTER_TABLE_UNIT:
             return item->unit;
         case REGISTER_TABLE_DESCRIPTION:

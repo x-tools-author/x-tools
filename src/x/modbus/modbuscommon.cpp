@@ -27,6 +27,22 @@ QWidget *topLevelMainWindow()
     return nullptr;
 }
 
+QString registerTypeToString(QModbusDataUnit::RegisterType type)
+{
+    switch (type) {
+    case QModbusDataUnit::DiscreteInputs:
+        return QObject::tr("Discrete Inputs");
+    case QModbusDataUnit::Coils:
+        return QObject::tr("Coils");
+    case QModbusDataUnit::InputRegisters:
+        return QObject::tr("Input Registers");
+    case QModbusDataUnit::HoldingRegisters:
+        return QObject::tr("Holding Registers");
+    default:
+        return QObject::tr("Invalid");
+    }
+}
+
 void setupModebusDeviceType(QComboBox *cb)
 {
     cb->clear();

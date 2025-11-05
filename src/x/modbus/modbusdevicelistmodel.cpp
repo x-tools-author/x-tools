@@ -72,27 +72,28 @@ void ModbusDeviceListModel::newDefaultTables(QStandardItem *deviceItem)
 {
     struct RegisterGroup
     {
-        QString name;
         QModbusDataUnit::RegisterType type;
         int startAddress;
         int quantity;
     };
 
-    QList<RegisterGroup> registerGroups
-        = {{tr("Coils"), QModbusDataUnit::Coils, 0, 10},
-           {tr("Discrete Inputs"), QModbusDataUnit::DiscreteInputs, 0, 10},
-           {tr("Holding Registers"), QModbusDataUnit::HoldingRegisters, 0, 10},
-           {tr("Input Registers"), QModbusDataUnit::InputRegisters, 0, 10}};
+    QList<RegisterGroup> registerGroups = {{QModbusDataUnit::Coils, 0, 10},
+                                           {QModbusDataUnit::DiscreteInputs, 0, 10},
+                                           {QModbusDataUnit::HoldingRegisters, 0, 10},
+                                           {QModbusDataUnit::InputRegisters, 0, 10}};
 
     ModbusDevice *device = deviceItem->data(USER_ROLE_MODBUS_DEVICE).value<ModbusDevice *>();
     for (const RegisterGroup &group : registerGroups) {
         ModbusRegisterTableView *registerView = new ModbusRegisterTableView();
+        if (!device->isClient()) {
+            registerView->setServerAddressColumnVisible(false);
+        }
         connect(registerView->registerTable(),
                 &ModbusRegisterTable::registerValueChanged,
                 device,
                 &ModbusDevice::setValue);
 
-        registerView->setWindowTitle(group.name);
+        registerView->setWindowTitle(registerTypeToString(group.type));
         QStandardItem *registerItem = new QStandardItem(registerView->windowTitle());
         registerItem->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
         registerItem->setData(QVariant::fromValue(registerView), USER_ROLE_MODBUS_TABLE);

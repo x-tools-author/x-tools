@@ -18,12 +18,16 @@
 
 namespace xModbus {
 
+// -------------------------------------------------------------------------------------------------
+QWidget *topLevelMainWindow();
+
+// -------------------------------------------------------------------------------------------------
 #define xCoils QModbusDataUnit::Coils
 #define xDiscreteInputs QModbusDataUnit::DiscreteInputs
 #define xInputRegisters QModbusDataUnit::InputRegisters
 #define xHoldingRegisters QModbusDataUnit::HoldingRegisters
 
-QWidget *topLevelMainWindow();
+QString registerTypeToString(QModbusDataUnit::RegisterType type);
 
 enum class XModbusType { RtuClient, RtuServer, TcpClient, TcpServer };
 void setupModebusDeviceType(QComboBox *cb);
