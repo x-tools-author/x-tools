@@ -241,6 +241,16 @@ void ModbusDeviceListView::onStartButtonClicked()
 {
     QList<ModbusDevice *> devices = this->devices();
 
+    for (ModbusDevice *device : devices) {
+        QStandardItem *item = itemFromDevice(device);
+        if (!item) {
+            continue;
+        }
+
+        QList<ModbusRegister *> registers = m_model->allRegisters(device);
+        device->setModbusRegisters(registers);
+    }
+
     // Start server first
     for (ModbusDevice *device : devices) {
         if (!device->isClient()) {
@@ -252,22 +262,11 @@ void ModbusDeviceListView::onStartButtonClicked()
 
     // Start client second
     for (ModbusDevice *device : devices) {
-        if (!device->isClient()) {
-            continue;
+        if (device->isClient()) {
+            if (!device->isRunning()) {
+                device->start();
+            }
         }
-
-        if (device->isRunning()) {
-            continue;
-        }
-
-        QStandardItem *item = itemFromDevice(device);
-        if (!item) {
-            continue;
-        }
-
-        QList<ModbusRegister *> registers = m_model->allRegisters(device);
-        device->setModbusRegisters(registers);
-        device->start();
     }
 }
 

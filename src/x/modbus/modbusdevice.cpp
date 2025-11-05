@@ -195,6 +195,13 @@ QModbusDevice *ModbusDevice::newModbusDevice(const DeviceConnectionParameters &p
         server->setServerAddress(params.serverAddress);
         server->setValue(QModbusServer::ListenOnlyMode, params.listenOnlyMode);
         server->setMap(dataUnitMap());
+
+        connect(server,
+                &QModbusServer::dataWritten,
+                server,
+                [=](QModbusDataUnit::RegisterType table, int address, int size) {
+                    onDataWritten(table, address, size);
+                });
     }
 
     return device;
@@ -208,6 +215,12 @@ QModbusDataUnitMap ModbusDevice::dataUnitMap() const
     dataUnitMap.insert(xDiscreteInputs, QModbusDataUnit(xDiscreteInputs, 0, 65535));
     dataUnitMap.insert(xInputRegisters, QModbusDataUnit(xInputRegisters, 0, 65535));
     dataUnitMap.insert(xHoldingRegisters, QModbusDataUnit(xHoldingRegisters, 0, 65535));
+
+    m_contextMutex.lock();
+    for (ModbusRegister *reg : m_registers) {
+        dataUnitMap[reg->type].setValue(reg->address, reg->value);
+    }
+    m_contextMutex.unlock();
 
     return dataUnitMap;
 }
@@ -374,10 +387,22 @@ void ModbusDevice::setupModbusReply(QModbusReply *reply)
     connect(reply, &QModbusReply::finished, reply, [=]() {
         if (reply->error() == QModbusDevice::NoError) {
             const QModbusDataUnit unit = reply->result();
-            qInfo() << "Read response received - Type:" << unit.registerType()
-                    << "Start Address:" << unit.startAddress()
-                    << "Value Count:" << unit.valueCount();
-            // 处理读取的数据
+            int serverAddress = reply->serverAddress();
+            int registerType = unit.registerType();
+            for (quint16 i = 0; i < unit.valueCount(); ++i) {
+                quint16 address = unit.startAddress() + i;
+                quint16 value = unit.value(i);
+
+                // 更新对应的ModbusRegister的值
+                m_contextMutex.lock();
+                for (ModbusRegister *reg : m_registers) {
+                    if (reg->serverAddress == serverAddress && reg->type == registerType
+                        && reg->address == address) {
+                        reg->setValue(value);
+                    }
+                }
+                m_contextMutex.unlock();
+            }
         } else {
             qInfo() << "Read error:" << reply->errorString();
         }
@@ -395,6 +420,10 @@ void ModbusDevice::setValueInThreadInner(int serverAddress,
         return;
     }
 
+    if (registerType == QModbusDataUnit::Coils || registerType == QModbusDataUnit::DiscreteInputs) {
+        value = value ? 1 : 0;
+    }
+
     if (isClient()) {
         QModbusClient *client = qobject_cast<QModbusClient *>(m_device);
         QModbusDataUnit writeUnit(QModbusDataUnit::RegisterType(registerType),
@@ -402,7 +431,9 @@ void ModbusDevice::setValueInThreadInner(int serverAddress,
                                   QList<quint16>() << value);
         QModbusReply *reply = client->sendWriteRequest(writeUnit, serverAddress);
         if (!reply) {
-            qInfo() << "Failed to send write request:" << client->errorString();
+            qInfo() << "Failed to send write request:" << client->errorString()
+                    << writeUnit.startAddress() << writeUnit.values() << serverAddress
+                    << registerType;
             return;
         }
 
@@ -415,9 +446,7 @@ void ModbusDevice::setValueInThreadInner(int serverAddress,
 
             reply->deleteLater();
         });
-    }
-
-    else {
+    } else {
         QModbusServer *server = qobject_cast<QModbusServer *>(m_device);
         bool success = server->setData(QModbusDataUnit::RegisterType(registerType), address, value);
         if (success) {
@@ -453,9 +482,39 @@ void ModbusDevice::onSendReadRequestsTimerTimeout()
     m_sendReadRequestsTimer->start();
 }
 
-void ModbusDevice::onErrorOccurred(QModbusDevice::Error error)
+void ModbusDevice::onDataWritten(QModbusDataUnit::RegisterType table, int address, int size)
 {
-    qInfo() << "Modbus device error occurred:" << error;
+    // Just for server
+    if (isClient()) {
+        return;
+    }
+
+    QModbusServer *server = qobject_cast<QModbusServer *>(m_device);
+    if (!server) {
+        return;
+    }
+
+    int serverAddress = server->serverAddress();
+    for (int i = 0; i < size; ++i) {
+        quint16 value = 0;
+        int startAddr = address + i;
+        bool ret = server->data(table, startAddr, &value);
+        if (ret == false) {
+            emit logMessage(tr("Failed to get written data at address %1").arg(startAddr), true);
+            continue;
+        }
+
+        m_contextMutex.lock();
+        for (ModbusRegister *reg : m_registers) {
+            bool matched = (reg->type == table);
+            matched &= (reg->address == startAddr);
+            matched &= (reg->serverAddress == serverAddress);
+            if (matched) {
+                reg->setValue(value);
+            }
+        }
+        m_contextMutex.unlock();
+    }
 }
 
 } // namespace xModbus

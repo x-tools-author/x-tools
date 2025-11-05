@@ -79,7 +79,7 @@ private:
     void setValueInThreadInner(int serverAddress, int registerType, quint16 address, quint16 value);
 
     void onSendReadRequestsTimerTimeout();
-    void onErrorOccurred(QModbusDevice::Error error);
+    void onDataWritten(QModbusDataUnit::RegisterType table, int address, int size);
 };
 
 } // namespace xModbus

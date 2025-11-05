@@ -140,27 +140,61 @@ void ModbusRegisterDelegate::setModelData(QWidget *editor,
     }
 
     const QModelIndex tableIndex = registerTableFilter->mapToSource(index);
+    int row = tableIndex.row();
     auto registerTable = getRegisterTable(index);
     if (!registerTable) {
         return;
     }
 
-    if (column == REGISTER_TABLE_TYPE) {
+    bool isComboBox = column == REGISTER_TABLE_TYPE;
+    bool isSpinBox = column == REGISTER_TABLE_SERVER_ADDRESS;
+    isSpinBox |= column == REGISTER_TABLE_MIN;
+    isSpinBox |= column == REGISTER_TABLE_MAX;
+    isSpinBox |= column == REGISTER_TABLE_VALUE;
+    isSpinBox |= column == REGISTER_TABLE_DECIMALS;
+    bool isLineEdit = column == REGISTER_TABLE_NAME;
+    isLineEdit |= column == REGISTER_TABLE_UNIT;
+    isLineEdit |= column == REGISTER_TABLE_DESCRIPTION;
+
+    if (isComboBox) {
         QComboBox *comboBox = qobject_cast<QComboBox *>(editor);
         if (comboBox) {
             int type = comboBox->currentData().toInt();
             registerTable->setData(tableIndex, type, Qt::EditRole);
         }
-    } else if (column == REGISTER_TABLE_SERVER_ADDRESS || column == REGISTER_TABLE_MIN
-               || column == REGISTER_TABLE_MAX || column == REGISTER_TABLE_VALUE
-               || column == REGISTER_TABLE_DECIMALS) {
+    } else if (isSpinBox) {
         QSpinBox *spinBox = qobject_cast<QSpinBox *>(editor);
-        if (spinBox) {
-            int intValue = spinBox->value();
-            registerTable->setData(tableIndex, intValue, Qt::EditRole);
+        if (!spinBox) {
+            return;
         }
-    } else if (column == REGISTER_TABLE_NAME || column == REGISTER_TABLE_UNIT
-               || column == REGISTER_TABLE_DESCRIPTION) {
+
+        int intValue = spinBox->value();
+        if (column == REGISTER_TABLE_VALUE) {
+            // Clamp the value between min and max
+            QModelIndex minIndex = registerTable->index(row, REGISTER_TABLE_MIN);
+            QModelIndex maxIndex = registerTable->index(row, REGISTER_TABLE_MAX);
+            QVariant minVar = registerTable->data(minIndex, Qt::EditRole);
+            QVariant maxVar = registerTable->data(maxIndex, Qt::EditRole);
+
+            int minValue = minVar.toInt();
+            int maxValue = maxVar.toInt();
+            if (intValue < minValue) {
+                intValue = minValue;
+            } else if (intValue > maxValue) {
+                intValue = maxValue;
+            }
+
+            QModelIndex registerTypeIndex = registerTable->index(row, REGISTER_TABLE_TYPE);
+            int registerType = registerTable->data(registerTypeIndex, Qt::EditRole).toInt();
+            bool isBit = registerType == QModbusDataUnit::Coils;
+            isBit |= registerType == QModbusDataUnit::DiscreteInputs;
+            if (isBit) {
+                intValue = intValue ? 1 : 0;
+            }
+        }
+
+        registerTable->setData(tableIndex, intValue, Qt::EditRole);
+    } else if (isLineEdit) {
         QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
         if (lineEdit) {
             QString text = lineEdit->text();

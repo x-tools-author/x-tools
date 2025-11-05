@@ -21,6 +21,7 @@ void ModbusRegisterTable::addRegisterItem(ModbusRegister *item)
     beginInsertRows(QModelIndex(), m_registerItems.count(), m_registerItems.count());
     m_registerItems.append(item);
     endInsertRows();
+    connect(item, &ModbusRegister::valueChanged, this, [=]() { onRegisterItemValueChanged(item); });
 }
 
 int ModbusRegisterTable::rowCount(const QModelIndex &parent) const
@@ -43,39 +44,66 @@ QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
         }
     }
 
-    if (role != Qt::DisplayRole) {
-        return QVariant();
-    }
-
     if (index.row() < 0 || index.row() >= m_registerItems.count()) {
         return QVariant();
     }
 
     const ModbusRegister *item = m_registerItems.at(index.row());
-    switch (index.column()) {
-    case REGISTER_TABLE_ADDRESS:
-        return QString("0x%1").arg(item->address, 4, 16, QChar('0').toUpper());
-    case REGISTER_TABLE_SERVER_ADDRESS:
-        return item->serverAddress;
-    case REGISTER_TABLE_NAME:
-        return item->name;
-    case REGISTER_TABLE_TYPE:
-        return item->type;
-    case REGISTER_TABLE_UNIT:
-        return item->unit;
-    case REGISTER_TABLE_DESCRIPTION:
-        return item->description;
-    case REGISTER_TABLE_MIN:
-        return item->min;
-    case REGISTER_TABLE_MAX:
-        return item->max;
-    case REGISTER_TABLE_DECIMALS:
-        return item->decimals;
-    case REGISTER_TABLE_VALUE:
-        return QString::number(double(item->value) / qPow(10, item->decimals), 'f', item->decimals);
-    default:
-        return QVariant();
+    if (role == Qt::DisplayRole) {
+        switch (index.column()) {
+        case REGISTER_TABLE_ADDRESS:
+            return QString("0x%1").arg(item->address, 4, 16, QChar('0').toUpper());
+        case REGISTER_TABLE_SERVER_ADDRESS:
+            return item->serverAddress;
+        case REGISTER_TABLE_NAME:
+            return item->name;
+        case REGISTER_TABLE_TYPE:
+            return item->type;
+        case REGISTER_TABLE_UNIT:
+            return item->unit;
+        case REGISTER_TABLE_DESCRIPTION:
+            return item->description;
+        case REGISTER_TABLE_MIN:
+            return item->min;
+        case REGISTER_TABLE_MAX:
+            return item->max;
+        case REGISTER_TABLE_DECIMALS:
+            return item->decimals;
+        case REGISTER_TABLE_VALUE:
+            return QString::number(double(item->value) / qPow(10, item->decimals),
+                                   'f',
+                                   item->decimals);
+        default:
+            return QVariant();
+        }
+    } else if (role == Qt::EditRole) {
+        switch (index.column()) {
+        case REGISTER_TABLE_ADDRESS:
+            return item->address;
+        case REGISTER_TABLE_SERVER_ADDRESS:
+            return item->serverAddress;
+        case REGISTER_TABLE_NAME:
+            return item->name;
+        case REGISTER_TABLE_TYPE:
+            return item->type;
+        case REGISTER_TABLE_UNIT:
+            return item->unit;
+        case REGISTER_TABLE_DESCRIPTION:
+            return item->description;
+        case REGISTER_TABLE_MIN:
+            return item->min;
+        case REGISTER_TABLE_MAX:
+            return item->max;
+        case REGISTER_TABLE_DECIMALS:
+            return item->decimals;
+        case REGISTER_TABLE_VALUE:
+            return item->value;
+        default:
+            return QVariant();
+        }
     }
+
+    return QVariant();
 }
 
 bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &value, int role)
@@ -217,6 +245,17 @@ Qt::ItemFlags ModbusRegisterTable::flags(const QModelIndex &index) const
     }
 
     return defaultFlags;
+}
+
+void ModbusRegisterTable::onRegisterItemValueChanged(ModbusRegister *item)
+{
+    int row = m_registerItems.indexOf(item);
+    if (row == -1) {
+        return;
+    }
+
+    QModelIndex valueIndex = this->index(row, REGISTER_TABLE_VALUE);
+    emit dataChanged(valueIndex, valueIndex, QList<int>() << Qt::DisplayRole);
 }
 
 } // namespace xModbus

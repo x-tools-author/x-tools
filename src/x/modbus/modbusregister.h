@@ -10,6 +10,7 @@
 
 #include <QJsonObject>
 #include <QModbusDataUnit>
+#include <QMutex>
 #include <QObject>
 
 namespace xModbus {
@@ -31,7 +32,6 @@ struct RegisterItemKeys
 class ModbusRegister : public QObject
 {
     Q_OBJECT
-
 public:
     ModbusRegister(QObject *parent = nullptr);
     ModbusRegister(const ModbusRegister &other);
@@ -60,6 +60,9 @@ public:
 
 signals:
     void valueChanged();
+
+private:
+    mutable QMutex m_valueMutex;
 };
 
 } // namespace xModbus

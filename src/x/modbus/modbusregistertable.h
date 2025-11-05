@@ -45,10 +45,14 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const override;
 
 signals:
+    // Emitted when a register's value changes(Change the value by UI)
     void registerValueChanged(int serverAddress, int registerType, quint16 address, quint16 value);
 
 private:
     QList<ModbusRegister *> m_registerItems;
+
+private:
+    void onRegisterItemValueChanged(ModbusRegister *item);
 };
 
 } // namespace xModbus

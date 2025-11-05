@@ -67,13 +67,23 @@ QJsonObject ModbusRegister::save()
 
 quint16 ModbusRegister::getValue() const
 {
+    m_valueMutex.lock();
+    quint16 value = this->value;
+    m_valueMutex.unlock();
     return value;
 }
 
 void ModbusRegister::setValue(quint16 newValue)
 {
+    bool changed = false;
+    m_valueMutex.lock();
     if (value != newValue) {
         value = newValue;
+        changed = true;
+    }
+    m_valueMutex.unlock();
+
+    if (changed) {
         emit valueChanged();
     }
 }
