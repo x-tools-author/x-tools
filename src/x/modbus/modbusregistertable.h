@@ -44,6 +44,9 @@ public:
     bool removeRows(int row, int count, const QModelIndex &parent) override;
     Qt::ItemFlags flags(const QModelIndex &index) const override;
 
+signals:
+    void registerValueChanged(int serverAddress, int registerType, quint16 address, quint16 value);
+
 private:
     QList<ModbusRegister *> m_registerItems;
 };

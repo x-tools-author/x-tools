@@ -29,6 +29,7 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
     ui->tableView->setItemDelegate(m_registerDelegate);
+    ui->tableView->horizontalHeader()->setMinimumSectionSize(100);
 }
 
 ModbusRegisterTableView::~ModbusRegisterTableView()

@@ -87,6 +87,15 @@ void setupRtuBaudRate(QComboBox *cb)
     cb->setCurrentText("9600");
 }
 
+void setupRegisterType(QComboBox *cb)
+{
+    cb->clear();
+    cb->addItem(QObject::tr("Coils"), int(xCoils));
+    cb->addItem(QObject::tr("Discrete Inputs"), int(xDiscreteInputs));
+    cb->addItem(QObject::tr("Input Registers"), int(xInputRegisters));
+    cb->addItem(QObject::tr("Holding Registers"), int(xHoldingRegisters));
+}
+
 void setupIpAddresses(QComboBox *cb)
 {
     cb->clear();

@@ -83,6 +83,11 @@ void ModbusDevice::setModbusRegisters(const QList<ModbusRegister *> &registers)
     }
 }
 
+void ModbusDevice::setValue(int serverAddress, int registerType, quint16 address, quint16 value)
+{
+    emit invokeSetValue(serverAddress, registerType, address, value);
+}
+
 void ModbusDevice::run()
 {
     DeviceConnectionParameters params = parameters();
@@ -121,6 +126,13 @@ void ModbusDevice::run()
         }
         //emit errorOccurred(device->errorString());
     });
+
+    connect(this,
+            &ModbusDevice::invokeSetValue,
+            m_device,
+            [=](int serverAddress, int registerType, quint16 address, quint16 value) {
+                setValueInThreadInner(serverAddress, registerType, address, value);
+            });
 
     if (!m_device->connectDevice()) {
         qInfo() << "Failed to connect Modbus device:" << m_device->errorString();
@@ -372,6 +384,48 @@ void ModbusDevice::setupModbusReply(QModbusReply *reply)
 
         reply->deleteLater();
     });
+}
+
+void ModbusDevice::setValueInThreadInner(int serverAddress,
+                                         int registerType,
+                                         quint16 address,
+                                         quint16 value)
+{
+    if (!m_device) {
+        return;
+    }
+
+    if (isClient()) {
+        QModbusClient *client = qobject_cast<QModbusClient *>(m_device);
+        QModbusDataUnit writeUnit(QModbusDataUnit::RegisterType(registerType),
+                                  address,
+                                  QList<quint16>() << value);
+        QModbusReply *reply = client->sendWriteRequest(writeUnit, serverAddress);
+        if (!reply) {
+            qInfo() << "Failed to send write request:" << client->errorString();
+            return;
+        }
+
+        connect(reply, &QModbusReply::finished, reply, [=]() {
+            if (reply->error() == QModbusDevice::NoError) {
+                qInfo() << "Write response received - Address:" << address << "Value:" << value;
+            } else {
+                qInfo() << "Write error:" << reply->errorString();
+            }
+
+            reply->deleteLater();
+        });
+    }
+
+    else {
+        QModbusServer *server = qobject_cast<QModbusServer *>(m_device);
+        bool success = server->setData(QModbusDataUnit::RegisterType(registerType), address, value);
+        if (success) {
+            qInfo() << "Set value in server - Address:" << address << "Value:" << value;
+        } else {
+            qInfo() << "Failed to set value in server.";
+        }
+    }
 }
 
 void ModbusDevice::onSendReadRequestsTimerTimeout()

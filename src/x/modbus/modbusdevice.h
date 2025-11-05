@@ -39,14 +39,21 @@ public:
     void setParameters(const DeviceConnectionParameters &parameters);
     QList<ModbusRegister *> modbusRegisters() const;
     void setModbusRegisters(const QList<ModbusRegister *> &registers);
+    void setValue(int serverAddress, int registerType, quint16 address, quint16 value);
 
 signals:
     void deviceConnected();
     void deviceDisconnected();
-    void errorOccurred(const QString &errorString);
+    void logMessage(const QString &message, bool isError);
 
 protected:
     void run() override;
+
+private:
+    Q_SIGNAL void invokeSetValue(int serverAddress,
+                                 int registerType,
+                                 quint16 address,
+                                 quint16 value);
 
 private:
     DeviceConnectionParameters m_connectionParameters;
@@ -69,6 +76,7 @@ private:
     QModbusDataUnitMap dataUnitMap() const;
     void updateReadRequestDataUnits();
     void setupModbusReply(QModbusReply *reply);
+    void setValueInThreadInner(int serverAddress, int registerType, quint16 address, quint16 value);
 
     void onSendReadRequestsTimerTimeout();
     void onErrorOccurred(QModbusDevice::Error error);

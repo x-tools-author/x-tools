@@ -87,6 +87,11 @@ void ModbusDeviceListModel::newDefaultTables(QStandardItem *deviceItem)
     ModbusDevice *device = deviceItem->data(USER_ROLE_MODBUS_DEVICE).value<ModbusDevice *>();
     for (const RegisterGroup &group : registerGroups) {
         ModbusRegisterTableView *registerView = new ModbusRegisterTableView();
+        connect(registerView->registerTable(),
+                &ModbusRegisterTable::registerValueChanged,
+                device,
+                &ModbusDevice::setValue);
+
         registerView->setWindowTitle(group.name);
         QStandardItem *registerItem = new QStandardItem(registerView->windowTitle());
         registerItem->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);

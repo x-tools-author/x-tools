@@ -65,12 +65,12 @@ QJsonObject ModbusRegister::save()
     return json;
 }
 
-qint16 ModbusRegister::getValue() const
+quint16 ModbusRegister::getValue() const
 {
     return value;
 }
 
-void ModbusRegister::setValue(qint16 newValue)
+void ModbusRegister::setValue(quint16 newValue)
 {
     if (value != newValue) {
         value = newValue;

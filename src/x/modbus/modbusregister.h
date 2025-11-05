@@ -51,12 +51,12 @@ public:
     double min;                         // 最小值
     double max;                         // 最大值
     int decimals;                       // 小数位
-    qint16 value;                       // 寄存器值
+    quint16 value;                      // 寄存器值
     int serverAddress{1};               // 服务器地址(仅对客户端设备有效)
 
 public:
-    qint16 getValue() const;
-    void setValue(qint16 newValue);
+    quint16 getValue() const;
+    void setValue(quint16 newValue);
 
 signals:
     void valueChanged();

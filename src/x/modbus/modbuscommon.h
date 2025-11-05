@@ -10,6 +10,7 @@
 
 #include <QComboBox>
 #include <QJsonObject>
+#include <QModbusDataUnit>
 #include <QSerialPort>
 #include <QWidget>
 
@@ -31,7 +32,7 @@ void setupRtuDataBits(QComboBox *cb);
 void setupRtuParity(QComboBox *cb);
 void setupRtuStopBits(QComboBox *cb);
 void setupRtuBaudRate(QComboBox *cb);
-
+void setupRegisterType(QComboBox *cb);
 void setupIpAddresses(QComboBox *cb);
 
 struct DeviceConnectionParameterKeys

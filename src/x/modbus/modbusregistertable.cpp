@@ -72,7 +72,7 @@ QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
     case REGISTER_TABLE_DECIMALS:
         return item->decimals;
     case REGISTER_TABLE_VALUE:
-        return item->value;
+        return QString::number(double(item->value) / qPow(10, item->decimals), 'f', item->decimals);
     default:
         return QVariant();
     }
@@ -87,7 +87,9 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
         return false;
 
     ModbusRegister *item = m_registerItems.at(index.row());
-    switch (index.column()) {
+    int column = index.column();
+    int oldRegisterValue = item->value;
+    switch (column) {
     case REGISTER_TABLE_ADDRESS:
         item->address = value.toUInt();
         break;
@@ -116,13 +118,22 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
         item->decimals = value.toInt();
         break;
     case REGISTER_TABLE_VALUE:
-        item->value = static_cast<qint16>(value.toInt());
+        item->value = value.toInt();
         break;
     default:
         return false;
     }
 
     emit dataChanged(index, index);
+    if (column == REGISTER_TABLE_DECIMALS) {
+        QModelIndex valueIndex = this->index(index.row(), REGISTER_TABLE_VALUE);
+        emit dataChanged(valueIndex, valueIndex, QList<int>() << Qt::DisplayRole);
+    }
+
+    if (oldRegisterValue != item->value) {
+        emit registerValueChanged(item->serverAddress, item->type, item->address, item->value);
+    }
+
     return true;
 }
 
