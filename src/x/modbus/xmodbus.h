@@ -9,7 +9,9 @@
 #pragma once
 
 #include <QJsonObject>
+#include <QMenu>
 #include <QToolBar>
+#include <QToolButton>
 #include <QWidget>
 
 namespace Ui {
@@ -30,9 +32,12 @@ public:
 
 private:
     Ui::xModbus* ui;
-    QToolBar* m_toolBar{nullptr};
+    QToolButton* m_cornerToolButton{nullptr};
+    QMenu* m_cornerToolButtonMenu{nullptr};
 
 private:
     void onInvokeShowRegisterView(ModbusRegisterTableView* registerView);
+    void onTableViewsUpdated();
 };
+
 } // namespace xModbus

@@ -53,7 +53,9 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     m_model = new ModbusDeviceListModel(ui->treeView);
     ui->treeView->setModel(m_model);
     ui->treeView->header()->hide();
+#if 0
     ui->treeView->setExpandsOnDoubleClick(false);
+#endif
 #if 0
     ui->tableView->setModel(m_model);
     ui->tableView->setAcceptDrops(true);
@@ -93,6 +95,7 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     connect(ui->toolButtonOpen, &QToolButton::clicked, this, &ModbusDeviceListView::onStartButtonClicked);
     connect(ui->toolButtonClose, &QToolButton::clicked, this, &ModbusDeviceListView::onStopButtonClicked);
     connect(ui->toolButtonTree, &QToolButton::clicked, this, &ModbusDeviceListView::onOpenAllItems);
+    connect(ui->lineEditSearch, &QLineEdit::textChanged, this, &ModbusDeviceListView::onFilterTextChanged);
     // clang-format on
 }
 
@@ -118,6 +121,25 @@ void ModbusDeviceListView::load(const QJsonObject &obj)
         m_model->load(devicesArray);
         ui->treeView->expandAll();
     }
+
+    emit tableViewsUpdated();
+}
+
+QList<ModbusRegisterTableView *> ModbusDeviceListView::registerTableViews()
+{
+    QList<ModbusRegisterTableView *> views;
+    for (int i = 0; i < m_model->rowCount(); ++i) {
+        QStandardItem *deviceItem = m_model->item(i);
+        for (int j = 0; j < deviceItem->rowCount(); ++j) {
+            QStandardItem *tableItem = deviceItem->child(j);
+            auto tableView = tableItem->data(USER_ROLE_MODBUS_TABLE)
+                                 .value<ModbusRegisterTableView *>();
+            if (tableView) {
+                views.append(tableView);
+            }
+        }
+    }
+    return views;
 }
 
 void ModbusDeviceListView::contextMenuEvent(QContextMenuEvent *event)
@@ -231,6 +253,12 @@ void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
             registerView->selectRow(index.row());
             emit invokeShowRegisterView(registerView);
         }
+    } else if (depth == MODBUS_TABLE_DEPTH) {
+        QStandardItem *item = m_model->itemFromIndex(index);
+        auto registerView = item->data(USER_ROLE_MODBUS_TABLE).value<ModbusRegisterTableView *>();
+        if (registerView) {
+            emit invokeShowRegisterView(registerView);
+        }
     }
 }
 
@@ -320,6 +348,8 @@ void ModbusDeviceListView::onStopButtonClicked()
         }
     }
 }
+
+void ModbusDeviceListView::onFilterTextChanged(const QString &text) {}
 
 QList<ModbusDevice *> ModbusDeviceListView::devices()
 {

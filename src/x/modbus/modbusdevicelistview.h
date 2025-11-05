@@ -31,9 +31,11 @@ public:
 
     QJsonObject save();
     void load(const QJsonObject &obj);
+    QList<ModbusRegisterTableView *> registerTableViews();
 
 signals:
     void currentDeviceChanged(ModbusDevice *device);
+    void tableViewsUpdated();
     void invokeShowRegisterView(ModbusRegisterTableView *view);
 
 protected:
@@ -88,6 +90,7 @@ private:
     void onAddMenuAboutToHide();
     void onStartButtonClicked();
     void onStopButtonClicked();
+    void onFilterTextChanged(const QString &text);
 
     QList<ModbusDevice *> devices();
     QStandardItem *itemFromDevice(ModbusDevice *device);
