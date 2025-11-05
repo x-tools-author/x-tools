@@ -34,7 +34,6 @@ private:
 
 private:
     void onRefreshButtonClicked();
-
     void onDeviceTypeChanged();
 };
 
