@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QActionGroup>
 #include <QJsonObject>
 #include <QMenu>
 #include <QToolBar>
@@ -34,10 +35,12 @@ private:
     Ui::xModbus* ui;
     QToolButton* m_cornerToolButton{nullptr};
     QMenu* m_cornerToolButtonMenu{nullptr};
+    QActionGroup* m_cornerToolButtonMenuActionGroup{nullptr};
 
 private:
     void onInvokeShowRegisterView(ModbusRegisterTableView* registerView);
     void onTableViewsUpdated();
+    void onCurrentTabChanged();
 };
 
 } // namespace xModbus

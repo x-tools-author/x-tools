@@ -152,7 +152,6 @@ void LayoutManager::load(const QJsonObject& obj)
     LayoutManagerKeys keys;
     int index = obj.value(keys.xIndex).toInt(0);
     setCurrentIndex(index);
-    qInfo() << obj << keys.xIndex << index;
 
     if (m_modbus) {
         QJsonObject modbusObj = obj.value(keys.xModbus).toObject(QJsonObject());

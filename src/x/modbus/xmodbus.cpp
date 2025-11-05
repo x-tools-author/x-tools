@@ -47,6 +47,7 @@ xModbus::xModbus(QWidget* parent)
             &ModbusDeviceListView::tableViewsUpdated,
             this,
             &xModbus::onTableViewsUpdated);
+    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &xModbus::onCurrentTabChanged);
 }
 
 xModbus::~xModbus()
@@ -87,16 +88,42 @@ void xModbus::onTableViewsUpdated()
     }
 
     auto tableViews = ui->widgetDeviceListView->registerTableViews();
-    for (ModbusRegisterTableView* tableView : tableViews) {
+    for (int i = 0; i < tableViews.count(); ++i) {
+        ModbusRegisterTableView* tableView = tableViews.at(i);
         ui->tabWidget->addTab(tableView, tableView->windowTitle());
     }
     ui->tabWidget->setCurrentWidget(currentWidget);
+
+    if (!m_cornerToolButtonMenuActionGroup) {
+        m_cornerToolButtonMenuActionGroup = new QActionGroup(this);
+    }
+
+    for (QAction* action : m_cornerToolButtonMenuActionGroup->actions()) {
+        m_cornerToolButtonMenuActionGroup->removeAction(action);
+    }
 
     m_cornerToolButtonMenu->clear();
     int count = ui->tabWidget->count();
     for (int i = 0; i < count; ++i) {
         QAction* action = m_cornerToolButtonMenu->addAction(ui->tabWidget->tabText(i));
+        action->setCheckable(true);
+        m_cornerToolButtonMenuActionGroup->addAction(action);
+
+        QWidget* widget = ui->tabWidget->widget(i);
+        if (widget == currentWidget) {
+            action->setChecked(true);
+        }
+
         connect(action, &QAction::triggered, [this, i]() { ui->tabWidget->setCurrentIndex(i); });
+    }
+}
+
+void xModbus::onCurrentTabChanged()
+{
+    int index = ui->tabWidget->currentIndex();
+    QList<QAction*> actions = m_cornerToolButtonMenuActionGroup->actions();
+    if (index >= 0 && index < actions.count()) {
+        actions.at(index)->setChecked(true);
     }
 }
 
