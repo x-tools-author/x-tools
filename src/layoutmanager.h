@@ -22,7 +22,9 @@
 // clang-format off
 namespace xMqtt { class xMqtt; }
 namespace xCanBus { class xCanBus; }
+#if X_ENABLE_X_MODBUS
 namespace xModbus { class xModbus; }
+#endif
 namespace xFlow { class NodeEditor; }
 // clang-format on
 class LayoutManager : public QObject
@@ -51,7 +53,9 @@ private:
     QHash<QWidget*, QToolButton*> m_pageButtons;
 
     xFlow::NodeEditor* m_nodeEditor{nullptr};
+#if X_ENABLE_X_MODBUS
     xModbus::xModbus* m_modbus{nullptr};
+#endif
     xMqtt::xMqtt* m_mqtt{nullptr};
     xCanBus::xCanBus* m_canbus{nullptr};
 };

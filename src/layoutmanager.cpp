@@ -141,8 +141,10 @@ QJsonObject LayoutManager::save()
     LayoutManagerKeys keys;
     QJsonObject obj;
 
+#if X_ENABLE_X_MODBUS
     obj[keys.xIndex] = currentIndex();
     obj[keys.xModbus] = m_modbus ? m_modbus->save() : QJsonObject();
+#endif
 
     return obj;
 }
@@ -153,8 +155,10 @@ void LayoutManager::load(const QJsonObject& obj)
     int index = obj.value(keys.xIndex).toInt(0);
     setCurrentIndex(index);
 
+#if X_ENABLE_X_MODBUS
     if (m_modbus) {
         QJsonObject modbusObj = obj.value(keys.xModbus).toObject(QJsonObject());
         m_modbus->load(modbusObj);
     }
+#endif
 }
