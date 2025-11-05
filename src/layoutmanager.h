@@ -10,6 +10,8 @@
 
 #include <QButtonGroup>
 #include <QHBoxLayout>
+#include <QHash>
+#include <QJsonObject>
 #include <QLabel>
 #include <QMenuBar>
 #include <QObject>
@@ -32,6 +34,11 @@ public:
 
     QToolButton* addLayoutPage(const QString& name, QWidget* page);
     void setupPages();
+    int currentIndex() const;
+    void setCurrentIndex(int index);
+
+    QJsonObject save();
+    void load(const QJsonObject& obj);
 
 private:
     QStackedLayout* m_layout{nullptr};
@@ -41,6 +48,7 @@ private:
     QLabel* m_leftLabel{nullptr};
     QLabel* m_rightLabel{nullptr};
     QMenuBar* m_mainMenuBar{nullptr};
+    QHash<QWidget*, QToolButton*> m_pageButtons;
 
     xFlow::NodeEditor* m_nodeEditor{nullptr};
     xModbus::xModbus* m_modbus{nullptr};

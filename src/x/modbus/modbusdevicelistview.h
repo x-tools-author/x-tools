@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QStandardItem>
 #include <QWidget>
 
@@ -27,6 +28,9 @@ class ModbusDeviceListView : public QWidget
 public:
     explicit ModbusDeviceListView(QWidget *parent = nullptr);
     ~ModbusDeviceListView() override;
+
+    QJsonObject save();
+    void load(const QJsonObject &obj);
 
 signals:
     void currentDeviceChanged(ModbusDevice *device);
@@ -77,6 +81,8 @@ private:
     void onUndo();
     void onRedo();
     void onRemove();
+    void onCloseAllItems();
+    void onOpenAllItems();
     void onItemDoubleClicked(const QModelIndex &index);
     void onAddMenuAboutToShow();
     void onAddMenuAboutToHide();
@@ -86,6 +92,7 @@ private:
     QList<ModbusDevice *> devices();
     QStandardItem *itemFromDevice(ModbusDevice *device);
     QList<ModbusRegister *> registers(ModbusDevice *device);
+    void createDefaultDevices();
 };
 
 } // namespace xModbus

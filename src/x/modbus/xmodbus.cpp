@@ -9,10 +9,17 @@
 #include "xmodbus.h"
 #include "ui_xmodbus.h"
 
+#include <QJsonArray>
+
 #include "modbusdevicelistview.h"
 #include "modbusregistertableview.h"
 
 namespace xModbus {
+
+struct xModbusKeys
+{
+    const QString listView{"listView"};
+};
 
 xModbus::xModbus(QWidget* parent)
     : QWidget(parent)
@@ -34,6 +41,20 @@ xModbus::xModbus(QWidget* parent)
 xModbus::~xModbus()
 {
     delete ui;
+}
+
+QJsonObject xModbus::save()
+{
+    QJsonObject obj;
+
+    return obj;
+}
+
+void xModbus::load(const QJsonObject& obj)
+{
+    xModbusKeys keys;
+    QJsonObject listView = obj.value(keys.listView).toObject();
+    ui->widgetDeviceListView->load(listView);
 }
 
 void xModbus::onInvokeShowRegisterView(ModbusRegisterTableView* registerView)

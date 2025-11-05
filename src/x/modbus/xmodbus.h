@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QToolBar>
 #include <QWidget>
 
@@ -23,6 +24,9 @@ class xModbus : public QWidget
 public:
     explicit xModbus(QWidget* parent = nullptr);
     ~xModbus();
+
+    QJsonObject save();
+    void load(const QJsonObject& obj);
 
 private:
     Ui::xModbus* ui;

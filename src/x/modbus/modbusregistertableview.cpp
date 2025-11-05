@@ -28,6 +28,9 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     ui->tableView->setAlternatingRowColors(true);
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
+#if 0
+    ui->tableView->verticalHeader()->setSectionsMovable(true);
+#endif
     ui->tableView->setItemDelegate(m_registerDelegate);
     ui->tableView->horizontalHeader()->setMinimumSectionSize(80);
 }

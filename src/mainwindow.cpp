@@ -160,6 +160,7 @@ void MainWindow::load(const QString& fileName) const
     m_ioPage01->load(obj.value("page01").toObject().toVariantMap());
     m_ioPage10->load(obj.value("page10").toObject().toVariantMap());
     m_ioPage11->load(obj.value("page11").toObject().toVariantMap());
+    m_layoutManager->load(obj.value("layoutManager").toObject());
 }
 
 void MainWindow::save(const QString& fileName) const
@@ -169,6 +170,7 @@ void MainWindow::save(const QString& fileName) const
     obj.insert("page01", QJsonObject::fromVariantMap(m_ioPage01->save()));
     obj.insert("page10", QJsonObject::fromVariantMap(m_ioPage10->save()));
     obj.insert("page11", QJsonObject::fromVariantMap(m_ioPage11->save()));
+    obj.insert("layoutManager", m_layoutManager->save());
 
     QJsonDocument doc;
     doc.setObject(obj);

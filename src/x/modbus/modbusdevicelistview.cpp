@@ -11,6 +11,8 @@
 
 #include <QApplication>
 #include <QContextMenuEvent>
+#include <QJsonArray>
+#include <QJsonObject>
 #include <QMainWindow>
 #include <QMenu>
 
@@ -30,6 +32,11 @@
 
 namespace xModbus {
 
+struct ModbusDeviceListViewKeys
+{
+    const QString devices{"devices"};
+};
+
 ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::ModbusDeviceListView)
@@ -46,6 +53,7 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     m_model = new ModbusDeviceListModel(ui->treeView);
     ui->treeView->setModel(m_model);
     ui->treeView->header()->hide();
+    ui->treeView->setExpandsOnDoubleClick(false);
 #if 0
     ui->tableView->setModel(m_model);
     ui->tableView->setAcceptDrops(true);
@@ -84,25 +92,29 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     connect(ui->treeView, &QTreeView::doubleClicked, this, &ModbusDeviceListView::onItemDoubleClicked);
     connect(ui->toolButtonOpen, &QToolButton::clicked, this, &ModbusDeviceListView::onStartButtonClicked);
     connect(ui->toolButtonClose, &QToolButton::clicked, this, &ModbusDeviceListView::onStopButtonClicked);
+    connect(ui->toolButtonTree, &QToolButton::clicked, this, &ModbusDeviceListView::onOpenAllItems);
     // clang-format on
-
-#if 1
-    ModbusDeviceEditor editor(xMainWindow);
-    editor.setDeviceName("TCP Client Device");
-    editor.setDeviceType(static_cast<int>(XModbusType::TcpClient));
-    QJsonObject parameters = editor.save();
-    m_model->newDevice(parameters);
-    editor.setDeviceName("TCP Server Device");
-    editor.setDeviceType(static_cast<int>(XModbusType::TcpServer));
-    parameters = editor.save();
-    m_model->newDevice(parameters);
-    ui->treeView->expandAll();
-#endif
 }
 
 ModbusDeviceListView::~ModbusDeviceListView()
 {
     delete ui;
+}
+
+QJsonObject ModbusDeviceListView::save()
+{
+    QJsonObject obj;
+
+    return obj;
+}
+
+void ModbusDeviceListView::load(const QJsonObject &obj)
+{
+    ModbusDeviceListViewKeys keys;
+    QJsonArray devicesArray = obj.value(keys.devices).toArray();
+    if (devicesArray.isEmpty()) {
+        createDefaultDevices();
+    }
 }
 
 void ModbusDeviceListView::contextMenuEvent(QContextMenuEvent *event)
@@ -195,6 +207,16 @@ void ModbusDeviceListView::onUndo() {}
 void ModbusDeviceListView::onRedo() {}
 
 void ModbusDeviceListView::onRemove() {}
+
+void ModbusDeviceListView::onCloseAllItems()
+{
+    ui->treeView->collapseAll();
+}
+
+void ModbusDeviceListView::onOpenAllItems()
+{
+    ui->treeView->expandAll();
+}
 
 void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
 {
@@ -345,6 +367,20 @@ QList<ModbusRegister *> ModbusDeviceListView::registers(ModbusDevice *device)
         }
     }
     return registers;
+}
+
+void ModbusDeviceListView::createDefaultDevices()
+{
+    ModbusDeviceEditor editor(xMainWindow);
+    editor.setDeviceName("TCP Client Device");
+    editor.setDeviceType(static_cast<int>(XModbusType::TcpClient));
+    QJsonObject parameters = editor.save();
+    m_model->newDevice(parameters);
+    editor.setDeviceName("TCP Server Device");
+    editor.setDeviceType(static_cast<int>(XModbusType::TcpServer));
+    parameters = editor.save();
+    m_model->newDevice(parameters);
+    ui->treeView->expandAll();
 }
 
 } // namespace xModbus

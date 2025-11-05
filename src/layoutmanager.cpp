@@ -26,6 +26,12 @@
 #include "x/canbus/xcanbus.h"
 #endif
 
+struct LayoutManagerKeys
+{
+    const QString xIndex{"xIndex"};
+    const QString xModbus{"xModbus"};
+};
+
 LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
     : QObject(parent)
     , m_layout(layout)
@@ -68,6 +74,7 @@ QToolButton* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
     m_group->addButton(button);
     m_layout->addWidget(page);
     m_controllerLayout->addWidget(button);
+    m_pageButtons.insert(page, button);
     connect(button, &QToolButton::clicked, this, [=]() { m_layout->setCurrentWidget(page); });
 
     m_controllerLayout->removeWidget(m_rightLabel);
@@ -97,5 +104,58 @@ void LayoutManager::setupPages()
 
     if (m_layout->count() == 1) {
         m_controller->hide();
+    }
+}
+
+int LayoutManager::currentIndex() const
+{
+    if (!m_layout) {
+        qWarning("LayoutManager: m_layout is null");
+        return 0;
+    }
+
+    return m_layout->currentIndex();
+}
+
+void LayoutManager::setCurrentIndex(int index)
+{
+    if (!m_layout) {
+        qWarning("LayoutManager: m_layout is null");
+        return;
+    }
+
+    if (index < 0 || index >= m_layout->count()) {
+        index = 0;
+    }
+
+    m_layout->setCurrentIndex(index);
+    QWidget* currentWidget = m_layout->currentWidget();
+    QToolButton* currentButton = m_pageButtons.value(currentWidget, nullptr);
+    if (currentButton) {
+        currentButton->setChecked(true);
+    }
+}
+
+QJsonObject LayoutManager::save()
+{
+    LayoutManagerKeys keys;
+    QJsonObject obj;
+
+    obj[keys.xIndex] = currentIndex();
+    obj[keys.xModbus] = m_modbus ? m_modbus->save() : QJsonObject();
+
+    return obj;
+}
+
+void LayoutManager::load(const QJsonObject& obj)
+{
+    LayoutManagerKeys keys;
+    int index = obj.value(keys.xIndex).toInt(0);
+    setCurrentIndex(index);
+    qInfo() << obj << keys.xIndex << index;
+
+    if (m_modbus) {
+        QJsonObject modbusObj = obj.value(keys.xModbus).toObject(QJsonObject());
+        m_modbus->load(modbusObj);
     }
 }

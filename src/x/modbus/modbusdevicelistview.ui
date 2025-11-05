@@ -30,6 +30,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QToolButton" name="toolButtonAdd">
+       <property name="toolTip">
+        <string>New device/group/register</string>
+       </property>
        <property name="text">
         <string notr="true"/>
        </property>
@@ -37,6 +40,9 @@
      </item>
      <item>
       <widget class="QToolButton" name="toolButtonRemove">
+       <property name="toolTip">
+        <string>Delete device/group/register</string>
+       </property>
        <property name="text">
         <string notr="true"/>
        </property>
@@ -44,6 +50,9 @@
      </item>
      <item>
       <widget class="QToolButton" name="toolButtonTree">
+       <property name="toolTip">
+        <string>Open all nodes</string>
+       </property>
        <property name="text">
         <string notr="true"/>
        </property>
@@ -72,6 +81,9 @@
      </item>
      <item>
       <widget class="QToolButton" name="toolButtonClose">
+       <property name="toolTip">
+        <string>Close all devices</string>
+       </property>
        <property name="text">
         <string notr="true"/>
        </property>
@@ -79,15 +91,15 @@
      </item>
      <item>
       <widget class="QToolButton" name="toolButtonOpen">
+       <property name="toolTip">
+        <string>Open all devices</string>
+       </property>
        <property name="text">
         <string notr="true"/>
        </property>
       </widget>
      </item>
     </layout>
-   </item>
-   <item>
-    <widget class="QComboBox" name="comboBoxProject"/>
    </item>
    <item>
     <widget class="QLineEdit" name="lineEditSearch">
@@ -109,16 +121,6 @@
     <widget class="QTreeView" name="treeView">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTableView" name="tableView">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
