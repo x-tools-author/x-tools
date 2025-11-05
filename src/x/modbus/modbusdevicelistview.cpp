@@ -201,9 +201,9 @@ void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
     int depth = this->depth(index);
     if (depth == MODBUS_REGISTER_DEPTH) {
         QStandardItem *item = m_model->itemFromIndex(index);
-        ModbusRegisterTableView *registerView = item->data(USER_ROLE_MODBUS_TABLE)
-                                                    .value<ModbusRegisterTableView *>();
+        auto registerView = item->data(USER_ROLE_MODBUS_TABLE).value<ModbusRegisterTableView *>();
         if (registerView) {
+            registerView->selectRow(index.row());
             emit invokeShowRegisterView(registerView);
         }
     }

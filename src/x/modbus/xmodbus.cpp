@@ -19,6 +19,9 @@ xModbus::xModbus(QWidget* parent)
     , ui(new Ui::xModbus)
 {
     ui->setupUi(this);
+    m_toolBar = new QToolBar(this);
+    m_toolBar->setWindowTitle(tr("Modbus Tool Bar"));
+    m_toolBar->addAction(tr("Example Action"));
 
     connect(ui->widgetDeviceListView,
             &ModbusDeviceListView::invokeShowRegisterView,

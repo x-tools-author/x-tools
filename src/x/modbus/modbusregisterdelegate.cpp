@@ -9,7 +9,6 @@
 #include "modbusregisterdelegate.h"
 
 #include <QAbstractItemModel>
-#include <QCheckbox>
 #include <QComboBox>
 #include <QLineEdit>
 #include <QSpinBox>

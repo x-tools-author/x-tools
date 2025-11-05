@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QToolBar>
 #include <QWidget>
 
 namespace Ui {
@@ -25,6 +26,7 @@ public:
 
 private:
     Ui::xModbus* ui;
+    QToolBar* m_toolBar{nullptr};
 
 private:
     void onInvokeShowRegisterView(ModbusRegisterTableView* registerView);

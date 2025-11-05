@@ -29,7 +29,7 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
     ui->tableView->setItemDelegate(m_registerDelegate);
-    ui->tableView->horizontalHeader()->setMinimumSectionSize(100);
+    ui->tableView->horizontalHeader()->setMinimumSectionSize(80);
 }
 
 ModbusRegisterTableView::~ModbusRegisterTableView()
@@ -40,6 +40,14 @@ ModbusRegisterTableView::~ModbusRegisterTableView()
 ModbusRegisterTable *ModbusRegisterTableView::registerTable() const
 {
     return m_registerTable;
+}
+
+void ModbusRegisterTableView::selectRow(int row)
+{
+    QModelIndex idx = m_registerTableFilter->index(row, REGISTER_TABLE_NAME);
+    ui->tableView->setCurrentIndex(idx);
+    ui->tableView->scrollTo(idx, QAbstractItemView::PositionAtTop);
+    ui->tableView->setFocus();
 }
 
 } // namespace xModbus

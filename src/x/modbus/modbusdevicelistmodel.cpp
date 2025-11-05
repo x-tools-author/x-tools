@@ -116,9 +116,11 @@ void ModbusDeviceListModel::newRegisters(QStandardItem *tableItem,
     for (int i = startAddress; i < startAddress + quantity; ++i) {
         ModbusRegisterTable *registerTable = registerView->registerTable();
         ModbusRegister *item = new ModbusRegister(registerTable);
+        QString name = tableItem->text();
+        name += QString(" - 0x%1").arg(i, 4, 16, QChar('0').toUpper());
         item->type = type;
         item->address = i;
-        item->name = QString("0x%1").arg(item->address, 4, 16, QChar('0').toUpper());
+        item->name = name;
         item->unit = "";
         item->min = 0.0;
         item->max = 65535.0;

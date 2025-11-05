@@ -27,6 +27,7 @@ public:
     ~ModbusRegisterTableView() override;
 
     ModbusRegisterTable *registerTable() const;
+    void selectRow(int row);
 
 private:
     ModbusRegisterTable *m_registerTable{nullptr};
