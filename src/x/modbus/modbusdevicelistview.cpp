@@ -70,21 +70,6 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     // clang-format off
     m_addActions.device = addMenu->addAction(tr("New Modbus Device"), this, &ModbusDeviceListView::onNewDevice);
     addMenu->addSeparator();
-    m_addActions.coils = addMenu->addAction(tr("New Coils Group"), this, &ModbusDeviceListView::onNewCoils);
-    m_addActions.discreteInputs = addMenu->addAction(tr("New Discrete Inputs Group"), this, &ModbusDeviceListView::onNewDiscreteInputs);
-    m_addActions.holdingRegisters = addMenu->addAction(tr("New Holding Registers Group"), this, &ModbusDeviceListView::onNewHoldingRegisters);
-    m_addActions.inputRegisters = addMenu->addAction(tr("New Input Registers Group"), this, &ModbusDeviceListView::onNewInputRegisters);
-    addMenu->addSeparator();
-    m_addActions.singleRegister = addMenu->addAction(tr("New single-register"), this, &ModbusDeviceListView::onNewSingleRegister);
-    m_addActions.multiRegister = addMenu->addAction(tr("New multi-register"), this, &ModbusDeviceListView::onNewMultiRegister);
-    addMenu->addSeparator();
-    m_addActions.copy = addMenu->addAction(tr("Copy"), this, &ModbusDeviceListView::onCopy);
-    m_addActions.paste = addMenu->addAction(tr("Paste"), this, &ModbusDeviceListView::onPaste);
-    m_addActions.cut = addMenu->addAction(tr("Cut"), this, &ModbusDeviceListView::onCut);
-    addMenu->addSeparator();
-    m_addActions.undo = addMenu->addAction(tr("Undo"), this, &ModbusDeviceListView::onUndo);
-    m_addActions.redo = addMenu->addAction(tr("Redo"), this, &ModbusDeviceListView::onRedo);
-    addMenu->addSeparator();
     m_addActions.remove = addMenu->addAction(tr("Remove"), this, &ModbusDeviceListView::onRemove);
     // clang-format on
     ui->toolButtonAdd->setMenu(addMenu);
@@ -162,13 +147,7 @@ void ModbusDeviceListView::contextMenuEvent(QContextMenuEvent *event)
         if (depth == MODBUS_INVALID_DEPTH) {
             contextMenu.addAction(m_addActions.device);
         } else if (depth == MODBUS_DEVICE_DEPTH) {
-            contextMenu.addAction(m_addActions.coils);
-            contextMenu.addAction(m_addActions.discreteInputs);
-            contextMenu.addAction(m_addActions.holdingRegisters);
-            contextMenu.addAction(m_addActions.inputRegisters);
         } else if (depth == MODBUS_TABLE_DEPTH) {
-            contextMenu.addAction(m_addActions.singleRegister);
-            contextMenu.addAction(m_addActions.multiRegister);
         }
     }
 
@@ -277,25 +256,11 @@ void ModbusDeviceListView::onAddMenuAboutToShow()
 
     bool isDeviceSelected = (d == MODBUS_DEVICE_DEPTH);
     bool isRegGroupSelected = (d == MODBUS_TABLE_DEPTH);
-
-    m_addActions.coils->setEnabled(isDeviceSelected);
-    m_addActions.discreteInputs->setEnabled(isDeviceSelected);
-    m_addActions.holdingRegisters->setEnabled(isDeviceSelected);
-    m_addActions.inputRegisters->setEnabled(isDeviceSelected);
-
-    m_addActions.singleRegister->setEnabled(isRegGroupSelected);
-    m_addActions.multiRegister->setEnabled(isRegGroupSelected);
 }
 
 void ModbusDeviceListView::onAddMenuAboutToHide()
 {
     m_addActions.device->setEnabled(true);
-    m_addActions.coils->setEnabled(true);
-    m_addActions.discreteInputs->setEnabled(true);
-    m_addActions.holdingRegisters->setEnabled(true);
-    m_addActions.inputRegisters->setEnabled(true);
-    m_addActions.singleRegister->setEnabled(true);
-    m_addActions.multiRegister->setEnabled(true);
 }
 
 void ModbusDeviceListView::onStartButtonClicked()

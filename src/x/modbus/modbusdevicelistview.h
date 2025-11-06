@@ -46,21 +46,6 @@ private:
     struct
     {
         QAction *device;
-
-        QAction *coils;
-        QAction *discreteInputs;
-        QAction *holdingRegisters;
-        QAction *inputRegisters;
-        QAction *singleRegister;
-        QAction *multiRegister;
-
-        QAction *copy;
-        QAction *paste;
-        QAction *cut;
-
-        QAction *redo;
-        QAction *undo;
-
         QAction *remove;
     } m_addActions;
 
