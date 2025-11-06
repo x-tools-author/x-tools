@@ -211,7 +211,7 @@ void ModbusDeviceListModel::removeTables(int row, int count, const QModelIndex &
 
         qInfo() << viewIndex.data(Qt::DisplayRole).toString() << " will be removed.";
         view->setParent(0);
-        //view->deleteLater();
+        view->deleteLater();
     }
 }
 
