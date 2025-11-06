@@ -55,8 +55,6 @@ private:
     ModbusDeviceListModelFilter *m_filter;
 
 private:
-    int depth(const QModelIndex &index);
-
     void onNewDevice();
     void onRemove();
     void onCloseAllItems();
@@ -68,6 +66,7 @@ private:
     void onStopButtonClicked();
     void onFilterTextChanged(const QString &text);
 
+    int treeItemDepth(const QModelIndex &index);
     QList<ModbusDevice *> devices();
     QStandardItem *itemFromDevice(ModbusDevice *device);
     QList<ModbusRegister *> registers(ModbusDevice *device);

@@ -11,6 +11,7 @@
 #include <QComboBox>
 #include <QJsonObject>
 #include <QModbusDataUnit>
+#include <QModelIndex>
 #include <QSerialPort>
 #include <QWidget>
 
@@ -29,6 +30,7 @@ QWidget *topLevelMainWindow();
 
 QString registerTypeToString(QModbusDataUnit::RegisterType type);
 
+// -------------------------------------------------------------------------------------------------
 enum class XModbusType { RtuClient, RtuServer, TcpClient, TcpServer };
 void setupModebusDeviceType(QComboBox *cb);
 void setupRtuNames(QComboBox *cb);

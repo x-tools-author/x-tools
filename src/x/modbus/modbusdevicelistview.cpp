@@ -121,8 +121,7 @@ QList<ModbusRegisterTableView *> ModbusDeviceListView::registerTableViews()
         QStandardItem *deviceItem = m_model->item(i);
         for (int j = 0; j < deviceItem->rowCount(); ++j) {
             QStandardItem *tableItem = deviceItem->child(j);
-            auto tableView = tableItem->data(USER_ROLE_MODBUS_TABLE)
-                                 .value<ModbusRegisterTableView *>();
+            auto tableView = tableItem->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
             if (tableView) {
                 views.append(tableView);
             }
@@ -140,7 +139,7 @@ void ModbusDeviceListView::contextMenuEvent(QContextMenuEvent *event)
         contextMenu.addAction(m_addActions.device);
     } else {
         QModelIndex index = ui->treeView->currentIndex();
-        int depth = this->depth(index);
+        int depth = this->treeItemDepth(index);
         if (depth == MODBUS_INVALID_DEPTH) {
             contextMenu.addAction(m_addActions.device);
         } else if (depth == MODBUS_DEVICE_DEPTH) {
@@ -149,21 +148,6 @@ void ModbusDeviceListView::contextMenuEvent(QContextMenuEvent *event)
     }
 
     contextMenu.exec(event->globalPos());
-}
-
-int ModbusDeviceListView::depth(const QModelIndex &index)
-{
-    if (!index.isValid()) {
-        return MODBUS_INVALID_DEPTH;
-    }
-
-    int d = 0;
-    QModelIndex parent = index.parent();
-    while (parent.isValid()) {
-        d++;
-        parent = parent.parent();
-    }
-    return d;
 }
 
 void ModbusDeviceListView::onNewDevice()
@@ -189,6 +173,7 @@ void ModbusDeviceListView::onRemove()
 
     const QModelIndex srcIndex = m_filter->mapToSource(index);
     m_model->removeRow(srcIndex.row(), srcIndex.parent());
+    emit tableViewsUpdated();
 }
 
 void ModbusDeviceListView::onCloseAllItems()
@@ -204,17 +189,22 @@ void ModbusDeviceListView::onOpenAllItems()
 void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
 {
     const QModelIndex srcIndex = m_filter->mapToSource(index);
-    int depth = this->depth(index);
+    int depth = this->treeItemDepth(index);
     if (depth == MODBUS_REGISTER_DEPTH) {
         QStandardItem *item = m_model->itemFromIndex(srcIndex);
-        auto registerView = item->data(USER_ROLE_MODBUS_TABLE).value<ModbusRegisterTableView *>();
+        if (!item) {
+            qInfo() << "ModbusDeviceListView::onItemDoubleClicked: item is nullptr";
+            return;
+        }
+
+        auto registerView = item->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
         if (registerView) {
-            registerView->selectRow(index.row());
+            registerView->selectRow(srcIndex.row());
             emit invokeShowRegisterView(registerView);
         }
     } else if (depth == MODBUS_TABLE_DEPTH) {
-        QStandardItem *item = m_model->itemFromIndex(index);
-        auto registerView = item->data(USER_ROLE_MODBUS_TABLE).value<ModbusRegisterTableView *>();
+        QStandardItem *item = m_model->itemFromIndex(srcIndex);
+        auto registerView = item->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
         if (registerView) {
             emit invokeShowRegisterView(registerView);
         }
@@ -224,7 +214,7 @@ void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
 void ModbusDeviceListView::onAddMenuAboutToShow()
 {
     QModelIndex currentIndex = ui->treeView->currentIndex();
-    int d = depth(currentIndex);
+    int d = treeItemDepth(currentIndex);
 
     bool isDeviceSelected = (d == MODBUS_DEVICE_DEPTH);
     bool isRegGroupSelected = (d == MODBUS_TABLE_DEPTH);
@@ -300,13 +290,28 @@ void ModbusDeviceListView::onFilterTextChanged(const QString &text)
     ui->treeView->expandAll();
 }
 
+int ModbusDeviceListView::treeItemDepth(const QModelIndex &index)
+{
+    if (!index.isValid()) {
+        return MODBUS_INVALID_DEPTH;
+    }
+
+    int d = 0;
+    QModelIndex parent = index.parent();
+    while (parent.isValid()) {
+        d++;
+        parent = parent.parent();
+    }
+    return d;
+}
+
 QList<ModbusDevice *> ModbusDeviceListView::devices()
 {
     int rowCount = m_model->rowCount();
     QList<ModbusDevice *> devices;
     for (int i = 0; i < rowCount; ++i) {
         QStandardItem *item = m_model->item(i);
-        ModbusDevice *device = item->data(USER_ROLE_MODBUS_DEVICE).value<ModbusDevice *>();
+        ModbusDevice *device = item->data(xItemTypeDevice).value<ModbusDevice *>();
         if (device) {
             devices.append(device);
         }
@@ -319,7 +324,7 @@ QStandardItem *ModbusDeviceListView::itemFromDevice(ModbusDevice *device)
     int rowCount = m_model->rowCount();
     for (int i = 0; i < rowCount; ++i) {
         QStandardItem *item = m_model->item(i);
-        ModbusDevice *dev = item->data(USER_ROLE_MODBUS_DEVICE).value<ModbusDevice *>();
+        ModbusDevice *dev = item->data(xItemTypeDevice).value<ModbusDevice *>();
         if (dev == device) {
             return item;
         }
@@ -341,8 +346,7 @@ QList<ModbusRegister *> ModbusDeviceListView::registers(ModbusDevice *device)
         int registerCount = tableItem->rowCount();
         for (int j = 0; j < registerCount; ++j) {
             QStandardItem *registerItem = tableItem->child(j);
-            ModbusRegister *reg = registerItem->data(USER_ROLE_MODBUS_REGISTER)
-                                      .value<ModbusRegister *>();
+            ModbusRegister *reg = registerItem->data(xItemTypeRegister).value<ModbusRegister *>();
             if (reg) {
                 registers.append(reg);
             }

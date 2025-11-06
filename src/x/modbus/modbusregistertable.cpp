@@ -226,7 +226,11 @@ bool ModbusRegisterTable::insertRows(int row, int count, const QModelIndex &pare
 bool ModbusRegisterTable::removeRows(int row, int count, const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
-    for (int i = 0; i < count; ++i) {
+    for (int i = row; i < row + count; ++i) {
+        if (row >= m_registerItems.count()) {
+            break;
+        }
+
         ModbusRegister *item = m_registerItems.takeAt(row);
         delete item;
     }

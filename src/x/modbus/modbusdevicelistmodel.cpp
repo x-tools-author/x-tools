@@ -30,7 +30,7 @@ QList<ModbusRegister *> ModbusDeviceListModel::allRegisters(ModbusDevice *device
     QList<ModbusRegister *> registers;
     for (int i = 0; i < rowCount(); ++i) {
         QStandardItem *deviceItem = this->item(i);
-        ModbusDevice *itemDevice = deviceItem->data(USER_ROLE_MODBUS_DEVICE).value<ModbusDevice *>();
+        ModbusDevice *itemDevice = deviceItem->data(ItemTypeDevice).value<ModbusDevice *>();
         if (itemDevice != device) {
             continue;
         }
@@ -39,8 +39,7 @@ QList<ModbusRegister *> ModbusDeviceListModel::allRegisters(ModbusDevice *device
             QStandardItem *tableItem = deviceItem->child(j);
             for (int k = 0; k < tableItem->rowCount(); ++k) {
                 QStandardItem *registerItem = tableItem->child(k);
-                ModbusRegister *reg = registerItem->data(USER_ROLE_MODBUS_REGISTER)
-                                          .value<ModbusRegister *>();
+                ModbusRegister *reg = registerItem->data(ItemTypeRegister).value<ModbusRegister *>();
                 if (reg) {
                     registers.append(reg);
                 }
@@ -75,7 +74,8 @@ QStandardItem *ModbusDeviceListModel::newDevice(const QJsonObject &parameters)
     }
 
     QStandardItem *item = new QStandardItem(deviceName);
-    item->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
+    item->setData(xItemType, ItemTypeDevice);
+    item->setData(QVariant::fromValue(device), ItemTypeDevice);
     appendRow(item);
     return item;
 }
@@ -94,7 +94,7 @@ void ModbusDeviceListModel::newDefaultTables(QStandardItem *deviceItem)
                                            {QModbusDataUnit::HoldingRegisters, 0, 10},
                                            {QModbusDataUnit::InputRegisters, 0, 10}};
 
-    ModbusDevice *device = deviceItem->data(USER_ROLE_MODBUS_DEVICE).value<ModbusDevice *>();
+    ModbusDevice *device = deviceItem->data(ItemTypeDevice).value<ModbusDevice *>();
     for (const RegisterGroup &group : registerGroups) {
         ModbusRegisterTableView *registerView = new ModbusRegisterTableView();
         if (!device->isClient()) {
@@ -107,8 +107,9 @@ void ModbusDeviceListModel::newDefaultTables(QStandardItem *deviceItem)
 
         registerView->setWindowTitle(registerTypeToString(group.type));
         QStandardItem *registerItem = new QStandardItem(registerView->windowTitle());
-        registerItem->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
-        registerItem->setData(QVariant::fromValue(registerView), USER_ROLE_MODBUS_TABLE);
+        registerItem->setData(xItemType, ItemTypeTableView);
+        registerItem->setData(QVariant::fromValue(device), ItemTypeDevice);
+        registerItem->setData(QVariant::fromValue(registerView), ItemTypeTableView);
         deviceItem->appendRow(registerItem);
         newRegisters(registerItem, group.type, group.startAddress, group.quantity);
     }
@@ -119,9 +120,8 @@ void ModbusDeviceListModel::newRegisters(QStandardItem *tableItem,
                                          int startAddress,
                                          int quantity)
 {
-    ModbusDevice *device = tableItem->data(USER_ROLE_MODBUS_DEVICE).value<ModbusDevice *>();
-    ModbusRegisterTableView *registerView = tableItem->data(USER_ROLE_MODBUS_TABLE)
-                                                .value<ModbusRegisterTableView *>();
+    ModbusDevice *device = tableItem->data(ItemTypeDevice).value<ModbusDevice *>();
+    auto *registerView = tableItem->data(ItemTypeTableView).value<ModbusRegisterTableView *>();
     if (!device || !registerView) {
         return;
     }
@@ -140,9 +140,10 @@ void ModbusDeviceListModel::newRegisters(QStandardItem *tableItem,
 
         registerTable->addRegisterItem(item);
         QStandardItem *stdItem = new QStandardItem(item->name);
-        stdItem->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
-        stdItem->setData(QVariant::fromValue(registerView), USER_ROLE_MODBUS_TABLE);
-        stdItem->setData(QVariant::fromValue(item), USER_ROLE_MODBUS_REGISTER);
+        stdItem->setData(xItemType, ItemTypeRegister);
+        stdItem->setData(QVariant::fromValue(device), ItemTypeDevice);
+        stdItem->setData(QVariant::fromValue(registerView), ItemTypeTableView);
+        stdItem->setData(QVariant::fromValue(item), ItemTypeRegister);
         tableItem->appendRow(stdItem);
     }
 }
@@ -156,9 +157,75 @@ Qt::ItemFlags ModbusDeviceListModel::flags(const QModelIndex &index) const
 bool ModbusDeviceListModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
-
+    if (!parent.isValid()) {
+        removeDevices(row, count, parent);
+    } else {
+        int parentItemType = parent.data(xItemType).toInt();
+        if (parentItemType == ItemTypeDevice) {
+            removeTables(row, count, parent);
+        } else if (parentItemType == ItemTypeTableView) {
+            removeRegisters(row, count, parent);
+        }
+    }
     endRemoveRows();
     return true;
+}
+
+void ModbusDeviceListModel::removeDevices(int row, int count, const QModelIndex &parent)
+{
+    for (int i = row; i < row + count; ++i) {
+        QModelIndex deviceIndex = this->index(i, 0, parent);
+        QStandardItem *deviceItem = this->itemFromIndex(deviceIndex);
+        ModbusDevice *device = deviceItem->data(ItemTypeDevice).value<ModbusDevice *>();
+        if (!device) {
+            qWarning("Can not delete device from model, device is nullptr");
+            continue;
+        }
+
+        int tableCount = deviceItem->rowCount();
+        removeTables(0, tableCount, deviceIndex);
+
+        qInfo() << deviceIndex.data(Qt::DisplayRole).toString() << " will be removed.";
+        device->requestInterruption();
+        device->exit();
+        device->wait();
+        device->deleteLater();
+    }
+}
+
+void ModbusDeviceListModel::removeTables(int row, int count, const QModelIndex &parent)
+{
+    QStandardItem *deviceItem = this->itemFromIndex(parent);
+    for (int i = row; i < row + count; ++i) {
+        QModelIndex viewIndex = this->index(i, 0, parent);
+        QStandardItem *viewItem = deviceItem->child(i);
+        auto *view = viewItem->data(ItemTypeTableView).value<ModbusRegisterTableView *>();
+        if (!view) {
+            qWarning("Can not delete table view from %s, view is nullptr",
+                     deviceItem->text().toUtf8().constData());
+            continue;
+        }
+
+        int registerCount = viewItem->rowCount();
+        removeRegisters(0, registerCount, viewIndex);
+
+        qInfo() << viewIndex.data(Qt::DisplayRole).toString() << " will be removed.";
+        view->setParent(0);
+        //view->deleteLater();
+    }
+}
+
+void ModbusDeviceListModel::removeRegisters(int row, int count, const QModelIndex &parent)
+{
+    auto *tableView = parent.data(ItemTypeTableView).value<ModbusRegisterTableView *>();
+    if (!tableView) {
+        qWarning("Can not delete registers from %s, tableView is nullptr",
+                 tableView->windowTitle().toUtf8().constData());
+        return;
+    }
+
+    auto *tableModel = tableView->registerTable();
+    tableModel->removeRows(row, count, QModelIndex());
 }
 
 } // namespace xModbus
