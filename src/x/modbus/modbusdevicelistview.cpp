@@ -15,6 +15,7 @@
 #include <QJsonObject>
 #include <QMainWindow>
 #include <QMenu>
+#include <QMessageBox>
 
 #include "common/iconengine.h"
 
@@ -45,7 +46,8 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     ui->setupUi(this);
     ui->toolButtonAdd->setIcon(xIcon(":/res/icons/add.svg"));
     ui->toolButtonRemove->setIcon(xIcon(":/res/icons/remove.svg"));
-    ui->toolButtonTree->setIcon(xIcon(":/res/icons/account_tree.svg"));
+    ui->toolButtonExpandAll->setIcon(xIcon(":/res/icons/expand_all.svg"));
+    ui->toolButtonCollapseAll->setIcon(xIcon(":/res/icons/collapse_all.svg"));
     ui->toolButtonClose->setIcon(xIcon(":/res/icons/stop.svg"));
     ui->toolButtonOpen->setIcon(xIcon(":/res/icons/play_arrow.svg"));
 
@@ -67,7 +69,7 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     // clang-format off
     m_addActions.device = addMenu->addAction(tr("New Modbus Device"), this, &ModbusDeviceListView::onNewDevice);
     addMenu->addSeparator();
-    m_addActions.remove = addMenu->addAction(tr("Remove"), this, &ModbusDeviceListView::onRemove);
+    m_addActions.remove = addMenu->addAction(tr("Remove the Selected Item"), this, &ModbusDeviceListView::onRemove);
     // clang-format on
     ui->toolButtonAdd->setMenu(addMenu);
     ui->toolButtonAdd->setPopupMode(QToolButton::MenuButtonPopup);
@@ -76,10 +78,12 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     connect(addMenu, &QMenu::aboutToShow, this, &ModbusDeviceListView::onAddMenuAboutToShow);
     connect(addMenu, &QMenu::aboutToHide, this, &ModbusDeviceListView::onAddMenuAboutToHide);
     connect(ui->toolButtonAdd, &QToolButton::clicked, this, &ModbusDeviceListView::onNewDevice);
+    connect(ui->toolButtonRemove, &QToolButton::clicked, this, &ModbusDeviceListView::onRemove);
     connect(ui->treeView, &QTreeView::doubleClicked, this, &ModbusDeviceListView::onItemDoubleClicked);
     connect(ui->toolButtonOpen, &QToolButton::clicked, this, &ModbusDeviceListView::onStartButtonClicked);
     connect(ui->toolButtonClose, &QToolButton::clicked, this, &ModbusDeviceListView::onStopButtonClicked);
-    connect(ui->toolButtonTree, &QToolButton::clicked, this, &ModbusDeviceListView::onOpenAllItems);
+    connect(ui->toolButtonExpandAll, &QToolButton::clicked, this, &ModbusDeviceListView::onOpenAllItems);
+    connect(ui->toolButtonCollapseAll, &QToolButton::clicked, this, &ModbusDeviceListView::onCloseAllItems);
     connect(ui->lineEditSearch, &QLineEdit::textChanged, this, &ModbusDeviceListView::onFilterTextChanged);
     // clang-format on
 }
@@ -160,8 +164,11 @@ void ModbusDeviceListView::onNewDevice()
     }
 
     QJsonObject parameters = editor.save();
-    m_model->newDevice(parameters);
-    ui->treeView->expandAll();
+    auto item = m_model->newDevice(parameters);
+    m_model->newDefaultTables(item);
+    QModelIndex index = m_model->indexFromItem(item);
+    ui->treeView->expand(m_filter->mapFromSource(index));
+    emit tableViewsUpdated();
 }
 
 void ModbusDeviceListView::onRemove()
@@ -172,25 +179,75 @@ void ModbusDeviceListView::onRemove()
     }
 
     const QModelIndex srcIndex = m_filter->mapToSource(index);
+    QStandardItem *item = m_model->itemFromIndex(srcIndex);
+    if (!item) {
+        qInfo() << "ModbusDeviceListView::onRemove: item is nullptr";
+        return;
+    }
+
+    int itemType = item->data(xItemTypeRole).toInt();
+    if (itemType == xItemTypeDevice) {
+        ModbusDevice *device = item->data(xItemTypeDevice).value<ModbusDevice *>();
+        if (!device) {
+            qWarning() << "ModbusDeviceListView::onRemove: device is nullptr";
+        }
+
+        if (device->isRunning()) {
+            int ret = QMessageBox::question(
+                this,
+                tr("Remove Device"),
+                tr("The device is running. Do you want to stop and remove it?"),
+                QMessageBox::Yes | QMessageBox::No,
+                QMessageBox::Yes);
+
+            if (ret == QMessageBox::No) {
+                return;
+            }
+        }
+    }
+
     m_model->removeRow(srcIndex.row(), srcIndex.parent());
     emit tableViewsUpdated();
 }
 
 void ModbusDeviceListView::onCloseAllItems()
 {
-    ui->treeView->collapseAll();
+    for (int i = 0; i < m_model->rowCount(); ++i) {
+        QModelIndex deviceIndex = m_model->index(i, 0);
+        for (int j = 0; j < m_model->rowCount(deviceIndex); ++j) {
+            QModelIndex tableIndex = m_model->index(j, 0, deviceIndex);
+            ui->treeView->collapse(m_filter->mapFromSource(tableIndex));
+        }
+    }
 }
 
 void ModbusDeviceListView::onOpenAllItems()
 {
+#if 0
+    ui->treeView->expandToDepth(0);
+#else
     ui->treeView->expandAll();
+#endif
 }
 
 void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
 {
-    const QModelIndex srcIndex = m_filter->mapToSource(index);
-    int depth = this->treeItemDepth(index);
-    if (depth == MODBUS_REGISTER_DEPTH) {
+    QModelIndex srcIndex = m_filter->mapToSource(index);
+    QStandardItem *item = m_model->itemFromIndex(srcIndex);
+    if (!item) {
+        qInfo() << "ModbusDeviceListView::onItemDoubleClicked: item is nullptr";
+        return;
+    }
+
+    int itemTypeRole = item->data(xItemTypeRole).toInt();
+    if (itemTypeRole == xItemTypeDevice) {
+    } else if (itemTypeRole == xItemTypeTableView) {
+        QStandardItem *item = m_model->itemFromIndex(srcIndex);
+        auto registerView = item->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
+        if (registerView) {
+            emit invokeShowRegisterView(registerView);
+        }
+    } else if (itemTypeRole == xItemTypeRegister) {
         QStandardItem *item = m_model->itemFromIndex(srcIndex);
         if (!item) {
             qInfo() << "ModbusDeviceListView::onItemDoubleClicked: item is nullptr";
@@ -200,12 +257,6 @@ void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
         auto registerView = item->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
         if (registerView) {
             registerView->selectRow(srcIndex.row());
-            emit invokeShowRegisterView(registerView);
-        }
-    } else if (depth == MODBUS_TABLE_DEPTH) {
-        QStandardItem *item = m_model->itemFromIndex(srcIndex);
-        auto registerView = item->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
-        if (registerView) {
             emit invokeShowRegisterView(registerView);
         }
     }

@@ -74,7 +74,7 @@ QStandardItem *ModbusDeviceListModel::newDevice(const QJsonObject &parameters)
     }
 
     QStandardItem *item = new QStandardItem(deviceName);
-    item->setData(xItemType, ItemTypeDevice);
+    item->setData(int(ItemTypeDevice), xItemTypeRole);
     item->setData(QVariant::fromValue(device), ItemTypeDevice);
     appendRow(item);
     return item;
@@ -107,7 +107,7 @@ void ModbusDeviceListModel::newDefaultTables(QStandardItem *deviceItem)
 
         registerView->setWindowTitle(registerTypeToString(group.type));
         QStandardItem *registerItem = new QStandardItem(registerView->windowTitle());
-        registerItem->setData(xItemType, ItemTypeTableView);
+        registerItem->setData(int(ItemTypeTableView), xItemTypeRole);
         registerItem->setData(QVariant::fromValue(device), ItemTypeDevice);
         registerItem->setData(QVariant::fromValue(registerView), ItemTypeTableView);
         deviceItem->appendRow(registerItem);
@@ -140,7 +140,7 @@ void ModbusDeviceListModel::newRegisters(QStandardItem *tableItem,
 
         registerTable->addRegisterItem(item);
         QStandardItem *stdItem = new QStandardItem(item->name);
-        stdItem->setData(xItemType, ItemTypeRegister);
+        stdItem->setData(int(ItemTypeRegister), xItemTypeRole);
         stdItem->setData(QVariant::fromValue(device), ItemTypeDevice);
         stdItem->setData(QVariant::fromValue(registerView), ItemTypeTableView);
         stdItem->setData(QVariant::fromValue(item), ItemTypeRegister);
@@ -156,25 +156,33 @@ Qt::ItemFlags ModbusDeviceListModel::flags(const QModelIndex &index) const
 
 bool ModbusDeviceListModel::removeRows(int row, int count, const QModelIndex &parent)
 {
-    beginRemoveRows(parent, row, row + count - 1);
-    if (!parent.isValid()) {
-        removeDevices(row, count, parent);
-    } else {
-        int parentItemType = parent.data(xItemType).toInt();
-        if (parentItemType == ItemTypeDevice) {
-            removeTables(row, count, parent);
-        } else if (parentItemType == ItemTypeTableView) {
-            removeRegisters(row, count, parent);
-        }
+    // Just remove(delete) the data in item.
+    // Do not delete the item(QStandardItem) because QStandardItemModel will delete the item.
+    QStandardItem *parentItem = this->itemFromIndex(parent);
+    if (!parentItem) {
+        removeDevices(row, count);
+        return QStandardItemModel::removeRows(row, count, parent);
     }
-    endRemoveRows();
-    return true;
+
+    int parentItemType = parentItem->data(xItemTypeRole).toInt();
+    if (parentItemType == ItemTypeDevice) {
+        removeTables(row, count, parentItem);
+    } else if (parentItemType == ItemTypeTableView) {
+        removeRegisters(row, count, parentItem);
+    } else {
+        qWarning("Can not remove rows from model, unknown parent item type: %d(%s)",
+                 parentItemType,
+                 parentItem->data(Qt::DisplayRole).toString().toUtf8().constData());
+        return false;
+    }
+
+    return QStandardItemModel::removeRows(row, count, parent);
 }
 
-void ModbusDeviceListModel::removeDevices(int row, int count, const QModelIndex &parent)
+void ModbusDeviceListModel::removeDevices(int row, int count)
 {
     for (int i = row; i < row + count; ++i) {
-        QModelIndex deviceIndex = this->index(i, 0, parent);
+        QModelIndex deviceIndex = this->index(i, 0, QModelIndex());
         QStandardItem *deviceItem = this->itemFromIndex(deviceIndex);
         ModbusDevice *device = deviceItem->data(ItemTypeDevice).value<ModbusDevice *>();
         if (!device) {
@@ -183,9 +191,7 @@ void ModbusDeviceListModel::removeDevices(int row, int count, const QModelIndex 
         }
 
         int tableCount = deviceItem->rowCount();
-        removeTables(0, tableCount, deviceIndex);
-
-        qInfo() << deviceIndex.data(Qt::DisplayRole).toString() << " will be removed.";
+        removeTables(0, tableCount, deviceItem);
         device->requestInterruption();
         device->exit();
         device->wait();
@@ -193,31 +199,40 @@ void ModbusDeviceListModel::removeDevices(int row, int count, const QModelIndex 
     }
 }
 
-void ModbusDeviceListModel::removeTables(int row, int count, const QModelIndex &parent)
+void ModbusDeviceListModel::removeTables(int row, int count, QStandardItem *parentItem)
 {
-    QStandardItem *deviceItem = this->itemFromIndex(parent);
     for (int i = row; i < row + count; ++i) {
-        QModelIndex viewIndex = this->index(i, 0, parent);
-        QStandardItem *viewItem = deviceItem->child(i);
+        if (i >= parentItem->rowCount()) {
+            qWarning("Can not delete table from %s, index %d is out of range",
+                     parentItem->text().toUtf8().constData(),
+                     i);
+            continue;
+        }
+
+        QStandardItem *viewItem = parentItem->child(i);
         auto *view = viewItem->data(ItemTypeTableView).value<ModbusRegisterTableView *>();
         if (!view) {
             qWarning("Can not delete table view from %s, view is nullptr",
-                     deviceItem->text().toUtf8().constData());
+                     parentItem->text().toUtf8().constData());
             continue;
         }
 
         int registerCount = viewItem->rowCount();
-        removeRegisters(0, registerCount, viewIndex);
-
-        qInfo() << viewIndex.data(Qt::DisplayRole).toString() << " will be removed.";
+        removeRegisters(0, registerCount, viewItem);
         view->setParent(0);
         view->deleteLater();
     }
 }
 
-void ModbusDeviceListModel::removeRegisters(int row, int count, const QModelIndex &parent)
+void ModbusDeviceListModel::removeRegisters(int row, int count, QStandardItem *parentItem)
 {
-    auto *tableView = parent.data(ItemTypeTableView).value<ModbusRegisterTableView *>();
+    QModelIndex parentIndex = indexFromItem(parentItem);
+    if (parentIndex.isValid() == false) {
+        qWarning("Can not delete registers, parent index is invalid");
+        return;
+    }
+
+    auto *tableView = parentItem->data(ItemTypeTableView).value<ModbusRegisterTableView *>();
     if (!tableView) {
         qWarning("Can not delete registers from %s, tableView is nullptr",
                  tableView->windowTitle().toUtf8().constData());

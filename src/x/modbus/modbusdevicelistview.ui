@@ -49,9 +49,26 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="toolButtonTree">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonExpandAll">
        <property name="toolTip">
-        <string>Open all nodes</string>
+        <string>Expand all items</string>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonCollapseAll">
+       <property name="toolTip">
+        <string>Collapse all items</string>
        </property>
        <property name="text">
         <string notr="true"/>

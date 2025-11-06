@@ -13,7 +13,7 @@
 #include <QModbusDataUnit>
 #include <QStandardItemModel>
 
-#define xItemType (Qt::UserRole + 2000)
+#define xItemTypeRole (Qt::UserRole + 2000)
 
 namespace xModbus {
 
@@ -26,7 +26,6 @@ class ModbusRegister;
 class ModbusDeviceListModel : public QStandardItemModel
 {
     Q_OBJECT
-
 public:
     enum ItemType { ItemTypeDevice = Qt::UserRole + 1000, ItemTypeTableView, ItemTypeRegister };
 
@@ -50,9 +49,9 @@ public:
     bool removeRows(int row, int count, const QModelIndex &parent) override;
 
 private:
-    void removeDevices(int row, int count, const QModelIndex &parent);
-    void removeTables(int row, int count, const QModelIndex &parent);
-    void removeRegisters(int row, int count, const QModelIndex &parent);
+    void removeDevices(int row, int count);
+    void removeTables(int row, int count, QStandardItem *parentItem);
+    void removeRegisters(int row, int count, QStandardItem *parentItem);
 };
 
 } // namespace xModbus

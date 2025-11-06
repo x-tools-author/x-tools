@@ -40,5 +40,7 @@
         <file>res/icons/stop.svg</file>
         <file>res/icons/play_arrow.svg</file>
         <file>res/icons/cleaning_services.svg</file>
+        <file>res/icons/expand_all.svg</file>
+        <file>res/icons/collapse_all.svg</file>
     </qresource>
 </RCC>
