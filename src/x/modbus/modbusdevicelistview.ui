@@ -59,20 +59,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="toolButtonUp">
-       <property name="text">
-        <string notr="true"/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="toolButtonDown">
-       <property name="text">
-        <string notr="true"/>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QLabel" name="label">
        <property name="text">
         <string notr="true"/>

@@ -46,8 +46,6 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     ui->toolButtonAdd->setIcon(xIcon(":/res/icons/add.svg"));
     ui->toolButtonRemove->setIcon(xIcon(":/res/icons/remove.svg"));
     ui->toolButtonTree->setIcon(xIcon(":/res/icons/account_tree.svg"));
-    ui->toolButtonUp->setIcon(xIcon(":/res/icons/arrow_upward.svg"));
-    ui->toolButtonDown->setIcon(xIcon(":/res/icons/arrow_downward.svg"));
     ui->toolButtonClose->setIcon(xIcon(":/res/icons/stop.svg"));
     ui->toolButtonOpen->setIcon(xIcon(":/res/icons/play_arrow.svg"));
 
@@ -60,10 +58,9 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     ui->treeView->setExpandsOnDoubleClick(false);
 #endif
 #if 0
-    ui->tableView->setModel(m_model);
-    ui->tableView->setAcceptDrops(true);
-    ui->tableView->setDropIndicatorShown(true);
-    ui->tableView->setDragDropMode(QAbstractItemView::InternalMove);
+    ui->treeView->setAcceptDrops(true);
+    ui->treeView->setDropIndicatorShown(true);
+    ui->treeView->setDragDropMode(QAbstractItemView::InternalMove);
 #endif
 
     QMenu *addMenu = new QMenu(this);
@@ -183,41 +180,16 @@ void ModbusDeviceListView::onNewDevice()
     ui->treeView->expandAll();
 }
 
-void ModbusDeviceListView::onNewCoils()
+void ModbusDeviceListView::onRemove()
 {
-    // Logic to create a new Coils device, e.g., open a dialog to configure the Coils.
+    QModelIndex index = ui->treeView->currentIndex();
+    if (!index.isValid()) {
+        return;
+    }
+
+    const QModelIndex srcIndex = m_filter->mapToSource(index);
+    m_model->removeRow(srcIndex.row(), srcIndex.parent());
 }
-
-void ModbusDeviceListView::onNewDiscreteInputs()
-{
-    // Logic to create a new Discrete Inputs device, e.g., open a dialog to configure the Discrete Inputs.
-}
-
-void ModbusDeviceListView::onNewHoldingRegisters()
-{
-    // Logic to create a new Holding Registers device, e.g., open a dialog to configure the Holding Registers.
-}
-
-void ModbusDeviceListView::onNewInputRegisters()
-{
-    // Logic to create a new Input Registers device, e.g., open a dialog to configure the Input Registers.
-}
-
-void ModbusDeviceListView::onNewSingleRegister() {}
-
-void ModbusDeviceListView::onNewMultiRegister() {}
-
-void ModbusDeviceListView::onCopy() {}
-
-void ModbusDeviceListView::onPaste() {}
-
-void ModbusDeviceListView::onCut() {}
-
-void ModbusDeviceListView::onUndo() {}
-
-void ModbusDeviceListView::onRedo() {}
-
-void ModbusDeviceListView::onRemove() {}
 
 void ModbusDeviceListView::onCloseAllItems()
 {

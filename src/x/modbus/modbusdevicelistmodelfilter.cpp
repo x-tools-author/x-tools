@@ -20,4 +20,10 @@ ModbusDeviceListModelFilter::ModbusDeviceListModelFilter(QObject *parent)
 
 ModbusDeviceListModelFilter::~ModbusDeviceListModelFilter() {}
 
+bool ModbusDeviceListModelFilter::filterAcceptsRow(int sourceRow,
+                                                   const QModelIndex &sourceParent) const
+{
+    return QSortFilterProxyModel::filterAcceptsRow(sourceRow, sourceParent);
+}
+
 } // namespace xModbus

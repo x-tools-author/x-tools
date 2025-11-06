@@ -25,12 +25,6 @@ ModbusDeviceListModel::ModbusDeviceListModel(QWidget *parent)
 
 ModbusDeviceListModel::~ModbusDeviceListModel() {}
 
-Qt::ItemFlags ModbusDeviceListModel::flags(const QModelIndex &index) const
-{
-    auto defaultFlags = QStandardItemModel::flags(index);
-    return defaultFlags & ~Qt::ItemIsEditable;
-}
-
 QList<ModbusRegister *> ModbusDeviceListModel::allRegisters(ModbusDevice *device) const
 {
     QList<ModbusRegister *> registers;
@@ -151,6 +145,20 @@ void ModbusDeviceListModel::newRegisters(QStandardItem *tableItem,
         stdItem->setData(QVariant::fromValue(item), USER_ROLE_MODBUS_REGISTER);
         tableItem->appendRow(stdItem);
     }
+}
+
+Qt::ItemFlags ModbusDeviceListModel::flags(const QModelIndex &index) const
+{
+    auto defaultFlags = QStandardItemModel::flags(index);
+    return defaultFlags & ~Qt::ItemIsEditable;
+}
+
+bool ModbusDeviceListModel::removeRows(int row, int count, const QModelIndex &parent)
+{
+    beginRemoveRows(parent, row, row + count - 1);
+
+    endRemoveRows();
+    return true;
 }
 
 } // namespace xModbus

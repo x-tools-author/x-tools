@@ -18,6 +18,8 @@ class ModbusDeviceListModelFilter : public QSortFilterProxyModel
 public:
     explicit ModbusDeviceListModelFilter(QObject *parent = nullptr);
     ~ModbusDeviceListModelFilter() override;
+
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
 };
 
 } // namespace xModbus

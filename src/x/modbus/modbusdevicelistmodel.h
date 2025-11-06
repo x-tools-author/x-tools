@@ -28,18 +28,20 @@ public:
     explicit ModbusDeviceListModel(QWidget *parent = nullptr);
     ~ModbusDeviceListModel() override;
 
-    Qt::ItemFlags flags(const QModelIndex &index) const override;
     QList<ModbusRegister *> allRegisters(ModbusDevice *device) const;
     QJsonArray save() const;
     void load(const QJsonArray &array);
 
-public:
     QStandardItem *newDevice(const QJsonObject &parameters);
     void newDefaultTables(QStandardItem *deviceItem);
     void newRegisters(QStandardItem *tableItem,
                       QModbusDataUnit::RegisterType type,
                       int startAddress,
                       int quantity);
+
+public:
+    Qt::ItemFlags flags(const QModelIndex &index) const override;
+    bool removeRows(int row, int count, const QModelIndex &parent) override;
 };
 
 } // namespace xModbus

@@ -58,17 +58,6 @@ private:
     int depth(const QModelIndex &index);
 
     void onNewDevice();
-    void onNewCoils();
-    void onNewDiscreteInputs();
-    void onNewHoldingRegisters();
-    void onNewInputRegisters();
-    void onNewSingleRegister();
-    void onNewMultiRegister();
-    void onCopy();
-    void onPaste();
-    void onCut();
-    void onUndo();
-    void onRedo();
     void onRemove();
     void onCloseAllItems();
     void onOpenAllItems();
