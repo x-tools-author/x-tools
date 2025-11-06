@@ -72,10 +72,15 @@ void ModbusDeviceListModel::load(const QJsonArray &array)
 
 QStandardItem *ModbusDeviceListModel::newDevice(const QJsonObject &parameters)
 {
-    DeviceConnectionParameters ctx = json2DeviceConnectionParameters(parameters);
     ModbusDevice *device = new ModbusDevice(this);
+    DeviceConnectionParameters ctx = json2DeviceConnectionParameters(parameters);
     device->setParameters(ctx);
-    QStandardItem *item = new QStandardItem(ctx.deviceName);
+    QString deviceName = ctx.deviceName;
+    if (!device->isClient()) {
+        deviceName += QString(" [%1]").arg(ctx.serverAddress);
+    }
+
+    QStandardItem *item = new QStandardItem(deviceName);
     item->setData(QVariant::fromValue(device), USER_ROLE_MODBUS_DEVICE);
     appendRow(item);
     return item;

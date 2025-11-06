@@ -22,6 +22,7 @@
 #include "modbusdevice.h"
 #include "modbusdeviceeditor.h"
 #include "modbusdevicelistmodel.h"
+#include "modbusdevicelistmodelfilter.h"
 #include "modbusregister.h"
 #include "modbusregistertableview.h"
 
@@ -50,8 +51,10 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     ui->toolButtonClose->setIcon(xIcon(":/res/icons/stop.svg"));
     ui->toolButtonOpen->setIcon(xIcon(":/res/icons/play_arrow.svg"));
 
-    m_model = new ModbusDeviceListModel(ui->treeView);
-    ui->treeView->setModel(m_model);
+    m_model = new ModbusDeviceListModel(this);
+    m_filter = new ModbusDeviceListModelFilter(this);
+    m_filter->setSourceModel(m_model);
+    ui->treeView->setModel(m_filter);
     ui->treeView->header()->hide();
 #if 0
     ui->treeView->setExpandsOnDoubleClick(false);
@@ -107,6 +110,10 @@ ModbusDeviceListView::~ModbusDeviceListView()
 QJsonObject ModbusDeviceListView::save()
 {
     QJsonObject obj;
+
+    ModbusDeviceListViewKeys keys;
+    QJsonArray devicesArray;
+    obj.insert(keys.devices, devicesArray);
 
     return obj;
 }
@@ -245,9 +252,10 @@ void ModbusDeviceListView::onOpenAllItems()
 
 void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
 {
+    const QModelIndex srcIndex = m_filter->mapToSource(index);
     int depth = this->depth(index);
     if (depth == MODBUS_REGISTER_DEPTH) {
-        QStandardItem *item = m_model->itemFromIndex(index);
+        QStandardItem *item = m_model->itemFromIndex(srcIndex);
         auto registerView = item->data(USER_ROLE_MODBUS_TABLE).value<ModbusRegisterTableView *>();
         if (registerView) {
             registerView->selectRow(index.row());
@@ -349,7 +357,11 @@ void ModbusDeviceListView::onStopButtonClicked()
     }
 }
 
-void ModbusDeviceListView::onFilterTextChanged(const QString &text) {}
+void ModbusDeviceListView::onFilterTextChanged(const QString &text)
+{
+    m_filter->setFilterFixedString(text);
+    ui->treeView->expandAll();
+}
 
 QList<ModbusDevice *> ModbusDeviceListView::devices()
 {

@@ -22,6 +22,7 @@ class ModbusDevice;
 class ModbusRegister;
 class ModbusDeviceListModel;
 class ModbusRegisterTableView;
+class ModbusDeviceListModelFilter;
 class ModbusDeviceListView : public QWidget
 {
     Q_OBJECT
@@ -66,6 +67,7 @@ private:
 private:
     Ui::ModbusDeviceListView *ui;
     ModbusDeviceListModel *m_model;
+    ModbusDeviceListModelFilter *m_filter;
 
 private:
     int depth(const QModelIndex &index);

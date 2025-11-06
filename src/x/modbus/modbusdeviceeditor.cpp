@@ -96,6 +96,13 @@ QJsonObject ModbusDeviceEditor::save() const
     return deviceConnectionParameters2Json(parameters);
 }
 
+bool ModbusDeviceEditor::isClient() const
+{
+    int currentType = ui->comboBoxDeviceType->currentData().toInt();
+    return (currentType == static_cast<int>(XModbusType::RtuClient)
+            || currentType == static_cast<int>(XModbusType::TcpClient));
+}
+
 void ModbusDeviceEditor::onRefreshButtonClicked()
 {
     setupRtuNames(ui->comboBoxRtuNames);

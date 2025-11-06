@@ -8,34 +8,16 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QDialog>
-
-namespace Ui {
-class ModbusDeviceEditor;
-}
+#include <QSortFilterProxyModel>
 
 namespace xModbus {
 
-class ModbusDeviceEditor : public QDialog
+class ModbusDeviceListModelFilter : public QSortFilterProxyModel
 {
     Q_OBJECT
 public:
-    explicit ModbusDeviceEditor(QWidget *parent = nullptr);
-    ~ModbusDeviceEditor() override;
-
-    void setDeviceName(const QString &name);
-    void setDeviceType(int type);
-
-    void load(const QJsonObject &parameters);
-    QJsonObject save() const;
-    bool isClient() const;
-
-private:
-    Ui::ModbusDeviceEditor *ui;
-
-private:
-    void onRefreshButtonClicked();
-    void onDeviceTypeChanged();
+    explicit ModbusDeviceListModelFilter(QObject *parent = nullptr);
+    ~ModbusDeviceListModelFilter() override;
 };
 
 } // namespace xModbus
