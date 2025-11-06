@@ -70,6 +70,10 @@ ModbusLogModel &ModbusLogModel::singleton()
 
 void ModbusLogModel::addLogThreadSafely(LogType type, const QString &message)
 {
+    if (m_ignoreDataLog.load() && (type == LogTypeRequest || type == LogTypeResponse)) {
+        return;
+    }
+
     QDateTime currentTime = QDateTime::currentDateTime();
     emit invokeAddLog(currentTime, type, message);
 }
@@ -83,6 +87,18 @@ void ModbusLogModel::setLogItems(const QList<LogItem> &items)
 {
     beginResetModel();
     m_logItems = items;
+    endResetModel();
+}
+
+void ModbusLogModel::setIgnoreDataLog(bool ignore)
+{
+    m_ignoreDataLog.store(ignore);
+}
+
+void ModbusLogModel::setUsingColor(bool useColor)
+{
+    beginResetModel();
+    m_usingColor = useColor;
     endResetModel();
 }
 
@@ -133,14 +149,12 @@ QVariant ModbusLogModel::data(const QModelIndex &index, int role) const
         } else {
             return Qt::AlignCenter;
         }
-    } else if (role == Qt::BackgroundRole) {
-#if 0
+    } else if (role == Qt::BackgroundRole && m_usingColor) {
         if (item.type == LogTypeWarning) {
             return QColor("#FF6B6B");
         } else if (item.type == LogTypeError) {
             return QColor("#B00020");
         }
-#endif
     }
 
     return QVariant();

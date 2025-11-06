@@ -91,6 +91,33 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="checkBoxIgnoredDataLog">
+       <property name="text">
+        <string>Ignore data log</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="checkBoxUsingColor">
+       <property name="text">
+        <string>Using color</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="checkBoxAutoScrolling">
+       <property name="text">
+        <string>Audo scrolling</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Orientation::Horizontal</enum>

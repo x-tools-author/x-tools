@@ -20,6 +20,7 @@ namespace xModbus {
 struct xModbusKeys
 {
     const QString listView{"listView"};
+    const QString logTab{"logTab"};
 };
 
 xModbus::xModbus(QWidget* parent)
@@ -58,7 +59,8 @@ xModbus::~xModbus()
 QJsonObject xModbus::save()
 {
     QJsonObject obj;
-
+    xModbusKeys keys;
+    obj.insert(keys.logTab, ui->tabLog->save());
     return obj;
 }
 
@@ -67,6 +69,9 @@ void xModbus::load(const QJsonObject& obj)
     xModbusKeys keys;
     QJsonObject listView = obj.value(keys.listView).toObject();
     ui->widgetDeviceListView->load(listView);
+
+    QJsonObject logTab = obj.value(keys.logTab).toObject();
+    ui->tabLog->load(logTab);
 }
 
 void xModbus::onInvokeShowRegisterView(ModbusRegisterTableView* registerView)

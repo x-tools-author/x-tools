@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QWidget>
 
 namespace Ui {
@@ -25,6 +26,9 @@ public:
     explicit ModbusLogView(QWidget *parent = nullptr);
     ~ModbusLogView() override;
 
+    QJsonObject save();
+    void load(const QJsonObject &obj);
+
 private:
     Ui::ModbusLogView *ui;
     ModbusLogModel *m_logModel;
@@ -36,6 +40,8 @@ private:
     void onClearLogClicked();
     void onSaveLogClicked();
     void onOpenLogClicked();
+    void onIgnoreDataLogClicked();
+    void onUsingColorClicked();
 };
 
 } // namespace xModbus

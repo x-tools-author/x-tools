@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <atomic>
+
 #include <QAbstractTableModel>
 #include <QDateTime>
 #include <QJsonObject>
@@ -56,6 +58,8 @@ public:
     void addLogThreadSafely(LogType type, const QString &message);
     QList<LogItem> logItems() const;
     void setLogItems(const QList<LogItem> &items);
+    void setIgnoreDataLog(bool ignore);
+    void setUsingColor(bool useColor);
 
 public:
     int rowCount(const QModelIndex &parent) const override;
@@ -69,6 +73,8 @@ private:
 
 private:
     QList<LogItem> m_logItems;
+    std::atomic_bool m_ignoreDataLog{false};
+    bool m_usingColor{false};
 
 private:
     void onInvokeAddLog(const QDateTime &time, LogType type, const QString &message);

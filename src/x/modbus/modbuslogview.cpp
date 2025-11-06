@@ -31,6 +31,15 @@ struct LogItemKeys
     const QString message{"message"};
 };
 
+struct ModbusLogViewKeys
+{
+    const QString logType{"logType"};
+    const QString filterText{"filterText"};
+    const QString ignoreDataLog{"ignoreDataLog"};
+    const QString usingColor{"usingColor"};
+    const QString autoScrolling{"autoScrolling"};
+};
+
 ModbusLogView::ModbusLogView(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::ModbusLogView)
@@ -46,7 +55,9 @@ ModbusLogView::ModbusLogView(QWidget *parent)
 
     // Scroll to bottom on new log entry
     connect(m_logModel, &QAbstractItemModel::rowsInserted, this, [this]() {
-        ui->tableView->scrollToBottom();
+        if (ui->checkBoxAutoScrolling->isChecked()) {
+            ui->tableView->scrollToBottom();
+        }
     });
 
     ui->comboBoxLogType->addItem(QObject::tr("All"), LogTypeAll);
@@ -61,11 +72,48 @@ ModbusLogView::ModbusLogView(QWidget *parent)
     connect(ui->toolButtonClear, &QToolButton::clicked, this, &ModbusLogView::onClearLogClicked);
     connect(ui->toolButtonSave, &QToolButton::clicked, this, &ModbusLogView::onSaveLogClicked);
     connect(ui->toolButtonOpen, &QToolButton::clicked, this, &ModbusLogView::onOpenLogClicked);
+
+    onIgnoreDataLogClicked();
+    connect(ui->checkBoxIgnoredDataLog,
+            &QCheckBox::clicked,
+            this,
+            &ModbusLogView::onIgnoreDataLogClicked);
+    onUsingColorClicked();
+    connect(ui->checkBoxUsingColor, &QCheckBox::clicked, this, &ModbusLogView::onUsingColorClicked);
 }
 
 ModbusLogView::~ModbusLogView()
 {
     delete ui;
+}
+
+QJsonObject ModbusLogView::save()
+{
+    QJsonObject obj;
+    ModbusLogViewKeys keys;
+    obj.insert(keys.logType, ui->comboBoxLogType->currentData().toInt());
+    obj.insert(keys.filterText, ui->lineEditFilter->text());
+    obj.insert(keys.ignoreDataLog, ui->checkBoxIgnoredDataLog->isChecked());
+    obj.insert(keys.usingColor, ui->checkBoxUsingColor->isChecked());
+    obj.insert(keys.autoScrolling, ui->checkBoxAutoScrolling->isChecked());
+    return obj;
+}
+
+void ModbusLogView::load(const QJsonObject &obj)
+{
+    ModbusLogViewKeys keys;
+    int type = obj.value(keys.logType).toInt(LogTypeAll);
+    int typeIndex = ui->comboBoxLogType->findData(type);
+    ui->comboBoxLogType->setCurrentIndex(typeIndex == -1 ? 0 : typeIndex);
+    ui->lineEditFilter->setText(obj.value(keys.filterText).toString());
+    ui->checkBoxIgnoredDataLog->setChecked(obj.value(keys.ignoreDataLog).toBool(true));
+    ui->checkBoxUsingColor->setChecked(obj.value(keys.usingColor).toBool(false));
+    ui->checkBoxAutoScrolling->setChecked(obj.value(keys.autoScrolling).toBool(true));
+
+    onIgnoreDataLogClicked();
+    onLogTypeChanged();
+    onUsingColorClicked();
+    onFilterTextChanged(ui->lineEditFilter->text());
 }
 
 void ModbusLogView::onLogTypeChanged()
@@ -181,6 +229,16 @@ void ModbusLogView::onOpenLogClicked()
         items.append({dateTime, type, message});
     }
     m_logModel->setLogItems(items);
+}
+
+void ModbusLogView::onIgnoreDataLogClicked()
+{
+    m_logModel->setIgnoreDataLog(ui->checkBoxIgnoredDataLog->isChecked());
+}
+
+void ModbusLogView::onUsingColorClicked()
+{
+    m_logModel->setUsingColor(ui->checkBoxUsingColor->isChecked());
 }
 
 } // namespace xModbus
