@@ -418,6 +418,13 @@ void ModbusDevice::setupModbusReply(QModbusReply *reply)
             xModbusLog.addLogThreadSafely(LogTypeError, msg);
         }
 
+        xModbusLog.addLogThreadSafely(
+            LogTypeMsg,
+            tr("Read response: Server Address=%1, Start Address=%2, Value Count=%3")
+                .arg(reply->serverAddress())
+                .arg(reply->result().startAddress())
+                .arg(reply->result().valueCount()));
+
         reply->deleteLater();
     });
 }

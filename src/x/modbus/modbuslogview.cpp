@@ -44,6 +44,11 @@ ModbusLogView::ModbusLogView(QWidget *parent)
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
     ui->tableView->setAlternatingRowColors(true);
 
+    // Scroll to bottom on new log entry
+    connect(m_logModel, &QAbstractItemModel::rowsInserted, this, [this]() {
+        ui->tableView->scrollToBottom();
+    });
+
     ui->comboBoxLogType->addItem(QObject::tr("All"), LogTypeAll);
     ui->comboBoxLogType->addItem(logTypeToString(LogTypeMsg), LogTypeMsg);
     ui->comboBoxLogType->addItem(logTypeToString(LogTypeWarning), LogTypeWarning);
