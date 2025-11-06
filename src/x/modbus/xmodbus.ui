@@ -31,7 +31,7 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tabLog">
+     <widget class="xModbus::ModbusLogView" name="tabLog">
       <attribute name="title">
        <string>Log</string>
       </attribute>
@@ -61,6 +61,12 @@
    <class>xModbus::ModbusDeviceListView</class>
    <extends>QWidget</extends>
    <header location="global">x/modbus/modbusdevicelistview.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xModbus::ModbusLogView</class>
+   <extends>QWidget</extends>
+   <header location="global">x/modbus/modbuslogview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

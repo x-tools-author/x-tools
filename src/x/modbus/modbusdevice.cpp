@@ -17,6 +17,7 @@
 #include <QTimer>
 
 #include "modbuscommon.h"
+#include "modbuslogmodel.h"
 #include "modbusregister.h"
 #include "modbusregistertable.h"
 
@@ -108,23 +109,27 @@ void ModbusDevice::run()
 
     connect(m_device, &QModbusDevice::stateChanged, m_device, [=](QModbusDevice::State state) {
         if (state == QModbusDevice::ConnectedState) {
-            qInfo() << "Modbus device connected.";
+            QString msg = tr("Modbus device connected.");
+            msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
+            xModbusLog.addLogThreadSafely(LogTypeMsg, msg);
             if (isClient()) {
                 m_sendReadRequestsTimer->start();
             }
-            //emit deviceConnected();
         } else if (state == QModbusDevice::UnconnectedState) {
-            qInfo() << "Modbus device disconnected.";
-            //emit deviceDisconnected();
+            QString msg = tr("Modbus device disconnected.");
+            msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
+            xModbusLog.addLogThreadSafely(LogTypeMsg, msg);
         }
     });
 
     connect(m_device, &QModbusDevice::errorOccurred, m_device, [=]() {
-        qInfo() << "Modbus device error occurred:" << m_device->errorString();
+        QString msg = tr("Modbus device error: %1").arg(m_device->errorString());
+        msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
+        xModbusLog.addLogThreadSafely(LogTypeError, msg);
+
         if (isClient() && m_sendReadRequestsTimer) {
             m_sendReadRequestsTimer->stop();
         }
-        //emit errorOccurred(device->errorString());
     });
 
     connect(this,
@@ -500,7 +505,7 @@ void ModbusDevice::onDataWritten(QModbusDataUnit::RegisterType table, int addres
         int startAddr = address + i;
         bool ret = server->data(table, startAddr, &value);
         if (ret == false) {
-            emit logMessage(tr("Failed to get written data at address %1").arg(startAddr), true);
+            //emit logMessage(tr("Failed to get written data at address %1").arg(startAddr), true);
             continue;
         }
 

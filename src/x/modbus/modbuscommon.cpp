@@ -43,13 +43,29 @@ QString registerTypeToString(QModbusDataUnit::RegisterType type)
     }
 }
 
+QString deviceTypeName(XModbusType type)
+{
+    switch (type) {
+    case XModbusType::RtuClient:
+        return QObject::tr("RTU Master");
+    case XModbusType::RtuServer:
+        return QObject::tr("RTU Slave");
+    case XModbusType::TcpClient:
+        return QObject::tr("TCP Client");
+    case XModbusType::TcpServer:
+        return QObject::tr("TCP Server");
+    default:
+        return QObject::tr("Unknown");
+    }
+}
+
 void setupModebusDeviceType(QComboBox *cb)
 {
     cb->clear();
-    cb->addItem(QObject::tr("RTU Master"), static_cast<int>(XModbusType::RtuClient));
-    cb->addItem(QObject::tr("RTU Slave"), static_cast<int>(XModbusType::RtuServer));
-    cb->addItem(QObject::tr("TCP Client"), static_cast<int>(XModbusType::TcpClient));
-    cb->addItem(QObject::tr("TCP Server"), static_cast<int>(XModbusType::TcpServer));
+    cb->addItem(deviceTypeName(XModbusType::RtuClient), static_cast<int>(XModbusType::RtuClient));
+    cb->addItem(deviceTypeName(XModbusType::RtuServer), static_cast<int>(XModbusType::RtuServer));
+    cb->addItem(deviceTypeName(XModbusType::TcpClient), static_cast<int>(XModbusType::TcpClient));
+    cb->addItem(deviceTypeName(XModbusType::TcpServer), static_cast<int>(XModbusType::TcpServer));
 }
 
 void setupRtuNames(QComboBox *cb)
@@ -179,6 +195,25 @@ DeviceConnectionParameters json2DeviceConnectionParameters(const QJsonObject &pa
     connectionParams.listenOnlyMode = params.value(keys.listenOnlyMode).toBool(defaultListenOnlyMode);
 
     return connectionParams;
+}
+
+QString deviceConnectionParametersToString(const DeviceConnectionParameters &params)
+{
+    if (params.deviceType == static_cast<int>(XModbusType::RtuClient)
+        || params.deviceType == static_cast<int>(XModbusType::RtuServer)) {
+        return QString("%1: Port=%2, BaudRate=%3, DataBits=%4, Parity=%5, StopBits=%6")
+            .arg(deviceTypeName(static_cast<XModbusType>(params.deviceType)))
+            .arg(params.portName)
+            .arg(params.baudRate)
+            .arg(params.dataBits)
+            .arg(params.parity)
+            .arg(params.stopBits);
+    } else {
+        return QString("%1: Address=%2, Port=%3")
+            .arg(deviceTypeName(static_cast<XModbusType>(params.deviceType)))
+            .arg(params.tcpAddress)
+            .arg(params.tcpPort);
+    }
 }
 
 } // namespace xModbus

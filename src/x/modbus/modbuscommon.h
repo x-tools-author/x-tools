@@ -75,5 +75,6 @@ struct DeviceConnectionParameters
 
 QJsonObject deviceConnectionParameters2Json(const DeviceConnectionParameters &params);
 DeviceConnectionParameters json2DeviceConnectionParameters(const QJsonObject &params);
+QString deviceConnectionParametersToString(const DeviceConnectionParameters &params);
 
 } // namespace xModbus
