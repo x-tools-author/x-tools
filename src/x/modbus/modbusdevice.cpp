@@ -140,7 +140,9 @@ void ModbusDevice::run()
             });
 
     if (!m_device->connectDevice()) {
-        qInfo() << "Failed to connect Modbus device:" << m_device->errorString();
+        QString msg = tr("Failed to connect Modbus device: %1").arg(m_device->errorString());
+        msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
+        xModbusLog.addLogThreadSafely(LogTypeError, msg);
         return;
     }
 
@@ -359,7 +361,7 @@ void ModbusDevice::updateReadRequestDataUnits()
         }
     }
 
-#if 1
+#if 0
     // Debug: 打印创建的数据单元
     printDataUnits(readRequestDataUnits);
 #endif
@@ -385,7 +387,9 @@ void ModbusDevice::setupModbusReply(QModbusReply *reply)
 {
     if (!reply) {
         QModbusClient *client = qobject_cast<QModbusClient *>(m_device);
-        qInfo() << "Failed to send read request:" << client->errorString();
+        QString msg = tr("Failed to send read request: %1").arg(client->errorString());
+        msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(parameters()));
+        xModbusLog.addLogThreadSafely(LogTypeError, msg);
         return;
     }
 
@@ -409,7 +413,9 @@ void ModbusDevice::setupModbusReply(QModbusReply *reply)
                 m_contextMutex.unlock();
             }
         } else {
-            qInfo() << "Read error:" << reply->errorString();
+            QString msg = tr("Read error: %1").arg(reply->errorString());
+            msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(parameters()));
+            xModbusLog.addLogThreadSafely(LogTypeError, msg);
         }
 
         reply->deleteLater();
