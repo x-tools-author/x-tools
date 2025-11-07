@@ -9,6 +9,9 @@
 #include "modbusregistertableview.h"
 #include "ui_modbusregistertableview.h"
 
+#include "common/iconengine.h"
+#include "common/menu.h"
+
 #include "modbusregisterdelegate.h"
 #include "modbusregistertable.h"
 #include "modbusregistertablefilter.h"
@@ -33,6 +36,21 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
 #endif
     ui->tableView->setItemDelegate(m_registerDelegate);
     ui->tableView->horizontalHeader()->setMinimumSectionSize(80);
+    ui->toolButtonColumns->setIcon(xIcon(":/res/icons/list.svg"));
+    ui->toolButtonColumns->setToolTip(ui->toolButtonColumns->text());
+#if 1
+    ui->toolButtonColumns->setToolButtonStyle(Qt::ToolButtonIconOnly);
+#endif
+
+    m_columnMenu = new Menu(ui->toolButtonColumns);
+    ui->toolButtonColumns->setMenu(m_columnMenu);
+    ui->toolButtonColumns->setPopupMode(QToolButton::InstantPopup);
+    resetColumnMenu();
+
+    connect(ui->lineEditFilter,
+            &QLineEdit::textChanged,
+            this,
+            &ModbusRegisterTableView::onFilterTextChanged);
 }
 
 ModbusRegisterTableView::~ModbusRegisterTableView()
@@ -61,6 +79,27 @@ void ModbusRegisterTableView::selectRow(int row)
 void ModbusRegisterTableView::setServerAddressColumnVisible(bool visible)
 {
     ui->tableView->setColumnHidden(REGISTER_TABLE_SERVER_ADDRESS, !visible);
+    resetColumnMenu();
+}
+
+void ModbusRegisterTableView::onFilterTextChanged(const QString &text)
+{
+    m_registerTableFilter->setFilterFixedString(text);
+}
+
+void ModbusRegisterTableView::resetColumnMenu()
+{
+    m_columnMenu->clear();
+    int columns = ui->tableView->model()->columnCount();
+    for (int col = 0; col < columns; ++col) {
+        QString header = ui->tableView->model()->headerData(col, Qt::Horizontal).toString();
+        QAction *action = m_columnMenu->addAction(header);
+        action->setCheckable(true);
+        action->setChecked(!ui->tableView->isColumnHidden(col));
+        connect(action, &QAction::toggled, this, [this, col](bool checked) {
+            ui->tableView->setColumnHidden(col, !checked);
+        });
+    }
 }
 
 } // namespace xModbus

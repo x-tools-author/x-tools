@@ -18,6 +18,9 @@ class ModbusRegisterTableFilter : public QSortFilterProxyModel
 public:
     explicit ModbusRegisterTableFilter(QObject *parent = nullptr);
     ~ModbusRegisterTableFilter() override;
+
+private:
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
 };
 
 } // namespace xModbus

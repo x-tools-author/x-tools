@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "modbusregistertablefilter.h"
 
+#include "modbusregistertable.h"
+
 namespace xModbus {
 
 ModbusRegisterTableFilter::ModbusRegisterTableFilter(QObject *parent)
@@ -15,5 +17,25 @@ ModbusRegisterTableFilter::ModbusRegisterTableFilter(QObject *parent)
 {}
 
 ModbusRegisterTableFilter::~ModbusRegisterTableFilter() {}
+
+bool ModbusRegisterTableFilter::filterAcceptsRow(int sourceRow,
+                                                 const QModelIndex &sourceParent) const
+{
+    ModbusRegisterTable *srcModel = qobject_cast<ModbusRegisterTable *>(sourceModel());
+    if (!srcModel) {
+        return false;
+    }
+
+    int columnCount = srcModel->columnCount(sourceParent);
+    for (int col = 0; col < columnCount; ++col) {
+        QModelIndex index = srcModel->index(sourceRow, col, sourceParent);
+        QString txt = srcModel->data(index, Qt::DisplayRole).toString();
+        if (txt.contains(filterRegularExpression())) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 } // namespace xModbus

@@ -56,9 +56,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="toolButtonExpandAll">
+      <widget class="QToolButton" name="toolButtonClose">
        <property name="toolTip">
-        <string>Expand all items</string>
+        <string>Close all devices</string>
        </property>
        <property name="text">
         <string notr="true"/>
@@ -66,9 +66,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="toolButtonCollapseAll">
+      <widget class="QToolButton" name="toolButtonOpen">
        <property name="toolTip">
-        <string>Collapse all items</string>
+        <string>Open all devices</string>
        </property>
        <property name="text">
         <string notr="true"/>
@@ -83,9 +83,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="toolButtonClose">
+      <widget class="QToolButton" name="toolButtonExpandAll">
        <property name="toolTip">
-        <string>Close all devices</string>
+        <string>Expand all items</string>
        </property>
        <property name="text">
         <string notr="true"/>
@@ -93,9 +93,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="toolButtonOpen">
+      <widget class="QToolButton" name="toolButtonCollapseAll">
        <property name="toolTip">
-        <string>Open all devices</string>
+        <string>Collapse all items</string>
        </property>
        <property name="text">
         <string notr="true"/>

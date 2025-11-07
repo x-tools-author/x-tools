@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QMenu>
 #include <QWidget>
 
 namespace Ui {
@@ -35,6 +36,13 @@ private:
     ModbusRegisterTableFilter *m_registerTableFilter{nullptr};
     Ui::ModbusRegisterTableView *ui{nullptr};
     ModbusRegisterDelegate *m_registerDelegate{nullptr};
+
+    QMenu *m_columnMenu{nullptr};
+
+private:
+    void onFilterTextChanged(const QString &text);
+
+    void resetColumnMenu();
 };
 
 } // namespace xModbus
