@@ -104,7 +104,6 @@ void ModbusDeviceListModel::newDefaultTables(QStandardItem *deviceItem)
                 &ModbusRegisterTable::registerValueChanged,
                 device,
                 &ModbusDevice::setValue);
-
         registerView->setWindowTitle(registerTypeToString(group.type));
         QStandardItem *registerItem = new QStandardItem(registerView->windowTitle());
         registerItem->setData(int(ItemTypeTableView), xItemTypeRole);
@@ -145,6 +144,8 @@ void ModbusDeviceListModel::newRegisters(QStandardItem *tableItem,
         stdItem->setData(QVariant::fromValue(registerView), ItemTypeTableView);
         stdItem->setData(QVariant::fromValue(item), ItemTypeRegister);
         tableItem->appendRow(stdItem);
+
+        connect(item, &ModbusRegister::nameChanged, this, [=]() { stdItem->setText(item->name); });
     }
 }
 

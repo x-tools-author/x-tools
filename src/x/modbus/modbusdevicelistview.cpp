@@ -11,6 +11,7 @@
 
 #include <QApplication>
 #include <QContextMenuEvent>
+#include <QInputDialog>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QMainWindow>
@@ -48,15 +49,15 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     ui->toolButtonRemove->setIcon(xIcon(":/res/icons/remove.svg"));
     ui->toolButtonExpandAll->setIcon(xIcon(":/res/icons/expand_all.svg"));
     ui->toolButtonCollapseAll->setIcon(xIcon(":/res/icons/collapse_all.svg"));
-    ui->toolButtonClose->setIcon(xIcon(":/res/icons/stop.svg"));
-    ui->toolButtonOpen->setIcon(xIcon(":/res/icons/play_arrow.svg"));
+    ui->toolButtonClose->setIcon(xColorIcon(":/res/icons/stop.svg", "#d32f2f"));
+    ui->toolButtonOpen->setIcon(xColorIcon(":/res/icons/play_arrow.svg", "#388e3c"));
 
     m_model = new ModbusDeviceListModel(this);
     m_filter = new ModbusDeviceListModelFilter(this);
     m_filter->setSourceModel(m_model);
     ui->treeView->setModel(m_filter);
     ui->treeView->header()->hide();
-#if 0
+#if 1
     ui->treeView->setExpandsOnDoubleClick(false);
 #endif
 #if 0
@@ -80,6 +81,7 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     connect(ui->toolButtonAdd, &QToolButton::clicked, this, &ModbusDeviceListView::onNewDevice);
     connect(ui->toolButtonRemove, &QToolButton::clicked, this, &ModbusDeviceListView::onRemove);
     connect(ui->treeView, &QTreeView::doubleClicked, this, &ModbusDeviceListView::onItemDoubleClicked);
+    connect(ui->treeView, &QTreeView::clicked, this, &ModbusDeviceListView::onItemClicked);
     connect(ui->toolButtonOpen, &QToolButton::clicked, this, &ModbusDeviceListView::onStartButtonClicked);
     connect(ui->toolButtonClose, &QToolButton::clicked, this, &ModbusDeviceListView::onStopButtonClicked);
     connect(ui->toolButtonExpandAll, &QToolButton::clicked, this, &ModbusDeviceListView::onOpenAllItems);
@@ -240,8 +242,74 @@ void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
     }
 
     int itemTypeRole = item->data(xItemTypeRole).toInt();
-    if (itemTypeRole == xItemTypeDevice) {
-    } else if (itemTypeRole == xItemTypeTableView) {
+    if (itemTypeRole == xItemTypeTableView) {
+        QInputDialog inputDialog(xMainWindow);
+        inputDialog.setWindowTitle(tr("Rename Register Table"));
+        inputDialog.setLabelText(tr("Please input the new name for the register table:"));
+        inputDialog.setTextValue(item->text());
+        if (inputDialog.exec() == QDialog::Accepted) {
+            QString newName = inputDialog.textValue();
+            item->setText(newName);
+            auto tableView = item->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
+            if (tableView) {
+                tableView->setWindowTitle(newName);
+            }
+        }
+    } else if (itemTypeRole == xItemTypeRegister) {
+        QInputDialog inputDialog(xMainWindow);
+        inputDialog.setWindowTitle(tr("Rename Register Item"));
+        inputDialog.setLabelText(tr("Please input the new name for the register item:"));
+        inputDialog.setTextValue(item->text());
+        if (inputDialog.exec() == QDialog::Accepted) {
+            QString newName = inputDialog.textValue();
+            item->setText(newName);
+            auto registerItem = item->data(xItemTypeRegister).value<ModbusRegister *>();
+            if (registerItem) {
+                registerItem->setName(newName);
+            }
+        }
+    } else if (itemTypeRole == xItemTypeDevice) {
+        ModbusDeviceEditor editor(xMainWindow);
+        editor.setWindowTitle(tr("Edit Modbus Device"));
+        ModbusDevice *device = item->data(xItemTypeDevice).value<ModbusDevice *>();
+        DeviceConnectionParameters params = device->parameters();
+        QJsonObject deviceObj = deviceConnectionParameters2Json(params);
+        editor.load(deviceObj);
+        editor.setModal(true);
+        if (editor.exec() == QDialog::Accepted) {
+            QJsonObject newParams = editor.save();
+            if (newParams == deviceObj) {
+                return;
+            }
+
+            DeviceConnectionParameters newParamsCtx = json2DeviceConnectionParameters(newParams);
+            device->setParameters(newParamsCtx);
+            item->setText(newParamsCtx.deviceName);
+            if (device->isRunning()) {
+                int ret = QMessageBox::question(
+                    this,
+                    tr("Change Device parameters"),
+                    tr("The device is running. Restarting it to apply new parameters now?"),
+                    QMessageBox::Ok | QMessageBox::No);
+                if (ret == QMessageBox::No) {
+                    device->restart();
+                }
+            }
+        }
+    }
+}
+
+void ModbusDeviceListView::onItemClicked(const QModelIndex &index)
+{
+    QModelIndex srcIndex = m_filter->mapToSource(index);
+    QStandardItem *item = m_model->itemFromIndex(srcIndex);
+    if (!item) {
+        qInfo() << "ModbusDeviceListView::onItemDoubleClicked: item is nullptr";
+        return;
+    }
+
+    int itemTypeRole = item->data(xItemTypeRole).toInt();
+    if (itemTypeRole == xItemTypeTableView) {
         QStandardItem *item = m_model->itemFromIndex(srcIndex);
         auto registerView = item->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
         if (registerView) {

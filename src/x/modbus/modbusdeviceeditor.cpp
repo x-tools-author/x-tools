@@ -20,6 +20,8 @@ ModbusDeviceEditor::ModbusDeviceEditor(QWidget *parent)
     , ui(new Ui::ModbusDeviceEditor)
 {
     ui->setupUi(this);
+    ui->labelRegisterTables->hide();
+    ui->comboBoxRegisterTables->hide();
 
     setupModebusDeviceType(ui->comboBoxDeviceType);
     setupRtuNames(ui->comboBoxRtuNames);

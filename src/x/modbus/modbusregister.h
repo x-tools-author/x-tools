@@ -57,9 +57,12 @@ public:
 public:
     quint16 getValue() const;
     void setValue(quint16 newValue);
+    QString getName() const;
+    void setName(const QString &newName);
 
 signals:
     void valueChanged();
+    void nameChanged();
 
 private:
     mutable QMutex m_valueMutex;

@@ -40,6 +40,7 @@ public:
     QList<ModbusRegister *> modbusRegisters() const;
     void setModbusRegisters(const QList<ModbusRegister *> &registers);
     void setValue(int serverAddress, int registerType, quint16 address, quint16 value);
+    void restart();
 
 protected:
     void run() override;

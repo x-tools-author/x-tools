@@ -60,6 +60,7 @@ private:
     void onCloseAllItems();
     void onOpenAllItems();
     void onItemDoubleClicked(const QModelIndex &index);
+    void onItemClicked(const QModelIndex &index);
     void onAddMenuAboutToShow();
     void onAddMenuAboutToHide();
     void onStartButtonClicked();

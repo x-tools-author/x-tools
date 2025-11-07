@@ -89,6 +89,16 @@ void ModbusDevice::setValue(int serverAddress, int registerType, quint16 address
     emit invokeSetValue(serverAddress, registerType, address, value);
 }
 
+void ModbusDevice::restart()
+{
+    if (isRunning()) {
+        requestInterruption();
+        exit();
+        wait();
+    }
+    start();
+}
+
 void ModbusDevice::run()
 {
     DeviceConnectionParameters params = parameters();

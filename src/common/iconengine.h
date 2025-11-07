@@ -11,11 +11,13 @@
 #include <QIconEngine>
 
 #define xIcon(file) QIcon(new IconEngine(file))
+#define xColorIcon(file, color) QIcon(new IconEngine(file, color))
 
 class IconEngine : public QIconEngine
 {
 public:
     IconEngine(const QString &iconFile);
+    IconEngine(const QString &iconFile, const QString &color);
     ~IconEngine();
 
     QIconEngine *clone() const override;
@@ -24,4 +26,5 @@ public:
 
 private:
     QString m_iconFile;
+    QString m_color;
 };

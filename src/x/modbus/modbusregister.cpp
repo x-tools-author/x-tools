@@ -92,4 +92,27 @@ void ModbusRegister::setValue(quint16 newValue)
     }
 }
 
+QString ModbusRegister::getName() const
+{
+    m_valueMutex.lock();
+    QString name = this->name;
+    m_valueMutex.unlock();
+    return name;
+}
+
+void ModbusRegister::setName(const QString &newName)
+{
+    bool changed = false;
+    m_valueMutex.lock();
+    if (name != newName) {
+        name = newName;
+        changed = true;
+    }
+    m_valueMutex.unlock();
+
+    if (changed) {
+        emit nameChanged();
+    }
+}
+
 } // namespace xModbus

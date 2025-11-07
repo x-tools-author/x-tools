@@ -18,6 +18,12 @@ IconEngine::IconEngine(const QString &iconFile)
     , m_iconFile(iconFile)
 {}
 
+IconEngine::IconEngine(const QString &iconFile, const QString &color)
+    : QIconEngine()
+    , m_iconFile(iconFile)
+    , m_color(color)
+{}
+
 IconEngine::~IconEngine() {}
 
 QIconEngine *IconEngine::clone() const
@@ -37,6 +43,10 @@ void IconEngine::paint(QPainter *painter, const QRect &rect, QIcon::Mode mode, Q
         iconColor.setAlpha(100);
     } else if (mode == QIcon::Selected) {
         iconColor = palette.color(QPalette::Highlight);
+    }
+
+    if (!m_color.isEmpty()) {
+        iconColor = QColor(m_color);
     }
 
     static QString lastIconFile;

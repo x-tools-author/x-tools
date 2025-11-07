@@ -24,6 +24,7 @@ void ModbusRegisterTable::addRegisterItem(ModbusRegister *item)
     m_registerItems.append(item);
     endInsertRows();
     connect(item, &ModbusRegister::valueChanged, this, [=]() { onRegisterItemValueChanged(item); });
+    connect(item, &ModbusRegister::nameChanged, this, [=]() { onRegisterItemNameChanged(item); });
 }
 
 int ModbusRegisterTable::rowCount(const QModelIndex &parent) const
@@ -119,6 +120,7 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
     ModbusRegister *item = m_registerItems.at(index.row());
     int column = index.column();
     int oldRegisterValue = item->value;
+    QString oldName = item->name;
     switch (column) {
     case REGISTER_TABLE_ADDRESS:
         item->address = value.toUInt();
@@ -127,7 +129,7 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
         item->serverAddress = value.toInt();
         break;
     case REGISTER_TABLE_NAME:
-        item->name = value.toString();
+        item->setName(value.toString());
         break;
     case REGISTER_TABLE_TYPE:
         item->type = static_cast<QModbusDataUnit::RegisterType>(value.toInt());
@@ -163,6 +165,11 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
     if (oldRegisterValue != item->value) {
         emit registerValueChanged(item->serverAddress, item->type, item->address, item->value);
     }
+#if 0
+    if (oldName != item->name) {
+        emit registerNameChanged(item->serverAddress, item->type, item->address, item->name);
+    }
+#endif
 
     return true;
 }
@@ -262,6 +269,17 @@ void ModbusRegisterTable::onRegisterItemValueChanged(ModbusRegister *item)
 
     QModelIndex valueIndex = this->index(row, REGISTER_TABLE_VALUE);
     emit dataChanged(valueIndex, valueIndex, QList<int>() << Qt::DisplayRole);
+}
+
+void ModbusRegisterTable::onRegisterItemNameChanged(ModbusRegister *item)
+{
+    int row = m_registerItems.indexOf(item);
+    if (row == -1) {
+        return;
+    }
+
+    QModelIndex nameIndex = this->index(row, REGISTER_TABLE_NAME);
+    emit dataChanged(nameIndex, nameIndex, QList<int>() << Qt::DisplayRole);
 }
 
 } // namespace xModbus

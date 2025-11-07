@@ -47,12 +47,19 @@ public:
 signals:
     // Emitted when a register's value changes(Change the value by UI)
     void registerValueChanged(int serverAddress, int registerType, quint16 address, quint16 value);
+#if 0
+    void registerNameChanged(int serverAddress,
+                             int registerType,
+                             quint16 address,
+                             const QString &name);
+#endif
 
 private:
     QList<ModbusRegister *> m_registerItems;
 
 private:
     void onRegisterItemValueChanged(ModbusRegister *item);
+    void onRegisterItemNameChanged(ModbusRegister *item);
 };
 
 } // namespace xModbus
