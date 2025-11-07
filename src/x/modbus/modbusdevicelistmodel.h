@@ -38,11 +38,10 @@ public:
     void load(const QJsonArray &array);
 
     QStandardItem *newDevice(const QJsonObject &parameters);
+    QStandardItem *newTableView(QStandardItem *deviceItem, const QJsonObject &parameters);
+    QStandardItem *newRegister(QStandardItem *tableItem, const QJsonObject &parameters);
     void newDefaultTables(QStandardItem *deviceItem);
-    void newRegisters(QStandardItem *tableItem,
-                      QModbusDataUnit::RegisterType type,
-                      int startAddress,
-                      int quantity);
+    void newDefaultRegisters(QStandardItem *tableItem);
 
 public:
     Qt::ItemFlags flags(const QModelIndex &index) const override;
@@ -52,6 +51,8 @@ private:
     void removeDevices(int row, int count);
     void removeTables(int row, int count, QStandardItem *parentItem);
     void removeRegisters(int row, int count, QStandardItem *parentItem);
+
+    QJsonArray defaultTable(QModbusDataUnit::RegisterType type) const;
 };
 
 } // namespace xModbus

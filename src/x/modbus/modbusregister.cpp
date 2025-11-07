@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "modbusregister.h"
 
+#include "modbuscommon.h"
+
 namespace xModbus {
 
 ModbusRegister::ModbusRegister(QObject *parent)
@@ -34,10 +36,12 @@ ModbusRegister::~ModbusRegister() {}
 
 void ModbusRegister::load(const QJsonObject &json)
 {
+    QString addressName = QString("0x%1").arg(address, 4, 16, QChar('0').toUpper());
+    QString defaultName = QString("%1 - %2").arg(registerTypeToString(type)).arg(addressName);
     RegisterItemKeys keys;
     int defaultType = static_cast<int>(QModbusDataUnit::Invalid);
     type = static_cast<QModbusDataUnit::RegisterType>(json.value(keys.type).toInt(defaultType));
-    name = json.value(keys.name).toString(QString("Untitled"));
+    name = json.value(keys.name).toString(defaultName);
     unit = json.value(keys.unit).toString("");
     description = json.value(keys.description).toString("");
     address = static_cast<quint16>(json.value(keys.address).toInt(1));

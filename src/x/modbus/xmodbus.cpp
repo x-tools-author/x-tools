@@ -61,17 +61,17 @@ QJsonObject xModbus::save()
     QJsonObject obj;
     xModbusKeys keys;
     obj.insert(keys.logTab, ui->tabLog->save());
+    obj.insert(keys.listView, ui->widgetDeviceListView->save());
     return obj;
 }
 
 void xModbus::load(const QJsonObject& obj)
 {
     xModbusKeys keys;
-    QJsonObject listView = obj.value(keys.listView).toObject();
-    ui->widgetDeviceListView->load(listView);
-
     QJsonObject logTab = obj.value(keys.logTab).toObject();
     ui->tabLog->load(logTab);
+    QJsonObject listView = obj.value(keys.listView).toObject();
+    ui->widgetDeviceListView->load(listView);
 }
 
 void xModbus::onInvokeShowRegisterView(ModbusRegisterTableView* registerView)

@@ -26,6 +26,12 @@
 
 namespace xModbus {
 
+struct ModbusRegisterTableViewKeys
+{
+    const QString registers{"registers"};
+    const QString registerTableName{"registerTableName"};
+};
+
 ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::ModbusRegisterTableView)
@@ -68,6 +74,22 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
 ModbusRegisterTableView::~ModbusRegisterTableView()
 {
     delete ui;
+}
+
+QJsonObject ModbusRegisterTableView::save() const
+{
+    QJsonObject obj;
+    ModbusRegisterTableViewKeys keys;
+    obj[keys.registers] = saveRegisters();
+    obj[keys.registerTableName] = m_registerTable->objectName();
+    return obj;
+}
+
+void ModbusRegisterTableView::load(const QJsonObject &obj)
+{
+    ModbusRegisterTableViewKeys keys;
+    loadRegisters(obj[keys.registers].toArray());
+    m_registerTable->setObjectName(obj[keys.registerTableName].toString());
 }
 
 ModbusRegisterTable *ModbusRegisterTableView::registerTable() const
@@ -151,12 +173,7 @@ void ModbusRegisterTableView::onSaveRegistersButtonClicked()
         return;
     }
 
-    const QList<ModbusRegister *> &registerItems = m_registerTable->registerItems();
-    QJsonArray jsonArray;
-    for (ModbusRegister *reg : registerItems) {
-        jsonArray.append(reg->save());
-    }
-
+    QJsonArray jsonArray = saveRegisters();
     QJsonDocument jsonDoc(jsonArray);
     QTextStream out(&file);
     out << jsonDoc.toJson(QJsonDocument::Indented);
@@ -225,6 +242,27 @@ void ModbusRegisterTableView::resetColumnMenu()
         connect(action, &QAction::toggled, this, [this, col](bool checked) {
             ui->tableView->setColumnHidden(col, !checked);
         });
+    }
+}
+
+QJsonArray ModbusRegisterTableView::saveRegisters() const
+{
+    QJsonArray array;
+    QList<ModbusRegister *> registerItems = m_registerTable->registerItems();
+    for (ModbusRegister *reg : registerItems) {
+        array.append(reg->save());
+    }
+    return array;
+}
+
+void ModbusRegisterTableView::loadRegisters(const QJsonArray &array)
+{
+    for (const QJsonValue &value : array) {
+        if (value.isObject()) {
+            ModbusRegister *reg = new ModbusRegister(this);
+            reg->load(value.toObject());
+            m_registerTable->addRegisterItem(reg);
+        }
     }
 }
 

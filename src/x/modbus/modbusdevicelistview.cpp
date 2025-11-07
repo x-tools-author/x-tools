@@ -98,9 +98,8 @@ ModbusDeviceListView::~ModbusDeviceListView()
 QJsonObject ModbusDeviceListView::save()
 {
     QJsonObject obj;
-
     ModbusDeviceListViewKeys keys;
-    QJsonArray devicesArray;
+    QJsonArray devicesArray = m_model->save();
     obj.insert(keys.devices, devicesArray);
 
     return obj;

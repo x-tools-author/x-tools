@@ -23,6 +23,7 @@ class ModbusRegister;
 class ModbusDeviceListModel;
 class ModbusRegisterTableView;
 class ModbusDeviceListModelFilter;
+
 class ModbusDeviceListView : public QWidget
 {
     Q_OBJECT

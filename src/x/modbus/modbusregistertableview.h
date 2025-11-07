@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QMenu>
 #include <QWidget>
 
@@ -26,6 +27,9 @@ class ModbusRegisterTableView : public QWidget
 public:
     explicit ModbusRegisterTableView(QWidget *parent = nullptr);
     ~ModbusRegisterTableView() override;
+
+    QJsonObject save() const;
+    void load(const QJsonObject &obj);
 
     ModbusRegisterTable *registerTable() const;
     void selectRow(int row);
@@ -48,6 +52,8 @@ private:
     void onLoadRegistersButtonClicked();
 
     void resetColumnMenu();
+    QJsonArray saveRegisters() const;
+    void loadRegisters(const QJsonArray &array);
 };
 
 } // namespace xModbus
