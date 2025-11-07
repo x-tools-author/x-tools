@@ -10,6 +10,7 @@
 
 #include <QApplication>
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QNetworkInterface>
 #include <QSerialPort>
 #include <QSerialPortInfo>
@@ -25,6 +26,23 @@ QWidget *topLevelMainWindow()
         }
     }
     return nullptr;
+}
+
+void showEmptySelectedItemWarning()
+{
+    QMessageBox::warning(topLevelMainWindow(),
+                         QObject::tr("Warning"),
+                         QObject::tr("No item selected. Please select an item first."),
+                         QMessageBox::Ok);
+}
+
+int showClearViewDataWarning()
+{
+    return QMessageBox::warning(topLevelMainWindow(),
+                                QObject::tr("Warning"),
+                                QObject::tr("Are you sure to clear all data in the view?"),
+                                QMessageBox::Yes | QMessageBox::No,
+                                QMessageBox::No);
 }
 
 QString registerTypeToString(QModbusDataUnit::RegisterType type)

@@ -9,9 +9,17 @@
 #include "modbusregistertableview.h"
 #include "ui_modbusregistertableview.h"
 
+#include <QFileDialog>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QMessageBox>
+#include <QTextStream>
+
 #include "common/iconengine.h"
 #include "common/menu.h"
 
+#include "modbuscommon.h"
 #include "modbusregisterdelegate.h"
 #include "modbusregistertable.h"
 #include "modbusregistertablefilter.h"
@@ -47,10 +55,14 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     ui->toolButtonColumns->setPopupMode(QToolButton::InstantPopup);
     resetColumnMenu();
 
-    connect(ui->lineEditFilter,
-            &QLineEdit::textChanged,
-            this,
-            &ModbusRegisterTableView::onFilterTextChanged);
+    // clang-format off
+    connect(ui->lineEditFilter, &QLineEdit::textChanged, this, &ModbusRegisterTableView::onFilterTextChanged);
+    connect(ui->toolButtonNew, &QToolButton::clicked, this, &ModbusRegisterTableView::onAddRegisterButtonClicked);
+    connect(ui->toolButtonDelete, &QToolButton::clicked, this, &ModbusRegisterTableView::onRemoveRegisterButtonClicked);
+    connect(ui->toolButtonClear, &QToolButton::clicked, this, &ModbusRegisterTableView::onClearRegistersButtonClicked);
+    connect(ui->toolButtonSave, &QToolButton::clicked, this, &ModbusRegisterTableView::onSaveRegistersButtonClicked);
+    connect(ui->toolButtonOpen, &QToolButton::clicked, this, &ModbusRegisterTableView::onLoadRegistersButtonClicked);
+    // clang-format on
 }
 
 ModbusRegisterTableView::~ModbusRegisterTableView()
@@ -85,6 +97,120 @@ void ModbusRegisterTableView::setServerAddressColumnVisible(bool visible)
 void ModbusRegisterTableView::onFilterTextChanged(const QString &text)
 {
     m_registerTableFilter->setFilterFixedString(text);
+}
+
+void ModbusRegisterTableView::onAddRegisterButtonClicked()
+{
+    int row = m_registerTable->rowCount(QModelIndex());
+    m_registerTable->insertRow(row);
+}
+
+void ModbusRegisterTableView::onRemoveRegisterButtonClicked()
+{
+    QModelIndexList selectedIndexes = ui->tableView->selectionModel()->selectedRows();
+    if (selectedIndexes.isEmpty()) {
+        showEmptySelectedItemWarning();
+        return;
+    }
+
+    // Remove from the last selected row to avoid shifting issues
+    std::sort(selectedIndexes.begin(),
+              selectedIndexes.end(),
+              [](const QModelIndex &a, const QModelIndex &b) { return a.row() > b.row(); });
+
+    for (const QModelIndex &index : selectedIndexes) {
+        QModelIndex sourceIndex = m_registerTableFilter->mapToSource(index);
+        m_registerTable->removeRow(sourceIndex.row());
+    }
+}
+
+void ModbusRegisterTableView::onClearRegistersButtonClicked()
+{
+    int ret = showClearViewDataWarning();
+    if (ret != QMessageBox::Yes) {
+        return;
+    }
+
+    m_registerTable->removeRows(0, m_registerTable->rowCount(QModelIndex()), QModelIndex());
+}
+
+void ModbusRegisterTableView::onSaveRegistersButtonClicked()
+{
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Save Registers"),
+                                                    QString(),
+                                                    tr("json (*.json)"));
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    // Save the register data to the specified file
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, tr("Error"), tr("Failed to open file for saving."));
+        return;
+    }
+
+    const QList<ModbusRegister *> &registerItems = m_registerTable->registerItems();
+    QJsonArray jsonArray;
+    for (ModbusRegister *reg : registerItems) {
+        jsonArray.append(reg->save());
+    }
+
+    QJsonDocument jsonDoc(jsonArray);
+    QTextStream out(&file);
+    out << jsonDoc.toJson(QJsonDocument::Indented);
+    file.close();
+}
+
+void ModbusRegisterTableView::onLoadRegistersButtonClicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Load Registers"),
+                                                    QString(),
+                                                    tr("json (*.json)"));
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    // Load the register data from the specified file
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, tr("Error"), tr("Failed to open file for loading."));
+        return;
+    }
+
+    QByteArray fileData = file.readAll();
+    file.close();
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(fileData);
+    if (!jsonDoc.isArray()) {
+        QMessageBox::warning(this, tr("Error"), tr("Invalid JSON format in the file."));
+        return;
+    }
+
+    int rowCount = m_registerTable->rowCount(QModelIndex());
+    if (rowCount > 0) {
+        int ret = QMessageBox::question(
+            this,
+            tr("Import Registers"),
+            tr("The register table is not empty. Do you want to merge existing registers?"),
+            QMessageBox::Yes | QMessageBox::No,
+            QMessageBox::No);
+        if (ret == QMessageBox::No) {
+            m_registerTable->removeRows(0, rowCount, QModelIndex());
+            return;
+        }
+    }
+
+    QJsonArray jsonArray = jsonDoc.array();
+    for (const QJsonValue &value : jsonArray) {
+        if (value.isObject()) {
+            ModbusRegister *reg = new ModbusRegister(this);
+            reg->load(value.toObject());
+            m_registerTable->addRegisterItem(reg);
+        }
+    }
 }
 
 void ModbusRegisterTableView::resetColumnMenu()

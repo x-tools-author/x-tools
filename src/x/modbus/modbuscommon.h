@@ -21,6 +21,8 @@ namespace xModbus {
 
 // -------------------------------------------------------------------------------------------------
 QWidget *topLevelMainWindow();
+void showEmptySelectedItemWarning();
+int showClearViewDataWarning();
 
 // -------------------------------------------------------------------------------------------------
 #define xCoils QModbusDataUnit::Coils

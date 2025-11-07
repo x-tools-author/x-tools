@@ -27,6 +27,11 @@ void ModbusRegisterTable::addRegisterItem(ModbusRegister *item)
     connect(item, &ModbusRegister::nameChanged, this, [=]() { onRegisterItemNameChanged(item); });
 }
 
+QList<ModbusRegister *> ModbusRegisterTable::registerItems() const
+{
+    return m_registerItems;
+}
+
 int ModbusRegisterTable::rowCount(const QModelIndex &parent) const
 {
     return m_registerItems.count();

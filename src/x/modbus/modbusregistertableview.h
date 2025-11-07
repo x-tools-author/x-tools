@@ -41,6 +41,11 @@ private:
 
 private:
     void onFilterTextChanged(const QString &text);
+    void onAddRegisterButtonClicked();
+    void onRemoveRegisterButtonClicked();
+    void onClearRegistersButtonClicked();
+    void onSaveRegistersButtonClicked();
+    void onLoadRegistersButtonClicked();
 
     void resetColumnMenu();
 };

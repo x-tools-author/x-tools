@@ -33,7 +33,9 @@ public:
     ~ModbusRegisterTable() override;
 
     void addRegisterItem(ModbusRegister *item);
+    QList<ModbusRegister *> registerItems() const;
 
+public:
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
 
