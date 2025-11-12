@@ -81,7 +81,7 @@ QJsonObject ModbusRegisterTableView::save() const
     QJsonObject obj;
     ModbusRegisterTableViewKeys keys;
     obj[keys.registers] = saveRegisters();
-    obj[keys.registerTableName] = m_registerTable->objectName();
+    obj[keys.registerTableName] = windowTitle();
     return obj;
 }
 
@@ -89,7 +89,7 @@ void ModbusRegisterTableView::load(const QJsonObject &obj)
 {
     ModbusRegisterTableViewKeys keys;
     loadRegisters(obj[keys.registers].toArray());
-    m_registerTable->setObjectName(obj[keys.registerTableName].toString());
+    setWindowTitle(obj[keys.registerTableName].toString());
 }
 
 ModbusRegisterTable *ModbusRegisterTableView::registerTable() const
@@ -252,6 +252,7 @@ QJsonArray ModbusRegisterTableView::saveRegisters() const
     for (ModbusRegister *reg : registerItems) {
         array.append(reg->save());
     }
+
     return array;
 }
 

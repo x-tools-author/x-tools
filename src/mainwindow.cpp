@@ -143,6 +143,7 @@ void MainWindow::load(const QString& fileName) const
     }
 
     if (!QFile::exists(filePath)) {
+        m_layoutManager->load(QJsonObject());
         return;
     }
 

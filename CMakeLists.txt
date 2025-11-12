@@ -161,7 +161,9 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Get all source files of the project
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
-file(GLOB_RECURSE X_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
+file(GLOB_RECURSE X_SOURCES_H "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
+file(GLOB_RECURSE X_SOURCES_CPP "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+set(X_SOURCES ${X_SOURCES_H} ${X_SOURCES_CPP})
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 
 include(${CMAKE_SOURCE_DIR}/cmake/x_3rd.cmake)

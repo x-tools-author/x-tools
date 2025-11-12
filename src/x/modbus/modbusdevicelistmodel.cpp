@@ -25,6 +25,7 @@ struct ModbusDeviceListModelKeys
 {
     const QString connectionParameters{"connectionParameters"};
     const QString registerTables{"registerTables"};
+    const QString registers{"registers"};
 };
 
 ModbusDeviceListModel::ModbusDeviceListModel(QWidget *parent)
@@ -74,6 +75,7 @@ QJsonArray ModbusDeviceListModel::save() const
         QJsonObject deviceObj;
         deviceObj.insert(keys.connectionParameters, ctxObj);
 
+        QJsonArray tableObjs;
         for (int j = 0; j < deviceItem->rowCount(); ++j) {
             QStandardItem *tableItem = deviceItem->child(j);
             auto tableView = tableItem->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
@@ -83,11 +85,9 @@ QJsonArray ModbusDeviceListModel::save() const
             }
 
             QJsonObject tableObj = tableView->save();
-            QJsonArray tablesArray = deviceObj.value(keys.registerTables).toArray();
-            tablesArray.append(tableObj);
-            deviceObj.insert(keys.registerTables, tablesArray);
+            tableObjs.append(tableObj);
         }
-
+        deviceObj.insert(keys.registerTables, tableObjs);
         array.append(deviceObj);
     }
 
@@ -101,11 +101,20 @@ void ModbusDeviceListModel::load(const QJsonArray &array)
         QJsonObject deviceObj = array.at(i).toObject();
         QJsonObject parametersObj = deviceObj.value(keys.connectionParameters).toObject();
         QStandardItem *deviceItem = newDevice(parametersObj);
+        Q_UNUSED(deviceItem);
 
-        QJsonArray tablesArray = deviceObj.value(keys.registerTables).toArray();
-        for (int j = 0; j < tablesArray.size(); ++j) {
-            QJsonObject tableObj = tablesArray.at(j).toObject();
-            newTableView(deviceItem, tableObj);
+        QJsonArray tableObjs = deviceObj.value(keys.registerTables).toArray();
+        for (const QJsonValue &tableVal : tableObjs) {
+            QJsonObject tableObj = tableVal.toObject();
+            QStandardItem *tableItem = newTableView(deviceItem, tableObj);
+            Q_UNUSED(tableItem);
+
+            QJsonArray registerObjs = tableObj.value(keys.registers).toArray();
+            for (const QJsonValue &registerObj : registerObjs) {
+                QJsonObject obj = registerObj.toObject();
+                QStandardItem *registerItem = newRegister(tableItem, obj);
+                Q_UNUSED(registerItem);
+            }
         }
     }
 }
@@ -139,6 +148,7 @@ QStandardItem *ModbusDeviceListModel::newTableView(QStandardItem *deviceItem,
     tableItem->setData(QVariant::fromValue(device), ItemTypeDevice);
     tableItem->setData(QVariant::fromValue(tableView), ItemTypeTableView);
     deviceItem->appendRow(tableItem);
+
     return tableItem;
 }
 
@@ -147,8 +157,10 @@ QStandardItem *ModbusDeviceListModel::newRegister(QStandardItem *tableItem,
 {
     ModbusDevice *device = tableItem->data(ItemTypeDevice).value<ModbusDevice *>();
     auto *tableView = tableItem->data(ItemTypeTableView).value<ModbusRegisterTableView *>();
+    auto *table = tableView->registerTable();
     ModbusRegister *reg = new ModbusRegister(tableView->registerTable());
     reg->load(parameters);
+    table->addRegisterItem(reg);
 
     QStandardItem *registerItem = new QStandardItem(reg->name);
     registerItem->setData(int(ItemTypeRegister), xItemTypeRole);
@@ -157,7 +169,7 @@ QStandardItem *ModbusDeviceListModel::newRegister(QStandardItem *tableItem,
     registerItem->setData(QVariant::fromValue(reg), ItemTypeRegister);
     tableItem->appendRow(registerItem);
 
-    connect(reg, &ModbusRegister::nameChanged, this, [=]() { registerItem->setText(reg->name); });
+    //connect(reg, &ModbusRegister::nameChanged, this, [=]() { registerItem->setText(reg->name); });
     return registerItem;
 }
 
@@ -176,24 +188,17 @@ void ModbusDeviceListModel::newDefaultTables(QStandardItem *deviceItem)
         tableItem->setData(QVariant::fromValue(device), ItemTypeDevice);
         tableItem->setData(QVariant::fromValue(tableView), ItemTypeTableView);
         deviceItem->appendRow(tableItem);
-        newDefaultRegisters(tableItem);
+        newDefaultRegisters(tableItem, type);
     }
 }
 
-void ModbusDeviceListModel::newDefaultRegisters(QStandardItem *tableItem)
+void ModbusDeviceListModel::newDefaultRegisters(QStandardItem *tableItem,
+                                                QModbusDataUnit::RegisterType type)
 {
-    QJsonArray coilsTable = defaultTable(QModbusDataUnit::Coils);
-    QJsonArray discreteInputsTable = defaultTable(QModbusDataUnit::DiscreteInputs);
-    QJsonArray holdingRegistersTable = defaultTable(QModbusDataUnit::HoldingRegisters);
-    QJsonArray inputRegistersTable = defaultTable(QModbusDataUnit::InputRegisters);
-
-    QList<QJsonArray> tables;
-    tables << coilsTable << discreteInputsTable << holdingRegistersTable << inputRegistersTable;
-    for (const QJsonArray &table : tables) {
-        for (int i = 0; i < table.size(); ++i) {
-            QJsonObject registerObj = table.at(i).toObject();
-            newRegister(tableItem, registerObj);
-        }
+    QJsonArray registers = defaultTable(type);
+    for (int i = 0; i < registers.size(); ++i) {
+        QJsonObject registerObj = registers.at(i).toObject();
+        newRegister(tableItem, registerObj);
     }
 }
 
@@ -300,7 +305,7 @@ QJsonArray ModbusDeviceListModel::defaultTable(QModbusDataUnit::RegisterType typ
     ModbusRegister item;
     item.load(registerObj);
     QJsonArray array;
-    for (int i = 1; i < DEFAULT_TABLE_COLUMNS; ++i) {
+    for (int i = 1; i <= DEFAULT_TABLE_COLUMNS; ++i) {
         item.load(registerObj);
         item.address = i;
         array.append(item.save());

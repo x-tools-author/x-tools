@@ -107,6 +107,8 @@ QJsonObject ModbusDeviceListView::save()
 
 void ModbusDeviceListView::load(const QJsonObject &obj)
 {
+    createDefaultDevices();
+    return;
     ModbusDeviceListViewKeys keys;
     QJsonArray devicesArray = obj.value(keys.devices).toArray();
     if (devicesArray.isEmpty()) {
@@ -331,11 +333,13 @@ void ModbusDeviceListView::onItemClicked(const QModelIndex &index)
 
 void ModbusDeviceListView::onAddMenuAboutToShow()
 {
+#if 0
     QModelIndex currentIndex = ui->treeView->currentIndex();
     int d = treeItemDepth(currentIndex);
 
     bool isDeviceSelected = (d == MODBUS_DEVICE_DEPTH);
     bool isRegGroupSelected = (d == MODBUS_TABLE_DEPTH);
+#endif
 }
 
 void ModbusDeviceListView::onAddMenuAboutToHide()

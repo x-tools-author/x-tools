@@ -9,6 +9,7 @@
 #include "xmodbus.h"
 #include "ui_xmodbus.h"
 
+#include <QElapsedTimer>
 #include <QJsonArray>
 
 #include "common/iconengine.h"
@@ -19,6 +20,7 @@ namespace xModbus {
 
 struct xModbusKeys
 {
+    const QString tabIndex{"tabIndex"};
     const QString listView{"listView"};
     const QString logTab{"logTab"};
 };
@@ -60,6 +62,7 @@ QJsonObject xModbus::save()
 {
     QJsonObject obj;
     xModbusKeys keys;
+    obj.insert(keys.tabIndex, ui->tabWidget->currentIndex());
     obj.insert(keys.logTab, ui->tabLog->save());
     obj.insert(keys.listView, ui->widgetDeviceListView->save());
     return obj;
@@ -67,11 +70,23 @@ QJsonObject xModbus::save()
 
 void xModbus::load(const QJsonObject& obj)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     xModbusKeys keys;
     QJsonObject logTab = obj.value(keys.logTab).toObject();
     ui->tabLog->load(logTab);
     QJsonObject listView = obj.value(keys.listView).toObject();
     ui->widgetDeviceListView->load(listView);
+#if 0
+    int tabIndex = obj.value(keys.tabIndex).toInt(0);
+    if (tabIndex >= 0 && tabIndex < ui->tabWidget->count()) {
+        ui->tabWidget->setCurrentIndex(tabIndex);
+    }
+#endif
+
+    qint64 elapsed = timer.elapsed();
+    qInfo("xModbus::load: loaded in %lld ms", static_cast<long long>(elapsed));
 }
 
 void xModbus::onInvokeShowRegisterView(ModbusRegisterTableView* registerView)
