@@ -107,8 +107,10 @@ QJsonObject ModbusDeviceListView::save()
 
 void ModbusDeviceListView::load(const QJsonObject &obj)
 {
+#if 0
     createDefaultDevices();
     return;
+#endif
     ModbusDeviceListViewKeys keys;
     QJsonArray devicesArray = obj.value(keys.devices).toArray();
     if (devicesArray.isEmpty()) {
