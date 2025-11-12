@@ -36,15 +36,16 @@ ModbusRegister::~ModbusRegister() {}
 
 void ModbusRegister::load(const QJsonObject &json)
 {
+    RegisterItemKeys keys;
+    address = static_cast<quint16>(json.value(keys.address).toInt(1));
     QString addressName = QString("0x%1").arg(address, 4, 16, QChar('0').toUpper());
     QString defaultName = QString("%1 - %2").arg(registerTypeToString(type)).arg(addressName);
-    RegisterItemKeys keys;
+
     int defaultType = static_cast<int>(QModbusDataUnit::Invalid);
     type = static_cast<QModbusDataUnit::RegisterType>(json.value(keys.type).toInt(defaultType));
     name = json.value(keys.name).toString(defaultName);
     unit = json.value(keys.unit).toString("");
     description = json.value(keys.description).toString("");
-    address = static_cast<quint16>(json.value(keys.address).toInt(1));
     min = json.value(keys.min).toDouble(0);
     max = json.value(keys.max).toDouble(65535);
     decimals = json.value(keys.decimals).toInt(0);

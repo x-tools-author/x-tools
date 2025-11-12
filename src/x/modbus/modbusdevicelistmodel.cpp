@@ -17,7 +17,7 @@
 #include "modbusregistertable.h"
 #include "modbusregistertableview.h"
 
-#define DEFAULT_TABLE_COLUMNS 10
+#define DEFAULT_TABLE_QUANTITY 10
 
 namespace xModbus {
 
@@ -305,9 +305,9 @@ QJsonArray ModbusDeviceListModel::defaultTable(QModbusDataUnit::RegisterType typ
     ModbusRegister item;
     item.load(registerObj);
     QJsonArray array;
-    for (int i = 1; i <= DEFAULT_TABLE_COLUMNS; ++i) {
+    for (int i = 1; i <= DEFAULT_TABLE_QUANTITY; ++i) {
+        registerObj.insert(keys.address, i);
         item.load(registerObj);
-        item.address = i;
         array.append(item.save());
     }
     return array;
