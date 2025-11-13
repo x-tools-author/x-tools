@@ -3619,7 +3619,7 @@
     </message>
     <message>
         <source>Suffix</source>
-        <translation type="vanished">Prípona</translation>
+        <translation>Prípona</translation>
     </message>
     <message>
         <source>Escape character</source>

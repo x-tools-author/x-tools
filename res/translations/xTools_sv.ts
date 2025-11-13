@@ -1203,7 +1203,7 @@
     </message>
     <message>
         <source>Checked progress</source>
-        <translation type="vanished">Kontrollerade framsteg</translation>
+        <translation>Kontrollerade framsteg</translation>
     </message>
     <message>
         <source>Checked algorithm</source>

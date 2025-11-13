@@ -440,7 +440,7 @@
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation type="vanished">(Nieobsługiwana cecha)</translation>
+        <translation>(Nieobsługiwana cecha)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
@@ -462,19 +462,19 @@
     </message>
     <message>
         <source>Service scanning</source>
-        <translation type="vanished">Skanowanie usług</translation>
+        <translation>Skanowanie usług</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation type="vanished">Tryb zapisu</translation>
+        <translation>Tryb zapisu</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation type="vanished">Praca</translation>
+        <translation>Praca</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation type="vanished">Skanowanie urządzenia</translation>
+        <translation>Skanowanie urządzenia</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,47 +511,47 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation type="vanished">Kontrola wyjścia</translation>
+        <translation>Kontrola wyjścia</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">Format wyjściowy</translation>
+        <translation>Format wyjściowy</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Jasne</translation>
+        <translation>Jasne</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation type="vanished">Parametry transmisji</translation>
+        <translation>Parametry transmisji</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation type="vanished">Adres rozgłoszeniowy</translation>
+        <translation>Adres rozgłoszeniowy</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation type="vanished">55443</translation>
+        <translation>55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation type="vanished">Format danych</translation>
+        <translation>Format danych</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation type="vanished">Prefiks transmisji</translation>
+        <translation>Prefiks transmisji</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation type="vanished">Interwał transmisji</translation>
+        <translation>Interwał transmisji</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation type="vanished">Sufiks transmisji</translation>
+        <translation>Sufiks transmisji</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation type="vanished">Port rozgłoszeniowy</translation>
+        <translation>Port rozgłoszeniowy</translation>
     </message>
     <message>
         <source>Broadcast data</source>
@@ -2281,7 +2281,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation type="vanished">Od lewej do prawej, od góry do dołu</translation>
+        <translation>Od lewej do prawej, od góry do dołu</translation>
     </message>
 </context>
 <context>

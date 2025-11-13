@@ -398,7 +398,7 @@
     </message>
     <message>
         <source>Decrypt</source>
-        <translation type="vanished">Descifrar</translation>
+        <translation>Descifrar</translation>
     </message>
     <message>
         <source>Encrypt</source>
@@ -3407,7 +3407,7 @@
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">escribir a</translation>
+        <translation>escribir a</translation>
     </message>
     <message>
         <source>Path</source>

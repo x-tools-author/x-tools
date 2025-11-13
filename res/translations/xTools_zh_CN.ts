@@ -2545,7 +2545,7 @@
     </message>
     <message>
         <source>Time</source>
-        <translation type="vanished">时间</translation>
+        <translation>时间</translation>
     </message>
     <message>
         <source>Ms</source>

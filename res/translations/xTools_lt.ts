@@ -818,7 +818,7 @@
     </message>
     <message>
         <source>Output reversal</source>
-        <translation type="vanished">Išvesties apvertimas</translation>
+        <translation>Išvesties apvertimas</translation>
     </message>
     <message>
         <source>Clear</source>
@@ -924,7 +924,7 @@
     </message>
     <message>
         <source>Search data...</source>
-        <translation type="vanished">Ieškoti duomenų...</translation>
+        <translation>Ieškoti duomenų...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -960,15 +960,15 @@
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Paritetas</translation>
+        <translation>Paritetas</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Perdavimo greitis</translation>
+        <translation>Perdavimo greitis</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bitai</translation>
+        <translation>Stop bitai</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -984,7 +984,7 @@
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">IP adresas</translation>
+        <translation>IP adresas</translation>
     </message>
     <message>
         <source>Port</source>
@@ -1000,7 +1000,7 @@
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">Pakartotinių bandymų skaičius</translation>
+        <translation>Pakartotinių bandymų skaičius</translation>
     </message>
     <message>
         <source>Address</source>
@@ -1016,7 +1016,7 @@
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">Įrenginio pavadinimas</translation>
+        <translation>Įrenginio pavadinimas</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
@@ -1116,11 +1116,11 @@
     </message>
     <message>
         <source>Browser</source>
-        <translation type="vanished">Naršyklė</translation>
+        <translation>Naršyklė</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation type="vanished">Išsaugoti milisekundę</translation>
+        <translation>Išsaugoti milisekundę</translation>
     </message>
     <message>
         <source>Save rx data</source>
@@ -1128,7 +1128,7 @@
     </message>
     <message>
         <source>Save Date</source>
-        <translation type="vanished">Išsaugoti datą</translation>
+        <translation>Išsaugoti datą</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1141,11 +1141,11 @@
     </message>
     <message>
         <source>Save format</source>
-        <translation type="vanished">Išsaugoti formatą</translation>
+        <translation>Išsaugoti formatą</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation type="vanished">Maks. baitai</translation>
+        <translation>Maks. baitai</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1191,7 +1191,7 @@
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <source>Upper result</source>
@@ -1203,7 +1203,7 @@
     </message>
     <message>
         <source>Checked progress</source>
-        <translation type="vanished">Patikrinta pažanga</translation>
+        <translation>Patikrinta pažanga</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
@@ -2639,7 +2639,7 @@
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation type="vanished">Pridėti (atnaujinti) grupę</translation>
+        <translation>Pridėti (atnaujinti) grupę</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
@@ -2968,7 +2968,7 @@
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
@@ -3791,7 +3791,7 @@
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">Nauji diskretiniai įėjimai</translation>
+        <translation>Nauji diskretiniai įėjimai</translation>
     </message>
     <message>
         <source>New Holding Registers</source>

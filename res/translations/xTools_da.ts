@@ -1008,7 +1008,7 @@
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Kun lytte-tilstand</translation>
+        <translation>Kun lytte-tilstand</translation>
     </message>
     <message>
         <source>Device parameters</source>

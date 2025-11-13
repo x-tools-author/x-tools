@@ -3642,7 +3642,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Suffix</source>
-        <translation type="vanished">Суфікс</translation>
+        <translation>Суфікс</translation>
     </message>
     <message>
         <source>Escape character</source>

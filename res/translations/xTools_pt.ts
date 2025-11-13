@@ -2984,7 +2984,7 @@
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1,5</translation>
+        <translation>1,5</translation>
     </message>
     <message>
         <source>2</source>

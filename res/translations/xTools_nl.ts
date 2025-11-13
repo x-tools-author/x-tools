@@ -2651,7 +2651,7 @@
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Omlaag</translation>
+        <translation>Omlaag</translation>
     </message>
     <message>
         <source>Delete Selected</source>
