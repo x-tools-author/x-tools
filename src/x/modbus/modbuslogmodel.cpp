@@ -38,7 +38,7 @@ QString logTypeToString(LogType type)
 ModbusLogModel::ModbusLogModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
-#if 1
+#if 0
     m_logItems.append({QDateTime::currentDateTime(), LogTypeMsg, "Test Message(msg)."});
     m_logItems.append({QDateTime::currentDateTime(), LogTypeWarning, "Test Message(warning)."});
     m_logItems.append({QDateTime::currentDateTime(), LogTypeError, "Test Message(error)."});
