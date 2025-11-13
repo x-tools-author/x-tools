@@ -2547,7 +2547,7 @@
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="58"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="146"/>
         <source>Holding Registers</source>
-        <translation>持有寄存器</translation>
+        <translation>保存寄存器</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="60"/>
