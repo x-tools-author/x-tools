@@ -311,7 +311,7 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">姓名</translation>
+        <translation type="vanished">名称</translation>
     </message>
     <message>
         <source>Line</source>
@@ -4917,7 +4917,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="202"/>
         <source>Name</source>
-        <translation>姓名</translation>
+        <translation>名称</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="204"/>
@@ -4957,7 +4957,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="218"/>
         <source>Value</source>
-        <translation>价值</translation>
+        <translation>取值</translation>
     </message>
 </context>
 <context>
