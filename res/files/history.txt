@@ -6,11 +6,12 @@
     重构蓝牙调试功能
     opcua,coap,ftp,sftp,JT808，XMODEM, YMODEM, ZMODEM
     通用协议解析器,数据面板
-    GPS数据解析工具
 
 V7.6.0 2025年11月xx日
     新特性：
-    01. 全新的Modbus调试功能
+    01. 全新的Modbus调试功能（ing）
+    02. GPS数据解析面板（ing）
+    03. BDS数据解析面板（ing）
 
 V7.5.0 2025年10月21日
     新特性：
