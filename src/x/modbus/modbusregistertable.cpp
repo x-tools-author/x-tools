@@ -20,6 +20,10 @@ ModbusRegisterTable::~ModbusRegisterTable() {}
 
 void ModbusRegisterTable::addRegisterItem(ModbusRegister *item)
 {
+    if (m_registerItems.contains(item)) {
+        return;
+    }
+
     beginInsertRows(QModelIndex(), m_registerItems.count(), m_registerItems.count());
     m_registerItems.append(item);
     endInsertRows();

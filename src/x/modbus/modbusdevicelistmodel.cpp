@@ -101,19 +101,22 @@ void ModbusDeviceListModel::load(const QJsonArray &array)
         QJsonObject deviceObj = array.at(i).toObject();
         QJsonObject parametersObj = deviceObj.value(keys.connectionParameters).toObject();
         QStandardItem *deviceItem = newDevice(parametersObj);
-        Q_UNUSED(deviceItem);
+        ModbusDevice *device = deviceItem->data(xItemTypeDevice).value<ModbusDevice *>();
 
         QJsonArray tableObjs = deviceObj.value(keys.registerTables).toArray();
         for (const QJsonValue &tableVal : tableObjs) {
             QJsonObject tableObj = tableVal.toObject();
             QStandardItem *tableItem = newTableView(deviceItem, tableObj);
-            Q_UNUSED(tableItem);
+            auto tableView = tableItem->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
+            auto registers = tableView->registerTable()->registerItems();
 
-            QJsonArray registerObjs = tableObj.value(keys.registers).toArray();
-            for (const QJsonValue &registerObj : registerObjs) {
-                QJsonObject obj = registerObj.toObject();
-                QStandardItem *registerItem = newRegister(tableItem, obj);
-                Q_UNUSED(registerItem);
+            for (ModbusRegister *reg : registers) {
+                QStandardItem *registerItem = new QStandardItem(reg->name);
+                registerItem->setData(int(ItemTypeRegister), xItemTypeRole);
+                registerItem->setData(QVariant::fromValue(device), ItemTypeDevice);
+                registerItem->setData(QVariant::fromValue(tableView), ItemTypeTableView);
+                registerItem->setData(QVariant::fromValue(reg), ItemTypeRegister);
+                tableItem->appendRow(registerItem);
             }
         }
     }
