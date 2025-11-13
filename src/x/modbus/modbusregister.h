@@ -65,8 +65,16 @@ public:
     void setServerAddress(int newServerAddress);
 
 signals:
-    void valueChanged();
+    void typeChanged();
     void nameChanged();
+    void unitChanged();
+    void descriptionChanged();
+    void addressChanged();
+    void minChanged();
+    void maxChanged();
+    void decimalsChanged();
+    void valueChanged();
+    void serverAddressChanged();
 
 private:
     QModbusDataUnit::RegisterType m_type; // 寄存器类型
