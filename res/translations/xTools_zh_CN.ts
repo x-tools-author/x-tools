@@ -17,14 +17,6 @@
 <context>
     <name>AsciiAssistant</name>
     <message>
-        <source>Filter</source>
-        <translation type="vanished">筛选</translation>
-    </message>
-    <message>
-        <source>Preserve case</source>
-        <translation type="vanished">保存箱</translation>
-    </message>
-    <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
         <source>Bin</source>
         <translation>二进制</translation>
@@ -296,26 +288,6 @@
 <context>
     <name>BarCodeAssistant</name>
     <message>
-        <source>CRC Assistant</source>
-        <translation type="vanished">CRC助理</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">刷新</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="vanished">类型</translation>
-    </message>
-    <message>
-        <source>Export</source>
-        <translation type="vanished">出口</translation>
-    </message>
-    <message>
-        <source>Data</source>
-        <translation type="vanished">数据</translation>
-    </message>
-    <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
         <source>Barcode Assistant</source>
         <translation>条形码助手</translation>
@@ -339,10 +311,6 @@
 </context>
 <context>
     <name>BarSettings</name>
-    <message>
-        <source>Data format</source>
-        <translation type="vanished">数据格式</translation>
-    </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
         <source>Channel</source>
@@ -377,30 +345,6 @@
 <context>
     <name>Base64Assistant</name>
     <message>
-        <source>Base64 Assistant</source>
-        <translation type="vanished">Base64助手</translation>
-    </message>
-    <message>
-        <source>Plaintext</source>
-        <translation type="vanished">明文</translation>
-    </message>
-    <message>
-        <source>Ciphertext</source>
-        <translation type="vanished">密文</translation>
-    </message>
-    <message>
-        <source>Image</source>
-        <translation type="vanished">图像</translation>
-    </message>
-    <message>
-        <source>Decrypt</source>
-        <translation type="vanished">解密</translation>
-    </message>
-    <message>
-        <source>Encrypt</source>
-        <translation type="vanished">加密</translation>
-    </message>
-    <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
         <source>Data error</source>
         <translation>数据错误</translation>
@@ -427,18 +371,6 @@
 <context>
     <name>BleCentralUi</name>
     <message>
-        <source>Characteristic</source>
-        <translation type="vanished">特征</translation>
-    </message>
-    <message>
-        <source>(Unsupported characteristic)</source>
-        <translation type="vanished">（不支持的特性）</translation>
-    </message>
-    <message>
-        <source>BLE Devices</source>
-        <translation type="vanished">低功耗蓝牙设备</translation>
-    </message>
-    <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
         <source>Scan</source>
         <translation>扫描</translation>
@@ -447,26 +379,6 @@
         <location filename="../../src/device/blecentralui.cpp" line="125"/>
         <source>Notify</source>
         <translation>通知</translation>
-    </message>
-    <message>
-        <source>Read</source>
-        <translation type="vanished">读</translation>
-    </message>
-    <message>
-        <source>Service scanning</source>
-        <translation type="vanished">服务扫描</translation>
-    </message>
-    <message>
-        <source>Write mode</source>
-        <translation type="vanished">写入模式</translation>
-    </message>
-    <message>
-        <source>Service</source>
-        <translation type="vanished">服务</translation>
-    </message>
-    <message>
-        <source>Device scanning</source>
-        <translation type="vanished">设备扫描</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="317"/>
@@ -502,61 +414,9 @@
 <context>
     <name>BroadcastAssistant</name>
     <message>
-        <source>Output control</source>
-        <translation type="vanished">输出控制</translation>
-    </message>
-    <message>
-        <source>Output format</source>
-        <translation type="vanished">输出格式</translation>
-    </message>
-    <message>
-        <source>Clear</source>
-        <translation type="vanished">清除</translation>
-    </message>
-    <message>
-        <source>Broadcast parameters</source>
-        <translation type="vanished">广播参数</translation>
-    </message>
-    <message>
-        <source>Broadcast address</source>
-        <translation type="vanished">广播地址</translation>
-    </message>
-    <message>
-        <source>55443</source>
-        <translation type="vanished">55443</translation>
-    </message>
-    <message>
-        <source>Data format</source>
-        <translation type="vanished">数据格式</translation>
-    </message>
-    <message>
-        <source>Broadcast prefix</source>
-        <translation type="vanished">广播前缀</translation>
-    </message>
-    <message>
-        <source>Broadcast interval</source>
-        <translation type="vanished">广播间隔</translation>
-    </message>
-    <message>
-        <source>Broadcast suffix</source>
-        <translation type="vanished">广播后缀</translation>
-    </message>
-    <message>
-        <source>Broadcast port</source>
-        <translation type="vanished">广播端口</translation>
-    </message>
-    <message>
-        <source>Broadcast data</source>
-        <translation type="vanished">广播数据</translation>
-    </message>
-    <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Broadcast</source>
         <translation>广播</translation>
-    </message>
-    <message>
-        <source>Information output</source>
-        <translation type="vanished">信息输出</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -571,102 +431,6 @@
 </context>
 <context>
     <name>CanBusAssistant</name>
-    <message>
-        <source>CANBus Studio</source>
-        <translation type="vanished">CAN总线工作室</translation>
-    </message>
-    <message>
-        <source>CAN Frame</source>
-        <translation type="vanished">CAN帧</translation>
-    </message>
-    <message>
-        <source>Extended format</source>
-        <translation type="vanished">扩展格式</translation>
-    </message>
-    <message>
-        <source>Flexible data rate</source>
-        <translation type="vanished">灵活的数据速率</translation>
-    </message>
-    <message>
-        <source>Frame ID</source>
-        <translation type="vanished">帧ID</translation>
-    </message>
-    <message>
-        <source>Frame type</source>
-        <translation type="vanished">框架式</translation>
-    </message>
-    <message>
-        <source>Frame options</source>
-        <translation type="vanished">框架选项</translation>
-    </message>
-    <message>
-        <source>Bitrate switch</source>
-        <translation type="vanished">码率切换</translation>
-    </message>
-    <message>
-        <source>Device Control</source>
-        <translation type="vanished">设备控制</translation>
-    </message>
-    <message>
-        <source>Disconnect</source>
-        <translation type="vanished">断开</translation>
-    </message>
-    <message>
-        <source>Connect</source>
-        <translation type="vanished">连接</translation>
-    </message>
-    <message>
-        <source>Plugin</source>
-        <translation type="vanished">插件</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">姓名</translation>
-    </message>
-    <message>
-        <source>Data View</source>
-        <translation type="vanished">数据视图</translation>
-    </message>
-    <message>
-        <source>Specify Configuration</source>
-        <translation type="vanished">指定配置</translation>
-    </message>
-    <message>
-        <source>Error filter</source>
-        <translation type="vanished">错误过滤器</translation>
-    </message>
-    <message>
-        <source>Custom configurations</source>
-        <translation type="vanished">定制配置</translation>
-    </message>
-    <message>
-        <source>CAN FD</source>
-        <translation type="vanished">CANFD</translation>
-    </message>
-    <message>
-        <source>Loopback</source>
-        <translation type="vanished">环回</translation>
-    </message>
-    <message>
-        <source>Data bitrate</source>
-        <translation type="vanished">数据比特率</translation>
-    </message>
-    <message>
-        <source>Bitrate</source>
-        <translation type="vanished">比特率</translation>
-    </message>
-    <message>
-        <source>Receive own</source>
-        <translation type="vanished">收到自己的</translation>
-    </message>
-    <message>
-        <source>CAN Frame Payload</source>
-        <translation type="vanished">CAN 帧有效负载</translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="vanished">发送</translation>
-    </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
         <source>can0</source>
@@ -701,10 +465,6 @@
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation>接收名称为空，请输入后重试！</translation>
-    </message>
-    <message>
-        <source>Create device failed!</source>
-        <translation type="vanished">创建设备失败！</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
@@ -800,30 +560,6 @@
 </context>
 <context>
     <name>DataRecordsView</name>
-    <message>
-        <source>Types</source>
-        <translation type="vanished">类型</translation>
-    </message>
-    <message>
-        <source>Flags</source>
-        <translation type="vanished">旗帜</translation>
-    </message>
-    <message>
-        <source>Format</source>
-        <translation type="vanished">格式</translation>
-    </message>
-    <message>
-        <source>Records</source>
-        <translation type="vanished">记录</translation>
-    </message>
-    <message>
-        <source>Data</source>
-        <translation type="vanished">数据</translation>
-    </message>
-    <message>
-        <source>Search data...</source>
-        <translation type="vanished">搜索数据...</translation>
-    </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="37"/>
@@ -927,43 +663,6 @@
 <context>
     <name>DeviceSettings</name>
     <message>
-        <source>Save tx data</source>
-        <translation type="vanished">保存交易数据</translation>
-    </message>
-    <message>
-        <source>Browser</source>
-        <translation type="vanished">浏览器</translation>
-    </message>
-    <message>
-        <source>Save millisecond</source>
-        <translation type="vanished">节省毫秒</translation>
-    </message>
-    <message>
-        <source>Save rx data</source>
-        <translation type="vanished">保存接收数据</translation>
-    </message>
-    <message>
-        <source>Save Date</source>
-        <translation type="vanished">保存日期</translation>
-    </message>
-    <message>
-        <location filename="../../src/page/devicesettings.cpp" line="151"/>
-        <source>Save to file</source>
-        <translation>写入文件</translation>
-    </message>
-    <message>
-        <source>Save Time</source>
-        <translation type="vanished">节省时间</translation>
-    </message>
-    <message>
-        <source>Save format</source>
-        <translation type="vanished">保存格式</translation>
-    </message>
-    <message>
-        <source>Max bytes</source>
-        <translation type="vanished">最大字节数</translation>
-    </message>
-    <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
         <source>Text File(*.txt)</source>
         <translation>文本文件(*.txt)</translation>
@@ -1006,33 +705,9 @@
 <context>
     <name>FileCheckAssistant</name>
     <message>
-        <source>Upper result</source>
-        <translation type="vanished">上部结果</translation>
-    </message>
-    <message>
-        <source>Checked file</source>
-        <translation type="vanished">已检查文件</translation>
-    </message>
-    <message>
-        <source>Checked progress</source>
-        <translation type="vanished">检查进度</translation>
-    </message>
-    <message>
-        <source>Checked algorithm</source>
-        <translation type="vanished">检查算法</translation>
-    </message>
-    <message>
-        <source>Checked result</source>
-        <translation type="vanished">检查结果</translation>
-    </message>
-    <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
         <translation>开始校验</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation type="vanished">打开</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1052,34 +727,6 @@
 </context>
 <context>
     <name>FileMergeAssistant</name>
-    <message>
-        <source>File list</source>
-        <translation type="vanished">文件列表</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">进口</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">向上</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">向下</translation>
-    </message>
-    <message>
-        <source>Remove</source>
-        <translation type="vanished">消除</translation>
-    </message>
-    <message>
-        <source>Clear</source>
-        <translation type="vanished">清除</translation>
-    </message>
-    <message>
-        <source>Merge</source>
-        <translation type="vanished">合并</translation>
-    </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
         <source>Import Files</source>
@@ -1151,10 +798,6 @@
 </context>
 <context>
     <name>HidDeviceUi</name>
-    <message>
-        <source>Device</source>
-        <translation type="vanished">设备</translation>
-    </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
         <source>Path</source>
@@ -1232,30 +875,6 @@
 <context>
     <name>LineSettings</name>
     <message>
-        <source>Data type</source>
-        <translation type="vanished">数据类型</translation>
-    </message>
-    <message>
-        <source>Legend</source>
-        <translation type="vanished">传奇</translation>
-    </message>
-    <message>
-        <source>Cache points</source>
-        <translation type="vanished">缓存点</translation>
-    </message>
-    <message>
-        <source>Clear</source>
-        <translation type="vanished">清除</translation>
-    </message>
-    <message>
-        <source>Export</source>
-        <translation type="vanished">出口</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">进口</translation>
-    </message>
-    <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
         <source>Channel</source>
@@ -1308,14 +927,6 @@
 <context>
     <name>LocalServerUi</name>
     <message>
-        <source>Write to</source>
-        <translation type="vanished">写信给</translation>
-    </message>
-    <message>
-        <source>Server name</source>
-        <translation type="vanished">服务器名称</translation>
-    </message>
-    <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
         <source>All</source>
         <translation>所有客户端</translation>
@@ -1323,30 +934,6 @@
 </context>
 <context>
     <name>LuaPanel</name>
-    <message>
-        <source>Test</source>
-        <translation type="vanished">测试</translation>
-    </message>
-    <message>
-        <source>Test data</source>
-        <translation type="vanished">测试数据</translation>
-    </message>
-    <message>
-        <source>Result data</source>
-        <translation type="vanished">结果数据</translation>
-    </message>
-    <message>
-        <source>Bypass</source>
-        <translation type="vanished">旁路</translation>
-    </message>
-    <message>
-        <source>Table Parameters</source>
-        <translation type="vanished">表参数</translation>
-    </message>
-    <message>
-        <source>String Parameters</source>
-        <translation type="vanished">字符串参数</translation>
-    </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
         <source>Default Lua Script</source>
@@ -1421,10 +1008,6 @@
         <location filename="../../src/mainwindow.cpp" line="438"/>
         <source>Application Style</source>
         <translation>应用风格</translation>
-    </message>
-    <message>
-        <source>General</source>
-        <translation type="vanished">一般的</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="461"/>
@@ -1512,10 +1095,6 @@
         <translation>保留所有版权。</translation>
     </message>
     <message>
-        <source>Main Window</source>
-        <translation type="vanished">主窗口</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="420"/>
         <source>Exit to System Tray</source>
         <translation>退出至系统托盘</translation>
@@ -1552,10 +1131,6 @@
         <translation>截图并复制</translation>
     </message>
     <message>
-        <source>Bug from Store</source>
-        <translation type="vanished">来自商店的错误</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="720"/>
         <source>Third Party Open Source</source>
         <translation>第三方开源</translation>
@@ -1576,14 +1151,6 @@
         <translation>从Gitee获取源码</translation>
     </message>
     <message>
-        <source>About xTools</source>
-        <translation type="vanished">关于 xTools</translation>
-    </message>
-    <message>
-        <source>Buy Ultimate Edition</source>
-        <translation type="vanished">购买终极版</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="692"/>
         <location filename="../../src/mainwindow.cpp" line="730"/>
         <source>Release History</source>
@@ -1593,34 +1160,6 @@
         <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Join in QQ Group</source>
         <translation>加入群聊</translation>
-    </message>
-    <message>
-        <source>Links</source>
-        <translation type="vanished">链接</translation>
-    </message>
-    <message>
-        <source>Qt Official Download</source>
-        <translation type="vanished">Qt官方下载</translation>
-    </message>
-    <message>
-        <source>Qt Official Blog</source>
-        <translation type="vanished">Qt 官方博客</translation>
-    </message>
-    <message>
-        <source>Qt Official Release</source>
-        <translation type="vanished">Qt 正式发布</translation>
-    </message>
-    <message>
-        <source>Download xTools from Github</source>
-        <translation type="vanished">从 Github 下载 xTools</translation>
-    </message>
-    <message>
-        <source>Download xTools from Gitee</source>
-        <translation type="vanished">从 Gitee 下载 xTools</translation>
-    </message>
-    <message>
-        <source>Office Web Site</source>
-        <translation type="vanished">办公室网站</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="750"/>
@@ -1656,10 +1195,6 @@
 </context>
 <context>
     <name>MdnsAssistant</name>
-    <message>
-        <source>Service type</source>
-        <translation type="vanished">服务类型</translation>
-    </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Start</source>
@@ -1704,141 +1239,9 @@
 <context>
     <name>ModbusAssistant</name>
     <message>
-        <source>Device Operations</source>
-        <translation type="vanished">设备操作</translation>
-    </message>
-    <message>
-        <source>Device list</source>
-        <translation type="vanished">设备列表</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="vanished">关闭</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation type="vanished">打开</translation>
-    </message>
-    <message>
-        <source>Console</source>
-        <translation type="vanished">安慰</translation>
-    </message>
-    <message>
-        <source>Client Registers</source>
-        <translation type="vanished">客户登记</translation>
-    </message>
-    <message>
-        <source>Custom Protocol Data Unit</source>
-        <translation type="vanished">自定义协议数据单元</translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="vanished">发送</translation>
-    </message>
-    <message>
-        <source>Server Register</source>
-        <translation type="vanished">服务器注册</translation>
-    </message>
-    <message>
-        <source>Network Settings</source>
-        <translation type="vanished">网络设置</translation>
-    </message>
-    <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Address</source>
         <translation>地址</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">港口</translation>
-    </message>
-    <message>
-        <source>Client parameters</source>
-        <translation type="vanished">客户端参数</translation>
-    </message>
-    <message>
-        <source>Start address</source>
-        <translation type="vanished">起始地址</translation>
-    </message>
-    <message>
-        <source>Target address</source>
-        <translation type="vanished">目标地址</translation>
-    </message>
-    <message>
-        <source>Timeout</source>
-        <translation type="vanished">暂停</translation>
-    </message>
-    <message>
-        <source>Address number</source>
-        <translation type="vanished">地址号码</translation>
-    </message>
-    <message>
-        <source>Read</source>
-        <translation type="vanished">读</translation>
-    </message>
-    <message>
-        <source>Write</source>
-        <translation type="vanished">写</translation>
-    </message>
-    <message>
-        <source>Repeat times</source>
-        <translation type="vanished">重复次数</translation>
-    </message>
-    <message>
-        <source>Client Parameters</source>
-        <translation type="vanished">客户端参数</translation>
-    </message>
-    <message>
-        <source>Input Control(address and value)</source>
-        <translation type="vanished">输入控制（地址和值）</translation>
-    </message>
-    <message>
-        <source>Input format</source>
-        <translation type="vanished">输入格式</translation>
-    </message>
-    <message>
-        <source>Function code</source>
-        <translation type="vanished">功能码</translation>
-    </message>
-    <message>
-        <source>Serial Port Settings</source>
-        <translation type="vanished">串口设置</translation>
-    </message>
-    <message>
-        <source>Data bits</source>
-        <translation type="vanished">数据位</translation>
-    </message>
-    <message>
-        <source>Port name</source>
-        <translation type="vanished">端口名称</translation>
-    </message>
-    <message>
-        <source>Baud rate</source>
-        <translation type="vanished">波特率</translation>
-    </message>
-    <message>
-        <source>Stop bits</source>
-        <translation type="vanished">停止位</translation>
-    </message>
-    <message>
-        <source>Parity</source>
-        <translation type="vanished">平价</translation>
-    </message>
-    <message>
-        <source>Server Parameters</source>
-        <translation type="vanished">服务器参数</translation>
-    </message>
-    <message>
-        <source>Server address</source>
-        <translation type="vanished">服务器地址</translation>
-    </message>
-    <message>
-        <source>Listen only mode</source>
-        <translation type="vanished">只听模式</translation>
-    </message>
-    <message>
-        <source>Device busy</source>
-        <translation type="vanished">设备忙</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -1884,38 +1287,6 @@
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
         <source>MarkParity</source>
         <translation>标记校验</translation>
-    </message>
-    <message>
-        <source>0x01-ReadCoils</source>
-        <translation type="vanished">0x01-读取线圈</translation>
-    </message>
-    <message>
-        <source>0x02-ReadDiscreteInputs</source>
-        <translation type="vanished">0x02-读取离散输入</translation>
-    </message>
-    <message>
-        <source>0x03-ReadHoldingRegisters</source>
-        <translation type="vanished">0x03-读取保持寄存器</translation>
-    </message>
-    <message>
-        <source>0x04-ReadInputRegisters</source>
-        <translation type="vanished">0x04-读取输入寄存器</translation>
-    </message>
-    <message>
-        <source>0x05-WriteSingleCoil</source>
-        <translation type="vanished">0x05-写入单线圈</translation>
-    </message>
-    <message>
-        <source>0x06-WriteSingleRegister</source>
-        <translation type="vanished">0x06-写单寄存器</translation>
-    </message>
-    <message>
-        <source>0x0f-WriteMultipleCoils</source>
-        <translation type="vanished">0x0f-写入多个线圈</translation>
-    </message>
-    <message>
-        <source>0x10-WriteMultipleRegisters</source>
-        <translation type="vanished">0x10-写入多个寄存器</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
@@ -2073,142 +1444,14 @@
 <context>
     <name>Page</name>
     <message>
-        <source>Output control</source>
-        <translation type="vanished">输出控制</translation>
-    </message>
-    <message>
-        <source>Text format</source>
-        <translation type="vanished">文本格式</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">设置</translation>
-    </message>
-    <message>
         <location filename="../../src/page/page.cpp" line="587"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
     <message>
-        <source>Cycle interval</source>
-        <translation type="vanished">循环间隔</translation>
-    </message>
-    <message>
-        <source>Input control</source>
-        <translation type="vanished">输入控制</translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="vanished">发送</translation>
-    </message>
-    <message>
-        <source>Communication control</source>
-        <translation type="vanished">通讯控制</translation>
-    </message>
-    <message>
-        <source>Rx</source>
-        <translation type="vanished">接收</translation>
-    </message>
-    <message>
-        <source>Tx</source>
-        <translation type="vanished">发射机</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation type="vanished">日期</translation>
-    </message>
-    <message>
-        <source>Flag</source>
-        <translation type="vanished">旗帜</translation>
-    </message>
-    <message>
-        <source>Time</source>
-        <translation type="vanished">时间</translation>
-    </message>
-    <message>
-        <source>Ms</source>
-        <translation type="vanished">多发性硬化症</translation>
-    </message>
-    <message>
-        <source>Preset data list</source>
-        <translation type="vanished">预设数据列表</translation>
-    </message>
-    <message>
-        <source>Clear</source>
-        <translation type="vanished">清除</translation>
-    </message>
-    <message>
-        <source>Wrap</source>
-        <translation type="vanished">裹</translation>
-    </message>
-    <message>
-        <source>Terminal</source>
-        <translation type="vanished">终端</translation>
-    </message>
-    <message>
-        <source>IO</source>
-        <translation type="vanished">IO</translation>
-    </message>
-    <message>
-        <source>Output</source>
-        <translation type="vanished">输出</translation>
-    </message>
-    <message>
-        <source>Advanced search</source>
-        <translation type="vanished">高级搜索</translation>
-    </message>
-    <message>
-        <source>Input</source>
-        <translation type="vanished">输入</translation>
-    </message>
-    <message>
-        <source>Presets</source>
-        <translation type="vanished">预设</translation>
-    </message>
-    <message>
-        <source>Emitter</source>
-        <translation type="vanished">发射器</translation>
-    </message>
-    <message>
-        <source>Responder</source>
-        <translation type="vanished">应答者</translation>
-    </message>
-    <message>
-        <source>Transfers</source>
-        <translation type="vanished">接送服务</translation>
-    </message>
-    <message>
         <location filename="../../src/page/page.cpp" line="421"/>
         <source>Disable</source>
         <translation>禁止</translation>
-    </message>
-    <message>
-        <source>Serial Port</source>
-        <translation type="vanished">串口</translation>
-    </message>
-    <message>
-        <source>UDP Client</source>
-        <translation type="vanished">UDP客户端</translation>
-    </message>
-    <message>
-        <source>UDP Server</source>
-        <translation type="vanished">UDP服务器</translation>
-    </message>
-    <message>
-        <source>TCP Client</source>
-        <translation type="vanished">TCP客户端</translation>
-    </message>
-    <message>
-        <source>TCP Server</source>
-        <translation type="vanished">TCP服务器</translation>
-    </message>
-    <message>
-        <source>WebSocket Client</source>
-        <translation type="vanished">WebSocket客户端</translation>
-    </message>
-    <message>
-        <source>WebSocket Server</source>
-        <translation type="vanished">WebSocket服务器</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2414,46 +1657,6 @@
 <context>
     <name>PresetViewGroupEditor</name>
     <message>
-        <source>Group interval(ms)</source>
-        <translation type="vanished">组间间隔(ms)</translation>
-    </message>
-    <message>
-        <source>Add(update) Group</source>
-        <translation type="vanished">添加（更新）组</translation>
-    </message>
-    <message>
-        <source>Colums(split with space)</source>
-        <translation type="vanished">列（用空格分割）</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">向上</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">向下</translation>
-    </message>
-    <message>
-        <source>Delete Selected</source>
-        <translation type="vanished">删除所选内容</translation>
-    </message>
-    <message>
-        <source>Untitled</source>
-        <translation type="vanished">无题</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">姓名</translation>
-    </message>
-    <message>
-        <source>Disable the group</source>
-        <translation type="vanished">禁用该组</translation>
-    </message>
-    <message>
-        <source>Item interval(ms)</source>
-        <translation type="vanished">项目间隔(ms)</translation>
-    </message>
-    <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
         <source>Group Sending</source>
         <translation>组发送</translation>
@@ -2488,26 +1691,6 @@
 </context>
 <context>
     <name>QObject</name>
-    <message>
-        <source>Serial Port</source>
-        <translation type="vanished">串口</translation>
-    </message>
-    <message>
-        <source>BLE Central</source>
-        <translation type="vanished">BLE 中心</translation>
-    </message>
-    <message>
-        <source>BLE Peripheral</source>
-        <translation type="vanished">蓝牙外设</translation>
-    </message>
-    <message>
-        <source>UDP Client</source>
-        <translation type="vanished">UDP客户端</translation>
-    </message>
-    <message>
-        <source>UDP Server</source>
-        <translation type="vanished">UDP服务器</translation>
-    </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
@@ -2580,55 +1763,11 @@
         <translation>无题</translation>
     </message>
     <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
-        <source>WebSocket Client</source>
-        <translation type="vanished">WebSocket客户端</translation>
-    </message>
-    <message>
-        <source>WebSocket Server</source>
-        <translation type="vanished">WebSocket服务器</translation>
-    </message>
-    <message>
-        <source>Local Socket</source>
-        <translation type="vanished">本地套接字</translation>
-    </message>
-    <message>
-        <source>Local Server</source>
-        <translation type="vanished">本地服务器</translation>
-    </message>
-    <message>
-        <source>Charts Test</source>
-        <translation type="vanished">图表测试</translation>
-    </message>
-    <message>
         <location filename="../../src/common/xtools.cpp" line="466"/>
         <location filename="../../src/common/xtools.cpp" line="899"/>
         <location filename="../../src/common/xtools.cpp" line="901"/>
         <source>Binary</source>
         <translation>二进制</translation>
-    </message>
-    <message>
-        <source>Octal</source>
-        <translation type="vanished">八进制</translation>
-    </message>
-    <message>
-        <source>Decimal</source>
-        <translation type="vanished">十进制</translation>
-    </message>
-    <message>
-        <source>Hexadecimal</source>
-        <translation type="vanished">十六进制</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="86"/>
@@ -2796,14 +1935,6 @@
         <translation>不缩放</translation>
     </message>
     <message>
-        <source>Need to Reboot</source>
-        <translation type="vanished">需要重新启动</translation>
-    </message>
-    <message>
-        <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="vanished">该操作需要重新启动才能生效，现在重新启动应用程序吗？</translation>
-    </message>
-    <message>
         <location filename="../../src/common/crc.cpp" line="90"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="76"/>
         <source>Unknown</source>
@@ -2842,14 +1973,6 @@
 </context>
 <context>
     <name>QRCodeAssistant</name>
-    <message>
-        <source>Export</source>
-        <translation type="vanished">出口</translation>
-    </message>
-    <message>
-        <source>Generate</source>
-        <translation type="vanished">产生</translation>
-    </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
         <source>Warning</source>
@@ -2918,34 +2041,6 @@
 <context>
     <name>ScriptBase</name>
     <message>
-        <source>Clear log</source>
-        <translation type="vanished">清除日志</translation>
-    </message>
-    <message>
-        <source>Log</source>
-        <translation type="vanished">日志</translation>
-    </message>
-    <message>
-        <source>Open script directory</source>
-        <translation type="vanished">打开脚本目录</translation>
-    </message>
-    <message>
-        <source>New script</source>
-        <translation type="vanished">新剧本</translation>
-    </message>
-    <message>
-        <source>Refresh file list</source>
-        <translation type="vanished">刷新文件列表</translation>
-    </message>
-    <message>
-        <source>Online manual</source>
-        <translation type="vanished">在线手册</translation>
-    </message>
-    <message>
-        <source>Script</source>
-        <translation type="vanished">脚本</translation>
-    </message>
-    <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
         <source>New Script</source>
         <translation>新建脚本</translation>
@@ -3008,26 +2103,6 @@
 <context>
     <name>SearchPanel</name>
     <message>
-        <source>Search text</source>
-        <translation type="vanished">搜索文字</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">搜索</translation>
-    </message>
-    <message>
-        <source>Regular expression</source>
-        <translation type="vanished">正则表达式</translation>
-    </message>
-    <message>
-        <source>Case sensitive</source>
-        <translation type="vanished">区分大小写</translation>
-    </message>
-    <message>
-        <source>Whole word</source>
-        <translation type="vanished">整个词</translation>
-    </message>
-    <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
         <source>Could not find any matches.</source>
         <translation>无法找到匹配项。</translation>
@@ -3058,18 +2133,6 @@
 </context>
 <context>
     <name>SerialPortTransferModel</name>
-    <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
     <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="106"/>
         <source>Odd</source>
@@ -3165,14 +2228,6 @@
         <translation>转发选项</translation>
     </message>
     <message>
-        <source>Client Address</source>
-        <translation type="vanished">客户地址</translation>
-    </message>
-    <message>
-        <source>Client Port</source>
-        <translation type="vanished">客户端端口</translation>
-    </message>
-    <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="192"/>
         <source>Server Address</source>
         <translation>服务器地址</translation>
@@ -3211,70 +2266,6 @@
 <context>
     <name>SocketUi</name>
     <message>
-        <source>Client IP</source>
-        <translation type="vanished">客户端IP</translation>
-    </message>
-    <message>
-        <source>Client port</source>
-        <translation type="vanished">客户端端口</translation>
-    </message>
-    <message>
-        <source>Server IP</source>
-        <translation type="vanished">服务器IP</translation>
-    </message>
-    <message>
-        <source>Server port</source>
-        <translation type="vanished">服务器端口</translation>
-    </message>
-    <message>
-        <source>Write to</source>
-        <translation type="vanished">写信给</translation>
-    </message>
-    <message>
-        <source>Path</source>
-        <translation type="vanished">小路</translation>
-    </message>
-    <message>
-        <source>Disconnect all clients</source>
-        <translation type="vanished">断开所有客户端的连接</translation>
-    </message>
-    <message>
-        <source>Enable multicast</source>
-        <translation type="vanished">启用组播</translation>
-    </message>
-    <message>
-        <source>Just multicast</source>
-        <translation type="vanished">只是多播</translation>
-    </message>
-    <message>
-        <source>Channel</source>
-        <translation type="vanished">渠道</translation>
-    </message>
-    <message>
-        <source>Multicast IP</source>
-        <translation type="vanished">组播IP</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation type="vanished">验证</translation>
-    </message>
-    <message>
-        <source>Secure Mode</source>
-        <translation type="vanished">安全模式</translation>
-    </message>
-    <message>
-        <source>Multicast Port</source>
-        <translation type="vanished">组播端口</translation>
-    </message>
-    <message>
-        <source>User name</source>
-        <translation type="vanished">用户名</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="vanished">密码</translation>
-    </message>
-    <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
         <source>All clients</source>
         <translation>所有客户端</translation>
@@ -3308,34 +2299,6 @@
 </context>
 <context>
     <name>TableView</name>
-    <message>
-        <source>Export</source>
-        <translation type="vanished">出口</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="vanished">删除</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">向上</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">添加</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">进口</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">向下</translation>
-    </message>
-    <message>
-        <source>Disable all items</source>
-        <translation type="vanished">禁用所有项目</translation>
-    </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
         <source>Clear</source>
@@ -3426,14 +2389,6 @@
 <context>
     <name>UdpBroadcastUi</name>
     <message>
-        <source>Selecte a network interface:</source>
-        <translation type="vanished">选择网络接口：</translation>
-    </message>
-    <message>
-        <source>Broadcast Port</source>
-        <translation type="vanished">广播端口</translation>
-    </message>
-    <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
         <source>All Interfaces</source>
         <translation>所有接口</translation>
@@ -3492,10 +2447,6 @@
 </context>
 <context>
     <name>xModbus::ModbusDeviceListView</name>
-    <message>
-        <source>Coils</source>
-        <translation type="vanished">线圈</translation>
-    </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
         <source>New Modbus Device</source>
