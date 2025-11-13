@@ -153,6 +153,7 @@ QStandardItem *ModbusDeviceListModel::newTableView(QStandardItem *deviceItem,
     deviceItem->appendRow(tableViewItem);
 
     ModbusRegisterTable *table = tableView->registerTable();
+    table->setIsClientDevice(device->isClient());
     connect(table, &ModbusRegisterTable::dataModified, this, [=](const QModelIndex &index) {
         emit dataModified(tableViewItem, index);
     });

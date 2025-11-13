@@ -49,7 +49,27 @@ QWidget *ModbusRegisterDelegate::createEditor(QWidget *parent,
                                               const QStyleOptionViewItem &option,
                                               const QModelIndex &index) const
 {
+    auto registerTableFilter = getRegisterTableFilter(index);
+    if (!registerTableFilter) {
+        return nullptr;
+    }
+
+    auto registerTable = getRegisterTable(index);
+    if (!registerTable) {
+        return nullptr;
+    }
+
     int column = index.column();
+    if (registerTable->isClientDevice()) {
+        QModelIndex tableIndex = registerTableFilter->mapToSource(index);
+        ModbusRegister *reg = registerTable->registerItemAt(tableIndex.row());
+        bool disable = (reg->type() == xDiscreteInputs);
+        disable |= (reg->type() == xInputRegisters);
+        if (column == REGISTER_TABLE_COLUMN_VALUE && disable) {
+            return nullptr;
+        }
+    }
+
     switch (column) {
     case REGISTER_TABLE_COLUMN_REGISTER_TYPE:
         return new QComboBox(parent);

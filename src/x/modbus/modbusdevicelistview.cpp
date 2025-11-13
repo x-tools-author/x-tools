@@ -281,25 +281,38 @@ void ModbusDeviceListView::onItemDoubleClicked(const QModelIndex &index)
         QJsonObject deviceObj = deviceConnectionParameters2Json(params);
         editor.load(deviceObj);
         editor.setModal(true);
-        if (editor.exec() == QDialog::Accepted) {
-            QJsonObject newParams = editor.save();
-            if (newParams == deviceObj) {
-                return;
-            }
+        if (editor.exec() != QDialog::Accepted) {
+            return;
+        }
 
-            DeviceConnectionParameters newParamsCtx = json2DeviceConnectionParameters(newParams);
-            device->setParameters(newParamsCtx);
-            item->setText(newParamsCtx.deviceName);
-            if (device->isRunning()) {
-                int ret = QMessageBox::question(
-                    this,
-                    tr("Change Device parameters"),
-                    tr("The device is running. Restarting it to apply new parameters now?"),
-                    QMessageBox::Ok | QMessageBox::No);
-                if (ret == QMessageBox::No) {
-                    device->restart();
-                }
+        QJsonObject newParams = editor.save();
+        if (newParams == deviceObj) {
+            return;
+        }
+
+        DeviceConnectionParameters newParamsCtx = json2DeviceConnectionParameters(newParams);
+        device->setParameters(newParamsCtx);
+        item->setText(newParamsCtx.deviceName);
+        for (int i = 0; i < item->rowCount(); ++i) {
+            QStandardItem *tableItem = item->child(i);
+            auto tableView = tableItem->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
+            if (tableView) {
+                ModbusRegisterTable *registerTable = tableView->registerTable();
+                registerTable->setIsClientDevice(device->isClient());
             }
+        }
+
+        if (!device->isRunning()) {
+            return;
+        }
+
+        int ret = QMessageBox::question(
+            this,
+            tr("Change Device parameters"),
+            tr("The device is running. Restarting it to apply new parameters now?"),
+            QMessageBox::Ok | QMessageBox::No);
+        if (ret == QMessageBox::No) {
+            device->restart();
         }
     }
 }

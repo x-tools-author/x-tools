@@ -45,6 +45,16 @@ ModbusRegister *ModbusRegisterTable::registerItemAt(int index) const
     return m_registerItems.at(index);
 }
 
+bool ModbusRegisterTable::isClientDevice() const
+{
+    return m_isClientDevice;
+}
+
+void ModbusRegisterTable::setIsClientDevice(bool isClient)
+{
+    m_isClientDevice = isClient;
+}
+
 int ModbusRegisterTable::rowCount(const QModelIndex &parent) const
 {
     return m_registerItems.count();

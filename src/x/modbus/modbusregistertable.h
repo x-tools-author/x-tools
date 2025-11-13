@@ -35,6 +35,8 @@ public:
     void addRegisterItem(ModbusRegister *item);
     QList<ModbusRegister *> registerItems() const;
     ModbusRegister *registerItemAt(int index) const;
+    bool isClientDevice() const;
+    void setIsClientDevice(bool isClient);
 
 public:
     int rowCount(const QModelIndex &parent) const override;
@@ -52,6 +54,7 @@ signals:
 
 private:
     QList<ModbusRegister *> m_registerItems;
+    bool m_isClientDevice{true};
 
 private:
     void onRegisterItemValueChanged(ModbusRegister *item);
